@@ -1,0 +1,33 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const sqlCfg = {
+  steps: [
+    { math: '1 · Joins: stitching tables', note: 'INNER JOIN keeps only matches; LEFT JOIN keeps all left rows (with NULLs where missing). Choosing join type = choosing what population your analysis covers — the most common silent mistake in SQL.' },
+    { math: '2 · GROUP BY: the aggregation lens', note: 'Collapse rows into groups and compute per-group totals, averages, counts. Revenue per month, users per country — most business questions are GROUP BY questions.' },
+    { math: '3 · Window functions: aggregates without collapsing', note: 'ROW_NUMBER, RANK, running totals, period-over-period change — computed ACROSS rows while keeping them. "Top 3 per region" and "vs previous month" both live here.' },
+    { math: '4 · CTEs: readable pipelines', note: 'WITH steps AS (…) chains queries like pipeline stages. Analysis SQL is read by humans and machines — structure it like code, because it is code.' },
+  ],
+};
+---
+<TopicPage slug="subjects/data-science/intermediate/sql-for-analysts">
+  <h2>The idea</h2>
+  <p>
+    SQL is <strong>the analyst's primary interface to data</strong> — declarative (you describe
+    the result, the engine finds the plan) and everywhere: warehouses, lakes, spreadsheets' back
+    ends. Analyst-level SQL goes beyond SELECT: joins define your population, GROUP BY defines
+    your granularity, and window functions unlock the questions that made older SQL painful.
+  </p>
+
+  <Widget no="1" caption="the four techniques that cover most analyst work" widget="equationStep" config={sqlCfg} />
+
+  <h2>SQL habits that prevent wrong answers</h2>
+  <ul>
+    <li><strong>Always know your grain:</strong> what does one row represent after each step? A join that duplicates orders silently double-counts revenue.</li>
+    <li><strong>NULLs are not zero:</strong> AVG ignores NULLs; "no sale" and "sale of 0" differ. COALESCE thoughtfully — and check whether NULLs changed your denominators.</li>
+    <li><strong>Filter before you join where possible,</strong> and index the join keys — correctness first, but performance is an analyst skill too (nobody reruns a 40-minute query often).</li>
+    <li><strong>Sanity-check totals against a known source</strong> — finance's numbers, the product dashboard's counts. Discrepancies are usually definitional (which table is "truth" for users?) and worth resolving explicitly.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> PostgreSQL manual; Mode SQL Tutorial; Kimball, The Data Warehouse Toolkit.</p>
+</TopicPage>

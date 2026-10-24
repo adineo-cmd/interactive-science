@@ -1,0 +1,33 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const clsCfg = {
+  steps: [
+    { math: '1 · Regression predicts numbers', note: 'Continuous outputs: price, temperature, demand. Linear regression is the baseline; trees and neural nets extend it. Evaluate with RMSE / MAE against a naive baseline.' },
+    { math: '2 · Classification predicts categories', note: 'Logistic regression outputs a probability (0–1) via a squishing function; thresholding turns probability into decision. The threshold is a BUSINESS choice, not a maths one.' },
+    { math: '3 · The accuracy trap', note: 'Fraud at 0.1%: always predicting "not fraud" scores 99.9% accuracy and catches nothing. Use precision (when we flag, are we right?) and recall (of all real cases, how many caught?).' },
+    { math: '4 · ROC curves summarise thresholds', note: 'A model outputs scores; every threshold trades recall against precision. ROC-AUC (area under curve) summarises the trade-off across all thresholds — 0.5 is coin-flipping, 0.9 is strong.' },
+  ],
+};
+---
+<TopicPage slug="subjects/artificial-intelligence/intermediate/classification-and-regression">
+  <h2>The idea</h2>
+  <p>
+    Classification and regression are <strong>supervised learning's two core tasks</strong>:
+    predicting categories (spam/not-spam, will-churn/won't) and predicting quantities (price,
+    demand, risk). Most business value from ML lives here — and most ML mistakes live in their
+    evaluation metrics, chosen carelessly.
+  </p>
+
+  <Widget no="1" caption="the task types and the metrics that don't lie" widget="equationStep" config={clsCfg} />
+
+  <h2>Thresholds, costs and class imbalance</h2>
+  <ul>
+    <li><strong>The threshold is a cost calculation:</strong> missing fraud costs 100× a false alarm → set the threshold lower, accept more false alarms. The model outputs probability; the operating point is policy.</li>
+    <li><strong>Imbalanced data needs care:</strong> reweight classes, oversample minorities, or use metrics immune to base rates (AUC, precision-recall curves). Never trust accuracy alone.</li>
+    <li><strong>Calibration matters for decisions:</strong> "80% probability" should mean it happens 80% of the time. Uncalibrated models mislead every downstream threshold — calibration curves check it.</li>
+    <li><strong>Interpretability scales with stakes:</strong> credit and medicine demand explanations (coefficients, SHAP values); a recommendation engine can stay a black box. Match transparency to consequence.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Hastie et al., Elements of Statistical Learning; Géron, Hands-On ML; Molnar, Interpretable Machine Learning (free).</p>
+</TopicPage>

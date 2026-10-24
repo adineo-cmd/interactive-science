@@ -1,0 +1,33 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const pipeCfg = {
+  steps: [
+    { math: '1 · ETL → ELT', note: 'Extract, Transform, Load was the old order (transform before storing). Modern warehouses are so cheap and fast that we Load raw first, Transform later (ELT) — keeping raw data re-processable forever.' },
+    { math: '2 · Orchestration: the dependency manager', note: 'Tools like Airflow and Dagster schedule and sequence tasks ("wait for the nightly load, then rebuild, then test, then notify"). Pipelines are graphs of dependencies, not scripts.' },
+    { math: '3 · Data quality tests in the pipeline', note: 'Freshness (is today\'s data in?), volume (row counts sane?), schema (columns unchanged?), distribution (no null surge?). Tools: Great Expectations, dbt tests. Data bugs fail loudly instead of silently.' },
+    { math: '4 · Streaming vs batch', note: 'Batch (hourly/daily) covers most analytics. Streaming (Kafka, Flink) handles seconds-matters cases — fraud detection, live dashboards. Streaming costs 5–10× the complexity; earn it first.' },
+  ],
+};
+---
+<TopicPage slug="subjects/data-science/expert/data-engineering-and-pipelines">
+  <h2>The idea</h2>
+  <p>
+    Data engineering builds <strong>the reliable plumbing that turns raw events into trustworthy
+    tables</strong> — the layer every analyst and model stands on. Its promise: data that is
+    fresh, correct, documented and reproducible. Its reality: most "data science project"
+    failures are data engineering failures in disguise.
+  </p>
+
+  <Widget no="1" caption="the four pillars of production data plumbing" widget="equationStep" config={pipeCfg} />
+
+  <h2>The architecture in one breath</h2>
+  <ul>
+    <li><strong>Sources → ingestion → warehouse/lake → transforms (dbt) → serving.</strong> Events land raw; dbt models build clean, tested, documented layers (staging → marts); BI tools and ML read the marts.</li>
+    <li><strong>dbt brought software engineering to SQL:</strong> version control, tests, documentation and lineage for transformations. "Analytics engineering" is the role that grew from it.</li>
+    <li><strong>Lineage and cataloguing:</strong> knowing which dashboards break when a column changes. Data catalogs (Amundsen, DataHub) map the graph — without lineage, every change is a surprise.</li>
+    <li><strong>Cost is a first-class metric:</strong> warehouses bill per scan; a careless SELECT * on a petabyte table has a price tag. Query profiling is part of the craft.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Kleppmann, Designing Data-Intensive Applications; dbt Labs documentation; Kimball, The Data Warehouse Toolkit.</p>
+</TopicPage>

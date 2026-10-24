@@ -1,0 +1,33 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const cleanCfg = {
+  steps: [
+    { math: '1 · Profile before you fix', note: 'Count missing values per column, duplicates, impossible ranges (age = 250), type mismatches. You cannot fix what you haven\'t measured — and profiling often reveals the dataset\'s real story first.' },
+    { math: '2 · Missingness has a mechanism', note: 'Missing completely at random is safe to drop. Missing NOT at random (survey "income" skipped by the highest earners) means dropping rows biases everything. Ask WHY data is missing before choosing.' },
+    { math: '3 · Duplicates and identity', note: 'Two rows with the same customer ≠ duplicate (two orders). Define the key that makes a row unique — and document the decision.' },
+    { math: '4 · Validate like a paranoid engineer', note: 'Write assertions into the pipeline: expected ranges, referential integrity, row-count drift. Data silently rots upstream; tests are the smoke alarm.' },
+  ],
+};
+---
+<TopicPage slug="subjects/data-science/intermediate/cleaning-messy-data">
+  <h2>The idea</h2>
+  <p>
+    Data cleaning is <strong>80% of the work and 100% of the reputation risk</strong> — the step
+    where silent errors become confident wrong conclusions. The discipline is threefold:
+    understand how the data was produced, decide what each anomaly means, and encode the
+    decisions as repeatable code rather than one-off spreadsheet edits.
+  </p>
+
+  <Widget no="1" caption="the cleaning workflow — profiling, mechanisms, identity, validation" widget="equationStep" config={cleanCfg} />
+
+  <h2>The classic traps</h2>
+  <ul>
+    <li><strong>Imputation can manufacture patterns:</strong> filling missing income with the mean shrinks variance and invents a cluster at the mean. Prefer explicit "missing" flags or model-based imputation, with sensitivity checks.</li>
+    <li><strong>Merge hallucination:</strong> joining on sloppy keys duplicates rows silently — row counts balloon and every downstream average quietly shifts. Check row counts before and after every join.</li>
+    <li><strong>Timezone and encoding rot:</strong> "2024-03-01" in UTC vs local time; UTF-8 read as Latin-1. The boringest errors cause the most retractions.</li>
+    <li><strong>Tidy data discipline (Wickham):</strong> one observation per row, one variable per column. Reshaping into tidy form first makes every later step trivial.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Wickham, "Tidy Data", JSS (2014); Kimball, The Data Warehouse Toolkit; Great Expectations data-quality docs.</p>
+</TopicPage>

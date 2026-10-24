@@ -1,0 +1,33 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const abCfg = {
+  steps: [
+    { math: '1 · Randomise, then leave it alone', note: 'Split users randomly into A and B, run to plan. Re-randomising or stopping early destroys the statistics — the classic "peeking" problem: check often enough and something looks significant by luck.' },
+    { math: '2 · Power before launch', note: 'Decide the smallest effect worth detecting, then compute the n needed (the sampling lesson\'s formula, reversed). Underpowered tests "fail" for reasons that have nothing to do with the change.' },
+    { math: '3 · One metric, honestly primary', note: 'Pick the decision metric (revenue per user, retention) BEFORE looking. Guardrail metrics watch for damage (latency, complaints). Everything else is exploration, not confirmation.' },
+    { math: '4 · Beware the novelty effect', note: 'Users react to change itself — early spikes fade. Run full business cycles (whole weeks) and compare same-day-of-week patterns before believing a win.' },
+  ],
+};
+---
+<TopicPage slug="subjects/data-science/advanced/ab-testing">
+  <h2>The idea</h2>
+  <p>
+    An A/B test is <strong>a randomised controlled experiment run on users</strong> — the
+    gold-standard causal method (the statistics ladder's experimental-design lesson) applied at
+    product speed. Done right, it is the cleanest "did this change help?" answer available. Done
+    casually — peeking, tiny samples, forty metrics — it manufactures confident nonsense.
+  </p>
+
+  <Widget no="1" caption="the four disciplines that separate real tests from theatre" widget="equationStep" config={abCfg} />
+
+  <h2>The failure modes, catalogued</h2>
+  <ul>
+    <li><strong>Peeking:</strong> monitoring p-values daily and stopping at the first dip below 0.05 inflates false positives massively — sequential tests (group-sequential, Bayesian) are the honest fix if you must watch.</li>
+    <li><strong>Multiple comparisons:</strong> testing 20 variants finds a "winner" by luck. Adjust (Bonferroni), or pre-commit to the comparison.</li>
+    <li><strong>Interference:</strong> users share networks — a feature for one user changes another's experience (marketplaces, social apps). Cluster randomisation (by city, by household) handles it.</li>
+    <li><strong>Proxy drift:</strong> optimising clicks can degrade the thing clicks were standing in for. Long-term holdout groups — users kept on the old experience — catch the drift.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Kohavi, Tang & Xu, Trustworthy Online Controlled Experiments (2020); Microsoft ExP platform documentation.</p>
+</TopicPage>

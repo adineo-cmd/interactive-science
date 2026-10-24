@@ -1,0 +1,34 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const cnnCfg = {
+  steps: [
+    { math: '1 · Convolution: slide a small filter', note: 'A tiny kernel (3×3 numbers) slides across the image, computing dot products — detecting one local pattern (an edge, a corner) everywhere it appears. Weight sharing: same detector, all positions.' },
+    { math: '2 · Pooling: summarise neighbourhoods', note: 'Max-pooling keeps the strongest activation in each patch — shrinking the map, adding tolerance to small shifts. The hierarchy sees coarser structure at each layer.' },
+    { math: '3 · Hierarchies of features', note: 'Layer 1: edges and colours. Layer 2: textures, corners. Layer 3: eyes, wheels. Deeper: faces, objects. Networks discover this hierarchy themselves — visualisation studies confirmed what was learned, not designed.' },
+    { math: '4 · The ImageNet moment (2012)', note: 'AlexNet cut image-classification error from 26% to 15% overnight using two gaming GPUs and ReLU units. Every lab pivoted within two years — the event that started the deep-learning decade.' },
+  ],
+};
+---
+<TopicPage slug="subjects/artificial-intelligence/intermediate/image-recognition-cnns">
+  <h2>The idea</h2>
+  <p>
+    Convolutional Neural Networks (CNNs) are <strong>neural networks built for images</strong>:
+    small learnable filters slide across the picture, stacking into layers that detect edges,
+    then textures, then objects. The design borrows the visual cortex's own trick — local
+    receptive fields, shared weights, hierarchies — and it is why computers can find cats,
+    tumours and pedestrians.
+  </p>
+
+  <Widget no="1" caption="the CNN pipeline, from filter to hierarchy to revolution" widget="equationStep" config={cnnCfg} />
+
+  <h2>From recognition to generation</h2>
+  <ul>
+    <li><strong>Object detection adds boxes:</strong> YOLO and friends localise many objects per frame in real time — the technology in self-driving perception and photo search.</li>
+    <li><strong>Segmentation labels pixels:</strong> medical imaging's workhorse — tumour boundaries, cell counting. A radiologist's assistant, not (yet) a replacement.</li>
+    <li><strong>Transfer learning is the default:</strong> start from a pretrained network (ImageNet or bigger), fine-tune on your few hundred examples. Training from scratch is now the exception — which is also how biases propagate between applications.</li>
+    <li><strong>Known failure modes:</strong> adversarial examples (invisible pixel changes flip classifications), texture bias (shape vs surface), and distribution shift (hospital A's scanner ≠ hospital B's). Evaluation must reflect deployment, not just the benchmark.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> LeCun (1998) LeNet; Krizhevsky, Sutskever & Hinton (2012); Goodfellow et al., Deep Learning ch. 9.</p>
+</TopicPage>

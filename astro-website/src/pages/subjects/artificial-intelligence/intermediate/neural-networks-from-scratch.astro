@@ -1,0 +1,34 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const nnCfg = {
+  steps: [
+    { math: '1 · The neuron: weighted sum + squish', note: 'Inputs × weights, summed, passed through an activation function (ReLU, sigmoid). One neuron draws a line; a network of them draws any shape.' },
+    { math: '2 · Layers compose simplicity', note: 'Stack neurons in layers: early layers learn edges, deeper layers combine them into patterns. Each layer is a linear map plus nonlinearity — the nonlinearity is essential (without it, layers collapse into one).' },
+    { math: '3 · Forward pass and loss', note: 'Data flows through, the output is compared to truth via a loss function (the "wrongness score" from the gradient-descent lesson).' },
+    { math: '4 · Backpropagation: blame assignment', note: 'The chain rule from calculus distributes blame for the loss back through every weight. Each weight nudges opposite its gradient. Repeat over millions of examples — training is that loop, nothing more mystical.' },
+    { math: '5 · The XOR triumph', note: '1969: Minsky & Papert proved single neurons can\'t compute XOR, and funding froze ("AI winter"). Multilayer networks solve it trivially — and backprop (1986) made training them practical. The winter-to-revolution arc is AI history in miniature.' },
+  ],
+};
+---
+<TopicPage slug="subjects/artificial-intelligence/intermediate/neural-networks-from-scratch">
+  <h2>The idea</h2>
+  <p>
+    A neural network is <strong>stacked layers of tiny weighted sums</strong>, trained by
+    backpropagating error. Each neuron is dumber than a pocket calculator; the magic is
+    composition — millions of simple units arranging themselves (via gradient descent) into
+    features nobody specified. This lesson builds the concept from one neuron upward.
+  </p>
+
+  <Widget no="1" caption="from single neuron to trained network, in five steps" widget="equationStep" config={nnCfg} />
+
+  <h2>Practical realities of training</h2>
+  <ul>
+    <li><strong>Hyperparameters:</strong> layer sizes, learning rate, batch size — set before training and tuned by experiment. Learning rate too high diverges, too low crawls; the first thing to check when training misbehaves.</li>
+    <li><strong>Regularisation keeps networks honest:</strong> dropout (randomly silence neurons), weight decay, early stopping — all fight overfitting (the ML-basics lesson's central villain).</li>
+    <li><strong>GPUs are the fuel:</strong> neural nets are giant matrix multiplications (the linear-algebra lesson), which GPUs parallelise brilliantly. The 2012 ImageNet moment (AlexNet) was two gaming GPUs.</li>
+    <li><strong>Debugging by overfitting one batch:</strong> if the network can't memorise 100 examples, something is broken. The field's favourite sanity check.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton & Williams, Nature (1986); Karpathy, "Neural Networks: Zero to Hero"; Minsky & Papert, Perceptrons (1969).</p>
+</TopicPage>
