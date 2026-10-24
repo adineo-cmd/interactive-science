@@ -1,0 +1,48 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const matrixCfg = {
+  params: [
+    { name: 'a', label: 'matrix a (row 1, col 1)', min: -2, max: 2, step: 0.1, value: 0.7 },
+    { name: 'b', label: 'matrix b (row 1, col 2)', min: -2, max: 2, step: 0.1, value: -0.7 },
+    { name: 'c', label: 'matrix c (row 2, col 1)', min: -2, max: 2, step: 0.1, value: 0.7 },
+    { name: 'd', label: 'matrix d (row 2, col 2)', min: -2, max: 2, step: 0.1, value: 0.7 },
+  ],
+  readouts: [
+    { label: 'image of point (1, 0): x', expr: 'a' },
+    { label: 'image of point (1, 0): y', expr: 'c' },
+    { label: 'determinant (area scale)', expr: 'a*d - b*c' },
+    { label: 'area preserved when |det| = 1', expr: 'abs(a*d - b*c)' },
+  ],
+};
+---
+<TopicPage slug="subjects/math/expert/linear-algebra">
+  <h2>The idea</h2>
+  <p>
+    Linear algebra is the complete theory of <strong>one simple kind of transformation</strong>:
+    the kind that maps lines to lines and keeps the origin fixed. That seems restrictive, yet it
+    is the most-used mathematics in modern applied work — every 3D game frame, every machine-
+    learning forward pass, every quantum computation is chains of linear maps, because linear
+    maps are the ones we can always solve exactly.
+  </p>
+
+  <Widget no="1" caption="a 2×2 matrix is four knobs on the whole plane — watch the determinant track the area change" widget="sliderLab" config={matrixCfg} />
+
+  <p>
+    The matrix [[a, b], [c, d]] sends (1, 0) to column one and (0, 1) to column two — which
+    fixes where <em>everything</em> goes, since every vector is a combination of those two. The
+    determinant is the signed area scale: 1 means area-preserving (a rotation!), 0 means
+    collapse, negative means the plane got flipped.
+  </p>
+
+  <h2>The expert core</h2>
+  <ul>
+    <li><strong>Vector spaces over any field:</strong> the axioms don't care if the entries are real numbers, polynomials, or functions — Fourier series and quantum states are both "vectors" under the same theorems.</li>
+    <li><strong>Rank, null space, dimension theorem:</strong> rank + nullity = n. What a map preserves and what it destroys always add up.</li>
+    <li><strong>Eigendecomposition:</strong> Av = λv — the directions a map only stretches. Repeated application of a matrix (population models, PageRank) is dominated by the largest eigenvalue.</li>
+    <li><strong>Singular Value Decomposition:</strong> every matrix — even non-square — breaks into rotate → scale → rotate. It is the engine of data compression, noise reduction and PCA in the data-science ladder.</li>
+    <li><strong>Inner products:</strong> adding angles and lengths to vector spaces — the bridge to Hilbert spaces, where quantum mechanics lives (the astronomy and AI ladders both lean on this).</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Axler, Linear Algebra Done Right; Strang, Linear Algebra and Its Applications.</p>
+</TopicPage>

@@ -1,0 +1,48 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const modelCfg = {
+  curves: [
+    { expr: 'P0*exp(k*x)', label: 'unlimited growth', color: '#b42318' },
+    { expr: 'pmax/(1 + 9*exp(-k*x))', label: 'logistic (resource-limited)', color: '#1f6f54', width: 2.2 },
+  ],
+  params: [
+    { name: 'P0', label: 'initial P₀', min: 0.1, max: 2, step: 0.1, value: 0.5 },
+    { name: 'k', label: 'growth rate k', min: 0.1, max: 1, step: 0.05, value: 0.4 },
+    { name: 'pmax', label: 'carrying capacity', min: 5, max: 20, step: 1, value: 10 },
+  ],
+  x: { min: 0, max: 25, label: 'time' },
+  y: { min: 0, max: 22 },
+  crossings: false,
+  height: 350,
+};
+---
+<TopicPage slug="subjects/math/advanced/differential-equations">
+  <h2>The idea</h2>
+  <p>
+    Nature writes its laws as <strong>differential equations</strong>: statements about how
+    things change, not where things are. "The population grows at a rate proportional to its
+    size" is dP/dt = kP — and solving it means finding the population function whose derivative
+    matches the law. Every physics, chemistry, biology and finance model in this atlas is a
+    differential equation wearing a costume.
+  </p>
+
+  <Widget no="1" caption="two answers to the same law — unchecked growth versus growth capped by a carrying capacity" widget="plotter" config={modelCfg} />
+
+  <p>
+    The exponential is the honest solution to dP/dt = kP. The <strong>logistic</strong> curve
+    solves the corrected law dP/dt = kP(1 − P/pₘₐₓ), where the growth rate fades as the
+    population nears its limit. Bacteria in a flask, languages learning vocabularies (the
+    languages lesson plots exactly this), epidemics at their start — the S-curve is everywhere.
+  </p>
+
+  <h2>The solving toolkit</h2>
+  <ul>
+    <li><strong>Separable equations:</strong> herd all y's to one side, all t's to the other, integrate both. Handles most first textbook encounters.</li>
+    <li><strong>Linear first-order:</strong> integrating factors — the method behind RC circuits and drug concentration models.</li>
+    <li><strong>Second-order linear:</strong> springs, pendulums, vibrations — solutions are sines, exponentials, or both (damped oscillation). Newton's F = ma is itself a second-order equation.</li>
+    <li><strong>When symbols fail:</strong> numerical integration (Euler's method: step forward using the slope) always works. Your phone's weather model is a differential equation solved numerically, a billion times a day.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Boyce & DiPrima, Elementary Differential Equations; Strogatz, Nonlinear Dynamics and Chaos.</p>
+</TopicPage>

@@ -1,0 +1,53 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const seqCfg = {
+  curves: [
+    { expr: '2 + 3*x', label: 'arithmetic: 2 + 3n', color: '#7c3aed' },
+    { expr: '2*1.4^x', label: 'geometric: 2 × 1.4ⁿ', color: '#b42318' },
+  ],
+  x: { min: 0, max: 10, label: 'n (term number)' },
+  y: { min: 0, max: 40 },
+  crossings: false,
+  height: 330,
+};
+
+const gaussCfg = {
+  steps: [
+    { math: 'S = 1 + 2 + 3 + … + 100', note: 'Gauss, age 9, is asked to add the first hundred numbers. Brute force works; insight is faster.' },
+    { math: 'S = 100 + 99 + … + 1', note: 'Write the same sum backwards underneath.' },
+    { math: '2S = 101 × 100', note: 'Add vertically: every column pairs to 101, and there are 100 columns.' },
+    { math: 'S = 100 × 101 / 2 = 5050', note: 'The pairing trick generalises: 1 + 2 + … + n = n(n + 1)/2 — a formula earned in three lines.' },
+  ],
+};
+---
+<TopicPage slug="subjects/math/intermediate/sequences-and-series">
+  <h2>The idea</h2>
+  <p>
+    A sequence is a list with a rule; a <strong>series</strong> is what happens when you add it
+    up. Two families dominate. <strong>Arithmetic sequences</strong> add a fixed amount each
+    step — steady, linear, predictable. <strong>Geometric sequences</strong> multiply by a fixed
+    factor — slow at first, then unstoppable. The difference between them is the difference
+    between savings with flat interest and savings with compound interest.
+  </p>
+
+  <Widget no="1" caption="linear vs multiplicative growth — the geometric curve is barely visible until suddenly it isn't" widget="plotter" config={seqCfg} />
+
+  <p>
+    The arithmetic line overtakes early and looks comfortable. The geometric curve hides below
+    it for years, then doubles past it. Every "exponential surprise" in finance, epidemics or
+    technology is this picture.
+  </p>
+
+  <Widget no="2" caption="Gauss's pairing trick — the sum of 1 to 100 in three moves" widget="equationStep" config={gaussCfg} />
+
+  <h2>The working formulas</h2>
+  <ul>
+    <li><strong>Arithmetic sum:</strong> S = n × (first + last)/2 — average of first and last, times how many. Pairs, not grinding.</li>
+    <li><strong>Geometric sum:</strong> S = a(rⁿ − 1)/(r − 1) for r ≠ 1 — derived by the same trick: subtract the shifted series from itself.</li>
+    <li><strong>Infinite geometric:</strong> when the ratio magnitude is below 1 the sum converges: S = a/(1 − r). This one runs Zeno's paradoxes, repeating decimals and drug-dosing schedules alike.</li>
+    <li><strong>The warning:</strong> a geometric series with r > 1 has no finite sum — which is the mathematical voice behind every compound-debt warning.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Algebra and Trigonometry (Sequences); standard treatments (Stewart, Precalculus).</p>
+</TopicPage>
