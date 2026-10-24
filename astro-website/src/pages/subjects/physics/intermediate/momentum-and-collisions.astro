@@ -1,0 +1,48 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const collCfg = {
+  params: [
+    { name: 'm1', label: 'mass 1', min: 0.5, max: 10, step: 0.5, value: 2, unit: 'kg' },
+    { name: 'm2', label: 'mass 2', min: 0.5, max: 10, step: 0.5, value: 6, unit: 'kg' },
+    { name: 'u1', label: 'velocity of 1', min: -10, max: 10, step: 0.5, value: 6, unit: 'm/s' },
+    { name: 'u2', label: 'velocity of 2', min: -10, max: 10, step: 0.5, value: 0, unit: 'm/s' },
+  ],
+  readouts: [
+    { label: 'momentum before (m1u1 + m2u2)', expr: 'm1*u1 + m2*u2', unit: 'kg·m/s' },
+    { label: 'velocity of 1 after (elastic)', expr: '((m1 - m2)*u1 + 2*m2*u2)/(m1 + m2)', unit: 'm/s' },
+    { label: 'velocity of 2 after (elastic)', expr: '((m2 - m1)*u2 + 2*m1*u1)/(m1 + m2)', unit: 'm/s' },
+    { label: 'both stuck together (inelastic)', expr: '(m1*u1 + m2*u2)/(m1 + m2)', unit: 'm/s' },
+  ],
+};
+---
+<TopicPage slug="subjects/physics/intermediate/momentum-and-collisions">
+  <h2>The idea</h2>
+  <p>
+    <strong>Momentum</strong> — mass times velocity — is the quantity nature refuses to let
+    disappear. In every collision, explosion or rocket burn, the total momentum before equals the
+    total after. Newton's second law in its original form says force is the <em>rate of change of
+    momentum</em>, so with no outside force, the total can't drift. Energy may change form;
+    momentum just moves around.
+  </p>
+
+  <Widget no="1" caption="a 2 kg cart at 6 m/s meets a 6 kg cart at rest — compare the elastic and stuck-together outcomes" widget="sliderLab" config={collCfg} />
+
+  <p>
+    Two outcomes bracket reality. <strong>Elastic</strong> (billiard balls): both momentum and
+    kinetic energy survive — watch the heavy cart take some speed and the light one bounce back.
+    <strong>Inelastic</strong> (clay balls): momentum is still conserved exactly, but kinetic
+    energy is lost to crumpling — both carts roll on together at the readout's last value. Make
+    the striking mass tiny (m1 = 0.5) and see how little it budges a heavy target.
+  </p>
+
+  <h2>Why conservation beats force analysis</h2>
+  <ul>
+    <li><strong>During a crash you can't know the force.</strong> It spikes unpredictably for milliseconds. Momentum bookkeeping skips the messy middle entirely — before and after suffice.</li>
+    <li><strong>Rockets in vacuum:</strong> throw mass backward, gain momentum forward. No ground to push on; conservation is the whole engine.</li>
+    <li><strong>Impulse:</strong> force × time = momentum change — why airbags work (same momentum change, spread over longer time, smaller force) and why boxers ride the punch.</li>
+    <li><strong>Centre of mass:</strong> in any collision without outside forces, the centre of mass of the system sails through unbothered — the explosion's fragments orbit it.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Newton, Principia (1687); OpenStax, College Physics (Momentum and Collisions).</p>
+</TopicPage>
