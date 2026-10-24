@@ -1,0 +1,43 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const capmCfg = {
+  params: [
+    { name: 'beta', label: 'asset beta (market sensitivity)', min: 0, max: 2, step: 0.05, value: 1.2 },
+    { name: 'rf', label: 'risk-free rate', min: 0, max: 6, step: 0.25, value: 3, unit: '%' },
+    { name: 'mrp', label: 'market risk premium', min: 2, max: 8, step: 0.5, value: 5, unit: '%' },
+  ],
+  readouts: [
+    { label: 'CAPM expected return = rf + β·MRP', expr: 'rf + beta*mrp' },
+    { label: 'extra return demanded for this beta', expr: 'beta*mrp' },
+    { label: 'zero-beta asset return', expr: 'rf' },
+  ],
+};
+---
+<TopicPage slug="subjects/finance/expert/asset-pricing-models">
+  <h2>The idea</h2>
+  <p>
+    Asset pricing asks <strong>what return an investment should offer, given its risk</strong>.
+    CAPM's answer (1964–66, Sharpe/Lintner/Mossin, Nobel 1990): only <em>market</em> risk is paid
+    — diversifiable risk earns nothing, because you could have diversified it away for free. The
+    model is elegant, empirically imperfect, and the backbone of every discount-rate debate.
+  </p>
+
+  <Widget no="1" caption="the CAPM equation as a live calculator — beta is the whole story" widget="sliderLab" config={capmCfg} />
+
+  <p>
+    Beta measures sensitivity to the market: β = 1 moves with the market, β = 2 doubles its
+    swings, β = 0 is (theoretically) risk-free. The demanded return scales linearly with beta —
+    the market pays for non-diversifiable risk only.
+  </p>
+
+  <h2>The empirical record</h2>
+  <ul>
+    <li><strong>CAPM mostly works, imperfectly:</strong> low-beta stocks earn more than CAPM predicts, high-beta less (the "beta anomaly") — flatness in the security market line, documented for decades.</li>
+    <li><strong>Fama–French factors (1993):</strong> size (small beats large) and value (cheap beats expensive) explain returns beyond beta — Nobel 2013. Momentum (Jegadeesh & Titman) joined the list; "factor zoo" (Cochrane) describes the 400+ claimed factors since.</li>
+    <li><strong>Replication crisis, finance edition:</strong> Harvey, Liu & Zhu (2016) showed many claimed factors are statistical flukes of testing too many hypotheses — the t-statistic bar rose from 2 to 3+.</li>
+    <li><strong>The practical residue:</strong> CAPM survives as a rough discount-rate tool; multi-factor models price portfolios; and the strongest empirical result — most active managers trail index funds after fees — never needed a factor model at all.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Sharpe (1964); Fama & French, JFE (1993); Harvey, Liu & Zhu, RFS (2016); Cochrane, "The Factor Zoo".</p>
+</TopicPage>

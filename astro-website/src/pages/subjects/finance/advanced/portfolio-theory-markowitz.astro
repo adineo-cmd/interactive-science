@@ -1,0 +1,43 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const markowitzCfg = {
+  params: [
+    { name: 'corr', label: 'correlation between assets', min: -0.5, max: 1, step: 0.05, value: 0.3 },
+  ],
+  readouts: [
+    { label: 'single-asset volatility (both)', expr: '20' },
+    { label: '50/50 portfolio volatility', expr: 'sqrt((20^2 + 20^2 + 2*corr*20*20))/2' },
+    { label: 'risk reduction achieved', expr: '100 - (sqrt((20^2 + 20^2 + 2*corr*20*20))/2)/20*100', unit: '%' },
+  ],
+};
+---
+<TopicPage slug="subjects/finance/advanced/portfolio-theory-markowitz">
+  <h2>The idea</h2>
+  <p>
+    Markowitz's 1952 insight won the Nobel and rebuilt finance: <strong>portfolio risk depends not
+    just on each asset's risk but on how they move together</strong>. Combining imperfectly
+    correlated assets produces portfolios better than any ingredient — and plotting all possible
+    combinations reveals the <strong>efficient frontier</strong>: the best return available at
+    each level of risk.
+  </p>
+
+  <Widget no="1" caption="the correlation dial — watch the free lunch shrink as assets move together" widget="sliderLab" config={markowitzCfg} />
+
+  <p>
+    With correlation 0.3, a 50/50 mix carries ~11.7% volatility instead of 20% — a 41% risk
+    reduction from diversifying alone. Perfect correlation (1.0) gives zero benefit. That dial is
+    the entire argument for international diversification, bond mixing, and every "uncorrelated
+    asset" pitch you will ever hear.
+  </p>
+
+  <h2>From theory to practice</h2>
+  <ul>
+    <li><strong>The efficient frontier:</strong> for every risk level, one portfolio maximises expected return. Rational investors pick a point on it — their choice of point is their risk appetite, made precise.</li>
+    <li><strong>The Two-Fund separation:</strong> every efficient portfolio mixes just two things — the risk-free asset and one optimal risky portfolio. Simplicity hidden inside the mathematics.</li>
+    <li><strong>The estimation problem:</strong> the model needs expected returns (unobservable) and correlations (unstable) — "error maximisation" (Michaud): the optimizer overweights whatever was measured wrongly. Robust estimation and simple allocations are the workarounds.</li>
+    <li><strong>Its Nobel legacy:</strong> CAPM (Sharpe) and factor models grew directly out of Markowitz's framework — the entire asset-pricing field is this lesson's children.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Markowitz, Journal of Finance (1952, Nobel 1990); Elton & Gruber, Modern Portfolio Theory; Michaud, Efficient Asset Management.</p>
+</TopicPage>

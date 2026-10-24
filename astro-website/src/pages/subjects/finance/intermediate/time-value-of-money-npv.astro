@@ -1,0 +1,44 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const npvCfg = {
+  params: [
+    { name: 'cf', label: 'annual cash inflow', min: 100, max: 2000, step: 50, value: 800 },
+    { name: 'r', label: 'discount rate', min: 0.02, max: 0.2, step: 0.01, value: 0.08, unit: 'as decimal' },
+    { name: 'p', label: 'project cost today', min: 2000, max: 12000, step: 100, value: 6000 },
+  ],
+  readouts: [
+    { label: 'present value of 5 years of inflows', expr: 'cf*(1 - (1+r)^-5)/r' },
+    { label: 'NPV = PV − cost', expr: 'cf*(1 - (1+r)^-5)/r - p' },
+    { label: 'rough payback (years)', expr: 'p/cf' },
+  ],
+};
+---
+<TopicPage slug="subjects/finance/intermediate/time-value-of-money-npv">
+  <h2>The idea</h2>
+  <p>
+    The time value of money is finance's foundation: <strong>a rupee today is worth more than a
+    rupee next year, because today's rupee can earn</strong>. Discounting converts future cash
+    flows into today's value; <strong>Net Present Value (NPV)</strong> sums them and subtracts
+    the cost. Positive NPV = the project creates wealth. Every corporate investment decision,
+    every valuation, every mortgage calculation runs on this one idea.
+  </p>
+
+  <Widget no="1" caption="the NPV machine — a project that pays for itself or doesn't, depending on the discount rate" widget="sliderLab" config={npvCfg} />
+
+  <p>
+    Drag the discount rate: high rates (risky world, expensive capital) kill marginal projects;
+    low rates bless almost anything. That sensitivity is why central-bank rate decisions ripple
+    through every corporate boardroom — the discount rate is the economy's risk thermostat.
+  </p>
+
+  <h2>The mechanics and their traps</h2>
+  <ul>
+    <li><strong>The annuity shortcut:</strong> PV = C × (1 − (1+r)⁻ⁿ)/r — the formula the widget uses. Perpetuities simplify further: PV = C/r (a bond that pays forever, worth ~25× its coupon at 4%).</li>
+    <li><strong>The discount rate IS the judgement:</strong> it encodes risk and opportunity cost. Overstate it and you never invest; understate it and you invest in everything. WACC (the corporate-finance lesson) is the standard answer.</li>
+    <li><strong>IRR is NPV's cousin:</strong> the rate that makes NPV exactly zero. Intuitive ("this project yields 14%"), occasionally misleading when cash flows flip sign more than once.</li>
+    <li><strong>Garbage in, gospel out:</strong> NPV is exquisitely sensitive to cash-flow projections. The discipline is in honest forecasting and scenario ranges — the financial-modelling lesson shows how.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> standard corporate finance texts (Brealey, Myers & Allen); Fisher, The Theory of Interest (1930).</p>
+</TopicPage>
