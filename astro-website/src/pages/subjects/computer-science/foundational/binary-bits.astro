@@ -1,0 +1,52 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const bitsCfg = {
+  params: [
+    { name: 'bits', label: 'number of bits', min: 1, max: 16, step: 1, value: 8 },
+  ],
+  readouts: [
+    { label: 'distinct values representable', expr: '2^bits' },
+    { label: 'largest value storable', expr: '2^bits - 1' },
+  ],
+};
+
+const binCfg = {
+  steps: [
+    { math: 'weights: 8 4 2 1', note: 'A 4-bit number has place values 2³, 2², 2¹, 2⁰ — read right to left, exactly as decimal weights digits by 1000, 100, 10 and 1.' },
+    { math: '13 ≥ 8 → digit 1, remainder 5', note: 'Turn the 8s-bit on; 13 − 8 = 5 remains.' },
+    { math: '5 ≥ 4 → digit 1, remainder 1 · 2? → 0', note: 'Turn the 4s-bit on. Five cannot pay for a 2, so that digit stays 0.' },
+    { math: '13 = 1101', note: 'Turn the 1s-bit on. Check: 8 + 4 + 0 + 1 = 13. Every number is just this — which is all a computer ever does.' },
+  ],
+};
+---
+<TopicPage slug="subjects/computer-science/foundational/binary-bits">
+  <h2>The idea</h2>
+  <p>
+    A transistor is a switch with two honest states: on and off. Computers are built from
+    billions of them, so everything — numbers, photos, songs, this sentence — must be spelled in
+    a two-letter alphabet. One switch holds one <strong>bit</strong>. Eight bits make a
+    <strong>byte</strong>, which counts from 0 to 255 and is enough to store one typed letter
+    ("A" is 65, or <code>01000001</code>).
+  </p>
+
+  <Widget no="1" caption="why bytes stop at 255 — set the bit count and read the ceiling" widget="sliderLab" config={bitsCfg} />
+
+  <p>
+    The pattern: n bits give 2ⁿ distinct values. Sixteen bits reach 65,536 (the "16-bit" era of
+    games and sound cards); 24 bits of colour give 16,777,216 shades — the "true colour" of your
+    screen; 64-bit processors address memory in exabyte-sized address books.
+  </p>
+
+  <Widget no="2" caption="counting like a computer — 13 in binary, honestly" widget="equationStep" config={binCfg} />
+
+  <h2>Reading the world in powers of two</h2>
+  <ul>
+    <li><strong>KiB vs KB:</strong> memory is binary — 1 KiB = 1024 bytes — while storage marketing uses 1 KB = 1000. That gap is why your "1 TB" drive shows ~931 GB.</li>
+    <li><strong>Everything is encoding:</strong> images are grids of 24-bit pixels, sound is thousands of numbers per second, text is agreed lookup tables (ASCII, then Unicode for every alphabet on Earth).</li>
+    <li><strong>Why binary and not, say, base 10?</strong> Two states survive noise: voltage high or low, magnetised either way. Ten clear levels per cell would be fragile — reliability beats compactness.</li>
+    <li><strong>The joke that isn't:</strong> there are 10 kinds of people — those who read binary, and those who don't.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Petzold, Code: The Hidden Language of Computer Hardware and Software; ISO/IEC 80000-13 units standard.</p>
+</TopicPage>

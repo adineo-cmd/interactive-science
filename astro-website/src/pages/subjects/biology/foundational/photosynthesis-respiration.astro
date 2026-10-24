@@ -1,0 +1,54 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const lightCfg = {
+  curves: [{ expr: 'rmax*x/(x + k)', label: 'photosynthesis rate', color: '#2e7d32', width: 2.4 }],
+  params: [
+    { name: 'rmax', label: 'max rate rₘₐₓ', min: 4, max: 20, step: 0.5, value: 10 },
+    { name: 'k', label: 'half-saturation k', min: 20, max: 200, step: 5, value: 80 },
+  ],
+  x: { min: 0, max: 500, label: 'light intensity (µmol/m²·s)' },
+  crossings: false,
+  height: 340,
+};
+
+const eqCfg = {
+  steps: [
+    { math: '6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂', note: 'Photosynthesis, in the chloroplast: carbon dioxide plus water, powered by sunlight, becomes sugar plus the oxygen we breathe.' },
+    { math: 'C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ~30 ATP', note: 'Respiration, in the mitochondria: the sugar is burned back to CO₂ and water, banking the energy as ATP.' },
+    { math: 'the two equations are near-mirror images', note: 'One stores energy in chemical bonds; the other releases it. Nearly every food chain is this loop, running on sunlight.' },
+    { math: 'ATP → ADP + Pᵢ + usable energy', note: 'ATP is the cell\'s rechargeable battery. Your body recycles roughly its own weight of ATP every day.' },
+  ],
+};
+---
+<TopicPage slug="subjects/biology/foundational/photosynthesis-respiration">
+  <h2>The idea</h2>
+  <p>
+    Every calorie you have ever burned was once sunlight. Plants — and algae, and some bacteria —
+    run the only large-scale process on Earth that converts light into storable chemical energy:
+    <strong>photosynthesis</strong>, inside organelles called chloroplasts. Everything else, from
+    fungi to philosophers, lives by <strong>respiring</strong> that stored energy in their
+    mitochondria.
+  </p>
+
+  <Widget no="1" caption="the light response — more light helps, until the machinery itself is the bottleneck" widget="plotter" config={lightCfg} />
+
+  <p>
+    The curve rises steeply in dim light (photons are the limit), then flattens (CO₂ supply,
+    enzymes and temperature take over). Raising rₘₐₓ moves the plateau; raising k shifts where it
+    bends. Real leaves sit near this saturation point in full sun — which is why shade plants and
+    sun plants differ mainly in their k.
+  </p>
+
+  <Widget no="2" caption="the two equations of life, step by step" widget="equationStep" config={eqCfg} />
+
+  <h2>What to notice</h2>
+  <ul>
+    <li><strong>Two stages, two locations.</strong> Light reactions capture energy in the thylakoid membranes; the Calvin cycle uses it to fix CO₂ into sugar in the stroma.</li>
+    <li><strong>Leaves are green because chlorophyll rejects green light</strong> — it absorbs red and blue hardest. Sunlight's leftovers are the colour of the garden.</li>
+    <li><strong>Oxygen is a by-product</strong>, not a goal. Earth's breathable atmosphere was built by ~2.4 billion years of cyanobacterial photosynthesis (the Great Oxidation Event).</li>
+    <li><strong>Respiration never stops.</strong> Plants respire day and night; they only photosynthesise in light. A kept-in-the-dark plant consumes, not produces, oxygen.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Biology 2e (Photosynthesis); Campbell Biology.</p>
+</TopicPage>

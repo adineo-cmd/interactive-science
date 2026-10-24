@@ -1,0 +1,55 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const pumpCfg = {
+  params: [
+    { name: 'hr', label: 'heart rate (beats/min)', min: 40, max: 200, step: 1, value: 72, unit: 'bpm' },
+    { name: 'sv', label: 'stroke volume (mL/beat)', min: 40, max: 150, step: 1, value: 70, unit: 'mL' },
+  ],
+  readouts: [
+    { label: 'cardiac output', expr: 'hr*sv/1000', unit: 'L/min' },
+    { label: 'pumped per day', expr: 'hr*sv*1440/1000', unit: 'L' },
+    { label: 'beats per day', expr: 'hr*1440' },
+  ],
+};
+
+const circuitCfg = {
+  steps: [
+    { math: 'body → vena cava → right atrium', note: 'Oxygen-poor blood returns from the tissues and drains into the heart\'s upper-right chamber.' },
+    { math: 'right atrium → right ventricle → lungs', note: 'Through the tricuspid valve, out through the pulmonary artery — the only artery that carries oxygen-poor blood.' },
+    { math: 'lungs: CO₂ out, O₂ in', note: 'Gas exchange across capillary walls one cell thick. The blood brightens from dark red to scarlet.' },
+    { math: 'lungs → left atrium → left ventricle → aorta', note: 'Through the mitral valve into the heart\'s strongest chamber — its wall is ~3× thicker — and out to the whole body. One full circuit; "lub-dub" is the valves slamming shut.' },
+  ],
+};
+---
+<TopicPage slug="subjects/medicine/foundational/heart-circulation">
+  <h2>The idea</h2>
+  <p>
+    The heart is a double pump: the right half feeds the <strong>lungs</strong>, the left half
+    feeds the <strong>body</strong>, and they beat in lockstep about 100,000 times a day. Set it
+    to a resting 72 beats per minute and it moves roughly 5 litres of blood every minute — about
+    7,300 litres a day, through ~100,000 km of vessels. William Harvey proved this loop in 1628
+    (<em>De Motu Cordis</em>) and founded modern physiology on the way.
+  </p>
+
+  <Widget no="1" caption="the pump's arithmetic — drag heart rate and stroke volume like exercise or shock would" widget="sliderLab" config={pumpCfg} />
+
+  <p>
+    Cardiac output = heart rate × stroke volume. Rest: 72 × 70 mL ≈ 5 L/min. In hard exercise
+    both knobs rise — trained athletes reach 20–30 L/min, a five-fold increase. In shock, output
+    falls despite the racing pulse: fast, empty beats. The numbers, not the drumbeat, tell the
+    story.
+  </p>
+
+  <Widget no="2" caption="one full lap of a blood cell — the double circulation in four steps" widget="equationStep" config={circuitCfg} />
+
+  <h2>Numbers worth knowing</h2>
+  <ul>
+    <li><strong>Blood pressure</strong> is written systole-over-diastole — 120/80 mmHg is the classic resting reference: artery pressure at the squeeze vs the refill.</li>
+    <li><strong>Total blood volume ≈ 5 litres</strong> — a full circuit of the body at rest takes about a minute; through the lungs, ten seconds.</li>
+    <li><strong>Red cells are consumables</strong> — each lives ~120 days, and your marrow builds about two million replacements per second.</li>
+    <li><strong>Coronary arteries are the pump's own supply</strong> — narrow them (atherosclerosis) and the muscle starves: that is a heart attack. The single biggest preventable risks remain smoking, hypertension, lipids and inactivity.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Harvey, De Motu Cordis (1628); Guyton & Hall, Textbook of Medical Physiology; British Heart Foundation patient resources.</p>
+</TopicPage>

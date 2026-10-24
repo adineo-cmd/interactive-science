@@ -1,0 +1,52 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const outlierCfg = {
+  params: [
+    { name: 'outlier', label: 'fifth value (the outlier)', min: 8, max: 1000, step: 1, value: 10, unit: 'k' },
+  ],
+  readouts: [
+    { label: 'mean of {2, 4, 6, 8, x}', expr: '(2 + 4 + 6 + 8 + outlier)/5' },
+    { label: 'median (frozen at 6)', expr: '6' },
+    { label: 'mean − median gap', expr: 'abs((2 + 4 + 6 + 8 + outlier)/5 - 6)' },
+  ],
+};
+---
+<TopicPage slug="subjects/statistics/foundational/describing-data">
+  <h2>The idea</h2>
+  <p>
+    A dataset of a million numbers is unreadable; statistics compresses it into a few honest
+    summaries. A <strong>centre</strong> (mean, median or mode), a <strong>spread</strong>
+    (range, standard deviation, interquartile range), and a <strong>shape</strong> (the
+    histogram). The first skill is knowing which summary to trust — and they disagree most
+    exactly when it matters.
+  </p>
+
+  <Widget no="1" caption="four calm values and one loud stranger — drag the outlier and watch which summary flinches" widget="sliderLab" config={outlierCfg} />
+
+  <p>
+    The mean chases the outlier; the median sits still. That single drag is why "average income"
+    (mean, inflated by a few enormous fortunes) and "median income" (the middle person) tell
+    different stories about the same country — and why news reports that swap them quietly are
+    editing the story.
+  </p>
+
+  <h2>The tools, honestly named</h2>
+  <ul>
+    <li><strong>Mean</strong> — balances the data like a seesaw; best for well-behaved, symmetric data.</li>
+    <li><strong>Median</strong> — the middle rank; immune to outliers, ideal for incomes, house prices, waiting times.</li>
+    <li><strong>Mode</strong> — the most frequent value; the only one that works on categories (most common blood type).</li>
+    <li><strong>Standard deviation</strong> — the typical distance from the mean. For bell-shaped data the rule is <strong>68–95–99.7</strong>: about 68% of values fall within 1 SD, 95% within 2, 99.7% within 3.</li>
+  </ul>
+
+  <h2>Two classic traps</h2>
+  <p>
+    <strong>Simpson's paradox:</strong> aggregated numbers can reverse the story in every
+    subgroup — the University of California, Berkeley (1973) appeared biased against women
+    overall while most individual departments favoured them, because women applied to the most
+    competitive programmes. <strong>Misleading axes:</strong> a bar chart starting at 90 instead
+    of 0 can make a 1% difference look like a landslide. Always ask what the axis is hiding.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Bickel, Hammel & O'Connell, Science (1975) on Berkeley admissions; OpenStax, Introductory Statistics.</p>
+</TopicPage>

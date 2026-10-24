@@ -1,0 +1,58 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const tangentCfg = {
+  curves: [
+    { expr: 'x^2', label: 'f(x) = x²', color: '#7c3aed', width: 2.4 },
+    { expr: '2*x', label: 'f′(x) = 2x', color: '#0f766e' },
+    { expr: '2*t0*x - t0^2', label: 'tangent at x = t₀', color: '#b42318' },
+  ],
+  params: [
+    { name: 't0', label: 'touch point t₀', min: -2, max: 3, step: 0.1, value: 1 },
+  ],
+  x: { min: -3, max: 4, label: 'x' },
+  y: { min: -3, max: 9 },
+  crossings: false,
+  height: 380,
+};
+
+const limitCfg = {
+  steps: [
+    { math: 'f′(x) = lim (h→0) [f(x+h) − f(x)] / h', note: 'The derivative is the slope of the secant between two nearby points, taken as they merge.' },
+    { math: '[(x+h)² − x²] / h', note: 'Apply it to f(x) = x² and expand the square.' },
+    { math: '(2xh + h²) / h = 2x + h', note: 'Divide through by h (legal while h ≠ 0).' },
+    { math: 'lim (h→0) 2x + h = 2x', note: 'As h vanishes, what remains is 2x. The power rule generalises it: d/dx xⁿ = n·xⁿ⁻¹.' },
+  ],
+};
+---
+<TopicPage slug="subjects/math/intermediate/the-derivative">
+  <h2>The idea</h2>
+  <p>
+    Average speed is easy: distance over time. But a speed camera asks a harder question — what
+    is the speed <em>right now</em>, in an instant? The derivative answers it: shrink the time
+    window to nothing and take the slope the secant is heading toward. Geometrically, it is the
+    slope of the tangent line — a line that touches the curve at one point and matches its
+    direction there.
+  </p>
+
+  <Widget no="1" caption="slide the touch point — the tangent's slope exactly tracks the green derivative curve" widget="plotter" config={tangentCfg} />
+
+  <p>
+    The red tangent touches <code>x²</code> at t₀ and its slope is 2·t₀. Now look at the green
+    curve: it plots those slopes. At t₀ = −1 the tangent tilts downhill and the derivative reads
+    −2; at t₀ = 2 it climbs and the derivative reads 4. <em>The derivative of a function is
+    itself a function.</em>
+  </p>
+
+  <Widget no="2" caption="the definition, applied honestly to x²" widget="equationStep" config={limitCfg} />
+
+  <h2>Why it changed the world</h2>
+  <ul>
+    <li><strong>Newton (fluxions, 1660s) and Leibniz (dy/dx, 1670s)</strong> invented this independently — and fought bitterly over credit. Modern notation is Leibniz's.</li>
+    <li><strong>Physics runs on derivatives.</strong> Velocity is the derivative of position; acceleration is the derivative of velocity. "F = ma" is secretly a second-derivative statement.</li>
+    <li><strong>Optimisation is derivatives.</strong> Maxima and minima happen where f′(x) = 0 — the logic behind cheapest routes, strongest beams and best prices.</li>
+    <li><strong>Go deeper:</strong> differentiating 2x gives 2, a constant — acceleration of constant acceleration. Differentiate again and you reach 0: change that no longer changes.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Calculus Volume 1; Stewart, Calculus.</p>
+</TopicPage>
