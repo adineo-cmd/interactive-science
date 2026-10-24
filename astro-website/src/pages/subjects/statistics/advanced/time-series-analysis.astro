@@ -1,0 +1,44 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const tsCfg = {
+  curves: [
+    { expr: '50 + 10*sin(2*pi*x/12) + 0.8*x', label: 'level + seasonality + trend', color: '#374151', width: 2.2 },
+    { expr: '50 + 0.8*x', label: 'the underlying trend', color: 'rgba(180,35,24,0.7)', width: 1.4 },
+  ],
+  x: { min: 0, max: 48, label: 'months' },
+  y: { min: 40, max: 110, label: 'sales (schematic)' },
+  crossings: false,
+  height: 350,
+};
+---
+<TopicPage slug="subjects/statistics/advanced/time-series-analysis">
+  <h2>The idea</h2>
+  <p>
+    Time-series data breaks ordinary statistics' rules: the points are <strong>ordered and
+    correlated with their own past</strong>. Yesterday's temperature predicts today's; this
+    month's sales carry last year's echo. Analysis therefore decomposes series into
+    <strong>trend + seasonality + noise</strong>, and models the dependence explicitly — which is
+    why forecasting is its own craft, not regression with dates.
+  </p>
+
+  <Widget no="1" caption="the classic decomposition — a rising trend, a yearly wave, and the residual noise between them" widget="plotter" config={tsCfg} />
+
+  <p>
+    Strip the seasonal wave and the straight trend from the wiggly line and what remains is the
+    noise you can model. Most "surprising" business patterns dissolve into one of these three
+    components — or into a comparison error (this quarter vs last, instead of this quarter vs
+    <em>this quarter last year</em>).
+  </p>
+
+  <h2>The model zoo</h2>
+  <ul>
+    <li><strong>Random walk:</strong> tomorrow = today + noise. Stock prices are modelled this way for good reasons — past direction carries no information (the efficient-market claim).</li>
+    <li><strong>ARIMA:</strong> autoregressive + integrated + moving-average terms — the classical forecast engine behind demand planning for fifty years.</li>
+    <li><strong>Exponential smoothing:</strong> weight recent points more; the Holt-Winters variant handles trend and seasonality and still beats fancier methods on many business series.</li>
+    <li><strong>Stationarity matters:</strong> models assume stable statistical behaviour over time. Differencing (analysing changes, not levels) restores it — the "I" in ARIMA.</li>
+    <li><strong>Spurious regression:</strong> two trending series correlate strongly with no connection (ice-cream sales and drownings, both rising). Detrending is the cure; scepticism the vaccine.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Box & Jenkins, Time Series Analysis (1970); Hyndman & Athanasopoulos, Forecasting: Principles and Practice (free).</p>
+</TopicPage>

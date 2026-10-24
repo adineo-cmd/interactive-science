@@ -1,0 +1,35 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const npCfg = {
+  steps: [
+    { math: 'When the normal assumption fails', note: 'Small samples, skewed data (incomes, waiting times), ordinal ratings (1–5 stars), or wild outliers — the classic t-test leans on assumptions these violate.' },
+    { math: 'Mann–Whitney U: compare two groups', note: 'Rank all values together, compare the rank sums. It asks "do these groups differ in typical rank?" — nearly as powerful as the t-test when data is normal, far more robust when it is not.' },
+    { math: 'Wilcoxon / signed-rank: paired data', note: 'Before-and-after designs: rank the changes, test whether the positive changes outweigh the negative ones.' },
+    { math: 'Kruskal–Wallis: three or more groups', note: 'The rank-based cousin of one-way ANOVA — same question, fewer assumptions.' },
+    { math: 'Spearman\'s ρ: rank correlation', note: 'Correlate the RANKS instead of the values. Captures "monotone but not straight-line" relationships and shrugs at outliers.' },
+  ],
+};
+---
+<TopicPage slug="subjects/statistics/advanced/non-parametric-methods">
+  <h2>The idea</h2>
+  <p>
+    Classical tests assume distributions — usually the bell curve. <strong>Non-parametric
+    methods drop that assumption</strong> by working on ranks instead of raw values: replace the
+    data with their order positions and test those. You trade a little power for a lot of
+    robustness — an excellent trade with small, skewed or weirdly distributed data, which is most
+    real data most days.
+  </p>
+
+  <Widget no="1" caption="the rank-based toolbox — one method per classic situation" widget="equationStep" config={npCfg} />
+
+  <h2>Choosing honestly</h2>
+  <ul>
+    <li><strong>Parametric wins when its assumptions hold</strong> — and with large samples the t-test is remarkably forgiving (the central limit theorem at work).</li>
+    <li><strong>Non-parametric wins with:</strong> small n, heavy tails, ordinal scales, or when the result must survive outliers. "Average customer rating" from 1-star–5-star data is ordinal — rank methods are the right tool.</li>
+    <li><strong>Permutation tests:</strong> the modern alternative — shuffle group labels thousands of times and see where your real difference lands. No distribution assumption at all, made possible by cheap computing (Fisher imagined it; laptops delivered it).</li>
+    <li><strong>Report both when in doubt:</strong> if parametric and non-parametric tests agree, say so; if they disagree, the data was telling you something about its own shape.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Mann & Whitney (1947); Kruskal & Wallis (1952); Wasserman, All of Statistics (ch. nonparametric inference).</p>
+</TopicPage>

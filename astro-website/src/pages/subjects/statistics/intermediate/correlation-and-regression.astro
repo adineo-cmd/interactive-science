@@ -1,0 +1,46 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const regCfg = {
+  curves: [
+    { expr: '30 + 0.8*x', label: 'fitted line: hours = 30 + 0.8·score', color: '#374151', width: 2.2 },
+  ],
+  points: [{
+    points: [[40, 58], [45, 70], [50, 66], [55, 78], [60, 82], [65, 79], [70, 92], [75, 88], [80, 97], [85, 101]],
+    label: 'students', mode: 'dots', color: '#b45309',
+  }],
+  x: { min: 35, max: 90, label: 'exam score' },
+  y: { min: 40, max: 110, label: 'study hours (month)' },
+  crossings: false,
+  height: 350,
+};
+---
+<TopicPage slug="subjects/statistics/intermediate/correlation-and-regression">
+  <h2>The idea</h2>
+  <p>
+    <strong>Correlation</strong> measures whether two variables move together (−1 to +1);
+    <strong>regression</strong> draws the best straight line through the data so you can predict
+    one from the other. The line is chosen by <strong>least squares</strong> — minimising the sum
+    of squared vertical gaps, a method Gauss and Legendre published in the early 1800s and every
+    spreadsheet still runs.
+  </p>
+
+  <Widget no="1" caption="does more study predict higher scores? the line says yes — the scatter says how confidently" widget="plotter" config={regCfg} />
+
+  <p>
+    The correlation here is strong (r ≈ 0.95): points hug the line. For every extra exam point,
+    the line predicts 0.8 more study hours. Two cautions the data itself can't resolve: this is
+    an <em>association</em> (maybe strong students just study more), and the pattern holds only
+    within the measured range.
+  </p>
+
+  <h2>The professional checklist</h2>
+  <ul>
+    <li><strong>r measures straight-line strength only.</strong> Anscombe's quartet (1973) shows four wildly different datasets with identical r and line — always plot first.</li>
+    <li><strong>Outliers drag least-squares lines</strong> because squared errors amplify them. One billionaire in an income dataset redraws the "trend".</li>
+    <li><strong>Extrapolation is where lines lie.</strong> The model knows nothing beyond the data; predicting a 150-point score (impossible) or next decade's climate from a two-year fit are the same error.</li>
+    <li><strong>Regression ≠ causation.</strong> Controlled variables, experiments or causal-inference tools (expert rung) are what license the word "because".</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Legendre (1805), Gauss (1809); Anscombe, The American Statistician (1973); OpenStax, Introductory Statistics.</p>
+</TopicPage>

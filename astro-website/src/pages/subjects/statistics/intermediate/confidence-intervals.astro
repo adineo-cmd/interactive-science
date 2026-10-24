@@ -1,0 +1,43 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const ciCfg = {
+  params: [
+    { name: 's', label: 'sample standard deviation s', min: 1, max: 20, step: 1, value: 8 },
+    { name: 'n', label: 'sample size n', min: 16, max: 900, step: 4, value: 100 },
+  ],
+  readouts: [
+    { label: 'standard error (s/√n)', expr: 's/sqrt(n)', unit: '±' },
+    { label: '95% CI half-width (1.96·SE)', expr: '1.96*s/sqrt(n)', unit: '±' },
+    { label: '99% CI half-width (2.576·SE)', expr: '2.576*s/sqrt(n)', unit: '±' },
+  ],
+};
+---
+<TopicPage slug="subjects/statistics/intermediate/confidence-intervals">
+  <h2>The idea</h2>
+  <p>
+    A sample mean is an estimate, not the truth — and the <strong>confidence interval</strong>
+    states how far off it plausibly is. "The average commute is 42 ± 4 minutes (95% CI)" means:
+    if we repeated the sampling many times, 95% of such intervals would capture the true mean.
+    The interval is the honest way to report — the point estimate alone is a promise nobody can
+    keep.
+  </p>
+
+  <Widget no="1" caption="interval width responds to noise (s) and sample size (√n) — shrink it by measuring better, or much more" widget="sliderLab" config={ciCfg} />
+
+  <p>
+    The mechanics: standard error = s/√n (how much sample means wobble), then stretch by 1.96 for
+    95% confidence (the 68–95–99.7 rule from the describing-data lesson). Note the cruel geometry
+    again — halving the interval takes four times the data.
+  </p>
+
+  <h2>Reading intervals like a professional</h2>
+  <ul>
+    <li><strong>It's the procedure, not the one interval.</strong> Your specific 95% interval either contains the truth or doesn't — the confidence attaches to the method that generated it.</li>
+    <li><strong>Overlapping intervals ≠ no difference.</strong> Two 95% CIs can overlap while the difference between means is itself significant — proper tests (next lesson) compare the difference, not the eyeballed overlap.</li>
+    <li><strong>Width is a design parameter.</strong> Scientists decide the interval width they need <em>before</em> collecting, then solve for n. "How many samples?" always has this answer.</li>
+    <li><strong>Beware the pseudo-precision:</strong> "73.42% of users" from a 40-person survey is theatre — report 73% ± 14% or don't report it.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Introductory Statistics (Confidence Intervals); Wasserman, All of Statistics.</p>
+</TopicPage>
