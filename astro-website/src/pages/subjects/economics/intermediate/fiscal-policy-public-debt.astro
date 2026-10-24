@@ -1,0 +1,46 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const fiscalCfg = {
+  params: [
+    { name: 'y', label: 'GDP growth rate', min: -4, max: 6, step: 0.5, value: 2, unit: '%' },
+    { name: 'i', label: 'average interest rate on debt', min: 0, max: 8, step: 0.5, value: 3, unit: '%' },
+    { name: 'd', label: 'debt-to-GDP ratio', min: 20, max: 250, step: 5, value: 100, unit: '%' },
+  ],
+  readouts: [
+    { label: 'interest bill (% of GDP)', expr: 'd*i/100' },
+    { label: 'debt trajectory: rising if interest > growth', expr: 'i - y', unit: '%/yr drift' },
+    { label: 'primary surplus needed to stabilise', expr: '(i - y)*d/100', unit: '% of GDP' },
+  ],
+};
+---
+<TopicPage slug="subjects/economics/intermediate/fiscal-policy-public-debt">
+  <h2>The idea</h2>
+  <p>
+    Fiscal policy is <strong>government spending and taxation as an economic lever</strong>. In
+    recessions Keynes argued for deficits (spend now, repay later); the opposite advice —
+    austerity — says debts smother growth. Both are right, in different conditions. The deciding
+    arithmetic: <strong>debt stabilises when GDP growth exceeds the interest rate</strong>, and
+    spirals when it doesn't.
+  </p>
+
+  <Widget no="1" caption="the debt dynamics equation — drag growth, interest and debt and watch which side of the spiral you're on" widget="sliderLab" config={fiscalCfg} />
+
+  <p>
+    With growth above the interest rate, a country can run small deficits forever while debt
+    shrinks relative to income (the post-war US and UK grew their way down from 120%+ debts).
+    When interest exceeds growth, stabilisation demands primary surpluses — the arithmetic behind
+    every austerity programme, and the reason the low-interest 2010s were kinder to borrowers
+    than the 2020s.
+  </p>
+
+  <h2>The live debates</h2>
+  <ul>
+    <li><strong>Multiplier size:</strong> a euro of deficit spending yields more than a euro of GDP in deep recessions (high multiplier) and less near full employment. Timing and slack decide.</li>
+    <li><strong>Ricardian equivalence:</strong> if households expect future taxes to repay today's debt, they save rather than spend the stimulus — empirically partial, debated endlessly.</li>
+    <li><strong>Who bears it:</strong> debt transfers cost to future taxpayers — but also to future savers who buy the bonds. "We owe it to ourselves" is half-true; the interest distribution is not.</li>
+    <li><strong>Currency matters:</strong> countries borrowing in their own currency (US, UK, Japan) face inflation risk, not default; eurozone countries and developing nations borrowing in dollars can face genuine crises (Greece 2010, Argentina repeatedly).</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Keynes, General Theory (1936); Blanchard, "Public Debt and Low Interest Rates" (2019); Alesina & Ardagna (austerity counterpoint).</p>
+</TopicPage>
