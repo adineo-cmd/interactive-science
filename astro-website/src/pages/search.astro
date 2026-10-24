@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+  <h1>Search</h1>
+  <p>Full-text search over published topics. Runs entirely in your browser against <code>search.db</code>. Nothing is sent anywhere.</p>
+  <input id="q" type="text" placeholder="e.g. velocity, atom, cell, slope" autocomplete="off" style="width:100%;padding:.6rem;font-size:1rem;" />
+  <div id="results" class="subject-grid" style="margin-top:1rem;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/sql.js@1.8.0/dist/sql-wasm.js"></script>
+  <script type="module" src="/lib/search.js"></script>
+  <script type="module">
+    import { runSearch, renderResults } from '/lib/search.js';
+    const input = document.getElementById('q');
+    const out = document.getElementById('results');
+    let timer = null;
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(async () => {
+        try {
+          const rows = await runSearch(input.value);
+          renderResults(out, rows);
+        } catch (e) {
+          out.innerHTML = '<p>Search index failed to load. Rebuild <code>search.db</code>.</p>';
+        }
+      }, 200);
+    });
+  </script>
+</Layout>
