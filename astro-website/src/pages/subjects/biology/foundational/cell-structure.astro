@@ -1,48 +1,94 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
-import WidgetLoader from '../../../../components/WidgetLoader.astro';
+import data from '../../../../data/topics.json';
+
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const topic = topics.find((t) => t.slug === 'subjects/biology/foundational/cell-structure');
+const subject = subjects.find((s) => s.id === topic.subject);
+const idx = topics.indexOf(topic);
+const prev = topics[(idx - 1 + topics.length) % topics.length];
+const next = topics[(idx + 1) % topics.length];
+
+const mitosisCfg = {
+  unit: 'step',
+  events: [
+    { year: 1, title: 'Interphase', text: 'Not resting: the cell grows, powers itself, and quietly copies every chromosome.' },
+    { year: 2, title: 'Prophase', text: 'DNA coils into visible chromosomes. The nuclear envelope dissolves; spindle fibres assemble.' },
+    { year: 3, title: 'Metaphase', text: 'Chromosomes line up along the cell\u2019s equator, each gripped by the spindle.' },
+    { year: 4, title: 'Anaphase', text: 'The spindle pulls: sister chromatids separate and march to opposite poles.' },
+    { year: 5, title: 'Telophase', text: 'A new nuclear envelope closes around each complete set at both ends.' },
+    { year: 6, title: 'Cytokinesis', text: 'The membrane pinches through the middle. Two cells, each with the full instruction set.' },
+  ],
+};
+
+const synthesisCfg = {
+  steps: [
+    { math: 'DNA unzips at the gene', note: 'Hydrogen bonds between base pairs break; the helix opens like a zip.' },
+    { math: 'A → mRNA copy (transcription)', note: 'Complementary RNA bases are strung together — the message leaves the nucleus.' },
+    { math: 'mRNA meets a ribosome', note: 'The ribosome clamps on and reads the message three bases at a time.' },
+    { math: 'codon → amino acid (translation)', note: 'tRNAs bring matching amino acids; the chain grows in the order the DNA spelled out.' },
+    { math: 'chain folds → working protein', note: 'Shape is function: the folded protein is an enzyme, a motor, or a brick.' },
+  ],
+};
 ---
-<Layout>
-  <article class="topic-page">
-    <span class="level-badge">Foundational</span>
-    <h1>Cell Structure</h1>
-    <p>The cell is the unit of life. Click organelles to isolate them.</p>
+<Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
+  <div class="wrap">
+    <div class="topic-grid">
+      <aside class="topic-aside">
+        <a class="back" href={`${B}/subjects/${subject.id}/`}>← all of {subject.name}</a>
+        <dl>
+          <dt>subject</dt><dd><span class="dot" style={`--dot:${subject.ink}; display:inline-block; margin-right:.4rem`}></span>{subject.name}</dd>
+          <dt>level</dt><dd>{topic.level}</dd>
+          <dt>time</dt><dd>{topic.minutes} min</dd>
+          <dt>tags</dt><dd>{topic.tags.slice(0, 3).join(', ')}</dd>
+        </dl>
+      </aside>
+      <article>
+        <header class="topic-head">
+          <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span><a href={`${B}/subjects/${subject.id}/`}>{subject.name}</a><span class="sep">/</span>{topic.level}</p>
+          <h1>{topic.title}</h1>
+          <p class="lede">{topic.summary}</p>
+        </header>
 
-    <section>
-      <h2>Concept</h2>
-      <p>Animal cells share core parts: membrane, cytoplasm, nucleus (DNA store), mitochondria (energy), ribosomes (protein builders). Plant cells add a wall, chloroplasts, and a large vacuole.</p>
-    </section>
+        <div class="topic-body">
+          <h2>The idea</h2>
+          <p>
+            A cell is a factory in a bag of water. The <strong>membrane</strong> decides what
+            enters and leaves; the <strong>nucleus</strong> keeps the blueprints (DNA);
+            <strong>mitochondria</strong> burn fuel into ATP; <strong>ribosomes</strong> read those
+            blueprints and build proteins. Plant cells bolt on three extras — a rigid
+            <strong>cell wall</strong>, green <strong>chloroplasts</strong>, and a water-filled
+            <strong>vacuole</strong> for pressure.
+          </p>
+          <p>
+            The most dramatic thing a cell does is copy itself. Scrub through mitosis below —
+            drag the marker and the phases that haven't happened yet fade out:
+          </p>
 
-    <section>
-      <h2>Interactive diagram — animal cell</h2>
-      <div class="widget" id="cell-widget">
-        <svg width="340" height="240" viewBox="0 0 340 240" role="img" aria-label="Animal cell">
-          <ellipse id="membrane" cx="170" cy="120" rx="150" ry="100" fill="none" stroke="#333" stroke-width="2" style="cursor:pointer" />
-          <circle id="nucleus" cx="170" cy="120" r="34" fill="#d4603e" opacity="1" style="cursor:pointer" />
-          <text x="170" y="124" font-size="11" text-anchor="middle" fill="#fff">DNA</text>
-          <ellipse id="mito1" cx="90" cy="80" rx="26" ry="13" fill="none" stroke="#333" stroke-width="1.5" style="cursor:pointer" />
-          <ellipse id="mito2" cx="255" cy="160" rx="26" ry="13" fill="none" stroke="#333" stroke-width="1.5" style="cursor:pointer" />
-          <rect id="ribo" x="230" y="60" width="40" height="16" fill="none" stroke="#333" stroke-width="1.5" style="cursor:pointer" />
-          <text x="250" y="52" font-size="10" text-anchor="middle">ribosomes</text>
-          <text x="90" y="62" font-size="10" text-anchor="middle">mitochondria</text>
-        </svg>
-        <p>Click any part to dim / restore it.</p>
-        <WidgetLoader widgets={['diagramBuilder']} />
-        <script type="module">
-          document.querySelectorAll('#cell-widget svg [id]').forEach((n) => {
-            n.addEventListener('click', () => {
-              n.style.opacity = n.style.opacity === '0.25' ? '1' : '0.25';
-            });
-          });
-        </script>
-      </div>
-    </section>
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>mitosis, one scrubable loop — from copy-out to pinch-off</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="timeline" data-config={JSON.stringify(mitosisCfg)}></div>
+            </div>
+          </figure>
 
-    <section>
-      <h2>Step-by-step — how a protein gets made</h2>
-      <div class="widget" id="protein-widget">
-        <WidgetLoader widgets={['equationStep']} />
-      </div>
-    </section>
-  </article>
+          <h2>How blueprints become machines</h2>
+          <p>Every protein in that factory is built the same way, in five steps:</p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 2</span><span>from DNA to working protein</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="equationStep" data-config={JSON.stringify(synthesisCfg)}></div>
+            </div>
+          </figure>
+        </div>
+
+        <nav class="topic-next" aria-label="Lesson navigation">
+          <div><span class="tn-label">previous lesson</span><a href={`${B}/${prev.slug}/`}>{prev.title}</a></div>
+          <div style="text-align:right"><span class="tn-label">next lesson</span><a href={`${B}/${next.slug}/`}>{next.title}</a></div>
+        </nav>
+      </article>
+    </div>
+  </div>
 </Layout>

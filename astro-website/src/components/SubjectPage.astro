@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SubjectIcon from './SubjectIcon.astro';
+import data from '../data/topics.json';
+
+const { subject: id, intro } = Astro.props;
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const s = subjects.find((x) => x.id === id);
+if (!s) throw new Error(`Unknown subject: ${id}`);
+const mine = topics.filter((t) => t.subject === id);
+const LEVELS = [
+  ['foundational', 'Foundational'],
+  ['intermediate', 'Intermediate'],
+  ['advanced', 'Advanced'],
+  ['expert', 'Expert'],
+];
+---
+<Layout title={`${s.name} — Interactive Atlas`} description={s.tagline}>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span>{s.name}</p>
+      <div style="display:flex; align-items:center; gap:1rem">
+        <span style={`color:${s.ink}`}><SubjectIcon name={s.icon} size={38} /></span>
+        <h1>{s.name}</h1>
+      </div>
+      <p class="lede">{intro ?? s.tagline}</p>
+    </header>
+
+    <div class="ladder" aria-label="Level ladder">
+      {LEVELS.map(([lv, label]) => {
+        const n = mine.filter((t) => t.level === lv).length;
+        return (
+          <div class={`ladder-stop${n ? ' has' : ''}`}>
+            <span class="ls-name">{label}</span>
+            <span class="ls-note">{n ? `${n} lesson${n === 1 ? '' : 's'}` : 'in the works'}</span>
+          </div>
+        );
+      })}
+    </div>
+
+    {LEVELS.map(([lv, label]) => {
+      const at = mine.filter((t) => t.level === lv);
+      if (!at.length) return (
+        <section class="level-block">
+          <h2>{label}</h2>
+          <p class="coming">in the works — the next content wave lands here</p>
+        </section>
+      );
+      return (
+        <section class="level-block">
+          <h2>{label}</h2>
+          <div class="index">
+            {at.map((t, i) => (
+              <a class="index-row" style={`--row-ink:${s.ink}`} href={`${B}/${t.slug}/`}>
+                <span class="glyph" style="font-family:var(--f-mono); font-size:12px; color:var(--ink-3)">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span>
+                  <span class="index-name">{t.title}</span>
+                  <span class="index-tag" style="display:block">{t.summary}</span>
+                </span>
+                <span class="index-meta">{t.minutes} min</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</Layout>

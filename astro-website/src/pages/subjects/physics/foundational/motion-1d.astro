@@ -1,37 +1,127 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
-import WidgetLoader from '../../../../components/WidgetLoader.astro';
+import data from '../../../../data/topics.json';
+
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const topic = topics.find((t) => t.slug === 'subjects/physics/foundational/motion-1d');
+const subject = subjects.find((s) => s.id === topic.subject);
+const idx = topics.indexOf(topic);
+const prev = topics[(idx - 1 + topics.length) % topics.length];
+const next = topics[(idx + 1) % topics.length];
+
+const plotCfg = {
+  curves: [
+    { expr: 'u*x + 0.5*a*x^2', label: 'position s(t)', color: '#1d4ed8' },
+    { expr: 'u + a*x', label: 'velocity v(t)', color: '#b42318' },
+  ],
+  params: [
+    { name: 'u', label: 'initial speed u', min: 0, max: 20, step: 1, value: 4, unit: 'm/s' },
+    { name: 'a', label: 'acceleration a', min: -4, max: 4, step: 0.5, value: 2, unit: 'm/s²' },
+  ],
+  x: { min: 0, max: 6, label: 't (s)' },
+  crossings: false,
+  height: 360,
+};
+
+const labCfg = {
+  params: [
+    { name: 'u', label: 'initial speed u', min: 0, max: 20, step: 1, value: 10, unit: 'm/s' },
+    { name: 'a', label: 'acceleration a', min: -5, max: 5, step: 0.5, value: 2, unit: 'm/s²' },
+    { name: 't', label: 'elapsed time t', min: 0, max: 6, step: 0.1, value: 2, unit: 's' },
+  ],
+  readouts: [
+    { label: 'velocity now', expr: 'u + a*t', unit: 'm/s' },
+    { label: 'distance covered', expr: 'u*t + 0.5*a*t^2', unit: 'm' },
+    { label: 'stops turning at t = u/|a|', expr: 'u/abs(a)', unit: 's' },
+  ],
+};
+
+const stepsCfg = {
+  steps: [
+    { math: 'a = (v − u) / t', note: 'Acceleration is the rate velocity changes: change in velocity, per unit time.' },
+    { math: 'a·t = v − u', note: 'Multiply both sides by t.' },
+    { math: 'v = u + a·t', note: 'The first equation of motion — velocity grows (or shrinks) linearly.' },
+    { math: 'v̄ = (u + v) / 2', note: 'With constant a the velocity changes evenly, so its average sits midway.' },
+    { math: 's = v̄·t = ½(u + v)·t', note: 'Distance is average velocity times time.' },
+    { math: 's = u·t + ½a·t²', note: 'Substitute v = u + a·t. The second equation of motion.' },
+  ],
+};
+
+const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min: -10, max: 10 }, start: [6, 4] };
 ---
-<Layout>
-  <article class="topic-page">
-    <span class="level-badge">Foundational</span>
-    <h1>Motion in One Dimension</h1>
-    <p>Along a straight line: position, velocity, acceleration.</p>
+<Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
+  <div class="wrap">
+    <div class="topic-grid">
+      <aside class="topic-aside">
+        <a class="back" href={`${B}/subjects/${subject.id}/`}>← all of {subject.name}</a>
+        <dl>
+          <dt>subject</dt><dd><span class="dot" style={`--dot:${subject.ink}; display:inline-block; margin-right:.4rem`}></span>{subject.name}</dd>
+          <dt>level</dt><dd>{topic.level}</dd>
+          <dt>time</dt><dd>{topic.minutes} min</dd>
+          <dt>tags</dt><dd>{topic.tags.slice(0, 3).join(', ')}</dd>
+        </dl>
+      </aside>
+      <article>
+        <header class="topic-head">
+          <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span><a href={`${B}/subjects/${subject.id}/`}>{subject.name}</a><span class="sep">/</span>{topic.level}</p>
+          <h1>{topic.title}</h1>
+          <p class="lede">{topic.summary}</p>
+        </header>
 
-    <section>
-      <h2>Concept</h2>
-      <p>When acceleration <code>a</code> is constant, velocity changes linearly: <code>v = u + a t</code>.</p>
-    </section>
+        <div class="topic-body">
+          <h2>The idea</h2>
+          <p>
+            Motion along a straight line needs exactly three numbers to describe it at every
+            instant: <strong>position</strong> <code>s</code> (where you are), <strong>velocity</strong>
+            <code>v</code> (how fast that position changes) and <strong>acceleration</strong>
+            <code>a</code> (how fast the velocity changes). When <code>a</code> is constant,
+            everything else follows from two small equations — and you can watch them work below.
+          </p>
 
-    <section>
-      <h2>Interactive plotter</h2>
-      <div class="widget" id="plotter-widget">
-        <WidgetLoader widgets={['plotter']} />
-      </div>
-    </section>
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>position and velocity against time — drag the sliders and the curves follow</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="plotter" data-config={JSON.stringify(plotCfg)}></div>
+            </div>
+          </figure>
 
-    <section>
-      <h2>Slider lab — initial velocity</h2>
-      <div class="widget" id="slider-widget">
-        <WidgetLoader widgets={['sliderLab']} />
-      </div>
-    </section>
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 2</span><span>the two equations, evaluated live</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="sliderLab" data-config={JSON.stringify(labCfg)}></div>
+            </div>
+          </figure>
 
-    <section>
-      <h2>Step-by-step derivation</h2>
-      <div class="widget" id="step-widget">
-        <WidgetLoader widgets={['equationStep']} />
-      </div>
-    </section>
-  </article>
+          <h2>Where the equations come from</h2>
+          <p>Nothing here is memorised — both equations fall out of the definition of acceleration.</p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 3</span><span>two equations, six honest steps</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="equationStep" data-config={JSON.stringify(stepsCfg)}></div>
+            </div>
+          </figure>
+
+          <h2>Vectors, previewed</h2>
+          <p>
+            Once motion leaves the line, velocity becomes a vector — an arrow with size and
+            direction. Drag this one around and watch its x- and y-components:
+          </p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 4</span><span>one arrow, two components — drag the head</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="diagramBuilder" data-config={JSON.stringify(vecCfg)}></div>
+            </div>
+          </figure>
+        </div>
+
+        <nav class="topic-next" aria-label="Lesson navigation">
+          <div><span class="tn-label">previous lesson</span><a href={`${B}/${prev.slug}/`}>{prev.title}</a></div>
+          <div style="text-align:right"><span class="tn-label">next lesson</span><a href={`${B}/${next.slug}/`}>{next.title}</a></div>
+        </nav>
+      </article>
+    </div>
+  </div>
 </Layout>

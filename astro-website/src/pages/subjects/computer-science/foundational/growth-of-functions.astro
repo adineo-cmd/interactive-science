@@ -1,0 +1,83 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import data from '../../../../data/topics.json';
+
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const topic = topics.find((t) => t.slug === 'subjects/computer-science/foundational/growth-of-functions');
+const subject = subjects.find((s) => s.id === topic.subject);
+const idx = topics.indexOf(topic);
+const prev = topics[(idx - 1 + topics.length) % topics.length];
+const next = topics[(idx + 1) % topics.length];
+
+const growthCfg = {
+  curves: [
+    { expr: 'x', label: 'O(n)', color: '#0e7490' },
+    { expr: 'x*log2(x)', label: 'O(n log n)', color: '#1f6f54' },
+    { expr: 'x^2', label: 'O(n²)', color: '#b45309' },
+    { expr: '2^(x/2)', label: 'O(2ⁿ)', color: '#b42318' },
+  ],
+  x: { min: 1, max: 22, label: 'input size n' },
+  y: { min: 0, max: 460, label: 'operations' },
+  crossings: false,
+  height: 370,
+};
+---
+<Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
+  <div class="wrap">
+    <div class="topic-grid">
+      <aside class="topic-aside">
+        <a class="back" href={`${B}/subjects/${subject.id}/`}>← all of {subject.name}</a>
+        <dl>
+          <dt>subject</dt><dd><span class="dot" style={`--dot:${subject.ink}; display:inline-block; margin-right:.4rem`}></span>{subject.name}</dd>
+          <dt>level</dt><dd>{topic.level}</dd>
+          <dt>time</dt><dd>{topic.minutes} min</dd>
+          <dt>tags</dt><dd>{topic.tags.slice(0, 3).join(', ')}</dd>
+        </dl>
+      </aside>
+      <article>
+        <header class="topic-head">
+          <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span><a href={`${B}/subjects/${subject.id}/`}>{subject.name}</a><span class="sep">/</span>{topic.level}</p>
+          <h1>{topic.title}</h1>
+          <p class="lede">{topic.summary}</p>
+        </header>
+
+        <div class="topic-body">
+          <h2>The idea</h2>
+          <p>
+            An algorithm's cost isn't a number — it's a <em>curve</em>. Big-O notation names the
+            curve's <strong>shape</strong>, and the shape decides everything: which programs
+            finish and which spin forever, which datasets fit and which don't. Four shapes
+            dominate; here they are against input size <code>n</code>:
+          </p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>operations vs input size — the quadratic and exponential leave everything behind</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="plotter" data-config={JSON.stringify(growthCfg)}></div>
+            </div>
+          </figure>
+
+          <h2>Read the graph like an engineer</h2>
+          <ul>
+            <li><strong>Halving the input halves O(n)</strong> — but only barely dents O(n²). Shape, not constant factors, is what survives scaling.</li>
+            <li><strong>O(n log n) is the magic class</strong> — merge sort and heapsort live here. Near-linear forever.</li>
+            <li><strong>O(2ⁿ) is a wall.</strong> At n = 60 it's more steps than atoms you could count in a lifetime. Brute force dies here.</li>
+            <li><strong>Hardware can't save you.</strong> A 1000× faster chip buys you ~10 more items for a quadratic algorithm, ~100 for an exponential one. A better algorithm buys millions.</li>
+          </ul>
+
+          <p>
+            Zoom into the left edge of the plot (scroll or pinch) and the curves tangle — for tiny
+            inputs the "bad" one can even win. That's why engineers profile before optimising:
+            <em>shape only asserts itself at scale</em>.
+          </p>
+        </div>
+
+        <nav class="topic-next" aria-label="Lesson navigation">
+          <div><span class="tn-label">previous lesson</span><a href={`${B}/${prev.slug}/`}>{prev.title}</a></div>
+          <div style="text-align:right"><span class="tn-label">next lesson</span><a href={`${B}/${next.slug}/`}>{next.title}</a></div>
+        </nav>
+      </article>
+    </div>
+  </div>
+</Layout>

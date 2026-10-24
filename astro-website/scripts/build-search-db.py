@@ -1,57 +1,37 @@
 #!/usr/bin/env python3
-"""Build client-side SQLite search DB from proof topics.
+"""Build client-side SQLite search DB from src/data/topics.json.
 
 DB holds published content index only. Zero user data.
-Reads TOPICS below (v1 proof: pages are .astro; content index is curated here).
-When .md content lands in src/content/, extend to parse frontmatter automatically.
+topics.json is the single source of truth shared with the Astro site.
 """
-import sqlite3
+import json
 import os
+import sqlite3
 
-TOPICS = [
-    {
-        "title": "Motion in One Dimension",
-        "slug": "subjects/physics/foundational/motion-1d",
-        "level": "foundational",
-        "body": "Motion along a straight line. Position velocity acceleration. v = u + at. s = ut + half a t squared. Interactive plotter and slider lab.",
-        "tags": "physics,mechanics,kinematics",
-    },
-    {
-        "title": "Atomic Structure",
-        "slug": "subjects/chemistry/foundational/atomic-structure",
-        "level": "foundational",
-        "body": "Atoms have nucleus protons neutrons electrons shells 2 8 8. Sodium electron configuration. Interactive Bohr diagram.",
-        "tags": "chemistry,atomic,structure",
-    },
-    {
-        "title": "Cell Structure",
-        "slug": "subjects/biology/foundational/cell-structure",
-        "level": "foundational",
-        "body": "Cell membrane cytoplasm nucleus DNA mitochondria ribosomes. Plant cells add wall chloroplasts vacuole. Protein synthesis steps.",
-        "tags": "biology,cell,organelles",
-    },
-    {
-        "title": "Linear Functions",
-        "slug": "subjects/math/foundational/linear-functions",
-        "level": "foundational",
-        "body": "Straight line y = m x + c. Slope m steepness. Intercept c. Slope from two points. Interactive plotter and sliders.",
-        "tags": "math,algebra,functions",
-    },
-]
+ROOT = os.path.dirname(os.path.abspath(__file__))
+DATA = os.path.join(ROOT, "..", "src", "data", "topics.json")
 
 
 def main():
+    with open(DATA, encoding="utf-8") as f:
+        data = json.load(f)
+
     os.makedirs("public", exist_ok=True)
     if os.path.exists("public/search.db"):
         os.remove("public/search.db")
     db = sqlite3.connect("public/search.db")
     db.execute(
-        "CREATE TABLE topics (id INTEGER PRIMARY KEY, title TEXT, slug TEXT, level TEXT, body TEXT, tags TEXT)"
+        "CREATE TABLE topics (id INTEGER PRIMARY KEY, title TEXT, slug TEXT, level TEXT, "
+        "subject TEXT, body TEXT, tags TEXT)"
     )
-    for t in TOPICS:
+    for t in data["topics"]:
+        subject = next(
+            (s for s in data["subjects"] if s["id"] == t["subject"]), {}
+        )
+        body = f"{t['summary']} Subject: {subject.get('name', t['subject'])}."
         db.execute(
-            "INSERT INTO topics (title, slug, level, body, tags) VALUES (?, ?, ?, ?, ?)",
-            (t["title"], t["slug"], t["level"], t["body"], t["tags"]),
+            "INSERT INTO topics (title, slug, level, subject, body, tags) VALUES (?, ?, ?, ?, ?, ?)",
+            (t["title"], t["slug"], t["level"], t["subject"], body, ",".join(t["tags"])),
         )
     db.commit()
     count = db.execute("SELECT COUNT(*) FROM topics").fetchone()[0]

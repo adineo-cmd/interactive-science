@@ -1,37 +1,93 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
-import WidgetLoader from '../../../../components/WidgetLoader.astro';
+import data from '../../../../data/topics.json';
+
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const topic = topics.find((t) => t.slug === 'subjects/math/foundational/linear-functions');
+const subject = subjects.find((s) => s.id === topic.subject);
+const idx = topics.indexOf(topic);
+const prev = topics[(idx - 1 + topics.length) % topics.length];
+const next = topics[(idx + 1) % topics.length];
+
+const lineCfg = {
+  curves: [{ expr: 'm*x + c', label: 'y = m·x + c', color: '#7c3aed', width: 2.4 }],
+  params: [
+    { name: 'm', label: 'slope m', min: -5, max: 5, step: 0.1, value: 1 },
+    { name: 'c', label: 'intercept c', min: -8, max: 8, step: 0.5, value: 0 },
+  ],
+  x: { min: -10, max: 10, label: 'x' },
+  y: { min: -10, max: 10, label: 'y' },
+  crossings: false,
+  height: 380,
+};
+
+const slopeCfg = {
+  steps: [
+    { math: 'slope = rise / run', note: 'How far up for how far along — the steepness of the line.' },
+    { math: 'm = (y₂ − y₁) / (x₂ − x₁)', note: 'Between any two points of the line, this ratio is the same. That sameness is what makes it a line.' },
+    { math: 'y − y₁ = m·(x − x₁)', note: 'Anchor the line at one known point and let m carry the direction.' },
+    { math: 'y = m·x + c', note: 'Rearranged, with c the y-value where the line crosses the axis.' },
+  ],
+};
 ---
-<Layout>
-  <article class="topic-page">
-    <span class="level-badge">Foundational</span>
-    <h1>Linear Functions</h1>
-    <p>Straight-line relationships: <code>y = m·x + c</code>. Slope <code>m</code> is steepness; <code>c</code> is where the line crosses the y-axis.</p>
+<Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
+  <div class="wrap">
+    <div class="topic-grid">
+      <aside class="topic-aside">
+        <a class="back" href={`${B}/subjects/${subject.id}/`}>← all of {subject.name}</a>
+        <dl>
+          <dt>subject</dt><dd><span class="dot" style={`--dot:${subject.ink}; display:inline-block; margin-right:.4rem`}></span>{subject.name}</dd>
+          <dt>level</dt><dd>{topic.level}</dd>
+          <dt>time</dt><dd>{topic.minutes} min</dd>
+          <dt>tags</dt><dd>{topic.tags.slice(0, 3).join(', ')}</dd>
+        </dl>
+      </aside>
+      <article>
+        <header class="topic-head">
+          <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span><a href={`${B}/subjects/${subject.id}/`}>{subject.name}</a><span class="sep">/</span>{topic.level}</p>
+          <h1>{topic.title}</h1>
+          <p class="lede">{topic.summary}</p>
+        </header>
 
-    <section>
-      <h2>Concept</h2>
-      <p>Double <code>m</code> and the line gets twice as steep. Change <code>c</code> and the whole line slides up or down. Try it below.</p>
-    </section>
+        <div class="topic-body">
+          <h2>The idea</h2>
+          <p>
+            A linear function is a promise: <em>equal steps in x buy equal steps in y, always.</em>
+            Two numbers seal the promise — <code>m</code>, how steep, and <code>c</code>, where it
+            starts. Drag them and watch the line keep the deal:
+          </p>
 
-    <section>
-      <h2>Interactive plotter — y = m·x + c</h2>
-      <div class="widget" id="line-widget">
-        <WidgetLoader widgets={['plotter']} />
-      </div>
-    </section>
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>slope is steepness, intercept is starting point — drag both</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="plotter" data-config={JSON.stringify(lineCfg)}></div>
+            </div>
+          </figure>
 
-    <section>
-      <h2>Slider lab — slope and intercept</h2>
-      <div class="widget" id="slope-widget">
-        <WidgetLoader widgets={['sliderLab']} />
-      </div>
-    </section>
+          <h2>Finding m and c from scratch</h2>
+          <p>Given any two points, the whole line follows:</p>
 
-    <section>
-      <h2>Step-by-step — finding slope from two points</h2>
-      <div class="widget" id="slope-steps">
-        <WidgetLoader widgets={['equationStep']} />
-      </div>
-    </section>
-  </article>
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 2</span><span>from two points to y = m·x + c</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="equationStep" data-config={JSON.stringify(slopeCfg)}></div>
+            </div>
+          </figure>
+
+          <h2>Why it matters everywhere</h2>
+          <p>
+            Constant speed is a linear function of time. A taxi fare is linear in kilometres.
+            Most of science starts as a straight-line approximation — measure two points, draw the
+            line, check where reality bends away from it. That bend is where the next chapter lives.
+          </p>
+        </div>
+
+        <nav class="topic-next" aria-label="Lesson navigation">
+          <div><span class="tn-label">previous lesson</span><a href={`${B}/${prev.slug}/`}>{prev.title}</a></div>
+          <div style="text-align:right"><span class="tn-label">next lesson</span><a href={`${B}/${next.slug}/`}>{next.title}</a></div>
+        </nav>
+      </article>
+    </div>
+  </div>
 </Layout>

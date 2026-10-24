@@ -1,0 +1,94 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import data from '../../../../data/topics.json';
+
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const topic = topics.find((t) => t.slug === 'subjects/astronomy/foundational/orbits-and-keplers-laws');
+const subject = subjects.find((s) => s.id === topic.subject);
+const idx = topics.indexOf(topic);
+const prev = topics[(idx - 1 + topics.length) % topics.length];
+const next = topics[(idx + 1) % topics.length];
+
+const orbitCfg = {
+  preset: 'orbit',
+  params: [
+    { name: 'eccentricity', label: 'eccentricity e', min: 0, max: 0.85, step: 0.01, value: 0.5 },
+  ],
+  readouts: [
+    { label: 'perihelion distance', expr: '1 - eccentricity', unit: 'a' },
+    { label: 'aphelion distance', expr: '1 + eccentricity', unit: 'a' },
+    { label: 'speed at perihelion vs aphelion', expr: '(1 + eccentricity) / (1 - eccentricity)', unit: '×' },
+  ],
+  height: 350,
+};
+
+const lawsCfg = {
+  steps: [
+    { math: 'orbits are ellipses, star at one focus', note: 'Law 1 — Kepler 1609. Circles are just the special case e = 0.' },
+    { math: 'equal areas in equal times', note: 'Law 2 — the line from star to planet sweeps the same area per month anywhere on the orbit. Near the star the arc is short but fast; far away, long but slow.' },
+    { math: 'T² ∝ a³', note: 'Law 3 — 1619. Square of the period scales with the cube of the semi-major axis. Bigger orbits take disproportionately longer.' },
+    { math: 'F = G·m₁m₂ / r²', note: 'Newton 1687 — all three laws fall out of one inverse-square attraction. Drag e above and watch law 2 hold at every setting.' },
+  ],
+};
+---
+<Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
+  <div class="wrap">
+    <div class="topic-grid">
+      <aside class="topic-aside">
+        <a class="back" href={`${B}/subjects/${subject.id}/`}>← all of {subject.name}</a>
+        <dl>
+          <dt>subject</dt><dd><span class="dot" style={`--dot:${subject.ink}; display:inline-block; margin-right:.4rem`}></span>{subject.name}</dd>
+          <dt>level</dt><dd>{topic.level}</dd>
+          <dt>time</dt><dd>{topic.minutes} min</dd>
+          <dt>tags</dt><dd>{topic.tags.slice(0, 3).join(', ')}</dd>
+        </dl>
+      </aside>
+      <article>
+        <header class="topic-head">
+          <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span><a href={`${B}/subjects/${subject.id}/`}>{subject.name}</a><span class="sep">/</span>{topic.level}</p>
+          <h1>{topic.title}</h1>
+          <p class="lede">{topic.summary}</p>
+        </header>
+
+        <div class="topic-body">
+          <h2>The idea</h2>
+          <p>
+            Before Newton, Kepler did something harder: he took Tycho Brahe's obsessive naked-eye
+            measurements and forced three shapes onto them — shapes the sky still obeys. The
+            animation below sweeps a planet around its star. The two shaded wedges were traversed
+            in <em>equal times</em>; watch them stay equal as the eccentricity climbs.
+          </p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>equal areas in equal times — drag e toward 0 for a circle</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="sliderLab" data-config={JSON.stringify(orbitCfg)}></div>
+            </div>
+          </figure>
+
+          <h2>The three laws, honestly derived</h2>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 2</span><span>from observations to Newton</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="equationStep" data-config={JSON.stringify(lawsCfg)}></div>
+            </div>
+          </figure>
+
+          <h2>Why comets prove it</h2>
+          <p>
+            Halley's comet spends 76 years crawling along its aphelion arc and a few frantic weeks
+            near the Sun — law 2 in action, e ≈ 0.97. The same mathematics that rounds out Earth's
+            near-circle (e ≈ 0.017) sends comets diving past Mercury. One geometry, every orbit.
+          </p>
+        </div>
+
+        <nav class="topic-next" aria-label="Lesson navigation">
+          <div><span class="tn-label">previous lesson</span><a href={`${B}/${prev.slug}/`}>{prev.title}</a></div>
+          <div style="text-align:right"><span class="tn-label">next lesson</span><a href={`${B}/${next.slug}/`}>{next.title}</a></div>
+        </nav>
+      </article>
+    </div>
+  </div>
+</Layout>

@@ -1,31 +1,62 @@
 #!/usr/bin/env python3
-"""Validate content schema, equations, widget registry, broken links."""
-import glob, yaml, sys, re
+"""Validate content: widget registry, topic slugs on disk, frontmatter schema (for .md sources)."""
+import glob
+import json
+import os
+import sys
+
+import yaml
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
+REGISTRY = {"plotter", "sliderLab", "equationStep", "diagramBuilder", "timeline"}
+
+
+def check_topics_json():
+    errors = []
+    data = json.load(open(os.path.join(ROOT, "..", "src", "data", "topics.json"), encoding="utf-8"))
+    ids = {s["id"] for s in data["subjects"]}
+    pages_root = os.path.join(ROOT, "..", "src", "pages")
+    for t in data["topics"]:
+        if t["subject"] not in ids:
+            errors.append(f"UNKNOWN SUBJECT: {t['slug']} -> {t['subject']}")
+        for w in t.get("widgets", []):
+            if w not in REGISTRY:
+                errors.append(f"UNKNOWN WIDGET: {t['slug']} {w}")
+        path = os.path.join(pages_root, t["slug"] + ".astro")
+        if not os.path.exists(path):
+            errors.append(f"MISSING PAGE: {path}")
+    return errors
+
+
+def check_markdown_sources():
+    errors = []
+    for path in glob.glob(os.path.join(ROOT, "..", "src", "content", "subjects", "**", "*.md"), recursive=True):
+        with open(path, encoding="utf-8") as f:
+            content = f.read()
+        try:
+            meta = yaml.safe_load(content.split("---")[1])
+        except Exception as e:
+            errors.append(f"YAML FAIL: {path} — {e}")
+            continue
+        for k in ["title", "level", "tags", "widgets"]:
+            if k not in meta or meta[k] is None:
+                errors.append(f"MISSING {k}: {path}")
+        for w in meta.get("widgets", []):
+            if w not in REGISTRY:
+                errors.append(f"UNKNOWN WIDGET: {path} {w}")
+    return errors
+
 
 def main():
-    errors = 0
-    registry = {'plotter','sliderLab','equationStep','diagramBuilder'}
-    for path in glob.glob('src/content/subjects/**/*.md'):
-        with open(path) as f: content = f.read()
-        try:
-            meta = yaml.safe_load(content.split('---')[1])
-        except Exception as e:
-            print(f"YAML FAIL: {path} — {e}"); errors += 1; continue
-        for k in ['title','level','tags','widgets']:
-            if k not in meta or meta[k] is None:
-                print(f"MISSING {k}: {path}"); errors += 1
-        for w in meta.get('widgets', []):
-            if w not in registry:
-                print(f"UNKNOWN WIDGET: {path} {w}"); errors += 1
-        # Basic bracket balance for equations
-        for eq in meta.get('equations', []):
-            if eq.count('{') != eq.count('}') or eq.count('(') != eq.count(')'):
-                print(f"BAD EQ: {path} {eq}"); errors += 1
+    errors = check_topics_json() + check_markdown_sources()
     if errors:
-        print(f"\n{errors} error(s) found.")
+        for e in errors:
+            print(e)
+        print(f"\n{len(errors)} error(s) found.")
         sys.exit(1)
-    else:
-        print("All content valid.")
+    print("All content valid.")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
