@@ -1,0 +1,34 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const sqlCfg = {
+  steps: [
+    { math: 'SELECT name, price FROM products', note: 'The workhorse sentence: pick columns from a table. SQL reads like English on purpose — designed for managers in 1974, adopted by everyone since.' },
+    { math: 'WHERE price > 100', note: 'Filter rows. The database scans and returns only matches — indexes (data structures behind the scenes) make this instant instead of a full scan.' },
+    { math: 'JOIN customers ON id = customer_id', note: 'Combine tables by matching keys. Normalisation keeps each fact in one table; joins stitch them back into any view you need.' },
+    { math: 'GROUP BY category — aggregates', note: 'Count, sum, average per group. This is where a database becomes an analysis engine, not just a filing cabinet.' },
+    { math: 'ACID — the trust guarantee', note: 'Transactions are Atomic (all or nothing), Consistent, Isolated, Durable. When a bank transfer debits one account and credits another, ACID is why both happen or neither.' },
+  ],
+};
+---
+<TopicPage slug="subjects/computer-science/advanced/databases-and-sql">
+  <h2>The idea</h2>
+  <p>
+    A <strong>relational database</strong> stores data in tables whose shapes are enforced by a
+    schema, queried with SQL — and it guarantees things spreadsheets can't: consistency, safe
+    concurrent access, durability after crashes. Nearly every serious application on Earth sits
+    on one; SQL, designed in 1974, remains the most durable skill in computing.
+  </p>
+
+  <Widget no="1" caption="the five SQL sentences that cover 90% of real work" widget="equationStep" config={sqlCfg} />
+
+  <h2>Design decisions that echo for years</h2>
+  <ul>
+    <li><strong>Normalise first:</strong> store each fact once (customer address lives in the customers table, not copied into every order). Denormalise later, deliberately, for speed — with eyes open about the staleness risk.</li>
+    <li><strong>Primary and foreign keys:</strong> every row uniquely identified; references between tables enforced. The database refuses orphan records — integrity by construction.</li>
+    <li><strong>Indexes are lookup accelerators</strong> (usually B-trees): instant queries, slower writes, more storage. Index the columns you filter and join on; every extra index taxes every insert.</li>
+    <li><strong>Beyond relational:</strong> document stores (JSON-native), key-value caches (Redis), graph databases (networks) — each trades the relational guarantees for a different shape of convenience. Choose by access pattern, not fashion.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data" (1970); Chamberlin & Boyce (1974); PostgreSQL documentation.</p>
+</TopicPage>

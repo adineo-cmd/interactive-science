@@ -1,0 +1,44 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const sortCfg = {
+  curves: [
+    { expr: 'x*x', label: 'bubble/selection sort: n²', color: '#b42318' },
+    { expr: 'x*log(x)/log(2)', label: 'merge/quick sort: n log n', color: '#1f6f54', width: 2.2 },
+  ],
+  x: { min: 1, max: 40, label: 'items to sort n' },
+  y: { min: 0, max: 220, label: 'operations (schematic)' },
+  crossings: false,
+  height: 340,
+};
+---
+<TopicPage slug="subjects/computer-science/intermediate/algorithms-searching-and-sorting">
+  <h2>The idea</h2>
+  <p>
+    Searching and sorting are the hello-world of algorithms — and the clearest demonstration that
+    <em>how</em> you compute matters more than how fast your chip is. Same list, same machine:
+    one sorting method grinds through n² comparisons, another through n log n. At a billion
+    items, that is the difference between days and under a minute.
+  </p>
+
+  <Widget no="1" caption="naive vs divide-and-conquer — the curves part company early and never look back" widget="plotter" config={sortCfg} />
+
+  <h2>The classic algorithms</h2>
+  <ul>
+    <li><strong>Linear search:</strong> check every item — O(n). Fine for ten items; absurd for a billion.</li>
+    <li><strong>Binary search:</strong> on a <em>sorted</em> list, halve the remaining candidates each step — O(log n). A billion items resolve in 30 comparisons. The phone book's trick.</li>
+    <li><strong>Bubble/selection sort:</strong> compare neighbours, swap, repeat — O(n²). Easy to write, painful to run; the teaching example that everyone replaces.</li>
+    <li><strong>Merge sort:</strong> split in half, sort each, merge — O(n log n), guaranteed. The recursive pattern (divide, conquer, combine) behind much of computer science.</li>
+    <li><strong>Quick sort:</strong> partition around a pivot, sort the sides — O(n log n) on average, and cache-friendly enough to be the real-world default (your language's sort() is a descendant).</li>
+  </ul>
+
+  <h2>Why correctness is part of the deal</h2>
+  <p>
+    An algorithm is a proof object: each one carries an argument that it terminates and produces
+    the right answer. Binary search's famous history of subtly wrong implementations (off-by-one
+    boundaries in published code for decades) shows why — the idea is easy, the boundary details
+    are where bugs live.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Knuth, The Art of Computer Programming Vol. 3 (Sorting and Searching); Cormen et al., Introduction to Algorithms.</p>
+</TopicPage>

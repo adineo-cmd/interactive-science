@@ -1,0 +1,35 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const distCfg = {
+  steps: [
+    { math: '1 · Why distribute at all', note: 'One machine has hard limits — CPU, RAM, disk, and physics. Ten machines scale linearly in capacity… and introduce every problem on the rest of this page.' },
+    { math: '2 · Partitions — splitting the data', note: 'Shard users A–M to server 1, N–Z to server 2. Capacity scales; every query that crosses shards gets harder.' },
+    { math: '3 · Replication — copying for survival', note: 'Keep copies on several machines. Survives crashes, serves reads faster — but now copies can disagree. This is the core tension.' },
+    { math: '4 · CAP: pick two of three', note: 'Consistency (everyone sees the same data), Availability (always answer), Partition tolerance (survive network splits). During a network partition you MUST choose between consistency and availability. There is no fourth option.' },
+    { math: '5 · Consensus — agreeing anyway', note: 'Paxos and Raft let machines agree on one value despite crashes and lost messages — the algorithm behind every serious distributed database. elegantly simple; Raft\'s paper is genuinely readable.' },
+  ],
+};
+---
+<TopicPage slug="subjects/computer-science/expert/distributed-systems">
+  <h2>The idea</h2>
+  <p>
+    A distributed system is many machines cooperating as one — and it must work
+    <strong>while parts of it are broken, slow, or lying</strong>. Peter Deutsch catalogued the
+    traps ("the fallacies of distributed computing"): the network is <em>not</em> reliable, latency
+    is <em>not</em> zero, and topology <em>does</em> change. Everything in this subject is a
+    disciplined answer to those five sentences.
+  </p>
+
+  <Widget no="1" caption="the five ideas that define the field" widget="equationStep" config={distCfg} />
+
+  <h2>Concepts you will meet in production</h2>
+  <ul>
+    <li><strong>Eventual consistency:</strong> accept brief disagreement in exchange for always being up — the design behind DNS, shopping carts and social feeds. Strong consistency where it matters (payments), eventual everywhere else.</li>
+    <li><strong>Idempotency:</strong> design operations so repeating them is safe ("set status to shipped" vs "decrement stock by one"). The network <em>will</em> resend; only idempotent handlers shrug.</li>
+    <li><strong>Load balancing and caching:</strong> spread requests across replicas; remember answers. Two of the oldest tricks still deliver most of the performance in large systems.</li>
+    <li><strong>Observability:</strong> distributed failures are invisible from any single machine. Logs, metrics and distributed tracing (following one request through 20 services) are how engineers see at all.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Brewer CAP theorem (2000, proved 2012); Ongaro & Ousterhout, Raft (2014); Kleppmann, Designing Data-Intensive Applications.</p>
+</TopicPage>

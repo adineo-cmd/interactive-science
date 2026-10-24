@@ -1,0 +1,43 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const netCfg = {
+  steps: [
+    { math: '1 · Packets, not letters', note: 'Data is chopped into small packets, each labelled with destination. Different packets can take different routes and arrive out of order — the network never promised neatness.' },
+    { math: '2 · IP — the addressing layer', note: 'Every device gets an IP address (like 142.250.4.100). Routers forward each packet hop by hop, reading only the destination — no single router knows the whole path.' },
+    { math: '3 · TCP — the reliability layer', note: 'Packets get lost; TCP re-requests them, reorders them, and throttles speed when the network chokes. Your file arrives whole because TCP rebuilt it.' },
+    { math: '4 · DNS — the phone book', note: 'Humans type names (google.com); the Domain Name System translates them to IPs, cached at every level for speed.' },
+    { math: '5 · HTTPS — the trust layer', note: 'TLS encrypts the connection and proves the server is who it claims (certificates). The padlock icon is mathematics holding the middle of the internet shut.' },
+  ],
+};
+---
+<TopicPage slug="subjects/computer-science/advanced/networking-how-the-internet-works">
+  <h2>The idea</h2>
+  <p>
+    The internet is <strong>a packet-switched network with no owner and no centre</strong>. Its
+    genius is layering: each layer solves one problem and trusts the ones below — wires carry
+    bits, IP routes packets, TCP makes it reliable, DNS makes it memorable, TLS makes it safe.
+    Designed to survive partial failure (its original ARPANET brief in 1969), it outages
+    gracefully instead of collapsing completely.
+  </p>
+
+  <Widget no="1" caption="the journey of one page request, layer by layer" widget="equationStep" config={netCfg} />
+
+  <h2>What happens in those 200 milliseconds</h2>
+  <ul>
+    <li><strong>DNS lookup</strong> (~20 ms, usually cached) — name to address.</li>
+    <li><strong>TCP handshake</strong> (1 round trip) — "may I?" "yes" "starting".</li>
+    <li><strong>TLS handshake</strong> (1–2 more round trips) — certificates exchanged, keys agreed.</li>
+    <li><strong>HTTP request/response</strong> — your browser asks for HTML, receives it, then repeats for every image, style sheet and script it discovers. This is why fewer files and caching matter.</li>
+  </ul>
+
+  <h2>The design lessons worth stealing</h2>
+  <p>
+    <strong>End-to-end principle:</strong> the network stays simple; smarts live at the edges
+    (your devices) — which is why the internet could absorb video, voice and apps nobody
+    predicted. <strong>Best-effort delivery:</strong> no guarantees inside, guarantees assembled
+    at the ends. Nearly every distributed system in the expert rungs reuses both ideas.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Cerf & Kahn (1974); Kurose & Ross, Computer Networking; RFC 793 (TCP), RFC 1035 (DNS).</p>
+</TopicPage>
