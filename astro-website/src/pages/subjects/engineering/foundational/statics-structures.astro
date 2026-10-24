@@ -1,0 +1,55 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const hookeCfg = {
+  curves: [
+    { expr: 'k*x', label: 'load carried by the part', color: '#52525b', width: 2.2 },
+    { expr: '1500', label: 'yield limit (fails above this)', color: '#b42318', width: 1.4 },
+  ],
+  params: [
+    { name: 'k', label: 'stiffness k', min: 5, max: 100, step: 1, value: 40, unit: 'N/mm' },
+  ],
+  x: { min: 0, max: 60, label: 'extension (mm)' },
+  y: { min: 0, max: 2400, label: 'load (N)' },
+  crossings: true,
+  height: 350,
+};
+---
+<TopicPage slug="subjects/engineering/foundational/statics-structures">
+  <h2>The idea</h2>
+  <p>
+    Engineering is design under constraint: physics sets the rules, money sets the budget, and
+    safety sets the floor. The oldest constraint is <strong>statics</strong> — the study of
+    things that must not move. Every structure, from a chair to a suspension bridge, is a
+    machine for <strong>guiding forces into the ground</strong> without any part exceeding what
+    it can carry.
+  </p>
+
+  <Widget no="1" caption="a part under load — Hooke's law against its yield limit; the crossing is where it fails" widget="plotter" config={hookeCfg} />
+
+  <p>
+    Hooke's law (1676) says stretch is proportional to load — until it isn't. Slide the
+    stiffness k and watch where the load line meets the red yield limit: the extension at
+    failure. Real engineers never let that point be reachable — they multiply expected loads by
+    a <strong>safety factor</strong> (bridges ~1.5–2 on live loads, aircraft structure ~1.5,
+    cranes much higher) so the failure zone sits far outside anything the real world delivers.
+  </p>
+
+  <h2>The engineer's first toolkit</h2>
+  <ul>
+    <li><strong>Free-body diagrams.</strong> Isolate a part, draw every force on it, demand the arrows balance (ΣF = 0, ΣM = 0). Ninety per cent of statics is this ritual done honestly.</li>
+    <li><strong>Loads are never one kind.</strong> Tension, compression, bending, shear, torsion — real members feel several at once, and the worst combination picks the failure.</li>
+    <li><strong>Units and estimates.</strong> Before any calculation, a rough order-of-magnitude answer: is this a tonne problem or a gram problem? Fermi estimation catches design errors faster than software does.</li>
+    <li><strong>Everything is a spring.</strong> Beams deflect, bolts stretch, buildings sway. Hooke's law (F = kx) is the quiet assumption behind half of machine design — until materials yield, and it stops.</li>
+  </ul>
+
+  <h2>Why safety factors aren't cowardice</h2>
+  <p>
+    Loads are estimated, materials vary batch to batch, and construction happens in the rain.
+    The factor of safety is engineering's honesty about uncertainty — the same instinct the
+    statistics subject calls a confidence interval. Failures that made history (Tacoma Narrows,
+    1940) taught the field lessons that live on in today's codes.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Hibbeler, Engineering Mechanics: Statics; Petroski, To Engineer Is Human.</p>
+</TopicPage>

@@ -1,0 +1,54 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const descendCfg = {
+  curves: [{ expr: '(x-3)^2 + 1', label: 'loss L(w)', color: '#6366f1', width: 2.2 }],
+  points: [{
+    points: [[0, 10], [1.2, 4.24], [1.92, 2.17], [2.35, 1.42], [2.61, 1.15], [2.77, 1.05], [2.86, 1.02], [2.92, 1.01], [2.95, 1]],
+    label: 'gradient descent steps', mode: 'both', color: '#b42318',
+  }],
+  x: { min: 0, max: 4.5, label: 'parameter w' },
+  y: { min: 0, max: 11, label: 'loss' },
+  crossings: false,
+  height: 360,
+};
+---
+<TopicPage slug="subjects/artificial-intelligence/foundational/how-machines-learn">
+  <h2>The idea</h2>
+  <p>
+    Modern AI is not programmed with answers — it is <strong>trained against a mistake
+    score</strong>. The machine makes a guess, a <em>loss function</em> measures how wrong it
+    was, calculus supplies the direction of "downhill" (the <strong>gradient</strong>), and the
+    parameters take a small step that way. Repeat a few million times and behaviour emerges.
+    That loop — guess, measure, step — is called <strong>gradient descent</strong>, and it
+    trains everything from spam filters to ChatGPT-class models.
+  </p>
+
+  <Widget no="1" caption="the whole of machine learning in one picture — red dots are training steps rolling downhill to the best answer" widget="plotter" config={descendCfg} />
+
+  <p>
+    Each red dot is one training step: start at w = 0 (badly wrong, loss = 10), step opposite the
+    slope, and watch the steps shrink as the ground flattens. Near the bottom the gradient is
+    almost zero, so the model stops moving — <em>converged</em>. Real networks do this in
+    millions of dimensions, where "downhill" can't be drawn, only computed.
+  </p>
+
+  <h2>Vocabulary that unlocks the field</h2>
+  <ul>
+    <li><strong>Model</strong> — a function with adjustable knobs (weights). Training = turning the knobs.</li>
+    <li><strong>Loss</strong> — the wrongness score. Choosing it is choosing what the machine cares about; the model optimises exactly and only what you measure.</li>
+    <li><strong>Learning rate</strong> — step size. Too big and the dots leap across the valley; too small and training crawls.</li>
+    <li><strong>Generalisation</strong> — performing well on data never seen. A model that memorises its training data (overfitting) has learned the noise, not the pattern.</li>
+    <li><strong>Neural network</strong> — layers of simple weighted sums passed through soft nonlinearities; the architecture that made deep learning possible (backpropagation made it trainable, 1986).</li>
+  </ul>
+
+  <h2>What AI is not</h2>
+  <p>
+    It is not reasoning, understanding or wanting — it is function-fitting at enormous scale,
+    which <em>looks like</em> understanding because patterns in language run deep. Every claim
+    about an AI system should be traceable back to a loss function, a dataset and an evaluation.
+    That discipline — not the hype — is the field.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton & Williams, Nature (1986); Goodfellow, Bengio & Courville, Deep Learning (2016).</p>
+</TopicPage>

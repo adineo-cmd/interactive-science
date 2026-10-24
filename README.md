@@ -37,6 +37,26 @@ python3 scripts/validate-content.py
    `src/components/SubjectIcon.astro`).
 4. Run `npm run build-search && python3 scripts/validate-content.py`, then open a PR.
 
+### Live vs planned topics
+
+`topics.json` carries the **complete curriculum map**: every subject lists topics for all four
+levels (foundational → intermediate → advanced → expert). Entries with `"status": "planned"`
+have no page yet — subject pages render them as muted "planned" rows so learners can see the
+full expert path. Entries without a status are live lessons (page required).
+
+### Bulk drafting
+
+`scripts/generate-topic.py` drafts skeleton/lesson text for planned topics into `drafts/`
+(never deployed — the human review gate from `docs/DESIGN.md`):
+
+```bash
+python3 scripts/generate-topic.py --subject math            # all planned maths topics
+python3 scripts/generate-topic.py --title "Integration"     # one topic
+AI_API_URL=... AI_API_KEY=... python3 scripts/generate-topic.py --subject physics
+```
+
+Review, edit, move to `src/pages/`, flip the status, validate, build.
+
 ## Widget registry
 
 | Instrument | File | Config |

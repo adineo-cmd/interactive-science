@@ -7,7 +7,11 @@ import { formatNum } from './lib/mathexpr.js';
 const CHIP_COLORS = ['#1d4ed8', '#0f766e', '#b42318', '#b45309', '#7c3aed', '#d9480f', '#2e7d32', '#0e7490'];
 
 function fmtYear(y, unit) {
-  if (unit === 'year') return y < 0 ? `${formatNum(-y, 0)} BCE` : `${formatNum(y, 0)} CE`;
+  if (unit === 'year') {
+    const n = Math.abs(y);
+    const label = n >= 10000 ? Math.round(n).toLocaleString('en-US') : formatNum(n, 0);
+    return y < 0 ? `${label} BCE` : `${label} CE`;
+  }
   return `${formatNum(y, 0)} ${unit}`;
 }
 

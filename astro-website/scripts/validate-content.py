@@ -19,10 +19,14 @@ def check_topics_json():
     pages_root = os.path.join(ROOT, "..", "src", "pages")
     for t in data["topics"]:
         if t["subject"] not in ids:
-            errors.append(f"UNKNOWN SUBJECT: {t['slug']} -> {t['subject']}")
+            errors.append(f"UNKNOWN SUBJECT: {t.get('slug', t['title'])} -> {t['subject']}")
+        if t.get("status") == "planned":
+            if "widgets" in t:
+                errors.append(f"PLANNED TOPIC HAS WIDGETS (move to live when written): {t['title']}")
+            continue
         for w in t.get("widgets", []):
             if w not in REGISTRY:
-                errors.append(f"UNKNOWN WIDGET: {t['slug']} {w}")
+                errors.append(f"UNKNOWN WIDGET: {t.get('slug')} {w}")
         path = os.path.join(pages_root, t["slug"] + ".astro")
         if not os.path.exists(path):
             errors.append(f"MISSING PAGE: {path}")

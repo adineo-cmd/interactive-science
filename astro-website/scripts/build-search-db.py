@@ -25,6 +25,8 @@ def main():
         "subject TEXT, body TEXT, tags TEXT)"
     )
     for t in data["topics"]:
+        if t.get("status") == "planned":
+            continue  # planned lessons have no page yet — keep them out of the index
         subject = next(
             (s for s in data["subjects"] if s["id"] == t["subject"]), {}
         )

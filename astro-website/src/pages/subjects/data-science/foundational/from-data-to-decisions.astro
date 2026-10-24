@@ -1,0 +1,55 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const scatterCfg = {
+  curves: [{ expr: '2*x + 1', label: 'fitted line y = 2x + 1', color: '#155e75', width: 2 }],
+  points: [{
+    points: [[1, 2.4], [2, 6.1], [3, 6.2], [4, 9.8], [5, 10.5], [6, 13.2], [7, 14.9], [8, 17.1], [9, 20.4], [10, 20.2]],
+    label: 'observed data', mode: 'dots', color: '#b42318',
+  }],
+  x: { min: 0, max: 11, label: 'input x' },
+  y: { min: 0, max: 24, label: 'output y' },
+  crossings: false,
+  height: 350,
+};
+
+const flowCfg = {
+  steps: [
+    { math: '1 · Question first', note: 'Decide what decision the data must inform. "Explore the data" is not a question; "which pages lose subscribers?" is.' },
+    { math: '2 · Collect', note: 'Gather the evidence and note how it was produced — measurement choices are assumptions hiding inside the dataset.' },
+    { math: '3 · Clean', note: 'Missing values, duplicates, impossible entries. Real cleaning takes most of the time; silent errors here poison everything downstream.' },
+    { math: '4 · Explore', note: 'Plot first, model second. The scatter above is exploration doing its job: the pattern appears before any model is chosen.' },
+    { math: '5 · Model & validate', note: 'Fit the simplest thing that could work, then check it on data it has not seen. Complexity must earn its keep.' },
+    { math: '6 · Communicate', note: 'A result that does not change a decision was entertainment. Say what is uncertain as clearly as what is not.' },
+  ],
+};
+---
+<TopicPage slug="subjects/data-science/foundational/from-data-to-decisions">
+  <h2>The idea</h2>
+  <p>
+    Data science is not "statistics plus computers" — it is a <strong>workflow that turns
+    questions into decisions</strong>. The craft is mostly unglamorous: asking sharp questions,
+    cleaning messy evidence, plotting before modelling, and communicating uncertainty honestly.
+    The six steps below are the whole discipline in miniature.
+  </p>
+
+  <Widget no="1" caption="ten noisy observations, one straight answer — the line was worth fitting before anything fancier" widget="plotter" config={scatterCfg} />
+
+  <p>
+    Hover the dots: each wanders off the line by measurement noise, yet the underlying relationship
+    is exactly <code>y = 2x + 1</code>. The first discipline of data science is seeing the line
+    through the noise — and the second is admitting when there isn't one.
+  </p>
+
+  <Widget no="2" caption="the six-step workflow" widget="equationStep" config={flowCfg} />
+
+  <h2>What separates professionals</h2>
+  <ul>
+    <li><strong>Baselines first.</strong> A model that can't beat "guess the average" isn't a model. Always run the dumbest baseline before the clever one.</li>
+    <li><strong>The dataset is a measurement instrument.</strong> If customer data only includes people who finished signup, every conclusion silently describes finishers, not customers.</li>
+    <li><strong>Correlation still isn't causation</strong> — and dashboards make it easier than ever to imply it is. The statistics subject on this atlas covers the honest toolkit.</li>
+    <li><strong>Reproducibility is trust.</strong> A result nobody can re-run from the raw data is an anecdote with charts.</li>
+  </ul>
+  <p class="sources"><strong>Sources:</strong> Wickham & Grolemund, R for Data Science; Tukey, "The Future of Data Analysis" (1962).</p>
+</TopicPage>
