@@ -5,8 +5,6 @@ import json
 import os
 import sys
 
-import yaml
-
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 REGISTRY = {"plotter", "sliderLab", "equationStep", "diagramBuilder", "timeline"}
@@ -35,7 +33,14 @@ def check_topics_json():
 
 def check_markdown_sources():
     errors = []
-    for path in glob.glob(os.path.join(ROOT, "..", "src", "content", "subjects", "**", "*.md"), recursive=True):
+    md_files = glob.glob(os.path.join(ROOT, "..", "src", "content", "subjects", "**", "*.md"), recursive=True)
+    if not md_files:
+        return errors  # .md content sources are optional; core validation needs only stdlib
+    try:
+        import yaml
+    except ImportError:
+        return ["PyYAML is required to validate .md sources: pip install pyyaml"]
+    for path in md_files:
         with open(path, encoding="utf-8") as f:
             content = f.read()
         try:
