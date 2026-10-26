@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import SubjectIcon from './SubjectIcon.astro';
 import data from '../data/topics.json';
 
+const syllabusFiles = import.meta.glob('../data/syllabus/*.json', { eager: true });
+
 const { subject: id, intro } = Astro.props;
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
@@ -10,6 +12,24 @@ const s = subjects.find((x) => x.id === id);
 if (!s) throw new Error(`Unknown subject: ${id}`);
 const live = topics.filter((t) => t.subject === id && t.status !== 'planned');
 const plannedAll = topics.filter((t) => t.subject === id && t.status === 'planned');
+
+// learning program: official syllabus structure joined with the topic catalogue
+const syllabus = syllabusFiles[`../data/syllabus/${id}.json`]?.default ?? null;
+const bySlug = new Map(topics.map((t) => [t.slug, t]));
+const program = syllabus
+  ? syllabus.program.map((u) => ({ ...u, lessons: u.lessons.map((slug) => bySlug.get(slug)).filter(Boolean) }))
+  : null;
+const programLessons = program ? program.flatMap((u) => u.lessons) : [];
+const programLive = programLessons.filter((t) => t.status !== 'planned').length;
+const sections: { name: string | null; units: NonNullable<typeof program> }[] = [];
+if (program) {
+  for (const u of program) {
+    let sec = sections.find((x) => x.name === (u.section ?? null));
+    if (!sec) { sec = { name: u.section ?? null, units: [] }; sections.push(sec); }
+    sec.units.push(u);
+  }
+}
+
 const LEVELS = [
   ['foundational', 'Foundational'],
   ['intermediate', 'Intermediate'],
@@ -27,6 +47,69 @@ const LEVELS = [
       </div>
       <p class="lede">{intro ?? s.tagline}</p>
     </header>
+
+    {program && (
+      <section class="program" id="program" aria-label="Learning program">
+        <div class="program-head">
+          <div class="program-title-row">
+            <h2>Learning program</h2>
+            <span class="chip">{programLive}/{programLessons.length} lessons live</span>
+          </div>
+          <p class="program-src">
+            {syllabus.source.board} · {syllabus.source.qualification} ·
+            <a href={syllabus.source.url} target="_blank" rel="noopener">official syllabus (PDF)</a>
+          </p>
+          <p class="program-note">{syllabus.note}</p>
+        </div>
+        {sections.map((sec) => (
+          <div class="program-section">
+            {sec.name && <h3 class="program-sec-name">{sec.name}</h3>}
+            <div class="unit-list">
+              {sec.units.map((u) => {
+                const ulive = u.lessons.filter((t) => t.status !== 'planned').length;
+                return (
+                  <div class="unit-card" style={`--row-ink:${s.ink}`}>
+                    <div class="unit-head">
+                      <span class="unit-no">{String(u.unit).padStart(2, '0')}</span>
+                      <div class="unit-blurb">
+                        <p class="unit-title">{u.title}</p>
+                        <p class="unit-topics">{u.topics.join(' · ')}</p>
+                      </div>
+                      <span class="unit-progress">{ulive}/{u.lessons.length} live</span>
+                    </div>
+                    {u.lessons.length > 0 && (
+                      <div class="unit-lessons index">
+                        {u.lessons.map((t) =>
+                          t.status !== 'planned' ? (
+                            <a class="index-row" href={`${B}/${t.slug}/`}>
+                              <span class="glyph" style="font-family:var(--f-mono); font-size:12px; color:var(--ink-3)">→</span>
+                              <span>
+                                <span class="index-name">{t.title}</span>
+                                <span class="index-tag" style="display:block">{t.summary}</span>
+                              </span>
+                              <span class="index-meta">{t.level} · {t.minutes} min</span>
+                            </a>
+                          ) : (
+                            <div class="index-row planned" title="Planned lesson — not yet written">
+                              <span class="glyph" style="font-family:var(--f-mono); font-size:12px; color:var(--ink-3)">··</span>
+                              <span>
+                                <span class="index-name" style="font-size:1.05rem">{t.title}</span>
+                                <span class="index-tag" style="display:block">{t.summary}</span>
+                              </span>
+                              <span class="index-meta">planned</span>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </section>
+    )}
 
     <div class="ladder" aria-label="Level ladder">
       {LEVELS.map(([lv, label]) => {

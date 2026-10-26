@@ -31,6 +31,42 @@ def check_topics_json():
     return errors
 
 
+def check_syllabus_files():
+    """Every syllabus program must reference real topics.json slugs of its own subject."""
+    errors = []
+    data = json.load(open(os.path.join(ROOT, "..", "src", "data", "topics.json"), encoding="utf-8"))
+    ids = {s["id"] for s in data["subjects"]}
+    topics_by_slug = {t["slug"]: t for t in data["topics"]}
+    syl_dir = os.path.join(ROOT, "..", "src", "data", "syllabus")
+    for path in sorted(glob.glob(os.path.join(syl_dir, "*.json"))):
+        name = os.path.basename(path)
+        try:
+            syl = json.load(open(path, encoding="utf-8"))
+        except Exception as e:
+            errors.append(f"SYLLABUS JSON FAIL: {name} — {e}")
+            continue
+        for key in ("subject", "source", "note", "program"):
+            if key not in syl:
+                errors.append(f"SYLLABUS MISSING {key}: {name}")
+        if syl.get("subject") not in ids:
+            errors.append(f"SYLLABUS UNKNOWN SUBJECT: {name} -> {syl.get('subject')}")
+        for u in syl.get("program", []):
+            for key in ("unit", "title", "topics", "lessons"):
+                if key not in u:
+                    errors.append(f"SYLLABUS UNIT MISSING {key}: {name} unit {u.get('unit')}")
+            if not u.get("topics"):
+                errors.append(f"SYLLABUS UNIT EMPTY TOPICS: {name} unit {u.get('unit')}")
+            if not u.get("lessons"):
+                errors.append(f"SYLLABUS UNIT EMPTY LESSONS: {name} unit {u.get('unit')}")
+            for slug in u.get("lessons", []):
+                t = topics_by_slug.get(slug)
+                if t is None:
+                    errors.append(f"SYLLABUS SLUG NOT IN TOPICS: {name} unit {u.get('unit')} -> {slug}")
+                elif t["subject"] != syl.get("subject"):
+                    errors.append(f"SYLLABUS CROSS-SUBJECT SLUG: {name} unit {u.get('unit')} -> {slug}")
+    return errors
+
+
 def check_markdown_sources():
     errors = []
     md_files = glob.glob(os.path.join(ROOT, "..", "src", "content", "subjects", "**", "*.md"), recursive=True)
@@ -58,7 +94,7 @@ def check_markdown_sources():
 
 
 def main():
-    errors = check_topics_json() + check_markdown_sources()
+    errors = check_topics_json() + check_syllabus_files() + check_markdown_sources()
     if errors:
         for e in errors:
             print(e)

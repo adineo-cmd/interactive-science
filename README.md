@@ -44,6 +44,40 @@ levels (foundational → intermediate → advanced → expert). Entries with `"s
 have no page yet — subject pages render them as muted "planned" rows so learners can see the
 full expert path. Entries without a status are live lessons (page required).
 
+### Syllabus-structured learning programs
+
+**Every subject in the atlas is structured around an official published syllabus or an
+authoritative published curriculum.** The source documents live in `syllabus/` — Cambridge
+IGCSE syllabus PDFs where the subject has one (Biology 0610, Chemistry 0620, Physics 0625,
+Mathematics 0580, Geography 0460, History 0470, Economics 0455, Business 0450, Computer
+Science 0478, Accounting 0452, Agriculture 0600, Sociology 0495, Literature 0475, Music 0410,
+Art & Design 0400, Religious Studies 0490, Environmental Management 0680, Design & Technology
+0445, Drama 0411, Travel & Tourism 0471, ICT 0417, PE 0413…), plus exam-board specs (Edexcel
+Astronomy 1AS0, Edexcel Politics 9PL0, AQA Law 7162, AQA Philosophy 7172, Eduqas Film & Media
+Studies, WJEC Criminology, AP Art History, CEFR for languages) and openly published curricula
+(MIT OpenCourseWare, OpenStax, Berkeley Data 8, Neuroscience Online, CEPH, NCTJ, NCEES, NAAB).
+
+Each is parsed into a structured file in `astro-website/src/data/syllabus/*.json` — one entry
+per syllabus unit: unit number, title, the syllabus's own topic list, and the atlas lessons
+covering it in teaching order (live slugs reference `topics.json`; units without a written
+lesson reference planned rows, so the full expert path is always visible).
+
+- `/programs/` — index of all syllabus-backed programs
+- `/subjects/<id>/#program` — unit-by-unit program on each subject page
+- `scripts/apply-syllabus-topics.py`, `scripts/apply-all-syllabus-topics.py` — idempotent
+  inserters that add syllabus-derived live + planned topics and new subject entries to
+  `topics.json` (`scripts/syllabus-planned.json` carries the planned-row data)
+- `validate-content.py` also checks syllabus files: every lesson slug must exist in
+  `topics.json` and belong to the same subject
+
+Fields that existed in standard academic taxonomies but not in the atlas were added as new
+subjects with syllabus-backed programs: Accounting, Drama, Travel & Tourism, Information &
+Communication Technology, Media Studies, Criminology, Public Health, Education, Marketing and
+International Relations.
+
+To add a subject: drop the official syllabus PDF in `syllabus/`, write the parsed
+`src/data/syllabus/<subject>.json`, map or plan its lessons, validate, build.
+
 ### Bulk drafting
 
 `scripts/generate-topic.py` drafts skeleton/lesson text for planned topics into `drafts/`

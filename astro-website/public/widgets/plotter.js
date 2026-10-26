@@ -244,8 +244,9 @@ export function init(el, config = {}) {
     if (labelled.length) {
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
       ctx.font = '10.5px "IBM Plex Mono", monospace';
+      const legendTop = padT + 14 + (cfg.y?.label ? 18 : 0); // clear the y-axis label row
       labelled.forEach((c, i) => {
-        const ly = padT + 14 + i * 16;
+        const ly = legendTop + i * 16;
         ctx.fillStyle = c.color;
         ctx.fillRect(padL + 10, ly - 3, 14, 3);
         ctx.fillStyle = 'rgba(23,36,32,0.85)';
