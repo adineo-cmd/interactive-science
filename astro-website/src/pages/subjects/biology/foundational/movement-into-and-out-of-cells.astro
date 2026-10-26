@@ -1,0 +1,135 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const fickCfg = {
+  curves: [
+    { expr: 'x/d', label: 'rate at distance d', color: '#1d4ed8' },
+    { expr: 'x/(2*d)', label: 'rate at double the distance', color: '#b42318' },
+  ],
+  params: [
+    { name: 'd', label: 'diffusion distance', min: 0.5, max: 3, step: 0.5, value: 1, unit: 'µm' },
+  ],
+  x: { min: 0, max: 10, label: 'concentration difference (arb. units)' },
+  y: { min: 0, max: 12, label: 'rate of diffusion' },
+  crossings: false,
+  height: 340,
+};
+
+const labCfg = {
+  params: [
+    { name: 'A', label: 'membrane surface area', min: 1, max: 10, step: 1, value: 4, unit: 'arb. units' },
+    { name: 'g', label: 'concentration gradient', min: 1, max: 10, step: 1, value: 5, unit: 'arb. units' },
+    { name: 'd', label: 'diffusion distance', min: 0.5, max: 5, step: 0.5, value: 1, unit: 'arb. units' },
+    { name: 'T', label: 'temperature', min: 273, max: 323, step: 5, value: 293, unit: 'K' },
+  ],
+  readouts: [
+    { label: 'net rate (arb. units)', expr: 'A*g/d', unit: '' },
+    { label: 'relative diffusion coefficient (D ∝ T)', expr: 'T/293', unit: '' },
+    { label: 'relative time to cross (∝ d²)', expr: 'd*d', unit: '' },
+  ],
+};
+
+const osmosisCfg = {
+  steps: [
+    { math: 'pure water: water potential Ψ = 0', note: 'Pure water is the reference — the highest water potential there is.' },
+    { math: 'dissolve solute → Ψ goes negative', note: 'More solute means a more concentrated solution and a lower (more negative) water potential.' },
+    { math: 'water moves: high Ψ → low Ψ', note: 'Osmosis is the net movement of water molecules from a dilute solution (higher water potential) to a concentrated one (lower water potential) through a partially permeable membrane.' },
+    { math: 'plant cell in dilute solution → turgid', note: 'Water enters; the vacuole swells and the cytoplasm presses outward on the cell wall. That turgor pressure is what keeps soft plant tissue firm.' },
+    { math: 'plant cell in concentrated solution → plasmolysis', note: 'Water leaves; the vacuole shrinks and the membrane pulls away from the wall. The flaccid, plasmolysed cell loses support — a wilting lettuce, not a crisp one.' },
+  ],
+};
+
+const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 0, max: 10 }, start: [5, 2] };
+---
+<TopicPage slug="subjects/biology/foundational/movement-into-and-out-of-cells">
+  <h2>The idea: diffusion</h2>
+  <p>
+    Every living cell is wrapped in a membrane a few nanometres thick, and everything the cell
+    needs — oxygen, glucose, ions, water — has to cross it. The simplest crossing is
+    <strong>diffusion</strong>: the net movement of particles from a region of their higher
+    concentration to a region of their lower concentration, down a concentration gradient.
+    No engine drives it. The energy is the <strong>kinetic energy</strong> of the molecules
+    themselves, jostling randomly; each one zigzags without purpose, but where there are more
+    of them on one side, more random steps cross that way than back. Net flow, zero design.
+  </p>
+  <p>
+    The syllabus (0610 unit 3.1, Core) singles out four factors you should be able to
+    investigate: <strong>surface area</strong>, <strong>temperature</strong>,
+    <strong>concentration gradient</strong> and <strong>distance</strong>. The graph below shows
+    the last two working together — rate climbs with the gradient but falls as the
+    diffusion distance grows:
+  </p>
+
+  <Widget no="1" caption="doubling the diffusion distance halves the rate, at every gradient" widget="plotter" config={fickCfg} />
+
+  <p>
+    In real membranes all four factors trade off, which is exactly why your alveoli are
+    one cell thin and why a flatworm stays flat. Move the sliders — notice how brutal distance
+    is: crossing time grows with the <em>square</em> of the distance, so ten times further
+    away is a hundred times slower:
+  </p>
+
+  <Widget no="2" caption="surface area × gradient ÷ distance — the anatomy of every exchange surface" widget="sliderLab" config={labCfg} />
+
+  <p>
+    Why does the distance factor rule biology? Because a simple body plan can live on
+    diffusion alone — flatworms are flat precisely so no cell sits more than a fraction of a
+    millimetre from the outside — but anything thicker needs transport systems and exchange
+    surfaces. That is the single most important idea in this topic: <strong>diffusion of gases
+    and solutes matters to every organism</strong> (Core point 4), and every organ built for
+    exchange — alveoli, gills, leaves, root hairs — is a variation on the same four-factor
+    theme: maximise area and gradient, minimise distance, keep the medium moving.
+  </p>
+
+  <h2>Osmosis and water potential</h2>
+  <p>
+    Water is the solvent of life: digestion happens in solution, excretion carries waste
+    dissolved in water, and blood and sap transport everything dissolved (unit 3.2, Core).
+    Because water molecules are tiny, they slip through the membrane's
+    <strong>partially permeable</strong> structure by osmosis — and the direction of that
+    movement is set by <strong>water potential</strong>, a Supplement idea worth learning
+    properly because it explains turgor, plasmolysis and water uptake in five honest steps:
+  </p>
+
+  <Widget no="3" caption="water potential, from definition to wilting lettuce" widget="equationStep" config={osmosisCfg} />
+
+  <p>
+    Osmosis can be measured with dialysis tubing (an artificial partially permeable membrane):
+    fill it with strong sugar solution, weigh it, and watch the mass climb as water enters.
+    Immerse potato strips in solutions of different concentrations instead, and length changes
+    map the point where the tissue neither gains nor loses water.
+  </p>
+
+  <h2>Active transport: pumping uphill</h2>
+  <p>
+    Diffusion only runs downhill. But root hairs mineral ions from soil where the soil is
+    <em>diluter</em> than the cell sap — the wrong way for diffusion — and your gut absorbs
+    glucose even when the gut contents are weaker than the blood. For that, membranes use
+    <strong>active transport</strong> (unit 3.3): movement from lower to higher concentration,
+    <strong>against</strong> the gradient, powered by energy from respiration. Supplement
+    point 3 names the machinery: <strong>protein carriers</strong> in the membrane pick up the
+    molecule or ion, change shape using ATP, and release it on the far side.
+  </p>
+  <p>
+    Diffusion is random, but its outcome is still a displacement. Watch one molecule's
+    <strong>net</strong> journey — thousands of random zigzags collapse into one arrow whose
+    components are exactly the Supplement-worthy point that net movement, not the
+    individual path, is what diffusion delivers:
+  </p>
+
+  <Widget no="4" caption="a diffusing molecule's net displacement — x crosses the membrane, y drifts along it; drag the head" widget="diagramBuilder" config={vecCfg} />
+
+  <p>
+    The price of pumping uphill is paid in ATP, which makes active transport a direct
+    tax on respiration: poison the mitochondria and the pumps stop within minutes, while
+    diffusion carries on regardless — it never needed the energy budget. That dependence is
+    also how the process is demonstrated experimentally: keep a root in conditions where
+    respiration is slowed (cold, or oxygen-starved) and ion uptake falls with it, even though
+    the concentration gradient has not changed. Wherever a cell accumulates a substance
+    against the gradient — mineral ions in root hairs, glucose in the gut, urea in the kidney
+    tubule — expect to find mitochondria crowded around those membranes, fuelling the carriers.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Biology 0610 syllabus (2026–2028), unit 3; OpenStax Biology 2e, ch. 5 (Structure and Function of Plasma Membranes); Campbell Biology (Urry et al.), 12th ed., ch. 7–8.</p>
+</TopicPage>

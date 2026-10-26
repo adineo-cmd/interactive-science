@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SubjectIcon from '../components/SubjectIcon.astro';
+import data from '../data/topics.json';
+
+const syllabusFiles = import.meta.glob('../data/syllabus/*.json', { eager: true });
+
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const bySlug = new Map(topics.map((t) => [t.slug, t]));
+
+const programs = Object.entries(syllabusFiles)
+  .map(([path, mod]: any) => {
+    const syl = mod.default;
+    const subject = subjects.find((s) => s.id === syl.subject);
+    const lessons = syl.program.flatMap((u: any) => u.lessons).map((slug: string) => bySlug.get(slug)).filter(Boolean);
+    return {
+      syl,
+      subject,
+      units: syl.program.length,
+      lessons,
+      live: lessons.filter((t: any) => t.status !== 'planned').length,
+    };
+  })
+  .sort((a, b) => a.syl.subject.localeCompare(b.syl.subject));
+---
+<Layout
+  title="Learning programs — Interactive Atlas"
+  description="Structured learning programs derived from official published syllabi — each subject mapped unit by unit, with every lesson linked in teaching order."
+>
+  <div class="wrap">
+    <div class="prose" style="max-width:56rem">
+      <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span>programs</p>
+      <h1>Learning programs</h1>
+      <p>
+        A syllabus is a promise about order: learn this, then that, and by the end you will be able
+        to do these things. Instead of a loose pile of lessons, these subjects are structured the
+        way an examiner would recognise — <strong>unit by unit, straight from an official published
+        syllabus</strong>. Every unit lists its syllabus topics and the atlas lessons that cover
+        them, in teaching order. Units still awaiting a written lesson show as planned rows, so the
+        whole path is visible before the whole path is paved.
+      </p>
+      <p>
+        The syllabus documents themselves live in the repository (<code>syllabus/*.pdf</code>) and
+        are parsed into the structured files in <code>src/data/syllabus/</code> that generate these
+        pages — content is generated from the syllabus, never around it.
+      </p>
+    </div>
+
+    <div class="program-cards">
+      {programs.map(({ syl, subject, units, live, lessons }) => (
+        <a class="program-card" style={`--card-ink:${subject?.ink ?? 'var(--accent)'}`} href={`${B}/subjects/${syl.subject}/#program`}>
+          <div class="pc-head">
+            <span style={`color:${subject?.ink ?? 'var(--accent)'}`}>
+              {subject && <SubjectIcon name={subject.icon} size={26} />}
+            </span>
+            <h2>{subject?.name ?? syl.subject}</h2>
+          </div>
+          <p class="pc-qual">{syl.source.qualification}</p>
+          <p class="pc-board">{syl.source.board} · {syl.source.track}</p>
+          <p class="pc-units">{units} syllabus units · {live}/{lessons.length} lessons live</p>
+          <span class="pc-go">open the program →</span>
+        </a>
+      ))}
+    </div>
+
+    {programs.length === 0 && <p>No programs are wired up yet — add a JSON file to <code>src/data/syllabus/</code>.</p>}
+  </div>
+</Layout>

@@ -1,0 +1,127 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const co2Cfg = {
+  points: [
+    {
+      points: [[1958, 315.2], [1970, 325.7], [1980, 338.8], [1990, 354.4], [2000, 369.7], [2010, 389.9], [2020, 414.2], [2024, 424.6]],
+      color: '#b42318',
+      label: 'Mauna Loa annual mean CO₂',
+      mode: 'both',
+    },
+  ],
+  curves: [{ expr: '280', label: 'pre-industrial ~280 ppm', color: '#0f766e', width: 1.6 }],
+  x: { min: 1950, max: 2026, label: 'year' },
+  y: { min: 275, max: 440, label: 'CO₂ (ppm)' },
+  crossings: false,
+  height: 350,
+};
+
+const balanceCfg = {
+  params: [
+    { name: 'a', label: 'planetary albedo', min: 0.05, max: 0.45, step: 0.01, value: 0.3 },
+    { name: 'g', label: 'greenhouse effect', min: 0, max: 80, step: 1, value: 33, unit: 'K' },
+  ],
+  readouts: [
+    { label: 'effective temperature (no greenhouse)', expr: '((1361*(1-a))/(4*0.0000000567))^0.25', unit: 'K' },
+    { label: 'surface temperature', expr: '((1361*(1-a))/(4*0.0000000567))^0.25 + g', unit: 'K' },
+    { label: 'surface temperature', expr: '((1361*(1-a))/(4*0.0000000567))^0.25 + g - 273.15', unit: '°C' },
+  ],
+};
+
+const cliTimeline = {
+  unit: 'year',
+  events: [
+    { year: 1896, title: 'A chemist does the arithmetic', text: 'Svante Arrhenius calculates that doubling CO₂ would warm the world by roughly 5–6 °C — remarkably close to modern estimates.', tag: 'evidence' },
+    { year: 1938, title: 'Callendar connects the dots', text: 'Steam engineer Guy Callendar shows global land temperatures rose about 0.3 °C in fifty years and blames fossil CO₂. Colleagues are polite and unconvinced.', tag: 'evidence' },
+    { year: 1958, title: 'The curve begins', text: 'Charles David Keeling starts continuous CO₂ measurements at Mauna Loa: 315 ppm. The Keeling curve has never dipped since.', tag: 'evidence' },
+    { year: 1988, title: 'The alarm goes institutional', text: 'James Hansen tells the US Senate "global warming has begun"; the UN founds the IPCC the same year.', tag: 'science' },
+    { year: 1992, title: 'Rio Earth Summit', text: 'More than 150 countries sign the UNFCCC, promising to stabilise greenhouse gases — with no binding numbers yet.', tag: 'politics' },
+    { year: 1997, title: 'Kyoto Protocol', text: 'Developed nations accept binding cuts averaging ~5% below 1990 levels for 2008–2012. In force from 2005.', tag: 'politics' },
+    { year: 2015, title: 'Paris Agreement', text: '195 countries agree to hold warming well below 2 °C and pursue 1.5 °C, via national pledges that ratchet down every five years.', tag: 'politics' },
+    { year: 2023, title: 'Warmest year yet', text: 'The WMO confirms 2023 at about 1.45 ± 0.12 °C above pre-industrial — the hottest year in the instrumental record at that point.', tag: 'evidence' },
+    { year: 2024, title: 'Past 1.5 for a calendar year', text: '2024 averages ~1.55 °C above pre-industrial, the first full year beyond the Paris symbol level. One year is not the goal broken — but the trend line speaks.', tag: 'evidence' },
+  ],
+};
+---
+<TopicPage slug="subjects/geography/intermediate/climate-change-causes-and-impacts">
+  <h2>The idea</h2>
+  <p>
+    Climate change is the one geography topic where you must first prove it is happening
+    (syllabus 5.1.1), then explain it. The evidence stacks four independent ways:
+    <strong>thermometers</strong> (the decade to 2020 was ~1.1 °C warmer than 1850–1900, per
+    IPCC AR6), <strong>ice cores</strong> (an 800,000-year record in which CO₂ swings between
+    roughly 172 and 300 ppm — today's 424.6 is far outside it), <strong>sea ice
+    positions</strong> (Arctic September extent shrinking ~13% per decade), and
+    <strong>historic writing and paintings</strong> — London's frost fairs on a frozen Thames
+    record the Little Ice Age. The cleanest single evidence is the curve below: direct
+    measurement of the cause itself.
+  </p>
+
+  <Widget no="1" caption="the Keeling curve — Mauna Loa annual means (NOAA): 315 ppm in 1958 to 424.6 in 2024, about 50% above the pre-industrial 280" widget="plotter" config={co2Cfg} />
+
+  <p>
+    Read fig. 1 like a geographer: the level matters (50% above pre-industrial), but so does
+    the <em>slope</em> — growth averaged ~0.8 ppm per year in the 1960s and ~2.4 ppm per year
+    in the 2010s. The cause is accelerating, not steady.
+  </p>
+
+  <h2>Natural causes, human causes</h2>
+  <p>
+    Syllabus 5.1.2 is careful: climate has always changed naturally.
+    <strong>Milankovitch cycles</strong> — slow wobbles in Earth's orbit (eccentricity
+    ~100,000 years, axial tilt ~41,000, precession ~23,000) — pace the ice ages.
+    <strong>Sunspots</strong> follow an 11-year cycle that nudges solar output by only ~0.1%.
+    <strong>Volcanic activity</strong> can cool the planet fast: Pinatubo's 1991 eruption
+    dimmed global temperatures by ~0.5 °C for a year or two. None of these can explain a
+    50% rise in CO₂ since 1850. The human causes (5.1.3) are the <strong>enhanced greenhouse
+    effect</strong>: the atmosphere passes incoming shortwave sunlight but absorbs outgoing
+    longwave heat, and we thicken that blanket by burning fossil fuels (~37 billion tonnes of
+    CO₂ a year), clearing forests, and farming — livestock and rice paddies emit methane, a
+    greenhouse gas ~80 times stronger than CO₂ over 20 years.
+  </p>
+
+  <Widget no="2" caption="a one-line climate model: solar input, albedo, greenhouse strength. Zero the greenhouse and Earth is −18 °C; the real ~33 K greenhouse gives the observed ~14.5 °C" widget="sliderLab" config={balanceCfg} />
+
+  <p>
+    Fig. 2 is genuine physics: absorbed sunlight (1361 W/m² dimmed by albedo) sets an
+    effective temperature of ~255 K, and the greenhouse effect lifts the surface to ~288 K —
+    matching the observed global mean within half a degree. Doubling CO₂ adds roughly
+    3 °C (IPCC AR6 best estimate, likely range 2.5–4). Notice the albedo slider: melt ice,
+    darken the planet, warm further — a feedback loop, not just a cause.
+  </p>
+
+  <h2>Impacts at every scale</h2>
+  <p>
+    Syllabus 5.2.1 wants impacts pinned to scales. <strong>Global:</strong> 2024 was the
+    warmest year on record (~1.55 °C above pre-industrial, WMO); sea level has risen ~20 cm
+    since 1900 and is now climbing ~3.7 mm per year; at 1.5 °C of warming, IPCC SR1.5 expects
+    the loss of 70–90% of coral reefs. <strong>Regional:</strong> heavier monsoon swings and
+    shrinking glacier-fed rivers across South Asia; a warmer atmosphere holds about 7% more
+    moisture per degree, so downpours and droughts both intensify. <strong>Local:</strong>
+    the 2021 heat dome hit Lytton, Canada with 49.6 °C — and the village burned down the next
+    day. Food production shifts too: some high-latitude farms gain growing season while
+    tropical maize and wheat yields suffer.
+  </p>
+
+  <h2>Mitigation, adaptation — and doing both</h2>
+  <p>
+    Responses split in two (5.3.1, 5.3.2). <strong>Mitigation</strong> attacks the cause:
+    renewables (solar electricity costs fell ~90% in the 2010s), efficiency, protecting
+    forests, and international agreements — above all the Paris Agreement of 2015, where 195
+    countries bound themselves to well below 2 °C. <strong>Adaptation</strong> manages the
+    effects: sea walls, drought-tolerant crops, early-warning systems. The named example
+    (5.3.3) is <strong>Bangladesh</strong>: when Cyclone Bhola struck in 1970, an estimated
+    300,000–500,000 people died; when comparable Cyclone Amphan arrived in 2020, Bangladesh
+    evacuated ~2.4 million people into thousands of cyclone shelters and recorded around 26
+    deaths. That is adaptation working. The evaluation: mitigation is global and slow —
+    every tonne helps everywhere, so free-riders lurk — while adaptation is local and fast
+    but cannot scale to unbounded warming. You need both, which is exactly why 5.3 makes you
+    evaluate them together.
+  </p>
+
+  <Widget no="3" caption="from Arrhenius's pencil to Paris and past 1.5 °C — 130 years between the prediction and the politics" widget="timeline" config={cliTimeline} />
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Geography 0460 syllabus (2027–2029), topic 5; IPCC AR6 WGI (2021) and SR1.5 (2018); NOAA Global Monitoring Laboratory, Mauna Loa CO₂ record; WMO State of the Global Climate reports; NSIDC sea ice index.</p>
+</TopicPage>

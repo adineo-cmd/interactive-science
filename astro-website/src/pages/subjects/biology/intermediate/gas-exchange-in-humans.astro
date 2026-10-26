@@ -1,0 +1,124 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const breathCfg = {
+  curves: [
+    { expr: '2600 + (tv/2)*(1 - cos(2*pi*f*x/60))', label: 'lung volume', color: '#1d4ed8', width: 2.4 },
+  ],
+  params: [
+    { name: 'f', label: 'breathing rate', min: 8, max: 40, step: 1, value: 15, unit: 'breaths/min' },
+    { name: 'tv', label: 'tidal volume', min: 400, max: 2500, step: 50, value: 500, unit: 'mL' },
+  ],
+  x: { min: 0, max: 12, label: 'time (s)' },
+  y: { min: 1000, max: 4200, label: 'lung volume (mL)' },
+  crossings: false,
+  height: 340,
+};
+
+const labCfg = {
+  params: [
+    { name: 'f', label: 'breathing rate', min: 8, max: 40, step: 1, value: 15, unit: 'breaths/min' },
+    { name: 'tv', label: 'tidal volume', min: 400, max: 2500, step: 50, value: 500, unit: 'mL' },
+    { name: 'sa', label: 'alveolar surface area', min: 40, max: 100, step: 5, value: 70, unit: 'm²' },
+  ],
+  readouts: [
+    { label: 'minute ventilation', expr: 'f*tv/1000', unit: 'L/min' },
+    { label: 'alveolar ventilation (150 mL dead space)', expr: '(tv - 150)*f/1000', unit: 'L/min' },
+    { label: 'relative O₂ diffusion capacity (∝ area)', expr: 'sa/70', unit: '' },
+  ],
+};
+
+const ventCfg = {
+  steps: [
+    { math: 'diaphragm flattens, external intercostals lift ribs', note: 'Inhaling: the diaphragm contracts and flattens; the external intercostal muscles pull the ribs up and out.' },
+    { math: 'thorax volume ↑ → pressure ↓', note: 'Boyle\'s law in a chest: more volume means lower pressure inside the lungs — now below atmospheric.' },
+    { math: 'air flows IN down the pressure gradient', note: 'Air is pushed in by the atmosphere itself; the lungs do not suck.' },
+    { math: 'muscles relax (quiet) — internal intercostals contract (forced)', note: 'Exhaling at rest is elastic recoil: the diaphragm relaxes and domes up. During exercise, the internal intercostals pull ribs down to force air out faster.' },
+    { math: 'volume ↓ → pressure ↑ → air flows OUT', note: 'Smaller chest, higher pressure than the atmosphere, air leaves. Ventilation is just bulk flow down pressure differences — no biology required until the alveoli.' },
+  ],
+};
+---
+<TopicPage slug="subjects/biology/intermediate/gas-exchange-in-humans">
+  <h2>The idea: a surface built for exchange</h2>
+  <p>
+    Gas exchange needs a surface, and evolution has packed one into your chest. The syllabus
+    (unit 11.1, Core) lists four features of a good exchange surface, and the alveoli —
+    roughly 300 million microscopic air sacs — have all of them: a <strong>large surface
+    area</strong> (about <strong>70 m²</strong> in an adult, half a tennis court folded into
+    your ribcage), a <strong>thin surface</strong> (each alveolus and its capillary share a
+    wall one cell thick, so diffusion distances are under a micrometre), a <strong>good blood
+    supply</strong> to keep the concentration gradients steep, and <strong>good
+    ventilation</strong> to keep refreshing the air side. Oxygen diffuses in, carbon dioxide
+    diffuses out, and nothing has to chase anything.
+  </p>
+
+  <h2>Ventilation: how air is moved</h2>
+  <p>
+    The airways the syllabus wants you to identify (Core point 2) — trachea, bronchi,
+    bronchioles, alveoli with their capillary nets — form a branching tree from one tube to
+    300 million terminals. Only at the alveolar endings does exchange happen; everything above
+    them is plumbing. That plumbing is actively serviced: the Supplement expects you to know
+    that rings of <strong>cartilage</strong> (point 7) hold the trachea open like a hosepipe,
+    that <strong>goblet cells</strong> secrete the mucus which traps pathogens and particles
+    before they reach the alveoli, and that <strong>ciliated cells</strong> sweep that
+    mucus-laden debris upward to the throat to be swallowed (point 11).
+  </p>
+  <p>
+    Moving the air itself is a volume pump, and the mechanism (Supplement points 6–8) is pure
+    physics once you see it:
+  </p>
+
+  <Widget no="1" caption="inhale, exhale — five steps from muscle contraction to bulk flow" widget="equationStep" config={ventCfg} />
+
+  <p>
+    The result is a rising and falling lung volume. At rest you breathe about
+    <strong>15 times a minute</strong> with a <strong>tidal volume near 500 mL</strong>; in
+    hard exercise both climb (rates above 30 per minute, tidal volumes of 2–3 litres). Drag
+    the sliders to trace what your lungs are doing right now versus mid-sprint:
+  </p>
+
+  <Widget no="2" caption="lung volume against time — resting breathing vs exercise; the wiggle height is tidal volume, its frequency is breathing rate" widget="plotter" config={breathCfg} />
+
+  <h2>Inspired vs expired air</h2>
+  <p>
+    The air you breathe out is not the air you breathed in. The classic test is
+    <strong>limewater</strong>, which turns milky in carbon dioxide (Core practical, point 3):
+    breathe through a straw into a flask of limewater and it clouds within seconds, while the
+    control flask left open to room air barely changes. A cold mirror held to the lips fogs
+    with expired breath because expired air is saturated with water vapour. The standard
+    composition figures (Core point 4):
+  </p>
+  <ul>
+    <li><strong>Oxygen:</strong> about <strong>21%</strong> inspired → about <strong>16%</strong> expired — only about a quarter of the oxygen is extracted per breath.</li>
+    <li><strong>Carbon dioxide:</strong> about <strong>0.04%</strong> inspired → about <strong>4%</strong> expired — a hundredfold rise.</li>
+    <li><strong>Water vapour:</strong> variable in inspired air → expired air is <strong>saturated</strong> (alveoli are wet).</li>
+    <li><strong>Nitrogen:</strong> about 78% in both — it takes no part in respiration.</li>
+  </ul>
+  <p>
+    Not all inhaled air reaches the exchange surface: about <strong>150 mL</strong> sits in the
+    trachea and bronchi as "dead space". That is why alveolar ventilation, not minute
+    ventilation, is the number that matters:
+  </p>
+
+  <Widget no="3" caption="how much air actually reaches the alveoli — plus how surface area scales diffusion" widget="sliderLab" config={labCfg} />
+
+  <h2>Exercise, CO₂ and the brain's CO₂ meter</h2>
+  <p>
+    Working muscles respire faster, and the waste — carbon dioxide — is what drives you to
+    breathe harder. The Supplement chain (point 10) is worth memorising in order:
+    <strong>respiration rises → blood CO₂ concentration rises → the brain detects the increase
+    → it signals the breathing muscles → rate and depth both increase</strong> → the extra
+    ventilation flushes the CO₂ out. Notice it is a negative-feedback loop with the brain as
+    the sensor and the diaphragm and intercostals as the effectors — you never decide to
+    breathe harder during a sprint; the CO₂ decides for you.
+  </p>
+  <p>
+    And while you are at it, note the defences on the way in (Supplement point 11):
+    <strong>goblet cells</strong> secrete mucus that traps pathogens and particles,
+    <strong>ciliated cells</strong> sweep the mucus upward to the throat, and rings of
+    <strong>cartilage</strong> (point 7) keep the trachea open like a hosepipe.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Biology 0610 syllabus (2026–2028), unit 11; OpenStax Anatomy and Physiology, ch. 22 (The Respiratory System); West, Respiratory Physiology: The Essentials, 11th ed.</p>
+</TopicPage>

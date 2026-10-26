@@ -1,0 +1,121 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const bbtCfg = {
+  curves: [
+    { expr: '36.4 + r*(1+tanh(2*(x-14)))/2*(1 - 1/(1+exp(-8*(x-26.5))))', label: 'basal body temperature', color: '#b42318', width: 2.4 },
+  ],
+  params: [
+    { name: 'r', label: 'post-ovulatory rise', min: 0.2, max: 0.6, step: 0.05, value: 0.4, unit: '°C' },
+  ],
+  x: { min: 1, max: 28, label: 'day of a 28-day cycle' },
+  y: { min: 36.0, max: 37.2, label: 'temperature (°C)' },
+  crossings: false,
+  height: 320,
+};
+
+const labCfg = {
+  params: [
+    { name: 'cl', label: 'cycle length', min: 26, max: 32, step: 1, value: 28, unit: 'days' },
+    { name: 'pd', label: 'period length', min: 3, max: 7, step: 1, value: 5, unit: 'days' },
+  ],
+  readouts: [
+    { label: 'ovulation day (≈14 days before next period)', expr: 'cl-14', unit: 'day' },
+    { label: 'fertile window opens (sperm survive up to 5 days)', expr: 'cl-19', unit: 'day' },
+    { label: 'egg viable until (≈12–24 h after release)', expr: 'cl-13', unit: 'day' },
+  ],
+};
+
+const fertCfg = {
+  steps: [
+    { math: 'millions of sperm are deposited; they swim via cervix and uterus to the oviduct', note: 'Only the oviduct can be the meeting place — fertilisation never happens in the uterus or vagina.' },
+    { math: 'acrosome enzymes digest a path through the jelly coat', note: 'The sperm\'s cap-shaped acrosome releases enzymes; this is why the egg\'s adaptive features include a coat worth breaking down.' },
+    { math: 'the egg membrane changes — no second sperm may enter', note: 'The moment one sperm gets through, the jelly coat hardens to block the rest. A polyspermic zygote cannot develop.' },
+    { math: 'nuclei fuse: 23 + 23 chromosomes → 46 (zygote)', note: 'Fertilisation is precisely this fusion: two haploid gamete nuclei restoring the full diploid number.' },
+    { math: 'mitosis: zygote → ball of cells (embryo)', note: 'The zygote divides as it drifts down the oviduct — no growth yet, just repeated copying.' },
+    { math: 'embryo implants in the uterus lining (about a week after fertilisation)', note: 'The ball of cells sinks into the thickened lining; the placenta begins to form for nine months of exchange.' },
+  ],
+};
+---
+<TopicPage slug="subjects/biology/intermediate/reproduction-in-humans">
+  <h2>The idea: two gametes, built differently</h2>
+  <p>
+    Sexual reproduction fuses two specialised cells, and each is engineered for its job
+    (unit 16.4). The <strong>sperm</strong> is a delivery vehicle: a <strong>flagellum</strong>
+    for swimming, a midpiece packed with <strong>mitochondria</strong> to power it, and
+    <strong>acrosome enzymes</strong> in the head to cut through the egg's defences — tiny
+    (about 0.05 mm long), motile, and released in their millions. The <strong>egg cell</strong>
+    is the opposite bet: about <strong>0.1–0.2 mm</strong> across (just visible to the naked
+    eye), immobile, <strong>stocked with energy stores</strong> and wrapped in a
+    <strong>jelly coat</strong> that changes at fertilisation to lock out competitors. One egg
+    is released per cycle; the sperm deliver a fleet. Compare them by size, structure,
+    motility and numbers (Core point 6) and you have a favourite exam question.
+  </p>
+
+  <h2>Fertilisation → implantation</h2>
+  <p>
+    Fertilisation is the <strong>fusion of the nuclei</strong> of sperm and egg (Core point 3),
+    and it happens in the <strong>oviduct</strong>. What follows is a six-step relay from
+    encounter to a settled pregnancy:
+  </p>
+
+  <Widget no="1" caption="from a million candidates to one implanted embryo" widget="equationStep" config={fertCfg} />
+
+  <p>
+    Once implanted, the embryo's <strong>placenta</strong> and <strong>umbilical cord</strong>
+    take over exchange: dissolved nutrients and oxygen pass from mother's blood to fetus's,
+    and urea and carbon dioxide pass back — the two bloods stay separate, but substances
+    diffuse across (Supplement, point 9). The <strong>amniotic sac</strong> and fluid cushion
+    the fetus. One warning the syllabus makes explicit: <strong>some pathogens and toxins can
+    cross the placenta</strong> — alcohol, and viruses such as rubella and HIV among them.
+  </p>
+
+  <h2>Hormones and the ~28-day cycle</h2>
+  <p>
+    At puberty, <strong>testosterone</strong> in males and <strong>oestrogen</strong> in
+    females drive the development of secondary sexual characteristics (Core, 16.5). In females,
+    the same hormones run the <strong>menstrual cycle</strong>: about every 28 days the uterus
+    lining is shed (days 1–5), then rebuilds, thickens with blood vessels, and — if no embryo
+    implants — is shed again. Supplement students add the hormone cast: <strong>FSH</strong>
+    matures a follicle, the follicle's <strong>oestrogen</strong> rebuilds the lining and
+    triggers the <strong>LH</strong> surge that causes <strong>ovulation</strong> (about day 14
+    in a 28-day cycle), and <strong>progesterone</strong> from the corpus luteum keeps the
+    lining maintained in case of pregnancy.
+  </p>
+  <p>
+    Progesterone leaves a trace you can measure at home: it raises basal body temperature by
+    about <strong>0.3–0.5 °C</strong> after ovulation, and the fall just before menstruation
+    is what lets cycle-tracking apps guess your ovulation day:
+  </p>
+
+  <Widget no="2" caption="basal body temperature across a cycle — the step up is progesterone's signature after ovulation (~day 14)" widget="plotter" config={bbtCfg} />
+
+  <p>
+    Timing is everything in reproduction, because the gametes' clocks do not match — sperm
+    survive up to about <strong>5 days</strong> in the female tract, the egg only about
+    <strong>12–24 hours</strong>. Move the cycle length and watch the fertile window shift
+    (the luteal phase stays close to 14 days even when cycles vary):
+  </p>
+
+  <Widget no="3" caption="the fertile window of any cycle length — it opens days before ovulation, not on it" widget="sliderLab" config={labCfg} />
+
+  <h2>STIs and HIV</h2>
+  <p>
+    A <strong>sexually transmitted infection</strong> (unit 16.6) is one passed by sexual
+    contact — the pathogen's route, not its species, defines it. <strong>HIV</strong> is a
+    virus that causes such an infection and <strong>may lead to AIDS</strong>, in which the
+    immune system is too damaged to fight infections it would once have shrugged off.
+    Transmission is by body fluids: unprotected sex, shared needles, unscreened blood
+    products, and from mother to child across the placenta or in breast milk — <em>not</em>
+    by everyday contact, sharing food, or insect bites. Controlling the spread (Core point 5)
+    needs no new biology, only barriers and behaviour: condoms (a physical barrier to the
+    pathogen), screening donated blood, sterile needles, treating infected mothers so the
+    virus never reaches the child, and education. Antiretroviral drugs do not cure HIV but
+    hold it in check, which is why AIDS, once a death sentence, is now a manageable condition
+    in treated populations. The same logic — stop the vector, break the chain — is how all
+    STI spread is controlled.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Biology 0610 syllabus (2026–2028), unit 16; OpenStax Anatomy and Physiology, ch. 27–28 (Reproductive System; Development); WHO laboratory manual for the examination of human semen, 6th ed.</p>
+</TopicPage>

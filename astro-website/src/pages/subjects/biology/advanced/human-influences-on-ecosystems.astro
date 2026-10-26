@@ -1,0 +1,148 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const sagCfg = {
+  curves: [
+    { expr: '9 - B*(exp(-0.04*x) - exp(-0.2*x))', label: 'dissolved oxygen downstream', color: '#1d4ed8', width: 2.4 },
+    { expr: '5 + 0*x', label: '≈5 mg/L: many fish stressed', color: '#b42318', width: 1 },
+  ],
+  params: [
+    { name: 'B', label: 'pollution load', min: 2, max: 14, step: 1, value: 10, unit: 'mg/L deficit' },
+  ],
+  x: { min: 0, max: 60, label: 'distance downstream from outfall (km)' },
+  y: { min: 0, max: 10, label: 'dissolved oxygen (mg/L)' },
+  crossings: false,
+  height: 340,
+};
+
+const timelineCfg = {
+  unit: 'year',
+  events: [
+    { year: 1962, title: 'Silent Spring', text: 'Rachel Carson\'s book documents the damage pesticides cause through food chains — often credited with launching the modern environmental movement.', tag: 'pollution' },
+    { year: 1972, title: 'Stockholm Conference', text: 'The first UN conference on the human environment; the UN Environment Programme (UNEP) is founded the same year.', tag: 'pollution' },
+    { year: 1973, title: 'CITES signed', text: 'The Convention on International Trade in Endangered Species regulates cross-border trade in wild animals and plants.', tag: 'biodiversity' },
+    { year: 1985, title: 'Antarctic ozone hole reported', text: 'Farman, Gardiner and Shanklin publish measurements of severe springtime ozone depletion over Antarctica in Nature.', tag: 'pollution' },
+    { year: 1987, title: 'Montreal Protocol', text: 'Nations agree to phase out CFCs — the pollutants behind ozone loss; eventually ratified by every UN member state.', tag: 'pollution' },
+    { year: 1992, title: 'Rio Earth Summit', text: 'The Convention on Biological Diversity opens for signature at Rio; conservation gets its first global treaty framework.', tag: 'biodiversity' },
+    { year: 2015, title: 'Paris Agreement and SDGs', text: '195 states adopt the Paris Agreement on climate change; the UN Sustainable Development Goals are adopted the same year.', tag: 'climate' },
+    { year: 2022, title: 'Kunming–Montreal framework', text: 'Nations adopt the Global Biodiversity Framework, including the "30 by 30" goal of protecting 30% of land and sea by 2030.', tag: 'biodiversity' },
+  ],
+};
+
+const yieldCfg = {
+  params: [
+    { name: 'r', label: 'population growth rate', min: 0.1, max: 1.5, step: 0.1, value: 0.6, unit: '/yr' },
+    { name: 'K', label: 'carrying capacity', min: 5000, max: 50000, step: 5000, value: 20000, unit: 'tonnes' },
+    { name: 'f', label: 'stock as fraction of K', min: 0, max: 1, step: 0.05, value: 0.5, unit: '' },
+  ],
+  readouts: [
+    { label: 'stock now', expr: 'f*K', unit: 'tonnes' },
+    { label: 'population growth this year = max sustainable catch', expr: 'r*f*K*(1-f)', unit: 'tonnes/yr' },
+    { label: 'maximum sustainable yield (at stock = K/2)', expr: 'r*K/4', unit: 'tonnes/yr' },
+  ],
+};
+---
+<TopicPage slug="subjects/biology/advanced/human-influences-on-ecosystems">
+  <h2>The idea: one species remakes the biosphere</h2>
+  <p>
+    No organism has ever rearranged the planet the way <em>Homo sapiens</em> has — converting
+    forests to fields, doubling the nitrogen cycle, moving species between continents. Unit 20
+    of the 0610 syllabus is the accounting exercise for that transformation: how we boosted
+    <strong>food supply</strong> (20.1), what <strong>habitat destruction</strong> costs
+    (20.2), which <strong>pollutants</strong> we add (20.3), and how <strong>conservation</strong>
+    tries to keep what remains (20.4). Every section pairs a benefit with a bill; the
+    advanced-level skill is explaining the bill in biology.
+  </p>
+
+  <h2>Feeding eight billion (20.1)</h2>
+  <p>
+    Food production rose because we engineered every link: <strong>agricultural machinery</strong>
+    to farm larger areas efficiently, <strong>chemical fertilisers</strong> to replace
+    <em>nitrate</em> and other minerals, <strong>insecticides</strong> and
+    <strong>herbicides</strong> to cut the losses pests and weeds take, and
+    <strong>selective breeding</strong> to raise yields of crops and livestock (Core list, all
+    five). The costs show up in two systems the syllabus asks you to weigh:
+    <strong>monocultures</strong> — vast single-crop fields — are efficient to harvest but
+    strip the soil of specific minerals, encourage pest build-up and reduce biodiversity;
+    <strong>intensive livestock</strong> production maximises output per animal but raises
+    welfare, disease-spread and waste-pollution concerns.
+  </p>
+
+  <h2>Bulldozing habitats (20.2)</h2>
+  <p>
+    <strong>Biodiversity</strong> is simply the number of different species in an area — and it
+    falls when habitat goes: land cleared for housing, crops and livestock, resources
+    extracted, fresh and marine waters polluted (Core reasons). <strong>Deforestation</strong>
+    is the case study to explain (Supplement): removing forest <strong>reduces biodiversity
+    and causes extinctions</strong> (specialists lose their only habitat), <strong>exposes
+    soil</strong> that then erodes, <strong>increases flooding</strong> (no canopy to slow
+    rainfall, no roots to hold water), and <strong>raises atmospheric CO₂</strong> — the trees
+    are no longer photosynthesising, and often they are burned. Every food web those trees
+    supported simplifies from the bottom up.
+  </p>
+
+  <h2>Pollution: the oxygen sag (20.3)</h2>
+  <p>
+    The clearest cause-and-effect chain in ecology is <strong>eutrophication</strong>
+    (Supplement): <strong>untreated sewage or excess fertiliser</strong> washes
+    <strong>nitrate</strong> and other ions into water → <strong>producers</strong> (algae)
+    grow explosively → when they die, <strong>decomposers</strong> multiply, using
+    <strong>aerobic respiration</strong> → <strong>dissolved oxygen falls</strong> →
+    <strong>fish and other oxygen-demanders die</strong>. The result downstream is the classic
+    <strong>oxygen sag curve</strong>: oxygen crashes after the outfall, then recovers as the
+    organic load is consumed and re-aeration wins back:
+  </p>
+
+  <Widget no="1" caption="dissolved oxygen against distance from a sewage outfall — the deeper the load, the deeper the sag (saturation ≈9 mg/L in cool water)" widget="plotter" config={sagCfg} />
+
+  <p>
+    Two more pollutants complete 20.3. <strong>Non-biodegradable plastics</strong> persist in
+    aquatic and terrestrial habitats: they fragment into microplastics, are ingested by
+    animals, smother soil and — floating in ocean gyres — entangle and choke marine life, all
+    while never rotting away. <strong>Methane and carbon dioxide</strong> are greenhouse
+    gases: added faster than the carbon cycle absorbs them, they strengthen the
+    <strong>enhanced greenhouse effect</strong> and drive <strong>climate change</strong>,
+    shifting rainfall, melting ice and pushing species that cannot move fast enough toward
+    extinction.
+  </p>
+
+  <h2>Conservation: using without using up (20.4)</h2>
+  <p>
+    A <strong>sustainable resource</strong> is one produced as fast as it is removed, so it
+    never runs out — the definition at the heart of Core point 1. Species become
+    <strong>endangered or extinct</strong> through climate change, habitat destruction,
+    hunting, overharvesting, pollution and <strong>introduced species</strong> that outcompete
+    natives (Core point 3). The remedies are practical: monitoring and protecting species and
+    habitats, education, <strong>captive breeding programmes</strong>, and
+    <strong>seed banks</strong> (Core point 4) — with Supplement students adding artificial
+    insemination and IVF to captive breeding, and the genetic warning that small populations
+    lose variation, making them fragile against disease and change. The policy milestones
+    form a real timeline:
+  </p>
+
+  <Widget no="2" caption="sixty years of environmental policy — scrub through it (all dates verifiable)" widget="timeline" config={timelineCfg} />
+
+  <p>
+    Fish stocks show the arithmetic best. A population growing logistically gains biomass
+    fastest at <strong>half its carrying capacity</strong> — so the smartest fishery keeps the
+    stock near K/2 and harvests exactly that growth, forever. Harvest more than the growth and
+    the stock shrinks; keep at it and the fishery collapses, which is what quotas, closed
+    seasons, protected areas, net mesh sizes and monitoring (Supplement, point 6) are all
+    designed to prevent. Play with the model:
+  </p>
+
+  <Widget no="3" caption="logistic growth — the catch you can take forever equals the growth you leave alive" widget="sliderLab" config={yieldCfg} />
+
+  <p>
+    Why bother at all? The syllabus ends with the reasons (Supplement, point 7):
+    <strong>maintaining biodiversity</strong>, <strong>reducing extinction</strong>,
+    <strong>protecting vulnerable ecosystems</strong>, and keeping ecosystem functions we
+    depend on — <strong>nutrient cycling</strong> and <strong>resource provision</strong>:
+    food, drugs (many first found in wild plants and fungi), fuel, and genes we have not yet
+    needed. Extinction forecloses options permanently; conservation is the refusal to sign
+    that receipt.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Biology 0610 syllabus (2026–2028), unit 20; OpenStax Biology 2e, ch. 47 (Conservation Biology and Biodiversity); UN treaties and milestones (CITES 1973; Montreal Protocol 1987; CBD 1992; Paris Agreement 2015; Kunming–Montreal GBF 2022).</p>
+</TopicPage>

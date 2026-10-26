@@ -1,0 +1,143 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const sunCfg = {
+  curves: [
+    { expr: '90 - abs(3 + 23.4*sin(2*pi*(x-81)/365))', label: 'Manaus, Brazil 3°S', color: '#b45309', width: 2.4 },
+    { expr: '90 - abs(66.5 + 23.4*sin(2*pi*(x-81)/365))', label: 'Antarctic Circle 66.5°S', color: '#1d4ed8', width: 2 },
+    { expr: '90 - abs(90 + 23.4*sin(2*pi*(x-81)/365))', label: 'South Pole 90°S', color: '#7c3aed', width: 2 },
+  ],
+  x: { min: 0, max: 365, label: 'day of year' },
+  y: { min: -30, max: 95, label: 'noon sun angle (°)' },
+  crossings: false,
+  height: 350,
+};
+
+const windCfg = {
+  type: 'vector',
+  unit: 'km/h',
+  x: { min: -100, max: 100 },
+  y: { min: -100, max: 100 },
+  start: [15, -55],
+  height: 320,
+};
+
+const trophicCfg = {
+  params: [
+    { name: 'krill', label: 'krill biomass', min: 50, max: 800, step: 10, value: 380, unit: 'Mt' },
+    { name: 'eff', label: 'energy passed on', min: 5, max: 25, step: 1, value: 10, unit: '%' },
+  ],
+  readouts: [
+    { label: 'krill-eating predators (squid, fish, penguins)', expr: 'krill*eff/100', unit: 'Mt' },
+    { label: 'seals, whales, orca level', expr: 'krill*(eff/100)^2', unit: 'Mt' },
+    { label: 'top carnivore level', expr: 'krill*(eff/100)^3', unit: 'Mt' },
+  ],
+};
+---
+<TopicPage slug="subjects/geography/foundational/ecosystems-and-biomes">
+  <h2>The idea</h2>
+  <p>
+    An ecosystem is a working machine: organisms plus the physical conditions they live in,
+    linked by two flows — <strong>energy</strong> running one way from sunlight through plants
+    to consumers, and <strong>matter</strong> cycling round and round. At the largest scale,
+    similar climates produce similar ecosystems: biomes. The syllabus (topics 3.1–3.4) demands
+    two in depth, and they are the two most extreme answers to the same question — how to run
+    life on Earth's energy budget. The <strong>Antarctic ecosystem</strong> (syllabus 3.1.1)
+    is the continent of Antarctica and the Southern Ocean around it: about 14 million km² of
+    rock and ice carrying over 2 km of ice on average, holding roughly 90% of all the ice on
+    Earth. The <strong>tropical rainforest</strong> (3.3.1) bands the equator in the Amazon,
+    the Congo Basin and South-East Asia, and packs more species into a hectare than Antarctica
+    has in its entire two flowering plants.
+  </p>
+
+  <h2>Two climates, one engine</h2>
+  <p>
+    Both climates are set by the same geometry. In Antarctica (3.1.2), high latitude means the
+    sun barely lifts above the horizon even at midsummer; its energy spreads thin, cold dense
+    air sinks and pools as <strong>high pressure</strong>, and precipitation is so sparse that
+    the interior is technically a polar desert — under 50 mm of water equivalent a year. Vostok
+    station's annual mean is about −55 °C; the world's lowest recorded surface temperature,
+    −89.2 °C, was measured there on 21 July 1983. In the rainforest (3.3.2) the near-overhead
+    sun beats down all year, heating moist air which rises in <strong>low pressure</strong>
+    convection and dumps afternoon thunderstorms: Manaus at 3°S averages around 27 °C every
+    month and over 2,200 mm of rain a year.
+  </p>
+
+  <Widget no="1" caption="noon sun elevation through a year: the Amazon's steady high sun vs the Antarctic's skimming light (below zero = polar night)" widget="plotter" config={sunCfg} />
+
+  <p>
+    Pressure belts also write the winds (3.1.4, 3.3.4). Air spiralling off the polar high
+    accelerates downhill to the coast as <strong>katabatic winds</strong> — Cape Denison,
+    where Douglas Mawson wintered in 1912, is the windiest place at sea level on Earth, with an
+    annual mean around 70–80 km/h. At the equator, air rushing into the low-pressure belt is
+    deflected west as the <strong>trade winds</strong>. Drag the arrow below: map view, right
+    is east, up is north — length is speed, and the readouts give the components.
+  </p>
+
+  <Widget no="2" caption="map-view wind vector: drag it — a southerly howler for an Antarctic coastal station, then a gentle easterly trade for the rainforest" widget="diagramBuilder" config={windCfg} />
+
+  <h2>Life at the extremes</h2>
+  <p>
+    Antarctica's land is nearly sterile, but its ocean teems (3.1.3). Diatoms feed
+    <strong>krill</strong>, shrimp-like animals a few centimetres long that swarm in shoals
+    visible from space; krill feed squid, fish, penguins, seals and whales — the keystone of
+    the whole web. Adaptations are fierce: krill shrink and starve through winter under the
+    ice; emperor penguins incubate their egg through midwinter darkness, males huddling at
+    −40 °C and fasting for up to four months; icefish carry natural antifreeze glycoproteins
+    in their blood. The rainforest answers differently (3.3.3, 3.3.4): structure stacked in
+    layers — emergents past 50 m, a light-hungry canopy, a dim understorey, a floor where
+    buttress roots prop giants in thin, poor soil. The nutrients do not live in the ground;
+    they live in the biomass, recycled so fast by fungi and falling litter that clearing the
+    forest leaves ground good for pasture for only a few years.
+  </p>
+
+  <Widget no="3" caption="the 10% rule: why a food web that feeds the largest animals on Earth must stand on hundreds of millions of tonnes of krill" widget="sliderLab" config={trophicCfg} />
+
+  <p>
+    Only about 10% of the energy at each level survives the trip up (roughly the syllabus's
+    interrelationships idea, 3.1.4/3.3.4, made arithmetic). That is why blue whales — the
+    largest animals ever — eat several tonnes of krill a day, and why 3.2.2's warning bites:
+    if krill collapse, everything above it feels the shortage.
+  </p>
+
+  <h2>Threats and impacts</h2>
+  <p>
+    The syllabus lists the Antarctic's threats (3.2.1): <strong>resource exploitation</strong>
+    (krill fishing now takes up to ~450,000 tonnes a year, against a precautionary 620,000
+    tonne trigger limit), <strong>climate change</strong> (the Peninsula warmed by close to
+    3 °C over the late 20th century; satellites reckon the ice sheet is losing around 150
+    billion tonnes a year), <strong>fishing</strong> and surging <strong>tourism</strong>
+    (just over 100,000 visitors in the 2022–23 season). The impacts of destruction (3.2.2)
+    cascade: krill under-ice habitat lost means the pyramid in fig. 3 collapses upward; lost
+    ice means darker ocean absorbing more heat; and the West Antarctic ice sheet alone holds
+    roughly 3 m of sea-level rise.
+  </p>
+  <p>
+    The named rainforest example (3.4.4) is the <strong>Brazilian Amazon</strong>. Threats
+    (3.4.1): logging, road building (the Trans-Amazonian highway opened the interior),
+    cattle ranching (most cleared land becomes pasture), soy farming, hydroelectric dams
+    (Belo Monte displaced tens of thousands) and settlements. Impacts (3.4.2): about 17% of
+    the original forest is gone; the Amazon recycles roughly half its own rainfall through
+    'flying rivers', and scientists warn of a tipping point near 20–25% clearing, after which
+    forest flips to savanna and its carbon returns to the sky.
+  </p>
+
+  <h2>Managing two commons</h2>
+  <p>
+    Antarctic management (3.2.3) is a rare success of international law: the
+    <strong>Antarctic Treaty</strong> (1959, in force 1961, now over 50 parties) reserves the
+    continent for peace and science; the <strong>Madrid Protocol</strong> (1991) bans mining
+    and requires environmental impact surveys for every activity; <strong>CCAMLR</strong>
+    (1982) runs ecosystem-based fisheries rules, including the Ross Sea marine protected area
+    (2016) of about two million km² — the largest on Earth. Weaknesses: every decision needs
+    consensus, so MPA proposals can stall, and policing 14 million km² is hard.
+    Amazon management swings with politics: protected areas and indigenous territories hold
+    clearing down, the 2006 soy moratorium keeps traders out of newly cleared land, and 140+
+    countries pledged at Glasgow (2021) to halt deforestation by 2030. The numbers show policy
+    works — annual clearing fell from ~27,700 km² (2004) to ~4,600 (2012) — and that it must
+    be sustained: it rebounded to ~11,600 by 2022 before falling again in 2023 (INPE PRODES,
+    rounded).
+  </p>
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Geography 0460 syllabus (2027–2029), topics 3.1–3.4; IMBIE Antarctic ice-mass balance (Nature, 2023); CCAMLR and Antarctic Treaty Secretariat records; INPE PRODES deforestation data; IAATO visitor statistics.</p>
+</TopicPage>

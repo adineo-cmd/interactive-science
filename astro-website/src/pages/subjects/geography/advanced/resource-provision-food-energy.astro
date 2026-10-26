@@ -1,0 +1,125 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const foodCfg = {
+  params: [
+    { name: 'pop', label: 'population', min: 6, max: 11, step: 0.1, value: 8, unit: 'bn' },
+    { name: 'area', label: 'cereal area', min: 0.6, max: 0.8, step: 0.01, value: 0.71, unit: 'bn ha' },
+    { name: 'yield', label: 'average yield', min: 2, max: 5, step: 0.01, value: 4, unit: 't/ha' },
+  ],
+  readouts: [
+    { label: 'world cereal output', expr: 'area*yield', unit: 'Gt/yr' },
+    { label: 'cereal per person', expr: 'area*yield*1000/pop', unit: 'kg/yr' },
+    { label: 'kcal per person per day, if all eaten', expr: 'area*yield*1000/pop*3300/365', unit: 'kcal' },
+  ],
+};
+
+const energyCfg = {
+  points: [
+    { points: [[2010, 62.5], [2023, 58]], color: '#b42318', label: 'coal + gas', mode: 'line' },
+    { points: [[2010, 16.0], [2023, 14.3]], color: '#1d4ed8', label: 'hydro', mode: 'line' },
+    { points: [[2010, 12.9], [2023, 9.1]], color: '#7c3aed', label: 'nuclear', mode: 'line' },
+    { points: [[2010, 1.6], [2015, 3.5], [2020, 6.0], [2023, 7.8]], color: '#0f766e', label: 'wind', mode: 'line' },
+    { points: [[2010, 0.2], [2015, 1.1], [2020, 3.2], [2023, 5.5]], color: '#b45309', label: 'solar', mode: 'line' },
+  ],
+  x: { min: 2005, max: 2026, label: 'year' },
+  y: { min: 0, max: 70, label: 'share of world electricity (%)' },
+  crossings: false,
+  height: 350,
+};
+
+const resTimeline = {
+  unit: 'year',
+  events: [
+    { year: 1845, title: 'The potato blight', text: 'Ireland\'s single-crop dependence fails: about 1 million die and over a million emigrate. Monoculture risk enters geography forever.', tag: 'food' },
+    { year: 1944, title: 'Borlaug starts in Mexico', text: 'Norman Borlaug begins breeding dwarf, disease-resistant wheat — the seed of the Green Revolution.', tag: 'food' },
+    { year: 1968, title: '"Green Revolution" coined', text: 'USAID chief William Gaud names the wave of new seeds, irrigation and fertiliser that dramatically raises yields across Asia and Latin America.', tag: 'food' },
+    { year: 1973, title: 'The first oil shock', text: 'The OPEC embargo roughly quadruples oil prices within months; energy security becomes a household phrase.', tag: 'energy' },
+    { year: 1986, title: 'Chernobyl', text: 'A reactor explodes in Ukraine, spreading contamination across Europe and chilling nuclear ambition worldwide.', tag: 'energy' },
+    { year: 2008, title: 'The food price crisis', text: 'World food prices spike to record highs and riots hit dozens of countries; food security moves to the top of every agenda.', tag: 'food' },
+    { year: 2022, title: 'War in the breadbasket', text: 'Russia and Ukraine — normally around a quarter of world wheat exports — go to war; food and energy prices spike together.', tag: 'food' },
+    { year: 2023, title: 'Renewables reach ~30%', text: 'Renewables supply about 30% of world electricity for the first time in decades, led by solar\'s steep climb (Ember).', tag: 'energy' },
+  ],
+};
+---
+<TopicPage slug="subjects/geography/advanced/resource-provision-food-energy">
+  <h2>How food is produced</h2>
+  <p>
+    Farming types (syllabus 10.1.1) run on one axis: who eats the output.
+    <strong>Subsistence</strong> farming feeds the family first — monsoon rice paddies in
+    Bangladesh; <strong>commercial</strong> farming sells into markets — Kansas wheat or
+    Brazilian soy. Within that, <strong>arable</strong> (crops), <strong>pastoral</strong>
+    (animals) and <strong>mixed</strong> describe the product; and at the high-tech edge,
+    <strong>hydroponics, aeroponics and aquaponics</strong> grow food without soil at all —
+    the Netherlands, smaller than Scotland, is the world's second-largest agricultural
+    exporter by value. Every farm is a <strong>system</strong> (10.1.2): inputs (labour,
+    seed, water, fertiliser, machinery), processes (ploughing, sowing, irrigating,
+    harvesting), outputs (grain, milk, meat — or little surplus at all, which is the
+    subsistence trap).
+  </p>
+
+  <h2>Enough food, and not enough</h2>
+  <p>
+    Global patterns (10.2.1) are stark: North America and Europe eat roughly 3,400–3,700
+    kcal per person per day; Sub-Saharan Africa averages around 2,400–2,500. Yet the world
+    grows enough for everyone — the calculator below shows it. Global cereal output is about
+    2.8 Gt a year from ~710 million hectares at ~4 t/ha (FAO figures, rounded), which is
+    ~355 kg of cereal per person per year — over 3,000 kcal a day <em>if it reached a human
+    mouth directly</em> instead of animal feed, fuel tanks and landfills. It doesn't: FAO's
+    2023 report counts ~735 million undernourished people and ~2.4 billion moderately or
+    severely food insecure. The geographer's insight, from economist Amartya Sen, is that
+    most hunger is a failure of <em>access</em> (poverty, conflict, distribution), not of
+    global supply — roughly a third of food is lost or wasted between field and plate.
+    Strategies to raise supply (10.2.3, 10.3.3) include irrigation, better storage, new seed
+    varieties and the Great Green Wall against Sahelian desertification; food aid (10.3.4)
+    saves lives in famine — Ethiopia 1984–85 — but can undercut local farmers when free
+    grain floods the same market. Globalisation of food (10.2.4, 10.2.5) delivers strawberries
+    in December, but transmits shocks: when war hit the Black Sea breadbasket in 2022, prices
+    jumped in Cairo and Nairobi.
+  </p>
+
+  <Widget no="1" caption="the world's calorie budget: drag population and yields — supply per person stays comfortable on paper, which is exactly why hunger is a distribution problem" widget="sliderLab" config={foodCfg} />
+
+  <h2>Energy: the global mix in motion</h2>
+  <p>
+    Energy types (10.4.1) split into <strong>renewables</strong> (biomass, geothermal,
+    hydroelectric, solar, tidal, wave, wind), <strong>non-renewables</strong> (coal, oil,
+    gas, nuclear), and <strong>fuelwood</strong> — renewable only if regrown. Demand keeps
+    rising (10.5.1) with population and industrialisation, but the supply mix is shifting
+    unevenly: fig. 2 shows electricity, the fastest-moving sector. Coal-plus-gas slid from
+    ~62% to ~58% of world generation between 2010 and 2023, hydro holds near 14–16%, nuclear
+    sagged after Fukushima, and wind plus solar climbed from ~2% to over 13% (Ember, rounded).
+    Where surpluses and deficits lie (10.5.2) is mostly geology and luck: the Gulf sits on a
+    third of the world's oil; Japan imports nearly all its energy, so <strong>energy
+    security</strong> — reliable, affordable supply — is existential there. Before 2022,
+    Russia supplied around 40% of Europe's imported gas; the war showed what dependence
+    costs. Mixes also differ by development level (10.5.3): firewood still dominates household
+    energy in much of Sub-Saharan Africa, while Iceland runs on hydro and geothermal and
+    HICs burn money-efficient mixes.
+  </p>
+
+  <Widget no="2" caption="world electricity by source, 2010 to 2023 (shares in %, rounded, Ember) — watch solar's slope against the fossil plateau" widget="plotter" config={energyCfg} />
+
+  <h2>The price of power — and managing it</h2>
+  <p>
+    Every source has a bill (10.6.1). Counted over its whole life, coal emits ~820 g of CO₂
+    per kWh, gas ~490, solar ~45 and wind ~11 (IPCC medians). Land matters too: nuclear is
+    compact but leaves waste for millennia; wind farms occupy wide areas yet the farming goes
+    on between turbines; dams flood valleys — China's Three Gorges displaced over a million
+    people — and reservoirs emit methane. Extraction scars: mountaintop coal, oil spills
+    (Exxon Valdez 1989, Deepwater Horizon 2010), and around 40% of the US corn crop going
+    into ethanol, competing with plates. The named example (10.6.4) is <strong>Brazil</strong>:
+    its electricity is about 60% hydro, transport runs heavily on sugarcane ethanol (~30
+    billion litres a year, a programme begun with Proálcool in 1975), and most new cars are
+    flex-fuel — yet Brazil is also a major offshore oil exporter, and dams and ethanol push
+    against the rainforest. Managing supplies sustainably (10.6.2, 10.6.3) means stacking
+    strategies: efficiency first (cheapest barrel is the one never burned), diversified
+    renewables for security, storage and grids to firm them up, and honest pricing of the
+    emissions. The 1973 shock taught the lesson once; the 2022 spike set it as homework.
+  </p>
+
+  <Widget no="3" caption="food and energy are one story of provision: blight to breadbasket war, embargo to renewables — the shocks that rewrote supply" widget="timeline" config={resTimeline} />
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Geography 0460 syllabus (2027–2029), topic 10; FAO, The State of Food Security and Nutrition in the World 2023 and FAOSTAT; Ember Global Electricity Review 2024; IPCC lifecycle emissions medians (AR5 Annex III); EPE/UNICA Brazil energy data.</p>
+</TopicPage>

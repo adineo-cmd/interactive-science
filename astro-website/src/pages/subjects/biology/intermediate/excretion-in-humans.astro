@@ -1,0 +1,119 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const glucoseCfg = {
+  curves: [
+    { expr: 'gfr*x/100', label: 'filtered load (mg/min)', color: '#1d4ed8' },
+    { expr: 'max(0, gfr*(x-180)/100)', label: 'excreted in urine (mg/min)', color: '#b42318' },
+  ],
+  params: [
+    { name: 'gfr', label: 'GFR', min: 100, max: 150, step: 5, value: 125, unit: 'mL/min' },
+  ],
+  x: { min: 0, max: 400, label: 'plasma glucose (mg/dL)' },
+  y: { min: 0, max: 600, label: 'mg per minute' },
+  crossings: false,
+  height: 340,
+};
+
+const labCfg = {
+  params: [
+    { name: 'gfr', label: 'GFR', min: 100, max: 150, step: 5, value: 125, unit: 'mL/min' },
+    { name: 're', label: 'water reabsorbed', min: 98, max: 99.5, step: 0.1, value: 99.4, unit: '%' },
+  ],
+  readouts: [
+    { label: 'filtrate formed per day', expr: 'gfr*1440/1000', unit: 'L/day' },
+    { label: 'urine produced per day', expr: 'gfr*1440/1000*(1 - re/100)', unit: 'L/day' },
+  ],
+};
+
+const nephronCfg = {
+  steps: [
+    { math: 'excess amino acids arrive at the liver', note: 'Protein you eat but do not build with cannot be stored — the surplus amino acids must be dealt with.' },
+    { math: 'deamination: the NH₂ group is removed', note: 'The liver strips off the nitrogen-containing part of each amino acid, leaving a carbohydrate residue that can be respired or converted.' },
+    { math: 'the nitrogen part → urea', note: 'The amine group first forms ammonia — highly toxic — which the liver converts to urea, far less toxic and far less water-hungry to transport.' },
+    { math: 'glomerulus: ultrafiltration of water, glucose, urea, ions', note: 'Blood pressure squeezes small molecules out of the capillary knot into the nephron; blood cells and proteins stay behind.' },
+    { math: 'nephron: all glucose + some ions + most water reabsorbed', note: 'Selective reabsorption hauls back everything worth keeping. What remains — urea, excess water, excess ions — is urine.' },
+    { math: 'urine: urea + excess water + excess ions → bladder', note: 'Collecting ducts deliver it to the renal pelvis, down the ureters, into the bladder — a variable mix, tuned minute by minute.' },
+  ],
+};
+---
+<TopicPage slug="subjects/biology/intermediate/excretion-in-humans">
+  <h2>The idea: taking out the rubbish</h2>
+  <p>
+    <strong>Excretion</strong> is the removal from the body of the waste products of
+    metabolism — not undigested food, which leaves by a different door. Two organs do almost
+    all of it (unit 13.1, Core): the <strong>lungs</strong> excrete carbon dioxide, and the
+    <strong>kidneys</strong> excrete <strong>urea, excess water and excess ions</strong>.
+    Why bother? Because urea is toxic (Core point 9): let it accumulate in the blood and it
+    poisons cells. Water and salt balance matter just as much — too much or too little
+    dissolved stuff and your cells stop working.
+  </p>
+
+  <h2>Where urea comes from: the liver</h2>
+  <p>
+    Urea is made, not filtered straight from food. Amino acids you cannot use are taken to the
+    <strong>liver</strong>, which performs <strong>deamination</strong> (Supplement, point 8):
+    the nitrogen-containing part is removed and converted to urea, while the rest is
+    assimilated — built back into proteins (Core point 6) or respired. The urea then travels
+    in the blood to the kidneys. The plumbing is simple: two <strong>kidneys</strong>, each
+    with an outer <strong>cortex</strong> and inner <strong>medulla</strong> (Supplement,
+    point 4), two <strong>ureters</strong> draining to the <strong>bladder</strong>, and a
+    <strong>urethra</strong> out.
+  </p>
+  <p>
+    It is worth pausing on why the liver bothers with the two-step ammonia-to-urea detour.
+    Ammonia is small and extremely soluble, but also extremely toxic — it would poison nerve
+    cells at low concentrations and demands large volumes of water to flush. Urea is far less
+    toxic, so it can ride the blood at useful concentrations without harming anything, and the
+    kidneys can then choose how much water to spend excreting it. That trade-off — toxicity
+    against water cost — is the same logic that shaped uric acid in birds and insects, and it
+    is why excretion and water balance can never be discussed separately.
+  </p>
+
+  <h2>The nephron: filter, then re-choose</h2>
+  <p>
+    Each kidney packs about a million <strong>nephrons</strong>, and each one works in two
+    moves (Supplement, point 5). First, <strong>ultrafiltration</strong>: blood pressure in the
+    <strong>glomerulus</strong> forces water, glucose, urea and ions out of the blood into the
+    nephron. Then, <strong>selective reabsorption</strong>: the nephron takes back
+    <strong>all of the glucose, some of the ions and most of the water</strong>. The graphs
+    below show the system's safety margin — glucose is normally reabsorbed completely, and
+    only appears in urine when plasma levels exceed the renal threshold of about
+    <strong>180 mg/dL</strong>, as in untreated diabetes:
+  </p>
+
+  <Widget no="1" caption="filtered load vs what is excreted — the curves separate only above the renal threshold (≈180 mg/dL)" widget="plotter" config={glucoseCfg} />
+
+  <p>
+    The scale of the filtering is hard to believe until you compute it. A GFR of
+    <strong>125 mL per minute</strong> sounds small; over a day it is <strong>180 litres</strong>
+    — about four times your blood volume, filtered and mostly reabsorbed:
+  </p>
+
+  <Widget no="2" caption="180 L in, about 1–2 L out — the arithmetic of selective reabsorption" widget="sliderLab" config={labCfg} />
+
+  <p>
+    One hormone completes the water-balance story — though note that ADH is <em>not</em>
+    listed in the 0610 2026–2028 syllabus statements, so treat it as extension beyond the
+    exam: <strong>ADH</strong> (antidiuretic hormone) is released by the pituitary when the
+    blood is too concentrated, and makes the collecting duct more permeable to water, so more
+    is reabsorbed and the urine becomes concentrated and small in volume. Drink a litre of
+    water and ADH secretion switches off; pale, copious urine follows within the hour.
+  </p>
+
+  <p>
+    The whole apparatus is dialysis by another name — the same partially permeable membranes
+    you met in the osmosis lesson, run at blood pressure. It is also why kidney failure is
+    survivable: a dialysis machine passes the patient's blood over a selectively permeable
+    membrane against fresh dialysis fluid, letting urea and excess ions diffuse away while
+    keeping cells and proteins in, doing for a few hours what a million nephrons do
+    continuously. Transplant a working kidney and the machine becomes unnecessary — but the
+    recipient's immune system must be suppressed, because the new kidney is, genetically,
+    somebody else's.
+  </p>
+
+  <Widget no="3" caption="from surplus protein to concentrated urine — the whole route in six steps" widget="equationStep" config={nephronCfg} />
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Biology 0610 syllabus (2026–2028), unit 13; OpenStax Anatomy and Physiology, ch. 25 (The Urinary System); Guyton &amp; Hall, Textbook of Medical Physiology, 14th ed. (GFR 125 mL/min, renal threshold).</p>
+</TopicPage>

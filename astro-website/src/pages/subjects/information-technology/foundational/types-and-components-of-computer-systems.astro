@@ -1,0 +1,95 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const fdeCfg = {
+  steps: [
+    { math: '1 · fetch', note: 'The control unit (CU) sends the address of the next instruction along the address bus, and the instruction is fetched from internal memory (RAM) into the CPU. Programs are held in RAM precisely so the CPU can fetch from them at full speed.' },
+    { math: '2 · decode', note: 'Inside the control unit the instruction is decoded: what operation is this — add, compare, copy, jump — and what data does it act on? The CU directs the rest of the CPU accordingly; it is the traffic controller of the system.' },
+    { math: '3 · execute', note: 'The arithmetic and logic unit (ALU) does the work: addition, comparison, logical operations. The result is written back, the program counter moves on, and the cycle starts again — billions of times per second, which is what a clock speed measured in GHz means.' },
+    { math: '4 · RAM — the volatile workspace', note: 'Random access memory is read/write and volatile: it holds the operating system, programs and data currently in use, and loses everything at power-off. Backing storage (a hard drive or SSD) is slower but keeps its contents — which is why work must be saved.' },
+    { math: '5 · ROM — the bootstrap', note: 'Read-only memory is non-volatile and (as its name says) read-only in normal use: its startup instructions are fixed at manufacture. It is what the CPU executes the instant power arrives, waking the machine far enough to load the operating system from storage into RAM.' },
+  ],
+};
+
+const mooreCfg = {
+  points: [
+    { points: [[1971, 3.36], [1985, 5.44], [1993, 6.49], [2000, 7.62], [2010, 9.07], [2020, 10.2], [2022, 11.06]], color: '#b42318', label: 'log10 of transistor count per CPU', mode: 'line' },
+  ],
+  x: { min: 1968, max: 2026, label: 'year' },
+  y: { min: 3, max: 12, label: 'log10 transistors' },
+  crossings: false,
+};
+---
+<TopicPage slug="subjects/information-technology/foundational/types-and-components-of-computer-systems">
+  <h2>The idea</h2>
+  <p>
+    Every computer system — from a desktop under a desk to the smartphone in a pocket — is one
+    idea repeated: <strong>hardware</strong>, the physical components, running
+    <strong>software</strong>, the programs that control the operation of the computer and
+    process the data. Cambridge IGCSE ICT 0417 opens with exactly this distinction (section 1.1)
+    and then dissects the machine: the CPU that processes instructions (1.2), the operating
+    system that lets you talk to it (1.3), the types of computer those parts get packed into
+    (1.4), and the emerging technologies — artificial intelligence and extended reality — that
+    are redrawing the category (1.5).
+  </p>
+
+  <h2>Inside the machine: fetch, decode, execute</h2>
+  <p>
+    The CPU's job, in the syllabus's words, is processing instructions entered into the computer
+    in order to produce an output. It does this with a three-beat loop — fetch, decode, execute —
+    shared between its two headline parts: the control unit that sequences and directs, and the
+    arithmetic and logic unit that computes. The loop's memory partners matter as much as the
+    loop itself, and the RAM/ROM split is a guaranteed exam question. Walk the whole cycle.
+  </p>
+
+  <Widget no="1" caption="the fetch–decode–execute cycle, plus the two memories that make it possible — RAM and ROM" widget="equationStep" config={fdeCfg} />
+
+  <p>
+    The memory split is worth stating as a contrast table you can recite: <strong>RAM</strong> —
+    read/write, volatile, holds what is currently in use, contents lost on power-off;
+    <strong>ROM</strong> — read-only, non-volatile, holds the bootstrap, contents fixed at
+    manufacture. One is a desk you work on; the other is the instructions glued to the inside of
+    the machine's lid telling it how to wake up. Everything else the syllabus lists as hardware
+    — motherboard, graphics card, sound card, network interface card, storage devices, input and
+    output devices — exists to feed the cycle or carry its results.
+  </p>
+
+  <h2>The software half</h2>
+  <p>
+    Software divides into two families. <strong>Applications software</strong> provides the
+    services the <em>user</em> requires to solve a task — word processing, spreadsheets,
+    databases, video and graphics editing, CAD. <strong>System software</strong> provides the
+    services the <em>computer</em> requires to operate — operating systems, device drivers,
+    utilities, compilers and linkers. The operating system itself is the bridge: through a
+    command line interface (CLI) you type the instructions; through a graphical user interface
+    (GUI) you point and click; dialogue-based and gesture-based interfaces (talk to it, swipe
+    it) now cover everything from smart speakers to tablets. Same machine, different contract
+    with the human.
+  </p>
+
+  <h2>Why your phone exists: one line on a log plot</h2>
+  <p>
+    The types of computer in syllabus 1.4 — desktop, laptop, tablet, smartphone, phablet — are
+    not really different machines; they are the same machine at different points of a
+    decades-long shrink. The plot below shows the number of transistors on a flagship CPU on a
+    log<sub>10</sub> scale: each gridline is ten times more transistors. Intel's 4004 of 1971
+    carried about 2,300 (log<sub>10</sub> ≈ 3.36); the 2022 Apple M1 Ultra carries about 114
+    billion (log<sub>10</sub> ≈ 11.06). A roughly straight line on a log scale is exponential
+    growth — Moore's law — and it is the reason a 1970s computer filled a room that today fits
+    in a phone, trading the desktop's expandability for the mobile computer's portability.
+  </p>
+
+  <Widget no="2" caption="transistor counts of flagship CPUs, 1971–2022, on a log10 scale — a straight line means exponential growth" widget="plotter" config={mooreCfg} />
+
+  <h2>What the shrink enables</h2>
+  <p>
+    Section 1.5 asks about the impact of emerging technologies, and two headline it: artificial
+    intelligence, where the transistor budget buys learning rather than just calculation, and
+    extended reality — virtual and augmented — where portable processors, sensors and displays
+    overlay digital content on the world. Both are consequences of the line in the graph above:
+    more computation, less power, smaller packages. The syllabus's request that you discuss
+    their impact on everyday life is really a question about that curve continuing.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE ICT 0417 syllabus 2026–2028, section 1 "Types and components of computer systems" (1.1–1.5); Intel, processor specifications (4004, 386, Pentium, Pentium 4, Core i7); Apple, M1 and M1 Ultra technical specifications (2020–2022); G. Moore, <em>Cramming more components onto integrated circuits</em>, Electronics (1965).</p>
+</TopicPage>

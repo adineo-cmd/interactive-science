@@ -1,0 +1,129 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const prestonCfg = {
+  points: [
+    {
+      points: [[1.7, 62], [6, 53.5], [9, 68], [16.5, 73.5], [21.5, 78.5], [43, 84.5]],
+      color: '#0f766e',
+      label: 'countries (2022)',
+      mode: 'dots',
+    },
+  ],
+  x: { min: 0, max: 50, label: 'GNI per person, PPP $1000s' },
+  y: { min: 45, max: 90, label: 'life expectancy (years)' },
+  crossings: false,
+  height: 350,
+};
+
+const hdiCfg = {
+  params: [
+    { name: 'le', label: 'life expectancy', min: 20, max: 85, step: 0.5, value: 73, unit: 'yrs' },
+    { name: 'mys', label: 'mean years of schooling', min: 0, max: 15, step: 0.1, value: 8.7 },
+    { name: 'eys', label: 'expected years of schooling', min: 0, max: 20, step: 0.1, value: 13 },
+    { name: 'gni', label: 'GNI per capita (PPP)', min: 200, max: 90000, step: 100, value: 21000, unit: 'US$' },
+  ],
+  readouts: [
+    { label: 'health index', expr: '(le-20)/65' },
+    { label: 'education index', expr: '(mys/15 + eys/18)/2' },
+    { label: 'income index', expr: 'min(1, (ln(gni)-ln(100))/(ln(75000)-ln(100)))' },
+    { label: 'HDI', expr: '(((le-20)/65) * ((mys/15 + eys/18)/2) * (min(1, (ln(gni)-ln(100))/(ln(75000)-ln(100)))))^(1/3)' },
+  ],
+};
+
+const tradeCfg = {
+  type: 'vector',
+  unit: 'bn US$',
+  x: { min: 0, max: 20 },
+  y: { min: 0, max: 20 },
+  start: [6, 9],
+  height: 320,
+};
+---
+<TopicPage slug="subjects/geography/intermediate/development-and-inequality">
+  <h2>The idea</h2>
+  <p>
+    Development is not just growth. <strong>Standard of living</strong> is what money buys —
+    income, goods, housing; <strong>quality of life</strong> (syllabus 8.1.3) is how good
+    living actually is — health, education, security, a clean environment. The two usually
+    travel together but not always. To compare countries we use indicators (8.1.1):
+    <strong>GDP</strong> and <strong>GNI per capita</strong>, literacy rate, life expectancy,
+    infant mortality, doctors per person, calorie intake, and the composite
+    <strong>Human Development Index</strong>. The syllabus sorts countries into
+    <strong>LICs, MICs and HICs</strong> — while admitting, as we must, that the sorting is
+    crude: a country can be middle-income by money and high-income by health.
+  </p>
+
+  <Widget no="1" caption="the Preston-curve shape: richer means longer-lived — but with diminishing returns (UNDP HDR 2023/24 data, 2022, rounded). Niger 1.7/62; Nigeria 6/53.5; India 9/68; Brazil 16.5/73.5; China 21.5/78.5; Japan 43/84.5" widget="plotter" config={prestonCfg} />
+
+  <p>
+    Fig. 1 is development geography's core chart. Note two things: the curve flattens (the
+    first few thousand dollars of GNI buy enormous life-expectancy gains; the next fifty
+    thousand buy very few), and the scatter matters — the USA famously lives shorter than
+    Japan despite far higher income per person.
+  </p>
+
+  <h2>The HDI, by hand</h2>
+  <p>
+    The HDI (8.1.2) combines three pillars with a geometric mean: health
+    (life expectancy, rescaled 20→85 years), education (mean and expected years of
+    schooling), and income (GNI per capita on a log scale, capped at $75,000). The widget
+    below runs the real UNDP formula. Defaults land near 0.75 — between the world average
+    (0.739) and Brazil (0.760). Plug in Niger's actual figures — life expectancy ~62, about 2
+    years of schooling, ~$1,700 GNI per capita — and you get ≈ 0.40 against the published
+    0.394. Range check for 2022: Switzerland tops the table at 0.967; South Sudan sits at
+    0.381.
+  </p>
+
+  <Widget no="2" caption="compute a real HDI: the UNDP's own formula — watch how a log-scaled income term stops rich countries maxing out the index" widget="sliderLab" config={hdiCfg} />
+
+  <p>
+    Every indicator has limits (8.1.2). GDP per capita is an average — it hides inequality,
+    the informal economy, unpaid care work, and what the output actually is (weapons or
+    vaccines). The HDI adds health and education but still says nothing about the
+    environment, rights, or who within the country gets the life it scores.
+  </p>
+
+  <h2>Why the gap — and what shape it is</h2>
+  <p>
+    Reasons for uneven development (8.2.1) come in three flavours.
+    <strong>Historical-economic:</strong> colonial extraction built ports for exports, not
+    economies; many LICs still depend on commodities — UNCTAD counts more than 80 countries,
+    mostly in Africa and South America, earning over 60% of export income from commodities
+    whose prices swing wildly. <strong>Physical:</strong> being landlocked (much of the
+    Sahel), malarial, or drought-prone raises the cost of every step.
+    <strong>Social-political:</strong> conflict destroys decades of progress; education gaps
+    — especially for girls — throttle everything downstream. The pattern (8.2.2) is no longer
+    a neat north–south line: HICs cluster in North America, western Europe and East Asia
+    (Japan, South Korea, Singapore, Australia south of the equator); most of humanity lives
+    in MICs (China, India, Brazil); LICs concentrate in Sub-Saharan Africa. And the gap runs
+    <em>within</em> countries: in India, Kerala's health outcomes rival far richer nations
+    while the northern plains lag behind.
+  </p>
+
+  <h2>Trade, aid, and closing the gap sustainably</h2>
+  <p>
+    Sustainable development (8.3.1) is the Brundtland definition: meeting today's needs
+    without wrecking future generations' ability to meet theirs. Strategies (8.3.2) are
+    social (education — each extra school year lifts earnings ~10%; vaccination), economic
+    (diversification, industrialisation), and environmental (leapfrogging straight to
+    renewables: Kenya generates ~90% of its electricity from geothermal, hydro and wind).
+    Evaluate the classic trio (8.3.3): <strong>aid</strong> can save lives but risks
+    dependency; <strong>debt relief</strong> — the HIPC scheme has freed more than $100
+    billion across 36 countries — works when savings reach schools and clinics;
+    <strong>trade</strong> is the engine that worked for East Asia, but only when the terms
+    let value flow in. Drag the arrow below: exports on x, imports on y.
+  </p>
+
+  <Widget no="3" caption="a year of trade for a developing country: a 45° arrow is balanced; steep means importing more than export earnings cover — the classic LIC squeeze" widget="diagramBuilder" config={tradeCfg} />
+
+  <p>
+    The detailed example (8.3.4) is <strong>Vietnam</strong>, an MIC that explains itself:
+    poor in 1986 (the Doi Moi reforms year), it opened to markets, invested ferociously in
+    schooling and ports, and grew ~6–7% a year for decades. World Bank figures show poverty
+    falling from nearly 60% in the early 1990s to under 5% today, and its HDI has climbed to
+    0.726 — development raised sustainably by trade plus education, not aid.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Geography 0460 syllabus (2027–2029), topic 8; UNDP Human Development Report 2023/24; World Bank Open Data; UNCTAD State of Commodity Dependence; Brundtland Report, Our Common Future (1987).</p>
+</TopicPage>
