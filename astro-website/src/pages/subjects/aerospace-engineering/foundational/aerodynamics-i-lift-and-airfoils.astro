@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const liftCfg = {
+  params: [
+    { name: 'rho', label: 'air density', min: 0.4, max: 1.3, step: 0.05, value: 1.225, unit: 'kg/m³' },
+    { name: 'v', label: 'airspeed', min: 30, max: 250, step: 5, value: 80, unit: 'm/s' },
+    { name: 'cl', label: 'lift coefficient', min: 0.2, max: 1.6, step: 0.05, value: 0.8, unit: '' },
+    { name: 'S', label: 'wing area', min: 10, max: 130, step: 2, value: 30, unit: 'm²' },
+  ],
+  readouts: [
+    { label: 'lift = ½ρV²·S·CL', expr: '0.5*rho*v^2*S*cl', unit: 'N' },
+    { label: 'mass this supports', expr: '0.5*rho*v^2*S*cl/9.81', unit: 'kg' },
+  ],
+};
+
+const liftStepsCfg = {
+  steps: [
+    { math: '1 · A wing turns the flow', note: 'An airfoil is shaped and angled so the oncoming air leaves deflected downward. By Newton\'s third law, the air pushes the wing up.' },
+    { math: '2 · Pressure does the accounting', note: 'Flow accelerates over the curved upper surface; by Bernoulli\'s principle its pressure drops. The suction above contributes most of the lift.' },
+    { math: '3 · Circulation, formally', note: 'Mathematically, lift equals air density × speed × circulation (the Kutta–Joukowski theorem) — the rotating flow the wing imposes on the air.' },
+    { math: '4 · Angle of attack tunes it', note: 'Lift grows roughly linearly with angle of attack — until the critical angle, when the flow separates and the wing stalls.' },
+    { math: '5 · L = ½ρV²S·CL', note: 'Everything compresses into one equation: dynamic pressure × wing area × lift coefficient. Cruise is solved by balancing it against weight.' },
+  ],
+};
+---
+<TopicPage slug="subjects/aerospace-engineering/foundational/aerodynamics-i-lift-and-airfoils">
+  <h2>The idea</h2>
+  <p>
+    Flight is a momentum trade: a wing throws air downward, and the air pushes back up. Aerodynamics
+    makes that trade quantitative with one master equation — lift equals half the air density times
+    the square of the speed, times wing area, times a coefficient that captures the wing's shape
+    and angle. Nearly all of applied aerodynamics is managing that coefficient.
+  </p>
+
+  <Widget no="1" caption="how a wing makes lift" widget="equationStep" config={liftStepsCfg} />
+
+  <h2>The lift equation as a design space</h2>
+  <p>
+    Every term is a lever. Slow aircraft get big wings; fast ones get small ones. Thin air — high
+    altitude, hot days — demands more speed or more coefficient. Set the lift equal to an airliner's
+    weight at cruise and you have found the wing every manufacturer actually built.
+  </p>
+
+  <Widget no="2" caption="drag the terms — find the wing that lifts the aircraft" widget="sliderLab" config={liftCfg} />
+
+  <h2>Stall: the coefficient has a ceiling</h2>
+  <p>
+    Increase the angle of attack and lift rises — until about fifteen degrees, where the boundary
+    layer separates, the suction collapses and the wing stalls. Stall is not an engine failure; it
+    is an aerodynamic one, and it is recoverable by lowering the nose. Wings are fitted with slats
+    and flaps precisely to raise this ceiling for takeoff and landing.
+  </p>
+
+  <h2>Where aerodynamics goes next</h2>
+  <p>
+    Speed brings compressibility: near the speed of sound, air piles into shock waves and drag
+    spikes, which is why transonic aircraft sweep their wings. And every lift comes with drag
+    induced by the downward momentum given to the air — the wingtip vortices you see in humid air
+    behind a landing airliner. Lift is never free; it is a loan against drag.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ABET aerospace program criteria; Anderson, <em>Fundamentals of Aerodynamics</em>; FAA <em>Pilot's Handbook of Aeronautical Knowledge</em>.</p>
+</TopicPage>

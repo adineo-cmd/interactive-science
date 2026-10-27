@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const awCfg = {
+  curves: [
+    { expr: 'exp(-6*(x-0.9)^2) + 0.04', label: 'spoilage rate', color: '#dc2626', width: 2.4 },
+    { expr: '0.55*exp(-14*(x-0.99)^2)', label: 'lipid oxidation', color: '#b45309', width: 2.0 },
+  ],
+  x: { min: 0, max: 1, label: 'water activity (a-w)' },
+  y: { min: 0, max: 1.2, label: 'relative rate (a.u.)' },
+  crossings: false,
+  height: 340,
+};
+
+const awStepsCfg = {
+  steps: [
+    { math: '1 · Water content ≠ water activity', note: 'A food can be wet and stable (jam, ~30% water) or dry and perishable (fresh meat, ~70%... no — meat is wet AND perishable). The key measure is not how much water, but how available it is.' },
+    { math: '2 · Water activity defined', note: 'a-w = the food\'s equilibrium humidity, from 0 (bone dry) to 1.0 (pure water). It measures how tightly the matrix holds its water.' },
+    { math: '3 · Microbes have thresholds', note: 'Most bacteria need a-w above ~0.91; yeasts tolerate to ~0.88; moulds to ~0.80. Below those lines, they simply cannot grow.' },
+    { math: '4 · Preservation is a-w control', note: 'Salt, sugar and drying all work the same way: they bind water and drop the a-w. Jam, jerky and honey are the same idea at different sweetness.' },
+    { math: '5 · But chemistry has its own curve', note: 'Lipid oxidation peaks near the dry end — the reason crackers go stale-rancid even while microbially safe. Every target a-w is a compromise.' },
+  ],
+};
+---
+<TopicPage slug="subjects/food-science/foundational/food-chemistry-fundamentals">
+  <h2>The idea</h2>
+  <p>
+    Food science begins with a chemical re-framing: a meal is a matrix of water, carbohydrates,
+    proteins and lipids — and its shelf life, texture and taste all follow from how those molecules
+    interact. The single most useful number in the discipline is not how much water food contains
+    but how <strong>available</strong> that water is: water activity, a-w.
+  </p>
+
+  <Widget no="1" caption="water activity, step by step" widget="equationStep" config={awStepsCfg} />
+
+  <h2>One curve explains the pantry</h2>
+  <p>
+    Microbial spoilage rises as water becomes available, peaking near a-w of 0.9 and collapsing
+    below the microbial thresholds. Lipid oxidation — the stale, cardboard rancidity of dry foods —
+    does the opposite, accelerating when surface fats are exposed but dehydrated. Every preserved
+    food lives in the gap between those two curves.
+  </p>
+
+  <Widget no="2" caption="why jam keeps but crackers go rancid" widget="plotter" config={awCfg} />
+
+  <h2>The macronutrients as materials</h2>
+  <p>
+    Carbohydrates, proteins and lipids are not just nutrition here — they are structural materials.
+    Starch granules gelatinise and retrograde (why bread stales), proteins unfold and knit into
+    networks (why egg sets and yoghurt gels), and fats crystallise into polymorphs (why chocolate
+    snaps or blooms). Texture is applied polymer science.
+  </p>
+
+  <h2>Flavour is chemistry too</h2>
+  <p>
+    Taste is receptor chemistry (sweet, salty, sour, bitter, umami), but much of what we call
+    flavour arrives retronasally from volatile molecules — and many of the best ones are reaction
+    products. The Maillard reaction between reducing sugars and amino acids builds hundreds of
+    aroma compounds; it is why toast, roast coffee and seared steak share a family resemblance.
+    Control the chemistry, control the craving.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> IFT undergraduate education standards; Belitz, Grosch &amp; Schieberle, <em>Food Chemistry</em>; Labuza's classic work on water activity and shelf life.</p>
+</TopicPage>

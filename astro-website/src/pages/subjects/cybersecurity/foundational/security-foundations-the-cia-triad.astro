@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const ciaCfg = {
+  steps: [
+    { math: '1 · Confidentiality', note: 'Only the right people can read it. Enforced by encryption and access control; broken by leaks, interception and shoulder-surfing.' },
+    { math: '2 · Integrity', note: 'Data says what it is supposed to say. Enforced by hashes, signatures and audit trails; broken by tampering, corruption and sneaky edits.' },
+    { math: '3 · Availability', note: 'The system works when needed. Enforced by redundancy and capacity; broken by outages, ransomware and — classically — denial-of-service floods.' },
+    { math: '4 · The trade-offs are real', note: 'Maximum confidentiality means air-gaps nobody can use; maximum availability means no locks. Security is choosing where to sit between them.' },
+    { math: '5 · Everything maps to risk', note: 'A threat (who/what could harm you) × a vulnerability (your weakness) = a risk. Security spends money where risk × impact is largest.' },
+  ],
+};
+
+const layersCfg = {
+  params: [
+    { name: 'phish', label: 'phishing success rate', min: 1, max: 30, step: 1, value: 10, unit: '%' },
+    { name: 'ml', label: 'malware evasion rate', min: 1, max: 60, step: 1, value: 25, unit: '%' },
+    { name: 'creds', label: 'stolen-credential reuse rate', min: 1, max: 40, step: 1, value: 15, unit: '%' },
+  ],
+  readouts: [
+    { label: 'attackers passing ALL layers', expr: 'phish*ml*creds/10000', unit: '%' },
+  ],
+};
+---
+<TopicPage slug="subjects/cybersecurity/foundational/security-foundations-the-cia-triad">
+  <h2>The idea</h2>
+  <p>
+    Cybersecurity is the discipline of keeping systems trustworthy against intelligent opposition.
+    Its shared vocabulary is the <strong>CIA triad</strong> — confidentiality, integrity,
+    availability — and its economics is risk: you cannot defend everything, so you measure what an
+    attack would cost and defend accordingly. Every framework you will meet is an elaboration of
+    those two ideas.
+  </p>
+
+  <Widget no="1" caption="the triad and its trade-offs" widget="equationStep" config={ciaCfg} />
+
+  <h2>Defence in depth, quantified</h2>
+  <p>
+    No single control is reliable — each blocks some fraction of attacks. But controls stack
+    multiplicatively: an attacker must clear every layer, so a 10% phishing success, 25% malware
+    evasion and 15% credential-reuse rate leave roughly one attacker in 270 through all three.
+    Depth is the defender's compounding interest.
+  </p>
+
+  <Widget no="2" caption="layer three controls and multiply the survivors" widget="sliderLab" config={layersCfg} />
+
+  <h2>Know your adversary's economics</h2>
+  <p>
+    Attackers have budgets too. Bulk phishing is cheap and sloppy; targeted intrusions are
+    expensive and patient. The defender's strategy follows: make cheap attacks fail cheaply (raise
+    their cost), and assume the expensive ones will occasionally succeed — which is why detection
+    and response matter as much as prevention.
+  </p>
+
+  <h2>The framework landscape</h2>
+  <p>
+    The field organises itself through shared frameworks: NIST's NICE Workforce Framework names the
+    jobs (defend, analyse, govern, build), NIST's Cybersecurity Framework names the functions
+    (identify, protect, detect, respond, recover), and ISO 27001 certifies management systems. They
+    all trade in the same currency: identified risks, chosen controls, demonstrated improvement.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NIST SP 800-181r1 (NICE Framework); NIST Cybersecurity Framework 2.0; Bishop, <em>Computer Security: Art and Science</em>.</p>
+</TopicPage>

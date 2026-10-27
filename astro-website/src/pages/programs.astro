@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SubjectIcon from '../components/SubjectIcon.astro';
 import data from '../data/topics.json';
+import domains from '../data/domains.json';
 
 const syllabusFiles = import.meta.glob('../data/syllabus/*.json', { eager: true });
 
@@ -23,6 +24,13 @@ const programs = Object.entries(syllabusFiles)
     };
   })
   .sort((a, b) => a.syl.subject.localeCompare(b.syl.subject));
+
+const domainGroups = Object.entries(domains)
+  .map(([id, label]) => ({
+    label,
+    items: programs.filter((p) => (p.subject?.domain ?? '') === id),
+  }))
+  .filter((g) => g.items.length > 0);
 ---
 <Layout
   title="Learning programs — Interactive Atlas"
@@ -47,22 +55,27 @@ const programs = Object.entries(syllabusFiles)
       </p>
     </div>
 
-    <div class="program-cards">
-      {programs.map(({ syl, subject, units, live, lessons }) => (
-        <a class="program-card" style={`--card-ink:${subject?.ink ?? 'var(--accent)'}`} href={`${B}/subjects/${syl.subject}/#program`}>
-          <div class="pc-head">
-            <span style={`color:${subject?.ink ?? 'var(--accent)'}`}>
-              {subject && <SubjectIcon name={subject.icon} size={26} />}
-            </span>
-            <h2>{subject?.name ?? syl.subject}</h2>
-          </div>
-          <p class="pc-qual">{syl.source.qualification}</p>
-          <p class="pc-board">{syl.source.board} · {syl.source.track}</p>
-          <p class="pc-units">{units} syllabus units · {live}/{lessons.length} lessons live</p>
-          <span class="pc-go">open the program →</span>
-        </a>
-      ))}
-    </div>
+    {domainGroups.map((group) => (
+      <div>
+        <h3 class="domain-h">{group.label}</h3>
+        <div class="program-cards">
+          {group.items.map(({ syl, subject, units, live, lessons }) => (
+            <a class="program-card" style={`--card-ink:${subject?.ink ?? 'var(--accent)'}`} href={`${B}/subjects/${syl.subject}/#program`}>
+              <div class="pc-head">
+                <span style={`color:${subject?.ink ?? 'var(--accent)'}`}>
+                  {subject && <SubjectIcon name={subject.icon} size={26} />}
+                </span>
+                <h2>{subject?.name ?? syl.subject}</h2>
+              </div>
+              <p class="pc-qual">{syl.source.qualification}</p>
+              <p class="pc-board">{syl.source.board} · {syl.source.track}</p>
+              <p class="pc-units">{units} syllabus units · {live}/{lessons.length} lessons live</p>
+              <span class="pc-go">open the program →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
 
     {programs.length === 0 && <p>No programs are wired up yet — add a JSON file to <code>src/data/syllabus/</code>.</p>}
   </div>

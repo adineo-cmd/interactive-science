@@ -46,34 +46,50 @@ full expert path. Entries without a status are live lessons (page required).
 
 ### Syllabus-structured learning programs
 
-**Every subject in the atlas is structured around an official published syllabus or an
-authoritative published curriculum.** The source documents live in `syllabus/` — Cambridge
-IGCSE syllabus PDFs where the subject has one (Biology 0610, Chemistry 0620, Physics 0625,
-Mathematics 0580, Geography 0460, History 0470, Economics 0455, Business 0450, Computer
-Science 0478, Accounting 0452, Agriculture 0600, Sociology 0495, Literature 0475, Music 0410,
-Art & Design 0400, Religious Studies 0490, Environmental Management 0680, Design & Technology
-0445, Drama 0411, Travel & Tourism 0471, ICT 0417, PE 0413…), plus exam-board specs (Edexcel
-Astronomy 1AS0, Edexcel Politics 9PL0, AQA Law 7162, AQA Philosophy 7172, Eduqas Film & Media
-Studies, WJEC Criminology, AP Art History, CEFR for languages) and openly published curricula
-(MIT OpenCourseWare, OpenStax, Berkeley Data 8, Neuroscience Online, CEPH, NCTJ, NCEES, NAAB).
+**Every subject in the atlas — 89 of them, grouped into 11 domains — is structured around an
+official published syllabus or an authoritative published curriculum.** Sources include
+Cambridge IGCSE/A-Level syllabus PDFs where the subject has one (Biology 0610, Chemistry 0620,
+Physics 0625, Mathematics 0580, Geography 0460, History 0470, Economics 0455, Business 0450,
+Computer Science 0478, Accounting 0452, Agriculture 0600, Marine Science 9693, Sociology 0495,
+Literature 0475, Music 0410, Art & Design 0400, Religious Studies 0490, Environmental
+Management 0680, Design & Technology 0445, Drama 0411, Travel & Tourism 0471, ICT 0417,
+PE 0413…), exam-board and professional specs (Edexcel Astronomy 1AS0 and Politics 9PL0, AQA
+Law 7162 / Philosophy 7172 / GCSE Dance 8236, OCR Classical Civilisation H408, Eduqas Film &
+Media Studies, WJEC Criminology, AP Art History, CEFR, IB Anthropology, NCLEX-RN, NAPLEX,
+INBDE, NAVLE, SOA Exam P/FM, NCEES FE specifications, SWEBOK v4, NICE Framework, ABET
+criteria, FAA ACS, ASCM CSCP, NCTJ, NASPAA, CACREP, CSWE EPAS, ACEND, CEPH, PAB, FEPAC, IFT,
+SAF), and openly published curricula (MIT OpenCourseWare, OpenStax, Berkeley Data 8,
+Neuroscience Online, Modern Robotics, Renfrew & Bahn).
 
-Each is parsed into a structured file in `astro-website/src/data/syllabus/*.json` — one entry
-per syllabus unit: unit number, title, the syllabus's own topic list, and the atlas lessons
-covering it in teaching order (live slugs reference `topics.json`; units without a written
-lesson reference planned rows, so the full expert path is always visible).
+Each source is parsed into a structured file in `astro-website/src/data/syllabus/*.json` —
+one entry per syllabus unit: unit number, title, the syllabus's own topic list, and the atlas
+lessons covering it in teaching order (live slugs reference `topics.json`; units without a
+written lesson reference planned rows, so the full expert path is always visible). Subjects
+carry a `domain` field (`src/data/domains.json` maps ids to labels) that groups the subjects
+menu, the homepage index and `/programs/`.
 
-- `/programs/` — index of all syllabus-backed programs
+- `/programs/` — index of all 89 syllabus-backed programs, grouped by domain
 - `/subjects/<id>/#program` — unit-by-unit program on each subject page
-- `scripts/apply-syllabus-topics.py`, `scripts/apply-all-syllabus-topics.py` — idempotent
-  inserters that add syllabus-derived live + planned topics and new subject entries to
-  `topics.json` (`scripts/syllabus-planned.json` carries the planned-row data)
+- `scripts/universal-spec-*.json` — compact master spec for the 40 universal-coverage
+  fields (source + units per field), expanded by the same pattern the earlier apply scripts
+  (`apply-syllabus-topics.py`, `apply-all-syllabus-topics.py`, `promote-starter-lessons.py`)
+  used for the first waves
 - `validate-content.py` also checks syllabus files: every lesson slug must exist in
   `topics.json` and belong to the same subject
 
-Fields that existed in standard academic taxonomies but not in the atlas were added as new
-subjects with syllabus-backed programs: Accounting, Drama, Travel & Tourism, Information &
-Communication Technology, Media Studies, Criminology, Public Health, Education, Marketing and
-International Relations.
+Fields from standard academic taxonomies that were absent were added as new subjects with
+syllabus-backed programs — including Accounting, Drama, Travel & Tourism, ICT, Media Studies,
+Criminology, Public Health, Education, Marketing, International Relations, Biochemistry,
+Microbiology, Zoology, Botany, Marine Science, Meteorology, Forensic Science, Food Science,
+Forestry, Nutrition & Dietetics, Chemical/Civil/Mechanical/Electrical/Aerospace/Biomedical
+Engineering, Software Engineering, Cybersecurity, Robotics, Game Development, Actuarial
+Science, Nursing, Pharmacy, Dentistry, Veterinary Medicine, Social Work, Counselling, Urban
+Planning, Archaeology, Cognitive Science, Classics, Creative Writing, Dance, Animation,
+Aviation, Culinary Arts, Library Science, Public Administration, Logistics & Supply Chain and
+Gender Studies.
+
+The downloaded source PDFs stay local (`syllabus/` is gitignored); official URLs are recorded
+in each program's `source` block.
 
 To add a subject: drop the official syllabus PDF in `syllabus/`, write the parsed
 `src/data/syllabus/<subject>.json`, map or plan its lessons, validate, build.

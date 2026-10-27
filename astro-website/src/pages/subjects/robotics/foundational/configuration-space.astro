@@ -1,0 +1,53 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const dofCfg = {
+  steps: [
+    { math: '1 · A robot state is a point', note: 'Every possible position of the robot — all joint angles at once — is one point in an abstract space: the configuration space, or C-space.' },
+    { math: '2 · Count the degrees of freedom', note: 'Grübler\'s formula for a mechanism: DOF = (sum of joint freedoms) − (constraints imposed by loops). A planar arm with three revolute joints has DOF = 3.' },
+    { math: '3 · The C-space has obstacles too', note: 'A joint angle that drives the gripper into a wall is forbidden. Obstacles in the room become obstacle regions in C-space.' },
+    { math: '4 · Planning = finding a path', note: 'Motion planning is now a geometry problem: connect the start point to the goal point without entering any forbidden region.' },
+    { math: '5 · Dimension is the enemy', note: 'A 6-DOF arm has a 6-dimensional C-space; a humanoid has 30+. Grids die of dimensionality — which is why sampling-based planners exist.' },
+  ],
+};
+---
+<TopicPage slug="subjects/robotics/foundational/configuration-space">
+  <h2>The idea</h2>
+  <p>
+    Robotics' first abstraction is also its most powerful: replace the robot with a point. The
+    <strong>configuration space</strong> (C-space) assigns one coordinate per degree of freedom, so
+    the whole robot — however many arms and joints — becomes a single point in a high-dimensional
+    space. Planning motion becomes path-finding in that space, and the entire field's algorithms
+    are organized around this move.
+  </p>
+
+  <Widget no="1" caption="from robot to point: the C-space move" widget="equationStep" config={dofCfg} />
+
+  <h2>Counting degrees of freedom</h2>
+  <p>
+    Grübler's formula makes DOF arithmetic honest. A planar four-bar linkage: four links, four
+    revolute joints, one loop — DOF = 3(4−1) − 2·4 = 1, so the whole mechanism has exactly one
+    motion. A free body in the plane has 3 DOF; in space, 6. Get the count wrong and the mechanism
+    jams or flops, no matter how good the motors are.
+  </p>
+
+  <h2>Obstacles move into the space too</h2>
+  <p>
+    The C-space's cleverest trick is transforming collision: instead of checking whether a
+    complicated robot hits a wall, compute the set of configurations where it would — a "forbidden
+    region" — and forbid the point from entering it. Planning around furniture becomes navigating a
+    map. The geometry is harder to compute, but the problem becomes uniform.
+  </p>
+
+  <h2>Why sampling won</h2>
+  <p>
+    A grid over a 6-DOF space needs millions of cells per axis-pair; exhaustive search dies. Modern
+    planners — RRT, PRM — throw random samples at the space, wire nearby ones together, and grow a
+    road map or a tree toward the goal. They trade completeness for high probability of success,
+    which is the right trade once the dimension passes three. Everything after this course —
+    kinematics, dynamics, control — lives inside this space.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Lynch &amp; Park, <em>Modern Robotics</em>, Ch. 2 (official companion site); LaValle, <em>Planning Algorithms</em>.</p>
+</TopicPage>

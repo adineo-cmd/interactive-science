@@ -1,0 +1,63 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const admeCfg = {
+  steps: [
+    { math: '1 · Absorption', note: 'The drug enters the blood — through the gut wall for tablets, instantly for IV. Bioavailability is the fraction that survives this leg.' },
+    { math: '2 · Distribution', note: 'The blood delivers the drug to tissues. Binding to proteins and solubility in fat decide where it goes and how long it lingers.' },
+    { math: '3 · Metabolism', note: 'Mostly the liver\'s CYP enzymes chemically alter the drug — activating prodrugs, deactivating most others, and occasionally producing surprises.' },
+    { math: '4 · Excretion', note: 'The kidneys (and bile) remove drug and metabolites. Renal disease means slower clearance — the classic reason doses go down.' },
+    { math: '5 · Half-life runs the schedule', note: 'Each half-life removes half the remaining drug: dose every half-life to plateau at a steady state, ~5 half-lives to get there.' },
+  ],
+};
+
+const halfLifeCfg = {
+  curves: [
+    { expr: '100*exp(-0.693*x/4)', label: 'drug in body (half-life 4 h)', color: '#7c3aed', width: 2.4 },
+  ],
+  x: { min: 0, max: 24, label: 'hours after dose' },
+  y: { min: 0, max: 100, label: '% of dose remaining' },
+  crossings: false,
+  height: 330,
+};
+---
+<TopicPage slug="subjects/pharmacy/foundational/pharmaceutical-sciences-foundations">
+  <h2>The idea</h2>
+  <p>
+    Pharmacy is the science of medicines from molecule to patient. Its foundation is
+    pharmacokinetics — what the body does to the drug, summarised as ADME (absorption,
+    distribution, metabolism, excretion) — paired with pharmacodynamics, what the drug does to the
+    body. Between those two disciplines sits every dosing decision a pharmacist makes.
+  </p>
+
+  <Widget no="1" caption="ADME: the drug's journey in four legs" widget="equationStep" config={admeCfg} />
+
+  <h2>Half-life is the prescription's clock</h2>
+  <p>
+    Elimination is exponential: a drug with a 4-hour half-life is 25% gone in 8 hours, ~94% gone in
+    16. This is why dosing intervals track half-lives, why steady state takes about five half-lives
+    regardless of dose, and why "take twice daily" is arithmetic, not ritual.
+  </p>
+
+  <Widget no="2" caption="exponential elimination with a 4-hour half-life" widget="plotter" config={halfLifeCfg} />
+
+  <h2>Interactions are mostly CYP politics</h2>
+  <p>
+    Liver CYP enzymes metabolise a huge share of drugs, and they are traffic lights one medicine
+    can turn red or green: inhibit CYP3A4 and a statin accumulates toward muscle damage; induce it
+    and an contraceptive fails. The pharmacist's interaction check is applied enzymology — the
+    moment ADME theory saves lives.
+  </p>
+
+  <h2>Formulation: the science of the dosage form</h2>
+  <p>
+    The same molecule performs differently as tablet, capsule, suspension or patch. Dissolution
+    rate, coating, and excipients set how fast absorption happens; sterile compounding adds
+    asepsis. "Bioavailability" — the fraction of dose reaching circulation — is where chemistry,
+    manufacturing and patient technique meet, and it is why the pharmacist checks what form a drug
+    takes, not just what it says.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NAPLEX Competency Statements (NABP); Katzung, <em>Basic &amp; Clinical Pharmacology</em>; Aulton's <em>Pharmaceutics</em>.</p>
+</TopicPage>

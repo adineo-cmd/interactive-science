@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SubjectIcon from '../components/SubjectIcon.astro';
 import data from '../data/topics.json';
+import domains from '../data/domains.json';
 
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
@@ -9,6 +10,14 @@ const live = topics.filter((t) => t.status !== 'planned');
 const plannedCount = topics.length - live.length;
 const liveFor = (id: string) => live.filter((t) => t.subject === id).length;
 const plannedFor = (id: string) => topics.filter((t) => t.subject === id && t.status === 'planned').length;
+
+const domainGroups = Object.entries(domains)
+  .map(([id, label]) => ({
+    id,
+    label,
+    items: subjects.filter((s) => (s.domain ?? '') === id).sort((a, b) => a.name.localeCompare(b.name)),
+  }))
+  .filter((g) => g.items.length > 0);
 
 const tools = [
   { id: 'plotter', name: 'Plotter', text: 'Graph any equation. Drag to pan, scroll to zoom, read values straight off the curve.' },
@@ -55,15 +64,20 @@ const tools = [
         <span class="side-note">{subjects.length} subjects · one ladder each: foundational → expert</span>
       </div>
       <div class="index">
-        {subjects.map((s) => (
-          <a class="index-row" style={`--row-ink:${s.ink}`} href={`${B}/subjects/${s.id}/`}>
-            <span class="glyph"><SubjectIcon name={s.icon} size={26} /></span>
-            <span>
-              <span class="index-name">{s.name}</span>
-              <span class="index-tag" style="display:block">{s.tagline}</span>
-            </span>
-            <span class="index-meta">{plannedFor(s.id) ? `${liveFor(s.id)} live · ${plannedFor(s.id)} planned` : `${liveFor(s.id)} lesson${liveFor(s.id) === 1 ? '' : 's'}`}</span>
-          </a>
+        {domainGroups.map((group) => (
+          <div>
+            <h3 class="domain-h">{group.label}</h3>
+            {group.items.map((s) => (
+              <a class="index-row" style={`--row-ink:${s.ink}`} href={`${B}/subjects/${s.id}/`}>
+                <span class="glyph"><SubjectIcon name={s.icon} size={26} /></span>
+                <span>
+                  <span class="index-name">{s.name}</span>
+                  <span class="index-tag" style="display:block">{s.tagline}</span>
+                </span>
+                <span class="index-meta">{plannedFor(s.id) ? `${liveFor(s.id)} live · ${plannedFor(s.id)} planned` : `${liveFor(s.id)} lesson${liveFor(s.id) === 1 ? '' : 's'}`}</span>
+              </a>
+            ))}
+          </div>
         ))}
       </div>
     </div>

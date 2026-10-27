@@ -1,0 +1,63 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const trussCfg = {
+  curves: [
+    { expr: 'P*x/(4*(1 - x*x/16))', label: 'bending moment (simply supported)', color: '#2563eb', width: 2.4 },
+  ],
+  x: { min: 0, max: 7.9, label: 'position along the span (m)' },
+  y: { min: 0, max: 30, label: 'bending moment (kN·m), P = 10 kN' },
+  crossings: false,
+  height: 330,
+};
+
+const staticsCfg = {
+  steps: [
+    { math: '1 · Free-body first', note: 'Isolate the structure, replace the world with forces. Every analysis begins with an honest free-body diagram.' },
+    { math: '2 · Equilibrium: three equations', note: 'ΣF = 0 in two directions and ΣM = 0 about any point. Two-dimensional statics has exactly three equations per body.' },
+    { math: '3 · Statically determinate or not', note: 'If the three equations find every reaction, the structure is determinate. If not, you need material properties — that is indeterminate analysis.' },
+    { math: '4 · Internal forces appear', note: 'Cut the structure and equilibrium still holds: each cut exposes axial force, shear and bending moment that the section must carry.' },
+    { math: '5 · Dynamics when things move', note: 'Add inertia (F = ma) and moving loads become dynamic: impact factors, resonance, and the reason soldiers break step on bridges.' },
+  ],
+};
+---
+<TopicPage slug="subjects/civil-engineering/foundational/statics-and-dynamics-for-civil-engineers">
+  <h2>The idea</h2>
+  <p>
+    Civil engineers guarantee that heavy things stand still — and the guarantee is written in
+    statics. Every bridge, tower and dam is an equilibrium problem: loads down, reactions up,
+    internal forces distributed so no part is overstressed. Dynamics joins when loads move, as
+    traffic, wind and earthquakes always do.
+  </p>
+
+  <Widget no="1" caption="from free-body diagram to internal forces" widget="equationStep" config={staticsCfg} />
+
+  <h2>The bending moment diagram is the design</h2>
+  <p>
+    For a beam carrying a central load P over span L, the bending moment peaks at PL/4 mid-span —
+    zero at the supports, maximum where the beam works hardest. Designers read this curve to place
+    material where the demand is: deeper sections mid-span, extra steel at the bottom. Every load
+    case draws its own diagram, and the structure must survive the worst one.
+  </p>
+
+  <Widget no="2" caption="bending moment under a central point load" widget="plotter" config={trussCfg} />
+
+  <h2>Trusses: equilibrium made visible</h2>
+  <p>
+    A truss is a skeleton of two-force members — each bar either pulls or pushes, never bends. That
+    constraint makes the arithmetic pure statics: joint by joint, two equations and two unknown
+    bars. It is why trusses were the engineering of the nineteenth century and remain the cleanest
+    way to teach the discipline.
+  </p>
+
+  <h2>Why dynamics keeps civil engineers humble</h2>
+  <p>
+    Structures have natural frequencies, and loads with matching rhythms — footsteps, wind eddies,
+    earthquake waves — can pump energy in. The London Millennium Bridge wobbled on opening day in
+    2000 because synchronised footfall found its frequency. Static strength is necessary; dynamic
+    behaviour is what actually surprises you.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NCEES FE Civil exam specifications; Hibbeler, <em>Engineering Mechanics: Statics &amp; Dynamics</em>.</p>
+</TopicPage>

@@ -1,0 +1,67 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const profileCfg = {
+  curves: [
+    { expr: 'min(15 - 6.5*x, -57)', label: 'troposphere: −6.5 °C per km', color: '#0d9488', width: 2.4 },
+    { expr: '-57 + (x-11)*1.0', label: 'stratosphere: ozone warms it', color: '#b45309', width: 2.0 },
+  ],
+  x: { min: 0, max: 20, label: 'altitude (km)' },
+  y: { min: -80, max: 20, label: 'temperature (°C)' },
+  crossings: false,
+  height: 360,
+};
+
+const energyCfg = {
+  steps: [
+    { math: '1 · Radiation arrives', note: 'The Sun delivers about 1361 W/m² at the top of the atmosphere. The surface absorbs most of it because the atmosphere is transparent to visible light.' },
+    { math: '2 · The ground warms and re-radiates', note: 'The warmed surface emits infrared. Unlike sunlight, infrared is intercepted by greenhouse gases — water vapour, CO₂, methane.' },
+    { math: '3 · The atmosphere re-emits both ways', note: 'Those gases radiate in all directions, including back down. That back-radiation is the natural greenhouse effect, worth about +33 °C.' },
+    { math: '4 · Convection takes over near the ground', note: 'Heated from below, the lowest layer bubbles like a kettle. Rising air expands and cools — the lapse rate, about 6.5 °C per km.' },
+    { math: '5 · The tropopause caps the kettle', note: 'Where convection runs out of energy, temperature stops falling: the tropopause, and above it the sunlit, stable stratosphere.' },
+  ],
+};
+---
+<TopicPage slug="subjects/meteorology/foundational/the-atmosphere-and-its-energy">
+  <h2>The idea</h2>
+  <p>
+    Weather is the atmosphere moving energy from where there is too much to where there is too
+    little. Everything else — clouds, wind, storms — is machinery for that transfer. So
+    meteorology starts with the atmosphere's structure and its energy budget: which layers exist,
+    why temperature falls and then rises with height, and what greenhouse gases actually do.
+  </p>
+
+  <Widget no="1" caption="the real vertical temperature profile, layer by layer" widget="equationStep" config={energyCfg} />
+
+  <h2>Reading the sky's thermometer</h2>
+  <p>
+    A balloon-borne radiosonde measures temperature every few metres of altitude, and the profile
+    it draws is the atmosphere's anatomy: cooling at 6.5 °C per kilometre through the troposphere
+    (where all weather lives), a lid at the tropopause near −57 °C, then warming through the
+    stratosphere as ozone absorbs ultraviolet sunlight. The boundaries between layers are the
+    tropopause, stratopause and mesopause — defined by temperature turns, not altitude.
+  </p>
+
+  <Widget no="2" caption="measured lapse rate and the stratospheric warm-up" widget="plotter" config={profileCfg} />
+
+  <h2>Why the lapse rate matters for weather</h2>
+  <p>
+    The 6.5 °C/km average is really an average over a moving process: rising air expands, expands
+    cools, and whether it keeps rising depends on how its cooling compares with its surroundings.
+    When the real atmosphere cools faster with height than a rising parcel does, convection turns
+    on — that is the recipe for towering cumulonimbus and thunderstorms. Forecasters read the same
+    profile you see above to forecast instability.
+  </p>
+
+  <h2>The greenhouse effect, precisely</h2>
+  <p>
+    "Greenhouse" is a slightly misleading name — real greenhouses trap warm air, but the
+    atmosphere's effect is radiative. Surface-absorbed sunlight is re-emitted as infrared;
+    greenhouse molecules absorb and re-emit it, sending part back down. Doubling CO₂ changes the
+    balance by roughly 3.7 W/m², which the climate system offsets mostly by warming. Same physics,
+    at both planetary and puddle scale.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NOAA/NWS JetStream — An Online School for Weather; Wallace &amp; Hobbs, <em>Atmospheric Science</em>; IPCC AR6 WG1 Ch. 7.</p>
+</TopicPage>

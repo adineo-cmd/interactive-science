@@ -1,0 +1,64 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const dividerCfg = {
+  params: [
+    { name: 'r1', label: 'R1', min: 100, max: 10000, step: 100, value: 1000, unit: 'Ω' },
+    { name: 'r2', label: 'R2', min: 100, max: 10000, step: 100, value: 2000, unit: 'Ω' },
+    { name: 'vin', label: 'Vin', min: 1, max: 24, step: 0.5, value: 9, unit: 'V' },
+  ],
+  readouts: [
+    { label: 'Vout = Vin·R2/(R1+R2)', expr: 'vin*r2/(r1+r2)', unit: 'V' },
+    { label: 'current', expr: 'vin/(r1+r2)', unit: 'A' },
+  ],
+};
+
+const lawsCfg = {
+  steps: [
+    { math: '1 · Ohm\'s law', note: 'V = IR. Voltage is the push, current the flow, resistance the friction. Three symbols carry an entire discipline.' },
+    { math: '2 · Kirchhoff\'s current law', note: 'Charge does not accumulate at a node: current in = current out. That is conservation of charge, written for a junction.' },
+    { math: '3 · Kirchhoff\'s voltage law', note: 'Around any closed loop the voltage rises and drops sum to zero — conservation of energy for a circuit walk.' },
+    { math: '4 · Series and parallel simplify', note: 'Series resistances add; parallel conductances add. Most intimidating schematics collapse into these two moves.' },
+    { math: '5 · Equivalent sources finish it', note: 'Any linear network seen from two terminals is just one source and one resistor — Thevenin and Norton\'s great compression.' },
+  ],
+};
+---
+<TopicPage slug="subjects/electrical-engineering/foundational/dc-circuit-analysis">
+  <h2>The idea</h2>
+  <p>
+    All of electronics stands on three laws you can learn in an afternoon: Ohm's law and
+    Kirchhoff's two conservation statements. They are enough to reduce any resistive network — from
+    a flashlight to a motherboard's power rails — to solvable algebra. Fluency here is the entry
+    ticket to everything else in electrical engineering.
+  </p>
+
+  <Widget no="1" caption="Ohm, Kirchhoff, and the network collapses" widget="equationStep" config={lawsCfg} />
+
+  <h2>The voltage divider: the circuit everyone owns</h2>
+  <p>
+    Two resistors in series split a voltage in proportion to their resistances — Vout =
+    Vin·R2/(R1+R2). Sensors, volume controls, bias networks and every microcontroller's reference
+    chain are this one circuit. Drag the values and watch the trade: more R2, more of the input.
+  </p>
+
+  <Widget no="2" caption="a two-resistor divider under your fingers" widget="sliderLab" config={dividerCfg} />
+
+  <h2>Nodal analysis: the general-purpose machine</h2>
+  <p>
+    When series-parallel tricks run out, write Kirchhoff's current law at each node and solve the
+    simultaneous equations. That recipe — nodal analysis — scales to any linear network and is
+    exactly what SPICE, the simulator behind most chip design, automates. The algebra gets long;
+    the ideas never change.
+  </p>
+
+  <h2>Why DC first, AC later</h2>
+  <p>
+    Real circuits alternate, and capacitors and inductors turn the algebra into calculus. But the
+    direct-current case builds the reflexes: read a schematic, define nodes, trust conservation.
+    Phasors later will even let you reuse Ohm's law with complex numbers. Every electrical engineer's
+    intuition is debugged here, in DC, first.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NCEES FE Electrical and Computer exam specifications; Agarwal &amp; Lang, <em>Foundations of Analog and Digital Electronic Circuits</em>.</p>
+</TopicPage>

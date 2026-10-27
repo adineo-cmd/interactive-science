@@ -1,0 +1,63 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const reqCfg = {
+  steps: [
+    { math: '1 · Elicit: ask the real users', note: 'Requirements come from people who rarely say what they mean. Watch the work, not just the wish list.' },
+    { math: '2 · Separate functional from non-functional', note: '"The system sends invoices" is functional. "Invoices send in under a second, encrypted" is non-functional — and usually the harder promise.' },
+    { math: '3 · Make them testable', note: '"Fast" is a wish; "p95 under 300 ms" is a requirement. If you cannot write the test, you have not written the requirement.' },
+    { math: '4 · Specify, then validate', note: 'Write them down (stories, use cases, specs), then walk them back past the stakeholders — cheap now, ruinous later.' },
+    { math: '5 · Expect change', note: 'Requirements are living artefacts. The engineering is not freezing them; it is managing their change without lying to anyone.' },
+  ],
+};
+
+const costCfg = {
+  points: [
+    { points: [[1, 1], [2, 3], [3, 8], [4, 16], [5, 30], [6, 60]], color: '#b42318', label: 'relative cost to fix a requirements defect', mode: 'line' },
+  ],
+  x: { min: 0.5, max: 6.5, label: 'phase found: 1 requirements → 6 production' },
+  y: { min: 0, max: 70, label: 'relative cost (×)' },
+  crossings: false,
+  height: 330,
+};
+---
+<TopicPage slug="subjects/software-engineering/foundational/software-requirements">
+  <h2>The idea</h2>
+  <p>
+    Most software projects do not fail at coding — they fail at agreeing. Requirements engineering
+    is the discipline of working out what to build, writing it down so it can be tested, and
+    managing the fact that the answer will change. It is the least glamorous phase and the one that
+    decides the project.
+  </p>
+
+  <Widget no="1" caption="from elicitation to living specification" widget="equationStep" config={reqCfg} />
+
+  <h2>The economics of finding defects early</h2>
+  <p>
+    A misunderstood requirement caught in a workshop costs a conversation. The same defect found in
+    production costs releases, migrations and trust — industry studies since Boehm's work in the
+    1970s–80s consistently show order-of-magnitude growth in repair cost per phase. That curve is
+    the business case for the whole discipline.
+  </p>
+
+  <Widget no="2" caption="defect cost grows phase by phase" widget="plotter" config={costCfg} />
+
+  <h2>Functional versus non-functional</h2>
+  <p>
+    Functional requirements say what the system does: send invoices, reject duplicates. Non-
+    functional requirements say how well: latency, throughput, security, accessibility. The second
+    kind is where projects actually die, because it is invisible until it is broken — no demo ever
+    fails on p95 latency.
+  </p>
+
+  <h2>User stories and the agile compromise</h2>
+  <p>
+    Agile methods replaced binding specifications with short statements — "as a customer, I want a
+    refund button, so that…", with acceptance criteria attached. That trades completeness for
+    adaptability, and works when the team can talk to users continuously. The engineering remains
+    the same: make every claim testable, keep them current, never let silence stand for agreement.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> SWEBOK Guide V4.0 (IEEE Computer Society), Requirements Engineering KA; Boehm, <em>Software Engineering Economics</em>.</p>
+</TopicPage>

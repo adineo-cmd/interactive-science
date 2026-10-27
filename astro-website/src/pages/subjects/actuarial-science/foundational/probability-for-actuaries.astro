@@ -1,0 +1,68 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const premCfg = {
+  params: [
+    { name: 'p', label: 'claim probability', min: 0.01, max: 0.2, step: 0.005, value: 0.05, unit: '' },
+    { name: 'severity', label: 'average claim size', min: 1000, max: 100000, step: 1000, value: 20000, unit: '$' },
+    { name: 'policies', label: 'number of policies', min: 100, max: 10000, step: 100, value: 2000, unit: '' },
+    { name: 'load', label: 'profit loading', min: 0, max: 0.3, step: 0.01, value: 0.1, unit: '' },
+  ],
+  readouts: [
+    { label: 'expected claims', expr: 'p*severity*policies', unit: '$' },
+    { label: 'premium per policy (+load)', expr: 'p*severity*(1+load)', unit: '$' },
+    { label: 'std dev of total claims', expr: 'sqrt(policies*p*(1-p))*severity', unit: '$' },
+  ],
+};
+
+const probCfg = {
+  steps: [
+    { math: '1 · Uncertainty has structure', note: 'Single events are unpredictable; ensembles are not. The insurer cannot know who crashes — only how many, on average.' },
+    { math: '2 · Model frequency and severity', note: 'Two random pieces: how many claims (frequency) and how large each is (severity). Total cost is their combination.' },
+    { math: '3 · Expectation sets the price floor', note: 'E[total] = n·p·E[claim]. Price below expected cost and ruin is arithmetic, not bad luck.' },
+    { math: '4 · Variance sets the capital', note: 'Even a fair price fluctuates. The spread of outcomes (std dev) tells the insurer how much capital absorbs a bad year.' },
+    { math: '5 · The law of large numbers is the business', note: 'Pooling more policies shrinks relative variance — scale itself is the oldest risk-reduction technology.' },
+  ],
+};
+---
+<TopicPage slug="subjects/actuarial-science/foundational/probability-for-actuaries">
+  <h2>The idea</h2>
+  <p>
+    Actuarial science is probability applied to money with dates attached. Its founding insight:
+    while individuals are unpredictable, pools are forecastable, and the mathematics of that
+    forecastability — expectation for price, variance for capital — can be made exact. The SOA's
+    Exam P syllabus is essentially the toolkit: distributions, moments, and conditional reasoning
+    under uncertainty.
+  </p>
+
+  <Widget no="1" caption="from uncertainty to a defensible price" widget="equationStep" config={probCfg} />
+
+  <h2>Pricing a pool, live</h2>
+  <p>
+    Suppose each of 2,000 policies has a 5% chance of a $20,000 claim. Expected claims are
+    $2,000,000 — so a fair premium is $1,000, loaded for profit and expenses. The standard
+    deviation of the total, √(n·p(1−p))·severity, tells you how volatile that book is and how much
+    capital a bad year could burn. Drag the sliders: more policies, proportionally smoother ride.
+  </p>
+
+  <Widget no="2" caption="expected cost, loading, and volatility of the pool" widget="sliderLab" config={premCfg} />
+
+  <h2>Why moments matter more than formulas</h2>
+  <p>
+    The exam's distribution zoo — binomial, Poisson, exponential, normal — is really a catalogue of
+    behaviours: which model has heavy tails, which arises from rare events, which sums nicely.
+    Heavy tails are the actuary's professional obsession: a distribution's mean can be perfectly
+    behaved while its worst percentile sinks the company.
+  </p>
+
+  <h2>From Exam P to the profession</h2>
+  <p>
+    Later syllabi add time and finance: Exam FM's interest theory prices money across dates, and
+    life contingencies merges mortality tables with discounting to value pensions and insurance.
+    The through-line never changes — quantify the uncertainty, price it honestly, and hold enough
+    capital that being wrong is survivable.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> SOA Exam P/FM syllabi; Ross, <em>A First Course in Probability</em>; Klugman, Panjer &amp; Willmot, <em>Loss Models</em>.</p>
+</TopicPage>

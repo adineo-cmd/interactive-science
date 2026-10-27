@@ -1,0 +1,63 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const recycleCfg = {
+  curves: [
+    { expr: '100/(1 + 4*x)', label: 'reactant leaving unreacted', color: '#b45309', width: 2.4 },
+  ],
+  x: { min: 0, max: 5, label: 'number of passes through the reactor' },
+  y: { min: 0, max: 105, label: '% of feed still unconverted' },
+  crossings: false,
+  height: 330,
+};
+
+const balancesCfg = {
+  steps: [
+    { math: '1 · Draw the box', note: 'Pick a boundary around the process — one unit or the whole plant. Everything outside is the environment.' },
+    { math: '2 · Mass in − mass out = accumulation', note: 'The conservation law, written for the box. Steady state means accumulation is zero: whatever flows in flows out.' },
+    { math: '3 · Account for reactions', note: 'For reacting systems, balance atoms, not molecules: 4 Fe + 3 O₂ → 2 Fe₂O₃ conserves each element even as compounds vanish.' },
+    { math: '4 · Energy gets the same treatment', note: 'Energy in − energy out = accumulation, with enthalpy carrying the chemistry. A reactor that consumes heat must be fed it.' },
+    { math: '5 · Recycle changes the arithmetic', note: 'Recycling unreacted feed raises overall conversion without a better reactor — but purge streams are needed to keep inerts from accumulating.' },
+  ],
+};
+---
+<TopicPage slug="subjects/chemical-engineering/foundational/material-and-energy-balances">
+  <h2>The idea</h2>
+  <p>
+    Chemical engineering is chemistry with consequences at scale — and its foundational tool is
+    disarmingly simple: draw a box around the process and account for what crosses it. Mass and
+    energy are conserved, so every kilogram and every joule can be followed. Nearly all process
+    design starts as an exercise in bookkeeping.
+  </p>
+
+  <Widget no="1" caption="the balance equation, from box to recycle" widget="equationStep" config={balancesCfg} />
+
+  <h2>Why recycle beats bigger reactors</h2>
+  <p>
+    Real reactions never go to completion in one pass. Sending unreacted feed back around turns one
+    low conversion into many high ones: after n passes, the unconverted fraction falls like 1/(1+R)
+    for recycle ratio R. The trade-off is pumping cost and purge design — recycle accumulates
+    anything that does not react.
+  </p>
+
+  <Widget no="2" caption="unconverted feed falls with each pass" widget="plotter" config={recycleCfg} />
+
+  <h2>Energy is the other ledger</h2>
+  <p>
+    Every unit operation is also an energy balance. Distillation columns boil and condense tonnes
+    of liquid; exothermic reactors must be cooled or they run away. The engineer's first questions
+    — where does the heat come from, where does it go, can it be reused — are energy balances with
+    a heat exchanger catalogue open.
+  </p>
+
+  <h2>From balances to flowsheets</h2>
+  <p>
+    A full process is hundreds of coupled balances, solved on a flowsheet simulator. But the
+    discipline's instinct stays the same as the back-of-envelope version: pick the box, count what
+    crosses it, and trust the conservation laws. When the numbers refuse to close, it is usually
+    the flowsheet, not the physics, that is wrong.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NCEES FE Chemical exam specifications; Felder &amp; Rousseau, <em>Elementary Principles of Chemical Processes</em>.</p>
+</TopicPage>
