@@ -1,0 +1,66 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const decayCfg = {
+  curves: [
+    { expr: '100*exp(-0.693*x/8)', label: 'I-131 (half-life 8 days)', color: '#7c3aed', width: 2.2 },
+    { expr: '100*exp(-0.693*x/30)', label: 'Cs-137 (30 years, scaled)', color: '#b45309', width: 2.0 },
+    { expr: '100*exp(-0.693*x/0.02)', label: 'a 72-second nuclide', color: '#0f766e', width: 1.6 },
+  ],
+  x: { min: 0, max: 40, label: 'time (units per nuclide)' },
+  y: { min: 0, max: 105, label: '% activity remaining' },
+  crossings: false,
+  height: 340,
+};
+
+const radiationCfg = {
+  steps: [
+    { math: '1 · Unstable nuclei decay', note: 'Too many protons or neutrons, and the nucleus emits: alpha (a helium nucleus), beta (an electron), or gamma (pure energy). Each has different penetration.' },
+    { math: '2 · Penetration differs wildly', note: 'Alpha stops in paper (dangerous only inside the body); beta stops in plastic or a few mm of tissue; gamma needs centimetres of lead.' },
+    { math: '3 · Exponential decay rules time', note: 'Activity halves every half-life — never truly zero. Decay heat and waste timelines are this curve, multiplied by thousands of nuclides.' },
+    { math: '4 · Detection counts interactions', note: 'Geiger tubes count ion pairs; scintillators count light flashes; semiconductors count energy deposits. Detection is statistics, not certainty.' },
+    { math: '5 · Dose, not just presence', note: 'Hazard depends on activity, energy, and where the source sits (inside vs outside). Protection = time, distance, shielding — always in that order.' },
+  ],
+};
+---
+<TopicPage slug="subjects/nuclear-engineering/foundational/radiation-physics-and-detection">
+  <h2>The idea</h2>
+  <p>
+    Nuclear engineering is built on the physics of unstable nuclei: what decays, what it emits,
+    how those emissions interact with matter, and how they are detected. Every later topic —
+    reactor criticality, shielding design, waste timelines — is applied radiation physics, plus
+    one relentless curve: exponential decay.
+  </p>
+
+  <Widget no="1" caption="decay, penetration, detection — and dose" widget="equationStep" config={radiationCfg} />
+
+  <h2>Half-lives set the rules of the game</h2>
+  <p>
+    Exponential decay means every radioisotope has a character: iodine-131 (8 days) is intense and
+    brief — perfect for medical therapy, dangerous for weeks; caesium-137 (30 years) defines the
+    long shadow of accidents; and a 72-second nuclide is gone before you measure it twice. Compare
+    the curves: the physics of waste policy is visible in three exponentials.
+  </p>
+
+  <Widget no="2" caption="three half-lives, three timelines" widget="plotter" config={decayCfg} />
+
+  <h2>Detection is counting, carefully</h2>
+  <p>
+    Radiation detectors convert single interactions into signals: gas-filled Geiger tubes click,
+    scintillators flash, semiconductors resolve energies. Because emission is random, detection is
+    statistical — a count rate carries uncertainty, and competent measurement includes the error
+    bars. Nuclear engineering's first lab lesson is that you can never observe a single atom's
+    schedule, only the ensemble's law.
+  </p>
+
+  <h2>Protection: time, distance, shielding</h2>
+  <p>
+    Dose falls with exposure time, with the square of distance, and with shielding matched to the
+    radiation type (lead for gamma, plastic then lead for beta, nothing helps with alpha outside
+    the body). Add ALARA — every exposure justified and minimised — and you have the operating
+    culture of the entire nuclear industry, from reactors to radiology.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ABET nuclear program criteria; Krane, <em>Introductory Nuclear Physics</em>; Knoll, <em>Radiation Detection and Measurement</em>.</p>
+</TopicPage>

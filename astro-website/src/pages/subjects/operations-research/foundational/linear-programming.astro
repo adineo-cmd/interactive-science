@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const feasibleCfg = {
+  curves: [
+    { expr: '(100 - 3*x)/4', label: 'labour constraint (x1 + 4x2 ≤ 100 … rescaled)', color: '#475569', width: 1.6 },
+    { expr: '(90 - 6*x)/5', label: 'material constraint', color: '#b45309', width: 1.6 },
+    { expr: '20 - 0.8*x', label: 'optimal objective (iso-profit through vertex)', color: '#0f766e', width: 2.0 },
+  ],
+  x: { min: 0, max: 25, label: 'product A (x₁)' },
+  y: { min: 0, max: 25, label: 'product B (x₂)' },
+  crossings: true,
+  height: 360,
+};
+
+const lpCfg = {
+  steps: [
+    { math: '1 · State the decision variables', note: 'What can I choose? x₁ units of A, x₂ units of B. Everything else is data.' },
+    { math: '2 · Write the objective as a line', note: 'Maximise 5x₁ + 4x₂ (profit). Every choice maps to a profit — the family of equal-profit lines fills the plane.' },
+    { math: '3 · Write constraints as half-spaces', note: 'Labour, material, demand: each is a linear inequality, slicing the plane and leaving a feasible polygon.' },
+    { math: '4 · The optimum hides at a vertex', note: 'A linear function on a polygon peaks at a corner. The simplex method walks vertex to vertex, profit up, until no edge improves.' },
+    { math: '5 · Duality prices the constraints', note: 'Each binding constraint has a shadow price: the profit gained per extra unit of that resource. Duality turns a solution into a negotiation tool.' },
+  ],
+};
+---
+<TopicPage slug="subjects/operations-research/foundational/linear-programming">
+  <h2>The idea</h2>
+  <p>
+    Linear programming is the workhorse of operations research: maximise or minimise a linear
+    objective subject to linear constraints. An unreasonable amount of the world's logistics,
+    manufacturing, scheduling and blending runs on it — because linear models solve at enormous
+    scale, and because the simplex method (Dantzig, 1947) turned "solve" into a walk between corners.
+  </p>
+
+  <Widget no="1" caption="variables, objective, constraints, vertex, duality" widget="equationStep" config={lpCfg} />
+
+  <h2>Geometry: the optimum lives at a corner</h2>
+  <p>
+    In two variables the whole theory is visible. Constraints carve out a feasible polygon; iso-
+    profit lines slide outward until they leave it — and their last contact is a vertex. The plot
+    below shows two constraints and the optimal iso-profit line kissing the feasible region's best
+    corner. Thousands of variables behave the same way, just invisibly.
+  </p>
+
+  <Widget no="2" caption="constraints, feasible region and the optimal vertex" widget="plotter" config={feasibleCfg} />
+
+  <h2>Duality: every plan has a price list</h2>
+  <p>
+    LP's deepest idea is that each constraint corresponds to a dual variable — a shadow price
+    saying how much one more unit of that resource would be worth. Factories use them to bid for
+    overtime; airlines to bid for gates; economists to interpret the whole model. Solving one
+    answers both questions at once: what to do, and what the bottlenecks are worth.
+  </p>
+
+  <h2>Why LP first, always</h2>
+  <p>
+    Network flows, scheduling, blending, cutting stock — each begins as an LP or an LP relative,
+    and the polynomial-time interior-point methods of the 1980s joined simplex for industrial
+    scale. Integer decisions (build or not) break linearity and demand the harder combinatorial
+    machinery of a later unit — but the LP relaxation underneath them is still this lesson.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> MIT OR curriculum (OCW); Dantzig, <em>Linear Programming and Extensions</em>; Bertsimas &amp; Tsitsiklis, <em>Introduction to Linear Optimization</em>.</p>
+</TopicPage>

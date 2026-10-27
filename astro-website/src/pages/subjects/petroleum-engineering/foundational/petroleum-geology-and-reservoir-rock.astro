@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const darcyCfg = {
+  params: [
+    { name: 'k', label: 'permeability', min: 1, max: 1000, step: 10, value: 100, unit: 'mD' },
+    { name: 'dP', label: 'pressure drop', min: 100, max: 5000, step: 100, value: 2000, unit: 'psi' },
+    { name: 'visc', label: 'oil viscosity', min: 0.5, max: 50, step: 0.5, value: 2, unit: 'cP' },
+  ],
+  readouts: [
+    { label: 'flow rate (q ∝ kΔP/μ)', expr: 'k*dP/visc/1000', unit: 'a.u.' },
+  ],
+};
+
+const reservoirCfg = {
+  steps: [
+    { math: '1 · Source: cooking the rock', note: 'Organic-rich shale buried 2–4 km cooks into oil and gas at 60–150 °C. No kitchen, no petroleum — geology is the first requirement.' },
+    { math: '2 · Migration: upward, always', note: 'Buoyancy drives hydrocarbons out of the source and upward through permeable rock until something stops them.' },
+    { math: '3 · Trap: the stop', note: 'A seal — salt, shale, fault — over a shape (anticline, pinch-out, reef) pools the fluids: oil atop water, gas atop oil, by density.' },
+    { math: '4 · Porosity stores, permeability flows', note: 'Porosity (void fraction) is the tank; permeability (connectedness) is the plumbing. A reservoir needs both — sandstones and carbonates provide them.' },
+    { math: '5 · Darcy\'s law governs production', note: 'Flow rate ∝ permeability × pressure drop ÷ viscosity. Every reservoir decision — wells, lifts, floods — manipulates those three terms.' },
+  ],
+};
+---
+<TopicPage slug="subjects/petroleum-engineering/foundational/petroleum-geology-and-reservoir-rock">
+  <h2>The idea</h2>
+  <p>
+    Petroleum engineering begins as geology: petroleum exists only where a mature source rock,
+    a migration path, and a trap coincide. Then it becomes engineering, because what matters next
+    are two rock properties — porosity (how much fluid the rock stores) and permeability (how
+    fast it flows) — and one law that connects them to production.
+  </p>
+
+  <Widget no="1" caption="source, migration, trap, storage, flow" widget="equationStep" config={reservoirCfg} />
+
+  <h2>Darcy's law is the discipline's engine</h2>
+  <p>
+    Flow through porous rock obeys Darcy: rate scales with permeability and pressure drop, and
+    divides by viscosity. The proportionality hides the profession's whole leverage — you cannot
+    change the rock, but you can create pressure drawdown, treat viscous oil with heat or
+    diluents, and hydraulically fracture tight rock to multiply effective permeability. Drag the
+    sliders to feel the trade-offs.
+  </p>
+
+  <Widget no="2" caption="flow response to k, ΔP and viscosity" widget="sliderLab" config={darcyCfg} />
+
+  <h2>Not all reservoirs are equal</h2>
+  <p>
+    A clean sandstone at 500 millidarcies flows freely; the shales of the unconventional revolution
+    sit in the nano- to microdarcy range — effectively sealed until fracturing creates artificial
+    permeability. That contrast explains why the industry's map redrew in the 2010s: the resource
+    was always there, the plumbing was missing.
+  </p>
+
+  <h2>From geology to stewardship</h2>
+  <p>
+    The same sciences that find and produce hydrocarbons now store CO₂ in saline aquifers, site
+    geothermal wells and manage hydrogen storage — the subsurface skill set is portable. Modern
+    programmes (and the ABET criteria) therefore pair reservoir engineering with safety, economics
+    and the transition: the rock mechanics are identical, the mission is widening.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ABET petroleum program criteria; Ahmed, <em>Reservoir Engineering Handbook</em>; Tiab &amp; Donaldson, <em>Petrophysics</em>.</p>
+</TopicPage>

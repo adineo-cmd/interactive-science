@@ -1,0 +1,68 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const gainCfg = {
+  params: [
+    { name: 'source', label: 'source level', min: 20, max: 100, step: 1, value: 60, unit: 'dB' },
+    { name: 'preamp', label: 'preamp gain', min: 0, max: 60, step: 1, value: 30, unit: 'dB' },
+    { name: 'noise', label: 'system noise floor', min: 5, max: 40, step: 1, value: 15, unit: 'dB' },
+  ],
+  readouts: [
+    { label: 'signal level', expr: 'source + preamp', unit: 'dB' },
+    { label: 'signal-to-noise ratio', expr: 'source + preamp - noise', unit: 'dB' },
+    { label: 'headroom to clip (0 dBFS≈100)', expr: '100 - (source+preamp)', unit: 'dB' },
+  ],
+};
+
+const signalCfg = {
+  steps: [
+    { math: '1 · The source', note: 'Voice, strings, drum — an acoustic event with its own spectrum and dynamics. Nothing downstream can invent what the room and player never made.' },
+    { math: '2 · Microphone: pressure to voltage', note: 'Diaphragms convert sound to electricity. Dynamic mics are rugged and forgiving; condensers are detailed and demand power (phantom +48V).' },
+    { math: '3 · Placement is the first EQ', note: 'Distance changes tone and room blend; off-axis changes brightness. Moving the mic beats correcting it later.' },
+    { math: '4 · Gain staging: levels down the chain', note: 'Every stage has a noise floor and a clipping ceiling. Set each stage\'s gain so signal stays far above noise and far below clip.' },
+    { math: '5 · Capture, don\'t rescue', note: 'Digital editing can fix timing and pitch, but a badly recorded source is a permanent tax. The recording IS the production.' },
+  ],
+};
+---
+<TopicPage slug="subjects/music-technology/foundational/recording-fundamentals">
+  <h2>The idea</h2>
+  <p>
+    Recording is the art of converting a performance into a signal — cleanly, at the right level,
+    with choices made deliberately. Its foundation is the signal chain (source → microphone →
+    preamp → converter) and the discipline of gain staging: setting each stage's level so the
+    music stays far above the noise floor and far below distortion.
+  </p>
+
+  <Widget no="1" caption="the signal chain and its two enemies" widget="equationStep" config={signalCfg} />
+
+  <h2>Gain staging, computed</h2>
+  <p>
+    Two failures bookend every recording: noise (signal too close to the floor) and clipping
+    (signal into the ceiling). The slider bank models both — raise the preamp and watch
+    signal-to-noise improve while headroom shrinks. Every professional recording is this
+    negotiation, staged correctly at every link so the mix engineer never fights the raw takes.
+  </p>
+
+  <Widget no="2" caption="signal, noise and headroom down the chain" widget="sliderLab" config={gainCfg} />
+
+  <h2>Microphone choice and placement</h2>
+  <p>
+    Dynamic mics (SM57 family) handle loud sources and rough stages; large-diaphragm condensers
+    catch vocal detail but demand quiet rooms and +48V phantom power. Placement is the cheaper
+    and mightier tool: distance blends in room reflections, axis changes tone, and the acoustic
+    guitar's sweet spot moves with every millimetre. Experienced engineers change the mic's
+    position before reaching for EQ.
+  </p>
+
+  <h2>The room is a band member</h2>
+  <p>
+    Every recording includes the space it happened in — reflections arrive milliseconds after the
+    direct sound and define its character. Bedrooms are famously boxy (small-room comb filtering);
+    treated rooms and close-miking tame them. You can add artificial room later, but removing a
+    bad room is one of audio's impossible tasks — which is why the discipline teaches listening
+    to the space before pressing record.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Edexcel A Level Music Technology specification; Huber &amp; Runstein, <em>Modern Recording Techniques</em>; Sound on Sound recording guides.</p>
+</TopicPage>

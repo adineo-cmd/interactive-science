@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const triangleCfg = {
+  params: [
+    { name: 'aperture', label: 'aperture (f/ number)', min: 1.4, max: 22, step: 0.2, value: 2.8, unit: '' },
+    { name: 'shutter', label: 'shutter speed', min: 1, max: 15, step: 1, value: 6, unit: ' (2^)' },
+    { name: 'iso', label: 'ISO', min: 100, max: 6400, step: 100, value: 200, unit: '' },
+  ],
+  readouts: [
+    { label: 'exposure value (EV)', expr: 'log2(aperture*aperture/(pow(2,shutter)/50))/log2(2)*(200/iso)', unit: ' (higher = darker)' },
+    { label: 'depth of field trend', expr: 'aperture', unit: ' (higher = deeper)' },
+  ],
+};
+
+const exposureCfg = {
+  steps: [
+    { math: '1 · Three dials, one bucket', note: 'Exposure is water in a bucket: aperture is the tap\'s width, shutter time is how long it runs, ISO is how sensitive the taste test is.' },
+    { math: '2 · Aperture: f-numbers run backwards', note: 'f/2 is twice the diameter of f/4 and four times the light. Each full stop (f/2 → f/2.8 → f/4) halves the light.' },
+    { math: '3 · Shutter: time is motion', note: 'Halving the time halves the light and freezes twice the speed. 1/1000 s freezes birds; 1/2 s turns waterfalls to silk.' },
+    { math: '4 · ISO: sensitivity with a price', note: 'Raising ISO brightens digitally but multiplies noise. ISO is the escape dial when the other two cannot move.' },
+    { math: '5 · Stops are the currency', note: 'One stop = a doubling or halving of light. The triangle is bookkeeping in stops: give up one dial, pay on another.' },
+  ],
+};
+---
+<TopicPage slug="subjects/photography/foundational/the-exposure-triangle">
+  <h2>The idea</h2>
+  <p>
+    Photography's technical core is one equation with three dials: aperture (how wide the tap),
+    shutter speed (how long it runs) and ISO (how sensitive the sensor). The same "correct"
+    exposure can be made a thousand ways — and which way you choose is not technical bookkeeping
+    but the photograph's creative decision: depth, motion and grain.
+  </p>
+
+  <Widget no="1" caption="three dials, one bucket, and stops" widget="equationStep" config={exposureCfg} />
+
+  <h2>Trade the dials, keep the exposure</h2>
+  <p>
+    Open the aperture one stop and you can halve the time or halve the ISO — same brightness,
+    different photograph: shallower focus, or less motion blur, or cleaner shadows. The slider
+    bank computes the exchange rate in stops; notice that large apertures (small f-numbers) are
+    the wide tap, and that depth of field tracks the f-number directly.
+  </p>
+
+  <Widget no="2" caption="the exchange rate between the dials" widget="sliderLab" config={triangleCfg} />
+
+  <h2>The dials have side effects you choose on purpose</h2>
+  <p>
+    Portraits at f/1.8 melt backgrounds; landscapes at f/11 keep horizons sharp. Panned 1/30 s
+    action tells speed; 1/2000 s argues a frozen instant. Concert shooters raise ISO and eat the
+    grain. Master photographers are not better at "correct" exposure — they are deliberate about
+    which side effect to keep.
+  </p>
+
+  <h2>Metering: the camera's opinion</h2>
+  <p>
+    The camera's light meter assumes scenes average middle grey — which is why snow photographs
+    grey and night scenes wash out until the photographer overrides it. Exposure compensation is
+    the working photographer's daily tool: the triangle sets the physics, the meter guesses the
+    scene, and the artist decides who is right.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> AQA A-level Art &amp; Design (Photography) specification; Freeman, <em>The Photographer's Exposure Field Guide</em>; Ansel Adams, <em>The Negative</em>.</p>
+</TopicPage>

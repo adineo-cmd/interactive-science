@@ -1,0 +1,63 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const disinfectionCfg = {
+  params: [
+    { name: 'ct', label: 'CT value (C × t)', min: 1, max: 60, step: 1, value: 15, unit: 'mg·min/L' },
+    { name: 'ph', label: 'pH', min: 6, max: 9, step: 0.1, value: 7.5, unit: '' },
+  ],
+  readouts: [
+    { label: 'Giardia inactivation (Chick–Watson approx.)', expr: 'ct*(1/(12*(1+(ph-7)*0.6)))', unit: 'log' },
+  ],
+};
+
+const chemistryCfg = {
+  steps: [
+    { math: '1 · Equilibrium sets the chemistry', note: 'Carbonate buffering, solubility and pH govern what dissolves, precipitates and scales — the chemistry of every pipe and river.' },
+    { math: '2 · Kinetics sets the clock', note: 'How fast pollutants decay or reactions complete is kinetics — the difference between a treatment that works and one that is still working tomorrow.' },
+    { math: '3 · Microbes are the workforce', note: 'Activated sludge, nitrification, anaerobic digestion: modern wastewater treatment is deliberately cultivated microbial ecology.' },
+    { math: '4 · Pathogens set the bar', note: 'Disinfection targets organisms by log-reduction — 99.9% (3-log) or 99.99% (4-log) removal depending on the pathogen\'s risk.' },
+    { math: '5 · CT ties it together', note: 'Disinfection strength is concentration × contact time (CT), adjusted for temperature and pH — the design equation of every chlorinated system.' },
+  ],
+};
+---
+<TopicPage slug="subjects/environmental-engineering/foundational/water-chemistry-and-microbiology">
+  <h2>The idea</h2>
+  <p>
+    Environmental engineering's water work rests on two sciences: chemistry (what is dissolved,
+    and what will react) and microbiology (who is living in it, and what they eat). Every
+    treatment plant is an arrangement of tanks that exploit exactly these two: chemistry to
+    remove chemicals, biology to remove biodegradables, and disinfection to finish the pathogens.
+  </p>
+
+  <Widget no="1" caption="equilibrium, kinetics, bugs and the CT rule" widget="equationStep" config={chemistryCfg} />
+
+  <h2>Disinfection as a design equation</h2>
+  <p>
+    Chlorine does not kill by presence alone — it kills by concentration held for time. Regulators
+    encode this as the CT value, corrected for temperature and pH (free chlorine weakens as pH
+    rises, because it shifts to the less potent hypochlorite ion form). Move the sliders: the same
+    chlorine budget buys less inactivation at high pH. That is real design arithmetic.
+  </p>
+
+  <Widget no="2" caption="CT-based inactivation under pH and dose" widget="sliderLab" config={disinfectionCfg} />
+
+  <h2>The microbial workforce</h2>
+  <p>
+    Wastewater treatment is farming: operators grow specific microbial communities that consume
+    organic matter (activated sludge), convert ammonia to nitrate (nitrification) and, in the
+    anaerobic digesters, make biogas. The engineer's job is to keep the farm's environment right —
+    oxygen, food, solids age — because when the ecology crashes, the effluent fails.
+  </p>
+
+  <h2>Why the foundation matters</h2>
+  <p>
+    Every later topic — coagulation chemistry, membrane fouling, nutrient removal, lead solubility
+    in drinking water pipes — is an application of this unit's equilibrium, kinetic and microbial
+    logic. Flint's drinking-water crisis was, at root, a corrosion chemistry failure. The science
+    is the safety.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NCEES FE Environmental specifications; Benjamin &amp; Lawler, <em>Water Quality Engineering</em>; Bitton, <em>Wastewater Microbiology</em>.</p>
+</TopicPage>

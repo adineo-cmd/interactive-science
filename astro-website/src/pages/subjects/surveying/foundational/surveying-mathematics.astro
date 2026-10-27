@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const traverseCfg = {
+  params: [
+    { name: 'dist', label: 'leg length', min: 20, max: 200, step: 5, value: 100, unit: 'm' },
+    { name: 'angerr', label: 'angle error per leg', min: 2, max: 30, step: 1, value: 10, unit: '″' },
+    { name: 'legs', label: 'legs in traverse', min: 2, max: 12, step: 1, value: 6, unit: '' },
+  ],
+  readouts: [
+    { label: 'angular misclosure (angerr × √legs)', expr: 'angerr*sqrt(legs)', unit: '″' },
+    { label: 'position error at closure', expr: 'dist*angerr*sqrt(legs)/206265*legs', unit: 'm' },
+  ],
+};
+
+const errorCfg = {
+  steps: [
+    { math: '1 · No measurement is exact', note: 'Every observation carries random error. Surveying is the science of knowing how much, and of which direction it averages out.' },
+    { math: '2 · Systematic vs random', note: 'Systematic errors follow a rule (a tape too long, a collimation tilt) and can be corrected; random errors only average and must be managed statistically.' },
+    { math: '3 · Blunders are a third category', note: 'Mistargeting, transcription slips — prevented by procedure (double-centring, closed traverses), not by statistics.' },
+    { math: '4 · Errors propagate', note: 'Independent random errors add in quadrature: σ_result² = Σσᵢ². Angles over a long traverse wander with the square root of leg count, not the count.' },
+    { math: '5 · Closures prove the work', note: 'A traverse that returns to its start reveals its own error — the closure is the surveyor\'s receipt, and it must balance before anyone adjusts.' },
+  ],
+};
+---
+<TopicPage slug="subjects/surveying/foundational/surveying-mathematics">
+  <h2>The idea</h2>
+  <p>
+    Surveying is applied geometry with legal consequences — and its mathematics is dominated by
+    one discipline: the management of error. Every angle and distance is slightly wrong, so the
+    surveyor's real craft is measuring how wrong the network is, making it average out, and
+    proving the work with closures.
+  </p>
+
+  <Widget no="1" caption="errors: systematic, random, blunders — and propagation" widget="equationStep" config={errorCfg} />
+
+  <h2>Error grows with the square root, not the count</h2>
+  <p>
+    The most useful single fact in surveying: independent random errors add in quadrature. A
+    traverse of six legs, each with a 10-second angle error, closes with about 24 seconds of
+    angular misclosure — not 60. Longer traverses wander more slowly than intuition fears, and
+    (per leg length) shorter legs make the position error worse. Drag the sliders and check both.
+  </p>
+
+  <Widget no="2" caption="traverse misclosure vs leg count, length and precision" widget="sliderLab" config={traverseCfg} />
+
+  <h2>Closures: the surveyor's receipt</h2>
+  <p>
+    Because error is inevitable, honest surveys are designed to check themselves: traverses close
+    on their starting point, level loops return to their start height, and the residuals reveal
+    the accumulated error before adjustment distributes it. A survey that never closes is a
+    survey you cannot defend — which matters twice over when the corners define who owns what.
+  </p>
+
+  <h2>Geodesy changes the geometry</h2>
+  <p>
+    Over distances, the Earth stops being flat: lines converge, ellipsoid heights differ from
+    sea-level heights, and grid bearings drift from true. The FS exam's mathematics section
+    includes geodesy for this reason — the modern surveyor computes on a curved reference
+    ellipsoid, with the flat-Earth version as a local approximation, not a truth.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NCEES FS exam specifications; Ghilani &amp; Wolf, <em>Elementary Surveying</em>; Buckner, <em>Surveying Computations</em>.</p>
+</TopicPage>

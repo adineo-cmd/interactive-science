@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const squareCfg = {
+  params: [
+    { name: 'd1', label: 'distance 1', min: 50, max: 200, step: 5, value: 100, unit: 'cm' },
+    { name: 'd2', label: 'distance 2', min: 50, max: 200, step: 5, value: 180, unit: 'cm' },
+    { name: 'i1', label: 'intensity at distance 1', min: 1, max: 20, step: 1, value: 10, unit: 'mGy' },
+  ],
+  readouts: [
+    { label: 'intensity at distance 2', expr: 'i1*d1*d1/(d2*d2)', unit: 'mGy' },
+    { label: 'factor change', expr: 'd2*d2/(d1*d1)', unit: '×' },
+  ],
+};
+
+const safetyCfg = {
+  steps: [
+    { math: '1 · X-rays are made by fast electrons', note: 'Boil electrons off a filament, slam them into a tungsten target at high voltage: the sudden deceleration emits X-rays (bremsstrahlung plus characteristic lines).' },
+    { math: '2 · Tissue absorbs by density', note: 'Bone (calcium) absorbs far more than soft tissue, soft tissue more than air. That differential absorption is the entire image.' },
+    { math: '3 · Dose is cumulative', note: 'Ionising damage adds up over a lifetime. Every exposure must be justified — benefit must outweigh the risk it adds.' },
+    { math: '4 · Time, distance, shielding', note: 'Dose falls with the inverse square of distance and drops to near zero behind lead. The three cheapest protective devices in radiology.' },
+    { math: '5 · ALARA', note: 'As Low As Reasonably Achievable — the operating principle of the whole profession: same diagnostic answer, minimum dose.' },
+  ],
+};
+---
+<TopicPage slug="subjects/radiography/foundational/x-ray-physics-and-safety">
+  <h2>The idea</h2>
+  <p>
+    Radiography is the discipline of making pictures with ionising radiation — safely. Its
+    foundation is the physics of X-ray production and absorption, and its ethics is the ALARA
+    principle: every exposure must earn its place by changing the diagnosis.
+  </p>
+
+  <Widget no="1" caption="how X-rays are made, absorbed and justified" widget="equationStep" config={safetyCfg} />
+
+  <h2>The inverse square law is your colleague</h2>
+  <p>
+    Radiation intensity falls with the square of distance: doubling your distance from the source
+    cuts your dose to a quarter; scattering it further cuts it again. Students' hands learn this
+    law before their notes do — distance is the cheapest shielding in the department. Try the
+    calculator: moving a detector from 100 cm to 180 cm drops the needed beam intensity nearly
+    four-fold for the same image.
+  </p>
+
+  <Widget no="2" caption="inverse square: intensity vs distance" widget="sliderLab" config={squareCfg} />
+
+  <h2>The image is differential absorption</h2>
+  <p>
+    An X-ray image is a shadow map: tissues absorb the beam in proportion to their density and
+    atomic number. Bone leaves a white shadow, air a black one, and the soft-tissue greys between
+    them carry most of the diagnostic work. Modern digital detectors widened the exposure latitude
+    enormously — but positioning skill still decides whether the anatomy you need is even in the beam.
+  </p>
+
+  <h2>Why radiographers, not just machines</h2>
+  <p>
+    The profession exists because physics meets people: anxious patients who cannot hold still,
+    injuries that need special projections, children, and the constant judgement of exposure
+    factors against body habitus. Radiation safety, patient care and image quality are one job —
+    which is why the registry certifies a person, not a machine operator.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ARRT Radiography Content Specifications; Bushong, <em>Radiologic Science for Technologists</em>; ICRP dose recommendations.</p>
+</TopicPage>

@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const chartCfg = {
+  curves: [
+    { expr: '10 + 1.5*sin(x/3) + 0.8*sin(3*x)', label: 'sample mean (in control)', color: '#0f766e', width: 2.2 },
+    { expr: '14.5 + 0*x', label: 'UCL (+3σ)', color: '#b42318', width: 1.4 },
+    { expr: '5.5 + 0*x', label: 'LCL (−3σ)', color: '#b42318', width: 1.4 },
+  ],
+  x: { min: 0, max: 30, label: 'sample number' },
+  y: { min: 3, max: 17, label: 'measurement' },
+  crossings: false,
+  height: 340,
+};
+
+const spcCfg = {
+  steps: [
+    { math: '1 · All processes vary', note: 'Two sources: common-cause variation (the process\'s natural noise) and special-cause variation (something changed).' },
+    { math: '2 · Control limits ≠ spec limits', note: 'Control limits come from the process\'s own data (±3σ); specification limits come from the customer. A process can be in control and still make bad parts.' },
+    { math: '3 · The control chart listens', note: 'Plot sample statistics over time with ±3σ limits. Points inside, randomly scattered: common cause only. React to anything else.' },
+    { math: '4 · Patterns are signals', note: 'A run of 8 on one side, a trend, a cycle — each is a special-cause signal worth hunting, even inside the limits.' },
+    { math: '5 · Improve, then re-baseline', note: 'After eliminating special causes, reduce common-cause variation itself — that is process improvement, and the chart re-baselines tighter.' },
+  ],
+};
+---
+<TopicPage slug="subjects/industrial-engineering/foundational/statistics-quality-and-control-charts">
+  <h2>The idea</h2>
+  <p>
+    Industrial engineering begins with a statistical insight that transformed manufacturing:
+    variation is not an enemy to eliminate but a signal to interpret. Walter Shewhart's control
+    chart (1924) separated a process's natural noise from meaningful change — and that single
+    distinction, applied relentlessly, is how modern quality was built.
+  </p>
+
+  <Widget no="1" caption="Shewhart's insight: common vs special causes" widget="equationStep" config={spcCfg} />
+
+  <h2>Reading a control chart</h2>
+  <p>
+    The chart plots small-sample means against limits set by the process's own variation (±3σ).
+    Everything inside the limits is the process talking about itself; the analyst reacts only to
+    signals — points beyond limits, or suspicious patterns within them. The sample below stays in
+    control with natural wobble; a real line would demand the same restraint from its operators.
+  </p>
+
+  <Widget no="2" caption="a process in statistical control" widget="plotter" config={chartCfg} />
+
+  <h2>Capability: when in control isn't enough</h2>
+  <p>
+    A stable process can still be uniformly wrong — tightly centred on the wrong value. Capability
+    indices (Cp, Cpk) compare the process's voice (its σ) with the customer's voice (spec limits):
+    Cpk above roughly 1.33 is the classical "good" benchmark. Control first, capability second —
+    improving an unstable process is measuring fog.
+  </p>
+
+  <h2>Why IE owns the data</h2>
+  <p>
+    From control charts grew acceptance sampling, designed experiments (Deming and Taguchi carried
+    them to Japan), Six Sigma's statistics and modern analytics. The through-line: industrial
+    engineers are the profession that turns production floors into measurable systems — and insists
+    that every intervention be justified by data rather than opinion.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NCEES FE Industrial &amp; Systems specifications; Montgomery, <em>Introduction to Statistical Quality Control</em>; Shewhart, <em>Economic Control of Quality</em> (1931).</p>
+</TopicPage>

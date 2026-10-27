@@ -1,0 +1,82 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const torqueCfg = {
+  steps: [
+    { math: 'τ = F × d', note: 'Torque (moment of force) is turning effect: force times the perpendicular distance from the joint axis to the force\'s line of action, in newton-metres. Every joint the therapist mobilises, loads or guards is a torque balance. Most limb joints work as third-class levers — muscle inserts close to the axis — trading mechanical advantage for range and speed.' },
+    { math: 'W = F · d · cos θ', note: 'Mechanical work is force times displacement along the force\'s direction. Only the component along the movement counts — pushing sideways does no work. The physiotherapist\'s intuition for "harder at this angle, easier at that one" is this cosine at work.' },
+    { math: 'P = W / t', note: 'Power is work per unit time, in watts. Strength is a torque; power is what stairs, sprinting and falls recovery actually demand — and it is trainable separately, which is why elderly fall-prevention programmes train rate of force development, not just maximum strength.' },
+    { math: 'THR = HR<sub>rest</sub> + % (HR<sub>max</sub> − HR<sub>rest</sub>)', note: 'The Karvonen formula sets training heart rate from heart-rate reserve, with HR<sub>max</sub> ≈ 220 − age (or the better Tanaka equation, 208 − 0.7 × age). Exercise prescription is physiology turned into a number the patient can watch on a pulse monitor.' },
+  ],
+};
+
+const elbowCfg = {
+  params: [
+    { name: 'mass', label: 'load held', min: 2, max: 20, step: 1, value: 5, unit: 'kg' },
+    { name: 'length', label: 'forearm length', min: 0.2, max: 0.4, step: 0.01, value: 0.3, unit: 'm' },
+  ],
+  curves: [
+    { expr: 'mass * 9.81 * length * cos(x * pi / 180)', color: '#1d4ed8', label: 'external torque at the elbow (N·m)', width: 2.5 },
+  ],
+  x: { min: 0, max: 90, label: 'forearm angle below horizontal (degrees)' },
+  crossings: false,
+  height: 340,
+};
+---
+<TopicPage slug="subjects/physiotherapy/foundational/the-movement-sciences">
+  <h2>The idea</h2>
+  <p>
+    Physiotherapy is applied movement science. Behind every manipulation, exercise programme and
+    gait re-education sit three intersecting disciplines: <strong>biomechanics</strong> (the body
+    as a system of levers and loads), <strong>exercise physiology</strong> (the body as an energy
+    system that adapts to demand) and <strong>motor control and learning</strong> (the nervous
+    system as the orchestrator that must actually produce the movement). A clinician who can read
+    a movement problem in all three languages can tell whether a patient's difficulty is weak,
+    stiff, unskilled — or a mix — and prescribe accordingly. This lesson walks the terrain the
+    first syllabus unit maps: kinesiology and biomechanics, exercise physiology, and how movement
+    is learned.
+  </p>
+
+  <Widget no="1" caption="the working equations of the treatment room: torque, work, power and training heart rate" widget="equationStep" config={torqueCfg} />
+
+  <h2>Kinesiology and biomechanics</h2>
+  <p>
+    Kinesiology describes movement; biomechanics explains it with forces. The skeleton is a
+    lever system — mostly <strong>third-class levers</strong>, where the muscle inserts between
+    joint and load, sacrificing force for speed and range. Torque is therefore the currency of
+    joint function, and it changes with angle. The figure below shows why: hold a weight with the
+    forearm horizontal and the load's moment arm is longest, so external torque peaks near 90°;
+    rotate toward vertical and the same load becomes almost effortless. Muscle has its own
+    geometry-dependent behaviour — the <strong>force–length relationship</strong> (peak tension
+    near mid-range, where actin–myosin overlap is optimal) and the <strong>force–velocity
+    relationship</strong> (Hill's classic curve: force falls as shortening speed rises). Clinical
+    testing angles, isokinetic dynamometry and manual muscle test positions all exist because
+    strength is not a single number but a curve.
+  </p>
+
+  <Widget no="2" caption="external torque of a held load rises and falls with the cosine of joint angle — drag the sliders" widget="plotter" config={elbowCfg} />
+
+  <h2>Exercise physiology</h2>
+  <ul>
+    <li><strong>Three energy systems in series.</strong> The phosphagen system (ATP–PCr) fuels about 10 seconds of maximal effort; anaerobic glycolysis bridges tens of seconds to a couple of minutes at the cost of lactate and hydrogen ions; oxidative metabolism carries everything beyond, limited by oxygen delivery and mitochondrial density.</li>
+    <li><strong>VO<sub>2</sub>max is the ceiling.</strong> Maximal oxygen uptake (ml/kg/min) indexes cardiorespiratory capacity; training raises it 15–25% through central (stroke volume) and peripheral (capillary, mitochondrial) adaptations.</li>
+    <li><strong>Dose makes the adaptation.</strong> Intensity, duration, frequency and progression follow the FITT-VP principle; the Karvonen target heart rate above is the classic bedside translation. Deconditioning obeys the same law in reverse — bed rest strips aerobic capacity within weeks, which is why early mobilisation is a prescription, not a courtesy.</li>
+  </ul>
+
+  <h2>Motor control and learning</h2>
+  <p>
+    Strength and fitness are useless if the nervous system cannot deploy them. Fitts and
+    Posner's stages — <strong>cognitive, associative, autonomous</strong> — describe every
+    patient's journey from thinking through a movement to doing it while talking. Schmidt's
+    schema theory explains why variable practice beats repetition: the motor program is tuned by
+    comparing predicted with actual sensory consequences. Practice design is therefore a
+    clinical decision — <strong>blocked practice</strong> builds fast session performance,
+    <strong>random practice</strong> builds retention and transfer (contextual interference),
+    and feedback shifts from every-trial extrinsic knowledge of results to the patient's own
+    intrinsic error detection. The end goal of therapy is not a better Wednesday session; it is
+    a movement the patient owns at home.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Norkin &amp; Levangie, Joint Structure and Function; McArdle, Katch &amp; Katch, Exercise Physiology; Shumway-Cook &amp; Woollacott, Motor Control: Translating Research into Clinical Practice.</p>
+</TopicPage>
