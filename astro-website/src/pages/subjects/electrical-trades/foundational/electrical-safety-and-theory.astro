@@ -1,0 +1,64 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const dropCfg = {
+  params: [
+    { name: 'amps', label: 'load current', min: 5, max: 60, step: 1, value: 20, unit: 'A' },
+    { name: 'length', label: 'one-way length', min: 5, max: 150, step: 5, value: 50, unit: 'm' },
+    { name: 'wiremm2', label: 'wire size', min: 1.5, max: 16, step: 0.5, value: 4, unit: 'mm²' },
+  ],
+  readouts: [
+    { label: 'voltage drop (copper, there+back)', expr: '0.0175*2*length*amps/wiremm2', unit: 'V' },
+    { label: 'drop % of 230 V', expr: '0.0175*2*length*amps/wiremm2/230*100', unit: '%' },
+  ],
+};
+
+const safetyCfg = {
+  steps: [
+    { math: '1 · Electricity\'s three killers', note: 'Shock (current through the body), arc flash (explosive plasma), and fire (overheated conductors). The trade\'s safety rules map to each.' },
+    { math: '2 · Lockout, test, prove', note: 'De-energise, lock the breaker, test with a meter, prove the meter on a known source. Every time — the rule that keeps electricians alive.' },
+    { math: '3 · Ohm\'s law runs everything', note: 'V = IR and P = VI: the maths behind wire sizing, breaker ratings and why resistance makes heat.' },
+    { math: '4 · Voltage drop is a code issue', note: 'Long, thin wires waste voltage as heat. Codes limit drop (typically ~3–5%) because motors and lights starve at the far end.' },
+    { math: '5 · Protection finishes the circuit', note: 'Breakers and fuses sized to the conductor: the overcurrent device is what turns a fault into a tripped switch instead of a fire.' },
+  ],
+};
+---
+<TopicPage slug="subjects/electrical-trades/foundational/electrical-safety-and-theory">
+  <h2>The idea</h2>
+  <p>
+    The electrical trade runs on two texts: the safety procedure that keeps its workers alive
+    (lockout, test, prove) and the circuit theory that makes its calculations work (Ohm's law).
+    Everything else — wire tables, breaker sizing, code articles — is arithmetic between those
+    two covers.
+  </p>
+
+  <Widget no="1" caption="the killers, the procedure, the law, the protection" widget="equationStep" config={safetyCfg} />
+
+  <h2>Voltage drop: theory meets the codebook</h2>
+  <p>
+    Every conductor resists, so every run loses voltage proportional to current, length — and
+    inversely to wire size. Codes advise keeping drop near 3–5% because distant motors stall and
+    lights brown out. Size the run below and watch a 20 A load 100 m away starve on thin wire.
+  </p>
+
+  <Widget no="2" caption="voltage drop vs current, length and wire size" widget="sliderLab" config={dropCfg} />
+
+  <h2>The safety procedure exists in memorials</h2>
+  <p>
+    NFPA 70E — the arc-flash standard — and every apprentice's lockout training descend from
+    incidents: arcs that vaporised copper at 19,000 °C, panels re-energised by someone's "just a
+    second". Test-before-touch is drilled until it is reflex, because electricity gives no second
+    chance at belief.
+  </p>
+
+  <h2>From theory to the codebook</h2>
+  <p>
+    The National Electrical Code is the trade's operating manual — organised by installation type,
+    full of tables for ampacity and fill. Its logic is this lesson's physics: conductors sized so
+    their insulation never cooks, protection sized so faults clear instantly, grounding so faults
+    have a safe path home. The next units walk the code article by article.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NCCER Electrical curriculum; NFPA 70 (NEC) and NFPA 70E; Delmar's <em>Standard Textbook of Electricity</em>.</p>
+</TopicPage>

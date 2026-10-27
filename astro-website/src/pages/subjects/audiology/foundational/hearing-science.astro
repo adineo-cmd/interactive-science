@@ -1,0 +1,63 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const eqCfg = {
+  curves: [
+    { expr: '20*log10(x/0.00002)', label: 'dB SPL re: 20 µPa', color: '#7c3aed', width: 2.2 },
+  ],
+  x: { min: 1, max: 100000, label: 'sound pressure (µPa, log positions)' },
+  y: { min: 0, max: 140, label: 'dB SPL' },
+  crossings: false,
+  height: 330,
+};
+
+const hearingCfg = {
+  steps: [
+    { math: '1 · Sound: pressure in air', note: 'Vibrations create pressure waves. Intensity is measured in dB SPL against 20 µPa — the scale runs from a whisper (~30) to a jet (~140).' },
+    { math: '2 · Outer ear: the collector', note: 'The pinna funnels sound down the canal and shapes direction cues; the canal itself resonates near 2.7 kHz, boosting speech frequencies.' },
+    { math: '3 · Middle ear: the impedance match', note: 'Air is a bad match for fluid. Three tiny bones (malleus, incus, stapes) lever sound into the cochlea with about 22 dB of gain.' },
+    { math: '4 · Cochlea: frequency to nerve', note: 'The basilar membrane is tonotopic — high frequencies at the base, low at the apex. Inner hair cells convert each place\'s motion into nerve spikes.' },
+    { math: '5 · Beyond the ear', note: 'The auditory nerve and brainstem preserve frequency and timing maps all the way to cortex. Hearing loss is classified by where this chain breaks.' },
+  ],
+};
+---
+<TopicPage slug="subjects/audiology/foundational/hearing-science">
+  <h2>The idea</h2>
+  <p>
+    Audiology is built on hearing science: what sound physically is, how the ear converts it into
+    nerve signals, and where in that chain things fail. Every audiogram a clinician reads is a
+    map drawn over this anatomy — and the classification of hearing loss (conductive,
+    sensorineural, mixed) is literally a diagnosis of <em>which link broke</em>.
+  </p>
+
+  <Widget no="1" caption="the auditory chain, ear to cortex" widget="equationStep" config={hearingCfg} />
+
+  <h2>The decibel is a ratio, not a quantity</h2>
+  <p>
+    Sound pressure spans a million-fold range, so it is compressed logarithmically: dB SPL =
+    20·log₁₀(p/20 µPa). The consequence students must internalise: +6 dB is a doubling of
+    pressure, +10 dB a perceived doubling of loudness, and the loudest safe exposures sit far
+    below the painful ones. The curve plots pressure against its decibel value.
+  </p>
+
+  <Widget no="2" caption="sound pressure converted to the decibel scale" widget="plotter" config={eqCfg} />
+
+  <h2>Tonotopy: the ear as a frequency analyser</h2>
+  <p>
+    The cochlea unrolls sound along its length — base for high frequencies, apex for low — like a
+    biological Fourier transform. This tonotopic map explains the audiogram's shape in noise-
+    induced loss (the 4 kHz notch corresponds to a specific cochlear region) and why hearing aids
+    must be programmed by frequency band. The ear does not just hear; it analyses.
+  </p>
+
+  <h2>Where the science meets the clinic</h2>
+  <p>
+    Audiometry is hearing science made measurable: pure tones test the whole chain, speech testing
+    adds real-world verification, and immittance isolates the middle ear. Later units add
+    vestibular science — the balance half of the inner ear — but every test on the clinic floor
+    stands on the anatomy this lesson maps.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ASHA/CAA accreditation standards; Pickles, <em>An Introduction to the Physiology of Hearing</em>; Musiek &amp; Baran, <em>The Auditory System</em>.</p>
+</TopicPage>

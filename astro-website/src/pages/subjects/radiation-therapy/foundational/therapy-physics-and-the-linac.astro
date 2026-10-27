@@ -1,0 +1,64 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const pdCfg = {
+  curves: [
+    { expr: 'exp(-0.048*x)*(0.28*exp(-((x-1.5)^2)/1.2)+1)', label: '6 MV beam at 10×10 cm', color: '#7c3aed', width: 2.4 },
+  ],
+  x: { min: 0, max: 30, label: 'depth in water (cm)' },
+  y: { min: 0, max: 1.4, label: 'relative dose' },
+  crossings: false,
+  height: 340,
+};
+
+const linacCfg = {
+  steps: [
+    { math: '1 · Make the electrons fast', note: 'A microwave gun accelerates electrons to near light speed in a standing-wave guide (~6–20 MV of energy).' },
+    { math: '2 · Slam them into tungsten', note: 'The target converts electron energy into a flood of high-energy X-ray photons (or the electrons are used directly for electron therapy).' },
+    { math: '3 · Shape the beam', note: 'Flattening filters (or flattening-filter-free designs), jaws and multileaf collimators sculpt the field — leaves move live to paint dose.' },
+    { math: '4 · Aim and dose it', note: 'Gantry rotation aims the beam from any angle; the dose falls with depth, peaking just under the skin — sparing the surface, hitting the tumour.' },
+    { math: '5 · Fractionate', note: 'Daily small doses (typically ~2 Gy × 30–35) exploit normal tissue repair between fractions while tumours accumulate damage.' },
+  ],
+};
+---
+<TopicPage slug="subjects/radiation-therapy/foundational/therapy-physics-and-the-linac">
+  <h2>The idea</h2>
+  <p>
+    Radiation therapy treats cancer by delivering lethal dose to a tumour while sparing the healthy
+    tissue around it — a geometry-and-physics problem played out millimetre by millimetre. Its
+    foundation is the linear accelerator and the behaviour of its beam in tissue: where dose
+    peaks, how it falls, and why treatments are split into fractions.
+  </p>
+
+  <Widget no="1" caption="from microwave gun to fractionated dose" widget="equationStep" config={linacCfg} />
+
+  <h2>The depth–dose curve designs the treatment</h2>
+  <p>
+    A megavoltage beam spares the skin (its dose peak lies centimetres deep), then attenuates
+    slowly — which is why beams are aimed through the body from multiple angles, each contributing
+    dose that stacks at the tumour and spreads elsewhere. The curve below shows the characteristic
+    build-up, peak and fall-off that planners juggle with energy and field choices.
+  </p>
+
+  <Widget no="2" caption="percentage depth–dose for a 6 MV beam" widget="plotter" config={pdCfg} />
+
+  <h2>Fractionation is biology, not scheduling</h2>
+  <p>
+    Splitting the dose exploits a difference in repair: normal tissue repairs sublethal damage
+    between fractions better than tumours do. Radiobiology's five Rs (repair, reassortment,
+    repopulation, reoxygenation, radiosensitivity) explain why the standard 2 Gy/day schedule
+    works — and why stereotactic regimes that deliver huge doses in few fractions needed new
+    technology to stay safe.
+  </p>
+
+  <h2>The team behind every beam</h2>
+  <p>
+    Radiation oncology is a triangle: the radiation oncologist prescribes, the medical physicist
+    plans and checks, and the radiation therapist delivers daily — positioning the patient to
+    sub-centimetre accuracy. The discipline's safety culture exists because the beam cannot be
+    seen, felt or taken back.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ARRT Radiation Therapy Content Specifications; Khan, <em>The Physics of Radiation Therapy</em>; Washington &amp; Leaver, <em>Principles and Practice of Radiation Therapy</em>.</p>
+</TopicPage>

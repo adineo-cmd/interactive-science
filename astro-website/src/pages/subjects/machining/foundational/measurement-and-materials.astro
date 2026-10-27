@@ -1,0 +1,66 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const toleranceCfg = {
+  params: [
+    { name: 'nominal', label: 'nominal size', min: 5, max: 50, step: 1, value: 20, unit: 'mm' },
+    { name: 'tol', label: 'tolerance (±)', min: 0.01, max: 0.5, step: 0.01, value: 0.05, unit: 'mm' },
+    { name: 'measured', label: 'measured size', min: 4, max: 51, step: 0.01, value: 20.03, unit: 'mm' },
+  ],
+  readouts: [
+    { label: 'acceptable range', expr: 'nominal - tol', unit: 'to', },
+    { label: 'upper limit', expr: 'nominal + tol', unit: 'mm' },
+    { label: 'in tolerance?', expr: 'measured >= nominal - tol && measured <= nominal + tol', unit: '' },
+  ],
+};
+
+const measureCfg = {
+  steps: [
+    { math: '1 · Metrology is the trade\'s grammar', note: 'Micrometers read to 0.01 mm, calipers to 0.02, gauge blocks are the reference truth. If you cannot measure it, you cannot make it.' },
+    { math: '2 · Tolerances are the contract', note: 'A dimension with ±0.05 mm is a promise: every part inside the band is good, outside it is scrap. The tolerance sets the process.' },
+    { math: '3 · Materials fight back differently', note: 'Aluminium cuts fast and galls; stainless work-hardens; cast iron machines dusty; titanium is strong, springy and hungry for sharp tools.' },
+    { math: '4 · Heat is the hidden dimension', note: 'Metals expand with temperature — a part measured warm can be out of tolerance cold. Precision work controls temperature too.' },
+    { math: '5 · Safety: sharp, spinning, hot', note: 'No gloves near rotating spindles, eye protection always, chips are razor-sharp and metal chips burn — the shop\'s rules are written in incidents.' },
+  ],
+};
+---
+<TopicPage slug="subjects/machining/foundational/measurement-and-materials">
+  <h2>The idea</h2>
+  <p>
+    Machining is the discipline of removing metal to a promise: a dimension held within tolerance,
+    verified by measurement. Its foundation is therefore metrology — the micrometer, the gauge
+    block, the humble caliper — plus the materials science of how each alloy behaves under the
+    tool. Everything else (lathes, mills, CNC) builds on that pair.
+  </p>
+
+  <Widget no="1" caption="measurement, tolerances, materials, heat, safety" widget="equationStep" config={measureCfg} />
+
+  <h2>Tolerance: the promise you either keep or scrap</h2>
+  <p>
+    A drawing that says 20.00 ±0.05 mm defines an acceptance window from 19.95 to 20.05. The
+    machinist's question is always whether the process can reliably land inside it — tighter
+    tolerances cost exponentially more time and finer machines. Check a measured part against its
+    window below; the verdict is binary.
+  </p>
+
+  <Widget no="2" caption="measured part vs its tolerance window" widget="sliderLab" config={toleranceCfg} />
+
+  <h2>Materials set the rules of the cut</h2>
+  <p>
+    Machinability is not one number: aluminium shears beautifully but galls on threads; stainless
+    work-hardens under a dull or slow tool; titanium's low thermal conductivity sends heat into
+    the cutting edge instead of the chip. Speeds, feeds and coolant choices are the metallurgy
+    applied — which is why machinists learn the material before the machine.
+  </p>
+
+  <h2>The shop's safety grammar</h2>
+  <p>
+    The machining shop's hazards are mechanical and immediate: rotating spindles catch loose
+    gloves and sleeves, chips fly hot and razor-edged, coolants mist. The rules — no gloves at
+    rotating machines, eye protection always, chip hooks not fingers — are short, absolute, and
+    written by the injuries that preceded them.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NIMS Machining credential standards; Hoffman &amp; Hopewell, <em>Precision Machining Technology</em>; Machinery's Handbook.</p>
+</TopicPage>

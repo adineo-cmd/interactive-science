@@ -1,0 +1,63 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const psychroCfg = {
+  params: [
+    { name: 'db', label: 'dry-bulb temperature', min: 10, max: 35, step: 0.5, value: 24, unit: '°C' },
+    { name: 'rh', label: 'relative humidity', min: 20, max: 95, step: 5, value: 50, unit: '%' },
+  ],
+  readouts: [
+    { label: 'approx. dew point', expr: 'db - (100-rh)/5', unit: '°C' },
+    { label: 'comfort?', expr: 'db>=20&&db<=26&&rh>=30&&rh<=60', unit: '' },
+  ],
+};
+
+const scienceCfg = {
+  steps: [
+    { math: '1 · Heat moves three ways', note: 'Conduction through solids, convection with fluids, radiation across space. Every HVAC component is one of these, deliberately.' },
+    { math: '2 · Comfort is two numbers', note: 'Dry-bulb temperature AND humidity. 24 °C dry feels fine at 40% RH and sweltering at 90% — latent (moisture) heat is real heat.' },
+    { math: '3 · The psychrometric chart is the map', note: 'The air\'s temperature, moisture and energy live on one chart; every cooling coil and humidifier is a path across it.' },
+    { math: '4 · Three hazards, three rules', note: 'Electrical (lockout), gas (combustion and CO), refrigerant (pressure and asphyxiation) — the trade\'s safety trio, each with its own procedures.' },
+    { math: '5 · Efficiency is the mission metric', note: 'SEER, AFUE, COP: the industry\'s ratings all answer one question — how much comfort per unit of energy.' },
+  ],
+};
+---
+<TopicPage slug="subjects/hvac/foundational/safety-and-the-science-of-air">
+  <h2>The idea</h2>
+  <p>
+    HVAC work is applied thermodynamics with a safety record to maintain: the trade moves heat
+    with fluids, electricity and flame, and its core science is the psychrometric chart — the map
+    of what air is carrying. Comfort, it turns out, is two numbers, not one.
+  </p>
+
+  <Widget no="1" caption="heat transfer, comfort's two numbers, three hazards" widget="equationStep" config={scienceCfg} />
+
+  <h2>Humidity changes everything</h2>
+  <p>
+    The same 24 °C dry-bulb reads as comfortable at 40% relative humidity and oppressive at 90% —
+    because the body cools by evaporation, and humid air blocks it. A quick dew-point estimate
+    (roughly subtract (100 − RH)/5 from the dry-bulb) tells the technician when cooling coils
+    will condense water and when a system is fighting latent, not sensible, load.
+  </p>
+
+  <Widget no="2" caption="dry-bulb + humidity → dew point and comfort" widget="sliderLab" config={psychroCfg} />
+
+  <h2>Three energies, three safety disciplines</h2>
+  <p>
+    The trade works on electrical panels (lockout/tagout), gas trains (combustion air, CO testing,
+    leak checks) and pressurised refrigerant circuits (recovery before opening, never venting) —
+    and EPA Section 608 certification is legally required to handle refrigerant. HVAC safety is
+    three separate exams' worth of respect.
+  </p>
+
+  <h2>The refrigeration cycle preview</h2>
+  <p>
+    Everything the trade installs orbits one cycle: a fluid boiled at low pressure absorbs heat
+    indoors, is compressed to a hotter state, and rejects that heat outdoors. The next units trace
+    it component by component — but the science that makes it work is this lesson's: pressure
+    changes boiling points, and moving heat is always moving it somewhere else.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> EPA Section 608; NCCER HVAC curriculum; Trane/ASHRAE technician fundamentals.</p>
+</TopicPage>

@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const abgCfg = {
+  params: [
+    { name: 'ph', label: 'pH', min: 7.0, max: 7.6, step: 0.01, value: 7.38, unit: '' },
+    { name: 'paco2', label: 'PaCO₂', min: 20, max: 70, step: 1, value: 40, unit: 'mmHg' },
+    { name: 'hco3', label: 'HCO₃⁻', min: 12, max: 40, step: 1, value: 24, unit: 'mEq/L' },
+  ],
+  readouts: [
+    { label: 'acid–base status', expr: 'ph + (paco2 - 40)/1000', unit: '' },
+    { label: 'expected compensation check', expr: 'abs(ph - 7.4) - abs(paco2 - 40)/80', unit: '' },
+  ],
+};
+
+const abgLearnCfg = {
+  steps: [
+    { math: '1 · pH names the crisis', note: 'Below 7.35 is acidaemia, above 7.45 alkalaemia. Everything else is finding out why.' },
+    { math: '2 · CO₂ is the respiratory term', note: 'PaCO₂ above 45 mmHg means underventilation — an acid load the lungs are holding. Below 35: the lungs are blowing off acid.' },
+    { math: '3 · HCO₃⁻ is the metabolic term', note: 'Bicarbonate below 22 means metabolic acid (kidneys losing base or acids gaining); above 26, a metabolic alkalosis.' },
+    { math: '4 · Match the offender to the pH', note: 'The direction of the abnormality that matches the pH names the primary disorder; the other term is compensating.' },
+    { math: '5 · Compensation has limits', note: 'If the compensating value is more (or less) than expected, a second disorder is hiding — the classic mixed acid–base state.' },
+  ],
+};
+---
+<TopicPage slug="subjects/respiratory-therapy/foundational/cardiopulmonary-assessment">
+  <h2>The idea</h2>
+  <p>
+    Respiratory therapy begins with assessment: reading the cardiopulmonary system from vitals,
+    blood gases, imaging and physical findings. The blood gas is the discipline's signature test —
+    four numbers that describe how well the lungs are exchanging oxygen and clearing CO₂, and how
+    the kidneys are compensating.
+  </p>
+
+  <Widget no="1" caption="reading an arterial blood gas, systematically" widget="equationStep" config={abgLearnCfg} />
+
+  <h2>Classify the acid–base state yourself</h2>
+  <p>
+    Drag the sliders into the four classic pictures: respiratory acidosis (high CO₂, low pH —
+    underventilation), respiratory alkalosis (low CO₂ — hyperventilation), metabolic acidosis
+    (low bicarbonate) and metabolic alkalosis (high bicarbonate). The readouts show how the
+    matching abnormality names the primary disorder — the first question on every TMC exam.
+  </p>
+
+  <Widget no="2" caption="blood gas values → acid–base classification" widget="sliderLab" config={abgCfg} />
+
+  <h2>The physiology under the numbers</h2>
+  <p>
+    Oxygen travels mostly bound to haemoglobin (the S-shaped dissociation curve), CO₂ mostly as
+    bicarbonate — and the two conversions are linked by the same enzyme. Ventilation moves CO₂
+    fast; perfusion moves O₂. That asymmetry is why the ABG can separately implicate the lungs
+    (CO₂) and the metabolism (HCO₃⁻) — a diagnostic elegance the respiratory therapist works with
+    every shift.
+  </p>
+
+  <h2>Assessment is the therapy's aiming system</h2>
+  <p>
+    Every later unit — oxygen devices, ventilation modes, weaning — adjusts therapy against this
+    assessment. A ventilator change without a blood gas rationale is a guess; the profession's
+    value is exactly that it doesn't guess.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> NBRC TMC content outline; Cairo, <em>Pilbeam's Mechanical Ventilation</em>; Des Jardins, <em>Cardiopulmonary Anatomy &amp; Physiology</em>.</p>
+</TopicPage>

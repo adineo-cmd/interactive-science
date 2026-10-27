@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const wbCfg = {
+  params: [
+    { name: 'weight1', label: 'pilot weight', min: 50, max: 120, step: 1, value: 80, unit: 'kg' },
+    { name: 'weight2', label: 'baggage weight', min: 0, max: 60, step: 1, value: 20, unit: 'kg' },
+    { name: 'fuel', label: 'fuel (litres)', min: 20, max: 200, step: 5, value: 120, unit: 'L' },
+  ],
+  readouts: [
+    { label: 'fuel mass (0.72 kg/L)', expr: 'fuel*0.72', unit: 'kg' },
+    { label: 'total ramp weight', expr: 'weight1 + weight2 + fuel*0.72 + 650', unit: 'kg' },
+    { label: 'under 1050 kg limit?', expr: 'weight1 + weight2 + fuel*0.72 + 650 <= 1050', unit: '' },
+  ],
+};
+
+const generalCfg = {
+  steps: [
+    { math: '1 · The aircraft as a system', note: 'Airframe, powerplant, systems — maintenance treats them as one certified whole, not a pile of parts.' },
+    { math: '2 · Maths and physics you use daily', note: 'Weight and balance arithmetic, hydraulics, leverage, heat — the FAH handbooks open with the physics, because errors fly.' },
+    { math: '3 · Drawings are the instructions', note: 'Blueprints, schematics and maintenance manuals are the source of truth. If it is not documented, it did not happen.' },
+    { math: '4 · Regulations authorise the wrench', note: 'FAA Part 65 defines the AMT certificate; Part 43 defines what maintenance is legal; the signature certifies airworthiness to the FAA.' },
+    { math: '5 · Inspection closes the loop', note: 'Annuals, 100-hour checks and airworthiness directives (ADs) — the recurring verification that keeps the whole fleet honest.' },
+  ],
+};
+---
+<TopicPage slug="subjects/aviation-maintenance/foundational/amt-general">
+  <h2>The idea</h2>
+  <p>
+    Aviation maintenance is mechanical craft under a legal microscope. The "General" curriculum —
+    the first certificate block every AMT studies — covers the maths, physics, drawings and
+    regulations shared by all aircraft work. Its defining habit: every task is measured, every
+    measurement recorded, and every record signed with legal weight.
+  </p>
+
+  <Widget no="1" caption="aircraft as system, maths, drawings, regulations, inspection" widget="equationStep" config={generalCfg} />
+
+  <h2>Weight and balance: the daily maths</h2>
+  <p>
+    An aircraft's centre of gravity must sit within certified limits or it flies badly — or not at
+    all. The AMT's arithmetic: sum every item's weight (fuel at 0.72 kg/L) against its arm (distance
+    from datum). Run the numbers on a light aircraft and watch how a full fuel load and a heavy
+    passenger compete for the limit.
+  </p>
+
+  <Widget no="2" caption="a light aircraft's weight-and-balance check" widget="sliderLab" config={wbCfg} />
+
+  <h2>The signature is the product</h2>
+  <p>
+    Unlike most trades, aviation maintenance sells documentation as much as work: a maintenance
+    release states that the work was performed per the regulations, by a certificated person. FAA
+    Part 43 spells out what performance means; Part 65 defines who may sign. Falsified maintenance
+    records are a federal offence — the paper trail is the safety system.
+  </p>
+
+  <h2>Why "General" comes first</h2>
+  <p>
+    The Airframe and Powerplant specialties that follow assume these habits: exact torque values,
+    approved data, traceable parts. Aviation's safety record is built on that discipline —
+    thousands of tasks done to specification, documented, and inspected again by someone else.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> FAA Part 147 curriculum and FAA-H-8083-30A General Handbook; FAA Part 43/65; FAA AC 43.13-1B.</p>
+</TopicPage>
