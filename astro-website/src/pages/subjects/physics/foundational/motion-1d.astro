@@ -1,6 +1,8 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import data from '../../../../data/topics.json';
+import Quiz from '../../../../components/Quiz.astro';
+import Glossary from '../../../../components/Glossary.astro';
 
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
@@ -49,6 +51,34 @@ const stepsCfg = {
   ],
 };
 
+const checkCfg = {
+  questions: [
+    {
+      q: 'A car cruises at a steady 60 km/h on a straight road. What is its acceleration?',
+      choices: ['Zero', '6 m/s²', 'It depends on the mass', '9.8 m/s²'],
+      answer: 0,
+      why: 'Acceleration is how fast velocity changes. Steady velocity means no change.',
+    },
+    {
+      q: 'You drop a ball and it speeds up as it falls. Which quantity is growing?',
+      choices: [
+        'Velocity, and therefore distance covered per second',
+        'Acceleration, which keeps doubling',
+        'The mass of the ball',
+        'Only the time on the stopwatch',
+      ],
+      answer: 0,
+      why: 'Near the ground acceleration stays roughly constant at 9.8 m/s²; velocity is what climbs.',
+    },
+    {
+      q: 'On a velocity-time graph, what does the area under the line represent?',
+      choices: ['Distance travelled', 'Acceleration', 'Mass', 'Force'],
+      answer: 0,
+      why: 'Velocity multiplied by time is distance — the area is exactly that product.',
+    },
+  ],
+};
+
 const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min: -10, max: 10 }, start: [6, 4] };
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
@@ -75,7 +105,7 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
           <p>
             Motion along a straight line needs exactly three numbers to describe it at every
             instant: <strong>position</strong> <code>s</code> (where you are), <strong>velocity</strong>
-            <code>v</code> (how fast that position changes) and <strong>acceleration</strong>
+            <code>v</code> (how fast that position changes) and <Glossary term="acceleration" def="The rate at which velocity changes, measured in metres per second squared. A constant acceleration means velocity grows by the same amount every second." />
             <code>a</code> (how fast the velocity changes). When <code>a</code> is constant,
             everything else follows from two small equations — and you can watch them work below.
           </p>
@@ -116,6 +146,8 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
               <div data-widget="diagramBuilder" data-config={JSON.stringify(vecCfg)}></div>
             </div>
           </figure>
+
+          <Quiz questions={checkCfg.questions} />
         </div>
 
         <nav class="topic-next" aria-label="Lesson navigation">

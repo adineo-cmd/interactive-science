@@ -1,6 +1,8 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import data from '../../../../data/topics.json';
+import Quiz from '../../../../components/Quiz.astro';
+import Glossary from '../../../../components/Glossary.astro';
 
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
@@ -27,6 +29,58 @@ const marketCfg = {
   crossings: true,
   height: 370,
 };
+
+// The same market as a table-turned-chart: both schedules read off at
+// a = 100, b = 2, c = 2, d = 20. They meet at price 30, quantity 40.
+const scheduleCfg = {
+  kind: 'line',
+  height: 300,
+  xLabels: ['10', '20', '30', '40', '50'],
+  xLabel: 'price',
+  y: { min: 0, max: 80, label: 'quantity' },
+  series: [
+    { label: 'buyers want', color: '#b42318', values: [80, 60, 40, 20, 0] },
+    { label: 'sellers offer', color: '#0f766e', values: [0, 20, 40, 60, 80] },
+  ],
+};
+
+const checkCfg = {
+  questions: [
+    {
+      q: 'At a price of 30, buyers want 40 and sellers offer 40. What happens?',
+      choices: [
+        'Nothing pushes the price either way — the market clears',
+        'A shortage appears and the price rises',
+        'A surplus appears and the price falls',
+        'The curves shift to a new position',
+      ],
+      answer: 0,
+      why: 'Equal quantity wanted and offered is the definition of equilibrium.',
+    },
+    {
+      q: 'Demand rises (a goes up) while supply stays put. What moves?',
+      choices: [
+        'Both the equilibrium price and quantity rise',
+        'Price rises but quantity falls',
+        'Price falls but quantity rises',
+        'Neither changes',
+      ],
+      answer: 0,
+      why: 'The demand line shifts right, so the crossing moves right and up.',
+    },
+    {
+      q: 'Which change makes buyers more sensitive to price?',
+      choices: [
+        'Raising b, the demand slope',
+        'Raising a, the demand level',
+        'Lowering d, the supply cost',
+        'Raising c, the supply response',
+      ],
+      answer: 0,
+      why: 'b sets how steeply quantity falls as price climbs — that is sensitivity.',
+    },
+  ],
+};
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -52,14 +106,22 @@ const marketCfg = {
           <p>
             Two behaviours, one graph. <strong>Buyers</strong> purchase less as price rises
             (demand slopes down); <strong>sellers</strong> offer more as price rises (supply
-            slopes up). Nobody sets the outcome — the market clears exactly where the two curves
-            cross. That crossing is marked on the plot below.
+            slopes up). Nobody sets the outcome — the
+            <Glossary term="market clears" def="The price where the quantity buyers want exactly equals the quantity sellers offer, so nothing is left over and nothing is missing." />
+            exactly where the two curves cross. That crossing is marked on the plot below.
           </p>
 
           <figure class="widget">
             <figcaption><span class="fig-no">fig. 1</span><span>the circled crossing is the market equilibrium — drag any parameter</span></figcaption>
             <div class="widget-body">
               <div data-widget="plotter" data-config={JSON.stringify(marketCfg)}></div>
+            </div>
+          </figure>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 2</span><span>the same market as numbers — hover a price to compare both sides, click a legend entry to hide it</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="chart" data-config={JSON.stringify(scheduleCfg)}></div>
             </div>
           </figure>
 
@@ -76,6 +138,8 @@ const marketCfg = {
             why a first economics course is secretly a geometry course. The arguments come later;
             first, the pictures.
           </p>
+
+          <Quiz questions={checkCfg.questions} />
         </div>
 
         <nav class="topic-next" aria-label="Lesson navigation">

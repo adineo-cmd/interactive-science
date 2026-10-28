@@ -4,3 +4,6 @@ import './sliderLab.js';
 import './equationStep.js';
 import './timeline.js';
 import './diagramBuilder.js';
+import './chart.js';
+import './diagram.js';
+import './quiz.js';

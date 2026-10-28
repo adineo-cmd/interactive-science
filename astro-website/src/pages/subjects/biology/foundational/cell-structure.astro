@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import data from '../../../../data/topics.json';
+import Glossary from '../../../../components/Glossary.astro';
 
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
@@ -10,6 +11,48 @@ const seq = topics.filter((t) => t.status !== 'planned');
 const idx = seq.indexOf(topic);
 const prev = seq[(idx - 1 + seq.length) % seq.length];
 const next = seq[(idx + 1) % seq.length];
+
+// The organelle map: one box per part, clickable, with the job each one does.
+const cellCfg = {
+  height: 300,
+  nodes: [
+    { id: 'nucleus', label: 'nucleus', sub: 'blueprints', num: '01', x: 26, y: 34, w: 158, h: 58 },
+    { id: 'ribosomes', label: 'ribosomes', sub: 'protein builders', num: '02', x: 26, y: 206, w: 158, h: 58 },
+    { id: 'membrane', label: 'membrane', sub: 'the gate', num: '03', x: 282, y: 120, w: 172, h: 62, center: true },
+    { id: 'mitochondria', label: 'mitochondria', sub: 'power plant', num: '04', x: 540, y: 34, w: 158, h: 58 },
+    { id: 'chloroplast', label: 'chloroplast', sub: 'plants only', num: '05', x: 540, y: 206, w: 158, h: 58 },
+  ],
+  edges: [
+    { from: 'membrane', to: 'nucleus' },
+    { from: 'membrane', to: 'chloroplast' },
+    { from: 'nucleus', to: 'ribosomes' },
+    { from: 'mitochondria', to: 'ribosomes', dashed: true },
+  ],
+  details: {
+    membrane: {
+      title: 'Cell membrane',
+      text: 'A thin double layer of fat that decides what gets in and out. Small uncharged things wander through; everything else needs a door or a pump.',
+    },
+    nucleus: {
+      title: 'Nucleus',
+      text: 'Holds the DNA — the full set of instructions. It protects the blueprints and ships copies out when a protein is needed.',
+    },
+    ribosomes: {
+      title: 'Ribosomes',
+      text: 'The builders. They read the copies and string amino acids together in the order written.',
+    },
+    mitochondria: {
+      title: 'Mitochondria',
+      text: 'Take fuel and oxygen and turn them into ATP, the currency every other part spends. The dashed line is that supply.',
+    },
+    chloroplast: {
+      title: 'Chloroplast',
+      text: 'Plant cells only. Captures light and builds sugar out of air and water — the fuel arrives already made.',
+    },
+  },
+  detailHint: 'Click a part to read what it does.',
+  key: 'Dashed line: energy supply, not a physical connection.',
+};
 
 const mitosisCfg = {
   unit: 'step',
@@ -57,18 +100,26 @@ const synthesisCfg = {
           <p>
             A cell is a factory in a bag of water. The <strong>membrane</strong> decides what
             enters and leaves; the <strong>nucleus</strong> keeps the blueprints (DNA);
-            <strong>mitochondria</strong> burn fuel into ATP; <strong>ribosomes</strong> read those
+            <strong>mitochondria</strong> burn fuel into
+            <Glossary term="ATP" def="Adenosine triphosphate: a small molecule that carries usable energy between reactions. Cells spend it the way a factory spends money." />; <strong>ribosomes</strong> read those
             blueprints and build proteins. Plant cells bolt on three extras — a rigid
             <strong>cell wall</strong>, green <strong>chloroplasts</strong>, and a water-filled
             <strong>vacuole</strong> for pressure.
           </p>
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>the parts and their jobs — click any box</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="diagram" data-config={JSON.stringify(cellCfg)}></div>
+            </div>
+          </figure>
+
           <p>
             The most dramatic thing a cell does is copy itself. Scrub through mitosis below —
             drag the marker and the phases that haven't happened yet fade out:
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 1</span><span>mitosis, one scrubable loop — from copy-out to pinch-off</span></figcaption>
+            <figcaption><span class="fig-no">fig. 2</span><span>mitosis, one scrubable loop — from copy-out to pinch-off</span></figcaption>
             <div class="widget-body">
               <div data-widget="timeline" data-config={JSON.stringify(mitosisCfg)}></div>
             </div>
@@ -78,7 +129,7 @@ const synthesisCfg = {
           <p>Every protein in that factory is built the same way, in five steps:</p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 2</span><span>from DNA to working protein</span></figcaption>
+            <figcaption><span class="fig-no">fig. 3</span><span>from DNA to working protein</span></figcaption>
             <div class="widget-body">
               <div data-widget="equationStep" data-config={JSON.stringify(synthesisCfg)}></div>
             </div>
