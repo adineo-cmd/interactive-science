@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import data from '../data/topics.json';
+import kidData from '../data/kid-summaries.json';
 
 const { slug } = Astro.props;
+const kidSummary = kidData[slug] ?? null;
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
 const topic = topics.find((t) => t.slug === slug);
@@ -31,6 +33,11 @@ const next = seq[(idx + 1) % seq.length];
           <h1>{topic.title}</h1>
           <p class="lede">{topic.summary}</p>
         </header>
+        {kidSummary && (
+          <aside class="kid-note" aria-label="Summary for young readers">
+            <p><strong>For young explorers:</strong> {kidSummary}</p>
+          </aside>
+        )}
         <div class="topic-body">
           <slot />
         </div>

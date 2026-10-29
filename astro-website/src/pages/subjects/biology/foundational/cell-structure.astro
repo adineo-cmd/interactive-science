@@ -2,10 +2,12 @@
 import Layout from '../../../../layouts/Layout.astro';
 import data from '../../../../data/topics.json';
 import Glossary from '../../../../components/Glossary.astro';
+import kidData from '../../../../data/kid-summaries.json';
 
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
 const topic = topics.find((t) => t.slug === 'subjects/biology/foundational/cell-structure');
+const kidSummary = kidData[topic.slug] ?? null;
 const subject = subjects.find((s) => s.id === topic.subject);
 const seq = topics.filter((t) => t.status !== 'planned');
 const idx = seq.indexOf(topic);
@@ -95,6 +97,11 @@ const synthesisCfg = {
           <p class="lede">{topic.summary}</p>
         </header>
 
+        {kidSummary && (
+          <aside class="kid-note" aria-label="Summary for young readers">
+            <p><strong>For young explorers:</strong> {kidSummary}</p>
+          </aside>
+        )}
         <div class="topic-body">
           <h2>The idea</h2>
           <p>
