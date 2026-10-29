@@ -1,0 +1,65 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const stabilityCfg = {
+  params: [
+    { name: 'beam', label: 'hull beam (width)', min: 4, max: 40, step: 1, value: 12, unit: 'm' },
+    { name: 'gm', label: 'metacentric height GM', min: 0.2, max: 4, step: 0.1, value: 1.0, unit: 'm' },
+    { name: 'heel', label: 'heel angle', min: 1, max: 30, step: 1, value: 10, unit: '°' },
+  ],
+  readouts: [
+    { label: 'righting arm (GZ ≈ GM·sinθ)', expr: 'gm*sin(heel*pi/180)', unit: 'm' },
+    { label: 'righting energy trend', expr: 'gm*beam/10', unit: 'a.u.' },
+  ],
+};
+
+const stabilityStepsCfg = {
+  steps: [
+    { math: '1 · Buoyancy: Archimedes\' law', note: 'A floating body displaces water equal to its weight. The hull sinks until the underwater volume weighs exactly what the ship weighs.' },
+    { math: '2 · Two centres decide the tilt', note: 'B (centre of buoyancy) sits in the submerged hull; G (centre of gravity) is where the ship\'s weight acts. Their relative positions rule stability.' },
+    { math: '3 · Heel shifts B outward', note: 'Tilt the ship and the underwater shape changes, moving B to the low side. If the upward push now acts beyond G, the pair creates a righting couple.' },
+    { math: '4 · GM: the stability meter', note: 'The metacentric height GM (M sits above G for stable ships) summarises initial stability: bigger GM = stiffer roll; too big = violently uncomfortable.' },
+    { math: '5 · The curve decides survival', note: 'Righting arm plotted against heel angle — its area is the energy that must be overcome to capsize. Regulations demand minimum areas under the curve.' },
+  ],
+};
+---
+<TopicPage slug="subjects/naval-architecture/foundational/floating-things-steadily-hydrostatics">
+  <h2>The idea</h2>
+  <p>
+    Naval architecture begins with a deceptively simple question: why do ships float upright — and
+    when do they stop? The answer lives in hydrostatics: the balance of buoyancy against weight,
+    and the geometry that turns a heel into either a righting force or a capsize.
+  </p>
+
+  <Widget no="1" caption="Archimedes, B and G, GM and the righting curve" widget="equationStep" config={stabilityStepsCfg} />
+
+  <h2>GM: one number, whole personality</h2>
+  <p>
+    The metacentric height GM compresses a ship's initial stability into metres. A wide beam and
+    low weights give a large GM — a stiff ship that rolls fast and violently; a small GM rolls
+    gently but risks capsizing as weights shift. The sliders show how righting arm (roughly
+    GM·sin θ at small angles) grows with both. Cargo loading is stability management: the same
+    ship sails out safe and returns dangerous if the load plan ignores G.
+  </p>
+
+  <Widget no="2" caption="righting arm vs heel, beam and GM" widget="sliderLab" config={stabilityCfg} />
+
+  <h2>Free surface: the invisible killer</h2>
+  <p>
+    Liquid sloshing in a half-full tank shifts its own surface as the ship heels, sliding G toward
+    the low side — reducing stability without moving a gram of cargo. Free-surface effect has
+    sunk ferries that were "legal" on paper; the fix (baffles, full or empty tanks) is pure
+    geometry, and it is why tank-cleaning schedules are stability documents.
+  </p>
+
+  <h2>From hydrostatics to the whole ocean</h2>
+  <p>
+    Stability is the first of the naval architect's pillars: hull form and resistance, propulsion,
+    and structures in waves follow. Each assumes this lesson's discipline — compute the
+    environment's forces, then design geometry that answers them. The sea is a load case that
+    never stops; the ship must outlast it.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ABET ocean program criteria; Muckle &amp; Tupper, <em>Muckle's Naval Architecture</em>; Rawson &amp; Tupper, <em>Basic Ship Theory</em>.</p>
+</TopicPage>

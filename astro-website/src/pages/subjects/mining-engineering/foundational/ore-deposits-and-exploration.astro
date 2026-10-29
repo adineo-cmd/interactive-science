@@ -1,0 +1,66 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const gradeCfg = {
+  params: [
+    { name: 'grade', label: 'ore grade (g/t)', min: 0.5, max: 20, step: 0.5, value: 3, unit: '' },
+    { name: 'tonnes', label: 'deposit size', min: 1, max: 100, step: 1, value: 20, unit: 'Mt' },
+    { name: 'price', label: 'metal price', min: 500, max: 4000, step: 50, value: 2000, unit: '$/oz' },
+    { name: 'cost', label: 'operating cost', min: 300, max: 2500, step: 50, value: 1100, unit: '$/oz' },
+  ],
+  readouts: [
+    { label: 'contained metal (Moz)', expr: 'grade*tonnes/31.1', unit: '' },
+    { label: 'margin per ounce', expr: 'price-cost', unit: '$' },
+    { label: 'project value (bn $)', expr: 'grade*tonnes/31.1*(price-cost)/1000', unit: '' },
+  ],
+};
+
+const explorationCfg = {
+  steps: [
+    { math: '1 · Why ore forms', note: 'Hot fluids, cooling magma and circulating groundwater concentrate metals a thousand-fold above background — ore deposits are geology\'s rarest cooking.' },
+    { math: '2 · Explore with physics first', note: 'Magnetics, gravity and electrical surveys read the rocks from the air; drilling only confirms what the geophysics suspects.' },
+    { math: '3 · Drill, log, assay', note: 'Core samples are assayed (metal content measured) and modelled into a 3D block model — each block gets a grade.' },
+    { math: '4 · Reserves need confidence', note: 'Inferred → indicated → measured: reserves are only "reserves" when the geology, grade and economics are proven to regulatory standards.' },
+    { math: '5 · Grade is destiny', note: 'Everything downstream — pit size, waste, energy, profit — follows from grams per tonne. Low grade means moving more rock per ounce.' },
+  ],
+};
+---
+<TopicPage slug="subjects/mining-engineering/foundational/ore-deposits-and-exploration">
+  <h2>The idea</h2>
+  <p>
+    Mining engineering starts as geology: metals are only worth mining where nature concentrated
+    them into ore — rock containing enough metal per tonne to pay for extraction. The discipline's
+    first job is finding those rare places, proving them with drills, and computing whether the
+    grade, size and price make a mine.
+  </p>
+
+  <Widget no="1" caption="ore, grade, drill, prove — the exploration pipeline" widget="equationStep" config={explorationCfg} />
+
+  <h2>Grade is destiny: run the numbers</h2>
+  <p>
+    Contained metal = grade × tonnage (÷ 31.1 for troy ounces). Profit = contained metal × margin.
+    Slide the grade down and watch the project die before the geology does — the mining industry's
+    hardest truth is that most deposits are real but uneconomic.
+  </p>
+
+  <Widget no="2" caption="grade, size, price, cost → the mine's economics" widget="sliderLab" config={gradeCfg} />
+
+  <h2>Exploration is elimination</h2>
+  <p>
+    For every 1,000 prospects, a handful become mines. Geophysics narrows from the air; geochemical
+    soil surveys hint at buried ore; drilling delivers the truth at $100+ per metre. The
+    exploration geologist's real skill is deciding where <em>not</em> to drill — capital is the
+    scarcest resource in the field.
+  </p>
+
+  <h2>Why engineers, not just geologists</h2>
+  <p>
+    Once the deposit is proven, the questions become engineering: how to extract it safely,
+    what to do with the waste rock and tailings, how to power a mine in remote terrain, and how to
+    close it responsibly. ABET's criteria pair the geology with safety, environmental and economic
+    study for exactly this reason — the mine is a system, not a hole.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ABET mining program criteria; Hartman &amp; Mutmansky, <em>Introductory Mining Engineering</em>; Hustrulid &amp; Kuchta, <em>Open Pit Mine Planning and Design</em>.</p>
+</TopicPage>
