@@ -26,39 +26,203 @@ const layersCfg = {
 <TopicPage slug="subjects/cybersecurity/foundational/security-foundations-the-cia-triad">
   <h2>The idea</h2>
   <p>
-    Cybersecurity is the discipline of keeping systems trustworthy against intelligent opposition.
-    Its shared vocabulary is the <strong>CIA triad</strong> — confidentiality, integrity,
-    availability — and its economics is risk: you cannot defend everything, so you measure what an
-    attack would cost and defend accordingly. Every framework you will meet is an elaboration of
-    those two ideas.
+    Most engineering disciplines fight nature: gravity, friction, entropy, weather.
+    Cybersecurity fights an adversary — intelligent, adaptive, and actively trying to defeat
+    you. That one difference reshapes everything. A bridge does not study its designer's
+    habits and look for the unguarded afternoon; an attacker does. The discipline's answers
+    are correspondingly distinctive: layered defences that fail gracefully, controls justified
+    by the cost of the incidents they prevent, and a shared professional vocabulary precise
+    enough that a hospital's security team, its auditors and its board can reason about the
+    same threat without talking past each other.
+  </p>
+  <p>
+    The vocabulary has two pillars. The first is the <strong>CIA triad</strong> —
+    confidentiality, integrity, availability — the three properties every security decision
+    protects, trades off or sacrifices. The second is <strong>risk</strong>: the admission
+    that nothing can be perfectly defended, so protection must be prioritised by what an
+    attack would cost and how likely it is. Every framework you will ever meet — NIST's,
+    ISO's, a company's internal policy — is an elaboration of those two ideas. Learn them
+    here and the field's enormous literature becomes variations on a theme you already know.
+  </p>
+  <p>
+    The pleasing surprise is that the core is not technical at all. Encryption and firewalls
+    are tools; the discipline is an accounting of who wants to harm which asset, through what
+    weakness, at what cost to you and to them. This chapter builds that accounting.
   </p>
 
   <Widget no="1" caption="the triad and its trade-offs" widget="equationStep" config={ciaCfg} />
 
+  <h2>The CIA triad and risk</h2>
+  <p>
+    <em>Confidentiality</em> is the property that information is seen only by those meant to
+    see it. It is enforced by encryption (so intercepted data is unreadable), access control
+    (so the curious are kept out) and classification schemes (so everyone knows what counts
+    as secret). Its failures are the headlines: leaked customer databases, intercepted
+    messages, a laptop full of unencrypted patient records in a taxi.
+  </p>
+  <p>
+    <em>Integrity</em> is the property that data and systems say what they are supposed to
+    say — no tampering, no silent corruption, no unauthorised edits. It is enforced by
+    cryptographic hashes and digital signatures (any alteration is detectable), by
+    input validation (so attackers cannot rewrite queries), and by audit trails (so changes
+    carry attribution). Its failures are quieter and often worse: a manipulated sensor
+    reading, an altered payment, maliciously modified industrial-control logic. Note the
+    asymmetry — a confidentiality breach leaks information; an integrity breach can steer
+    the physical world while looking completely normal.
+  </p>
+  <p>
+    <em>Availability</em> is the property that the system works when needed — the property
+    outsiders most often take for granted and miss most acutely. It is engineered with
+    redundancy, capacity headroom and tested backups, and attacked with denial-of-service
+    floods, ransomware that encrypts everything in sight, and plain old outages. Ransomware
+    is a useful case study because it attacks two properties at once: availability (your
+    files are held hostage) and integrity (even restored data may not be trustworthy if the
+    attackers had time to lurk).
+  </p>
+  <p>
+    The triad's deep lesson is that the three properties trade against each other. Perfect
+    confidentiality is an air-gapped computer with no network, no USB ports and no users —
+    and no usefulness. Perfect availability is a system with no locks. Real security chooses
+    a position, and <em>risk analysis</em> is how the position is chosen. The vocabulary:
+    an <em>asset</em> is what you protect; a <em>threat</em> is who or what could harm it;
+    a <em>vulnerability</em> is your weakness a threat could use; a <em>safeguard</em> is
+    the control you add. Multiply the numbers and you get the classic worked form: if a
+    server-room flood would cost 200,000 dollars (single loss expectancy) and is expected
+    roughly once a decade (annual rate of occurrence 0.1), the annualised loss expectancy is
+    20,000 dollars a year. A 5,000-dollar-a-year safeguard that meaningfully reduces that
+    risk is justified; a 50,000-dollar one is not. The arithmetic is crude — probabilities
+    for rare attacks are famously uncertain — but it forces the right conversation: what is
+    this control <em>for</em>, and is that what it costs?
+  </p>
+  <p>
+    <em>Common misconception:</em> the goal of security is to prevent all attacks. It is
+    not — it is to make successful attacks rare, brief and cheap. Organisations that assume
+    prevention will hold perfectly are the ones devastated when it does not; organisations
+    that invest in detection and response turn a catastrophe into a bad Tuesday. "Assume
+    breach" is not defeatism; it is engineering for the failure mode you cannot eliminate.
+  </p>
+
+  <h2>Threats, vulnerabilities and attacks</h2>
+  <p>
+    Attacks arrive through a small set of recurring doors. <em>Social engineering</em> —
+    overwhelmingly phishing — attacks the human, not the machine, and industry breach
+    surveys consistently find the human element involved in a large majority of incidents.
+    <em>Malware</em> is code doing harm: viruses, ransomware, spyware, remote-access tools.
+    <em>Exploitation</em> uses software weaknesses — injection flaws, memory bugs,
+    misconfigurations — often years after they were documented and a patch was published.
+    <em>Denial of service</em> attacks availability directly, drowning a service in traffic.
+    And the <em>insider threat</em> walks through the front door with valid credentials,
+    whether maliciously or by being fooled.
+  </p>
+  <p>
+    Real intrusions chain several of these, which is why defenders describe them as a
+    sequence (the "kill chain"): a phishing email lands; a user clicks; malware executes;
+    credentials are stolen; the attacker moves laterally toward the data; exfiltration
+    begins. Each link is a defensive opportunity, and the chain framing turns a vague fear
+    into an engineering checklist — which links can we break, and at what cost? The same
+    framing exposes a truth newcomers resist: the technique rarely matters as much as the
+    preparation. Most successful attacks are not brilliant; they are patient uses of known
+    weaknesses, unpatched systems and reused passwords.
+  </p>
+  <p>
+    <em>Common misconception:</em> attackers are mostly genius hackers targeting victims
+    one by one. In reality the bulk of crime is automated and indiscriminate: bots scan the
+    entire internet continuously, credential-stuffing tools replay passwords stolen from
+    one site against thousands of others, and ransomware crews buy access from specialists.
+    "We're too small to matter" is the most dangerous sentence in the field — you matter to
+    an algorithm that cannot tell your size.
+  </p>
+  <p>
+    Attackers have budgets, and the defender's strategy falls straight out of theirs. Bulk
+    crime — phishing campaigns, credential stuffing, commodity ransomware — is cheap,
+    automated and impatient, so it abandons targets that resist and moves on; against it,
+    inexpensive, broadly applied controls (patching, MFA, mail filtering) fail nearly all
+    the attempts at nearly no cost. Targeted intrusion — espionage, sophisticated extortion —
+    is expensive and patient: the attacker researches, waits out your defences, and accepts
+    weeks of work. Against that class, prevention alone cannot be the whole answer, because
+    a funded, motivated adversary eventually finds a way in. The strategy splits: make cheap
+    attacks fail cheaply everywhere, and assume the expensive ones will occasionally succeed
+    — which is why detection, response and rehearsed recovery are not consolation prizes but
+    the second half of the defence.
+  </p>
+
   <h2>Defence in depth, quantified</h2>
   <p>
-    No single control is reliable — each blocks some fraction of attacks. But controls stack
-    multiplicatively: an attacker must clear every layer, so a 10% phishing success, 25% malware
-    evasion and 15% credential-reuse rate leave roughly one attacker in 270 through all three.
-    Depth is the defender's compounding interest.
+    Since no single control is reliable, the field's structural answer is layering: phishing
+    training and mail filtering, then endpoint protection, then least-privilege access and
+    multi-factor authentication, then segmentation and monitoring. The reason layering works
+    is arithmetic: controls compose <em>multiplicatively</em>, because an attacker must clear
+    every layer in sequence. Suppose phishing gets through to one user in ten (10 percent),
+    malware evades the endpoint in a quarter of cases (25 percent), and stolen credentials
+    succeed against the access layer 15 percent of the time. An attacker must pass all
+    three, so the success rate is 0.10 × 0.25 × 0.15 = 0.375 percent — roughly one adversary
+    in 267.
   </p>
 
   <Widget no="2" caption="layer three controls and multiply the survivors" widget="sliderLab" config={layersCfg} />
 
-  <h2>Know your adversary's economics</h2>
   <p>
-    Attackers have budgets too. Bulk phishing is cheap and sloppy; targeted intrusions are
-    expensive and patient. The defender's strategy follows: make cheap attacks fail cheaply (raise
-    their cost), and assume the expensive ones will occasionally succeed — which is why detection
-    and response matter as much as prevention.
+    Drag the sliders and notice what the multiplication teaches: improving your
+    <em>weakest</em> layer pays more than perfecting your strongest, and each new layer is
+    the defender's compounding interest. The caveats are equally real. Layers must be
+    <em>independent</em> — three products using the same signature database are one layer
+    wearing three logos. And correlated failures break the maths: if one vendor outage
+    disables two "separate" controls at once, the layers were an illusion. Depth is a
+    property of an architecture, not a shopping list.
   </p>
 
-  <h2>The framework landscape</h2>
+  <h2>Security vocabulary and frameworks</h2>
   <p>
-    The field organises itself through shared frameworks: NIST's NICE Workforce Framework names the
-    jobs (defend, analyse, govern, build), NIST's Cybersecurity Framework names the functions
-    (identify, protect, detect, respond, recover), and ISO 27001 certifies management systems. They
-    all trade in the same currency: identified risks, chosen controls, demonstrated improvement.
+    The profession coordinates itself through shared reference frames, and knowing the map
+    is half of joining it. The <em>NICE Workforce Framework</em> (NIST SP 800-181) names the
+    work itself — the categories of defending, analysing, operating, overseeing and building
+    — and the job roles under each, which is why job postings read like its categories.
+    The <em>NIST Cybersecurity Framework</em> organises any programme into six functions —
+    govern, identify, protect, detect, respond and recover — a full lifecycle from boardroom
+    policy to post-incident restoration (version 2.0, published in 2024, added "govern" as
+    an explicit function). <em>ISO 27001</em> certifies an organisation's security management
+    system: not that it is unhackable, but that it manages risk systematically. Underneath
+    all of them run shared artefacts: the CVE catalogue, which gives every publicly known
+    vulnerability a name and number; the CVSS scale, which scores severity from 0 to 10; and
+    principles old enough to be laws — least privilege, separation of duties, defence in
+    depth, and "fail securely."
+  </p>
+  <p>
+    Two habits make the frameworks usable rather than decorative. First, map your own
+    world onto them concretely: pick an asset (the customer database), walk the six CSF
+    functions against it, and the gaps name themselves — no identification of that asset's
+    owners, no detection tuned to queries against it, no rehearsed response if it is
+    encrypted on a Sunday. Second, use the shared vocabulary in incidents: "a phishing
+    delivery (threat) exploited the absence of MFA (vulnerability) to breach
+    confidentiality of payroll data (asset, CIA property)" is one sentence that a board, an
+    auditor and an engineer can all act on. Vagueness is expensive; the frameworks exist to
+    make it inexcusable.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The triad is a model, and models leak. Practitioners add properties it underweights:
+    <em>authenticity</em> (is this message really from its claimed sender?), accountability
+    (can actions be attributed to a person?), and <em>non-repudiation</em> (can the sender
+    later deny it?) — signatures provide these in ways plain confidentiality never can.
+    Availability has its own deep literature, from redundant-array design to chaos
+    engineering, and its own economics: the cost of an outage usually grows super-linearly
+    with its duration, which is why the "five nines" (99.999 percent uptime, about five
+    minutes of downtime a year) is a genuine design target and not a marketing flourish.
+  </p>
+  <p>
+    The research frontier is where the interesting discomfort lives. <em>Security
+    economics</em> (Ross Anderson's founding insight) shows that misaligned incentives —
+    the party who can fix a vulnerability is rarely the party who bears the loss — explain
+    chronic insecurity better than any technical deficit. <em>Zero-trust architecture</em>
+    abandons the trusted internal network as a concept: verify every request, every time,
+    which is quietly a redesign of everything. Quantum computing threatens today's public-
+    key cryptography on a schedule nobody can pin down, and "harvest now, decrypt later"
+    makes the threat current for long-lived secrets — hence the ongoing migration to
+    post-quantum algorithms. And machine learning cuts both ways, automating phishing at
+    scale while automating detection at scale. The CIA triad and risk arithmetic survive
+    all of it intact — which is the final lesson: in a field where every tool ages in
+    dog years, the durable curriculum is the way of thinking.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NIST SP 800-181r1 (NICE Framework); NIST Cybersecurity Framework 2.0; Bishop, <em>Computer Security: Art and Science</em>.</p>

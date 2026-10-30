@@ -11,41 +11,273 @@ const localisationCfg = {
     { math: '5 · Function is the diagnosis', note: 'A broken bone lights up where it is healing; a blocked artery shows as a cold region. Nuclear medicine images how the body works.' },
   ],
 };
+
+const quizCfg = {
+  questions: [
+    {
+      q: 'Why does Tc-99m dominate diagnostic nuclear medicine?',
+      choices: [
+        'It is the cheapest isotope to make',
+        'A 6-hour half-life, a clean 140 keV gamma, no particle radiation, and versatile binding chemistry',
+        'It is the only isotope that binds to bone',
+        'It can be stored for months in the department',
+      ],
+      answer: 1,
+      why: 'The half-life is long enough to image and short enough that the dose vanishes; the single gamma suits gamma cameras; and technetium chemistry binds to many couriers.',
+    },
+    {
+      q: 'Fluorine-18 for PET scans is produced mainly by…',
+      choices: [
+        'a nuclear reactor',
+        'a molybdenum generator',
+        'a medical cyclotron firing protons at oxygen-18',
+        'chemical extraction from uranium ore',
+      ],
+      answer: 2,
+      why: 'F-18 is proton-rich, so it comes from an accelerator (O-18 hit by protons). Reactor routes make neutron-rich isotopes instead — the decay mode you need dictates the production route.',
+    },
+    {
+      q: 'A protocol needs 740 MBq of Tc-99m at 16:00. The dose is drawn at 10:00 — exactly one half-life earlier. How much activity should be drawn?',
+      choices: ['740 MBq', '1,110 MBq', '1,480 MBq', '370 MBq'],
+      answer: 2,
+      why: 'Activity halves in one 6-hour half-life, so 1,480 MBq at 10:00 has decayed to 740 MBq by 16:00. Decay arithmetic is a daily radiopharmacy calculation.',
+    },
+    {
+      q: 'A bone scan shows a dark "cold" region. What is the most likely meaning?',
+      choices: [
+        'Cancer is growing there',
+        'Blood flow or bone activity there is absent or destroyed — sometimes an infarct, not a tumour',
+        'The camera battery is failing',
+        'The patient moved during imaging',
+      ],
+      answer: 1,
+      why: 'Uptake tracks osteoblast activity, so tumours often appear bright where bone is remodelling. Cold spots mean the tracer never arrived — destruction or blocked supply — a different diagnosis.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/nuclear-medicine-technology/foundational/radiopharmaceuticals">
   <h2>The idea</h2>
   <p>
-    Nuclear medicine turns the body into its own light source: inject a molecule carrying a
-    radioactive atom, let physiology deliver it, and photograph where it goes. The discipline's
-    foundation is the radiopharmaceutical — isotope plus courier molecule — and the principle that
-    the image shows <strong>function</strong>, not just structure.
+    Think of how a river system is mapped. You cannot see the underground channels, but drop a
+    harmless dye at the source and watch where it emerges, and the whole network reveals itself.
+    Nuclear medicine does that with the human body: attach a tiny radioactive atom to a molecule
+    the body already knows how to handle, inject it, and then photograph the radiation as it
+    arrives wherever physiology takes that molecule. Bone that is healing glows. Heart muscle
+    that is starved of blood stays dark. The kidney's drainage shows up in real time. No other
+    imaging method pictures <strong>function</strong> this directly — X-rays and CT show you
+    what the body's structure looks like, MRI refines that picture, but a radiopharmaceutical
+    shows you what the body is actually <em>doing</em>.
+  </p>
+  <p>
+    A radiopharmaceutical is therefore two things in one package: a <strong>radionuclide</strong>
+    (the unstable atom that emits detectable radiation) and a <strong>courier molecule</strong>
+    (the pharmaceutical that decides where in the body it goes). The two halves are chosen
+    almost independently. Technetium-99m can be attached to more than a dozen different couriers,
+    turning one isotope into bone agents, kidney agents, heart agents and lung agents. Choose the
+    courier and you have chosen the question your scan will answer. This is the craft at the
+    centre of the whole discipline: the isotope supplies the light, the molecule supplies the
+    address.
+  </p>
+  <p>
+    The doses are staggeringly small in chemical terms — trillionths of a gram, far below any
+    pharmacological effect — which is why we call them <em>tracers</em>. They leave the body's
+    chemistry untouched; they simply report on it. Yet the numbers involved are enormous in
+    another direction: Tc-99m alone is used in roughly four out of every five diagnostic nuclear
+    medicine procedures worldwide, on the order of 30 million studies a year. This chapter walks
+    through the three pillars that make that possible — how the radionuclides are produced, how
+    the radiopharmacy prepares and checks the doses, and the localisation principles that decide
+    where a tracer goes.
   </p>
 
   <Widget no="1" caption="isotope → courier → physiology → image" widget="equationStep" config={localisationCfg} />
 
-  <h2>Why Tc-99m runs the field</h2>
+  <h2>Radionuclide production: three ways to make an atom glow</h2>
   <p>
-    Technetium-99m hits a rare sweet spot: a 6-hour half-life (long enough to image, short enough
-    to vanish), a clean 140 keV gamma emission (ideal for cameras, no particle radiation), and
-    versatile chemistry for binding to couriers. Daily "milking" of a molybdenum generator — the
-    parent decaying into Tc-99m — supplies the department like a dairy.
+    Useful radionuclides come from three routes, and the route matters because it fixes the
+    isotope's decay behaviour. The first is the <strong>nuclear reactor</strong>. Fissioning
+    uranium-235 splits atoms into neutron-rich fragments, and neutron-rich isotopes decay by
+    beta-minus emission. Splitting the target uranium in the process also releases molybdenum-99,
+    the parent of Tc-99m, which is why a handful of research reactors in Europe, South Africa,
+    Australia and the Americas supply much of the world. Reactor irradiation can also make
+    therapy isotopes such as iodine-131 and lutetium-177, where beta particles deposit their
+    energy inside tumour cells.
+  </p>
+  <p>
+    The second route is the <strong>cyclotron</strong> — a compact particle accelerator that
+    flings protons at a target. Proton bombardment knocks neutrons relative to protons out of
+    balance the other way, producing proton-rich isotopes that decay by positron emission. The
+    most important is fluorine-18 (half-life about 110 minutes), made by firing protons at
+    oxygen-18-enriched water; fluorine-18 labelled as FDG is the fuel of PET scanning. Because
+    110 minutes is barely enough time to synthesise, quality-check and deliver a dose, PET
+    radiopharmacies cluster around medical cyclotrons and race FDG to hospitals against the
+    decay clock every morning.
+  </p>
+  <p>
+    The third route is the <strong>generator</strong>, the field's cleverest logistics trick. A
+    generator is a column containing a long-lived parent isotope that decays into a short-lived,
+    more useful daughter. The parent molybdenum-99 (half-life about 66 hours) is loaded onto an
+    alumina column at the supplier; each day, the department washes saline through the column
+    and collects the daughter technetium-99m that has grown in overnight. Technologists call this
+    "milking the cow", and a single generator supports a week of studies. Other generator pairs
+    power different cameras: germanium-68 decays into gallium-68 for PET imaging of
+    neuroendocrine tumours, and strontium-82 feeds rubidium-82, whose 76-second half-life suits
+    heart perfusion PET. Generators convert a weekly reactor shipment into a daily supply.
+  </p>
+  <p>
+    <em>Common misconception:</em> an isotope's half-life is not a measure of how dangerous it
+    is, and there is no single "best" isotope. Short half-life means the patient's dose ends
+    quickly but leaves little time to work; long half-life suits therapy but complicates imaging.
+    Tc-99m's 6-hour half-life is valued precisely because it is a compromise: long enough to
+    prepare, inject and image over several hours, short enough that most of the radiation is
+    gone within a day.
   </p>
 
-  <h2>Couriers decide the picture</h2>
+  <h2>Radiopharmacy practice: the hot lab</h2>
   <p>
-    The same isotope images bone, heart, thyroid or kidneys purely by the molecule it rides:
-    phosphonates bind where bone remodels; sestamibi tracks heart-muscle perfusion; pertechnetate
-    is trapped by thyroid tissue. Choosing the courier is choosing the question the scan will
-    answer — the nuclear pharmacist's real craft.
+    Every nuclear medicine department has a <strong>radiopharmacy</strong>, universally called
+    the hot lab, where the isotopes of the previous section become patient doses. The daily
+    rhythm starts with eluting the generator, then compounding "kits": vials supplied by the
+    manufacturer containing the courier molecule (a diphosphonate for bone, for example) in
+    freeze-dried, sterile form. Adding Tc-99m as pertechnetate and heating as required snaps the
+    isotope onto the courier, and minutes later the dose is ready to assay.
+  </p>
+  <p>
+    Because these are sterile injections, the work happens under the same aseptic discipline as
+    any intravenous compounding — laminar airflow hoods or shielded isolators, sterile technique,
+    particulate and microbial controls — with the added challenge that everything radioactive
+    must also be handled behind lead. Doses are drawn and measured in a <strong>dose
+    calibrator</strong>, a precision ionisation chamber whose reading is logged against the
+    prescription. Quality control includes radiochemical purity testing, usually by thin-layer
+    chromatography: if a kit vial yields, say, 97 percent of the activity bound to the intended
+    courier and 3 percent free pertechnetate, it passes; a vial below the release threshold is
+    discarded, because the free isotope would streak into the thyroid and stomach and fog the
+    image. Every aliquot, every elution, every assay is written into decay-corrected logbooks
+    that regulators can audit.
+  </p>
+  <p>
+    The arithmetic of the hot lab is decay arithmetic, and it is worth doing one example
+    properly. Activity falls as A = A<sub>0</sub> × ½<sup>t/T</sup>, where T is the half-life.
+    A bone scan protocol calls for 740 MBq delivered at 16:00, but the technologist draws the
+    dose at 10:00 — exactly one Tc-99m half-life (6 hours) earlier. At 10:00 she must therefore
+    draw double: 1,480 MBq, which will have decayed to 740 MBq by the scheduled injection. Miss
+    that factor and the patient receives half the prescribed activity, or twice it. Multiply that
+    by a dozen patients a day, each with a different draw time, and you can see why the job is
+    done with calculators and printed decay tables pinned to the shield.
+  </p>
+  <p>
+    Radiation protection in the hot lab follows the same ALARA principle (as low as reasonably
+    achievable) used across the profession — minimise time near sources, maximise distance, use
+    shielding — but with a twist specific to unsealed sources: the material can spill, contaminate
+    and spread. So hot-lab practice adds contamination control to the classic trio: absorbent
+    bench covers, dedicated pipettes, wipe tests on work surfaces, and disciplined monitoring of
+    hands and clothing. The technologist's own dose budget is tracked with personal dosimeters,
+    and tungsten or lead shielding surrounds everything from the generator to the syringe.
+  </p>
+  <p>
+    <em>Common misconception:</em> patients given a diagnostic tracer are not hazardous to the
+    people around them in any ordinary sense. The activity is tiny, the half-life short, and most
+    tracer doses are comparable to or smaller than a few months of natural background radiation.
+    Historical instructions to avoid hugging family for a day have largely relaxed, though
+    sensible hygiene — flushing the toilet twice, good hand-washing — speeds the exit of the
+    tracer the body is already clearing.
   </p>
 
-  <h2>Dose logic differs from X-ray work</h2>
+  <h2>Localisation principles: why the tracer goes where it goes</h2>
   <p>
-    In nuclear medicine the patient <em>is</em> the radiation source for hours: dose depends on the
-    isotope's half-life, the radiation type, and how fast the body clears it (hence hydration and
-    bathroom discipline after scans). The ALARA arithmetic works in reverse of X-ray imaging —
-    minimising time in the room matters less than picking the right tracer and dose.
+    The deepest principle of nuclear medicine is that <strong>a radiopharmaceutical cannot be
+    forced anywhere — it can only be taken up by physiology</strong>. The designer's job is to
+    exploit a mechanism the body already runs. Radiopharmaceuticals localise by a handful of
+    recognisable mechanisms, and knowing them tells you what any given scan can and cannot see.
+  </p>
+  <p>
+    <strong>Active transport</strong>: the body spends energy to accumulate certain ions, and a
+    tracer that mimics them is concentrated too. Iodide is pumped into thyroid cells by the
+    sodium-iodide symporter at concentrations tens of times higher than in blood — which is why
+    radioactive iodine has imaged and treated thyroid disease since the 1940s, and why pertechnetate
+    imaging of the stomach lining can find ectopic gastric tissue causing bleeding in children.
+    <strong>Compartmental localisation</strong>: some tracers simply stay where they are put,
+    physically. Technetium-labelled macroaggregated albumin (MAA) consists of particles around
+    10–90 micrometres — too wide to pass through lung capillaries — so a few hundred thousand
+    injected particles lodge temporarily in the pulmonary bed, and their distribution maps lung
+    perfusion almost perfectly proportionally to blood flow.
+    <strong>Phagocytosis</strong>: the liver's Kupffer cells avidly swallow colloid particles,
+    so technetium sulphur colloid lights up liver, spleen and bone marrow — the reticuloendothelial
+    system drawn in light.
+    <strong>Metabolic trapping</strong>: FDG enters cells on glucose transporters and is
+    phosphorylated by hexokinase like glucose, but FDG-6-phosphate is a dead-end product the
+    cell cannot process or export. It accumulates in proportion to genuine glucose metabolism —
+    and because many cancers burn glucose ferociously, they light up on PET.
+    <strong>Receptor and antigen binding</strong>: labelled somatostatin analogues such as
+    DOTATATE dock onto receptors that neuroendocrine tumours overexpress; labelled antibodies
+    find cell-surface antigens. These molecularly targeted agents are the sharpest tools in the
+    drawer — and increasingly, the same targeting molecule carrying a therapeutic isotope is used
+    to treat the tumour it images.
+    <strong>Perfusion and exchange</strong>: lipophilic cations like sestamibi seep into heart
+    muscle cells and stick to mitochondria in proportion to blood flow and membrane potential,
+    turning myocardial perfusion into a picture.
+  </p>
+  <p>
+    Two reading rules follow. First, uptake is proportional to <em>function</em>, so both bright
+    ("hot") spots and absent ("cold") spots are findings: a hot vertebra means bone is remodelling
+    there — tumour, fracture or arthritis; a cold region on a heart scan means no perfusion —
+    scar or blocked artery. Second, uptake is not specific to disease: FDG does not know cancer
+    from inflammation, since both burn glucose, which is why radiologists interpret tracer
+    patterns against anatomy from a fused CT and a patient's history.
+  </p>
+  <p>
+    <em>Common misconception:</em> "it lit up, so it is cancer" is exactly backwards from how
+    the image must be read. Uptake means <em>activity</em> — healing, filtering, metabolising —
+    and the diagnostic skill lies in distinguishing the normal physiology and benign processes
+    that light up from the pathology that also lights up. Conversely, some of the most important
+    findings are the black holes.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Effective half-life.</strong> The dose a patient actually receives is governed not by
+    the physical half-life alone but by the <em>effective</em> half-life, combining radioactive
+    decay with biological clearance: 1/T<sub>eff</sub> = 1/T<sub>phys</sub> + 1/T<sub>bio</sub>.
+    A tracer that the kidneys flush in an hour leaves much faster than its decay table implies;
+    Tc-99m MAA that lodges in the lungs, by contrast, clears biologically over hours to days,
+    closer to its physical half-life. This is why dosimetry is a radiopharmaceutical-specific
+    calculation, and why "drink water and void frequently" is genuinely part of the treatment.
+  </p>
+  <p>
+    <strong>Diagnosis and therapy are the same physics at different energies.</strong> Gamma
+    emitters report; beta and alpha emitters kill cells at the end of their tracks. The elegant
+    modern move is <em>theranostics</em>: image a tumour's receptors with a diagnostic isotope on
+    a targeting molecule, then swap the isotope — gallium-68 out, lutetium-177 in — and the same
+    courier becomes a treatment. Lutetium-177 DOTATATE (approved as Lutathera in 2018) delivers
+    beta radiation to somatostatin-receptor-positive tumours; radium-223 dichloride delivers
+    alpha particles to bone metastases. Iodine-131 has played both roles for 80 years. The
+    radiopharmaceutical is thus one concept spanning a range from a few-millionths-of-a-gram
+    diagnostic tracer to full radiotherapy.
+  </p>
+  <p>
+    <strong>Supply chain fragility.</strong> Because molybdenum-99 comes mainly from fission in a
+    handful of ageing research reactors, its supply has repeatedly failed: the 2009–2010
+    outages of Canada's NRU and the Netherlands' HFR reactors caused a global Tc-99m shortage
+    that forced departments to triage studies and pushed investment into alternative routes —
+    low-enriched uranium targets, cyclotron-produced Tc-99m (technically possible because the
+    isomer can be made directly by proton bombardment), and accelerator-based Mo-99. The lesson
+    generalises: a hospital's daily diagnostic capacity ultimately hangs on international nuclear
+    infrastructure.
+  </p>
+  <p>
+    <strong>Purity and specificity.</strong> Diagnostic quality depends on three purities the
+    radiopharmacy tracks: <em>radionuclidic purity</em> (how much of the activity is the isotope
+    you want — long-lived contaminants raise the patient's dose for nothing), <em>radiochemical
+    purity</em> (how much activity is bound to the courier), and <em>chemical purity</em> (no
+    toxic junk). At the frontier, radiometals like gallium-68 and lutetium-177 are chelated —
+    gripped by a claw molecule such as DOTA — before being fused to a peptide, and imperfect
+    chelation is a real failure mode. The deep open question in the field is specificity: can we
+    push tracers to discriminate between, say, a slow-growing indolent tumour and an inflamed
+    lymph node, when both exploit the same biochemistry? Every improvement in targeting molecules
+    is an attempt at that discrimination.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NMTCB content outline; Mettler &amp; Guiberteau, <em>Essentials of Nuclear Medicine Imaging</em>; Christian &amp; Waterstram-Rich, <em>Nuclear Medicine and PET/CT</em>.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={quizCfg} />
 </TopicPage>

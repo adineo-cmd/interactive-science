@@ -15,38 +15,184 @@ const dofCfg = {
 <TopicPage slug="subjects/robotics/foundational/configuration-space">
   <h2>The idea</h2>
   <p>
-    Robotics' first abstraction is also its most powerful: replace the robot with a point. The
-    <strong>configuration space</strong> (C-space) assigns one coordinate per degree of freedom, so
-    the whole robot — however many arms and joints — becomes a single point in a high-dimensional
-    space. Planning motion becomes path-finding in that space, and the entire field's algorithms
-    are organized around this move.
+    Robotics' most powerful single abstraction is also its least physical: replace the whole
+    robot with one point. A robot arm's "position" is not one number but a list — every joint
+    angle at once. The <strong>configuration space</strong> (C-space) takes that list and
+    treats it as the coordinates of a single imaginary point: a six-jointed arm becomes one
+    point drifting through a six-dimensional space, where each dimension is one joint's
+    angle. Nothing about the robot has changed; everything about the <em>problems</em> has.
+    "Where is the robot?" is now "where is the point?", and the fiendishly tangled question
+    "can the arm reach around the pillar without hitting it?" becomes a clean geometric one:
+    can a path be drawn between two points that avoids certain forbidden regions?
+  </p>
+  <p>
+    The value of the move is uniformity. Robots come in absurd variety — grippers, wheels,
+    snake spines, humanoids — but every one of them has a configuration, and every
+    configuration is a point in some space. Once the whole field agrees to phrase its
+    problems inside C-space, one set of tools serves them all: the same mathematics that
+    plans a two-joint gripper plans a thirty-joint walking machine, just in a bigger space.
+    The dimension gets punishing, and much of the field's algorithmic ingenuity exists to
+    survive it.
+  </p>
+  <p>
+    This chapter covers the three ideas the abstraction stands on: how to count a robot's
+    degrees of freedom honestly (Grübler's formula), how the task and the workspace relate
+    to the space of configurations, and how constraints — especially the sneaky
+    nonholonomic kind that make cars unable to slide sideways — shape what paths through
+    that space are even possible.
   </p>
 
   <Widget no="1" caption="from robot to point: the C-space move" widget="equationStep" config={dofCfg} />
 
-  <h2>Counting degrees of freedom</h2>
+  <h2>Degrees of freedom and Grübler's formula</h2>
   <p>
-    Grübler's formula makes DOF arithmetic honest. A planar four-bar linkage: four links, four
-    revolute joints, one loop — DOF = 3(4−1) − 2·4 = 1, so the whole mechanism has exactly one
-    motion. A free body in the plane has 3 DOF; in space, 6. Get the count wrong and the mechanism
-    jams or flops, no matter how good the motors are.
+    The number of <em>degrees of freedom</em> (DOF) is the number of independent numbers
+    needed to pin down the robot's configuration — the dimension of its C-space. A free
+    rigid body in the plane needs three (two positions, one rotation); in space it needs
+    six. Joints spend those freedoms: a revolute joint (a hinge) contributes one, a ball-
+    and-socket joint three. So a robot arm with three hinged joints in the plane has
+    DOF = 3 — three numbers describe it completely.
+  </p>
+  <p>
+    <em>Grübler's formula</em> turns this into honest bookkeeping for linkages, where joints
+    form loops that constrain each other: in the plane, DOF = 3 × (links − 1) − 2 × (one-
+    freedom joints). Take the four-bar linkage — the mechanism inside your windshield wiper
+    and a thousand engines: four links (including the ground), four revolute joints, one
+    loop. DOF = 3 × (4 − 1) − 2 × 4 = 9 − 8 = 1. One input — spin the crank — and the whole
+    mechanism's motion is determined. That single number is the design's certificate: the
+    linkage will move predictably, never flop and never jam. Get the count wrong in either
+    direction and no quality of motor rescues you: a mechanism with fewer degrees of freedom
+    than actuators binds and fights itself; one with more flops uncontrolled.
+  </p>
+  <p>
+    One more example cements the method, because it shows joints of different kinds sharing
+    a formula. The slider–crank — the linkage that turns every car engine's piston into
+    rotation — has four links (crank, connecting rod, piston, ground), three revolute joints
+    and one prismatic (sliding) joint, all worth one freedom each. Grübler: DOF = 3 ×
+    (4 − 1) − 2 × 4 = 1. Again exactly one: drive the crank and the piston must follow its
+    prescribed dance, which is precisely what an engine requires — one input, one
+    coordinated output. The formula's power is that it delivers this verdict from a parts
+    list, before anything is built or simulated.
+  </p>
+  <p>
+    The same counting explains a puzzling industry fact: industrial arms commonly have six
+    joints, not five or seven. Six is the minimum that can place the gripper anywhere in
+    space with any orientation (a free body's 6 DOF). Seven appears on the most capable
+    arms — elephant trunks and human arms are redundancy of the same kind — giving the
+    controller slack to reach around obstacles while holding the gripper pose fixed. In
+    C-space terms: a 7-dimensional space, with a 6-dimensional "task surface" carved out
+    inside it, and infinitely many points of the space projecting onto each point of the
+    surface. That infinity is redundancy, and it is a feature.
+  </p>
+
+  <h2>Task and workspace</h2>
+  <p>
+    Three spaces matter, and keeping them distinct prevents half of all beginner confusion.
+    The <em>configuration space</em> is the space of the robot's joint values. The
+    <em>workspace</em> is the set of points the end-effector can physically reach — a
+    property of the arm's geometry. The <em>task space</em> is whatever the job actually
+    lives in: two dimensions for drawing on paper, six for spray-painting a car body, five
+    or fewer for most assembly operations once alignment is handled by fixtures.
+  </p>
+  <p>
+    The two-link planar arm makes the workspace concrete. With links of one metre each, the
+    gripper can reach any point within two metres of the shoulder — but only if the arm can
+    fully extend, and it can also fold the gripper all the way back to the shoulder itself.
+    The reachable set is therefore not a disk but an <em>annulus</em>: radii from 0 to 2 m.
+    The geometry hides a classic computational wrinkle: most reachable points correspond to
+    <em>two</em> configurations — "elbow up" and "elbow down" — so the mapping from task to
+    configuration (inverse kinematics) is not one-to-one, and the planner must choose. The
+    forward direction (configuration to position) is easy trigonometry; the inverse is where
+    the mathematics gets interesting, and it is the inverse a robot actually needs.
+  </p>
+  <p>
+    The spaces also differ in the direction of difficulty. Workspaces are small — at most
+    six dimensions, usually fewer — while configuration spaces grow with every joint, and
+    planning happens in the bigger one. A task as humble as "wipe this tabletop" may demand
+    navigating a 6-dimensional C-space to keep the wrist legal while the hand traces a flat
+    2-dimensional path. The task never sees the difficulty; the configuration space carries
+    it.
+  </p>
+  <p>
+    Real arms also carry <em>joint limits</em>, which fence the C-space even in empty
+    rooms: a hinge that cannot pass 180 degrees turns its angle line into a segment. Add
+    gravity and the picture sharpens again — every point in C-space implies a torque load
+    on every joint, so two configurations reaching the same task point can differ wildly in
+    energy cost and payload capacity. This is why the C-space picture, fences and terrain
+    included, is the planner's true map rather than a mathematician's conceit: the point
+    that wanders into the wrong region breaks a robot, and the point that lingers on steep
+    terrain burns a motor.
+  </p>
+
+  <h2>Holonomic and nonholonomic constraints</h2>
+  <p>
+    A <em>holonomic</em> constraint is a restriction on configurations themselves — the
+    classic is a door hinge: the door's angle is fixed to the wall's, full stop. Holonomic
+    constraints shrink the C-space (the hinge's two links are really one DOF), and the
+    planner can simply plan in the smaller space.
+  </p>
+  <p>
+    <em>Nonholonomic</em> constraints are the subtle kind: restrictions on <em>velocity</em>
+    that do not reduce the set of reachable positions. The canonical example is a car. Its
+    configuration needs three numbers in the plane — position x, y and heading θ — so its
+    C-space is 3-dimensional. But the driver controls only two things: steering angle and
+    forward speed. Rolling without slipping forbids sideways motion: the car's velocity must
+    point along its heading, always. There is no configuration the car cannot eventually
+    reach — yet it cannot move sideways <em>one centimetre</em>, ever.
+  </p>
+  <p>
+    <em>Common misconception:</em> nonholonomic constraints reduce the robot's degrees of
+    freedom. They do not — the car's C-space stays 3-dimensional, and every point in it is
+    reachable. What they constrain is the <em>directions of available motion at each point</em>,
+    and therefore the shape of feasible paths. Parallel parking is the everyday proof: the
+    gap is trivially reachable in C-space, but only through a curved, back-and-forth
+    manoeuvre, because the straight path would require the forbidden sideways slide. The
+    distinction matters enormously in planning: a holonomic robot can plan point-to-point
+    and follow any path; a car-like robot must plan paths that respect its turning radius,
+    which is a genuinely harder computational problem.
   </p>
 
   <h2>Obstacles move into the space too</h2>
   <p>
-    The C-space's cleverest trick is transforming collision: instead of checking whether a
-    complicated robot hits a wall, compute the set of configurations where it would — a "forbidden
-    region" — and forbid the point from entering it. Planning around furniture becomes navigating a
-    map. The geometry is harder to compute, but the problem becomes uniform.
+    The C-space's cleverest trick is what it does to collisions. Checking whether a shaped,
+    articulated robot intersects a shaped world, joint by joint, is a geometry nightmare —
+    and you would have to redo it for every instant of every candidate path. C-space
+    replaces the nightmare with a map: compute, once, the set of <em>configurations</em> in
+    which the robot would collide with anything, and mark that whole set as forbidden
+    terrain. The living room's sofa becomes a curved region in joint-angle space; the
+    question "can the arm reach the shelf?" becomes "can a path dodge that region?" — the
+    same question a GPS answers, in stranger coordinates. Computing the forbidden region
+    exactly is hard for high dimensions, which is one more reason planners end up sampling
+    and testing points rather than mapping the terrain in full.
   </p>
 
-  <h2>Why sampling won</h2>
+  <h2>Going deeper</h2>
   <p>
-    A grid over a 6-DOF space needs millions of cells per axis-pair; exhaustive search dies. Modern
-    planners — RRT, PRM — throw random samples at the space, wire nearby ones together, and grow a
-    road map or a tree toward the goal. They trade completeness for high probability of success,
-    which is the right trade once the dimension passes three. Everything after this course —
-    kinematics, dynamics, control — lives inside this space.
+    C-spaces have topology, and it bites. A single revolute joint's angle lives on a circle:
+    359 degrees is adjacent to 0, not to 720. A two-joint arm therefore lives not on a
+    rectangle but on a torus — a doughnut, where "past the edge" wraps around. Planners that
+    ignore the wrap-around plan across a seam that does not exist, producing spurious
+    "collisions" at the 0/360 boundary. The torus is the friendliest case; closed-chain
+    mechanisms have C-spaces whose very dimension can change from place to place, and whose
+    geometry researchers still characterise case by case.
+  </p>
+  <p>
+    Obstacles in the world grow when mapped into C-space — the technical device is the
+    Minkowski sum: a round robot sweeping past a corner forbids a larger, corner-round
+    region, every configuration where any part of the robot would touch. And dimension
+    remains the enemy, quantifiably. Discretise each joint at a modest 63 values (0.1 radian
+    steps over a typical range): a 2-DOF space is 3,969 cells — trivial. Six DOF is about
+    6.25 × 10¹⁰ — dead on arrival. A humanoid's 30-plus DOF makes storing the grid, never
+    mind searching it, physically absurd. This is precisely why sampling-based planners —
+    the RRT family and probabilistic roadmaps — took over the field: they probe the space
+    with random samples, connect near neighbours, and grow trees or roadmaps sparsely,
+    never enumerating. They surrender guaranteed optimality and even guaranteed success,
+    keeping only <em>probabilistic completeness</em> — given a solution exists, the
+    probability of finding one approaches 1 as sampling continues. That trade — certainty
+    about completeness for practicality about dimension — is the defining bargain of modern
+    motion planning, and the open questions run from planning under uncertainty and contact
+    (where C-space itself becomes probabilistic) to whole-body planning for humanoids, where
+    dynamics, balance and nonholonomic foot-placement constraints all bind at once.
   </p>
 
   <p class="sources"><strong>Sources:</strong> Lynch &amp; Park, <em>Modern Robotics</em>, Ch. 2 (official companion site); LaValle, <em>Planning Algorithms</em>.</p>

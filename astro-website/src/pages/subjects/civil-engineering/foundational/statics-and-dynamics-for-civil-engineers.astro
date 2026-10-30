@@ -25,38 +25,178 @@ const staticsCfg = {
 <TopicPage slug="subjects/civil-engineering/foundational/statics-and-dynamics-for-civil-engineers">
   <h2>The idea</h2>
   <p>
-    Civil engineers guarantee that heavy things stand still — and the guarantee is written in
-    statics. Every bridge, tower and dam is an equilibrium problem: loads down, reactions up,
-    internal forces distributed so no part is overstressed. Dynamics joins when loads move, as
-    traffic, wind and earthquakes always do.
+    Civil engineers make an unusual promise: this structure will hold, for decades, through
+    storms, crowds, traffic and earthquakes — and we can prove it on paper before a single
+    bucket of concrete is poured. The proof rests on a handful of ideas that fit in one lecture:
+    bodies at rest are in equilibrium, equilibrium is three equations per body in two
+    dimensions, and cutting a structure open reveals the internal forces that every square
+    centimetre of it must survive. That is statics. When loads move — trucks, wind gusts,
+    marching crowds, earthquake waves — inertia joins the picture and statics grows into
+    dynamics.
+  </p>
+  <p>
+    The everyday analogy is a set of scales. A bridge deck loaded with traffic is a giant
+    balance: the loads push down, the supports push up, and the two must match exactly or the
+    bridge accelerates — which, for a successful bridge, means never. What makes the subject
+    rich is that matching the totals is only the first question. A bridge can have its vertical
+    forces perfectly balanced and still fail, because some internal member is quietly carrying
+    far more than its share. The engineer's task is to trace where every newton flows: down
+    through the deck, along the beams, into the columns, and finally into the ground.
+  </p>
+  <p>
+    This is why the free-body diagram is the subject's signature move. Isolate the piece you
+    care about, cut it free from the world, and replace everything you cut away with the forces
+    it was exerting. Suddenly an abstract question — is this truss safe? — becomes a concrete
+    one: here are the forces, here are three equations, solve. Everything in this chapter is a
+    variation on that single move, applied first to whole structures, then to imagined cuts
+    through them, and finally to bodies in motion where the equations gain a right-hand side.
   </p>
 
   <Widget no="1" caption="from free-body diagram to internal forces" widget="equationStep" config={staticsCfg} />
 
-  <h2>The bending moment diagram is the design</h2>
+  <h2>Trusses and frames</h2>
   <p>
-    For a beam carrying a central load P over span L, the bending moment peaks at PL/4 mid-span —
-    zero at the supports, maximum where the beam works hardest. Designers read this curve to place
-    material where the demand is: deeper sections mid-span, extra steel at the bottom. Every load
-    case draws its own diagram, and the structure must survive the worst one.
+    A truss is equilibrium made visible. It is a skeleton of straight bars joined at their ends
+    into triangles, and its genius is a single assumption: the joints are pins, so each bar
+    carries force only along its own axis. A bar can pull (tension) or push (compression), but
+    it cannot bend. That turns a daunting tangle of steel into pure arithmetic, because a
+    two-force member exerts at each joint a force of known direction.
+  </p>
+  <p>
+    The <em>method of joints</em> exploits this one pin at a time. Take a simple example: two
+    rafters meeting at an apex, joined by a horizontal tie, with a 10 kN load hanging at the
+    apex. At the apex joint there are two unknown bar forces and exactly two useful equilibrium
+    equations (sum of forces horizontal and vertical equals zero). If the rafters sit at 30
+    degrees to the horizontal, vertical equilibrium reads: two rafter forces × sin 30° must
+    carry 10 kN, so each rafter pushes with 10 kN in compression. Horizontal equilibrium then
+    forces the tie to pull with 10 kN × cos 30° ≈ 8.7 kN in tension. Three members, one joint,
+    three sentences of algebra — and a designer already knows which bars need buckling checks
+    (the compression ones) and which need only strength (the tie).
+  </p>
+  <p>
+    Why triangles? Because a triangle is the only polygon whose shape is fixed by its side
+    lengths. A rectangle of hinged bars can shear into a parallelogram; a hinged triangle
+    cannot deform without changing a bar's length. Trusses are therefore built from triangles,
+    and the pattern repeats at every scale — from a roof rafter assembly to the Forth Bridge
+    cantilevers. <em>Frames</em> are the generalisation: structures whose members carry forces
+    at more than two points, so individual members can bend. Every joint then has more unknowns
+    than equations, and the analysis must cut through members and use internal forces — which
+    is exactly where beam theory takes over.
+  </p>
+
+  <h2>Centroids and moment of inertia</h2>
+  <p>
+    Two geometric properties decide how a cross-section behaves, and both are worth
+    understanding physically rather than memorising. The <em>centroid</em> is the section's
+    balance point: the point where the area would balance on a pin. Loads passed through it
+    produce pure compression or tension; the same loads applied off-centre add bending. The
+    <em>second moment of area</em> I — often called, loosely, the moment of inertia of the
+    section — measures how far the section's area sits from the axis it bends about, each bit
+    of area weighted by the square of its distance.
+  </p>
+  <p>
+    The squaring is what makes I so powerful. For a rectangle of width b and depth h,
+    I = bh³/12 about the horizontal axis. Take a 100 mm × 200 mm timber joist:
+    I = 100 × 200³ ÷ 12 ≈ 66.7 × 10⁶ mm⁴. Now stand it the other way — 200 mm wide, 100 mm
+    deep — and I collapses to 16.7 × 10⁶ mm⁴, four times less. Same plank, same area, same
+    weight: four times less stiffness, purely because of orientation. Going further, doubling
+    the depth from 200 mm to 400 mm multiplies I by 2³ = 8. This is the whole secret of the
+    I-beam and the box girder: put material as far from the bending axis as practical, and
+    connect it with a thin web that mostly keeps it in place. Bending stress follows
+    σ = My ÷ I — stress grows with distance y from the neutral axis (which is why flanges,
+    at maximum y, do the work) and shrinks in direct proportion to I.
+  </p>
+  <p>
+    <em>Common misconception:</em> "more area means more stiffness." Not so — geometry
+    dominates. A thin steel rule edge-on is far harder to bend than a much heavier plank laid
+    flat, and a hollow tube beats a solid rod of the same area. Area controls axial strength;
+    the distribution of area (I) controls bending, and bending is what kills most beams.
+  </p>
+
+  <h2>Beams and the bending moment diagram</h2>
+  <p>
+    Cut a loaded beam at any station and equilibrium still holds for the piece on either side;
+    the cut must therefore transmit an internal shear force and an internal bending moment.
+    Plot that moment along the span and you have the single most informative drawing in
+    structural engineering. For a simply supported beam of span L carrying a central point
+    load P, statics gives a triangular diagram: zero at both supports, rising linearly to the
+    peak PL/4 at mid-span. With P = 10 kN and L = 8 m, the peak is 10 × 8 ÷ 4 = 20 kN·m.
   </p>
 
   <Widget no="2" caption="bending moment under a central point load" widget="plotter" config={trussCfg} />
 
-  <h2>Trusses: equilibrium made visible</h2>
   <p>
-    A truss is a skeleton of two-force members — each bar either pulls or pushes, never bends. That
-    constraint makes the arithmetic pure statics: joint by joint, two equations and two unknown
-    bars. It is why trusses were the engineering of the nineteenth century and remain the cleanest
-    way to teach the discipline.
+    The diagram is not a formality — it is the design. The peak tells you the maximum demand
+    the worst section must carry; the zero points tell you where connections can be lighter;
+    the shape tells you where to add depth or reinforcement. Distribute the same load
+    uniformly instead of concentrating it, and the peak drops from PL/4 to wL²/8 — with
+    wL = P that is P·L ÷ 8, half the central-load value. Real failure investigations often
+    reduce to a bending moment diagram drawn after the fact: the load was heavier, or in a
+    different place, than the diagram the designer had assumed. Every load case draws its own
+    diagram, and the structure must survive the envelope of all of them.
   </p>
 
-  <h2>Why dynamics keeps civil engineers humble</h2>
+  <h2>Kinematics and kinetics: when loads move</h2>
   <p>
-    Structures have natural frequencies, and loads with matching rhythms — footsteps, wind eddies,
-    earthquake waves — can pump energy in. The London Millennium Bridge wobbled on opening day in
-    2000 because synchronised footfall found its frequency. Static strength is necessary; dynamic
-    behaviour is what actually surprises you.
+    Statics assumes the structure never accelerates. <em>Kinematics</em> is the descriptive
+    layer that comes first: position, velocity and acceleration, and how they relate (velocity
+    is the rate of change of position; acceleration the rate of change of velocity).
+    <em>Kinetics</em> is the causal layer: Newton's second law, force equals mass times
+    acceleration, which converts acceleration history into the forces the structure must
+    resist. In two-dimensional dynamics, three statics equations become three equations of
+    motion, with the mass times acceleration terms playing the role the reactions played at
+    rest.
+  </p>
+  <p>
+    Civil engineers meet kinetics through moving loads, and the effects are rarely intuitive.
+    A truck rolling across a bridge loads it more heavily than the same truck parked, because
+    the deck must also supply the forces that deflect the vehicle's suspension and, in an
+    impact, arrest its motion — codes capture this with dynamic amplification factors, often
+    on the order of 1.3 for highway bridges. Deeper still, every structure has natural
+    frequencies at which it prefers to swing, set by its stiffness and mass. When a load's
+    rhythm matches a natural frequency, each cycle pumps more energy in and the response grows
+    — resonance. The London Millennium Bridge delivered the modern object lesson: it opened in
+    June 2000, and synchronised lateral footfall — pedestrians unconsciously adjusting their
+    gait to the deck's slight sway — set the deck oscillating sideways within hours, forcing a
+    closure and a two-year retrofit of dampers. The bridge was never under strength limits; it
+    was a dynamics problem, and the fix was to break the rhythm, not to add steel.
+  </p>
+  <p>
+    The numbers involved are small enough to work by hand. Model a timber office floor as a mass
+    of 2,000 kg riding on a stiffness of 3.2 MN per metre. Its natural frequency is
+    f = (1 ÷ 2π) × √(k ÷ m) = (1 ÷ 2π) × √1,600 ≈ 6.4 Hz. Pedestrians walk at roughly 1.6 to
+    2.4 steps per second, and footfall forces carry harmonics at two and three times that rate,
+    so a 6.4 Hz floor sits above the second harmonic of a brisk walk, but not by a comfortable
+    margin — which is why traditional guidance pushes floors under rhythmic occupancy (gyms,
+    dance halls) above roughly 7.5 Hz: not so they are stronger, but so the crowd cannot find
+    their rhythm. The same calculation, run in the lateral direction, is what the Millennium
+    Bridge's designers under-weighted.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The three-equations toolkit has a hard limit: <em>statically indeterminate</em> structures
+    — a continuous beam over several supports, a rigid frame — have more unknowns than
+    equilibrium equations. Closing them requires the material's stiffness and compatibility of
+    deformation: members must deflect together, and stiffer members attract more load. This is
+    why indeterminate analysis (the force method and displacement method, and today the finite
+    element method) sits at the gateway from second-year mechanics to real design, and why
+    differential settlement, which redistributes load between redundant supports, matters far
+    more than novices expect.
+  </p>
+  <p>
+    Moment of inertia returns at full power in stability. A slender column under compression
+    does not fail by crushing but by bowing sideways, at the Euler load P<sub>cr</sub> =
+    π²EI ÷ L² — notice I appearing again, and notice the square: halving the effective length
+    quarters the buckling capacity. Design codes wrap this in slenderness ratios and
+    imperfection factors. On the dynamics side, the modern toolkit is the response spectrum
+    (for earthquakes, the peak response a structure of each natural period can expect from a
+    design ground motion), influence lines (a plot of how a stationary load at each position
+    affects one response — swept along by a moving vehicle), and serviceability criteria that
+    limit vibration even when strength is comfortable. Open problems are lively: human-induced
+    vibration of long spans, loads that interact with the structure's own motion, and the
+    shift from component code-checking to whole-building performance-based design under
+    climate-driven wind and flood loads.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NCEES FE Civil exam specifications; Hibbeler, <em>Engineering Mechanics: Statics &amp; Dynamics</em>.</p>

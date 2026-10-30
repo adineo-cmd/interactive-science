@@ -17,34 +17,224 @@ const dnaTimeline = {
     { year: 2012, title: 'CRISPR becomes an editor', text: 'Jinek, Doudna, Charpentier and colleagues turn a bacterial immune system into programmable gene editing. Nobel 2020.', tag: 'tools' },
   ],
 };
+
+// Punnett square for Tt × Tt, laid out as a clickable grid.
+const punnettCfg = {
+  height: 260,
+  nodes: [
+    { id: 'top1', label: 'T', sub: 'sperm', x: 300, y: 22, w: 130, h: 46 },
+    { id: 'top2', label: 't', sub: 'sperm', x: 460, y: 22, w: 130, h: 46 },
+    { id: 'left1', label: 'T', sub: 'egg', x: 120, y: 96, w: 130, h: 46 },
+    { id: 'left2', label: 't', sub: 'egg', x: 120, y: 168, w: 130, h: 46 },
+    { id: 'o1', label: 'TT', sub: 'tall', x: 300, y: 96, w: 130, h: 46 },
+    { id: 'o2', label: 'Tt', sub: 'tall', x: 460, y: 96, w: 130, h: 46 },
+    { id: 'o3', label: 'Tt', sub: 'tall', x: 300, y: 168, w: 130, h: 46 },
+    { id: 'o4', label: 'tt', sub: 'short', x: 460, y: 168, w: 130, h: 46 },
+  ],
+  edges: [],
+  details: {
+    top1: { title: 'T sperm', text: 'Parent 1 (Tt) makes T-carrying sperm and t-carrying sperm in equal numbers — meiosis splitting the pair.' },
+    top2: { title: 't sperm', text: 'Half of parent 1\u2019s sperm carry the recessive allele t.' },
+    left1: { title: 'T egg', text: 'Parent 2 (Tt) likewise makes T and t eggs in equal numbers.' },
+    left2: { title: 't egg', text: 'The recessive allele has no visible effect in the parent — hidden by the dominant T.' },
+    o1: { title: 'TT — tall', text: 'Two dominant alleles: pure tall. Outcome probability 1 in 4.' },
+    o2: { title: 'Tt — tall', text: 'Hybrid: tall, but carries the recessive allele. Probability 1 in 4.' },
+    o3: { title: 'Tt — tall', text: 'Same genotype as the parents. Probability 1 in 4.' },
+    o4: { title: 'tt — short', text: 'Only a double dose of the recessive allele shows the short phenotype. Probability 1 in 4.' },
+  },
+  detailHint: 'Click a square: each cell is one fertilisation outcome.',
+  key: 'Letters are alleles: T = tall (dominant), t = short (recessive). Phenotype ratio 3 tall : 1 short.',
+};
 ---
 <TopicPage slug="subjects/biology/foundational/dna-heredity">
   <h2>The idea</h2>
   <p>
-    DNA is a two-stranded ladder twisted into a helix, and its elegance is its chemistry:
+    You began as a single cell carrying a library of instructions — and you now have roughly 30
+    trillion cells, every one running on the same library, copied with staggering fidelity.
+    The library is <strong>DNA</strong>: a two-stranded ladder twisted into a helix, whose
+    elegance is its chemistry. The ladder's rungs come in four kinds — A, T, G, C — and
     <strong>A pairs only with T, G only with C</strong>. That one rule means each strand is a
-    template for the other — the basis of copying, repairing and reading the molecule. Your
-    genome is ~3 billion base pairs across 23 chromosome pairs, containing ~20,000
-    protein-coding genes.
+    complete template for the other: unzip the helix and either side can rebuild its missing
+    partner. Copying, repairing and reading the molecule all rest on this pairing.
+  </p>
+  <p>
+    Scale check: your genome is about 3 billion base pairs — if printed as a book of single
+    letters it would fill a thousand volumes — spread across 23 pairs of chromosomes and
+    containing roughly 20,000 protein-coding genes. How the instructions got from a monk's
+    garden to a programmable editor is a 150-year detective story; scrub through it below, then
+    we will unpack each era's insight.
   </p>
 
   <Widget no="1" caption="from monk's garden to programmable editor — 150 years in ten steps" widget="timeline" config={dnaTimeline} />
 
-  <h2>Mendel's ratios, explained</h2>
+  <h2>Chromosomes, genes and the recipe book</h2>
   <p>
-    Crossing pure tall peas with pure short ones gave all tall offspring; self-crossing those
-    gave a <strong>3:1</strong> ratio. The explanation: each plant carries two copies of every
-    gene, one visible "dominant" and one hidden "recessive" — exactly what meiosis and DNA
-    replication make physical. Traits like your blood group and eye colour run on the same
-    arithmetic, though most human traits involve thousands of genes acting together.
+    The DNA in a human cell, stretched out, would run about 2 metres — so it is packed with
+    spool-like proteins into 46 compact <strong>chromosomes</strong>, in 23 matched
+    <strong>pairs</strong>: one chromosome of each pair from your mother, one from your father.
+    This double set is called <em>diploid</em>. A <strong>gene</strong> is a section of DNA
+    coding for one protein, sitting at a fixed address on a chromosome; the two chromosomes of a
+    pair both carry that address, so you hold two copies of most genes. Alternative versions of
+    the same gene — brown-eye vs blue-eye, say — are <strong>alleles</strong>. The four bases
+    are an alphabet; three letters at a time spell one amino acid; chains of amino acids fold
+    into proteins that do the cell's work. That is the whole reading scheme, and it is the
+    same in bacteria, blue whales and bread wheat.
+  </p>
+  <p>
+    Watson and Crick's 1953 paper was a turning point because the structure explained the
+    function in one glance: antiparallel strands plus the pairing rule is a <em>copying
+    mechanism</em>, which they announced in one of science's great understatements — "It has
+    not escaped our notice that the specific pairing we have postulated immediately suggests a
+    possible copying mechanism for the genetic material." The structural work itself leaned on
+    Rosalind Franklin's X-ray diffraction — "Photo 51" measured the helix's diameter and the
+    spacing of its turns; history has been correcting her credit ever since. And from 1966 the
+    code was read outright: Nirenberg, Khorana and colleagues assigned all 64 DNA triplets to
+    amino acids, finding (as the timeline notes) that nearly all life speaks this exact
+    dialect — the strongest single clue that everything alive shares one ancestor.
   </p>
 
-  <h2>Why the structure mattered</h2>
-  <ul>
-    <li><strong>Antiparallel strands + base pairing</strong> = a copying mechanism, which Watson and Crick announced in one of science's great understatements: "It has not escaped our notice…"</li>
-    <li><strong>The sequence is information.</strong> Three DNA letters (a codon) specify one amino acid; chains of amino acids fold into proteins that do the cell's work.</li>
-    <li><strong>Franklin's data was essential</strong> — her diffraction images measured the helix's diameter and spacing. History has been correcting her credit ever since.</li>
-    <li><strong>CRISPR closes the loop:</strong> once you can read the code (1953–2003) and write it (2012–), heredity becomes engineering — with all the ethics that implies.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Watson & Crick, Nature (1953); Human Genome Project (Nature, 2003); Jinek et al., Science (2012).</p>
+  <h2>Copying the library: mitosis, briefly</h2>
+  <p>
+    Growth and repair need new cells with the full, unchanged library — and that is
+    <strong>mitosis</strong> (walked through phase by phase in the cell-structure lesson): the
+    DNA is replicated, each daughter cell receives a complete diploid set, and the copy is
+    near-perfect. The replication itself is <em>semi-conservative</em>: each new double helix
+    keeps one old strand and builds one new one, so the original information is physically
+    conserved — confirmed in a famous 1958 experiment by Meselson and Stahl. Errors do slip
+    through (roughly one letter per few hundred million copied), and most are caught and
+    repaired; the rare escapees are mutations, the raw material of both disease and evolution.
+  </p>
+
+  <h2>Halving the deck: meiosis</h2>
+  <p>
+    Sexual reproduction has a counting problem. Each child gets one chromosome of every pair
+    from each parent; if parents handed over full diploid cells, every generation would double
+    the count — 46 chromosomes becoming 92, then 184, and nonsense within a century. The
+    solution is <strong>meiosis</strong>, the special two-stage cell division that makes
+    gametes (sperm and eggs) carrying a <em>haploid</em> set: 23 single chromosomes, one from
+    each pair. Fertilisation restores the full 46. Your gametes are therefore half-counts of
+    you, shuffled — and here is the beautiful part: they are <em>all different</em>. In
+    meiosis I, chromosome pairs line up and are dealt to the poles independently of their
+    neighbours, so one human can make over 8 million (2²³) genetically different gametes by
+    that shuffle alone. On top of that, matched chromosomes physically swap segments —
+    <strong>crossing over</strong> — creating chromosomes that never existed before. Variation
+    is not a bug of sex; it is the entire point.
+  </p>
+  <p><em>Common misconception:</em> gametes are not "half a person" of each parent in any
+  simple sense. Each egg or sperm carries a randomised mix of your mother's and father's
+  versions — which is why full siblings (other than identical twins) share only about half
+  their variable DNA, and why you are not 50% your mother and 50% your father gene by gene,
+  but a fresh reshuffle every time.</p>
+
+  <h2>Mendel's ratios, explained</h2>
+  <p>
+    Mendel, working with pea plants in the 1850s, crossed pure tall plants with pure short ones:
+    every offspring was tall. Let those hybrids self-fertilise and the short trait reappeared —
+    in a stubborn <strong>3:1</strong> ratio, across thousands of plants. His explanation, published in
+    1866 and ignored for 34 years: each plant carries two copies of every gene; one allele can be
+    <strong>dominant</strong> (visible whenever present) and one <strong>recessive</strong>
+    (visible only in a double dose). The tall parent plants were TT; the short ones tt; the
+    hybrids all Tt — tall, because T dominates. Self-crossing Tt × Tt, each parent passes T or
+    t with equal chance, and the outcomes fan out into a grid (a Punnett square):
+  </p>
+
+  <Widget no="2" caption="one cross, four outcomes — click each square to read its genotype" widget="diagram" config={punnettCfg} />
+
+  <p>
+    Read the grid: one TT, two Tt, one tt. Genotype ratio 1:2:1; <em>phenotype</em> ratio — what
+    you actually see — 3 tall : 1 short, because the two heterozygotes look identical. The
+    arithmetic is simple probability, and it works identically for humans: two carriers of the
+    recessive allele for cystic fibrosis have, with each pregnancy, a 1-in-4 chance of an
+    affected child. Inheritance of a single gene like this is <strong>monohybrid
+    inheritance</strong>. Blood groups add a wrinkle: A and B are <em>codominant</em> (an AB
+    person shows both) while O is recessive, so an A-parent × B-parent couple can produce
+    children of every group. And most human traits — height, skin tone, intelligence — are
+    polygenic, thousands of genes acting together, which is why they come in continua rather
+    than neat 3:1 ratios. Mendel's peas were, in a sense, lucky choices of clean traits.
+  </p>
+
+  <h2>Mutations: when the copy changes</h2>
+  <p>
+    A <strong>mutation</strong> is a change in the DNA sequence itself — a base substituted,
+    deleted or inserted during copying, or a whole chromosome reshuffled. Mutations arise
+    spontaneously (copying is near-perfect but not perfect) and are multiplied by
+    <strong>mutagens</strong>: UV light (skin), ionising radiation, chemicals in tobacco
+    smoke. Most are silent or harmful; occasionally one is useful, and that asymmetry —
+    mostly noise, occasionally signal — is the raw material evolution edits. The sickle-cell
+    mutation is the textbook case of the whole spectrum in one allele: one DNA letter
+    swapped, one amino acid changed in haemoglobin, red blood cells warped into inflexible
+    crescents. Two copies cause sickle-cell disease, serious and lifelong; one copy (the
+    carrier state) does something remarkable — it protects against malaria, which is why the
+    allele persists at high frequency precisely where malaria is endemic. A mutation's
+    meaning depends on the environment it meets: that sentence is genetics and evolution
+    and medicine in eleven words.
+  </p>
+
+  <h2>Sex-linked inheritance: a worked cross</h2>
+  <p>
+    Colour-blindness rides the X chromosome. A carrier mother (XᴺXᶜ — sighted) and a normal
+    father (XᴺY) produce four equally likely outcomes: daughters XᴺXᴺ (sighted) or XᴺXᶜ
+    (carrier), sons XᴺY (sighted) or XᶜY (colour-blind). Follow the logic: a son gets his
+    only X from his mother, so <strong>each son has a 1-in-2 chance of colour-blindness</strong>,
+    while each daughter has a 1-in-2 chance of carrying it silently. This asymmetry — no
+    spare X to mask a recessive allele — is why the condition appears mostly in genetic
+    males and why a colour-blind father cannot pass it to his son (the son got the Y). Haemophilia
+    follows the same arithmetic; both were tracked through European royal pedigrees, in one
+    of history's unintended genetic experiments.
+  </p>
+  <p>
+    Pedigree charts — circles for females, squares for males, shaded for affected — let you
+    reason backwards. Two unaffected parents with an affected child prove the condition is
+    recessive (both parents must be carriers); an affected mother passing it to <em>all</em>
+    her sons and none of her daughters points to X-linked recessive; affected father to
+    affected son rules out X-linkage entirely. Reading a pedigree is the Punnett square run
+    in reverse — and it is exactly how genetic counsellors estimate a real family's risk
+    before a pregnancy.
+  </p>
+  <p><em>Common misconception:</em> dominant does not mean "stronger" or "more common" — it
+  means the allele shows when only one copy is present. Huntington's disease is dominant and
+  rare; blue eyes are recessive and common in northern Europe. Dominance describes
+  <em>expression</em>, not strength or frequency.</p>
+
+  <h2>Genes are not destiny: the PKU lesson</h2>
+  <p>
+    One metabolic condition contains the whole nature–nurture debate in a test tube.
+    <strong>Phenylketonuria (PKU)</strong> is a recessive disorder: children with two
+    defective copies of one enzyme gene cannot break down the amino acid phenylalanine,
+    which accumulates in the blood and damages the developing brain — and, untreated, used
+    to produce severe intellectual disability. But since the 1960s a simple blood test at
+    birth spots it, and a diet low in phenylalanine (strictly managed for life) produces
+    completely normal development. The genotype is fixed at conception; the outcome was
+    changed entirely by environment. No gene observed "in the wild" means anything without
+    its surroundings — which is why modern genetics writes statements like "increases risk
+    by X%" and why the honest summary of the whole field is: <em>genes load, environment
+    aims, and the two are only separable in textbook diagrams</em>.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    One pair of chromosomes deserves special mention. Twenty-two pairs are autosomes, matched
+    twins; the 23rd is the sex-determining pair, XX in female-typical development and XY in
+    male-typical — with the crucial asymmetry that mothers always contribute an X, fathers the
+    coin-flip X or Y. The Y chromosome is small and carries remarkably little, but one gene on
+    it (SRY) triggers the male developmental pathway. Because the X carries many ordinary genes,
+    a recessive allele on it has no partner in XY individuals — which is why conditions like
+    red-green colour-blindness and haemophilia show up far more often in genetic males: a
+    single copy suffices.
+  </p>
+  <p>
+    The library also contains far more than recipes. Only about 2% of your DNA codes for
+    proteins; much of the rest was once dismissed as "junk", but decades of the ENCODE project
+    and successors have revealed vast tracts of regulatory switches, RNA genes and structural
+    elements — the instruction manual's wiring diagram, not its parts list. Meanwhile the same
+    library supports the courtroom: DNA fingerprinting reads about 20 highly variable marker
+    regions, and the odds of two unrelated people matching are astronomically small, which is
+    how forensic genetics and the Innocence Project's exonerations work. CRISPR, the 2012
+    discovery-turned-tool in the timeline, closes the loop: a bacterial immune system became
+    programmable molecular scissors, and with it heredity turned from a subject of study into
+    an object of editing — somatic gene therapies are already approved for sickle-cell
+    disease. Whether we edit embryos, and on whose authority, is not a biology question; it is
+    the ethics question this century inherited along with the code.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Mendel, <em>Versuche über Pflanzenhybriden</em> (1866); Watson & Crick, Nature (1953); Meselson & Stahl, PNAS (1958); Human Genome Project (Nature, 2003); Jinek et al., Science (2012).</p>
 </TopicPage>

@@ -17,38 +17,151 @@ const descendCfg = {
 <TopicPage slug="subjects/artificial-intelligence/foundational/how-machines-learn">
   <h2>The idea</h2>
   <p>
-    Modern AI is not programmed with answers — it is <strong>trained against a mistake
-    score</strong>. The machine makes a guess, a <em>loss function</em> measures how wrong it
-    was, calculus supplies the direction of "downhill" (the <strong>gradient</strong>), and the
-    parameters take a small step that way. Repeat a few million times and behaviour emerges.
-    That loop — guess, measure, step — is called <strong>gradient descent</strong>, and it
-    trains everything from spam filters to ChatGPT-class models.
+    For most of computing's history, a program was answers written by a human. Spam filters ended that:
+    nobody can write the rule for what spam looks like — it is "whatever spammers decide this month".
+    The fix was a different way of building software. Instead of writing rules, you write a
+    <strong>learning loop</strong>: the machine makes a guess, a <em>loss function</em> measures how
+    wrong the guess was, calculus supplies the direction of "downhill" (the <strong>gradient</strong>),
+    and the machine's adjustable parameters take a small step that way. Repeat a few million times and
+    behaviour emerges that no one programmed. That loop — guess, measure, step — is
+    <strong>gradient descent</strong>, and in one form or another it trains everything from spam filters
+    to ChatGPT-class models. This is the deep sense in which machines "learn": not acquiring
+    understanding, but systematically reducing a mistake score against data.
   </p>
 
   <Widget no="1" caption="the whole of machine learning in one picture — red dots are training steps rolling downhill to the best answer" widget="plotter" config={descendCfg} />
 
   <p>
-    Each red dot is one training step: start at w = 0 (badly wrong, loss = 10), step opposite the
-    slope, and watch the steps shrink as the ground flattens. Near the bottom the gradient is
-    almost zero, so the model stops moving — <em>converged</em>. Real networks do this in
-    millions of dimensions, where "downhill" can't be drawn, only computed.
+    Each red dot is one training step. The model here has a single parameter <code>w</code>; the purple
+    curve is the loss — how wrong the model is — for every possible setting of that parameter. Start at
+    w = 0 (badly wrong, loss = 10), measure the slope (steeply negative, so step right), and watch the
+    steps shrink as the ground flattens. Near the bottom the gradient is almost zero, so the model stops
+    moving: <em>converged</em>, at w = 3, the best answer the data supports. Real networks do this in
+    millions or billions of dimensions, where "downhill" can't be drawn, only computed — but the
+    geometry is identical, and so is the path: big strides early, tiptoeing at the end, each step size
+    set by the <strong>learning rate</strong> times the local slope.
   </p>
 
-  <h2>Vocabulary that unlocks the field</h2>
-  <ul>
-    <li><strong>Model</strong> — a function with adjustable knobs (weights). Training = turning the knobs.</li>
-    <li><strong>Loss</strong> — the wrongness score. Choosing it is choosing what the machine cares about; the model optimises exactly and only what you measure.</li>
-    <li><strong>Learning rate</strong> — step size. Too big and the dots leap across the valley; too small and training crawls.</li>
-    <li><strong>Generalisation</strong> — performing well on data never seen. A model that memorises its training data (overfitting) has learned the noise, not the pattern.</li>
-    <li><strong>Neural network</strong> — layers of simple weighted sums passed through soft nonlinearities; the architecture that made deep learning possible (backpropagation made it trainable, 1986).</li>
-  </ul>
-
-  <h2>What AI is not</h2>
+  <h2>Learning from examples: the supervised recipe</h2>
   <p>
-    It is not reasoning, understanding or wanting — it is function-fitting at enormous scale,
-    which <em>looks like</em> understanding because patterns in language run deep. Every claim
-    about an AI system should be traceable back to a loss function, a dataset and an evaluation.
-    That discipline — not the hype — is the field.
+    The dominant form of machine learning is <strong>supervised learning</strong>: you have examples
+    with the right answers attached — emails labelled spam/not-spam, X-rays labelled by radiologists,
+    house prices with selling prices recorded. The task is to infer the mapping from inputs to labels,
+    and it splits into two families. <strong>Classification</strong> predicts a category (spam or not;
+    cat, dog or hamster), while <strong>regression</strong> predicts a number (tomorrow's temperature,
+    a house's price). <strong>Unsupervised learning</strong>, by contrast, gets no labels at all — it
+    finds structure: which customers cluster together, which words co-occur. <strong>Reinforcement
+    learning</strong> is the third paradigm: an agent acts, receives rewards, and learns which actions
+    pay off — how systems learned to play Go and control robots. The prototype of supervised learning
+    is the <strong>decision tree</strong>: a flowchart of questions learned from data ("is the
+    email from an unknown sender? is it asking for a password?") where each internal node tests one
+    attribute and each leaf is a prediction. Trees are beloved for one reason: you can read them.
+    An algorithm like ID3 chooses each split by <strong>information gain</strong> — the question that
+    most reduces uncertainty about the answer goes first — and a tree that perfectly classifies its
+    training data can be grown in seconds, which is both the method's power and, as we will see, its
+    trap.
   </p>
-  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton & Williams, Nature (1986); Goodfellow, Bengio & Courville, Deep Learning (2016).</p>
+  <p><em>Common misconception:</em> the machine does not "figure out the rules" in any human sense.
+  It adjusts numbers to reduce a score. A spam filter has no concept of deception; it has weights that
+  happened to distinguish the labelled examples. When the world shifts (new spam tactics, a hospital
+  changing scanners), the model does not notice — it must be retrained, and the shift has a name,
+  <strong>concept drift</strong>.</p>
+
+  <h2>Generalisation: the only score that matters</h2>
+  <p>
+    Here is the field's central paradox. You train on the data you have, but you are graded on data you
+    don't have. A model judged on its <strong>training data</strong> can cheat by memorising — the
+    machine-learning name for this is <strong>overfitting</strong>: the model has learned the noise, not
+    the pattern. The spammed-up example: a decision tree grown to perfection on last year's emails may
+    have leaves like "sender contains the letter q" — a rule that fit the sample and will misfire on
+    tomorrow's inbox. The defence is procedural and simple: split the data. Train on one portion,
+    evaluate on a <strong>validation set</strong> the model never saw, and tune on that; report final
+    performance on a third <strong>test set</strong> touched exactly once. When data is scarce,
+    <strong>k-fold cross-validation</strong> rotates the split k times and averages. The tell-tale
+    signature of overfitting is a widening gap: training error keeps falling while validation error
+    starts to rise — the moment to stop or to simplify. Regularisation (penalising model complexity in
+    the loss itself) and pruning (cutting a tree's weakest branches) are the standard curbs, and they
+    work because they encode a philosophical bet: <em>simpler explanations that fit the data are more
+    likely to extend to new data</em> — Ockham's razor wearing a loss function. Two practical
+    corollaries finish the hygiene: <strong>data leakage</strong> — information from the future or from
+    the test set (a field the model shouldn't legally see, a scaler fitted on all the data) inflates
+    results until the model meets reality, and is the most common way honest-looking evaluations lie —
+    and <strong>class imbalance</strong>: a fraud model that labels everything "legitimate" is 99.9%
+    accurate and completely useless, which is why imbalanced problems are scored with precision,
+    recall and the confusion matrix rather than raw accuracy.
+  </p>
+
+  <h2>Neural networks and deep learning</h2>
+  <p>
+    A <strong>neural network</strong> is layers of simple units, each computing a weighted sum of its
+    inputs passed through a soft nonlinearity — loosely inspired by neurons, mostly just useful
+    mathematics. One layer of units can only draw simple boundaries; two or more
+    (<strong>hidden layers</strong>) can approximate almost any function — that is the
+    <strong>universal approximation theorem</strong>, and it explains both the ambition and the
+    difficulty. The difficulty was training: with a million weights, which way is downhill? The answer
+    — <strong>backpropagation</strong>, popularised by Rumelhart, Hinton and Williams in 1986 — is
+    gradient descent organised by the chain rule: compute the error at the output, pass it backwards
+    layer by layer, each weight learning its own share of the blame. That single algorithm made
+    multilayer networks trainable, and modern deep learning is essentially backprop plus scale.
+  </p>
+  <p>
+    What makes learning <em>deep</em> is depth used for <strong>representation learning</strong>: early
+    layers learn simple features (edges in an image, syllables in text), middle layers combine them
+    (eyes, wheels; phrases), late layers combine those (faces, vehicles; sentences) — a hierarchy built
+    from the data rather than designed by hand. <strong>Convolutional networks</strong> (LeCun, late
+    1980s) hard-wire one insight — a feature useful in one corner of an image is useful everywhere — by
+    sliding small filters across the whole picture, which slashed the number of parameters and made
+    vision practical. The inflection point came from three compounding trends: data (ImageNet's
+    ~1.2 million labelled images), compute (GPUs, built for games, turned out to be gradient machines),
+    and algorithmic tricks. In 2012 a deep convolutional net (AlexNet) roughly halved the error rate of
+    the ImageNet vision contest; the field reorganised within two years. The same recipe — layers,
+    backprop, scale — now generates text, translates languages and folds proteins; the
+    <strong>transformer</strong> architecture behind modern language models (2017) is the newest verse:
+    an attention mechanism that lets every word in a sequence weigh every other, trained by exactly the
+    guess-measure-step loop you computed above, at a scale where the parameter count of the widget's
+    single w becomes a hundred billion.
+  </p>
+
+  <h2>A model you can hold in your head: training by hand</h2>
+  <p>
+    Nothing demystifies the loop like computing one step yourself. Take the simplest model, a line:
+    prediction ŷ = w·x, one parameter w. Training data: two points, (1, 2) and (2, 4) — the true
+    relationship is y = 2x. The <strong>loss function</strong> is mean squared error:
+    L(w) = ½[(w·1 − 2)² + (w·2 − 4)²]. Start at w = 0: predictions are 0 and 0, errors are −2 and
+    −4, loss is ½(4 + 16) = 10 — badly wrong, exactly like the first red dot in the plot. Now the
+    gradient: dL/dw = (w − 2)·1 + (2w − 4)·2 = 5w − 10. At w = 0 the slope is −10 (steeply downhill
+    to the right, as the picture shows). Take one step with learning rate η = 0.1: w ← 0 − 0.1×(−10)
+    = 1.0. Recompute: predictions 1 and 2, loss ½(1 + 4) = 2.5. Second step: slope = 5×1 − 10 = −5,
+    so w ← 1 + 0.5 = 1.5, loss = ½(0.25 + 1) = 0.625. Each step multiplies the error by (1 − 0.5)
+    — the loss decays geometrically, w glides 0 → 1 → 1.5 → 1.75 → … toward 2, and the steps shrink
+    because the slope shrinks. That arithmetic <em>is</em> the widget, in one dimension. Everything
+    deep about the field is this loop repeated: in a neural network there are millions of w's, the
+    gradient is computed by backpropagation rather than one derivative, an <strong>epoch</strong> is
+    one full pass through the training data, a <strong>batch</strong> is the handful of examples each
+    gradient is computed from (stochastic gradient descent), and the loss surface is no longer a
+    friendly bowl — but "guess, measure, step" is unchanged, and you have now done it once yourself.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The gradient-descent picture hides real subtleties worth knowing. <strong>Loss surfaces are not
+    bowls.</strong> The widget's valley has one bottom; real loss surfaces in high dimensions have
+    saddle points, plateaus and many minima — remarkably, in deep networks most local minima are nearly
+    as good as the global one, so "getting stuck" is less of a problem than feared. <strong>The
+    learning rate is the master dial</strong>: too large and the steps leap across the valley and
+    diverge; too small and training crawls or freezes on a plateau; practical training uses schedules
+    or adaptive methods (Adam, 2014) that tune the effective step per parameter. <strong>Stochastic
+    gradient descent</strong> computes the gradient on small random batches rather than the whole
+    dataset — noisier steps, but thousands of times cheaper per step, and the noise itself seems to
+    help generalisation. <strong>Beyond supervised:</strong> the models behind modern chat assistants
+    are trained in stages — self-supervised pretraining (predict the next word in trillions of tokens,
+    no labels needed), then fine-tuning with human feedback, where the loss is a human preference
+    score. And the honest caveats: models inherit their datasets' biases (a hiring model learns the
+    past's discrimination as signal), can be brittle off-distribution (a panda plus a carefully chosen
+    sticker becomes, to the network, a gibbon with high confidence), and cannot tell you what they
+    don't know. The discipline for all of it is unchanged from this lesson: every claim about an AI
+    system should trace back to a loss function, a dataset and an evaluation on unseen data. That
+    discipline — not the hype — is the field.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton & Williams, "Learning representations by back-propagating errors", Nature (1986); LeCun et al. on convolutional networks (1989–98); Krizhevsky, Sutskever & Hinton (2012); Goodfellow, Bengio & Courville, Deep Learning (2016); Russell & Norvig, Artificial Intelligence: A Modern Approach, chs. 19 & 21.</p>
 </TopicPage>

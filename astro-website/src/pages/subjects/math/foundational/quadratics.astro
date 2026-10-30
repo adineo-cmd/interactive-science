@@ -26,37 +26,196 @@ const squareCfg = {
     { math: 'x + 3 = ±4 → x = 1, −7', note: 'Two real roots. Check the discriminant: b² − 4ac = 36 + 28 = 64 > 0 — two roots, as promised.' },
   ],
 };
+
+const tangCfg = {
+  curves: [
+    { expr: 'a*x^2 + b*x + c', label: 'the parabola', color: '#7c3aed', width: 2.4 },
+    { expr: '(2*a*t + b)*(x - t) + (a*t^2 + b*t + c)', label: 'tangent at x = t', color: '#b42318', width: 1.6 },
+  ],
+  params: [
+    { name: 'a', label: 'a', min: -3, max: 3, step: 0.1, value: 1 },
+    { name: 'b', label: 'b', min: -6, max: 6, step: 0.5, value: 0 },
+    { name: 'c', label: 'c', min: -6, max: 6, step: 0.5, value: 0 },
+    { name: 't', label: 'touch point x = t', min: -4, max: 4, step: 0.1, value: 2 },
+  ],
+  x: { min: -6, max: 6, label: 'x' },
+  y: { min: -8, max: 8, label: 'y' },
+  crossings: false,
+  height: 340,
+};
 ---
 <TopicPage slug="subjects/math/foundational/quadratics">
   <h2>The idea</h2>
   <p>
     Linear functions promise constant change; quadratics promise <em>constant acceleration</em> of
-    that change — which is why anything thrown, dropped or orbiting traces their curve. The graph
-    is a <strong>parabola</strong>, fully described by three numbers: <code>a</code> (how fast it
-    opens — sign decides up or down), <code>b</code> (tilts the axis), <code>c</code> (starting
-    height).
+    that change — each step right adds more than the last, by the same increment every time.
+    That is why anything thrown, dropped, braked or orbiting traces their curve: gravity adds
+    the same velocity every second, and a position that gathers speed evenly is a quadratic in
+    time. Grow a square garden and its area is the side length squared — another quadratic,
+    and the one that named the family.
+  </p>
+  <p>
+    The graph is a <strong>parabola</strong>, fully described by three numbers:
+    <code>a</code> (how fast it opens — its sign decides up or down), <code>b</code> (tilts the
+    axis of symmetry off centre), <code>c</code> (where it starts on the y-axis). Drag them
+    below and watch the curve respond: <code>a</code> flexes the bowl, <code>b</code> slides
+    its crest sideways, <code>c</code> lifts the whole thing. Slide <code>a</code> to exactly
+    0 and the parabola degenerates into a straight line — a quadratic is not a different
+    species from a linear function, but a linear function with one extra term.
   </p>
 
   <Widget no="1" caption="the circled points are the roots — set a = 0 and the parabola degenerates into a line" widget="plotter" config={parabCfg} />
 
   <p>
     Watch the hollow markers where the curve crosses the dashed zero line — those are the
-    solutions of the quadratic. Slide <code>c</code> upward until the curve lifts clear of the
-    axis: the markers vanish. That disappearance is exactly what the discriminant measures.
+    <strong>roots</strong>, the solutions of the quadratic. Slide <code>c</code> upward until
+    the curve lifts clear of the axis: the markers vanish. That disappearance is exactly what
+    the discriminant measures, and we will make it precise below.
+  </p>
+
+  <h2>Solving quadratics: three tools for one job</h2>
+  <p>
+    Solving <code>ax² + bx + c = 0</code> means finding the roots — the x-values where the
+    curve meets the axis — and you own three tools, each with its moment. <strong>Factorising</strong>
+    is fastest when it works: x² + 6x − 7 = (x + 7)(x − 1), and since a product is zero only
+    when a factor is zero, the roots leap out as x = 1 or x = −7. Look for two numbers that
+    multiply to c and add to b — here +7 and −1 — and you are done in one line. Not every
+    quadratic factorises over whole numbers, which is why the other two tools exist.
+  </p>
+  <p>
+    <strong>Completing the square</strong> is the honest, always-works method — turning any
+    quadratic into a perfect square plus a remainder, which simultaneously solves it and
+    reveals its shape:
   </p>
 
   <Widget no="2" caption="solving one honestly — completing the square" widget="equationStep" config={squareCfg} />
 
-  <h2>Why the discriminant matters</h2>
-  <ul>
-    <li><code>b² − 4ac &gt; 0</code> → two real roots (curve crosses the axis twice).</li>
-    <li><code>= 0</code> → one root, at the vertex — the curve just kisses the axis.</li>
-    <li><code>&lt; 0</code> → no real roots; the solutions hide in the complex plane. (The quadratic formula itself — x = (−b ± √(b²−4ac)) / 2a — is just "complete the square" done once, for all cases.)</li>
-  </ul>
   <p>
-    Parabolas have a second life in geometry: every parallel ray entering a parabolic dish
-    reflects through one focus — which is how satellite dishes, telescopes and headlight
-    reflectors are shaped.
+    Notice the by-product hidden in step 3: the vertex form <code>a(x − h)² + k</code> reads
+    the minimum (or maximum) point straight off the page, because a squared thing is never
+    negative — the curve bottoms out exactly where the square vanishes. And the third tool,
+    the <strong>quadratic formula</strong> x = (−b ± √(b² − 4ac)) / 2a, is nothing more than
+    completing the square done once, for every quadratic at once, with letters standing where
+    the numbers were. It is 9th-century Baghdad's finest export: al-Khwārizmī's solving
+    procedures give us both the word <em>algebra</em> (from <em>al-jabr</em>, "restoring") and,
+    through the Latinised form of his name, the word <em>algorithm</em>.
   </p>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Elementary Algebra; standard treatments of conic sections (Apollonius, c. 200 BCE).</p>
+  <p><em>Common misconception:</em> after square-rooting, you must keep <em>both</em> signs.
+  From (x + 3)² = 16 the answers are x + 3 = +4 <em>and</em> x + 3 = −4 — dropping the minus
+  loses half the roots, the single most common quadratic error. The second: the ± in the
+  formula means two answers unless the discriminant says otherwise; quoting "the answer"
+  (singular) is usually wrong.</p>
+
+  <h2>The discriminant: counting the crossings</h2>
+  <p>
+    The expression <code>b² − 4ac</code> under the square root is the
+    <strong>discriminant</strong>, and it tells you the shape of the solution before you
+    compute anything — because a negative number has no (real) square root. If b² − 4ac &gt;
+    0, the curve crosses the axis twice: two real roots. If it equals 0, the curve just kisses
+    the axis at one point — a <em>repeated root</em> sitting exactly at the vertex; y = x² −
+    4x + 4 = (x − 2)² touches zero only at x = 2. If it is negative — y = x² + 2x + 5 has
+    4 − 20 = −16 — there are no real roots and no crossings: the parabola floats entirely
+    above (or below) the axis. Take the default curve in fig. 1: b² − 4ac = 0 + 12 = 12 &gt;
+    0, two roots, and the two hollow markers confirm it. The discriminant is the arithmetic
+    shadow of the geometry.
+  </p>
+
+  <h2>Vertex, symmetry and sketching</h2>
+  <p>
+    Every parabola is perfectly symmetric about a vertical line through its peak or trough,
+    and that axis sits exactly midway between the roots — which gives a quick way to find it:
+    the vertex has x-coordinate <code>−b / 2a</code>. Sketch y = x² − 4x + 3 by collecting four
+    facts: it opens up (a = 1 &gt; 0); it crosses the y-axis at c = 3; factorising, x² − 4x +
+    3 = (x − 1)(x − 3) gives roots at 1 and 3; and the vertex lies midway between them, at
+    x = 2, where y = 4 − 8 + 3 = −1. Four points, one smooth symmetric bowl — a sketch any
+    examiner will recognise. The vertex is also where quadratics earn money: if a company's
+    profit is P = −2x² + 120x − 1,000 (x = units sold), the vertex at x = 30 is the profit
+    maximum — every "find the best price" problem in a textbook is a vertex hunt in disguise.
+  </p>
+
+  <h2>Gradients on a curve: the tangent story</h2>
+  <p>
+    A line has one gradient; a curve has a different one at every point, and the gradient at a
+    point is the gradient of the <em>tangent</em> — the straight line that just grazes the
+    curve there. For a parabola the tangents behave with perfect regularity: at the vertex the
+    tangent is horizontal (gradient 0), and it steepens steadily on either side. Differentiation
+    (unit E2.12) makes this exact: for y = a·x² + b·x + c the gradient is 2a·x + b —
+    itself a straight-line function of x. Slide the touch-point below and watch the tangent
+    pivot through horizontal exactly at the vertex, then tilt ever more steeply:
+  </p>
+
+  <Widget no="3" caption="the tangent line — drag t along the curve and watch the gradient grow linearly" widget="plotter" config={tangCfg} />
+
+  <p>
+    Worked example: for y = x², the gradient at x = 3 is 2 × 3 = 6, and the tangent there is
+    y = 6(x − 3) + 9. Notice the pleasing double linearity: the quadratic's <em>gradient</em>
+    grows linearly, exactly as the lesson on linear functions promised — a parabola is a
+    linear-gradient machine. This is also the physics connection made precise: the gradient of
+    a distance–time parabola is the <em>instantaneous</em> velocity, the number the motion
+    lesson approximated with tangents drawn by hand.
+  </p>
+
+  <h2>A full modelling problem: the thrown ball</h2>
+  <p>
+    Here is the parabola doing physics, with every tool on the page used in order. Throw a
+    ball straight up at 20 m/s from ground level; gravity decelerates it by 9.8 m/s every
+    second, and its height is <code>h = 20t − 4.9t²</code> — a quadratic with a = −4.9 (opens
+    down), b = 20, c = 0. <em>When does it land?</em> Set h = 0 and solve: t(20 − 4.9t) = 0,
+    giving t = 0 (the throw itself) or t = 20/4.9 ≈ 4.08 s. <em>How high does it go?</em> The
+    vertex sits at t = −b/2a = −20/(−9.8) ≈ 2.04 s — exactly half the flight time, the
+    symmetry of the parabola made physical — with height 20(2.04) − 4.9(2.04)² ≈ 20.4 m.
+    <em>What is its velocity at the top?</em> Zero — and the gradient argument proves it: at
+    the vertex the tangent is horizontal, which is the algebraic way of saying the ball
+    stops rising an instant before falling. Notice how each property you learned as algebra
+    reappears as physics: roots as launch and landing, vertex as apex, symmetry axis as the
+    mid-flight instant, negative a as gravity pulling the bowl downward. Galileo's
+    contemporaries called this curve the trajectory of "mixed motion" — uniform horizontal
+    glide plus steady fall — and it took the quadratic to prove the mix produces exactly
+    this shape, never a peak and never an arc of any other kind.
+  </p>
+  <p>
+    The same recipe solves the revenue problems: profit = revenue − cost is a quadratic
+    when price falls with volume (<code>P = x(100 − x) − fixed</code>), and "maximise" is
+    always the vertex. One equation, two professions.
+  </p>
+
+  <h2>Choosing the tool, and the exam traps</h2>
+  <p>
+    A short decision tree serves every quadratic. Try <strong>factorising</strong> first
+    (fast, exact); if the numbers resist, check the <strong>discriminant</strong> — negative
+    means no real roots and you can stop; otherwise use the <strong>formula</strong> (always
+    works, watch the signs: a negative <code>b</code> flipped inside <code>−b</code> is the
+    classic slip) or <strong>complete the square</strong> if the question also asks for the
+    vertex. When <code>a ≠ 1</code>, factorising gets harder (2x² + 5x − 3 = (2x − 1)(x + 3),
+    found by trial or the AC method: multiply 2 × −3 = −6, find two numbers multiplying to
+    −6 and adding to 5 — that's 6 and −1 — then split the middle term), and the formula
+    earns its keep. Two traps account for most lost marks: forgetting the ± after
+    square-rooting, and dividing through by <code>x</code> in an equation like x² = 3x —
+    which throws away the root x = 0. Factor out instead: x(x − 3) = 0 gives both answers,
+    0 and 3. Quadratics punish shortcuts; they reward the checklist.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The parabola's reflection property is its signature in the built world: any ray entering
+    parallel to the axis bounces off the curve and passes through a single point, the
+    <em>focus</em>. That is the entire design of satellite dishes, radio telescopes, car
+    headlights (run backwards — a bulb at the focus emits parallel beams) and solar furnaces,
+    which melt metal with sunlight collected over hundreds of square metres. Apollonius of
+    Perga catalogued the conic sections around 200 BCE with pure geometry, no algebra, and
+    Galileo confirmed in 1638 that projectiles fly in parabolas — the curve has been doing
+    physics for two millennia before its equation was written.
+  </p>
+  <p>
+    The negative discriminant, meanwhile, is a doorway. "No real roots" bothered 16th-century
+    algebraists until Cardano's circle (1545) started taking √ of negative numbers seriously
+    as intermediate bookkeeping that gave <em>correct final answers</em> for real problems.
+    The bookkeeping hardened into the complex numbers, with i = √(−1), now as fundamental to
+    physics as any real quantity — every quantum-mechanical wavefunction lives there. And the
+    family keeps yielding structure: x² − x − 1 = 0 has the golden ratio φ ≈ 1.618 as a root;
+    a quadratic's two roots always satisfy root₁ + root₂ = −b/a and root₁ × root₂ = c/a
+    (check with x² + 6x − 7: 1 + (−7) = −6 ✓, 1 × (−7) = −7 ✓) — relationships you can use to
+    check answers in seconds. Simple curve, deep roots.
+  </p>
+  <p class="sources"><strong>Sources:</strong> al-Khwārizmī, <em>The Compendious Book on Calculation by Completion and Balancing</em> (c. 820); Apollonius, <em>Conics</em> (c. 200 BCE); OpenStax, <em>Elementary Algebra</em> and <em>College Algebra</em>; Cambridge IGCSE Mathematics 0580 syllabus, sections E2.5, E2.10–E2.12.</p>
 </TopicPage>

@@ -11,41 +11,206 @@ const cvCfg = {
     { math: '5 · Regulation closes the loop', note: 'Baroreceptors sense pressure; the nervous system adjusts heart rate and vessel tone. A feedback controller with a heartbeat.' },
   ],
 };
+
+const poiseuilleCfg = {
+  curves: [
+    { expr: '100*x^4', label: 'flow relative to resting', color: '#0f766e', width: 2.4 },
+  ],
+  x: { min: 0.4, max: 1.4, label: 'arteriole radius as a multiple of resting' },
+  y: { min: 0, max: 400, label: 'flow as % of resting' },
+  crossings: false,
+  height: 320,
+};
 ---
 <TopicPage slug="subjects/biomedical-engineering/foundational/physiology-for-engineers">
   <h2>The idea</h2>
   <p>
-    Biomedical engineering starts by reading the body as an engineered system: pumps, pipes,
-    filters, sensors and control loops, running wet. The payoff is enormous — once you see the
-    cardiovascular system as fluid mechanics and the kidney as a mass-transfer device, you can
-    design devices that intervene in them. The prerequisite is learning the physiology honestly.
+    The human body is the most refined machine you will ever work on, and it rewards being read
+    the way an engineer reads any machine: as pumps, pipes, filters, valves, sensors and control
+    loops — running wet, self-repairing, and operating without a service manual. The heart is a
+    dual-stage positive-displacement pump moving about five litres per minute through two
+    circuits; the lungs are a mass exchanger with a transfer area comparable to a tennis court
+    folded into your chest; the kidneys are a two-stage separator processing 180 litres a day
+    and reclaiming all but about a litre and a half. These are engineering numbers, and the
+    engineering laws — conservation, gradients, feedback — hold throughout.
+  </p>
+  <p>
+    Reading physiology this way is not merely a metaphor; it is the working method of
+    biomedical engineering. Once the cardiovascular system is fluid mechanics, you can design
+    a heart valve that fits its fluid dynamics. Once the kidney is a mass-transfer device, you
+    can design a dialyser with honest specifications. Once neuromuscular control is a feedback
+    system, a functional electrical stimulator or a neural interface becomes a controls
+    problem. The prerequisite, and the reason this material comes first in every BME
+    curriculum, is knowing the physiology deeply enough that your engineering applies to
+    something real.
+  </p>
+  <p>
+    Three systems carry that lesson best — the cell with its electrical signalling, the
+    heart–lung pair with its fluid mechanics and mass transfer, and the neuromuscular system
+    where signals become force. Each gets its treatment below, each in the engineer's
+    vocabulary.
+  </p>
+
+  <h2>Cell physiology and signalling</h2>
+  <p>
+    Every cell maintains an electrical state, and the machinery that does it is beautifully
+    mechanical. Cell membranes are lipid sheets studded with protein pumps and channels. The
+    sodium–potassium pump spends ATP relentlessly — three sodium ions ejected for every two
+    potassium ions imported, tens of billions of times per second in a busy neuron — to keep
+    sodium concentrated outside the cell (about 145 millimolar) and potassium concentrated
+    inside (about 140 millimolar, against 4–5 outside). Those standing concentration gradients
+    are a charged battery, and the Nernst equation converts them to voltage: with potassium
+    35 times more concentrated inside than out, the potassium equilibrium potential works out
+    near −90 mV. The cell's actual resting potential lands near −70 mV — mostly potassium's
+    voltage, nudged by a leak of sodium in the opposite direction.
+  </p>
+  <p>
+    A neuron fires by spending that battery. A stimulus that depolarises the membrane past a
+    threshold (about −55 mV) trips voltage-gated sodium channels, which snap open in an
+    all-or-none cascade: the potential spikes to roughly +30 mV within a millisecond, then
+    potassium channels restore the resting state. That single pulse — the action potential —
+    is the brain's only dialect: identical in shape whether it is reporting candlelight or a
+    car horn, with meaning carried entirely by <em>which</em> wires fire, <em>how fast</em>,
+    and <em>when</em>. In myelinated nerves the signal leaps between gaps in the insulation at
+    up to about 120 metres per second, which is why you wince before you have consciously
+    located the stubbed toe.
+  </p>
+  <p>
+    Between cells, signalling is chemical and exquisitely specific. A signalling molecule (a
+    neurotransmitter, a hormone, a growth factor) binds a receptor shaped for it, and the
+    receptor transduces: opening an ion channel directly, or triggering cascades of second
+    messengers inside the cell that amplify one bound molecule into thousands of intracellular
+    events. This is where drugs act, where diseases hide (a receptor that stops recognising
+    insulin), and where much of biomedical engineering intervenes — biosensors are, at heart,
+    engineered receptors.
+  </p>
+  <p>
+    The cascades are also amplifiers, in the strict signal-processing sense. A few molecules
+    of adrenaline arriving at a liver cell activate enzymes that each activate many copies of
+    the next enzyme in the chain, and so on down; by the time the signal reaches its target,
+    one hormone molecule can have mobilised on the order of a hundred million glucose
+    molecules. This is biology's answer to the transistor: a tiny chemical input, switched,
+    gain-controlled, and eventually saturating — and drug design exploits it constantly,
+    building molecules that jam a receptor, mimic its ligand, or sit in the cascade turning
+    the gain up or down.
+  </p>
+
+  <h2>Cardiovascular and respiratory systems</h2>
+  <p>
+    The heart is two pumps in series sharing muscle. The right half drives blood through the
+    lungs at low pressure; the left drives it through the whole body at high pressure — about
+    120 mmHg at systole, 80 at diastole, decaying to near zero by the great veins. The
+    engineering reading is immediate: flow equals pressure difference divided by resistance,
+    an Ohm's law for hydraulics, and the systemic resistance is where the body does its
+    control. Resistance lives in the arterioles, the narrowest vessels before the capillaries,
+    and it obeys Poiseuille's law: resistance rises with the <em>fourth power</em> of the
+    inverse radius.
   </p>
 
   <Widget no="1" caption="the cardiovascular system as a circuit" widget="equationStep" config={cvCfg} />
 
-  <h2>The body obeys the engineers' laws</h2>
+  <Widget no="2" caption="why the body throttles with radius, not pressure" widget="plotter" config={poiseuilleCfg} />
+
   <p>
-    Blood is a fluid: it obeys continuity and Poiseuille's law, which is why arterioles — the
-    narrowest control points — are where the body regulates flow. Lungs are mass exchangers: ~70
-    square metres of alveolar membrane moving oxygen in and carbon dioxide out across a barrier
-    half a micrometre thick. Kidneys filter 180 litres a day and reabsorb all but 1.5 litres. The
-    numbers are engineering numbers.
+    The fourth-power law is the most consequential number in physiology. Shrink an arteriole
+    to half its radius and its flow falls sixteen-fold; widen it by half and flow grows more
+    than five-fold. Drag the slider above and watch how steeply the curve punishes small
+    radii. This is why the body regulates flow by adjusting vessel calibre — smooth muscle
+    tension, commanded by nerves and local chemistry — rather than by changing heart pressure,
+    which is nearly fixed. It is also why atherosclerosis is so vicious: plaque that thickens
+    a vessel wall slightly strangles its lumen disproportionately.
+  </p>
+  <p>
+    The lungs complete the pair, and their design brief is pure mass transfer. At rest you
+    ventilate about six litres per minute (half-litre breaths, twelve a minute) while the
+    heart perfuses the lungs with its full five litres per minute — the two flows matched by
+    design, since the whole point is contact between air and blood. That contact happens
+    across roughly 70 square metres of alveolar membrane — hundreds of millions of microscopic
+    sacs — with blood and air separated by a barrier about half a micrometre thick, roughly a
+    hundredth the width of a hair. Oxygen diffuses down its gradient into blood, where
+    haemoglobin binds it (each gram carries about 1.34 mL of oxygen, near-total saturation by
+    the time blood leaves the lungs), and carbon dioxide diffuses out along its own gradient.
+    The engineer's audit line is the Fick principle: oxygen consumption equals cardiac output
+    times the arterial–venous oxygen difference. At rest: 5 L/min × 50 mL/L = 250 mL of oxygen
+    per minute — the measured resting value, arrived at by multiplication.
+  </p>
+  <p>
+    Exercise stress-tests the design, and it passes spectacularly. Cardiac output is heart
+    rate times stroke volume, and both terms have reserves: an athlete at maximum effort runs
+    180 beats per minute with 110 mL per beat — about 20 L/min, four times rest. The Fick
+    equation then shows where the extra oxygen goes: the arterial–venous difference widens
+    (working muscles extract far more), and total oxygen consumption climbs ten-fold or more.
+    Note what did <em>not</em> change: arterial pressure rose only modestly, because the
+    arterioles of working muscle dilated while elsewhere vessels constricted — the r⁴ control
+    valves redirecting flow between tissues like a well-designed manifold.
+  </p>
+  <p>
+    The venous half of the circuit teaches a subtler lesson: pressure alone does not run it.
+    Veins are thin-walled, compliant, and hold about two-thirds of the blood volume at low
+    pressure; blood would pool in the legs without help. It gets help. One-way valves segment
+    the venous column, and every step squeezes the deep veins and pumps blood upward — the
+    "muscle pump" — while inspiration drops pressure in the chest and draws blood centrally.
+    Engineers meet this layout in peristaltic pumping and in the design of compression
+    stockings, which exist because the external-squeezing trick genuinely works. It is a
+    reminder that physiological "circuits" use every trick in the fluid-mechanics book,
+    including ones with no electronic analogue.
+  </p>
+  <p>
+    <em>Common misconception:</em> blood is blue inside the body and turns red on meeting air.
+    It is always red: oxygenated blood is bright red, oxygen-poor venous blood is a darker,
+    brick red. Veins look blue through skin because of how skin scatters and absorbs light,
+    not because of the blood's colour. Related and equally stubborn: arteries do not
+    intrinsically carry "fresh" blood — the pulmonary artery carries oxygen-poor blood from
+    heart to lungs. The real distinction is direction of flow, not cargo.
   </p>
 
-  <h2>Control everywhere</h2>
+  <h2>Neuromuscular systems</h2>
   <p>
-    Physiology is thick with feedback: baroreflexes holding pressure, insulin and glucagon holding
-    glucose, thermoregulation holding 37 °C. The vocabulary is control theory — sensors, set
-    points, actuators, disturbance rejection — and diseases often read as controller failures:
-    diabetes as a broken glucose loop, hypertension as a reset pressure set point.
+    Signals become motion at the neuromuscular junction, a chemical relay of brutal
+    reliability. A motor neuron's action potential arrives and releases acetylcholine, which
+    opens channels in the muscle fibre and — if enough channels open — fires the fibre's own
+    action potential. Calcium is released inside the fibre, myosin heads bind actin filaments,
+    and ATP-powered ratcheting slides the filaments past each other: contraction is a
+    molecular rowing machine, repeated billions of times per gram of muscle per second, with
+    force emerging from millions of cross-bridges summed in parallel.
+  </p>
+  <p>
+    Control is quantised. One motor neuron plus the muscle fibres it drives — a <em>motor
+    unit</em> — is the smallest packet of force the nervous system can command, and units span
+    a huge range: extraocular muscles run units of a handful of fibres for surgical
+    precision, while a quadriceps unit may bundle a thousand. Graded strength comes from
+    <em>recruitment</em> (small units first, large ones as demand grows) and from firing-rate
+    modulation — a control scheme any engineer would recognise as coarse pulse-width plus
+    parallel redundancy, refined by millions of years of tuning. Sensory feedback closes the
+    loop: muscle spindles report length, Golgi organs report tension, and the spinal reflex
+    arc (knee-jerk) runs the fastest control circuit in the body without consulting the brain
+    at all.
   </p>
 
-  <h2>Why this matters for devices</h2>
+  <h2>Going deeper</h2>
   <p>
-    Every successful medical device respects the physiology it touches. Pacemakers speak the heart's
-    electrical dialect; dialysers match the kidney's selectivity; ventilators negotiate lung
-    compliance. Get the engineering right and the physiology wrong, and the device fails — which is
-    why this course is the first one BME students take, not the last.
+    Physiology's deepest organising principle is homeostasis, and it maps cleanly onto control
+    theory. Baroreceptors in the great arteries sense pressure and, via the brainstem, adjust
+    heart rate and vessel tone within seconds — a proportional controller whose gain can be
+    measured clinically (baroreflex sensitivity, a real prognostic number). Insulin and
+    glucagon hold glucose in a band with a time constant of hours; thermoregulation defends
+    37 °C with both fast (sweating, shivering) and slow (metabolic) actuators. Diseases then
+    read as controller pathologies: type 1 diabetes is loss of the sensor-actuator loop's
+    command signal, hypertension is a set point defended at the wrong value, and heart
+    failure is an actuator that can no longer reject the load.
+  </p>
+  <p>
+    The engineering frontier is closing those loops artificially. Continuous glucose monitors
+    plus insulin pumps now form a "closed-loop artificial pancreas," a genuine control system
+    with disturbance rejection at mealtimes. Ventilators negotiate lung compliance and
+    resistance patient by patient; dialysers are engineered against the kidney's selectivity
+    curve; pacemakers and defibrillators speak the heart's electrical dialect and, increasingly,
+    its autonomic one. Each remains hard for the same reason the field is deep: physiological
+    parameters vary between patients, drift within a patient, and couple to one another in
+    ways no single-input single-output model captures — which is why open research runs from
+    patient-specific computational physiology (whole-organ and whole-body models that admit
+    uncertainty) to the control of inflammation and growth, systems so nonlinear that medicine
+    is still mapping their transfer functions.
   </p>
 
   <p class="sources"><strong>Sources:</strong> ABET biomedical program criteria; OpenStax <em>Anatomy and Physiology 2e</em>; Boron &amp; Boulpaep, <em>Medical Physiology</em>.</p>

@@ -34,6 +34,15 @@ const lawsCfg = {
     { math: 'F = G·m₁m₂ / r²', note: 'Newton 1687 — all three laws fall out of one inverse-square attraction. Drag e above and watch law 2 hold at every setting.' },
   ],
 };
+
+const chartCfg = {
+  kind: 'bar',
+  xLabels: ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'],
+  series: [{ label: 'T² ÷ a³', values: [1.002, 1.000, 1.000, 0.999, 0.999, 1.001, 0.999, 0.999] }],
+  y: { min: 0.9, max: 1.1, label: 'T²/a³ (AU-years)' },
+  digits: 3,
+  height: 300,
+};
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -62,10 +71,30 @@ const lawsCfg = {
         <div class="topic-body">
           <h2>The idea</h2>
           <p>
-            Before Newton, Kepler did something harder: he took Tycho Brahe's obsessive naked-eye
-            measurements and forced three shapes onto them — shapes the sky still obeys. The
-            animation below sweeps a planet around its star. The two shaded wedges were traversed
-            in <em>equal times</em>; watch them stay equal as the eccentricity climbs.
+            For 1,400 years the official universe ran on circles. Ptolemy's geocentric system
+            (c. 150 CE) described the planets with circles riding on circles — epicycles — and
+            predicted their positions about as well as naked-eye astronomy could check. Copernicus
+            (1543) moved the Sun to the centre and simplified the machinery, but he kept the
+            circles, and so inherited their fudge factors. The man who broke the circle was
+            Johannes Kepler, and he did it not with a better philosophy but with better
+            <em>data</em>: the obsessive naked-eye measurements of Tycho Brahe, accurate to about
+            one arcminute — the width of a coin seen from a hundred metres away.
+          </p>
+          <p>
+            Kepler inherited Tycho's notebooks in 1601 and spent years trying to fit Mars to
+            circular motion. He failed by eight arcminutes — a discrepancy almost anyone would
+            have shrugged off as observational error. Kepler knew Tycho's data was better than
+            that. "If I had believed that these eight minutes could be ignored, I would have
+            patched up my hypothesis accordingly," he wrote; instead the discrepancy forced him
+            to abandon two millennia of circular dogma and accept the ellipse — a shape Greek
+            geometers had studied but never found in the sky. The three laws that emerged (1609,
+            1619) are still, to extraordinary precision, the shape of every orbit in the Solar
+            System.
+          </p>
+          <p>
+            The animation below sweeps a planet around its star. The two shaded wedges were
+            traversed in <em>equal times</em>; watch them stay equal in area even as the
+            eccentricity climbs — that is Kepler's second law, live.
           </p>
 
           <figure class="widget">
@@ -75,7 +104,34 @@ const lawsCfg = {
             </div>
           </figure>
 
-          <h2>The three laws, honestly derived</h2>
+          <h2>The three laws, honestly stated</h2>
+          <p>
+            <strong>Law 1 — orbits are ellipses.</strong> A planet moves in an ellipse with the
+            Sun at one focus (not the centre). An ellipse is the set of points whose distances
+            from the two foci sum to a constant — a stretched circle — and its shape is set by
+            the eccentricity e: 0 is a perfect circle, and as e grows toward 1 the ellipse
+            lengthens into a cigar. Earth's e is a modest 0.017, so our orbit is nearly round;
+            the readouts in fig. 1 show how perihelion (closest approach, distance a(1 − e)) and
+            aphelion (farthest, a(1 + e)) spread apart as e grows.
+          </p>
+          <p>
+            <strong>Law 2 — equal areas in equal times.</strong> The line from Sun to planet
+            sweeps out the same area every month of the year, wherever the planet is. The logic
+            is visible in the wedges: near the Sun the planet's arc is short but fast; far away
+            it is long but slow, and the two effects cancel exactly. A comet obeys this law
+            perfectly, which is why it spends centuries crawling along its aphelion arc and a
+            few frantic weeks diving past the Sun. (Newton later revealed the deeper meaning:
+            a straight pull toward the Sun conserves angular momentum, and equal areas are that
+            conservation made visible.)
+          </p>
+          <p>
+            <strong>Law 3 — periods and distances are locked together.</strong> The square of a
+            planet's orbital period is proportional to the cube of its average distance:
+            T² ∝ a³. In units of years and astronomical units (1 AU = Earth's average distance,
+            about 150 million km), the law is exact enough to say plainly: T² = a³ for anything
+            orbiting the Sun. Bigger orbits take <em>disproportionately</em> longer — double the
+            distance and the year grows by 2^1.5 ≈ 2.8 times.
+          </p>
 
           <figure class="widget">
             <figcaption><span class="fig-no">fig. 2</span><span>from observations to Newton</span></figcaption>
@@ -84,12 +140,139 @@ const lawsCfg = {
             </div>
           </figure>
 
-          <h2>Why comets prove it</h2>
+          <h2>Kepler's third law, by the numbers</h2>
           <p>
-            Halley's comet spends 76 years crawling along its aphelion arc and a few frantic weeks
-            near the Sun — law 2 in action, e ≈ 0.97. The same mathematics that rounds out Earth's
-            near-circle (e ≈ 0.017) sends comets diving past Mercury. One geometry, every orbit.
+            The third law is a prediction machine. Mars sits at a = 1.524 AU, so its year should
+            be 1.524^1.5 ≈ 1.88 years — and it is. Halley's Comet has a semi-major axis of about
+            17.8 AU, so 17.8^1.5 ≈ 75 years between visits — again, matching observation. Run
+            the law the other way and it becomes a tool: if you want an orbit that takes 8 years
+            (a useful satellite duration), it must sit at a = 8^(2/3) = 4 AU. No other distance
+            will do.
           </p>
+          <p>
+            The chart below does the law's audit: for each planet it plots T² ÷ a³, which should
+            equal exactly 1 if the law holds. It holds — from Mercury's scorching 88-day year to
+            Neptune's 165-year marathon, the ratio never wanders from 1.00. One constant,
+            nine worlds (and every asteroid, comet and dwarf planet besides).
+          </p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 3</span><span>the third law audited — T² ÷ a³ for every planet, in AU-years units</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="chart" data-config={JSON.stringify(chartCfg)}></div>
+            </div>
+          </figure>
+
+          <h2>Gravity: Newton closes the loop</h2>
+          <p>
+            Kepler had the what; Newton supplied the why. In the <em>Principia</em> (1687) he
+            proposed that every pair of masses attracts along the line joining them with
+            <code>F = G·m₁·m₂ / r²</code> — a force growing with both masses and dying with the
+            <em>square</em> of the distance. The inverse square is the key: the same pull that
+            drops an apple must also hold the Moon. Newton tested this brilliantly: the Moon is
+            about 60 Earth-radii away, so if gravity weakens as 1/r², the Moon's downward
+            acceleration should be g/60² = 9.8/3600 ≈ 0.0027 m/s². Measuring the Moon's actual
+            centripetal acceleration from its period and distance: 0.0027 m/s². The apple and
+            the Moon are the same phenomenon.
+          </p>
+          <p>
+            This also explains what an orbit <em>is</em> — the most counterintuitive idea in the
+            chapter. A satellite is not beyond gravity; it is in continuous free fall toward
+            Earth, but moving sideways so fast (about 7.7 km/s for low orbit) that the ground
+            curves away beneath it exactly as fast as it falls. Newton's own thought experiment
+            asks you to fire a cannon from a mountain ever faster: eventually the ball falls
+            <em>around</em> the world. Stable orbits need no engine — only sideways velocity and
+            the right pull. And the ellipse falls out automatically: Newton proved that an
+            inverse-square attraction permits only conic-section orbits — ellipses bound like
+            planets, parabolas and hyperbolas for bodies escaping forever, like some comets.
+            Kepler's three laws became theorems.
+          </p>
+
+          <h2>Perihelion, aphelion, and a trap about seasons</h2>
+          <p>
+            Because Earth's orbit is an ellipse (e = 0.017), we pass perihelion — closest, about
+            147.1 million km — in early January, and aphelion — farthest, about 152.1 million km
+            — in early July. The 3% distance change slightly alters orbital speed (law 2), which
+            is why the seasons are a few days uneven: summer-between-equinoxes in the northern
+            hemisphere lasts about 93.6 days, winter's about 89. But here is the trap the
+            syllabus loves: <strong>seasons are not caused by distance</strong>. If they were,
+            both hemispheres would have summer together. They do not — the North has winter
+            while nearest the Sun. Seasons come from the 23.4° tilt of Earth's axis: tilted
+            toward the Sun means higher, longer-heating sunlight. Distance is a rounding error;
+            tilt is the story.
+          </p>
+          <p><em>Common misconception:</em> "the Sun sits at the centre of the orbit." It sits
+          at a <em>focus</em>, off-centre by an amount set by e — for Earth, about 2.5 million km
+          from the ellipse's geometric centre. And "planets orbit the Sun" is itself an
+          approximation: strictly, planet and Sun both orbit their common centre of mass — it
+          just happens to lie inside the Sun.</p>
+
+          <h2>The laws at work: three worked problems</h2>
+  <p>
+    <em>Problem 1 — a missing year.</em> An asteroid orbits at a = 4.0 AU. Its period?
+    T = a^1.5 = 4^1.5 = 8 years. No telescope needed for the forecast. <em>Problem 2 —
+    checking Halley.</em> Halley's comet: perihelion 0.59 AU, aphelion 35.1 AU. The
+    semi-major axis is the average: a = (0.59 + 35.1)/2 = 17.85 AU, so T = 17.85^1.5 ≈ 75.4
+    years — matching the recorded visits of 1910 and 1986, and forecasting the next around
+    2061. Kepler's law, run on a comet nobody had fitted yet in his lifetime.
+    <em>Problem 3 — Earth's own speed change.</em> Law 2 implies Earth moves faster in
+    January than July. By how much? The ratio of speeds at the two extremes is the inverse
+    ratio of distances: v_peri/v_aphe = r_aphe/r_peri = 152.1/147.1 ≈ 1.034. Earth's mean
+    orbital speed is 29.8 km/s, so January's perihelion speed is about 30.3 km/s and July's
+    about 29.3 km/s — a full kilometre per second of annual breathing, and precisely the
+    asymmetry that makes the seasons' unequal lengths.
+  </p>
+  <p>
+    The pattern in all three: the laws turn positions into <em>predictions</em>. That is
+    what made them revolutionary in 1609 — astrology had tables; astronomy had laws — and
+    it is what makes them the working tools of mission planning today, with Newton's
+    gravity supplying the "why" underneath.
+  </p>
+
+  <h2>Beyond ellipses: escape, capture and visitors</h2>
+  <p>
+    Kepler's laws describe <em>bound</em> orbits, but Newton's gravity allows open ones too:
+    a body moving faster than the local <strong>escape velocity</strong> traces a hyperbola,
+    visiting once and never returning. The Solar System's comets split neatly along this
+    line — short-period comets like Halley live in bound ellipses; long-period comets fall
+    in from the Oort Cloud on near-parabolic paths, some for the first time. In 2017 the
+    interstellar object ʻOumuamua passed through on a hyperbolic trajectory so steeply open
+    (eccentricity above 1.05) that astronomers could prove it originated around another
+    star — the first confirmed visitor from elsewhere, with two more (Borisov 2019, 3I/ATLAS
+    2025) following. Space agencies run the same logic in reverse: a spacecraft that fires
+    its engines past escape velocity leaves Earth's orbit forever; one that arrives at Mars
+    slightly too fast must brake against the atmosphere (aerobraking) to be captured into an
+    ellipse. Bound and unbound, capture and escape: the conic sections are not a geometry
+    lesson attached to astronomy, they are the complete menu of motion under gravity.
+  </p>
+
+  <h2>Going deeper</h2>
+          <p>
+            Kepler's third law has a hidden mass tag. Newton's derivation gives the full form
+            T² = 4π²·a³ / (G·(M + m)), and the +m is a gift: watch a moon orbit a planet, measure
+            its period and distance, and you have weighed the planet. Jupiter's mass was first
+            computed from Io's orbit this way; the same arithmetic, applied to stars wobbling
+            with invisible partners, has found thousands of exoplanets and even estimated the
+            mass of the black hole at our Galaxy's centre. The law also found a planet: Uranus
+            kept drifting ahead of schedule, and in 1846 Le Verrier computed where an unseen
+            perturber must be for the numbers to balance — Neptune was found that same night,
+            within a degree of the prediction. Pure paper-and-pen discovery from Newton's
+            inverse square.
+          </p>
+          <p>
+            The laws are superb, not absolute. Real orbits feel tugs from every other planet,
+            so ellipses slowly rotate — and Mercury's perihelion advances 43 arcseconds per
+            century <em>more</em> than all the tugs can explain. That residue sat unexplained
+            for 60 years until general relativity (1915) accounted for it exactly — one of the
+            new theory's first triumphs, and a reminder that Kepler's laws are the limit of
+            Newton's gravity, which is itself the limit of Einstein's. Kepler, who spent his
+            early career fitting the planetary spacing to nested Platonic solids (a beautiful
+            theory, entirely wrong), would probably have appreciated the lesson: keep the
+            eight minutes, follow the data, and the universe will hand you laws — even if it
+            makes you abandon your own favourite ideas first.
+          </p>
+
+          <p class="sources"><strong>Sources:</strong> Kepler, <em>Astronomia Nova</em> (1609) and <em>Harmonices Mundi</em> (1619); Newton, <em>Principia</em> (1687); NASA planetary fact sheet (orbital elements); Cambridge O Level/IGCSE Astronomy syllabus, unit 8.</p>
         </div>
 
         <nav class="topic-next" aria-label="Lesson navigation">

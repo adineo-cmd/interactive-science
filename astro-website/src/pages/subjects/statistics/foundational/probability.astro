@@ -14,33 +14,169 @@ const probCfg = {
 <TopicPage slug="subjects/statistics/foundational/probability">
   <h2>The idea</h2>
   <p>
-    Probability puts a number between 0 and 1 on uncertainty: 0 is impossible, 1 is certain,
-    0.5 is a fair coin. It is the mathematics of not-knowing — and modern life runs on it:
-    weather forecasts, insurance, medical screening, bank risk models, queue design. The rules
-    are few; the discipline is in applying them without fooling yourself.
+    Probability puts a number between 0 and 1 on uncertainty: 0 is impossible, 1 is certain, 0.5 is a
+    fair coin. It is the mathematics of not-knowing — and modern life runs on it: weather forecasts,
+    insurance, medical screening, bank risk models, queue design, every "70% chance of rain" you have
+    ever checked. The remarkable thing is how little machinery is needed. Probability grew out of a
+    17th-century correspondence between Pascal and Fermat about how to divide the stakes of an
+    unfinished gambling game, and the rules they uncovered are few; the discipline is entirely in
+    applying them without fooling yourself. This lesson builds that machinery from the ground up —
+    the notation, the sample space, the addition and multiplication rules, the complement trick,
+    conditionals and tree diagrams — and then examines the places where human intuition, which is
+    excellent at many things, reliably breaks.
   </p>
 
   <Widget no="1" caption="the three rules and one worked example" widget="equationStep" config={probCfg} />
 
+  <h2>The language: events, notation, sample spaces</h2>
+  <p>
+    Everything starts with the <strong>sample space</strong>: the list of all equally likely outcomes.
+    One die: {1, 2, 3, 4, 5, 6}. Two dice: 6 × 6 = 36 ordered pairs. An <strong>event</strong> is any
+    subset of that space — "sum is 7" is the six-element subset {(1,6), (2,5), (3,4), (4,3), (5,2),
+    (6,1)}. When outcomes are equally likely, probability is counting: P(event) = favourable outcomes ÷
+    total outcomes, so P(sum = 7) = 6/36 = 1/6. The notation is compact and worth reading slowly:
+    P(A) is the probability that event A happens; A′ (or "not A") is the event that it doesn't;
+    P(A ∪ B) — "A <em>or</em> B" — means A happens, or B, or both; P(A ∩ B) — "A <em>and</em> B" —
+    means both happen; and P(A | B) — "A <em>given</em> B" — is the probability of A once you
+    <em>know</em> B happened. That last symbol, the conditional, is where most real reasoning lives.
+  </p>
+
+  <h2>Counting carefully: with and without replacement</h2>
+  <p>
+    The classic arena is a bag of coloured balls. Suppose a bag holds 4 red and 6 blue balls and you
+    draw two. <strong>With replacement</strong> (put the first ball back, shake, draw again): the two
+    draws are identical situations, so P(red then red) = 4/10 × 4/10 = 16/100 = 0.16. The multiplication
+    is legitimate because the second draw's probabilities are exactly the first draw's — nothing
+    changed between draws.
+  </p>
+  <p>
+    <strong>Without replacement</strong>, the bag itself changes, so the second draw is a new,
+    smaller problem. P(red then red) = 4/10 × 3/9 = 12/90 = 2/15 ≈ 0.133: fewer reds remain (3) in a
+    smaller bag (9). Notice the structure — multiply along a path, adjusting the second factor for
+    what the first draw removed. This single idea generates every "without replacement" answer:
+    P(exactly one red in two draws) = P(red then blue) + P(blue then red) = (4/10 × 6/9) + (6/10 × 4/9)
+    = 24/90 + 24/90 = 48/90 = 8/15. Note that both orderings must be counted — a mistake so common it
+    deserves its own flag.
+  </p>
+  <p><em>Common misconception:</em> "or" problems are usually safer solved as "not". Want P(at least
+  one red in two draws)? Compute P(no red) = 6/10 × 5/9 = 1/3 and subtract from 1: 2/3. The
+  complement rule — P(not A) = 1 − P(A) — is often the fastest route because "at least one"
+  disintegrates into many cases while "none" is a single clean path.</p>
+
+  <h2>The addition rule, and the two words everyone confuses</h2>
+  <p>
+    The <strong>addition rule</strong> combines events: P(A or B) = P(A) + P(B) − P(A ∩ B). The
+    subtraction is not decoration — A ∩ B was counted once in P(A) and once in P(B), so without
+    subtracting, the overlap counts twice. Example: in a class of 30, 18 study French, 12 study
+    Spanish, 7 study both. P(random student studies French or Spanish) = 18/30 + 12/30 − 7/30 =
+    23/30. When two events <em>cannot</em> happen together — drawing a king and drawing a queen on one
+    card — they are <strong>mutually exclusive</strong>: P(A ∩ B) = 0, and the addition rule collapses
+    to plain addition. Drawing a king and drawing a heart, by contrast, <em>can</em> co-occur (the king
+    of hearts), so you must subtract 1/52: 4/52 + 13/52 − 1/52 = 16/52 = 4/13.
+  </p>
+  <p>
+    <strong>Mutually exclusive</strong> and <strong>independent</strong> sound alike and are opposites
+    in spirit — this is the most common conceptual error in the subject. Mutually exclusive means the
+    events cannot both happen (zero overlap). Independent means one event gives <em>no information</em>
+    about the other (P(A | B) = P(A)). If A and B are mutually exclusive with non-zero probabilities,
+    they are strongly <em>dependent</em>: learning that A happened tells you B certainly did not —
+    maximal information! Conversely, independent events generally overlap freely: two coin tosses are
+    independent and can both be heads. <strong>Independence</strong> is what licenses the
+    multiplication rule P(A ∩ B) = P(A) × P(B); for dependent events, the general rule
+    P(A ∩ B) = P(A) × P(B | A) always holds, and the multiplication rule is just its special case.
+  </p>
+
+  <h2>Conditional probability and tree diagrams</h2>
+  <p>
+    Conditional probability answers: given that B happened, what's the chance of A? Formally
+    P(A | B) = P(A ∩ B) ÷ P(B) — restrict the sample space to B's outcomes and recount. Worked
+    example: two dice, you're told the first die shows 4; what's P(sum ≥ 9)? The space shrinks from 36
+    outcomes to 6 — (4,1) through (4,6) — of which (4,5) and (4,6) qualify: 2/6 = 1/3. The condition
+    reshaped the problem; that is the entire meaning of the vertical bar.
+  </p>
+  <p>
+    <strong>Tree diagrams</strong> are conditional probability drawn as a picture, and for combined
+    events they are close to foolproof. The rules: first branch into the first event's outcomes; each
+    subsequent layer uses probabilities <em>conditional on the path taken</em>; a path's probability is
+    the product along it; an event's probability is the sum of the paths that reach it. Take the
+    4-red/6-blue bag without replacement. First layer: red 4/10, blue 6/10. Second layer from "red":
+    red 3/9, blue 6/9; from "blue": red 4/9, blue 5/9. Then P(two reds) = 4/10 × 3/9 = 2/15;
+    P(same colour) = 2/15 + (6/10 × 5/9 = 1/3) = 2/15 + 5/15 = 7/15; P(different colours) = 8/15, and
+    the three answers sum to 1 — a built-in self-check that catches most slips. The tree's quiet
+    virtue is that it <em>forces</em> you to ask, at every node, "has anything changed?" — which is
+    precisely the question conditional probability exists to ask.
+  </p>
+
+  <h2>Counting shortcuts: when "favourable ÷ total" needs help</h2>
+  <p>
+    Equally-likely counting explodes fast, and two shortcuts keep it manageable. The
+    <strong>factorial</strong> n! (n × (n−1) × … × 1) counts orderings: 5! = 120 ways to arrange five
+    books on a shelf. <strong>Permutations</strong> P(n, r) = n! ÷ (n − r)! count ordered selections
+    — the podium of gold, silver and bronze from eight runners: 8 × 7 × 6 = 336, because each medal
+    removes one runner. <strong>Combinations</strong> C(n, r) = n! ÷ (r!(n − r)!) count unordered
+    selections — divide out the r! internal orderings that no longer matter. The UK lottery's famous
+    1-in-13,983,816 jackpot odds are exactly C(49, 6): the number of ways to choose 6 balls from 49
+    when order is irrelevant. These formulas feed the earlier machinery: "draw 3 reds from 4 reds and
+    2 blues" can be done by paths (as above) or by combinations (C(4,3) × C(2,0) ÷ C(6,3)) — and
+    getting the same answer both ways is the best self-check in the subject. The modelling skill is
+    choosing the right counting object: does the problem care about order (race results, passcodes —
+    permutations), or not (committees, hands of cards — combinations)?
+  </p>
+
   <h2>Expected value: the casino's compass</h2>
   <p>
-    Multiply each outcome by its probability and sum. A £1 British lottery ticket: about a 1-in-14
-    million jackpot chance and a roof of smaller prizes — expected return near 50p. Play forever
-    and you lose half a pound per play, on average. Casinos, insurers and lotteries all live in
-    the gap between their expected value and yours.
+    Multiply each outcome by its probability and sum: that weighted average is the
+    <strong>expected value</strong>, what you get per trial over the long run. A £1 British lottery
+    ticket: about a 1-in-14 million jackpot chance plus a roof of smaller prizes — expected return near
+    50p. Play forever and you lose half a pound per play, on average. A casino game paying 35-to-1 on a
+    single roulette number looks generous until you compute: 35 × (1/37) − 1 × (36/37) ≈ −0.027 per
+    £1 staked — a 2.7% house edge, small enough to be invisible in an evening and certain over years.
+    Casinos, insurers and lotteries all live in the gap between their expected value and yours: they
+    play millions of trials where the law of large numbers (Jacob Bernoulli, 1713) locks in the
+    average; you play a handful, where luck still feels like strategy.
   </p>
 
   <h2>Where intuition fails</h2>
-  <ul>
-    <li><strong>The gambler's fallacy.</strong> Ten heads in a row leaves the next toss at exactly 50/50 — coins have no memory. (Ten heads <em>does</em> make "this coin is rigged" more likely; those are different questions.)</li>
-    <li><strong>Conjunction errors.</strong> "Linda is a bank teller" is more probable than "Linda is a bank teller <em>and</em> a feminist" — adding detail can only shrink probability, yet most people rank it higher (Tversky & Kahneman, 1983).</li>
-    <li><strong>The law of large numbers</strong> (Jacob Bernoulli, 1713) is the honest hope: averages settle down over many trials. It does <em>not</em> mean short runs must "even out".</li>
-  </ul>
   <p>
-    One vocabulary note: the <strong>frequentist</strong> reading defines probability as long-run
-    frequency; the <strong>Bayesian</strong> reading treats it as degree of belief, updated by
-    evidence (Laplace formalised much of it in 1812). Same rules, different philosophy — and the
-    split still runs through modern statistics.
+    <strong>The gambler's fallacy.</strong> Ten heads in a row leaves the next toss at exactly 50/50 —
+    coins have no memory, and independent events stay independent however embarrassing their recent
+    history. (Ten heads <em>does</em> make "this coin is rigged" more likely; distinguishing "is the
+    coin fair?" from "what comes next, given this coin?" is the whole trick.) The law of large numbers
+    says the <em>proportion</em> of heads settles toward 0.5 over thousands of tosses — it does not say
+    short runs must "even out"; in fact the gap between heads-count and half-the-tosses typically
+    <em>grows</em> while the ratio shrinks.
   </p>
-  <p class="sources"><strong>Sources:</strong> Bernoulli, Ars Conjectandi (1713); Laplace, Théorie analytique des probabilités (1812); Tversky & Kahneman, Psychological Review (1983).</p>
+  <p>
+    <strong>Conjunction errors.</strong> "Linda is a bank teller" is more probable than "Linda is a
+    bank teller <em>and</em> a feminist" — adding detail can only shrink a probability (an "and" event
+    is a subset of each part), yet most people, given a description dripping with left-wing activism,
+    rank the conjunction higher (Tversky & Kahneman, 1983). The error is so fundamental that it
+    violates an axiom, and it happens because stories feel more probable than categories.
+  </p>
+  <p><em>Common misconception:</em> "it happened, so it was likely" and "it was likely, so it will
+  happen" both get causality backwards. A 1-in-a-million event happens daily to somebody, because
+  millions of chances are being taken. Probability describes the generating process, not any single
+  outcome's fate.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The rules, run carefully, produce the most famous result in applied reasoning: <strong>Bayes'
+    theorem</strong>. For medical screening it lands with force: a disease affecting 1 in 1,000 with a
+    95%-accurate test gives a positive result to 95 of the 1,000 diseased (0.001 × 0.95) but also to
+    about 50 of the 999 healthy (0.999 × 0.05 ≈ 0.05) — so roughly 145 positives, of which only 95 are
+    true. A patient with a positive result has about a 65% chance of actually having the disease, not
+    95% — the <strong>base rate</strong> dominates, and ignoring it is the base-rate fallacy that
+    distorts screening, spam filters and security alerts alike. The same machinery yields the
+    <strong>Monty Hall problem</strong> (switching doors doubles your chance from 1/3 to 2/3, because
+    the host's reveal is information about where the car is <em>not</em>), and the <strong>birthday
+    problem</strong> (23 people give a 50.7% chance of a shared birthday — because 253 pairs, each with
+    a 1/365 collision chance, stack up far faster than intuition expects; the complement trick,
+    P(no shared birthday), is the elegant route). One philosophical vocabulary note, since the split
+    still runs through modern statistics: the <strong>frequentist</strong> reading defines probability
+    as long-run frequency in repeated trials; the <strong>Bayesian</strong> reading treats it as degree
+    of belief, updated by evidence — Laplace formalised much of it in 1812 while calculating the mass
+    of Saturn from noisy data. Same rules either way; different answers to "what does a probability
+    mean". Every serious statistician uses both lenses.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Pascal–Fermat correspondence (1654); Bernoulli, Ars Conjectandi (1713); Laplace, Théorie analytique des probabilités (1812); Tversky & Kahneman, Psychological Review (1983).</p>
 </TopicPage>

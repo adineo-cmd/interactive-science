@@ -25,42 +25,267 @@ const explorationCfg = {
     { math: '5 · Grade is destiny', note: 'Everything downstream — pit size, waste, energy, profit — follows from grams per tonne. Low grade means moving more rock per ounce.' },
   ],
 };
+
+const quizCfg = {
+  questions: [
+    {
+      q: 'What turns a rock containing metal into an "ore deposit"?',
+      choices: [
+        'Any detectable amount of metal',
+        'Economics — the metal must be concentrated enough to extract at a profit under current technology and law',
+        'The presence of visible metal crystals',
+        'Government designation of the land',
+      ],
+      answer: 1,
+      why: '"Ore" is an economic word, not a mineralogical one. The same rock can be waste at low prices and ore at high prices — reserves rise and fall with markets.',
+    },
+    {
+      q: 'A typical copper ore body grades about 0.5% copper. That is roughly how many times the metal\'s average crustal abundance (~60 ppm)?',
+      choices: ['about 2 times', 'about 20 times', 'about 80 times', 'about 8,000 times'],
+      answer: 2,
+      why: '0.5% is 5,000 ppm — roughly 80× crustal background. For gold the enrichment is far more extreme: crustal gold is about 4 ppb while ore runs 1–5 grams per tonne, a thousand-fold concentration.',
+    },
+    {
+      q: 'Which geophysical method is best at detecting massive sulphide bodies, which conduct electricity far better than host rock?',
+      choices: [
+        'Gravity survey',
+        'Electromagnetic (EM) survey',
+        'Gamma-ray radiometrics',
+        'Seismic reflection',
+      ],
+      answer: 1,
+      why: 'EM surveys induce currents and measure the response — conductive sulphides light up. Gravity suits dense bodies, radiometrics maps surface potassium–thorium–uranium, and seismic is mainly an oil-and-gas tool.',
+    },
+    {
+      q: 'In the standard classification, "reserves" are resources that…',
+      choices: [
+        'have been drilled at least once',
+        'appear on satellite imagery',
+        'are proven economically, technically and legally mineable (measured or indicated, above cut-off)',
+        'contain the highest grades in the region',
+      ],
+      answer: 2,
+      why: 'Resources describe metal in the ground; reserves convert part of them into metal that can actually be mined at a profit under current conditions — the conversion a mine permit and financing depend on.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/mining-engineering/foundational/ore-deposits-and-exploration">
   <h2>The idea</h2>
   <p>
-    Mining engineering starts as geology: metals are only worth mining where nature concentrated
-    them into ore — rock containing enough metal per tonne to pay for extraction. The discipline's
-    first job is finding those rare places, proving them with drills, and computing whether the
-    grade, size and price make a mine.
+    Here is a fact that reframes the whole mining industry: the Earth's crust averages about 0.005
+    percent copper, and yet your phone's circuits, the wiring in your walls and the motors in
+    electric cars all depend on metal dug from rock that is maybe 0.5 percent copper — and shipped
+    profitably. Nobody digs ordinary crust. The industry exists only because geological processes,
+    over millions of years, took metals scattered at parts-per-million levels and concentrated them
+    by factors of a hundred to several thousand in small, rare pockets. Those pockets are
+    <strong>ore deposits</strong>: rock from which metal can be extracted economically. The word
+    "economically" is doing heavy lifting there — it means ore is defined by prices, costs and
+    engineering as much as by minerals.
+  </p>
+  <p>
+    That definition has a startling consequence. Copper mined in 1900 came from ore grading about
+    2 to 3 percent; today's large copper mines work rock near 0.5 percent. Neither number reflects
+    how much copper exists — it reflects what technology and prices could pay for. Mining
+    engineering therefore begins as an economic geology problem: where did nature do the
+    concentrating, how can we find it, and how do we prove — to investors and regulators, not just
+    to ourselves — that the tonnage, grade and economics add up? This chapter covers those three
+    pillars: how ore deposits form, how exploration finds them, and how reserves are estimated.
+  </p>
+  <p>
+    The stakes are easy to underestimate. Only a fraction of a percent of explored prospects ever
+    become mines, discovery costs run into the hundreds of millions per major deposit, and a
+    typical new mine takes a decade or more between discovery and first production. Everything in
+    the modern energy transition — copper for grids, lithium for batteries, nickel for stainless
+    and cathodes — funnels through this slow, risky, first stage of the discipline.
   </p>
 
   <Widget no="1" caption="ore, grade, drill, prove — the exploration pipeline" widget="equationStep" config={explorationCfg} />
 
-  <h2>Grade is destiny: run the numbers</h2>
+  <h2>Ore deposit geology: how nature concentrates metals</h2>
   <p>
-    Contained metal = grade × tonnage (÷ 31.1 for troy ounces). Profit = contained metal × margin.
-    Slide the grade down and watch the project die before the geology does — the mining industry's
-    hardest truth is that most deposits are real but uneconomic.
+    Ore deposits are the products of a few great concentrating engines, and geologists classify
+    them by which engine made them. The first engine is <strong>magmatic segregation</strong>. As
+    a large body of magma cools, heavy sulphide liquids and oxide minerals can separate early —
+    like fat congealing on cooling stock — and settle into layers dense with metal. The Bushveld
+    Complex in South Africa, a layered intrusion the size of a small country, hosts roughly three
+    quarters of the world's known platinum-group metal resources; the nickel-copper ores of
+    Sudbury, Canada, sit in the melt sheet of an ancient asteroid impact. Chromite layers and
+    magnetite bands are the same physics: gravity sorting in slow magma.
+  </p>
+  <p>
+    The second engine is <strong>hydrothermal circulation</strong> — hot water as metal courier.
+    Saline brines scavenge metals from huge volumes of rock, travel along heat gradients, and dump
+    their cargo where temperature, pressure or chemistry change suddenly. This single mechanism
+    produces most of the metal mines on Earth. <strong>Porphyry copper deposits</strong> —
+    vast, low-grade zones above cooling magma chambers, grading roughly 0.3 to 1 percent copper
+    in tonnages of hundreds of millions to billions of tonnes — supply the majority of the
+    world's copper, often with gold and molybdenum credits. <strong>Epithermal gold</strong> forms
+    where those fluids flash near the surface; <strong>volcanogenic massive sulphides</strong>
+    precipitate as metal-rich mounds on ancient seafloors (modern equivalents are being seen at
+    black smokers today); <strong>vein deposits</strong> fill fractures with quartz and sulphides.
+    The common thread: metal once spread through cubic kilometres of ordinary rock was dissolved,
+    moved, and re-precipitated into a small volume.
+  </p>
+  <p>
+    The third engine is <strong>sedimentary and surface processes</strong>. Banded iron
+    formations — the source of most of the world's iron ore — are chemical sediments laid down
+    in Precambrian oceans more than 1.8 billion years ago, as rising oxygen from early
+    photosynthesis precipitated dissolved iron onto the seafloor in rhythmic layers. Placer
+    deposits are gravity's work: gold's density (19.3 g/cm³ against rock's 2.7) means moving
+    water sorts it into river gravels, the mechanism behind the California and Klondike rushes.
+    Weathering is the fourth engine: tropical rain leaches mobile elements and leaves the
+    stubborn ones behind, making aluminium from ordinary rock as bauxite and nickel from
+    ultramafic rock as laterite. And supergene enrichment refines existing deposits —
+    groundwater leaches copper from the top of a sulphide body and re-deposits it below in a
+    richer blanket, a free upgrade from the water table.
+  </p>
+  <p>
+    <em>Common misconception:</em> ore does not look like metal. Almost nobody who has seen
+    modern gold ore in a photograph believes it — grey rock with no visible glint, carrying a few
+    grams of <em>invisible</em> gold per tonne, locked inside sulphide minerals at scales below
+    what the eye can resolve. Nevada's Carlin-type deposits, among the most productive gold
+    fields on Earth, are named for microscopic gold. "Shiny nugget" geology died in the 1800s;
+    today's exploration targets things a microscope or an assay reveals.
+  </p>
+
+  <h2>Exploration methods: physics first, drills last</h2>
+  <p>
+    Exploration is a funnel run on scarce capital, and the professionals' first skill is deciding
+    where <em>not</em> to drill. Drilling is the most expensive way to learn anything about the
+    subsurface, so everything cheaper happens first. It starts with <strong>desktop
+    studies</strong>: compiling regional geology, past workings, known deposit models and
+    remote-sensing data to pick belts where the right rocks, structures and ages coincide. Then
+    comes <strong>geological mapping</strong> on the ground — reading outcrops, alteration
+    haloes and structures for the fingerprint of the target deposit type.
+  </p>
+  <p>
+    Next, <strong>geochemistry</strong> hunts the halo around hidden ore. Stream-sediment
+    sampling catches metals eroding from a whole upstream catchment; soil sampling detects the
+    weak geochemical smear that ore leaks upward even under cover; rock-chip sampling grades the
+    visible anomalies. Because a big deposit is anomalous over a much larger footprint than the
+    ore itself, chemistry finds the mouse before you meet the cat.
+  </p>
+  <p>
+    Then <strong>geophysics</strong> — measuring physical properties from the air or ground to
+    see through cover where no outcrop exists. Each method discriminates on a different property,
+    so the choice encodes the deposit model. Magnetic surveys find magnetite-bearing rocks,
+    intrusive complexes and alteration; porphyry systems carry predictable magnetic signatures.
+    Gravity finds dense bodies: massive sulphides, ironstone. Electromagnetic methods find
+    <em>conductors</em> — the signatures of massive sulphide bodies, which conduct electricity
+    orders of magnitude better than silicate host rock. Induced polarisation responds to
+    disseminated sulphide, the halo style of porphyry and epithermal systems. Gamma-ray
+    spectrometry maps potassium, thorium and uranium at the surface, reading alteration and
+    lithology. Modern surveys fly these sensors on aircraft or drones, rastering the earth at
+    metre-scale line spacing.
+  </p>
+  <p>
+    Only when the anomaly has survived all that triage does <strong>drilling</strong> begin, and
+    it comes in two flavours. Reverse-circulation (RC) drilling hammers and blows rock chips to
+    the surface — fast and relatively cheap, good for geochemistry and shallow geometry. Diamond
+    drilling cuts a solid cylinder of rock core — several times the cost per metre, but it
+    preserves structure, texture and accurate geometry, which resource modelling requires. The
+    core is logged, split and sent for <strong>assay</strong>, most famously fire assay for gold:
+    a 30-gram charge is fused with flux, the precious metal collected in lead and cupelled to a
+    bead weighed on a microbalance, with detection down to parts per billion. A discipline within
+    the discipline is quality assurance: standards, blanks and duplicates inserted into every
+    batch, because assays that cannot be audited are worth little and regulators say so
+    explicitly.
+  </p>
+  <p>
+    <em>Common misconception:</em> drilling is not exploration — it is confirmation. Anyone can
+    drill a hole; the value-creating skill is the elimination funnel that decides which of ten
+    thousand candidates deserves the handful of holes. The industry's own statistics make the
+    point: of every thousand raw prospects, only a few dozen are ever drilled, a few reach
+    resource definition, and perhaps one becomes a mine.
+  </p>
+
+  <h2>Reserve estimation: from holes to a bankable number</h2>
+  <p>
+    Once drilling succeeds, the industry's formal language takes over, because "how much gold is
+    down there" must be answered in a form financiers and stock exchanges will accept. The
+    global template (JORC in Australia, NI 43-101 in Canada, and their CRIRSCO relatives) sorts
+    everything into <strong>mineral resources</strong> — mineralisation with reasonable prospects
+    of eventual economic extraction — subdivided by geological confidence: <em>inferred</em>
+    (suggested by sparse drilling), <em>indicated</em> (dense enough to support mine planning),
+    <em>measured</em> (confirmed at production precision). Resources become
+    <strong>reserves</strong> only when the modifying factors — mining method, processing,
+    permitting, infrastructure, economics — are engineered and proven: measured material at
+    demonstrated profitability becomes a <em>proven</em> reserve, indicated material a
+    <em>probable</em> one. A bank lends against reserves, never against resources.
+  </p>
+  <p>
+    The estimation itself is arithmetic wrapped in geometry. Drill intercepts are compiled into a
+    three-dimensional geological model, which is divided into thousands to millions of blocks;
+    each block receives a grade interpolated from the surrounding assays (inverse-distance
+    weighting at the simple end, kriging — a geostatistical method that weights samples by their
+    spatial correlation — at the rigorous end). Every block is then tested against the
+    <strong>cut-off grade</strong>: the grade at which one tonne of rock pays exactly for its own
+    mining, processing and overhead. Blocks above cut-off are ore; blocks below are waste, no
+    matter how metallic they are. The reserve is the tonnage-weighted sum above cut-off.
+  </p>
+  <p>
+    Now run the headline numbers on a worked example — the same arithmetic the slider below
+    performs live. A deposit contains 20 million tonnes at 3 grams of gold per tonne. Contained
+    metal is 20,000,000 × 3 g = 60 tonnes of gold, which is 60,000,000 ÷ 31.1 ≈ 1.93 million
+    troy ounces. At a $2,000/oz price the gross in-situ value is about $3.9 billion. But the mine
+    will recover perhaps 90 percent of it, pay roughly $1,100/oz in operating costs, spend
+    several hundred million in capital, and share proceeds with taxes — so the pre-tax margin is
+    (2,000 − 1,100) × 1.93 Moz ≈ $1.7 billion, spread over an eight-to-fifteen-year mine life,
+    against a discovery-to-construction bill that has already consumed a decade. Those margins
+    are why low grade is fatal: drop the grade from 3 g/t to 1.5 g/t and the same operation,
+    same costs, same price, halves its revenue per tonne mined.
+  </p>
+  <p>
+    <em>Common misconception:</em> "reserves" are not the amount of metal on Earth, or even the
+    amount in that deposit. They are an economic snapshot. When gold prices doubled in the late
+    2000s, world gold reserves on company books rose sharply without a single new discovery —
+    ore that had been below cut-off simply converted into reserves. Reserves are consumed by
+    mining and created by price, technology and engineering confidence.
   </p>
 
   <Widget no="2" caption="grade, size, price, cost → the mine's economics" widget="sliderLab" config={gradeCfg} />
 
-  <h2>Exploration is elimination</h2>
+  <h2>Going deeper</h2>
   <p>
-    For every 1,000 prospects, a handful become mines. Geophysics narrows from the air; geochemical
-    soil surveys hint at buried ore; drilling delivers the truth at $100+ per metre. The
-    exploration geologist's real skill is deciding where <em>not</em> to drill — capital is the
-    scarcest resource in the field.
+    <strong>Cut-off grade is a moving policy, not a constant.</strong> Cut-off responds not only
+    to price and cost but to <em>timing</em>: Lane's classic analysis showed that the
+    profit-maximising cut-off changes over a mine's life, because milling capacity and market
+    capacity constrain which tonnes are worth processing when. Running a low cut-off early
+    starves the mill of grade; running it high strands low-grade rock that may never be mined.
+    Grade-optimum policy is one of the few genuinely optimisable decisions in mining, and modern
+    mine planners run it as software.
   </p>
-
-  <h2>Why engineers, not just geologists</h2>
   <p>
-    Once the deposit is proven, the questions become engineering: how to extract it safely,
-    what to do with the waste rock and tailings, how to power a mine in remote terrain, and how to
-    close it responsibly. ABET's criteria pair the geology with safety, environmental and economic
-    study for exactly this reason — the mine is a system, not a hole.
+    <strong>Reconciliation is the audit that ends every mine plan.</strong> Reserve models
+    predict what the mill receives; production records report what it actually received. Persistent
+    gaps between "predicted" and "actual" — too much dilution from waste rock mixed into ore,
+    blast movement, unmodelled structures — are the industry's honest report card, and seasoned
+    engineers read a company's reconciliation history before they read its resource statement.
+    Dilution and mining recovery are usually the biggest blind spot of a fresh model: the
+    economic reserve is <em>not</em> the geological reserve minus nothing.
+  </p>
+  <p>
+    <strong>Grade decline is the quiet crisis of the field.</strong> Head grades at major copper
+    mines have fallen from several percent a century ago to roughly half a percent, because we
+    mined the rich deposits first. Lower grade means more rock per tonne of metal: energy, water,
+    waste and cost per kilogram all climb. This arithmetic drives the push toward coarse particle
+    flotation, ore sorting, in-situ leaching and better geometallurgy — and it explains why the
+    discovery rate for major deposits has fallen even as exploration spending rose: what is
+    left is deeper, under cover, or subtle.
+  </p>
+  <p>
+    <strong>The deposit model is the unifying idea.</strong> Every method above — geology,
+    geophysics, geochemistry, economics — works because deposits of a type look alike: porphyries
+    come in magnetic, potassium-altered, sulphide-halo packages; VMS bodies are conductive plates
+    under conductive seafloor facies; Carlin gold hides in silicified limestone with arsenic and
+    antimony haloes. Learn one deposit model and you have learned where to look, what to measure
+    and what a reserve should look like — which is why "what deposit type am I in?" is the first
+    question a mining engineer asks at any project, and the last one the geology ever stops
+    answering.
   </p>
 
   <p class="sources"><strong>Sources:</strong> ABET mining program criteria; Hartman &amp; Mutmansky, <em>Introductory Mining Engineering</em>; Hustrulid &amp; Kuchta, <em>Open Pit Mine Planning and Design</em>.</p>
+
+  <Widget no="3" caption="check yourself" widget="quiz" config={quizCfg} />
 </TopicPage>

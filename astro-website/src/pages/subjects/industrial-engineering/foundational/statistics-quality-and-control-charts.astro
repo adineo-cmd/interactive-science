@@ -28,37 +28,164 @@ const spcCfg = {
   <h2>The idea</h2>
   <p>
     Industrial engineering begins with a statistical insight that transformed manufacturing:
-    variation is not an enemy to eliminate but a signal to interpret. Walter Shewhart's control
-    chart (1924) separated a process's natural noise from meaningful change — and that single
-    distinction, applied relentlessly, is how modern quality was built.
+    <strong>variation is not an enemy to eliminate but a signal to interpret</strong>. Every
+    process — a filling line, a machining cell, an insurance claim queue — produces outputs that
+    wobble. Some of the wobble is the process's natural breathing (common cause); some of it is
+    something that changed and should be hunted down (special cause). Walter Shewhart's control
+    chart, invented at Bell Laboratories in 1924, separated the two with a simple statistical
+    device, and that single distinction — applied relentlessly — is how the modern quality
+    profession was built. Its consequences reach from the factory floor to Six Sigma, and the
+    logic underneath is pure statistics: distributions, sampling and inference.
+  </p>
+  <p>
+    To see why statistics is the right tool, consider the fill line example this page will keep
+    returning to: a machine filling bottles nominally to 500 mL. Every bottle differs slightly —
+    a millilitre up here, one down there. If you measure one bottle and it comes out at 503 mL,
+    is the machine drifting out of adjustment, or was that bottle just a naturally high one?
+    One data point cannot answer; the question only becomes decidable when the variation's
+    own statistics are known. That is the whole programme: characterise the noise, then let
+    the noise define what counts as a signal.
   </p>
 
   <Widget no="1" caption="Shewhart's insight: common vs special causes" widget="equationStep" config={spcCfg} />
 
-  <h2>Reading a control chart</h2>
+  <h2>Distributions and inference: the machinery underneath</h2>
   <p>
-    The chart plots small-sample means against limits set by the process's own variation (±3σ).
-    Everything inside the limits is the process talking about itself; the analyst reacts only to
-    signals — points beyond limits, or suspicious patterns within them. The sample below stays in
-    control with natural wobble; a real line would demand the same restraint from its operators.
+    Quality statistics is built on a small set of distributions, each matching a kind of
+    variation. The <strong>normal distribution</strong> (the bell curve, defined by mean μ and
+    standard deviation σ) models continuous measurements — fill volumes, dimensions, weights —
+    and its celebrated property is area-based: about 68 per cent of output falls within ±1σ of
+    the mean, 95 per cent within ±2σ, 99.7 per cent within ±3σ. Those area fractions are the
+    control chart's calibration, and they are also the language of capability ("±3σ process",
+    "six sigma" — literally a specification six standard deviations wide). Counts of defects or
+    defectives follow the <strong>binomial</strong> (fraction nonconforming) and
+    <strong>Poisson</strong> (defects per unit, rare events) distributions, which is why
+    attribute control charts use different formulas for their limits.
+  </p>
+  <p>
+    The bridge from distributions to decisions is <strong>inference</strong>, and its central
+    pillar is the central limit theorem: even if individual bottles vary according to some
+    lopsided, ugly distribution, the <em>averages of small samples</em> from that process pile
+    up nearly normally around μ with a narrower spread — σ divided by the square root of the
+    sample size. Averages stabilise; individuals do not. This is why quality work samples in
+    small groups (subgroups of four or five, drawn close together in time) and charts the
+    subgroup mean: the chart inherits the theorem's stability. Inference then supplies the
+    decision grammar. A control chart is a running hypothesis test — the null hypothesis is
+    "the process is unchanged" — and it therefore lives with the two classic errors:
+    the <strong>Type I error</strong> (a false alarm: reacting to pure noise, ~0.27 per cent
+    per point with ±3σ limits — roughly one false alarm per 370 points) and the
+    <strong>Type II error</strong> (missing a real shift because it is gradual or small).
+    Shewhart's choice of ±3σ limits is precisely a pricing of those two risks; the design of
+    every chart is a wager on which error the process can better afford.
   </p>
 
   <Widget no="2" caption="a process in statistical control" widget="plotter" config={chartCfg} />
+  <p><em>Common misconception:</em> that a point outside the control limits "proves" the process failed. The limits are a 99.7 per cent rule, not a law of nature — roughly one point in 370 crosses them by chance alone, which is why a single excursion prompts investigation (was anything special going on?), not automatic verdicts. Statistics can only say "this pattern would be very unlikely if nothing changed" — the special cause still has to be found by a human who knows the process.</p>
 
-  <h2>Capability: when in control isn't enough</h2>
+  <h2>Statistical process control: the chart as conversation</h2>
   <p>
-    A stable process can still be uniformly wrong — tightly centred on the wrong value. Capability
-    indices (Cp, Cpk) compare the process's voice (its σ) with the customer's voice (spec limits):
-    Cpk above roughly 1.33 is the classical "good" benchmark. Control first, capability second —
-    improving an unstable process is measuring fog.
+    The <strong>control chart</strong> operationalises the common/special distinction. Take
+    subgroups of, say, n = 5 consecutive parts every hour; compute each subgroup's mean and
+    range; plot them on an X̄ chart and an R chart with limits computed <em>from the process's
+    own data</em> — not from any specification. The upper and lower control limits sit at
+    ±3σ of the plotted statistic, where σ is estimated from the observed subgroup variation.
+    The plot above shows a process in statistical control: points scattered randomly within
+    the limits, the process talking about itself. The chart's discipline is its restraint:
+    <em>react only to signals</em>. A point beyond a limit is a signal; so are subtler
+    patterns — the Western Electric run rules (two of three points beyond 2σ on one side; a
+    run of eight on one side of the centre line; six points steadily trending; fourteen
+    alternating), each of which is very unlikely under pure randomness. Each signal says the
+    same thing in different words: <em>something changed — go find it</em>, a new operator, a
+    dull tool, a different raw-material lot, a drifting sensor.
+  </p>
+  <p>
+    Two disciplines make SPC work, and both are cultural as much as mathematical.
+    <strong>Rational subgrouping</strong>: the subgroup must be sampled so that only common
+    causes can act <em>within</em> it (consecutive parts), while the opportunities for special
+    causes lie <em>between</em> subgroups — otherwise the limits become meaningless. And
+    <strong>restraint against tampering</strong>: the gravest error in practice is reacting to
+    common-cause noise — adjusting a stable machine after every high reading. Deming's funnel
+    experiment demonstrates the result: chasing noise with adjustments makes the output's
+    variation <em>larger</em>, not smaller. "Do not adjust a process in statistical control"
+    is counter-intuitive, which is exactly why the chart exists: to tell the operator when
+    restraint, not action, is the professional move. Charts also come in families for
+    attributes — the p-chart for fraction nonconforming, the c-chart for defects per unit —
+    extending the same logic to counts and pass/fail data, and modern extensions (CUSUM and
+    EWMA charts) accumulate evidence across points to catch the small, slow shifts that
+    Shewhart charts miss.
   </p>
 
-  <h2>Why IE owns the data</h2>
+  <h2>Capability and acceptance sampling: meeting the customer, lot by lot</h2>
   <p>
-    From control charts grew acceptance sampling, designed experiments (Deming and Taguchi carried
-    them to Japan), Six Sigma's statistics and modern analytics. The through-line: industrial
-    engineers are the profession that turns production floors into measurable systems — and insists
-    that every intervention be justified by data rather than opinion.
+    <strong>Control limits are not specification limits</strong>, and the distinction is the
+    hinge of the whole field. Control limits are the process's voice (its own variation);
+    specification limits are the customer's voice (what the part must satisfy). A process can
+    be perfectly in control and perfectly out of specification — tightly and consistently
+    producing bad parts. <strong>Capability indices</strong> compare the two voices. Cp is the
+    specification width divided by the process width (6σ); Cpk adds a penalty for being off
+    centre. Worked example: a fill specification of 500 ± 2 mL with process σ = 0.5 mL gives
+    Cp = 4/3 ≈ 1.33 — the classical "capable" benchmark; if the process mean has drifted to
+    500.4 mL, Cpk = min((502 − 500.4)/1.5, (500.4 − 498)/1.5) ≈ 1.07 — the same variation,
+    but less of it usable. The ordering of work follows: achieve statistical control
+    <em>first</em> (improving an unstable process is measuring fog), then centre it, then shrink
+    σ until capability is comfortable. Control first, capability second.
+  </p>
+  <p>
+    <strong>Acceptance sampling</strong> is the statistical grandparent of the field and its
+    cautionary tale: inspect a sample from each lot, and accept or reject the whole lot on the
+    sample's evidence. Its grammar is the <strong>operating characteristic (OC) curve</strong>:
+    for a given sampling plan (sample size n, acceptance number c), the curve shows the
+    probability of accepting a lot as a function of the true defect rate. The vocabulary is
+    two-sided risk: the <strong>producer's risk</strong> (α: the chance a good lot — at the
+    acceptable quality level, AQL — is wrongly rejected) and the <strong>consumer's risk</strong>
+    (β: the chance a bad lot — at the lot tolerance percent defective, LTPD — is wrongly
+    accepted). Worked example with the Poisson approximation: plan n = 50, c = 1. At a true
+    defect rate of 1 per cent, np = 0.5, and the acceptance probability is e<sup>−0.5</sup>(1
+    + 0.5) ≈ 0.91 — good lots usually pass. At 4 per cent defective, np = 2, and the
+    probability falls to e<sup>−2</sup>(1 + 2) ≈ 0.20 — bad lots usually fail. The whole plan
+    is priced by that curve, and tables (MIL-STD-105E and its successor ANSI/ASQ Z1.4;
+    Dodge–Romig plans) are nothing but pre-computed OC curves. The deeper lesson, though, is
+    Deming's: sampling accepts quality <em>after the fact</em>, while SPC builds it
+    <em>in</em> — inspecting quality in is expensive and never as good as making the process
+    incapable of producing defects, which is why mature industries treat sampling plans as a
+    floor for incoming material, not a quality strategy.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    One more worked passage shows the attribute-chart half of SPC, because most real data
+    begins as pass/fail rather than measurements. A hospital laboratory tracks its specimen
+    rejection rate: each day it receives n = 200 tubes and records how many arrive clotted,
+    mislabelled or haemolysed. The p-chart plots the daily fraction rejected, with limits set
+    by the binomial logic: if the long-run rate is 4 per cent, the centre line is 0.04, the
+    standard error is √(0.04 × 0.96 / 200) ≈ 0.014, and three-sigma limits sit at
+    0.04 ± 3 × 0.014 — from effectively zero up to about 8.2 per cent. A day at 9 per cent
+    rejected fires the upper limit; a week at zero rejections eventually fires the lower one — and the lower signal is
+    as valuable as the upper, because "no rejects all week" means something changed: a new
+    courier, a retrained phlebotomy team, or (the sceptic's hypothesis) a mis-booked day.
+    Attribute charts thus extend Shewhart's grammar to counts, rates and proportions, and
+    they carry the same discipline: limits from the process's own voice, restraint inside
+    them, investigation outside.
+  </p>
+  <p>
+    Three currents carry this material into modern practice. <strong>Measurement system
+    analysis</strong>: before any chart or capability index, the measurement itself must be
+    validated — a Gage R&R study partitions observed variation into part-to-part, operator and
+    instrument components, and the field's rule of thumb is that measurement variation should
+    consume well under a tenth of tolerance; charting a process through a bad gauge is
+    measuring fog with a fog machine. <strong>The philosophy layer</strong>: Shewhart's chart
+    grew into Deming's management system (variation thinking applied to whole organisations —
+    most quality problems are common cause, and blaming individuals for them is a category
+    error), and into Taguchi's <strong>loss function</strong>, which replaced the step-function
+    view of quality ("inside spec = fine, outside = bad") with a quadratic: any deviation from
+    target costs money, proportionally to its square — which reframes capability as an economic
+    quantity, not a pass/fail one. <strong>The data layer</strong>: Six Sigma's DMAIC cycle
+    industrialised the inferential toolkit (measure, analyse, improve, control) around
+    millions of dollars of projects; and Industry 4.0 is turning SPC inside out — in-line
+    sensors measuring every unit instead of subgroups of five, multivariate charts watching
+    correlated dimensions simultaneously, and machine-learning models hunting patterns the
+    Western Electric rules never anticipated. The constants through all of it are Shewhart's:
+    know your noise, listen for the signal, and never mistake one for the other.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NCEES FE Industrial &amp; Systems specifications; Montgomery, <em>Introduction to Statistical Quality Control</em>; Shewhart, <em>Economic Control of Quality</em> (1931).</p>

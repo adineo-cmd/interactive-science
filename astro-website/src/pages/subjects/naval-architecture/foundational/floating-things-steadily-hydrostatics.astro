@@ -23,43 +23,279 @@ const stabilityStepsCfg = {
     { math: '5 · The curve decides survival', note: 'Righting arm plotted against heel angle — its area is the energy that must be overcome to capsize. Regulations demand minimum areas under the curve.' },
   ],
 };
+
+const quizCfg = {
+  questions: [
+    {
+      q: 'Why does a 200,000-tonne steel tanker float while a steel coin sinks?',
+      choices: [
+        'The sea pushes harder on big objects',
+        'The tanker\'s average density — steel plus all the air inside the hull — is lower than seawater',
+        'Steel becomes lighter when shaped into a ship',
+        'The tanker\'s engines provide lift',
+      ],
+      answer: 1,
+      why: 'Buoyancy depends on average density. The hull is a sealed volume that is mostly air; it sinks only until it displaces exactly its own weight of water. A coin is solid steel, far denser than water.',
+    },
+    {
+      q: 'A ship with a very large GM rolls very stiffly. What is the practical downside?',
+      choices: [
+        'It cannot carry cargo',
+        'Violent, quick rolling — cargo shifts, structures are stressed, crew and passengers suffer',
+        'It sinks lower in the water',
+        'It cannot steer straight',
+      ],
+      answer: 1,
+      why: 'Large GM means a strong righting couple and a fast roll period. Designers aim for a target GM: enough stability to be safe, small enough for a comfortable, gentle roll.',
+    },
+    {
+      q: 'Why is a half-full fuel tank more dangerous for stability than an empty one or a completely full one?',
+      choices: [
+        'Half-full tanks weigh more',
+        'The free liquid surface shifts as the ship heels, effectively moving the centre of gravity toward the low side',
+        'Fuel expands when the ship rolls',
+        'Half-full tanks reduce buoyancy',
+      ],
+      answer: 1,
+      why: 'Free-surface effect: as the ship tilts, the liquid runs to the low side and its surface stays level, sliding the liquid\'s centre of gravity outward. The correction depends on the tank\'s surface area — hence baffles, and filling or emptying tanks completely.',
+    },
+    {
+      q: 'The Plimsoll line painted on a ship\'s side marks…',
+      choices: [
+        'the centre of gravity',
+        'the maximum legal loading draft — minimum freeboard — for given water and season',
+        'where the engine room begins',
+        'the waterline of the empty ship',
+      ],
+      answer: 1,
+      why: 'The load line shows the deepest the ship may be loaded for the season and zone (Summer, Winter, Tropical, fresh water and so on). Less freeboard means less reserve buoyancy — the margin that keeps a loaded ship safe in waves.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/naval-architecture/foundational/floating-things-steadily-hydrostatics">
   <h2>The idea</h2>
   <p>
-    Naval architecture begins with a deceptively simple question: why do ships float upright — and
-    when do they stop? The answer lives in hydrostatics: the balance of buoyancy against weight,
-    and the geometry that turns a heel into either a righting force or a capsize.
+    Hold a solid steel ball bearing in one hand and try to imagine it floating. It will not —
+    steel is nearly eight times denser than water. Now consider that a modern container ship is a
+    quarter-million tonnes of steel, welded boxes of it, and it floats with metres of freeboard
+    while carrying another couple of hundred thousand tonnes of cargo. Nothing about that is
+    mysterious once you see the trick: the ship is not a lump of steel, it is a <em>steel
+    envelope full of air</em>, and its <em>average</em> density — steel, cargo, fuel, crew and
+    all that air, divided over its whole volume — is deliberately kept below the density of
+    seawater. A ship is a submarine that has decided to spend its life on the surface.
+  </p>
+  <p>
+    Getting a hull to float is the easy half of the problem. The genuinely naval-architectural
+    half is <em>upright</em>: a floating body is a body in equilibrium, and the sea is a
+    relentless perturbation engine that pushes, rolls and heaves it thousands of times a day.
+    Every ship must return from each of those pushes upright, and it must do so in a way that is
+    neither too limp (it capsizes) nor too stiff (it rolls so violently that cargo breaks loose
+    and crews collapse with seasickness). Hydrostatics is the science of that balance: buoyancy
+    holding the ship up, the geometry of the underwater hull holding it steady, and — when both
+    are stretched to their legal limits — the load line on the bow telling the master exactly how
+    deep this ship may be loaded.
+  </p>
+  <p>
+    These are the first principles of the entire profession. Before resistance, propulsion,
+    structures or seakeeping can be designed, the hull must float at the right draft, carry its
+    payload, and prove to a regulator that it will come back from a specified list, heel and
+    wind gust. Everything else in naval architecture is built on the concepts of this chapter —
+    and on a century of tragic lessons about what happens when they are ignored.
   </p>
 
   <Widget no="1" caption="Archimedes, B and G, GM and the righting curve" widget="equationStep" config={stabilityStepsCfg} />
 
-  <h2>GM: one number, whole personality</h2>
+  <h2>Buoyancy and displacement</h2>
   <p>
-    The metacentric height GM compresses a ship's initial stability into metres. A wide beam and
-    low weights give a large GM — a stiff ship that rolls fast and violently; a small GM rolls
-    gently but risks capsizing as weights shift. The sliders show how righting arm (roughly
-    GM·sin θ at small angles) grows with both. Cargo loading is stability management: the same
-    ship sails out safe and returns dangerous if the load plan ignores G.
+    Archimedes' principle states that the upward buoyant force on a body equals the weight of the
+    fluid it displaces. For a floating body, force balance gives the master equation of the field:
+    <strong>a floating object displaces exactly its own weight of water</strong>. Load a ship
+    heavier, and it must sink deeper until the extra underwater volume makes up the weight; load
+    it lighter, and it rises. This is why ships measure themselves in <em>displacement</em>: a
+    vessel of 100,000 tonnes displacement occupies, at any instant, precisely 100,000 tonnes of
+    seawater. Seawater weighs about 1.025 tonnes per cubic metre, so that hull's underwater
+    volume is 100,000 ÷ 1.025 ≈ 97,560 cubic metres — and that number, set against the hull's
+    shape, fixes the draft: how deep the waterline sits on the bow.
+  </p>
+  <p>
+    The same law runs in reverse as a design tool. Naval architects divide the ship's weight into
+    <strong>lightship</strong> (the empty vessel: steel, machinery, outfit) and
+    <strong>deadweight</strong> (everything it carries: cargo, fuel, fresh water, ballast,
+    stores, crew). Displacement = lightship + deadweight, and the entire art of cargo ships lies
+    in maximising deadweight per tonne of steel. It also gives the workaday quantity
+    <strong>TPC — tonnes per centimetre immersion</strong>: for a hull whose waterplane area is
+    A square metres, each centimetre of added draft swallows A × 0.01 × 1.025 tonnes of water
+    weight. A large bulk carrier with a 6,000 m² waterplane runs about 60 tonnes per centimetre,
+    which is why loading crews think in centimetres of draft the way accountants think in
+    dollars.
+  </p>
+  <p>
+    Hull fullness is captured by the <strong>block coefficient</strong> C<sub>B</sub> — actual
+    underwater volume divided by the box L × B × T (length, beam, draft). A slow, full tanker
+    has C<sub>B</sub> around 0.8: its underwater body nearly fills its bounding box. A fast
+    warship has C<sub>B</sub> near 0.45: long, slim, pointed. The coefficient links displacement
+    to dimensions in one step and quietly encodes the ship's speed intent — no propeller pushes
+    a brick efficiently, no tanker is wasted on racing.
+  </p>
+  <p>
+    Water density matters more than most passengers realise. The same ship floats
+    <em>deeper</em> in fresh water (1.000 t/m³) than in salt (1.025 t/m³), because fresh water
+    offers less buoyancy per litre. A vessel that leaves a Baltic or Great Lakes port at its
+    marks rises a few centimetres on reaching the open sea; the load-line marks account for
+    this, with separate fresh-water allowances. Density, draft and displacement are a
+    three-way sliding scale, and the naval architect keeps all three books open at once.
+  </p>
+  <p>
+    <em>Common misconception:</em> "heavy things sink and light things float" is the
+    kindergarten version, and it fails exactly at ships. A 200,000-tonne tanker floats; a 30-gram
+    steel coin sinks. The question is never absolute weight — it is whether the body's average
+    density is above or below the fluid's. That is also why a cargo ship that takes on water and
+    floods its compartments dies: each flooded space trades air for seawater, raising the average
+    density toward the fatal side of 1.025.
+  </p>
+
+  <h2>Stability and metacentres</h2>
+  <p>
+    Two imaginary points govern everything. <strong>G</strong>, the centre of gravity, is where
+    the ship's whole weight may be treated as acting; it moves when cargo, fuel or ice moves.
+    <strong>B</strong>, the centre of buoyancy, is the centroid of the underwater volume — the
+    point where the total upward push acts. Upright and undisturbed, G sits directly above B and
+    the two cancel in a straight line. Now let a wave heel the ship a few degrees. The underwater
+    wedge that was on the high side emerges, a new wedge submerges on the low side, and B slides
+    <em>sideways toward the submerged side</em>. Gravity still pulls straight down through G. Two
+    forces, equal and opposite, now acting along lines that no longer align: they form a
+    <strong>couple</strong>. Which way the couple turns decides the ship's fate.
+  </p>
+  <p>
+    The <strong>metacentre M</strong> is the point where the tilted line of buoyancy crosses the
+    ship's original vertical centreline, and the <strong>metacentric height GM</strong> is the
+    distance from G up to M. For small heel angles the righting arm — the horizontal offset
+    between the two force lines, called <strong>GZ</strong> — is closely approximated by
+    GZ ≈ GM·sin θ. If M lies above G, every small heel creates a couple that rotates the ship
+    back upright: stable. If the ship is loaded so high that M drops below G, the couple rotates
+    it <em>away</em> from upright, and it either settles at a list or rolls over. GM is the
+    single most watched number in ship operations, and it can be measured at sea: in an
+    <strong>inclining experiment</strong>, a known weight is moved a known distance across the
+    deck, the resulting heel angle is read from plumb lines, and GM = w·d ⁄ (Δ·tan θ). Move
+    10 tonnes across 10 metres on a 10,000-tonne ship and observe 0.25° of heel, and the ship's
+    GM is 100 ⁄ (10,000 × 0.00436) ≈ 2.3 metres. No computer model required — the ocean itself
+    signs off.
+  </p>
+  <p>
+    GM compresses a hull's personality into one number. Large GM — wide beam, low weights —
+    makes a <strong>stiff</strong> ship: it snaps back upright hard and fast, with a short roll
+    period, punishing cargo lashings and stomachs. Small GM makes a <strong>tender</strong>
+    ship: gentle, slow rolls, but little reserve against listing forces. Designers aim in
+    between; large passenger ships commonly run GM around a metre or so precisely for comfort,
+    while loaded bulk carriers and small fishing vessels, exposed to far greater listing risks,
+    keep more. The sliders below let you feel the trade-off: righting arm GZ grows with both GM
+    and heel, and beam feeds the waterplane geometry that raises M in the first place.
+  </p>
+  <p>
+    The nastiest operational hazard here is the <strong>free-surface effect</strong>. A tank
+    that is half-full of fuel, water or fish-hold flood behaves like a liquid pendulum: as the
+    ship heels, the liquid runs to the low side and its surface stays level, shifting the
+    liquid's centre of gravity outward and — because G is the weighted average of everything —
+    dragging the ship's G with it. The result is a <em>virtual rise of G</em>, a reduction in GM
+    that occurs without a single gram of cargo moving, and it can erase the entire designed
+    stability margin. The physics has a cruel quantitative edge: the correction scales with the
+    <em>area</em> of the free surface, not the volume of liquid. Divide a tank's width with
+    baffles into three compartments and the free-surface moment falls by a factor of nine. This
+    is why tank cleaning schedules, ballast sequences and "sounding logs" are stability
+    documents, and why half-full tanks have capsized ferries and fishing vessels whose paper
+    stability looked acceptable.
+  </p>
+  <p>
+    <em>Common misconception:</em> bigger GM is not automatically safer. Beyond comfort and
+    cargo security, real capsize resistance is described by the whole <strong>righting-arm
+    curve</strong> — GZ across heel angles from upright to the <strong>range of positive
+    stability</strong>, where the curve returns to zero. A ship can have a healthy GM and still
+    capsize if wind, waves and shifted cargo push it past its curve's maximum. Conversely, ships
+    with modest GM but generous reserve buoyancy above deck have survived extraordinary
+    abuse. GM is the first chapter of stability, not the whole book.
   </p>
 
   <Widget no="2" caption="righting arm vs heel, beam and GM" widget="sliderLab" config={stabilityCfg} />
 
-  <h2>Free surface: the invisible killer</h2>
+  <h2>Load lines and freeboard</h2>
   <p>
-    Liquid sloshing in a half-full tank shifts its own surface as the ship heels, sliding G toward
-    the low side — reducing stability without moving a gram of cargo. Free-surface effect has
-    sunk ferries that were "legal" on paper; the fix (baffles, full or empty tanks) is pure
-    geometry, and it is why tank-cleaning schedules are stability documents.
+    The third pillar is the line painted on the hull of almost every commercial ship in the
+    world: the <strong>load line mark</strong>, the circle-and-cross of the <strong>Plimsoll
+    line</strong>. Its history is social as much as technical. In Victorian Britain, heavily
+    insured, overloaded "coffin ships" sank with routine loss of life while their owners
+    profited; the parliamentarian Samuel Plimsoll crusaded against the practice until the
+    Merchant Shipping Act of 1876 obliged British ships to carry a mark showing the deepest
+    legal loading. The idea — a statutory limit on draft, hence a statutory minimum of
+    <strong>freeboard</strong>, the height of the deck above the waterline — was globalised by
+    the International Load Line Convention of 1966 and remains in force under the IMO today.
+  </p>
+  <p>
+    The mark is not one line but a comb of them, because the safe depth of loading depends on
+    the water the ship will meet. A loaded ship with less freeboard has less <strong>reserve
+    buoyancy</strong> — the sealed volume above the waterline that can flood without sinking
+    the ship — and less reserve means less margin against boarding seas and damaged stability.
+    Winter North Atlantic seas demand more freeboard than a tropical run; fresh water, being
+    lighter, lets the same weight sink deeper, so fresh-water marks sit below the salt ones.
+    The assigned freeboard is computed for each ship from its length, hull type, sheer,
+    superstructure and enclosed openings, and enforcement is a survey-and-certificate matter:
+    load past the mark and the port state can detain the ship. For the naval architect the load
+    line is where hydrostatics becomes law — the point where buoyancy arithmetic, reserve
+    buoyancy and stability margins are summarised in paint.
+  </p>
+  <p>
+    Freeboard and stability interlock in both directions. Deeper loading (smaller freeboard)
+    lowers G as cargo goes low and increases the beam at the waterline, usually improving GM —
+    but it steals reserve buoyancy and reduces the heel angle at which the deck edge goes
+    under. Shallow loading does the reverse. A master loading a ship is therefore not filling a
+    tank to a mark; they are negotiating three curves — displacement, GM, freeboard — against a
+    voyage's weather, and the stability booklet in the wheelhouse is the map for that
+    negotiation.
   </p>
 
-  <h2>From hydrostatics to the whole ocean</h2>
+  <h2>Going deeper</h2>
   <p>
-    Stability is the first of the naval architect's pillars: hull form and resistance, propulsion,
-    and structures in waves follow. Each assumes this lesson's discipline — compute the
-    environment's forces, then design geometry that answers them. The sea is a load case that
-    never stops; the ship must outlast it.
+    <strong>The metacentre has its own geometry.</strong> For small heels, the height of M above
+    B is the metacentric radius BM = I ⁄ V, where I is the second moment of the waterplane area
+    about the centreline and V the displaced volume. This one formula explains every rule of
+    thumb in the trade: beam enters I as the third power, which is why beam is the stability
+    lever of choice; and why a ship at light draft (small V, full waterplane) is often
+    surprisingly stiff, while a deeply loaded ship grows tender.
+  </p>
+  <p>
+    <strong>Regulations read the whole curve.</strong> Modern intact-stability codes specify
+    minima not only for GM but for the righting-arm curve: minimum GZ at 30°, a maximum beyond
+    25°, and minimum <em>area</em> under the curve up to given angles — areas being energy, the
+    dynamic work waves and wind must do to capsize the ship. The IMO weather criterion adds a
+    wind-heeling gust applied to a rolling ship. Damage stability (SOLAS subdivision) asks the
+    harder question: with specified compartments flooded, does the ship still float with
+    adequate residual stability? Modern passenger ships are increasingly held to the
+    two-compartment standard.
+  </p>
+  <p>
+    <strong>Failure modes the textbooks warn about.</strong> A ship with GM near zero is in
+    <em>neutral</em> equilibrium and can settle at an <strong>angle of loll</strong> — floating
+    flopped to either side, uprightable but deeply wrong. Ice accretion on rigging and
+    superstructure raises G and adds free surface of water; it has sunk northern fishing fleets.
+    <strong>Parametric rolling</strong> — a modern container-ship phenomenon in which the hull's
+    wave-induced changes in shape synchronise with the roll, pumping energy in over many cycles
+    — capsizes the simple GM picture and is handled in seakeeping analysis. And
+    <strong>downflooding</strong> sets the absolute limit: the heel at which a non-watertight
+    opening (a vent, a door) goes under, and the reserve buoyancy starts draining. Every one of
+    these is the elementary balance of this chapter, stressed into a regime Archimedes never
+    drew.
+  </p>
+  <p>
+    <strong>Open questions.</strong> The deep frontier is dynamic: hydrostatics assumes the sea
+    is slow; hydrodynamics asks what happens when it is not — slamming, green water on deck,
+    broaching in following seas. Probabilistic damage-stability rules now treat flooding as a
+    risk distribution rather than a pass/fail line. And every new hull type — giant container
+    ships with vast deck cargo, wind-assisted vessels, autonomous ships with unfamiliar weight
+    distribution — reopens the same two questions this chapter began with: does it float, and
+    does it come back upright?
   </p>
 
   <p class="sources"><strong>Sources:</strong> ABET ocean program criteria; Muckle &amp; Tupper, <em>Muckle's Naval Architecture</em>; Rawson &amp; Tupper, <em>Basic Ship Theory</em>.</p>
+
+  <Widget no="3" caption="check yourself" widget="quiz" config={quizCfg} />
 </TopicPage>

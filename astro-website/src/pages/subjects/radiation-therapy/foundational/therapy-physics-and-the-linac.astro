@@ -25,39 +25,198 @@ const linacCfg = {
 <TopicPage slug="subjects/radiation-therapy/foundational/therapy-physics-and-the-linac">
   <h2>The idea</h2>
   <p>
-    Radiation therapy treats cancer by delivering lethal dose to a tumour while sparing the healthy
-    tissue around it — a geometry-and-physics problem played out millimetre by millimetre. Its
-    foundation is the linear accelerator and the behaviour of its beam in tissue: where dose
-    peaks, how it falls, and why treatments are split into fractions.
+    Radiation therapy treats cancer by delivering lethal dose to a tumour while sparing the
+    healthy tissue around it — a geometry-and-physics problem played out millimetre by
+    millimetre. The core physics is almost paradoxical: ionising radiation damages every cell
+    it passes through, tumour or healthy, so the cure comes not from a different chemistry but
+    from <em>distribution</em> — stacking dose where the tumour is and spreading it thin
+    everywhere else, then exploiting biology so the healthy cells recover better than the
+    tumour does.
+  </p>
+  <p>
+    The machine at the centre of that trick is the linear accelerator — the linac — a device
+    the size of a small room that manufactures a precisely shaped beam of high-energy photons
+    and swings it around the patient from any angle. Understanding the linac means understanding
+    the trade's whole foundation: how the beam is made, how it behaves once it enters tissue
+    (where dose peaks, how it falls, how it scatters), and how those behaviours are calculated
+    into a treatment plan. Every number a radiation therapist reads on a treatment console —
+    monitor units, energy, field size, depth — is an output of the physics on this page.
+  </p>
+  <p>
+    One habit of mind is worth naming at the start: in radiation therapy, physics is a safety
+    discipline as much as a curative one. The beam cannot be seen, felt or taken back, so the
+    field's culture — redundant checks, dose calculations verified twice, positions verified
+    daily — exists because physics without verification is dangerous physics.
   </p>
 
   <Widget no="1" caption="from microwave gun to fractionated dose" widget="equationStep" config={linacCfg} />
 
-  <h2>The depth–dose curve designs the treatment</h2>
+  <h2>Linear accelerator operation</h2>
   <p>
-    A megavoltage beam spares the skin (its dose peak lies centimetres deep), then attenuates
-    slowly — which is why beams are aimed through the body from multiple angles, each contributing
-    dose that stacks at the tumour and spreads elsewhere. The curve below shows the characteristic
-    build-up, peak and fall-off that planners juggle with energy and field choices.
+    A linac is a chain of specialists, each stage handing a more refined beam to the next. It
+    begins with the <strong>electron gun</strong>, which injects electrons into a
+    <strong>standing-wave accelerating waveguide</strong> — a copper tube in which microwave
+    energy (nearly three billion cycles per second) sets up electric fields that surf the
+    electrons forward, accelerating them to within a hair of light speed and to energies of
+    roughly 6–20 megavolts (MV). A bending magnet then sweeps the beam around a corner —
+    which doubles as a filter, because only electrons with the chosen energy can make the turn.
+  </p>
+  <p>
+    What happens next defines the machine's two modes. For <strong>photon (X-ray)
+    therapy</strong>, the fast electrons slam into a tungsten target, and the sudden
+    deceleration converts their kinetic energy into a flood of high-energy X-ray photons
+    (bremsstrahlung) that emerges roughly forward. For <strong>electron therapy</strong>, the
+    target is retracted and the electron beam itself exits — useful for treating shallow
+    targets like skin lesions and lymph nodes. The raw photon beam is forward-peaked and
+    uneven, so a conical <strong>flattening filter</strong> (or, in modern
+    flattening-filter-free designs, the beam's profile is accepted raw for higher dose rates)
+    evens it across the field. Collimation follows: adjustable <strong>jaws</strong> set the
+    rectangular field, and the <strong>multileaf collimator</strong> — up to 120 tungsten
+    fingers, each up to a centimetre wide at the patient, driven individually — sculpts the
+    beam to the tumour's cross-section, and moves live during treatment to paint dose
+    intensity-modulation. The whole treatment head rides a <strong>gantry</strong> rotating a
+    full circle around the couch, so beams converge on the tumour from any angle.
+  </p>
+  <p>
+    <em>Common misconception:</em> a linac stores radiation. Unlike a cobalt-60 unit, a linac
+    is off when it is off — it generates photons only while powered, holding no radioactive
+    material. That property shapes everything from machine servicing to decommissioning.
+  </p>
+
+  <h2>Dose calculation fundamentals</h2>
+  <p>
+    Dose is measured in the <strong>gray</strong> (Gy): one joule of absorbed energy per
+    kilogram of tissue. Typical prescriptions — 60 Gy for a breast, 70 Gy for a prostate — are
+    delivered in fractions of about 2 Gy, and the treatment machine tracks that dose through
+    <strong>monitor units</strong> (MUs), a calibrated chamber in the machine's head that
+    counts the beam actually delivered. Converting a prescription into monitor units is the
+    discipline's signature calculation, and it multiplies a handful of measured beam factors.
+  </p>
+  <p>
+    A simplified worked case shows the anatomy of the calculation. Suppose a plan prescribes
+    2 Gy (200 cGy) per fraction to a tumour 8 cm deep, and the machine's calibration says one
+    monitor unit delivers about 1 cGy at the depth of maximum dose (d<sub>max</sub>) for a
+    10 × 10 cm field. The percentage depth–dose (PDD) at 8 cm for a 6 MV beam is about 70 per
+    cent, so each MU deposits roughly 0.70 cGy at the tumour depth. The required monitor units
+    are therefore 200 ÷ 0.70 ≈ 286 MU. Real plans add correction factors for field size,
+    inverse-square distance effects, tissue inhomogeneities (lung transmits dose better than
+    muscle; bone shields it) and — for modern techniques — the intensity map the leaves traced.
+    The method is the point: every factor is measured, every multiplication is checked, and the
+    final MU count is verified by a second person or an independent calculation before the beam
+    is turned on.
+  </p>
+  <p>
+    The three physical rules underneath every calculation are worth memorising as behaviors.
+    Dose <strong>attenuates</strong> exponentially with depth as photons are absorbed and
+    scattered. Dose falls with the <strong>inverse square</strong> of distance from the source
+    (double the distance, quarter the dose rate) — the reason every 5 cm of patient geometry
+    matters. And dose <strong>builds up</strong> below the surface before it decays — which is
+    not a nuisance but the design feature the next section exploits.
+  </p>
+
+  <h2>Beam characteristics: the depth–dose curve</h2>
+  <p>
+    A megavoltage beam's dose versus depth — its percentage depth–dose curve — is the
+    characteristic profile planners live inside. Dose starts low at the very surface, builds
+    over the first millimetres to centimetres as secondary electrons scatter forward, peaks at
+    d<sub>max</sub> (about 1.5 cm for 6 MV, about 2.5 cm for 10–18 MV), then attenuates slowly.
+    The consequences are the trade's favourite facts. <strong>Skin sparing</strong>: the dose
+    peak lies centimetres deep, so the skin itself is largely spared — a huge advantage over
+    the orthovoltage era, and the reason bolus material must sometimes be placed deliberately
+    when the skin <em>is</em> the target. <strong>Multi-beam stacking</strong>: because the
+    beam attenuates slowly, a single beam delivers more dose to the entrance path than the
+    tumour; aimed through the body from several angles, each beam's low-dose entry and exit
+    paths spread dose everywhere, while the peaks and central beams overlap at the target —
+    the geometric heart of conformal therapy.
   </p>
 
   <Widget no="2" caption="percentage depth–dose for a 6 MV beam" widget="plotter" config={pdCfg} />
 
-  <h2>Fractionation is biology, not scheduling</h2>
   <p>
-    Splitting the dose exploits a difference in repair: normal tissue repairs sublethal damage
-    between fractions better than tumours do. Radiobiology's five Rs (repair, reassortment,
-    repopulation, reoxygenation, radiosensitivity) explain why the standard 2 Gy/day schedule
-    works — and why stereotactic regimes that deliver huge doses in few fractions needed new
-    technology to stay safe.
+    <strong>Energy choice</strong> then becomes a matching exercise: higher energies push
+    d<sub>max</sub> deeper and attenuate less (better for deep tumours, worse for surface
+    sparing of everything in between), while lower energies keep dose more contained near the
+    entrance. <strong>Electron beams</strong> obey a different rule with its own neat
+    arithmetic: their dose is deposited within a shallow, fairly sharp range — roughly
+    E/3 centimetres of therapeutic depth for E megaelectronvolts — so a 9 MeV electron beam
+    treats about 3 cm deep and stops, sparing what lies beneath. And <strong>field edges</strong>
+    carry their own character: the penumbra, the zone of partial dose at the boundary, is
+    narrowed by the collimator design and by placing the patient far from the source, and
+    minimising it is what lets planners protect a spinal cord sitting millimetres from a target.
+  </p>
+  <p>
+    <em>Common misconception:</em> radiation "burns through" the skin to reach the tumour, so
+    skin damage is inevitable. The build-up region exists precisely to avoid this — surface
+    dose problems in modern therapy are usually a sign of a deliberate choice (bolus, oblique
+    beams) rather than an unavoidable cost.
   </p>
 
-  <h2>The team behind every beam</h2>
+  <h2>From blocks to leaves: how field shaping evolved</h2>
   <p>
-    Radiation oncology is a triangle: the radiation oncologist prescribes, the medical physicist
-    plans and checks, and the radiation therapist delivers daily — positioning the patient to
-    sub-centimetre accuracy. The discipline's safety culture exists because the beam cannot be
-    seen, felt or taken back.
+    The multileaf collimator's precision is recent history, and its evolution teaches how
+    the physics earns its keep. Early therapy shaped fields by hand: <em>custom blocks</em> —
+    dense alloy cast to the tumour's projected shape, wedged into the beam's path for each
+    treatment — which worked but consumed hours per patient, allowed only one static shape
+    per field, and exposed staff to daily handling. The first multileaf collimators
+    automated the blocking with motorised tungsten leaves; modern ones go further, moving
+    <em>during</em> the treatment so that dozens of changing field shapes deliver an
+    intensity pattern no static block could paint. The clinical payoff is measurable:
+    tumour concavities can be dosed while a nearby spinal cord or parotid gland is
+    protected, and treatment times fell from tens of minutes of fiddling to minutes of
+    automated delivery. The lesson generalises: in this discipline, every mechanical
+    refinement of the beam is a way of buying normal tissue a smaller dose — and every
+    fraction of a gray matters, because the doses that cure tumours are the same doses that
+    hurt healthy tissue when misdelivered.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Fractionation is biology, not scheduling.</strong> Splitting the dose exploits a
+    difference in repair: normal tissue repairs sublethal DNA damage between fractions better
+    than tumours do, and tumours meanwhile reoxygenate (hypoxic cells are radiation-resistant,
+    but dead oxygen-hungry neighbours expose survivors as the tumour shrinks) and reassort into
+    more sensitive cell-cycle phases. Radiobiology's five Rs — repair, reassortment,
+    repopulation, reoxygenation, intrinsic radiosensitivity — explain why the standard 2 Gy/day
+    schedule works, and also why stereotactic regimes delivering huge doses (18–24 Gy) in one
+    to five fractions required new technology — tighter positioning, steeper dose fall-off,
+    image guidance — to stay safe: the fractionation biology changes when the dose per fraction
+    does.
+  </p>
+  <p>
+    <strong>Modern delivery multiplies the physics.</strong> Intensity-modulated therapy
+    (IMRT/VMAT) uses the moving leaves to vary dose rate across the field hundreds of times
+    per beam, carving high dose around organs-at-risk with concavities no single field could
+    produce. Image-guided radiation therapy (IGRT) adds daily on-board imaging — cone-beam CT
+    or marker tracking — because tumours move with breathing and patients change day to day;
+    sub-millimetre positioning is now routine. Flattening-filter-free beams trade beam
+    uniformity for very high dose rates, which is what makes stereotactic treatments short
+    enough for patients to hold still. Each layer is the same linac with a sharper question
+    asked of it.
+  </p>
+  <p>
+    <strong>The team and the safety net are part of the physics.</strong> Radiation oncology is
+    a triangle: the radiation oncologist prescribes, the medical physicist plans, calibrates
+    and checks, and the radiation therapist delivers daily — positioning the patient to
+    sub-centimetre accuracy and running the pre-treatment verification checklist. The
+    profession's safety culture (independent MU verification, machine QA with daily, monthly
+    and annual tolerances, incident-learning systems) exists because the beam cannot be seen,
+    felt or taken back — and because history's radiotherapy accidents were, almost uniformly,
+    physics errors that a verification layer would have caught. Learning the linac is learning
+    both halves of that sentence.
+  </p>
+  <p>
+    <strong>Quality assurance gives the physics its daily numbers.</strong> Machine QA runs
+    at three cadences: daily checks (a few minutes — output constancy, laser alignment,
+    safety interlocks and door) before the first patient; monthly checks (a full set of
+    output, energy and flatness measurements against tolerance); and annual
+    comprehensive calibration by the physicist with a water-tank scanning system that maps
+    the entire beam. Tolerances are tight by design — output, for instance, must stay
+    within about 2 per cent of baseline, because a systematic delivery error repeated over
+    thirty fractions compounds into a real dose error. The therapist's role in the same
+    chain: the pre-treatment checks (interlocks, imaging-couch calibration), in-vivo
+    dosimetry on selected patients, and the discipline of never treating on a machine
+    whose morning check failed. QA is the least glamorous page of the physics chapter and
+    the one the profession would name if asked which keeps patients safest.
   </p>
 
   <p class="sources"><strong>Sources:</strong> ARRT Radiation Therapy Content Specifications; Khan, <em>The Physics of Radiation Therapy</em>; Washington &amp; Leaver, <em>Principles and Practice of Radiation Therapy</em>.</p>

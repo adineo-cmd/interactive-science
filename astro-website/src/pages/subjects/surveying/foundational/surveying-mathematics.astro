@@ -27,38 +27,176 @@ const errorCfg = {
 <TopicPage slug="subjects/surveying/foundational/surveying-mathematics">
   <h2>The idea</h2>
   <p>
-    Surveying is applied geometry with legal consequences — and its mathematics is dominated by
-    one discipline: the management of error. Every angle and distance is slightly wrong, so the
-    surveyor's real craft is measuring how wrong the network is, making it average out, and
-    proving the work with closures.
+    Surveying is applied geometry with legal consequences: the positions it establishes become
+    property boundaries, construction references and maps, and people make expensive decisions
+    on the answers. Its mathematics is therefore dominated by one discipline above all others —
+    the <strong>management of error</strong>. Every angle and every distance, no matter how good
+    the instrument, is slightly wrong; the surveyor's real craft is measuring <em>how</em> wrong
+    the network is, arranging the geometry so errors average out rather than accumulate,
+    proving the work with closures, and finally distributing the residuals honestly. Beneath
+    that sits classical trigonometry — the raw machinery that turns angles and distances into
+    coordinates — and, at the planetary scale, the geodesy that quietly corrects the flat-Earth
+    assumptions of local work.
+  </p>
+  <p>
+    An example frames the field. A crew must place a building corner exactly 43.267 m from a
+    road monument at a bearing of 132°40′. Everything in the sentence is a surveyor's problem:
+    the monument itself carries the accumulated error of the network that established it; the
+    bearing is an angle measured against a reference direction that (as geodesy will show)
+    depends on which "north" you mean; the distance will be corrected for slope, temperature
+    and the map projection's scale factor; and the final coordinates will be quoted to the
+    millimetre with a defensible uncertainty. Three bodies of mathematics — trigonometry, error
+    theory, geodesy — make that sentence a computation instead of a hope.
   </p>
 
   <Widget no="1" caption="errors: systematic, random, blunders — and propagation" widget="equationStep" config={errorCfg} />
 
-  <h2>Error grows with the square root, not the count</h2>
+  <h2>Geometry and trigonometry: turning angles into positions</h2>
   <p>
-    The most useful single fact in surveying: independent random errors add in quadrature. A
-    traverse of six legs, each with a 10-second angle error, closes with about 24 seconds of
-    angular misclosure — not 60. Longer traverses wander more slowly than intuition fears, and
-    (per leg length) shorter legs make the position error worse. Drag the sliders and check both.
+    The surveyor's basic output is <strong>coordinates</strong> — eastings and northings (and
+    elevations) for each point — and the engine that produces them is trigonometry. Two
+    measurements dominate: <strong>distances</strong> (once by steel tape, now almost always by
+    electronic distance measurement, EDM, timing light pulses to a prism to the millimetre) and
+    <strong>angles</strong> (horizontal and vertical, measured by total station). From an
+    instrument station of known coordinates, one bearing and one distance fix the next point:
+    with azimuth 132°40′ (measured clockwise from north) and horizontal distance 43.267 m, the
+    offsets are ΔN = 43.267 × cos(132°40′) ≈ −29.32 m and ΔE = 43.267 × sin(132°40′) ≈ +31.81 m —
+    the cosines and sines of the bearing <em>are</em> the geometry. Repeating this leg after leg
+    is a <strong>traverse</strong>, the backbone method of boundary and construction surveying;
+    heights ride along through vertical angles: a target 50 m away observed at +30° elevation
+    stands 50 × tan(30°) ≈ 28.87 m above the instrument's line of sight, corrected for the
+    instrument's own height and for Earth curvature over distance (which is where geodesy
+    starts intruding).
+  </p>
+  <p>
+    The classical repertoire extends the same trigonometry. <strong>Triangulation</strong>
+    builds networks from measured angles in triangles (the law of sines fixes every side from
+    one baseline); <strong>trilateration</strong> does it from measured distances (law of
+    cosines); <strong>intersection and resection</strong> fix a point from angles only —
+    resection (standing at an unknown point, sighting three known ones, solving for your own
+    position) is the classic field trick. Right-triangle checks never disappear: the 3-4-5
+    triangle (or any multiple) squares a corner without a theodolite, and stadia reductions,
+    grade percentages (a 5 per cent grade rises 5 m per 100 m — an angle of atan(0.05) ≈ 2.86°)
+    and circular curve geometry (deflection angles, chord lengths and arc lengths tied by
+    radius: arc = radius × central angle in radians) all reduce to the same trigonometric
+    bones. The professional discipline is bookkeeping: bearings converted consistently between
+    azimuths and quadrants, coordinates carried forward leg by leg, angles summed against their
+    theoretical totals (the interior angles of a closed traverse must total (n − 2) × 180°) —
+    arithmetic so routine that its failure is itself a diagnostic of something worse.
+  </p>
+
+  <h2>Error and uncertainty: the surveyor's real mathematics</h2>
+  <p>
+    No measurement is exact, and surveying's contribution is the honest taxonomy. A
+    <strong>blunder</strong> is a mistake: mistargeting a prism, transcribing a 4 as a 7,
+    booking an angle against the wrong station. Statistics cannot fix blunders; procedure
+    prevents them — double-centring observations, closing loops, independent checks, and the
+    golden habit of computing <em>in the field</em> so a slip is caught while the crew is still
+    standing there. A <strong>systematic error</strong> follows a rule and can be corrected:
+    a steel tape calibrated 5 mm long adds 5 mm per measurement (a scale correction); a
+    collimation tilt biases every zenith angle identically; EDMs demand atmospheric and
+    temperature corrections; the level's line of sight demands equal-length sights. The
+    systematic category is where the instrument knowledge lives, and correcting it is a
+    physics problem. <strong>Random error</strong> is what remains after both: small,
+    equally likely in either direction, following the normal distribution — and it is managed
+    statistically, never eliminated.
   </p>
 
   <Widget no="2" caption="traverse misclosure vs leg count, length and precision" widget="sliderLab" config={traverseCfg} />
-
-  <h2>Closures: the surveyor's receipt</h2>
   <p>
-    Because error is inevitable, honest surveys are designed to check themselves: traverses close
-    on their starting point, level loops return to their start height, and the residuals reveal
-    the accumulated error before adjustment distributes it. A survey that never closes is a
-    survey you cannot defend — which matters twice over when the corners define who owns what.
+    The most useful single fact in the field is how independent random errors combine: they
+    add <strong>in quadrature</strong>. If result R = a + b with independent errors σ<sub>a</sub>
+    and σ<sub>b</sub>, then σ<sub>R</sub>² = σ<sub>a</sub>² + σ<sub>b</sub>² — errors of
+    opposite sign partially cancel, so the total grows with the <em>square root</em> of the
+    number of contributors, not the count. The widget above makes this concrete: a traverse of
+    six legs, each angle measured to 10 seconds, closes with an expected angular misclosure of
+    10 × √6 ≈ 24.5 seconds — not 60 — because roughly half the leg errors came back negative.
+    Lengthen the traverse and it wanders more slowly than intuition fears; shorten the legs
+    (at fixed leg count) and the <em>position</em> error at closure worsens, because each
+    angle error turns into position error proportional to leg length — the reason long,
+    well-conditioned legs beat many short ones. Averaging repeated measurements buys precision
+    the same way: n repetitions reduce the random component by √n, which is why instrument
+    specifications quote angles "per DIN 18723" standard and why crews turn angles both
+    face-left and face-right (which also cancels systematic collimation — procedure and
+    statistics cooperating).
+  </p>
+  <p><em>Common misconception:</em> that precision and accuracy are the same, or that more decimal places mean a better survey. Precision is repeatability; accuracy is closeness to truth — a systematically short tape produces beautifully precise, confidently wrong distances. The professional standard is neither decimal decoration nor uncorrected repetition, but a stated uncertainty that is defensible: the surveyor certifies how wrong the answer might be, and the closure evidence is the receipt.</p>
+
+  <h2>Closures and adjustment: the surveyor's receipt</h2>
+  <p>
+    Because error is inevitable, honest surveys are designed to <strong>check themselves</strong>.
+    A traverse closes on its starting point (or a second known point), a level loop returns to
+    its start height, and the observed-versus-known difference — the <strong>misclosure</strong> —
+    reveals the accumulated error before anything is finalised. The closure is compared against
+    the specification (a boundary traverse might be held to a linear misclosure of 1 part in
+    10,000 or better; a precise levelling loop to millimetres per kilometre); a failure means
+    find the blunder, not adjust around it. Passing, the misclosure is <strong>distributed</strong>:
+    classically, angular misclosure is spread equally among the angles (each angle is
+    statistically identical), and linear misclosure is distributed among the coordinate
+    differences in proportion to leg length — the <em>compass rule</em> — though the
+    professional gold standard is <strong>least-squares adjustment</strong>, which weights
+    every observation by its estimated uncertainty and finds the unique set of corrections
+    that minimises their weighted squares, yielding not just adjusted coordinates but rigorous
+    error ellipses around every point. The closure logic scales from a two-hour field exercise
+    to the national coordinate frameworks — every rigorous position in the world is the
+    adjusted outcome of networks that were designed to catch their own mistakes.
   </p>
 
-  <h2>Geodesy changes the geometry</h2>
+  <h2>Geodesy basics: when the Earth stops being flat</h2>
   <p>
-    Over distances, the Earth stops being flat: lines converge, ellipsoid heights differ from
-    sea-level heights, and grid bearings drift from true. The FS exam's mathematics section
-    includes geodesy for this reason — the modern surveyor computes on a curved reference
-    ellipsoid, with the flat-Earth version as a local approximation, not a truth.
+    Over short lines, flat-Earth arithmetic is fine; over hundreds of metres and more, the
+    planet's shape enters the equations. The Earth is modelled as an <strong>oblate
+    ellipsoid</strong> (equatorial radius about 6,378 km, flattened by about 1 part in 298 —
+    the parameters of WGS84/GRS80 are the modern standard), and surveying mathematics
+    inherits three consequences. First, <strong>meridians converge</strong>: lines of true
+    north are not parallel, so bearings measured against true north and bearings measured
+    against a map grid's north differ by the convergence angle — which grows east-west from
+    the projection's central meridian — and grid azimuths must be corrected to true. Second,
+    <strong>map projections trade distortion</strong>: a conformal projection (UTM zones,
+    national state-plane systems) preserves angles locally but imposes a small scale factor on
+    distances — grid distance and ground distance differ by parts per hundred thousand — so
+    professional work applies combined scale-and-height factors when converting measurements
+    between the ground, the ellipsoid and the grid. Third, <strong>heights are two different
+    quantities</strong>: ellipsoidal heights come free from GNSS (positions relative to the
+    mathematical ellipsoid), but engineering and law use orthometric heights relative to mean
+    sea level — an equipotential surface called the <strong>geoid</strong>, which undulates
+    by tens of metres against the ellipsoid. The conversion H = h − N (orthometric =
+    ellipsoidal minus geoid separation) is a daily operation, which is why geoid models are
+    maintained and updated as carefully as coordinate datums themselves.
+  </p>
+  <h2>Going deeper</h2>
+  <p>
+    A short worked passage shows least-squares adjustment earning its reputation over the
+    compass rule. Suppose a small loop levels between four benchmarks, with the observed
+    height differences carrying unequal weights — a 2 km leg of careful levelling (standard
+    deviation, say, 4 mm) and a 0.5 km leg through difficult ground (5 mm). The naive fix
+    distributes the loop's 9 mm misclosure in proportion to distance; the least-squares fix
+    distributes it in proportion to <em>variance</em>, so the statistically weaker observation
+    absorbs more correction — and the same computation yields, as a by-product, the
+    covariance matrix of the adjusted heights: an <strong>error ellipse</strong> (in plan
+    networks, literally an ellipse) around every point, with axes stating how many
+    millimetres the position might plausibly err in any direction. The ellipse is the
+    profession's unit of honesty: boundary corners are certified to it, construction
+    tolerances are set against it, and network design — adding which observations would
+    shrink which ellipses — is optimisation on top of it. Surveying's deepest claim is
+    exactly this: not that its numbers are perfect, but that its uncertainty is
+    <em>engineered and stated</em>.
+  </p>
+  <p>
+    GNSS quietly rewrote the geodesy lesson for practice: a rover receiving satellite signals
+    computes on the global ellipsoid directly, and real-time kinematic (RTK) techniques deliver
+    centimetre-level positions in seconds — but the positions are only as good as the datum
+    they are expressed in (WGS84 as broadcast, national realisations like NAD83 or ETRS89 for
+    legal work), and heights still demand the geoid model. The modern surveyor therefore
+    computes on a curved reference ellipsoid with the flat-Earth version as a local
+    approximation — and the FS exam's mathematics section includes geodesy precisely because
+    the approximation now needs to be consciously chosen, not unconsciously assumed. Deeper
+    still lie the field's open edges: rigorous least-squares network design (where should
+    observations be added to shrink which error ellipses?), atmospheric error modelling for
+    GNSS (ionosphere, troposphere, multipath), time-dependent datums as plate tectonics drifts
+    continents centimetres per year, and the metrology of certainty itself — because in a
+    profession whose outputs become deeds and steel, the mathematics of "how wrong might this
+    be?" is not an appendix to the answer. It is the answer.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NCEES FS exam specifications; Ghilani &amp; Wolf, <em>Elementary Surveying</em>; Buckner, <em>Surveying Computations</em>.</p>

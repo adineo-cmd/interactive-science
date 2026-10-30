@@ -29,39 +29,191 @@ const probCfg = {
 <TopicPage slug="subjects/actuarial-science/foundational/probability-for-actuaries">
   <h2>The idea</h2>
   <p>
-    Actuarial science is probability applied to money with dates attached. Its founding insight:
-    while individuals are unpredictable, pools are forecastable, and the mathematics of that
-    forecastability — expectation for price, variance for capital — can be made exact. The SOA's
-    Exam P syllabus is essentially the toolkit: distributions, moments, and conditional reasoning
-    under uncertainty.
+    Insurance rests on a strange and wonderful fact: nobody can predict whether a specific
+    house will burn this year, yet an insurer holding a hundred thousand houses can state
+    its total fire losses for next year within a few percent. Probability is the mathematics
+    of that forecastability, and actuarial science is probability applied to money with
+    dates attached. Two quantities run the whole business: the <em>expectation</em> of
+    losses, which sets the price floor, and the <em>variance</em>, which sets the capital
+    that absorbs the bad years. Every other actuarial idea is elaboration on that pair.
+  </p>
+  <p>
+    The founding exam of the profession (the Society of Actuaries' Exam P) is essentially
+    the toolkit, in three shelves: general probability and combinatorics (how to reason
+    about conditions and count possibilities), random variables and distributions (the
+    catalogue of standard shapes of uncertainty), and moments — expectation, variance and
+    their kin (the summary numbers that make pricing and capital possible). This chapter
+    walks the shelves in order, but with the actuary's eye: each tool is introduced by the
+    money question it answers.
+  </p>
+  <p>
+    One warning belongs up front. Exam-style probability rewards a specific habit: never
+    compute with a story when a definition will do. Events are sets; probabilities are
+    measures on them; conditions shrink the measure. Almost every famous probability error,
+    in courtrooms and casinos alike, is a definition quietly replaced by a plausible
+    narrative.
   </p>
 
   <Widget no="1" caption="from uncertainty to a defensible price" widget="equationStep" config={probCfg} />
 
-  <h2>Pricing a pool, live</h2>
+  <h2>General probability and combinatorics</h2>
   <p>
-    Suppose each of 2,000 policies has a 5% chance of a $20,000 claim. Expected claims are
-    $2,000,000 — so a fair premium is $1,000, loaded for profit and expenses. The standard
-    deviation of the total, √(n·p(1−p))·severity, tells you how volatile that book is and how much
-    capital a bad year could burn. Drag the sliders: more policies, proportionally smoother ride.
+    The indispensable tool is <em>conditional probability</em> — how a probability changes
+    when information arrives — and its inversion formula, <em>Bayes' theorem</em>, which
+    converts "the probability of evidence given the cause" into "the probability of the
+    cause given the evidence." The classic worked example shows why the inversion is not
+    optional. A fraud-screening model flags 99 percent of fraudulent claims (sensitivity)
+    and wrongly flags 5 percent of honest ones. If 1 percent of claims are fraudulent, what
+    is the chance that a flagged claim actually is fraudulent? Out of 10,000 claims: 100
+    are fraudulent and 99 get flagged; 9,900 are honest and 495 get flagged. So a flag
+    means fraud with probability 99 ÷ (99 + 495) ≈ 16.7 percent. Nearly five out of six
+    flags are false — not because the model is bad, but because the base rate is small.
+    Actuaries meet this daily in fraud triage, in diagnostic-style underwriting evidence,
+    and in any "the test is 99 percent accurate" headline.
+  </p>
+  <p>
+    Combinatorics is the counting engine beneath every probability, and two patterns cover
+    most ground. <em>Combinations</em> (order does not matter) count selections: choosing 3
+    of 20 claims at random for audit gives C(20,3) = 1,140 distinct audit sets — the
+    denominator when you want the probability the sample contains both suspect claims.
+    <em>The birthday-style surprise</em> shows why naive multiplication misleads: in a
+    23-person office, the chance that two share a birthday exceeds 50 percent, because the
+    question is really about 253 pairs, not 23 people. Insurance books are full of such
+    pairings — correlated policies, common exposures — and the counting instinct (what is
+    the population of ways this can go wrong?) is what separates sound aggregate modelling
+    from wishful addition.
+  </p>
+  <p>
+    <em>Independence</em> is the property that lets probabilities multiply, and knowing
+    when it holds is half the practice. Two events are independent exactly when learning
+    one does not change the other's probability — P(A and B) = P(A) × P(B) — and most
+    actuarial modelling is an argument about whether that equation applies. Separate
+    drivers in separate towns: plausibly yes. Fire losses across flats in one building:
+    absolutely not — one fire takes the whole floor. The multiplication rule builds big
+    models from small ones; its misuse builds big mistakes from small assumptions, which
+    is why every independence claim in a model deserves the question a regulator would
+    ask: what happens in the year the equation fails?
+  </p>
+  <p>
+    <em>Common misconception:</em> P(A given B) and P(B given A) are interchangeable. They
+    are not, and confusing them is the <em>prosecutor's fallacy</em>: "the match is
+    one-in-a-million, so the chance this defendant is innocent is one-in-a-million" ignores
+    that a million-odd people also match. In the fraud example: P(fraud given flag) ≈ 17
+    percent while P(flag given fraud) = 99 percent — the same evidence, two very different
+    probabilities, and the whole of Bayesian practice lives in the space between.
+  </p>
+
+  <h2>Random variables and distributions</h2>
+  <p>
+    A <em>random variable</em> is a quantity whose value is uncertain — the number of claims
+    next quarter, the size of the next claim — and a <em>distribution</em> is its shape:
+    which values occur with what probabilities. The exam's famous zoo is really a catalogue
+    of behaviours, each tied to a situation. The <em>binomial</em> counts successes in n
+    independent trials with probability p each (how many of 2,000 policies claim); its mean
+    is np and its variance np(1 − p). The <em>Poisson</em> counts rare events in time or
+    space (claims per week, hurricanes per season); it has one parameter, and its mean and
+    variance are both λ — the signature of "events at a steady rate, independently." The
+    <em>exponential</em> models waiting times between such events, and is
+    <em>memoryless</em>: having waited ten minutes tells you nothing about the next ten —
+    the mathematically pure form of "the light never changes faster for having waited."
+    The <em>normal</em> is the shape that emerges when many small independent effects sum
+    (the central limit theorem, below), and the heavy-tailed families — lognormal, Pareto —
+    model claim <em>severities</em>, where a fire that totals a factory must be possible.
+  </p>
+  <p>
+    The frequency–severity split is the actuary's first modelling decision: total loss =
+    (number of claims) × (sizes of claims), and the two random pieces behave differently —
+    counts are often Poisson-ish and well behaved, while severities carry the heavy tails.
+    Choosing them separately, then combining, is what makes the arithmetic of a whole
+    insurance book tractable.
+  </p>
+  <p>
+    Distributions are read through a small set of standard lenses worth naming once. The
+    <em>cumulative distribution function</em> F(x) answers "what is the probability of
+    being at or under x?" and is the universal translator between continuous densities and
+    actual numbers — a pricing question like "what loss level will one-year-in-twenty
+    exceed?" is asking F's inverse (its 95th percentile). <em>Discrete</em> variables take
+    separated values and are described by point probabilities; <em>continuous</em> ones
+    take ranges and are described by densities, where "the probability of exactly 2.5" is
+    zero and only intervals carry mass. Transformations matter too: an insurer's deductible
+    turns every claim size X into a payment of (X − d) when X is large enough — a random
+    variable built from a random variable, and the ordinary machinery of expectation and
+    variance handles the conversion without ceremony.
+  </p>
+
+  <h2>Expectation, variance and moments</h2>
+  <p>
+    <em>Expectation</em> is the long-run average: the probability-weighted centre of the
+    distribution, and the only defensible starting point for a price. Its superpower is
+    <em>linearity</em> — the expectation of a sum is the sum of the expectations, no
+    independence required — which is why an insurer can price a million heterogeneous
+    policies by summing expected costs. <em>Variance</em> (the average squared spread
+    around the mean) prices the uncertainty; its square root, the standard deviation, is
+    the "typical miss." Higher <em>moments</em> refine the portrait: skewness (do losses
+    lean right?) and kurtosis (how fat is the tail?), which is why they are called
+    moments — successive integrals of powers, like moments of mass in mechanics.
+  </p>
+  <p>
+    Run the pool arithmetic with the widget's defaults: 2,000 policies, each with a 5
+    percent chance of a 20,000-dollar claim. Expected total claims: 2,000 × 0.05 × 20,000
+    = 2,000,000 dollars — the fair premium is 1,000 dollars per policy before expenses and
+    profit loading. But the total is random: its standard deviation is
+    √(n·p·(1 − p)) × severity = √95 × 20,000 ≈ 195,000 dollars, a coefficient of variation
+    near 10 percent. Quadruple the book to 8,000 policies and the expected loss quadruples,
+    but the standard deviation only doubles (it grows as √n), so the relative volatility
+    <em>halves</em>. That 1-over-√n shrinkage is the law of large numbers wearing a
+    business suit: scale itself is the oldest risk-reduction technology, and it is why
+    pooling — not prediction — is insurance's core competence.
   </p>
 
   <Widget no="2" caption="expected cost, loading, and volatility of the pool" widget="sliderLab" config={premCfg} />
 
-  <h2>Why moments matter more than formulas</h2>
   <p>
-    The exam's distribution zoo — binomial, Poisson, exponential, normal — is really a catalogue of
-    behaviours: which model has heavy tails, which arises from rare events, which sums nicely.
-    Heavy tails are the actuary's professional obsession: a distribution's mean can be perfectly
-    behaved while its worst percentile sinks the company.
+    The <em>central limit theorem</em> then ties the shelves together: sums of many
+    independent contributions — like a large pool of mostly claim-free policies — are
+    approximately normal regardless of the individual shapes, which is why the normal
+    distribution haunts aggregate pricing and why "within two standard deviations" is
+    meaningful shorthand even when nobody's individual loss is remotely bell-shaped.
+  </p>
+  <p>
+    Skewness earns a final, practical note: in heavy-tailed loss distributions the
+    <em>mean sits above the median</em>, often by a lot. The typical claim is small — most
+    fender-benders, most power-outages — but the premium must be set by the mean, because
+    the rare enormous claims really arrive and really must be paid. This is why
+    "average claim" in a press release and "expected loss" in a rate filing are different
+    numbers with different jobs, and why reinsurance exists: the tail above some threshold
+    is the part of the distribution worth selling to someone whose balance sheet is sized
+    for it. Price the mean, capitalise the tail, and never confuse the two — that is the
+    whole profession in one sentence.
   </p>
 
-  <h2>From Exam P to the profession</h2>
+  <h2>Going deeper</h2>
   <p>
-    Later syllabi add time and finance: Exam FM's interest theory prices money across dates, and
-    life contingencies merges mortality tables with discounting to value pensions and insurance.
-    The through-line never changes — quantify the uncertainty, price it honestly, and hold enough
-    capital that being wrong is survivable.
+    The exam toolkit has deeper rooms. <em>Moment-generating functions</em> encode all the
+    moments of a distribution in one object, and their payoffs are practical: sums of
+    independent variables get MGFs that multiply (making aggregate loss distributions
+    computable), and an MGF, when it exists, identifies the distribution completely — the
+    rigorous version of "this looks normal." <em>Joint distributions and covariance</em>
+    quantify how variables move together, and they sharpen the limits of pooling: the
+    1-over-√n smoothness assumes independence, and the assumptions fail spectacularly when
+    policies share a perils — hurricanes, wildfires, cyber events hit thousands of policies
+    at once, converting "diversified" books into single bets. This is why catastrophe
+    insurance is reinsurance-heavy: correlation, not frequency, is what actually breaks
+    insurers.
+  </p>
+  <p>
+    Later theory builds upward from the same base. <em>Ruin theory</em> asks the founding
+    question directly — with premium income and random claims, what is the probability the
+    fund ever falls below zero? — and answers it with the adjustment coefficient and
+    Cramér–Lundberg bounds, turning "hold enough capital" into a formula. <em>Credibility
+    theory</em> blends a group's own experience with the class average, weighting by how
+    much data deserves how much trust — Bayes made actuarial. Beyond Exam P, the syllabi
+    add time: Exam FM's interest theory prices money across dates (discounting, annuities,
+    bonds), and life contingencies fuses mortality tables with discount factors into the
+    valuation of pensions and life products. The open frontier is statistical:
+    heavier-than-Pareto tails in a warming climate, correlated systemic risks, and machine-
+    learned pricing that regulators now police for bias — the same two questions, price and
+    capital, in an era with sharper tools and sharper edges.
   </p>
 
   <p class="sources"><strong>Sources:</strong> SOA Exam P/FM syllabi; Ross, <em>A First Course in Probability</em>; Klugman, Panjer &amp; Willmot, <em>Loss Models</em>.</p>

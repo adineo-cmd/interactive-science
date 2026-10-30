@@ -12,39 +12,206 @@ const keelingCfg = {
   crossings: false,
   height: 350,
 };
+
+const fluxCfg = {
+  params: [
+    { name: 'e', label: 'annual emissions', min: 2, max: 15, step: 0.5, value: 10, unit: 'GtC/yr' },
+    { name: 'f', label: 'airborne fraction', min: 0.2, max: 0.6, step: 0.05, value: 0.45 },
+  ],
+  readouts: [
+    { label: 'carbon staying airborne', expr: 'e * f', unit: 'GtC/yr' },
+    { label: 'yearly CO₂ rise', expr: 'e * f / 2.13', unit: 'ppm' },
+    { label: 'years to add 100 ppm', expr: '100 / (e * f / 2.13)', unit: 'yr' },
+  ],
+};
 ---
 <TopicPage slug="subjects/environmental-science/foundational/carbon-cycle-climate">
   <h2>The idea</h2>
   <p>
-    Carbon is the skeleton of life and the currency of climate. It cycles through four great
-    reservoirs — <strong>atmosphere</strong> (~880 GtC), <strong>oceans</strong> (~38,000 GtC),
-    <strong>soils</strong> (~1,600 GtC) and <strong>living vegetation</strong> (~550 GtC) —
-    moved by photosynthesis (~120 GtC/yr), respiration, weathering and volcanism. The cycle ran
-    in balance for millennia. Since about 1850, humans have been adding a bonus line to the
-    ledger: burning fossil carbon that took hundreds of millions of years to bury, at a rate of
-    roughly <strong>10 GtC per year</strong> (≈37 Gt of CO₂).
+    Carbon is the skeleton of life and the currency of climate. Every living thing is built on
+    carbon chains, and the planet trades carbon between four great reservoirs like a bank
+    moving money between accounts: the <strong>atmosphere</strong> (~880 billion tonnes of
+    carbon, GtC), the <strong>oceans</strong> (~38,000 GtC — the giant account), <strong>soils</strong>
+    (~1,600 GtC) and <strong>living vegetation</strong> (~550 GtC). The flows between them —
+    <em>fluxes</em> — are huge and balanced: photosynthesis pulls roughly 120 GtC out of the air
+    every year, and respiration, decay and fire push almost exactly the same amount back. For
+    ten thousand years the books balanced at about 280 ppm of atmospheric CO₂.
+  </p>
+  <p>
+    Since about 1850, humans have been adding a bonus line to the ledger: burning fossil carbon
+    — coal, oil, gas — that plants buried over hundreds of millions of years, at a rate of
+    roughly <strong>10 GtC per year</strong> (about 37 billion tonnes of CO₂). Geology suddenly
+    became an annual line item.
   </p>
 
   <Widget no="1" caption="the Keeling curve — direct CO₂ measurement at Mauna Loa since 1958; the sharpest turn in the record" widget="plotter" config={keelingCfg} />
 
   <p>
-    Charles Keeling started measuring in 1958 at 315 parts per million (ppm). The line has risen
-    every year since and now passes 420 ppm — the highest in at least 800,000 years of ice-core
-    record. Each ppm is 2.13 billion tonnes of carbon, and about half of what we emit is absorbed
-    by oceans and land; the rest accumulates here.
+    Charles David Keeling started measuring CO₂ on Mauna Loa in 1958 and got 315 parts per
+    million (ppm). The line has risen every year since and now passes 420 ppm — the highest in
+    at least 800,000 years of ice-core record. The arithmetic of the curve is worth learning,
+    because it recurs everywhere in climate science: each ppm is 2.13 billion tonnes of carbon,
+    and only about <em>half</em> of what we emit stays airborne — oceans and land absorb the
+    rest. The panel below lets you run the ledger yourself: set emissions and the airborne
+    fraction, and read the yearly rise and how fast that adds up.
   </p>
 
-  <h2>Why CO₂ moves the thermostat</h2>
-  <ul>
-    <li><strong>The greenhouse mechanism:</strong> sunlight passes through CO₂ easily; the infrared Earth re-radiates gets absorbed and re-emitted back down. More CO₂, thicker blanket.</li>
-    <li><strong>The measured result:</strong> global average surface temperature is roughly 1.2–1.5 °C above the late-1800s baseline, with 2024 the hottest calendar year recorded.</li>
-    <li><strong>The physics is old news:</strong> Eunice Foote (1856) and John Tyndall (1859) demonstrated CO₂'s heat-trapping in the laboratory before cars existed.</li>
-    <li><strong>The policy marker:</strong> the 2015 Paris Agreement set holding warming "well below 2 °C", aiming for 1.5 °C — the curve above is what those numbers fight against.</li>
-  </ul>
+  <Widget no="2" caption="the emission ledger — emissions × airborne fraction, in the units that matter" widget="sliderLab" config={fluxCfg} />
+
+  <h2>The four ledgers of the carbon cycle</h2>
   <p>
-    Watch the interactions: warmer oceans absorb <em>less</em> CO₂ and hold less oxygen;
-    thawing permafrost releases more methane. Feedbacks, not linearity, are why the problem
-    deserves the whole field of environmental science.
+    The <strong>vegetation ledger</strong> is the fast one: forests and plankton draw down
+    carbon each growing season and exhale it each decay season — a heartbeat of months. The
+    <strong>soil ledger</strong> is the slow one and easy to underestimate: dead roots and leaf
+    litter hold about three times the carbon of all living plants, and draining peatlands or
+    ploughing prairie releases it over decades. The <strong>ocean ledger</strong> is the
+    colossus — CO₂ dissolves directly at the surface (cold water dissolves more, which is why
+    warming <em>weakens</em> this sink) and is exported to depth by sinking organic matter and
+    cold, dense polar water. It has quietly absorbed roughly a quarter of all human emissions,
+    at a price: dissolved CO₂ forms carbonic acid, and surface-ocean pH has slipped from about
+    8.2 to 8.1 — a 30% jump in acidity that stresses shell-building life.
   </p>
-  <p class="sources"><strong>Sources:</strong> NOAA Global Monitoring Laboratory (Mauna Loa data); IPCC AR6 (2021); Global Carbon Budget.</p>
+  <p>
+    And beneath the fast cycle runs the <strong>geological cycle</strong>: volcanism exhales
+    carbon from the deep Earth at only about 0.1–0.2 GtC per year, while rock weathering and
+    the burial of marine shells and plankton pull carbon down just as slowly. That trickle
+    matters because it is the original climate thermostat — over millions of years it
+    compensated for a Sun 4% fainter in Earth's youth and set the ancient CO₂ levels — but it
+    is a thermostat with geological hands: it cannot respond to a century-scale jolt, which is
+    precisely what fossil burning delivered.
+  </p>
+
+  <h2>The greenhouse effect: the mechanism</h2>
+  <p>
+    Start with the air itself: 78% nitrogen, 21% oxygen, 0.9% argon — and only about 0.042%
+    CO₂. How can a trace gas matter at all? Because of what it <em>does</em> with light. The
+    Sun's energy arrives mostly as visible light, which N₂, O₂ and CO₂ all ignore; it warms
+    the surface, and the surface re-radiates that energy as <strong>infrared</strong>. Here
+    nitrogen and oxygen stay passive, but CO₂, water vapour and methane absorb IR strongly —
+    their molecules flex and vibrate at exactly those wavelengths — and re-emit the energy in
+    all directions, including back down. More of these gases means a thicker optical blanket.
+    The effect is not hypothetical: without any greenhouse effect, Earth's average surface
+    temperature would be about −18 °C instead of +15 °C; the natural greenhouse effect is
+    worth 33 degrees, and the argument is strictly about the <em>extra</em> thickness we are
+    adding.
+  </p>
+  <p>
+    The physics was measured before the industrial revolution finished: Eunice Foote (1856)
+    and John Tyndall (1859) demonstrated CO₂'s heat-trapping in the laboratory; Svante Arrhenius
+    calculated in 1896 that doubling CO₂ would warm the planet by several degrees. The modern
+    numbers: the doubling of CO₂ since pre-industrial times (280 → 420+ ppm, not yet doubled)
+    has already pushed global average surface temperature roughly 1.2–1.5 °C above the
+    late-1800s baseline, with 2024 the hottest calendar year on record. The 2015 Paris
+    Agreement set holding warming "well below 2 °C", aiming for 1.5 °C — the Keeling curve
+    above is what those numbers fight against.
+  </p>
+  <p>
+    Why are scientists confident the added CO₂ is <em>ours</em>? Three fingerprints. Fossil
+    carbon is ancient, so it is depleted of carbon-13 and contains no carbon-14 — and
+    atmospheric ratios of both isotopes are shifting exactly as burning old carbon predicts
+    (the "Suess effect"). Atmospheric oxygen is declining in lock-step with the CO₂ rise,
+    as combustion consumes it. And ice cores show 800,000 years in which CO₂ never left the
+    180–300 ppm band — until the last two centuries.
+  </p>
+  <p>
+    The system also answers back. Warmer air holds more water vapour — itself a greenhouse
+    gas — which amplifies warming; melting ice replaces white, reflective surface with dark,
+    absorptive ocean (the <em>ice–albedo feedback</em>); thawing permafrost releases methane;
+    warmer oceans absorb <em>less</em> CO₂. Feedbacks, not linearity, are why the problem
+    deserves the whole field of environmental science — and why the response of clouds, the
+    hardest feedback to model, remains the largest single uncertainty.
+  </p>
+
+  <h2>Acid rain and ozone: the other two atmospheric wounds</h2>
+  <p>
+    Climate change is not the only way combustion rewrote the sky. <strong>Acid rain</strong>
+    (4.3) comes from sulphur dioxide and nitrogen oxides released by coal burning and vehicle
+    engines; in the atmosphere they oxidise into sulphuric and nitric acid and fall with rain.
+    Natural rain is already mildly acidic (pH ≈ 5.6, from dissolved CO₂), but polluted
+    precipitation reached pH 4 and below — ten to a hundred times more acidic — acidifying
+    lakes (killing fish eggs), damaging forests, and dissolving limestone buildings and
+    statues at visible rates. The fixes were engineering: flue-gas scrubbers on power plants,
+    catalytic converters on cars, and the 1990 US Clean Air Act Amendments, which capped SO₂
+    emissions with a tradable-permit market. Acid rain is now the environmental movement's
+    clearest success story: emissions fell over 80%, lake chemistry is recovering, and the
+    episode proved that global-scale air problems are solvable when the mechanism is clear
+    and the measurement honest.
+  </p>
+  <p>
+    <strong>Ozone depletion</strong> (4.4) is a different mechanism with a happier ending — so
+    far. Stratospheric ozone (O₃) is not pollution but the planet's sunscreen, absorbing the
+    UV-B that causes skin cancer and cataracts. In the 1970s chemists (Molina and Rowland,
+    later Nobel laureates) predicted that chlorofluorocarbons — miraculous, inert refrigerants —
+    would survive to the stratosphere where UV would crack them open and release chlorine;
+    a single chlorine atom then catalytically destroys up to ~100,000 ozone molecules before
+    retiring. Ground-based measurements found the proof in 1985: springtime ozone over
+    Antarctica down by a third, the "hole" driven by polar-stratospheric clouds that turbocharge
+    chlorine chemistry. The 1987 Montreal Protocol phased CFCs out worldwide — the most
+    successful environmental treaty ever signed — and the hole is slowly healing, with recovery
+    expected around mid-century. One caution for exam accuracy: "good up high, bad nearby" —
+    stratospheric ozone protects, while ground-level ozone (a component of smog) damages lungs
+    and crops. Same molecule, opposite verdicts, different layers.
+  </p>
+
+  <h2>The atmosphere in layers: where each story happens</h2>
+  <p>
+    The atmosphere is not a uniform blanket but a stack of layers with different jobs, and
+    each problem in this chapter lives on its own floor. The <strong>troposphere</strong>
+    (surface to ~12 km, thinner at the poles, deeper at the equator) holds 75–80% of the
+    air's mass and essentially all its water: weather happens here, and so does the
+    greenhouse effect's blanket — the CO₂, water vapour and methane are concentrated low,
+    and temperature falls with altitude at about 6.5 °C per km, which is why mountaintops
+    are cold. Above it the <strong>stratosphere</strong> runs warmer with height because its
+    ozone absorbs UV directly — this is the ozone layer's home (peak concentration around
+    20–25 km), and the reason ozone depletion and acid rain and climate change are three
+    different stories with three different addresses: acid rain is a <em>tropospheric</em>
+    washout problem, ozone a <em>stratospheric</em> photochemistry problem, climate change a
+    whole-column radiation problem. Above that, the mesosphere burns up meteors, and the
+    thermosphere hosts the aurora and the ISS; by 100 km (the Kármán line) the air is too
+    thin for wings. One number to keep: 90% of the atmosphere lies below about 16 km — a
+    layer, on the football-field scale of the geography lesson, thinner than the grass.
+  </p>
+
+  <h2>The ledger at personal and planetary scale</h2>
+  <p>
+    The emission arithmetic scales down to you, and the numbers are worth having. A typical
+    person in a wealthy economy emits on the order of 10 tonnes of CO₂-equivalent a year
+    (including imports and shared infrastructure); the global average is around 6; much of
+    sub-Saharan Africa sits under 1. The largest personal lines are usually heating, driving
+    and flying — one round-trip transatlantic economy flight is roughly a tonne of CO₂ per
+    passenger, about a tenth of an average year in a single afternoon — followed by food
+    (meat-heavy diets roughly double the food line) and everything wearing the embedded
+    emissions of imports. Zoom back out and the distribution is the ethical headline: the
+    wealthiest tenth of humanity is responsible for close to half of all emissions, while
+    the poorest half contribute barely a tenth — one population, one atmosphere, and the
+    ledger's biggest balances and smallest ones held by different people. Every climate
+    policy is, underneath, an argument about which of these lines to move first and who
+    pays for moving it.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The core quantitative question in climate science is <strong>sensitivity</strong>: how much
+    does Earth warm per doubling of CO₂ once all feedbacks play out? Charney's 1979 estimate —
+    "near 3 °C" — has survived four decades of scrutiny; the IPCC AR6 range is 2.5–4 °C, best
+    estimate 3 °C. That number converts straight into the <em>carbon budget</em>: humanity can
+    emit only a finite tonnage for a given temperature goal, and at 10+ GtC per year the
+    remaining budget for 1.5 °C is spent within decades. This is why the ledger widget above
+    is more than arithmetic — every international negotiation is, underneath the diplomacy,
+    two sides arguing about that panel's inputs.
+  </p>
+  <p>
+    The deeper questions are where research lives. <strong>Tipping elements</strong> — the
+    Atlantic circulation (AMOC), the West Antarctic ice sheet, permafrost carbon — may have
+    thresholds past which change becomes self-sustaining and effectively irreversible on human
+    timescales; their locations are unknown. <strong>Negative emissions</strong> — burning
+    biomass with carbon capture, or direct-air capture machines — now appear in most 1.5 °C
+    pathways at gigatonne scale, and do not yet exist at that scale; how much of the plan rests
+    on unproven technology is a live ethical question. And solar geoengineering (scattering
+    sunlight with stratospheric aerosols) would cut temperatures within months at the cost of
+    masking rather than curing, with governance that does not exist. Carbon moved civilisation
+    from firewood to the moon; the last chapter of the carbon cycle — whether the ledger is
+    rebalanced in time — is being written now, in units of parts per million.
+  </p>
+  <p class="sources"><strong>Sources:</strong> NOAA Global Monitoring Laboratory (Mauna Loa data); Global Carbon Budget; IPCC Sixth Assessment Report (2021); Molina & Rowland, Nature (1974); Farman et al., Nature (1985); US EPA Acid Rain Program data.</p>
 </TopicPage>

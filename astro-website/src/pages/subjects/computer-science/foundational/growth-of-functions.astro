@@ -53,10 +53,15 @@ const growthCfg = {
         <div class="topic-body">
           <h2>The idea</h2>
           <p>
-            An algorithm's cost isn't a number — it's a <em>curve</em>. Big-O notation names the
-            curve's <strong>shape</strong>, and the shape decides everything: which programs
-            finish and which spin forever, which datasets fit and which don't. Four shapes
-            dominate; here they are against input size <code>n</code>:
+            An algorithm's cost isn't a number — it's a <em>curve</em>. Ask "how long does this program
+            take?" and the honest answer is never "one second"; it is "one second <em>for this input, and
+            what happens as the input grows?</em>" Two programs can both be correct, both run fine on your
+            laptop, and yet one finishes in a blink and the other outlives the universe on a dataset a
+            million times larger. Big-O notation names the difference: it describes the <strong>shape</strong>
+            of the cost curve as input size <code>n</code> grows, ignoring constant factors and small-input
+            noise, because shape is what decides everything at scale. Which programs finish and which spin
+            forever, which datasets fit and which don't — that is decided by the curve, and the curves are
+            surprisingly few. Four shapes dominate; here they are against input size <code>n</code>:
           </p>
 
           <figure class="widget">
@@ -66,20 +71,160 @@ const growthCfg = {
             </div>
           </figure>
 
-          <h2>Read the graph like an engineer</h2>
-          <ul>
-            <li><strong>Halving the input halves O(n)</strong> — but only barely dents O(n²). Shape, not constant factors, is what survives scaling.</li>
-            <li><strong>O(n log n) is the magic class</strong> — merge sort and heapsort live here. Near-linear forever.</li>
-            <li><strong>O(2ⁿ) is a wall.</strong> At n = 60 it's more steps than atoms you could count in a lifetime. Brute force dies here.</li>
-            <li><strong>Hardware can't save you.</strong> A 1000× faster chip buys you ~10 more items for a quadratic algorithm, ~100 for an exponential one. A better algorithm buys millions.</li>
-          </ul>
-
+          <h2>Reading the curve: the common complexity classes</h2>
           <p>
-            Zoom into the left edge of the plot (scroll or pinch) and the curves tangle — for tiny
-            inputs the "bad" one can even win. That's why engineers profile before optimising:
-            <em>shape only asserts itself at scale</em>.
+            Work through the shapes with real numbers. <strong>O(1)</strong>, constant: the cost does not
+            depend on n at all — looking up an array element by index takes one step whether the array has
+            10 slots or 10 million. <strong>O(log n)</strong>, logarithmic: each step throws away half the
+            remaining input. Binary search on a million sorted items needs about 20 steps (2²⁰ ≈ 10⁶);
+            on a billion items, about 30. Doubling the data adds exactly one step. <strong>O(n)</strong>,
+            linear: touch every item once — summing a list, finding a maximum. Double the data, double the
+            work. <strong>O(n log n)</strong>: merge sort's signature — log n levels of work, each level
+            touching n items; this is the practical floor for comparison-based sorting, and it stays
+            near-linear forever. <strong>O(n²)</strong>, quadratic: compare every item with every other —
+            bubble sort, checking all pairs. n = 1,000 costs a million steps (fine); n = 100,000 costs ten
+            billion (not fine). <strong>O(2ⁿ)</strong>, exponential: try every subset — brute-forcing
+            which items to pack in a knapsack. Each extra item <em>doubles</em> the cost; at n = 60 there
+            are more steps than grains of sand on Earth. Brute force dies here.
+          </p>
+          <p>
+            <em>Common misconception:</em> Big-O is not a running time and not a prediction in seconds —
+            it is a growth <em>rate</em>. "O(n²) takes longer than O(n)" is only guaranteed
+            <em>asymptotically</em>: for tiny inputs the "worse" algorithm can win, because Big-O hides
+            constant factors. Insertion sort (O(n²)) genuinely beats merge sort on lists of a dozen items —
+            which is exactly why real libraries hand small sublists to insertion sort and only deploy the
+            asymptotic winner at scale. Zoom into the left edge of the plot above and you can see the
+            curves tangle; shape only asserts itself at scale, and that is why engineers profile before
+            optimising. (One refinement completes the picture: time is not the only cost with a shape.
+            <strong>Space complexity</strong> — how much memory an algorithm needs as n grows — obeys
+            the same notation, and the two trade against each other constantly: merge sort needs O(n)
+            extra space to gain its O(n log n) speed, while heapsort sorts in place with O(1) extra
+            memory; caching effects mean "fewer bytes moved" is often the real reason one algorithm
+            beats another, which is why complexity analysis and measurement are companions, not
+            rivals.)
+          </p>
+
+          <h2>Where curves come from: designing and creating a solution</h2>
+          <p>
+            Complexity is not an accident; it is designed in. The standard method for building an
+            algorithm starts with <strong>abstraction</strong> — discarding details irrelevant to the
+            problem (a route-planner keeps road connections and journey times, forgets scenery and
+            tarmac) — followed by <strong>decomposition</strong>: break the problem into sub-problems
+            until each is directly codeable. Design the algorithm <em>before</em> the code: in structured
+            English, in pseudocode, or as a flowchart. Pseudocode is the working language because it
+            forces every decision (what loop, what condition, what variables) while staying
+            implementation-free. Two design habits matter more than cleverness: choosing the right
+            <strong>data structure</strong> (a sorted array enables binary search — O(log n) where a
+            linear scan would pay O(n); a set makes membership checks constant-time) and recognising
+            nested work. The heuristic that catches most disasters early: <em>count the loops</em>. One
+            loop over n items is O(n); a loop inside a loop over the same n is usually O(n²); a loop that
+            halves the problem each pass is O(log n). The widget's curves are, to first approximation,
+            just loop-nesting made visible.
+          </p>
+
+          <h2>Standard methods of solution</h2>
+          <p>
+            Most algorithms are assembled from a small toolkit of patterns, and examiners (and
+            interviewers) expect you to recognise them by name. <strong>Totalling</strong>: initialise an
+            accumulator to 0 before a loop, add each value inside it. <strong>Counting</strong>: the same
+            skeleton, but add 1 only when a condition holds — count the passing grades, the negative
+            temperatures, the vowels. <strong>Maximum/minimum</strong>: set the running best to the first
+            value, then replace it whenever a new value beats it. <strong>Linear search</strong>: walk the
+            list until you find the target or run out — O(n), works on any order. <strong>Binary
+            search</strong>: check the middle item, discard the half that cannot contain the target,
+            repeat — O(log n), but demands sorted data (a fact worth pausing on: sorting costs n log n
+            once, then every search is logarithmic — which is why databases fight so hard to stay
+            indexed). <strong>Sorting</strong>: bubble sort swaps adjacent out-of-order pairs repeatedly —
+            O(n²) but simple; merge sort splits, sorts the halves recursively, and merges — O(n log n).
+            <strong>Validation</strong> (check input is sensible before accepting: range checks, type
+            checks, presence checks) and <strong>verification of totals</strong> (checksums) round out the
+            standard patterns. Knowing these cold is what "standard methods of solution" means: you are
+            not inventing algorithms, you are recognising which classic the problem secretly is.
+          </p>
+
+          <h2>Test data, trace tables and debugging</h2>
+          <p>
+            A program that works on the happy path is not yet correct. <strong>Test data</strong> comes in
+            planned categories. <em>Normal</em> data: values the program should accept and process
+            correctly (a valid mark of 65). <em>Boundary</em> (extreme) data: the exact edges of valid
+            ranges — for marks valid in 0–100, test 0, 100, and the neighbours −1 and 101; off-by-one
+            errors (using <code><</code> where <code><=</code> belonged) are invisible to normal
+            tests and fatal at the boundary. <em>Erroneous (abnormal)</em> data: values that should be
+            rejected with a sensible message, not a crash or silent nonsense ("twenty", a mark of 999, a
+            blank field). The discipline is to design the test table <em>before</em> running anything,
+            stating each input and its expected output — otherwise you will unconsciously test what the
+            program does well.
+          </p>
+          <p>
+            When it does go wrong, the primary manual tool is the <strong>trace table</strong>: a grid
+            with a column per variable, one row per pass through the loop, recording every change of
+            value. Tracing swaps in a bubble sort on the list [5, 2, 9] — watching first-pass comparisons
+            and swaps unfold row by row — exposes in seconds whether the algorithm ever touches what it
+            should. Trace tables catch three failure families: loops that run once too often (the final
+            row shows a value creeping past its bound), counters mis-initialised (a total that starts at
+            1 instead of 0 poisons every later row), and conditions that never fire (a column that stays
+            at its initial value for the whole run). Modern practice adds debuggers, print statements and
+            automated test suites, but they all implement the same idea: slow the program down until the
+            wrong <em>step</em>, not just the wrong answer, is visible.
+          </p>
+
+          <h2>Writing and amending algorithms</h2>
+          <p>
+            The final skill is production: translating a design into clean pseudocode and then
+            <em>amending</em> it safely — because requirements change. The rules of good algorithmic
+            writing are unfashionable but real: meaningful identifier names (<code>totalHours</code>,
+            not <code>t</code>), one entry and one exit point per structure, no duplicated logic (extract
+            it into a function), and initialisation immediately before use. Amendments then become
+            local: changing a validation range, adding a counting branch, swapping a linear search for a
+            binary one — each is a one-line edit in a well-named algorithm and a debugging nightmare in a
+            tangled one. When you amend, re-run the trace table on the new logic and re-check the
+            boundaries you did not touch; the classic amendment bug is fixing one boundary and breaking
+            its twin. And after every change, re-ask the complexity question: did this edit change the
+            <em>shape</em>? A "small fix" that nests one loop inside another has moved the program from
+            the teal curve to the orange one, and no amount of hardware heroics will fully buy that back.
+          </p>
+
+          <h2>One task, three algorithms: a worked comparison</h2>
+          <p>
+            Concrete numbers make the curves land. Task: find a single name in a sorted list of
+            1,000,000 entries. <em>Linear search</em> (O(n)): on average half the list — 500,000
+            comparisons; at 100 ns per comparison, 50 milliseconds — imperceptible once. <em>Binary
+            search</em> (O(log n)): about 20 comparisons — 2 microseconds, 25,000× faster.
+            Now scale to a billion entries: linear becomes 50 seconds per lookup (per lookup!),
+            binary is still ~30 comparisons. The <em>sort</em> that enables binary search is a
+            one-time O(n log n) cost — about 20 billion comparisons for the billion-entry list, a
+            few minutes once — after which every one of the millions of daily lookups is logarithmic.
+            Amortise and the trade is a landslide. Now the other direction: a bubble sort on that
+            same billion entries at n² = 10¹⁸ operations is, at 100 ns each, roughly <em>three
+            thousand years</em>. Same machine, same data, same problem — the only variable was the
+            shape of the algorithm's cost curve. This is why "growth of functions" is not an abstract
+            maths detour but the difference between a feature that ships and one that never finishes
+            its first run.
+          </p>
+
+          <h2>Going deeper</h2>
+          <p>
+            <strong>Hardware can't save you.</strong> A 1,000× faster chip buys a quadratic algorithm
+            roughly 10√1000 ≈ 31.6 times the input (not 1,000), a linear one the full 1,000, and an
+            exponential one less than 10 extra items (log₂1000 ≈ 10). A better algorithm buys millions.
+            This asymmetry is why complexity is called the one free lunch in computer science.
+            <strong>Big-O is an upper bound</strong>, stated with its own algebra: constants drop
+            (O(3n² + 500n) = O(n²)), products add in sequence (an O(n) pass followed by an O(n log n)
+            sort is O(n log n)), and nested loops multiply. <strong>Ω (omega)</strong> and
+            <strong>Θ (theta)</strong> refine the story — lower bound and tight bound — and the deepest
+            fact in the field lives there: comparison-based sorting provably cannot beat n log n, so
+            merge sort isn't just good, it is optimal-in-class. Harder still are the
+            <strong>NP-hard</strong> problems — travelling salesman, knapsack at scale, timetabling —
+            where every known algorithm is exponential and thousands of researchers suspect (the
+            unresolved P vs NP question, the most famous open problem in computer science) that no fast
+            algorithm exists at all. Practice there means heuristics: approximate answers, fast, rather
+            than exact answers, never. The plot above is, in the end, a map of the computational
+            universe: the flatlands where everything is easy, the hills where careful design is needed,
+            and the walls beyond which computation itself runs out.
           </p>
         </div>
+
+        <p class="sources"><strong>Sources:</strong> Knuth, The Art of Computer Programming, Vol. 3 (sorting and searching); Cormen, Leiserson, Rivest & Stein, Introduction to Algorithms (4th ed.); Cambridge International AS & A Level Computer Science 9618 syllabus (algorithm design and problem-solving).</p>
 
         <nav class="topic-next" aria-label="Lesson navigation">
           <div><span class="tn-label">previous lesson</span><a href={`${B}/${prev.slug}/`}>{prev.title}</a></div>

@@ -25,38 +25,194 @@ const costCfg = {
 <TopicPage slug="subjects/software-engineering/foundational/software-requirements">
   <h2>The idea</h2>
   <p>
-    Most software projects do not fail at coding — they fail at agreeing. Requirements engineering
-    is the discipline of working out what to build, writing it down so it can be tested, and
-    managing the fact that the answer will change. It is the least glamorous phase and the one that
-    decides the project.
+    Software projects rarely die at the keyboard. They die in the months before anyone
+    codes — in the meetings where "what we should build" was settled by whoever spoke last,
+    in the requirement nobody wrote down because it seemed obvious, in the stakeholder who
+    was never asked. Requirements engineering is the discipline that stands between an idea
+    and a system: working out what to build, writing it down in a form that can be tested,
+    and managing the certainty that the answer will change. It is the least glamorous phase
+    of software engineering and the one with the best claim to decide everything else.
+  </p>
+  <p>
+    A <em>requirement</em> is a statement of what the system must do or how well it must do
+    it, precise enough that everyone — client, designer, tester — would agree on whether the
+    finished system satisfies it. That precision bar is what separates requirements from
+    wishes. "The app should be fast" is a wish; "search results return within 300
+    milliseconds at the 95th percentile with 10,000 concurrent users" is a requirement,
+    because you can write the test that fails. This testability rule sounds bureaucratic
+    until you watch a project without it: two teams, each sincerely believing the other
+    agreed to something different, discovering the disagreement at acceptance testing — the
+    most expensive possible moment.
+  </p>
+  <p>
+    The discipline has an uncomfortable secret: it is not really about writing documents.
+    It is about discovering what people need — which they often cannot articulate, sometimes
+    do not know, and occasionally will not say — and converting that into artefacts that
+    survive contact with construction. The chapter follows that arc: elicitation (finding
+    the truth), classification (functional versus non-functional), and specification and
+    validation (writing it down and proving it right, before the cost curve punishes you).
   </p>
 
   <Widget no="1" caption="from elicitation to living specification" widget="equationStep" config={reqCfg} />
 
-  <h2>The economics of finding defects early</h2>
+  <h2>Elicitation and stakeholders</h2>
   <p>
-    A misunderstood requirement caught in a workshop costs a conversation. The same defect found in
-    production costs releases, migrations and trust — industry studies since Boehm's work in the
-    1970s–80s consistently show order-of-magnitude growth in repair cost per phase. That curve is
-    the business case for the whole discipline.
+    Requirements come from <em>stakeholders</em> — and the first skill is realising how many
+    of them there are, and how few of them speak in the kickoff meeting. The person who pays
+    for the software, the person who uses it daily, the person who maintains it at 3 a.m.,
+    the regulator who audits it and the customer-service agent who absorbs its failures are
+    five different people with five different definitions of success. Missing any of them
+    costs later: systems that delight managers and enrage operators are a genre, not an
+    accident.
+  </p>
+  <p>
+    Elicitation is the craft of drawing requirements out, and no single technique suffices.
+    Interviews get you stated needs; <em>observation</em> gets you actual ones — watching
+    nurses chart medication reveals workarounds, sticky notes and shadow spreadsheets that
+    no interview would surface, each one an unmet requirement wearing a disguise. Workshops
+    force conflicting stakeholders into the same room where their conflicts become visible
+    early; prototypes and walk-throughs exploit the fact that people react to something
+    concrete far more reliably than they speculate about something abstract. A classic trap
+    deserves its name: the marketing requirement. "Users want more features" usually means
+    "the loudest stakeholder wants more features" — real users often want less software that
+    fits the work.
+  </p>
+  <p>
+    Elicitation is also where requirements conflicts surface, and surfacing them early is
+    the point. A hospital booking system gives a compact example: clinicians want full
+    details visible in one click (speed of care), administrators want access gated by role
+    (privacy compliance), patients want their own data visible (transparency). All three are
+    legitimate; some cannot be fully satisfied simultaneously; and the negotiation that
+    resolves them — read-only summary views, audit logs, granular consent — is requirements
+    engineering, not politics. A specification that hides the conflict simply schedules the
+    same argument for a later, more expensive date.
+  </p>
+  <p>
+    Because not every elicited wish can be built, elicitation flows directly into
+    <em>prioritisation</em>. The MoSCoW scheme is the workhorse: Must (the release fails
+    without it), Should (important but deferrable), Could (nice if cheap), Won't (not this
+    time — and we are saying so on the record). The discipline lives in the fourth
+    category: a written, agreed statement of what is out of scope is the cheapest
+    conflict-prevention device in the field. Prioritisation also disciplines the stakeholder
+    map itself, because must-have lists signed by people who will not fund them have a way
+    of rewriting themselves at integration time — and that negotiation is cheaper in a
+    workshop than in a change request.
+  </p>
+
+  <h2>Functional versus non-functional requirements</h2>
+  <p>
+    The classification everyone must master splits requirements by what kind of claim they
+    make. <em>Functional</em> requirements state what the system does: process a refund,
+    reject duplicate invoices, log out after inactivity. They are the system's verbs.
+    <em>Non-functional</em> requirements (quality attributes) state how well it does
+    everything: latency, throughput, availability, security, usability, accessibility,
+    maintainability, portability. They are adverbs and adjectives — and they constrain
+    every function at once rather than attaching to any single one.
+  </p>
+  <p>
+    The second kind is where projects actually die, for two structural reasons. First,
+    quality attributes are invisible until they break: no demonstration ever fails on p95
+    latency or password storage, so they generate no demo momentum and are quietly deferred
+    — until launch week. Second, they interact and compete: adding encryption costs latency;
+    maximising availability complicates consistency; hardening security degrades usability.
+    These are genuine trade-offs with no free lunch, and the engineering response is to make
+    them explicit and quantified: "the service survives the loss of one data centre with
+    under 60 seconds of interruption" is a real requirement with a real architecture behind
+    it; "the system should be reliable" is a greeting card.
+  </p>
+  <p>
+    <em>Common misconception:</em> "non-functional" does not mean optional or secondary.
+    The name is unfortunate — these requirements are frequently the binding constraints on
+    the entire design. A payments system with a perfect feature set that leaks card numbers
+    has failed completely. Some methodologists prefer "quality attribute requirements"
+    precisely because the standard name undersells them.
+  </p>
+
+  <h2>Specification and validation</h2>
+  <p>
+    Specification is writing requirements down in a form the team can build and test
+    against, and the field has converged on a spectrum rather than a single format. At one
+    end sits the classic Software Requirements Specification: numbered, unique, traceable
+    statements ("REQ-104: The system shall reject a duplicate invoice number within the same
+    fiscal period"), beloved of regulated industries because every clause can map to a test.
+    At the other end sits the agile <em>user story</em>: "As a customer, I want a refund
+    button so that I can return damaged goods without calling support," made rigorous by its
+    <em>acceptance criteria</em> — the concrete conditions under which the story is done.
+    The story format trades completeness for adaptability; that trade works when the team
+    can talk to users continuously, and fails silently when it cannot.
+  </p>
+  <p>
+    Whatever the format, the writing rules are the same, and they exist to defeat specific
+    failure modes. Requirements should be <em>atomic</em> — one requirement, one test:
+    "the system shall enter marks and calculate averages quickly" bundles a function, a
+    calculation and an undefined quality into one untestable sentence, and should be three
+    requirements. They should be <em>singular</em> ("shall" for binding statements, "should"
+    for goals, never "may" where someone might read permission). They should name their
+    trigger and their result precisely enough that two engineers implement them identically.
+    Ambiguity is the enemy, and it hides in innocent words: "fast", "user-friendly",
+    "support", "handle", "etc." A useful review drill is to circle every adjective and
+    adverb in a specification and demand a number or an example for each — most drafts do
+    not survive the exercise, which is exactly the point.
+  </p>
+  <p>
+    Validation — checking that the specified requirements are the <em>right</em> ones — then
+    runs the artefacts back past reality. Reviews walk stakeholders through the document
+    while it is still prose, when objections cost sentences instead of sprints. Acceptance
+    tests make each requirement executable. Prototypes let users point at what is wrong
+    rather than failing to imagine what is missing. The distinction to keep sharp is
+    validation versus verification: validation asks "are we building the right product?",
+    verification asks "are we building the product right?" Requirements defects live
+    entirely in the first question, which is why testing the final build can never catch
+    them — the build faithfully implements the wrong thing.
   </p>
 
   <Widget no="2" caption="defect cost grows phase by phase" widget="plotter" config={costCfg} />
 
-  <h2>Functional versus non-functional</h2>
   <p>
-    Functional requirements say what the system does: send invoices, reject duplicates. Non-
-    functional requirements say how well: latency, throughput, security, accessibility. The second
-    kind is where projects actually die, because it is invisible until it is broken — no demo ever
-    fails on p95 latency.
+    The economics justify all of this ceremony. Barry Boehm's studies in the 1970s and 1980s,
+    replicated in industry ever since, found that the cost of fixing a requirements defect
+    grows by roughly an order of magnitude per phase: a misunderstanding settled in a
+    workshop costs a conversation; found in integration it costs weeks; found in production
+    it costs releases, data migrations, emergency patches and — hardest to restore — trust.
+    The plotted curve (relative repair cost against the phase where the defect is caught) is
+    the single most quoted figure in software economics and the entire business case for
+    requirements engineering: cheap conversations, held early and on purpose.
   </p>
 
-  <h2>User stories and the agile compromise</h2>
+  <h2>Going deeper</h2>
   <p>
-    Agile methods replaced binding specifications with short statements — "as a customer, I want a
-    refund button, so that…", with acceptance criteria attached. That trades completeness for
-    adaptability, and works when the team can talk to users continuously. The engineering remains
-    the same: make every claim testable, keep them current, never let silence stand for agreement.
+    Mature practice treats requirements as managed artefacts with lineage. A
+    <em>traceability matrix</em> links every requirement to the design elements, code and
+    tests that realise it, so that a change upstream reveals exactly what must be revisited
+    downstream — and so that an auditor can verify nothing was built without a reason and
+    nothing was required without a build. In safety-critical domains this becomes law:
+    aviation software (DO-178C), medical devices (IEC 62304) and automotive systems
+    (ISO 26262) are unshippable without bidirectional traceability, which is why those
+    industries still lead in specification rigour.
+  </p>
+  <p>
+    Change, finally, is managed rather than mourned. A baseline is agreed; a lightweight
+    change process receives every proposal; impact analysis uses the traceability matrix to
+    price the ripple ("this one sentence touches three components, two tests and a
+    compliance claim"); and a decision is made on the record. The alternative is not
+    freedom — it is silent drift, where the shipped system diverges from every document
+    until nobody, including its authors, can say what it was supposed to do. Even the most
+    agile teams practise a version of this, disguised as backlog grooming: the backlog
+    <em>is</em> the requirements baseline, and grooming <em>is</em> change control wearing a
+    friendlier name. The goal was never a frozen document — it was an honest one, at every
+    moment, about what the system promises and why.
+  </p>
+  <p>
+    Deeper still are the open problems, and they are genuine research questions. How do you
+    elicit requirements for systems whose users do not yet exist? How should quality
+    attributes be traded off when stakeholders disagree — multi-attribute methods and
+    architecture analysis (ATAM-style scenario walks) exist, but the weights remain
+    judgement. How much specification is enough when the domain is so novel that specifying
+    fully would take longer than building? And the newest: can language models mine
+    elicitation transcripts for contradictions and latent requirements at scale, or do they
+    merely automate the production of plausible-sounding ambiguity? The tools will change;
+    the invariant underneath will not — software fails at the seams between what was built
+    and what was meant, and someone has to own those seams on purpose.
   </p>
 
   <p class="sources"><strong>Sources:</strong> SWEBOK Guide V4.0 (IEEE Computer Society), Requirements Engineering KA; Boehm, <em>Software Engineering Economics</em>.</p>

@@ -29,6 +29,15 @@ const seasonsCfg = {
   ],
   height: 340,
 };
+
+const citiesCfg = {
+  kind: 'bar',
+  xLabels: ['Singapore 1°N', 'Delhi 29°N', 'Cairo 30°N', 'Lima 12°S', 'Quito 0°', 'New York 41°N', 'London 52°N', 'Moscow 56°N', 'Reykjavík 64°N'],
+  series: [{ label: 'annual mean temperature (°C)', values: [27.6, 25.3, 21.7, 19.0, 15.0, 13.1, 11.3, 5.8, 4.6] }],
+  unit: '°C',
+  digits: 1,
+  height: 320,
+};
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -57,41 +66,210 @@ const seasonsCfg = {
         <div class="topic-body">
           <h2>The idea</h2>
           <p>
-            Climate is mostly a geometry story. Because Earth is a sphere, the same square metre
-            of sunlight spreads over more ground as you move from the equator toward the poles —
-            so the <strong>tropics get roughly twice the solar power of the poles</strong>. Almost
-            every climate map is downstream of that one fact.
+            First, two words people use interchangeably but shouldn't. <strong>Weather</strong> is
+            what the atmosphere does today; <strong>climate</strong> is the average of weather over
+            about 30 years, plus its moods — how variable, how extreme, how seasonal. London and
+            Beijing have similar climates' averages in places; their weather behaves utterly
+            differently. Climate is the stage; weather is the improvisation on it.
+          </p>
+          <p>
+            Climate itself is mostly a geometry story. Because Earth is a sphere, sunlight arrives
+            as parallel rays, and the same square metre of beam spreads over more and more ground
+            as you move from the equator toward the poles — the classic torch-shining-on-a-ball
+            effect. Beam spreading plus a longer path through the atmosphere means the
+            <strong>tropics receive roughly twice the solar power of the poles</strong>: on the
+            equinox model below, the equator averages about 433 watts per square metre while the
+            poles get essentially nothing. Almost every climate map ever drawn — temperature,
+            rainfall, vegetation, even where humans chose to farm — is downstream of that one
+            geometric fact.
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 1</span><span>incoming sunlight by latitude — hover to read values</span></figcaption>
+            <figcaption><span class="fig-no">fig. 1</span><span>incoming sunlight by latitude at equinox — hover to read values</span></figcaption>
             <div class="widget-body">
               <div data-widget="plotter" data-config={JSON.stringify(insolationCfg)}></div>
             </div>
           </figure>
 
+          <h2>Latitude and the sun's angle</h2>
+          <p>
+            The geometry is precise enough to calculate. The sun stands directly overhead only
+            between the <strong>tropics</strong>, the latitudes 23.4° north and south (the
+            Tropic of Cancer and Capricorn — the numbers mirror Earth's tilt). Outside that band
+            the noon sun is always somewhat sideways, and the further you are from the overhead
+            point, the more slanted and spread the light. At London (51.5°N) at equinox the noon
+            sun is only 38.5° above the horizon — you can test the arithmetic with the rule
+            <em>noon sun angle = 90° − |your latitude − the sun's declination|</em>. The
+            consequences compound: slantwise light passes through more atmosphere (more of it
+            absorbed and scattered), lights less ground per watt, and — above the <strong>Arctic
+            and Antarctic Circles</strong> at 66.5° — disappears entirely for part of the year,
+            the land of the midnight sun and the polar night. The equator's other privilege is
+            consistency: it gets twelve-hour days and high sun all year, which is why tropical
+            climates are about rain and seasonality, not temperature.
+          </p>
+
           <h2>Then tilt breaks the symmetry</h2>
           <p>
-            Earth's axis leans by 23.4°, so through the year each hemisphere takes turns leaning
-            into the light. Set the tilt to zero and seasons vanish everywhere; exaggerate it and
-            even London gets Monsoon-grade swings. Pick a latitude and see its solstice daylight:
+            If Earth spun perfectly upright, every place would have eternal equinox weather and
+            latitude alone would decide climate. But the axis leans by 23.4°, so through the year
+            each hemisphere takes turns leaning into the light: June solstice (Northern summer)
+            tips the north sunward, December solstice the south. Seasons are thus a
+            <em>tilt</em> phenomenon, not a distance phenomenon — Earth is actually
+            <strong>closest to the Sun in early January</strong>, the depth of northern winter.
+            Tilt does two things at once: it changes how high the sun climbs (beam intensity) and
+            how long the day lasts (hours of heating), and the two stack. Set the tilt to zero in
+            the model below and seasons vanish everywhere; exaggerate it and even London gets
+            monsoon-grade swings. Pick a latitude and watch its daylight loop:
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 2</span><span>June solstice — drag the tilt and your latitude</span></figcaption>
+            <figcaption><span class="fig-no">fig. 2</span><span>the seasons machine — drag the tilt and your latitude</span></figcaption>
             <div class="widget-body">
               <div data-widget="sliderLab" data-config={JSON.stringify(seasonsCfg)}></div>
             </div>
           </figure>
 
-          <h2>From sunlight to zones</h2>
           <p>
-            Follow the curve in fig. 1 and the classical zones fall out for free: the
-            <strong>tropics</strong> where the sun stands overhead, the <strong>temperate</strong>
-            bands where it tilts but never vanishes, and the <strong>polar caps</strong> with their
-            day-long nights. Latitude doesn't decide everything — oceans, altitude and monsoon
-            winds complicate the map — but it decides the frame they all fit inside.
+            The hemispheres mirror each other (our June is Australia's December), and the
+            extremes bracket the scale: Mercury's axis barely tilts (0.03°) so it has almost no
+            seasons, while Uranus is tipped 98° — rolling around its orbit — giving each pole 42
+            years of daylight followed by 42 of dark. Earth's 23.4° sits in the Goldilocks
+            middle: strong enough to drive a yearly rhythm that ecosystems and agriculture are
+            built around, mild enough to keep most of the planet habitable.
           </p>
+
+          <h2>From sunlight to circulation: the Hadley engine</h2>
+          <p>
+            Here is the step most people miss: sunlight does not stay where it lands. The tropics
+            run a permanent energy surplus and the poles a permanent deficit, and fluids move
+            heat. Air heated at the equator rises (carrying enormous evaporated moisture with
+            it), cools, and dumps its rain — creating the thunderstorm belt of the
+            <strong>Intertropical Convergence Zone</strong> and, on the ground beneath it, the
+            rainforests. That air then flows poleward aloft and sinks near latitude 30°, arriving
+            hot, dry and pressing down: the subtropical high-pressure belts where the Sahara,
+            Arabia, the Kalahari and the Australian outback sit. The equator rains, 30° bakes —
+            the world's deserts line up along a <em>latitude</em>, not a longitude, because the
+            atmospheric engine puts them there. Further cells (the mid-latitude Ferrel and polar
+            cells) continue the handoff, and Earth's rotation bends all the surface winds into
+            the trade winds and westerlies — which is why the westerlies drench western Europe's
+            coasts and the trades water tropical east coasts. Mountains add the last twist:
+            air forced over a range drops its rain on the windward side and arrives dry, giving
+            the Atacama and Gobi their rain shadows.
+          </p>
+
+          <h2>Climate zones — and what bends them</h2>
+          <p>
+            Follow the insolation curve and the classical zones fall out: the <strong>tropics</strong>
+            (sun overhead, rain-heavy, no winter), the <strong>temperate</strong> bands (sun
+            slanted but never absent, four seasons), and the <strong>polar caps</strong> (long
+            dayless winters). Köppen's classification, still the world standard, formalises
+            these with rainfall and temperature data into the A–E zones on every atlas's back
+            page. But latitude only sets the frame — the chart below shows real cities breaking
+            it:
+          </p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 3</span><span>annual mean temperature against latitude — find the two rule-breakers</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="chart" data-config={JSON.stringify(citiesCfg)}></div>
+            </div>
+          </figure>
+
+          <p>
+            The rule holds in the broad pattern (each 10° of latitude costs a few degrees), but
+            look at the exceptions, because each is a modifier wearing a costume. <strong>Quito
+            sits on the equator</strong> yet averages around 15 °C: it stands at 2,850 m, and
+            temperature falls about 6.5 °C per kilometre of altitude — mountains make their own
+            latitude, which is why equatorial Kilimanjaro (5,895 m) carries snow. <strong>Lima
+            is cold for 12°S</strong> because the Humboldt Current hauls icy water up its coast.
+            And <strong>London is absurdly warm for 51.5°N</strong> — the Gulf Stream's ocean
+            heat transport, worth several degrees, plus maritime moderation — while latitudinal
+            twin cities in continental interiors (Irkutsk, at a similar latitude in Siberia,
+            averages near 1 °C) show what the ocean's absence does. Add the <strong>monsoons</strong>
+            — seasonal wind reversals driven by land heating faster than sea, which switch the
+            Indian subcontinent between drenching summer and parched winter — and you have the
+            complete toolkit: latitude sets the frame; altitude, ocean, currents and wind belts
+            bend it.
+          </p>
+
+          <h2>Reading a climate graph: the geographer's first skill</h2>
+  <p>
+    Climate graphs pack an entire station's personality into one frame — bars for monthly
+    rainfall, a line for monthly temperature — and reading four of them is a complete tour
+    of this chapter. <strong>Singapore</strong> (1.4°N): the temperature line is flat near
+    27 °C all year (no winter — the equator's consistency) and the bars are tall and
+    near-uniform (rain every month, ITCZ overhead): the tropical rainforest climate.
+    <strong>London</strong> (51.5°N): the line arcs from ~5 °C in January to ~18 °C in July
+    (range ~13 °C — maritime moderation), bars moderate year-round with a slight autumn
+    peak: the temperate maritime climate the westerlies water. <strong>Mumbai</strong>
+    (19°N): temperature stays warm but the rainfall bars are a cliff — near-zero for eight
+    months, then 700+ mm in July alone: the monsoon, the ITCZ arriving with its
+    rain-band. <strong>Cairo</strong> (30°N): warm line, bars nearly empty — the
+    subtropical desert under the Hadley cell's descending air. Every climate graph you will
+    ever read is one of these four archetypes or a blend, and the diagnostic questions are
+    always the same: what is the temperature <em>range</em> (continentality), when does the
+    rain fall (pressure belts), and how <em>much</em> in the wettest month (how hard the
+    engine is running overhead)?
+  </p>
+
+  <h2>El Niño: the climate's irregular heartbeat</h2>
+  <p>
+    One complication deserves full section status, because it reorganises the global map
+    every few years. Under normal conditions, Pacific trade winds blow east-to-west, piling
+    warm water into a vast pool near Indonesia; cold, nutrient-rich water wells up off Peru
+    (the Humboldt system that keeps Lima cool and its anchovy fishery the world's largest).
+    Every two to seven years the trades slacken and the warm pool sloshes east —
+    <strong>El Niño</strong> ("the Christ child", named by Peruvian fishermen for its
+    Christmas arrival). Peru's cold upwelling fails (fisheries collapse), its coastal
+    deserts flood, and the consequences broadcast worldwide: Australia and Indonesia tip
+    into drought and fire, the Indian monsoon weakens, Atlantic hurricanes are suppressed,
+    and the globe's average temperature steps up a notch — the record years of 1998 and
+    2016 and 2023–24 were all El Niño years, which is why climate scientists carefully
+    separate its wobble from the underlying warming trend. Its mirror-image sister,
+    <strong>La Niña</strong> (trades stronger, warm pool shoved further west) roughly
+    reverses the pattern. The lesson for the chapter: latitude sets the stage, but the
+    ocean — with a thousand times the atmosphere's heat capacity — periodically rewrites
+    the script, and the two systems are one coupled machine.
+  </p>
+
+  <h2>The record book: climate's extremes</h2>
+  <p>
+    The extreme end of every climate dial makes the mechanism vivid. The highest air
+    temperature reliably recorded is 56.7 °C at Death Valley (1913) — a below-sea-level
+    desert basin where descending air compresses and heats, the Hadley engine's downdraught
+    at full power. The lowest, −89.2 °C, came from Vostok station on the Antarctic plateau
+    (1983) — the pole's permanent energy deficit plus 3,400 m of ice-sheet altitude, the two
+    cold factors stacked. Mawsynram in the Indian hills averages around 11,800 mm of rain a
+    year as monsoon air is forced up the Khasi Hills — orographic rainfall at championship
+    scale — while parts of Chile's Atacama Desert have weather stations that have recorded
+    <em>no</em> measurable rain for years: cold ocean current, subtropical high, and a
+    rain-shadowing mountain range, all three drought mechanisms in one place. And the
+    windiest sea-level place on Earth, Cape Denison in Antarctica (annual mean near
+    70–80 km/h), is the katabatic engine's showpiece. Each record is a textbook process
+    turned up to maximum — which is why examiners love asking not just "where?" but "why
+    there?"
+  </p>
+
+  <h2>Going deeper</h2>
+          <p>
+            The global energy budget puts numbers on the engine. Of the ~340 W/m² arriving at
+            the top of the atmosphere (averaged over the whole sphere and year), about 30%
+            reflects straight back (clouds, ice, atmosphere); the rest is absorbed, and the
+            tropics' surplus versus the poles' deficit is cancelled by a poleward heat
+            transport of around 5 petawatts — carried by the atmosphere and, importantly, by
+            ocean currents, which alone move about a quarter. The Hadley cell is not fixed,
+            either: it expands and contracts with the seasons (dragging the monsoon rains north
+            and south over India), and climate models project it widening poleward in a warming
+            century — pushing the desert belts into the Mediterranean and the American
+            Southwest's margins. On geological timescales the geometry itself wobbles:
+            Milankovitch cycles — slow changes in orbit shape (~100,000 yr), tilt (41,000 yr,
+            between 22.1° and 24.5°) and equinox precession (26,000 yr) — repack the insolation
+            and pace the ice ages; the last glacial maximum, 20,000 years ago, had ice sheets
+            kilometres thick over Chicago and London. Climate is geometry with a memory — and
+            the memory is written in ice cores and seafloor mud.
+          </p>
+
+          <p class="sources"><strong>Sources:</strong> NOAA Solar Calculator and global station data; WMO definition of climate normals; Köppen climate classification (1884/1936); Hartmann, <em>Global Physical Climatology</em>.</p>
         </div>
 
         <nav class="topic-next" aria-label="Lesson navigation">

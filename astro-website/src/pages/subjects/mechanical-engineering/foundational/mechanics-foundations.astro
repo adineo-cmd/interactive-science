@@ -26,37 +26,185 @@ const foundationsCfg = {
 <TopicPage slug="subjects/mechanical-engineering/foundational/mechanics-foundations">
   <h2>The idea</h2>
   <p>
-    Mechanical engineering is applied Newtonian mechanics: bodies, forces and motion, with heat
-    added. Its foundations are small enough to fit on a postcard — F = ma, work–energy, impulse–
-    momentum — and deep enough that entire industries run on their consequences. The skill is
-    choosing which conservation law makes a problem one line instead of ten.
+    Mechanical engineering is Newtonian mechanics put to work: bodies, forces and motion, with
+    heat and materials added on top. Its foundations are small enough to write on a postcard —
+    force equals mass times acceleration, work equals force times distance, impulse equals force
+    times time — and deep enough that gearboxes, cranes, engine cranks and wind turbines are all
+    consequences of those few lines. The subject is three centuries old and has not needed a
+    correction inside everyday engineering: if your mechanism prediction fails, the laws are not
+    wrong, your force inventory is.
+  </p>
+  <p>
+    What separates a competent engineer from a formula-matcher is knowing that the different
+    "laws" are not really different subjects. They are one law — Newton's second law — seen from
+    three useful angles. Integrate it over distance and you get the work–energy theorem, which
+    answers "how fast?" questions without caring about the path. Integrate it over time and you
+    get impulse–momentum, which answers collision questions without needing to know the
+    terrifyingly large forces inside the impact. Rotate the whole apparatus and it describes
+    spinning shafts as cleanly as sliding blocks. A large fraction of mechanical engineering
+    analysis is choosing the angle that turns a ten-line problem into a one-line problem.
+  </p>
+  <p>
+    This chapter builds those three angles in order. First, forces as vectors — the bookkeeping
+    that keeps directions honest. Then motion itself, kinematics, and its marriage to forces,
+    kinetics. Finally the two integrals — work–energy and impulse–momentum — that make hard
+    problems easy, and the rigid-body versions that let the theory drive real machines.
   </p>
 
   <Widget no="1" caption="the chain from F = ma to machines" widget="equationStep" config={foundationsCfg} />
 
-  <h2>Kinetic and potential energy, compared</h2>
+  <h2>Vector mechanics: forces with directions</h2>
   <p>
-    Speed is expensive: kinetic energy grows with the <em>square</em> of velocity, so doubling
-    speed quadruples the braking distance and the crash energy. Height is linear: every metre of
-    lift costs the same. Plot both for a 3 kg mass and the asymmetry is immediate.
+    A force is not a number. It has a size, a line of action and a sense — pull or push — and
+    forgetting any of the three produces an answer that is exactly, confidently wrong. Vector
+    mechanics is the discipline of keeping directions honest: resolve every force into
+    perpendicular components, apply equilibrium (sums of forces and moments equal zero) to each
+    component separately, and let the geometry carry the physics.
+  </p>
+  <p>
+    A worked example shows the payoff. A gardener drags a 40 kg loaded sledge with a rope held
+    at 30 degrees above horizontal, tension 200 N. Only the horizontal component does the
+    pulling: 200 × cos 30° ≈ 173 N. The vertical component, 200 × sin 30° = 100 N, pulls
+    <em>upward</em>, so the ground reaction drops from 40 × 9.81 ≈ 392 N to about 292 N — the
+    upward pull lightens the load and shrinks its friction. The friction force, at a
+    coefficient of 0.4, is roughly 0.4 × 292 ≈ 117 N, leaving a net 56 N to accelerate the
+    sledge at about 1.4 m/s². Notice what happened: one trigonometric decomposition turned a
+    muddy real situation into three clean numbers, and revealed a subtlety (angle reduces
+    friction) that pure intuition misses.
+  </p>
+  <p>
+    Vectors also add the concept of a <em>moment</em> — the turning effect of a force, its size
+    times the perpendicular distance from the pivot. Moments explain why a long spanner loosens
+    a bolt a short one cannot, why doorknobs live far from hinges, and why a crane's counterweight
+    must sit far from the tower: the turning effect is force times lever arm, so distance buys
+    as much leverage as weight. Equilibrium of any rigid body is three equations in two
+    dimensions — two force balances and one moment balance — and every statics problem in the
+    discipline is a disguise for those three.
+  </p>
+  <p>
+    <em>Common misconception:</em> heavy objects fall faster. In the absence of air resistance,
+    acceleration under gravity is 9.81 m/s² for every mass — Galileo's result, confirmed to
+    extraordinary precision. Mass appears on both sides of F = ma and cancels. A bowling ball
+    does hit the ground before a feather, but only because air drag decelerates the feather
+    sooner relative to its weight, not because gravity pulls harder on it per kilogram.
+  </p>
+
+  <h2>Kinematics and kinetics of rigid bodies</h2>
+  <p>
+    <em>Kinematics</em> describes motion without asking what causes it: position, velocity,
+    acceleration, and for rotation the angle θ, angular velocity ω and angular acceleration α.
+    The vocabulary is worth learning exactly because it mirrors linear motion term for term —
+    every linear equation has a rotational twin with angle in place of position. The bridge
+    between the two worlds is v = ωr: a point on a spinning body at radius r moves with speed
+    equal to angular velocity times radius. It is why the outer edge of a grinding wheel
+    screams while its centre is silent, and why the tip of a wind-turbine blade travels
+    around 250 km/h while the hub barely moves.
+  </p>
+  <p>
+    <em>Kinetics</em> supplies the cause: Newton's second law, in rotational dress. Torque
+    plays the role of force, and the moment of inertia I — the rotational analogue of mass,
+    measuring how far the body's mass sits from the axis — plays the role of inertia: τ = Iα.
+    Consider a flywheel of inertia 2 kg·m² driven by a net torque of 6 N·m: it spins up at
+    α = 6 ÷ 2 = 3 rad/s², so from rest it reaches a working speed of 150 rad/s (about
+    1,430 rpm) in 50 seconds. The energy now stored in it is ½Iω² = 0.5 × 2 × 150² = 22.5 kJ —
+    a calculation an engineer can do in one line, and which sizing a real energy-storage
+    flywheel extends directly.
+  </p>
+  <p>
+    Rotation is where machines live. Gears are the kinematic promise "trade torque for speed"
+    made hardware: mesh a 20-tooth pinion into a 60-tooth wheel and the wheel turns at one
+    third the speed with three times the torque — the gear ratio — losing only friction.
+    A car's gearbox is nothing but a switchable set of such ratios, keeping the engine near
+    its efficient speed while the wheels cover every speed from parking to highway.
+  </p>
+
+  <h2>Work–energy: the power of not caring about the path</h2>
+  <p>
+    Newton's law answers "what happens next, instant by instant?" — powerful, but laborious
+    when forces vary along the way. Integrating force over <em>distance</em> produces the
+    work–energy theorem: the net work done on a body equals its change in kinetic energy,
+    ½mv². The magic is that the path disappears. If you know only the start and end states,
+    the theorem hands you the answer without a single intermediate step.
+  </p>
+  <p>
+    The most safety-critical application is braking. A tyre gripping dry asphalt decelerates a
+    car at about μg, roughly 0.7 × 9.81 ≈ 6.9 m/s². Skidding to a stop from 20 m/s takes
+    v² ÷ (2μg) = 400 ÷ 13.7 ≈ 29 m. From 40 m/s the distance is 1600 ÷ 13.7 ≈ 117 m — four
+    times, not twice, because kinetic energy grows with the <em>square</em> of speed. The same
+    squaring sets crash severity: a 1,500 kg car at 50 km/h (about 13.9 m/s) carries
+    ½ × 1500 × 13.9² ≈ 145 kJ, energy that something must absorb before the occupants stop
+    moving.
   </p>
 
   <Widget no="2" caption="KE grows with v², PE with h — drag and compare" widget="plotter" config={energyCfg} />
 
-  <h2>Why engineers love energy methods</h2>
   <p>
-    Force analysis needs details — every contact, every angle. Energy methods skip them: if you
-    know the start and end states, the work–energy theorem gives you the answer without the path.
-    Roller-coaster heights, flywheel storage, projectile ranges — all one-liners when gravity and
-    springs are the only forces that matter.
+    When the only forces doing work are gravity and springs — "conservative" forces, which give
+    back what they store — kinetic plus potential energy is conserved outright, and problems
+    become comparisons of two bookkeeping entries. A roller-coaster car released from 40 m can
+    reach, at best, √(2gh) = √(2 × 9.81 × 40) ≈ 28 m/s at the bottom; friction takes its tax
+    from whatever remains. <em>Common misconception:</em> momentum and kinetic energy are
+    interchangeable. They are not — momentum is mv and is a vector; kinetic energy is ½mv² and
+    is a scalar. In a collision, momentum is essentially always conserved; kinetic energy is
+    conserved only in ideal elastic impacts. Two lumps of clay that stick together conserve
+    momentum exactly while converting most of their kinetic energy into heat and deformation —
+    both statements are true simultaneously, and engineering crash analysis depends on holding
+    both at once.
   </p>
 
-  <h2>From particles to machines</h2>
+  <h2>Impulse–momentum: mastering the collision</h2>
   <p>
-    Real machines are rigid bodies: spinning shafts, swinging arms, meshing gears. Rotational
-    mechanics mirrors the linear theory — Iω² for kinetic energy, τ = Iα for acceleration — and
-    gears are the gear ratio's promise: trade torque for speed, energy conserved minus friction.
-    Thermodynamics enters next, when "energy" starts changing form rather than just moving.
+    Integrate Newton's law over <em>time</em> instead of distance and you get impulse equals
+    change in momentum: force × duration = mΔv. This is the right tool whenever huge forces act
+    for short times — impact, propulsion, ball games — because you rarely know the peak force,
+    but you can often know its integral. A crumple zone is impulse management made metal: the
+    car must lose 13.9 m/s of velocity no matter what, so the design question is how much
+    <em>time</em> and <em>distance</em> to spend doing it. Crush 0.5 m of structure and the
+    average deceleration is v² ÷ (2s) ≈ 278 m/s², about 28 g; double the crush distance and
+    the force halves. Every safety feature in a modern car — crumple zones, airbags, helmet
+    foam — is an argument about stretching a deceleration over more time.
+  </p>
+  <p>
+    In collisions between free bodies, total momentum is conserved even as energy converts to
+    heat and sound, which lets engineers compute post-impact motion from pre-impact velocities
+    alone. That single fact underlies accident reconstruction (from skid marks and final
+    positions back to impact speeds), ballistics, and the docking of spacecraft, where a soft
+    capture is defined as one that conserves momentum while dissipating the relative speed.
+  </p>
+  <p>
+    Sport supplies the friendliest numbers. A pitched baseball arrives at 40 m/s and leaves the
+    bat at 45 m/s the other way; the 0.145 kg ball's momentum change is 0.145 × (40 + 45) ≈
+    12.3 kg·m/s. The bat and ball are in contact for about a millisecond, so the average force
+    during contact is 12.3 ÷ 0.001 ≈ 12,000 newtons — the weight of a small car, applied for
+    one thousandth of a second. Nobody "feels" a force that size as such; what the hitter feels
+    is the impulse. This is also why follow-through matters in every bat-and-ball sport: it is
+    a deliberate attempt to lengthen the contact time, buying more momentum change for the
+    same peak force.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Rigid-body dynamics keeps a second conservation law in reserve: angular momentum, Iω, is
+    conserved when no external torque acts. It explains the figure skater who pulls in her arms
+    — I falls, so ω rises to keep the product fixed — and the reaction wheels that reorient
+    spacecraft without thrusters. In machine analysis, the work–energy and impulse–momentum
+    theorems extend naturally: a rolling body's kinetic energy splits between translation and
+    rotation (½mv² + ½Iω²), which is why a hoop rolls slower than a solid disc released on the
+    same slope — the disc stores less of its energy in spin.
+  </p>
+  <p>
+    Further depth moves into machinery and vibration. D'Alembert's trick treats mass-times-
+    acceleration as an inertial force, converting dynamics problems into statics ones — the
+    conceptual basis of load cases in vehicle and crane design. Virtual work generalises the
+    equilibrium idea to systems of linked bodies, and energy methods grow into Lagrange's
+    equations, the standard tool for multi-degree-of-freedom mechanisms. Vibration enters when
+    stiffness joins inertia: a spring–mass system has a natural frequency
+    f = (1 ÷ 2π)√(k ÷ m), and rotating machinery is designed so its operating speed avoids
+    that number — passing safely through it during startup, dwelling near it never. The open
+    frontier is less the laws than the bookkeeping at scale: multibody simulation of
+    hundred-part mechanisms, contact and friction models that remain stable, and digital
+    twins that keep a Newtonian model synchronised with a real machine wearing out in the
+    field.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NCEES FE Mechanical exam specifications; Hibbeler, <em>Engineering Mechanics</em>; Meriam &amp; Kraige, <em>Dynamics</em>.</p>

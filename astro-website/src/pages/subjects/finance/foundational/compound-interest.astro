@@ -19,35 +19,163 @@ const growthCfg = {
 <TopicPage slug="subjects/finance/foundational/compound-interest">
   <h2>The idea</h2>
   <p>
-    Finance is the craft of moving value through time — and its first law is that
-    <strong>money today is worth more than money later</strong>, because money today can earn
-    money. Compound interest is what happens when earnings themselves start earning: growth on
-    growth, year after year. It is the most important equation in personal finance, and it cuts
-    both ways — it compounds debts exactly as enthusiastically as savings.
+    Finance is the craft of moving value through time, and its first law is that <strong>money today
+    is worth more than money later</strong> — because money today can be put to work and earn money.
+    £100 in hand can become £108 in a year at 8%, so a promise of £100 next year is worth something
+    less than £100 now. Every loan, bond, mortgage, pension and company valuation is an application of
+    that one sentence. <strong>Compound interest</strong> is what happens when the earnings themselves
+    start earning: growth on growth, year after year. It is the most important mechanism in personal
+    finance, and it cuts both ways — it compounds debts exactly as enthusiastically as savings. This
+    lesson builds the machinery forward (compounding), backward (discounting), and then into the
+    harder truth: the rate r is not known in advance, so the second half of finance is quantitative
+    tools — descriptive statistics, probability and risk measures — for handling a future that is a
+    distribution, not a number.
   </p>
 
   <Widget no="1" caption="the same rate, two maths — the gap between the curves is compounding, and it widens forever" widget="plotter" config={growthCfg} />
 
   <p>
-    Slide the rate r: at 8%, compounded money roughly <strong>doubles every 9 years</strong> —
-    the curve steepens noticeably by year 30. Simple interest stays a straight line forever;
-    compounding bends it into an exponential.
+    Slide the rate r: at 8%, compounded money roughly <strong>doubles every 9 years</strong> — the
+    curve steepens noticeably by year 30. Simple interest stays a straight line forever: it pays the
+    same pounds every year on the original principal, because the interest is (implicitly) spent, not
+    reinvested. Compounding reinvests it, so each year's base is bigger than the last, and the straight
+    line bends into an exponential. The gap between the two curves is not a rounding difference: over
+    40 years at 8%, £10,000 grows to about £217,000 compounded but only £42,000 with simple interest —
+    the reinvestment is worth five times the original deposit.
   </p>
 
-  <h2>The rule of 72</h2>
+  <h2>The arithmetic: one formula, forward and backward</h2>
   <p>
-    Divide 72 by the annual percentage rate to get the doubling time: 72 ÷ 8 = 9 years, 72 ÷ 12 =
-    6 years, 72 ÷ 3 = 24 years (which is why "risk-free" savings at 3% barely outpace inflation's
-    own compounding). The same rule runs the other way: a credit card at 36% APR doubles what you
-    owe in two years.
+    The forward formula is FV = P × (1 + r)ⁿ: principal times the growth factor raised to the number of
+    periods. Work it concretely: £10,000 at 8% for 3 years is 10,000 × 1.08³ = 10,000 × 1.2597 ≈
+    £12,597 — year by year, £10,800, then £11,664, then £12,597.17, the last figure carrying the tell-tale
+    extra pence of growth-on-growth. Compounding frequency matters more than intuition suggests: a
+    nominal 12% paid monthly is 1% per month, which compounds to (1.01)¹² ≈ 12.68% per year — banks and
+    card issuers quoting "APR" versus "effective annual rate" are separating exactly this effect, and
+    the difference is why a mortgage's small print is worth reading.
+  </p>
+  <p>
+    The <strong>rule of 72</strong> is the working engineer's shortcut: divide 72 by the annual
+    percentage rate to get the doubling time. 72 ÷ 8 = 9 years; 72 ÷ 12 = 6 years; 72 ÷ 3 = 24 years
+    (which is why "risk-free" savings at 3% barely outpace inflation's own compounding — more on that
+    below). The same rule runs the other way: a credit card balance at 36% APR doubles what you owe in
+    two years, and the "minimum payment" trap is exponential arithmetic pointed at you — paying only
+    the minimum on a £3,000 card balance at typical rates can take decades and cost multiples of the
+    original debt, because most of each minimum payment is new interest.
+  </p>
+  <p>
+    Run the formula backward and you get <strong>present value</strong> — the single most-used number
+    in professional finance: PV = FV ÷ (1 + r)ⁿ. What is a promise of £10,000 in 10 years worth today
+    at 8%? 10,000 ÷ 1.08¹⁰ ≈ £4,632. Discounting is compounding's mirror, and it converts all of a
+    project's or bond's future cash flows into today's terms, where they can be added and compared —
+    the <strong>net present value</strong> (NPV) rule says take investments whose discounted inflows
+    exceed the discounted cost. Two consequences follow immediately and explain half of financial
+    news: distant cash flows shrink violently under discounting (a £1m payment 40 years out is worth
+    about £46,000 at 8%), and <em>rising</em> interest rates lower the present value of everything
+    already promised — which is why bond prices fall when rates rise, and why growth-company shares
+    (whose value sits in far-future profits) are the most rate-sensitive assets.
   </p>
 
-  <h2>Consequences to internalise</h2>
-  <ul>
-    <li><strong>Time beats timing.</strong> Compounding rewards the years you are in the market, not the days you pick. Starting ten years earlier usually beats picking better funds.</li>
-    <li><strong>Subtract inflation.</strong> Growth only counts above the inflation curve you met in the economics lesson — "real" return is what compounds after prices.</li>
-    <li><strong>Fees compound too.</strong> A 2% annual fee quietly removes about half a lifetime's gains: 6% growth with 2% fees compounds at 4%.</li>
-    <li><strong>Debt is compounding against you</strong> — the minimum-payment trap is exponential arithmetic pointed the wrong way.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Bogle, The Little Book of Common Sense Investing; standard treatments of present value (e.g. Bodie, Kane & Marcus).</p>
+  <h2>Probability: the rate is not a fact</h2>
+  <p>
+    Everything above assumed r is known. It never is. Next year's return on a savings account is
+    nearly certain (this is what "risk-free" means); next year's return on shares is a distribution.
+    <strong>Probability theory</strong> is how finance handles this, and the central object is the
+    <strong>expected value</strong>: weight each possible outcome by its probability and sum. Worked
+    example: an investment returns +50% with probability 0.4 and −20% with probability 0.6. Its
+    expected return is 0.4 × 50% + 0.6 × (−20%) = 20% − 12% = +8%. Notice what this says: the most
+    <em>likely single outcome</em> (−20%, 60% of the time) is bad, yet the investment can still be
+    rational because the occasional +50% pays for the frequent small losses. That structure — skewed
+    payoffs, probability-weighted — is the entire logic of venture capital, insurance and lottery
+    pricing, in both directions. Expected value also explains why expected returns must beat the
+    risk-free rate before risk is worth taking: an 8% expected return on shares exists precisely
+    because the distribution includes bad years that a government bond does not.
+  </p>
+
+  <h2>Descriptive statistics: mean, variance, and the volatility drag</h2>
+  <p>
+    <strong>Descriptive statistics</strong> then compress the distribution into two numbers. The
+    <strong>mean</strong> of historical annual returns says what the asset paid on average; the
+    <strong>standard deviation</strong> — the typical distance of yearly returns from that mean — says
+    how much it swung. A real-scale illustration: broad equity markets have historically returned
+    around 7–10% per year on average (depending on country and period) with a standard deviation near
+    15–20%, while short-term government bonds return less with deviations of a few percent. The SD is
+    readable through the bell curve: roughly 68% of years fall within one SD of the mean, 95% within
+    two — so a 10%-mean, 16%-SD market has about one year in six outside −6% to +26%, and a 95% range
+    from about −22% to +42%. That is what "risk" means quantitatively: the width of the annual
+    experience, not the sign of the average.
+  </p>
+  <p>
+    Statistics then delivers the lesson's sharpest surprise: <strong>the arithmetic mean overstates
+    compounding</strong>. An asset that gains +20% then loses −20% has an arithmetic mean of 0% — but
+    £100 becomes £120 and then £96: a <em>loss</em> of 4%, a geometric (compounded) average of about
+    −2% per year. Volatility itself destroys compound growth — <strong>volatility drag</strong>, worth
+    roughly σ² ÷ 2 per year (a 20% SD costs about 2% of compounded return against the naive mean).
+    This is a mathematical fact, not a market quirk, and it is the deep reason diversification is not
+    timidity: smoothing the swings genuinely raises long-run compounded wealth for the same average
+    return. It is also why funds advertising "average return" rather than compounded (CAGR) figures
+    are, technically, telling you something flattering and nearly useless.
+  </p>
+
+  <h2>Risk quantification: measuring and taming the swings</h2>
+  <p>
+    <strong>Risk quantification</strong> is the discipline of turning those distributions into
+    decisions. The workhorse comparisons: <strong>risk-adjusted return</strong> (the Sharpe ratio —
+    excess return over the risk-free rate divided by standard deviation; two portfolios with the same
+    return but different SDs are not equivalent, and the ratio says which one paid better per unit of
+    bumpy ride), <strong>correlation</strong> (assets that fall at different times, held together,
+    cancel part of each other's variance — the only free lunch in the field), and
+    <strong>diversification</strong> formalised: combining imperfectly correlated assets reduces
+    portfolio SD below any single asset's, without necessarily reducing expected return. Tail measures
+    supplement the bell curve, because market returns are famously <em>not</em> normally distributed —
+    crashes are more frequent and fatter-tailed than the Gaussian predicts (October 1987's −22.6% day
+    in the US was a ~20-sigma event under a normal model): hence Value-at-Risk, stress tests, and the
+    humility the 2008 crisis taught about models. Finally, the inflation overlay: a 3% nominal return
+    against 3% inflation compounds to zero <em>real</em> growth — "real return" ≈ (1 + nominal) ÷
+    (1 + inflation) − 1 — so the rate that matters for long-horizon wealth is always the one net of
+    both inflation and fees. A 2% fee on a 6% gross return compounds at 4%, and over 40 years quietly
+    removes roughly half the final wealth. Fees, like volatility, are a rate — and every rate
+    compounds.
+  </p>
+
+  <h2>Compounding in the wild: loans and annuities</h2>
+  <p>
+    The same formula runs the borrowing side, and a worked amortisation makes it concrete. A
+    £200,000 mortgage at 6% annual (0.5% monthly) over 25 years has a monthly payment M solving
+    M × [1 − (1.005)⁻³⁰⁰] ÷ 0.005 = 200,000, giving M ≈ £1,289. The revealing part is the
+    schedule: in month one, interest is 200,000 × 0.005 = £1,000 — so £1,000 of the £1,289 payment
+    is interest and only £289 reduces the debt. Early payments are mostly interest because the
+    balance (the base being compounded against you) is largest; by year 20 the split has roughly
+    reversed. Total paid over 25 years is about £386,700 — nearly double the loan — which is the
+    compound-interest curve pointed the other way, and the reason overpaying early is so powerful:
+    an extra £100/month in year one removes years and tens of thousands from the tail, because it
+    attacks the balance while the compounding against you is steepest. An <strong>annuity</strong> is
+    the same mathematics in reverse — a pot converted to level payments until exhaustion (the
+    pension-decumulation problem) — and a <strong>perpetuity</strong> is its limit: a payment that
+    never ends is worth simply payment ÷ rate (£1,000/year at 5% = £20,000 today), the cleanest
+    single sentence in valuation.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four refinements complete the professional picture. <strong>Continuous compounding</strong>: as
+    payments are made ever more frequently, (1 + r/n)ⁿ approaches eʳ — Euler's constant entering money
+    the moment compounding is continuous, which is how option-pricing mathematics prefers to write
+    growth. <strong>Sequence risk</strong>: two investors with the same <em>average</em> return can end
+    differently if the bad years arrive early versus late while they are withdrawing money — the
+    retirement-drawing problem that makes "you'll average 8%" cold comfort, and the reason glide paths
+    de-risk portfolios as withdrawals begin. <strong>The discount rate is a belief</strong>: valuing
+    anything hinges on the r you choose, and r embodies risk appetite, opportunity cost and inflation
+    expectations — which is why a central bank raising rates by two points can move asset values by
+    trillions without a single cash flow changing: only the discounting changed.
+    <strong>Time diversification, stated carefully</strong>: volatility does not shrink with horizon
+    in the way intuition hopes (the 30-year SD of compounded <em>outcomes</em> is larger in pounds),
+    but the <em>probability</em> of a positive real return does rise with horizon under historical
+    distributions — time genuinely is the investor's main edge, which is why starting early dominates
+    picking well: a decade of extra compounding at 8% multiplies the final figure by 2.16 before any
+    cleverness begins. Internalise the widget's two curves and you hold the subject's whole geometry:
+    simple interest is a line, compounding is a curve, discounting is the same curve read backward,
+    and risk is the width of the band the curve can honestly be drawn within.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Bogle, The Little Book of Common Sense Investing; Bodie, Kane & Marcus, Investments; Dimson, Marsh & Staunton, Triumph of the Optimists (long-run return data); Ibbotson SBBI yearbooks (US equity risk and volatility).</p>
 </TopicPage>

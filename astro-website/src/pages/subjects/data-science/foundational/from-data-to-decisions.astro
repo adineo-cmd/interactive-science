@@ -28,28 +28,169 @@ const flowCfg = {
 <TopicPage slug="subjects/data-science/foundational/from-data-to-decisions">
   <h2>The idea</h2>
   <p>
-    Data science is not "statistics plus computers" — it is a <strong>workflow that turns
-    questions into decisions</strong>. The craft is mostly unglamorous: asking sharp questions,
-    cleaning messy evidence, plotting before modelling, and communicating uncertainty honestly.
-    The six steps below are the whole discipline in miniature.
+    Data science is not "statistics plus computers". It is a <strong>workflow that turns questions into
+    decisions</strong> — and the definition matters because each half can fail independently. A brilliant
+    analysis aimed at no decision is a museum piece; a decision made without honest evidence is a guess
+    with a budget. The discipline sits at the junction of three skills: enough <em>statistics</em> to
+    reason about uncertainty, enough <em>computing</em> to work with data too large for a spreadsheet,
+    and enough <em>domain knowledge</em> to know which questions are worth asking and what the numbers
+    actually measure. Take any one leg away and the work stops being science: without statistics it is
+    dashboard decoration; without computing it cannot scale; without domain knowledge it produces
+    precise answers to pointless questions.
+  </p>
+  <p>
+    The unglamorous truth is that most of the craft is plumbing and honesty: asking sharp questions,
+    cleaning messy evidence, plotting before modelling, communicating uncertainty without deflating it
+    into noise. The six steps below are the whole discipline in miniature, and every real project —
+    from a hospital deciding which patients need follow-up calls to a streaming service deciding which
+    shows to renew — walks them, usually more than once, because good analysis loops back when the data
+    answers a better question than the one you asked.
   </p>
 
   <Widget no="1" caption="ten noisy observations, one straight answer — the line was worth fitting before anything fancier" widget="plotter" config={scatterCfg} />
 
   <p>
-    Hover the dots: each wanders off the line by measurement noise, yet the underlying relationship
-    is exactly <code>y = 2x + 1</code>. The first discipline of data science is seeing the line
-    through the noise — and the second is admitting when there isn't one.
+    Hover the dots: each wanders off the line by measurement noise, yet the underlying relationship is
+    exactly <code>y = 2x + 1</code>. The first discipline of data science is seeing the line through the
+    noise — real data never sits on the model, and demanding that it does leads to modelling the noise.
+    The second discipline is admitting when there isn't a line: with different data, those same ten
+    points could be pure scatter, and the professional skill is telling a real signal from wishful
+    fitting. That judgement is trained, not automatic, and the rest of this lesson is the training
+    course in miniature.
   </p>
 
   <Widget no="2" caption="the six-step workflow" widget="equationStep" config={flowCfg} />
 
+  <h2>Step by step, with the traps each step hides</h2>
+  <p>
+    <strong>1 · Question first.</strong> Every project starts with a decision someone needs to make:
+    which pages lose subscribers, which patients will miss appointments, where should the next depot
+    go. A well-formed question names its decision, its deadline and its acceptable error. The famous
+    historical example is John Snow and cholera (1854): the question was not "what causes cholera?" —
+    too broad — but "do deaths cluster around a particular water source?" — narrow enough that a map of
+    fatalities around the Broad Street pump could <em>answer</em> it. Sharp questions make data
+    decisive; vague questions make data decorative.
+  </p>
+  <p>
+    <strong>2 · Collect.</strong> Data arrives from databases, sensors, surveys, logs — and the act of
+    collection is itself a measurement instrument. If customer records only include people who finished
+    signup, every conclusion silently describes finishers, not potential customers; if a survey only
+    reaches people with landlines, it describes 1995. This is <strong>selection bias</strong>, and its
+    signature is that the data never mentions what it is missing. The professional habit is to write
+    down, before analysing, <em>how</em> each field was produced and who is absent from the file.
+  </p>
+  <p>
+    <strong>3 · Clean.</strong> Practitioners estimate the majority of project time goes here, and the
+    reason is structural: real data is collected by fallible systems for other purposes. Names spelled
+    three ways, dates in two formats, impossible ages (230), duplicated rows, missing values that are
+    coded as 0, −1, blank or the string "NULL" — each is a small lie that propagates into every
+    downstream number. The rules: never clean silently (document every transformation), never clean
+    toward the answer you expect, and prefer fixing the pipeline over hand-editing the symptom. A
+    model trained on wrongly joined data is confidently wrong forever.
+  </p>
+  <p>
+    <strong>4 · Explore.</strong> Plot first, model second. Histograms reveal skew and multimodality;
+    scatter plots reveal relationships; box plots reveal outliers; summary tables reveal impossible
+    values. This is <strong>exploratory data analysis</strong>, formalised by John Tukey (1962), and its
+    philosophy inverts the classroom: do not fit a model and check it against the data — look at the
+    data until it tells you which model would be honest. The scatter above is EDA doing its job: before
+    anyone proposes a neural network, ten dots and a straight line have already settled the first
+    question. Exploration also calibrates scepticism: Anscombe's quartet (1973) shows four datasets
+    with <em>identical</em> means, variances, correlations and regression lines — and wildly different
+    pictures. Plotting is not presentation; it is inspection.
+  </p>
+  <p>
+    <strong>5 · Model &amp; validate.</strong> Fit the simplest thing that could work — often a
+    baseline ("predict the average", "predict yesterday's value") — then something slightly smarter,
+    and only promote complexity that beats the baseline on data it has <em>not seen</em>. That last
+    clause is the entire safeguard against the field's central disease, <strong>overfitting</strong>: a
+    flexible model can memorise the noise in its training data, scoring beautifully there and
+    embarrassingly on new data. The defence is to hold out a test set (or cross-validate) and report
+    performance only there. Complexity must earn its keep on unseen data; a parameter that improves
+    training fit but not test fit is a lie the model tells itself.
+  </p>
+  <p>
+    <strong>6 · Communicate.</strong> A result that does not change a decision was entertainment. The
+    deliverables are a number with its uncertainty ("renewal likely lifts retention by 2–4%, we're 90%
+    confident it's positive"), a chart honest enough to survive scrutiny (axes from zero, baselines
+    shown), and a recommendation with its assumptions stated. Uncertainty is content, not weakness:
+    a forecast delivered without a range invites decisions the evidence cannot support.
+  </p>
+
+  <h2>A case end to end: why do subscribers leave?</h2>
+  <p>
+    Watch the six steps carry one real decision. <strong>Question</strong>: a streaming service is
+    losing subscribers; the finance team wants to know whether to spend a fixed retention budget on
+    discounts or on content. Sharpened: <em>which members are likely to cancel next month, and is
+    there a lever we control?</em> <strong>Collect</strong>: eighteen months of account records —
+    signup date, plan, viewing hours per week, devices used, payment history, and the flag that
+    matters: who actually cancelled. Note the instrument immediately: the file contains only people
+    who <em>signed up</em> (selection: it says nothing about those who bounced off the landing page)
+    and viewing hours are tracked only when the app is open (measurement: hours near zero could mean
+    dissatisfaction <em>or</em> a holiday). <strong>Clean</strong>: duplicates from a billing-system
+    migration are removed; "hours per week" for a fortnight with a two-week outage is recoded as
+    missing rather than zero; the eleven accounts with negative tenure are dropped and the pipeline
+    bug reported. Every transformation is logged.
+  </p>
+  <p>
+    <strong>Explore</strong>: the cancellations are not uniform — churn spikes in month three
+    (the free-trial cliff), among members whose viewing fell by more than half month-over-month, and
+    on the ad-supported plan. A scatter of viewing-hours against tenure shows the falling-engagement
+    pattern plainly, and a box plot shows churners' engagement dropping weeks <em>before</em> they
+    cancel — the signal a retention offer could intercept. <strong>Model &amp; validate</strong>: the
+    baseline ("everyone renews") is useless for targeting; a simple model — flag members with
+    declining hours in their second month — is tested on the six months it never saw and catches
+    members at several times the base rate of churn, which is the number that matters (you cannot
+    save everyone; you need a list worth calling). A fancier model is tried and rejected: it beats
+    the simple one on training data but not on held-out data — complexity did not earn its keep.
+    <strong>Communicate</strong>: "Members whose viewing drops by half after month one cancel at
+    several times the average rate; an email offering a free month to that group is projected to
+    retain one in eight of them at a cost well below a month's subscription — we recommend a
+    two-market trial with a control group, and we'll know in six weeks whether to scale." Numbers,
+    uncertainty, a controlled test, a decision. That is the workflow doing exactly what it was
+    built for.
+  </p>
+
   <h2>What separates professionals</h2>
-  <ul>
-    <li><strong>Baselines first.</strong> A model that can't beat "guess the average" isn't a model. Always run the dumbest baseline before the clever one.</li>
-    <li><strong>The dataset is a measurement instrument.</strong> If customer data only includes people who finished signup, every conclusion silently describes finishers, not customers.</li>
-    <li><strong>Correlation still isn't causation</strong> — and dashboards make it easier than ever to imply it is. The statistics subject on this atlas covers the honest toolkit.</li>
-    <li><strong>Reproducibility is trust.</strong> A result nobody can re-run from the raw data is an anecdote with charts.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Wickham & Grolemund, R for Data Science; Tukey, "The Future of Data Analysis" (1962).</p>
+  <p>
+    Beyond the workflow, four habits mark the difference between analysis and theatre.
+    <strong>Baselines first</strong> — a model that cannot beat "guess the average" is not a model, and
+    running the dumb baseline first costs minutes and saves careers. <strong>The dataset is an
+    instrument</strong> — ask what it measures, in what population, with what gaps, before asking what
+    it says. <strong>Correlation still is not causation</strong> — ice-cream sales and drownings rise
+    together because of summer, not dessert; dashboards make it easier than ever to imply causation by
+    arrangement alone, and the honest tools (randomised experiments, natural experiments, careful
+    adjustment) are deliberate acts, not side effects of a clever chart. The famous cautionary tale is
+    Google Flu Trends (2008): it predicted flu from search terms brilliantly — then confidently
+    over-predicted for years as its own recommendations changed what people searched, a lesson in how
+    the instrument changes the thing measured. <strong>Reproducibility is trust</strong> — a result
+    nobody can re-run from the raw data and code is an anecdote with charts; versioned code, recorded
+    data lineage and saved random seeds are what make a finding an asset rather than a story.
+  </p>
+  <p><em>Common misconception:</em> data science is not mostly machine learning, and "the data will
+  speak for itself" is the field's most dangerous slogan. Data speaks only through the question asked,
+  the way it was gathered and the model imposed on it — all human choices. The best data scientists
+  spend most of their effort on steps 1–3 and 6, which is precisely where the judgement lives.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Three layers lie beneath the workflow. <strong>The experimental layer</strong>: the gold standard
+    for turning correlation into causation is the randomised controlled trial — randomly assign the new
+    feature to half the users, compare outcomes. Randomisation balances every confounder, known and
+    unknown, which is why A/B testing is the workhorse of internet decision-making; when experiments
+    are impossible (you cannot randomise smoking), statistics offers quasi-experimental tools —
+    difference-in-differences, regression discontinuity — each with stated assumptions. <strong>The
+    statistical layer</strong>: every estimate has a distribution, and aggregates can reverse at the
+    subgroup level (Simpson's paradox — the Berkeley admissions case is the canonical example), so
+    professional practice reports uncertainty intervals and interrogates subgroups before believing
+    totals. <strong>The human layer</strong>: data about people is data about people — privacy,
+    consent and bias in, bias out. A hiring model trained on past hires learns the past's
+    discriminations as signal; a credit model can encode geography as a proxy for race. This is why
+    modern practice treats ethics as an engineering requirement — audits, fairness metrics, documented
+    datasets — rather than a press-release afterthought. The future of the field is argued over
+    (automated AutoML pipelines vs craftsman analysis), but the six steps have been stable for decades
+    precisely because they encode something machines do not supply by default: the discipline of being
+    honest with yourself in public.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Tukey, "The Future of Data Analysis" (1962); Anscombe (1973); Snow, On the Mode of Communication of Cholera (1855); Lazer et al., "The Parable of Google Flu" (2014); Wickham & Grolemund, R for Data Science.</p>
 </TopicPage>

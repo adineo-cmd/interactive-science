@@ -33,6 +33,22 @@ const mooreCfg = {
     (1.4), and the emerging technologies — artificial intelligence and extended reality — that
     are redrawing the category (1.5).
   </p>
+  <p>
+    The deep idea to carry through the whole chapter is a division of labour. Hardware can only
+    do a short list of primitive things — move a number from one place to another, add or
+    compare two numbers, jump to a different instruction — at immense speed. Software is the
+    arrangement of those primitives into anything you recognise as "using a computer": writing
+    an essay, editing a photo, playing a game. Nothing else in computing is mysterious once you
+    hold that pairing: the processor is the worker, memory is the workbench, storage is the
+    filing cabinet, the operating system is the supervisor who decides which job gets the
+    worker next, and the applications are the services delivered on top. This chapter walks the
+    stack from the bottom up.
+  </p>
+  <p><em>Common misconception:</em> hardware and software are not interchangeable labels for
+  "physical versus digital things you can see". A printer's driver (software that lets the OS
+  operate the printer hardware) is software even though it ships on a disc; a "hard copy" is
+  hardware output. The test is functional: does the component <em>do</em> the work (hardware) or
+  <em>direct and enable</em> it (software)?</p>
 
   <h2>Inside the machine: fetch, decode, execute</h2>
   <p>
@@ -52,44 +68,135 @@ const mooreCfg = {
     manufacture. One is a desk you work on; the other is the instructions glued to the inside of
     the machine's lid telling it how to wake up. Everything else the syllabus lists as hardware
     — motherboard, graphics card, sound card, network interface card, storage devices, input and
-    output devices — exists to feed the cycle or carry its results.
+    output devices — exists to feed the cycle or carry its results. The motherboard is the
+    physical joining: buses (address, data, control) running between CPU, memory and the slots
+    where expansion cards plug in. The storage hierarchy is worth learning as a speed ladder:
+    CPU registers (fastest, smallest) → RAM (fast, volatile) → SSD (fast-ish, permanent) →
+    hard disk (slower, cheap per gigabyte, permanent). Each step down buys capacity with
+    latency — which is why opening an app "loads it into RAM": dragging the program up the
+    ladder so the CPU can fetch from it at full speed.
   </p>
+  <p><em>Common misconception:</em> RAM is not the same as storage, and "memory" is not the same
+  as "space". A machine with 8 GB of RAM and a 256 GB SSD has 8 GB of <em>workbench</em> and
+  256 GB of <em>filing cabinet</em>. Confusing them leads to the classic wrong diagnosis:
+  a full disk is not "out of memory" — though it can still crash a system that uses disk space
+  as overflow when RAM fills.</p>
 
-  <h2>The software half</h2>
+  <h2>The software half, and the operating system that runs it</h2>
   <p>
     Software divides into two families. <strong>Applications software</strong> provides the
     services the <em>user</em> requires to solve a task — word processing, spreadsheets,
-    databases, video and graphics editing, CAD. <strong>System software</strong> provides the
-    services the <em>computer</em> requires to operate — operating systems, device drivers,
-    utilities, compilers and linkers. The operating system itself is the bridge: through a
-    command line interface (CLI) you type the instructions; through a graphical user interface
-    (GUI) you point and click; dialogue-based and gesture-based interfaces (talk to it, swipe
-    it) now cover everything from smart speakers to tablets. Same machine, different contract
-    with the human.
+    databases, video and graphics editing, CAD, web browsers. <strong>System software</strong>
+    provides the services the <em>computer</em> requires to operate — operating systems, device
+    drivers, utilities, compilers and linkers. The test that separates them: could this program
+    exist without a user? A spreadsheet exists for the user; a driver that translates "print
+    page 2 in duplex" into signals a specific printer model understands exists for the machine.
+    The families also interact in a fixed order: the OS starts first (from ROM's bootstrap),
+    loads drivers for the hardware present, and only then can applications launch and request
+    services — memory allocation, file access, screen drawing, networking — through the OS
+    rather than touching hardware directly. That indirection is why the same application runs
+    on many different machines: it talks to the OS's stable interface, not to the metal.
+  </p>
+  <p>
+    The <strong>operating system</strong> itself is the bridge, and its core jobs can be
+    listed: manage memory, manage files and directories, schedule which program gets the CPU,
+    handle input and output, manage security and user accounts, and provide the user
+    interface. Through a <strong>command line interface</strong> (CLI) you type the
+    instructions — terse, scriptable, powerful, and still how servers are administered;
+    through a <strong>graphical user interface</strong> (GUI) you point and click — discoverable,
+    visual, hungry for screen and processing resources. Dialogue-based and gesture-based
+    interfaces (talk to it, swipe it) now cover everything from smart speakers to tablets. Same
+    machine, different contract with the human — and each interface is a genuine trade-off:
+    the GUI trades expert speed for learnability, the CLI the reverse.
+  </p>
+
+  <h2>Types of computer: one machine, many packages</h2>
+  <p>
+    The types of computer in syllabus 1.4 — desktop, laptop, tablet, smartphone, phablet — are
+    not really different machines; they are the same machine at different points of a
+    decades-long shrink, and the syllabus wants you to evaluate them against each other. The
+    <strong>desktop</strong> trades portability for everything else: cheap expandability
+    (standard slots and connectors), the best cooling and hence the best sustained performance,
+    easy repair. The <strong>laptop</strong> folds the same architecture into a battery-powered
+    clamshell and pays for it in price, repair difficulty and thermal limits. The
+    <strong>tablet</strong> and <strong>smartphone</strong> push further into
+    <em>portability</em> — instant-on, always-connected, sensor-rich (GPS, accelerometer,
+    camera) — and pay in screen size, input precision and upgradeability (usually none). A
+    <strong>phablet</strong> blurs the tablet/phone line with a large phone-size screen. The
+    professional skill the section tests is matching type to task: a film editor needs the
+    desktop's sustained power; a surveyor in the field needs the phone's portability and GPS;
+    a student writing essays sits between them with the laptop. Note also the boundary cases
+    the syllabus mentions in passing: mainframe-style servers (the same fetch–decode–execute
+    cycle, scaled up in racks) and embedded computers (a washing machine's controller is the
+    same idea frozen into one fixed program in ROM).
   </p>
 
   <h2>Why your phone exists: one line on a log plot</h2>
   <p>
-    The types of computer in syllabus 1.4 — desktop, laptop, tablet, smartphone, phablet — are
-    not really different machines; they are the same machine at different points of a
-    decades-long shrink. The plot below shows the number of transistors on a flagship CPU on a
-    log<sub>10</sub> scale: each gridline is ten times more transistors. Intel's 4004 of 1971
-    carried about 2,300 (log<sub>10</sub> ≈ 3.36); the 2022 Apple M1 Ultra carries about 114
-    billion (log<sub>10</sub> ≈ 11.06). A roughly straight line on a log scale is exponential
-    growth — Moore's law — and it is the reason a 1970s computer filled a room that today fits
-    in a phone, trading the desktop's expandability for the mobile computer's portability.
+    The shrink that produced the smartphone has a quantitative engine, and the plot below is
+    it: the number of transistors on a flagship CPU on a log<sub>10</sub> scale — each gridline
+    is ten times more transistors. Intel's 4004 of 1971 carried about 2,300 (log<sub>10</sub> ≈
+    3.36); the 2022 Apple M1 Ultra carries about 114 billion (log<sub>10</sub> ≈ 11.06). A
+    roughly straight line on a log scale is exponential growth — <strong>Moore's law</strong>,
+    Gordon Moore's 1965 observation that the component count on integrated circuits was
+    doubling roughly every two years — and it is the reason a 1970s computer filled a room
+    that today fits in a phone, trading the desktop's expandability for the mobile computer's
+    portability.
   </p>
 
   <Widget no="2" caption="transistor counts of flagship CPUs, 1971–2022, on a log10 scale — a straight line means exponential growth" widget="plotter" config={mooreCfg} />
 
-  <h2>What the shrink enables</h2>
   <p>
-    Section 1.5 asks about the impact of emerging technologies, and two headline it: artificial
-    intelligence, where the transistor budget buys learning rather than just calculation, and
-    extended reality — virtual and augmented — where portable processors, sensors and displays
-    overlay digital content on the world. Both are consequences of the line in the graph above:
-    more computation, less power, smaller packages. The syllabus's request that you discuss
-    their impact on everyday life is really a question about that curve continuing.
+    Exponential growth is deceptive in exactly this plotting, so read the graph with care: each
+    equal vertical step is a tenfold jump, so the distance from the 1993 Pentium to the 2000
+    Pentium 4 — seven years on the horizontal axis — represents the transistor count
+    multiplying roughly thirteen times. The same
+    curve explains price: while a fab (fabrication plant) grows more expensive every generation,
+    the cost <em>per transistor</em> kept falling for decades — which is how computation became
+    cheap enough to embed in doorbells and trainers.
   </p>
-  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE ICT 0417 syllabus 2026–2028, section 1 "Types and components of computer systems" (1.1–1.5); Intel, processor specifications (4004, 386, Pentium, Pentium 4, Core i7); Apple, M1 and M1 Ultra technical specifications (2020–2022); G. Moore, <em>Cramming more components onto integrated circuits</em>, Electronics (1965).</p>
+
+  <h2>Emerging technologies: what the curve buys</h2>
+  <p>
+    Section 1.5 asks about the impact of emerging technologies, and two headline it. First,
+    <strong>artificial intelligence</strong> — machine learning systems trained on examples
+    rather than programmed with rules. The transistor budget is what buys it: modern AI runs on
+    processors doing arithmetic in parallel at staggering scale, which is why voice assistants,
+    translation, image recognition and large language models all arrived on the same decade the
+    graph's last points cover. Its impact questions are the syllabus's own: which jobs change,
+    what happens to privacy when software reads faces, who is responsible when an automated
+    decision is wrong. Second, <strong>extended reality</strong> — virtual reality (a fully
+    synthetic world, headset and motion tracking) and augmented reality (digital content
+    overlaid on the real one, from phone apps to smart glasses). XR is a direct consumer of the
+    shrink: it needs two high-resolution displays, a dozen sensors and graphics rendering at
+    90+ frames per second, all battery-powered and light enough to wear — a spec sheet that
+    was physically impossible in 2005. Both technologies also stress the older parts of the
+    chapter: they demand operating systems that schedule real-time sensor data, storage
+    hierarchies that stream gigabytes, and interfaces beyond the GUI. The syllabus's request
+    that you discuss their impact on everyday life is really a question about the curve above
+    continuing — and, as the flattening of its last decade hints, about what happens if it
+    does not.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Three refinements take you beyond the syllabus summary. First, the fetch–decode–execute
+    loop as described is the honest skeleton, but real CPUs overlap it: <em>pipelining</em>
+    keeps decode running while the next instruction is fetched and the previous one executes —
+    like a laundry line where washer, dryer and folding table all work at once. Add
+    <em>multi-core</em> (several complete CPUs on one chip) and the gigahertz number stops
+    being the whole story: a 4-core 2 GHz chip outperforms a 1-core 3 GHz chip on almost
+    everything modern, because software is built to split across cores. Second, memory
+    technology continues to migrate: flash storage (the SSD's technology) began as a way to be
+    "RAM that doesn't forget", and modern phones use their fast storage almost as working
+    memory — the RAM/ROM/SSD boundaries the syllabus draws are real conceptually but physically
+    converging. Third, the historical structure is worth seeing: RAM and ROM's division of
+    labour (volatile workspace, fixed bootstrap) descends from the von Neumann architecture of
+    1945 — program and data stored together in one memory — which is why the CPU's loop has
+    looked structurally the same for eighty years even as its speed improved by factors of
+    millions. Moore's law changed the numbers; the architecture is the constant, and that is
+    why this chapter's vocabulary — bus, register, interrupt, kernel — will still describe
+    machines built long after the current syllabus expires.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE ICT 0417 syllabus 2026–2028, section 1 "Types and components of computer systems" (1.1–1.5); Intel, processor specifications (4004, 386, Pentium, Pentium 4, Core i7); Apple, M1 and M1 Ultra technical specifications (2020–2022); G. Moore, <em>Cramming more components onto integrated circuits</em>, Electronics (1965); J. von Neumann, First Draft of a Report on the EDVAC (1945).</p>
 </TopicPage>

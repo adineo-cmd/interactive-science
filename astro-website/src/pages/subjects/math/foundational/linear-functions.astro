@@ -33,6 +33,20 @@ const slopeCfg = {
     { math: 'y = m·x + c', note: 'Rearranged, with c the y-value where the line crosses the axis.' },
   ],
 };
+
+const perpCfg = {
+  curves: [
+    { expr: 'm*x', label: 'y = m·x', color: '#1d4ed8', width: 2.4 },
+    { expr: '0 - x/m', label: 'y = −x/m', color: '#b42318', width: 2.4 },
+  ],
+  params: [
+    { name: 'm', label: 'slope m', min: 0.5, max: 4, step: 0.25, value: 2 },
+  ],
+  x: { min: -10, max: 10, label: 'x' },
+  y: { min: -10, max: 10, label: 'y' },
+  crossings: false,
+  height: 340,
+};
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -62,8 +76,11 @@ const slopeCfg = {
           <h2>The idea</h2>
           <p>
             A linear function is a promise: <em>equal steps in x buy equal steps in y, always.</em>
-            Two numbers seal the promise — <code>m</code>, how steep, and <code>c</code>, where it
-            starts. Drag them and watch the line keep the deal:
+            Speed up the x-axis by one and the y-axis responds by exactly the same amount every
+            time, forever. That single property is why lines are the workhorses of mathematics —
+            they are the only graphs whose future you can predict from any two moments of their
+            past. Two numbers seal the promise: <code>m</code>, how steep, and <code>c</code>,
+            where it starts. Drag them below and watch the line keep the deal.
           </p>
 
           <figure class="widget">
@@ -73,8 +90,37 @@ const slopeCfg = {
             </div>
           </figure>
 
-          <h2>Finding m and c from scratch</h2>
-          <p>Given any two points, the whole line follows:</p>
+          <p>
+            The form <code>y = m·x + c</code> is worth internalising with real examples. Water
+            freezes at 0 °C and boils at 100 °C, corresponding to 32 °F and 212 °F — so the
+            conversion is linear: F = 1.8·C + 32. The 1.8 is the slope (nine Fahrenheit degrees
+            per five Celsius degrees) and the 32 is the intercept (where Fahrenheit's scale
+            happens to put zero). A taxi fare is linear in kilometres: a base charge plus a
+            per-kilometre rate. A mobile plan is linear in gigabytes used. Whenever you meet a
+            real relationship, the first instinct of a mathematician is: <em>is it linear? and if
+            not, over how small a stretch can I treat it as linear?</em>
+          </p>
+
+          <h2>Gradient: measuring the rate</h2>
+          <p>
+            The <strong>gradient</strong> of a line is its steepness measured honestly:
+            <code>m = rise ÷ run</code> — how far the line climbs for each step you take along.
+            Pick any two points on it, say (1, 3) and (4, 12): the rise is 12 − 3 = 9, the run is
+            4 − 1 = 3, so m = 9 ÷ 3 = 3. Now the crucial property: pick any <em>other</em> pair
+            of points and you get the same 3. On a curve this ratio changes as you move along;
+            the fact that it does <em>not</em> change is exactly what makes the graph a straight
+            line. Gradient always carries units when the axes have them — a distance–time line
+            with gradient 3 has units of metres per second, and the gradient <em>is</em> the
+            speed. A negative gradient slopes downhill: cooling coffee loses 2 °C per minute, so
+            m = −2. A horizontal line has m = 0 (nothing rises); a vertical line has undefined
+            gradient (run = 0, and dividing by zero is not allowed — which is itself a lesson).
+          </p>
+
+          <h2>Building the equation from points</h2>
+          <p>
+            Given any two points, the entire line follows in two moves, because the slope fixes
+            the direction and a point fixes the position:
+          </p>
 
           <figure class="widget">
             <figcaption><span class="fig-no">fig. 2</span><span>from two points to y = m·x + c</span></figcaption>
@@ -83,12 +129,145 @@ const slopeCfg = {
             </div>
           </figure>
 
-          <h2>Why it matters everywhere</h2>
           <p>
-            Constant speed is a linear function of time. A taxi fare is linear in kilometres.
-            Most of science starts as a straight-line approximation — measure two points, draw the
-            line, check where reality bends away from it. That bend is where the next chapter lives.
+            A worked example with ugly-but-honest numbers: the line through (2, 1) and (6, 9).
+            Gradient m = (9 − 1) ÷ (6 − 2) = 2. Anchor at (2, 1): y − 1 = 2·(x − 2), which
+            rearranges to <code>y = 2x − 3</code>. Check with the second point: 2 × 6 − 3 = 9 ✓.
+            The check matters — one arithmetic slip and you own the wrong line with total
+            confidence. Special cases come free: a line through the origin has c = 0, which is
+            <em>direct proportion</em> (double the input, double the output); a horizontal line
+            is just y = c, a constant function. And notice the intercept's meaning: c is the
+            y-value where the line crosses the y-axis — the taxi's base fare, the starting
+            temperature, the "flag falls" value of whatever story the graph tells.
           </p>
+
+          <h2>Drawing lines and reading practical graphs</h2>
+          <p>
+            To draw y = m·x + c by hand, a table of three values suffices (two determine the
+            line; the third is the mistake-catcher). The slicker method: plot the intercept c on
+            the y-axis, then use the gradient as a set of walking directions — from there, rise
+            m and run 1, mark, connect. For y = −½x + 4: start at (0, 4), step right 1 and down
+            ½ repeatedly, and the line draws itself.
+          </p>
+          <p>
+            Practical graphs ("graphs in real situations") are where this earns its keep, and
+            the habit is always the same: <em>gradient = rate, intercept = starting value</em>.
+            A journey graph's gradient is speed; a filling-tank graph's gradient is flow rate; a
+            mobile-bill graph's gradient is the price per gigabyte. Worked example: a taxi
+            charges a £3 base fare plus £1.20 per kilometre, so fare = 3 + 1.20·km. The line
+            crosses the vertical axis at 3 (you pay before moving); its gradient 1.20 is the
+            per-km rate; and reading the graph backwards answers questions directly — at £15 the
+            horizontal line meets the fare line at 10 km. Real bills are often only
+            <em>piecewise</em>-linear (a cheaper rate beyond 10 km bends the line), and the bend
+            points are where the interesting questions live.
+          </p>
+
+          <h2>Parallel and perpendicular lines</h2>
+          <p>
+            Two lines are <strong>parallel</strong> exactly when they share a gradient: y = 2x +
+            1 and y = 2x − 3 rise identically and can never meet, no matter how far you extend
+            them — that is all "parallel" means, and it is why equal gradients are the test used
+            in coordinate proofs everywhere. <strong>Perpendicular</strong> lines hide a
+            subtler gem: their gradients multiply to −1. The perpendicular partner of m = 2 is
+            m = −½; of m = 3, m = −⅓. Why? A perpendicular turns the direction of the line
+            through 90°, which swaps the rise and run and flips a sign: rise 2 for run 1
+            becomes rise −1 for run 2. Drag the slider below and watch the pair pivot together,
+            always crossing at right angles:
+          </p>
+
+          <figure class="widget">
+            <figcaption><span class="fig-no">fig. 3</span><span>perpendicular partners — slope m and −1/m always cross at 90°</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="plotter" data-config={JSON.stringify(perpCfg)}></div>
+            </div>
+          </figure>
+
+          <p>
+            Put the rule to work: find the line through (3, 4) perpendicular to y = ½x + 2. The
+            perpendicular gradient is −2, so y − 4 = −2·(x − 3), giving <code>y = −2x + 10</code>.
+            This construction — drop a perpendicular from a point to a line — is how you compute
+            the shortest distance from a point to a line, the mathematics behind "how far is the
+            ship from the shipping lane" and every nearest-neighbour search in computing.
+          </p>
+
+          <h2>Length and midpoint on the grid</h2>
+          <p>
+            Coordinates also let you measure. The distance between two points comes from
+            Pythagoras: the horizontal gap and vertical gap form the legs of a right triangle,
+            and the segment is its hypotenuse, so <code>d = √((x₂−x₁)² + (y₂−y₁)²)</code>. From
+            (1, 2) to (4, 6): the gaps are 3 and 4, so d = √(9 + 16) = √25 = 5 — the 3-4-5
+            triangle, rediscovered on graph paper. The <strong>midpoint</strong> is the average
+            of the coordinates: ((1+4)/2, (2+6)/2) = (2.5, 4), which makes sense because
+            halfway along a segment means half of each offset. Together, length + gradient +
+            midpoint give you full forensic power over any figure drawn in coordinates: prove a
+            shape is a parallelogram (opposite sides equal length and same gradient), a rhombus,
+            or a right angle (perpendicular gradients) — coordinate geometry is Euclid rebuilt
+            on arithmetic.
+          </p>
+
+          <h2>A full modelling problem: the break-even point</h2>
+  <p>
+    Two lines crossing is also the shape of every business plan. Suppose you print tote
+    bags: a £500 printing rig plus £9 of materials per bag, and each bag sells for £15.
+    Cost is linear in bags made: <code>C = 500 + 9x</code> (intercept 500 — the fixed cost
+    you pay before making anything; slope 9 — the per-bag rate). Revenue is linear too:
+    <code>R = 15x</code>, straight through the origin (sell zero, earn zero — direct
+    proportion). Profit is the gap, and the <strong>break-even point</strong> is where the
+    lines cross: 15x = 500 + 9x, so 6x = 500, x ≈ 83.3 — the 84th bag is the first one after
+    which you are genuinely profitable. Below it, the business is a subsidy; above it, every
+    bag adds £6. Read the geometry honestly and you can answer follow-ups without new maths:
+    raise the selling price to £18 and the crossing slides left (a steeper revenue line meets
+    cost sooner); negotiate materials to £8 and the cost line flattens, also moving break-even
+    down. Same two-line diagram, every decision in the model — which is why "linear model" is
+    the first phrase in every business analytics course.
+  </p>
+  <p>
+    The general lesson generalises: whenever two linear processes compete — cost vs revenue,
+    distance covered vs distance remaining, money in savings vs money owed — their
+    <em>difference</em> is itself linear, and solving for zero finds the moment of
+    handshake. That is all an equation like <code>m₁x + c₁ = m₂x + c₂</code> ever is: two
+    stories agreeing on one number.
+  </p>
+
+  <h2>Reading between the lines: inequalities on the graph</h2>
+  <p>
+    The line's last gift is that it divides the plane in two. Every linear inequality —
+    <code>y &gt; 2x − 3</code>, say — is a <em>region</em>: draw the line (dashed for strict
+    inequality, solid for ≤ or ≥), pick a test point not on it, say the origin, and check
+    whether it satisfies the rule (0 &gt; −3 ✓). The origin's side of the line is the answer;
+    shade accordingly. "Systems" of them just intersect the regions — which is exactly how
+    linear programming, the mathematics of every "maximise profit subject to budget, hours
+    and materials" problem, begins: shade the feasible region, then slide the profit line
+    until it last touches the region's corner. The exam version of the same idea is
+    graphing regions and testing points, and the everyday version is every budget you have
+    ever stayed inside without noticing it was linear algebra.
+  </p>
+
+  <h2>Going deeper</h2>
+          <p>
+            Two linear equations solved together — <em>simultaneous equations</em> — are
+            secretly a question about lines: where do y = 2x + 1 and y = −x + 7 cross? Set them
+            equal: 2x + 1 = −x + 7, so 3x = 6, x = 2, and y = 5. The algebra is the geometry;
+            parallel lines (equal gradients) give the nonsense 1 = −3, which is the algebraic
+            way of saying "never meet". Extend to three equations and you are doing linear
+            algebra, the machinery behind Google's ranking, computer graphics and every
+            spreadsheet solver.
+          </p>
+          <p>
+            Linearity is also the backbone of statistics: scatter your data and draw the best
+            straight line through it, and you have linear regression — the most used model in
+            science, and the reason "correlation" comes with a slope and an intercept at all.
+            The honest caveat is that it finds the best <em>linear</em> story, not the true one:
+            fit a line to an exponential curve and you will be confidently wrong. Physicists
+            court linearity deliberately — Ohm's law (V = I·R), Hooke's law (F = k·x), the
+            ideal-gas law at fixed volume — because every law is linear in a small enough
+            neighbourhood of any point. The calculus waiting in later chapters makes that
+            precise: a curve, magnified far enough, <em>is</em> a line, and the gradient of
+            that local line is the derivative. The linear function is not just chapter one;
+            it is the microscope through which every other chapter is read.
+          </p>
+
+          <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Mathematics 0580 syllabus, sections E2.9 and E3.2–E3.7; OpenStax, <em>College Algebra</em>, chapter 4; Strang, <em>Introduction to Linear Algebra</em>.</p>
         </div>
 
         <nav class="topic-next" aria-label="Lesson navigation">

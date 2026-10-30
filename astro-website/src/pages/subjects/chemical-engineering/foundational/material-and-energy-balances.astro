@@ -25,38 +25,209 @@ const balancesCfg = {
 <TopicPage slug="subjects/chemical-engineering/foundational/material-and-energy-balances">
   <h2>The idea</h2>
   <p>
-    Chemical engineering is chemistry with consequences at scale — and its foundational tool is
-    disarmingly simple: draw a box around the process and account for what crosses it. Mass and
-    energy are conserved, so every kilogram and every joule can be followed. Nearly all process
-    design starts as an exercise in bookkeeping.
+    A chemical plant is, at bottom, an accounting problem. Raw material worth money flows in at one
+    end; product worth more money flows out somewhere else; and everything in between — reactors,
+    distillation columns, heat exchangers, pumps — either transforms or moves that material. The
+    foundational tool of chemical engineering takes the disarming form of a statement every
+    accountant already believes: nothing appears from nowhere, and nothing vanishes without a
+    trace. Draw a box around any piece of the plant, and whatever crosses the boundary can be
+    counted in and counted out. Because mass and energy are conserved, the two counts must
+    reconcile.
+  </p>
+  <p>
+    This is why the discipline is sometimes described as "chemistry with consequences at scale."
+    A bench chemist can run a reaction in a flask and throw away the 60 percent that did not
+    convert; a plant producing a thousand tonnes a day cannot. The chemical engineer must know,
+    before anything is built, exactly how much feed to buy, how big to make each vessel, how much
+    steam and cooling water to supply, and where every side stream goes. Nearly all of that
+    design work starts as bookkeeping: mass balances first, energy balances second, and equipment
+    sizing only once the flowsheet closes.
+  </p>
+  <p>
+    The mental move that makes it all work is choosing the <em>system boundary</em>. Draw it
+    around a single pump and you learn what the pump does; draw it around a reactor plus its
+    recycle loop and you learn what the loop achieves; draw it around the whole plant and you
+    learn what you are paying for at the fence line. The physics never changes — only the box.
+    Learning where to draw it, and what can be safely neglected once it is drawn, is the first
+    genuine skill of the subject.
   </p>
 
   <Widget no="1" caption="the balance equation, from box to recycle" widget="equationStep" config={balancesCfg} />
 
-  <h2>Why recycle beats bigger reactors</h2>
+  <h2>Steady-state balances</h2>
   <p>
-    Real reactions never go to completion in one pass. Sending unreacted feed back around turns one
-    low conversion into many high ones: after n passes, the unconverted fraction falls like 1/(1+R)
-    for recycle ratio R. The trade-off is pumping cost and purge design — recycle accumulates
-    anything that does not react.
+    The master equation is written in one line for any conserved quantity:
+  </p>
+  <p>
+    input − output = accumulation.
+  </p>
+  <p>
+    A process is at <em>steady state</em> when nothing changes with time: gauges read constant
+    values, tank levels sit still, temperatures hold. Then accumulation is zero and the equation
+    collapses to "input equals output" — a plant in perfect balance, like a shop whose daily
+    takings exactly match its daily sales. Most design calculations assume steady state because
+    a plant spends its working life there; startup, shutdown and upsets are the exceptions that
+    transient (dynamic) balances handle.
+  </p>
+  <p>
+    A worked example shows how little machinery is needed. An evaporator concentrates fruit juice
+    from 10 percent solids to 50 percent solids. Feed arrives at 1,000 kg per hour. Draw the box
+    around the evaporator: juice and water vapour cross it, nothing reacts. The total mass
+    balance says product plus vapour equals 1,000 kg per hour. But one equation with two unknowns
+    is not solvable yet — this is the signal to write a <em>component</em> balance. Solids do not
+    evaporate, so the solids balance reads: 0.10 × 1,000 = 0.50 × P, giving P = 200 kg per hour
+    of concentrated juice. The total balance then hands over the vapour rate: V = 800 kg per hour
+    of water boiled off. That vapour rate, in turn, sizes the condenser and tells you the steam
+    bill. Two lines of arithmetic and a piece of the plant is already designed.
+  </p>
+  <p>
+    <em>Common misconception:</em> steady state does not mean equilibrium. A candle burning
+    steadily is at steady state — temperatures and flame shape are constant — but it is very far
+    from chemical equilibrium. Steady state is a statement about flows balancing over time;
+    equilibrium is a statement about a reaction or transfer being complete, with no net driving
+    force left. Plants are engineered to run at steady states that are deliberately far from
+    equilibrium, precisely because that is where reactions and separations actually happen.
+  </p>
+
+  <h2>Reactive systems and extent of reaction</h2>
+  <p>
+    Reactions scramble the bookkeeping because molecules change identity: methane burns to carbon
+    dioxide and water, and no molecule of methane survives to be counted "out." The fix is to
+    balance <em>elements</em>, not compounds — carbon atoms, hydrogen atoms and oxygen atoms each
+    obey their own conservation law. The tidy way to organise this is the <em>extent of
+    reaction</em>, usually written ξ (xi). For a reaction with stoichiometric coefficients ν, the
+    change in any species is its coefficient times one common unknown: n = n₀ + νξ. One number
+    describes the whole reaction's progress.
+  </p>
+  <p>
+    Take the workhorse of the process industries: burning methane, CH₄ + 2 O₂ → CO₂ + 2 H₂O.
+    Suppose we feed 100 mol per hour of methane together with 20 percent excess air. The
+    stoichiometric oxygen demand is 200 mol per hour; with 20 percent excess we supply 240 mol
+    per hour of O₂, which arrives inside 240 ÷ 0.21 ≈ 1,143 mol per hour of air, carrying
+    0.79 × 1,143 ≈ 903 mol per hour of nitrogen. If the methane burns completely, the extent is
+    ξ = 100 mol per hour. The flue gas — on a dry basis — contains 100 mol per hour of CO₂,
+    the leftover 40 mol per hour of O₂, and all 903 mol per hour of N₂: about 1,043 mol per hour
+    total, with the oxygen mole fraction near 40 ÷ 1,043 ≈ 3.8 percent. That single number is
+    what a plant's oxygen analyser reads in the stack, and operators use it to diagnose whether
+    the burner is running rich, lean, or leaking air.
+  </p>
+  <p>
+    Two companion definitions matter. <em>Conversion</em> is the fraction of a reactant that is
+    consumed. <em>Yield</em> and <em>selectivity</em> enter when side reactions compete: the same
+    reactor can convert all its feed while producing mostly the wrong product, and no amount of
+    mass-balance cleverness fixes that — only chemistry and catalyst choice can. The balances tell
+    you what must be true; only experiment tells you what is achievable.
+  </p>
+  <p>
+    <em>Common misconception:</em> reactions do not destroy mass. It feels natural to say
+    "the methane disappeared," but weigh a sealed furnace burning methane with its oxygen supply
+    and the total mass is unchanged — the carbon and hydrogen have simply moved into new
+    molecules. A mass balance written only for one compound will not close in a reactive system;
+    written for each element, it closes exactly, always.
+  </p>
+
+  <h2>Recycle and purge</h2>
+  <p>
+    Real reactions rarely reach completion in a single pass — a reactor might convert only 40
+    percent of what enters. Throwing away the unconverted 60 percent would be ruinous, so
+    engineers send it around again. A <em>recycle stream</em> returns unreacted feed to the
+    reactor inlet, giving every molecule as many chances as it needs. The crucial insight is
+    that recycle improves <em>overall</em> conversion, not the reactor itself: the vessel is
+    unchanged, but at steady state it processes (1 + R) times the fresh feed for a recycle
+    ratio R (recycle divided by fresh feed), so the average molecule gets 1 + R trips through
+    before it either reacts or escapes.
   </p>
 
   <Widget no="2" caption="unconverted feed falls with each pass" widget="plotter" config={recycleCfg} />
 
-  <h2>Energy is the other ledger</h2>
   <p>
-    Every unit operation is also an energy balance. Distillation columns boil and condense tonnes
-    of liquid; exothermic reactors must be cooled or they run away. The engineer's first questions
-    — where does the heat come from, where does it go, can it be reused — are energy balances with
-    a heat exchanger catalogue open.
+    The arithmetic is a steady-state balance on the recycle loop. The ammonia synthesis loop is
+    the classic case: nitrogen and hydrogen convert to ammonia at perhaps 15 percent per pass,
+    the ammonia is condensed out as product, and the unreacted gas — nitrogen, hydrogen and any
+    inerts — loops back to the converter. Per-pass conversion stays modest (which keeps the
+    reaction controllable and the catalyst happy) while overall conversion of the fresh feed
+    exceeds 97 percent.
+  </p>
+  <p>
+    But recycle has a catch that bit many early plants: whatever enters the loop and does not
+    leave as product or react away will <em>accumulate</em>. Inert argon rides in with the air
+    used to make ammonia synthesis gas, and argon does not condense and does not react. Without
+    an exit, the loop's argon fraction would creep upward forever, diluting the reactants and
+    strangling the reaction rate. The remedy is a <em>purge</em>: a small bleed stream that
+    removes inerts at exactly the rate they enter. Setting the purge rate is itself a balance —
+    purge enough to hold inerts down, but every kilogram purged carries valuable reactants with
+    it. Industrial loops live permanently on this knife edge, and adjusting purge is one of the
+    standard levers of plant operation.
+  </p>
+  <p>
+    <em>Common misconception:</em> recycle is not free lunch. It raises overall conversion, but
+    it also enlarges every piece of equipment in the loop (more flow to pump, cool and separate),
+    adds compression or pumping cost, and — without a purge — guarantees runaway accumulation of
+    anything inert. The design question is never "should we recycle?" but "how much recycle is
+    worth what it costs?"
   </p>
 
-  <h2>From balances to flowsheets</h2>
+  <h2>Energy is the other ledger</h2>
   <p>
-    A full process is hundreds of coupled balances, solved on a flowsheet simulator. But the
-    discipline's instinct stays the same as the back-of-envelope version: pick the box, count what
-    crosses it, and trust the conservation laws. When the numbers refuse to close, it is usually
-    the flowsheet, not the physics, that is wrong.
+    Every mass balance travels with an energy balance, because moving and transforming matter
+    costs and releases energy in predictable, auditable amounts. The same master equation
+    applies: energy in − energy out = accumulation, with steady state collapsing it to
+    "energy in equals energy out." The tricky part is that energy enters in disguise — as heat,
+    as flow work, and above all as <em>enthalpy</em>, the accounting quantity that bundles a
+    stream's internal energy with the push required to move it across the boundary. Enthalpy
+    tables and charts are to the chemical engineer what a price list is to an accountant: the
+    reference book that converts "how much stuff" into "how much energy."
+  </p>
+  <p>
+    Reactions book their energy under enthalpy too. Burning one mole of methane releases about
+    890 kJ of heat. Ask where that heat goes in an adiabatic burner — a box with no heat loss —
+    and you can estimate the flame temperature with the tools already on the table. Using the
+    flue gas from the worked example above, roughly 1,243 mol of hot products per mole-fraction
+    basis carry a total heat capacity near 41 kJ per kelvin; 890 kJ ÷ 41 kJ/K gives a
+    temperature rise of order 2,100 kelvin above ambient. The measured adiabatic flame
+    temperature of methane in air lands near 2,200 K — the simple balance captures the physics
+    within a few percent. The same arithmetic, run backwards, sizes the cooling water flow that
+    keeps an exothermic reactor from running away: heat generation is fixed by the reaction
+    rate, and the coolant must carry it out at exactly that rate, or the temperature — and with
+    it the reaction rate — climbs in a runaway.
+  </p>
+  <p>
+    Energy balances also reveal opportunities that pure mass thinking misses. A distillation
+    column's overhead vapour must be condensed; a feed stream must be preheated. Put them in one
+    box and the vapour can preheat the feed, cutting the steam bill in half. This
+    <em>heat integration</em> — matching every heat source in the plant with a heat sink that
+    wants it — is applied energy accounting, and on large plants it saves megawatts.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The first step from toy problems to real ones is the <em>degrees-of-freedom</em> count.
+    Before solving anything, the engineer tallies unknowns against independent equations; the
+    difference tells you whether the problem is exactly solvable, underspecified (need a
+    measurement or a design decision), or overspecified (a contradiction — the flowsheet cannot
+    work as drawn). Seasoned engineers do this count reflexively, and when a simulation refuses
+    to converge it is usually a degrees-of-freedom error in disguise: the physics is fine, the
+    specification is not.
+  </p>
+  <p>
+    With multiple simultaneous reactions, one extent is not enough — each independent reaction
+    gets its own ξ, and the element balances fix their relative values. The method extends
+    cleanly to equilibrium: at equilibrium the extents satisfy the thermodynamic relation
+    linking the equilibrium constant to Gibbs energy, which is how reactor simulators predict
+    exactly how far a reaction will go at a given temperature and pressure. Unsteady balances —
+    accumulation allowed to be nonzero — govern startup, shutdown, tank draining and safety
+    analysis, and they are the mathematical basis of process control, where controllers exist
+    precisely to drive a transient system back toward a chosen steady state.
+  </p>
+  <p>
+    At plant scale, hundreds of coupled nonlinear balances are solved simultaneously by
+    flowsheet simulators such as Aspen Plus and HYSYS, each unit operation contributing its own
+    mass, energy and equilibrium relations. The art of the engineer remains what it was at the
+    back of the envelope: choosing the box, deciding what to neglect, and knowing when an answer
+    that closes is nonetheless wrong. Debated questions live at the margins — how much
+    uncertainty in enthalpy data propagates through a design, how to close balances when plant
+    instruments disagree, and how to formulate balances for processes (carbon capture, battery
+    recycling) where the "feed" itself is an unsteady, variable commodity.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NCEES FE Chemical exam specifications; Felder &amp; Rousseau, <em>Elementary Principles of Chemical Processes</em>.</p>

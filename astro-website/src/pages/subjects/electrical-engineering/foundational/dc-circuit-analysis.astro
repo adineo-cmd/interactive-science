@@ -27,37 +27,189 @@ const lawsCfg = {
 <TopicPage slug="subjects/electrical-engineering/foundational/dc-circuit-analysis">
   <h2>The idea</h2>
   <p>
-    All of electronics stands on three laws you can learn in an afternoon: Ohm's law and
-    Kirchhoff's two conservation statements. They are enough to reduce any resistive network — from
-    a flashlight to a motherboard's power rails — to solvable algebra. Fluency here is the entry
-    ticket to everything else in electrical engineering.
+    A circuit is one of the friendliest systems in all of engineering: a closed world where
+    exactly two quantities matter and exactly two conservation laws govern them. Voltage is
+    electrical "height" — energy per unit charge, measured in joules per coulomb — and current
+    is the flow of charge itself, coulombs per second. Resistance is the friction between them:
+    how much push is needed to sustain a given flow. The water analogy is genuinely useful
+    here: voltage is the pressure difference across a pipe run, current is the litres per
+    second moving through it, and resistance is how narrow the pipe is. Pressurise a loop of
+    pipework and the flow distributes itself automatically; the same happens, instantaneously
+    and invisibly, in every wire you have ever touched.
+  </p>
+  <p>
+    What makes circuit analysis remarkable is its completeness. Three laws — Ohm's law plus
+    Kirchhoff's two conservation statements — are sufficient to solve <em>any</em> network of
+    batteries and resistors, no matter how tangled, to exact algebraic precision. There is no
+    statistical approximation, no empirical fudge: the schematic on a first-year problem set
+    and the power-distribution network of a jetliner yield to the same three sentences. The
+    skills this chapter builds — read the circuit, name the nodes, trust conservation — are
+    the same ones a chip designer uses with a thousand nodes, except that the thousand-node
+    version is done by software that automates precisely the recipe taught here.
+  </p>
+  <p>
+    Direct current (DC) — steady flows, steady voltages — is where the reflexes are built.
+    Alternating current adds capacitors, inductors and calculus on top; DC first ensures that
+    when that complexity arrives, the conservation backbone underneath it is already
+    automatic.
   </p>
 
   <Widget no="1" caption="Ohm, Kirchhoff, and the network collapses" widget="equationStep" config={lawsCfg} />
 
+  <h2>Ohm's law and Kirchhoff's two laws</h2>
+  <p>
+    Ohm's law, V = IR, states that the current through a resistor is proportional to the
+    voltage across it, with the resistance as the constant of proportionality. Double the push,
+    double the flow. It is a material property, not a deep law of nature — a diode or a
+    lightbulb filament does not obey it — but metal wires at constant temperature follow it
+    so faithfully that entire industries are built on it.
+  </p>
+  <p>
+    Kirchhoff's current law (KCL) says the current flowing into any junction equals the current
+    flowing out. This is conservation of charge: charge has nowhere to be created or stored at
+    a connection point, so whatever arrives must leave. Kirchhoff's voltage law (KVL) says the
+    sum of voltage rises and drops around any closed loop is zero. This is conservation of
+    energy: walk a full circuit of the loop and you must return to your starting potential,
+    just as a hiker returning to base camp has zero net elevation change. Battery rises pay
+    for resistor drops, exactly, every time.
+  </p>
+  <p>
+    A worked example shows the three laws cooperating. Take a 12 V battery feeding a
+    100 Ω resistor in series with two 200 Ω resistors that are in parallel with each other.
+    The parallel pair has resistance 200 ÷ 2 = 100 Ω, so the total is 200 Ω and Ohm's law
+    gives a battery current of 12 ÷ 200 = 60 mA. KVL then splits the voltage: the series
+    resistor drops 0.06 × 100 = 6 V, leaving 6 V across the pair. KCL finishes the job: 6 V
+    across each 200 Ω branch drives 30 mA per branch, and indeed 30 + 30 = 60 mA — the books
+    balance at every node. Note the division of labour: Ohm converts local voltage to local
+    current, KVL constrains the voltages, KCL constrains the currents.
+  </p>
+  <p>
+    <em>Common misconception:</em> current gets "used up" as it goes around a circuit. It does
+    not — current is a flow rate of charge, and charge is conserved, so the same current that
+    leaves the battery returns to it. What is consumed is <em>energy</em>: each coulomb
+    delivers its cargo of joules to the resistors on the way around, emerging at lower
+    potential. The river's flow rate is unchanged along its length even as its height drops
+    over every waterfall.
+  </p>
+
   <h2>The voltage divider: the circuit everyone owns</h2>
   <p>
-    Two resistors in series split a voltage in proportion to their resistances — Vout =
-    Vin·R2/(R1+R2). Sensors, volume controls, bias networks and every microcontroller's reference
-    chain are this one circuit. Drag the values and watch the trade: more R2, more of the input.
+    Two resistors in series split a source voltage in proportion to their resistances:
+    Vout = Vin × R2 ÷ (R1 + R2). The derivation is two lines — one current through both
+    resistors, KVL for the split — and the result is arguably the most-used circuit in
+    existence. Sensors use it to turn resistance changes into voltage changes (a thermistor
+    in one half makes a thermometer); microcontrollers use it to scale a battery's 4.2 V down
+    to the 3.3 V an analogue input can read; volume controls in the analogue era were
+    literally one adjustable divider.
   </p>
 
   <Widget no="2" caption="a two-resistor divider under your fingers" widget="sliderLab" config={dividerCfg} />
 
-  <h2>Nodal analysis: the general-purpose machine</h2>
   <p>
-    When series-parallel tricks run out, write Kirchhoff's current law at each node and solve the
-    simultaneous equations. That recipe — nodal analysis — scales to any linear network and is
-    exactly what SPICE, the simulator behind most chip design, automates. The algebra gets long;
-    the ideas never change.
+    With the widget's default values — 9 V in, R1 = 1 kΩ, R2 = 2 kΩ — the output is
+    9 × 2 ÷ 3 = 6 V and the current is a modest 3 mA. One warning deserves its own sentence:
+    the divider formula is only exact when <em>nothing draws current from the tap</em>. The
+    moment a load connects, part of R2's current is diverted, and the output sags — a preview
+    of Thevenin's insight below.
   </p>
 
-  <h2>Why DC first, AC later</h2>
+  <h2>Power: where the energy actually goes</h2>
   <p>
-    Real circuits alternate, and capacitors and inductors turn the algebra into calculus. But the
-    direct-current case builds the reflexes: read a schematic, define nodes, trust conservation.
-    Phasors later will even let you reuse Ohm's law with complex numbers. Every electrical engineer's
-    intuition is debugged here, in DC, first.
+    Voltage and current together fix the rate of energy delivery: power equals voltage times
+    current, P = VI. Substitute Ohm's law and two more forms appear — P = I²R and P = V²/R —
+    which answer the two questions engineers actually ask: how hot will this resistor get, and
+    how much current does this device really draw? Run the widget's default divider through
+    the arithmetic: 9 V across 3 kΩ drives 3 mA, so the battery delivers 27 mW. The 1 kΩ
+    resistor, dropping 3 V, dissipates 9 mW; the 2 kΩ, dropping 6 V, takes the other 18 mW.
+    The books balance — 27 in, 27 out — because KVL is conservation of energy wearing a
+    circuit's clothes.
+  </p>
+  <p>
+    Those milliwatts explain a component you have seen and never questioned: the power rating
+    printed on every resistor. A standard part survives a quarter watt; push 0.5 W through it
+    and it cooks, darkens and drifts out of specification. The same arithmetic scaled up
+    governs real infrastructure — a transmission line carrying megawatts loses I²R power as
+    heat, which is precisely why grids transmit at enormous voltages: raising voltage cuts
+    current in proportion, and the losses fall with the <em>square</em> of current. One line
+    of algebra, P = I²R, is the reason the pylons outside your window carry 400,000 volts.
+  </p>
+
+  <h2>Nodal and mesh analysis: the general-purpose machines</h2>
+  <p>
+    Series-parallel simplification eventually fails — in a "ladder" network or a bridge,
+    no two resistors are simply in series or parallel. The systematic fallback is
+    <em>nodal analysis</em>: choose one node as ground (zero volts), write KCL at every other
+    node in terms of the unknown node voltages, and solve the simultaneous equations. With n
+    nodes there are n − 1 unknowns — modest algebra for a computer. <em>Mesh analysis</em> is
+    its mirror image: assign a circulating current to each independent loop, write KVL around
+    each loop, and solve for the loop currents. The two methods are equivalent in power;
+    nodal analysis wins when the circuit has few nodes and many loops (which is most
+    electronics), and it is the method modern simulators mechanise.
+  </p>
+  <p>
+    Consider what nodal analysis does to a bridge circuit — four resistors forming a diamond,
+    used in strain gauges and precision thermometers. No simplification applies, yet naming
+    the two middle nodes and writing two KCL equations solves it completely. The same recipe
+    extends without modification to networks with controlled sources, and SPICE — the
+    simulation engine behind most chip design since the 1970s — is little more than nodal
+    analysis performed at industrial scale, stamping each component into a giant matrix and
+    solving it millions of times per simulation.
+  </p>
+
+  <h2>Thevenin and Norton: every network is one source and one resistor</h2>
+  <p>
+    The deepest compression in circuit theory is this: any network of sources and resistors,
+    viewed from two terminals, behaves <em>exactly</em> like a single voltage source in
+    series with a single resistance (Thevenin's equivalent), or equivalently a single current
+    source in parallel with one resistance (Norton's). Not approximately — exactly, for any
+    linear network. The Thevenin voltage is what you measure at the terminals with nothing
+    connected; the Thevenin resistance is what you "see" looking back in, with all independent
+    sources switched off.
+  </p>
+  <p>
+    Work the widget's divider through it. Open-circuit output: 6 V. Looking back from the
+    tap with the 9 V source replaced by a wire, R1 and R2 sit in parallel:
+    (1000 × 2000) ÷ 3000 ≈ 667 Ω. Now attach a 1 kΩ load. The loaded output is
+    6 × 1000 ÷ (1667) ≈ 3.6 V — a 40 percent sag that the naive divider formula never
+    predicted. Thevenin's theorem explained the sag in one step, and it prescribes the cure:
+    make the divider's resistances small compared with the load, shrinking the Thevenin
+    resistance, so the tap holds its voltage. Every real source — battery, lab supply,
+    sensor, audio amplifier — is honestly specified this way, by its open-circuit voltage and
+    internal resistance, and every "loading effect" puzzle in measurement dissolves into two
+    resistors in series.
+  </p>
+  <p>
+    <em>Common misconception:</em> the Thevenin resistance is a physical resistor hidden
+    somewhere in the circuit. It is not — it is a bookkeeping artefact, the lumped behaviour
+    of the entire network as seen from outside. Open the box and you will find the original
+    components untouched; close it and the two terminals genuinely cannot tell the difference
+    between the full network and one 667 Ω resistor behind a 6 V source.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Two more principles round out the linear toolkit. <em>Superposition</em> says that in any
+    linear circuit with several sources, each source's contribution can be computed alone —
+    other sources switched off — and the answers added; it is why "noise pickup" and "signal"
+    can be analysed separately and then combined. The <em>maximum power transfer theorem</em>
+    says a load extracts the most power from a Thevenin source when the load resistance equals
+    the Thevenin resistance, delivering 50 percent efficiency — fine for a radio antenna,
+    deliberately avoided in a power grid, where matching the generator would waste half the
+    plant. Note the subtlety the theorem hides: maximum <em>power</em> and maximum
+    <em>voltage transfer</em> are different goals, and which one you design for depends on
+    whether you are delivering energy or information.
+  </p>
+  <p>
+    Beyond DC, the same skeleton carries everything. Replace resistance with impedance —
+    resistance generalised to capacitors and inductors, whose opposition depends on frequency
+    — and Ohm's and Kirchhoff's laws survive intact with complex numbers, which is what phasor
+    AC analysis is. Nonlinearity is the honest boundary: diodes and transistors break Ohm's
+    law, and the working method there is to linearise around an operating point — Thevenin
+    equivalents again, computed at the bias point. Where the research edge lives: networks too
+    large for exact solution (power grids under stochastic renewables), circuits whose
+    <em>topology</em> switches millions of times per second in power converters, and
+    thermal–electrical coupling, where resistance itself drifts with temperature until a
+    "linear" circuit quietly stops being one.
   </p>
 
   <p class="sources"><strong>Sources:</strong> NCEES FE Electrical and Computer exam specifications; Agarwal &amp; Lang, <em>Foundations of Analog and Digital Electronic Circuits</em>.</p>
