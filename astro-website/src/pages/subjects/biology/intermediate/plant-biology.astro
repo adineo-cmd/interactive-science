@@ -6,9 +6,23 @@ const plantCfg = {
   steps: [
     { math: '1 · Roots: the hidden half', note: 'Anchor, water pump, mineral collector — and home to fungal partners (mycorrhizae) that extend the root system tenfold. Roots sense gravity and moisture and grow accordingly.' },
     { math: '2 · Stem & vascular system', note: 'Xylem carries water upward (powered by evaporation pulling a water chain — no pump); phloem carries sugars from leaf to root. Trees move hundreds of litres a day with zero moving parts.' },
-    { math: '3 · Leaves: the factories', note: 'Photosynthesis (see the earlier lesson) plus stomata — adjustable pores that trade CO₂ intake against water loss. The whole plant balances this trade-off continuously.' },
+    { math: '3 · Leaves: the factories', note: 'Photosynthesis plus stomata — adjustable pores that trade CO₂ intake against water loss. The whole plant balances this trade-off continuously.' },
     { math: '4 · Hormones: the chemical switchboard', note: 'Auxin bends stems toward light; gibberellin drives germination and growth; ethylene ripens fruit (one bad apple really does spoil the barrel). No nerves — chemistry does the signalling.' },
   ],
+};
+
+const photoCfg = {
+  curves: [
+    { expr: '25*x/(x + 40)', label: 'rate at 25 °C, plenty of CO₂', color: '#2e7d32', width: 2.4 },
+    { expr: '15*x/(x + 40)', label: 'same, CO₂-limited', color: '#1d4ed8', width: 2 },
+  ],
+  params: [
+    { name: 'x', label: 'light intensity', min: 0, max: 200, step: 1, value: 40 },
+  ],
+  x: { min: 0, max: 200, label: 'light intensity' },
+  y: { min: 0, max: 30, label: 'photosynthesis rate' },
+  crossings: false,
+  height: 320,
 };
 ---
 <TopicPage slug="subjects/biology/intermediate/plant-biology">
@@ -16,18 +30,180 @@ const plantCfg = {
   <p>
     Plants are <strong>stationary chemists</strong>: rooted in place, they solve every problem
     animals solve with movement — finding food, water, light, mates and defence — using growth
-    and chemistry instead. Understanding plants is understanding how a fixed organism wins, which
-    also makes them the foundation of nearly every food chain and of civilisation itself.
+    and chemistry instead. You already know the headline reaction: photosynthesis builds sugar
+    from CO₂ and water using light. This lesson walks the whole machine — the leaf where the
+    chemistry happens, the roots and vascular plumbing that feed it, and the hormone system that
+    lets a fixed organism steer itself through a changing world. Understanding plants is
+    understanding how a fixed organism wins, and since plants are the foundation of nearly every
+    food chain, it is also understanding where your own meals come from.
   </p>
 
   <Widget no="1" caption="the plant body, system by system" widget="equationStep" config={plantCfg} />
 
-  <h2>What makes plants remarkable</h2>
-  <ul>
-    <li><strong>They build themselves from air:</strong> ~95% of a tree's dry mass is CO₂ and water pulled from air and soil. Forests are solidified atmosphere.</li>
-    <li><strong>Water up a 100-metre tree with no pump:</strong> evaporation tension plus hydrogen bonding (the cohesion–tension theory) — physics working inside every leaf.</li>
-    <li><strong>Plant defence is chemical warfare:</strong> caffeine, nicotine, tannins, latex — poisons, glues and alarms. Many medicines (aspirin, morphine, quinine, taxol) are plant defence chemistry borrowed.</li>
-    <li><strong>They communicate:</strong> damaged acacias release airborne signals neighbours respond to; mycorrhizal networks shuttle nutrients between trees ("the wood wide web" — real, though early popular claims were oversold).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Taiz & Zeiger, Plant Physiology; OpenStax, Biology 2e (Plant Structure and Function); Wohlleben, The Hidden Life of Trees (popular, with caveats).</p>
+  <h2>Photosynthesis: the engine</h2>
+  <p>
+    The overall equation is 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (in light, with chlorophyll). That
+    single line hides two linked stages. In the <strong>light-dependent stage</strong>, chlorophyll
+    in the thylakoid membranes absorbs light and uses its energy to split water — liberating the
+    oxygen (every O₂ molecule you breathe came from a water molecule split by a plant, alga or
+    cyanobacterium) and charging the energy carriers ATP and NADPH. In the
+    <strong>Calvin cycle</strong>, those carriers power the fixation of CO₂ onto a five-carbon
+    sugar, and after a cycle of reductions the six-carbon glucose emerges. No light is needed for
+    the Calvin cycle itself — but it cannot run for long without the carriers, which is why
+    photosynthesis in the dark quickly stops. Chlorophyll absorbs red and blue light strongly and
+    reflects green, which is why leaves look green: that colour is literally the light the plant
+    declined to use.
+  </p>
+  <p>
+    The reaction is <strong>limiting-factor controlled</strong>, which makes it a favourite exam
+    and greenhouse-management topic. Whichever of light intensity, CO₂ concentration, or
+    temperature is scarcest sets the rate; increasing the others does nothing until that one is
+    relieved. In practice, on a bright warm day ambient CO₂ (about 0.04% of air) is the ceiling —
+    which is why commercial glasshouses enrich the air with CO₂ to roughly 0.1% and gain
+    double-digit yield increases.
+  </p>
+
+  <Widget no="2" caption="photosynthesis saturates with light — and a CO₂ shortage caps the ceiling" widget="plotter" config={photoCfg} />
+
+  <p>
+    Read the graph the way a grower would. The green curve saturates: beyond a light intensity of
+    about 80 units the rate plateaus near 25, because something else — CO₂ supply, temperature —
+    has become the bottleneck. The blue curve shows the same plant under CO₂ limitation: the whole
+    curve is squashed, and no amount of extra light pushes it past 15. Worked example: a
+    greenhouse at midday in June has abundant light, so light is <em>not</em> the limiting factor;
+    if the glasshouse is sealed, CO₂ depletion is the cap, and venting or CO₂ injection raises the
+    yield instantly. At dawn or dusk, light is the cap. Temperature compounds this: between about
+    0 and 30 °C photosynthesis roughly follows enzyme kinetics (doubling per 10 °C), until
+    denaturation pulls it down again past about 40 °C. Diagnosis of a slow crop is therefore a
+    chain of substitutions — test each factor in turn — and the answer changes through the day.
+  </p>
+
+  <h2>Leaf structure: engineered for exchange</h2>
+  <p>
+    Every layer of a leaf is an answer to a transport problem. The <strong>waxy cuticle</strong>
+    and <strong>upper epidermis</strong> are transparent armour — protective but see-through.
+    The <strong>palisade mesophyll</strong> beneath holds the densest chloroplast packing in the
+    plant, positioned where light lands first. Below it, the <strong>spongy mesophyll</strong>
+    is riddled with air spaces so CO₂ can diffuse freely to every photosynthesising cell — gas
+    exchange needs surface area the way the lungs need alveoli. The <strong>lower
+    epidermis</strong> is studded with <strong>stomata</strong>, pores flanked by two
+    <strong>guard cells</strong> that swell (opening the pore) when the plant has water to spare
+    and slack (closing it) under drought stress. And the <strong>vascular bundle</strong> — vein
+    — threads through the mesophyll, delivering water within diffusion distance of every cell and
+    exporting the sugar made. The design logic is one continuous trade-off: CO₂ can only enter
+    through open pores, but open pores leak water vapour. A leaf is a factory whose air intake
+    vents are also its main leak — which is why desert plants open stomata only at night and
+    why wilting closes them as an emergency measure.
+  </p>
+  <p><em>Common misconception:</em> "plants get their mass from the soil." Van Helmont showed in
+    the 1640s that a willow grown for five years in 90 kg of soil gained 74 kg while the soil
+    barely changed. The truth is more extreme than even his conclusion: <strong>about 95% of a
+    tree's dry mass is carbon pulled from the air as CO₂</strong>, plus water from the soil.
+    Forests are solidified atmosphere.</p>
+
+  <h2>Roots: the hidden half</h2>
+  <p>
+    Roots do four jobs: anchor, absorb water, absorb mineral ions, and store reserves. Absorption
+    is concentrated behind the growing tip in thousands of <strong>root hairs</strong> —
+    extensions of epidermal cells that multiply the absorbing surface by several-fold (a single
+    rye plant was measured with billions of root hairs adding thousands of square metres
+    of surface). Uptake is
+    largely <strong>active transport</strong>: ions like nitrate and potassium are moved in
+    against their gradients using ATP, which is why roots are metabolically expensive tissue.
+    Water follows passively by osmosis, drawn in by the ion-rich root cells. Most plants also
+    run a partnership with fungi: <strong>mycorrhizae</strong> wrap or penetrate the roots and
+    extend the effective absorptive network up to ten-fold, trading phosphorus and other scarce
+    minerals for plant sugar. Roughly 90% of plant species have them, and the oldest fossil
+    plants show them — the partnership is as old as land plants themselves.
+  </p>
+
+  <h2>The vascular system: plumbing without pumps</h2>
+  <p>
+    Two tissues run through root, stem and leaf. <strong>Xylem</strong> — dead, hollow, lignified
+    tubes — carries water and minerals <em>upward</em> from root to leaf. Its engine is not in
+    the plant at all: the <strong>cohesion–tension theory</strong> holds that water evaporating
+    from leaf mesophyll (transpiration) pulls on the water column below, and hydrogen bonding
+    makes water cohesive enough to behave like a rope under tension — a continuous chain from
+    leaf to root, hauled up by evaporation at the top. A large tree can transport hundreds of
+    litres a day this way, with zero moving parts, to heights of over 100 metres. The physics
+    fails if the chain breaks (an air embolism), so drought that severs the water columns can
+    kill a tree even without freezing or fire.
+  </p>
+  <p>
+    <strong>Phloem</strong> — living cells joined end to end through sieve plates — carries sugar
+    and other organics <em>wherever they are needed</em>: leaves to roots in summer, storage
+    organs to growing buds in spring. Flow is driven by <strong>mass flow</strong>: loading sugar
+    at the source draws water in by osmosis, raising pressure; unloading at the sink releases it.
+    Sap literally flows from high to low pressure. The direction is reversible, which xylem never
+    is — and the system's vulnerability is illustrated by <strong>aphids</strong>, which tap
+    phloem with needle mouthparts and drink pressurised sugar solution directly. Ring-barking a
+    tree (cutting the phloem in the bark all round) starves the roots while leaving the water
+    supply untouched — the tree dies from the bottom up, not the top down.
+  </p>
+  <p>
+    The two systems explain the classic deficiency symptoms gardeners diagnose. Sugars made in the
+    leaf need nitrogen to become amino acids and proteins, so a nitrate-starved plant is stunted
+    and pale no matter how brightly it photosynthesises. Magnesium sits at the centre of every
+    chlorophyll molecule — the mineral is literally the pivot of the light-capturing machinery —
+    so magnesium deficiency shows as yellowing between the veins of old leaves, which the plant
+    cannibalises first. Iron is needed for chlorophyll synthesis too, but since it cannot be
+    mobilised from old leaves, its deficiency yellows the <em>youngest</em> leaves first: the
+    pattern of which leaves yellow is a diagnostic of which element is missing. Sugar supply,
+    mineral supply and the water that carries them — the whole vascular story — shows up in the
+    colour of a leaf.
+  </p>
+
+  <h2>Plant hormones: steering without nerves</h2>
+  <p>
+    With no nervous system, plants coordinate through chemical signals, and each hormone is a
+    word in that language. <strong>Auxin</strong>, made in shoot tips, makes cells elongate; when
+    light strikes one side, auxin migrates to the shaded side, which then grows faster — the tip
+    bends toward the light (<strong>phototropism</strong>). Roots show <strong>gravitropism</strong>
+    with the same chemical: auxin accumulates on the lower side, where it <em>inhibits</em> root
+    elongation, so roots bend down. <strong>Gibberellins</strong> trigger germination (awakening
+    the embryo and mobilising starch reserves in the seed) and drive stem elongation — the dwarf
+    wheat varieties of the Green Revolution carried mutations in gibberellin genes.
+    <strong>Cytokinins</strong> promote cell division and delay leaf ageing; <strong>abscisic
+    acid</strong> is the stress hormone, closing stomata in drought and enforcing seed dormancy;
+    <strong>ethylene</strong>, a gas, coordinates ripening and leaf fall — and because it is
+    airborne, one over-ripening fruit ethylene-bombs its neighbours, the chemistry behind "one
+    bad apple spoils the barrel" and behind the trick of ripening green bananas in a sealed bag.
+  </p>
+  <p>
+    Hormone chemistry is also agriculture and warfare at once. Synthetic auxins are selective
+    weedkillers (2,4-D distorts broadleaf weeds but grasses barely respond). Rooting powders are
+    auxin. Seedless grapes and modern dwarf rice varieties are gibberellin manipulation. And the
+    plant pharmacy is broader still: <strong>caffeine, nicotine, tannins and latex</strong> are
+    defence chemicals — poisons, glues and alarms — and many human medicines (aspirin, morphine,
+    quinine, taxol) are plant defence chemistry borrowed. Plants also signal to each other:
+    damaged acacias release airborne ethylene-like signals that neighbours respond to by
+    tannin-loading their leaves, and mycorrhizal networks shuttle nutrients and signals between
+    trees ("the wood wide web" — real, though early popular claims were oversold).
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Quantify the water economy and the trade-offs sharpen. A maize plant transpires roughly 200
+    litres over a growing season; a mature oak can lose several hundred litres on a hot day. In
+    terms of raw materials, that water is almost entirely a by-product: only about 1% of the
+    water a plant takes up ends up in its tissues — the rest is the unavoidable price of keeping
+    stomata open for CO₂. Plants run photosynthetic variants that tighten the pricing: C4 plants
+    (maize, sugarcane) pre-concentrate CO₂ in specialised cells, paying extra ATP to nearly
+    eliminate wasteful photorespiration; CAM plants (cacti, pineapples) open stomata only at
+    night and store CO₂ as organic acids, trading a day's growth against a desert's drought. In
+    hot climates the C4 advantage is large enough that maize out-yields wheat per unit water.
+  </p>
+  <p>
+    The transport physics has measurable limits. Sap in xylem is under negative pressure —
+    tension — of up to roughly −2 to −4 MPa at the top of tall trees, approaching the tensile
+    limit of water itself; cavitation (bubble formation) under drought is a live research topic
+    in forest ecology and a key reason drought-driven tree mortality is rising with climate
+    change. Phloem flow rates are surprisingly respectable too — around 1 metre per hour in
+    trees, driven by pressure differences of only a few atmospheres. And hormone signalling is
+    now known to interlock with electrical signalling: plants propagate slow electrical impulses
+    (via ion channels, not nerves) after wounding, coordinating hormone release across the plant
+    in minutes. A fixed organism, it turns out, still runs a nervous system of sorts — it just
+    speaks in salts, sugars and gases.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Taiz &amp; Zeiger, Plant Physiology; OpenStax, Biology 2e (Plant Structure and Function); Wohlleben, The Hidden Life of Trees (popular, with caveats); Cambridge IGCSE Biology 0610 syllabus, unit 6.</p>
 </TopicPage>

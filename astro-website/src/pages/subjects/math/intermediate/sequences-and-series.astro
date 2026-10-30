@@ -25,29 +25,179 @@ const gaussCfg = {
 <TopicPage slug="subjects/math/intermediate/sequences-and-series">
   <h2>The idea</h2>
   <p>
-    A sequence is a list with a rule; a <strong>series</strong> is what happens when you add it
-    up. Two families dominate. <strong>Arithmetic sequences</strong> add a fixed amount each
-    step — steady, linear, predictable. <strong>Geometric sequences</strong> multiply by a fixed
-    factor — slow at first, then unstoppable. The difference between them is the difference
-    between savings with flat interest and savings with compound interest.
+    A sequence is a list with a rule; a <strong>series</strong> is what happens when you add the
+    list up. The rule is the whole subject: describe term 1, term 2, term 3 — and the right
+    description lets you leap straight to term 1,000,000 without computing anything in between.
+    Two families dominate everything. <strong>Arithmetic sequences</strong> add a fixed amount
+    each step — steady, linear, predictable. <strong>Geometric sequences</strong> multiply by a
+    fixed factor — slow at first, then unstoppable. The difference between them is the
+    difference between savings with a flat bonus and savings with compound interest: the plot
+    below is that comparison, drawn to scale.
   </p>
 
   <Widget no="1" caption="linear vs multiplicative growth — the geometric curve is barely visible until suddenly it isn't" widget="plotter" config={seqCfg} />
 
   <p>
-    The arithmetic line overtakes early and looks comfortable. The geometric curve hides below
-    it for years, then doubles past it. Every "exponential surprise" in finance, epidemics or
-    technology is this picture.
+    The arithmetic line (purple) overtakes early and looks comfortable. The geometric curve
+    (red) hides below it for years, then doubles past it. Every "exponential surprise" — in
+    finance, epidemics, technology adoption — is this picture, and the formulas in this chapter
+    are its exact bookkeeping.
+  </p>
+
+  <h2>Naming the terms: the nth term</h2>
+  <p>
+    Sequences can be described two ways. A <strong>term-to-term rule</strong> says how to get
+    the next term from the current one ("add 3") — easy to continue, terrible for jumping ahead.
+    A <strong>position-to-term rule</strong> (the <em>nth term</em>) gives each term from its
+    position number n directly — the tool that lets you answer "what is the 100th term?" in one
+    line. For an arithmetic sequence with first term a and common difference d, the nth term is
+    <strong>a + (n − 1)d</strong>: the first term, plus (n − 1) steps of size d. Worked example:
+    the sequence 5, 8, 11, 14, … has a = 5, d = 3, so nth term = 3n + 2; the 100th term is
+    302. The nth term is also a test for membership: is 100 in the sequence? Solve 3n + 2 =
+    100 → n = 32⅔, not a whole number, so no. (For a decreasing sequence d is negative:
+    100, 93, 86, … has nth term 107 − 7n, which also answers the practical question "when does
+    it go negative?" — at n = 16.)
+  </p>
+  <p>
+    <strong>Quadratic sequences</strong> arise when the <em>differences</em> change by a fixed
+    amount: 2, 3, 6, 11, 18, … has differences 1, 3, 5, 7 (second difference constant 2). The
+    constant second difference certifies a quadratic nth term of the form an² + bn + c, with
+    a = half the second difference. Here: a = 1, and fitting gives n² − 2n + 2. Check: n = 4
+    gives 16 − 8 + 2 = 6. ✓
+  </p>
+  <p><em>Common misconception:</em> the "add 3 each time" rule and the "3n + 2" formula are
+  interchangeable. They answer different questions: the term-to-term rule tells you how to walk
+  to the next term; the nth term tells you where any term <em>is</em>. Confusing them produces
+  the classic wrong answer to "which term equals 50?" — the term-to-term rule cannot say, and
+  "add 3 until you pass it" is not mathematics. Finding the nth term from a table (compare the
+  sequence with the multiples of the common difference, then adjust the constant) is a
+  five-second skill worth drilling until it is automatic.</p>
+  <p>
+    Two classics deserve their names. The <strong>triangular numbers</strong> 1, 3, 6, 10, 15
+    (dots stacked in triangles; nth term n(n+1)/2) reappear below as the sums of the naturals.
+    The <strong>Fibonacci sequence</strong> 1, 1, 2, 3, 5, 8, 13 is <em>recursive</em> — each
+    term is the sum of the previous two — and models genuinely recursive processes: rabbit
+    populations (Fibonacci's original 1202 puzzle), branching plants, spiral shells. Its
+    consecutive-term ratio 1.618… (the golden ratio φ) is the limit the sequence is forever
+    approaching.
+  </p>
+
+  <p>
+    <strong>Geometric sequences</strong> have an nth term too, and indexing is where care is
+    needed: starting from a and multiplying by r, after (n − 1) steps you are at
+    <strong>a·rⁿ⁻¹</strong> — the exponent counts the steps taken, not the term number. Worked
+    example: 500 bacteria double every 20 minutes. After 2 hours, six doublings have happened:
+    500 × 2⁶ = 32,000. The same rule runs depreciation in reverse: a £20,000 car losing 15% of
+    its value per year is worth 20,000 × 0.85ⁿ after n years — £10,047 after 5, and under
+    £10,000 from year 5 onward (solve 0.85ⁿ = 0.5 and n ≈ 4.3, then round <em>up</em> to a whole
+    year). Sequences are how "3% a year" becomes a decision.
+  </p>
+
+  <h2>Series I: the pairing trick</h2>
+  <p>
+    A series asks for a <em>partial sum</em>: add the first n terms. Brute force works and is
+    boring; structure works and is beautiful. The archetype is the story of Gauss, asked as a
+    schoolboy to add 1 through 100:
   </p>
 
   <Widget no="2" caption="Gauss's pairing trick — the sum of 1 to 100 in three moves" widget="equationStep" config={gaussCfg} />
 
-  <h2>The working formulas</h2>
-  <ul>
-    <li><strong>Arithmetic sum:</strong> S = n × (first + last)/2 — average of first and last, times how many. Pairs, not grinding.</li>
-    <li><strong>Geometric sum:</strong> S = a(rⁿ − 1)/(r − 1) for r ≠ 1 — derived by the same trick: subtract the shifted series from itself.</li>
-    <li><strong>Infinite geometric:</strong> when the ratio magnitude is below 1 the sum converges: S = a/(1 − r). This one runs Zeno's paradoxes, repeating decimals and drug-dosing schedules alike.</li>
-    <li><strong>The warning:</strong> a geometric series with r > 1 has no finite sum — which is the mathematical voice behind every compound-debt warning.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Algebra and Trigonometry (Sequences); standard treatments (Stewart, Precalculus).</p>
+  <p>
+    The general recipe is the same: write the sum forwards and backwards, add, halve. For any
+    arithmetic series, <strong>S = n × (first + last)/2</strong> — the average of the first and
+    last terms, times how many there are. Worked example: a theatre has 18 rows with 24 seats in
+    the front row and each row two more than the row in front. Last row: 24 + 17 × 2 = 58.
+    Total seats = 18 × (24 + 58)/2 = 18 × 41 = <strong>738</strong>. Three numbers, no addition
+    chain.
+  </p>
+
+  <h2>Series II: geometric sums and the doubling trap</h2>
+  <p>
+    Geometric series (a + ar + ar² + …) can't be paired the same way, but they yield to a
+    shift-and-subtract: multiply the whole sum by r, subtract, and everything cancels except
+    the ends, giving <strong>S = a(rⁿ − 1)/(r − 1)</strong> for r ≠ 1. Worked example, the
+    chessboard legend: one grain on square 1, doubling each square to 64. Total =
+    (2⁶⁴ − 1)/(2 − 1) = 2⁶⁴ − 1 ≈ 1.8 × 10¹⁹ grains — about 1.2 trillion tonnes of rice,
+    more than two thousand times the modern annual world harvest. The vizier who "asked for so
+    little" was doing exponential arithmetic with the palace's future.
+  </p>
+  <p>
+    The same formula, run forward, is the mathematics of <strong>compound interest</strong> and
+    <strong>debt</strong>. £1,000 at 20% annual interest becomes 1000 × 1.2ⁿ: after 10 years
+    £6,192, after 25 years £95,396. The geometric series with r above 1 has no finite sum, and
+    no finite patience — which is the mathematical voice behind every minimum-payment warning on
+    a credit card statement.
+  </p>
+
+  <h2>Series III: when infinity adds up to something finite</h2>
+  <p>
+    Here is the strangest and most useful fact in the chapter. Halve something repeatedly:
+    ½ + ¼ + ⅛ + … Each term is smaller than the last, and the running total creeps toward a
+    limit: <strong>S = a/(1 − r)</strong> whenever |r| is under 1. With a = ½, r = ½: the sum
+    is exactly 1 — a whole pizza eaten in infinitely many bites. This single formula dissolves
+    <strong>Zeno's paradox</strong> (Achilles "never" catches the tortoise because the gap
+    halves forever — but 1 + ½ + ¼ + … = 1, so the infinitely many steps take finite time), and
+    it converts <strong>recurring decimals</strong> into fractions mechanically: 0.727272… =
+    72/100 + 72/100² + … = (72/100)/(1 − 1/100) = 72/99 = 8/11.
+  </p>
+  <p>
+    The convergence formula also runs medicine. A patient takes 200 mg of a drug each day, and
+    each day the body clears 60% (so 40% survives, r = 0.4). The amount "on board" just after
+    the nth dose is a geometric sum approaching the <strong>steady state</strong> a/(1 − r) =
+    200/0.6 ≈ 333 mg. Infinitely many doses, finite accumulation — this is why dosing
+    schedules are designed the way they are, and why the first dose sometimes starts with a
+    "loading" amount.
+  </p>
+  <p><em>Common misconception:</em> "adding infinitely many numbers must give infinity." It
+  depends entirely on whether the terms shrink fast enough — which is exactly what |r| under 1
+  certifies. The reverse error is subtler and more famous: a <em>harmonic</em> series' terms
+  1 + ½ + ⅓ + ¼ + … shrink to zero yet the sum diverges (it passes 10 only after about
+  12,000 terms). Terms tending to zero is <strong>necessary but not sufficient</strong> for a
+  finite sum — a distinction that shapes all of higher analysis.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>A sequence is a function in disguise.</strong> Plot aₙ against n — as the widget at
+    the top of this page does — and the sequence becomes a graph: arithmetic sequences are
+    straight lines (gradient = common difference), geometric ones are exponential curves, the
+    Fibonacci sequence curves like φⁿ. This is the syllabus's "graphs of functions" strand seen
+    from a new angle: a sequence is a function whose domain is the whole numbers, and every
+    graph-reading skill (intercepts, growth rates, asymptotes) transfers. The continuity between
+    discrete and continuous — sum over steps versus area under curve — is exactly the seam that
+    integral calculus stitches.
+  </p>
+  <p>
+    <strong>Sigma notation, briefly.</strong> Σ is series-writing shorthand: Σ 3n+2 from n=1 to
+    100 means "add up 3n + 2 for each n from 1 to 100" — the 5, 8, 11 sequence's sum, computable
+    as 100 × (5 + 302)/2 = 15,350. Sigma is a container, not a new idea; fluency in reading it
+    is what the advanced tier builds on.
+  </p>
+  <p>
+    <strong>Alternating series and the power of the minus sign.</strong> Take r negative: 1 − ½
+    + ¼ − ⅛ + … = 1/(1 − (−½)) = ⅔. The sum converges faster than the all-positive version and
+    oscillates on the way — overshooting, undershooting, closing in. This is the mechanism
+    behind Fourier series (any periodic signal as a sum of alternating waves) and behind
+    numerical methods that "bracket" an answer. Convergence with signs is gentler than
+    convergence without them — a fact with an entire calculus chapter attached.
+  </p>
+  <p>
+    <strong>Fractals: geometry by infinite series.</strong> The Koch snowflake starts as a
+    triangle; replace the middle third of every edge with a bulge, forever. The perimeter is a
+    geometric series with ratio 4/3 — it <strong>diverges</strong>: the boundary is infinitely
+    long. The area is a geometric series with ratio 4/9 — it <strong>converges</strong> to
+    exactly 8/5 of the original triangle. So the snowflake encloses a finite area with an
+    infinite edge: a shape with fractional dimension (log 4/log 3 ≈ 1.26). Zeno's paradox,
+    rebuilt as coastlines and computer graphics.
+  </p>
+  <p>
+    <strong>Sums of powers, and where it all goes.</strong> The pairing trick generalises to a
+    family of formulas: Σn = n(n+1)/2, Σn² = n(n+1)(2n+1)/6, Σn³ = (n(n+1)/2)² — note that last
+    one: the sum of the first n cubes is the <em>square</em> of the nth triangular number, a
+    pattern nobody would guess and everybody can verify (1 + 8 + 27 = 36 = 6²). These formulas
+    are the computational bedrock of integral calculus: the area under a curve is defined as the
+    limit of exactly such sums. The sequence-to-series story doesn't end here; it becomes
+    analysis — and the advanced and expert tiers pick up precisely where the harmonic series
+    leaves off, at the border between "terms die out" and "the sum settles".
+  </p>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Algebra and Trigonometry (ch. 9, Sequences and Series); Stewart, Precalculus; Havil, Nonplussed! (harmonic series, Koch snowflake); standard treatments of Zeno's paradoxes.</p>
 </TopicPage>

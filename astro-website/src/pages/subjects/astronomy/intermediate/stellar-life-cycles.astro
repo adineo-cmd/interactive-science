@@ -10,6 +10,16 @@ const stellarCfg = {
     { math: '4 · The end: mass decides', note: 'Below ~8 solar masses: shed the envelope (planetary nebula), core becomes a white dwarf. Heavier: core-collapse supernova, leaving a neutron star. Heaviest (~20+): black hole. We are made of the atoms such deaths scattered.' },
   ],
 };
+
+const massLabCfg = {
+  params: [
+    { name: 'm', label: 'stellar mass (solar masses)', min: 0.1, max: 50, step: 0.1, value: 1 },
+  ],
+  readouts: [
+    { label: 'luminosity (L☉)', expr: 'pow(m, 3.5)', unit: '' },
+    { label: 'main-sequence lifetime (million yr)', expr: '10000/pow(m, 2.5)', unit: 'Myr' },
+  ],
+};
 ---
 <TopicPage slug="subjects/astronomy/intermediate/stellar-life-cycles">
   <h2>The idea</h2>
@@ -17,17 +27,175 @@ const stellarCfg = {
     Stars are not eternal — they are <strong>born in clouds, live by fusion, and die in ways
     determined almost entirely by their mass</strong>. The strangest rule in astronomy: the
     bigger the star, the shorter its life. The Sun burns steadily for 10 billion years; a
-    20-solar-mass giant exhausts itself in 8 million — geologically, the blink of an eye.
+    20-solar-mass giant exhausts itself in under 10 million — geologically, the blink of an
+    eye. The reason is simple once stated: more mass means more gravity, so the core runs
+    hotter, and fusion rates rise ferociously with temperature — roughly as the fourth power
+    (or steeper) — so the bigger star burns its far larger fuel tank far faster. Stellar
+    evolution is that one trade-off, played out across a hundred billion stars.
   </p>
 
   <Widget no="1" caption="the four-stage story, from cloud to corpse" widget="equationStep" config={stellarCfg} />
 
-  <h2>The Hertzsprung–Russell diagram</h2>
-  <ul>
-    <li><strong>The main sequence</strong> is not a path but a weighing scale: a star's brightness and colour reveal its mass. Sitting on the diagonal = burning hydrogen, 90% of a star's life.</li>
-    <li><strong>Red giants and white dwarfs</strong> live off the main sequence — swollen, cooling elderly stars and their dense exposed cores (a sugar-cube of white dwarf matter weighs a tonne).</li>
-    <li><strong>Fusion as alchemy:</strong> hydrogen → helium → carbon → oxygen → … up to iron in the most massive stars. Iron is the dead end — fusing it costs energy, which is precisely why core collapse is catastrophic.</li>
-    <li><strong>We are the debris:</strong> carbon, oxygen, iron and calcium in your body were assembled in stars and scattered by their deaths. "We are made of star-stuff" is a literal inventory.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Astronomy 2e (Stellar Evolution); Kippenhahn, Stellar Structure and Evolution.</p>
+  <Widget no="2" caption="mass sets destiny — drag the mass, watch brightness and lifespan follow the M^3.5 rule" widget="sliderLab" config={massLabCfg} />
+
+  <p>
+    Read the slider lab with two stars. The Sun (M = 1): luminosity 1, lifetime 10,000 million
+    years. Sirius A (M ≈ 2): luminosity 2^3.5 ≈ 11 times the Sun's, lifetime 10,000/2^2.5 ≈
+    1,800 million years — six times shorter. A red dwarf at M = 0.2: luminosity 0.0036,
+    lifetime about 5,600,000 million years — longer than the current age of the universe by a
+    factor of 400. No red dwarf has ever died; not one, anywhere, in the history of the cosmos.
+  </p>
+
+  <h2>Birth: collapse, ignition, and the main sequence</h2>
+  <p>
+    A star begins as a cold cloud of gas and dust — a nebula — that some trigger (a nearby
+    supernova's shockwave is a leading suspect) pushes past the point where gravity can win.
+    The cloud collapses, fragments into knots, and each knot heats as gravitational energy
+    converts to kinetic: a <strong>protostar</strong>, glowing in infrared while still gathering
+    mass from its disc. When the core reaches about 10 million kelvin, hydrogen nuclei fuse into
+    helium, radiation pressure halts the collapse, and the star settles onto the
+    <strong>main sequence</strong> — the long, stable hydrogen-burning adulthood. The Sun took
+    roughly 10 million years to get there (a massive star manages it in 100,000 — its collapse
+    is faster because gravity is stronger); the Orion Nebula, 1,300 light years away, is the
+    nursery on show tonight, with thousands of stars aged under a million years.
+  </p>
+
+  <h2>Magnitudes, parallax and the distance ladder</h2>
+  <p>
+    None of this is measurable without knowing <em>how far</em> — and the distance tools belong
+    in this story. <strong>Apparent magnitude</strong> (m) is brightness as seen from Earth, a
+    scale where five steps is a factor of 100 in brightness (Sirius: −1.5; naked-eye limit: +6;
+    the Sun: −26.7). <strong>Absolute magnitude</strong> (M) is the magnitude a star would show
+    from a standard distance of 10 parsecs — a fair comparison that strips out distance.
+    Brightness falls with the <strong>inverse square law</strong> (brightness ∝ 1/distance²),
+    which connects the two: m − M = 5 × log₁₀(d/10), the distance modulus — measure m, learn or
+    guess M, solve for d. The base of the ladder is <strong>trigonometric parallax</strong>:
+    Earth's orbit gives a 300-million-km baseline, and nearby stars shift against the
+    background by a fraction of an arcsecond. One arcsecond of parallax defines the
+    <strong>parsec</strong> (3.26 light years); Proxima Centauri, the nearest star, shifts
+    0.77 arcseconds — 1.3 parsecs, 4.24 light years. Parallax works to a few thousand light
+    years (Gaia has charted nearly two billion stars); beyond that, the standard candles —
+    below — take over.
+  </p>
+
+  <h2>Spectral classes and the H–R diagram</h2>
+  <p>
+    A star's light, spread into a spectrum, carries dark absorption lines that fingerprint the
+    elements in its atmosphere — and the line <em>patterns</em> sort stars into the sequence
+    <strong>O B A F G K M</strong> ("Oh Be A Fine Girl, Kiss Me"), which is really a
+    <em>temperature</em> sequence: O stars over 30,000 K (blue, rare, doomed), through A (7,500–10,000
+    K, white — Sirius) and G (5,200–6,000 K, yellow — the Sun), down to M (under 3,700 K, red
+    and cool — three-quarters of all stars, though too dim to see). Plot every star you can
+    measure on <em>luminosity against temperature</em> and the scatter is not random — that
+    chart is the <strong>Hertzsprung–Russell diagram</strong>, the single most organising
+    picture in astronomy. About 90% of stars fall on the main-sequence diagonal (bright and
+    blue-hot at one end, dim and red at the other) because that is where hydrogen-burning stars
+    must sit; the giants and supergiants float above (huge, cool, bright); the white dwarfs
+    sink below-right (small, hot, dim). The main sequence is <em>not</em> a path stars travel —
+    it is a weighing scale: where a star sits on it is fixed by its mass. Stars only move off
+    the sequence when their fuel runs out, and <em>where they move next</em> is the plot of
+    stellar evolution itself.
+  </p>
+
+  <h2>Death for small stars: giants, nebulae, white dwarfs</h2>
+  <p>
+    When core hydrogen runs out, gravity momentarily wins: the core contracts and heats until
+    hydrogen fusion ignites in a surrounding shell, and the outer envelope — now with nothing
+    holding it tight — swells enormously and cools. The star becomes a <strong>red giant</strong>.
+    The Sun's turn comes in about 5 billion years: it will swell past Mercury and Venus, and
+    Earth's oceans will boil away long before (the brightening starts sooner than the
+    swelling). A giant of modest mass can then fuse helium into carbon and oxygen, but its
+    core — squeezed past normal pressure support into <strong>electron degeneracy</strong>, a
+    quantum-mechanical rigidity where electrons refuse to be packed tighter — cannot get hot
+    enough for carbon fusion. Instead the envelope is blown off gently in shells of glowing
+    gas: a <strong>planetary nebula</strong> (nothing to do with planets — the name is a
+    telescopic misnomer from the 1780s), leaving the bare core as a <strong>white dwarf</strong>:
+    Earth-sized, roughly half a solar mass, a million times denser than water. A sugar cube of
+    its material would weigh about a tonne. The white dwarf then simply cools — no fusion, just
+    a fading ember with a half-life of billions of years — heading toward a theoretical cold
+    end state (a "black dwarf") that the universe is not yet old enough to contain a single
+    example of.
+  </p>
+  <p>
+    The <strong>Chandrasekhar limit</strong> sets the boundary of this road: about
+    <strong>1.4 solar masses</strong>. Degenerate electron pressure — the same quantum rigidity
+    that holds a white dwarf up — has a maximum it can exert, and beyond 1.4 solar masses it
+    fails. Subrahmanyan Chandrasekhar derived this in 1930, aged 19, on a ship to England; it
+    won the 1983 Nobel Prize and it is the reason the gentle road ends where it does. White
+    dwarfs that accrete matter from a companion can be pushed over the limit — the
+    <strong>Type Ia supernova</strong> that results always detonates at the same mass, which is
+    why Ia supernovae make the standard candles used to discover the accelerating expansion of
+    the universe.
+  </p>
+
+  <h2>Death for massive stars: supernovae, neutron stars, black holes</h2>
+  <p>
+    Above roughly 8 solar masses the story turns violent. Massive cores climb the fusion ladder
+    — helium to carbon to oxygen, silicon to iron — each stage burning faster than the last
+    (a 20-solar-mass star: 7 million years on hydrogen, but barely a day on silicon). Iron is
+    the terminus: fusing iron <em>costs</em> energy instead of releasing it, so when an iron
+    core builds to the Chandrasekhar limit, pressure support fails <em>instantly</em>, the core
+    collapses at a quarter of light speed, the infalling envelope rebounds off the nuclear
+    matter core, and a <strong>core-collapse supernova</strong> detonates — briefly
+    outshining its entire galaxy, and blowing the star's fusion-forged elements into space.
+    What remains is a <strong>neutron star</strong> (a city-sized sphere of 1.4–2 solar masses;
+    a sugar cube would weigh about a billion tonnes) or, if the core exceeds roughly
+    2–3 solar masses, collapse continues to a <strong>black hole</strong>. Neutron pressure —
+    the next quantum stop after electrons — holds the first up; nothing known holds the second.
+    These deaths are the alchemy that matters: gold, silver, iodine and much of the iron in
+    your blood were made in supernovae or neutron-star collisions and scattered into the cloud
+    that became the Sun. "We are made of star-stuff" is a literal inventory.
+  </p>
+  <p><em>Common misconception:</em> "the Sun will explode as a supernova." It will not — it
+    lacks the mass by a wide margin, and its end (planetary nebula, white dwarf) is gentle by
+    stellar standards. Mass is destiny: only stars above about 8 solar masses die by explosion,
+    and they are rare — roughly 1 star in a few thousand.</p>
+
+  <h2>Clocks, candles and the evidence</h2>
+  <p>
+    Astronomy's claim to know all this rests on measurements, and two are decisive.
+    <strong>Cepheid variable stars</strong> pulse — bright and dim over days — and Henrietta
+    Swan Leavitt discovered in 1908–12 that the <em>period</em> of the pulse reveals the
+    <em>absolute luminosity</em>: long period, intrinsically brighter. Cepheids are therefore
+    standard candles visible across intergalactic space, and it was Cepheids that let Edwin
+    Hubble measure Andromeda's distance in 1923–24 and prove galaxies exist beyond ours.
+    <strong>Star clusters</strong> provide evolution's other proof: a cluster's stars were born
+    together, so its H–R diagram is a snapshot of one age — and the brightest surviving main
+    sequence stars (the "turn-off point") date it directly. Open clusters like the Pleiades are
+    young (about 100 million years); globular clusters are ancient (12–13 billion years),
+    full of red giants and long-dead bright stars. An H–R diagram of a globular cluster is a
+    stellar evolution textbook drawn in data.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The pressure-versus-gravity war has run through this whole lesson, and it is the deep
+    structure of the subject. A star is a self-regulating balance — gravity pulls in, gas
+    pressure pushes out, and the <strong>thermostat</strong> keeps them matched: if fusion
+    runs hot, the core expands and cools, slowing it; if it lags, contraction heats it. This
+    negative feedback is why stars are stable for billions of years. Each end state is a
+    different stop in the war: ordinary gas pressure (main sequence), electron degeneracy
+    (white dwarf, capped at 1.4 M☉), neutron degeneracy (neutron star, capped near 2–3 M☉),
+    and finally — no known pressure — the black hole. The endpoint of stellar physics is a
+    catalogue of failed supports.
+  </p>
+  <p>
+    The observational record is granular enough to watch the theory work. Supernova
+    <strong>1987A</strong> in the Large Magellanic Cloud detonated 168,000 light years away,
+    and neutrino detectors on Earth caught a burst of about two dozen neutrinos <em>hours
+    before</em> the light arrived — exactly the core-collapse prediction, since the neutrinos
+    escape while the shock takes time to dig out. The pre-supernova star had been photographed
+    for years (Sanduleak −69° 202, a blue supergiant): a life cycle documented from star to
+    corpse. Catalogues give the field its bookkeeping — Bayer's 1603 Greek-letter scheme
+    (Alpha Centauri), Flamsteed's numbers, the Henry Draper spectral catalogue of 225,000
+    stars — and modern surveys run the same idea at billion-star scale. And the observing
+    techniques that support all of it keep deepening: radio interferometry (the telescopes
+    lesson) resolves star-forming clouds, long-exposure <strong>star trails</strong> photographs
+    — circles around the celestial pole — are the oldest direct evidence that the sky's
+    rotation mirrors Earth's, and Gaia's parallax census has made the distance ladder's first
+    rung the best-measured in the history of science. The stars are born, live and die on
+    schedule; we know it because the numbers, checked from a dozen independent directions,
+    agree.
+  </p>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Astronomy 2e (Stellar Evolution); Kippenhahn, Stellar Structure and Evolution; Leavitt &amp; Pickering (1912); Kamiokande-II Collaboration (SN 1987A neutrinos); Pearson Edexcel GCSE Astronomy specification, topics 13–14.</p>
 </TopicPage>

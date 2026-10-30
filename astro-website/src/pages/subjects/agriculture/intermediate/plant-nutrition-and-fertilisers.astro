@@ -10,23 +10,209 @@ const fertCfg = {
     { math: '4 · The runoff bill', note: 'Excess N and P feed algae — the water lesson\'s dead zones; nitrate in drinking water. Precision agriculture (the coming lesson) exists largely to shave this bill: the environmental cost of the flat part of the curve.' },
   ],
 };
+
+const nrespCfg = {
+  curves: [
+    { expr: 'ymax*x/(x + 40)', label: 'yield vs nitrogen applied (yield response)', color: '#2e7d32', width: 2.4 },
+    { expr: 'ymax*x/(x + 40) - 0.055*x', label: 'net return (yield value minus N cost)', color: '#b42318', width: 2.2 },
+  ],
+  params: [
+    { name: 'ymax', label: 'yield ceiling', min: 4, max: 12, step: 0.5, value: 8, unit: 't/ha' },
+  ],
+  x: { min: 0, max: 300, label: 'nitrogen applied (kg/ha)' },
+  y: { min: 0, max: 12, label: 'yield (t/ha)' },
+  crossings: false,
+  height: 330,
+};
 ---
 <TopicPage slug="subjects/agriculture/intermediate/plant-nutrition-and-fertilisers">
   <h2>The idea</h2>
   <p>
-    Plant nutrition is <strong>feeding crops without feeding pollution</strong>: the NPK chemistry
-    is settled science (Liebig\'s law of the minimum, 1840), so the craft is delivery — rate,
-    timing, placement — and honesty about the curve\'s flat region.
+    Plant nutrition is <strong>feeding crops without feeding pollution</strong>: the NPK
+    chemistry is settled science (Liebig's law of the minimum, 1840 — the scarcest needed
+    nutrient caps growth, no matter how ample the rest), so the craft is delivery — rate,
+    timing, placement — and honesty about the response curve's flat region. A crop is a
+    chemical factory running on light, water and about fourteen mineral nutrients; the
+    farmer's nutrition job is to keep every input non-limiting without paying for
+    luxuries the plant cannot use.
   </p>
 
   <Widget no="1" caption="the trio, the 4Rs, the curve, the runoff bill" widget="equationStep" config={fertCfg} />
 
-  <h2>Sources and modern practice</h2>
-  <ul>
-    <li><strong>Haber–Bosch feeds half of humanity:</strong> synthetic nitrogen (the geochemical lesson\'s numbers) underpins ~50% of global food protein — the discovery with the largest life-count in history (Smil), and its runoff is the same process\'s shadow.</li>
-    <li><strong>Organic vs mineral, functionally:</strong> organic sources (manure, compost) feed soil biology and release slowly; mineral fertilisers are immediately available — most good farming uses both, sequenced. The either/or framing is marketing, not agronomy.</li>
-    <li><strong>The leaf tells the truth:</strong> tissue testing at key growth stages diagnoses deficiency directly (yellowing old leaves = nitrogen; purple = phosphorus) — plant symptoms are the fastest lab.</li>
-    <li><strong>Variable-rate is arriving:</strong> GPS-mapped soil tests + yield maps → fertiliser prescriptions per zone (the precision lesson\'s economics: soil variation within one field can exceed variation between farms).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Liebig (1840); Smil, Enriching the Earth; the 4R nutrient stewardship framework (IPNI).</p>
+  <h2>The nutrient diet: what a crop actually eats</h2>
+  <p>
+    Plants build themselves from air and water (photosynthesis — the biology lesson's
+    engine), and draw everything else from solution: the <strong>macronutrients</strong>
+    needed in kilogram quantities — nitrogen (amino acids, proteins, leaf growth),
+    phosphorus (ATP, DNA, roots and flowering), potassium (water regulation, enzyme
+    activation, stress and fruit quality), plus the secondary trio calcium, magnesium and
+    sulfur — and the <strong>micronutrients</strong> needed in grams: iron, manganese, zinc,
+    copper, boron, molybdenum, chlorine, nickel. Deficiency reads in the leaf: nitrogen
+    shortage yellows the <em>oldest</em> leaves first (nitrogen is mobile — the plant
+    cannibalises old tissue for new), phosphorus shortage shows purple-tinged leaves and
+    stunted roots, potassium scorches leaf margins, iron yellows the <em>youngest</em>
+    leaves between green veins (it is immobile). Reading the pattern — which leaves, what
+    pattern — is field diagnosis before any laboratory, and it works because the plant's
+    transport biology writes the symptom. The pH gate runs underneath everything (the soil
+    lesson): a nutrient can be present and unusable at the wrong pH, so testing soil before
+    buying fertiliser is the cheapest agronomy there is.
+  </p>
+
+  <h2>The nitrogen story: Haber–Bosch and its shadow</h2>
+  <p>
+    Nitrogen deserves its own section because it is the diet's volatile star. The atmosphere
+    is 78% N₂, but the triple bond is so stable that almost no organism can touch it —
+    nitrogen must be <em>fixed</em> into reactive forms (ammonium, nitrate) before biology
+    can use it. Nature fixes it with lightning (a little) and nitrogen-fixing bacteria
+    (much — free-living ones, and the rhizobia in legume nodules, which is why every
+    rotation includes a legume). Humans industrialised it in 1913: the <strong>Haber–Bosch
+    process</strong> — N₂ + 3H₂ → 2NH₃ under pressure, over an iron catalyst — turned air
+    into fertiliser. Its energy bill is real (1–2% of world energy use; the hydrogen comes
+    mostly from natural gas), and its consequence is historic: synthetic nitrogen
+    underpins roughly half the protein in human diets — Vaclav Smil's estimate is that
+    around half of humanity would not be fed without it. The shadow side is leakage:
+    crops typically take up 30–50% of applied nitrogen in the season it is applied; the
+    rest leaves by four exits — <strong>leaching</strong> (nitrate is water-soluble; it
+    travels to aquifers — the water lesson's drinking-water nitrate problem),
+    <strong>volatilisation</strong> (ammonia gas off surface-applied manure and urea),
+    <strong>denitrification</strong> (waterlogged soils convert nitrate to N₂O and N₂ —
+    and N₂O is a greenhouse gas ~270× CO₂'s warming power), and <strong>runoff</strong>
+    (the eutrophication engine). Managing nitrogen is managing those four exits.
+  </p>
+
+  <h2>The yield-response curve: fertiliser's economics</h2>
+  <p>
+    Every nutrient obeys diminishing returns, and the curve is the whole management
+    problem. The first kilogram of nitrogen on a hungry field buys a big yield jump; each
+    later kilogram buys less; past the optimum, more nitrogen buys nothing at all — and
+    starts costing yield, because over-fed cereals grow tall, soft straw and
+    <strong>lodge</strong> (fall flat, ruining harvest and grain), while delaying ripening
+    and raising disease pressure. Where the net return peaks — the value of the marginal
+    yield jump exceeding the marginal cost of nutrient — is the <strong>economic optimum
+    rate</strong>, and it sits visibly below the biological maximum:
+  </p>
+
+  <Widget no="2" caption="diminishing returns, priced — the green curve is yield, the red is net return; their gap is the runoff bill" widget="plotter" config={nrespCfg} />
+
+  <p>
+    Read the graph as an economics lesson. Yield (green) rises toward its ceiling —
+    Liebig's law in curve form. Net return (red) — yield value minus nitrogen cost —
+    peaks at some 180–220 kg/ha in this illustrative case and falls steeply beyond, because
+    every extra kilogram now buys nothing and costs money. Everything between the peak and
+    the ceiling is the <strong>flat region</strong>: applied nitrogen that becomes
+    pollution, not grain. The 4R stewardship framework — <strong>right source, right
+    rate, right time, right place</strong> — is the operational programme for staying
+    near the peak: slow-release or inhibitor-treated sources that match crop demand;
+    rates tuned to soil tests and realistic yield targets; timing to growth stages
+    (split-dressing nitrogen at tillering and stem extension rather than one autumn dump);
+    placement near roots (banded below the surface, where uptake beats volatilisation
+    and runoff).
+  </p>
+
+  <h2>Sources: organic and mineral, honestly compared</h2>
+  <p>
+    <strong>Organic sources</strong> — manure, compost, slurries, legume residues, green
+    manures — carry the nutrient load in organic form: they must be mineralised by soil
+    biology before plants can drink them, which makes them slow-release, feeds the
+    soil's biome, adds organic matter, and (critically) supplies nutrients in proportions
+    nobody planned. Their nitrogen is easily lost too — ammonia volatilisation from
+    surface-applied slurry is a major air pollutant, which is why injection or rapid
+    incorporation is standard practice. <strong>Mineral fertilisers</strong> — urea
+    (46% N, the world's most used), ammonium nitrate, NPK compound blends, phosphates
+    mined from rock, potash from evaporite mines — are immediately available, precisely
+    analysed, and easy to over-apply. The honest agronomy: they are complements, not
+    sects. Manure's nutrient content is a probability distribution; mineral fertiliser is
+    a specification; the best systems use manure for the base and organics for the
+    biology, with minerals filling measured gaps. Phosphorus deserves its own note: rock
+    phosphate is a <em>mined, finite</em> resource concentrated in a few countries
+    (Morocco above all), phosphorus is violently immobilised in soil (locked to iron and
+    calcium within seasons — hence band placement and mycorrhizal partnerships), and
+    its runoff — not nitrogen — is usually the lake-killer. Recycling phosphorus back
+    from sewage and manure is one of agriculture's looming circularity projects (the
+    waste lesson's nutrient loops).
+  </p>
+  <p><em>Common misconception:</em> "fertiliser feeds the plant directly." Mineral
+    fertiliser feeds the <em>soil solution</em> — the plant drinks dissolved ions, and
+    everything that keeps nutrients dissolved-but-held (organic matter, pH, biology,
+    structure) sits between the bag and the root. That is why the same 100 kg of nitrogen
+    can produce wildly different yields on two sides of a fence: the fertiliser is
+    identical; the receiving system is not.</p>
+
+  <h2>Diagnosis and the modern toolkit</h2>
+  <p>
+    Precision begins with measurement. <strong>Soil testing</strong> (pH, N-P-K, organic
+    matter — the soil lesson's panel) sets the baseline; <strong>tissue testing</strong> at
+    key growth stages reads the plant's actual intake (the fastest lab — symptoms
+    confirmed chemically); <strong>chlorophyll meters and drone/satellite imagery</strong>
+    read crop greenness as a live nitrogen meter, because leaf chlorophyll and nitrogen
+    track each other closely. <strong>Variable-rate application</strong> — GPS-mapped soil
+    tests and yield maps driving fertiliser prescriptions zone by zone — exists because
+    soil variation <em>within</em> one field can exceed the variation between farms;
+    applying a field average guarantees overfeeding the rich zones and starving the poor
+    ones. And <strong>nitrification inhibitors and controlled-release coatings</strong>
+    synchronise supply with demand, cutting N₂O emissions and leaching losses by
+    measurable margins. The economics close the loop: at current prices, precision
+    nitrogen typically pays for itself in saved input alone before counting the water
+    quality dividend — which is why the runoff bill, the lesson's oldest environmental
+    cost, is finally being shaved by tools farmers already wanted.
+  </p>
+
+  <h2>Composting and organic management, properly</h2>
+  <p>
+    Organic inputs only deliver their promise when managed, and the management is
+    chemistry you can smell. <strong>Composting</strong> is managed aerobic decomposition:
+    a workable recipe holds roughly 25–30 parts carbon to 1 part nitrogen (too much
+    carbon — straw, woodchip — and the pile stalls, nitrogen-starved; too much nitrogen —
+    fresh grass, slurry — and it turns putrid and loses ammonia), moisture like a wrung
+    sponge, and enough bulk to hold heat. A well-built pile reaches 55–65 °C within days —
+    hot enough to kill weed seeds and most pathogens — then cures for weeks into stable
+    humus. <strong>Anaerobic digestion</strong> runs the same biology without oxygen,
+    trading compost for biogas (about 60% methane) and a slurry digestate that carries the
+    nutrients — the waste lesson's nutrient loop, run at farm scale. Manure handling has
+    its own rules: stored slurry loses its nitrogen to the air within weeks if open
+    (covered stores and injection application keep it), fresh poultry litter is hot
+    (ammonia- and salt-rich — it burns seedlings), and nutrient analysis of manure is now
+    standard enough that "what is in the heap" is a lab result, not folklore. The
+    organic–mineral question, answered functionally: organic sources build the system,
+    mineral sources calibrate it — sequencing both beats any either/or.
+  </p>
+
+  <h2>A worked diagnosis: yellow maize in June</h2>
+  <p>
+    Put the toolkit in order on one case. A maize crop goes yellow in early June; the
+    yellowing starts on the lower leaves and runs up the midrib. The mobile-nutrient
+    pattern says nitrogen. Now the checklist: Is it uniform or in patches? Patches in
+    low spots point to waterlogged soil and denitrification, not under-application. Was
+    manure or slurry applied this spring without incorporation? Then expect ammonia
+    volatilisation losses. What does a tissue test say? The lab confirms 2.4% N in
+    leaf — below the sufficiency range. What does the side-dress decision look like?
+    A chlorophyll-meter reading against the farm's well-fertilised reference strip
+    quantifies the deficit; 40 kg/ha of injected UAN at the V6 stage — while the crop can
+    still use it — costs a fraction of the lost yield. Note what the process avoided:
+    blanket re-fertilising (wasteful on the healthy zones), liming (no pH evidence), and
+    the reflex blame on "bad fertiliser". Diagnosis is differential — the same yellowing
+    with <em>young</em> leaves affected would have pointed to iron (immobile), and the
+    fix (chelate, or fix the pH causing the lock-up) would be completely different.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The frontier questions are quantitative. <strong>Nitrogen use efficiency</strong> —
+    grain nitrogen per unit applied — averages near 0.4–0.5 globally; every 0.1 gained
+    would remove millions of tonnes of fertiliser demand and its emissions. The
+    biological route is active research: engineering cereal crops to host nitrogen-fixing
+    symbioses (as legumes do) is the field's moonshot — the evolutionary problem is that
+    fixing nitrogen costs the plant energy, so cereals have no reason to invite the
+    bacteria unless they are starving. <strong>Enhanced-efficiency fertilisers</strong>
+    (urease and nitrification inhibitors, polymer coatings) now cover meaningful
+    acreage, and their life-cycle arithmetic (extra cost versus saved losses) is
+    region-specific. <strong>Phosphorus peak</strong> debates mirror the oil ones:
+    reserves are large but concentrated and degrading in quality, and recycling from
+    wastewater — where a third of imported food phosphorus ends up — is the logical
+    loop. And the deepest framing: reactive nitrogen flow to the environment has
+    roughly doubled the planetary boundary; the green revolution's great gift and its
+    great bill are the same molecule, and the century's task is to keep the gift while
+    closing the bill — one field, one curve, one 4R plan at a time.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Liebig (1840); Smil, Enriching the Earth; the 4R nutrient stewardship framework (IPNI); Cambridge IGCSE Agriculture 0600, unit 2.</p>
 </TopicPage>

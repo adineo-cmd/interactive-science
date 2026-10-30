@@ -10,23 +10,204 @@ const soilCfg = {
     { math: '4 · The no-till turn', note: 'Ploughing oxidises organic matter and destroys fungal networks; no-till and cover cropping keep soil covered, roots alive, biology fed — the conservation-agriculture triad (minimum disturbance, cover, rotation) rebuilds the account (the climate lesson\'s soil-carbon prize).' },
   ],
 };
+
+const infiltCfg = {
+  curves: [
+    { expr: '60*(1 - exp(-x/8))', label: 'healthy, aggregated soil', color: '#2e7d32', width: 2.4 },
+    { expr: '15*(1 - exp(-x/3))', label: 'compacted soil', color: '#b42318', width: 2.2 },
+  ],
+  x: { min: 0, max: 60, label: 'minutes of rain' },
+  y: { min: 0, max: 70, label: 'cumulative water infiltrated (mm)' },
+  crossings: false,
+  height: 320,
+};
 ---
 <TopicPage slug="subjects/agriculture/intermediate/soil-health">
   <h2>The idea</h2>
   <p>
-    Soil health reframes dirt as <strong>a living system that degrades or regenerates depending on
-    management</strong>. The physics (structure, water) and biology (organic matter, microbes) are
-    one system — and the regenerative-agriculture movement is the applied version of this lesson.
+    Soil health reframes dirt as <strong>a living system that degrades or regenerates depending
+    on management</strong>. The farmer's real asset is not the land's area but its topsoil —
+    centimetres of biology that took centuries to build and one bad storm to lose. The physics
+    (structure, water) and biology (organic matter, microbes) are one system: manage either
+    alone and the other quietly fails. This lesson covers the whole soil unit — how soil forms,
+    what determines its type and texture, what makes it fertile, how water moves through it,
+    and how erosion destroys what the rest took ages to assemble.
   </p>
 
   <Widget no="1" caption="the biome, the components, the bank, the turn" widget="equationStep" config={soilCfg} />
 
-  <h2>Diagnostics and fixes</h2>
-  <ul>
-    <li><strong>Test before treating:</strong> standard soil tests (pH, N-P-K, organic matter) cost little and prevent blind fertilising — the most common waste on small farms (the economics lesson\'s unit arithmetic, underground).</li>
-    <li><strong>pH gates everything:</strong> nutrients lock out of solution outside 6.0–7.0 for most crops; lime raises, sulphur lowers — a chemistry fix before a nutrient fix (the chemistry ladder\'s pH lesson, in a field).</li>
-    <li><strong>Compaction is silent theft:</strong> heavy machinery squeezes out air and pores; roots stall. Controlled traffic, deep-rooted cover crops (radish, tillage radish literally drills), and staying off wet soil are the cures.</li>
-    <li><strong>Erosion is soil health\'s final exam:</strong> the weathering lesson\'s rates — soil forming over centuries, washing away in storms; cover crops and contour ploughing keep it on the slope.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Brady & Weil, The Nature and Properties of Soils; USDA NRCS soil-health principles; Montgomery, Dirt (2007).</p>
+  <h2>How soil forms: rock into living skin</h2>
+  <p>
+    Soil is weathered rock colonised by life, assembled in layers over hundreds to thousands
+    of years. Physical weathering (freeze–thaw, thermal cracking) shatters parent material;
+    chemical weathering (rain's mild acidity dissolving minerals) releases the first nutrients;
+    pioneer plants and lichens add organic matter, which holds water and accelerates the
+    cycle. Given time, the profile differentiates into <strong>horizons</strong>: the dark,
+    organic-rich <strong>A horizon</strong> (topsoil — the farming layer), the leached
+    <strong>E horizon</strong> where present, the clay-and-mineral accumulating
+    <strong>B horizon</strong> (subsoil), and the fractured parent <strong>C horizon</strong>
+    below. The rate is the point: roughly a century per centimetre of topsoil under natural
+    conditions — which is why erosion, running 10–100× faster on exposed farmland, is
+    geological vandalism on a human timescale. Parent material, climate, organisms, relief and
+    time (the five soil-forming factors) set each region's starting hand: volcanic ash makes
+    fertile Andisols, tropical rainfall leaches ancient, acid, iron-rich Oxisols, grasslands
+    build the deep black Chernozems of the world's breadbaskets.
+  </p>
+
+  <h2>Texture, structure and the four components</h2>
+  <p>
+    Mineral soil is graded into <strong>sand</strong> (2–0.05 mm — big pores, drains fast,
+    holds little), <strong>silt</strong> (0.05–0.002 mm — smooth, holds moisture well) and
+    <strong>clay</strong> (under 0.002 mm — flat plates with enormous surface area, holding
+    water and nutrients chemically, but draining poorly and compacting). The proportions —
+    <strong>texture</strong> — plot on the classic texture triangle (a loam is the balanced
+    middle), and texture is essentially fixed: you farm the hand you are dealt.
+    <strong>Structure</strong> — how those particles clump into <em>aggregates</em> — is not
+    fixed, and it is where management lives. Good structure (crumbly, granular) holds big
+    pores for air and drainage plus small pores for stored water; bad structure (compacted,
+    slumped) does neither. The four components interlock: ideally about 45% mineral matter,
+    5% organic matter, and the remaining half split between water and air whose proportions
+    swing with every rain and every drying day. A soil's "tilth" — how it feels and works —
+    is structure made tangible, and a spade is the first instrument: dark colour and crumb
+    stability, roots running deep and sideways, worms in the spadeful, and no smeared shiny
+    faces on the spade cut (a compaction signature) — field diagnostics before any
+    laboratory.
+  </p>
+  <p><em>Common misconception:</em> "adding sand to clay soil 'improves drainage'." Adding a
+    little sand to a lot of clay makes something worse than either — a dense, brick-like mix.
+    Drainage is fixed with structure (organic matter, roots, avoiding compaction) or with
+    engineered drainage, not by diluting the mineralogy.</p>
+
+  <h2>Soil temperature and the seasonal clock</h2>
+  <p>
+    The third pillar of the texture-and-conditions trio is <strong>temperature</strong>, and
+    it is more manageable than texture. Soil temperature governs germination (each species
+    has a minimum — wheat germinates near 4 °C, maize wants 10 °C and rising), microbial
+    activity (nitrogen mineralisation roughly doubles per 10 °C within biological ranges —
+    meaning fertiliser releases follow warmth), and root growth. Dark, moist, mulched soil
+    warms slower by day and cools slower by night; a bare, dry seedbed swings violently.
+    Plastic mulch is the deliberate exploit: clear plastic traps solar energy and pushes
+    spring soil temperatures several degrees up, advancing sowings — the same physics in
+    reverse (reflective mulch) cools summer root zones in hot climates. Depth matters: the
+    top few centimetres ride the weather, while 30 cm down the temperature is nearly a
+    monthly average — which is why gardeners learn to plant by soil thermometer, not by
+    calendar, and why "sow when the soil, not the sky, is ready" is the oldest working
+    advice in the craft.
+  </p>
+
+  <h2>Water: infiltration, drainage, irrigation</h2>
+  <p>
+    Soil is the water cycle's filter and bank. When rain lands, everything hangs on
+    <strong>infiltration</strong>: healthy aggregated soil drinks a downpour; compacted or
+    crusted soil sheds it downhill — taking the topsoil with it:
+  </p>
+
+  <Widget no="2" caption="infiltration is a structure property — the same storm, two soils" widget="plotter" config={infiltCfg} />
+
+  <p>
+    Once infiltrated, water is held against gravity at <strong>field capacity</strong> (small
+    pores full, large pores drained) and extracted by roots until the
+    <strong>wilting point</strong>, where the remaining film clings too tightly for plants to
+    pull. The gap between the two is <strong>plant-available water</strong> — silt and
+    well-structured loams hold the most; sand holds a little; pure clay holds much but grips
+    it hard. Where rainfall cannot fill the gap, <strong>irrigation</strong> takes over, with
+    an efficiency ladder: flood/furrow (traditional, 40–60% efficient), sprinklers (~70–85%),
+    and drip lines (up to 95%, delivering water to the root zone drop by drop — Israel's
+    breakthrough that made desert horticulture viable). Where water sits too long, the cure
+    is <strong>drainage</strong> — ditches, tile drains, mole drains — because waterlogged
+    soil kills roots by suffocation and blocks nitrogen cycling (waterlogged soils lose
+    nitrogen to denitrification and turn grey-blue with reduced iron: a diagnostic you can
+    see in any road cutting). Salinity is irrigation's shadow: every irrigation water carries
+    dissolved salts that stay when the water evaporates — mismanaged schemes have salinised
+    historic farmland from Mesopotamia to modern Australia, which is why irrigation always
+    includes drainage planning.
+  </p>
+
+  <h2>Fertility: organic matter, pH and the nutrient bank</h2>
+  <p>
+    <strong>Soil fertility</strong> is the capacity to supply what a crop needs, and it runs
+    on three interlocking accounts. The <strong>organic matter</strong> account: decomposed
+    plant and animal residue becomes <strong>humus</strong>, which holds up to ten times its
+    weight in water, stores nutrients on its charged surfaces, feeds the microbial biome and
+    glues aggregates together — it is the farm's slow-release asset, and conventional
+    tillage has spent it down 30–50% in most old arable regions. The <strong>chemistry
+    account</strong>: most nutrients reach roots only in solution, held exchangeably on clay
+    and humus surfaces (cation exchange capacity — clay-rich, humus-rich soils hold the
+    bank; sands leak it). And the <strong>pH gate</strong>: outside roughly 6.0–7.0, most
+    crops cannot access the nutrients that are present — iron and phosphorus lock up in acid
+    soils, molybdenum in alkaline ones — which is why liming acid soil (or sulfur-ing
+    alkaline soil) precedes every fertiliser recommendation. Below pH 5.5, exchangeable
+    aluminium turns soluble and poisons roots directly. Test before treating: pH, N-P-K and
+    organic matter tests cost little and prevent the most common waste on small farms —
+    blind fertilising of a field whose real constraint was acidity.
+  </p>
+
+  <h2>The soil biome: the workforce</h2>
+  <p>
+    The biology is the difference between dirt and soil. <strong>Bacteria</strong> run the
+    nitrogen chemistry (the fertiliser lesson picks this up); <strong>fungi</strong> build the
+    architecture — mycorrhizal threads extend root reach ten-fold and pipe phosphorus to
+    plants in trade for sugars; <strong>earthworms</strong> are the engineers, dragging
+    litter underground, aerating with their burrows (Charles Darwin's last book was about
+    them, and he measured their casting rates with patience worthy of the subject);
+    <strong>protozoa and nematodes</strong> run the grazing food web that releases locked
+    nutrients. Two partnerships matter commercially. Rhizobia bacteria in legume root
+    nodules fix atmospheric nitrogen into plant-usable form — the biological engine of
+    every rotation (a good legume stand can leave the equivalent of 100–200 kg of
+    fertiliser nitrogen per hectare for the following crop). And mycorrhizae are damaged
+    by deep tillage and long bare fallows, which is part of why no-till soils grow more
+    resilient crops. A teaspoon of healthy
+    soil out-organisms humanity by tens of billions — the workforce's size is why soil
+    biology responds to management within a season, faster than chemistry or physics. The
+    practical corollary: soil biology is fed through roots and residues, not through bags —
+    which is why every soil-health prescription reduces, first, to "keep something growing
+    here as much of the year as you can".
+  </p>
+
+  <h2>Erosion and conservation: the final exam</h2>
+  <p>
+    <strong>Water erosion</strong> (sheet, rill, gully) and <strong>wind erosion</strong> strip
+    exactly the layer that everything above valued — and the historical record is blunt. The
+    <strong>Dust Bowl</strong> (1930s US Southern Plains): prairie ploughed out, drought
+    arrived, and "black blizzards" carried topsoil from Oklahoma to the Atlantic — 1935 alone
+    removed an estimated 850 million tonnes; the Soil Conservation Service was created the
+    same year. The fixes, then and now, form the conservation toolkit: <strong>keep the
+    ground covered</strong> (cover crops between cash crops — living armour), <strong>keep
+    roots alive year-round</strong> (feeding the biology, holding aggregates),
+    <strong>disturb minimally</strong> (no-till drills seed through residue instead of
+    ploughing), <strong>rotate and diversify</strong> (breaking pest cycles and spreading
+    risk), and where slopes demand it, <strong>contour ploughing, terraces, strip cropping
+    and windbreaks</strong> — each a way of shortening the run that water or wind gets. The
+    conservation-agriculture triad (minimum disturbance, permanent cover, rotation) is the
+    modern synthesis, and its measurable prizes are water infiltrating instead of running,
+    organic matter rebuilding (soil carbon — the climate lesson's most discussed land
+    lever), and diesel saved by ploughs that stay in the shed. The economics of erosion is
+    the argument that finally moves budgets: nutrients exported in eroded soil are
+    fertiliser bought twice — applied, then exported — and most of the world's cropland
+    erodes faster than it forms. Off-farm, the sediment delivers its fertiliser to the
+    nearest river, where it becomes the water lesson's eutrophication problem: soil
+    conservation and water quality are the same budget, spent well or badly.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The quantitative edges reward the effort. <strong>Compaction</strong> is silent theft: a
+    single heavy machinery pass on wet soil can raise bulk density enough to halve
+    infiltration and stall roots below the wheel track — controlled-traffic farming (all
+    wheels on permanent lanes) and tillage radish (a cover crop that literally drills
+    bio-pores) are the standard remedies. <strong>Slaking</strong> — aggregates collapsing
+    when suddenly wetted — is the quick field test of structure that separates stable
+    humus-glued soil from chemistry-glued soil. Organic matter rebuilds slowly and
+    asymmetrically: a well-managed rotation might add a few tonnes of carbon per hectare per
+    year early on, then plateau as the soil saturates — the honest limit of soil-carbon
+    offsets. And the open questions are active: how deep does the "rhizosphere" economy
+    run (half of soil's respiration is root-and-microbe trade), can regenerative systems
+    match conventional yields while rebuilding the account (the evidence says: yes on
+    diversified farms, with management skill as the deciding variable), and how much of
+    agriculture's carbon bill can soils genuinely re-bank. The lesson beneath all of them:
+    soil is the one production system where the factory can be rebuilt by its own
+    products — every stalk returned is a deposit, and the account, unlike most, pays
+    interest in water.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Brady &amp; Weil, The Nature and Properties of Soils; USDA NRCS soil-health principles; Montgomery, Dirt (2007); Cambridge IGCSE Agriculture 0600, unit 2.</p>
 </TopicPage>

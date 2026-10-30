@@ -29,30 +29,182 @@ const limitCfg = {
 <TopicPage slug="subjects/math/intermediate/the-derivative">
   <h2>The idea</h2>
   <p>
-    Average speed is easy: distance over time. But a speed camera asks a harder question — what
-    is the speed <em>right now</em>, in an instant? The derivative answers it: shrink the time
-    window to nothing and take the slope the secant is heading toward. Geometrically, it is the
-    slope of the tangent line — a line that touches the curve at one point and matches its
-    direction there.
+    Average speed is easy: distance over time. A car covering 100 m in 5 seconds averaged 20 m/s —
+    one division, done. But a speed camera asks a harder question: what is the speed <em>right
+    now</em>, in an instant? Over an instant you travel no distance in no time, and distance over
+    time collapses to 0/0, which is meaningless. Calculus escapes the trap with one beautiful
+    move: compute the average over a small window, then shrink the window and see what value the
+    average is <em>heading toward</em>. That limiting value is the <strong>derivative</strong> —
+    the instantaneous rate of change. Geometrically it is the slope of the <strong>tangent</strong>:
+    the line that touches the curve at one point and matches its direction there.
   </p>
 
   <Widget no="1" caption="slide the touch point — the tangent's slope exactly tracks the green derivative curve" widget="plotter" config={tangentCfg} />
 
   <p>
-    The red tangent touches <code>x²</code> at t₀ and its slope is 2·t₀. Now look at the green
-    curve: it plots those slopes. At t₀ = −1 the tangent tilts downhill and the derivative reads
-    −2; at t₀ = 2 it climbs and the derivative reads 4. <em>The derivative of a function is
-    itself a function.</em>
+    In the plot above, slide the touch point t₀ along the purple curve <code>x²</code>. The red
+    tangent's slope is always 2·t₀ — steeply downhill at t₀ = −2, flat at t₀ = 0, steeply uphill at
+    t₀ = 3. Now look at the green curve: it plots those slopes, and it is the line 2x.
+    <em>The derivative of a function is itself a function</em> — feed it an input and it tells you
+    how fast the original is changing there. This picture is the whole subject in miniature:
+    differentiation turns a function into its rate-of-change function, and the tangent slide
+    shows the two fitting together perfectly.
+  </p>
+
+  <h2>The definition, taken honestly</h2>
+  <p>
+    Here is the average rate of change of f between x and a nearby point x + h — the slope of the
+    <em>secant</em> line through them: [f(x+h) − f(x)] / h. As h shrinks, the two points merge and
+    the secant pivots into the tangent. The formal definition of the derivative is that ratio
+    with a limit taken:
   </p>
 
   <Widget no="2" caption="the definition, applied honestly to x²" widget="equationStep" config={limitCfg} />
 
-  <h2>Why it changed the world</h2>
+  <p>
+    Read the four steps slowly — they contain the entire logical difficulty of calculus, and its
+    resolution. We divide by h while h is still nonzero, get a clean expression 2x + h, and only
+    then let h approach 0. At every stage of the algebra we divided a legal expression by a legal
+    number; the limit is the value the process converges to. Applied to x² we get 2x, exactly as
+    the plot promised. Try the same routine on f(x) = x³ and you will find 3x²; on f(x) = 1/x you
+    get −1/x² (the minus sign says the curve falls everywhere it is defined — which a glance at
+    its graph confirms). One definition, every function, no guessing.
+  </p>
+  <p><em>Common misconception:</em> the derivative "is the formula for the tangent line". It is
+  the tangent's <em>slope</em> — a number at each point. The tangent line itself needs a point and
+  a slope: at x² where t₀ = 1 the slope is 2 and the line is y = 2x − 1 (it must pass through
+  (1, 1)). The plot's red curve is that line, rebuilt for every t₀ at once.</p>
+
+  <h2>The rules of the game</h2>
+  <p>
+    Applying the limit definition by hand every time would be intolerable, so we distil it into
+    rules — each one provable from the definition once, then used forever:
+  </p>
   <ul>
-    <li><strong>Newton (fluxions, 1660s) and Leibniz (dy/dx, 1670s)</strong> invented this independently — and fought bitterly over credit. Modern notation is Leibniz's.</li>
-    <li><strong>Physics runs on derivatives.</strong> Velocity is the derivative of position; acceleration is the derivative of velocity. "F = ma" is secretly a second-derivative statement.</li>
-    <li><strong>Optimisation is derivatives.</strong> Maxima and minima happen where f′(x) = 0 — the logic behind cheapest routes, strongest beams and best prices.</li>
-    <li><strong>Go deeper:</strong> differentiating 2x gives 2, a constant — acceleration of constant acceleration. Differentiate again and you reach 0: change that no longer changes.</li>
+    <li><strong>Power rule:</strong> d/dx of xⁿ is n·xⁿ⁻¹. It works for every real n — x⁵ → 5x⁴,
+    √x = x^½ → ½x^(−½), and even x⁰ = 1 → 0 (constants never change).</li>
+    <li><strong>Constant multiple and sum rules:</strong> derivatives respect addition and scaling:
+    d/dx of 3f(x) is 3·f′(x), and d/dx of (f + g) is f′ + g′. So polynomials differentiate term by
+    term.</li>
+    <li><strong>Product, quotient and chain rules</strong> handle functions built from functions —
+    the chain rule, d/dx f(g(x)) = f′(g(x))·g′(x), is the deepest, capturing "the rate of a
+    composition is the product of the rates".</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Calculus Volume 1; Stewart, Calculus.</p>
+  <p>
+    Worked example, end to end. Take f(x) = 3x² − 5x + 2. Term by term: 3x² differentiates to
+    6x; −5x differentiates to −5; the constant 2 differentiates to 0. So f′(x) = 6x − 5. The
+    gradient at x = 2 is f′(2) = 7, so the tangent there passes through (2, 4) with slope 7:
+    y = 7x − 10. Set f′(x) = 0 and you get x = 5/6 — the single point where the parabola flattens,
+    which is exactly its vertex. Every feature of the curve's shape is encoded in its derivative.
+  </p>
+
+  <p>
+    Why does the power rule work at all? Sketch the argument for n = 2 with the limit definition
+    above and you will spot the pattern: expand (x+h)ⁿ, and the top-order terms give n·xⁿ⁻¹·h plus
+    smaller corrections, all divided by h, all corrections dying as h → 0. The rule is the
+    definition, pre-digested. And notice the derivative's built-in asymmetry: it keeps the
+    <em>shape</em> of the rate and discards the level. f(x) = x² and g(x) = x² + 7 have identical
+    derivatives (both 2x) because they change identically — a hint of the reversal process
+    (integration) being ambiguous up to a constant, a thread the advanced tier picks up.
+  </p>
+
+  <h2>Reading graphs through the derivative</h2>
+  <p>
+    Because f′(x) measures slope, the sign of f′ tells you which way the curve is walking:
+    f′ above 0 means increasing, f′ below 0 means decreasing, and <strong>stationary
+    points</strong> — where f′(x) = 0 — are where the curve momentarily levels off. Those are the
+    candidates for peaks (maxima), valleys (minima) and inflection flats. To classify one, watch
+    how f′ changes sign through it: + then − is a maximum, − then + is a minimum. The
+    <strong>second derivative</strong> f″(x) — the derivative of the derivative — compresses this
+    into one test: f″ above 0 means the curve is cupping upward (minimum), f″ below 0 means
+    cupping downward (maximum).
+  </p>
+  <p><em>Common misconception:</em> f′(x) = 0 means "maximum or minimum". Not always — consider
+  f(x) = x³ at x = 0. The derivative 3x² is zero there, but the curve passes straight through,
+  climbing on both sides: a stationary <em>inflection</em> point. A zero derivative stops the
+  journey; only a sign change tells you which way it resumes.</p>
+  <p>
+    This is why the syllabus pairs "sketching curves" with differentiation. To sketch a curve
+    properly you find where f′ = 0, test the sign of f′ between those points, and locate where f″
+    changes sign (inflections). The derivative is the curve's autobiography, written in slopes.
+  </p>
+
+  <h2>Differentiation in the wild</h2>
+  <p>
+    <strong>Rates in practical graphs.</strong> Whenever one quantity is plotted against another,
+    the derivative is the everyday question "how fast is it changing?". The height of water in a
+    filling cone-shaped tank rises slowly at first, then faster, then slowly again — the slope of
+    the height-time graph, visible without any formula. A company's cost curve C(q) has derivative
+    the marginal cost (the price of producing one more unit); a country's GDP plotted yearly has
+    its growth rate read off as the slope. Medicine: drug concentration in blood rises while you
+    absorb the dose and falls while you clear it, and the derivative changes sign at the peak —
+    the moment dosing intervals are designed around.
+  </p>
+  <p>
+    <strong>Optimisation.</strong> Maxima and minima are where f′(x) = 0, which turns "find the
+    best" into algebra. Classic worked example: you have 40 m of fence for a rectangular pen.
+    Area A(x) = x(20 − x) = 20x − x², where x is the width. A′(x) = 20 − 2x, zero at x = 10. The
+    second derivative is −2 (negative), confirming a maximum: the best pen is a 10 × 10 square
+    with area 100 m². Notice what the calculus found that trial-and-error would only suggest: for
+    a fixed perimeter, the square always wins. The same machinery, scaled up, designs the
+    cheapest soup can, the stiffest beam, the fastest descent path, and the trajectory of
+    spacecraft.
+  </p>
+  <p>
+    A second worked example shows the modelling step, which is where students most often stumble.
+    Cut four equal squares of side x from the corners of a 20 cm × 20 cm sheet and fold up the
+    sides to make an open box. The base is (20 − 2x) by (20 − 2x), so the volume is
+    V(x) = x(20 − 2x)². Expand: V = 400x − 80x² + 4x³. Then V′ = 400 − 160x + 12x²; setting it to
+    zero and solving the quadratic gives x = 10 (which collapses the box to nothing — reject it)
+    or x = 20/6 ≈ 3.33 cm, giving a box 3.33 cm deep with volume ≈ 593 cm³. Two critical points,
+    one physical answer — checking candidates against the real situation is part of the method,
+    not a courtesy.
+  </p>
+  <p>
+    <strong>Motion.</strong> If position is s(t), then velocity v = s′(t) and acceleration
+    a = v′(t) = s″(t). A dropped stone has s(t) = 4.9t² (metres, t in seconds); differentiate:
+    v(t) = 9.8t — the familiar 9.8 m/s² gain every second, emerging as the derivative of the
+    distance law. Differentiate once more: a = 9.8, a constant — "constant acceleration" is the
+    statement that the position graph is a parabola.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>When derivatives fail to exist.</strong> A function must be smooth to be
+    differentiable. f(x) = |x| is continuous everywhere but has a corner at 0: the slope is −1
+    from the left and +1 from the right, and no single tangent fits, so f′(0) does not exist. A
+    vertical tangent (like x^(1/3) at 0) kills the derivative differently — the slope runs off to
+    infinity. The fine print of calculus: differentiable implies continuous, but continuous does
+    not imply differentiable. Real-world signals — stock prices, earthquake traces, ECG spikes —
+    are full of corners, which is a genuine obstacle when you try to differentiate them.
+  </p>
+  <p>
+    <strong>Two inventors, one credit fight.</strong> Newton developed his "method of fluxions" in
+    the 1660s but published late; Leibniz published his version in 1684 with better notation —
+    dy/dx, the notation you still use — and was accused of plagiarism. The priority dispute
+    poisoned Anglo-European mathematics for a century (British mathematicians clung to Newton's
+    dot notation out of loyalty, and fell behind continental analysis). Modern historians credit
+    both: Newton had the ideas first, Leibniz the notation and the published account. The 0/0
+    anxiety at the heart of the method wasn't fully resolved until the 19th century, when Cauchy
+    and Weierstrass defined limits with ε–δ rigour — no "infinitesimals", just carefully quantified
+    "close enough".
+  </p>
+  <p>
+    <strong>The exponential surprise.</strong> Every power rule differentiation lowers the power —
+    x⁵ → 5x⁴ → 20x³ → … — heading toward zero. The function eˣ is the glorious exception: its
+    derivative is itself. It is the unique (up to scaling) function that is its own rate of
+    change, which is precisely why exponential growth appears wherever a rate is proportional to
+    the current amount — populations, compound interest, radioactive decay, epidemics. That thread
+    gets its own chapter.
+  </p>
+  <p>
+    <strong>Higher derivatives and what they mean.</strong> Derivatives chain indefinitely:
+    position → velocity → acceleration → jerk → snap. Engineers designing rail junctions and
+    roller coasters explicitly limit jerk, because passengers feel the <em>rate of change of
+    force</em>, not force itself — a smooth ride is a small-third-derivative ride. In statistics,
+    the second derivative of a log-likelihood curve measures how sharply the peak is defined — the
+    mathematical root of "confidence intervals". The derivative is not one tool but a ladder of
+    them, each rung asking "and how fast is <em>that</em> changing?".
+  </p>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Calculus Volume 1 (ch. 2–4); Stewart, Calculus: Early Transcendentals; Katz, A History of Mathematics (Newton–Leibniz priority dispute).</p>
 </TopicPage>

@@ -17,36 +17,247 @@ const waveCfg = {
   crossings: false,
   height: 340,
 };
+
+const superCfg = {
+  curves: [
+    { expr: 'a*sin(2*pi*x/lambda)', label: 'wave 1', color: '#1d4ed8' },
+    { expr: 'a*sin(2*pi*x/lambda - phi)', label: 'wave 2', color: '#0f766e' },
+    { expr: 'a*sin(2*pi*x/lambda) + a*sin(2*pi*x/lambda - phi)', label: 'sum', color: '#b91c1c' },
+  ],
+  params: [
+    { name: 'a', label: 'amplitude a', min: 0.05, max: 1, step: 0.05, value: 0.6 },
+    { name: 'lambda', label: 'wavelength λ', min: 0.5, max: 4, step: 0.1, value: 2 },
+    { name: 'phi', label: 'phase gap φ', min: 0, max: 6.28, step: 0.06, value: 0 },
+  ],
+  x: { min: 0, max: 8, label: 'distance x (m)' },
+  y: { min: -2.3, max: 2.3 },
+  crossings: false,
+  height: 340,
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/waves-and-sound">
   <h2>The idea</h2>
   <p>
-    A wave is travelling energy without travelling matter. Pluck a string and the <em>string</em>
-    barely moves overall — the <em>shape</em> races along it. Three numbers describe any wave:
-    <strong>amplitude</strong> (how tall — loudness or brightness), <strong>wavelength</strong>
-    (how long each cycle is), and <strong>frequency</strong> (how many cycles pass per second,
-    measured in hertz). They're bound by one relation: <code>v = f·λ</code> — speed equals
-    frequency times wavelength.
+    At the foundational level you met waves as ripples on a pond and wiggles on a rope. Now we make
+    the description quantitative. A wave is energy in transit without transport of matter: the
+    <em>shape</em> travels, the medium merely oscillates in place. Any wave in any medium — air,
+    water, steel, or the vacuum of space — can be pinned down by three numbers and one equation:
+    <strong>amplitude</strong> (how big each oscillation is), <strong>wavelength λ</strong> (how
+    long one full cycle is, in metres), and <strong>frequency f</strong> (how many cycles pass a
+    fixed point each second, in hertz). The equation binding them is <code>v = f·λ</code>: wave
+    speed equals frequency times wavelength. It is the single most useful relation in this chapter,
+    and everything from guitar strings to radio antennas is an application of it.
   </p>
+  <p>
+    Sound is our star example because you can both hear and feel it, and because it forces the most
+    useful distinction in wave physics: transverse versus longitudinal. But we will also follow the
+    same machinery upward into light and the electromagnetic spectrum, where the same three numbers
+    describe colour, radio, X-rays and gamma rays.
+  </p>
+
+  <h2>The anatomy of a wave</h2>
+  <p>
+    Picture a single crest moving along a rope. The rope itself only moves up and down, at right
+    angles to the wave's travel — this is a <strong>transverse</strong> wave. Shake the rope along
+    its own length instead and you get squeezed and stretched regions moving along it — a
+    <strong>longitudinal</strong> wave, where the oscillation is parallel to the travel direction.
+    Sound in air is exactly this: alternating zones of compression (molecules bunched, pressure
+    above normal) and rarefaction (molecules spread out, pressure below normal) marching away from
+    the source. Water ripples are a mixture, which is why floating debris bobs in little circles
+    rather than just up and down.
+  </p>
+  <p>
+    The vocabulary is easiest on a graph of displacement against position. The
+    <strong>amplitude</strong> is the height of a crest above the flat, undisturbed level — it
+    measures how much energy the wave carries (for a string wave, energy goes as amplitude
+    squared, so tripling the amplitude carries nine times the energy). The
+    <strong>wavelength</strong> is the distance between two identical points of the pattern —
+    crest to crest, or compression to compression. The <strong>frequency</strong> is how many
+    complete cycles pass per second; its reciprocal is the <strong>period</strong>, T = 1/f, the
+    time for one cycle. One full wavelength passes any point in one period, so the wave's speed
+    must be wavelength divided by period: v = λ/T = f·λ.
+  </p>
+  <p>
+    Worked example. A tuning fork vibrates at 440 Hz (concert A) and sound leaves it at 343 m/s.
+    The wavelength in air is λ = v/f = 343/440 ≈ 0.78 m — about arm's length. Dip the fork in
+    water? Sound would not travel through the fork's prongs at 343 m/s; in steel the speed is
+    about 5,900 m/s, so the <em>same</em> 440 Hz vibration would launch a wave about 13.4 m long.
+    Same frequency, different medium, different wavelength — remember that pattern; it returns
+    below.
+  </p>
+  <p><em>Common misconception:</em> a wave carries matter along with it. Watch a floating ball as
+  ripples pass: it bobs up and down and stays put. What travels is the pattern and its energy; the
+  medium's particles oscillate about fixed positions. (A surfer is the exception that proves the
+  rule — surfers ride the breaking part of the wave, where water genuinely does move shoreward.)</p>
 
   <Widget no="1" caption="two knobs, every wave — amplitude sets height, λ sets the stretch; the second curve lags in phase" widget="plotter" config={waveCfg} />
 
-  <h2>Sound, specifically</h2>
+  <h2>What happens when waves meet the world</h2>
   <p>
-    Sound is a pressure wave in air. At 20 °C it travels at <strong>343 m/s</strong> (warmer air
-    is faster — about +0.6 m/s per °C). Because speed is fixed by the medium, a high-pitched sound
-    must have a short wavelength: middle C (262 Hz) is about 1.3 m long, while the top of piano
-    range (4,186 Hz) is 8 cm.
+    Four behaviours cover nearly everything a wave can do when its path changes, and they apply to
+    sound and light alike.
   </p>
   <ul>
-    <li><strong>Human hearing spans 20 Hz – 20 kHz</strong> — ten octaves, narrowing with age.</li>
-    <li><strong>Pitch is frequency; loudness is amplitude</strong> (measured in decibels: whisper ≈ 30 dB, front row of a concert ≈ 110 dB).</li>
-    <li><strong>Light is also a wave</strong> — but at 299,792,458 m/s, a million times faster. Its "wavelength" is instead colour: 700 nm red, 400 nm violet.</li>
-    <li><strong>Echoes and sonar</strong> are just timing: distance = speed × half the round-trip time. Bats do this arithmetic instinctively.</li>
+    <li><strong>Reflection:</strong> the wave bounces off a boundary. Angle in equals angle out,
+    measured from the surface's normal. This is an echo — a sound wave reflected from a cliff or
+    wall.</li>
+    <li><strong>Refraction:</strong> the wave crosses into a new medium, changes speed, and — if it
+    hits the boundary at an angle — changes direction. Crucially, its <em>frequency does not
+    change</em>: the source still shakes at the same rate, and the boundary must pass crests
+    through at the rate they arrive. The wavelength adjusts instead, because v = f·λ with the new
+    v. Sound refracts when it passes from cold air into warm air; light refracts entering water,
+    which is why a straight straw looks bent at the surface.</li>
+    <li><strong>Diffraction:</strong> the wave bends around obstacles and spreads through gaps —
+    most noticeably when the gap is comparable to the wavelength. You hear someone round a corner
+    (audible wavelengths run from centimetres to 17 metres, larger than doorways) but you cannot
+    see them (light's wavelength is under a millionth of a metre).</li>
+    <li><strong>Superposition:</strong> overlapping waves simply add, displacement by displacement.
+    Crest on crest reinforces; crest on trough cancels.</li>
   </ul>
   <p>
-    One subtlety worth keeping: waves <em>add</em>. Overlapping crests reinforce, crest-on-trough
-    cancels — the trick behind noise-cancelling headphones and the rainbow sheen on soap bubbles.
+    Superposition deserves a slow look, because it explains effects that seem almost magical. Slide
+    the phase gap φ between the two waves below: at φ = 0 the two waves are identical and the sum
+    (red) has double amplitude — <strong>constructive interference</strong>. At φ = π (half a
+    cycle) each crest of one lands on a trough of the other and the sum goes flat —
+    <strong>destructive interference</strong>. Noise-cancelling headphones do precisely this in
+    real time: a microphone samples the ambient noise and a speaker plays it back half a cycle out
+    of phase, so the two sounds annihilate before reaching your eardrum.
   </p>
-  <p class="sources"><strong>Sources:</strong> OpenStax, College Physics (Oscillatory Motion and Waves); ISO 16 standard for concert pitch.</p>
+
+  <Widget no="2" caption="interference live — slide the phase gap from 0 (fully reinforced) to π ≈ 3.14 (fully cancelled)" widget="plotter" config={superCfg} />
+
+  <p>
+    Superposition between waves travelling in opposite directions produces a
+    <strong>standing wave</strong>: fixed nodes (permanent cancellation) and antinodes (maximum
+    swing). Plucked strings and blown pipes only sustain notes whose wavelength "fits" the
+    instrument — an open guitar string, pinned at both ends, must have nodes at each end, which is
+    why halving its length (pressing at the 12th fret) doubles the frequency and raises the pitch
+    by one octave.
+  </p>
+
+  <h2>Sound, the pressure wave</h2>
+  <p>
+    Sound begins with something vibrating — a drumhead shoving air, vocal cords chopping your
+    breath into puffs. The vibration pushes and pulls the air into those longitudinal compressions
+    and rarefactions, and each little parcel of air hands the disturbance to its neighbours. Sound
+    cannot travel through a vacuum: with no molecules, there is nothing to compress, which is why
+    the film-star explosion is silent in space.
+  </p>
+  <p>
+    How fast the disturbance travels depends entirely on the medium — not on how loud the sound is
+    or how high its pitch. In air at 20 °C it is about 343 m/s, rising roughly 0.6 m/s per °C
+    (warmer molecules move faster and pass the disturbance on sooner). In fresh water it is about
+    1,480 m/s; in steel about 5,900 m/s. The rule of thumb: stiff, light media carry sound fast;
+    dense-but-squishy media carry it slowly. Steel is 8 times denser than water, which should slow
+    sound down, but it is also vastly stiffer — and stiffness wins, by a factor of about 16 in
+    speed. (In a rigid solid like diamond, sound reaches 12,000 m/s.)
+  </p>
+  <p>
+    <em>Common misconception:</em> louder sounds travel faster, or high-pitched sounds overtake
+    low ones. For ordinary sounds neither is true — all frequencies and amplitudes travel together
+    at the medium's speed, which is why a distant marching band arrives as a chord rather than
+    smearing out of tune. (At extreme amplitudes — explosions, sonic booms — the wave itself
+    heats the air and the "fast parts" of the wave do overtake, steepening into a shock front. That
+    is the exception, not the rule of everyday acoustics.)
+  </p>
+  <p>
+    <strong>Pitch is frequency.</strong> Human hearing runs from about 20 Hz to 20,000 Hz — ten
+    octaves, and the top end decays with age and loud-music exposure, so a middle-aged adult may
+    hear little above 15 kHz. Middle C is 262 Hz (wavelength ≈ 1.3 m in air); the top note of a
+    piano, 4,186 Hz (wavelength ≈ 8 cm); a bat's hunting chirp reaches 100 kHz and beyond, with
+    wavelengths of a few millimetres — small enough to echo off an insect. Below 20 Hz lies
+    infrasound (earthquakes, elephants, wind turbines); above 20 kHz, ultrasound. Medical
+    ultrasound scanners ping tissue at megahertz frequencies — a 3 MHz wave in soft tissue, where
+    sound travels near 1,540 m/s, has a wavelength of about 0.5 mm, fine enough to resolve
+    millimetre-scale structures in a fetus.
+  </p>
+  <p>
+    <strong>Loudness is amplitude</strong>, but our ears judge it on a logarithmic scale: each
+    10-decibel step is a tenfold increase in intensity, though it sounds about twice as loud. A
+    whisper near 30 dB, normal conversation near 60 dB, a bulldozer at 90 dB, a rock concert around
+    110 dB — where damage to hearing begins in minutes — and 130 dB is the threshold of pain.
+    Because the scale is logarithmic, a 60 dB conversation is not "twice" a 30 dB whisper but a
+    thousand times the intensity.
+  </p>
+  <p>
+    <strong>Echoes are just timing.</strong> You shout at a cliff and hear the echo 1.2 s later.
+    The sound made a round trip, so the cliff is d = v·t/2 = 343 × 1.2 / 2 ≈ 206 m away. The same
+    arithmetic drives sonar (a submarine pings and listens: a return 2.0 s after a downward ping
+    toward a seabed, at 1,480 m/s in seawater, puts the bottom 1,480 × 2.0 / 2 = 1,480 m below) and
+    the bats, which time chirps returning from insects with millisecond precision. Note the factor
+    of 2 — forgetting it is the classic exam error.
+  </p>
+
+  <h2>Light and the electromagnetic family</h2>
+  <p>
+    Sound needs a medium; light does not. Light is an oscillation of electric and magnetic fields
+    that regenerates each other as they travel, so it sails through vacuum at
+    <strong>c = 299,792,458 m/s</strong> — about 880,000 times the speed of sound in air, which is
+    why lightning arrives before its thunder: count the seconds between flash and boom and multiply
+    by 340 to get the storm's distance in metres.
+  </p>
+  <p>
+    Visible light is one narrow band of a continuous family that differs <em>only</em> in
+    frequency and wavelength. From long to short: radio waves (metres to kilometres — FM radio at
+    100 MHz has a 3 m wavelength, which is why car antennas are about that scale), microwaves
+    (millimetres to metres — radar, Wi-Fi at 2.4 GHz is a 12.5 cm wave, and the 2.45 GHz oven
+    band), infrared (700 nm to 1 mm — heat radiation, TV remotes), visible light (400–700 nm —
+    violet to red), ultraviolet (10–400 nm — sunburn), X-rays (0.01–10 nm — bone imaging), and
+    gamma rays (under 0.01 nm — nuclear decay). All of them travel at c in vacuum and all obey the
+    same v = f·λ; an FM station and a dental X-ray are the same phenomenon at different frequencies.
+  </p>
+  <p>
+    One wave behaviour of light is worth seeing here because it depends so directly on wavelength:
+    <strong>dispersion</strong>. When light enters glass it slows (to roughly 2 × 10⁸ m/s), and the
+    slowing — and hence the bending — depends slightly on colour: violet slows and bends more than
+    red. A prism therefore spreads white light into a spectrum, and raindrops do the same job over
+    the whole sky to make rainbows, violet on the inside edge of the arc, red on the outside.
+    Refraction, lenses and mirrors get their own full treatment in the Optics chapter; the point
+    here is that they are wave phenomena, governed by the same speed-frequency-wavelength bookkeeping
+    as sound.
+  </p>
+  <p><em>Common misconception:</em> "wavelength" for light is something separate from colour. It is
+  the colour — your eye's cone cells are frequency analysers, each tuned to a band of the same
+  continuum the radio dial covers, just seven-plus octaves higher.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The Doppler effect.</strong> If the source or listener moves, the received frequency
+    shifts because each new crest is emitted from a different place. A siren approaching at 30 m/s
+    compresses its wavefronts: a listener hears roughly f·v/(v − 30) = f × 343/313, about 10% sharp.
+    As it passes and recedes the factor flips to 343/373, about 8% flat — the falling "eeee-ooooh".
+    The same physics, applied to light, gives the redshift of receding galaxies; the American
+    physicist Edwin Hubble's 1929 discovery that distant galaxies are redshifted in proportion to
+    their distance is the observational foundation of the expanding universe.
+  </p>
+  <p>
+    <strong>When the linear rule breaks.</strong> The claim "all sound in air travels at 343 m/s"
+    assumes small-amplitude waves in still air. Blast waves from explosions travel faster than
+    sound precisely because they compress the air so much that its properties change within the
+    wave itself. And when a source moves <em>faster</em> than sound — a fighter jet at Mach 1.5, a
+    bullet, the tip of a cracking whip — it outruns its own wavefronts, which pile into a cone
+    trailing behind at angle arcsin(1/M) (M is the Mach number): the sonic boom. The boom is not a
+    one-off event at the moment of breaking the barrier; the cone is dragged along continuously and
+    everyone under the path hears it as the source passes.
+  </p>
+  <p>
+    <strong>Why the decibel is logarithmic — and what it hides.</strong> Hearing spans roughly 12
+    orders of magnitude in intensity (10⁻¹² W/m² at threshold to about 1 W/m² at the pain
+    threshold). A linear scale for loudness is useless, so decibels compare an intensity I against
+    that threshold: 10·log₁₀(I/10⁻¹²) dB. The log also hides real damage: 85 dB for a full
+    working day is the usual occupational limit, and every extra 3 dB halves the safe exposure
+    time — 100 dB for 15 minutes already costs you some hearing permanently, because the hair
+    cells of the inner ear do not regrow.
+  </p>
+  <p>
+    <strong>Open territory.</strong> Two frequencies sounding together produce a third, slow
+    "beat" at their difference (piano tuners listen for beats dying out as two strings converge);
+    the cocktail-party effect — how the brain separates one voice from a wall of overlapping
+    superposition — is still only partly understood; and rooms with "dead spots" are standing-wave
+    nodes you can walk through, a reminder that even a single note is a field of cancellations
+    waiting to be mapped. Take any two of the three numbers in v = f·λ, and the third is already
+    fixed — that constraint is what makes acoustics, optics, radio engineering and seismology all
+    speak the same language.
+  </p>
+  <p class="sources"><strong>Sources:</strong> OpenStax, College Physics (ch. 16–17, Oscillatory Motion, Waves and Sound); HyperPhysics (Georgia State University), Sound Speeds and Decibel Scale; ISO 16 standard for concert pitch; CERN and NASA fact pages on the electromagnetic spectrum.</p>
 </TopicPage>

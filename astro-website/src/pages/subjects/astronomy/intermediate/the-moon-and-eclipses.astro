@@ -10,25 +10,210 @@ const moonCfg = {
     { math: 'Tides: two bulges', note: 'The Moon pulls harder on Earth\'s near side than far side — stretching the oceans into two bulges. As Earth rotates through them, most coasts see two high tides a day. The Sun adds a smaller pull; when aligned (new/full moon) we get spring tides.' },
   ],
 };
+
+const tideCfg = {
+  curves: [
+    { expr: 'a*(cos(2*pi*x/12.42) + 0.46*cos(2*pi*x/12))', label: 'tide height (lunar + solar components)', color: '#1d4ed8', width: 2.4 },
+  ],
+  params: [
+    { name: 'a', label: 'tidal amplitude', min: 0.2, max: 2, step: 0.1, value: 1, unit: 'm' },
+  ],
+  x: { min: 0, max: 48, label: 'hours' },
+  y: { min: -3, max: 3, label: 'tide height (m)' },
+  crossings: true,
+  height: 320,
+};
 ---
 <TopicPage slug="subjects/astronomy/intermediate/the-moon-and-eclipses">
   <h2>The idea</h2>
   <p>
-    The Moon is the sky's great teacher — close enough to watch its geometry play out monthly. Its
-    <strong>phases</strong> are not Earth's shadow (the most common misconception in astronomy)
-    but simple viewing angles of a half-lit ball. Its <strong>eclipses</strong>, though, are
-    shadows — spectacular ones, possible only because the Sun is 400× wider than the Moon and
-    also 400× farther away, making the two discs almost exactly the same size in our sky.
+    The Moon is the sky's great teacher — close enough to watch its geometry play out monthly,
+    and the only other world humans have walked on. Its <strong>phases</strong> are not Earth's
+    shadow (the most common misconception in astronomy) but simple viewing angles of a
+    half-lit ball. Its <strong>eclipses</strong>, though, are shadows — spectacular ones,
+    possible only because the Sun is about 400× wider than the Moon and also about 400× farther
+    away, making the two discs almost exactly the same size in our sky. Between those headlines
+    sits a whole course in planetary science: tides, orbital mechanics, and a geological record
+    of the solar system's violent youth.
   </p>
 
   <Widget no="1" caption="the four facts that explain the Moon's entire public life" widget="equationStep" config={moonCfg} />
 
-  <h2>What the Moon has done for Earth</h2>
-  <ul>
-    <li><strong>Stabilised the axis:</strong> the Moon's gravity keeps Earth's 23.4° tilt steady over millions of years; without it, chaotic tilts would swing climates wildly (Mars, without a big moon, has wobbled by tens of degrees).</li>
-    <li><strong>Slowed the spin:</strong> tidal friction lengthens Earth's day by ~2 milliseconds per century — 1.4 billion years ago, a day lasted about 18 hours.</li>
-    <li><strong>Receded measurably:</strong> laser retroreflectors left by Apollo astronauts bounce beams back; the Moon retreats 3.8 cm per year. Direct measurement of tidal evolution.</li>
-    <li><strong>A record of the early solar system:</strong> no weather, no plate tectonics — the Apollo rocks (382 kg, 1969–72) still anchor the dating of the whole inner solar system.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> NASA Apollo Lunar Surface Journal; OpenStax, Astronomy 2e (The Moon and Tides); LLR measurements (McDonald Observatory).</p>
+  <h2>The lunar disc: what you actually see</h2>
+  <p>
+    The Moon is nearly spherical (1,737 km radius), and its face is a two-terrain map. The
+    bright, cratered <strong>highlands</strong> are the original crust — anorthosite, rock
+    floating to the top of a molten Moon — pocked by 4 billion years of impacts. The dark
+    <strong>maria</strong> ("seas", a name from early telescopic observers who mistook them for
+    water) are vast basins punched by giant impacts around 4 billion years ago, later flooded
+    by basalt lava that welled up and froze smooth. Maria cover about 16% of the surface —
+    mostly the near side, which is why the far side, first photographed by the Soviet probe
+    Luna 3 in 1959, looks so different: almost all highlands, pocked and pale. Bright rays
+    around craters like Tycho are ejecta splashed across the surface, and they fade with age —
+    a crude clock read from any back-garden telescope. Between the terrains lies the
+    <strong>terminator</strong>, the day–night line, where low sunlight casts long shadows that
+    make relief visible: observe there, not at full moon, when overhead light flattens
+    everything.
+  </p>
+
+  <h2>Synchronous rotation and libration: why "the dark side" doesn't exist</h2>
+  <p>
+    The Moon's <strong>rotation period equals its orbital period</strong> — 27.3 days — the
+    condition called <strong>synchronous rotation</strong> or tidal locking. It is not a
+    coincidence but an inevitability: Earth's tides on the early Moon braked its spin until the
+    fastest-rotating state that could survive was the one where the same face always points at
+    the brake. (Earth is still being braked by the Moon's tides — the day lengthens by about
+    2 ms per century — and in tens of billions of years Earth would lock to the Moon too.)
+    The far side is therefore the <em>far</em> side, not a dark one: it gets exactly the same
+    sunlight, only unseen from Earth.
+  </p>
+  <p>
+    Locking is imperfect in instructive ways. Because the Moon's orbit is elliptical, it moves
+    slightly faster at perigee than its rotation carries it, and slower at apogee — letting us
+    peek alternately around each eastern and western edge (a longitude libration of about ±8°).
+    Its rotation axis is tilted 1.5° to its orbit, tilting the poles in and out of view (±6.7°
+    in latitude). And being lifted from horizon to overhead lets observers at different times
+    see slightly around the edges. Add them up and <strong>about 59% of the lunar surface is
+    visible from Earth over time</strong> — a slowly wobbling face, invisible unless you watch
+    for it, predicted by the geometry and confirmed by watching crater positions.
+  </p>
+
+  <h2>Sizes and distances: the cosmic coincidence</h2>
+  <p>
+    Scale the system honestly: the Moon's diameter is 3,474 km — just over a quarter of
+    Earth's — and its distance is about 384,400 km, which is 30 Earth diameters away. Most
+    diagrams lie about this; the real system is mostly empty space. The Sun, by contrast, is
+    1.39 million km across at 149.6 million km. The remarkable accident: Sun diameter ÷ Moon
+    diameter ≈ 400, and Sun distance ÷ Moon distance ≈ 390 — so both discs subtend about
+    half a degree, and the Moon can cover the Sun <em>exactly</em>. No other planet in the
+    solar system enjoys this near-equality — seen from Jupiter, the Sun appears only a fifth
+    the width it does from Earth, and Jupiter's big moons would cross it as dots, not discs —
+    and the match is temporary: the Moon recedes, so far-future total eclipses will end, and
+    eventually only annular ones will remain.
+  </p>
+
+  <h2>Tides: the Moon's grip on the ocean</h2>
+  <p>
+    Gravity weakens with distance, so the Moon pulls the ocean's near side more strongly than
+    Earth's centre, and Earth's centre more strongly than the far side. That
+    <em>difference</em> — the differential pull — stretches the ocean into two bulges: one
+    facing the Moon, one opposite. Earth spins beneath them daily, so most coasts see two high
+    tides about 12.4 hours apart. The Sun contributes a tidal pull about 46% as strong; when
+    Sun and Moon align (new and full moon) their bulges add — the higher <strong>spring
+    tides</strong>; when they pull at right angles (first and last quarter) they partially
+    cancel — <strong>neap tides</strong>. The rhythm runs on a 14.8-day beat, and the two
+    components' slightly different periods (12.42 vs 12.00 hours) make the tide curve beat in
+    and out over the day:
+  </p>
+
+  <Widget no="2" caption="two tide components beating together — the pattern any coastal tide table repeats" widget="plotter" config={tideCfg} />
+
+  <p>
+    Tidal friction does more than make tide tables. It transfers Earth's spin to the Moon's
+    orbit: the day lengthens (~2 ms/century), and the Moon recedes <strong>3.8 cm per
+    year</strong> — measured by bouncing lasers off the retroreflectors Apollo astronauts left
+    on the surface, the most precise Earth–Moon distance measurements anywhere. Rotate the
+    clock back: 1.4 billion years ago the day lasted about 18 hours; further back still, the
+    Moon hung much closer and the tides were enormous.
+  </p>
+  <p><em>Common misconception:</em> "the Moon's gravity pulls the ocean toward it, so there is
+    one bulge." One pull would make one bulge — but tides come from the
+    <em>difference</em> in pull across Earth, which necessarily makes two. The far-side bulge
+    is the clue students must be able to explain: that water is "left behind" less strongly
+    pulled than the Earth beneath it, so it lags outward relative to the planet's centre.</p>
+
+  <h2>Eclipses: geometry at its most dramatic</h2>
+  <p>
+    A <strong>solar eclipse</strong> happens at new moon, when the Moon's shadow touches Earth.
+    The dark core of the shadow (the <strong>umbra</strong>) is only a few hundred kilometres
+    wide at Earth's surface — total eclipses are local and brief (a maximum of about 7½
+    minutes) — while the surrounding <strong>penumbra</strong> gives a partial eclipse across a
+    region thousands of kilometres wide. Because the Moon's distance varies from about 356,500
+    to 406,700 km while the umbra's tip only just reaches Earth, sometimes the umbral tip falls
+    short and the Moon leaves a ring of Sun visible: an <strong>annular</strong> ("ring of
+    fire") eclipse. A <strong>lunar eclipse</strong> is the reverse: at full moon the Moon
+    passes through Earth's much wider shadow and dims to copper-red — sunlight refracted
+    through Earth's atmosphere, literally the light of every sunrise and sunset on Earth at
+    once, bent onto the Moon's face. Lunar eclipses last hours and are visible from the whole
+    night hemisphere — which is why any given location sees many more lunar than solar ones.
+  </p>
+  <p>
+    Why not every month? Because the Moon's orbit is tilted about 5° to the ecliptic. New and
+    full moons usually pass above or below the Sun–Earth line. Eclipses require the Moon to be
+    at a <strong>node</strong> — where the two orbital planes cross — at the same time it is new
+    or full. That triple coincidence recurs in seasons: eclipse seasons twice a year, and the
+    whole pattern repeats with the <strong>Saros cycle</strong> of about 18 years 11 days 8
+    hours, known to Babylonian astronomers who could — and did — predict eclipses without any
+    theory of gravity at all.
+  </p>
+
+  <h2>Precession: the wandering pole</h2>
+  <p>
+    Earth's rotation axis is tilted 23.4°, and the Moon and Sun tug on that equatorial bulge
+    like a slow hand on a spinning top: the axis <strong>precesses</strong>, tracing a circle
+    of radius 23.4° on the sky once every <strong>25,772 years</strong>. The consequence is a
+    drifting pole star: Polaris holds the post today (about 0.7° from the pole), but in about
+    12,000 years Vega will be the pole star, and Thuban — the pole star when Egyptians built
+    the pyramids — gets another turn. Precession also shifts the position of the equinoxes
+    along the zodiac by about 50 arcseconds per year, which is why astrological "star signs"
+    no longer match the constellation the Sun actually rises in — and why astronomers must
+    quote coordinates for a standard epoch. The same gravitational bookkeeping applies to the
+    Moon: its orbit's nodes precess in 18.6 years, the cycle that modulates when eclipses can
+    happen and feeds the Saros.
+  </p>
+
+  <h2>Inside the Moon, and where it came from</h2>
+  <p>
+    Seismometers left by Apollo recorded moonquakes for years, giving the Moon an internal
+    profile to compare with Earth's: a thin crust (about 34–43 km on average, thicker on the
+    far side), a solid mantle, and a small core — roughly 330 km in radius, about 20% of the
+    Moon's radius and just 1–2% of its mass, partly molten. Earth's core is over half our
+    radius and a third of our mass. That iron-poverty is the single most telling clue to the
+    Moon's origin: whatever made the Moon took little of Earth's iron but lots of its rocky
+    mantle.
+  </p>
+  <p>
+    The modern answer is the <strong>Giant Impact Hypothesis</strong>: about 4.5 billion years
+    ago, a Mars-sized protoplanet (nicknamed Theia) struck the young Earth a glancing blow;
+    the debris — mostly mantle rock from both bodies — settled into orbit and accreted into the
+    Moon within centuries to millennia. The hypothesis earns its status by passing tests its
+    rivals fail. Against <em>co-accretion</em> (Moon forming alongside Earth): the Moon's low
+    iron and Earth's iron-rich core don't match two siblings condensing from the same cloud.
+    Against <em>capture</em>: no plausible trajectory slows a passing body into orbit without
+    stealing extravagant energy. Against <em>fission</em> (Moon spun off fast-spinning Earth):
+    the system's angular momentum is far too small. The impact hypothesis explains all three —
+    iron sank with Theia's core into Earth, the mantle debris made the Moon, and simulations
+    reproduce the angular momentum we observe. One residue keeps research honest: Earth and
+    Moon rocks have nearly <em>identical</em> oxygen isotope ratios, harder to arrange if much
+    of the Moon came from Theia — current models solve it with a hot, well-mixed post-impact
+    Earth or a Theia surprisingly similar to Earth.
+  </p>
+  <p>
+    Reaching the Moon is an exercise in energy budgeting. Escaping Earth's gravity well to the
+    Moon needs about 3.2 km/s of delta-v beyond low Earth orbit; Apollo missions crossed in
+    roughly three days on a <strong>free-return trajectory</strong> — a figure-eight path that
+    returns home automatically if the braking burn fails (the design that saved Apollo 13).
+    Modern small missions trade time for energy, using <strong>low-energy transfers</strong>
+    that ride the Sun–Earth gravitational terrain for weeks or months, arriving with a fraction
+    of the fuel. The Moon is close — but "close" in space means three days of coasting at
+    39,000 km/h, still the farthest any human has travelled.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The Moon is also a scientific instrument. With no weather and no plate tectonics, its
+    surface preserves a 4-billion-year impact record that Earth's geology erases — crater
+    counting on lunar terrains calibrates the impact chronology used across the whole inner
+    solar system, and the 382 kg of Apollo rocks (1969–72) still anchor the dating of
+    planetary surfaces everywhere. The Moon's stabilising role matters to us directly: its
+    gravity keeps Earth's axial tilt steady within about a degree over millions of years, and
+    without it chaotic tilts would swing climates wildly (Mars, moonless, has wobbled by tens
+    of degrees). Meanwhile the far side has become prime real estate for radio astronomy: it
+    faces away from Earth's cacophony of radio noise, shielded from human transmitters — China's
+    Chang'e 4 landed there in 2019, and low-frequency antennas on the far side are proposed
+    windows onto the universe's "dark ages" before the first stars. The nearest world, it
+    turns out, is also the quietest radio site in the inner solar system — and a place where
+    the next generation of instruments may hear signals older than any star.
+  </p>
+  <p class="sources"><strong>Sources:</strong> NASA Apollo Lunar Surface Journal; OpenStax, Astronomy 2e (The Moon and Tides); LLR measurements (McDonald Observatory); Pearson Edexcel GCSE Astronomy specification, topics 2, 3 and 9.</p>
 </TopicPage>

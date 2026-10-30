@@ -16,30 +16,181 @@ const trigCfg = {
 <TopicPage slug="subjects/math/intermediate/trigonometry">
   <h2>The idea</h2>
   <p>
-    Trigonometry starts with a right triangle — the ratios of its sides get names: sin =
-    opposite/hypotenuse, cos = adjacent/hypotenuse, tan = opposite/adjacent. The revelation is
-    that these ratios depend <strong>only on the angle</strong>, not the triangle's size. Wrap
-    the triangle around a circle and the ratios become <strong>waves</strong> — the bridge
-    between geometry and everything periodic: sound, seasons, alternating current.
+    Trigonometry starts with a right triangle and the observation that the ratios of its sides
+    depend <strong>only on the angles</strong>, never on the triangle's size. Scale a triangle up
+    or down and the shape — the set of angles — stays fixed, so "opposite over hypotenuse" stays
+    fixed too. Give those three ratios names (sin, cos, tan) and every triangle becomes
+    computable from partial information. Then comes the revelation that organises this whole
+    chapter: let the angle grow past 90° and keep going, and the ratios trace out
+    <strong>waves</strong>. Triangles become circles become waves — the bridge between geometry
+    and everything periodic: sound, seasons, tides, alternating current.
   </p>
 
   <Widget no="1" caption="two waves, 90° apart in phase — cos is just sin walked a quarter-turn around the circle" widget="plotter" config={trigCfg} />
 
-  <h2>The identities worth internalising</h2>
-  <ul>
-    <li><strong>Pythagoras' identity:</strong> sin²θ + cos²θ = 1 — literally the unit circle's equation in disguise.</li>
-    <li><strong>Phase shift:</strong> cos θ = sin(θ + 90°). The two curves above are the same wave, offset a quarter cycle.</li>
-    <li><strong>Period 360° (2π rad):</strong> the wave repeats; that's why θ is better measured in radians — the natural unit where arc = angle × radius.</li>
-    <li><strong>Addition formulas</strong> (sin(a+b) etc.) — the algebra behind every wave-interference result in physics.</li>
-  </ul>
-
-  <h2>Solving triangles</h2>
+  <h2>Pythagoras: the first constraint</h2>
   <p>
-    The practical toolkit: <strong>SOH-CAH-TOA</strong> for right triangles, the
-    <strong>sine rule</strong> a/sin A = b/sin B for any triangle, and the <strong>cosine
-    rule</strong> c² = a² + b² − 2ab·cos C — which is Pythagoras with a correction term for
-    non-right angles. Surveyors, navigators and astronomers used exactly these three before
-    satellites existed.
+    In a right-angled triangle with legs a and b and hypotenuse c, <strong>a² + b² = c²</strong>.
+    It is the oldest named theorem in mathematics and the most used: the converse is the
+    builder's trick for making a corner square (mark 3, 4 and 5 units along two rays — if the
+    distance closes as 5, the angle is exactly right), and the theorem itself is behind every
+    distance calculation in coordinate geometry. Real example: a "55-inch" TV has a 16:9 screen.
+    If the width is 16k and height 9k, the diagonal is √((16k)² + (9k)²) = k·√337 ≈ 18.36k = 55
+    inches, so k ≈ 3.0 inches — width ≈ 47.9", height ≈ 26.9". One theorem converts the
+    diagonal on the price tag into whether the screen fits your shelf.
   </p>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Algebra and Trigonometry; standard treatments (Maor, Trigonometric Delights).</p>
+  <p><em>Common misconception:</em> a² + b² = c² applies to any triangle. It is exactly the
+  <em>right angle</em> condition — for non-right triangles it fails, and the size of the failure
+  is precisely what the cosine rule below measures. Also: the hypotenuse is always the
+  <em>longest</em> side, opposite the right angle — checking this catches swapped-label errors
+  before they happen.</p>
+
+  <h2>The three ratios</h2>
+  <p>
+    For an acute angle θ in a right triangle:
+  </p>
+  <ul>
+    <li><strong>sin θ = opposite / hypotenuse</strong></li>
+    <li><strong>cos θ = adjacent / hypotenuse</strong></li>
+    <li><strong>tan θ = opposite / adjacent</strong> (and tan θ = sin θ / cos θ)</li>
+  </ul>
+  <p>
+    SOH-CAH-TOA packages the definitions; the real content is that they are functions of angle
+    alone. Worked example: a 6 m ladder leans against a wall at 70° to the ground. Height
+    reached = 6 × sin 70° ≈ 6 × 0.940 = <strong>5.64 m</strong>; distance of the foot from the
+    wall = 6 × cos 70° ≈ 6 × 0.342 = <strong>2.05 m</strong>. Reverse problems work the same
+    way with an unknown angle: if the ladder must reach a window 5 m up, the required angle is
+    sin⁻¹(5/6) ≈ 56.4°. The inverse functions (sin⁻¹, cos⁻¹, tan⁻¹) convert a ratio back into
+    an angle — with the fine print that they return one convenient answer, not every possible
+    one (see Going deeper).
+  </p>
+
+  <h2>Exact values: the angles worth memorising</h2>
+  <p>
+    Three special angles come from half-squares and half-equilateral triangles, and their sines
+    and cosines are exact surds worth knowing cold:
+  </p>
+  <ul>
+    <li><strong>45°</strong> (half a square): sin = cos = 1/√2 = √2/2, tan = 1.</li>
+    <li><strong>60°</strong> (half an equilateral triangle of side 2): sin = √3/2, cos = ½, tan = √3.</li>
+    <li><strong>30°</strong> (the same triangle seen from the other acute corner): sin = ½, cos = √3/2, tan = 1/√3.</li>
+  </ul>
+  <p>
+    These are the values behind "nice" answers — the 45° fire-escape, the 60° roof pitch, the
+    equilateral truss — and exam questions use them to test understanding without calculator
+    noise. They also make the pattern visible: sin 30° = cos 60°. Complementary angles swap the
+    roles of opposite and adjacent, so sin θ = cos(90° − θ) always. The graph above shows the
+    same fact as a horizontal shift of one quarter-period.
+  </p>
+
+  <h2>From triangles to waves: the unit circle</h2>
+  <p>
+    The definitions above die at 90° (no opposite side in a degenerate triangle). The unit
+    circle resurrects them: place a point at angle θ on a circle of radius 1, and define
+    <strong>cos θ = x-coordinate, sin θ = y-coordinate</strong>. Everything extends smoothly to
+    all angles — sin 150° = ½ because the point's height mirrors 30°'s; sin 270° = −1 because
+    the point sits at the bottom. The circle's equation x² + y² = 1 becomes, in trig clothing,
+    the <strong>Pythagorean identity</strong> sin²θ + cos²θ = 1 — the most-used fact in the
+    subject, and the source of every "given sin θ, find cos θ" manipulation.
+  </p>
+  <p>
+    Now walk the point around and plot its height against angle: the wave in the plot above.
+    Two properties follow immediately. The wave <strong>repeats every 360°</strong> (the point
+    returns), and <strong>cos is sin shifted by 90°</strong> (the x-coordinate is the
+    y-coordinate's future). Tangent, meanwhile, is the <strong>slope</strong> of the circle at
+    that point — which is why tan has period 180° and blows up at 90°, where the circle is
+    momentarily vertical.
+  </p>
+  <p>
+    The wave picture also gives you a complete family of models for free. Multiplying by a
+    constant scales the wave's height (amplitude — volume of a sound, height of a tide);
+    multiplying the angle compresses the wave horizontally (frequency — a higher note, a faster
+    alternation); adding inside the function shifts it in time (phase — the lag between two
+    waves). One formula, A·sin(Bθ + C), is the anatomy of every periodic signal, and reading a
+    formula's A, B and C straight off as "height, speed, offset" is a skill worth more than
+    memorising any table.
+  </p>
+  <p>
+    <strong>Radians</strong> are the natural angle unit: one radian is the angle subtending an
+    arc equal in length to the radius (arc = r × θ, with θ in radians), and a full turn is 2π
+    ≈ 6.283 radians. Calculus and physics silently assume radians (the small-angle
+    approximation sin θ ≈ θ is false in degrees), and the wave model generalises with them:
+    h(t) = A·sin(Bt + C). Worked example: a harbour tide with period 12.4 h (two tidal bulges
+    per lunar day), amplitude 1.8 m about a mean of 2.0 m: h(t) = 2.0 + 1.8·sin(2π·t/12.4).
+    Set h = 0.5 m (the keel clearance of a yacht) and you can solve for the times of low water —
+    a genuinely useful calculation performed by boats worldwide.
+  </p>
+
+  <h2>Solving non-right triangles</h2>
+  <p>
+    Most real triangles lack a right angle, and two rules cover them. The <strong>sine
+    rule</strong>, a/sin A = b/sin B = c/sin C, is best when you know an angle and its opposite
+    side (ASA, or SSA). Worked example: to measure the width of a river without crossing, mark
+    two points A and B exactly 100 m apart on the bank, sight the tree C on the far bank, and
+    measure angles A = 30° and B = 45°. Then angle C = 105°, and AC = 100·sin 45°/sin 105° ≈
+    100 × 0.7071/0.9659 ≈ <strong>73 m</strong>. No boat required — this is how surveyors,
+    artillery officers and astronomers measured the world for centuries.
+  </p>
+  <p>
+    The <strong>cosine rule</strong>, c² = a² + b² − 2ab·cos C, is Pythagoras with a correction
+    term for non-right angles: when C = 90°, cos C = 0 and it collapses to Pythagoras exactly.
+    Use it when you know two sides and the included angle (SAS) or all three sides (SSS). Worked
+    example: a ship sails 40 km, turns through 65°, and sails 55 km. Distance from port:
+    d² = 40² + 55² − 2·40·55·cos 65° = 1600 + 3025 − 4400 × 0.4226 ≈ 2766, so d ≈
+    <strong>52.6 km</strong>. The related area formula, Area = ½ab·sin C, gives a triangle's
+    area from two sides and the included angle — no height needed.
+  </p>
+  <p><em>Common misconception:</em> the sine rule works with any side paired with any angle. It
+  only relates a side to the angle <em>opposite</em> it — a, the side facing A, and so on.
+  Mismatching the pairs is the most common source of wrong answers in this topic.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Why sin(a+b) is not sin a + sin b.</strong> The addition formulas — sin(a+b) =
+    sin a·cos b + cos a·sin b — are the algebraic engine of the subject, provable by dropping a
+    perpendicular in a cleverly split triangle, and they generate everything else: the double
+    angle formulas (sin 2θ = 2 sin θ cos θ), the wave-product identities, and the "R-form" that
+    converts a·sin x + b·cos x into a single shifted wave. Physically, they are the mathematics
+    of interference: two waves added is one wave with a new amplitude and phase, which is why
+    noise-cancelling works and why the plot's two curves relate by a shift. A useful
+    counterexample to memorise: sin(60° + 60°) = sin 120° = √3/2 ≈ 0.866, but sin 60° + sin 60°
+    ≈ 1.732. Formulas beat guesses.
+  </p>
+  <p>
+    <strong>The ambiguous case.</strong> Given SSA (two sides and a non-included angle), the
+    sine rule can return two valid triangles — the swinging side can land on either of two
+    spots. Concretely: a = 8, b = 10, A = 40° gives B ≈ 53.5° <em>or</em> B ≈ 126.5°, both
+    geometrically legal. This is why calculators' inverse-sine only returns angles in −90° to
+    90°, and why surveyors carry the caution: always check both solutions against the diagram
+    before committing. Ambiguity is not error — it is the geometry telling you the data were
+    incomplete.
+  </p>
+  <p>
+    <strong>Small angles and why radians rule.</strong> For small θ in radians, sin θ ≈ θ and
+    cos θ ≈ 1 − θ²/2 — accurate to within 1% up to about 14°. This single approximation
+    underwrites the pendulum's isochronism, the analysis of every small oscillation in physics,
+    and the reason your binoculars' "field of view in degrees" converts to "metres at 1,000 m"
+    with tan θ ≈ θ. Degrees are a human convention; radians are what the formulas want.
+  </p>
+  <p>
+    <strong>Solving trigonometric equations — and why there are always two answers.</strong> Ask
+    when sin θ = 0.5 and a calculator volunteers θ = 30°. But the unit circle shows the height
+    is ½ at 30° <em>and</em> at 150° — and at 30° + 360°k forever after. The graph supplies the
+    symmetry facts that generate every solution from one: sin is symmetric about 90°, cos about
+    0°, tan about 0° with period 180°. Exam problems testing "solve for 0° to 360°" are really
+    testing whether you can see the second answer past the calculator's first. The same
+    visual habit resolves the inverse-function subtlety from earlier: sin⁻¹(0.5) returns 30°,
+    and knowing to add "…or 150°" is the mark of someone who understands the function, not just
+    the button.
+  </p>
+  <p>
+    <strong>A 2,200-year-old measuring project.</strong> Hipparchus (c. 150 BC) built the first
+    chord tables to compute eclipses; Indian mathematicians invented the sine as such
+    (<em>jya</em>, "bowstring", corrupted through Arabic <em>jayb</em> into Latin "sinus");
+    medieval navigators turned spherical trigonometry into ocean-crossing technology — the
+    spherical versions of the sine rule are what a GPS constellation still solves, just with
+    satellites instead of stars. Every triangle you will ever solve is a small chapter of one
+    continuous project: measuring what cannot be walked to.
+  </p>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Algebra and Trigonometry (ch. 7–9); Maor, Trigonometric Delights; NOAA tide prediction methodology (harmonic constituents); standard exact-value derivations.</p>
 </TopicPage>

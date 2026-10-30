@@ -14,26 +14,179 @@ const scopeCfg = {
   crossings: false,
   height: 330,
 };
+
+const rayleighCfg = {
+  curves: [
+    { expr: '0.28/D', label: 'diffraction limit (arcsec, 550 nm light)', color: '#4338ca', width: 2.2 },
+  ],
+  params: [
+    { name: 'D', label: 'aperture (cm)', min: 2.5, max: 100, step: 2.5, value: 10 },
+  ],
+  x: { min: 0, max: 100, label: 'aperture D (cm)' },
+  y: { min: 0, max: 2.5, label: 'resolution (arcsec) — lower is better' },
+  crossings: false,
+  height: 320,
+};
 ---
 <TopicPage slug="subjects/astronomy/intermediate/telescopes-and-the-electromagnetic-spectrum">
   <h2>The idea</h2>
   <p>
-    Astronomy's first instrument rule: <strong>aperture beats everything</strong>. A telescope's
-    light-gathering power grows with the <em>area</em> of its mirror — diameter squared — so the
-    10-metre Keck telescopes collect a million times more light than your eye. Its second rule:
-    visible light is a sliver of the story; the universe broadcasts across the whole
-    <strong>electromagnetic spectrum</strong>, and each band needs its own kind of eye.
+    Astronomy is a science done at a distance: no experiment, no sample return, no second look
+    from a different angle — only the light (and gravity, and particles) that arrives. The
+    telescope is how faint, distant things become measurable, and its operating rules are
+    disarmingly simple. First rule: <strong>aperture beats everything</strong> — light-gathering
+    grows with the <em>area</em> of the objective (mirror or lens), so doubling the diameter
+    quadruples the photons. The 10-metre Keck telescopes collect on the order of a million times
+    more light than your dark-adapted eye. Second rule: visible light is a sliver of the story;
+    the universe broadcasts across the whole <strong>electromagnetic spectrum</strong>, and each
+    band needs its own kind of eye — and some eyes must leave the planet entirely.
   </p>
 
   <Widget no="1" caption="why size wins — double the mirror, four times the photons; ten times, a hundred" widget="plotter" config={scopeCfg} />
 
-  <h2>The multi-spectrum universe</h2>
+  <h2>Objectives: lenses versus mirrors</h2>
+  <p>
+    A telescope's business end — the <strong>objective</strong> — collects light and brings it to
+    a focus. Refractors use a lens: Galileo's 1609 instrument and every spyglass since. Lenses
+    have two handicaps at scale: light of different colours bends by different amounts
+    (<strong>chromatic aberration</strong>, the colour fringing around bright objects), and a
+    large lens can only be supported at its rim, so it sags under its own weight. Reflectors use
+    a curved <strong>mirror</strong>: all wavelengths focus identically (no chromatic error), and
+    a mirror can be supported from behind across its whole back, which is why every large modern
+    telescope — Keck's 10 m, the Vera Rubin Observatory's 8.4 m, the 39-metre Extreme Large
+    Telescope under construction in Chile — is a reflector. In both designs, magnification is
+    set by the <strong>eyepiece</strong> (focal length of objective ÷ focal length of eyepiece),
+    which is why eyepieces are swappable and aperture — decided at purchase, unchangeable — is
+    the number that really matters.
+  </p>
+  <p>
+    A worked example in a hobbyist's vocabulary. A small reflector with a 1,000 mm focal length
+    fitted with a 25 mm eyepiece magnifies 1,000 ÷ 25 = <strong>40×</strong>; swap in a 10 mm
+    eyepiece and the same tube gives 100×. Swap in a 4 mm and you get 250× — but through a
+    10 cm aperture that exceeds the useful limit (a rule of thumb: no more than about 2× the
+    aperture in millimetres, so 200× for this scope), and the image grows dimmer and mushier
+    rather than more detailed. Meanwhile the 40× view through the same scope gathers roughly
+    (100/7)² ≈ 200 times the light of your naked eye — enough to show the rings of Saturn,
+    the bands of Jupiter, and thousands of stars invisible without it. That is the practical
+    hierarchy: aperture first, magnification second, and only as much of it as the aperture
+    can support.
+  </p>
+
+  <h2>Resolution: the other reason size wins</h2>
+  <p>
+    Light is a wave, and waves through an aperture spread slightly — <strong>diffraction</strong>.
+    The result is that even a perfect telescope cannot focus a star to a point: it forms a small
+    disc surrounded by rings, and the disc's angular size shrinks as aperture grows. Two stars
+    closer together than that limit blur into one. The diffraction limit is approximately
+    θ ≈ 1.22 × λ / D (in radians), so bigger D means sharper images — the second dividend of
+    aperture. Run the numbers: a 10 cm telescope at visible wavelengths (λ ≈ 550 nm) resolves
+    about 1.4 arcseconds; the 2.4-metre Hubble resolves about 0.06 arcseconds, over twenty times
+    finer — enough to separate individual stars in neighbouring galaxies. Magnification without
+    aperture is <strong>empty magnification</strong>: enlarging a blurred image gives a bigger
+    blur. Every serious buyer's advice follows from this — choose aperture first.
+  </p>
+
+  <Widget no="2" caption="the diffraction limit — resolution improves as aperture grows (lower arcseconds = sharper)" widget="plotter" config={rayleighCfg} />
+
+  <h2>The electromagnetic spectrum: the universe's many channels</h2>
+  <p>
+    Visible light spans wavelengths from about 400 nm (violet) to 700 nm (red). But hot gas,
+    cold dust, spinning galaxies and black holes all emit across the whole spectrum, and each
+    band carries different news:
+  </p>
   <ul>
-    <li><strong>Radio (metre–mm):</strong> penetrates dust, reveals pulsars, quasars and the cosmic microwave background — the universe's cold, faint and ancient channels.</li>
-    <li><strong>Infrared:</strong> sees through dust clouds where stars are born; essential for distant (redshifted) galaxies. James Webb's 6.5-metre gold-coated mirror is an infrared machine, and it must be cooled to −230 °C so its own warmth doesn't blind it.</li>
+    <li><strong>Radio (metre to millimetre):</strong> penetrates dust, reveals pulsars, quasars and the cosmic microwave background — the universe's cold, faint and ancient channels. Radio telescopes can also work in daylight and bad weather.</li>
+    <li><strong>Infrared:</strong> sees through dust clouds where stars are born; essential for distant (redshifted) galaxies. James Webb's 6.5-metre gold-coated mirror is an infrared machine, and it must be cooled to about −230 °C so its own warmth doesn't blind it.</li>
     <li><strong>Optical:</strong> the human-familiar band — where large mirrors and adaptive optics (laser-corrected "artificial guide stars") let ground telescopes approach space sharpness.</li>
-    <li><strong>X-ray and gamma:</strong> the violent universe — black-hole accretion, supernova remnants. These photons stop in matter, so the telescopes orbit above the atmosphere (Chandra, Fermi).</li>
-    <li><strong>Gravitational waves</strong> (2015–) are the newest channel entirely: spacetime itself as the detector. Multi-messenger astronomy — seeing one event in light and in gravity — is the field's newest superpower.</li>
+    <li><strong>Ultraviolet:</strong> hot young stars and the atmospheres of planets — absorbed by ozone, so it needs orbit.</li>
+    <li><strong>X-ray and gamma:</strong> the violent universe — black-hole accretion, supernova remnants. These photons stop in matter, so the telescopes orbit above the atmosphere (Chandra, Fermi), and X-ray mirrors must reflect at grazing angles like stones skimming water.</li>
+    <li><strong>Gravitational waves</strong> (detected from 2015) are the newest channel entirely: spacetime itself as the detector. Multi-messenger astronomy — seeing one event in light and in gravity — is the field's newest superpower.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> NASA mission pages (Hubble, JWST, Chandra); LIGO Scientific Collaboration; OpenStax, Astronomy 2e (Telescopes).</p>
+  <p>
+    Why don't we just build one telescope for everything? Because the <strong>atmosphere is a
+    filter</strong>, and only two windows reach the ground cleanly: visible light and radio.
+    Ozone eats ultraviolet, water vapour swallows infrared and microwaves, and the dense air
+    below absorbs X-rays and gamma rays outright. That filter is protective for life (it is the
+    reason you are not irradiated) and obstructive for astronomy — it is the single reason orbit
+    observatories exist. Each orbiting telescope is a mission to a wavelength the ground can
+    never see. The history of the off-window bands is a lesson in instrument-driven discovery.
+    Radio astronomy began in 1932 when Karl Jansky, an engineer hunting radio static for Bell
+    Labs, noticed the interference peaked exactly 4 minutes earlier each day — the signature of
+    the stars, not the Sun. Arno Penzias and Robert Wilson found the cosmic microwave background
+    in 1964 while debugging a horn antenna's unexplainable hiss (after excluding pigeon droppings
+    as the cause). X-ray astronomy started with a Geiger counter on a captured V-2 rocket in
+    1949. In every case the channel existed; the detector came first, and the universe followed.
+  </p>
+
+  <h2>Galileo's discoveries: the telescope as evidence</h2>
+  <p>
+    In 1609 Galileo turned a 20-power spyglass skyward — not the first to try, but the first to
+    publish what it proved. Over eighteen months he logged four results that broke the
+    geocentric world. <strong>The Moon had mountains and craters</strong>: its edge was rough,
+    not the perfect sphere philosophy demanded — his measurements of the terminator's shadows let
+    him estimate mountain heights, some taller than any then known on Earth.
+    <strong>Jupiter had four moons of its own</strong>
+    (Io, Europa, Ganymede, Callisto), circling Jupiter — so not everything orbited the Earth.
+    <strong>Venus showed phases</strong> like the Moon's, from crescent to gibbous: under the
+    Ptolemaic model Venus could only ever show crescents, so the full-Venus phases proved Venus
+    circled the Sun. And <strong>the Sun had spots</strong> that moved with its rotation — the
+    "perfect" Sun was blemished and turning. Each observation is a modest-looking thing through
+    a poor lens; together they ended two thousand years of cosmology. The lesson generalises:
+    a new instrument is not a better view of the same universe — it is a different universe.
+    The same pattern repeated with every later telescope class: radio found pulsars (Jocelyn
+    Bell, 1967), X-rays found accreting black holes, infrared found the star-forming nurseries
+    hidden behind dust. What the eye cannot see, it cannot even suspect.
+  </p>
+  <p><em>Common misconception:</em> "telescopes mostly magnify." For today's large telescopes,
+    magnification is nearly irrelevant — the deepest imaging surveys run at modest zoom.
+    What aperture buys is <em>light</em> (detecting a galaxy whose photons arrive a billion per
+    square metre per second — one photon per minute on a small patch of your retina) and
+    <em>resolution</em> (separating what is actually two stars, or mapping a galaxy's
+    structure). Magnification is eyepiece arithmetic; aperture is capability.</p>
+  <p>
+    It is also worth being precise about what an image is. A telescope does not "show" a
+    distant galaxy the way a window shows a mountain: it accumulates photons over minutes or
+    hours onto a detector, each pixel counting arrivals. Everything about the result — the
+    faintness reachable, the detail resolved, the colour information — is set by how many
+    photons the objective intercepts and how faithfully they are counted. That is why
+    professional "observing" is closer to running a counting experiment than to looking:
+    exposure time is a real cost, telescope time is scheduled in committee-reviewed blocks, and
+    the difference between a 4-metre and an 8-metre telescope is not what you can see but what
+    you can measure in the same night. The eye is still the mind's instrument; the telescope
+    merely feeds it photons the eye could never catch.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Ground-based optical astronomy fights one more enemy: turbulence. Air of different
+    temperatures at different heights jitters the image — "twinkling" from the ground, a smeared
+    blur through a big telescope, limited in practice to about 1 arcsecond no matter the
+    aperture. <strong>Adaptive optics</strong> beats it by measuring the distortion a thousand
+    times a second and bending a small deformable mirror to cancel it, using a bright reference
+    — a natural guide star or a laser excites sodium atoms at 90 km altitude to make an
+    artificial one. With AO, an 8-metre telescope regains its true diffraction limit of about
+    0.03 arcseconds, out-resolving Hubble; space telescopes remain superior for infrared and
+    stability, but the ground has fought back. Space itself has costs to manage too: Hubble's
+    primary mirror was famously ground 2 micrometres too flat — a hair-thin error that blurred
+    every early image until a 1993 servicing flight installed corrective optics, essentially
+    eyeglasses for a telescope. Even in orbit, the physics of diffraction and the human craft
+    of engineering remain inseparable.
+  </p>
+  <p>
+    Resolution can also be bought with distance rather than diameter. Two radio dishes
+    thousands of kilometres apart, combined as <strong>interferometers</strong>, resolve as if
+    they were one dish of that separation — the basis of very-long-baseline interferometry,
+    which maps quasars to milliarcsecond precision. The Event Horizon Telescope pushed it to
+    the limit: eight observatories on four continents, correlating petabytes of data, resolved
+    the shadow of M87's central black hole in 2019 with an effective aperture the diameter of
+    Earth — an angular resolution of about 20 microarcseconds, comparable to reading a
+    newspaper in Paris from New York. Radio astronomy also owns the spectrum's history: 21 cm
+    hydrogen emission — the spin-flip line — maps the gas between stars (the Milky Way lesson
+    uses it), and the cosmic microwave background is a radio observation that rewrote cosmology.
+    The next decade belongs to wide eyes: the Vera Rubin Observatory will photograph the entire
+    southern sky every few nights, and the Square Kilometre Array will gather radio data at
+    rates measured in exabytes per year. The instrument is still the science — Galileo's rule,
+    four centuries on.
+  </p>
+  <p class="sources"><strong>Sources:</strong> NASA mission pages (Hubble, JWST, Chandra); LIGO Scientific Collaboration; OpenStax, Astronomy 2e (Telescopes); Pearson Edexcel GCSE Astronomy specification, topic 11.</p>
 </TopicPage>

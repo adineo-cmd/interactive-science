@@ -10,24 +10,197 @@ const wxCfg = {
     { math: '4 · Forecasting is physics plus data', note: 'Numerical weather prediction (Richardson\'s dream, 1922; operational by the 1950s): solve the fluid equations forward from current observations. Forecast skill doubles ~every decade — 5-day forecasts today beat 3-day forecasts from the 1980s.' },
   ],
 };
+
+const lapseCfg = {
+  curves: [
+    { expr: '20 - 9.8*x', label: 'rising dry air (dry adiabat, 9.8 °C/km)', color: '#b42318', width: 2.2 },
+    { expr: '20 - 5*x', label: 'rising saturated air (moist, ≈5 °C/km)', color: '#1d4ed8', width: 2.2 },
+    { expr: '20 - 6.5*x', label: 'typical surrounding air (6.5 °C/km)', color: '#7c3aed', width: 1.6 },
+  ],
+  x: { min: 0, max: 12, label: 'altitude (km)' },
+  y: { min: -100, max: 25, label: 'temperature (°C)' },
+  crossings: false,
+  height: 330,
+};
 ---
 <TopicPage slug="subjects/earth-science/intermediate/atmosphere-and-weather-systems">
   <h2>The idea</h2>
   <p>
     Weather is the atmosphere <strong>moving heat from where there is surplus to where there is
-    deficit</strong>, with water as the carrier and rotation as the steering. Understand the
-    three-moves — circulation cells, fronts, convection — and daily weather stops being
-    mysterious.
+    deficit</strong>, with water as the carrier and rotation as the steering. The tropics run
+    an energy surplus, the poles a deficit, and every wind, front and storm you will ever
+    experience is the atmosphere working to even the ledger. Learn the three moves —
+    circulation cells, fronts, convection — and daily weather stops being mysterious; learn
+    how the same atmosphere traps outgoing infrared, and climate becomes part of the same
+    physical story.
   </p>
 
   <Widget no="1" caption="the layers, the engine, the storm factory, the forecast" widget="equationStep" config={wxCfg} />
 
-  <h2>Concepts with daily leverage</h2>
-  <ul>
-    <li><strong>Water\'s phase changes are the battery:</strong> evaporation stores latent heat, condensation releases it — a single thunderstorm releases energy comparable to a nuclear weapon (uncontrolled, unfocused — which is why we fear neither).</li>
-    <li><strong>Reading a weather map:</strong> isobars tight = windy; fronts bring the change; low pressure = rising air = cloud and rain; high = sinking = clear. Five rules cover most synoptic maps.</li>
-    <li><strong>Extreme weather attribution is new science:</strong> since ~2004, studies quantify climate change\'s fingerprint on specific events (World Weather Attribution) — "this heatwave was ~X× more likely" — moving the climate debate from models to measured weather.</li>
-    <li><strong>Ensemble forecasting changed decisions:</strong> running the model 50 times with perturbed inputs gives probabilities ("70% chance of rain") — the statistics ladder\'s uncertainty thinking, applied to tomorrow.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Richardson, Weather Prediction by Numerical Process (1922); NOAA/NWS; World Weather Attribution (2021–); the monsoon lesson for tropical circulation.</p>
+  <h2>The atmosphere: thin, layered, pressure-graded</h2>
+  <p>
+    The atmosphere is a shell of gas about 100 km deep that is, in effect, <em>extremely</em>
+    shallow: half its mass lies below 5.5 km, and Everest's summit — where airliners cruise —
+    pokes above half the air. Pressure is just the weight of the overlying column, falling
+    roughly exponentially: about half remains at each 5.5 km step. Temperature's behaviour
+    defines the layers. In the <strong>troposphere</strong> (0–12 km, holding 80% of the mass
+    and all the weather) temperature falls with height — about 6.5 °C per kilometre on
+    average — because the ground is the heat source and air cools as it rises. The
+    <strong>stratosphere</strong> reverses the trend: ozone absorbs ultraviolet and warms with
+    height, making the layer stable (no convection — which is why its ozone matters and why
+    its aerosols linger for years). Above it the <strong>mesosphere</strong> cools again (and
+    burns the meteors), and the <strong>thermosphere</strong> absorbs X-rays and rises to
+    1,000 °C+ — thin enough that the ISS needs no shielding from its "heat". Weather is a
+    tropospheric phenomenon; climate change is a property of the whole column.
+  </p>
+
+  <h2>Why it rains: the adiabatic engine</h2>
+  <p>
+    Rain's mechanism is rising air, and the physics is in one fact: <strong>rising air
+    cools</strong>. Pressure falls with height, so a rising parcel expands, and expanding gas
+    does work on its surroundings and cools — the <em>adiabatic</em> process, no heat removed
+    at all. The dry rate is a fixed 9.8 °C per km. Cool air holds less water vapour, so the
+    parcel's humidity climbs until it saturates — <strong>dew point</strong> — and
+    condensation begins: a cloud. Condensation then releases <strong>latent heat</strong> (the
+    same energy evaporation stored), warming the parcel and slowing its cooling to about
+    5 °C per km — the moist rate. Rising is caused three ways: <strong>convection</strong>
+    (sun-heated ground bubbles air upward — afternoon thunderstorms), <strong>orographic
+    lift</strong> (air forced over mountains — the windward side is wet, the rain-shadow side
+    bone dry), and <strong>frontal lift</strong> (warm air riding over a wedge of cold — the
+    mid-latitude rain machine). Sinking air does the reverse: compresses, warms, dries — the
+    physics inside every desert.
+  </p>
+
+  <Widget no="2" caption="rising air cools — the dry and moist adiabats against typical surroundings; where parcel meets cloud" widget="plotter" config={lapseCfg} />
+
+  <p>
+    The comparison of the three curves on the graph is the whole stability story. If a
+    rising dry parcel (red) cools faster than its surroundings (purple), it becomes colder and
+    denser than the air around it and sinks back — a <strong>stable</strong> atmosphere, hazy
+    and layered. If the surroundings cool faster than the parcel, the parcel stays warmer than
+    its environment and keeps rising on its own buoyancy — <strong>instability</strong>, and
+    the atmosphere dumps its energy in towering cumulonimbus. Meteorologists compute this
+    comparison from every radiosonde balloon launch, twice a day worldwide.
+  </p>
+
+  <h2>The general circulation: cells, trades and jets</h2>
+  <p>
+    Zoom out and the atmosphere runs a heat engine. At the equator, intense heating drives
+    deep convection: air rises (low pressure, daily downpours), flows poleward aloft, cools,
+    and sinks near 30° latitude (high pressure, the world's great deserts — the Sahara, the
+    Outback, the Atacama all sit under this subsiding branch). Surface flow returns equatorward
+    — the <strong>trade winds</strong> — closing the <strong>Hadley cell</strong>. Earth's
+    rotation bends all this flow (<strong>Coriolis effect</strong>: moving air deflects right
+    in the Northern Hemisphere, left in the Southern — why hurricanes spin, why trades blow
+    from the east). Beyond 30°, a second set of mechanics runs the mid-latitudes: the
+    <strong>westerlies</strong>, barrelling weather systems from west to east, steered by the
+    <strong>jet streams</strong> — ribbons of wind above 100 km/h where the cells meet, which
+    drag storm tracks with them and occasionally buckle into the stuck patterns that deliver
+    week-long heatwaves. The <strong>ITCZ</strong> — the equatorial convergence of the trade
+    winds — follows the sun north and south with the seasons, which is the physical meaning of
+    the <strong>monsoon</strong> and of wet/dry tropical seasons.
+  </p>
+  <p><em>Common misconception:</em> "hot air rises, so the equator's rising air must simply
+    flow all the way to the poles." A single-cell planet would work that way — but rotation
+    breaks the journey into three stacked cells per hemisphere (Hadley, Ferrel, Polar), and
+    the deserts at 30° and storm tracks at 60° are the joints. No weather map anywhere
+    contradicts this architecture.</p>
+
+  <h2>Fronts and lows: the mid-latitude storm factory</h2>
+  <p>
+    Reading a weather map is reading air masses at war. An <strong>air mass</strong> is a
+    sprawling body of air with uniform temperature and humidity, stamped by its source region
+    — maritime tropical (warm, wet), continental arctic (cold, dry). Where they meet, the
+    boundary is a <strong>front</strong>: a <em>warm front</em> is warm air sliding gently up
+    over a cold wedge — a slow-arriving sequence of high cloud thickening to hours of steady
+    rain; a <em>cold front</em> is cold air bulldozing under warm — abrupt uplift, towering
+    clouds, squalls, then the clean bright air behind. Around a <strong>low-pressure
+    system</strong> (extratropical cyclone), these fronts spiral together — warm rising air at
+    the centre, the classic comma cloud on satellite pictures — and the whole system drifts
+    with the westerlies. The map rules follow: low pressure = rising air = cloud and rain;
+    high pressure = sinking air = clear skies; tight isobars = strong pressure gradient = wind.
+    Tropical cyclones (hurricanes/typhoons) are a different engine: no fronts, just
+    <strong>warm ocean water (above about 26.5 °C)</strong> feeding latent heat into a
+    rotating low — warm-core, self-intensifying, and losing their fuel the moment they cross
+    land or cold water. The intensity ladder matters for reading headlines: tropical
+    depression (winds under 63 km/h), tropical storm (named at 63 km/h), hurricane/typhoon
+    (118 km/h and above, categories 1–5 on the Saffir–Simpson scale, each step roughly
+    doubling the destructive potential). Their deadliest product is usually not wind but
+    <strong>storm surge</strong> — the ocean piled ashore ahead of the eye — and inland
+    flooding from their rain (Hurricane Harvey 2017 dropped a metre of water on Houston).
+  </p>
+
+  <h2>Forecasting: physics run forward</h2>
+  <p>
+    Modern forecasting is <strong>numerical weather prediction</strong>: divide the atmosphere
+    into a grid, measure the current state (radiosondes, satellites, aircraft, buoys — millions
+    of observations a day), and solve the fluid-dynamics equations forward in time on
+    supercomputers. Lewis Fry Richardson imagined the scheme in 1922 and calculated one
+    six-hour forecast by hand in six weeks (and got it wrong); operational forecasting began
+    in the 1950s with the first computers. Skill has roughly doubled every decade since: a
+    5-day forecast today is as accurate as a 3-day forecast in the 1980s, and hurricane track
+    errors have shrunk by two-thirds since 1990. The remaining uncertainty is handled by
+    <strong>ensembles</strong> — running the model 50 times with perturbed starting
+    conditions — turning "will it rain?" into "70% chance", and the fundamental limit
+    (chaos: tiny errors compound) into a horizon of roughly two weeks beyond which no
+    improvement in physics or data can push. Weather prediction is the most successful
+    geoscience there is, and the quietest. Note the subtle boundary it teaches: weather is the
+    <em>state</em> of the atmosphere (chaotic, unpredictable beyond two weeks), climate is the
+    <em>statistics</em> of that state (stable, predictable in trend) — the same equations
+    answer both questions at different timescales, and confusing the two is the most common
+    error in public climate discussion ("it snowed today, so no warming" confuses one chaotic
+    sample with a 30-year average).
+  </p>
+
+  <h2>The greenhouse effect and the carbon cycle</h2>
+  <p>
+    The same atmosphere also sets the planet's long-term temperature, by controlling what
+    escapes. Earth's surface radiates infrared; nitrogen and oxygen ignore it, but water
+    vapour, CO₂ and methane absorb it and re-emit it in all directions — half back down. The
+    result is a natural <strong>greenhouse effect</strong> worth about 33 °C: without it the
+    surface would average −18 °C instead of +15 °C, and the oceans would freeze. The effect is
+    not a hypothesis; it is measured spectroscopy, and its carbon cycle is a closed loop: volcanoes
+    emit CO₂, rock weathering and ocean uptake remove it, subduction returns carbonate to the
+    mantle — a geological thermostat (the rock-cycle lesson) that has kept Earth habitable for
+    billions of years. The <em>fast</em> carbon cycle is the one we are perturbing: fossil-fuel
+    combustion returns in centuries carbon that photosynthesis buried over hundreds of
+    millions of years, and atmospheric CO₂ has risen from about 280 ppm (pre-industrial) to
+    over 420 ppm — the highest in at least 800,000 years of ice-core record, and the physics
+    of absorption says the surface must warm. It has: about 1.2 °C since the late 1800s.
+  </p>
+
+  <h2>Climate change: evidence, drivers, projections</h2>
+  <p>
+    Climate has always changed — the evidence is written in ice cores (air bubbles preserving
+    ancient atmosphere; isotopes preserving ancient temperature, showing the ice ages'
+    100,000-year rhythm driven by orbital cycles — Milankovitch cycles), ocean sediments, tree
+    rings and glacier scars. The drivers are separable: <em>external</em> (solar output
+    variations, orbital cycles) and <em>internal</em> (volcanic aerosols, greenhouse gases,
+    ocean cycles like El Niño). What distinguishes the present change is the fingerprint:
+    cooling stratosphere with warming surface (a greenhouse signature, not a solar one — a
+    hotter sun would warm both), nights warming faster than days, and the isotope signature of
+    fossil carbon in the air. Projections for 2100 span roughly 1.5–4.5 °C depending on
+    emissions, with consequences that compound — sea level (thermal expansion plus ice loss),
+    intensified extremes, and shifted storm tracks. Weather and climate finally connect in
+    <strong>attribution science</strong>: since ~2004, the World Weather Attribution programme
+    quantifies how much more likely climate change made a specific heatwave or flood — moving
+    the debate from models to measured weather.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The atmosphere's finest print rewards attention. Latent heat is the planet's hidden
+    battery: a single large thunderstorm releases on the order of 10¹⁵ joules — comparable to
+    a nuclear weapon's yield — unfocused and spread over an hour, which is why it is weather
+    and not a weapon. The stratosphere's stability is why volcanic aerosols (Pinatubo) linger
+    for years while tropospheric smog washes out in weeks — one layer's plumbing decides a
+    pollutant's lifetime. El Niño is the atmosphere–ocean system's largest oscillation: a
+    Pacific-wide slosh of warm water that reorganises global weather for a year at a time and
+    (since 1998) provides a measurable global temperature wobble of a few tenths of a degree.
+    And the deepest open question sits where this lesson ends: clouds cool and warm the planet
+    simultaneously (albedo versus greenhouse), and how the cloud fields will shift in a
+    warmer world is the single largest uncertainty in every climate projection — the same
+    adiabatic physics you met in the rain section, unresolved at planetary scale.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Richardson, Weather Prediction by Numerical Process (1922); NOAA/NWS; World Weather Attribution (2021–); IPCC AR6; OpenGeology, An Introduction to Geology, ch. 15.</p>
 </TopicPage>

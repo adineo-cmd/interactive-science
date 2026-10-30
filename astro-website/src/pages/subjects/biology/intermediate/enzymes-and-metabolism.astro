@@ -13,32 +13,203 @@ const enzymeCfg = {
   crossings: false,
   height: 340,
 };
+
+const tempCfg = {
+  curves: [
+    { expr: '30*x*exp(-x/12)/12', label: 'enzyme activity vs temperature', color: '#2e7d32', width: 2.4 },
+    { expr: '28*x*exp(-x/40)/40', label: 'denatured enzyme (higher optimum)', color: '#b42318', width: 2 },
+  ],
+  x: { min: 0, max: 80, label: 'temperature (°C)' },
+  y: { min: 0, max: 30, label: 'rate' },
+  crossings: false,
+  height: 320,
+};
 ---
 <TopicPage slug="subjects/biology/intermediate/enzymes-and-metabolism">
   <h2>The idea</h2>
   <p>
-    Life's chemistry runs at 37 °C — far too cool for most reactions. The solution is
-    <strong>enzymes: protein catalysts that grip specific molecules and strain them toward
-    reaction</strong>, accelerating rates by factors of millions. Metabolism is the whole network
-    of these reactions: thousands of steps, all regulated, all balancing.
+    You already know that cells are bundles of chemistry — respiration, protein building, DNA
+    repair — all running at the mild temperature of a warm bath. Under those conditions almost none
+    of those reactions should happen: the bonds involved are simply too stable for random molecular
+    collisions to break them at any useful speed. Life's answer is the <strong>enzyme</strong>: a
+    protein folded into a shape that grips a specific molecule and physically strains it toward
+    reaction. An enzyme does not supply energy and does not change what a reaction produces — it
+    lowers the <em>activation energy</em>, the energy hill that reactants must climb. Typical
+    enzyme-catalysed reactions run 10⁶ to 10¹² times faster than the uncatalysed ones; carbonic
+    anhydrase hydrates around a million CO₂ molecules per second per enzyme, which is why your
+    blood can haul carbon dioxide at all.
+  </p>
+  <p>
+    <strong>Metabolism</strong> is the sum of all these catalysed reactions: a network of thousands
+    of steps, each owned by one enzyme, all regulated so the cell builds what it needs, when it
+    needs it, without cooking itself. Master one enzyme and you understand the whole network's
+    logic.
+  </p>
+
+  <h2>Enzyme action: the active site and the lock-and-key model</h2>
+  <p>
+    Every enzyme has an <strong>active site</strong> — a small pocket, typically involving just 3–12
+    amino acid side chains, formed by the protein's precise 3-D folding. Only a substrate whose
+    shape and chemical groups complement the pocket fits, which is why enzymes are
+    <strong>specific</strong>: amylase attacks starch but ignores cellulose, even though both are
+    glucose polymers, because the geometry of the bonds differs. The classic description is
+    <strong>lock and key</strong>, but the modern refinement is <em>induced fit</em>: the substrate
+    binds loosely, then the enzyme moulds around it, clamping it into a strained, reactive
+    conformation. The catalysis is physical as much as chemical — acid side chains donate protons,
+    charged groups hold the substrate's own charges apart, and the straining itself stretches bonds
+    toward their breaking point.
+  </p>
+  <p>
+    A worked example puts numbers on specificity. Sucrase hydrolyses sucrose at thousands of
+    reactions per second per enzyme. Without the enzyme, hydrolysing sucrose in a neutral aqueous
+    solution at 25 °C takes a half-time measured in <em>centuries</em>. The enzyme provides no new
+    chemistry — the same hydrolysis occurs — it just makes the transition state accessible. That is
+    also why enzymes emerge unchanged at the end of each reaction: they are equipment, not
+    ingredients, and a single enzyme molecule may catalyse millions of reactions before it is
+    degraded and replaced.
+  </p>
+
+  <h2>Substrate concentration: the Michaelis–Menten curve</h2>
+  <p>
+    Watch what happens as you feed an enzyme more and more substrate. At low concentrations, rate
+    rises almost in proportion — most active sites are empty, so every added substrate molecule
+    finds an enzyme waiting. As substrate increases, more active sites become occupied and the rate
+    levels off at <strong>Vmax</strong>: every enzyme is now working flat out, and adding more
+    substrate can't help. The concentration at which rate reaches exactly half of Vmax is called
+    <strong>Km</strong>, and it's a genuine physical constant of that enzyme–substrate pair: a low
+    Km means a tight grip (half-saturation at tiny substrate levels), a high Km means a loose one.
   </p>
 
   <Widget no="1" caption="the Michaelis–Menten curve — fast at first, then saturated; drag Vmax and Km like a mutation would" widget="plotter" config={enzymeCfg} />
 
   <p>
-    At low substrate, rate climbs almost linearly (empty enzymes grabbing whatever passes); at
-    high substrate every enzyme works flat out — the plateau at Vmax. <strong>Km</strong> is the
-    substrate concentration at half-max: a measure of grip strength. A mutation raising Km makes
-    the enzyme worse at its job — the molecular basis of many genetic diseases and of drug
-    design (inhibitors are just Km-wreckers).
+    Read the graph like a physiologist. With Vmax = 60 and Km = 80 (arbitrary units), the rate at a
+    substrate concentration of 80 is 30 — half of Vmax, exactly as the definition demands. A
+    mutation that doubles Km widens the curve's knee: the enzyme now needs four times the substrate
+    to reach the same output. This is not a textbook abstraction — many inherited metabolic
+    diseases are enzymes with increased Km, and drug design is largely the craft of deliberately
+    wrecking a pathogen's Km values.
+  </p>
+
+  <h2>Temperature and pH: why enzymes are fragile</h2>
+  <p>
+    Two environmental dials control every enzyme, and both produce characteristic curves.
+    <strong>Temperature</strong> helps and hurts at once: warming gives molecules more kinetic
+    energy so collisions are more frequent and energetic (roughly doubling rates per 10 °C rise),
+    but beyond a limit the heat shakes the protein's weak bonds — hydrogen bonds, ionic
+    interactions — and the folded shape <strong>denatures</strong>. The active site loses its
+    geometry and the enzyme stops for good. Human enzymes typically peak near 37–40 °C; the
+    thermophile bacterium <em>Thermus aquaticus</em> lives at 70 °C and its DNA polymerase survives
+    the 95 °C of a PCR machine, which is why the whole biotech industry runs on Taq. That fever is
+    dangerous above about 41 °C is a direct consequence: your own enzymes begin to denature.
+  </p>
+
+  <Widget no="2" caption="activity against temperature — a kinetic climb, then a denaturation cliff; the red curve is a heat-adapted variant" widget="plotter" config={tempCfg} />
+
+  <p>
+    <strong>pH</strong> matters because the charged groups that hold the active site's shape and do
+    the chemistry depend on protonation. Pepsin in the stomach has an optimum near pH 2, trypsin in
+    the small intestine near pH 8, and cytoplasmic enzymes cluster around pH 7. Move an enzyme one
+    or two pH units from its optimum and activity collapses — not because the protein falls apart
+    permanently (that's denaturation), but because its catalytic side chains have gained or lost
+    protons and can no longer form the right interactions. Blood is buffered within 0.05 pH units
+    of 7.4 precisely because haemoglobin and every enzyme of respiration are pH-tuned to that
+    value.
+  </p>
+  <p><em>Common misconception:</em> "enzymes are killed" by heat. Enzymes are proteins, not
+    organisms — they don't die, they <strong>denature</strong>, a physical change of shape. That's
+    why cooling rather than reheating preserves them: a denatured enzyme almost never refolds, but
+    a cold one simply slows down and recovers full activity when warmed.</p>
+
+  <h2>Measuring rates, and the helpers enzymes need</h2>
+  <p>
+    Enzyme experiments are staple practical work, and the technique is simple in principle: pick
+    something you can watch, hold everything else constant, and time it. Amylase digesting starch
+    can be tracked by sampling drops into iodine — the blue-black colour fades as starch
+    disappears. Catalase decomposing hydrogen peroxide releases oxygen gas you can count in a
+    foam column or gas syringe. The discipline is in the controls: run the experiment without
+    enzyme (or with boiled enzyme) to prove the reaction you see is really catalysis, and repeat at
+    each temperature or pH to plot the curves above properly. One subtlety worth learning early:
+    measure the <em>initial</em> rate, in the first few seconds or minutes. As substrate is used up
+    the rate naturally falls, so late measurements mix up enzyme performance with substrate
+    shortage — exactly the confusion the Michaelis–Menten framework is designed to avoid.
+  </p>
+  <p>
+    Many enzymes also refuse to work alone. <strong>Cofactors</strong> are non-protein partners
+    they require: metal ions such as zinc in carbonic anhydrase, iron in catalase, magnesium
+    stabilising ATP-binding sites. <strong>Coenzymes</strong> are organic cofactors that shuttle
+    small molecules between enzymes — NAD carries hydrogen in respiration, coenzyme A carries
+    acetyl groups into the Krebs cycle. Vitamins are coenzyme precursors, which is why a dietary
+    deficiency can stall a specific metabolic step: no vitamin B₁, no working decarboxylase
+    enzymes, and the nervous system fails. Prosthetic groups (like the iron-containing haem in
+    catalase) are coenzymes bound permanently to their enzyme. The pattern to notice: the protein
+    provides shape and specificity, the cofactor provides chemistry the amino acids alone cannot
+    perform.
   </p>
 
   <h2>How metabolism is organised</h2>
-  <ul>
-    <li><strong>Pathways:</strong> reactions chained end to end — glycolysis, the Krebs cycle — each enzyme a station on the assembly line.</li>
-    <li><strong>Regulation is layered:</strong> feedback inhibition (the product switches off the first enzyme) acts in seconds; gene expression changes the enzyme supply in hours. Cells tune instantly and long-term.</li>
-    <li><strong>Coupling:</strong> unfavourable reactions ride on favourable ones via ATP. Life never gets free energy — it channels it (the photosynthesis lesson shows the source).</li>
-    <li><strong>Metabolic drugs:</strong> statins block an enzyme in cholesterol synthesis; aspirin blocks another in inflammation. Pharmacology is largely enzyme interference with a spec sheet.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Michaelis & Menten (1913); Berg, Tymoczko & Stryer, Biochemistry; OpenStax, Biology 2e (Metabolism).</p>
+  <p>
+    Individual reactions are chained into <strong>pathways</strong> — glycolysis, the Krebs cycle,
+    the urea cycle — where the product of one enzyme becomes the substrate of the next. This
+    assembly-line structure creates regulation points: the first enzyme of a pathway is usually the
+    one that's controlled, because shutting it down stops the whole line cheaply. The classic
+    mechanism is <strong>feedback (end-product) inhibition</strong>: when isoleucine builds up, some
+    of it binds to an allosteric site on threonine deaminase, the first enzyme of its synthesis
+    pathway, forcing the enzyme into an inactive shape. Production halts within seconds; when
+    isoleucine is consumed, inhibition lifts. Allosteric regulation — control from a site other
+    than the active one — is how cells switch whole pathways on and off without touching their
+    genes.
+  </p>
+  <p>
+    Slower control operates on <strong>enzyme quantity</strong>: genes encoding a given enzyme are
+    transcribed more or less avidly depending on need, changing the enzyme supply over minutes to
+    hours. And because many useful reactions are energetically unfavourable, cells
+    <strong>couple</strong> them to favourable ones through ATP — the universal molecular currency.
+    Building one peptide bond costs roughly one ATP; a growing bacterial cell spends on the order of
+    a billion ATP molecules per second, all regenerated by respiration. Life never gets free
+    energy — it channels it (the photosynthesis lesson shows where the channel starts).
+  </p>
+  <p>
+    Medicine is built on this biochemistry. <strong>Statins</strong> competitively block HMG-CoA
+    reductase, the rate-limiting enzyme of cholesterol synthesis. <strong>Aspirin</strong>
+    permanently disables COX enzymes, cutting the production of inflammatory prostaglandins.
+    <strong>Penicillin</strong> jamms the transpeptidase that cross-links bacterial cell walls.
+    <strong>Cyanide</strong> poisons cytochrome c oxidase, and the victim dies of internal
+    suffocation — cells that cannot use oxygen. Pharmacology is largely enzyme interference with a
+    spec sheet.
+  </p>
+  <p><em>Common misconception:</em> "enzymes work everywhere in the cell equally." They don't.
+    Enzymes are not dissolved uniformly — they are anchored to membranes, packed into organelles,
+    and assembled into multi-enzyme complexes, so substrates are handed from one enzyme to the
+    next like parts on a conveyor. That spatial organisation is a third layer of control alongside
+    feedback inhibition and gene expression: a pathway can be physically isolated in the
+    mitochondrion (the Krebs cycle) or the cytoplasm (glycolysis) so its intermediates never mix.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The Michaelis–Menten equation, rate = Vmax·[S] / (Km + [S]), falls out of a simple
+    steady-state assumption: after a brief initial period, the enzyme–substrate complex forms and
+    breaks down at equal rates, so its concentration is roughly constant. Real enzymes complicate
+    this tidy picture. <strong>Allosteric enzymes</strong> show sigmoid (S-shaped) rate curves
+    rather than hyperbolas, because substrate binding at one subunit changes the affinity of the
+    others — cooperative binding, the same logic that makes haemoglobin's oxygen curve sigmoidal.
+    <strong>Competitive inhibitors</strong> compete for the active site and raise apparent Km
+    without touching Vmax — flooding the system with substrate overcomes them;
+    <strong>non-competitive inhibitors</strong> bind elsewhere and lower Vmax instead. Distinguishing
+    the two experimentally (rate curves at several inhibitor doses) is a standard drug-discovery
+    assay.
+  </p>
+  <p>
+    Enzyme kinetics also sets real biological limits. An enzyme's <em>turnover number</em> (kcat)
+    tops out near 10⁷ per second because diffusion itself limits how fast substrate can arrive —
+    catalase, at about 4 × 10⁷ per second, is effectively diffusion-limited, meaning it is as fast
+    as chemistry permits. Evolution has optimised some enzymes to the physical ceiling. And
+    enzymes are not always proteins: ribozymes — catalytic RNA — exist (peptidyl transferase in the
+    ribosome is one), and their discovery reshaped theories about the origin of life, since RNA can
+    carry information and catalyse at once. Even industrial chemistry has co-opted them: biological
+    washing powders use proteases and lipases that work in cool water, and glucose-fructose syrup
+    — sweetening a large share of the world's soft drinks — is made by immobilised isomerase
+    enzymes in factory-sized reactors.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Michaelis &amp; Menten (1913); Berg, Tymoczko &amp; Stryer, Biochemistry; OpenStax, Biology 2e (Metabolism); Cambridge IGCSE Biology 0610 syllabus, unit 5.</p>
 </TopicPage>

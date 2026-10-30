@@ -17,31 +17,170 @@ const shakeCfg = {
   <h2>The idea</h2>
   <p>
     Combinatorics is counting without counting — replacing exhausting lists with structural
-    arguments. Two principles do most of the work: the <strong>multiplication rule</strong>
-    (independent choices multiply: 3 shirts × 4 trousers = 12 outfits) and the
-    <strong>subtraction principle</strong> (count the complement when it's easier — the
-    probability lesson uses this constantly).
+    arguments. It is the mathematics of "how many ways", and it underwrites probability: you
+    cannot say how <em>likely</em> a poker hand or a lottery win is until you can count how many
+    hands and tickets there are. Two principles do most of the work. The
+    <strong>multiplication rule</strong>: independent choices multiply — 3 shirts × 4 trousers =
+    12 outfits. The <strong>addition rule</strong>: disjoint alternatives add — the outfits plus
+    the 2 dresses = 14. Everything else, including the famous formulas, is these two principles
+    plus one insight about double-counting.
   </p>
 
   <Widget no="1" caption="the handshake problem — order doesn't matter, so divide the ordered count by 2" widget="sliderLab" config={shakeCfg} />
 
   <p>
-    Every pair shakes hands once, but n×(n−1) counts each pair twice (AB and BA). Divide by 2:
-    n(n−1)/2. That divide-by-ordering move is the whole difference between
-    <strong>permutations</strong> (order matters) and <strong>combinations</strong> (it doesn't):
-    C(n,r) = P(n,r)/r!.
+    The widget is the insight in miniature. Every pair of people shakes hands once, but
+    n × (n − 1) — everyone shakes everyone else's — counts each pair twice (AB and BA). Divide
+    by 2 and you get n(n−1)/2. That divide-by-ordering move is the entire difference between
+    <strong>permutations</strong> (order matters) and <strong>combinations</strong> (it
+    doesn't): C(n,r) = P(n,r)/r!.
   </p>
 
-  <h2>The toolkit</h2>
-  <ul>
-    <li><strong>Permutations:</strong> n!/(n−r)! — arrangements where order matters (podiums, passwords, batting orders).</li>
-    <li><strong>Combinations:</strong> n!/(r!(n−r)!) — selections where it doesn't (committees, poker hands, lottery tickets).</li>
-    <li><strong>Pascal's triangle</strong> encodes all of them, and its rows sum to powers of 2 — the bridge to the binomial theorem.</li>
-    <li><strong>Pigeonhole principle:</strong> n+1 pigeons in n holes forces a collision. It proves non-obvious things — like two people in London have exactly the same number of hairs on their head.</li>
-  </ul>
+  <h2>The multiplication principle in action</h2>
   <p>
-    Combinatorics feeds directly into probability (counting favourable cases), computer science
-    (why some problems explode combinatorially), and the statistics subject's sampling theory.
+    A four-digit PIN has 10 × 10 × 10 × 10 = 10,000 possibilities — each digit is a free
+    choice. Forbid repeats and the choices stop being independent: 10 × 9 × 8 × 7 = 5,040.
+    Licence plates, passwords and meal deals ("choose one starter, one main, one dessert") are
+    all this rule; the only skill is noticing whether a used-up option is removed from the next
+    choice. <strong>Tree diagrams</strong> are the multiplication rule drawn: one branch per
+    choice at each stage, every path from root to leaf one outcome, branch labels multiplied
+    along paths and added across. They earn their keep the moment choices interact — draw the
+    tree for "two cards from a deck without replacement" and the second layer's fractions
+    (4/52, then 3/51) <em>are</em> the multiplication rule made visible, and the beginning of
+    conditional probability. The <strong>complement</strong> completes the toolkit: count the
+    <em>unwanted</em> cases and subtract from the total, whenever the complement is easier.
+    How many four-digit PINs contain at least one repeated digit? Don't enumerate — 10,000 −
+    5,040 = 4,960, one subtraction. The probability lesson leans on exactly this move: P(at
+    least one) = 1 − P(none).
   </p>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Contemporary Mathematics (Combinatorics); standard discrete mathematics texts (Rosen).</p>
+
+  <h2>Permutations: when order matters</h2>
+  <p>
+    A <strong>permutation</strong> is an arrangement of r items chosen from n, order
+    significant. The count is n × (n−1) × (n−2) × … down r factors, written
+    <strong>P(n,r) = n!/(n−r)!</strong> (n! = "n factorial" = n × (n−1) × … × 1, with 1! = 1
+    and 0! = 1 by convention). Worked examples: a podium of gold–silver–bronze from 8 runners:
+    8 × 7 × 6 = 336 — the first place is 8 ways, second 7, third 6. Arranging all n distinct
+    books on a shelf: n! ways — and 10! = 3,628,800 already. Words with repeated letters show
+    the divide-by-symmetry trick in its general form: ARRANGE has 7 letters with two A's and two
+    R's, so distinct arrangements = 7!/2!2! = 5,040/4 = 1,260 — every spelling is counted 2 × 2
+    times by the naive 7!, once per interchangeable pair. This "account for the
+    over-counting" habit is the beating heart of combinatorics.
+  </p>
+  <p><em>Common misconception:</em> permutations and combinations are interchangeable, or that
+  the formulas are arbitrary. Ask the test question: <em>would swapping two chosen items create
+  a different outcome?</em> A podium (gold then silver) — yes: permutation. A committee of
+  three — no: combination. Passwords, race results, seating charts: permutations. Hands of
+  cards, lottery lines, pizza toppings, committees: combinations.</p>
+
+  <h2>Combinations: choosing without order</h2>
+  <p>
+    <strong>C(n,r) = n!/(r!(n−r)!)</strong> — the permutation count divided by the r! orderings
+    of each chosen set. Worked examples with real weight: a lottery drawing 6 balls from 59 has
+    C(59,6) = 45,057,474 possible outcomes — which is where the "1 in 45 million" jackpot odds
+    come from. A poker hand: C(52,5) = 2,598,960 possible hands; of these, exactly 4 are
+    royal flushes, giving a probability of about 1 in 649,740 — every poker probability you
+    have seen is C(n,r) arithmetic. Constrained choices multiply: a committee of 2 from 4 boys
+    and 3 girls with one of each is C(4,1) × C(3,1) = 12; two of each is C(4,2) × C(3,2) = 18.
+    The multiplication rule re-enters <em>inside</em> the combination machinery — the tools
+    compose.
+  </p>
+
+  <h2>Pascal's triangle and the binomial theorem</h2>
+  <p>
+    Write out the combination counts C(n,r) for n = 0, 1, 2, 3… in rows and Pascal's triangle
+    appears — because choosing r from n splits into "takes item 1" plus "doesn't", giving the
+    identity C(n,r) = C(n−1,r−1) + C(n−1,r): each entry is the sum of the two above it. The
+    rows are simultaneously the <strong>binomial coefficients</strong>: (a + b)ⁿ expands as
+    C(n,0)aⁿ + C(n,1)aⁿ⁻¹b + … + C(n,n)bⁿ, which is why (x + 1)³ = x³ + 3x² + 3x + 1 uses the
+    row 1 3 3 1. And the rows sum to powers of 2 (1 + 4 + 6 + 4 + 1 = 16 = 2⁴), because
+    choosing any subset of 4 things means 2⁴ choices total — the triangle is counting, the
+    powers of 2 are the totals, and coin-flipping sits exactly in between: the probability of
+    exactly 2 heads in 4 flips is C(4,2)/2⁴ = 6/16 = 3/8, read straight off the row. Pascal's
+    triangle is thus three subjects in one object: combinations, algebra, and the binomial
+    distribution that the probability and statistics tiers build on.
+  </p>
+
+  <h2>The bridge to probability</h2>
+  <p>
+    One sentence connects this chapter to chance: <strong>probability = favourable outcomes /
+    total outcomes</strong>, provided all outcomes are equally likely. The whole skill is then
+    counting both quantities correctly — and the classic trap is assuming outcomes are equally
+    likely when they are not. Roll two dice: the 36 ordered pairs are equally likely, but the
+    sums are not — only one pair makes 2 (1+1) while six make 7, so P(sum = 7) = 6/36 = 1/6 and
+    P(sum = 2) = 1/36. Dice-based betting before this insight is why 7 is "the killer number"
+    in craps. The counting rules become probability rules directly: independent events multiply
+    (coin and die together: ½ × ⅙ = 1/12 for "heads and a six"), mutually exclusive events add
+    (a king or a queen from a deck: 4/52 + 4/52 = 2/13), and overlapping events need the
+    overlap subtracted (a king or a heart: 4/52 + 13/52 − 1/52, the king of hearts counted
+    twice). Genetics ran on exactly this arithmetic — Mendel's 3:1 and 9:3:3:1 ratios are
+    combination counts over equally likely fertilisation outcomes, which is why dihybrid
+    crosses were one of the first great applications of Pascal's triangle outside mathematics.
+  </p>
+  <p><em>Common misconception:</em> listing outcomes in a way that hides their different
+  weights. "The family has three children — outcomes are 0, 1, 2 or 3 boys, so each is ¼." The
+  equally likely outcomes are the 8 birth orders, giving probabilities 1/8, 3/8, 3/8, 1/8 — the
+  bell shape emerges from the counting, and missing it is the single most common probability
+  error at this level.</p>
+
+  <h2>The pigeonhole principle: proof by forced collision</h2>
+  <p>
+    Put n + 1 pigeons in n holes and some hole holds two or more. Trivial to state, startling
+    in application. Among 13 people, two share a birth month (12 months, 13 people). Among any
+    2 people in London, two have exactly the same number of hairs on their head — heads carry
+    at most about 200,000 hairs and London has far more people than that, so some hair-count
+    must repeat (the "pigeons" are people, the "holes" are hair-counts 0 to 200,000). Among any
+    5 points inside a 2 × 2 square, two are within √2 of each other: split the square into four
+    1 × 1 cells, five points force two into one cell, and a cell's diagonal is √2. The
+    principle's power is that it proves <em>existence</em> — some collision must happen —
+    without ever finding it, a genuinely different kind of mathematical argument. (The
+    strengthened form: 2n − 1 pigeons in n holes force a hole with at least 2; generalized
+    forms force holes with 3, 4, k — all used across computer science and number theory.)
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The birthday paradox: counting beats intuition.</strong> How many people must be in
+    a room before two probably share a birthday? Intuition says hundreds; the answer is
+    <strong>23</strong> — at 23 people the probability of a shared birthday exceeds 50%
+    (exactly 50.7%). The trick is to flip the question: compute the probability that
+    <em>nobody</em> shares, which is 365/365 × 364/365 × 363/365 × … × (365−22)/365 ≈ 0.4927,
+    then subtract from 1. The reason intuition fails is that we compare 23 people to 365 days,
+    but the correct object is the C(23,2) = 253 <em>pairs</em>, each a chance to collide. The
+    same flip — count pairs, not people — explains why cryptographic "collisions" in hash
+    functions happen at around the square root of the number of possible values, a fact every
+    security engineer lives by.
+  </p>
+  <p>
+    <strong>Why counting explodes — and why that pays your bills.</strong> The factorial grows
+    faster than any exponential: 13! already exceeds 6 × 10⁹, more than Earth's population; a
+    52-card deck has 52! ≈ 8 × 10⁶⁷ orderings — more than atoms in the galaxy. Computer
+    science's hardest problems are hard for exactly this reason: checking every ordering or
+    subset is factorial or exponential in the input size. Cryptography is applied
+    combinatorics: RSA's security rests on there being ~2²⁰⁴⁸ possible keys — so many that
+    trying them all is physically hopeless, while the authorised recipient needs only a few
+    multiplications. Counting arguments are the walls of the digital vault.
+  </p>
+  <p>
+    <strong>Counting distributions, not just selections.</strong> Real counting problems often
+    have extra structure: arrangements in a circle ((n−1)! — rotations don't count), items in
+    categories (arrangements of MISSISSIPPI with four I's, four S's, two P's: 11!/4!4!2!),
+    selections with repetition allowed (choosing 5 sweets from 3 types: C(5+3−1, 3−1) =
+    C(7,2) = 21 — the "stars and bars" argument, worth meeting properly in an advanced tier).
+    Each is the same two principles with a symmetry correction; learning to <em>see</em> the
+    over-counting is the transferable skill, more valuable than any memorised formula.
+  </p>
+  <p>
+    <strong>Where it goes next.</strong> The bridge forward is one sentence long: probability
+    of an event = favourable outcomes / total outcomes, <em>provided all outcomes are equally
+    likely</em> — which makes combinatorics the engine of every dice, card and genetics
+    calculation (Mendel's ratios are combination counts in disguise). The binomial
+    distribution becomes the workhorse of statistics; derangements (no item in its own place,
+    probability approaching 1/e ≈ 0.368) and Catalan numbers (ways to nest brackets) show the
+    subject flowering into structures. The pigeonhole principle, meanwhile, keeps proving
+    impossible-sounding things — including, in Ramsey theory, that any party of six contains
+    either three mutual acquaintances or three mutual strangers. Order, it turns out, is
+    unavoidable.
+  </p>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Contemporary Mathematics (ch. 7–8, Counting and Probability); Rosen, Discrete Mathematics and Its Applications; Diaconis & Mosteller, "Methods for Studying Coincidences" (JASA, 1989).</p>
 </TopicPage>
