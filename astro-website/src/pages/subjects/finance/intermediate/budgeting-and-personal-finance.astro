@@ -10,6 +10,35 @@ const budgetCfg = {
     { math: '4 · Automate the split', note: 'Pay savings and investments automatically on payday ("pay yourself first"). Willpower is unreliable; defaults are reliable — the behavioural-economics lesson applied to your own salary.' },
   ],
 };
+
+const budgetQuizCfg = {
+  questions: [
+    {
+      q: 'You have 2,000 pounds on a credit card at 24% APR and 3,000 pounds of student loans at 4%. A friend offers you an investment expected to return 8% a year. Mathematically, what comes first?',
+      choices: ['The 8% investment', 'The 4% student loan', 'The 24% credit card', 'Split equally'],
+      answer: 2,
+      why: 'Repaying a 24% debt is a guaranteed 24% return — better than any realistic investment and far above the other options. Rate, not balance, orders the queue.',
+    },
+    {
+      q: 'Why hold an emergency fund in instant-access savings earning almost nothing, instead of investing it?',
+      choices: ['Savings accounts are safer legally', 'The fund\'s job is availability at the moment of shock — investing it risks selling in a downturn exactly when the shock arrives', 'Banks require it', 'Inflation is irrelevant'],
+      answer: 1,
+      why: 'Emergencies correlate with market crashes (job losses happen in recessions). Buffer money buys certainty, not return — it is insurance priced in foregone interest.',
+    },
+    {
+      q: 'Your income rises 10%. What does "setting the savings percentage first" protect against?',
+      choices: ['Inflation', 'Lifestyle creep — quietly absorbing the raise into spending and keeping the savings rate flat', 'Tax brackets', 'Currency risk'],
+      answer: 1,
+      why: 'If the percentage is fixed before the raise lands, both absolute savings and lifestyle grow together. Decide the split first and the raise accelerates the plan automatically.',
+    },
+    {
+      q: 'A household saves 10% of income; another saves 20%, with identical returns. Roughly how much sooner can the second stop working?',
+      choices: ['About 10% sooner', 'About 14 years sooner — the years-to-independence curve is driven mainly by the savings rate, not by investment returns', 'No difference', 'Twice as long'],
+      answer: 1,
+      why: 'At 5% real returns, a 10% saver needs around half a century, a 20% saver around 37 years. Doubling the savings rate buys roughly 14 years — returns alone never close that gap.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/finance/intermediate/budgeting-and-personal-finance">
   <h2>The idea</h2>
@@ -17,17 +46,171 @@ const budgetCfg = {
     Personal finance is four moves repeated for decades: <strong>spend less than you earn, keep a
     buffer, kill expensive debt, automate the rest</strong>. None of it is complicated — all of
     it is behaviour. The mathematics (compounding, the rule of 72) lives in the compound-interest
-    lesson; this one is the operating system that makes the maths work.
+    lesson; this one is the operating system that makes the maths work — and, because it sits on
+    the portfolio-management part of the syllabus, it is also the household-scale version of the
+    return-and-risk ideas the institutional lessons use: buffers for liquidity risk, insurance
+    for catastrophe risk, and a savings rate as the only variable you fully control.
   </p>
 
   <Widget no="1" caption="the four moves, in the order that matters" widget="equationStep" config={budgetCfg} />
 
-  <h2>The framework, applied</h2>
-  <ul>
-    <li><strong>The 50/30/20 rough cut:</strong> ~50% needs, 30% wants, 20% savings/debt-paydown. A starting default, not a law — the point is a conscious split.</li>
-    <li><strong>Insure catastrophes, not inconveniences:</strong> health, disability, liability, (life, if others depend on you). Skip extended warranties — insure what would bankrupt you, not what would annoy you.</li>
-    <li><strong>Invest after the buffer:</strong> low-cost, diversified, long-horizon (the diversification and compound-interest lessons supply the why). Fees and panic are the two wealth-killers.</li>
-    <li><strong>Beware lifestyle creep:</strong> every raise partially absorbed into spending keeps the savings rate flat. Setting the savings percentage <em>before</em> the raise lands defeats the creep.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Bogle, The Little Book of Common Sense Investing; Thaler & Benartzi, "Save More Tomorrow" (2004); consumer-finance guidance (CFPB).</p>
+  <h2>Cashflow: the one equation everything hangs on</h2>
+  <p>
+    Income minus spending equals savings. That is the master equation, and its leverage is
+    enormous because of which variable it controls. Consider the question "when can I stop
+    working?" The surprising answer is that the savings rate matters far more than the
+    investment return. Assuming 5 per cent real returns and a safe withdrawal rate of 4 per
+    cent of the pot per year, the arithmetic runs roughly like this: a household saving
+    <strong>10 per cent</strong> of income reaches independence in about <strong>51 years</strong>;
+    saving <strong>20 per cent</strong>, about <strong>37 years</strong>; 40 per cent, about
+    <strong>22 years</strong>; 50 per cent, about <strong>17 years</strong>. The intuition: when
+    you save more you simultaneously feed the pot faster <em>and</em> shrink the target (you
+    need less capital to replace a cheaper lifestyle). Returns can only add a few years;
+    the savings rate moves the whole curve. That is why budgets exist — not as accounting
+    exercises but as the instrument that controls the only lever that dominates.
+  </p>
+  <p>
+    Budgeting frameworks are just scaffolding for that lever. The <strong>50/30/20</strong>
+    split (about half of take-home to needs, 30 per cent to wants, 20 per cent to saving and
+    debt paydown) is a sensible starting default. <strong>Zero-based budgeting</strong>
+    assigns every unit of income a job before the month begins — stricter, better for
+    households whose spending has drifted. What the research says matters more than the
+    format: <em>automatic</em> transfers on payday beat any tracking app, because they
+    remove the monthly decision entirely. Richard Thaler and Shlomo Benartzi's
+    <em>Save More Tomorrow</em> programme (2004) proved the principle at scale: committing
+    workers to route <em>future</em> raises into pension contributions lifted average savings
+    rates from 3.5 per cent to 13.6 per cent in forty months — no willpower required at any
+    point where it would hurt. Design the default, and the behaviour follows.
+  </p>
+  <p>
+    <em>Common misconception:</em> budgeting means deprivation. Done right it is the
+    opposite — a deliberate spending plan that puts money on the things you actually value,
+    which is why the "wants" category is part of the system rather than a sin to be purged.
+    Budgets fail when they are austerity theatre; they survive when they fund a life you
+    recognise.
+  </p>
+
+  <h2>A worked month: one household in numbers</h2>
+  <p>
+    Make it concrete. Take-home pay 2,600 a month. The 50/30/20 cut gives about 1,430 to
+    needs (rent 950, utilities and council tax 190, groceries 240, transport 50), about 780
+    to wants, and 390 to the future. The first 390 goes as an automatic transfer on payday:
+    for the first months it builds the emergency fund (target: 3–6 times the 1,430 of
+    essential monthly spending — call it 5,000), then it keeps flowing into a low-cost
+    index portfolio. Now stress-test: income drops 30 per cent for three months. With the
+    fund, the household draws 1,200 a month from savings and the plan survives untouched;
+    without it, the same shock at 24 per cent APR turns 3,600 of shortfall into a debt that
+    costs hundreds more to clear. The worked example is the whole argument: the budget is
+    not about the 780 of wants — it is about who the household is when the shock arrives.
+  </p>
+
+  <h2>The emergency fund: liquidity as insurance</h2>
+  <p>
+    The emergency fund is 3–6 months of expenses held in <em>instant-access</em> savings —
+    deliberately earning almost nothing, because its job is not return but
+    <strong>availability at the moment of shock</strong>. This is the household version of
+    liquidity risk management, and the correlation point is the whole design: job losses,
+    illness and boiler failures cluster in exactly the periods when markets fall, so buffer
+    money invested in shares is likely to be sold at the worst moment. The fund converts a
+    potential disaster — rent unpaid, credit card at 24 per cent — into an inconvenience.
+    The need is not hypothetical: the UK Money and Pensions Service estimates around
+    11.5 million adults have less than 100 pounds in savings, and surveys across developed
+    economies keep finding a third or more of adults who could not absorb a surprise expense
+    of a few hundred without borrowing. Build the fund before investing; it is the
+    precondition that lets long-term money stay invested through downturns.
+  </p>
+
+  <h2>Debt: the order of attack</h2>
+  <p>
+    Debt is compound interest with the sign flipped, so the ranking rule is brutally simple:
+    <strong>rate, not balance</strong>. Repaying a 24 per cent APR credit card is a
+    guaranteed, tax-free 24 per cent return — better than any portfolio can promise — so it
+    outranks investing, outranks the 4 per cent student loan, outranks everything. Payday
+    loans make the point extreme: the UK's FCA caps their cost at 0.8 per cent per day
+    (still up to 100 per cent of the principal over the cap's horizon), which is why the
+    first budgeting rule is never to let expensive short-term debt roll. The comparison test
+    for any decision: if a debt costs more than your expected portfolio return (credit
+    cards, personal loans, most car finance), repay it first; if it costs less (a fixed
+    mortgage at 3–4 per cent against a diversified portfolio's long-run expectation of
+    5–7 per cent), paying it slowly while investing is defensible.
+  </p>
+  <p>
+    Read the quotes carefully: <strong>APR</strong> (annual percentage rate) folds the
+    interest <em>and</em> most compulsory fees into one comparable number, which is why
+    regulators require it — a "0 per cent" card with a 3 per cent transfer fee is not 0
+    per cent over the year. And beware the minimum-payment trap: on older card terms, a 2
+    per cent minimum on a 2,000 pound balance at 24 per cent APR is about 40 a month —
+    almost exactly the monthly interest — so the balance barely moves while thousands in
+    interest accrue over the years. Regulators have since forced cards to amortise (interest
+    plus at least 1 per cent of principal), but the trap's lesson stands: the minimum is the
+    most expensive instruction on the statement.
+  </p>
+  <p>
+    Behaviour complicates the arithmetic. The <strong>avalanche</strong> method (highest rate
+    first) minimises total interest; the <strong>snowball</strong> (smallest balance first)
+    costs more but produces quick wins, and behavioural research shows the visible progress
+    keeps people in the game — for a household at risk of abandoning the plan entirely, the
+    method that survives beats the method that is optimal on paper. Either way, the deeper
+    fix is structural: after clearing expensive debt, keep the card paid in full monthly and
+    redirect the same payment into the emergency fund, so the same pipeline that once fed
+    interest now feeds security.
+  </p>
+
+  <h2>Insurance: cover catastrophes, not inconveniences</h2>
+  <p>
+    The family home burning down would be unrecoverable from savings; a cracked phone screen
+    is annoying. Insurance is priced so that the insurer wins on average — so, rationally,
+    you buy it only for losses that would be <strong>unrecoverable</strong>: health, disability
+    (the most neglected cover, though losing earning power is the biggest financial risk most
+    working-age people face), liability, and life insurance if others depend on your income.
+    Extended warranties, phone insurance and the like are the inverse trade — paying a
+    premium, on average, to transfer a loss you could easily self-insure from the emergency
+    fund. The deductible works the same way: choosing the higher excess converts small claims
+    (which you never needed insured) into lower premiums, and makes you the insurer of the
+    small stuff you were always rich enough to be.
+  </p>
+
+  <h2>From budget to portfolio: the household version of return and risk</h2>
+  <p>
+    Once the buffer exists and expensive debt is dead, the surplus invests — and the
+    institutional ideas of the portfolio lessons scale down cleanly. The emergency fund is
+    the risk-free layer; the long-horizon surplus takes equity risk; the horizon, not
+    courage, justifies it. Three household-specific facts do most of the work. First,
+    <strong>fees compound too</strong>: a 1 per cent annual fee against a 5 per cent return
+    leaves 1.04<sup>40</sup> ≈ 4.8 instead of 1.05<sup>40</sup> ≈ 7.0 after forty years —
+    roughly a third of the final pot gone to a rounding error of annual charges, which is
+    why low-cost index funds dominate the advice. Second, <strong>lifestyle creep</strong> is
+    the silent savings-rate killer: fixing the savings <em>percentage</em> before each raise
+    lands means income growth raises absolute saving automatically. Third,
+    <strong>sequence risk</strong> — poor returns in the years just before or after
+    retirement do disproportionate damage — is why the asset mix should de-risk as the
+    horizon shortens, and why the classic safe-withdrawal research (Bengen's 4 per cent
+    rule, 1994) is expressed as a rate survived through the worst historical sequences, not
+    an average. One more layer sits between budget and market: <strong>tax wrappers</strong>.
+    Most countries shelter long-term saving — pension contributions (with relief or employer
+    matches, which are an instant return no market offers), ISAs and 401(k)-style accounts.
+    Order of operations matters as much as asset choice: employer match first, then the
+    emergency fund, then expensive debt, then the rest of the tax-sheltered space.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The advanced layer is behavioural, because the household balance sheet is run by a brain,
+    not a spreadsheet. <strong>Present bias</strong> (hyperbolic discounting) makes the
+    future self a stranger whose interests get traded away — automation and commitment
+    devices are its antidotes. <strong>Mental accounting</strong> explains why a tax refund
+    gets spent while the same amount in salary does not — money is fungible; brains are not.
+    <strong>Loss aversion</strong> makes investors check portfolios too often and sell
+    crashes — the cure is a policy written in calm weather ("I rebalance annually; I do not
+    sell in drawdowns") rather than judgment in storm. Two quantitative refinements finish
+    the picture: track <strong>net worth</strong> (assets minus debts) rather than income as
+    the true scoreboard — high earners with high debt can be poorer than modest earners who
+    save — and remember inflation is the silent tax on every cash balance, which is why the
+    emergency fund accepts its real-terms bleed as the price of certainty. The open
+    questions are technological: buy-now-pay-later products re-importing credit-card
+    dynamics under a friendlier interface, and app-based trading gamifying the very
+    behaviours (frequent checking, panic selling) that the last fifty years of evidence
+    punish. The operating system is old; the attack surface keeps updating.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Bogle, The Little Book of Common Sense Investing; Thaler &amp; Benartzi, "Save More Tomorrow" (2004); Bengen on safe withdrawal rates (1994); consumer-finance guidance (CFPB, UK Money and Pensions Service).</p>
 </TopicPage>

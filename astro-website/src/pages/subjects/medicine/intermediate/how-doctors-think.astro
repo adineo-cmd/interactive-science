@@ -14,21 +14,167 @@ const dxCfg = {
 <TopicPage slug="subjects/medicine/intermediate/how-doctors-think">
   <h2>The idea</h2>
   <p>
-    Clinical diagnosis is <strong>applied probability under uncertainty</strong> — reasoning from
-    symptoms to causes with incomplete information, where errors have consequences. Jerome
-    Groopman's <em>How Doctors Think</em> catalogued the cognitive traps; evidence-based
-    medicine built the countermeasures. This lesson is the diagnostic method and its built-in
-    biases.
+    You already know the body's systems from the previous lessons. This lesson is about the inference
+    engine that runs on top of them: how a clinician goes from "this person feels unwell" to "this is
+    what is wrong, and here is what to do." Diagnosis is <strong>applied probability under uncertainty
+    with high stakes</strong> — reasoning from symptoms to causes with incomplete information, a time
+    limit, and no option to decline the question. That framing matters more than it sounds: it means
+    diagnosis is never a lookup table. Symptoms are ambiguous (chest pain can come from heart, lung,
+    oesophagus, muscle or anxiety), tests are imperfect (every one has false positives and false
+    negatives), and the clinician's own mind is an imperfect instrument too. Jerome Groopman's
+    <em>How Doctors Think</em> catalogued the cognitive traps; the evidence-based medicine movement
+    built the statistical countermeasures; patient-safety researchers measured how often the process
+    fails. This chapter assembles the whole toolkit: the diagnostic loop, the physical exam as
+    localisation device, the Bayesian arithmetic of test interpretation, the heuristics that speed
+    clinicians up and occasionally derail them, and the guardrails that keep the errors down.
   </p>
 
   <Widget no="1" caption="the diagnostic loop, and the biases that bend it" widget="equationStep" config={dxCfg} />
 
-  <h2>The arithmetic every clinician runs</h2>
-  <ul>
-    <li><strong>Sensitivity and specificity:</strong> how good is the test? A 99%-sensitive test still misleads when the disease is rare — positive predictive value collapses as prevalence drops (the Bayesian lesson's medical-trap example, applied constantly).</li>
-    <li><strong>Occam and Hickam:</strong> Occam says find one explanation for all findings; Hickam counters that patients can have several diseases. Knowing when to merge and when to split is the craft.</li>
-    <li><strong>Sick or not sick:</strong> triage thinking precedes diagnosis — the unstable patient gets treated before being fully understood.</li>
-    <li><strong>Diagnostic error is a top patient-safety problem:</strong> studies estimate diagnostic errors affect ~1 in 20 adults seeking outpatient care (Newman-Toker, 2023) — which is why checklists, decision-support tools and second looks exist.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Groopman, How Doctors Think (2007); Newman-Toker et al., BMJ Quality & Safety (2023); BMJ Best Practice methodology.</p>
+  <h2>The diagnostic loop: history, exam, differential</h2>
+  <p>
+    The method runs as a loop, and its first stage does the heaviest lifting. The <strong>history</strong>
+    — the patient's story of what happened, when, in what order, with what associated features —
+    establishes the diagnosis in the large majority of cases; classic clinical-teaching estimates put
+    history alone at about 80% of the diagnosis, with examination and tests splitting most of the rest.
+    The reason is information density: a story of crushing central chest pain radiating to the left arm,
+    sweating and nausea over twenty minutes in a 62-year-old smoker carries more diagnostic bits than
+    any single test. Symptom <em>timing</em> is often the discriminator: sudden maximal onset ("thunderclap")
+    points to haemorrhage; hours of gradual build point to inflammation; pain that recurs with exertion
+    and eases with rest points to a flow problem. The history also frames the patient: age, sex, smoking,
+    travel, medications, family history — each a probability lever before any test is ordered.
+  </p>
+  <p>
+    From the findings the clinician constructs the <strong>differential diagnosis</strong>: a ranked
+    list of candidate explanations, ordered by two criteria at once — <em>likelihood</em> (what is
+    common and fits) and <em>danger</em> (what would kill or disable this patient quickly if missed).
+    The second criterion is the profession's distinctive twist. Aortic dissection causes perhaps 1–2
+    chest-pain presentations per thousand, but it is lethal within hours and has a different emergency
+    treatment, so it is deliberately promoted up the ranking even though it is rare: the trade-off is
+    written as "can't-miss diagnoses." The differential then drives testing in a specific way — each
+    test is chosen because it can <em>discriminate</em> between the top candidates, not to "fish" the
+    whole body. That principle is what separates a targeted workup from a scattershot panel: a test
+    that will not change what you do is not worth its own risks and costs, a rule stated bluntly in the
+    maxim "don't order a test unless the result could change your management."
+  </p>
+
+  <h2>The exam as localisation: the neurological model</h2>
+  <p>
+    The physical examination is often dismissed as pre-imaging ritual, but it is a rapid, cheap
+    localisation instrument, and the neurological exam shows the logic in its purest form — which is
+    why the anatomy-and-physiology sequence pairs this material with the nervous-system chapters. The
+    exam's sections map onto anatomical systems: mental status samples cortex, cranial nerves sample
+    the brainstem and their tracts, motor testing samples the corticospinal pathway and peripheral
+    nerves, reflexes sample the spinal reflex arc, sensory testing samples the ascending tracts and
+    nerves, and coordination samples cerebellum. Because each pathway runs a known route, a pattern of
+    deficits <em>localises</em> the lesion before any scan. Worked logic: weakness with brisk reflexes
+    and an upgoing plantar response (Babinski sign) indicates an <strong>upper motor neuron</strong>
+    lesion — the brain or spinal cord, upstream of the anterior horn cell; weakness with wasting,
+    flaccidity and lost reflexes indicates a <strong>lower motor neuron</strong> lesion — the anterior
+    horn, root, plexus or peripheral nerve. Add that the patient's right face and right arm are weak
+    together but the right leg is spared, and the lesion localises to the left cerebral hemisphere's
+    cortex, not the spinal cord (where leg and arm tracts run together). The autonomic exam contributes
+    its own signatures — orthostatic blood-pressure drop, heart-rate that fails to rise on standing —
+    and the whole protocol doubles as a serial instrument: re-examining an hour later tells you whether
+    a stroke is extending or a patient is improving, information no one-off scan provides.
+  </p>
+
+  <h2>Tests as probability machines</h2>
+  <p>
+    Every diagnostic test is defined by two numbers measured against a known gold standard.
+    <strong>Sensitivity</strong> is the share of diseased patients who test positive;
+    <strong>specificity</strong> is the share of disease-free patients who test negative. But notice
+    what the clinician actually needs is the reverse direction: given a positive test, what is the
+    probability of disease? That quantity — the <strong>positive predictive value</strong> — depends
+    not only on the test but on how common the disease was <em>before</em> testing: the
+    <strong>pre-test probability</strong>, set by prevalence in the population and refined by the
+    history. Bayes' theorem is the bookkeeping, and it is worth doing once by hand. Take mammography:
+    sensitivity roughly 85%, specificity roughly 90%, and in a screening setting of 50-year-olds the
+    underlying breast-cancer prevalence over the screening interval is near 1%. Screen 10,000 women:
+    about 100 have cancer, and the test catches 85 of them. About 9,900 do not, and its 10% false-positive
+    rate flags 990 of them. So of 1,075 positive results, only 85 are true — a positive predictive
+    value of <strong>about 8%</strong>. Nine of ten flagged women do not have cancer. Run the same test
+    in a high-risk clinic where prevalence is 10%, and the arithmetic lifts the PPV to about 43% — the
+    identical test, three meanings, depending entirely on who is being tested.
+  </p>
+  <p>
+    Two working rules fall out of this. A highly <strong>sensitive</strong> test that comes back
+    negative effectively rules the disease out (its false-negative rate is tiny) — "SnNout." A highly
+    <strong>specific</strong> test that comes back positive effectively rules it in — "SpPin." That is
+    why emergency medicine uses D-dimer (extremely sensitive, poorly specific) as a
+    <em>rule-out</em> gate for clots: a negative D-dimer in a low-risk patient ends the workup, while a
+    positive one barely raises the odds and must be followed by specific imaging. Formal versions of
+    this reasoning use <strong>likelihood ratios</strong> — LR+ equals sensitivity over (1 − specificity)
+    — which shift the odds from pre-test to post-test multiplicatively and let clinicians chain
+    imperfect tests into a precise estimate.
+  </p>
+  <p><em>Common misconception:</em> a "99% accurate" test does not mean 99% of positives are correct.
+  Accuracy conflates the two error types; what the positive result means is dominated by prevalence.
+  This is the base-rate fallacy, and it misleads patients and clinicians alike — a positive result for
+  a rare disease from a good test is still more likely than not to be a false positive.</p>
+
+  <h2>The mind of the diagnostician: heuristics and bias</h2>
+  <p>
+    Clinicians cannot run full Bayesian bookkeeping on every case, so cognition runs on
+    <strong>dual-process</strong> lines (Croskerry's adaptation of the psychology): fast
+    <em>pattern recognition</em> — "this rash looks exactly like shingles" — handles routine cases in
+    seconds, while slow <em>systematic reasoning</em> handles atypical ones. The fast mode is genuinely
+    expert (it is why experienced clinicians are usually right) but it is also where the documented
+    biases live. <strong>Anchoring</strong>: the first impression — often the referral note's phrase —
+    fixes attention, and later evidence is read through it. <strong>Premature closure</strong>: the
+    process stops at the first plausible diagnosis, the single most common cognitive error in studies
+    of diagnostic failure. <strong>Availability</strong>: the diagnosis seen last week, or the terrifying
+    one from training, gets overweighted. <strong>Framing</strong>: "chest pain, probably musculoskeletal"
+    from the triage note biases everyone downstream. The classical rules of thumb —
+    <strong>Occam's razor</strong> (seek one unifying diagnosis) and <strong>Hickam's dictum</strong>
+    ("patients can have as many diseases as they damn well please") — are the conscious counterweights:
+    Occam for young patients with one coherent story, Hickam for the elderly and the complex. Another
+    legitimate shortcut is <strong>"sick or not sick"</strong>: with an unstable patient, resuscitation
+    precedes diagnosis, because hypoxia and shock kill on a faster clock than differential diagnosis.
+  </p>
+
+  <h2>Guardrails: making error rare</h2>
+  <p>
+    Diagnostic error is not a rare curiosity. A major 2023 Johns Hopkins analysis estimated that
+    roughly <strong>795,000 Americans</strong> die or suffer permanent disability from diagnostic error
+    each year — about 371,000 deaths and 424,000 permanent disabilities — and that just three
+    categories (vascular events, infections, cancers) account for about three-quarters of the serious
+    harm, with stroke, sepsis, pneumonia, venous thromboembolism and lung cancer topping the list.
+    Earlier outpatient studies estimated roughly one adult in twenty experiences a diagnostic error per
+    year. The countermeasures are organisational versions of de-biasing: <strong>checklists and
+    structured templates</strong> (forcing the can't-miss items to be considered even when the anchor
+    says otherwise), <strong>diagnostic time-outs</strong> ("if this patient turned out to have
+    dissection, what would I have missed?"), <strong>gut-check second opinions</strong>, explicit
+    <strong>pre-test probability scoring</strong> (Wells score for clots, CHADS<sub>2</sub> for stroke
+    risk) that makes the Bayesian step visible, and <strong>decision-support systems</strong> that
+    compute likelihood ratios clinicians skip. The pattern across all of them is the same: they do not
+    make clinicians smarter; they make the smart fast system slow down at the known failure points.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Several refinements belong in the expert layer. <strong>Illness scripts</strong>: cognitive studies
+    suggest experts store diagnosis as organised narratives — classic presentation, risk factors,
+    course, complications — so pattern recognition is really fast script-matching; novices who lack
+    scripts must reason feature-by-feature, which is slower and more error-prone, and medical education
+    is largely script installation. <strong>Base-rate dependence of screening policy</strong>: the
+    Bayes arithmetic explains real controversies — why population screening for rare cancers produces
+    floods of false positives and overdiagnosis, and why guidelines now argue over <em>whom</em> to
+    screen rather than only <em>which test</em> to use; raising pre-test probability (risk-stratified
+    screening) is mathematically equivalent to improving the test. <strong>Sequential testing</strong>:
+    chained tests are not independent — the probability that a chest CT is positive given an already
+    positive X-ray is conditional, and naive multiplication of "accuracies" underestimates both errors
+    and confidence; proper analysis works in odds and likelihood ratios throughout.
+    <strong>AI decision support</strong>: machine-learning classifiers promise pattern recognition at
+    scale, but they inherit base-rate fragility (trained on enriched prevalence, they over-predict in
+    the wild), they anchor users too (automation bias), and their failure modes are opaque — so the
+    emerging best practice uses them as a second reader, not a first opinion. And finally the
+    honest summary the numbers force: diagnosis will never be deterministic, because the mapping from
+    symptoms to disease is inherently many-to-many. The professional skill is not certainty but
+    <em>calibrated</em> uncertainty — knowing, on the evidence so far, that the top hypothesis carries
+    40% of the mass, that two can't-miss alternatives have been excluded, and that the next single test
+    will move the leading hypothesis most. That is what "thinking like a doctor" means when you take
+    the poetry out: arithmetic, humility, and a checklist for the mind's well-known shortcuts.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Groopman, How Doctors Think (2007); Newman-Toker et al., BMJ Quality &amp; Safety (2023); Singh et al., BMJ Open (2014); Croskerry, dual-process diagnostic reasoning; BMJ Best Practice methodology.</p>
 </TopicPage>

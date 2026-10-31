@@ -10,24 +10,260 @@ const voteCfg = {
     { math: '4 · Arrow\'s impossibility theorem (1951)', note: 'No rank-order voting system with 3+ options can satisfy a handful of reasonable fairness conditions simultaneously. Not a cynical joke — a mathematical result. Electoral design is choosing WHICH unfairness you can live with.' },
   ],
 };
+
+const voteQuizCfg = {
+  questions: [
+    {
+      q: 'In the UK 2015 general election, UKIP won 12.6% of votes and 1 of 650 seats, while the SNP won 4.7% of votes and 56 seats. What does this illustrate?',
+      choices: [
+        'Voter fraud',
+        'The disproportionality of first-past-the-post: seat share tracks concentration of votes, not vote share',
+        'That UKIP voters actually wanted the SNP',
+        'That proportional systems over-reward small parties',
+      ],
+      answer: 1,
+      why: 'FPTP awards seats per district, so geographically concentrated votes (SNP in Scotland) convert efficiently while dispersed votes (UKIP everywhere, nowhere first) convert to nothing. Same national vote share, wildly different seat counts — the mechanical heart of the disproportionality critique.',
+    },
+    {
+      q: 'Arrow\'s impossibility theorem says that with three or more options, no rank-order voting system can simultaneously satisfy a short list of fairness conditions. Which is NOT one of them?',
+      choices: [
+        'No dictator — no single voter\'s preference always decides',
+        'Pareto — if everyone prefers A to B, B should not win',
+        'Independence of irrelevant alternatives — the ranking of A vs B should not change because a third option entered',
+        'Everyone must vote strategically',
+      ],
+      answer: 3,
+      why: 'Strategic manipulation is the subject of the sibling result — Gibbard and Satterthwaite proved every non-dictatorial system with 3+ options invites tactical voting. Arrow\'s four conditions (unrestricted domain, Pareto, IIA, non-dictatorship) are the ones that provably cannot coexist.',
+    },
+    {
+      q: 'What happened in Burlington, Vermont\'s 2009 IRV mayoral race that became the textbook caution?',
+      choices: [
+        'The election was tied and decided by coin flip',
+        'The Condorcet winner (the candidate who would beat each rival head-to-head) lost — an IRV ordering paradox',
+        'Everyone ranked all candidates identically',
+        'Voter turnout exceeded 100%',
+      ],
+      answer: 1,
+      why: 'Andy Montroll would have defeated either rival in a two-way race, but IRV\'s sequential eliminations elected Bob Kiss. The case is the standard demonstration that eliminating "spoilers" by transferring votes does not eliminate all paradoxes — it moves them.',
+    },
+    {
+      q: 'The 1993 New Zealand referendum switched the country from FPTP to MMP. Why do political scientists treat it as a showcase of referendum practice?',
+      choices: [
+        'It was decided by parliament instead of voters',
+        'It was a clear constitutional question, run with a two-stage process and independent commission designing the new system — the design features referendums need',
+        'It was held during a war',
+        'It abolished the monarchy',
+      ],
+      answer: 1,
+      why: 'NZ first asked voters which system they preferred (1992, indicative), then chose it (1993), then an independent commission drew the rules and boundaries — insulating the redesign from incumbent self-interest. Contrast referendums run by governing parties on rules governing themselves.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/political-science/intermediate/voting-systems-and-electoral-design">
   <h2>The idea</h2>
   <p>
-    Electoral systems are <strong>translation rules between votes and power</strong> — and the
-    rule chosen shapes the party system, the campaigns and the outcomes. The mathematics is
-    genuinely surprising: fairness criteria provably conflict (Arrow), so every democracy is
-    running a chosen compromise, not the correct answer.
+    Electoral systems are <strong>translation rules between votes and power</strong> — and
+    the rule chosen shapes the party system, the campaigns, the coalitions and the
+    outcomes, usually more than voters realise. The syllabus asks three questions: what
+    different systems exist, how referendums are used, and how systems are analysed —
+    and the analysis lands somewhere genuinely mathematical: fairness criteria provably
+    conflict (Arrow), so every democracy is running a chosen compromise rather than the
+    correct answer. Learning the systems therefore means learning what each trade-off
+    buys and what it costs.
   </p>
 
   <Widget no="1" caption="the main systems and the theorem that haunts them all" widget="equationStep" config={voteCfg} />
 
+  <h2>First-past-the-post: the mechanical heart of disproportionality</h2>
+  <p>
+    <strong>Plurality in single-member districts</strong> (the UK, US, Canada, India)
+    awards each district to whoever gets the most votes, majority not required. Its
+    virtues are real: simplicity (one X), decisiveness, a local member, and —
+    usually — a clear winner with a working majority. Its costs are mechanical.
+    Votes for losers are <strong>wasted</strong> (they elect nothing), so the conversion
+    of votes to seats depends on geography: the UK 2015 election is the canonical
+    worked example — UKIP's 12.6% of the national vote (3.9 million votes) returned
+    one seat, while the SNP's 4.7% returned 56, because concentration converts and
+    dispersion does not. The 2019 election gave the Conservatives a 56%-seat
+    majority on 43.6% of the vote; the UK's typical disproportionality index
+    (Gallagher's least-squares measure) runs above 20, against low single digits for
+    the most proportional systems. The spoiler problem follows: under plurality,
+    voting for a third party whose support resembles a major party's can help the
+    voter's <em>least</em> preferred candidate (Florida 2000: Bush's 537-vote margin
+    against Ralph Nader's 97,000 Florida votes is the permanent cautionary tale).
+    The systemic consequence is <strong>Duverger's law</strong> (1954): plurality-plus-
+    single-member-districts tends toward two parties — a <em>mechanical</em> effect
+    (small parties win few seats) compounding a <em>psychological</em> one (voters
+    desert parties that cannot win, desertion that becomes self-fulfilling).
+  </p>
+
+  <h2>Proportional representation and the hybrids</h2>
+  <p>
+    <strong>Party-list PR</strong> fills multi-member districts (or one national
+    district — the Netherlands, Israel) so seats match vote shares; the design dial
+    is <em>district magnitude</em> (bigger = more proportional) and the
+    <em>threshold</em> (Germany's 5% bar keeps extremists and splinters out while
+    preserving broad proportionality). List systems deliver the fairest translation
+    and the most multiparty politics — with the traded costs: coalitions are normal
+    (governance by negotiation), and <strong>closed lists</strong> hand parties
+    control of who actually sits (the Netherlands and Israel sit at the
+    hyper-proportional end; Poland and others use open lists to give voters candidate
+    choice). <strong>Single transferable vote (STV)</strong> — Ireland, Malta, the
+    Australian Senate — makes proportionality from candidate-ranking within
+    multi-member seats (surplus votes transfer at a fractional value, per the Droop
+    quota), keeping local representation AND proportionality, at the price of a
+    counting process only specialists love. <strong>Mixed-member proportional
+    (MMP)</strong> — Germany since 1949, New Zealand since 1996 — runs the two logics
+    side by side: constituency members for place, list members to top the totals up
+    to proportionality. <strong>Ranked-choice / alternative vote (IRV)</strong> and
+    two-round runoffs (France) are <em>majoritarian</em>, not proportional: they
+    manufacture majority legitimacy in single-member seats. IRV's promise is spoiler-
+    proofing (your backup rankings transfer when your favourite is eliminated); its
+    pathologies are real — Burlington, Vermont's 2009 mayoral race elected a candidate
+    who would have lost to either rival head-to-head (the <strong>Condorcet
+    winner</strong> — the one who beats everyone pairwise — lost), the textbook case
+    that transferring votes moves paradoxes without abolishing them.
+  </p>
+  <p><em>Common misconception:</em> proportional representation means instability, and
+  FPTP means stability. The comparative record is messier: PR countries (Germany,
+  New Zealand, the Nordics) are among the world's most stable and best-governed;
+  FPTP countries have produced landslides on a minority of votes, parties governing
+  alone on a third of the electorate, and two-party dominance that occasionally
+  shatters (Canada, the UK's 2010s). What the system buys is not stability per se
+  but a particular <em>kind</em> of stability — decisive single-party government —
+  purchased with disproportional translation.</p>
+
+  <h2>Referendums: direct democracy, used with design care</h2>
+  <p>
+    A referendum asks voters to decide an issue directly. The <strong>uses</strong> are
+    patterned: constitutional fundamentals (Scottish independence 2014; Brexit 2016 —
+    52-48 on 72% turnout), moral questions that cut across party lines (abortion,
+    same-sex marriage ballots), and — the most constructive genre — <strong>electoral
+    redesign</strong>: New Zealand's 1992-93 sequence (an indicative vote on preferred
+    systems, a binding referendum adopting MMP, then an independent commission drawing
+    boundaries) is the showcase because it insulated rule-changing from incumbent
+    self-interest. The <strong>pathologies</strong> are equally patterned. Binary
+    framing compresses multi-dimensional questions into one lever (the Brexit
+    problem: sovereignty, migration, economics and identity in one X); campaigns
+    reward emotional framing over deliberation; minority rights face majoritarian
+    override (hence constitutional limits — courts voiding referendums that violate
+    rights); turnout selects; and <strong>serial referendums</strong> invite the
+    "re-run until the right answer" critique (whether Brexit itself counts is the
+    live debate — the counter-rule: some questions, once answered, legitimately
+    require supermajorities to reopen). The design questions the syllabus wants:
+    which decisions belong to voters directly (constitutional identity questions,
+    moral cross-cutting issues) versus representatives who can deliberate and amend;
+    what thresholds and turnout floors apply (constitutional change on a 51-49
+    split of 40% turnout is a fragile mandate); and who frames the question —
+    wording effects are measurable and, on close votes, decisive.
+  </p>
+
+  <h2>Electoral system analysis: the criteria, the theorems, the map-drawing</h2>
+  <p>
+    Analysis means scoring systems against explicit criteria, and the criteria
+    conflict. Proportionality against decisiveness; local representation against
+    party-list control; simplicity against expressiveness; minority representation
+    against fragmentation; resistance to gerrymandering against districting itself.
+    The two theorems explain why no scoring wins outright. <strong>Arrow's theorem</strong>
+    (1951): with three or more options, no rank-order voting rule can satisfy
+    unrestricted domain, the Pareto condition, <strong>independence of irrelevant
+    alternatives</strong> (the A-vs-B ranking should not flip because C entered)
+    and non-dictatorship simultaneously. IIA's violation is the plurality spoiler
+    effect generalised; the Condorcet paradox (majorities can cycle: A beats B
+    beats C beats A) is why. <strong>Gibbard–Satterthwaite</strong> (1973/75) adds
+    the tactical layer: every non-dictatorial rule with 3+ options is
+    <em>manipulable</em> — some situation exists where voting insincerely helps you.
+    These are not opinions; they are proofs, and they reframe the whole subject:
+    electoral design is engineering under an impossibility result — you choose which
+    unfairness to carry. The practical analysis tools: the Gallagher index for
+    disproportionality, turnout and validity statistics, strategic-voting rates,
+    and — for districted systems — the <strong>gerrymandering</strong> measurements.
+    Drawing district lines to predetermine outcomes is as old as the word
+    (Elbridge Gerry's 1812 salamander); the modern detection is statistical. The
+    <strong>efficiency gap</strong> (Stephanopoulos & McGhee, 2015) measures
+    wasted-vote asymmetry — parties whose votes pile up in lost districts and
+    safe wins are being cracked and packed. <strong>Ensemble methods</strong>
+    simulate thousands of neutral districting plans and ask whether the actual
+    map is an outlier. The case study that taught a generation: Pennsylvania 2012,
+    where Democratic House candidates won roughly half the statewide vote and
+    five of eighteen seats — a map outcome no neutral ensemble would plausibly
+    produce. The courts' struggle with these metrics (rejected by the US Supreme
+    Court in 2019 as beyond judicial management, adopted in state constitutions)
+    is the live frontier of the analysis tradition.
+  </p>
+
   <h2>Design choices beyond the ballot</h2>
-  <ul>
-    <li><strong>Districts vs at-large:</strong> single-member districts (local representation, majority bias) vs national lists (proportionality, party control of candidates). The trade-off is representation-of-place vs representation-of-proportion.</li>
-    <li><strong>Gerrymandering:</strong> drawing district lines to manufacture outcomes. Detection is now statistical (efficiency gap, ensemble methods — the statistics ladder's simulations of fair maps). Courts are digesting the maths.</li>
-    <li><strong>Compulsory voting and turnout:</strong> Australia's compulsory turnout (~90%) vs voluntary (~50–65% elsewhere). Who turns out — not just who prefers what — decides elections; every turnout rule is a distributional choice.</li>
-    <li><strong>Referendums:</strong> direct democracy for big questions (Brexit) — binary framing of complex issues, vulnerable to the framing lesson's effects. The design question: which decisions belong to voters directly, and which to representatives deliberating?</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Arrow, Social Choice and Individual Values (1951); Duverger (1954); Reynolds, Reilly & Ellis, Electoral System Design (International IDEA).</p>
+  <p>
+    The wider design layer: <strong>compulsory voting</strong> (Australia since 1924:
+    turnout near 90%, versus voluntary systems' 50-65% — and the composition effects
+    are the point: who turns out decides elections, so every turnout rule is a
+    distributional choice about whose preferences count); <strong>malapportionment</strong>
+    (the US Senate gives Wyoming's 580,000 people the same representation as
+    California's 39 million — an extreme design choice voters never chose);
+    <strong>registration and administration</strong> (US registration burdens depress
+    turnout measurably; automatic registration and independent boundary commissions
+    are the standard upgrades); and thresholds, terms and sequencing. Each dial is
+    independently settable, and combinations — not single choices — produce each
+    country's distinctive electoral character.
+  </p>
+
+  <h2>The ballot itself: design reaches the last centimetre</h2>
+  <p>
+    The systems logic extends all the way to the paper. The <strong>Florida 2000
+    butterfly ballot</strong> is the canonical case: Palm Beach County's two-column
+    layout put holes for adjacent entries, and tens of thousands of voters
+    mispunched — Patrick Buchanan's tally in that heavily Democratic county ran
+    roughly 3,000 votes above his plausible ceiling, in an election decided
+    nationally by 537. Ballot design is not decoration; on close margins it is
+    the outcome. The same applies to the subtler dials: <strong>candidate order
+    effects</strong> (first position carries a measurable few-percentage-point
+    advantage, large enough to decide low-information contests — which is why
+    some jurisdictions randomise or rotate), <strong>ballot length and
+    roll-off</strong> (voters abandon down-ballot races as lists lengthen),
+    <strong>overvotes and spoilt ballots</strong> (marking two candidates voids
+    the vote — punch-card systems' "hanging chads" were a validity crisis, and
+    the post-2002 Help America Vote Act's equipment standards are the reform
+    trail), and <strong>question wording</strong> on referendum papers, where
+    double negatives and framing shift measurable points of support. The
+    general principle for the analysis toolkit: every interface between voter
+    and count — district line, threshold, ranking rule, hole punch — is a
+    parameter, and on close margins each parameter is a potential kingmaker.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Where systems come from.</strong> The comparative record punctures the
+    assumption that systems are chosen on the merits: <strong>incumbents choose
+    electoral systems</strong> (Colomer's dictum) — usually ones that served the
+    moment's winners (New Zealand's FPTP was chosen by parties it later failed;
+    its reform came only when FPTP kept producing "wrong" winners). Analysis must
+    therefore be political, not just technical: any reform proposal implies a
+    coalition question — who loses the current translation rule badly enough to
+    force change, and can they hold power long enough to change it?
+  </p>
+  <p>
+    <strong>Lijphart's map.</strong> The <em>Patterns of Democracy</em> framework
+    sorts democracies along a <strong>majoritarian-consensual</strong> dimension
+    (disproportionate, two-party, concentrated power vs proportional, multiparty,
+    power-sharing) and finds both clusters democratic and stable, differing
+    reliably in how they treat minorities and opposition — the deepest empirical
+    defence of treating system choice as a values question, not an optimisation.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Does ranked-choice voting actually reduce
+    polarisation (early US city evidence is encouraging but thin)? Can internet
+    voting ever be made as verifiable as paper (the cryptography community's
+    near-consensus: not yet, maybe not ever — election integrity needs
+    universally checkable records)? Will algorithmic redistricting — optimise for
+    compactness and communities, not partisan gain — become a neutral referee, or
+    a new battlefield? And as algorithms enter campaigning (micro-targeted
+    persuasion), does the <em>campaign</em> side need the design scrutiny the
+    <em>counting</em> side got? The discipline's original insight still runs the
+    show: rules shape outcomes — which means rule-writers are always in the game,
+    and the referee question never closes.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Arrow, Social Choice and Individual Values (1951); Gibbard (1973) and Satterthwaite (1975); Duverger, Political Parties (1954); Lijphart, Patterns of Democracy (1999); Colomer on electoral system choice; Gallagher on disproportionality indices; Stephanopoulos & McGhee (2015) on the efficiency gap; Reynolds, Reilly & Ellis, Electoral System Design (International IDEA); New Zealand Electoral Commission records on the 1992-93 referendums.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={voteQuizCfg} />
 </TopicPage>

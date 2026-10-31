@@ -10,6 +10,35 @@ const sbCfg = {
     { math: '4 · Indices: the market in one number', note: 'The S&P 500, FTSE 100, Nifty 50 track baskets of stocks. Most professional stock-pickers fail to beat them over time — the fact that defines the index-fund argument.' },
   ],
 };
+
+const sbQuizCfg = {
+  questions: [
+    {
+      q: 'A bond pays a 5% coupon on 1,000 face value with 10 years left. Market interest rates rise from 5% to 6%. What happens to the bond\'s price?',
+      choices: ['It stays at 1,000 — the coupon is fixed', 'It rises — higher rates mean higher returns', 'It falls to roughly 926 — the fixed coupons now look poor next to new 6% issues', 'It is unpredictable'],
+      answer: 2,
+      why: 'Discounting the same coupons and principal at 6% gives about 926 — a 7.4% price drop for a 1% rate rise. Price and yield always move in opposite directions.',
+    },
+    {
+      q: 'A company pays a 4 dividend, growing 3% a year; you require a 9% return. The Gordon growth model prices the stock at…',
+      choices: ['4 / (0.09 − 0.03) = about 67', '4 × 9 = 36', '4 / 0.09 = about 44', 'It cannot be valued'],
+      answer: 0,
+      why: 'P = D1 / (r − g). The formula is a discounted-cash-flow argument in one line: a dividend stream growing forever is worth its next payment divided by the gap between required return and growth.',
+    },
+    {
+      q: 'Why do long-term investors hold bonds at all, if stocks have returned about twice as much historically?',
+      choices: ['Bonds sometimes outperform over decades', 'Bonds are the diversifier and liquidity layer: their crashes rarely coincide with (and often rescue) equity crashes, and they fund spending without forced stock sales', 'Regulation requires it', 'They never lose money'],
+      answer: 1,
+      why: 'The point is not bond returns in isolation but portfolio behaviour: 2022 hurt, yet in 2008 and 2020 high-quality government bonds rallied as stocks collapsed — paying for patience exactly when it was needed.',
+    },
+    {
+      q: 'About 90% of US large-cap active funds have underperformed the S&P 500 over 15-year periods. What does this mainly reflect?',
+      choices: ['Fund managers are unskilled', 'Markets are highly competitive and well-priced, so beating the average after costs is near-zero-sum — the index IS the average, minus low fees', 'Indices are rigged', 'Active funds take no risk'],
+      answer: 1,
+      why: 'In a market where prices reflect huge amounts of analysis, the average investor earns the market return minus costs. Index funds keep the costs near zero; that arithmetic, not ignorance, is the argument.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/finance/intermediate/stocks-and-bonds">
   <h2>The idea</h2>
@@ -17,17 +46,173 @@ const sbCfg = {
     Stocks and bonds are the two primitive financial claims: <strong>ownership and
     debt</strong>. Everything in markets — funds, derivatives, entire economies of speculation —
     is built from these two. Understanding what you actually hold (a share of profits, or a loan
-    contract) explains both the returns and the risks.
+    contract) explains both the returns and the risks: the equity holder gets the residual after
+    everyone is paid, which is why their upside is unlimited and their downside comes last; the
+    bondholder gets a fixed stream first, which is why their upside is capped and their priority
+    in trouble is near the front of the queue.
   </p>
 
   <Widget no="1" caption="the two claims, their prices, and the index that holds them" widget="equationStep" config={sbCfg} />
 
-  <h2>The trade-offs, quantified</h2>
-  <ul>
-    <li><strong>Historical averages (US, long-run):</strong> stocks ~10%/yr nominal with brutal dips (−50%+ happens); bonds ~5%; cash ~3%. The premium is compensation for enduring the volatility.</li>
-    <li><strong>Yield vs price:</strong> bond yields rise when prices fall — new buyers get more, old holders lose. The 2022 bond market (worst year in centuries) taught a generation of "safe" investors this lesson.</li>
-    <li><strong>Dividends aren't free money:</strong> the share price drops by the dividend on the ex-date. Total return is what counts; "dividend investing" is a preference, not an arbitrage.</li>
-    <li><strong>Time horizon decides allocation:</strong> money needed in 2 years doesn't belong in stocks (sequence risk); money needed in 30 years rarely belongs in cash (inflation risk). The money-inflation lesson sets the floor.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Ibbotson SBBI historical data; Bogle, Common Sense on Mutual Funds; Malkiel, A Random Walk Down Wall Street.</p>
+  <h2>The stock: a residual claim on a business</h2>
+  <p>
+    A share of common stock is a slice of ownership with three attached rights: a claim on
+    profits (paid as <strong>dividends</strong> or retained for growth), a vote on governance
+    (electing the board), and a residual claim in liquidation — you are paid after employees,
+    suppliers, lenders and bondholders, which is why equity is called the
+    <strong>residual claim</strong>. That position explains the return profile: in good
+    outcomes the residual is unbounded (a dollar of profit growth accrues entirely to
+    shareholders, forever), in bad outcomes shareholders absorb the losses until wiped out.
+    <strong>Limited liability</strong> caps that worst case at your investment — the legal
+    invention that made modern equity markets possible, since investors will fund risky
+    ventures only when failure cannot follow them home. Stocks first reach the market in an
+    <strong>initial public offering</strong> (the company sells shares to the public and gets
+    the money); afterwards they trade on <strong>secondary markets</strong> — exchanges like
+    the NYSE, Nasdaq and LSE — where the company receives nothing and investors trade claims
+    between themselves at prices set continuously by order books. Those prices are the
+    market's running vote on the discounted value of all future profits.
+  </p>
+
+  <h2>The bond: a loan with a schedule</h2>
+  <p>
+    A bond is a standardised loan contract: the issuer borrows the <strong>face value</strong>
+    (say 1,000), pays a <strong>coupon</strong> (say 5 per cent a year) and repays the face
+    value at <strong>maturity</strong> (say 10 years). Issuers split into governments (US
+    Treasuries, UK gilts, German Bunds — the "risk-free" curve in their own currency) and
+    corporations, whose additional <strong>credit risk</strong> is graded by rating agencies
+    from AAA down through investment grade to "high yield" — junk. The credit analysis
+    looks at leverage, cash-flow coverage and collateral, and the market expresses the verdict
+    as a <strong>spread</strong>: high-yield bonds might yield 3–6 percentage points more than
+    Treasuries, compensation for default risk that occasionally materialises (2008, and the
+    energy sector's 2015–16 defaults). One structural variant matters for history:
+    <strong>securitisation</strong> — pooling thousands of loans (mortgages, car loans) into
+    new bonds sold in slices. It spreads risk efficiently in principle; in 2008 the slices
+    built from subprime mortgages proved far riskier than their ratings, and the mechanism
+    transmitted a housing problem into a global banking crisis.
+  </p>
+
+  <h2>How prices are set: discounting, twice</h2>
+  <p>
+    Both claims are valued by the same idea — a future cash flow is worth less today —
+    applied to different streams. For a bond, discount the coupons and principal at the
+    <strong>yield to maturity</strong> the market demands. Worked example: the 1,000 bond,
+    5 per cent coupon, 10 years. While market rates sit at 5 per cent it trades at par
+    (1,000). If rates rise to 6 per cent, the same cash flows discounted at 6 per cent are
+    worth about <strong>926</strong> — a 7.4 per cent price fall from a 1 per cent rate rise.
+    That inverse price–yield relationship is mechanical, not a mood: your fixed 50 coupons
+    simply compete with new issues paying more. Sensitivity to rates is summarised by
+    <strong>duration</strong>: a 10-year bond loses roughly 7–8 per cent of price per 1
+    percentage point rise; a 30-year bond, roughly 17–19 per cent — which is exactly what
+    2022 demonstrated when aggressive rate rises produced the worst global bond year on
+    record (major aggregate indices fell around 13–16 per cent, and UK gilts endured their
+    worst year in decades).
+  </p>
+  <p>
+    For a stock, the discounting runs over the company's entire future profit stream. The
+    cleanest expression is the <strong>Gordon growth model</strong>: price = D<sub>1</sub>/(r − g),
+    the next dividend divided by the gap between your required return and the growth rate.
+    Example: a company paying a 4 dividend growing 3 per cent a year, with a required return
+    of 9 per cent, is worth 4/(0.09 − 0.03) ≈ <strong>67</strong>. Notice the formula's
+    sensitivity: the denominator is the difference of two hard-to-estimate numbers, which is
+    why small changes in expected growth or rates move equity prices violently — and why
+    practitioners fall back on multiples like the price-to-earnings ratio (the market
+    typically pricing the S&amp;P 500 between roughly 15 and 25 times annual earnings) as a
+    sanity check. When rates fall, both effects push prices up: future profits are discounted
+    less. <strong>Rates are gravity for every asset</strong> — the single sentence that
+    explains most of 2021's euphoria and 2022's crash.
+  </p>
+  <p>
+    <em>Common misconception:</em> "dividends are free money." On the ex-dividend date the
+    share price falls by roughly the dividend paid — the company has moved cash from its own
+    account to yours. Total return is what compounds; a dividend strategy is a preference
+    for cash income, not an arbitrage.
+  </p>
+
+  <h2>Indices: the market in one number</h2>
+  <p>
+    An index tracks a basket: the S&amp;P 500 weights about 500 large US companies by market
+    value and covers roughly 80 per cent of US equity capitalisation; the FTSE 100 does the
+    same for the hundred largest London listings; the Nasdaq Composite tilts to technology.
+    Indices are the benchmark that defines "beating the market" — and the benchmark that
+    most professionals fail to beat: the SPIVA scorecards consistently find that around 90
+    per cent of US large-cap active funds underperform the S&amp;P 500 over 15-year periods.
+    The reason is structural, not stupidity: in a market where prices digest an enormous
+    amount of analysis, the average invested dollar must earn the market return minus costs —
+    and active management costs 1–2 per cent a year while index funds cost a few hundredths.
+    The index <em>is</em> the average, kept cheap.
+  </p>
+
+  <h2>Credit analysis: how a bond's risk gets graded</h2>
+  <p>
+    What makes one corporate bond safe and another junk? The analyst's core questions are
+    about solvency under stress. <strong>Leverage</strong>: debt relative to earnings or
+    assets — a company owing three times its annual operating profit can usually ride out a
+    bad year; one owing eight times may not. <strong>Interest coverage</strong>: operating
+    profit divided by the interest bill — cover of 10 times is comfortable; below 2 times
+    leaves the dividend of error near zero. <strong>Liquidity</strong>: cash and undrawn
+    credit lines against debts falling due in the next year. Ratings agencies compress this
+    analysis into letters: AAA to BBB− is investment grade (most regulated funds may hold
+    it); below that, high yield. The grade matters mechanically, not just descriptively:
+    downgrades force index-tracking holders to sell, which can push prices down further —
+    the <em>fallen angel</em> dynamic. The reward for bearing that risk is the
+    <strong>spread</strong>: in normal times high-yield issuers pay maybe 3–4 points over
+    Treasuries; in panics the spread can blow out past 10 points, which is precisely when
+    default risk (and opportunity) peaks. Reading spreads is reading the market's live
+    estimate of how much trouble the economy is in.
+  </p>
+
+  <h2>Security markets: how a trade actually happens</h2>
+  <p>
+    The price you see quoted is produced by an <strong>order book</strong>: standing buy
+    orders (bids) and sell orders (asks) ranked by price. The best bid and best ask bracket
+    the <strong>spread</strong> — often a few cents on liquid stocks — and market makers earn
+    it for standing ready to trade, which is what <strong>liquidity</strong> means: the
+    ability to convert a claim into cash, quickly, without moving the price. Liquidity is
+    the market's invisible variable: the same share can be effortless to trade one week and
+    gappy the next, and in crises spreads widen exactly when you most need to exit. It is
+    also the reason index construction matters — adding a stock to a major index forces
+    passive funds to buy it, changing its liquidity and often its price. Two practical
+    corollaries for an investor: trade liquid, broad instruments (the giants of the index
+    world are liquid by construction), and prefer limit orders to market orders when size
+    is large — the spread is small, but it is being paid by someone.
+  </p>
+
+  <h2>The trade-off, quantified: why hold both</h2>
+  <p>
+    Long-run US data (the Ibbotson series, back to 1926) puts large-cap stocks at about
+    <strong>10 per cent a year nominal</strong> (roughly 7 per cent after inflation) against
+    about <strong>5 per cent</strong> for bonds (roughly 2 per cent real) and 3 per cent for
+    cash. The gap is the <strong>equity risk premium</strong> — payment for enduring drawdowns
+    that reach 50 per cent or more (1929–32, 2000–02, 2007–09, 2022's near-miss). But the two
+    claims also <em>fail differently</em>: stocks suffer long, deep bear markets while
+    high-quality government bonds usually rally in exactly those crises (flight to safety in
+    2008, 2020) — which is what makes bonds the diversifier and the source of money you can
+    spend without selling stocks at the bottom. 2022 was the exception that proved the rule:
+    inflation forced rates up, and stocks and bonds fell together, a reminder that the
+    hedge is a tendency, not a law. Allocation between the two — not stock-picking — is the
+    decision that explains most of a portfolio's behaviour over a lifetime.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four expert nuances. First, the <strong>yield curve</strong> — the map of yields across
+    maturities — normally slopes up (longer loans cost more); its <em>inversion</em> (short
+    yields above long) has preceded every US recession of the past half-century, a
+    widely-studied signal that works better than most forecasting models. Second,
+    <strong>dividend policy is nearly irrelevant in theory</strong> (Modigliani–Miller, 1961):
+    in perfect markets, paying a dividend or retaining it leaves shareholder wealth
+    unchanged — which is why the modern dominance of share buybacks (returning cash by
+    retiring shares) is a tax-and-signal story, not a valuation one. Third, the
+    <strong>equity premium puzzle</strong> (Mehra and Prescott, 1985): the historical premium
+    is too large to be explained by standard risk-aversion models — either investors
+    honestly price catastrophe risk we underestimate, or stocks were historically
+    under-owned for institutional reasons; either way the future premium is probably
+    thinner than the past's. Fourth, the <strong>negative-yield era</strong>: by late 2020
+    about 18 trillion dollars of bonds traded at negative yields — lenders paying for the
+    privilege — a monetary-policy artefact that has since vanished, but a permanent
+    demonstration that "guaranteed" features of markets are regime-dependent. Hold both
+    claims, know why each pays, and respect the discount rate: that is the whole subject in
+    one habit.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Ibbotson SBBI historical data; Bogle, Common Sense on Mutual Funds; Malkiel, A Random Walk Down Wall Street; SPIVA scorecards (S&amp;P Dow Jones Indices); Mehra &amp; Prescott (1985).</p>
 </TopicPage>

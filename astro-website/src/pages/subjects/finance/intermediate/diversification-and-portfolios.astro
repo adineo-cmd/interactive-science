@@ -10,6 +10,35 @@ const divCfg = {
     { math: '4 · Rebalancing enforces the discipline', note: 'Winners grow past their target weight; periodic rebalancing sells high, buys low, mechanically. It also caps the risk drift that silently turns a balanced portfolio into a concentrated one.' },
   ],
 };
+
+const divQuizCfg = {
+  questions: [
+    {
+      q: 'Two assets each have 20% volatility, a 7% expected return, and correlation 0. You split 50/50. The portfolio\'s volatility is…',
+      choices: ['20% — the average of the parts', 'About 14% — imperfect correlation cancels part of each asset\'s swings while return stays at 7%', '40%', '0%'],
+      answer: 1,
+      why: 'σ = 20% × √(0.5 + 0.5×0) ≈ 14.1%. Expected return is the weighted average; risk is NOT — that asymmetry is the free lunch.',
+    },
+    {
+      q: 'Which addition diversifies a portfolio of 30 US technology stocks most effectively?',
+      choices: ['10 more US technology stocks', 'A leveraged bet on the same sector', 'High-quality government bonds and international equities — assets whose drivers differ', 'A second account holding the same stocks'],
+      answer: 2,
+      why: 'Correlation, not count, is the dial. Ten more tech stocks are near-duplicates of what you hold; bonds and foreign markets respond to different shocks.',
+    },
+    {
+      q: 'Under CAPM, a stock with beta 1.5 and an expected market return of 8% (risk-free 2%) should return…',
+      choices: ['8%', '2% + 1.5 × (8% − 2%) = 11%', '15%', '1.5 × 8% = 12%'],
+      answer: 1,
+      why: 'E[r] = rf + β × (E[rm] − rf). Only the NON-diversifiable part of a stock\'s risk earns a premium — the market pays nothing for risk you could have cancelled yourself.',
+    },
+    {
+      q: 'A 60/40 portfolio drifts to 68/32 after a stock rally. Rebalancing back to 60/40 means…',
+      choices: ['Selling stocks and buying bonds — mechanically selling high and buying low', 'Buying more stocks to "let winners run"', 'Doing nothing — drift is harmless', 'Selling everything'],
+      answer: 0,
+      why: 'Rebalancing restores the chosen risk level AND imposes a contrarian trade by rule — turning "buy low, sell high" from a virtue into arithmetic. It also fixes risk drift, which is the bigger point.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/finance/intermediate/diversification-and-portfolios">
   <h2>The idea</h2>
@@ -17,17 +46,188 @@ const divCfg = {
     Diversification is finance's only free lunch: <strong>spreading investments across imperfectly
     correlated assets reduces risk without reducing expected return</strong>. It works because
     assets don't all fail together — and its power depends entirely on correlation, which is why
-    "own many things" and "own many different things" are different strategies.
+    "own many things" and "own many different things" are different strategies. This page builds
+    the idea properly: how return and risk are measured, what happens mathematically when you
+    combine assets, how Markowitz turned that into portfolio construction, what CAPM says the
+    market pays you for, and how a real portfolio is built and maintained.
   </p>
 
   <Widget no="1" caption="the mathematics of not losing everything at once" widget="equationStep" config={divCfg} />
 
-  <h2>The practical portfolio</h2>
-  <ul>
-    <li><strong>Broad index funds are pre-diversified:</strong> one S&P 500 fund holds 500 companies; a global fund, thousands. The default that beats most hand-picked portfolios on cost and behaviour alone.</li>
-    <li><strong>Bonds are the ballast:</strong> historically less correlated with stocks (until inflation spikes — 2022 taught the exception). The stock/bond split is the portfolio's risk dial.</li>
-    <li><strong>Over-diversification is real but rare:</strong> beyond ~20–30 uncorrelated holdings, benefit flattens while costs and complexity grow. "Diworsification" (Lynch) — owning everything, understanding nothing.</li>
-    <li><strong>Correlations spike in crises:</strong> in 2008, nearly everything fell together. Diversification reduces everyday risk; it does not eliminate tail risk (the options lesson shows hedging that can).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Markowitz (1952); Brinson, Hood & Beebower (1986); Bernstein, The Intelligent Asset Allocator.</p>
+  <h2>Measuring return and risk</h2>
+  <p>
+    Two numbers describe most of an asset's character. <strong>Expected return</strong> is the
+    average outcome — the centre of the distribution. <strong>Risk</strong> is measured as
+    <strong>volatility</strong>: the standard deviation of returns around that average. An asset
+    returning about 7 per cent a year with 20 per cent volatility will, in a typical year, land
+    anywhere between −13 and +27 — and once a decade will land far outside. Volatility also
+    quietly eats return: the return you actually compound (the <em>geometric</em> return) is
+    roughly the arithmetic mean minus half the variance (σ²/2). A 20 per cent volatile asset
+    therefore compounds about 2 percentage points below its average return — the arithmetic of
+    a 50 per cent fall needing a 100 per cent gain to catch up. This is the first reason risk
+    reduction is not cosmetic: smoothing the path raises the compounded outcome even at the
+    same average.
+  </p>
+  <p>
+    Because return and risk always travel together, professionals quote them as a ratio.
+    The <strong>Sharpe ratio</strong> — (return − risk-free rate) divided by volatility —
+    measures how much excess return each unit of risk buys. A fund earning 9 per cent with
+    18 per cent volatility scores (9 − 2) / 18 ≈ 0.39; a fund earning 7 per cent with
+    10 per cent volatility scores 0.50 and is the better engine, despite the lower headline
+    number. This single idea reframes every comparison: the question is never "which return
+    is higher?" but "which return is higher <em>per unit of risk</em>?" Diversification is
+    the main tool for raising a Sharpe ratio, because it strips out risk that carries no
+    extra return — which is exactly what the ratio rewards.
+  </p>
+
+  <h2>The mathematics of combining assets</h2>
+  <p>
+    When you combine assets, expected returns average weighted, but risks do
+    <strong>not</strong>. The portfolio's volatility depends on the correlation ρ between the
+    assets. Take two assets, each with 20 per cent volatility, in a 50/50 split: with
+    ρ = +1 (the same asset twice) the portfolio is 20 per cent volatile — no benefit. With
+    ρ = 0 (independent drivers) the portfolio volatility falls to 20 × √0.5 ≈
+    <strong>14.1 per cent</strong>. With ρ = −1 (perfect opposites) it can be engineered to
+    <strong>zero</strong> — a perfect hedge. The general law for many uncorrelated assets is the
+    <strong>√n rule</strong>: n independent bets of equal risk combine to risk of one divided
+    by √n. One hundred independent stocks, each 30 per cent volatile, make a portfolio of
+    about 3 per cent volatility. The catch is the word "independent": thirty technology stocks
+    share one macro driver (rates, tech spending), so their correlations cluster near 1 and
+    the √n law never fires. Diversify across <em>kinds</em> — equities, bonds, geographies,
+    currencies — not within one kind.
+  </p>
+  <p>
+    <em>Common misconception:</em> diversification means owning a lot. It means owning
+    <em>drivers</em> that don't coincide. The 30-stock tech portfolio feels diversified and
+    behaves like one large bet; a 12-asset portfolio across stocks, bonds, countries and
+    styles is genuinely spread.
+  </p>
+  <p>
+    A natural follow-up: how many holdings are enough? Empirical work going back to Evans
+    and Archer (1968) and refined by Statman (1987) found the curve of risk reduction is
+    steep at first and then flattens: going from 1 to 10 stocks removes a large share of
+    idiosyncratic risk, 20 to 30 captures most of the rest, and beyond roughly 40 you are
+    adding little but fees and tracking burden. For a US stock portfolio, the classic
+    finding is that 30–40 names eliminate roughly 90 per cent of diversifiable risk; what
+    remains is the market itself. Cheap index funds make this a solved problem — but the
+    curve's steep early section is also why holding just three or four individual stocks
+    is a category error rather than a strategy.
+  </p>
+
+  <h2>Markowitz: portfolio construction as optimisation</h2>
+  <p>
+    Harry Markowitz's 1952 paper turned the free lunch into an algorithm: for any target
+    return, compute the combination of assets with the lowest volatility (or for any risk,
+    the highest return). Plot every attainable combination and you get the
+    <strong>efficient frontier</strong> — the curve of portfolios that are not dominated by any
+    other. Rational risk-taking means sitting on the frontier and choosing <em>where</em> on it
+    according to your needs; anything inside the curve is donated risk. Markowitz won the
+    1990 Nobel prize for it. Its practical limits are just as important: the optimiser needs
+    <em>estimated</em> expected returns, volatilities and correlations, and it amplifies
+    estimation error relentlessly — small errors in inputs produce wild over-concentration in
+    whatever looked best historically ("error maximisation"). This is why practitioners use
+    the theory qualitatively: spread across imperfectly correlated asset classes, don't chase
+    the numerical optimum, and prefer robust simple splits over fragile clever ones.
+  </p>
+
+  <h2>Systematic and idiosyncratic risk — and what CAPM says you're paid for</h2>
+  <p>
+    Split any asset's risk in two. <strong>Idiosyncratic risk</strong> is specific to it — a
+    drug trial fails, a CEO leaves — and it is <em>diversifiable</em>: spread across hundreds
+    of holdings, it cancels by the √n law. <strong>Systematic risk</strong> moves with the
+    whole market — recessions, rate shocks, wars — and no amount of diversification among
+    stocks removes it. The <strong>CAPM</strong> (Sharpe, Lintner, 1960s) draws the consequence:
+    the market pays a premium only for the risk you cannot diversify away. That risk is
+    summarised in <strong>beta</strong>, an asset's sensitivity to market moves: a stock with
+    beta 1.5 tends to move 15 per cent when the market moves 10. The model's pricing line:
+    E[r] = r<sub>f</sub> + β × (E[r<sub>m</sub>] − r<sub>f</sub>) — the risk-free rate plus
+    beta times the market premium. With a 2 per cent risk-free rate and an 8 per cent market
+    expectation, beta 1.5 predicts an 11 per cent expected return. The punchline for any
+    investor: <strong>the market pays nothing for concentrated risk you could have cancelled
+    yourself</strong> — holding three stocks is not brave, it is uncompensated.
+  </p>
+  <p>
+    CAPM is also the entry point to its own critique: decades of data show beta alone
+    explains returns poorly. Size (small companies out-earn their beta), value (cheap stocks
+    out-perform expensive ones) and momentum all persist as factors — the
+    <strong>Fama–French</strong> line of work that reframed "risk" as exposure to multiple
+    systematic drivers. CAPM survives as the first-order map: diversifiable risk earns zero,
+    and the market's premium is the only free return on offer.
+  </p>
+
+  <h2>Building the real portfolio</h2>
+  <p>
+    The evidence ranks the decisions. Brinson, Hood and Beebower (1986) found that asset
+    allocation policy — the split among stocks, bonds and cash — explained about
+    <strong>90 per cent</strong> of the variation in typical fund returns over time; security
+    selection and timing fight over the remainder. So the build order is: choose the
+    stock/bond split (the risk dial; a 60/40 portfolio has historically endured half to
+    two-thirds of equity drawdowns while smoothing the path), then diversify within each
+    class (broad index funds: one S&amp;P 500 fund is 500 companies, a global fund
+    thousands — pre-diversified at near-zero cost), then hold. <strong>Rebalancing</strong>
+    maintains the design: if the 60/40 portfolio (60,000 in stocks, 40,000 in bonds of a
+    100,000 total) sees stocks rise 25 per cent while bonds sit, the weights drift to
+    65/35 — riskier than chosen. Rebalancing sells about 5,000 of stocks and buys bonds,
+    mechanically selling high and buying low, and — more importantly — capping the
+    <strong>risk drift</strong> that silently converts a balanced portfolio into a
+    concentrated one. Annual or threshold-based rebalancing is enough; more is friction
+    without benefit.
+  </p>
+  <p>
+    One design principle runs through all real construction: <strong>the allocation should
+    match the horizon</strong>. Money needed next year has no business in equities, however
+    attractive their long-run record — sequence risk (being forced to sell into a crash)
+    dominates over short spans. This is the logic of <strong>target-date funds</strong>,
+    which run a <em>glide path</em>: roughly 90 per cent equities for a retirement twenty-five
+    years out, stepping down toward 50–60 per cent as the date approaches, automatically.
+    Whether the specific glide paths on offer are optimally shaped is debatable — but the
+    underlying principle, that risk capacity declines as the spending date nears, is
+    textbook portfolio construction.
+  </p>
+
+  <h2>When diversification fails</h2>
+  <p>
+    The free lunch comes with a footnote: <strong>correlations are state-dependent, and they
+    spike in crises</strong>. In October 2008 nearly everything fell together — equities,
+    credit, commodities, hedge strategies — because the shock hit funding itself; the
+    √n law assumed independence that no longer existed. 2022 was the other stress case:
+    inflation pushed rates up and stocks and bonds fell together, breaking the classic
+    60/40 hedge. The correct reading is not "diversification is useless" but that it
+    removes everyday risk, not <strong>tail risk</strong> — the possibility that all
+    correlations converge to 1 at the worst moment. The practical mitigations: hold some
+    assets whose crisis behaviour is structurally different (cash and short government
+    bonds are the reliable ones; gold and trend-following strategies have partial
+    records), keep the emergency buffer outside markets entirely, and treat any strategy
+    that "never loses" with the suspicion its 2008 record deserves.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four expert extensions. <strong>International diversification</strong> halves
+    single-country risk — yet investors everywhere exhibit <em>home bias</em>, holding
+    mostly domestic assets; the case for global weightings (roughly, own the world market)
+    is one of the strongest in the literature. <strong>Currency</strong> is a second axis:
+    unhedged foreign bonds are part bond, part currency bet; equities are usually left
+    unhedged because currency swings wash out over long horizons. <strong>Factor
+    investing</strong> operationalises the Fama–French critique — tilting toward size,
+    value and momentum exposures in cheap fund form — with the standing warning that
+    factors underperform for years at a stretch, which is the price of their premium.
+    And <strong>over-diversification</strong> ("diworsification", Peter Lynch's coinage) is
+    real: past a few dozen overlapping holdings, incremental benefit flattens while fees,
+    complexity and dilution of conviction grow. Two institutional responses to Markowitz's
+    estimation problem are worth knowing. <strong>Risk parity</strong> abandons expected
+    returns entirely and equalises each asset's <em>risk</em> contribution instead —
+    because volatilities and correlations are far more stable through time than expected
+    returns, the resulting portfolios (heavily weighted toward bonds, levered to restore
+    return) proved remarkably robust through the 2000s, though 2022 exposed their hidden
+    bet on the stock–bond correlation. The <strong>Black–Litterman</strong> model, from
+    Goldman Sachs in 1992, attacks the error-maximisation problem from the other side: it
+    starts from the equilibrium assumption that the market's own weights are fair, then
+    lets an investor tilt modestly away with explicit confidence levels — producing
+    allocations that move smoothly instead of lurching. The open question is generational: the
+    60/40 portfolio was built on the stock–bond correlation being negative. Whether that
+    holds in inflationary regimes — or whether the future belongs to broader allocations
+    including real assets — is the live debate in every pension fund on Earth.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Markowitz (1952); Brinson, Hood &amp; Beebower (1986); Sharpe on CAPM; Fama &amp; French on factors; Bernstein, The Intelligent Asset Allocator.</p>
 </TopicPage>

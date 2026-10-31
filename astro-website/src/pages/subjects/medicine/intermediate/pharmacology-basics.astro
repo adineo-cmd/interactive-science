@@ -14,20 +14,174 @@ const pharmaCfg = {
 <TopicPage slug="subjects/medicine/intermediate/pharmacology-basics">
   <h2>The idea</h2>
   <p>
-    Pharmacology is the science of <strong>how drugs and bodies negotiate</strong>: what the body
-    does to the drug (kinetics) and what the drug does to the body (dynamics). Nearly every
-    prescribing decision — dose, interval, combination — follows from four ADME facts and one
-    receptor curve.
+    A drug is a molecule you deliberately introduce into a system you did not design. Pharmacology is
+    the discipline that makes that act precise, and it splits cleanly into two questions.
+    <strong>Pharmacokinetics</strong> asks what the <em>body does to the drug</em>: how it is absorbed,
+    where it travels, how the liver and kidneys dismantle it, how fast the concentration falls.
+    <strong>Pharmacodynamics</strong> asks what the <em>drug does to the body</em>: which molecular
+    targets it touches, how strongly, and how effect scales with dose. Nearly every prescribing
+    decision — dose, interval, formulation, combination — is arithmetic on these two axes, and most
+    prescribing disasters are failures of that arithmetic: a dose too high for a patient whose kidneys
+    clear slowly, an interaction nobody counted, a drug whose useful range barely separates cure from
+    harm. This chapter walks the whole chain: the journey of a tablet from mouth to receptor to
+    excretion, the rhythm that half-life imposes on dosing, the receptor logic behind effect and side
+    effect, the therapeutic window that separates them, and the interaction web that polypharmacy
+    weaves.
   </p>
 
   <Widget no="1" caption="the ADME framework, the therapeutic window, and the interaction web" widget="equationStep" config={pharmaCfg} />
 
-  <h2>How drugs are discovered and proven</h2>
-  <ul>
-    <li><strong>From molecule to medicine:</strong> target identification → screening → animal and lab testing → Phase I (safety, healthy volunteers) → II (does it work?) → III (does it beat standard care, thousands of patients?) → approval → Phase IV surveillance. ~10–15 years, ~$1–2B, ~90% attrition.</li>
-    <li><strong>Aspirin's story is the classic:</strong> salicylates from willow bark (folk medicine) → acetylated for stomach tolerance (Bayer, 1899) → mechanism discovered decades later (prostaglandins, Nobel 1982) → new uses still emerging (heart attack prevention).</li>
-    <li><strong>Antibiotic stewardship:</strong> using antibiotics Carelessly breeds resistance — the pharmacology lesson meets the infection lesson at the prescriber's pen.</li>
-    <li><strong>Placebos are real:</strong> expectation measurably changes symptoms (and brain chemistry). Blinding in trials exists to separate the drug's effect from the ritual's — the psychology ladder connects.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Rang & Dale's Pharmacology; BMJ and FDA drug approval pipeline data; Vane, Nobel lecture (1982).</p>
+  <h2>ADME: the drug's journey through the body</h2>
+  <p>
+    <strong>Absorption</strong> is the drug's move from where you put it into the blood. A swallowed
+    tablet must survive stomach acid, dissolve, and cross the gut wall; an intravenous dose skips all
+    of that and reaches the blood 100% — which is why IV is the "gold standard" bioavailability against
+    which everything else is measured. Before a swallowed drug reaches the general circulation it runs
+    the gauntlet of <strong>first-pass metabolism</strong>: gut wall and liver enzymes attack it on the
+    way through, so only a fraction survives. Oral morphine's bioavailability is around 30%, which is
+    why oral doses are roughly three times IV doses; glyceryl trinitrate for angina is almost completely
+    destroyed by the liver, so it is given under the tongue, absorbed straight into veins that bypass
+    the liver entirely. <strong>Distribution</strong> is where the blood carries the drug: it depends
+    on blood flow (heart, liver, brain are perfused first), on fat solubility (lipophilic drugs cross
+    cell membranes and the blood–brain barrier but also stash themselves in fat depots and leak out
+    slowly), and on <strong>plasma protein binding</strong> — a drug clipped to albumin is pharmacologically
+    inert cargo, so only the free fraction acts, and drugs that compete for the same albumin sites can
+    suddenly unbind each other. <strong>Metabolism</strong> is the liver's chemical editing, mostly by
+    the cytochrome P450 enzyme family, usually converting a lipid-soluble drug into a water-soluble
+    (often inactive) one the kidney can excrete; <strong>excretion</strong> is chiefly renal, and
+    failing kidneys raise drug levels exactly the way failing livers do — the reason dose adjustments
+    are standard practice in kidney disease.
+  </p>
+
+  <h2>Half-life and the rhythm of dosing</h2>
+  <p>
+    The single most useful kinetic number is the <strong>half-life</strong>: the time for the plasma
+    concentration to halve. For most drugs elimination is <em>first-order</em> — a constant fraction
+    leaves per unit time, because elimination enzymes are far from saturated at normal doses — so the
+    decline is exponential, not linear. Half-life dictates the dosing rhythm. Take a drug with a
+    six-hour half-life taken every twelve hours: by the time the next dose lands, only about a quarter
+    of the previous one remains, so levels saw-tooth between a peak and a trough. Early on the troughs
+    keep rising — each interval starts higher than the last — because elimination is
+    concentration-dependent and the body removes more when there is more. Accumulation stops when the
+    amount eliminated per interval equals the dose taken in: <strong>steady state</strong>. The rule
+    every clinician memorises: steady state arrives after about <strong>five half-lives</strong>,
+    whatever the dose or interval. For our six-hour drug that is roughly thirty hours — a patient told
+    "give it a few days to work" is being told the truth of pharmacokinetics, not offered reassurance.
+    Two practical corollaries: halving the dosing interval narrows the peak-to-trough swing (twice-daily
+    beats once-daily when a narrow window demands it), and when waiting five half-lives is intolerable
+    — an anticoagulant, an anticonvulsant — a <strong>loading dose</strong> (a one-off large dose,
+    typically double the maintenance) fills the tank immediately, with maintenance doses then matching
+    the outflow.
+  </p>
+
+  <h2>Receptors and the dose–response curve</h2>
+  <p>
+    Pharmacodynamics begins with the observation that drugs act by <em>binding</em>: to receptors, ion
+    channels, enzymes, transporters. An <strong>agonist</strong> binds and activates (adrenaline at
+    beta-receptors speeds the heart); an <strong>antagonist</strong> binds and blocks, doing nothing
+    itself but denying the site to the body's own signal (beta-blockers quiet the same receptor).
+    Plot effect against log-dose and you get the signature sigmoid: a threshold, a steep middle, a
+    plateau. The curve yields two <em>independent</em> numbers that students constantly conflate.
+    <strong>Potency</strong> is where the curve sits on the dose axis — the EC<sub>50</sub>, the dose
+    giving half-maximal effect. <strong>Efficacy</strong> is the height of the plateau — the most the
+    drug can do. A drug can be potent but weak (tiny doses, small effect) or require grams yet achieve
+    enormous effect. Potency decides the milligram count on the label; efficacy decides whether the
+    drug can do the job at all — and for the patient, only efficacy and toxicity really matter.
+    Selectivity is the third property: no drug binds only one target. Most "side effects" are the same
+    key fitting other locks — antihistamines drowse you because the same H1 receptor sits in the brain,
+    beta-blockers cause bronchospasm because beta-2 receptors line the airways. Drug design is
+    disproportionately the craft of widening the gap between the target that treats and the targets
+    that harm.
+  </p>
+  <p><em>Common misconception:</em> "more is better." Because of the plateau, doses above the ceiling
+  of the curve add toxicity without adding effect. Doubling a near-maximal dose doubles nothing but
+  the side effects.</p>
+
+  <h2>The therapeutic window</h2>
+  <p>
+    Overlay a toxicity curve on the effect curve and the region between the effective dose and the
+    toxic dose is the <strong>therapeutic window</strong>, formally indexed by the therapeutic index —
+    the toxic dose for half of subjects (TD<sub>50</sub>) divided by the effective dose for half
+    (ED<sub>50</sub>). Classic teaching calls indices above ten comfortable and anything under about
+    two dangerous. The distinction sorts the pharmacopoeia into two kinds of drugs. <strong>Wide-window
+    drugs</strong> — most antibiotics, most antihistamines — forgive sloppiness: a missed dose or a
+    doubled dose rarely matters. <strong>Narrow-window drugs</strong> — warfarin, lithium, digoxin,
+    phenytoin, insulin — sit with their effective and toxic concentrations nearly touching, so the same
+    pill must be titrated to the individual and often monitored by blood levels: warfarin by INR, lithium
+    by serum lithium, digoxin by serum digoxin. That monitoring burden is a clinical fact worth
+    internalising, because it explains prescribing habits: narrow-window drugs are the ones whose doses
+    change slowly, whose interactions are feared, and whose patients carry anticoagulant cards. It also
+    explains why a normally trivial event — a new antibiotic, a course of NSAIDs, dehydration — can
+    destabilise a patient stable for years on warfarin: any shift in the window's arithmetic shows up
+    first in the narrow-window drugs.
+  </p>
+
+  <h2>Interactions: the polypharmacy web</h2>
+  <p>
+    Drug interactions come in two mechanical flavours. <strong>Pharmacokinetic</strong> interactions
+    change the other drug's concentration: one drug speeds or slows the liver enzymes that clear
+    another. The cytochrome P450 family is the battleground — CYP3A4 alone handles roughly half of all
+    prescription drugs — and the famous case is <strong>grapefruit juice</strong>, whose furanocoumarins
+    irreversibly disable intestinal CYP3A4 for a day or more, so a patient drinking it with certain
+    statins, calcium-channel blockers or immunosuppressants can multiply the drug's blood level
+    several-fold with no change in dose. Enzyme <em>inducers</em> work the other way: rifampicin and
+    St John's wort rev up CYP enzymes and can drop another drug below its window — the classic cause of
+    "my contraceptive failed" or transplant rejection on a herbal supplement. <strong>Pharmacodynamic</strong>
+    interactions change the other drug's <em>effect</em> at the same or linked targets: an ACE inhibitor
+    plus a potassium-sparing diuretic pushes potassium up twice as hard; a sedative plus an opioid
+    depresses breathing twice as hard; warfarin plus aspirin stacks two bleeding mechanisms. Add
+    <strong>polypharmacy</strong> — the elderly patient on ten or more medications, one for each organ
+    prescribed by a different specialist — and the interaction web becomes combinatorial: ten drugs
+    carry 45 pairwise combinations, and the real harm rate climbs steeply with each addition. This is
+    why <strong>medication review</strong> — periodically asking of every drug, "is it still indicated,
+    at the right dose, with what interactions?" — is a core clinical skill, and why "deprescribing"
+    is a word in modern guidelines.
+  </p>
+
+  <h2>From molecule to medicine</h2>
+  <p>
+    Everything above presumes a drug worth prescribing, and the pipeline that produces one is a
+    decade-and-a-half gauntlet with roughly 90% attrition. It begins with target identification — a
+    receptor or enzyme implicated in disease — then high-throughput screening of chemical libraries,
+    then optimisation of the best "hits" for potency, selectivity and ADME behaviour, then animal and
+    laboratory testing for toxicity. Only then do human trials open: <strong>Phase I</strong> in a few
+    dozen healthy volunteers, mapping safety and kinetics (this chapter's content, measured for real);
+    <strong>Phase II</strong> in a few hundred patients, asking does it work and at what dose;
+    <strong>Phase III</strong> in thousands, asking does it beat standard care with statistical
+    confidence; then approval, and <strong>Phase IV</strong> — the post-market surveillance in which
+    rare harms, invisible in trials of thousands, surface across millions. Aspirin's biography
+    compresses the whole discipline: salicylates from willow bark enter medicine as folk remedy;
+    Bayer acetylates the molecule in 1897–99 to make it gentler on the stomach, founding modern
+    pharmaceutical chemistry; its mechanism — blocking prostaglandin synthesis — is only worked out by
+    John Vane decades later (Nobel Prize, 1982); and new uses (heart-attack prevention via its
+    anti-platelet action) keep emerging a century after launch. One honest caveat completes the picture:
+    <strong>the placebo effect is real</strong> — expectation measurably changes reported symptoms and
+    even brain chemistry — and double-blinding in trials exists precisely to separate the molecule's
+    effect from the ritual of being treated.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four expert refinements. <strong>Zero-order kinetics</strong>: a few drugs — ethanol, phenytoin,
+    aspirin at high dose — saturate their elimination enzymes, so a constant <em>amount</em> (not
+    fraction) leaves per hour, and each increment of dose raises concentration disproportionately:
+    "one more drink" on a nearly saturated system can tip it from legal to dangerous, and phenytoin
+    dose increases are made in small steps for exactly this reason. <strong>Pharmacogenomics</strong>:
+    population averages hide genetic spread — CYP2D6 ultrarapid metabolisers convert codeine to
+    morphine so efficiently it becomes dangerous in breastfeeding mothers, while poor metabolisers get
+    no analgesia; TPMT testing before thiopurines and HLA-B*57:01 testing before abacavir are now
+    standard, marking the shift from average-based to genotype-informed dosing.
+    <strong>Tolerance and withdrawal</strong>: sustained agonist exposure triggers receptor
+    down-regulation and desensitisation, so effect shrinks over time (opioids, nitroglycerin patches
+    need drug-free intervals), and the same adaptation in reverse makes abrupt cessation dangerous —
+    beta-blocker withdrawal rebound, seizure risk on sudden anticonvulsant stop.
+    <strong>Special populations</strong>: neonates clear drugs slowly (immature enzymes and kidneys),
+    children are not small adults (their clearance per kilogram can <em>exceed</em> adults'), pregnancy
+    changes volume of distribution and clearance and adds the placental barrier question, and old age
+    quietly erodes every kinetic parameter at once — the arithmetic behind "start low, go slow." The
+    synthesis of the chapter: a prescription is a controlled experiment with variables on both sides,
+    and the prescriber's real skill is knowing which side of the ADME-and-receptor ledger each
+    clinical fact belongs to.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Rang &amp; Dale's Pharmacology; BMJ and FDA drug approval pipeline data; Vane, Nobel lecture (1982); FDA and EMA pharmacogenomic guidance.</p>
 </TopicPage>

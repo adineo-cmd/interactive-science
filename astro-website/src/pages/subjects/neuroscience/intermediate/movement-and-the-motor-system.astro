@@ -10,24 +10,311 @@ const motorCfg = {
     { math: '4 · Basal ganglia: the gatekeeper', note: 'They select and initiate movements (and habits). Dopamine loss here = Parkinson\'s (tremor, rigidity, hesitation); excess = Huntington\'s chorea. The motor system\'s traffic lights.' },
   ],
 };
+
+const motorQuizCfg = {
+  questions: [
+    {
+      q: 'A patient is slow to start moving, has rigid limbs and a tremor at rest, but no weakness when movement is finally under way. Which part of the hierarchy is most likely at fault?',
+      choices: [
+        'The corticospinal tract',
+        'The cerebellum',
+        'The basal ganglia',
+        'The alpha motor neurons',
+      ],
+      answer: 2,
+      why: 'Slowness of initiation, rigidity and a resting tremor with preserved strength is the basal ganglia signature — dopamine loss in Parkinson\'s disease. Corticospinal damage produces weakness; cerebellar damage produces jerky, inaccurate movement rather than hesitancy.',
+    },
+    {
+      q: 'Why is the patellar (knee-jerk) reflex a monosynaptic arc rather than a conscious response?',
+      choices: [
+        'Because the brainstem relays the signal to the muscle',
+        'Because the whole loop — sensory fibre, one spinal synapse, motor fibre — runs in about 50 ms, faster than any cortical route could manage',
+        'Because the quadriceps has no sensory receptors',
+        'Because conscious responses would be stronger',
+      ],
+      answer: 1,
+      why: 'Ia afferents conduct at up to about 100 m/s and the single synapse adds almost nothing, so the total loop takes roughly 50 ms. Conscious perception alone takes about 200 ms of cortical processing — a reflex that "asked the brain" would arrive long after the leg buckled.',
+    },
+    {
+      q: 'Which eye-movement system can only follow a target that is already moving, and fails completely on a stationary object?',
+      choices: [
+        'Saccades',
+        'The vestibulo-ocular reflex',
+        'Vergence',
+        'Smooth pursuit',
+      ],
+      answer: 3,
+      why: 'Smooth pursuit exists to hold the image of a moving object on the fovea; it has nothing to drive it when the target is still. Try it: stare at a fixed point and move your eyes "smoothly" — they will break into small saccades. Pursuit tracks at up to roughly 30-40 degrees per second.',
+    },
+    {
+      q: 'A person reaches for a cup and their hand overshoots wildly to the right, then corrects in several jerky steps. Strength is normal. Where is the lesion?',
+      choices: [
+        'Motor cortex',
+        'Cerebellum',
+        'Spinal cord',
+        'Neuromuscular junction',
+      ],
+      answer: 1,
+      why: 'Dysmetria (mis-scaling of movements) with normal strength, plus the corrective "staircase" pattern, is the cerebellar signature. The cerebellum does not generate force; it calibrates movement size and timing — so its failure shows up as inaccuracy, not paralysis.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/neuroscience/intermediate/movement-and-the-motor-system">
   <h2>The idea</h2>
   <p>
     Movement looks simple and is the brain's hardest computation: <strong>converting intention
-    into the exact contraction of hundreds of muscles in millisecond timing</strong>. The motor
-    system is a hierarchy of specialised controllers — and each level's failure produces a
-    different, diagnosable signature.
+    into the exact contraction of hundreds of muscles with millisecond timing</strong>. Signing
+    your name recruits dozens of muscles in each arm in a pattern that never repeats exactly
+    twice, yet your signature is recognisable every time. The nervous system manages this with a
+    hierarchy of specialised controllers — cortex for strategy and command, basal ganglia for
+    selection and initiation, cerebellum for calibration, spinal cord and muscles for
+    execution — and each level's failure produces a different, diagnosable signature. The other
+    deep surprise is that the motor system never issues a command and hopes: it predicts, acts,
+    senses the result, and corrects continuously, in loops running at several different speeds.
   </p>
 
   <Widget no="1" caption="the motor hierarchy and what each level contributes" widget="equationStep" config={motorCfg} />
 
-  <h2>How movement gets learned</h2>
-  <ul>
-    <li><strong>From conscious to automatic:</strong> new skills run through the cortex (clumsy, effortful); practice shifts them to cerebellum and basal ganglia (smooth, effortless). "Muscle memory" is neural — the muscles learned nothing.</li>
-    <li><strong>Mirror neurons (discovered 1996, macaques):</strong> fire both when acting and watching the same action — possibly relevant to imitation and empathy; how far the claim extends is actively debated.</li>
-    <li><strong>The body map is malleable:</strong> the cortical hand area enlarges in musicians; amputees feel phantom limbs in cortical real estate that got reassigned. The map is use-dependent.</li>
-    <li><strong>Motor neuroscience meets engineering:</strong> brain–computer interfaces (degraded movement restored via implanted electrodes — Neuralink, BrainGate) read motor cortex signals directly. The movement lesson is where neurology and the AI ladder shake hands.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Kandel et al., Principles of Neural Science; Shadmehr & Wise, The Computational Neurobiology of Reaching and Pointing; Rizzolatti on mirror neurons.</p>
+  <h2>Motor units and muscle receptors: the final common path</h2>
+  <p>
+    Sherrington called the alpha motor neuron the <strong>final common path</strong>: whatever
+    the cortex, reflexes or spinal circuits decide, the only way to act on a muscle is through
+    one of these neurons. One motor neuron plus all the muscle fibres it innervates forms a
+    <strong>motor unit</strong> — the indivisible quantum of force, since all its fibres
+    contract together. The size of the unit sets the resolution of control. Extraocular muscles
+    that aim the eyes have motor units of roughly a dozen fibres each, giving the fine gradation
+    eye movements need; the gastrocnemius (calf) has units of 1,000-2,000 fibres, favouring
+    power over precision. Control is a numbers game in two dimensions: <em>recruitment</em>
+    (which units fire) and <em>rate coding</em> (how fast each fires). Henneman's
+    <strong>size principle</strong> organises recruitment: small, slow, fatigue-resistant units
+    are always hired first, large fast-fatigable units only when demand rises — which is why
+    standing still is metabolically cheap and a sprint is not.
+  </p>
+  <p>
+    Muscles are also <strong>sensor organs</strong>, and the two embedded sensors answer
+    different questions. The <strong>muscle spindle</strong>, lying in parallel with the main
+    fibres, reports muscle <em>length</em> and, above all, the <em>velocity</em> of stretch via
+    its fast Ia afferents. The <strong>Golgi tendon organ</strong>, sitting in series at the
+    junction of muscle and tendon, reports <em>tension</em> (force). One measures position and
+    speed, the other load. A small side-loop, the <strong>gamma system</strong>, keeps the
+    spindle taut during contraction so it stays sensitive at every muscle length — without it,
+    shortening a muscle would silence its own sensor.
+  </p>
+  <p><em>Common misconception:</em> muscles are dumb actuators that merely receive commands.
+  In fact about a third of the nervous system's traffic with muscle is <em>upward</em>: spindle
+  and tendon afferents give the spinal cord and cortex a continuous report of limb position,
+  speed and load. Deprived of it (large-fibre sensory neuropathy does exactly this), people
+  cannot coordinate a reach without watching their hands — the famous patient I.W. had to
+  relearn movement visually, controlling each joint by eye.</p>
+
+  <h2>Spinal reflexes: the fast lane that bypasses the brain</h2>
+  <p>
+    The patellar reflex is the cleanest worked example in neuroscience. A tap on the tendon
+    stretches the quadriceps; spindles fire; Ia afferents race to the spinal cord at up to
+    80-120 metres per second; a <em>single</em> synapse excites the alpha motor neurons of the
+    same muscle; the quadriceps contracts. Total loop time: about 50 milliseconds. Conscious
+    perception of the tap alone would take around 200 milliseconds of cortical processing — a
+    reflex that consulted the cortex would arrive long after the knee buckled. Evolution's
+    solution: hard-wire the most urgent corrections into the cord. The same logic scales up in
+    the <strong>withdrawal reflex</strong>: step on a tack and pain afferents trigger a
+    polysynaptic circuit that flexes the hurt leg <em>and</em>, via commissural interneurons,
+    extends the opposite leg to keep you upright (<strong>crossed extensor reflex</strong>) —
+    two-legged balance demands the pair.
+  </p>
+  <p>
+    Two subtleties matter. First, reflexes are <strong>modulated, not fixed</strong>: descending
+    pathways continuously re-scale their gain, which is why the same tap feels different when
+    you are relaxed, braced or startled, and why clinicians use reflex testing as a probe —
+    hyperreflexia above a spinal lesion, absent reflexes at it. Second, reflex circuits do
+    housekeeping for voluntary movement: <strong>reciprocal inhibition</strong> (Ia
+    interneurons suppressing the antagonist when the agonist contracts) runs during every
+    voluntary action, offloading muscular bookkeeping from the cortex.
+  </p>
+
+  <h2>Descending pathways: from cortex to cord</h2>
+  <p>
+    Voluntary commands travel the <strong>corticospinal (pyramidal) tract</strong>: cell bodies
+    in layer V of motor cortex send roughly a million axons through the internal capsule, down
+    the brainstem, and across at the <strong>medullary pyramids</strong> — about 85% of them
+    decussate to form the lateral tract controlling distal limb muscles. The crossing explains
+    two bedside facts: a left-hemisphere stroke paralyses the right side, and the <em>level</em>
+    of a spinal cord injury predicts the loss (damage at C4 takes all four limbs; at T6 it
+    spares the arms). Sister tracts fill complementary roles — reticulospinal for posture and
+    muscle tone, vestibulospinal for balance, tectospinal for turning head and eyes, all
+    descending from the brainstem rather than cortex.
+  </p>
+  <p>
+    The lesion vocabulary you need: <strong>upper motor neuron</strong> damage (cortex,
+    internal capsule, tract) produces weakness with <em>increased</em> tone, brisk reflexes and
+    the upgoing Babinski sign — the brake is gone. <strong>Lower motor neuron</strong> damage
+    (the alpha neuron or its axon) produces flaccid weakness, wasting, fasciculations and absent
+    reflexes — the engine is gone. Every motor disease sorts into this grid, which is what makes
+    the neurology exam so powerful.
+  </p>
+
+  <h2>Motor cortex: maps, votes and the readiness potential</h2>
+  <p>
+    Penfield's electrical mapping exposed the <strong>somatotopic map</strong>: neighbouring
+    body parts are controlled by neighbouring cortex, with grotesque distortion — hands and
+    lips command a hugely disproportionate share of tissue, in proportion to the precision they
+    demand, not their size. But the map is not a switchboard. Georgopoulos' classic recordings
+    showed a single M1 neuron fires for a <em>range</em> of reach directions (broadly,
+    cosine-tuned around its favourite); the actual movement direction is read out from the
+    <strong>population vector</strong> — thousands of neurons voting, the brain averaging away
+    single-neuron noise. Neighbouring cortical areas divide the planning: the
+    <strong>premotor cortex</strong> specialises in externally cued actions (reach when the
+    light goes green), the <strong>supplementary motor area</strong> in internally generated
+    sequences (play the piece from memory).
+  </p>
+  <p>
+    The timing experiments are the strangest result in the field. Kornhuber and Deecke (1965)
+    recorded a <strong>readiness potential</strong> building over SMA up to a second or more
+    before a self-timed finger movement. Libet (1983) added the twist: subjects reported
+    becoming <em>aware</em> of their decision only about 200 milliseconds before moving. The
+    brain began preparing the action long before consciousness entered the room — which does
+    not settle free will (Libet himself proposed a final veto), but it demolished the naive
+    picture of a self issuing commands into a passive body.
+  </p>
+  <p><em>Common misconception:</em> the homunculus map means each muscle has one dedicated
+  brain cell. M1 does not work in muscle-language at all — it encodes movements, directions and
+  forces at the population level, which is precisely why brain-computer interfaces can decode
+  an intended reach from a few hundred neurons and drive a robotic arm with it.</p>
+
+  <h2>Basal ganglia: the gatekeeper</h2>
+  <p>
+    The basal ganglia — striatum (caudate and putamen), globus pallidus, subthalamic nucleus
+    and substantia nigra — form the loop that <strong>selects and releases</strong> actions.
+    The core trick is disinhibition. In the <strong>direct pathway</strong>, cortex excites
+    striatal neurons (D1 receptors) that inhibit the output nuclei (GPi/SNr), which normally
+    hold the thalamus in check; free the thalamus, and movement is released. The
+    <strong>indirect pathway</strong> (D2 receptors, via the external pallidum and subthalamic
+    nucleus) does the reverse, amplifying the brake. Dopamine from the substantia nigra biases
+    the balance towards "go", which is how the system implements selection, initiation and —
+    through the same circuitry — habit learning: the chunked stimulus-response routines you can
+    do while thinking of something else.
+  </p>
+  <p>
+    The pathology proves the design. Kill the dopamine neurons (Parkinson's disease — symptoms
+    appear only after roughly 60-80% are lost) and the brake wins: <em>hypokinesia</em>,
+    slowness of initiation, rigidity and the classic 4-6 Hz resting tremor. Treatment follows
+    the circuit: L-DOPA tops up the missing transmitter, and deep brain stimulation of the
+    subthalamic nucleus or GPi re-tunes the loop electrically. Break the <em>indirect</em>
+    pathway instead — as Huntington's disease does to the caudate (a CAG-repeat genetic
+    degeneration, onset age tracking repeat length) — and the gate swings open:
+    <em>hyperkinesia</em>, the writhing involuntary chorea. One circuit, two opposite diseases,
+    depending on which wire fails.
+  </p>
+
+  <h2>Cerebellum: the error corrector and predictor</h2>
+  <p>
+    The cerebellum is about 10% of brain volume but holds the majority of the brain's neurons —
+    tens of billions of tiny granule cells feeding the magnificent Purkinje cells, each with
+    over 100,000 synapses and the sole output of cerebellar cortex (inhibitory, onto the deep
+    nuclei). Its job is calibration. It receives a copy of the intended movement from cortex
+    and a stream of sensory reports of what actually happened, and it issues corrections on a
+    millisecond clock — faster than sensory feedback could travel the round trip. In
+    computational terms it runs a <em>forward model</em>: it predicts the sensory consequence
+    of the command and flags the mismatch. Learning follows the same circuit: climbing fibres
+    carry the error signal, and long-term depression at the parallel-fibre-Purkinje synapse
+    (the Marr-Albus-Ito model) slowly retunes the prediction — the mechanism behind adapting to
+    new glasses, learning to catch, or a tennis serve.
+  </p>
+  <p>
+    Damage produces a signature everyone has seen in miniature after alcohol (which
+    transiently impairs the cerebellum): <strong>ataxia</strong> — jerky, staggered movement
+    with <em>normal strength</em>; <strong>dysmetria</strong>, overshooting or undershooting a
+    target; <strong>intention tremor</strong>, which worsens as the hand approaches the cup —
+    the exact opposite of Parkinson's rest tremor; and slurred, scanning speech. No paralysis:
+    the gate still opens, the commands still flow, but they arrive uncalibrated.
+  </p>
+  <p><em>Common misconception:</em> the cerebellum is "just" a movement organ. Its inputs and
+  outputs connect to most of cortex, and imaging plus lesion studies now implicate it in
+  language processing, timing, and predicting abstract sequences — a general-purpose
+  prediction machine that happens to have been discovered through movement.</p>
+
+  <h2>Reading the lesions: a worked diagnostic exercise</h2>
+  <p>
+    Put the signatures together and you can localise like a neurologist. <em>Case 1:</em>
+    weakness of the right face and arm with brisk reflexes and an upgoing toe — corticospinal
+    territory, left hemisphere: expect a stroke in the internal capsule, where a vessel a
+    millimetre wide carries every fibre from the cortex. <em>Case 2:</em> slow initiation,
+    rigidity, rest tremor — basal ganglia (Parkinson's). <em>Case 3:</em> jerky, inaccurate
+    movement, intention tremor, normal strength — cerebellum. <em>Case 4:</em> wasting,
+    fasciculations <em>and</em> spasticity in the same limbs, with sensation spared —
+    <strong>amyotrophic lateral sclerosis</strong>, the rare disease that kills both upper and
+    lower motor neurons while leaving the sensory system untouched. <em>Case 5:</em> loss of
+    movement and position sense on one side of the body with pain-temperature loss on the
+    other — a hemisection of the cord (Brown-Séquard syndrome), where each fibre type crosses
+    at a different level. Five cases, five addresses, all from the same map.
+  </p>
+
+  <h2>The ocular motor system: the fastest movements you make</h2>
+  <p>
+    The retina samples the world sharply only at the <strong>fovea</strong>, a patch about 1-2
+    degrees wide resolving roughly one arc-minute — so the eyes must be <em>aimed</em> at
+    whatever matters and <em>stabilised</em> on it. Six extraocular muscles per eye do the
+    work, wired by three cranial nerves: the oculomotor (III) drives most of them, the
+    trochlear (IV) the superior oblique, the abducens (VI) the lateral rectus — which is why a
+    sixth-nerve palsy leaves an eye that will not abduct, a classic exam finding.
+  </p>
+  <p>
+    Five systems share the hardware, and each has a tell. <strong>Saccades</strong> snap the
+    fovea to a new target: ballistic (no mid-course correction), reaching peak velocities up to
+    about 900 degrees per second, after a latency of around 200 ms. During each saccade the
+    brain <em>suppresses vision</em> (saccadic masking) — you are effectively blind for the
+    20-80 ms of flight, and the system edits the gap out, which is why you can never see your
+    own eyes move in a mirror. <strong>Smooth pursuit</strong> holds a moving target on the
+    fovea, tracking accurately up to roughly 30-40 degrees per second — and it needs a moving
+    target to exist; asked to move the eyes smoothly across a stationary scene, they will only
+    produce a staircase of small saccades. <strong>The vestibulo-ocular reflex (VOR)</strong>
+    is the stabiliser: a three-neuron arc from the inner ear that counter-rotates the eyes for
+    every head motion, fast enough to keep the world steady while you jog, its gain fine-tuned
+    by the cerebellum (the textbook case of cerebellar motor learning). <strong>Vergence</strong>
+    converges or diverges the eyes for near and far; <strong>fixation</strong> holds the line —
+    punctuated by microsaccades that keep neurons from adapting to a perfectly static image.
+  </p>
+  <p>
+    Reading is an ocular-motor behaviour you are performing right now: a train of saccades
+    about 7-9 characters long, punctuated by fixations of roughly 200-250 ms, with regressions
+    back over hard passages. Eye-tracking experiments (McConkie & Rayner's moving-window
+    studies) show the useful span of text is a narrow window around fixation — the mental
+    machinery of reading is coupled, millisecond by millisecond, to the machinery that aims the
+    eyes.
+  </p>
+  <p><em>Common misconception:</em> the eyes glide smoothly across a page or scan a room like a
+  camera pan. Almost every large eye movement is a saccade — a jump — followed by a stop.
+  True smooth motion exists only when tracking something that is itself moving, or when the
+  VOR is countering your own head motion.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>From conscious to automatic.</strong> New skills run through cortex and demand
+    attention; practice shifts control towards cerebellum, basal ganglia and spinal circuits —
+    smooth, fast, effortless. "Muscle memory" is neural: the muscles learned nothing. Mirror
+    neurons (discovered 1996 in macaque premotor cortex) fire both when acting and when
+    watching the same action, and are candidates for the substrate of imitation and empathy —
+    though how far the claim extends in humans is actively debated. The cortical body map is
+    use-dependent: the hand area enlarges in string players; amputees feel phantom limbs in
+    cortical real estate that neighbouring inputs have quietly annexed.
+  </p>
+  <p>
+    <strong>Motor neuroscience meets engineering.</strong> Brain-computer interfaces (BrainGate,
+    Neuralink) decode population activity in M1 to drive cursors and robotic arms — the
+    population-vector insight made silicon. On the clinical frontier, the lesion grid keeps
+    paying: deep brain stimulation of the basal ganglia loop, once heretical, is standard care
+    in advanced Parkinson's; VOR-training protocols rehabilitate vestibular patients by
+    deliberately driving cerebellar gain adaptation.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Why does the cerebellum hold so many neurons for so
+    modest a volume — is timing the missing variable in theories of cognition? Does basal
+    ganglia dopamine encode reward, movement vigour, or both (the "motivation vs motor" debate
+    is live)? And how much of what we call intelligence is, at bottom, sensorimotor prediction?
+    The motor system, long the poor relation of sensory neuroscience, is where the field now
+    expects the next surprises.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Kandel et al., Principles of Neural Science; Sherrington's "final common path" (The Integrative Action of the Nervous System, 1906); Henneman's size principle; Georgopoulos et al. on population coding; Libet et al. (1983) on readiness potentials; Azevedo et al. (2009) on cell numbers; Shadmehr & Wise, The Computational Neurobiology of Reaching and Pointing; Rizzolatti on mirror neurons.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={motorQuizCfg} />
 </TopicPage>
