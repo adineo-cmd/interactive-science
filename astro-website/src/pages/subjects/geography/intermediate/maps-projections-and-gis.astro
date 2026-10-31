@@ -14,20 +14,181 @@ const projCfg = {
 <TopicPage slug="subjects/geography/intermediate/maps-projections-and-gis">
   <h2>The idea</h2>
   <p>
-    Maps are arguments: <strong>every projection distorts something, and every selection of
-    layers emphasises a story</strong>. Modern geography's tool is the GIS — a system that stacks
-    spatial data in layers and queries it, turning "where" into the most powerful question in
-    public health, logistics, climate planning and urban design.
+    You already know how to read a map: scale bar, key, grid references, the north arrow.
+    This page teaches the layer underneath — <strong>how maps are actually made, why every
+    one of them distorts the world, and how modern Geographic Information Systems (GIS) turn
+    stacks of map layers into answers to "where?" questions</strong>. The governing principle:
+    maps are arguments. Every projection sacrifices some property of the globe to preserve
+    another, and every dataset chosen for a GIS layer foregrounds a story. A cartographer who
+    understands the mechanics can see the argument; one who does not is being argued at.
   </p>
 
   <Widget no="1" caption="projections, distortions and the birth of spatial analysis" widget="equationStep" config={projCfg} />
 
-  <h2>The modern geographer's toolkit</h2>
-  <ul>
-    <li><strong>Coordinate systems:</strong> latitude/longitude (angular), UTM (metre-precise zones). Get the datum wrong and your data lands in the wrong city — a real and expensive class of error.</li>
-    <li><strong>Remote sensing feeds the layers:</strong> satellite imagery (Landsat since 1972 — the longest Earth record), radar, LiDAR. Deforestation, glacier retreat and urban sprawl are now measured, not estimated.</li>
-    <li><strong>Spatial statistics:</strong> clusters, hot spots and correlations have their own tests (is that cancer cluster real, or random?). Geography's contribution to the statistics ladder.</li>
-    <li><strong>Cartographic ethics:</strong> redistricting gerrymanders, "holes" in coverage, colour choices that exaggerate — maps persuade. Snow's cholera map, redistricting maps and election maps all prove it.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Monmonier, How to Lie with Maps; Johnson, The Ghost Map (Snow, 1854); Esri & QGIS documentation.</p>
+  <h2>Why every flat map must lie</h2>
+  <p>
+    A globe is the only true image of the Earth, and you cannot flatten a curved surface
+    without stretching, tearing or squashing it — try flattening an orange peel. Map
+    projections are systematic recipes for doing that flattening, and each recipe can
+    preserve at most a few of the four properties you might want: <strong>shape</strong>
+    (local angles), <strong>area</strong> (relative sizes), <strong>distance</strong>, and
+    <strong>direction</strong>. No flat map preserves all four; most preserve one well and
+    sacrifice the rest. So cartography's first rule: <em>choose the projection whose
+    distortion hurts least for your purpose</em>. A navigator, who steers by compass bearing,
+    wants direction; a demographer comparing countries wants area; an airline plotting the
+    shortest route wants great circles (which is why flights to Asia arc near the pole on a
+    flat map — the "curve" is the straight line, seen on a distorted sheet).
+  </p>
+
+  <h2>Projections: choosing your lie</h2>
+  <p>
+    The <strong>Mercator projection</strong> (1569) preserves angles: any straight line on it
+    is a constant compass bearing (a rhumb line), which made it revolutionary for sailing —
+    draw a line from Lisbon to Havana and read the bearing off the map. The price is area
+    inflation that grows towards the poles: local scale stretches in proportion to 1 divided
+    by the cosine of latitude, so at 60° everything is drawn twice as long in both
+    directions, and hence four times too big in area. Greenland (72°N) is drawn roughly the
+    size of Africa, though Africa is about 14 times larger — 30.4 million km² against
+    2.2 million. Because Mercator became the default classroom and web map, generations
+    internalised a world in which Europe and North America loom over the global south.
+  </p>
+  <p>
+    <em>Common misconception:</em> Mercator is "a racist map" that was designed to flatter
+    Europe. Its inventor Gerardus Mercator built it for compass navigation, three centuries
+    before the countries it allegedly flatters existed in their modern form; the inflation
+    is a mathematical consequence of preserving bearings, not a political choice. (Feel the
+    arithmetic: the local stretch is 1 divided by the cosine of latitude, so at 60°N a
+    kilometre is drawn 2 km long — 4 km² of ink for 1 km² of ground, and worse at Greenland's
+    72°N.) The
+    legitimate criticism is that a navigation tool became a general-purpose world map — the
+    fix is choosing the right projection, not discarding the wrong-shamed one.
+    <strong>Equal-area projections</strong> (Gall-Peters, Mollweide, Albers) solve size at
+    the cost of sheared shapes; <strong>compromise projections</strong> such as Robinson
+    (1963) and the Winkel tripel — National Geographic's standard since 1998 — minimise total
+    distortion without eliminating any. And for showing the poles, azimuthal projections
+    centred on a point beat everything.
+  </p>
+
+  <h2>Scale, symbols and generalisation</h2>
+  <p>
+    Scale expresses how much reality one map unit represents: on a 1:50,000 map, 1 cm equals
+    500 m. Notice the direction of the words: <strong>large scale</strong> (1:10,000) shows
+    small areas in great detail; <strong>small scale</strong> (1:1,000,000) shows large areas
+    in little detail — the fraction is literally bigger or smaller. <em>Common misconception:</em>
+    "large scale" means a map of a large region; it is exactly backwards. Every map also
+    generalises: at small scales, roads straighten, coastlines smooth, villages vanish —
+    decisions that are invisible unless you look for them. Symbols carry arguments too.
+    A choropleth map (areas shaded by value) looks objective, but its bins and colours
+    decide what jumps out: five classes hides more than ten; red dramatises; a breakpoint
+    at 0 exaggerates a divide. Cartographer Mark Monmonier's classic <em>How to Lie with
+    Maps</em> (1991) catalogues the toolkit — which is also, usefully, the toolkit for
+    lying <em>with maps deliberately</em> when the honest design serves the message.
+  </p>
+
+  <h2>Reading the land: contours and relief</h2>
+  <p>
+    Height is shown on topographic maps by <strong>contour lines</strong> — lines joining
+    points of equal elevation. The rules decode the landscape: contours close together mean
+    steep ground, wide apart mean gentle; a "V" of contours pointing uphill marks a valley
+    (rivers cut the V), while the same shape pointing downhill is a spur; closed rings mark
+    hills, and a hachured ring marks a depression. From contours you can compute real
+    quantities — an exam favourite. A worked example: if a route climbs from the 200 m
+    contour to the 500 m contour over 3 km of ground, the average gradient is 300 m over
+    3,000 m, or 1 in 10. Cross-sections — profile drawings of the land along a line — turn
+    contour data into a picture of what a walker or a road engineer will actually face.
+    Relief maps are where the "map as argument" point bites hardest: shade the slopes
+    differently and a plateau reads as wilderness, or as building land.
+    Practice the decode on any ordnance-survey extract and it becomes reflex — the
+    difference between reading a map and thinking geographically.
+  </p>
+
+  <h2>Vector and raster: the two data types</h2>
+  <p>
+    Every layer in a GIS is stored one of two ways. <strong>Vector</strong> data records
+    discrete features as points (wells, crimes), lines (roads, rivers) and polygons (parcels,
+    lakes), each with attribute tables — precise, compact, ideal for networks and boundaries.
+    <strong>Raster</strong> data divides space into a grid of cells, each holding a value —
+    elevation, temperature, land cover — continuous by nature and ideal for modelling
+    (flood-water depth across a valley, pollutant dispersal). Choosing is a real design
+    decision: a road network is vector logic (which junction connects to which); a landslide
+    susceptibility model is raster logic (slope and soil and rain per cell, multiplied and
+    summed). Analyses often convert between the two, and each conversion trades precision
+    for convenience. Boundary and network data is almost always vector; continuous
+    environmental surfaces are almost always raster — a good analyst can say in one
+    sentence which a new dataset is, and why.
+  </p>
+
+  <h2>Coordinates, datums and the discipline of "where"</h2>
+  <p>
+    To store location, geography uses coordinate systems. Latitude and longitude are angles
+    on a sphere (the Equator 0°, poles 90°N and 90°S); the Universal Transverse Mercator
+    (UTM) system instead divides the world into 60 vertical zones and gives metre-precise
+    eastings and northings, which surveyors and soldiers prefer. The subtle trap is the
+    <strong>datum</strong> — the mathematical model of Earth's shape that coordinates are
+    measured against. North American data stored in the old NAD27 datum read in a modern
+    system can land 100 m or more from the truth, which for a pipeline or a landing strip is
+    an expensive category of error. GPS satellites now give any phone metre-level position
+    from a constellation of over thirty satellites (centimetres with survey corrections), so
+    the practical skill of the modern geographer is less "finding position" than
+    <em>knowing which coordinate system your data was born in</em>.
+  </p>
+
+  <h2>GIS: layers, queries and the founding detective story</h2>
+  <p>
+    A Geographic Information System is software that stacks spatial data — roads, population,
+    elevation, rainfall, land ownership — as layers registered to the same coordinates, then
+    answers questions by combining them. A spatial query reads like a sentence:
+    <em>show all neighbourhoods within 5 km of a clinic, that flooded in the last decade,
+    where population density exceeds 2,000 per km²</em>. Each clause is a layer operation;
+    the answer is the overlap. The founding case study predates the software by a century:
+    in the 1854 Broad Street cholera outbreak, physician John Snow plotted each death as a
+    bar on a street map of Soho, London. The clustering pointed at the Broad Street water
+    pump; Snow had the handle removed and the epidemic faded — roughly 600 deaths in the
+    fortnight at its height. He strengthened the case statistically, comparing death rates
+    of customers of two water companies drawing from upstream and downstream of a sewage
+    outfall, but the map persuaded where tables had not. Modern public health still works
+    this way: vaccination campaigns are planned by overlaying case clusters on road networks,
+    and a supermarket chain "simply" runs Snow's logic on footfall.
+  </p>
+  <p>
+    Real GIS projects combine simple operations into a weighted model. To site a wind farm,
+    for instance: buffer all settlements by 800 m (exclude), buffer roads and rivers,
+    mask out slopes steeper than 15° from a raster DEM (digital elevation model), keep areas
+    with mean wind speed above 7 m/s, and score the remainder for grid-connection distance —
+    the map of candidate sites falls out of arithmetic that every stakeholder can audit.
+    The professional skill is less the software than decomposing a question into layer
+    operations, and being explicit about each threshold.
+  </p>
+  <p>
+    GIS layers are fed by <strong>remote sensing</strong> — satellite imagery (Landsat has
+    imaged Earth continuously since 1972, the longest-running Earth record), radar that
+    sees through cloud, and airborne LiDAR that strips forests away to reveal the ground
+    beneath. Deforestation, glacier retreat, urban sprawl and flood extents are now
+    <em>measured</em>, not estimated, and change is detectable year by year by differencing
+    two images.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The intellectual spine of the field is <strong>Tobler's first law of geography</strong>
+    (1970): "everything is related to everything else, but near things are more related than
+    distant things." It sounds trivial and is not — it is the assumption that makes spatial
+    statistics possible, because if location carried no information, a map would be a random
+    scatter. Spatial autocorrelation statistics (Moran's I) test whether a pattern is
+    clustered, random or dispersed; hot-spot analysis asks whether a cluster of disease
+    cases, crimes or customers is real or just population density wearing a costume —
+    always compare rates against the underlying population before declaring a cluster. The
+    Mercator stretch has a modern sequel: Google Maps and its rivals use Web Mercator,
+    which additionally treats the Earth as a sphere rather than an ellipsoid, sacrificing
+    yet more accuracy for fast tile rendering — the same 1569 compromise, reborn for
+    zoomable slippy maps. And the frontier questions are live ones: citizen-built
+    OpenStreetMap (founded 2004) now rivals state mapping in many cities; location data from
+    phones raises privacy questions no cartographer of 1970 imagined; and deep-learning
+    models now read satellite imagery to count buildings and predict crop yields. The
+    discipline Snow started with a pen and a street plan has become one of the most powerful
+    lenses of the data age — and its first lesson stands: look at the projection, ask who
+    drew the layers, and remember the map is an argument.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Monmonier, How to Lie with Maps; Johnson, The Ghost Map (Snow, 1854); Esri & QGIS documentation; Tobler (1970), “A Computer Movie Simulating Urban Growth”.</p>
 </TopicPage>

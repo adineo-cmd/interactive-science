@@ -15,15 +15,71 @@ const regCfg = {
   crossings: false,
   height: 350,
 };
+
+const regQuizCfg = {
+  questions: [
+    {
+      q: 'A line of best fit for revision time (hours, x) against test score (y) is y = 37 + 5.9x. What does the 5.9 mean?',
+      choices: [
+        'The maximum possible score',
+        'Each extra hour of revision is associated with about 5.9 more marks, on average, within the measured range — the gradient is the model\'s exchange rate between the variables',
+        'Every student gains exactly 5.9 marks',
+        'The test has 5.9 questions',
+      ],
+      answer: 1,
+      why: 'The gradient is a per-unit prediction, not a guarantee: individual students scatter around the line, and the word "associated" is doing essential work — the regression says how y moves with x in this data, not what caused what. The intercept (37) predicts the score at zero hours, meaningful only if x = 0 is inside or near the data.',
+    },
+    {
+      q: 'The fitted line above is used to predict the score for 60 hours of revision, when the data ran from 1 to 8 hours. This is:',
+      choices: [
+        'Fine — lines work anywhere',
+        'Extrapolation, and the classic regression error: the linear pattern is verified only inside the observed range, and outside it the true relationship may curve, plateau or reverse — 60 hours predicts about 391 marks, which is impossible',
+        'More accurate than interpolation',
+        'Only wrong if r is small',
+      ],
+      answer: 1,
+      why: 'The line has no knowledge beyond the data that built it. Predicting 431 at 60 hours is arithmetic, not evidence. The syllabus limitation is exactly this: use the line to interpolate within the measured range; treat anything outside as a hypothesis needing new data.',
+    },
+    {
+      q: 'A dataset of (height, shoe size) has r = 0.97; a dataset of (daily temperature, ice-cream sales) has r = 0.85; a dataset of (shoe size, maths score) has r ≈ 0. What does each r measure?',
+      choices: [
+        'How fast one variable causes the other',
+        'The strength and direction of straight-line association only — strong for the first two (whatever the cause), essentially none for the third; r says nothing about causation and nothing about curved relationships',
+        'The slope of the line in each case',
+        'The reliability of the measurements',
+      ],
+      answer: 1,
+      why: 'r is dimensionless, from −1 to +1, and measures linear co-movement. Two datasets can share r = 0.85 with completely different stories: a third variable (season) drives the ice-cream one; genetics and age drive the first. And r ≈ 0 does not prove unrelatedness — a perfect U-shaped curve also scores near zero.',
+    },
+    {
+      q: 'Why does the "method of semi-averages" (split the data by x into halves, average each half, draw the line through the two mean points) give a sensible line?',
+      choices: [
+        'It is easier to teach than any other method and has no logic',
+        'Each mean point is the balance point of its half, so the line through both honours the average behaviour early and late — a robust, teachable approximation to the least-squares line',
+        'It always passes through every point',
+        'It ignores outliers entirely',
+      ],
+      answer: 1,
+      why: 'Averages swallow local noise, so the two mean-points summarise each half faithfully; the line joining them captures the overall trend with almost no computation. Least squares refines it (using every point, minimising squared vertical errors), but for estimating trends by hand — and for building the intuition that regression lines pass through the data\'s centre of gravity — semi-averages is the honest quick method.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/statistics/intermediate/correlation-and-regression">
   <h2>The idea</h2>
   <p>
     <strong>Correlation</strong> measures whether two variables move together (−1 to +1);
     <strong>regression</strong> draws the best straight line through the data so you can predict
-    one from the other. The line is chosen by <strong>least squares</strong> — minimising the sum
-    of squared vertical gaps, a method Gauss and Legendre published in the early 1800s and every
-    spreadsheet still runs.
+    one from the other. Together they are statistics's most used — and most misused —
+    pair of tools: the same mathematics runs in epidemiology, econometrics, A/B tests
+    and machine learning, and the same two fallacies (correlation is causation; lines
+    extend forever) ambush the unwary in every field. The line is chosen by <strong>least
+    squares</strong> — minimising the sum of squared vertical gaps, a method Gauss and
+    Legendre published in the early 1800s and every spreadsheet still runs — but the
+    route to it runs through skills this syllabus names: reading a scatter diagram,
+    judging correlation by eye, drawing a line by eye and by semi-averages, and
+    knowing exactly what the line's equation may and may not be asked. This page
+    covers all of it, with one dataset worked by hand from scatter to prediction.
   </p>
 
   <Widget no="1" caption="does more study predict higher scores? the line says yes — the scatter says how confidently" widget="plotter" config={regCfg} />
@@ -35,12 +91,187 @@ const regCfg = {
     within the measured range.
   </p>
 
-  <h2>The professional checklist</h2>
-  <ul>
-    <li><strong>r measures straight-line strength only.</strong> Anscombe's quartet (1973) shows four wildly different datasets with identical r and line — always plot first.</li>
-    <li><strong>Outliers drag least-squares lines</strong> because squared errors amplify them. One billionaire in an income dataset redraws the "trend".</li>
-    <li><strong>Extrapolation is where lines lie.</strong> The model knows nothing beyond the data; predicting a 150-point score (impossible) or next decade's climate from a two-year fit are the same error.</li>
-    <li><strong>Regression ≠ causation.</strong> Controlled variables, experiments or causal-inference tools (expert rung) are what license the word "because".</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Legendre (1805), Gauss (1809); Anscombe, The American Statistician (1973); OpenStax, Introductory Statistics.</p>
+  <h2>Scatter diagrams and the two variables</h2>
+  <p>
+    Bivariate data — pairs of measurements on the same subjects — lives on a
+    <strong>scatter diagram</strong>, one dot per subject. Before any line is drawn,
+    two decisions give the axes their meaning. The <strong>independent variable</strong>
+    (explanatory, x-axis) is the one you treat as the input — hours of revision,
+    temperature, advertising spend; the <strong>dependent variable</strong>
+    (response, y-axis) is the one being predicted — score, ice-cream sales.
+    The convention follows the logic: we predict the dependent <em>from</em> the
+    independent, and regression lines are read vertically (given x, what y?).
+    Choosing which is which is not always mechanical — either variable can
+    be predicted from the other, with different resulting lines — but the
+    question you intend to ask should pick the axes. The scatter itself then
+    speaks in shapes: upward drift (positive association), downward
+    (negative), curved (the linear tools are the wrong tool), banded and
+    diffuse (weak), or point-clouds with no pattern (none). The professional
+    habit the syllabus is quietly teaching: <strong>plot first, compute second</strong> —
+    every horror story in this page begins with someone skipping the plot.
+  </p>
+
+  <h2>Correlation: strength and direction on the r scale</h2>
+  <p>
+    The <strong>correlation coefficient r</strong> compresses a scatter into one number
+    between −1 and +1: <em>direction</em> from the sign, <em>straight-line
+    strength</em> from the magnitude. Rough calibration: |r| above about
+    0.8 is strong, 0.5–0.8 moderate, 0.2–0.5 weak, below 0.2 negligible —
+    with the caveat that "strong" is contextual (r = 0.5 between a
+    psychological measure and a behaviour can be a major finding; r = 0.5
+    between two physics lab instruments is a calibration failure). r = +1
+    means perfect positive linear alignment, r = −1 perfect negative, and
+    r ≈ 0 means <em>no linear association</em> — a phrase whose precision
+    matters, since a perfect U-shaped curve also scores r ≈ 0 (the
+    coefficient only measures straight-line co-movement). Three reading
+    rules: r is dimensionless (it ignores units — heights in metres or
+    inches give the same r); r measures association, not agreement
+    (x and x + 10 correlate perfectly but differ by 10 everywhere); and r
+    is unusually sensitive to outliers, because the deviations it feeds
+    on get squared — one billionaire in an income study can move r by
+    tenths. The classic demonstration is <strong>Anscombe's quartet</strong>
+    (1973): four datasets — a clean linear trend, a perfect curve, an
+    outlier-distorted cloud and a vertical line of x values — engineered
+    to share the same r (0.816) and the same fitted line while being
+    completely different data. Plot, always plot.
+  </p>
+
+  <h2>Lines by eye and by semi-averages</h2>
+  <p>
+    Before least squares, the syllabus's hand methods build the intuition
+    that a regression line is a <em>summary</em> of the cloud. <strong>By eye:</strong>
+    lay a transparent ruler on the scatter so the points are balanced
+    above and below the line along its whole length — the line should
+    pass through the general drift, with residuals (vertical gaps)
+    cancelling at both ends, not fit a lucky subset. <strong>By the method of
+    semi-averages:</strong> order the data by x, split into a lower half and an
+    upper half, compute the mean x and mean y of each half, and draw the
+    line through the two mean points. <strong>Worked example.</strong> Eight
+    students' revision hours (x) and scores (y): (1, 45), (2, 51), (3, 54),
+    (4, 58), (5, 66), (6, 69), (7, 73), (8, 80). Lower half means:
+    x̄₁ = (1+2+3+4)/4 = 2.5, ȳ₁ = (45+51+54+58)/4 = 52. Upper half:
+    x̄₂ = 6.5, ȳ₂ = (66+69+73+80)/4 = 72. Line through (2.5, 52) and
+    (6.5, 72): gradient = (72 − 52) ÷ (6.5 − 2.5) = 20 ÷ 4 = <strong>5 marks per
+    hour</strong>; intercept: 52 = a + 5 × 2.5 gives a = 39.5. So
+    y ≈ 39.5 + 5x — a line that honours the average behaviour of both
+    halves. Why it works: each half's mean is that half's balance point,
+    so the line joining them summarises the trend with the noise averaged
+    out. Why least squares improves on it: the semi-average line uses
+    eight data points only through two summaries, while least squares
+    uses every point, choosing the gradient and intercept that minimise
+    the sum of <em>squared</em> vertical errors (squaring both prevents
+    positive and negative gaps cancelling and penalises big misses) —
+    the method of Legendre (1805) and Gauss, and the reason the line
+    always passes through the point (x̄, ȳ), the cloud's centre of gravity.
+  </p>
+
+  <h2>Using the line: interpolation, prediction, and the limits</h2>
+  <p>
+    The fitted line's equation, y = a + bx, earns its keep as a predictor —
+    with an interpretation for each part. <strong>The gradient b</strong> is the
+    exchange rate: our worked line predicts about 5 extra marks per extra
+    revision hour, <em>on average, within the measured range</em>. <strong>The
+    intercept a</strong> predicts y at x = 0 — meaningful here (39.5 marks for
+    zero revision), meaningless when x = 0 lies outside the data (a
+    height–weight line's "weight at 0 cm height"). The syllabus's
+    assumptions and limitations are the checklist for honest use:
+    <strong>linearity</strong> (the pattern really is straight in the measured
+    range — check the scatter for curves); <strong>independence of
+    observations</strong> (each student counted once); <strong>the range
+    restriction</strong> — <em>interpolation</em> (predicting inside the observed
+    x-range) is supported by the data, while <strong>extrapolation</strong>
+    (predicting outside it) assumes the pattern continues unverified:
+    our line predicts 60 hours → 339.5 marks, past the exam's maximum —
+    arithmetic, not evidence. The same error at scale: extrapolating a
+    two-year trend line into next decade's climate, or a company's
+    growth curve into a valuation. And one more caveat the residuals
+    can reveal: prediction accuracy is about the <em>average</em> — the
+    scatter around the line (measured by the residuals, or summarised
+    as r², the fraction of y's variation the line explains) tells you
+    how wide the honest error bar on any single prediction is.
+  </p>
+  <p><em>Common misconception:</em> a strong correlation establishes cause and
+  effect. Correlation is evidence of association — no more. The
+  ice-cream–drowning correlation is real and causal in neither direction
+  (summer drives both); the shoe-size–reading-age correlation in children
+  has a lurking variable (age); and reverse causation (does confidence
+  cause success, or success confidence?) is invisible to r. Licensed
+  "because" claims need experiments, controlled variables or the
+  causal-inference machinery of the expert tier — the regression line
+  reports how variables move together, and the <em>story</em> of why is
+  foreign territory to it.</p>
+
+  <h2>r² and the language of explained variation</h2>
+  <p>
+    The correlation coefficient has an offspring worth naming:
+    <strong>r²</strong> (the coefficient of determination) measures the
+    <em>fraction of the dependent variable's variation that the fitted
+    line explains</em>. If revision hours and scores correlate at
+    r = 0.9, then r² = 0.81 — 81% of the differences between students'
+    scores travel with their differences in revision, leaving 19% to
+    everything else (prior ability, sleep, exam-day luck). The r²
+    scale is honest about what strong correlations do and do not
+    deliver: r = 0.5 — which intuition calls "moderate" — is only
+    r² = 0.25, a quarter of the story. It also disciplines prediction
+    language: a regression with r² = 0.36 (r = 0.6) explains about a
+    third of the variance, so its individual predictions carry error
+    bars wider than the pattern might suggest — the widget above,
+    with r ≈ 0.95, has r² ≈ 0.9, which is what "points hug the line"
+    means numerically. When you next read "X explains 30% of the
+    variation in Y", you are reading an r² wearing its practical
+    clothes.
+  </p>
+
+  <h2>When the line is the wrong tool: curved relationships</h2>
+  <p>
+    Every tool on this page assumes the relationship is straight, and the
+    most instructive failures are the curved ones. A classic worked
+    shape: <strong>exam score against study hours</strong> rises steeply at
+    first (the first hours buy the most marks), then flattens as
+    fatigue and diminishing returns bite — an S or plateau curve.
+    Fitted with a straight line, that data yields a mediocre r, a
+    line that underpredicts the low-hours students and the
+    high-hours students alike, and — worst — an <em>extrapolation
+    absurdity in both directions</em> (zero hours never scores the
+    intercept, and forty hours does not score 200). The diagnostic
+    is always the <strong>residual plot</strong>: fit the line, then plot
+    what it missed; a curved band of residuals (negative at both
+    ends, positive in the middle, or vice versa) is the data
+    filing a complaint. The remedies escalate: transform a
+    variable (logarithms linearise many growth curves — the
+    log scale of every pandemic chart), fit a quadratic term,
+    or abandon lines for the appropriate curve. The syllabus's
+    assumption check is exactly this habit: <em>linearity is not
+    a given; it is a claim the scatter must support</em>.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Outliers and leverage.</strong> Least squares squares errors, so a far-out
+    x value (high <em>leverage</em>) can pivot the whole line while looking like
+    one odd point. The professional checks: plot with and without the
+    outlier, report both if the conclusion changes, and never delete an
+    outlier silently — the deletion is sometimes the finding (the
+    ozone-hole data's outlier-discarding software delayed its discovery).
+  </p>
+  <p>
+    <strong>Regression to the mean.</strong> Why do outstanding first years tend to
+    disappoint in the second, and terrible ones improve? Partly because
+    extreme performances mix skill with luck, and luck does not repeat —
+    the regression effect Francis Galton named the field for, measuring it
+    in parents' and children's heights. Any "improvement after intervention"
+    claim on extreme groups must subtract it.
+  </p>
+  <p>
+    <strong>Simpson's paradox.</strong> Aggregated data can show an association
+    opposite to every subgroup's — Berkeley's 1973 admissions data showed
+    men admitted at higher rates overall while most departments admitted
+    women at higher rates (women applied to the most competitive
+    departments). The scatter lesson scaled up: always ask what is being
+    aggregated, because the line through the pooled cloud can be nobody's
+    line at all.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Legendre (1805), Gauss (1809); Anscombe, The American Statistician (1973); OpenStax, Introductory Statistics; Galton's regression studies.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={regQuizCfg} />
 </TopicPage>

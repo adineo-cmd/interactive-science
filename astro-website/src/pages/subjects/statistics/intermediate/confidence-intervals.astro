@@ -13,6 +13,55 @@ const ciCfg = {
     { label: '99% CI half-width (2.576·SE)', expr: '2.576*s/sqrt(n)', unit: '±' },
   ],
 };
+
+const ciQuizCfg = {
+  questions: [
+    {
+      q: 'A study reports: mean commute 42 minutes, 95% CI from 40.4 to 43.6. What does the "95%" attach to?',
+      choices: [
+        'The true mean is definitely in this interval',
+        'The method: intervals built this way (this recipe, this sample size) capture the true mean in about 95% of repeated samples — this particular interval either does or does not, and we never find out which',
+        '95% of commuters have commutes in this range',
+        'The study succeeded 95% of the time',
+      ],
+      answer: 1,
+      why: 'The confidence statement is about the long-run performance of the procedure, not about any single interval. It is emphatically not "95% of the data" — that would be a prediction interval, which is much wider. The subtle point is the price of estimating an unknown: you cannot know whether your one interval won.',
+    },
+    {
+      q: 'Which data set has the larger standard deviation: A = {4, 8, 12, 16} or B = {9, 10, 11, 12}?',
+      choices: [
+        'They are equal — same size, same middle',
+        'A: both mean 10, but A\'s deviations (−6, −2, 2, 6) are far larger than B\'s (−1.5, −0.5, 0.5, 1.5) — spread about the mean is exactly what SD measures',
+        'B, because it is more regular',
+        'Impossible to tell without more data',
+      ],
+      answer: 1,
+      why: 'Standard deviation is the typical distance of values from the mean. A\'s values average 6 units from the mean (SD ≈ 5.16 with n−1); B\'s average about 1 unit (SD ≈ 1.29). Same centre, wildly different spread — the reason two data sets with identical means can describe utterly different worlds.',
+    },
+    {
+      q: 'Your 95% CI for mean delivery time is ±8 minutes, and you need ±2. Roughly how much more data do you need?',
+      choices: [
+        'Four times as much',
+        'Sixteen times as much — the half-width scales as s/√n, so shrinking it 4× requires n to grow 4² = 16× (e.g. from 25 orders to 400)',
+        'Twice as much',
+        'No amount of data helps',
+      ],
+      answer: 1,
+      why: 'The square-root law again: interval width ∝ 1/√n. Precision is expensive, which is why smart designs first reduce s (measure more carefully, stratify the sampling) before paying for n — and why "how big a sample?" always starts from "what width can you live with?".',
+    },
+    {
+      q: 'A shop reports "average basket £34.17 ± £9 (95% CI)". The most useful single upgrade to this report is:',
+      choices: [
+        'More decimal places on the mean',
+        'Context on spread and shape: the SD or the median with quartiles — if baskets are skewed by a few huge orders, the mean ± CI misleads and the median + IQR describes the typical customer honestly',
+        'A pie chart',
+        'Nothing — it is complete',
+      ],
+      answer: 1,
+      why: 'Intervals inherit every weakness of the mean they wrap. With skewed or outlier-laden data the mean is unrepresentative and the interval is precise about the wrong quantity. The dispersion toolkit (IQR vs SD, median vs mean) is what tells you whether the interval is worth reporting at all.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/statistics/intermediate/confidence-intervals">
   <h2>The idea</h2>
@@ -21,7 +70,14 @@ const ciCfg = {
     states how far off it plausibly is. "The average commute is 42 ± 4 minutes (95% CI)" means:
     if we repeated the sampling many times, 95% of such intervals would capture the true mean.
     The interval is the honest way to report — the point estimate alone is a promise nobody can
-    keep.
+    keep. But an interval is only as good as the machinery underneath it: the recipe
+    (mean ± 1.96 × s/√n) is built from the <em>measures of spread</em> this unit is really
+    about — quartiles, the interquartile range and the standard deviation. Master those
+    three and the confidence interval stops being a formula and becomes arithmetic you can
+    see through. This page covers the dispersion toolkit (range, quartiles, IQR, standard
+    deviation — including estimating quartiles from grouped data), when each measure is the
+    right one, the sampling variability that makes estimates wobble, the confidence-
+    interval recipe worked with real numbers, and what the "95%" honestly means.
   </p>
 
   <Widget no="1" caption="interval width responds to noise (s) and sample size (√n) — shrink it by measuring better, or much more" widget="sliderLab" config={ciCfg} />
@@ -32,12 +88,176 @@ const ciCfg = {
     again — halving the interval takes four times the data.
   </p>
 
+  <h2>Spread I: range, quartiles and the interquartile range</h2>
+  <p>
+    A centre without a spread is a headline without a story: two classes can both
+    average 65 marks while one is uniform and the other is bimodal. The crudest
+    spread measure is the <strong>range</strong> (maximum − minimum) — instantly
+    computable, destroyed by a single outlier. The quartiles fix that.
+    The <strong>median</strong> splits ordered data in half; the <strong>quartiles</strong>
+    split it in quarters: <strong>Q1</strong> is the median of the lower half, <strong>Q3</strong>
+    the median of the upper half, and the <strong>interquartile range</strong> is
+    IQR = Q3 − Q1 — the width of the middle 50% of the data, immune to whatever
+    happens at the extremes. <strong>Worked example.</strong> Eleven test scores,
+    ordered: 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42. The median is the
+    6th value, 27. The lower half (12–24, five values) has median 18 = Q1; the
+    upper half (30–42) has median 36 = Q3; IQR = 36 − 18 = 18. The IQR
+    also powers the standard outlier test: a value more than 1.5 × IQR below
+    Q1 or above Q3 (here, below −9 or above 63) is flagged as an outlier —
+    the rule behind every boxplot's whiskers. For <strong>grouped data</strong>,
+    where individual values are lost into class intervals, quartiles are
+    <em>estimated</em> by assuming values spread evenly within their class:
+    within the class containing the n/4-th value, walk in proportionally —
+    Q1 ≈ lower boundary + ((n/4 − cumulative frequency before) ÷ class
+    frequency) × class width. The same interpolation estimates any
+    percentile: the 90th percentile is the value below which 90% of the
+    data lies, found by the same walk to position 0.9n. Percentiles are
+    the native language of growth charts, exam grade boundaries and
+    latency reports — "p99 response time" is the 99th percentile doing
+    its job.
+  </p>
+
+  <h2>Spread II: the standard deviation</h2>
+  <p>
+    The IQR throws away half the data to gain robustness; the <strong>standard
+    deviation</strong> uses every value to answer a different question: on
+    average, how far do values sit from the mean? The recipe: find the mean,
+    take each value's deviation from it, square the deviations (which makes
+    them all positive and punishes large misses), average them (dividing by
+    n − 1 for a <em>sample</em>, a correction whose reason is the degrees-of-
+    freedom story the inference lessons build on), and take the square root
+    to return to the data's units. <strong>Worked example:</strong> deliveries of
+    4, 6, 8, 10, 12 minutes. Mean = 8. Deviations: −4, −2, 0, 2, 4.
+    Squared: 16, 4, 0, 4, 16 — sum 40. Sample variance = 40 ÷ 4 = 10;
+    standard deviation s = √10 ≈ 3.16 minutes. The squaring makes SD
+    sensitive to outliers (one wild value inflates it), which is both its
+    honesty and its fragility. Its great reward: for roughly bell-shaped
+    data, the <strong>68–95–99.7 rule</strong> holds — about 68% of values within
+    one SD of the mean, 95% within two, 99.7% within three — so s becomes
+    a ruler for the whole distribution. It is also, crucially, the
+    ingredient the confidence interval consumes.
+  </p>
+
+  <h2>Choosing a measure: the context decides</h2>
+  <p>
+    The syllabus's last topic is a judgement call, and it is the adult part of
+    statistics. <strong>Range:</strong> use for quick bounded summaries (dosing windows,
+    tolerance limits), distrust wherever outliers exist. <strong>IQR:</strong> robust —
+    the choice for skewed data (incomes, house prices, hospital stays) and
+    whenever outliers should not set the story; pairs with the median.
+    <strong>SD:</strong> the choice for roughly symmetric data, the input to
+    probability models and inference; pairs with the mean. The pairing rule
+    (median with IQR, mean with SD) exists because each pair describes the
+    same view of the data: the median-and-IQR pair reports the resistant
+    middle, the mean-and-SD pair reports the whole distribution including its
+    extremes. <strong>A case in context:</strong> a village where nine houses are
+    worth £200,000 and one is worth £2,000,000 — the mean (£380,000) and its
+    SD describe the estate agent's fantasy; the median (£200,000) and the IQR
+    (£0 for the nine, or a small spread) describe the village. Neither is
+    wrong; each answers a question ("total taxable wealth" versus "what does
+    a house cost here") — and justifying the choice is the skill.
+  </p>
+
+  <h2>From spread of data to spread of estimates</h2>
+  <p>
+    Here is the hinge from description to inference. Repeatedly sample n
+    people and compute each sample's mean: the means do not repeat — they
+    <em>wobble</em> around the true population mean. The wobble has a name and a
+    formula: the <strong>standard error</strong>, SE = s/√n, where s is the SD of
+    individual values and n is the sample size. The square root in the
+    denominator is the statistical bargain of the age: measurement noise on
+    the <em>mean</em> shrinks with the square root of the sample size. Double the
+    sample and the wobble shrinks by 1/√2 ≈ 0.71; quadruple it and the
+    wobble halves. Why √n and not n? Because averaging <em>adds</em> independent
+    errors, and variances (the squared scale) add — so the variance of the
+    mean is σ²/n and the SD of the mean is σ/√n. That single line of
+    algebra is why polls of 1,000 work and why the widget above responds
+    the way it does.
+  </p>
+
+  <h2>The confidence-interval recipe, worked</h2>
+  <p>
+    For large samples, the recipe is <strong>estimate ± 1.96 × SE</strong> for 95%
+    confidence (1.96 is the two-sided 2.5% point of the normal distribution —
+    the 68–95–99.7 rule inverted; 2.576 gives 99%). <strong>Worked example.</strong>
+    A council surveys 100 commuters: sample mean 42 minutes, sample SD
+    s = 8 minutes. SE = 8/√100 = 0.8 minutes. The 95% CI is
+    42 ± 1.96 × 0.8 = 42 ± 1.568, so <strong>40.4 to 43.6 minutes</strong>. The
+    interpretation, stated carefully: we are 95% confident that the interval
+    [40.4, 43.6] contains the true mean commute — and "95% confident" is a
+    statement about the <em>procedure</em>: were this survey repeated many times,
+    about 95% of the intervals built this way would capture the true mean.
+    The width responds to exactly three levers: the noise s (measure more
+    carefully — a stratified sample can cut s itself), the sample size n
+    (at the square-root price: to halve this interval to ±2 minutes you
+    need (1.96 × 8 ÷ 2)² ≈ 62 commuters, not 100 — and to quarter it,
+    roughly 250), and the confidence level (99% costs width: 42 ± 2.06). Planning in
+    advance is the professional move: decide the width you can live with,
+    solve for n, budget accordingly.
+  </p>
+  <p><em>Common misconception:</em> "95% of commuters have commutes between 40.4
+  and 43.6 minutes." That is a statement about individuals — and it is a
+  different, much wider interval (with s = 8, individual commutes span
+  roughly 42 ± 2×8 = 26 to 58 for the middle 95%). The confidence interval
+  is about the <em>mean</em>, which is far more stable than the individuals it
+  averages — that stability is the whole point of averaging.</p>
+
   <h2>Reading intervals like a professional</h2>
   <ul>
     <li><strong>It's the procedure, not the one interval.</strong> Your specific 95% interval either contains the truth or doesn't — the confidence attaches to the method that generated it.</li>
     <li><strong>Overlapping intervals ≠ no difference.</strong> Two 95% CIs can overlap while the difference between means is itself significant — proper tests (next lesson) compare the difference, not the eyeballed overlap.</li>
     <li><strong>Width is a design parameter.</strong> Scientists decide the interval width they need <em>before</em> collecting, then solve for n. "How many samples?" always has this answer.</li>
     <li><strong>Beware the pseudo-precision:</strong> "73.42% of users" from a 40-person survey is theatre — report 73% ± 14% or don't report it.</li>
+    <li><strong>Check the pairing:</strong> a mean with an SD, or a median with an IQR — a mean wrapped around skewed data (the £34.17 average basket inflated by a few whale orders) is an interval around the wrong centre.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Introductory Statistics (Confidence Intervals); Wasserman, All of Statistics.</p>
+
+  <h2>A grouped-data quartile, worked end to end</h2>
+  <p>
+    The grouped-data walk is easier done than described. Sixty delivery times,
+    grouped: 10–20 minutes (8 orders), 20–30 (22), 30–40 (18), 40–50 (12).
+    The 15th value (60 ÷ 4) sits in the 20–30 class — 8 values lie below it, so
+    we need the 7th of the class's 22. Assuming values spread evenly:
+    Q1 ≈ 20 + (7 ÷ 22) × 10 ≈ <strong>23.2 minutes</strong>. The median (30th value)
+    also sits in 20–30: 30 − 8 = 22 of the class's 22 in — exactly its top —
+    so the median ≈ 30. For Q3, the 45th value: cumulative counts reach
+    8, then 30, then 48 — so the 45th lies in the 30–40 class, 15 of its
+    18 values in: Q3 ≈ 30 + (15 ÷ 18) × 10 ≈
+    <strong>38.3 minutes</strong>. IQR ≈ 15.1 minutes. The estimate carries an
+    assumption (uniform spread inside classes) that individual data would
+    not need — one reason statistical agencies publish both grouped
+    summaries and, where privacy allows, microdata.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Small samples: z becomes t.</strong> The 1.96 multiplier assumes either a
+    large sample or a known population SD. With small n and an estimated s, the
+    extra uncertainty of estimating s widens the interval: the 1.96 becomes a
+    larger <strong>t</strong> value from Student's t-distribution (t = 2.26 for n = 10,
+    2.09 for n = 20, gliding toward 1.96 as n grows). William Gosset published
+    it in 1908 under the pseudonym "Student" — Guinness's brewery quality
+    control, working with batches too small for the normal approximation.
+  </p>
+  <p>
+    <strong>Proportions have their own SE.</strong> For a percentage p from n
+    responses, SE = √(p(1−p)/n) — the engine of the polling margin of error:
+    a poll of 1,000 at 50% carries SE ≈ 1.58 points, hence the familiar
+    ±3. The p(1−p) term peaks at 50/50, which is why splits near even are
+    the noisiest.
+  </p>
+  <p>
+    <strong>Alternatives and open questions.</strong> <strong>Bootstrap intervals</strong>
+    resample your own data thousands of times and read the interval off the
+    resampled means — no normality assumption, compute instead of theory;
+    they are now standard in applied work. Bayesian <strong>credible intervals</strong>
+    answer the question you actually wanted ("given the data, where probably
+    is the mean?") at the cost of priors. And the deep critique — that
+    confidence is the least intuitive word in statistics — is why the
+    hypothesis-testing lesson exists: intervals and tests are two views of
+    the same mathematics (a 95% CI excludes exactly the values a 5% test
+    would not reject), and each is the other's cross-check.
+  </p>
+  <p class="sources"><strong>Sources:</strong> OpenStax, Introductory Statistics (Confidence Intervals); Student (Gosset), "The Probable Error of a Mean" (1908); Wasserman, All of Statistics.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={ciQuizCfg} />
 </TopicPage>

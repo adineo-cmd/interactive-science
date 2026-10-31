@@ -12,15 +12,73 @@ const sampleCfg = {
     { label: '4× precision demands 16× the sample', expr: '16' },
   ],
 };
+
+const sampleQuizCfg = {
+  questions: [
+    {
+      q: 'The 1936 Literary Digest polled 2.4 million Americans and wrongly predicted Landon would beat Roosevelt. The core failure was:',
+      choices: [
+        'The sample was too small',
+        'Selection bias: the poll reached people from telephone directories, car registries and its own (wealthier) readership during the Depression — a systematically unrepresentative frame, which no size fixes',
+        'Roosevelt cheated',
+        'The questions were too hard',
+      ],
+      answer: 1,
+      why: 'Big and wrong beats small and right — never the reverse. George Gallup, with a far smaller but properly drawn sample, predicted the result correctly the same year. The episode founded modern survey sampling on its central lesson: representativeness is a property of the method, not the count.',
+    },
+    {
+      q: 'A school has 1,200 students: 720 girls, 480 boys. You want a stratified sample of 100. How many boys?',
+      choices: [
+        '50, for fairness',
+        '100 × (480 ÷ 1200) = 40 — each stratum contributes in proportion to its share of the population',
+        '60',
+        'All 100, randomly',
+      ],
+      answer: 1,
+      why: 'Stratified sampling multiplies the total sample size by each stratum\'s population proportion: boys are 480/1200 = 40% of the school, so 40 of the 100. This guarantees the sample mirrors the population\'s structure — and typically tightens precision compared with pure random sampling, especially when the strata differ on what you measure.',
+    },
+    {
+      q: 'Which survey question is the better-designed closed question?',
+      choices: [
+        '"Don\'t you agree the canteen food is terrible?"',
+        '"How satisfied are you with the canteen food: very satisfied / satisfied / neutral / dissatisfied / very dissatisfied?"',
+        '"Is the canteen food terrible: yes or no?"',
+        '"What do you hate about the canteen food?"',
+      ],
+      answer: 1,
+      why: 'It is balanced (both directions offered equally), exhaustive (neutral included), and non-leading. The alternatives embed the conclusion ("terrible", "don\'t you agree") or force a binary on a scale question — each manufactures an answer rather than measuring one.',
+    },
+    {
+      q: 'Why does doubling a poll\'s sample size from 1,000 to 4,000 only shrink its margin of error from about 3.1 points to about 1.55 points?',
+      choices: [
+        'Pollsters round down',
+        'The margin of error shrinks with 1/√n: four times the sample gives only half the precision gain — the square-root law that makes extreme precision prohibitively expensive',
+        'Larger samples get lazier',
+        'The 4,000 include duplicates',
+      ],
+      answer: 1,
+      why: 'Sampling error falls with the square root of n. Quadrupling n halves the error bar; ten times better precision needs a hundred times the interviews. This is why serious polls cluster around 1,000–2,000 respondents and why the design (randomness, stratification, weighting) matters more than raw size.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/statistics/intermediate/sampling-and-survey-design">
   <h2>The idea</h2>
   <p>
     You almost never get to measure everyone — you <strong>sample</strong>, and statistics tells
-    you exactly how much the sample can be trusted. The central surprise: a well-drawn sample of
-    ~1,000 people predicts a nation of 300 million within ±3 points, regardless of population
+    you exactly how much the sample can be trusted. The central surprise: a well-drawn sample
+    of ~1,000 people predicts a nation of 300 million within ±3 points, regardless of population
     size. Precision depends on <strong>n, not on N</strong> — and on the sample being truly
-    random.
+    random. That claim deserves unpacking, because it is counterintuitive: how can 0.0003% of
+    a country speak for it? The answer is that a <em>randomly drawn</em> sample inherits the
+    population's proportions in predictable ways, and the mathematics of those fluctuations
+    (which the confidence-intervals lesson makes exact) is remarkably well behaved. But the
+    emphasis must sit on "randomly drawn": nearly every famous polling disaster is a failure
+    of <em>who was asked</em>, not how many. This page covers the vocabulary (population,
+    sample, census, sampling frame), the four sampling methods the syllabus requires — with
+    the random-number-table procedure worked out — the ways samples go wrong, the craft of
+    writing survey questions, and the classification of data that determines everything
+    downstream.
   </p>
 
   <Widget no="1" caption="the 1/√n law — quadrupling the sample only halves the error bar" widget="sliderLab" config={sampleCfg} />
@@ -31,12 +89,196 @@ const sampleCfg = {
     10,000 weren't random, no sample size saves you.
   </p>
 
-  <h2>How samples go wrong</h2>
+  <h2>Population, sample and census</h2>
+  <p>
+    The <strong>population</strong> is everyone (or everything) the question is about — not the
+    general public, but precisely the group you want to describe: all voters in a
+    country, all oak trees in a wood, every bolt in a production run. The
+    <strong>sample</strong> is the part you actually measure. A <strong>census</strong> tries
+    to measure the whole population, and its problems teach why sampling wins:
+    a census is slow and ruinously expensive; it strains to reach everyone (the
+    undercount of young men and renters is a persistent census problem); and total
+    counts are not even error-free — more enumerators means more data-entry, more
+    inconsistency, more chances to err. Sampling a well-chosen fraction, measured
+    carefully by fewer trained people, is often <em>more</em> accurate than a
+    sprawling census — the insight that transformed official statistics in the
+    1930s–40s. One term does the quiet work in between: the <strong>sampling
+    frame</strong> is the actual list you draw from (a school register, a phone
+    directory, an electoral roll). The frame is where the first bias enters,
+    because the frame and the population are rarely the same thing: the 1936
+    <em>Literary Digest</em> polled 2.4 million people from telephone directories
+    and car registries during the Depression — a frame that excluded poorer
+    voters — and confidently predicted the wrong US president. George Gallup,
+    with a far smaller but better-drawn sample, got it right.
+  </p>
+
+  <h2>Sampling methods I: simple random and the random number table</h2>
+  <p>
+    <strong>Simple random sampling</strong> gives every member of the frame an equal chance of
+    selection, independently — the statistical ideal, and the procedure is worth
+    knowing exactly. <strong>Worked with a random number table:</strong> a school has
+    864 students and you need 30. First number the students 001 to 864 (all
+    three-digit numbers). Then enter the table of random digits anywhere (close
+    your eyes and point — the starting point must itself be arbitrary) and read
+    digits in groups of three: 402, 781, 937, 056, 223, 990, 114 … Take 402, 781,
+    056, 223, 114; <em>skip</em> 937 and 990 because no student carries those
+    numbers (outside the range); skip any repeat (a student drawn twice stays in
+    once); and continue until 30 numbers are collected. The same job is done by
+    drawing numbered tickets from a well-mixed hat or by a computer's random
+    function — the requirement is not the tool but the <strong>equal, known chance</strong>
+    for every member, decided by chance rather than by anyone's convenience.
+    Note what "random" does <em>not</em> mean: it does not mean haphazard. Asking
+    the first 30 students in the corridor is haphazard but badly biased (early
+    risers, one year group, one corridor); randomness is a discipline that
+    removes human choice precisely because human choice correlates with the
+    answer.
+  </p>
+
+  <h2>Sampling methods II: systematic, stratified and quota</h2>
+  <p>
+    <strong>Systematic sampling</strong> takes every k-th member of the frame after a
+    random start: for 864 students and a sample of 30, choose every 29th
+    (864 ÷ 30 ≈ 28.8, round to 29) starting from a student chosen at random
+    among the first 29. It is cheap, spreads evenly across the frame, and is
+    effectively random <em>unless</em> the list has a repeating pattern aligned
+    with the interval — every 29th house on a street where blocks repeat every
+    30 houses would be a self-inflicted wound. <strong>Stratified sampling</strong>
+    splits the frame into strata that matter to the question (year groups,
+    regions, age bands) and samples each in proportion. The arithmetic is the
+    exam staple and the intuition is important: a school of 1,200 with 720
+    girls and 480 boys, sampled at 100, takes 100 × (720 ÷ 1200) = 60 girls and
+    40 boys — guaranteeing the sample mirrors the population's structure
+    (then draw randomly <em>within</em> each stratum). Stratification usually
+    improves precision when the strata genuinely differ on the measured
+    quantity. <strong>Quota sampling</strong> looks similar but swaps chance for
+    instruction: interviewers are told to fill quotas ("20 women aged 18–30",
+    "10 men over 60") and choose whom to ask until each quota fills. It is
+    fast, cheap and needs no sampling frame — which is why market research and
+    street interviews use it — but the choice within each quota is
+    unconstrained, so it re-imports exactly the bias randomness exists to
+    remove (interviewers approach people who look approachable). Quota is
+    best understood as stratification without the random step.
+  </p>
+
+  <h2>Bias: how samples lie</h2>
+  <p>
+    <strong>Bias</strong> is any systematic tendency for the sample to misrepresent the
+    population — a tilt, not noise, and averaging more data does not remove it.
+    The recurring species:
+  </p>
   <ul>
-    <li><strong>Selection bias:</strong> the 1936 Literary Digest polled 2.4 million readers and predicted the wrong US president — its readers were wealthier than voters. Big and wrong beats small and right, never the reverse.</li>
-    <li><strong>Non-response bias:</strong> the people who don't answer differ systematically from those who do. Phone polls miss people without phones; happy customers fill satisfaction surveys.</li>
-    <li><strong>Question wording:</strong> "Do you favour helping the poor?" vs "Do you favour expanding welfare?" — same policy, different poll. Professional surveys test alternative wordings and randomise order.</li>
-    <li><strong>Stratification and weighting:</strong> sample groups deliberately, then reweight to match the population — the modern fix for uneven response rates (and how election polls recover from their 2016 failures).</li>
+    <li><strong>Selection bias:</strong> the frame or draw favours some members. The <em>Literary Digest</em> case; online polls that whoever clicks can enter; "man on the street" vox pops outside a gym.</li>
+    <li><strong>Non-response bias:</strong> the sampled people who decline differ from those who answer — busy people miss surveys; angry or delighted customers fill feedback forms; phone polls reach only the reachable. Modern polls fight this with reweighting and response-rate reporting.</li>
+    <li><strong>Volunteer/self-selection bias:</strong> a species of the above — radio phone-ins, review sites — where motivation to answer correlates with the answer.</li>
+    <li><strong>Question-order and interviewer effects:</strong> earlier questions prime later answers; who asks, and how, shifts results measurably.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Groves et al., Survey Methodology; OpenStax, Introductory Statistics (Sampling and Data).</p>
+  <p>
+    The professional response to most of these is <strong>weighting</strong>: after
+    collection, adjust the sample so its composition (age, sex, region,
+    education) matches known population figures, overweighting the
+    under-represented. Weighting rescued election polling from its 2016
+    failures (education weighting, after polls missed less-educated
+    voters) — but it is a repair, not a substitute for a good draw: no
+    weighting can fix a frame that never contained part of the population.
+  </p>
+
+  <h2>Asking: open and closed questions</h2>
+  <p>
+    A survey measures answers only as well as the questions elicit them.
+    <strong>Closed questions</strong> offer fixed options — good for comparability and
+    easy analysis, provided the options are <strong>exhaustive</strong> (include
+    "neutral" or "don't know") and <strong>balanced</strong> (both directions, equally
+    phrased — not "excellent / good / fair", which is a compliment menu).
+    <strong>Open questions</strong> ("What would improve the canteen?") capture the
+    unexpected and reveal reasoning, at the cost of slow, judgement-laden
+    analysis — surveys typically pair a few open questions among many closed
+    ones. The craft's failure catalogue is worth memorising:
+    <strong>leading questions</strong> ("Don't you agree the canteen food is
+    terrible?"); <strong>loaded wording</strong> ("Should we expand the wasteful
+    welfare programme?" — one policy, two adjectives, two different polls);
+    <strong>double-barrelled questions</strong> ("Are you satisfied with the price
+    and quality of the food?" — which one?); <strong>overlapping or unbalanced
+    options</strong> (age bands "0–20, 20–40, 40–60" leave 20 and 40 double-
+    counted); and <strong>embarrassment effects</strong>, where socially awkward
+    truths (drinking, prejudice) get under-reported unless questions are
+    indirect or anonymised. Professionals pilot-test on a small group,
+    randomise question order where priming is a risk, and pre-register
+    the wording before results exist.
+  </p>
+
+  <h2>Classifying data: the vocabulary everything downstream uses</h2>
+  <p>
+    Before analysis, classify what you collected — the classification decides
+    which averages, charts and tests are legal. <strong>Qualitative</strong>
+    (categorical) data names a category: eye colour, favourite subject,
+    yes/no. <strong>Quantitative</strong> data is numerical, and splits again:
+    <strong>discrete</strong> values are countable and separate (number of siblings,
+    goals scored — no 2.5 siblings), while <strong>continuous</strong> values lie on
+    a scale where any interval contains more values (height, time, temperature
+    — measured, not counted). Two refinements matter in practice. Ordinal
+    data (satisfaction ratings, finishing positions) is qualitative but
+    <em>ordered</em> — you may report a median, not a mean. And measurement
+    granularity is a human choice: shoe sizes are discrete because the
+    manufacturer says so; feet are continuous. The classification is not
+    pedantry: a pie chart of continuous data is a category error, a mean of
+    "Strongly disagree = 1 … Strongly agree = 5" codes pretends distance
+    between labels that may not exist, and every test the hypothesis lesson
+    introduces will begin by asking which kind of data you have.
+  </p>
+
+  <h2>The sampling frame decides what you can claim</h2>
+  <p>
+    One refinement ties the methods together. Every sample is drawn from a
+    <strong>frame</strong> — a school register, a customer list, a phone directory —
+    and the frame, not the map, defines the population your results describe:
+    a poll of a register of landlines describes people with landlines, whatever
+    the questionnaire calls them. So the first professional question is not
+    "which method?" but "does the frame cover the population?" — and the
+    honest report names its frame and its coverage gap. The second
+    question is "does the method give everyone in the frame a known,
+    non-zero chance?" — the definition of a <strong>probability sample</strong>
+    (simple random, systematic with random start, stratified) versus a
+    <strong>non-probability</strong> one (quota, convenience, volunteer), whose
+    samples can still be useful but whose precision no formula can
+    certify. The vocabulary matters because it is how surveys defend
+    themselves: the margin of error printed under a poll is a promise
+    about probability sampling from a stated frame, and every
+    "10,000 readers voted" number in your feed is a volunteer
+    sample wearing a poll's clothes.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Cluster sampling and the cost of contact.</strong> When the population is
+    spread out, visiting randomly chosen individuals is ruinous; instead sample
+    <em>clusters</em> (random schools, then everyone within — or random households,
+    then one person each). Clustering trades precision for feasibility, because
+    people in a cluster resemble each other; the design effect quantifies the
+    loss. Real national surveys are almost always multi-stage: random regions,
+    then random neighbourhoods, then addresses, then one respondent — plus
+    stratification and weighting. The pure methods of this page are the
+    vocabulary those designs are built from.
+  </p>
+  <p>
+    <strong>The paradox of precision.</strong> The 1/√n law has a political economy:
+    doubling precision costs four times the fieldwork, so professional polls
+    cluster at n ≈ 1,000 (±3 points) — enough for most questions and all
+    headlines. The exceptions are instructive: exit polls need speed and
+    cluster designs; small subgroups (18–24-year-old men in one region) inherit
+    the full sample's smallness, which is why "subgroup findings" from the same
+    poll are far less precise than the topline — a reading skill the news-vs-
+    opinion lesson's genre literacy should include.
+  </p>
+  <p>
+    <strong>Where the field is moving.</strong> Falling response rates (telephone
+    polls now often reach under 10% of those dialled) are pushing surveys
+    toward probability panels, administrative data linkage and — more
+    controversially — opt-in web panels corrected by aggressive statistical
+    modelling. Whether model-adjusted non-probability samples can match true
+    random samples is the live methodological argument; the 2020–2024 US
+    polling literature is the running scoreboard.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Groves et al., Survey Methodology; OpenStax, Introductory Statistics (Sampling and Data); Gallup's 1936 account of the Literary Digest failure.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={sampleQuizCfg} />
 </TopicPage>

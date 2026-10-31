@@ -10,6 +10,55 @@ const testCfg = {
     { math: '4 · Reject or don\'t — then think', note: 'p < α: reject H₀, report effect size and interval. p > α: insufficient evidence — not "proof of no effect". Absence of evidence is not evidence of absence.' },
   ],
 };
+
+const testQuizCfg = {
+  questions: [
+    {
+      q: 'A study reports p = 0.03 for a new teaching method. The correct reading is:',
+      choices: [
+        'There is a 3% chance the method does nothing',
+        'If the method truly did nothing, data at least this favourable would appear about 3% of the time — surprising enough under the null to reject it at the 5% level',
+        'The method is 97% likely to work',
+        'The study is 3% likely to be fraudulent',
+      ],
+      answer: 1,
+      why: 'The p-value is computed assuming the null is true; it cannot then be the probability that the null is true. It measures the surprise of the data under "nothing is going on", not the probability of "nothing is going on" under the data — the direction of the conditional is the whole content of the method.',
+    },
+    {
+      q: 'Two events are mutually exclusive versus independent. Which statement is true?',
+      choices: [
+        'They mean the same thing',
+        'Mutually exclusive means they cannot both happen (P(A and B) = 0); independent means one gives no information about the other (P(A and B) = P(A)×P(B)) — and two events with positive probability cannot be both, since if A happens, a mutually exclusive B cannot',
+        'Independent events cannot happen together',
+        'Mutually exclusive events have probability 1/2 each',
+      ],
+      answer: 1,
+      why: 'This is the classic exam trap. "Rain and snow today" are neither exclusive nor independent; "rolling a six" and "rolling a four" are mutually exclusive but enormously dependent (one forbids the other); "two different people are left-handed" are independent. Exclusive is about the outcome list; independence is about information.',
+    },
+    {
+      q: 'A test screens for a disease affecting 1 in 100, detecting it 99% of the time, with a 5% false-positive rate. You test positive. Your chance of having the disease is roughly:',
+      choices: [
+        '99%',
+        'About 1 in 6 (16–17%) — the rare-disease base rate dominates: among 10,000 people, ~99 true positives share the result with ~495 false positives (tree diagram arithmetic)',
+        '50%',
+        '5%',
+      ],
+      answer: 1,
+      why: 'The tree diagram settles it: of 10,000, about 100 are diseased, ~99 detected; the 9,900 healthy contribute ~495 false positives. P(disease | positive) = 99 ÷ (99 + 495) ≈ 0.167. Conditional probability runs from evidence back to cause — and ignoring the base rate is the most consequential error in applied probability.',
+    },
+    {
+      q: 'A well-powered study finds p = 0.31 for a small effect. The correct conclusion is:',
+      choices: [
+        'The effect does not exist',
+        'Insufficient evidence at the chosen level — not proof of nothing: report the confidence interval on the effect size ("between −0.4 and +1.2 points"), which shows what the study can and cannot rule out',
+        'The p-value was computed wrong',
+        'The study should be repeated until p drops below 0.05',
+      ],
+      answer: 1,
+      why: 'Absence of evidence is not evidence of absence — but the interval is what makes the statement quantitative: if the 95% CI spans zero yet barely excludes the effect that matters practically, more data is needed; if it excludes everything useful, the question is genuinely closed. Repeating until significance is p-hacking, not evidence.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/statistics/intermediate/hypothesis-testing">
   <h2>The idea</h2>
@@ -18,20 +67,206 @@ const testCfg = {
     (H₀)</strong> — "nothing interesting is happening" — and data either provides evidence beyond
     reasonable doubt (reject) or fails to (stay with H₀). The <strong>p-value</strong> is the
     strength of surprise under H₀: how unlikely is this data if nothing were going on?
+    The whole procedure rests on the probability toolkit — notation, the addition rule,
+    independence, conditional probability, tree diagrams — so this page builds that
+    foundation first, then assembles the test on top of it: the four steps, a worked
+    test from raw data, the two errors named Type I and II, and the misreadings of the
+    p-value that corrupted a century of published science. By the end you should be
+    able to run a small test by hand and, more importantly, read one critically.
   </p>
 
   <Widget no="1" caption="the four steps — and the two misreadings that corrupt published science" widget="equationStep" config={testCfg} />
 
-  <h2>The errors, named</h2>
+  <h2>Probability foundations: the grammar tests are written in</h2>
+  <p>
+    Probability notation compresses the reasoning: <strong>P(A)</strong> is the probability
+    of event A; <strong>P(A′)</strong> (read "A-prime") is the probability of A
+    <em>not</em> happening, and complements always sum to 1 — P(A′) = 1 − P(A),
+    which is why "at least one…" questions are easiest backwards (P(at least one
+    six in three rolls) = 1 − (5/6)³ ≈ 0.42, rather than enumerating cases).
+    <strong>With and without replacement</strong> change the denominators: drawing
+    two aces from a deck <em>with</em> replacement gives (4/52) × (4/52) = 1/169;
+    <em>without</em> replacement the second draw inherits the first's depletion:
+    (4/52) × (3/51) = 1/221. <strong>The addition rule</strong> handles "A or B":
+    P(A or B) = P(A) + P(B) − P(A and B), where the subtraction removes the
+    double-counted overlap. When A and B cannot both happen — <strong>mutually
+    exclusive</strong> — the overlap is empty and the rule collapses to plain
+    addition. <strong>Independence</strong> is a different idea entirely: B is
+    independent of A when learning A tells you nothing about B —
+    P(B | A) = P(B) — which makes the multiplication rule
+    P(A and B) = P(A) × P(B) legal. Mutually exclusive events with positive
+    probability are therefore never independent (knowing one happened
+    <em>forbids</em> the other — maximum information). Finally,
+    <strong>conditional probability</strong>, P(A | B) — the probability of A given
+    B — is the engine of every real inference, and the <strong>tree diagram</strong>
+    is its machine: branch by the sequence of events, multiply along
+    branches (chains of "and"), and add across the branches that match the
+    condition. <strong>The classic worked tree:</strong> a disease affects 1 in 100
+    people; a test detects it 99% of the time and false-positives 5% of the
+    time. Out of 10,000 people: about 100 are diseased, contributing 99
+    true positives; the 9,900 healthy contribute 9,900 × 0.05 = 495 false
+    positives. So P(disease | positive) = 99 ÷ (99 + 495) ≈ <strong>0.167</strong> —
+    a positive result on a "99% accurate" test leaves you with about a
+    one-in-six chance. That reversal (from P(positive | disease) to
+    P(disease | positive)) is the base-rate lesson, and hypothesis testing
+    is its disciplined cousin.
+  </p>
+
+  <h2>The courtroom: null and alternative</h2>
+  <p>
+    A hypothesis test asks: is this data surprising enough to overturn the
+    default? The default — the <strong>null hypothesis H₀</strong> — is always the
+    "nothing" claim: the coin is fair, the drug matches the placebo, the new
+    timetable makes no difference. The <strong>alternative H₁</strong> is what a
+    result would establish: the coin is biased, the drug works. The
+    asymmetry is deliberate and mirrors the law: the null gets the benefit
+    of the doubt, and evidence must be <em>strong enough to reject it</em> —
+    you can never "accept" or prove the null, only fail to reject it.
+    (The philosophical reason: "nothing is going on" is usually a precise,
+    computable claim, while "something is going on" is vague — statistics
+    computes surprise against the precise claim.) Choosing H₀ and H₁ is
+    the step where honesty lives: they must be fixed from the question,
+    before the data is seen — because the method's error guarantees
+    (next section) only hold for tests declared in advance.
+  </p>
+
+  <h2>The four steps, with a worked test</h2>
+  <p>
+    <strong>A worked example.</strong> A friend claims a coin is fair. You flip it
+    10 times and see 9 heads. Suspicious? <strong>Step 1:</strong> H₀: the coin is
+    fair (p = 0.5); H₁: the coin is biased (p ≠ 0.5 — two-sided, since we
+    flagged suspicion before knowing the direction). <strong>Step 2:</strong> choose
+    the significance level α = 0.05 — the false-alarm rate we will tolerate.
+    <strong>Step 3:</strong> compute the p-value — the probability, <em>if the coin were
+    fair</em>, of data at least this extreme in either direction. By the
+    binomial distribution: P(exactly 9 heads) = C(10,9) × 0.5¹⁰ = 10/1024,
+    P(10 heads) = 1/1024, and symmetrically 9-or-10 tails; the two-sided
+    p-value = 2 × (10 + 1)/1024 = 22/1024 ≈ <strong>0.0215</strong>.
+    <strong>Step 4:</strong> compare: 0.0215 is under 0.05, so reject H₀ — the data
+    would occur under a fair coin only about 2% of the time, below our
+    false-alarm budget; the friend's coin earns serious suspicion. Notice
+    what the test did and did not say: it did not compute the probability
+    the coin is unfair (that would need a prior — the Bayesian lesson's
+    territory); it quantified how embarrassing the data is for fairness.
+    And notice the sample-size discipline hiding in the arithmetic: with
+    only 10 flips, even 9 heads sits near the boundary — the same p-value
+    logic with 100 flips and 90 heads would be utterly conclusive
+    (p ≈ 10⁻¹⁸), because more data makes the null's predictions sharper.
+  </p>
+
+  <h2>The p-value: what it is and, more importantly, is not</h2>
+  <p>
+    The <strong>p-value</strong> is P(data at least this extreme | H₀ true) — the
+    probability of the <em>data</em> given the <em>null</em>. The two great
+    misreadings both flip that conditional or inflate it:
+  </p>
   <ul>
-    <li><strong>Type I (false positive):</strong> rejecting a true H₀ — convicting the innocent. Rate controlled by α.</li>
-    <li><strong>Type II (false negative):</strong> missing a real effect — freeing the guilty. Rate controlled by sample size and effect size (statistical power; ideally 80%+).</li>
-    <li><strong>Multiple comparisons:</strong> test 20 unrelated things at α = 0.05 and one will "pass" by luck. Corrections (Bonferroni) or pre-registration are the antidotes.</li>
-    <li><strong>p-hacking:</strong> trying analyses until a p &lt; 0.05 appears. The replication crisis (the psychology lesson) is largely this, industrialised. Fix: decide the analysis first.</li>
+    <li><strong>"p is the probability H₀ is true."</strong> No — it is computed <em>assuming</em> H₀. The disease-test tree shows how different P(evidence | cause) and P(cause | evidence) can be (99% versus 16.7%).</li>
+    <li><strong>"p = 0.03 means 97% chance of replication" (or of being right).</strong> No — replication depends on the true effect size and the power of the repeat study.</li>
+    <li><strong>"p &gt; 0.05 proves no effect."</strong> No — it means the data did not clear the evidence bar; the study may simply have been too small.</li>
+    <li><strong>"p = 0.049 is real, p = 0.051 is not."</strong> No — the difference between them is noise-level trivial; α is a convention, and the p-value is a continuous measure of surprise.</li>
   </ul>
   <p>
-    Modern practice pairs every p-value with an <strong>effect size and confidence interval</strong>
-    — "significant but tiny" and "significant and huge" deserve very different headlines.
+    The American Statistical Association's 2016 statement — a rare
+    institutional intervention — catalogued exactly these errors and
+    reaffirmed the honest summary: a p-value can indicate how incompatible
+    the data are with a specified model; it measures nothing else.
   </p>
-  <p class="sources"><strong>Sources:</strong> Neyman & Pearson framework; Wasserstein & Lazar, "ASA Statement on p-values" (2016).</p>
+
+  <h2>The two errors, named</h2>
+  <p>
+    Two ways to be wrong, and the procedure names them. <strong>Type I error</strong>:
+    rejecting a true null — convicting the innocent, announcing a drug
+    works when it does not. Its long-run rate is set by α: at α = 0.05,
+    one test in twenty of <em>genuine nothing</em> cries wolf.
+    <strong>Type II error</strong>: failing to reject a false null — freeing the
+    guilty, missing a real effect. Its rate (β) depends on the sample size,
+    the true effect size and α; the <strong>power</strong> of a test is 1 − β, the
+    probability of catching a real effect, and well-designed studies target
+    80% or better. The two errors trade against each other (a stricter α
+    means more Type II; more data reduces both — the only free lunch).
+    <strong>A worked frame:</strong> testing 1,000 drug candidates of which, in truth,
+    50 work, at α = 0.05 with 80% power: expect about 950 × 0.05 ≈ 48 false
+    "discoveries" alongside 50 × 0.8 = 40 true ones — over half the
+    "significant" results are wrong, purely from the arithmetic of
+    base rates. This is why <strong>multiple-comparisons</strong> discipline exists:
+    test 20 unrelated hypotheses at α = 0.05 and one will "pass" by luck
+    alone; corrections (Bonferroni's α/n), pre-registration and replication
+    are the antidotes. <strong>p-hacking</strong> — trying analyses, subgroups and
+    stopping rules until a p below 0.05 appears — industrialises the same
+    leak, and is the main mechanism behind the replication crisis the
+    psychology literature documented in the 2010s.
+  </p>
+  <p><em>Common misconception:</em> "not significant" means "no effect".
+    A large, careful trial can return p = 0.2 for a small-but-real effect;
+    the correct response is to report the confidence interval on the effect
+    ("somewhere between −0.1 and +0.9 points"), which shows precisely what
+    the study could and could not rule out. Absence of evidence is not
+    evidence of absence — but the interval is what turns that slogan into
+    arithmetic.</p>
+
+  <h2>The modern practice: effect sizes, intervals, pre-registration</h2>
+  <p>
+    Contemporary standards pair every p-value with an <strong>effect size</strong>
+    (how big is the difference, in units that matter?) and a <strong>confidence
+    interval</strong> (the previous lesson's error bar on it) — because "statistically
+    significant but clinically trivial" (a drug that lowers blood pressure by
+    0.1 mmHg, p = 0.01, n = 50,000) and "significant and huge" deserve
+    different headlines. Pre-registration — declaring hypotheses, sample size
+    and analysis plan before seeing data — attacks the multiple-comparison
+    and p-hacking leaks at the source, and is now required by many journals.
+    The one-line takeaway that survives every methodological fashion: the
+    p-value is one number about one comparison under one model; it earns its
+    keep only inside a design that controlled everything else.
+  </p>
+
+  <h2>Choosing alpha: the costs decide</h2>
+  <p>
+    The 0.05 convention deserves one hard question: why this number? Because
+    α is not a statistical constant but a <em>priced decision</em> — the
+    exchange rate between the two errors. Screen a blood donation for a
+    dangerous virus: a false negative (Type II) contaminates the supply,
+    a false positive (Type I) discards safe blood — so α is set very low
+    <em>and</em> confirmatory testing runs again, because the costs are
+    asymmetric and catastrophic in one direction. Send a spacecraft to
+    sample a comet: a false positive wastes a billion-euro mission, so
+    evidence standards are extreme. A/B test a button colour: both errors
+    cost pennies, so 0.05 is generous and speed wins. The teaching point
+    generalises beyond exams: <strong>the significance level belongs to the
+    decision, not the mathematics</strong> — and when someone reports a single
+    p-value without saying what each error would have cost, they have
+    reported the arithmetic while hiding the economics.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The Bayesian alternative.</strong> The courtroom framing has a rival:
+    Bayes' theorem computes P(H | data) directly — what you actually want —
+    by combining the data's likelihood with a <strong>prior</strong> probability for
+    the hypothesis. The cost is the prior (subjective? whose?), and the two
+    schools have argued for a century; the practical resolution in most
+    fields is coexistence — p-values for regulatory thresholds, Bayesian
+    methods where priors are defensible (A/B testing, diagnostic reasoning,
+    the disease-test tree done properly).
+  </p>
+  <p>
+    <strong>Choosing the test.</strong> Which p-value machinery applies depends on
+    the data's type and size: binomial tests for counts like the coin;
+    t-tests for comparing two means; chi-squared tests for categorical
+    tables; permutation tests when assumptions wobble — resample the data
+    under H₀ thousands of times and see how unusual the real result is.
+    The grammar (H₀, α, p) is invariant; the calculator changes.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Should the 0.05 threshold be retired, lowered, or
+    replaced by reporting standards (the "statisticians' 2019 manifesto" said
+    retire)? How should journals reward replication? And can machine-learning
+    research — where models are tuned against test sets — adopt pre-
+    registration at all? The courtroom metaphor will survive them all:
+    the question is always how much surprise a "nothing" claim can absorb
+    before honest observers stop believing it.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Neyman &amp; Pearson framework; Fisher's significance testing; Wasserstein &amp; Lazar, "ASA Statement on p-values" (2016); OpenStax, Introductory Statistics.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={testQuizCfg} />
 </TopicPage>

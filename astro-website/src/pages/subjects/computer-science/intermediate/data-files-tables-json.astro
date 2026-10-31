@@ -10,24 +10,261 @@ const dataCfg = {
     { math: '4 · Files live in trees', note: 'Directories within directories, paths like addresses. Every operating system, cloud bucket and repository shares this tree model.' },
   ],
 };
+
+const dataQuizCfg = {
+  questions: [
+    {
+      q: 'A CSV row reads: Smith,John,"London, UK",34. Why are there quotes around the third field?',
+      choices: [
+        'Quotes mark text fields that spellcheckers should skip',
+        'The value itself contains a comma — RFC 4180 quoting keeps "London, UK" as one field instead of splitting into "London" and " UK" and shifting every later column',
+        'Quotes make the file smaller',
+        'It is a typo that will be ignored',
+      ],
+      answer: 1,
+      why: 'The comma is both the separator and a legal character inside values, so the format defines quoting (and doubled quotes "") to embed it. Naive parsers that split on every comma corrupt the table silently — one reason "I will just parse it myself" is the most common CSV bug.',
+    },
+    {
+      q: 'You open a text file and see "cafÃ©" where "café" should be. What happened?',
+      choices: [
+        'The file is damaged on disk',
+        'An encoding mismatch: the file is UTF-8 (é stored as two bytes) but was read as Windows-1252/Latin-1, which shows each byte as a separate character — mojibake, the classic symptom',
+        'The text was encrypted',
+        'The font lacks the letter',
+      ],
+      answer: 1,
+      why: 'Text files are bytes plus an interpretation. UTF-8 stores é as two bytes; reading them one-per-character produces "Ã©". The fix is to read and write with an agreed encoding — UTF-8 everywhere is the modern default — and the lesson is that "plain text" always has an encoding.',
+    },
+    {
+      q: 'Your program must store a class register: names, ages, whether homework was submitted. In file-handling terms, the cleanest design is:',
+      choices: [
+        'One file per student, named after the student',
+        'A table: one record per student, fields for each attribute — stored as a header row plus rows in CSV, or objects in a JSON array — because records of the same kind belong together with a declared structure',
+        'A single long sentence containing everything',
+        'Random sticky notes',
+      ],
+      answer: 1,
+      why: 'Data of the same kind belongs in one structure with a schema: columns (or fields) that mean the same thing in every row. This is what makes the file readable by programs (loops over rows), by other people (headers explain it) and by future-you (the schema is the documentation).',
+    },
+    {
+      q: 'Why do long-lived datasets prefer simple formats like CSV or JSON over proprietary application files?',
+      choices: [
+        'Simple formats are always smaller',
+        'Plain text formats are readable by any tool, decade after decade, with no dependency on a particular application surviving — the "readable in ten years" principle; proprietary binary files die with their software',
+        'Regulators forbid binary files',
+        'Spreadsheets cannot hold numbers',
+      ],
+      answer: 1,
+      why: 'Data outlives software. A CSV from 1995 opens instantly today; a proprietary database file from a defunct application may be unrecoverable. Interoperability — anyone, any language, any era — is the reason standards like RFC 4180 and RFC 8259 exist and why archives demand open formats.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/intermediate/data-files-tables-json">
   <h2>The idea</h2>
   <p>
     Before algorithms and databases, a practical question: <strong>how is data written down, and
-    how will it be read back?</strong> Files come in formats, each with a philosophy — plain
-    tables (CSV), labelled objects (JSON), tagged documents (XML/HTML), binary efficiency
-    (Parquet, images). Choosing a format is choosing who can read your data ten years from now.
+    how will it be read back?</strong> Programs end; files persist — which makes file handling
+    the part of programming where the future is a design decision. You already know the
+    programming concepts (variables, loops, arrays) that manipulate data in memory; this
+    page is about the boundary: how records cross from memory to disk and back, in formats
+    each with a philosophy — plain tables (CSV), labelled objects (JSON), tagged documents
+    (XML/HTML), binary efficiency (Parquet, images). Choosing a format is choosing who can
+    read your data ten years from now. This page covers files and the file tree, text and
+    encoding, the record-and-field table model, file handling operations as programmers
+    actually use them, the two workhorse text formats in depth, schemas as promises, and
+    the quality habits that keep data usable.
   </p>
 
   <Widget no="1" caption="the four facts that make data files usable" widget="equationStep" config={dataCfg} />
 
-  <h2>What professionals actually worry about</h2>
-  <ul>
-    <li><strong>Encoding:</strong> text is bytes plus an interpretation. ASCII covers English; UTF-8 covers every language (and emoji) — and is now the default. Misread an encoding and "café" becomes "cafÃ©".</li>
-    <li><strong>Data is dirty:</strong> missing values, duplicate rows, dates in three formats. The data-science ladder dedicates a lesson to cleaning; the habit starts by writing files with headers and consistent types.</li>
-    <li><strong>CSV trap:</strong> a comma inside a value breaks a naive reader. Quoting rules exist; ignoring them corrupts columns silently.</li>
-    <li><strong>JSON trap:</strong> no standard date type, no comments, numbers lose precision for very large integers (use strings for IDs). Know the format's edges before storing millions of records in it.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> RFC 8259 (JSON); RFC 4180 (CSV); The Unicode Standard.</p>
+  <h2>Files, bytes and encoding: text is an interpretation</h2>
+  <p>
+    At the hardware level, a file is just a sequence of bytes — numbers from 0 to 255.
+    What makes it a <em>text</em> file is an <strong>encoding</strong>: the agreed table that maps
+    byte patterns to characters. ASCII, the 1963 classic, mapped 128 values to English
+    letters, digits and punctuation — fine for 1963 America, useless for the rest of the
+    world's writing systems. The solution was <strong>Unicode</strong> (one catalogue for every
+    character in every language, plus emoji) and <strong>UTF-8</strong>, its clever byte-encoding:
+    ASCII characters use one identical byte (backward compatibility), while anything
+    rarer uses two, three or four bytes. UTF-8 is now the default almost everywhere,
+    and its failure mode is instructive: read a UTF-8 file with the older Latin-1
+    interpretation and "café" appears as "cafÃ©" — <em>mojibake</em>, the visible
+    fingerprint of two encodings disagreeing. The lesson carries beyond text: every
+    file format is bytes plus an interpretation, and corrupt output usually means the
+    writer and reader disagreed about the interpretation — encoding, byte order or
+    structure — rather than the file being physically damaged.
+  </p>
+
+  <h2>The file tree: where data lives</h2>
+  <p>
+    Every operating system, cloud bucket and code repository organises files the same
+    way: a <strong>tree</strong>. Directories (folders) contain files and other directories,
+    recursively; the location of a file is its <strong>path</strong> — the sequence of names
+    from the root ("addresses" like <code>documents/school/science/results.csv</code>).
+    The tree model matters to programmers for practical reasons: paths are how programs
+    find data; <strong>extensions</strong> (.csv, .json, .txt) are conventions telling humans
+    and software what interpretation to expect (changing the extension does not change
+    the bytes, which is why renaming a broken file never fixed it); and file
+    <strong>metadata</strong> — size, timestamps, permissions — lives in the directory
+    structure, not the file. Good data projects extend the tree logic into
+    <strong>naming discipline</strong>: consistent, meaningful, dated names
+    (<code>results_2026-10-31.csv</code>) are the cheapest form of documentation,
+    because a folder listing is a table of contents nobody had to write.
+  </p>
+
+  <h2>Records, fields and the table model</h2>
+  <p>
+    Most useful data is <strong>many things of the same kind</strong> — students, transactions,
+    measurements — and the universal way to structure it is the table: each <strong>row</strong>
+    (record) is one thing; each <strong>column</strong> (field) is one attribute, holding the
+    same kind of value in every row. In memory, a program holds this as an array of
+    records (or objects); on disk, the two great text formats express it differently.
+    The design skill is deciding the <strong>grain</strong> — one row per what? A weather
+    dataset might be one row per station per day; choosing "one row per station,
+    365 columns" would be technically possible and practically unusable. Atomic
+    values are the other discipline: each field holds one value of one type —
+    "address" crammed into one field defeats sorting and searching; splitting house,
+    street, city into separate fields costs nothing now and pays forever.
+  </p>
+
+  <h2>CSV: the plain table, with traps</h2>
+  <p>
+    <strong>CSV</strong> (comma-separated values) is the plainest possible table: one row per
+    line, fields separated by commas, usually a header row naming the columns. Its
+    virtues are its plainness — openable in any text editor, spreadsheet, database
+    tool or programming language, with no software dependency — which is why most
+    of the world's data has touched a CSV at some point (formalised in RFC 4180).
+    Its traps are equally plain. <strong>The comma inside a value:</strong> a row like
+    <code>Smith,John,"London, UK",34</code> needs quoting rules (values containing
+    commas are wrapped in quotes; literal quotes are doubled) — and a parser that
+    ignores the rules splits "London" and " UK" into separate fields, silently
+    shifting every column after it. <strong>No types:</strong> CSV has no opinion on
+    whether "34" is a number, a code or a post-town; every reader re-decides, and
+    spreadsheets famously mangle things they guess about (leading zeros vanish from
+    barcodes, long account numbers become floating point, "3/4" becomes a date).
+    <strong>No standard for dialects:</strong> separators vary by locale (some countries
+    export semicolon-CSV because the comma is their decimal point), and line endings
+    differ between Windows and Unix. None of this kills CSV — it means CSV files
+    travel with a <strong>schema note</strong>: which separator, which encoding (UTF-8),
+    what each column means and holds.
+  </p>
+
+  <h2>JSON: labelled objects for nested data</h2>
+  <p>
+    <strong>JSON</strong> (JavaScript Object Notation, specified in RFC 8259) writes data as
+    labelled structures instead of positions. An object is braces around
+    "key": value pairs; arrays are brackets around ordered values; and the two nest
+    freely — an object can hold arrays, arrays can hold objects, which is how one
+    JSON document expresses a whole school: each student an object with an array of
+    subject scores, each subject an object with its own fields. This
+    <strong>self-describing quality</strong> (labels travel with values) and the easy
+    nesting made JSON the lingua franca of web APIs: a weather service returns an
+    object whose fields include a nested forecast array, and every language has a
+    parser built in. Its edges are worth knowing the way you know a tool's edges:
+    <strong>no date type</strong> (dates become strings, so pick an unambiguous format like
+    ISO 8601 — "2026-10-31"); <strong>no comments</strong>; <strong>numbers lose precision</strong>
+    for very large integers (JavaScript's number type tops out near 9 × 10¹⁵, so
+    bank-account or product IDs are exchanged as strings); and <strong>strictness</strong> —
+    trailing commas and single quotes are illegal, so hand-editing JSON breaks
+    easily. For wide flat tables, CSV stays simpler; for nested, hierarchical,
+    labelled data, JSON wins outright.
+  </p>
+
+  <h2>Schemas: the promise about the data</h2>
+  <p>
+    A <strong>schema</strong> is the declaration of what the columns (or fields) mean and
+    what types they hold: <em>student_id is a unique integer; name is text; submitted
+    is true or false; score is 0–100 or missing</em>. The schema is a promise, and it
+    is what separates a table a program can trust from a grid a human squints at.
+    It answers the questions every future reader has: what does an empty cell mean
+    (unknown, not-applicable, zero?); what units (metres, centimetres — the 1999
+    Mars Climate Orbiter was lost because two teams mixed pound-seconds and
+    newton-seconds); what range is legal. Schemas live in various bodies: a README,
+    a formal standard (JSON Schema), a database's type system, or the header row
+    plus conventions. The <strong>ten-year test</strong> is the useful one: will a colleague
+    with no memory of this project, opening the file in 2036, be able to use it
+    correctly? Plain formats, a written schema, atomic fields, consistent types and
+    one row per thing get to yes.
+  </p>
+
+  <h2>File handling: the operations</h2>
+  <p>
+    In code, working with files follows the same rhythm in every language:
+    <strong>open</strong> (name the path and the mode — read, write, append; write mode
+    typically replaces the file's contents, which is how data gets accidentally
+    destroyed, and append adds to the end), <strong>read or write</strong> (whole file at
+    once, or line by line for big files — reading a 2 GB log one line at a time
+    keeps memory flat where loading it whole does not), and <strong>close</strong> (release
+    the handle; unclosed files can lose buffered data). Pseudocode syllabus
+    versions (OPENFILE, READFILE, WRITEFILE, CLOSEFILE) compress the same ideas.
+    The two canonical patterns: <strong>append a record</strong> (open in append mode,
+    write one formatted line, close — the log-file pattern), and
+    <strong>process a table</strong> (open for reading, skip or use the header, loop over
+    lines, split each into fields, convert types, accumulate). A worked fragment
+    in spirit: for each line in the file, split on commas, keep fields 1 and 4,
+    total the numbers — and the robustness habits appear the moment real data
+    arrives: handle the blank last line, handle the quoted comma, handle the
+    value that should be a number but is "N/A".
+  </p>
+  <p><em>Common misconception:</em> a spreadsheet is a data file. A spreadsheet is an
+  application's document — formatting, formulas, merged cells, multiple sheets —
+  of which data is only part, and which machines parse badly. The professional
+  habit is to keep the <em>data</em> in plain tabular files (CSV/JSON) and treat
+  spreadsheets as one tool that can view them, not as the storage format
+  itself.</p>
+
+  <h2>The file's lifecycle: versioning and provenance</h2>
+  <p>
+    Files that matter outlive the session that made them, so professional data
+    work adds two habits beyond the format question. <strong>Versioning:</strong>
+    never overwrite the only copy of anything — keep the raw download
+    immutable (the <code>raw/</code> directory that nothing edits), write
+    processed results to a new file or a dated version
+    (<code>results_2026-10-31.csv</code>), and let version-control systems
+    (git) track text data where size allows. The reason is empirical:
+    every cleaning pipeline has bugs, and the ability to re-run from raw is
+    the difference between a recoverable mistake and a destroyed dataset.
+    <strong>Provenance:</strong> record where each file came from — the source
+    URL or system, the date, the tool and its version — in a small README
+    beside the data. The ten-year test from the schema section extends
+    naturally: a future reader (probably you) needs to know not just what
+    the columns mean but which download and which cleaning script produced
+    them. Backup completes the lifecycle by the 3-2-1 rule of thumb —
+    three copies, two kinds of storage, one off-site — because "the file
+    was on the laptop" is the most common sentence in data-loss
+    stories. Formats decide whether data can be read; the
+    lifecycle decides whether it still exists.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Binary and columnar formats.</strong> Text formats trade efficiency for
+    universality; at scale, the trade flips. Binary formats like Parquet store
+    data <em>column by column</em> with compression, so a query reading one column
+    of a billion rows skips the rest entirely — which is why the data-engineering
+    world moved from CSV to Parquet for anything large, while keeping CSV/JSON
+    as the interchange layer. HDF5 serves the same role for scientific arrays.
+  </p>
+  <p>
+    <strong>Files versus databases.</strong> Once multiple users write simultaneously,
+    integrity questions (two programs editing one file; half-written records
+    after a crash) exceed what files answer. Databases add transactions,
+    indexing and query languages — the next rung of the ladder. The design
+    skill transfers unchanged, though: the table, the schema and the atomic
+    field are the same ideas in both worlds, which is why this lesson's
+    disciplines are the foundation the database lesson builds on.
+  </p>
+  <p>
+    <strong>Data cleaning starts at writing.</strong> The data-science ladder
+    dedicates a lesson to cleaning because real data arrives dirty — missing
+    values, duplicates, three date formats in one column. But every cleaning
+    problem is cheaper to prevent at write time: headers on every file, one
+    type per column, ISO dates, an explicit missing-value convention, and
+    raw data kept immutably beside the cleaned version. The cheapest
+    cleaning pass is the one that never runs.
+  </p>
+  <p class="sources"><strong>Sources:</strong> RFC 8259 (JSON); RFC 4180 (CSV); The Unicode Standard; the data-science ladder's cleaning lesson.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={dataQuizCfg} />
 </TopicPage>

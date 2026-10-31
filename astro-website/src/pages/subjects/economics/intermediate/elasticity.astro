@@ -12,6 +12,55 @@ const elascfg = {
   crossings: true,
   height: 340,
 };
+
+const elasQuizCfg = {
+  questions: [
+    {
+      q: 'A 10% price rise cuts quantity demanded by 4%. The demand is inelastic. What happens to the seller\'s total revenue?',
+      choices: [
+        'It falls',
+        'It rises — the 10% price gain outweighs the 4% quantity loss (say 100 units at £10 = £1,000 becomes 96 units at £11 = £1,056)',
+        'It stays the same',
+        'It depends on the season',
+      ],
+      answer: 1,
+      why: 'Revenue is price × quantity, and the two move opposite ways when price changes. When demand is inelastic (|PED| below 1), the price effect dominates, so raising price raises revenue — the arithmetic behind "sin taxes" on inelastic goods and why luxury sellers, facing elastic demand, cannot simply price up.',
+    },
+    {
+      q: 'Which good most likely has the most inelastic demand?',
+      choices: [
+        'A specific brand of bottled water',
+        'Insulin for a diabetic — a necessity with no substitutes, a small share of the emergency budget relative to its value, and no time to search',
+        'Restaurant meals',
+        'Package holidays',
+      ],
+      answer: 1,
+      why: 'The determinants line up: no substitutes, pure necessity, and immediate need. Note the contrast inside the same category: bottled water as a whole is fairly elastic (tap water is a substitute), but a specific brand is highly elastic (other brands are perfect substitutes) — market definition changes elasticity dramatically.',
+    },
+    {
+      q: 'A government puts a £1 per unit tax on a good whose demand is highly inelastic and supply is elastic. Who mostly pays?',
+      choices: [
+        'The sellers, always',
+        'Mostly the buyers — the side of the market that cannot walk away bears the tax: buyers barely cut quantity when the price rises, so sellers pass almost the whole £1 through',
+        'Split exactly 50/50',
+        'Nobody — the government absorbs it',
+      ],
+      answer: 1,
+      why: 'Tax incidence depends on relative elasticities, not on who legally remits the tax. With inelastic demand, quantity barely falls and the market price rises nearly the full tax. This is why fuel, tobacco and alcohol are such reliable tax bases — and why the same taxes are regressive, hitting poorer households harder.',
+    },
+    {
+      q: 'Farmers have a bumper harvest, yet their total revenue falls. The explanation is:',
+      choices: [
+        'Buyers punish glut prices',
+        'Food demand is inelastic: the larger crop forces prices down sharply while quantity rises only slightly — a 30% bigger harvest sold at 25% lower prices can leave revenue smaller, the classic "paradox of plenty"',
+        'Supermarkets collude',
+        'Quality falls with size',
+      ],
+      answer: 1,
+      why: 'With inelastic demand, price and revenue move together: a big supply shift means a big price fall, and quantity barely compensates. It is also the flip side of farm-price supports: supply-side policies aimed at restricting output raise farm revenue precisely because demand for food is inelastic.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/elasticity">
   <h2>The idea</h2>
@@ -20,7 +69,13 @@ const elascfg = {
     the percentage change in quantity per percentage change in price. <strong>Elastic</strong>
     goods (holidays, restaurant meals) shed buyers fast; <strong>inelastic</strong> goods
     (insulin, salt, fuel) barely flinch. The slope of the curve — literally — decides who bears
-    a tax and whether a price rise earns money.
+    a tax and whether a price rise earns money. Elasticity is the demand-and-supply lesson's
+    sensitivity dial, and it upgrades every qualitative claim economics makes quantitative:
+    "a price rise cuts demand" becomes "a 10% rise cuts demand by 4%, so revenue rises" —
+    the difference between a proverb and a policy tool. This page covers the elasticity
+    formula and why it uses percentages, the price elasticity of demand and its
+    determinants, the revenue connection, price elasticity of supply, the other two
+    elasticities (income and cross), tax incidence, and the role of time.
   </p>
 
   <Widget no="1" caption="two demands, two personalities — raise price and watch which market walks away" widget="plotter" config={elascfg} />
@@ -31,12 +86,196 @@ const elascfg = {
     The flat (elastic) curve punishes any increase: luxury sellers eat their own taxes.
   </p>
 
-  <h2>The elasticities worth knowing</h2>
+  <h2>The formula: why percentages</h2>
+  <p>
+    <strong>Price elasticity of demand (PED)</strong> is defined as
+    <strong>PED = %Δ quantity demanded ÷ %Δ price</strong>. Using percentage changes rather
+    than raw units is the design decision that makes the number portable: a 10% price
+    rise means the same thing whether petrol is priced in pounds, dollars or litres —
+    whereas "price rises 50p" depends entirely on the starting price and currency.
+    The convention is to ignore the minus sign (quantity falls when price rises, so
+    the raw number is negative) and compare magnitudes: <strong>|PED| greater than 1 is
+    elastic</strong> (quantity responds more than proportionally), <strong>|PED| less than 1 is
+    inelastic</strong> (less than proportionally), <strong>|PED| = 1 is unit elastic</strong>.
+    <strong>A worked example:</strong> a café raises its flat white from £3.00 to £3.30 (+10%)
+    and sales fall from 200 to 180 per day (−10%): PED = 10 ÷ 10 = 1, unit elastic —
+    and, as the next section shows, revenue unchanged (600 either way). If sales had
+    fallen to 150 (−25%), PED = 2.5, strongly elastic — the price rise backfired
+    (revenue £600 → £495). If sales only fell to 190 (−5%), PED = 0.5, inelastic —
+    the rise paid (£600 → £627). Note the elasticity is computed over a
+    <em>range</em> (the "arc" between two points); along a straight-line demand curve
+    the elasticity actually varies from highly elastic at high prices to highly
+    inelastic at low ones, which is why textbook diagrams show elasticity regions
+    along the curve rather than one number per curve.
+  </p>
+
+  <h2>Price elasticity of demand: the determinants</h2>
+  <p>
+    What decides whether buyers walk away? Five forces, each observable before any
+    data is collected:
+  </p>
   <ul>
-    <li><strong>Price elasticity of demand:</strong> measured by availability of substitutes, necessity, and share of income. Necessities with no substitutes: inelastic. Everything else: somewhere in between.</li>
-    <li><strong>Income elasticity:</strong> normal goods rise with income; inferior goods (instant noodles) fall — why recessions oddly help some brands.</li>
-    <li><strong>Cross elasticity:</strong> how demand for one good responds to another's price — positive for substitutes (Coke vs Pepsi), negative for complements (cars and fuel).</li>
-    <li><strong>Time matters:</strong> elasticity rises with time horizons — fuel demand is inelastic this month, more elastic over years as people buy efficient cars. Policy that works short-term fails long-term.</li>
+    <li><strong>Substitutes:</strong> the master determinant — the easier the switch, the more elastic. One brand of cola is ferociously elastic (every rival is a substitute); cola as a category is much less so; drinks as a whole less again. <em>Market definition changes the answer.</em></li>
+    <li><strong>Necessity versus luxury:</strong> insulin, electricity, staples are necessities bought whatever the price; cruises and restaurant meals can be postponed or skipped.</li>
+    <li><strong>Share of income:</strong> a doubling of matchstick prices changes nobody's budget; a doubling of rent does. Big-ticket items are more elastic.</li>
+    <li><strong>Habit and addiction:</strong> tobacco's demand is famously inelastic (empirical estimates cluster around −0.3 to −0.5), which is exactly why governments tax it — revenue rises, and consumption falls just enough to justify the public-health claim.</li>
+    <li><strong>Time:</strong> the silent one — see below, it deserves its own section.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Marshall, Principles of Economics (1890); OpenStax, Principles of Economics (Elasticity).</p>
+  <p>
+    The empirical landscape is more nuanced than the categories suggest — petrol
+    demand is roughly −0.25 in the short run but −0.6 or more over years, and even
+    salt has substitutes if you include "use less" — but the pattern is robust:
+    necessities without substitutes sit near zero, discretionary goods with
+    alternatives stretch toward and beyond −1.
+  </p>
+
+  <h2>Elasticity and revenue: the seller's dial</h2>
+  <p>
+    Total revenue is price × quantity, and elasticity tells you which way it moves.
+    <strong>Elastic demand:</strong> the quantity effect dominates — cut price and revenue
+    rises, raise price and revenue falls (the luxury seller's trap).
+    <strong>Inelastic demand:</strong> the price effect dominates — raise price and revenue
+    rises (the necessity seller's power, and the state's tax base).
+    <strong>Unit elastic:</strong> revenue is at its maximum — which is why revenue-
+    maximising firms price near the unit-elastic point of their demand curve, and
+    why the two-identical-numbers café above left revenue exactly unchanged.
+    This one relationship powers an enormous amount of business and policy
+    reasoning: premium pricing strategies (serve the inelastic segment),
+    surge pricing (charge the inelastic moment), student and pensioner
+    discounts (price-discriminate toward the elastic segments), and the
+    design of cigarette taxes (revenue from inelasticity, harm reduction
+    from the residual elasticity).
+  </p>
+
+  <h2>Price elasticity of supply</h2>
+  <p>
+    <strong>PES = %Δ quantity supplied ÷ %Δ price</strong> — how willingly producers
+    respond to a price signal. The determinants are capacity-shaped:
+    <strong>spare capacity</strong> (a factory running half-shifts can surge; a
+    full one cannot), <strong>inventories</strong> (stocked goods supply elastically),
+    <strong>production lags</strong> and <strong>factor mobility</strong> — and above all
+    <strong>time</strong>. The classic case is agriculture: the momentary supply
+    of this year's wheat is fixed (PES ≈ 0 — the crop is in the ground),
+    the short run allows replanting decisions, and the long run allows
+    land conversion. Housing is the modern textbook case: decades of
+    restrictive planning make housing supply highly inelastic in
+    high-demand cities, so demand growth converts almost entirely into
+    price rather than quantity — the elasticity story behind "why is rent
+    so high" in San Francisco or London. Fish and agricultural markets
+    generally run low PES, manufactured goods with elastic supply adjust
+    fast — and the policy consequences (buffer stocks, strategic
+    reserves, agricultural subsidies) are all elasticity engineering.
+  </p>
+
+  <h2>Income and cross elasticity</h2>
+  <p>
+    Two further dials complete the family. <strong>Income elasticity of demand
+    (YED)</strong> = %Δ quantity ÷ %Δ income. Positive YED marks a
+    <strong>normal good</strong> (buy more when richer); within those, YED above 1
+    marks a <strong>luxury</strong> (demand rises faster than income — holidays,
+    restaurant meals); negative YED marks an <strong>inferior good</strong> (demand
+    falls as income rises — bus travel relative to cars, own-brand
+    staples relative to brands). YED explains recessions' strange
+    beneficiaries: discount supermarkets and repair shops gain when
+    incomes fall, which is why "inferior good" is a technical term, not
+    an insult. <strong>Cross elasticity of demand (XED)</strong> = %Δ quantity of
+    A ÷ %Δ price of B. Positive XED marks <strong>substitutes</strong> (Coke's sales
+    rise when Pepsi's price rises); negative marks <strong>complements</strong>
+    (car demand falls when fuel prices rise — and this is the linkage
+    petrol-tax analysts exploit); near zero marks unrelated goods.
+    XED is how competition authorities measure whether two firms are
+    really in the same market: if a price rise at one sends customers
+    to the other, the "market" is wider than the logos suggest.
+  </p>
+
+  <h2>Who bears a tax? Incidence and the slope</h2>
+  <p>
+    A tax's legal payer and its economic bearer are different people.
+    Whoever <em>cannot walk away</em> bears it. <strong>Worked reasoning:</strong> put a
+    £1 per unit tax on a good with inelastic demand and elastic supply:
+    sellers try to pass it on, buyers barely cut back, so the market price
+    rises by close to the full £1 — buyers pay. Reverse the elasticities
+    (elastic demand, inelastic supply — say, perishable fish) and sellers
+    eat most of the tax, because raising the posted price would empty the
+    market. This incidence rule is one of economics' most reliable
+    results: fuel taxes are paid by drivers (inelastic demand), payroll
+    taxes land substantially on workers (inelastic labour supply),
+    and taxes on elastic goods shrink their own base. The same arithmetic
+    answers the subsidy question — a subsidy's benefit flows mostly to
+    whichever side is less elastic — and explains why housing subsidies
+    in supply-inelastic cities capitalise into prices rather than
+    helping renters.
+  </p>
+
+  <h2>Time: the elasticity that grows</h2>
+  <p>
+    Elasticities are not constants; they are short-hand for behaviour under
+    constraints, and constraints loosen with time. Fuel demand is inelastic
+    <em>this month</em> (the commute is what it is, the car is bought) but more
+    elastic <em>over years</em> (smaller cars, moves closer to work, public
+    transport, working from home) — short-run estimates around −0.25
+    stretch toward −0.6 and beyond in the long run. The policy lesson is
+    sharp: a fuel tax raises revenue and barely dents consumption this
+    year, then progressively reshapes the vehicle fleet — its "effect"
+    depends entirely on the horizon. Congestion charges, sugar taxes and
+    carbon prices all show the same profile: small immediate response,
+    larger structural response, with the long-run number the only one
+    that answers the policy question.
+  </p>
+
+  <h2>Measuring elasticity in the wild</h2>
+  <p>
+    Estimated elasticities come from watching natural experiments, and the
+    method is worth a glance because it explains why published numbers
+    vary. The clean cases: a <strong>tax change</strong> that differs across a
+    border or a date (cigarette taxes by US state) lets economists
+    compare quantities before and after, treating the change as a
+    market-level experiment; a <strong>surge-pricing episode</strong> or an
+    <strong>airline yield system</strong> generates price variation within days
+    on identical seats. The estimates then feed back into policy
+    arithmetic: the "elasticity of demand for cigarettes" (about
+    −0.4 overall, but −0.7 or more for teenagers, whose smoking is
+    more discretionary) is the number that decides how much a tobacco
+    tax both earns and deters — the adolescent figure being the one
+    public-health campaigns buy. The same machinery priced the
+    "necessity" boundary empirically: electricity demand is inelastic
+    in the short run (≈ −0.1) and much more elastic across decades
+    as appliances and insulation turn over — time-series versus
+    cross-section estimates disagree precisely because the
+    horizon differs, which is the time lesson wearing
+    measurement clothes.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Where elasticity came from.</strong> Alfred Marshall formalised it in
+    <em>Principles of Economics</em> (1890), giving economics its first portable
+    sensitivity measure; the modern toolkit (point elasticity using
+    calculus, arc elasticity between observations, econometric estimation
+    from natural experiments) extends the same idea. Estimates have
+    improved with data but the rankings Marshall drew — necessities
+    inelastic, luxuries elastic — have not moved.
+  </p>
+  <p>
+    <strong>The agricultural paradox, formalised.</strong> With inelastic demand
+    and inelastic short-run supply, small supply shifts produce large
+    price swings — cobweb models show how one-year-lag supply responses
+    can generate oscillating booms and busts in hog and coffee markets,
+    and why commodity stabilisation schemes exist. Coffee blight,
+    oil shocks and the paradox of plenty are one phenomenon wearing
+    different hats.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Elasticity in digital markets defies the old
+    intuitions — a software copy has near-zero marginal cost, so
+    pricing runs on value and discrimination rather than cost, and
+    "supply" is nearly perfectly elastic. Attention markets (the price
+    of your time on a feed) have elasticities nobody has measured well.
+    And the biggest empirical programme running is carbon: the social
+    cost of carbon policy depends on the long-run elasticity of energy
+    demand, and estimates still vary enough to change policy conclusions.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Marshall, Principles of Economics (1890); OpenStax, Principles of Economics (Elasticity); empirical estimates from tobacco and fuel-demand literatures.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={elasQuizCfg} />
 </TopicPage>

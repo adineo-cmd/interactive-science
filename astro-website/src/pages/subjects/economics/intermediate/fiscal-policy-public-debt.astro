@@ -14,6 +14,55 @@ const fiscalCfg = {
     { label: 'primary surplus needed to stabilise', expr: '(i - y)*d/100', unit: '% of GDP' },
   ],
 };
+
+const fiscalQuizCfg = {
+  questions: [
+    {
+      q: 'A government spends £10 billion on infrastructure in a slump, and households spend 80% of any extra income (MPC = 0.8). The total rise in GDP is roughly:',
+      choices: [
+        '£10 billion',
+        'About £50 billion — the multiplier 1/(1 − 0.8) = 5: the £10bn becomes income, 80% is re-spent, and the chain compounds (in practice, leakages to taxes, imports and saving shrink it well below 5)',
+        '£8 billion',
+        'Zero — spending is just moving money',
+      ],
+      answer: 1,
+      why: 'One person\'s spending is another\'s income, so deficit spending circulates: £10bn → £8bn re-spent → £6.4bn → … totalling £50bn in the frictionless case. Real multipliers are smaller (leakages) but larger in deep slumps with idle resources than near full employment — which is why timing, not just size, decides whether stimulus works.',
+    },
+    {
+      q: 'A country has debt of 100% of GDP, an average interest rate of 3%, and nominal GDP growth of 5%. To keep the debt ratio from rising, it needs:',
+      choices: [
+        'A balanced budget',
+        'Nothing — with growth (5%) above the interest rate (3%), the debt ratio drifts down even with a small primary deficit; growth itself does the stabilising',
+        'A primary surplus of 3% of GDP',
+        'To default',
+      ],
+      answer: 1,
+      why: 'The debt-dynamics arithmetic: the ratio rises only when the interest–growth differential (r − g) is positive and not offset by a primary surplus. Post-war UK and the US grew their debts down from over 120% of GDP mostly this way — not through austerity, but through growth above the interest rate.',
+    },
+    {
+      q: 'Why does borrowing in your own currency make a debt crisis less likely?',
+      choices: [
+        'Because your own currency is stronger',
+        'Because a government issuing debt in currency it prints cannot be forced into involuntary default — the worst case is inflation, not bankruptcy; countries borrowing in dollars or (like Greece) sharing a currency they do not print face genuine default risk',
+        'Because domestic lenders are kinder',
+        'Because exchange rates are fixed',
+      ],
+      answer: 1,
+      why: 'The distinction separates Japan (debt over 250% of GDP, borrowing in yen, no crisis) from Argentina and Greece. It is not a licence: the own-currency escape valve is inflation, and losing it is why eurozone members adopted harsher fiscal rules than the US or UK ever accepted.',
+    },
+    {
+      q: 'During a boom, tax receipts rise and unemployment benefit payments fall automatically. This is:',
+      choices: [
+        'Discretionary fiscal policy',
+        'The automatic stabilisers at work: the budget moves counter-cyclically with no new legislation — moderating booms and cushioning slumps, and precisely why deficits widen in recessions even under unchanged policy',
+        'Austerity',
+        'Evidence of government waste',
+      ],
+      answer: 1,
+      why: 'Progressive taxes and unemployment benefits are built-in shock absorbers: they lean against the cycle without waiting for parliaments. Discretionary policy — the legislated stimulus or austerity — is the part politicians argue about; the automatic part is why every recession shows a deficit that is nobody\'s decision.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/fiscal-policy-public-debt">
   <h2>The idea</h2>
@@ -22,7 +71,15 @@ const fiscalCfg = {
     recessions Keynes argued for deficits (spend now, repay later); the opposite advice —
     austerity — says debts smother growth. Both are right, in different conditions. The deciding
     arithmetic: <strong>debt stabilises when GDP growth exceeds the interest rate</strong>, and
-    spirals when it doesn't.
+    spirals when it doesn't. That single sentence contains the whole modern debate: it explains
+    why post-war governments grew their way out of far larger debts than today's, why the
+    low-interest 2010s made borrowing cheap and the rate-rises of the 2020s made it suddenly
+    expensive, and why every austerity programme is ultimately an argument about that
+    differential. This page covers the fiscal toolkit (spending, taxes, transfers, automatic
+    stabilisers), the Keynesian multiplier with its arithmetic, the debt-dynamics equation the
+    widget computes, who really bears the debt, and the live debates — multipliers, crowding
+    out, Ricardian equivalence and the currency question — that decide when deficits are
+    medicine and when they are the disease.
   </p>
 
   <Widget no="1" caption="the debt dynamics equation — drag growth, interest and debt and watch which side of the spiral you're on" widget="sliderLab" config={fiscalCfg} />
@@ -35,12 +92,202 @@ const fiscalCfg = {
     than the 2020s.
   </p>
 
-  <h2>The live debates</h2>
-  <ul>
-    <li><strong>Multiplier size:</strong> a euro of deficit spending yields more than a euro of GDP in deep recessions (high multiplier) and less near full employment. Timing and slack decide.</li>
-    <li><strong>Ricardian equivalence:</strong> if households expect future taxes to repay today's debt, they save rather than spend the stimulus — empirically partial, debated endlessly.</li>
-    <li><strong>Who bears it:</strong> debt transfers cost to future taxpayers — but also to future savers who buy the bonds. "We owe it to ourselves" is half-true; the interest distribution is not.</li>
-    <li><strong>Currency matters:</strong> countries borrowing in their own currency (US, UK, Japan) face inflation risk, not default; eurozone countries and developing nations borrowing in dollars can face genuine crises (Greece 2010, Argentina repeatedly).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Keynes, General Theory (1936); Blanchard, "Public Debt and Low Interest Rates" (2019); Alesina & Ardagna (austerity counterpoint).</p>
+  <h2>The toolkit: spending, taxes and the built-in shock absorbers</h2>
+  <p>
+    Fiscal policy moves three levers. <strong>Government purchases (G)</strong> buy output
+    directly — infrastructure, defence, health services. <strong>Transfer payments</strong>
+    (pensions, benefits, subsidies) redistribute income without buying output —
+    they stimulate only when recipients spend them. <strong>Taxes</strong> withdraw
+    purchasing power; cutting them is a stimulus, raising them a brake. Each
+    lever has a different speed and multiplier, which is the practical art of
+    fiscal design. Alongside the discretionary choices sits the
+    <strong>automatic stabilisers</strong>: in a downturn, tax receipts fall
+    (incomes fell) and unemployment benefits rise (the rules say so) — the
+    deficit widens with <em>no decision at all</em>, cushioning the fall in
+    private spending. In a boom the same machinery runs in reverse. This is
+    why recessions produce deficits under any government and any doctrine,
+    and why comparing budgets across years requires separating the
+    <em>cyclical</em> deficit (the stabilisers' work) from the
+    <em>structural</em> deficit (the underlying policy stance) — a
+    distinction the fiscal lessons of every finance ministry depend on.
+  </p>
+
+  <h2>The Keynesian multiplier: why £1 of spending can move more than £1</h2>
+  <p>
+    One person's spending is another person's income, so a fiscal injection
+    circulates. <strong>The arithmetic:</strong> if households spend 80% of any
+    extra income (the marginal propensity to consume, MPC = 0.8), a £10bn
+    infrastructure programme pays £10bn of income, of which £8bn is
+    re-spent, becoming £8bn of income, of which £6.4bn is re-spent… The
+    geometric series sums to £10bn × 1/(1 − 0.8) = <strong>£50bn</strong> — the
+    <strong>multiplier</strong> is 1/(1 − MPC). <strong>Worked against reality:</strong>
+    the frictionless 5 overstates it, because spending leaks at every
+    round into taxes, imports and saving (a smaller "effective" MPC);
+    empirical multipliers run near 0.5–1.5 for tax cuts and ordinary
+    spending, and higher — 1.5 to 2+ — for government purchases in deep
+    slumps with idle resources and pinned interest rates (the 2009 and
+    2020 stimulus packages were designed on exactly this logic). The
+    flip side is the <strong>crowding-out</strong> concern: near full
+    employment, deficit borrowing competes for scarce resources,
+    pushing up interest rates and squeezing private investment — the
+    multiplier shrinks toward zero and can go negative in an
+    overheating economy. Timing, not just size, is the policy variable:
+    the same programme is medicine in a slump and congestion in a boom.
+  </p>
+
+  <h2>The debt-dynamics equation: r versus g</h2>
+  <p>
+    The debt ratio D (debt ÷ GDP) evolves by one inequality. With
+    <strong>i</strong> the average interest rate on the debt and <strong>y</strong> nominal
+    GDP growth, the ratio drifts up when i exceeds y and drifts down when
+    y exceeds i — modified by the <strong>primary balance</strong> (the budget
+    balance excluding interest payments). <strong>Worked examples.</strong>
+    <em>Post-war Britain:</em> debt over 250% of GDP in 1946; with
+    decades of growth above bond yields and moderate primary balances,
+    the ratio fell below 50% by the 1970s — no austerity large enough
+    to explain it; growth did the work. <em>The 2010s:</em> interest
+    rates fell below growth across advanced economies (the r − g
+    differential turned sharply negative), making debt cheap to carry —
+    the empirical backdrop of Olivier Blanchard's 2019 presidential
+    address, "Public Debt and Low Interest Rates", which argued that
+    when r is below g, debt may carry little fiscal cost.
+    <em>The 2020s:</em> the differential swung positive as rates rose,
+    and the widget's third readout — the primary surplus needed to
+    stabilise, (i − y) × D — started demanding real money: at
+    i = 5%, y = 3%, D = 100%, that is a 2% of GDP primary surplus,
+    roughly the size of a country's entire defence budget. Debt is
+    not a cliff; it is a <em>slope</em>, set by that differential —
+    and the whole politics of fiscal rules (the EU's 3% and 60%
+    benchmarks, the UK's fiscal mandates) is an argument about
+    where on the slope to stand.
+  </p>
+
+  <h2>Who bears the debt?</h2>
+  <p>
+    "The debt falls on our grandchildren" needs unpacking. If the bonds are
+    held domestically, the future taxpayers who service the debt largely
+    pay the future bondholders who receive it — "we owe it to ourselves",
+    and the transfer is distributional, not international. But three real
+    costs survive. <strong>Incentive costs:</strong> servicing debt requires taxes
+    that distort work and investment. <strong>Foreign-held debt:</strong> the
+    share of US Treasuries held abroad (roughly a third) and of UK gilts
+    (roughly a quarter) is a genuine external claim. <strong>Reduced policy
+    space:</strong> a country that arrives at the next crisis already deeply
+    indebted has less room to respond — the 2010 eurozone members, pre-
+    constrained when the shock came, are the case study. And the
+    distribution within the future matters: bond interest flows to the
+    savers (wealthier, on average), financed by taxpayers (broader) —
+    a regressive pump running quietly through the years.
+  </p>
+
+  <h2>The currency question: Japan, Greece and the escape valve</h2>
+  <p>
+    The single biggest risk factor in public debt is the currency it is
+    denominated in. A government borrowing in <strong>its own currency that it
+    issues</strong> (US, UK, Japan — Japan's debt exceeds 250% of GDP with
+    borrowing costs near zero) cannot be forced into involuntary default:
+    the central bank can always create the currency, and the crisis mode
+    is <em>inflation</em>, not bankruptcy. A government borrowing in
+    <strong>foreign currency</strong> (many developing nations in dollars) or
+    sharing a <strong>currency it does not print</strong> (Greece within the
+    eurozone, 2010–2015) faces genuine default risk: it cannot conjure
+    dollars or euros, so when markets doubt repayment, yields spike,
+    refinancing closes, and the IMF arrives with conditions. This
+    distinction explains otherwise puzzling patterns: why Japan's
+    enormous debt is calm while Greece's much smaller (relative) debt
+    was catastrophic; why eurozone members accepted harsher fiscal
+    rules than the US or UK would tolerate; and why "print versus
+    default" is the real menu behind sovereign-debt crises — with
+    inflation as the escape valve that prints the bill onto savers
+    rather than taxpayers.
+  </p>
+  <p><em>Common misconception:</em> "a national debt is like a household
+  mortgage — someday it must all be paid off." Governments do not retire;
+  the debt is perpetually refinanced, and the meaningful quantity is its
+  <em>ratio to income</em>, managed through growth and inflation as much as
+  through surpluses. No national debt has ever been "paid off" in the
+  household sense — the UK has carried a national debt continuously since
+  the 1690s. The household metaphor fails precisely where the r-versus-g
+  arithmetic lives.</p>
+
+  <h2>Three signatures of a debt crisis</h2>
+  <p>
+    Because the slope is gradual, crises announce themselves with recognisable
+    patterns. <strong>Signature one — the rollover squeeze:</strong> a government
+    must refinance maturing bonds continuously; when markets doubt it, new
+    issues demand punitive yields, the interest bill eats the budget, and
+    the spiral the widget models turns self-fulfilling (Greece, 2010–12:
+    two-year yields passed 100% at the peak). <strong>Signature two — the
+    currency run:</strong> foreign-currency borrowers face the wall sooner,
+    because the exchange rate collapses first and the debt (in local
+    terms) balloons behind it — Argentina's repeated crises, Sri Lanka's
+    2022 default. <strong>Signature three — the inflation escape:</strong>
+    own-currency borrowers avoid formal default by letting the real
+    value of the debt erode — debt holders paid in devalued currency —
+    the "financial repression" mix of capped rates and inflation that
+    worked through the post-war decades. Each signature sets the
+    policy menu that follows: IMF programmes and haircuts for the
+    first, debt restructurings for the second, and for the third a
+    bond market that demands inflation-indexed instruments — which
+    is why so much modern debt now <em>is</em> indexed: creditors
+    legislated themselves out of the escape valve.
+  </p>
+
+  <h2>Fiscal rules: trying to legislate discipline</h2>
+  <p>
+    Because deficits are politically easy and consolidation politically
+    hard, governments have repeatedly tried to bind their future selves
+    with <strong>fiscal rules</strong> — and the attempts teach as much as the
+    failures. The EU's Maastricht criteria (deficits under 3% of GDP,
+    debt under 60%) were breached by France and Germany themselves
+    within years; the UK has rewritten its fiscal mandate with nearly
+    every government since 1997; Switzerland's "debt brake" and
+    Chile's structural-balance rule are the cited successes —
+    constitutional-grade, cyclical-adjusted, and enforced by
+    referendum or independent council. The design lessons are
+    consistent: rules must be <strong>cyclically adjusted</strong> (so
+    recessions do not force self-defeating cuts — the eurozone's
+    2010 lesson), <strong>leave room for investment</strong> (the
+    "golden rule" idea: borrow for assets, not for
+    consumption), and <strong>carry an escape clause</strong> for
+    genuine emergencies (the pandemic suspended every rule in
+    Europe simultaneously). The unresolved objection is
+    political economy: a rule that binds is unpopular, a
+    rule that does not bind is decoration — and every
+    generation rediscovers the trade-off.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The austerity debate, in one paragraph.</strong> After 2010, eurozone
+    austerity (Alesina and Ardagna's "expansionary austerity" was the
+    intellectual cover) met the IMF's own mea culpa: multipliers in the
+    slump were far larger than assumed, so the Greek GDP collapse was
+    deeper and longer than the models predicted. The synthesis: fiscal
+    consolidation is eventually necessary where r exceeds g durably, but
+    its timing and speed matter enormously — consolidation in a slump
+    with a negative differential is self-defeating (smaller GDP raises
+    the debt ratio it was meant to cut).
+  </p>
+  <p>
+    <strong>Ricardian equivalence and its limits.</strong> Robert Barro's argument:
+    if households are perfectly forward-looking, today's deficit is
+    tomorrow's taxes, so they save the stimulus rather than spend it —
+    the multiplier is zero. Empirically partial: households are
+    liquidity-constrained, myopic and uncertain, so they do spend —
+    but the argument disciplines claims about painless deficits.
+  </p>
+  <p>
+    <strong>Open questions.</strong> How high can the r − g differential rise
+    before debt dynamics truly bind (the 2020s rate regime is the live
+    test)? Should fiscal rules target debt, deficits or investment
+    (the "golden rule" debate)? And does the political economy of
+    deficits — easy to raise, hard to reverse — mean discipline must
+    be legislated, or do rules merely shift the timing of the
+    inevitable argument? The General Theory is ninety years old and
+    the argument is exactly where Keynes left it, with better data.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Keynes, General Theory (1936); Blanchard, "Public Debt and Low Interest Rates" (2019); Alesina &amp; Ardagna (austerity counterpoint); IMF Fiscal Monitor.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={fiscalQuizCfg} />
 </TopicPage>

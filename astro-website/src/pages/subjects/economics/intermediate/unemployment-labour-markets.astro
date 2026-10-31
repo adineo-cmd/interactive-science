@@ -13,6 +13,55 @@ const unempCfg = {
     { label: 'Okun\'s estimate: GDP gap vs full employment', expr: '2*(unemployed/lf*100 - 4)', unit: '%' },
   ],
 };
+
+const unempQuizCfg = {
+  questions: [
+    {
+      q: 'The unemployment rate falls from 7% to 5% — but the labour force shrank because 500,000 people gave up searching. The fall is:',
+      choices: [
+        'Genuinely good news',
+        'Partly illusory: the discouraged workers left the labour force entirely, so they count as neither employed nor unemployed — the participation rate fell, and the recovery is weaker than the headline',
+        'Impossible — rates cannot fall in a shrinking force',
+        'Proof of full employment',
+      ],
+      answer: 1,
+      why: 'The denominator is the labour force — employed plus actively seeking — so the "active seeking" condition is where measurement politics lives. This is why serious analysis reads the unemployment rate alongside participation, hours worked and vacancy data rather than alone.',
+    },
+    {
+      q: 'A region built on coal mining loses its mines as the industry closes. Coalminers remain jobless for years because the new jobs (healthcare, software) demand different skills and locations. This is:',
+      choices: [
+        'Cyclical unemployment',
+        'Structural unemployment: a mismatch between workers\' skills and location and what employers now demand — the most painful kind, because time and demand management do not fix it; retraining and mobility support do',
+        'Frictional unemployment',
+        'Voluntary unemployment',
+      ],
+      answer: 1,
+      why: 'Frictional unemployment is the normal between-jobs search (weeks); structural persists for years because the problem is the match, not the speed of search. The China-shock literature found such regions can stay depressed for a decade or more — aggregate statistics hide the concentrated, long-lasting harm.',
+    },
+    {
+      q: 'Why do economists not regard zero unemployment as the goal?',
+      choices: [
+        'Because full employment is impossible',
+        'Because some unemployment is functional: frictional search matches people to better jobs, and pushing unemployment below its natural rate overheats the economy — workers become scarce, wages and prices spiral, and inflation follows',
+        'Because unemployed people are happier',
+        'Because firms prefer recruiting from a queue',
+      ],
+      answer: 1,
+      why: 'The natural rate (or NAIRU) is the floor where the labour market is as tight as prices can bear. Below it, vacancy-to-unemployment ratios explode and wage inflation accelerates — the reasoning behind central banks raising rates when unemployment falls "too far".',
+    },
+    {
+      q: 'A deep recession hits. Workers resist wage cuts, so firms lay people off instead. This pattern — jobs fall rather than pay — is explained by:',
+      choices: [
+        'Firms\' kindness',
+        'Wage stickiness: contracts, morale, fairness norms and minimum laws make nominal wages hard to cut, so labour markets adjust by quantities (jobs) rather than prices (pay)',
+        'Unions are illegal',
+        'Computers replaced workers',
+      ],
+      answer: 1,
+      why: 'Sticky wages are why recessions produce unemployment at all: if pay fell instantly to clear the market, everyone would work for slightly less instead of some not working. Keynes made the stickiness central; the micro-foundations (morale, fairness, contracts) earned later Nobels — and the debate over how sticky, and why, is still live.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/unemployment-labour-markets">
   <h2>The idea</h2>
@@ -22,7 +71,12 @@ const unempCfg = {
     which is why rates can fall when people give up). Economists separate three kinds:
     <strong>frictional</strong> (between jobs — healthy), <strong>structural</strong> (skills
     mismatched to available jobs — painful), and <strong>cyclical</strong> (recessions — the part
-    policy targets).
+    policy targets). Behind the headline number sits a whole market: wages are its price,
+    vacancies its demand side, participation its supply, and the flows between employment,
+    unemployment and "outside" are what any single month's rate conceals. This page covers
+    how the labour force is measured and gamed, the three types of unemployment and the
+    natural rate, why wages do not simply fall to clear the market, what Okun's law links
+    jobs to output, and the demand-side versus supply-side policy fork.
   </p>
 
   <Widget no="1" caption="the rate, its arithmetic, and Okun's rough law linking jobs to output" widget="sliderLab" config={unempCfg} />
@@ -33,11 +87,213 @@ const unempCfg = {
     never goes below without overheating.
   </p>
 
-  <h2>Why unemployment exists at all</h2>
-  <ul>
-    <li><strong>Wages are sticky downward:</strong> workers and firms resist pay cuts, so recessions shed jobs instead of wages. Keynes made stickiness central; economists still debate its exact causes (contracts, morale, fairness norms).</li>
-    <li><strong>Search takes time:</strong> matching workers to vacancies is a process (the search-and-matching model won the 2010 Nobel). Unemployment insurance lengthens searches but also improves their quality — the trade-off every benefits debate re-litigates.</li>
-    <li><strong>Structural change hurts locally:</strong> automation and trade shift jobs between sectors faster than workers retrain. The aggregate unemployment rate hides the concentrated pain — "China shock" research found affected regions stayed depressed for a decade or more.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Okun (1962); Diamond–Mortensen–Pissarides framework (Nobel 2010); Autor, Dorn & Hanson, AER (2013).</p>
+  <h2>Measuring: the labour force and its boundary games</h2>
+  <p>
+    The modern standard is the <strong>ILO definition</strong>, measured by survey (the UK's
+    Labour Force Survey, the US Current Population Survey): <strong>unemployed</strong>
+    means without work, <em>available</em> to start, and <em>actively seeking</em> in
+    the past four weeks. The <strong>labour force</strong> is employed plus unemployed;
+    the <strong>participation rate</strong> is the labour force as a share of the
+    working-age population — the third number that keeps the other two honest.
+    A rate can fall because people found jobs (good) or because they stopped
+    looking (bad), and the two are distinguished only by reading participation
+    alongside. The boundary choices create the measurement politics:
+    <strong>discouraged workers</strong> (gave up searching — counted out),
+    <strong>underemployed</strong> (part-time workers wanting full hours — counted
+    as employed), <strong>involuntary part-timers and zero-hours workers</strong>
+    (employed, in the statistic), and <strong>claimant counts</strong> (people on
+    unemployment benefits — cheaper to collect monthly, but shaped by
+    benefit rules, which is why most countries publish both survey and
+    claimant measures). A serious reading of "the labour market" is a
+    dashboard: unemployment rate, participation, hours, vacancies, and
+    the <strong>Beveridge curve</strong> — the plot of vacancies against
+    unemployment, whose shifts reveal how efficiently the market
+    matches people to jobs (a Beveridge curve moving outward, as after
+    the pandemic, means matching is worse at every level).
+  </p>
+
+  <h2>Three types of unemployment — and the natural rate</h2>
+  <p>
+    <strong>Frictional unemployment</strong> is the between-jobs traffic: graduates
+    searching, quitters relocating, matches taking weeks to form. It is
+    not merely tolerable but functional — the search is how workers find
+    better matches — and it sets a floor even in booming economies.
+    <strong>Structural unemployment</strong> is the mismatch: skills, geography
+    or regulation standing between workers and the jobs that now exist.
+    Coal regions after pit closures; print journalists after the internet;
+    regions whose industries moved away. Its signature is
+    <em>duration</em> — long-term unemployment concentrated in places
+    and trades — and its remedies are supply-side (retraining, relocation
+    support, housing availability), not demand. <strong>Cyclical
+    unemployment</strong> is the recession share: demand collapses economy-wide,
+    and jobs go with it — the part that fiscal and monetary policy exist
+    to fight, and the part Okun's law quantifies. The economy's floor is
+    the <strong>natural rate</strong> (or <strong>NAIRU</strong> — the non-accelerating-
+    inflation rate of unemployment): the level where the labour market is
+    tight enough that wage inflation is stable, neither overheating nor
+    depressed. It is estimated, not observed (central banks' estimates
+    have drifted between roughly 4% and 6% in major economies), and
+    treating a statistical estimate as a law has real costs — the
+    2010s' "hysteresis" discovery showed that prolonged high unemployment
+    itself <em>raises</em> the natural rate (skills atrophy, attachment
+    breaks), which flips the old policy caution: idle workers are not
+    just a symptom of weakness but a cause of future weakness.
+  </p>
+
+  <h2>Why unemployment exists: sticky wages and matching frictions</h2>
+  <p>
+    In a frictionless textbook market, any temporary glut clears by price:
+    wages fall until everyone who wants work finds it. Real labour markets
+    adjust by <em>quantity</em> — jobs — rather than price, and explaining
+    that is the field's central puzzle. <strong>Wage stickiness</strong> has
+    accumulated foundations: explicit <strong>contracts</strong> (pay fixed for
+    a year), <strong>morale and fairness norms</strong> (pay cuts sabotage
+    effort and retention — the behavioural economics that earned Akerlof
+    a Nobel), <strong>minimum wages and union agreements</strong> (legal floors),
+    and <strong>insider-outsider dynamics</strong> (firms bargain with incumbent
+    staff, not the unemployed). When wages cannot fall, a demand slump
+    converts into layoffs instead of everyone earning slightly less —
+    sticky prices, jobs as the shock absorber. The second pillar is
+    <strong>search and matching</strong>: even in healthy times, workers and
+    vacancies take time and cost to find each other (the
+    Diamond–Mortensen–Pissarides framework, Nobel 2010). Search frictions
+    explain why vacancies and unemployment coexist (the Beveridge curve),
+    why <strong>unemployment insurance</strong> cuts both ways — longer,
+    better-matched searches, but longer searches — and why policy
+    arguments about benefits are really arguments about where on that
+    trade-off a society chooses to sit.
+  </p>
+
+  <h2>Okun's law: the jobs–output dial</h2>
+  <p>
+    <strong>Okun's rule of thumb</strong> (Arthur Okun, 1962): each percentage
+    point of unemployment above the natural rate corresponds to roughly a
+    2% shortfall of real GDP from potential. The widget above computes it
+    directly: at a 6% unemployment rate against a 4% natural rate, the
+    estimated output gap is about 4% of GDP — hundreds of billions in a
+    large economy. The law is a regularity, not a mechanism (the
+    coefficient varies by country and cycle: 2 in the US, nearer 1–1.5
+    elsewhere where hours adjust before headcount), and it works
+    symmetrically in recoveries — rapid GDP growth first burns down
+    unemployment, then raises output per worker. Its policy use is
+    sizing: it is the arithmetic that lets a treasury price a recession
+    ("this downturn will cost 4% of GDP — the stimulus is £X") and it
+    explains why employment is always the last indicator to recover:
+    firms exhaust hours, temps and attrition before hiring, and shed
+    workers last.
+  </p>
+
+  <h2>Structural change hurts locally: the evidence</h2>
+  <p>
+    The aggregate rate is a national average over intensely local pain.
+    The <strong>"China shock" research</strong> (Autor, Dorn and Hanson, AER
+    2013) measured what import competition from China did to US
+    manufacturing regions: affected commuting zones saw employment,
+    wages and labour-force participation fall — and, crucially,
+    <em>stay</em> depressed for a decade or more, with workers drifting
+    to disability rolls rather than to growing sectors. Migration to
+    opportunity proved far less fluid than the textbook assumed
+    (housing costs, family, sunk local ties). The finding rewrote the
+    trade-policy debate — aggregate gains from trade are real, and so
+    is the decade-long concentrated cost — and it is the empirical
+    template for automation debates: the question is never "jobs or
+    no jobs" but which regions, which skills, and how long the
+    transition takes.
+  </p>
+  <p><em>Common misconception:</em> "low unemployment means the labour market
+  is healthy — so the lowest possible rate is best." The dashboard says
+  otherwise: below the natural rate, the economy overheats (wage-price
+  spirals — the 1970s lesson), and a rate that falls only because
+  participation collapsed is statistical recovery, not work. The healthy
+  signature is a stable rate near its estimated floor <em>with</em> rising or
+  steady participation, falling long-term unemployment, and a Beveridge
+  curve that has not drifted outward.</p>
+
+  <h2>Reading a labour market in four numbers, worked</h2>
+  <p>
+    One worked country-day shows the dashboard in motion. Population of
+    working age: 52 million. Labour force: 34 million, of whom 31.3
+    million are employed and 2.7 million unemployed. The <strong>rate</strong>:
+    2.7 ÷ 34 = 7.9%. The <strong>participation rate</strong>: 34 ÷ 52 = 65% —
+    the number that qualifies everything else (18 million outside the
+    force: students, carers, retired, discouraged). Now the month moves:
+    200,000 find jobs and 300,000 stop searching. Rate: 2.5 ÷ 33.7 =
+    <strong>7.4%</strong> — down half a point. Participation: 33.7 ÷ 52 =
+    <strong>64.8%</strong> — down. The honest read: the fall is real but
+    flattered; a recovery strong enough to re-attract the discouraged
+    would show the rate rising <em>again</em> as searchers return — the
+    paradox that makes employment-to-population ratios (here 31.3 ÷ 52
+    = 60.2%) the number economists trust most in prolonged
+    recoveries, because it cannot be improved by people
+    giving up.
+  </p>
+
+  <h2>Seasonal and hidden: the categories the headline blurs</h2>
+  <p>
+    Two further categories complete the taxonomy. <strong>Seasonal
+    unemployment</strong> follows the calendar — ski instructors in July,
+    fruit pickers after the harvest, Christmas retail in January —
+    and its policy treatment is smoothing: tourism economies build
+    off-season trades, and statisticians publish seasonally
+    adjusted series precisely so the news does not confuse
+    December's hiring with a boom. <strong>Hidden (disguised)
+    unemployment</strong> is the labour that is employed in name
+    only: the underemployed part-timer wanting full hours,
+    the over-qualified graduate in a stopgap job, the
+    public sector carrying redundant staff to avoid the
+    headline — in some economies, rural subsistence
+    farming absorbs workers whose marginal product
+    is near zero, which is why development economists
+    discount official rates for poor countries. Both
+    categories sharpen the measurement lesson: the
+    unemployment rate is a narrow gate, and every
+    serious analysis pairs it with the broader
+    underutilisation measures — unemployed, plus
+    underemployed, plus the marginally attached —
+    that the statistical agencies now publish
+    beside it.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The Phillips connection.</strong> Unemployment and wage inflation
+    trade off along the <strong>Phillips curve</strong> — the empirical relation
+    that anchored macro policy until the 1970s stagflation (high
+    unemployment <em>and</em> high inflation) broke its simple form. The
+    modern synthesis: the trade-off exists short-run, shifts with
+    expectations, and the NAIRU is its unemployment-side name. The
+    2010s then embarrassed everyone again: unemployment fell far below
+    estimated NAIRUs with little inflation, reopening the curve's
+    steepness debate — the live question behind every central-bank
+    rate decision.
+  </p>
+  <p>
+    <strong>Minimum wages: the empirical reset.</strong> The simple model
+    (a floor above market wage creates unemployment) met the modern
+    minimum-wage literature (Card and Krueger's New Jersey fast-food
+    study and successors): moderate minimums in practice raised pay
+    with small employment effects — monopsony power (employers
+    setting wages below competitive levels) is one reason. The
+    consensus is now dose-dependent: small rises, small costs;
+    very large rises, untested. Card's shared 2021 Nobel marks the
+    method's victory: natural experiments over blackboard models.
+  </p>
+  <p>
+    <strong>Open questions.</strong> How will AI reshuffle the task composition
+    of jobs — displacement at the speed of software, or the slow
+    reallocation of every previous general-purpose technology? Do
+    remote work and the gig economy make the labour force boundary
+    unmeasurable (is a rideshare driver with three apps "employed"
+    the way the statistic assumes)? And can active labour-market
+    programmes (training, subsidised mobility) be made to work at
+    scale — the evidence so far favours targeted, employer-linked
+    programmes over classroom retraining, with effect sizes honest
+    but modest. Behind all three runs the distributional question
+    the aggregate rate was never designed to answer: which
+    workers, in which places, carry the adjustment — and who,
+    in a democracy, is accountable for them.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Okun (1962); Diamond–Mortensen–Pissarides framework (Nobel 2010); Autor, Dorn &amp; Hanson, AER (2013); Card &amp; Krueger (1994).</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={unempQuizCfg} />
 </TopicPage>

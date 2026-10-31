@@ -15,6 +15,55 @@ const gdpCfg = {
     { label: 'trade contribution', expr: 'nx', unit: 'points' },
   ],
 };
+
+const gdpQuizCfg = {
+  questions: [
+    {
+      q: 'A bakery buys £200 of flour and sells £500 of bread. What enters GDP?',
+      choices: [
+        '£700 — both transactions count',
+        '£500 — the final sale only; the flour is an intermediate good already embodied in the bread\'s price, and counting both would double-count',
+        '£300 — the value added',
+        '£0 — food is a necessity',
+      ],
+      answer: 1,
+      why: 'GDP counts final goods to avoid double counting. The elegant equivalent: sum the value added at each stage (200 at the mill, 300 at the bakery) and you get 500 — the final price. Both methods agree by construction, which is why the output and expenditure approaches to national accounting must always tally.',
+    },
+    {
+      q: 'Which of these raises measured GDP?',
+      choices: [
+        'A parent caring for their own children',
+        'Cleaning up after an oil spill, at a cost of £2 billion — the cleanup is a paid service, so it adds to GDP even though it only restores what was lost; the damage itself subtracted nothing',
+        'The sale of a 2018 used car in 2026',
+        'Volunteering at a charity shop',
+      ],
+      answer: 1,
+      why: 'GDP measures marketed production, not welfare: it counts the repair and ignores the harm (and the unpaid work, and the depletion). This asymmetry — costs of cleanup in, damages out — is the broken-window problem at national scale, and the motive for green-adjusted accounts.',
+    },
+    {
+      q: 'Nominal GDP rose 6% last year while the price level (deflator) rose 4%. Real GDP grew by:',
+      choices: [
+        '10%',
+        'About 2% — real growth strips out inflation (approximately nominal minus inflation; exactly, (1.06/1.04) − 1 ≈ 1.9%)',
+        '6% — the deflator is decorative',
+        '−4%',
+      ],
+      answer: 1,
+      why: 'Nominal GDP mixes quantity with price; real GDP revalues output at constant prices so that "growth" means more goods and services, not dearer ones. Comparing economies, or an economy across decades, without deflating is comparing apples with dearer apples.',
+    },
+    {
+      q: 'Why do international comparisons use GDP per capita at purchasing power parity (PPP)?',
+      choices: [
+        'Because PPP is easier to calculate',
+        'Because identical incomes buy different baskets in different countries — PPP converts to a common price level, so "what can you actually live on" is compared rather than the exchange-rate number',
+        'Because currencies are unstable',
+        'Because PPP counts unpaid work',
+      ],
+      answer: 1,
+      why: 'A haircut that costs $40 in Oslo costs $4 in Delhi; converting incomes at market exchange rates understates living standards where prices are low. PPP adjustment is why India appears roughly a seventh of the US economy at market rates but over a third at PPP — both numbers are true, they answer different questions.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/gdp-national-accounts">
   <h2>The idea</h2>
@@ -23,7 +72,15 @@ const gdpCfg = {
     year</strong> — the most-watched number in economics. It is built from four spending streams:
     <strong>C + I + G + NX</strong> (consumption, investment, government, net exports). Knowing
     what each bucket holds — and what GDP deliberately ignores — is the difference between using
-    the number and being used by it.
+    the number and being used by it. GDP was invented for a specific job: Simon Kuznets built
+    the first US national accounts for Congress in 1934, in the middle of the Great Depression,
+    because policymakers discovered they were steering an economy they could not measure. The
+    measurement worked so well that it colonised policy itself — "growth" became the master
+    objective — which makes understanding what the number measures and what it leaves out a
+    duty of every voter. This page covers the definition and the three ways to compute it, the
+    bucket-by-bucket anatomy with real shares, nominal versus real and the deflator, what GDP
+    counts and deliberately excludes, the criticisms that survive scrutiny, and the
+    alternatives that try to measure what GDP does not.
   </p>
 
   <Widget no="1" caption="build an economy from its four spending streams — watch shares shift as you drag" widget="sliderLab" config={gdpCfg} />
@@ -34,12 +91,174 @@ const gdpCfg = {
     negative and you have a trade-deficit economy; drag government up and you have 1945 Britain.
   </p>
 
-  <h2>What GDP misses — deliberately and accidentally</h2>
+  <h2>One number, three routes</h2>
+  <p>
+    Every transaction in an economy has two sides — someone spends, someone earns, someone
+    produces — so GDP can be measured three ways, and all three must give the same total.
+    The <strong>expenditure approach</strong> sums spending on domestically produced final
+    goods: <strong>GDP = C + I + G + (X − M)</strong>. The <strong>income approach</strong>
+    sums what production pays out: wages, rents, interest, profits. The <strong>output
+    approach</strong> sums the <em>value added</em> at every stage of production. The
+    approaches agree by construction: the flour mill's £200 of value added plus the
+    bakery's £300 equals the £500 final bread price — summing value added and summing
+    final expenditure are the same arithmetic run in different directions. (In practice
+    the three routes disagree slightly, and statistical agencies publish a
+    <em>balancing</em> discrepancy — a rare, honest admission that measurement is hard.)
+    The <strong>final-goods rule</strong> is what prevents double counting: flour sold to
+    a bakery is an intermediate good and enters GDP only through the bread; but flour
+    sold to a household to bake at home is final and counts directly. The dividing line
+    is the buyer's use, not the good's nature.
+  </p>
+
+  <h2>The four buckets, with their real weights</h2>
+  <p>
+    <strong>Consumption (C)</strong> — household spending on goods and services — is the
+    giant: roughly 60–70% of GDP in most rich economies (about 68% in the US, 60% in
+    Germany), which is why "consumer confidence" is macroeconomic news. Within it,
+    services (health, rent, education, streaming) dominate goods in rich economies —
+    the sign of a mature economy. <strong>Investment (I)</strong> means something
+    precise and narrower than the everyday word: business fixed investment (machines,
+    factories, software), residential construction, and changes in inventories.
+    Buying shares is <em>not</em> investment in this sense — it transfers ownership of
+    existing assets; only new productive capacity counts. Investment is the smallest
+    but most volatile bucket (15–25% of GDP, swinging hardest in recessions — the
+    accelerator of the business cycle) and, uniquely, it builds the future's capacity.
+    <strong>Government spending (G)</strong> — public services, defence, schools,
+    infrastructure — is 15–25% in most developed economies (it peaks near 50%+ in
+    wartime economies: 1945 Britain). The transfer payments (pensions, benefits)
+    that dominate modern budgets are <em>excluded</em> from G — they are not
+    purchases of output, and their spending enters C when recipients spend them.
+    <strong>Net exports (X − M)</strong> nets sales abroad against purchases from
+    abroad; it hovers near zero for large economies, runs persistently positive
+    in Germany and China and deeply negative in the US and UK — and a negative
+    number is not a "loss", just a subtraction from one accounting identity.
+  </p>
+
+  <h2>Nominal, real, per capita, PPP: the transformations that matter</h2>
+  <p>
+    Four adjustments convert the raw total into comparable information.
+    <strong>Nominal versus real:</strong> nominal GDP uses current prices, so it rises
+    when prices rise as well as when output does. <strong>Real GDP</strong> revalues
+    output at constant (base-year) prices, isolating quantity; the conversion factor
+    is the <strong>GDP deflator</strong> (nominal ÷ real × 100). If nominal GDP rose
+    6% while prices rose 4%, real growth was about 2% — and "growth" in every
+    policy conversation means real growth. <strong>Per capita:</strong> dividing by
+    population converts total to average — real GDP per capita is the standard
+    (rough) proxy for living standards, and the number the growth-lessons'
+    long-run charts plot. <strong>Purchasing power parity (PPP):</strong> market
+    exchange rates compare economies at international prices, but identical
+    incomes buy different baskets in different countries; PPP adjusts for local
+    price levels, which is why India's economy looks roughly a seventh of the
+    US at market rates but over a third at PPP. Each adjustment answers a
+    different question — size, growth, typical income, affordable living — and
+    quoting the wrong one for the question is the most common abuse of the
+    statistic.
+  </p>
+
+  <h2>What GDP deliberately excludes — and what that costs</h2>
   <ul>
-    <li><strong>Deliberately excluded:</strong> second-hand sales, financial trades, intermediate goods (counted once, in the final product), unpaid household work.</li>
-    <li><strong>Not subtracted:</strong> pollution, resource depletion, disaster cleanup — a cleanup <em>adds</em> to GDP. Broken-window fallacy in national accounting form.</li>
-    <li><strong>Distribution is invisible:</strong> GDP per capita is an average; averages float above the median. A country can grow while most citizens stagnate.</li>
-    <li><strong>Alternatives exist:</strong> GDP per capita PPP (purchasing-power adjusted — the fair international comparison), HDI (health + education), and wellbeing indices. Kuznets, GDP's 1934 inventor, warned Congress it was never a welfare measure.</li>
+    <li><strong>Intermediate and second-hand transactions:</strong> flour inside bread, and the 2026 resale of a 2018 car (only the dealer's margin is new production). Financial trades likewise: buying shares transfers claims and adds nothing to production.</li>
+    <li><strong>Unpaid work:</strong> a parent's childcare, volunteering, household cooking — enormous, real, and invisible. Estimates put unpaid household work at 20–50% of GDP if valued; notably, women's mass entry into paid work raised GDP partly by <em>re-categorising</em> work that was always being done.</li>
+    <li><strong>The informal and illegal economies:</strong> cash-in-hand work, subsistence farming, smuggling. The shadow economy runs from a few percent of GDP (US, Switzerland) to a third or more in some developing economies, which makes poor countries look poorer than they live.</li>
+    <li><strong>Distribution:</strong> GDP per capita is a mean, and means float above medians when income concentrates. A country's GDP can grow for a decade while the median household stagnates — the US 1979–2019 experience in miniature. Growth and its incidence are different questions.</li>
+    <li><strong>Depreciation of natural and social capital:</strong> the oil extracted, the forest cleared, the burnout — depletion is production, not loss. An oil spill <em>raises</em> GDP (the cleanup is paid work) while the damage itself subtracted nothing: broken-window accounting, where destruction shows up as growth.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Kuznets report to US Congress (1934); OpenStax, Principles of Economics; OECD Better Life Initiative.</p>
+  <p>
+    Kuznets himself drew the line in his first report: <em>"the welfare of a nation
+    can scarcely be inferred from a measurement of national income"</em> — a warning
+    his successors' economies ignored for eighty years.
+  </p>
+
+  <h2>Growth, recessions and the business cycle</h2>
+  <p>
+    Real GDP's movements are the economy's vital signs. <strong>Economic growth</strong>
+    is the long-run trend in real output — driven by labour, capital and
+    productivity, and compounding: 2% annual growth doubles living standards in
+    about 35 years (the rule of 70: 70 ÷ growth rate ≈ years to double). Around
+    the trend runs the <strong>business cycle</strong>: a <strong>recession</strong> is
+    conventionally two consecutive quarters of falling real GDP (the US also uses
+    the NBER's broader judgment), with falling investment, rising unemployment
+    and falling inflation typically in tow; <strong>recoveries</strong> climb back to
+    trend. The quarterly GDP release moves markets, budgets and elections
+    precisely because so many decisions key off it — one reason statistical
+    agencies guard their independence jealously, and one reason GDP revisions
+    (each quarter's figure is revised for years as better data arrives) make
+    headlines that later quietly reverse.
+  </p>
+  <p><em>Common misconception:</em> "GDP measures how well a country is doing."
+  It measures the volume of marketed production — a powerful, necessary
+  instrument, and a poor welfare measure. Use it for what it was built for
+  (tracking production through recessions, comparing economies over time),
+  pair it with the transformations (real, per capita, PPP) and the
+  distributional data it lacks, and treat single-number wellbeing claims
+  — GDP up, country great — as the category error Kuznets named in 1934.</p>
+
+  <h2>One loaf, three approaches, worked</h2>
+  <p>
+    The three routes agree by construction, but the agreement is worth
+    watching once. A village economy in a day: a miller buys £100 of grain
+    from a farmer and sells £150 of flour to a baker, who sells £260 of
+    bread to households. <strong>Output approach:</strong> value added — farmer
+    £100 (grain, assuming no inputs), miller £50, baker £110 — total
+    <strong>£260</strong>. <strong>Expenditure approach:</strong> households' final
+    purchases = <strong>£260</strong> (C). <strong>Income approach:</strong> every pound
+    of value added is somebody's income — wages, rent, interest, profit —
+    so the farmer's, miller's and baker's payouts also sum to
+    <strong>£260</strong>. Nothing was counted twice, nothing was missed:
+    the identity holds because these are three views of one set of
+    transactions. Now complicate it — the baker also sells £40 of bread
+    to a restaurant (an intermediate purchase, excluded from C but the
+    restaurant's meals count later), the government buys £30 of bread
+    for a school (G), a neighbouring village buys £20 (X) while the
+    village imports £50 of cheese (M). The same three identities
+    absorb all of it — and you can see why statistical agencies
+    employ thousands of people and still publish discrepancies:
+    the arithmetic is exact, the <em>measurement</em> of each leg
+    is not.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The alternatives, honestly compared.</strong> The <strong>Human Development
+    Index</strong> (UN) averages income, life expectancy and schooling — a deliberate
+    statement that health and education count; it reranks the world (Cuba, Sri
+    Lanka score above their incomes). The <strong>Better Life Index</strong> (OECD),
+    <strong>Gross National Happiness</strong> (Bhutan), and dashboards of wellbeing
+    (life satisfaction, mental health, environment) each encode a philosophy of
+    what matters; the honest critique of all of them is that they, too, are
+    index-number choices with weighting politics. <strong>Green accounting</strong>
+    (the World Bank's adjusted net savings, satellite environmental accounts)
+    tries to subtract depletion directly; digital free goods (search, maps,
+    messaging — massive consumer value, near-zero GDP) are the new frontier
+    the accounts cannot price.
+  </p>
+  <p>
+    <strong>Open questions.</strong> How should national accounts value data and
+    intangibles (software investment is now larger than machinery in several
+    economies)? Does the platform economy's producer-surplus shift mean
+    GDP undercounts welfare or overcounts it? And can a headline number
+    ever be designed to resist being gamed by the government that
+    publishes it? The GDP debate is, at bottom, the measurement
+    ethics debate: every number that steers policy becomes a target,
+    and every target has a shadow.
+  </p>
+  <p>
+    <strong>The release culture, and why revisions matter.</strong> GDP arrives in
+    the world imperfect on purpose: the first estimate of a quarter is
+    published weeks after it ends, built on partial returns, and is then
+    revised — twice formally, then again in annual rounds as tax, survey
+    and business-register data complete. Revisions of half a percentage
+    point are routine, and occasionally they redraw history (the 2008–09
+    recession's depth was revised substantially deeper; Ireland's 2015
+    "26% growth" was a corporate-tax artifact that the statisticians
+    themselves flagged). The reader's craft matches the journalist's:
+    treat first estimates as drafts, compare economies on the same
+    vintage of data, and be most sceptical exactly when a
+    headline number flatters the government of the week —
+    the release calendar is a political instrument as
+    well as a statistical one.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Kuznets report to US Congress (1934); OpenStax, Principles of Economics; OECD Better Life Initiative; Stiglitz-Sen-Fitoussi Commission (2009).</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={gdpQuizCfg} />
 </TopicPage>

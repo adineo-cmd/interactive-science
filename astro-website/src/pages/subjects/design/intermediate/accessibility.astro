@@ -10,23 +10,260 @@ const a11yCfg = {
     { math: '4 · Curb cuts: the universal payoff', note: 'Captions serve deaf users AND noisy commutes AND search indexing; keyboard access serves motor-impaired users AND power users AND test automation. Designing for the edges improves the middle — the documented pattern across every accessibility feature ever mainstreamed.' },
   ],
 };
+
+const a11yQuizCfg = {
+  questions: [
+    {
+      q: 'A status indicator shows "success" in green and "failure" in red, with no other difference. Who is excluded?',
+      choices: [
+        'Nobody — red and green are universal',
+        'The roughly 1 in 12 men with red–green colour vision deficiency — and, in the browser, anyone whose tooling strips styling; state also needs a non-colour signal (icon, text, pattern)',
+        'Only users with total blindness',
+        'Only older users',
+      ],
+      answer: 1,
+      why: 'Colour is the fastest way to add meaning and the least reliable way to carry it alone. About 8% of men and 0.5% of women have red–green colour vision deficiency. The fix is cheap and universal: pair colour with a second channel — an icon, a word, a pattern — and every user, including those in bright sunlight, gains.',
+    },
+    {
+      q: 'Why is #767676 described as "the lightest grey that passes" for body text on white?',
+      choices: [
+        'It is a convention from print design',
+        'Because its contrast ratio against white works out to about 4.55:1 — just above WCAG\'s 4.5:1 minimum for normal text; any lighter grey drops below the line',
+        'Because screens cannot display lighter greys',
+        'Because 76 is a lucky number',
+      ],
+      answer: 1,
+      why: 'Contrast is computed from relative luminance, not taste: (lighter + 0.05) ÷ (darker + 0.05). For #767676 against white the arithmetic gives ≈ 4.55:1. The boundary is exact, which is why contrast checkers are part of every professional palette — nobody can eyeball a 4.4 vs 4.6 difference.',
+    },
+    {
+      q: 'What does semantic HTML buy a screen-reader user that a visually identical page built from generic boxes does not?',
+      choices: [
+        'Faster download speed',
+        'Structure they can navigate: headings, landmarks, lists and labels turn the page into a map with a table of contents; generic divs render as an undifferentiated stream of text',
+        'Higher search ranking only',
+        'Nothing — browsers rewrite everything anyway',
+      ],
+      answer: 1,
+      why: 'Screen-reader users navigate by structure: jump between headings, leap to the main landmark, hear "button, Search" instead of "div, div". The visual design can be pixel-identical while the semantic design is either a city with street signs or a maze without them.',
+    },
+    {
+      q: 'The "curb-cut effect" teaches that:',
+      choices: [
+        'Accessibility features should be hidden from other users',
+        'Features built for disabled users routinely become essential for everyone — captions on trains, voice assistants in kitchens, kerb ramps for prams, luggage and deliveries',
+        'Only large companies can afford accessibility',
+        'Accessibility ends at physical infrastructure',
+      ],
+      answer: 1,
+      why: 'Designing for the edges improves the middle — a recurring, documented pattern. It also reframes the budget argument: the feature pays for itself in uses you never budgeted for, from search indexing to noisy-environment usability.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/design/intermediate/accessibility">
   <h2>The idea</h2>
   <p>
-    Accessibility is <strong>the design lesson\'s ethics made technical</strong>: a spec (WCAG),
-    a law (equality acts) and a craft (inclusive patterns) — with the recurring surprise that
-    building for the edges builds better for everyone.
+    Accessibility is <strong>the design lesson's ethics made technical</strong>: a spec (WCAG),
+    a law (equality acts) and a craft (inclusive patterns) — with the recurring surprise
+    that building for the edges builds better for everyone. The foundational lessons
+    established that design begins with user needs; this page takes that principle to its
+    honest conclusion, because the hardest user needs to serve are the ones the design
+    team does not personally have. The World Health Organization counts about
+    <strong>1.3 billion people — roughly 1 in 6 of us — living with significant disability</strong>,
+    and that is before counting temporary and situational limits: the arm in a cast, the
+    new parent carrying a baby, the commuter in bright sunlight. This page covers the
+    spectrum of ability designers actually design for, the two mechanical pillars of web
+    accessibility (contrast and semantics), the ergonomics that decide whether a physical
+    product is usable at all, and the curb-cut economics that make inclusion the best
+    deal in design.
   </p>
 
   <Widget no="1" caption="POUR, the mechanics, design as access, curb cuts" widget="equationStep" config={a11yCfg} />
 
-  <h2>Practitioner essentials</h2>
-  <ul>
-    <li><strong>Test with real tools:</strong> screen readers (VoiceOver, NVDA), keyboard-only passes, automated linters (axe, Lighthouse) catching ~30–40% of issues — automation is the smoke alarm, human testing the fire brigade (the engineering lesson\'s testing tiers, inclusive edition).</li>
-    <li><strong>Accessible ≠ ugly was always a myth:</strong> the constraint lesson\'s argument — strong type hierarchy and contrast are accessibility AND good typography; the alt-text discipline improves information design for everyone.</li>
-    <li><strong>Plain language is accessibility:</strong> cognitive load counts as access: the journalism lesson\'s clarity discipline, the writing-craft lesson\'s audience awareness — jargon excludes invisibly.</li>
-    <li><strong>Overlay widgets are the cautionary tale:</strong> bolt-on "accessibility" overlays fail the people they claim to serve (documented, litigated) — real accessibility is designed in, not pasted on; the profession\'s consensus statement is worth reading as an example of a field policing its own.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> WCAG 2.2 (W3C); WebAIM surveys; the curb-cut literature; the law lesson\'s compliance logic.</p>
+  <h2>The spectrum of ability: permanent, temporary, situational</h2>
+  <p>
+    The field's most useful mental model rejects the disabled/everyone binary. Every
+    capability exists on a spectrum — vision, hearing, dexterity, cognition — and a
+    person's position on it changes across hours and years. A <strong>permanent</strong>
+    limitation is one-handed typing after a stroke; a <strong>temporary</strong> one is a
+    broken wrist; a <strong>situational</strong> one is holding a hot drink. Microsoft's
+    inclusive-design toolkit popularised this framing, and its practical force is that
+    <em>everyone</em> is a customer of accessibility: captions serve deaf users, then
+    gym-goers watching muted screens; voice control serves users with motor
+    impairments, then drivers and cooks. Designing for the "default user" is therefore
+    a statistical fiction — there is no body, device or context that represents the
+    middle of every spectrum at once. The professional question is not "does the design
+    work for people like me?" but "where does it start to fail, and can we push that
+    boundary out?".
+  </p>
+
+  <h2>Contrast: the arithmetic of legibility</h2>
+  <p>
+    The first mechanical pillar is contrast between text and its background, and the
+    Web Content Accessibility Guidelines (WCAG) make it exact: <strong>4.5:1 for normal
+    body text</strong>, <strong>3:1 for large text</strong> (roughly 24 px, or 19 px bold) and
+    for UI components and meaningful graphics. The ratio is computed from
+    <em>relative luminance</em> — a weighted blend of the red, green and blue channels
+    that approximates how human vision perceives brightness (green contributes most,
+    blue least) — as (lighter + 0.05) ÷ (darker + 0.05). The scale runs from 1:1
+    (identical, invisible) to 21:1 (black on white). A worked example fixes intuition:
+    the grey <strong>#767676</strong> on white works out to about
+    (1.0 + 0.05) ÷ (0.18 + 0.05) ≈ <strong>4.55:1</strong> — just over the line, which is
+    why #767676 is famously "the lightest grey that passes" for body text, and any
+    lighter placeholder-grey fails. Two practical consequences follow. First,
+    nobody can judge contrast by eye — a 4.4:1 pairing and a 4.6:1 pairing are
+    indistinguishable to intuition but legally and functionally different — so contrast
+    checkers are part of every professional palette. Second, WCAG 2.2's most-cited
+    revision (3:1 for focus indicators) is really a contrast rule about <em>where am I
+    on this page?</em> — the keyboard user's position marker must be visible against
+    both its background states.
+  </p>
+  <p><em>Common misconception:</em> accessibility means obeying contrast rules at the
+  cost of brand aesthetics. The constraint does the opposite of degrading design:
+  it forces the hierarchy the typography lesson preached — large type, weight
+  variation, spacing and a limited, high-contrast palette are exactly what strong
+  visual design already looks like. Light-grey-on-white body text is not a style;
+  it is a legibility debt someone else has to pay.</p>
+
+  <h2>Semantics: the page that machines (and blind users) can read</h2>
+  <p>
+    The second pillar is invisible on screen: the <strong>structure of the document</strong>.
+    Screen readers — the software blind users navigate with — do not read pages top to
+    bottom like a fax machine; they move through structure: jump heading to heading,
+    leap to the main landmark, list the links, announce "button, Search" as a single
+    object. That navigation is only possible when the page is built <strong>semantically</strong>:
+    real headings in order, real lists, real buttons and links, labels bound to the
+    form fields they name. A page that looks identical but is assembled from generic
+    boxes with hand-applied styles is, to a screen reader, an undifferentiated stream
+    of text — a city without street signs. The same semantics power the page's other
+    machine audiences: search engines, reader modes and browser extensions all
+    restructure content through the same tags. Alongside structure sits
+    <strong>alt text</strong>, whose discipline is to convey <em>function, not appearance</em>:
+    "Search" for a magnifying-glass icon, not "magnifying glass"; a concise description
+    for an informative chart; an empty alt attribute (the image is decoration) rather
+    than a duplicated caption the user hears twice. And underneath everything,
+    <strong>keyboard operability</strong>: every action reachable with Tab, Enter, arrows
+    and a visible focus indicator, because motor-impaired users, screen-reader users
+    and power users share one truth — if it cannot be reached, it does not exist.
+  </p>
+
+  <h2>Anthropometrics and ergonomics: designing for every body</h2>
+  <p>
+    Physical products carry the same duties through measurement rather than markup.
+    <strong>Anthropometrics</strong> is the study of body measurements, and its first lesson is
+    that populations vary enormously: designs therefore aim at the <strong>5th to 95th
+    percentile</strong> of the relevant measures rather than the average, since a design
+    fitted to the mean fails roughly half the population in one direction or the
+    other. The standard worked thinking: a doorway must clear the tallest users;
+    a shelf, the reach envelope of the shortest; a handle's grip diameter must suit
+    both large and small hands, which is why tool makers moved toward fatter, softer,
+    non-cylindrical grips and why lever taps displaced crosshead taps in public
+    buildings — a twisting grip excludes arthritic hands that a downward lever
+    accommodates. <strong>Ergonomics</strong> adds the fit between body and product in use:
+    controls within the comfortable reach zone (roughly the sweep of the forearm
+    without shoulder extension), display information readable without stooping,
+    forces that do not demand peak grip strength. The accessibility translation is
+    direct — <strong>step-free access, adequate turning space for wheelchairs (about
+    1.5 m diameter), controls operable one-handed and without tight pinching or
+    twisting</strong> — and none of it helps only wheelchair users or people with
+    arthritis: it helps the delivery worker with a trolley and the customer
+    carrying a suitcase.
+  </p>
+
+  <h2>Safety, inclusivity and the curb-cut effect</h2>
+  <p>
+    The syllabus groups safety and inclusivity with aesthetics, and the grouping is
+    the point: inclusive design is not a separate discipline bolted on after the
+    beautiful version is finished — it <em>is</em> the aesthetic, in the way the
+    accessibility-grade type hierarchy and the lever tap are. History's clearest
+    evidence is the <strong>curb cut</strong>. Disability activists in Berkeley in the
+    1970s poured informal ramps at street corners; the idea went mainstream, and
+    kerb ramps are now legally required — after which prams, wheelchairs, suitcases,
+    delivery trolleys and bikes followed through them. The pattern repeated: TV
+    captions migrated from a deaf-audience accommodation to a default for noisy
+    environments; voice assistants built for accessibility found kitchens; the
+    first typewriter with a readable typebar arrangement came out of work for
+    blind users (Pellegrino Turri's 1808 machine, built for a blind countess).
+    Each case teaches the same economics: <strong>features designed for the edges
+    become infrastructure for the middle</strong>, and the market impact is not
+    charity — one widely cited analysis (Return on Disability) estimates the
+    disposable income of people with disabilities and their households at over
+    $13 trillion globally.
+  </p>
+  <p><em>Common misconception:</em> accessibility is a small-market concern, a niche
+  within the user base. The spectrum model dissolves the niche: add the permanent
+  16% to the temporarily injured and situationally limited, then count the aging
+  populations every market is drifting toward, and "the edge" turns out to be a
+  rotating position everyone occupies part of the time.</p>
+
+  <h2>Testing: automation is the smoke alarm, humans the fire brigade</h2>
+  <p>
+    A design is not accessible because the team intended it; it is accessible because
+    it survives testing. The standard pipeline has tiers. <strong>Automated checkers</strong>
+    (axe, Lighthouse, the browser's own audits) catch the mechanical failures — missing
+    alt attributes, contrast violations, missing labels — in seconds, but research and
+    vendor documentation agree such tools flag only around <strong>30–40% of WCAG
+    issues</strong>; the structural failures (nonsensical heading order, focus traps,
+    unlabelled custom widgets) need judgement. <strong>Keyboard-only passes</strong> catch
+    operability failures: unplug the mouse and try to complete the task. <strong>Screen-reader
+    sessions</strong> (NVDA or JAWS on Windows, VoiceOver on Apple platforms) catch the
+    semantic ones — and they take practice, since the first hour of screen-reader use
+    is disorienting for exactly the reasons the design should not be. Finally,
+    <strong>testing with disabled users</strong>, recruited through the same research
+    methods as the UX research lesson, replaces assumptions with evidence; the
+    professional norm is to pay participants for their expertise, because that is
+    what it is.
+  </p>
+
+  <h2>Cognitive access and plain language</h2>
+  <p>
+    The least visible accessibility frontier is the sentence itself. Roughly one in
+    five adults reads below the level most websites are written at — including
+    many with dyslexia, ADHD, second-language readers and tired commuters — and
+    cognitive load is an access barrier exactly as real as a missing ramp. The
+    plain-language discipline is mechanical, not condescending: <strong>one idea per
+    sentence</strong>, common words over jargon ("use" before "utilise"), the
+    active voice, and the point of a paragraph stated first (the inverted-pyramid
+    discipline, applied to documentation). Structure does half the work: real
+    headings every few paragraphs, lists for genuine lists, and — the web
+    accessibility study that refuses to die — links that make sense out of
+    context ("the annual report" rather than "click here"), because screen-reader
+    users navigate by pulling a list of link labels. Forms carry the highest
+    cognitive load in any product, so the rules concentrate there: label every
+    field visibly (placeholders disappear — they are not labels), make errors
+    human ("Enter your postcode, like CB4 1HT") and forgiving (preserve
+    everything the user typed), and let deadlines and timeouts be extended.
+    None of this costs the fluent reader anything — which is the recurring
+    lesson of the whole field: the inclusive version is almost always the
+    better version for everyone.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The overlay cautionary tale.</strong> A whole industry sells bolt-on
+    "accessibility" widgets: a script that injects alt text, font resizers and
+    contrast toggles onto an inaccessible site. The accessibility profession's
+    consensus — expressed in a 2021 open letter signed by hundreds of practitioners
+    and in subsequent litigation — is that overlays do not deliver the conformance
+    they advertise and can actively break screen-reader use; real accessibility is
+    designed in. The lesson generalises: access is a property of the design, not
+    a patch on it.
+  </p>
+  <p>
+    <strong>Conformance, levels and law.</strong> WCAG grades success criteria at A,
+    AA and AAA; most legislation lands on AA. The legal floor is rising: court
+    settlements in the US under the ADA have run into the thousands per year since
+    the 2010s, and the European Accessibility Act, applying from <strong>June 2025</strong>,
+    brings e-commerce, banking, transport and publishing within accessibility
+    requirements across EU member states. Cognitive accessibility is the field's
+    live frontier — plain language, predictable navigation, forgiving forms and
+    reduced-motion support address the largest disability group but have the fewest
+    automatable checks. And the open question is AI: automatic alt-text and
+    captioning are genuinely useful drafts, yet their failure modes are silent ones,
+    so the current professional consensus treats machine-generated access content
+    as a starting point that still needs human review.
+  </p>
+  <p class="sources"><strong>Sources:</strong> WCAG 2.2 (W3C); WebAIM surveys; Microsoft Inclusive Design toolkit; WHO World Report on Disability; the curb-cut literature; the law lesson's compliance logic.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={a11yQuizCfg} />
 </TopicPage>

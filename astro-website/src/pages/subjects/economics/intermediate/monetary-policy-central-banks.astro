@@ -11,6 +11,55 @@ const moneyCfg = {
     { label: 'rate move suggested per meeting', expr: 'min(0.5, max(-0.5, 0.25*gap))', unit: 'pp' },
   ],
 };
+
+const moneyQuizCfg = {
+  questions: [
+    {
+      q: 'The central bank raises its policy rate today. When will the effect on inflation mostly arrive?',
+      choices: [
+        'Within days — rates are direct price control',
+        'Over 12–18 months: the rate cascades through bank funding, mortgages and business loans into spending, hiring and price-setting — Friedman\'s "long and variable lags", which is why central banks steer by forecast, not by today\'s reading',
+        'Never — rates do not affect inflation',
+        'Only after legislation',
+      ],
+      answer: 1,
+      why: 'Transmission is a chain: policy rate → interbank and deposit rates → borrowing costs → investment, housing and consumption → output gap → wage and price setting. Each link takes months, and the long lag is why policy must be forward-looking — and why critics can always accuse banks of fighting the last war.',
+    },
+    {
+      q: 'When quantitative easing buys government bonds, what actually happens?',
+      choices: [
+        'The government destroys the bonds',
+        'The central bank creates bank reserves (its own IOUs) and swaps them for bonds held by financial institutions — pushing down long-term yields and easing financial conditions; the money stays in the banking system as reserves, not in people\'s pockets',
+        'Cash is posted to every household',
+        'Taxes are abolished',
+      ],
+      answer: 1,
+      why: 'QE is an asset swap, not a helicopter: reserves are held by banks at the central bank and pay interest. It works through portfolios (sellers rebalance into other assets, lowering their yields) and signalling — powerful when rates are pinned at zero, less clearly powerful otherwise, and its unwinding (quantitative tightening) is the 2020s experiment.',
+    },
+    {
+      q: 'Why is central-bank credibility said to make disinflation cheaper?',
+      choices: [
+        'Because credibility lowers interest rates only',
+        'Because wage- and price-setters act on expected inflation: if workers and firms believe the bank will hit 2%, they build 2% into their plans and inflation falls without a deep recession; lost credibility (the 1970s) forces inflation out through unemployment instead',
+        'Because journalists write nicer stories',
+        'Because credible banks can print more money',
+      ],
+      answer: 1,
+      why: 'Expectations are the battleground: every contract embeds a guess about future prices. The Fed anchored expectations near 2% through 2021–2024 — which is why, despite inflation reaching 9%, wage-price spirals stayed contained and the eventual disinflation did not need a Volcker-scale recession. Credibility is capital, built over decades and spent in crises.',
+    },
+    {
+      q: 'Volcker raised US rates to nearly 20% in 1980–81, causing a deep recession, and inflation fell from 14% to under 4%. The lesson economists draw is:',
+      choices: [
+        'High rates are always the answer',
+        'The cost of restoring credibility after it is lost: once expectations had un-anchored, only a demonstrated willingness to inflict pain would reset them — a reference case for prevention being cheaper than cure',
+        'Recessions are good',
+        'Inflation cannot be fought',
+      ],
+      answer: 1,
+      why: 'The Volcker disinflation is the field\'s canonical costly lesson: killing entrenched inflation took two recessions and unemployment near 11%. The institutional design of the modern era — independent banks, explicit targets, transparent communication — is essentially an attempt to never need another Volcker.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/monetary-policy-central-banks">
   <h2>The idea</h2>
@@ -20,6 +69,14 @@ const moneyCfg = {
     employment recovers. Their mandate in most rich countries: <strong>price stability (~2%
     inflation) plus maximum employment</strong> — and their main tools are the policy rate,
     balance-sheet operations (quantitative easing), and the credibility of their word.
+    The steering wheel is not directly connected to the wheels: rates move an economy
+    through a chain of financial decisions spread over a year or more, which is why
+    central banking is equal parts mechanics and theatre — the mechanics of the
+    transmission chain, and the management of what 330 million people <em>expect</em> to
+    happen to prices. This page covers what central banks are and why they are
+    independent, how the policy rate travels through the economy, the inflation-targeting
+    framework and the Taylor rule, quantitative easing and its unwinding, expectations
+    as half the fight, and the trade-offs that no setting escapes.
   </p>
 
   <Widget no="1" caption="the Taylor rule — the famous recipe mapping the economy's temperature into an interest rate" widget="sliderLab" config={moneyCfg} />
@@ -31,12 +88,194 @@ const moneyCfg = {
     raise fast; the Fed did.
   </p>
 
-  <h2>How the tools work</h2>
-  <ul>
-    <li><strong>The policy rate cascades:</strong> central bank rate → interbank lending → mortgages, loans, savings. Transmission takes 12–18 months — "monetary policy acts with long and variable lags" (Friedman).</li>
-    <li><strong>Quantitative easing:</strong> when rates hit zero (2008, 2020), central banks bought long bonds to push down longer-term rates — expanding balance sheets from $900B (2008) to ~$9T (2022) at the Fed.</li>
-    <li><strong>Expectations are half the fight:</strong> workers and firms set wages and prices on <em>expected</em> inflation. Central bank credibility — built by hitting targets — makes disinflation cheaper. "Talk is policy" (forward guidance).</li>
-    <li><strong>The trade-offs are real:</strong> tightening fights inflation by causing unemployment; easing risks asset bubbles and currency slides. Volcker's 1980 rates near 20% killed US inflation at the cost of a deep recession — the field's reference example of costly credibility-building.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Taylor (1993); Friedman, "The Role of Monetary Policy" (1968); Bernanke, The Federal Reserve and the Financial Crisis.</p>
+  <h2>What a central bank is — and why it is independent</h2>
+  <p>
+    A central bank is the economy's bank: it issues the currency, holds banks'
+    reserves, lends to banks in emergencies (<strong>lender of last resort</strong> —
+    the 19th-century Bagehot doctrine: lend freely, at a penalty rate, against
+    good collateral, in a panic), and sets the short-term interest rate at which
+    the banking system borrows from it. Its political design is as important
+    as its mechanics: <strong>independence</strong> — governments set the target;
+    unelected technocrats choose the path to it — exists because the temptation
+    to boost the economy before elections produces inflation (the 1970s
+    provided the natural experiment: politically dominated banks everywhere,
+    inflation everywhere). Time and again, countries that granted independence
+    (New Zealand pioneered inflation targeting in 1989–90, the Bank of England
+    gained operational independence in 1997) saw inflation expectations fall
+    and stay lower. The mandate split matters: the Fed has a <strong>dual
+    mandate</strong> (price stability and maximum employment), the ECB a
+    hierarchical one (price stability first), the Bank of England a 2% CPI
+    target with a letter-writing duty when inflation strays more than a
+    point — institutional details that shape every rate decision.
+  </p>
+
+  <h2>The transmission chain: how a rate decision moves a continent</h2>
+  <p>
+    The <strong>policy rate</strong> (Fed funds rate, Bank Rate, the deposit rate) is
+    overnight money between banks — and everything else keys off it. The
+    cascade: the policy rate sets interbank lending rates; those set banks'
+    funding costs; funding costs set mortgage rates, business loan rates,
+    credit card rates, and the return on savings. Higher rates then work
+    through several channels at once: <strong>borrowing costs</strong> (mortgages
+    and investment plans are postponed), <strong>wealth effects</strong> (higher
+    discount rates lower asset prices — equities, houses — making holders
+    feel poorer and spend less), <strong>exchange rates</strong> (higher rates
+    attract capital, strengthening the currency, cheapening imports and
+    squeezing exporters), and <strong>credit supply</strong> (banks tighten
+    lending standards). The whole chain takes <strong>roughly 12–18 months</strong>
+    to reach inflation — Friedman's "long and variable lags" — which
+    creates the central banker's permanent dilemma: they must act on
+    forecasts, defend actions whose effects are not visible for years,
+    and accept that by the time the evidence arrives, conditions may
+    have changed. The 2022–2023 cycle sharpened the point: rates went
+    from near zero to over 5% in about 18 months — the fastest
+    tightening since the 1980s — with the full effects still landing
+    years later.
+  </p>
+
+  <h2>Inflation targeting and the Taylor rule</h2>
+  <p>
+    The modern framework is <strong>inflation targeting</strong>: announce a target
+    (2% nearly everywhere — a number with folkloric origins in New Zealand's
+    1989 design, now entrenched by inertia), explain deviations publicly,
+    and move rates according to a reaction function. The <strong>Taylor rule</strong>
+    (John Taylor, 1993) is the famous recipe: policy rate ≈ neutral real rate
+    (about 2%) + current inflation + 0.5 × (inflation − target) + 0.5 ×
+    (output gap) — tighten when inflation runs hot <em>and</em> when the economy
+    runs above capacity. <strong>A worked reading:</strong> with inflation at 2%,
+    target 2%, and a zero output gap, the rule says about 4% nominal — the
+    "neutral" setting. With 9% inflation and a +2% gap (2022), it says
+    2 + 9 + 0.5×7 + 1 = over 15% — describing the aggressive tightening
+    that followed (actual rates peaked lower, but the direction matched).
+    No bank follows the rule mechanically — judgement, financial stability
+    and the zero floor intervene — but it disciplines debate: it gives
+    markets a benchmark to be surprised by, and makes deviations
+    explainable ("we see a larger output gap than the rule assumes").
+    The deeper economics underneath is the <strong>Phillips curve</strong>: inflation
+    responds to the output gap (the unemployment lesson's trade-off), so
+    a central bank buying lower inflation is buying it with slower growth
+    — the exchange rate of the trade is the steepest political question
+    in macroeconomics.
+  </p>
+
+  <h2>Quantitative easing: the balance sheet as a tool</h2>
+  <p>
+    When the policy rate hit the <strong>zero lower bound</strong> (2008, 2020),
+    conventional policy was exhausted — so central banks reached for the
+    balance sheet. <strong>Quantitative easing (QE)</strong>: the central bank
+    creates bank reserves (its own liabilities) and uses them to buy
+    long-term government bonds (and, at the Fed, mortgage-backed
+    securities) from financial institutions. The Fed's balance sheet
+    grew from about <strong>$900 billion before 2008 to roughly $9 trillion
+    by 2022</strong>. The mechanism is a portfolio swap: sellers rebalance
+    into other assets, pushing down long-term yields across the economy,
+    while the sheer commitment signals that rates stay low for long —
+    QE as rate policy by other means. The common misreading — "they
+    printed money and gave it away" — misses that the money is bank
+    reserves, held inside the banking system and paying interest, not
+    household cash. The 2020s added the reverse gear,
+    <strong>quantitative tightening (QT)</strong>: letting bonds mature (and,
+    at some banks, actively selling), shrinking balance sheets —
+    monetary policy in reverse, an experiment whose full effects are
+    still being measured. Negative policy rates (ECB, Japan, mid-2010s)
+    pushed the same frontier further: charging banks to hold reserves,
+    with murky evidence and clear limits (cash in vaults is the floor).
+  </p>
+
+  <h2>Expectations: half the fight happens in heads</h2>
+  <p>
+    Wages are set on what workers expect prices to do; prices are set on
+    what firms expect wages to do; and the loop closes on itself — which
+    is why <strong>expectations</strong> determine how costly disinflation is. If
+    the public believes the bank will hit 2%, contracts embed 2%, and
+    inflation drifts there without mass unemployment. If credibility
+    breaks — as in the 1970s, when two oil shocks and political
+    pressure broke the Fed's word — expectations un-anchor, and
+    inflation can only be forced out through recession: Arthur
+    Burns's accommodative 1970s Fed versus <strong>Paul Volcker's</strong>
+    1980–82 squeeze (rates near <strong>20%</strong>, two recessions,
+    unemployment near 11%, inflation down from 14% to under 4%) is
+    the reference case of credibility's price. The modern toolkit
+    manages expectations as deliberately as it manages rates:
+    <strong>forward guidance</strong> ("rates will stay low until unemployment
+    falls below 6%"), inflation reports, dot plots, press conferences —
+    "talk is policy", because the cheapest rate decision is the one
+    the market makes on your behalf.
+  </p>
+  <p><em>Common misconception:</em> "the central bank sets all interest rates."
+  It sets one overnight rate; every other rate — mortgages, corporate
+  bonds, credit cards — is a market price built from expectations of the
+  future path of that rate plus risk premia. This is why rate
+  <em>announcements</em> can move long-term rates without any action, and why
+  markets can fight the bank: if investors expect more inflation, they
+  demand higher long-term yields whatever the overnight rate is —
+  the bond market's daily audit of the central bank's credibility.</p>
+
+  <h2>The trade-offs that no setting escapes</h2>
+  <p>
+    Monetary policy has no free moves. <strong>Fighting inflation costs
+    jobs:</strong> the Phillips curve converts tighter policy into slower growth
+    and higher unemployment — the Volcker arithmetic. <strong>Fighting
+    recessions risks finance:</strong> a decade of near-zero rates inflated
+    asset prices (housing, equities), rewarded leverage, and — the
+    "zombification" critique — kept unproductive firms alive. <strong>The
+    distribution is uneven:</strong> easing raises asset prices (owners gain)
+    while tightening raises unemployment (workers pay) — so monetary
+    policy redistributes by class, whatever its neutral intent.
+    <strong>Exchange rates bind smaller economies:</strong> a small open
+    economy's rates move its currency, importing or exporting other
+    countries' shocks. The institutional answer to all of these is not a
+    better dial but transparency about the dial's cost — which is why
+    the inflation-targeting era made its trade-offs explicit in every
+    forecast round.
+  </p>
+
+  <h2>Lender of last resort: Bagehot's three rules</h2>
+  <p>
+    The central bank's oldest tool is not a dial but a promise, and Walter
+    Bagehot wrote its manual during the 1866 Overend Gurney panic:
+    in a crisis, the central bank should <strong>lend freely</strong> (stop the
+    contagion), <strong>at a penalty rate</strong> (so banks use it only when
+    genuinely illiquid, not for cheap funding), <strong>against good
+    collateral</strong> (so the lender of last resort funds solvent-but-
+    illiquid banks, not insolvent ones). The three clauses are the
+    whole dilemma: lend without the penalty and you subsidise risk;
+    lend without collateral and you rescue the insolvent; refuse to
+    lend at all and a solvent system dies of a queue. Every financial
+    rescue since is a variation: 2008's facilities were Bagehot with
+    wider collateral lists; 2023's bank failures tested the same
+    clauses with faster depositors (mobile banking moving billions
+    in hours). The tool sits oddly beside inflation targeting —
+    crisis lending expands the balance sheet exactly when the
+    dial says stand down — which is why the two functions are
+    run as separate rooms of the same institution, and why
+    the collateral rules, not the headline amounts, are
+    where the accountability lives.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The 2021–2024 stress test.</strong> "Transitory" was the mistake heard
+    round the world: supply shocks, stimulus and shifting demand met a
+    framework built for demand shortfalls. The inflation peaked at 9% in
+    the UK, 9.1% in the US (June 2022), and the subsequent tightening
+    brought prices down without (through 2024) the deep recession the
+    Phillips curve predicted — reopening the curve-steepness debate
+    (anchored expectations did more work than joblessness). The
+    framework reviews now underway are rewriting the lessons in
+    real time.
+  </p>
+  <p>
+    <strong>The frontier.</strong> Central bank digital currencies (CBDCs) would
+    give the public direct central-bank money — a run-risk question, a
+    privacy question and a monetary-policy question at once. Climate
+    mandates are pulling banks into credit allocation (contested
+    territory for institutions built on market neutrality). And the
+    independence consensus itself is under political pressure in
+    several countries — the 1970s lesson is one generation old, and
+    institutional memory decays.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Taylor (1993); Friedman, "The Role of Monetary Policy" (1968); Bagehot, Lombard Street (1873); Bernanke, The Federal Reserve and the Financial Crisis; the unemployment lesson's Phillips-curve material.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={moneyQuizCfg} />
 </TopicPage>
