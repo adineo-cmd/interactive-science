@@ -10,24 +10,245 @@ const remoteCfg = {
     { math: '4 · Open data changed the field', note: 'Landsat free-access (2008), Sentinel fleet (ESA), Google Earth Engine — planetary-scale analysis on a laptop. A researcher in Nairobi runs the same global studies as one in Palo Alto.' },
   ],
 };
+
+const rsQuizCfg = {
+  questions: [
+    {
+      q: 'A sensor records reflected sunlight in a near-infrared band, where healthy leaves reflect strongly and bare soil does not. Comparing the near-infrared and red reflectances to map vegetation is:',
+      choices: [
+        'Radar altimetry',
+        'A vegetation index such as NDVI — (NIR − red) divided by (NIR + red)',
+        'Thermal inertia mapping',
+        'Passive microwave sounding',
+      ],
+      answer: 1,
+      why: 'Indices are band arithmetic: dividing the near-infrared surplus by the total brightness cancels out illumination differences and leaves the vegetation signal. A green crop scores around 0.7–0.85, bare soil near 0.1, open water negative.',
+    },
+    {
+      q: 'A flood has cut a region off under a thick cloud deck, and you must map the inundated fields tonight. The instrument to reach for is:',
+      choices: [
+        'An optical camera like Sentinel-2\'s multispectral imager',
+        'A radar (SAR) sensor such as Sentinel-1, which supplies its own microwave illumination and works through cloud and darkness',
+        'A thermal infrared sensor waiting for sunshine',
+        'A spectrometer tuned to methane',
+      ],
+      answer: 1,
+      why: 'Optical sensors are blind to a cloud-covered surface at any hour; SAR transmits microwaves that pass through cloud, and smooth floodwater reflects them away like a mirror, making inundated areas appear dark and easy to outline — day or night.',
+    },
+    {
+      q: 'The Antarctic ozone hole was announced in 1985 by:',
+      choices: [
+        'A new weather-satellite photograph',
+        'Ground-based Dobson spectrophotometers at the British Antarctic Survey\'s Halley station — the satellite processing had been discarding the low readings as instrument errors',
+        'A high-altitude research balloon',
+        'An oil-company survey crew',
+      ],
+      answer: 1,
+      why: 'Joe Farman, Brian Gardiner and Jonathan Shanklin watched springtime ozone collapse from the ground. NASA\'s TOMS instrument had actually recorded the values, but software flagged them as too low to be real and threw them away — a permanent lesson in letting the data, not the expectation, decide.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/geography/advanced/remote-sensing-and-earth-observation">
   <h2>The idea</h2>
   <p>
     Remote sensing is <strong>geography's instrument revolution</strong>: a permanent, global,
-    eyes-on-everything observation network orbiting above the weather. It converted geography
-    from a field of surveys and estimates into one of continuous planetary measurement — and
-    made climate change, deforestation and urbanisation measurable, contestable facts.
+    eyes-on-everything observation network orbiting above the weather. For most of the
+    discipline's history, knowledge of the Earth's surface came from expeditions, surveys,
+    maps and estimates — slow, patchy and hard to argue with. Since Landsat 1 opened its
+    electronic eyes in July 1972, every piece of the planet's land surface has been re-measured
+    every couple of weeks, every day for some sensors, for over fifty years without a break.
+    That single fact changed what geography is: deforestation, urbanisation, sea-level rise,
+    groundwater loss and glacier melt stopped being matters of local report and became
+    <strong>measurable, contestable, dated facts</strong> — anyone with a laptop can now check
+    a government's claims about its own territory. This chapter is about how the instruments
+    work, what each family of sensors is actually for, and what the orbital record has already
+    established.
   </p>
 
   <Widget no="1" caption="the sensor zoo and the discoveries each made possible" widget="equationStep" config={remoteCfg} />
 
-  <h2>Where it's heading</h2>
-  <ul>
-    <li><strong>Daily global imaging:</strong> Planet's constellation photographs every land area daily — crop failures, war damage and wildfires visible within 24 hours. Earth observation became news infrastructure.</li>
-    <li><strong>Methane hunting:</strong> instruments like MethaneSAT pinpoint super-emitter leaks from oil, gas and landfills — turning climate accountability from pledges to measurements with coordinates.</li>
-    <li><strong>AI meets pixels:</strong> machine learning counts trees, classifies crops, predicts floods and reads refugee-camp populations from imagery. The interpretation layer is now computational (the CS ladder connects directly).</li>
-    <li><strong>Privacy and power questions:</strong> persistent global imaging raises surveillance questions — whose fields, ports and bases are being watched, and who decides what the data shows. Remote sensing is geography, ethics and geopolitics at once.</li>
-  </ul>
+  <h2>How a sensor sees: photons, pixels and spectra</h2>
+  <p>
+    Everything begins with the electromagnetic spectrum. Sunlight hits the surface; different
+    materials reflect, absorb and emit different parts of it, and a satellite sensor is a
+    machine for recording those differences — not a camera taking holiday snapshots. A
+    <strong>passive</strong> sensor collects reflected sunlight or emitted heat; an
+    <strong>active</strong> sensor transmits its own energy (radar pulses, laser flashes) and
+    times the echo back, which is why it works at night and through cloud. The signal is
+    digitised into a grid of <strong>pixels</strong>, each storing a number per spectral
+    <strong>band</strong> — a slice of the spectrum the sensor is tuned to. Healthy vegetation
+    is the textbook case: chlorophyll absorbs red light for photosynthesis while the leaf's
+    internal structure reflects near-infrared strongly, so a growing crop looks dark in red
+    bands and blazing in near-infrared — the reason vegetation appears in false colour as
+    shocking red on classic infrared images. That contrast is compressed into a single number,
+    the <strong>NDVI</strong> (normalised difference vegetation index) = (NIR − red) ÷ (NIR +
+    red). Worked through: a thriving leaf reflecting 0.50 in near-infrared and 0.04 in red
+    gives (0.50 − 0.04) ÷ (0.50 + 0.04) ≈ <strong>0.85</strong>; bare soil with 0.28 and 0.22
+    gives ≈ <strong>0.12</strong>; open water, which reflects red slightly better than
+    near-infrared, gives a negative value. One subtraction per pixel turns raw radiance into a
+    drought-and-crop map for the whole planet.
+  </p>
+  <p>
+    <em>Common misconception:</em> "satellites take photographs." Almost none do. They build
+    images from measured radiance, band by band, and most of the useful bands are invisible to
+    the human eye; the familiar "photo" of a satellite image is a false-colour reconstruction,
+    and its quantitative content (reflectance numbers, ready for arithmetic) is the actual
+    product. A satellite image is a spreadsheet wearing a picture.
+  </p>
+
+  <h2>Resolution: four trade-offs, not one dial</h2>
+  <p>
+    "How sharp is it?" is only the first of four questions. <strong>Spatial resolution</strong>
+    is pixel size: Landsat's 30 m pixels resolve fields and city blocks but not cars;
+    Sentinel-2's 10 m resolves individual buildings; MODIS's 250–1,000 m pixels cover whole
+    regions and are ideal for daily planetary monitoring. <strong>Temporal resolution</strong>
+    is how often the same place is revisited: Landsat 8 and 9 pair up for 8-day coverage,
+    Sentinel-2 manages about every 5 days, Planet's constellation images essentially every
+    land area daily, and geostationary weather satellites at 36,000 km stare at one hemisphere
+    continuously. <strong>Spectral resolution</strong> is how many bands, and how narrow:
+    4–13 broad bands for workhorse imagers, hundreds of narrow ones for hyperspectral
+    instruments that can identify minerals. <strong>Radiometric resolution</strong> is the
+    sensitivity of each pixel's number. These trade off against each other and against data
+    volume: finer and more frequent means more data, and the clever engineering of the field
+    lives in choosing the right corner of the trade-off for the question — MODIS burns the
+    planet daily at coarse detail to catch fires and ice motion the moment they start;
+    Sentinel-2 sharpens where land management happens.
+  </p>
+  <p>
+    <em>Common misconception:</em> "sharper pixels are always better data." A 10 m image every
+    five days is worse than a 300 m image every day for tracking a flood sweeping through a
+    delta, and worse than coarse thermal bands for finding a fire at 3 a.m. The best
+    resolution is the one matched to the speed and scale of the process — a lesson in geography
+    disguised as an engineering one.
+  </p>
+
+  <h2>The workhorses: Landsat and Copernicus</h2>
+  <p>
+    Two public programmes carry most of the world's land observation. <strong>Landsat</strong>
+    — eight successful satellites since 1972 (a ninth, Landsat 6, never reached orbit) —
+    scans a 185 km-wide swath in 30 m pixels, and
+    its archive is the longest continuous record of the Earth's surface in existence: the same
+    field, comparable pixels, back to the Nixon administration. In 2008 the US Geological
+    Survey made the entire archive free, and usage exploded overnight from a few thousand
+    images a year to tens of millions of scenes annually — the single most consequential open
+    data decision in the field. Europe's <strong>Copernicus</strong> programme added the
+    Sentinel fleet: Sentinel-2 for 10 m optical land imaging, Sentinel-1 for radar, Sentinel-3
+    and 5P for oceans and atmosphere, all free under an open licence. Google Earth Engine then
+    put the combined archive on servers with the compute attached, so a whole-Amazon,
+    thirty-year analysis became an afternoon's work rather than a career. The deeper point is
+    institutional: a Kenyan analyst, a Brazilian enforcement officer and a Dutch PhD student
+    run on exactly the same data — which is why the modern geography of the satellite record is
+    global by construction.
+  </p>
+
+  <h2>What each sensor family is for</h2>
+  <p>
+    Match the instrument to the question. <strong>Optical multispectral imagers</strong> (Landsat,
+    Sentinel-2) are the generalists: land cover, crop mapping, urban growth, water quality.
+    <strong>Radar (SAR)</strong> transmits microwaves and is blind to nothing — it images
+    through cloud, at night, and measures surface shape and roughness; flood maps under
+    monsoon cloud are SAR maps, and pairs of radar passes over the same point (interferometry)
+    detect ground movement of millimetres, which is how cities monitor subsiding buildings and
+    how sinking megacities are charted — parts of Jakarta and Mexico City subsiding by
+    tens of centimetres a year were measured this way. <strong>Thermal sensors</strong> read
+    emitted heat: active-fire detection feeds every wildfire alert app, sea-surface temperature
+    underpins climate monitoring and hurricane forecasting, and the same data exposes urban
+    heat islands several degrees warmer than their surroundings. <strong>Atmospheric
+    spectrometers</strong> split light finely enough to see gas chemistry — the ozone record,
+    nitrogen-dioxide pollution maps, and the methane plumes discussed below.
+    <strong>Laser altimeters</strong> (ICESat-2) time photon returns to measure ice-sheet
+    elevation, sea-ice freeboard and even forest canopy height. <strong>Gravity sensors</strong>
+    (the GRACE twins, 2002–2017, and their follow-on) weigh water: when a region's groundwater
+    or ice mass changes, its gravity changes measurably, and GRACE famously watched
+    California's Central Valley aquifer and the great ice sheets losing tens of cubic
+    kilometres each year — a measurement no ground network could ever make.
+  </p>
+
+  <h2>Discoveries made from orbit</h2>
+  <p>
+    The orbital record is now evidence in the scientific and political sense. <strong>Sea
+    level:</strong> radar altimeter missions since TOPEX/Poseidon (1992) measure the global
+    ocean to millimetre precision — the result, roughly 10 cm of rise since 1993 and a rate
+    near 4 mm a year recently, about double the twentieth-century average, is one of the
+    cleanest curves in climate science. <strong>Deforestation:</strong> Brazil's PRODES system
+    has audited Amazon clearing from Landsat since 1988, turning an unenforceable promise into
+    a number published every year — clearing peaked near 11,600 km² in 2022 and fell to about
+    6,300 km² in 2024, a halving that enforcement policy could be judged by. <strong>Ice:</strong>
+    combining GRACE gravimetry and ICESat altimetry, Greenland has been losing on the order of
+    270 gigatonnes of ice a year and Antarctica around 150 — numbers with sea-level stakes
+    attached, and unimaginable without satellites. <strong>Ozone:</strong> the 1985 discovery
+    of the Antarctic ozone hole led to the Montreal Protocol (1987), the most successful
+    environmental treaty ever signed, and satellites have tracked its recovery since — a full
+    story of measurement creating accountability creating repair.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the ozone hole was discovered by a satellite." It was found
+    from the ground: British Antarctic Survey scientists at Halley station, watching spring
+    ozone collapse on their Dobson spectrophotometers and publishing in 1985. NASA's TOMS
+    satellite had recorded the low values but its processing software had treated them as
+    instrument errors and discarded them — the classic cautionary tale about what happens when
+    you filter data through what you believe is possible.
+  </p>
+
+  <h2>The new layer: daily imaging, machine learning and methane</h2>
+  <p>
+    The current decade added three things. <strong>Daily global imaging:</strong> Planet's
+    constellation of roughly two hundred small satellites photographs essentially every land
+    area every day, so crop failures, war damage and wildfire footprints are visible within
+    24 hours — Earth observation became news infrastructure (the satellite imagery now shown
+    in every conflict report is this layer). <strong>Methane hunting:</strong> since TROPOMI
+    launched in 2017, global methane mapping is continuous; commercial microsatellites such as
+    GHGSat pinpoint individual wellheads and landfill leaks, and Carbon Mapper's Tanager-1
+    joined in 2024. MethaneSAT, launched by the Environmental Defense Fund in March 2024 to
+    audit the oil and gas industry basin by basin, lost contact in June 2025 after about
+    fifteen months — a reminder that the fleet, not any single spacecraft, is the instrument.
+    The effect is accountability with coordinates: a super-emitter is no longer an allegation
+    but an address. <strong>Machine learning over pixels:</strong> neural networks now count
+    trees from 50 cm imagery, classify crop types across continents, forecast floods from
+    upstream gauge data plus satellite rainfall, and estimate refugee-camp populations from
+    shelter counts. The interpretation layer of remote sensing has become computational — the
+    CS ladder connects directly — and the geography being learned from orbit is now largely
+    written by models as well as sensors.
+  </p>
+
+  <h2>Power, privacy and who decides</h2>
+  <p>
+    Persistent global imaging raises questions older than satellites: who watches, who is
+    watched, who decides what the data shows. The first satellite imagery in history was
+    military — the Corona spy-satellite film capsules of the 1960s — and dual-use tension never
+    left: the same Landsat pixels that monitor crops monitor bases; the same flood maps
+    sanction bodies use are the ones relief agencies plan with. Data itself is geopolitics:
+    a country whose forests are audited from orbit loses the ability to contest the audit,
+    and commercial constellations concentrate interpretive power in a handful of companies.
+    Serious students should treat remote sensing as geography, ethics and geopolitics at once:
+    the measurement is objective, but what is measured, how it is processed into claims, and
+    what happens to the people in those pixels are all human decisions.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The quantitative core.</strong> Behind every index is radiative physics: bands are
+    chosen where the contrast between targets is maximal, and the NDVI family extends to
+    water (NDWI), burn severity (NBR) and evaporation stress; hyperspectral instruments push
+    from identifying "vegetation" to identifying <em>which species and which stress</em>.
+    <strong>InSAR</strong> is the deepest rabbit hole: two radar passes form an interference
+    pattern from the phase difference of the returning waves, and a single fringe corresponds
+    to half a wavelength of motion — about 2.8 cm for Sentinel-1 — so stacked passes resolve
+    millimetre-per-year deformation maps used for dam safety, volcano monitoring and
+    subsidence litigation. <strong>Validation</strong> is the unglamorous half of the science:
+    every pixel product needs ground truth (field plots, tide gauges, soil sensors), and the
+    accuracy of a global land-cover map — often only 70–80% agreement per class — is a
+    function of how honestly that loop is closed. <strong>The frontier:</strong> swarms of
+    cubeSats, hyperspectral commercial fleets, AI foundation models trained on the whole
+    planetary archive, and "digital twin" Earth systems (Europe's Destination Earth) that
+    assimilate the live observation stream into interactive simulations. The open debates are
+    correspondingly modern: the planet's unobserved places and clouds bias what the record can
+    see, algorithmic interpretation can encode its makers' assumptions, and the community is
+    still deciding how machine-labelled claims should be certified before they drive policy.
+  </p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={rsQuizCfg} />
+
   <p class="sources"><strong>Sources:</strong> NASA Landsat Program; ESA Copernicus Sentinel data; IPCC observational chapters; Planet Labs and MethaneSAT mission pages.</p>
 </TopicPage>
