@@ -15,36 +15,210 @@ const boltzCfg = {
   crossings: false,
   height: 340,
 };
+
+const heatCfg = {
+  title: 'Worked example: why heat flows hot to cold, by counting',
+  steps: [
+    { math: '1/T = ΔS/ΔE', note: 'the statistical definition of temperature: how much entropy each extra unit of energy buys.' },
+    { math: 'hot body: T_h = 400 K → 1/T_h = 0.0025 /K', note: 'a hot system is energy-rich; each further joule adds little entropy.' },
+    { math: 'cold body: T_c = 300 K → 1/T_c = 0.0033 /K', note: 'a cold system is energy-hungry; a joule buys it lots of new arrangements.' },
+    { math: 'move Q = 1 J from hot to cold: ΔS = Q(1/T_c − 1/T_h) = 0.0008 J/K', note: 'net entropy increases — that is why the flow happens.' },
+    { math: 'reverse it: ΔS = −0.0008 J/K', note: 'entropy would fall: not impossible, just overwhelmingly improbable. No law forbids it; statistics does.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/physics/advanced/statistical-mechanics">
   <h2>The idea</h2>
   <p>
-    Statistical mechanics is the bridge from atoms to thermodynamics: it explains pressure,
-    temperature and entropy as <strong>counting arguments over astronomically many
-    molecules</strong>. Its core result is Boltzmann's factor — the probability of finding a
-    system in a state of energy E falls as e^(−E/kT). One exponential explains why air thins with
-    altitude, why chemical reactions speed up with heat, and why your coffee cools.
+    The thermal-physics lesson gave you thermodynamics as a set of rules — energy conserved,
+    entropy increases, heat flows downhill. Statistical mechanics is where those rules come
+    <em>from</em>: it explains pressure, temperature and entropy as counting arguments over
+    ~10²³ molecules, showing that the laws of heat are not new forces of nature but the
+    statistics of ordinary mechanics applied to astronomical numbers of particles. The
+    conceptual leap: give up tracking every molecule (impossible anyway) and ask instead
+    how many microscopic arrangements — <strong>microstates</strong> — correspond to each
+    big-picture description — a <strong>macrostate</strong> (same pressure, same
+    temperature). Nature does not favour order or mess; it favours whichever macrostate has
+    the most microstates, and the numbers involved make that bias effectively absolute.
+  </p>
+  <p>
+    The field's two master results are Boltzmann's entropy formula and the Boltzmann
+    factor. One defines temperature and the second law; the other governs which energy
+    levels molecules occupy, why reactions speed up when heated, why air thins with
+    altitude, and why your coffee cools. Both are, at bottom, the arithmetic of very large
+    numbers — the same combinatorics as the number-theory lesson's factorials, weaponised.
   </p>
 
   <Widget no="1" caption="the Boltzmann factor — hotter systems can afford higher-energy states; the second curve is a colder world" widget="plotter" config={boltzCfg} />
 
+  <h2>Counting arrangements: where entropy comes from</h2>
   <p>
-    At temperature T, the chance of a state costing E above the ground state is e^(−E/kT). At
-    "one kT" of temperature the curve sags gently; cool the system (grey curve) and high states
-    become vanishingly rare. Chemistry's activation energies, semiconductor doping and the
-    population of atmospheric layers all read off this one curve.
+    Start with the smallest example that shows the avalanche. Flip 10 coins: the
+    macrostate "5 heads" has W = C(10,5) = 252 microstates; "10 heads" has exactly 1.
+    Already the balanced macrostate is 252 times more likely. Now 100 coins: "50 heads"
+    has W = C(100,50) ≈ 1.0 × 10²⁹ microstates versus 1 for "all heads" — and the
+    distribution's width only grows like √N, so the relative fluctuations shrink. Scale
+    to a gas of 10²³ molecules and the most-probable macrostate outnumber any
+    near-miss by factors like 10^(10²¹): deviating from equilibrium by even one part in a
+    billion is, probabilistically, a non-event. Boltzmann's insight was that entropy
+    <em>is</em> this count: <strong>S = k·ln W</strong>, with k = 1.38 × 10⁻²³ J/K — a
+    formula so important it is carved on his gravestone in Vienna. The logarithm is not
+    decoration: it makes entropy additive (combine two independent systems and the
+    microstates multiply, W = W₁·W₂, so entropies add) and it makes the numbers
+    manageable — ln(10²³) is only about 53.
+  </p>
+  <p>
+    The second law is now a theorem-shaped statement about counting: isolated systems
+    evolve toward macrostates of maximal W because those macrostates are where
+    essentially <em>all</em> the microstates live. A shuffled deck never unshuffles for
+    the same reason — there is no force pushing it back, just 8 × 10⁶⁷ orderings of which
+    essentially none are "sorted". Note the subtle shift this brings: the second law is
+    <strong>statistical, not absolute</strong>. Microscopic dynamics is time-reversible;
+    the arrow of time is bookkeeping. Fluctuations back toward lower entropy are allowed
+    — measurable in small systems (bacteria-scale motors exploit them) and absurdly
+    unlikely at macroscopic scale.
+  </p>
+  <p>
+    <em>Common misconception:</em> entropy is "disorder", so tidy rooms violate it. The
+    thermodynamic quantity counts microstates per macrostate; a crystal at absolute zero
+    and a tidy room are both low-entropy in their everyday senses, but cleaning a room
+    exports more entropy (heat, sweat, discarded packaging) than it removes — the room's
+    surroundings pay with interest. Physicists increasingly prefer "spread": entropy
+    measures how spread-out energy and matter are over available microstates.
   </p>
 
-  <h2>Entropy, finally defined</h2>
-  <ul>
-    <li><strong>Boltzmann's formula:</strong> S = k·ln(W) — entropy is the logarithm of W, the number of microscopic arrangements that look the same macroscopically. Carved on his gravestone in Vienna.</li>
-    <li><strong>Why disorder wins:</strong> there are astronomically more messy arrangements than tidy ones. The second law of thermodynamics is not a force — it is statistics with overwhelming odds. A shuffled deck never unshuffles for the same reason.</li>
-    <li><strong>Temperature redefined:</strong> 1/T is how much entropy you gain per unit of energy added. Things at the same temperature exchange heat without net entropy cost — that's the zeroth law, derived.</li>
-    <li><strong>Maxwell–Boltzmann speeds:</strong> air molecules at 20 °C have a spread of speeds peaking near 500 m/s. Evaporation is just the tail of the distribution — the fastest few escape, cooling what remains.</li>
-  </ul>
+  <h2>Temperature redefined: the entropy price list</h2>
   <p>
-    The lesson of the field: <em>you don't need to track 10²³ molecules — you need to count
-    properly.</em> Counting, it turns out, is most of physics.
+    The definition hidden inside the second law is
+    <strong>1/T = ΔS/ΔE</strong>: temperature is the reciprocal of how much entropy each
+    added joule purchases. A cold system buys lots of entropy per joule; a hot one buys
+    little. Heat flows from hot to cold because the cold side's entropy gain exceeds the
+    hot side's loss — every transfer is a net win for the universe's W:
   </p>
-  <p class="sources"><strong>Sources:</strong> Boltzmann (1877); Feynman Lectures Vol. I, ch. 40; Schroeder, An Introduction to Thermal Physics.</p>
+
+  <Widget no="2" caption="the zeroth law and the second law in one ledger — temperature is the exchange rate between energy and entropy" widget="equationStep" config={heatCfg} />
+
+  <p>
+    This definition also explains the zeroth law (bodies in contact stop exchanging net
+    heat exactly when their ΔS/ΔE match — that match <em>is</em> equal temperature) and
+    delivers a genuine shock: feed energy into a system whose entropy <em>falls</em> with
+    energy (possible in population-inverted systems like laser media) and 1/T is
+    negative. Negative absolute temperatures are <strong>hotter than infinity</strong> —
+    put such a system in contact with any positive-temperature one and energy flows
+    <em>out</em> of it. The arithmetic is consistent; the definition earns its keep.
+  </p>
+
+  <h2>The Boltzmann factor: which states get occupied</h2>
+  <p>
+    Put a small system in contact with a big reservoir at temperature T. The reservoir is
+    huge, so its own entropy change when it donates energy E to the small system is
+    ΔS ≈ −E/T. The probability of the donation is proportional to the number of reservoir
+    microstates consistent with it, and multiplying out the exponentials gives the
+    <strong>Boltzmann factor</strong>: the probability of a state with energy E above the
+    ground state is proportional to <strong>e^(−E/kT)</strong> — the figure's curve, with
+    the normalisation over all states called the <strong>partition function</strong> (the
+    denominator Z that turns "proportional to" into "equal to" and from which, remarkably,
+    <em>all</em> thermodynamic quantities can be computed by differentiation).
+  </p>
+  <p>
+    Quantitatively, kT at room temperature is 1.38 × 10⁻²³ × 293 ≈ 4.0 × 10⁻²¹ J ≈
+    0.026 eV — the energy currency of the molecular world. States costing several kT are
+    exponentially rare; states costing a fraction of kT are common. Three consequences.
+    <strong>Chemistry:</strong> a reaction with activation energy 0.5 eV has rate
+    ∝ e^(−0.5/0.026) ≈ 4 × 10⁻⁹ of its barrierless rate at 300 K — but at 310 K the
+    factor is e^(−0.5/0.0267) ≈ 7.5 × 10⁻⁹, nearly double. That steepness is the
+    Arrhenius "rate doubles per 10 K" rule of thumb, and it is why refrigeration preserves
+    food and fevers fight infection. <strong>Atmosphere:</strong> the barometric formula
+    P(h) = P₀·e^(−mgh/kT) is the same factor with E = mgh; for air at 288 K the
+    <strong>scale height</strong> is mgh/kT ≈ 8.5 km — pressure halves roughly every 6
+    km, which is why airliners pressurise and Everest demands bottled oxygen.
+    <strong>Evaporation:</strong> the speed distribution's long tail means the fastest
+    molecules at a water surface exceed the binding energy and leave, taking
+    disproportionate energy with them — the whole machinery of evaporative cooling,
+    examined properly in the next section.
+  </p>
+
+  <h2>Equipartition: where the ideal gas law comes from</h2>
+  <p>
+    In thermal equilibrium, energy spreads equally: every quadratic degree of freedom
+    (½mv² per direction, ½kx² per spring) carries <strong>½kT on average</strong>. A
+    monatomic gas (3 translational degrees) therefore stores U = (3/2)NkT of internal
+    energy, and combining with pV = NkT (which the same statistics derive from momentum
+    transfer at the walls) gives the measured heat capacity of helium, (3/2)R ≈ 12.5
+    J/(mol·K). Diatomic molecules add two rotational degrees: heat capacity (5/2)R ≈
+    20.8 J/(mol·K) — exactly what nitrogen's tables show at room temperature. But add
+    <em>vibration</em> and classical physics over-promises ((7/2)R), while the data show
+    vibration "freezing out" below ~1000 K. That failure is historically precious: it is
+    the quantum mechanics of the previous lesson asserting itself — vibrational levels
+    are spaced more than kT apart, so the Boltzmann factor leaves them empty. The heat
+    capacities of gases are, quietly, one of the places quantum mechanics was discovered.
+  </p>
+
+  <h2>The Maxwell–Boltzmann distribution and what it explains</h2>
+  <p>
+    For a gas in thermal equilibrium, the Boltzmann factor applied to kinetic energy
+    produces a specific prediction for how molecular speeds are shared: a bell-shaped
+    <strong>Maxwell–Boltzmann distribution</strong> whose most probable speed is
+    √(2kT/m) and whose rms speed is √(3kT/m) — for nitrogen at 20 °C, about 415 m/s
+    and 510 m/s respectively. The shape matters more than the peak: the distribution has
+    a long, thin tail, and <em>the tail does the chemistry</em>. Only tail molecules
+    exceed a reaction's activation energy; only tail molecules at a liquid's surface
+    exceed the binding energy and escape (evaporation — with the escapees taking
+    above-average energy, which is why sweating cools you); and only tail molecules
+    exceed a planet's escape velocity. That last application is planetary: Earth holds
+    nitrogen and oxygen (tail speeds far below the 11.2 km/s escape velocity) but has
+    lost nearly all its primordial hydrogen, whose 1.6 km/s most-probable speed puts a
+    real fraction of atoms in the escape tail — over geological time, a leak. The Moon
+    is smaller and lost everything; Jupiter's escape velocity of 60 km/s keeps even
+    hydrogen, which is why the gas giants never shed their envelopes. One distribution,
+    scaled by mass and temperature, sorts the atmospheres of the Solar System.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Quantum statistics: when particles are indistinguishable.</strong> The
+    counting above treats particles as distinguishable balls. True quantum particles are
+    not, and their exchange statistics split the world in two. <strong>Bosons</strong>
+    (integer spin: photons, helium-4) happily share a state, and their occupation obeys
+    Bose–Einstein statistics — the extreme case being the <strong>Bose–Einstein
+    condensate</strong>, predicted in 1924 and created in 1995 (rubidium-87 at 170
+    nanokelvin; Nobel 2001), where a macroscopic fraction of the gas collapses into one
+    quantum state and becomes a single wavefunction you can photograph.
+    <strong>Fermions</strong> (half-integer spin: electrons, protons, helium-3) obey the
+    Pauli exclusion principle: one per state, filling levels from the bottom up to the
+    <strong>Fermi energy</strong>. This one rule explains why white dwarf and neutron
+    stars resist gravity (the compact-objects lesson returns to it), why metals conduct,
+    why chemistry has shells, and why helium-3 and helium-4 — chemically identical twins
+    — are radically different fluids below a few kelvin. Thermal physics at low
+    temperature <em>is</em> quantum statistics.
+  </p>
+  <p>
+    <strong>Beyond equilibrium.</strong> Nearly everything above assumes equilibrium or
+    near it; the physics of systems driven far from it is younger and partly open. The
+    <strong>fluctuation theorems</strong> (1990s) quantified the rare entropy-decreasing
+    excursions predicted since Boltzmann, and were verified by dragging single RNA
+    molecules and colloids with optical tweezers — the second law holds on average, with
+    an exponentially suppressed probability of temporary violation. Jarzynski's equality
+    turned nonequilibrium work into equilibrium free-energy differences, a result now
+    used in molecular simulation daily. Landauer's principle connects the subject to
+    information: erasing one bit of information necessarily dissipates at least kT·ln 2
+    of heat — computation is a thermodynamic process, and "Maxwell's demon" was resolved
+    not by exorcism but by billing the demon for its memory erasures. The crossover to
+    information theory is exact: Shannon's information entropy and Boltzmann's S are the
+    same mathematics applied to different state counts.
+  </p>
+  <p>
+    <strong>Open questions.</strong> The arrow of time — why the universe started in such
+    an improbably low-entropy state (the past hypothesis) — remains the deepest unsolved
+    problem in the field: the second law explains the arrow <em>given</em> that initial
+    condition, not the condition itself. Non-equilibrium pattern formation (convection
+    cells, turbulence, life itself as entropy-exporting structure) lacks a general theory
+    comparable to equilibrium thermodynamics. And at the frontier, the same statistics
+    runs cosmology: black-hole entropy (S = k·A/4·(c³/Għ)) is the largest entropy store
+    known and the strongest clue we have that gravity, information and thermodynamics are
+    one subject — the question the compact-objects and quantum-foundations pages circle
+    without landing.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Boltzmann (1877); Feynman, <em>Lectures on Physics</em> Vol. I, ch. 40; Schroeder, <em>An Introduction to Thermal Physics</em>; Anderson et al., <em>Science</em> 269, 198 (1995) — Bose–Einstein condensation.</p>
 </TopicPage>

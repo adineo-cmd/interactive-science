@@ -12,37 +12,226 @@ const intCfg = {
   crossings: false,
   height: 350,
 };
+
+const kinCfg = {
+  title: 'Worked example: from velocity to distance',
+  steps: [
+    { math: 'v(t) = 20 − 4t  (m/s)', note: 'a car braking evenly: 20 m/s slowing to rest.' },
+    { math: 'displacement = ∫₀ᵗ v = [20t − 2t²] from 0 to 6', note: 'anti-differentiate: ∫20 dt = 20t, ∫−4t dt = −2t².' },
+    { math: '= (120 − 72) − 0 = 48 m', note: 'the signed area under the velocity graph between t = 0 and t = 6 s.' },
+    { math: 'v = 0 when t = 5 s', note: 'the car stops at 5 s. For t above 5 the (braking) model would push it backwards — velocities after rest are not part of the physical story.' },
+    { math: 'total distance = |area| up to stopping = ½ × 20 × 5 = 50 m', note: 'when the velocity changes sign, distance is the sum of absolute areas, not the net signed area. 48 vs 50 m — the difference matters in crash reconstruction.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/math/advanced/integration">
   <h2>The idea</h2>
   <p>
-    Integration is calculus's other half: where the derivative measures instantaneous change, the
-    <strong>integral accumulates</strong> — adding up infinitely many infinitely thin slices.
-    Areas, volumes, distance from speed, total charge from current: any "sum of continuously
-    varying stuff" question is an integral. The discovery that makes it work: the accumulation
-    function A(x) = ∫f has <strong>derivative f</strong> — the Fundamental Theorem of Calculus,
-    which turns hard sums into anti-derivatives.
+    The derivative lesson took a function apart: given position, find instantaneous velocity.
+    Integration runs the film backwards — given a <em>rate</em>, recover the <em>total</em>.
+    The general shape of the question is always the same: something varies continuously
+    (speed, water inflow, force along a surface, demand for electricity across a day) and you
+    want the accumulated amount (distance, volume, work, energy). Multiplying rate × time
+    only works when the rate is constant; the instant it varies, you must add up the
+    contributions of infinitely many <em>briefly constant</em> moments. That "add up the
+    infinitely many thin slices" operation is the <strong>integral</strong>, written
+    ∫ f(x) dx — an elongated S for "sum", with dx naming the slice width.
+  </p>
+  <p>
+    The miracle that makes calculus a single subject rather than two: slicing-and-adding, and
+    anti-differentiating, are the <em>same operation</em>. The function A(x) that measures
+    accumulated area under f up to x turns out to have derivative exactly f. Newton and
+    Leibniz both saw this — the <strong>Fundamental Theorem of Calculus</strong> — and it
+    converts a problem about infinite sums into a problem about reversing the rules you
+    already know.
   </p>
 
   <Widget no="1" caption="area under x² accumulates as x³/3 — the red curve is the running total of the blue one's area" widget="plotter" config={intCfg} />
 
   <p>
-    At x = 1 the area under the parabola is ⅓; at x = 2 it's 8/3; at x = 3 it's 9. The red curve
-    is that running total — and its slope at any point equals the height of the blue curve
-    there. Slope and area are the same fact seen from two sides.
+    Watch the two curves in the figure. At x = 1 the area under the parabola is ⅓; at x = 2
+    it is 8/3 ≈ 2.67; at x = 3 it is 9. The red curve plots that running total — and its
+    slope at any point equals the height of the blue curve there. Slope-of-accumulation =
+    rate: the derivative and the integral undo each other, and each is the explanation of
+    the other.
   </p>
 
-  <h2>The working technique</h2>
-  <ul>
-    <li><strong>Power rule reversed:</strong> ∫xⁿ dx = xⁿ⁺¹/(n+1) + C. The +C matters — anti-derivatives come in vertical families, and boundary conditions pick the member.</li>
-    <li><strong>Definite integrals:</strong> ∫ᵃᵇ f = F(b) − F(a) — the Fundamental Theorem converting accumulation into subtraction.</li>
-    <li><strong>Substitution</strong> is the chain rule reversed; <strong>integration by parts</strong> is the product rule reversed. Most of a first course is recognising which undo-move fits.</li>
-    <li><strong>When symbols fail, slices still work:</strong> numerical integration (Simpson's rule) computes areas to any accuracy — how physics software integrates motion it can't solve by hand.</li>
-  </ul>
+  <h2>Where integrals come from: slicing</h2>
   <p>
-    The derivative lesson showed x² begetting 2x; this page runs the film backwards. Together
-    they are the complete loop that Newton and Leibniz opened — and the differential-equations
-    lesson next door is where the loop becomes physics.
+    To estimate the area under f(x) = x² from 0 to 1, chop the interval into four strips of
+    width 0.25 and pretend f is constant on each. Using the <em>right</em> edge of each
+    strip as its height gives rectangles of heights 0.0625, 0.25, 0.5625 and 1:
+    total ≈ 0.25 × (0.0625 + 0.25 + 0.5625 + 1) = 0.469. Using <em>left</em> edges gives
+    0.219. The true answer is squeezed between them — the right sum overcounts (rectangles
+    poke above the curve on a rising function), the left sum undercounts. Halve the strip
+    width and both estimates move toward each other; in the limit of infinitely thin strips
+    they meet at exactly ⅓ ≈ 0.333. That limiting value <em>is</em> the definite integral
+    ∫₀¹ x² dx, and the two-sided squeeze is the proof that it exists for any continuous
+    function. It also explains the "dx": each rectangle contributes height × width, and the
+    sum of f(x)·dx over all slices is the notation's literal meaning.
   </p>
-  <p class="sources"><strong>Sources:</strong> OpenStax, Calculus Volume 1 (Integration); Stewart, Calculus.</p>
+  <p>
+    <em>Common misconception:</em> the integral is "the area under the curve", full stop. It
+    is the <strong>signed</strong> area: parts of f below the axis count negative, because a
+    negative rate subtracts from the total. A business losing money for a quarter has
+    negative profit-flow; integrating it over the year reduces the annual total rather than
+    adding to it. To get genuine geometric area you must integrate |f| — splitting the
+    interval at every crossing of the axis — which is exactly the distinction the kinematics
+    example below makes vivid.
+  </p>
+
+  <h2>The anti-derivative family and the +C</h2>
+  <p>
+    Reversing the power rule d/dx xⁿ = n·xⁿ⁻¹ gives the master formula
+    <strong>∫ xⁿ dx = xⁿ⁺¹/(n+1) + C</strong> (valid for any n except −1). Raise the power
+    by one, divide by the new power. So ∫ 6x² dx = 2x³ + C, and ∫ (6x² + 4x − 5) dx =
+    2x³ + 2x² − 5x + C — integration, like differentiation, respects sums and constant
+    multiples. Two standard cases sit outside the power rule and are worth memorising as
+    counterparts of the derivative table: ∫ cos x dx = sin x + C (and ∫ sin x dx = −cos x + C),
+    and ∫ eˣ dx = eˣ + C — the exponential is its own anti-derivative, the defining quirk of
+    e.
+  </p>
+  <p>
+    The <strong>+C</strong> is not decoration. Derivatives destroy constants (both x² + 3
+    and x² − 7 differentiate to 2x), so reversing the process recovers only the shape, not
+    the height. The whole family x³/3 + C shares one slope; a boundary condition — "the
+    area-so-far starts at zero when x = 0", or "the car started at the lamp post" — picks
+    the one member of the family that fits reality. In the differential-equations lesson
+    this selection step gets a name (initial conditions) and becomes the heart of the
+    subject.
+  </p>
+
+  <h2>Definite integrals: the Fundamental Theorem at work</h2>
+  <p>
+    Part 1 of the Fundamental Theorem (the one the figure shows): the accumulation function
+    A(x) = ∫ₐˣ f(t) dt has A′(x) = f(x). Part 2 is the computational payoff: to accumulate f
+    from a to b, find <em>any</em> anti-derivative F and subtract:
+    <strong>∫ₐᵇ f(x) dx = F(b) − F(a)</strong>. The constant cancels — which is why definite
+    integrals need no +C. Worked example: ∫₁³ (2x + 3) dx = [x² + 3x] from 1 to 3 =
+    (9 + 9) − (1 + 3) = 18 − 4 = 14. Geometrically: the region is a trapezium with parallel
+    sides f(1) = 5 and f(3) = 9 and width 2, area ½(5 + 9) × 2 = 14. The formula and the
+    trapezium agree — for straight-line graphs the slice arithmetic is elementary, and
+    calculus earns its keep only when the graph curves.
+  </p>
+  <p>
+    Three properties follow directly from "slices add up" and are used constantly:
+    <strong>linearity</strong> — ∫ (af + bg) = a∫f + b∫g; <strong>additivity</strong> —
+    ∫ₐᶜ = ∫ₐᵇ + ∫ᵦᶜ (accumulate in stages); and <strong>reversal</strong> — swapping the
+    limits flips the sign, ∫ᵇᵃ = −∫ₐᵇ, because walking the interval backwards negates every
+    slice. Also note ∫ₐᵃ = 0: no interval, no accumulation.
+  </p>
+
+  <h2>Areas between curves</h2>
+  <p>
+    When one quantity is always above another, the integral of the <em>difference</em> gives
+    the area of the gap — the geometry of "how much better is A than B". Between y = x and
+    y = x² (which meet at x = 0 and x = 1, with the line on top in between):
+    area = ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = ½ − ⅓ = 1/6. The same subtraction is how
+    economists compute consumer surplus (area between the demand curve and the price line),
+    how pharmacokinetics compares drug concentrations, and how error is measured between a
+    model curve and data. If the curves cross inside the interval, split the integral at
+    each crossing and integrate the difference piecewise, always upper-minus-lower.
+  </p>
+
+  <h2>Integration in motion: kinematics</h2>
+  <p>
+    The most-used application in physics: since velocity is the derivative of position,
+    position-changes are integrals of velocity, and acceleration integrates to velocity.
+    Concretely, a car braking from 20 m/s with steady deceleration has v(t) = 20 − 4t. Its
+    displacement over the first six seconds and the subtlety of "distance travelled":
+  </p>
+
+  <Widget no="2" caption="a full worked example, step by step — signed area (displacement) versus total area (distance)" widget="equationStep" config={kinCfg} />
+
+  <p>
+    The same logic runs every direction: integrate a current I(t) to get charge delivered,
+    integrate power P(t) to get energy used (your electricity meter is an integrator),
+    integrate a flow rate to get total volume. Anywhere a meter reads a <em>rate</em>,
+    integration produces the <em>bill</em>.
+  </p>
+
+  <h2>Techniques: substitution and by parts</h2>
+  <p>
+    Most integrals are not naked power rules; the two great undo-moves are the reverse of
+    the two differentiation rules you know. <strong>Substitution</strong> reverses the chain
+    rule. Spot an inner function whose derivative also appears outside:
+    ∫ 2x·(x² + 1)³ dx has u = x² + 1 with du = 2x·dx sitting right there. Substitute:
+    ∫ u³ du = u⁴/4 + C = (x² + 1)⁴/4 + C. Differentiate back to check — the chain rule
+    restores the 2x, confirming the answer. Roughly: "match the inside, grab its
+    derivative."
+  </p>
+  <p>
+    <strong>Integration by parts</strong> reverses the product rule: from (uv)′ = u′v + uv′
+    comes ∫ u·v′ dx = u·v − ∫ v·u′ dx. It trades one integral for another — the art is
+    choosing u so the new integral is easier. Example: ∫ x·eˣ dx. Let u = x (its derivative
+    x′ = 1 simplifies things) and v′ = eˣ (whose integral is unchanged): result
+    x·eˣ − ∫ eˣ dx = x·eˣ − eˣ + C. The classic payoff is ∫ ln x dx, which looks hopeless
+    until parts with u = ln x, v′ = 1 gives x·ln x − x + C. There is no general algorithm
+    for symbolic integration — it is pattern recognition, which is why the numerical
+    fallback below matters.
+  </p>
+
+  <h2>When symbols fail: numerical integration</h2>
+  <p>
+    Many important integrands — e^(−x²) (the bell curve), measured data, functions defined
+    only by a table — have no elementary anti-derivative at all. Slicing still works: the
+    <strong>trapezium rule</strong> joins sample points with straight lines and sums the
+    trapezia; <strong>Simpson's rule</strong> joins them with parabolas and is startlingly
+    accurate (its error shrinks with the fourth power of the strip width: halve the strips,
+    16× better). For ∫₀¹ e^(−x²) dx with four strips, the trapezium rule gives ≈ 0.7430
+    and Simpson's rule ≈ 0.7469, against a true value of 0.7468 — five-decimal accuracy
+    from four parabola-width strips.
+    Every flight simulator integrating forces sixty times a second, and every climate model
+    accumulating radiative flux, is running a numerical integrator, because the functions
+    involved simply cannot be anti-differentiated in closed form.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Why the FTC is true (sketch).</strong> Let A(x) be area-so-far under a
+    continuous f. Then A(x + h) − A(x) is the area of a thin slab; since f barely changes
+    across a slab of width h, that area is squeezed between f(x)·h and f(x + h)·h (for
+    increasing f). Divide by h and let h → 0: both bounds tend to f(x), so
+    A′(x) = f(x). The whole theorem is the observation that a thin slab is almost a
+    rectangle, plus a squeeze. The deeper requirement — that A exists at all for every
+    continuous f — took mathematicians until Riemann (and later Lebesgue) to make fully
+    precise, and the Lebesgue refinement is what modern probability theory is built on:
+    a random variable's distribution is integrated to give probabilities, and E[X] =
+    ∫ x·f(x) dx is literally an expectation integral.
+  </p>
+  <p>
+    <strong>Improper integrals: when infinite slices converge.</strong> Extend to infinite
+    intervals by a limit: ∫₁^∞ f = lim as b → ∞ of ∫₁ᵇ f. The surprise is that some infinite
+    regions have finite area: ∫₁^∞ 1/x² dx = [−1/x]₁^∞ = 0 − (−1) = 1. Yet ∫₁^∞ 1/x dx =
+    [ln x]₁^∞ = ∞. Two curves that both approach zero, one of whose areas is finite and the
+    other infinite — the boundary sits exactly at 1/x¹ (the "p-test": converges for powers
+    p above 1, diverges for p at most 1). Rotate the finite one about its axis and you get
+    <strong>Gabriel's Horn</strong>: a shape with finite volume but infinite surface area —
+    you could fill it with paint but never paint it. Paradoxes like this forced the careful
+    definitions of limit and convergence in the expert-tier analysis lesson.
+  </p>
+  <p>
+    <strong>Beyond areas: the integral as an operator.</strong> Integration is linear,
+    smoothing (integrating twice makes a kinked curve genuinely curved), and it inverts
+    differentiation only up to the constant — the kernel of that failure, the constant
+    function, is exactly the null space of the derivative. In higher mathematics the same
+    slicing idea generalises to line integrals (work done along a curved path), double and
+    triple integrals (mass of a plate with varying density, centre of mass, moments of
+    inertia), and convolution integrals (how a signal is smeared by a system — the
+    mathematics of echo, blur and every filter in audio processing). Fourier analysis, the
+    engine of the spectroscopy lesson in chemistry, is the statement that a huge class of
+    functions can be built from integrals of sines and cosines of all frequencies.
+  </p>
+  <p>
+    <strong>Open frontier.</strong> Which functions have elementary anti-derivatives is
+    fully settled (Liouville's theorem: e^(−x²), 1/ln x, and sin(x)/x famously do not), but
+    efficient <em>numerical</em> integration in high dimensions is not: Monte Carlo methods
+    — averaging random samples instead of summing grids — are the workhorse for the
+    thousand-dimensional integrals of financial risk and particle physics, and improving
+    their convergence rates remains active research. The humble idea of "add up thin
+    slices" scales from homework to the LHC unchanged; only the notion of <em>slice</em>
+    has to get cleverer.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> OpenStax, <em>Calculus Volume 1</em> (ch. 5, Integration); Stewart, <em>Calculus</em>; Courant &amp; John, <em>Introduction to Calculus and Analysis</em>.</p>
 </TopicPage>

@@ -12,32 +12,231 @@ const photoCfg = {
   crossings: true,
   height: 350,
 };
+
+const uncCfg = {
+  title: 'Worked example: uncertainty sets the size of the atom',
+  steps: [
+    { math: 'Δx ≈ 0.1 nm (an electron squeezed to atomic size)', note: 'if the atom held the electron tighter, this width would shrink.' },
+    { math: 'Δp ≥ ħ / 2Δx ≈ 5 × 10⁻²⁵ kg·m/s', note: 'confinement forces momentum spread — there is no way around it.' },
+    { math: 'KE ≈ (Δp)²/2m ≈ 1.5 × 10⁻¹⁹ J ≈ 1 eV', note: 'squeezing means moving: confinement energy of order the electron-volt scale.' },
+    { math: 'squeeze to 0.01 nm → KE ≈ 100 eV', note: 'ten times tighter costs a hundred times more energy — the 1/L² blow-up.' },
+    { math: '∴ atoms are ~0.1 nm', note: 'atoms balance confinement energy against electrostatic attraction. The uncertainty principle fixes the size of everything you have ever touched.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/physics/advanced/quantum-foundations">
   <h2>The idea</h2>
   <p>
-    Quantum mechanics begins with an insult to common sense: <strong>light — and everything else
-    — comes in discrete packets</strong>. The photoelectric effect proved it in 1905: light below
-    a threshold frequency ejects <em>no</em> electrons from a metal, no matter how bright.
-    Brightness (many dim packets) can't beat frequency (each packet's energy E = hf). Einstein's
-    explanation won the Nobel — and the packet idea became the quantum.
+    By 1900, classical physics was complete and, physicists assumed, finished. Then the
+    seams split. The first: <strong>blackbody radiation</strong>. Classical
+    electromagnetism predicted any warm object should radiate infinite energy at short
+    wavelengths (the "ultraviolet catastrophe") — every oven a death ray. Planck fixed the
+    arithmetic in 1900 with a reluctant assumption: matter exchanges energy with light in
+    discrete lumps of size <strong>E = hf</strong>, where h = 6.626 × 10⁻³⁴ J·s. He called
+    it a "mathematical trick"; it was the price of admission to the quantum world. The
+    second seam was the photoelectric effect, and Einstein — not for relativity but for
+    this — took the lumps literally and won the 1921 Nobel Prize.
+  </p>
+  <p>
+    The pattern of the whole subject is already visible in those two cracks: nature is
+    <strong>granular</strong> at small scales, the granularity is governed by one constant
+    h, and the classical continuum is what you see when the grains are too fine to notice.
+    This page builds the modern framework — wavefunctions, probability, uncertainty,
+    superposition — and ends at the question nobody has closed: what, exactly, happens
+    during a measurement.
   </p>
 
   <Widget no="1" caption="the photoelectric plot — the crossing marks the threshold frequency; below it, nothing happens, ever" widget="plotter" config={photoCfg} />
 
+  <h2>The photoelectric effect: light as particles</h2>
   <p>
-    The line's slope is Planck's constant (h = 6.626 × 10⁻³⁴ J·s = 4.136 × 10⁻¹⁵ eV·s) — the
-    universal exchange rate between energy and frequency. The crossing with zero is the
-    work function: 2.28 eV for sodium, corresponding to blue-green light. Red light, however
-    intense, never frees an electron. That's the graph that started the quantum revolution.
+    Shine light on a metal; electrons come out. Classical physics predicts any colour
+    should work given enough intensity (more amplitude, more energy to shake electrons
+    loose) and predicts a delay while the electron slowly accumulates energy. The
+    experiments (Lenard, 1902; Millikan's precise tests) said the opposite: below a
+    <strong>threshold frequency</strong> no electrons emerge <em>ever</em>, at any
+    intensity; above it, ejection is immediate even in faint light; and the electrons'
+    maximum kinetic energy depends only on frequency, rising one volt per doubling of
+    frequency — with brightness controlling only <em>how many</em> electrons emerge.
+    Einstein's explanation: light arrives in quanta (photons) of energy hf. One photon,
+    one electron; the photon must deliver at least the <strong>work function</strong> φ
+    (the energy binding the electron to that metal), and the remainder is kinetic:
+    <strong>KE<sub>max</sub> = hf − φ</strong> — the straight line in the figure, slope h.
+  </p>
+  <p>
+    Worked numbers for sodium (φ = 2.28 eV): the threshold is f = φ/h = 2.28 / (4.136 ×
+    10⁻¹⁵ eV·s) ≈ 5.5 × 10¹⁴ Hz — green light, wavelength about 545 nm. Red light at
+    650 nm carries photon energy 1240/650 ≈ 1.9 eV: short by 0.4 eV, so <em>nothing</em>
+    happens regardless of brightness — a trillion dim photons cannot stack, because they
+    arrive one at a time. Blue 450 nm light carries 2.76 eV, ejecting electrons at
+    0.48 eV. The shortcut "photon energy in eV ≈ 1240 divided by wavelength in nm" comes
+    straight from hc and is worth remembering; it runs the whole business of
+    semiconductors, solar cells and the spectroscopy lessons in chemistry.
   </p>
 
-  <h2>The rules of the small world</h2>
-  <ul>
-    <li><strong>Wave–particle duality:</strong> electrons fired one at a time through a double slit build an interference pattern — each electron explores both paths. Matter and light both behave as waves that arrive as packets.</li>
-    <li><strong>Heisenberg's uncertainty (1927):</strong> position × momentum ≥ ħ/2 — not a measurement limitation but a fact of nature. Sharply localised waves must be built from many momenta.</li>
-    <li><strong>The wavefunction:</strong> a state's wave encodes probability amplitudes; |ψ|² gives the odds of finding the particle here. Quantum theory predicts probabilities perfectly — and insists that's all it predicts.</li>
-    <li><strong>Quantised atoms:</strong> electrons occupy standing-wave orbitals; photons are emitted at exact energy differences. One idea, and the entire periodic table's spectral fingerprint bookkeeping makes sense.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Planck (1900); Einstein (1905); Heisenberg (1927); Feynman Lectures Vol. III.</p>
+  <h2>The double slit: each particle interferes with itself</h2>
+  <p>
+    If light is particles, beams through two slits should paint two stripes. They paint
+    <strong>interference fringes</strong> — and so do electrons, neutrons, atoms, and
+    molecules as large as buckyballs (C₆₀ in 1999; larger molecules since). Fire electrons <em>one at a time</em>,
+    so no two can interact: each lands as a single dot, apparently random; accumulate
+    thousands and the fringes emerge dot by dot. Each electron somehow explores
+    <em>both</em> paths, and the two amplitudes add — sometimes reinforcing, sometimes
+    cancelling. De Broglie (1924) supplied the wave's wavelength:
+    <strong>λ = h/p</strong> — every particle with momentum p has a wavelength. It is not
+    small: a 50 eV electron has λ ≈ 1.2/√50 ≈ 0.17 nm (the formula λ(nm) = 1.226/√V),
+    electron-microscope scale, and Davisson and Germer confirmed electron diffraction off
+    nickel crystals in 1927. But detect the electron at one slit — learn <em>which path
+    it took</em> — and the fringes vanish; the pattern becomes two stripes. Knowledge
+    itself is not the mechanism: any interaction that irreversibly records the path does
+    the destroying. This measurement-sensitivity is not a defect. It is the theory's
+    central postulate wearing experimental clothes.
+  </p>
+
+  <h2>The uncertainty principle: a fact about waves, not about clumsiness</h2>
+  <p>
+    Heisenberg (1927): <strong>Δx · Δp ≥ ħ/2</strong>, where ħ = h/2π. The usual pop
+    version — "measuring disturbs the system" — undersells it badly; the disturbance
+    story would predict better instruments could beat the limit, and they cannot. The
+    truth is Fourier mathematics: any wave localised in a narrow region <em>must</em> be
+    built from many wavelengths (a single wavelength is a wave spread over all space),
+    and since momentum is wavelength via de Broglie, localising position forces momentum
+    spread. Position and momentum are like pitch and duration of a musical note: a
+    0.01-second blip genuinely has no single pitch. The pairs are <strong>conjugate</strong>
+    variables, and no state of the universe ever has both sharply defined.
+  </p>
+
+  <Widget no="2" caption="the payoff — confinement costs energy, and that is why atoms have the size they have" widget="equationStep" config={uncCfg} />
+
+  <p>
+    The energy–time cousin, <strong>ΔE · Δt ≥ ħ/2</strong>, has no measurement-disturbance
+    reading at all: it says short-lived states have uncertain energy. Excited atoms that
+    decay after ~10 ns have spectral lines broadened by about 10⁻⁷ eV (natural linewidth
+    — the fact spectroscopists exploit to measure lifetimes); virtual particles borrow
+    energy for a time permitted by this inequality, the accounting that makes quantum
+    field theory work.
+  </p>
+
+  <h2>The wavefunction: probability as physics</h2>
+  <p>
+    The modern picture (Schrödinger, 1926): every particle is described by a
+    <strong>wavefunction</strong> ψ, a wave over configuration space whose squared
+    magnitude |ψ|² gives the probability density of finding the particle at each place
+    (the Born rule). The wavefunction evolves deterministically under the Schrödinger
+    equation — the quantum analogue of F = ma, and the differential-equations lesson's
+    craft applies to it directly. Then, upon measurement, one outcome occurs with the
+    Born-rule probability, and the wavefunction is taken to "collapse" to the observed
+    branch. Notice the two-tier structure: between measurements, smooth wave evolution;
+    at measurement, a probabilistic jump no equation governs. Quantum mechanics predicts
+    the <em>statistics</em> of outcomes with spectacular precision — the electron's
+    magnetic moment matches theory to one part in a trillion, the best-verified number in
+    science — while declining to predict individual events. Whether that refusal is a
+    complete description of nature is the measurement problem, this page's open wound.
+  </p>
+
+  <h2>Quantised atoms: standing waves make the periodic table</h2>
+  <p>
+    Confinement quantises. Trap any wave in a box and only standing-wave patterns
+    survive — a guitar string plays discrete notes, not every frequency. Electrons in
+    atoms are waves trapped by nuclear attraction, so only discrete <strong>orbitals</strong>
+    exist, each with a definite energy. Bohr's model (1913) got hydrogen right for
+    semi-accidental reasons (his condition 2πr = nλ is exactly the standing-wave
+    requirement); the correct energies are E<sub>n</sub> = −13.6/n² eV: −13.6, −3.4,
+    −1.51 eV for n = 1, 2, 3. Photons are emitted or absorbed only at the
+    <em>differences</em>: the n = 3 → 2 transition emits 1.89 eV — wavelength
+    1240/1.89 ≈ 656 nm, the red hydrogen-alpha line that stains every emission nebula in
+    the astronomy images in this atlas. Each element's orbital ladder is unique, so each
+    element's spectrum is a fingerprint — the tool that found helium in the Sun before it
+    was found on Earth, and that powers the spectroscopy and astronomy pages. Chemistry's
+    whole architecture (shells, valence, the periodic table's shape) is this quantisation
+    plus the Pauli exclusion principle, which forbids two electrons sharing one quantum
+    state and so forces the table's structure rather than a collapse of all atoms into
+    their ground states.
+  </p>
+
+  <h2>Entanglement: the part of quantum theory that changed philosophy</h2>
+  <p>
+    Two particles can be prepared in a joint state — say, total spin zero — so that
+    measuring one instantly fixes what the other <em>must</em> yield when measured,
+    however far away. Einstein, Podolsky and Rosen (1935) argued this "spooky action at a
+    distance" meant quantum mechanics was incomplete: surely the particles carried
+    pre-agreed instructions (hidden variables) all along. In 1964 John Bell proved the
+    question could be decided by experiment: any hidden-variable theory of the agreed
+    type implies correlations bounded by a specific number; quantum mechanics predicts
+    stronger ones. Experiments — Freedman–Clauser (1972), Aspect (1982), and the
+    loophole-free tests of 2015 that earned the 2022 Nobel prize — found the quantum
+    correlations, decisively. The lesson is subtle and often garbled: entanglement
+    correlates outcomes but <strong>transmits no signal</strong> — each side's local
+    results are random no matter what the other does, so relativity's no-faster-than-light
+    causality survives intact. What dies is the assumption that distant particles carry
+    definite local properties before measurement — Bell's own term for such properties,
+    "local beables", became the literature's label for exactly what the experiments rule
+    out.
+  </p>
+  <p>
+    <em>Common misconception:</em> quantum "observation" needs a conscious observer.
+    Nothing in the formalism mentions minds. What destroys interference is
+    <strong>decoherence</strong> — irreversible entanglement with the environment (a
+    stray photon, an air molecule, a detector's amplifier), which happens staggering
+    fast for macroscopic objects and is why tables have definite positions while
+    electrons in carefully isolated traps do not. Consciousness entered the conversation
+    through von Neumann's 1932 book and never left the bestseller shelf; it plays no role
+    in any working prediction.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The formal skeleton.</strong> States are vectors in a complex vector space
+    (Hilbert space); observables are Hermitian operators on them; possible measurement
+    outcomes are the operators' eigenvalues — quantisation is the spectral theorem, the
+    same eigenvalue mathematics as the matrix lesson's eigenvectors, now with physical
+    meaning. Incompatible observables correspond to non-commuting operators: the
+    commutator [x̂, p̂] = iħ <em>is</em> the uncertainty principle, stated in algebra.
+    Superposition is just vector addition — the "both paths" of the double slit is no
+    more mysterious than a chord being two notes at once; the mystery is only why
+    <em>measurements</em> refuse to superpose. The expert-tier quantum field theory lesson
+    upgrades the stage: particles become excitations of fields, and photon number itself
+    becomes a quantum variable.
+  </p>
+  <p>
+    <strong>Tunneling: the wavefunction pays no rent to walls.</strong> Where the
+    potential energy exceeds the particle's energy, the wavefunction does not stop — it
+    decays exponentially, and if the barrier is thin enough a tail survives on the far
+    side: the particle sometimes appears where Newton forbids. This is not exotic: the
+    Sun shines only because protons tunnel through their electrostatic repulsion at
+    15-million-degree temperatures (classically, fusion would need a hundred times
+    hotter); alpha decay <em>is</em> tunneling, with lifetimes from nanoseconds to 10²¹
+    years explained by one barrier width; scanning tunneling microscopes image individual
+    atoms on exactly this current; and flash memory writes bits by pushing electrons
+    through oxide barriers billions of times a day.
+  </p>
+  <p>
+    <strong>Interpretations: same predictions, different worlds.</strong> The formalism
+    above is shared; the fight is over what it <em>means</em>. The Copenhagen view treats
+    collapse as fundamental and questions about "what was really there" as meaningless.
+    The many-worlds view (Everett, 1957) removes collapse: the wavefunction never
+    breaks, and every branching superposition is real — measurement is just the observer
+    becoming entangled. De Broglie–Bohm pilot-wave theory keeps particles with definite
+    trajectories guided by the wave — non-local, but fully deterministic. Objective-
+    collapse theories (GRW) modify the Schrödinger equation itself and are — uniquely —
+    experimentally testable; current data constrain them. No interpretation yet predicts
+    anything different, which is precisely why the debate has run for a century: the
+    measurement problem is not a puzzle to be solved but a choice among unfinished
+    stories.
+  </p>
+  <p>
+    <strong>Open frontier.</strong> The no-cloning theorem (an unknown quantum state
+    cannot be copied) makes quantum money and quantum key distribution possible in
+    principle and quantum computers — which compute in superposition and are Bell's
+    correlations put to work — an engineering programme rather than a physics doubt; the
+    open questions are error rates and scale, not foundations. Deeper: whether gravity
+    must be quantised (almost certainly yes — but no direct quantum-gravitational
+    measurement exists), whether collapse models will finally break the degeneracy
+    between interpretations, and whether spacetime itself is emergent from entanglement
+    ("it from qubit") are the live research questions. The foundations laid here —
+    amplitude, superposition, the Born rule, conjugate uncertainty — are, a century on,
+    both the settled core and the scene of the crime.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Planck (1900); Einstein (1905); Heisenberg (1927); Bell (1964); Feynman, <em>Lectures on Physics</em> Vol. III; NIST electron magnetic moment measurements.</p>
 </TopicPage>

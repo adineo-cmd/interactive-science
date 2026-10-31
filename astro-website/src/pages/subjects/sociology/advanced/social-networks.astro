@@ -10,24 +10,233 @@ const netCfg = {
     { math: '4 · Networks are inequality\'s plumbing', note: 'Jobs, information, norms flow through ties — so network segregation (who knows whom) reproduces inequality without any gatekeeper intending it. DiTomaso\'s "favoritism not racism" finding: whites get jobs through networks built by advantage, not exclusion intent.' },
   ],
 };
+
+const netQuiz = {
+  questions: [
+    {
+      q: 'Why did Granovetter find that acquaintances, not close friends, were the ties through which most people found jobs?',
+      choices: ['Friends do not help', 'Close friends share your information world; acquaintances bridge to pools of information you cannot reach', 'Acquaintances are more powerful', 'Job seekers dislike asking friends'],
+      answer: 1,
+      why: 'Strong ties are redundant: your friends know what you and your mutual friends know. Weak ties connect otherwise separate clusters, carrying genuinely novel information — the structural (not emotional) property that gives them their strength.',
+    },
+    {
+      q: 'Watts and Strogatz showed that rewiring even a tiny fraction of links in a highly clustered lattice collapses average path length. What structural recipe does this define?',
+      choices: ['Random graphs', 'Small-world networks: high local clustering plus short global paths via a few long-range ties', 'Fully connected networks', 'Star networks'],
+      answer: 1,
+      why: 'Order alone gives clustering with long paths; randomness gives short paths with no clustering. A few rewired links deliver both at once — the signature of friendship networks, neural circuits and the power grid alike.',
+    },
+    {
+      q: 'Christakis and Fowler reported obesity spreading through a social network. What is the main identification problem for that claim?',
+      choices: ['Obesity is not measurable', 'Homophily: similar people befriend each other, so clustering may reflect selection, not contagion', 'Networks are too small', 'Doctors caused it'],
+      answer: 1,
+      why: 'If people choose friends like themselves (in lifestyle, environment, and trajectory), co-trends are expected without any influence. Distinguishing contagion from homophily requires exogenous variation or careful temporal models — the debate that matured network causal inference.',
+    },
+    {
+      q: 'Burt\'s "structural holes" argument says the biggest payoffs go to people who:',
+      choices: ['Have the most friends overall', 'Span disconnected clusters, brokering between groups that cannot see each other', 'Avoid all networks', 'Belong to the densest group'],
+      answer: 1,
+      why: 'Between two unconnected clusters, the broker is the only channel: they see both sides\' information, arbitrage ideas, and face little competition for the bridge. Degree (popularity) and brokerage (betweenness) are different assets — brokerage pays more in innovation and advancement.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/sociology/advanced/social-networks">
   <h2>The idea</h2>
   <p>
-    Social network analysis studies <strong>the structure of connections itself</strong> — not
-    just who people are, but who they're linked to. Structure explains outcomes individuals
-    can't: information flows, epidemics, opportunity hoarding, and the speed of everything
-    social.
+    Classical sociology explained outcomes by attributes — class, education, gender. Network analysis
+    adds a second axis: <strong>structure</strong>. The same person embedded in a dense clique
+    versus spanning two disconnected groups lives different social lives, receives different
+    information, catches different epidemics, and gets different jobs — even with identical
+    attributes. The discipline's wager is that many outcomes attributed to individuals or
+    institutions are actually properties of the pattern of ties, and that pattern is measurable:
+    nodes, edges, degree, density, centrality, clustering — a quantitative language for the social
+    world that predates social media by decades and now runs the platforms that reorganise it.
   </p>
 
   <Widget no="1" caption="weak ties, small worlds, contagion, structural inequality" widget="equationStep" config={netCfg} />
 
-  <h2>Network thinking applied</h2>
-  <ul>
-    <li><strong>Disease through a network lens:</strong> superspreaders and degree distribution explain epidemic curves better than population averages — COVID made k-measures public vocabulary (the medicine ladder connects).</li>
-    <li><strong>Online platforms are engineered networks:</strong> feeds rewire what connects to what — recommendation algorithms are network-structure machines, with echo-chamber effects real but smaller than headlines claim (the evidence is nuanced).</li>
-    <li><strong>Social capital has forms:</strong> bonding (dense, supportive) vs bridging (spanning, opportunity-creating — Putnam) — healthy communities need both; each solves different problems.</li>
-    <li><strong>Centrality measures translate to power:</strong> who sits between groups (brokers) captures disproportionate value — Burt's "structural holes": spanning disconnected clusters beats being popular inside one.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Granovetter, AJS (1973); Watts & Strogatz, Nature (1998); Christakis & Fowler, NEJM (2007); Burt, Structural Holes (1992); Putnam, Bowling Alone (2000).</p>
+  <h2>The vocabulary: measures that carry theory</h2>
+  <p>
+    Every measure below is a claim about how social life works. <strong>Degree</strong> (number of
+    ties) is raw connectivity; its distribution matters more than its average — human networks have
+    heavy-tailed degree distributions, so a few high-degree "hubs" dominate flow, which is why
+    superspreading is a network fact, not a metaphor. <strong>Clustering</strong> (your friends know
+    each other) measures closure — the density that builds trust and enforces norms. <strong>Betweenness
+    centrality</strong> counts how often you sit on the shortest path between others: the broker's
+    measure. <strong>Eigenvector centrality</strong> weights connections by how well-connected your
+    contacts are (the logic behind PageRank). And a <strong>bridge</strong> — the only edge between
+    two clusters — is simultaneously the channel for novel information and the point where
+    removal splits the network. Keep these in hand; every result below is one of them doing work.
+  </p>
+
+  <h2>The strength of weak ties</h2>
+  <p>
+    Granovetter's 1973 paper began as a survey: how did professional, technical and managerial
+    workers in a Boston suburb find their jobs? Of those who found jobs through personal contacts,
+    only a minority saw the contact often; most rarely — the decisive tie was an acquaintance. The
+    mechanism is structural, not sentimental: close friends are informationally <em>redundant</em>
+    (they inhabit your world and know what you know), while acquaintances bridge to clusters whose
+    information you cannot otherwise reach. Granovetter deepened the point with <strong>embeddedness</strong>:
+    even economic transactions run through social relations — trust is cheaper than contract
+    enforcement, which is why hiring (the riskiest economic act firms perform) leans so heavily on
+    networks. The idea generalised into the strongest empirical finding of economic sociology:
+    labour markets are structured by information flow through ties, which is also exactly why
+    network position converts into opportunity — and why unequal networks convert into unequal
+    opportunity without anyone intending it (return to this at the chapter's end).
+  </p>
+
+  <h2>Small worlds: structure, not friendliness</h2>
+  <p>
+    Milgram's chain-letter experiments (1967): give a Nebraska resident a letter addressed to a
+    Boston stockbroker and instruct them to forward it only to someone they know on a first-name
+    basis. Completed chains averaged roughly six intermediaries — "six degrees of separation" —
+    though the honest reading includes the selection bias that only about a fifth of chains
+    completed, and completed chains are by construction the successful ones. The scientific
+    surprise came from Watts and Strogatz (1998), who showed how ordinary the structure is: start
+    from a regular lattice (highly clustered, long paths) and rewire a small fraction of edges at
+    random. A tiny rewiring probability collapses average path length while clustering barely
+    drops — a <strong>small-world network</strong> with both local density and global shortness.
+    A few long-range ties (the acquaintance from another city, the job in another country) do
+    nearly all the global bridging. Barabási and Albert's later <strong>scale-free</strong> model
+    (preferential attachment: the well-connected get more connected) explains the hub structure
+    that makes both epidemics and viral content explosive. The lesson generalises: small-world
+    structure is why diseases traverse the planet in weeks, why rumours outrun corrections, and
+    why network interventions (targeting hubs, cutting bridges) beat population-average ones.
+  </p>
+
+  <h2>Contagion and the homophily problem</h2>
+  <p>
+    Christakis and Fowler's Framingham-derived analyses reported that obesity, smoking cessation and
+    even happiness "spread" through networks — a friend's weight gain raising your own risk by
+    measurable percentages, with effects decaying with network distance. The headline claims forced
+    the field to confront the central identification problem: <strong>homophily</strong>. People
+    choose friends similar to themselves; if similar people share environments, trajectories and
+    lifestyles, they will co-move through time with <em>no</em> social influence at all. Untangling
+    influence from selection requires either randomised exposure (rare and hard) or models with
+    strong temporal assumptions (friendship-formation timing versus behaviour-change timing) —
+    and critics (Aral and colleagues) showed that plausible selection dynamics can generate the
+    same patterns. Centola's experiments cut through with design: a large online community where
+    joining a health forum was randomly seeded — exposure cascades in clustered networks, not
+    random ones. His follow-up discovered <strong>complex contagion</strong>: unlike diseases
+    (simple contagion — one exposure suffices), behaviours with social risk or effort (joining a
+    protest, adopting a health behaviour) need <em>multiple</em> reinforcing exposures from distinct
+    sources, which reverses the optimal network shape — wide bridges that carry information well
+    can be too narrow to carry behaviour. The mature position: information spreads along weak ties,
+    behaviour spreads through redundant reinforcement, and any claim of "social contagion" must
+    first survive the homophily test.
+  </p>
+  <p>
+    <em>Common misconception:</em> "echo chambers make everyone's feeds identical echo chambers."
+    Empirical work is more nuanced: algorithmic recommendation can narrow exposure, but measured
+    ideological segregation online is substantially a pre-existing feature of whom people choose to
+    connect with, varies enormously by platform and topic, and in some datasets exceeds what
+    choice-based models predict offline. The network-structure facts are solid; the causal
+    responsibility of the algorithm is genuinely contested — a live research fight, not a settled
+    headline.
+  </p>
+
+  <h2>Social capital: bonding, bridging, and the plumbing of inequality</h2>
+  <p>
+    <strong>Social capital</strong> — the resources embedded in relationships — has structural
+    variants with different payoffs. <em>Bonding</em> capital (dense, closed, similar networks,
+    Coleman's closure) delivers support, trust enforcement and norms; it is what families and
+    tight communities provide, and closure is why dense networks can also suffocate (the same
+    closure that enforces norms enforces surveillance). <em>Bridging</em> capital (spanning,
+    heterogeneous ties, Burt's brokerage across <strong>structural holes</strong>) delivers novel
+    information and opportunity; Burt's organisational studies found brokers — people whose
+    networks span disconnected groups — consistently promoted faster and paid more, holding
+    everything else constant. Putnam's <em>Bowling Alone</em> documented the aggregate decline of
+    US civic connectedness late 20th century and tied it to civic outcomes; the bonding-bridging
+    distinction explains why its prescriptions are hard (the policies that build bonding capital
+    are not those that build bridging).
+  </p>
+  <p>
+    Now the inequality payoff. Jobs, information and norms flow through ties; therefore the
+    <em>structure</em> of who knows whom — not just who intends what — reproduces stratification.
+    DiTomaso's interviews with white American job-holders found advantage operating through
+    <strong>favoritism rather than exclusion</strong>: people helped those in their networks, and
+    networks had been built along lines of prior advantage — inequality perpetuated by ordinary
+    in-group helping, with no bigot required. Add small-world mathematics (a segregated network
+    is a small world <em>within</em> each group and a large world <em>across</em> groups) and you
+    get the modern understanding of opportunity hoarding: the plumbing, not just the pump, carries
+    the water where it was laid.
+  </p>
+
+  <h2>Measuring networks: data, methods and ethics</h2>
+  <p>
+    Network data come with their own craft and their own ethics. <strong>Collection</strong>
+    methods each bias differently: name generators ("who do you discuss important matters
+    with?" — the General Social Survey item whose declining modal answer of zero sparked the
+    discussion-portfolio literature), rosters (check your friends from a list — higher recall,
+    bounded), trace data (email, calls, platform interactions — behavioural, massive, and
+    measuring interaction rather than intimacy), and observation (the ethnographic route into
+    meaning). <strong>Sampling</strong> networks is genuinely hard: random node samples lose
+    the structure; snowball and respondent-driven sampling climb ties (the standard for hidden
+    populations, with estimators correcting the bias); whole-network studies trade
+    generalisability for completeness. The statistics are equally specialised — network
+    autocorrelation models, stochastic block models, temporal networks for ties that form and
+    dissolve — because a network is a random object, not a table. And the ethics are
+    distinctive: a "de-identified" network position can identify a person (your pattern of
+    ties is a fingerprint — the AOL and Netflix dataset re-identification lessons), consent is
+    ambiguous at the edge (both endpoints of a tie are stakeholders), and platform-scale data
+    raise the dual-use questions the Cambridge Analytica episode made public.
+  </p>
+
+  <h2>Networks inside organisations and markets</h2>
+  <p>
+    The organisational applications are the method's quiet commercial success.
+    <strong>Advice and trust networks</strong> inside firms predict performance better than
+    org charts — the informal structure does the work; <strong>brokerage careers</strong>
+    (Burt's compensation findings) and team-composition research (weak-tie diversity
+    predicting innovation metrics in patent and software data) quantify the structural
+    advantage; <strong>segregation by network measures</strong> (homophily in hiring
+    referrals) gives workplace inequality's plumbing its operational variables. In markets,
+    network position prices assets: banks' interconnectedness predicts systemic risk (the
+    2008 counterparty networks); buyer-supplier networks propagate shocks (the semiconductor
+    shortage's amplification); and collective-accuracy mechanisms (prediction markets,
+    wisdom-of-crowds with independence corrections) run on the same insight — aggregate
+    accuracy depends on the network's independence structure. The general lesson: wherever
+    flows matter — information, money, disease, influence — the topology is a first-order
+    variable, and the tools above measure it.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Causal inference when everyone interferes with everyone.</strong> Standard statistics
+    assumes one person's treatment cannot affect another's outcome (SUTVA); networks violate this
+    by design — vaccination protects contacts, a friend's adoption changes your adoption. The
+    toolkit that emerged is now shared across epidemiology and social science: cluster randomisation
+    and two-stage randomisation (randomise seeds, let diffusion happen — Centola's designs),
+    exposure mapping, and interference-aware estimands. <strong>Epidemics on networks.</strong>
+    Reproduction number R is a population average over a degree distribution: on a scale-free
+    network the hub structure changes the threshold logic (heterogeneous networks are easier to
+    infect and to protect — targeted vaccination of hubs beats random vaccination orders of
+    magnitude in efficiency, the reason ring and contact-based strategies exist). <strong>Platform
+    networks as engineered environments.</strong> Feeds, friend suggestions and ranking are
+    interventions on tie formation at civilisational scale, mostly unexperimented-upon; a handful
+    of internal experiments (the 2012 Facebook emotional-contagion study and its ethics firestorm;
+    turnout-mobilisation experiments that measurably shifted millions of voters) mark the research
+    frontier and its governance problems. <strong>Open questions:</strong> how much of social-
+    media segregation is choice versus design (requires platform data access researchers mostly
+    lack); whether complex contagion scales to political behaviour at population scale; how
+    generative-AI agents — synthetic accounts that pass as ties — will corrupt network measurement
+    itself; and whether the field can finally integrate the two halves Granovetter joined: formal
+    structure with the meanings people give their ties.
+  </p>
+  <p>
+    A closing note connects this chapter to the atlas's wider argument: networks are where
+    method and meaning meet. The formal measures are meaningless without the cultural content
+    of ties — what a "friend" is, what obligation a favour carries — and the cultural content
+    is unreadable without the structure (who is connected to whom constrains what meanings can
+    travel). The strongest contemporary work holds both: structure measured carefully, meaning
+    studied seriously, and the causal-identification problems named rather than laundered.
+    That dual literacy — formal and interpretive at once — is the transferable skill this
+    subfield offers the rest of social science, and the reason network analysis has migrated
+    so successfully into epidemiology, economics and organisational research: the pipe and
+    the water both matter.
+  </p>
+
+  <Widget no="2" caption="check yourself: weak ties, small worlds, homophily, brokerage" widget="quiz" config={netQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> Granovetter, AJS (1973); Watts &amp; Strogatz, Nature (1998); Barabási &amp; Albert, Science (1999); Christakis &amp; Fowler, NEJM (2007); Centola, "The Spread of Behavior in an Online Social Network Experiment," Science (2010); Burt, Structural Holes (1992); Putnam, Bowling Alone (2000); DiTomaso, The American Non-Dilemma (2013).</p>
 </TopicPage>

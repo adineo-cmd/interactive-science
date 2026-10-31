@@ -10,24 +10,236 @@ const imagingCfg = {
     { math: '4 · The replication reckoning', note: 'fMRI studies are small, noisy and multi-comparison-prone — the "dead salmon" study (2009, an Ig Nobel) showed a dead fish\'s "brain activity" with careless statistics. Modern practice: larger n, preregistration, open data.' },
   ],
 };
+
+const imagingQuiz = {
+  questions: [
+    {
+      q: 'Why is the BOLD signal a lagging, indirect measure of neural activity?',
+      choices: ['Neurons signal slowly', 'It infers activity from blood-oxygen changes delivered by haemodynamics, which peak about 4–6 seconds after firing', 'The magnet is slow', 'fMRI samples every 0.01 s only'],
+      answer: 1,
+      why: 'The chain runs neural activity → oxygen consumption → blood-flow overcompensation → magnetisation change. The haemodynamic response function peaks seconds after the neural event, so fMRI has millimetre space but ~1-second effective time.',
+    },
+    {
+      q: 'EEG localisation is poor even with hundreds of electrodes because of:',
+      choices: ['Electrode cost', 'The inverse problem: many different 3-D current sources produce the same surface potential', 'Signal too weak', 'Skin resistance only'],
+      answer: 1,
+      why: 'Mapping currents to surface voltages loses information — the scalp pattern is one 2-D shadow of a 3-D distribution, so infinitely many source configurations fit equally well. MEG helps (less distorted by skull) but does not eliminate the ambiguity.',
+    },
+    {
+      q: 'A patient cannot produce fluent speech but comprehends normally; another produces fluent but meaningless speech with poor comprehension. What does this double dissociation establish?',
+      choices: ['Language is one faculty in one place', 'Production and comprehension are separable functions with partly separable neural bases (Broca vs Wernicke areas)', 'Speech is not localised', 'The patients are faking differently'],
+      answer: 1,
+      why: 'Lesion A damages function X (production) while sparing Y (comprehension); lesion B does the reverse. Single dissociations can be task-difficulty artefacts; the double dissociation is the strongest causal evidence neuropsychology offers.',
+    },
+    {
+      q: 'A study reports that a brain region active during a financial-risk task must encode "risk", because risk tasks activate it. What inference error is this?',
+      choices: ['Type I error', 'Reverse inference — activation is not diagnostic of a unique mental state when many states activate the same region', 'Selection bias', 'Regression to the mean'],
+      answer: 1,
+      why: 'The amygdala responds to novelty, arousal, faces and reward as well as fear; a region\'s activation supports many hypotheses. Reverse inference is permitted only with quantified selectivity — base rates of activation across a library of tasks.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/neuroscience/advanced/brain-imaging-methods">
   <h2>The idea</h2>
   <p>
-    Brain imaging is <strong>the bridge between mind and matter</strong> — each method trades
-    spatial precision against temporal precision, and the mature researcher knows which question
-    each tool can honestly answer. Choosing the method is choosing which kind of truth about the
-    brain you can see.
+    Cognition leaves no fossil record; it must be measured live. Every brain-imaging method is a
+    bargain struck between physical constraints, and the single most useful sentence in this chapter
+    is: <strong>no method gets space and time together</strong>. fMRI sees millimetre voxels a second
+    late; EEG sees millisecond dynamics through a blur; lesions tell you what a region is
+    <em>for</em> but only after it is gone; stimulation tells you what happens when you intervene but
+    coarse. Methodological literacy is knowing which axis your question lives on — and knowing how
+    much statistical machinery stands between raw signal and published claim.
   </p>
 
   <Widget no="1" caption="the imaging toolbox and its honest limits" widget="equationStep" config={imagingCfg} />
 
-  <h2>The method-matching discipline</h2>
-  <ul>
-    <li><strong>fMRI answers "where":</strong> which regions activate during a task. Its subtler use — decoding (predicting what someone saw from activity patterns) — revived questions about mental privacy.</li>
-    <li><strong>EEG answers "when":</strong> event-related potentials track processing steps to the millisecond — how the brain recognises a face within 170 ms.</li>
-    <li><strong>Diffusion MRI maps the wiring:</strong> white-matter tracts traced by water movement — the "connectome" project, the brain's equivalent of the genome map.</li>
-    <li><strong>Optogenetics is the causality tool:</strong> light-activated neurons controlled experimentally in animals (Deisseroth, 2005→) — turning "correlates with" into "causes", the leap imaging can't make alone.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Huettel, Song & McCarthy, Functional Magnetic Resonance Imaging; Bennett et al. ("dead salmon"), 2009; Deisseroth, Nature Methods (2011).</p>
+  <h2>fMRI: the workhorse and its proxy problem</h2>
+  <p>
+    Functional MRI does not measure neurons. It measures the <strong>BOLD</strong> (blood-oxygen-level
+    dependent) contrast: active tissue consumes oxygen, local flow rises to overcompensate, and the
+    changing ratio of oxygenated to deoxygenated haemoglobin alters local magnetisation (deoxygenated
+    haemoglobin is paramagnetic — the same physics the medical-imaging lesson used). The haemodynamic
+    response function peaks roughly 4–6 seconds after neural firing and decays over ~12; experiments
+    therefore use block or rapid event-related designs and a general linear model that convolves the
+    predicted neural timecourse with the HRF, testing each voxel for condition-related variance.
+    Three consequences to internalise. First, temporal resolution is capped at ~1 second even though
+    the scanner samples faster — the blood, not the machine, is the bottleneck. Second, the signal is
+    a <em>net</em> of excitation, inhibition and local field potentials; "activation" means increased
+    metabolic demand, not "more neurons firing" (inhibitory interneurons consume oxygen too). Third,
+    the whole edifice rests on neurovascular coupling staying calibrated — which varies with age,
+    drugs, and disease, a confound fMRI inherits silently.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the brain region for X lit up." A blob on a statistical map is a
+    test statistic thresholded over ~100,000 voxels with massive multiple-comparison correction, not
+    a spotlight on a faculty. The stronger fallacy is <strong>reverse inference</strong>: concluding
+    the mental state from the activation. If a region activates during fear, but also during novelty,
+    arousal, faces and reward, then activation is weak evidence for fear in particular. Legitimate
+    reverse inference exists only with quantified selectivity — activation-pattern overlap rates
+    across a large task library — which is rarely what pop-neuroscience headlines have done.
+  </p>
+
+  <h2>EEG and MEG: time resolved, space blurred</h2>
+  <p>
+    Electroencephalography records the summed postsynaptic currents of synchronised cortical
+    populations, through skull and scalp, at sub-millisecond resolution. Two analysis families:
+    <strong>event-related potentials</strong> — averaging epochs time-locked to stimuli exposes
+    components with functional identities (N170 for face processing, mismatch negativity for
+    auditory surprise, P300 for context updating, lateralised readiness potential preceding voluntary
+    movement — Soon and colleagues could decode movement choice from prefrontal-parietal activity
+    several seconds before subjects reported deciding, a finding that launched a decade of
+    free-will neuroimaging) — and <strong>oscillations</strong>, where band-limited power (theta,
+    alpha, beta, gamma) indexes arousal, attention and binding hypotheses. The limitation is the
+    <strong>inverse problem</strong>: infinitely many 3-D current configurations produce the same
+    scalp voltage distribution, so source localisation is model-dependent guesswork (magneto-
+    encephalography, measuring magnetic fields, suffers less skull distortion but shares the
+    fundamental ambiguity). The productive division of labour: EEG tells you <em>when</em>, fMRI
+    tells you <em>roughly where</em>, and combined EEG-fMRI studies exploit the complement.
+  </p>
+
+  <h2>Lesions and stimulation: the causal arm</h2>
+  <p>
+    Correlation cannot establish that a region is <em>necessary</em>; a lesion can. The classical
+    logic is the <strong>double dissociation</strong>: patient A with damage to region R1 loses
+    function X but not Y, patient B with damage to R2 loses Y but not X — evidence that X and Y are
+    distinct systems with distinct substrates (Broca's expressive aphasia versus Wernicke's receptive
+    aphasia was the founding case; H.M. versus K.F. separated long-term episodic memory from intact
+    digit span). Caveats: lesions are uncontrolled in size and location, the brain reorganises
+    (especially over years), and a spared function after damage does not prove the region is
+    irrelevant (compensation). <strong>Transcranial magnetic stimulation</strong> imports the lesion
+    logic into healthy volunteers — a brief magnetic pulse transiently disrupts a targeted patch
+    (virtual lesion) or, at lower intensity, probes corticospinal excitability with millisecond
+    timing; it is the closest humans get to causal, reversible, within-subject perturbation, with
+    the standing caveats of coarse focality and stimulation depth. Optogenetics completes the causal
+    toolkit in animal models: genetically targeted, light-activated opsins let experimenters excite
+    or silence defined cell classes on millisecond timescales — the difference between watching the
+    engine and controlling the throttle.
+  </p>
+
+  <h2>The statistical reckoning</h2>
+  <p>
+    Neuroimaging's data are enormous (a scanning session is hundreds of thousands of voxels by
+    hundreds of timepoints) and its samples historically small (early fMRI studies: 8–20 subjects),
+    so the field's crisis was predictable and instructive. The <strong>dead salmon</strong> study
+    (2009) ran a standard pipeline on a scanned Atlantic salmon shown emotional faces and "found"
+    activation in its brain cavity — by skipping multiple-comparison correction; the Ig-Nobel-winning
+    point was that uncorrected voxelwise statistics manufacture signal from noise. Eklund and
+    colleagues (2016) then showed that a widely used clusterwise correction (AFNI's default) had a
+    parametric assumption violated by real data, inflating significance across a decade of published
+    results. Vul and colleagues (2009) attacked the other flank: "voodoo correlations" in social
+    neuroscience where overlapping analytic selections inflated brain-behaviour correlations. The
+    corrective practices are now mainstream and non-negotiable in serious work: family-wise error
+    control or false-discovery-rate correction, preregistration, independent validation samples, data
+    sharing (OpenNeuro), and scale — UK Biobank and the Human Connectome Project run thousands of
+    subjects, shifting the field's estimates toward their true (usually smaller) sizes.
+  </p>
+
+  <h2>Structural imaging and morphometry</h2>
+  <p>
+    Anatomy is the base layer. Structural MRI yields voxel volumes, cortical thickness and
+    surface area; morphometric analysis across subjects maps development (grey-matter
+    maturation through adolescence), aging and disease signatures (hippocampal atrophy in
+    Alzheimer's, cortical thinning in schizophrenia). The statistical machinery — voxel-based
+    morphometry, cortical surface pipelines — carries the same inference caveats as fMRI:
+    multiple comparisons, site effects (scanner drift is measurable and correctable), and
+    effect sizes that shrink as samples grow. The ENIGMA consortium's answer is scale —
+    harmonised meta-analysis across dozens of sites and tens of thousands of subjects, which
+    set the field's current standards for what counts as a structural difference. The honest
+    summary: group-level structural differences are real and reliable; single-subject "brain
+    age" or diagnostic claims remain far weaker than commercial marketing suggests.
+  </p>
+
+  <h2>PET, SPECT, and the molecular imaging of cognition</h2>
+  <p>
+    Nuclear methods image molecules, and their neuroscience applications are distinct from
+    anatomy: FDG-PET maps glucose metabolism (diagnostic patterns across dementia subtypes);
+    amyloid and tau PET tracers visualise Alzheimer's pathology <em>in vivo</em> — the
+    biomarker revolution that redefined trial enrolment (pathology-positive, preclinical
+    participants) and turned the amyloid hypothesis into a testable longitudinal question;
+    dopamine D2/D3 tracers exposed relationships between striatal receptor availability and
+    obesity, addiction and impulsivity. SPECT's cheaper perfusion imaging persists in cardiac
+    and psychiatric use. The costs: radiation, tracers measured in half-lives, and the same
+    proxy problem as fMRI in a different chemistry — molecular imaging measures binding,
+    occupancy and metabolism, from which function is inferred. When the two proxy systems
+    (haemodynamic and molecular) agree, the inference is stronger than either alone — a
+    principle the field applies increasingly systematically.
+  </p>
+
+  <h2>The ethics layer: privacy, prediction, responsibility</h2>
+  <p>
+    Imaging's predictive power raises the normative questions before the accuracy justifies
+    them. <strong>Neural privacy</strong>: decoded content (what a person is perceiving or
+    intending) remains crude outside constrained tasks, but the trajectory is one-directional,
+    and "cognitive liberty" proposals (neurorights legislation pioneered in Chile) respond to
+    the trajectory, not the moment. <strong>Prediction in law</strong>: brain-based evidence
+    has entered sentencing (adolescent-development arguments, tumour-defence cases) where the
+    science supports group-level claims poorly suited to individual verdicts — the
+    ecological-fallacy problem inside a courtroom. <strong>Responsibility</strong>: findings
+    that "the brain did it" distinguish nothing — every choice has neural correlates — and
+    neurolaw's careful literature keeps separating mitigation evidence from exculpation. The
+    discipline's standing contribution is calibration: stating precisely how weak the current
+    claims are is itself the ethical practice.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>From blobs to information.</strong> Univariate activation asks "is this region busier?";
+    <strong>multivoxel pattern analysis (MVPA)</strong> asks "what information does the spatial
+    pattern carry?" — a classifier trained on activity patterns can predict which of several stimuli
+    a person viewed, sometimes which memory they were retrieving, with above-chance accuracy. This
+    moved neuroimaging from localisation to <em>representation</em>, and sharpened the mental-privacy
+    questions (decoding lie, intent, emotion — with accuracy far below the forensic fantasy but above
+    chance, and the ethics of consent and coercion riding on that gap). <strong>Connectomics</strong>
+    reframed the brain as a network: diffusion MRI tractography maps white-matter edges, resting-state
+    correlations define functional networks (the default-mode network's discovery by observing what
+    the brain does when "doing nothing" is the field's most-cited side effect), and graph measures —
+    modularity, hubness, lesion-simulated attack tolerance — connect structure to cognition and
+    disease (schizophrenia and Alzheimer's as network disorders). Honest limits: tractography's false
+    positives are notorious (crossing fibres), and functional connectivity is statistical association,
+    not wiring. <strong>Open questions:</strong> what the neural code actually is (rate, timing,
+    population geometry — high-dimensional representational similarity analysis is the current lens);
+    how to align brains across individuals whose functional anatomy differs (hyperalignment); whether
+    naturalistic paradigms (films, stories) can replace the artificial tasks whose constraints shaped
+    a generation of conclusions; and whether BOLD's confound structure can ever be fully modelled —
+    or whether the next decade belongs to faster, directer measures (voltage-sensitive dyes,
+    calcium imaging at depth, and wearable optical imaging) that finally bring neural time and neural
+    space into one experiment.
+  </p>
+  <p>
+    The translational pipeline deserves its own accounting, because imaging is where
+    neuroscience meets public claims most often. Educational products claiming to train brains
+    or diagnose learning styles by scan rest on group differences of small effect; courtroom
+    admissions of neuroimaging outpace individual-level validity; commercial "hiring by
+    brainwave" and "lie detection" services sell certainty the underlying studies do not
+    support. The professional defence is disciplined translation: report effect sizes rather
+    than blob pictures; state classification accuracies with cross-validation and base rates;
+    and keep the reference-class problem visible — a group-level difference ("this population's
+    average differs") licenses no individual diagnosis ("this person has X") without
+    individual-level validation. That gap separates almost all published imaging science from
+    almost all marketed imaging products, and the field's credibility is maintained exactly
+    here, one calibrated claim at a time.
+  </p>
+  <p>
+    A measurement-science addendum: the field's agreement problem is being industrialised.
+    Consensus pipelines (harmonised acquisition protocols, phantom-based calibration,
+    travelling-subject studies that scan the same people across sites) quantify scanner
+    variability directly; open-source analysis containers make pipelines reproducible rather
+    than mythical; and registered reports separate design approval from results, immunising
+    against the analytic garden of forking paths. None of this is glamorous, and all of it is
+    why the current decade's imaging findings are smaller, sturdier and more cumulative than
+    the previous one's — the quiet institutional progress that makes the exciting claims
+    above checkable at all.
+  </p>
+  <p>
+    Finally, the comparison with the animal toolkit is the honest frame for every human
+    claim: what imaging infers through proxies, invasive methods measure directly — single
+    neurons, defined circuits, causal perturbations. The translation between the two is the
+    field's ongoing work, and the researcher's first question when evaluating any human
+    neuroimaging claim is which animal-model finding it should be answerable to.
+  </p>
+
+  <Widget no="2" caption="check yourself: BOLD lag, the inverse problem, double dissociation, reverse inference" widget="quiz" config={imagingQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> Huettel, Song &amp; McCarthy, Functional Magnetic Resonance Imaging; Bennett et al. ("dead salmon"), 2009; Eklund, Nichols &amp; Knutsson, PNAS (2016); Vul et al. (2009); Poldrack on reverse inference (2006); Deisseroth, Nature Methods (2011).</p>
 </TopicPage>

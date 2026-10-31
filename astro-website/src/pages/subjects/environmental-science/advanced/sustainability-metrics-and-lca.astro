@@ -10,23 +10,221 @@ const lcaCfg = {
     { math: '4 · The classic findings', note: 'Paper vs plastic bags (plastic wins on carbon per use — unless the paper bag is reused 3+×; the answer is "it depends, precisely"), reusable vs disposable cups (break-even after ~20–100 uses), beef vs almost anything (beef loses: ~60 kg CO₂-e/kg vs chicken ~6, legumes ~1 — Poore & Nemecek, 2018, the largest food-LCA study).' },
   ],
 };
+
+const gwpCfg = {
+  title: 'Worked example: characterising emissions — from tonnes to CO₂-e',
+  steps: [
+    { math: '1 tonne of methane (CH₄)', note: 'the inventory lists it as tonnes of CH₄; the impact category needs a common currency.' },
+    { math: 'GWP₁₀₀ of methane ≈ 28 (AR5; ~27–30 in AR6)', note: 'one kilogram of CH₄ traps as much heat over 100 years as 28 kg of CO₂. Over 20 years the factor is ~80 — the horizon choice is a value choice.' },
+    { math: 'characterised: 1 t CH₄ = 28 t CO₂-e', note: 'now nitrous oxide (≈273), refrigerants (up to thousands) and CO₂ itself speak one language.' },
+    { math: 'functional unit discipline: per kg, per use, per km, per wash?', note: 'the denominator decides the winner. A reusable cup beats disposables only after its break-even count; per garment-wear, a hard-wearing coat beats a cheap one.' },
+    { math: 'transport trap: food freight is ~10% of food emissions', note: 'what you eat dwarfs where it came from — the single most counter-intuitive LCA result (Poore & Nemecek 2018).' },
+  ],
+};
 ---
 <TopicPage slug="subjects/environmental-science/advanced/sustainability-metrics-and-lca">
   <h2>The idea</h2>
   <p>
     LCA is <strong>accounting for environmental flows</strong> — the discipline that turns
     "eco-friendly" from marketing into measurement. Its rigour lives in the boundaries, the
-    inventory data, and the honest handling of trade-offs between impacts.
+    inventory data, and the honest handling of trade-offs between impacts. The syllabus's
+    natural-resources unit (1.3–1.5) asks for sustainable management of minerals, energy
+    and the conservation of both; LCA is the measurement layer that makes "sustainable"
+    checkable — and the sustainability-metrics half of this lesson extends it from products
+    to companies (scope 1–2–3 accounting), nations (footprints, decoupling) and the planet
+    (planetary boundaries). The unifying principle, worth stating before any method:
+    <strong>measurement precedes management</strong>. Every serious environmental target — a
+    net-zero pledge, a circularity rate, a water budget — is only as real as the metric
+    beneath it, and this page is about building metrics that survive hostile scrutiny.
+  </p>
+  <p>
+    The four-phase architecture is standardised (ISO 14040/14044): <strong>goal and
+    scope</strong> (what question, what boundaries, what <em>functional unit</em> — the
+    service being compared), <strong>inventory analysis</strong> (every flow of energy,
+    material, water and emission across the life cycle), <strong>impact assessment</strong>
+    (inventory lines characterised into categories like CO₂-e, acidification potential,
+    water scarcity), and <strong>interpretation</strong> (sensitivity and uncertainty
+    analysis — which assumptions actually move the answer). The functional unit is the
+    discipline's secret weapon: comparisons are meaningless until the service is defined
+    (painting a wall vs coating it for 20 years; a cup vs 1,000 served drinks), and most
+    greenwashing dissolves the moment someone asks what denominator the claim is riding on.
   </p>
 
   <Widget no="1" caption="the inventory, the boundaries, the categories, the classic findings" widget="equationStep" config={lcaCfg} />
 
-  <h2>Metrics beyond products</h2>
-  <ul>
-    <li><strong>Footprints:</strong> carbon, water, material — aggregate LCAs scaled to a person, company or country. Scope 1–2–3 emissions accounting (direct, purchased energy, value chain) is the corporate standard; scope 3 is usually the largest and least controlled.</li>
-    <li><strong>Planetary boundaries (the geochemical-cycles lesson\'s gauge panel):</strong> nine Earth-system limits — the 2023 update finds six crossed. Global, not local — a context metric, not a management one.</li>
-    <li><strong>Greenwashing detection:</strong> claims without boundaries, single-attribute boasts ("CFC-free!" — everything is), offsets without additionality — the statistics lesson\'s "compared to what?" applied to marketing.</li>
-    <li><strong>Where metrics genuinely drive change:</strong> disclosure regimes (mandatory climate reporting in the EU and increasingly elsewhere) moved LCA from academia into every large firm\'s compliance stack — measurement precedes management, in environmental systems as everywhere else.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> ISO 14040/14044 LCA standards; Poore & Nemecek, Science (2018); Richardson et al., Science Advances (2023); GHG Protocol.</p>
+  <h2>Characterisation: turning emissions into a common currency</h2>
+  <p>
+    The inventory produces a sprawl — tonnes of CH₄, kg of SO₂, cubic metres of water.
+    Impact assessment converts each into a category indicator using characterisation
+    factors. The most-used is <strong>global warming potential</strong>:
+  </p>
+
+  <Widget no="2" caption="the characterisation arithmetic, the functional-unit trap, and the finding that kills 'food miles'" widget="equationStep" config={gwpCfg} />
+
+  <p>
+    The GWP horizon choice (20 vs 100 years) is not pedantry: methane is strong but
+    short-lived (residence time ~12 years — the geochemical-cycles lesson's arithmetic),
+    so a 20-year frame multiplies its weight fourfold — the technical debate behind
+    GWP* and livestock accounting. After characterisation comes the honest bit: a
+    product rarely wins everywhere (paper beats plastic on biodegradability and
+    toxicity but loses on carbon and water; aluminium beats steel on recycling energy
+    but loses on primary production). Multi-criteria results are <em>reported</em>, not
+    collapsed into a single score — single-score methods exist, but they embed a
+    value judgment about weighting that most practitioners prefer to leave explicit.
+  </p>
+
+  <h2>The classic findings, and why they surprise</h2>
+  <p>
+    Reusable packaging is the canonical trade-off case: a <strong>cotton tote</strong>
+    carries a heavy agricultural footprint (land, water, fertiliser) and breaks even
+    with single-use plastic bags only after ~130+ reuses (the UK Environment Agency's
+    figure — Danish studies using organic cotton push it into the thousands), while
+    paper needs ~3–4 uses. A <strong>ceramic mug</strong> beats paper cups after
+    roughly 20–100 washes depending on how it is washed (dishwasher load size matters
+    — the use phase is doing the work). <strong>Electric vehicles</strong> start with
+    a ~30–40% manufacturing deficit (batteries) and claw it back at the plug: on a
+    coal-heavy grid the break-even is ~60,000–90,000 km; on a clean grid, ~20,000 —
+    the answer is a function of the grid, which is why honest EV claims state the
+    electricity mix. <strong>Food</strong> is the field's most consequential finding:
+    across 38,000 farms, Poore and Nemecek (2018) showed what-you-eat dominates
+    where-it-came-from (transport ~10% of food emissions), beef sits at ~60 kg
+    CO₂-e/kg (with a 20–100 range driven by land-use change) against ~6 for chicken
+    and ~1 for legumes — and switching beef for beans at one meal moves more carbon
+    than a year of careful shopping choices. The meta-lesson of all four cases:
+    <strong>the use phase and the system context dominate</strong>, which is exactly
+    what boundary-drawing is designed to catch.
+  </p>
+
+  <h2>Metrics beyond products: scopes, footprints, decoupling</h2>
+  <p>
+    Scaled to organisations, the standard is the <strong>GHG Protocol's scope
+    1–2–3</strong>: scope 1, direct emissions (the company's own stacks); scope 2,
+    purchased energy; scope 3, everything up and down the value chain — usually
+    <em>the largest</em> (often 70–90% of a product company's total) and the least
+    controlled, which is why mandatory disclosure regimes (the EU's CSRD, carbon
+    reporting rules spreading elsewhere) matter more than voluntary pledges. At
+    national scale, footprints disaggregate the ledger: <strong>production-based
+    carbon</strong> (what a country emits within its borders) versus
+    <strong>consumption-based</strong> (what its residents cause, wherever emitted —
+    the distinction that reveals offshored emissions, roughly 20–25% of global CO₂),
+    plus water, nitrogen, and material footprints. The economy-level question is
+    <strong>decoupling</strong>: can GDP grow while environmental pressure falls?
+    The evidence is nuanced — 30+ countries show <em>absolute</em> decoupling of
+    production emissions from GDP (the EU's emissions fell ~30% since 1990 while its
+    economy grew), but globally the coupling persists and resource use has decoupled
+    far less than carbon. Two structural caveats keep the champagne corked: the
+    <strong>rebound effect</strong> (efficiency lowers cost, cost raises demand —
+    Jevons noted it for coal in 1865, and it is measured in everything from lighting
+    to computing) and consumption-based leakage (domestic gains partly achieved by
+    importing the footprint).
+  </p>
+
+  <h2>The gauge panel: footprints and planetary boundaries</h2>
+  <p>
+    Aggregate metrics come in families, each a scaled-up LCA with its own quirks.
+    <strong>Water footprints</strong> split into blue (surface and ground), green (soil
+    moisture) and grey (the dilution volume a pollutant needs) — and regionalisation
+    is everything: a tonne of almonds is water-trivial in wet regions and severe in
+    drought ones, which is why "litres per product" without a location is a broken
+    metric. <strong>Nitrogen footprints</strong> count reactive-N losses along the
+    same food chains the geochemical-cycles lesson mapped; <strong>material
+    footprints</strong> follow ores, biomass and fossil feedstocks through trade.
+    Above the products sits the <strong>planetary-boundaries</strong> gauge panel
+    (Rockström 2009; Steffen 2015; quantified update 2023): nine Earth-system limits —
+    climate change, biosphere integrity, land-system change, freshwater change,
+    biogeochemical flows (N and P), ocean acidification, atmospheric aerosol loading,
+    stratospheric ozone, novel entities. The 2023 assessment found <strong>six of
+    nine crossed</strong> (all but ocean acidification, aerosols and ozone — ozone
+    the one the Montreal Protocol pulled back). Two cautions keep the framework
+    honest: the boundaries carry real uncertainties (novel entities is largely a
+    judgement), and they are context gauges for the planet, not management targets
+    for a firm — the translation layer between the two is exactly where this
+    discipline's research frontier sits.
+  </p>
+
+  <h2>Energy and materials: EROI and the circularity gap</h2>
+  <p>
+    Two aggregate metrics complete the toolkit. <strong>Energy return on investment
+    (EROI)</strong> — energy delivered per unit of energy invested — is the
+    net-energy lens the energy chapter's transitions depend on: historical oil
+    delivered ~30–100× (and still does at the best fields), while solar PV's
+    energy payback time is now ~1–3 years against a 25–30-year life (EROI of
+    order 10–30, rising as panels improve), wind similar or better — the
+    transition's central arithmetic is that renewables' EROI now clears the
+    civilisational bar (~5–10) with room to spare, though system integration
+    (storage, grid) still eats into it. <strong>Circularity</strong> is measured
+    by how much material input comes from cycled sources — and the headline is
+    sobering: the global economy is only ~7% circular (the Circularity Gap
+    reports), with the rest extracted, used once and lost. The LCA discipline
+    supplies the design loop that would raise it: design for disassembly,
+    material passports, and the recycling hierarchy (reduce, reuse, recycle —
+    in that order, because each step down the hierarchy pays an energy and
+    quality toll; aluminium's 95%-energy-saving remelt is the best case, mixed
+    plastics the worst). The energy arithmetic of recycling, concretely: remelting
+    aluminium takes ~5% of smelting from bauxite; steel ~25–30%; glass ~60–70% (the
+    melting energy dominates either way); paper saves ~40% but costs fibre length
+    each cycle (5–7 loops before virgin fibre must re-enter). Recycling is not a
+    virtue in itself — it is an energy and materials trade measured like any other,
+    and the hierarchy exists because the trades rank that way.
+  </p>
+  <p>
+    <em>Common misconception:</em> a high LCA number is self-interpreting — "plastic
+    bags are bad, so ban them." LCA produces <em>comparative</em> results with
+    boundaries, and the policy layer must add the value weighting: a bag ban might
+    win on litter and wildlife while losing marginally on carbon (people reuse
+    bin liners). The mature use of LCA is as one input to a decision, with its
+    uncertainty bands and its boundary choices stated — never as a verdict machine.
+    A companion rule for reading claims: <strong>ask for the functional unit</strong>.
+    "Our new bottle is 30% better" — better per bottle, per litre, per year of
+    service? Rebound effects hide in denominators: a lighter car driven farther can
+    lose its manufacturing gains entirely. Every published LCA states its functional
+    unit in the first paragraph; every greenwash avoids one somewhere in the small
+    print.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Attributional vs consequential LCA.</strong> The standard method
+    (attributional) averages the supply chain as it is; the consequential variant asks
+    what <em>changes</em> if demand for the product changes — building the marginal
+    supplier (often the dirtiest, most flexible producer) into the answer. The two
+    give different verdicts on the same product: consequential LCA typically punishes
+    added beef demand more than attributional (marginal beef is deforestation-linked),
+    and favours renewables less (marginal electricity is often gas). Policy LCA is
+    consequential by necessity; eco-labels are attributional by practicality — the
+    distinction explains many cross-study "contradictions" that are actually answers
+    to different questions. Related: <strong>system expansion</strong> (crediting
+    co-products) and <strong>allocation</strong> (how to split a dairy cow's footprint
+    between milk and meat) are the technical knots where LCAs most honestly disagree.
+  </p>
+  <p>
+    <strong>Uncertainty, temporal dynamics and context.</strong> Good practice
+    propagates uncertainty (Monte Carlo over the inventory — the statistics lesson's
+    machinery) and reports which parameters dominate. Newer refinements: dynamic LCA
+    (timing matters — a tonne emitted during peak warming costs more than one
+    absorbed now), <strong>GWP*</strong> (a metric pair that treats short-lived gases
+    as flow, not stock — resolving part of the livestock-accounting controversy),
+    regionalised characterisation (a water-stress factor in Spain is not one in
+    Norway), and social LCA (labour, health, community — same architecture, harder
+    data). The regulatory frontier industrialises all of it: the EU's digital
+    product passports and carbon border adjustments (CBAM) effectively make LCA a
+    customs document, which is forcing data quality on supply chains the way
+    financial audit forced accounting on firms.
+  </p>
+  <p>
+    <strong>Open questions.</strong> The field's live problems: how to measure
+    circularity honestly (recycled content is easy to game; "recyclable" is a design
+    claim, not an outcome — the circularity-gap number hides quality loss downcycling);
+    how to weight planetary-boundary exceedance into product metrics (Richardson et
+    al., 2023, found six of nine boundaries crossed and argued Earth-system context
+    belongs in LCA's denominators); whether absolute decoupling is achievable at
+    global scale fast enough (the degrowth-versus-green-growth debate turns on this
+    measurement); and how to keep disclosure from becoming box-ticking — the
+    assurance problem, since metrics that pay for themselves get audited, and metrics
+    that merely flatter do not. The common thread: sustainability measurement is
+    young, contested at the edges, and — unlike the physics beneath it — still
+    partly a governance choice.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> ISO 14040/14044 LCA standards; Poore &amp; Nemecek, <em>Science</em> (2018); Richardson et al., <em>Science Advances</em> (2023); GHG Protocol; UK Environment Agency bag LCA (2011); Circle Economy, Circularity Gap Report.</p>
 </TopicPage>

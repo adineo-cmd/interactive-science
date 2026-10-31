@@ -10,24 +10,227 @@ const psychCfg = {
     { math: '4 · Test misuse is the field\'s cautionary history', note: 'Early 1900s IQ testing fed eugenics and biased immigration quotas. Modern psychometrics enforces fairness analysis, bias review and proper use caveats — the field institutionalised its own warnings.' },
   ],
 };
+
+const psyQuiz = {
+  questions: [
+    {
+      q: 'A personality scale asks ten near-identical anxiety questions. Cronbach\'s alpha is 0.95. What can you conclude?',
+      choices: ['The scale measures anxiety validly', 'The scale is highly reliable — and possibly redundant; reliability alone says nothing about validity', 'The scale is too short', 'The scale is invalid'],
+      answer: 1,
+      why: 'Alpha indexes internal consistency: correlated items co-vary. Ten reworded questions give high alpha regardless of whether they measure anxiety. A reliable test can be reliably measuring the wrong thing.',
+    },
+    {
+      q: 'IQ is scaled to mean 100, SD 15. Roughly what percentile is an IQ of 130?',
+      choices: ['70th', '84th', '98th', '99.9th'],
+      answer: 2,
+      why: '130 is two SDs above the mean; the normal distribution puts about 2.3% of people above 2 SD — the 98th percentile. The same arithmetic defines every cutoff in psychological and educational testing.',
+    },
+    {
+      q: 'A screening test is 95% sensitive and 95% specific, applied to a condition with prevalence 1 in 1,000. You test positive. What is the approximate chance you have the condition?',
+      choices: ['About 95%', 'About 50%', 'About 2%', 'About 0.1%'],
+      answer: 2,
+      why: 'Out of 1,000 people: 1 true positive, and 5% of the 999 healthy ≈ 50 false positives. Posterior odds ≈ 1 to 50, probability ≈ 1/51 ≈ 2%. Base rates dominate — the Bayesian core of all diagnostic reasoning.',
+    },
+    {
+      q: 'Why did the Flynn effect (roughly +3 IQ points per decade) force a redefinition of what IQ tests measure?',
+      choices: ['Genes changed rapidly', 'Scores rose far too fast for genetic change, so gains must reflect environment and/or test-specific skills — meaning raw scores are not invariant over time', 'IQ tests got easier to grade', 'Migration effects'],
+      answer: 1,
+      why: 'A 30-point rise in three generations cannot be genetic. The gains concentrate in abstract, fluid subtests — implying either real environmental enrichment of specific abilities or changing test familiarity, and forcing norm renorming and interpretive caution across cohorts.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/psychology/advanced/psychometrics-and-testing">
   <h2>The idea</h2>
   <p>
-    Psychometrics is <strong>the mathematics of measuring invisible things</strong> — traits,
-    abilities, attitudes. Its instruments (reliability, validity, standardisation) are what
-    separate measurement from opinion, and its history contains psychology's most instructive
-    failures. Every survey, exam and clinical questionnaire runs on this discipline.
+    Psychometrics does what no other science must: measure properties that cannot be laid on a bench
+    — intelligence, personality, depression, attitudes — and prove the measurement trustworthy. Its
+    core tools are statistical, its standards are ruthless (a psychological claim is only as good as
+    the instrument behind it), and its history contains both psychology's proudest quantitative
+    achievements and its most damaging ethical failures. By the end of this chapter you should be
+    able to interrogate any test — clinical, educational, or corporate — with the same checklist a
+    psychometrician would.
   </p>
 
   <Widget no="1" caption="the measurement standards and their hardest case — IQ" widget="equationStep" config={psychCfg} />
 
-  <h2>Measurement concepts with everyday leverage</h2>
-  <ul>
-    <li><strong>Regression to the mean:</strong> extreme scores drift toward average on retest — the reason "sophomore slumps" and "second-album flops" happen without any cause at all (the statistics ladder covers the maths).</li>
-    <li><strong>Base rates and testing:</strong> a 95%-accurate test misleads when the condition is rare — screening debates (medical and security) live on this curve (the Bayesian lesson's example).</li>
-    <li><strong>Item response theory:</strong> modern tests adapt to the respondent (GRE-style adaptive testing) — estimating ability from fewer, better-chosen items.</li>
-    <li><strong>Self-report humility:</strong> people can't always report their own motives (Nisbett & Wilson, 1977). Behavioural measures and informant reports outperform self-knowledge for some traits — a permanent check on introspection.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Anastasi & Urbina, Psychological Testing; Flynn (1984, 2009); Nisbett & Wilson (1977).</p>
+  <h2>Reliability: consistency first</h2>
+  <p>
+    <strong>Classical test theory</strong> models every observed score as X = T + E — true score plus
+    error. Reliability is the proportion of variance that is true-score variance: r<sub>xx</sub> =
+    σ<sub>T</sub>² / σ<sub>X</sub>², estimated three ways: <em>test-retest</em> (same people, same
+    test, weeks apart — measures temporal stability), <em>parallel forms</em> (two equivalent
+    versions), and <em>internal consistency</em> (do the items hang together? — Cronbach's alpha,
+    effectively the average inter-item correlation). Two structural facts follow. First, an
+    unreliable measure cannot be valid: validity is bounded by the square root of reliability, so a
+    test with reliability 0.64 has a maximum possible validity correlation of 0.80. Second, high
+    reliability is cheap and says nothing about validity — ten reworded versions of the same bad
+    question will give alpha ≈ 0.95 while measuring a tautology. The standard in applied testing is
+    reliability of 0.80 or better; high-stakes decisions want 0.90+.
+  </p>
+  <p>
+    <strong>Worked example.</strong> An IQ test has reliability 0.90 and SD 15. The standard error
+    of measurement is SEM = SD × √(1 − r<sub>xx</sub>) = 15 × √0.10 ≈ 4.7 points. So a reported
+    IQ of 124 is, at 95% confidence, roughly 124 ± 9 (two SEMs) — a band from about 115 to 133.
+    This is why professional practice reports confidence intervals and why a four-point difference
+    between two children's scores on a good test is noise: the SEM, not the point estimate, carries
+    the decision weight.
+  </p>
+
+  <h2>Validity: the multi-faced standard</h2>
+  <p>
+    Validity is not a property a test <em>has</em>; it is the strength of evidence that scores
+    support a particular interpretation. The modern framework (Messick, APA standards) recognises
+    facets rather than types: <strong>content</strong> (do items sample the domain? a maths exam that
+    is all arithmetic lacks content validity for maths), <strong>criterion</strong> (do scores predict
+    a real outcome? — concurrent or predictive), and <strong>construct</strong> (does the test behave
+    as the theory says? convergent correlations with related measures, discriminant non-correlations
+    with unrelated ones — the multitrait-multimethod matrix is the classic design). Two traps
+    deserve names. <strong>Criterion contamination</strong>: validating a job test against supervisor
+    ratings when supervisors know the test scores — the criterion is already infected.
+    <strong>Construct proliferation</strong>: rebranding reliable instruments as new constructs;
+    the history of "emotional intelligence" measures is the cautionary tale — reliability was never
+    the problem, incremental validity over existing traits was.
+  </p>
+  <p>
+    <em>Common misconception:</em> "a reliable test is a good test." Reliability is the floor, not
+    the building. The most consequential failures in testing history — and in everyday self-report
+    questionnaires — are reliably valid-looking instruments with no validated interpretation attached.
+  </p>
+
+  <h2>Scaling, norms, and the mathematics of rank</h2>
+  <p>
+    Raw scores mean nothing without a normative frame. Standardisation converts raw scores to
+    positions in a reference distribution: z = (x − mean)/SD, and IQ deliberately anchors at mean
+    100, SD 15 (deviation IQ, replacing the ratio IQ of mental-age ÷ chronological-age, which
+    broke down in adults). The percentiles follow from the normal curve: 115 is ~84th percentile
+    (one SD), 130 is ~98th (two SD), 145 is 99.9th (three SD — about 3 people in 1,000, which is
+    why gifted-programme cutoffs are administratively, not psychologically, meaningful boundaries).
+    The tail behaviour matters for practice: at the extremes the normal curve is a poor model of
+    true ability and small measurement errors move percentiles violently, one reason high-stakes
+    individual decisions require multiple indicators.
+  </p>
+  <p>
+    <strong>Base rates complete the toolkit.</strong> Any diagnostic cut faces the Bayesian trap.
+    A screening instrument with 95% sensitivity and 95% specificity applied to a condition with
+    prevalence 1 in 1,000 yields: from 1,000 people, 1 true positive and about 50 false positives —
+    a positive result means roughly a 1-in-51 chance (2%) of having the condition. The arithmetic
+    does not care how good the test sounds; prevalence sets the ceiling. Every screening debate —
+    medical, psychiatric, security — is this calculation wearing different clothes.
+  </p>
+
+  <h2>g: factor analysis and its discontents</h2>
+  <p>
+    Spearman noticed in 1904 that all cognitive tests correlate positively with each other — the
+    <strong>positive manifold</strong> — and factor analysis extracts from that correlation matrix
+    a general factor, <strong>g</strong>, on which every subtest loads. The empirical claims are
+    among psychology's most robust: g predicts scholastic achievement (r ≈ 0.5–0.7 with standardised
+    outcomes) and job performance (meta-analytic r ≈ 0.5, rising with job complexity), and g-loading
+    rises with subtests' abstractness. The interpretive claims remain contested — precisely the
+    field's live frontier. Candidate accounts: g as a single biological efficiency (processing speed,
+    working-memory capacity — current best correlate is executive/WM function, not raw speed); g as
+    statistical residue of many overlapping processes (van der Maas's <em>mutualism</em> model: gains
+    in one ability feed the others, generating the manifold without a common cause); g as sampling
+    of learned skills. Heritability is substantial and rises with age (twin-study estimates around
+    0.5 in childhood, 0.7–0.8 in adulthood in WEIRD samples) — while the Flynn effect demonstrates
+    massive environmental malleability across cohorts, and adoption studies show family-environment
+    effects. Both are true; heritability within a population constrains nothing about change between
+    environments, the standard heritability misreading this course exists to kill.
+  </p>
+
+  <h2>Fairness, misuse, and the honest history</h2>
+  <p>
+    The misuse is documented, not hypothetical: Yerkes's Army Alpha/Beta tests fed the 1924
+    immigration-restriction debate with mis-scored and mis-translated results; eugenics movements
+    across a dozen countries cited intelligence testing. The modern discipline's response is
+    structural rather than rhetorical: <strong>item bias and DIF analysis</strong> (differential item
+    functioning: does the item behave differently for matched-ability groups? — flags biased items
+    statistically), <strong>predictive-bias studies</strong> (the technical finding, replicated
+    across decades: cognitive tests predict outcomes with approximately equal slope for major
+    demographic groups in employment settings, though intercept debates persist — which does not
+    settle the deeper question of what the test scores' social meaning should be),
+    <strong>stereotype threat</strong> as situational performance variance (replication-size debates
+    ongoing), and <strong>professional standards</strong> (qualification requirements, adverse-impact
+    law in employment testing). The mature position: psychometrics is a measurement technology whose
+    outputs are only as ethical as the decisions they feed — the instrument, the interpretation and
+    the institution each need separate scrutiny.
+  </p>
+
+  <h2>The life of a test: from blueprint to score report</h2>
+  <p>
+    A modern standardised test is engineered end-to-end. A <strong>test blueprint</strong>
+    specifies content domains and cognitive levels, with items sampled to match — content
+    validity by design, not afterthought. Items are written to specification, reviewed for
+    bias, and <strong>pretested</strong> on representative samples: difficulty
+    (p-values), discrimination (item-total correlations), distractor functioning and DIF
+    screening all happen before any item counts toward a score — items that misbehave are
+    discarded invisibly. <strong>Scaling and equating</strong> place raw scores on the
+    reported scale: IRT anchors new forms to old ones so scores mean the same thing across
+    years. <strong>Reliability estimation</strong> uses the operational data — alpha, or IRT
+    information functions, which quantify precision <em>at each ability level</em>, the
+    refinement classical reliability misses. <strong>Cut scores</strong> — pass marks — are
+    set by expert panels using documented methods (Angoff, Bookmark), and the judgement
+    content of that step is the dirty secret of every certification exam: the statistics
+    standardise, the standard is human. The score report then carries standard-error bands
+    and interpretation guidance, because the professionals' first duty is communicating
+    precision honestly.
+  </p>
+
+  <h2>Self-report and its discontents</h2>
+  <p>
+    Personality and attitude measurement runs on self-report, and its failure modes are
+    well-mapped: <strong>response styles</strong> (acquiescence, social desirability — with
+    Marlowe-Crowne-type scales measuring the latter and forced-choice formats controlling it),
+    <strong>faking</strong> (applicant personality testing: coaching works, so validity in
+    hiring samples runs below honest-sample validity), and the <strong>reference-group
+    effect</strong> (ratings are relative to local norms — the "modesty artefacts" of
+    cross-cultural comparison). The construct-level findings survive: the Big Five's
+    cross-cultural structure, its predictive validity for job performance (conscientiousness
+    at meta-analytic r ≈ 0.2–0.3) and health outcomes, moderate heritability, and mean-level
+    change with age (the maturity principle). The modern settlement: self-report instruments
+    are valid enough to be useful and unreliable enough to need corroboration — informant
+    reports, behavioural tasks, situational-judgment tests and objective criteria triangulate,
+    which is exactly what serious selection and clinical assessment do.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Item response theory replaced the classical toolkit.</strong> Where classical theory
+    treats every item equally, IRT models each item's own response function: probability of correct
+    response as a logistic curve of ability with parameters for difficulty and discrimination (and
+    guessing). The consequences are everywhere in modern testing: <strong>computerised adaptive
+    testing</strong> (the GRE, adaptive sections) selects the next item at your current ability
+    estimate, halving test length at equal precision; test equating across forms and years becomes
+    principled; and item banks can be audited for DIF at scale. <strong>Modern validity theory</strong>
+    has moved to argument-based validation (Kane): specify the claims, test each link, treat validity
+    as an evaluation of the argument. <strong>The Flynn effect's reversal</strong> (Norway, Finland,
+    the UK show declines of a few points per decade since the 1990s among the native-born) is
+    genuinely unexplained — candidate mechanisms run from education and media environments to
+    within-family secular trends; Bratsberg and Rogeberg's within-family analysis showed the
+    reversal is environmental, not compositional, and stopped there. <strong>Open questions:</strong>
+    what g actually is (process-overlap and network models versus unitary-cause models is a real
+    mathematical dispute, not a verbal one); whether adaptive digital assessment can measure
+    competencies (collaboration, creativity) that traditional item formats miss; how large language
+    models change both test administration and test security; and whether psychological measurement
+    can ever escape its WEIRD norming base — most published norms still describe the populations
+    least representative of humanity.
+  </p>
+  <p>
+    The ethics of measurement decisions deserve their own paragraph, because the statistics
+    are never the whole decision. Every cut score, every risk band, every actuarial tool
+    embeds a value judgement about false positives versus false negatives — who gets screened
+    further, who gets hired, who gets flagged — and the moral arithmetic (how many false
+    alarms justify how many catches) is society's, not the psychometrician's. Professional
+    practice handles this by making the trade-offs explicit: report the confusion matrix at
+    the chosen threshold, publish the adverse-impact analysis, state what the instrument does
+    not measure. The historical failures recited earlier — eugenics, biased immigration
+    scoring — were failures of exactly this honesty: statistics presented as if they settled
+    normative questions. The mature field's contribution is keeping the two separable:
+    rigorous measurement informing, but never replacing, the accountable human decision — a
+    boundary every algorithmic assessment system now inherits as its first design constraint.
+  </p>
+
+  <Widget no="2" caption="check yourself: alpha, percentiles, base rates, Flynn logic" widget="quiz" config={psyQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> Anastasi &amp; Urbina, Psychological Testing; Messick (1995) on validity; Flynn (1984, 2009); Bratsberg &amp; Rogeberg (2018) on Flynn reversal; van der Maas et al. (2006) mutualism model; Nisbett &amp; Wilson (1977); APA/AERA/NCME Testing Standards.</p>
 </TopicPage>

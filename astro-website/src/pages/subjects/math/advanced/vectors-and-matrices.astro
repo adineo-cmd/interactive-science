@@ -3,36 +3,222 @@ import TopicPage from '../../../../components/TopicPage.astro';
 import Widget from '../../../../components/Widget.astro';
 
 const vecCfg = { type: 'vector', unit: '', x: { min: -8, max: 8 }, y: { min: -8, max: 8 }, start: [5, 3] };
+
+const rotCfg = {
+  title: 'One matrix, two turns: composing rotations',
+  steps: [
+    { math: 'R = <sup>[ 0 −1 ; 1 0 ]</sup>', note: 'the quarter-turn matrix: columns are the images of the basis arrows e₁ = (1,0) and e₂ = (0,1).' },
+    { math: 'R (1, 0) = (0·1 − 1·0, 1·1 + 0·0) = (0, 1)', note: 'east becomes north — exactly what a 90° rotation should do.' },
+    { math: 'R (0, 1) = (0·0 − 1·1, 1·0 + 0·1) = (−1, 0)', note: 'north becomes west. The whole plane is now determined.' },
+    { math: 'R (3, 2) = (0·3 − 1·2, 1·3 + 0·2) = (−2, 3)', note: 'a linear map is fixed by what it does to basis vectors — everything else follows.' },
+    { math: 'R² (1, 0) = R (0, 1) = (−1, 0)', note: 'applying the quarter-turn twice is a half-turn. Matrix multiplication R·R encodes composition of motions.' },
+    { math: 'R⁴ = I, so R is invertible: R⁻¹ = R³', note: 'four quarter-turns return every point home. Invertibility is geometric reversibility.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/math/advanced/vectors-and-matrices">
   <h2>The idea</h2>
   <p>
-    A <strong>vector</strong> is a quantity with size and direction — an arrow you can add,
-    scale and decompose. A <strong>matrix</strong> is a machine that transforms vectors: feed it
-    a vector, it returns a new one, rotated, stretched or sheared. Together they are the
-    mathematics of "anything with multiple dimensions at once" — graphics, robotics, quantum
-    mechanics and machine learning all speak this language.
+    By now you have met vectors twice: as physics arrows (displacement, velocity, force) and as
+    coordinates on graphs. The advanced view is the one that makes linear algebra the most-used
+    mathematics in modern work: <strong>a vector is simply a list of numbers, and anything you
+    can do to a list you can do to a vector</strong>. Five sensor readings, a paragraph turned
+    into word counts, a portfolio of share holdings — all vectors. The questions that matter
+    ("how big is it?", "how aligned are these two?", "what happens if I transform it?") then
+    have answers that work identically in every field. A <strong>matrix</strong> is the next
+    step up: not a list but a grid, and specifically a <em>machine</em> that eats vectors and
+    outputs vectors, always of the same kind — rotated, stretched, reflected or sheared, but
+    never bent. That restriction to straight-line motion is what makes matrices computable
+    with four numbers (in 2D) and why the syllabus unit on transformations and vectors
+    (E7.1–E7.4) is really one subject.
+  </p>
+  <p>
+    This page treats the two in the order the syllabus lists them: vectors first as objects
+    (arithmetic, magnitude, geometry), then transformations as the verbs that act on them,
+    and finally the matrix algebra that packages those verbs so they can be multiplied,
+    inverted and composed.
   </p>
 
-  <Widget no="1" caption="one vector, many uses — its components [x, y] are just a 2-entry matrix that matrices act on" widget="diagramBuilder" config={vecCfg} />
+  <Widget no="1" caption="one vector, many uses — its components [x, y] are just a 2-entry list that matrices act on" widget="diagramBuilder" config={vecCfg} />
 
-  <h2>Vector arithmetic you can feel</h2>
+  <h2>Vectors in two dimensions (E7.2)</h2>
+  <p>
+    Write a vector as a column of its components: v = (3, 4) means "3 right, 4 up". The
+    arithmetic is component-wise, and each operation has a physical meaning worth keeping in
+    view:
+  </p>
   <ul>
-    <li><strong>Addition = walking:</strong> go right 5 up 3, then right 2 up 1 — total right 7 up 4. Components add separately.</li>
-    <li><strong>Magnitude = Pythagoras:</strong> |v| = √(x² + y²); direction = atan2(y, x). The physics vector-diagram lesson visualises exactly this.</li>
-    <li><strong>Dot product</strong> x₁x₂ + y₁y₂ measures alignment: zero means perpendicular. It powers search rankings and physics work calculations alike.</li>
-  </ul>
-
-  <h2>Matrices as transformations</h2>
-  <ul>
-    <li><strong>A 2×2 matrix maps the whole plane:</strong> rotation matrices, scaling matrices, shears — each is four numbers with geometric meaning.</li>
-    <li><strong>Determinant = area scale factor.</strong> det = 0 means the transformation crushes the plane onto a line — information lost, no inverse exists.</li>
-    <li><strong>Eigenvectors</strong> are the directions a matrix doesn't rotate, only stretches — the hidden axes of any transformation, and the maths behind Google's original PageRank and PCA in data science.</li>
-    <li><strong>Solving systems:</strong> Ax = b asks "which input vector produces this output?" — three equations, three unknowns, one matrix inverse.</li>
+    <li><strong>Addition is walking.</strong> (3, 4) + (1, −2) = (4, 2): go right 3 and up 4, then right 1 and down 2; net right 4, up 2. This is the triangle law — the sum is the third side of the triangle formed by the two arrows laid end to end. Physically it is how you combine a plane's air velocity with the wind velocity to get ground velocity.</li>
+    <li><strong>Scalar multiplication is stretching.</strong> 2v = (6, 8) doubles every component: same direction, twice the size. −v flips the arrow through the origin. Any vector can be written as a combination of the basis vectors e₁ = (1, 0) and e₂ = (0, 1): (3, 4) = 3e₁ + 4e₂. That innocent identity is the seed of the whole subject — coordinates are just "how much of each basis direction".</li>
+    <li><strong>Subtraction is the connector.</strong> B − A is the vector that takes you from A to B. If a drone sits at A = (−1, 2) and then at B = (4, −1), its displacement is B − A = (5, −3), regardless of where the origin is. Navigation software computes exactly this millions of times a second.</li>
   </ul>
   <p>
-    This subject is the on-ramp to the expert rungs below: linear algebra done properly is the
-    single most-used mathematics in modern applied work.
+    <em>Common misconception:</em> a vector and a point are the same thing because both are
+    written as coordinate pairs. They are not. A point is a location; a vector is a
+    displacement with no fixed home. The vector (3, 4) can start anywhere — drawing it
+    "from the origin" is a convention, not a property. This is why adding a point to a point
+    is meaningless while subtracting two points is perfectly fine: the difference of two
+    locations is a genuine displacement.
   </p>
-  <p class="sources"><strong>Sources:</strong> Strang, Introduction to Linear Algebra; 3Blue1Brown, Essence of Linear Algebra (visual intuition).</p>
+
+  <h2>Magnitude and direction (E7.3)</h2>
+  <p>
+    The <strong>magnitude</strong> (length) of v = (x, y) is |v| = √(x² + y²) — Pythagoras
+    applied to the components, since the vector is the hypotenuse of the right triangle its
+    components make. For v = (3, 4): |v| = √(9 + 16) = √25 = 5. For u = (1, −2):
+    |u| = √(1 + 4) = √5 ≈ 2.24. Dividing a vector by its own magnitude gives a
+    <strong>unit vector</strong> — same direction, length exactly 1: v/|v| = (3/5, 4/5). Unit
+    vectors are how you express "direction only", and any vector can be decomposed as
+    (magnitude) × (unit vector): 5 × (3/5, 4/5) rebuilds v. This split is used constantly in
+    physics: a force of 50 N along the direction (3, 4) is 50 × (3/5, 4/5) = (30, 40) N
+    componentwise.
+  </p>
+  <p>
+    The <strong>dot product</strong> u · v = x₁x₂ + y₁y₂ converts two vectors into one number
+    that measures alignment. For u = (1, −2) and v = (3, 4): u · v = 3 − 8 = −5. The sign
+    tells the story: positive means an acute angle between them, negative an obtuse angle,
+    and exactly zero means perpendicular — test (1, 2) against (−2, 1): −2 + 2 = 0, so they
+    are at right angles, no trigonometry needed. When you want the actual angle, the identity
+    u · v = |u| |v| cos θ gives it: cos θ = −5 / (√5 × 5) ≈ −0.447, so θ ≈ 116.6°. In
+    mechanics, work = force · displacement is this same product; in machine learning,
+    similarity between two documents is usually a (normalised) dot product.
+  </p>
+
+  <h2>Vector geometry (E7.4)</h2>
+  <p>
+    Vector geometry proves facts about figures using component arithmetic instead of
+    auxiliary lines. Three tools do most of the work:
+  </p>
+  <ul>
+    <li><strong>Position vectors.</strong> Fix an origin O; then any point P has position vector OP. The midpoint M of AB satisfies OM = ½(OA + OB) — average the endpoints' position vectors. For A = (1, 3), B = (5, −1): OM = ½((6, 2)) = (3, 1). You can verify instantly that |MA| = |MB|.</li>
+    <li><strong>Parallelism as scalar multiples.</strong> Two vectors are parallel exactly when one is a scalar multiple of the other. To show three points are collinear, show that AB and AC are multiples of each other. Example: P = (1, 1), Q = (3, 2), R = (7, 4). PQ = (2, 1); QR = (4, 2) = 2(2, 1). Since QR = 2·PQ and they share the point Q, all three lie on one line.</li>
+    <li><strong>The parallelogram law.</strong> In any parallelogram OACB (with OA and OB as sides), the diagonals satisfy OA + OB = OC and, usefully, |OA + OB|² + |OA − OB|² = 2|OA|² + 2|OB|². Expanding both sides with dot products proves it in three lines — and it is the reason "sum of two vectors" and "difference of two vectors" are the two diagonals of the parallelogram you draw in physics lessons.</li>
+  </ul>
+  <p>
+    A worked proof in this style: show that the diagonals of a parallelogram bisect each
+    other. Let the vertices be O, A, B and A + B. One diagonal runs from O to A + B, the
+    other from A to B. The first diagonal's midpoint is ½(A + B). The second's is
+    ½(A + (B)) = ½(A + B). The same point — so they bisect each other. Four symbols, no
+    diagram required, and the proof works for parallelograms in 3D or 10D just as well.
+    That dimension-independence is the quiet superpower of the method.
+  </p>
+
+  <h2>Transformations of the plane (E7.1)</h2>
+  <p>
+    A <strong>transformation</strong> is a rule assigning to every point of the plane another
+    point. The syllabus family — reflections, rotations, enlargements, translations, and the
+    shear you meet in graphics — splits into two camps. <strong>Translations</strong> slide
+    everything by a fixed vector: P ↦ P + t. They are not "linear" in the technical sense
+    (they move the origin), which is why computer graphics represent them with a trick
+    (homogeneous coordinates) rather than a 2×2 matrix. Everything else in the family is
+    <strong>linear</strong>: it fixes the origin and sends straight lines to straight lines,
+    and every linear transformation of the plane is exactly one 2×2 matrix.
+  </p>
+  <p>
+    The dictionary works like this: the matrix's <strong>columns are the images of the basis
+    vectors</strong>. The rotation by 90° anticlockwise sends e₁ = (1, 0) to (0, 1) and
+    e₂ = (0, 1) to (−1, 0), so its matrix is
+    R = [ 0 −1 ; 1 0 ] (written row by row). A reflection in the x-axis sends (1, 0) to
+    (1, 0) and (0, 1) to (0, −1): matrix [ 1 0 ; 0 −1 ]. An enlargement by scale factor k is
+    [ k 0 ; 0 k ]. A shear that slides rows proportionally to height is [ 1 1 ; 0 1 ].
+    Once the columns are known, the image of <em>any</em> vector follows by one
+    multiplication, because linearity lets you distribute: M(3, 2) = 3·M(e₁) + 2·M(e₂).
+  </p>
+
+  <Widget no="2" caption="composing rotations with matrix multiplication — watch a quarter-turn matrix act, then compose with itself" widget="equationStep" config={rotCfg} />
+
+  <p>
+    <strong>Composition is matrix multiplication.</strong> Apply M then N and the combined
+    transformation has matrix N·M — note the order: the one applied second stands on the
+    left, because it must act on the already-transformed vector. And matrix multiplication
+    is <em>not</em> commutative, which is no mystery: rotate the plane 90° then reflect in
+    the x-axis, and you end somewhere different from reflect-then-rotate. Try it on the
+    point (1, 0): rotation then reflection gives (0, −1); reflection then rotation gives
+    (0, 1). The matrices [ 0 1 ; −1 0 ] and [ 0 −1 ; −1 0 ] genuinely differ, and geometry
+    told us so before the algebra did.
+  </p>
+  <p>
+    <strong>The determinant is the area scale factor.</strong> For M = [ a b ; c d ],
+    det M = ad − bc. An enlargement by 3 has det = 9 — areas grow by the square of the
+    length factor, exactly as the similar-shapes rules say. A reflection has det = −1: same
+    area, but the <em>sign</em> records that orientation flipped, mirror-style. For
+    M = [ 3 1 ; 1 2 ]: det = 6 − 1 = 5, so any shape's area is multiplied by 5. When
+    det M = 0 the transformation crushes the entire plane onto a single line — every bit of
+    two-dimensional information cannot survive, which is why no inverse exists and why
+    det = 0 is the precise algebraic signal that a system of equations has either no
+    solution or infinitely many.
+  </p>
+  <p>
+    <em>Common misconception:</em> matrix multiplication "should" work like number
+    multiplication, so MN = NM. Almost no matrices commute. Multiplication is associative
+    (you can regroup brackets: (AB)C = A(BC)) and distributive, but order is sacred, because
+    multiplication <em>is</em> composition of motions and motions do not commute. The
+    exception worth remembering: a matrix commutes with its own powers, and R⁴ = I for the
+    quarter-turn.
+  </p>
+
+  <h2>Solving systems: the inverse at work</h2>
+  <p>
+    Solving Mx = b asks the reverse question: <em>which input produces this output?</em> If
+    det M ≠ 0, the answer is x = M⁻¹b, with M⁻¹ = (1/det M) [ d −b ; −c a ]. Solve
+    3x + y = 7 and x + 2y = 4: here M = [ 3 1 ; 1 2 ], det M = 5, so
+    M⁻¹ = (1/5)[ 2 −1 ; −1 3 ]. Then
+  </p>
+  <p>
+    x = M⁻¹b = (1/5) [ 2·7 − 1·4 ; −1·7 + 3·4 ] = (1/5)[ 10 ; 5 ] = (2, 1).
+  </p>
+  <p>
+    Check: 3(2) + 1 = 7 ✓ and 2 + 2(1) = 4 ✓. The geometric reading: the two equations are
+    two lines; the solution is their crossing point, and the matrix view finds it by
+    un-transforming the output rather than by trial elimination. Determinant 5 also promised
+    the lines are not parallel (parallel lines would give det = 0) — the algebra and the
+    picture agree, as they always must.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Eigenvectors: the axes a matrix cannot turn.</strong> Solve Mv = λv and you have
+    found a direction v that the transformation only stretches by λ, never rotates. For
+    M = [ 3 1 ; 1 2 ], the characteristic equation det(M − λI) = (3 − λ)(2 − λ) − 1 = 0
+    gives λ² − 5λ + 5 = 0, so λ = (5 ± √5)/2 ≈ 3.62 and 1.38, with eigenvector directions
+    (1, 0.618) and (1, −1.618) respectively. Geometric
+    meaning: the matrix stretches most along one diagonal and least along the other, and any
+    repeated application of M soon points every vector along the dominant eigendirection —
+    which is why powers of matrices model population growth, why PageRank is an eigenvector
+    computation, and why principal component analysis finds the directions of greatest
+    variance in data by finding the top eigenvectors of a covariance matrix.
+  </p>
+  <p>
+    <strong>Determinants beyond area.</strong> In n dimensions det M is the (oriented) volume
+    scale factor, and it multiplies over composition: det(MN) = det M · det N — "volumes
+    scale by each map in turn". That single identity explains why M is invertible precisely
+    when det M ≠ 0 (a map that crushes volume to zero can never be undone) and underlies the
+    change-of-variables factor in multivariable calculus, without which transformed integrals
+    would be wrong by exactly that volume ratio.
+  </p>
+  <p>
+    <strong>Where the linearity ends.</strong> Not every transformation is a matrix: projection
+    onto a line <em>is</em> (it is linear but loses information), but rotation about a point
+    other than the origin is not (it moves the origin), and the map (x, y) ↦ (x, xy) is not
+    because it bends lines. The expert-tier linear algebra lesson develops the full theory —
+    vector spaces, rank, null spaces, the rank–nullity theorem — but the criterion is already
+    visible here: a map is linear exactly when M(u + v) = Mu + Mv and M(kv) = kMv for all
+    vectors and scalars. Test (x, y) ↦ (x, xy) with v = (1, 1) doubled: the outputs (1, 1)
+    and (1, 2) do not double to the output of (2, 2) = (2, 4) — linearity fails at the first
+    checkpoint.
+  </p>
+  <p>
+    <strong>Open questions and frontiers.</strong> Multiplying two n×n matrices takes about
+    n³ operations by the school method; the theoretical minimum (the exponent ω in the best
+    possible algorithm) is one of the great open problems of computer science — the record
+    has crept from 3 down toward 2.37 since 1969, and nobody knows whether ω = 2. Meanwhile
+    the applied frontier is everywhere: quantum mechanics states are vectors and measurements
+    are matrices; neural networks are nothing but long chains of matrix multiplications with
+    simple non-linearities between them; and graphics engines transform every vertex of every
+    frame through matrices in exactly the way this page introduced. Master the 2×2 case
+    honestly and the 4×4 projection matrices of a game engine — and the million×million
+    sparse matrices of a web search — become the same idea at different scales.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Mathematics syllabus units E7.1–E7.4; Strang, <em>Introduction to Linear Algebra</em>; 3Blue1Brown, <em>Essence of Linear Algebra</em> (visual intuition); Le Gall, "Faster algorithms for rectangular matrix multiplication" (exponent-ω bounds).</p>
 </TopicPage>

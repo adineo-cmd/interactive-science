@@ -12,31 +12,229 @@ const specCfg = {
   crossings: false,
   height: 340,
 };
+
+const titrCfg = {
+  title: 'Worked example: standardising an unknown alkali',
+  steps: [
+    { math: '25.0 cm³ NaOH, unknown; titrate with 0.100 mol/L HCl', note: 'the acid is a standard solution — concentration known to four figures from a weighed solid.' },
+    { math: 'moles HCl = 0.0225 L × 0.100 mol/L = 2.25 × 10⁻³ mol', note: 'titre (mean of concordant runs) = 22.5 cm³.' },
+    { math: 'HCl + NaOH → NaCl + H₂O, 1 : 1', note: 'the balanced equation converts moles of acid into moles of alkali.' },
+    { math: 'moles NaOH in 25.0 cm³ = 2.25 × 10⁻³ mol', note: 'equivalence point: exactly all the OH⁻ neutralised (phenolphthalein pink → colourless).' },
+    { math: 'concentration = 2.25 × 10⁻³ / 0.0250 = 0.0900 mol/L', note: 'three significant figures is honest; the burette reads to 0.05 cm³.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/chemistry/advanced/spectroscopy-and-structure">
   <h2>The idea</h2>
   <p>
     Modern chemists rarely see molecules — they <strong>interrogate them with light and
-    magnets</strong>. Molecules absorb very particular frequencies: bond vibrations in the
-    infrared, nuclear flips in radio waves (NMR), electron jumps in UV-visible. Each technique
-    answers a different structural question, and together they read molecular structure like
-    text — no crystal ball required.
+    magnets</strong>. The organising idea is an energy ladder: molecules can absorb only
+    photons whose energy matches a gap between allowed states, and each rung of the ladder
+    probes a different feature. Radio waves flip nuclear spins (NMR — the chemical
+    neighbourhood of each hydrogen); infrared light excites bond vibrations (which bonds
+    are present); visible and UV light promote electrons (conjugation and colour); and
+    X-rays, too energetic to be absorbed resonantly, scatter off electrons (the full 3D
+    arrangement). One molecule, four instruments, four complementary answers. Alongside
+    the optical instruments sit the classical quantitative tools of the syllabus unit —
+    titrations, chromatography, and wet identification tests — which answer the same
+    "what is it, and how much" questions by chemistry rather than optics. A trained
+    chemist reads all of them like text.
   </p>
 
   <Widget no="1" caption="an infrared fingerprint — the dips mark bond vibrations: O–H, C=O, C–H each singe at their own frequency" widget="plotter" config={specCfg} />
 
   <p>
-    Read the three deep dips: ~3300 cm⁻¹ is an O–H stretch (alcohol or water), ~2900 cm⁻¹ the
-    C–H backbone, ~1750 cm⁻¹ the C=O of a carbonyl. A functional-group table converts the dips
-    into structure — this spectrum is basically vinegar introducing itself.
+    Read the three deep dips in the figure: ~3300 cm⁻¹ is an O–H stretch (alcohol or
+    water), ~2900 cm⁻¹ the C–H backbone, ~1750 cm⁻¹ the C=O of a carbonyl. An O–H
+    <em>and</em> a C=O on one molecule — this spectrum is basically vinegar introducing
+    itself. The broad O–H band (spanning hundreds of wavenumbers, because hydrogen bonds
+    jiggle the stiffness) is itself diagnostic: a sharp O–H says free alcohol, a broad
+    one says acid or hydrogen-bonded associates.
   </p>
 
-  <h2>The four instruments</h2>
-  <ul>
-    <li><strong>Mass spectrometry:</strong> smash the molecule, weigh the fragments. The heaviest peak is the molecular mass; the fragment pattern is a fingerprint. It told us the Moon's soil composition from a few grams of Apollo sample.</li>
-    <li><strong>NMR:</strong> hydrogen nuclei resonate in a magnetic field at frequencies shifted by their neighbourhood — a map of the hydrogen (and carbon) skeleton. MRI in hospitals is the same physics aimed at water in tissue.</li>
-    <li><strong>IR:</strong> bond vibrations (above). Cheap, fast, the first question asked of any new compound.</li>
-    <li><strong>X-ray crystallography:</strong> diffract X-rays off a crystal and reconstruct the electron density — the technique that revealed DNA's double helix (Photo 51) and most of the Protein Data Bank.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Pavia, Introduction to Spectroscopy; Franklin & Gosling, Nature (1953); Protein Data Bank.</p>
+  <h2>Infrared: bonds as springs</h2>
+  <p>
+    A chemical bond vibrates like a spring, and quantum mechanics makes its vibration
+    energy quantised: E = hf, with the frequency set by the bond's <strong>stiffness</strong>
+    (stronger bonds vibrate faster) and the <strong>masses</strong> it connects (lighter
+    atoms vibrate faster — the reduced-mass effect). The hierarchy falls out of those two
+    rules: O–H and N–H stretches (light H, strong bond) sit high at 3200–3600 cm⁻¹; C–H
+    near 2900; the stiff double bond C=O near 1700; floppy single bonds like C–O and C–C
+    below 1300, where the crowded tangle of bands becomes the unique <strong>fingerprint
+    region</strong> — compare it against a library spectrum and identity is confirmed.
+    Quantitatively, a 1700 cm⁻¹ photon has energy hc·ν̄ ≈ 3.4 × 10⁻²⁰ J ≈ 0.21 eV — about
+    eight times kT at room temperature, which is why thermal jostling populates the
+    vibrational ground state heavily and absorption lines are clean. IR spectroscopy is
+    the cheap, fast, first question asked of any new compound — and, aimed outward, the
+    same technique reads planetary atmospheres (the JWST and the climate lesson's
+    greenhouse gases both work in exactly these bands).
+  </p>
+
+  <h2>Mass spectrometry: weigh the molecule, weigh the pieces</h2>
+  <p>
+    Ionise the molecule (typically by knocking off one electron), accelerate the ions,
+    and sort them by mass-to-charge ratio m/z. The heaviest significant peak — the
+    <strong>molecular ion</strong> M⁺ — gives the molecular mass directly: a peak at
+    m/z = 46 means ethanol, C₂H₆O, and nothing else that light. The <strong>fragmentation
+    pattern</strong> below it is a fingerprint of structure: ethanol breaks predictably
+    at the C–C bond (a chunk at 31, CH₂OH⁺, shouting "there is an –OH on the end"). Two
+    bonus features make MS quantitative and forensic. <strong>Isotope patterns</strong>:
+    chlorine's two isotopes (³⁵Cl, ³⁷Cl, 3:1) split any Cl-containing peak into a
+    3:1 doublet; bromine's (⁷⁹Br, ⁸¹Br) into a 1:1 pair — instant element detection.
+    <strong>High-resolution MS</strong> distinguishes 27.9949 (carbon monoxide) from
+    28.0062 (nitrogen) — masses eight decimal places apart —
+    which is how Apollo's soil samples, breathalysers, and sports drug testing all work.
+    Couple it to gas chromatography (below) and you have GC-MS, the workhorse of
+    forensics, doping control and environmental monitoring.
+  </p>
+
+  <h2>NMR: a map of every hydrogen's neighbourhood</h2>
+  <p>
+    Put a sample in a strong magnetic field and each ¹H nucleus (spin ½) splits into two
+    energy states; flip them with a radio pulse of exactly the right frequency and
+    listen. The <strong>chemical shift</strong> — how far a proton's resonance sits from
+    the reference compound TMS, in ppm — reports its electronic neighbourhood, because
+    surrounding electrons shield the nucleus from the field: hydrogens on carbons next to
+    oxygen resonate downfield near 3–4 ppm; plain alkyl hydrogens near 1 ppm; aldehyde
+    hydrogens near 10. Three further pieces of information make the map complete:
+    the <strong>integral</strong> of each peak counts the hydrogens in that group; the
+    <strong>splitting</strong> follows the n+1 rule (a proton's peak is split by its
+    n nearest non-equivalent neighbours); and <strong>coupling patterns</strong> link the
+    groups to each other. Worked example, ethanol: three peaks — a triplet of 3 units
+    at ~1.2 ppm (the CH₃, split by its 2 CH₂ neighbours), a quartet of 2 units at ~3.7
+    ppm (the CH₂, split by the 3 CH₃ neighbours — the triplet/quartet pairing proves
+    they are bonded to each other), and a broad 1-unit OH signal that wanders with
+    hydrogen bonding. That is the entire structure read out of a drop of liquid.
+    <strong>MRI in hospitals is this physics aimed at water</strong> — gradient fields
+    make the resonance frequency position-dependent, and the body becomes its own ¹H
+    spectrum, imaged slice by slice.
+  </p>
+
+  <h2>X-ray crystallography: the structure itself</h2>
+  <p>
+    X-ray wavelengths (~0.1 nm) match atomic spacings, so a crystal diffracts them into
+    a pattern of spots. <strong>Bragg's law, nλ = 2d·sin θ</strong>, converts spot angles
+    into the distances between atomic planes; collecting thousands of reflections and
+    Fourier-transforming them reconstructs the electron density — the molecule, in three
+    dimensions, atoms placed directly. It is how the double helix was seen (Franklin's
+    Photo 51: the cross-shaped pattern of a helix, read by Watson and Crick in 1953), how
+    penicillin's strained ring was proved, and how the Protein Data Bank's ~200,000
+    protein structures were obtained. Bragg in practice: with copper X-rays (λ = 0.154
+    nm) and planes 0.2 nm apart, the first-order reflection sits at
+    sin θ = 0.154/0.4 = 0.385, θ ≈ 23° — the arithmetic a diffractometer runs
+    automatically.
+  </p>
+
+  <h2>The classical toolkit: titration, chromatography, identification (12.2–12.5)</h2>
+  <p>
+    <strong>Titrations</strong> answer "how much" to four significant figures: a standard
+    solution of known concentration reacts with the unknown until an indicator flips at
+    the equivalence point, and stoichiometry converts burette volumes into concentration.
+    The full worked example, start to finish:
+  </p>
+
+  <Widget no="2" caption="a titration calculation, end to end — the chemistry that makes every concentration in every textbook trustworthy" widget="equationStep" config={titrCfg} />
+
+  <p>
+    <strong>Chromatography</strong> answers "what mixture is it": components separate
+    because they spend different fractions of their time dissolved in the mobile phase
+    versus stuck to the stationary phase — the better-dissolved ones travel further.
+    Paper chromatography reports each spot as an <strong>R<sub>f</sub> value</strong>
+    (distance moved by spot ÷ distance moved by solvent — a spot at 4.2 cm with the front
+    at 7.0 cm has R<sub>f</sub> = 0.60, reproducible and comparable to libraries); gas
+    chromatography does the same for volatile compounds with helium as the mobile phase;
+    HPLC handles non-volatile, drug-scale molecules under pressure. Run the outlet into
+    a mass spectrometer and separation plus identification happen in one instrument.
+    <strong>Wet identification</strong> (12.5) closes the loop with chemistry: flame tests
+    colour ions (sodium yellow, potassium lilac, copper blue-green); NaOH precipitates
+    hydroxides by colour (Cu²⁺ blue, Fe³⁺ rust-brown, Fe²⁺ green); and the gases have
+    signature tests — CO₂ turns limewater milky, H₂ pops with a lit splint, O₂ relights
+    a glowing one, ammonia turns damp red litmus blue, chlorine bleaches damp litmus
+    white.
+  </p>
+  <p>
+    <em>Common misconception:</em> these techniques "see molecules" directly. None does.
+    IR sees bond stiffness; NMR sees local magnetic environments; mass spectrometry sees
+    mass-to-charge of ions, from which mass is inferred; even crystallography sees
+    electron density, from which atom positions are modelled. Every structure ever
+    "observed" is a model that best explains spectra — which is why structures get
+    revised, and why convergence among independent techniques (IR says acid, NMR says
+    ethyl, MS says 60, X-ray shows the geometry) is what actually establishes a
+    structure.
+  </p>
+
+  <h2>Choosing the separation: the purification decision tree (12.1, 12.4)</h2>
+  <p>
+    Every structure determination begins with a pure sample, and purity is bought with
+    the right separation. The decision tree runs on the properties that differ.
+    Different <em>solubility</em>: filter off the insoluble solid, or use
+    <strong>recrystallisation</strong> — dissolve the crude solid hot, cool it, and let
+    the desired compound crystallise while impurities (present in small amounts) stay
+    dissolved; the classic purification, judged by melting point (pure solids melt
+    sharply; impure ones melt low and broad). Different <em>boiling point</em>:
+    distillation — simple for liquids far apart (ethanol 78 °C from water's 100 °C, though
+    azeotropes cap the purity near 96%), fractionating columns for close-boiling crude
+    oil. Different <em>volatility or affinity</em>: the chromatographies. Different
+    <em>sublimation or magnetism or density</em>: specialised tricks, including the
+    centrifuge. Good experimental design (12.1) means choosing the separation <em>and</em>
+    the analysis together: purity checks (melting point, TLC single spot, a clean NMR)
+    are part of the method, not an afterthought — an unverified yield is a guess with
+    arithmetic on it.
+  </p>
+
+  <h2>UV-visible: electrons, conjugation and colour</h2>
+  <p>
+    The highest rung on the optical ladder: UV and visible photons (3–0.16 × 10⁻¹⁹ J,
+    wavelengths 200–750 nm) promote electrons between molecular orbitals, and the gap
+    depends on <strong>conjugation</strong> — the more alternating double bonds a
+    molecule chains together, the smaller the gap and the redder the light absorbed.
+    A single C=C absorbs far-UV (invisible); β-carotene's eleven conjugated bonds absorb
+    blue-green, so the carrot pigment looks orange; the retina's retinal (a shorter
+    conjugated chain) absorbs green, which is the photon-to-nerve event of vision. The
+    workhorse quantitative law is <strong>Beer–Lambert: A = ε·c·l</strong> — absorbance
+    scales with concentration and path length, with ε the molecule's characteristic
+    absorptivity. Worked: a compound with ε = 50,000 L/(mol·cm) at 0.02 mmol/L in a
+    1 cm cuvette reads A = 1.0 — five-decimal detection limits from a torch-bulb's worth
+    of physics, which is why spectrophotometers run hospital biochemistry and water
+    quality monitors alike. Colour itself is subtraction chemistry: a red shirt is a
+    molecule whose gaps eat everything but red.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Fourier transform methods.</strong> Modern instruments do not scan
+    frequencies one at a time. FTIR hits the sample with all frequencies at once (a
+    moving mirror encodes them in an interferogram) and a Fourier transform decodes the
+    spectrum — the multiplex advantage that made IR routine. Pulsed NMR does the same in
+    time domain: one broadband pulse excites every nucleus, and the decaying signal (the
+    free induction decay) transforms into the spectrum. The same mathematics is the
+    convolution calculus of the integration lesson applied to real hardware, and it is
+    the reason a 20-minute NMR spectrum replaced a week of continuous-wave scanning.
+  </p>
+  <p>
+    <strong>Structure at the limits.</strong> Protein NMR (2D and 3D experiments —
+    COSY, NOESY — cross-linking thousands of proton-pair distances) solved solution
+    structures X-ray crystals cannot give; the 2017 Nobel cryo-EM revolution now freezes
+    single particles and images them by electron scattering, reaching near-atomic
+    resolution without any crystal at all; and X-ray free-electron lasers are pushing
+    toward diffraction-before-destruction of single molecules. On the small end,
+    scanning tunnelling microscopy (the quantum-foundations lesson's tunneling) images
+    individual bonds directly — the first time "seeing a molecule" stopped being a
+    metaphor.
+  </p>
+  <p>
+    <strong>Quantitative structure determination and open questions.</strong> The
+    frontier problems are sensitivity and speed: single-molecule mass spectrometry and
+    NMR of nano-litre samples; ultrafast (femtosecond) electron diffraction watching
+    bonds break in real time; and machine-learning structure prediction (AlphaFold,
+    2021) which now predicts protein folds from sequence — spectacularly well, though it
+    predicts <em>models</em> whose experimental validation still runs through the
+    techniques on this page. The through-line: every advance in chemistry's ability to
+    <em>make</em> molecules has been paired with an advance in its ability to
+    <em>ask them what they are</em> — and that second engineering discipline, analytical
+    and structural chemistry, is where the syllabus's experimental-techniques unit is
+    heading.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Pavia et al., <em>Introduction to Spectroscopy</em>; Franklin &amp; Gosling, <em>Nature</em> (1953); Protein Data Bank (rcsb.org); Cambridge IGCSE Chemistry syllabus, units 12.1–12.5.</p>
 </TopicPage>

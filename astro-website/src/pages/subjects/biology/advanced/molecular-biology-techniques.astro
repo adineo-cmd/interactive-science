@@ -10,24 +10,217 @@ const techCfg = {
     { math: '4 · CRISPR: editing, not just reading', note: 'A bacterial immune system repurposed (2012) into programmable scissors: guide RNA finds the sequence, Cas9 cuts it. Gene therapies are now approved (e.g. sickle-cell, 2023).' },
   ],
 };
+
+const pcrCfg = {
+  title: 'Worked example: exponential amplification and what it costs',
+  steps: [
+    { math: 'each cycle: copies = 2ⁿ where n = cycles run', note: 'every double helix becomes two; the math is compounding, the same curve as the exponentials lesson.' },
+    { math: '30 cycles: 2³⁰ ≈ 1.07 × 10⁹ copies', note: 'one molecule becomes a billion in about 90 minutes (30 cycles × 3 minutes).' },
+    { math: '1 ng of DNA ≈ 2 × 10⁸ copies of a 5 kb target', note: 'so a real reaction starts with abundant templates — the exponential just wins the race for the right one.' },
+    { math: 'target 0.1% of the sample → still amplified to purity', note: 'the primer pair defines what gets copied. This is PCR\'s power and its hazard: a stray skin cell in the lab contaminates the reaction.' },
+    { math: 'DNA profiling: 20 STR loci, ~10 alleles each', note: 'a random profile match runs ≈ 10⁻¹⁹ and smaller — astronomically unlikely, identical twins excepted. That arithmetic is courtroom evidence.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/biology/advanced/molecular-biology-techniques">
   <h2>The idea</h2>
   <p>
-    Molecular biology's power comes from its <strong>toolkit</strong>: a set of techniques that
-    copy, sort, read and edit DNA. Each answers a different question — is it there (PCR), how big
-    (gel), what's the order (sequencing), and now, can we change it (CRISPR). Together they
-    turned biology from an observational science into an engineering one.
+    Molecular biology's power comes from its <strong>toolkit</strong>: a compact set of
+    techniques that copy, sort, read, compare and now edit DNA. Each answers a different
+    question — is this sequence present (PCR), how long are the pieces (gel
+    electrophoresis), what is the exact order (sequencing), whose is it (DNA profiling),
+    and can we change it (CRISPR)? The revolution was conceptual as much as technical:
+    with tools this specific, biology stopped being only observational and became
+    engineering — you can request a molecule, order it, amplify it, verify it. This page
+    works through the toolkit in the order a real experiment would use it, because the
+    techniques chain: amplify, check, read, then act.
+  </p>
+  <p>
+    The raw material first. DNA's sugar-phosphate backbone carries a negative charge on
+    every phosphate — which makes it movable by electric fields — and its two strands
+    separate when heated near 95 °C, then re-anneal by base pairing (A–T with two
+    hydrogen bonds, G–C with three). Every technique below is an application of one or
+    both of those two facts: charge makes DNA sortable; reversible strand separation
+    makes it copyable.
   </p>
 
   <Widget no="1" caption="the four-step toolkit, from copying to editing" widget="equationStep" config={techCfg} />
 
-  <h2>Where the toolkit shows up</h2>
-  <ul>
-    <li><strong>Forensics:</strong> PCR amplifies a few skin cells into a profile; DNA fingerprinting (Jeffreys, 1984) has convicted and exonerated — the Innocence Project has freed 375+ people on DNA evidence.</li>
-    <li><strong>Medicine:</strong> PCR tests ran the COVID-19 pandemic; genome sequencing tracks variants in real time; CRISPR therapy Casgevy was approved for sickle-cell disease in 2023.</li>
-    <li><strong>Ancient DNA:</strong> Neanderthal genomes sequenced from bones (Nobel 2022, Svante Pääbo) — showing interbreeding, and that most non-African humans carry ~2% Neanderthal DNA.</li>
-    <li><strong>The ethics layer is part of the toolkit:</strong> germline editing (heritable) after the 2018 He Jiankui case is broadly banned — capability outran policy once, and the field responded with moratoria.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Mullis (PCR, Nobel 1993); Jinek et al., Science (2012); Pääbo, Nobel lecture (2022); WHO registry of genome-editing therapies.</p>
+  <h2>Scale: why every technique below is a search problem</h2>
+  <p>
+    Put the toolkit in context before the machinery. One human cell holds about 2 metres
+    of DNA — roughly 3.1 billion base pairs — folded into a nucleus 6 μm across, with
+    only ~20,000 protein-coding genes sprinkled through it (the rest is regulatory
+    sequence, introns, repeats and history). Finding one specific 200-letter stretch in
+    that haystack is a one-in-ten-million search; reading the differences between two
+    people's copies means comparing three billion letters for a few million mismatches.
+    Every technique on this page is an engineering answer to that search-and-scale
+    problem: PCR finds a needle by exponentially copying only the needle; gels and
+    capillaries sort the pieces; sequencers parallelise the reading; profiling reduces
+    three billion letters to twenty informative numbers. Keep the scale in view and each
+    tool's design makes sense as an answer to a specific bottleneck.
+  </p>
+
+  <h2>Restriction enzymes: the pre-toolkit tool</h2>
+  <p>
+    Before PCR there were <strong>restriction endonucleases</strong> — bacterial enzymes
+    that cut DNA at specific palindromic sequences (EcoRI reads GAATTC and cuts between
+    G and A). Bacteria use them as an immune system against phage DNA; molecular
+    biologists use them as scissors with addressable targets (Nobel 1978). Crucially,
+    many cut <strong>staggered</strong>, leaving single-stranded "sticky ends" that any
+    matching fragment anneals to — and DNA ligase seals the join. That pair of facts
+    founded <strong>recombinant DNA</strong> (1972–73): plasmid and insert cut with the
+    same enzyme, mixed, ligated, returned to a bacterium, which then copies the
+    construct for free. Insulin was the first mass product (1982) — human gene in
+    bacterial plasmid — and the entire GM-crop story of the agriculture pages begins
+    with these scissors. Restriction maps (where each enzyme cuts) were also the first
+    crude way to compare genomes, before sequencing got cheap.
+  </p>
+
+  <h2>PCR: exponential copying by thermal cycling</h2>
+  <p>
+    The polymerase chain reaction (Mullis, 1983; Nobel 1993) exploits strand separation
+    directly. Each cycle has three temperatures: ~95 °C to <strong>denature</strong> the
+    double helix; ~50–60 °C to let short synthetic <strong>primers</strong> anneal to the
+    two strands flanking the target (the primers <em>define</em> what gets copied —
+    choose them and you choose the amplification); and ~72 °C for a heat-stable
+    polymerase to extend them. The enzyme matters historically: <strong>Taq
+    polymerase</strong>, from the hot-spring bacterium <em>Thermus aquaticus</em>,
+    survives the denaturation step, so cycling became automatic — put the tubes in a
+    thermal cycler, program the dance, come back in 90 minutes. The arithmetic is
+    compound interest:
+  </p>
+
+  <Widget no="2" caption="the exponential arithmetic of PCR — and the courtroom consequence (DNA profiling)" widget="equationStep" config={pcrCfg} />
+
+  <p>
+    Variants multiply the applications. <strong>Reverse-transcription PCR</strong> copies
+    RNA (via reverse transcriptase) so gene expression and RNA viruses become readable —
+    the RT-PCR tests that ran the COVID-19 pandemic. <strong>Quantitative PCR</strong>
+    follows the reaction with fluorescence each cycle and reads the starting amount from
+    the cycle number at which signal crosses threshold (Ct values — "Ct below 30 means
+    high viral load"). And <strong>isothermal</strong> methods (LAMP) skip the thermal
+    cycler entirely for point-of-care testing. The running hazard is the flip side of
+    the sensitivity: amplifying one stray molecule is as easy as amplifying a million
+    chosen ones, which is why contamination control (separate rooms, no-template
+    controls) is half of PCR craft.
+  </p>
+
+  <h2>Gel electrophoresis: sorting by size</h2>
+  <p>
+    Load DNA into wells in an agarose gel, apply a field, and every fragment migrates
+    toward the positive electrode — all with the same charge-to-mass ratio, so speed is
+    set purely by how easily each length threads the gel's polymer mesh: small runs
+    fast, large lag, roughly logarithmically in length. Stain with a dye that fluoresces
+    under UV and read the <strong>ladder</strong> of bands. A size standard run alongside
+    converts band positions into base pairs; a bright band where you expected one says
+    the PCR worked; a smear says the DNA was sheared. The same physics sorts proteins
+    (SDS-PAGE, where the detergent SDS imposes uniform negative charge so size alone
+    sorts) — and it is the readout layer for nearly everything else on this page:
+    PCR products, digested plasmids, sequencing fragments all end their analysis in a
+    gel or its modern capillary equivalent.
+  </p>
+  <p>
+    <strong>DNA profiling</strong> turns gels into identity tests. The genome is speckled
+    with short tandem repeats (STRs) — runs like CA-CA-CA — whose <em>number of repeats</em>
+    varies hugely between individuals. PCR with fluorescent primers amplifies ~20 STR
+    loci at once; capillary electrophoresis reads the repeat counts; the resulting
+    profile is a string of numbers. Since each locus carries ~10-plus common variants and
+    they assort independently, the probability of two unrelated people matching at all
+    twenty loci is the product — of order 10⁻¹⁹ and smaller, quoted in the hundreds of
+    quintillions. Identical twins share a profile; everyone else effectively cannot
+    (population-database caveats and mixtures are the real analytical work). Since
+    Jeffreys' first fingerprinting case in 1986, this arithmetic has convicted the guilty
+    and — through the Innocence Project's 375-plus DNA exonerations — freed the wrongly
+    convicted, which makes it one of the most consequential equations in public life.
+  </p>
+
+  <h2>Sequencing: from one letter at a time to whole genomes</h2>
+  <p>
+    <strong>Sanger sequencing</strong> (1977; Nobel 1980) is PCR with a poison: include
+    rare chain-terminating nucleotides (ddNTPs, lacking the 3′-OH the chain grows from)
+    and the reaction stops wherever one lands. Run the products through a gel or
+    capillary and the bands, ordered by size, spell the sequence — one template, read
+    length ~800 letters, fluorescence now doing the reading automatically. It
+    sequenced the human genome: 13 years, ~$2.7 billion, published 2003. <strong>Next-
+    generation sequencing</strong> inverted the economics: shear the DNA into millions
+    of fragments, attach them to a flow cell, and photograph <em>all</em> of them
+    simultaneously as bases are added one colour-coded type per cycle — millions of
+    Sanger reactions in parallel. A human genome is now re-sequenced in under a day for
+    a few hundred dollars, which is why sequencing is a routine clinical test rather
+    than a moonshot. <strong>Long-read</strong> platforms (PacBio, Oxford Nanopore —
+    which threads single DNA strands through protein pores and reads them electrically)
+    deliver tens-of-thousands-of-letter reads, closing the repetitive gaps short reads
+    could not bridge; the "complete" telomere-to-telomere human genome finally landed in
+    2022. Clinical payoff: genomes track pathogen variants in real time (the pandemic's
+    variant-of-concern naming was a phylogenetic process — see the speciation lesson),
+    tumour genomes guide therapy, and newborn screening is beginning to sequence.
+  </p>
+
+  <h2>CRISPR: reading becomes writing</h2>
+  <p>
+    CRISPR–Cas9 (Jinek et al., 2012) is a bacterial adaptive immune system repurposed
+    into programmable molecular scissors. A ~20-letter <strong>guide RNA</strong> pairs
+    with any genomic sequence the designer chooses; the Cas9 nuclease rides along and
+    cuts both strands there (provided a short PAM motif sits beside the target — the
+    licence check that keeps bacteria from cutting their own genome). What happens next
+    is the cell's choice, and it is the designer's lever: sloppy repair
+    (<strong>NHEJ</strong>) disrupts the gene (a knockout), while supplying a repair
+    template channels precise <strong>HDR</strong> editing. Applications stack quickly:
+    the first CRISPR therapy, <strong>Casgevy</strong>, was approved in late 2023 for
+    sickle-cell disease (it reactivates fetal haemoglobin by knocking out a repressor);
+    agriculture edits disease-resistant crops without foreign DNA; base- and prime-
+    editing cut less and write more precisely. The 2018 He Jiankui case — germline-edited
+    babies, broadly condemned, banned in most jurisdictions — defined the field's ethical
+    line: somatic therapy yes (with oversight), heritable editing no, for now.
+  </p>
+  <p>
+    <em>Common misconception:</em> the toolkit is infallible — a PCR band or a CRISPR
+    edit proves exactly what it seems to. Polymerases make errors (Taq about one per
+    10⁴–10⁵ bases; proofreading enzymes a hundred-fold better), guides have off-target
+    cuts, gels cross-contaminate lanes, and ancient DNA is famously a soup of
+    microbial decay — Pääbo's Neanderthal genome (Nobel 2022) succeeded by combining
+    clean-room extraction, damage-aware sequencing, and the statistic that today's
+    non-African humans carry ~2% Neanderthal DNA from ancient interbreeding. Every
+    result is an inference with error bars; the craft is designing the controls that
+    expose them.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The quantitative core.</strong> PCR efficiency is never exactly 2ⁿ —
+    reactions plateau when reagents exhaust and products re-anneal, so quantitative
+    work reads the <em>exponential window only</em>. Next-gen instruments are Poisson
+    devices: fragments land on flow cells at random, so cluster density and per-run
+    output are probability calculations, and error rates (~0.1–1% raw) are handled by
+    <em>depth</em> — reading each base 30 times over (30× coverage) drives the consensus
+    error down by √n. Genome assembly is a graph problem: overlap short reads, resolve
+    repeats with long ones. The entire field, in other words, leans on the same
+    statistics — binomial counts, exponential growth, error propagation — that the math
+    ladder builds.
+  </p>
+  <p>
+    <strong>Beyond DNA: the omics stack.</strong> RNA-seq counts transcripts (gene
+    expression, cell-type atlases — the Human Cell Project's aim is a profile for every
+    cell type); ChIP-seq maps where proteins bind DNA (epigenetics, transcription
+    networks); mass spectrometry proteomics (the chemistry lesson's instrument) reads
+    the protein complement. Single-cell sequencing resolves what bulk averages hide —
+    that "a tumour" is dozens of competing subclones — and spatial transcriptomics puts
+    the data back on the anatomy. Each layer multiplies the others: CRISPR perturbs a
+    gene, omics measures what changed everywhere else.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Whole-genome synthesis is approaching feasibility
+    (the 2010 synthetic <em>M. mycoides</em> genome; the "minimal genome" of 473 genes,
+    2016 — and we cannot explain ~30% of even those genes' functions). Delivery remains
+    CRISPR's bottleneck: getting editors into the right cells of a living body (viral
+    vectors, lipid nanoparticles) works for liver and blood and is unsolved for brain
+    and muscle. Epigenome editing (silencing without cutting) and <em>in vivo</em>
+    base-editing trials are moving through clinics now. And the deepest question is
+    ecological, not molecular: as editing costs fall toward a PCR-reaction price, the
+    governance question — who may edit what, where — is the open problem the 2018
+    moratorium is still circling.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Mullis (PCR, Nobel 1993); Jinek et al., <em>Science</em> (2012); Pääbo, Nobel lecture (2022); Nurk et al., <em>Science</em> (2022) — complete human genome; WHO registry of genome-editing therapies.</p>
 </TopicPage>

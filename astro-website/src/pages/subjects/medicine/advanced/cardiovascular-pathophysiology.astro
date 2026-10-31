@@ -10,25 +10,231 @@ const cardioCfg = {
     { math: '4 · Interventions that work', note: 'Statins (lower LDL), blood-pressure control, smoking cessation — the boring trio preventing more deaths than any procedure. Stents and bypass save lives in acute attacks but don\'t replace risk-factor medicine.' },
   ],
 };
+
+const cardioQuiz = {
+  questions: [
+    {
+      q: 'Mean arterial pressure ≈ cardiac output × systemic vascular resistance. A patient has CO = 5 L/min and MAP = 100 mmHg. What is her SVR in units of mmHg·min/L?',
+      choices: ['5', '20', '95', '500'],
+      answer: 1,
+      why: 'SVR = MAP ÷ CO = 100 ÷ 5 = 20 mmHg·min/L (×80 gives the dyn·s/cm⁵ units used on ICU charts: 1,600). Every antihypertensive drug works by moving one or both factors on the right of the equation.',
+    },
+    {
+      q: 'Why does a ruptured atherosclerotic plaque cause a heart attack within minutes?',
+      choices: ['The plaque blocks the artery slowly', 'Exposed collagen and tissue factor trigger rapid clot formation over the rupture', 'The heart muscle bleeds', 'Cholesterol enters the muscle'],
+      answer: 1,
+      why: 'Rupture exposes thrombogenic material beneath the fibrous cap; platelets adhere within seconds and the coagulation cascade builds an occlusive thrombus. The chronic plaque sets the stage; the clot fires the event.',
+    },
+    {
+      q: 'A patient has a normal ejection fraction (55%) but severe breathlessness and a stiff, thickened left ventricle that fills poorly. What is the diagnosis?',
+      choices: ['HFrEF (systolic failure)', 'HFpEF (diastolic failure)', 'Aortic stenosis only', 'Pericarditis'],
+      answer: 1,
+      why: 'Preserved ejection fraction with impaired filling is HFpEF — heart failure with preserved EF, historically called diastolic failure. Half of all heart failure is this type, and it has proven stubbornly hard to treat.',
+    },
+    {
+      q: 'Why do ACE inhibitors help in heart failure?',
+      choices: ['They strengthen contraction directly', 'They block the RAAS cascade, reducing fluid retention and ventricular remodelling', 'They dissolve clots', 'They raise blood pressure'],
+      answer: 1,
+      why: 'Failing hearts over-activate the renin–angiotensin–aldosterone system, which retains salt and water and promotes maladaptive remodelling. Blocking angiotensin II formation lowers afterload and preload and measurably extends survival.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/medicine/advanced/cardiovascular-pathophysiology">
   <h2>The idea</h2>
   <p>
-    Cardiovascular disease is the world's leading cause of death (~18 million deaths/year) — and
-    largely a <strong>decades-long, preventable process</strong>. The pathophysiology chain:
-    risk factors damage vessels → plaques grow silently → rupture or pump failure strikes. The
-    medicine is mostly arithmetic applied early (pressure, lipids, glucose, smoking) rather than
-    heroics late.
+    The foundational lessons gave you the pump and the plumbing: chambers, valves, the conduction
+    system, the physics of pressure and flow. Pathophysiology is what happens when those systems are
+    perturbed — and the striking discovery of a century of cardiology is that the three great killers
+    (atherosclerosis, hypertension, heart failure) are not separate diseases but one connected chain.
+    High pressure injures vessel walls; injured walls retain cholesterol; plaques rupture or the
+    chronically overloaded muscle fails. Intervene anywhere in the chain and mortality moves.
+  </p>
+  <p>
+    The other theme to carry through: cardiovascular medicine is unusually quantitative. Blood
+    pressure is a number, LDL is a number, ejection fraction is a number — and treatment targets are
+    set, and audited, in those numbers. Work the arithmetic in every section below; it is the
+    discipline's real grammar.
   </p>
 
   <Widget no="1" caption="the chain from risk factor to event — and where interventions bite" widget="equationStep" config={cardioCfg} />
 
-  <h2>Connecting the physiology</h2>
+  <h2>Haemodynamics: the equation every therapy obeys</h2>
+  <p>
+    Mean arterial pressure (MAP) ≈ cardiac output × systemic vascular resistance (SVR). This identity
+    organises the entire pharmacology of blood pressure. Cardiac output = heart rate × stroke volume,
+    so: beta-blockers cut rate and contractility; diuretics cut stroke volume by shrinking plasma
+    volume; ACE inhibitors and calcium-channel blockers cut resistance by dilating arterioles. Nothing
+    else is available — every antihypertensive is a handle on one of those factors, chosen because the
+    body pushes the other one back up (the baroreflex resists any univariate assault, which is why
+    combination therapy is the norm).
+  </p>
+  <p>
+    <strong>Worked example.</strong> A patient has CO = 5 L/min and MAP = 100 mmHg, so SVR = 20
+    mmHg·min per L. Give a vasodilator that drops resistance 25% to 15; the baroreflex raises heart
+    rate and stroke volume, lifting CO to 6 L/min — pressure only falls to 90. Block the reflex with a
+    beta-blocker at the same time and the fall is real. This reflex-compensation logic explains why
+    single-drug therapy often disappoints and why low doses of two or three agents beat escalating
+    one.
+  </p>
+  <p>
+    Resistance itself obeys Poiseuille's law: flow scales with the fourth power of radius. Halving an
+    arteriole's radius multiplies its resistance sixteenfold — the physical reason a 70% coronary
+    stenosis matters so much, and why "minor" narrowings under high flow demand become limiting.
+  </p>
+
+  <h2>Atherosclerosis: the twenty-year insult</h2>
+  <p>
+    Atherosclerosis is an inflammatory lipid disease, and the sequence is now well resolved.
+    Endothelium injured (by pressure, smoking toxins, glucose) becomes permeable; LDL particles lodge
+    in the intima and are chemically modified; monocytes invade, engulf the modified LDL and become
+    foam cells; smooth muscle migrates in and lays down a fibrous cap over a necrotic lipid core. For
+    decades the plaque grows <em>outward</em> (vessels remodel to preserve the lumen — Glagov's
+    finding), which is why atherosclerosis is silent until it is catastrophic. The event comes in two
+    modes: <strong>stable angina</strong> (fixed stenosis limits flow under exertion; pain predictable,
+    relieved by rest) and <strong>acute rupture</strong> — the cap erodes, collagen and tissue factor
+    are exposed, platelets swarm, and an occlusive thrombus forms within minutes. The chronic plaque
+    is the loaded gun; the clot pulls the trigger.
+  </p>
+  <p>
+    Why is LDL the causal agent rather than a passenger? Three independent lines converge: epidemiology
+    (log-linear dose-response between LDL and events, with no floor down to genetically low levels);
+    Mendelian randomisation (people inheriting lifelong low LDL — via PCSK9 loss-of-function, for
+    instance — have ~88% lower coronary risk, far beyond what late statin start achieves); and
+    randomised trials (every LDL-lowering modality — statins, ezetimibe, PCSK9 antibodies — reduces
+    events in proportion to absolute LDL reduction: roughly 22% fewer major events per 1 mmol/L per
+    year of treatment). The operational conclusion: what matters is cumulative exposure, measured in
+    "LDL-years" — a person at 4 mmol/L for forty years accumulates the plaque burden of a lifelong
+    hypo-cholesterolaemic at 2 mmol/L for eighty. This is why guidelines now talk about starting
+    earlier, not just lower.
+  </p>
+  <p>
+    <em>Common misconception:</em> "hardened arteries" as a plumbing problem solved by roto-rooting.
+    Stents relieve obstructive stenoses and save lives during acute infarction, but for stable disease
+    the landmark ISCHEMIA trial found that invasive revascularisation did not reduce death or
+    infarction versus optimal medical therapy. The disease is in the vessel wall and the blood, not
+    the narrowest spot — which is why statins, blood-pressure control and smoking cessation prevent
+    more deaths than any catheter lab.
+  </p>
+
+  <h2>Hypertension: the silent multiplier</h2>
+  <p>
+    Hypertension is defined operationally — sustained clinic readings of 140/90 mmHg or above (130/80
+    by the 2017 ACC/AHA criteria) — because that is where measured end-organ damage curves begin to
+    inflect. It affects well over a billion people; roughly half are unaware. The pathophysiology of
+    90–95% of cases (<em>primary</em> hypertension) is distributed: kidney pressure-natriuresis curves
+    reset rightward (higher pressures needed to excrete the same salt), amplified by obesity, salt,
+    alcohol, age-related vascular stiffening and sympathetic overactivity. The <em>secondary</em> 5%
+    has a named culprit — renal artery stenosis, primary aldosteronism, sleep apnoea — and is worth
+    hunting because it is curable.
+  </p>
+  <p>
+    The damage is mechanical at every level. Chronically elevated pressure accelerates
+    atherosclerosis (the risk-factor chain's first link), thickens the left ventricle
+    (concentric hypertrophy), stiffens large arteries (isolated systolic hypertension in the elderly:
+    systolic keeps rising while diastolic falls as vessels lose elastic recoil), and finally
+    overwhelms small arterioles, producing the retinopathy, nephropathy and lacunar strokes of
+    malignant hypertension. Every point of damage scales with the pressure integral over time —
+    which is why a 10 mmHg population-wide reduction cuts stroke mortality roughly 40% and why
+    asymptomatic people are treated: the treatment's target is an event twenty years away.
+  </p>
+
+  <h2>Heart failure: compensation and its cost</h2>
+  <p>
+    Heart failure is the end state where the pump cannot deliver adequate output at normal filling
+    pressures. The classification that governs therapy splits on one number, ejection fraction (EF =
+    stroke volume ÷ end-diastolic volume):
+  </p>
   <ul>
-    <li><strong>The heart-and-circulation lesson</strong> explains the pump and the plumbing; pathophysiology explains what goes wrong: valves narrow or leak, muscle weakens, rhythm circuits misfire (fibrillation — treated with the defibrillator's reset).</li>
-    <li><strong>ECG reading is pattern recognition:</strong> the electrical trace reveals rhythm, muscle damage (ST elevation in heart attacks) and conduction blocks — a 12-lead ECG is the fastest life-saving test in medicine.</li>
-    <li><strong>Risk calculators quantify decades:</strong> models combine age, pressure, cholesterol, smoking and diabetes into 10-year risk percentages — turning prevention from vibes into numbers (Framingham study, running since 1948, built the framework).</li>
-    <li><strong>Prevention beats rescue:</strong> population blood-pressure control saves more lives than any emergency department. The public-health lesson and this one share the conclusion from different ends.</li>
+    <li><strong>HFrEF</strong> (reduced EF, classically under 40%): systolic failure. Infarcted or
+    cardiomyopathic muscle contracts weakly. Compensation runs through the Frank–Starling mechanism
+    (more stretch, stronger beat) and the neurohormonal axis: falling output activates the sympathetic
+    system and the renin–angiotensin–aldosterone cascade, retaining salt and water to raise preload.
+    The compensation is the disease's engine — chronic volume overload dilates the ventricle, wall
+    stress rises (Laplace: wall stress ∝ pressure × radius), remodelling progresses, and output falls
+    further. Modern therapy interrupts precisely this loop: ACE inhibitors/ARNI block angiotensin,
+    beta-blockers tame the sympathetic drive, mineralocorticoid antagonists block aldosterone, SGLT2
+    inhibitors work through still-being-mapped metabolic paths. Each class added on top of standard
+    care delivers a further 20–30% relative mortality reduction — among the largest effects in
+    medicine.</li>
+    <li><strong>HFpEF</strong> (preserved EF, over 50%): diastolic failure. The ventricle is stiff
+    (hypertrophied, fibrotic, often diabetic and obese) and fills poorly, so congestion arrives at
+    normal EF. Half of all heart failure; until recently, essentially no evidence-based therapy —
+    an honest open problem, with SGLT2 inhibitors now the first class to show credible benefit.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Braunwald's Heart Disease; Framingham Heart Study (1948–); ESC/AHA guidelines; GBD cardiovascular estimates (Lancet).</p>
+  <p>
+    <strong>Worked example.</strong> A dilated ventricle with end-diastolic volume 250 mL ejecting
+    75 mL has EF = 75/250 = 30%. The same stroke volume from a normal 120 mL ventricle is an EF of
+    62% — same output, utterly different prognosis and therapy. This is why echocardiography, not
+    symptoms, starts every heart-failure pathway: the number chooses the drug classes.
+  </p>
+
+  <h2>Acute events: ischaemia, infarction, rhythm</h2>
+  <p>
+    When a coronary thrombus occludes flow, myocardium dies on a clock — "time is muscle." The
+    diagnosis stack is fast: the 12-lead ECG (ST-segment elevation marks transmural infarction;
+    a STEMI patient goes straight to the catheter lab), and troponin assays (proteins released by
+    dead myocytes, rising within hours, near-perfectly specific for myocardial injury). Reperfusion —
+    stenting the culprit artery or thrombolysis — salvages jeopardised muscle at roughly an hour-per-
+    mortality-decimal scale: every 30 minutes of delay measurably raises one-year mortality. Then the
+    rhythm questions: necrotic substrate generates ventricular fibrillation (the defibrillator's
+    non-synchronous reset is the only treatment), and scarred atria sustain atrial fibrillation —
+    irregular, ineffective atrial quivering that also stagnates blood in the left atrial appendage,
+    creating the stroke risk that anticoagulation (and CHA<sub>2</sub>DS<sub>2</sub>-VASc scoring)
+    manages.
+  </p>
+
+  <h2>Risk arithmetic in practice: the calculator and the NNT</h2>
+  <p>
+    Guidelines operationalise prevention through multivariable risk scores (Framingham-derived,
+    now pooled-cohort equivalents): age, sex, blood pressure, cholesterol, smoking and diabetes
+    combine into a 10-year risk percentage, and the percentage drives decisions — a statin is
+    generally recommended at 10-year risk of 10% and above, because absolute benefit scales
+    with baseline risk. Work the arithmetic: a 62-year-old smoker with systolic pressure 150
+    and total cholesterol 6.5 mmol/L might score 20%; a statin cutting LDL by 1.0 mmol/L
+    reduces major vascular events by roughly a quarter, so absolute risk falls about five
+    points — number needed to treat ≈ 20 over ten years. The same drug in a 40-year-old at 2%
+    risk yields NNT ≈ 200: the clinical decision is the same molecule at a very different
+    price. Blood-pressure therapy follows the same structure (each 10 mmHg reduction cuts
+    stroke risk roughly 40% at every baseline), and the population version is the most
+    consequential public-health arithmetic in medicine: shifting average population blood
+    pressure down does more than any single emergency intervention — which is why salt policy,
+    tobacco taxation and hypertension case-finding are, institutionally, cardiology.
+  </p>
+
+  <h2>From mechanisms to the clinic visit</h2>
+  <p>
+    The chain above explains what clinicians actually check. The pulse and blood-pressure cuff
+    sample the haemodynamic equation; the ECG reads the conduction system and shows
+    hypertrophy (voltage criteria) and ischaemia; troponin and echocardiography grade muscle
+    and valve function; the lipid panel and HbA1c track the chronic exposures; and the risk
+    calculator compresses all of it into the prevention decision. Pathophysiology is not
+    background knowledge — it is why the checklist is shaped the way it is, and why a normal
+    examination with terrible risk factors still warrants treatment: the medicine targets the
+    twenty-year integral, not today's symptoms.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The epidemiological machinery.</strong> Every number above descends from cohort logic —
+    above all the Framingham Heart Study (running since 1948), which coined "risk factor" and built
+    the multivariable risk functions behind every clinic calculator. Their frailties are the
+    intermediate-tier lesson's causal-inference questions: confounding, competing risk, and the
+    gap between relative and absolute risk (a 25% relative reduction means everything to a 20%-risk
+    patient and little to a 1%-risk one — the number needed to treat makes this explicit).
+    <strong>The inflammation frontier.</strong> Lowering LDL further after statins helps, but residual
+    risk persists; the CANTOS trial showed an anti-inflammatory antibody (canakinumab) cut events
+    without touching cholesterol — opening a second axis, now shared with colchicine prescriptions.
+    Whether hsCRP-guided therapy enters guidelines is a live question.
+    <strong>HFpEF's enigma</strong> remains the field's most consequential open problem: a
+    heterogeneous syndrome (stiffness, microvascular disease, inflammation, obesity phenotypes)
+    masquerading as one diagnosis, defeating trial after trial. And the Mendelian-randomisation
+    programme is quietly rewriting prevention: lifelong exposure simulations in genetic data keep
+    confirming that the age at which risk factors start matters as much as their magnitude — the
+    quantitative case for treating prevention as a decades-long project, not a midlife correction.
+  </p>
+
+  <Widget no="2" caption="check yourself: haemodynamics, plaques, EF, drug mechanisms" widget="quiz" config={cardioQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> Braunwald's Heart Disease; Framingham Heart Study (1948–); Ference et al. on LDL causality and Mendelian randomisation (2017); CANTOS trial (2017); ISCHEMIA trial (2020); ESC/AHA guidelines; GBD cardiovascular estimates (Lancet).</p>
 </TopicPage>

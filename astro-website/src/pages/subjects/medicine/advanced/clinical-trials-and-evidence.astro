@@ -10,24 +10,222 @@ const trialsCfg = {
     { math: '4 · Phase IV: the real world reports in', note: 'After approval, surveillance catches rare effects (too rare for trial sizes), long-term outcomes and misuse. Vioxx\'s 2004 withdrawal — after years on the market — is the lesson that approval is not the finish line.' },
   ],
 };
+
+const evidenceQuiz = {
+  questions: [
+    {
+      q: 'A trial of a new drug recruits only patients who volunteer enthusiastically, and the control arm gets the old drug during a hospital renovation that disrupted care. The new drug looks better. What has broken?',
+      choices: ['Randomisation', 'Blinding', 'The placebo effect', 'Intention-to-treat'],
+      answer: 0,
+      why: 'Both problems are failures of randomisation\'s core guarantee: that arms differ only by treatment. Selection put different people in each arm, and the period effect contaminated controls — no statistical adjustment reliably repairs a broken randomisation.',
+    },
+    {
+      q: 'A drug cuts a 10-year death risk from 20% to 15%. What is the number needed to treat (NNT)?',
+      choices: ['5', '20', '33', '100'],
+      answer: 1,
+      why: 'Absolute risk reduction is 20% − 15% = 5%. NNT = 1 ÷ 0.05 = 20 patients treated for ten years to prevent one death. (The 25% relative reduction is the same fact, but NNT makes the clinical weight visible.)',
+    },
+    {
+      q: 'Why can a Phase III trial involving thousands of patients still miss a serious side effect?',
+      choices: ['Trials do not record side effects', 'The effect may be rarer than the trial can detect or appear only after years', 'Regulators suppress the data', 'Patients hide symptoms'],
+      answer: 1,
+      why: 'To reliably detect an adverse event occurring in 1 in 10,000, you need tens of thousands of exposed patients plus follow-up time — beyond almost any Phase III. This is precisely what Phase IV pharmacovigilance exists for.',
+    },
+    {
+      q: 'A paper reports a strong benefit in the "over-65 female diabetic" subgroup — one of 24 subgroups reported. Why be sceptical?',
+      choices: ['Subgroups are never valid', 'With many subgroups, some will show significance by chance — was it pre-specified?', 'Diabetes invalidates trials', 'Older patients are outliers'],
+      answer: 1,
+      why: 'Test 24 independent subgroups at p of 0.05 and roughly one will be "significant" by luck alone. The claim is credible only if pre-registered, biologically motivated, and consistent across trials — post-hoc subgroup findings are hypothesis-generating, not practice-changing.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/medicine/advanced/clinical-trials-and-evidence">
   <h2>The idea</h2>
   <p>
-    Clinical trials are <strong>medicine's proof machine</strong> — the randomised comparison that
-    separates effective treatments from expensive hope. The phase system, randomisation, blinding
-    and pre-registration form the pipeline every drug and vaccine passes. Reading a trial
-    critically (who was studied, against what, measured how) is a core medical literacy.
+    Medicine's central epistemic problem: patients get better for reasons that have nothing to do
+    with the treatment. Diseases resolve spontaneously; symptoms fluctuate and regression to the mean
+    guarantees that people seek care at their worst; the act of being treated (attention, ritual,
+    expectation) has real physiological effects. Before randomisation, medicine was a graveyard of
+    therapies that "obviously worked" — bloodletting among them — because experience without control
+    cannot separate treatment effect from natural history. The randomised controlled trial is the
+    design that solves this, and everything in this chapter is either how it works, how it scales
+    into a drug-development pipeline, or how to read one honestly.
   </p>
 
   <Widget no="1" caption="the four phases and the attrition between them" widget="equationStep" config={trialsCfg} />
 
-  <h2>Reading a trial like a professional</h2>
-  <ul>
-    <li><strong>Who was studied?</strong> A trial in healthy 25-year-olds may say nothing about your 78-year-old with kidney disease. Endpoints matter: real outcomes (death, stroke) beat surrogate markers (a cholesterol number) — surrogates have famously misled.</li>
-    <li><strong>Randomisation and blinding:</strong> what protects against bias. Non-randomised "trials" are the terrain the causal-inference lesson navigates with greater care.</li>
-    <li><strong>Statistical honesty:</strong> pre-registered endpoints (no switching after seeing data), intention-to-treat analysis, and absolute vs relative risk ("doubles risk" from 1-in-a-million to 2-in-a-million is different news from 40% to 80%).</li>
-    <li><strong>Meta-analysis and hierarchy of evidence:</strong> one trial is a data point; systematic reviews of many trials are the summit — with publication bias (trials that fail go unpublished) as the permanent asterisk (clinicaltrials.gov exists to fix it).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> ICH-GCP guidelines; clinicaltrials.gov registry; Ioannidis, "Why Most Published Research Findings Are False" (2005); CONSORT statement.</p>
+  <h2>Randomisation: why it is the load-bearing wall</h2>
+  <p>
+    The problem any comparison faces is confounding — patients who receive the new treatment differ
+    systematically from those who do not (they are sicker, or richer, or treated at better centres),
+    and those differences, not the drug, may drive the outcome. Randomisation severs the link: if
+    allocation is truly by chance, then <em>in expectation</em> the arms are identical on every
+    variable — measured or not, known or not. That is the magic: no other design (matching,
+    adjustment, propensity scores) balances the unknown confounders, because you cannot adjust for
+    what you did not measure. Blinding then protects the comparison at its other choke points:
+    patients report differently when they know (expectation effects), clinicians treat and measure
+    differently (performance bias), and outcome assessors code events differently (detection bias).
+    The full architecture is allocation concealment (the randomisation sequence hidden from enrolment
+    decisions), double-blinding, and intention-to-treat analysis — analyse everyone as randomised,
+    including dropouts and protocol violators, because the moment you clean up the groups you
+    re-import the confounding randomisation removed.
+  </p>
+  <p>
+    <strong>Worked example of the failure mode.</strong> Suppose a surgical innovation is adopted by
+    enthusiastic pioneers, while control patients receive conventional care during a period when a
+    hospital renovation disrupted wards. Non-randomised comparison: new surgery, 80% survival;
+    conventional, 65%. Randomise (REPAIR-like trials of this era) and the gap collapses or reverses
+    — the pioneers selected healthier candidates, and the renovation period selected sicker ones.
+    History is rich with these reversals: hormone replacement therapy looked cardioprotective in
+    observational cohorts (women who took it were healthier in every measurable way) and showed harm
+    in the Women's Health Initiative randomised trial. The observational-versus-randomised gap is
+    the recurring object lesson of evidence-based medicine.
+  </p>
+
+  <h2>The pipeline: phases and their arithmetic</h2>
+  <p>
+    Drug development is a funnel with brutal attrition: from roughly 5,000 screened compounds, one
+    reaches approval; the process takes 10–15 years and costs on the order of a billion dollars
+    (estimates range 0.7–2.6 billion including failures). Phase I establishes human safety and dose
+    (healthy volunteers, escalation rules, pharmacokinetics); Phase II asks for an efficacy signal in
+    patients and kills most candidates — the attrition cliff; Phase III is the confirmatory gamble,
+    large, multi-site, powered for the approval decision; Phase IV is the market as laboratory. Each
+    phase's design inherits the previous phase's uncertainty: an under-dosed Phase III kills a good
+    drug, an over-dosed one poisons it — dose selection is where trials most often fail.
+  </p>
+  <p>
+    <strong>Power, computed.</strong> How big must Phase III be? The rough rule for a dichotomous
+    endpoint: n per arm ≈ 16 × p(1−p) ÷ δ², where p is the control-event rate and δ the absolute
+    improvement worth detecting, with 80% power at p = 0.05. Control mortality 20%, hoped reduction
+    to 15% (δ = 0.05): n ≈ 16 × 0.2 × 0.8 ÷ 0.0025 = 1,024 per arm — over 2,000 patients, years of
+    recruitment. Try to detect δ = 0.02 and the requirement grows to ~6,400 per arm. This arithmetic
+    is why trials are powered for the <em>sponsor's</em> question, and why "no significant
+    difference" in a 40-patient study means almost nothing: absence of evidence is not evidence of
+    absence, and the confidence interval is the honest way to say what the study could and could not
+    exclude.
+  </p>
+
+  <h2>Endpoints: what you measure is what you know</h2>
+  <p>
+    Clinical endpoints (death, stroke, fracture) are gold but slow and expensive; surrogate endpoints
+    (a cholesterol value, tumour shrinkage, a biomarker) are fast and measurable. The recurring
+    disaster of therapeutics is surrogates that decoupled: anti-arrhythmics suppressed ectopic beats
+    (the surrogate) and increased mortality (the outcome) — the CAST trial's finding killed a
+    standard practice that had been confidently treating for years. Surrogates are acceptable only
+    when validated — shown repeatedly to track the clinical endpoint in this drug class, this
+    population. Modern accelerated-approval pathways deliberately trade on this: conditional approval
+    on surrogate response rates, with confirmatory trials (increasingly, with withdrawal teeth)
+    required afterwards. Know which endpoint a headline is using before believing it.
+  </p>
+  <p>
+    <em>Common misconception:</em> "statistically significant" means clinically important. A huge
+    trial can find a statistically robust effect of trivial size (relative risk reduction 3% on a
+    0.4% baseline event rate); a small trial can find an enormous effect that fails p = 0.05. The
+    professional reading reports <strong>absolute risk reduction</strong> and the
+    <strong>number needed to treat</strong>: a statin cutting 10-year risk from 20% to 15% (ARR 5%)
+    gives NNT = 20; the same relative benefit in a 2%-risk patient gives ARR 0.5% and NNT = 200.
+    Same drug, same trial, different patient — the entire art of individualised prescribing is this
+    recomputation.
+  </p>
+
+  <h2>Reading a paper critically</h2>
+  <p>
+    The checklist, in the order it usually breaks. <strong>Was it registered, and were the endpoints
+    pre-specified?</strong> Outcome switching — reporting the endpoint that worked after seeing the
+    data — was common enough that registries (clinicaltrials.gov, mandated for publication in major
+    journals) exist to catch it; compare registered primary outcome to reported one. <strong>Is the
+    comparison fair?</strong> Active controls beat placebos for ethics, but an under-dosed comparator
+    manufactures superiority. <strong>Intention-to-treat?</strong> Per-protocol analyses re-import
+    selection bias. <strong>Are the subgroups pre-specified?</strong> Twenty-four reported subgroups
+    guarantee one "significant" finding at p = 0.05 by chance alone. <strong>Are harms reported with
+    the same energy as benefits?</strong> Trials systematically under-report adverse events. The
+    CONSORT checklist exists because each of these failures recurred often enough to need a name.
+    Then the highest-level move: place the result in the evidence hierarchy — systematic reviews and
+    meta-analyses of pre-registered randomised trials sit at the summit, with heterogeneity (I²)
+    telling you whether studies agree enough to pool, and funnel-plot asymmetry or registry-comparison
+    studies exposing <strong>publication bias</strong> — the systematic disappearance of negative
+    trials, quantified for antidepressants (turnaround study: FDA registry data nearly halved the
+    published effect size).
+  </p>
+
+  <h2>The regulatory layer: approval and after</h2>
+  <p>
+    Trials exist inside a regulatory architecture. Regulators (FDA, EMA, MHRA and
+    counterparts) define evidentiary standards: Phase III typically requires adequate
+    well-controlled evidence, pre-specified endpoints, and benefit that justifies risk for
+    the <em>indicated population</em> — approvals are narrow for a reason, and off-label use
+    is the medical system's risk transfer. Accelerated pathways (conditional approval,
+    breakthrough designation, priority review) trade surrogate endpoints for speed with
+    confirmatory obligations; the accelerated-approval withdrawal mechanism — finally
+    exercised meaningfully in the 2020s (an Alzheimer's drug's marketing withdrawn, several
+    oncology indications retracted after failed confirmatory trials) — is the system's
+    self-correction being tested in public. <strong>Pharmacovigilance</strong> is the
+    permanent phase: spontaneous-report systems (where under-reporting and reporting bias
+    live), mandated registries (pregnancy exposure, long-term safety), periodic safety
+    updates, and signal-detection algorithms scanning databases for patterns. The regulatory
+    story is also political economy: user fees fund reviewers, trial obligations shape where
+    trials run (increasingly global, with ethics questions about populations that bear risk
+    without assured access), and patent timelines (the 20-year clock runs from filing, so
+    effective market exclusivity is much shorter) shape which trials get run at all.
+  </p>
+
+  <h2>Vaccines: the pipeline's fastest modern case</h2>
+  <p>
+    The COVID-19 vaccine programme compressed the standard sequence without skipping its
+    logic: Phase I safety (mRNA platforms' first human doses in 2020), Phase II
+    immunogenicity and dose selection, and Phase III efficacy trials of unprecedented size
+    (30,000–45,000 participants, event-driven analysis) read out in under a year — possible
+    because funding removed the usual serial pauses and the epidemic's scale supplied
+    endpoints quickly, not because the evidentiary bar moved. The trial results (efficacy
+    around 90% against symptomatic disease in the initial window) and the subsequent
+    real-world evidence (strong persistent protection against severe disease, waning
+    effectiveness against infection as variants emerged) are the best modern teaching case
+    for this entire chapter: endpoints, surrogates, generalisability and pharmacovigilance,
+    all at once.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Designs beyond the classic RCT.</strong> The RECOVERY platform trial (COVID era) showed
+    what adaptive, multi-arm infrastructure can do: one protocol, many treatment arms entering and
+    leaving as evidence accumulates, tens of thousands of patients, and life-saving answers
+    (dexamethasone) in months instead of years. Adaptive designs, Bayesian interim analyses and
+    master-protocols are now mainstream; equivalence and non-inferiority designs (asking "is the new
+    drug not-worse," for when a biosimilar cannot ethically be tested against placebo) require
+    reading the margin, not the p-value. <strong>Fraud and replication.</strong> The Surgisphere
+    scandal (2020) — retracted Lancet and NEJM papers built on a database that could not exist —
+    forced journal-level reform and is the modern case study in why data sharing matters; retired
+    classics like Wakefield's autism fraud show the social cost of evidence failure.
+    <strong>The generalisability problem.</strong> Trials exclude exactly the patients clinicians
+    treat: the elderly, multi-morbid, pregnant, and polypharmacy-adjacent — median trial participants
+    remain younger, whiter and male-skewed relative to disease populations, and regulators increasingly
+    demand diversity action plans. Real-world evidence (claims data, registries) can extend
+    conclusions but re-opens the confounding door — its honest use is hypothesis plus calibration
+    against trials. <strong>Open questions:</strong> how to run trials during epidemics at the speed
+    pathogens move; whether peer review adds measurable quality; and whether AI-drafted protocols and
+    synthetic control arms (borrowing historical patient data as comparators) will shrink trials
+    faster than they import bias. Evidence-based medicine, it turns out, needs evidence about itself.
+  </p>
+  <p>
+    Health economics completes the decision architecture. The randomised trial answers "does
+    it work?"; the cost-effectiveness analysis answers "is it worth it?" — quality-adjusted
+    life-years (QALYs) gained per pound, with thresholds (historically around £20,000–30,000
+    per QALY at NICE) rationing implicitly. The arithmetic is consequential and contested:
+    QALYs weight years by quality, which can disadvantage disabled populations (a documented
+    equity critique), and the thresholds are administrative conventions, not laws of nature.
+    The fuller frame — cost per life saved, value-of-statistical-life estimates, discounting
+    of future health — makes explicit what every health system decides implicitly. And the
+    access question closes the loop back to trials: pricing negotiations use the trial
+    evidence, so trial design (which comparator, which population, which endpoint) ultimately
+    shapes who gets the drug. The advanced reading of any clinical paper now includes its
+    economic evaluation — because approval, reimbursement and access are one pipeline with
+    different gates. The lesson generalises beyond medicine: any evidence-based policy
+    eventually meets a budget, and the meeting is where the evidence's real-world meaning is
+    set.
+  </p>
+
+  <Widget no="2" caption="check yourself: randomisation, NNT, power, subgroup traps" widget="quiz" config={evidenceQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> ICH-GCP guidelines; CONSORT statement; clinicaltrials.gov registry; Ioannidis, "Why Most Published Research Findings Are False" (2005); Turner et al. on antidepressant publication bias (2008); RECOVERY Collaborative Group (2021); Women's Health Initiative (2002); CAST trial (1991).</p>
 </TopicPage>

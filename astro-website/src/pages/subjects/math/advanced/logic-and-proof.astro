@@ -10,31 +10,213 @@ const indCfg = {
     { math: 'Then (k+1)(k+2)/2 ✓', note: 'Add k+1 to both sides and rearrange: the sum to k+1 equals (k+1)(k+2)/2. Domino k+1 falls — so every domino falls.' },
   ],
 };
+
+const sqrt2Cfg = {
+  title: 'Worked example: proving √2 is irrational, by contradiction',
+  steps: [
+    { math: 'Assume √2 = a/b, a fraction in lowest terms', note: 'suppose the claim is false: √2 IS a ratio of integers, with no common factor.' },
+    { math: '2 = a²/b²  →  a² = 2b²', note: 'clear the denominator. So a² is even.' },
+    { math: 'a is even, say a = 2m', note: 'if a were odd, a² would be odd (odd × odd = odd). Contrapositive logic inside a contradiction proof.' },
+    { math: '2b² = (2m)² = 4m²  →  b² = 2m²', note: 'so b² is even too, hence b is even.' },
+    { math: 'a and b both even — they share factor 2', note: 'this contradicts "lowest terms". The assumption self-destructs.' },
+    { math: '∴ √2 is irrational', note: 'the only escape: the assumption was impossible. The claim stands, forever, with certainty no measurement can match.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/math/advanced/logic-and-proof">
   <h2>The idea</h2>
   <p>
-    Beyond computation, mathematics is the craft of <strong>proof</strong> — arguments airtight
-    enough to survive all scrutiny, forever. Four proof patterns cover most of the ground: direct
-    proof, proof by contrapositive, proof by contradiction, and mathematical induction. Each is
-    a reusable frame; learning to spot which fits is the skill.
+    Every result you have met so far — Pythagoras, the derivative rules, the fundamental
+    theorem — came with a receipt: a <strong>proof</strong>, an argument so airtight that
+    once seen, it can never be un-seen. Proof is what separates mathematics from every
+    other empirical subject. A physics claim is held until the next experiment; a
+    mathematical claim, once proven, holds for all time and all universes where its
+    definitions make sense. This page is the craft manual: the small logical vocabulary
+    every proof is written in, the four great proof patterns, and the discipline of writing
+    arguments that leave no exit for doubt. It is also the toolkit behind the geometry unit
+    this lesson sits in — every circle theorem you know is a proof you can now dissect.
+  </p>
+  <p>
+    The atoms are <strong>propositions</strong> — statements that are definitely true or
+    false (2 is prime: true; 7 is even: false; "this sentence is false": neither, and
+    therefore not a proposition). Connectives build compound propositions: AND, OR, NOT,
+    and the all-important <strong>implication</strong> "if P then Q", written P → Q. The
+    implication deserves care, because its everyday and technical meanings differ. In
+    logic, P → Q is false in exactly one case: P true and Q false. If the hypothesis is
+    false, the implication is vacuously true — "if pigs fly, I am the Pope" is a true
+    statement. That convention is not pedantry; it is what makes proofs by cases and
+    contrapositives work cleanly.
+  </p>
+
+  <h2>Implications: converse, inverse, contrapositive</h2>
+  <p>
+    From any implication P → Q, three cousins can be formed, and keeping them straight is
+    half of careful reasoning:
+  </p>
+  <ul>
+    <li><strong>Converse</strong> (Q → P): <em>not</em> equivalent. "If it rains, the pitch is wet" does not mean "if the pitch is wet, it rained" — the sprinklers ran this morning.</li>
+    <li><strong>Inverse</strong> (¬P → ¬Q): also not equivalent, and in fact equivalent to the converse.</li>
+    <li><strong>Contrapositive</strong> (¬Q → ¬P): <em>always logically equivalent</em> to the original. "If the pitch is dry, it did not rain" says exactly what the original says.</li>
+  </ul>
+  <p>
+    The equivalence of P → Q and ¬Q → ¬P can be checked by truth table: both are false in
+    exactly one row (P true, Q false) and true in the other three. This single fact powers
+    an entire proof technique, because sometimes the contrapositive is dramatically easier
+    to argue. Example: "if n² is even, then n is even." Trying it forwards means squaring
+    an arbitrary number and inspecting parity — clumsy. The contrapositive, "if n is odd,
+    then n² is odd," is one line: n odd means n = 2m + 1, so n² = 4m² + 4m + 1 = 2(2m² + 2m) + 1,
+    which is visibly odd. Done — and the original claim comes free. A related trap has a
+    name: <strong>affirming the consequent</strong>. "If the equation has det = 0 it has no
+    inverse; this matrix has no inverse; therefore its det is 0" — invalid, because
+    non-invertibility might arise another way (it cannot here, but the inference form is
+    still illegal; the converse is doing the work). Its twin, <strong>denying the
+    antecedent</strong>, fails the same way.
+  </p>
+  <p>
+    Quantifiers complete the vocabulary. "For all x, P(x)" and "there exists x, P(x)"
+    behave oppositely under negation: the negation of "all primes are odd" is "there
+    exists a prime that is even" — and a single example (2) settles it. The negation of
+    "there is a largest prime" is "every prime has a bigger prime" — which is exactly what
+    Euclid proved. Flipping quantifiers correctly is the grammar of disproof.
+  </p>
+
+  <h2>The four proof patterns</h2>
+  <p>
+    <strong>Direct proof.</strong> Chain known facts into the claim. Worked example:
+    "the sum of two even integers is even." Let m = 2a and n = 2b (that is what "even"
+    <em>means</em> — definitions are load-bearing). Then m + n = 2a + 2b = 2(a + b), which
+    is 2 times an integer, hence even. The proof is three lines because the definition was
+    deployed precisely; most "stuck" proofs are stuck on an unexamined definition.
+  </p>
+  <p>
+    <strong>Proof by contrapositive.</strong> As above: prove ¬Q → ¬P and claim P → Q by
+    the truth-table identity. Best when Q is an awkward property (like "even") and ¬Q
+    gives you something concrete (like "odd", with its algebraic form 2m + 1).
+  </p>
+  <p>
+    <strong>Proof by contradiction (reductio ad absurdum).</strong> Assume the claim is
+    false, derive anything impossible, and conclude the claim was true — the only way a
+    false assumption can hurt you is by contradiction. The most famous proof in
+    mathematics runs this way:
+  </p>
+
+  <Widget no="2" caption="the classic reductio — assume √2 is a fraction, watch the assumption destroy itself" widget="equationStep" config={sqrt2Cfg} />
+
+  <p>
+    Euclid's infinitude of primes is the other monument, and it is short enough to run in
+    your head. Suppose the primes are finite: p₁, p₂, …, pₙ is the complete list. Form
+    N = p₁·p₂·…·pₙ + 1. Divide N by each prime in turn: each leaves remainder 1, so none
+    divides N. So N is either itself prime (a prime missing from the "complete" list) or
+    has a prime factor missing from the list. Either way, contradiction. Hence no complete
+    finite list exists — primes are inexhaustible. Notice the structure: no new primes were
+    computed, no formula found; a single impossible consequence demolished the assumption.
+  </p>
+  <p>
+    <strong>Mathematical induction.</strong> For claims of the form "P(n) holds for every
+    natural number n": verify P(1) (the base case), then prove the <strong>inductive
+    step</strong> — that P(k) implies P(k+1). The domino picture explains why this
+    suffices: the base case tips domino 1, the step guarantees each falling domino tips
+    the next, so every domino falls. The full walk-through for the oldest formula in the
+    book:
   </p>
 
   <Widget no="1" caption="mathematical induction — the domino argument, run on the oldest formula in the book" widget="equationStep" config={indCfg} />
 
-  <h2>The four frames</h2>
+  <p>
+    Induction proves <em>that</em>, never <em>why</em> — it verifies the formula without
+    revealing where it came from (the geometric picture of a staircase of dots, or Gauss's
+    pairing argument 1 + n, 2 + (n−1), …, gives the insight). Also note what induction
+    does <em>not</em> require: you do not "assume the thing you are proving" — you assume
+    P(k) for one arbitrary k, which is exactly the conditional structure P(k) → P(k+1).
+    Confusing those is the most common objection from sharp beginners, and the truth-table
+    view dissolves it.
+  </p>
+
+  <h2>Proof at work: one circle theorem end to end</h2>
+  <p>
+    Since this lesson lives in the geometry unit, here is the method applied to a syllabus
+    theorem — <strong>the angle in a semicircle is a right angle</strong>. Claim: if AB is
+    a diameter of a circle with centre O and C is any other point on the circle, then angle
+    ACB = 90°. Proof: join OC. Because OC and OA are both radii, triangle OAC is isosceles,
+    so its base angles are equal — call them α. Similarly triangle OBC is isosceles with
+    base angles β. Now the angle AOC sits outside triangle OAC, so by the exterior-angle
+    identity it equals 2α; likewise angle BOC = 2β. But angles AOC and BOC together make
+    the straight line AOB, so 2α + 2β = 180°, hence α + β = 90°. And α + β <em>is</em>
+    angle ACB. Three ingredients — isosceles base angles, the exterior-angle identity, and
+    angles on a straight line — assembled with every step justified. This is the template:
+    the diagram suggested the radii, the definitions did the rest.
+  </p>
+
+  <h2>Counterexamples: the one-line demolition</h2>
+  <p>
+    No number of confirming examples proves a universal claim, but a single
+    <strong>counterexample</strong> destroys it. The danger is that patterns can run
+    breathtakingly long before breaking. Euler noted that n² − n + 41 yields a prime for
+    every n from 1 to 40 — forty consecutive successes — and fails at n = 41, where the
+    value is 41² (41 divides it). So testing, however extensive, is not proof; it is
+    suspicion with data. Counterexamples are also constructive tools: proving "not all
+    numbers are of the form…" <em>is</em> exhibiting one number that is not. Mathematicians
+    collect counterexamples the way engineers collect failure reports — each one maps the
+    boundary of a theorem, which is why the great counterexample collections (like Gelbaum
+    and Olmsted's) are genuine research references.
+  </p>
+
+  <h2>Writing clean proofs: the discipline</h2>
   <ul>
-    <li><strong>Direct:</strong> start from known facts, chain implications to the claim. Most algebra proofs.</li>
-    <li><strong>Contrapositive:</strong> to prove "if A then B", prove "if not B then not A" — logically identical, often far easier. ("If n² is even, n is even" is contrapositive work.)</li>
-    <li><strong>Contradiction:</strong> assume the claim is false, derive nonsense, conclude it was true. Euclid's proof that primes never run out works this way — assume a largest prime, multiply all of them, add one, and watch a new prime appear.</li>
-    <li><strong>Induction:</strong> for claims about every natural number — base case plus a step that preserves truth. The domino guarantee above.</li>
+    <li><strong>State the claim and the type of argument before starting.</strong> "We prove the contrapositive" tells the reader the road map.</li>
+    <li><strong>Define every variable before using it.</strong> "Let n be an integer" — the proof dies without the quantifier, because the claim might only hold for positive n.</li>
+    <li><strong>Each line needs a reason.</strong> A previous line, a definition, a named theorem, or algebra. If a step feels too obvious to justify, write the justification anyway — obviousness is where errors live.</li>
+    <li><strong>Draw the picture, write the algebra.</strong> In geometry — the unit this lesson belongs to — the diagram suggests, the proof confirms. The theorem "the angle at the centre of a circle is twice the angle at the circumference subtended by the same arc" is suggested by any compass drawing and proven by the isosceles-triangle fact that radii make equal base angles, plus the exterior-angle identity. Never let the diagram substitute for the argument: misleading figures are a documented source of false "proofs".</li>
+    <li><strong>Prove backwards, write forwards.</strong> Discover the path by working from the goal, then present it from the givens. A proof is a performance of understanding, not the diary of finding it.</li>
   </ul>
 
-  <h2>What separates proof from persuasion</h2>
-  <ul>
-    <li><strong>Examples never prove; one counterexample always disproves.</strong> A million even numbers don't make "all primes are odd" true — the number 2 is a one-line demolition.</li>
-    <li><strong>Definitions are load-bearing.</strong> Most confusion in mathematics is two people using one word with different definitions.</li>
-    <li><strong>Proofs explain, not just verify.</strong> A good proof shows <em>why</em> — that's why mathematicians hunt for new proofs of old theorems.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Hammack, Book of Proof; Polya, How to Solve It.</p>
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Axioms and the shape of mathematics.</strong> Every proof rests finally on
+    unproved starting points — <strong>axioms</strong>. Euclid built geometry on five
+    postulates; two millennia later it emerged that the fifth (the parallel postulate)
+    could be denied without contradiction, producing the non-Euclidean geometries on which
+    general relativity is built. The lesson is profound: proofs are conditional on axioms,
+    and changing axioms changes the universe of true statements. Within arithmetic,
+    <strong>Peano's axioms</strong> generate the natural numbers, and induction is literally
+    one of the axioms — which is why it is so powerful and why it applies only to the
+    integers (it fails for claims about the reals, which are not generated by a discrete
+    first element plus a successor).
+  </p>
+  <p>
+    <strong>Gödel's incompleteness theorems.</strong> In 1931 Kurt Gödel proved that any
+    consistent axiom system rich enough to describe arithmetic contains true statements it
+    cannot prove, and — the second shock — cannot prove its own consistency. The proof is
+    a reductio in disguise: encode the sentence "this statement is unprovable" as a
+    number-theoretic claim; if the system proves it, the system is inconsistent; if it
+    cannot, the statement is true but unprovable. Mathematics is thereby shown to be
+    inexhaustible: no finite rulebook captures all truth. Hilbert's dream of a complete,
+    self-certifying foundation ended — and in its place came a sharper question, namely
+    <em>which</em> statements a given system can settle. That question matured into
+    computability theory and the P versus NP problem, since a proof is precisely a
+    certificate that can be checked fast even if finding it may be hard.
+  </p>
+  <p>
+    <strong>Constructive versus non-constructive proof.</strong> Classical logic lets you
+    prove "there exists x with P(x)" by contradiction — without ever exhibiting x.
+    Constructivist mathematicians reject that move and demand a construction; the debate,
+    once philosophical, turned practical: computer science distinguishes existence proofs
+    that come with an algorithm from those that do not, and complexity theory quantifies
+    the gap. Related frontier: <strong>proof assistants</strong> (Lean, Coq, Isabelle) now
+    machine-check proofs — the four-colour theorem (1976) was among the first whose proof
+    no human could fully read, and Fermat's Last Theorem's 100-plus-page argument has been
+    fully formalised. The definition of "airtight" is becoming executable.
+  </p>
+  <p>
+    <strong>Open territory.</strong> Long-standing conjectures — the Riemann hypothesis,
+    the twin-prime conjecture, P versus NP — remain in the state every mathematician
+    works in: overwhelming evidence, no proof. Yitang Zhang's 2013 bounded-gaps result
+    (infinitely many prime pairs closer together than 70 million, since driven down to
+    246) shows the texture of progress: the full twin-prime claim still stands, but the
+    method it inspired reshaped analytic number theory. Learning proof is joining a
+    conversation that has run for twenty-three centuries — and in which, unlike every
+    other field, nothing once established is ever revised.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Hammack, <em>Book of Proof</em>; Polya, <em>How to Solve It</em>; Euclid, <em>Elements</em> (Books I and IX); Gödel (1931), "Über formal unentscheidbare Sätze…".</p>
 </TopicPage>

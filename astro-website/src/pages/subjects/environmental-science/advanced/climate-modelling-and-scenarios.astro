@@ -10,6 +10,17 @@ const modelCfg = {
     { math: '4 · How we know models work', note: 'Hindcasts (reproducing the 20th century), paleoclimate tests (ice ages — the lesson), volcano responses (Pinatubo\'s cooling was predicted), and ensembles (many models, spread = uncertainty). The skill is real and measured: ~0.1 °C precision on 20-year global means.' },
   ],
 };
+
+const ecsCfg = {
+  title: 'Worked example: from CO₂ doubling to climate sensitivity',
+  steps: [
+    { math: 'radiative forcing: ΔF = 5.35·ln(C/C₀)', note: 'the logarithmic law — each doubling adds the same forcing, which is why the doubling is the natural unit.' },
+    { math: 'doubling CO₂: ΔF = 5.35 × ln 2 ≈ 3.7 W/m²', note: 'a blanket with that much extra thickness, applied instantly, globally, day and night.' },
+    { math: 'no-feedback response: ΔT = ΔF/λ ≈ 3.7/3.2 ≈ 1.2 °C', note: 'Stefan–Boltzmann arithmetic: warm the surface until it radiates the extra 3.7 W/m² away.' },
+    { math: 'feedbacks amplify: water vapour (+), ice–albedo (+), lapse rate (−), clouds (?)', note: 'the feedback factor f ≈ 2.5–3 in the models — dominated by water vapour, dominated in uncertainty by clouds.' },
+    { math: 'ECS = 1.2 × 2.5–3 ≈ 2.5–4 °C per doubling', note: 'the IPCC AR6 assessment: very likely between 2 and 5, best estimate 3. Every carbon budget and every pathway projection inherits this number.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/environmental-science/advanced/climate-modelling-and-scenarios">
   <h2>The idea</h2>
@@ -17,17 +28,220 @@ const modelCfg = {
     Climate models are <strong>the most physically-constrained simulations ever built</strong> —
     the same fluid dynamics that forecasts weather, coupled to oceans, ice and carbon, run
     forward for centuries under scenarios humans choose. They are tested against the past
-    continuously, and their uncertainty bands are honest work, not hedging.
+    continuously, and their uncertainty bands are honest work, not hedging. The syllabus's
+    atmosphere-and-human-activities unit (4.1–4.4) supplies the pieces — atmosphere structure,
+    the enhanced greenhouse effect, acid rain, ozone — and this lesson assembles the machine
+    that turns that physics into numbers a policy-maker can argue with: how the models are
+    built, what they can and cannot resolve, how scenarios are defined, how the models are
+    validated, and how professionals read a projection.
+  </p>
+  <p>
+    The weather-versus-climate distinction is the first skill. A weather model predicts
+    the <em>state</em> of the atmosphere on a given day, and chaos caps its horizon at
+    ~two weeks (the differential-equations lesson's sensitive dependence). A climate
+    model predicts the <em>statistics</em> — the distribution of weather — which chaos
+    does not prevent, any more than casino unpredictability prevents the house knowing
+    its long-run edge. Climate models therefore answer a different, gentler question
+    ("if the blanket thickens this much, where does the energy balance settle?") with
+    the same equations.
   </p>
 
   <Widget no="1" caption="the physics, the grids, the scenarios, the validation" widget="equationStep" config={modelCfg} />
 
-  <h2>Reading projections like a professional</h2>
-  <ul>
-    <li><strong>Equilibrium climate sensitivity (ECS):</strong> warming per doubling of CO₂ — pinned by IPCC AR6 to 2.5–4 °C (narrowed from earlier ranges): the number that decides how urgent every pathway is.</li>
-    <li><strong>Uncertainty is mostly scenario + feedback, not physics:</strong> temperature ranges in 2100 come mainly from unknown human choices, secondarily from cloud feedbacks — the physics of the direct CO₂ effect has been settled since Arrhenius (1896).</li>
-    <li><strong>What models miss:</strong> ice-sheet dynamics (they under-predicted recent Antarctic loss — processes smaller than the grid), and tipping elements (handled as add-ons, the next lesson\'s subject). Model families are updated, not invalidated, by each surprise.</li>
-    <li><strong>Attribution science runs the models backwards:</strong> comparing worlds with and without human emissions — the basis for "this heatwave was X× more likely" (the weather lesson\'s World Weather Attribution) and increasingly for climate litigation evidence.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> IPCC AR6 WG1 (2021); Arrhenius (1896); CMIP6 ensemble documentation; Hausfather, "Explainer: How climate models work" (Carbon Brief).</p>
+  <h2>Anatomy of a climate model</h2>
+  <p>
+    The core is a <strong>general circulation model</strong>: Earth divided into a
+    three-dimensional grid (~100 km horizontally, ~30 vertical layers in atmosphere and
+    ocean), and on each cell the conservation laws — energy, mass, momentum, moisture —
+    stepped forward in minutes of simulated time (the same numerics as the Euler and
+    Runge–Kutta schemes of the differential-equations lesson, run on millions of
+    processors). Around the atmosphere wrap the couplings: an <strong>ocean model</strong>
+    (which stores 90% of the extra heat — the Argo floats that measure it are the
+    model's audit trail), sea ice, land surface and vegetation, and — in full
+    <strong>Earth system models</strong> (ESMs) — the interactive carbon and nitrogen
+    cycles of the geochemical-cycles lesson, so the sinks' future behaviour is computed
+    rather than prescribed. The unavoidable compromise is <strong>parameterisation</strong>:
+    processes smaller than the grid — individual cumulus clouds, turbulence, aerosol
+    chemistry — must be represented by statistical recipes calibrated on observations
+    and small-scale models. Clouds are the hardest (they both cool, by reflecting
+    sunlight, and warm, by trapping radiation) and are the dominant reason model
+    sensitivities disagree — the honest head of every uncertainty bar.
+  </p>
+
+  <h2>The physics spine: forcing, feedback, sensitivity</h2>
+  <p>
+    Beneath the supercomputers sits arithmetic you can do on paper, and it organises
+    everything:
+  </p>
+
+  <Widget no="2" caption="the forcing–feedback–sensitivity chain — the calculation every projection is built on" widget="equationStep" config={ecsCfg} />
+
+  <p>
+    Two features of that chain deserve emphasis. The <strong>logarithm</strong> is
+    physically real (CO₂'s absorption bands saturate at the centre, so the edges keep
+    adding), and it means the marginal effect of a tonne falls as concentrations rise —
+    the physics behind the "carbon budget" framing being in cumulative tonnes rather
+    than percentages. And the <strong>feedback inventory</strong> is where models earn
+    their keep: the direct CO₂ effect has been understood since Arrhenius (1896) and is
+    not in dispute; water vapour (itself a greenhouse gas whose amount is set by
+    temperature — a fast, strong positive feedback, measured by satellites) roughly
+    doubles the response; ice–albedo adds more, concentrated at the poles (polar
+    amplification, observed); the lapse-rate feedback partly cancels in the tropics;
+    and clouds — the wildcard — could add or subtract a couple of tenths each way,
+    which is precisely the width of the model spread. Current measured totals: the
+    net human forcing is ~2.7 W/m² (after aerosol cooling is subtracted), and Earth's
+    energy imbalance — measured independently by satellites and ocean heat content —
+    is ~0.9 W/m² and growing, the planet's literal ledger entry.
+  </p>
+
+  <h2>Scenarios: the IF the models are given</h2>
+  <p>
+    Models do not predict choices, so the community writes <strong>scenarios</strong>:
+    internally coherent futures for population, technology, energy and policy, run
+    through integrated assessment models to produce emissions. The current families are
+    the <strong>SSPs</strong> (Shared Socioeconomic Pathways) with radiative-forcing
+    labels: <strong>SSP1-1.9</strong> (the most ambitious — net-zero CO₂ around 2050,
+    ~1.4–1.5 °C by 2100, roughly the Paris Agreement's stretch path);
+    <strong>SSP1-2.6</strong> (~1.8 °C — overshoot then decline);
+    <strong>SSP2-4.5</strong> (middle-of-the-road, ~2.7 °C);
+    <strong>SSP3-7.0</strong> (regional rivalry, ~3.6 °C); <strong>SSP5-8.5</strong>
+    (fossil-fuelled expansion, ~4.4 °C — a doubling-plus of the blanket). Reading
+    discipline: the spread between pathways is <em>human-choice uncertainty</em>, the
+    spread within one pathway is <em>model uncertainty</em> — conflating them is the
+    standard way projections get misread ("models can't agree" when the models agree
+    and the futures differ). Two further pieces of professional vocabulary:
+    <strong>carbon budgets</strong> — the cumulative tonnes consistent with a
+    temperature target (~500 GtCO₂ remained for a 50% shot at 1.5 °C in AR6, spent
+    down yearly); and <strong>committed warming</strong> — the near-term further rise
+    already locked in by ocean heat lag, even if emissions stopped tonight (~0.1–0.2
+    °C more this century on top of trajectory), which distinguishes "stop the
+    increase" (possible by net zero) from "undo the increase" (requires removals).
+  </p>
+  <p>
+    <em>Common misconception:</em> scenario pathways like SSP5-8.5 are "predictions",
+    and disagreements over their plausibility discredit the models. They are
+    <em>boundary conditions</em> — standardised inputs chosen to span the plausible
+    policy space, updated by Working Group III economics. The physics machinery that
+    turns them into temperature is the same in every case; only the IF differs. (A
+    subtler 2020s debate — the "hot model problem" — is real but different: some CMIP6
+    models show sensitivities above the assessed range, so the IPCC now weights the
+    ensemble rather than averaging it blindly.)
+  </p>
+
+  <h2>How we know the models work — and where they struggle</h2>
+  <p>
+    Validation is continuous and multi-layered. <strong>Hindcasts</strong>: models
+    driven by known forcings reproduce the observed 20th-century warming, including
+    the mid-century flattening from sulfate aerosols — and (the decisive test) they
+    do <em>not</em> reproduce it with natural forcings alone. <strong>Real-time
+    tests</strong>: the cooling from Mount Pinatubo's 1991 eruption was predicted and
+    observed to match. <strong>Retrospective skill</strong>: a 2020 analysis of models
+    published since 1970 found the ones whose projections were testable had
+    forecast the observed warming with real skill. <strong>Paleoclimate</strong> (the
+    earth-science lesson) supplies out-of-sample checks — the Last Glacial Maximum
+    and the mid-Pliocene warm period constrain sensitivity from both directions.
+    <strong>Ensembles</strong> (dozens of models, many runs each) turn residual spread
+    into a measured probability distribution. The known weaknesses are specific and
+    named: <strong>ice-sheet dynamics</strong> (sea-level rise has tracked the upper
+    edge of projections as processes below the grid — marine ice-sheet instability —
+    bite harder than expected), <strong>convection and clouds</strong> (the
+    parameterisation frontier), and <strong>tipping elements</strong> (AMOC, permafrost
+    carbon, Amazon dieback) which are handled as risk add-ons rather than smooth
+    physics — the next lesson's subject. Model families get updated by such
+    surprises; none has been invalidated by one.
+  </p>
+
+  <h2>Attribution: running the models backwards</h2>
+  <p>
+    <strong>Detection and attribution</strong> is the formal science of blame. The
+    method: build the "fingerprint" of each forcing (greenhouse gases warm the
+    troposphere and cool the stratosphere — a vertical pattern no solar forcing
+    produces; aerosols cool the north; ozone cools the upper stratosphere), then
+    compare the observed climate change against worlds simulated with and without
+    each. The conclusion, sustained across model generations and data sets since the
+    1995 IPCC report: the observed warming is attributable to human emissions with
+    ever-tightening confidence ("unequivocal" in AR6). <strong>Event attribution</strong>
+    extends the machinery to single disasters — the World Weather Attribution
+    collaborations quantify "how much more likely did climate change make this
+    heatwave" by comparing simulations of today's world with a counterfactual
+    un-warmed one; the same logic is now entering courts as evidence in climate
+    litigation. Attribution is, in effect, the models run as a control experiment —
+    the paleoclimate lesson's logic, pointed at the present.
+  </p>
+
+  <h2>From globe to region: downscaling and what a local projection means</h2>
+  <p>
+    Policy happens in river basins and cities, not 100-km cells, so global output is
+    <strong>downscaled</strong>: dynamically (a regional model nested inside the GCM at
+    10–25 km, inheriting the boundary conditions) or statistically (calibrated
+    relationships from the observed fine-scale climate, applied to the coarse
+    projection). The professional caution: regional projections inherit global
+    uncertainty <em>and</em> add their own — circulation changes (storm tracks,
+    monsoons) are less certain than the global mean, and some of the sharpest
+    regional consequences (droughts, snowpack, agriculture) depend on circulation
+    shifts models handle least well. The trustworthy local signals are the robust
+    ones: warming (everywhere, more over land and poles), intensified heavy rain
+    (warmer air carries ~7% more vapour per degree), rising sea level, and shifts of
+    growing seasons — with the attribution machinery able to state, region by
+    region, which observed extremes already carry the fingerprint.
+  </p>
+
+  <h2>Net zero: why "stop emitting" is a thermodynamic statement</h2>
+  <p>
+    The headline result of the coupled carbon-cycle models deserves its own section,
+    because it shapes every policy debate: temperature responds to <em>cumulative</em>
+    emissions, approximately linearly (the <strong>TCRE</strong> — transient climate
+    response to cumulative emissions, ≈0.45 °C per 1,000 GtCO₂), and once net emissions
+    reach zero the warming roughly <strong>stops</strong> (the "zero emissions
+    commitment" is near zero for decades, as ocean-heat lag and falling aerosols and
+    sink uptake offset each other). This is why the Paris targets are stated as
+    budgets — a finite total that spending exhausts — rather than as annual rates:
+    every tonne emitted is fungible across place and decade, and delay is not
+    neutral but arithmetic. The corollaries: overshoot scenarios must pay back in
+    <em>negative</em> emissions (removals at gigatonne scale, whose land, energy and
+    storage demands the sustainability chapter sizes); and methane's short residence
+    time (the geochemical-cycles lesson's τ ≈ 10 years) makes its cuts uniquely fast-
+    acting — a lever the CO₂ arithmetic does not provide.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The model hierarchy.</strong> The GCM is the flagship of a fleet: energy
+    balance models (one or two boxes — the worked example above is one) build
+    intuition and run millions of parameter perturbations; radiative–convective
+    columns resolve the vertical physics exactly (the historical route to sensitivity);
+    intermediate-complexity models (EMICs) trade resolution for tractability and
+    simulate the last glacial cycle end to end; ESMs carry the full coupling; and
+    "storm-resolving" km-scale models run short periods without convection
+    parameterisations — the clearest window on how the cloud problem might collapse.
+    Conclusions are trusted when they appear across the hierarchy, not just in the
+    flagship.
+  </p>
+  <p>
+    <strong>Emergent constraints and the sensitivity endgame.</strong> A modern
+    technique: find an observable relationship <em>within</em> the model ensemble
+    (say, between a measurable cloud property today and each model's eventual
+    sensitivity), check it against real observations, and use it to narrow the
+    ensemble — several such constraints helped AR6 narrow its ECS range for the
+    first time in decades (2.5–4 °C, very likely 2–5, best estimate 3, against the
+    1979 Charney report's 1.5–4.5: a four-decade-long argument slowly converging).
+    The unresolved tails matter more than the middle: low-sensitivity worlds still
+    warm past 2 °C under high emissions, while high-sensitivity tails —
+    disproportionately strong cloud feedback — dominate the risk calculus for the
+    targets.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Cloud feedback remains the largest single
+    uncertainty (high-altitude cirrus versus low marine stratus pull opposite ways;
+    field campaigns like EUREC4A were designed to watch the trade cumulus decide).
+    The AMOC's future and the permafrost carbon bomb (≈1,500 GtC frozen — roughly
+    twice the atmosphere's) are risk questions the models handle poorly. Ice-sheet
+    projection has a two-decade deficit to make up. And the computational frontier —
+    "digital twin" Earth systems at km-scale, exascale machine-learned physics mixed
+    with conservation laws — is the live engineering question: whether the next
+    generation of models will get their clouds by brute force, by statistics, or by
+    the hybrid.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> IPCC AR6 WG1 (2021); Arrhenius (1896); Hausfather et al., <em>Geophysical Research Letters</em> (2020) on model skill; CMIP6 ensemble documentation; Sherwood et al. (2020) on ECS assessment.</p>
 </TopicPage>

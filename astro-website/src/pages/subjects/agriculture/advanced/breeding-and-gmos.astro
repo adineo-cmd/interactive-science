@@ -10,24 +10,233 @@ const gmoCfg = {
     { math: '4 · The governance question', note: 'EU regulates editing like transgenics (near-lockout); others (Argentina, US, UK post-2023) regulate by trait — a live policy fork (the law lesson\'s precautionary debate, varietal). The poor countries most needing climate-resilient varieties face the strictest import regimes.' },
   ],
 };
+
+const breedQuiz = {
+  questions: [
+    {
+      q: 'Two heterozygous plants (Aa × Aa) are crossed. What fraction of the F2 shows the recessive phenotype?',
+      choices: ['None — dominance hides it', '1/4', '1/2', '3/4'],
+      answer: 1,
+      why: 'The F2 genotypes are 1 AA : 2 Aa : 1 aa. Only the aa quarter lacks a dominant allele, so 25% show the recessive phenotype — Mendel\'s 3:1 ratio.',
+    },
+    {
+      q: 'A dairy herd averages 8,000 L. You breed from animals averaging 9,000 L and milk yield has heritability 0.3. What gain do you expect in the offspring generation?',
+      choices: ['30 L', '300 L', '1,000 L', '3,000 L'],
+      answer: 1,
+      why: 'The breeder\'s equation R = h²S = 0.3 × 1,000 L = 300 L. Heritability scales down the selection differential because most of the parents\' advantage was environment, not genes.',
+    },
+    {
+      q: 'What is the key genetic difference between a CRISPR-edited crop and a transgenic one?',
+      choices: ['Editing is always larger', 'Transgenic crops cannot express new proteins', 'Editing need not introduce any foreign DNA', 'There is no genetic difference'],
+      answer: 2,
+      why: 'An SDN-1 edit just deletes or disrupts bases using the plant\'s own repair machinery — the result can be genetically identical to a natural mutant. Transgenesis inserts DNA from another species.',
+    },
+    {
+      q: 'Why is Bt toxin from Bacillus thuringiensis largely harmless to humans and livestock?',
+      choices: ['It is destroyed by cooking only', 'It activates in alkaline insect midguts with matching receptors', 'Mammals digest all proteins', 'It only works at field doses'],
+      answer: 1,
+      why: 'Cry proteins are protoxins: they must dissolve and be cleaved in a highly alkaline insect midgut and bind specific receptors there. The mammalian gut is acidic and lacks those receptors.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/agriculture/advanced/breeding-and-gmos">
   <h2>The idea</h2>
   <p>
-    Breeding is <strong>the genetics lesson run as agriculture\'s engine</strong> — and the
-    technology continuum runs unbroken from selection to CRISPR. The public argument is really
-    about corporate control, regulation and trust; the biology argument was settled by a decade
-    of evidence.
+    Breeding is <strong>applied evolution with a human judge</strong>. Every tool in this chapter —
+    Punnett squares, selection indexes, CRISPR nucleases — does the same three things: creates genetic
+    variation, lets the breeder choose among variants, and fixes the chosen alleles in a population.
+    The continuum is unbroken. A farmer in highland Mexico who saved seed from the least shatter-prone
+    teosinte plants was running the same algorithm a gene editor runs today; only the resolution of
+    the choice has changed, from whole plants to whole genomes to single base pairs.
+  </p>
+  <p>
+    That continuity matters because it reframes the argument people usually have about GMOs. Once you
+    accept that conventional breeding already shuffles tens of thousands of genes with no molecular
+    oversight, "which technique made this variety?" becomes a weaker question than "what does this
+    variety do, and who controls its seed?" This chapter builds the biology first, then returns to
+    that question with the evidence.
   </p>
 
-  <Widget no="1" caption="selection\'s history, the toolkit, the record, the governance fork" widget="equationStep" config={gmoCfg} />
+  <Widget no="1" caption="selection's history, the toolkit, the record, the governance fork" widget="equationStep" config={gmoCfg} />
 
-  <h2>The evidence base, honestly weighted</h2>
+  <h2>Monohybrid inheritance: the grammar of selection</h2>
+  <p>
+    Everything downstream rests on Mendel's insight that traits are determined by discrete particles —
+    alleles — that segregate cleanly rather than blending. For a single locus with alleles A and a:
+    a cross of two heterozygotes (Aa × Aa) produces F2 genotypes in the ratio 1 AA : 2 Aa : 1 aa. If A
+    is dominant, the phenotypes collapse to a visible 3 : 1. If dominance is incomplete, the 1 : 2 : 1
+    shows straight through — which is why some ratios in seed catalogues look "non-Mendelian" but are
+    simply unmasked.
+  </p>
+  <p>
+    <strong>Worked example.</strong> Suppose a wild relative of wheat carries a recessive gene
+    (<em>aa</em>) for resistance to a fungal race your elite variety (<em>AA</em>) lacks. Cross them:
+    every F1 plant is Aa — uniform, but susceptible, because resistance is hidden behind the dominant
+    susceptibility allele. Self the F1 and screen the F2: three quarters are susceptible, one quarter
+    resistant. If you also want to keep the elite background (99% of the elite genome, not just the
+    resistance), each resistant F2 plant must be backcrossed to the elite parent, and because the
+    trait is recessive you must progeny-test or genotype each generation to find carriers. Six to
+    eight generations of that backcrossing was the standard route to a resistant variety before
+    markers arrived — one reason disease resistance lags behind pathogen evolution.
+  </p>
+  <p>
+    <em>Common misconception:</em> "dominant" does not mean stronger, fitter, or more common in the
+    population. Dominance describes what happens to the <em>phenotype</em> when both alleles are
+    present; it says nothing about which allele spreads. Recessive alleles can be essential (most
+    disease resistances breeders chase are recessive) and dominant lethal alleles cannot persist at
+    all.
+  </p>
+
+  <h2>Selective breeding in animals and plants</h2>
+  <p>
+    Once inheritance is particulate, selection becomes quantitative. The breeder observes a trait,
+    chooses the best animals or plants, and asks how much their offspring will improve. The answer is
+    the <strong>breeder's equation</strong>, R = h² × S, where S (the selection differential) is how
+    far the selected parents sit above the population average and h² is the narrow-sense heritability
+    — the fraction of trait variation attributable to additive genes that offspring actually inherit.
+  </p>
+  <p>
+    <strong>Worked example.</strong> A dairy herd averages 8,000 litres per lactation. You select the
+    top cows, which average 9,000 L, so S = 1,000 L. Milk yield has h² ≈ 0.3, so the predicted
+    response is R = 0.3 × 1,000 = 300 L in the next generation. Notice what the equation buys and
+    costs: most of the selected cows' superiority was environment (better forage, better parlour), and
+    heritability correctly discounts it. Progress compounds, though — gain every generation — and the
+    rate per <em>year</em> is R divided by the generation interval, which is why species that breed
+    young (poultry, ~1 year) improved so much faster than slow-replacing ones. UK dairy yields roughly
+    doubled since the 1970s almost entirely through genetics plus better feeding.
+  </p>
+  <p>
+    Two systematic hazards follow. <strong>Inbreeding depression</strong>: related matings unmask
+    deleterious recessives, costing fitness — the reason breed books cap inbreeding coefficients and
+    why cheetahs and dog breeds are textbook casualties. <strong>Heterosis (hybrid vigour)</strong>:
+    cross two inbred lines and the F1 often outperforms both — hybrid maize yields 15–20% above
+    open-pollinated varieties, which is why virtually all the maize acreage of the Americas is hybrid.
+    The molecular basis of heterosis is still genuinely unsettled (dominance complementation, over-dominance
+    and epigenetic explanations all have evidence), making it one of the oldest open questions in
+    applied genetics.
+  </p>
+
+  <h2>Marker-assisted and genomic selection</h2>
+  <p>
+    Classical breeding selects on phenotype, which is slow, expensive, and blind for traits you cannot
+    see until harvest or until disease strikes. DNA markers changed the unit of selection. In
+    <strong>marker-assisted selection (MAS)</strong>, a marker reliably linked to a gene lets you pick
+    carriers as seedlings — decisive for recessive traits and for the backcrossing example above.
+    <strong>Genomic selection</strong> (proposed by Meuwissen and colleagues in 2001, routine in dairy
+    since ~2009) goes further: with tens of thousands of SNPs, a statistical model distributes a
+    young animal's genome across the trait and estimates its breeding value at birth, before a single
+    litre of milk exists. Accuracy around 0.5–0.7 versus ~0.3 from old pedigree records roughly halved
+    the dairy generation interval, because bull calves no longer need five years of daughter
+    progeny-testing. Genomic selection is now the quiet engine behind most measurable livestock and
+    crop progress.
+  </p>
+
+  <h2>Transgenics: moving genes across species</h2>
+  <p>
+    Wide crosses hit a species barrier; recombinant DNA ignores it. The dominant workhorse is
+    <em>Agrobacterium tumefaciens</em>, a soil bacterium that naturally transfers DNA into plant
+    genomes — biologists disarmed its tumour genes and loaded cargo instead. The two traits that
+    dominate global acreage:
+  </p>
   <ul>
-    <li><strong>The consensus:</strong> the US National Academies (2016) review — the largest of its kind — found approved GE crops safe to eat and with environmental benefits alongside documented resistance problems. Same year, >100 Nobel laureates backed Golden Rice. The organised scientific disagreement is small.</li>
-    <li><strong>Seed concentration is the real critique:</strong> a handful of firms hold key IP; farmers cannot save patented seed — the economics of the argument, more persuasive to farmers than the biology, and the terminator-gene debate (never commercialised) marked its political line.</li>
-    <li><strong>Editing changes the politics:</strong> CRISPR varieties indistinguishable from natural mutants force the definitional question — is regulation about process (how made) or product (what it does)? Science favours product; politics, so far, is split.</li>
-    <li><strong>What breeding must deliver next:</strong> heat and drought tolerance, nitrogen efficiency, disease resistance for a 2 °C world — the climate lesson\'s adaptation chapter, written in genomes (the coming lesson).</li>
+    <li><strong>Bt insect resistance.</strong> Genes from <em>Bacillus thuringiensis</em> encode Cry
+    proteins that are protoxins: harmless until dissolved and cleaved in the alkaline midgut of certain
+    insects, where they bind specific receptors and punch holes in gut cells. Mammalian guts are acidic
+    and receptor-mismatched, which is why Bt sprays were permitted in organic farming long before Bt
+    crops existed. Field results: the Klümper and Qaim meta-analysis of 147 studies found insecticide
+    use down about 37% and yields up about 22% on average for GM crops, with Bt cotton in India and
+    China roughly halving spray regimes.</li>
+    <li><strong>Herbicide tolerance.</strong> A glyphosate-insensitive version of the EPSPS enzyme
+    (from <em>Agrobacterium</em> strain CP4) lets the crop survive blanket spraying. Agronomically
+    transformative; ecologically contested, chiefly through the documented evolution of glyphosate-resistant
+    weeds — an evolutionary consequence of selection pressure, not of the transgene itself.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> National Academies, Genetically Engineered Crops (2016); Klümper & Qaim meta-analysis (2014); the biology ladder\'s CRISPR lesson.</p>
+  <p>
+    The rescue case worth remembering: Hawaii's papaya industry was being annihilated by papaya
+    ringspot virus; the transgenic 'Rainbow' papaya (1998) expressed a viral coat protein and saved
+    it — plant vaccination, in effect. Vitamin-A 'Golden Rice' (beta-carotene in the endosperm) finally
+    received commercial approval in the Philippines in 2021, twenty-two years after publication,
+    which is itself a datum about regulatory timelines.
+  </p>
+  <p>
+    <em>Common misconception:</em> "GMO" is not one technology with one risk profile — it is a legal
+    category spanning a virus-resistant papaya and a herbicide-tolerant soybean with nothing in common
+    biologically. Safety assessment is event-by-event: what protein, expressed where, digested how,
+    with what allergenicity profile. Equally misleading is the claim that GM DNA behaves differently
+    in the gut: like all DNA in food, it is degraded to nucleotides long before it could reach a
+    consumer's genome.
+  </p>
+
+  <h2>CRISPR: editing within the species</h2>
+  <p>
+    Genome editing collapses the backcross-and-wait problem. A guide RNA walks Cas9 to any 20-base
+    address in the genome and cuts there; the cell's own repair then produces the change. Three
+    outcomes matter to breeders: <strong>SDN-1</strong> — the break is repaired error-prone (non-homologous
+    end joining), knocking out a gene with a small deletion; <strong>SDN-2</strong> — a repair template
+    directs a specific few-base change; <strong>SDN-3</strong> — a whole gene is inserted. The first
+    two need no foreign DNA at all: an SDN-1 edit can be genetically indistinguishable from a mutant
+    found in a breeding collection, because natural mutants are mostly deletions and point mutations too.
+  </p>
+  <p>
+    Deployed and pipeline examples: waxy (high-amylopectin) maize and rice created by knocking out
+    granule-bound starch synthase; hornless (POLLED-locus) dairy cattle, where editing copies a
+    naturally occurring allele into elite Holstein genetics; rice with edited <em>SWEET</em> gene
+    promoters that bacterial blight can no longer hijack — a resistance that took a decade of
+    conventional breeding to approximate. The deep advantage is <strong>absence of linkage drag</strong>:
+    introgressing a trait by crossing drags along megabases of flanking donor DNA that must be
+    recombined away over years; editing changes only the target bases and leaves everything else intact.
+  </p>
+
+  <h2>Who decides: the governance fork</h2>
+  <p>
+    Regulation bifurcated. The EU's Court of Justice (2018) ruled that organisms from mutagenesis
+    techniques like CRISPR count as GMOs — process-based regulation, which in practice locks European
+    breeders out of editing. The US, Argentina, Japan and (post-2023) the UK regulate the product:
+    if an edit could have arisen naturally, it escapes GMO status. Two consequences follow. First,
+    identical edited crops are "conventional" in Buenos Aires and "GMO" in Brussels, so export markets,
+    not science, set breeding strategy. Second, the burden lands on precisely the crops that need it:
+    orphan crops (cassava, millets, yam) with thin commercial markets are the ones where climate
+    resilience is most urgent and public breeding budgets are weakest.
+  </p>
+
+  <h2>The conservation layer: gene banks and landraces</h2>
+  <p>
+    Breeding's raw material is variation, and variation is stored: landraces (farmer-selected
+    local populations), wild relatives and elite lines held in gene banks — the Svalbard Global
+    Seed Vault is the backup's backup of roughly 1,700 national and international collections
+    holding over seven million accessions. The economics are sobering: wild relatives of staple
+    crops carry heat, drought and disease tolerance that breeding programmes increasingly need,
+    yet many collections are under-characterised and under-funded — the pre-breeding missions
+    that hunt useful alleles in the "exotics" (CIMMYT and ICARDA's wheat and maize screens)
+    are among applied agriculture's best-returning investments, and historically slow ones.
+    Editing interacts with conservation directly: once a useful allele is known, it can be
+    edited into an elite background without the linkage drag of crossing — potentially
+    de-risking the bottleneck that has kept landrace diversity locked in storage while the
+    climate deadline advances.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The quantitative layer.</strong> Real programmes select several traits at once, which
+    turns R = h²S into index selection: weight traits by economic value, estimate breeding values
+    multivariately, and accept a trade-off because genetic correlations make some traits antagonistic
+    (selecting leaner pigs can raise sow mortality). The correlated response equation R<sub>y</sub> =
+    i × h<sub>x</sub> × h<sub>y</sub> × r<sub>A</sub> × σ<sub>Py</sub> formalises the bargain.
+    <strong>The rate race.</strong> To hold yields against 2 °C of warming, models suggest cereals
+    need roughly 1–1.5% genetic gain per year — above what most breeding programmes deliver — which
+    motivates speed breeding (extended photoperiods compressing 3 generations of wheat per year to 6),
+    doubled haploids (instant homozygosity), and prediction-driven crossing.
+    <strong>Open problems.</strong> Genotype-by-environment interaction still defeats yield prediction:
+    a variety's performance is not a stable property but a phenotype × environment surface, and
+    machine-learning G×E models are the current frontier. Editing polyploids (wheat has six chromosome
+    sets) means cutting every homoeologous copy simultaneously. And the off-target question has quietly
+    inverted: with whole-genome sequencing, edited lines are now among the most thoroughly characterised
+    varieties ever released — the uncertainty has shifted from the technique to the ecology, where
+    resistance evolution and gene flow remain genuinely unsolved.
+  </p>
+
+  <Widget no="2" caption="check yourself: inheritance, the breeder's equation, editing" widget="quiz" config={breedQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> National Academies, Genetically Engineered Crops (2016); Klümper &amp; Qaim meta-analysis (2014); Meuwissen, Hayes &amp; Goddard on genomic selection (2001); NASC/ISAAA deployment records; ISF and EFSA guidance on SDN classifications; the biology ladder's CRISPR lesson.</p>
 </TopicPage>

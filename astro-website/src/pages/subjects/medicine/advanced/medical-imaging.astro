@@ -10,24 +10,220 @@ const imagingCfg = {
     { math: '4 · Ultrasound: echo location', note: 'High-frequency sound reflects off interfaces; safe (it images foetuses), real-time, portable — now pocket-sized and AI-assisted. The trade: image quality depends heavily on the operator.' },
   ],
 };
+
+const attenPlot = {
+  curves: [
+    { expr: 'exp(-mu * x)', color: '#1d4ed8', label: 'I(x) = I₀·e^(−μx)' },
+    { expr: 'exp(-2 * mu * x)', color: '#b42318', label: 'double thickness of tissue (2μ)' },
+  ],
+  params: [
+    { name: 'mu', label: 'μ (attenuation per cm)', min: 0.05, max: 0.5, step: 0.01, value: 0.2, unit: 'cm⁻¹' },
+  ],
+  x: { min: 0, max: 15, label: 'depth through tissue (cm)' },
+  y: { min: 0, max: 1, label: 'transmitted fraction of beam' },
+  height: 300,
+};
 ---
 <TopicPage slug="subjects/medicine/advanced/medical-imaging">
   <h2>The idea</h2>
   <p>
-    Medical imaging is <strong>applied physics turned diagnostic</strong>: X-ray absorption,
-    magnetic resonance, and sound echoes, each revealing different tissue properties. Choosing a
-    modality is choosing a trade-off — resolution vs radiation vs speed vs cost — and the
-    reading of images is itself a cognitive skill under AI transformation.
+    Diagnosis is a measurement problem: the pathology is inside, the clinician is outside. Every
+    imaging modality is a physical interaction exploited into a signal — photons absorbed, spins
+    rephasing, echoes returning — and every modality's clinical profile (fast or slow, safe or
+    ionising, cheap or costly) falls directly out of that physics. Learn the physics and the
+    modality-choice logic in emergency medicine, oncology and neurology becomes deducible rather
+    than memorised.
+  </p>
+  <p>
+    One principle unifies everything below: <strong>contrast is the whole game</strong>. An image is
+    useful exactly to the degree that pathological tissue differs measurably from healthy tissue in
+    the chosen physical quantity — density, relaxation time, echo impedance. Much of imaging's
+    history is the engineering of new contrasts: iodine for vessels, gadolinium for tumours, FDG
+    radiotracer for metabolism.
   </p>
 
   <Widget no="1" caption="the four modalities and their physics-to-diagnosis logic" widget="equationStep" config={imagingCfg} />
 
-  <h2>The AI transformation, already underway</h2>
-  <ul>
-    <li><strong>Detection models are FDA-cleared:</strong> algorithms flag lung nodules on CT, haemorrhages on head CT, diabetic retinopathy on retinal photos — several outperform average readers in narrow tasks.</li>
-    <li><strong>The radiologist's changing job:</strong> less pixel-hunting, more integration — deciding which study, correlating with clinical context, owning the final call. "AI won't replace radiologists; radiologists using AI will replace those who don't" is the working consensus.</li>
-    <li><strong>Pitfalls are documented:</strong> models trained on one hospital's scanners underperform elsewhere; subtle distribution shifts (patient position, machine vendor) degrade accuracy silently — the evaluation lesson's warnings, medically priced.</li>
-    <li><strong>Imaging's history is a physics victory lap:</strong> Röntgen's first X-ray (his wife's hand, 1895), CT's Nobel (1979), MRI's Nobel (2003) — each modality began as a physics experiment that medicine adopted within years.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Röntgen (1895); Brant & Helms, Fundamentals of Diagnostic Radiology; FDA-cleared AI device list; Topol, Deep Medicine (2019).</p>
+  <h2>X-ray attenuation: the exponential that underlies radiography</h2>
+  <p>
+    An X-ray beam passing through tissue is attenuated exponentially: I = I<sub>0</sub>·e<sup>−μx</sup>,
+    where μ is the material's linear attenuation coefficient and x the path length. Bone (rich in
+    calcium, μ high) strips far more photons than soft tissue (μ mostly set by water), which is why
+    a radiograph is a shadow map of density. Work the numbers: at μ = 0.2 cm<sup>−1</sup>, a 5 cm
+    slab transmits e<sup>−1</sup> ≈ 37% of the beam; double the effective thickness and you transmit
+    e<sup>−2</sup> ≈ 14% — the reason image density is logarithmic in thickness and why small
+    thickness changes produce visible contrast. Air (μ ≈ 0) is black; metal saturates white. Because
+    a projection squashes 3-D onto 2-D, structures overlap — the fundamental limitation that CT was
+    invented to remove.
+  </p>
+
+  <Widget no="2" caption="beam attenuation through tissue — drag μ and watch bone vs lung behaviour" widget="plotter" config={attenPlot} />
+
+  <p>
+    Attenuation is also why X-ray technique charts exist: thicker or denser body parts need higher
+    tube output (more photons survive to expose the detector), and beam hardening — low-energy photons
+    filtered out preferentially — changes effective μ along the path, a distortion CT reconstruction
+    must correct for.
+
+  <h2>CT: reconstruction from projections</h2>
+  <p>
+    Computed tomography rotates an X-ray tube and detector array around the patient, recording
+    thousands of projections — each a set of line integrals of the attenuation coefficient along
+    rays. Reconstruction is the inverse problem of recovering the 2-D (and helically, 3-D) map of μ
+    from its projections; the mathematics is the Radon transform and its inverse, executed in practice
+    by filtered back-projection or iterative algorithms. The output is calibrated into
+    <strong>Hounsfield units</strong> (water = 0, air = −1000, dense bone ≈ +1000, fat ≈ −100, fresh
+    blood ≈ +40 to +60), a scale that lets radiology quantify what older films could only shade.
+    Clinically CT is the workhorse of acute medicine: trauma (fast, comprehensive, tolerant of metal),
+    stroke (non-contrast CT to exclude haemorrhage before thrombolysis; CT angiography to find the
+    clot), pulmonary embolism. The cost is dose: a chest CT delivers roughly 5–7 mSv versus ~0.02 mSv
+    for a chest radiograph — orders of magnitude matter, addressed with dose-modulation, iterative
+    reconstruction, and the ALARA discipline (As Low As Reasonably Achievable).
+  </p>
+  <p>
+    <em>Common misconception:</em> "one CT scan is dangerous." One 7 mSv CT carries a theoretical
+    lifetime cancer risk on the order of 1 in 2,000 under the linear no-threshold model — against a
+    background: natural radiation alone averages ~2–3 mSv per year, and the indicated CT changes
+    management in most emergency settings. The real public-health issue is <em>aggregate</em> use:
+    unnecessary repeat imaging and unindicated whole-body screening, where thousands of scans × tiny
+    individual risks become meaningful population exposure. Risk logic, like everything in this
+    course, is relative and cumulative, not categorical.
+  </p>
+
+  <h2>MRI: spins, relaxation, and the richest contrast in medicine</h2>
+  <p>
+    MRI exploits nuclear magnetic resonance. Hydrogen protons (abundant in water and fat) behave as
+    tiny magnets; a strong field (1.5–3 tesla) aligns them and fixes their precession frequency
+    (Larmor: f = γB, ~42.6 MHz per tesla for protons). A radio pulse tips the spins; as they relax
+    back, they emit signal, and two relaxation constants differ between tissues: <strong>T1</strong>
+    (recovery of longitudinal magnetisation) and <strong>T2</strong> (decay of transverse phase
+    coherence). Pulse sequences weight the image toward one constant, and the contrast follows:
+    fat is bright on T1, water/oedema is bright on T2, and gadolinium contrast shortens T1 to light up
+    vascular tumours and disrupted blood-brain barriers. Because relaxation physics is exquisitely
+    sensitive to tissue microstructure, MRI resolves soft tissue no ionising method can — the
+    demyelinating plaques of multiple sclerosis, ligament tears, cord compression. Costs: minutes
+    (motion is the enemy), noise, expense, exclusion of certain implants, and a physical hazard
+    unique to MRI — the ferromagnetic projectile problem, not radiation.
+  </p>
+  <p>
+    The functional descendant matters for this course's neuroscience tier: <strong>BOLD fMRI</strong>
+    infers neural activity indirectly, from the blood-oxygenation response — deoxygenated haemoglobin
+    is paramagnetic, so locally increased oxygenated flow changes T2* signal. The inference chain
+    (activity → metabolism → haemodynamics → signal) means fMRI measures the plumbing response with
+    seconds-scale lag, not the neurons themselves — a caveat you will reuse when evaluating imaging
+    claims about the brain.
+  </p>
+
+  <h2>Ultrasound and nuclear medicine</h2>
+  <p>
+    <strong>Ultrasound</strong> sends megahertz sound pulses and times their echoes; impedance
+    mismatches at interfaces reflect, and echo amplitude and timing build the image in real time.
+    Physics perqs: no ionising radiation (hence fetal imaging), millisecond frame rates (hence
+    cardiac and fetal motion studies), portability down to pocket probes. Doppler mode adds velocity:
+    the frequency shift of echoes from moving blood (Δf = 2f·v·cosθ / c) quantifies flow, making
+    ultrasound the first-line tool for deep-vein thrombosis, carotid stenosis and cardiac function
+    (echocardiography). The trade is operator dependence and air/bone barriers — ultrasound cannot
+    see through gas or calcification, which is why the brain and lungs were long "ultrasound-blind"
+    (point-of-care lung ultrasound has partially cracked the lung).
+  </p>
+  <p>
+    <strong>Nuclear medicine</strong> inverts the geometry: inject the signal. Gamma-emitting
+    tracers (technetium-99m for SPECT) or positron emitters (fluorodeoxyglucose for PET) localise
+    physiology — metabolism, receptor density, proliferation — rather than anatomy. FDG-PET exploits
+    the Warburg effect from the cancer lesson: malignant cells avidly trap phosphorylated glucose
+    analogues, so uptake maps metabolic activity, staging cancer and distinguishing viable from
+    scarred tissue. Hybrid PET-CT fuses function with anatomy: the physics of one modality localises
+    what the other characterises.
+  </p>
+
+  <h2>Reading images: the human and algorithmic layer</h2>
+  <p>
+    Interpretation is perceptual expertise with documented failure modes: satisfaction of search
+    (finding one lesion hides a second), anchoring on the expected diagnosis, and inter-reader
+    variability that can be larger than the finding itself. Into this walks AI. Detection models are
+    now regulator-cleared for lung nodules, intracranial haemorrhage, diabetic retinopathy (the first
+    autonomous diagnostic AI, 2018) and breast screening (large trials showing reduced false
+    negatives with maintained or better specificity). The sober results: performance degrades under
+    distribution shift — new scanner vendors, different patient demographics, pandemic-era imaging
+    changed everything about a pneumonia model's inputs — and models inherit the labelling biases of
+    their training data. The working consensus is augmentation: the algorithm narrows the search,
+    the clinician owns the context and the call. Structured reporting and dual-reading (two
+    radiologists) remain the human quality controls that AI must beat.
+  </p>
+
+  <h2>Contrast agents: engineering the signal</h2>
+  <p>
+    When natural contrast is insufficient, pharmacology supplies it. Iodinated contrast (for
+    CT) works through iodine's high atomic number: photoelectric absorption scales steeply
+    with Z, so vascular and renal-excretion paths light up — enabling CT angiography and
+    urography, at the price of documented renal and allergic risks managed by screening and
+    hydration. Gadolinium (for MRI) is paramagnetic: chelated to keep it non-toxic, it
+    shortens the T1 of nearby water, brightening vascularised tumours and inflamed tissue;
+    the nephrogenic-systemic-fibrosis episode (linked to linear chelates in severe renal
+    failure) reshaped agent design and screening protocols. Microbubble ultrasound contrast
+    exploits acoustic resonance for blood-pool imaging. And nuclear tracers are contrast in
+    its purest form: a molecule whose biological fate — FDG trapped by hexokinase in
+    glycolytic cells, PSMA ligands homing to prostate-cancer cells — <em>is</em> the entire
+    image. The general lesson: imaging's advances have been as much molecular as instrumental.
+  </p>
+
+  <h2>Choosing the scan: the decision logic in practice</h2>
+  <p>
+    The modality-choice reasoning is deducible from the physics. Suspected acute stroke:
+    non-contrast CT first (fast, detects blood, excludes haemorrhage before thrombolysis),
+    then CT angiography or diffusion MRI — diffusion weighting shows infarct within minutes,
+    the one MRI sequence fast enough to beat CT and decisive for endovascular therapy.
+    Suspected appendicitis in a young adult: ultrasound first (no radiation), CT if
+    inconclusive. Major trauma with possible spine injury: CT (bone detail, speed); suspected
+    cord pathology: MRI. Breast screening: mammography (cheap, validated in mortality trials)
+    with MRI as adjunct for dense tissue and high genetic risk. Cardiac function:
+    echocardiography (real-time, no radiation) with cardiac MRI for tissue characterisation.
+    Each choice trades sensitivity, speed, radiation, cost and availability, and the
+    guideline algorithms encode these trade-offs as flowcharts. AI triage is entering exactly
+    here: flagging the urgent study in the worklist queue before a human opens it.
+  </p>
+
+  <h2>Radiation dose: the numbers that discipline practice</h2>
+  <p>
+    Effective dose (mSv) permits comparison across modalities: chest radiograph ~0.02;
+    mammogram ~0.4; CT head ~2; CT chest ~5–7; CT abdomen-pelvis ~8–10; natural background
+    ~2–3 per year; a transatlantic flight ~0.05. These comparisons discipline both ordering
+    and technique — paediatric imaging is where the arithmetic bites hardest (younger tissue,
+    longer lifetime over which risk is expressed), and size-based dosing protocols exist
+    because a child's attenuation is not an adult's scaled down. Two honest caveats: the
+    linear no-threshold extrapolation's validity below ~100 mSv is unresolved (see Going
+    deeper), and an indicated scan's diagnostic benefit almost always dominates one-scan risk
+    — the population-level concern is the unindicated scan, repeated at scale.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The dose-risk model is contested.</strong> Radiation protection uses the linear
+    no-threshold extrapolation from atomic-bomb survivor data, because epidemiology cannot resolve
+    risks below ~100 mSv; whether low-dose risk is really linear, sub-linear, or includes adaptive
+    responses is unresolved — a genuine open scientific debate with regulatory consequences.
+    <strong>Reconstruction is having a deep-learning moment:</strong> learned iterative reconstruction
+    achieves diagnostic images at fraction-of-dose protocols, arguably AI's biggest real-world imaging
+    win so far — dose reduction, not diagnosis. <strong>Photon-counting CT</strong> (clinical from
+    2021) resolves energy per photon, opening spectral contrasts (material decomposition, plaque
+    characterisation) that conventional integration CT cannot. <strong>Open questions:</strong> can
+    MRI match CT's speed for trauma (compressed sensing and parallel imaging keep closing the gap);
+    can quantitative imaging replace subjective reads (radiomics — hundreds of texture features per
+    lesion — has generated both promise and a reproducibility crisis); and how should autonomous-AI
+    liability be structured when the algorithm's miss and the radiologist's miss look identical on
+    the image but legally nothing alike?
+  </p>
+  <p>
+    One cross-cutting literacy point completes the toolkit: every imaging claim inherits an
+    error structure that can be stated numerically. Sensitivity and specificity are properties
+    of the test; predictive values belong to the population — the base-rate logic from the
+    clinical-trials lesson applies identically to a mammogram, a stroke CT and a concussion
+    protocol. A modality's headline accuracy is meaningless without prevalence, and the
+    radiologist's follow-up question is always the same: in <em>this</em> patient, with
+    <em>this</em> prior probability, what does a positive scan change? Imaging is applied
+    Bayesian reasoning with physics attached — the physics sets what can be seen; the base
+    rates set what it means.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Röntgen (1895); Brant &amp; Helms, Fundamentals of Diagnostic Radiology; ICRP dose coefficients; Topol, Deep Medicine (2019); FDA-cleared AI device list; Nobel lectures in Physiology or Medicine 1979 (CT) and 2003 (MRI).</p>
 </TopicPage>

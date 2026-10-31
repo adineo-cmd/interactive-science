@@ -10,25 +10,199 @@ const optCfg = {
     { math: '4 · Pricing: Black–Scholes (1973)', note: 'Value depends on price, strike, time, volatility and rates. Volatility is the only unknown input — which is why "implied volatility" is its own market (the VIX, the "fear index"). Nobel 1997.' },
   ],
 };
+
+const payoffPlot = {
+  curves: [
+    { expr: 'max(0, x - 100) - 5', color: '#1d4ed8', label: 'long call, K=100, premium 5' },
+    { expr: '5 - max(0, x - 100)', color: '#b42318', label: 'short call, K=100, premium 5' },
+    { expr: 'max(0, 100 - x) - 5', color: '#0f766e', label: 'long put, K=100, premium 5' },
+  ],
+  x: { min: 70, max: 130, label: 'underlying price at expiry' },
+  y: { min: -25, max: 25, label: 'profit / loss' },
+  height: 320,
+};
 ---
 <TopicPage slug="subjects/finance/advanced/options-and-derivatives">
   <h2>The idea</h2>
   <p>
-    Derivatives are <strong>contracts whose value derives from something else</strong> — stocks,
-    rates, commodities, even weather. Options are the core: rights to buy or sell at a set price,
-    giving asymmetric payoffs that no plain stock can replicate. Used well they hedge risk;
-    used with leverage they create it — derivatives are tools, and the 2008 crisis was a
-    tools-in-the-dark story.
+    A derivative is a contract whose value <strong>derives</strong> from something else — a share,
+    an interest rate, a commodity, a default. The family is old (forwards on rice in 18th-century
+    Osaka, tulip options in 1637) and enormous today: notional values in the hundreds of trillions
+    against a world economy near a tenth of that. The economics of derivatives is the economics of
+    <strong>risk relocation</strong>: they let a farmer, an airline, a pension fund and a hedge
+    fund trade the risks they each hold for the risks they would rather have — with a pricing
+    theory (no-arbitrage) precise enough that a formula from 1973 still anchors a multi-trillion
+    market.
   </p>
 
   <Widget no="1" caption="calls, puts, payoff shapes, and the pricing formula" widget="equationStep" config={optCfg} />
 
-  <h2>What derivatives are actually for</h2>
-  <ul>
-    <li><strong>Hedging:</strong> an airline buys fuel options to cap jet-fuel costs; a farmer sells crop futures; a fund buys index puts before volatility. Shifting risk to those paid to hold it.</li>
-    <li><strong>Price discovery:</strong> option prices reveal the market's implied volatility and probability expectations — information no spot market provides.</li>
-    <li><strong>Speculation with leverage:</strong> small premium controls large position — gains multiplied, losses can exceed deposits. The leverage is why notional values dwarf the real economy.</li>
-    <li><strong>The systemic lesson (2008):</strong> credit default swaps and mortgage securities were sensible individually; opacity, chain-linkage and leverage made them systemic. Notional ~$600T notional vs ~$100T world GDP — the plumbing matters as much as the maths.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Black & Scholes (1973); Hull, Options, Futures and Other Derivatives; McDonald, Derivatives Markets.</p>
+  <h2>Forwards and futures: price certainty by contract</h2>
+  <p>
+    The simplest derivative is a <strong>forward</strong>: an agreement today to buy or sell an
+    asset at a fixed price on a fixed date. Its logic is arbitrage, not opinion: the fair forward
+    price of a stock trading at S with interest rate r over time T is F = S·e<sup>rT</sup> —
+    exactly the cost of buying the stock now and carrying it (financed at r) to the delivery date.
+    Any deviation creates free money: if F is too high, sell the forward and buy the stock with
+    borrowed funds; if too low, do the reverse — and the trading itself closes the gap. This is
+    <strong>cash-and-carry arbitrage</strong>, and it is why forward prices are arithmetic rather
+    than forecasts. <strong>Futures</strong> are forwards standardised and exchange-traded, with
+    the innovation that makes scale possible: a <strong>clearinghouse</strong> standing between
+    every buyer and seller, and <strong>daily margin</strong> — gains and losses settled in cash
+    every day, so no one accumulates unsecured exposure. <strong>Worked example:</strong> a wheat
+    farmer expects harvest in September, fears falling prices, and sells futures at $6.50/bushel.
+    If harvest-time prices fall to $5.50, the crop sells for less but the futures position gains
+    $1.00 — the farmer's revenue is locked. If prices rise to $7.50, the crop gains $1.00 but the
+    futures lose $1.00 — same revenue. The hedge eliminates price risk (not quantity or basis
+    risk — the local-vs-futures gap that hedgers still wear) and transfers it to whoever chose to
+    hold it, paid to do so.
+  </p>
+
+  <h2>Options: asymmetric payoffs</h2>
+  <p>
+    A <strong>call</strong> grants the right (not the duty) to buy at strike K before expiry; a
+    <strong>put</strong> the right to sell. The asymmetry is the product: a stock's payoff is a
+    line through zero; an option's is a <em>hockey stick</em> — capped loss (the premium) on one
+    side, unhinged upside on the other. <strong>Worked example:</strong> a call on a stock at
+    £100, strike £100, premium £5. At expiry with the stock at £120: exercise and profit £15
+    (£20 intrinsic minus the £5 paid) — a 300% return on a 20% stock move. With the stock at
+    £102: exercise anyway, net −£3. At £98: walk away, lose the £5 premium, no more. The buyer's
+    loss is strictly capped at the premium; the seller's is not capped at all — which is why
+    option selling is a business for institutions with pricing and risk machinery, and why
+    retail sellers of naked options occasionally generate famous blow-ups. The premium itself
+    decomposes into <strong>intrinsic value</strong> (payoff if exercised now: max(0, S − K) for
+    calls) and <strong>time value</strong> (the value of what might still happen) — the second
+    being where option pricing lives.
+  </p>
+
+  <Widget no="2" caption="expiry payoff diagrams — drag nothing, read the asymmetry: capped loss below, line above" widget="plotter" config={payoffPlot} />
+
+  <p>
+    Read the figure and the strategy language writes itself. The long call is a leveraged bull
+    position with capped downside; the short call collects premium and bears unlimited upside
+    risk; the long put is portfolio insurance (a fund holding shares plus index puts has bought a
+    floor — the strategy that produced portfolio-insurance's own 1987 crash story). Combinations
+    build any view: straddles (call + put, same strike — a bet on volatility, not direction),
+    collars (long put funded by short call — insurance paid for by selling upside), spreads
+    (limit both sides). Options are Lego for payoff functions; "what is your payoff diagram?" is
+    the first professional question in any options conversation.
+  </p>
+
+  <h2>Put-call parity and the no-arbitrage discipline</h2>
+  <p>
+    The deepest idea in derivatives is <strong>no-arbitrage pricing</strong>: prices must be
+    consistent enough that no riskless profit exists, and consistency relations follow. The
+    cleanest is <strong>put-call parity</strong> for European options: C − P = S − K·e<sup>−rT</sup>
+    — long call plus short put replicates a forward. <strong>Worked example:</strong> S = £100,
+    K = £100, r = 5%, T = 1 year: the right side is 100 − 100·e<sup>−0.05</sup> ≈ 100 − 95.12 =
+    £4.88. If the call trades at £8 and the put at £2 (parity violated by £1.12), the arbitrage
+    is mechanical: buy the put, sell the call, buy the stock, borrow — collect £1.12 per share
+    risklessly; the trading collapses the mispricing in minutes. Parity violations are rare and
+    small precisely because thousands of desks run this arithmetic continuously — arbitrage is
+    the market's immune system, and option theory is its antibody design.
+  </p>
+
+  <h2>Black–Scholes: pricing the time value</h2>
+  <p>
+    Black, Scholes and Merton (1973) priced the option by an argument that looks like magic and
+    is actually the no-arbitrage logic at full power: a position in the underlying stock,
+    <em>continuously rebalanced</em> (delta hedged), can replicate the option's payoff exactly —
+    and anything replicable must price at its replication cost, whatever investors believe about
+    direction. The formula needs the stock price, strike, time, interest rate and
+    <strong>volatility</strong> — the only genuinely unknown input. Three consequences organise
+    modern markets. First, <strong>implied volatility</strong>: invert the formula, and an
+    option's market price becomes a volatility forecast — the VIX ("fear index") is exactly this,
+    computed from index-option prices. Second, the <strong>Greeks</strong>: sensitivities
+    (delta to price, gamma to delta's change, theta to time decay, vega to volatility) are the
+    risk dashboard every trading desk manages daily; market-makers selling options are
+    delta-hedgers earning premium against hedging costs. Third, the theory's imperfections are
+    their own market: real prices imply different volatilities at different strikes (the
+    <strong>volatility smile/skew</strong> — crash insurance is systematically priced above the
+    lognormal model's prediction, a permanent scar from 1987), so traders price surfaces, not
+    scalars. Nobel 1997 (Scholes and Merton); Black died before eligibility.
+  </p>
+
+  <h2>Swaps, credit derivatives, and the systemic lesson</h2>
+  <p>
+    <strong>Swaps</strong> exchange payment streams — the workhorse being the interest-rate
+    swap: fixed-for-floating on a notional principal. <strong>Worked example:</strong> a company
+    pays floating rates on £100m of debt and fears rises; it enters a swap paying 3.5% fixed,
+    receiving the floating index. If floating averages 4.5%, the swap nets it +1% — effective
+    borrowing cost 3.5%; if floating averages 2.5%, it pays the difference — same 3.5%. The swap
+    converts uncertainty into a chosen price of certainty; banks intermediate by quoting the
+    fixed leg, and the interest-rate swap market is the largest in the world by notional.
+    <strong>Credit default swaps</strong> transfer default risk: the buyer pays a spread, the
+    seller pays on a credit event — insurance in economics, but written as contracts, which
+    mattered enormously in 2008: CDS written on mortgage-backed securities (AIG's book) created
+    correlated, undercollateralised promises that no one had stress-tested; individually sensible
+    positions became a systemic knot through opacity, chain-linkage and leverage. The post-2008
+    reforms (central clearing, margin, trade repositories) are engineering responses to exactly
+    that: the same notional plumbing, drained of the parts that fail silently.
+  </p>
+  <p>
+    <em>Common misconception:</em> "derivatives are gambling, full stop." The same instrument is
+    insurance in one portfolio and speculation in another — the economic function lives in the
+    position, not the contract. A put bought against a held share portfolio is insurance; the
+    identical put bought naked is a bet. Regulation, accounting and the 2008 lesson all organise
+    around this distinction; dismissing the instrument (or romanticising it) misses the actual
+    question, which is who bears which risk, with what visibility and margin.
+  </p>
+
+  <h2>The Greeks: the risk dashboard</h2>
+  <p>
+    Professional option risk is managed through the sensitivities. <strong>Delta</strong>
+    (∂V/∂S): the option's price change per unit of underlying — a call's delta runs from 0 to
+    1 (at-the-money around 0.5), and delta-hedging (holding delta shares against the option)
+    is the market-maker's neutralising trade. <strong>Gamma</strong> (∂Δ/∂S): how fast delta
+    itself changes — highest at-the-money and near expiry, and gamma's costs explain the
+    smile: a short-gamma hedger must buy high and sell low as the market moves (the
+    volatility premium's microstructure). <strong>Theta</strong>: time decay — options are
+    wasting assets, with accelerating decay in the final weeks for near-the-money strikes.
+    <strong>Vega</strong>: sensitivity to implied volatility — long options are long
+    volatility, and a volatility spike pays the holder regardless of direction.
+    <strong>Rho</strong>: interest-rate sensitivity, minor for equity options, central for
+    long-dated rates products. The portfolio view: every options book is a vector of Greeks,
+    and risk limits are set per Greek because each dimension kills differently — direction
+    (delta), acceleration (gamma), decay (theta), volatility (vega). The Black–Scholes
+    assumptions underlie all of them, which is why desks keep smile-adjusted Greeks and
+    stress-test beyond the model: the dashboard reads the model, the book lives in the
+    market.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Risk-neutral valuation, properly stated.</strong> The replication argument implies
+    that options can be priced as the discounted expected payoff under an artificial
+    "risk-neutral" probability measure — no utility functions, no risk premia, because replication
+    deletes the risk. The binomial (Cox–Ross–Rubinstein) model makes the machinery visible with
+    two branches per step and converges to Black–Scholes; it remains the workhorse for American
+    options (where early exercise breaks closed forms) and exotic payoffs.
+    <strong>The empirical layer.</strong> Real markets violate the model's assumptions
+    measurably: fat-tailed returns (Mandelbrot's critique, then Mandelbrot vindicated), jumps,
+    stochastic volatility — the whole "smile" literature is a quarter-century of model repair,
+    with Heston-type stochastic-volatility and local-vol models as the practical standard.
+    <strong>Open questions:</strong> the explosion of zero-days-to-expiry (0DTE) index options
+    now a large share of US equity-options volume — what they do to underlying volatility and
+    end-of-day hedging flows is unsettled and monitored by regulators; volatility's own term
+    structure and the risk-premium embedded in variance swaps; the model risk of correlation
+    (the 2008 CDO lesson: pricing multi-name credit is correlation pricing, and correlation is
+    the parameter that moves when everything else does); and where the line between hedging and
+    systemic fragility sits when the hedgers are the market — the dynamic-hedging feedback
+    (sell into falling markets to stay delta-neutral) that portfolio insurance dramatised in
+    1987 and that modern vol-targeting funds re-enact at larger scale.
+  </p>
+  <p>
+    The retail dimension deserves honesty on both sides. Options offer defined-risk
+    structures — buying an option caps loss at the premium, an asymmetry equity leverage
+    cannot match — and covered-call and collar strategies are legitimate income and insurance
+    tools. Against that: most retail options expire worthless, the leverage asymmetry
+    destroys small accounts quickly, and the platform gamification of options trading (the
+    2020–2021 retail boom's documentation) is a public-health-grade case study in product
+    design meeting behavioural bias. The professional framing is unchanged by any of it: the
+    instrument transfers risk; the questions are always who is being paid to hold it, with
+    what capital, under what model — and whether the person on the other side of the screen
+    knows which of those roles they have taken.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Black &amp; Scholes (1973) and Merton (1973); Cox, Ross &amp; Rubinstein (1979); Hull, Options, Futures and Other Derivatives; McDonald, Derivatives Markets; BIS derivatives statistics; Financial Crisis Inquiry Report (2011).</p>
 </TopicPage>

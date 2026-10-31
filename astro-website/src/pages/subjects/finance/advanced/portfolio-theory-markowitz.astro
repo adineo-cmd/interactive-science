@@ -12,32 +12,232 @@ const markowitzCfg = {
     { label: 'risk reduction achieved', expr: '100 - (sqrt((20^2 + 20^2 + 2*corr*20*20))/2)/20*100', unit: '%' },
   ],
 };
+
+const mptQuiz = {
+  questions: [
+    {
+      q: 'Stocks (volatility 16%) and bonds (6%) with correlation 0.1 are mixed 60/40. The portfolio variance is 0.36×16² + 0.16×6² + 2×0.6×0.4×0.1×16×6. What is its volatility?',
+      choices: ['Exactly 12%', 'About 10.1% — below the weighted average of the components', 'About 15%', 'About 6%'],
+      answer: 1,
+      why: 'Variance = 92.16 + 5.76 + 4.61 ≈ 102.5, so volatility ≈ 10.1% — lower than either naive blend of the inputs. The covariance term is where diversification lives (or dies): it is the only term correlation controls.',
+    },
+    {
+      q: 'CAPM says an asset with beta 1.2, risk-free rate 4% and equity risk premium 5% should return:',
+      choices: ['4% + 1.2 = 5.2%', '4% + 1.2 × 5% = 10%', '1.2 × 5% = 6%', '4% + 5% = 9%'],
+      answer: 1,
+      why: 'E(R) = rf + β × ERP = 4 + 1.2 × 5 = 10%. Only systematic risk (beta) is priced; the rest of the asset\'s volatility can be diversified away and earns nothing extra.',
+    },
+    {
+      q: 'Why does Markowitz optimisation suffer from "error maximisation" (Michaud)?',
+      choices: ['It is computationally slow', 'It overweights assets whose expected returns were measured too high and covariances measured too low — the errors concentrate exactly where the weights go', 'It ignores correlations', 'It needs too little data'],
+      answer: 1,
+      why: 'The optimiser loads up on whatever looked best in the sample, so estimation noise is amplified rather than averaged. Robust estimation, Bayesian shrinkage (Black–Litterman) and even simple 1/n allocations often beat optimised portfolios out of sample.',
+    },
+    {
+      q: 'An investor holds 500 randomly selected stocks. Which risk remains?',
+      choices: ['None — all risk is diversified away', 'Systematic (market) risk; idiosyncratic risk is diversified away but the market factor cannot be', 'Only idiosyncratic risk', 'Only currency risk'],
+      answer: 1,
+      why: 'Diversification cancels firm-specific noise (falling roughly as 1/√n) but every stock still loads on common factors — recessions and rate shocks move all 500 together. That residual, systematic risk is what CAPM prices.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/finance/advanced/portfolio-theory-markowitz">
   <h2>The idea</h2>
   <p>
-    Markowitz's 1952 insight won the Nobel and rebuilt finance: <strong>portfolio risk depends not
-    just on each asset's risk but on how they move together</strong>. Combining imperfectly
-    correlated assets produces portfolios better than any ingredient — and plotting all possible
-    combinations reveals the <strong>efficient frontier</strong>: the best return available at
-    each level of risk.
+    Before 1952, investment advice was a list of good assets. Markowitz's <em>Portfolio
+    Selection</em> changed the object of analysis: <strong>the portfolio, not the asset</strong> —
+    because risk depends not just on how each holding moves but on how the holdings move
+    <em>together</em>. Combine two assets imperfectly correlated and you get a mixture whose
+    volatility is lower than the weighted average of its parts: risk destroyed by arithmetic, no
+    forecast required. Chart every combination, take the upper edge, and you have the
+    <strong>efficient frontier</strong> — the maximum expected return available at each level of
+    risk. The insight won the 1990 Nobel and became the skeleton of modern asset management.
   </p>
 
   <Widget no="1" caption="the correlation dial — watch the free lunch shrink as assets move together" widget="sliderLab" config={markowitzCfg} />
 
   <p>
-    With correlation 0.3, a 50/50 mix carries ~11.7% volatility instead of 20% — a 41% risk
-    reduction from diversifying alone. Perfect correlation (1.0) gives zero benefit. That dial is
-    the entire argument for international diversification, bond mixing, and every "uncorrelated
-    asset" pitch you will ever hear.
+    Read the dial carefully. Two assets, each with 20% volatility: at correlation 0.3, the 50/50
+    mix runs about 16.1% — a 19% risk reduction from mixing alone; at zero correlation it falls
+    to 14.1% (29% cut); at perfect correlation the benefit is exactly zero, and below zero it
+    grows fast. This one identity is the entire argument for mixing bonds with equities, home
+    market with international, and every "uncorrelated return stream" pitch you will ever hear —
+    and also for the suspicion they deserve, since the benefit is priced in the correlation,
+    and correlations move when it matters (rising toward 1 in crises, the "diversification when
+    you need it least" problem).
   </p>
 
-  <h2>From theory to practice</h2>
-  <ul>
-    <li><strong>The efficient frontier:</strong> for every risk level, one portfolio maximises expected return. Rational investors pick a point on it — their choice of point is their risk appetite, made precise.</li>
-    <li><strong>The Two-Fund separation:</strong> every efficient portfolio mixes just two things — the risk-free asset and one optimal risky portfolio. Simplicity hidden inside the mathematics.</li>
-    <li><strong>The estimation problem:</strong> the model needs expected returns (unobservable) and correlations (unstable) — "error maximisation" (Michaud): the optimizer overweights whatever was measured wrongly. Robust estimation and simple allocations are the workarounds.</li>
-    <li><strong>Its Nobel legacy:</strong> CAPM (Sharpe) and factor models grew directly out of Markowitz's framework — the entire asset-pricing field is this lesson's children.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Markowitz, Journal of Finance (1952, Nobel 1990); Elton & Gruber, Modern Portfolio Theory; Michaud, Efficient Asset Management.</p>
+  <h2>Measuring return and risk: the mean-variance frame</h2>
+  <p>
+    Markowitz's formalisation rests on two statistics. <strong>Expected return</strong> is the
+    probability-weighted average of outcomes; <strong>risk</strong> is variance (standard
+    deviation) of returns — the choice of variance as the risk measure was the modelling
+    decision that made everything solvable, and its limits (symmetry: a "risk" measure that
+    penalises pleasant upside identically with downside; fat tails understated) are permanent
+    footnotes and permanent research. The two-asset portfolio variance is the identity worth
+    memorising, because every statement above is a special case of it:
+  </p>
+  <p>
+    σ<sub>p</sub>² = w<sub>1</sub>²σ<sub>1</sub>² + w<sub>2</sub>²σ<sub>2</sub>² +
+    2w<sub>1</sub>w<sub>2</sub>ρ<sub>12</sub>σ<sub>1</sub>σ<sub>2</sub>
+  </p>
+  <p>
+    <strong>Worked example:</strong> a classic 60/40 stocks–bonds portfolio. Equities: 16%
+    volatility; bonds: 6%; correlation 0.1. Variance = 0.36 × 16² + 0.16 × 6² + 2 × 0.6 × 0.4 ×
+    0.1 × 16 × 6 = 92.16 + 5.76 + 4.61 ≈ 102.5, so σ<sub>p</sub> ≈ 10.1% — comfortably below
+    the weighted "average" of the parts (0.6 × 16 + 0.4 × 6 = 12%). The covariance term — the
+    only place correlation enters — is where the 2 points of risk went. Extend to n assets and
+    the same structure holds: variance is a weighted sum of every pairwise covariance, and as n
+    grows, the average covariance dominates — which is why <strong>diversification kills
+    idiosyncratic risk (falling roughly as 1/√n) but cannot touch systematic risk</strong>: 500
+    stocks still fall together in a recession, because what they share cannot be diversified
+    within the asset class.
+  </p>
+
+  <h2>The efficient frontier and two-fund separation</h2>
+  <p>
+    With the statistics fixed, the mathematics is constrained optimisation: minimise portfolio
+    variance subject to a target expected return (or maximise return subject to a variance
+    budget), weights summing to one. Sweeping the target traces the <strong>efficient
+    frontier</strong> — every portfolio below it is dominated (someone else has higher return at
+    equal risk, or equal return at lower risk). Two structural results follow.
+    <strong>The global minimum-variance portfolio</strong> anchors the curve's left tip.
+    <strong>Tobin's two-fund separation</strong> adds the risk-free asset: every efficient
+    portfolio is a mix of the risk-free asset and <em>one</em> optimal risky portfolio (the
+    tangency portfolio, where the line from the risk-free rate touches the frontier) — meaning
+    investors of every appetite need just two funds and a slider. Separation is the theoretical
+    foundation of index-fund investing: if everyone's optimal risky portfolio is the same
+    broadly diversified one, the advice "hold the market, adjust your cash/bond mix to taste"
+    is not conservatism but arithmetic.
+  </p>
+  <p>
+    <em>Common misconception:</em> "diversification eliminates risk." It eliminates the
+    <em>avoidable</em> risk — the firm-specific noise that averages away — and leaves exactly the
+    risk that is common to everything you hold. The converse misconception ("low risk assets
+    always earn less") is also wrong as stated: the relationship runs through the
+    <em>pricing</em> of systematic risk, and assets can be cheap or expensive on their own risk
+    — the low-volatility anomaly (defensive stocks historically earning competitive returns with
+    less risk) is the standing empirical embarrassment to both.
+  </p>
+
+  <h2>From Markowitz to CAPM</h2>
+  <p>
+    The framework's first great child is the <strong>Capital Asset Pricing Model</strong>
+    (Sharpe, Lintner, Mossin — the 1960s). Equilibrium reasoning: if everyone holds the tangency
+    portfolio, it must be the market portfolio; an asset's expected return then depends only on
+    how much systematic risk it contributes — its <strong>beta</strong> (covariance with the
+    market, normalised). E(R) = R<sub>f</sub> + β × ERP. <strong>Worked example:</strong> the
+    risk-free rate is 4%, the equity risk premium 5%; a stock with β = 1.2 should earn
+    4 + 1.2 × 5 = 10%. Beta 0.5 → 6.5%; beta 2 → 14%. Only covariance with the market is priced;
+    an asset's own volatility is irrelevant to its expected return because it can be diversified
+    away — CAPM is Markowitz plus equilibrium, and the security market line it draws is the
+    default benchmark for performance attribution (alpha = return above the line). The empirical
+    record is mixed in ways that built modern finance: beta explains less of cross-sectional
+    return than the model hopes (the low-beta anomaly again), and the residuals have structure —
+    which is precisely why <strong>factor models</strong> (Fama-French's size and value, momentum,
+    quality) exist: CAPM's single factor expanded to a family, with each factor a priced
+    characteristic, not a refutation of the mean-variance frame but its elaboration.
+  </p>
+
+  <h2>The estimation problem: where the theory meets its limits</h2>
+  <p>
+    Mean-variance optimisation needs <strong>expected returns</strong> (unobservable — you must
+    forecast), <strong>variances</strong> (estimable but time-varying — volatility clustering
+    means yesterday's variance is a poor but better-than-nothing proxy) and
+    <strong>correlations</strong> (unstable, and historically prone to converge toward one in
+    crises). The notorious consequence is Michaud's <strong>error maximisation</strong>: the
+    optimiser loads maximum weight on whatever asset happened to be measured with the most
+    favourable error, so unconstrained optimised portfolios routinely underperform simple
+    allocations out of sample. The practical repairs define institutional practice:
+    constraints (weight limits, turnover limits), <strong>shrinkage</strong> (pull estimates
+    toward structure — Ledoit-Wolf for covariances), <strong>Black–Litterman</strong> (blend
+    market-equilibrium expected returns with house views, in a Bayesian frame that keeps views
+    from dominating), <strong>resampling</strong>, and the humbling empirical result of
+    DeMiguel and colleagues that the naive <strong>1/n portfolio</strong> is hard to beat. The
+    2008–2020 era added the deepest caveat: correlations and volatilities are regime-dependent,
+    so the frontier is itself a forecast — risk parity, volatility targeting and factor investing
+    are all attempts to manage the estimation problem rather than assume it away.
+  </p>
+
+  <h2>Risk beyond variance: drawdown, VaR and CVaR</h2>
+  <p>
+    Variance's symmetry — penalising upside as it penalises downside — is its practical
+    limitation, and the alternatives define modern risk practice. <strong>Value at Risk
+    (VaR)</strong>: the loss threshold not exceeded with probability p over horizon h (the
+    5% one-day VaR of a portfolio) — banking regulation's native measure, with well-known
+    pathologies: it says nothing about losses beyond the threshold (the tail is where ruin
+    lives), it is not subadditive (merged portfolios can show more VaR than their parts — an
+    incoherence), and it invites tail-blindness. <strong>Expected Shortfall (CVaR)</strong>:
+    the average loss in the tail beyond VaR — coherent, subadditive, and the post-crisis
+    Basel standard for market risk. <strong>Maximum drawdown</strong> (largest peak-to-trough
+    decline) captures the lived experience investors actually abandon portfolios over — and
+    the behavioural literature confirms the abandonment: returns are path-dependent in
+    decision reality, and the investor who flees at the bottom converts paper loss into
+    permanent loss. <strong>Worked illustration:</strong> two strategies with identical 10%
+    volatility and mean return — one with small frequent losses, one with a single −35%
+    drawdown — are indistinguishable to variance and separated cleanly by drawdown and CVaR;
+    the investor's actual survival differs. The mean-variance frame remains the solvable
+    core; risk's measurement pluralism is where practice has outgrown the textbook.
+  </p>
+
+  <h2>Factor investing: the elaborated frontier</h2>
+  <p>
+    The anomalies that embarrassed CAPM became an industry. <strong>Size</strong> (small caps
+    out-earning beta predictions — Banz's finding), <strong>value</strong> (cheap-by-fundamentals
+    outperforms growth — Fama-French's HML factor), <strong>momentum</strong>
+    (Jegadeesh-Titman: past winners persist for months), <strong>quality and
+    profitability</strong>, <strong>low volatility</strong> — factors priced beyond beta,
+    persistent across markets, and contested in interpretation: risk compensation (factors
+    are priced because they load on crash states — value crashed in the tech bubble) or
+    behaviour (mispricing structured by limits to arbitrage). The portfolio-theory
+    translation: the frontier's dimensions multiplied — a multi-factor covariance structure
+    where each factor is a priced direction, and "diversification" means factor
+    diversification, not just security count. The practical record: factor premia attenuate
+    after publication (the publication-decay effect is real and measurable), factor timing is
+    hard, and the honest institutional answer is broad, cheap, rebalanced exposure — the
+    frontier's logic applied to itself.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The n-asset mathematics.</strong> The frontier is the solution of a quadratic
+    programme; in matrix form, the minimum-variance weights are w ∝ Σ<sup>−1</sup>μ (adjusted
+    for targets), and everything reduces to the covariance matrix Σ and its inverse — which is
+    why covariance estimation <em>is</em> portfolio theory in practice: with n assets you must
+    estimate n(n−1)/2 covariances (a 500-stock matrix has ~125,000 entries), and shrinkage,
+    factor structure (Σ ≈ BΛB<sup>T</sup> + D) and regularisation are the standard fixes.
+    <strong>Utility ties the frame to people.</strong> Markowitz's expected-utility motivation
+    (with quadratic utility, mean-variance is exact; otherwise it is an approximation good for
+    near-normal returns) connects to the behavioural layer: loss aversion and prospect theory
+    predict different portfolio choices than the elliptical indifference curves assume, and
+    drawdown-based risk measures (maximum drawdown, CVaR) capture what variance misses —
+    practitioner risk is lived path-dependently, not just measured end-point.
+    <strong>Open questions:</strong> whether the equity risk premium is stable enough for
+    long-horizon optimisation at all (its historical ~4–6% estimate carries wide error bars);
+    how to optimise when the opportunity set itself adapts (crowded trades change the
+    covariances being optimised on — reflexivity in the covariance matrix); what ESG screening
+    does to frontiers (constraining the set shifts the frontier inward — the efficient-set
+    arithmetic of values-based investing is measurable); and whether post-2022 experience
+    (stocks and bonds falling together as rates spiked — correlation turning positive exactly
+    when the 60/40 needed it) forces a re-estimation of the last forty years' covariance
+    structure, or was one regime in a longer cycle. The 1952 identity has not changed; the
+    inputs' stability — as always in finance — has.
+  </p>
+  <p>
+    A final integration note: Markowitz's framework and the behavioural layer meet in
+    practice through policy-based investing. Pre-commitment devices — fixed rebalancing
+    schedules, glidepaths, default funds in auto-enrolment systems — operationalise
+    mean-variance logic while insulating decisions from the loss aversion and recency effects
+    the behavioural literature documents; the default-fund revolution is applied behavioural
+    portfolio theory at population scale. The theory's deepest practical lesson survives
+    every refinement: what you hold matters less than how the holdings move together, and
+    discipline about that covariance — measured, monitored, and not chased — is the whole
+    game. Everything else in this chapter is machinery for keeping that one insight honest
+    when the inputs move.
+  </p>
+
+  <Widget no="2" caption="check yourself: portfolio variance, CAPM, error maximisation, what diversification can't do" widget="quiz" config={mptQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> Markowitz, Journal of Finance (1952, Nobel 1990); Tobin (1958); Sharpe, "Capital Asset Prices" (1964); Michaud, Efficient Asset Management; DeMiguel, Garlappi &amp; Uppal (2009) on 1/n; Ledoit &amp; Wolf on shrinkage; Elton &amp; Gruber, Modern Portfolio Theory.</p>
 </TopicPage>

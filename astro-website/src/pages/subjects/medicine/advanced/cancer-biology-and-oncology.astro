@@ -10,25 +10,232 @@ const cancerCfg = {
     { math: '4 · Screening and early detection', note: 'Stage 1 survival >> stage 4 survival for most cancers — early detection is the strongest lever. But screening finds slow cancers too (overdiagnosis), which is why guidelines are risk- and age-based, not universal.' },
   ],
 };
+
+const cancerQuiz = {
+  questions: [
+    {
+      q: 'A proto-oncogene like RAS becomes dangerous when:',
+      choices: ['It is deleted entirely', 'A gain-of-function mutation makes it constitutively active', 'Both copies are lost', 'It is methylated into silence'],
+      answer: 1,
+      why: 'Oncogenes are dominant at the cellular level: one mutated copy that fires without signals is enough. That is the mirror image of tumour suppressors, which require both copies to be lost — the two-hit rule.',
+    },
+    {
+      q: 'A patient is diagnosed with cancer at 60 and dies at 70. Screening had detected the same cancer at 55; the patient still dies at 70. Apparent survival rose from 5 to 15 years with no change in death date. What is this bias called?',
+      choices: ['Recall bias', 'Lead-time bias', 'Confounding', 'Publication bias'],
+      answer: 1,
+      why: 'Screening moved the diagnosis earlier without moving the death — inflating "survival from diagnosis" with nothing gained. Honest screening trials must show reduced mortality, not longer survival-after-diagnosis.',
+    },
+    {
+      q: 'Why does imatinib (Gleevec) work so specifically against chronic myeloid leukaemia?',
+      choices: ['It kills all dividing cells', 'It binds the abnormal BCR-ABL fusion kinase found only in the leukaemic cells', 'It boosts the immune system', 'It repairs the Philadelphia chromosome'],
+      answer: 1,
+      why: 'CML is driven by a single, defined fusion protein created by the 9;22 translocation. A drug designed into that ATP-binding pocket hits the driver and little else — the proof-of-concept for targeted oncology.',
+    },
+    {
+      q: 'Metastasis requires a tumour cell to complete which sequence?',
+      choices: ['Grow bigger, then spread', 'Invade locally, enter blood or lymph, survive circulation, extravasate, colonise a new tissue', 'Mutate p53 only', 'Attract antibodies'],
+      answer: 1,
+      why: 'The invasion–intravasation–circulation–extravasation–colonisation cascade loses cells at every step; colonisation is the bottleneck, which is why metastasis is the step most cancers fail — and why the ones that complete it dominate mortality.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/medicine/advanced/cancer-biology-and-oncology">
   <h2>The idea</h2>
   <p>
-    Cancer is <strong>your own cells breaking the rules in their own DNA</strong> — mutations in
-    growth genes, tumour suppressors and repair machinery, accumulated over decades. That
-    framing (somatic evolution) explains everything: why it resists single drugs (resistant
-    clones exist), why risk rises with age (time for mutations), and why the newest treatments
-    work by re-engaging the immune system rather than poisoning dividing cells.
+    The biology ladder already taught you the cell cycle, DNA repair and apoptosis; cancer is what
+    happens when those control systems are dismantled inside a single lineage of your own cells. The
+    frame that organises everything else is <strong>somatic evolution</strong>: a tumour is a
+    population of cells competing under mutation, selection and drift, evolving inside a patient in
+    real time. This one idea explains cancer's age distribution (evolution needs time and sequential
+    mutations), its resistance to single drugs (resistant clones pre-exist and are amplified by
+    treatment), and why therapy has migrated from poison-the-dividing-cell to precisely identify-
+    and-engage mechanisms.
   </p>
 
   <Widget no="1" caption="the hallmarks, the treatments matched to mechanisms, and the screening logic" widget="equationStep" config={cancerCfg} />
 
-  <h2>Where oncology is winning</h2>
-  <ul>
-    <li><strong>Targeted therapy:</strong> drugs matched to specific mutations — imatinib for chronic myeloid leukaemia turned a fatal disease into a daily pill (99% 5-year survival). Genotyping tumours before treating is now standard.</li>
-    <li><strong>Immunotherapy (checkpoint inhibitors, Nobel 2018):</strong> cancers hide from T cells by activating "off switches" (PD-1); blocking the switch unleashes durable responses in melanoma, lung and kidney cancers — some patients disease-free for a decade.</li>
-    <li><strong>CAR-T cells:</strong> a patient's own T cells reprogrammed to attack their leukaemia — living drugs, complete remissions in otherwise hopeless cases (approved 2017→).</li>
-    <li><strong>The honest ledger:</strong> survival has risen for decades (US: ~50% → ~70% five-year since the 1970s), unevenly across cancer types. Smoking cessation prevented more cancers than any therapy cured — the prevention point, again.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Hanahan & Weinberg, Cell (2000/2022); Nobel 2018 (Allison & Honjo); SEER Cancer Statistics; Imatinib trial history (Druker).</p>
+  <h2>The genetic engine: oncogenes and tumour suppressors</h2>
+  <p>
+    Cancer genes come in two antithetical classes, and the logic of each is examinable to the base
+    pair. <strong>Proto-oncogenes</strong> are the accelerator: growth-factor receptors (HER2), signal
+    transducers (RAS), transcription factors (MYC). Mutation makes them dangerous by
+    <em>gain of function</em> — a point mutation can convert RAS into a GTPase that never hydrolyses
+    GTP, shouting "divide" permanently. Because one hyperactive copy suffices, oncogenic mutations are
+    <em>dominant</em> at the cellular level. <strong>Tumour suppressors</strong> are the brakes — p53
+    (guardian of the genome: halts the cycle, forces repair or apoptosis after damage), RB (the G1
+    checkpoint gatekeeper), BRCA1/2 (homologous recombination repair). They fail by <em>loss of
+    function</em>, and because one working copy still brakes, both must go: Knudson's
+    <strong>two-hit hypothesis</strong>. Knudson's original evidence is a beautiful piece of
+    quantitative reasoning: children with the inherited form of retinoblastoma present earlier, with
+    bilateral, multifocal tumours (first hit inherited, one somatic hit remains), while sporadic cases
+    are later, unilateral, single (both hits must occur by chance in one cell). The incidence curves
+    fit the two-hit maths almost exactly — epidemiology discovering a molecular rule decades before
+    the gene was cloned.
+  </p>
+  <p>
+    <strong>Worked example on risk.</strong> BRCA1 carriers face lifetime breast-cancer risks around
+    55–72% (population baseline ~12%) and ovarian risks of ~39–44% — which is why testing drives
+    surveillance and preventive-surgery decisions. Yet hereditary cases are a minority: roughly 5–10%
+    of cancers run in strong single-gene families. The rest is somatic: 40-plus years of division,
+    with each cell division carrying a small mutation rate, plus exogenous accelerants (tobacco's
+    benzo[a]pyrene adducts, UV thymine dimers, HPV's E6/E7 proteins that sabotage p53 and RB). The
+    correlation between lifetime normal stem-cell divisions and cancer incidence across tissues
+    (Tomasetti and Vogelstein's work) quantifies how much risk is bad luck in replication — while the
+    large residual differences between populations quantify how much remains preventable. Both are true.
+  </p>
+  <p>
+    <em>Common misconception:</em> "cancer is one disease with one cure waiting to be found." There
+    are hundreds of diseases with distinct driver combinations; lung cancer with an EGFR mutation and
+    lung cancer without it are therapeutically different planets. The unifying abstraction is the
+    evolutionary process, not the pathology — which is exactly why "the cure for cancer" is a category
+    error and why progress arrives cancer-by-cancer, target-by-target.
+  </p>
+
+  <h2>Metastasis: the cascade that kills</h2>
+  <p>
+    Over 90% of cancer deaths are metastasis-driven, not primary-tumour-driven. The cascade has
+    defined, lossy steps: local <strong>invasion</strong> (cells degrade basement membrane with
+    matrix metalloproteinases and adopt motile programs), <strong>intravasation</strong> into blood
+    or lymphatics, <strong>survival in circulation</strong> (shear stress, immune patrol — most cells
+    die within hours), <strong>extravasation</strong> through distant endothelium, and
+    <strong>colonisation</strong> — founding a population in alien tissue, the hardest step and the
+    rate limiter. Colonisation explains organ tropism (the seed-and-soil hypothesis: breast cancer
+    seeds bone, liver, lung and brain because those soils provide the survival factors particular
+    clones require). Quantitatively, the cascade is brutal: a primary tumour may shed millions of
+    cells per gram per day, yet clinical metastases arise from a vanishing fraction — which is also
+    why <strong>stage</strong> (T: tumour size/invasion, N: nodes involved, M: metastasis) is the
+    strongest single prognostic variable in oncology. Five-year survival for many cancers runs from
+    the 90s at stage I to single digits at stage IV; catching disease pre-metastatic is the biggest
+    lever medicine holds.
+  </p>
+
+  <h2>Angiogenesis and the hallmarks, connected</h2>
+  <p>
+    A tumour beyond about a millimetre hits the diffusion limit for oxygen and nutrients — the same
+    physics that limits anything living without plumbing. Cancers escape by inducing angiogenesis,
+    tipping the balance of pro- and anti-angiogenic signals (VEGF up, thrombospondin down). Judah
+    Folkman's hypothesis became a drug class: bevacizumab (anti-VEGF antibody) and small-molecule
+    VEGF-receptor inhibitors are now standard components of several regimens. The clinical lesson is
+    more nuanced than the theory: shutting angiogenesis rarely eradicates disease, but it can normalise
+    and prune the chaotic vasculature, improving delivery of chemotherapy and slowing growth — a
+    hallmark exploited as a component, not a cure. Walk the full hallmark list with this lens:
+    each capability (evading apoptosis, replicative immortality via telomerase, metabolic reprogramming
+    to aerobic glycolysis — the Warburg effect — immune evasion) is a potential point of pharmacological
+    attack, and the 2022 update added phenotypic plasticity and polymorphic microbial communities to
+    the list.
+  </p>
+
+  <h2>Targeted therapy: mechanism matched to mutation</h2>
+  <p>
+    The paradigm case is chronic myeloid leukaemia. CML cells carry the Philadelphia chromosome — a
+    reciprocal 9;22 translocation fusing BCR to ABL, producing a constitutively active tyrosine
+    kinase. Imatinib was designed into that kinase's ATP-binding pocket, inhibiting the fusion protein
+    and essentially nothing else. The results reset the field: chronic-phase patients went from
+    median survival of a few years (interferon-era) to five-year survival around 90% on a daily pill —
+    disease controlled, not eradicated, because leukaemic stem cells persist below detection.
+    Genotype-before-treatment is now standard across oncology: EGFR mutations and ALK fusions dictate
+    kinase-inhibitor choice in lung cancer; HER2 amplification dictates trastuzumab in breast cancer;
+    BRCA-mutated tumours' repair defect is exploited by PARP inhibitors (synthetic lethality — a cell
+    with one broken repair pathway tolerates one drug, but a cell with two cannot survive). Resistance,
+    predictably, evolves: ABL's "gatekeeper" T315I mutation blocks imatinib binding, answered by
+    second-generation inhibitors — the drug-resistance arms race in its cleanest form.
+  </p>
+  <p>
+    <strong>Immunotherapy</strong> is the second modern pillar. T cells carry checkpoints (PD-1) that
+    tumours hijack via ligands (PD-L1) to suppress killing; blocking antibodies (pembrolizumab,
+    nivolumab) release the brake, producing durable — sometimes decade-long — remissions in melanoma
+    and lung and kidney cancer (Nobel Prize 2018, Allison and Honjo). CAR-T cell therapy goes further,
+    reprogramming a patient's T cells with a synthetic receptor against CD19; approved since 2017 for
+    refractory leukaemias and lymphomas, with real complete remissions in end-stage disease and real
+    toxicities (cytokine-release syndrome) to manage. Caveats to hold alongside the enthusiasm:
+    checkpoint inhibitors help a minority of unselected patients (biomarkers like PD-L1 and
+    tumour-mutational burden predict who), and autoimmunity is the physiological price of releasing
+    the brakes.
+  </p>
+
+  <h2>Screening: the epidemiological trap</h2>
+  <p>
+    Early detection looks self-evidently good, and sometimes is. But the numbers demand care. Two
+    biases inflate apparent benefit. <strong>Lead-time bias</strong>: screening advances the date of
+    diagnosis without changing the date of death. A cancer found at 60 with death at 70 shows 5-year
+    survival; the same cancer screen-detected at 55 shows 15-year survival — with nothing gained.
+    <strong>Overdiagnosis</strong>: screening preferentially finds slow, indolent tumours (fast ones
+    announce themselves between screens), counting as "cured" cancers that would never have harmed.
+    Prostate-specific antigen screening exemplifies both: the ERSPC trial showed a modest
+    prostate-cancer mortality reduction bought with substantial overdiagnosis, while US incidence
+    statistics show grade-shift without proportional mortality movement. This is why honest screening
+    claims are made in <em>mortality</em> (deaths prevented per 1,000 screened over 10 years), not
+    survival-from-diagnosis, and why guidelines are risk- and age-stratified. Mammography, HPV testing
+    and faecal-immunochemical colonoscopy triage sit on that spectrum with very different
+    benefit-harm ratios.
+  </p>
+
+  <h2>A tumour's timeline: the worked natural history</h2>
+  <p>
+    Assemble the pieces into a plausible sequence. A bronchial epithelial cell in a smoker's
+    lung acquires an oncogenic KRAS mutation; years later a TP53 hit removes the apoptosis
+    brake; the clone proliferates, and mutation bursts (chromosomal shattering, APOBEC
+    activity) diversify it into subclones. By the time a 1 cm lesion exists — around
+    10<sup>9</sup> cells — the tumour has been evolving for a decade or more, angiogenesis has
+    been recruited, and metastatic competence may already exist in a minority clone. Symptoms
+    and diagnosis typically arrive at 10<sup>9</sup>–10<sup>11</sup> cells; by then "early
+    detection" is late in evolutionary terms, which is why screening targets the interval and
+    why liquid biopsies (catching circulating tumour DNA shed at 10<sup>7</sup>–10<sup>8</sup>
+    cell equivalents) are the detection frontier. The timeline also explains therapy's
+    evolutionary pressure: cytotoxic chemotherapy prunes sensitive subclones and selects
+    resistant ones, so adjuvant therapy targets micrometastases while the tumour is still a
+    small, relatively homogeneous population — the logic of treating hardest when diversity is
+    lowest.
+  </p>
+
+  <h2>Surgery, radiation, and the local-versus-systemic divide</h2>
+  <p>
+    The treatment triad deserves its mechanisms stated. <strong>Surgery</strong> remains the
+    single most curative modality — complete resection with clear margins is the only therapy
+    that eradicates a tumour's full heterogeneity at once — but works only where disease is
+    localised, which is why staging (imaging, biopsy, sometimes lymph-node dissection)
+    precedes it. <strong>Radiotherapy</strong> kills by ionising DNA: fractionated doses
+    exploit normal tissue's repair advantage over tumour cells (sublethal-damage repair
+    between fractions), with intensity-modulated delivery sculpting dose to millimetres;
+    combined with surgery it cleans margins and nodal basins. <strong>Systemic therapy</strong>
+    — the chemotherapy, targeted and immune modalities above — is the only arm that reaches
+    disease beyond the surgeon's reach, and its curative uses (testicular cancer, many
+    childhood leukaemias, Hodgkin lymphoma) are among oncology's proudest results. The modern
+    specialty is the choreography: which sequence of local and systemic arms, for which stage
+    and molecular profile — a decision architecture the multidisciplinary tumour board
+    institutionalises.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Intratumour heterogeneity and clonal dynamics.</strong> Sequencing shows a tumour is a
+    branching tree of subclones; biopsies sample one twig. Spatial and temporal heterogeneity explain
+    treatment failure better than any single-gene model, and evolutionary therapy — scheduling drugs
+    to <em>manage</em> rather than maximally shrink tumour burden, keeping sensitive competitors alive
+    to suppress resistant clones — is the serious research programme (promising trials in prostate
+    cancer). <strong>Liquid biopsy</strong>: circulating tumour DNA offers real-time, non-invasive
+    monitoring of the clone tree — enabling minimal-residual-disease detection months before
+    radiographic relapse. <strong>Mutational signatures</strong>: each carcinogen and repair defect
+    leaves a characteristic base-substitution fingerprint in the genome (UV's C-to-T signature,
+    APOBEC bursts, HR-deficiency scars), turning every tumour into a retrospective exposure history.
+    <strong>Open questions.</strong> Why do some cancers metastasise deterministically to specific
+    organs while others never do? Can dormancy — metastatic cells sitting quiescent for decades — be
+    pharmacologically maintained rather than killed? Does the microbiome shape immunotherapy response,
+    and how? And the inequality problem: five-year survival in high-income countries runs about twice
+    that in low-income settings for the same diseases, a gap made of screening, pathology and drug
+    access rather than biology — oncology's frontier is as much delivery as discovery.
+  </p>
+  <p>
+    A final calibration for the informed reader: survival statistics improve for two distinct
+    reasons — real therapeutic progress and stage migration (earlier diagnosis moves patients
+    into better-prognosis buckets without changing biology). The honest reading of five-year
+    survival curves separates the two, and the genuinely hard-won progress — childhood
+    leukaemia, testicular cancer, CML — sits alongside screen-detected increments that are
+    partly accounting. Both count; only one is a cure rate.
+  </p>
+
+  <Widget no="2" caption="check yourself: oncogenes, bias, targeted drugs, the metastatic cascade" widget="quiz" config={cancerQuiz} />
+
+  <p class="sources"><strong>Sources:</strong> Hanahan &amp; Weinberg, Cell (2000) and "Hallmarks of Cancer: New Dimensions" (2022); Knudson (1971); Nobel 2018 (Allison &amp; Honjo); IRIS imatinib trial (Druker et al.); Tomasetti &amp; Vogelstein, Science (2015); SEER Cancer Statistics; ERSPC trial (Schröder et al.).</p>
 </TopicPage>

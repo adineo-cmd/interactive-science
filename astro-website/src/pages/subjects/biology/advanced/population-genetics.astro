@@ -10,24 +10,234 @@ const popgenCfg = {
     { math: 'Gene flow: mixing rewrites too', note: 'Migration between populations counteracts divergence. The Neanderthal DNA in modern humans is gene flow across "species" lines.' },
   ],
 };
+
+const hwCfg = {
+  title: 'Worked example: Hardy–Weinberg as a carrier calculator',
+  steps: [
+    { math: 'cystic fibrosis affects ~1 in 2,500 newborns (Northern Europe)', note: 'CF is recessive: affected individuals are q², two copies of the mutant allele.' },
+    { math: 'q² = 1/2500  →  q = √0.0004 = 0.02', note: 'the disease frequency hands you the allele frequency — no pedigree needed.' },
+    { math: 'p = 1 − q = 0.98', note: 'two alleles, frequencies must sum to one.' },
+    { math: 'carriers = 2pq = 2 × 0.98 × 0.02 ≈ 0.039', note: 'heterozygotes are the invisible majority: about 1 in 25 people carries one CF allele, feeling nothing.' },
+    { math: 'carrier count vs affected: 0.039 vs 0.0004', note: 'nearly 100 hidden carriers for every affected child — the reason recessive disease is common while its homozygote form is rare.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/biology/advanced/population-genetics">
   <h2>The idea</h2>
   <p>
-    Population genetics puts <strong>evolution into numbers</strong>: tracking allele frequencies
-    over generations and identifying the forces that move them — selection, drift, mutation,
-    migration. Its baseline (Hardy–Weinberg equilibrium, 1908) defines "no evolution", which
-    makes evolution measurable: any deviation names its cause.
+    Population genetics puts <strong>evolution into numbers</strong>. Darwin's theory said
+    descent with modification; the genetics of the 1900s made it computable: track the
+    frequencies of alleles across generations, and identify the forces that move them —
+    natural selection, genetic drift, mutation, migration. The field's master stroke is
+    having a <strong>null model</strong>: Hardy–Weinberg equilibrium (1908) describes how
+    frequencies behave when nothing acts on them. With "no evolution" defined exactly,
+    evolution becomes measurable — any deviation from the null names its cause and size.
+    That is the pattern the whole subject follows, and it is why population genetics
+    became the mathematical spine of the <strong>modern synthesis</strong> (1930s–40s),
+    connecting Mendel's individuals (the inheritance lesson) to Darwin's populations and
+    species (the evolution and speciation lessons).
+  </p>
+  <p>
+    The objects are populations, not individuals: an <strong>allele frequency</strong> is
+    the fraction of all gene copies carrying one variant, and a <strong>genotype
+    frequency</strong> is the fraction of individuals with each allele combination. One
+    individual's genotype is a coin toss; a population's frequencies are the coin's
+    statistics — the same statistics the probability-thinking of the entire science
+    relies on.
   </p>
 
   <Widget no="1" caption="the four forces, anchored on the null model" widget="equationStep" config={popgenCfg} />
 
-  <h2>What the field explains</h2>
-  <ul>
-    <li><strong>Why harmful alleles persist:</strong> heterozygote advantage (sickle-cell vs malaria), mutation–selection balance, or simple drift in small groups. Prevalence has a reason.</li>
-    <li><strong>Conservation genetics:</strong> bottlenecked populations (cheetahs, Tasmanian deviors) lose variation and disease resistance; population genetics sets the minimum viable population sizes that guide reserves.</li>
-    <li><strong>Human history in our genes:</strong> lactose tolerance swept Europe and Africa alongside dairying (~7,500 years) — one of the strongest recent selection signals in our genome.</li>
-    <li><strong>Linking scales:</strong> population genetics connects Mendel's individuals (the inheritance lesson) to Darwin's species (the evolution lesson) — the mathematical spine of modern evolutionary biology (the "modern synthesis", 1930s–40s).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Hardy (1908) & Weinberg (1908); Gillespie, Population Genetics: A Concise Guide; the Modern Synthesis literature.</p>
+  <h2>Hardy–Weinberg: the null model, used daily</h2>
+  <p>
+    With two alleles A and a at frequencies p and q (p + q = 1), random mating makes
+    zygotes a Punnett square at population scale: <strong>p² AA : 2pq Aa : q² aa</strong> —
+    and, the remarkable part, these frequencies return <em>unchanged</em> every
+    generation, whatever the starting mix. After one generation of random mating the
+    population is permanently in equilibrium. Each equilibrium condition encodes one
+    evolutionary force, so the model is really a checklist: large population (else
+    drift), no selection, no mutation, no migration, random mating (else inbreeding
+    shifts genotype frequencies while leaving allele frequencies alone — a subtle point
+    examiners love). Its most-used application is the recessive-disease carrier
+    calculation:
+  </p>
+
+  <Widget no="2" caption="the everyday forensic use of Hardy–Weinberg — from disease frequency to hidden carriers" widget="equationStep" config={hwCfg} />
+
+  <p>
+    The same arithmetic runs genetic counselling (phenylketonuria: q² = 1/10,000 gives
+    q = 0.01 and carriers 2pq ≈ 1 in 50), carrier screening programmes, and forensic
+    profile probabilities (the molecular-biology lesson's 20-locus product assumes
+    Hardy–Weinberg within populations, with corrections applied for structure).
+  </p>
+  <p>
+    <em>Common misconception:</em> Hardy–Weinberg "assumes no evolution, so it describes
+    real populations badly." Backwards — that is the point. It is a <em>reference</em>:
+    measure a population's genotype counts, compare with p² : 2pq : q², and the excess
+    or deficit of heterozygotes tells you which force is acting (heterozygote excess →
+    recent hybridisation or overdominance; deficit → inbreeding or the Wahlund effect
+    of mixing structured populations). A null model is an instrument, not a description.
+  </p>
+
+  <h2>Selection: fitness and its three shapes</h2>
+  <p>
+    Give each genotype a <strong>relative fitness</strong> w (expected reproductive
+    contribution, fittest set to 1) and allele frequencies move predictably — Δq is
+    computable from the fitnesses, generation by generation. Three geometries matter.
+    <strong>Directional</strong> selection (industrial melanism: peppered moths' dark form
+    rising as soot blackened the trunks, and falling again as air cleaned) pushes an
+    allele toward fixation. <strong>Stabilising</strong> selection (human birth weight:
+    both extremes raise infant mortality — the classic 1950s data) removes extremes and
+    preserves the mean; it maintains variation rather than consuming it.
+    <strong>Disruptive</strong> selection favours both tails over the middle (Darwin's
+    finch bill-size bimodality on Santa Cruz island) and can split a population — the
+    bridge to the speciation lesson.
+  </p>
+  <p>
+    <strong>Heterozygote advantage</strong> is the canonical balancing case. Sickle-cell:
+    the homozygote (aa) suffers severe disease (fitness ≈ 0.25 historically), the
+    homozygote AA is malaria-vulnerable (fitness ≈ 0.9 in endemic regions), the carrier
+    Aa resists malaria best (fitness 1). Equilibrium settles where the two homozygote
+    disadvantages balance: q = s/(s + t) = 0.1/(0.1 + 0.75) ≈ 0.12 — matching observed
+    allele frequencies near 0.1–0.15 in West African populations. The disease is the
+    price the population pays for malaria resistance; move malarial populations to
+    America (no malaria) and selection drains the allele away — geography, through
+    selection, writes the disease map. <strong>Mutation–selection balance</strong>
+    explains the rest of rare genetic disease: selection purges deleterious alleles,
+    mutation recreates them, equilibrium sits near q ≈ √(μ/s) for recessives — with
+    mutation rate μ ≈ 10⁻⁵ and a lethal allele (s = 1), q ≈ 3 × 10⁻³, roughly the
+    observed frequency of many recessive disorders. Rare diseases are the standing wave
+    between creation and destruction.
+  </p>
+
+  <h2>Drift: sampling noise with real teeth</h2>
+  <p>
+    Reproduction is sampling: the next generation's alleles are drawn from the current
+    pool with randomness, and in a small population the sampling error is large.
+    <strong>Genetic drift</strong> wobbles frequencies randomly; it has no direction, is
+    strongest in small populations, and its two signatures are loss of variation and
+    divergence between populations. Quantitatively, heterozygosity decays as
+    H<sub>t</sub> = H₀(1 − 1/(2Nₑ))ᵗ: an effective population of 50 loses about 18% of
+    its heterozygosity in 20 generations (0.99²⁰ ≈ 0.82) — which is why conservation
+    biologists treat Nₑ, not census size, as the number that matters (only breeders
+    count; unequal sex ratios and variance in family size shrink Nₑ below the head
+    count, sometimes drastically). Three classic case studies: <strong>founder
+    effects</strong> (island colonists carrying a skewed sample — the Amish's elevated
+    Ellis–van Creveld syndrome from a few founders; Pingelap achromatopsia from a
+    typhoon's ~20 survivors); <strong>bottlenecks</strong> (northern elephant seals
+    hunted to ~20–30 animals in the 1890s, now 30,000-plus yet almost genetically
+    uniform; cheetahs' near-identical immune genes, so skin grafts between individuals
+    are accepted); and <strong>fixation</strong> — drift eventually fixes one allele,
+    and the probability an allele ultimately fixes equals its current frequency, which
+    is the neutral theory's cornerstone: most molecular evolution is drift, not
+    selection (Kimura, 1968).
+  </p>
+
+  <h2>Gene flow: the force that connects</h2>
+  <p>
+    Migration mixes populations and homogenises them: with a fraction m of each
+    population replaced by migrants each generation, differences decay geometrically —
+    one migrant per generation between populations is enough, in theory, to prevent
+    divergence by drift alone. The tension between flow and the other forces structures
+    everything: gene flow versus selection produces <strong>clines</strong> (allele
+    frequencies gradient — the mapped latitude gradients in human skin-pigmentation
+    genes); gene flow versus drift produces <strong>isolation by distance</strong>
+    (nearby populations similar, distant ones diverged). The standard yardstick is
+    <strong>F<sub>ST</sub></strong>, the fraction of total genetic variance held between
+    populations: near 0 means well-mixed, near 1 means isolated. Human continental
+    F<sub>ST</sub> ≈ 0.15 — most human genetic variation is <em>within</em> any
+    population, a result with direct bearing on how race and genetics intersect. And
+    gene flow crosses species lines too: the ~2% Neanderthal DNA in non-African genomes
+    (the speciation lesson's webbed tree) is introgression — flow, caught across a
+    species boundary.
+  </p>
+
+  <h2>Inbreeding, small populations and the conservation arithmetic</h2>
+  <p>
+    Random mating is the assumption; its violation has its own algebra. The
+    <strong>inbreeding coefficient</strong> F measures the excess homozygosity from
+    mating among relatives, and it climbs by 1/(2Nₑ) per generation in a closed
+    population — inbreeding exposes recessive lethals (each individual carries, on
+    average, a handful masked) and erodes fitness: the well-documented inbreeding
+    depression of captive-breeding programmes, where litter sizes shrink and juvenile
+    mortality climbs with pedigree depth. Conservation practice manages F explicitly:
+    studbooks pair distant lineages, and <strong>genetic rescue</strong> can reverse the
+    spiral — the Florida panther, down to ~25 cats and failing reproductively by the
+    1990s, recovered after introducing eight Texas females in 1995, their hybrid
+    descendants showing both restored fitness and the hoped-for heterozygosity. The
+    quantitative targets come straight from the drift section: keep Nₑ near 50+ to
+    slow inbreeding depression (the short-term rule), near 500+ to keep adaptive
+    variation against drift (the long-term rule), and remember Nₑ is typically a
+    fraction of the census count. When a reserve's budget cannot buy that many
+    animals, corridor design — reconnecting populations so gene flow does the mixing —
+    is population genetics applied to a map.
+  </p>
+
+  <h2>Where adaptation comes from: new mutations or standing variation?</h2>
+  <p>
+    A subtlety with real consequences: when the environment shifts, does the population
+    wait for the right new mutation (slow — waiting time ~1/μ per locus, millennia for
+    a specific beneficial letter) or recombine variants already segregating
+    (<strong>standing variation</strong>, fast — the alleles are present, selection
+    just re-weights them)? Modern examples suggest standing variation usually wins:
+    insecticide resistance alleles predate the insecticides in many documented cases,
+    and the melanism of peppered moths was a recolouring of existing variation. This
+    reframes conservation urgency: a population's capacity to adapt to tomorrow's
+    climate is largely the <em>current</em> genetic variation it holds — which is why
+    the variation-losing forces of this page (bottlenecks, inbreeding) are treated as
+    debts with future interest.
+  </p>
+  <p>
+    Human deep history shows the whole toolkit in one dataset. Altitude adaptation in
+    Tibet rests on an EPAS1 haplotype that genomic archaeology traced to
+    <strong>Denisovan introgression</strong> — adaptation sourced from another archaic
+    human species; skin-pigmentation gradients are polygenic, built from variants at
+    half a dozen loci across continents; and the lactase-persistence sweep (Going
+    deeper) shows a cultural innovation (dairying) rewriting the gene pool within
+    historical time. Genes, geography and culture form one feedback system, and
+    population genetics is its measurement science.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Selection's fingerprints on the genome.</strong> A strongly favoured allele
+    drags its neighbours along (<strong>genetic hitchhiking</strong>), leaving a
+    <strong>selective sweep</strong>: a long haplotype block of reduced variation around
+    the selected site, decaying with recombination time. The clearest human example is
+    lactase persistence: the −13910*T variant (one letter, upstream of the lactase gene)
+    swept to near-fixation in northern European dairying populations within ~7,500 years,
+    and East African pastoralists carry <em>different</em> variants with the same effect —
+    convergent evolution, visible as parallel sweeps. Distinguishing sweeps from
+    demographic history is the field's hardest inference problem: a bottleneck mimics a
+    sweep, which is why papers argue over the human "recent acceleration" of selection.
+  </p>
+  <p>
+    <strong>Quantitative genetics: when everything matters a little.</strong> Height,
+    blood pressure, crop yield — traits shaped by thousands of loci plus environment.
+    The <strong>breeder's equation</strong> R = h²S (response = heritability times
+    selection differential) is population genetics aggregated over loci, and it runs
+    agriculture (the yield curves of the agriculture pages) and animal breeding alike.
+    Genome-wide association studies (GWAS) now find the individual loci: height is
+    ~80% heritable yet its known variants explain only a fraction — the "missing
+    heritability" debate, where the leading suspect is many loci of small effect plus
+    rare variants, an open empirical question with clinical consequences for polygenic
+    scores.
+  </p>
+  <p>
+    <strong>The coalescent and deep history.</strong> Run the genealogies backward —
+    the speciation lesson introduces this — and the same equations date human
+    migrations (out of Africa ~60,000 years, bottlenecked founder chains readable in
+    today's genomes), Neanderthal admixture timing, and the effective sizes of
+    long-dead populations. The modern synthesis is being extended, not overthrown: the
+    open questions are whether development biases which mutations matter
+    ("constructive neutral evolution" and evolvability), how much adaptation was
+    polygenic in recent human history, and how to predict — from a genome — which
+    populations can survive the climate and disease pressures coming next. That last
+    question is the conservation connection: minimum viable population sizes
+    (roughly Nₑ above 100 to dodge inbreeding depression short-term, above 1,000 to
+    retain adaptive potential — the famous 50/500 rule's modern descendants) are
+    population genetics converted directly into land-use policy.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Hardy (1908) &amp; Weinberg (1908); Kimura, <em>The Neutral Theory of Molecular Evolution</em>; Gillespie, <em>Population Genetics: A Concise Guide</em>; Itan et al. (2009) on lactase persistence; the Modern Synthesis literature.</p>
 </TopicPage>

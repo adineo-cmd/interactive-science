@@ -9,31 +9,216 @@ const contCfg = {
   crossings: false,
   height: 350,
 };
+
+const bernCfg = {
+  title: 'Worked example: a Venturi neck in a water pipe',
+  steps: [
+    { math: 'A₁ = π(0.05)² = 7.85 × 10⁻³ m², v₁ = 2 m/s', note: 'a 10 cm-diameter pipe carrying water at 2 m/s.' },
+    { math: 'A₁v₁ = A₂v₂  →  v₂ = v₁(r₁/r₂)² = 2 × 2² = 8 m/s', note: 'continuity: the neck has half the radius, a quarter of the area — the water quadruples speed.' },
+    { math: 'P₁ + ½ρv₁² = P₂ + ½ρv₂²  (same height)', note: 'Bernoulli: total energy per volume is constant along a streamline.' },
+    { math: 'ΔP = ½ρ(v₂² − v₁²) = 500 × (64 − 4) = 30 kPa', note: 'the neck runs 30 kPa below the wide section — nearly a third of an atmosphere.' },
+    { math: 'use it: carburettors, atomisers, Venturi meters, filter pumps', note: 'fast air or water through a throat literally sucks — a pressure gauge at the neck reads the flow rate. Same physics, four machines.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/physics/advanced/fluid-dynamics">
   <h2>The idea</h2>
   <p>
-    Fluid dynamics tracks stuff that flows, and its two master laws are beautifully simple.
-    <strong>Conservation of mass (continuity):</strong> what goes in must come out — squeeze the
-    pipe and the fluid must speed up. <strong>Conservation of energy (Bernoulli):</strong> faster
-    flow costs pressure. Between them they explain flight, plumbing, blood flow and why the
-    shower curtain attacks you.
+    Fluids are just matter that flows, but they break the habits you built in mechanics:
+    there is no "the object" any more, only a continuum of parcels pushing on each other.
+    The advanced move is to stop tracking particles and track <em>fields</em> — velocity,
+    pressure and density as functions of position and time. Almost everything then
+    follows from two conservation laws, both expressible in one line each. <strong>Mass
+    conservation (continuity):</strong> what flows into a pipe must flow out, so where
+    the pipe narrows the fluid must speed up. <strong>Energy conservation
+    (Bernoulli):</strong> along a smooth, steady flow, faster movement is paid for by
+    lower pressure. Between them they explain flight, plumbing, blood flow, carburettors,
+    sailing and why the shower curtain attacks you. What they cannot explain — turbulence,
+    the wild regime every real high-speed flow eventually enters — is the subject's live
+    frontier and one of mathematics' famous open problems.
+  </p>
+  <p>
+    One more piece of vocabulary does heavy lifting: <strong>pressure</strong> is force
+    per area, and in a static fluid it increases with depth as
+    <strong>P = P₀ + ρgh</strong> — every 10 m of water adds roughly one atmosphere
+    (1000 × 9.8 × 10 ≈ 98 kPa). Hydrostatic pressure is the baseline on which all the
+    dynamics of this page is written.
   </p>
 
-  <Widget no="1" caption="continuity at work — halve the pipe radius, quadruple the speed (area falls as r²)" widget="plotter" config={contCfg} />
+  <Widget no="1" caption="continuity at work — the same 10 L/s flow through pipes of different radius: halve the radius, quadruple the speed (area falls as r²)" widget="plotter" config={contCfg} />
 
   <p>
-    With 10 litres per second flowing, a 20 cm pipe idles at 0.08 m/s while an 8 cm neck screams
-    at 5 m/s. Squeeze harder still and the speed climbs as 1/r² — the maths behind river gorges,
-    nozzle jets and garden-hose physics.
+    Read the figure concretely: 10 litres per second through a 20 cm-radius pipe moves at
+    0.01/(π × 0.2²) ≈ 0.08 m/s — a lazy stroll. Neck the same flow down to a 2 cm radius
+    and continuity demands 8 m/s — a hundredfold speed-up from a tenfold squeeze, because
+    area falls as r². This is garden-hose physics (thumb over the end), river-gorge
+    physics (rivers accelerate through narrows and drop sediment when they widen again),
+    and nozzle physics — and it is pure bookkeeping: no forces needed, only the fact that
+    water does not pile up or vanish.
   </p>
 
-  <h2>The highlights</h2>
-  <ul>
-    <li><strong>Bernoulli's principle:</strong> where flow is faster, pressure is lower. Plane wings, curveballs and carburettors use it — though lift is really circulation plus deflection, not just "fast air sucks".</li>
-    <li><strong>Viscosity and Reynolds number:</strong> Re = ρvL/μ decides everything — low Re is honey-like laminar flow, high Re is chaotic turbulence. A swimming bacterium lives at Re ≈ 10⁻⁴ where water feels like tar; a whale at Re ≈ 10⁸.</li>
-    <li><strong>Boundary layers:</strong> fluid sticks to surfaces (no-slip), and drag lives in the thin layer where speed ramps up. Golf ball dimples trip the layer to reduce drag — 30% further drives.</li>
-    <li><strong>Turbulence is unsolved:</strong> the Navier–Stokes equations describe it perfectly, but proving they always behave smoothly is a $1-million Millennium Prize. Fluid dynamics is classical physics with a live frontier.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Bernoulli (1738); Feynman Lectures Vol. II, ch. 40–41; Batchelor, An Introduction to Fluid Dynamics.</p>
+  <h2>Bernoulli's principle: speed buys pressure</h2>
+  <p>
+    Where fluid speeds up, its pressure drops, by exactly the kinetic energy per volume
+    it gained: <strong>P + ½ρv² + ρgh = constant</strong> along a streamline (for smooth,
+    steady, non-viscous flow — each condition matters, see below). The full worked
+    example, including the machine-building payoff:
+  </p>
+
+  <Widget no="2" caption="a Venturi throat, quantitatively — continuity sets the speed, Bernoulli sets the pressure" widget="equationStep" config={bernCfg} />
+
+  <p>
+    A beautiful limiting case: how fast does water spurt from a hole 5 m below the
+    surface of a tank? Bernoulli between the surface (v ≈ 0, pressure P₀) and the jet
+    (pressure P₀, speed v, dropped h) gives <strong>v = √(2gh)</strong> — Torricelli's
+    law, identical to free-fall from height h. Here v = √(2 × 9.8 × 5) ≈ 9.9 m/s. The
+    pressure of the water column has been converted entirely into directed motion, with
+    no memory of the tank's width — another conservation law giving an answer without
+    forces.
+  </p>
+  <p>
+    <em>Common misconception:</em> "lift is because air must travel further over the curved
+    top and therefore faster, by equal transit time." The equal-transit-time claim is
+    false — nothing obliges the flows to reunite (they demonstrably do not; upper-surface
+    air arrives <em>early</em>), and flat plates and upside-down aerofoils fly fine. The
+    honest account combines two equivalent views: Newton's — the wing deflects a large
+    mass of air downward each second, and the air pushes back up (lift as F = ma on air);
+    and Bernoulli's — the deflection and circulation establish a pressure difference
+    between surfaces, whose integral <em>is</em> the same lift. Both are correct and
+    measurable; "fast air sucks" is only a slogan for the second.
+  </p>
+
+  <h2>Viscosity and the Reynolds number: one number to rule the flow</h2>
+  <p>
+    Real fluids stick — to themselves and to walls. <strong>Viscosity</strong> μ measures
+    the internal friction: honey 10⁴× water; air, surprisingly, only 1/50th of water.
+    Viscosity makes the <strong>no-slip condition</strong> universal: fluid in contact
+    with a surface moves <em>with</em> it, so every real flow has a <strong>boundary
+    layer</strong>, a thin region where speed ramps from zero to the free-stream value.
+    All of aerodynamic drag lives in what that layer does — stay attached (smooth, cheap
+    flow) or separate into eddies (a wide, expensive wake). The single dimensionless
+    number deciding which regime you are in is the <strong>Reynolds number</strong>,
+    Re = ρvL/μ — inertia divided by viscosity, a ratio of the two timescales of the
+    flow. Below about 10³ (for pipe flow) flow is <strong>laminar</strong>: orderly
+    layers, momentum exchanged by friction. Above a few thousand it becomes
+    <strong>turbulent</strong>: chaotic eddies at every scale, mixing ferociously.
+  </p>
+  <p>
+    The striking fact is how vast the range is. A swimming bacterium (1 μm-scale, ~30
+    μm/s) lives at Re ≈ 10⁻⁴, where inertia is irrelevant and water feels like tar —
+    stop whipping your flagella and you halt within microseconds; swimming at that scale
+    means rowing in a world with no coasting. A whale lives at Re ≈ 10⁸, pure inertia,
+    where turbulence is the default and streamlining is everything. Human engineering
+    spans the same range: blood in capillaries flows at Re ≈ 0.001 (laminar, cells in
+    single file), while a car at highway speed sits at Re ≈ 4 × 10⁶ (turbulent boundary
+    layer — which is actually an advantage, see the dimples below).
+  </p>
+  <p>
+    In the gentle laminar regime the drag law is Stokes': F = 6πηrv, linear in speed —
+    which sets the crawl of very small particles through fluid. A cloud droplet of 10 μm
+    radius sinks at v = 2r²(ρ_drop)g/(9η_air) ≈ 1 cm/s — clouds stay aloft because their
+    drops are Stokes-slow. By drizzle size (1 mm diameter) the flow around the drop has
+    Re ≈ 250, quadratic drag has taken over, and terminal velocity is about 4 m/s; the
+    largest raindrops reach roughly 9 m/s before surface tension shatters them. In pipes,
+    laminar flow
+    obeys <strong>Poiseuille's law</strong>, Q = πr⁴ΔP/(8μL), and the fourth power is a
+    medical emergency in waiting: an artery narrowed from 3 mm to 2 mm radius carries
+    (2/3)⁴ ≈ 0.20 of its former flow at the same pressure — an 80% loss. The body
+    compensates with pressure (hypertension), which is the cardiovascular system paying
+    interest on geometry.
+  </p>
+
+  <h2>Drag, dimples and delay: engineering the boundary layer</h2>
+  <p>
+    At high Reynolds numbers drag has two parts: <strong>pressure drag</strong> from the
+    low-pressure wake behind a blunt body, and <strong>skin friction</strong> in the
+    boundary layer. The counter-intuitive discovery of the 20th century: a turbulent
+    boundary layer, though more frictional, hugs the surface better — turbulence pumps
+    fast fluid down to the wall, delaying separation, shrinking the wake and cutting
+    pressure drag by far more than the friction costs. This is exactly why golf balls
+    have <strong>dimples</strong>: they trip the boundary layer turbulent, and a dimpled
+    ball carries about 30% further than a smooth one at the same drive. Aircraft wings
+    use vortex generators, cyclists wear rough skinsuits, and sharks' denticles do it
+    passively — all tripping devices on the same principle. The design art of aerodynamics
+    is largely the placement of deliberate roughness.
+  </p>
+
+  <h2>Turbulence and Navier–Stokes: the open frontier</h2>
+  <p>
+    Write Newton's second law for a fluid parcel — acceleration plus advective rate of
+    change equals pressure gradient, viscous and body forces — and you get the
+    <strong>Navier–Stokes equations</strong>, formulated (for special cases) in the
+    1820s–40s. They describe everything from coffee stirring to galactic gas, and they
+    are <em>exact</em>: no quantum corrections needed at human scales. But they are
+    non-linear — the fluid carries itself along — and that non-linearity breeds
+    turbulence: motion at every scale, largest eddies feeding smallest (Kolmogorov's
+    1941 cascade, energy flowing to dissipation at ~kT per molecule of scale), with no
+    closed-form solutions and no small approximations that survive. The Clay Mathematics
+    Institute's Millennium Prize — one million dollars — asks for a proof that
+    three-dimensional Navier–Stokes solutions always remain smooth (or an example that
+    develops a singularity). It has been open since 2000, and the smart money says the
+    answer requires mathematics not yet invented. Meanwhile engineers march on:
+    computational fluid dynamics discretises the equations onto millions of cells;
+    aircraft are designed and weather is forecast (the differential-equations lesson's
+    chaos caveat applies) by numerically solving the same equations Descartes-era
+    geometry started.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Buoyancy: hydrostatics paying dividends.</strong> Archimedes' principle — the
+    upward force on a submerged body equals the weight of fluid displaced — falls straight
+    out of P = P₀ + ρgh: the pressure on the bottom face exceeds that on the top by
+    ρg·h·A, exactly the displaced fluid's weight. It floats when its density is lower.
+    Ice (917 kg/m³ in water, 1000) floats with 91.7% submerged — the iceberg rule of
+    thumb ("nine-tenths below") is a density ratio, not a myth. The same pressure
+    imbalance drives convection: warm air is less dense, buoyancy lifts it, and the
+    atmosphere's entire vertical heat transport — thermals, thunderstorms, the Hadley
+    cells the meteorology pages discuss — is buoyancy turning hydrostatic pressure into
+    motion at planetary scale.
+  </p>
+  <p>
+    <strong>When Bernoulli breaks.</strong> The three fine-print conditions are each
+    physics. <em>Non-viscous:</em> in a long pipe, viscosity bleeds energy as friction, so
+    pressure drops along the flow even at constant speed — that is Poiseuille's loss, and
+    it is why water towers exist. <em>Steady:</em> accelerating flows (start-up, waves,
+    pulsatile blood) need unsteady terms; the heart's flow reverses the usual logic
+    twice a second. <em>Along a streamline:</em> across streamlines, in a swirling flow,
+    pressure varies with curvature (the bath-plug vortex: low pressure at the core).
+    Treating "fast means low pressure" as an unconditional law produces real errors —
+    the classic one is explaining a spinning ball's curveball break entirely by surface
+    speed, when the deflection is set by asymmetric separation and circulation
+    (the Magnus effect) — direction right, bookkeeping wrong.
+  </p>
+  <p>
+    <strong>Quantitative drag across regimes.</strong> The drag coefficient plot against
+    Reynolds number is one of engineering's most instructive curves: at low Re,
+    C_d ∝ 1/Re (Stokes), so drag is linear in v; at high Re, C_d flattens to ≈ 0.3–1.5
+    for blunt bodies, drag quadratic in v — hence F = ½ρC_dAv², the formula behind
+    terminal velocity, wind loads and fuel economy. The famous <em>drag crisis</em>: near
+    Re ≈ 10⁵ the boundary layer trips turbulent on a smooth sphere, the wake narrows and
+    C_d drops by a factor of 4–5 — the reason a cricket ball swung with one rough and one
+    smooth hemisphere misbehaves, and why cyclists shave legs but wear rough suits.
+  </p>
+  <p>
+    <strong>Lift, quantitatively.</strong> A Boeing 747 (wing area ~510 m²) cruises at
+    250 m/s where dynamic pressure ½ρv² ≈ 37 kPa; a lift coefficient of about 0.5 gives
+    L = ½ρv²C_L·A ≈ 9.4 MN — right for its 400-tonne weight. The numbers close, which is
+    the quiet satisfaction of the subject: deflection, circulation and pressure
+    integration are three measurements of one momentum transfer. The same arithmetic in
+    reverse sizes wind turbines (Betz limit: no turbine extracts more than 16/27 ≈ 59.3%
+    of the wind's power — a hard bound from continuity and momentum, not materials),
+    sailing and hydrofoils.
+  </p>
+  <p>
+    <strong>Open research.</strong> Beyond the Navier–Stokes existence problem: no
+    predictive first-principles theory of fully developed turbulence exists (statistical
+    closure theories fail; supercomputers reach Re ~10⁴–10⁵ only); the transition to
+    turbulence is still mapped empirically; and Lagrangian turbulence — where a fluid
+    parcel actually goes, the mathematics of chaotic mixing — governs everything from
+    plankton dispersal to pollutant spread and remains an active field. Fluid dynamics
+    is classical physics with its hardest problems still on the table.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Bernoulli (1738); Feynman, <em>Lectures on Physics</em> Vol. II, ch. 40–41; Batchelor, <em>An Introduction to Fluid Dynamics</em>; Vogel, <em>Life in Moving Fluids</em>.</p>
 </TopicPage>

@@ -17,32 +17,222 @@ const modelCfg = {
   crossings: false,
   height: 350,
 };
+
+const sepCfg = {
+  title: 'Worked example: solving dP/dt = kP by separation',
+  steps: [
+    { math: 'dP/dt = kP', note: 'the law: growth rate proportional to current size.' },
+    { math: '(1/P) dP = k dt', note: 'separation: herd all P to the left, all t to the right.' },
+    { math: '∫ (1/P) dP = ∫ k dt  →  ln P = kt + C', note: 'integrate both sides independently — this is where the previous lesson pays off.' },
+    { math: 'P = e^(kt + C) = e^C · e^(kt) = A·e^(kt)', note: 'exponentiate. The constant hides in A: every solution is an exponential.' },
+    { math: 'P(0) = P₀  →  A = P₀', note: 'initial conditions select one member of the family: P(t) = P₀·e^(kt).' },
+    { math: 'check: dP/dt = k·P₀·e^(kt) = kP ✓', note: 'always verify by substituting back into the original equation.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/math/advanced/differential-equations">
   <h2>The idea</h2>
   <p>
     Nature writes its laws as <strong>differential equations</strong>: statements about how
-    things change, not where things are. "The population grows at a rate proportional to its
-    size" is dP/dt = kP — and solving it means finding the population function whose derivative
-    matches the law. Every physics, chemistry, biology and finance model in this atlas is a
-    differential equation wearing a costume.
+    things change, not where things are. Newton's second law is the archetype — force
+    determines <em>acceleration</em> (the second derivative of position), so predicting
+    where a thrown ball lands means finding a function whose second derivative matches the
+    forces. The same pattern runs through every science: "the population grows at a rate
+    proportional to its size" is dP/dt = kP; "the reaction speeds up in proportion to the
+    reactant still present" is the first-order kinetics law; "the capacitor charges at a
+    rate set by what is still missing" is the RC circuit equation. A differential equation
+    is a rule for the slope at every point of a graph; <strong>solving</strong> it means
+    finding the graph whose slope obeys the rule everywhere.
+  </p>
+  <p>
+    Two vocabularies before the techniques. The <strong>order</strong> of an equation is the
+    highest derivative appearing (dP/dt = kP is first-order; F = ma is second-order). A
+    <strong>general solution</strong> is a family of functions containing undetermined
+    constants; an <strong>initial condition</strong> ("P(0) = 500") pins the constants down
+    to the one <strong>particular solution</strong> that matches reality. This mirrors the
+    +C of integration: a law of change describes a family of futures, and the present state
+    chooses among them. Determinism, as an idea, is exactly the statement that an equation
+    plus initial conditions has a unique solution.
   </p>
 
-  <Widget no="1" caption="two answers to the same law — unchecked growth versus growth capped by a carrying capacity" widget="plotter" config={modelCfg} />
+  <Widget no="1" caption="two answers to the same kind of law — unchecked growth versus growth capped by a carrying capacity" widget="plotter" config={modelCfg} />
 
   <p>
-    The exponential is the honest solution to dP/dt = kP. The <strong>logistic</strong> curve
-    solves the corrected law dP/dt = kP(1 − P/pₘₐₓ), where the growth rate fades as the
-    population nears its limit. Bacteria in a flask, languages learning vocabularies (the
-    languages lesson plots exactly this), epidemics at their start — the S-curve is everywhere.
+    The red curve solves dP/dt = kP exactly. The green <strong>logistic</strong> curve
+    solves the corrected law dP/dt = kP(1 − P/pₘₐₓ), where growth slows as the population
+    nears its ceiling: the factor (1 − P/pₘₐₓ) is the fraction of the resource still free.
+    Bacteria in a flask, adopters of a technology, learners building vocabulary, epidemics
+    in their early weeks — wherever a growth rate is proportional both to what exists and
+    to what remains, the S-curve appears. Drag the sliders: raising k compresses time but
+    changes nothing structural, and the curve always levels off at exactly pₘₐₓ.
   </p>
 
-  <h2>The solving toolkit</h2>
-  <ul>
-    <li><strong>Separable equations:</strong> herd all y's to one side, all t's to the other, integrate both. Handles most first textbook encounters.</li>
-    <li><strong>Linear first-order:</strong> integrating factors — the method behind RC circuits and drug concentration models.</li>
-    <li><strong>Second-order linear:</strong> springs, pendulums, vibrations — solutions are sines, exponentials, or both (damped oscillation). Newton's F = ma is itself a second-order equation.</li>
-    <li><strong>When symbols fail:</strong> numerical integration (Euler's method: step forward using the slope) always works. Your phone's weather model is a differential equation solved numerically, a billion times a day.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Boyce & DiPrima, Elementary Differential Equations; Strogatz, Nonlinear Dynamics and Chaos.</p>
+  <h2>First-order equations I: separation of variables</h2>
+  <p>
+    The workhorse for first-order equations that can be written as
+    (stuff in y)·dy/dx = (stuff in x): push every y to one side, every x to the other, then
+    integrate both sides. It looks illegal — treating dy/dx as a fraction — but it is a
+    shorthand for a legitimate substitution, and it works. Watch it produce the exponential
+    from nothing:
+  </p>
+
+  <Widget no="2" caption="separation in six steps — from a law of change to P(t) = P₀·e^(kt)" widget="equationStep" config={sepCfg} />
+
+  <p>
+    The same recipe solves the <strong>half-life and doubling-time</strong> questions. With
+    P = P₀·e^(kt), the time to double satisfies 2 = e^(kT), so T = ln 2 / k ≈ 0.693/k — the
+    <strong>rule of 70</strong> from economics (70 divided by the percentage growth rate)
+    is this formula in disguise. Worked numbers: money growing at 5% per year with annual
+    compounding-of-continuously, k = 0.05, doubles in ln 2/0.05 ≈ 13.9 years. Radioactive
+    decay obeys the same equation with k negative: if k = −0.01 per year, the half-life is
+    0.693/0.010 ≈ 69 years, and after four half-lives (about 277 years) 1/16 of the sample
+    remains. One equation, both stories — growth and decay are the same mathematics with
+    opposite signs.
+  </p>
+  <p>
+    Newton's <strong>law of cooling</strong> is the next classic: dT/dt = −k(T − T_room),
+    the rate of heat loss proportional to the temperature <em>difference</em>. Separating
+    (let u = T − T_room, then du/dt = −ku) gives T(t) = T_room + (T₀ − T_room)·e^(−kt): the
+    excess temperature decays exponentially. Worked example: coffee at 90 °C in a 20 °C room
+    with k = 0.07 per minute. Excess = 70 °C initially; after 10 minutes the excess is
+    70·e^(−0.7) ≈ 34.7, so T ≈ 54.7 °C; after 30 minutes the excess is
+    70·e^(−2.1) ≈ 8.6, so T ≈ 28.6 °C. Cooling is fast while hot and agonisingly slow when
+    nearly room temperature — the exponential's signature tail, and the reason forensic
+    teams can estimate time of death from body temperature, inverting the same equation.
+  </p>
+  <p>
+    <em>Common misconception:</em> a differential equation has one answer. Every first-order
+    equation has an infinite family — one curve through each possible starting point. The
+    logistic figure shows a whole sheaf of solutions as you drag P₀; the equation never
+    changes. "Solving" means finding the family; "modelling" means choosing the member.
+  </p>
+
+  <h2>First-order equations II: the integrating factor</h2>
+  <p>
+    Separation fails when the equation is <em>linear but not separable</em>, of the form
+    y′ + p(x)·y = q(x). The trick: multiply through by an <strong>integrating factor</strong>
+    μ(x) = e^∫p dx — chosen so the left side becomes the derivative of the product μ·y in
+    one piece (this reverses the product rule). Standard example, the charging RC circuit:
+    R·dq/dt + q/C = V. Divide by R: dq/dt + q/(RC) = V/R. Here p = 1/(RC), so
+    μ = e^(t/RC), and the left side collapses to the derivative of q·e^(t/RC).
+    Integrating gives q·e^(t/RC) = (V/R)·RC·e^(t/RC) + C, hence
+    q(t) = CV(1 − e^(−t/RC)) + C₀·e^(−t/RC). Applying q(0) = 0 kills the second term:
+    <strong>q(t) = CV·(1 − e^(−t/RC))</strong>. The capacitor fills toward its ceiling CV
+    exponentially, completing 63% of the journey in one <strong>time constant</strong>
+    τ = RC, 95% in three, 99% in five — engineers quote "five time constants to fully
+    charged" from exactly this arithmetic. The same mathematics (with different letters)
+    describes drug concentration reaching steady state in a patient on a drip, and a
+    thermometer warming to air temperature.
+  </p>
+
+  <h2>Second-order equations: springs, swings and sound</h2>
+  <p>
+    Newton's F = ma makes every mechanics problem a second-order equation. The cleanest
+    case, a mass on a spring, obeys m·x″ = −k·x (Hooke's law: force proportional and
+    opposite to displacement). Guess a solution: x = cos(ωt) works, because its second
+    derivative is −ω²·cos(ωt) = −(k/m)·cos(ωt) provided <strong>ω = √(k/m)</strong>. The
+    general solution x = A·cos(ωt) + B·sin(ωt) carries two constants — second order means
+    two initial conditions (where, and how fast). The predicted frequency is testable: a
+    1 kg mass on a 100 N/m spring oscillates at ω = √100 = 10 rad/s, i.e. about 1.6 cycles
+    per second, and the experiment agrees.
+  </p>
+  <p>
+    Add friction (a force −c·x′) and the solutions split into three regimes: <strong>underdamped</strong>
+    (bouncy — sine waves inside a decaying exponential envelope, the behaviour of a car's
+    suspension and of a struck guitar string), <strong>overdamped</strong> (sluggish — the
+    door closer that eases shut without oscillating), and the knife-edge <strong>critically
+    damped</strong> case, the fastest possible return to rest without overshoot, which is
+    what your car's shock absorbers are tuned for. Swap friction for an external push
+    F₀·cos(Ωt) and you meet <strong>resonance</strong>: when the driving frequency Ω
+    matches the natural frequency ω, the amplitude grows without bound in the ideal
+    equation — the reason soldiers break step on bridges, an opera singer can shatter a
+    glass, and MRI machines push protons at exactly their Larmor frequency. Real systems
+    cap the growth through damping, but the peak response at resonance can still be
+    enormous.
+  </p>
+
+  <h2>Equilibrium and stability: reading equations without solving them</h2>
+  <p>
+    Often the question is not "what is the exact curve?" but "where does it end up?"
+    An <strong>equilibrium</strong> is a value where the rate is zero — the population stops
+    changing. For the logistic law the equilibria are P = 0 and P = pₘₐₓ, and their
+    character differs: nudge P slightly above 0 and growth pushes it back up <em>away</em>
+    from 0 (unstable), while any deviation from pₘₐₓ is pulled back (stable). You can read
+    this off the sign of dP/dt on a <strong>phase line</strong> without solving anything:
+    between 0 and pₘₐₓ the rate is positive, above pₘₐₓ negative — arrows point toward
+    pₘₐₓ from both sides. This qualitative toolkit extends to systems (predator–prey
+    models orbit their equilibrium rather than settling on it) and is the working method of
+    the nonlinear-dynamics research literature, where most equations cannot be solved
+    exactly but their equilibria can still be classified completely.
+  </p>
+
+  <h2>When symbols fail: Euler's method</h2>
+  <p>
+    Most differential equations — the three-body problem, real weather, the Navier–Stokes
+    equations of the fluid-dynamics lesson — have no formula solution. The fallback is
+    disarmingly simple. <strong>Euler's method</strong>: from the current point, step
+    forward a small h using the slope the equation prescribes. For y′ = y with y(0) = 1 and
+    h = 0.2: y₁ = 1 + 0.2×1 = 1.2; y₂ = 1.2 + 0.2×1.2 = 1.44; y₃ = 1.44 + 0.2×1.44 = 1.728.
+    The true value at t = 0.6 is e^0.6 ≈ 1.822 — Euler undershoots because each step uses
+    the slope at the <em>start</em> of the step while the true slope keeps rising. Halving
+    h roughly halves the error (first-order accuracy); professional codes use
+    Runge–Kutta schemes that sample the slope several times per step for fourth-order
+    accuracy, and adapt h automatically — tiny steps through fast-changing regions, long
+    strides through calm ones. Your phone's weather forecast is one enormous system of
+    differential equations solved by exactly such a scheme, on a three-dimensional grid,
+    every six hours.
+  </p>
+  <p>
+    <em>Common misconception:</em> a numerical answer means the model was "solved", so any
+    deviation from reality is arithmetic error. Usually the gap is <strong>model error</strong>
+    (the equation omits something — friction, delays, stochasticity), not integration error.
+    Distinguishing the two — refining the solver versus refining the equation — is the
+    central judgement call of computational science.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Existence and uniqueness.</strong> When may we assume a solution exists at all,
+    let alone a unique one? Picard's theorem answers: if the right-hand side is continuous
+    and reasonably smooth (Lipschitz) in y, a unique solution passes through every initial
+    point. Where the condition fails, uniqueness can fail too: y′ = √y with y(0) = 0
+    admits both the solution y = 0 and y = t²/4 — the mathematics of a match that either
+    ignites immediately or never, sitting at an unstable equilibrium. That theorem is the
+    licence behind every simulation in this atlas: without it, "run the model forward"
+    would not even be well-defined.
+  </p>
+  <p>
+    <strong>Linearity and superposition.</strong> For linear equations, solutions can be
+    added: if y₁ and y₂ solve the homogeneous equation y″ + ω²y = 0, so does any
+    combination A·y₁ + B·y₂ — the reason a guitar string's sound is a chord of pure modes
+    and the Fourier methods of signal processing work at all. Nonlinear equations surrender
+    this luxury: for the logistic law, two valid solutions do not average to a valid
+    solution. Nearly all of the interesting mathematics of the last century — solitons,
+    shock waves, chaos — lives in that nonlinearity.
+  </p>
+  <p>
+    <strong>Chaos: deterministic yet unpredictable.</strong> Some low-dimensional systems —
+    the Lorenz equations distilled from convection, the forced pendulum, the three-body
+    problem — exhibit <strong>sensitive dependence on initial conditions</strong>: two
+    starts differing by one part in a million diverge to completely different futures
+    within a few characteristic times, the difference growing like e^(λt) with a positive
+    Lyapunov exponent λ. This is not randomness (the equations are fully deterministic) and
+    not numerical error (better arithmetic does not help); it is a structural property that
+    caps forecast horizons. It is why weather is predictable for roughly two weeks and
+    climate for a century — the climate question asks for statistics of the attractor,
+    not the state of a specific day, a distinction the climate-modelling lesson builds on.
+  </p>
+  <p>
+    <strong>Open problems.</strong> The Clay Mathematics Institute will pay one million
+    dollars for progress on the Navier–Stokes existence problem: nobody can prove that the
+    equations governing every fluid on Earth always have smooth solutions in three
+    dimensions, or exhibit a initial condition that develops a singularity (a place where
+    the maths itself blows up). Meanwhile the applied frontier is learning-based: neural
+    networks trained to approximate solution operators ("physics-informed machine learning")
+    now give fast approximate solvers for equations too big for classical methods — with
+    the open question of when they can be trusted. The equations nature speaks are old;
+    the ways of listening are still being invented.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Boyce &amp; DiPrima, <em>Elementary Differential Equations</em>; Strogatz, <em>Nonlinear Dynamics and Chaos</em>; OpenStax, <em>Calculus Volume 2</em> (ch. 8, Introduction to Differential Equations).</p>
 </TopicPage>

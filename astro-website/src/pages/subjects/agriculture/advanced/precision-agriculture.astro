@@ -10,23 +10,236 @@ const precCfg = {
     { math: '4 · The data stack', note: 'Farm management software fuses soil, yield, weather, imagery and machinery data into decisions (the data-science lesson\'s pipeline, agrarian edition); the open question is data ownership — who owns the yield map, farmer or platform, is agriculture\'s quiet antitrust fight.' },
   ],
 };
+
+const vrCfg = {
+  title: 'Worked example: NDVI readings and the economic optimum for nitrogen',
+  steps: [
+    { math: 'NDVI = (NIR − red) / (NIR + red)', note: 'healthy leaves absorb red (photosynthesis) and reflect near-infrared (cell structure); the index runs 0 = bare ground to ~0.8 = dense canopy.' },
+    { math: 'readings: water ≈ 0 or below; bare soil ≈ 0.1–0.2; stressed crop ≈ 0.3–0.5; thriving ≈ 0.6–0.8', note: 'a mid-season satellite pass turns a 100-ha field into a mosaic — the raw material of zone maps.' },
+    { math: 'nitrogen response: y = 4 + 0.05N − 0.0001N² (t/ha, N in kg/ha)', note: 'diminishing returns, fitted per zone from on-farm strip trials — the response curve IS the map\'s meaning.' },
+    { math: 'economic optimum: last kg of N must return its own price', note: 'marginal yield × grain price = N price: (0.05 − 0.0002N) × 0.2 = 0.0012 → N = 220 kg/ha.' },
+    { math: 'vs agronomic max N = 250 kg/ha', note: 'the last 30 kg/ha buys only ~0.09 t/ha ($18) and costs $36 — pure loss. Multiply the 30 kg across every hectare and the "waste curve" funds the sensor kit.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/agriculture/advanced/precision-agriculture">
   <h2>The idea</h2>
   <p>
     Precision agriculture is <strong>the sensor-and-data revolution applied to fields</strong> —
     GPS, imagery and variable-rate machinery turning every farm into a mapped, measured system.
-    The payoff: inputs go where they pay, and stop where they don\'t.
+    The payoff: inputs go where they pay, and stop where they don't. The syllabus's crop-
+    production unit (4.1 land preparation, 4.2 cultivation of cash crops) describes the
+    operations; this lesson adds the layer that is rewriting them — because the deepest
+    fact about any field is that it is not uniform. Soil depth, organic matter, pH,
+    moisture-holding capacity and slope all vary across metres, so a single rate of
+    seed, fertiliser or spray is guaranteed to be wrong somewhere: too little on the
+    responsive ground (yield left unpaid) and too much on the poor ground (money
+    spent, nutrient leached). Precision agriculture replaces the field-average with
+    <strong>spatially indexed decisions</strong> — the same logic as the response-curve
+    economics of the fertiliser lesson, executed metre by metre.
+  </p>
+  <p>
+    The enabling stack arrived in three waves. First, <strong>positioning</strong>:
+    GPS-guided steering (1990s), now RTK-corrected to ~2 cm — a tractor can retrace
+    Tuesday's furrow a month later, which makes every other measurement and action
+    addressable by location. Second, <strong>sensing</strong>: combine-mounted yield
+    monitors became standard equipment (mass-flow grain sensors, moisture-corrected,
+    geo-referenced every second — a yield map is harvested automatically now), soil
+    sensors (electrical conductivity mapping reads texture and moisture deltas),
+    and satellite/drone imagery. Third, <strong>actuation</strong>: variable-rate
+    controllers on spreaders, drills and sprayers that execute prescription maps,
+    and machine vision that decides plant-by-plant. Each wave paid for the next.
   </p>
 
   <Widget no="1" caption="measure, act at resolution, zone economics, the data stack" widget="equationStep" config={precCfg} />
 
-  <h2>Current capability and frontier</h2>
-  <ul>
-    <li><strong>Guidance paid for itself first:</strong> auto-steer is the adoption leader — pure cost saving, no agronomy risk; RTK correction networks (the GPS lesson\'s cm-accuracy) now blanket major farming regions.</li>
-    <li><strong>See-and-spray changes the herbicide game:</strong> cameras + machine vision identify weeds and spray only them — herbicide use down ~60–90% per pass in trials (the AI lesson\'s image recognition, weeding); the resistance lesson\'s pressure eased by precision.</li>
-    <li><strong>Drones and satellites split the work:</strong> satellites give free revisit frequency (Sentinel — the geography lesson), drones give resolution on demand; the recipe uses both — satellites to find, drones to verify, boots to decide.</li>
-    <li><strong>The adoption S-curve is uneven:</strong> large farms in rich regions lead (scale amortises the kit); smallholders are reached through co-ops, shared machinery services and phone-based advisories — the development lesson\'s last-mile question, precision edition.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Zhang, Wang & Wang, "Precision agriculture" reviews; USDA precision-ag adoption surveys; the remote-sensing and data-science lessons.</p>
+  <h2>Measurement: turning a field into data</h2>
+  <p>
+    <strong>Yield monitors</strong> are the workhorse: a combine's grain-flow sensor
+    plus moisture probe plus GPS produces a map at harvest — the ground truth every
+    other layer is calibrated against. Their craft caveat: yield maps are noisy
+    (harvester dynamics, header width, time lags), so professionals clean and smooth
+    before believing. <strong>Soil sampling</strong> moved from one composite sample
+    per field to zone-based sampling (zones from yield history + elevation +
+    conductivity), cutting sampling cost while capturing the variation that matters;
+    pH and P/K maps drive variable-rate lime and fertiliser prescriptions.
+    <strong>Remote sensing</strong> splits by need: free satellites (Sentinel-2's
+    10-metre, ~5-day revisit) monitor the whole season; drones fly centimetre
+    resolution on demand for spot verification. The universal vegetation index is
+    <strong>NDVI</strong>, whose arithmetic and reading levels the worked example
+    below runs — but the professional toolkit adds red-edge bands (earlier stress
+    detection), thermal cameras (water stress via canopy temperature), and
+    multispectral layers fused by the crop models. <strong>In-field IoT</strong>
+    (soil-moisture probes, weather stations, sap-flow sensors) completes the
+    temporal axis — imagery shows where; probes show when.
+  </p>
+
+  <h2>Action: variable rate, guided steel, see-and-spray</h2>
+  <p>
+    <strong>Auto-steer and controlled traffic</strong> were the adoption leaders
+    because the payoff needs no agronomy: eliminating pass overlap saves ~5–10% of
+    fuel and input directly, and confining wheels to permanent tramlines
+    (<strong>controlled traffic farming</strong>) protects the ~80–90% of the field
+    never driven on — compaction alone costs double-digit yield percentages on
+    trafficked soil, so keeping the damage to 15% of the area is a yield strategy,
+    not just a comfort. <strong>Variable-rate application</strong> executes the
+    prescriptions: seed rate by soil productivity zone (more seeds on ground that
+    can carry them), nitrogen by response curve (the worked example), lime by pH
+    map, and — in irrigated systems — <strong>variable-rate irrigation</strong> on
+    centre pivots, which is where the water savings (20–30% typical, more in dry
+    years) are banked. <strong>See-and-spray</strong> is the newest revolution:
+    cameras and on-board machine vision detect weeds between and in the crop rows
+    and trigger nozzles individually — herbicide volumes fall 50–90% per pass in
+    commercial deployments, and the resistance-management dividend (the crop-
+    protection lesson's arms race, eased) may matter more than the savings:
+    less herbicide pressure, more diversity of modes, slower resistance.
+    <strong>Robots</strong> are following the same path from novelty to niche:
+    mechanical and laser weeding in high-value horticulture, autonomous spreading
+    and mowing where labour costs bite.
+  </p>
+
+  <h2>Decision: from maps to prescriptions</h2>
+  <p>
+    The decision layer is where the science lives. Zone maps are built by
+    <strong>clustering</strong> the data layers (yield history, elevation,
+    conductivity, imagery) into management zones — statistics, not agronomy, until
+    the agronomist names each zone's <em>why</em> (shallow soil on the knoll, drainage
+    in the hollow). Response curves per zone come from <strong>on-farm
+    experiments</strong> — randomised strip trials of seed and N rates, now easy
+    because the planter and spreader log everything — and the economic optimum
+    arithmetic runs per zone:
+  </p>
+
+  <Widget no="2" caption="NDVI arithmetic and the nitrogen response curve — the two calculations a prescription map is made of" widget="equationStep" config={vrCfg} />
+
+  <p>
+    The same machinery extends to <strong>crop simulation models</strong>
+    (APSIM, DSSAT — the soil-water-nitrogen-crop physiology of the crop-physiology
+    lessons, run with real weather and real soils as forecasts of yield, leaching
+    risk and irrigation need) and increasingly to <strong>machine learning</strong>
+    on the fused data: yield prediction, disease detection (the image-recognition
+    models of the AI lessons, retrained on lesions and canopies), and grain-quality
+    estimation. The professional discipline is unchanged from any other applied
+    science: the model must be validated against the field it claims to describe —
+    a model good in Iowa is not automatically good in Punjab (climate, soils and
+    cultivars differ), which is why the generalisation question dominates the
+    research literature.
+  </p>
+
+  <h2>Economics and adoption: who gets the sensors</h2>
+  <p>
+    The economics is zone arithmetic at fleet scale: input savings of 10–20% where
+    maps are trusted, yield gains of 1–5% more typical than the marketing 10%,
+    fuel and labour savings from guidance, and — increasingly decisive — the data
+    foundation for crop insurance, carbon programs and traceability (the
+    sustainability chapter's measurement logic, arriving at the farm gate).
+    <strong>Adoption follows the S-curve unevenly</strong>: USDA surveys show
+    guidance systems now on the majority of US maize and soybean acreage, with
+    yield monitors close behind and variable-rate adoption lower (the kit costs
+    more and demands data craft); large farms in capital-rich regions lead because
+    scale amortises the fixed costs, while <strong>smallholders</strong> — most of
+    the world's farms — are reached through cooperative machinery, drone-service
+    contractors (spray-as-a-service is a real business model across South and East
+    Asia and Africa) and phone-based advisory services built on free satellite
+    data. The developmental version of precision agriculture is less a tractor and
+    more a subscription: the same NDVI physics, delivered as a weekly text message.
+  </p>
+  <p>
+    <em>Common misconception:</em> precision agriculture is "farming by robot" —
+    autonomous machines replacing farmers. The current reality is better described
+    as <strong>decision support with mechanical execution</strong>: the sensors and
+    algorithms find patterns and compute rates, and human agronomic judgement still
+    owns the interpretation (which zones mean what, which model to trust, when the
+    map contradicts the eye). Full autonomy exists in niches; the industry's centre
+    of gravity is a driver who watches screens. The corresponding risk is
+    <strong>deskilling and data capture</strong>: the quiet antitrust question of
+    the widget — who owns the yield map, can the farmer leave the platform with
+    their own data, who profits when the prescription and the input purchase are
+    the same vendor — is the governance fight that will shape the field as much
+    as any sensor.
+  </p>
+
+  <h2>A short history, in instruments</h2>
+  <p>
+    The field is young enough to have a precise timeline. The <strong>1980s</strong>
+    prototyped yield monitoring (the first grain-flow sensors) and grid soil sampling;
+    the <strong>1990s</strong> provided the trigger technology — civilian GPS (fully
+    operational 1995) — and the first variable-rate controllers rolled behind it;
+    the <strong>2000s</strong> industrialised auto-steer as RTK correction networks
+    spread, and yield monitors went from option to standard; the <strong>2010s</strong>
+    were the data decade (cloud farm-management platforms, free Sentinel imagery
+    from 2015, the first wave of ag-tech investment); and the <strong>2020s</strong>
+    are the machine-intelligence wave — commercial see-and-spray, factory autonomous
+    tractors (Deere's fully autonomous 8R, CES 2022), and carbon/methane accounting
+    arriving as paid programs. The pattern across all four decades is the same one
+    this atlas's technology chapters keep finding: <strong>a military or space
+    technology (GPS, satellite imagery), commoditised, becomes an agricultural
+    infrastructure within a generation</strong> — and each new infrastructure
+    monetises the previous one's data.
+  </p>
+
+  <h2>Livestock joins the revolution</h2>
+  <p>
+    The same logic — measure the individual, treat the individual — is transforming
+    animal systems. <strong>Electronic identification (EID)</strong> tags track every
+    animal's lineage, treatments and performance; <strong>sensor systems</strong>
+    (rumen boluses measuring pH and temperature, pedometers and accelerometers
+    detecting lameness and oestrus days before human spotters can) turn herds into
+    monitored populations; automated milking robots milk on the cow's schedule and
+    log yield, conductivity and weight per quarter — mastitis flagged by the
+    conductivity signature before a farmer would feel it; and <strong>precision
+    feeding</strong> rations individual animals rather than averages, cutting feed
+    cost (60–70% of livestock production cost) and methane intensity together.
+    <strong>Virtual fencing</strong> deserves special mention: GPS collars with audio
+    cues replace physical fences, letting grazing be rotated by software — a
+    technology that reshapes rangeland management (targeted grazing for wildfire
+    fuel reduction, riparian protection without permanent fence) as much as labour.
+    The welfare accounting is genuinely mixed — some sensors catch illness earlier
+    (welfare gain), while high-speed, high-density systems risk becoming their own
+    stressors — which keeps the field's ethicists as busy as its engineers.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Geostatistics: the mathematics under the maps.</strong> Field properties
+    are spatially autocorrelated — nearby samples resemble each other up to a
+    distance the <strong>semivariogram</strong> measures — and <strong>kriging</strong>
+    (best linear unbiased estimation) turns sparse samples into continuous maps with
+    honest uncertainty at every point. The variogram's range is literally the field's
+    memory length, and it tells you the sampling density the zone map needs — the
+    difference between a prescription and a prettily interpolated guess. On-farm
+    experimentation upgrades the same statistics: spatial designs (strip trials
+    analysed with mixed models accounting for spatial covariance) turn every
+    treated field into a replicated trial, which is why response curves are now
+    harvested rather than assumed from handbook tables.
+  </p>
+  <p>
+    <strong>Systems questions: does precision spare land or intensify it?</strong>
+    The sustainability assessment cuts both ways and is genuinely open. Input
+    savings (N, P, herbicides, water) reduce the runoff and emissions externalities
+    the environmental chapters measure — variable-rate N alone cuts nitrous oxide
+    and leaching measurably. But the same efficiency lowers unit costs, which can
+    <strong>rebound</strong> (the Jevons logic of the economics chapter) into
+    expansion or intensification — and the "carbon programs" now paying per tonne
+    of soil carbon depend on measurement protocols (remote sensing plus models)
+    whose accuracy against real soil sampling is an active research fight. The
+    resolution is the same as every other case in this atlas: precision agriculture
+    is an amplifier — its direction set by the incentives attached, which returns
+    the subject, once again, to data ownership and policy design rather than
+    hardware.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Interoperability (the ISOBUS standard exists;
+    walled gardens persist), rural connectivity (a data-hungry farm needs bandwidth
+    that rural grids often lack), model transferability across climates and
+    cultivars, biological limits (no sensor changes the photosynthetic ceiling —
+    the yield-gap chapters' frontier), labour implications of autonomy, and the
+    ownership/privacy settlement pending. The technology's trajectory, though, is
+    legible from the pattern this page has traced: every wave (positioning,
+    sensing, actuation) began as a cost-saver and matured into an information
+    asset — the next wave (genomics × sensing × autonomy) will be judged by the
+    same rule: does it pay, and who holds the data.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Zhang, Wang &amp; Wang, "Precision agriculture" reviews; USDA precision-ag adoption surveys (ARMS); Wolfert et al., "Big Data in Smart Farming" (2017); the remote-sensing and data-science lessons.</p>
 </TopicPage>
