@@ -10,23 +10,281 @@ const uxrCfg = {
     { math: '4 · Triangulate honestly', note: 'What people SAY (interviews), what they DO (analytics, session recordings), what they CHOOSE (A/B tests) — the three sources disagree regularly, and each disagreement is a finding (the statistics lesson\'s convergent evidence discipline).' },
   ],
 };
+
+const uxrQuizCfg = {
+  questions: [
+    {
+      q: 'A user says: "You should add an export button." The professional move is:',
+      choices: [
+        'Add the button — customers know best',
+        'Ask "tell me about the last time you needed to get data out" — dig from the feature request to the underlying situation and need, which may suggest a different (better) design',
+        'Add three buttons',
+        'Ignore all user feedback',
+      ],
+      answer: 1,
+      why: 'Users are experts on their problems and unreliable as designers (the Mom Test\'s core rule). The request is a pointer to a need — the job beneath it may be solved by something they would never think to ask for. Collect problems; design solutions.',
+    },
+    {
+      q: 'Why does ~5 participants find most usability problems, when surveys need hundreds?',
+      choices: [
+        'Usability problems are rare',
+        'Problem discovery is about repetition of SHARED failures, not opinion sampling: the first user reveals ~31%, each new user adds diminishing returns — so a few users surface the common issues, and the right move is iterating five at a time, not testing fifty once',
+        'Participants share answers',
+        'Statistics do not apply to design',
+      ],
+      answer: 1,
+      why: 'The Nielsen–Landauer model: each user independently reveals about a third of the fixable problems, so discovery saturates fast — five users catch the bulk of what matters (with real-world variance; a later iteration catches what design changes exposed). Small, fast, repeated beats large, slow, once.',
+    },
+    {
+      q: 'In a usability session, the facilitator\'s hardest discipline is:',
+      choices: [
+        'Explaining the design so the task is fair',
+        'Silence — give tasks, not instructions, and let the user struggle, because hesitation and self-correction are the findings; help converts a test into a demo',
+        'Talking constantly to put them at ease',
+        'Testing only happy paths',
+      ],
+      answer: 1,
+      why: 'The moment the facilitator helps, you learn whether YOUR explanation works, not whether the DESIGN does. The data is in the hesitation, the wrong menu, the backtracked click — which is why sessions are recorded, and why facilitators train to shut up professionally.',
+    },
+    {
+      q: 'Interviews say a feature is loved; analytics show nobody uses it. The triangulation reading is:',
+      choices: [
+        'Interviews were lies — discard them',
+        'A finding in itself: attitudes and behaviour have diverged (social politeness, memory bias, or the feature is loved but not needed) — investigate WHY the gap exists rather than trusting either source alone',
+        'Analytics must be broken',
+        'Average the two answers',
+      ],
+      answer: 1,
+      why: 'What people say, do and choose are three different measurements of three partly different things. Disagreement between sources is not noise to average away — it is usually the most informative data point in the study, pointing at exactly the assumption worth testing next.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/design/intermediate/ux-research">
   <h2>The idea</h2>
   <p>
-    UX research is the discipline\'s reality check: <strong>watching real people try to use the
+    UX research is the discipline's reality check: <strong>watching real people try to use the
     thing before shipping it</strong> — the evidence-based-practice culture of the medicine
-    lesson, at product speed.
+    lesson, at product speed. Its two grand divisions run along the syllabus's design
+    process: <strong>generative</strong> research (identifying and defining — what do people
+    need, where does the current world hurt?) and <strong>evaluative</strong> research
+    (testing and evaluating — does this design work for them?). Between them sits the
+    profession's core discipline: asking questions whose answers change a decision, and
+    choosing methods for the question rather than the fashion. The page walks the full
+    cycle — identify, define, propose, develop, plan, test — with each method's honest
+    limits attached, because the field's failure mode is not too little research but
+    the wrong research confidently reported.
   </p>
 
   <Widget no="1" caption="decision-first questions, behavioural interviews, five users, triangulation" widget="equationStep" config={uxrCfg} />
 
-  <h2>Methods and their honest limits</h2>
-  <ul>
-    <li><strong>Surveys measure attitudes, poorly designed measure nothing:</strong> leading questions, response bias, unrepresentative samples (the statistics lesson\'s sampling pitfalls, questionnaire edition); the survey-research lesson of the sociology ladder is the deep treatment.</li>
-    <li><strong>Analytics shows WHAT, never WHY:</strong> funnels and heatmaps locate friction (the data lesson\'s dashboards); the WHY needs a human watching a human — pair them.</li>
-    <li><strong>Diary studies and field visits:</strong> context is invisible from the office — the anthropology lesson\'s ethnography, product edition: watch people in their own environment, where the workaround you never designed already exists.</li>
-    <li><strong>Ethics and consent:</strong> participants deserve to know what they\'re recording and how data is used; research ops is the profession\'s institutional-review conscience (the ethics lesson, operationalised).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Nielsen on usability heuristics and the 5-user finding; Bland & Osterwalder on testing value propositions; the data and anthropology lessons.</p>
+  <h2>Identify and define: decision-first research</h2>
+  <p>
+    Every study starts with the pending decision: which pricing page ships? does
+    onboarding need a rebuild? is this feature worth building at all? The
+    <strong>research plan</strong> states it explicitly — question, decision it informs,
+    method, participants, timeline — because a study that cannot name its decision
+    tends to produce interesting trivia. Method follows question: <em>why</em>
+    questions want interviews and field studies; <em>how well</em> questions want
+    usability tests; <em>how many / which</em> questions want analytics and
+    experiments. Interviews are generative research's instrument, and their craft
+    rule is behavioural: <strong>"tell me about the last time you…"</strong> beats
+    "would you use…", because past behaviour is data and predictions about
+    hypothetical futures are noise (Rob Fitzpatrick's <em>The Mom Test</em> is the
+    pocket manual: ask about specifics, the present and the past; avoid compliments
+    and pitches). The <strong>5-whys ladder</strong> (Toyota's root-cause habit,
+    productised) digs beneath requests — "you should add an export button" becomes,
+    four whys later, "I lose two hours a week rebuilding reports my manager could
+    have read in the tool" — an entirely different (and better) design brief.
+    Synthesis closes the defining stage: notes clustered into themes
+    (affinity mapping), needs stated as problems, sometimes as
+    <strong>Jobs-to-be-Done</strong> ("when commuting before work, I hire a
+    thick milkshake because it occupies a boring drive and holds until
+    lunch" — Christensen's founding case), and a problem statement the
+    team can argue with.
+  </p>
+
+  <h2>Propose and develop: usability testing, five at a time</h2>
+  <p>
+    Evaluative research's workhorse is the <strong>usability test</strong>: a
+    participant, real tasks, a facilitator trained to silence. The famous
+    arithmetic is Nielsen and Landauer's: each participant independently
+    uncovers roughly a third of a design's fixable problems, so
+    <strong>five users catch most of what matters</strong> — and the correct
+    conclusion is not "five is enough" but <em>five at a time, then fix, then
+    five again</em>: small, fast, iterative beats large, slow, single-shot.
+    (Honest footnote: later replications show high variance — five finds
+    <em>most</em> severe issues on average, not a guarantee — which is an
+    argument for iteration, not against.) The craft rules that make sessions
+    informative: give <strong>tasks, not instructions</strong> ("pay this
+    invoice", never "click the payments tab"); <strong>stay silent</strong> —
+    the moment you help, you are testing your explanation, not the design;
+    ask users to <strong>think aloud</strong> (Ericsson and Simon's protocol:
+    report what you attend to, don't analyse); watch for hesitation, wrong
+    menus, backtracking — <em>where users struggle is the finding</em>, and a
+    task completed "successfully" after three wrong turns is not success.
+    Rate findings by severity (cosmetic → critical), fix the criticals, and
+    retest — the loop is the method.
+  </p>
+
+  <h2>Test and evaluate: analytics, A/B tests, and the survey's honest place</h2>
+  <p>
+    Behaviour leaves two other traces. <strong>Analytics</strong> (funnels,
+    session recordings, heatmaps) shows WHAT at population scale — where users
+    drop, where rage-clicks cluster — but never WHY; the professional pairing is
+    quantitative location followed by qualitative explanation. The <strong>A/B
+    test</strong> (randomise two variants, compare outcomes) is the discipline's
+    experiment, with the statistics lesson's traps attached: decide the sample
+    size before starting, resist <em>peeking</em> (stopping at the first
+    significant-looking hour produces false positives), and remember that
+    statistical significance is not business importance. <strong>Surveys</strong>
+    scale attitudes — and measure them badly when drafted carelessly: leading
+    questions, response bias, the unrepresentative self-selection of people
+    with time and opinions. Instruments like the <strong>System Usability
+    Scale</strong> (ten standard items, score out of 100, ~68 as the industry
+    average) exist precisely to avoid bespoke questionnaire chaos. And the
+    master discipline is <strong>triangulation</strong>: what people SAY
+    (interviews, surveys), what they DO (analytics, recordings), what they
+    CHOOSE (A/B outcomes) are three different measurements, they disagree
+    regularly, and each disagreement is a finding pointing at an assumption
+    — never something to average away.
+  </p>
+
+  <h2>Planning and ethics: the unglamorous half</h2>
+  <p>
+    Research quality is set before the first participant. <strong>Recruiting</strong>
+    defines validity: participants must resemble the actual audience (a "usability
+    test" of your product on five design-school colleagues tests your office, not
+    your market); screeners and incentives are the machinery; a mix of sessions —
+    moderated, unmoderated, remote, in-context — covers what each misses.
+    <strong>Ethics</strong> is not paperwork: informed consent (what is recorded,
+    how data is used, the right to stop), privacy of recordings, and care with
+    vulnerable participants are the profession's IRB-conscience, and
+    <strong>research operations</strong> (consent flows, secure repositories,
+    participant panels) is how those values survive scale. One psychological
+    honesty note belongs here: participants behave differently when observed
+    (<strong>observation effects</strong> — polite cooperation, self-presentation;
+    the Hawthorne lineage) — which is why in-context field studies (the
+    anthropology lesson's ethnography, product edition) complement lab tests:
+    the workaround taped to the monitor that nobody mentions in an interview
+    only exists to be visited.
+  </p>
+  <p><em>Common misconception:</em> "we tested it on users and they liked it" is
+  validation. Liking is an attitude; the questions that matter are behavioural —
+  could they find it, did they complete the task, what did they do instead? A
+  test that collects compliments has measured politeness. The professional
+  deliverable is a decision changed by evidence, and the field's culture is
+  built to make that sentence, not the session count, the unit of success.</p>
+
+  <h2>Contextual inquiry and diary studies: research where the life is</h2>
+  <p>
+    The lab cannot visit the kitchen, and some truths only live there.
+    <strong>Contextual inquiry</strong> (the usability-engineering tradition's
+    ethnographic wing) watches people work in their own environment: the
+    master-apprentice stance — watch first, ask in the moment, interpret
+    together — surfaces the workarounds, sticky notes and shadow systems
+    that never appear in an interview ("we just keep the real rota in a
+    spreadsheet and use the official tool for the boss"). <strong>Diary
+    studies</strong> trade depth for duration: participants record their
+    own behaviour over days or weeks (prompts, photos, short entries),
+    which captures low-frequency events a session can never schedule —
+    the monthly payday routine, the annual tax scramble, the moment
+    a product is abandoned. Both methods answer questions the lab
+    structurally cannot: what does the context do to the behaviour,
+    and what do people do when nobody is watching the study?
+    The cost is analysis weight — field notes and diary entries
+    need systematic synthesis (affinity mapping, timeline
+    reconstruction) or they become anecdotes — which is why
+    these methods pair with the defining stage's synthesis
+    discipline rather than replacing the fast loop of
+    five-user testing.
+  </p>
+
+  <h2>Measuring experience: the metric taxonomy</h2>
+  <p>
+    Evaluative research earns its keep when numbers are chosen to match the
+    question. The behavioural standards: <strong>task success rate</strong>
+    (did they complete it — and at what cost?), <strong>time on task</strong>
+    (efficiency, with the caveat that faster is not always better on
+    exploration tasks), <strong>error count and type</strong> (where the
+    design confuses). The attested-attitude standards: the
+    <strong>System Usability Scale</strong> (10 fixed items, benchmarked
+    against decades of data — a 68 average, 80+ strong), plus task-level
+    confidence and easiness ratings. Product metrics complete the picture:
+    adoption, retention, funnel conversion — with the standing warning that
+    engagement numbers reward addiction as readily as value, and the
+    professional obligation to ask what the metric should be measuring
+    before the dashboard chooses for you. Two habits keep the taxonomy
+    honest: benchmark against <em>known</em> baselines (SUS means
+    something because its distribution is public; a bespoke
+    satisfaction score means nothing until you have history),
+    and never let a single number carry a decision — the
+    triangulation rule applies within metrics as much as
+    across methods.
+  </p>
+
+  <h2>From findings to decisions: the reporting discipline</h2>
+  <p>
+    Research that does not change a decision is expense. The reporting
+    craft starts with severity, not anecdotes: rank findings by
+    frequency × severity × impact on the decision, lead with the
+    answer to the question the study was commissioned to answer,
+    and attach the evidence (clips, quotes, numbers) beneath each
+    claim — a finding without its evidence is an opinion with a
+    title. Readouts work best as decisions-in-progress: present
+    the options the evidence supports, name what would change
+    the conclusion, and separate observations from
+    recommendations (the team owns the design; research
+    owns the evidence). Writing it down is half the value:
+    repositories of past findings compound — the question
+    you answer rigorously once answers it for every
+    future team. And the closure habit that defines
+    the mature practice: revisit the decision after
+    launch (did the metric move? did the fix hold?),
+    so the research function calibrates itself
+    against reality — the same loop the medicine
+    lesson's evidence-based practice runs, at
+    product speed.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The five-user debate, maturely held.</strong> The Nielsen–Landauer
+    model assumes problems are shareable and users independent; real studies
+    show variance is huge (Faulkner's 2003 replications: five users sometimes
+    miss 35% of problems). The settled practice: five finds the <em>common</em>
+    problems fast; complex, heterogeneous audiences need per-audience sessions;
+    critical-risk designs (medical, financial) need more eyes per round. The
+    deeper point survives every replication — iteration beats sample size,
+    because designs change between rounds and each round reveals what the
+    previous redesign exposed.
+  </p>
+  <p>
+    <strong>Research at organisational scale.</strong> Mature practice builds
+    <strong>research repositories</strong> (searchable archives of findings, so
+    questions are answered once), <strong>opportunity solution trees</strong>
+    (Teresa Torres: mapping desired outcomes to opportunities to experiments —
+    continuous discovery instead of periodic studies), and the important
+    distinction between <em>research</em> (rigorous, decision-changing) and
+    <em>research theatre</em> (sessions performed to confirm a decision already
+    made — the field's occupational hazard, detectable by whether any finding
+    could have killed the plan).
+  </p>
+  <p>
+    <strong>Open questions.</strong> Can AI-moderated interviews and synthetic
+    participants extend reach (so far: useful for scale and screening,
+    unreliable where empathy and context carry the signal — the ethics of
+    synthetic data is the live debate)? How do privacy regimes (GDPR-era
+    consent, recording laws) reshape session research as it globalises? And
+    can behavioural metrics ever capture the aesthetic dimensions of design —
+    or does the discipline need to keep arguing for what instruments cannot
+    yet count? The fundamentals, meanwhile, are stable across tooling: a
+    decision, a question, a method honest about its limits, and the
+    discipline to let the evidence change the plan — four sentences that
+    summarise the whole profession, and the reason this lesson is the
+    design ladder's quiet capstone.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Nielsen &amp; Landauer (1993) and Nielsen on the 5-user finding; Fitzpatrick, The Mom Test; Torres, Continuous Discovery Habits; Christensen on Jobs-to-be-Done; Bland &amp; Osterwalder on testing value propositions; the data and anthropology lessons of this atlas.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={uxrQuizCfg} />
 </TopicPage>

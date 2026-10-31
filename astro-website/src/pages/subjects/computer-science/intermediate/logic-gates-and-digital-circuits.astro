@@ -11,25 +11,200 @@ const gateCfg = {
     { math: 'NAND: AND, then flipped', note: 'The miracle gate: every other gate — and therefore every computer — can be built from NAND alone. Your processor is a few billion of these.' },
   ],
 };
+
+const gateQuizCfg = {
+  questions: [
+    { q: 'How many rows does a truth table for a circuit with 3 inputs need?', choices: ['3', '6', '8', '9'], answer: 2, why: 'Each input doubles the combinations: 2³ = 8 rows (000 through 111). Truth tables grow exponentially — which is why engineers also use algebraic simplification.' },
+    { q: 'De Morgan\'s law says NOT(A AND B) equals…', choices: ['NOT A AND NOT B', 'NOT A OR NOT B', 'A OR B', 'NAND(A, B) flipped again'], answer: 1, why: '"Not both" = "at least one is not". The table proves it: the only row where NOT(A AND B) is 1 is exactly where NOT A OR NOT B is 1.' },
+    { q: 'In a half adder, which gate produces the carry bit?', choices: ['XOR', 'AND', 'OR', 'NOT'], answer: 1, why: '1+1 in binary is 10: XOR gives the sum digit (0 when inputs match in the carrying case), AND gives the carry (1 only when both inputs are 1).' },
+    { q: 'A latch remembers a bit because…', choices: ['it has a battery', 'its output is fed back into its input', 'it is very fast', 'it uses AND gates only'], answer: 1, why: 'Feedback creates a self-sustaining loop: the circuit holds its own state until actively changed — the seed of every register and every byte of RAM.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/intermediate/logic-gates-and-digital-circuits">
   <h2>The idea</h2>
   <p>
-    Between the binary numbers lesson and this one sits the physical miracle: <strong>bits are
-    voltages, and logic gates are transistors arranged to compute</strong>. AND, OR, NOT and
-    their cousins are tiny circuits that read inputs as high/low voltages and output another.
-    Claude Shannon proved in 1937 that these gates implement Boolean algebra — and the digital
-    age followed from a master's thesis.
+    Between the binary numbers lesson and this one sits the physical miracle:
+    <strong>bits are voltages, and logic gates are transistors arranged to compute</strong>.
+    An AND gate is a few transistors wired so that its output wire sits high only when
+    both input wires sit high; an OR, when either does. That is all a "gate" is — a tiny
+    voltage-controlling circuit with a contract. Claude Shannon proved in his 1937
+    master's thesis that these circuits implement Boolean algebra, the logic George Boole
+    had published in 1854 — meaning a machine could compute <em>anything expressible in
+    logic</em> — and the digital age followed from that one observation.
+  </p>
+  <p>
+    The syllabus unit has three layers, and this lesson keeps them in order:
+    <strong>logic gates</strong> (the components and their contracts), <strong>truth
+    tables</strong> (the mathematics that specifies and verifies them), and <strong>logic
+    circuits and expressions</strong> (building circuits from Boolean expressions and
+    reading circuits back into expressions) — culminating in the two constructions that
+    make a computer a computer: arithmetic from gates, and memory from feedback.
   </p>
 
   <Widget no="1" caption="five gates to know — ending with the one that builds everything" widget="equationStep" config={gateCfg} />
 
-  <h2>From gates to computers</h2>
-  <ul>
-    <li><strong>Half adder:</strong> XOR gives the sum digit, AND gives the carry — one bit of arithmetic. Chain full adders and you can add numbers of any size.</li>
-    <li><strong>Memory is feedback:</strong> gate a gate's output back into its input and it <em>remembers</em> — a latch. Billions of latches, refined into registers and RAM.</li>
-    <li><strong>Clock:</strong> a circuit that flips billions of times per second synchronises everything; "3.2 GHz" is its tempo.</li>
-    <li><strong>Abstraction stack:</strong> transistors → gates → adders/registers → processor → machine code → your app. Each layer hides the one below — the defining idea of computer engineering.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Boole (1854); Shannon (1937); Petzold, Code; Neso Academy digital logic series.</p>
+  <h2>Truth tables: the contract in full</h2>
+  <p>
+    A gate with n inputs has 2ⁿ possible input combinations, and its truth table lists
+    every one with the output — the complete specification, no ambiguity. The two-input
+    tables are worth knowing cold. AND: 1 only on row 11. OR: 0 only on row 00. XOR: 1
+    on rows 01 and 10 — "exactly one". NAND (NOT-AND): 0 only on row 11. NOR (NOT-OR):
+    1 only on row 00. Writing a table by hand is also a verification method: any claim
+    about a circuit ("these two wirings are equivalent") becomes checkable row by row —
+    and the exponential growth (3 inputs → 8 rows, 4 → 16, 10 → 1,024) is itself the
+    reason engineers compress tables back into algebra whenever they can.
+  </p>
+
+  <h2>Boolean algebra: expressions, laws and De Morgan</h2>
+  <p>
+    Gates compose, and Boolean algebra is the language of the composition: AND written
+    as multiplication (A·B or just AB), OR as addition (A+B), NOT as a bar (Ā). The
+    laws mirror ordinary algebra where possible (A·1 = A, A+0 = A) and diverge where
+    logic is stranger and better: A·A = A, A+A = A (no powers or coefficients in
+    logic), A·Ā = 0, A+Ā = 1, and A + A·B = A (if A is true, the second term is
+    irrelevant — check it on a two-row table). The most useful identity pair is
+    <strong>De Morgan's laws</strong>: NOT(A AND B) = (NOT A) OR (NOT B), and NOT(A OR
+    B) = (NOT A) AND (NOT B) — "not both" equals "at least one isn't"; "neither"
+    equals "both aren't". Both are provable on a four-row table in seconds, and both
+    are everywhere: they are how NAND and NOR can impersonate every other gate, and
+    they are the reason "not (logged in and verified)" is identical to "not logged in
+    or not verified" in your own security reasoning.
+  </p>
+
+  <h2>From expression to circuit and back</h2>
+  <p>
+    The two directions of the syllabus's third topic are mechanical once the notation
+    is yours. <strong>Expression → circuit</strong>: take (A AND B) OR (NOT C); feed A
+    and B into an AND gate; feed C into a NOT; feed the two results into an OR; the OR's
+    output is the answer. Every operator becomes a gate, every input a wire, nesting
+    becomes depth. <strong>Circuit → expression</strong>: label each gate's output wire
+    in turn — the AND emits A·B, the NOT emits C̄, the OR emits A·B + C̄ — and the
+    expression falls out of the diagram. Then the payoff step: <strong>simplify before
+    building</strong>, because every gate is money. A + A·B simplifies to A (two gates
+    to zero); (A AND B) OR (A AND NOT B) simplifies to A (the OR's second term dies
+    whenever B is 1 and whenever B is 0 — table it). Real design is this loop: write
+    the truth table, derive the expression, simplify with the laws, build the smaller
+    circuit, verify the table again.
+  </p>
+
+  <h2>Arithmetic from gates: the adders</h2>
+  <p>
+    Addition is where logic becomes computation. The <strong>half adder</strong> adds
+    two bits: the sum digit is exactly XOR (1+0 = 1, 0+0 = 0, 1+1 = 0 with a carry),
+    and the carry is exactly AND (1 only when both are 1). Two gates, one bit of
+    arithmetic. A <strong>full adder</strong> adds the carry coming in from the right
+    (two half adders plus an OR — the detail is a standard exercise), and chaining n
+    full adders, each carry feeding the next, gives an n-bit adder: 32 of them and the
+    machine adds 32-bit integers. This ripple-carry design is deliberately simple and
+    deliberately slow (the carry must ripple the full width — the worst case travels
+    all 32 stages), which is the honest first draft of a truth real processors refine
+    with carry-lookahead logic that computes carries in parallel. The point stands:
+    arithmetic is a wiring diagram, and you have now read the smallest honest version
+    of it.
+  </p>
+
+  <h2>Memory from feedback: latches, clocks, registers</h2>
+  <p>
+    Combinational circuits (adders, and everything above) have no memory — outputs
+    depend only on present inputs. <strong>Memory is feedback</strong>: route a circuit's
+    output back into its input and the loop can sustain itself. The simplest case is
+    the SR latch — two NOR (or NAND) gates feeding each other — which holds whatever
+    state it was last set to: the bit remembers. Add a clock signal (a wire toggling
+    billions of times per second) and gates that only update on the clock's edge, and
+    you get flip-flops: one stable, synchronised bit per device. Line up eight and you
+    have a register; bank billions and you have RAM and cache. The clock is the
+    metronome of the whole machine — "3.2 GHz" means 3.2 billion synchronised ticks
+    per second — and every register in every chip updates on those ticks, which is
+    why faster clocks (and why the race for them) shaped fifty years of processor
+    design.
+  </p>
+
+  <h2>The NAND miracle and the abstraction stack</h2>
+  <p>
+    Here is the result that explains the industry's shape: <strong>every Boolean
+    function can be built from NAND alone</strong>. NOT A is NAND(A,A); A AND B is
+    NOT(NAND(A,B)); A OR B is NAND(NOT A, NOT B) — De Morgan again. Since every circuit
+    is combinations of AND, OR, NOT (any truth table can be written as a sum of
+    products), and each of those is NANDs in a hat, NAND is universal — and so is NOR.
+    Manufacturing consequence: a chip fab perfects <em>one</em> gate type with perfect
+    regularity and builds everything from it; a modern processor is billions of
+    transistors (tens of billions on current designs) arranged as gates, gates as
+    adders, registers, memories, and a processor that executes machine code. The stack
+    — transistors → gates → adders/registers → processor → machine code → your app —
+    is abstraction in its purest engineering form: each layer hides the one below and
+    offers a simpler contract to the one above. You have now walked it from both ends.
+  </p>
+
+  <h2>A worked derivation: requirements to circuit</h2>
+  <p>
+    Run the full pipeline on a realistic requirement: "The alarm should ring if the
+    door opens OR the window opens, but only while the system is armed, and never
+    during maintenance." Translate to variables: D (door), W (window), A (armed),
+    M (maintenance). Translate to logic: ring = (D OR W) AND A AND (NOT M). Build the
+    circuit: D and W feed an OR; M feeds a NOT; D+W, A and NOT-M feed a three-input
+    AND (two ANDs chained). Verify against the truth-table discipline — check the
+    rows that matter: armed and door opens with M=0 → ring; armed but M=1 → silent;
+    disarmed → silent whatever the sensors do. Now the engineering step:
+    simplify if possible (this one is already minimal — four gates). Then amend as
+    requirements always do: "add a test button that forces the alarm regardless" —
+    ring = (D OR W) AND A AND (NOT M) OR T, one new wire and one OR, and a new
+    boundary test (T with everything else off). This is digital logic design in
+    miniature: words → variables → expression → gates → table-check → amendment.
+    Every real chip spec, at every scale, is this loop running patiently.
+  </p>
+
+  <h2>Equality, selection, routing: XNOR and friends</h2>
+  <p>
+    Three more gate arrangements earn their fame. <strong>XNOR</strong> (XOR then NOT)
+    is the <em>equality</em> detector — 1 when inputs match — and equality testing is
+    half of computing: comparing two 32-bit numbers is 32 XNORs feeding one big AND
+    (all bits must match). <strong>Multiplexers</strong> are data switches: many data
+    inputs, one selected by a control input, forwarded to the output — the traffic
+    controller that lets a processor route results among registers. <strong>Decoders</strong>
+    take an n-bit number and activate exactly one of 2ⁿ output lines — the "one of
+    many" selector behind memory addressing (this bit pattern means row 5 → row 5's
+    line lights). Put the pieces together and the processor's executive function
+    appears: instructions are numbers; a decoder recognises the instruction; multiplexers
+    route the operands; the adder (or its arithmetic cousins) computes; equality
+    gates decide branches. None of it is mysterious any more — it is the same six
+    gates, arranged with intent.
+  </p>
+
+  <h2>Why voltage, and why binary</h2>
+  <p>
+    A closing question deserves its answer: why build everything from two voltage
+    levels? Because the physical world is analog and noisy — a "high" wire might carry
+    3.2 volts or 3.4, and after a metre of copper, less. Binary design draws two wide
+    bands ("anything under 0.8 volts reads as 0; anything over 2.0 reads as 1") and
+    every gate <em>regenerates</em> its output to a clean level: noise that creeps in is
+    squeezed out at every stage, so signals can chain millions of gates deep without
+    decaying. An analog computer would accumulate every millivolt of error; a digital
+    one corrects continuously. Add that two states are cheap and reliable to build in
+    silicon (a transistor is, at heart, a very good switch), and binary stops looking
+    like a limitation — it is the engineering choice that makes the abstraction stack
+    physically possible.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four notes from the expert shelf. <strong>Shannon's 1937 thesis</strong> is one of
+    the most consequential student papers ever written: it showed switching circuits
+    <em>are</em> Boolean algebra, giving electrical engineering a mathematics and logic
+    a machine — the quote-worthy fact is that the thesis also contained the first
+    circuit for binary addition. <strong>Karnaugh maps</strong>: the standard tool for
+    simplifying expressions of up to four variables — a grid arrangement of the truth
+    table where simplifications show as adjacent rectangles; beyond four variables,
+    the Quine–McCluskey algorithm (and modern logic-synthesis software) takes over.
+    <strong>Propagation delay</strong>: real gates take nanoseconds to switch, so
+    circuit depth is time — the reason ripple-carry adders are slow, the reason clock
+    speed has physical limits (a signal must settle before the next tick), and the
+    birthplace of pipelining. <strong>Moore's law</strong>: transistor counts doubling
+    roughly every two years from the 1960s to the 2010s is the economic engine that
+    turned the abstraction stack into phones — and its slowdown since is why the
+    industry now buys speed with parallelism (more cores, more chips) rather than
+    faster clocks. The gates, in every sense, still run everything.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Boole, An Investigation of the Laws of Thought (1854); Shannon, A Symbolic Analysis of Relay and Switching Circuits (1937); Petzold, Code; Neso Academy digital logic series.</p>
+  <Widget no="2" caption="check yourself: gates, tables and circuits" widget="quiz" config={gateQuizCfg} />
 </TopicPage>

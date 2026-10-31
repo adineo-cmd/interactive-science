@@ -10,24 +10,214 @@ const edaCfg = {
     { math: '4 · Write down what surprised you', note: 'EDA\'s deliverable is a list of hypotheses and data-quality findings — not a model. Tukey\'s rule: the greatest gains come from looking at the data before theorising about it.' },
   ],
 };
+
+const edaQuizCfg = {
+  questions: [
+    { q: 'Anscombe\'s quartet demonstrates that…', choices: ['four is the ideal sample size', 'identical summary statistics can hide wildly different patterns', 'quartets are statistically special', 'regression always works'], answer: 1, why: 'Four datasets with the same means, variances, correlations and regression line turn out — when plotted — to be a line, a curve, a distorted line and a single outlier\'s hostage. Summaries compress; plots reveal.' },
+    { q: 'Simpson\'s paradox in the Berkeley 1973 admissions data was explained by…', choices: ['discrimination in each department', 'women applying disproportionately to the most competitive departments', 'a data error', 'small sample sizes'], answer: 1, why: 'Department by department, women did as well or better; the aggregate flipped because application rates differed by department — the average of several true stories can tell the opposite story.' },
+    { q: 'The EDA deliverable is best described as…', choices: ['a fitted model', 'a list of hypotheses, findings and data-quality notes', 'a cleaned dataset', 'a dashboard'], answer: 1, why: 'Exploration produces understanding: what is weird, what relates to what, what deserves a formal test. The model is a later step that the notes set up.' },
+    { q: 'Why prefer the median to the mean for heavily skewed data?', choices: ['it is easier to compute', 'the mean is dragged by the tail while the median is not', 'medians are always larger', 'medians work only for integers'], answer: 1, why: 'One billionaire moves a mean, not a median — which is why income is reported as a median and why "average" without a histogram is a red flag.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/intermediate/exploratory-data-analysis">
   <h2>The idea</h2>
   <p>
-    Exploratory Data Analysis (EDA) is <strong>looking before modelling</strong> — John Tukey's
-    1962 argument that data analysis should begin with pictures and questions, not assumptions.
-    Its purpose is understanding: what shape is this data, what relationships exist, what is
-    weird here? Every strong model choice downstream was usually visible in a good EDA first.
+    Exploratory Data Analysis is <strong>looking before modelling</strong> — John
+    Tukey's 1962 argument ("The Future of Data Analysis", expanded into his 1977 book)
+    that analysis should begin with pictures and questions rather than assumptions and
+    significance tests. Tukey's position was radical at the time and is now simply how
+    good work is done: plot everything, notice everything, <em>then</em> decide what
+    deserves formal treatment. The purpose of EDA is understanding — what shape is
+    this data, what relationships exist, what is weird here? — and its deliverable is
+    a set of hypotheses and findings, not a model. Every strong model choice
+    downstream was usually visible in a good EDA first.
+  </p>
+  <p>
+    The discipline has a characteristic rhythm: plot, notice, question, re-plot. It
+    is the data-science cousin of the cleaning lesson's profiling — profiling asked
+    "can this data be trusted?", EDA asks "what does this data say?" — and the two
+    interleave constantly, because the fastest way to discover a data-quality bug is
+    a plot that makes no sense.
   </p>
 
   <Widget no="1" caption="the four-pass EDA checklist" widget="equationStep" config={edaCfg} />
 
-  <h2>The toolkit and its habits</h2>
-  <ul>
-    <li><strong>Plot types and their jobs:</strong> histograms for shape, boxplots for comparisons, scatter for relationships, line for time, heatmaps for matrices. Choose by question, not decoration.</li>
-    <li><strong>Aggregate, then distrust the aggregate:</strong> means hide bimodality; check the histogram before trusting any average (Anscombe's quartet is the permanent reminder).</li>
-    <li><strong>Annotate as you go:</strong> EDA notes become the analysis's audit trail — what you checked, what surprised you, what you decided. Future-you is the main audience.</li>
-    <li><strong>EDA is iterative with modelling:</strong> model residuals are data too — the best practitioners loop EDA → model → EDA of residuals until the story is stable.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Tukey, Exploratory Data Analysis (1977); Wickham & Grolemund, R for Data Science; Anscombe (1973).</p>
+  <h2>Pass one: each variable's distribution</h2>
+  <p>
+    A histogram or density plot per variable, read for four properties.
+    <strong>Shape</strong>: symmetric, skewed, bimodal? A bimodal distribution is a
+    discovery hiding in plain sight — two populations in one column (two customer
+    types, two sensors, two eras) that any single-number summary will average into
+    fiction. <strong>Centre</strong>: mean and median — and their gap, which measures
+    skew. <strong>Spread</strong>: standard deviation, range, and the percentiles
+    that survive outliers. <strong>Tails</strong>: are extreme values rare and light
+    (measurement-ish) or heavy (power-law-ish)? The choice ripples forward: heavy
+    tails punish linear models and reward medians and log scales. A worked read:
+    order values on a retail dataset come out strongly right-skewed with a median
+    order of 24 and a mean of 89 — the histogram shows most orders small and a thin
+    spike of enormous ones; reporting "average order 89" everywhere is now a
+    documented choice, not an accident.
+  </p>
+
+  <h2>Summaries that lie: the permanent warnings</h2>
+  <p>
+    <strong>Anscombe's quartet</strong> (1973) is the founding demonstration: four
+    small datasets with identical means, variances, correlations and regression
+    lines — and, when plotted, completely different structures (a clean line, a
+    perfect curve, a line distorted by one point, a vertical column held hostage by
+    one outlier). The lesson: summary statistics compress; plots reveal; always plot.
+    The modern sequel, the <strong>Datasaurus Dozen</strong> (Matejka and Fitzmaurice,
+    2017), builds twelve datasets that all look like a dinosaur (and other shapes)
+    while sharing the same summary statistics to two decimal places. The second
+    permanent warning is the mean versus median gap: incomes, house prices and
+    response times are all tail-dominated, and "the average customer" may be a
+    person who does not exist. The habit that resolves both: never let a number
+    travel without its distribution.
+  </p>
+
+  <h2>Pass two: relationships between variables</h2>
+  <p>
+    Scatter plots are the workhorse, read for direction (positive, negative, none),
+    <strong>shape</strong> (linear or curved — a U-shape has near-zero correlation
+    and would sail through a naive check), <strong>strength</strong> (tightness),
+    and <strong>outliers</strong> (which can manufacture or destroy a correlation on
+    their own — remove the one point and a strong relationship can vanish; add one
+    and it can appear). Correlation matrices give the overview but inherit linear
+    blinders; the standard pipeline is matrix first, scatter for anything important.
+    Two habits worth forming early: <strong>jitter or alpha-blend</strong> dense
+    scatter (thousands of overlapping points hide as a solid blob otherwise), and
+    treat correlation as a question, not an answer — the relationship's mechanism
+    (causal? confounded? coincidence at this sample?) is exactly what EDA cannot
+    decide and therefore must flag honestly.
+  </p>
+
+  <h2>Pass three: segments, and Simpson's paradox</h2>
+  <p>
+    Aggregates are averages of segments, and the segments can disagree with the
+    total. The canonical case is <strong>Simpson's paradox</strong> in the University
+    of California, Berkeley's 1973 graduate admissions data: overall, men were
+    admitted at 44% and women at 35% — evidence of bias on its face. But department
+    by department, women were admitted at roughly equal or higher rates than men in
+    most departments. The reversal came from application patterns: women applied
+    disproportionately to the departments (English, statistics) with low admission
+    rates for everyone, men to the departments (engineering) with high rates. The
+    aggregate number was true and misleading simultaneously — the average of several
+    opposite stories. The EDA discipline: slice every important relationship by
+    its natural segments (by region, by cohort, by device, by channel) and compare
+    the slices to the total. When they disagree, you have found the analysis's
+    real structure — and usually the finding that matters.
+  </p>
+  <p><em>Common misconception:</em> the aggregate is the "real" number and segments
+  are complications. No — the choice of aggregation level is a modeling decision
+  with consequences, and paradoxes are the proof. The correct response to
+  "what is the overall number?" is often "for whom?".</p>
+
+  <h2>Pass four: time</h2>
+  <p>
+    Any column with a timestamp earns a line plot, and time plots have their own
+    reading list. <strong>Trend</strong> (the long slope), <strong>seasonality</strong>
+    (the repeating pattern — daily, weekly, yearly), <strong>shifts</strong> (level
+    changes at specific dates — usually interventions, sometimes bugs), and
+    <strong>spikes</strong> (outliers to investigate, not smooth away). The classic
+    mistakes are all visual: y-axes chosen to hide or inflate slopes; windows
+    chosen to start at a peak or end at a trough; connecting points across a data
+    gap as if nothing happened. The professional reflexes: plot the full history
+    first, mark known events on the line (the launch, the price change, the
+    migration — the charts lesson's annotation habit, born here), and compute
+    rolling aggregates only after seeing the raw series.
+  </p>
+
+  <h2>The deliverable: notes, hypotheses and the loop</h2>
+  <p>
+    EDA's output is a document, not a chart pile. Its sections are predictable and
+    that is the point: data-quality findings (fed back to the cleaning lesson's
+    pipeline); distribution notes; relationships worth testing; segments that
+    behave differently; open questions ranked by interest; and the hypotheses —
+    stated precisely enough that a later confirmatory analysis could refute them.
+    That last clause is the method's ethical spine: <strong>exploration finds
+    patterns; confirmation tests them on data the exploration did not use</strong>.
+    Hunt through twenty slices and something will look significant by chance alone
+    (the statistics lessons' multiple-comparisons trap); the honest workflow keeps
+    the exploratory notebook and the confirmatory test separate, so the finding
+    survives meeting fresh data. And the loop closes: model residuals are data
+    too — plot them, and whatever structure remains is a pattern the model missed,
+    sending you back into EDA with sharper eyes.
+  </p>
+
+  <h2>A worked EDA hour: one dataset, the full pass</h2>
+  <p>
+    Watch the method run on a realistic brief: a rideshare company's trip table
+    (date, pickup zone, drop-off zone, distance, fare, tip, driver ID, rider ID).
+    <strong>Distributions first</strong>: distance is right-skewed with a hard edge at
+    0 and a suspicious spike at exactly 4.0 km (hypothesis: a default value filling
+    missing GPS — a data-quality find already); fare is roughly linear in distance
+    with a heavy tail; tip is zero for 60% of trips — a bimodal flag, not an error.
+    <strong>Relationships</strong>: fare versus distance is tight and linear below
+    30 km, then bends — the pricing has a long-distance discount, and a naive linear
+    model would silently blend two regimes. <strong>Segments</strong>: tip percentage
+    by pickup zone splits the city into three clean regimes (airport flat-rate
+    tipping, downtown percentage tipping, one zone at exactly zero — a partner
+    contract?). <strong>Time</strong>: trips per day show a weekly wave, a growth
+    trend, one catastrophic dip on a single date — the outage, found in ninety
+    seconds of looking. The hour's deliverable: four data-quality findings, two
+    pricing-structure hypotheses, one tipping segmentation worth modelling, and a
+    date to investigate. No model was fitted; the modelling just became easy.
+  </p>
+
+  <h2>EDA and the model: residuals are data too</h2>
+  <p>
+    The loop deserves its own section because it is where EDA stops being a
+    preliminary and becomes a partner. Fit a model — even a simple line — and its
+    <strong>residuals</strong> (what the model failed to explain, point by point)
+    are a fresh dataset with the model's blind spots highlighted. Plot them
+    against each predictor and against time: structure in the residuals means a
+    pattern the model missed (curvature that a straight line flattened, seasonality
+    the trend ignored, a segment that behaves differently); a funnel shape means
+    the model's errors grow with its predictions; a handful of giant residuals
+    mean outliers the fit bent around. This is how the EDA → model → EDA cycle
+    actually advances: each model is a hypothesis about structure, and its
+    residuals are the data's answer to it. Practitioners who skip the residual
+    loop ship models whose failures are invisible; practitioners who run it treat
+    every model as one more plot asking to be looked at.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The expert layer. <strong>Tukey's actual toolkit</strong> predates software:
+    stem-and-leaf plots (histogram and data table fused), boxplots (his invention —
+    median, quartiles and outliers as one glyph, still the best comparison plot
+    going), and the five-number summary. Learning them is learning to see what
+    each plot type is <em>for</em>. <strong>The exploratory/confirmatory
+    distinction</strong> is the field's deepest methodological idea (Tukey again,
+    with Frederick Mosteller): the two activities use statistics differently —
+    exploration is generation, generous with patterns; confirmation is
+    prosecution, hostile to them — and the reproducibility troubles of modern
+    science are largely the two roles blurring. <strong>Interactive EDA</strong>
+    (brushing, linked plots, drill-down) is the modern turbo button — the human
+    eye is a superb pattern detector given the right query loop. And
+    <strong>EDA on big data</strong> inverts an assumption: at scale you sample,
+    because a 2-million-row histogram is no more informative than a 20,000-row
+    one — the plot's resolution, not the row count, sets the information ceiling.
+    Tukey's rule survives every technology change: look first, and look again
+    after every surprise.
+  </p>
+  <p>
+    A last technical note: <strong>transformations are EDA moves</strong>, not
+    cosmetic ones. Right-skewed variables (incomes, durations, counts) often reveal
+    their structure on a log scale — multiplicative processes become additive,
+    and a log-log scatter turning a curve into a line is the discovery of a power
+    law, one of the most consequential pattern families in data. Percentages and
+    bounded values behave better as logits or with care at the boundaries; counts
+    with many zeros need zero-inflated thinking rather than a straight mean. The
+    craft habit: when a plot looks like nothing, transform and look again — the
+    relationship you are missing may be there on the other scale. Tukey's own
+    re-expression principle said exactly this: the scale is part of the
+    measurement, and choosing it is an analysis decision with the same weight
+    as the statistic itself. Re-express first, plot second, summarise last — the
+    order is the method, and it survives every tooling change the field will
+    ever have.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Tukey, "The Future of Data Analysis" (1962) and Exploratory Data Analysis (1977); Anscombe, "Graphs in Statistical Analysis" (1973); Matejka &amp; Fitzmaurice, "Same Stats, Different Graphs" (2017); Bickel, Hammel &amp; O'Connell, Science (1975); Wickham &amp; Grolemund, R for Data Science.</p>
+  <Widget no="2" caption="check yourself: looking before modelling" widget="quiz" config={edaQuizCfg} />
 </TopicPage>

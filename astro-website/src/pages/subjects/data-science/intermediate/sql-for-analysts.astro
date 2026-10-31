@@ -10,24 +10,211 @@ const sqlCfg = {
     { math: '4 · CTEs: readable pipelines', note: 'WITH steps AS (…) chains queries like pipeline stages. Analysis SQL is read by humans and machines — structure it like code, because it is code.' },
   ],
 };
+
+const sqlQuizCfg = {
+  questions: [
+    { q: 'INNER JOIN versus LEFT JOIN differ in…', choices: ['speed only', 'which rows survive when the other table has no match', 'column order', 'NULL handling in filters'], answer: 1, why: 'INNER drops unmatched rows entirely; LEFT keeps every left row and fills the right side with NULLs. The choice silently defines your analysis population.' },
+    { q: 'AVG(revenue) on a column with NULLs…', choices: ['treats NULLs as 0', 'ignores NULLs in both sum and count', 'returns NULL always', 'errors'], answer: 1, why: 'NULL means "no value", not zero — so it leaves the numerator and denominator. "No sale" and "sale of 0" are different facts that AVG will not distinguish for you.' },
+    { q: '"Top 3 products per region" is a window-function question because…', choices: ['it needs a subquery', 'the ranking is computed within groups while keeping individual rows', 'GROUP BY cannot count', 'it sorts differently'], answer: 1, why: 'GROUP BY collapses to one row per group, destroying the products; ROW_NUMBER() OVER (PARTITION BY region ORDER BY sales) ranks within each region and keeps the detail to filter on.' },
+    { q: 'A query that returns plausible-looking but wrong numbers most often went wrong at…', choices: ['the ORDER BY', 'a join that changed the row grain', 'the LIMIT', 'the column aliases'], answer: 1, why: 'A fan-out join duplicates rows silently and every aggregate after it double-counts. Knowing "what is one row?" at each step is the habit that prevents wrong answers.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/intermediate/sql-for-analysts">
   <h2>The idea</h2>
   <p>
-    SQL is <strong>the analyst's primary interface to data</strong> — declarative (you describe
-    the result, the engine finds the plan) and everywhere: warehouses, lakes, spreadsheets' back
-    ends. Analyst-level SQL goes beyond SELECT: joins define your population, GROUP BY defines
-    your granularity, and window functions unlock the questions that made older SQL painful.
+    SQL is <strong>the analyst's primary interface to data</strong>. It is
+    <em>declarative</em> — you describe the result you want and the engine finds a plan
+    to produce it, a design Edgar Codd's relational model (1970) made possible and
+    fifty years of optimisation made fast — and it is everywhere: warehouses, lakes,
+    database-backed spreadsheets, even the query layers under modern big-data tools.
+    Analyst-level SQL goes beyond SELECT: <strong>joins define your population</strong>,
+    <strong>GROUP BY defines your granularity</strong>, and <strong>window functions
+    unlock the questions</strong> that older SQL made painful. The mental shift from
+    spreadsheet thinking is the lesson's real content: in SQL you work in sets of rows,
+    and every operation transforms one set into another.
+  </p>
+  <p>
+    That mental shift has a flip side that makes SQL dangerous as well as powerful:
+    wrong SQL rarely errors. A bad join returns a big, plausible-looking table; a
+    mis-specified filter quietly narrows the population. So this lesson pairs each
+    technique with the habit that keeps it honest — starting with the habit of habits:
+    at every step, know <em>what one row represents</em>.
   </p>
 
   <Widget no="1" caption="the four techniques that cover most analyst work" widget="equationStep" config={sqlCfg} />
 
-  <h2>SQL habits that prevent wrong answers</h2>
-  <ul>
-    <li><strong>Always know your grain:</strong> what does one row represent after each step? A join that duplicates orders silently double-counts revenue.</li>
-    <li><strong>NULLs are not zero:</strong> AVG ignores NULLs; "no sale" and "sale of 0" differ. COALESCE thoughtfully — and check whether NULLs changed your denominators.</li>
-    <li><strong>Filter before you join where possible,</strong> and index the join keys — correctness first, but performance is an analyst skill too (nobody reruns a 40-minute query often).</li>
-    <li><strong>Sanity-check totals against a known source</strong> — finance's numbers, the product dashboard's counts. Discrepancies are usually definitional (which table is "truth" for users?) and worth resolving explicitly.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> PostgreSQL manual; Mode SQL Tutorial; Kimball, The Data Warehouse Toolkit.</p>
+  <h2>SELECT, WHERE, and the relational frame</h2>
+  <p>
+    The frame first. A relational database stores data in <strong>tables</strong> —
+    rows are records, columns are fields, and keys connect tables. A query moves
+    through a fixed logical order you can internalise as a pipeline:
+    <strong>FROM</strong> (which tables, joined how) → <strong>WHERE</strong> (which
+    rows survive) → <strong>GROUP BY</strong> (which rows collapse together) →
+    <strong>HAVING</strong> (which groups survive) → <strong>SELECT</strong> (which
+    columns and computed expressions appear) → <strong>ORDER BY / LIMIT</strong>
+    (presentation). Knowing that evaluation order explains the classic beginner
+    errors — you cannot filter on a column alias in WHERE (aliases are born at
+    SELECT, after WHERE runs), and WHERE cannot see aggregates (that is HAVING's
+    job). Worked basics: <code>SELECT region, amount FROM orders WHERE
+    status = 'completed' AND amount is greater than 0 ORDER BY amount DESC LIMIT 20</code>
+    — filter to completed, positive-amount orders, show the twenty largest.
+    Every analysis, however long, is this pipeline repeated and layered.
+  </p>
+
+  <h2>Grain: the question behind every query</h2>
+  <p>
+    <strong>Grain</strong> is what one row represents, and it changes as you query:
+    raw orders are one row per order; after a join to items, one row per order-item
+    line; after GROUP BY month, one row per month. Silently changing grain is how
+    SQL produces wrong numbers that look right. The canonical case: joining
+    <code>orders</code> (one row per order) to <code>order_items</code> (three rows
+    per order) and then summing a shipping fee that lives on the order — the fee
+    counts three times, revenue inflates by the average items-per-order, and no
+    error message appears. The defences are mechanical: state the grain in a
+    comment at the top of each CTE; check row counts at each step
+    (<code>SELECT COUNT(*)</code> is the analyst's pulse); aggregate the many-side
+    <em>before</em> joining when the measure belongs to the one-side (sum items per
+    order first, then join to orders — the fan-out never happens). Analysts who
+    internalise grain stop making the most common silent mistake in the craft.
+  </p>
+
+  <h2>Joins: choosing your population</h2>
+  <p>
+    A join stitches tables on a key — and the join <em>type</em> is a population
+    decision. <strong>INNER JOIN</strong> keeps only rows with matches on both
+    sides: join orders to customers and you analyse only orders that have a
+    customer record — silently excluding orphans. <strong>LEFT JOIN</strong> keeps
+    every left row, filling the right with NULLs where there was no match: join
+    customers to orders with a left join and you keep the customers who never
+    ordered — which is exactly the population churn analysis needs. (RIGHT JOIN
+    is LEFT with the tables swapped; FULL OUTER keeps everything from both.)
+    Worked case: "count customers with no orders in 2024" — left join
+    customers to 2024's orders, keep rows where the order ID is NULL, count
+    distinct customers. The pattern "<code>WHERE right.key IS NULL</code>" after a
+    left join is the standard anti-join, and it only works if you remember that
+    the NULL filter <em>after</em> a left join is not the same as an inner join
+    with the filter — the left join made the missingness visible; the inner join
+    deleted it. Finally, check every join's key for uniqueness on the side that
+    should be unique — a "unique" customers table with two rows for customer 7
+    is the fan-out factory from the grain section.
+  </p>
+
+  <h2>GROUP BY: the aggregation lens</h2>
+  <p>
+    GROUP BY collapses rows into groups and computes one value per group — the
+    workhorse of every business question: revenue per month, users per country,
+    defects per production line. The mechanics: every column in SELECT must be
+    either in the GROUP BY or inside an aggregate (COUNT, SUM, AVG, MIN, MAX) —
+    the database will refuse anything else, which is a feature: it forces you to
+    declare what the one-row-per-group output means. <strong>WHERE filters rows
+    before grouping; HAVING filters groups after</strong> — "completed orders
+    over 100" is WHERE, "regions whose total exceeds 10,000" is HAVING. Worked
+    query with the grain habit visible: <code>WITH monthly AS (SELECT
+    date_trunc('month', order_date) AS month, SUM(amount) AS revenue FROM orders
+    WHERE status = 'completed' GROUP BY 1) SELECT * FROM monthly ORDER BY
+    month</code> — filter early, group once, sort late. One refinement that
+    separates careful analysts: COUNT(*) counts rows; COUNT(column) counts
+    non-null values — the difference between "orders received" and "orders with a
+    known channel", and a denominator decision that changes every rate you
+    compute.
+  </p>
+
+  <h2>NULL semantics: not zero, not false, not equal to anything</h2>
+  <p>
+    NULL means "no value", and it behaves unlike any other value: <code>NULL =
+    NULL</code> is not true (it is NULL — unknown), so equality filters silently
+    exclude nulls; <code>amount is greater than 0</code> excludes NULL amounts
+    without your asking; NOT IN with a NULL in the list returns nothing at all
+    (the famous trap). Aggregates skip NULLs: AVG ignores them in both sum and
+    count, so "average sale" quietly becomes "average of known sales" — the
+    cleaning lesson's missingness problem, resurfacing in a WHERE clause. The
+    toolkit: <code>IS NULL / IS NOT NULL</code> for testing (never <code>= NULL</code>);
+    <code>COALESCE(a, b)</code> to substitute a default when the first value is
+    missing — used thoughtfully, because "no sale" and "sale of 0" are different
+    facts that a blanket COALESCE erases. The habit: for any metric, ask whether
+    NULLs changed the numerator, the denominator, or the population — all three
+    are possible, all three are silent.
+  </p>
+
+  <h2>Window functions: aggregates without collapsing</h2>
+  <p>
+    Window functions compute across rows <em>while keeping the rows</em> — the
+    feature that made modern analytical SQL possible. The syntax declares the
+    window: <code>ROW_NUMBER() OVER (PARTITION BY region ORDER BY sales DESC)</code>
+    — number the rows within each region, best first; <code>SUM(amount) OVER
+    (ORDER BY day)</code> — a running total; <code>AVG(amount) OVER (PARTITION BY
+    region)</code> — each row carries its group's average alongside its own value.
+    The two canonical analysts' questions are now one-liners. <strong>Top 3 per
+    group</strong>: rank within region, then keep ranks 1–3 in an outer filter —
+    impossible with GROUP BY (which collapses the products away). <strong>Period
+    over period</strong>: <code>revenue − LAG(revenue) OVER (ORDER BY month)</code>
+    puts last month's number on this month's row, and the growth rate is one
+    division away. Add PERCENT_RANK, NTILE (deciles), and moving-average frames
+    (<code>ROWS BETWEEN 6 PRECEDING AND CURRENT ROW</code>) and most dashboard
+    mathematics lives at this level. The grain habit still applies — a window's
+    PARTITION BY is a shadow GROUP BY whose grain you must be able to state.
+  </p>
+
+  <h2>CTEs and readable SQL</h2>
+  <p>
+    Long analyses are pipelines, and <strong>common table expressions</strong>
+    (CTEs) are how you write them like code: <code>WITH completed AS (…), monthly
+    AS (SELECT … FROM completed …), ranked AS (…)</code> — each step named,
+    commented, and one purpose wide. The benefits compound: each CTE can be
+    checked independently (run it, count rows, eyeball the output — the grain
+    habit made cheap); the final query reads as a story of steps rather than a
+    cathedral of nested subqueries; and debugging means isolating one stage
+    instead of unpicking parentheses. The style rules that matter in practice:
+    one logical step per CTE; filter early (smaller intermediate sets, faster
+    plans); name the grain in a comment; and prefer explicit column lists in
+    anything shared (SELECT * breaks silently when upstream schemas change —
+    the cleaning lesson's rot, arriving in your query). Analysis SQL is read by
+    humans and machines; structure it accordingly.
+  </p>
+
+  <h2>A worked analysis: from business question to query</h2>
+  <p>
+    Watch the techniques assemble on a real question: "Which customer segments
+    grew fastest last quarter, and what did they buy?" — the full analyst arc in
+    one CTE chain. Step 1, define the population: orders in the quarter with
+    status completed (a WHERE with a documented filter — returns excluded, and
+    the exclusion stated). Step 2, establish grain: aggregate to
+    customer-segment-month (SUM of amount) <em>before</em> joining segment
+    attributes, so the fan-out never happens. Step 3, compute growth with a
+    window: LAG over the segment's months, growth = (this − last) / last, guarded
+    against division by zero (a NULL-safe case). Step 4, rank within segment:
+    the window function again — fastest-growing segments first. Step 5, attach
+    the "what did they buy" layer: join the top customers' order lines to a
+    product dimension and aggregate to category, this time as a separate CTE
+    with its own grain comment. Five stages, each checkable: the analyst runs
+    each CTE standalone, counts rows, eyeballs ten rows — the grain habit made
+    into a loop. Total: maybe forty lines of SQL that a teammate can read,
+    audit and extend — which is the actual deliverable, because an analysis
+    nobody can re-run is an anecdote.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four notes from the working edge. <strong>The engine is a planner</strong>:
+    SQL describes results, and the optimiser chooses the execution plan —
+    <code>EXPLAIN</code> (and ANALYZE variants) shows the plan, which is how you
+    learn that your filter ran last, or that a join spilled to disk. Understanding
+    that the plan, not the text, is the truth of a query separates senior
+    analysts from intermediate ones. <strong>Indexes and selectivity</strong>:
+    indexes turn scans into lookups on keys used for joins and filters — but only
+    when selectivity is high (an index on status with three values helps nobody);
+    filter before you join where you can, and index the join keys.
+    <strong>Data modelling</strong>: warehouses are shaped deliberately — Kimball's
+    star schema (facts, the events with measures; dimensions, the who/what/where
+    context) is the analyst's map of a well-designed warehouse, and knowing it
+    explains why your joins feel natural. <strong>SQL versus notebooks</strong>:
+    the modern workflow handsoff to pandas or a BI tool for the last mile, but
+    pushing aggregation into SQL (near the data, index-aware, cheap to schedule)
+    and pulling small results out remains the performance and governance
+    architecture of serious teams — the query is the contract, and the warehouse
+    is where the truth lives.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data for Large Shared Data Banks" (1970); PostgreSQL documentation; Mode SQL Tutorial; Kimball, The Data Warehouse Toolkit.</p>
+  <Widget no="2" caption="check yourself: the analyst's SQL" widget="quiz" config={sqlQuizCfg} />
 </TopicPage>

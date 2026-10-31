@@ -12,33 +12,209 @@ const sortCfg = {
   crossings: false,
   height: 340,
 };
+
+const sortQuizCfg = {
+  questions: [
+    { q: 'Binary search needs 30 comparisons at most for a billion items because…', choices: ['billion ≈ 2³⁰', 'it checks 30 at a time', 'the list is small', 'of fast hardware'], answer: 0, why: 'Each comparison halves the candidates; a billion is about 2³⁰, so 30 halvings reach one item. Log₂(n) is the whole story — sorting first pays for itself.' },
+    { q: 'A trace table is used to…', choices: ['format code', 'record variable values step by step to find logic errors', 'measure speed', 'document APIs'], answer: 1, why: 'Walking the algorithm on paper, recording each variable at each step, exposes the wrong logic the compiler cannot catch — trace tables find logic errors, not syntax errors.' },
+    { q: 'Which test-data set should every algorithm be exercised with?', choices: ['only random data', 'normal, boundary and erroneous data', 'only large data', 'only data the programmer likes'], answer: 1, why: 'Normal data proves the happy path; boundary data (empty list, single item, exact limits) catches off-by-one errors; erroneous data proves the program fails safely. Programs break at edges.' },
+    { q: 'Merge sort\'s n log n comes from…', choices: ['n merge steps each costing log n', 'log₂(n) levels of splitting, with n total work per level', 'sorting n items log n times', 'recursion overhead'], answer: 1, why: 'Halving produces log₂(n) levels; merging all items at each level costs about n; multiply and you get n log n — the divide-and-conquer signature.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/intermediate/algorithms-searching-and-sorting">
   <h2>The idea</h2>
   <p>
-    Searching and sorting are the hello-world of algorithms — and the clearest demonstration that
-    <em>how</em> you compute matters more than how fast your chip is. Same list, same machine:
-    one sorting method grinds through n² comparisons, another through n log n. At a billion
-    items, that is the difference between days and under a minute.
+    Searching and sorting are the hello-world of algorithms — and the clearest
+    demonstration that <em>how</em> you compute matters more than how fast your chip is.
+    Same list, same machine: one sorting method grinds through n² comparisons, another
+    through n log n. At a million items that is roughly a factor of 50,000 in work; at a
+    billion, the difference between days and under a minute. Algorithm choice is a
+    hardware decision, and it is free.
+  </p>
+  <p>
+    This lesson also covers the syllabus's craft layer: how a problem becomes an
+    algorithm (decomposition, pseudocode, refinement), the standard solution methods
+    every course assumes you can write (totals, counts, max/min, search, sort), and the
+    testing discipline — normal, boundary and erroneous test data, trace tables, and
+    debugging — that turns a working-on-my-examples program into a working program.
   </p>
 
   <Widget no="1" caption="naive vs divide-and-conquer — the curves part company early and never look back" widget="plotter" config={sortCfg} />
 
-  <h2>The classic algorithms</h2>
-  <ul>
-    <li><strong>Linear search:</strong> check every item — O(n). Fine for ten items; absurd for a billion.</li>
-    <li><strong>Binary search:</strong> on a <em>sorted</em> list, halve the remaining candidates each step — O(log n). A billion items resolve in 30 comparisons. The phone book's trick.</li>
-    <li><strong>Bubble/selection sort:</strong> compare neighbours, swap, repeat — O(n²). Easy to write, painful to run; the teaching example that everyone replaces.</li>
-    <li><strong>Merge sort:</strong> split in half, sort each, merge — O(n log n), guaranteed. The recursive pattern (divide, conquer, combine) behind much of computer science.</li>
-    <li><strong>Quick sort:</strong> partition around a pivot, sort the sides — O(n log n) on average, and cache-friendly enough to be the real-world default (your language's sort() is a descendant).</li>
-  </ul>
-
-  <h2>Why correctness is part of the deal</h2>
+  <h2>Designing a solution: problem to algorithm</h2>
   <p>
-    An algorithm is a proof object: each one carries an argument that it terminates and produces
-    the right answer. Binary search's famous history of subtly wrong implementations (off-by-one
-    boundaries in published code for decades) shows why — the idea is easy, the boundary details
-    are where bugs live.
+    The design pipeline has four moves. <strong>Decompose</strong>: split the problem into
+    subproblems you can state precisely ("read the scores; find the largest; print it").
+    <strong>Specify</strong>: for each piece, write the inputs, the output, and the
+    relationship between them — vague steps cannot be coded or tested. <strong>Write
+    pseudocode</strong>: the algorithm in structured English (or a flowchart), at a level
+    where every step is unambiguous but no language syntax has been chosen — this is
+    where the logic lives and where it is cheapest to fix. <strong>Refine</strong>: expand
+    any step still too vague until the whole thing could be typed into a program with no
+    further thought. The syllabus phrase "writing and amending algorithms" means exactly
+    this fluency: producing the pseudocode, then modifying it when the requirement
+    changes — which is a skill you should practise literally (take a working algorithm
+    and amend it: find the maximum → find the <em>second</em> maximum; search for one
+    value → count all matches).
   </p>
-  <p class="sources"><strong>Sources:</strong> Knuth, The Art of Computer Programming Vol. 3 (Sorting and Searching); Cormen et al., Introduction to Algorithms.</p>
+
+  <h2>Standard methods: the five patterns</h2>
+  <p>
+    Nearly every exam-level algorithm is assembled from five standard patterns, and it
+    pays to own each as a memorised skeleton with a variable you adapt.
+    <strong>Totals</strong>: total ← 0 before the loop; total ← total + value inside.
+    <strong>Counting</strong>: same shape, count ← count + 1 when a condition holds.
+    <strong>Maximum/minimum</strong>: seed with the first item, then compare each
+    newcomer and replace when bigger/smaller — note the seed must be an item of the
+    data, not 0 (a max-of-temperatures seeded at 0 fails for winter data, a classic
+    boundary bug). <strong>Searching</strong>: walk and compare (linear), or halve
+    (binary, below). <strong>Sorting</strong>: bubble, insertion, merge, quick (below).
+    Worked example — find the largest of n numbers: read n; read first value into max;
+    loop over the remaining n−1 values; if value exceeds max, max ← value; after the
+    loop, print max. Every element is there for a reason, and each reason is a place a
+    bug could live.
+  </p>
+
+  <h2>Linear and binary search</h2>
+  <p>
+    <strong>Linear search</strong> checks every item until it finds the target — simple,
+    works on unsorted data, and costs up to n comparisons. <strong>Binary search</strong>
+    works only on <em>sorted</em> data and wins by halving: compare the target with the
+    middle item; if smaller, discard the upper half; if larger, discard the lower half;
+    repeat on what remains. Each comparison halves the candidates, so the count is
+    log₂(n): a list of 1,000 needs at most 10; a million needs 20; a billion needs 30.
+    That is the phone book's trick, formalised. The prerequisite is the interesting
+    engineering trade: sorting costs n log n, so binary searching a list you will query
+    once is a loss — but querying it many times is a massive win. Databases, dictionaries,
+    and every "sorted by…" column in your life exist because someone planned to search
+    repeatedly.
+  </p>
+
+  <h2>Sorting: the four classics</h2>
+  <p>
+    <strong>Bubble sort</strong> repeatedly compares neighbours and swaps when out of
+    order, so the largest value "bubbles" to the end each pass — n passes of n
+    comparisons, O(n²). <strong>Insertion sort</strong> grows a sorted prefix, sliding
+    each new item left to its place — also O(n²) worst case, but excellent on nearly
+    sorted data and tiny lists, which is why real libraries use it for the small
+    subproblems. <strong>Merge sort</strong> is the divide-and-conquer pattern: split
+    the list in half, sort each half recursively, then <em>merge</em> the two sorted
+    halves by repeatedly taking the smaller front item. Worked on [4, 2, 7, 1, 3, 8,
+    6, 5]: split to [4,2,7,1] and [3,8,6,5]; each splits again to pairs; singles
+    merge up — [2,4] from [4],[2]; [1,2,4,7] from [2,4],[1,7]; likewise [3,5,6,8];
+    the final merge walks both sorted halves once, and 8 items come out sorted. The
+    cost: log₂(8) = 3 levels of splitting, about 8 comparisons of work per level —
+    n log n, guaranteed, on every input. <strong>Quick sort</strong> picks a pivot,
+    partitions (smaller left, larger right), and recurses — average n log n, worst
+    case n² on adversarial pivots, but so cache-friendly in practice that it and its
+    descendants (the introsort/hybrids behind Python's sort and Java's
+    Arrays.sort are hybrids with insertion sort and heap ideas) run the world's
+    default sorts.
+  </p>
+  <p><em>Common misconception:</em> O(n²) means "slow" and O(n log n) means "fast".
+  Big-O is growth rate, not milliseconds: for n = 20, an O(n²) algorithm does 400
+  operations and is instantly done. The curves only part company at scale — which is
+  exactly when it matters, and exactly why you think in growth rates before writing
+  code.</p>
+
+  <h2>Test data and trace tables</h2>
+  <p>
+    An algorithm is not done when it runs; it is done when you have attacked it.
+    <strong>Normal data</strong> — typical values that exercise the main path.
+    <strong>Boundary data</strong> — the edges: empty list, single item, the exact
+    limit values, zero, negative numbers; off-by-one errors live here and only here.
+    <strong>Erroneous data</strong> — input that should be rejected: a letter where a
+    number belongs, a negative age; the program must fail safely, not bizarrely.
+    The <strong>trace table</strong> is the paper instrument for logic errors: columns
+    for each variable (and the output), one row per loop iteration, values written as
+    they change. Tracing the max-finding algorithm on [7, 3, 9, 2] — max: 7, 7, 9, 9 —
+    shows exactly when and why each value changed, which is how a wrong answer tells
+    you which line is lying. Professionals debug by hand-trace first, debugger second;
+    the table forces you to run the code the computer runs, not the code you think
+    you wrote.
+  </p>
+
+  <h2>Correctness is part of the deal</h2>
+  <p>
+    An algorithm carries an argument that it terminates and produces the right answer —
+    and the history of binary search shows how hard the details are. In his 1986
+    <em>Programming Pearls</em> column, Jon Bentley asked professional programmers to
+    implement binary search and reported that around ninety per cent produced buggy
+    versions, usually off-by-one boundary errors. The story has a sequel: in 2006,
+    nearly twenty years later, Joshua Bloch found that Java's standard library binary
+    search had its own bug — <code>(low + high) / 2</code> overflows when the array
+    exceeds about a billion elements, so the fix became the overflow-proof
+    <code>low + (high − low) / 2</code>. The lesson generalises: the idea is easy, the
+    boundaries are where correctness lives, and even decades-tested library code earns
+    its audacity.
+  </p>
+
+  <h2>Amending algorithms: the modification drills</h2>
+  <p>
+    The syllabus's "writing and amending" is a skill you should drill explicitly, because
+    real work is mostly modification. Take the standard skeletons and change them under
+    constraint. <strong>Linear search → count all matches</strong>: replace "return on
+    first find" with "count ← count + 1 every time the condition holds, never stop early"
+    — and notice the early-exit logic was doing double duty. <strong>Max → max and min
+    in one pass</strong>: seed two variables from the first item, update each
+    independently; the loop structure survives unchanged. <strong>Total → average, safely</strong>:
+    divide by the count — but if the count can be zero (empty list), the division is a
+    runtime error waiting for boundary test data; guard it. <strong>Binary search →
+    first occurrence</strong> (in a list with duplicates): when you find a match, keep
+    searching the <em>left</em> half — one character of intent, and a genuinely subtle
+    amendment. Each drill teaches the same lesson: understand which part of the
+    skeleton carries which responsibility, then move only what must move.
+  </p>
+
+  <h2>Efficiency in practice: from growth rates to milliseconds</h2>
+  <p>
+    The plotter above shows the two curves separating; here is the same fact in counts.
+    Sorting 1,000 items: bubble sort, roughly a million comparisons; merge sort, roughly
+    10,000. At a million items: 10¹² versus 2×10⁷ — a factor near 50,000. At a billion:
+    10¹⁸ versus about 3×10¹⁰ — the difference between decades and half a minute. Two
+    practical refinements. First, <strong>measure growth, not seconds</strong>: timing on
+    today's machine hides the curve (fast constants flatter bad algorithms at small n);
+    doubling n and watching the time quadruple (n²) or barely double (n log n) reveals
+    the truth. Second, <strong>constants matter once curves tie</strong>: two O(n log n)
+    sorts can differ by 5× in wall-clock time because of memory access patterns — which
+    is precisely why quick sort's cache-friendly partitioning beats merge sort in
+    practice despite merge sort's better worst case. Algorithm analysis is the map;
+    measurement is the terrain; professionals carry both.
+  </p>
+
+  <h2>Reading algorithms like a professional</h2>
+  <p>
+    One more skill completes the lesson: reading other people's algorithms fluently,
+    because most of your career you will meet algorithms as code you did not write.
+    The professional read has three passes. First, the <strong>contract</strong>: what
+    goes in, what comes out, what invariant is claimed ("the list is sorted when the
+    loop ends"). Second, the <strong>mechanism</strong>: which standard pattern is this —
+    a search, a sort, a traversal with accumulation — and what is the loop actually
+    maintaining between iterations? Third, the <strong>edges</strong>: what happens on
+    the empty list, the single item, the duplicates, the already-sorted input? Runs of
+    real code fail at the third pass far more than the second, which is why the
+    boundary-test discipline of this lesson is not exam trivia — it is the professional
+    reading habit, taught as an exam syllabus because it is how correctness is actually
+    won.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four expert notes. <strong>The lower bound</strong>: comparison-based sorting cannot
+    beat n log n in the worst case — with n! possible orderings, each comparison yields
+    one bit, and you need log₂(n!) ≈ n log n bits to decide among them; merge sort is
+    optimal, not just good. <strong>Beating it by not comparing</strong>: counting and
+    radix sorts exploit known value ranges and sort in O(n) — proof that the n log n
+    bound is a property of the method, not of the problem. <strong>Stability</strong>: a
+    stable sort preserves the relative order of equal keys — essential when sorting by
+    two columns in sequence (sort by name, then stably by department), and a real
+    design decision in library sorts (Timsort, Python's default, is stable).
+    <strong>Recursion's bill</strong>: divide-and-conquer spends call-stack memory —
+    merge sort needs O(n) auxiliary space, quick sort O(log n) average stack — the
+    constants that Big-O hides are exactly what systems programmers get paid to
+    notice.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Knuth, The Art of Computer Programming Vol. 3 (Sorting and Searching); Cormen et al., Introduction to Algorithms; Bentley, Programming Pearls (1986); Bloch, "Extra, Extra — Read All About It: Nearly All Binary Searches and Mergesorts are Broken" (2006).</p>
+  <Widget no="2" caption="check yourself: algorithms and their discipline" widget="quiz" config={sortQuizCfg} />
 </TopicPage>

@@ -10,24 +10,210 @@ const chartsCfg = {
     { math: '4 · Title states the finding', note: '"Sales by region" makes the reader work. "Region C drives the decline" states the takeaway — a chart title is a conclusion, not a caption. Then show the uncertainty if there is any.' },
   ],
 };
+
+const chartsQuizCfg = {
+  questions: [
+    { q: 'Cleveland & McGill\'s perception research says the most accurately judged encoding is…', choices: ['colour saturation', 'position along a common scale', 'area', 'angle'], answer: 1, why: 'Position is judged best, then length; area, saturation and hue degrade rapidly. Put your most important variable on an axis — which is the argument for dots and lines over pies and bubbles.' },
+    { q: 'A bar chart whose y-axis starts at 90 instead of 0 is misleading because…', choices: ['it hides the labels', 'bar length encodes value, so truncation breaks the encoding', 'bars are always wrong', 'the gridlines vanish'], answer: 1, why: 'Length is the value channel for bars: truncate the baseline and a 2% difference renders as a cliff. Line charts encode by position and may truncate — but must declare it.' },
+    { q: 'The "lie factor" of a graphic (Tufte) is…', choices: ['a joke', 'size of effect shown in the graphic divided by size of effect in the data', 'the number of colours', 'the axis maximum'], answer: 1, why: 'Tufte quantified honesty: a government fuel-economy chart whose drawn effect was nearly ten times the real one scored a lie factor of 9.4 — deception measurable without intent being proven.' },
+    { q: 'Why annotate charts (launches, policy dates, the outlier\'s name)?', choices: ['decoration', 'the annotation carries the explanation the reader would otherwise invent', 'software requires it', 'it fills white space'], answer: 1, why: 'Readers build stories from spikes whether or not you supply them. Marking the cause on the chart replaces their guess with your documented one — and exposes it to challenge.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/intermediate/charts-that-tell-the-truth">
   <h2>The idea</h2>
   <p>
-    Visualisation is <strong>argument by encoding</strong>: whatever you map to size, colour and
-    position becomes the claim the audience absorbs instantly — before reading a word. Honest
-    charts align the encoding with the data's importance; dishonest ones (truncated axes,
-    cherry-picked windows, dual axes) mislead without a single false word.
+    Visualisation is <strong>argument by encoding</strong>: whatever you map to position,
+    length, area and colour becomes the claim the audience absorbs instantly, before
+    reading a single word. A chart is not an illustration of an argument — it <em>is</em>
+    the argument, in the audience's visual system, where it lands faster and sticks
+    harder than prose. Honest charts align the encoding with the data's importance and
+    structure; dishonest ones (truncated axes, cherry-picked windows, dual scales)
+    mislead without a single false word — which is why chart literacy is an ethics
+    skill as much as a design one.
+  </p>
+  <p>
+    This lesson pairs the EDA lesson (which charts for <em>yourself</em>, to see) with
+    the craft of charting for <em>others</em> — where the audience's perception, not
+    your own exploration speed, is the constraint — and it ends each section with the
+    failure mode, because visual honesty is learned mostly by studying how charts lie.
   </p>
 
   <Widget no="1" caption="the four rules of charts that tell the truth" widget="equationStep" config={chartsCfg} />
 
-  <h2>The classics of graphical honesty</h2>
-  <ul>
-    <li><strong>Dual axes are a trap:</strong> two unrelated series on two scales can "correlate" perfectly. If you must, mark the scales loudly and test the claim without the second axis.</li>
-    <li><strong>Perception research is the foundation:</strong> Cleveland & McGill showed position and length are judged accurately; area, saturation and hue are judged poorly. Encode your most important variable with position.</li>
-    <li><strong>Annotate the story:</strong> mark the product launch, the policy change, the outlier's name. Charts with annotations explain; charts without them require explanation.</li>
-    <li><strong>Show the uncertainty:</strong> error bars, ranges or "based on n = 40" notes. A confident line without an interval is a claim disguised as a chart.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Tufte, The Visual Display of Quantitative Information; Cleveland & McGill, Science (1984); Cairo, The Truthful Art.</p>
+  <h2>The perceptual hierarchy: what eyes judge well</h2>
+  <p>
+    The scientific foundation is Cleveland and McGill's experiments (published in
+    Science, 1984): people judge <strong>position along a common scale</strong> most
+    accurately, <strong>length</strong> nearly as well; <strong>slopes and angles</strong>
+    poorly; <strong>area</strong> worse still; and <strong>colour saturation and hue</strong>
+    worst of all. The design consequence is a hierarchy, not a preference: your most
+    important variable belongs on an axis (scatter plots, line charts), the second in
+    length (bars), and area and colour should carry only rough, secondary
+    distinctions. This single result organises most chart advice. It is why the
+    scatter plot beats the bubble chart, why the grouped bar beats the pie, and why
+    "which slice is bigger?" is a question pie charts answer badly (angles) that a
+    sorted bar chart answers instantly (length). Pie charts survive for exactly one
+    job — a part-to-whole with very few slices where the 50% comparison matters —
+    and even then, a stacked single bar does the same job with length instead of
+    angle.
+  </p>
+
+  <h2>Choosing the encoding by the question</h2>
+  <p>
+    Chart type follows question type, mechanically. <strong>Comparison across
+    categories</strong> → bar chart, sorted by value (alphabetical sorting wastes the
+    encoding: the reader's first question is "which is biggest?", and the sort should
+    answer it before the labels do). <strong>Trend over time</strong> → line chart
+    (position on a continuous axis; time goes left to right, never chopped into
+    unlabeled segments). <strong>Relationship between two quantities</strong> →
+    scatter plot. <strong>Distribution</strong> → histogram or boxplot (the EDA
+    lesson's choices). <strong>Part-to-whole</strong> → stacked bars, or a 100% bar.
+    <strong>Two-to-three-dimensional density</strong> → heatmap, with a sequential
+    colour scale. The failure mode is decoration-driven selection: choosing by what
+    looks impressive rather than by what question the reader is asking. A chart
+    that answers no question is decoration, and decoration with numbers is worse
+    than none — it borrows the authority of data for a shape that carries none.
+  </p>
+
+  <h2>The truncated axis: the most common lie</h2>
+  <p>
+    Bars encode value as <strong>length</strong>, so a bar chart that starts its
+    y-axis anywhere but zero breaks its own encoding — the classic media sin. A
+    2% difference rendered from a 90-starting axis looks like a cliff; the same
+    data from zero looks like what it is, a rounding error. The rule is strict
+    for bars and (by the same perception logic) for any filled shape. Line charts
+    are different: they encode by <em>position</em>, so a non-zero baseline is
+    legitimate when the interesting variation is small relative to the values —
+    a stock index from zero hides the week's drama — but the truncation must be
+    visible (axis labels that start at 4,000, not a cropped image that implies
+    it). Tufte quantified the whole family of distortions with the
+    <strong>lie factor</strong>: the size of the effect shown in the graphic
+    divided by the size of the effect in the data. His famous example — a
+    government fuel-economy chart whose drawn increase was nearly ten times the
+    actual mpg increase — scored 9.4. The measure matters because it removes
+    intent from the question: a misleading chart is misleading whether or not
+    anyone meant it.
+  </p>
+
+  <h2>Dual axes, cherry-picked windows and other quieter lies</h2>
+  <p>
+    The subtler deceptions are structural. <strong>Dual axes</strong>: two series
+    on two independent scales can be slid into any apparent relationship — the
+    spurious-correlation factory; the honest use demands loud scale labelling and
+    a claim that survives when either axis is rescaled (if the "correlation"
+    changes with your zoom, the chart was the correlation). <strong>Window
+    selection</strong>: a line that starts at the all-time peak tells a
+    different story than the same line from the trough — start points are
+    choices and should be defensible on the data's own terms, not the argument's.
+    <strong>Aggregation level</strong>: daily data smoothed to quarters can erase
+    (or manufacture) a trend; the honest version shows the native frequency or
+    says what was smoothed. <strong>Inverted or nonlinear scales without
+    disclosure</strong> — the notorious case of a chart whose y-axis ran
+    downward, flipping a rise into a fall while every number on it stayed
+    technically true. The unifying diagnosis: all of these encode a claim the
+    data does not make. The defence is a habit — redraw every important chart
+    you are shown with honest axes and a neutral window before accepting its
+    story. Ten minutes of re-plotting is the fact-checking of the visual age.
+  </p>
+
+  <h2>Colour, order and the craft of attention</h2>
+  <p>
+    Colour is information and should be spent carefully. The working rule:
+    <strong>one accent colour for the thing you are talking about, grey for
+    everything else</strong> — the reader's eye goes exactly where the colour
+    says the story is, and the chart now has a point of view it can defend.
+    Sequence and order carry information too: sort bars by value (already
+    argued), keep time on one axis only, and order stacked segments consistently
+    across a series of charts so the reader's eye can track them. The palette
+    failure modes are known: <strong>rainbow scales</strong> create fake
+    boundaries and perceptual cliffs where the data is smooth (Alberto Cairo's
+    chartjunk critique); <strong>red-green defaults</strong> fail colourblind
+    readers — roughly one in twelve men — so use colourblind-safe sequential
+    palettes (viridis and relatives) and never encode meaning in hue alone.
+    And declutter deliberately: gridlines, borders and legends that do not
+    answer questions are ink the reader pays attention tax on. Tufte's
+    "data-ink ratio" — the share of ink devoted to data rather than
+    furniture — is the pole star, applied with judgment rather than
+    Puritanism.
+  </p>
+
+  <h2>Annotation and titles: the chart as sentence</h2>
+  <p>
+    A chart without explanation makes the reader write the explanation — and
+    readers write the story their priors suggest, not yours. So supply it.
+    <strong>Titles state findings</strong>: "Region C drives the decline" beats
+    "Sales by region" because the reader arrives already pointed at the thing
+    the chart shows; the title is a conclusion, not a caption (and if you cannot
+    state a finding, the chart may not have one — which is also worth knowing
+    before you present it). <strong>Annotate causes</strong>: mark the launch,
+    the price change, the outage, the policy date directly on the line — the
+    spike that needs a footnote becomes the spike with a label, and the
+    explanation is now part of the artefact, challengeable and documented.
+    <strong>Label directly</strong>: put values on the bars that matter instead
+    of sending the eye to a legend and back. And <strong>show the uncertainty</strong>:
+    error bars, confidence bands, or a plain "based on n = 40" note — a confident
+    line without an interval is a claim disguised as a chart, and the audience
+    deserves to know how much of the shape is signal.
+  </p>
+
+  <h2>A worked redesign: from misleading to defensible</h2>
+  <p>
+    Watch a bad chart become an honest one, because the diff is the lesson. The
+    incoming slide: a bar chart of four regions' revenue growth, y-axis from 3.8 to
+    4.2 (%), rainbow-coloured, alphabetical order, title "Revenue Growth by Region".
+    Diagnosis, rule by rule: the baseline truncates bar length (a 0.1-point gap
+    renders as a 25% height difference — a lie factor around 40); colour assigns
+    rainbow urgency to four equal-status values; alphabetical order buries the
+    ranking; the title promises data and delivers no claim. The redesign: horizontal
+    bars from zero, sorted by value, one accent colour on the largest, grey on the
+    rest, direct value labels, and a title that states what the data actually shows —
+    "Growth is flat across regions (3.9–4.1%)" — which, notably, is the opposite of
+    the original chart's visual story. That inversion is the point: truncation did
+    not just exaggerate, it manufactured drama that did not exist. The honest chart
+    is less exciting and more true — and when a stakeholder asks "why does the new
+    chart look so boring?", you have the definition of the job: the drama should be
+    in the data, or it should not be in the chart.
+  </p>
+
+  <h2>Reading charts critically: the audience's side</h2>
+  <p>
+    The same machinery, reversed, is a defence skill — most charts you will meet
+    were made by someone with an incentive. The five-question audit takes a
+    minute: <strong>where does the axis start</strong> (and would the story
+    survive a zero baseline)? <strong>where does the window start and end</strong>
+    (and why those dates)? <strong>what is encoded in colour and size</strong>
+    (and does the most dramatic encoding carry the most reliable data)?
+    <strong>what is the denominator</strong> (percent of what — the base of a
+    percentage is where most chart tricks actually live)? <strong>what is
+    missing</strong> (error bars, sample sizes, the segments that were dropped)?
+    Run the audit on the next compelling chart you see in the wild — a news
+    graphic, a pitch deck — and note how often the story changes under the
+    questions. Chart literacy in this sense is the visual sibling of the
+    statistics ladder's source-skepticism: the encoding is the claim, and the
+    claim deserves to be read.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four expert directions. <strong>Small multiples</strong> (Tufte again): the
+    same small chart repeated per segment — one panel per region, identical
+    scales — beats every attempt to cram segments into one frame; comparison
+    across identical little charts is what human vision does best. <strong>The
+    animation trap</strong>: animated charts (racing bars) are engaging and
+    treacherous — motion hides the axis decisions, and the audience remembers
+    the drama rather than the values; if you animate, freeze frames of the
+    decision moments. <strong>Dashboards versus charts</strong>: a dashboard is
+    an instrument panel (monitored repeatedly, needs glancability) while an
+    explanatory chart makes one argument once — the most common professional
+    failure is presenting instrument panels when the meeting needed sentences,
+    and vice versa. <strong>The honest-chart checklist</strong> worth
+    internalising as a final gate: baseline defensible? windows defensible?
+    encodings match the data's precision? uncertainty visible? colour spent on
+    the story? title a claim you can defend? A chart that passes its own
+    interrogation is not just honest — it is <em>stronger</em>, because every
+    challenge you pre-empted is one the audience doesn't get to win.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Tufte, The Visual Display of Quantitative Information (1983; 2nd ed. 2001); Cleveland &amp; McGill, Science (1984); Cairo, The Truthful Art (2016); Few, Information Dashboard Design.</p>
+  <Widget no="2" caption="check yourself: charts and their honesty" widget="quiz" config={chartsQuizCfg} />
 </TopicPage>

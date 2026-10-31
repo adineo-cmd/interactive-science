@@ -10,23 +10,265 @@ const gridCfg = {
     { math: '4 · Responsive: the grid flexes', note: 'On small screens, columns stack, margins shrink, type scales (fluid typography — the typography lesson\'s rem arithmetic); CSS grid and flexbox made layouts fluid instead of fixed — one content structure, every viewport (the web lesson\'s responsive discipline).' },
   ],
 };
+
+const gridQuizCfg = {
+  questions: [
+    {
+      q: 'A magazine page breaks its grid: one photograph bleeds across every column. Why does the break work?',
+      choices: [
+        'Rules are meant to be broken — the grid does not matter',
+        'The break is legible precisely because the grid held everywhere else — deviation only signals against an established pattern',
+        'Photographs are more important than text',
+        'The printer required it',
+      ],
+      answer: 1,
+      why: 'A grid is a pattern of expectations; a single violation against a page of compliance reads as deliberate emphasis (a shout). Violate everywhere and there is no pattern to break — the "creative chaos" page communicates noise, not drama. Earn your exceptions with compliance.',
+    },
+    {
+      q: 'The Gestalt law doing the most work in a clean layout is:',
+      choices: [
+        'Closure — viewers finish incomplete shapes',
+        'Proximity — things placed close read as related, things spaced apart as separate, which is how whitespace becomes the layout\'s primary grouping signal',
+        'Similarity — same colour reads same group',
+        'Continuity — the eye follows lines',
+      ],
+      answer: 1,
+      why: 'Before a reader processes a single word, the visual system has already grouped the page by distance. That is why generous spacing between sections, tight spacing within them, and discipline about padding do more for comprehension than most decoration ever will — whitespace is structure, not leftovers.',
+    },
+    {
+      q: 'Why did the Swiss International Style standardise on strict modular grids in the 1950s?',
+      choices: [
+        'Printers were lazy',
+        'A design philosophy: objective, universal clarity — the grid removes arbitrary decisions, lets content be re-arranged logically, and makes coherence systematic rather than lucky (Müller-Brockmann\'s programme)',
+        'Paper sizes were irregular',
+        'Clients demanded it',
+      ],
+      answer: 1,
+      why: 'Müller-Brockmann argued the grid as rational objectivity — design stripped of the designer\'s moods, communicable across teams and languages. Whether you accept the ideology or not, the engineering survived: the 12-column web grid and every modern design system are its descendants.',
+    },
+    {
+      q: 'A page must work on a 320 px phone and a 4K display. The modern answer is:',
+      choices: [
+        'Two completely separate websites',
+        'A fluid grid: columns stack or span by breakpoint, type scales fluidly (clamp/rem arithmetic), one content structure adapting to every viewport — responsive, not fixed',
+        'A fixed 960 px canvas, centred',
+        'PDF downloads',
+      ],
+      answer: 1,
+      why: 'CSS Grid and Flexbox (mainstream from the mid-2010s) turned the layout from a drawing into a system of relationships: content defines its structure, the viewport defines its manifestation. The fixed 960 px canvas of 2008 is the museum piece; the grid now flexes.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/design/intermediate/grids-and-layout">
   <h2>The idea</h2>
   <p>
     Layout is <strong>arrangement as argument</strong>: grids supply the order, whitespace supplies
-    the relationships, and the reader\'s eye follows both without ever knowing they were there —
-    the design lesson\'s hierarchy, spatially engineered.
+    the relationships, and the reader's eye follows both without ever knowing they were there —
+    the design lesson's hierarchy, spatially engineered. The paradox worth stating up front:
+    the better the structure, the less visible it is. A great layout does not look "gridded";
+    it looks inevitable — which is why grid literacy is best built by reverse-engineering pages
+    you admire, ruler in hand, until the scaffolding shows. This page covers the grid's anatomy
+    and history, the column arithmetic, whitespace as the loudest element, the reading patterns
+    the eye brings, and the responsive turn that made layouts systems rather than drawings.
   </p>
 
   <Widget no="1" caption="scaffolding, columns, whitespace, responsive" widget="equationStep" config={gridCfg} />
 
-  <h2>Layout patterns that work</h2>
-  <ul>
-    <li><strong>F-pattern and Z-pattern:</strong> eye-tracking (the perception lesson\'s saccades) shows readers scan predictably — put the important things where the scan goes; then break the pattern deliberately when you need attention.</li>
-    <li><strong>Modular scales:</strong> sizes from a ratio (1.25×: 12, 15, 19, 24…) rather than arbitrary values — the music lesson\'s harmony (ratios) applied to sizes; coherence for free.</li>
-    <li><strong>Asymmetry beats centred everything:</strong> the centred layout is the default of no decision; asymmetric balance (a heavy element balanced by white space and a small counterweight) is where composition begins (the visual-arts lesson\'s composition, page-shaped).</li>
-    <li><strong>Card layouts, honestly assessed:</strong> the design lesson\'s critique of the SaaS-card default — grids of identical cards are coherent and often lazy; ask what arrangement THIS content argues for (editorial? dashboard? narrative?).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Müller-Brockmann, Grid Systems; Lupton, Graphic Design: The New Basics; the perception lesson.</p>
+  <h2>The grid: anatomy, and five centuries of canon</h2>
+  <p>
+    The parts: <strong>margins</strong> (the frame's breathing room), <strong>columns</strong>
+    (the vertical divisions content spans), <strong>gutters</strong> (the gaps between them),
+    and — print's refinement — the <strong>baseline grid</strong>: an invisible horizontal
+    rhythm (usually the body text's leading) to which every element snaps, so text lines up
+    across columns and blocks sit in register like sheets of music. The idea is older than
+    its theory: the <strong>van de Graaf canon</strong> reconstructs the page proportions of
+    15th-century manuscripts (a text block whose margins are 2:3:4:6 — inner, top, outer,
+    bottom — geometrically derivable from the page), which Jan Tschichold revived in the
+    1940s–50s as evidence that beautiful pages were <em>calculated</em>. The full doctrine
+    arrived with the <strong>Swiss International Style</strong> (1950s): Josef
+    Müller-Brockmann's <em>Grid Systems</em> (1961) argued the grid as objective clarity —
+    the designer's moods removed, decisions systematised, content re-arrangeable at will.
+    His concert posters (the Beethoven poster's arcs snapped to a grid of squares) remain
+    the movement's exhibition: strict scaffolding, alive result. Every modern design
+    system, every 12-column web framework, is that programme's descendant.
+  </p>
+
+  <h2>The column logic: why 12, and how to break it well</h2>
+  <p>
+    Twelve columns is not mysticism — it is divisibility: 12 splits into halves, thirds,
+    quarters and sixths, so a layout can argue 50/50, 33/66 or 25/75 without inventing new
+    numbers. Content spans columns <em>by importance</em>: headline across eight, caption
+    across four, sidebar three, body seven — and the spacing between spans (the gutters,
+    kept identical) is what makes the different widths read as one system rather than a
+    coincidence. Digital design adds the <strong>8-point system</strong>: all dimensions as
+    multiples of 8 (or 4) so that paddings, sizes and screen densities (which divide by 8)
+    align without fractions — the same modular logic, at hardware resolution. And the
+    craft's most instructive rule is about <strong>breaking</strong>: the full-bleed
+    photograph that ignores the grid is dramatic <em>because</em> everything else
+    complied — deviation only signals against an established pattern. Break one rule
+    deliberately and you have an emphasis; break them casually and you have noise.
+    The grid is not a cage but an argument's baseline: you must hold the line
+    somewhere to make the departure say something.
+  </p>
+
+  <h2>Whitespace: the structural element nobody budgets for</h2>
+  <p>
+    The Gestalt psychologists' <strong>proximity law</strong> — items close together read
+    as related, items apart as separate — is the single most active force in layout, and
+    it works entirely through empty space. Whitespace <em>groups</em> (a tight cluster
+    announces "one unit"), <em>separates</em> (a wide gap announces "new section"), and
+    <em>ranks</em> (generous space around a headline lends it weight — the luxury-brand
+    manoeuvre: expensive things get room). The working discipline: paddings in related
+    groups tight and consistent; gaps between groups clearly larger (a 1.5–2× step reads
+    as intentional); and margins treated as content — the space around an element is part
+    of its meaning, which is why "there's all this empty space, can't we fill it?" is the
+    question that kills more layouts than any wrong font. Squint again: a good layout
+    shows a rhythm of dense and empty bands; a bad one shows uniform porridge.
+  </p>
+
+  <h2>Reading patterns: F, Z, and the scan you design for</h2>
+  <p>
+    Eye-tracking research (the Nielsen Norman Group's F-pattern studies, 2006) found
+    web readers scan in predictable shapes: an <strong>F-pattern</strong> on text-heavy
+    pages (two horizontal sweeps, then a vertical skim down the left edge) and a
+    <strong>Z-pattern</strong> on sparse, visual pages (top-left to top-right, diagonal
+    to bottom-left, across to bottom-right). The design implications are mechanical:
+    put the highest-value words where the sweep goes (front-load headings and
+    paragraphs — the first two words carry the scan), respect the left edge as the
+    F-pattern's spine, and place the call-to-action where the pattern terminates.
+    Then, on purpose, <strong>break the pattern</strong> when attention is worth
+    more than comfort: the off-grid image, the inverted banner, the centred
+    interruption — pattern-breaks are attention technology, spendable exactly
+    once before they become wallpaper. The typography lesson's hierarchy and
+    this page's scan geometry are the same instrument at different scales.
+  </p>
+
+  <h2>Responsive: the grid becomes a system</h2>
+  <p>
+    The web broke the fixed canvas, and layout answered by becoming relational.
+    <strong>CSS Grid and Flexbox</strong> (mainstream mid-2010s) let the content define
+    structure and the viewport define manifestation: a 12-column grid on desktop stacks
+    to 4 on tablet and 1 on phone; margins shrink by breakpoint; type scales fluidly
+    (clamp() between minimums and maximums — the typography lesson's rem arithmetic,
+    animated). The professional shift is conceptual: a layout is no longer a drawing
+    to be reproduced but a <em>policy</em> — "sidebar becomes top band; three columns
+    become stacked cards; the hero image crops centre-weighted" — written once,
+    obeyed everywhere. Design systems encode the policy (spacing tokens, breakpoint
+    sets, component rules), which is how a team of forty ships a coherent product —
+    the Swiss grid's promise, fulfilled at engineering scale.
+  </p>
+
+  <h2>Asymmetry, and the honest critique of the card grid</h2>
+  <p>
+    Two disciplines of taste close the page. First, <strong>asymmetry beats centred
+    everything</strong>: the centred layout is the default of no decision, while
+    asymmetric balance — a heavy element offset by white space and a small
+    counterweight, the visual-arts lesson's composition, page-shaped — is where
+    layout becomes authorship (the Swiss posters, again, are the syllabus). Second,
+    the <strong>card-grid critique</strong>: the SaaS-era default (rows of identical
+    cards) is coherent, responsive and often lazy — it answers every content question
+    with the same container. The honest method asks what arrangement <em>this</em>
+    content argues for: an editorial spread for narrative, a dashboard for
+    comparison-dense data, a stepped sequence for process, a table when the user
+    is comparing numbers (tables are honest when cards are decoration). Cards
+    are a tool; the grid is the grammar; the argument is yours.
+  </p>
+  <p><em>Common misconception:</em> the grid constrains creativity. The evidence of
+  the style named for it runs the other way: constraints are what make deviation
+  expressive, coherence visible and teams coordinated. The layouts that feel most
+  free — magazine spreads, poster art, brutalist websites — are almost always the
+  most rigorously gridded underneath; the freedom you are admiring is a budget
+  spent by someone who knew the account.</p>
+
+  <h2>The baseline grid, worked</h2>
+  <p>
+    Print typography's quietest discipline deserves its own arithmetic. Set body
+    text at 9.5 pt on 13 pt leading: 13 pt becomes the page's universal unit —
+    every element snaps to multiples of it. Body text aligns by construction;
+    captions set at 8 pt on 13 pt land on the same rhythm (one line of caption
+    occupies one body line of height); a pull-quote set at 26/39 (two sizes of
+    the unit) occupies exactly three rhythm-lines; and the white space between
+    elements is spent in whole units (13, 26, 39) rather than eyeballed pixels.
+    The result is the quality readers sense but cannot name: text across columns
+    shares horizons, blocks sit in register, and the page feels manufactured
+    rather than assembled — the difference between a broadsheet and a flyer.
+    Digital design inherits the logic as spacing tokens (the 4/8-point system
+    of the last lesson) and the CSS technique of aligning type to a base unit;
+    the arithmetic changes, the discipline does not: one unit, everything a
+    multiple, and the layout inherits coherence for free.
+  </p>
+
+  <h2>Two layout arguments: the editorial spread and the dashboard</h2>
+  <p>
+    Content's nature should choose the grid, and two canonical cases show the
+    fork. The <strong>editorial spread</strong> argues sequence and emphasis:
+    a dominant image, a headline with room, body text in a comfortable measure,
+    pull-quotes as waymarks — the grid serves a linear reading experience, and
+    its flexes (a full-bleed image, a stepped column start) mark the story's
+    beats. The <strong>dashboard</strong> argues comparison and monitoring:
+    uniform modules, aligned axes, dense but ordered information, whitespace
+    spent on alignment rather than drama — the grid serves non-linear scanning,
+    where every cell must be findable every time and beauty lives in
+    consistency. The professional failure mode is shipping one where the
+    other belongs: dashboards with editorial drama (pretty, unusable) and
+    magazines with dashboard uniformity (consistent, dead). The test to
+    run before drawing anything: what does the user come here to
+    <em>do</em> — read, compare, decide, or monitor? The answer names
+    the grid.
+  </p>
+
+  <p>
+    A <strong>modular scale, worked</strong>, shows why ratios beat guesswork. Choose
+    the 1.25 (major third) scale from a 16 px body: 16 → 20 → 25 → 31 → 39 → 49 → 61.
+    These six sizes become the page's entire type hierarchy — body, small heading,
+    heading, section title, page title, display — and because each step is the same
+    multiplicative journey, the hierarchy reads as one voice in different volumes
+    rather than six strangers. Pair the type scale with a <strong>spacing
+    scale</strong> on the same logic (4, 8, 16, 24, 32, 48 — the 8-point system's
+    steps) and the layout's decisions collapse into lookups: padding inside a card
+    is 16, between cards 24, between sections 48 — never a number invented in the
+    moment. Design systems are, at bottom, these two scales plus rules for their
+    use; the designer's judgement moves up a level, from "is 17 px better than
+    18?" to "what rank does this information deserve?" — which is the
+    question worth a human's time, and the reason the ratios
+    feel like freedom rather than arithmetic.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The golden-ratio myth, handled.</strong> Claims that canonical pages
+    (Gutenberg, van de Graaf, Le Corbusier's Modulor) derive from the golden ratio
+    (φ ≈ 1.618) are mostly retrospective numerology — the ratios involved are
+    usually simpler (2:3), and the documented methods (van de Graaf's compass
+    construction; the 12-column calculus) need no irrational number. The usable
+    lesson: choose <em>any</em> consistent ratio for your modular scale and
+    measure system — coherence does the work, mythology does not.
+  </p>
+  <p>
+    <strong>Grid as ideology — the counter-tradition.</strong> Swiss objectivity
+    had its rebels: David Carson's Ray-Gun-era layouts (text set upside-down,
+    gutters ignored) argued that expression outranks legibility for some content;
+    Tschichold himself, the author of <em>The New Typography</em> (1928),
+    recanted toward classical book canons after 1945 — the field's own
+    pendulum, on the record. The mature position runs: choose the grid's
+    strictness to fit the content's contract — a database wants order,
+    a poem wants air, a protest poster wants rupture — and know which
+    contract you are in before touching the columns.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Container queries (2023) move responsiveness
+    from the viewport to the component — layout policy is going local, and design
+    systems are restructuring around it. Do generated layouts (AI proposing
+    arrangements from content) change the craft, or only its first drafts (the
+    argument-from-content remains human, so far)? And what does layout mean in
+    fluid media — feeds, stories, spatial computing — where the page metaphor
+    dissolves? The scaffolding metaphor may be the discipline's most durable
+    idea: whatever the surface, decisions still need a coordinate system,
+    whitespace still does the grouping, and the break only works because
+    the grid held.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Müller-Brockmann, Grid Systems in Graphic Design (1961); Tschichold, The Form of the Book; Lupton, Graphic Design: The New Basics; Nielsen Norman Group eye-tracking research (2006); the perception and typography lessons of this atlas.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={gridQuizCfg} />
 </TopicPage>

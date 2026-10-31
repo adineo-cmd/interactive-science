@@ -10,6 +10,55 @@ const fluidEngCfg = {
     { math: '4 · Drag and its reductions', note: 'Pressure (form) drag vs skin (friction) drag; streamlining kills the first. Dimples on golf balls trip the boundary layer turbulent — the layer hugs the ball longer, shrinking the wake: 30% more distance from deliberately rough surface.' },
   ],
 };
+
+const fluidQuizCfg = {
+  questions: [
+    {
+      q: 'Water flows twice as fast in a pipe (same diameter). The friction pressure drop roughly:',
+      choices: [
+        'Doubles',
+        'Stays the same — it depends on viscosity only',
+        'Quadruples — Darcy–Weisbach makes loss proportional to velocity squared',
+        'Halves',
+      ],
+      answer: 2,
+      why: 'Δp = f·(L/D)·ρv²/2: double v and the loss goes up fourfold (Re changes, f barely does in rough-turbulent flow). This v² is why pumping energy explodes with flow rate and why pipe diameter is chosen with the spreadsheet open.',
+    },
+    {
+      q: 'A pump\'s speed is raised 20% (same system). Its power draw rises approximately:',
+      choices: [
+        '20%',
+        '73% — affinity laws: flow ∝ N, head ∝ N², power ∝ N³ (1.2³ ≈ 1.73)',
+        '44%',
+        'Not at all — pumps are constant-power devices',
+      ],
+      answer: 1,
+      why: 'The cube law is why variable-speed drives pay for themselves: trimming a fan or pump to 80% flow costs half the power, not 80%. Any engineer throttling a pump with a valve instead of slowing the motor is burning money against a curve.',
+    },
+    {
+      q: 'The Kettle hole: a pump cavitates when the suction-side pressure falls near vapour pressure. The immediate fix is NOT:',
+      choices: [
+        'Lowering the pump (reduce suction lift)',
+        'Shortening/simplifying the suction pipe',
+        'Throttling the discharge valve harder to "push" the pump',
+        'Enlarging the suction line',
+      ],
+      answer: 2,
+      why: 'Cavitation is set by suction conditions (NPSH available vs required). Discharge throttling reduces flow — it can incidentally help — but the honest fixes improve suction: lower the pump, shorten the line, enlarge the pipe, cool the liquid. Cavitation noise sounds like gravel in the pump, and the gravel is the impeller dying.',
+    },
+    {
+      q: 'A pitot tube on an aircraft reads the difference between stagnation and static pressure. It is measuring:',
+      choices: [
+        'Altitude',
+        'Airspeed — v = √(2Δp/ρ) from Bernoulli\'s stagnation relation',
+        'Fuel flow',
+        'Angle of attack',
+      ],
+      answer: 1,
+      why: 'Ram the flow to a stop and its kinetic energy converts to pressure: Δp = ½ρv². The pitot-static system reads speed from pressure — the same venturi arithmetic as the carburettor, and famously the instrument whose icing brought down Air France 447 in 2009.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/engineering/intermediate/fluid-mechanics">
   <h2>The idea</h2>
@@ -17,17 +66,206 @@ const fluidEngCfg = {
     Fluid mechanics for engineers is the <strong>physics lesson made measurable and
     money-relevant</strong>: pipes sized by pressure drop, pumps chosen from performance curves,
     and Reynolds number deciding what regime every flow is in. Nearly every engineered system —
-    water, air, fuel, blood-loop devices — is a fluid circuit.
+    water, air, fuel, blood-loop devices — is a fluid circuit, and the fluid circuit has a
+    particular engineering character: the governing equations (Navier–Stokes) have no general
+    solution, so practice runs on a small set of exact results, a book of empirical
+    correlations, and dimensionless numbers that let one test stand in for thousands. This
+    page walks that toolkit from statics to pumps.
   </p>
 
   <Widget no="1" caption="boundary layers, Reynolds, pipe economics, drag" widget="equationStep" config={fluidEngCfg} />
 
-  <h2>Applied chapters</h2>
-  <ul>
-    <li><strong>Pumps and system curves:</strong> the pump has a curve (head vs flow), the system has one (static + friction) — the operating point is the intersection. Cavitation (vapour bubbles collapsing) destroys impellers when suction pressure drops too low — the NPSH calculation is every pump engineer\'s reflex.</li>
-    <li><strong>Open-channel flow:</strong> rivers, canals, sewers — hydraulic jumps (the standing wave below weirs) dissipate energy deliberately in spillways stilling basins (the geography lesson\'s rivers, engineered).</li>
-    <li><strong>Aerodynamics feeds everything:</strong> car drag coefficients fell from ~0.5 (1970s boxes) to ~0.22 (best sedans) — worth ~15% fuel; the CFD tools that got there now design every building\'s wind environment too.</li>
-    <li><strong>Biomedical fluids:</strong> blood is non-Newtonian, arteries are elastic, flow is pulsatile — artificial hearts and stents are designed by the same equations with harder constraints (the medicine ladder\'s circulation lesson, engineered).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> White, Fluid Mechanics; Munson et al.; the physics ladder\'s fluid-dynamics lesson (Bernoulli, Navier–Stokes frontier).</p>
+  <h2>Fluid properties: viscosity, and fluids that misbehave</h2>
+  <p>
+    A fluid deforms continuously under shear, and <strong>viscosity</strong> (μ) is its
+    resistance: the shear stress needed to slide one layer over another. Water and air are
+    <strong>Newtonian</strong> — stress proportional to shear rate, viscosity constant at a
+    given temperature (water: 0.001 Pa·s at 20 °C; air: about 0.000018). Everything with
+    structure is <strong>non-Newtonian</strong>: blood (shear-thinning — red cells align and
+    it flows easier at speed), paint and toothpaste (shear-thinning too, which is why they
+    spread under a brush and stay on the wall), ketchup (yield stress — it refuses to move
+    until you push hard enough, hence smacking the bottle), and silly putty (viscoelastic —
+    bounces fast, flows slowly). The practical consequence: a pipeline design for water
+    cannot be reused for sludge or crude oil at low temperature — crude can behave as a
+    Bingham plastic that needs a starting pressure just to unstick.
+  </p>
+  <p>
+    One non-obvious property rule shapes everything else: fluids stick to walls. Velocity is
+    exactly zero <em>at</em> the surface, rising to free-stream across the <strong>boundary
+    layer</strong> — a zone millimetres to centimetres thick that carries essentially all the
+    friction drag, most of the heat transfer, and (if it separates from the surface) the
+    stall of wings and the drag of blunt bodies. Engineering fluid mechanics is very often
+    boundary-layer management.
+  </p>
+
+  <h2>Fluid statics: pressure, depth and dams</h2>
+  <p>
+    In a still fluid, pressure grows with depth by p = p<sub>0</sub> + ρgh, equally in all
+    directions (Pascal). Worked example: a water tower whose free surface stands 30 m above
+    the tap delivers p = ρgh = 1000 × 9.81 × 30 ≈ 294 kPa — about 3 bar, the historic way
+    small towns ran mains pressure without a pump in sight. A diver at 10 m feels one
+    extra atmosphere (98 kPa) for exactly the same reason. The consequence for structures:
+    hydrostatic load on a dam grows as depth² (average pressure half the bottom value,
+    times the area), which is why dams are thick at the base — gravity-arch geometry is
+    the load triangle drawn in concrete. Buoyancy (Archimedes: upthrust = weight of
+    displaced fluid) closes the statics chapter, from ships (steel floats because it
+    displaces air-cross-sectioned volume) to ballast in submarines.
+  </p>
+
+  <h2>Reynolds number: one number, two universes</h2>
+  <p>
+    The ratio of inertial to viscous forces, <strong>Re = ρvL/μ</strong> (v = speed, L = a
+    characteristic length), tells you which flow universe you are in. Low Re — viscosity
+    wins: smooth, layered <strong>laminar</strong> flow, velocity in neat profiles, mixing
+    only by diffusion. High Re — inertia wins: <strong>turbulent</strong> flow, chaotic
+    eddies, vigorous mixing, and friction that no longer behaves linearly. In a pipe,
+    transition sits near Re ≈ 2,300; fully developed turbulence is established by ~4,000.
+    Worked example: water at 2 m/s in a 100 mm pipe: Re = 1000 × 2 × 0.1 ⁄ 0.001 =
+    200,000 — violently turbulent, like virtually every industrial pipe. Blood in a
+    large artery: Re ≈ 1,000–4,000, laminar with marginal margins — which is why
+    <em>heart murmurs</em> (turbulence from narrowed valves) are audible at all. The
+    dimensionless trick is the real gift: two flows with the same Re behave the same way
+    scaled, which is why a 1:50 model of a spillway in a laboratory flume can certify the
+    full-size structure — and why the Froude number (inertia/gravity, V/√(gL)) governs
+    free-surface models and the Mach number (speed/speed of sound, ~343 m/s at sea level)
+    governs compressibility: match the right dimensionless number and the physics transfers.
+  </p>
+
+  <h2>Bernoulli: energy conservation with fine print</h2>
+  <p>
+    Bernoulli's equation — p + ½ρv² + ρgh = constant along a streamline — is energy
+    conservation per unit volume for steady, incompressible, frictionless flow. It powers
+    the <strong>venturi</strong> (constrict a pipe: continuity forces v up — A₁v₁ = A₂v₂ —
+    and Bernoulli drops the pressure: carburettors, atomisers, spray bottles) and the
+    <strong>pitot tube</strong> (ram air to a stop: Δp = ½ρv², so v = √(2Δp/ρ); a 500 Pa
+    reading in air gives √(2 × 500 ⁄ 1.2) ≈ 29 m/s ≈ 104 km/h — the aircraft airspeed
+    indicator, and the instrument whose icing contributed to Air France 447's loss in
+    2009). The fine print matters: friction, pumps and height changes each add terms, and
+    the full <strong>energy equation</strong> with a head-loss term is what pipe analysis
+    actually uses.
+  </p>
+  <p><em>Common misconception:</em> "faster flow has lower pressure because the fluid
+  wants to go faster." Causality runs the other way: a pressure difference (or a
+  constriction) accelerates the fluid, and the pressure drop is the energy that paid for
+  the speed-up. Bernoulli is a bookkeeping identity along a streamline — it explains the
+  curtain sucked in at an open window and the spray of a perfume atomiser, but the
+  "equal transit time" story for aircraft lift is simply false (aircraft fly fine with
+  air arriving early on top); lift is a turning of the flow with pressure differences
+  integrated over the surface.</p>
+
+  <h2>Pipes: the arithmetic that pays the bills</h2>
+  <p>
+    Friction in turbulent pipe flow is captured by <strong>Darcy–Weisbach</strong>:
+    Δp = f·(L/D)·(ρv²/2), with the friction factor f read from the Moody chart as a
+    function of Re and relative roughness — Colebrook's implicit formula behind it, the
+    last slide rule generation's daily bread. Worked example: our 2 m/s, 100 mm, 100 m
+    long steel pipe: f ≈ 0.018 (Re = 200,000, commercial steel roughness) → Δp =
+    0.018 × 1000 × (1000 × 4 ⁄ 2)... numerically: (ρv²/2) = 1000 × 4 ⁄ 2 = 2,000 Pa;
+    times L/D = 1,000, times f = 0.018 → <strong>36 kPa</strong>. The pump pushing that
+    water spends Q·Δp = (2 × 0.00785 m²) × 36,000 ≈ <strong>565 W per 100 m</strong> —
+    about half a kilowatt of pure tax for friction. Quadruple it to 24/7 operation and
+    one pipe run costs ~5 MWh a year: this is why a pipe one size bigger (halving
+    velocity, quartering the loss) routinely pays for its extra steel in saved
+    electricity — the capex/opex trade, drawn hydraulically. Transients add their own
+    rules: slam a valve shut and the momentum has to go somewhere — water hammer
+    (Δp ≈ ρ·c·Δv, with c ≈ 1,400 m/s in water-filled steel pipe) can burst mains, which
+    is why valves close on schedules and surge tanks exist.
+  </p>
+  <p><em>Common misconception:</em> doubling pipe diameter doubles capacity. It multiplies
+  it by roughly 5–6 in turbulent flow: area grows as D² and velocity for the same
+  pressure gradient grows roughly as D<sup>5/2</sup> through the friction law. Diameter
+  is the pipe's exponent-laden superpower — and the reason undersizing a main is a
+  decades-long regret.</p>
+
+  <h2>Measuring flow, and channels that flow free</h2>
+  <p>
+    <strong>Flow measurement</strong> is Bernoulli industrialised: <strong>venturi
+    meters</strong> and orifice plates read the pressure drop across a constriction
+    (cheap, standard, with a permanent pressure penalty for the orifice); <strong>pitot
+    tubes</strong> read a point velocity; <strong>weirs</strong> on open channels read
+    depth over a crest, depth mapping to discharge by a calibrated power law.
+    <strong>Open-channel flow</strong> — rivers, canals, sewers — has a free surface and
+    answers to gravity instead of pressure: Manning's equation, V = (1/n)·R<sup>2/3</sup>·S<sup>1/2</sup>
+    (n = roughness, R = hydraulic radius, S = slope) is the workhorse; a canal's "n" is
+    looked up from concrete (0.012) to weedy natural channel (0.035). Where fast shallow
+    flow meets slow deep flow, the <strong>hydraulic jump</strong> — the standing wave
+    below a weir — dissipates energy violently; spillway stilling basins build jumps
+    <em>on purpose</em> so the flood cannot dig out the dam's toe. Ship designers know the
+    Froude number as the wave-making tax: hull speed scales with √L, the reason long
+    boats are fast boats.
+  </p>
+
+  <h2>Pumps, fans, turbines: machines on curves</h2>
+  <p>
+    A centrifugal <strong>pump</strong> has a characteristic curve: head delivered falls
+    as flow rises. The <strong>system curve</strong> (static lift + friction ∝ v²) rises
+    with flow. The <strong>operating point</strong> is their intersection — no controller
+    puts it there; the physics does. The <strong>affinity laws</strong> scale a pump with
+    speed: flow ∝ N, head ∝ N², power ∝ N³ — so trimming speed 20% cuts power to
+    roughly 58% (1.2³ ≈ 1.73, so 1/1.73), the arithmetic behind variable-speed drives
+    and why throttling with valves instead is thermodynamically silly. The pump's mortal
+    enemy is <strong>cavitation</strong>: if suction-side pressure falls near the liquid's
+    vapour pressure, bubbles form and collapse against the impeller with micro-jets that
+    pit metal — sounds like gravel running through the pump, shortens its life to months.
+    The <strong>NPSH</strong> calculation (available suction head above vapour pressure,
+    vs the manufacturer's required value) is the reflex: lower the pump, shorten and
+    enlarge the suction line, cool the liquid. <strong>Turbines</strong> are the same
+    machines run backwards (impulse — Pelton jets — and reaction — Francis, Kaplan),
+    compressors and fans the same logic on gases, and multi-pump installations combine
+    the curves: <em>series</em> adds heads (same flow), <em>parallel</em> adds flows
+    (same head) — with the caveat that parallel pumps can push each other off their
+    best-efficiency point.
+  </p>
+
+  <h2>Gases, compressibility and the z factor</h2>
+  <p>
+    Liquids are incompressible in practice (a 1% squeeze needs ~200 bar); gases are not.
+    The <strong>ideal gas law</strong> (pv = RT) covers them well at ordinary conditions;
+    the correction for reality is the compressibility factor <strong>z</strong>: pv = zRT,
+    with z ≈ 1 far from condensation, dipping well below (attractive forces dominate) and
+    rising above 1 near the critical point (repulsion dominates) — at 300 K and 100 bar,
+    methane's z is roughly 0.85, an 15% bookkeeping error if ignored, which is why gas
+    pipeline and storage calculations carry z charts (or real-gas equations of state) as
+    standard equipment. When speeds approach Mach 1 (343 m/s at sea level), compressibility
+    stops being bookkeeping and becomes the design: nozzles, shock waves, and the reason
+    commercial jets cruise at Mach 0.85 and not 0.99.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Turbulence: the unfinished physics.</strong> The Navier–Stokes equations are
+    known; their turbulent solutions are not — existence and smoothness of the 3-D
+    solutions is a Clay Millennium Prize, and turbulence itself remains the largest
+    unsolved problem of classical physics. Engineering copes with a hierarchy: exact
+    solutions (Poiseuille laminar pipe flow: Δp = 32μLv/D²), logarithmic boundary-layer
+    laws, and correlations (Moody) — and, since the 1970s, computational fluid dynamics
+    (CFD), which numerically simulates flows well enough to shape every modern car
+    (drag coefficients fell from ~0.5 on 1970s boxes to ~0.20 on the best today, worth
+    roughly 15% of fuel) and every building's wind environment. CFD's honesty note: it
+    models turbulence statistically (RANS) at industrial cost, and the models are tuned
+    against experiment — wind tunnels never left.
+  </p>
+  <p>
+    <strong>Drag is a two-front war.</strong> Pressure (form) drag comes from the wake —
+    separation of the boundary layer — and is fought by streamlining; skin-friction drag
+    comes from the boundary layer itself and is fought with smoothness, laminar-flow
+    surfaces, and riblets (sharkskin films flew on airliners and America's Cup hulls).
+    The golf ball inverts the logic: dimples <em>trip</em> the boundary layer turbulent,
+    and a turbulent layer resists separation — the wake shrinks, pressure drag halves,
+    the ball flies far farther than a smooth sphere. Drag reduction, like most of this
+    subject, is knowing which regime you are in and paying the regime's price.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Physiological fluid mechanics (aneurysm growth,
+    stent haemodynamics, artificial heart valves) runs these same equations against
+    elastic, pulsatile, non-Newtonian constraints — and still cannot fully predict which
+    aneurysm will rupture. Microfluidics (lab-on-chip) operates at Re so low that
+    turbulence never arrives: mixing must be engineered by diffusion and chaos-by-geometry.
+    And the grand practical question — turbulence modelling good enough to replace every
+    wind tunnel — remains open, with progress measured in per cent of drag, the field's
+    native currency.
+  </p>
+  <p class="sources"><strong>Sources:</strong> White, Fluid Mechanics; Munson, Young &amp; Okiishi, Fundamentals of Fluid Mechanics; Çengel &amp; Cimbala; the physics ladder's fluid-dynamics lesson (Bernoulli, Navier–Stokes frontier).</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={fluidQuizCfg} />
 </TopicPage>

@@ -10,6 +10,55 @@ const planCfg = {
     { math: '4 · Dimensions, tolerances, and buildability', note: 'Drawings speak to builders: dimension strings that close, materials called out, tolerances real-world (site concrete ±10 mm, not ±1). BIM (Building Information Modelling) now builds the project as a coordinated 3-D database first — clash detection catches pipes through beams before they exist.' },
   ],
 };
+
+const planQuizCfg = {
+  questions: [
+    {
+      q: 'Why is a floor plan conventionally cut about 1.2 metres above the floor?',
+      choices: [
+        'That is standing eye height',
+        'The cut passes through walls, doors and windows but below ceilings and door heads — exactly the information a plan exists to show',
+        'Paper was smaller in the 19th century',
+        'It avoids drawing furniture',
+      ],
+      answer: 1,
+      why: 'The imaginary horizontal cut is positioned to intersect everything worth seeing in plan (wall thicknesses, openings, fixtures) and nothing that would clutter it (upper wall, ceiling, structure above). Move the cut and the drawing changes meaning — the convention is the reader\'s contract.',
+    },
+    {
+      q: 'At 1:100, a 900 mm door leaf is drawn how long?',
+      choices: [
+        '90 mm',
+        '9 mm',
+        '900 mm',
+        '10 mm',
+      ],
+      answer: 1,
+      why: 'Divide by the scale denominator: 900 mm ÷ 100 = 9 mm. The mechanical trick is trivial; the professional habit it supports is not — checking every drawn distance against what a body, a trolley or a wheelchair needs is how drawings get truthful.',
+    },
+    {
+      q: 'A dimension string is "closed" when:',
+      choices: [
+        'Every dimension is a round number',
+        'The segment dimensions sum exactly to the overall dimension — no rounding residue',
+        'It runs only along one wall',
+        'It is drawn twice',
+      ],
+      answer: 1,
+      why: 'A string that does not close (say segments of 2100 + 1800 + 1500 against an overall of 5390) forces the crew to improvise 10 mm somewhere — usually at the worst place. Closing the string pushes the discrepancy into a designed joint, where it belongs.',
+    },
+    {
+      q: 'Poché (cut walls filled solid black or heavy hatch) works because:',
+      choices: [
+        'It looks expensive',
+        'It instantly separates cut material from space, so the eye reads structure against void without effort — a graphic convention doing analytical work',
+        'Printers required it',
+        'It hides mistakes',
+      ],
+      answer: 1,
+      why: 'In an orthographic plan, "cut solid" is the strongest visual statement available; filling it makes walls read as figure and rooms as ground at a glance. Conventions like this are why a 500-year-old plan by Palladio is readable today — they are a language, and languages survive.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/architecture/intermediate/plans-sections-and-scale">
   <h2>The idea</h2>
@@ -17,17 +66,190 @@ const planCfg = {
     Architectural drawing is <strong>a precision language for unbuilt things</strong> —
     orthographic cuts that tell the truth about size and position, at scales chosen to match the
     decisions each drawing carries. Reading drawings is literacy; making them readable is the
-    craft.
+    craft. Like any language it has grammar (projection, line weight, convention), vocabulary
+    (the drawing types) and register (the scale you choose encodes how much you have decided).
+    Learning it does two things at once: it lets you read any building document ever drawn —
+    the convention set is centuries old and nearly global — and it teaches the architect's
+    deepest habit, that <em>deciding is drawing</em>: until a thing has a dimension, a level
+    and a junction, it is a wish, not a design.
   </p>
 
   <Widget no="1" caption="the set, the scales, the choreography, the dimensions" widget="equationStep" config={planCfg} />
 
-  <h2>What the drawings encode</h2>
-  <ul>
-    <li><strong>The poché trick:</strong> cut walls solid black in plans — your eye instantly separates solid from void, structure from space. Graphic conventions are analytical tools, not decoration.</li>
-    <li><strong>Sections expose the vertical argument:</strong> double-height voids, stair choreography, light from above — the sectional idea often IS the architectural idea (churches and auditoria are section-first designs).</li>
-    <li><strong>BIM changed the practice:</strong> one model generates plans, sections, schedules and quantities; every object carries data (cost, thermal, fire rating). The drawing became a queryable database (the data lesson\'s tidy principles, applied to buildings).</li>
-    <li><strong>Hand drawing survives where it wins:</strong> the sketch diagram — massing, circulation arrow, section concept — still designs faster than any software; the tools split the work: machines coordinate, humans conceive.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Ching, Building Construction Illustrated; RIBA drawing conventions; Salmon, Drawing for Architects.</p>
+  <h2>Orthographic projection: the truthful cut</h2>
+  <p>
+    A photograph lies to builders (distance shrinks; occlusion hides); orthographic
+    projection does not. The idea: view the building along one axis and record true sizes in
+    that view's plane, discarding depth. The <strong>plan</strong> is a horizontal cut —
+    conventionally about 1.2 m above the floor, so it slices through walls, door leaves and
+    window openings but under ceilings — projected straight down. The <strong>section</strong>
+    is a vertical cut: what the building looks like if you slice it and remove the near half.
+    The <strong>elevation</strong> is a view without a cut: each facade flat and true. The
+    mathematical machinery behind this was formalised by Gaspard Monge as <em>descriptive
+    geometry</em> in the 1780s–90s — valuable enough that the French military classified it a
+    state secret before publication, because it let fortifications be designed and
+    fabricated from paper alone. Architecture adopted it wholesale: with plan, section and
+    elevation, every length in a building is either drawn at true size or derivable from
+    two drawings that are. That is the language's core promise: <strong>nothing is
+    ambiguous</strong> — or, if it is, that ambiguity is now a drawn, checkable fact.
+  </p>
+
+  <h2>Scale: a zoom level into consequences</h2>
+  <p>
+    The scale fractions are a decision ladder. <strong>1:1000–1:2500</strong> (urban and site
+    location plans): one metre is a millimetre — decisions about where the building sits and
+    how it meets the street. <strong>1:200–1:500</strong> (site plans): drainage falls, parking,
+    tree root zones. <strong>1:100</strong> (the workhorse general-arrangement plan): rooms,
+    wall thicknesses, door swings — 900 mm of door becomes 9 mm of line, and a 60 mm wall
+    versus a 100 mm wall is the difference between a partition and a lining question.
+    <strong>1:50</strong> (sections, bathrooms, stairs): fittings, head heights, the tread-riser
+    arithmetic of a staircase (two risers plus one tread ≈ 630 mm — the comfort rule). 
+    <strong>1:20–1:1</strong> (details): the window head, the roof edge, the rainscreen clip —
+    where water is defeated. The teaching point the widget makes is exactly right: the same
+    wall is a 3-second line at 1:200 and a twenty-minute negotiation at 1:5, because at 1:5
+    the wall is an assembly of layers — structure, insulation, vapour control, cavity,
+    cladding — each with a thickness that physically cannot sum to zero. <strong>Scale is
+    therefore an honesty mechanism</strong>: you cannot claim at 1:100 what a 1:5 detail will
+    contradict, and experienced reviewers read plans knowing which claims have not yet met
+    their details.
+  </p>
+
+  <h2>Reading a plan: choreography in ink</h2>
+  <p>
+    A plan is drawn as solid and void, but it is written as a <strong>social script</strong>.
+    Start where the building does: the entrance. What sequence follows — compression
+    (a low, dark lobby) then release (the double-height stair with the view)? That
+    arrival choreography is deliberate, the same suspense structure a film editor
+    builds. Then trace the unavoidable paths: the <strong>circulation</strong> — corridors,
+    stairs, lifts — and ask what they force strangers to share and family members to
+    repeat. Then the <strong>adjacencies</strong>: kitchen to dining (carrying hot pans),
+    bedroom to bathroom (night trips, acoustic buffering), staff corridors crossing
+    clean ones in a hospital (infection control as a floor plan). Then the light:
+    which rooms have which orientations, and whether the plan's deepest points —
+    the parts farthest from a window (roughly 2–2.5× window-head-height is the
+    daylight rule of thumb) — are service spaces or someone's desk. The
+    <strong>poché</strong> — cut walls filled solid black — is the reading aid that makes
+    all of this legible at a glance: solid against void, structure against space, with
+    line weights ranking the drawing's truths (cut elements heaviest, nearest objects
+    heavier than distant ones). Graphic convention here is not decoration; it is
+    compression.
+  </p>
+
+  <h2>Sections: the vertical argument</h2>
+  <p>
+    Plans hide the most expensive dimension: height. The <strong>section</strong> shows
+    floor-to-floor heights, the structural depth of spans (a long-span roof eats its own
+    half-metre of section), stair construction, light wells, double-height voids and the
+    stacking logic of services. Many great buildings are <em>section-first</em> designs: a
+    Gothic nave, a concert hall, a top-lit gallery — the section is the architectural idea,
+    and the plan merely serves it. Reading a section like an engineer too: where does the
+    rain go (falls, outlets, upstands), where does the vapour go (the thermal envelope's
+    continuity is a sectional question), where do the pipes run (vertical risers stacked
+    floor above floor save metres of copper and days of labour). A plan can lie about a
+    building's difficulty; a section mostly cannot.
+  </p>
+
+  <h2>Details, dimensions and tolerances: where drawing meets reality</h2>
+  <p>
+    Between drawing and building sits the tolerance — every process has an accuracy it
+    cannot beat, and designs that ignore it fail on site. Site-formed concrete is honest to
+    about ±10 mm, precast panels to a few millimetres, steelwork to ±3 mm or so, joinery to
+    ±1 mm. A competent detail is a <strong>tolerance stack</strong>: it asks what happens
+    when everything drifts to the edge of its band, and it usually answers with a
+    deliberately generous joint — the gap that absorbs everyone's error (the shadow-gap at
+    a cladding edge is tolerance dressed as aesthetics). <strong>Dimensioning</strong> has
+    its own discipline: dimension to faces you can set out from, avoid chained errors, and
+    close the strings — segment dimensions must sum exactly to the overall, or the 10 mm
+    of rounding you left in the spreadsheet becomes a bricklayer's improvised judgement.
+    Drawings also speak in <strong>annotations</strong> (materials, finishes, levels — the
+    datum symbols that say "this floor is +0.150", fixing every height in the building to
+    one origin) and <strong>schedules</strong> (doors and windows counted in tables, each
+    with a type mark that links plan, elevation and specification). And beneath it all
+    sits <strong>buildability</strong>: every junction a real crew can actually build in
+    the drawn sequence, in the rain, with the crane they have. A detail that is beautiful
+    and unbuildable is a model, not a design.
+  </p>
+
+  <h2>From lines to database: BIM and the surviving sketch</h2>
+  <p>
+    Building Information Modelling changed the medium without changing the language: the
+    project is built first as a coordinated 3-D model whose every object carries data —
+    fire rating, U-value, cost, maintenance interval — and the drawings become projections
+    and queries of that model. The immediate dividend is <strong>clash detection</strong>:
+    the software intersects every duct with every beam and every pipe with every soffit,
+    catching on Tuesday the collision that used to be discovered on site by a worker with
+    a hammer and a change order. The deeper dividend is coordination across the whole
+    team — structure, services, envelope building in one model — which is how a modern
+    hospital (miles of services threaded through a structural grid) is even possible.
+    Yet the pre-digital tool survives where it wins: the <strong>diagram sketch</strong> —
+    massing blocks, a circulation arrow, a section scribble — still moves from intent to
+    evaluation faster than any software, and the discipline's notebooks remain its
+    laboratories. The division of labour that emerged is a sane one: machines coordinate
+    and check; humans conceive and decide.
+  </p>
+  <p><em>Common misconception:</em> "the plans are the building." Drawings are a
+  communication protocol — a lossless one only if you read the whole set together. A plan
+  without its section is wrong about heights; a section without details is wrong about
+  materials; the specification (the written book of materials and workmanship) outranks
+  the drawings where they conflict. Professionals read sets, never sheets.</p>
+
+  <h2>Surveys: where the drawing meets the earth</h2>
+  <p>
+    Every drawing set rests on a <strong>survey</strong> — the measured description of
+    what already exists, because buildings begin on a planet that was there first.
+    Topographic surveys record levels against a national datum (in Britain, Ordnance
+    Datum Newlyn; elsewhere local benchmarks), so the "±0.000" of your ground-floor
+    plan is a legal promise tied to a brass bolt somewhere. Site plans overlay the
+    proposal on <strong>cadastral</strong> boundaries (the legal ownership lines — a
+    200 mm encroachment can be litigation), existing drainage, and statutory
+    services; modern surveys arrive as laser-scanned point clouds and orthorectified
+    aerial imagery, with drone photogrammetry and LiDAR making millimetre-honest
+    existing-conditions models routine. The professional discipline this creates:
+    <strong>verify, never assume</strong> — measured surveys beat archive drawings
+    (as-built records drift), and levels are checked twice because a 50 mm error at
+    the site entrance becomes a ramp that does not drain and a door threshold in a
+    puddle. The drawing set's first sheet is usually the least glamorous and the
+    most consequential: get the earth wrong and every elegant plan above it is
+    fiction with dimensions.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Projection families and their honest uses.</strong> Besides orthographic cuts,
+    the toolkit includes <strong>axonometric and isometric projections</strong> (true
+    dimensions with all three axes visible — the analytical darlings, because no vanishing
+    point distorts any part) and <strong>perspective</strong> (the perceptual truth — how
+    the space will <em>feel</em> — with systematic size distortion along depth). The
+    conventions map to questions: plan/section for decisions, axon for spatial reasoning,
+    perspective for persuasion. Historic footnote worth knowing: what we call the
+    "figured ground" <strong>figure–ground plan</strong> (buildings black, streets white)
+    descends from Nolli's 1748 map of Rome, which drew public interiors as open ground —
+    a claim about civic access drawn, not stated.
+  </p>
+  <p>
+    <strong>Standards are the multiplayer protocol.</strong> Line weights, level symbols,
+    hatch conventions, sheet numbering and title blocks are standardised (ISO 128 in
+    Europe, national CAD standards elsewhere) because drawing sets are read by hundreds of
+    people downstream — engineers, contractors, inspectors, insurers — and a private
+    dialect costs everyone money. The RIBA/AIA stage frameworks do the same for the
+    process: they fix which decisions exist at which stage, so that scale choices and
+    detail choices arrive in the right order (decide the stair position before the
+    balustrade profile).
+  </p>
+  <p>
+    <strong>Open questions.</strong> The paperless site (tablets on the scaffold, models
+    in the hoist cage) is mostly here; the <em>paperless decision</em> is not — liability
+    and contract still run on issued documents. Generative and parametric tools can now
+    propose layouts against rules (parking counts, daylight autonomy, fire egress); the
+    open question is what the human's comparative advantage becomes when options are
+    cheap — historically, the answer in every design field has been judgement about
+    which problem is worth solving, which is why the sketch survived the database.
+    And a live regulatory question: as models become the legal building record, the
+    drawing language this page teaches is not dying but changing substrate — the
+    orthographic cut, four centuries old, is likely to outlive the sheet of paper that
+    carries it.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Ching, Building Construction Illustrated and Architectural Graphics; Monge, Géométrie descriptive (1799); RIBA drawing conventions; Salmon, Drawing for Architects; Nolli, Nuova Pianta di Roma (1748).</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={planQuizCfg} />
 </TopicPage>

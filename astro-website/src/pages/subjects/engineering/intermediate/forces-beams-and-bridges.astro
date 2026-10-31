@@ -10,23 +10,219 @@ const beamCfg = {
     { math: '4 · Bridges: the span decides the type', note: 'Beams (short spans, ~25–80 m), trusses (triangulated members, ~100–300 m), arches (compression, the architecture lesson), suspension and cable-stayed (longest — Akashi Kaikyō 1,991 m: cables carry tension, towers compression, deck hanging between).' },
   ],
 };
+
+const momentCfg = {
+  curves: [{ expr: 'w*x*(L-x)/2', color: '#b42318', label: 'bending moment M(x)' }],
+  params: [
+    { name: 'w', label: 'load w (kN/m)', min: 1, max: 20, step: 1, value: 5 },
+    { name: 'L', label: 'span L (m)', min: 4, max: 12, step: 1, value: 6 },
+  ],
+  x: { min: 0, max: 12, label: 'position x (m)' },
+  height: 280,
+};
 ---
 <TopicPage slug="subjects/engineering/intermediate/forces-beams-and-bridges">
   <h2>The idea</h2>
   <p>
     Structural engineering is <strong>directing forces to the ground through chosen paths</strong>.
     The beam is the core problem — bending creates tension and compression in the same member —
-    and bridge types are the span-length answers history has converged on.
+    and bridge types are the span-length answers history has converged on. The foundational
+    statics lesson gave you free-body diagrams and ΣF = 0; this page builds the working
+    engineer's toolkit on top of them: how to compute the internal forces a beam carries,
+    how its cross-section turns moment into stress, why depth beats width by a factor of
+    depth, why columns fail sideways long before they crush, and why the bridge type is
+    decided before the first member is sized.
   </p>
 
   <Widget no="1" caption="load paths, bending, the two checks, the span ladder" widget="equationStep" config={beamCfg} />
 
-  <h2>Lessons written in steel and concrete</h2>
-  <ul>
-    <li><strong>Tacoma Narrows (1940):</strong> aeroelastic flutter — wind excited the deck\'s twist mode. The bridge was strong for traffic loads and failed on a load nobody had designed for; wind engineering became a required discipline (the aerodynamics of the fluid-dynamics lesson, structural edition).</li>
-    <li><strong>Why old bridges stand:</strong> stone is strong in compression, weak in tension — arches keep everything compressed (the architecture lesson\'s catenary logic); Roman concrete plus compression-only geometry = two-millennia service life.</li>
-    <li><strong>Trusses are triangles:</strong> pin-jointed triangles are rigid by geometry — every member is pure tension or compression, no bending. The analysis is solvable by hand: the 19th century\'s mathematical playground (railway bridges everywhere).</li>
-    <li><strong>Prestressed concrete — the quiet revolution:</strong> steel tendons squeeze concrete before loading, so tension never appears: spans doubled, costs halved, the 20th century\'s infrastructure built from it (the materials lesson\'s stress–strain, engineered).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Petroski, To Engineer Is Human; the statics lesson (free-body diagrams, safety factors); Gordon, Structures: Or Why Things Don\'t Fall Down.</p>
+  <h2>Equilibrium: the whole game at small scale</h2>
+  <p>
+    A structure at rest obeys three equations: forces balance in two directions (ΣF<sub>x</sub> = 0,
+    ΣF<sub>y</sub> = 0) and moments balance about any point (ΣM = 0). That is the whole of
+    planar statics, and it is enough to find every support reaction of a statically
+    determinate structure. Worked example: a 6 m beam on simple supports, carrying a
+    distributed load of 5 kN/m (total 30 kN, acting at midspan, 3 m from each support).
+    By symmetry each reaction takes half: <strong>15 kN</strong>. Push the load off-centre —
+    say a single 10 kN point load 2 m from the left support — and take moments about the
+    right support: R<sub>left</sub> × 6 = 10 × 4, so R<sub>left</sub> = 6.67 kN and
+    R<sub>right</sub> = 3.33 kN. The closer support carries more; moments about the far
+    support is the standard trick that isolates one unknown at a time. The free-body
+    diagram discipline (isolate the body, mark every force including the unknowns, solve
+    the three equations) is what the previous lessons drilled, and everything in this page
+    is downstream of it.
+  </p>
+  <p>
+    Then the <strong>load path</strong>: follow a load from where it enters the structure
+    to the soil. A person on an office floor loads the slab, which bends and delivers
+    edge loads to the beams, which bend and deliver reactions to columns, which carry the
+    load down (in compression) to the foundation, which spreads it onto soil at pressures
+    the soil can bear (typically 100–600 kPa for building purposes). Design is making
+    every link in that chain exist, continuous, and adequate — the 1994 collapse modes
+    are almost always broken or never-imagined load paths (a column removed from under a
+    transfer beam; a wall that was load-bearing but not accounted for).
+  </p>
+
+  <h2>Shear and moment: what a beam feels inside</h2>
+  <p>
+    Cut a loaded beam at any station x and imagine holding it together: the two faces
+    transmit a <strong>shear force</strong> V (the tendency of the two halves to slide
+    vertically) and a <strong>bending moment</strong> M (the tendency to rotate relative
+    to each other). Plotting them along the beam gives the shear-force and bending-moment
+    diagrams — the two most important drawings in structural engineering, because they say
+    where the beam is working hardest. For the uniformly loaded 6 m beam above, shear
+    starts at +15 kN at the left support, falls linearly to −15 kN at the right (crossing
+    zero at midspan), and the moment grows as a parabola to its maximum exactly where
+    shear is zero: M<sub>max</sub> = wL²/8 = 5 × 36 ⁄ 8 = <strong>22.5 kN·m</strong>. Drag
+    the load and span below and watch the moment parabola respond — note how doubling the
+    span quadruples the peak (L²) while doubling the load only doubles it.
+  </p>
+
+  <Widget no="2" caption="the bending-moment diagram of a uniformly loaded beam — M(x) = w·x·(L−x)/2" widget="plotter" config={momentCfg} />
+
+  <h2>From moment to stress: why beams are shaped like I's</h2>
+  <p>
+    The moment diagram says <em>where</em>; the cross-section says <em>how bad</em>. A beam
+    that bends carries compression on the concave face, tension on the convex face, and
+    nothing at mid-depth (the neutral axis). Bending stress grows linearly with distance y
+    from that axis: <strong>σ = M·y ⁄ I</strong>, where I is the second moment of area —
+    the section's area, weighted by the square of its distance from the neutral axis. For
+    a rectangle, I = b·h³ ⁄ 12. Read the exponent: depth enters <em>cubed</em>. Double a
+    beam's depth (same width, same area, same material) and I multiplies by 8; double its
+    width and I merely doubles. The <strong>I-beam</strong> is this fact made into a
+    factory product: put the material where the stress is — two flanges at maximum
+    distance from the axis — and connect them with a thin web that mainly carries the
+    shear. It is the section-shape equivalent of the moment arm idea: distance from the
+    axis is leverage over bending.
+  </p>
+
+  <h2>The two checks: strength and serviceability</h2>
+  <p>
+    Worked example with real numbers. A timber floor beam, 6 m span, carrying the 5 kN/m
+    above, section 100 mm × 200 mm, E = 10 GPa, allowable bending stress ~35 MPa.
+    <strong>Strength check:</strong> I = b·h³/12 = 100 × 200³ ⁄ 12 = 66.7 × 10<sup>6</sup>
+    mm⁴; σ = M·y ⁄ I = 22.5 × 10<sup>6</sup> N·mm × 100 mm ⁄ 66.7 × 10<sup>6</sup> mm⁴ ≈
+    34 MPa. Within the allowable — the beam will not break. <strong>Deflection check:</strong>
+    δ = 5wL⁴ ⁄ (384EI) = 5 × 5 × 6000⁴ ⁄ (384 × 10,000 × 66.7 × 10<sup>6</sup>) ≈
+    <strong>127 mm</strong>. The serviceability limit for a floor is typically span/360 ≈
+    17 mm. The beam passes strength and fails deflection by a factor of about 8 — it would
+    not collapse; it would be a trampoline. This is the standard outcome in preliminary
+    design and the reason the widget note says serviceability governs more designs than
+    strength: stiffness, not rupture, is usually the binding constraint. The fixes follow
+    from the formulas: deflection carries L⁴ (spans are expensive in stiffness) and E·I in
+    the denominator (deeper section, stiffer material, or a smaller span). Deepen the same
+    beam to 400 mm and I rises 8-fold, bringing deflection to code territory.
+  </p>
+  <p><em>Common misconception:</em> "strong enough" means "good enough". A beam can be
+  far from failure and unusable — bouncy floors, cracked finishes, rattling glazing.
+  Strength (a material property, stress against allowable) and stiffness (a section and
+  material property, E·I against limits) are separate checks with separate formulas, and
+  mature engineers run the deflection check first because it usually loses.</p>
+
+  <h2>Trusses: geometry doing the work</h2>
+  <p>
+    A truss replaces the bending beam with a triangulated skeleton. The insight is
+    geometric: a triangle of pin-jointed bars cannot change shape without changing a bar's
+    length, so a triangulated frame is rigid by construction — and if loads are applied
+    only at the joints, every member carries pure axial force (tension or compression),
+    no bending anywhere. Each bar then uses its entire cross-section uniformly — the
+    efficiency the I-beam only approaches. Analysis is the equilibrium equations applied
+    joint by joint (method of joints) or section by section (method of sections), solvable
+    by hand, which is why the 19th century — the railway century — built trusses
+    everywhere and why they remain the iconic bridge vocabulary. Watch for
+    <strong>zero-force members</strong>: truss geometry often keeps members whose only job
+    is stability, not load, and a rookie's "optimisation" that removes them can trigger
+    collapse under a load case nobody drew.
+  </p>
+
+  <h2>Columns: buckling, the sideways failure</h2>
+  <p>
+    Compression members fail in a different and more surprising way. Euler's analysis
+    (1744) gives the critical load at which a slender column bows sideways:
+    <strong>P<sub>cr</sub> = π²EI ⁄ L²</strong>. Note what is <em>absent</em>: material
+    strength. A column can buckle at loads far below its crushing strength, purely from
+    geometry and stiffness. Worked example: a 2 m steel pin-ended strut with I =
+    1 × 10<sup>6</sup> mm⁴: P<sub>cr</sub> = π² × 200,000 × 10<sup>6</sup> ⁄ (2000)² ≈
+    490 kN. Double its length to 4 m and the capacity falls to a quarter: about 120 kN.
+    The inverse-square in L and the linear-in-I (hence cubed-in-depth, again) are the
+    whole design story for columns: keep them short, brace them, give them I. Real codes
+    wrap Euler's result in slenderness curves (imperfections, end conditions — the
+    effective length L<sub>e</sub> substitutes for L), and buckling remains the failure
+    mode behind many of history's scaffold and falsework accidents, where a temporary
+    structure is all slenderness.
+  </p>
+
+  <h2>Bridges: the span decides the type</h2>
+  <p>
+    Every bridge type is a strategy for spanning distance, and each wins in its regime.
+    <strong>Beams</strong> (simple, precast, rolled): the default to ~25–80 m, paying the
+    L²-moment and L⁴-deflection taxes. <strong>Trusses</strong> extend the beam by making
+    its "flanges" into chords: practical to a few hundred metres. <strong>Arches</strong>
+    convert span into compression — stone's one talent — which is why the Roman arch and
+    its masonry descendants stand for two millennia: keep the thrust line inside the
+    masonry and there is no tension to crack anything. <strong>Suspension bridges</strong>
+    (cables in tension between towers, deck hung from them) own the long-span record —
+    the Akashi Kaikyō Bridge's 1,991 m main span (1998) — because tension members pay no
+    buckling penalty and cable self-weight grows gently with span. <strong>Cable-stayed
+    bridges</strong> (fanning straight from tower to deck) dominate the 200–1,000 m range
+    on stiffness and economy. The choice is made before member design; the type <em>is</em>
+    the design.
+  </p>
+  <p>
+    And when the load is not static, the structure must answer to the wind.
+    <strong>Tacoma Narrows, 7 November 1940</strong>: the third-longest suspension span in
+    the world, four months old, collapsed in a 67 km/h gale — a wind its strength could
+    resist easily. The deck was shallow, stiff in bending, and fatally flexible in twist;
+    the wind shed vortices and then coupled with the deck's torsional mode
+    (<strong>aeroelastic flutter</strong> — modern analysis, not the "resonance" of the
+    classroom myth), and the growing oscillations tore it apart. The only casualty was
+    a dog left in the stranded last car — its owner and Professor Farquharson, who had
+    gone out to rescue it, escaped the deck themselves. The lesson
+    reshaped the profession: structures must be designed for the dynamics of their
+    environment, not just the statics of their loads — and bridge decks have been
+    aerodynamically profiled ever since (the trapezoid box girder you see everywhere is
+    Tacoma's signature, written in cross-section).
+  </p>
+  <p>
+    One more quiet revolution belongs here: <strong>prestressed concrete</strong>. Concrete
+    is strong in compression and weak in tension; so before a beam ever carries load,
+    high-strength steel tendons inside it are jacked and anchored, squeezing the concrete.
+    The service loads now merely relieve some of that pre-compression — net tension never
+    appears, cracks never open, and spans that killed reinforced concrete at 20 m run to
+    40 m and beyond. Freeway viaducts, parking structures, floor slabs: the 20th
+    century's infrastructure is largely this trick, working invisibly inside the grey.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Indeterminacy: more equations than unknowns.</strong> A beam on three supports,
+    a frame with rigid joints — these cannot be solved by equilibrium alone because they
+    have redundant load paths. That redundancy is not a nuisance but a safety property:
+    load finds alternative routes when a member softens or fails. Continuous bridges,
+    shear walls, the hyperstatic frames of tall buildings — indeterminacy is engineered
+    robustness, bought at the price of solving compatibility of deformations alongside
+    equilibrium.
+  </p>
+  <p>
+    <strong>Beyond yield: the other failure modes.</strong> <strong>Fatigue</strong> kills
+    members that survive millions of ordinary loads — crack growth per cycle, the reason
+    riveted railway bridges and aircraft fuselages have inspection intervals written into
+    law (the Comet disasters of 1954 taught aviation this). <strong>Stress
+    concentrations</strong> — a hole, a fillet radius too sharp — multiply local stress by
+    factors of 2–4 and are where fatigue cracks start; design language is full of them
+    (round corners, gradual transitions). <strong>Factor of safety</strong> (typically
+    1.5–3 for structures, ~1.1 in aircraft where mass is money) prices our ignorance of
+    loads, materials and workmanship; modern limit-state codes split it into partial
+    factors on load and material, which is more honest about where the uncertainty lives.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Structural health monitoring (fibre-optic strain, modal
+    sensors) aims to make bridges report their own condition — the field's quiet shift
+    from fixed inspection intervals to continuous data. And the coming century's problem
+    is the opposite of Tacoma's: an enormous fleet of aging structures built in the
+    1960s–70s, needing life assessment under loads and traffic their designers never
+    imagined — engineering judgement against entropy, with the mathematics on this page
+    as the first instrument.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Petroski, To Engineer Is Human; Gordon, Structures: Or Why Things Don't Fall Down; Hibbeler, Mechanics of Materials; the statics lesson (free-body diagrams, safety factors); the Tacoma Narrows failure investigations (Ammann &amp; von Kármán, 1941).</p>
 </TopicPage>

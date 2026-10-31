@@ -10,6 +10,55 @@ const familiesCfg = {
     { math: '4 · Composites: engineered synergy', note: 'Strong fibres (glass, carbon) in a tough matrix (polymer, metal, ceramic) — each covers the other\'s weakness. Anisotropic by design (strength where you point the fibres — the load-path lesson, written in fibre orientation). Wood and bone are natural composites; the A350 is 53% composite by weight.' },
   ],
 };
+
+const famQuizCfg = {
+  questions: [
+    {
+      q: 'Equal bending stiffness from steel and aluminium sheet: why does the aluminium come out about half the mass?',
+      choices: [
+        'Aluminium is three times stiffer per kilogram than steel',
+        'Aluminium is a third of steel\'s density, and a bending panel needs only about 1.44× the thickness to make up for the lower modulus — 1.44 × (2.7/7.8) ≈ 0.5',
+        'Steel is heavier so it always loses',
+        'Aluminium work-hardens more',
+      ],
+      answer: 1,
+      why: 'Bending stiffness scales with modulus times thickness cubed. Steel\'s E is 3× aluminium\'s, so aluminium needs ∛3 ≈ 1.44× the thickness — but at 2.7 versus 7.8 g/cm³ the mass still comes out near half. This is an Ashby performance index, not a slogan.',
+    },
+    {
+      q: 'Why is concrete reinforced with steel bars, and why do the bars sit under tension-side surfaces?',
+      choices: [
+        'Steel makes concrete lighter',
+        'Concrete is strong in compression and weak in tension; steel carries the tension the concrete cannot, where bending opens cracks',
+        'Steel conducts heat away',
+        'To bond the concrete to the ground',
+      ],
+      answer: 1,
+      why: 'Bending puts one face in compression, the other in tension. Concrete\'s ionic/covalent-bonded ceramic matrix takes compression superbly and fails in tension at roughly a tenth of its compressive strength; steel rebar is the tension specialist. Prestressing goes further and pre-compresses the concrete so tension never gets a turn.',
+    },
+    {
+      q: 'A polymer\'s glass transition temperature (Tg) tells you:',
+      choices: [
+        'When it melts',
+        'When it burns',
+        'The temperature region where the amorphous fraction shifts from rigid-glassy to leathery-rubbery behaviour',
+        'Its density',
+      ],
+      answer: 2,
+      why: 'Below Tg, chain segments are frozen; above, they can wiggle and the material softens dramatically — no melting required. A dashboard that cracks in a Minneapolis January and sags in a Phoenix July is one polymer bracketed by two climates. Melting point is a separate, higher temperature.',
+    },
+    {
+      q: 'In a unidirectional carbon-fibre laminate (60% fibre by volume), the modulus along the fibres is about 140 GPa but across them only about 7 GPa. Why?',
+      choices: [
+        'The carbon is not real carbon across the fibres',
+        'Along the fibres, stiffnesses add by volume fraction (rule of mixtures); across them, the weak matrix and fibre interfaces carry the load in series',
+        'Measurement error',
+        'The epoxy shrinks',
+      ],
+      answer: 1,
+      why: 'Parallel loads share between fibre and matrix by fraction; transverse loads force the whole composite through its weakest link. A 20:1 anisotropy is a design asset, not a defect — the engineer lays fibres along the load paths, exactly like grain direction in wood.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/materials-science/intermediate/metals-ceramics-polymers-composites">
   <h2>The idea</h2>
@@ -17,17 +66,202 @@ const familiesCfg = {
     The four families are <strong>four bonding-and-architecture strategies</strong>, each with a
     personality the periodic table hands it: metals bend, ceramics endure, polymers flex and
     shape, composites delegate. Materials engineering is choosing the family whose virtues your
-    product needs and whose vices it can survive.
+    product needs and whose vices it can survive — and the previous lesson told you where each
+    personality comes from: the electron sea, the directional bonds, the chain, the fibre.
+    This page turns that understanding into engineering judgement: what each family is actually
+    used for, how each is strengthened and toughened, and how to choose between them with
+    numbers instead of habits.
   </p>
 
   <Widget no="1" caption="the four families and their signatures" widget="equationStep" config={familiesCfg} />
 
-  <h2>Choosing among them in practice</h2>
-  <ul>
-    <li><strong>Cost per function beats cost per kilogram:</strong> aluminium costs 3× steel per kg but a third the density — per stiffness-requirement the ledger changes (the Ashby lesson\'s indices). Every "expensive material" argument is really a performance-index argument.</li>
-    <li><strong>Polymers at temperature:</strong> plastics\' Tg and melting points limit service (a car interior endures 80 °C in sun); high-performance polymers (PEEK, polyimides) hold at 250 °C+ and fly in jet engines now — the family keeps climbing the engineering ladder.</li>
-    <li><strong>Composites fail differently:</strong> sudden, delamination-prone, inspection-dependent (impacts leave invisible interior damage) — design and maintenance regimes must adapt to the material\'s failure personality (the next lessons\' fracture logic).</li>
-    <li><strong>Environmental profiles differ sharply:</strong> steel\'s recycling dominance, concrete\'s 8% of global CO₂, polymers\' persistence, composites\' end-of-life difficulty (the wind-turbine-blade burial problem — the waste lesson\'s hardest case).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Ashby, Materials Selection; Callister; the chemistry lesson\'s polymers chapter.</p>
+  <h2>Metals: dislocation management as an industry</h2>
+  <p>
+    Everything a metallurgist does to a metal is a move in one game: control the dislocations.
+    The strengthening menu has four entries, and you have met all of them. <strong>Solid-solution
+    strengthening</strong>: solute atoms of odd size pin the lattice (tin in copper — bronze,
+    circa 3300 bce, the first technology metals). <strong>Work hardening</strong>: deformation
+    multiplies dislocations until they jam each other (hammered edges of swords and truck
+    bodies alike). <strong>Grain refinement</strong>: Hall–Petch — boundaries block slip
+    (microalloyed pipeline steels). <strong>Precipitation hardening</strong>: the subtlest and
+    most valuable — dissolve solute at high temperature, quench, then hold warm so fine
+    precipitates nucleate and act as obstacles. Alfred Wilm stumbled onto it in 1906 with
+    duralumin (an aluminium alloy that hardened over days on the shelf); a century later,
+    precipitate-hardened aluminium alloys fly in every airliner wing.
+  </p>
+  <p>
+    Steel deserves its own sentence of awe, because iron is a special case: it changes
+    crystal structure at 912 °C (BCC alpha below, FCC gamma above), and the carbon it
+    dissolves in the two structures differs fifteen-fold. Quench hot steel fast and the
+    carbon is trapped in a distorted, superseded structure called martensite — very hard,
+    very brittle. Temper it (reheat moderately) and some carbon precipitates out, trading a
+    little hardness for toughness. Every knife, spring, rail and bearing in your life is a
+    specific point on the quench-temperature/temper-temperature map — ancient smiths
+    reverse-engineered this map empirically; metallurgy gave it the coordinates. And metals
+    close the loop environmentally: steel is the most-recycled material on Earth (hundreds
+    of megatonnes a year), because remelting loses almost nothing — the electron sea does not
+    care how many times the atom has been through the furnace.
+  </p>
+
+  <h2>Ceramics: strong, hot, brittle — and the tricks that tame them</h2>
+  <p>
+    Ceramics (oxides, carbides, nitrides; also concrete's cement matrix, glass, brick,
+    porcelain) hold ionic/covalent bonds with no easy dislocation motion. The consequences:
+    hardness, chemical inertness and electrical insulation beyond any metal; melting points
+    into the thousands of degrees; compressive strength excellent; tensile strength
+    catastrophic — because any crack concentrates stress and there is no plasticity to blunt
+    the tip. Strength in a ceramic is really a statistics problem: the biggest flaw in the
+    part sets the strength, which is why ceramics show wide scatter and why we talk of
+    Weibull statistics for them.
+  </p>
+  <p>
+    The engineering response is to never let the ceramic feel tension, or to blunt cracks
+    before they run. <strong>Reinforced concrete</strong> is the biggest example: the cement
+    paste takes compression (its compressive strength ~30–50 MPa, tensile only ~3–5 MPa)
+    while steel rebar takes the tension where bending opens cracks. <strong>Prestressing</strong>
+    goes further: pull the steel bars, cast the concrete around them, release — the concrete
+    is permanently squeezed, so ordinary loads never produce net tension. <strong>Transformation
+    toughening</strong> is the materials-science version of the same idea: zirconia stabilized
+    in its high-temperature tetragonal form transforms at a crack tip to a phase that
+    expands about 4% by volume, squeezing the crack shut — ceramics made several times
+    tougher by engineering their own flaw response. Meanwhile ceramic processing is powder
+    metallurgy without the melting: press and <strong>sinter</strong> (diffusion bonds the
+    particles below melting — the vacancy/diffusion machinery of the previous lesson doing
+    factory work). Thermal barrier coatings (a ceramic overlayer on superalloy blades) let
+    jet engines run hotter than their metal could survive — the metal is genuinely protected
+    by a layer of glass-ceramic a fraction of a millimetre thick.
+  </p>
+
+  <h2>Polymers: the chain is the property</h2>
+  <p>
+    Polymers are molecules of 10<sup>3</sup>–10<sup>6</sup> repeat units (ethylene into
+    polyethylene), and their mechanics is entanglement physics. Four structural dials set
+    the personality. <strong>Chain length</strong>: longer chains entangle more — strength
+    and viscosity climb with molecular weight. <strong>Branching</strong>: branched chains
+    pack poorly and slide easily (LDPE film — soft, flexible) versus linear chains packing
+    into crystalline lamellae (HDPE milk jugs — stiffer, opaque-ish). <strong>Cross-linking</strong>:
+    covalent bridges between chains lock the whole object into one molecule — a
+    <strong>thermoset</strong> (epoxy, Bakelite) that softens never, versus the un-crosslinked
+    <strong>thermoplastics</strong> that melt and remelt, which is why plastics can be
+    moulded at absurd speed and why "thermoset" recycling is a hard problem.
+    <strong>Temperature relative to Tg</strong>: below the glass transition temperature,
+    chain segments are frozen and the polymer is stiff and glassy; above it, segments wiggle
+    and the material turns leathery, then rubbery. PMMA (acrylic) has Tg ≈ 105 °C, polyvinyl
+    chloride ≈ 80 °C, and polyethylene ≈ −80 °C — which is why PE stays flexible in a
+    Canadian January while a cheap PVC hose shatters, and why a dashboard can crack in
+    winter cold yet sag in summer sun.
+  </p>
+  <p>
+    Elastomers deserve their name checked: rubber's vulcanisation (Goodyear, 1839 — sulfur
+    cross-links) turns a sticky mess into a material that stretches 500% and snaps back,
+    because the cross-links store the chains' disorder like springs and release it on
+    unloading. Polymers' engineering ceiling is thermal: most serve under 100–150 °C, and
+    the high-performance exceptions (PEEK, polyimides) cost accordingly — but they serve at
+    250 °C+ and now fly inside jet engines as bearings and seals.
+  </p>
+
+  <h2>Composites: the arithmetic of synergy</h2>
+  <p>
+    A composite is a deliberate two-material deal: stiff, strong <strong>fibres</strong>
+    (glass, carbon, aramid) that are flaw-sensitive and brittle alone, embedded in a
+    <strong>matrix</strong> (usually polymer) that is weak alone but binds the fibres,
+    blunts cracks and transfers load. The stiffness is predictable by the
+    <strong>rule of mixtures</strong> — along the fibres, stiffnesses add weighted by volume
+    fraction: E<sub>parallel</sub> = V<sub>f</sub>·E<sub>f</sub> + V<sub>m</sub>·E<sub>m</sub>.
+    Worked example: a unidirectional carbon/epoxy laminate, 60% fibre by volume, fibre
+    modulus 230 GPa, epoxy 3 GPa: E ≈ 0.6 × 230 + 0.4 × 3 ≈ <strong>139 GPa</strong> —
+    stiffer than aluminium at a quarter of its density. Across the fibres, the loads must
+    pass through matrix and interfaces in series, and the same laminate manages only about
+    <strong>7 GPa</strong>. A twenty-fold anisotropy is not a defect; it is the design
+    medium. The engineer lays plies along known load paths — 0° along a spar, ±45° against
+    shear torsion, 90° for hoop — exactly as wood grew its grain. Nature preceded us:
+    wood (cellulose fibres in lignin), bone (collagen reinforced with hydroxyapatite) and
+    nacre (mother-of-pearl, whose brick-and-mortar microarchitecture makes a brittle
+    mineral 3,000 times tougher than the mineral alone) are all composites.
+  </p>
+  <p>
+    The price of that performance is a different <em>failure personality</em>: composites
+    do not dent, they delaminate — an impact can leave an invisible interior crack, so
+    aircraft laminates are inspected by ultrasound, and design allowables are set by
+    barely-visible impact damage, not just static strength. Boeing's 787 and Airbus's
+    A350 are about half composite by weight; the maintenance manuals were rewritten around
+    this failure mode.
+  </p>
+
+  <h2>Choosing: cost per function, not cost per kilogram</h2>
+  <p>
+    The universal mistake is comparing materials by mass or by kilogram price. The honest
+    comparison is a <strong>performance index</strong> (Ashby's method): for each design
+    constraint, derive the combination of properties that minimises mass or cost. Worked
+    example — a flat panel that must not sag (bending stiffness), steel versus aluminium:
+    stiffness scales as E·t³, so aluminium (E = 70 GPa) needs only ∛(210/70) ≈ 1.44 times
+    steel's thickness; but at 2.7 versus 7.8 g/cm³ the aluminium panel ends up at 1.44 ×
+    (2.7/7.8) ≈ <strong>0.50</strong> of the steel mass. Aluminium at roughly three times
+    steel's price per kilogram still wins the aircraft ledger because the fuel saved over
+    thirty years of flights dwarfs the panel cost. Multiply this reasoning across every
+    constraint (stiffness, strength, thermal, cost) and materials selection becomes a
+    chart problem rather than a habit — the reason Ashby's property maps are on the wall of
+    every serious design office.
+  </p>
+  <p>
+    <strong>Environmental profiles differ just as sharply.</strong> Steel recycles
+    near-infinitely; aluminium recycling saves ~95% of smelting energy. Concrete is cheap
+    and superb but its cement is ~8% of global CO₂ emissions — a climate number, not a
+    footnote. Polymers are lightweight and energy-cheap to form but persist for centuries
+    and mostly down-cycle. Composites are the end-of-life hard case: a wind-turbine blade
+    (glass fibre in epoxy, 50+ metres) has no economic recycling route today, so thousands
+    are being landfilled — the industry is racing on thermal and chemical recovery before
+    the first generation of blades retires en masse.
+  </p>
+
+  <h2>The ceramics of the edges: bioceramics and electronic ceramics</h2>
+  <p>
+    Two corners of the family show where it is heading. <strong>Bioceramics</strong>:
+    alumina and zirconia carry hip-joint femoral heads (hardness and chemical inertness
+    where metals shed wear ions), hydroxyapatite coatings bond implants to bone because
+    the mineral is bone's own, and glass-ceramics repair dental enamel. The design brief
+    is ferocious — decades of cyclic loading in a corrosive, living environment — and
+    ceramics win it by doing nothing chemically. <strong>Electronic ceramics</strong>
+    run the invisible infrastructure: barium-titanate dielectrics in every multi-layer
+    capacitor (a phone carries hundreds), PZT piezoceramics generating the spark in
+    lighters and the motion in ultrasound probes and fuel injectors, and
+    yttria-stabilised zirconia reading oxygen partial pressure in every car's exhaust
+    sensor. Note the recurring trick: the family's brittleness is managed by
+    <em>architecture</em> — the multilayer capacitor stacks hundreds of thin ceramic
+    sheets so the whole is flexible in function while each layer stays a ceramic; the
+    transformation-toughened zirconia is the same lesson from the last lesson. The
+    material keeps its chemistry; the design absorbs its vice.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The families are converging.</strong> Metallic glasses (amorphous metals) take
+    metals toward polymers' processability — they soften like thermoplastics above their
+    glass transition, enabling injection-moulded metal parts. Fibre-metal laminates (GLARE:
+    aluminium and glass-fibre plies) mix families inside a single sheet and fly on the
+    A380's upper fuselage. Self-healing polymers embed microcapsules of resin that rupture
+    at a crack and re-bond it. The family boundaries are engineering conventions, and they
+    are blurring on purpose.
+  </p>
+  <p>
+    <strong>Bio-inspired architecture beats composition.</strong> Nacre's lesson generalises:
+    nature rarely invents new chemistry, it invents new microstructure — the same chalk
+    (aragonite) that crumbles in a seashell's outer layer is 3,000× tougher as brick-and-
+    mortar nacre. Synthetic nacre-imitation ceramics now exist in labs; the design rule
+    (stiff platelets, thin tough interfaces, staggered overlap) is being ported to
+    aerospace laminates. In materials, architecture is destiny — the recurring theme of
+    this whole subject, stated at the scale of the object rather than the atom.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Cement without CO₂ (alternative chemistries, captured-CO₂
+    curing) is arguably the highest-leverage open problem in materials — the tonnage is
+    civilisational. Composites recycling (recovering long fibres, not chopping them to
+    filler) has no industrial answer yet. And the data revolution — machine-learning
+    models predicting properties from composition and process — is only as good as the
+    century of hand-me-down experimental data it trains on; the field is quietly
+    discovering that its databases are its bottleneck.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Ashby, Materials Selection in Mechanical Design; Callister &amp; Rethwisch, Materials Science and Engineering; Cahn, The Coming of Materials Science; the chemistry lesson's polymers chapter.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={famQuizCfg} />
 </TopicPage>

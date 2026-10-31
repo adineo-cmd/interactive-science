@@ -10,24 +10,236 @@ const fermiCfg = {
     { math: '4 · Dimensional analysis as a free check', note: 'Units must balance on both sides of every equation — checking them costs seconds and catches most algebra errors. The technique also DERIVES results: scaling laws fall out of pure unit bookkeeping.' },
   ],
 };
+
+const fermiQuizCfg = {
+  questions: [
+    {
+      q: 'A unit is missing from your equation. What should you conclude?',
+      choices: [
+        'Round the answer',
+        'Nothing — units are bookkeeping',
+        'The equation is wrong or incomplete: units must balance on both sides, so a missing unit means a missing factor or a broken derivation',
+        'Convert to metric',
+      ],
+      answer: 2,
+      why: 'Dimensional homogeneity is not optional decoration: every valid physical equation has identical units on both sides. A unit mismatch announces a missing constant or an algebra error — and on 23 September 1999 it announced, too late, that the Mars Climate Orbiter had been steering on pound-seconds where the software expected newton-seconds.',
+    },
+    {
+      q: 'Estimating with a chain of six guessed factors, each within a factor of 3, your final answer is typically:',
+      choices: [
+        'Within a factor of 3',
+        'Within about an order of magnitude, because over- and under-guesses partially cancel',
+        'Useless — errors multiply so badly the answer means nothing',
+        'Exactly right if you guess carefully',
+      ],
+      answer: 1,
+      why: 'Errors compound as products, but independent guesses err in both directions and statistically cancel: a six-factor chain lands within 10× of truth almost always — good enough to sort feasible from absurd, which is the only question an estimate is asked.',
+    },
+    {
+      q: 'Which digits are significant when you add 1.2 + 3.45?',
+      choices: [
+        'All you can carry: 4.65',
+        'One decimal place: 4.7 — the result cannot be more precise than its least precise term',
+        'Two significant figures minimum: 4.65',
+        'Round to 5',
+      ],
+      answer: 1,
+      why: '1.2 really means "somewhere between 1.15 and 1.25", so claiming 4.65 fabricates a second decimal place of knowledge. For addition and subtraction the answer keeps the coarsest decimal place; for multiplication and division it keeps the fewest significant figures. Precision you did not earn is a lie in digits.',
+    },
+    {
+      q: 'The square–cube law says a scaled-up animal (all lengths × 10) has bone stress in its legs multiplied by:',
+      choices: [
+        '10 — like its weight',
+        '1 — stresses stay the same under pure scaling',
+        '100 — weight goes as volume (10³) while bone cross-section goes as length squared (10²)',
+        '1000',
+      ],
+      answer: 2,
+      why: 'Weight scales with volume (L³), load-bearing cross-section with area (L²). Scale an ant to elephant size and its stress rises a hundredfold — which is why elephants are not scaled ants: they need proportionally far thicker, more vertical legs. One line of dimensional reasoning, an entire zoology.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/engineering/intermediate/units-estimates-and-back-of-envelope">
   <h2>The idea</h2>
   <p>
-    Back-of-envelope estimation is <strong>the engineer\'s first superpower</strong>: getting
+    Back-of-envelope estimation is <strong>the engineer's first superpower</strong>: getting
     within an order of magnitude in minutes, before any detailed work — because it tells you
-    whether the idea is possible, absurd, or worth designing. Fermi estimated the Trinity
-    test\'s yield from shredded paper; the habit is the discipline.
+    whether the idea is possible, absurd, or worth designing. The full analysis takes weeks;
+    the estimate takes minutes; and the estimate gates everything, because a design that is
+    wrong by 100× will not be rescued by precision. At the Trinity test in July 1945, Enrico
+    Fermi — sheltering behind a bank wall, dropping shredded paper scraps as the blast wave
+    arrived and measuring how far they were blown — estimated the yield at about 10
+    kilotons. The measured value was around 20. A factor of two, from paper, in under a
+    minute. This page is that skill, made systematic: decomposition, bounding, unit
+    discipline, dimensional analysis, and the arithmetic of precision.
   </p>
 
   <Widget no="1" caption="decompose, bound, sanity-check, check units" widget="equationStep" config={fermiCfg} />
 
-  <h2>Classic Fermi problems as training</h2>
-  <ul>
-    <li><strong>Why estimates beat no answer:</strong> an order-of-magnitude answer sorts options now ("is the battery feasible at 10 kg?" — the EV lesson\'s energy density arithmetic); the detailed design can refine later, but only after the gate opens.</li>
-    <li><strong>Scaling laws are estimates grown up:</strong> how does X scale with size? Square–cube law (the mensuration lesson): strength ~L², weight ~L³ — one line of dimensional reasoning explains why giant ants are physically impossible and why elephants have thick legs.</li>
-    <li><strong>Unit systems cause real failures:</strong> Gimli Glider (1983, fuel in pounds vs kilograms — a 767 glided to a racetrack), Mars Climate Orbiter (1999). Every serious engineering organisation units-checks everything, twice.</li>
-    <li><strong>The professional habit:</strong> estimate before calculating, estimate before trusting any number anyone shows you (the data lesson\'s sanity-check, at industrial voltage).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Weinstein & Adam, Guesstimation; Mahajan, Street-Fighting Mathematics; the NASA Mars Climate Orbiter failure report (1999).</p>
+  <h2>The Fermi method, run end to end</h2>
+  <p>
+    Worked example — the classic: how many piano tuners work in Chicago? Never guess the
+    answer; decompose it into factors each of which is guessable. Chicago has roughly 3
+    million metro residents, say 1 million households. Perhaps 1 household in 5 owns a
+    piano (schools and venues add a bit, call it included): about 200,000 pianos. A piano
+    is tuned about once a year (professional performers more, living-room pianos less):
+    200,000 tunings per year. One tuner, tuning 4 pianos a day, 5 days a week, 50 weeks a
+    year, does about 1,000 tunings a year. So tuners ≈ 200,000 ⁄ 1,000 = <strong>200</strong>.
+    The commonly cited ground truth (Yellow Pages counts, at their era) is on the order of
+    a hundred — our factor-of-2 answer was arrived at in three lines of arithmetic, with
+    every factor debatable by a factor of 3 and the result nevertheless reliable. That is
+    the miracle and the point: independent errors partially cancel, so a chain of six
+    factors each good to ×3 typically lands within one order of magnitude of truth.
+  </p>
+  <p>
+    Why is one order of magnitude enough? Because estimation is a sorting device, not a
+    measuring device. "Will a laptop battery power a car?" — battery: ~0.5 kWh; moving a
+    car takes on the order of 20 kWh per 100 km. Off by 40×: absurd, next idea. "Will a
+    rooftop solar array power a house?" — a sunny 30 m² roof at ~20% efficiency yields
+    roughly 30 m² × 1 kW/m² × 0.2 × 5 equivalent sun-hours ≈ 30 kWh/day; a typical house
+    uses 20–30 kWh/day. Borderline-feasible: worth designing. The estimate did not build
+    either system; it correctly classified both, for free, before any engineer spent a
+    week on either. Also worth noticing: the tuning chain has a hidden sanity-check — if
+    you had concluded 20,000 tuners in Chicago, one tuner for every 150 people, your
+    comparison instinct (that would be more tuners than dentists) should fire the alarm
+    before any fact-checker does. Sanity against knowns is a reflex, not a step.
+  </p>
+
+  <h2>Units, mass and weight, and the disasters they cause</h2>
+  <p>
+    Units are not bookkeeping decoration; they are the part of the mathematics that is
+    load-bearing in the physical world. The SI system builds everything from seven base
+    units (metre, kilogram, second, ampere, kelvin, mole, candela) and, crucially,
+    separates <strong>mass</strong> (kilograms — quantity of matter, the same on the Moon)
+    from <strong>weight</strong> (newtons — the gravitational force on that mass,
+    W = mg, with g ≈ 9.81 m/s²). The imperial system muddies this deliberately: the
+    <em>pound-mass</em> (lbm) and <em>pound-force</em> (lbf) are different units that
+    coincide on Earth's surface only because the conversion constant g<sub>c</sub> =
+    32.174 lbm·ft/(lbf·s²) ≈ g. Write Newton's second law carelessly — F = ma instead of
+    F = ma/g<sub>c</sub> in imperial units — and you are off by that factor everywhere
+    gravity is not exactly Earth-standard.
+  </p>
+  <p>
+    The price of carelessness is on the record. On 23 September 1999 NASA lost the $327
+    million Mars Climate Orbiter because one team's software read thruster impulse data in
+    <strong>pound-force-seconds</strong> while the navigation software expected
+    <strong>newton-seconds</strong> — a factor of 4.45 injected at every correction burn,
+    enough that the spacecraft arrived at Mars on a trajectory too deep into the
+    atmosphere and was destroyed. In 1983 Air Canada Flight 143 (the "Gimli Glider") ran
+    out of fuel at 41,000 ft because the ground crew computed the fuel load in
+    <strong>pounds</strong> where the new metric 767 needed <strong>kilograms</strong> —
+    the aircraft glided 17 minutes to a disused airbase and landed on it. Both failures
+    were caught by no one, at any stage, because nobody performed a check that takes ten
+    seconds: do these units balance? The professional habit is therefore not "be careful"
+    (unverifiable) but dimensional checking at every line — mechanical, cheap, and it
+    would have saved both missions.
+  </p>
+  <p><em>Common misconception:</em> an estimate that is "only" within 10× is a failure.
+  Wrong. The purpose of the estimate is the decision it gates: 10 kg of battery or
+  1,000 kg? A 10-metre bridge or a 100-metre bridge? Detailed analysis can (and must)
+  follow — but only for the option the estimate allowed to pass. Precision applied to the
+  wrong order of magnitude is wasted precision.</p>
+
+  <h2>Dimensional analysis: results without equations</h2>
+  <p>
+    Units balance not just as a check but as a <em>derivation engine</em>. The method: list
+    the quantities a result can depend on, then demand that the units work out. Take a
+    pendulum. The period T can depend only on length L, mass m, and gravity g. Dimensions:
+    T = seconds; L = metres; m = kilograms; g = m/s². The only combination of L and g that
+    yields seconds is √(L/g) — mass cannot enter at all (no combination of metres and m/s²
+    makes kilograms cancel). So <strong>T ∝ √(L/g)</strong> falls out with no differential
+    equation, and the full solution (T = 2π√(L/g) for small swings) confirms the constant.
+    The same machine derives the drag law: a force on a body in a fluid can only be built
+    from density ρ, speed v and area A as F ∝ ρv²A — three lines, and you have the
+    quadratic drag every skydiver's terminal velocity obeys. And the same machine yields
+    scaling laws: strength scales with cross-section (length²) while weight scales with
+    volume (length³), so an animal scaled up 10× carries 10× the bone stress — which is why
+    giant ants are physically impossible and why elephants have pillar legs. One line of
+    dimensional reasoning; an entire chapter of biology, for free.
+  </p>
+
+  <h2>Precision: how many digits are real?</h2>
+  <p>
+    Every measured or guessed number carries uncertainty, and arithmetic must not
+    manufacture certainty. The rules of <strong>significant figures</strong> encode this.
+    In multiplication and division, the result keeps the fewest significant figures of any
+    factor: 3.2 × 4.56 = 15 (not 14.592). In addition and subtraction, it keeps the
+    coarsest decimal place: 1.2 + 3.45 = 4.7 (not 4.65), because 1.2's true value lies
+    anywhere in 1.15–1.25 and the second decimal of the sum is fiction. For propagated
+    errors the working rule: <em>relative</em> errors add under multiplication, and
+    multiply by the exponent under powers — a quantity computed from three measurements
+    each good to 1% cannot be trusted past about 3%. Ask any spreadsheet jockey quoting
+    seven decimals from three input numbers each known to 5%: those trailing digits are
+    noise in a suit.
+  </p>
+  <p>
+    Beyond rounding, engineering approximation has a formal toolkit. The simplest is
+    <strong>bracketing</strong>: prove the answer lies between a deliberately low and high
+    case. <strong>Linear (first-order Taylor) approximation</strong> replaces a function
+    with its tangent line for small changes: sin(x) ≈ x (in radians) for small x, so
+    sin(0.03) ≈ 0.03 — the small-angle approximation that makes pendulums and optics
+    tractable. And <strong>numerical root-finding</strong> makes "solve" mean "converge":
+    bisection brackets a root and halves the bracket each iteration — it needs about
+    log₂(10<sup>6</sup>) ≈ 20 iterations to go from an interval of 1 to a precision of
+    10<sup>−6</sup> — while Newton–Raphson uses the tangent line to jump much closer each
+    step, roughly doubling the number of correct digits per iteration. "Precision limits
+    and convergence" is the phrase on the syllabus, and this is its content: know how many
+    digits your method earns per iteration, and stop paying for more than the inputs
+    deserve.
+  </p>
+
+  <h2>The estimate-first culture</h2>
+  <p>
+    The habit generalises far beyond napkins. Estimate before calculating (so the calculator
+    has a target to be compared against); estimate before trusting any number anyone shows
+    you (a proposed "10 GWe solar farm on 5 km²" fails at the first line — 5 km² of even
+    perfect 1 kW/m² sunlight at 20% efficiency is 1 GWe peak, so the claim is out by 10×
+    and the proposal needs re-reading before discussion); estimate after calculating (the
+    Fermi check on your own answer — did the mass of that flywheel just come out heavier
+    than the car it goes in?). The mathematician's nightmare and the engineer's duty are
+    the same sentence: "it came out of the formula". A number that has never met a
+    sanity-check is a hypothesis pretending to be a result.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Fermi estimation as a scientific instrument.</strong> The Drake equation —
+    multiplying star-formation rates by planet fractions by probabilities of life,
+    intelligence and communication — is a Fermi decomposition with the numbers unknown;
+    its value was always the structure, exposing exactly which factor dominates our
+    ignorance. Epidemiology's early-2020 estimates (hospital beds needed, doubling times
+    from early case counts) were Fermi chains run under emergency conditions. The lesson
+    generalises: when the factors are uncertain but the structure is known, decompose
+    anyway — the chain tells you where one measurement would pay most.
+  </p>
+  <p>
+    <strong>Allometry: estimates grown into laws.</strong> Biology is where scaling
+    reasoning has been pushed furthest: metabolic rate scales as mass<sup>3/4</sup>
+    (Kleiber's law) rather than the naive mass<sup>1</sup>, and theoretical work ties such
+    exponents to network geometry (transport through branching supply networks). The
+    square–cube law is the zeroth-order version; real organisms are constrained optimisations
+    of it — bones scaled for load, hearts and lungs scaled for supply.
+  </p>
+  <p>
+    <strong>When estimates fail.</strong> They fail on <em>distributional</em> questions:
+    averages hide the tail (a "mean insurance payout" estimate can be right and the
+    solvency question still decided by the 1-in-100 event), and on any question whose
+    answer is bimodal ("does the reactor melt: yes or no" — a 50% estimate of a binary
+    catastrophe is not actionable comfort). Know the estimate's epistemic type: sorting
+    device, first measurement, or structure-of-ignorance map. Each is legitimate; confusing
+    them is not.
+  </p>
+  <p>
+    <strong>Open practice.</strong> The skill is now testable: interviewers at
+    quantitative firms and engineering firms use Fermi questions precisely because they
+    expose structured thinking under uncertainty. The training method is volume — one
+    estimate a day for a month (coffee drunk by a city, pixels on Earth's photos, bolts
+    in a bridge) and the decomposition reflex becomes automatic. The discipline underneath
+    never changes: break the question, bound the factors, multiply, check the units,
+    compare to something known.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Weinstein &amp; Adam, Guesstimation; Mahajan, Street-Fighting Mathematics; NASA Mars Climate Orbiter Mishap Investigation Board report (1999); Transportation Safety Board of Canada report on the Gimli Glider (1985).</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={fermiQuizCfg} />
 </TopicPage>

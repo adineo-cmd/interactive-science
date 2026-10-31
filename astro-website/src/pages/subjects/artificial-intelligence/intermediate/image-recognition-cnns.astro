@@ -10,6 +10,55 @@ const cnnCfg = {
     { math: '4 · The ImageNet moment (2012)', note: 'AlexNet cut image-classification error from 26% to 15% overnight using two gaming GPUs and ReLU units. Every lab pivoted within two years — the event that started the deep-learning decade.' },
   ],
 };
+
+const cnnQuizCfg = {
+  questions: [
+    {
+      q: 'A 3×3 kernel slides over a 224×224 image. What does "weight sharing" mean here?',
+      choices: [
+        'The kernel weights are shared between neighbouring pixels only',
+        'The same 9 numbers are used at every position of the image, so one edge detector works everywhere',
+        'Weights are copied from a pretrained network',
+        'Every layer uses identical weights',
+      ],
+      answer: 1,
+      why: 'A cat can appear anywhere in the frame, so a "vertical edge" detector trained at one position should run everywhere. Weight sharing collapses the parameter count from millions to 9 per filter and bakes translation tolerance into the architecture itself.',
+    },
+    {
+      q: 'Why did early deep stacks (before 2015) actually get worse when made deeper?',
+      choices: [
+        'They ran out of memory',
+        'They overfit less',
+        'Gradients faded or exploded through many layers, so the extra layers could not even be trained — fixed by ResNet skip connections',
+        'Too many filters',
+      ],
+      answer: 2,
+      why: 'Backpropagation multiplies gradients layer by layer; past a depth, they vanish or blow up and training stalls. Residual (skip) connections let each layer learn a small correction on top of an identity path, making 100+ layer networks trainable.',
+    },
+    {
+      q: 'Adversarial examples are dangerous because:',
+      choices: [
+        'They crash the network',
+        'They require retraining from scratch',
+        'Tiny, humanly invisible pixel perturbations flip the classification — exposing that models rely on fragile shortcuts, not human-like concepts',
+        'They only work on toy datasets',
+      ],
+      answer: 2,
+      why: 'Adding a carefully crafted, near-invisible noise pattern to a panda image made a strong classifier call it a gibbon with high confidence. The model optimised features humans do not use — a standing warning for security-critical vision systems.',
+    },
+    {
+      q: 'You have 500 labelled X-rays and need a classifier. The sane move is:',
+      choices: [
+        'Design a new CNN and train from scratch on the 500',
+        'Start from a network pretrained on millions of images and fine-tune it on your 500 (transfer learning)',
+        'Use k-means',
+        'Increase the threshold',
+      ],
+      answer: 1,
+      why: 'Early layers detect edges, textures and shapes — knowledge reusable across almost any imaging task. Fine-tuning a pretrained network from a few hundred examples is the standard route, and is why features (and biases) propagate between applications.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/image-recognition-cnns">
   <h2>The idea</h2>
@@ -18,17 +67,195 @@ const cnnCfg = {
     small learnable filters slide across the picture, stacking into layers that detect edges,
     then textures, then objects. The design borrows the visual cortex's own trick — local
     receptive fields, shared weights, hierarchies — and it is why computers can find cats,
-    tumours and pedestrians.
+    tumours and pedestrians. To a computer an image is just a grid of numbers — for a
+    224×224 colour photo, 224 × 224 × 3 ≈ 150,000 values — and the whole problem of vision
+    is turning that raw pixel soup into concepts like "pedestrian". The CNN is the
+    architecture that made that translation learnable at scale.
   </p>
 
   <Widget no="1" caption="the CNN pipeline, from filter to hierarchy to revolution" widget="equationStep" config={cnnCfg} />
 
-  <h2>From recognition to generation</h2>
-  <ul>
-    <li><strong>Object detection adds boxes:</strong> YOLO and friends localise many objects per frame in real time — the technology in self-driving perception and photo search.</li>
-    <li><strong>Segmentation labels pixels:</strong> medical imaging's workhorse — tumour boundaries, cell counting. A radiologist's assistant, not (yet) a replacement.</li>
-    <li><strong>Transfer learning is the default:</strong> start from a pretrained network (ImageNet or bigger), fine-tune on your few hundred examples. Training from scratch is now the exception — which is also how biases propagate between applications.</li>
-    <li><strong>Known failure modes:</strong> adversarial examples (invisible pixel changes flip classifications), texture bias (shape vs surface), and distribution shift (hospital A's scanner ≠ hospital B's). Evaluation must reflect deployment, not just the benchmark.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> LeCun (1998) LeNet; Krizhevsky, Sutskever & Hinton (2012); Goodfellow et al., Deep Learning ch. 9.</p>
+  <h2>Images as numbers, and the convolution operation</h2>
+  <p>
+    A grayscale image is a 2-D array of brightness values; a colour image is three of them
+    (red, green, blue channels). A <strong>convolution</strong> takes a tiny array of weights
+    — a kernel, typically 3×3 — and slides it over the image. At each position it multiplies
+    the kernel against the 3×3 patch of pixels beneath it, sums the products, and writes one
+    number: the output <strong>feature map</strong>. Wherever the image locally resembles the
+    pattern the kernel encodes, the output is large.
+  </p>
+  <p>
+    Worked example. Take the patch [[1, 2, 3], [4, 5, 6], [7, 8, 9]] and the classic vertical
+    edge detector [[−1, 0, 1], [−1, 0, 1], [−1, 0, 1]]. The dot product is (−1+3) + (−4+6) +
+    (−7+9) = 2 + 2 + 2 = 6. A bright right side against a dark left side produces a large
+    positive response — the filter has found a vertical brightness change. In early CNNs some
+    learned filters look almost exactly like this by hand-crafted example; the point of deep
+    learning is that the network <em>derives</em> the useful filters from data instead of an
+    engineer guessing them.
+  </p>
+  <p>
+    Why slide one small kernel instead of connecting every pixel to every neuron? Two
+    reasons, and the second is the reason CNNs exist. First, images are local: pixel
+    neighbourhoods are where structure lives. Second, <strong>weight sharing</strong>: a cat
+    can appear anywhere in the frame, so one edge detector should run at every position.
+    Compare parameter counts. A fully-connected hidden layer of 1,000 units over that
+    224×224×3 image needs about 150,000 × 1,000 ≈ 150 million weights. A convolutional
+    layer of 64 different 3×3 filters over 3 channels needs 64 × 3 × 3 × 3 = 1,728 weights.
+    Four orders of magnitude fewer — cheaper to train, harder to overfit, and structurally
+    committed to the right prior: the same pattern matters wherever it appears. (Two
+    engineering details complete the picture: <em>padding</em> adds a border so the output
+    map stays the same size, and <em>stride</em> skips positions to shrink it.)
+  </p>
+
+  <h2>Pooling and the hierarchy: how depth buys abstraction</h2>
+  <p>
+    After each convolution, a <strong>pooling</strong> layer summarises small neighbourhoods:
+    max-pooling keeps only the strongest activation in each 2×2 patch. The map shrinks by a
+    factor of 4, small translations stop mattering (a cat that moved two pixels still
+    triggers the same pooled unit), and the next layer works on a coarser view. Stack
+    convolve-pool-convolve-pool and something remarkable emerges. Layer 1's feature maps
+    respond to edges, blobs and colour gradients — at every position. Layer 2 composes those
+    into corners, stripes and textures. Layer 3 responds to object parts — eyes, wheels,
+    windows. Deeper layers respond to whole objects. Each layer's 3×3 view of the previous
+    layer's features amounts to a much larger <em>effective</em> receptive field on the
+    original image — a neuron at layer 5 can "see" a quarter of the picture.
+  </p>
+  <p>
+    Crucially, nobody specifies this hierarchy. The architecture only says "local filters,
+    shared, stacked"; the specific features emerge from training on labelled images. When
+    researchers visualised what trained networks had learned (deconvolution
+    reconstructions, Zeiler &amp; Fergus 2014; occlusion experiments), the hierarchy was
+    there, self-organised — the vindication of the approach. The biological echo is real:
+    Hubel and Wiesel's Nobel-winning work (1959–62) found simple cells in cat visual cortex
+    responding to oriented edges and complex cells tolerant to position, and Fukushima's
+    neocognitron (1980) translated that circuit idea into a layered network; LeCun's LeNet
+    (1989–98) added backpropagation and put CNNs to work reading bank cheque digits.
+  </p>
+
+  <h2>ReLU, and the ImageNet moment</h2>
+  <p>
+    Depth stalled for years because of the plumbing: early neuron activations (sigmoids)
+    squashed gradients as they flowed backward through many layers, so deep networks
+    trained slowly or not at all. The <strong>rectified linear unit</strong> — ReLU, simply
+    max(0, x) — changed that: it does not saturate for positive inputs, its gradient is
+    constant 1 on the active side, and it is nearly free to compute. Around the same time,
+    GPUs (built for video-game shading, which is just matrix arithmetic) offered parallel
+    compute at consumer prices.
+  </p>
+  <p>
+    These pieces converged in 2012, when Krizhevsky, Sutskever and Hinton's
+    <strong>AlexNet</strong> entered the ImageNet Large Scale Visual Recognition Challenge
+    — 1.2 million training images, 1,000 categories, scored by top-5 error (is the true
+    label among the model's five best guesses?). AlexNet reached 15.3% against the runner-up's
+    26.2% — a drop of eleven points in one year, delivered by two gaming GPUs, ReLUs,
+    dropout regularisation and clever data handling. Within two years every serious vision
+    lab had pivoted; by 2015 residual networks (ResNet) had pushed top-5 error to 3.6%,
+    below the roughly 5% a careful human achieves on the same task. The field calls this
+    the ImageNet moment because it is when "deep learning" stopped being a curiosity and
+    became the default method.
+  </p>
+  <p><em>Common misconception:</em> the network "sees" the way you do. Visualisation
+  experiments suggest otherwise — CNNs lean heavily on texture and local statistics where
+  humans use shape and context. A lesioned texture can fool both human and machine in
+  opposite ways, and models confidently misclassify objects photographed in unusual poses.
+  The networks solve the task they were trained on with features that are statistically
+  effective, not human-like.</p>
+
+  <h2>From classification to detection, segmentation and transfer</h2>
+  <p>
+    Whole-image classification ("this photo contains a dog") is only the base task.
+    <strong>Object detection</strong> both localises and labels many objects per image with
+    bounding boxes — YOLO-family models do it in one forward pass, fast enough for video,
+    which is what makes self-driving perception and photo search possible.
+    <strong>Semantic segmentation</strong> goes further and labels every pixel — the
+    boundary of the tumour, not just "tumour somewhere" — and is medical imaging's
+    workhorse (U-Net-style encoder-decoder architectures dominate). Radiologists use these
+    systems as second readers; the honest framing is a tireless assistant with superhuman
+    consistency in narrow tasks and superhuman fragility outside them.
+  </p>
+  <p>
+    And almost nobody trains vision networks from scratch any more.
+    <strong>Transfer learning</strong> starts from a network pretrained on millions of
+    labelled images and fine-tunes it on your few hundred — the early layers' edge and
+    texture knowledge transfers to X-rays, satellite photos or factory defects. This is
+    practical necessity (labelled data is expensive) and also a subtle risk vector:
+    whatever quirks and biases the source dataset encoded arrive free with the weights,
+    and evaluation on the new task will not necessarily reveal them.
+  </p>
+
+  <h2>Known failure modes</h2>
+  <p>
+    Three stand out, and each has changed practice. <strong>Adversarial examples</strong>:
+    add a mathematically crafted perturbation, invisible to humans, and a strong classifier
+    flips its answer with high confidence (the panda relabelled "gibbon" in the 2017
+    demonstration). The model has found decision boundaries humans do not share — a
+    security problem for anything adversarial actors can touch (road signs included).
+    <strong>Texture bias and shortcut learning</strong>: models exploit correlations —
+    a "skin lesion classifier" that learned ruler marks present in malignant-photo datasets;
+    a "sheep detector" that keyed on grass. If the training data contains a shortcut, the
+    optimiser will take it. <strong>Distribution shift</strong>: a model trained on one
+    hospital's scanners loses accuracy on another's; benchmarks are not deployment. The
+    professional response to all three is the same discipline: evaluate on data that looks
+    like the real world, test the failure cases on purpose, and monitor after launch —
+    because a broken model fails silently.
+  </p>
+
+  <h2>Data is the other half of the model</h2>
+  <p>
+    Architecture gets the glory, but the dataset decides the ceiling. ImageNet itself was a
+    product of labour as much as insight: over 14 million images, organised by WordNet
+    categories, largely labelled by crowdsourced Amazon Mechanical Turk workers — Fei-Fei
+    Li's argument being that the field was algorithm-rich and data-poor. The 2012 result
+    was as much a dataset event as an architecture event. Three data-side practices then
+    matter as much as any layer design. <strong>Data augmentation</strong> — random crops,
+    flips, colour jitters — manufactures the invariances you want the network to learn,
+    for free. <strong>Label noise and dataset bias</strong> propagate silently: benchmarks
+    overweight Western, well-lit, photogenic imagery, and models trained on them
+    underperform systematically on other populations (face-analysis error rates differing
+    across skin tones — the documented "gender shades" findings — are the canonical
+    warning). And <strong>evaluation design</strong> is a data decision: a held-out test
+    set from the same collection as training flatters the model; a test set from new
+    hospitals, new cameras, new years, tells the truth. In applied vision, the honest
+    ordering is usually: dataset first, architecture second.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The degradation problem and skip connections.</strong> Before 2015, deeper
+    plain networks sometimes performed <em>worse</em> than shallower ones even on training
+    data — not classic overfitting but an optimisation pathology (gradients fading or
+    exploding through the stack). ResNet's fix was architecturally simple and profound:
+    each block adds its output to its input (a skip connection), so a layer only needs to
+    learn the <em>correction</em> to the identity map. Suddenly 50-, 101-, even 152-layer
+    networks trained cleanly, and residual connections became standard equipment in
+    transformers too.
+  </p>
+  <p>
+    <strong>What a conv layer actually computes, quantitatively.</strong> The compute budget
+    matters for deployment: a 3×3 filter over a 224×224 map costs 9 multiply-adds per output
+    position per channel — one reason mobile and embedded vision uses reduced-precision
+    arithmetic, pruned networks and architectures designed for the phone, not the data
+    centre. Real-time video perception is as much an engineering achievement in arithmetic
+    economy as a modelling one.
+  </p>
+  <p>
+    <strong>The successor question.</strong> Convolution's translation sharing is one prior;
+    attention (as in Vision Transformers, from 2020) offers a different one — every patch
+    can consult every other, with positional encodings supplying the geometry. On enough
+    data, transformers match or beat CNNs at classification and now dominate vision-language
+    tasks; CNNs remain the efficiency champions and their inductive bias still wins when
+    data is scarce. The current synthesis: hybrid and pretraining-heavy approaches, where
+    architectures matter less than the scale and diversity of what they see.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Robustness is still unsolved — no vision system matches
+    human reliability under adversarial or shifted inputs. Causality is untouched: a CNN
+    learns correlations in pixels, not "what would happen if". And interpretability has not
+    settled: saliency maps show where a model looked, not always why it decided. Vision is
+    the field where deep learning won first, and it remains the field where the gap between
+    benchmark and understanding is most instructive.
+  </p>
+  <p class="sources"><strong>Sources:</strong> LeCun et al. (1998) LeNet; Krizhevsky, Sutskever &amp; Hinton (2012); Zeiler &amp; Fergus (2014); He et al. (2015) ResNet; Goodfellow, Bengio &amp; Courville, Deep Learning ch. 9; Russell &amp; Norvig, AIMA chs. 21, 25; Szegedy et al. (2013) on adversarial examples.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={cnnQuizCfg} />
 </TopicPage>

@@ -10,25 +10,217 @@ const mlpicCfg = {
     { math: '4 · Self-supervised: the modern bridge', note: 'Predict masked words or neighbouring image patches — labels generated from the data itself. This is how LLMs and vision models pretrain on the internet without hand-labelling, then fine-tune for tasks.' },
   ],
 };
+
+const mlpicQuizCfg = {
+  questions: [
+    { q: 'Mitchell\'s formal definition of learning involves three elements:', choices: ['data, code, servers', 'task T, experience E, performance measure P', 'input, model, output', 'train, test, deploy'], answer: 1, why: 'A program learns from experience E with respect to task T and performance measure P if its performance at T, measured by P, improves with E. The definition makes "learning" checkable rather than mystical.' },
+    { q: 'Predicting a house price from features is…; grouping customers with no target variable is…', choices: ['unsupervised; supervised', 'supervised (regression); unsupervised (clustering)', 'reinforcement; self-supervised', 'supervised (classification); reinforcement'], answer: 1, why: 'A numeric target variable makes it supervised regression; no labels, structure-hunting makes it unsupervised. The learning signal — labels or their absence — is the defining question.' },
+    { q: 'Why is clustering output called a "suggestion" rather than a result?', choices: ['it is always wrong', 'the algorithm defines similarity itself; whether the structure is meaningful is a human judgment', 'clusters cannot be computed', 'it only works on text'], answer: 1, why: 'k-means will always find k clusters, whatever you feed it — the found structure is real arithmetic, but its meaning (and even the right k) requires human interpretation and validation.' },
+    { q: 'Self-supervised pretraining changed the field because it…', choices: ['removed the need for data', 'generated labels from the data itself, so scale was no longer bottlenecked by human labelling', 'made GPUs unnecessary', 'replaced reinforcement learning'], answer: 1, why: 'Masked-word or next-patch prediction needs no human labels — the internet labells itself — which unlocked training at scales no annotation budget could reach, and produced the foundation models.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/machine-learning-in-one-picture">
   <h2>The idea</h2>
   <p>
-    The AI field organises itself into four learning paradigms, defined by <strong>where the
-    learning signal comes from</strong>: labelled examples (supervised), raw structure
-    (unsupervised), reward (reinforcement), or the data itself (self-supervised). Everything
-    from spam filters to ChatGPT fits one of these boxes — and knowing which box tells you what
-    data you need and what can go wrong.
+    The AI field organises itself into four learning paradigms, defined by a single
+    question: <strong>where does the learning signal come from?</strong> Labelled
+    examples (supervised), raw structure (unsupervised), reward from actions
+    (reinforcement), or the data itself (self-supervised). Everything from spam
+    filters to ChatGPT fits one of these boxes — and knowing which box tells you
+    immediately what data you need, what failure modes to expect, and what the
+    result will and will not be able to do.
+  </p>
+  <p>
+    One definition anchors everything. Tom Mitchell's (1997): a program
+    <strong>learns from experience E with respect to task T and performance measure P
+    if its performance at T, measured by P, improves with E</strong>. The definition is
+    deliberately unromantic — no consciousness, just measurable improvement from
+    exposure — and it is what makes machine learning an engineering discipline: you
+    can state the task, pick the signal, and measure whether the experience helped.
+    This lesson walks the four sources of signal, then the decision framework for
+    choosing between them.
   </p>
 
   <Widget no="1" caption="the four paradigms, defined by their learning signal" widget="equationStep" config={mlpicCfg} />
 
+  <h2>Supervised: learning from labelled examples</h2>
+  <p>
+    The workhorse of applied ML. You supply examples with answers — emails marked
+    spam/not-spam, houses with sold prices, X-rays with diagnoses — and an algorithm
+    finds the mapping from inputs to outputs. Two sub-species by output type:
+    <strong>classification</strong> (discrete labels: spam or not, cat or dog) and
+    <strong>regression</strong> (continuous values: a price, a temperature). The
+    machinery: a model (a family of functions with adjustable parameters), a loss
+    function measuring wrongness on the examples, and an optimiser adjusting
+    parameters to reduce the loss (the neural-networks lesson builds this loop by
+    hand). The critical concept is <strong>generalisation</strong>: the goal is not
+    performance on the training examples but performance on <em>new</em> ones — which
+    is why data is split into train and test sets, and why memorising the training
+    data (overfitting) is the field's central villain. A worked shape: 10,000
+    labelled loans, 8,000 for training, 2,000 held out; a model that achieves 95%
+    accuracy on its own training data and 71% on the held-out set has learned the
+    training set, not lending — the gap between the two numbers is the most
+    important number in applied ML.
+  </p>
+  <p>
+    Where the labels come from is half the engineering: human annotation (expensive,
+    slow, biased by whoever paid for it), historical records (free, but they encode
+    the past's decisions and biases — the model learns last year's lending policy,
+    not the truth), or logged behaviour (clicks as labels — which measure what users
+    did, not what was right). The supervised paradigm's whole character — its power
+    and its pathologies — flows from this: <strong>the model can only be as good as
+    the signal in the labels</strong>.
+  </p>
+
+  <h2>Unsupervised: finding structure without labels</h2>
+  <p>
+    No answers supplied — just data, and the question "what structure is in here?".
+    The three canonical jobs. <strong>Clustering</strong> (k-means is the classic:
+    pick k centroids, assign each point to its nearest, move each centroid to its
+    cluster's mean, repeat until still — watch it converge on customer data into
+    spend-frequency segments); <strong>dimensionality reduction</strong> (PCA finds
+    the directions of greatest variance, so 200 correlated features become 10
+    informative axes — compression that makes later modelling possible and reveals
+    what actually varies); <strong>anomaly detection</strong> (model what "normal"
+    looks like, flag what doesn't — fraud, faults, intrusions). The epistemological
+    caution from the widget matters most here: the algorithm defines similarity
+    itself (k-means measures distance; it will happily cluster by height when you
+    meant spending), so clusters are <em>suggestions</em> requiring human
+    interpretation — and k will always find k clusters whatever you feed it. The
+    validation is practical: do the segments predict different behaviour? Do the
+    anomalies, checked by hand, turn out to be real? Unsupervised structure earns
+    trust only by usefulness.
+  </p>
+
+  <h2>Reinforcement: learning from reward</h2>
+  <p>
+    The paradigm of <strong>sequential decisions</strong>: an agent acts in an
+    environment, the environment returns reward (win, score, profit), and the agent
+    adjusts its policy — its action-choosing rule — toward more reward. The
+    distinctive difficulty is <strong>credit assignment</strong>: a chess move's
+    value shows up fifty moves later, so which of the fifty actions earned the
+    reward? And its second difficulty is the <strong>exploration–exploitation
+    dilemma</strong>: the agent must try suboptimal actions to discover better ones
+    while simultaneously cashing in on what it already knows. The triumph that
+    recast the field: AlphaGo (2016) beat Lee Sedol 4–1 — move 37 of game 2, a
+    shoulder hit so alien that commentators first called it a mistake, then realised
+    it was play no human would have found, from a system that had trained against
+    itself. The costs are symmetrical: reinforcement learning is sample-hungry
+    (millions of games are cheap in Go, expensive in robotics), and reward functions
+    are dangerous to specify — the agent optimises <em>the reward you wrote</em>,
+    not the intention you had (the specification problem that safety research
+    exists for). Modern LLM tuning (RLHF — reinforcement learning from human
+    feedback) brought the paradigm into the mainstream: humans rank responses, a
+    reward model learns the ranking, and the language model is nudged toward it.
+  </p>
+
+  <h2>Self-supervised: the label generator</h2>
+  <p>
+    The bridge that made the modern era possible, and the quiet idea behind it:
+    <strong>labels can be manufactured from the data itself</strong>. Mask a word and
+    ask the model to predict it (the answer is in the sentence); show half an image
+    and ask for the other half; jumble a sentence and ask for the order. No human
+    annotation — the data is its own teacher — so the scale bottleneck (labelling
+    costs money; the internet is free) disappears. The recipe that now dominates:
+    <strong>pretrain</strong> self-supervised on enormous raw corpora (learning
+    language, images, audio as such), then <strong>fine-tune</strong> on small
+    supervised sets for specific tasks (or align with human feedback). Every
+    foundation model — the LLMs, the image encoders behind modern vision systems —
+    is this two-step. Notice what it changes conceptually: the paradigm is
+    supervised learning with an automated label factory, which is why it inherits
+    supervised learning's mechanics (loss, generalisation, overfitting) at a scale
+    where the old intuitions about data volume stop applying.
+  </p>
+
   <h2>Choosing a paradigm by problem shape</h2>
-  <ul>
-    <li><strong>Have labelled history?</strong> Supervised: churn prediction, fraud, pricing. The workhorse — most business ML is this.</li>
-    <li><strong>No labels, want structure?</strong> Unsupervised: customer segments, document grouping, anomalies. Results need human interpretation — clusters are suggestions, not truths.</li>
-    <li><strong>Sequential decisions with feedback?</strong> Reinforcement: control, game-playing, page optimisation. Great power, fragile training (the RL lesson covers it).</li>
-    <li><strong>Massive raw data, few labels?</strong> Self-supervised pretrain + fine-tune — the recipe behind every modern foundation model.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Goodfellow, Bengio & Courville, Deep Learning; OpenAI, "Learning from human preferences"; LeCun, "A Path Towards Autonomous Machine Intelligence".</p>
+  <p>
+    The decision framework, as questions. <strong>Have labelled history?</strong>
+    Supervised — churn prediction, fraud, pricing, diagnosis; start here, it covers
+    most business ML. <strong>No labels, want structure?</strong> Unsupervised —
+    segmentation, grouping, anomaly flagging; budget human time for interpreting
+    what comes out. <strong>Sequential decisions with feedback and a simulator or
+    live environment?</strong> Reinforcement — control, game-playing, optimising a
+    recommender; budget for fragility. <strong>Massive raw data, few labels, and a
+    downstream task?</strong> Self-supervised pretrain then fine-tune — or, the
+    increasingly common answer, <em>use someone else's pretrained foundation
+    model</em> and spend your labelled budget on fine-tuning. Two honest caveats
+    close the framework: real systems are hybrids (a self-supervised backbone with
+    a supervised head, tuned with reinforcement from human preferences — the LLM
+    stack is all four paradigms in one artefact), and the paradigm choice does not
+    excuse the data-quality discipline of the data-science strand — every paradigm
+    eats the dataset it is given.
+  </p>
+
+  <h2>The vocabulary that spans all four</h2>
+  <p>
+    Learn these once and every ML conversation becomes readable. <strong>Features</strong>:
+    the input variables fed to the model (the columns). <strong>Model</strong>: the
+    parameterised function being fitted. <strong>Training</strong>: adjusting
+    parameters to reduce loss on examples. <strong>Loss</strong>: the wrongness
+    score. <strong>Generalisation</strong>: performance on unseen data — the actual
+    objective. <strong>Overfitting/underfitting</strong>: memorising noise versus
+    missing signal — diagnosable by the train-versus-test gap (overfit: great
+    train, poor test; underfit: poor both). <strong>Train/validation/test</strong>:
+    the three-way split — fit on train, tune choices on validation, report once on
+    test (touching test repeatedly is how test sets quietly become training data —
+    the reproducibility sin of the field). And <strong>inference</strong>: the
+    trained model used in production, where latency, cost and drift (the world
+    changing under a frozen model) become the engineering problems. With that
+    vocabulary, the neural-networks lesson's backpropagation will read as one
+    particular — and spectacularly successful — way of doing the training step.
+  </p>
+
+  <h2>How the paradigms fail: the failure mode map</h2>
+  <p>
+    Each paradigm fails characteristically, and knowing the signature is half of
+    operations. <strong>Supervised</strong> fails through its labels: label noise
+    caps accuracy, historical bias replicates history (the model learns last
+    year's discrimination as this year's pattern), and <strong>leakage</strong> — a
+    feature that encodes the answer indirectly (the "cancelled" flag that only
+    exists after churn) — produces spectacular test scores that evaporate in
+    production. <strong>Unsupervised</strong> fails through interpretation: the
+    structure is real arithmetic but possibly meaningless — clusters that mirror
+    the data collection process rather than the world (two sensors, two
+    collection eras), and k chosen because the slide needs three segments.
+    <strong>Reinforcement</strong> fails through specification: reward hacking
+    (the agent exploits the metric — the boat-racing agent that looped in circles
+    to farm waypoints rather than finishing the race), and sim-to-real gaps where
+    policies trained in simulation meet physics. <strong>Self-supervised</strong>
+    fails through its shortcuts: the model learns the easiest predictable
+    feature of the masking task, which may not be the understanding you wanted
+    (image models predicting from watermark position rather than content). The
+    map's lesson is uniform: <strong>every paradigm optimises the signal you gave
+    it, not the intention you had</strong> — which is why evaluation discipline
+    (held-out data, human checks, production monitoring) is the permanent layer
+    above all four boxes.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four notes from the expert shelf. <strong>No free lunch</strong>: averaged over
+    all possible problems, no learning algorithm beats any other — every
+    algorithm's power comes from assumptions about the world (its
+    <em>inductive bias</em>: convolutions assume locality; recurrence assumes
+    sequence; linear models assume linearity), which is why matching the model's
+    bias to the problem's structure matters more than model choice among
+    reasonable candidates. <strong>Data-centric AI</strong>: the recent corrective
+    to model obsession — for fixed compute, cleaning and rebalancing 1,000 labels
+    often beats upgrading the architecture, because the label noise caps the
+    achievable accuracy (a model cannot learn signal the labels do not contain).
+    <strong>Where the paradigms blur</strong>: semi-supervised (few labels, many
+    unlabelled examples), weak supervision (noisy programmatic labels),
+    imitation learning (demonstrations as reward-shaped supervision) — the
+    taxonomy is a map of the learning <em>signal</em>, and hybrid signals are the
+    norm at the frontier. <strong>Evaluation is the discipline that survives
+    every paradigm</strong>: whatever the signal, the questions stay the same —
+    measured on what population, against what baseline, with what leakage
+    risks — and the lessons that drilled them (the data-science strand) apply
+    unchanged to a 500-billion-parameter model. Hold onto the map in this lesson
+    and every model you meet — from a spreadsheet-sized regression to a frontier
+    LLM — arrives pre-explained: ask what the signal is, and the paradigm
+    announces itself.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Mitchell, Machine Learning (1997); Goodfellow, Bengio &amp; Courville, Deep Learning (2016); Silver et al., "Mastering the game of Go" (2016); LeCun, "A Path Towards Autonomous Machine Intelligence" (2022); Bommasani et al., "On the Opportunities and Risks of Foundation Models" (2021).</p>
+  <Widget no="2" caption="check yourself: the four learning signals" widget="quiz" config={mlpicQuizCfg} />
 </TopicPage>

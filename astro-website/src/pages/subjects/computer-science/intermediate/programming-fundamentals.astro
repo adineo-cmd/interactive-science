@@ -10,27 +10,200 @@ const progCfg = {
     { math: '4 · Functions — the reusable machine', note: 'Wrap steps under a name, feed inputs, get outputs. Functions are how programs grow beyond a page: define once, call anywhere.' },
   ],
 };
+
+const progQuizCfg = {
+  questions: [
+    { q: 'Why must the running total be initialised before the loop?', choices: ['style', 'the loop adds to it — starting value must exist', 'Python requires it', 'to make the loop faster'], answer: 1, why: 'total = total + price reads the old value; if none exists, the first iteration errors (or, in looser languages, produces nonsense). Initialisation before the loop is the pattern\'s contract.' },
+    { q: 'The loop for i from 0 to 9 on a 10-element array is correct because…', choices: ['arrays start at 1', 'indexes run 0..9 for 10 elements', 'the 10th element is skipped', 'it depends on the array'], answer: 1, why: 'Zero-indexing means valid indexes are 0 through n−1. Writing "to 10" is the classic off-by-one: it walks one past the end.' },
+    { q: 'A local variable differs from a global one in that it…', choices: ['persists after the function returns', 'exists only inside its function', 'cannot hold numbers', 'is always faster'], answer: 1, why: 'Locals are created on call and destroyed on return — which is why functions cannot (and should not) reach into each other\'s variables, and why parameters and return values carry information across the boundary.' },
+    { q: 'Appending to a file (rather than overwriting it) is the right mode when…', choices: ['the file is large', 'you want to keep existing contents and add to the end', 'the data is numeric', 'the file is read-only'], answer: 1, why: 'Write mode typically truncates; append mode preserves history — the log-file behaviour, and the reason "append" is its own mode rather than a style choice.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/intermediate/programming-fundamentals">
   <h2>The idea</h2>
   <p>
-    Programming is giving unambiguous instructions to a machine that does exactly what you say —
-    not what you mean. Four constructs carry almost every program ever written:
-    <strong>variables</strong> (remember), <strong>conditionals</strong> (decide),
-    <strong>loops</strong> (repeat), and <strong>functions</strong> (package). Learn these in any
-    language — Python is the friendliest first — and every other language is a dialect with
-    different punctuation.
+    Programming is giving unambiguous instructions to a machine that does exactly what
+    you say — not what you mean. Four constructs carry almost every program ever
+    written: <strong>variables</strong> (remember), <strong>conditionals</strong> (decide),
+    <strong>loops</strong> (repeat), and <strong>functions</strong> (package). Learn them
+    in any language — Python is the friendliest first — and every other language is a
+    dialect with different punctuation. This lesson adds the three structures the
+    syllabus names alongside the concepts: <strong>arrays</strong> (the container that
+    makes loops worth running), <strong>file handling</strong> (memory that survives the
+    program ending), and the craft habits — error reading, tracing, naming — that
+    separate working programs from demo programs.
+  </p>
+  <p>
+    The unambiguity is the hard part, and it is worth naming precisely: a computer has
+    no common sense to repair your intention. "Add up the prices" is fine for a human;
+    a machine needs the initial value of the total, the order of iteration, and what to
+    do at the last item. Everything in this lesson exists to translate intention into
+    that level of precision without losing your mind — the constructs are the vocabulary,
+    the arrays and files are the nouns, and the habits are the proofreading.
   </p>
 
   <Widget no="1" caption="the four constructs — a complete program's skeleton" widget="equationStep" config={progCfg} />
 
-  <h2>Learning the craft properly</h2>
-  <ul>
-    <li><strong>Read errors as clues, not insults.</strong> A traceback names the file, line and complaint. Beginners fear red text; professionals read it first.</li>
-    <li><strong>Trace by hand.</strong> Write three values on paper and walk your loop one step at a time. Most bugs surrender to manual tracing before any debugger opens.</li>
-    <li><strong>Naming is half the program.</strong> x vs customer_total: the computer doesn't care, but the human reading it in six months is you.</li>
-    <li><strong>Types matter even in loose languages:</strong> "5" + 3 is "53" in JavaScript and an error in Python. Knowing your data's type prevents a whole genre of bug.</li>
-    <li><strong>Small and working beats big and broken:</strong> write two lines, run them, repeat. Programs are grown, not written.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Python Software Foundation tutorial; Kernighan & Ritchie, The C Programming Language (the classic); Zed Shaw, Learn Python the Hard Way.</p>
+  <h2>Programming concepts: values, names and types</h2>
+  <p>
+    A <strong>variable</strong> is a name bound to a value: <code>age = 17</code> stores
+    17 under the name age, and every later mention of age fetches the current binding.
+    A <strong>constant</strong> is the same idea with a promise not to change it —
+    <code>MAX_SPEED = 120</code> written once in capitals — which documents intent and
+    lets a change happen in exactly one place. <strong>Data types</strong> describe what
+    operations make sense: integers (whole numbers), reals/floats (decimals), strings
+    (text), characters, booleans (True/False). Types matter even in languages that
+    don't enforce them: "5" + 3 is "53" in JavaScript (string concatenation) and a
+    TypeError in Python — the same symbols, different type logic, a whole genre of bug
+    prevented by knowing your data's type. <strong>Casting</strong> converts explicitly:
+    int("5") + 3 is 8; str(5) + "3" is "53". Every input from a keyboard or file arrives
+    as a string, so "read a number" always means "read text, then cast it" — a
+    beginner's first runtime error, and a permanent professional reflex.
+  </p>
+
+  <h2>Selection and iteration: the two control flows</h2>
+  <p>
+    <strong>Selection</strong> is the fork: <code>if score greater or equal 50: print
+    "pass" else: print "fail"</code>, extended with elif chains for multiple cases and
+    nested ifs for compound decisions. The discipline: conditions are boolean
+    expressions (comparisons joined by and/or/not), and the classic bugs are boundary
+    bugs — greater than versus greater-or-equal at exactly the pass mark. Write the
+    boundary case as an explicit test: a score of exactly 50 must appear in your test
+    data. <strong>Iteration</strong> comes in two shapes. Count-controlled loops
+    (<code>for i in range(10)</code>) run a known number of times — the natural pair
+    with arrays. Condition-controlled loops (<code>while</code>) run until a condition
+    flips — the natural pair with input ("keep asking until valid") and with files
+    ("until end of file"). The two classic failure modes are the infinite loop
+    (the condition never becomes false — the update line is missing) and the loop that
+    runs once too often. Both surrender to a trace table: write the loop variable's
+    value in each row and watch the final iteration with your own eyes.
+  </p>
+
+  <h2>Arrays: the container that powers loops</h2>
+  <p>
+    An <strong>array</strong> (Python calls its version a list) is an indexed sequence
+    of values under one name: <code>scores = [72, 85, 91, 66]</code>, with items fetched
+    by index — <code>scores[0]</code> is 72. Zero-based indexing is the convention to
+    internalise: n elements occupy indexes 0 through n−1, so the loop
+    <code>for i in range(len(scores))</code> touches each exactly once, and writing
+    <code>scores[len(scores)]</code> is the canonical off-by-one crash. Arrays earn
+    their place by making data and loops compose: the total pattern becomes three
+    lines — total ← 0; for each score in the array: total ← total + score; average ←
+    total / length. Two-dimensional arrays extend the idea to grids — a rainfall
+    table of 52 weeks by 7 days is <code>rain[week][day]</code>, and summing a row
+    (one week) versus the whole grid (the year) is a loop nested inside a loop,
+    the outer walking weeks while the inner walks days. The syllabus's array
+    operations are exactly these: traverse, search (linear), insert, delete — each
+    one a two-line pattern once indexing is solid, and each one the same in pseudocode,
+    Java, Python or VB.
+  </p>
+
+  <h2>Functions: packaging behaviour</h2>
+  <p>
+    A <strong>function</strong> wraps steps under a name: define
+    <code>average(scores)</code> once — total over length, rounded or not as you
+    choose — and call it from anywhere. The mechanics matter: <strong>parameters</strong>
+    are the function's named inputs; <strong>arguments</strong> are the actual values
+    supplied at each call; the <strong>return value</strong> is the output handed back
+    to the caller (<code>avg = average(readings)</code>). <strong>Scope</strong> is the
+    rule that keeps this sane: variables created inside a function are local — they
+    exist during the call and vanish after — so functions communicate through
+    parameters and returns, not by reaching into each other's variables. That
+    discipline is what makes functions reusable and testable in isolation: average()
+    neither knows nor cares whether its array came from a keyboard, a file or another
+    function. The design habit that follows: when a program grows past a page, it
+    should be a set of small named functions, each doing one thing, with names that
+    say what — <code>customer_total</code> over <code>x</code>; the computer does not
+    care, but the human reading it in six months is you.
+  </p>
+
+  <h2>File handling: memory that outlives the program</h2>
+  <p>
+    Variables die with the process; files persist. The pattern is universal across
+    languages: <strong>open</strong> a file in a mode (read, write, append), operate,
+    <strong>close</strong> (or let a with-block close it for you). Write mode creates
+    or truncates; append mode preserves existing contents and adds at the end — the
+    difference between a report and a log, and a classic exam question. Reading runs
+    to end-of-file: the while-not-EOF loop is the file twin of the while loop above.
+    Text files are lines; CSV files are lines with comma-separated fields (open in any
+    spreadsheet — the data-science lessons' raw material); records with mixed fields
+    get split on read and joined on write. Worked shape: read every line of
+    results.csv, split each line on commas, cast the third field to a number, total
+    and count — and you have the standard "process a data file" algorithm that the
+    data-science strand will spend whole lessons industrialising.
+  </p>
+
+  <h2>The craft: errors, tracing, small-and-working</h2>
+  <p>
+    Errors come in three families with three responses. <strong>Syntax errors</strong>
+    (missing colon, unbalanced bracket) are caught before anything runs — read the
+    message, fix the line. <strong>Runtime errors</strong> (dividing by zero, index
+    out of range, casting "hello" to int) crash mid-run — the traceback names the file,
+    line and complaint, and beginners who fear red text learn to read it first.
+    <strong>Logic errors</strong> are the worst: the program runs and gives wrong
+    answers — no message will ever help, and the defence is the algorithm lesson's
+    trace table plus the boundary-test discipline. The habits that bind the lesson
+    together: trace by hand before opening a debugger (most bugs surrender to manual
+    tracing); keep types in mind even in loose languages; name things for readers,
+    not for the machine; and grow programs small-and-working — write two lines, run
+    them, repeat. Programs are grown, not written; every large working program is a
+    small working program that was never allowed to stop working.
+  </p>
+
+  <h2>A worked program: from spec to working code</h2>
+  <p>
+    Assemble the constructs on one spec, because the assembly is the skill. Spec:
+    "Read n temperatures, then report the highest, the lowest and the average."
+    Decompose: read the count; read the values into an array; compute max (seed with
+    the first, replace on bigger); compute min (same logic, mirrored); compute average
+    (total divided by count, guarded for count zero — the boundary case again); print
+    all three. Now map each piece to a construct: the reading is a count-controlled
+    loop filling an array; the statistics are a single traversal loop doing three
+    updates; the printing is selection for formatting. Write it in pseudocode first —
+    every line unambiguous — then type it, run it on normal data ([10, 20, 30] → max
+    30, min 10, avg 20), then boundary data (one value; all equal values; n = 0), then
+    erroneous data (a letter at the prompt). Total: about fifteen lines. The
+    instructive part is not the program — it is that every design decision was one of
+    this lesson's patterns, and every test was one of the algorithm lesson's three
+    data classes. The craft is the composition, not the vocabulary.
+  </p>
+
+  <h2>Beyond arrays: records and key-value structures</h2>
+  <p>
+    Arrays hold values of one kind under numeric indexes; two structures extend them
+    toward real data. A <strong>record</strong> bundles named fields of mixed types —
+    a student is name (string), age (integer), grades (array) — so one unit travels
+    through the program: read a record, store records in an array, sort the array by
+    any field. This is exactly the shape of a CSV row (split on read, joined on
+    write), which is why files-of-records is the bridge between this lesson and the
+    data-science strand: a spreadsheet is an array of records that someone else
+    already typed. A <strong>key-value structure</strong> (dictionary, map, hash)
+    indexes by meaning instead of position — ages["Amara"] instead of ages[3] —
+    trading order for instant lookup by name. Arrays answer "what is at position
+    i?"; dictionaries answer "what do we know about X?"; records group the X's
+    attributes; and files persist all of it. Almost every program ever written is
+    some arrangement of those four moves.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Three refinements for the curious. <strong>The named-box model is a
+    simplification</strong>: in Python, names are labels bound to objects, not boxes
+    holding values — so assignment copies the binding, not the object, and two names
+    can label one list (mutate it through either and both see the change). This is
+    call-by-object-reference, and it explains bugs that surprise everyone exactly
+    once. <strong>Zero-indexing has a logic</strong>: an index is an offset from the
+    start — element i lives i slots past the beginning — which makes ranges
+    half-open and composition cleaner; it is a design choice, not an accident
+    (Fortran and Pascal index from 1; the machine-index-from-zero lineage won).
+    <strong>Interpreted versus compiled</strong>: Python translates and executes line
+    by line (fast to develop, slower to run); C-family languages compile to machine
+    code first (slower to develop, faster to run) — and the logic-gates lesson shows
+    what the compiled code finally becomes: voltages through gates. The stack closes:
+    four constructs, two data structures, one file discipline — everything above is
+    arrangement.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Python Software Foundation tutorial; Kernighan &amp; Ritchie, The C Programming Language (the classic); Cambridge IGCSE/A Level Computer Science programming syllabus sections.</p>
+  <Widget no="2" caption="check yourself: the four constructs and their containers" widget="quiz" config={progQuizCfg} />
 </TopicPage>

@@ -10,6 +10,55 @@ const thermoCfg = {
     { math: '4 · Heat exchangers do the quiet work', note: 'Most thermal plant area is heat exchangers — transferring heat between streams without mixing. Design trade: surface area vs pumping power; fouling (dirt) is the eternal enemy of the maintenance schedule.' },
   ],
 };
+
+const thermoQuizCfg = {
+  questions: [
+    {
+      q: 'A geothermal plant has steam at 150 °C (423 K) and rejects to 15 °C (288 K). Its maximum possible efficiency is:',
+      choices: [
+        'About 32% — and no clever engineering beats this',
+        'About 68%',
+        'About 100% with good insulation',
+        'Undefined without knowing the working fluid',
+      ],
+      answer: 0,
+      why: 'Carnot: 1 − 288/423 = 0.32. The ceiling depends only on the two temperatures — not on the fluid, the design or the budget. This is why geothermal plants are ~10–20% efficient: physics, not incompetence, and the reason engineers fight for every degree of source temperature.',
+    },
+    {
+      q: 'A heat pump with COP 4 delivers 4 kWh of heat per 1 kWh of electricity. Why is this not a first-law violation?',
+      choices: [
+        'It is — marketing numbers are always wrong',
+        'The extra energy is heat pumped from outside: the first law counts inputs, and the machine transports existing heat, it does not create energy',
+        'Heat is not energy',
+        'The outdoor air is warm',
+      ],
+      answer: 1,
+      why: 'Delivered heat = electrical work in + heat drawn from outdoors. The first law is satisfied exactly; what the COP exploits is the second law\'s permission to move heat the "wrong" way by paying work — with a Carnot ceiling on how far the wrongness can be pushed for the price.',
+    },
+    {
+      q: 'Burning 1 kg of methane produces about 2.75 kg of CO₂. Where does the extra mass come from?',
+      choices: [
+        'Mass-energy conversion',
+        'It does not — the scale is wrong',
+        'Atmospheric oxygen joins the carbon: each CH₄ + 2O₂ → CO₂ + 2H₂O reaction adds two oxygens to every carbon',
+        'Catalysts',
+      ],
+      answer: 2,
+      why: 'Carbon weighs 12, oxygen 16: 16 kg of methane grabs 64 kg of oxygen to make 44 kg of CO₂ and 36 kg of water. The chimney mass is mostly imported from the air — which is why fuel-to-emissions arithmetic is stoichiometry you can do in your head.',
+    },
+    {
+      q: 'Air at 25 °C and 60% relative humidity has a dew point near 17 °C. That means condensation will form on:',
+      choices: [
+        'Any surface below 25 °C',
+        'Any surface below 60 °C',
+        'A cold-drink glass at about 10 °C, but not on a wall at 20 °C',
+        'Nothing — 60% is dry air',
+      ],
+      answer: 2,
+      why: 'Cool the air locally below ~17 °C and its vapour pressure exceeds saturation: water condenses. The glass (well below 17 °C) sweats; the 20 °C wall stays dry. Dew point is the design temperature behind condensation control, pipe insulation and mould prevention.',
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/engineering/intermediate/thermodynamics-for-engineers">
   <h2>The idea</h2>
@@ -17,17 +66,186 @@ const thermoCfg = {
     Engineering thermodynamics is the <strong>physics lesson turned into machinery</strong>: energy
     balances on control volumes, cycles that convert heat to work (and work to cooling), and
     efficiency ceilings that decide what every power plant, engine and refrigerator can ever
-    achieve.
+    achieve. The foundational tier gave you the concepts — temperature, heat, the gas laws.
+    The intermediate move is the engineer's: wrap any machine in an imaginary boundary
+    (<strong>control volume</strong>), account for every joule crossing it, and use the second
+    law to know in advance how much of the fuel's exergy you can ever win. Between those
+    two laws and the property tables of real fluids sits the whole thermal industry.
   </p>
 
   <Widget no="1" caption="balances, the Carnot ceiling, cycles, heat exchangers" widget="equationStep" config={thermoCfg} />
 
-  <h2>Where the theory meets the machines</h2>
-  <ul>
-    <li><strong>Combined-cycle plants are Carnot\'s gift:</strong> gas turbine (Brayton) on top, its hot exhaust boiling steam (Rankine) below — efficiency ~64% (the best thermal machines ever built) by using the same fuel twice at different temperatures.</li>
-    <li><strong>Heat pumps are refrigerators pointed the other way:</strong> moving heat rather than generating it — COP 3–5 (300–500% "efficiency", legal because it is transport, not creation). The building decarbonisation lesson\'s key appliance.</li>
-    <li><strong>Exergy: energy quality matters:</strong> the second law refined — high-temperature heat is worth more than low; mixing hot and cold destroys usefulness irreversibly (entropy generation). Exergy analysis finds where plants waste the most.</li>
-    <li><strong>Jets are Brayton with propulsion hardware:</strong> compressor → combustor → turbine (which drives the compressor) → nozzle. The afterburner dumps extra fuel in the exhaust — trading efficiency for thrust (the fluid lesson\'s nozzles).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Çengel & Boles, Thermodynamics: An Engineering Approach; Carnot (1824); the physics ladder\'s thermal-physics lesson.</p>
+  <h2>The first law as bookkeeping, and why enthalpy exists</h2>
+  <p>
+    For a control volume at steady state the first law is a ledger: energy in (heat added,
+    work done on the fluid, plus the energy the flowing fluid itself carries) equals energy
+    out. The flowing-fluid energy term is why engineers live on <strong>enthalpy</strong>
+    (h = u + pv): a fluid entering a machine carries its internal energy <em>plus</em> the
+    flow work needed to push it across the boundary, and h packages both. Read any turbine
+    specification and it is quoted in enthalpy drop: a modern steam turbine expands steam
+    from about 3,400 kJ/kg to about 2,300 kJ/kg — roughly 1,100 kJ/kg turned into shaft
+    work. Multiply by the mass flow (a large unit passes ~2,000 kg/s of steam) and you have
+    the plant's ~2 GW in one line of bookkeeping. The balance sheet is not a metaphor; it
+    is the calculation, and every loss — bearing friction, valve throttling, stack heat —
+    is a line item some engineer is paid to shrink.
+  </p>
+
+  <h2>Properties, processes and the reversible ideal</h2>
+  <p>
+    Between states, fluids travel along <strong>processes</strong> named by what they hold
+    constant: <em>isobaric</em> (pressure — a boiler drum), <em>isothermal</em> (temperature —
+    slow expansion on a heat source), <em>isochoric</em> (volume — sealed-tank heating),
+    <em>adiabatic</em> (no heat exchange — fast expansion, or an insulated pipe). The ideal
+    gas closes the arithmetic: pv = RT, and for air the specific heats give Δh = c<sub>p</sub>ΔT
+    with c<sub>p</sub> ≈ 1.005 kJ/(kg·K) — so heating air by 200 K stores about 200 kJ/kg.
+    Real fluids near phase change are messier — which is why the <strong>steam tables</strong>
+    (and their refrigerant equivalents on P–h charts) are the thermal engineer's actual
+    handbook: along a boiling line, huge latent heat (about 2,257 kJ/kg for water at
+    atmospheric pressure) changes enthalpy wildly at constant temperature. Boiling water is
+    the cheapest way to carry a lot of energy at constant temperature — the whole reason
+    steam power happened.
+  </p>
+  <p>
+    The dream process is <strong>reversible</strong>: quasistatic, frictionless, with heat
+    exchanged only across infinitesimal temperature differences. Nothing real is; but the
+    reversible process defines the reference against which real devices are graded — the
+    <strong>isentropic efficiency</strong> of a turbine (real enthalpy drop over ideal) is
+    quoted on the nameplate, and 85–92% is good modern practice.
+  </p>
+
+  <h2>The second law: the Carnot ceiling and entropy</h2>
+  <p>
+    The first law allows a ship's engine to convert all its fuel heat into motion. The
+    second law forbids it: heat is a <em>degraded</em> currency, and converting it to work
+    requires rejecting part of it to something colder. Carnot (1824) found the exact tax,
+    before the first law was even formalised: a reversible engine between a hot reservoir
+    at T<sub>hot</sub> and a cold one at T<sub>cold</sub> achieves
+    <strong>η = 1 − T<sub>cold</sub>/T<sub>hot</sub></strong>, in absolute temperature.
+    Worked example: a steam plant with steam at 600 °C (873 K) rejecting to a river at
+    30 °C (303 K) — η<sub>max</sub> = 1 − 303/873 ≈ 0.65, a 65% ceiling. Real plants
+    achieve ~45%, losing the difference to irreversibilities (combustion itself is the
+    worst: burning fuel at flame temperature against steam at steam temperature is
+    mismatch by hundreds of degrees). And the ceiling is not a manufacturing challenge —
+    it is a law. The engineering chase is structural: raise T<sub>hot</sub> (better
+    materials, supercritical steam), lower T<sub>cold</sub>, and re-use the rejected heat
+    instead of paying for it twice.
+  </p>
+  <p>
+    <strong>Entropy</strong> is the second law's currency: in an isolated system it never
+    decreases, and every irreversibility — friction, mixing, finite-ΔT heat flow —
+    <em>generates</em> it. On the T–s diagram the ideal cycle is a tidy loop; entropy
+    generation is the slow rightward drift that shrinks the enclosed area (the work).
+    Exergy analysis — auditing where entropy is generated and hence where "useful work
+    potential" is destroyed — consistently names combustion and heat exchange as the big
+    leakers, which is exactly where combined-cycle design aims.
+  </p>
+
+  <h2>The cycles: how the machines go in circles</h2>
+  <p>
+    <strong>Rankine</strong> (steam plant): pump liquid water to high pressure, boil and
+    superheat it in the boiler, expand through the turbine, condense back to liquid. The
+    phase change is its genius — the pump handles a liquid (cheap: pumping liquid costs
+    v·Δp, and liquid volume is tiny) while the turbine handles vapour. Upgrades chain on:
+    superheat, reheat (return the steam for a second firing pass), regenerative feedwater
+    heating (bleed steam to pre-warm the feedwater). <strong>Brayton</strong> (gas turbine):
+    compress air continuously, burn fuel in it, expand through a turbine that both drives
+    the compressor and delivers shaft power — a jet engine is Brayton with the leftover
+    energy exhausted as thrust; the afterburner simply dumps fuel in the exhaust, trading
+    efficiency for thrust on demand. <strong>Otto and Diesel</strong> (pistons): heat
+    addition at constant volume (spark) or constant pressure (compression ignition); the
+    ideal Otto efficiency 1 − 1/r<sup>γ−1</sup> reads ~60% at a 10:1 compression ratio,
+    while real petrol engines deliver 25–35% — the gap is heat loss to walls, imperfect
+    combustion and pumping. <strong>Vapour-compression refrigeration</strong> is Rankine
+    run backwards: a compressor squeezes refrigerant vapour, it condenses hot at the back
+    (the warm grille), throttles to cold, and evaporates at the food compartment, absorbing
+    heat there. Same loop, opposite direction — one machine moves heat up the temperature
+    hill for a price.
+  </p>
+
+  <h2>Heat transfer: the three channels</h2>
+  <p>
+    <strong>Conduction</strong> is diffusion of energy through matter, governed by Fourier's
+    law: Q = kAΔT/L. Worked example: a 30 m² solid-brick wall (k = 0.7 W/(m·K)), 0.3 m
+    thick, 20 K across: Q = 0.7 × 30 × 20 ⁄ 0.3 = 1,400 W. Swap 100 mm of mineral wool
+    (k = 0.04) into the path and the same wall leaks under 100 W — building insulation is
+    just Fourier's law with a good k. <strong>Convection</strong> adds fluid motion:
+    Q = hAΔT, with the coefficient h (roughly 5–25 W/(m²·K) for free convection on walls,
+    50–15,000 for forced flow in exchangers) encapsulating the fluid mechanics — the
+    fluid-dynamics lesson returns as a number. <strong>Radiation</strong> needs no medium:
+    P = εσA(T<sup>4</sup> − T<sub>surr</sub><sup>4</sup>), σ = 5.67 × 10<sup>−8</sup>
+    W/(m²·K⁴). A clothed person at 33 °C skin in a 20 °C room radiates a net ~130 W —
+    why rooms feel cold at 18 °C with cold walls even when the thermometer argues, and why
+    low-emissivity glazing (a radiation mirror) beats extra thickness.
+  </p>
+
+  <h2>Heat exchangers and combustion</h2>
+  <p>
+    The <strong>heat exchanger</strong> is thermal plant's quiet majority: two streams
+    exchanging heat through a wall. The counterflow arrangement (streams running opposite
+    ways) keeps the temperature difference — and hence the driving force — high along the
+    whole length, outperforming co-flow for the same area; sizing uses the LMTD
+    (log-mean temperature difference) method. The eternal enemy is <strong>fouling</strong>:
+    deposits add their own resistance layer, so exchangers are oversized on day one for
+    the day-3,000 condition, and cleaning schedules are economics wearing overalls.
+  </p>
+  <p>
+    <strong>Combustion</strong> is just stoichiometry with a flame. Methane:
+    CH<sub>4</sub> + 2O<sub>2</sub> → CO<sub>2</sub> + 2H<sub>2</sub>O. By mass: 16 kg of
+    methane burns 64 kg of oxygen to 44 kg of CO<sub>2</sub> and 36 kg of water — so 1 kg
+    of natural gas emits ~2.75 kg of CO<sub>2</sub>, the extra mass imported from the air
+    (which also supplies ~17 kg of nitrogen per kg of fuel, the source of thermal
+    <strong>NO<sub>x</sub></strong> when flame temperatures cook it). Lean burning, staged
+    combustion and exhaust recirculation are all attacks on that one reaction's byproducts;
+    incomplete combustion buys deadly CO instead. The flue's CO<sub>2</sub> number is not a
+    policy abstraction — it is the oxygen-counting arithmetic you just did, scaled to
+    gigatonnes.
+  </p>
+
+  <h2>Psychrometrics: the engineering of humid air</h2>
+  <p>
+    Air-conditioning is thermodynamics of mixtures. <strong>Relative humidity</strong> is
+    the vapour pressure over the saturation pressure at the same temperature; the
+    <strong>dew point</strong> is where saturation catches up. Worked example: air at
+    25 °C, 60% RH — saturation pressure there is ~3.17 kPa, so the actual vapour pressure
+    is ~1.90 kPa, which corresponds to saturation at about <strong>17 °C</strong>: a
+    cold-drink glass at 10 °C sweats; a 20 °C wall stays dry. Condensation risk, pipe
+    insulation, mould, and the "feels-like" temperature all read off the psychrometric
+    chart — and cooling coils dehumidify precisely by dropping air below its dew point and
+    wringing the water out. The <strong>wet-bulb temperature</strong> (what an evaporating
+    thermometer reads) is the human-relevant heat-stress metric: above ~32 °C wet-bulb,
+    evaporative cooling of the body fails — the number behind heatwave lethality.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Combined cycles: the best machines ever built.</strong> Run Brayton on top
+    (gas turbine, ~40% alone), then boil Rankine steam with its ~500 °C exhaust: the same
+    fuel is used twice, at two temperature levels. Modern combined-cycle gas plants reach
+    ~64% efficiency — the highest of any heat engine — a direct, industrial demonstration
+    that the Carnot tax is avoided only by never letting temperature cascade waste.
+    <strong>Cogeneration</strong> (CHP) goes further for buildings: use the rejected heat
+    itself (district heating), and "efficiency" in the energy ledger can exceed 90% —
+    legal, because the ledger counts heat delivered, while exergy keeps the honest score.
+  </p>
+  <p>
+    <strong>Heat pumps: the legal over-unity.</strong> A heat pump with COP 4 delivers
+    4 kWh of heat per 1 kWh of electricity — 400% "efficiency" with no violation, because
+    it moves heat from outside rather than making it: delivered heat = work in + heat
+    pumped. The Carnot bound on COP is T<sub>hot</sub>/(T<sub>hot</sub> − T<sub>cold</sub>);
+    real units (3–5 in mild climates) sit well below it but still beat resistance heating
+    by a factor of 3–4, which is why the heat pump, not the boiler, is the endgame
+    appliance of building decarbonisation.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Supercritical CO<sub>2</sub> cycles (compact turbomachinery,
+    dry cooling) are the field's current bet for next-generation efficiency. Materials
+    remain the binding constraint on T<sub>hot</sub> — every 10 K of steam temperature is
+    a metallurgy paper. And the hydrogen question is a thermodynamics question in disguise:
+    H<sub>2</sub>'s flame is hot and its only combustion product is water, but production,
+    storage density and the entropy bill of liquefaction (one third of its heating value
+    to liquefy, plus boil-off) are exergy problems the 2nd law will audit without mercy.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Çengel &amp; Boles, Thermodynamics: An Engineering Approach; Moran et al., Fundamentals of Engineering Thermodynamics; Carnot (1824); the physics ladder's thermal-physics lesson.</p>
+
+  <Widget no="2" caption="check yourself" widget="quiz" config={thermoQuizCfg} />
 </TopicPage>

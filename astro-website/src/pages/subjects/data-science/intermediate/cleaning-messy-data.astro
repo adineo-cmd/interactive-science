@@ -10,24 +10,214 @@ const cleanCfg = {
     { math: '4 · Validate like a paranoid engineer', note: 'Write assertions into the pipeline: expected ranges, referential integrity, row-count drift. Data silently rots upstream; tests are the smoke alarm.' },
   ],
 };
+
+const cleanQuizCfg = {
+  questions: [
+    { q: 'Survey respondents with the highest incomes skip the income question. Dropping those rows is wrong because the missingness is…', choices: ['completely at random', 'not at random — related to the value itself', 'a duplicate problem', 'an encoding problem'], answer: 1, why: 'When missingness relates to the unobserved value, the remaining rows are a biased sample — the average of what survives is not the average of what is true.' },
+    { q: 'Filling missing incomes with the column mean does what to the variance?', choices: ['raises it', 'shrinks it — and invents a cluster at the mean', 'nothing', 'makes it negative'], answer: 1, why: 'Mean imputation injects many identical values, deflating spread and manufacturing a pattern at the mean that was never observed. Flags or model-based imputation with sensitivity checks are the honest options.' },
+    { q: 'After a join, your row count jumped from 1 million to 1.8 million. The most likely explanation is…', choices: ['data grew', 'a many-to-many join duplicated rows', 'the database cached results', 'NULLs were filled'], answer: 1, why: 'Joining on non-unique keys fans rows out silently — and every downstream average then double-counts. Row counts before and after every join are the tripwire.' },
+    { q: 'Tidy data (Wickham) means…', choices: ['sorted rows', 'one observation per row, one variable per column, one table per kind of observation', 'no missing values', 'CSV format'], answer: 1, why: 'Tidy structure makes every later operation (filter, group, join, model) the same simple move — which is why reshaping into tidy form is the first technical step of most analyses.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/intermediate/cleaning-messy-data">
   <h2>The idea</h2>
   <p>
-    Data cleaning is <strong>80% of the work and 100% of the reputation risk</strong> — the step
-    where silent errors become confident wrong conclusions. The discipline is threefold:
-    understand how the data was produced, decide what each anomaly means, and encode the
-    decisions as repeatable code rather than one-off spreadsheet edits.
+    Data cleaning is <strong>80% of the work and 100% of the reputation risk</strong> —
+    the step where silent errors become confident wrong conclusions. Every downstream
+    technique in this course (EDA, models, dashboards) assumes the data means what it
+    says; cleaning is the process of earning that assumption. The discipline is
+    threefold: understand how the data was <em>produced</em> (every column is the output
+    of some process with failure modes), decide what each anomaly <em>means</em> (a
+    judgment call, made explicit), and encode those decisions as <strong>repeatable
+    code rather than one-off spreadsheet edits</strong> — because a cleaning step you
+    cannot rerun is a cleaning step you cannot trust or defend.
+  </p>
+  <p>
+    The framing that makes cleaning tractable: messy data is not random damage, it is
+    <em>archaeology</em>. Each oddity — the negative ages, the duplicate customers, the
+    "N/A" spelled five ways — is a fossil of how the data was captured, merged or
+    typed by a human somewhere. Cleaning is reading those fossils correctly, not
+    scrubbing them away.
   </p>
 
   <Widget no="1" caption="the cleaning workflow — profiling, mechanisms, identity, validation" widget="equationStep" config={cleanCfg} />
 
-  <h2>The classic traps</h2>
-  <ul>
-    <li><strong>Imputation can manufacture patterns:</strong> filling missing income with the mean shrinks variance and invents a cluster at the mean. Prefer explicit "missing" flags or model-based imputation, with sensitivity checks.</li>
-    <li><strong>Merge hallucination:</strong> joining on sloppy keys duplicates rows silently — row counts balloon and every downstream average quietly shifts. Check row counts before and after every join.</li>
-    <li><strong>Timezone and encoding rot:</strong> "2024-03-01" in UTC vs local time; UTF-8 read as Latin-1. The boringest errors cause the most retractions.</li>
-    <li><strong>Tidy data discipline (Wickham):</strong> one observation per row, one variable per column. Reshaping into tidy form first makes every later step trivial.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Wickham, "Tidy Data", JSS (2014); Kimball, The Data Warehouse Toolkit; Great Expectations data-quality docs.</p>
+  <h2>Where mess comes from</h2>
+  <p>
+    Knowing the sources tells you where to look. <strong>Manual entry</strong> produces
+    transpositions (31 typed as 13), unit slips, and the free-text disease of
+    uncontrolled vocabularies ("NY", "New York", "new york city" — three cities or
+    one?). <strong>Sensors and logs</strong> produce gaps (the device was offline),
+    spikes (the moment of interference), and drift (the sensor slowly miscalibrating).
+    <strong>Merging systems</strong> produces identity problems (the same person keyed
+    "J Smith" in one database and "Smith, John" in another) and join problems (the
+    schemas disagree on what a "user" is). <strong>Exports and handoffs</strong> produce
+    encoding rot (UTF-8 read as Latin-1 turns "café" into "cafÃ©") and truncation (a
+    column sized for 40 characters quietly amputating surnames). Each source has
+    characteristic failures — which is why the first question of cleaning is never
+    "what is wrong?" but "where did this come from?"
+  </p>
+
+  <h2>Profile before you fix</h2>
+  <p>
+    Profiling is the systematic first look, and it is cheap: for every column, count
+    missing values, count distinct values, look at min/max, sample the weird rows. A
+    worked profile on a 10,000-row customer table: age has minimum −3 and maximum 250
+    (two impossible-value families — likely a sign error and a birthdate subtraction
+    bug); email is missing in 2% of rows and duplicated in 4% (people with two
+    accounts); signup_date contains values in 2075 (a timezone or epoch bug);
+    country has 212 distinct values where there are ~200 countries (typos and
+    variants). Ten minutes of profiling just produced a complete work plan — and
+    notice the order of operations: <strong>profile first, hypothesise second, fix
+    third, document always</strong>. Fixing before profiling means fixing your
+    guesses.
+  </p>
+
+  <h2>Missingness: the mechanism is the decision</h2>
+  <p>
+    Missing data is not one problem but three, and the distinction decides everything.
+    <strong>Missing completely at random</strong> (a sensor dropped 2% of packets) —
+    dropping those rows is safe; you lose a little precision and no truth.
+    <strong>Missing at random given other variables</strong> (younger users skip the
+    phone field, and you know age) — dropping biases by group, but the pattern is
+    recoverable from the other columns. <strong>Missing not at random</strong> — the
+    missingness relates to the unobserved value itself: the highest earners skip the
+    income question, the sickest patients skip the follow-up visit. Here dropping rows
+    biases every statistic silently, and even imputation needs explicit modelling of
+    the missingness. The practical protocol: measure the missingness rate per column,
+    test whether it differs across groups, and write down the suspected mechanism
+    before choosing a treatment. Options in rough order of honesty: keep missing as an
+    explicit category or flag (often best); impute with median for skewed data (mean
+    for clean symmetric data) with a sensitivity check; impute by model (predict from
+    the other columns); drop rows (only when missingness is provably random and rare).
+    Mean-imputation's specific sin: it injects a fake cluster at the mean and shrinks
+    the variance — the data after imputation literally looks more average than the
+    world was.
+  </p>
+
+  <h2>Identity, duplicates and keys</h2>
+  <p>
+    "Duplicate" is meaningless until you define what makes two rows the same thing.
+    Two rows with the same customer ID are not duplicates if each is an order; two
+    rows with the same order ID probably are (a re-run of the export? a double
+    submission?). The unit of analysis defines the key: one row per order, per
+    customer, per customer-month? — three different datasets, three different answers
+    to "is this a duplicate?". Then the harder layer: <strong>entity resolution</strong>,
+    the same real-world entity under different keys ("J. Smith" and "Smith, John" and
+    "john.smith@…"). Exact matching fails; fuzzy matching helps but makes judgment
+    calls (two John Smiths are two people); and the decisions must be documented,
+    because they change every count downstream. The discipline: define the grain and
+    the key in writing at the top of the analysis, deduplicate with respect to that
+    key, and report how many rows each decision removed.
+  </p>
+
+  <h2>Outliers and impossible values</h2>
+  <p>
+    An outlier is only "bad data" sometimes, and the diagnosis differs by case. A
+    temperature of −273.15 °C is impossible (a constant was subtracted twice — a bug
+    to fix). An age of 250 is impossible (a birthdate subtraction bug, or 25 with a
+    fat-fingered zero). A transaction of 4,999,999 might be a data-entry slip — or a
+    whale customer, the most important row in the dataset. The distinction that
+    matters: <strong>impossible</strong> values (outside physical or definitional
+    bounds) are errors to correct or remove; <strong>implausible</strong> values are
+    findings to investigate before touching. The cost of guessing wrong is legendary:
+    NASA lost the Mars Climate Orbiter in 1999 because one team's software reported
+    thrust in pound-force seconds while the navigation software expected
+    newton-seconds — a unit mismatch worth a 125-million-dollar spacecraft, and the
+    standing proof that "obviously wrong" values deserve a root-cause question
+    ("why does this column contain this?") rather than a delete key.
+  </p>
+
+  <h2>Joins, merges and the shape of the data</h2>
+  <p>
+    Cleaning is not only per-column; the <em>shape</em> of the table is a quality
+    decision. Hadley Wickham's <strong>tidy data</strong> standard (2014) — one
+    observation per row, one variable per column, one kind of observation per table
+    — is the target shape, because every later operation (filter, group, join,
+    model) becomes the same simple move on tidy data. Real exports violate it
+    constantly: years spread across columns (1912, 1913, 1914 as headers), values
+    stored in headers, multiple observations crammed into one cell ("A, B, C"). The
+    fixes are mechanical (melt/pivot), but do them <em>first</em> — reshaping after
+    analysis means redoing the analysis. And the join itself is a cleaning hazard:
+    a many-to-many merge (joining orders to items where both sides have repeats)
+    fans rows out silently — the row count is the tripwire, checked before and
+    after every join, every time.
+  </p>
+
+  <h2>Types, encodings, dates: the boringest errors</h2>
+  <p>
+    The retraction-grade errors are usually unglamorous. <strong>Types</strong>:
+    "1,234" read as text; ZIP codes as numbers (losing leading zeros); IDs as floats
+    (15 digits, then silently rounded — spreadsheet precision rot). <strong>Encodings</strong>:
+    UTF-8 read as Latin-1 garbles every accented character; the fix is trivial once
+    diagnosed and invisible until it is. <strong>Dates and timezones</strong>: the
+    deepest pit in applied work. "2024-03-01" in UTC versus local time shifts
+    daily aggregates; Excel's date serial numbers and 1-based centuries create
+    phantom decades; a naive datetime crossing a daylight-saving boundary duplicates
+    or deletes an hour of data. The defences are habits, not cleverness: parse dates
+    explicitly with a stated timezone; keep one canonical timezone internally; store
+    types in a schema, not in hope; and read a sample of raw bytes when text looks
+    wrong.
+  </p>
+
+  <h2>Validation: tests as the smoke alarm</h2>
+  <p>
+    Clean is not a state, it is a property you assert and re-assert. Data rots
+    upstream: a schema changes on the source system, a partner starts sending
+    negative quantities, a "temporary" CSV replacement ships on a Friday. The
+    engineering answer is validation in the pipeline — assertions that run on every
+    load: row counts within an expected band; no nulls in key columns; values within
+    physical ranges; referential integrity (every order references an existing
+    customer); freshness (today's file exists). Frameworks like Great Expectations
+    package these as declarative checks, but the idea matters more than the tool:
+    <strong>every cleaning decision becomes a test</strong>, so the day the data
+    changes underneath you, something screams instead of a dashboard quietly
+    turning wrong. The final discipline is provenance: a cleaning script (with its
+    decisions documented inline) is evidence; a hand-edited spreadsheet is a
+    confession waiting to be discovered.
+  </p>
+
+  <h2>A worked cleaning session: one raw CSV</h2>
+  <p>
+    The discipline at working scale. Input: sales.csv, 50,000 rows, 12 columns,
+    exported by a partner. <strong>Profile</strong>: quantity has negatives (returns?
+    errors?); price has a text column masquerading as numeric ("1,234.50" with
+    thousands separators); order_date spans 1970–2075 (epoch bugs at both ends —
+    empty dates coerced to zero and a timezone shifted a century); customer_id is
+    3% duplicated; region has 47 values for 8 real regions. <strong>Decide and
+    document</strong>: negatives are returns — keep them, flag them (they are real
+    transactions, and net revenue needs them); prices parsed by stripping
+    separators, errors logged; dates before 2000 or after next year set to null and
+    counted (they are junk, but counting junk is monitoring); region values mapped
+    through a published lookup table, unmapped values output to a review file —
+    never silently dropped. <strong>Encode</strong>: every decision becomes a line
+    in a script with a comment naming the reason; a validation block asserts the
+    final row count is within 5% of input, no price is negative, and the region
+    mapping covers at least 99% of rows. <strong>Report</strong>: the summary
+    numbers — rows in, rows out, dropped by rule, imputed, flagged — travel with
+    the cleaned file. Forty minutes, one repeatable artefact, and a dataset that
+    can be defended line by line.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Four expert notes. <strong>Probabilistic record linkage</strong>: the formal
+    solution to entity resolution — Fellegi–Sunter-style scoring weighs agreement and
+    disagreement on name, address, birthdate to estimate match probability, with
+    thresholds trading false merges against false splits; both error types have
+    asymmetric costs, and the threshold is a business decision. <strong>Sensitivity
+    analysis as the professional standard</strong>: for every judgment call
+    (dropped rows, imputed values, deduplicated entities), rerun the analysis under
+    the alternative choice; if conclusions flip, the conclusion was never about the
+    data. <strong>Data versioning and lineage</strong>: datasets that change
+    underneath analyses are the reproducibility crisis's industrial wing — hash your
+    inputs, log the cleaning commit, and be able to answer "which version of this
+    table produced this figure?". And <strong>the ethics of the delete key</strong>:
+    removing rows changes the population your results describe — a cleaned dataset
+    is a series of claims about who was included and excluded, and those claims
+    deserve the same scrutiny as the findings.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Wickham, "Tidy Data", Journal of Statistical Software (2014); Kimball, The Data Warehouse Toolkit; Great Expectations data-quality documentation; NASA, Mars Climate Orbiter Mishap Investigation Board report (1999).</p>
+  <Widget no="2" caption="check yourself: the cleaning discipline" widget="quiz" config={cleanQuizCfg} />
 </TopicPage>

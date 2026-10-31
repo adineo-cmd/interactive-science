@@ -11,24 +11,206 @@ const nnCfg = {
     { math: '5 · The XOR triumph', note: '1969: Minsky & Papert proved single neurons can\'t compute XOR, and funding froze ("AI winter"). Multilayer networks solve it trivially — and backprop (1986) made training them practical. The winter-to-revolution arc is AI history in miniature.' },
   ],
 };
+
+const nnQuizCfg = {
+  questions: [
+    { q: 'Why is the activation function\'s nonlinearity essential?', choices: ['it speeds up computation', 'without it, stacked layers collapse into a single linear map', 'it prevents division by zero', 'it makes outputs positive'], answer: 1, why: 'A composition of linear maps is still linear — depth would buy nothing. The squish between layers is what lets depth buy genuine expressive power.' },
+    { q: 'Backpropagation is best described as…', choices: ['a special optimizer', 'the chain rule, organised to assign blame to every weight efficiently', 'a way to generate data', 'an activation function'], answer: 1, why: 'The loss depends on outputs, which depend on late weights, which depend on early ones — the chain rule propagates that dependence backwards, one reusable computation per layer.' },
+    { q: 'The 1969 XOR result froze the field because it showed…', choices: ['neural nets were too slow', 'single-layer perceptrons cannot compute even simple non-linearly-separable functions', 'XOR is impossible to compute', 'computers were too expensive'], answer: 1, why: 'A single neuron draws one straight boundary; XOR needs two. The fix (hidden layers) was known but not trainable practically until backprop (1986) — hence the long winter.' },
+    { q: 'The field\'s favourite sanity check — overfit one batch — works because…', choices: ['small data is easier', 'a working network must be able to memorise a handful of examples; failure means a bug', 'overfitting is good', 'it trains faster'], answer: 1, why: 'Memorising 100 examples is nearly the easiest possible task. A network that cannot do it has a broken gradient, a bad learning rate, or a wiring bug — find that before any tuning.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/neural-networks-from-scratch">
   <h2>The idea</h2>
   <p>
-    A neural network is <strong>stacked layers of tiny weighted sums</strong>, trained by
-    backpropagating error. Each neuron is dumber than a pocket calculator; the magic is
-    composition — millions of simple units arranging themselves (via gradient descent) into
-    features nobody specified. This lesson builds the concept from one neuron upward.
+    A neural network is <strong>stacked layers of tiny weighted sums</strong>, trained
+    by backpropagating error. Each neuron is dumber than a pocket calculator — multiply,
+    add, squish — and the entire magic is <strong>composition</strong>: millions of
+    simple units, arranged in layers and adjusted by gradient descent, assembling
+    themselves into feature detectors nobody specified. This lesson builds the concept
+    from one neuron upward, because the whole architecture is genuinely understandable
+    that way — and the "from scratch" in the title is the point: by the end you will be
+    able to compute a forward pass with a pencil and explain exactly what training
+    adjusts.
+  </p>
+  <p>
+    The deep-learning chapter of the standard AI text places this material after
+    learning-from-examples for a reason: the network is a supervised-learning model
+    with a particular shape. Everything from the paradigm lesson still applies — loss,
+    generalisation, train/test discipline — and this lesson adds the shape: what the
+    model actually is, how the forward pass computes, and how backpropagation trains
+    it.
   </p>
 
   <Widget no="1" caption="from single neuron to trained network, in five steps" widget="equationStep" config={nnCfg} />
 
-  <h2>Practical realities of training</h2>
-  <ul>
-    <li><strong>Hyperparameters:</strong> layer sizes, learning rate, batch size — set before training and tuned by experiment. Learning rate too high diverges, too low crawls; the first thing to check when training misbehaves.</li>
-    <li><strong>Regularisation keeps networks honest:</strong> dropout (randomly silence neurons), weight decay, early stopping — all fight overfitting (the ML-basics lesson's central villain).</li>
-    <li><strong>GPUs are the fuel:</strong> neural nets are giant matrix multiplications (the linear-algebra lesson), which GPUs parallelise brilliantly. The 2012 ImageNet moment (AlexNet) was two gaming GPUs.</li>
-    <li><strong>Debugging by overfitting one batch:</strong> if the network can't memorise 100 examples, something is broken. The field's favourite sanity check.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton & Williams, Nature (1986); Karpathy, "Neural Networks: Zero to Hero"; Minsky & Papert, Perceptrons (1969).</p>
+  <h2>One neuron: the weighted sum, computed</h2>
+  <p>
+    A neuron takes inputs, multiplies each by a weight, adds them plus a bias, and
+    passes the result through an activation function. Worked with real numbers: inputs
+    x₁ = 2, x₂ = 3; weights w₁ = 0.5, w₂ = −0.25; bias b = 1. The weighted sum:
+    2 × 0.5 + 3 × (−0.25) + 1 = 1 − 0.75 + 1 = 1.25. Now the activation: ReLU
+    (rectified linear) passes positives and clips negatives — ReLU(1.25) = 1.25; a
+    sigmoid squashes anything into (0, 1) — sigmoid(1.25) ≈ 0.78. That is the entire
+    neuron: a linear score, bent by a squish. The <strong>weights are the
+    knowledge</strong>: w₁ = 0.5 says "input 1 speaks positively"; w₂ = −0.25 says
+    "input 2 speaks against"; the bias shifts the firing threshold. Training, in one
+    sentence, is the search for weight values that make the network's outputs match
+    the labels — and the fact that "knowledge" ends up distributed across billions of
+    such numbers is the property that makes neural networks powerful, opaque and
+    debate-worthy all at once.
+  </p>
+
+  <h2>One neuron's limits: the line it draws</h2>
+  <p>
+    Geometrically, a single neuron computes a weighted sum, so its decision boundary
+    (where the weighted sum crosses the threshold) is a <strong>straight line</strong>
+    through input space — a plane in 3D, a hyperplane in general. This is the entire
+    content of the field's founding crisis. Some problems are linearly separable
+    (a line can divide the yes-points from the no-points) and a single neuron solves
+    them; some are not. The canonical non-separable case is XOR: (0,0)→0, (1,1)→0,
+    (1,0)→1, (0,1)→1 — the ones sit on opposite corners, and no single line separates
+    them from the zeros. In 1969, Minsky and Papert's book <em>Perceptrons</em> proved
+    the limitation rigorously, and the effect on funding was instant and severe — the
+    first "AI winter". The escape was known even then (two neurons can carve XOR's
+    two lines; a hidden layer can fold the space), but nobody could <em>train</em>
+    the multilayer version practically. That is the cliffhanger the backpropagation
+    section resolves.
+  </p>
+
+  <h2>Layers: composition buys shapes</h2>
+  <p>
+    Stack neurons in layers: an input layer (the features), one or more
+    <strong>hidden layers</strong> (each neuron computing its weighted sum from the
+    previous layer's outputs), an output layer (the prediction). Each connection
+    carries a weight; each neuron adds its bias and applies its activation. The
+    conceptual payoffs are two. First, <strong>features compose</strong>: early-layer
+    neurons learn simple detectors (in images: edges, blobs), deeper layers combine
+    them into patterns (textures, eyes, faces) — a hierarchy that emerges from
+    training rather than being programmed, and that images of trained networks'
+    first-layer weights confirm visibly. Second, <strong>expressive power</strong>:
+    the universal approximation theorem (Cybenko 1989, Hornik 1991) proves that a
+    network with a single hidden layer of enough neurons can approximate any
+    continuous function to any precision. Depth's advantage is practical rather
+    than absolute: deep networks express complicated functions with far fewer
+    parameters (composition reuses features) and learn them better — which is why
+    "deep" learning is deep.
+  </p>
+  <p>
+    The nonlinearity warning from the widget deserves its own emphasis, because it is
+    the subtlest point in the architecture. Without activation functions, a stack of
+    layers is just matrix multiplying matrix multiplying matrix — one big linear map,
+    no more expressive than a single layer, however deep you build it. The squish
+    between layers is what makes depth mean anything. This is also why ReLU's
+    2010s-era dominance mattered beyond convenience: it is cheap (max with zero),
+    its derivative is trivial (1 or 0), and it does not saturate the way sigmoid
+    does — practical properties that made deep training actually work.
+  </p>
+
+  <h2>The forward pass, and the loss that scores it</h2>
+  <p>
+    A <strong>forward pass</strong> pushes one example through the network: input
+    vector → first layer's weighted sums and activations → second layer's → … →
+    output. Concretely for a 2-input network with a hidden layer of 2 neurons and
+    one output: each hidden neuron computes its weighted sum of the two inputs plus
+    bias and squishes; the output neuron computes its weighted sum of the two hidden
+    activations plus bias and squishes — one prediction. Organised as matrices, the
+    whole layer step is one matrix multiply plus one elementwise activation — which
+    is why the linear-algebra lesson's machinery is the implementation, and why
+    GPUs (built to multiply matrices for graphics) turned out to be the perfect
+    engine. Then the <strong>loss</strong> scores the prediction against the truth:
+    mean squared error for regression (the average of squared misses), cross-entropy
+    for classification (which punishes confident wrong answers brutally — the
+    property that makes it the classification standard). The loss is a single
+    number, and training's entire purpose is to make that number smaller on data
+    the network has not memorised.
+  </p>
+
+  <h2>Backpropagation: the chain rule, organised</h2>
+  <p>
+    Gradient descent (the optimisation lesson's subject) says: adjust each weight
+    opposite its gradient — the derivative of the loss with respect to that weight.
+    The obstacle is bookkeeping: a deep network has millions of weights, and each
+    weight's gradient depends on everything downstream of it. Backpropagation is the
+    insight that this is <strong>the chain rule applied in reverse</strong>, and that
+    the computation can be organised so each layer's work is reused by all layers
+    before it. Walk the blame in the 2-2-1 network: the output's error depends on the
+    output neuron's weights directly; the hidden neurons' blame is their own
+    contribution multiplied by how much they influenced the output (their outgoing
+    weights times the output's sensitivity); each input weight's blame flows through
+    its neuron's activation. One backward pass — output to input — computes every
+    weight's gradient, reusing each layer's intermediate numbers. Rumelhart, Hinton
+    and Williams published the practical form in Nature (1986), and the field's
+    modern era is dated from it. Training is then just the loop: forward pass,
+    loss, backward pass, nudge every weight a small step opposite its gradient,
+    repeat over batches of examples for many epochs. Nothing more mystical — but at
+    the scale of billions of weights and trillions of tokens, "nudge repeatedly" is
+    exactly how the astonishing capabilities get built.
+  </p>
+
+  <h2>Training practicalities: hyperparameters and the sanity check</h2>
+  <p>
+    The settings you choose before training — <strong>hyperparameters</strong> —
+    decide whether training works at all. <strong>Learning rate</strong>: the nudge
+    size; too high and the loss oscillates or explodes (divergence), too low and it
+    crawls — the first thing to check when training misbehaves, and the reason loss
+    curves are plotted live. <strong>Batch size</strong>: examples per gradient
+    estimate — small batches are noisy but cheap and regularising; large batches are
+    stable but hardware-hungry. <strong>Layer sizes and depth</strong>: capacity —
+    too little underfits, too much overfits (regularisation, below, manages the
+    excess). <strong>Epochs</strong>: passes over the training data. And the field's
+    favourite debugging ritual: <strong>overfit a single batch</strong>. Take 100
+    examples and train until the loss is near zero — a working network should
+    memorise them easily; if it cannot, something is broken (a sign error in the
+    gradient, a frozen activation, a data pipeline feeding garbage). Find that bug
+    before touching any hyperparameter; tuning a broken network is fortune-telling.
+  </p>
+
+  <h2>Regularisation: keeping the network honest</h2>
+  <p>
+    Overfitting — memorising the training set instead of learning the pattern — is
+    the central villain of the paradigm lesson, and deep networks (enormous
+    capacity!) are its natural prey. The countermeasures form a standard kit.
+    <strong>Dropout</strong>: randomly silence a fraction of neurons each training
+    step, so no neuron can rely on a particular partner — the network learns
+    redundant, robust features. <strong>Weight decay</strong>: penalise large
+    weights in the loss, biasing the network toward simpler functions.
+    <strong>Early stopping</strong>: monitor loss on a held-out validation set and
+    stop when it starts rising while training loss keeps falling — the moment
+    memorisation overtakes learning. <strong>Data augmentation</strong>: enlarge
+    the effective training set with label-preserving transformations (flipped
+    images, cropped crops) — often the highest-yield regulariser of all. The
+    diagnosis kit from the paradigm lesson applies verbatim: the train-versus-test
+    gap is the symptom; the gap's direction tells you which disease you have.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The expert shelf. <strong>The GPU moment</strong>: neural networks are matrix
+    multiplications at heart, and the 2012 ImageNet result (AlexNet — trained on two
+    consumer gaming GPUs, cutting the error rate from roughly 26% to 15%) was the
+    demonstration that commodity parallel hardware plus depth plus data could leapfrog
+    decades of hand-engineered vision — the field's inflection point, and the reason
+    "AI winter" now reads as ancient history. <strong>Why ReLU revived depth</strong>:
+    saturated activations (sigmoid) shrink gradients toward zero as they pass backward
+    (the vanishing-gradient problem), starving early layers of learning signal; ReLU's
+    non-saturating form, plus careful initialisation and later tricks (batch
+    normalisation, residual connections in the 2015 ResNet), is what made networks
+    hundreds of layers deep trainable. <strong>Transformers, in one sentence</strong>:
+    the current architecture replaced recurrence with attention — every token can look
+    at every other — and parallelised training across whole sequences, which is what
+    made LLM-scale training economical. <strong>Interpretability is the open
+    frontier</strong>: we can compute every weight and still not say what the network
+    knows — mechanistic interpretability (reverse-engineering circuits inside trained
+    networks) is the research programme aimed at turning the opacity into
+    understanding. The arc of the whole lesson, from one squished weighted sum to
+    that open problem, is the honest size of the subject: a simple idea, composed
+    beyond anyone's prediction. And if you retain one habit from this lesson, make
+    it the pencil forward pass — inputs times weights, sum, squish, once per layer —
+    because every architecture diagram you will ever meet, from CNNs to
+    transformers, is that same computation redrawn to show where information flows.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton &amp; Williams, "Learning representations by back-propagating errors", Nature (1986); Minsky &amp; Papert, Perceptrons (1969); Goodfellow, Bengio &amp; Courville, Deep Learning (2016); Karpathy, "Neural Networks: Zero to Hero"; Krizhevsky et al., ImageNet classification (2012).</p>
+  <Widget no="2" caption="check yourself: neurons to networks" widget="quiz" config={nnQuizCfg} />
 </TopicPage>

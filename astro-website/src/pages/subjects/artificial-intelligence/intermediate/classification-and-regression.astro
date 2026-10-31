@@ -10,6 +10,22 @@ const clsCfg = {
     { math: '4 · ROC curves summarise thresholds', note: 'A model outputs scores; every threshold trades recall against precision. ROC-AUC (area under curve) summarises the trade-off across all thresholds — 0.5 is coin-flipping, 0.9 is strong.' },
   ],
 };
+
+const fitCfg = {
+  curves: [{ expr: 'a*x + b', color: '#b42318', label: 'your line' }],
+  points: [
+    {
+      points: [[0.5, 120], [0.8, 150], [1.0, 155], [1.2, 220], [1.5, 240], [1.8, 295], [2.1, 320], [2.4, 360]],
+      color: '#1d4ed8', label: 'apartments', mode: 'dots',
+    },
+  ],
+  params: [
+    { name: 'a', label: 'slope ($k per 1000 sq ft)', min: 0, max: 300, step: 2, value: 80 },
+    { name: 'b', label: 'intercept ($k)', min: 0, max: 200, step: 5, value: 60 },
+  ],
+  x: { min: 0, max: 2.6, label: 'floor area (×1000 sq ft)' },
+  y: { min: 0, max: 500, label: 'price ($1000s)' },
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/classification-and-regression">
   <h2>The idea</h2>
@@ -17,17 +33,225 @@ const clsCfg = {
     Classification and regression are <strong>supervised learning's two core tasks</strong>:
     predicting categories (spam/not-spam, will-churn/won't) and predicting quantities (price,
     demand, risk). Most business value from ML lives here — and most ML mistakes live in their
-    evaluation metrics, chosen carelessly.
+    evaluation metrics, chosen carelessly. You already know the skeleton from the
+    foundational tier: a model is a function fitted to labelled examples. This page is where
+    that skeleton gets muscles — the loss functions that define "wrong", the families of
+    models that chase them, and the evaluation machinery that separates a model that memorises
+    from one that generalises.
+  </p>
+  <p>
+    The unifying frame: you have a dataset of pairs (input, correct answer) — an apartment's
+    size and its sale price, an email and its spam label. The learner searches through a space
+    of candidate functions for the one with the lowest average <strong>loss</strong> on that
+    data. Everything else — trees, linear models, deep networks — is a choice of search space.
+    Everything that follows about evaluation exists because <em>low loss on the training data
+    is not the goal</em>; low loss on data the model has never seen is.
   </p>
 
   <Widget no="1" caption="the task types and the metrics that don't lie" widget="equationStep" config={clsCfg} />
 
-  <h2>Thresholds, costs and class imbalance</h2>
-  <ul>
-    <li><strong>The threshold is a cost calculation:</strong> missing fraud costs 100× a false alarm → set the threshold lower, accept more false alarms. The model outputs probability; the operating point is policy.</li>
-    <li><strong>Imbalanced data needs care:</strong> reweight classes, oversample minorities, or use metrics immune to base rates (AUC, precision-recall curves). Never trust accuracy alone.</li>
-    <li><strong>Calibration matters for decisions:</strong> "80% probability" should mean it happens 80% of the time. Uncalibrated models mislead every downstream threshold — calibration curves check it.</li>
-    <li><strong>Interpretability scales with stakes:</strong> credit and medicine demand explanations (coefficients, SHAP values); a recommendation engine can stay a black box. Match transparency to consequence.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Hastie et al., Elements of Statistical Learning; Géron, Hands-On ML; Molnar, Interpretable Machine Learning (free).</p>
+  <h2>What "learning from examples" actually optimises</h2>
+  <p>
+    The loss function is the contract between you and the algorithm: it defines what "wrong"
+    means numerically. For regression the standard is <strong>squared error</strong> — the
+    average of (prediction − truth)² — summarised as RMSE (root-mean-square error, the
+    square root of that average, in the units of the target) or MAE (mean absolute error).
+    Squaring punishes large misses disproportionately: an error of 10 costs 100 times an
+    error of 1, not 10 times. For classification the standard is <strong>log loss</strong>
+    (cross-entropy): −[y·log(p) + (1−y)·log(1−p)], where p is the model's stated probability
+    of the true class. It is gentle when the model is right and confident, and brutally
+    punitive when the model is confidently wrong — predicting 0.999 probability on a false
+    claim costs about 6.9 log-units, the natural logarithm of 1000.
+  </p>
+  <p>
+    These are not arbitrary conventions. Least squares goes back to Legendre (1805) and
+    Gauss, who used it to recover the orbit of the asteroid Ceres from a handful of
+    observations — the same mathematics, fitting a line, that a neural network's final layer
+    uses today. And both losses fall out of maximum-likelihood reasoning: squared error is
+    what you get if you assume your errors are Gaussian; log loss is what you get if you
+    take the model's probability claims seriously. Change what you believe about the noise,
+    and the loss you should minimise changes with it.
+  </p>
+
+  <h2>Regression: fitting the line and judging it honestly</h2>
+  <p>
+    Linear regression assumes the target is a weighted sum of the inputs: price ≈ w×area + b.
+    Take eight apartments (floor area in thousands of square feet, price in $1000s):
+    (0.5, 120), (0.8, 150), (1.0, 155), (1.2, 220), (1.5, 240), (1.8, 295), (2.1, 320) and
+    (2.4, 360). Before any model, establish the <strong>naive baseline</strong>: predict the
+    mean price (232.5) every time. Its RMSE works out to about $82k — exactly the standard
+    deviation of the prices. Any model that cannot beat $82k is literally worse than
+    ignoring the input.
+  </p>
+  <p>
+    Least squares minimises the squared vertical gaps between line and points. Doing the
+    algebra (slope = Σ(x−x̄)(y−ȳ) ⁄ Σ(x−x̄)²) gives slope ≈ 132 and intercept ≈ 47: price ≈
+    132×area + 47, or about $132 per square foot. Its RMSE is about $11k, roughly a
+    seven-fold improvement — and the coefficient of determination R² = 1 − (fit's squared
+    error) ⁄ (baseline's squared error) ≈ 0.98, meaning the line explains 98% of the price
+    variance. Drag the sliders below and watch how badly the fit degrades for slope or
+    intercept off their optimum — the least-squares line is the bottom of a smooth bowl.
+  </p>
+
+  <Widget no="2" caption="fit the line by hand — the data wants slope ≈ 132, intercept ≈ 47" widget="plotter" config={fitCfg} />
+
+  <p><em>Common misconception:</em> R² or RMSE alone tells you if a model is good. They only
+  tell you how it compares — to a baseline, or to another model on the same data. A model
+  with RMSE $11k is excellent for house prices and useless for stock returns; a "high R²"
+  on training data is exactly what overfitting produces. Every metric only means something
+  relative to something.</p>
+
+  <h2>Classification: from scores to probabilities</h2>
+  <p>
+    For categories, the simplest serious model is <strong>logistic regression</strong>:
+    compute a linear score z = w·x + b, then squash it through the sigmoid function
+    σ(z) = 1 ⁄ (1 + e<sup>−z</sup>), which maps any number into the interval (0, 1) — a
+    probability. A score of 0 becomes 0.5; strongly positive scores approach 1; strongly
+    negative approach 0. Training minimises log loss, so the model is rewarded for
+    probabilities that are honest, not just for getting the side of 0.5 right.
+  </p>
+  <p>
+    Why not just fit a line to 0/1 labels? Because a line happily predicts −0.3 or 1.7,
+    which are not probabilities, and it handles the pile-up of examples at the extremes
+    badly. The sigmoid is not decorative; it is what makes the outputs interpretable as
+    chances. Also note the naming trap: despite "regression" in its name, logistic
+    regression is a <strong>classifier</strong> — it is linear regression's sibling,
+    repurposed through the sigmoid for categorical targets.
+  </p>
+  <p>
+    The probability then meets a <strong>threshold</strong> to become a decision. At 0.5,
+    an email claiming 0.51 spam is delivered to the junk folder; move the threshold to 0.9
+    and only near-certain spam gets filtered, at the cost of more spam in your inbox. The
+    model outputs a number; the operating point is a choice — and as we will see, that
+    choice belongs to the business, not the data scientist.
+  </p>
+
+  <h2>Flexibility: underfitting, overfitting and cross-validation</h2>
+  <p>
+    A straight line through the apartment data may be too stiff — perhaps prices bend near
+    the city centre. A <strong>decision tree</strong> offers more flexibility: it splits the
+    data by questions ("area above 1.4k sq ft?"), each region getting its own constant
+    prediction. Give it enough depth and it can hit every training point exactly — every
+    apartment priced perfectly, including the oddball ones that are odd for reasons no
+    future apartment will share. That is <strong>overfitting</strong>: near-zero training
+    error, poor error on new data, because the model has memorised noise. The mirror-image
+    failure is <strong>underfitting</strong>: a model too stiff to capture real structure.
+    The third possibility — and the most dangerous in practice — is fitting noise that
+    happens to correlate with the target in your sample: a data-leakage variety, like a
+    "sales prediction" model that has accidentally learned the week the sale was recorded.
+  </p>
+  <p>
+    The defence is honest evaluation. Split the data: train on one part, test on data the
+    model never saw. Because a single split is noisy and wastes data, standard practice is
+    <strong>k-fold cross-validation</strong>: divide the data into k parts (k = 5 or 10),
+    train k times, each time holding out a different part as the test set, and average the
+    k scores. The result estimates how the model will behave on the data you actually care
+    about — the data that does not exist yet. Model selection — choosing depth, penalties,
+    which features to include — is done on validation performance, never on training
+    performance, and the final number is reported on a test set touched exactly once.
+  </p>
+
+  <h2>The accuracy trap: precision and recall</h2>
+  <p>
+    Now the famous failure. Suppose 100,000 card transactions cross your system daily and
+    0.1% are fraudulent — 100 frauds. A "model" that always says "not fraud" scores
+    99,900 ⁄ 100,000 = <strong>99.9% accuracy</strong> and catches nothing. Accuracy is
+    the wrong lens when classes are imbalanced; you need the confusion matrix's four
+    numbers: true positives (TP), false positives (FP), true negatives (TN), false
+    negatives (FN). From it:
+    <strong>precision</strong> = TP ⁄ (TP + FP) — when we raise an alarm, how often are we
+    right? — and <strong>recall</strong> = TP ⁄ (TP + FN) — of all real fraud, what
+    fraction did we catch?
+  </p>
+  <p>
+    Worked example: our detector flags 500 transactions today; 80 are genuine fraud.
+    Precision = 80 ⁄ 500 = 16% (each alarm is wrong 5 times in 6 — annoying for customers).
+    Recall = 80 ⁄ 100 = 80% (we caught most of the fraud). The F1 score, the harmonic mean
+    of the two, is 2 × (0.16 × 0.80) ⁄ (0.16 + 0.80) ≈ 0.27 — low, because the harmonic
+    mean punishes whichever of the two is weakest. Different deployments weight the pair
+    differently: cancer screening wants maximum recall (a missed tumour is catastrophic; a
+    follow-up scan is not), while an automatic account-freeze system wants high precision
+    (freezing a paying customer wrongly is expensive). There is no single "best" number —
+    only a best number <em>for a cost structure</em>.
+  </p>
+
+  <h2>ROC curves: every threshold at once</h2>
+  <p>
+    A model that outputs scores can be evaluated at every threshold simultaneously. Each
+    threshold yields one point: the true-positive rate (recall) against the false-positive
+    rate (fraction of innocents wrongly flagged). Sweeping the threshold from strict to
+    lax traces the <strong>ROC curve</strong>. A useless model traces the diagonal; a
+    perfect one hugs the top-left corner. The <strong>AUC</strong> — area under that curve —
+    has an elegant interpretation: the probability that a randomly chosen fraudulent
+    transaction receives a higher score than a randomly chosen legitimate one. 0.5 is coin
+    flipping; 0.9 means the model orders the two correctly 9 times in 10.
+  </p>
+  <p><em>Common misconception:</em> AUC 0.9 means 90% accurate. It does not — AUC is
+  threshold-free and accuracy is threshold-specific; the two can move in opposite
+  directions. On heavily imbalanced problems, the precision-recall curve (precision against
+  recall across thresholds) is usually the more informative view, because the ROC curve's
+  true-negative count is dominated by the enormous negative class and flatters the model.</p>
+
+  <h2>Thresholds are policy, calibration is honesty</h2>
+  <p>
+    Setting the operating threshold is an economics problem. If a missed fraud costs
+    $1,000 and each false alarm costs $10 in customer friction, you happily accept a
+    hundred false alarms to catch one more fraud — move the threshold down until the
+    marginal trade stops paying. The data scientist's deliverable is a well-calibrated
+    score; the threshold belongs to whoever owns the costs. <strong>Calibration</strong>
+    itself is a property worth checking: if the model says "80% spam", roughly 80% of such
+    emails should actually be spam. Models trained on hard-focused losses can be
+    systematically overconfident or underconfident; reliability curves (predicted
+    probability against observed frequency) expose it, and recalibration methods fix it.
+    A miscalibrated model quietly corrupts every downstream threshold that trusts it.
+  </p>
+  <p>
+    One more professional judgement: interpretability scales with stakes. Linear
+    regression hands you its reasoning in its coefficients; a random forest does not, but
+    attribution tools (SHAP values, which distribute each prediction's departure from
+    average across its input features) can explain individual decisions. For credit
+    decisions and medicine, the ability to explain is not optional — regulators (adverse
+    action notices under fair-lending law in the US, explanation rights under GDPR in
+    Europe) require it. A movie recommender can stay a black box; a parole model cannot.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The bias–variance decomposition.</strong> The expected squared error of a model
+    on new data splits exactly into three parts: bias² (the systematic error from the model
+    family being too stiff, the same on every sample), variance (the error from the model
+    being too sensitive to which particular sample it drew — retrain on a new sample and
+    the predictions move a lot), and irreducible noise. Linear regression on curved data:
+    high bias, low variance. A deep tree: low bias, high variance. Regularisation — L1/L2
+    penalties on weights, tree depth limits, early stopping — is the deliberate purchase of
+    a little bias to retire a lot of variance. This single trade-off organises nearly every
+    practical modelling decision you will make.
+  </p>
+  <p>
+    <strong>Learning curves as diagnosis.</strong> Plot test error against training-set
+    size. Curves that have flattened close together signal a bias-limited model — more data
+    will not help; you need a more flexible model or better features. A wide gap between
+    training and test error that narrows as data grows signals a variance-limited model —
+    more data genuinely helps. Before buying data or GPUs, look at the curve; it usually
+    tells you which one you need.
+  </p>
+  <p>
+    <strong>Imbalanced data, handled properly.</strong> The toolkit, in order of preference:
+    reweight the loss (a fraud costs the loss function as if it were 100 examples), move the
+    decision threshold, resample (oversynthesise the minority with care — SMOTE-style
+    interpolation can manufacture unrealistic examples), and evaluate with metrics immune to
+    base rates. What you should almost never do is report accuracy on a 0.1% problem.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Data leakage remains the leading cause of inflated
+    published results — information from the future or from the label sneaking into
+    features (the "salary prediction" model that includes last year's bonus). Distribution
+    shift breaks models silently: a fraud detector trained on 2023 fraud faces fraudsters
+    who adapt, and unlike a broken bridge, a broken model looks exactly like a working one
+    until someone checks. Monitoring is therefore part of the model, not an afterthought.
+    And the field's quiet irony: competition-winning ensembles of many models rarely
+    survive contact with production, where a slightly worse but simpler, faster, calibrated
+    model is usually the right answer.
+  </p>
+  <p class="sources"><strong>Sources:</strong> Hastie, Tibshirani &amp; Friedman, Elements of Statistical Learning; Géron, Hands-On Machine Learning; Molnar, Interpretable Machine Learning (free online); Russell &amp; Norvig, Artificial Intelligence: A Modern Approach, ch. 19; Chollet, Deep Learning with Python.</p>
 </TopicPage>
