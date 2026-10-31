@@ -14,21 +14,208 @@ const sysbioCfg = {
 <TopicPage slug="subjects/biology/expert/systems-biology">
   <h2>The idea</h2>
   <p>
-    Systems biology is biology's answer to reductionism's limits. Having listed the parts, it
-    asks: <strong>what do the parts do together that none does alone?</strong> It measures cells
-    globally (all genes, all proteins, all metabolites at once), builds computational models of
-    the networks, and tests the models by perturbing the system — engineering's loop, pointed at
-    life's complexity.
+    Systems biology is biology's answer to reductionism's limits. Having listed the parts —
+    and the syllabus's biotechnology topic (21.1) is the parts-list discipline, gene by
+    gene and product by product — it asks: <strong>what do the parts do together that none
+    does alone?</strong> It measures cells globally (all genes, all proteins, all
+    metabolites at once), builds computational models of the networks, and tests the
+    models by perturbing the system — engineering's loop, pointed at life's complexity.
+    The premise is empirical, not mystical: cells demonstrably compute, oscillate, switch
+    and remember, and those behaviours are properties of the wiring, which is why
+    removing any single part often changes nothing and removing a "harmless-looking"
+    hub collapses everything.
   </p>
 
   <Widget no="1" caption="the systems view, in four moves" widget="equationStep" config={sysbioCfg} />
 
-  <h2>Why the whole is more than its parts</h2>
-  <ul>
-    <li><strong>Robustness by design:</strong> cells survive huge perturbations — backup pathways, feedback control, redundancy. Systems models reveal the backups; single-gene thinking never saw them.</li>
-    <li><strong>The whole-cell model:</strong> in 2012 Stanford built a computer model of an entire bacterial cell (every known gene and reaction, ~1,900 parameters). It predicted behaviours its builders didn't design in — the field's proof of concept.</li>
-    <li><strong>Circadian clocks as case study:</strong> ~20 genes with interlocking feedback generate a self-sustaining 24-hour oscillator in every cell — a network property that survives component swaps. Nearly every organism runs one.</li>
-    <li><strong>Data integration is the bottleneck:</strong> genomics, proteomics, metabolomics each measure a layer; the field's hardest problem is stitching layers into one causal model — where the AI ladder's methods and this one meet.</li>
-  </ul>
+  <h2>From parts to networks: the lac operon as first model</h2>
+  <p>
+    The canonical teaching network is the lac operon — and it repays the systems reading.
+    The parts story (21.1's native level): a regulator gene, a promoter, three enzymes
+    for lactose metabolism. The systems story: the operon is a signal-processing device.
+    Lactose present and glucose absent → the repressor releases and cAMP-CAP activates →
+    enzymes expressed; glucose present → the cell ignores lactose entirely (catabolite
+    repression) because glucose is the better fuel. Notice the logic: the cell computes
+    AND (lactose AND not-glucose) with molecular machinery, and does so with graded,
+    history-dependent response — Jacques Monod's "diauxic growth" experiments in the
+    1940s showed E. coli growing in two phases on glucose-then-lactose, pausing while it
+    reprograms. The lesson generalises: every regulatory motif in biology is a small
+    computational unit, and the systems approach reads them as circuits first and
+    chemistry second. Monod and Jacob's operon model (Nobel 1965) was the field's
+    founding document — decades before "systems biology" was named.
+  </p>
+
+  <h2>Network motifs: evolution's small circuits</h2>
+  <p>
+    Uri Alon's group made the study of <strong>network motifs</strong> systematic:
+    count all three-node patterns in real regulatory networks, compare against
+    randomised networks, and the statistically over-represented patterns are evolution's
+    favourites. The recurring cast, each with a computational function: <em>negative
+    autoregulation</em> (a protein repressing its own gene) speeds response and dampens
+    noise — the molecular version of feedback stabilisation; <em>positive feedback</em>
+    creates bistable switches and memory; the <em>feed-forward loop</em> (X regulates Y,
+    both regulate Z) filters noise — a transient blip in X cannot persist long enough
+    to trigger Z, so the motif acts as a persistence detector; <em>incoherent
+    feed-forward</em> generates pulses and fold-change detection. These are the same
+    functions electronic engineers reach for, and the convergence is not metaphor:
+    robust control, filtering and switching are the physics of any regulatory system,
+    and evolution — with no designer — found the same small set of designs because they
+    work. Motif analysis turns "the network is complicated" into a parts list of
+    tested subcircuits.
+  </p>
+
+  <h2>Feedback, oscillation and the circadian clock</h2>
+  <p>
+    Feedback is the field's central mechanism, and the circadian clock is its showcase.
+    In every cell of nearly every organism, a handful of "clock genes" (~20 in the core
+    mammalian loop) run an interlocked feedback circuit: CLOCK-BMAL1 activates PER and
+    CRY transcription; PER/CRY proteins accumulate, pair up, re-enter the nucleus and
+    shut their own activation off; slow degradation lets the loop run with a period of
+    almost exactly 24 hours — a self-sustaining oscillator that keeps ticking even in
+    isolated cells, entrained daily by light through the retina-suprachiasmatic pathway.
+    The systems insights: the period is a property of the <em>loop</em> (degradation
+    rates and delays), not of any component; knocking out a single clock gene shifts
+    the rhythm rather than stopping it — robustness through redundant interlocking
+    loops; and disruption has physiological costs (shift work and jet lag are
+    molecular desynchrony, now linked to metabolic disease, which is why the 2017
+    Nobel for the clock's mechanism was a medicine story as much as a biology one).
+    Synthetic versions — the repressilator — confirmed the design principles by
+    building one.
+  </p>
+  <p>
+    <em>Common misconception:</em> "genes 'cause' traits directly — one gene, one
+    behaviour, one drug target." Network thinking inverts this: most phenotypes are
+    <em>distributed properties</em> of regulatory and metabolic networks, buffered by
+    redundancy so that knocking out any one component often changes nothing (synthetic
+    lethality: two genes individually dispensable, jointly lethal — the reason cancer
+    therapy hunts for pairs, and why single-gene thinking found so few drug targets in
+    complex disease). Genome-wide association studies make the point statistically:
+    hundreds of loci each contributing a sliver to height or diabetes risk. The gene
+    is a part; the behaviour belongs to the wiring.
+  </p>
+
+  <h2>Modelling the cell: from ODEs to whole-cell</h2>
+  <p>
+    The models come in a ladder of ambition. <strong>ODE kinetics</strong>: write each
+    reaction's rate, integrate the system, simulate the pathway — the
+    Michaelis–Menten/Hill framework, practical for circuits and metabolic pathways,
+    parameter-hungry beyond
+    them. <strong>Boolean networks</strong>: genes as ON/OFF, update rules as logic —
+    coarse but scale-able, and surprisingly good at attractor analysis (Stuart Kauffman's
+    insight that cell types are stable states — attractors — of the regulatory network).
+    <strong>Stochastic simulation</strong>: the Gillespie algorithm samples individual
+    reaction events, capturing the noise that ODEs average away — essential at low
+    molecule counts. <strong>Constraint-based models</strong>: flux balance analysis
+    skips kinetics entirely, using stoichiometry plus optimisation (typically: maximise
+    growth) to predict metabolic fluxes — genome-scale metabolic models now exist for
+    thousands of organisms and predict growth rates and gene essentiality with useful
+    accuracy. And the endpoint demonstration: Karr and colleagues' 2012 <strong>whole-cell
+    model</strong> of Mycoplasma genitalium — every known gene and reaction of the
+    smallest free-living cell, about 1,900 parameters drawn from 900 papers — which
+    predicted cell-cycle behaviours its builders never designed in. It is the field's
+    proof of concept: a cell is simulable, in principle, from the parts up.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the 2012 whole-cell model means human cells — or a
+    whole human — can now be simulated." The modelled organism was Mycoplasma
+    genitalium: 525 genes, no organelles, one cell type. A human cell runs a few
+    thousand times more genes with hundreds of compartmentalised, interacting cell
+    types, and parameters for most human reactions have never been measured. The
+    extrapolation from "one minimal bacterium simulated" to "digital human" skips
+    several unsolved fields — parameterisation, multiscale coupling, validation.
+    The achievement is real precisely because the organism was chosen to be
+    small; the distance to human scale is the field's whole roadmap.
+  </p>
+
+  <h2>Omics measurement: data at the system's scale</h2>
+  <p>
+    The systems approach is half modelling, half <strong>measurement at scale</strong>:
+    transcriptomics (RNA counts for all genes), proteomics (mass spectrometry for
+    thousands of proteins), metabolomics (the chemical state), all now at single-cell
+    resolution. Two methodological facts dominate. First, these measurements are
+    <em>relative and biased</em> — RNA-seq counts depend on library preparation;
+    proteomics misses low-abundance proteins; every layer needs normalisation and
+    batch-effect correction before any biology is readable. Second, the layers are
+    only loosely coupled: RNA abundance predicts protein abundance weakly (regulation
+    happens at translation and degradation too), so multi-omic integration — building
+    one causal model from layers that disagree productively — is the field's hardest
+    technical problem and its liveliest subfield. The perturbation experiment
+    completes the loop: gene knockouts, CRISPR screens (tens of thousands of genes
+    perturbed in parallel, fitness read out by sequencing — the field's biggest
+    data-generating experiment), drug treatments; models predict, perturbations
+    judge, and the discrepancy is where the next model comes from.
+  </p>
+
+  <h2>Medicine becomes systemic</h2>
+  <p>
+    The clinical payoff reframes disease as <em>network failure</em>. Cancer is a
+    rewired network — oncogenes and tumour suppressors as hubs whose dysregulation
+    propagates; targeted therapy works when it hits a node the tumour cannot reroute
+    around, and fails when it does not — which is why single-drug resistance is the
+    norm and combination therapy, chosen by network analysis, is the strategy.
+    Sepsis is runaway feedback (cytokine cascades amplifying beyond control); diabetes
+    is a signalling failure with system-wide consequences; ageing itself shows network
+    signatures (interlinked hallmark pathways rather than one dial). Systems
+    pharmacology maps every protein a drug touches — not just the intended target —
+    predicting side effects from the off-target map before trials, and repurposing
+    drugs by network position (a drug that pushes the network away from a disease
+    attractor, whatever its label). Personalised models — tumour-specific networks
+    simulated to rank drug combinations — are in early clinical use. The reductionist
+    era found the parts; the systems era is learning to treat the wiring.
+  </p>
+  <p>
+    <em>Common misconception:</em> "systems biology means 'we made a computer model', so
+    it sits apart from bench biology." Every strong systems paper is a closed loop:
+    model predicts, experiment perturbs, model revises — the 2012 whole-cell model was
+    built from 900 primary papers and validated by new experiments; CRISPR screens are
+    both massive wet-lab work and pure data science. The field's actual product is the
+    <em>iteration</em>, and models that are never falsified by measurement are, in
+    this discipline, considered unfinished rather than published.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Robustness, quantified.</strong> Csete and Doyle's engineering-biology
+    comparison made robustness the field's organising concept: biological networks
+    maintain function under huge perturbation (temperature swings, mutation, noise)
+    the way aircraft control systems do — through feedback, redundancy and modularity —
+    and, like engineered systems, they trade robustness for fragility elsewhere
+    (hyper-optimised networks are exquisitely vulnerable to the perturbation they did
+    not evolve for: a targeted cancer therapy works until the network reroutes; a
+    rare knockout is lethal precisely because the redundancy never covered it). This
+    framing explains otherwise-puzzling data: why most knockouts in yeast are
+    silent, why multi-drug combinations beat resistance, why "essential genes" are
+    conserved while everything else drifts. Robust-yet-fragile is the field's
+    answer to "why is biology so messy and so reliable at once".
+  </p>
+  <p>
+    <strong>The parameter problem and the standardisation response.</strong> A
+    genome-scale model needs thousands of rate constants nobody has measured; the
+    honest responses are structural. Constraint-based methods sidestep kinetics —
+    stoichiometry is knowable even when rates are not. Community standards (SBML for
+    model exchange, Minimum Information guidelines, standardised knock-out collections)
+    make models reusable and comparable. Parameter estimation from data is its own
+    statistics (identifiability: which parameter combinations the data can actually
+    constrain — often fewer than the model's degrees of freedom, a humility machine).
+    The field's cultural rule follows from all this: models are hypotheses with
+    equations, uncertain by construction, and their value is in what they <em>rule
+    out</em> — a model showing a circuit design cannot achieve its specification is
+    often more useful than one that nominally works.
+  </p>
+  <p>
+    <strong>Where the frontier sits.</strong> Foundation models meet systems data:
+    large language models of protein sequences and single-cell atlases (millions of
+    cells, annotated by learned representations) are dissolving the boundary between
+    measured and modelled. Digital twins of organs (the heart models guiding
+    pacemaker design are furthest along) and virtual cell programmes aim at
+    whole-cell simulation at human scale. Generative biology proposes interventions —
+    not just analysing networks but designing rewirings (synthetic oscillators and
+    counters were the pilots; designed signalling pathways in mammalian cells are the
+    current work). And the epistemic frontier: when a model is complex enough to
+    reproduce a cell, interpretation — knowing <em>why</em> — becomes its own research
+    problem, the same crisis machine learning met in vision and language, now arriving
+    in biology with higher stakes. The parts are known; the question the next
+    generation inherits is how to reason about the machine once it is whole.
+  </p>
   <p class="sources"><strong>Sources:</strong> Karr et al., Cell (2012) whole-cell model; Kitano, Science (2002); Alon, An Introduction to Systems Biology.</p>
 </TopicPage>

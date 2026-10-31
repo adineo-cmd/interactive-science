@@ -21,28 +21,188 @@ const matrixCfg = {
   <h2>The idea</h2>
   <p>
     Linear algebra is the complete theory of <strong>one simple kind of transformation</strong>:
-    the kind that maps lines to lines and keeps the origin fixed. That seems restrictive, yet it
-    is the most-used mathematics in modern applied work — every 3D game frame, every machine-
-    learning forward pass, every quantum computation is chains of linear maps, because linear
-    maps are the ones we can always solve exactly.
+    the kind that maps lines to lines, keeps the origin fixed and turns grid into grid without
+    curving it. That seems restrictive, yet it is the most-used mathematics in modern applied
+    work — every 3D game frame, every machine-learning forward pass, every quantum computation
+    is chains of linear maps, because linear maps are the ones we can always solve exactly.
+    The school syllabus's transformations, vectors, magnitudes and vector geometry are the
+    on-ramp to that machinery, and the expert view simply refuses to split them: a
+    transformation <em>is</em> a matrix, a vector <em>is</em> both arrow and column of numbers,
+    and geometry becomes algebra you can compute with.
   </p>
 
   <Widget no="1" caption="a 2×2 matrix is four knobs on the whole plane — watch the determinant track the area change" widget="sliderLab" config={matrixCfg} />
 
   <p>
     The matrix [[a, b], [c, d]] sends (1, 0) to column one and (0, 1) to column two — which
-    fixes where <em>everything</em> goes, since every vector is a combination of those two. The
-    determinant is the signed area scale: 1 means area-preserving (a rotation!), 0 means
+    fixes where <em>everything</em> goes, since every vector is a combination of those two.
+    The determinant is the signed area scale: 1 means area-preserving (a rotation!), 0 means
     collapse, negative means the plane got flipped.
   </p>
 
-  <h2>The expert core</h2>
-  <ul>
-    <li><strong>Vector spaces over any field:</strong> the axioms don't care if the entries are real numbers, polynomials, or functions — Fourier series and quantum states are both "vectors" under the same theorems.</li>
-    <li><strong>Rank, null space, dimension theorem:</strong> rank + nullity = n. What a map preserves and what it destroys always add up.</li>
-    <li><strong>Eigendecomposition:</strong> Av = λv — the directions a map only stretches. Repeated application of a matrix (population models, PageRank) is dominated by the largest eigenvalue.</li>
-    <li><strong>Singular Value Decomposition:</strong> every matrix — even non-square — breaks into rotate → scale → rotate. It is the engine of data compression, noise reduction and PCA in the data-science ladder.</li>
-    <li><strong>Inner products:</strong> adding angles and lengths to vector spaces — the bridge to Hilbert spaces, where quantum mechanics lives (the astronomy and AI ladders both lean on this).</li>
-  </ul>
+  <h2>Transformations: matrices as machines</h2>
+  <p>
+    Every school transformation (E7.1) — rotation, reflection, enlargement, shear — has a
+    matrix, and reading matrices as machines beats memorising them. A rotation by angle θ is
+    the matrix [[cos θ, −sin θ], [sin θ, cos θ]]: check it on the basis vectors — (1, 0) goes
+    to (cos θ, sin θ), the unit vector at angle θ, and (0, 1) follows to (−sin θ, cos θ),
+    which is exactly 90° further round. Composition of transformations is matrix
+    multiplication, and the order matters: rotate 90° then reflect in the x-axis lands in a
+    different place from reflect-then-rotate, which is why matrix multiplication is not
+    commutative. Enlargement by factor 3 is 3 times the identity; a shear [[1, 1], [0, 1]]
+    slides the top of the plane sideways. The determinant tells you which is which at a
+    glance: rotations have determinant 1 (area preserved), reflections −1 (area preserved but
+    orientation flipped), enlargements k² (area scaled by the square, exactly as the geometry
+    topic promises), and a zero determinant means the machine flattens the whole plane onto a
+    line — information destroyed, which is precisely when equations stop having unique
+    solutions.
+  </p>
+
+  <p>
+    <em>Common misconception:</em> "every matrix has an inverse, since every transformation
+    can be undone." A transformation is undoable exactly when it neither collapses space nor
+    flips information — i.e. when its determinant is non-zero. A projection onto the x-axis
+    (matrix [[1, 0], [0, 0]], determinant 0) sends the whole plane onto a line, and no
+    inverse can resurrect which height each point came from. This is the geometric meaning of
+    "singular matrix", and the reason solving Ax = b can fail: some b are simply not in the
+    image of a collapsing map.
+  </p>
+  <p>
+    The game-and-graphics industry runs on exactly this algebra at 60 frames per second.
+    A 3D scene is chains of matrices: the <em>model</em> matrix places an object in the
+    world (translate, rotate, scale — composed into one 4×4 matrix), the <em>view</em>
+    matrix is the camera's inverse transform, and the <em>projection</em> matrix
+    flattens the scene onto the screen. A modern GPU evaluates millions of these
+    products per frame, which is why matrix multiplication is the operation computer
+    hardware is optimised around — and why the 2×2 rules learned here (order matters,
+    determinant as the area scale, identity does nothing) are, unchanged in content,
+    the production mathematics of every game engine and CGI pipeline.
+  </p>
+
+  <h2>Vectors in two dimensions: arrows with bookkeeping</h2>
+  <p>
+    A vector (E7.2) is a quantity with magnitude and direction — displacement, velocity,
+    force — and components are the technology that turns arrows into arithmetic: add
+    vectors by adding components, and the parallelogram law becomes ordinary column addition.
+    The classic worked problem shows why this matters: a 100 N weight hangs from two ropes at
+    45° on either side of vertical. Equilibrium demands the upward components cancel the
+    weight: 2T cos 45° = 100, so each rope carries T = 100 ÷ (2 × 0.7071) ≈ 70.7 N — more
+    tension than a single vertical rope would need (100 N)! The shallower the ropes, the worse
+    the tension: at 80° from vertical each rope must pull with about 288 N. Anyone rigging a
+    stage, a zip line or a washing line is doing this computation, and the riggers' rule
+    "avoid shallow angles" is vector algebra with consequences. Vector addition also
+    builds the bridge to physics: velocities of boats crossing rivers, aircraft in crosswinds
+    and relative motion are all component-wise bookkeeping with a picture attached.
+  </p>
+
+  <h2>Magnitude: length, distance, and the dot product</h2>
+  <p>
+    Magnitude (E7.3) is Pythagoras packaged: for v = (x, y) the length is √(x² + y²), so the
+    vector (3, 4) has magnitude 5 — the oldest triple in the book riding inside the modern
+    notation. But the deep tool hides next door: the <strong>dot product</strong>, a·b =
+    x₁x₂ + y₁y₂ = |a||b|cos θ. One formula computes both lengths (a·a = |a|²) and the angle
+    between vectors (cos θ = a·b ÷ (|a||b|)), and its sign is a classifier: positive means an
+    acute angle, zero means perpendicular, negative means obtuse. Perpendicularity by
+    arithmetic — no protractor, no diagram — is what makes "is this line perpendicular to
+    that one?" a two-second question. Physics pays for the formula directly: work done is
+    force dotted with displacement, so pulling a sledge 20 m with a 50 N force angled 60° up
+    from the ground delivers 50 × 20 × cos 60° = 500 J — the vertical part of your pull does
+    nothing useful, and the dot product is exactly the "useful component" machine. Distance
+    between points, closest approach, collision avoidance in games: all dot products in a
+    loop.
+  </p>
+  <p>
+    Projection is the dot product's geometric act, and it is worth seeing once exactly.
+    The component of vector a in the direction of unit vector u is (a·u)u — the shadow a
+    casts on u's line. Fitting a straight line to data by least squares is the same
+    operation in higher dimensions: the best-fit coefficients solve "project the
+    observation vector onto the space spanned by the predictor columns", and the
+    residual is whatever the projection misses. Linear regression — the most-run
+    computation in statistics — is therefore a projection theorem, and its famous
+    normal equations are the geometry written in coordinates. When a data scientist
+    says a model "explains 80% of the variance", they are quoting the projection's
+    share of the squared length.
+  </p>
+
+  <h2>Vector geometry: structure, bases and proof</h2>
+  <p>
+    Vector geometry (E7.4) — position vectors, ratios, collinearity, proving midpoints and
+    parallel lines — is the first taste of the expert viewpoint: replace coordinates with
+    relationships. The midpoint of AB is (a + b)/2, and from that one line the classical
+    theorems fall out; the diagonals of a parallelogram bisect each other because both
+    diagonals' midpoints compute to (a + b)/2 — a two-line proof replacing a page of
+    Euclidean argument. Beyond the school version waits the structure that makes linear
+    algebra run the world: <strong>span</strong> (everything reachable from your vectors),
+    <strong>basis</strong> (a minimal complete set — two independent vectors span the whole
+    plane, which is why E7.2's two coordinates describe any point), <strong>dimension</strong>
+    (how long a basis is), and the rank–nullity theorem: what a map preserves and what it
+    destroys always add up to the dimension you started with. Collinearity becomes
+    linear dependence — three collinear points give vectors where one is a scalar multiple
+    of another — and "prove ABCD is a trapezium" becomes "show one side vector is a multiple
+    of the other".
+  </p>
+  <p>
+    Solving systems is the applied payoff of the same structure. A pair of simultaneous
+    linear equations is the question "which point lies on both lines?" — two
+    intersection conditions, solved by elimination, and Gaussian elimination is the
+    systematic version: subtract multiples of one row from another (a shear! each row
+    operation is an invertible transformation) until the system triangularises. The
+    vocabulary transfers wholesale: a unique solution exists exactly when the
+    coefficient matrix is invertible (non-zero determinant); no solution when the
+    lines are parallel (inconsistent); infinitely many when the equations repeat
+    (dependent). Linear algebra's economic value is that this analysis scales without
+    change to millions of equations — structural engineering solvers, weather models
+    and machine-learning training all spend their time in exactly this loop, at
+    sizes where no picture is possible.
+  </p>
+  <p>
+    <em>Common misconception:</em> "matrices are a notational convenience for coordinates."
+    They are the objects: a matrix <em>is</em> the transformation, valid in any basis, and
+    the same algebra governs systems with millions of dimensions (an image, a population
+    state, a web page's rank) where no picture exists. The 2×2 case is the sandbox, not the
+    subject.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the magnitude of a sum is the sum of the magnitudes."
+    |a + b| ≤ |a| + |b| is a genuine inequality — the triangle inequality — and it is strict
+    almost always. Walk 3 km east then 4 km north and you are 5 km from home, not 7. Forgetting
+    the difference between "path length" and "net displacement" is the classic physics and
+    navigation error, and the inequality is the mathematics that catches it.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Eigenvalues: the directions that matter.</strong> For a matrix A, an eigenvector
+    satisfies Av = λv — a direction the map only stretches, never rotates. They are the hidden
+    skeleton of a transformation: repeated application of A (population models, interest
+    rates, PageRank's random surfer) is dominated by the largest eigenvalue, and everything
+    else decays relative to it. Google's original PageRank is the statement "the ranking
+    vector is the eigenvector of the link matrix with eigenvalue 1" — a multi-billion-dollar
+    corollary of E7.4's span-and-basis language. Stability analysis of any differential
+    equation, from predator–prey models to bridge oscillation, is eigenvalue reading: negative
+    real parts mean disturbances die out, positive mean they grow.
+  </p>
+  <p>
+    <strong>The SVD: every matrix decomposes.</strong> The singular value decomposition says
+    any matrix whatsoever — square or not, invertible or not — factors into rotate, then
+    scale along the axes, then rotate again. The scaling factors (singular values) rank the
+    matrix's true information content, and keeping only the largest few is the mathematics of
+    compression: it underlies PCA in statistics, image compression, noise reduction and the
+    low-rank approximations inside recommendation systems. The Eckart–Young theorem makes it
+    precise: truncating small singular values is provably the best possible approximation of
+    that rank. When a data scientist "reduces dimensions", this is the theorem being invoked.
+  </p>
+  <p>
+    <strong>Beyond the plane.</strong> The axioms of a vector space never mention numbers,
+    arrows or 2D: functions can be vectors (Fourier series writes a signal as a combination
+    of basis sines), polynomials can be, and quantum states must be — quantum mechanics lives
+    in a Hilbert space, a vector space with the dot product generalised to an inner product,
+    and "measurement" is projection onto a basis direction. Infinite-dimensional spaces bring
+    genuine subtleties (basis, completeness and convergence begin to matter), but the
+    geometric instincts built here — span, projection, orthogonality, determinant — survive
+    intact. The 2×2 matrix in the widget above is, quite literally, the whole subject in
+    miniature: four numbers, one map, one number (the determinant) that tells you whether
+    anything was lost.
+  </p>
   <p class="sources"><strong>Sources:</strong> Axler, Linear Algebra Done Right; Strang, Linear Algebra and Its Applications.</p>
 </TopicPage>

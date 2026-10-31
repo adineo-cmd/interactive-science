@@ -17,17 +17,198 @@ const bioinfCfg = {
     Bioinformatics is <strong>biology's data discipline</strong>: algorithms, statistics and
     databases applied to sequences, structures and molecular measurements. Born of necessity
     (genomes outgrew notebooks), it now leads — AI systems predict structures, scan diagnoses
-    from tumour genomes, and trace pandemics variant by variant in real time.
+    from tumour genomes, and trace pandemics variant by variant in real time. The syllabus
+    gives it one topic — biotechnology and genetic modification — and the expert reading of
+    that topic is the perfect frame: genetic engineering is <em>information processing</em>,
+    reading DNA, editing it and writing it, and every step of that pipeline is computational
+    before it is biological.
   </p>
 
   <Widget no="1" caption="the pipeline from raw sequence to biological insight" widget="equationStep" config={bioinfCfg} />
 
-  <h2>Where it delivers</h2>
-  <ul>
-    <li><strong>Genomic medicine:</strong> tumour sequencing tailors cancer treatment; rare-disease diagnoses that took decades of specialist visits now take weeks of pipeline.</li>
-    <li><strong>Epidemiology:</strong> viral genome surveillance traced SARS-CoV-2 variants worldwide within days of each emergence — public health steered by phylogenetics.</li>
-    <li><strong>Comparative genomics:</strong> reading genomes across species reveals what makes humans human (gene regulation changes more than genes) and what makes pathogens dangerous (which mutations change transmission).</li>
-    <li><strong>The skills stack:</strong> command-line fluency, Python/R, algorithms (alignment, graphs), statistics, and enough biology to know which questions matter. The interdisciplinary profile this atlas's CS + biology ladders are designed to feed.</li>
-  </ul>
+  <h2>Biotechnology and genetic modification as information engineering</h2>
+  <p>
+    The syllabus's topic (21.1) is usually taught through its products: bacteria making
+    insulin, crops with inserted genes. The bioinformatic view sits underneath: every
+    genetic modification is a data operation. To insert a gene you must first <em>find</em>
+    its sequence (databases: GenBank, Ensembl — gigabytes of annotated text that are the
+    field's periodic table), <em>design</em> the construct (restriction-site planning, codon
+    optimisation — choosing synonymous codons the host organism prefers, a translation-speed
+    optimisation run in software), <em>simulate</em> the cloning (plasmid-design tools
+    assemble the circular construct in silico before any enzyme touches a tube), and
+    <em>verify</em> the result by sequencing the edited genome and computationally
+    aligning it back to the plan. CRISPR deepened the computational dependence: guide-RNA
+    design is a search for 20-base targets with minimal off-target similarity — a fuzzy
+    string-matching problem run against the whole genome, scored and ranked by software
+    before a pipette moves. The wet lab is the last mile of a pipeline whose first ninety
+    percent is code.
+  </p>
+
+  <h2>Sequencing: turning DNA into text at scale</h2>
+  <p>
+    The data firehose begins with the sequencers. Sanger sequencing (1977) read one strand
+    at a time and powered the Human Genome Project — 13 years, about 3 billion dollars for
+    the draft. Second-generation machines (Illumina) read millions of fragments in
+    parallel by photographing bases as they incorporate: a human genome in days for a few
+    hundred to a thousand dollars, and the price curve is still falling. Third-generation
+    platforms (PacBio, Oxford Nanopore) read single long molecules — tens of thousands of
+    bases per read — which untangles repeats that shred short-read data. The output is
+    text: FASTA files of A, C, G, T, one human genome about 100 GB once processed. Biology
+    became a data science by arithmetic, and the sequencer is the sensor; everything
+    downstream — alignment, assembly, interpretation — is computer science with a biology
+    constraint attached.
+  </p>
+  <p>
+    The data carry their own quality metadata, and reading it is a first-day skill.
+    Each base arrives with a Phred score — Q = −10 log₁₀(p), where p is the estimated
+    probability that the call is wrong — so Q30 means 99.9% accuracy, Q40 means
+    one error in ten thousand. Pipelines filter and trim on these scores before any
+    biology is attempted, because garbage bases propagate: a single bad base in an
+    assembly read can misjoin contigs, and a miscount in an RNA-seq library shifts a
+    gene's measured expression. Replicates, controls (spike-ins for RNA-seq) and
+    batch-design discipline complete the foundation — the field's version of
+    laboratory technique, executed in configuration files.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the genome is a blueprint — read it and you can build
+    the organism." A blueprint is a one-to-one plan; a genome is closer to a recipe
+    embedded in a self-assembling chemistry: genes interact, most regulatory logic lives
+    outside genes, identical twins diverge, and the same genome produces a caterpillar
+    and then a butterfly. Annotation pipelines encode the honest version: they label
+    <em>candidate</em> functions and regulatory <em>potential</em>, not a determinism.
+    The field's own history enforced this — humans have about 20,000 protein-coding
+    genes, roughly the count in a worm; complexity lives in the network, not the parts
+    count.
+  </p>
+
+  <h2>Alignment: the field's workhorse algorithm</h2>
+  <p>
+    Sequence alignment is the discipline's core computation: line up two sequences to find
+    shared ancestry in shared order. The rigorous solution is dynamic programming —
+    Needleman–Wunsch (1970) for global alignment, Smith–Waterman (1981) for local —
+    filling a scoring grid where each cell is the best score ending there, with penalties
+    for mismatches and gaps. The problem is scale: comparing one sequence against a
+    billion-base database by the rigorous method would take years, so BLAST (1990) made
+    the engineering trade — find short exact "seed" matches first (they are cheap), then
+    extend only the promising ones. It is a heuristic, and it is the most-cited paper in
+    biology's literature, with a web server that has been the field's front door for three
+    decades. What alignment buys: conserved regions across species (the slower a region
+    changes, the more essential its function), disease mutations pinned to functional
+    domains, and phylogenetic trees — alignment is where sequence becomes evolutionary
+    inference.
+  </p>
+  <p>
+    <em>Common misconception:</em> "BLAST finds <em>the</em> answer — the database search
+    returns truth." BLAST returns heuristically selected alignments scored against a
+    model; the raw output includes an E-value (how many hits of this quality you would
+    expect by chance in a database that size), and reading that number correctly — not
+    just taking the top hit — is the actual skill. Hits with E-values near 1 may be pure
+    noise; a "significant" hit to the wrong database region sends a pipeline entirely
+    astray. The tool narrows the search; the biologist decides.
+  </p>
+
+  <h2>Assembly and annotation: from reads to a genome</h2>
+  <p>
+    Sequencers do not read genomes; they read fragments, and assembly stitches them — a
+    jigsaw with billions of pieces, no box lid, and stretches (repeats) where all pieces
+    look identical. Short-read assemblers solve it with graph theory: break reads into
+    k-mers, build a de Bruijn graph of overlaps, and walk the graph into contigs; long
+    reads bridge the repeats and close the gaps. The first human "complete" genome was
+    actually a mosaic of hundreds of gaps until the Telomere-to-Telomere consortium used
+    long reads to finish one in 2022 — the last centromeres and satellite arrays, unreadable
+    for twenty years, finally resolved. Annotation then labels the assembly: which
+    stretches are genes, which regulatory elements, which selfish repeats (about half the
+    human genome). Gene-finding was the first large-scale machine-learning problem in
+    biology, and today's annotators — including tools that predict gene structure and
+    function directly from sequence with neural networks — descend from that lineage.
+  </p>
+
+  <h2>Phylogenetics and outbreak surveillance: evolution as an algorithm</h2>
+  <p>
+    Comparative genomics scales alignment into <strong>phylogenetics</strong>: build the
+    tree of relationships from shared mutations, assuming (with care) that fewer
+    differences mean more recent common ancestry. This is where bioinformatics changed
+    public health visibly: during the SARS-CoV-2 pandemic, millions of viral genomes were
+    sequenced and shared openly, and phylogenetic pipelines placed each new sample on the
+    evolving tree within days — naming the variants, tracing transmission chains,
+    distinguishing reinfection from persistent infection, and guiding vaccine updates.
+    The same tree-building reads deep history: it settled that whales sit inside the
+    even-toed ungulates, that HIV jumped from chimpanzees early in the twentieth century,
+    and that our own Neanderthal ancestry is real (a few percent of non-African genomes,
+    found in the alignments). Evolution, famously described as the science with no
+    experiments, turns out to be running a continuous data stream — and the tree is its
+    regression model.
+  </p>
+  <p>
+    <em>Common misconception:</em> "a phylogenetic tree is the family tree of organisms,
+    read directly from fossils and guesses." Every published tree is a computed estimate
+    from aligned sequence data under a model of molecular evolution — different models
+    and gene choices give different trees, and genes themselves have histories that can
+    differ from species histories (horizontal gene transfer in bacteria scrambles the
+    picture entirely; mitochondria and chloroplasts carry their own genomes from
+    different ancestors). The tree is an inference with quantified confidence, and
+    "the" tree of life is a consensus of thousands of gene trees — some of which
+    disagree productively.
+  </p>
+
+  <h2>Structure prediction: the 50-year problem, met</h2>
+  <p>
+    Protein structure prediction was biology's grand challenge: a protein's 3-D shape (which
+    determines its function) follows from its amino-acid sequence by physics — Anfinsen's
+    1972 Nobel showed the fold self-assembles — but computing the fold from sequence
+    resisted everyone for half a century. DeepMind's AlphaFold2 (CASP14, 2020) effectively
+    solved single-chain prediction by learning from the 170,000 known structures, using
+    attention networks that reason over residue pairs; its public database now holds
+    200+ million predicted structures, essentially every catalogued protein. The 2024
+    Nobel in chemistry went to its builders (Hassabis and Jumper, shared with David Baker
+    for computational protein design). Honest boundaries remain: protein–protein and
+    protein–ligand interactions, dynamics and disordered regions are harder; a structure
+    prediction is a hypothesis, not a measurement. But the pipeline "sequence in, structure
+    out, function proposed" is now the default first pass for every new gene — the field's
+    clearest case of computation doing what labs used to.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Omics and the integration problem.</strong> Genomics is one layer of a stack:
+    transcriptomics (which genes are switched on, measured by RNA-seq), proteomics (which
+    proteins are present, by mass spectrometry), epigenomics (which regions are methylated
+    or open), metabolomics (the chemical state). Each layer is its own data discipline with
+    its own biases — RNA-seq needs normalisation and differential-expression statistics
+    (which genes changed <em>more than measurement noise</em> is a hypothesis test per
+    gene, times twenty thousand, demanding false-discovery-rate control); proteomics is
+    inference from peptide fragments. The frontier is multi-omic integration: single-cell
+    methods measuring RNA in thousands of individual cells reveal that tissues are
+    mosaics of states, and linking genetic variants to expression (eQTLs) to disease is
+    the current route from correlation toward mechanism. The statistics is genuinely hard,
+    and "we found a significant gene" without multiple-testing correction is the field's
+    most common published sin.
+  </p>
+  <p>
+    <strong>Data infrastructure as scientific instrument.</strong> The field's unglamorous
+    core is databases and standards: GenBank/ENA/DDBJ sharing sequence data across borders
+    by treaty-like agreement; the FASTA and FASTQ formats as de facto law; versioned
+    reference genomes (GRCh38) that every pipeline pins to; FAIR principles (findable,
+    accessible, interoperable, reusable) governing how data are deposited. During the
+    pandemic, open sharing of SARS-CoV-2 genomes via GISAID and then open repositories was
+    arguably the single highest-leverage scientific act of the event — the surveillance
+    above was possible because thousands of labs uploaded, unembargoed. The inverse lesson
+    also lands: data hoarding, format drift and unmigrated servers have silently destroyed
+    decades of irreplaceable biological data — reproducibility in this field is an
+    engineering problem before it is a scientific virtue.
+  </p>
+  <p>
+    <strong>The frontier.</strong> Foundation models for biology (protein language models
+    trained on hundreds of millions of sequences, learning structure and function
+    implicitly), generative protein design (specify a fold, synthesise the gene that
+    makes it), personal-genome pipelines in the clinic (the genomic-medicine page's
+    subject), and pathogen-genomic early warning as permanent public infrastructure. The
+    ethical edges sharpen accordingly: privacy of sequence data (it identifies relatives,
+    not just individuals — the Golden State Killer case was solved by genealogy databases),
+    consent for secondary uses, and equity in whose genomes populate the reference
+    databases (African genomes are the most diverse and the least represented — a
+    measurement bias with clinical consequences). The field that began as a way to store
+    sequences now sets the terms for what biology's next century of experiments will be.
+  </p>
   <p class="sources"><strong>Sources:</strong> Altschul et al., J. Mol. Biol. (1990); Jumper et al., Nature (2021); Human Genome Project (Nature, 2001/2003).</p>
 </TopicPage>
