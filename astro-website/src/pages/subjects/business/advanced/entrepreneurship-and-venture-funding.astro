@@ -11,24 +11,210 @@ const entCfg = {
     { math: '4 · Term sheets: read the economics', note: 'Valuation matters less than the terms: liquidation preferences, board seats, anti-dilution. A "high" valuation with a 3× preference can leave founders nothing. Lawyers who do deals read; lawyers who don\'t skim.' },
   ],
 };
+
+const entQuiz = {
+  questions: [
+    {
+      q: "A startup raises 500,000 at a 5,000,000 pre-money valuation. What does the investor own after the round?",
+      choices: ["10%", "9.1%", "11.1%", "5%"],
+      answer: 1,
+      why: "Post-money = 5,000,000 + 500,000 = 5,500,000, so the stake is 500,000 / 5,500,000 ≈ 9.1% — not 10%. Dividing by pre-money is a classic negotiation-table error (usually made by the founder).",
+    },
+    {
+      q: "An investor holds a 1× non-participating preference on 10 million invested for 25% of the company. The company sells for 30 million. What does the investor take?",
+      choices: [
+        "7.5 million (their 25% share)",
+        "10 million (the preference), founders get the rest",
+        "10 million, then a choice: keep it or swap for 25% of the exit",
+        "15 million",
+      ],
+      answer: 2,
+      why: "Non-participating means the investor picks the better outcome: 25% × 30 million = 7.5 million, or the 10 million preference. They take 10 million; founders and others split 20 million. A participating preference would stack both — which is why founders fight that clause, not the headline valuation.",
+    },
+    {
+      q: "Cash on hand is 600,000 and net burn is 50,000 a month. Applying the standard 'raise before 9 months of runway' rule, when should fundraising start?",
+      choices: [
+        "Now — 12 months of runway means raise immediately",
+        "In 3 months, when runway reaches 9 months",
+        "When cash hits 150,000",
+        "Runway doesn't matter if the product is good",
+      ],
+      answer: 1,
+      why: "12 months of runway minus a 9-month floor leaves a 3-month window, and real raises take 3–6 months — so the honest answer is 'start now, in parallel'. Waiting until the floor is crossed means negotiating desperate.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/business/advanced/entrepreneurship-and-venture-funding">
   <h2>The idea</h2>
   <p>
-    Entrepreneurship is <strong>searching for a repeatable, scalable business model under extreme
-    uncertainty</strong> (Blank's definition) — which makes it a discipline of cheap experiments
-    rather than confident plans. Venture funding is the fuel for that search: staged capital that
-    buys the next round of experiments, in exchange for equity and board influence.
+    Steve Blank's definition is the load-bearing sentence of this lesson: a startup is a temporary organisation
+    <strong>searching for a repeatable, scalable business model under extreme uncertainty</strong> — not a small
+    version of a large company. That single distinction reorganises everything else. Searching is an
+    experimental activity, so the right methods are experiments; the organisation is temporary, so the cap table
+    and the funding ladder exist to buy time for the search; and extreme uncertainty means the base rates are
+    brutal, so we will look at them honestly. The syllabus's business-activity and finance topics —
+    classification, enterprise, forms of organisation, sources of finance, cash flow, the statements — all
+    appear here, but arranged along the timeline of a venture from idea to term sheet.
   </p>
 
   <Widget no="1" caption="problem, loop, runway, terms" widget="equationStep" config={entCfg} />
 
-  <h2>The survival statistics, honestly</h2>
-  <ul>
-    <li><strong>~90% of startups fail;</strong> of VC-funded ones, most return little — venture economics is a power law where a few winners pay for the portfolio. Founders should model for success but budget for the base rates.</li>
-    <li><strong>Founder equity is precious:</strong> every round dilutes; options pools, preferences and down-rounds compound. The cap table is the founder's balance sheet — model it forward.</li>
-    <li><strong>Cofounder conflict kills more startups than competitors:</strong> Noam Wasserman's "Founder's Dilemmas" research — clear equity splits (vesting!) and role boundaries decided early prevent the classic dissolution.</li>
-    <li><strong>The alternative paths are real:</strong> bootstrapping (own the company, grow slower — Basecamp), revenue-based finance, small buyouts. Venture capital fits few businesses; the myth that it fits all is venture marketing.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Ries, The Lean Startup; Blank, "Why the Lean Start-Up Changes Everything" (HBR 2013); Wasserman, The Founder's Dilemmas.</p>
+  <h2>The enterprise: what a new business actually is</h2>
+  <p>
+    Business activity, at bottom, is <strong>adding value</strong>: buying or making something for less than
+    customers will pay for it, in a form they want. Classification questions that look academic turn strategic
+    fast: is the venture in the primary, secondary or tertiary sector (does it extract, make, or serve — and is
+    it digital or physical, which changes marginal costs to near zero or not)? Is it private-sector for profit,
+    a social enterprise, or a co-operative — a choice with real consequences for who the firm must satisfy?
+    Most new businesses are sole traders or partnerships for a reason: unlimited liability is ugly, but
+    formation is instant, control is total, and profits face no double layer. The move to a private limited
+    company (Ltd in the UK, LLC or C-corp in the US) is not bureaucracy — it is the moment the firm can sell
+    <em>shares</em>, which is the precondition for outside equity investment. A public listing is far beyond the
+    startup stage, but the ladder matters: every funding round in this lesson presumes the corporate form that
+    makes dilution possible.
+  </p>
+  <p>
+    Objectives deserve the syllabus's scepticism. Textbooks list survival, profit, growth and market share; the
+    startup reality is that <strong>survival dominates</strong> for the first years, and the firm serves
+    <em>stakeholders</em> with genuinely different objectives — customers want the product, employees want
+    salaries and meaning, founders want control and wealth (Wasserman's data show these two pull apart), and
+    investors want a return on a clock. Good founders name the trade-offs early instead of discovering them in
+    a dispute.
+  </p>
+
+  <h2>The search method: lean, minimum, measurable</h2>
+  <p>
+    The lean loop — <strong>build, measure, learn</strong> — operationalises the search. Its unit of progress
+    is <em>validated learning</em>: a fact about customers, demonstrated by their behaviour, that changes what
+    you build next. The tool is the minimum viable product: the smallest artefact that generates real behaviour
+    — a landing page with a pre-order button, a concierge service run by hand, a spreadsheet behind a polished
+    face. The point of an MVP is to be <em>wrong cheaply</em>; every feature on it is a bet, and features are
+    expensive. The discipline that separates lean from merely busy is the metric: choose one measurable
+    hypothesis per cycle ("do 5% of visitors pre-order?"), run it, and accept the result. Eric Ries's deeper
+    warning is about sunk cost — the startup's most dangerous asset is six months of work that the data say
+    to abandon.
+  </p>
+
+  <h2>Funding: needs, sources and the runway clock</h2>
+  <p>
+    The finance-needs question is arithmetic first. Runway = cash ÷ net burn. With 600,000 in the bank and a
+    50,000 monthly burn, runway is 12 months. Since institutional rounds take 3–6 months to close and founders
+    should never negotiate with months to spare, the working rule is to <strong>start fundraising while at
+    least 9 months of runway remain</strong> — a rule our example already violates at the margin. The
+    <strong>sources</strong> ladder matches money to proof, cheapest first: personal savings and revenue
+    (customer money is the cheapest capital that exists — it dilutes nothing); friends and family (fast,
+    warm, socially risky); grants and competitions; angel investors (tens to hundreds of thousands, for a
+    prototype with early users); seed funds; venture capital series A and beyond (millions, for demonstrated
+    scaling); and venture debt, which buys months of runway without dilution but must be repaid regardless of
+    success. Bootstrapping — growing on revenue alone — is not a consolation prize: it preserves 100% of the
+    equity and forces pricing discipline, at the price of speed; plenty of durable companies (Basecamp is the
+    canonical example) never raised a round. The honest statement: <strong>venture capital fits a narrow class
+    of businesses</strong> — those that can grow extremely fast toward very large outcomes and where speed
+    against competitors matters more than ownership.
+  </p>
+
+  <h2>The cap table: dilution by the numbers</h2>
+  <p>
+    Equity is the currency of this funding model, and it is spent in rounds. The arithmetic every founder must
+    do on the spot: raising 500,000 at a <strong>5,000,000 pre-money</strong> valuation means a 5,500,000
+    post-money, so the investor owns 500,000 / 5,500,000 ≈ <strong>9.1%</strong> — not 10%. Confusing pre- and
+    post-money is the classic table error. Rounds compound: a founder at 40% before a 20% dilution holds 32%
+    (40 × 0.8); three such rounds leave 20.5%. And every round typically enlarges the <strong>option
+    pool</strong> — shares reserved for employees — which is often created post-money, meaning the founders
+    absorb the dilution. Model the cap table three rounds forward before signing round one; founders who
+    discover at series B that they hold 15% are discovering a fact that was fully visible in round one's
+    paperwork.
+  </p>
+
+  <h2>Term sheets: valuation is the headline, terms are the economics</h2>
+  <p>
+    A term sheet prices the round and sets the rights. The clause that matters most is the
+    <strong>liquidation preference</strong>: who gets paid first when the company sells. Worked example — an
+    investor put in 10,000,000 for 25%, with a 1× <em>non-participating</em> preference; the company sells for
+    30,000,000. The investor chooses the better of their 25% share (7,500,000) or their preference
+    (10,000,000): they take 10,000,000 and the rest split 20,000,000. Now make the preference
+    <em>participating</em>: they take 10,000,000 <strong>and then</strong> 25% of the remainder — 10,000,000 +
+    7,500,000 × (25/75) = 12,500,000, leaving founders and employees 17,500,000. Stack a multiple (2×, 3×) on
+    top and a "successful" exit can return investors everything while leaving common holders nothing — which
+    is why sophisticated founders negotiate the preference stack harder than the valuation. Other standard
+    clauses: board seats (who steers when interests diverge), pro-rata rights (investors may keep their
+    percentage in later rounds), anti-dilution (protects earlier investors in a down round by repricing their
+    shares), and vesting on founder shares (four years with a one-year cliff — protecting cofounders from each
+    other when someone leaves early). The stages themselves are proofs, not prizes: pre-seed and seed capital
+    buy evidence the product works; series A buys evidence it scales; B and beyond buy dominance in the market
+    the earlier rounds discovered.
+  </p>
+  <p><em>Common misconception:</em> "raising at a higher valuation is winning." A high valuation is a loan
+  against your next round's expectations: raise at 50 million, grow into 20 million of real progress, and the
+  next round is a <em>down round</em> — brutal repricing, anti-dilution triggers, demoralised employees whose
+  options are underwater. Raising slightly cheap at a valuation you can justify is the experienced move.</p>
+
+  <h2>The pitch, decoded: what investors actually evaluate</h2>
+  <p>
+    A pitch deck is not a story about the product; it is an argument about a <em>return</em>, and its
+    sections map to the investor's mental checklist. <strong>Market size</strong> is top-down sanity and
+    bottom-up honesty: state the total addressable market (say 2 million small businesses in the segment),
+    the slice you can reach (200,000 with your current channels), and the revenue you can build
+    (200,000 × 30 a month = 72 million a year — bottom-up beats the famous "1% of a huge number" reflex,
+    which investors read as a tell). <strong>Team</strong> is assessed as evidence, not biography: has this
+    group shipped this kind of thing before, and does the founder-market fit explain why you? 
+    <strong>Traction</strong> is the credibility engine — retention curves, weekly growth, letters of
+    intent — because in power-law investing, evidence of engagement beats projection decks. 
+    <strong>The moat question</strong> ("why do you win durably?") connects straight back to the strategy
+    lesson. And the <strong>ask</strong> is arithmetic: "raising 750,000 for 18 months of runway to reach
+    X users and a series-A-ready metric" — tying the number to milestones, because the investor's real
+    question is whether this round buys proof that the next round prices higher. Rejection, read
+    correctly, is market research about the return story, not the product's worth.
+  </p>
+
+  <h2>The runway arithmetic, extended</h2>
+  <p>
+    Because the runway rule does so much work, run it forward properly. Cash 600,000, burn 50,000 a month:
+    12 months of runway. But burn is not constant — hiring pushes it up before revenue pushes it down, so
+    the honest forecast is a burn <em>curve</em>: the same firm planning two sales hires sees month-6 burn
+    at 65,000 and effective runway closer to 10 months. Revenue offsets burn (net burn = costs − revenue),
+    which creates the growth-versus-runway dial every founder manages: cutting spend extends the runway but
+    slows the traction that makes the next round possible. The professional instrument is the
+    <strong>cash-out date</strong> computed monthly under three burn scenarios, and the discipline is
+    deciding the raise threshold in advance — "we start conversations at 9 months" — while calm. Founders
+    who compute it in month 3 raise on their terms; founders who compute it in month 11 raise on the
+    investor's. The same arithmetic answers the bootstrapping comparison precisely: growing on revenue means
+    the runway rule inverts — the product's sales <em>are</em> the funding line, slower, but with no dilution
+    clock attached.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The base rates, stated honestly. The popular "90% of startups fail" is folklore; US Bureau of Labor
+    Statistics data show about <strong>20% of new firms close within a year and roughly half within five</strong>
+    — sobering, but far from coin-flip odds of instant death. Venture outcomes, however, are not normal:
+    they follow a <strong>power law</strong>, where a small minority of investments return the whole fund and
+    most return little. This has a counterintuitive consequence for founders: a VC rejecting you may not be
+    judging your company as bad — they are judging it as not plausibly <em>huge</em>, because in power-law
+    portfolios "pretty good returns" are the same as failure. It also explains the industry's systematic
+    biases: investors overweight founders who resemble past outliers, and moderate-but-solid businesses —
+    excellent companies by every ordinary measure — struggle to raise venture money not because they are weak
+    but because they are the wrong shape.
+  </p>
+  <p>
+    Wasserman's research programme on the <strong>founder's dilemmas</strong> quantifies the central trade-off:
+    decisions that raise the odds of wealth (investors, experienced executives, broad cap tables) lower the
+    odds of control, and vice versa; founders must choose which they are optimising for, because the data show
+    you cannot reliably maximise both. And the highest-mortality risk is internal: cofounder conflict.
+    The practical canon is to treat equity like employment — splits decided candidly, shares vesting over four
+    years, roles and deadlocks documented while everyone still likes each other.
+  </p>
+  <p>
+    Open questions: does venture funding <em>cause</em> success or merely <em>select</em> the ventures that
+    would have succeeded (the identification problem that economics is still working through)? How will
+    capital-efficient AI-era startups — four people, large revenue — change round structures built for
+    headcount-heavy growth? And can the power law be tamed by ever-larger funds, or is it structural to
+    innovation itself? Whatever the answers, the founder's discipline stands: search cheaply, measure honestly,
+    protect the cap table, and read every term sheet as if the exit already happened.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Ries, <em>The Lean Startup</em>; Blank, "Why the Lean Start-Up Changes Everything" (HBR 2013); Wasserman, <em>The Founder's Dilemmas</em>; US Bureau of Labor Statistics business employment dynamics.</p>
+
+  <Widget no="2" caption="check yourself: pre-money, preferences and the runway rule" widget="quiz" config={entQuiz} />
 </TopicPage>

@@ -10,24 +10,158 @@ const matSelCfg = {
     { math: '4 · Shape, processing and documentation', note: 'Section shape multiplies performance (an I-beam beats a rod of the same mass); processing constrains choice (castable? weldable?); documentation seals the audit trail. The CES selector software industrialised Ashby\'s method.' },
   ],
 };
+
+const matSelQuizCfg = {
+  questions: [
+    { q: 'For a light, stiff beam in bending, the winning performance index is…', choices: ['E/ρ', 'E^½/ρ', 'ρ/E', 'σy/ρ'], answer: 1, why: 'Deriving from beam stiffness (S depends on E·A²) and mass (on ρ·A), minimising mass at fixed stiffness maximises √E/ρ. In tension it would be E/ρ — the geometry of the loading changes the exponent, which is why translation matters.' },
+    { q: 'On the Ashby modulus–density chart, the guideline line E^½/ρ = constant has slope…', choices: ['1', '2', '½', '0'], answer: 1, why: 'log E = 2·log ρ + constant — a slope-2 line on log axes. Materials above the line beat the benchmark; sliding the line across the bubbles ranks every material in one picture.' },
+    { q: 'A "hard limit" in Ashby screening differs from a "ranking objective" because…', choices: ['limits are cheaper', 'a limit disqualifies (must survive 300 °C, must not corrode); the objective orders the survivors (minimise mass, cost, carbon)', 'limits are for metals only', 'there is no difference'], answer: 1, why: 'Screening is a pass/fail filter on constraints; ranking is an optimisation over whatever passes. Confusing the two either kills viable candidates or optimises something that will fail.' },
+    { q: 'Why does wood compete with carbon fibre for light stiff beams, but not for light stiff ties (tension rods)?', choices: ['wood is stronger in tension', 'the index changes: bending rewards E^½/ρ (where wood\'s low density shines), tension rewards E/ρ (where it does not)', 'wood is cheaper', 'it doesn\'t — wood is always worse'], answer: 1, why: 'Same materials, different loading geometry, different exponent on E. The index framework is what makes the "it depends" of materials selection computable.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/engineering/advanced/materials-selection">
   <h2>The idea</h2>
   <p>
-    Materials selection is <strong>the systematic matching of stuff to requirements</strong> —
-    Ashby\'s method: translate the design into properties, screen, rank by performance indices,
-    and read the trade-offs off his famous bubble charts. It is the engineering lesson the
-    materials ladder feeds.
+    Every engineering decision includes an invisible question: <em>what should it be made
+    of?</em> — answered, historically, by tradition (bronze for statues, steel for bridges)
+    and by iteration. Mike Ashby's method made it systematic: <strong>translate the design
+    into property requirements, screen the material universe against hard limits, rank the
+    survivors by a performance index, and read the trade-offs off charts</strong> where every
+    material class occupies its own bubble. The syllabus's property families — physical and
+    phase behaviour, mechanical, chemical, thermal, electrical — are exactly the columns of
+    the selector's database; each gets its moment in this lesson, and then the selection
+    machinery turns them into decisions. The materials ladder built these properties lesson
+    by lesson; this one is where they are spent.
   </p>
 
   <Widget no="1" caption="translate, screen, chart, document" widget="equationStep" config={matSelCfg} />
 
-  <h2>Performance indices in practice</h2>
+  <h2>The property families: what the database holds</h2>
   <ul>
-    <li><strong>Light and stiff (aircraft spars):</strong> E/ρ — carbon fibre and aluminium beat steel. Light and stiff in bending: E^½/ρ — wood competes with the metals (the plant-biology lesson\'s evolved engineering).</li>
-    <li><strong>Thermal shock resistance (cookware, re-entry):</strong> σ/k·E — why borosilicate glass survives stovetops and soda-lime does not (the chemistry lesson\'s expansion coefficients, ranked).</li>
-    <li><strong>Springs store energy per volume:</strong> σ²/E — why spring steel and titanium compete and rubber (huge elastic strain) is a spring by another mechanism (the elasticity of the materials lesson, optimised).</li>
-    <li><strong>Sustainability indices exist now:</strong> embodied carbon per unit stiffness — timber rising up the rankings as the index changes, which is the whole method\'s point: change the objective, watch the winner change (the architecture lesson\'s mass-timber wave).</li>
+    <li><strong>Physical and phase behaviour:</strong> density, melting point, and the phase
+    stability landscape — where the phase-diagram lesson's maps enter selection as the
+    question "is this microstructure stable at service temperature?" (superalloys exist
+    because their strengthening phase survives 1,000 °C; polymers largely do not enter
+    hot sections because nothing about them does).</li>
+    <li><strong>Mechanical:</strong> elastic modulus E, yield strength σ_y, fracture
+    toughness K_IC, fatigue endurance — the failure lesson's numbers. Toughness and
+    strength trade against each other in real tables of data, and the selection method's
+    job is to make the trade explicit rather than optimistic.</li>
+    <li><strong>Thermal:</strong> conductivity k, expansion coefficient α, specific heat,
+    maximum service temperature. Expansion mismatch is the quiet killer of joined
+    structures (a glass-to-metal seal cracks because the partners expand differently);
+    conductivity governs both heat sinks and thermal-stress index.</li>
+    <li><strong>Electrical:</strong> conductivity or resistivity, dielectric strength,
+    magnetic behaviour — copper's 59 MS/m conductivity is why it <em>is</em> the wire, and
+    insulators are chosen almost as deliberately (tracking resistance, dielectric loss).</li>
+    <li><strong>Chemical:</strong> corrosion and oxidation resistance, UV and solvent
+    compatibility, galvanic compatibility. The galvanic series ranks metals by noble
+    potential; connecting a less-noble metal to a more-noble one in an electrolyte makes
+    the less-noble one the sacrificial anode — useful (galvanised steel: zinc corrodes,
+    steel doesn't) and fatal (steel fasteners in copper sheet). Corrosion is chemistry with
+    a failure lesson attached.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Ashby, Materials Selection in Mechanical Design; Granta/CES Edupack; the materials ladder\'s why-materials-behave lesson.</p>
+
+  <h2>Translation: from adjectives to indices</h2>
+  <p>
+    The method's first move converts design language into function, objective, constraints
+    and free variables. Take the canonical case: a <strong>light, stiff beam</strong> of
+    length L, stiffness S, cross-section A — material and shape free. Beam theory gives
+    stiffness S = C·E·I/L³ with C a load-configuration constant and I the second moment of
+    area; for geometrically similar sections I scales with A², so A = √(S·L³/(C·E)). Mass
+    is m = ρ·A·L = ρ·L·√(S·L³/(C·E)). Everything except ρ and E is fixed by the
+    specification, so minimising mass means maximising <strong>M = E^½/ρ</strong> — the
+    <em>performance index</em>, and the reason the exponent depends on loading: a tension
+    tie gives M = E/ρ, a panel in bending E^⅓/ρ. The method's power is that the design
+    speaks in indices; the material database answers in numbers.
+  </p>
+  <p>
+    Worked ranking for M = E^½/ρ, in (GPa)^½ per (Mg/m³): mild steel
+    (E = 210, ρ = 7.8): 14.5/7.8 ≈ <strong>1.9</strong>. Titanium (116, 4.5): 10.8/4.5 ≈
+    <strong>2.4</strong>. Aluminium (69, 2.7): 8.3/2.7 ≈ <strong>3.1</strong>. Carbon-fibre
+    composite (E ≈ 100 along the fibre, ρ = 1.55): 10/1.55 ≈ <strong>6.5</strong>. Pine,
+    along the grain (E ≈ 10, ρ = 0.5): 3.2/0.5 ≈ <strong>6.3</strong>. So for light stiff
+    <em>bending</em>, wood genuinely rivals carbon fibre and crushes steel — evolution
+    optimised trees for exactly this index — while for a tension tie (E/ρ) the ranking
+    reshuffles (CFRP ~65, wood ~20, steel ~27, aluminium ~26) and geometry (thin-walled
+    tubes) re-enters. Change the objective to cost per unit stiffness and steel surges
+    back; the winner is a property of the <em>question</em>.
+  </p>
+
+  <h2>Ashby charts: the whole database as a picture</h2>
+  <p>
+    Plot modulus against density for 100,000 materials on log-log axes and the point cloud
+    organises into class bubbles: ceramics top-right (stiff, dense-ish), foams bottom-left
+    (compliant, light), elastomers far bottom-left, metals in a diagonal band. Two
+    graphical tools turn this into selection. <strong>Guideline lines</strong>: a line of
+    slope 2 (from log E = 2 log ρ + const) marks constant E^½/ρ; slide it across the chart
+    toward the top-left and the first bubble it touches is the winner — an entire ranking,
+    performed as geometry. <strong>Property envelopes</strong>: bubbles are honest about
+    scatter (ceramics' strength spans two decades because flaws dominate — the fracture
+    lesson's statistics made visible). The same chart pair with other axes (strength vs
+    density, thermal expansion vs conductivity, cost vs embodied carbon) extends the
+    picture to every objective family; the framework even displays limits (maximum service
+    temperature as a horizontal ceiling that knocks out polymers below it).
+  </p>
+  <p>
+    <em>Common misconception:</em> the "best material" exists. Best is index-dependent and
+    constraint-dependent: carbon fibre wins light-stiff bending and loses cost-per-stiffness;
+    steel wins cheap-stiff and loses light-anything; glass wins thermal shock
+    <em>if</em> it is borosilicate (index σ_f/(E·α) ≈ 3,500 K for borosilicate versus
+    ~250 K for soda-lime — why ovenware is borosilicate and windows are not). Selection
+    discipline means writing the objective down before falling in love with a material.
+  </p>
+
+  <h2>Shape, process, and the rest of the workflow</h2>
+  <p>
+    Two multipliers refine the index answer. <strong>Shape</strong>: the index method
+    assumes a fixed section; real sections vary, and the <em>shape factor</em> captures how
+    much — an I-beam or a box section carries roughly 10–25× the bending stiffness of the
+    solid rod of the same mass (bounded by local buckling), so "steel, shaped well" can
+    beat "aluminium, shaped badly". <strong>Process</strong>: every candidate carries a
+    process compatibility list — castable, weldable, extrudable, printable — and process
+    sets the achievable microstructure (the heat-treatment lesson's itineraries) and hence
+    the properties in the table. The final steps are documentation and iteration: record
+    which materials passed, why the winner won, and what would change the answer — the audit
+    trail that lets the next engineer (or the next failure investigation) see the decision's
+    logic.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Multi-objective selection.</strong> Real designs optimise several objectives at
+    once — mass <em>and</em> cost <em>and</em> embodied carbon. The rigorous treatment
+    turns them into one penalty function via <strong>exchange constants</strong>: how many
+    kilograms is one dollar worth, on this design? (For aircraft, mass is expensive enough
+    that the exchange constant justifies titanium and CFRP; for a ladder, it does not.)
+    Ashby's charts extended to embodied energy and CO₂ have shifted rankings at the
+    industry scale — timber construction's rise is partly an index event: add carbon as an
+    objective and structural wood beats concrete and steel on stiffness per tonne of CO₂,
+    which is the method converting a cultural preference into an engineering argument.
+  </p>
+  <p>
+    <strong>Where the data is soft.</strong> Material property databases are compilations,
+    and every number carries provenance and scatter: ceramic strength is Weibull-distributed
+    (a "strength" is a probability, not a value), composite properties are direction-dependent
+    by factors of ten, polymer properties creep with temperature and time. Professional
+    practice uses allowables (A- and B-basis statistical limits from certification testing)
+    rather than datasheet typicals — the difference between a brochure and a design value.
+    Selection quality is therefore bounded by data quality, which is why documentation of
+    sources is not bureaucracy but engineering.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Machine learning now augments the method — generative
+    alloy design and property prediction from composition extend screening to materials not
+    yet made, with validation (the benchmarking lesson's contamination problem, in a new
+    costume) the open issue. Multi-material and graded structures (3-D printed functionally
+    graded parts) escape the single-bubble assumption entirely: when a part is two
+    materials with a gradient between them, what is "the material"? And circular-economy
+    objectives (disassembly, recyclability, recycled-content property penalties) are still
+    finding their rigorous index form — the next decade of the method is being written in
+    sustainability units.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Ashby, <em>Materials Selection in Mechanical Design</em>; Granta Design / CES EduPack documentation; Callister &amp; Rethwisch, <em>Materials Science and Engineering</em>; the materials ladder's phase-diagram, heat-treatment and failure lessons of this atlas.</p>
+  <Widget no="2" caption="check yourself: indices, charts and trade-offs" widget="quiz" config={matSelQuizCfg} />
 </TopicPage>

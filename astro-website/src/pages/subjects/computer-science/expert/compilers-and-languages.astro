@@ -11,25 +11,229 @@ const compCfg = {
     { math: '5 · Code generation: tree → machine instructions', note: 'Emit assembly for the target CPU, link against libraries, produce the executable. Your idea has become voltage patterns.' },
   ],
 };
+
+const compQuizCfg = {
+  questions: [
+    { q: 'The compiler stage that turns the characters "rate = 0.05" into a stream of tokens is…', choices: ['parsing', 'lexing', 'semantic analysis', 'code generation'], answer: 1, why: 'Lexing (tokenising) groups characters into words — identifier, operator, number. Parsing then assembles those tokens into a tree.' },
+    { q: 'The CPU is running a word processor when a key is pressed. The first thing that happens is…', choices: ['the keyboard driver prints the letter', 'the CPU saves its current state so the interrupt service routine can run and later be undone', 'the operating system shuts the program down', 'the program is moved to disk'], answer: 1, why: 'Interrupt handling is undoable: the CPU pushes its registers and program counter onto the stack, runs the ISR, then restores the state and resumes exactly where it left off.' },
+    { q: 'Which translator reads the WHOLE program, reports all the errors it finds, and emits object code?', choices: ['interpreter', 'assembler', 'compiler', 'debugger'], answer: 2, why: 'A compiler translates the entire program before it runs and can list every error it met. An interpreter stops at the first error; an assembler is the one-to-one translator for assembly language.' },
+    { q: 'A high-level language is usually preferred over assembly because it is…', choices: ['faster on the specific machine it was written for', 'easier to read, debug and port to other machines', 'the only kind the CPU understands', 'free of all errors'], answer: 1, why: 'High-level code is portable and far easier for humans. Assembly only wins when you need precise hardware control — and modern optimising compilers often beat hand-written assembly anyway.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/expert/compilers-and-languages">
   <h2>The idea</h2>
   <p>
-    A <strong>compiler translates human-writeable code into machine-executable
-    instructions</strong> — and in passing, checks, restructures and improves it. The pipeline
-    (lex → parse → analyse → optimise → generate) is one of the great engineering constructs:
-    five well-defined stages that turned programming from punch-card craft into a global
-    discipline.
+    By the expert tier you can write algorithms, trace them, and read two or three languages —
+    but every program you have ever run had to pass through the same narrowing funnel: from
+    text you can read, to instructions silicon can execute. This chapter is about that funnel
+    and about the design decisions that make one language feel utterly different from another.
+    Two syllabus topics anchor it: <strong>types of software and interrupts</strong> (how the
+    operating system earns its privileged position, and how hardware grabs the CPU's attention)
+    and <strong>types of programming language, translators and IDEs</strong> (what a compiler
+    actually does to your code, and why language design is a series of trade-offs rather than
+    progress towards one perfect language).
+  </p>
+  <p>
+    The unifying idea is <strong>translation with verification</strong>. Every layer between
+    your intention and the machine is a translator that also checks something: the lexer checks
+    that words are well-formed, the parser checks that sentences are grammatical, the semantic
+    analyser checks that they mean something, and the operating system enforces that the
+    translated result behaves itself at run time. Layers exist because each check is cheaper
+    and clearer at its own level.
   </p>
 
   <Widget no="1" caption="the five stages between your text file and running silicon" widget="equationStep" config={compCfg} />
 
-  <h2>Why languages differ — and keep multiplying</h2>
-  <ul>
-    <li><strong>Compiled vs interpreted:</strong> C compiles to machine code ahead of time (fast, strict); Python executes via an interpreter (flexible, slower). Just-in-time compilers (Java, JavaScript engines) compile <em>during</em> running — the hybrid that made the web fast.</li>
-    <li><strong>Typing philosophies:</strong> static types (checked before running — C, Rust, TypeScript) catch errors early; dynamic types (checked while running — Python, JS) trade safety for speed of writing. TypeScript's rise shows the industry re-adding static types to dynamic languages.</li>
-    <li><strong>Memory management:</strong> manual (C — fast, dangerous), garbage-collected (Java, Go — safe, with pauses), ownership (Rust — safe, fast, harder to learn). Each is a different answer to the same allocation problem.</li>
-    <li><strong>Grammars are parseable:</strong> language design is constrained by what can be parsed efficiently — the reason your favourite language's syntax looks the way it does (mostly).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Aho, Lam, Sethi & Ullman, Compilers: Principles, Techniques and Tools ("the dragon book"); Backus, FORTRAN paper (1957).</p>
+  <h2>Inside the pipeline: lexing, parsing and semantic analysis</h2>
+  <p>
+    Watch the pipeline work on one line of a made-up language: <code>total = price + 4 * 2</code>.
+    The <strong>lexer</strong> groups characters into tokens: identifier <code>total</code>,
+    operator <code>=</code>, identifier <code>price</code>, operator <code>+</code>, number
+    <code>4</code>, operator <code>*</code>, number <code>2</code> — seven tokens, with
+    whitespace discarded. The lexer also classifies: it knows <code>total</code> is an
+    identifier because it starts with a letter, and <code>4</code> is a number because it is
+    all digits. This is deliberately mechanical — a lexer can be built from <strong>regular
+    expressions</strong>, the simplest class of patterns, which is why it runs in a single
+    fast pass.
+  </p>
+  <p>
+    The <strong>parser</strong> then asks whether the token stream is a grammatical sentence
+    and builds the abstract syntax tree (AST): an assignment node whose left child is
+    <code>total</code> and whose right child is an addition node, whose second child is a
+    multiplication node holding <code>4</code> and <code>2</code>. The tree shape is where
+    meaning lives: <code>price + 4 * 2</code> parses as <code>price + (4 * 2)</code> because
+    the grammar gives <code>*</code> higher precedence than <code>+</code>. Change the grammar
+    and you change the language — operator precedence is not a law of mathematics, it is a
+    choice written into the parsing rules. Syntax errors ("missing semicolon") are parser
+    complaints: the tokens arrive in an order the grammar forbids.
+  </p>
+  <p>
+    The <strong>semantic analyser</strong> asks the question the tree cannot answer alone: does
+    this sentence mean anything? It walks the AST carrying a <strong>symbol table</strong> — the
+    running list of every declared name, its type and its scope. Was <code>price</code> ever
+    declared? Is a string being added to a number? A program can be perfectly grammatical and
+    still meaningless, exactly as "colourless green ideas sleep furiously" is an English
+    sentence that means nothing. Only after all three checks pass does optimisation begin —
+    and every optimisation must be <em>provably equivalent</em>: constant folding rewrites
+    <code>4 * 2</code> to <code>8</code> because the operands are literals that can never
+    change; dead-code elimination deletes statements whose results can never be read.
+  </p>
+  <p>
+    <em>Common misconception:</em> a compiler translates your code line by line, like a human
+    translator reading aloud. It does not. A compiler reads the <strong>whole</strong> program
+    (or whole unit) first, so it can report many errors in one pass and see enough context to
+    optimise — it knows that a variable is never used again and that two loops can be merged.
+    Line-by-line translation is the interpreter's job, and it explains the interpreter's
+    signature behaviour: it stops at the <em>first</em> error and re-translates the same lines
+    every time you run.
+  </p>
+
+  <h2>Types of software and interrupts (4.1)</h2>
+  <p>
+    Software divides into two families. <strong>Application software</strong> does the task the
+    user bought the computer for: word processor, browser, spreadsheet, game.
+    <strong>System software</strong> exists so applications can run: the operating system
+    (OS), utility programs, and device drivers. The OS is the referee with root privileges, and
+    its job list is worth memorising because every one of its duties is a response to a real
+    problem: <strong>memory management</strong> allocates RAM to processes and keeps them from
+    trampling each other; <strong>process management</strong> schedules the CPU among competing
+    programs; <strong>file management</strong> turns raw disk blocks into named files and
+    folders with permissions; <strong>I/O and device management</strong> hides messy hardware
+    behind uniform drivers; <strong>security</strong> authenticates users and enforces access
+    rights. <strong>Utility programs</strong> are the maintenance crew — disk formatter,
+    defragmenter, backup tool, file compression, antivirus — system software that serves the
+    user directly rather than serving other programs.
+  </p>
+  <p>
+    Beneath the OS sits <strong>firmware</strong>: code stored in non-volatile memory on the
+    motherboard. Power on, and the CPU executes it: the firmware runs the power-on self-test,
+    finds the boot device, loads the <strong>bootloader</strong> from the disk's boot sector,
+    and the bootloader loads the OS kernel into RAM and hands over. This chain — firmware to
+    bootloader to kernel — is why a computer can start with literally nothing useful in RAM:
+    each stage is a small program whose only job is to load the next, bigger one.
+  </p>
+  <p>
+    <strong>Interrupts</strong> solve the problem of how hardware gets the CPU's attention.
+    The naive alternative is <strong>polling</strong>: the CPU repeatedly asks each device
+    "anything for me?". A 3 GHz CPU checking a keyboard 100 times a second would burn hundreds
+    of millions of idle cycles — yet a keyboard is pressed perhaps ten times a minute. Instead,
+    when an event occurs the device raises an <strong>interrupt signal</strong>, and the CPU,
+    between machine instructions, suspends the current program, pushes its context (program
+    counter and key registers) onto the stack, looks up the address of the right
+    <strong>interrupt service routine (ISR)</strong> in the <strong>interrupt vector table</strong>,
+    runs it, then restores the saved context and resumes as if nothing happened. Interrupts
+    come from hardware (keyboard, disk-completion, the <strong>timer interrupt</strong> that
+    fires thousands of times a second and gives the scheduler its heartbeat) and from software
+    (a division-by-zero trap, a system call asking the OS for a service). The vector table
+    makes dispatch a table lookup, not a search; priority levels decide who wins when two
+    devices interrupt simultaneously; and <strong>masking</strong> lets the CPU ignore
+    low-priority interrupts during critical sections.
+  </p>
+  <p>
+    <em>Common misconception:</em> the operating system runs "underneath" your programs,
+    continuously. In fact the OS mostly does not run at all: your word processor has the CPU,
+    and the OS only snaps into existence when an interrupt or system call hands control to it.
+    Multitasking feels simultaneous because the timer interrupt slices time so finely — a
+    scheduler deciding 1,000 times a second among a dozen processes — that no single program
+    ever notices the gaps.
+  </p>
+
+  <h2>Programming languages, translators and IDEs (4.2)</h2>
+  <p>
+    <strong>Machine code</strong> is the CPU's native diet: binary patterns where each
+    instruction means one microscopic operation. <strong>Assembly language</strong> is machine
+    code with human-readable mnemonics, one-to-one. Adding two numbers in a teaching assembly
+    looks like <code>LDA num1</code>, <code>ADD num2</code>, <code>STO result</code> — three
+    instructions, one per thought, tied to that exact CPU. <strong>High-level languages</strong>
+    (Python, Java, C) express the same intent as <code>result = num1 + num2</code> — one line,
+    machine-independent, readable. The trade is real in both directions: high-level code is
+    shorter, safer and portable; assembly gives precise control and minimum overhead, which is
+    why it survives in device drivers, bootloaders and the hot inner loops of real-time
+    systems.
+  </p>
+  <p>
+    Three translators connect the levels. The <strong>assembler</strong> converts assembly to
+    machine code essentially one-for-one — fast, and unforgiving. The <strong>compiler</strong>
+    translates a whole high-level program to machine code (or another target) before it runs,
+    listing all syntax errors it found; the resulting executable then runs at full speed with
+    no translator present. The <strong>interpreter</strong> reads and executes high-level code
+    a statement at a time, stopping at the first error — slower, because translation repeats
+    every run, but unbeatable for instant feedback and for running the same code on different
+    machines. Real systems blur the categories: Java compiles to <strong>bytecode</strong>, a
+    portable fake machine code, which the Java Virtual Machine then executes (and, these days,
+    compiles again to real machine code while running). Python is likewise compiled to bytecode
+    and interpreted by a virtual machine. There is no clean line between "compiled" and
+    "interpreted" — only points along a spectrum of how much is translated in advance.
+  </p>
+  <p>
+    <strong>Why languages differ</strong> is the same story told at design time. Static typing
+    (C, Rust, TypeScript) checks types before running — earlier error catching, more
+    optimisation fuel; dynamic typing (Python, JavaScript) checks at run time — faster to
+    write, errors surface later. Memory management is another fork: manual (C — fast,
+    dangerous), garbage-collected (Java, Go — safe, with occasional pauses), ownership
+    (Rust — safe and fast, harder to learn). Paradigms — imperative, object-oriented,
+    functional — are different theories of what a program <em>is</em>: a sequence of
+    instructions, a web of objects sending messages, or a pipeline of functions producing new
+    values from old. The explosion of languages is not indecision; it is different communities
+    choosing different points in this trade space.
+  </p>
+  <p>
+    An <strong>integrated development environment (IDE)</strong> bundles the toolchain into one
+    program: a <strong>code editor</strong> with syntax highlighting, autocompletion and
+    indentation guides; <strong>error diagnostics</strong> that underline mistakes as you type;
+    integrated <strong>translators</strong> and a <strong>run-time environment</strong> (build
+    and run buttons); <strong>auto-documentation</strong> of functions; and a
+    <strong>debugger</strong> that can pause execution at a <strong>breakpoint</strong>, step
+    through line by line, and display the live values of variables. The debugger matters more
+    than beginners expect: it converts "it doesn't work" into a precise, observable question
+    about state at a known moment.
+  </p>
+  <p>
+    <em>Common misconception:</em> compiled programs are always faster than interpreted ones.
+    Historically true on average, but modern just-in-time (JIT) systems watch which code runs
+    hot, compile <em>just</em> those parts to machine code with assumptions taken from actual
+    runtime behaviour, and outperform naive ahead-of-time compilation. JavaScript engines
+    render modern 3D games at 60 frames a second — in what was once the slowest language class
+    in common use.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Grammars have a formal hierarchy.</strong> Lexers work with regular languages —
+    recognisable by finite automata with no memory beyond the current state. Parsers need
+    context-free grammars, recognisable with a stack, and the jump is essential: counting
+    matched brackets ("open two, close two") is impossible for any finite automaton, which is
+    why nested structures cannot be lexed, only parsed. Ambiguity is a real grammatical
+    property with real costs: the classic <em>dangling else</em> — does an <code>else</code>
+    bind to the nearest or the outermost <code>if</code>? — is resolved by convention in most
+    languages precisely because the grammar alone cannot decide. Language designers must
+    choose grammars that parse efficiently (in linear time) or pay in compile times.
+  </p>
+  <p>
+    <strong>Optimisation is mathematics, not magic.</strong> After semantic analysis, serious
+    compilers convert the AST into an intermediate representation in <em>single static
+    assignment</em> (SSA) form — every variable is assigned exactly once, which makes data flow
+    explicit. Register allocation then becomes graph colouring: variables whose live ranges
+    overlap cannot share a CPU register, so the compiler colours a conflict graph; finding the
+    minimum number of colours is NP-hard, so compilers use careful heuristics. The correctness
+    bar is absolute: an optimisation that changes observable behaviour is a bug, and compiler
+    bugs are uniquely vicious because they corrupt every program built with the tool. That is
+    why the CompCert project — a C compiler with a machine-checked proof that its generated
+    code is semantically equivalent to its input — is a landmark: it turned "compilers are
+    usually right" into a theorem.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Can JIT compilation use machine learning to predict which
+    code will run hot before it does? Will memory-safe systems languages (Rust's borrow
+    checker, and safer dialects of C++) displace C in operating-system kernels — a shift now
+    visibly under way as Rust support lands in Linux and Windows components? And as large
+    language models generate an increasing share of code, what does the compiler owe a
+    reader-human versus a writer-machine? The pipeline built in 1957 for FORTRAN is still the
+    spine of the answer, but its guarantees are being renegotiated for a world where code is
+    written faster than it can be reviewed.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Aho, Lam, Sethi &amp; Ullman, <em>Compilers: Principles, Techniques and Tools</em> ("the dragon book"); Backus, "The FORTRAN Automatic Coding System" (1957); Cambridge IGCSE Computer Science 0478 syllabus, section 4; Leroy et al., the CompCert verified compiler.</p>
+  <Widget no="2" caption="check yourself: translators, interrupts and the pipeline" widget="quiz" config={compQuizCfg} />
 </TopicPage>

@@ -10,24 +10,220 @@ const webCfg = {
     { math: '4 · The round trip', note: 'Browser requests HTML → builds DOM → applies CSS → runs JS → fetches more data (fetch()) → updates the DOM. Modern frameworks (React, Vue) just automate that last loop.' },
   ],
 };
+
+const webQuiz = {
+  questions: [
+    {
+      q: "A stylesheet has: p { color: blue } and .note { color: green }. A paragraph is <p class='note'>. What colour is it, and why?",
+      choices: [
+        "Blue — element rules beat class rules",
+        "Green — a class selector (0,0,1,0) outweighs an element selector (0,0,0,1) in the cascade",
+        "It depends on which appears first in the file",
+        "Neither — conflicting rules cancel out",
+      ],
+      answer: 1,
+      why: "The cascade resolves conflicts by specificity: id (0,1,0,0) beats class (0,0,1,0) beats element (0,0,0,1); source order only breaks ties. Debugging 'why is my style ignored' is usually a specificity audit.",
+    },
+    {
+      q: "A site renders comments by inserting user text directly into HTML. A user types <script>steal()</script> as a comment. What happened?",
+      choices: [
+        "Nothing — browsers ignore script tags in text",
+        "XSS (cross-site scripting): the text executes as code in every visitor's browser — the fix is escaping user content",
+        "A syntax error, caught by the HTML validator",
+        "A SQL injection attack",
+      ],
+      answer: 1,
+      why: "This is the web's classic injection lesson: any boundary between data and code that the HTML parser does not know about becomes an attack surface. Escaping (rendering < as &lt;) closes it — security and correctness are the same work here.",
+    },
+    {
+      q: "JavaScript is single-threaded, yet a page can fetch data for 2 seconds and stay responsive. How?",
+      choices: [
+        "The browser runs JS on multiple cores automatically",
+        "The fetch is handed to the browser; the event loop runs other tasks and resumes your callback when the result arrives",
+        "The page pauses and resumes invisibly",
+        "fetch blocks the thread but users do not notice",
+      ],
+      answer: 1,
+      why: "Blocking work (network, timers) is delegated to the browser; your code continues via callbacks/promises when the event loop delivers the result. Long synchronous loops, not fetches, are what freeze pages.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/web-development-html-css-js">
   <h2>The idea</h2>
   <p>
-    The web runs on three languages with a clean division of labour: <strong>HTML is the
-    structure, CSS the appearance, JavaScript the behaviour</strong>. This site you're reading is
-    exactly that stack. Learn the trio properly and you can build for every device on Earth —
-    the browser is the most widely deployed runtime in history, no install required.
+    The web runs on three languages with a clean division of labour: <strong>HTML is the structure, CSS
+    the appearance, JavaScript the behaviour</strong> — the very stack this site is built on. The browser
+    is the most widely deployed runtime in history (no install, every device), and the division of labour
+    is what makes the platform durable: structure that works without the other two, presentation that can
+    be restyled wholesale, behaviour layered on top. This lesson builds the trio properly — the pipeline
+    from file to pixels, the cascade's actual rules, the event loop's actual model — and ends where the
+    syllabus's security topic meets the browser: injection.
   </p>
 
   <Widget no="1" caption="the page pipeline — from file to pixels" widget="equationStep" config={webCfg} />
 
-  <h2>Principles that separate good web work</h2>
-  <ul>
-    <li><strong>Progressive enhancement:</strong> HTML that works alone, CSS that improves it, JS that upgrades it further. If JavaScript fails, the content still exists — that resilience is why the web outlived flashier rivals (RIP Flash, 2020).</li>
-    <li><strong>Accessibility is not optional:</strong> alt text, keyboard navigation, contrast, semantic tags. Screen-reader users, slow connections and search engines all reward the same discipline.</li>
-    <li><strong>Responsive design:</strong> one page, many screens — fluid layouts and media queries instead of separate mobile sites. Mobile is most of the traffic.</li>
-    <li><strong>Performance budget:</strong> every kilobyte costs someone's data plan. Static generation (like this atlas), caching and lazy loading are how the fastest sites stay fast.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> MDN Web Docs; Berners-Lee, "Information Management: A Proposal" (1989); W3C accessibility guidelines (WCAG).</p>
+  <h2>HTML: structure with meaning</h2>
+  <p>
+    HTML is not layout; it is <strong>meaning</strong>. Elements declare what content <em>is</em> —
+    <code>&lt;h1&gt;</code> a heading, <code>&lt;nav&gt;</code> site navigation, <code>&lt;button&gt;</code>
+    an action, <code>&lt;table&gt;</code> genuinely tabular data. The browser parses the text into the
+    <strong>DOM</strong> (a live tree of nodes that JavaScript will manipulate), and the quality of that
+    tree decides far more than looks: a screen reader announces the document from its landmarks; a search
+    engine ranks it from its headings and semantics; a browser on a cheap phone renders it from structure
+    alone. This is <strong>semantic HTML</strong>, and the professional habit is refusing "div soup" —
+    nesting everything in anonymous boxes when <code>&lt;article&gt;</code>, <code>&lt;header&gt;</code>,
+    <code>&lt;main&gt;</code> would say what each region is. The accessibility discipline (WCAG) rides the
+    same choice: alt text on images, labels on inputs, keyboard-reachable controls, sufficient contrast.
+    Note the asymmetry that makes accessibility cheap: done at the semantic level it is nearly free; done
+    after the fact it is rework.
+  </p>
+
+  <h2>CSS: the cascade, specificity, and the box model</h2>
+  <p>
+    CSS styles the DOM with rules: a <strong>selector</strong> matches elements, declarations style them.
+    Two mechanics carry most of the confusion, so learn them exactly. <strong>The cascade</strong> resolves
+    competing rules: later rules win ties, but <strong>specificity</strong> outranks order — counted as
+    (ids, classes, elements): <code>p</code> is (0,0,0,1); <code>.note</code> is (0,0,1,0) and beats any
+    number of element selectors; <code>#header</code> (0,1,0,0) beats any class; inline styles beat all;
+    <code>!important</code> breaks the arithmetic (which is why its overuse signals a codebase in trouble).
+    <strong>The box model</strong>: every element is a rectangle of content wrapped in padding, border and
+    margin — a width: 200px element with 20px padding and 2px border is 244px wide (unless
+    <code>box-sizing: border-box</code>, the near-universal default, makes width include padding and
+    border). Layout is the modern layer: <strong>flexbox</strong> for one-dimensional arrangement
+    (toolbars, lists, centring) and <strong>grid</strong> for two-dimensional pages (named rows and
+    columns); <strong>media queries</strong> apply rules conditional on viewport size, which is how one
+    page serves phone and desktop — responsive design replacing the separate-mobile-site era.
+  </p>
+
+  <h2>JavaScript: the event loop's mental model</h2>
+  <p>
+    JavaScript is the browser's native behaviour language, and its execution model explains almost all web
+    coding idioms: the language runs <strong>single-threaded</strong> on an <strong>event loop</strong>.
+    Your code runs in short turns triggered by events (clicks, timers, network completions); blocking work
+    — fetching data, waiting — is delegated to the browser, and your <strong>callback</strong> (today,
+    usually a <code>Promise</code> awaited in <code>async</code> style) is scheduled when the result
+    arrives. This is why a synchronous loop that runs for three seconds freezes the whole page (the loop
+    cannot turn) while a three-second <code>fetch</code> does not (nothing is blocked). The working
+    pattern: <code>fetch(url)</code> for data, then update the DOM — changing a node's text or class makes
+    the browser recompute the affected layout and repaint. <strong>Progressive enhancement</strong> is the
+    resilience rule: HTML that works alone, CSS that improves it, JS that upgrades it further — if
+    JavaScript fails, the content still exists, a big reason the web outlived flashier rivals (Flash died
+    at the end of 2020). Frameworks (React, Vue) automate the DOM-update loop with component state, but
+    the pipeline underneath is unchanged.
+  </p>
+
+  <h2>The pipeline, and where the milliseconds go</h2>
+  <p>
+    The browser assembles a page in a fixed order worth memorising: parse HTML → build the DOM; parse CSS
+    → build the CSSOM; combine into a <strong>render tree</strong>; <strong>layout</strong> (compute every
+    box's geometry); <strong>paint</strong>; composite to the screen. JavaScript can interrupt anywhere,
+    and DOM changes that alter geometry force re-layout — which is why performance work is mostly about
+    the critical path: defer non-essential JS, size images (layout shifts from late-loading images are the
+    "content jumps" you have felt), and keep the first render small. The economics are real: every
+    kilobyte costs someone's data plan and a measurable fraction of users; caching, lazy loading and
+    static generation (this atlas's approach) are how the fastest sites stay fast.
+  </p>
+  <p><em>Common misconception:</em> "the browser is a simple document viewer." It is closer to an operating
+  system: a JIT-compiled language runtime, a rendering engine, a network stack, storage, cryptography —
+  sandboxed so that a random website can execute code on your machine safely. Which brings the lesson to
+  the syllabus's security topic, because the browser's security model is learned through its classic
+  failure.</p>
+
+  <h2>Security meets the browser: injection</h2>
+  <p>
+    <strong>XSS (cross-site scripting)</strong> is the web's canonical vulnerability: if user-supplied
+    text is inserted into a page without escaping, the browser cannot know the text was <em>data</em> —
+    a comment reading <code>&lt;script&gt;steal()&lt;/script&gt;</code> executes in every visitor's
+    browser, stealing sessions or rewriting the page. The defence is structural: escape at the boundary
+    (render <code>&lt;</code> as <code>&amp;lt;</code>), use frameworks' auto-escaping, and apply a
+    Content Security Policy that restricts where scripts may come from. The same boundary-discipline
+    lesson appears as SQL injection at the database layer — a category, not an incident: <strong>whenever
+    data and code share a channel, the parser's assumptions are the attack surface</strong>. Pair it with
+    the browser's second core rule, the <em>same-origin policy</em> (one site's script cannot read
+    another's data), plus HTTPS everywhere (the networking lesson's TLS), and you have the web's
+    three-pillar security model: origin isolation, encrypted transport, escaped boundaries.
+  </p>
+
+  <h2>A worked build: the semantic skeleton of a page</h2>
+  <p>
+    Tie the trio together on a real micro-build — a recipe page — and watch each layer do exactly its
+    job. <strong>HTML</strong> declares meaning only:
+  </p>
+  <p>
+    &lt;main&gt; &lt;h1&gt;Flatbread&lt;/h1&gt; &lt;p&gt;Twenty minutes, four ingredients.&lt;/p&gt;
+    &lt;h2&gt;Ingredients&lt;/h2&gt; &lt;ul&gt; &lt;li&gt;300 g flour&lt;/li&gt; ... &lt;/ul&gt;
+    &lt;h2&gt;Method&lt;/h2&gt; &lt;ol&gt; &lt;li&gt;Mix and knead.&lt;/li&gt; ... &lt;/ol&gt;
+    &lt;img src="flatbread.jpg" alt="Stack of flatbreads, charred in places"&gt; &lt;/main&gt;
+  </p>
+  <p>
+    Note the choices that are accessibility, not decoration: one h1 (the page's title), headings in
+    order (the screen-reader user navigates by heading level, exactly like skimming), a list element
+    for an actual list (so each ingredient is its own announceable item), and an alt text that
+    <em>describes rather than labels</em> ("flatbread.jpg" as alt text tells a blind user nothing).
+    <strong>CSS</strong> then styles the semantics without touching them (a media query switches the
+    ingredient list to two columns above 600 px width); <strong>JavaScript</strong> layers behaviour on
+    top — a "scale recipe" control multiplies quantities, rewriting only the list-item text nodes, and
+    crucially the page remains fully usable with JavaScript disabled. That is progressive enhancement
+    as a concrete artefact: three layers, each removable, the content surviving every removal. Now you
+    can also read the failure modes precisely: a div-soup version of the same page is not "ugly
+    HTML" — it is a page whose headings, list structure and labels a screen reader and a search engine
+    cannot reconstruct.
+  </p>
+
+  <h2>State, storage, and the request/response contract</h2>
+  <p>
+    Because HTTP is stateless, the browser-plus-server must reassemble continuity every time, and the
+    places state lives are a design decision with security consequences. <strong>Cookies</strong>:
+    server-issued key–value pairs the browser replays on every request to that site — the mechanism
+    behind login sessions; flags matter (HttpOnly keeps cookies away from JavaScript — a direct XSS
+    mitigation; Secure restricts them to HTTPS; SameSite curbs cross-site request forgery by not sending
+    them on third-party requests). <strong>Web storage</strong> (localStorage, sessionStorage): larger
+    per-origin key–value stores usable by scripts — convenient for preferences, wrong for session
+    tokens (readable by any injected script). <strong>The request itself</strong>: verbs carry semantics
+    (GET fetches without side effects, POST submits, PUT/DELETE fully replace or remove — the semantic
+    difference is what makes caches, retries and proxies safe or dangerous), and status codes close the
+    loop. The professional rule of thumb: identity state in HttpOnly cookies, UI state in the client,
+    durable state in the database — anything else is state you have misplaced and will later find in a
+    bug report. Together with the same-origin policy and escaped boundaries, this is the browser's whole
+    security architecture: small rules, strictly enforced, doing enormous work.
+  </p>
+
+  <h2>JavaScript's object model, enough to be dangerous</h2>
+  <p>
+    Two features of the language explain most code you will read. <strong>Everything is a dynamic
+    object</strong>: an object is a bag of named properties you can add, remove and inspect at run time
+    (<code>user.role = "admin"</code> just works), and functions are values — assignable, passable,
+    returnable — which is why callbacks, event handlers and framework components are all functions in
+    transit. <strong>Closures</strong>: a function remembers the variables of the scope where it was
+    defined, so a counter's state can live inside a function (<code>let count = 0; return () =>
+    ++count</code>) with no global and no class — the mechanism behind every "private state" pattern in
+    browser code, and the reason event handlers can reference the data of the loop iteration that
+    created them. Add <code>this</code> (the object a method is called on — famously subtle), array
+    methods that take functions (<code>map</code>, <code>filter</code>, <code>reduce</code> — the data
+    transformation style the whole ecosystem uses), and JSON (objects as text, the web's lingua franca
+    for payloads), and you hold the working core: the DOM API tells the objects what to change, closures
+    hold the state between events, and the event loop decides when.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Rendering internals</strong> reward study: the compositor splits painting into layers so that
+    scrolling and transforms stay on the GPU (which is why <code>transform</code> animations are cheap and
+    <code>top/left</code> animations are expensive — one moves on the compositor, the other re-lays-out);
+    the HTML parser is deliberately forgiving (the web must render anything ever published), which is why
+    validators exist and why browsers never "crash on bad HTML." <strong>The platform keeps expanding</strong>:
+    WebAssembly runs compiled C/Rust/Python at near-native speed in the same sandbox; service workers
+    make pages work offline; WebGPU exposes the graphics card. Each addition re-raises the founding
+    question of web architecture — <strong>progressive enhancement vs app-style single-page builds</strong> —
+    a genuine engineering trade-off (resilience and reach against app-like interactivity). Open questions:
+    can the accessibility layer keep pace as interfaces grow generative; how will the platform's
+    economics — browser engines, ad-funded standards — evolve; and what does "the web" mean when most
+    consumption is inside apps that merely borrow its protocols? You now hold the vocabulary to read those
+    arguments in their native habitat: view source.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> MDN Web Docs; Berners-Lee, "Information Management: A Proposal" (1989); W3C accessibility guidelines (WCAG); Zakas, <em>Professional JavaScript for Web Developers</em>.</p>
+
+  <Widget no="2" caption="check yourself: specificity, injection and the event loop" widget="quiz" config={webQuiz} />
 </TopicPage>

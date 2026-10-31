@@ -10,24 +10,192 @@ const modalCfg = {
     { math: '4 · Real applications in computing', note: 'Modal logic verifies hardware and protocols: "from every reachable state, the system never deadlocks" is a modal claim, checked exhaustively (model checking — Clarke, Emerson, Sifakis, Nobel-adjacent Turing Award 2007).' },
   ],
 };
+
+const modalQuiz = {
+  questions: [
+    {
+      q: "Using the duality of box and diamond, ◇¬p is equivalent to which formula?",
+      choices: ["□p", "¬□p", "¬□¬p", "□¬p"],
+      answer: 1,
+      why: "◇¬p says p fails somewhere, which is exactly the negation of □p (p holds everywhere). The full pair: □p = ¬◇¬p and ◇p = ¬□¬p — necessity and possibility are two readings of one relation.",
+    },
+    {
+      q: "Which frame condition makes the axiom □p → p valid?",
+      choices: [
+        "Transitivity (if w sees v and v sees u, then w sees u)",
+        "Reflexivity (every world sees itself)",
+        "Symmetry (access runs both ways)",
+        "None — it is valid on every frame",
+      ],
+      answer: 1,
+      why: "On a reflexive frame the actual world sees itself, so anything necessary at w must be true at w. That axiom is T, and the correspondence between axioms and frame conditions is the theorem that made modal logic a working science.",
+    },
+    {
+      q: "What does Plantinga's free will defence actually claim to establish about God and evil?",
+      choices: [
+        "That every evil has a compensating good",
+        "That the existence of God is probable given evil",
+        "That the set {God exists, evil exists} is logically consistent — defeating the logical problem",
+        "That evil does not really exist",
+      ],
+      answer: 2,
+      why: "A defence needs only possibility, not probability. If a world with God and free creatures who do wrong is coherent, the atheist's charge of formal contradiction fails — a much weaker but sufficient result, argued with explicit possible-worlds machinery.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/philosophy/advanced/modal-logic">
   <h2>The idea</h2>
   <p>
-    Modal logic formalises <strong>necessity and possibility — the grammar of "must", "can" and
-    "could have been"</strong>. After Kripke's semantics (1959), it became a precision instrument
-    used far beyond philosophy: verifying computer chips, modelling legal obligations, encoding
-    knowledge in AI systems, and making metaphysical arguments exact.
+    Every argument you have studied so far was extensional — true or false, full stop. But the most important
+    things we say are <strong>modal</strong>: what <em>must</em> be, what <em>could have been</em>, what is
+    <em>bound to happen</em>, what is <em>permissible</em>. Modal logic gives these notions a formal grammar,
+    and Kripke's semantics (1959) gave it a rigorous model. It is the natural capstone of this tier because it
+    is also the arena where the classical arguments for God's existence — the syllabus's ontological,
+    cosmological and design arguments, and the problem of evil — are stated at full strength: they are, at
+    bottom, claims about what is possible and what is necessary, and modal logic lets us say <em>exactly</em>
+    what each one commits us to.
   </p>
 
   <Widget no="1" caption="the machinery and where it actually runs" widget="equationStep" config={modalCfg} />
 
-  <h2>Systems of modal logic</h2>
-  <ul>
-    <li><strong>Different axioms, different logics:</strong> K (base), T (what is necessary is true), S4 (necessity is necessary), S5 (necessity is known globally). Each fits a different modality — obligation, knowledge, time, proof.</li>
-    <li><strong>The quantified extension matters most:</strong> quantified modal logic underlies de re/de dicto distinctions ("necessarily, the morning star is the evening star" — ambiguous in ways that shaped metaphysics).</li>
-    <li><strong>Proof theory and decidability:</strong> which modal systems can be automated? Most useful ones are decidable — the reason model checking can exhaustively verify a chip design (a task with more states than atoms in the universe, made tractable by the mathematics).</li>
-    <li><strong>The philosophical payoff:</strong> modal realism (Lewis's other worlds) vs actualism is the big metaphysical split; both sides now argue with Kripke's formalism rather than hand-waving.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Kripke, "A Completeness Theorem in Modal Logic" (1959); Chellas, Modal Logic; Clarke, Emerson & Sifakis Turing Award (2007).</p>
+  <h2>Boxes and diamonds: the modal language</h2>
+  <p>
+    Take ordinary propositional logic and add one operator. <strong>□p</strong> ("box p") reads: p is
+    necessary — true in all possible worlds. <strong>◇p</strong> ("diamond p") reads: p is possible — true in
+    at least one. They are duals, defined in terms of each other: □p is equivalent to ¬◇¬p (p could not have
+    failed), and ◇p to ¬□¬p. A <strong>contingent</strong> truth is one that is true here while ◇¬p also
+    holds — the Eiffel Tower stands in Paris, but it could have stood in Brussels: both facts obtain in
+    different possible worlds, so its location is a contingent matter. Classifying
+    statements this way is the first real skill: 2 + 2 = 4 is necessary (and knowable a priori); "water is H₂O"
+  is necessary (true in every world with water) yet known a posteriori — Kripke's celebrated
+    <strong>necessary a posteriori</strong>; "there are nine planets" turned out contingent through and through.
+    The modal status of a claim is a metaphysical question the surface grammar hides: "could water not have
+    been H₂O?" and "could the Eiffel Tower have been in Brussels?" look grammatically identical but differ
+    totally in answer.
+  </p>
+
+  <h2>Kripke semantics: worlds with windows</h2>
+  <p>
+    Kripke's formalisation treats a possibility as a <strong>world</strong> — a complete way things might have
+    gone — related to other worlds by an <strong>accessibility relation</strong>: world w can "see" world v when
+    v is a genuine live alternative from w's standpoint. Then □p is true at w exactly when p is true at every
+    world w sees, and ◇p when p holds at some world w sees. The payoff is a correspondence theory of rare
+    elegance: <strong>each axiom of modal logic is equivalent to a condition on accessibility</strong>. The
+    minimal system K accepts whatever follows. Add T (□p → p: "what is necessary is true") and validity holds
+    precisely on <strong>reflexive</strong> frames — every world sees itself. Add 4 (□p → □□p) and frames must
+    be <strong>transitive</strong>; S4 = T + 4. Add 5 (◇p → □◇p) and frames must be <strong>Euclidean</strong>;
+    S5 — the system where necessity is absolute across all worlds — is T + 4 + 5. This is why "possible worlds"
+    are a tool and not a fantasy: nobody must believe other worlds exist; the semantics is an exact instrument
+    for tracking consequence.
+  </p>
+  <p><em>Common misconception:</em> possible worlds are not distant planets or parallel universes that
+  physicists might discover. They are points in a formal space of alternatives — abstract representations of
+  complete ways things could have been. Whether they <em>really exist</em> (David Lewis's audacious modal
+  realism) or are mere devices (actualism) is a separate metaphysical dispute; the logic runs identically
+  either way.</p>
+  <p>
+    The same machinery, reinterpreted, becomes other logics: read □ as <strong>obligation</strong> and you get
+    deontic logic for law (with axiom D — obligation implies permission — instead of T); read it as
+    <strong>always</strong> and you get temporal logic ("eventually the program halts"); as <strong>an agent
+    knows</strong> and you get epistemic logic; as <strong>provable</strong> and you brush against Gödel. This
+    reinterpretability is modal logic's superpower: one mathematics, many modalities.
+  </p>
+
+  <h2>The ontological argument: necessity on paper</h2>
+  <p>
+    Anselm (Proslogion, 1078) argued: God is "that than which nothing greater can be conceived"; such a being
+    exists in the understanding even for the fool who denies God; but existing in reality is greater than
+    existing merely in the understanding; therefore God exists in reality — else we could conceive of something
+    greater. Gaunilo's reply turned the structure against itself: a "perfect island" existing in thought must
+    therefore exist — an evidently absurd parallel (Anselm's reply: the argument is special to the maximal
+    being). Kant's deeper objection: <strong>existence is not a real predicate</strong> — adding "and it
+    exists" adds no property to a concept, so "greater" cannot turn on it. The modern modal versions take this
+    seriously by building on <em>necessary</em> existence instead. Norman Malcolm (1960) argued that a
+    maximally great being's existence would be necessary, and that necessary existence cannot be ruled
+    impossible — hence, if possible, actual. Plantinga (1974) makes the machinery explicit: a maximally great
+    being is one that is omnipotent, omniscient and morally perfect in <em>every</em> possible world;
+    (1) possibly, a maximally great being exists; (2) maximal greatness, if instantiated in any world, is
+    instantiated in every world (these properties do not depend on luck); so (3) it exists in the actual world.
+    The logic is valid — the entire question collapses onto premise (1). Notice what modal logic has done: it
+    has transformed a squabble about "conceiving" into a single, clearly stated wager — is a maximally great
+    being <em>possible</em>? Atheists deny the possibility (perhaps maximality is incoherent, like a square
+    circle); theists affirm it. The argument is now exactly as strong as that premise, and everyone can see it.
+  </p>
+
+  <h2>Cosmological arguments: contingency is the engine</h2>
+  <p>
+    The modal grammar also organises the cosmological family. The <strong>Kalām argument</strong> (al-Ghazālī;
+    revived by William Lane Craig): whatever begins to exist has a cause; the universe began to exist;
+    therefore the universe has a cause — a temporal argument about beginnings, supported by philosophical
+    claims against actual infinities and by Big Bang cosmology. Aquinas's first three Ways argue from motion,
+    efficient causation and — most modally interesting — <strong>contingency</strong>: things that might not
+    have existed exist now; a chain of dependent things cannot explain its own holding; so something
+    <em>necessary</em> must ground the whole. Leibniz sharpens this with the <strong>principle of sufficient
+    reason</strong>: even an eternal series of contingent beings lacks an explanation for why there is anything
+    at all — the difference between explaining each member of the chain and explaining the chain. The modal
+    verdict: these arguments, if sound, establish a <strong>necessary being</strong> — and then all the work
+    moves to identifying the necessary being with the personal God of theism, which Hume and Russell pressed
+    hard ("why not the universe as a whole necessary?"). Aquinas himself conceded the argument gives no
+    acquaintance with God's nature — an honesty worth copying.
+  </p>
+
+  <h2>Design arguments and the problem of evil</h2>
+  <p>
+    Paley's watch (1802) is an argument from <strong>spatial order</strong>: intricate functional arrangement
+    implies a designer, as watch parts do. Hume's <em>Dialogues</em> (1779) had already deployed the
+    devastating analogy objection: the universe resembles less a machine than an organism, and any inference
+    from an effect to a cause licenses only a cause as grand as the effect — one universe, made once, by
+    possibly many imperfect designers. Darwin then supplied a non-designing mechanism for biological order.
+    Swinburne's version retreats to <strong>temporal order</strong> — the laws themselves — and argues
+    probabilistically (Bayesian): theism is a simpler, hence more probable, explanation of lawlike order than
+    brute fact; the argument is explicitly a cumulative probability case, not a proof. The
+    <strong>problem of evil</strong> runs the other way. Logical form (Mackie, 1955): God (omnipotent,
+    omniscient, wholly good) and evil cannot coexist — an <em>inconsistent triad</em>. Evidential form (Rowe,
+    1979): a fawn burning slowly in a forest fire no one ever sees is pointless evil that an all-good,
+    all-powerful being would prevent — so theism is <em>improbable</em>. The responses are themselves modal.
+    Plantinga's <strong>free will defence</strong> (1974) does not need to prove that free will explains evil,
+    only that a world with significantly free creatures, some of whom always choose wrongly in some
+    circumstances, is <em>possible</em> — his "transworld depravity" manoeuvre shows God may be unable to
+    actualise a world of free creatures who never sin without either overriding freedom or creating different
+    people. Since consistency suffices to defeat the <em>logical</em> problem, most philosophers now concede
+    that round to the theist and fight on evidential ground. Hick's <strong>soul-making theodicy</strong>
+    (1966, after Irenaeus) accepts the evidential problem and reframes it: a world of "epistemic distance" —
+    where God is not overwhelmingly evident and real hardship exists — is the only environment in which
+    genuinely free moral character can develop; evil is the price of a <em>vale of soul-making</em> rather
+    than a defect. Critics reply that the quantity and distribution of suffering (cancer in toddlers) exceeds
+    any plausible pedagogical need.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Quantified modal logic opens the deep waters.</strong> "Necessarily, the morning star is the
+    morning star" is true; "necessarily, the morning star is the evening star" — well, de dicto it is false
+    (the descriptions could pick out different things), de re it is true (the planet Venus could not have been
+    a different object). This <strong>de re / de dicto</strong> ambiguity infects every modal argument, and
+    Quine famously doubted that "necessity" attaches to objects at all. The <strong>Barcan formula</strong>
+    (◇∃x Fx → ∃x ◇Fx) governs whether worlds may contain objects absent from ours — a technical principle
+    with consequences for whether essences and possibilia are taken seriously. Gödel sketched a modal
+    ontological argument formalising Leibniz's "positive properties"; in 2013–14 Christoph Benzmüller and Bruno
+    Woltzenlogel Paleo ran it through automated theorem provers, confirming the modern version is valid while
+    exposing an inconsistency in a close variant — logic engines auditing theology, a genuinely new kind of
+    scholarly event.
+  </p>
+  <p>
+    <strong>The computing branch is not an analogy.</strong> "From every reachable state, the system never
+    deadlocks" is a modal claim — a box over all accessible states — and model checking (Clarke, Emerson,
+    Sifakis; 2007 Turing Award) decides such claims exhaustively over a system's state space, using temporal
+    modal logics (CTL, LTL) to verify chips and protocols whose state spaces exceed the atom count of the
+    universe. <strong>The open questions</strong> are as live as philosophy gets: what, if anything, grounds
+    metaphysical necessity (is "water is H₂O" necessary because of the world, or because of how the word
+    "water" works — Kripke and Putnam versus the descriptivists' heirs)? Does the success of S5 suggest
+    necessity is absolute, or does epistemic logic's need for non-Euclidean knowledge frames show different
+    modalities need different mathematics? And can probabilistic modal logics tame arguments — design, evil —
+    that are irreducibly matters of degree? The lesson of the century is that these are no longer questions of
+    eloquence. They have an exact grammar, and you can now read them in it.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Kripke, "A Completeness Theorem in Modal Logic" (1959) and <em>Naming and Necessity</em> (1972); Chellas, <em>Modal Logic</em>; Plantinga, <em>The Nature of Necessity</em> (1974); Hick, <em>Evil and the God of Love</em> (1966); Mackie (1955); Rowe (1979); Clarke, Emerson &amp; Sifakis, Turing Award (2007); Benzmüller &amp; Woltzenlogel Paleo (2014).</p>
+
+  <Widget no="2" caption="check yourself: duality, frame conditions and what a defence must prove" widget="quiz" config={modalQuiz} />
 </TopicPage>

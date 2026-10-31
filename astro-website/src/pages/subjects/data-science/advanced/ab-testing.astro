@@ -10,24 +10,174 @@ const abCfg = {
     { math: '4 · Beware the novelty effect', note: 'Users react to change itself — early spikes fade. Run full business cycles (whole weeks) and compare same-day-of-week patterns before believing a win.' },
   ],
 };
+
+const abQuizCfg = {
+  questions: [
+    { q: 'Why does random assignment let you claim causation?', choices: ['it makes samples bigger', 'it balances every confounder — known and unknown — between groups on average', 'it removes noise from measurements', 'it guarantees the groups are identical'], answer: 1, why: 'Randomisation breaks the link between who gets treatment and who they already were. Confounders (age, intent, device) end up statistically balanced, so differences in outcomes point at the treatment.' },
+    { q: 'You want to detect a lift from 10% to 11% conversion at 5% significance and 80% power. The needed sample is roughly…', choices: ['about 400 users per arm', 'about 2,000 per arm', 'about 14,000 per arm', 'any size, given enough time'], answer: 2, why: 'With p̄ = 0.10, Δ = 0.01: n ≈ 2 × 0.1 × 0.9 × (1.96 + 0.84)² / 0.01² ≈ 14,000 per arm. Small lifts on small base rates are shockingly expensive to detect — the √n law again.' },
+    { q: 'Checking the p-value every day and stopping at the first significant result…', choices: ['is fine — significance is significance', 'inflates false positives well beyond the nominal 5%', 'is the Bayesian method', 'only matters for small tests'], answer: 1, why: 'Each check is another lottery ticket for a lucky result; simulate daily peeking over a month and the false-positive rate climbs from 5% toward 20% or more. Fix with a fixed horizon, alpha-spending sequential designs, or Bayesian monitoring.' },
+    { q: 'A 50/50 split is configured, but the test reports 49.2% A and 50.8% B over 5 million users. This is…', choices: ['normal randomness, ignore it', 'a sample ratio mismatch — a red flag that the experiment machinery is broken', 'proof that B is better', 'a novelty effect'], answer: 1, why: 'With millions of users, chance deviations of 0.8 points are astronomically unlikely; an SRM this large means assignment is leaking — bot filtering, redirect loss, or logging bugs — and every downstream number is suspect.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/advanced/ab-testing">
   <h2>The idea</h2>
   <p>
-    An A/B test is <strong>a randomised controlled experiment run on users</strong> — the
-    gold-standard causal method (the statistics ladder's experimental-design lesson) applied at
-    product speed. Done right, it is the cleanest "did this change help?" answer available. Done
-    casually — peeking, tiny samples, forty metrics — it manufactures confident nonsense.
+    An A/B test is a <strong>randomised controlled experiment run on users at product
+    speed</strong>: version A is the control, version B is the treatment, users are assigned
+    at random, and a decision metric is compared between the groups. It is the statistics
+    ladder's experimental-design machinery — the same logic that proved medicines work —
+    pointed at buttons, headlines and prices. Done right, it is the cleanest answer to "did
+    this change actually help?" that exists. Done casually — tiny samples, forty metrics,
+    stopping the moment the number dips below 0.05 — it manufactures confident nonsense with
+    impressive efficiency. This chapter works through the three syllabus threads it rests on:
+    why experiments earn causal claims, how hypothesis testing scores the result, and how
+    two-sample comparison — with its power arithmetic — sizes the whole enterprise.
   </p>
 
   <Widget no="1" caption="the four disciplines that separate real tests from theatre" widget="equationStep" config={abCfg} />
 
-  <h2>The failure modes, catalogued</h2>
+  <h2>Causality and experiments: why randomisation works</h2>
+  <p>
+    Observational data confuses "users who did X are different" with "X caused the
+    difference". Weekly users buy more than casual ones — but does the app cause the
+    purchasing, or do purchasers use the app more? Every confounder (the user's intent,
+    wealth, device, mood) contaminates the comparison. <strong>Random assignment</strong>
+    solves this in a way nothing else does: it severs the link between who receives the
+    treatment and who they already were. Flip a fair coin for every user and, in expectation,
+    the two arms have the same mix of every confounder — including the thousands you never
+    thought to measure. That is the deep point: randomisation balances the unknown as
+    reliably as the known. With confounders balanced on average, any difference in outcomes
+    has only two candidate explanations: the treatment, or bad luck — and the hypothesis
+    test quantifies exactly how much difference luck can plausibly produce.
+  </p>
+  <p>
+    "On average" is doing real work in that sentence. A 50/50 randomisation of 400 users
+    will not put exactly 200 night-owls in each arm; balance is statistical, not perfect, and
+    small experiments leave residual imbalance that the standard error partially absorbs. The
+    practical corollary: <strong>check the randomisation itself</strong>. A health check every
+    serious platform runs is the <em>sample ratio mismatch</em> (SRM) test — a 50/50
+    configuration that produced 49.2% versus 50.8% across five million users is astronomically
+    unlikely by chance, and signals broken assignment (bot filtering, redirect loss, logging
+    bugs). When an A/B test's conclusion contradicts every other measurement, an SRM is the
+    first suspect; a shocking share of published platform experiments fail this check.
+  </p>
+  <p>
+    <em>Common misconception:</em> an A/B test is just "compare the groups afterwards" — the
+    design is decoration. The randomisation <em>is</em> the design; comparing post-hoc groups
+    (users who found feature B versus users who didn't) is observational, self-selected and
+    confounded, whatever statistical polish you apply. The causal power lives in the coin
+    flips, nowhere else.
+  </p>
+
+  <h2>Testing the hypothesis: scoring the difference</h2>
+  <p>
+    The null hypothesis is "B does nothing — the arms differ only by chance". The test
+    statistic compares the observed difference with the standard error of a difference: two
+    independent estimates each carry their own wobble, and the difference's SE is the
+    <em>quadrature</em> of theirs (square, add, square-root). Worked example: conversion runs
+    10.0% in A (1,000 of 10,000 users) and 11.0% in B (1,100 of 10,000). Each arm's SE is
+    √(0.11 × 0.89/10,000) ≈ 0.0031, so the difference's SE is √(0.0031² + 0.0031²) ≈ 0.0044.
+    The observed lift is 0.01, i.e. 0.01/0.0044 ≈ 2.27 standard errors — a z-score of 2.27,
+    one-sided p ≈ 0.012. Under a true null, a 2.27-SE surprise happens about once in 80
+    experiments; the boring world does not easily explain this data. Had the lift been 0.5
+    points, z ≈ 1.14 and p ≈ 0.13 — indistinguishable from noise at this sample size.
+  </p>
+  <p>
+    Note what the p-value is <em>not</em>: not the probability B works, not the probability
+    the result replicates. It is the surprise level of the data given a world where B does
+    nothing. And note the cost asymmetry: a false positive ships a change that does nothing
+    (adding complexity forever), while a false negative abandons a real improvement. The
+    0.05 threshold is a convention, not a law — mature teams pick the threshold to match the
+    decision's cost, and report the confidence interval for the lift so decision-makers see
+    the range of plausible effects, not just a verdict.
+  </p>
+
+  <h2>Two samples and the arithmetic of power</h2>
+  <p>
+    Before launch comes the question that determines whether the test can work at all:
+    <strong>how many users?</strong> Power analysis runs the test logic backwards. Decide
+    three things: the significance level α (false-positive budget, usually 0.05), the power
+    (probability of detecting a true effect, usually 0.80, so β = 0.20), and the
+    <strong>minimum detectable effect</strong> (MDE) — the smallest lift that would change
+    your decision. Then the required sample per arm is approximately
+    n ≈ 2·p̄·(1 − p̄)·(1.96 + 0.84)²/Δ², where p̄ is the pooled baseline rate and Δ the MDE.
+    Worked example: baseline 10%, hoping for 11% (Δ = 0.01): n ≈ 2 × 0.1 × 0.9 × 7.84 /
+    0.0001 ≈ 14,000 per arm — 28,000 users total. Halve the baseline rate to 5% or shrink the
+    MDE and the number balloons: detecting 10.0% versus 10.5% needs roughly 55,000 per arm.
+    This is why low-traffic products cannot A/B test small improvements at all, and why the
+    honest alternative is testing bigger changes (higher Δ) or using noisier-but-faster
+    proxies.
+  </p>
+  <p>
+    Underpowered tests fail in a characteristic, misleading way: they run for a week, see a
+    positive-but-insignificant lift, and get read as "no effect". A test with 30% power that
+    found nothing tells you almost nothing — the effect could be real and simply invisible at
+    this n. Confidence intervals make this visible: "lift = 0.4 points, 95% CI −0.5 to +1.3"
+    is compatible with everything from a slight loss to a big win; only a narrow interval
+    around zero licenses the word "null".
+  </p>
+
+  <h2>Four ways experiments lie</h2>
   <ul>
     <li><strong>Peeking:</strong> monitoring p-values daily and stopping at the first dip below 0.05 inflates false positives massively — sequential tests (group-sequential, Bayesian) are the honest fix if you must watch.</li>
     <li><strong>Multiple comparisons:</strong> testing 20 variants finds a "winner" by luck. Adjust (Bonferroni), or pre-commit to the comparison.</li>
     <li><strong>Interference:</strong> users share networks — a feature for one user changes another's experience (marketplaces, social apps). Cluster randomisation (by city, by household) handles it.</li>
     <li><strong>Proxy drift:</strong> optimising clicks can degrade the thing clicks were standing in for. Long-term holdout groups — users kept on the old experience — catch the drift.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Kohavi, Tang & Xu, Trustworthy Online Controlled Experiments (2020); Microsoft ExP platform documentation.</p>
+  <p>
+    The peeking bullet deserves its numbers, because peeking is the most committed of the
+    sins: it feels like diligence. Each check is another lottery ticket — run a simulation of
+    a true-null test monitored daily for a month and the false-positive rate climbs from the
+    nominal 5% toward 20% or more; check hourly and it climbs further. The fixes are all
+    versions of "spend your error budget deliberately": fix the horizon in advance;
+    group-sequential designs that pre-schedule a few early looks at pre-agreed (stricter)
+    thresholds; Bayesian monitoring that reframes stopping as expected-loss decision-making;
+    and always, the SRM check before believing any number.
+  </p>
+  <p>
+    <em>Common misconception:</em> statistical machinery fixes a bad experiment. No test can
+    rescue a confounded assignment, a broken funnel, a novelty spike read as a trend, or a
+    metric chosen after seeing the data. The famous summary — from Kohavi's two decades of
+    running experiments at Microsoft and Bing — is that the majority of surprising "wins"
+    evaporate under scrutiny of design, not of statistics.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Variance reduction: CUPED.</strong> The sample size arithmetic is governed by
+    noise in the metric, so shrinking noise shrinks n. CUPED (controlled experiment using
+    pre-experiment data) adjusts each user's outcome using their <em>pre-test</em> behaviour —
+    mathematically, it regresses out the part of the metric predictable from before the
+    experiment started. With a pre/post correlation of ρ, variance falls by a factor of
+    (1 − ρ²); correlation 0.5 cuts required sample by 25%, and correlations near 0.7 are
+    routine for engagement metrics. This single idea let high-traffic platforms run tests
+    they previously could not afford, and it is now standard on mature experimentation
+    platforms.
+  </p>
+  <p>
+    <strong>Interference and two-sided marketplaces.</strong> Randomising users fails when
+    the product is a network: in a marketplace, cheaper prices shown to treated buyers shift
+    seller supply away from control buyers, biasing the measured effect (usually
+    <em>downward</em>, so experiments understate real impact). Fixes are structural:
+    randomise by cluster (city, region) at the cost of power; switchback designs that flip
+    the whole marketplace between arms over time; or hero/holdout structures that keep a
+    fraction of users permanently on the legacy experience to measure long-term cumulative
+    effects. The engineering literature (Kohavi, Tang and Xu) is the canonical source, and
+    it reads like a catalogue of expensive lessons.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Experiments answer "did B help on average", but
+    heterogeneous effects (helping new users while hurting experts) are the real frontier —
+    detecting them honestly requires sample sizes that dwarf most organisations' traffic.
+    Continuous-deployment experimentation (assigning at the request level), machine-learned
+    metric proxies with validation against long-term outcomes, and the statistical semantics
+    of LLM-generated UI variants are all live research. The deepest open question is
+    organisational: experiments are only as honest as the incentive to accept their verdicts
+    — "we ran the test and killed the feature" is a cultural achievement before it is a
+    statistical one.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Kohavi, Tang &amp; Xu, <em>Trustworthy Online Controlled Experiments</em> (2020); Microsoft ExP platform documentation; Deng, Xu, Kohavi &amp; Walker, "Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data" (CUPED, 2013); the statistics ladder of this atlas.</p>
+  <Widget no="2" caption="check yourself: randomisation, power and peeking" widget="quiz" config={abQuizCfg} />
 </TopicPage>

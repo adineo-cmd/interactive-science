@@ -11,18 +11,130 @@ const tfCfg = {
     { math: '5 · Scale laws made it inevitable', note: 'Loss falls predictably as model size, data and compute grow (Kaplan 2020, Chinchilla 2022). Predictable improvements at unpredictable-feeling capability jumps — the engine of the GPT series and its rivals.' },
   ],
 };
+
+const tfQuizCfg = {
+  questions: [
+    { q: 'In self-attention, the weight given to each context token is computed by…', choices: ['a fixed lookup table', 'a softmax over dot products of a query with each key', 'counting word frequencies', 'the position index alone'], answer: 1, why: 'Each token\'s query is dot-producted with every token\'s key; softmax turns those scores into weights summing to 1, and the outputs are a weighted average of the value vectors. Relevance is computed, not hard-coded.' },
+    { q: 'Positional encodings exist because…', choices: ['words must be numbered for the index', 'attention alone is order-blind — without them "dog bites man" and "man bites dog" are identical', 'tokens need unique IDs', 'they speed up tokenisation'], answer: 1, why: 'Self-attention treats its input as a set: every token sees every other token with no built-in order. Positional information (added to embeddings) is what lets the model distinguish word order.' },
+    { q: 'Why can dot-product attention weight one token at 99.9% and the rest almost zero?', choices: ['softmax is exponential — small score differences become enormous weight differences', 'weights are rounded', 'one token is always correct', 'they cannot'], answer: 0, why: 'Scores of 8, 2 and 1 become softmax weights of about 0.997, 0.002 and 0.0009 — exponentiation sharpens small gaps into near-winner-take-all focus, which is what makes attention sharply selective.' },
+    { q: 'Chinchilla\'s result (2022) said compute-optimal training means…', choices: ['making models as large as possible', 'roughly 20 training tokens per parameter — many earlier models were badly undertrained', 'training only on code', 'using fewer parameters always'], answer: 1, why: 'Hoffmann et al. showed model size and data should scale together (~20 tokens per parameter), so e.g. a 70B model wants ~1.4T tokens — explaining why smaller, longer-trained models outperformed larger, undertrained ones.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/advanced/transformers-and-large-language-models">
   <h2>The idea</h2>
   <p>
-    Transformers are <strong>neural networks built on attention</strong> — a mechanism letting
-    every token of text consult every other token. Trained to predict the next token on
-    internet-scale text, they become large language models (LLMs) that write, translate, code
-    and reason in ways their creators did not individually program. They are the defining AI
-    system of the 2020s.
+    The intermediate tiers gave you neural networks as stacked function approximators and NLP
+    as a set of tasks — sentiment, translation, summarisation. The transformer, introduced in
+    2017 in the eight-author paper "Attention Is All You Need", replaced the task-specific
+    architectures of the 2010s with a single design that scales: <strong>a network whose only
+    way of mixing information between positions is attention</strong>, the learned ability of
+    every token to consult every other token. Trained on internet-scale text to do one thing —
+    predict the next token — these models become large language models (LLMs) that write,
+    translate, code and reason in ways nobody individually programmed. Understanding them is
+    now the price of admission to the deep-learning-for-language syllabus (unit 24), and the
+    pipeline in the widget is the honest map: tokens become vectors, attention mixes them,
+    next-token prediction teaches them, alignment shapes them, and scaling laws predicted the
+    whole escalation.
   </p>
 
   <Widget no="1" caption="the LLM pipeline: tokens → attention → pretraining → alignment → scale" widget="equationStep" config={tfCfg} />
+
+  <h2>Tokens and embeddings: language as geometry</h2>
+  <p>
+    Neural networks eat numbers, so text is first chopped into <strong>tokens</strong> —
+    sub-word units learned from data (common words stay whole; rare ones split: "unbelievable"
+    may become "un", "believ", "able" — roughly 4 characters or ¾ of a word per token in
+    English). Each token is looked up in a learned table of <strong>embeddings</strong>:
+    vectors of a few thousand dimensions. The decisive property, discovered in the word2vec
+    era (Mikolov, 2013), is that <em>directions in this space carry meaning</em>: the classic
+    vector arithmetic king − man + woman lands closest to queen, and "Paris" sits near "France"
+    the way "Tokyo" sits near "Japan". These are not programmed; they are the shadow that
+    predicting-words-from-context casts onto geometry — words used interchangeably end up close
+    together because they appear in interchangeable company. Language has become points in a
+    high-dimensional space, and every later operation is geometry on those points.
+  </p>
+
+  <h2>Attention: the mechanism, with numbers</h2>
+  <p>
+    Attention solves a problem earlier architectures handled badly: a word's meaning depends on
+    distant context, and information had to crawl through the network one step at a time. In a
+    transformer, every token broadcasts three learned vectors: a <strong>query</strong> ("what
+    am I looking for?"), a <strong>key</strong> ("what do I offer?") and a
+    <strong>value</strong> ("what I'll contribute if selected"). Token i's attention over token
+    j is a dot product of i's query with j's key — a relevance score — then all scores are
+    squashed through softmax into weights that sum to 1, and i's new representation is the
+    weighted average of everyone's values.
+  </p>
+  <p>
+    Worked example. In "The animal didn't cross the street because it was too tired", the
+    token "it" issues a query; suppose its dot products with the keys of "animal", "street"
+    and "tired" come out as 8, 2 and 1. Softmax exponentiates: e⁸ ≈ 2981, e² ≈ 7.4, e¹ ≈ 2.7,
+    and normalising gives weights ≈ 0.997, 0.002 and 0.0009. "It" therefore pulls almost
+    entirely from "animal" — disambiguation by computation, and the exponential in softmax is
+    exactly what turns a modest score gap into near-winner-take-all focus. In practice this
+    happens in parallel across many <strong>attention heads</strong> (some learn to track
+    syntax, some coreference, some position patterns), and each layer refines all tokens
+    simultaneously. Because there is no recurrence, the model needs <strong>positional
+    encodings</strong> added to the embeddings — without them, "dog bites man" and "man bites
+    dog" are the same bag of tokens, since attention alone is order-blind.
+  </p>
+  <p>
+    The full transformer block is attention plus a small <strong>feed-forward network</strong>
+    applied to each position (where much of the "knowledge" is stored), with residual
+    connections and layer normalisation keeping deep stacks trainable; dozens of blocks stack
+    into GPT-class models. The arithmetic cost is the quadratic term: attention compares every
+    token with every other, so doubling the context quadruples that part of the compute — the
+    reason long-context models are an engineering frontier, not a free lunch.
+  </p>
+  <p>
+    <em>Common misconception:</em> attention "understands" or "highlights important words" the
+    way a highlighter does. Attention is a routing computation — it decides which vectors get
+    mixed into which — and it is only one part of the stack. Interpreting individual attention
+    weights as explanations has repeatedly failed (the same output can arise from different
+    attention patterns), which is why model explanation is its own research field.
+  </p>
+
+  <h2>Pretraining: knowledge as a side effect of prediction</h2>
+  <p>
+    Training has one objective: given a prefix of tokens, predict the next one, scored by
+    cross-entropy loss and corrected by gradient descent — trillions of times. The
+    <strong>self-supervision</strong> trick is that the labels are free: every text corpus on
+    Earth is its own training set, no human annotation needed. To predict well, a model cannot
+    just memorise: it must compress regularities — grammar to place plausible words, world
+    knowledge to continue "the capital of Australia is", discourse structure to close a
+    paragraph, reasoning patterns to continue a proof or a joke that hasn't paid off yet.
+    "Learning" here is compression under a prediction deadline. What the raw predictor does
+    <em>not</em> do is follow instructions — it completes text, so "How do I make bread?" might
+    be completed with "…the question many bakers ask". The gap between text-completer and
+    assistant is closed in post-training: <strong>instruction fine-tuning</strong> on
+    curated question–answer pairs, then <strong>RLHF</strong> — humans rank model outputs, a
+    reward model learns the ranking, and reinforcement learning (the sibling lesson) pushes the
+    policy toward preferred behaviour. This alignment stage is a small fraction of the compute
+    but most of the difference between a document-finisher and something you can delegate to.
+  </p>
+  <p>
+    <em>Common misconception:</em> an LLM looks up answers in a database. It stores knowledge
+    as <em>weights</em> — a lossy, statistical compression of training text — which is exactly
+    why it can be fluent about things it gets subtly wrong, why quoting it is unsafe without
+    verification, and why its knowledge is frozen at training time unless tools (search,
+    retrieval) are bolted on.
+  </p>
+
+  <h2>Scaling laws: the engine of the era</h2>
+  <p>
+    The field's most consequential empirical finding (Kaplan et al., 2020) is that
+    <strong>loss falls as a smooth power law</strong> in model size, dataset size and compute —
+    over many orders of magnitude. Predictability at that scale is unheard of in software, and
+    it converted research into logistics: if you know what doubling compute buys, you can plan
+    the next model's budget. Hoffmann et al.'s <strong>Chinchilla</strong> result (2022) refined
+    the economics: for a fixed compute budget, size and data should grow <em>together</em> —
+    roughly 20 training tokens per parameter. A 70-billion-parameter model wants about 1.4
+    trillion tokens; models trained before this rule were "undertrained", which is why
+    Chinchilla's 70B beat its 280B sibling. Downstream capabilities — translation quality,
+    arithmetic, code — improve unevenly on top of the smooth loss curve, which is why progress
+    feels jagged even though the underlying scaling is smooth.
+  </p>
 
   <h2>What LLMs can and can't do — honestly</h2>
   <ul>
@@ -31,5 +143,41 @@ const tfCfg = {
     <li><strong>Emergent abilities are disputed:</strong> some skills appear only at scale; researchers debate whether they're true capability jumps or measurement artefacts. The benchmark question is active research.</li>
     <li><strong>Tool use extends them:</strong> calling search, code execution and APIs turns the model into an orchestrator — agentic systems. Reliability, cost and safety of those loops are the current engineering frontier (the alignment lesson continues the story).</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Vaswani et al., "Attention Is All You Need" (2017); Kaplan et al. (2020); Hoffmann et al., "Chinchilla" (2022); OpenAI GPT-4 technical report.</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Why attention won: parallelism.</strong> Recurrent networks (LSTMs) process tokens
+    sequentially, so training cannot parallelise across the sequence and long-range information
+    decays through the steps. Attention touches every pair of positions in one matrix
+    multiplication, so a GPU crunches thousands of tokens at once — the transformer is the
+    architecture the hardware wanted. The quadratic cost is the price; the research frontier is
+    cheaper approximations (sparse attention, linear-attention and state-space models like
+    Mamba) that keep the scaling while shedding the n² term. Whether any of them displaces
+    vanilla attention at frontier scale is genuinely open.
+  </p>
+  <p>
+    <strong>In-context learning and what it means.</strong> Large models exhibit a strange
+    capability: shown a few solved examples in the prompt ("few-shot prompting"), they continue
+    the pattern without any weight update — the context itself steers the function. Theoretical
+    work (induction heads, implicit gradient-like updates) suggests the transformer is running
+    small learning algorithms <em>inside</em> its forward pass. Meanwhile chain-of-thought
+    prompting — asking the model to reason step by step before answering — measurably improves
+    multi-step tasks, and training explicitly on long reasoning traces ("reasoning models")
+    pushes the same lever harder. Whether the resulting step-by-step text is computation or
+    performance of computation is a live and slightly uncomfortable question.
+  </p>
+  <p>
+    <strong>Open problems.</strong> Mechanistic interpretability (reverse-engineering circuits
+    inside the weights) has found real structures — induction heads, factual-association
+    pathways — but explains a sliver of frontier models. Hallucination resists simple fixes
+    because the objective rewards plausible continuation, not verified truth (some researchers
+    argue calibrated uncertainty is the honest goal). Data is becoming the binding constraint:
+    high-quality human text is finite, so synthetic data, curated corpora and legal provenance
+    now shape frontier training. And evaluation has not caught up — training-data contamination
+    means benchmark scores overstate capability, pushing the field toward live, private and
+    agentic evaluations (the sibling lesson on evaluation, bias and safety takes this up).
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Vaswani et al., "Attention Is All You Need" (2017); Mikolov et al., word2vec (2013); Kaplan et al., "Scaling Laws for Neural Language Models" (2020); Hoffmann et al., "Training Compute-Optimal Large Language Models" (Chinchilla, 2022); Olsson et al., "In-context Learning and Induction Heads" (2022); OpenAI GPT-4 technical report.</p>
+  <Widget no="2" caption="check yourself: attention, pretraining and scale" widget="quiz" config={tfQuizCfg} />
 </TopicPage>

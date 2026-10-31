@@ -11,25 +11,227 @@ const secCfg = {
     { math: '5 · The human layer is thickest', note: 'Phishing beats firewalls. Most major breaches begin with a click or a reused password — training and multi-factor authentication are technical controls too.' },
   ],
 };
+
+const secQuiz = {
+  questions: [
+    {
+      q: "A login check builds SQL as \"SELECT * FROM users WHERE name='\" + input + \"' AND pass='...'. A user types ' OR '1'='1 as the name. What happens?",
+      choices: [
+        "The database returns a syntax error and rejects the login",
+        "The query becomes always-true on the name clause — an authentication bypass: the classic SQL injection",
+        "Nothing; quotes are stripped automatically",
+        "Only the password check becomes weaker",
+      ],
+      answer: 1,
+      why: "Hostile input crossed the data/code boundary and became part of the program. The structural fix is parameterised queries (the driver keeps data out of the code path) — boring, known since the 1990s, still on top-10 breach lists.",
+    },
+    {
+      q: "A leaked database contains unsalted MD5 password hashes. Why is this catastrophic even though MD5 is 'a hash'?",
+      choices: [
+        "Hashes can be reversed directly with maths",
+        "MD5 is fast to compute, so GPUs guess billions of candidates per second and check them — and without per-user salts, one precomputed table cracks every identical password at once",
+        "The database is now readable by anyone",
+        "MD5 hashes are shorter than the passwords",
+      ],
+      answer: 1,
+      why: "Hashing is one-way but guessable: security rests on how slow checking is. Fast hashes (MD5/SHA-1) are wrong for passwords; slow, salted, memory-hard functions (bcrypt, argon2) make each guess cost milliseconds instead of nanoseconds.",
+    },
+    {
+      q: "Which control stops a stolen password from being enough to break in?",
+      choices: [
+        "Longer password rules",
+        "Multi-factor authentication — a second, different factor (device, biometric) the thief does not have",
+        "A firewall",
+        "Stronger encryption of the database",
+      ],
+      answer: 1,
+      why: "Credentials are the most-stolen asset on the internet; MFA attacks the assumption that possession of the password equals identity. It is one of the few controls that defeats whole attack classes cheaply.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/cybersecurity-threats-and-defences">
   <h2>The idea</h2>
   <p>
-    Cybersecurity is <strong>asymmetric by nature</strong>: attackers need one weakness,
-    defenders need every one closed, always. The discipline is therefore not a product but a
-    process — inventory, threat-model, harden, monitor, rehearse, repeat. The core skill is
-    thinking like an attacker about your own systems, honestly.
+    Cybersecurity is <strong>asymmetric by construction</strong>: the attacker needs one weakness, once;
+    the defender needs every weakness closed, always, on systems that keep changing. No product buys that;
+    only a <strong>process</strong> does — inventory, threat-model, harden, monitor, rehearse, repeat. The
+    cryptography lesson gave you the primitives (symmetric ciphers, public-key exchange, hashes); this
+    lesson is about the messier truth that <strong>systems are broken around their crypto, not through
+    it</strong> — through inputs, humans, defaults and dependencies — and builds the defensive discipline
+    piece by piece.
   </p>
 
   <Widget no="1" caption="the five moves of a defensible system" widget="equationStep" config={secCfg} />
 
-  <h2>The vocabulary of attacks</h2>
-  <ul>
-    <li><strong>Injection & XSS:</strong> hostile data interpreted as code. Parameterised queries and output escaping close them — boring fixes, catastrophic omissions.</li>
-    <li><strong>Password storage done right:</strong> never store passwords; store slow salted hashes (bcrypt/argon2). "Hashed" is not enough — MD5 falls to GPUs in seconds.</li>
-    <li><strong>Crypto misuse beats crypto breaking:</strong> attackers rarely crack mathematics; they steal keys, exploit defaults, or bypass the crypto entirely. (The cryptography lesson covers the primitives.)</li>
-    <li><strong>Zero-days and patching:</strong> unknown flaws exist in every system. Fast, automated patching is the highest-value security investment most organisations can make.</li>
-    <li><strong>Ethical hacking:</strong> the same skills, authorised and contracted — bug bounties and penetration tests turn attackers into auditors. Authorisation is what distinguishes the profession from crime.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> OWASP Top 10; NIST Cybersecurity Framework; Verizon Data Breach Investigations Report.</p>
+  <h2>Threat modelling: thinking like the attacker, first</h2>
+  <p>
+    Security begins before any control is chosen, with three questions. <strong>What are the assets?</strong>
+    — not "all data" but the specific things whose theft, alteration or loss actually hurts (customer
+    credentials, payment records, the ability to serve users). <strong>Who are the adversaries, and what do
+    they want?</strong> — opportunistic bots scanning for any vulnerable machine; criminals monetising
+    ransomware; insiders; competitors; states. <strong>What is the attack surface?</strong> — every input
+    path an attacker can reach: login forms, APIs, file uploads, DNS, employees' inboxes, the software
+    supply chain. Frameworks like STRIDE (Spoofing, Tampering, Repudiation, Information disclosure, Denial
+    of service, Elevation of privilege) turn this into a checklist per component. The output is a ranked
+    list of doors and windows — which converts vague anxiety into an engineering backlog. The CIA triad
+    (confidentiality, integrity, availability) keeps the priorities honest: a "secure" system that is down,
+    or that silently corrupts its data, has failed two of three.
+  </p>
+
+  <h2>Injection: the boundary discipline</h2>
+  <p>
+    The oldest top-tier vulnerability class is <strong>confusing data with code</strong>. Worked example
+    (the web lesson's XSS sibling): a login builds SQL by string concatenation —
+    SELECT * FROM users WHERE name = 'INPUT' AND pass = '...'. A user types <strong>' OR '1'='1</strong>
+    as the name. The database executes: WHERE name = '' OR '1'='1' — always true — and the attacker is
+    logged in as the first account. Same category, other layers: XSS injects script into HTML (the
+    web-development lesson), command injection shells out with user text, path traversal escapes a
+    directory with ../. The defences are structural and boring, which is exactly why their omission is
+    inexcusable: <strong>parameterised queries</strong> (the driver carries data separately from code),
+    <strong>output escaping</strong> by default, allow-list validation, and least privilege so even a
+    successful injection hits an account that can only read. Decades old, trivially fixed, still on every
+    OWASP Top 10: security is not knowledge scarcity, it is execution discipline.
+  </p>
+
+  <h2>Passwords: hashing done right</h2>
+  <p>
+    <strong>Never store passwords</strong> — store salted hashes. The mechanics matter. A hash is one-way,
+    but guessing is cheap if verification is fast: MD5 computes billions of candidates per second on a
+    modern GPU, so a leaked unsalted-MD5 table falls in minutes (identical passwords yield identical
+    hashes, and precomputed "rainbow tables" cover common ones wholesale). The professional stack:
+    a <strong>unique random salt per user</strong> (kills rainbow tables and identical-hash matches), a
+    <strong>deliberately slow, memory-hard key-derivation function</strong> — bcrypt, scrypt or argon2 —
+    tuned so one verification costs ~100 milliseconds of CPU/memory (imperceptible at login; devastating
+    at scale, since each guess now costs milliseconds instead of nanoseconds), plus
+    <strong>pepper</strong> (a secret not stored in the database) where operations allow. And because
+    credentials leak anyway, the control that actually saves you is <strong>multi-factor
+    authentication</strong>: a second, different factor (device code, biometric) means a stolen password
+    alone no longer equals identity — arguably the highest-value control an organisation can deploy,
+    since the large majority of breaches involve stolen or guessed credentials and the human element
+    (recent Verizon DBIR reports put it near three-quarters).
+  </p>
+  <p><em>Common misconception:</em> "strong encryption makes us safe." Crypto is rarely broken; it is
+  <em>bypassed</em> — keys stolen from configuration files, defaults left unchanged, TLS terminated at a
+  compromised box. Kerckhoffs's principle (assume the attacker knows the system; secrecy lives only in
+  the key) generalises: assume the attacker knows your design, your framework and your stack overflow
+  answers, too.</p>
+
+  <h2>The attack catalogue — and the matched defences</h2>
+  <p>
+    <strong>Phishing and social engineering</strong> attack the human layer directly: a convincing fake
+    login or an urgent request beats most technical walls, which is why training, reporting buttons and
+    MFA are technical controls, not HR decoration. <strong>Malware and ransomware</strong> arrive through
+    those channels or through unpatched software; the matched defence is the boring one —
+    <strong>fast automated patching</strong> (most successful attacks exploit vulnerabilities fixed months
+    earlier), least-privilege accounts, and <strong>offline, tested backups</strong> that turn "pay the
+    ransom" into "restore from yesterday." <strong>Denial of service</strong> attacks availability with
+    traffic floods (often botnets of hijacked devices); defences are architectural — anycast absorption,
+    CDNs, rate limiting. <strong>Zero-days</strong> — flaws unknown to the vendor — cannot be patched in
+    advance, so depth matters: assume any single layer (including the latest patch level) will eventually
+    fail, and layer detection (logging, anomaly monitoring) behind prevention. <strong>Supply-chain
+    attacks</strong> poison the dependencies themselves — modern software imports thousands of packages,
+    so one compromised library poisons every product that uses it (the 2024 xz-utils backdoor attempt is
+    the canonical case) — countered by dependency pinning, signed builds and reproducible builds.
+    Throughout, the defender's superpower is <strong>least privilege</strong>: no human or service account
+    holds more access than its job needs, so any single compromise stays small.
+  </p>
+
+  <h2>Defence in depth, and what happens after</h2>
+  <p>
+    Because every single control fails sometimes, mature systems layer them: hashed credentials behind
+    MFA behind least privilege behind network segmentation behind encryption in transit and at rest behind
+    monitored logs behind rehearsed recovery. <strong>Logging and detection</strong> deserve special
+    emphasis: assume breach, and make the breach <em>visible</em> — the average organisation takes days to
+    detect an intrusion, and attackers use that time to move laterally; immutable, centralised logs and
+    alerting shrink it. <strong>Incident response</strong> is then a drilled procedure, not an improv:
+    contain, eradicate, recover, and — critically — conduct a blameless post-mortem that fixes the system,
+    not the person. <strong>Ethical hacking</strong> closes the loop: penetration testers and bug-bounty
+    researchers run authorised attacks so weaknesses are found and paid for by defenders instead of
+    exploited by criminals. Authorisation is the entire moral boundary of the profession: the identical
+    skill, with and without a signed contract, is crime on one side of the line.
+  </p>
+
+  <h2>A breach anatomy, mapped to defences</h2>
+  <p>
+    Assemble the pieces on one generic incident — the shape of most real ransomware cases. Monday: an
+    employee receives a plausible invoice email; the link leads to a credential-harvesting page
+    (<strong>phishing</strong> — the human layer). Their password, reused from a breached forum, plus
+    its absence of MFA, yields a real login (<strong>credential stuffing</strong>). The attacker finds
+    the VPN account has access to a file share no one revokes (<strong>excessive privilege</strong>),
+    copies data for leverage (<strong>exfiltration</strong>), and on Saturday detonates ransomware
+    across the share (<strong>lateral movement + availability attack</strong>), finding the backups
+    reachable from the same credentials (<strong>no offline backup separation</strong>). Now re-run the
+    tape with the controls from this lesson: MFA blocks step two outright; least privilege limits the
+    blast radius; phishing-resistant training and a report button shorten step one; segmented networks
+    and immutable, offline backups turn the detonation into a restore-from-yesterday; centralised logs
+    cut the dwell time; and the incident-response drill means Saturday is a procedure, not a panic.
+    Note the pattern: <strong>no single control stops the chain — the defences cut its links</strong>,
+    and the attacker's chain is only as strong as its weakest necessary step. That is defence in depth
+    as a mechanism rather than a slogan, and it is why the boring controls (patching, MFA, backups,
+    least privilege) dominate every serious breach report's recommendations.
+  </p>
+
+  <h2>When cryptography is the weak point: a misuse catalogue</h2>
+  <p>
+    The primitives hold; the wiring breaks. Four canonical ways. <strong>Wrong mode</strong>: AES-ECB
+    encrypts identical blocks to identical ciphertext — the famous test image still shows a penguin
+    through the "encryption," because ECB preserves patterns; the fix (a randomised mode — CBC with a
+    fresh IV, or GCM) is one parameter away and routinely missed. <strong>Nonce reuse</strong>: GCM and
+    stream ciphers XOR plaintext with a keystream derived from a nonce — reuse the nonce with two
+    messages and the keystream cancels, leaking the XOR of the plaintexts; the RNG that generated
+    nonces matters as much as the cipher. <strong>Homemade constructions</strong>: "I'll XOR with a
+    secret key twice for safety" — combinatorial intuition fails at crypto design; the field's rule
+    (use reviewed, standard constructions and libraries; never design your own) is empirical, earned
+    by decades of broken improvisations. <strong>Side channels</strong>: the algorithm is provably
+    secure, but its <em>timing</em> leaks — a comparison loop that returns early on the first mismatched
+    character lets an attacker measure their way to a valid token character by character; the fix
+    (constant-time comparison) is now standard library practice, and the lesson is general: the
+    implementation, not the mathematics, is the attack surface. Together these justify the field's
+    standing advice — attackers bypass crypto; make the bypass paths expensive.
+  </p>
+
+  <h2>Threat modelling, worked on a small system</h2>
+  <p>
+    Make the opening method concrete with the system this ladder's own atlas-style site implies: a web
+    app with accounts. <strong>Assets</strong>: user passwords and personal data (breach = regulatory and
+    reputational loss), session validity (account takeover), availability (downtime = lost trust).
+    <strong>Adversaries</strong>: opportunistic credential stuffers (bulk, automated), a targeted grudge
+    user (patient, knows the product), scrapers (want the data, not the accounts). <strong>Surfaces,
+    walked with STRIDE</strong>: the login form (spoofing — credential attacks; answered by MFA and
+    rate limiting); the file-upload endpoint (tampering — a "photo" that is a webshell; answered by
+    type validation and serving uploads from a separate origin); the password-reset email (spoofing —
+    account recovery is the side door; answered by expiring, single-use, entropy-heavy tokens); the
+    admin panel (elevation of privilege — answered by role checks <em>server-side</em>, never hidden
+    buttons alone); the public API (information disclosure — answered by authorisation on every object
+    access, the broken-access-control class that tops modern vulnerability lists); the server itself
+    (denial of service — answered by rate limits and CDN absorption). Output: a ranked backlog, each row
+    a named adversary, surface, failure, and control. Twenty minutes of this exercise finds the
+    misconfigurations that breach reports find every month — because most breaches are not exotic;
+    they are unmodelled.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The economics explain most of the field.</strong> Attackers optimise effort per victim, so
+    they mass-exploit what is common and unpatched; defenders who patch fast, delete whole attack classes
+    (parameterised queries, MFA) and refuse to be the lowest-hanging fruit are, in practice, safe from
+    most adversaries — security is not about being invulnerable, it is about being expensive relative to
+    the attacker's return. Threat modelling formalises further: attack trees assign costs to paths, and
+    the defender's job is to make every cheap path expensive. <strong>Formal ground truth</strong> exists
+    only in cryptography and proofs: memory-safe languages (Rust) eliminate whole bug classes by
+    construction; formally verified crypto libraries exist; but the human-protocol layer — phishing,
+    fraud, coercion — has no patch. <strong>Open problems</strong>: quantum computers threaten RSA and
+    elliptic-curve signatures ("harvest now, decrypt later" makes the transition urgent for long-lived
+    secrets — post-quantum standards are already published and migrating); AI-generated phishing removes
+    the typos that made scams detectable; the software supply chain has millions of maintainers and no
+    audit model; and IoT devices ship insecure by default at planetary scale. The discipline's honest
+    summary for a new engineer: the mathematics mostly works; the systems, defaults, dependencies and
+    humans are where the breaches live — so inventory your assets, threat-model the paths, never trust
+    input, layer your defences, and rehearse the day one of them fails.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> OWASP Top 10; NIST Cybersecurity Framework; Verizon Data Breach Investigations Report; Kerckhoffs (1883); CISA guidance on MFA and patching.</p>
+
+  <Widget no="2" caption="check yourself: injection, hashes and the stolen-password problem" widget="quiz" config={secQuiz} />
 </TopicPage>

@@ -11,32 +11,212 @@ const dsCfg = {
     { math: 'Tree — hierarchy with fast search', note: 'A branching structure: file systems, JSON, and binary search trees that find items in log n steps. Balanced trees (AVL, B-tree) keep them fast even under abuse.' },
   ],
 };
+
+const dsQuiz = {
+  questions: [
+    {
+      q: "A hash table (separate chaining) holds 1,000 entries in 4,000 slots with uniform hashing. Roughly how many comparisons does a FAILED lookup take on average?",
+      choices: [
+        "About 1 — chain length tracks the load factor, not the table size",
+        "About 250 — a quarter of the entries",
+        "About 1,000 — the whole table",
+        "Impossible to say without the key",
+      ],
+      answer: 0,
+      why: "The load factor α = 1000/4000 = 0.25, and a failed chained search inspects about α ≈ 0.25 expected entries — near-instant. Key insight: hash-table performance tracks the load factor, not the table's size, which is exactly why tables resize.",
+    },
+    {
+      q: "You insert 1, 2, 3, 4, ..., 10,000 into a plain unbalanced binary search tree. How does search behave?",
+      choices: [
+        "O(log n) — trees are always logarithmic",
+        "O(1) — small numbers hash well",
+        "O(n) — the tree degenerates into a linked list down the right spine",
+        "O(n log n)",
+      ],
+      answer: 2,
+      why: "A BST's shape depends on insertion order; sorted input builds a 10,000-node staircase with depth 10,000. Self-balancing trees (AVL, red-black) exist precisely to prevent this — rotations keep depth O(log n) under any insertion order.",
+    },
+    {
+      q: "An LRU (least-recently-used) cache must answer 'is x cached?' in O(1) AND evict the oldest entry in O(1). Which composition works?",
+      choices: [
+        "A hash table alone",
+        "A sorted array alone",
+        "A hash table mapping keys to nodes of a doubly linked list",
+        "Two hash tables",
+      ],
+      answer: 2,
+      why: "The hash table finds the entry instantly; the linked list orders entries by recency, so moving a node and popping the tail are pointer surgery — O(1). Neither structure suffices alone; the skill is composing them.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/data-structures">
   <h2>The idea</h2>
   <p>
-    <strong>Data structure = container + trade-off.</strong> Every structure makes some
-    operations instant and others expensive; choosing one is choosing which question you need to
-    be fast. The classic exam question — "array or hash table?" — is really "random access by
-    position, or lookup by name?" Know the operations you need, and the structure picks itself.
+    The intermediate lessons taught you arrays and files; the algorithms lesson taught you that operations
+    have growth rates. Data structures join the two: <strong>a structure is a container plus a trade-off</strong>
+    — it makes some operations constant-time and pays for it by making others expensive. Choosing one is
+    choosing which question must be fast. The exam classic, "array or hash table?", is really "random access
+    by position, or lookup by name?" — and once you can name the access pattern (what gets looked up, how
+    often, in what order), the right structure usually picks itself. This lesson works each container to
+    expert depth: the mechanism, the costs with real numbers, and the failure modes.
   </p>
 
   <Widget no="1" caption="the five containers everything else is built from" widget="equationStep" config={dsCfg} />
 
-  <h2>The cost table every programmer carries</h2>
-  <ul>
-    <li><strong>Array:</strong> read by index O(1); insert/delete in middle O(n); search unsorted O(n).</li>
-    <li><strong>Hash table:</strong> insert/lookup/delete O(1) average; O(n) worst case (hash collisions — the denial-of-service angle of bad hashing).</li>
-    <li><strong>Balanced tree:</strong> O(log n) everything, and sorted iteration for free — why databases use B-trees on disk.</li>
-    <li><strong>Graph:</strong> nodes + arbitrary connections — the general case. Social networks, maps, the web itself. Traversal (BFS/DFS) is the gateway algorithm (see the graphs lesson on this ladder).</li>
-  </ul>
-
-  <h2>The deeper skill</h2>
+  <h2>Arrays: the memory model everything sits on</h2>
   <p>
-    Real programs compose structures: a cache is a hash table plus a queue; a text editor is
-    arrays of lines plus trees for undo. The skill is naming the access pattern first — what gets
-    looked up, how often, in what order — then picking the least exotic structure that makes the
-    common case cheap.
+    An array is a contiguous block: element i lives at address start + i × element-size, which is why
+    indexing is a single arithmetic act — <strong>O(1) random access</strong> is not a data-structure trick
+    but a consequence of physics (fixed-width slots, arithmetic addresses). The costs follow the same
+    logic: inserting at the front shifts every element — O(n) — and growth beyond the allocation requires
+    a new block and a copy (dynamic arrays amortise this by doubling: 1 copy, then 2, then 4... so n
+    appends cost O(n) total, roughly 2 elements copied per append on average). Sorted arrays buy
+    <strong>binary search</strong>: 1 million items found in about 20 comparisons (log₂ 1,000,000 ≈ 20),
+    1 billion in 30 — the logarithm's superpower, at the price of O(n) insertion. This is the syllabus's
+    array topic at full depth: know both the access arithmetic and the amortisation story, because every
+    other structure is built by escaping one of the array's two costs.
   </p>
-  <p class="sources"><strong>Sources:</strong> Cormen et al., Introduction to Algorithms; Sedgewick & Wayne, Algorithms, 4th ed.</p>
+
+  <h2>Hash tables: O(1) by arithmetic, with physics of their own</h2>
+  <p>
+    A hash table maps keys to slots through a <strong>hash function</strong> — a deterministic scramble
+    (a good one avalanche-changes with every input bit) — so "find by name" becomes "compute the slot."
+    Two engineering problems define quality. <strong>Collisions</strong>: two keys landing in one slot,
+    solved by chaining (each slot holds a small list) or open addressing (probe the next slots). With
+    uniform hashing the expected chain length is the <strong>load factor</strong> α = entries ÷ slots:
+    keep α under 0.75 and lookups inspect about 1–2 slots regardless of whether the table holds a thousand
+    or a billion entries. That is the O(1) average — paid for by <strong>resizing</strong>: when α crosses
+    the threshold, rehash everything into a bigger table (amortised O(1), but a single insert pays a lump).
+    <strong>Adversarial keys</strong>: if an attacker can choose keys that all collide, the table degrades
+    to O(n) per lookup — the hash-flooding denial-of-service attack, which is why languages seed their
+    hash functions randomly. The deep point: hash tables are probability-theoretic structures, and their
+    guarantees are statistical, not absolute — O(1) <em>expected</em>, O(n) worst case, like the cost table
+    says.
+  </p>
+
+  <h2>Trees: logarithms as a shape</h2>
+  <p>
+    A <strong>binary search tree</strong> keeps an ordering invariant — left descendants smaller, right
+    larger — so each comparison discards half the remaining tree: search, insert and delete are O(h), where
+    h is height. The catch is that h is chosen by insertion order: feed in 1, 2, 3, ..., n and the tree
+    becomes a staircase — a linked list with pretensions, O(n) everything. <strong>Self-balancing trees</strong>
+    (AVL, red-black) restore logarithmic height with rotations on the way down; red-black trees power most
+    standard-library maps, guaranteeing O(log n) worst case <em>and</em> sorted iteration — the two things
+    hash tables cannot give. <strong>B-trees</strong> generalise the idea for disks: each node holds dozens
+    to hundreds of keys sized to one disk block, so a search reads 3–4 blocks even for billions of items
+    (a B-tree of order 500 reaches a billion keys in depth 4) — which is why databases and file systems
+    store their indexes this way. The log is the message: depth grows by 1 each time capacity squares.
+  </p>
+  <p><em>Common misconception:</em> trees are always O(log n). Only <em>balanced</em> trees are; the
+  unbalanced BST is O(n) in the worst case, and a heap — the other famous tree — guarantees its O(log n)
+  only for insert/extract-min, while lookup of an arbitrary element is O(n). Match the operation list to
+  the structure, not the shape to the slogan.</p>
+
+  <h2>Stacks, queues, and the call stack</h2>
+  <p>
+    The <strong>stack</strong> (LIFO) is the structure behind program execution itself: every function call
+    pushes a frame (arguments, locals, return address); every return pops one — which is why infinite
+    recursion is a <em>stack overflow</em>, an actual exhausted stack, and why undo history, backtracking
+    search and depth-first traversal all fall out of push/pop for free. The <strong>queue</strong> (FIFO)
+    is the fairness structure: operating-system job scheduling, message queues between services, printer
+    spools — and breadth-first search, which explores a graph in distance layers precisely because a queue
+    processes earlier arrivals first. Both are O(1) for their two operations; the design skill is noticing
+    which discipline your problem secretly wants (an undo feature is a stack; an inbox is a queue; a
+    "most recent, except pinned" feed is neither — now you are doing data-structure design).
+  </p>
+
+  <h2>File handling: the persistent tier</h2>
+  <p>
+    The syllabus's file-handling topic is the same subject at the boundary of the machine: files are the
+    <strong>persistent data structures</strong> — they survive power loss, which RAM does not. The design
+    choices mirror memory: <strong>sequential files</strong> (records in order; append cheap, lookup means
+    reading past everything earlier — the tape model) versus <strong>random-access files</strong> (seek by
+    record number — the disk analogue of array indexing); the classic bridge between them is an
+    <strong>index file</strong>: a sorted table of key → file position, searched with binary search (again
+    the logarithm), then one direct seek — which is, structurally, a B-tree waiting to happen. Serialization
+    formats (JSON, CSV, binary) are the schema layer: text is debuggable and portable, binary is compact and
+    fast, and the choice is the same trade-off in new clothes. The cognitive habit to keep: when data must
+    outlive the program, design the access pattern first and only then pick the file layout.
+  </p>
+
+  <h2>Linked lists and heaps: the two structures the table hides</h2>
+  <p>
+    <strong>Linked lists</strong> are the array's mirror image: nodes holding a value and a pointer, so
+    the list can live anywhere in memory. The wins: insertion and removal at a known node are pure
+    pointer surgery — O(1) with no shifting, no reallocation (an array must slide everything); size is
+    unbounded by contiguous space. The costs: no random access (reaching item i is i pointer hops, O(i));
+    every node costs an allocation and a pointer's memory; and the killer in practice —
+    <strong>pointer-chasing defeats the CPU cache</strong>, so traversal of 1 million list nodes is
+    routinely 10–50× slower than walking an array of the same 1 million values, despite identical big-O.
+    Doubly linked lists add a back pointer (O(1) removal given the node — the LRU cache's requirement)
+    at the price of two pointers per node. The professional heuristic: prefer arrays for storage,
+    lists for splicing — and reach for a list mainly as a building block inside other structures.
+  </p>
+  <p>
+    <strong>Heaps</strong> are the tree that lives in an array: the binary heap stores a complete tree
+    in a flat array where the children of index i sit at 2i+1 and 2i+2 (equivalently, the parent of i
+    is (i−1)/2) — no pointers at all. The invariant is the heap property (each parent ≤ its children
+    for a min-heap), which is deliberately weaker than BST ordering: it promises only that the minimum
+    is at the root. Insert appends the value and <strong>sifts up</strong> (swap with the parent while
+    smaller): pushing 5, 3, 8, 1 into a min-heap gives [5], then [3,5], then [3,5,8], then sift 1 up
+    twice to [1,3,8,5] — log n swaps. Extract-min removes the root, moves the last element to the top
+    and <strong>sifts down</strong> — again log n. This is the priority queue of Dijkstra, event
+    schedulers and OS run queues; and the same structure, heapified in place, is heapsort — the rare
+    sort with O(n log n) worst case and O(1) extra memory (at the cost of poor cache locality, the
+    array/tree hybrid's one weakness).
+  </p>
+
+  <h2>Graphs as the general case</h2>
+  <p>
+    The containers so far handle order (arrays), lookup (hashes), hierarchy (trees) and discipline
+    (stacks, queues). The <strong>graph</strong> drops every restriction: nodes plus arbitrary
+    connections — the general structure, of which lists and trees are special cases (a list is a graph
+    where every node has one successor; a tree, where every node has one parent). That generality is why
+    the hard modelling questions in industry are graph questions: social networks, road networks,
+    dependency graphs (build systems, package managers), state machines, the web itself. Representation
+    (adjacency list for sparse real-world graphs, matrix for dense small ones) and the two traversals
+    (BFS with a queue for shortest hops, DFS with a stack for structure and cycles) are the gateway
+    machinery — developed fully in the graphs-and-DP lesson on this ladder. The design takeaway for this
+    lesson: when you cannot fit your problem into a tree or table, stop forcing it; name the entities
+    and relationships, and the graph toolkit takes over.
+  </p>
+
+  <h2>Choosing under constraint: the worked selection</h2>
+  <p>
+    Practise the selection discipline on a realistic brief. An app stores a contact list; users scroll it
+    in alphabetical order, search it by name, and edit entries constantly. Enumerate the operations and
+    frequencies first: display sorted (constant), search by prefix (frequent), insert/update/delete
+    (occasional). Now the candidates. A hash table: search O(1), but no ordering — sorted display
+    requires a full sort per render, O(n log n) every time. A sorted array: display free, search by
+    binary search O(log n), but every insert shifts elements. A balanced tree keyed by name: ordered
+    iteration for free, O(log n) search, O(log n) edits — the structure the access pattern wants. The
+    follow-through matters as much as the answer: real contact apps sit a tree (or sorted index) beside
+    a hash index over the same records, because display and lookup optimise differently — two indexes,
+    one store. That is the expert habit in one example: <strong>state the operations with frequencies,
+    cost each candidate per operation, and pay only for the operations that actually happen</strong>.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Composition is the expert skill.</strong> Real structures are composites: an LRU cache is a
+    hash table whose values are nodes of a doubly linked list — O(1) lookup <em>and</em> O(1) eviction, the
+    pair no single classic structure provides; a priority queue is a heap wrapped in an array; a full-text
+    search engine is an inverted index (hash from word to posting lists) compressed with trees. When no
+    named structure fits, you assemble one from parts whose costs you know. <strong>Probability is
+    everywhere</strong>: bloom filters (no false negatives, tunable false-positive rate, 10 bits per element
+    for ~1% error) let databases skip disk reads that would certainly miss; skip lists randomise balancing;
+    count-min sketches count billions of events in megabytes — the modern extension of hashing into
+    "probably correct, certainly fast." <strong>Cache reality</strong>: big-O hides constants that hardware
+    does not — a contiguous array walk outruns a pointer-chasing tree by 10–100× at equal complexity
+    because of CPU cache lines, which is why high-performance code sometimes prefers "worse" structures in
+    better memory layouts. Open problems: can worst-case O(1) hash tables with practical constants be built
+    (cuckoo hashing gets close); how should structures behave on non-volatile memory, where the disk/RAM
+    boundary the B-tree assumes is dissolving; and what data structures suit append-only, immutable logs —
+    the architecture behind modern databases? You now have the vocabulary to read those papers.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cormen et al., <em>Introduction to Algorithms</em>; Sedgewick &amp; Wayne, <em>Algorithms</em>, 4th ed.; Knuth, <em>The Art of Computer Programming</em>, vol. 3.</p>
+
+  <Widget no="2" caption="check yourself: load factors, degenerate trees, and composing for O(1)" widget="quiz" config={dsQuiz} />
 </TopicPage>

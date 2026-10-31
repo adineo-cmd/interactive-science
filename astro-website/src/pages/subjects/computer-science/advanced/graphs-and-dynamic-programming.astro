@@ -11,25 +11,215 @@ const graphCfg = {
     { math: 'Dynamic programming: remember your work', note: 'Many hard problems decompose into overlapping subproblems. Solve each once, store it, reuse: Fibonacci from 2ⁿ to n steps, spell-checkers, DNA alignment, and the knapsack problem.' },
   ],
 };
+
+const graphQuiz = {
+  questions: [
+    {
+      q: "In Dijkstra's algorithm, why must every edge weight be non-negative?",
+      choices: [
+        "Negative weights crash the priority queue",
+        "The greedy proof breaks — with negative edges, a longer path can later become cheaper after passing through them",
+        "It only affects performance, not correctness",
+        "Negative weights are impossible to store",
+      ],
+      answer: 1,
+      why: "Dijkstra finalises each node as 'settled' once popped; a negative edge could still shorten that settled distance afterwards. The Bellman–Ford algorithm handles negative edges by relaxing all edges repeatedly (and detects negative cycles).",
+    },
+    {
+      q: "Naive recursive Fibonacci(40) makes about 331 million calls. Roughly how many does memoised DP make?",
+      choices: ["About 331 million — DP only saves memory", "About 79 — each subproblem computed once", "About 40,000", "It cannot be computed recursively"],
+      answer: 1,
+      why: "Memoisation computes each fib(k) once: 2n − 1 calls ≈ 79 for n = 40. The naive tree recomputes fib(2) on the order of fib(38) ≈ 63 million times — the exponential blow-up DP removes entirely.",
+    },
+    {
+      q: "Which representation should you choose for a social network with 1 billion nodes and average degree 200?",
+      choices: [
+        "Adjacency matrix — a billion-by-billion grid is standard",
+        "Adjacency list — space O(V + E); the matrix would need 10¹⁸ entries, almost all zero",
+        "A sorted array of all edges",
+        "Representation doesn't matter",
+      ],
+      answer: 1,
+      why: "Real graphs are sparse: the matrix costs O(V²) memory regardless of edges (10¹⁸ cells here — impossible), while the list costs O(V + E). The matrix only wins for small or genuinely dense graphs and O(1) edge lookups.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/graphs-and-dynamic-programming">
   <h2>The idea</h2>
   <p>
-    Two tools unlock most of hard computer science. <strong>Graphs</strong> model anything made
-    of connected things; a handful of traversal algorithms extract every classic answer (shortest
-    path, cycles, ordering). <strong>Dynamic programming (DP)</strong> tames exponential blow-ups
-    by remembering subproblem answers. Together they are the difference between brute force and
-    elegance.
+    Two tools unlock most of algorithmic computer science. <strong>Graphs</strong> model anything made of
+    connected things — roads, friendships, dependencies, states — and a handful of traversal algorithms
+    extract every classic answer from them. <strong>Dynamic programming (DP)</strong> tames exponential
+    blow-ups by remembering subproblem answers. Both are examples of the algorithm-design unit's central
+    discipline: name the problem's structure precisely, and the method of solution — and the trace table
+    that proves it correct — follows.
   </p>
 
   <Widget no="1" caption="the graph–DP toolkit, in five sentences" widget="equationStep" config={graphCfg} />
 
-  <h2>Why DP feels like magic</h2>
-  <ul>
-    <li><strong>The two ingredients:</strong> optimal substructure (the best answer contains best answers to smaller pieces) and overlapping subproblems (the pieces recur). Have both, and caching turns 2ⁿ into n².</li>
-    <li><strong>Fibonacci is the toy:</strong> naive recursion recomputes fib(2) millions of times; memoisation collapses it to a straight line. The same move upgrades sequence alignment in biology and spell-checking in your keyboard.</li>
-    <li><strong>Shortest paths at scale:</strong> Dijkstra with a priority queue is O((V+E) log V) — how Google Maps routes you around traffic in real time across millions of edges.</li>
-    <li><strong>Know the boundary:</strong> some problems (travelling salesman, most scheduling) have no known polynomial algorithm — NP-hard. DP gives exact answers up to a size, then heuristics take over. Knowing when to switch is professional judgement.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Dijkstra (1959); Bellman, Dynamic Programming (1957); Kleinberg & Tardos, Algorithm Design.</p>
+  <h2>Representing graphs — the first design decision</h2>
+  <p>
+    A graph G = (V, E) is nodes and edges (directed or not, weighted or not); everything downstream depends
+    on the representation. The <strong>adjacency matrix</strong> is a V×V grid where entry (i, j) says
+    whether i connects to j: O(1) edge lookups, but O(V²) memory — fine for 500 nodes, impossible for a
+    social network's billion. The <strong>adjacency list</strong> stores, per node, its neighbours:
+    O(V + E) memory, and it is what real code uses, because real graphs are <strong>sparse</strong> (E
+    closer to V than to V²). The choice is not cosmetic: iterating a node's neighbours — the operation
+    every traversal performs millions of times — is O(degree) on a list and O(V) on a matrix row.
+  </p>
+
+  <h2>BFS and DFS: the two traversals</h2>
+  <p>
+    <strong>Breadth-first search</strong> explores in rings using a <strong>queue</strong>: visit the
+    start, then all its neighbours, then neighbours-of-neighbours. Because it exhausts distance d before
+    d+1, the first time BFS reaches a node is via a <strong>shortest path</strong> (in unweighted graphs —
+    or weighted with equal weights). That single property powers six-degrees-of-separation queries, chess
+    move calculation, web crawling and puzzle solvers. <strong>Depth-first search</strong> dives along one
+    path using a <strong>stack</strong> (explicitly, or the call stack via recursion), backtracking at
+    dead ends. It does not find shortest paths, but it finds structure: <strong>cycle detection</strong>
+    (a back edge to a node still on the stack), <strong>topological ordering</strong> (finish-time order
+    reverses into a valid task sequence — the algorithm behind build systems and course prerequisites),
+    and connected components. The two traversals are the same loop with a different container — queue
+    versus stack — a fact worth savouring: one data-structure choice produces two different worldviews.
+  </p>
+
+  <h2>Dijkstra: shortest paths with a trace</h2>
+  <p>
+    When edges carry costs, BFS's ring guarantee fails (a cheap long route can beat an expensive short
+    one), and <strong>Dijkstra's algorithm</strong> (1959) takes over: maintain a best-known distance to
+    every node, repeatedly <strong>pop the unsettled node with the smallest distance</strong> from a
+    priority queue, settle it, and <strong>relax</strong> its edges (if going through it shortens a
+    neighbour, update the neighbour). With non-negative weights the greedy step is provably safe. Trace it
+    — this is the unit's trace-table skill applied to real machinery. Graph: A→B = 4, A→C = 2, C→B = 1,
+    B→D = 5, C→D = 8, D→E = 3.
+  </p>
+  <p>
+    Start: dist(A)=0, all else ∞. Pop A (0): relax B=4, C=2. Pop C (2): relax B to
+    <strong>3</strong> (2+1 beats 4 — the "longer but cheaper" route wins), D=10. Pop B (3): relax D to
+    <strong>8</strong>. Pop D (8): relax E=11. Pop E: done. Answer: A to E costs 11 via C–B–D. Two
+    professional notes: the decrease-key moment (B's distance improving after C) is where the priority
+    queue earns its keep; and correctness <em>requires</em> non-negative weights — with a negative edge, a
+    settled node could later be cheapened (Bellman–Ford handles that case by relaxing all edges V−1 times,
+    and detects negative cycles, which is how arbitrage detectors work on currency graphs). Complexity
+    with a binary heap: O((V + E) log V) — how a maps app routes you through millions of road segments
+    in milliseconds, on graphs whose edge weights (traffic) change continuously.
+  </p>
+
+  <h2>Dynamic programming: the two ingredients and a full worked example</h2>
+  <p>
+    DP applies when a problem has <strong>optimal substructure</strong> (the best answer is composed of
+    best answers to subproblems) and <strong>overlapping subproblems</strong> (the same subproblems recur).
+    Naive recursion then recomputes identical work exponentially; caching it once collapses the tree to a
+    table. The toy that shows the shape: naive <code>fib(40)</code> makes about 331 million calls, because
+    fib(2) is recomputed tens of millions of times; <strong>memoised</strong> (store computed values) it
+    makes 79. The same move underlies spell-checking (edit distance between words), DNA sequence
+    alignment, and speech recognition.
+  </p>
+  <p>
+    The full worked example is the <strong>0/1 knapsack</strong>: capacity 5; items A (weight 1, value 1),
+    B (3, 4), C (4, 5), D (2, 3). Brute force checks 2⁴ = 16 subsets — and 2²⁰ ≈ 1,048,576 for twenty
+    items. DP builds a table: rows = items considered so far, columns = capacity 0–5, each cell = best
+    value achievable. After A: (0,1,1,1,1,1). Adding B (w3,v4): capacity 3 improves to 4, capacities 4–5
+    to 4 → (0,1,1,4,4,4). Adding C (w4,v5): capacity 4 → 5, capacity 5 → max(4, best[1] + 5 = 6) = 6 →
+    (0,1,1,4,5,6). Adding D (w2,v3): capacity 2 → 3; capacity 5 → max(6, best[3] + 3 = 7) = 7. Answer:
+    <strong>7, achieved by B + D</strong> (weights 3+2 = 5). The table cost 4 × 6 = 24 cells instead of 16
+    subsets here — and 20 × capacity instead of a million for the real case: <strong>exponential becomes
+    polynomial</strong>. Whether you memoise top-down or fill the table bottom-up is style; the
+    discipline — define the subproblem exactly, write the recurrence, identify the fill order — is the
+    method, and it is the same discipline as the unit's trace tables and test-data design.
+  </p>
+  <p><em>Common misconception:</em> DP means "recursion with a dictionary" and applies wherever code is
+  slow. It applies exactly when both ingredients hold; greedy algorithms (like Dijkstra, or Huffman
+  coding) solve the subfamily where a local choice is always safe — faster, but applicable to fewer
+  problems. Knowing which regime you are in is the design skill.</p>
+
+  <h2>Minimum spanning trees: the greedy family, worked</h2>
+  <p>
+    Dijkstra's cousin problem: connect all nodes at minimum total edge weight (fibre to every town,
+    pipes to every house). <strong>Kruskal's algorithm</strong> sorts edges by weight and adds each that
+    does not complete a cycle (union-find tracks components in near-constant amortised time);
+    <strong>Prim's</strong> grows one tree from a start node, always adding the cheapest edge out of it —
+    Dijkstra with distances measured in edge cost rather than path length. Worked miniature: nodes A-E,
+    edges AB=1, BC=3, AC=2, CD=5, DE=2, BD=6. Kruskal takes AB (1), AC (2), DE (2), then BC (3) would
+    cycle A-B-C, skip; CD (5) joins C to D: tree complete at weight 1+2+2+5 = 10, four edges for five
+    nodes — the MST's defining shape (n−1 edges). The lesson within the lesson: <strong>both greedy
+    algorithms are provably optimal</strong> (the cut property: the cheapest edge crossing any partition
+    belongs to some MST), which is exactly why they are not "DP problems" — local safety holds, so no
+    table is needed. Recognising when greedy suffices, when you need DP, and when neither works is the
+    algorithm-design unit's actual deliverable.
+  </p>
+
+  <h2>Dynamic programming, second verse: longest common subsequence</h2>
+  <p>
+    One more recurrence, because its family is everywhere (git diff, DNA alignment, spell-check). The
+    <strong>longest common subsequence</strong> of two strings keeps the order but not contiguity:
+    LCS("ABCDE", "ACE") = "ACE", length 3. The subproblem: LCS(i, j) over prefixes. The recurrence: if
+    the last characters match, 1 + LCS(i−1, j−1); otherwise max(LCS(i−1, j), LCS(i, j−1)). The table
+    (rows ABCDE, columns ACE) fills 6 × 4 = 24 cells where brute force would test 2⁵ = 32 subsequences
+    against A's — and for two 5,000-letter genomes, 25 million table cells against an astronomically
+    large subset space. Trace one corner: LCS("AB", "A") — B ≠ A, so max(LCS("A","A"), LCS("AB","")) =
+    max(1, 0) = 1. Fill order (row by row) guarantees every dependency is ready — the discipline that
+    makes DP mechanical. The same recurrence, run with edit costs, becomes edit distance (your
+    keyboard's spelling suggestions); with scoring matrices, the Smith–Waterman algorithm biologists
+    run daily; with probabilities, speech recognition's Viterbi pass. One recurrence, three industries.
+  </p>
+
+  <h2>From traversal to solution: the modelling skill</h2>
+  <p>
+    The traversals are mechanical; the expert move is <strong>seeing the graph</strong>. Worked mini-cases
+    in the unit's own style. A course catalogue: courses are nodes, prerequisites are directed edges —
+    "can I finish this degree?" is a reachability question, "give me a valid order" is topological sort,
+    and a cycle means an impossible requirement (the registrar's bug, found by DFS). A knight on a
+    chessboard: squares are nodes, legal moves are edges; "fewest moves to reach a square" is BFS on 64
+    nodes — which is why it is a beginner exercise, and why the same construction scaled to every
+    position-and-move pair becomes game-tree search. A word ladder (cold → cord → card → ward → warm):
+    words as nodes, one-letter-changes as edges — BFS finds the shortest ladder over a 170,000-node
+    graph built in seconds from a dictionary. Each case follows the same recipe: name the nodes, define
+    the edges, state what "shortest" means, pick BFS/DFS/Dijkstra by weight structure. The syllabus's
+    "designing and creating a solution" topic is this recipe; the algorithms are its standard methods of
+    solution; and the trace tables of the unit are how you verify each by hand before the code exists.
+  </p>
+
+  <h2>DP variants: memoisation versus tabulation, decided</h2>
+  <p>
+    The two styles compute the same table and differ in where the recursion lives.
+    <strong>Memoisation</strong> (top-down) keeps the recursive structure — write the natural recurrence,
+    add a cache, and only reachable subproblems are computed (an advantage when the full table is not
+    needed: for the knapsack with capacity 10,000 and 50 items, top-down may touch far fewer than the
+    half-million cells). <strong>Tabulation</strong> (bottom-up) fills the table in dependency order —
+    no recursion overhead, friendlier to memory limits and to the compiler's optimiser, and it makes the
+    space-optimisation trick visible: the knapsack row only needs the <em>previous</em> row, so the
+    table collapses from O(n × capacity) to O(capacity) memory with a single careful iteration
+    direction (backwards, to avoid reusing an item twice). Choose top-down when the recurrence is
+    intricate or the state space sparse; bottom-up when it is dense and performance-critical. The
+    invariant that makes either trustworthy: each cell depends only on cells already final — the fill
+    order <em>is</em> the correctness argument, which is why the trace-table habit from the unit's test
+    data topic is, in disguise, the DP method itself.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The boundary of the tractable.</strong> Shortest path, MST, max flow, matching — polynomial.
+    Travelling salesman, most scheduling, general SAT — <strong>NP-hard</strong>: no polynomial algorithm
+    is known, and a polynomial solution to any one would solve them all (P versus NP, the field's grand
+    open problem — the computability lesson's subject). The professional response is a spectrum: exact DP
+    works up to a size (knapsack's pseudo-polynomial table), approximation algorithms give provable
+    near-answers, and heuristics (simulated annealing, genetic algorithms) give good-enough answers with
+    no guarantees — knowing when to switch from exact to heuristic is precisely the judgement this unit
+    exists to build. <strong>Graph algorithms at scale</strong> fragment the classical theory: billion-edge
+    graphs do not fit one machine, so distributed traversals (Pregel's "think like a vertex"), streaming
+    algorithms that see each edge once, and semi-external memory layouts rebuild BFS and Dijkstra under
+    new cost models. <strong>DP in modern guise</strong> underlies much of machine learning: the Viterbi
+    algorithm is DP over hidden states; reinforcement learning's value iteration is DP over states; even
+    transformer attention is a table of subproblem scores. The recurrence you wrote for knapsack is, in a
+    precise sense, the ancestor of the techniques deciding what your feed shows you. Open questions: are
+    there genuinely harder-than-NP-complete structures (the polynomial hierarchy says yes, formally); can
+    shortest paths be answered faster than sorting bounds allow (the field keeps shaving log factors);
+    and what new algorithmic primitives, if any, will quantum computers add to this toolkit?
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Dijkstra (1959); Bellman, <em>Dynamic Programming</em> (1957); Kleinberg &amp; Tardos, <em>Algorithm Design</em>; Cormen et al., <em>Introduction to Algorithms</em>.</p>
+
+  <Widget no="2" caption="check yourself: negative edges, memoisation counts, sparse graphs" widget="quiz" config={graphQuiz} />
 </TopicPage>

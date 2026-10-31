@@ -10,31 +10,178 @@ const statCfg = {
     { math: '4 · Effect size before significance', note: 'p < 0.05 with a tiny effect on a huge sample is usually trivial. Report the size and interval — statistically significant is not the same as matters.' },
   ],
 };
+
+const statQuizCfg = {
+  questions: [
+    { q: 'A conversion rate of 3.2% measured on 400 users has a 95% interval of roughly…', choices: ['3.0% to 3.4%', '1.5% to 4.9%', '2.2% to 4.2%', '0% to 100%'], answer: 1, why: 'SE = √(0.032 × 0.968 / 400) ≈ 0.0088, so the interval is 3.2% ± 1.96 × 0.88% ≈ (1.5%, 4.9%). Small samples make intervals embarrassingly wide — that is the point.' },
+    { q: 'The mean of a dataset is the value that minimises…', choices: ['the sum of absolute deviations', 'the sum of squared deviations', 'the range', 'the number of data points above it'], answer: 1, why: 'Squaring gives the mean its special status: it is the least-squares centre, which links it to regression, to the standard deviation, and to why outliers drag it.' },
+    { q: 'A p-value of 0.03 means…', choices: ['there is a 3% chance the null hypothesis is true', 'the effect is 3% large', 'if the null hypothesis were true, data this extreme would appear about 3% of the time', 'the result is 97% certain to replicate'], answer: 2, why: 'p-values are conditional on the null being true — they measure how surprising the data would be, not the probability of any hypothesis. Confusing the two is the most common statistical error in industry.' },
+    { q: 'The bootstrap estimates uncertainty by…', choices: ['collecting more samples from the population', 'resampling the observed data with replacement and recomputing the statistic', 'assuming a normal distribution always', 'removing outliers'], answer: 1, why: 'The sample stands in for the population; thousands of resamples trace out the sampling distribution of any statistic — median, percentile, whatever — with no formula required.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/advanced/statistics-for-data-science">
   <h2>The idea</h2>
   <p>
-    Data science runs on statistics whether or not it admits it. Machine learning is regression
-    and classification at scale; A/B testing is hypothesis testing with a dashboard; anomaly
-    detection is distribution thinking. This lesson maps the statistics you already have (the
-    statistics ladder) onto the questions data science asks daily.
+    Data science runs on statistics whether or not it admits it. A machine-learning model is
+    regression and classification at scale; an A/B test is hypothesis testing with a dashboard
+    attached; anomaly detection is distribution thinking; every "3.2% conversion" on a slide is
+    a sample statistic wearing a suit of confidence it has not earned. You already own the
+    machinery from the statistics ladder — sampling distributions, the central limit theorem,
+    Bayes' rule. This chapter organises it around the four questions a working data scientist
+    actually asks, in the order they arrive: <strong>what is typical</strong> (and why the mean
+    earns its job), <strong>how uncertain is my estimate</strong>, <strong>is this difference
+    real or luck</strong>, and <strong>which of two groups is better</strong>.
   </p>
 
   <Widget no="1" caption="the four statistical habits of effective data scientists" widget="equationStep" config={statCfg} />
 
-  <h2>The mappings that matter</h2>
-  <ul>
-    <li><strong>Sampling distributions → dashboards:</strong> any metric computed on users is a sample statistic. A "3.2% conversion" on 400 users has a ±1.7-point interval — dashboards should show it (the sampling lesson's formula).</li>
-    <li><strong>Regression → attribution questions:</strong> "which channel drives signups?" is a regression with confounders — and the causal-inference lesson is the honest manual when randomisation isn't available.</li>
-    <li><strong>Distributions → anomaly detection:</strong> most "AI anomaly detection" starts as "how many standard deviations from normal?" — knowing your distribution's shape comes first.</li>
-    <li><strong>Bayesian updating → metrics in flux:</strong> early A/B results are priors being updated; the Bayesian lesson explains why small early "wins" reverse.</li>
-  </ul>
-
-  <h2>The communication standard</h2>
+  <h2>Why the mean matters — and when it lies</h2>
   <p>
-    Numbers leave your notebook and enter decisions. The professional format: point estimate,
-    interval, sample size, and what would change the conclusion. "Signups up 12% (95% CI
-    4–19%, n = 12,400)" is a sentence a decision-maker can act on — "signups up!" is not.
+    The mean is not arbitrary; it is the <strong>balance point</strong> of the data, and more
+    precisely it is the one number that minimises the sum of <em>squared</em> deviations. Take
+    session counts 4, 6 and 8: the mean is 6, the deviations are −2, 0 and +2, and no other
+    centre produces a smaller total of squared errors (try 5: 1 + 1 + 9 = 11, against 4 + 0 +
+    4 = 8 at the mean). That least-squares property is not a curiosity — it is the hinge
+    connecting the mean to the <strong>standard deviation</strong>, which is itself the
+    root-mean-square of the deviations (here √(8/3) ≈ 1.63), to least-squares regression, and
+    to the entire linear-algebra machinery of machine learning. The median, by contrast,
+    minimises the sum of <em>absolute</em> deviations — a different loss function, a different
+    centre. Choose the loss, and the summary statistic chooses itself; that is why income data
+    gets reported with medians (one billionaire moves the mean, not the median) and why
+    "average" without a qualifier is an incomplete sentence.
   </p>
-  <p class="sources"><strong>Sources:</strong> Wasserman, All of Statistics; Efron & Hastie, Computer Age Statistical Inference; the statistics ladder of this atlas.</p>
+  <p>
+    Spread is the other half of the story. The standard deviation is comparable across
+    datasets in a way the raw range never is, because the range grows with sample size while
+    the SD stabilises. A useful worst-case bound: for <em>any</em> distribution, Chebyshev's
+    inequality guarantees that at least 1 − 1/k² of the data lies within k standard deviations
+    of the mean — so at least 89% within 3 SDs, whatever the shape. For bell-shaped data the
+    empirical rule is far tighter: about 68% within 1 SD, 95% within 2, 99.7% within 3. When a
+    metric suddenly lives 4 SDs from its usual value, either something remarkable happened or
+    something broke — both are worth a page of investigation.
+  </p>
+  <p>
+    <em>Common misconception:</em> the mean is "the normal value" of a dataset. It is only a
+    centre of mass, and it can sit where no data point sits. For the waiting times 1, 2, 3,
+    4 and 90 minutes, the mean is 20 minutes — a value between observations 4 and 5 that no
+    customer actually experienced. Report the mean <em>and</em> the median, and the gap
+    between them is itself information about skew.
+  </p>
+
+  <h2>Estimation: point estimates, standard errors and the bootstrap</h2>
+  <p>
+    Every metric on a dashboard is an estimate from a sample, and the first professional
+    reflex is to attach its <strong>standard error</strong>. For a proportion p̂ from n users,
+    SE = √(p̂(1 − p̂)/n). The worked case from the widget: conversion 3.2% on 400 users gives
+    SE = √(0.032 × 0.968 / 400) ≈ 0.0088, so a 95% confidence interval is 3.2% ± 1.96 × 0.88%,
+    roughly (1.5%, 4.9%) — a band nearly three points wide, on a metric quoted to a tenth of a
+    point. The same construction with n = 40,000 narrows the interval to (2.8%, 3.6%). Note
+    the cruel arithmetic: to halve the error you must <em>quadruple</em> the sample, because
+    SE shrinks with √n. That square root is the single most expensive square root in industry.
+  </p>
+  <p>
+    Many statistics have no tidy formula — the median revenue per user, the 90th percentile of
+    latency, "the share of sessions that last over 10 minutes". The <strong>bootstrap</strong>
+    solves all of them at once: resample your own n data points <em>with replacement</em>,
+    compute the statistic, repeat 10,000 times, and read the 2.5th and 97.5th percentiles of
+    the resulting distribution as the interval. The logic is the plug-in principle: the sample
+    is to the population as the bootstrap sample is to the sample. It is not magic — it fails
+    for extreme order statistics and tiny samples — but it turns uncertainty measurement from
+    an exam question into a loop you can write in six lines, which is why it quietly powers
+    much of modern practice.
+  </p>
+  <p>
+    <em>Common misconception:</em> a 95% confidence interval means "there is a 95% probability
+    that the true value is in this interval". The correct reading is about the
+    <em>procedure</em>: if you repeated the sampling and interval-building forever, 95% of the
+    intervals would capture the truth. The true value is fixed; the interval is the thing that
+    wobbles. (Bayesian credible intervals do support the probability reading — but only after
+    you have committed to a prior, which is a modelling decision, not a free lunch.)
+  </p>
+
+  <h2>Testing hypotheses: the null, the statistic, the p-value</h2>
+  <p>
+    Hypothesis testing is a court procedure for data. The <strong>null hypothesis</strong> is
+    the boring defendant — "nothing changed, the difference is luck"; the
+    <strong>test statistic</strong> measures how far the data sit from boring; the
+    <strong>p-value</strong> asks: if the null were true, how often would chance alone produce
+    data at least this extreme? A small p-value is not proof of truth; it is a statement that
+    the boring world struggles to explain what you saw. The cleanest version needs no
+    formulas: <strong>simulation</strong>. Suppose a new checkout page shows 60 conversions in
+    100 visits against a baseline of 50%. Under the null, simulate 100 coin flips thousands
+    of times, count how often 60 or more heads appear. That frequency <em>is</em> the p-value
+    (here roughly 2.8%), and because you built it yourself, the definition — "probability of
+    data this extreme <em>given the null</em>" — stops being a paragraph and becomes a thing
+    you have watched happen.
+  </p>
+  <p>
+    Three usage rules keep testing honest. First, decide the threshold (usually 0.05) and the
+    analysis <em>before</em> looking — testing twenty metrics and reporting the winner is
+    p-hacking, and with 20 independent tests the chance of at least one "significant" result
+    under a true null is 1 − 0.95²⁰ ≈ 64%. Second, a p-value says nothing about importance:
+    with n = 2 million, a 0.01-point lift can be significant and worthless. Third, absence of
+    significance is not evidence of absence — a wide interval containing zero may merely mean
+    the experiment was too small to see the effect you care about.
+  </p>
+
+  <h2>Comparing two samples: A/B logic and the permutation test</h2>
+  <p>
+    "Which group is better?" is the two-sample generalisation of testing. The classical route
+    compares the difference in means against its standard error; the modern, more general
+    route is the <strong>permutation test</strong>: pool both groups' data, then repeatedly
+    shuffle the group labels at random and recompute the difference in means. Under the null
+    — that group membership is irrelevant — the shuffles generate the full distribution of
+    differences chance could produce, and your observed difference is scored against it. No
+    normality assumption, no formula for the statistic, works for means, medians, conversion
+    rates, anything computable. Pair it with a <strong>confidence interval for the
+    difference</strong> (bootstrap the two groups separately), and you have the complete
+    professional answer: "variant B wins by 1.1 points (95% CI 0.3 to 1.9, permutation
+    p = 0.008)".
+  </p>
+  <p>
+    <em>Common misconception:</em> a significant two-sample difference means the treatment
+    <em>caused</em> the improvement. Statistics never assigns cause — design does. Only
+    random assignment (as in a true A/B test) breaks the link between group membership and
+    pre-existing differences; compare power users against casual ones and every difference is
+    confounded with who they already were. The lesson's sibling on A/B testing works through
+    the design side in full.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Why the central limit theorem lets all this work.</strong> The CLT says the
+    distribution of a sample mean approaches normal as n grows, whatever the population's
+    shape, with standard error σ/√n. This is why one formula covers conversion rates, session
+    times and revenue. But read the fine print: the theorem needs finite variance (wealth
+    distributions can violate it), enough n (how much depends on skew — for heavily skewed
+    revenue data, n in the thousands), and independence (blocked or networked users violate
+    it). When populations are heavy-tailed, medians and trimmed means beat means, and the
+    bootstrap interval for the mean can be badly biased. Knowing when the CLT's comfort
+    blanket fails is a genuine mark of seniority.
+  </p>
+  <p>
+    <strong>The Bayesian alternative.</strong> Frequentist testing asks "how surprising is
+    this data under the null?"; Bayesian updating asks "how should my beliefs change?",
+    treating the unknown parameter as a distribution to be revised: posterior ∝ likelihood ×
+    prior. For A/B decisions the Bayesian framing gives the quantity business stakeholders
+    actually want — "probability B beats A is 97%" — without the p-value's inverted logic.
+    The costs are real: priors inject judgement, sequential updating changes error
+    guarantees, and communication ("what's a posterior?") is its own project. Neither school
+    is correct; they answer different questions, and strong practitioners keep both in the
+    kit.
+  </p>
+  <p>
+    <strong>Open problems of scale.</strong> Modern data pipelines break classical
+    assumptions in new directions: metrics are computed on overlapping windows (dependence),
+    experiments run on networks where treated users influence controls (interference), and
+    dashboards test hundreds of metrics daily (multiplicity at industrial scale — hence
+    false-discovery-rate control). The replication crisis in science and the "A/B testing
+    industrial complex" in tech are the same phenomenon: inference machinery used as a
+    ratchet rather than as a truth-finder. The statistics is old; the discipline of applying
+    it at scale is the live research frontier.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Wasserman, <em>All of Statistics</em>; Efron &amp; Hastie, <em>Computer Age Statistical Inference</em>; Adhikari, DeNero &amp; Wagner, <em>Computational and Inferential Thinking</em> (Data 8); Efron &amp; Tibshirani, <em>An Introduction to the Bootstrap</em>; the statistics ladder of this atlas.</p>
+  <Widget no="2" caption="check yourself: intervals, means and p-values" widget="quiz" config={statQuizCfg} />
 </TopicPage>

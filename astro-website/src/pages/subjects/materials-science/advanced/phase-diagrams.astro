@@ -10,23 +10,167 @@ const phaseCfg = {
     { math: '4 · Iron–carbon: the most important diagram in history', note: 'Steel is iron + 0.02–2% carbon; the diagram explains all of it: austenite (high-T phase dissolves carbon), ferrite (almost none), cementite (iron carbide — hard, brittle). Heat treatments (the next lesson) are itineraries ON this map.' },
   ],
 };
+
+const phaseQuizCfg = {
+  questions: [
+    { q: 'A 50:50 alloy sits in a two-phase field where the tie-line ends at 20% B (α) and 70% B (β). The fraction of β is…', choices: ['50%', '60%', '40%', '70%'], answer: 1, why: 'Lever rule: f(β) = (C₀ − Cα)/(Cβ − Cα) = (50 − 20)/(70 − 20) = 60%. The phase farther from the overall composition gets the larger fraction — the seesaw arithmetic.' },
+    { q: 'A eutectic composition is prized for casting because it…', choices: ['is the strongest', 'freezes at a single low temperature, filling moulds cleanly', 'never corrodes', 'is the cheapest'], answer: 1, why: 'At the eutectic the liquid transforms to two solids at one fixed temperature — no wide mushy freezing range, sharp mould filling. 63/37 Sn–Pb solder and cast iron both sit near eutectics for exactly this reason.' },
+    { q: 'In the iron–carbon system, cementite (Fe₃C) is…', choices: ['soft and ductile', 'a hard, brittle iron-carbide phase that provides much of steel\'s strength', 'a liquid phase', 'pure iron'], answer: 1, why: 'Cementite is Fe₃C — 6.7% carbon, extremely hard and brittle. Steel\'s properties come from ferrite (soft, tough) plus carefully distributed cementite, and heat treatment controls that distribution.' },
+    { q: 'A LiFePO₄ cathode charges along a very flat voltage plateau (~3.45 V). The phase-diagram reason is…', choices: ['the battery regulates voltage electronically', 'two solid phases coexist during charging, so lithium\'s chemical potential stays constant', 'the voltage is set by the charger', 'flat plateaus only happen in liquids'], answer: 1, why: 'During a two-phase reaction the electrode is a mixture of Li-poor and Li-rich crystals, and coexistence pins the chemical potential — exactly the lever-rule physics, read out as voltage.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/materials-science/advanced/phase-diagrams">
   <h2>The idea</h2>
   <p>
-    Phase diagrams are <strong>thermodynamic maps of alloys</strong> — what exists, in what
-    proportion, at each temperature and composition. Metallurgy became a science when these
-    maps were drawn: blacksmith wisdom became itinerary planning on the iron–carbon diagram.
+    You have met atoms, bonds, crystals and defects; the phase diagram is where those pieces
+    become <em>materials</em>. It answers the question every processing route silently relies
+    on: at this temperature and this composition, what exists — one phase or several, and in
+    what proportions? A phase diagram is a thermodynamic map: axes of temperature and
+    composition, regions labelled with the equilibrium phases, and lines where phases
+    transform. Metallurgy became a science when these maps were drawn, because blacksmith
+    wisdom ("heat it till it's cherry-red, then quench") became itinerary planning on a chart.
+    This unit's two lectures — phases, and the chemistry of batteries — are one subject: a
+    battery electrode is a phase diagram read sideways, with voltage playing the role of
+    temperature.
   </p>
 
   <Widget no="1" caption="the map, the lever, the eutectic, iron–carbon" widget="equationStep" config={phaseCfg} />
 
-  <h2>What the maps unlock</h2>
-  <ul>
-    <li><strong>Steel\'s phase dance:</strong> heat into austenite (carbon dissolved), then cool at chosen speeds — fast cooling traps carbon (martensite: hard, brittle — quenched steel), slow cooling lets it segregate (pearlite: soft, tough). The entire heat-treatment lesson is travel on this one diagram.</li>
-    <li><strong>Why stainless is stainless:</strong> chromium above ~12% forms a self-healing oxide film — a phase-map boundary that also happens to defeat rust; nickel stabilises the tough austenite structure at room temperature (the 18/8 recipe of cutlery).</li>
-    <li><strong>Superalloys: diagrams with design goals:</strong> nickel alloys engineered so the strengthening phase (gamma-prime) dissolves just above engine operating temperature — the diagram IS the jet-engine performance envelope (the single-crystal lesson\'s context).</li>
-    <li><strong>Computational phase diagrams (CALPHAD):</strong> thermodynamic databases now predict multi-component maps (6+ elements) before any experiment — the expert lesson\'s frontier, and how new alloys are screened in weeks instead of years.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Callister; the International Iron & Steel Institute phase-diagram references; CALPHAD methodology (Saunders & Miodownik).</p>
+  <h2>What a phase is, and the phase rule</h2>
+  <p>
+    A <strong>phase</strong> is a region of matter that is uniform in structure and
+    composition: solid, liquid and gas are phases, but so are two different crystals in one
+    solid (ferrite and cementite in steel) — same element mixture, different arrangements.
+    The <strong>Gibbs phase rule</strong> counts freedom: at constant pressure, F = C − P + 1,
+    where C is the number of components and P the number of coexisting phases. For a binary
+    alloy (C = 2) in a single-phase field, F = 2 — temperature and composition can both vary
+    freely. In a two-phase field, F = 1: pick the temperature and the <em>compositions of the
+    two phases are fixed</em>. That is the thermodynamic fact behind the diagram's geometry:
+    the ends of the horizontal tie-line (the phase compositions) are pinned by temperature
+    alone, and only their <em>proportions</em> depend on the overall composition. It is also,
+    anticipating the battery section, why a three-phase invariant point (eutectic: L + α + β,
+    F = 0) occurs at one exact temperature and composition — no freedom left.
+  </p>
+  <p>
+    The two ideal behaviours a binary system can show: <strong>complete solid solubility</strong>
+    (Cu–Ni: the two atoms are so similar that one crystal accommodates any mixture — the
+    diagram is a lens between two melting lines) and <strong>limited solubility</strong> (most
+    pairs: solid solutions exist only up to a solubility limit, beyond which a second phase
+    must appear). Solubility limits are where strengthening comes from: precipitates that form
+    when you cross a solvus line are the basis of age-hardening aluminium alloys (the defects
+    lesson's dislocations meet their obstacles here).
+  </p>
+
+  <h2>The lever rule, with numbers</h2>
+  <p>
+    In a two-phase region the tie-line is a seesaw and the overall composition is the fulcrum.
+    Worked example: an alloy of overall composition 50% B, held in a field where the α phase
+    is 20% B and the β phase is 70% B. Mass balance gives the fraction of β:
+    f(β) = (C₀ − Cα)/(Cβ − Cα) = (50 − 20)/(70 − 20) = 30/50 = 60%; the fraction of α is
+    (70 − 50)/50 = 40%. Check: 0.6 × 70 + 0.4 × 20 = 42 + 8 = 50 — mass conserved. The rule's
+    lever name is literal: the phase whose composition is <em>farther</em> from the overall
+    composition takes the larger fraction. Now the payoff for steel: a 0.76% C alloy cooling
+    through the eutectoid, with ferrite at 0.022% C and cementite at 6.7% C, gives
+    f(cementite) ≈ (0.76 − 0.022)/(6.7 − 0.022) ≈ 0.11 — about 11% cementite. Eleven percent
+    hard carbide in a soft iron matrix: that proportion, and its fineness of dispersion, is
+    most of what the words "steel grade" mean.
+  </p>
+
+  <h2>Eutectics: the compositions civilisations cast</h2>
+  <p>
+    Most liquids freeze over a range of temperatures, growing crystals while the remaining
+    melt enriches — a mushy, pasty interval that is miserable for casting (dendrites block
+    moulds, porosity forms). The <strong>eutectic</strong> composition is the exception: there
+    the liquid transforms to two solids <em>simultaneously at one temperature</em>, the lowest
+    melting point on the diagram. Tin–lead solder's classic 63/37 blend sits at the eutectic
+    (183 °C): it solidifies instantly and sharply, which is why it made reliable joints.
+    Cast iron's 4.3% carbon eutectic (1147 °C) melts far below pure iron's 1538 °C — the
+    reason iron could be melted and cast for two millennia before steel could be forged at
+    scale. The eutectic microstructure is characteristic: alternating fine lamellae of the two
+    phases, growing cooperatively because each phase rejects the other's element, and finer
+    lamellae (faster cooling) mean stronger material — microstructure engineering begins here.
+    <em>Common misconception:</em> "eutectic" alloys are special mixtures with special atoms.
+    Any element pair with limited solid solubility shows one; the eutectic is geometry of the
+    free-energy curves, not chemistry magic.
+  </p>
+
+  <h2>Iron–carbon: the map the Industrial Revolution was drawn on</h2>
+  <p>
+    Three phases carry the story. <strong>Ferrite</strong> (α-iron) is BCC iron holding
+    almost no carbon (0.022% at 727 °C) — soft, ductile, magnetic.
+    <strong>Austenite</strong> (γ-iron) is FCC and dissolves up to ~2.1% carbon — it exists
+    only at high temperature, and its appetite for carbon is the secret of steelmaking:
+    heat steel and the carbon vanishes into solution. <strong>Cementite</strong> (Fe₃C) is a
+    brittle iron-carbide compound at 6.7% C — extremely hard. Carbon steels are the 0.02–2%
+    carbon corridor of this map. Cool slowly and austenite decomposes at the eutectoid point
+    (0.76% C, 727 °C) into <strong>pearlite</strong> — the lamellar ferrite–cementite
+    sandwich named for its sheen — whose coarseness (set by cooling rate) tunes strength.
+    The diagram's deepest lesson is that <em>heat treatment is travel</em>: every steel
+    treatment — annealing, normalising, quenching — is a route drawn on this map, and the next
+    lesson follows those routes, including the one that leaves equilibrium entirely
+    (martensite exists on no equilibrium diagram: it is what happens when you outrun the map).
+  </p>
+
+  <h2>Batteries: phase diagrams read as voltage</h2>
+  <p>
+    A lithium-ion battery stores charge by <strong>intercalation</strong> — lithium ions
+    slipping into crystal lattices — so every electrode is a host crystal plus a mobile
+    component: a small binary system, and its phase behaviour shows up directly in the
+    voltage curve. The cell voltage is the difference in lithium <strong>chemical
+    potential</strong> between the two electrodes. Now apply the phase rule: when an
+    electrode sits in a <strong>two-phase field</strong> — crystals of Li-poor and Li-rich
+    composition coexisting — the phase rule (F = 1 with T fixed) pins each phase's
+    composition and hence pins the chemical potential. A pinned chemical potential is a
+    <strong>flat voltage plateau</strong>. LiFePO₄, the safest commercial cathode, reacts via
+    two-phase coexistence between LiFePO₄ and FePO₄ and therefore charges along a famously
+    flat ~3.45 V plateau — the lever rule drawn in volts. Layered NMC cathodes, by contrast,
+    take lithium as a continuous <strong>solid solution</strong>, so their voltage glides
+    smoothly downward as lithium leaves — no plateau, and a fuel-gauge that reads composition
+    directly from voltage. Graphite anodes show the subtler <strong>staging</strong> behaviour:
+    lithium occupies galleries between graphene sheets in discrete stage compounds (every
+    nth layer filled, down to fully stoichiometric LiC₆ at ~0.1 V vs Li), producing a staircase
+    of small plateaus. The battery engineer's design space — plateau flatness, voltage level,
+    capacity, rate capability — is an electrode phase diagram plus kinetics; degradation
+    (crack formation during two-phase reactions, plating when charging outruns diffusion) is
+    phase-boundary motion gone wrong.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Where diagrams come from.</strong> Classical diagrams were measured by thermal
+    analysis (arrests in cooling curves mark transformations) and microscopy. Modern practice
+    is <strong>CALPHAD</strong> (CALculation of PHAse Diagrams): parametrised free-energy
+    models for each phase, fitted to experiment, extrapolated to multi-component space no
+    human can draw — six-element superalloys and high-entropy alloys are screened
+    computationally in weeks, with experiments confirming rather than exploring. The same
+    thermodynamic machinery, coupled with kinetics models, powers alloy design from jet-engine
+    <strong>superalloys</strong> (whose γ′ strengthening phase is engineered to dissolve just
+    above operating temperature) to <strong>stainless steel</strong> (chromium above ~12%
+    forms the self-healing oxide film; nickel stabilises tough austenite at room temperature —
+    the 18/8 of cutlery shifts the phase field, not just the corrosion).
+  </p>
+  <p>
+    <strong>Equilibrium is the map, not the destination.</strong> Phase diagrams describe
+    equilibrium — where the system would go given infinite time. Engineering frequently
+    profits by <em>refusing</em> to arrive: quenched martensite, metastable precipitates,
+    amorphous glasses and undercooled liquids are all off-map states. The quantitative
+    question — "how fast must I cool to freeze in this metastable state?" — is the bridge
+    between thermodynamics (this lesson) and kinetics (the next lesson on heat treatment),
+    and it is governed by diffusion distances and nucleation barriers. The TTT diagrams of
+    the next lesson are phase diagrams with a third axis smuggled in: time.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Two-phase battery reactions deform their host crystals
+    as phase boundaries sweep through — the coherency strains and crack patterns that limit
+    cycle life are an active computational and experimental frontier (why does LiFePO₄
+    sometimes react via a metastable solid solution at high current, "suppressing" the
+    plateau?). High-entropy alloys with four or more principal elements strain classical
+    intuition, and machine-learned interatomic potentials are now fast enough to compute
+    phase diagrams from first principles — reopening the question of what a phase diagram is
+    for when you can simulate the whole processing route.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Callister &amp; Rethwisch, <em>Materials Science and Engineering: An Introduction</em>; Porter &amp; Easterling, <em>Phase Transformations in Metals and Alloys</em>; ASM Handbook Vol. 3 (alloy phase diagrams); Saunders &amp; Miodownik, <em>CALPHAD</em>; Tarascon &amp; Armand, "Issues and challenges facing rechargeable lithium batteries" (2001).</p>
+  <Widget no="2" caption="check yourself: levers, eutectics and voltage plateaus" widget="quiz" config={phaseQuizCfg} />
 </TopicPage>

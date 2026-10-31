@@ -10,24 +10,184 @@ const fractureCfg = {
     { math: '4 · Fatigue: death by repetition', note: 'Failures below yield strength, cycle after cycle — cracks initiate at stress concentrators, grow a little per cycle, then snap. ~90% of mechanical service failures are fatigue; the S-N curve and damage accumulation (Miner\'s rule) design against it.' },
   ],
 };
+
+const fractureQuizCfg = {
+  questions: [
+    { q: 'Glass is roughly 100× weaker than its theoretical bond strength because…', choices: ['glass molecules are weak', 'stress concentrates at surface flaws — sharp cracks multiply local stress enormously', 'glass is too heavy', 'light weakens it'], answer: 1, why: 'An Inglis/Griffith crack tip concentrates stress as √(a/ρ); a micron-scale flaw with an atomically sharp tip turns a 100 MPa nominal stress into gigapascals locally — enough to break bonds and advance the crack.' },
+    { q: 'Why are metals ductile and ceramics brittle?', choices: ['metallic bonds are stronger', 'dislocations can move in metals, absorbing energy by plastic flow; in ceramics they are locked in place', 'ceramics are always colder', 'metals are always polycrystalline'], answer: 1, why: 'Ductility is mobile dislocations: they let metal yield, blunt crack tips and dissipate energy before fracture. Ceramic bonding gives huge lattice friction — dislocations cannot glide, so a crack tip has no way to relieve stress but to advance.' },
+    { q: 'Steel with K_IC = 50 MPa√m loaded at 300 MPa tolerates a through crack of roughly…', choices: ['5 micrometres', '9 millimetres', '9 centimetres', 'any size — steel never cracks'], answer: 1, why: 'From K = Yσ√(πa): a = (K/Yσ)²/π ≈ (50/300)²/π ≈ 8.8 mm. Design against flaws = compute the critical crack size, then inspect for cracks well below it.' },
+    { q: 'Fatigue failures are dangerous because they occur…', choices: ['at stresses above yield, which engineers ignore', 'below the yield strength, after many normal-looking load cycles, often with no visible warning', 'only in aircraft', 'instantly on first loading'], answer: 1, why: 'Cyclic slip accumulates damage at stress concentrators; a crack grows a little each cycle (Paris law) until it reaches critical size — on a component that has "worked fine for years".' },
+  ],
+};
 ---
 <TopicPage slug="subjects/materials-science/advanced/failure-fracture-and-fatigue">
   <h2>The idea</h2>
   <p>
-    Failure analysis is <strong>materials science\'s forensic department</strong>: why things
-    break, when, and how to design so they don\'t. Two villains — stress-concentrating cracks
-    and cycle-accumulating fatigue — explain most of it; both are detectable, both are
-    designable-against, and both ignored have killed people.
+    Two chapters of materials science meet in this lesson. The first is <strong>defects</strong>:
+    no crystal is perfect, and the imperfections — vacancies, misplaced atoms, dislocation
+    lines — are not blemishes but the working parts of materials. Plasticity <em>is</em>
+    dislocation motion; strength is the art of obstructing it. The second is
+    <strong>failure</strong>: how structures break, and how engineers design so they do not.
+    They are one subject, because failure is defect physics at the component scale: ductility
+    is defects doing their job, brittle fracture is a crack (a defect) outrunning them, and
+    fatigue is defects accumulating in slow motion. A reader who comes out of this lesson can
+    look at any broken part — or any intact one — and see the defect population that will
+    decide its fate.
   </p>
 
   <Widget no="1" caption="failure modes, Griffith, toughness, fatigue" widget="equationStep" config={fractureCfg} />
 
-  <h2>Case files that built the discipline</h2>
-  <ul>
-    <li><strong>Comet disasters (1954):</strong> the first jet airliner broke apart in flight — pressurisation cycles fatigue-cracked the fuselage from window corners. The wrecks were rebuilt in water tanks and cycled to failure: fracture mechanics\'s founding case, and why airliner corners are now generously rounded.</li>
-    <li><strong>Liberty ships (1943):</strong> welded hulls cracked in cold water, sometimes splitting in half — brittle transition temperature plus weld stress concentrations; the birth of "ductile–brittle transition temperature" as a design parameter.</li>
-    <li><strong>Aloha Airlines (1988):</strong> 24 years of pressurisation cycles — multiple-site fatigue cracking joined into one catastrophic unzip; a flight attendant\'s heroic landing made it survivable and made aging-aircraft inspection mandatory (the NDT inspection disciplines: X-ray, ultrasonics, dye-penetrant — the spectroscopy lesson\'s instruments, listening for cracks).</li>
-    <li><strong>De Havilland\'s lesson generalises:</strong> every modern design codes inspectability (can we find the crack?) alongside strength — the safety lesson\'s detectability factor, materialised.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Griffith (1920); ASM Handbook Vol. 11 (Failure Analysis); the NTSB/AAIB Comet and Aloha reports.</p>
+  <h2>Defects in solids: point and line</h2>
+  <p>
+    <strong>Point defects</strong> are zero-dimensional: the <strong>vacancy</strong> (a
+    missing atom — every crystal has them, in thermal equilibrium), the
+    <strong>self-interstitial</strong> (an extra atom jammed between lattice sites — rare,
+    hugely strained), the <strong>substitutional</strong> impurity (a foreign atom on a
+    lattice site — zinc in copper) and the <strong>interstitial</strong> solute (a small
+    atom in a gap — carbon in iron). Vacancies are equilibrium features, not accidents:
+    their concentration is exp(−Qᵥ/kT), so for copper near melting roughly one lattice site
+    in 10⁵ is empty — millions of vacancies per grain, diffusing constantly. All solid-state
+    diffusion (the heat-treatment lesson) is vacancy traffic; all solid-solution
+    strengthening is solute atoms obstructing dislocations.
+  </p>
+  <p>
+    <strong>Line defects</strong> — <strong>dislocations</strong> — are the reason metals
+    bend. An <strong>edge dislocation</strong> is a terminated half-plane of atoms, a
+    "extra row" squeezed into the lattice; a <strong>screw dislocation</strong> is a
+    helical distortion. The disturbance is characterised by the <strong>Burgers vector</strong>,
+    the closure error of a loop drawn around the line. Here is the mechanism: instead of
+    shearing an entire plane of atoms at once (a stress of order the shear modulus, ~30 GPa
+    for iron), the crystal moves an edge dislocation forward one lattice row at a time —
+    like shuffling a carpet across a floor by pushing a ruck along it. The real stress to
+    move a dislocation is typically a thousand times less than the perfect-lattice
+    calculation, which is why metals yield at tens of megapascals instead of gigapascals.
+    The corollary is the whole theory of strength: <strong>anything that obstructs
+    dislocation motion strengthens the metal</strong> — other dislocations (work hardening:
+    cold-rolled steel), solute atoms (solid-solution strengthening), grain boundaries (the
+    Hall–Petch relation σ = σ₀ + k·d^(−½): halve the grain size and strength rises with
+    the inverse square root), precipitates (the heat-treatment lesson's ageing), and
+    interstitial carbon in martensite. Metallurgy's strength menu is a list of dislocation
+    fences.
+  </p>
+
+  <h2>Ductile versus brittle: the warning question</h2>
+  <p>
+    <strong>Ductile failure</strong> announces itself: the part yields, necks, and absorbs
+    energy by plastic flow before separating — dislocations doing their job right up to the
+    end. <strong>Brittle failure</strong> gives no warning: crack propagation at, or below,
+    full design load, at acoustic speeds, with almost no energy absorbed. The difference is
+    structural, not mystical: a ductile metal's plastic zone at a crack tip <em>blunts</em>
+    the tip and consumes energy; a brittle ceramic's immobile dislocations leave the tip
+    sharp, so nothing but bond-breaking resists the crack. The engineering translation is
+    fail-soft versus fail-sudden — which is why pressure vessels, bridges and aircraft are
+    specified ductile, and why the design question is never only "how strong?" but "how
+    much warning?".
+  </p>
+
+  <h2>Griffith: the flaw sets the strength</h2>
+  <p>
+    Why is glass 100 times weaker than its bonds demand? A. A. Griffith's answer (1920)
+    begins with <strong>stress concentration</strong>: at the tip of an elliptical flaw,
+    local stress is amplified to σ_local ≈ 2σ·√(a/ρ), where a is the flaw's half-length and
+    ρ its tip radius. Numbers: a 1-micron scratch with an atomically sharp tip (ρ ≈
+    0.2 nm) under a nominal 100 MPa concentrates to 2 × 100 × √(10⁻⁶/2×10⁻¹⁰) ≈
+    14,000 MPa — well above the ~7 GPa needed to break silicate bonds. Every flaw is a
+    magnifying glass. Griffith's deeper step was an energy balance: a crack grows when the
+    elastic energy released exceeds the surface energy cost of new faces, giving the brittle
+    strength σ_c = √(2Eγ/πa). For glass (E = 70 GPa, γ ≈ 0.3 J/m², a = 1 µm) this predicts
+    σ_c ≈ 116 MPa — versus a theoretical defect-free strength near 7 GPa: the
+    <strong>strength of a brittle solid is set by its largest flaw</strong>, which is also
+    why statistics (not a single number) governs ceramic strength, why glass gets stronger
+    when its surface is fire-polished or chemically etched, and why fibre composites can be
+    absurdly strong — draw the material thin enough and the largest possible flaw shrinks
+    below a micron.
+  </p>
+
+  <h2>Fracture toughness: designing with the flaw you know you have</h2>
+  <p>
+    Griffith assumed atomically sharp cracks and brittle behaviour; modern
+    <strong>fracture mechanics</strong> generalises it to engineering materials. A crack of
+    length a under stress σ experiences the <strong>stress intensity</strong>
+    K = Y·σ·√(πa) (Y a geometry factor near 1). The crack advances when K reaches
+    <strong>K_IC</strong>, the plane-strain fracture toughness — a genuine material property,
+    tabulated like yield strength. The design logic inverts nicely: for steel with
+    K_IC = 50 MPa√m at working stress 300 MPa, the critical crack size is
+    a = (K/Yσ)²/π ≈ 8.8 mm — so inspection must find cracks far below 8.8 mm (a safety
+    factor on <em>length</em>), and the material choice is a race between stress, crack
+    growth and detectability. The K_IC league table (MPa√m): steels roughly 50–200,
+    titanium 40–100, aluminium alloys 20–40, polymers 1–5, glass and ceramics below 2 —
+    the quantitative reason aircraft skins are aluminium (and composites) and windows are
+    not structural. High-strength steels present the classic trap: raising yield strength
+    <em>shrinks</em> the critical crack size faster than it raises it, so "stronger" can
+    mean less flaw-tolerant — the Liberty ships' welded hulls, cracking in cold North
+    Atlantic water at stresses they had carried fine, taught the discipline this lesson
+    permanently (their other teacher was the ductile–brittle transition temperature:
+    BCC steels turn brittle below a transition point; FCC metals like aluminium and copper
+    do not).
+  </p>
+
+  <h2>Fatigue: death by repetition</h2>
+  <p>
+    A component cycled below its yield strength — an aircraft fuselage pressurised and
+    depressurised, a crankshaft turning — can still fail after thousands or millions of
+    cycles. <strong>Fatigue</strong> accounts for the large majority of mechanical service
+    failures. The mechanism is microscopic slip: even nominally elastic loading produces
+    local plasticity at stress concentrators (fillets, rivet holes, inclusions — always
+    defects again), and reversed slip extrudes and intrudes microscopic
+    <strong>persistent slip bands</strong> that become crack starters. The crack then grows
+    a little every cycle — the <strong>Paris law</strong> da/dN = C(ΔK)^m says growth rate
+    scales with the stress-intensity range, with m typically 2–4, so a few mm of growth per
+    million cycles — until the critical size from fracture mechanics is reached and the part
+    snaps, its final fracture surface showing the signature <strong>beach marks</strong>
+    (rings from each duty period) around a sudden fibrous snap zone. Design tools: the
+    <strong>S–N curve</strong> (stress amplitude versus cycles to failure; steels show an
+    endurance limit near half tensile strength, below which life is effectively infinite —
+    aluminium shows none, so aircraft parts are life-limited by mandatory retirement);
+    <strong>Miner's rule</strong> Σ nᵢ/Nᵢ = 1 accumulating damage from mixed load
+    spectra; and above all <strong>damage-tolerant design</strong> — assume the crack is
+    already there, compute its growth per flight, and set inspection intervals so it is
+    reliably found before critical size. The Comet (1954) and Aloha 243 (1988) —
+    pressurisation cycles fatiguing fuselages from window corners and from hidden lap-joint
+    cracking — are the founding and reinforcing case files.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Environment joins the conspiracy.</strong> Stress plus chemistry breaks things
+    that neither alone would: <strong>stress-corrosion cracking</strong> (a static load in a
+    specific medium — brass in ammonia, steel in chlorides), <strong>hydrogen
+    embrittlement</strong> (atomic hydrogen from welding or corrosion entering high-strength
+    steel and destroying its toughness — the reason ultra-high-strength bolts carry special
+    plating rules), and <strong>cavitation-creep</strong> at high temperature (grain-boundary
+    voids growing under sustained load — jet-engine discs are life-limited by creep-fatigue
+    interaction). Time, temperature, chemistry and load form a four-dimensional failure
+    space; every real component lives somewhere in it.
+  </p>
+  <p>
+    <strong>Detection is part of the strength.</strong> Since designs now assume flaws exist,
+    <strong>non-destructive testing</strong> is half the safety system: dye penetrant for
+    surface cracks, ultrasonic pulse-echo for internal ones (sizing cracks to feed Paris-law
+    growth calculations), eddy currents for surface-breaking fatigue in aircraft skin,
+    radiography for welds, and acoustic emission for cracks announcing themselves. The
+    quantitative discipline is "probability of detection" curves — an inspection interval is
+    only valid if the method reliably finds cracks an order below critical size. Fracture
+    mechanics thus quietly converted metallurgy into an information problem: the material's
+    toughness sets the critical flaw, and the maintenance programme's sensors must find
+    flaws smaller than it.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Fatigue remains partly empirical: life prediction from
+    microstructure alone (crystal-plasticity models of persistent slip bands) is improving
+    but not yet predictive enough to replace testing, and <em>very high cycle</em> fatigue
+    (beyond 10⁹ cycles — relevant to wind turbines and bearings) revealed a surprise: S–N
+    curves that looked flat develop a new knee and failures at "infinite" lives. Small-crack
+    behaviour violates classic Paris scaling (cracks shorter than the microstructure grow
+    faster than the law says), which matters because initiation consumes most of a
+    component's life. And for additively manufactured parts, the defect population itself is
+    process-dependent (pores from trapped gas, lack-of-fusion), making the coupling between
+    printing parameters and fatigue life one of the field's most active frontiers.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Griffith, "The Phenomena of Rupture and Flow in Solids" (1920); Anderson, <em>Fracture Mechanics: Fundamentals and Applications</em>; Suresh, <em>Fatigue of Materials</em>; ASM Handbook Vol. 11, <em>Failure Analysis and Prevention</em>; AAIB Comet reports; NTSB Aloha Airlines Flight 243 report.</p>
+  <Widget no="2" caption="check yourself: defects, toughness and fatigue" widget="quiz" config={fractureQuizCfg} />
 </TopicPage>

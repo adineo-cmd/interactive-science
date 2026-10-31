@@ -10,24 +10,167 @@ const semiCfg = {
     { math: '4 · From sand to circuit', note: 'Purify silicon (99.9999999% — "nine nines"), grow single crystals (the defect lesson\'s perfection), slice wafers, pattern with photolithography (light printing the circuit), implant dopants, layer insulators and metal. Billions of transistors per chip: the greatest manufacturing precision in human history (the compilers lesson\'s hardware, made).' },
   ],
 };
+
+const semiQuizCfg = {
+  questions: [
+    { q: 'Silicon\'s band gap is 1.12 eV; thermal energy at room temperature is ~0.026 eV. Intrinsic silicon conducts poorly because…', choices: ['the gap is too small to matter', 'exciting an electron across the gap needs ~43× kT, so only a tiny carrier population exists (nᵢ ≈ 10¹⁰ cm⁻³ vs 5×10²² atoms)', 'silicon atoms hold electrons chemically', 'conductivity needs light'], answer: 1, why: 'Carrier population falls as exp(−Eg/kT) — the same exponential tyranny as diffusion. Pure silicon is almost an insulator; every useful semiconductor is doped.' },
+    { q: 'Doping silicon with phosphorus makes it n-type because…', choices: ['phosphorus is negative by nature', 'the 5th valence electron is weakly bound (45 meV) and donates a free electron — a level just below the conduction band', 'phosphorus removes holes', 'it widens the gap'], answer: 1, why: 'Four of phosphorus\'s electrons complete the bonding; the fifth orbits loosely and ionises at room temperature. The donor level sits ~45 meV below the conduction band — easily thermally populated, so each donor yields roughly one conduction electron.' },
+    { q: 'A silicon crystal doped with 10¹⁶ donors per cm³ (one atom in ~5 million) conducts about…', choices: ['unchanged', 'hundreds of thousands of times better than intrinsic silicon', '10¹⁶ times worse', 'not at all'], answer: 1, why: 'Intrinsic nᵢ ≈ 10¹⁰ cm⁻³; doping sets n = 10¹⁶ — a millionfold carrier increase, turning ~230,000 Ω·cm material into ~0.5 Ω·cm. Trace impurity, astronomical effect: that is why fabs demand nine-nines purity.' },
+    { q: 'A p–n junction conducts when forward-biased because…', choices: ['the metal leads melt', 'forward voltage lowers the barrier built by the depletion region, letting majority carriers flood across', 'holes and electrons swap places', 'the gap closes'], answer: 1, why: 'Diffusion of carriers across the junction exposes fixed dopant ions and builds a ~0.7 V internal field that blocks further flow. Forward bias cuts that barrier down; the current then grows exponentially — about 60 mV per tenfold, the diode equation.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/materials-science/advanced/semiconductors-and-doping">
   <h2>The idea</h2>
   <p>
-    Semiconductors are <strong>materials whose conductivity is a design variable</strong> — the
-    band gap supplies the middle ground, doping supplies the control, and the p–n junction turns
-    controlled conductivity into logic. Every chip is a materials-science artefact that happens
-    to compute.
+    Metals conduct, insulators do not — and between those two poles lies the class of
+    materials the modern world is built from. A <strong>semiconductor</strong> conducts a
+    little at room temperature, much more when warmed, lit or doped; its conductivity is not
+    a fixed property but a <em>design variable</em>, tunable over ten orders of magnitude by
+    parts-per-million chemistry. This lesson covers the two syllabus lectures —
+    <strong>semiconductors</strong> (why crystals have band gaps, and what intrinsic
+    conductivity really is) and <strong>doping</strong> (how a foreign atom per few million
+    becomes an engineered conductor) — and then builds the junction, because that is where
+    control becomes computation.
   </p>
 
   <Widget no="1" caption="band gaps, doping, the junction, the fab chain" widget="equationStep" config={semiCfg} />
 
-  <h2>The engineering frontier</h2>
-  <ul>
-    <li><strong>Moore\'s law was a materials sprint:</strong> each generation required new physics — high-k dielectrics when silicon dioxide thinned to leak, strain engineering to speed carriers, FinFETs then gate-all-around to keep the switch switching. The "law" was materials science delivering on schedule (the solid-state lesson\'s industry).</li>
-    <li><strong>Beyond silicon:</strong> GaN and SiC handle higher voltages and temperatures (EV inverters and chargers — the energy lesson\'s efficiency, material by material); 2-D materials (graphene, MoS₂) wait at the research edge of the roadmap.</li>
-    <li><strong>LEDs and lasers are band-gap instruments:</strong> photon energy equals the gap — engineer the gap (III–V alloys), engineer the colour; blue LEDs (Nobel 2014, after decades of "impossible") completed white light and repointed the world\'s lighting (the solid-state lesson\'s everyday proof).</li>
-    <li><strong>Solar cells are the junction run backwards:</strong> photons promote electrons across the gap, the field separates charges, current flows — the photovoltaic effect is the same p–n device as the diode, harvest mode (the energy lesson\'s cheapest electron, explained by this lesson\'s bands).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> the physics ladder\'s solid-state lesson; Sze, Physics of Semiconductor Devices; Nobel 2014 (Akasaki, Amano, Nakamura).</p>
+  <h2>Band gaps: why crystals choose conductors</h2>
+  <p>
+    In an isolated atom, electrons occupy discrete energy levels. Bring 10²³ atoms into a
+    crystal and each level splays into a <strong>band</strong> — a quasi-continuous range of
+    energies (think of 10²³ closely spaced tuning forks detuning each other). Bands may
+    overlap, or be separated by <strong>band gaps</strong> — energy ranges no electron may
+    hold. Conductivity is bookkeeping on bands: the highest filled band
+    (<strong>valence</strong>) and the next empty one (<strong>conduction</strong>) decide
+    everything. A <strong>metal</strong> has a half-filled band, so electrons near the top
+    can drift freely. An <strong>insulator</strong> (diamond, 5.5 eV gap) has a full valence
+    band and a huge gap — no electron can be promoted, nothing conducts. A
+    <strong>semiconductor</strong> is the middle case: silicon's gap is 1.12 eV (germanium
+    0.66, GaAs 1.42, 4H-SiC 3.26, GaN 3.4), small enough that thermal energy occasionally
+    promotes an electron — leaving a vacancy in the valence band, the
+    <strong>hole</strong>, which conducts exactly like a positive charge (the population
+    moving the opposite way). At 300 K thermal energy is only kT ≈ 0.026 eV, forty times
+    smaller than silicon's gap, so promotion is rare: the intrinsic carrier concentration
+    follows nᵢ = √(N_c·N_v)·exp(−E_g/2kT), giving nᵢ ≈ 10¹⁰ cm⁻³ for silicon — about one
+    mobile electron–hole pair per five <em>trillion</em> atoms. That exponential is the
+    same tyranny seen in diffusion and Arrhenius chemistry, and it is why intrinsic silicon
+    is a terrible conductor (resistivity ~230,000 Ω·cm) and why every real device is doped.
+  </p>
+
+  <h2>Doping: the most profitable impurity on Earth</h2>
+  <p>
+    Substitute phosphorus (5 valence electrons) for a silicon atom (4): four electrons
+    complete the bonding; the fifth orbits the extra nuclear charge like a hydrogen atom —
+    bound by only ~45 meV (a <strong>shallow donor</strong> level just under the conduction
+    band), which room-temperature heat easily pays. Each phosphorus atom donates roughly one
+    conduction electron: <strong>n-type</strong> material, where electrons are majority
+    carriers. Substitute boron (3 electrons): one bond is left unsatisfied — an acceptor
+    level just above the valence band that readily steals an electron from a neighbouring
+    bond, creating a mobile hole: <strong>p-type</strong>, holes majority. The arithmetic of
+    the effect is the lesson's showpiece. Dope silicon to 10¹⁶ donors per cm³ — about one
+    foreign atom in five million — and the electron population rises a <em>millionfold</em>
+    over intrinsic; conductivity (σ = q·n·μ, with electron mobility μ ≈ 1350 cm²/V·s)
+    gives a resistivity near 0.5 Ω·cm against intrinsic silicon's 230,000 Ω·cm:
+    <strong>a factor of ~500,000, from a 0.00002% impurity</strong>. Control is just as
+    precise: carrier population obeys the mass-action law n·p = nᵢ², so doping also fixes
+    the minority-carrier population, and the Fermi level (the electron chemical potential,
+    which sat mid-gap in intrinsic material) shifts toward whichever band the dopant feeds —
+    the energy-space thermometer that every device reads.
+  </p>
+  <p>
+    <em>Common misconception:</em> doping "adds electrons" the way a bucket fills. The
+    crystal stays electrically neutral — every fixed donor ion (+) is balanced by a mobile
+    electron (−); what changes is which charges are <em>mobile</em>. That neutrality is
+    precisely what makes the junction work: the device is built from immobile, charged
+    impurities steering mobile, charged carriers.
+  </p>
+
+  <h2>The junction: a boundary that computes</h2>
+  <p>
+    Join p-type to n-type and mobile carriers diffuse down their gradients — electrons into
+    p, holes into n — until each crossing exposes the <strong>fixed</strong> dopant ions
+    behind them. That exposed charge strip (the <strong>depletion region</strong>) creates
+    an electric field opposing further diffusion; equilibrium arrives at a built-in
+    potential of about 0.7 V for silicon, a barrier exactly as tall as the Fermi-level
+    difference the doping set. Now the diode exists: <strong>forward bias</strong>
+    (positive on p) lowers the barrier and majority carriers flood across — current grows
+    as I = I₀·(exp(qV/kT) − 1), which at room temperature means a tenfold current increase
+    per ~60 mV: the steepest useful switch curve in technology, and the reason a diode is a
+    rectifier, a log-amplifier, a voltage reference and (with a direct band gap) a light
+    source — an electron dropping across the gap emits a photon of energy E_g, so gap
+    engineering is colour engineering. <strong>Reverse bias</strong> raises the barrier;
+    only minority carriers cross, a trickle of nano-to-microamps — until breakdown, when
+    the field accelerates carriers enough to multiply them by impact (avalanche) or tunnelling
+    (Zener) — deliberately exploited in Zener diodes as voltage references.
+  </p>
+  <p>
+    The transistor is the junction given a third terminal. In a <strong>MOSFET</strong>, a
+    metal gate over a thin insulator sits above the channel between source and drain: gate
+    voltage electrostatically inverts the channel's surface — pulling majority carriers of
+    the opposite type into a thin sheet — and turns conduction on. It is a junction you can
+    <em>steer</em>: no gate current (the insulator blocks it), so switching costs almost
+    no control energy, which is what lets billions of them sit on one chip. Moore's law was
+    the materials sprint to keep that geometry shrinking — high-k dielectrics when SiO₂
+    thinned into quantum tunnelling leakage, strained silicon and FinFETs and
+    gate-all-around architectures to keep the gate's field in charge of the channel.
+  </p>
+
+  <h2>The fab chain: from sand to a billion switches</h2>
+  <p>
+    The starting material must be the purest solid ever made in quantity: metallurgical
+    silicon (98%) is purified to <strong>nine nines</strong> (99.9999999% — one foreign atom
+    per billion), because at doping levels of parts per million, uncontrolled parts per
+    billion are noise in the recipe. Single crystals grow by the <strong>Czochralski</strong>
+    method — a seed crystal drawn slowly from a melt, pulling a dislocation-free ingot —
+    sliced into wafers polished to atomic flatness. Devices are built layer by layer:
+    <strong>photolithography</strong> prints each layer's pattern (photoresist exposed
+    through a mask, developed, then used as a stencil for etching or implantation) — the
+    extreme-UV machines that print today's smallest features are the most complex optical
+    instruments ever built; <strong>ion implantation</strong> fires dopant ions into the
+    surface with mass-spectrometer precision, annealed afterwards to repair the damage (the
+    heat-treatment lesson, at nanometre scale); insulating and metal layers follow. Each
+    chip is thousands of such cycles deep — a vertical sandwich of patterned films — and the
+    yield mathematics (one defect per billion needed, else the chip dies) is why fabs cost
+    tens of billions.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Band-gap engineering.</strong> Alloying III–V compounds tunes the gap
+    continuously — Al_xGa_(1−x)As sweeps 1.4 to over 2 eV, so emitters and detectors can be
+    grown lattice-matched with the gap the application wants; quantum wells confine carriers
+    to layers thinner than their wavelength, stepping the effective gap up and sharpening
+    laser thresholds. Blue LEDs required decades of "impossible" material work (Nobel 2014:
+    Akasaki, Amano, Nakamura — GaN grown on mismatched substrates, p-doping finally achieved
+    by electron-beam activation), and with red and green already solved, blue completed
+    white solid-state lighting — a Nobel given for a materials-science defect problem.
+  </p>
+  <p>
+    <strong>Wide-bandgap power electronics.</strong> Bigger gap means the junction survives
+    bigger fields before avalanche, so 4H-SiC (3.26 eV) and GaN devices switch at
+    10× the voltage and temperature of silicon — EV inverters, fast chargers and grid
+    converters are being rebuilt around them, converting higher breakdown field directly
+    into system efficiency. The trade is defects: wide-gap growth is harder, and every
+    micropipe or dislocation in a power wafer is a premature failure (the failure lesson's
+    defect arithmetic, at device scale). Meanwhile 2-D materials (graphene — gapless,
+    hence a conductor looking for a switch; MoS₂ and other transition-metal
+    dichalcogenides with usable gaps) and oxide semiconductors wait at the research edge of
+    the roadmap.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Can doping stay controlled as dimensions shrink toward
+    single-atom limits (dopant fluctuation statistics — where exactly are those 100 atoms
+    per transistor — becomes a per-device lottery)? Will thermal management, not switching
+    physics, become the binding constraint (chips already dissipate hundreds of watts per
+    cm² — a heat-spreading problem that is pure materials science)? And can halide
+    perovskite solar cells — solution-processed, near-silicon efficiency, defect-tolerant
+    band structure — be made to survive twenty years outdoors? The semiconductor lesson's
+    fifty-year pattern repeats: every roadblock is a materials problem, and every materials
+    fix resets the industry.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Sze &amp; Ng, <em>Physics of Semiconductor Devices</em>; Streetman &amp; Banerjee, <em>Solid State Electronic Devices</em>; the physics ladder's solid-state lesson; Nobel Prize in Physics 2014 (Akasaki, Amano, Nakamura); Czochralski growth literature.</p>
+  <Widget no="2" caption="check yourself: gaps, dopants and junctions" widget="quiz" config={semiQuizCfg} />
 </TopicPage>

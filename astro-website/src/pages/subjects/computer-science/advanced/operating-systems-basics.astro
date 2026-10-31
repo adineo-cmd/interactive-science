@@ -10,24 +10,219 @@ const osCfg = {
     { math: '4 · Files — one interface for everything', note: 'Disks, SSDs, USB sticks and network drives all look like folders of files. Drivers translate; the file system (NTFS, ext4, APFS) manages allocation and survives crashes with journaling.' },
   ],
 };
+
+const osQuiz = {
+  questions: [
+    {
+      q: "Three jobs arrive in order A (burst 8 ms), B (4 ms), C (1 ms). Running FCFS in arrival order, what is the average waiting time? And under SJF (shortest job first)?",
+      choices: [
+        "FCFS 6.7 ms, SJF 2.0 ms",
+        "FCFS 4.3 ms, SJF 4.3 ms",
+        "FCFS 13 ms, SJF 13 ms",
+        "FCFS 0 ms, SJF 0 ms",
+      ],
+      answer: 0,
+      why: "FCFS waits: A 0, B 8, C 12 → average 20/3 ≈ 6.7 ms. SJF runs C, B, A: waits 0, 1, 5 → average 2 ms. Same total work, less than a third of the waiting — scheduling policy alone nearly triples apparent speed.",
+    },
+    {
+      q: "A program's variable is being updated by two threads at once; final value depends on instruction timing. What is this called, and what fixes it?",
+      choices: [
+        "Deadlock — fixed by killing a process",
+        "A race condition — fixed by locks or atomic operations making the update indivisible",
+        "Thrashing — fixed by adding RAM",
+        "A page fault — fixed by the scheduler",
+      ],
+      answer: 1,
+      why: "Interleaved reads and writes whose outcome depends on timing is a race condition; the fix is mutual exclusion (locks, atomics) — which brings its own hazard: deadlocks when threads wait on each other in a cycle.",
+    },
+    {
+      q: "Your machine is slow, the disk light is solid, and the CPU is mostly idle. Most likely diagnosis?",
+      choices: [
+        "The CPU is too slow",
+        "Thrashing — RAM is oversubscribed, so the system spends its time swapping pages instead of working",
+        "Too many browser tabs open — irrelevant to the OS",
+        "A full disk automatically slows the CPU",
+      ],
+      answer: 1,
+      why: "When working sets exceed physical RAM, every needed page triggers a fault to disk (~10,000× slower than a RAM access); the system page-faults continuously while accomplishing little — the classic thrashing signature.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/operating-systems-basics">
   <h2>The idea</h2>
   <p>
-    The operating system is the <strong>referee and landlord between programs and
-    hardware</strong>: it decides who runs, who gets memory, who touches the disk, and what
-    happens when things crash. Linux, Windows and macOS differ in interface but share the same
-    four jobs — and each exists because programs cannot be trusted to share nicely on their own.
+    The operating system is the <strong>referee and landlord between programs and hardware</strong>: it
+    decides who runs, who gets memory, who touches the disk, and what happens when things crash. It exists
+    because programs cannot be trusted to share nicely — one pointer bug or greedy loop would otherwise
+    take down the whole machine. This lesson covers the syllabus's software unit at depth: the software
+    landscape and its translator layers, the interrupt mechanism that makes an OS possible, then the three
+    great abstractions — processes, virtual memory, files — with the scheduling and concurrency machinery
+    that runs them.
   </p>
 
   <Widget no="1" caption="the four jobs of every operating system" widget="equationStep" config={osCfg} />
 
-  <h2>Concepts worth internalising</h2>
-  <ul>
-    <li><strong>System calls:</strong> the only doorway from a program into the OS (open a file, spawn a process). Everything "the computer does" funnels through a few hundred of them.</li>
-    <li><strong>Concurrency hazards:</strong> two processes updating the same bank balance can interleave badly. Locks and atomic operations prevent it — and introduce deadlocks (two programs, each waiting forever on the other). The dining philosophers problem is the classic cartoon of the trap.</li>
-    <li><strong>Caches everywhere:</strong> L1/L2/L3 CPU caches, RAM, SSD, disk — a hierarchy where each level is smaller and faster than the next. Programmers who respect locality (touch nearby data together) get free speed.</li>
-    <li><strong>Why the kernel matters:</strong> on embedded devices a tiny kernel (RTOS) runs in kilobytes; on servers Linux runs for years without rebooting. Same ideas, wildly different scales.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Tanenbaum, Modern Operating Systems; Arpaci-Dusseau, Operating Systems: Three Easy Pieces (free).</p>
+  <h2>Software types, translators, and the interrupt</h2>
+  <p>
+    <strong>System software</strong> (operating systems, drivers, utilities) manages the machine;
+    <strong>application software</strong> does the user's work — and the boundary is the OS's API. Programs
+    reach it only through <strong>system calls</strong> (open a file, spawn a process, allocate memory):
+    a few hundred doorways through which everything "the computer does" funnels, each entailing a
+    privilege switch from user mode to kernel mode. The unit's language topics slot in here: source code in
+    high-level languages is translated by <strong>compilers</strong> (whole program → machine code ahead of
+    time — fast execution, platform-specific), <strong>interpreters</strong> (line by line at run time —
+    portable, slower), or bytecode + virtual machines (Java, Python's model — the compromise); assemblers
+    translate the thin human-readable layer above raw machine code. An IDE bundles editor, compiler,
+    debugger and autocompletion around this pipeline.
+  </p>
+  <p>
+    The mechanism that makes an operating system possible is the <strong>interrupt</strong>. Hardware
+    events — a key pressed, a disk finishing a read, a network packet arriving, a timer expiring — signal
+    the CPU, which suspends the current program, saves its state, and runs a handler. The humble
+    <strong>timer interrupt</strong> (typically 100–1,000 times per second) is the heartbeat of
+    multitasking: it returns control to the OS no matter what a program is doing, which is the only reason
+    one runaway program cannot own the machine forever. Software interrupts (traps) are how system calls
+    are implemented; a page fault is an interrupt raised by the memory unit. Interrupts convert "the OS is
+    in charge" from a slogan into an electrical fact.
+  </p>
+
+  <h2>Processes and scheduling, with numbers</h2>
+  <p>
+    A <strong>process</strong> is a program in execution: private virtual address space, open files, and
+    at least one thread of control (modern programs split work into <em>threads</em> sharing one address
+    space). The scheduler cycles through ready processes so rapidly — context switches cost roughly 1–10
+    microseconds, plus cache disturbance — that dozens of programs appear to run simultaneously; on a
+    multicore chip, a few genuinely do. Policies differ in what they optimise, and the difference is
+    enormous. Worked example — three jobs arrive in order A (burst 8 ms), B (4 ms), C (1 ms).
+    <strong>FCFS</strong> runs A, B, C: waits 0, 8, 12 — average <strong>6.7 ms</strong>.
+    <strong>SJF</strong> (shortest job first) runs C, B, A: waits 0, 1, 5 — average <strong>2 ms</strong>.
+    Same total work, less than a third of the waiting: scheduling policy alone nearly triples apparent
+    speed. But SJF needs to know the future (estimated from history) and starves long jobs, so real
+    systems blend ideas: <strong>round robin</strong> gives each ready job a time quantum (fairness),
+    <strong>priority queues</strong> separate interactive from batch work (responsiveness), and modern
+    schedulers (Linux CFS) allocate virtual runtime with weighted fairness — interactive tasks feel
+    instant while backups grind on unwatched.
+  </p>
+
+  <h2>Virtual memory: the illusion that pays for itself</h2>
+  <p>
+    Virtual memory gives every process the <strong>illusion of owning all of RAM</strong>, translated to
+    physical frames page by page (typically 4 KB each) through page tables — with a <strong>TLB</strong>
+    cache making the common translation nearly free. Three wins: <strong>protection</strong> (one process
+    physically cannot read another's memory — the hardware enforces what goodwill could not),
+    <strong>overcommitment</strong> (total virtual memory may exceed physical RAM; cold pages migrate to
+    disk and return on demand via page faults — a fault costs milliseconds against ~100 nanoseconds for a
+    RAM access, roughly a 10,000× penalty, which is why <strong>thrashing</strong>, the death spiral where
+    the system spends its life swapping, is the classic performance emergency), and <strong>shared
+    libraries</strong> mapped into many address spaces at once. Copy-on-write fork, memory-mapped files,
+    and zero-filled pages are all refinements of the same illusion — memory stopped being an address and
+    became a managed cache.
+  </p>
+
+  <h2>Concurrency: the price of parallelism</h2>
+  <p>
+    The moment two threads touch shared state, timing enters the semantics: a <strong>race condition</strong>
+    is two interleaved updates whose result depends on the schedule — the classic lost update (both threads
+    read the balance, both write, one increment vanishes). The fix is making critical sections
+    <strong>indivisible</strong> — locks, atomic instructions — and the fix's own hazard is
+    <strong>deadlock</strong>: threads holding one lock while waiting for another in a cycle (the dining
+    philosophers is the canonical cartoon). Deadlock needs four conditions simultaneously (mutual
+    exclusion, hold-and-wait, no preemption, circular wait), which is why real systems prevent it by
+    breaking one — lock ordering above all. The operating system itself lives with concurrency: every
+    kernel data structure touched by an interrupt handler is a shared resource, which is why kernel
+    engineering is, substantially, the art of lock discipline.
+  </p>
+
+  <h2>Files: one interface for a universe of devices</h2>
+  <p>
+    The file abstraction hides astonishing variety: SSDs, spinning disks, USB sticks and network shares
+    all appear as trees of named bytes, with <strong>drivers</strong> translating the generic requests and
+    the <strong>file system</strong> (ext4, NTFS, APFS) managing allocation, directories and metadata.
+    The subtle part is crash consistency: writing a file touches many disk locations, and power can fail
+    between them — so modern file systems <strong>journal</strong>, recording intended changes in a log
+    before applying them, so a crash mid-write can be rolled back or replayed instead of corrupting the
+    volume. The OS adds permissions (who may read/write/execute — the basis of every multi-user security
+    model), caching (pages of files stay in RAM — "free memory is wasted memory"), and the uniform pipe
+    that lets one program's output become another's input.
+  </p>
+
+  <h2>The boot sequence, and the memory hierarchy in numbers</h2>
+  <p>
+    <strong>How the referee gets onto the field.</strong> Power-on: the CPU starts executing firmware
+    (UEFI, the successor to BIOS), which initialises hardware, verifies the boot chain (secure boot
+    checks signatures), and loads the <strong>bootloader</strong> (GRUB and friends); the bootloader
+    loads the <strong>kernel</strong> image into memory, hands over control, and the kernel mounts the
+    root file system and starts <strong>init</strong> — the first process (systemd on most modern Linux),
+    which spawns everything else: drivers, services, the login manager, your session. Every subsequent
+    program is a child of that chain — a fact that makes the boot log a map of the whole architecture.
+    <strong>The hierarchy the referee manages.</strong> The numbers explain most of computing's
+    performance folklore: an L1 cache reference ≈ 1 nanosecond; main RAM ≈ 100 ns; an SSD read ≈
+    100 microseconds (1,000× RAM); a spinning disk seek ≈ 10 ms (100,000× RAM); a network round trip
+    to another continent ≈ 150 ms. Each level is smaller and faster than the one below, and the OS plus
+    hardware keep the fastest levels filled with what is likely to be needed next. <strong>Locality is
+    the programmer's only lever</strong>: touching nearby data together (array walks, not pointer
+    chases; processing records in file order) is worth 10–100× at zero cost, which is why "naive but
+    contiguous" routinely beats "clever but scattered" — the physics behind the data-structures
+    lesson's cache warning, and the reason "free memory is wasted memory" (idle RAM is doing cache
+    duty).
+  </p>
+
+  <h2>Process states, signals, and the lifetime of a program</h2>
+  <p>
+    A process is not just "running" — the scheduler's world is a small state machine. A process is
+    <strong>running</strong> (on a core), <strong>ready</strong> (runnable, waiting for the scheduler's
+    nod), or <strong>blocked</strong> (waiting for disk, network, or a lock — no CPU until the event
+    arrives); a blocked process consumes no time slices, which is why a thousand idle connections cost
+    almost nothing while a thousand busy loops cost everything. The kernel steers this machine with
+    <strong>signals</strong> — software interrupts delivered to processes: SIGTERM asks politely (cleanup
+    handlers run), SIGKILL cannot be caught (the kernel simply reclaims the address space), SIGSEGV is
+    the segment fault itself, delivered when your process touches an unmapped page — the OS enforcing
+    the virtual-memory illusion with prejudice. The lifetime ends with <strong>zombies</strong> (a
+    process that exited but whose status no one has collected — a parent's bookkeeping failure) and
+    <strong>orphans</strong> (re-parented to init when the parent dies first). Process creation is
+    stranger than it looks in textbooks: on Unix, a process <em>clones itself</em> (fork — same memory,
+    copied) and the clone replaces itself with a new program (exec) — the shell's whole job, which is
+    why understanding fork/exec is understanding how the command line works.
+  </p>
+
+  <h2>Threads versus processes, decided</h2>
+  <p>
+    The concurrency units differ in exactly one resource and it determines everything. A
+    <strong>process</strong> owns a private address space: isolation by construction (a crash or pointer
+    bug cannot touch another process — the OS must intercede for any sharing, via pipes, sockets or
+    shared-memory segments), but creation and context-switching are expensive (new page tables, cold
+    caches). A <strong>thread</strong> lives inside a process sharing its address space: creation and
+    switching are cheap (same page tables, warm caches) and communication is trivial (just write the
+    variable) — with the price that everything in this lesson's concurrency section now applies: races,
+    locks, deadlocks, and one stray pointer corrupting a <em>sibling</em> thread rather than failing
+    safely. The design trade has a name in every architecture: web servers historically forked a process
+    per connection (isolation, heavy) and evolved to thread pools and event loops (efficiency, shared
+    state to guard); browsers sandbox each <em>site</em> in its own process (Chrome's model) precisely to
+    buy the isolation back, running threads inside each sandbox for speed. When you choose between
+    threads and processes, you are choosing where to spend on isolation versus where to spend on
+    communication — the same dial, redrawn at every scale from microcontrollers to data centres.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Kernel architectures</strong> carry the design argument: monolithic kernels (Linux) run
+    everything in kernel mode for speed at the price of a driver bug crashing the machine; microkernels
+    (Minix, seL4, QNX) keep a minimal core and push drivers to user-space servers for isolation at a
+    message-passing cost; hybrid designs (Windows, macOS's XNU) compromise. The verified microkernel
+    seL4 — formally proven correct against its specification — is the field's proof that the dream is
+    achievable. <strong>Real-time scheduling</strong> inverts the desktop's goals: for an airbag controller
+    or engine ECU, a rare 20 ms miss is failure — real-time operating systems (RTOSes) run in kilobytes
+    and guarantee deadlines, a different universe from throughput-optimised servers where Linux runs for
+    years without rebooting. <strong>Virtualisation</strong> and containers are virtual memory's generalisation:
+    hypervisors give each guest OS the same illusion of owning real hardware that the OS gives processes;
+    containers share a kernel but isolate views. Open questions: how should schedulers handle heterogeneous
+    big.LITTLE cores and GPUs (the scheduler is becoming a resource broker across accelerators); can
+    kernel attack surfaces shrink as security pressure grows; and as data centres become "one computer,"
+    does the OS boundary move up a level — the scheduling question of the next decade.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Tanenbaum, <em>Modern Operating Systems</em>; Arpaci-Dusseau, <em>Operating Systems: Three Easy Pieces</em>; Silberschatz, <em>Operating System Concepts</em>.</p>
+
+  <Widget no="2" caption="check yourself: scheduling maths, races and the thrashing signature" widget="quiz" config={osQuiz} />
 </TopicPage>

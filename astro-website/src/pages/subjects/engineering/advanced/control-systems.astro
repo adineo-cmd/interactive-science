@@ -10,24 +10,169 @@ const controlCfg = {
     { math: '4 · Beyond single loops', note: 'State-space (model the whole system), MPC (optimise over a horizon — chemical plants and now some cars), adaptive and robust control (handle what you cannot model). Modern control is a quiet pillar of automation, robotics and aerospace (the AI lesson\'s embodied systems).' },
   ],
 };
+
+const controlQuizCfg = {
+  questions: [
+    { q: 'A 10-bit ADC measuring 0–5 V resolves steps of…', choices: ['5 mV', '4.9 mV', '0.5 V', '49 mV'], answer: 1, why: '5 V ÷ 2¹⁰ = 5/1024 ≈ 4.9 mV. ADC resolution is the smallest signal detail the loop can even see — and it is chosen against the sensor\'s real precision, not blindly.' },
+    { q: 'Why is an anti-aliasing filter placed before the ADC?', choices: ['to amplify weak signals', 'to remove frequencies above half the sampling rate, which would otherwise masquerade as slow ones', 'to save power', 'to convert digital to analog'], answer: 1, why: 'Sampling folds frequencies above Nyquist back down as impostors (aliasing) that no software can undo afterwards. The analogue filter must be analogue — it acts before the damage is done.' },
+    { q: 'Pure proportional control leaves a steady-state offset because…', choices: ['the sensor is slow', 'the corrective action is proportional to error, so zero error would mean zero action — the system settles where error still drives just enough output', 'P gain is always too low', 'offset is random'], answer: 1, why: 'If the plant needs sustained output to hold setpoint, P-only control needs a standing error to produce it. The integral term fixes exactly this: it accumulates error until the offset vanishes.' },
+    { q: 'In ladder logic, a motor "seal-in" contact exists so that…', choices: ['the motor spins faster', 'the motor keeps running after the momentary start button is released', 'the fuse never blows', 'the sensor stays calibrated'], answer: 1, why: 'A relay contact wired in parallel with the start button latches the circuit once started; the stop button breaks it. Logic implemented in contacts — the PLC\'s ancestor still runs most factories.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/engineering/advanced/control-systems">
   <h2>The idea</h2>
   <p>
-    Control systems are <strong>the engineering of self-correcting machines</strong> — feedback
-    loops that hold temperature, speed, altitude and chemical composition despite disturbance.
-    The mathematics (stability theory) is what separates a loop that settles from one that
-    oscillates itself apart.
+    A control system is a <strong>loop that corrects a machine from its own measurements</strong>:
+    sense the output, compare with the target, act on the input, repeat thousands of times a
+    second. It is the discipline that lets a cruise control hold 100 km/h up a hill it cannot
+    see, a chemical plant hold a reactor within a degree, and a fighter aircraft stay airborne
+    while being aerodynamically unstable on purpose. The syllabus unit on instrumentation and
+    controls is really the anatomy of one loop: <strong>sensors</strong> that measure,
+    <strong>signal conditioning and conversion</strong> (amplify, filter, digitise) that make
+    the measurement usable, <strong>logic</strong> that sequences and protects, and the
+    <strong>feedback law</strong> — PID and beyond — that turns error into action. Each part
+    has its own failure modes; the art is that the loop is only as good as its weakest stage.
   </p>
 
   <Widget no="1" caption="the loop, the three gains, stability, modern extensions" widget="equationStep" config={controlCfg} />
 
+  <h2>Sensing: the loop begins at the transducer</h2>
+  <p>
+    A <strong>sensor</strong> converts a physical quantity into a signal the electronics can
+    read. Temperature: the <strong>thermocouple</strong> (two dissimilar metals generating a
+    microvolts-per-degree Seebeck voltage — rugged, huge range, needs cold-junction
+    compensation), the <strong>RTD</strong> (platinum resistance, near-linear, precise),
+    the <strong>thermistor</strong> (big sensitivity, very nonlinear). Pressure: strain-gauge
+    and piezoresistive diaphragms; motion: shaft <strong>encoders</strong> (digital position
+    in counts) and MEMS accelerometers (proof mass on springs, capacitive readout); chemistry:
+    the <strong>pH electrode</strong> (a glass membrane producing ~59 mV per pH unit —
+    famously high-impedance and delicate) and electrochemical gas cells. What matters for
+    control is not the sensor's chemistry but its <em>specification as an instrument</em>:
+    accuracy (closeness to truth) versus precision (repeatability), range and span,
+    resolution (smallest detectable change), <strong>hysteresis</strong> (different readings
+    rising than falling), and above all <strong>response time</strong> — a thermocouple in a
+    thermowell may lag the process by seconds, and in a control loop, lag is poison (it is
+    what feedback turns into oscillation). The loop can never outperform its sensor: garbage
+    in, oscillation out.
+  </p>
+
+  <h2>The signal chain: amplify, filter, convert</h2>
+  <p>
+    Raw sensor signals are millivolts buried in noise, so the chain conditions them before
+    digitising. <strong>Amplification</strong>: an instrumentation amplifier (a precision
+    op-amp configuration) scales the differential signal with a set gain while rejecting
+    common-mode noise — the difference between a 5 mV signal plus 2 V of mains pickup and
+    disaster. <strong>Filtering</strong>: an analogue low-pass removes out-of-band noise and,
+    critically, serves as the <strong>anti-aliasing filter</strong> before digitisation —
+    any content above half the sampling frequency would fold down into the data as
+    counterfeit slow signals (the sampling theorem's details live in the signal-processing
+    lesson; here, the operational rule: filter first, then sample). <strong>Analogue-to-digital
+    conversion</strong>: the ADC assigns the voltage to one of 2ⁿ levels — a 10-bit ADC over
+    0–5 V resolves 5/1024 ≈ 4.9 mV steps, so signal and reference must be scaled to use the
+    full span or resolution is wasted. <strong>Digital-to-analogue conversion</strong>
+    closes the loop on the actuator side (DAC plus amplifier driving valve, motor or
+    heater). <strong>Logging</strong> — time-stamped storage — turns the loop's life into
+    process history: trends reviewed after an excursion are often worth more than the
+    control itself, because they show the disturbance you failed to model.
+  </p>
+
+  <h2>Logic diagrams: sequencing and protecting</h2>
+  <p>
+    Not every control decision is continuous — much of automation is <em>discrete</em>: motor
+    runs only if the guard is closed and the operator pressed start and pressure is OK.
+    Factories express this in <strong>ladder logic</strong> (programmable logic controllers —
+    PLCs), a graphical descendant of relay wiring: power rails left and right, contacts
+    (normally open/closed) and coils between them, evaluated top to bottom every few
+    milliseconds. The classic <strong>start/stop circuit with seal-in</strong>: pressing the
+    momentary start button energises the motor coil; a relay contact wired in
+    <em>parallel</em> with the button then holds the circuit closed after the finger leaves —
+    the motor "seals itself in" until the normally-closed stop button breaks the rung.
+    Boolean logic (AND = contacts in series, OR = parallel, NOT = normally-closed) plus
+    timers and latches implements interlocks: safety chains where any failure releases —
+    designed so that <em>loss of power or a broken wire stops the machine</em> (fail-safe,
+    the same philosophy as the fracture lesson's fail-soft). The hard-won rule of industrial
+    logic: the safety function must not depend on the software working — emergency stops are
+    wired, not programmed.
+  </p>
+
+  <h2>Feedback: the PID law, with numbers</h2>
+  <p>
+    <strong>Open-loop</strong> control (set the dial, hope) fails whenever the plant or the
+    world deviates; <strong>closed-loop</strong> control measures the output and corrects on
+    error e = setpoint − measurement. The workhorse is <strong>PID</strong>: output
+    u = Kp·e + Ki·∫e dt + Kd·de/dt. Each term has a distinct job, easiest to see on an oven
+    holding 200 °C in a cold room. <strong>Proportional</strong> acts on the present error —
+    but consider the arithmetic: the heater must run at, say, 40% power forever to balance
+    heat loss, and P-only output is Kp × error, so the loop settles where error still
+    produces exactly 40% — with Kp = 2, a standing offset of 20/2 = 10 °C (in general,
+    offset = disturbance/(1 + Kp) for a unit-gain plant). <strong>Integral</strong> acts on
+    accumulated error: it keeps nudging while any offset persists, driving steady-state
+    error to exactly zero — at the cost of "wind-up" (after a big setback, the integral can
+    overshoot massively; real PIDs clamp it). <strong>Derivative</strong> acts on the trend:
+    it brakes the approach as error closes, damping overshoot — but it amplifies sensor
+    noise, so many industrial loops run PI only. Tuning: the <strong>Ziegler–Nichols</strong>
+    method raises Kp until the loop just oscillates sustainedly (ultimate gain Ku, period
+    Tu), then prescribes (0.6·Ku, Ki = 1.2·Ku/Tu, Kd = 0.075·Ku·Tu) for quarter-amplitude
+    decay — crude by modern standards, and still the first move on most shop floors.
+  </p>
+  <p>
+    <em>Common misconception:</em> more gain is always better. Gain speeds response and
+    shrinks offset, but every real loop contains lag (sensor response, actuator delay,
+    thermal inertia), and high gain through lag turns correction into overshoot, overshoot
+    into oscillation, oscillation into runaway. The entire mathematical apparatus of control
+    theory — transfer functions, poles, gain and phase margins on a Bode plot — exists to
+    compute, <em>before</em> commissioning, exactly how much gain a given amount of lag can
+    tolerate.
+  </p>
+
   <h2>Control in the wild</h2>
   <ul>
-    <li><strong>The steam governor (Watt, 1788)</strong> was the industrial revolution\'s first feedback device — flyball centrifugal governor holding engine speed. James Clerk Maxwell wrote its stability mathematics (1868): control theory is old and deep.</li>
+    <li><strong>The steam governor (Watt, 1788)</strong> was the industrial revolution's first feedback device — flyball centrifugal governor holding engine speed. James Clerk Maxwell wrote its stability mathematics (1868): control theory is old and deep.</li>
     <li><strong>Fly-by-wire is control with stakes:</strong> modern fighters are aerodynamically unstable by design (manoeuvrability) — computers fly them continuously, ~50 corrections per second. The pilot commands, the control system delivers (the Apollo lunar lander: same principle, 1969).</li>
     <li><strong>Human-in-the-loop resonance:</strong> pilot-induced oscillation — the human becomes a bad controller with delay; the fix is training plus control design that keeps the human out of the oscillation band.</li>
-    <li><strong>Everything is getting a loop:</strong> grid frequency (the energy lesson\'s second-by-second balance), drone attitude, insulin pumps (the control problem disguised as medicine), and LLM-agent feedback architectures — the 20th century\'s hidden discipline becoming visible.</li>
+    <li><strong>Everything is getting a loop:</strong> grid frequency (the energy lesson's second-by-second balance), drone attitude, insulin pumps (the control problem disguised as medicine), and LLM-agent feedback architectures — the 20th century's hidden discipline becoming visible.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Maxwell, "On Governors" (1868); Åström & Murray, Feedback Systems (free); Ziegler & Nichols (1942).</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The mathematical spine, briefly.</strong> Linearise the plant, describe dynamics
+    as a transfer function, and stability becomes algebra: the closed-loop poles (roots of
+    1 + G·H = 0) must sit in the stable half-plane; gain margin (how much more gain before
+    instability) and phase margin (how much extra lag) are the commissioning engineer's
+    numbers of merit. <strong>State-space control</strong> models the whole system as
+    coupled states (position, velocity, temperature gradients) with matrices, enabling
+    <strong>observers</strong> (estimate unmeasured states from a few sensors — the Kalman
+    filter is the optimal case, fusing noisy measurements by their uncertainties, and it
+    flew to the Moon) and multi-input coordination no stack of single loops can match.
+    <strong>Model predictive control (MPC)</strong> solves, at every step, a short-horizon
+    optimisation: "given the model and constraints, what input sequence is best?" —
+    computationally heavy, dominant in refining and petrochemicals for decades, now reaching
+    cars and drones as processors catch up.
+  </p>
+  <p>
+    <strong>Cascade and feedforward.</strong> Real plants nest loops: a temperature loop's
+    output sets a steam-flow loop's setpoint, which sets a valve — inner loops absorb their
+    disturbances before the outer loop notices. <strong>Feedforward</strong> complements
+    feedback by measuring the disturbance directly and compensating predictively (cold
+    feed-water flow measured, extra steam opened before the boiler temperature dips) —
+    feedback then cleans up the residue. The mature architecture is hybrid: feedforward for
+    what is measurable, feedback for what is not, logic for sequencing, and the human
+    watching margins.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Machine learning meets control in two directions:
+    learning the plant model (system identification with neural networks) and learning the
+    policy (reinforcement-learning controllers) — promising, and missing the guarantees
+    classical control provides (stability margins, worst-case robustness), which is why
+    safety-critical adoption waits on verification. Wireless and networked control introduce
+    delay and packet loss into loops designed assuming instant communication. And digital
+    twins — plants mirrored by live models — promise MPC over the whole facility, raising
+    the question of what happens when two layers of optimisation disagree. Watt's governor
+    has become a distributed, learning, networked system; Maxwell's stability question is
+    exactly what it was in 1868.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Maxwell, "On Governors" (1868); Åström &amp; Murray, <em>Feedback Systems</em> (free online); Åström &amp; Hägglund, <em>PID Controllers: Theory, Design and Tuning</em>; Ziegler &amp; Nichols (1942); the signal-processing lesson of this ladder for sampling and filtering detail.</p>
+  <Widget no="2" caption="check yourself: sensing, sampling and the three gains" widget="quiz" config={controlQuizCfg} />
 </TopicPage>

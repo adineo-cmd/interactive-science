@@ -10,24 +10,180 @@ const dashCfg = {
     { math: '4 · Design for the 3 a.m. check', note: 'No zooming, no hovering requirements, no 14 decimals. Mobile-readable, colour-blind safe, load instant. The best dashboard is the one people actually open.' },
   ],
 };
+
+const dashQuizCfg = {
+  questions: [
+    { q: 'Anscombe\'s quartet is famous because its four datasets…', choices: ['are all straight lines', 'share nearly identical summary statistics while looking completely different', 'cannot be plotted', 'prove pie charts work'], answer: 1, why: 'Same means, variances, correlation (0.816) and regression line — yet one is linear, one curved, one an outlier-driven line, one a vertical column. Summary numbers and pictures are complements, not substitutes.' },
+    { q: 'Bars for comparing quantities must start at zero because…', choices: ['it looks tidier', 'length is the encoding — truncate the axis and you truncate the encoded value', 'all software defaults to it', 'zero is always the minimum possible value'], answer: 1, why: 'When a bar\'s length carries the number, cutting the baseline is cutting the value: a 10% lift drawn from a 90% baseline looks like a 100% jump. Line charts may use non-zero baselines because position, not length, encodes the value.' },
+    { q: 'A metric tile that reads "1,247" is weak because…', choices: ['it is not rounded', 'it lacks a comparison — target, trend or segment — so it cannot support a judgement', 'it should be a pie chart', 'numbers scare executives'], answer: 1, why: 'Judgement needs a reference point: "1,247 vs 1,100 target, down 3% week-on-week" is actionable; a bare number is trivia wearing a dashboard costume.' },
+    { q: 'The pyramid principle says a data presentation should…', choices: ['save the conclusion for the end to build suspense', 'state the conclusion first, then layer the supporting evidence', 'begin with methodology', 'show all the data equally'], answer: 1, why: 'Minto\'s rule inverts the mystery-novel structure: answer first, then the three reasons, then the detail. Decision-makers need the destination before they can evaluate the route.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/advanced/dashboards-and-data-storytelling">
   <h2>The idea</h2>
   <p>
-    Dashboards and data storytelling are <strong>where analysis earns its keep — or
-    doesn't</strong>. The craft: lead with the conclusion, prove it with one clear chart, provide
-    drill-down for the sceptics, and design for how people actually consume data (quickly,
-    distractedly, on phones).
+    Analysis that never changes a decision is a hobby. Dashboards and data storytelling are
+    where analysis earns its keep — the last mile between a correct number and a human doing
+    something differently at 9 a.m. The craft has an unusual property: it is judged in seconds
+    and remembered in stories. A viewer glances at your chart for five seconds, distracted, on
+    a phone; whatever encoding they absorb in that window <em>is</em> your analysis. So the
+    syllabus's visualisation topic is really three skills braided together: <strong>seeing</strong>
+    (what makes a visual encoding truthful and legible), <strong>monitoring</strong> (the
+    dashboard as a decision instrument), and <strong>persuading</strong> (the story structure
+    that moves a room). Get them wrong and you produce the two standard failure modes of the
+    industry: dashboards nobody opens, and slide decks that are technically accurate and
+    completely uncompelling.
   </p>
 
   <Widget no="1" caption="the four rules of dashboards people actually use" widget="equationStep" config={dashCfg} />
 
-  <h2>Storytelling structure that works</h2>
+  <h2>Why pictures: the limits of summary numbers</h2>
+  <p>
+    The classic demonstration is <strong>Anscombe's quartet</strong> (Francis Anscombe, 1973):
+    four small datasets constructed to share almost every summary statistic — the same mean of
+    x (9.0) and of y (7.5), the same variances, the same correlation (0.816), even the same
+    fitted regression line, y = 3 + 0.5x. Tabulated, they are indistinguishable. Plotted, they
+    are four different worlds: a clean linear trend; a smooth curve; a perfect line spoiled by
+    one outlier; and a vertical column pinned at one x-value. The lesson is not "statistics is
+    wrong" but that <strong>summaries compress, and compression hides structure</strong> —
+    outliers, curvature, clustering, data-entry errors. The modern descendant, the "Datasaurus
+    Dozen" (Matejka &amp; Fitzmaurice, 2017), keeps the summary statistics fixed while
+    morphing between shapes as different as a dinosaur and a star, proving the point with
+    rendering-quality visuals. The working rule that follows: <em>always plot the data before
+    summarising it</em>, and after summarising it too.
+  </p>
+  <p>
+    Visual encoding works because human perception is a parallel processor with known
+    strengths. Cleveland and McGill's classic experiments (1984) ranked encodings by how
+    accurately readers decode them, and the ranking still governs chart choice:
+    <strong>position on a common scale</strong> (grouped bars, dot plots) is best; then
+    length; then angle and slope; then area; then colour volume and saturation — the worst.
+    This is the entire case against pie charts in one sentence: a pie asks the viewer to
+    compare angles and areas, the two least accurate judgements people can make, while a bar
+    chart asks for position and length, the two most accurate. It is also the case for scatter
+    plots and line charts, which put data onto aligned positions.
+  </p>
+
+  <h2>Choosing the chart: from question to encoding</h2>
+  <p>
+    Chart selection is not aesthetic taste; it is matching an encoding to a question. Four
+    question families cover most of practice:
+  </p>
   <ul>
-    <li><strong>Situation → Complication → Resolution</strong> (Minto's SCQA): "Sales grew all year (S); but the growth is concentrated in one segment (C); here's where to invest next (R)". The frame turns charts into an argument.</li>
-    <li><strong>One chart, one message:</strong> if a chart needs two paragraphs of explanation, split it or simplify it. Animation and interactivity serve exploration — the first read should be static and instant.</li>
-    <li><strong>Know the audience's vocabulary:</strong> executives need decisions and risks; analysts need methods and caveats. Same data, different first sentence.</li>
-    <li><strong>Report uncertainty in plain words:</strong> "early signal, needs another month of data" beats false precision. Trust is the compounding asset of every analyst's career.</li>
+    <li><strong>Comparison</strong> ("which region is biggest?"): bar charts, sorted, with the
+    category labels on the bars — horizontal when labels are long. Never a pie for more than
+    three slices.</li>
+    <li><strong>Trend over time</strong> ("is it growing?"): line charts — position encodes
+    the value, and non-zero baselines are acceptable because no length is being compared.</li>
+    <li><strong>Relationship</strong> ("do these move together?"): scatter plot, with a trend
+    line only if you have earned one (the statistics ladder's regression lessons).</li>
+    <li><strong>Distribution</strong> ("what is typical, what is the spread?"): histogram or
+    density plot — and note that means and medians hide exactly the structure a distribution
+    shows.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Minto, The Pyramid Principle; Knaflic, Storytelling with Data; Few, Information Dashboard Design.</p>
+  <p>
+    <em>Common misconception:</em> more chart types and decoration mean a more professional
+    report. The evidence runs the other way. 3-D bars, dual axes, rainbow palettes and "chart
+    junk" all add decoding work while carrying zero information — and every added decoding
+    step is a chance for the five-second read to land on the wrong conclusion. Tufte's
+    "data–ink ratio" principle and Few's dashboard design rules both say the same thing:
+    <strong>erase everything that is not the data or the message</strong>. Boring charts are
+    trusted charts.
+  </p>
+
+  <h2>Honest axes: how charts lie</h2>
+  <p>
+    Every encoding choice is an ethical choice, because encodings imply magnitudes. The
+    canonical sin: <strong>truncated bar-chart axes</strong>. Draw bars from a baseline of 90
+    instead of 0 and a 10% improvement renders as a bar ten times taller than its competitor —
+    the length encoding has been quietly rescaled to lie. (Line charts are different: they
+    encode position, not length, so a non-zero baseline is legitimate — which is exactly why
+    the dishonest version of this trick swaps line charts for bar charts.) Related sins, each
+    with a name: <strong>dual axes</strong> letting an author imply correlation between two
+    arbitrarily scaled series; <strong>area proportionality</strong> violations (doubling a
+    country's GDP and doubling its circle's <em>radius</em> quadruples the area); <strong>cherry-picked
+    windows</strong> ("growth since March" starting from the trough); and <strong>cumulative
+    charts</strong> that make a decaying rate look like an accelerating one. The defence is
+    symmetrical: state the baseline, start bars at zero, label axes with units and time
+    ranges, and annotate the comparison you intend ("vs same week last year") so the reader
+    inherits your frame explicitly rather than imagining one.
+  </p>
+
+  <h2>Dashboards: instruments, not galleries</h2>
+  <p>
+    A dashboard is a <em>monitoring instrument</em> — closer to a car's speedometer than to a
+    poster. The design rules in the widget compress the discipline: start from the decision
+    the screen supports; headline the takeaway; attach context to every number; and optimise
+    for the distracted reader. Context deserves emphasis because it is the most-skipped rule.
+    A bare "1,247" cannot be judged; "1,247 vs 1,100 target, down 3% week-on-week, down in 4
+    of 6 regions" supports a judgement in one read. Comparisons are what turn data into
+    information, and a good dashboard builds them in structurally: against target, against
+    last period, against a comparable segment.
+  </p>
+  <p>
+    Two operational truths round it out. First, <strong>dashboards rot</strong>: metrics get
+    renamed, pipelines break silently, and a dashboard showing stale data is worse than none
+    (it manufactures false confidence). Ownership, freshness indicators and alerting on data
+    staleness are part of dashboard design, not IT housekeeping. Second, <strong>dashboard
+    sprawl is a design failure</strong>: when an organisation has 200 dashboards, it has an
+    unowned metrics layer. The mature fix is a small set of canonical, defined metrics with
+    one home each — and the discipline to retire screens when the decision they supported
+    changes.
+  </p>
+
+  <h2>Storytelling: the structure that moves a room</h2>
+  <p>
+    Analysis presented as a chronology — "first I looked at the data, then I tried a model,
+    then…" — buries the payoff. Two structures fix it. The <strong>pyramid principle</strong>
+    (Minto): state the conclusion first, then the two-to-four supporting arguments, then the
+    detail — the answer before the reasoning, at every level of the document. The
+    <strong>SCQA frame</strong> gives the narrative spine: Situation ("signups grew 20% all
+    year"), Complication ("but the growth is concentrated in one segment, and it is
+    slowing"), Question ("where do we invest next quarter?"), Answer ("here, with these three
+    moves, at roughly this cost"). The frame converts charts into an argument; the pyramid
+    converts an argument into a decision. Both invert the mystery-novel instinct that feels
+    natural to analysts — and both exist because executives evaluate recommendations, not
+    journeys.
+  </p>
+  <p>
+    Uncertainty belongs in the story, told in plain words. "Early signal: lift of 1.1 points,
+    but the interval still includes zero — we will have enough data in three weeks" is a
+    sentence that builds trust; false precision ("up 1.14%!") spends it. The compounding
+    asset of an analyst's career is being the person whose caveats turned out to matter.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Perception is measurable.</strong> Cleveland–McGill is just the start: preattentive
+    processing research shows which visual properties "pop" in under 250 milliseconds (colour,
+    size, orientation, motion) — the reason a single red bar in a grey series directs attention
+    without a single word. Gestalt principles (proximity, similarity, enclosure) explain why
+    some layouts read as groups instantly. Modern eye-tracking work on dashboards confirms the
+    five-second window empirically: F-patterns of gaze, headline dominance, and the cost of
+    any encoding requiring a legend lookup. Visual design for data is applied perceptual
+    psychology, and its findings replicate.
+  </p>
+  <p>
+    <strong>Uncertainty visualisation is the frontier.</strong> Showing intervals honestly
+    (error bars, fan charts, animation of plausible outcomes) reliably causes misreading —
+    people read 95% intervals as "the data varies this much", or ignore the bars entirely.
+    Research directions include hypothetical outcome plots (animated draws from the
+    distribution), quantile dotplots, and gradient-encoded bands; results are promising and
+    unresolved. The related ethical frontier is automated chart generation: when a BI tool
+    picks the axis range, the comparison window and the highlight colour by default, its
+    defaults are quietly making thousands of micro-editorial decisions a day.
+  </p>
+  <p>
+    <strong>Open questions.</strong> How should narrative and interactivity be combined
+    without losing the static first read? Can uncertainty communication be standardised the
+    way financial reporting was? And as LLMs draft both the analysis and the chart, what does
+    an audit trail for visual claims look like — who is responsible when a generated headline
+    overstates an interval? The craft in this chapter is old (Playfair invented the line and
+    bar chart in the 1780s; Minard's 1869 Napoleon map is still the pinnacle); its automation
+    is brand new.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Minto, <em>The Pyramid Principle</em>; Knaflic, <em>Storytelling with Data</em>; Few, <em>Information Dashboard Design</em>; Tufte, <em>The Visual Display of Quantitative Information</em>; Anscombe, "Graphs in Statistical Analysis" (1973); Cleveland &amp; McGill, "Graphical Perception" (1984); Matejka &amp; Fitzmaurice, "Same Stats, Different Graphs" (2017).</p>
+  <Widget no="2" caption="check yourself: encodings, honesty and structure" widget="quiz" config={dashQuizCfg} />
 </TopicPage>

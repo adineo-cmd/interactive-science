@@ -10,23 +10,176 @@ const sigCfg = {
     { math: '4 · Filtering: keeping the band you want', note: 'Low-pass (smooth the noise), high-pass (remove drift), band-pass (isolate one channel). The filter is the workhorse of measurement, communications, audio and biosignals (an ECG is a heartbeat plus noise: filtering makes it readable).' },
   ],
 };
+
+const sigQuizCfg = {
+  questions: [
+    { q: 'A pure 5 kHz tone is sampled at 6 kHz. What frequency appears in the data?', choices: ['5 kHz', '1 kHz', '6 kHz', 'nothing — it vanishes'], answer: 1, why: 'Above Nyquist (3 kHz here), the samples are indistinguishable from a 1 kHz tone: the tone aliases to |5 − 6| = 1 kHz. This is why anti-alias filtering must happen before sampling — afterwards the impostor is unrecoverable.' },
+    { q: '16-bit audio has a dynamic range of about 96 dB because…', choices: ['speakers clip beyond it', 'each extra bit adds ≈ 6 dB of signal-to-quantisation-noise (6.02 × 16 + 1.76)', 'human hearing has 96 levels', 'the standard mandates it'], answer: 1, why: 'Quantisation error is roughly uniform within one step; SNR = 6.02n + 1.76 dB for n bits. 16 bits ≈ 98 dB — about the range between a whisper and a jackhammer.' },
+    { q: 'An RC low-pass with R = 1.6 kΩ and C = 100 nF has a cutoff near…', choices: ['1 Hz', '1 kHz', '100 kHz', '1 MHz'], answer: 1, why: 'f_c = 1/(2πRC) = 1/(2π × 1.6×10⁻⁴) ≈ 995 Hz. Below the cutoff signals pass nearly untouched; above, they fall at −20 dB per decade — a tenfold frequency increase means a tenfold amplitude cut.' },
+    { q: 'The FFT was revolutionary because it computes the discrete Fourier transform in…', choices: ['N² operations instead of N', 'N·log₂N operations — for a million points, ~50,000× fewer than the direct method', 'constant time', 'exponential time'], answer: 1, why: 'Gauss knew it; Cooley and Tukey re-derived it for machines (1965). N² = 10¹² becomes N·log₂N ≈ 2×10⁷ for N = 10⁶ — the algorithm that made spectral processing real-time.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/engineering/advanced/signal-processing">
   <h2>The idea</h2>
   <p>
-    Signal processing is <strong>the mathematics of extracting meaning from variation</strong> —
-    Fourier\'s insight that signals are sums of frequencies, Shannon\'s sampling law that makes
-    digital possible, and the filtering craft that keeps the wanted and rejects the rest.
+    The instrumentation lesson showed how a physical quantity becomes numbers; this lesson is
+    what you <em>do</em> with them. A signal — voltage, sound, strain, radio — is variation
+    carrying information, buried in other variation that is not. Signal processing is the
+    mathematics of separating the two: <strong>Fourier's</strong> insight that any waveform is
+    a chord of pure frequencies (so "frequency" becomes a domain you can compute in),
+    <strong>Shannon's</strong> sampling law that lets analogue variation become digital
+    numbers without losing anything, and the <strong>filtering</strong> craft that keeps the
+    band you want and kills the rest. It is also, per the syllabus unit, the back half of the
+    measurement chain: amplification, sampling range and rate, A/D conversion, digital
+    processing — each stage with its own arithmetic and its own ways to ruin the signal.
   </p>
 
   <Widget no="1" caption="signals, Fourier, sampling, filtering" widget="equationStep" config={sigCfg} />
 
+  <h2>Signals and systems: the vocabulary</h2>
+  <p>
+    A <strong>signal</strong> is a quantity varying over time (or space): the microphone
+    voltage from a flute, the strain gauge of a swaying bridge, the pixel columns of a scan
+    line. A <strong>system</strong> transforms signals — an amplifier multiplies, a filter
+    reshapes, a cable delays and mangles. The most useful class is <strong>linear
+    time-invariant (LTI)</strong> systems: scaling the input scales the output, and shifting
+    the input shifts the output. LTI systems are tractable because of one fact: they are
+    completely described by their <strong>impulse response</strong> — what they do to a single
+    infinitely short kick — because any signal can be built from scaled, shifted kicks
+    (samples!), and linearity then says the output is the same recipe applied to those
+    pieces. Adding a delayed, scaled, summed set of impulse responses is the operation
+    called <strong>convolution</strong>, and it is the universal grammar of filtering:
+    every filter, analogue or digital, is some impulse response being convolved with your
+    signal.
+  </p>
+
+  <h2>Fourier's idea: the frequency domain</h2>
+  <p>
+    Fourier's claim (1807, greeted with scepticism) is that <em>any</em> reasonable waveform
+    is a sum of sine and cosine waves of different frequencies, amplitudes and phases. The
+    construction is easiest to believe on the square wave: a sum of odd harmonics —
+    sin(f) + sin(3f)/3 + sin(5f)/5 + sin(7f)/7 … — approaches the square shape as terms
+    accumulate; even 20 harmonics give a recognisable square with ripples that stubbornly
+    overshoot the edges (the <strong>Gibbs phenomenon</strong> — a true square wave needs
+    infinite bandwidth, which real systems never have, which is why real "square" pulses
+    round off). The <strong>Fourier transform</strong> turns this from a trick into a
+    dictionary: every signal has an exact frequency-domain twin — which frequencies, how
+    loud, at what phase — and the two representations carry identical information. The
+    frequency domain is where signal processing lives because hard problems become easy
+    there: filtering is multiplication in frequency (rather than convolution in time);
+    noise occupies bands you can see and cut; a vibration spectrum's peaks name its causes
+    (a bearing's defect frequency, a structure's resonance). The <strong>discrete Fourier
+    transform</strong> is the digital version — N samples in, N complex frequency bins out —
+    and the <strong>FFT</strong> computes it in N·log₂N operations instead of N²: for a
+    million samples, roughly 2 × 10⁷ operations instead of 10¹², a speed-up of ~50,000×
+    that converted Fourier analysis from a batch calculation into something that runs
+    inside every phone call, every Wi-Fi packet, every hearing aid.
+  </p>
+
+  <h2>Sampling: the bridge to digital, with its two budgets</h2>
+  <p>
+    Sampling measures the signal at intervals T, at rate f_s. <strong>Nyquist–Shannon's
+    theorem</strong>: if the signal contains no frequency above f_s/2, the samples determine
+    it <em>exactly</em> — no information is lost, in principle. Sample slower and
+    <strong>aliasing</strong> strikes: a 5 kHz tone sampled at 6 kHz is indistinguishable
+    from a 1 kHz tone (|5 − 6| = 1), and no software can afterwards tell the impostor from
+    the truth — the wagon wheels that rotate backwards in films are this theorem acting on
+    your retina. Hence the anti-aliasing filter before the ADC (the control lesson's chain),
+    and hence CD audio's 44.1 kHz: hearing ends near 20 kHz, so 44.1 kHz leaves margin for
+    a filter to roll off. The second budget is <strong>amplitude</strong>: the ADC assigns
+    each sample one of 2ⁿ levels, and the rounding is <strong>quantisation noise</strong>.
+    The arithmetic: signal-to-noise ≈ 6.02·n + 1.76 dB, so 16-bit audio carries ~98 dB of
+    dynamic range (roughly whisper-to-jackhammer) — each bit bought 6 dB, which is why
+    resolution is the first specification anyone checks. Two budgets, two choices —
+    sample <em>rate</em> and sample <em>range</em> — and every real acquisition system
+    balances them against memory and cost.
+  </p>
+
+  <h2>Filtering: the frequency-selective craft</h2>
+  <p>
+    A <strong>filter</strong> passes some frequencies and attenuates others. The analogue
+    workhorse is the RC low-pass: output follows input only sluggishly, so fast fluctuations
+    shrink; the cutoff is f_c = 1/(2πRC) — with R = 1.6 kΩ and C = 100 nF, f_c ≈ 1 kHz —
+    and above cutoff the response falls 20 dB per decade (tenfold quieter per tenfold
+    higher frequency). First-order filters are gentle; steeper skirts come from cascading
+    stages (Butterworth for flattest passband, Chebyshev for steeper rolloff with ripple)
+    at the price of <strong>phase distortion</strong> — the filter delays different
+    frequencies differently, which matters enormously in audio and control (a filter is
+    also a delay, and delay in a feedback loop is instability fuel). Digital filters come
+    in two families: <strong>FIR</strong> (finite impulse response — a weighted moving
+    average; always stable, can be exactly linear-phase) and <strong>IIR</strong>
+    (recursive, mimicking the analogue designs, cheaper per tap). The design conversation
+    is always the same trade: <strong>transition width versus delay versus
+    computation</strong> — you can cut the noise out sharply, or quickly, or cheaply, but
+    never all three. And one filter deserves its fame: the <strong>moving average</strong>
+    (averaging the last k samples) is a crude low-pass anyone can compute mentally, and
+    averaging N independent measurements improves the noise floor as √N — the statistics
+    ladder's standard error, running in hardware.
+  </p>
+
+  <h2>Noise, SNR and the decibel</h2>
+  <p>
+    Noise — thermal (Johnson) noise in every resistor, shot noise in every current,
+    interference from everything that radiates — sets the floor under every measurement.
+    The <strong>decibel</strong> scale (ratio in powers of ten: 20·log₁₀ of an amplitude
+    ratio) exists because signals and noises span eight orders of magnitude; 0 dB is the
+    reference, −60 dB is a thousandfold down. Amplification must respect a rule beginners
+    learn expensively: <strong>amplify the signal, not the noise</strong> — gain applied
+    after filtering is worth ten times gain applied before, because the amplifier adds its
+    own noise to whatever it receives. The extreme instrument is the <strong>lock-in
+    amplifier</strong>: modulate the measurement at a known reference frequency, then
+    demodulate — only the component that follows the reference survives, and signals a
+    million times below the broadband noise become measurable (this is how faint optical
+    absorptions and nanovolt thermoelectric signals get read). The general version of the
+    trick — knowing <em>where</em> in frequency your signal lives — is the whole subject
+    compressed to one sentence.
+  </p>
+
   <h2>Where it runs the world</h2>
   <ul>
-    <li><strong>Every digital device:</strong> audio, images, radio, Wi-Fi (OFDM = thousands of parallel Fourier channels), radar, medical imaging (the CT scan is Fourier mathematics through a body — the medicine lesson\'s imaging, computed), seismology (the earth lesson\'s wave reading).</li>
+    <li><strong>Every digital device:</strong> audio, images, radio, Wi-Fi (OFDM = thousands of parallel Fourier channels), radar, medical imaging (the CT scan is Fourier mathematics through a body — the medicine lesson's imaging, computed), seismology (the earth lesson's wave reading).</li>
     <li><strong>Compression is signal processing:</strong> JPEG throws away frequencies the eye weighs less (discrete cosine transform); MP3 throws away sounds the ear masks. A billion photos a day exist affordably because of coefficient budgeting.</li>
-    <li><strong>Noise is the enemy, statistics the ally:</strong> lock-in amplifiers pull signals from noise a million times larger; averaging trades time for certainty (the statistics ladder\'s SE shrinking as √n, in hardware form).</li>
-    <li><strong>The digital revolution\'s law:</strong> Shannon\'s capacity theorem (bits per second ≤ bandwidth × log(1 + SNR)) sets the ceiling every generation of modems has climbed toward for 75 years — theory leading engineering by decades, exactly as Maxwell led wireless.</li>
+    <li><strong>Noise is the enemy, statistics the ally:</strong> lock-in amplifiers pull signals from noise a million times larger; averaging trades time for certainty (the statistics ladder's SE shrinking as √n, in hardware form).</li>
+    <li><strong>The digital revolution's law:</strong> Shannon's capacity theorem (bits per second ≤ bandwidth × log(1 + SNR)) sets the ceiling every generation of modems has climbed toward for 75 years — theory leading engineering by decades, exactly as Maxwell led wireless.</li>
   </ul>
-  <p class="sources"><strong>Sources:</strong> Fourier (1807); Nyquist (1928) & Shannon (1948, 1949); Smith, The Scientist and Engineer\'s Guide to Digital Signal Processing (free).</p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The convolution theorem.</strong> The deep structural fact of the field:
+    <em>convolution in time is multiplication in frequency</em>. Filtering, smoothing,
+    deblurring, echo — all convolutions — become point-by-point multiplications once
+    transformed, which is why the FFT is everywhere and why "spectral methods" is almost a
+    synonym for signal processing. It also explains artefacts: truncating data (a finite
+    window) is multiplying by a rectangle, which <em>convolves</em> the spectrum with the
+    rectangle's sinc-shaped spectrum — spectral leakage, the reason every spectrum analysis
+    offers window functions (Hann, Hamming) whose gentler edges trade resolution for
+    cleanliness.
+  </p>
+  <p>
+    <strong>Information theory keeps score.</strong> Shannon's 1948–49 work gives sampling
+    its footnote and channels their speed limit: capacity C = B·log₂(1 + SNR) — a 3 kHz
+    telephone line at 30 dB SNR carries ~30 kbit/s, and every modem generation from 300
+    baud to 56k was engineering climbing toward exactly that ceiling. Together with source
+    coding (compress to the entropy limit) it defines the two ends of every communication
+    link, and both ends are signal processing all the way down: OFDM (Wi-Fi, 5G) is the
+    FFT applied to pack parallel channels into a band; turbo and LDPC codes are the
+    surprising discovery that random-looking codes actually reach Shannon's limit.
+  </p>
+  <p>
+    <strong>Open questions.</strong> <strong>Compressed sensing</strong> (2004–) overturned
+    a piece of the dogma: if a signal is <em>sparse</em> in some domain (most coefficients
+    near zero — images, spectra), it can be reconstructed from far fewer samples than
+    Nyquist demands, by solving for the sparsest explanation — used now in MRI
+    acceleration and radar. Adaptive filters (LMS, Kalman) track signals whose statistics
+    move; wavelets extended Fourier's fixed resolution to multi-resolution analysis
+    (JPEG2000, denoising); and neural networks now perform end-to-end DSP tasks — speech
+    enhancement, channel equalisation — where hand-designed filters once reigned, raising
+    the field's live epistemological question: when the filter is learned, what is its
+    guarantee? Classical DSP's answers were theorems; the learned versions so far offer
+    benchmarks.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Fourier, <em>Théorie analytique de la chaleur</em> (1807/1822); Nyquist (1928); Shannon, "A Mathematical Theory of Communication" (1948) and "Communication in the Presence of Noise" (1949); Cooley &amp; Tukey (1965); Smith, <em>The Scientist and Engineer's Guide to Digital Signal Processing</em> (free online); Candès &amp; Wakin on compressed sensing (2008).</p>
+  <Widget no="2" caption="check yourself: sampling, filtering and noise" widget="quiz" config={sigQuizCfg} />
 </TopicPage>

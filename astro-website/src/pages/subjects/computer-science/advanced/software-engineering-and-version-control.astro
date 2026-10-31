@@ -11,24 +11,216 @@ const sweCfg = {
     { math: '5 · Refactor without fear', note: 'Improve structure with tests as the safety net. Software rots when nobody dares touch it; tests are what makes daring safe.' },
   ],
 };
+
+const sweQuiz = {
+  questions: [
+    {
+      q: "A project grows from 4 developers to 9. By how many does the number of potential communication channels grow?",
+      choices: [
+        "From 6 to 36 — communication cost grows roughly quadratically",
+        "From 4 to 9 — one path per developer",
+        "From 10 to 45 — wait, that's exactly what n(n−1)/2 gives: 6→36 was wrong",
+        "It stays the same with good tools",
+      ],
+      answer: 1,
+      why: "Channels = n(n−1)/2: 4 people have 6 potential pairwise channels; 9 people have 36. That is the mechanism under Brooks's law — adding people to a late project adds coordination faster than capacity.",
+    },
+    {
+      q: "What does a merge conflict actually mean in Git's model?",
+      choices: [
+        "The repository is corrupted and must be re-cloned",
+        "Two commits changed the same lines independently; Git refuses to guess which change should win",
+        "You ran out of disk space",
+        "The branch names are too similar",
+      ],
+      answer: 1,
+      why: "Git merges line-level changes automatically when they don't overlap; an overlap is an ambiguity only a human (or a tool with intent) can resolve. Conflicts are a feature: history is preserved exactly.",
+    },
+    {
+      q: "Why do professional teams prefer many fast unit tests over a few giant end-to-end tests?",
+      choices: [
+        "Unit tests are cheaper to run, fail with precise causes, and cover more logic per second of CI time",
+        "End-to-end tests are illegal in some countries",
+        "Unit tests find performance bugs better",
+        "No reason — it is fashion",
+      ],
+      answer: 0,
+      why: "The test pyramid: hundreds of fast, pinpointing unit tests at the base; a handful of slow, brittle, whole-system tests at the top. A failing giant test tells you something broke; a failing unit test tells you what and where.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/software-engineering-and-version-control">
   <h2>The idea</h2>
   <p>
-    Writing code is a fraction of software engineering. The discipline is about
-    <strong>programs that change</strong>: written by many people, over years, on machines you'll
-    never see. The answer to that reality is version control, tests, reviews and small increments
-    — practices that turn solo coding into a team sport that doesn't rot.
+    Writing code is a fraction of software engineering. The discipline exists because real software
+    <strong>changes</strong> — written by many people, over years, on machines you will never see, under
+    requirements that mutate. Every practice in this lesson is an answer to one question: how does a
+    program survive its own authors? Version control, tests, reviews and small increments are the working
+    answers; Brooks, Knuth and the agile movement are the theory.
   </p>
 
   <Widget no="1" caption="the five practices that make software survive its authors" widget="equationStep" config={sweCfg} />
 
-  <h2>The wisdom, compressed</h2>
-  <ul>
-    <li><strong>Brooks's law:</strong> adding people to a late project makes it later — communication paths grow as n(n−1)/2. Mythical Man-Month, 1975, still true.</li>
-    <li><strong>Premature optimisation is the root of all evil</strong> (Knuth): make it work, make it right, make it fast — in that order, with measurements between steps.</li>
-    <li><strong>Technical debt is real:</strong> every shortcut charges interest. Not all debt is bad (ship the demo!) — unpaid-forever debt is what kills projects.</li>
-    <li><strong>Simple beats clever:</strong> code is read ten times more than written. Debugging is twice as hard as writing, so write for the reader.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Brooks, The Mythical Man-Month (1975); Knuth (1974); Google Engineering Practices documentation; Chacon & Straub, Pro Git.</p>
+  <h2>Git: history as a first-class object</h2>
+  <p>
+    Version control's job is to make change reversible and collaboration mergeable. Git (Linus Torvalds,
+    2005) implements it with unusual elegance: every <strong>commit is a snapshot</strong> of the whole
+    project (actually a content-addressed tree — blobs, trees and commit objects each named by the hash of
+    their contents, which is the data-structures lesson's hashing applied to source code: identical content
+    is stored once, and any tampering changes hashes visibly). A <strong>branch</strong> is just a movable
+    pointer to one commit — which is why branching is instant and free, and why the professional rhythm is
+    a branch per feature, merged back through review. <strong>Merging</strong> combines parallel
+    histories, reusing unchanged work automatically; when two commits changed the same lines, the
+    <strong>conflict</strong> is Git refusing to guess — resolving it is a human decision that history
+    records. <strong>Rebase</strong> replays your commits onto a new base for linear history — powerful
+    and history-rewriting, which is exactly why it is forbidden on shared branches. The cultural layer
+    matters as much as the machinery: small, single-purpose commits with messages explaining <em>why</em>
+    turn the log into the project's diary; <code>git blame</code> and <code>git bisect</code> (binary
+    search over history to find the commit that introduced a bug — again the logarithm) make archaeology
+    routine.
+  </p>
+
+  <h2>Testing: converting belief into evidence</h2>
+  <p>
+    Untested software is a rumour. The professional hierarchy is the <strong>test pyramid</strong>: many
+    fast <strong>unit tests</strong> (one function in isolation — cheap, precise failures), fewer
+    <strong>integration tests</strong> (modules together — database, API), a handful of
+    <strong>end-to-end tests</strong> (whole system through the UI — slow, brittle, irreplaceable). The
+    pyramid's shape is an economics argument: unit tests find faults in milliseconds with pinpoint cause;
+    a failing giant test tells you only that <em>something, somewhere</em> broke. The transformative
+    practice is <strong>test-driven development</strong>: write the failing test first, watch it fail,
+    make it pass, refactor — converting "I think it works" into "I can prove it still works, forever,
+    automatically." That "forever" is the point: a test suite is a specification that re-executes on every
+    change, and it is precisely what makes the last practice in this lesson — fearless refactoring —
+    possible. Coverage (the fraction of code the tests touch) is a useful smoke detector and a useless
+    target: 100% coverage of assertions-free tests proves nothing.
+  </p>
+
+  <h2>The shipping discipline: CI/CD and review</h2>
+  <p>
+    <strong>Continuous integration</strong> merges every change into a shared mainline quickly (hours, not
+    weeks) and runs the full test suite on a build server — so integration pain is paid in small doses
+    instead of one agonising "merge week." <strong>Continuous delivery/deployment</strong> extends the
+    pipeline: every green build is packaged (and, in deployment, released — often gradually, behind
+    feature flags, with instant rollback). The pipeline is the team's discipline made mechanical: nobody
+    can "just push it untested," because the machine does not allow it. <strong>Code review</strong> is
+    the second pillar: another pair of eyes reads every change before merge — catching defects (studies
+    consistently find review outperforms testing for certain defect classes), but equally spreading
+    knowledge (no more "only Priya understands the billing code") and enforcing coherent style. The
+    professional etiquette is specific: review the code, not the author; small changes get real reviews;
+    nitpicks go to automation (linters) so humans review design and correctness. The industry's measured
+    outcomes (the DORA research programme: deployment frequency, lead time, change-failure rate, time to
+    restore) show high-performing teams are precisely the ones that deploy <em>more</em> often with
+    <em>lower</em> failure rates — small batches win, empirically.
+  </p>
+
+  <h2>The economics: Brooks, debt, and the reader</h2>
+  <p>
+    <strong>Brooks's law</strong> ("adding manpower to a late software project makes it later," 1975) has
+    an arithmetic spine: potential communication channels grow as n(n − 1)/2 — 4 developers maintain 6
+    pairwise channels; 9 maintain 36. Newcomers consume the veterans' time while ramping, so capacity
+    arrives slower than the calendar demands. The whole field of process design (small teams, clear
+    interfaces, agile iterations) is an attempt to bend that curve. <strong>Technical debt</strong> is the
+    other ledger: every shortcut — duplicated logic, missing tests, "temporary" hacks — charges interest
+    as slower future changes; and, like finance's debt, it is a <em>tool</em>: borrowing deliberately to
+    ship a demo and repaying promptly is professional, while debt that is never repaid compounds until
+    the codebase cannot be changed safely at all. Finally, the reader: code is read far more often than
+    it is written, and debugging is harder than writing (if you write code as clever as you are capable,
+    by Kernighan's rule you are not smart enough to debug it) — so <strong>simple beats clever</strong>,
+    and Knuth's "premature optimisation is the root of all evil" completes the canon: make it work, make
+    it right, make it fast — in that order, with measurements between the steps.
+  </p>
+  <p><em>Common misconception:</em> "agile means no planning." Agile planning is continuous rather than
+  upfront: short iterations with working software each cycle, re-prioritised against reality — a response
+  to the empirical failure of waterfall's big-design-first model on changing requirements, not an
+  argument against knowing where you are going.</p>
+
+  <h2>Git deep cuts, and the anatomy of an incident</h2>
+  <p>
+    Four commands separate daily Git from expert Git. <strong>git bisect</strong> automates blame: given
+    a known-good commit and a known-bad one, it binary-searches history — you test each midpoint it
+    offers, and 1,000 commits of regression collapse to ~10 checks (the logarithm again, pointed at your
+    own mistakes). <strong>git revert</strong> makes a new commit that undoes an old one — safe on
+    shared branches, unlike rebase's history rewrite. <strong>git cherry-pick</strong> copies one commit
+    onto another branch (hotfixing a release line). <strong>Hooks</strong> (pre-commit, pre-push) run
+    your checks inside the tool itself, so lint and test gates fire before bad history is even created.
+    The deeper model beneath all of them: Git stores a directed acyclic graph of snapshots — which is
+    why every operation above is just graph manipulation, and why "rebasing shared history" breaks
+    collaborators (their commits now point at nodes your graph no longer references).
+  </p>
+  <p>
+    <strong>Incidents, worked.</strong> The discipline's maturity shows in how it handles failure, so
+    walk a generic one. 02:14, pages fire: checkout times out. On-call runs the loop —
+    <strong>mitigate first</strong> (rollback the deploy from 90 minutes earlier; checkout recovers in
+    minutes), <strong>then diagnose</strong> (the rollback points at the deploy as cause; the commit
+    changed a cache key format, and a shared cache now misses on every request — the database, sized
+    for a 90% hit rate, melts at 0%). Fix lands behind a flag at 03:40. The <strong>blameless
+    post-mortem</strong> the next day asks the engineering question — how did this deploy lack a
+    canary? why did the alert fire on customer pain rather than the hit-rate metric? — and produces
+    tracked actions (canary deploys, a cache hit-rate alert, a load test at 0% hit rate), not a villain.
+    The pattern generalises: small batches make rollbacks possible; observability makes diagnosis fast;
+    and the post-mortem converts each incident into permanent defences. Reliability engineering, like
+    security, is a process — and the process is the software engineering.
+  </p>
+
+  <h2>Requirements and estimation: the honest beginning</h2>
+  <p>
+    Most failed projects fail before the first commit, at requirements and estimation. Requirements come
+    in layers worth separating: <strong>functional</strong> (what the system does — "users reset
+    passwords by email link"), <strong>non-functional</strong> (how well — "login under 200 ms at 10,000
+    concurrent users"; reliability, security, accessibility), and <strong>constraints</strong> (the
+    platform, the deadline, the budget). Non-functional requirements are the professional's tell:
+    amateurs write only features, then discover in production that recovery, capacity and compliance
+    were requirements all along. Estimation is the second honest battle. The empirical pattern (the
+    "cone of uncertainty") is brutal: estimates made before design are routinely 4× wrong in either
+    direction; estimates tighten only as the design exists. The professional responses: estimate
+    <em>relative</em> size against known work (story points) rather than pretending to absolute days;
+    re-estimate after each increment; track the ratio of estimate to actual to calibrate yourself — and
+    when a stakeholder demands certainty before design exists, the correct answer is a time-boxed
+    spike or a range, never a confident single number. Hofstadter's law ("it always takes longer than
+    you expect, even when you take into account Hofstadter's law") is not a joke; it is the cone,
+    stated with mercy.
+  </p>
+
+  <h2>What a professional repository looks like</h2>
+  <p>
+    Concretise the practices as an artefact you can imitate. A healthy repository has:
+    <strong>README</strong> (what it is, how to run it — the ten-minute test: can a new engineer run the
+    tests locally in under ten minutes?); <strong>one-command setup</strong> (containerised or scripted —
+    manual setup steps are documentation debt); <strong>CI configuration</strong> in the repo (the
+    pipeline is versioned like the code it verifies); <strong>linters and formatters</strong> (style
+    settled by machine, so reviews argue about design); <strong>a test directory mirroring the source
+    tree</strong> (finding the test for a function should not be archaeology); <strong>meaningful
+    branches</strong> (feature/short-description, fix/issue-number) and <strong>protected main</strong>
+    (no direct pushes; everything arrives reviewed and green). The commit convention itself is a skill:
+    subject line in the imperative under 50 characters ("Fix off-by-one in cart totals"), blank line,
+    then the why — the what is visible in the diff; only the why needs prose. None of this is
+    bureaucracy: each element removes a category of coordination cost the team would otherwise pay
+    forever, and the aggregate is the difference between a codebase people contribute to and one they
+    route around.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Git at scale</strong> exposes its limits and their fixes: a monorepo holding millions of
+    commits (Google, Microsoft) needs virtual filesystems and partial clones; trunk-based development
+    pushes CI to its logical extreme (everyone commits to main continuously behind flags); the
+    merge-versus-rebase debate is really a question about whether history should record intention or
+    outcome. <strong>Formal methods</strong> are the discipline's high church: specifications as maths,
+    proofs of correctness (the seL4 microkernel; AWS's use of TLA+ for S3), and property-based testing
+    (generate thousands of random inputs, check invariants) as the affordable middle. <strong>Supply-chain
+    security</strong> is the decade's hard problem: modern software is assembled from thousands of
+    dependencies, so one compromised library (the 2024 xz-utils backstring saga is the canonical recent
+    case) poisons everything downstream — signing, SBOMs (software bills of materials) and reproducible
+    builds are the countermeasures. Open questions: can AI-generated code be reviewed at the rate it is
+    produced (review is already the bottleneck); do the DORA metrics generalise to research code; and
+    what does "technical debt" mean when much of the codebase was written by models? The practices in
+    this lesson — history, tests, review, small batches — are the field's current answers, and each is
+    under active revision.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Brooks, <em>The Mythical Man-Month</em> (1975); Knuth (1974); Chacon &amp; Straub, <em>Pro Git</em>; Google Engineering Practices documentation; DORA State of DevOps reports.</p>
+
+  <Widget no="2" caption="check yourself: channels, conflicts, and the test pyramid" widget="quiz" config={sweQuiz} />
 </TopicPage>

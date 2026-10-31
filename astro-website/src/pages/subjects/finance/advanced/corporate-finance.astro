@@ -10,25 +10,216 @@ const corpfinCfg = {
     { math: '4 · Real frictions drive real choices', note: 'Tax shield favours debt; bankruptcy costs and financial distress favour equity; agency costs (managers hoarding cash vs over-borrowing) pull both ways. Observed structures are the equilibrium of these forces.' },
   ],
 };
+
+const corpfinQuiz = {
+  questions: [
+    {
+      q: "A firm has market equity of 800, debt of 200, cost of equity 12%, pre-tax cost of debt 6%, and a 25% tax rate. What is its WACC?",
+      choices: ["10.8%", "10.5%", "9.0%", "11.2%"],
+      answer: 1,
+      why: "WACC = 0.8 × 12% + 0.2 × 6% × (1 − 0.25) = 9.6% + 0.9% = 10.5%. Choosing 10.8% means you forgot the tax shield on interest — the single most common exam error.",
+    },
+    {
+      q: "In the frictionless Modigliani–Miller world, what happens to a firm's total value when it swaps equity for debt?",
+      choices: [
+        "It rises, because debt is cheaper than equity",
+        "It falls, because debt adds risk",
+        "Nothing changes — investors can replicate leverage themselves",
+        "It doubles, because leverage doubles returns",
+      ],
+      answer: 2,
+      why: "Proposition I: with perfect markets the pie is sliced differently but stays the same size. Cheap debt is exactly offset by the rise in the required return on the remaining equity.",
+    },
+    {
+      q: "A supplier offers terms of 2/10 net 30. You can borrow at 10% a year. What should you do?",
+      choices: [
+        "Pay at day 30 — free credit is free",
+        "Pay at day 10 — forgoing the discount costs about 37% annualised",
+        "Pay at day 15 as a compromise",
+        "It makes no difference to value",
+      ],
+      answer: 1,
+      why: "Skipping the discount costs 2 to borrow 98 for 20 extra days: (2/98) × (365/20) ≈ 37% a year. Borrow at 10% and take the discount — you pocket roughly 27 points.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/finance/advanced/corporate-finance">
   <h2>The idea</h2>
   <p>
-    Corporate finance answers <strong>three questions for a firm: which projects to invest in
-    (NPV), how to fund them (debt vs equity), and what to return to owners (dividends vs
-    buybacks)</strong>. The framework is the NPV lesson plus a capital-structure theory — with
-    Modigliani–Miller proving that in a frictionless world none of it matters, and real frictions
-    proving that in ours, all of it does.
+    You can now discount a cash flow, price a bond, and explain why diversification kills risk without
+    touching expected return. Corporate finance is where those tools meet a live balance sheet and a real
+    management team. It answers <strong>three questions: which projects to invest in, how to fund them, and
+    what to return to owners</strong>. The first question is applied NPV — you have the machinery already.
+    The second is capital structure, and it comes with the most famous "it doesn't matter" result in all of
+    social science. The third looks trivial and turns out to be a signalling game. The syllabus unit
+    (governance, investing and financing decisions, leverage, working capital) is exactly this territory, and
+    we will take each piece in turn.
   </p>
 
   <Widget no="1" caption="capital structure, WACC, and the irrelevance theorem that organises everything" widget="equationStep" config={corpfinCfg} />
 
-  <h2>Decisions in practice</h2>
-  <ul>
-    <li><strong>Project selection:</strong> NPV positive → invest; mutually exclusive → highest NPV; capital-rationed → profitability index ranking. Simple rules, honest inputs (the hard part).</li>
-    <li><strong>Dividends vs buybacks:</strong> economically similar at fair prices; buybacks are flexible and tax-efficient in many systems, dividends are commitments. Payout policy signals management's confidence about future cash.</li>
-    <li><strong>M&A and valuation:</strong> acquisitions price companies by discounted cash flows and multiples — and most destroy acquirer value (synergy optimism is the recurring villain). The evidence is sobering and well documented.</li>
-    <li><strong>Working capital:</strong> the least glamorous decision — receivables, inventory, payables timing — is where cash-flow crises actually happen (the business ladder's operations lesson connects).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Modigliani & Miller (1958); Brealey, Myers & Allen; Graham & Harvey, "The Theory and Practice of Corporate Finance" (2001).</p>
+  <h2>Investing decisions: which projects earn their keep</h2>
+  <p>
+    The rule you know — take projects with positive NPV — hides the real difficulty: choosing the discount
+    rate. Watch how sensitive the answer is. A project costs 1,000 today and pays 300 a year for four years.
+    At a 10% hurdle, the discount factors are 0.9091, 0.8264, 0.7513 and 0.6830, summing to 3.1699, so the
+    present value is 951.0 and the NPV is <strong>−49.0</strong>. Drop the hurdle to 8% and the factors sum to
+    3.3121, giving 993.6 — still negative. At 7% the sum is 3.3872, the PV is 1,016.2, and the NPV turns
+    <strong>positive at +16.2</strong>. The internal rate of return sits near 7.7%. Whether this project is
+    good or bad is not a fact about the project alone; it is a fact about the project <em>relative to its cost
+    of capital</em>, which is why the next two sections matter more than the arithmetic.
+  </p>
+  <p>
+    Three refinements cover almost all practical cases. <strong>Mutually exclusive projects</strong>: when you
+    can do only one, pick the highest NPV, not the highest IRR — a small kiosk can have a spectacular IRR and
+    still add less value than a duller, larger factory. <strong>Capital rationing</strong>: when the budget is
+    fixed, rank by the profitability index, PI = PV of inflows ÷ investment. Suppose 1,000 is available and
+    project A needs 300 to return 450 (PI 1.5, NPV 150), B needs 500 to return 700 (PI 1.4, NPV 200), and C
+    needs 400 to return 560 (PI 1.4, NPV 160). Greedy PI-ranking takes A then B (350) and leaves no room for C —
+    but B plus C together yield 360 on 900 spent. PI is a superb heuristic, not an optimizer; with "lumpy"
+    indivisible projects you sometimes have to search combinations. <strong>Timing</strong>: the NPV rule
+    already handles it, which is precisely why we use NPV and not payback period.
+  </p>
+  <p><em>Common misconception:</em> IRR is not "the return you earn on the project." Implicitly it assumes
+  intermediate cash flows are reinvested <em>at the IRR itself</em> — at 40% IRR that assumption is fantasy.
+  NPV assumes reinvestment at the discount rate, which is the honest, attainable rate. IRR also breaks down
+  entirely when cash flows change sign more than once (mining projects: build, harvest, clean up), producing
+  two or more IRRs and no way to choose between them.</p>
+
+  <h2>The cost of capital: pricing debt and equity</h2>
+  <p>
+    The hurdle rate comes from the funding mix. <strong>Debt</strong> is contractually cheap: lenders take
+    priority in bankruptcy, so they demand less — and interest is tax-deductible, so a 6% coupon costs an
+    after-tax 4.5% at a 25% tax rate. <strong>Equity</strong> is the residual claim: shareholders are paid
+    last, so they demand the most, estimated with the CAPM (risk-free rate plus beta times the equity risk
+    premium). The blend is the <strong>Weighted Average Cost of Capital</strong>:
+  </p>
+  <p>
+    WACC = (E/V) × r<sub>E</sub> + (D/V) × r<sub>D</sub> × (1 − t), with weights taken at <em>market</em> values.
+    Worked example: market equity E = 800 at r<sub>E</sub> = 12%, debt D = 200 at r<sub>D</sub> = 6%, tax rate
+    25%, so V = 1,000. Then WACC = 0.8 × 12% + 0.2 × 6% × 0.75 = 9.6% + 0.9% = <strong>10.5%</strong>. Notice
+    the two classic slips: using book values instead of market values (a firm whose shares have tripled since
+    issuance still gets weights from today's prices), and forgetting the (1 − t) factor on debt only — interest
+    is the tax-deductible flow, dividends are not.
+  </p>
+
+  <h2>Modigliani–Miller: the theorem that organises everything</h2>
+  <p>
+    In 1958 Modigliani and Miller proved something outrageous-sounding: in a perfect market — no taxes, no
+    bankruptcy costs, no information problems — <strong>the value of a firm is independent of how it is
+    financed</strong>. The intuition is the "homemade leverage" argument: if a levered firm were worth more
+    than an unlevered one, an investor could borrow personally to buy the unlevered firm and replicate the
+    levered payoffs more cheaply, so arbitrage closes the gap. The pie is the same size however you slice it.
+  </p>
+  <p>
+    Their <strong>Proposition II</strong> explains why "debt is cheaper" is not a free lunch: the required
+    return on equity rises linearly with leverage, r<sub>E</sub> = r<sub>A</sub> + (D/E) × (r<sub>A</sub> −
+    r<sub>D</sub>), where r<sub>A</sub> is the firm's overall (unlevered) return. Take r<sub>A</sub> = 10% and
+    r<sub>D</sub> = 6%. With no debt, equity holders get 10%. With D/E = 1 (half debt), they demand 10% +
+    1 × 4% = <strong>14%</strong>. Check the blend: 0.5 × 14% + 0.5 × 6% = 10% — exactly unchanged. Debt is
+    cheaper per unit, but it makes every remaining unit of equity riskier and more expensive, in precisely
+    offsetting proportion.
+  </p>
+  <p>
+    Everything real enters when you add back the frictions MM assumed away. With corporate taxes the levered
+    firm is worth more: V<sub>L</sub> = V<sub>U</sub> + t<sub>C</sub> × D, because the government effectively
+    co-invests in the debt portion — our example's 200 of debt shelters 200 × 25% = 50 of value. Against that
+    stands the cost of <em>financial distress</em>: as leverage rises, the probability of bankruptcy and its
+    direct (lawyers, fire sales) and indirect (customers flee, suppliers demand cash) costs eat the tax shield.
+    Observed capital structures sit at the margin where the last unit of debt's shield equals its expected
+    distress and agency cost.
+  </p>
+  <p><em>Common misconception:</em> "debt is cheaper than equity, so highly levered firms have a lower WACC and
+  should borrow to the max." The first clause is true and the conclusion is false: leverage raises r<sub>E</sub>
+  mechanically (Proposition II), and past some point expected distress costs raise the cost of debt too. Firms
+  that lever up for the tax shield alone discover the shield is worthless precisely when cash flows — and hence
+  taxable profits — disappear.</p>
+
+  <h2>Leverage: magnifying both directions</h2>
+  <p>
+    Leverage is an amplifier with no polarity switch. Put 1,000 into a business earning EBIT of 120 (a 12%
+    return on assets). Financed entirely with equity, the owners earn 12%. Financed with 500 of debt at 6%
+    (interest 30) and 500 of equity, the good-year return on equity is (120 − 30) / 500 = <strong>18%</strong>.
+    Now the downturn arrives and EBIT halves to 60: unlevered owners earn 6%, but levered owners earn
+    (60 − 30) / 500 = <strong>6%</strong> — the amplifier gave them +6 points in the up year and took 6 away in
+    the down one. The formal measure is the degree of financial leverage, DFL = EBIT / (EBIT − interest) =
+    120 / 90 ≈ 1.33: every 10% fall in EBIT produces a 13.3% fall in earnings per share. The same logic runs at
+    the operating line before any financing: high fixed costs create <em>operating</em> leverage, so a
+    software firm (fixed costs high, marginal costs near zero) swings harder with demand than a corner shop.
+    A firm with both leverages stacked is exposed to compounding shocks.
+  </p>
+
+  <h2>Working capital: where firms actually die</h2>
+  <p>
+    Profitable companies go bust for one banal reason: cash arrives later than it must leave. The
+    <strong>cash conversion cycle</strong> measures the gap. A firm holds inventory 60 days on average (DIO),
+    collects from customers 45 days after sale (DSO), and pays suppliers after 40 days (DPO). Cash is locked up
+    for 60 + 45 − 40 = <strong>65 days</strong>. On revenue of 7.3 million, that ties up roughly
+    7.3 × 65 / 365 ≈ <strong>1.3 million</strong> of permanent funding. Squeeze DSO to 30 days and you release
+    7.3 × 15 / 365 ≈ 0.3 million — free capital, no new investors required, which is why receivables discipline
+    is the CFO's cheapest financing source.
+  </p>
+  <p>
+    Trade credit has a price too, and it is often astonishing. Terms of "2/10 net 30" mean: pay in 10 days for a
+    2% discount, otherwise pay in full at day 30. Skipping the discount means paying 2 to borrow 98 for 20 extra
+    days, an annualised cost of (2/98) × (365/20) ≈ <strong>37%</strong>. Any firm that can borrow at 10% should
+    borrow and pay early. Managers who "stretch payables to help cash flow" are frequently borrowing at credit-card-and-worse rates without ever seeing the number on a statement.
+  </p>
+
+  <h2>Governance and payout: the people problem</h2>
+  <p>
+    Berle and Means pointed out in 1932 that the modern corporation separates ownership (dispersed shareholders)
+    from control (professional managers), creating the <strong>agency problem</strong>: managers may prefer
+    empires, perks, or quiet lives to shareholder value. Governance is the toolkit of responses — an independent
+    board, audited accounts, incentive pay tied to value, debt that disciplines free cash flow, and the market
+    for corporate control, where an under-managed firm's cheap shares invite a takeover. Every financing choice
+    has a governance shadow: too much cash invites waste, too much debt invites under-investment in good projects,
+    and payout policy is the pressure valve.
+  </p>
+  <p>
+    <strong>Dividends versus buybacks</strong> are, at fair prices, economically identical. A firm worth 100
+    million with 1 million shares at 100 pays a 10 million dividend: the share price drops to 90 on the ex-date
+    and the shareholder holds 90 plus 10 of cash. Instead it repurchases 100,000 shares at 100: 900,000 shares
+    remain to own a 90 million firm — still worth 100 each. The differences are institutional, not arithmetic:
+    dividends are a commitment (cutting one is read as distress), while buybacks are flexible and, in many tax
+    systems, return cash as capital gains rather than income. Payout choices therefore signal: initiating a
+    dividend says "this cash stream is durable," and large buybacks often say "our shares are cheap" — or,
+    less happily, that managers have run out of positive-NPV projects. Modern buyback programs have grown to
+    hundreds of billions of dollars a year among large US firms, which keeps the signalling debate live.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Two theories compete to explain real capital structures. The <strong>trade-off theory</strong> says firms
+    balance tax shields against distress costs and drift toward a target leverage. The <strong>pecking order</strong>
+    (Myers, 1984; Myers and Majluf, 1984) says information asymmetry dominates: managers know more than investors,
+    so issuing equity when shares may be overvalued would punish existing holders; firms therefore fund projects
+    first with retained earnings, then debt, and issue equity only as a last resort. The striking evidence — the
+    most profitable firms, with the most internal cash, carry the <em>least</em> debt, the opposite of the
+    trade-off prediction — favours the pecking order in many industries. Graham and Harvey's 2001 survey of CFOs
+    found that financial flexibility and credit ratings, not tax shields, top their stated concerns; roughly a
+    third target a leverage range, the rest do not.
+  </p>
+  <p>
+    Three refinements take you to research level. <strong>Adjusted Present Value</strong> (Myers, 1974) values a
+    project as if all-equity financed, then adds financing side-effects (tax shields, subsidised loans) separately —
+    cleaner than forcing one WACC onto messy structures. <strong>The single-hurdle-rate error</strong>: firms that
+    apply company-wide WACC to every project systematically over-invest in risky divisions and under-invest in safe
+    ones, because a 10.5% hurdle is far too low for a speculative venture and far too high for replacing a
+    dependable asset. <strong>Real options</strong>: standard NPV silently assumes you commit now and operate
+    forever, ignoring the option to expand, delay, or abandon; where uncertainty is high and decisions can wait,
+    the option value can overturn an NPV ranking.
+  </p>
+  <p>
+    Open problems keep the field honest. Why do highly profitable firms hoard trillion-dollar cash piles — trade-off
+    theory has no comfortable answer? How does monetary policy transmit through corporate balance sheets (the
+    "financial accelerator" literature)? And does a lower cost of capital genuinely follow from good governance and
+    ESG ratings, or does the observed spread reflect measurement error? Each is a live research program you can
+    now read the literature on.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Modigliani &amp; Miller (1958); Myers, "The Capital Structure Puzzle" (1984); Myers &amp; Majluf (1984); Graham &amp; Harvey, "The Theory and Practice of Corporate Finance" (2001); Brealey, Myers &amp; Allen, <em>Principles of Corporate Finance</em>.</p>
+
+  <Widget no="2" caption="check yourself: the three calculations managers actually get wrong" widget="quiz" config={corpfinQuiz} />
 </TopicPage>

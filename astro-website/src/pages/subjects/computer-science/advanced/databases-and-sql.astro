@@ -11,24 +11,224 @@ const sqlCfg = {
     { math: 'ACID — the trust guarantee', note: 'Transactions are Atomic (all or nothing), Consistent, Isolated, Durable. When a bank transfer debits one account and credits another, ACID is why both happen or neither.' },
   ],
 };
+
+const sqlQuiz = {
+  questions: [
+    {
+      q: "An orders table stores the customer's name and address on every order row. Which anomaly is this design GUARANTEED to produce eventually?",
+      choices: [
+        "Update anomaly — a customer changes address and old orders disagree with new ones",
+        "The database runs slower on every SELECT",
+        "Foreign keys stop working",
+        "None — copying data is harmless",
+      ],
+      answer: 0,
+      why: "Storing a fact in many rows (violating normalisation) means every copy is a chance to disagree: change the address and history silently splits. Store the address once in customers; JOIN when you need it.",
+    },
+    {
+      q: "A transaction debits account A by 100 and credits account B by 100. The server loses power after the first write. Which ACID property prevents the 100 from vanishing?",
+      choices: ["Isolation", "Atomicity (plus durability for the crash)", "Consistency", "Normalisation"],
+      answer: 1,
+      why: "Atomicity makes the two writes one unit — both happen or neither; the write-ahead log makes the outcome durable across the crash. Isolation is about concurrent transactions; consistency is about constraints holding.",
+    },
+    {
+      q: "You add an index on the orders.status column, which takes 6 values and appears in every WHERE clause. What actually happens?",
+      choices: [
+        "All queries get faster",
+        "Range queries on status speed up marginally, but the index wastes space and taxes every insert — low cardinality columns index poorly",
+        "Writes get faster too, since lookups are faster",
+        "The database automatically drops useless indexes",
+      ],
+      answer: 1,
+      why: "With 6 distinct values across millions of rows, each index entry still points at ~1/6 of the table — barely better than a scan, while every INSERT must now update the index too. Index selectivity (cardinality) is the real design variable.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/databases-and-sql">
   <h2>The idea</h2>
   <p>
-    A <strong>relational database</strong> stores data in tables whose shapes are enforced by a
-    schema, queried with SQL — and it guarantees things spreadsheets can't: consistency, safe
-    concurrent access, durability after crashes. Nearly every serious application on Earth sits
-    on one; SQL, designed in 1974, remains the most durable skill in computing.
+    Every serious application — banking, booking, medical records — sits on a <strong>relational
+    database</strong>: data in typed tables, shaped by a schema, queried in SQL, and wrapped in guarantees
+    spreadsheets cannot make (safe concurrent access, integrity by construction, durability after crashes).
+    The design skill splits in two: <strong>schema design</strong> (how to store each fact exactly once, with
+    enforced relationships) and <strong>querying</strong> (how to reassemble those facts into any view you
+    need, fast). Codd's 1970 model and SQL from 1974 are still the substrate — making this among the most
+    durable skills in computing.
   </p>
 
   <Widget no="1" caption="the five SQL sentences that cover 90% of real work" widget="equationStep" config={sqlCfg} />
 
-  <h2>Design decisions that echo for years</h2>
-  <ul>
-    <li><strong>Normalise first:</strong> store each fact once (customer address lives in the customers table, not copied into every order). Denormalise later, deliberately, for speed — with eyes open about the staleness risk.</li>
-    <li><strong>Primary and foreign keys:</strong> every row uniquely identified; references between tables enforced. The database refuses orphan records — integrity by construction.</li>
-    <li><strong>Indexes are lookup accelerators</strong> (usually B-trees): instant queries, slower writes, more storage. Index the columns you filter and join on; every extra index taxes every insert.</li>
-    <li><strong>Beyond relational:</strong> document stores (JSON-native), key-value caches (Redis), graph databases (networks) — each trades the relational guarantees for a different shape of convenience. Choose by access pattern, not fashion.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data" (1970); Chamberlin & Boyce (1974); PostgreSQL documentation.</p>
+  <h2>Tables, types and keys: integrity by construction</h2>
+  <p>
+    A relational database stores data in <strong>relations</strong> (tables of rows, each row a tuple) whose
+    columns have <strong>declared types</strong> — INTEGER, DECIMAL, TEXT, DATE, BOOLEAN. Types are not
+    decoration: they constrain what can enter ("quantity = -5" or "price = 'banana'" is refused at the
+    door), fix storage layout and comparison behaviour (DECIMAL for money, because binary floats cannot
+    represent 0.1 exactly — a genuine bug class), and make indexes possible. A <strong>primary key</strong>
+    uniquely identifies each row — either a natural key that exists in the world (ISBN, national ID) or a
+    surrogate (an auto-incrementing id) chosen precisely because worldly identifiers change; the professional
+    default is surrogate keys inside, natural unique constraints alongside. A <strong>foreign key</strong>
+    declares that orders.customer_id must match some customers.id — and the database then <em>refuses</em>
+    to insert an order for a nonexistent customer or delete a customer who still has orders. This is the
+    syllabus's single-table topic generalised correctly: even a one-table database benefits from typed
+    columns and a declared key; multi-table systems add enforced references.
+  </p>
+
+  <h2>Normalisation: the anomaly that justifies the theory</h2>
+  <p>
+    The one-table spreadsheet looks simpler — orders with columns order_id, customer_name, customer_address,
+    product, qty — until the <strong>anomalies</strong> bite. <strong>Update anomaly</strong>: a customer
+    moves house; you change the address on order 4,417 but miss 4,301 — the table now disagrees with itself.
+    <strong>Insert anomaly</strong>: a new customer with no orders cannot exist in a table keyed by order.
+    <strong>Delete anomaly</strong>: cancel their only order and the customer vanishes from your records.
+    The cure is <strong>normalisation</strong>: one fact, one place. Split into customers(id, name,
+    address), products(id, name, price), orders(id, customer_id, order_date), order_items(order_id,
+    product_id, qty) — first normal form (atomic values, no repeating groups), then the deeper forms
+    (2NF, 3NF) remove facts that depend on only part of a key or on other non-key columns; the practical
+    target is 3NF. The cost is paid at query time: the "who bought what" view now requires JOINs. The
+    mature position: normalise by default, denormalise <em>deliberately</em> for measured performance,
+    accepting the staleness risk with eyes open.
+  </p>
+
+  <h2>SQL and joins: reassembling the view</h2>
+  <p>
+    SQL is declarative — you state <em>what</em> you want, the engine decides <em>how</em>. Worked query on
+    the schema above: which customers spent more than 500 this year?
+  </p>
+  <p>
+    SELECT c.name, SUM(oi.qty * p.price) AS total FROM orders o JOIN order_items oi ON oi.order_id = o.id
+    JOIN products p ON p.id = oi.product_id JOIN customers c ON c.id = o.customer_id WHERE o.order_date
+    >= '2026-01-01' GROUP BY c.name HAVING SUM(oi.qty * p.price) > 500 ORDER BY total DESC;
+  </p>
+  <p>
+    Read the machinery inside it. <strong>INNER JOIN</strong> matches rows on the keys and drops
+    non-matches — customers with no orders this year disappear, which may be exactly wrong for the question
+    ("who did <em>not</em> buy?" needs a LEFT JOIN, which keeps all left rows and fills missing right rows
+    with NULL — the single most useful join distinction). <strong>GROUP BY</strong> collapses matched rows
+    into buckets and aggregates (SUM, COUNT, AVG) per bucket; <strong>HAVING</strong> filters the buckets
+    after aggregation (WHERE filters rows before). Watch the NULL semantics: "status <> 'shipped'" silently
+    drops rows whose status is NULL, because NULL compares unknown — a bug class every professional has
+    met. One declarative sentence; the engine chooses scan or index, join order and hash versus nested loops.
+  </p>
+
+  <h2>Indexes: trading writes for reads</h2>
+  <p>
+    An index is a B-tree built over a column (the data-structures lesson's disk tree, applied): lookups and
+    range scans on indexed columns drop from a full table scan (O(n) rows read) to O(log n) node touches —
+    a 10-million-row lookup in 3–4 block reads instead of millions. The tax: every INSERT and UPDATE must
+    also update every index, and each index consumes storage. The design variable is <strong>selectivity</strong>
+    (cardinality): an index on customer_id (highly varied) is gold; one on a 6-value status column barely
+    beats a scan while still taxing every write. Index the columns you filter, join and sort on; measure
+    with the planner (EXPLAIN), not folklore.
+  </p>
+  <p><em>Common misconception:</em> "add an index and the query gets faster." Sometimes it gets slower (the
+  planner may still scan if the index is unselective), and writes always get slower. Indexes are a
+  read/write arbitrage, priced per insert.</p>
+
+  <h2>Transactions: the ACID guarantee</h2>
+  <p>
+    A <strong>transaction</strong> groups statements into one all-or-nothing unit, with four properties.
+    <strong>Atomicity</strong>: the transfer debits account A by 100 and credits B by 100 — if the server
+    dies after the first write, the write-ahead log rolls the half-transaction back; money never evaporates.
+    <strong>Consistency</strong>: constraints (foreign keys, checks) hold before and after — no transaction
+    leaves a negative balance if the schema forbids one. <strong>Isolation</strong>: concurrent
+    transactions do not see each other's intermediate states — the classic anomalies it prevents are the
+    <em>dirty read</em> (reading another transaction's uncommitted data that may be rolled back) and the
+    <em>lost update</em> (two transactions read the same balance, both add 50, both write — one increment
+    vanishes). <strong>Durability</strong>: once committed, the transaction survives crashes — it is in the
+    log, not just in RAM. Isolation is a spectrum, not a binary: SQL defines levels from READ UNCOMMITTED
+    to SERIALIZABLE, and production systems commonly use READ COMMITTED or REPEATABLE READ, trading
+    anomaly risk for concurrency; modern engines deliver it with locking or MVCC (multi-version concurrency
+    control — readers never block writers), which is why one busy PostgreSQL database can serve thousands
+    of simultaneous sessions honestly.
+  </p>
+
+  <h2>A worked migration: from spreadsheet to schema</h2>
+  <p>
+    The normalisation theory becomes concrete on a real artefact. Take a school register spreadsheet:
+    one row per enrolment, columns student_name, student_dob, tutor_name, tutor_room, course_title,
+    grade. The anomalies are already visible (the tutor's room changes and 400 rows need editing; a
+    student with no courses cannot exist; deleting the last enrolment erases the student). The migration,
+    step by step: <strong>identify entities</strong> (students, tutors, courses, enrolments — the nouns
+    with their own identity); <strong>assign keys</strong> (surrogate ids for each); <strong>move
+    attributes to the entity they describe</strong> (dob belongs to students; room to tutors); and
+    <strong>model the relationship as its own table</strong> — enrolments(student_id, course_id, grade),
+    because a student's relationship to a course is itself a fact with attributes. The result is four
+    tables joined by foreign keys, update-proof by construction: the tutor's room exists once; history
+    (a grade belongs to a specific enrolment, not to a name) is preserved; and the "who takes what"
+    view is one join away. The migration is the syllabus's single-table topic graduate: the same data,
+    reorganised around facts rather than rows-of-convenience.
+  </p>
+
+  <h2>Writing data: constraints, upserts and windows</h2>
+  <p>
+    Reads are half the language. <strong>INSERT, UPDATE, DELETE</strong> run inside the transaction
+    machinery, and constraints turn business rules into database-enforced facts: UNIQUE prevents double
+    enrolment, CHECK (grade IN ('A','B','C','D','F')) refuses typos, NOT NULL documents what is truly
+    required. Two power tools separate intermediate from advanced SQL. <strong>Upserts</strong>
+    (INSERT ... ON CONFLICT DO UPDATE in PostgreSQL) express "create or refresh" as one atomic
+    statement — no read-then-write race. <strong>Window functions</strong> aggregate <em>without
+    collapsing rows</em>: SELECT name, grade, RANK() OVER (PARTITION BY course_id ORDER BY grade DESC)
+    gives every student their rank within their course while keeping all rows visible — impossible with
+    plain GROUP BY, and the workhorse of analytics SQL (running totals, month-over-month deltas,
+    top-N-per-group). The design habit to carry: when a query becomes a nested subquery pile, it is
+    usually asking for a join restructure or a window function — the language rewards reformulation
+    over nesting.
+  </p>
+
+  <h2>Designing the query: a planner's-eye pass</h2>
+  <p>
+    Since the planner chooses <em>how</em>, learn to predict its choices. For the customer-spending query
+    above with 10 million orders, the planner's decision sequence: filter early (apply the date predicate
+    first, if an index on order_date exists — cutting rows before the expensive joins); pick join
+    algorithms (a <strong>hash join</strong> builds an in-memory table of the smaller side and probes
+    with the larger — good for big unsorted inputs; a <strong>nested loop</strong> with an index on the
+    inner side wins when the outer side is small, as after a selective filter); choose join
+    <em>order</em> to keep intermediate row counts small (joining customers to the already-filtered
+    orders, not the reverse). Compare with the naive execution — join everything, filter at the end —
+    which touches every row of every table. The habit that follows: write SQL by stating the
+    <em>logical</em> question, then read EXPLAIN to see the physical plan, and fix data problems (missing
+    indexes, stale statistics, functions wrapped around indexed columns — which disable index use)
+    rather than rewriting the query into ever-cleverer forms. The database is usually better at
+    restructuring than you are; your job is to give it something well-modelled and well-measured.
+  </p>
+
+  <h2>Data types, worked: why the choice bites</h2>
+  <p>
+    The syllabus's "data types" topic deserves its consequences spelled out. <strong>Money in
+    DECIMAL</strong>: binary floats represent 0.1 approximately (0.1 + 0.2 = 0.30000000000000004), so
+    pricing arithmetic in floats accumulates errors that audits find and courts punish; DECIMAL stores
+    exact base-10 digits. <strong>Dates as DATE, not strings</strong>: '2026-03-05' sorts correctly as
+    text only by ISO luck; a typed DATE gives range queries, indexing and arithmetic ("30 days ago") for
+    free and rejects '5 March' at the door. <strong>Booleans and enums</strong>: a status column typed
+    as an enumerated set documents the state machine in the schema itself and makes invalid states
+    unrepresentable. <strong>Fixed vs variable text</strong> (CHAR vs VARCHAR) trades padding for
+    flexibility — a two-letter country code wants CHAR(2). The meta-principle: <strong>types are the
+    cheapest constraints you will ever buy</strong> — enforced at every insert by every client, needing
+    no application code, surviving the next developer who has not read your comments. Schema is policy;
+    a well-typed table is an application that partly enforces its own correctness.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Inside the query planner.</strong> A database does not run your SQL; it optimises it. The
+    planner estimates selectivities from statistics, enumerates join orders (for 8 tables, 17,000 orderings
+    — heuristics required), and picks scan and join algorithms from cost models; reading EXPLAIN output is
+    the professional's debugging skill, and a "fast query" is really "a plan the planner could estimate
+    well" (stale statistics are the classic cause of sudden slowness). <strong>Beyond one machine</strong>:
+    the CAP theorem proves a distributed database cannot simultaneously guarantee consistency and
+    availability under network partition — so the NoSQL landscape is a choice space: document stores
+    (MongoDB) trade joins for flexible schema; key-value stores (Redis) trade query richness for
+    microsecond caches; wide-column stores (Cassandra) trade transactions for write scale; graph databases
+    model networks natively. The professional heuristic stands: choose by access pattern, not fashion — and
+    notice that "eventually consistent" is a product decision made visible to users, not a technicality.
+    <strong>Open problems</strong>: HTAP systems serving analytics and transactions on one copy; learning-
+    based query optimisers; and the long-running empirical question of whether any interface will displace
+    SQL — fifty years of challengers have so far only enriched it.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data for Large Shared Data Banks" (1970); Chamberlin &amp; Boyce (1974); PostgreSQL documentation; Silberschatz, Korth &amp; Sudarshan, <em>Database System Concepts</em>.</p>
+
+  <Widget no="2" caption="check yourself: anomalies, ACID in a crash, and index selectivity" widget="quiz" config={sqlQuiz} />
 </TopicPage>

@@ -10,24 +10,168 @@ const heatCfg = {
     { math: '4 · Case hardening: a hard skin on a tough core', note: 'Carburising (diffuse carbon into the surface — the diffusion lesson, industrially) then quench: gear teeth with hard wears-resistant cases over tough shock-absorbing cores. The surface and the bulk get different jobs — materials design at the component level.' },
   ],
 };
+
+const heatQuizCfg = {
+  questions: [
+    { q: 'Carbon diffusing in austenite: raising the furnace from 900 °C to 1000 °C speeds diffusion by roughly…', choices: ['10%', '3×', '100×', 'no change'], answer: 1, why: 'Arrhenius: D = D₀·exp(−Q/RT). For C in γ-iron (Q ≈ 148 kJ/mol) the exponent shifts enough that D roughly triples per 100 °C — which is why case-hardening furnaces fight for every degree.' },
+    { q: 'The typical diffusion penetration depth scales as…', choices: ['D·t', '√(D·t)', 't/D', 'exp(D·t)'], answer: 1, why: 'Fickian profiles spread with the error-function solution; the characteristic distance is √(Dt). At 1000 °C, carbon penetrates about 0.27 mm in an hour — case depth is time-budgeted.' },
+    { q: 'Martensite is hard because…', choices: ['it is a new equilibrium phase from the diagram', 'quenching traps carbon in a distorted lattice full of obstacles that block dislocations', 'it contains more carbon than before', 'quenching removes impurities'], answer: 1, why: 'The chemistry did not change — carbon atoms locked into interstitial sites strain the lattice into BCT, and that congestion is what dislocations cannot get through. Hardness from trapped disequilibrium, not new composition.' },
+    { q: 'Tempering a quenched steel means…', choices: ['cooling it even faster', 're-heating to 150–650 °C to relax martensite — trading some hardness for toughness', 'adding carbon', 'melting the surface'], answer: 1, why: 'Fresh martensite is brittle and full of quench stress. Re-warming lets fine carbides precipitate and strains relax: hardness drops a little, toughness rises a lot. Quench-then-temper is the package deal.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/materials-science/advanced/heat-treatment">
   <h2>The idea</h2>
   <p>
-    Heat treatment is <strong>microstructure by itinerary</strong>: same chemistry, different
-    temperature–time path, completely different material. The blacksmith\'s hammer-hiss was this
-    lesson in empirical form; the diagram lesson gave it a map, and modern metallurgy turned the
-    oven into a precision instrument.
+    Heat treatment is <strong>microstructure by itinerary</strong>: identical chemistry, a
+    different temperature–time path, a different material. A eutectoid steel can be soft
+    enough to machine or hard enough to cut glass depending on nothing but how fast it was
+    cooled from 800 °C. The blacksmith's hiss of a blade entering the quench tank was this
+    lesson in empirical form; the phase-diagram lesson supplied the map, and this lesson adds
+    the physics the map leaves out — <strong>time</strong>. Two forces set every treatment:
+    thermodynamics says which state the atoms <em>want</em>, and diffusion sets how fast they
+    can <em>get there</em>. Heat treatment is the deliberate engineering of the race between
+    them.
   </p>
 
   <Widget no="1" caption="quench, temper, anneal, case-harden" widget="equationStep" config={heatCfg} />
 
-  <h2>The craft, modernised</h2>
-  <ul>
-    <li><strong>Why Samurai swords are materials science:</strong> folded steel with a clay-coated differential quench — hard edge, tough spine, visible hamon line: the quench-temper compromise discovered centuries before the diagram explained it (the metallurgy lesson\'s history).</li>
-    <li><strong>Distortion and cracking are the costs:</strong> quenches are violent (thermal shock — the Ashby lesson\'s thermal-stress index); salts, oils and polymers moderate cooling curves; press-quenching jigs hold shapes. Half of heat-treatment engineering is managing the violence of the other half.</li>
-    <li><strong>Precipitation hardening — the aerospace trick:</strong> alloying elements dissolved at high temperature, then aged at low temperature to precipitate nano-particles that pin dislocations — aluminium and superalloys gain strength from scheduled nano-precipitation (the defect lesson, weaponised).</li>
-    <li><strong>Additive manufacturing rewrites the recipes:</strong> 3-D-printed metals undergo their own micro-welding thermal cycles — treating the whole part (hot isostatic pressing, stress relief) is the frontier: the map lesson\'s itineraries applied to a printing process.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Callister; ASM Handbook Vol. 4 (Heat Treating); the phase-diagram lesson of this ladder.</p>
+  <h2>Diffusion I: the mechanism and Fick's laws</h2>
+  <p>
+    Atoms in a crystal move by <strong>hopping</strong>: an atom swaps places with a vacancy
+    (substitutional diffusion — slow, needs vacancies) or squeezes between lattice sites
+    (interstitial diffusion — the carbon-in-iron case, much faster because carbon is tiny).
+    Either way motion is a biased random walk down the concentration gradient, which Fick
+    wrote as a law: <strong>flux J = −D·(dC/dx)</strong> — atoms flow from where they are
+    concentrated to where they are not, at a rate proportional to the gradient, scaled by the
+    <strong>diffusivity</strong> D. The unsteady version, Fick's second law, describes the
+    gradient itself smoothing over time, and its solutions carry the field's most useful
+    rule of thumb: the characteristic penetration depth grows as <strong>√(Dt)</strong>.
+    Quadruple the time and the case deepens only twofold; the arithmetic of every
+    carburising schedule follows from that square root.
+  </p>
+  <p>
+    D itself obeys an Arrhenius law, D = D₀·exp(−Q/RT), because every hop must clear an
+    energy barrier. Worked example, carbon in FCC iron (austenite): D₀ ≈ 2.3 × 10⁻⁵ m²/s
+    with activation energy Q ≈ 148 kJ/mol. At 900 °C (1173 K) the exponential gives
+    D ≈ 5.9 × 10⁻¹² m²/s; at 1000 °C (1273 K), D ≈ 1.9 × 10⁻¹¹ m²/s — a hundred-degree
+    furnace change buys a <strong>3× speed-up</strong>. This is the tyranny and the gift of
+    the exponential: diffusion is pathologically temperature-sensitive, so kilns compete
+    over tens of degrees, and the same sensitivity is why a quench (cool through hundreds
+    of degrees in seconds) can effectively stop atomic motion mid-flight.
+  </p>
+
+  <h2>Diffusion II: time–temperature and the TTT map</h2>
+  <p>
+    The equilibrium phase diagram knows nothing of time; the fix is the
+    <strong>TTT (time–temperature–transformation) diagram</strong>, drawn for one alloy: for
+    each temperature below the austenite field, a curve marks when transformation
+    <em>begins</em> and when it <em>finishes</em>. The curve is C-shaped: at high temperature
+    transformation is slow because the driving force is small; at low temperature it is slow
+    because diffusion is; the fastest transformation sits in the nose of the C (~550 °C for
+    eutectoid steel). Every treatment is a path drawn on this map. <strong>Anneal</strong>:
+    cool slowly down the right side — diffusion keeps pace, coarse <strong>pearlite</strong>
+    forms, maximum softness. <strong>Normalise</strong>: cool faster in air — finer
+    pearlite, uniform grain, a machinable compromise. <strong>Quench</strong>: cool faster
+    than the nose can catch — you miss every equilibrium product and land in a regime the
+    equilibrium diagram does not contain: <strong>martensite</strong>, carbon trapped in a
+    distorted BCT lattice (the FCC-to-BCC transition happens without diffusion, and the
+    trapped interstitials strain it), extremely hard (about 65 HRC) and dangerously brittle.
+    <strong>Temper</strong> finishes the job: re-warming to 150–650 °C lets carbon escape
+    into fine carbides and stresses relax — hardness falls a little (to, say, 55–60 HRC),
+    toughness rises enormously. The classic schedule — quench, then temper — is a
+    thermodynamic cheat followed by a negotiated settlement. A companion diagram, the
+    <strong>CCT</strong> (continuous-cooling) version, adapts TTT to real furnace ramps;
+    and the <strong>Jominy end-quench test</strong> measures a grade's
+    <em>hardenability</em> — how deep below the surface a quench can still outrun the nose,
+    which is alloying's real service: boron or chromium shift the C-curve right, buying the
+    quench more time.
+  </p>
+  <p>
+    <em>Common misconception:</em> quenching makes steel hard because it "cools it fast" or
+    "freezes it strong". Nothing about speed itself adds strength. The quench works by
+    <em>preventing diffusion</em> — it is the mechanical suppression of Fick's law — so that
+    a metastable structure (martensite) forms that equilibrium would never allow. Cool the
+    same steel too slowly and you get soft pearlite no matter how dramatically the water
+    boils.
+  </p>
+
+  <h2>Precipitation hardening: ageing on purpose</h2>
+  <p>
+    The aerospace heat treatment is a slower race, run deliberately. In the Al–Cu system
+    (2024 aluminium), copper dissolves plentifully at ~540 °C but almost not at all at room
+    temperature. The schedule: heat to dissolve (solution treat), quench to trap a
+    <strong>supersaturated solid solution</strong>, then <strong>age</strong> at 150–190 °C —
+    warm enough for copper to migrate, cool enough that equilibrium is still far away. The
+    copper precipitates as nanoscale clusters (Guinier–Preston zones, then metastable θ″/θ′
+    plates) spaced tens of nanometres apart — precisely the obstacle field dislocations
+    cannot slice through cheaply. Strength roughly doubles; the aluminium airframe's
+    strength is a scheduled precipitation, which is also why "T6" appears in the spec sheet.
+    The same physics strengthens nickel superalloys (γ′ precipitates) and the newest
+    high-strength steels. The delicate part is <strong>overageing</strong>: hold too long or
+    too hot and the precipitates coarsen (big ones eat small ones — Ostwald ripening),
+    spacing widens, strength falls. Ageing is a thermostat-and-calendar operation with a
+    peak, and quality control is the discipline of hitting the peak.
+  </p>
+
+  <h2>Case hardening: diffusion as a design tool</h2>
+  <p>
+    A gear tooth wants impossible properties at once — hard, wear-resistant surface;
+    tough, shock-absorbing core. Diffusion resolves the contradiction by giving the part a
+    composition <em>gradient</em>: <strong>carburising</strong> bakes low-carbon steel in a
+    carbon-rich atmosphere at ~900–950 °C, so carbon seeps inward, then quench-and-temper
+    hardens only the carbon-rich skin. Quantify with the rule above: carbon in austenite at
+    950 °C has D ≈ 3–4 × 10⁻¹¹ m²/s, so an hour gives √(Dt) ≈ 0.4 mm of case; overnight,
+    roughly a millimetre — case depth is literally a time bill. Variants: <strong>nitriding</strong>
+    (nitrogen at ~500 °C, below transformation temperature, minimal distortion — used where
+    precision survives) and <strong>flame/induction hardening</strong> (no chemistry — heat
+    only the surface past transformation and quench it before the core notices). Differential
+    quenching is ancient: the Japanese smith's clay-coated blade — thick insulation on the
+    spine, bare steel at the edge — produced hard edge, tough spine and the visible hamon
+    line, centuries before TTT diagrams explained why it worked.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The phase transformations underneath.</strong> Pearlite, bainite and martensite
+    are not phases but <em>transformation products</em> with distinct mechanisms: pearlite
+    grows by coupled diffusion (ferrite and cementite lamellae advancing together — the
+    eutectoid's cooperative front); bainite is a mid-temperature hybrid (shear plus
+    carbon partitioning); martensite is pure shear — a military, diffusionless transformation
+    where the lattice distorts in a coordinated wave, which is why it can outrun any cooling
+    rate and why each martensite plate forms in microseconds. Transformation
+    <strong>nucleation and growth</strong> theory (nucleation barrier ∝ interface energy
+    over driving force; growth ∝ diffusion) unifies all of it, and explains the TTT curve's
+    shape quantitatively. Homogeneous nucleation of a new phase inside a parent grain is so
+    penalised by interface energy that real transformations lean on defects — grain
+    boundaries, dislocations — as nucleation sites; the defect lesson's "flaws" turn out to
+    be the transformation's doorways.
+  </p>
+  <p>
+    <strong>The violence budget.</strong> Quenches are thermal shock: surface contracts
+    around a hot core, generating stresses that warp and crack parts. Half of heat-treatment
+    engineering moderates the other half — oil, salt and polymer quenchants with tuned
+    cooling curves (fast through the nose, slow through martensite start, which is exactly
+    the wrong order for plain water), interrupted quenching (austempering, martempering),
+    press quenching to hold geometry, and cryogenic treatment to finish transforming retained
+    austenite. Additive manufacturing has made this budget central: 3-D-printed metals
+    experience thousands of micro-weld thermal cycles, leaving residual stress and mixed
+    microstructures that post-treatments (stress relief, hot isostatic pressing to close
+    pores, full re-solutionising) must reconcile — process and heat treatment are now one
+    design space, not two.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Predicting martensite-start temperatures and quench
+    distortion from first principles remains partly empirical — distortion simulation is
+    good but not perfect, and "safcracking" (quench cracks in high-carbon grades) still
+    surprises. Diffusion data at the low temperatures of battery electrodes and solder joints
+    is thin but increasingly load-bearing. And the newest frontier is <em>processing
+    without melting</em>: solid-state additive routes and severe plastic deformation create
+    microstructures no furnace itinerary can, challenging the assumption that heat treatment
+    is the only way to reset a metal's internal state. The race between thermodynamics and
+    kinetics still has unexplored tracks.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Callister &amp; Rethwisch, <em>Materials Science and Engineering: An Introduction</em>; Porter &amp; Easterling, <em>Phase Transformations in Metals and Alloys</em>; ASM Handbook Vol. 4, <em>Heat Treating</em>; Krauss, <em>Steels: Processing, Structure, and Performance</em>; the phase-diagram lesson of this ladder.</p>
+  <Widget no="2" caption="check yourself: diffusion, martensite and ageing" widget="quiz" config={heatQuizCfg} />
 </TopicPage>

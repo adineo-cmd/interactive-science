@@ -10,33 +10,189 @@ const mlCfg = {
     { math: '4 · Fix with regularisation and more data', note: 'Simpler models, fewer features, penalties on complexity, cross-validation, or more examples. The bias–variance trade-off is the field\'s central dial.' },
   ],
 };
+
+const mlQuizCfg = {
+  questions: [
+    { q: 'A fraud model flags 200 of 10,000 transactions; 80 flagged are truly fraudulent and there are 100 frauds in total. Its recall is…', choices: ['40%', '80%', '98%', '0.8%'], answer: 1, why: 'Recall = caught ÷ all frauds = 80/100 = 80%. Precision (80/200 = 40%) answers the other question: when we flag, how often are we right?' },
+    { q: '"Always predict not fraud" scores 99% accuracy on a dataset with 1% fraud because…', choices: ['it is a strong model', 'accuracy is dominated by the majority class on imbalanced data', 'fraud is easy to detect', 'the model regularised itself'], answer: 1, why: 'With 9,900 non-frauds, saying "no" every time gets 9,900 right — 99% accuracy while catching zero fraud. Imbalance is why accuracy alone lies.' },
+    { q: 'Train accuracy is 99%, test accuracy is 71%. The most likely diagnosis is…', choices: ['underfitting', 'overfitting', 'the test set is broken', 'the model needs more capacity'], answer: 1, why: 'A big train–test gap is the signature of overfitting: the model memorised training quirks that do not transfer. Remedies: simplify, regularise, or get more data.' },
+    { q: 'Why fit a dumb baseline before any model?', choices: ['to warm up the GPU', 'because beating the majority-class or mean predictor is the minimum bar a model must clear', 'because baselines prevent overfitting', 'because regulators require it'], answer: 1, why: 'The baseline converts "our model works" into "our model works better than the cheapest alternative". Models that fail this bar are adding cost and complexity for nothing.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/data-science/advanced/machine-learning-basics">
   <h2>The idea</h2>
   <p>
     Machine learning is <strong>fitting functions to data and hoping they generalise</strong>.
-    Supervised learning (labelled examples → predict labels), unsupervised (find structure
-    without labels), reinforcement (learn from reward signals). The craft is managing the
-    tension between fitting the training data and generalising beyond it — the bias–variance
-    trade-off.
+    Instead of hand-writing the rule "if income is high and history is clean, approve the
+    loan", you show the algorithm thousands of past decisions and let it find the rule. That
+    inversion — behaviour learned from examples rather than specified by a programmer — is the
+    whole field. Supervised learning trains on labelled examples to predict labels
+    (classification when the answer is a category, regression when it is a number);
+    unsupervised learning hunts for structure in unlabelled data; reinforcement learning learns
+    from reward signals over time. The intermediate tier introduced the vocabulary; this
+    chapter builds the working discipline, using classification — the field's most common task
+    — as the spine.
+  </p>
+  <p>
+    One principle runs the chapter: <strong>the only performance that matters is performance
+    on data the model has never seen</strong>. Everything in the working loop — the split, the
+    baseline, the regulariser, the validation fold — exists to measure and protect that one
+    number, because a function can always fit its own training data; the question is whether
+    it learned the world or memorised the sample.
   </p>
 
   <Widget no="1" caption="the working loop — split, baseline, fit, diagnose, regularise" widget="equationStep" config={mlCfg} />
 
+  <h2>Classification: the task</h2>
+  <p>
+    A classifier eats a feature vector x — for email spam: word frequencies, sender domain,
+    number of links — and outputs a predicted label, usually via <strong>scores per class that
+    are turned into probabilities</strong>. Linear <strong>logistic regression</strong> computes
+    a weighted sum of the features and squashes it through the logistic function to a
+    probability between 0 and 1; the "decision boundary" it learns is a flat surface through
+    feature space. Trees split space by asking sequential questions ("more than 3 links? then
+    contains the word 'free'?"); ensembles of trees vote; neural networks stack learned
+    transformations until the boundary can take almost any shape. All of them are estimators
+    of the same object — the probability of the class given the features — and the differences
+    between them are differences in flexibility, assumptions and cost, not in goal.
+  </p>
+  <p>
+    The classification mindset matters beyond classification. Churn prediction, medical
+    triage, content moderation, lead scoring, even much of "AI" in the news — the shape is
+    always: examples with labels, features that might predict them, a model that scores new
+    cases, and a threshold that turns scores into decisions. Learn this shape once and you can
+    read most of applied machine learning.
+  </p>
+
+  <h2>Train, test, and the generalisation contract</h2>
+  <p>
+    The <strong>train/test split</strong> is the field's founding ritual: hold out (typically)
+    20% of your data, fit on the rest, and evaluate only on the held-out part. The logic is
+    exact. A model is graded on questions it never saw; a high score there is evidence it
+    extracted patterns that <em>transfer</em>, not just patterns that exist. Skip the split and
+    you are grading yourself on questions you memorised — a model as simple as a lookup table
+    scores 100% that way and is worthless. Two refinements complete the picture:
+    <strong>cross-validation</strong> rotates the held-out part through k folds (5-fold CV:
+    train on 80%, test on 20%, five times with different 20%s, average the five scores) so
+    every point is validated and the estimate itself is less lucky; and a
+    <strong>validation set</strong> carved from training data is used for the many decisions
+    you make while modelling — which features, which settings — so the test set stays
+    untouched for the final, honest measurement. Tune against the test set and it silently
+    becomes training data; this "leakage" is the most common way teams fool themselves.
+  </p>
+
+  <h2>Overfitting and the bias–variance dial</h2>
+  <p>
+    Fit a straight line to curvy data and you <strong>underfit</strong>: the model is too
+    rigid to capture the pattern — high error on <em>both</em> training and test data (high
+    bias). Fit a degree-15 polynomial to nine points and you <strong>overfit</strong>: the
+    curve threads every training point exactly and then oscillates wildly between them —
+    near-zero training error, terrible test error (high variance). Between the two, test error
+    traces a U: falling as capacity captures real structure, rising as capacity starts fitting
+    noise. That U is the <strong>bias–variance trade-off</strong>, the central dial of applied
+    machine learning. The diagnostic is pure bookkeeping: always plot training and validation
+    error side by side. Both high — underfit; a large gap between low train and high test —
+    overfit. The gap <em>is</em> the overfitting.
+  </p>
+  <p>
+    The remedies, in the order practitioners reach for them: <strong>more data</strong> (noise
+    averages out while signal persists — the only fix that never hurts); <strong>simpler
+    models or fewer features</strong> (remove the capacity to memorise);
+    <strong>regularisation</strong>, which adds a penalty for complexity to the training
+    objective — shrink all weights a little (L2, ridge) or drive uninformative weights to
+    exactly zero (L1, lasso, which doubles as feature selection); <strong>early
+    stopping</strong>; and ensembling, which averages many imperfect models so their errors
+    partially cancel. Deeper networks get their own toolkit (dropout, weight decay, data
+    augmentation) that the AI ladder covers — but they are all this same lever with different
+    handles.
+  </p>
+  <p>
+    <em>Common misconception:</em> the best model is the one with the highest accuracy on the
+    training data. Training accuracy is nearly free — a sufficiently flexible model can
+    achieve it by rote. The informative number is test performance <em>relative to training
+    performance</em>; a model scoring 85% and 84% beats one scoring 99% and 71% on Tuesday,
+    when real customers arrive.
+  </p>
+
+  <h2>Baselines first</h2>
+  <p>
+    Before any model, build the dumbest reasonable competitor and write its score down.
+    For regression: <strong>predict the mean</strong> of the training labels for everyone
+    (the R² of any model is measured against exactly this). For classification:
+    <strong>predict the majority class</strong>. On a dataset with 1% fraud, "never flag
+    anything" is 99% accurate — a sobering bar that many published "AI fraud detection"
+    results fail to clear once the arithmetic is done. Baselines do three jobs at once: they
+    set the minimum bar (a model that cannot beat the baseline is pure cost); they calibrate
+    your sense of what the numbers mean (on imbalanced data, 99.4% may be a rounding error
+    above useless); and they catch leakage early (a model that only edges out "predict the
+    mean" is telling you the features carry little signal).
+  </p>
+
+  <h2>Evaluation: metrics that match decisions</h2>
+  <p>
+    Accuracy fails on imbalanced data, so classification is judged with the confusion
+    matrix. Worked example — 10,000 transactions, 100 fraudulent; the model flags 200, of
+    which 80 are truly fraudulent:
+  </p>
+  <ul>
+    <li><strong>Precision</strong> = 80/200 = 40% — "when we flag, how often are we right?"</li>
+    <li><strong>Recall</strong> = 80/100 = 80% — "of all real frauds, how many did we catch?"</li>
+    <li><strong>Accuracy</strong> = (80 + 9,720)/10,000 = 98% — and the baseline "flag
+    nothing" scores 99% while catching nothing at all.</li>
+  </ul>
+  <p>
+    Precision and recall pull against each other: raise the flagging threshold and precision
+    rises as recall falls; lower it and the reverse. Which end to favour is not a statistics
+    question but a business one — if a missed fraud costs 100 times a false alarm, you accept
+    a flood of false alarms; if flags trigger manual reviews that cost analyst time, the
+    balance shifts. The <strong>ROC curve</strong> (true-positive rate against false-positive
+    rate as the threshold sweeps) and the area under it summarise the whole trade-off in one
+    picture, and the F1 score (the harmonic mean of precision and recall) compresses it into
+    one number when a dashboard demands one.
+  </p>
+
   <h2>The model families, honestly compared</h2>
   <ul>
-    <li><strong>Linear/logistic regression:</strong> transparent, fast, surprisingly hard to beat on tabular data. Always try first.</li>
-    <li><strong>Tree ensembles (random forest, XGBoost):</strong> the default winners on tabular business data — handle mixed types, missing values and interactions with little tuning.</li>
-    <li><strong>Neural networks:</strong> dominant on images, audio, text — where raw structure matters. Data-hungry and opaque (the AI ladder covers why).</li>
-    <li><strong>k-means / clustering:</strong> the unsupervised default for segmentation — but cluster count and evaluation are judgement calls, not outputs.</li>
+    <li><strong>Linear/logistic regression:</strong> transparent, fast, surprisingly hard to beat on tabular data. Always try first — it is the baseline that is also sometimes the answer.</li>
+    <li><strong>Tree ensembles (random forest, gradient boosting / XGBoost):</strong> the default winners on tabular business data — they handle mixed feature types, missing values and interactions with little tuning.</li>
+    <li><strong>Neural networks:</strong> dominant on images, audio and text, where the raw structure is rich and learned representations pay. Data-hungry, compute-hungry, opaque (the AI ladder covers why).</li>
+    <li><strong>k-means and other clustering:</strong> the unsupervised default for segmentation — but the number of clusters and their meaning are judgement calls, not outputs, and there is no label to validate against.</li>
   </ul>
 
-  <h2>Evaluation is the real skill</h2>
+  <h2>Going deeper</h2>
   <p>
-    Accuracy lies on imbalanced data (fraud at 0.1%: "always say no" is 99.9% accurate).
-    Precision/recall trade-offs, ROC curves, and confusion matrices are the honest instruments —
-    and the metric must match the decision ("missed fraud costs 100× a false alarm" changes the
-    threshold entirely).
+    <strong>The learning-theoretic skeleton.</strong> The bias–variance story has a formal
+    core: expected test error decomposes into bias² (error from wrong assumptions) + variance
+    (error from sensitivity to the particular sample) + irreducible noise. Classical theory
+    (VC dimension, generalisation bounds) predicts overfitting gets worse with capacity — yet
+    modern deep networks with millions of parameters often <em>beat</em> smaller ones on test
+    data even when they can fit noise perfectly ("double descent", and the observation that
+    overparameterised models trained to near-zero training error can generalise). Why this
+    happens is one of the genuinely open questions of the field; implicit regularisation from
+    the optimiser (gradient descent's preference for simple solutions) is the leading
+    explanation. The practical dial still works, but the theory behind the dial is being
+    rewritten.
   </p>
-  <p class="sources"><strong>Sources:</strong> Géron, Hands-On Machine Learning; Hastie et al., Elements of Statistical Learning; scikit-learn documentation.</p>
+  <p>
+    <strong>Where tabular problems resist deep learning.</strong> On images, text and audio,
+    neural networks win decisively; on the tables of business data — thousands of rows, a
+    mix of numeric and categorical columns — gradient-boosted trees remain extremely hard to
+    beat, a result that has held through a decade of challenges. Why: trees encode the
+    irregular per-column semantics (a category is not a number on a line), are insensitive to
+    feature scaling, and need less data. The frontier work — retrieval-augmented models,
+    tabular pretraining — is trying to give networks the same priors trees get free.
+  </p>
+  <p>
+    <strong>Open questions worth tracking.</strong> How far can <em>causal</em> structure be
+    learned from observational data, so that models predict the effect of interventions
+    rather than just correlations? Can models be made to know what they do not know —
+    calibrated uncertainty instead of confident nonsense on out-of-distribution inputs? And
+    how should evaluation itself evolve when the test set leaks into training data at web
+    scale? The craft taught in this chapter — split, baseline, diagnose, regularise — is
+    stable; its boundaries are not.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Géron, <em>Hands-On Machine Learning</em>; Hastie, Tibshirani &amp; Friedman, <em>The Elements of Statistical Learning</em>; Breiman, "Random Forests" (2001); scikit-learn documentation; Belkin et al., "Reconciling modern machine-learning practice and the classical bias–variance trade-off" (2019).</p>
+  <Widget no="2" caption="check yourself: splits, baselines and metrics" widget="quiz" config={mlQuizCfg} />
 </TopicPage>

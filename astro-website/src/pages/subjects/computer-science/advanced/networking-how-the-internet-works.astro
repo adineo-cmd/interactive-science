@@ -11,33 +11,218 @@ const netCfg = {
     { math: '5 · HTTPS — the trust layer', note: 'TLS encrypts the connection and proves the server is who it claims (certificates). The padlock icon is mathematics holding the middle of the internet shut.' },
   ],
 };
+
+const netQuiz = {
+  questions: [
+    {
+      q: "A 10 MB file crosses a network that loses 1% of packets, with TCP retransmitting losses. Why does the file arrive intact?",
+      choices: [
+        "The network secretly uses better cables for large files",
+        "TCP numbers every byte; the receiver detects gaps in the sequence and requests retransmission",
+        "IP re-sends lost packets automatically",
+        "Loss only affects small files",
+      ],
+      answer: 1,
+      why: "Reliability is assembled at the ends, not inside the network: sequence numbers expose any gap, ACKs drive retransmission, and reassembly restores order. IP itself is deliberately unreliable — 'best effort' only.",
+    },
+    {
+      q: "Which physical fact sets a hard floor on the ping time from London to New York (about 5,600 km of fibre)?",
+      choices: [
+        "Router processing time — the dominant cost",
+        "The speed of light in fibre (~200,000 km/s), giving roughly 28 ms one way",
+        "TCP's congestion window",
+        "DNS lookup time",
+      ],
+      answer: 1,
+      why: "Signals cannot beat light in glass — ~28 ms one-way, ~56 ms round trip before a single router acts. This is why CDNs exist: you cannot shorten physics, so you shorten distance.",
+    },
+    {
+      q: "Your computer asks for example.com and the answer comes back in 2 ms. Where did it most likely come from?",
+      choices: [
+        "The 13 root servers",
+        "The authoritative name server for example.com",
+        "A local cache — your OS or resolver had a record still inside its TTL",
+        "The web server itself",
+      ],
+      answer: 2,
+      why: "The full DNS walk (root → .com TLD → example.com's nameserver) takes tens of milliseconds; the 2 ms answer was cached, and caches expire by each record's TTL — which is also why DNS changes take 'a while to propagate'.",
+    },
+  ],
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/networking-how-the-internet-works">
   <h2>The idea</h2>
   <p>
-    The internet is <strong>a packet-switched network with no owner and no centre</strong>. Its
-    genius is layering: each layer solves one problem and trusts the ones below — wires carry
-    bits, IP routes packets, TCP makes it reliable, DNS makes it memorable, TLS makes it safe.
-    Designed to survive partial failure (its original ARPANET brief in 1969), it outages
-    gracefully instead of collapsing completely.
+    The internet is <strong>a packet-switched network with no owner and no centre</strong>, and its one
+    organising idea is <strong>layering</strong>: each layer solves one problem and trusts the layers below —
+    wires carry bits, IP routes packets between addresses, TCP makes delivery reliable, DNS makes addresses
+    memorable, TLS makes them trustworthy. Designed under a 1960s military brief to survive partial failure
+    (ARPANET, 1969; Cerf and Kahn's TCP/IP, 1974), it degrades gracefully instead of collapsing. This lesson
+    traces one page load hop by hop, then attaches the syllabus's companion topics — the web proper, digital
+    currency, and security — to the same machinery.
   </p>
 
   <Widget no="1" caption="the journey of one page request, layer by layer" widget="equationStep" config={netCfg} />
 
-  <h2>What happens in those 200 milliseconds</h2>
-  <ul>
-    <li><strong>DNS lookup</strong> (~20 ms, usually cached) — name to address.</li>
-    <li><strong>TCP handshake</strong> (1 round trip) — "may I?" "yes" "starting".</li>
-    <li><strong>TLS handshake</strong> (1–2 more round trips) — certificates exchanged, keys agreed.</li>
-    <li><strong>HTTP request/response</strong> — your browser asks for HTML, receives it, then repeats for every image, style sheet and script it discovers. This is why fewer files and caching matter.</li>
-  </ul>
-
-  <h2>The design lessons worth stealing</h2>
+  <h2>The packet principle: why everything arrives in pieces</h2>
   <p>
-    <strong>End-to-end principle:</strong> the network stays simple; smarts live at the edges
-    (your devices) — which is why the internet could absorb video, voice and apps nobody
-    predicted. <strong>Best-effort delivery:</strong> no guarantees inside, guarantees assembled
-    at the ends. Nearly every distributed system in the expert rungs reuses both ideas.
+    The internet's founding choice is <strong>packet switching</strong>: data is chopped into small packets
+    (typically about 1,460 bytes of payload each) that share the wires statistically, instead of reserving a
+    dedicated circuit like the telephone network. A 10 MB file becomes roughly 10,485,760 / 1,460 ≈
+    <strong>7,180 packets</strong>, each labelled with source and destination addresses. The consequences are
+    the internet's character: no circuit to hold idle, so capacity is shared efficiently among bursty users;
+    no single path required, so packets can take different routes and arrive out of order, duplicated, or
+    not at all — <strong>the network never promised neatness</strong>. All the neatness you experience is
+    manufactured at the endpoints, which is the design's deepest lesson: <strong>best-effort inside,
+    guarantees assembled at the edges</strong>.
   </p>
-  <p class="sources"><strong>Sources:</strong> Cerf & Kahn (1974); Kurose & Ross, Computer Networking; RFC 793 (TCP), RFC 1035 (DNS).</p>
+
+  <h2>IP: addressing and hop-by-hop routing</h2>
+  <p>
+    The <strong>Internet Protocol</strong> gives every machine an address and every packet a best-effort
+    delivery attempt. IPv4 addresses are 32 bits — about 4.3 billion, which ran out (hence NAT boxes
+    sharing one public address among a household, and IPv6's 128-bit addresses, enough for every device
+    anyone can imagine). <strong>Routers</strong> forward each packet independently: read the destination,
+    consult the forwarding table, send toward it — a hop at a time, with a TTL field decremented at every
+    hop so misrouted packets die rather than loop forever. No router knows the whole path; the path is an
+    emergent fact, which is why <code>traceroute</code> reveals a different route each run. Between
+    organisations, routes are negotiated by <strong>BGP</strong> (the border gateway protocol) — essentially
+    trusted announcements ("these prefixes are reachable through me") — a protocol old enough that its
+    trust model (route announcements taken largely at face value) is a standing security story the next
+    lesson picks up.
+  </p>
+
+  <h2>TCP: manufacturing reliability and fairness</h2>
+  <p>
+    The <strong>Transmission Control Protocol</strong> runs at both ends and turns lossy datagrams into an
+    ordered, complete byte stream. Its mechanisms are worth knowing precisely because they are so reusable:
+    <strong>sequence numbers</strong> label every byte, so the receiver detects any gap; <strong>ACKs</strong>
+    confirm receipt; missing ranges are <strong>retransmitted</strong>; out-of-order arrivals are buffered
+    and reassembled. On top sits <strong>congestion control</strong> — TCP's polite genius: each sender
+    starts slowly (about 10 packets), roughly <strong>doubles its sending rate every round trip</strong>
+    until packets drop, then cuts back sharply and probes upward again. The result is the famous
+    <strong>sawtooth</strong> on throughput graphs, and something better than reliability: the internet's
+    shared links are divided among competing flows automatically, by feedback rather than central control.
+    Note what latency already costs: light in fibre travels about 200,000 km/s, so London–New York has a
+    physical floor near 28 ms one way (~56 ms round trip) before any router or protocol acts. Bandwidth is
+    buyable; latency is physics — the reason content delivery networks move data closer to you.
+  </p>
+
+  <h2>DNS: the phone book and its caches</h2>
+  <p>
+    Humans type names; machines need numbers. The <strong>Domain Name System</strong> is a globally
+    distributed, hierarchically cached database: your resolver asks a <strong>root server</strong> ("who
+    handles .com?"), then the <strong>TLD server</strong> ("who handles example.com?"), then the domain's
+    <strong>authoritative nameserver</strong> — and every answer is cached, with each record carrying a
+    TTL that says how long it may be reused. The full walk happens rarely (tens of milliseconds, seconds
+    only when cold); the common case is a cached answer in single-digit milliseconds. DNS's design made
+    the internet scalable and human-usable at once — and its redirects are so trusted that DNS hijacking
+    became a classic attack, again foreshadowing the security lesson.
+  </p>
+
+  <h2>The 200-millisecond assembly</h2>
+  <p>
+    Now the whole trace for one page load: <strong>1. DNS</strong> (~20 ms, usually cached) — example.com
+    becomes an IP. <strong>2. TCP handshake</strong> (1 round trip) — SYN, SYN-ACK, ACK: "may I?" "yes,"
+    "starting." <strong>3. TLS handshake</strong> (1–2 round trips, fewer with session reuse) — the server
+    presents a certificate your browser checks against known authorities, and both sides derive session
+    keys (the padlock: encryption plus identity). <strong>4. HTTP request/response</strong> — GET /, and
+    the HTML arrives; the browser parses it and fires requests for every image, stylesheet and script it
+    discovers, reusing the connection (HTTP/2 multiplexes them over one TCP stream). Every click repeats
+    steps 2–4 — which is exactly why page-performance work is mostly about fewer round trips, smaller
+    payloads and caching. Note the separation of concerns: <strong>the internet (IP) and the web (HTTP +
+    HTML) are different layers</strong> — the web is one application riding the network, replaceable
+    without touching the infrastructure below.
+  </p>
+
+  <h2>The syllabus companions: digital currency and the security layer</h2>
+  <p>
+    <strong>Digital currency</strong> is networking applied to trust. A cryptocurrency like Bitcoin is a
+    <strong>distributed ledger</strong>: transactions are broadcast peer-to-peer (no bank in the middle),
+    grouped into blocks, and each block is chained to the last by including its hash — so rewriting history
+    means recomputing every block after it. <strong>Mining</strong> is a deliberately expensive lottery
+    (proof of work) that decides who appends the next block, making the ledger expensive to rewrite; the
+    famous 51% caveat is the system's honest boundary — a party controlling most of the network's hashing
+    power could reorganise recent blocks. The design brilliance (trust from mathematics and incentives
+    alone, fixed supply — Bitcoin's 21 million) and the real costs (enormous energy use, irreversible
+    mistakes, volatility) are both facts about the same mechanism. <strong>Cyber security</strong> rides
+    the same layers: encryption and authentication live in TLS, but the threats — interception, spoofing,
+    denial of service, malicious payloads — attack specific layers, and defences must be matched to
+    layers. The full threat-and-defence treatment is the dedicated lesson on this ladder; here, keep the
+    mapping: DNS attacks poison the phone book, BGP hijacks steal routes, packet sniffing exploits
+    unencrypted layers — layering is both the internet's strength and its attack surface map.
+  </p>
+
+  <h2>Bandwidth, latency, and the arithmetic of downloads</h2>
+  <p>
+    The two performance axes are independent, and their arithmetic is worth owning. <strong>Bandwidth</strong>
+    is how much per second: a 1 GB file over a 100 Mbps link takes 1,000 MB × 8 / 100 ≈ 80 seconds — no
+    protocol genius changes that; capacity is capacity. <strong>Latency</strong> is how long a bit takes
+    to arrive, and it dominates interactive experience: the same 1 GB link with a 60 ms round trip
+    delays every small exchange (each HTTPS handshake, each API call, each keystroke-echo) by that fixed
+    tax, no matter how fat the pipe. Web performance is therefore mostly a latency war: fewer round
+    trips (TLS session resumption, HTTP/2 multiplexing, preconnecting), shorter distances (CDN edge
+    nodes putting the server 20 ms from the user instead of 200), and smaller payloads so fewer packets
+    are needed. The physics floor from earlier still applies — light in fibre — and it explains the
+    industry's shape: bandwidth got cheap (1000× in two decades) while round-trip time to the far side
+    of Earth stayed ~150 ms because Earth's circumference is not negotiable. Any design that hides the
+    round trip (caching at the edge, speculative prefetching, local-first data) is a design that has
+    made peace with physics.
+  </p>
+
+  <h2>The application zoo: mail, ports, and sessions</h2>
+  <p>
+    The web is the most visible application on TCP/IP, not the only one — and the zoo shares one
+    addressing trick: <strong>ports</strong>, 16-bit numbers that multiplex many services over one IP
+    address (80/443 web, 25/587 mail submission, 143 IMAP, 53 DNS). Email's anatomy shows the layering:
+    <strong>SMTP</strong> moves messages between servers (a store-and-forward relay chain, visible in
+    every Received: header), <strong>IMAP</strong> or POP fetch them to your device, and the mail is
+    just structured text plus attachments carried by MIME — protocols composed, not fused. HTTP's own
+    model deserves precision: it is <strong>stateless</strong> (each request stands alone), which is why
+    state had to be rebuilt at the edges — <strong>cookies</strong> (small server-issued identifiers the
+    browser replays, the basis of sessions and, famously, of tracking), tokens in headers for APIs, and
+    cache headers (Cache-Control, ETags) telling proxies and browsers what may be reused. Status codes
+    encode the contract (200 success, 301/302 redirects, 403 forbidden, 404 missing, 429 rate-limited,
+    5xx server-fault) — and reading an outage as "4xx means our request was wrong, 5xx means their
+    server is wrong" is genuinely useful debugging literacy.
+  </p>
+
+  <h2>Layering as the master idea, one more pass</h2>
+  <p>
+    It is worth restating the trace as a stack, because the stack is the field's most transferable
+    abstraction. Physical (fibres, radio — moves bits); link (Ethernet, Wi-Fi — moves frames between
+    directly connected devices); network (IP — moves packets across the whole internet, hop by hop);
+    transport (TCP/UDP — moves bytes reliably, or fast and unreliably, between programs); application
+    (HTTP, DNS, SMTP — moves meaning). Each layer's header is the envelope the layer below must deliver,
+    and each layer may be swapped without rewriting the ones above (Wi-Fi to fibre mid-journey; TCP to
+    QUIC; HTTP to whatever follows). The syllabus's three topics all live at identifiable floors: the
+    web at application; digital currency as an application-layer trust protocol riding TCP/IP with no
+    special hardware; cyber security as controls matched to floors — encryption at application and
+    transport, firewalls at network, physical security below all. When something breaks, the debugging
+    ritual walks the stack from the bottom (cable? Wi-Fi?) upward (DNS? TCP? the app?) — and the same
+    discipline, "isolate the failing layer," is how distributed systems are debugged generally, which is
+    why this unit's ideas reappear in the expert rung's distributed-systems lesson nearly unchanged.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Three ideas take you to the research frontier. <strong>The end-to-end principle</strong>: keep the
+    network simple and put intelligence at the edges — the design choice that let the internet absorb
+    video, voice, gaming and apps nobody predicted, and the argument underneath the net-neutrality debates
+    (should the middle be allowed to favour some edges?). <strong>Layering under pressure</strong>: real
+    deployments bend the model — NAT boxes violate IP's end-to-end addressability, middleboxes inspect
+    traffic, and QUIC (HTTP/3) moves retransmission and encryption into UDP at the application layer
+    specifically to escape TCP's head-of-line blocking and the OS's slow evolution — a reminder that layers
+    are conventions, renegotiated when physics or business demands. <strong>Congestion at scale</strong>:
+    classic loss-based algorithms mistake buffering for congestion; Google's BBR estimates actual
+    bandwidth and round-trip time instead, and bufferbloat (oversized queues adding hundreds of
+    milliseconds of latency) is an active engineering battleground. Open questions: can the routing core
+    ever be made verifiable (SCION and similar redesigns say: partially), how will the internet carry
+    exabyte-scale AI training traffic, and who governs a network that was designed to have no owner — the
+    IETF's "rough consensus and running code" is the internet's constitution, and it is being tested.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cerf &amp; Kahn, "A Protocol for Packet Network Intercommunication" (1974); Kurose &amp; Ross, <em>Computer Networking: A Top-Down Approach</em>; RFC 793 (TCP), RFC 1035 (DNS).</p>
+
+  <Widget no="2" caption="check yourself: reliability, physics and caches" widget="quiz" config={netQuiz} />
 </TopicPage>

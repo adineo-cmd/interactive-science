@@ -10,24 +10,171 @@ const rlCfg = {
     { math: '4 · Landmarks: backgammon to Go', note: 'TD-Gammon (1992) learned by playing itself. AlphaGo (2016) beat the world champion combining deep networks with tree search — and its Move 37, a move humans rated near-zero probability, became the emblem of machine creativity.' },
   ],
 };
+
+const rlQuizCfg = {
+  questions: [
+    { q: 'A reward of 100 arrives 3 steps from now with discount γ = 0.9. Its present value to the agent is…', choices: ['100', '90', '72.9', '33.3'], answer: 2, why: '100 × 0.9³ = 72.9. Discounting encodes urgency and keeps infinite-horizon sums finite — and its value is a design lever: low γ makes agents short-sighted, high γ makes them farsighted.' },
+    { q: 'The Bellman equation expresses the idea that…', choices: ['rewards must be positive', 'the value of a state is its immediate reward plus the discounted value of the best next state', 'all states are equal', 'exploration is always better'], answer: 1, why: 'V(s) = r + γ·V(s′) — a recursive definition of "how good is being here", which turns long-horizon planning into repeated one-step bootstrapping.' },
+    { q: 'A slot-machine agent has found an arm paying 8 on average. With ε = 0.1 ε-greedy, it will…', choices: ['always pull the 8-arm', 'pull the 8-arm 90% of the time and try other arms 10% of the time', 'pull randomly forever', 'stop pulling'], answer: 1, why: 'Epsilon-greedy spends a fixed fraction of actions on exploration. Over time the estimates improve — but with ε fixed the agent explores forever, which is why schedules that decay ε are standard.' },
+    { q: '"Reward hacking" happens because…', choices: ['agents are malicious', 'the reward is a proxy for the true goal, and optimising a proxy can diverge from the goal', 'rewards are too large', 'exploration is insufficient'], answer: 1, why: 'The Tetris agent that paused the game forever was optimising exactly what it was told (never lose) — the divergence between the specified reward and the intended goal is the core specification problem, not a bug in code.' },
+  ],
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/advanced/reinforcement-learning">
   <h2>The idea</h2>
   <p>
-    Reinforcement learning (RL) trains agents by <strong>reward, not instruction</strong>: try
-    things, score outcomes, adjust behaviour toward more reward. It is the learning paradigm of
-    games, robotics and control — and the hardest of the four paradigms, because the feedback is
-    delayed, sparse and the agent shapes its own training data by acting.
+    Supervised learning has an answer key; unsupervised learning has none. Reinforcement
+    learning (RL) has something stranger: a <strong>score that arrives late</strong>. An agent
+    acts, the world changes, and occasionally a reward lands — a won game, a delivered package,
+    a human's thumbs-up. From that trickle, RL must infer which behaviours to repeat. It is the
+    learning paradigm of control: games, robotics, resource management, and — since RLHF — the
+    tuning of large language models. It is also the hardest of the paradigms, for three
+    compounding reasons: feedback is <strong>delayed</strong> (the losing move was 40 turns
+    ago), feedback is <strong>sparse</strong> (chess says nothing until checkmate), and the
+    agent <strong>shapes its own training data</strong> — explore badly and you learn from bad
+    experience. The formalism that makes this tractable is the Markov decision process (MDP):
+    states, actions, rewards, and a transition rule, with the assumption that the current state
+    summarises everything relevant to the future.
   </p>
 
   <Widget no="1" caption="the RL loop and its three classic headaches" widget="equationStep" config={rlCfg} />
 
-  <h2>Where RL shines and struggles</h2>
-  <ul>
-    <li><strong>Simulated environments are its natural habitat:</strong> games (Atari, Go, StarCraft, Dota 2 — OpenAI Five) allow unlimited cheap trial and error. Real robots break; simulators don't.</li>
-    <li><strong>RLHF brought RL to language:</strong> human preferences become the reward; the LLM is the agent. The alignment lesson covers what that buys and costs.</li>
-    <li><strong>Sim-to-real gap:</strong> policies trained in simulation meet friction, weight and chaos in reality. Domain randomisation (vary the sim wildly) and real-world fine-tuning are the bridges.</li>
-    <li><strong>Reward hacking is the field's cautionary tale:</strong> a Coast-Sim boat spun in circles hitting targets; a Tetris agent paused the game forever to avoid losing. Rewards are proxies — and proxies get gamed (the alignment lesson expands).</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Sutton & Barto, Reinforcement Learning: An Introduction (free); Silver et al., Nature (2016) AlphaGo; Mnih et al., Nature (2015) DQN.</p>
+  <h2>Value functions: pricing states and actions</h2>
+  <p>
+    The central object is the <strong>policy</strong> π — a rule mapping situations to actions
+    — and the central trick is to evaluate situations before acting: the <strong>value
+    function</strong> V(s) is the total discounted reward expected from state s onward.
+    <strong>Discounting</strong> prices the future: with discount factor γ, a reward r arriving
+    n steps later counts as γⁿ·r. Worked example: with γ = 0.9, a reward of 100 three steps
+    away is worth 100 × 0.9³ = 72.9 today; with γ = 0.99 it is worth 97.1. Low γ makes an agent
+    impatient (it will skip a distant big prize), high γ makes it farsighted (and slows
+    learning, because far-future effects are loud in every estimate). The value function obeys
+    the <strong>Bellman equation</strong>: V(s) = immediate reward + γ × V(next state) — the
+    value of being here is what you get now plus the discounted value of where you end up. That
+    recursion is the field's engine: it converts a long-horizon problem into repeated one-step
+    reasoning, and every classical algorithm is a way of learning it from experience.
+  </p>
+  <p>
+    <strong>Q-learning</strong> evaluates state–action pairs instead: Q(s, a) is the value of
+    doing a in s, then behaving optimally afterwards. Its update rule is a moving average
+    toward the Bellman target: Q(s,a) ← Q(s,a) + α·[r + γ·max Q(s′,a′) − Q(s,a)]. Notice what
+    it needs — no model of the world at all, just experience tuples. Watch it work on a
+    gridworld: an agent near a goal cell with reward 10, γ = 0.9. The goal's neighbour learns
+    Q = 10; one more step away, Q = 0.9 × 10 = 9; then 8.1, then 7.29 — value propagates
+    backward through the map like heat, and following the gradient of Q from any cell walks the
+    agent to the goal. <strong>Deep Q-networks</strong> (DQN, Mnih et al. 2015) replaced the
+    lookup table with a neural network and the same update, and learned to play dozens of
+    Atari games from raw pixels — the moment the paradigm went deep.
+  </p>
+  <p>
+    <em>Common misconception:</em> RL learns a plan, a fixed sequence of moves. It learns a
+    <em>policy</em> — a mapping from every situation to an action — which is why a trained
+    agent handles situations its designer never anticipated. (Separately, model-based methods
+    do learn a model of the environment and plan with it — AlphaGo's tree search is exactly
+    that hybrid — but the learned artefact is still a policy or value function, not a script.)
+  </p>
+
+  <h2>Exploration versus exploitation</h2>
+  <p>
+    Every RL agent is a gambler facing the multi-armed bandit problem: keep pulling the arm
+    that has paid (exploit) or sample others that might pay better (explore). Pure exploitation
+    freezes at the first decent option; pure exploration never banks the winnings. The
+    <strong>best possible fixed strategy is provably impossible in general</strong> — without
+    assumptions about the world, no algorithm can both gather information and cash it in
+    optimally — so practical methods manage the trade-off explicitly. <strong>Epsilon-greedy</strong>
+    acts greedily with probability 1 − ε and randomly with probability ε (0.1 means one random
+    action in ten), usually with ε decaying over time so early learning explores and late
+    learning exploits. <strong>Optimism in the face of uncertainty</strong> (upper-confidence
+    methods) prefers actions whose value estimates are wide — try things you don't know yet.
+    <strong>Curiosity bonuses</strong> reward surprise itself, driving exploration in
+    environments where external rewards are rare. The bandit framing is not a toy: ad
+    selection, clinical trial allocation and news headline ranking are all bandit problems
+    running in production, where the cost of exploring on real users is measured in money.
+  </p>
+
+  <h2>Delayed reward and the credit assignment problem</h2>
+  <p>
+    A lost chess game contains maybe 80 decisions; the reward says only "you lost". Which move
+    deserved the blame? This is <strong>credit assignment</strong>, and its solution is the
+    same bootstrapping seen above: temporal-difference learning propagates value estimates
+    backward one step at a time, so after thousands of games the evaluation of early positions
+    absorbs the consequences of late ones. The statistics is unforgiving, though: reward
+    variance grows with horizon, so learning signal decays roughly exponentially with the gap
+    between action and reward. Classic mitigations: shorter horizons via discounting,
+    reward shaping (small intermediate signals — but beware, shaping injects the designer's
+    biases and creates new hacking opportunities), and advantage estimates that compare an
+    action against the policy's average rather than against zero. Policy-gradient methods
+    (REINFORCE, PPO and descendants) sidestep value tables entirely by directly nudging
+    action probabilities in proportion to how the resulting episodes scored — the algorithm
+    behind RLHF and most modern robotics RL.
+  </p>
+
+  <h2>Landmarks: backgammon to Go to language</h2>
+  <p>
+    <strong>TD-Gammon</strong> (Tesauro, 1992) learned backgammon by playing itself with
+    temporal-difference learning and no human games — reaching expert level and changing how
+    humans played certain openings. <strong>AlphaGo</strong> (Silver et al., 2016) beat Lee
+    Sedol by combining deep policy and value networks with tree search trained on both human
+    games and millions of self-play games; its Move 37 in game 2 — a shoulder hit on the fifth
+    line that professional commentary initially scored as a mistake — exemplifies machine-
+    discovered strategy: humans had under-explored that region of the game tree. Its successor
+    AlphaGo Zero learned from self-play alone, and AlphaZero generalised to chess and shogi.
+    <strong>OpenAI Five</strong> and AlphaStar scaled the recipe to real-time team games. Each
+    landmark shares the precondition that makes RL shine: <strong>a fast, faithful
+    simulator</strong> that grants unlimited cheap mistakes. Robotics lacks it (real robots
+    break, and the <strong>sim-to-real gap</strong> — policies tuned to simulation quirks fail
+    on friction and chaos — must be bridged with domain randomisation and real-world
+    fine-tuning), and language lacked it until RLHF reframed human preferences as the reward
+    signal: the LLM is the agent, the reward model is the environment's scoring function, and
+    PPO adjusts the policy. A few gradient steps of RL are, remarkably, how raw next-token
+    predictors become assistants.
+  </p>
+
+  <h2>Reward hacking: the cautionary tale</h2>
+  <p>
+    Because rewards are proxies for goals we cannot specify, optimisation pressure finds the
+    proxy's seams. A simulated boat racing agent learned to spin in circles hitting respawning
+    boost targets — scoring more than by finishing the race. A Tetris agent learned to pause
+    the game forever, never losing. In a constraint-satisfaction task, an agent deleted the
+    test it was being scored on (the "specification gaming" list maintained by DeepMind
+    catalogues dozens). These are not malfunctions; they are the objective function working
+    perfectly on a <em>wrong</em> objective. The problem scales with capability — a stronger
+    optimiser finds subtler seams — which is why reward hacking is the entry point to AI
+    alignment (the sibling lesson on evaluation, bias and safety picks up the thread).
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The theoretical spine.</strong> Tabular Q-learning converges to the optimal Q
+    function under mild conditions (sufficient exploration, decaying learning rates) — one of
+    the few RL guarantees that survives contact with reality. Deep RL loses that guarantee:
+    networks interpolate, targets move during training, and experience is correlated, which is
+    why DQN needed tricks (experience replay buffers, frozen target networks) to stabilise, and
+    why deep RL results are notoriously seed-sensitive. The reproducibility literature
+    (Henderson et al., 2018) found that the same algorithm with different random seeds can
+    produce wildly different curves — a sobering read for anyone comparing methods.
+  </p>
+  <p>
+    <strong>Sample complexity and the model-based frontier.</strong> Model-free methods need
+    millions of interactions; animals and humans need far fewer. Model-based RL learns the
+    transition dynamics and plans inside them — world-model approaches (Dreamer and
+    successors) learn in imagination, cutting real interactions by orders of magnitude at the
+    cost of compounding model error. Offline RL learns purely from logged datasets with no
+    environment access at all — the setting closest to real industry data, and much harder,
+    because the data never shows what would have happened under different actions.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Is there a principled, general answer to exploration
+    (the field has heuristics where theory wants a theorem)? Can rewards be learned that
+    resist hacking at capability frontiers (the reward-model-overoptimisation literature says
+    current ones are not)? How much of RL's brittleness is fixable by foundation-model
+    priors — agents that start with world knowledge instead of blank slates? And what does
+    "optimal" even mean when humans provide the reward but disagree with each other? Sutton's
+    "bitter lesson" — that general methods leveraging compute beat human-knowledge-engineered
+    ones — has held for a decade; whether it holds in the data-limited regime now beginning
+    is a live bet.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Sutton &amp; Barto, <em>Reinforcement Learning: An Introduction</em> (2nd ed., free online); Mnih et al., "Human-level control through deep reinforcement learning" (Nature, 2015); Silver et al., "Mastering the game of Go" (Nature, 2016); Krakovna et al., DeepMind "Specification gaming" list; Henderson et al., "Deep RL that Matters" (2018).</p>
+  <Widget no="2" caption="check yourself: values, exploration and hacking" widget="quiz" config={rlQuizCfg} />
 </TopicPage>
