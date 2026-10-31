@@ -19,17 +19,159 @@ const npCfg = {
     methods drop that assumption</strong> by working on ranks instead of raw values: replace the
     data with their order positions and test those. You trade a little power for a lot of
     robustness — an excellent trade with small, skewed or weirdly distributed data, which is most
-    real data most days.
+    real data most days. The dispersion measures you already know are the gateway: quartiles and
+    the interquartile range are themselves rank-based statistics, and seeing exactly why they
+    shrug off outliers while the standard deviation does not is the intuition the whole
+    non-parametric toolbox is built on.
   </p>
 
   <Widget no="1" caption="the rank-based toolbox — one method per classic situation" widget="equationStep" config={npCfg} />
 
+  <h2>Order statistics: quartiles and percentiles of small data sets</h2>
+  <p>
+    Sort n values; the sorted positions are the <strong>order statistics</strong>, and the
+    median, quartiles and percentiles are read off them. For the nine values 2, 4, 4, 5, 6, 7,
+    8, 9, 15: the median (Q2) is the 5th value, 6; Q1 is the median of the four below it —
+    (4+4)/2 = 4; Q3 is the median of the four above — (8+9)/2 = 8.5. The
+    <strong>interquartile range</strong> IQR = 8.5 − 4 = 4.5, the spread of the middle half of
+    the data. The percentile idea generalises it: the k-th percentile is the value below which
+    k% of the data lies, located (in the small-set convention) at position (k/100)(n+1) with
+    interpolation between neighbours. For <strong>grouped data</strong> — a frequency table
+    with class intervals — quartiles and percentiles are estimated by interpolation within the
+    containing class: Q<sub>1</sub> = L + ((n/4 − F)/f) × h, where L is the class's lower
+    boundary, F the cumulative frequency before it, f its frequency, h its width. Example:
+    classes 10–20 (f = 5), 20–30 (f = 12), 30–40 (f = 8), 40–50 (f = 5), n = 30. Q1's position
+    is n/4 = 7.5, inside 20–30 (cumulative before it is 5): Q1 = 20 + ((7.5 − 5)/12) × 10 ≈
+    22.1. The median lands at 20 + ((15 − 5)/12) × 10 ≈ 28.3, Q3 at 30 + ((22.5 − 17)/8) × 10
+    ≈ 36.9. These are estimates — the true values inside each class are unknowable from the
+    table — which is the honest cost of grouped data.
+  </p>
+
+  <h2>Range, IQR, standard deviation: choosing the measure</h2>
+  <p>
+    The three dispersion measures answer the same question with different trade-offs, and the
+    syllabus's "justify your choice in context" is really an outlier-sensitivity question.
+    <strong>Range</strong> (max − min) is instant and uses only two points — which makes it
+    catastrophically sensitive: one extreme value rewrites it entirely, and it grows with
+    sample size for pure sampling reasons. <strong>IQR</strong> ignores the outer quarters by
+    design; it is the rank-based spread. <strong>Standard deviation</strong> uses every value
+    and has the best statistical properties <em>when the data is roughly symmetric and
+    light-tailed</em> — it is the natural partner of the mean and of the normal model. Watch
+    the trade in one dataset. Nine values, 2, 4, 4, 5, 6, 7, 8, 9, 15: SD ≈ 3.8, IQR = 4.5.
+    Corrupt one value — 15 becomes 150 (a data-entry error, a billionaire joining the income
+    sample) — and SD explodes to ≈ 50.7, thirteen times larger, while IQR stays exactly 4.5
+    (Q1 = 4, Q3 = 8.5, unchanged) and the median stays 6. The mean moved from ≈ 6.7 to ≈ 17.3;
+    the median did not move at all. This is the deep reason ranks matter: a rank is a
+    <em>position</em>, and no value, however extreme, can be more extreme than "largest" — the
+    order statistics cap every observation's influence. Rule of thumb: skewed data or visible
+    outliers → median and IQR; symmetric, well-behaved data where every point carries real
+    information → mean and SD; and always say which you chose and why.
+  </p>
+
+  <h2>The test family, one worked example at a time</h2>
+  <p>
+    <strong>The sign test</strong> is the simplest non-parametric test: for paired data, keep
+    only the direction of each change (+ or −) and ask whether the split is lopsided. Eight
+    patients, seven improved and one did not: under a fair-coin null, P(at least 7 of 8) =
+    (C(8,7) + C(8,8))/2⁸ = 9/256, doubled for a two-tailed test ≈ <strong>0.070</strong> —
+    suggestive, but not conventionally significant. The sign test throws away magnitudes
+    entirely; its virtue is surviving situations where magnitudes are meaningless (ordinal
+    ratings, "better/worse" judgments).
+  </p>
+  <p>
+    <strong>Mann–Whitney U</strong> compares two independent groups by pooling and ranking all
+    values together, then comparing rank sums. Worked example — treatment group A: 10, 11, 12,
+    13, 14, 15, 16; control group B: 1, 2, 3, 4, 5, 6, 50 (one wild value, as real controls
+    produce). Ranks: A takes ranks 7–13 (sum 70); B takes 1–6 plus rank 14 for the 50 (sum
+    35). With n = m = 7: U<sub>A</sub> = nm + n(n+1)/2 − R<sub>A</sub> = 49 + 28 − 70 = 7, and
+    U<sub>B</sub> = 49 + 28 − 35 = 42; the test statistic is the smaller, U = 7. Tables give a
+    two-tailed 5% critical value of 8 for 7 and 7; since 7 is below it, the groups differ in
+    typical rank, significant at 5%. Now the punchline: the <em>t-test on the same data</em>
+    gives t ≈ 0.43, p ≈ 0.68 — demolished by the single 50, which inflates the pooled standard
+    deviation to 12.6. The rank test saw a nearly clean separation (one group almost entirely
+    above the other); the parametric test saw noise, because one observation monopolised its
+    variance estimate. This is not a trick dataset — it is what one contaminated control does
+    to a small trial.
+  </p>
+  <p>
+    <strong>Wilcoxon signed-rank</strong> upgrades the sign test for paired data by ranking the
+    <em>absolute</em> differences and summing the ranks of the positive and negative changes —
+    it uses direction and size-of-change information, at the cost of assuming the differences
+    are roughly symmetric. <strong>Kruskal–Wallis</strong> extends Mann–Whitney to three or
+    more groups: rank everything together, compare the average ranks across groups; a large
+    statistic says at least one group tends to sit higher, and pairwise Mann–Whitneys (with
+    correction) locate where. <strong>Spearman's ρ</strong> correlates ranks: rank both
+    variables, then apply the Pearson formula to the ranks (for small samples without ties,
+    ρ = 1 − 6Σd²/(n(n²−1)) where d is the rank difference). Two judges ranking five entries
+    with swaps at positions 2/1 and 4/3: d² sum = 3, so ρ = 1 − 18/120 = <strong>0.85</strong>
+    — strong agreement, and the same 0.85 whether the scores were 90 vs 91 or 90 vs 990,
+    because only order entered the calculation.
+  </p>
+  <p>
+    <em>Common misconception:</em> "non-parametric tests are weaker, so always prefer the
+    t-test." Under exact normality the Mann–Whitney's asymptotic relative efficiency against
+    the t-test is about 0.955 — a 4.5% sample-size penalty. Under heavy-tailed or contaminated
+    data its efficiency <em>exceeds</em> the t-test's, unboundedly so for extreme tails. The
+    price of insurance is small and the payout is large exactly when you need it.
+  </p>
+
   <h2>Choosing honestly</h2>
-  <ul>
-    <li><strong>Parametric wins when its assumptions hold</strong> — and with large samples the t-test is remarkably forgiving (the central limit theorem at work).</li>
-    <li><strong>Non-parametric wins with:</strong> small n, heavy tails, ordinal scales, or when the result must survive outliers. "Average customer rating" from 1-star–5-star data is ordinal — rank methods are the right tool.</li>
-    <li><strong>Permutation tests:</strong> the modern alternative — shuffle group labels thousands of times and see where your real difference lands. No distribution assumption at all, made possible by cheap computing (Fisher imagined it; laptops delivered it).</li>
-    <li><strong>Report both when in doubt:</strong> if parametric and non-parametric tests agree, say so; if they disagree, the data was telling you something about its own shape.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Mann & Whitney (1947); Kruskal & Wallis (1952); Wasserman, All of Statistics (ch. nonparametric inference).</p>
+  <p>
+    The decision procedure is about the data, not fashion. <strong>Parametric wins when its
+    assumptions hold</strong> — and with large samples the t-test is remarkably forgiving, the
+    central limit theorem dragging the sampling distribution of the mean toward normality
+    (though the CLT rescues the test of means, not the test of a single skew quantile, and it
+    rescues it more slowly for heavy tails). <strong>Non-parametric wins with</strong> small n,
+    heavy tails, ordinal scales, or when the result must survive outliers — "average customer
+    rating" on 1–5-star data is ordinal, and rank methods are the right instrument.
+    <strong>Permutation tests</strong> are the modern third way: shuffle group labels thousands
+    of times, recompute the difference each time, and see where the real difference lands in
+    the shuffle distribution — no distributional assumption at all, exact in principle; Fisher
+    imagined it in the 1930s and cheap computing delivered it. <strong>Report both when in
+    doubt:</strong> agreement between parametric and non-parametric analyses is reassuring;
+    disagreement is diagnostic — it means the conclusion hinges on a handful of extreme
+    observations, and the write-up should say so.
+  </p>
+
+  <h2>Two more members of the family</h2>
+  <p>
+    <strong>The Friedman test</strong> completes the repeated-measures corner: where
+    Kruskal–Wallis handles several independent groups, Friedman handles several treatments
+    measured on the <em>same</em> subjects — rank the treatments within each subject (1 to k),
+    then ask whether the average ranks differ across treatments. It is the natural partner for
+    taste panels (taster as their own control), usability studies (same users, three
+    interfaces) and any within-subjects design with ordinal outcomes; its parametric cousin is
+    repeated-measures ANOVA, and its post-hoc pairwise comparisons are signed-rank tests with
+    multiplicity correction. <strong>The runs test</strong> (Wald–Wolfowitz) addresses the
+    question the comparison tests ignore: is the <em>sequence</em> random? Count the runs of
+    consecutive same-category outcomes in a binary series — too few runs means clustering
+    (streaks), too many means alternation — which is the tool for the "hot hand" argument and
+    for checking whether residuals from a model look like white noise.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Where the null distributions come from.</strong> Rank tests are exact small-sample
+    tests because ranks have enumerable null distributions: under the null, every assignment of
+    ranks to groups is equally likely, so the probability of any U value can be counted
+    exactly — the published tables are those counts. With larger samples, U is approximately
+    normal (mean nm/2, variance nm(n+m+1)/12, with a ties correction dividing by 1 − Σt³−t/((n+m)(n+m−1))
+    where t counts tied ranks), which is what software computes. The same "enumerate the
+    reassignments" logic is exactly the permutation test — the rank tests are permutation
+    tests on a particular statistic (ranks), chosen for hand-computability; with laptops, any
+    statistic can take that role. <strong>Beyond tests:</strong> non-parametric <em>estimation</em>
+    is the larger modern field — kernel density estimation (smooth histograms), the empirical
+    distribution function and its confidence bands, quantile regression (modelling the median
+    or any quantile as a function of covariates — robust where OLS is not), and the bootstrap
+    (resample your own data to get standard errors for almost anything), which is
+    non-parametric inference's biggest practical victory. <strong>Open questions:</strong>
+    non-parametric methods for dependent data (ranks in time series and networks are far less
+    settled), rank-based approaches to missingness, and the practical statistics of very
+    heavy-tailed quantities — wealth, city sizes, file-download times — where even medians and
+    ranks strain and the honest summary may be several quantiles at once. What will not
+    change: when one bad data point can ruin a small study, ranks are the measurement that
+    cannot be ruined by magnitude.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Mann and Whitney (1947); Wilcoxon (1945); Kruskal and Wallis (1952); Wasserman, All of Statistics; Efron and Tibshirani, An Introduction to the Bootstrap.</p>
 </TopicPage>

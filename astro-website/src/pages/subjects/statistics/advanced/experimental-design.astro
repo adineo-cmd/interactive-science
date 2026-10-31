@@ -17,22 +17,166 @@ const doeCfg = {
     Experimental design is <strong>planning the comparison before collecting the data</strong> —
     the discipline Ronald Fisher built at Rothamsted agricultural station in the 1920s and 30s,
     where decades of field trials met new statistics. Its law: the quality of a conclusion is
-    decided at design time; no analysis can rescue a confounded experiment.
+    decided at design time; no analysis can rescue a confounded experiment. But the experiment
+    is only the last stage of a chain that starts earlier: define the population, choose the
+    sampling scheme, write the questions, classify the variables — every link is a decision
+    that can quietly invalidate what follows. This chapter walks the whole chain.
   </p>
 
   <Widget no="1" caption="Fisher's three pillars plus the factorial upgrade" widget="equationStep" config={doeCfg} />
 
-  <h2>Classic designs, real uses</h2>
-  <ul>
-    <li><strong>Randomised controlled trial (RCT):</strong> the medical gold standard — placebo control, double-blinding, pre-registered endpoints.</li>
-    <li><strong>A/B test:</strong> the industrial RCT — randomise users to two versions of a page. Same statistics, faster feedback (the data-science ladder covers the pitfalls, like peeking).</li>
-    <li><strong>Randomised block / Latin square:</strong> when field position or test-day matters, block it out. Fisher's original farmland problem, still solved the same way.</li>
-    <li><strong>Sample-size/power planning:</strong> decide n before starting, from the smallest effect worth detecting. Underpowered studies waste everything — the replication crisis in one sentence.</li>
-  </ul>
+  <h2>Population, sample and census</h2>
   <p>
-    When experiments are impossible (smoking causes cancer — you can't randomise), the
-    <strong>observational</strong> toolkit takes over: matching, natural experiments, causal
-    inference — the expert lesson on this ladder.
+    The <strong>population</strong> is everyone (or everything) the conclusion should apply to;
+    the <strong>sample</strong> is the part you actually measure; a <strong>census</strong> tries
+    to measure the whole population. A census sounds ideal and usually is not: it is expensive,
+    slow, and — the fatal flaw — hard to make complete, since the hardest-to-reach people are
+    exactly the ones the conclusions most concern. The 1936 US presidential poll is the
+    canonical warning: the <em>Literary Digest</em> mailed 10 million ballots, collected 2.4
+    million responses, and predicted Landon by a landslide; Roosevelt won by one. The sample was
+    huge and wrong, because it was drawn from telephone directories and car registrations during
+    the Depression — a coverage bias that selected the affluent — compounded by self-selection
+    in who replied. A small, honestly random sample beats a vast, biased one: George Gallup
+    called the election within a few points with a few thousand properly chosen respondents. A
+    <strong>representative sample</strong> is not "a typical-looking group" hand-picked by a
+    researcher — that reintroduces judgment and its biases — but one whose selection mechanism
+    gives every member of the population a known chance of inclusion.
   </p>
-  <p class="sources"><strong>Sources:</strong> Fisher, The Design of Experiments (1935); Box, Hunter & Hunter, Statistics for Experimenters.</p>
+
+  <h2>Sampling methods</h2>
+  <p>
+    <strong>Simple random sampling:</strong> every member has an equal chance — the unbiased
+    baseline. The classical tool is a <strong>random number table</strong>: number the
+    population 001–450, pick a starting point blindly, read three-digit numbers down the table,
+    take matches, skip repeats and out-of-range values until n = 30. The same job is now done by
+    computer pseudorandom draws, but the table is worth learning because it makes the mechanism
+    transparent and auditable. <strong>Systematic sampling:</strong> choose every k-th unit from
+    a random start (every 25th name on a register) — operationally easy, nearly equivalent to
+    random when the list has no periodic structure, dangerous when it does (sampling every 7th
+    day catches only one weekday; sampling houses numbered cyclically along a street misses
+    corners). <strong>Stratified sampling:</strong> split the population into strata that matter
+    (year groups, regions) and sample randomly within each — it guarantees each stratum's voice
+    and shrinks the margin of error, because the between-stratum variance is removed from the
+    estimate. <strong>Quota sampling:</strong> fill pre-set quotas (30 women over 60) by
+    approaching whoever is convenient — fast and cheap, used when no sampling frame exists
+    (street interviews), but the final choice within each quota is human, so the interviewers'
+    convenience and approachability biases leak in. The general rule: stratification beats
+    quotas beats convenience, and the sampling frame — who could possibly be selected —
+    silently defines the population you may generalise to.
+  </p>
+  <p>
+    <em>Common misconception:</em> "a bigger sample fixes a biased one." Bias is a systematic
+    error; size only shrinks random error. Ten million biased ballots said Landon. More data
+    from the wrong mechanism makes you more precisely wrong — and more confident about it,
+    which is worse.
+  </p>
+
+  <h2>Asking questions: open versus closed</h2>
+  <p>
+    Survey questions are measurement instruments, and badly made instruments read zero.
+    <strong>Closed questions</strong> (fixed options, rating scales) are quick to answer and
+    trivially analysable, but the options themselves frame the response — a yes/no question
+    manufactures agreement where a free answer might have been "it depends"; unbalanced scales
+    (three positive options, one negative) shift means measurably.
+    <strong>Open questions</strong> ("what would improve this service?") capture the unforeseen
+    and reveal the vocabulary respondents actually use, at the cost of coding effort and
+    coder judgment. The classic failure modes have names: <strong>leading questions</strong>
+    ("Do you support the popular measure…?"); <strong>loaded or double-barrelled items</strong>
+    ("Do you agree the council should improve safety and reduce waste?" — which half?);
+    <strong>order effects</strong> (asking about general trust in journalism before asking
+    about a specific outlet changes the answer); <strong>social desirability</strong> (everyone
+    reports more reading and less drinking than is true — this is why sensitive topics use
+    indirect formats); and <strong>non-attitudes</strong> (about a quarter of respondents will
+    offer opinions on entirely fictitious policies rather than say "no view"). Design
+    discipline: pilot the instrument, keep items single-barrelled and neutral, randomise option
+    order where feasible, and record refusals — "don't know" is data, not noise.
+  </p>
+
+  <h2>Classifying data</h2>
+  <p>
+    The data each variable yields dictates the summary and the test, so classification is
+    decided at design time. <strong>Qualitative</strong> (categorical) data sorts into labels:
+    nominal categories with no order (blood group, brand) and ordinal ones with order but
+    unequal spacing (Agree/Neutral/Disagree, medal classes). <strong>Quantitative</strong>
+    data is numerical: <strong>discrete</strong> — countable, gaps between values (number of
+    patients, goals scored) — and <strong>continuous</strong> — measured on a continuum, any
+    value in an interval (height, reaction time). The classification is a property of the
+    measurement, not the storage format (a postcode looks numeric and is nominal). Getting it
+    wrong is not pedantry: a mean of ordinal ratings is a category error (medians and modes
+    are the honest summaries), bar charts — never histograms — belong to categorical data, and
+    the parametric tests of later lessons presume quantitative response scales. Design
+    consequence: decide the data type of every variable when you draft the form, because
+    "how satisfied are you, 1–5?" and "tell us how satisfied you are" are different instruments
+    producing different, non-interconvertible data.
+  </p>
+
+  <h2>Fisher's pillars on top of the sampling</h2>
+  <p>
+    Given a sound sample, the experiment's logic is Fisher's. <strong>Randomisation</strong>
+    allocates treatments by chance so that every unmeasured nuisance — soil quality, morning
+    versus afternoon, mood, genotype — is distributed between the arms in expectation. It is
+    the only mechanism that controls <em>unknown</em> confounders; matching and adjusting
+    control only the ones you thought of. <strong>Replication</strong> repeats the comparison
+    on enough units to estimate the noise, and the required number is calculable in advance —
+    the power calculation. Worked example: you want to detect a 5-point improvement, prior
+    studies suggest a standard deviation of 15, and you want 80% power at significance 0.05
+    (two-sided). The sample size per group is approximately n = 2(z₀.₉₇₅ + z₀.₈₀)²·σ²/Δ² =
+    2 × (1.96 + 0.84)² × 15² / 5² ≈ 2 × 7.84 × 9 ≈ 141 — so about 142 per arm. Run 20 per arm
+    and the most likely outcome is a noisy non-result that wastes the entire study.
+    <strong>Blocking</strong> handles the nuisance factors you <em>can</em> name: group similar
+    units into blocks (same field, same batch, same day) and randomise treatments
+    <em>within</em> each block, so block effects cancel in the comparison — Fisher's
+    "block what you can, randomise what you cannot". <strong>Factorial designs</strong> vary
+    two or more factors simultaneously (fertiliser yes/no × irrigation yes/no): a single 2×2
+    trial estimates both main effects and the <em>interaction</em> — fertiliser helps only
+    when irrigated — which two separate one-factor experiments are structurally incapable of
+    seeing. Add <strong>blinding</strong> (single: subject unaware; double: subject and
+    assessor unaware) so expectation effects do not masquerade as treatment effects, and
+    <strong>pre-registration</strong> of endpoints and analysis so the plan cannot be
+    rewritten after seeing the data.
+  </p>
+
+  <h2>Blinding, placebos and the observer's bias</h2>
+  <p>
+    Randomisation balances who gets what; blinding stops the assignment from leaking into the
+    measurement. The quantities at stake are not small: placebo analgesia routinely produces
+    20–40% of active-drug pain relief in trials, and the <em>expectancy</em> of an energising
+    drug produces measurable performance changes even when the pill was inert — so an unblinded
+    trial of, say, a stimulant can "find" the drug doing the placebo's work. Single blinding
+    (the subject) blocks expectation effects; double blinding (subject and outcome assessor)
+    also blocks observer drift — assessors who know the hypothesis rate ambiguous outcomes
+    toward it (the classic demonstration: raters measuring the same photographs of children
+    shift their developmental scores toward whichever narrative they were told). Even the
+    statistical analysis can be blinded: some journals and trials report the analysis run on
+    group labels called A and B, unblinded only after the primary result is fixed. Design
+    rule: for every point where a human knows the allocation, ask how that knowledge could
+    reach the outcome — and close it where you can.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Power is an ethical variable.</strong> An underpowered trial is not merely
+    uninformative — among <em>significant</em> results it inflates effect sizes (the winner's
+    curse: only lucky overestimates clear the bar) and, across a literature, guarantees a
+    false discovery rate far above the nominal 5% once prior odds are low (the
+    <em>Lancet</em>-era "most published research findings are false" argument, Ioannidis 2005).
+    Design responses now standard in medicine and spreading elsewhere: pre-registration,
+    multi-site replication, sequential designs with pre-set stopping rules (which make
+    legitimate what "peeking" corrupts in a naive A/B test), and cluster randomisation with the
+    design-effect correction (randomise schools rather than pupils, and inflate the required n
+    by 1 + (m − 1)·ICC). <strong>Randomisation as the basis of inference:</strong> Fisher's
+    deeper point was that the randomisation itself defines the test — the significance of a
+    difference can be computed by re-randomising the observed data many times and asking how
+    often the gap appears by chance, a <em>randomisation test</em> that needs no normality
+    assumption at all and is the conceptual ancestor of modern bootstrap and permutation
+    methods. <strong>When experiments are impossible</strong> — you cannot randomise smoking,
+    poverty or planet-scale policies — the observational toolkit takes over: matching,
+    difference-in-differences, natural experiments (physicians' strikes, lottery wins), and
+    the causal-inference machinery of the expert lesson on this ladder. <strong>Open
+    questions:</strong> adaptive designs that re-allocate mid-trial, synthetic control methods
+    for n = 1 policy changes, and whether preregistration's rigidity costs adaptive
+    exploration — the field's current honest tension.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Fisher, The Design of Experiments (1935); Box, Hunter and Hunter, Statistics for Experimenters; Squire, "Why the Literary Digest poll failed"; Ioannidis (2005).</p>
 </TopicPage>

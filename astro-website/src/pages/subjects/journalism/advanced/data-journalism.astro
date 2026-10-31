@@ -14,19 +14,183 @@ const dataJCfg = {
 <TopicPage slug="subjects/journalism/advanced/data-journalism">
   <h2>The idea</h2>
   <p>
-    Data journalism is the <strong>data-science ladder aimed at power</strong> — acquiring,
-    interrogating and publishing the numbers behind the news. It inherits every method lesson
-    from the data ladder and every verification lesson from this one.
+    Data journalism is the data-science ladder aimed at power: using spreadsheets, databases and
+    statistics as sources, with the reporter's scepticism attached. Where a source tells you what
+    happened, a dataset can show you what <em>pattern</em> happened — over years, across every
+    school, ward or contract — and patterns are where institutions would rather not look. The
+    craft has three load-bearing skills, which are the syllabus's three topics: finding and
+    cleaning data (most of the hours, least of the glory), sceptical use of statistics (the
+    difference between a story and an error), and data storytelling (making the finding land
+    without distorting it). It inherits every method lesson from the data ladder and every
+    verification lesson from this one.
   </p>
 
   <Widget no="1" caption="the pipeline, FOIA, honest analysis, evidentiary graphics" widget="equationStep" config={dataJCfg} />
 
-  <h2>The canon and the craft</h2>
-  <ul>
-    <li><strong>Moneyball for accountability:</strong> the Panama/Paradise Papers (ICIJ, 2016–17): 11 million documents, 400 journalists, structured collaboration — data journalism at global scale: the sharing infrastructure (the distributed-systems lesson\'s tools, editorially governed).</li>
-    <li><strong>When data journalism breaks the wrong way:</strong> the COVID infection-model misreadings, crime-mapping that stigmatised neighbourhoods (the ethics lesson\'s minimising harm, quantitative edition) — the discipline\'s error bars must include social consequence.</li>
-    <li><strong>Reproducibility is a scoop-protection:</strong> publish the analysis notebooks (GitHub for the methods section) — the computational-reproducibility lesson, newsroom edition; an analysis nobody can check is a claim, not a finding.</li>
-    <li><strong>The skills stack, honestly:</strong> spreadsheets first (80% of data journalism), SQL and R/Python for scale, the GIS lesson\'s mapping for spatial stories — the data-science ladder\'s path, deadline-compressed.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> the data-science and statistics ladders; ICIJ methodology pages; the Cairo chart-honesty lesson.</p>
+  <h2>Finding data</h2>
+  <p>
+    Data has four great doors. <strong>Official statistics and open data portals</strong> —
+    national statistics offices, government spending dashboards, school and hospital
+    performance tables — are free and reputable but framed by whoever published them; the
+    classification choices (what counts as a "violent crime", who is "economically inactive")
+    are editorial decisions wearing a spreadsheet. <strong>Freedom-of-information laws</strong>
+    (FOIA 2000 in the UK, with equivalents across democracies) compel public bodies to release
+    recorded information on request, subject to exemptions; the craft is asking precisely —
+    specify the date range, the fields, the format (ask for a CSV, not a PDF scan), and the
+    disaggregation ("by month, by postcode district") — because a vague request earns a vague
+    answer, and a well-drafted request is often itself the scoop. Expect refusals on cost or
+    exemption grounds and learn the internal-review and appeal ladder; most big FOIA stories
+    were refused at least once. <strong>Scraping</strong> — writing code to extract data from
+    web pages — fills the gaps public portals leave, and its legality centres on public-access
+    pages and terms of service; check robots.txt and respect personal-data law. <strong>Leaks
+    and document dumps</strong> are the fourth door: the Panama Papers (ICIJ, 2016) put 11.6
+    million leaked documents in front of roughly 370 journalists across 76 countries, and the
+    lesson of that collaboration is infrastructural — shared searchable indexes, a common
+    document platform, and strict compartmentalisation so one careless query could not burn the
+    whole story.
+  </p>
+
+  <h2>Cleaning data</h2>
+  <p>
+    Real datasets are made by humans, in a hurry, for their own purposes — not for you. Cleaning
+    is where data journalism's hours actually go, and a fixed checklist beats intuition.
+    <strong>Missing values</strong> arrive disguised: empty cells, but also "N/A", "-999", "0"
+    standing in for "unknown" (a zero recorded for a missing ambulance-response time silently
+    improves the average). <strong>Duplicates</strong> hide behind near-identical rows — the
+    same contractor recorded once as "J Smith Ltd", once as "J. Smith Limited", once with a
+    trailing space; normalising names, trimming whitespace and standardising case before joining
+    is the difference between one supplier worth £2 million and three worth £667,000 each.
+    <strong>Dates</strong> arrive as "03/04/2024" — April 3rd or March 4th depending on which
+    office exported it; time-zone-stamped ISO dates are the fix. <strong>Units and currencies
+    mix</strong>: one council reports per-thousand rates, another raw counts. <strong>Totals
+    rows and repeated headers</strong> from pasted spreadsheets corrupt every sum. And the
+    deepest question is always <em>what does a row represent</em> — is this table one row per
+    incident, per person, or per report (three 999 calls about one burglary are three rows and
+    zero burglaries)? Worked example: a council-spending file, 12,000 rows. Steps: standardise
+    supplier names and collapse the variants (12,000 → 11,847 unique payments); replace "-999"
+    amounts with nulls and exclude them from sums; parse all dates to ISO; drop the two embedded
+    totals rows; recompute the grand total and reconcile it against the council's published
+    annual figure — if your £41.2 million disagrees with their £43.0 million, the gap
+    <em>is</em> the next FOIA request. Only then does analysis begin.
+  </p>
+  <h2>Interviewing the dataset</h2>
+  <p>
+    Before any test or chart, the data gets the interview a human source would get — a fixed
+    battery of questions asked of every new file. <em>Who made you, and why?</em> A dataset is
+    an administrative artefact: crime recorded by police, inspections logged by a regulator —
+    each with incentives that shape what gets written down (an underfunded inspectorate logs
+    fewer violations; "recorded crime" follows reporting willingness as much as offending).
+    <em>What are you missing?</em> Missingness has structure — a hospital's records start
+    looking complete the year it bought new software, and that jump is an IT project, not
+    medicine. <em>How do you define things?</em> "Waiting time" measured from referral differs
+    from waiting time measured from diagnosis; a redefinition mid-series manufactures a trend
+    (the time-series lesson's structural break, wearing a government lanyard).
+    <em>Can you be reconciled?</em> Cross-check totals against an independent published figure,
+    as in the cleaning worked example, and cross-check entities against another source — a
+    company's filings against its own website, a school's exam data against its intake. The
+    answers become the caveats paragraph of the story, which is exactly where they belong:
+    the reader's defence is the analysis's honesty about itself.
+  </p>
+  <p>
+    <em>Common misconception:</em> "cleaning is technical chores before the real work." Cleaning
+    is reporting. Every anomaly you fix is a question about the institution that produced the
+    file, and the questions that survive ("why are 40% of inspections recorded as missing?")
+    are frequently better stories than the one you came for.
+  </p>
+
+  <h2>Sceptical use of statistics</h2>
+  <p>
+    The journalist's statistical duty is asymmetric: a wrong story damages real people and the
+    outlet's credibility, so every number must survive hostile review — yours first. The
+    recurring traps have short names. <strong>Denominators:</strong> "hospital deaths up 20%"
+    may mean case numbers rose 20%; always convert counts to rates (per capita, per patient,
+    per vehicle-mile) before comparing. <strong>Base rates:</strong> a test that is 99% accurate
+    for a condition affecting 1 in 10,000 will flag about 100 healthy people for every true
+    positive — report the positive predictive value, not the sensitivity, or the story will
+    terrify wrongly (the medical-test trap from the Bayesian lesson, wearing a news hat).
+    <strong>Margin of error:</strong> a poll of 1,000 adults carries a 95% confidence interval
+    of roughly ±3.1 percentage points; a "lead" of 2 points between two parties is inside the
+    noise, and each party's own interval is ±3.1, so the gap's uncertainty is about ±4.4 —
+    "statistically tied" is the honest lede. <strong>Simpson's paradox:</strong> aggregated data
+    can reverse sign — the Berkeley admissions case (1973): overall, women were admitted at a
+    lower rate, but department by department women applied to the most competitive departments;
+    the story you file depends entirely on the level of aggregation you chose.
+    <strong>Survivorship bias:</strong> the WWII bullet-hole analysis (Wald) — the planes that
+    returned show damage where a plane can survive being hit; armour goes where the returning
+    planes are <em>not</em> hit. <strong>Percentages of percentages:</strong> "crime fell 50%,
+    then rose 25%" nets a 37.5% fall, not a 25% fall. <strong>Causation:</strong> correlation
+    invites confounders — ice-cream drownings, and the classic reversal "hospitals make you
+    sick" (sicker people go to hospitals). The sceptic's one-line discipline: for every number
+    ask <em>compared to what, per what, counted by whom, and what would the opposite finding
+    look like?</em>
+  </p>
+
+  <h2>Data storytelling</h2>
+  <p>
+    Analysis finds the pattern; the story makes it matter, and the order of work is analysis
+    first, story second — never a headline hunting for a chart. Story shapes that reliably work:
+    the <strong>exception</strong> (one school where results rocketed against every
+    confounder-driven expectation — then report the chase for the explanation, including
+    "it was a data error" outcomes); the <strong>national pattern with local faces</strong>
+    (every region's number, one street's story); the <strong>race or league</strong> (who is
+    best and worst, and is the gap widening); and the <strong>failed promise</strong> (target
+    versus delivery, quantified). Structurally, data stories still obey the news pyramid's
+    lede-nut-graf logic, but the nut graf must now state the <em>evidentiary</em> claim:
+    what the data is, over what period, with what limitation — "the figures cover England only,
+    and 12% of records are missing" belongs in the story, not the appendix. Visualisation then
+    carries the evidence: the chart-lesson honesty rules (baseline-zero bars, normalised
+    comparisons, labelled uncertainty, no truncated axes that manufacture drama), with the
+    Guardian and New York Times graphics desks as the reference craft. The final discipline is
+    <strong>publishing the methodology</strong>: the data files, the cleaning steps, the analysis
+    code. Reproducibility is scoop protection — it pre-empts the "lies, damned statistics"
+    rebuttal, lets other journalists build on the work, and marks the difference between an
+    assertion and a finding. An analysis nobody can check is a claim; one anyone can check is a
+    contribution.
+  </p>
+  <p>
+    <em>Common misconception:</em> "data journalism means the story writes itself from the
+    numbers." Data produces patterns, not meaning. The same dataset supports "spending rose" or
+    "needs rose faster than spending" — choosing between those framings requires exactly the
+    context, sourcing and fairness that traditional reporting always required. The data does not
+    replace the reporter; it gives the reporter something to be right about.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The skills stack, honestly weighted.</strong> Industry self-surveys and newsroom
+    practice agree on the distribution: spreadsheets do perhaps 80% of day-to-day data
+    journalism (pivot tables, joins, basic descriptives cover most council, police and school
+    stories); SQL earns its keep the moment data exceeds a spreadsheet's rows or needs joining
+    across tables; R or Python earn theirs for scraping, automation and real statistics; GIS
+    unlocks the spatial story — and spatial data has its own scepticism trap, since choropleth
+    maps of raw counts are just population-density maps in disguise (the modifiable areal unit
+    problem: the same data on different boundaries yields different stories). The
+    computational-reproducibility lesson lands here as newsroom practice: version-controlled
+    analysis notebooks are becoming the norm at data desks, both as internal QA and as
+    published evidence.
+  </p>
+  <p>
+    <strong>A worked sceptic's pass, end to end.</strong> Take a claim that "burglary doubled
+    in the city centre last year". Steps: check the denominator and the geography (city centre
+    wards were redrawn — the boundary moved, the crime did not); check the counting unit
+    (incidents versus reports versus recorded offences — a new online reporting portal can
+    raise recorded crime without raising crime); check the series for a structural break at
+    the same date as a policy or software change; compute the rate per household and per
+    head; look at the confidence around small numbers (a doubling from 6 to 12 incidents is
+    6 extra burglaries, well inside ordinary year-to-year noise). Often the honest story is
+    "the counting changed" — which is itself a story, and a better one.
+  </p>
+  <p>
+    <strong>When data journalism breaks the wrong way.</strong> Crime-density maps can
+    stigmatise neighbourhoods whose "crime" is patrol intensity, not criminality; algorithmic
+    risk scores adopted uncritically launder the biases of the data that trained them; and
+    pandemic-era misreadings of infection models showed how a confident chart can outrun its
+    assumptions. The discipline's error bars must therefore include social consequence — the
+    ethics lesson's minimise-harm pillar, quantitative edition. Open research questions worth
+    following: provenance standards for scraped and leaked data, statistical disclosure control
+    versus transparency, and how AI-assisted analysis changes both the speed and the
+    accountability of the desk.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> the data-science and statistics ladders; ICIJ methodology pages; Cairo, The Functional Art; the FOIA and verification lessons.</p>
 </TopicPage>

@@ -49,19 +49,41 @@ const matSelQuizCfg = {
     strength trade against each other in real tables of data, and the selection method's
     job is to make the trade explicit rather than optimistic.</li>
     <li><strong>Thermal:</strong> conductivity k, expansion coefficient α, specific heat,
-    maximum service temperature. Expansion mismatch is the quiet killer of joined
-    structures (a glass-to-metal seal cracks because the partners expand differently);
-    conductivity governs both heat sinks and thermal-stress index.</li>
+    maximum service temperature. Conductivity spans five decades — copper ≈ 400 W/(m·K),
+    steel ≈ 50, window glass ≈ 1, polymers ≈ 0.2, insulation foams ≈ 0.03 — which is why
+    the same chart picks heat sinks and duvets. Expansion mismatch is the quiet killer of
+    joined structures (a glass-to-metal seal cracks because the partners expand
+    differently), and expansion times stiffness times temperature swing gives thermal
+    stress, quantified below.</li>
     <li><strong>Electrical:</strong> conductivity or resistivity, dielectric strength,
     magnetic behaviour — copper's 59 MS/m conductivity is why it <em>is</em> the wire, and
-    insulators are chosen almost as deliberately (tracking resistance, dielectric loss).</li>
+    insulators are chosen almost as deliberately (tracking resistance, dielectric loss).
+    But conductivity per unit mass reshuffles the ranking: aluminium's 38 MS/m is only
+    two-thirds of copper's, yet divided by density (2.7 versus 8.9 Mg/m³) aluminium
+    carries more than twice the current per kilogram — the reason overhead transmission
+    lines are aluminium (steel-cored for strength), not copper.</li>
     <li><strong>Chemical:</strong> corrosion and oxidation resistance, UV and solvent
     compatibility, galvanic compatibility. The galvanic series ranks metals by noble
     potential; connecting a less-noble metal to a more-noble one in an electrolyte makes
-    the less-noble one the sacrificial anode — useful (galvanised steel: zinc corrodes,
-    steel doesn't) and fatal (steel fasteners in copper sheet). Corrosion is chemistry with
+    the less-noble one the sacrificial anode — useful (galvanised steel: zinc, at
+    −0.76 V standard potential versus iron's −0.44 V, corrodes so the steel doesn't) and
+    fatal (steel fasteners in copper sheet, +0.34 V, dissolve). Corrosion is chemistry with
     a failure lesson attached.</li>
   </ul>
+  <p>
+    Two of these numbers deserve the full worked treatment. <strong>Thermal stress</strong>
+    is σ = E·α·ΔT: a continuous-welded steel rail (E = 210 GPa, α = 12 × 10⁻⁶ per kelvin)
+    prevented from expanding over a 40 K swing carries 210 × 10⁹ × 12 × 10⁻⁶ × 40 ≈
+    100 MPa — a third of its yield strength, spent doing nothing but existing at the wrong
+    temperature. Railroads manage the budget by fastening rails at a chosen "neutral"
+    temperature so summer and winter excursions split evenly. <strong>Thermal shock</strong>
+    is the same equation with a gradient: a surface suddenly cooled contracts while the
+    interior does not, and the surface cracks if the induced stress reaches σ_f, which
+    happens at ΔT_c ≈ σ_f/(E·α) — the thermal-shock index. Low expansion is the whole
+    trick: borosilicate glass (α ≈ 3.3 × 10⁻⁶) survives ΔT ≈ 240 K where soda-lime
+    (α ≈ 9 × 10⁻⁶) manages about 70 K — why ovenware is borosilicate and windows are not,
+    and why fused silica (α ≈ 0.5 × 10⁻⁶) survives the extreme end.
+  </p>
 
   <h2>Translation: from adjectives to indices</h2>
   <p>
@@ -108,8 +130,8 @@ const matSelQuizCfg = {
     <em>Common misconception:</em> the "best material" exists. Best is index-dependent and
     constraint-dependent: carbon fibre wins light-stiff bending and loses cost-per-stiffness;
     steel wins cheap-stiff and loses light-anything; glass wins thermal shock
-    <em>if</em> it is borosilicate (index σ_f/(E·α) ≈ 3,500 K for borosilicate versus
-    ~250 K for soda-lime — why ovenware is borosilicate and windows are not). Selection
+    <em>if</em> it is borosilicate (index σ_f/(E·α) ≈ 240 K for borosilicate versus
+    ~70 K for soda-lime — why ovenware is borosilicate and windows are not). Selection
     discipline means writing the objective down before falling in love with a material.
   </p>
 
@@ -127,8 +149,35 @@ const matSelQuizCfg = {
     trail that lets the next engineer (or the next failure investigation) see the decision's
     logic.
   </p>
+  <p>
+    Run the whole workflow once, quickly, on a real object: a <strong>bicycle
+    frame</strong>. Translation: it is a set of ties and beams loaded in bending and
+    torsion; objective, minimum mass at acceptable cost; constraints, survive decades of
+    fatigue, no rust, joinable, serviceable to −20 °C. Screening kills thermoplastics
+    (creep), ceramics (toughness) and lead (weight). Ranking on E^½/ρ puts CFRP, titanium
+    and aluminium at the top, steel below — which is exactly the market you observe:
+    carbon-fibre racing frames, aluminium mid-range, titanium boutique, steel touring
+    (where comfort, repairability and cost, not mass, are the implicit objectives — a
+    translation the buyers made without ever writing it down). Documentation is the
+    manufacturer's layup schedule or the tube supplier's certificate. One pass of the
+    method, and the showroom becomes a chart you can read.
+  </p>
 
   <h2>Going deeper</h2>
+  <p>
+    <strong>Indices that fight back.</strong> The pressure vessel is Ashby's showcase of
+    conflicting indices. Mass minimisation wants the wall as thin as the yield strength
+    allows — maximise σ_y/ρ. Safety wants the vessel to <em>yield before it breaks</em>,
+    so any crack present is still shorter than the size at which the (now known) stress
+    reaches K_IC — maximise K_IC/σ_y. The two indices point in opposite directions:
+    ultra-high-strength steel wins the first and fails the second (its toughness is poor
+    precisely because its strength is high), while low-strength, very tough steel does
+    the reverse. The professional answer is a middle-strength, high-toughness steel — or
+    titanium when mass is precious enough (spacecraft tanks) — and the general lesson is
+    that a design with two failure modes needs two indices, and the candidate set is the
+    region where both are satisfied. Failure-mode thinking is what stops the index method
+    from ranking confidently into catastrophe.
+  </p>
   <p>
     <strong>Multi-objective selection.</strong> Real designs optimise several objectives at
     once — mass <em>and</em> cost <em>and</em> embodied carbon. The rigorous treatment

@@ -14,20 +14,194 @@ const dsysCfg = {
 <TopicPage slug="subjects/design/advanced/design-systems">
   <h2>The idea</h2>
   <p>
-    Design systems are <strong>the systems-engineering lesson applied to design itself</strong> —
-    tokens, components and governance that let a hundred designers and developers ship one
-    coherent product. This site you\'re reading runs on exactly this logic (its own CSS tokens
-    and shared components).
+    A design system is the manufacturing lesson applied to digital products: the difference
+    between a craftsperson shaping each screen by hand and a production line that turns out
+    thousands of consistent, testable parts. When one team ships one screen, craft wins — no
+    overhead needed. When a hundred teams ship thousands of screens, handmade inconsistency
+    compounds: five button styles, three shades of the brand colour, accessibility fixed in one
+    place and broken in ten. The design system is the remedy, and it maps onto the classical
+    making process with surprising fidelity. This site you are reading runs on exactly this
+    logic — its own CSS tokens and shared TopicPage and Widget components are a small design
+    system.
   </p>
 
   <Widget no="1" caption="tokens, components, documentation, governance" widget="equationStep" config={dsysCfg} />
 
-  <h2>The known outcomes</h2>
-  <ul>
-    <li><strong>Speed with consistency:</strong> the documented result — teams ship screens faster (composing beats reinventing) and every surface inherits fixes; accessibility fixes applied once, deployed everywhere (the accessibility lesson\'s payoff at scale).</li>
-    <li><strong>The big public systems teach the craft:</strong> Material (Google), Human Interface Guidelines (Apple), Polaris (Shopify), Carbon (IBM) — each encodes a platform\'s interaction philosophy; reading their component documentation is a free design education (the component API is the argument).</li>
-    <li><strong>The rigidity trap:</strong> systems calcify when contributions are slow or the central team becomes a bottleneck — the balance (guardrails for coherence, escape hatches for innovation) is the strategy lesson\'s standardisation-flexibility trade at design scale.</li>
-    <li><strong>Multi-brand systems generalise further:</strong> theming (tokens swapped per brand) runs white-label products — the token layer is what made design systems a business asset, not just a consistency tool.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Figma/Sketch system case studies; the Sparkbox design-system survey; the systems-engineering and typography lessons.</p>
+  <h2>Measuring and marking out: tokens</h2>
+  <p>
+    Every physical build starts by choosing units and marking them out; every design system
+    starts by choosing <strong>tokens</strong> — named, atomic design decisions held as data
+    rather than hardcoded values. A spacing scale might be built on a 4 px base unit: 4, 8, 12,
+    16, 24, 32, 48, 64. A type scale is usually a ratio applied to the body size: starting at
+    16 px with a ratio of 1.25 gives 16, 20, 25, 31, 39, 49 px — every heading and caption sits
+    somewhere on that ladder, and no pixel value outside it needs to exist. Colour gets a token
+    hierarchy: primitive values (the raw swatches), then semantic tokens that reference them
+    (<code>--colour-action</code>, <code>--colour-danger-text</code>), so that rebranding or
+    dark-mode support is a re-pointing of the semantic layer, not a hunt through ten thousand
+    files. The reason tokens come first is the same reason a workshop marks out before cutting:
+    every later decision references them, so an error at the token level propagates everywhere —
+    and, mercifully, so does a fix.
+  </p>
+  <p>
+    <em>Common misconception:</em> "tokens are just CSS variables." They are design
+    <em>decisions</em> encoded as variables; the value is the smallest part. A token called
+    <code>--space-4</code> exists so that the argument about whether cards use 16 or 18 px of
+    padding happens exactly once, in one meeting, with evidence — and never again in every code
+    review.
+  </p>
+
+  <h2>Cutting, shaping and forming: components</h2>
+  <p>
+    Components are the shaped parts of the system: buttons, inputs, cards, dialogs, tables,
+    built once from the token material and reused everywhere. Shaping them well means designing
+    the full state matrix from the interaction lesson (default, hover, focus, active, loading,
+    error, disabled, empty), defining the component's <em>API</em> — which properties it accepts,
+    which it inherits, which are locked — and testing it in isolation before it ships. A useful
+    discipline is the atomic hierarchy: atoms (a button), molecules (a labelled input field),
+    organisms (a sign-up form) — though real systems blur it, the point survives: parts compose
+    into parts, and each level is only responsible for its own correctness. Quantify the payoff:
+    if a median product has 40 button variants and a system reduces them to 4, every future
+    accessibility fix (contrast, focus ring, target size) is applied 1 time instead of 40, and
+    every designer's file starts with a known vocabulary instead of a negotiation.
+  </p>
+
+  <h2>Joining: composition and layout</h2>
+  <p>
+    Parts are useless until joined, and joining has its own rules. Layout systems (grids,
+    spacing stacks, responsive breakpoints) are the joinery: they define how components attach
+    to each other and what happens when the container changes size. Composition patterns —
+    <em>slot</em> components that accept arbitrary children, prop-driven variation versus
+    compound components, inversion of control for content — determine whether the system bends
+    to new needs or shatters. The classic failure is over-constraint: a card component with
+    exactly one image aspect ratio and one button will be forked, and forks are how systems die.
+    The design answer is deliberate variation points: a component family (card with media /
+    without / horizontal) rather than a monolith, with the differences chosen from the token
+    scale so even the variants stay consistent.
+  </p>
+
+  <h2>Finishing and safe working practices</h2>
+  <p>
+    Finishing is the last 10% that reads as quality: focus states that are visible, contrast
+    that passes WCAG AA (4.5:1 for body text, 3:1 for large text and UI components), touch
+    targets of at least 44 × 44 px (Apple) or 24 × 24 px (WCAG 2.2 minimum), loading and error
+    microstates, dark-mode variants checked for both contrast and pure-black fatigue, reduced
+    motion alternatives for every animation. In a system these checks are performed
+    <em>once</em> and inherited everywhere — this is the accessibility lesson's payoff at scale,
+    and it is the strongest economic argument for systems. Safe working practices translate
+    directly too: automated linting that rejects untokenised colour values, design linting in
+    Figma that flags off-scale spacing, versioned releases so a breaking change is a major
+    version with a migration guide rather than a surprise, and deprecation policies (a warning
+    period, a codemod where possible) so consumers are never blindsided. Semantic versioning for
+    components is the safety harness: a patch fixes without behaviour change, a minor adds
+    without breaking, a major breaks — loudly, with a changelog.
+  </p>
+
+  <h2>Commercial manufacturing methods and scale of production</h2>
+  <p>
+    The manufacturing syllabus distinguishes one-off craft, batch, and mass/continuous
+    production; digital design scales the same way. <strong>One-off</strong> (a bespoke site,
+    a marketing page) justifies hand-rolled decisions; a system would be overhead. <strong>Batch</strong>
+    (a product line with several surfaces) wants a lightweight kit — tokens plus a dozen core
+    components. <strong>Continuous mass production</strong> (a platform with many teams shipping
+    daily) needs the full apparatus: semantic token layers, contribution processes, automated
+    tests, release trains. The public systems encode this maturity and are worth reading as
+    textbooks: Google's Material Design, Apple's Human Interface Guidelines, Shopify's Polaris
+    and IBM's Carbon each document not just components but the platform's <em>philosophy</em> —
+    the component API is the argument. Mass customisation is the newest layer: multi-brand
+    theming (white-label products where each customer's brand is a token override) means one
+    production line yields infinitely varied output — the exact promise industrial
+    standardisation always made.
+  </p>
+
+  <h2>Documentation and governance: the human problem</h2>
+  <p>
+    The hard part of a design system is not design; it is adoption. A component library nobody
+    can find, trust or understand is a folder of good intentions. Documentation is therefore the
+    product: usage guidance that says <em>when not to use</em> a component (the most valuable
+    sentences in any system's docs), live playgrounds with copyable code, visual regression
+    tests that show what changed, and a clear contribution path. Governance decides who maintains
+    it: a <strong>central team</strong> is fast and coherent but becomes a bottleneck — the classic
+    calcification failure, where requests queue for months and teams fork to survive; a
+    <strong>federated model</strong> (contributors from product teams, a small core that reviews
+    and releases) trades some coherence for throughput. The economics that actually drive
+    adoption are simple to state and hard to arrange: <em>using the system must be cheaper than
+    diverging from it</em>. When the system is faster to reach than a fresh Figma file and the
+    escape hatch is legitimate (documented, time-boxed, eventually contributed back), teams
+    comply because it serves them. When compliance is demanded but not convenient, you get the
+    shadow system: local overrides, forks, and a slow slide back to five button styles.
+  </p>
+  <p>
+    <em>Common misconception:</em> "a design system is a component library." The library is the
+    visible artefact; the system is the library plus the tokens, the rules, the documentation,
+    the contribution process and the governance that keeps all of it alive. Industry surveys
+    (Sparkbox's annual design-systems survey being the best-known) consistently find the top
+    challenges are people-and-process ones — adoption, funding, staffing — not component design.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Token pipelines.</strong> Serious systems keep design tokens in a tool-neutral format
+    (W3C's Design Tokens Community Group format: JSON with a <code>$value</code> and a
+    <code>$type</code>) and compile them to CSS custom properties, iOS and Android equivalents,
+    and Figma variables via a build step. This solves the "three sources of truth" problem —
+    designer's file, web code, native code — by making the token file the single upstream source
+    and everything else generated artefacts. The open questions are active research and
+    standards work: how to tokenise <em>component-level</em> decisions (a button's internal
+    padding) without exploding the token count into the thousands, how to express theming math
+    (contrast-preserving colour transformations) rather than hand-authoring every theme, and how
+    to version a token set that is also an organisation's public contract.
+  </p>
+  <p>
+    <strong>The cost model, worked.</strong> Systems earn their overhead through repetition, and
+    the arithmetic is worth doing before anyone builds one. Suppose a product team of 30
+    engineers and 6 designers ships 40 screens a quarter. Without a system, each screen costs a
+    designer a day and an engineer two days of component decisions, styling and
+    accessibility QA — call it 3 person-days per screen, 120 per quarter, forever, with
+    divergent results every time. With a system, the first year is genuinely more expensive:
+    perhaps 100 person-days of token and component work before it pays anything back, plus a
+    standing maintenance cost of 10–15% of one or two people. The break-even arrives when the
+    per-screen cost falls to roughly 1 person-day (compose from known parts, style via tokens,
+    QA inherited) — 40 screens a quarter then costs 40 person-days plus ~30 of system
+    maintenance, a saving of about 50 person-days every quarter thereafter, and the
+    <em>unpriced</em> returns stack on top: accessibility fixed once instead of forty times,
+    onboarding that starts from a documented vocabulary, and design–engineering disputes that
+    shrink to the 20% of decisions the system deliberately leaves open. The same arithmetic
+    explains the failure threshold: below roughly 10 engineers, the build cost usually exceeds
+    the savings in year one and a lightweight kit (tokens plus a dozen components) is the
+    honest recommendation — which is why the biggest public systems all come from the biggest
+    product surfaces.
+  </p>
+  <p>
+    <strong>Measuring a system.</strong> Treat it like any product with metrics: adoption rate
+    (share of new screens composed from system components), divergence count (lint violations
+    per release), contribution lead time (days from PR to release), and downstream defect rate
+    (accessibility or consistency bugs escaping to production). Teams that measure report a
+    characteristic adoption S-curve: slow until the core components cover ~80% of common needs,
+    then self-sustaining, because new teams arrive and the path of least resistance is the
+    system. The 80% number matters strategically — chasing the last 20% of exotic use cases
+    usually costs more than it saves, which is why mature systems explicitly bless an escape
+    hatch rather than pretend it does not exist.
+  </p>
+
+  <p>
+    <strong>Where the tooling is going.</strong> The workflow's seams are being rebuilt around
+    code-connected design: design tokens synced bidirectionally between the design file and the
+    codebase, components published from Figma libraries that mirror the npm package one-to-one,
+    and visual-diff CI that screenshots every component story on every pull request so a token
+    change shows its full product-wide blast radius before merge. The mature posture is to
+    treat the system as a <em>product</em> with users (the other teams), a roadmap, a changelog
+    and office hours — the organisations with durable systems staff them like products, not
+    like internal services, because a system is a promise maintained across every reorg.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Generative tooling is pressing on the system's
+    boundaries in both directions: AI-assisted design can now produce plausible screens that
+    ignore every token, and systems teams are responding with machine-readable constraint
+    formats and automated repair — "the system as linter for generated UI". Meanwhile
+    cross-platform tokens (web, iOS, Android, email, print) strain the single-source ideal,
+    since each medium has different primitive units, and the field has no settled answer for
+    what a "design decision" is in a medium where the layout itself is computed at run time.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Material Design, Apple HIG, Shopify Polaris and IBM Carbon documentation; the Sparkbox design-systems survey; Frost, Atomic Design; the systems-engineering, typography and accessibility lessons.</p>
 </TopicPage>
