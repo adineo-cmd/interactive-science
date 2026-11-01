@@ -20,15 +20,192 @@ const multivariateCfg = {
     learning: regression with many predictors, classification, and dimension reduction are all
     multivariate statistics under different marketing names.
   </p>
+  <p>
+    The route there runs through the two-variable case, which is why this lesson's syllabus
+    foundation is the bivariate toolkit: naming a dependent variable (the outcome, on the
+    y-axis) and independent variables (the predictors, on the x-axis), reading a scatter
+    diagram's direction and strength, fitting a line of best fit, and knowing exactly when
+    a fitted line may be trusted. Multivariate analysis is not a different subject — it is
+    that same toolkit, done honestly when the number of variables exceeds the number of
+    intuitions.
+  </p>
 
   <Widget no="1" caption="the four ideas that organise high-dimensional data" widget="equationStep" config={multivariateCfg} />
 
-  <h2>The methods and where they live</h2>
-  <ul>
-    <li><strong>Multiple regression & GLMs:</strong> many predictors, one outcome — the general linear model family (including logistic regression for yes/no outcomes) is applied statistics' backbone.</li>
-    <li><strong>PCA & factor analysis:</strong> compress correlated variables into a few components. Face recognition's "eigenfaces" and market-research's brand dimensions are both PCA wearing different clothes.</li>
-    <li><strong>MANOVA & mixed models:</strong> compare groups across several outcomes at once; handle repeated measures and hierarchical data (students in classes in schools) with mixed effects — the standard tool of modern clinical and education research.</li>
-    <li><strong>The multiple-testing burden grows with dimension:</strong> test 10,000 genes and thousands of "significant" results appear by chance. False discovery rate (Benjamini–Hochberg, 1995) is the standard control.</li>
-  </ul>
+  <h2>Scatter diagrams and correlation: the foundation, read properly</h2>
+  <p>
+    Every multivariate method begins as a scatter diagram that got too big to draw. In the
+    two-variable case the discipline is visual first: plot the pairs, read the
+    <em>direction</em> (positive — both rise together; negative — one falls as the other
+    rises; or none), the <em>form</em> (linear or curved — a straight-line summary of a
+    curved cloud is a lie), and the <em>strength</em> (tight cloud versus diffuse). The
+    Pearson correlation coefficient compresses all of that into one number between −1 and
+    1: r = 0.9 is a strong positive linear association, r = −0.2 weak and negative, r
+    close to 0 no <em>linear</em> association. Its most useful transformation is r²: a
+    correlation of 0.8 means r² = 0.64 — about 64% of the outcome's variation travels with
+    the predictor, and 36% does not. The multivariate generalisation is the
+    <strong>correlation matrix</strong>: an n-variable dataset becomes an n-by-n table of
+    every pairwise r, the first honest look at any high-dimensional dataset — and the
+    place where multicollinearity (predictors that are nearly copies of each other) is
+    spotted before it poisons a regression.
+  </p>
+  <p><em>Common misconception:</em> that a strong correlation licenses a causal claim.
+  Ice-cream sales correlate with drowning deaths — because both are driven by summer
+  heat; the confounder, not the ice cream, moves both. Correlation is evidence of
+  association; causation requires a mechanism, an experiment or a designed identification
+  strategy (the causal-inference lesson's territory).</p>
+
+  <h2>Fitting the line: by eye, by semi-averages, by least squares</h2>
+  <p>
+    The syllabus's fitting sequence is a staircase toward the real method. <strong>By
+    eye</strong>: lay a ruler through the cloud balancing the points above and below —
+    quick, subjective, fine for a first look. <strong>By semi-averages</strong>: split the
+    data into two halves (by ordered x), average x and y within each half, and draw the
+    line through the two mean-points — crude but reproducible. Worked example: eight
+    pupils' study hours versus test scores; the lower half averages (2.5 hours, 55
+    marks), the upper half (7.5 hours, 77 marks). Slope = (77 − 55) ÷ (7.5 − 2.5) =
+    4.4 marks per hour; the line through the lower mean-point gives intercept 55 − 4.4 ×
+    2.5 = 44. So the model reads: <em>each extra study hour is worth about 4.4 marks,
+    from a baseline of 44</em>. <strong>By least squares</strong> — the method all
+    software runs — chooses the line minimising the sum of squared vertical errors,
+    which is optimal when the scatter is Gaussian; with many predictors (multiple
+    regression) the same idea extends to a plane, then a hyperplane, and the fitted
+    equation y = a + b₁x₁ + b₂x₂ + … + bₖxₖ keeps the same grammar: each coefficient is
+    that variable's estimated effect <em>holding the others fixed</em>.
+  </p>
+
+  <h2>Assumptions and the limits of extrapolation</h2>
+  <p>
+    A fitted line is a claim with conditions: the relationship is genuinely
+    <em>linear</em> in the range observed; the errors are independent and roughly
+    constant-spread (no funnel shapes in the residuals); and no single point is quietly
+    running the show. The classic demonstration is Anscombe's quartet (1973): four tiny
+    datasets with <em>identical</em> means, identical correlation (r ≈ 0.816) and the
+    identical fitted line y = 3 + 0.5x — yet one is a clean linear cloud, one sits on a
+    perfect curve, one has a single outlier dragging the line, and one has a vertical
+    spike. Same statistics, four different realities: the lesson is that the summary
+    numbers certify nothing until the scatter diagram is looked at — which is why
+    residual plots, not just summaries, are part of any honest fit.
+  </p>
+  <p>
+    <strong>Extrapolation</strong> is the second limit: a line fitted on data between
+    x = 2 and x = 8 hours says nothing defensible about x = 20 — the relationship may
+    curve, saturate or reverse outside the observed range (the semi-average model above
+    would confidently predict 132 marks at 20 hours, past every exam's maximum). The
+    habit to install: state the data's range, and treat any prediction beyond it as a
+    hypothesis, not a forecast. In multivariate work the failure mode compounds —
+    prediction surfaces extrapolate in directions you cannot even plot.
+  </p>
+  <p><em>Common misconception:</em> that a high r² means the model is correct. Anscombe's
+  quartet makes the point exactly: r² = 0.67 in all four datasets, one of which is a
+  perfect parabola that the straight line misdescribes. Fit statistics measure how well
+  <em>this functional form</em> summarises the data — not whether that form is true.</p>
+
+  <h2>Many variables at once: the methods that scale</h2>
+  <p>
+    With many predictors the bivariate toolkit generalises along three axes.
+    <strong>Multiple regression and the GLM family</strong> handle many predictors, one
+    outcome — including logistic regression when the outcome is yes/no — and remain
+    applied statistics' backbone. <strong>Dimension reduction</strong> handles the case
+    where predictors outnumber insights: principal component analysis (PCA) rotates the
+    data onto directions of greatest variance, and routinely 50 correlated variables
+    collapse to 3–5 components carrying most of the story (face recognition's
+    "eigenfaces" and market research's brand dimensions are both PCA in costume).
+    <strong>Classification and clustering</strong> handle group structure: with known
+    labels, discriminant analysis and logistic regression draw the boundaries
+    (supervised); without labels, k-means and hierarchical clustering find them
+    (unsupervised) — the distinction machine learning renamed but did not invent.
+    <strong>MANOVA and mixed models</strong> extend group comparison to several outcomes
+    at once and to hierarchical data — pupils in classes in schools, athletes in squads —
+    the standard machinery of modern clinical and education research.
+  </p>
+
+  <h2>A worked example: thirteen measurements, two components</h2>
+  <p>
+    PCA's behaviour is easiest to trust on a concrete case. Measure a squad of 200
+    athletes on 13 anthropometric variables — height, weight, sitting height, arm span,
+    six skinfold sites, three limb circumferences. The correlation matrix shows the
+    expected structure: the length variables correlate strongly with each other, the
+    fat variables with each other, and the two clusters weakly with each other. PCA
+    formalises the hunch: the first component comes out as an approximately equal
+    weighting of the length and mass variables — a general <em>size</em> axis — and
+    accounts for perhaps 60% of the total variance; the second contrasts the fat
+    variables against the lean ones — a <em>composition</em> axis — adding another
+    20%. Two axes, constructed from the data rather than assumed, now carry about
+    80% of thirteen variables' story, and each athlete is summarised by two scores:
+    how big, and what made of. Every downstream analysis (comparing age groups,
+    plotting squads, screening outliers) runs on those two scores instead of
+    thirteen, with the honest caveat that the components are mathematical
+    conveniences — they are patterns of variance, not guaranteed to be the variables
+    that matter for performance.
+  </p>
+
+  <h2>Classification: drawing boundaries in high dimensions</h2>
+  <p>
+    Where PCA summarises, classification decides. The supervised case: given known
+    groups — respond to a treatment or not, churn or stay, sprinter or endurance
+    profile — fit a rule that assigns new cases. Logistic regression makes the rule
+    interpretable: it models the log-odds of membership as a weighted sum of
+    predictors, and each coefficient reads directly — a predictor with coefficient
+    0.7 multiplies the odds by roughly 2 (the exponential of 0.7) per unit increase,
+    other variables held fixed. Linear discriminant analysis does the same job with
+    distributional assumptions, and modern descendants (random forests, gradient
+    boosting — the machine-learning ladder's territory) trade some interpretability
+    for boundary flexibility. The unsupervised case: k-means partitions the data into
+    k clusters by iteratively assigning points to the nearest centre and re-centring;
+    the honest difficulties are choosing k (elbow and silhouette diagnostics, not
+    revelation) and remembering that clusters are patterns in <em>your</em> variables —
+    change the variables, change the clusters.
+  </p>
+
+  <h2>Validation: why in-sample success lies</h2>
+  <p>
+    The multivariate habit that separates the professional from the enthusiastic
+    amateur is <em>validation on data the model never saw</em>. Fit a regression with
+    50 predictors on 200 observations and the in-sample fit can look splendid —
+    with enough variables, a linear model memorises noise the way a student
+    memorises past papers. The honest protocol: hold out a test set (or rotate
+    folds — k-fold cross-validation), fit on the remainder, and score the held-out
+    data; the gap between in-sample and out-of-sample performance is the
+    overfitting tax, and it grows with every variable added and every observation
+    removed. This is also why the curse of dimensionality (below) is a budgeting
+    problem: dimension reduction and regularisation are how the tax is paid down,
+    and out-of-sample validation is how you know whether it has been.
+  </p>
+
+  <p><em>Common misconception:</em> that adding variables always improves the model.
+  In-sample it does — mechanically, R² can only rise — but each addition costs a
+  degree of freedom, invites multicollinearity (coefficients that swing wildly because
+  two predictors carry the same information), and buys memorised noise that will not
+  repeat out of sample. The professional reflex runs the other way: fit the smallest
+  model the evidence supports, and make any addition justify itself on held-out data.</p>
+  <p>
+    The practical toolkit for the multicollinearity problem: standardise predictors so
+    coefficients are comparable, inspect variance inflation factors (a common rule of
+    thumb worries above 5–10), and when predictors are near-duplicates, prefer
+    combining or dropping them to pretending the model can split their credit. The
+    multivariate discipline, in one line: every variable earns its place, every
+    coefficient gets an interval, and every claim is checked on data the fit never
+    touched.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Two frontiers separate competence from expertise. <strong>The curse of
+    dimensionality</strong>: as variables multiply, volume explodes and data becomes
+    sparse — nearest neighbours stop being near, distances stop discriminating, and the
+    sample needed to fill a p-dimensional grid grows exponentially in p. The
+    consequences are practical: high-dimensional models overfit (they memorise noise
+    that, in high dimensions, looks like signal), which is why regularisation
+    (ridge, lasso — shrinking coefficients) and dimension reduction are not optional
+    refinements but the price of admission, and why "more variables" is not the same
+    as "more information". <strong>The multiple-testing burden</strong>: test 10,000
+    genes for association at the 5% level and about 500 "significant" hits appear by
+    pure chance — the false discovery rate procedure (Benjamini–Hochberg, 1995) controls
+    the expected share of false positives among declared discoveries, and is the quiet
+    reason large-scale science is possible at all. Both frontiers say the same thing
+    from different directions: high dimensions are where intuition fails first and
+    discipline matters most — the multivariate toolkit is that discipline, formalised.
+  </p>
   <p class="sources"><strong>Sources:</strong> Johnson & Wichern, Applied Multivariate Statistical Analysis; Hastie, Tibshirani & Friedman, ESL.</p>
 </TopicPage>
