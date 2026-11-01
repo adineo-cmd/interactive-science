@@ -18,26 +18,200 @@ const capmCfg = {
 <TopicPage slug="subjects/finance/expert/asset-pricing-models">
   <h2>The idea</h2>
   <p>
-    Asset pricing asks <strong>what return an investment should offer, given its risk</strong>.
-    CAPM's answer (1964–66, Sharpe/Lintner/Mossin, Nobel 1990): only <em>market</em> risk is paid
-    — diversifiable risk earns nothing, because you could have diversified it away for free. The
-    model is elegant, empirically imperfect, and the backbone of every discount-rate debate.
+    Asset pricing asks <strong>what return an investment should offer, given its risk</strong> —
+    and the discipline's answer changed how every pension, endowment and company is managed.
+    The unit's three topics are the field in miniature: measure return and risk; combine assets
+    into portfolios; then price any single asset off the portfolio. CAPM (Sharpe, Lintner and
+    Mossin, 1964–66; Nobel 1990) is the hinge: only <em>market</em> risk is paid, because
+    diversifiable risk can be removed for free — so it earns nothing. The model is elegant,
+    empirically imperfect, and still the backbone of every discount-rate debate.
   </p>
 
   <Widget no="1" caption="the CAPM equation as a live calculator — beta is the whole story" widget="sliderLab" config={capmCfg} />
 
+  <h2>Return and risk measurement: the raw material</h2>
   <p>
-    Beta measures sensitivity to the market: β = 1 moves with the market, β = 2 doubles its
-    swings, β = 0 is (theoretically) risk-free. The demanded return scales linearly with beta —
-    the market pays for non-diversifiable risk only.
+    <strong>Returns.</strong> An asset's return is its price change plus income, and the first
+    discipline is choosing the average. Arithmetic mean (the simple average of periodic returns)
+    is the right input for <em>expected</em> future returns; the geometric mean (compounded:
+    −50% followed by +60% leaves you at 0.8, a −20% total, not +5%) is the right description of
+    <em>realised</em> growth, and it is always lower — the gap grows with volatility, which is
+    why volatile assets compound worse than their arithmetic averages suggest. US large-cap
+    equities returned roughly 10% nominal per year over the last century (geometric, about
+    6–7% above inflation); Treasury bills near 3%.
+  </p>
+  <p>
+    <strong>Risk.</strong> The standard measure is variance (σ²) — the average squared
+    deviation from the mean — or its square root, the standard deviation. US equities run
+    σ ≈ 15–20% a year, government bonds nearer 5–8%, cash near 1%. Risk also wears a directional
+    face: beta, an asset's sensitivity to the market, computed as β = Cov(rᵢ, rₘ) / Var(rₘ).
+    Note what beta is <em>not</em>: not the asset's total volatility, but the market-linked
+    slice of it — a low-volatility asset can carry high beta, and vice versa.
+  </p>
+  <p>
+    <strong>The ratio.</strong> The Sharpe ratio — (Rₚ − R_f) / σₚ, excess return per unit of
+    total risk — is the single most used comparison metric. A fund returning 10% with 15%
+    volatility in a 3% rate world scores (10 − 3)/15 ≈ 0.47; its rival at 8% with 9% volatility
+    scores 0.56 and wins. The measure's known weaknesses: it punishes upside volatility
+    symmetrically with downside, and it collapses when returns are not bell-shaped — which is
+    why practitioners add drawdown and skew measures. But as a common currency for "return per
+    unit of risk", it organises everything that follows.
+  </p>
+  <p>
+    <strong>Counting losses: the measures variance hides.</strong> Standard deviation treats
+    +20% and −20% identically, but investors do not. The practitioner's additions: downside
+    deviation (only returns below target enter the denominator — the Sortino ratio swaps it
+    into Sharpe's formula), maximum drawdown (worst peak-to-trough loss — the measure that
+    decides whether a strategy survives its investors' nerves), and Value-at-Risk (the loss
+    threshold not exceeded, say, 95% of the time — with its notorious blindness to exactly
+    the 5% tail it excludes). The lesson generalises: risk is multidimensional, and any
+    single-number summary embeds a claim about which losses matter. Portfolio policy written
+    on variance alone fails in exactly the ways (leverage, illiquidity, skew) that produce
+    the famous blow-ups.
+  </p>
+  <p>
+    <em>Common misconception:</em> "higher risk investments pay higher returns, so risk
+    generates reward." Wrong direction: risk does not <em>produce</em> returns; expected return
+    is the <em>compensation</em> demanded for bearing risk that cannot be diversified away. Most
+    of any single stock's risk is idiosyncratic — and the pricing models pay approximately
+    nothing for it, because you could have diversified it away at no cost.
   </p>
 
-  <h2>The empirical record</h2>
-  <ul>
-    <li><strong>CAPM mostly works, imperfectly:</strong> low-beta stocks earn more than CAPM predicts, high-beta less (the "beta anomaly") — flatness in the security market line, documented for decades.</li>
-    <li><strong>Fama–French factors (1993):</strong> size (small beats large) and value (cheap beats expensive) explain returns beyond beta — Nobel 2013. Momentum (Jegadeesh & Titman) joined the list; "factor zoo" (Cochrane) describes the 400+ claimed factors since.</li>
-    <li><strong>Replication crisis, finance edition:</strong> Harvey, Liu & Zhu (2016) showed many claimed factors are statistical flukes of testing too many hypotheses — the t-statistic bar rose from 2 to 3+.</li>
-    <li><strong>The practical residue:</strong> CAPM survives as a rough discount-rate tool; multi-factor models price portfolios; and the strongest empirical result — most active managers trail index funds after fees — never needed a factor model at all.</li>
-  </ul>
+  <h2>Portfolio planning and construction: Markowitz's insight</h2>
+  <p>
+    <strong>The mechanism.</strong> Markowitz (1952, Journal of Finance; Nobel 1990) converted
+    diversification from folk wisdom into arithmetic. For two assets, portfolio variance is
+    σₚ² = w₁²σ₁² + w₂²σ₂² + 2·w₁·w₂·ρ·σ₁·σ₂ — the correlation ρ is the engine. When assets are
+    imperfectly correlated, the portfolio's risk falls <em>below</em> the weighted average of
+    its parts: you get the weighted-average return with less-than-weighted-average risk.
+  </p>
+  <p>
+    <strong>Worked example.</strong> Take a 60/40 stocks-and-bonds mix with σ(stocks) = 16%,
+    σ(bonds) = 6%, ρ = 0.2. The weighted-average risk would be 0.6 × 16 + 0.4 × 6 = 12%. The
+    true portfolio risk: √(0.36 × 0.0256 + 0.16 × 0.0036 + 2 × 0.6 × 0.4 × 0.2 × 0.016 × 0.06)
+    = √0.01071 ≈ 10.4%. Diversification delivered 1.6 points of "free" risk reduction — before
+    any skill. Repeating this across a correlation matrix and sweeping the weights traces the
+    <em>efficient frontier</em>: the best return available at each risk level, which is what
+    "asset allocation" means operationally.
+  </p>
+  <p>
+    <strong>The limits, honestly stated.</strong> Correlations are not constants: they rise in
+    crises (2022's simultaneous stock-bond slide being the fresh counterexample to the classic
+    negative correlation), so frontier-based risk budgets understate tail risk exactly when it
+    matters. Inputs are unobservable (expected returns must be estimated — the estimation-error
+    problem that makes optimisers "error maximisers"). And the model measures diversifiable
+    variance only; it is silent about illiquidity, leverage and ruin. Professional construction
+    therefore wraps Markowitz in constraints, shrinkage estimation and scenario overlays — the
+    arithmetic survives as the skeleton, not the whole body.
+  </p>
+  <p>
+    <strong>Implementation: rebalancing as the quiet return source.</strong> A portfolio left
+    alone drifts: the winners grow past their weights, and the risk budget rides with them.
+    Rebalancing back to targets (calendar-based or band-based) restores the design — and,
+    because it systematically sells relatively expensive assets and buys relatively cheap
+    ones, it earns a small "diversification return" in choppy markets (the arithmetic of
+    constant-mix strategies: with any spread between asset returns that later mean-reverts,
+    the rebalanced portfolio compounds more than the buy-and-hold). The costs are real too —
+    taxes, trading, tracking error regret — which is why the professional compromise is
+    bands (rebalance only when weights drift past thresholds) rather than calendars. The
+    pension version is the glide path: target-date funds that start equity-heavy and de-risk
+    toward retirement, automation applied to Markowitz.
+  </p>
+
+  <h2>CAPM: pricing the one risk that pays</h2>
+  <p>
+    <strong>The model.</strong> Add a risk-free asset and one assumption that does the heavy
+    lifting — every investor holds the mean-variance optimal portfolio — and the market
+    portfolio becomes the efficient frontier's tangency point. The price of any asset follows:
+    E(Rᵢ) = R_f + βᵢ × (E(Rₘ) − R_f). Only beta enters: expected return is the risk-free rate
+    plus beta times the market risk premium. The widget above is the equation live — set β = 1.2,
+    risk-free 4%, premium 5%, and the required return is 4 + 1.2 × 5 = 10%. A zero-beta asset
+    earns the risk-free rate; negative-beta assets (portfolio insurance) earn <em>less</em>,
+    because they hedge the market.
+  </p>
+  <p>
+    <strong>What it is used for.</strong> Despite its empirical troubles, CAPM survives because
+    practice needs a number: cost of equity in valuation (the discount rate in every DCF),
+    hurdle rates for corporate projects, performance attribution (alpha = realised return minus
+    the CAPM-predicted return). It is the default because it is simple, transparent and hard to
+    beat systematically — a rough tool that is still sharper than its alternatives' complexity.
+  </p>
+  <p>
+    <strong>The empirical record.</strong> The security market line comes out flatter than the
+    model says: low-beta stocks earn more than predicted, high-beta less (Black, Jensen and
+    Scholes, 1972; the "betting against beta" strategy of Frazzini and Pedersen, 2014,
+    monetises it). Fama–French (1993) added size (small beats large) and value (cheap beats
+    expensive) factors — Nobel 2013 — and momentum (Jegadeesh and Titman, 1993) joined the
+    standard toolkit. Then the "factor zoo" (Cochrane's term): hundreds of claimed factors,
+    many of them statistical flukes of multiple testing — Harvey, Liu and Zhu (2016)
+    recommended a t-statistic bar of 3.0+ (against the conventional 2.0) to clear the prior
+    probability that most published anomalies are noise. The honest summary: expected returns
+    are multidimensional; beta is the first dimension, not the only one.
+  </p>
+  <p>
+    <em>Common misconception:</em> "beta is a stock's volatility." Beta is covariance with the
+    market divided by market variance — the co-movement component only. A utility stock with
+    12% total volatility and little market sensitivity has a beta well under 1; a leveraged
+    tech stock can have both high volatility and high beta. Confusing the two misprices
+    everything downstream, starting with the discount rate.
+  </p>
+  <p>
+    <strong>Beta, computed once by hand.</strong> Take a stock with 30% volatility whose
+    returns correlate 0.7 with a market running 15% volatility. Beta = ρ × (σᵢ / σₘ) =
+    0.7 × (30/15) = 1.4: the stock amplifies market moves by 40%. At a 4% risk-free rate and
+    5% premium, CAPM demands 4 + 1.4 × 5 = 11%. Portfolios aggregate linearly: a fund that is
+    60% of that stock and 40% of a β = 0.6 defensive share has beta 0.6 × 1.4 + 0.4 × 0.6 =
+    1.08 and required return 9.4%. Notice what did not matter: the stock's total 30% risk —
+    only its market-linked slice was priced. That asymmetry is CAPM's whole content, and the
+    widget above lets you watch the same computation live.
+  </p>
+
+  <p><em>Common misconception:</em> "diversification eliminates risk." It eliminates
+  <em>idiosyncratic</em> risk — the company-specific noise that averages out across
+  holdings — and leaves <em>systematic</em> risk untouched: the market-wide swings every
+  diversified portfolio still owns. That residue is exactly what CAPM prices; "fully
+  diversified" means "exposed only to the market," not "safe".
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Why CAPM survives its own funerals.</strong> The model has been declared dead
+    routinely since the 1970s (Roll's 1977 critique alone — that the "market portfolio" is
+    unobservable, so the model is untestable — should have ended it). It survives because
+    every alternative inherits its problems plus new ones: multi-factor models need to pick
+    factors (the zoo problem), consumption-based models fail the premium puzzle, and
+    practitioners need one number today. The mature stance treats CAPM as a first-order
+    approximation whose failure modes are known and nameable: it misprices by ignoring
+    size, value, profitability, momentum and investor leverage constraints — and each named
+    failure is itself a research programme.
+  </p>
+  <p>
+    <strong>Factor models beyond CAPM.</strong> The Arbitrage Pricing Theory (Ross, 1976)
+    generalised pricing: expected return is a linear function of exposures to whatever priced
+    factors exist, with arbitrage enforcing the relation rather than equilibrium assumptions.
+    Merton's ICAPM (1973) interpreted factors as hedgeable states of the world. The
+    practitioner's synthesis is the Fama–French five-factor model (2015: market, size, value,
+    profitability, investment) — used exactly as CAPM is, with more columns: a portfolio's
+    expected return is its factor exposures priced at factor premia. The deep question — what
+    are factors economically? risk, or systematic mispricing — remains the field's fork in the
+    road.
+  </p>
+  <p>
+    <strong>The equity premium puzzle.</strong> Historical equity outperformance (roughly 5–6%
+    a year over bills, geometric) is too large for plausible risk aversion — Mehra and Prescott
+    (1985) showed a rational investor would need implausible risk aversion to hold the observed
+    bond-equity mix. Candidate answers: rare disasters (Barro), myopic loss aversion
+    (Benartzi–Thaler — investors check too often, and losses hurt about twice as much), and
+    habit formation. The puzzle matters practically: the discount rate you choose embeds a
+    position on it, and pension accounting worldwide quietly depends on the answer.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Do published anomalies survive publication? (The evidence:
+    returns shrink post-publication by about a third — consistent with arbitrage, also
+    consistent with data mining.) Does the low-volatility anomaly persist after leverage
+    constraints and fees? And can machine-learned factors avoid rediscovering the factor zoo's
+    statistical artefacts — the current replication debate in miniature.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Sharpe (1964); Fama & French, JFE (1993); Harvey, Liu & Zhu, RFS (2016); Cochrane, "The Factor Zoo".</p>
 </TopicPage>

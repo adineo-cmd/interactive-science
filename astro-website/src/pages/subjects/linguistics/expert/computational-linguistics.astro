@@ -14,20 +14,214 @@ const compolingCfg = {
 <TopicPage slug="subjects/linguistics/expert/computational-linguistics">
   <h2>The idea</h2>
   <p>
-    Computational linguistics (NLP) is <strong>language processing by machine</strong> — from the
-    rule-based pioneers through statistical revolution to today's transformer models. It is
-    simultaneously applied linguistics and AI's hardest text problem, and it feeds discoveries
-    back into linguistic theory.
+    Computational linguistics (NLP) is <strong>language processing by machine</strong> — from
+    the rule-based pioneers through the statistical revolution to today's transformer models.
+    It is simultaneously applied linguistics and AI's hardest text problem, and it feeds
+    discoveries back into linguistic theory: the field that made "corpus" a scientific term
+    also made "language model" a household one. The unit's two topics are its two halves — the
+    data (corpora, and what modelling language from data revealed about language itself) and
+    the technology (the pipeline that turned machine translation into large language models).
   </p>
 
   <Widget no="1" caption="rule-based, statistical, embeddings, transformers" widget="equationStep" config={compolingCfg} />
 
-  <h2>The tasks and their fates</h2>
-  <ul>
-    <li><strong>Machine translation:</strong> rule-based (1960s–80s, ALPAC report killed funding 1966) → statistical (IBM, Google 2006) → neural transformers (2016→). The quality jump at each stage reshaped what "understanding" the field thought necessary.</li>
-    <li><strong>Speech recognition and synthesis:</strong> from HMMs to neural end-to-end — voice assistants, transcription, and now real-time dubbing. Phonetics (the first lesson) runs the speech stack.</li>
-    <li><strong>Information extraction and search:</strong> named entities, relation extraction, semantic search — the plumbing of the modern internet (every search engine is an NLP system).</li>
-    <li><strong>What linguists do now:</strong> evaluate and probe LLMs (do they know syntax, pragmatics, world knowledge?), document low-resource languages before data runs out, and build the evaluation standards (the evaluation lesson's toolkit). The subfield is thriving — with new questions about what these models actually know.</li>
-  </ul>
+  <h2>Corpora and the computational modelling of language</h2>
+  <p>
+    <strong>The corpus as scientific instrument.</strong> The field began by making language
+    countable: the Brown Corpus (1961, one million words of balanced American English) was the
+    first machine-readable standard; the British National Corpus (1994, 100 million words)
+    added scale and annotation; the web blew the ceiling off — today's training corpora run to
+    trillions of tokens crawled from Common Crawl. Corpus linguistics' founding discovery is
+    Zipf's law: word frequency falls roughly as 1/rank ("the" is about 7% of running English
+    text; the top 100 words cover roughly half of it) — a scaling law so robust it shapes
+    every model that follows. Annotation layers (part-of-speech tags, parses, the Penn
+    Treebank) turned corpora into supervision for statistical learning.
+  </p>
+  <p>
+    <strong>Shannon's inheritance.</strong> Claude Shannon (1948) supplied the theoretical
+    frame: language as a probabilistic process, its information content measurable in bits
+    (his experiments estimated English at roughly one bit per character of true entropy), and
+    the n-gram model — predict the next word from the previous n — as the baseline. Perplexity
+    (how surprised the model is, on average, by real text) became the field's fundamental
+    metric: every subsequent breakthrough is partly a perplexity story.
+  </p>
+  <p>
+    <strong>What corpora taught linguistics.</strong> The surprise was theoretical: lexis
+    behaves grammatically. Sinclair's idiom principle — words co-occur in semi-fixed
+    patterns far more than generative rules predicted — built the COBUILD dictionary (1987)
+    straight from corpus evidence and pushed lexicography from introspection to data.
+    Collocation statistics exposed meaning structure (which words gravitate to which), and
+    <em>surprisal theory</em> (Hale 2001, Levy 2008) closed the loop with psycholinguistics:
+    reading difficulty, measured eye-millisecond by eye-millisecond, tracks the model's
+    surprise — the language model as a cognitive hypothesis. Distant reading (Moretti) is
+    the same move for literature: corpora as the new archive.
+  </p>
+  <p>
+    <strong>The knowledge-resource layer.</strong> Between corpora and models sits a quieter
+    infrastructure built largely by hand: WordNet (Princeton, from 1985 — a lexical database
+    organising well over 100,000 English words into synonym sets linked by hyponymy, meronymy
+    and antonymy), FrameNet's frame-semantic roles, and the treebanks and propbanks that label
+    structure at scale. They powered the rule era's semantic processing, supervised the
+    statistical era's word-sense disambiguation, and survive into the LLM era as evaluation
+    gold standards — the rare artefacts every paradigm has found usable, which says something
+    about what linguistic knowledge looks like independently of how it is acquired.
+  </p>
+  <p>
+    <em>Common misconception:</em> "corpora are neutral data — just what people say." They
+    are selections with biases: written over spoken, formal over casual, English-dominant,
+    web-scraped, and increasingly model-generated (synthetic text feeding back into training
+    sets). Every corpus finding is a finding about that selection; the field's growing
+    subfield of data documentation exists precisely because the neutrality assumption broke.
+  </p>
+  <p>
+    <strong>Speech: the oldest success story.</strong> Automatic speech recognition shows the
+    whole arc in one task: Hidden Markov Models (1970s–80s) treated speech as a statistical
+    sequence problem and reached usable dictation by the 1990s (word error rates around
+    25–30% on conversational telephone speech); end-to-end neural models (2015 onward)
+    crossed the roughly 5% error band that approximates human transcription on benchmarks.
+    Synthesis travelled the same road (concatenated samples to neural voices indistinguishable
+    in short clips). The linguistic residue matters: acoustic models still implicitly encode
+    phonetics — phones, coarticulation, prosody — learned rather than hand-specified, which
+    makes speech one of the cleanest cases where the machine rediscovers the linguist's
+    categories from data.
+  </p>
+  <p>
+    <em>Common misconception:</em> "speech recognition is a solved problem — the benchmarks say
+    so." Benchmarks measure their own conditions: Stanford's 2020 audit of five major
+    commercial systems (Koenecke and colleagues, PNAS) found average word error rates of about
+    35% for Black speakers against 19% for white speakers — nearly double — with African
+    American English's underrepresentation in training data the likely driver. "Solved" is a
+    claim about test conditions; deployed systems serve populations the benchmark never
+    sampled, which is why error-rate equity rather than headline accuracy is becoming the
+    field's honest metric.
+  </p>
+  <p>
+    <strong>The equity problem.</strong> Of the world's roughly 7,000 living languages, only
+    a few dozen have the corpora, treebanks and translation pairs modern NLP runs on; most
+    have less than a Wikipedia. The consequences compound — no data, no models; no models,
+    no tools; no tools, less digital life in the language, so less future data. Community
+    movements (Masakhane for African languages, indigenous-language institutes partnering
+    with labs) and low-resource techniques (cross-lingual transfer from high-resource
+    relatives, active community collection) are the field's response — and its clearest case
+    where the engineering decision (which languages get models) is a cultural one.
+    The mirror image is the high-resource languages' data-exhaustion problem: frontier-scale
+    training has already scraped the web's text repeatedly, making data quality, licensing and
+    synthetic data the active frontier of corpus work.
+  </p>
+
+  <h2>From language technology to language models</h2>
+  <p>
+    <strong>The rule-based era (1950s–1980s).</strong> Machine translation opened the field
+    with the 1954 Georgetown experiment (60 Russian sentences translated automatically, and
+    breathless press coverage) — followed by the sobering ALPAC report (1966), which found
+    progress poor and funding died for two decades. Hand-built systems (parsers, semantic
+    networks, ELIZA's 1966 pattern-matched therapy chatbot) proved the point that still
+    defines the field: linguistic rules encode the exceptions their authors never anticipated,
+    and coverage grows combinatorially worse, not better, with each new rule.
+  </p>
+  <p>
+    ELIZA deserves its own sentence, because Weizenbaum's reaction became a field-level
+    warning. His 1966 program matched patterns and reflected them back ("I feel sad" →
+    "I'm sorry to hear you are sad") — and users confided in it, knowing exactly how it
+    worked. Weizenbaum spent the rest of his career alarmed by what he had demonstrated:
+    people will attribute understanding to almost anything that speaks. The "ELIZA effect"
+    is now the name of that bias, and it frames every debate about chatbot companionship,
+    customer-service "AI" and large language models — the effect preceded the technology
+    by half a century, which is the point.
+  </p>
+  <p>
+    <strong>The philosophical frame the field grew inside.</strong> Turing's imitation game
+    (1950) replaced "can machines think?" with an operational test — if a text exchange is
+    indistinguishable from a human's, the question dissolves into measurement — and Searle's
+    Chinese Room (1980) answered back: symbol manipulation alone yields no understanding, since
+    a rule-follower inside the room passes the test while understanding nothing. NLP has lived
+    between the two ever since: every evaluation is a proxy for understanding, and every proxy
+    has known gaps — which is why the discipline's answer to the philosophy is methodological
+    (probe, measure, report limits) rather than metaphysical. The 2020s debate about whether
+    large language models "really" understand is the same exchange, with better opponents on
+    both sides.
+  </p>
+  <p>
+    <strong>The statistical revolution (1990–2017).</strong> IBM's models (Brown and
+    colleagues, 1990) learned translation probabilities from parallel corpora (the Canadian
+    Parliament's bilingual Hansard as the canonical dataset); phrase-based systems and the
+    BLEU metric (2002) industrialised evaluation; Google Translate (2006) shipped statistical
+    MT at scale. Fred Jelinek's quip — "every time I fire a linguist, performance goes up" —
+    is the era's half-truth: what actually worked was linguistics-free learning over
+    linguistically structured data, with the linguists' resources (treebanks, lexicons)
+    quietly load-bearing. Then embeddings changed the representation: word2vec (2013) placed
+    words as vectors where geometry encoded meaning (king − man + woman ≈ queen), ELMo and
+    BERT (2018) made the vectors contextual — one word, many senses, computed per sentence.
+  </p>
+  <p>
+    <strong>The transformer era (2017–now).</strong> "Attention Is All You Need" (Vaswani and
+    colleagues, 2017) replaced recurrence with attention — every token attending to every
+    other, computed in parallel — and scaling laws did the rest: GPT-3 (2020, 175 billion
+    parameters) showed capability emerging with scale; the Chinchilla analysis (2022) found
+    the compute-optimal ratio (train on roughly 20 tokens per parameter) and redirected the
+    industry toward data quality; instruction tuning and RLHF aligned the models into usable
+    assistants. Translation, summarisation, dialogue, coding — one architecture, task-switched
+    by prompt. The 2020s' research question flipped: linguists now <em>probe</em> the models —
+    what syntax, semantics and world knowledge did statistical learning actually acquire?
+  </p>
+  <p>
+    <strong>What linguists do now.</strong> Three live roles. Probing and evaluation: designing
+    minimal-pair tests (agreement across long dependencies, garden-path sentences,
+    NPI licensing) that separate grammatical competence from memorisation, and building
+    benchmarks whose answers the models cannot have scraped. Documentation and equity:
+    the large majority of the world's ~7,000 languages have no usable corpus — low-resource
+    NLP (massively multilingual models, community data collection) is where the field's
+    social stakes are highest. And theory: surprisal, information-theoretic accounts of
+    production, and the debate over whether next-word prediction is a theory of language or
+    a telescope pointed at one.
+  </p>
+  <p>
+    <em>Common misconception:</em> "language models just predict the next word, so they can't
+    really know grammar." Prediction under uncertainty is the hard part: to assign low
+    surprise to "the keys to the cabinet are…", a model must track a plural subject across
+    a prepositional phrase — exactly the hierarchical dependency generative grammar
+    formalised. Whether the models do it the same way humans do is the real (open) question;
+    "just next-word prediction" is a description of the training objective, not of what the
+    objective forces the model to learn.
+  </p>
+  <p>
+    <em>Common misconception:</em> "it is all just statistics, so the models understand
+    nothing" — and its mirror image, "they pass every test, so they understand like we do."
+    Both overreach. "Just statistics" describes the training mathematics, not what the
+    mathematics learns (evolution is "just" mutation and selection, and still builds eyes);
+    benchmark performance is compatible with brittle pattern-matching, as adversarial and
+    contaminated evaluations keep showing. The defensible position — and the field's working
+    one — is instrument-based: probe specific capabilities, report specific failures, and
+    resist the one-word verdict.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The evaluation problem.</strong> Perplexity correlates with quality but is
+    gameable; benchmarks (GLUE, SuperGLUE, the WMT translation shared tasks) drove a decade
+    of progress until contamination — test data leaking into training scrapes — made "state
+    of the art" ambiguous. The current answers: held-out private test sets, human preference
+    panels, and adversarial or dynamic benchmarks. The deep issue is unsolved: we lack a
+    theory of what task performance means about linguistic knowledge — evaluation is where
+    NLP's science is weakest exactly as its deployment is strongest.
+  </p>
+  <p>
+    <strong>The linguistic theory stakes.</strong> Two programs now compete on the same
+    terrain. If usage-based learning from raw text suffices, the poverty-of-stimulus argument
+    weakens and construction grammar's fortunes rise; if models systematically fail where
+    children succeed (novel compositional generalisation, low-data acquisition), the
+    built-in-structure hypothesis gains ground. The empirical tests are running in both
+    directions — models trained on child-sized data slices (BabyLM-style challenges) being
+    the sharpest instrument — and either outcome rewrites a 60-year debate.
+  </p>
+  <p>
+    <strong>Open questions.</strong> Will synthetic data (models training on models' output)
+    cause drift or collapse — the model-collapse literature is young? Can multimodal models
+    ground meaning in perception enough for semantics to escape text-only circularity? And
+    who owns language data — the copyright cases moving through courts will decide what
+    corpora the next decade trains on. The subfield that began by counting one million words
+    is now negotiating the terms of its own fuel supply.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Brown et al., "A Statistical Approach to Machine Translation" (1990); Vaswani et al. (2017); Jurafsky & Martin, Speech and Language Processing (3rd ed., free).</p>
 </TopicPage>

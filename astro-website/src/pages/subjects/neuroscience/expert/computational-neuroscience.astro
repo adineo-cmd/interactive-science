@@ -15,20 +15,284 @@ const compneuroCfg = {
   <h2>The idea</h2>
   <p>
     Computational neuroscience treats the nervous system as an <strong>information-processing
-    system whose algorithms can be stated and tested</strong>. It asks what problems the brain
-    solves (vision, motor control, prediction), what representations it uses (rates, spikes,
-    populations), and what circuits compute them — the field where neuroscience, mathematics and
-    the AI ladder of this atlas meet.
+    system whose algorithms can be stated precisely and tested</strong>. It asks what problems
+    the brain solves (vision, motor control, prediction), what representations it uses (rates,
+    spikes, populations), and what circuits compute them — the meeting point of neuroscience,
+    mathematics and the AI ladder of this atlas. Its method is the model: write the theory
+    exactly enough to run, then compare against the biology. If the model reproduces the
+    phenomenon, the theory survives; if not, the theory was vaguer than it felt. Because this
+    lesson sits at the summit of a unit on cellular and molecular neurobiology, it works through
+    that substrate in order — each section takes one piece of neural machinery and asks how
+    computation enters it, from the resting potential to the genes.
   </p>
 
   <Widget no="1" caption="the modelling stack, from encoding to efficiency" widget="equationStep" config={compneuroCfg} />
 
-  <h2>Foundations worth knowing</h2>
-  <ul>
-    <li><strong>Hodgkin–Huxley (1952):</strong> the first great computational model — four equations reproducing the action potential. Mechanism, not metaphor.</li>
-    <li><strong>Hubel & Wiesel (1962):</strong> a computational account of visual hierarchy — simple cells build complex cells. Nobel 1981; deep networks later rediscovered the architecture.</li>
-    <li><strong>Bayesian brain hypothesis:</strong> perception as statistical inference — the brain combines prior expectations with sensory evidence optimally (Knill & Pouget). Explains illusions as correct Bayesian answers to ambiguous inputs.</li>
-    <li><strong>Free-energy / predictive processing:</strong> a unifying framework (Friston) — the brain minimises prediction error hierarchically. Influential, mathematically dense, and controversial in scope.</li>
-  </ul>
+  <h2>Neural networks as the frame</h2>
+  <p>
+    The unit's opening topic — neurons and neural networks — becomes a computational claim:
+    nervous tissue is a network of leaky, nonlinear integrators, and network behaviour explains
+    things single cells cannot. A neuron sums thousands of inputs (roughly 10,000 synapses per
+    cortical neuron; about 86 billion neurons in a human brain, Herculano-Houzel's count) with
+    different time constants and weights — an astonishingly literal cousin of the artificial
+    perceptron, with the biological version adding recurrent loops and continuous adaptation. The
+    computational payoff is population coding: represent a quantity (a direction, a face, a
+    location) across many noisy neurons rather than one precise one. Georgia Georgopoulos's
+    motor-cortex work showed a monkey's reaching direction can be read out as a weighted vector
+    across hundreds of neurons, each broadly tuned — robust to noise in a way a single-cell code
+    could never be.
+  </p>
+
+  <h2>Resting and action potentials: the Hodgkin–Huxley model</h2>
+  <p>
+    The resting potential (about −70 mV, set by potassium leak and the Na⁺/K⁺ pump) and the
+    action potential it makes possible received the field's founding model. Hodgkin and Huxley
+    (1952, Nobel 1963) fitted four coupled differential equations to squid giant axon data —
+    conductances for sodium (about 120 mS/cm²), potassium (36) and leak (0.3) against their
+    equilibrium potentials (+50, −77, −54 mV) — and reproduced not just the spike but its
+    threshold, refractory period and propagation speed. This is the computational epistemology in
+    miniature: a model precise enough to be <em>wrong</em> in specific, informative ways. It also
+    settled an old debate — the spike is an all-or-none regenerative event, not a decayed
+    summons — and set the template every later model (integrate-and-fire, multicompartment)
+    still simplifies or extends.
+  </p>
+  <p>
+    <em>Common misconception:</em> "action potentials are like current flowing down a wire." No
+    charge flows end to end; each patch of membrane regenerates the signal from stored ionic
+    gradients, which is why propagation is actively refreshed at every node — and why demyelination
+    (as in multiple sclerosis) slows or blocks a signal a passive wire would carry fine.
+  </p>
+
+  <h2>Ionic mechanisms: why the brain runs on batteries</h2>
+  <p>
+    The ionic machinery is itself a computational substrate. Concentration gradients (sodium
+    high outside, potassium high inside) are metabolic batteries, charged by the Na⁺/K⁺-ATPase
+    that consumes most of the brain's ~20 watts. Computationally this buys a variable the
+    artificial world lacks: excitability is state-dependent. Ion channel densities, local
+    extracellular potassium and neuromodulation all tune how far a given input sits from
+    threshold, so the same synapse has different gain on different days. Modellers capture this
+    with the cable equation and its two constants: the membrane time constant (a few tens of
+    milliseconds in many neurons — the cell's integration window) and the length constant (a
+    fraction of a millimetre of dendrite — how far a signal rides before decaying). Dendritic
+    trees are therefore not passive wiring but spatially distributed filters — a design the
+    engineering ladder rediscovers in analogue computing.
+  </p>
+
+  <h2>Propagation: speed as a design constraint</h2>
+  <p>
+    Propagation speed is where anatomy meets algorithm. Unmyelinated axons conduct at about
+    0.5–2 m/s (slow C pain fibres run at the bottom of that range); myelinated fibres saltate
+    between nodes of Ranvier at up to ~120 m/s. The engineering trade-off is explicit: myelin
+    buys speed at the cost of space and metabolic maintenance, so evolution spends it where
+    latency matters — motor commands, proprioception — and saves it where it does not. The
+    computational lesson generalises: nervous systems are real-time control systems, and every
+    representation must respect its own latency budget. Reflex arcs are the minimal case (spinal
+    processing before cortical awareness); long-range forebrain loops are the expensive case, and
+    their delay is measurable in behaviour.
+  </p>
+
+  <h2>The neuromuscular junction: the quantal release experiment</h2>
+  <p>
+    The skeletal neuromuscular junction earned its computational fame as the experiment that
+    revealed how release works. Bernard Katz and colleagues recorded tiny spontaneous
+    depolarisations — miniature end-plate potentials of roughly 0.5 mV — and showed the evoked
+    response comes in integer multiples of this unit: transmitter is released in <em>quanta</em>,
+    one vesicle at a time. A nerve impulse triggers the near-synchronous release of a hundred or
+    more quanta, depolarising the muscle fibre well past threshold — a built-in safety factor
+    that fails in myasthenia gravis, where autoantibodies eat receptors and the safety margin
+    collapses into fatigability. The quantal analysis — comparing the statistics of miniature
+    and evoked potentials — is one of neuroscience's great pieces of inference from noise, and
+    the probabilistic release model it produced still drives simulator design.
+  </p>
+
+  <h2>Neurotransmitter release: SNAREs and the release code</h2>
+  <p>
+    Mechanistically, release is a molecular machine with a timing budget. Calcium enters through
+    voltage-gated channels clustered at the active zone; sensors like synaptotagmin bind it;
+    SNARE proteins zip the vesicle into the membrane; fusion takes about a millisecond; the
+    vesicle is retrieved and refilled within seconds. The 2013 Nobel (Südhof, Schekman, Rothman)
+    mapped this machinery. Computationally, the important quantity is the release probability
+    (a synapse's Pr): short-term facilitation and depression are changes in Pr across spikes,
+    meaning synapses are dynamic filters that perform temporal computation — emphasising bursts,
+    adapting to rates, detecting coincidences — before the postsynaptic cell computes anything
+    at all.
+  </p>
+
+  <h2>CNS synaptic transmission: excitation, inhibition, balance</h2>
+  <p>
+    Central synapses add the computational dance the reflex arc lacks: massive excitation
+    (glutamate, at roughly 80–90% of cortical synapses) counterweighted by inhibition (GABA),
+    held in careful balance. The electrical geometry explains why: cortical neurons receive far
+    more excitatory than inhibitory contacts, so synchrony and stability require inhibition to
+    be powerful, fast and precisely timed — lose it and circuits run away into epilepsy. Models
+    of balanced networks (Van Vreeswijk & Sompolinsky) showed why cortical firing is irregular
+    yet stable: inhibition tracks excitation moment to moment. Excitatory synapses also carry
+    plasticity machinery — the NMDA receptor, a coincidence detector gated by voltage and
+    transmitter — which is the hook on which learning hangs.
+  </p>
+  <p>
+    <em>Common misconception:</em> "inhibition just brakes the brain down." Fast inhibition is a
+    computational resource — it sharpens timing windows, sculpts receptive fields (lateral
+    inhibition in retina creates edge detection) and implements gain control. A cortex without
+    precise inhibition could not represent anything reliably.
+  </p>
+
+  <h2>Plasticity: the learning rules</h2>
+  <p>
+    Synaptic plasticity is the brain's write mechanism, and it has formal rules. Bliss and Lømo
+    (1973) found long-term potentiation in hippocampus: brief high-frequency stimulation
+    strengthens synapses for hours to years. Hebb's 1949 conjecture — cells that fire together
+    wire together — acquired a biophysical substrate in the NMDA receptor's coincidence
+    detection. Spike-timing-dependent plasticity sharpened the rule: pre-before-post within
+    tens of milliseconds potentiates; the reverse order depresses. Homeostatic mechanisms
+    (synaptic scaling) renormalise total drive so the network does not silently saturate —
+    a two-layer architecture of local learning rules plus slow global bookkeeping that machine
+    learning would independently reinvent.
+  </p>
+
+  <h2>Cell types: computation by diversity</h2>
+  <p>
+    The brain is not a soup of identical units; it is a partitioned computer. Ramón y Cajal's
+    neuron doctrine and the modern census distinguish pyramidal cells (excitatory output),
+    interneurons in dozens of molecular flavours (fast-spiking parvalbumin basket cells setting
+    precise timing windows, somatostatin cells gating dendrites, VIP cells disinhibiting others)
+    and glia doing metabolic and ionic housekeeping. Circuit models show cell-type diversity is
+    not decoration: connect excitatory and inhibitory classes with the observed statistics and
+    stable, irregular, synchronisable dynamics fall out; connect homogeneous units and they do
+    not. Cell type is where microcircuit function is encoded — and where single-cell
+    transcriptomics is now redrawing the parts list at scale.
+  </p>
+
+  <h2>Synapse formation, survival and elimination: pruning as programming</h2>
+  <p>
+    Development is computational too: the genome cannot specify 10¹⁴ connections, so it
+    specifies an overproduction rule plus an activity-based selection rule. Synapses form in
+    excess, then experience prunes them — the clearest human case is the visual cortex, where
+    ocular-dominance columns refine during critical periods gated by inhibitory maturation
+    (Hubel & Wiesel's kitten work; Nobel 1981). Mechanistically, complement-tagging (C1q, C3)
+    flags weak synapses for microglial removal — the same immune machinery that prunes, over-
+    prunes in mouse models of Alzheimer's. The computational reading: development installs a
+    learning rule whose data is early experience, which is why timing (critical periods) matters
+    as much as amount.
+  </p>
+
+  <h2>Transport and secretion: the logistics layer</h2>
+  <p>
+    A neuron is a logistics problem: proteins are made in the soma but used metres away (motor
+    neurons have axons up to about a metre long). Kinesin and dynein motors walk cargo along
+    microtubules at 1–3 μm/s, fast axonal transport delivering vesicles and mitochondria,
+    slow transport bulk-moving cytoskeleton. Secretion adds another layer: dense-core vesicles
+    carrying neuropeptides release from sites distinct from small-vesicle transmitter release,
+    on slower timescales. The computational point is that cellular housekeeping constrains
+    algorithms — replenishment rates set how long a busy synapse can sustain release, and
+    transport defects present first as distal neuropathies. Biology's compute is physical, and
+    its supply chain shows.
+  </p>
+
+  <h2>Acetylcholine: the neuromodulation lesson</h2>
+  <p>
+    Acetylcholine is the systems case of a modulator. At the neuromuscular junction it acts
+    fast and ionotropic (nicotinic receptors); in cortex it acts slower and metabotropic
+    (muscarinic), released from basal forebrain projections that fire in relation to attention
+    and behavioural state. Cholinergic modulation changes the cortex's computational regime:
+    it suppresses intracortical traffic and enhances feedforward sensory gain — the signature of
+    attention sharpening inputs (the mechanism behind nicotine's cognitive effects, and the
+    pathway lost early in Alzheimer's disease, which is why cholinesterase inhibitors were its
+    first symptomatic drugs). One transmitter, two receptor families, two timescales: a
+    hardware-level illustration that what a molecule "means" depends on which receptors express it.
+  </p>
+
+  <h2>Biogenic amines: dopamine as the teaching signal</h2>
+  <p>
+    The biogenic amines (dopamine, serotonin, noradrenaline) are the brain's diffuse broadcast
+    system — few neurons, vast projections — and dopamine became computational neuroscience's
+    most famous hypothesis test. Schultz's recordings (1990s) showed midbrain dopamine neurons
+    encode reward prediction error: they burst for unexpected rewards, pause for omitted ones,
+    and shift to the cue once learned. That is precisely the error signal reinforcement-learning
+    theory (Rescorla–Wagner, TD learning) said a learner needs — a biological variable that
+    matched a mathematical one before anyone looked. It generalises: serotonin carries state
+    and cost signals, noradrenaline surprise and alertness; the modulators parameterise the
+    learning problem rather than transmitting percepts. Drugs from cocaine to antipsychotics
+    are, in effect, interventions on this scalar teaching system.
+  </p>
+  <p>
+    <em>Common misconception:</em> "dopamine is the pleasure chemical." Reward prediction error
+    is not pleasure: dopamine neurons respond to cues predicting reward and to errors, and their
+    optogenetic stimulation motivates work without sensory pleasure. Addiction skews learning
+    about prediction, not simply enjoyment — which is why anhedonic patients can still crave.
+  </p>
+
+  <h2>Amino acid transmitters: the workhorses</h2>
+  <p>
+    Glutamate and GABA are the volume trade of the brain — fast, cheap, everywhere — and their
+    receptors define the circuit's speed limit. AMPA receptors mediate millisecond excitation;
+    NMDA receptors add voltage-gated coincidence detection and calcium entry (the plasticity
+    gate); GABA-A receptors are chloride channels, GABA-B metabotropic. Computational
+    consequences follow the receptors: AMPA/NMDA ratio tunes integration windows; GABA reversal
+    potential sets whether inhibition is subtractive or shunting; and astrocytic glutamate
+    uptake keeps the workspace clean, because extracellular glutamate is excitotoxic (the
+    mechanism of stroke damage). Nearly every circuit model of cortex is, quietly, a model of
+    these two transmitters in balance.
+  </p>
+
+  <h2>Neuropeptides and nitric oxide: computing without wires</h2>
+  <p>
+    Two exotic channels of signalling complete the picture. Neuropeptides (substance P,
+    neuropeptide Y, orexin, oxytocin) release from dense-core vesicles, diffuse beyond the
+    synapse, and act for seconds to minutes — volume transmission that sets behavioural states
+    (hunger, stress, bonding) rather than single signals. Nitric oxide is stranger still: a
+    gas synthesised on demand, it diffuses freely (ignoring membranes) and signals
+    retrograde — back from postsynaptic cell to presynaptic terminal, linking NMDA activity to
+    presynaptic change. Its discovery earned the 1998 Nobel. Both break the wiring diagram's
+    assumptions: some computation in the brain is broadcast and wireless, which models capture
+    with global modulatory fields rather than point-to-point connections.
+  </p>
+
+  <h2>Genetics and neuronal disease: from gene to circuit failure</h2>
+  <p>
+    The unit ends where medicine begins: inherited circuit failure. The clean cases are
+    deterministic — Huntington's disease is a CAG-repeat expansion in the HTT gene; above about
+    40 repeats the disease is essentially fully penetrant, and repeat length predicts age of
+    onset, making genotype a quantitative predictor. Most neuropsychiatric genetics is instead
+    polygenic: schizophrenia associates with hundreds of common variants (plus rare structural
+    mutations such as the C9orf72 repeat in ALS and frontal-temporal dementia), each of tiny
+    effect — genome-wide studies now explain a useful but partial share of liability, and
+    polygenic risk scores remain probabilistic, not diagnostic. Computationally these are
+    models of cascade failure: a molecular lesion (a channel, a synaptic protein, a pruning
+    gene) propagates through network dynamics until behaviour changes. The molecular-to-network
+    pipeline is why neuroscience needs all its levels at once.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Encoding and decoding, formally.</strong> The field's two fundamental questions are
+    quantitative: encoding (given a stimulus, what response distribution?) and decoding (given
+    spikes, what stimulus estimate — and with what uncertainty?). Information theory supplies
+    the measures: spike counts carry a few bits per neuron per trial; populations recover more
+    by pooling correlated noise. The honest limit: correlation itself is ambiguous — correlated
+    variability can help or hurt decoding depending on structure — which is why population
+    recordings replaced single-neuron abstractions.
+  </p>
+  <p>
+    <strong>The Bayesian brain and predictive processing.</strong> Perception is statistically
+    ambiguous, so Helmholtz's "unconscious inference" became formal: the brain combines priors
+    with likelihoods near-optimally (Knill & Pouget's evidence review), explaining illusions as
+    correct Bayesian answers to misleading inputs. Friston's free-energy programme generalises
+    this into prediction-error minimisation across cortical hierarchies — mathematically dense,
+    empirically productive, and criticised for being hard to falsify at full scope. Deep networks
+    trained on natural images developing representations strikingly like visual cortex
+    (Yamins & DiCarlo) is the same story from the engineering side: the task, not the
+    blueprint, shapes the representation.
+  </p>
+  <p>
+    <strong>The efficiency frontier.</strong> The brain does its ~20 watts of computation with
+    spikes that are sparse, event-driven and locally plastic — roughly nine orders of magnitude
+    more energy-efficient per operation than current datacentres. Neuromorphic chips (event-driven
+    silicon following spike timing), sparse coding and local learning rules are the engineering
+    harvest of the biology. Whether brain-style learning rules can close the gap on
+    backpropagation-scale training is one of the live arguments of the 2020s — and the reason
+    computational neuroscience and AI have effectively merged.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Dayan & Abbott, Theoretical Neuroscience; Knill & Pouget, TRENDS (2004); Friston (2010) free-energy principle; Yamins & DiCarlo (2016).</p>
 </TopicPage>
