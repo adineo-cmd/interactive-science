@@ -14,21 +14,187 @@ const causalCfg = {
 <TopicPage slug="subjects/statistics/expert/causal-inference">
   <h2>The idea</h2>
   <p>
-    Causal inference is the statistics of <strong>"what happens if we intervene"</strong> — the
-    difference between "smokers get cancer more" and "smoking <em>causes</em> cancer". For most
-    of the 20th century, statistics officially refused the question ("no causation without
-    manipulation"). Since the 1980s–2000s (Rubin's potential outcomes, Pearl's do-calculus), it
-    has a rigorous language — and it changed how medicine, economics and tech policy make claims.
+    Every science wants the same thing: not "these two things move together" but "this one
+    moves <em>because of</em> that one". This chapter climbs that ladder in six steps. It
+    begins where the bivariate-distributions unit begins — two variables, one scatter
+    diagram, one fitted line — and ends where causal inference proper takes over: the
+    machinery (potential outcomes, causal diagrams, natural experiments) that lets a
+    researcher defend a causal claim from messy observational data. The unit's tools are
+    not warm-ups for that machinery; they are its surface. The regression line is the most
+    aggressively over-interpreted object in applied science, and the discipline's modern
+    history — from statistics' long refusal to say "cause" at all, to Rubin's potential
+    outcomes, Pearl's do-calculus and the 2021 Nobel prize — is the story of learning
+    exactly which claims a fitted line can carry, and which it never can.
   </p>
 
   <Widget no="1" caption="the four ideas that turn association into (defensible) causation" widget="equationStep" config={causalCfg} />
 
-  <h2>The toolbox, in practice</h2>
-  <ul>
-    <li><strong>Potential outcomes:</strong> every person has two unseen outcomes (treated, untreated); causal effect = their difference. We see only one — inference is the art of estimating the missing counterfactual.</li>
-    <li><strong>Confounders, mediators, colliders:</strong> control for the first, not the second, and never the third. Drawing the diagram first is what stops the classic "controlling away the effect" mistake.</li>
-    <li><strong>Difference-in-differences:</strong> compare changes before/after between affected and unaffected groups — how economists evaluate minimum-wage and policy changes with no experiments.</li>
-    <li><strong>Instrumental variables:</strong> a variable that nudges treatment but has no direct effect on outcome isolates the causal slice — the draft lottery did this for the question "does military service raise earnings?"</li>
-  </ul>
+  <h2>Independent and dependent variables: naming the direction</h2>
+  <p>
+    A bivariate analysis begins with an act of theory disguised as bookkeeping: choosing
+    which variable is <strong>independent</strong> (the suspected driver, plotted on the
+    horizontal axis) and which is <strong>dependent</strong> (the response, plotted on the
+    vertical axis). Nothing in the data forces the choice. The same 200 points plotted
+    either way describe the observations equally well, but they assert opposite stories —
+    "practice raises scores" versus "high scores cause practice". The asymmetry is real even
+    in pure arithmetic: the least-squares line of y on x is not the algebraic inverse of the
+    line of x on y, because each answers a different conditional question. Regressing
+    revision hours (x) on exam score (y) answers "given five hours of practice, what score
+    should we expect?"; the reverse regression answers "given a score of 70, how much
+    practice is typical?" — a genuinely different quantity, not a rounding of the first.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the direction of causation can be read off the scatter
+    if the relationship is strong." It cannot. Time ordering, experiment design or a
+    defensible causal argument supplies the direction; the diagram only records the
+    association. Correlation of 0.9 in either direction is consistent with x causing y, y
+    causing x, or a third variable causing both.
+  </p>
+
+  <h2>Direction and strength: what the correlation coefficient measures</h2>
+  <p>
+    Pearson's correlation coefficient r condenses a scatter to a single number between
+    −1 and +1: its sign gives the direction of the <em>linear</em> association, its
+    magnitude the tightness of the cloud around a straight line. Values near ±1 mean the
+    points hug a line; values near 0 mean no straight-line pattern. Galton's 1886 height
+    data — the study that gave "regression" its name — put parent and child height at
+    roughly r = 0.5: real, but loose enough that tall parents' children average shorter
+    than the parents, and short parents' children taller. That is the deeper content of r:
+    in standardised units the slope of the best-fit line <em>is</em> r, so r = 0.5 already
+    means the line predicts only half the deviation to be carried through. And r = 0 does
+    not certify independence — it certifies only the absence of a <em>linear</em> pattern.
+    Data on y = x² collected symmetrically around zero give r essentially 0 while the
+    relationship is perfectly deterministic.
+  </p>
+  <p>
+    <em>Common misconception:</em> "a correlation near ±1 is nearly a causal proof." Size
+    of r measures association, not mechanism. Ice-cream sales and drowning deaths
+    correlate strongly across months because summer drives both; the coefficient is
+    indifferent to whether the connection is causal, confounded or coincidental.
+  </p>
+
+  <h2>Scatter diagrams: the first causal instrument</h2>
+  <p>
+    Before any coefficient, plot the data — and treat the plot as an instrument, not a
+    formality. Curvature, clusters, gaps and outliers are all visible in a scatter and all
+    invisible to a single number. The canonical demonstration is Anscombe's quartet (1973):
+    four small data sets constructed so that every summary agrees — each has 11 points,
+    mean of x = 9.0, mean of y = 7.5, r = 0.816, and the identical fitted line
+    y = 3.00 + 0.50x. Plotted, they are four different worlds: one a clean linear cloud,
+    one a perfect curve flattened into a line, one with a single outlier dragging the slope,
+    one with one leverage point pinning the whole fit. Any of the four yields the same
+    correlation, the same line and the same R²; only the scatter diagram tells you which
+    story you are in. This is why serious applied work plots first, computes second — and
+    why "the plot looks roughly linear" is a checkable assumption, not a decoration.
+  </p>
+
+  <h2>Fitting a line by eye and by semi-averages</h2>
+  <p>
+    The unit's first fitting method is honest about what a line is: a summary, chosen by
+    rule. The <strong>semi-averages</strong> method: order the points by x, split them into
+    a lower half and an upper half, compute the mean of x and the mean of y in each half,
+    and draw the unique straight line through those two mean points. Worked example —
+    typing practice (hours, x) against speed (words per minute, y) for eight learners:
+    (1, 12), (2, 18), (3, 24), (4, 26), (5, 38), (6, 40), (7, 49), (8, 53). Lower half:
+    mean x = 2.5, mean y = 20. Upper half: mean x = 6.5, mean y = 45. Slope =
+    (45 − 20) ÷ (6.5 − 2.5) = 6.25 wpm per hour; the line is y = 20 + 6.25(x − 2.5), i.e.
+    y ≈ 4.4 + 6.25x. It predicts 35.6 wpm at x = 5 against an observed 38 — the line
+    averages away individual noise, which is exactly its job. Splitting at the median x
+    (rather than by count) is a common variant; either way the method is a one-pass
+    prototype of least squares, and robust to a single wild point in a way naive
+    eyeballing is not.
+  </p>
+
+  <h2>The equation of the best-fit line</h2>
+  <p>
+    The least-squares line minimises the sum of squared vertical distances from points to
+    line, and its coefficients have a compact anatomy: slope b = r × (s<sub>y</sub> ÷
+    s<sub>x</sub>), intercept a = mean of y − b × mean of x. Worked example: revision hours
+    against test scores with r = 0.80, s<sub>x</sub> = 5 hours, s<sub>y</sub> = 10 points,
+    mean of x = 12, mean of y = 70. Then b = 0.80 × (10 ÷ 5) = 1.6 points per hour, and
+    a = 70 − 1.6 × 12 = 50.8: the predicted score with zero revision. Predicted score at
+    15 hours: 50.8 + 1.6 × 15 = 74.8. Two disciplines follow. First, the slope is a claim
+    about <em>average</em> effect within the observed range — 1.6 points per hour, not 1.6
+    for this student. Second, the line explains variation, not persons: an R² of 0.64 (r²
+    for our data) says hours account for 64% of the variance in scores, leaving 36% for
+    everything else — ability, sleep, luck — which is precisely where confounding enters.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the intercept always means something." It is the
+    prediction at x = 0, which may be outside the data (nobody revised for 0 hours here
+    and sat the exam) or meaningless (zero height). Report it, but interpret it only where
+    the data actually lives.
+  </p>
+
+  <h2>Assumptions and the limits of extrapolation</h2>
+  <p>
+    Every fitted line silently asserts: the relationship is <em>linear</em> over the
+    observed range; the deviations around the line behave roughly like independent random
+    noise (no time-bunching, no funnel-shaped spread); and the points sampled are
+    exchangeable with the ones you will predict for. Extrapolation beyond the observed
+    range breaks all three at once, and the failure is not gradual — it is categorical.
+    Shoe size against age fits beautifully from ages 3 to 10; extended to age 25 it
+    predicts size 17 shoes, because the true relationship levels off where the data ends.
+    Real cases follow the same shape: linear fits to a growing population project absurd
+    totals within decades; a line fitted to a firm's early growth says nothing about its
+    mature size. The rule of thumb is proportionate: an extrapolation of 10% past the
+    range is an estimate; 50% past it is a hope; past a known turning point it is wrong by
+    construction. The confidence a plot earned inside its range is exactly the confidence
+    it cannot export beyond it.
+  </p>
+  <p>
+    <em>Common misconception:</em> "a strong correlation makes extrapolation safer." The
+    strength of r describes the scatter <em>inside</em> the observed range and says nothing
+    whatsoever about the functional form outside it. Some of history's most confident
+    failed forecasts — population bombs, resource exhaustion curves — were high-R² linear
+    extrapolations of locally curved processes.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Potential outcomes.</strong> Rubin's framework makes the causal claim
+    embarrassingly concrete: each unit has two outcomes, the one that occurs if treated
+    and the one that occurs if not, and the causal effect is their difference. We observe
+    exactly one — the other is the <em>counterfactual</em>. All of applied causal
+    inference is estimation of an unobservable, which is why randomisation is gold: in a
+    randomised trial, chance assigns treatment, the two groups are exchangeable in
+    expectation, and the mean difference estimates the mean causal effect with no model
+    for confounders at all.
+  </p>
+  <p>
+    <strong>Drawing the arrows.</strong> Pearl's directed acyclic graphs encode assumed
+    causal structure and compute, mechanically, which variables to condition on. The
+    rules are unforgiving: control for a <em>confounder</em> (a common cause), do not
+    control for a <em>mediator</em> (part of the effect you would erase — the
+    smoking-versus-birth-weight style error), and never control for a
+    <em>collider</em> (a variable caused by two others), which manufactures association
+    from nothing — Pearl's own example: among movie stars, beauty and talent appear
+    negatively correlated, because stardom requires at least one of the two. "Adjust for
+    everything in the database" is therefore not caution; it is a way to bias a result.
+  </p>
+  <p>
+    <strong>Design over statistics.</strong> When experiments are impossible, the
+    credibility revolution seeks situations where the world randomised for us. Card and
+    Krueger's 1994 comparison of fast-food employment across the New Jersey–Pennsylvania
+    border around New Jersey's 1992 minimum-wage rise, and Angrist's use of the Vietnam
+    draft lottery as an instrument for military service (white veterans lost roughly 15%
+    of earnings per year of service, an effect invisible in raw comparisons), both
+    exported the logic of the experiment to observational data. Each design carries a
+    scope, too: Card and Krueger identify the short-run effect on fast-food employment
+    near one border in 1992, not the effect of every minimum-wage rise everywhere — a
+    humility the popular summaries usually lose. The 2021 Nobel to Angrist
+    and Imbens formalised what such designs recover — and their limits.
+  </p>
+  <p>
+    <strong>Open frontiers.</strong> The two formal cultures — Pearl's graphs and Rubin's
+    potential outcomes — still argue about vocabulary while converging in practice.
+    Sensitivity analysis (how strong would an unmeasured confounder have to be to erase
+    the finding?) is moving from optional to expected. And machine learning is being
+    rebuilt around causal targets: methods that estimate heterogeneous effects rather
+    than one average slope, treating the fitted line of this unit as the crudest member
+    of a growing family.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Pearl, Causality (2009) and The Book of Why (2018); Imbens & Rubin, Causal Inference (2015); Nobel Prize 2021 citations.</p>
 </TopicPage>
+

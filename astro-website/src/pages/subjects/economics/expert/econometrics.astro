@@ -14,22 +14,212 @@ const ecomCfg = {
 <TopicPage slug="subjects/economics/expert/econometrics">
   <h2>The idea</h2>
   <p>
-    Econometrics applies statistics to economic questions — where <strong>you can rarely run
-    experiments</strong> and the data is always observational. Its central problem is
-    <strong>identification</strong>: separating causal effects from correlation in messy,
-    confounded, self-selected data. The field's recent "credibility revolution" rebuilt it around
-    design-based answers, and its methods now run far beyond economics (the statistics ladder's
-    causal-inference lesson shares this DNA).
+    Econometrics is statistics under the constraints economics actually imposes: you
+    rarely choose your treatment, the data is observational, and the questions are
+    causal — did that policy work, by how much, for whom? Its baseline tool is OLS
+    regression, with its assumptions stated openly (linearity, exogeneity, no perfect
+    collinearity); everything else in the field is a repair for where those assumptions
+    break, above all exogeneity, which is exactly what policy evaluation doubts. This
+    chapter runs the econometrician's toolkit across the unit's macro agenda —
+    government intervention, fiscal policy, monetary policy, supply-side policy, growth,
+    unemployment and inflation — because each of those topics is also a case study in
+    one methodological lesson. The recurring moral, from the credibility revolution that
+    won the 2021 Nobel: design beats statistics, and a clean natural experiment with
+    simple methods beats a clever model on messy data.
   </p>
 
   <Widget no="1" caption="the identification problem and the toolkit that tames it" widget="equationStep" config={ecomCfg} />
 
-  <h2>The standard machinery</h2>
-  <ul>
-    <li><strong>OLS regression</strong> with its assumptions spelled out (linearity, exogeneity, no perfect collinearity) — the baseline everything modifies.</li>
-    <li><strong>Time-series econometrics:</strong> unit roots, cointegration, VAR models — how GDP, inflation and interest rates are modelled together over time.</li>
-    <li><strong>Panel data:</strong> tracking many units over many periods, controlling for unchanging differences (fixed effects) — the workhorse of policy evaluation with administrative data.</li>
-    <li><strong>Standard errors that survive reality:</strong> heteroskedasticity-robust, clustered (state-level shocks), autocorrelation-corrected. Getting standard errors wrong is the most common technical error in applied work.</li>
-  </ul>
+  <h2>Identifying what policy actually did</h2>
+  <p>
+    The <strong>evaluation problem</strong>: after a policy, we observe the economy with
+    the policy — never the same economy without it. A naive before-and-after comparison
+    fails because everything else was changing too (recessions end, oil prices move); a
+    comparison with unaffected regions fails if affected and unaffected were already
+    trending apart. The workhorses of repair are <strong>panel data</strong> — many units
+    tracked over many periods, with fixed effects absorbing every time-invariant
+    difference between them (a state's culture, a firm's management) — and
+    <strong>difference-in-differences</strong>, which compares the <em>change</em> in an
+    affected group to the change in an unaffected one. Identification quality is then
+    checked, not asserted: did the two groups move in parallel before the policy?
+    None of these repairs is free — each buys identification by assuming something
+    specific (parallel trends, no spillovers, correct timing), and the craft is making
+    those assumptions visible and checkable rather than implicit.
+    Increasingly, macro policy is also identified at high frequency — comparing asset
+    prices in a half-hour window around a central-bank announcement, where nothing else
+    plausibly moved — a strategy that trades scope for cleanliness.
+  </p>
+  <p>
+    Difference-in-differences in miniature: a jobs-programme region's employment moves
+    from 100 to 104, while an untreated comparison region moves from 100 to 99. The
+    before-and-after view credits the programme with 4; the treated-versus-untreated
+    snapshot credits it with 5; the difference-in-differences estimate is
+    (+4) − (−1) = +5, because the control region's decline reveals what the treated
+    region would have done anyway. Two numbers in, one counterfactual out — the entire
+    method on a napkin, and every refinement (matching, synthetic controls, event-study
+    plots) is an argument that this comparison is the right one.
+  </p>
+  <p>
+    <em>Common misconception:</em> "statistical significance means the effect is big."
+    Significance combines size with sample variance; with administrative data covering
+    millions, a trivially small coefficient is "significant" weekly. Applied
+    econometrics reads the coefficient and its units first, the asterisk second.
+  </p>
+
+  <h2>Fiscal policy: estimating the multiplier</h2>
+  <p>
+    The fiscal multiplier — output change per unit of government spending or tax change —
+    is the field's flagship estimation problem, because governments do not randomise
+    budgets. The measurement approaches each carry a lesson. Narrative identification
+    (Romer and Romer, 2010) reads presidential speeches and legislative records to
+    isolate tax changes motivated by long-run philosophy rather than the current
+    economy, and finds output falls by roughly 2–3% per 1% of GDP in tax increases.
+    Cross-state comparisons (spending spilling over borders) return multipliers around
+    1.5. And the crisis gave the field its self-audit: Blanchard and Leigh (2013) showed
+    that when forecasters assumed multipliers near 0.5 while cutting budgets in
+    2010–2011, growth disappointed by roughly 0.9–1.7 percentage points per 1% of GDP of
+    consolidation — the assumed multipliers were too small, exactly as a
+    slack-economy model predicts. Multiplier estimates vary with the monetary response,
+    openness and slack; that variation is the finding, not noise.
+  </p>
+
+  <h2>Monetary policy: rules, VARs and long lags</h2>
+  <p>
+    Central banks move one short rate; the economy's response must be estimated.
+    <strong>Vector autoregressions</strong> (Sims, 1980) model GDP, inflation and
+    interest rates as a joint system whose past drives its present; a shock to the rate
+    equation then traces an impulse response — typically output dips with a hump over
+    roughly a year, inflation follows later. Because the series are trending
+    (non-stationary), VARs work with differences or must respect unit roots; the
+    textbook caution is the spurious regression (below). On the policy side, the
+    reference point is the Taylor rule (1993): set the policy rate to
+    2 + inflation + 0.5 × (inflation − 2) + 0.5 × output gap — a description that became
+    a benchmark. Worked example: inflation 3%, output on trend → prescribed rate
+    2 + 3 + 0.5 × 1 = 5.5%. The lag structure — Friedman's "long and variable" — is
+    itself an estimated object, and the reason policy evaluation needs a model rather
+    than a glance.
+  </p>
+  <p>
+    <em>Common misconception:</em> "two trending series that regress well are related."
+    Regress one random walk on another and you routinely get high R² and large
+    t-statistics from pure coincidence — Granger and Newbold's spurious regression
+    (1974). With unit roots you need differencing, or cointegration: the special case
+    (Engle–Granger, 1987) where two trending series genuinely move together, like short
+    and long interest rates.
+  </p>
+
+  <h2>Supply-side policy: slow effects, harder identification</h2>
+  <p>
+    Supply-side policy — tax wedges, labour-market reform, competition, education —
+    operates through incentives on hours, investment and productivity, over years
+    rather than quarters. That timescale makes evaluation harder: over a decade, too
+    much else changes for before-and-after logic. The dominant econometric strategy is
+    the cross-country growth regression (Barro's tradition): regress growth on initial
+    income and controls, and read off <strong>conditional convergence</strong> —
+    estimates cluster around 2% per year, meaning a country half as rich as its own
+    steady-state benchmark closes half the gap in roughly 35 years (0.98<sup>35</sup> ≈
+    0.49). The standing critique is that policy choices are endogenous — governments
+    reform when in crisis, so reforms ride the very shocks they are blamed or credited
+    for — which is why the best supply-side evidence comes from sharp, datable reforms
+    evaluated with difference-in-differences and a pre-trend check, not from sweeping
+    regressions alone.
+  </p>
+
+  <h2>Economic growth: growth accounting</h2>
+  <p>
+    The most honest decomposition in macroeconomics is arithmetic. With capital's share
+    α ≈ 0.3, growth accounting writes output growth as
+    ΔY/Y = α × ΔK/K + (1 − α) × ΔL/L + ΔA/A, where ΔA/A — the Solow residual — is
+    productivity growth: everything output growth cannot be traced to capital or labour.
+    Worked example: output grows 3.2%; labour hours grow 1.4% (contributing
+    0.7 × 1.4 = 1.0 points); the capital stock grows 3.0% (contributing
+    0.3 × 3.0 = 0.9 points). The residual is 3.2 − 1.0 − 0.9 = 1.3 percentage points of
+    productivity. The residual is often called a measure of our ignorance — it bundles
+    technology, efficiency, institutions and measurement error — and that honesty is
+    the point: growth accounting tells you precisely how much of the growth story your
+    data actually explains, and how much is attribution. Cross-country versions add a
+    sobering layer: capital shares, hours and price levels are measured differently in
+    different statistical offices, so residual comparisons between rich and poor
+    countries compare measurement regimes as much as economies.
+  </p>
+
+  <h2>Employment and unemployment: Okun's law and the minimum wage</h2>
+  <p>
+    Two estimable regularities anchor the topic. Okun's law (1962): each percentage
+    point of unemployment above its natural rate costs roughly 2% of output relative to
+    potential — unemployment at 8% against a 5% natural rate implies an output gap of
+    about −6%. The law is a rule of thumb, not a mechanism: it compresses participation,
+    hours and productivity into two numbers, and its coefficient drifts across decades.
+    And the minimum-wage literature became econometrics' showcase. Card and
+    Krueger (1994): New Jersey raised its minimum from 4.25 to 5.05 dollars an hour in
+    April 1992 while neighbouring Pennsylvania stayed at 4.25; surveys of about 410
+    fast-food
+    restaurants gave full-time-equivalent employment per store of 20.44 to 21.03 in New
+    Jersey and 23.33 to 21.17 in Pennsylvania — a difference-in-differences of about
+    +2.76 jobs per store in the treated state, the opposite of the competitive textbook
+    prediction. A later comparison using payroll records confirmed the pattern. Getting
+    such comparisons right also demands honest inference machinery:
+    heteroskedasticity-robust and <strong>clustered</strong> standard errors (allowing
+    shocks to hit all observations in a state at once) — because mis-measured standard
+    errors are the most common technical failure in applied work.
+  </p>
+
+  <h2>Inflation: the Phillips curve as cautionary tale</h2>
+  <p>
+    Phillips (1958) fitted a smooth curve to UK wage inflation against unemployment over
+    1861–1957, and for a decade policy was designed around the trade-off it seemed to
+    offer. Then the 1970s produced high inflation <em>and</em> high unemployment
+    together, exactly as Friedman (1968) and Phelps (1967) had argued: the curve is not
+    a menu, because expectations adjust — squeeze unemployment below its natural rate
+    and inflation ratchets rather than employment settling higher. The estimated object
+    that survived is the expectations-augmented curve, plus the
+    <strong>sacrifice ratio</strong> — output lost per point of disinflation. The
+    Volcker episode is the worked case: US inflation of about 13.5% in 1980 was cut to
+    roughly 3% by 1983, at the price of unemployment peaking at 10.8% in 1982 and a
+    deep recession. The curve's instability across decades is not an embarrassment to
+    econometrics; it is the field's clearest demonstration that estimated relationships
+    are conditional on the regime that generated the data. Modern estimates therefore
+    condition on expectations — anchored or de-anchored — before saying anything
+    quantitative about the curve's slope.
+  </p>
+  <p>
+    <em>Common misconception:</em> "adding more control variables fixes causality."
+    Controls help only if they block genuine confounding paths; controlling for a
+    variable that is itself an outcome of the policy (or a collider) can inject bias
+    that was not there. Identification comes from design — a comparison that plausibly
+    holds the counterfactual fixed — and no quantity of regressors substitutes for it.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Instrumental variables and their weakness.</strong> The draft lottery
+    instrument (Angrist, 1990) worked because lottery numbers were random and strongly
+    affected service. Most proposed instruments are not so kind: a weak instrument
+    (first-stage F-statistic under 10 is the traditional warning) makes two-stage
+    estimates biased toward OLS and gives misleadingly small standard errors. The craft
+    is testing the first stage before trusting the second.
+  </p>
+  <p>
+    <strong>Regression discontinuity.</strong> When treatment turns on a threshold — a
+    scholarship just missed, a class-size cap just crossed — units immediately either
+    side are comparable by construction, and the discontinuity estimates a local causal
+    effect with unusual credibility. Panel methods, discontinuities and
+    difference-in-differences now dominate applied micro-macro work alike; each carries
+    its own diagnostic battery (manipulation tests, pre-trends, placebo thresholds).
+  </p>
+  <p>
+    <strong>Machine learning meets econometrics.</strong> The frontier is
+    <em>double machine learning</em> (Chernozhukov and co-authors, 2018): use flexible
+    learners to model the nuisance relationships, then recover the causal parameter with
+    honest inference — plus causal forests that estimate heterogeneous effects instead
+    of one average slope. Meanwhile the field polices itself: replication archives,
+    pre-analysis plans, and specification-curve plots that show how many defensible
+    answers a dataset contains. The credibility revolution's next act is making the
+    researcher's degrees of freedom visible — and the unresolved question beyond all of
+    it is external validity: an estimate earned in one natural experiment travels only
+    as far as the analogy behind it.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Wooldridge, Introductory Econometrics; Angrist & Pischke, Mostly Harmless Econometrics; Nobel 2021 citations.</p>
 </TopicPage>
+

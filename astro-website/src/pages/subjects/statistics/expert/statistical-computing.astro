@@ -14,21 +14,205 @@ const scCfg = {
 <TopicPage slug="subjects/statistics/expert/statistical-computing">
   <h2>The idea</h2>
   <p>
-    Statistical computing is where the discipline now lives: <strong>methods that exist only
-    because computers do</strong> — resampling, simulation, MCMC, and machine learning itself.
-    Just as important is the craft around them: reproducible pipelines that turn an analysis from
-    a one-off into a re-runnable scientific object.
+    Statistical computing is where the discipline now lives — but the computational turn
+    did not start with machine learning; it started with the humblest act in statistics:
+    choosing a sample. Every topic in the data-collection unit has a computational
+    descendant. The random number table became the pseudorandom generator. The worry about
+    sampling bias became the simulation study, where you can measure bias directly by
+    generating data with known truth. The survey question, open or closed, became a data
+    type in a dataframe, with all the precision and all the fragility that implies. This
+    chapter reads the classical unit through that lens: the mechanics of getting data
+    right, and the code that now carries them. The payoff is a habit of mind — if a claim
+    depends on a sampling or measurement choice, you can usually test that choice by
+    simulating it before you trust it.
   </p>
 
   <Widget no="1" caption="the computational turn — four ideas that reshaped statistics" widget="equationStep" config={scCfg} />
 
-  <h2>The working toolkit</h2>
-  <ul>
-    <li><strong>R</strong> — statistics' native tongue: 19,000+ packages, literate reporting via R Markdown, the lingua franca of academic methods (and every new technique lands here first).</li>
-    <li><strong>Python</strong> — pandas, numpy, statsmodels, scikit-learn: statistics embedded in a general engineering language, the default in industry data science.</li>
-    <li><strong>Probabilistic programming:</strong> Stan and PyMC let you write a Bayesian model in a few lines and let MCMC sample the posterior automatically — custom models without custom derivations.</li>
-    <li><strong>Reproducibility crisis meets code:</strong> if the data and code are published, the analysis can be checked; if not, it's a claim. Journals increasingly require both — the pipeline is part of the result.</li>
-    <li><strong>Numerical literacy:</strong> floating-point arithmetic, numerical stability (log-sums instead of products of tiny probabilities), and random seeds — the boring details that make results reproducible or irreproducible.</li>
-  </ul>
+  <h2>Populations, samples, censuses and the representative ideal</h2>
+  <p>
+    The <strong>population</strong> is every unit you wish to speak about; a
+    <strong>sample</strong> is the part you observe; a <strong>census</strong> is the
+    attempt to observe all of them. Census is not automatically better: it is slower,
+    costlier, and in practice incomplete — nonresponse and hard-to-reach groups mean most
+    real censuses behave like enormous, expensive, slightly broken samples. What matters
+    is the <strong>representative</strong> property: the sample's composition mirrors the
+    population's, so that sample statistics estimate population parameters. Computation
+    makes the concept tangible: simulate a population of a million values with a known
+    mean, draw a thousand samples of 100, and plot the thousand sample means. The spread
+    of that cloud is sampling variation, made visible — and its width is predictable: a
+    proportion near 0.5 sampled with n = 100 has a standard error of
+    √(0.5 × 0.5 ÷ 100) = 0.05, so a poll at 55% versus another at 63% is routine
+    fluctuation, not news. The simulation also shows the shape: however odd the
+    population, the cloud of a thousand sample means comes out approximately
+    normal — the insight the formula compresses. No formula-memorising required; the
+    laptop shows you.
+  </p>
+  <p>
+    <em>Common misconception:</em> "a bigger sample fixes bad sampling." Size reduces
+    <em>random</em> error, not <em>systematic</em> error. A million respondents recruited
+    from one social platform converge precisely on the biased view of that platform's
+    users; the bias is a property of the selection mechanism, and no n erases it.
+  </p>
+
+  <h2>Sampling methods: simple random, systematic, stratified and quota</h2>
+  <p>
+    <strong>Simple random sampling</strong> gives every member an equal chance — the
+    default that all theory assumes. <strong>Systematic sampling</strong> takes every
+    k<sup>th</sup> unit after a random start — with 850 pupils and a sample of 100,
+    k ≈ 8 or 9 — and the random start is what keeps it a probability method rather than a
+    habit; it is cheap and spreads evenly, but it silently assumes the list has no periodic
+    structure — every 7th house on a street of weekly-rubbish-day patterns can sample one
+    day of the week forever. <strong>Stratified sampling</strong> divides the population
+    into meaningful strata (hospital inpatients versus outpatients; year groups in a
+    school) and samples randomly within each, which reduces variance: if inpatients rate
+    satisfaction around 6.2 and outpatients 7.9, a stratified sample with proportional
+    allocation estimates each group well and the overall mean more precisely than a blind
+    simple random sample of the same size. <strong>Quota sampling</strong> fills
+    pre-set categories (20 men over 60, say) by whatever interviewer convenience
+    provides — the categories match the population but the selection inside each is
+    non-random, and that is where bias enters through the interviewer's choosing hand.
+  </p>
+
+  <h2>Bias in sampling: the mechanisms and the detectors</h2>
+  <p>
+    Bias has a short taxonomy worth memorising, because each entry has a classic
+    disaster. <strong>Selection bias</strong>: the 1948 US presidential election, where
+    Gallup's quota method — otherwise respectable — had respondents chosen by
+    interviewers and polling stopped weeks early; the Chicago Tribune famously went to
+    press with "Dewey Defeats Truman" against Truman's actual win. <strong>Survivorship
+    bias</strong>: in the Second World War, Abraham Wald analysed returning bombers'
+    bullet holes and recommended armouring the places <em>without</em> holes — the
+    engine area — because planes hit there did not come back to be counted.
+    <strong>Nonresponse and voluntary response</strong>: online polls attract the
+    motivated; low response rates convert a survey into a poll of the willing.
+    <strong>Undercoverage</strong>: phone surveys that miss mobile-only households.
+    Computation adds a third layer the classical unit never faced: <em>processing</em>
+    bias. Missing values are not neutral absences — dropping every record with a gap
+    quietly deletes the hardest-to-reach respondents exactly when the survey most needs
+    them; unit errors (heights recorded in centimetres read as inches) propagate through
+    every statistic downstream; and cleaning rules written after seeing the results can
+    manufacture the finding they claim merely to reveal. The professional discipline is
+    to write the cleaning code before looking at outcomes, log every exclusion, and
+    report how many records each rule removed — a short audit trail separating data
+    curation from data corruption.
+    The computational detector is comparison against known totals (does the sample's age
+    or regional mix match census benchmarks?) and reweighting — both trivial in code,
+    both useless if the sampling frame itself was wrong.
+  </p>
+
+  <h2>Random number tables and their algorithmic heirs</h2>
+  <p>
+    The classical mechanism: number every member of the population (pupils 001–850, say),
+    open the random number table anywhere, read three-digit groups left to right, accept
+    001–850, skip 000 and 851–999 and repeats, and stop when you have the 12 names you
+    need. The computer's version is the same recipe with the table replaced by an
+    algorithm — and the replacement is worth understanding, because it is the foundation
+    of reproducibility. Von Neumann's middle-square method (1946) squared a seed and kept
+    the middle digits — fast, but it collapsed to zero; later linear congruential
+    generators were better; today's default in R and Python, the Mersenne Twister, has
+    period 2<sup>19937</sup> − 1. The crucial fact: these are <em>pseudorandom</em>
+    — deterministic streams seeded with a number. Run the same script with the same seed
+    and you get the same sample, the same bootstrap, the same result. That is a feature,
+    not a cheat: a seed turns an analysis from a one-off into a re-runnable object.
+  </p>
+  <p>
+    <em>Common misconception:</em> "computers generate truly random numbers." They
+    generate deterministic sequences that pass randomness tests. For sampling from a
+    finite population this is fine — the statistical properties are what matter — but the
+    determinism is exactly why a fixed seed belongs in every serious script.
+  </p>
+
+  <h2>Open and closed questions in surveys</h2>
+  <p>
+    A <strong>closed question</strong> offers fixed options: fast to answer, cheap to
+    tabulate, but it decides in advance what opinions can exist, and option order,
+    scale labels ("excellent to poor" versus "poor to excellent") and the simple presence
+    of a middle option all measurably shift answers. An <strong>open question</strong>
+    ("What would improve the school canteen?") captures the unexpected but demands
+    expensive human or machine coding before it becomes data — and coding is itself a
+    measurement choice. Wording is the sharpest instrument: in a classic result
+    replicated by Schuman and Presser, only about half of respondents said the United
+    States should "forbid" speeches against democracy, but roughly three-quarters said
+    such speeches should be "allowed" — one opinion, opposite wording, opposite answer. Computationally, the
+    closed question is a categorical variable from the moment of design; the open question
+    is unstructured text that must be classified before any software can count it. Design
+    the questionnaire and the schema together; they are the same object.
+  </p>
+  <p>
+    One low-tech defence survives every generation of tooling: the pilot. Testing the
+    questionnaire on a handful of respondents — ideally while watching them answer —
+    remains the cheapest bias detector ever invented, because it catches the confusing
+    option, the loaded adjective and the missing category before the data exists rather
+    than after. No software has replaced it; the computer can only count what the
+    question managed to ask.
+  </p>
+
+  <h2>Classifying data: qualitative, quantitative, discrete, continuous</h2>
+  <p>
+    The classification is not taxonomy for its own sake — it determines which statistics
+    and which code paths are legal. <strong>Qualitative</strong> (categorical) data:
+    blood group, nationality, favourite genre. <strong>Quantitative</strong> data:
+    numerical, and either <strong>discrete</strong> (countable: household size, goals per
+    match) or <strong>continuous</strong> (measurable on a scale: height, reaction time).
+    Averaging postcodes is a category error the computer will happily commit — it will
+    compute a mean of anything you hand it. In software the mapping is concrete:
+    categories belong in factor or categorical types (so models treat them as levels, not
+    numbers), counts in integers, measurements in floats — and floats have an exactness
+    boundary: IEEE 754 double precision carries roughly 15–16 significant digits, and
+    0.1 + 0.2 does not equal 0.3 exactly. Add Wickham's tidy-data principle (one row per
+    observation, one column per variable, one table per observation type) and the
+    classification becomes an interface contract: get it right and every later step —
+    plotting, modelling, aggregating — composes cleanly.
+  </p>
+  <p>
+    <em>Common misconception:</em> "numbers are numbers, so data type is a storage
+    detail." The type encodes meaning: treating a 1–5 opinion scale as continuous
+    implies a spacing between categories that the respondent never endorsed, and that
+    assumption quietly propagates into every mean, every regression coefficient, every
+    dashboard.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The bootstrap.</strong> Efron's 1979 insight turns sampling theory on itself:
+    treat your own sample as the population, resample it with replacement thousands of
+    times, and the spread of the recomputed statistic estimates the uncertainty.
+    Worked sketch: 20 patients, mean recovery 8.2 days, standard deviation 3.1 — the
+    classical standard error is 3.1 ÷ √20 ≈ 0.69; the bootstrap rediscovers that number
+    (and produces the whole distribution, not just the normal approximation) by brute
+    repetition. It answers questions no closed-form formula exists for — medians,
+    ratios, rankings — with nothing but a loop.
+  </p>
+  <p>
+    <strong>Permutation tests and MCMC.</strong> Fisher imagined the permutation test in
+    1935 (shuffle treatment labels, recompute the difference, see how extreme the real
+    one is) — a thought experiment until computers made it routine. Monte Carlo methods
+    from the 1950s (Metropolis and colleagues, 1953; refined by Hastings, 1970) power
+    modern Bayesian computing: probabilistic programming systems such as Stan and PyMC
+    take a model written in a few lines and sample its posterior automatically. The
+    professional standard is the <em>simulation study</em>: fake data with known truth,
+    run your method, verify it recovers the truth — the unit test of statistics.
+  </p>
+  <p>
+    <strong>Reproducible pipelines.</strong> The analysis is the artefact: scripts that
+    run end-to-end from raw data to report, pinned package environments, version control,
+    fixed seeds, and literate tools (R Markdown, Jupyter) that interleave reasoning and
+    execution. Journals increasingly require data and code alongside the paper, because
+    the reproducibility crises of the 2010s showed that unpublished pipelines cannot be
+    checked — and uncheckable claims decay. Numerical craft is part of this: sum logs
+    rather than multiply tiny probabilities, expect catastrophic cancellation in naive
+    variance formulas, and never compare floats for exact equality.
+  </p>
+  <p>
+    <strong>Open frontiers.</strong> Formal verification of statistical code, differential
+    privacy in census release (noise added deliberately, accuracy provable), and
+    sampling the unsampleable — the estimate for hard-to-reach populations that
+    probability sampling cannot reach — are where data collection and computing are
+    actively colliding. The unit's old questions (who is in, who is missed) have become
+    the field's new ones.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Efron (1979); Metropolis et al. (1953); Wickham & Grolemund, R for Data Science; Efron & Hastie, Computer Age Statistical Inference.</p>
 </TopicPage>
+
