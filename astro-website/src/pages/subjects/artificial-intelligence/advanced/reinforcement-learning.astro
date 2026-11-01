@@ -67,6 +67,16 @@ const rlQuizCfg = {
     Atari games from raw pixels — the moment the paradigm went deep.
   </p>
   <p>
+    The discount factor repays a second look because it is a design lever with a
+    geometric meaning: 1/(1 − γ) is the effective planning horizon in steps. With
+    γ = 0.9 the horizon is about 10 steps, and a reward 50 steps away is discounted to
+    0.9⁵⁰ ≈ 0.005 — effectively invisible to the agent. With γ = 0.99 the horizon is
+    100 steps and the same reward keeps 0.99⁵⁰ ≈ 0.60 of its value. This is why the
+    same algorithm with γ = 0.9 can solve a gridworld in minutes and fail to learn a
+    long game at all, and why robotics teams tune γ as carefully as learning rates:
+    the knob decides how far into the future the agent's decisions can see.
+  </p>
+  <p>
     <em>Common misconception:</em> RL learns a plan, a fixed sequence of moves. It learns a
     <em>policy</em> — a mapping from every situation to an action — which is why a trained
     agent handles situations its designer never anticipated. (Separately, model-based methods
@@ -90,6 +100,15 @@ const rlQuizCfg = {
     environments where external rewards are rare. The bandit framing is not a toy: ad
     selection, clinical trial allocation and news headline ranking are all bandit problems
     running in production, where the cost of exploring on real users is measured in money.
+  </p>
+  <p>
+    <em>Common misconception:</em> exploration is a training-phase concern — once the
+    agent is trained, it can stop exploring. In stationary problems a deployed policy
+    can indeed freeze, but real environments drift (new products, new adversaries, new
+    users), which turns exploration into maintenance: an agent that has stopped asking
+    whether its value estimates are still true has silently re-entered the exploitation
+    trap. This is why production bandit systems often keep a small permanent ε rather
+    than decaying it to zero.
   </p>
 
   <h2>Delayed reward and the credit assignment problem</h2>
@@ -128,6 +147,17 @@ const rlQuizCfg = {
     signal: the LLM is the agent, the reward model is the environment's scoring function, and
     PPO adjusts the policy. A few gradient steps of RL are, remarkably, how raw next-token
     predictors become assistants.
+  </p>
+  <p>
+    <em>Common misconception:</em> these wins are brute force — the computer simply
+    calculated faster than humans. The evidence says otherwise: TD-Gammon reached expert
+    play from pure self-play with no opening book; Move 37 was valued by professional
+    commentary at roughly one-in-ten-thousand human probability — not a deeper calculation
+    of familiar lines but a different evaluation of the board altogether; and AlphaGo
+    Zero, trained with no human games at all, rediscovered and surpassed its ancestor.
+    What scales is not calculation but the quality of learned judgement guiding the
+    search — a different claim, with different implications for what the method can do
+    outside games.
   </p>
 
   <h2>Reward hacking: the cautionary tale</h2>

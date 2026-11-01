@@ -92,6 +92,16 @@ const abQuizCfg = {
     decision's cost, and report the confidence interval for the lift so decision-makers see
     the range of plausible effects, not just a verdict.
   </p>
+  <p>
+    <em>Common misconception:</em> the measured lift is the truth about B — B won by
+    1.1 points, so B is 1.1 points better. Winners are selected from a distribution of
+    noisy estimates, and selection systematically picks the lucky ones: the typical
+    replicated effect of a "significant winner" is smaller than measured, sometimes
+    close to zero. Mature teams therefore treat headline lifts as upper bounds, re-run
+    or extend promising tests before scaling them, and expect the follow-up to land
+    below the original estimate — regression toward the mean, wearing a product
+    lanyard.
+  </p>
 
   <h2>Two samples and the arithmetic of power</h2>
   <p>
@@ -117,6 +127,16 @@ const abQuizCfg = {
     is compatible with everything from a slight loss to a big win; only a narrow interval
     around zero licenses the word "null".
   </p>
+  <p>
+    <em>Common misconception:</em> with enough users, every worthwhile effect becomes
+    detectable — so scale solves testing. Scale does the opposite to judgement: with
+    millions of users, effects so small no decision could turn on them become reliably
+    "significant", and a team can spend a quarter shipping a 0.01-point lift that costs
+    more in engineering time than it returns in revenue. Statistical significance asks
+    "is this distinguishable from noise?"; the minimum detectable effect asks "is this
+    distinguishable from pointless?" — and only fixing the MDE before launch keeps the
+    two questions apart.
+  </p>
 
   <h2>Four ways experiments lie</h2>
   <ul>
@@ -134,6 +154,19 @@ const abQuizCfg = {
     group-sequential designs that pre-schedule a few early looks at pre-agreed (stricter)
     thresholds; Bayesian monitoring that reframes stopping as expected-loss decision-making;
     and always, the SRM check before believing any number.
+  </p>
+  <p>
+    The multiple-comparisons bullet deserves the same arithmetic. Test twenty genuinely
+    null metrics at the 0.05 threshold and the chance that at least one "wins" is
+    1 − 0.95²⁰ ≈ 64% — more likely than not, the dashboard shows a victory that is pure
+    noise. This is why the discipline insists the <em>primary</em> metric be chosen
+    before the data arrives: one pre-registered comparison keeps the 5% promise, while
+    twenty opportunistic ones quietly convert the error budget into a majority. Where
+    many comparisons are genuinely unavoidable (a platform testing across segments),
+    the corrections are mechanical — Bonferroni divides the threshold among the tests,
+    false-discovery-rate control limits the <em>share</em> of "winners" expected to be
+    false — but all of them spend statistical power, which is the honest price of
+    looking everywhere.
   </p>
   <p>
     <em>Common misconception:</em> statistical machinery fixes a bad experiment. No test can

@@ -53,6 +53,15 @@ const sigQuizCfg = {
     every filter, analogue or digital, is some impulse response being convolved with your
     signal.
   </p>
+  <p>
+    <em>Common misconception:</em> a filter removes noise. It removes noise
+    <em>at frequencies different from the signal's</em> — and only that. Noise sitting
+    inside the signal's own band is untouchable by any frequency-selective filter,
+    which is why the field's cleverer tools exist: averaging (noise averages away while
+    the signal adds), lock-in detection (move the signal to an empty band first), and
+    model-based estimation. "Filter it" is the beginning of a design conversation, not
+    the answer to one.
+  </p>
 
   <h2>Fourier's idea: the frequency domain</h2>
   <p>
@@ -95,6 +104,15 @@ const sigQuizCfg = {
     sample <em>rate</em> and sample <em>range</em> — and every real acquisition system
     balances them against memory and cost.
   </p>
+  <p>
+    <em>Common misconception:</em> higher sample rates and bit depths always mean
+    better quality. The sampling theorem is about <em>bandwidth</em>, not virtue:
+    44.1 kHz already captures the entire audible band, and doubling the rate records
+    ultrasound nobody hears while quadrupling the data. Rate and resolution are
+    budgets to be spent where the application needs them — a vibration sensor wants
+    wide bandwidth at 24-bit depth; a telephone line gets by with 8 kHz and 8 bits —
+    and "more" spent anywhere else is storage and cost with no information gained.
+  </p>
 
   <h2>Filtering: the frequency-selective craft</h2>
   <p>
@@ -117,6 +135,18 @@ const sigQuizCfg = {
     averaging N independent measurements improves the noise floor as √N — the statistics
     ladder's standard error, running in hardware.
   </p>
+  <p>
+    A worked example shows the trade in miniature: the <strong>ECG</strong>. The
+    heart's electrical signal lives below about 40 Hz, but the electrode picking it up
+    also collects baseline drift (near DC, from skin contact and breathing) and mains
+    interference (50 or 60 Hz, radiated from every power line in the room). The
+    clinical chain is therefore: a high-pass near 0.5 Hz to kill the drift, a low-pass
+    near 40 Hz to kill muscle noise, and a narrow <strong>notch</strong> filter tuned
+    to the mains frequency — with the catch that the notch sits close to the signal's
+    upper band, so too sharp a notch distorts the very waveform the cardiologist needs
+    to read. Every filter in the chain bought cleanliness at the price of some
+    fidelity, and the art is spending as little as possible.
+  </p>
 
   <h2>Noise, SNR and the decibel</h2>
   <p>
@@ -134,6 +164,15 @@ const sigQuizCfg = {
     absorptions and nanovolt thermoelectric signals get read). The general version of the
     trick — knowing <em>where</em> in frequency your signal lives — is the whole subject
     compressed to one sentence.
+  </p>
+  <p>
+    <em>Common misconception:</em> the decibel is a unit, like volts. It is a
+    <em>ratio</em> on a logarithmic scale — meaningless until a reference is stated,
+    which is why the suffixes matter: dBm is against one milliwatt, dBFS against a
+    converter's full scale, dBA against a human ear's sensitivity curve. A gain of
+    "+20 dB" is a tenfold amplitude ratio and "+10 dB" roughly threefold — adding dB
+    values multiplies signals, the arithmetic that makes the scale useful and,
+    unlabelled, ambiguous.
   </p>
 
   <h2>Where it runs the world</h2>

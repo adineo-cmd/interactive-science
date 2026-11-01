@@ -75,6 +75,14 @@ const evalQuizCfg = {
     history met a world with no history for it — and the "silent" part is the danger: accuracy
     can decay for months with no error message anywhere.
   </p>
+  <p>
+    <em>Common misconception:</em> evaluation is the launch gate — once the model has
+    passed and shipped, the evaluating is finished. For deployed systems evaluation is
+    closer to a vital sign than a gate: distributions drift, adversaries adapt, and the
+    honest posture is continuous monitoring with scheduled re-evaluation against fresh
+    labels. Teams that budget for perpetual evaluation ship models that decay slowly
+    and visibly; teams that test once ship models that decay quickly and silently.
+  </p>
 
   <h2>Bias: where averages hide the damage</h2>
   <p>
@@ -105,6 +113,20 @@ const evalQuizCfg = {
     to regulators, not to whoever tunes the threshold.
   </p>
   <p>
+    A worked example shows why base rates rule the interpretation. Suppose a screening
+    model is 99% accurate in both directions on a condition affecting 1% of a
+    population. Of 10,000 people, the 100 who truly have the condition are flagged —
+    99 true positives; but the 9,900 without it contribute a 1% false-positive rate:
+    99 false alarms. The flagged pool is 198 people, exactly half of them wrong: an
+    instrument that is "99% accurate" delivers coin-flip odds on any individual flag.
+    Shift the base rate to 10% and the false-positive share of the flagged pool drops
+    to about 8%. This is why identical error rates mean different things for different
+    subpopulations, why a classifier deployed on a low-prevalence group drowns in
+    false positives, and why the fairness criteria above collide: when base rates
+    differ across groups, no threshold gives every group the same experience of the
+    same tool.
+  </p>
+  <p>
     <em>Common misconception:</em> removing protected attributes (race, gender) from the
     features makes a model unbiased. It does not — the information persists in proxies
     (postcode, purchasing patterns, dialect), a phenomenon known as <strong>fairness through
@@ -132,6 +154,16 @@ const evalQuizCfg = {
     field's honest summary: modern safety practice is empirical and iterative, while the
     guarantee we actually want (robust, corrigible behaviour under distribution shift and
     adversarial pressure) remains an open research problem.
+  </p>
+  <p>
+    <em>Common misconception:</em> prompt injection can be patched the way a buffer
+    overflow can. The usual defences — instructing the model to ignore embedded
+    instructions, filtering suspicious text, restricting the tools a model may call —
+    reduce success rates, but none creates the hard boundary the database world got
+    from separating query language from data, because here the data and the
+    instructions are the same medium: natural language. The engineering response is
+    damage limitation — least-privilege tools, human confirmation for irreversible
+    actions — not the false comfort of a single fix.
   </p>
 
   <h2>The standards taking shape</h2>

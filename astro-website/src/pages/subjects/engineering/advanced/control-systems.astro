@@ -56,6 +56,15 @@ const controlQuizCfg = {
     what feedback turns into oscillation). The loop can never outperform its sensor: garbage
     in, oscillation out.
   </p>
+  <p>
+    <em>Common misconception:</em> the loop's accuracy is set by the sensor's accuracy,
+    so buying a better sensor fixes a badly controlled process. Accuracy is the
+    sensor's <em>static</em> virtue; in a feedback loop the properties that set
+    performance are dynamic — response time, lag, noise — and a slower sensor with a
+    better accuracy figure can make the loop worse, because lag is exactly what
+    feedback converts into overshoot and oscillation. Sensor selection is loop design,
+    not catalogue shopping.
+  </p>
 
   <h2>The signal chain: amplify, filter, convert</h2>
   <p>
@@ -95,6 +104,14 @@ const controlQuizCfg = {
     logic: the safety function must not depend on the software working — emergency stops are
     wired, not programmed.
   </p>
+  <p>
+    <em>Common misconception:</em> "fail-safe" means the system is safe from failure.
+    It means the system fails <em>into a safe state</em> — the guard-open wire that
+    releases the brake, the spring that shuts the valve when air pressure is lost. The
+    distinction is audit-ready: every fail-safe design must answer "what does this do
+    when the power, the signal and the operator all disappear at once?", and the honest
+    answers are physical — springs, gravity, normally-closed contacts — not software.
+  </p>
 
   <h2>Feedback: the PID law, with numbers</h2>
   <p>
@@ -115,6 +132,27 @@ const controlQuizCfg = {
     method raises Kp until the loop just oscillates sustainedly (ultimate gain Ku, period
     Tu), then prescribes (0.6·Ku, Ki = 1.2·Ku/Tu, Kd = 0.075·Ku·Tu) for quarter-amplitude
     decay — crude by modern standards, and still the first move on most shop floors.
+  </p>
+  <p>
+    Integral windup deserves its own numbers, because it is the classic commissioning
+    surprise. Take the 200 °C oven again and open the door: an error of 50 °C persists
+    for a minute while the door stands open. The integral accumulates 50 × 60 = 3,000
+    degree-seconds; with Ki = 0.2 the integral term alone is demanding 600% of a
+    heater that can only deliver 100%. The heater saturates — and after the door
+    closes, the stored windup holds it flat-out well past the setpoint, producing an
+    overshoot of tens of degrees that P and D cannot cancel. The fixes are all
+    versions of "stop accumulating when the actuator saturates" (clamp the integral,
+    or back-calculate it from the saturated output), and any PID whose integrator has
+    never been clamped is a PID waiting to overshoot.
+  </p>
+  <p>
+    The humblest loop shows the same arithmetic in miniature: the on-off thermostat. A
+    furnace switched on at exactly 20.0 °C and off at exactly 20.0 °C would chatter
+    its relay thousands of times an hour, so real thermostats use
+    <strong>hysteresis</strong> — on at 19.5, off at 20.5 — trading a ±0.5 °C band for
+    a relay that cycles a few times per hour. Every discrete controller makes this
+    trade between deadband width and actuator wear, and the right answer comes from
+    the actuator's price, not from the error's size alone.
   </p>
   <p>
     <em>Common misconception:</em> more gain is always better. Gain speeds response and

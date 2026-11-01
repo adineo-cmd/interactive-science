@@ -54,6 +54,15 @@ const tfQuizCfg = {
     together because they appear in interchangeable company. Language has become points in a
     high-dimensional space, and every later operation is geometry on those points.
   </p>
+  <p>
+    <em>Common misconception:</em> the model reads text the way you do — words, or at
+    least letters. It reads tokens, and the mismatch explains a whole genre of famous
+    failures: counting the letters in a long word (the model sees chunks, not
+    characters), arithmetic errors on large numbers (digits split across token
+    boundaries inconsistently), and wordplay that lands flat. Tokenisation is an
+    engineering compromise — vocabulary size against sequence length — and its seams
+    show in behaviour whenever a task gets down to the character level.
+  </p>
 
   <h2>Attention: the mechanism, with numbers</h2>
   <p>
@@ -86,6 +95,18 @@ const tfQuizCfg = {
     into GPT-class models. The arithmetic cost is the quadratic term: attention compares every
     token with every other, so doubling the context quadruples that part of the compute — the
     reason long-context models are an engineering frontier, not a free lunch.
+  </p>
+  <p>
+    Generation is where the arithmetic bill arrives. An LLM produces text
+    <strong>autoregressively</strong> — one token per forward pass, each new token
+    conditioned on all the previous ones — so a 1,000-token answer costs 1,000
+    sequential passes no matter how fast each one is. The standard optimisation is the
+    <strong>KV cache</strong>: previous tokens' keys and values never change, so they
+    are stored and reused instead of recomputed, trading memory for speed. This is why
+    serving models is an engineering discipline of its own: prompt processing runs
+    across thousands of tokens in parallel, but token generation is inherently serial,
+    and moving the cached keys and values is usually the binding constraint — memory
+    bandwidth, not matrix multiplication.
   </p>
   <p>
     <em>Common misconception:</em> attention "understands" or "highlights important words" the
@@ -134,6 +155,15 @@ const tfQuizCfg = {
     Chinchilla's 70B beat its 280B sibling. Downstream capabilities — translation quality,
     arithmetic, code — improve unevenly on top of the smooth loss curve, which is why progress
     feels jagged even though the underlying scaling is smooth.
+  </p>
+  <p>
+    The rule is worth computing once by hand. A 7-billion-parameter model wants about
+    20 × 7 = 140 billion tokens; a 70B model wants 1.4 trillion. Flip it around and the
+    consequence is stark: if your corpus is 1.4 trillion tokens, the compute-optimal
+    plan is roughly one 70B model — not four 7B models trained four times over, and not
+    one 400B model starved of data (Chinchilla's own comparison: its 70B, trained on
+    1.4T tokens, beat its 280B sibling trained on 300B). The 20:1 ratio turned model
+    sizing from folklore into arithmetic.
   </p>
 
   <h2>What LLMs can and can't do — honestly</h2>

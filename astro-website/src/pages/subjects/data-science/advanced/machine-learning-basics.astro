@@ -58,6 +58,15 @@ const mlQuizCfg = {
     between them are differences in flexibility, assumptions and cost, not in goal.
   </p>
   <p>
+    <em>Common misconception:</em> a predictive model has learned <em>why</em> — the
+    features that predict churn are the causes of churn. A trained model is a machine
+    for conditional correlation: it will happily use a feature that is a symptom rather
+    than a cause (past support tickets predict churn; they do not cause it), and
+    intervening on a merely predictive feature can accomplish nothing. Causal claims
+    need experimental design — the A/B lesson's randomisation — and however accurate
+    the predictions, prediction alone never supplies them.
+  </p>
+  <p>
     The classification mindset matters beyond classification. Churn prediction, medical
     triage, content moderation, lead scoring, even much of "AI" in the news — the shape is
     always: examples with labels, features that might predict them, a model that scores new
@@ -80,6 +89,15 @@ const mlQuizCfg = {
     you make while modelling — which features, which settings — so the test set stays
     untouched for the final, honest measurement. Tune against the test set and it silently
     becomes training data; this "leakage" is the most common way teams fool themselves.
+  </p>
+  <p>
+    <em>Common misconception:</em> if the model is still improving on training data,
+    keep training — more optimisation is always more learning. What improves is fit to
+    the training <em>sample</em>; test performance typically improves, flattens, then
+    <em>worsens</em> as the model begins memorising noise. This is why early stopping
+    is itself a regularisation technique: halt where validation error bottoms out, not
+    where training error does. The training curve can be rising while the model is
+    getting worse.
   </p>
 
   <h2>Overfitting and the bias–variance dial</h2>
@@ -150,6 +168,17 @@ const mlQuizCfg = {
     rate as the threshold sweeps) and the area under it summarise the whole trade-off in one
     picture, and the F1 score (the harmonic mean of precision and recall) compresses it into
     one number when a dashboard demands one.
+  </p>
+  <p>
+    A costed worked example makes the trade-off concrete. Continue the fraud model: at
+    the current threshold it flags 200 transactions, catching 80 of 100 frauds — 20
+    missed, 120 false alarms. Suppose a missed fraud costs 500 dollars and each review
+    costs 5: the total bill is 20 × 500 + 200 × 5 = 11,000 dollars. Lower the threshold
+    so the model flags 500 and catches 90: now 10 × 500 + 500 × 5 = 7,500 dollars.
+    Flagging far more aggressively is better <em>for these costs</em> — and the verdict
+    flips if reviews cost 50 dollars each. There is no best threshold in the abstract;
+    there is only the best threshold for a stated price list, which is why the metric
+    conversation is a business conversation.
   </p>
 
   <h2>The model families, honestly compared</h2>
