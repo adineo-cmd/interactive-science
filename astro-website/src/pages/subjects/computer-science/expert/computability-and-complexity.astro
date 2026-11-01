@@ -20,17 +20,174 @@ const comp2Cfg = {
     <strong>what can be computed at all?</strong> and <strong>what can be computed
     efficiently?</strong> The answers are surprising: some problems are provably impossible for
     any computer, and an enormous class of practical problems sits in an unresolved middle —
-    checkable fast, possibly never findable fast.
+    checkable fast, possibly never findable fast. What makes this subject sing is that both
+    extremes grow out of ordinary algorithm design. The craft of designing a solution, testing it
+    with trace tables and amending it is the same craft that, followed far enough, walks into
+    undecidability and the P versus NP question. This chapter walks that road: first the
+    practitioner's method, then the theory that bounds it — because an engineer who knows where
+    the walls are stops wasting months trying to build through them.
   </p>
 
   <Widget no="1" caption="from Turing's tape to the million-dollar question" widget="equationStep" config={comp2Cfg} />
 
-  <h2>Why practitioners should care</h2>
-  <ul>
-    <li><strong>Undecidability is practical:</strong> no tool can ever perfectly detect all viruses, all bugs, or all equivalences between programs. Anyone selling "100% guarantees" is selling past a theorem.</li>
-    <li><strong>Reductions classify problems:</strong> if you can transform problem A into problem B, A is at least as hard as B. This is how thousands of problems were shown NP-complete — and how you can recognise one before wasting months on an exact solver.</li>
-    <li><strong>NP-hard ≠ impossible:</strong> travelling salesman with 1,000 cities has no known fast exact algorithm — but solvers handle real instances daily using structure, approximation and clever search. Theory sets expectations; engineering bends them.</li>
-    <li><strong>Cryptography leans on hardness:</strong> RSA and friends bet their security on problems believed hard (factoring, discrete logs). The complexity-class foundation is what makes "believed" mean anything at all.</li>
-  </ul>
+  <h2>Designing and creating a solution</h2>
+  <p>
+    Serious algorithm design starts before code, with a disciplined sequence. <strong>Decompose</strong>
+    the problem ("produce a merit list" becomes: read the file → compute each student's average →
+    sort descending → output). <strong>Identify the inputs, outputs and preconditions</strong>
+    (how many marks? what if a file is empty or a mark is negative?). <strong>Choose
+    representations</strong>, because the representation often decides the algorithm: marks as
+    parallel arrays allow index-based lookup; a single list of records allows stable sorting.
+    <strong>Write the algorithm</strong> as pseudocode — structured English with the precision of
+    the three constructs sequence, selection and iteration — and only then translate. The reason
+    this stage is worth its cost: an error in the design costs minutes to fix; the same error
+    discovered in tested code costs a debugging session, and in shipped software a release cycle.
+    A worked scale: Google's interview canonical problem "design a spell-checker" is not a coding
+    task at all — it is this discipline (what counts as a word? what latency? what happens to
+    memory when the dictionary is 500,000 entries?) and candidates who skip it fail predictably.
+  </p>
+
+  <h2>Standard methods of solution</h2>
+  <p>
+    Most working algorithms are compositions of a dozen standard patterns, and knowing them is
+    knowing what to reach for. <strong>Counting, totalling, max/min</strong>: initialise, walk the
+    array, update — the loop behind every dashboard. <strong>Searching</strong>: linear search
+    checks items one by one, averaging n/2 comparisons (500,000 for a million items); binary
+    search on sorted data halves the range each step, needing only about 20 comparisons for the
+    same million — a 25,000-fold difference that is the whole argument for keeping data sorted.
+    <strong>Sorting</strong>: the naive bubble sort does about n²/2 comparisons (500 billion for
+    a million items — hours), while merge sort does n log₂n (~20 million — under a second),
+    which is why libraries ship merge or quick sort and nobody ships bubble. Each pattern has a
+    correctness argument you can state in a sentence (binary search works because the loop
+    invariant "target is inside the current range" is maintained), and composability is the point:
+    hash a key, chain for collisions, sort the buckets — real structures are these atoms joined.
+  </p>
+
+  <h2>Test data, trace tables and debugging</h2>
+  <p>
+    Testing has a taxonomy, and the exam-correct one is worth having exactly. <strong>Normal
+    data</strong> (values inside the expected range), <strong>boundary data</strong> (the exact
+    edges: 0 and 100 for a percentage, the first and last record of a file), <strong>erroneous
+    data</strong> (negative marks, "abc" where a number belongs), and for loops the critical
+    <strong>extremes of iteration</strong> (zero times, once, many). The mechanism that makes a
+    loop trustworthy is the <strong>trace table</strong>: a column per variable, one row per
+    iteration, recording every change. Trace this loop for a list of three marks 60, 40, 80:
+    total starts 0, becomes 60, 100, 180; count runs 1, 2, 3; average printed as 180/3 = 60.
+    Two rows reveal the classic bug instantly: if the average is computed <em>inside</em> the loop
+    it prints three partial averages — the trace table shows it in five seconds that code staring
+    would not. Trace tables are also the mental model behind professional practice: assertions,
+    unit tests and formal verification are all automated trace-table thinking, asking "what are
+    the variables after iteration k?" Debugging itself is the runtime version: reproduce, isolate
+    (halve the input until it breaks), instrument (breakpoints and watches), form a hypothesis,
+    and fix the cause — never the symptom.
+  </p>
+  <p>
+    <em>Common misconception:</em> "if all my tests pass, the program is correct." Dijkstra's
+    line is still the expert position: testing shows the presence of bugs, never their absence.
+    Tests sample the input space; correctness is a claim about all of it. This is not pedantry —
+    it is literally true, and the halting problem below is the reason no tool can ever close the
+    gap completely.
+  </p>
+
+  <h2>Writing and amending algorithms</h2>
+  <p>
+    Algorithms are written to be read, and amended more often than they are written — maintenance
+    is most of software's lifetime cost. The craft rules follow: meaningful identifiers
+    (<code>totalMarks</code> beats <code>t</code>), one purpose per subprogram, parameters passed
+    in rather than globals reached for, and a loop invariant you could state aloud. Amending is a
+    discipline of its own: re-read the requirement, trace the affected path through the existing
+    algorithm, make the smallest change that restores the contract, then re-run the whole test
+    suite — because the amendment that fixes the average for one class and breaks the empty-file
+    case is the amendment that ships. Worked example: an algorithm that prints each student's
+    percentage is asked to weight coursework 40% and exam 60%. The naive amendment multiplies and
+    adds inside the print statement; the correct one changes the data structure to carry both
+    marks and computes <code>0.4 × coursework + 0.6 × exam</code> once — and the trace table
+    through both versions shows why the second survives the next amendment (weightings change)
+    and the first does not.
+  </p>
+
+  <h2>The halting problem: some questions have no algorithm</h2>
+  <p>
+    In 1936, before any computer existed, Turing defined computation itself: a machine with a
+    tape, a read-write head and a finite rule table — and proved that this absurdly simple device
+    computes everything every later "more powerful" proposal could (the Church–Turing thesis: no
+    effective procedure has ever escaped it). Then he proved its shadow side. Question: can a
+    program H decide, for any program P and input I, whether P halts on I? Turing showed not, by
+    paradox: assume H exists; build a program D that, fed any program P, does the opposite of
+    what H predicts about P fed to itself; now run D on D. H must call D's behaviour correctly
+    and wrongly at once — contradiction. No cleverness escapes it: the set of halting programs is
+    not decidable. The consequence is practical and permanent: no tool can ever detect all
+    viruses, prove all programs bug-free, or optimise away all dead code, because each reduces to
+    halting. Vendors claiming 100% guarantees are selling past a theorem.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the halting problem means we can never tell whether any
+    program halts." Not so. Specific programs are routinely proven to halt (a bounded loop is
+    trivial), and industrial tools verify real systems. What is impossible is a <em>single
+    procedure that decides every case</em>. The wall is about the general method, not the
+    individual instance — the distinction between a theorem about the set and a fact about a
+    member is the whole subtlety.
+  </p>
+
+  <h2>Complexity: measuring how hard "hard" is</h2>
+  <p>
+    Computability asks <em>whether</em>; complexity asks <em>at what cost</em>, measured as growth
+    of running time with input size n. <strong>P</strong> is the class solvable in polynomial time
+    — sorting (n log n), shortest paths, matrix multiplication — where doubling the input multiplies
+    the work by a civilised factor. <strong>NP</strong> is the class whose <em>proposed answers
+    verify</em> in polynomial time: a filled sudoku, a timetable, a route under 1,000 km. The
+    asymmetry is the drama: for 3-SAT with n variables there are 2<sup>n</sup> assignments to
+    search (n = 300 is more than atoms in the observable universe), yet any assignment is checked
+    in milliseconds. Cook (1971) and Levin (1973) proved SAT is <strong>NP-complete</strong> —
+    every NP problem reduces to it — and thousands of problems from chip layout to protein
+    folding followed by the same reduction argument: solve one fast and you solve them all. The
+    pragmatic expert position: assume finding is exponential (most complexity theorists believe
+    P is not NP), and engineer around it — Concorde, the travelling-salesman code, found the
+    <em>exact</em> optimum for an 85,900-city instance in 2006 by exploiting structure no worst-case
+    analysis sees, while 2-approximation algorithms and integer programming handle the rest of
+    industry daily.
+  </p>
+  <p>
+    <em>Common misconception:</em> "NP-hard means unsolvable." NP-hardness is a statement about
+    <em>worst-case scaling</em>, not about any particular instance: your 20-city delivery route is
+    solved exactly by brute force (20!/2 is about 10<sup>18</sup> — too big; but branch-and-bound
+    finishes in milliseconds), and real timetables carry structure that makes them tractable.
+    Equally wrong: "NP" as "non-polynomial". It means <em>nondeterministic polynomial</em> —
+    checkable fast — and P could still equal NP; that is precisely the unresolved
+    million-dollar question.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Beyond P and NP.</strong> The complexity zoo extends upward: PSPACE (games like
+    generalised Go and chess are complete here — deciding whether a position is a win may take
+    exponential time even to check), EXPTIME, and the undecidable above all of them. Downward
+    sits the recent gem of the IP=PSPACE era and, most usefully, <strong>BQP</strong>: the class
+    quantum computers solve efficiently. Shor's algorithm puts factoring in BQP — believed outside
+    P — which is why cryptography is already migrating to post-quantum schemes; complexity theory
+    is the only field that sets the security budget of the internet.
+  </p>
+  <p>
+    <strong>The status of P versus NP.</strong> Fifty years of attack have produced barriers as
+    well as progress: relativisation (Baker–Gill–Solovay, 1975), natural proofs (Razborov–Rudich,
+    1997) and algebrisation each show that whole proof <em>styles</em> cannot resolve the
+    question, which is why progress now comes from unexpected directions (Mulmuley's geometric
+    complexity theory among them). The working consensus — P is not NP — carries a sober caveat
+    worth repeating to every optimisation enthusiast: even if a problem is in P, the polynomial
+    could be n<sup>100</sup>; and even where it is exponential, average cases and approximations
+    can be easy. Theory sets the shape of the wall; engineering finds the doors in it.
+  </p>
+  <p>
+    <strong>Verification as the frontier.</strong> Since full program correctness is undecidable,
+    the field has industrialised partial answers: type systems and memory-safe languages
+    eliminate bug classes entirely (checked in polynomial time); model checkers exhaustively
+    verify finite-state designs (chip verification runs on this); proof assistants (Coq, Lean)
+    have certified a C compiler (CompCert) and an operating-system kernel (seL4) — human-guided
+    proofs dodging the undecidability wall by paying human effort instead of machine
+    omniscience. The design-and-test craft from the start of this chapter returns at the end,
+    upgraded: the trace table's question — what does this variable hold at iteration k — became
+    the inductive hypothesis of a machine-checked proof.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Turing, "On Computable Numbers" (1936); Cook (1971), Levin (1973); Sipser, Introduction to the Theory of Computation.</p>
 </TopicPage>
