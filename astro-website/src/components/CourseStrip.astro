@@ -1,0 +1,39 @@
+---
+// Course strip: shows where a lesson sits in its subject's numbered course
+// (Lecture N of M — unit title — Section N.k), mirroring lecture-notes structure.
+const { slug, subject } = Astro.props;
+const syllabusFiles = import.meta.glob('../data/syllabus/*.json', { eager: true });
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const syllabus = syllabusFiles[`../data/syllabus/${subject}.json`]?.default ?? null;
+let info = null;
+if (syllabus) {
+  const units = syllabus.program ?? [];
+  const ui = units.findIndex((u) => (u.lessons ?? []).includes(slug));
+  if (ui !== -1) {
+    const u = units[ui];
+    const si = u.lessons.indexOf(slug);
+    info = { n: ui + 1, total: units.length, title: u.title, sec: si + 1, secs: u.lessons.length };
+  }
+}
+---
+{info && (
+  <a class="course-strip" href={`${B}/subjects/${subject}/#program`} title="Open the full course contents">
+    <span class="cs-no">Lecture {info.n} of {info.total}</span>
+    <span class="cs-unit">{info.title}</span>
+    <span class="cs-sec">Section {info.n}.{info.sec} of {info.n}.{info.secs} · course contents →</span>
+  </a>
+)}
+<style>
+  .course-strip{
+    display:flex; flex-wrap:wrap; gap:.3rem 1rem; align-items:baseline;
+    margin:.4rem 0 1.15rem; padding:.55rem .85rem;
+    border:1px solid color-mix(in oklab, var(--ink-3, #8a8a8a) 32%, transparent);
+    border-radius:10px; font-size:.86rem; line-height:1.45;
+    background:color-mix(in oklab, currentColor 3%, transparent);
+    text-decoration:none;
+  }
+  .course-strip:hover{ border-color:color-mix(in oklab, currentColor 45%, transparent); }
+  .cs-no{ font-family:var(--f-mono, monospace); font-size:.78rem; letter-spacing:.02em; color:var(--ink-3, #8a8a8a); white-space:nowrap; }
+  .cs-unit{ font-weight:600; }
+  .cs-sec{ font-family:var(--f-mono, monospace); font-size:.76rem; color:var(--ink-3, #8a8a8a); margin-left:auto; white-space:nowrap; }
+</style>

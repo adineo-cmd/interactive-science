@@ -21,6 +21,9 @@ const program = syllabus
   : null;
 const programLessons = program ? program.flatMap((u) => u.lessons) : [];
 const programLive = programLessons.filter((t) => t.status !== 'planned').length;
+// lecture numbering: units in program order are the course's numbered lectures,
+// each unit's lessons are its numbered sections (Lecture N — Section N.1, N.2, …)
+const lectureNo = new Map(program ? program.map((u, i) => [u, i + 1]) : []);
 const sections: { name: string | null; units: NonNullable<typeof program> }[] = [];
 if (program) {
   for (const u of program) {
@@ -52,7 +55,7 @@ const LEVELS = [
       <section class="program" id="program" aria-label="Learning program">
         <div class="program-head">
           <div class="program-title-row">
-            <h2>Learning program</h2>
+            <h2>Course contents</h2>
             <span class="chip">{programLive}/{programLessons.length} lessons live</span>
           </div>
           <p class="program-src">
@@ -70,19 +73,19 @@ const LEVELS = [
                 return (
                   <div class="unit-card" style={`--row-ink:${s.ink}`}>
                     <div class="unit-head">
-                      <span class="unit-no">{String(u.unit).padStart(2, '0')}</span>
+                      <span class="unit-no">L{String(lectureNo.get(u)).padStart(2, '0')}</span>
                       <div class="unit-blurb">
-                        <p class="unit-title">{u.title}</p>
+                        <p class="unit-title">Lecture {lectureNo.get(u)}: {u.title}</p>
                         <p class="unit-topics">{u.topics.join(' · ')}</p>
                       </div>
                       <span class="unit-progress">{ulive}/{u.lessons.length} live</span>
                     </div>
                     {u.lessons.length > 0 && (
                       <div class="unit-lessons index">
-                        {u.lessons.map((t) =>
+                        {u.lessons.map((t, j) =>
                           t.status !== 'planned' ? (
                             <a class="index-row" href={`${B}/${t.slug}/`}>
-                              <span class="glyph" style="font-family:var(--f-mono); font-size:12px; color:var(--ink-3)">→</span>
+                              <span class="glyph" style="font-family:var(--f-mono); font-size:12px; color:var(--ink-3)">{lectureNo.get(u)}.{j + 1}</span>
                               <span>
                                 <span class="index-name">{t.title}</span>
                                 <span class="index-tag" style="display:block">{t.summary}</span>
