@@ -17,17 +17,182 @@ const ethicsCfg = {
     Data ethics is <strong>the study of harm data systems cause — and the design choices that
     prevent it</strong>. Bias, privacy erosion, opacity and consent gaps are not edge cases;
     they are default behaviours of inattentive systems. The professional skill is seeing the
-    harms early enough that fixing them is a design change, not a scandal response.
+    harms early enough that fixing them is a design change, not a scandal response. The reason
+    this sits inside data science itself — not in a compliance annex — is structural: a model is
+    a decision factory. Every threshold it sets, every applicant it ranks, every risk score it
+    emits is a decision about a person, made at a scale and speed no human review can audit. The
+    discipline's task is to make those decisions as examined as the code that produces them.
+  </p>
+  <p>
+    The expert framing is neither "algorithms are biased, ban them" nor "maths is neutral". A
+    neutral algorithm applied to an unequal world reproduces the inequality with better
+    bookkeeping, and the fix is never just technical: fairness definitions encode policy
+    choices, privacy budgets trade individual protection against collective knowledge, and
+    consent design is a power question wearing a UX costume. This chapter works through the
+    mechanisms with the cases that taught the field its caution.
   </p>
 
   <Widget no="1" caption="the four problem areas and their working fixes" widget="equationStep" config={ethicsCfg} />
 
-  <h2>Case studies that shaped the rules</h2>
-  <ul>
-    <li><strong>COMPAS (2016):</strong> ProPublica found the recidivism algorithm flagged Black defendants as high-risk at nearly twice the false-positive rate of white defendants. The vendor disputed the metric — the dispute itself taught the field that fairness definitions must be chosen explicitly.</li>
-    <li><strong>AOL search release (2006):</strong> 650,000 users' "anonymised" queries released for research; journalists re-identified users within days (search no. 4417749 was a 62-year-old woman from Georgia). The founding case for re-identification risk.</li>
-    <li><strong>Average-face hiring filters:</strong> Amazon's experimental resume scorer (2018) penalised CVs containing the word "women's" — trained on a decade of male-dominated hires. Killed internally; lesson institutionalised.</li>
-    <li><strong>GDPR (2018) changed the defaults:</strong> lawful basis for processing, minimisation, right to explanation, and fines up to 4% of global revenue. Compliance is now a design constraint, not paperwork.</li>
-  </ul>
+  <h2>What data science is for — the responsibility layer</h2>
+  <p>
+    The introductory framing of this course (Data 8's opening chapter) defines data science as
+    the full cycle — question, data, exploration, inference, communication — <em>plus</em> a
+    standing obligation to study the impact of conclusions on the people the data describes.
+    That obligation is not decoration; it is the difference between statistics as mathematics and
+    statistics as practice. Every stage of the cycle embeds ethical decisions: which question
+    gets asked (and which gets funded), which population is sampled (and who is invisible in the
+    frame), which outcome is predicted (arrests, which reflect policing, rather than crime),
+    which metric counts as success (clicks, which reward outrage). The professional habit this
+    chapter builds is running that audit <em>before</em> deployment, because the asymmetry of
+    data systems runs one way: a thousand users can be harmed in the minute a model is live, and
+    none of them can see the model that did it. With great inferential power comes
+    accountability to the described — the field's translation of an older principle.
+  </p>
+
+  <h2>Bias in, bias out: how models inherit discrimination</h2>
+  <p>
+    The mechanism is worth stating precisely, because it is boring and therefore everywhere.
+    Supervised models learn patterns from historical labels; if the labels encode historical
+    decisions, the model learns the decisions, including the discriminatory ones — and then
+    applies them with machine consistency. <strong>COMPAS</strong>, the recidivism risk score
+    used in US courts, is the canonical case. ProPublica (2016) analysed roughly 7,000 Broward
+    County, Florida defendants and found Black defendants who did <em>not</em> reoffend were
+    flagged high-risk at nearly twice the rate of white defendants who did not reoffend — a
+    false-positive rate of about 45% versus 23%. The vendor's rebuttal was also true: the score
+    was <em>calibrated</em>, meaning a 7 meant the same recidivism probability for both groups.
+    Both things held simultaneously, because the underlying arrest rates differed — the maths
+    let everyone be right, which is the deepest lesson of the case. Amazon's experimental
+    recruiting engine (reported 2018) is the same mechanism in a different organ: trained on ten
+    years of predominantly male hires, it learned to downgrade CVs containing the word
+    "women's" — it was never deployed, and its speed of harm was the point: a biased human
+    reviewer tires; a biased model reviews millions.
+  </p>
+  <p>
+    <em>Common misconception:</em> "just remove race and gender from the inputs and the model
+    can't discriminate." Proxies reconstruct what you delete: postcode predicts race in
+    segregated cities, shopping patterns predict pregnancy (Target's famous case), name predicts
+    gender. Deletion is not a fix; measurement is — evaluate error rates per group, audit the
+    proxy set, and treat the model's decisions, not its inputs, as the object of scrutiny.
+  </p>
+
+  <h2>Fairness definitions conflict — and that is a theorem</h2>
+  <p>
+    The reason fairness is hard is not vagueness; it is arithmetic. The main candidate criteria
+    are: <strong>demographic parity</strong> (the same fraction of each group is selected),
+    <strong>equalised odds</strong> (the same false-positive and false-negative rates in each
+    group), and <strong>calibration</strong> (a score of 7 means the same risk for everyone).
+    Kleinberg, Mullainathan and Raghavan (2016) and Chouldechova (2017) independently proved that
+    when base rates differ between groups, calibration and equalised odds are
+    <em>mathematically incompatible</em> — you cannot have both, except in degenerate cases. So
+    COMPAS's vendor and ProPublica were each holding one horn of a proved dilemma. The
+    consequence reshapes practice: choosing a fairness metric is a <strong>policy decision about
+    which errors matter</strong>, to be made with stakeholders and documented, not a technical
+    default to be coded at 2 a.m. A bail-setting system might reasonably prefer equal
+    false-positive rates (liberty wrongly denied); a marketing system might accept parity of
+    selection. What the field forbids is not any particular choice — it is the
+    <em>unexamined</em> choice.
+  </p>
+
+  <h2>Privacy beyond names: re-identification is the default</h2>
+  <p>
+    "Anonymised" has failed so many times that the burden of proof has flipped. The mechanism of
+    failure is <strong>quasi-identifiers</strong>: combinations of innocuous fields that are
+    jointly unique. Latanya Sweeney showed that about 87% of the US population is unique on just
+    three fields — ZIP code, date of birth, sex — and demonstrated it by re-identifying the
+    medical record of the Governor of Massachusetts from a "de-identified" state employee
+    dataset. <strong>AOL, 2006:</strong> the company released 20 million search queries from
+    650,000 users with IDs but no names; within days, journalists re-identified user 4417749 —
+    a 62-year-old woman from Lilburn, Georgia — from her own queries about her health and her
+    neighbours. <strong>Netflix, 2007:</strong> the Prize dataset of 500,000 users' film ratings
+    was defeated by Narayanan and Shmatikov, who matched users against public IMDb reviews with
+    startling accuracy. The lesson generalises: high-dimensional data (search history, ratings,
+    location pings) is a fingerprint, and joining two datasets defeats most naive masking.
+    k-anonymity (every record identical to at least k − 1 others on the identifying fields) was
+    the classic defence and is demonstrably insufficient — homogeneity attacks (everyone in the
+    bucket shares the sensitive value) and background knowledge break it.
+  </p>
+
+  <h2>Differential privacy: the mathematics of plausible denial</h2>
+  <p>
+    The field's strongest answer, due to Cynthia Dwork and colleagues (2006), changes the goal:
+    instead of trying to scrub identifiers, add <strong>calibrated noise</strong> so that the
+    published result is statistically almost identical whether or not any one person's data is
+    included. The guarantee is parameterised by a privacy budget epsilon: smaller epsilon means
+    more noise and stronger protection, and composing many queries spends the budget down —
+    which turns privacy into an explicit, budgetable resource rather than a hope. The mechanism
+    has survived contact with reality at three historic scales: Apple uses local differential
+    privacy for iOS usage statistics; Google for browser telemetry; and the 2020 US Census
+    applied it to the decennial redistricting data, accepting measurable noise to protect
+    330 million people from reconstruction attacks (researchers had already shown the 2010
+    release's tabulations were re-identifiable from public records). The design conversation is
+    always the same trade — how much accuracy a use case can give up for how much protection —
+    but it is now a conversation with units, budgets and proofs.
+  </p>
+  <p>
+    <em>Common misconception:</em> "adding noise makes the data useless." It makes the data
+    <em>bounded</em>: aggregate questions retain excellent accuracy while individual-level
+    questions lose meaning — which is usually exactly the right trade. The census still
+    redistricts; hospitals still publish; Apple still ships keyboards. What dies is the fantasy
+    of free, perfect, person-level data.
+  </p>
+
+  <h2>Consent, power and the legal floor</h2>
+  <p>
+    Consent, in practice, is asymmetric: users click "accept" on policies measured in thousands
+    of words that they cannot negotiate and would not read at any length — EU studies have found
+    only a small minority of users actually read terms, and eye-tracking work shows average
+    reading time per policy would take hundreds of hours a year. So regulation has moved the
+    baseline from notice to <strong>rights</strong>. The GDPR (in force 2018) established lawful
+    bases for processing, data minimisation, purpose limitation, and enforceable rights of
+    access, correction, deletion and portability, with fines up to 20 million euros or 4% of
+    global turnover — a number that moved ethics from aspiration to line item. California's
+    CCPA/CPRA and similar statutes extended the pattern. The expert distinction: compliance is
+    the floor, not the ethics. A consent flow can be lawful and still a dark pattern; a data
+    use can be permitted and still corrosive. The professional question — would the person
+    described by this data consider this use fair if they could see it? — is not in any statute,
+    and it catches what the statutes miss.
+  </p>
+
+  <p><em>Common misconception:</em> "bias mitigation is a patch you ship once." The world
+  under the model keeps moving: populations shift, adversarial users adapt, upstream
+  collection practices change silently — a model audited fair at launch can drift unfair
+  within a year with no code change at all. That is why the mature practice treats audits
+  like financial controls: scheduled, versioned, owned, and re-run.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>The impossibility results, formally.</strong> The fairness-conflict theorem has a
+    clean sketch: with differing base rates, equal false-positive and false-negative rates force
+    the same <em>precision</em> only if positive predictive value is also equalised — but
+    precision then differs unless selection rates track base rates, which breaks parity. Each
+    proposed resolution (equalising different triples, conditional fairness given legitimate
+    factors, counterfactual fairness defined over causal models) re-chooses which quantity to
+    hold fixed; the research frontier is causal formulations — asking what the decision
+    <em>would have been</em> had the protected attribute differed — which reframes fairness as a
+    question about the world's causal structure, not the confusion matrix.
+  </p>
+  <p>
+    <strong>Attacks on models themselves.</strong> Privacy risk now extends into trained
+    systems: membership-inference attacks determine whether a specific person's record was in the
+    training set; model-inversion and reconstruction attacks recover training data from large
+    language models (researchers have extracted verbatim personal text from published models);
+    memorisation scales with duplication. Defences (differential privacy in training, federated
+    learning, machine unlearning) each trade accuracy and engineering cost, and evaluating the
+    trade honestly is a current research discipline rather than a solved checklist.
+  </p>
+  <p>
+    <strong>Governance as the frontier.</strong> The maturing practice is organisational, not
+    algorithmic: model cards and datasheets that document intended use and evaluated subgroups;
+    algorithmic impact assessments modelled on environmental ones; red-teaming and external
+    audits as a profession (with standards emerging from NIST's AI Risk Management Framework and
+    the EU AI Act's conformity regime). The open debate is accountability structure — who is
+    liable when a scaled decision harms, and whether audit access can be mandated without
+    compromising the very privacy the systems promise to protect. Every case in this chapter
+    began as someone's unexamined default; the governance layer exists to make sure the next
+    ones begin as someone's documented decision.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Angwin et al., ProPublica (2016); Narayanan & Shmatikov (2008) on de-anonymisation; Dwork & Roth, "The Algorithmic Foundations of Differential Privacy"; EU GDPR text.</p>
 </TopicPage>

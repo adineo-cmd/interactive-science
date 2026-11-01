@@ -19,17 +19,183 @@ const cryptoCfg = {
     to read, signatures impossible to forge, and tampering detectable — without trusting the
     channel, the carrier, or even the other party's honesty. Modern crypto rests on
     <em>hardness assumptions</em>: problems (factoring, discrete logs) believed intractable. When
-    the assumptions shift (quantum computers), the crypto must too.
+    the assumptions shift (quantum computers), the crypto must too. But the full subject is
+    bigger than encryption alone: before you can protect data you must know how it travels, and
+    before you can trust what arrives you must separate <em>accidental</em> corruption (which
+    error-detection codes handle) from <em>deliberate</em> tampering (which only cryptographic
+    authentication handles). That three-layer picture — transmission, integrity, secrecy — is the
+    spine of this chapter, and of the padlock icon you check without thinking.
   </p>
 
   <Widget no="1" caption="the five ideas between you and the padlock icon" widget="equationStep" config={cryptoCfg} />
 
-  <h2>The rules experts live by</h2>
-  <ul>
-    <li><strong>Don't invent your own crypto.</strong> Home-made schemes fall to techniques you've never heard of. Use audited libraries and standard constructions — this is the first and last rule.</li>
-    <li><strong>Kerckhoffs's principle (1883):</strong> assume the attacker knows the system; security must live in the key alone. "Security through obscurity" is not security.</li>
-    <li><strong>End-to-end beats transport:</strong> TLS protects messages between servers; end-to-end encryption (Signal protocol) means even the operator can't read them. Different trust models for different needs.</li>
-    <li><strong>The quantum horizon:</strong> Shor's algorithm (1994) would break RSA and Diffie–Hellman on a large quantum computer. The migration to post-quantum algorithms (NIST standards, 2024) is underway — the hardest deadline in security is the one you can't verify yet ("harvest now, decrypt later").</li>
-  </ul>
+  <h2>Types and methods of data transmission: what the attacker sees</h2>
+  <p>
+    Data moves in characteristic patterns, and each exposes a different attack surface.
+    <strong>Direction</strong>: simplex (one way only — a broadcast sensor), half-duplex (both
+    ways, one at a time — walkie-talkie), full-duplex (both at once — your phone call). <strong>Mode
+    of the link</strong>: serial sends bits one after another down a single wire (slow per pin but
+    reliable over distance — every modern bus: USB, SATA, Ethernet); parallel sends a byte across
+    many wires at once (fast over centimetres, hopeless over metres because skew makes bits
+    arrive out of step). <strong>Timing</strong>: asynchronous transmission frames each byte with
+    start and stop bits (keyboards, serial consoles) while synchronous transmission locks sender
+    and receiver to a shared clock and moves data in large blocks (networks, disks). Internet
+    transmission is <strong>packet-switched</strong>: messages are sliced into packets that route
+    independently, queue in buffers, and can arrive reordered, duplicated or not at all.
+  </p>
+  <p>
+    Why this matters to the cryptographer: on a packet-switched public network you must assume an
+    adversary can <em>read</em> any packet (confidentiality problem), <em>alter</em> packets in
+    flight (integrity problem), and <em>inject or replay</em> new ones (authentication problem).
+    The man-in-the-middle café network is not a hypothetical — it is the default assumption, and
+    the entire protocol stack below exists because of it.
+  </p>
+
+  <h2>Error detection: parity, checksums and CRC</h2>
+  <p>
+    Cosmic rays, cable noise and buffer bugs corrupt data constantly, so honest systems add
+    redundancy in layers. <strong>Parity</strong> appends one bit so the number of 1s is even
+    (even parity): it catches any single-bit flip but misses any even number of them — a 2-bit
+    error passes undetected half the time, which is why parity guards memory buses (where 1-bit
+    flips dominate) but not networks. <strong>Checksums</strong> sum the data and send the total:
+    better, but reordering two words, or adding and subtracting equal errors, slips through.
+    <strong>Cyclic Redundancy Checks</strong> treat the message as a polynomial and divide it by a
+    fixed generator polynomial, sending the remainder; the choice of polynomial makes CRC-32 catch
+    <em>all</em> burst errors of 32 bits or fewer and all odd numbers of bit flips — the reason
+    Ethernet frames, ZIP files and every storage device use it. The <strong>Hamming
+    distance</strong> is the theory underneath: a code that keeps every two valid codewords at
+    least d apart can detect up to d − 1 flipped bits and correct up to ⌊(d − 1)/2⌋ — the
+    arithmetic behind RAID 6 (two parity blocks: any two failed disks survivable) and deep-space
+    communication (Voyager still talks to Earth on Reed–Solomon codes).
+  </p>
+  <p>
+    <em>Common misconception:</em> "an error-detecting code also detects tampering." It detects
+    <em>noise</em>, not adversaries — the CRC of a modified packet is recomputable by anyone, so a
+    man-in-the-middle edits the message <em>and</em> its check field in one step. Protection
+    against intentional alteration requires a keyed construction (a MAC: a hash seeded with a
+    secret key), which is a cryptographic primitive, not a transmission code. Confusing the two
+    has shipped broken protocols.
+  </p>
+
+  <h2>Encryption, part one: symmetric ciphers and the key problem</h2>
+  <p>
+    Symmetric encryption uses one secret key for both directions, and the modern standard is
+    <strong>AES</strong> (Rijndael, standardized 2001): a substitution–permutation network that
+    runs the 128-bit block through 10, 12 or 14 rounds of byte substitution (S-box), row shifts,
+    column mixing and round-key addition. Its security budget is the keyspace: AES-128 has
+    2<sup>128</sup> ≈ 3.4 × 10<sup>38</sup> keys; at a fantasy trillion guesses per second,
+    exhausting it takes about 10<sup>19</sup> years — roughly a billion times the age of the
+    universe. Brute force is not the threat; implementation errors, key reuse (never reuse a
+    nonce in counter mode) and key <em>distribution</em> are. Distribution is the ancient flaw:
+    symmetric encryption is nearly useless between strangers, because the key must already have
+    travelled by some secure path — the problem that stymied every pre-1976 system from Caesar to
+    Enigma, and the problem the next section dissolves.
+  </p>
+
+  <h2>Encryption, part two: public keys and the key-exchange miracle</h2>
+  <p>
+    Diffie and Hellman (1976) showed two strangers broadcasting nothing secret can still agree on
+    a secret. Each picks a private number a and b, publishes g<sup>a</sup> mod p and
+    g<sup>b</sup> mod p, and each computes (g<sup>b</sup>)<sup>a</sup> = (g<sup>a</sup>)<sup>b</sup>
+    = g<sup>ab</sup> mod p — the shared key — while the eavesdropper, seeing g, g<sup>a</sup> and
+    g<sup>b</sup>, faces the <em>discrete logarithm problem</em>: recovering a from g<sup>a</sup>
+    is computationally hopeless for large p (with 2,048-bit primes, beyond any known classical
+    machine). <strong>RSA</strong> (1978) turned the same one-way idea into encryption and
+    signatures: publish a modulus n (a 617-digit product of two primes) and an exponent; anyone
+    can encrypt to you, and only the holder of the private prime factors can decrypt. Real
+    systems are <strong>hybrid</strong>: asymmetric crypto exchanges a session key (once, for one
+    connection), then AES encrypts the traffic (fast, bulk) — that handshake is the padlock
+    appearing in your browser, and forward secrecy (ephemeral keys per session) means even a
+    later server compromise cannot decrypt yesterday's capture.
+  </p>
+  <p>
+    <em>Common misconception:</em> "asymmetric is stronger, so why keep AES at all?" The two are
+    not competitors. RSA at 2,048 bits offers roughly 112-bit security and costs about a
+    thousandth of AES's speed; encrypting gigabytes with it would be ruinous. The hybrid design
+    uses each tool where it wins — public-key for key agreement and signatures, symmetric for
+    data — which is exactly what TLS, Signal and every VPN do.
+  </p>
+
+  <h2>Hashes, signatures and the chain of trust</h2>
+  <p>
+    A <strong>cryptographic hash</strong> (SHA-256) maps any input to a 256-bit fingerprint with
+    three properties: one-way (no inverse), avalanche (change one bit and about half the output
+    bits flip), collision-resistant (no practical way to find two inputs with the same hash).
+    Hashes alone give integrity checking for downloads; combined with a private key they become a
+    <strong>digital signature</strong>: sign the hash, and anyone with your public key verifies
+    both origin and integrity in one operation. The last link is <strong>identity</strong>: a
+    certificate binds a public key to a name (your bank's), signed by a certificate authority
+    that your operating system and browser pre-trust, whose own keys are signed by roots in the
+    trust store. The padlock icon is that chain verified — and its failure modes are
+    operational, not mathematical: authorities have been compromised (DigiNotar, 2011, issued
+    fake Google certificates and was dissolved), which is why certificate transparency logs now
+    make every issued certificate publicly auditable.
+  </p>
+  <p>
+    <em>Common misconception:</em> "encryption makes data safe, full stop." Encryption protects
+    one state of the data — on the wire (TLS) or on disk (at rest). It does nothing about the
+    endpoints (your browser and the server still see plaintext), nothing about stolen passwords,
+    misconfigured databases or insiders, and nothing once an employee pastes the secret into a
+    chat. Threat modelling starts where the cipher ends.
+  </p>
+
+  <p>
+    Key management is where real systems actually fail, and the modern answer to its
+    sharpest question — "what happens when today's key leaks tomorrow?" — is
+    <strong>forward secrecy</strong>. Ephemeral Diffie–Hellman (the "E" in TLS's DHE/ECDHE)
+    generates a fresh key for every session and erases it: steal the server's long-term
+    private key later and you can impersonate the server, but you still cannot decrypt
+    last week's recorded traffic, because the session keys no longer exist anywhere. This
+    is why Signal's double ratchet re-derives keys per message, why WhatsApp's 2021
+    backdoor debate hinged on metadata rather than message content, and why "rotate your
+    keys" is a design property, not a policy slogan.
+  </p>
+
+  <p>
+    The sophisticated attacker often skips the maths entirely and attacks the
+    <strong>implementation</strong>. Side channels leak secrets through physical
+    behaviour rather than mathematical structure: Paul Kocher's 1996 timing attack
+    recovered RSA keys purely from how long decryption operations took, and the
+    2003 remote-timing results (Boneh and Brumley) showed the same was possible over
+    a network. The defence — constant-time code, blinding, identical execution paths
+    regardless of secret bits — is why crypto libraries read like they are wasting
+    cycles on purpose. A formally correct cipher running in non-constant time is not
+    a secure system; the guarantee lives at every layer or not at all.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>What "provably secure" means.</strong> Shannon's one-time pad (key as long as the
+    message, used once) is the only cipher with <em>perfect secrecy</em> — ciphertext leaks
+    literally zero information — and its impracticality motivates the modern standard instead:
+    reductions. A scheme is proven secure if breaking it would solve a stated hard problem
+    (factoring, discrete log); the guarantee is conditional but precise, and the whole discipline
+    of provable security lives in making those assumptions and games explicit. Kerckhoffs's
+    principle (1883) remains the foundation: assume the enemy knows the system; secrecy must live
+    in the key alone — which is why "security through obscurity" is a recognised anti-pattern and
+    open algorithms win.
+  </p>
+  <p>
+    <strong>The quantum deadline.</strong> Shor's algorithm (1994) factors integers and computes
+    discrete logs in polynomial time on a large quantum computer — collapsing RSA and
+    Diffie–Hellman wholesale. No machine today can factor a 2,048-bit number, but "harvest now,
+    decrypt later" changes the calculus for long-lived secrets: traffic captured today can be
+    decrypted in 2035. NIST standardised the first post-quantum algorithms in 2024 — ML-KEM
+    (from CRYSTALS-Kyber) for key exchange and ML-DSA for signatures, built on lattice problems
+    with no known quantum attack — and Chrome, Signal and major browsers already negotiate
+    hybrid classical-plus-PQ handshakes. The migration is the rare engineering project whose
+    deadline is defined by an adversary's hardware roadmap.
+  </p>
+  <p>
+    <strong>Where crypto touches daily engineering.</strong> Password storage is the most common
+    real deployment: never store passwords (even hashed with SHA-256 — billions of guesses per
+    second on GPUs), store <em>deliberately slow, salted</em> hashes (bcrypt, scrypt, Argon2),
+    which cost attackers real time per guess. Message encryption in Signal's double ratchet
+    rotates keys per message so a compromised key decrypts only one message forward. And the
+    blockchain lesson's hashes are the same primitives: SHA-256 chaining blocks, signatures
+    authorising spends — the trust machine applied to money. The expert habit across all of them:
+    use audited standard constructions, and treat the urge to invent your own as the first bug.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Diffie & Hellman (1976); Rivest, Shamir & Adleman (1978); NIST Post-Quantum Cryptography standards (2024); Kerckhoffs (1883).</p>
 </TopicPage>

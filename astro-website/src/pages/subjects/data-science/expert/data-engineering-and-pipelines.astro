@@ -15,19 +15,194 @@ const pipeCfg = {
   <h2>The idea</h2>
   <p>
     Data engineering builds <strong>the reliable plumbing that turns raw events into trustworthy
-    tables</strong> — the layer every analyst and model stands on. Its promise: data that is
-    fresh, correct, documented and reproducible. Its reality: most "data science project"
-    failures are data engineering failures in disguise.
+    tables</strong> — the layer every analyst, dashboard and model stands on. Its promise: data
+    that is fresh, correct, documented and reproducible. Its reality: most "data science project"
+    failures are data engineering failures in disguise, because a model is only as good as the
+    table it trained on, and a dashboard is only as truthful as the last successful run of the
+    job that built it. The discipline exists because production data systems differ from notebook
+    analytics in one decisive way: the data <em>keeps arriving</em>, the schemas <em>keep
+    drifting</em>, and the consumers <em>keep assuming</em> yesterday's assumptions. Engineering
+    is what makes the pipeline survive all three.
+  </p>
+  <p>
+    The economics justify the discipline. Industry surveys (Anaconda's State of Data Science
+    series) consistently put around 40–45% of a data scientist's working time on data preparation
+    — loading and cleaning — before any modelling happens. An organisation that industrialises
+    that preparation once, in tested pipelines, buys back nearly half its analytical capacity;
+    one that leaves it to individuals repeats the same cleaning work in every notebook, with
+    every analyst's version of "clean" quietly different.
   </p>
 
   <Widget no="1" caption="the four pillars of production data plumbing" widget="equationStep" config={pipeCfg} />
 
-  <h2>The architecture in one breath</h2>
-  <ul>
-    <li><strong>Sources → ingestion → warehouse/lake → transforms (dbt) → serving.</strong> Events land raw; dbt models build clean, tested, documented layers (staging → marts); BI tools and ML read the marts.</li>
-    <li><strong>dbt brought software engineering to SQL:</strong> version control, tests, documentation and lineage for transformations. "Analytics engineering" is the role that grew from it.</li>
-    <li><strong>Lineage and cataloguing:</strong> knowing which dashboards break when a column changes. Data catalogs (Amundsen, DataHub) map the graph — without lineage, every change is a surprise.</li>
-    <li><strong>Cost is a first-class metric:</strong> warehouses bill per scan; a careless SELECT * on a petabyte table has a price tag. Query profiling is part of the craft.</li>
-  </ul>
+  <h2>What data science is — and where the plumbing sits</h2>
+  <p>
+    The Data 8 framing this course follows describes data science as a cycle: <strong>form a
+    question, acquire and parse data, explore and clean it, build models and draw inferences,
+    then communicate the result</strong> — with an obligation running underneath the whole cycle
+    to consider the impact of the work on the people the data describes. Data engineering is the
+    discipline that makes the middle of that cycle <em>repeatable</em>. Everything before it is
+    one-off craft; everything after it is modelling and communication. The engineering layer's
+    deliverable is a set of tables whose semantics (what a row means), freshness (how far behind
+    reality they run), and correctness (what has been tested) are explicit — so that a data
+    scientist asking "is this number right?" gets an answer from a document and a test suite
+    instead of an afternoon of archaeology. The work is also where scale becomes real: an
+    analysis of 10 million rows is a notebook; a system that ingests 10 million rows
+    <em>per hour</em>, forever, with late arrivals and duplicate deliveries, is an engineering
+    problem with solutions this chapter unpacks.
+  </p>
+
+  <h2>From ETL to ELT: the load order that changed the field</h2>
+  <p>
+    The classic pipeline was <strong>ETL</strong>: Extract from sources, Transform into clean
+    shape, then Load into the warehouse — transform first, because warehouses were expensive and
+    only clean, narrow tables were worth storing. Cloud warehouses (Snowflake, BigQuery,
+    Redshift) inverted the economics: storage is cheap and compute scales elastically, so the
+    modern pattern is <strong>ELT</strong> — load the raw data first, in its original messy form,
+    and transform it <em>inside</em> the warehouse with SQL. The payoff is more than fashion:
+    keeping raw data permanently means every transform is re-runnable from source, so a bug in a
+    transformation discovered in March can be fixed and history rebuilt correctly for January —
+    something impossible once the transform destroyed the original. The layered architecture that
+    grew from this is now standard: a <strong>raw/bronze</strong> layer exactly as landed, a
+    <strong>staging/silver</strong> layer that deduplicates and types each source, and
+    <strong>marts/gold</strong> layer models shaped for specific business questions. Each layer
+    is rebuilt from the one below, and only the bottom layer is allowed to surprise you.
+  </p>
+
+  <h2>Orchestration: pipelines are dependency graphs, not scripts</h2>
+  <p>
+    A production pipeline is dozens of tasks with dependencies ("load payments → rebuild the
+    daily revenue model → refresh the dashboard → run the freshness tests → notify failures"),
+    scheduled, retried and observed as a whole. <strong>Orchestrators</strong> — Airflow (born at
+    Airbnb, 2014), Dagster, Prefect — model this as a directed acyclic graph: each task is a node,
+    each dependency an edge, and the scheduler walks the graph, retrying failed nodes with backoff
+    and backfilling missed runs after an outage. The mechanism matters because the failure modes
+    it manages are temporal: source systems go down at 02:00, a task runs long and collides with
+    tomorrow's run, an upstream schema changes on a Friday. A folder of scripts has no answer to
+    any of these; an orchestrator answers all three with retries, catchup runs and lineage —
+    <em>which tables does this task feed, and which dashboards break if it fails</em>. That last
+    question, dependency lineage, is what turns a 3 a.m. incident ("revenue dashboard is wrong")
+    from guesswork into a one-command impact analysis.
+  </p>
+  <p>
+    <em>Common misconception:</em> "data pipelines are just scheduled SQL." The SQL is the easy
+    20%. The hard 80% is everything around it: idempotent tasks (safe to re-run twice — because
+    they will run twice), late-arriving data, timezone drift between source and warehouse, schema
+    evolution, credential rotation, and the organisational question of who is accountable when a
+    number is wrong. Teams that budget only for the SQL ship the other 80% as incidents.
+  </p>
+
+  <h2>Data quality: tests that run where the data runs</h2>
+  <p>
+    Software engineering's great insight is that bugs should fail loudly; data engineering
+    imports it as <strong>data tests</strong>. The standard battery: <strong>freshness</strong>
+    (is today's partition present? has the max timestamp fallen more than an hour behind?),
+    <strong>volume</strong> (row counts inside historical bounds — today's 12 million rows versus
+    a trailing 30-day average of 11.8 million plus or minus 5%), <strong>schema</strong> (columns
+    present, types unchanged, nullability as declared), and <strong>distribution</strong> (no
+    sudden null surge, no percentage of negative amounts jumping from 0.1% to 30%). Tools
+    (dbt tests, Great Expectations, Soda) express these as declarative assertions that run inside
+    the pipeline, and the orchestrator stops downstream propagation on failure — so a broken
+    source produces a blocked table and a Slack alert instead of a corrupted dashboard discovered
+    by the CFO. The worked case that justifies it all: a payment provider changes a status code
+    from "FAILED" to "failed_declined" on a Tuesday. Without tests, dashboards silently report a
+    40% drop in failures — celebrated as an improvement. With a distribution test on the status
+    column, the change is caught within the hour, and the fix is a mapping table rather than a
+    retraction.
+  </p>
+
+  <h2>Batch and streaming: choosing the clock</h2>
+  <p>
+    Every pipeline has a latency budget, and the honest engineering is matching the clock to the
+    decision. <strong>Batch</strong> (hourly or daily jobs) covers most analytics: a next-day
+    revenue report, a weekly churn model, a monthly compliance extract — batch is simple,
+    cheap, replayable and easy to reason about, because each run sees a fixed slice of history.
+    <strong>Streaming</strong> (Kafka as the event backbone, Flink or Spark Structured Streaming
+    as the processors) processes events within seconds of their arrival, maintaining running
+    aggregates over time <em>windows</em> — and inherits a hard new problem: events arrive out of
+    order (a phone offline in a tunnel delivers its events late), so the system must decide how
+    long to wait (watermarks) and how to revise already-computed results. Fraud scoring, live
+    operations dashboards and alerting genuinely need seconds; almost nothing else does, and the
+    cost of streaming is real — roughly 5–10× the engineering complexity, plus clusters running
+    24/7. The expert default is batch until a measured business decision requires faster, and a
+    common hybrid (lambda or kappa architectures) handles the transition deliberately rather
+    than accidentally.
+  </p>
+  <p>
+    <em>Common misconception:</em> "real-time is the mature option." Reverse: streaming is the
+    <em>expensive</em> option, justified only when a decision's value decays within minutes.
+    Teams that stream everything re-derive batch problems (late data, deduplication, backfills)
+    in a harder environment, and usually rebuild a batch layer anyway for month-end correctness.
+  </p>
+
+  <h2>Warehouses, lakes and the cost of a query</h2>
+  <p>
+    The storage layer's design decides everything downstream. A <strong>data warehouse</strong>
+    stores modelled, tabular data optimised for analytic reads (columnar formats, partitioning,
+    massively parallel scans); a <strong>data lake</strong> stores raw files of any shape
+    (Parquet on object storage) for later modelling; the modern "lakehouse" pattern tries to get
+    warehouse-like reliability on lake-like cheapness. Two disciplines make the difference
+    between a fast platform and a burning one. First, <strong>partitioning and pruning</strong>:
+    a query filtered to one day that scans 1/365th of the table costs 1/365th of the money — on
+    BigQuery's on-demand pricing of roughly 6 dollars per terabyte scanned, an unpartitioned
+    full-table scan habit across 100 analysts running 20 queries a day over a 1-terabyte fact
+    table burns on the order of 12,000 dollars a day for answers a partition prune would deliver
+    for 33 dollars. Second, <strong>cataloguing and lineage</strong>: a catalog (DataHub,
+    Amundsen, Unity Catalog) records what each table means, who owns it and what feeds it, so
+    "can I use this column?" has an owner's name attached instead of a shrug.
+  </p>
+
+  <p><em>Common misconception:</em> "the data lake replaces the warehouse." A lake holds
+  cheap raw bytes with schema-on-read; a warehouse holds modelled, governed tables with
+  schema-on-write. Every serious platform ended up wanting both properties, which is why
+  the lakehouse pattern (raw landing zones feeding governed table formats like Delta and
+  Iceberg) exists — the argument was never either-or, it was which half you cheat on when
+  the budget is finite.
+  </p>
+
+  <p>
+    Schema evolution is the quiet test of a platform's maturity. Tables outlive the
+    applications that write them: a column gains a meaning, loses a nullability
+    guarantee, or splits in two — and every downstream reader must survive the change.
+    The mature patterns are explicit contracts (producers declare the schema they
+    write; registry-checked compatibility rules reject breaking producers at deploy
+    time, not at 3 a.m. in a dashboard), additive-by-default migrations, and versioned
+    tables that let a consumer pin itself to last year's shape. "Move fast and break
+    things" fails quietly here: what breaks is not the pipeline but everyone's trust
+    in the numbers.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Idempotency and replay: the deep invariant.</strong> The property that makes
+    pipelines trustworthy is that any task, re-run on the same input, produces the same result
+    (determinism) and the same side effects (idempotency — DELETE-then-INSERT for the partition,
+    never append-and-hope). This is what makes backfills safe: fix the code, replay the year,
+    history corrected. Streaming systems strain hardest here — exactly-once semantics is achieved
+    (Kafka transactions, Flink checkpointing to Chandy–Lamport-style snapshots) by pairing
+    deterministic processing with atomic state snapshots, and understanding <em>why</em> it costs
+    throughput is the mark of someone who has debugged it live.
+  </p>
+  <p>
+    <strong>Schema evolution and data contracts.</strong> The strongest recent idea is the
+    <strong>data contract</strong>: the producing team publishes a versioned schema with
+    semantics, freshness SLOs and allowed change policy, and breaking changes require a version
+    bump — importing software engineering's API discipline into data. It answers the oldest
+    failure in analytics: the upstream team adds a column, renames another "temporarily", and
+    downstream silently mis-reports for weeks. The open debate is enforcement (contracts in
+    CI for the producer's code versus runtime validation at the boundary) and how much
+    governance a self-serve platform can carry before it becomes a bottleneck — the data-mesh
+    conversation in one sentence.
+  </p>
+  <p>
+    <strong>The frontier.</strong> Incremental processing models (dbt incremental models,
+    Flink's streaming-first SQL) blur the batch/stream line; open table formats (Iceberg,
+    Delta Lake, Hudi) bring transactions, time travel and schema evolution to plain object
+    storage; and the newest layer is <em>semantic</em>: metric layers and semantic models so
+    that "revenue" is defined once, in code, and every dashboard agrees. Each generation
+    re-solves the same three problems — correctness, freshness, cost — one level higher, which
+    is the honest definition of progress in this field.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Kleppmann, Designing Data-Intensive Applications; dbt Labs documentation; Kimball, The Data Warehouse Toolkit.</p>
 </TopicPage>

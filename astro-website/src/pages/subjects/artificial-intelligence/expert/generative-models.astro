@@ -16,19 +16,186 @@ const genCfg = {
   <p>
     Generative models <strong>learn a data distribution well enough to sample new examples from
     it</strong> — faces, art, music, code, molecules. They are the AI family behind image
-    generation, music synthesis, drug design and every text generator. Understanding them means
-    understanding both their creative power and their unresolved relationship to the data (and
-    people) they learned from.
+    generation, music synthesis, drug design and every text generator. The shift they represent
+    is conceptual before it is industrial: discriminative models learn a boundary between
+    categories (is this a cat?), while generative models learn the <em>shape of the data
+    itself</em> — enough of cats to produce one that never existed. That is a much harder
+    target (you must get every detail of the distribution right, not just the decision
+    boundary) and a much more useful one, because a good generative model is simultaneously an
+    artist, a simulator, a data-augmentation engine and a hypothesis generator for science.
+  </p>
+  <p>
+    Everything in this chapter stands on one substrate — deep learning — so the chapter starts
+    there: what deep networks actually compute, why depth unlocked generation, and how the
+    three great generative families (adversarial, diffusion, autoregressive) each answer the
+    same question, "how do you sample from a distribution you cannot write down?", with
+    different machinery.
   </p>
 
   <Widget no="1" caption="the generative landscape: families, latent spaces, steering, open questions" widget="equationStep" config={genCfg} />
 
-  <h2>The applications reshaping industries</h2>
-  <ul>
-    <li><strong>Drug and material discovery:</strong> generative models propose candidate molecules with desired properties, screened computationally before synthesis — compressing discovery pipelines from years toward months.</li>
-    <li><strong>Creative workflows:</strong> image/video generation as iteration tools — concept art, storyboarding, prototyping. The displacement debate is real; the augmentation evidence is also real (both can be true, for different tasks).</li>
-    <li><strong>Deepfakes are the shadow:</strong> voice cloning and face swaps enable fraud and disinformation — detection lags generation, so provenance standards (signed content credentials) are the durable defence being built.</li>
-    <li><strong>Scientific generation is the quiet revolution:</strong> generating protein structures (AlphaFold's successor models), weather fields, and materials — generation as scientific hypothesis machine.</li>
-  </ul>
+  <h2>Deep learning: the substrate generators run on</h2>
+  <p>
+    A deep neural network is a stack of layers, each applying learned weights and a nonlinearity,
+    trained by <strong>backpropagation</strong>: make a prediction, measure the error, compute
+    the gradient of that error with respect to every weight (the chain rule, applied
+    systematically backwards), nudge each weight downhill, repeat over millions of examples.
+    Depth is the point: each layer builds features from the layer below — edges into textures,
+    textures into parts, parts into objects — so the network learns a <em>hierarchy of
+    representations</em> rather than a flat mapping. The moment the field flipped is easy to
+    date: AlexNet at ImageNet 2012 cut top-5 classification error from 26.2% to 15.3% in one
+    year by combining depth, GPUs and data; error fell under 3% by 2015, matching human
+    raters. Generative models inherit three things from this substrate: gradient descent as the
+    universal learning rule, learned representation hierarchies as the medium, and — crucially —
+    <strong>scaling laws</strong>: network quality improves predictably (smoothly, measurably)
+    as parameters, data and compute grow together, which is what turned research demos into an
+    industry and made "we trained it bigger" a strategy with a published price-performance
+    curve.
+  </p>
+
+  <h2>Two families of image generators: adversarial and diffusion</h2>
+  <p>
+    <strong>GANs</strong> (Goodfellow et al., 2014) answer the sampling problem with a game: a
+    <em>generator</em> network maps random noise to images, a <em>discriminator</em> learns to
+    tell generated from real, and each improves against the other until — at equilibrium —
+    generated images are indistinguishable from real ones. The mechanism produced startling
+    results (StyleGAN faces, this-person-does-not-exist) and one chronic pathology:
+    <strong>mode collapse</strong>, where the generator finds a few outputs that reliably fool
+    the discriminator and abandons the rest of the distribution — producing a forger with one
+    good trick. <strong>Diffusion models</strong> (Ho et al., 2020; the family behind DALL·E 3,
+    Stable Diffusion, Midjourney) took the opposite route: <em>forward</em>, destroy an image by
+    adding Gaussian noise over hundreds of steps; then train a network to reverse one step of
+    that corruption; at generation time, start from pure noise and run the learned denoiser
+    (typically 20–50 steps, with modern samplers) to arrive at a coherent image. There is no
+    adversary to fool, training is stable, and the step-by-step refinement gives an
+    architecture where text conditioning plugs in cleanly. That is why diffusion effectively
+    won: by 2022–23 it was the default for essentially every serious image generator.
+  </p>
+  <p>
+    <em>Common misconception:</em> "diffusion models just denoise images they have seen." The
+    denoiser is trained to predict noise on <em>corrupted</em> inputs, and generation samples
+    new trajectories through image space from random starts — the model learns the gradient of
+    the data distribution, not an album. The related claim "it's all memorisation" is testable,
+    and the tests (Carlini et al., 2023) found real but rare memorisation — concentrated in
+    duplicated training images — while typical outputs are novel compositions of learned
+    regularities. Both the hype and the dismissal miss the measured truth.
+  </p>
+
+  <h2>Autoregressive generation: language, one token at a time</h2>
+  <p>
+    Text generation runs on a third mechanism: <strong>autoregression</strong>. A transformer
+    (self-attention letting every token attend to every previous one) is trained on one
+    deceptively simple objective — predict the next token, given everything so far — and
+    generates by repeatedly sampling a token, appending it, and predicting again. GPT-3
+    (2020), with 175 billion parameters trained on roughly 300 billion tokens, showed the
+    objective's secret: doing next-token prediction extraordinarily well forces the model to
+    learn grammar, facts, styles and even multi-step reasoning patterns, because all of them
+    are useful for the prediction. Sampling parameters shape the output: temperature scales
+    randomness (low temperature is cautious and repetitive; high is adventurous), top-p
+    truncates the tail of unlikely tokens. Scaling laws (Kaplan 2020; Hoffmann's Chinchilla
+    2022) made the craft quantitative — for a fixed compute budget there is an optimal ratio
+    of data to parameters (roughly 20 tokens per parameter) — which is how labs decide
+    training plans worth hundreds of millions of dollars before the first GPU spins.
+  </p>
+
+  <h2>Latent space: the geometry of learned meaning</h2>
+  <p>
+    Generative models do not store images; they store a compressed coordinate system — the
+    <strong>latent space</strong> — where each point decodes to an output and (the vital
+    property) nearby points decode to similar concepts. Variational autoencoders (VAEs, 2013)
+    trained explicit encoder–decoder pairs to build such spaces with structure imposed by
+    design; diffusion systems like Stable Diffusion run in a compressed latent space (a
+    512 × 512 pixel image lives in a 64 × 64 latent — an 8 × 8 per-side compression — which is
+    why consumer GPUs can run them at all). The geometry is queryable: interpolate between two
+    faces and the video passes through plausible intermediate faces; direction arithmetic in
+    face-GAN spaces famously yielded <em>smiling</em> as a vector (add it to a neutral face).
+    Interpretability research treats the latent space as a scientific object — what concepts
+    did the model carve? — and finds recurring structure: similar concepts in similar
+    directions across independently trained models, the first evidence that these spaces
+    reflect something about the data rather than the training run.
+  </p>
+
+  <h2>Steering: turning language into a control surface</h2>
+  <p>
+    The capability that made generation a product is <strong>conditioning</strong> — steering
+    the sampler with an input. CLIP (Radford et al., 2021) learned a shared embedding space by
+    training on hundreds of millions of image–caption pairs, so that an image and its
+    description land at nearby points; a diffusion model conditioned on CLIP embeddings (or, in
+    later systems, cross-attention against text encoders) converts a sentence into a target
+    region of image space. The prompt became a programming language: subjects, styles,
+    composition, even camera optics are steerable in natural language. For language models the
+    equivalent is instruction tuning and RLHF — fine-tuning the raw predictor on demonstrations
+    and preference ratings until it follows instructions — the difference between "a text
+    engine" and "an assistant". Steering is also where failure lives: prompts can be injected
+    (hidden text in an image telling a vision model to ignore instructions), and alignment
+    problems (the alignment chapter's subject) are steering failures with consequences.
+  </p>
+
+  <h2>Applications, deepfakes and the provenance race</h2>
+  <p>
+    The application map has quietly become the economy's map. <strong>Science</strong>:
+    generative models propose candidate molecules and protein structures for screening —
+    generation as hypothesis engine, with diffusion models now generating protein backbones
+    and crystal structures. <strong>Creative industry</strong>: concept art, storyboarding,
+    in-painting, dubbing and voice cloning — the displacement-versus-augmentation debate is
+    live and both effects are documented across different task types. <strong>The shadow:
+    deepfakes</strong> — voice cloning has enabled documented multi-million-dollar fraud (the
+    2024 case of a finance employee in Hong Kong conned out of roughly 25 million dollars by a
+    video call of deepfaked colleagues), and detection lags generation permanently, because
+    detectors train on yesterday's generators. That asymmetry is why the durable defence is
+    provenance rather than detection: C2PA content credentials — cryptographic signed metadata
+    attached at capture or generation — let consumers check where an image came from, the
+    same trust-chain logic the cryptography chapter applied to certificates.
+  </p>
+  <p>
+    <em>Common misconception:</em> "detectors will catch deepfakes, so the problem is solved."
+    Detection is an arms race the generators keep winning (every published detector is
+    eventually evaded by the next generation), which is why serious institutions — newsrooms,
+    banks, election bodies — build process defences (verification of the requester, out-of-band
+    confirmation, signed provenance) instead of trusting classifier verdicts on pixels.
+  </p>
+
+  <p><em>Common misconception:</em> "the model understands what it generates." A diffusion
+  model has no referent for "dog" beyond the statistics of pixels labelled with that word;
+  an autoregressive model predicts tokens, not truths — which is exactly why
+  hallucination is not a bug to patch but a property of the objective (plausible continuations
+  are the training target, and the plausible can be false). Whether grounded understanding
+  emerges at scale is the live research question; assuming it has already arrived is how
+  confident systems get trusted with consequential work.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Evaluation is unsettled.</strong> Likelihood (how well the model assigns
+    probability to held-out data) is principled but incomparable across model families and
+    famously uninformative for GANs; sample-quality proxies (FID — Fréchet distance between
+    feature distributions of real and generated images — and CLIP score) drive leaderboards
+    but reward the proxy. Human preference ratings are the gold standard and the bottleneck.
+    The deeper issue is that "good generation" is task-relative: a model that excels at
+    aesthetic photos may fail at correct anatomy or legible text, and the field has no single
+    axis. Video, the current frontier (Sora-class systems), inherits all of this plus temporal
+    consistency — objects persisting across seconds — which is a research problem in its own
+    right.
+  </p>
+  <p>
+    <strong>The theory gaps.</strong> Why do diffusion samplers as short as 20 steps work when
+    the training formulation assumes hundreds (the answer involves the model learning a
+    probability-flow ODE, and distillation methods like consistency models compress the
+    trajectory further)? Why does next-token prediction at scale produce reasoning-like
+    behaviour — and where does it break (multi-step arithmetic, novel formal systems)? Why do
+    scaling laws hold across modalities? Each is a live question where practice ran ahead of
+    theory; the honest expert position is to hold the empirical regularities firmly and the
+    explanations loosely.
+  </p>
+  <p>
+    <strong>Policy as architecture.</strong> Training-data copyright litigation is the field's
+    live constitutional question (fair use claims tested in US and UK courts, licensing markets
+    emerging in parallel), and its technical interfaces are being built now: opt-out registries,
+    robots-style signals for training crawlers, compensation models for creators. The
+    generative chapter of AI therefore closes where the ethics chapter began: the design
+    choices — what is collected, what is consented, what is signed — are being made once, at
+    infrastructure scale, and every user of these tools is downstream of them.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Goodfellow et al., NeurIPS (2014) GANs; Ho et al., NeurIPS (2020) diffusion; Ramesh et al. (DALL·E); Radford et al., CLIP (2021).</p>
 </TopicPage>

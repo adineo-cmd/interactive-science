@@ -18,17 +18,192 @@ const roboCfg = {
     things</strong>. Robotics combines perception, planning and control under real-time
     constraints — and unlike chatbots, a robot's errors have mass and momentum. The recent
     shift: learning-based approaches (trained in simulation and from demonstration) replacing
-    hand-programmed motion, moving the field toward general-purpose machines.
+    hand-programmed motion, moving the field toward general-purpose machines. The discipline's
+    texture comes from three pressures at once: the loop must run at control frequencies
+    (hundreds of times per second, not once per prompt), the sensors are noisy and the world
+    is adversarial to measurement (glass, darkness, mirrors), and every failure is
+    unrecoverable in a way software never is — a dropped component does not undo itself.
+  </p>
+  <p>
+    That is also why robotics is AI's hardest test. Moravec's paradox names the pattern: what
+    is hardest for machines is what toddlers do effortlessly — perception, locomotion,
+    manipulation — because a billion years of evolution optimised sensorimotor competence into
+    circuitry we do not consciously understand, while chess and calculus are recent, explicit,
+    and therefore easy to program. This chapter walks the stack: the loop, the map, the
+    simulation bridge, the learning methods, and the economics that decide where robots
+    actually deploy.
   </p>
 
   <Widget no="1" caption="the embodied loop, its map-making, and the bridges from simulation" widget="equationStep" config={roboCfg} />
 
-  <h2>Where robots already work — and why</h2>
-  <ul>
-    <li><strong>Structured environments first:</strong> warehouses (a million Amazon robots), factories, surgical systems. Predictable settings, high value per movement, constrained tasks — the economics favour them.</li>
-    <li><strong>The unstructured world is harder:</strong> homes are chaos — every object different, every task novel. General-purpose household robots remain the field's white whale; foundation models are the newest attempt at the whales' migration route.</li>
-    <li><strong>Autonomous vehicles as a case study in over-promising:</strong> "fully self-driving by 2018" became "assistance features with constant supervision". Robotics timelines are humbling — the last 1% of edge cases takes 99% of the time.</li>
-    <li><strong>Safety is embodied:</strong> a chatbot error costs a paragraph; a robot error costs a limb. Verification, hardware limits and graceful degradation are design requirements, not features.</li>
-  </ul>
+  <h2>The perception–action loop: robotics as real-time engineering</h2>
+  <p>
+    Every robot runs the same inner cycle: <strong>sense → perceive → plan → act</strong>, and
+    the engineering genius is in the frequencies. Low-level joint control runs in the
+    hundreds-to-thousands of hertz — an industrial arm's servo loop corrects torque every
+    millisecond, using classical control (PID and its descendants) because a 10-millisecond
+    delay in a swinging arm is an unstable system. Above that sits state estimation (fusing
+    wheel encoders, inertial measurement units and vision into one belief about position — a
+    Kalman or particle filter), then motion planning (searching configuration space for a
+    collision-free path; RRT-style planners sample rather than grid), then task-level
+    reasoning. The classic decomposition has held for decades because each layer's failure
+    modes are distinct: hardware fails, sensors lie, planners hit local minima, and the
+    integrator's job is making the stack <em>fail gracefully</em> — e-stops, watchdog timers,
+    velocity limits, safety-rated zones. A useful worked number: a walking robot must sense
+    ground contact and adjust roughly every 10 milliseconds; a datacentre may take 300
+    milliseconds to answer a prompt. Embodiment is two orders of magnitude more urgent, which
+    is why "just call the big model" is not, by itself, a robot architecture.
+  </p>
+
+  <h2>SLAM: building the map while walking it</h2>
+  <p>
+    A mobile robot's founding problem is the chicken-and-egg at the heart of navigation: you
+    cannot build a map without knowing where you are, and you cannot know where you are
+    without a map. <strong>SLAM</strong> — Simultaneous Localisation And Mapping — solves both
+    at once as probabilistic inference: maintain a belief over the robot's pose and the map's
+    landmarks, and update both with every sensor reading. Early implementations used extended
+    Kalman filters over feature maps; the modern formulation is a <em>graph optimisation</em>
+    problem — poses and landmarks as nodes, sensor observations as constraints, and nonlinear
+    least squares (Gauss–Newton and friends) finding the configuration that best explains all
+    the data, with <em>loop closure</em> (recognising a previously seen place) snapping the
+    accumulated drift shut. LiDAR-based and visual-inertial variants now run in real time on
+    phone processors — and the descendant technology is everywhere: robot vacuums building
+    floor plans, warehouse AMRs (autonomous mobile robots) navigating dynamic aisles, AR
+    headsets tracking themselves in your living room, and Mars rovers. Perseverance's
+    AutoNav lets the rover drive itself around hazards across terrain no one can steer
+    remotely at Mars distances — the 4-to-24-minute signal delay makes teleoperation a
+    non-starter, so autonomous navigation is not a convenience up there; it is the only way
+    the mission moves.
+  </p>
+  <p>
+    <em>Common misconception:</em> "GPS solves robot navigation." GPS is unavailable indoors,
+    degraded in urban canyons, spoofable, and centimetre-inaccurate only with expensive
+    augmentation — and no GPS at all on Mars. Every serious mobile robot treats satellite
+    positioning as one optional input, and SLAM-style local estimation as the backbone.
+  </p>
+
+  <h2>The sim-to-real gap: training where mistakes are free</h2>
+  <p>
+    Learning-based robotics needs millions of trials, and reality offers hours, breakage and
+    lawsuits. The answer is simulation — train in physics engines (MuJoCo, Isaac Gym running
+    thousands of robots in parallel on GPUs) and transfer to hardware. The obstacle is the
+    <strong>reality gap</strong>: simulated friction, latency and compliance are approximations,
+    and a policy tuned to the simulator's exact physics fails on the first real surface. The
+    field's best answer is counter-intuitive: <strong>domain randomisation</strong> — randomise
+    everything in simulation (masses, friction coefficients, colours, delays, sensor noise)
+    until the simulator spans a cloud of possible worlds, and reality looks like just another
+    sample. OpenAI's Dactyl hand (2019) is the canonical case: a physical hand solving a
+    Rubik's Cube, trained entirely in simulation across thousands of randomised variants —
+    the equivalent of thousands of years of practice — with the real hand only ever used for
+    evaluation and fine-tuning. Randomisation beats realism because a policy robust to
+    everything simulated is robust to the one world it meets; chasing photorealistic
+    simulation, by contrast, spends enormous compute to narrow the gap one arbitrary detail at
+    a time.
+  </p>
+
+  <h2>Learning from demonstration — and foundation models for action</h2>
+  <p>
+    The classical alternative to hand-programming is <strong>imitation learning</strong>:
+    record human teleoperation (demonstrations), train a policy mapping observations to
+    actions, deploy. Behaviour cloning works and scales, but has a known flaw —
+    <em>covariate shift</em>: the robot drifts into states the demonstrator never visited, and
+    the policy has no data there (fixed by DAgger-style correction or by adding RL). Modern
+    policies borrow directly from the generative-models chapter: <em>diffusion policies</em>
+    model the distribution of good actions and sample from it, handling multimodal tasks (two
+    valid ways to grasp) that regression averages into failure. The current frontier is
+    <strong>vision-language-action models</strong>: transformers pretrained on internet-scale
+    vision and language, fine-tuned on robot trajectories, outputting actions — RT-2 (DeepMind,
+    2023) showed such models generalise to objects and instructions never demonstrated
+    ("move the cup to the Taylor Swift picture"), because the semantic knowledge came from the
+    pretraining. The data bottleneck defines the field: the internet has billions of labelled
+    images but almost no labelled <em>actions</em>, which is why robot-data collection (teleop
+    fleets, shared datasets like Open X-Embodiment spanning 22 robot types) is the race that
+    decides the next decade.
+  </p>
+
+  <h2>Where robots work: the economics of embodiment</h2>
+  <p>
+    Deployment follows value per movement and tolerance for chaos. <strong>Structured
+    environments won first</strong>: warehouses (Amazon operates on the order of 750,000 mobile
+    robots alongside employees), factory arms (about 4 million industrial robots installed
+    worldwide, per the International Federation of Robotics), surgical systems (da Vinci has
+    performed millions of procedures), and fulfilment picking where the product catalogue is
+    known. <strong>Unstructured environments are the frontier</strong>: homes are adversarial —
+    every object different, every task novel, and the customer expectation is general-purpose
+    competence, the exact thing current systems lack. <strong>Autonomous vehicles are the
+    field's longest calibration exercise</strong>: "fully self-driving by 2018" became
+    supervised assistance, then — slowly, in geofenced cities — genuinely driverless service;
+    Waymo crossed 100,000 paid rides per week in 2024, real and impressive and fifteen years
+    late against the original promise. The lesson generalises: the last 1% of edge cases takes
+    99% of the engineering time, because rare-event handling is what safety certification and
+    public trust are made of.
+  </p>
+  <p>
+    <em>Common misconception:</em> "robots fail because their AI is bad." Diagnostics usually
+    rank differently: sensor degradation, actuator wear, cable fatigue, dust, thermal drift —
+    hardware reliability dominates uptime statistics, which is why serious robot companies
+    employ more reliability engineers than reinforcement-learning researchers. The software
+    must also be boring: watchdog processes, safe states, graceful degradation on sensor loss —
+    the reliability-engineering chapter's discipline, with motors attached.
+  </p>
+
+  <p><em>Common misconception:</em> "embodied AI is just a language model with arms." The
+  control loop is a different physics: a chatbot can think in seconds; a walking robot's
+  balance controller runs at kilohertz on milliwatt budgets, perception and actuation
+  share a body whose mistakes fall over, and there is no undo for a dropped object. This
+  is why the field's core artefacts are control rates, torque limits and state estimators
+  rather than context windows — and why language-model intelligence enters as a planner
+  layer above the real-time loop, not instead of it.
+  </p>
+
+  <p>
+    The warehouse is the field's clearest economics case study. Amazon's acquisition
+    of Kiva Systems in 2012 (a deal reported at three-quarters of a billion dollars)
+    started the modern wave: today the company operates a fleet in the hundreds of
+    thousands, and competitors built their own fleets rather than buy from the
+    incumbent's owner. Notice what the successful deployments share — the robots do
+    the <em>transport</em> (flat, mapped, repetitive, human-free aisles) while humans
+    keep the <em>manipulation</em> (picking arbitrary objects from clutter), which is
+    exactly the locomotion-versus-dexterity split the research frontier predicts.
+    The lesson generalises: embodiment scales where the environment can be redesigned
+    around the robot's weaknesses — and stalls where it cannot, which is why the
+    general-purpose home robot remains a venture-funding category rather than a
+    product category. The boring constraint underneath is energy: a humanoid doing
+    useful work for a full shift needs battery endurance that current cell chemistry
+    does not yet comfortably provide at scale, so runtime, not intelligence, caps
+    most deployments.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Manipulation remains the summit.</strong> Locomotion is largely solved (quadrupeds
+    hike; humanoids walk — Boston Dynamics' Atlas and the 2023–25 humanoid investment wave);
+    dexterous manipulation is not, because contact dynamics are discontinuous (a fingertip
+    either slips or grips; gradients vanish exactly where you need them) and tactile sensing
+    lags vision by decades. The research responses: contact-rich model-predictive control,
+    learned tactile representations (GelSight-style fingertip cameras), and pretraining
+    actions on human video — the bet that hands, like words, have a learnable distribution.
+  </p>
+  <p>
+    <strong>Safety cases for embodied AI.</strong> Certification is the unsolved institutional
+    problem: aviation certifies systems with exhaustive test and formal requirements, while
+    learned policies resist both (no closed-form behaviour to analyse). Current practice
+    layers probabilistic arguments — scenario coverage, simulation miles (Waymo's published
+    safety frameworks), operational design domains (geofences, weather limits), and
+    ISO 13482/26262-style process standards. The frontier question is whether
+    interpretability-style evidence can enter safety cases for learned components — the
+    alignment chapter's audit discipline, wearing a hard hat.
+  </p>
+  <p>
+    <strong>The open frontier.</strong> Data flywheels (robots collecting their own training
+    data, self-supervised); sim-to-real via learned world models (train the policy inside a
+    learned video-prediction model of reality); whole-body humanoid control combining
+    locomotion and manipulation; and the organisational question — fleets as systems (a
+    thousand robots sharing one learned failure library) versus robots as products. Each is a
+    live research programme, and the field's history says the constraint that breaks first is
+    rarely the algorithm: it is data, hardware, or trust — in some order nobody fully
+    controls.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Cadena et al., "Past, Present, and Future of SLAM" (2016); OpenAI Rubik's Cube hand (2019); DeepMind RT-2 (2023); Boston Dynamics video archive.</p>
 </TopicPage>

@@ -14,20 +14,195 @@ const compmatCfg = {
 <TopicPage slug="subjects/materials-science/expert/computational-materials-design">
   <h2>The idea</h2>
   <p>
-    Computational materials design is the field\'s culmination: <strong>discovery as a pipeline
+    Computational materials design is the field's culmination: <strong>discovery as a pipeline
     — predict with quantum mechanics, accelerate with machine learning, verify with autonomous
     experiments</strong>. The serendipity era (penicillin, Teflon, most alloys) is giving way to
-    engineered search.
+    engineered search. But the pipeline's inputs are the bonding models this subject has taught
+    for a century — Lewis structures, VSEPR shapes, molecular orbitals, hybridisation,
+    intermolecular forces — because every computational method is either one of those models
+    made rigorous or their quantum-mechanical descendant. The chapter therefore runs both
+    directions at once: the classical models as intuition, and the machinery that turns them
+    into numbers good enough to bet research budgets on.
   </p>
 
   <Widget no="1" caption="the genome idea, DFT, ML acceleration, the autonomous loop" widget="equationStep" config={compmatCfg} />
 
-  <h2>What the pipeline delivers</h2>
-  <ul>
-    <li><strong>High-entropy alloys:</strong> five-plus elements in near-equal parts — the design space was computationally invisible before (millions of combinations); screening found exceptional strength–toughness and temperature combinations now entering applications.</li>
-    <li><strong>Battery and catalyst discovery:</strong> voltage plateaus, ion mobility and catalytic activity computed before a single synthesis — the energy lesson\'s storage and the chemistry lesson\'s kinetics, pre-searched (solid-state electrolytes moved from obscure to industry-funded via this route).</li>
-    <li><strong>The honest limits:</strong> DFT errors (band gaps famously under-predicted), ML\'s extrapolation problem (models are only as good as their training space — the evaluation lesson\'s distribution shift, in a flask), and synthesis reality: predicted compounds that refuse to form. The loop exists because prediction alone is never enough.</li>
-    <li><strong>Where the ladder lands:</strong> structure→properties (the first lesson) became properties→structure: inverse design — specify the property, search for the material. The discipline that began identifying sand now designs substances that do not exist yet.</li>
-  </ul>
-  <p class="sources"><strong>Sources:</strong> Kohn, Nobel lecture (1998); Jain et al., APL Materials (Materials Project, 2013); the AI ladder\'s ML lessons; de Pablo et al., Nature (2019) on the MGI.</p>
+  <h2>Lewis structures and VSEPR: the first computational models of matter</h2>
+  <p>
+    The Lewis structure (1916) is the original back-of-envelope simulation: count valence
+    electrons, place bonds and lone pairs, satisfy octets, mark resonance where multiple
+    placements are valid (ozone's two equal bonds, benzene's delocalised ring). It is crude —
+    a bookkeeping device — and it remains the first thing any practising chemist computes,
+    because it predicts connectivity and charge distribution in seconds. <strong>VSEPR</strong>
+    (valence-shell electron-pair repulsion) adds three-dimensional form: electron pairs
+    repel, so they spread maximally — four pairs give the tetrahedron (109.5°, methane), three
+    the trigonal plane (120°, formaldehyde), six the octahedron (90°, SF₆) — and lone pairs,
+    held by one nucleus instead of two, spread wider and compress bond angles (water: two
+    bonds plus two lone pairs, 104.5° instead of 109.5°). The method's power is the
+    translation it licenses: geometry from a two-dimensional count. Shape then controls
+    function — polarity (CO₂ is linear and nonpolar; H₂O bent and polar, which is why one
+    extinguishes flames and the other dissolves salts), and every binding affinity a drug
+    designer computes. The expert's caveat is honest: VSEPR is a <em>heuristic</em> that
+    fails on transition-metal complexes and hypervalent species — useful exactly as far as
+    its model holds, which is the lesson every later method inherits.
+  </p>
+
+  <h2>Hybridisation and molecular orbitals: the quantum picture underneath</h2>
+  <p>
+    Two refinements turn the sketches into quantum mechanics. <strong>Hybridisation</strong>
+    explains geometry from the atom's side: mixing one s and three p orbitals gives four
+    equivalent sp³ lobes pointing tetrahedrally (carbon in diamond and methane); sp² mixing
+    gives three planar lobes plus a perpendicular p orbital (graphene, benzene, and the
+    conjugated systems whose delocalised electrons make semiconductors and dyes work); sp
+    gives the linear triple bond (acetylene). The hybridisation a carbon adopts is thus a
+    one-letter code for its local dimensionality — read it off and you know the geometry.
+    <strong>Molecular orbital theory</strong> goes further: atomic orbitals combine into
+    bonding orbitals (lower energy, electron density between nuclei) and antibonding orbitals
+    (higher, with a node between); fill them from the bottom and the molecule's stability,
+    magnetism (O₂'s two unpaired electrons — the Lewis structure cannot explain paramagnetism;
+    MO theory predicts it) and reactivity all fall out. For materials, the same formalism
+    scales to solids: ~10<sup>23</sup> orbitals smear into <strong>bands</strong>, the
+    filled valence band and empty conduction band, and the <em>band gap</em> between them is
+    the number that decides insulator, semiconductor or metal — the single most computed
+    number in materials design.
+  </p>
+
+  <h2>Intermolecular forces: the soft interactions simulations must capture</h2>
+  <p>
+    Between molecules, weaker forces organise matter: <strong>dispersion (London)
+    forces</strong> — instantaneous dipoles from fluctuating electron clouds, present
+    everywhere, growing with polarisability (iodine solid, Teflon's slippery surface);
+    <strong>dipole–dipole</strong> attractions between polar molecules; and the
+    <strong>hydrogen bond</strong> (H bonded to N, O or F attracted to a lone pair), worth
+    roughly 10–40 kJ/mol against covalent bonds' 150–1,000. The magnitudes are the design
+    information: water's hydrogen bonding buys a boiling point 180 degrees higher than its
+    molecular weight predicts; DNA's double helix is held by base-pair hydrogen bonds
+    (individually weak, jointly strong, and breakable one at a time — which is how
+    replication works); a gecko climbs on dispersion forces multiplied over billions of
+    nanoscale contacts. In simulation these forces are the difference between success and
+    failure: molecular dynamics packages model them with empirical potentials, drug-design
+    docking scores live or die on them, and the hardest error in computational design is
+    systematically missing an interaction the potential never contained — the simulated
+    molecule that "binds" only because the model could not see the water it displaces.
+  </p>
+  <p>
+    <em>Common misconception:</em> "weak forces are negligible compared with covalent bonds."
+    Negligible per pair, decisive per mole: proteins fold, water boils, geckos climb, and
+    diamond-hard nacre draws its toughness from interfaces — all governed by the "weak"
+    interactions, because material behaviour happens exactly where molecules meet. Materials
+    design fails silently whenever it optimises the strong bonds and forgets the interfaces.
+  </p>
+
+  <h2>DFT: quantum mechanics as an engineering tool</h2>
+  <p>
+    The exact quantum mechanics of a solid is hopeless: the Schrödinger equation for a
+    mole of interacting electrons cannot be solved exactly for even a handful of atoms
+    (10 interacting electrons already exceeds any conceivable memory if solved brute-force).
+    The workaround that earned Walter Kohn the 1998 Nobel Prize in Chemistry (with John
+    Pople) is <strong>density functional theory (DFT)</strong>: the Hohenberg–Kohn theorems
+    (1964) prove the ground-state electron <em>density</em> determines everything about the
+    system, and the Kohn–Sham scheme (1965) replaces the intractable interacting-electron
+    problem with a tractable set of non-interacting electrons moving in an approximate
+    potential. The result is quantum-mechanical prediction at engineering cost: from the
+    periodic table alone, DFT computes lattice constants within a few percent, formation
+    energies, elastic moduli, and band structures — one calculation running overnight to
+    days on a cluster, not years of synthesis. Its known blind spots are part of the craft:
+    band gaps are systematically underestimated (the "band-gap problem", patched by hybrid
+    functionals and GW methods), dispersion needs corrections, and strongly correlated
+    systems (transition-metal oxides) misbehave without patches like DFT+U. The practitioner
+    knows the error bars the way a machinist knows the machine's backlash.
+  </p>
+
+  <h2>Databases and machine learning: screening at industrial scale</h2>
+  <p>
+    DFT is fast enough to screen and slow enough to bottleneck — one structure costs CPU-hours,
+    and interesting design spaces hold millions of candidates. The industrial answer has two
+    layers. First, <strong>open databases</strong>: the Materials Project (2011 onward, US
+    Materials Genome Initiative) publishes computed properties for over 150,000 inorganic
+    compounds; NOMAD, OQMD and others push past a million — the field's data commons, with
+    every calculation reproducible from its inputs. Second, <strong>machine-learning
+    surrogates</strong>: graph neural networks trained on DFT outputs predict properties in
+    milliseconds instead of CPU-days — 5–6 orders of magnitude faster — letting searches
+    sweep spaces DFT could never enumerate. DeepMind's GNoME (2023) demonstrated the scale:
+    deep learning guided by active learning proposed 2.2 million new crystal structures, of
+    which roughly 380,000 sit on the computed stability frontier — multiplying the known
+    stable inorganic crystals (about 48,000 from a century of experiment) by several times in
+    one publication. The caveat that keeps the field honest: ML models interpolate well and
+    extrapolate poorly (the AI evaluation lesson's distribution shift, in a flask), so
+    training-set coverage bounds trust, and the strongest predictions remain hypotheses until
+    a furnace agrees.
+  </p>
+  <p>
+    <em>Common misconception:</em> "computers will replace experiments." They replace
+    <em>search</em>, not verification: predicted compounds routinely fail to synthesise
+    (metastability, competing phases, kinetic barriers DFT's 0-kelvin ground state never
+    sees). The Berkeley A-Lab's 2023 run is the honest scoreboard: of 58 crystals its
+    algorithm proposed and tried to make autonomously over 17 days, 41 formed — an
+    extraordinary hit rate for new materials, and a 30% miss rate no serious design loop
+    pretends away. Computation narrows the funnel; the furnace still gets the final word.
+  </p>
+
+  <h2>Inverse design and the autonomous laboratory</h2>
+  <p>
+    Forward screening (propose → compute → filter) is being superseded by <strong>inverse
+    design</strong>: specify the property and search structure space for it — generative
+    models proposing crystals with target band gaps, optimisation loops steering composition
+    toward a modulus, Bayesian optimisation choosing the next experiment to maximise
+    information. The loop closes with <strong>self-driving laboratories</strong>: robot
+    synthesis plus automated characterisation (X-ray diffraction, calorimetry) plus an
+    learning algorithm choosing the next sample — the design–make–test cycle, which once
+    took a PhD student a year, compressed to days. High-entropy alloys (five or more metals
+    in near-equal mix — a combinatorial space of millions no experimental programme could
+    enumerate) and solid-state battery electrolytes are the flagship outputs: both were
+    computationally invisible before, both now have industrial programmes. The MGI's 2011
+    founding premise — halve the time from discovery to deployment by making computation a
+    first-class citizen — has largely been met, and the remaining bottleneck moved where
+    bottlenecks go: to data quality, synthesis robotics, and the judgement of which
+    properties are worth asking for.
+  </p>
+
+  <p><em>Common misconception:</em> "machine learning has made experiments optional." The
+  models interpolate within their training manifolds and inherit their biases; every
+  high-profile ML-suggested material (from screened photonics candidates to battery
+  electrolytes) still needed synthesis to exist and measurement to be believed — several
+  prominent database entries failed independent reproduction. The accurate division of
+  labour: computation narrows a candidate space by orders of magnitude, experiments
+  decide what is real.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Accuracy frontiers in electronic structure.</strong> DFT's functionals are an
+    unresolved research programme (the exact functional is proven to exist and remains
+    unknown — "the exact DFT problem"); excited states need beyond-DFT methods (time-dependent
+    DFT, GW/BSE for optical properties), and strongly correlated matter (high-Tc
+    superconductors, Mott insulators) resists the whole framework — the reason quantum
+    Monte Carlo and, prospectively, quantum computers (simulating quantum systems is the
+    field's canonical quantum-computing application) stay on the roadmap. The materials
+    genome is a genome with sequenced exons and uncharted introns.
+  </p>
+  <p>
+    <strong>The data problem underneath the AI.</strong> ML surrogates inherit every defect of
+    their training data: DFT's systematic errors become the model's priors, negative results
+    (compounds that failed to synthesise) are barely archived anywhere, and cross-database
+    comparisons surface inconsistencies measured in tenths of electron-volts — material to
+    the design decisions being made. The frontier responses are standard datasets and
+    benchmarks, uncertainty-quantified models that report their own confidence, and
+    foundation models for materials (pretrained across composition, structure and property
+    modalities) — each an application of the machine-learning evaluation discipline to a
+    domain where the ground truth costs a furnace run.
+  </p>
+  <p>
+    <strong>The philosophical endgame.</strong> The field's trajectory — models from Lewis to
+    DFT to learned surrogates — is a case study in the epistemology of simulation: each
+    generation encodes more physics and less intuition, and the expert's role shifts from
+    computing properties to interrogating them (is this prediction within the model's
+    domain? does the surrogate agree with the physics where both exist? what experiment
+    would falsify this fastest?). Structure determines properties became properties determine
+    structure — inverse design — and the discipline that began by drawing dots around atoms
+    now specifies substances that do not yet exist, then builds machines to argue with the
+    universe about them.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Kohn, Nobel lecture (1998); Jain et al., APL Materials (Materials Project, 2013); the AI ladder's ML lessons; de Pablo et al., Nature (2019) on the MGI.</p>
 </TopicPage>

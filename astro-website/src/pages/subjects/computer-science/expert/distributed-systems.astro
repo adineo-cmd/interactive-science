@@ -19,17 +19,183 @@ const distCfg = {
     <strong>while parts of it are broken, slow, or lying</strong>. Peter Deutsch catalogued the
     traps ("the fallacies of distributed computing"): the network is <em>not</em> reliable, latency
     is <em>not</em> zero, and topology <em>does</em> change. Everything in this subject is a
-    disciplined answer to those five sentences.
+    disciplined answer to those sentences. The reason the discipline exists is arithmetic: a single
+    machine hits hard ceilings — one 8-core server is one 8-core server forever — while 100 modest
+    machines give you 100× the capacity, 100× the failure surface, and a new class of problems
+    that no single-machine program ever meets: messages lost mid-flight, two servers claiming the
+    same booking, a network split leaving both halves alive and both serving users.
+  </p>
+  <p>
+    The expert move is to treat these not as bugs to fix but as physics to design around. You
+    cannot have everything: reads that are always right <em>and</em> a system that answers during
+    a network cut are mutually exclusive, provably. The craft is choosing, per piece of data, how
+    much disagreement you can afford — and then building machinery that keeps the disagreement
+    inside the bounds you chose.
   </p>
 
   <Widget no="1" caption="the five ideas that define the field" widget="equationStep" config={distCfg} />
 
-  <h2>Concepts you will meet in production</h2>
-  <ul>
-    <li><strong>Eventual consistency:</strong> accept brief disagreement in exchange for always being up — the design behind DNS, shopping carts and social feeds. Strong consistency where it matters (payments), eventual everywhere else.</li>
-    <li><strong>Idempotency:</strong> design operations so repeating them is safe ("set status to shipped" vs "decrement stock by one"). The network <em>will</em> resend; only idempotent handlers shrug.</li>
-    <li><strong>Load balancing and caching:</strong> spread requests across replicas; remember answers. Two of the oldest tricks still deliver most of the performance in large systems.</li>
-    <li><strong>Observability:</strong> distributed failures are invisible from any single machine. Logs, metrics and distributed tracing (following one request through 20 services) are how engineers see at all.</li>
-  </ul>
+  <h2>The internet and the web: the original distributed system</h2>
+  <p>
+    The internet is the field's existence proof: billions of unreliable links cooperating into one
+    network since 1983. Its mechanisms repay study because every datacentre reuses them.
+    <strong>Packet switching</strong> slices messages into independent packets that route
+    separately and reassemble at the destination — no dedicated circuit needed, so the network
+    survives losing entire links (that was its Cold War design goal). <strong>DNS</strong> is a
+    hierarchical, eventually-consistent database translating names to addresses, cached for hours
+    or days: the textbook case of accepting staleness in exchange for availability. <strong>BGP</strong>
+    lets each network announce which neighbours can reach which ranges of addresses, with no
+    global authority. And the web itself — HTTP's stateless request–response over that network —
+    is the design decision that let it scale to a trillion pages: every request stands alone, so
+    any server can answer any request.
+  </p>
+  <p>
+    Why it matters: when the mechanisms fail, the world watches. On 4 October 2021, Facebook
+    withdrew the BGP announcements that told the internet how to reach its DNS servers; for about
+    six hours Facebook, Instagram and WhatsApp vanished — and the company's own staff could not
+    easily reach the buildings or tools to fix it, because internal routes went down with the
+    announcement. One protocol-level mistake, planet-sized outage: the distributed-system lesson
+    in one afternoon, and the reason serious teams treat routing and DNS as safety-critical.
+  </p>
+
+  <h2>Partitions, replication and the CAP choice</h2>
+  <p>
+    Now make it concrete with the two moves every distributed database makes. <strong>Sharding</strong>
+    splits data across machines (user IDs ending 0–4 to node 1, 5–9 to node 2), turning one
+    overloaded disk into four quiet ones. <strong>Replication</strong> copies each shard to two or
+    three nodes so a crashed machine loses nothing. The price appears immediately: with three
+    copies, a write to one leaves the other two stale — so what does a read see? Brewer's CAP
+    theorem forces the choice during any network partition: you can stay <em>consistent</em>
+    (refuse reads and writes that cannot reach a quorum) or stay <em>available</em> (answer from
+    whatever copy you have), never both. Production systems operationalise it with quorums: with
+    N = 3 replicas, if writes need W = 2 acknowledgements and reads wait for R = 2 responses, then
+    W + R = 4 exceeds N, so every read must overlap at least one fresh copy — consistency
+    survives one crashed node, at the cost of every read contacting two machines.
+  </p>
+  <p>
+    <em>Common misconception:</em> "CAP means you permanently give up one of the three
+    properties." The choice only bites <em>during a partition</em>, and it is per-operation, not
+    per-system: a bank runs strongly consistent on balances but eventually consistent on
+    recommendations, and a well-built store lets you tune W and R per request. Engineers who
+    misread CAP as an excuse for one-mode-for-everything build systems that are either slow
+    everywhere or wrong where it counts.
+  </p>
+
+  <h2>Digital currency: consensus without a referee</h2>
+  <p>
+    Money is the hardest distributed-systems problem dressed in economics: everyone must agree on
+    one ledger, and nobody may double-spend. Centralised systems solve it with a referee (your
+    bank's database is the single source of truth). Bitcoin (2008) solved it without one, and the
+    mechanism is the part worth knowing. Transactions broadcast to a peer-to-peer network;
+    <strong>miners</strong> bundle them into blocks and compete to hash the block header
+    repeatedly until the result falls below a target — on current hardware roughly 10
+    <sup>20</sup> hashes per network per second, so finding each block is about 10 minutes of
+    global luck. The winner's block becomes the next page of the ledger, chained to the last by
+    its hash, and rewriting history means re-mining every block since — economically
+    self-defeating against an honest majority. This is the Byzantine Generals problem cracked by
+    proof-of-work: agreement among parties who cannot trust each other or any messenger.
+  </p>
+  <p>
+    The trade-offs are the distributed-systems trade-offs wearing a currency: the network
+    processes on the order of 7 transactions per second (Visa peaks in the tens of thousands) and
+    each consumes more energy than many households use in a year, which is why Ethereum switched
+    to proof-of-stake in 2022 — validators stake coins instead of burning electricity, cutting its
+    energy use by an estimated 99.9%. And "immutable" has an asterisk: a cartel controlling most
+    of the hash power can reorganise recent blocks (51% attacks on smaller coins are documented),
+    so the guarantees are economic and probabilistic, not mathematical absolutes.
+  </p>
+  <p>
+    <em>Common misconception:</em> "blockchain is immutable because of cryptography." Hashes and
+    signatures make tampering <em>detectable and expensive</em>; immutability comes from economics
+    (re-mining history costs more than it can steal) plus the social layer — the community can and
+    does fork away from ledger states it rejects, as Ethereum did after the 2016 DAO hack. A
+    system you can fork is a system whose immutability is political, not physical.
+  </p>
+
+  <h2>Cyber security in a system with no perimeter</h2>
+  <p>
+    Distributing machines distributes the attack surface, so security stops being a wall and
+    becomes a property of every hop. The mechanisms, in order of what they protect:
+    <strong>TLS</strong> encrypts each connection and authenticates servers via certificate
+    chains — it protects data on the wire, nothing more; <strong>authentication and
+    authorisation</strong> between services (mutual TLS, signed tokens) protect
+    service-to-service calls once attackers are inside the network, the assumption behind
+    "zero-trust" architectures; <strong>rate limiting and idempotency keys</strong> protect
+    against replay — the network <em>will</em> deliver your payment request twice, and only an
+    idempotent handler turns that duplicate into a no-op; and <strong>distributed defence</strong>
+    absorbs attacks that no single machine could survive. The 2016 Mirai botnet case still
+    teaches the whole lesson: hundreds of thousands of weak-password IoT devices (cameras,
+    routers) flooded DNS provider Dyn with junk traffic and took Twitter, Netflix and Reddit off
+    the air for hours for much of the US East Coast. The vulnerability was thousands of independent
+    nodes; the blast radius was a distributed system nobody had treated as one.
+  </p>
+  <p>
+    <em>Common misconception:</em> "the padlock icon means this site is safe." TLS proves the
+    connection to <em>example-pharmacy.ru</em> is encrypted and that the server controls a
+    certificate for that name — it says nothing about whether the operator is a pharmacy or a
+    thief. Encryption protects the pipe; the request handling, business logic and data storage
+    behind it are separate disciplines, which is why fully-encrypted sites get breached weekly.
+  </p>
+
+  <h2>Consensus: agreeing despite failures</h2>
+  <p>
+    Underneath replication sits the crown jewel: <strong>consensus</strong> — getting several
+    machines to agree on one value despite crashes and lost messages, without ever splitting into
+    two halves that each believe different things. Paxos (1998) solved it and became famous for
+    being nearly incomprehensible; Raft (2014) re-solved it to be teachable: elect one leader,
+    let it append log entries, require a majority (2 of 3, 3 of 5) to confirm each entry, and
+    guarantee that any leader must possess every committed entry. The arithmetic is the safety
+    argument: two majorities always overlap in at least one live node, so two conflicting
+    decisions cannot both carry a majority. Databases you have heard of — etcd (which stores
+    Kubernetes' entire cluster state), CockroachDB, Spanner — are Raft or Paxos with an engine
+    attached. The cost of that safety is latency: every write must reach a majority before
+    acknowledging, which is exactly why geo-distributed systems that cannot afford inter-continental
+    round-trips on every write choose weaker consistency instead.
+  </p>
+
+  <p>
+    The delivery-guarantee vocabulary repays memorising, because every message queue
+    advertises it: <em>at-most-once</em> (send and forget — fast, lossy), <em>at-least-once</em>
+    (retry until acknowledged — safe, but duplicates appear), and <em>exactly-once</em>
+    (the marketing term for at-least-once delivery plus deduplication or transactional
+    commit on the consumer side). The engineering consequence is universal: make your
+    handlers idempotent — attach a request ID and ignore repeats — and you stop caring
+    which guarantee the broker actually gives you.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    <strong>Time is the deepest problem.</strong> Lamport's "Time, Clocks, and the Ordering of
+    Events" (1978) showed that without shared time there is no global "happened before", and every
+    consistency model is an answer to that hole. Spanner's approach is the industrial extreme:
+    atomic clocks and GPS receivers in every datacentre give each event a confidence interval
+    (TrueTime), so transactions can wait out the uncertainty and commit in a globally consistent
+    order — physical time bought with hardware. The alternatives (logical clocks, hybrid
+    timestamps, CRDTs that merge without any ordering) trade correctness guarantees for
+    availability in different amounts, and choosing among them is the modern architect's main
+    distributed decision.
+  </p>
+  <p>
+    <strong>The tails eat the average.</strong> A service that calls 10 others, each 99.9%
+    reliable, succeeds fully only about 99% of the time — 1% of a million requests per day is
+    10,000 failures. Distributed engineering is therefore tail engineering: hedged requests sent
+    to a second replica when the first is slow, backpressure instead of unbounded queues, timeouts
+    tuned to measured distributions rather than wishes (Dean and Barroso's "The Tail at Scale" is
+    the canonical treatment). Retry storms deserve special respect: a struggling service that
+    receives three retries per failure is under 3× the load it was already failing under —
+    which is why real systems add exponential backoff, jitter and circuit breakers that fail
+    fast rather than multiplying the disaster.
+  </p>
+  <p>
+    <strong>Open frontiers.</strong> Serverless platforms push the consistency question to its
+    limit (stateless functions force you to externalise every bit of state, re-creating the
+    problem per request); geo-replicated databases with tunable per-transaction consistency
+    (CockroachDB, YugabyteDB) make the CAP choice a parameter rather than an architecture; and
+    formal verification of consensus implementations is finally practical — TLA+ specifications
+    caught real bugs in production systems at Amazon and MongoDB, because the failure modes of
+    these algorithms are exactly the ones human intuition is worst at: interleavings, partial
+    failure, and time behaving badly.
+  </p>
+
   <p class="sources"><strong>Sources:</strong> Brewer CAP theorem (2000, proved 2012); Ongaro & Ousterhout, Raft (2014); Kleppmann, Designing Data-Intensive Applications.</p>
 </TopicPage>
