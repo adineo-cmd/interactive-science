@@ -1,17 +1,33 @@
-# CONTINUE.md — how to resume the book-depth expansion task
+# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026)
 
 ## What this project is
 Interactive Atlas (adineo-cmd/interactive-science): 142 subjects / 12 domains, every subject
-with a syllabus-backed program. All 577 live lessons get expanded from ~600-word snippets to
-1,800–2,600-word book chapters. **Done: foundational 181/181 ✓, intermediate 191/191 ✓,
-advanced 100/124 (adv-1..adv-3 complete; adv-4 partial). Remaining: 112 lessons** —
-adv-4b (7), adv-5 (24), exp-1 (25), exp-2 (25), exp-3 (25), exp-4 (6).
+with a syllabus-backed program. All 577 live lessons are now 1,800–2,600-word book chapters
+(strict visible-text count, frontmatter/tags excluded), each with an <h2>The idea</h2> opener,
+syllabus-topic sections with worked examples, "Common misconception" callouts, a
+<h2>Going deeper</h2> expert section, and sources last. **STATUS: COMPLETE and pushed
+(through 06a7a3e, Nov 1, 2026). Validator green, build green (724 pages).**
+
+Note: the 1,800 floor above is the strict visible-text count. An earlier convention counted
+raw file words (incl. markup), which left 37 lessons marginally short; they were topped up
+in commits 610e526 and 06a7a3e. Remaining known gap (optional future pass): 420 lessons have
+fewer than 3 "Common misconception" callouts (the playbook requires callouts but never
+quantified them; a quantified ≥3 audit was applied only to the Nov 2026 batches).
+
+## If resuming any content work
+- Batch files: astro-website/scripts/expand-batches/*.json (spec + lesson lists per batch).
+- Per-batch brief: see git history of this file (the expansion playbook is preserved in the
+  pre-Nov-1 version; core rules: preserve frontmatter/TopicPage/widgets/sources byte-exact,
+  no LaTeX, no bare '<'+space/digit, prose braces as &#123;…&#125;, ≤1 new widget/page).
 
 ## Repo state
-- Branch main. origin/main is BEHIND: local has unpushed commits (Advanced tier batch work
-  + JSX-brace fix). Push once you have fresh GitHub auth (old tokens expired).
-- Uncommitted WIP may exist (partial adv-4b/adv-5 rewrites from interrupted agents) — commit
-  as WIP or inspect with `git status` / `git diff`.
+- Branch main. Pushed through b6c4743 (Oct 31): GitHub auth works again — reuse the MCP
+  personal-account token at ~/.config/mcp/secrets/github-personal.token as a git credential
+  helper (repo owner adineo-cmd; the github-work token is the adineo-cmd2 account).
+- On this machine node_modules was missing: run `npm ci`, then
+  `node node_modules/esbuild/install.js` (npm blocks postinstall scripts), then build.
+- 946 mode-only "modified" files are copy artifacts; `git config core.fileMode false`
+  silences them.
 
 ## How to run
 ```
