@@ -17,162 +17,348 @@ const hookeCfg = {
 };
 ---
 <TopicPage slug="subjects/engineering/foundational/statics-structures">
-  <h2>The idea</h2>
+
+  <h2>Where you are, and what you will learn</h2>
   <p>
-    Engineering is design under constraint: physics sets the rules, money sets the budget, and safety
-    sets the floor. The oldest constraint is <strong>statics</strong> — the study of things that must
-    not move. Every structure, from a chair to a suspension bridge, is a machine for
-    <strong>guiding forces into the ground</strong> without any part exceeding what it can carry. That
-    sentence hides the discipline's two halves, which this lesson walks in order: <em>statics</em>
-    works out what forces each part must carry (equilibrium, free-body diagrams, trusses), and
-    <em>strength of materials</em> works out whether the part survives carrying them (stress, strain,
-    bending, buckling, failure). Neither half is optional: a perfect force analysis of an inadequate
-    beam still falls down, and an over-designed beam of unknown forces is guesswork with a budget.
+    This is the foundational lesson of Engineering, and it answers the discipline's oldest
+    question: why do structures stand — and why do they fall? You need no earlier lessons.
+    The physics used here is force, which will be explained from scratch, and the
+    mathematics never goes beyond multiply, divide and one square root. Everything else is
+    built step by step.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>treat forces as vectors — adding them, finding resultants, and computing the turning effect (moment) of a force;</li>
+    <li>draw a free-body diagram and use the two equilibrium conditions to find unknown support forces;</li>
+    <li>explain why kilograms and newtons are different quantities, and convert between the metric and US unit systems without error;</li>
+    <li>work out the tension and compression in truss members, and compute stress, strain and stretch from a load;</li>
+    <li>read a shear force and bending moment diagram, and say why an I-beam has its shape;</li>
+    <li>name the ways parts fail — yielding, buckling, fatigue, creep, brittle fracture — and explain what the factor of safety buys.</li>
+  </ul>
+  <p>
+    One habit runs through the page, and it is the engineer's first reflex: before
+    calculating anything, estimate the answer. Is this a tonne problem or a gram problem?
+    A quick estimate catches more design errors than any software.
+  </p>
+
+  <h2>The two questions every structure must answer</h2>
+  <p>
+    Sit on an ordinary chair for a moment and think about what it is doing. Your weight —
+    a force pulling you toward the Earth — enters the chair at the seat, travels through
+    the frame, and leaves through the four legs into the floor. Nothing moves, nothing
+    breaks. That is the whole job description of a structure, from a chair to a suspension
+    bridge: a machine for <strong>guiding forces into the ground</strong> without any part
+    exceeding what it can carry. (The uniform table from the physics classroom makes the
+    bookkeeping easy: four identical legs share the load equally, one quarter each — but
+    move the load off centre and the shares change, which is where the real subject
+    begins.)
+  </p>
+  <p>
+    Answering that job description takes two questions, and they organise this whole
+    lesson. First: <em>what forces must each part carry?</em> That is <strong>statics</strong> —
+    the study of things that must not move, built on equilibrium. Second: <em>can the part
+    survive carrying them?</em> That is <strong>strength of materials</strong> — stress,
+    strain, bending, buckling, failure. The two halves use one deliberate simplification
+    between them: statics treats every body as perfectly rigid, while strength of
+    materials allows the deformations that real bodies suffer. Neither half is optional —
+    a perfect force analysis of an inadequate beam still falls down, and an over-designed
+    beam of unknown forces is guesswork with a budget.
+  </p>
+  <p>
+    Before the machinery, one picture worth keeping for the whole page. Hooke's law (1676)
+    says a part stretches in proportion to the load you put on it — the straight grey line
+    below. But every material has a limit, drawn here in red. The widget shows the entire
+    discipline in miniature: engineering is the art of keeping the working point far to the
+    left of the crossing.
   </p>
 
   <Widget no="1" caption="a part under load — Hooke's law against its yield limit; the crossing is where it fails" widget="plotter" config={hookeCfg} />
-
   <p>
-    Hooke's law (1676) says stretch is proportional to load — until it isn't. Slide the stiffness k
-    and watch where the load line meets the red yield limit: the extension at failure. Real engineers
-    never let that point be reachable — they multiply expected loads by a <strong>safety factor</strong>
-    (bridges ~1.5–2 on live loads, aircraft structure ~1.5, cranes much higher) so the failure zone
-    sits far outside anything the real world delivers. Keep this picture: every calculation below
-    exists to place a point safely to the left of that crossing.
+    <strong>What to notice:</strong> slide the stiffness k and watch where the grey load
+    line meets the red yield limit — that intersection is the extension at which the part
+    fails. A stiffer part (larger k) reaches the same limit at a smaller stretch. Real
+    engineers never let the working point get near the crossing: they multiply the loads
+    they expect by a <strong>safety factor</strong> (roughly 1.5–2 on the live loads of
+    bridges, about 1.5 for aircraft structure, much higher for cranes and anything lifting
+    people), so the failure zone sits outside anything the real world delivers. Every
+    calculation below exists to place a point safely to the left of that red line.
   </p>
 
-  <h2>Forces as vectors: the statics toolkit</h2>
+  <h2>Forces are arrows: the vector toolkit</h2>
   <p>
-    A force has magnitude, direction and point of application — it is a <strong>vector</strong>, and
-    the vector language is where all statics starts. Forces add tip-to-tail; any set of forces can be
-    reduced to a single <strong>resultant</strong> plus a moment. <strong>Force systems</strong> come
-    in the standard varieties: <em>concurrent</em> (all lines of action through one point — no net
-    moment from them), <em>parallel</em>, and <em>distributed</em> (a load spread over an area, like
-    snow on a roof or water on a dam, handled by its resultant acting at the centroid). Rotation
-    needs its own quantity: the <strong>moment</strong> of a force, M = F × d (force times
-    perpendicular distance), and a <strong>couple</strong> — two equal, opposite, non-collinear forces
-    — produces pure rotation with zero resultant force, which is why a screwdriver turns the screw
-    without shoving it across the table. Units matter more than beginners believe, and the syllabus's
-    unit topic exists because errors here are how bridges fail on paper: mass (kg) versus force (N =
-    kg × g) versus the US engineering menagerie (lbm the mass, lbf the force, joined by the constant
-    g<sub>c</sub>; the slug, the dyne, the ton) — a weight calculation must convert mass to force
-    explicitly, and 1 kg under Earth's gravity weighs about 9.81 N. The first habit of any engineer:
-    before calculating anything, estimate. Is this a tonne problem or a gram problem? A quick
-    Fermi estimate catches more design errors than any software.
+    A force has a size, a direction and a point of application — it is a
+    <strong>vector</strong>, drawn as an arrow whose length is the size. The vector
+    language is where all statics starts, because forces combine like arrows, not like
+    numbers: two 50 N pulls in the same direction give 100 N, but at right angles they
+    give about 71 N in a diagonal direction. Any set of forces on a body can be boiled
+    down to a single equivalent — the <strong>resultant</strong> — plus a turning effect.
+    Force systems come in the standard varieties you will meet in problems:
+    <em>concurrent</em> (all their lines of action pass through one point), <em>parallel</em>
+    (like the table legs), and <em>distributed</em> (a load spread over an area — snow on
+    a roof, water on a dam — handled by its resultant acting at the centroid, the
+    geometric centre of the area).
+  </p>
+  <p>
+    Rotation needs its own quantity, because a force can turn a body as well as push it.
+    The <strong>moment</strong> of a force is <code>M = F × d</code>: force times the
+    perpendicular distance to the pivot. That is why a door handle sits far from the
+    hinges — same push, longer arm, more turn. And a <strong>couple</strong> — two equal,
+    opposite forces on parallel lines, like your two hands turning a jar lid — produces
+    pure rotation with zero net push, which is why the screwdriver turns the screw without
+    shoving it across the table.
+  </p>
+  <p>
+    <strong>So far:</strong> a structure is a load path to the ground; statics finds the
+    forces along that path using arrows that add, and moments that turn. Next comes the
+    trap that breaks more student calculations than any physics error: the units.
+  </p>
+
+  <h2>Weight, mass and the units trap</h2>
+  <p>
+    Mass and weight are different quantities, and confusing them is how bridges fail on
+    paper. <strong>Mass</strong> (kilograms, kg) is the amount of matter;
+    <strong>weight</strong> is the gravitational force on that mass, measured in newtons
+    (N). A mass of 1 kg weighs about 9.81 N on Earth — the multiplication by g is a
+    conversion you must do explicitly, every time. The US engineering menagerie makes the
+    distinction famous: the pound-mass (lbm) and pound-force (lbf) share a name but not a
+    dimension, joined only by the conversion constant g<sub>c</sub>; alongside them live
+    the slug (the mass that a 1 lbf force accelerates modestly), the dyne (the old
+    centimetre-gram-second force unit) and the ton. The syllabus's weight-and-mass topic
+    exists precisely because errors here are silent: the numbers look plausible, the units
+    are wrong, and the structure on paper is nonsense. The defence is the habit from the
+    top of the page — estimate first. A car of 1,500 kg should weigh around 15,000 N; if
+    your calculation gives 150 N or 15 million, stop and find the slip.
   </p>
 
   <h2>Free-body diagrams and equilibrium</h2>
   <p>
-    The <strong>free-body diagram (FBD)</strong> is statics' core ritual: isolate one body, cut it
-    free from the world, and draw <em>every</em> force acting on it — applied loads, its weight, and
-    the <strong>support reactions</strong> (rollers push perpendicular; pins push in two directions;
-    fixed supports also resist moment). Then demand balance: <strong>ΣF = 0 and ΣM = 0</strong> — two
-    or three equations per body, solved for the unknowns. Worked example: a 6 m simply supported beam
-    carries a 600 N load 2 m from the left support. Take moments about the left support:
-    R<sub>R</sub> × 6 = 600 × 2, so the right reaction is 200 N; vertical balance gives the left
-    reaction 400 N. Notice the load did <em>not</em> split evenly — it sits closer to one end, and the
-    reactions know it. Ninety per cent of statics is this ritual done honestly: the discipline is
-    completeness (a missed force makes the arithmetic lie confidently) and the equations do the rest.
-    When a system has more unknowns than equilibrium equations, it is <strong>statically
-    indeterminate</strong> — extra equations must come from the structure's stiffness (how much each
-    support stretches), which is the point where statics hands off to strength of materials.
+    The <strong>free-body diagram (FBD)</strong> is statics' core ritual, and it is four
+    steps drilled into every engineer: confirm the body is not accelerating (that is the
+    condition called <strong>static equilibrium</strong>); isolate one body and cut it free
+    from the world; draw <em>every</em> force acting on it — applied loads, its weight, and
+    the <strong>support reactions</strong> (a roller pushes perpendicular to its surface; a
+    pin pushes in two directions; a fixed support also resists turning); then demand
+    balance. Balance is Newton's first law written as equations: <code>ΣF = 0</code> (the
+    forces cancel) and <code>ΣM = 0</code> (the moments cancel). Two or three equations per
+    body, solved for the unknowns — and when you need one unknown force out of the way,
+    take moments about a pivot chosen so its own moment is zero.
+  </p>
+  <p>
+    A familiar example first, with two hands instead of steel. A pole vaulter carries a
+    uniform 5 kg pole horizontally, hands 0.900 m apart, with the pole's centre of gravity
+    0.600 m from the left hand. The pole weighs 5.00 × 9.80 = 49.0 N. Take moments about
+    the left hand: the right hand's force times 0.900 m must balance the weight's 49.0 N
+    acting at 0.600 m, so the right hand pushes up with (0.600 × 49.0) ÷ 0.900 ≈ 32.7 N —
+    and vertical balance gives the left hand only 49.0 − 32.7 = 16.3 N. The hand closer to
+    the centre carries more, exactly as two people carrying a sofa discover: the one nearer
+    the middle takes the heavier end. (Slide the grip toward the far end of the pole and
+    something strange happens — the outer hand must push <em>down</em> to keep the pole
+    level. Moments, not muscles, decide.)
+  </p>
+  <p>
+    Now the standard academic example. A 6 m simply supported beam carries a 600 N load
+    2 m from the left support. Take moments about the left support: the right reaction
+    times 6 m balances 600 N acting at 2 m, so it is 200 N; vertical balance gives the
+    left reaction 400 N. Notice the load did <em>not</em> split evenly — it sits closer to
+    one end, and the reactions know it. When a structure has more unknowns than equilibrium
+    equations (a beam fixed at both ends, for instance), it is <strong>statically
+    indeterminate</strong>: the extra equations must come from the structure's stiffness —
+    how much each support stretches — which is exactly where statics hands off to strength
+    of materials.
+  </p>
+  <p>
+    <em>Common misconception:</em> "two people carrying a load share it equally." It feels
+    fair, and it is wrong whenever the load sits unevenly between them — the person closer
+    to the load's centre of gravity carries measurably more (in the pole example above,
+    two-thirds versus one-third). Equal shares only happen when the load is centred. The
+    general rule is moments, not fairness: balance is decided by force times distance, and
+    the shorter lever arm always carries the bigger force.
   </p>
 
-  <h2>Internal forces: stress, strain and trusses</h2>
+  <h2>Inside the members: trusses, stress and strain</h2>
   <p>
-    Equilibrium finds the external reactions; cutting a member open reveals its <strong>internal
-    forces</strong>. A <strong>truss</strong> — the triangular lattice of bridges, cranes and roofs —
-    is the clean case: members carry pure <strong>tension</strong> (being pulled) or pure
-    <strong>compression</strong> (being squeezed), no bending, because loads meet only at joints.
-    The <strong>method of joints</strong> applies the FBD ritual to each pin: ΣF = 0 in two directions
-    walks the forces member by member. A triangle is rigid where a rectangle can shear into a
-    parallelogram — geometry doing structural work, which is why triangles are the shape of load-bearing
-    design. The intensity of the internal force is <strong>stress</strong>: σ = F/A (force over
-    cross-sectional area, in pascals), split into normal stress (perpendicular to the cut — tension/
-    compression) and <strong>shear stress</strong> (parallel to the cut — scissors and bolts). The
-    response is <strong>strain</strong> ε = ΔL/L (fractional stretch), and in the elastic region
-    stress and strain are proportional: σ = Eε, where E is Young's modulus — Hooke's law in its
-    rigorous form, and the curve in the widget above. Everything is a spring: a steel tie of 1 m and
-    100 mm² carrying 10 kN stretches δ = FL ÷ (EA) = 10,000 × 1 ÷ (200 × 10⁹ × 100 × 10⁻⁶) = 0.5 mm
-    — visible in precision machinery, invisible in a bridge, but always there. <strong>Superposition
-    (combined loading)</strong> says that for linear elastic members, several loads' effects simply
-    add: a column that is compressed <em>and</em> bent has the stresses of each, summed — and the
-    worst sum, not the worst single load, picks the failure.
+    Equilibrium finds the external forces; cutting a member open reveals its
+    <strong>internal forces</strong>. The clean case is the <strong>truss</strong> — the
+    triangular lattice of bridges, cranes and roofs. Because its loads meet only at the
+    joints, each member carries pure <strong>tension</strong> (being pulled) or pure
+    <strong>compression</strong> (being squeezed), with no bending — and the method of
+    joints applies the FBD ritual to each pin, walking the forces member by member. The
+    triangle is doing structural work: it is rigid where a rectangle can shear into a
+    parallelogram, which is why triangles are the shape of load-bearing design.
+  </p>
+  <p>
+    How hard a member is being pulled is measured by <strong>stress</strong> — the
+    intensity of the internal force: <code>σ = F / A</code>, force divided by
+    cross-sectional area, in pascals. Think of it as the load spread over every square
+    millimetre of the cut, which is why the same force is harmless through a thick rod and
+    brutal through a wire. Stress comes in two flavours: normal stress (perpendicular to
+    the cut — tension or compression) and <strong>shear stress</strong> (parallel to the
+    cut — what scissors apply, and what bolts in a joint resist). The member's response is
+    <strong>strain</strong>, ε = ΔL ÷ L: the fractional stretch. In the elastic region the
+    two are proportional — σ = E·ε, where E is Young's modulus, a stiffness property of the
+    material. That proportionality is Hooke's law in its rigorous form, and it is the grey
+    line in the widget above: everything is a spring. Worked example: a steel tie 1 m long
+    with a 100 mm² cross-section carrying 10,000 N stretches by δ = F·L ÷ (E·A) =
+    10,000 × 1 ÷ (200 × 10⁹ × 100 × 10⁻⁶) = 0.5 mm — invisible in a bridge, decisive in a
+    precision machine, but always there. And when several loads act at once,
+    <strong>superposition</strong> says their effects simply add in a linear elastic
+    member: a column that is compressed <em>and</em> bent carries the stresses of each,
+    summed — and the worst sum, not the worst single load, picks the failure.
   </p>
 
-  <h2>Beams, bending and the diagrams</h2>
+  <h2>Beams, bending and the two diagrams</h2>
   <p>
-    The beam is civilisation's workhorse member, and its analysis is the second great ritual. Draw
-    the <strong>shear force diagram</strong> and the <strong>bending moment diagram</strong>: cut the
-    beam at every station, ask what force and what moment the right half exerts on the left, and plot
-    both along the length. The rules connect them — the shear diagram's slope is the load, the moment
-    diagram's slope is the shear — and the beam fails where the moment peaks. For the 6 m beam above,
-    the peak moment is 400 × 2 = 800 N·m at the load point. Bending stress follows
-    <strong>σ = M·y ÷ I</strong>: the moment M, the distance y from the beam's neutral axis, and I —
-    the <strong>second moment of area</strong>, the property that measures how the material is
-    distributed around that axis. I is why the I-beam has its shape: the flanges carry most of the
-    material <em>far</em> from the neutral axis, where bending stress has room to work, so an I-section
-    resists bending many times better than the same amount of steel formed into a solid square
-    (the parallel axis theorem and radius of gyration quantify exactly this game). Bending couples
-    with transverse <strong>shear</strong> (the web of the I-beam's job), with <strong>torsion</strong>
-    (twisting — τ = T·c ÷ J, the circular-shaft analogue of bending, driving drive-shaft design), and
-    deflection (a beam's sag δ grows with load and length⁴ and shrinks with EI — which is why depth
-    beats material when a beam sags). Columns fail differently: <strong>Euler buckling</strong>
-    (P<sub>cr</sub> = π²EI ÷ L²) says a slender column can collapse sideways long before its material
-    crushes — buckling is a stiffness-and-geometry failure, and it is why doubling a column's
-    <em>length</em> quarters its capacity.
+    The beam is civilisation's workhorse member, and its analysis is the second great
+    ritual. Cut the beam at station after station, and at each cut ask two questions: what
+    sideways force does the right half exert on the left (the <strong>shear force</strong>),
+    and what turning effect (the <strong>bending moment</strong>)? Plot both along the
+    length and you have the two diagrams that beam designers live in. Their rules connect
+    them — the shear diagram's slope is the load, the moment diagram's slope is the shear
+    — and the beam fails where the moment peaks. For the 6 m beam above, the peak moment
+    is 400 N × 2 m = 800 N·m at the load point.
+  </p>
+  <p>
+    Bending stress follows <code>σ = M·y ÷ I</code>: the moment M, the distance y from the
+    beam's neutral axis (the layer that neither stretches nor squeezes), and I — the
+    <strong>second moment of area</strong>, which measures how the material is distributed
+    around that axis. I is the whole reason the I-beam has its shape: the flanges carry
+    most of the material <em>far</em> from the neutral axis, where bending stress has room
+    to work, so an I-section resists bending many times better than the same amount of
+    steel rolled into a solid square. The parallel axis theorem and the radius of gyration
+    quantify exactly this game of pushing material outward. Bending pairs with its
+    companions: transverse <strong>shear</strong> (the web of the I-beam's job),
+    <strong>torsion</strong> — twisting, τ = T·c ÷ J in a circular shaft, the analogue of
+    bending that drives drive-shaft design — and <strong>deflection</strong>, where a
+    beam's sag grows with load and with the fourth power of length and shrinks with E and
+    I, which is why depth beats material when a beam sags. Columns fail differently
+    altogether: <strong>Euler buckling</strong> says a slender column can collapse sideways
+    at <code>P = π²·E·I ÷ L²</code> — a stiffness-and-geometry failure, long before the
+    material itself crushes, and the reason doubling a column's length quarters its
+    capacity.
+  </p>
+  <p>
+    <em>Common misconception:</em> "if the stresses are safe, the structure is fine."
+    Stress calculations miss an entire family of failures that are about geometry, not
+    strength. A slender column buckles sideways while its material is nowhere near its
+    limit; a long, shallow floor can sag so far that plaster cracks and occupants feel the
+    floor is failing even though no stress limit is exceeded; a slender bridge deck can be
+    driven unstable by wind. The sagging bookshelf that nobody dares sit on twice was
+    "safe" by stress — and unusable by serviceability. Real design checks stiffness and
+    stability alongside strength, every time.
   </p>
 
   <h2>Friction, and the honest catalogue of failure</h2>
   <p>
-    <strong>Static friction</strong> is the third pillar of statics: contact surfaces resist sliding up
-    to a limit F ≤ μN (the coefficient μ, times the normal force), then let go. Friction is why
-    ladders stand (the wall is nearly frictionless; the floor's friction holds the whole business),
-    why wedges and brakes work, and why slopes fail — a soil bank steeper than its friction angle
-    slides. On the strength side, the failure catalogue deserves its own respect. <strong>Principal
-    stresses and Mohr's circle</strong> transform an arbitrary stress state into the maximum tension,
-    compression and shear any plane in the material feels; <strong>yield criteria</strong> turn that
-    state into a verdict — <strong>Tresca</strong> (yield when maximum shear reaches the value found
-    in a tension test) or <strong>von Mises</strong> (yield when a combined distortion-energy measure
-    crosses the material's limit; the standard for ductile metals). Beyond yielding:
-    <strong>fatigue</strong> — cracks growing under repeated loads far below the yield limit (the
-    reason aircraft parts have inspection hours and bridges have fatigue ratings);
-    <strong>creep</strong> — slow deformation under steady load at high temperature (turbine blades
-    live their whole lives by creep schedules); <strong>brittle fracture</strong> — sudden crack
-    propagation in cold or notch-sensitive materials (the WWII Liberty ships that snapped in Arctic
-    water); and <strong>stress concentrations</strong> — a sharp corner or hole multiplying local
-    stress by factors of several, which is why aircraft fuselage windows are oval and every
-    load-bearing design rounds its corners. The <strong>factor of safety</strong> wraps the whole
-    catalogue: working stress = material limit ÷ factor, with the factor sized to the uncertainty —
-    known loads and certified steel get 1.5; unknown soils, repeated dynamic loads or human-suspension
-    applications get 5 and up.
+    <strong>Static friction</strong> is the third pillar of statics: contact surfaces
+    resist sliding up to a limit of μN — the coefficient μ times the normal force — then
+    let go. Friction is why ladders stand (the wall is nearly frictionless; the floor's
+    friction holds the whole business up), why wedges, nails and brakes work, and why soil
+    slopes fail: a bank steeper than its friction angle slides. On the strength side, the
+    failure catalogue deserves respect, because parts rarely fail politely.
+    <strong>Principal stresses and Mohr's circle</strong> transform an arbitrary stress
+    state into the maximum tension, compression and shear that any plane in the material
+    feels; <strong>yield criteria</strong> turn that state into a verdict — Tresca (yield
+    when the maximum shear reaches the value found in a simple tension test) or von Mises
+    (yield when a combined distortion-energy measure crosses the material's limit; the
+    standard for ductile metals). Beyond yielding come the slow and the sudden killers:
+    <strong>fatigue</strong> — cracks growing under repeated loads far below the yield
+    limit, the reason aircraft parts have inspection hours; <strong>creep</strong> — slow
+    deformation under steady load at high temperature, which turbine blades live their
+    whole lives by; <strong>brittle fracture</strong> — sudden crack propagation in cold
+    or notch-sensitive materials, the failure that snapped Second World War Liberty ships
+    in Arctic water; and <strong>stress concentrations</strong> — a sharp corner or hole
+    multiplying local stress by several times, which is why aircraft fuselage windows are
+    oval and every load-bearing design rounds its corners. The <strong>factor of
+    safety</strong> wraps the whole catalogue: working stress equals the material limit
+    divided by the factor, with the factor sized to the uncertainty — known loads and
+    certified steel get about 1.5; unknown soils, repeated dynamic loads or
+    human-suspension applications get 5 and up.
   </p>
-  <p><em>Common misconception:</em> strong and stiff are not the same. Strength is the load a part
-  survives (yield limit); stiffness is how little it deflects under load (E, the slope). Rubber is
-  flexible yet strong in tension; glass is stiff yet fragile. A design can fail by being too floppy
-  while every stress is safe — the sagging bookshelf nobody sat on twice — and the fix is geometry
-  (depth, I), not a stronger alloy.</p>
+  <p>
+    <em>Common misconception:</em> "strong and stiff mean the same thing." They are
+    different properties that different problems need. <strong>Strength</strong> is the
+    load a part survives — its yield limit, the red line in the widget.
+    <strong>Stiffness</strong> is how little it deflects under load — the slope of the
+    grey line, governed by E and by geometry. Rubber is flexible yet strong in tension;
+    glass is stiff yet fragile. A design can fail by being too floppy while every stress
+    is safe, and the fix is geometry — depth, I — not a stronger alloy. Choosing which
+    property your problem actually needs is half of engineering judgement.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A 4-legged table carries a 400 N load dead centre. What force does each leg carry — and what changes if the load moves toward one corner?</li>
+    <li>Why does a door handle sit on the edge opposite the hinges? Answer with the moment equation.</li>
+    <li>A 1 kg bag of sugar and a 1 N apple: which is the bigger quantity, and what does each measure?</li>
+    <li>Two people carry a 300 N ladder, gripping 1 m and 3 m from its centre of gravity. Who carries more, and roughly how much?</li>
+    <li>A slender steel column and a short fat column are made of the same steel. Which is more likely to fail by crushing, and which by buckling — and why does the answer matter for design?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) 100 N each, by symmetry. Move the load off centre and
+    the nearby legs pick up more, the far legs less — the legs' forces are found from
+    moments, not divided by four on faith. (2) M = F × d: the handle's greater distance
+    from the hinge buys more turning moment per newton of push, so a light push opens the
+    door. (3) The sugar has the bigger weight: 1 kg weighs about 9.81 N, so a 1 N apple
+    has a mass of roughly 100 grams. Kilograms measure matter; newtons measure force. (4)
+    The nearer carrier: moments about the load's centre give 300 × 3 ÷ (1 + 3) = 225 N on
+    the close grip and 75 N on the far one. Equal sharing happens only with equal lever
+    arms. (5) The short fat column fails by crushing (material strength); the slender one
+    by Euler buckling (stiffness and geometry) at a load that can be far lower. Designing
+    the slender column "stronger" changes nothing — the fix is geometry: shorter, deeper,
+    or braced.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A structure is a load path to the ground; statics finds the forces on that path (rigid bodies), strength of materials checks the parts survive them (deformable bodies).</li>
+    <li>Forces are vectors; any system reduces to a resultant plus moments; a couple turns without pushing; distributed loads act at their centroid.</li>
+    <li>Moment M = F × d is the turning effect of a force — the lever arm decides who carries what, and the hand closer to the load's centre always carries more.</li>
+    <li>Mass (kg) and weight (N) are different: 1 kg weighs about 9.81 N; unit conversions (lbm, lbf, g<sub>c</sub>, slug) are where calculations silently fail — so estimate first.</li>
+    <li>The free-body diagram plus ΣF = 0 and ΣM = 0 solves support reactions; more unknowns than equations means statically indeterminate, and stiffness supplies the missing equations.</li>
+    <li>Trusses carry pure tension and compression because triangles are rigid; stress σ = F/A and strain ε = ΔL/L are proportional (σ = E·ε) in the elastic region — everything is a spring.</li>
+    <li>Beams are designed from shear and moment diagrams; bending stress σ = M·y/I rewards pushing material away from the neutral axis, which is why the I-beam has its shape.</li>
+    <li>Slender columns fail by Euler buckling (π²·E·I/L²), not crushing; friction holds ladders and slopes up to μN.</li>
+    <li>Failure has a catalogue — yield, fatigue, creep, brittle fracture, stress concentrations — and the factor of safety prices the uncertainty; strong and stiff are different properties.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    This page is the vocabulary; the next lesson, <em>Forces, beams and bridges</em>, is
+    the conversation — real structures analysed end to end, from the reactions at the
+    abutments to the bending diagram that sizes the girders. Later subjects reuse today's
+    rituals everywhere: dynamics adds motion to the same vectors, mechanical design
+    applies the failure catalogue to shafts and fasteners, and civil engineering scales
+    the load path to whole buildings.
+  </p>
 
   <h2>Going deeper</h2>
   <p>
-    The professional layer is about honesty with uncertainty. <strong>Tacoma Narrows (1940)</strong> —
-    "Galloping Gertie" — collapsed four months after opening; the folklore says resonance, but the
-    engineering finding is <strong>aeroelastic flutter</strong>: wind feeding energy into a coupled
-    torsional-vertical oscillation until the deck tore itself apart. The lesson that survives in every
-    modern wind code is structural: stiffness and damping are wind-resistance, and slender flexibility
-    is not elegance but exposure. <strong>Codes embody accumulated failure</strong> (Petroski's thesis
-    in <em>To Engineer Is Human</em>): every clause in a design code is a fossil of a specific
-    disaster, and modern practice has shifted from the deterministic safety factor toward
-    <strong>limit state design</strong> — partial factors on loads <em>and</em> materials separately,
-    sized by probability, so that "safe" means "failure unlikely enough over the structure's life",
-    which is the statistics subject's confidence interval wearing a hard hat. And the quiet frontier
-    of statics is computation: the <strong>finite element method</strong> divides any shape into
-    thousands of elements, applies exactly the equilibrium-and-Hooke's-law mathematics above, and
-    returns colour maps of stress — but the colour map is only as honest as its boundary conditions,
-    which is why the free-body diagram, the Fermi estimate and the habit of asking "what carries this
-    load to the ground?" remain the irreplaceable core. Structures stand when every load has a
-    complete, calculated path to the earth; everything in this lesson is the machinery for checking
-    that path, one arrow at a time.
+    <strong>Tacoma Narrows (1940)</strong> — "Galloping Gertie" — collapsed four months
+    after opening, and the folklore says resonance. The engineering finding was
+    <strong>aeroelastic flutter</strong>: wind feeding energy into a coupled
+    torsional-vertical oscillation until the deck tore itself apart. The lesson that
+    survives in every modern wind code is structural: stiffness and damping are
+    wind-resistance, and slender flexibility is not elegance but exposure — the
+    stiffness-versus-strength distinction of this page, written in a bridge.
   </p>
-  <p class="sources"><strong>Sources:</strong> Hooke (1676); Hibbeler, Engineering Mechanics: Statics and Mechanics of Materials; Gere & Goodno, Mechanics of Materials; Petroski, To Engineer Is Human (1985); Tacoma Narrows Bridge failure report (Amann et al., 1941).</p>
+  <p>
+    <strong>Codes embody accumulated failure.</strong> Every clause in a design code is a
+    fossil of a specific disaster — Petroski's thesis in <em>To Engineer Is Human</em> —
+    and modern practice has shifted from the single deterministic safety factor toward
+    <strong>limit state design</strong>: partial factors applied to loads and materials
+    separately, sized by probability, so that "safe" means "failure unlikely enough over
+    the structure's life". And the quiet frontier of statics is computation: the
+    <strong>finite element method</strong> divides any shape into thousands of small
+    elements, applies exactly the equilibrium-and-Hooke's-law mathematics above, and
+    returns colour maps of stress — but a colour map is only as honest as its boundary
+    conditions, which is why the free-body diagram, the Fermi estimate and the habit of
+    asking "what carries this load to the ground?" remain the irreplaceable core.
+    Structures stand when every load has a complete, calculated path to the earth;
+    everything in this lesson is the machinery for checking that path, one arrow at a
+    time.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Hooke (1676); Hibbeler, Engineering Mechanics: Statics and Mechanics of Materials; Gere & Goodno, Mechanics of Materials; Petroski, To Engineer Is Human (1985); Tacoma Narrows Bridge failure report (Amann et al., 1941). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
+
 </TopicPage>
