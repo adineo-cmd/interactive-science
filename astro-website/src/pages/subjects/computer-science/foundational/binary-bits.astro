@@ -22,158 +22,300 @@ const binCfg = {
 };
 ---
 <TopicPage slug="subjects/computer-science/foundational/binary-bits">
-  <h2>The idea</h2>
+
+  <h2>Where you are, and what you will learn</h2>
   <p>
-    A transistor is a switch with two honest states: on and off. Computers are built from billions of
-    them, so everything — numbers, photos, songs, this sentence — must be spelled in a two-letter
-    alphabet. That is not a limitation philosophy chose; it is what physics offers cheaply. A voltage
-    is never exactly 0 or exactly 5 volts — it is somewhere near, drifting with temperature and
-    interference — and a system that only needs to decide "high or low?" can be wrong by a large margin
-    and still be right. A system that tried to read ten distinct voltage levels per cell, decimal-style,
-    would confuse 7 with 8 every time a wire got warm. <strong>Binary wins because reliability beats
-    compactness</strong>: two states survive noise, ten do not. Everything in this lesson follows from
-    that one engineering trade.
+    This is the opening lesson of Computer Science, and it assumes no prior computing at all —
+    only everyday arithmetic (multiply, divide, powers of two, which we rebuild on the way)
+    and a willingness to count slowly in a new alphabet. Everything else is built here, step
+    by step.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain why computers are binary — and why reliability, not simplicity, is the reason;</li>
+    <li>convert between denary, binary and hexadecimal in both directions, and use two's complement for negative numbers;</li>
+    <li>state the master pattern of the whole subject — <strong>n bits give 2ⁿ distinct values</strong> — and predict the capacity of any box of bits;</li>
+    <li>describe how text, images and sound become numbers, and compute their file sizes;</li>
+    <li>compare lossless and lossy compression, and choose the right one for a given kind of data;</li>
+    <li>add binary numbers by hand and explain what shifts do.</li>
+  </ul>
+  <p>
+    One habit governs everything: bits have no meaning of their own — meaning arrives when a
+    reader agrees on what the patterns stand for. That single idea explains text codes, image
+    formats, and most encoding bugs you will ever meet.
+  </p>
+
+  <h2>Why two states: the engineering trade that starts everything</h2>
+  <p>
+    A transistor is a switch with two honest states: on and off. Computers are built from
+    billions of them, so everything — numbers, photos, songs, this sentence — must be spelled
+    in a two-letter alphabet. That is not a limitation philosophy chose; it is what physics
+    offers cheaply. A voltage is never exactly 0 or exactly 5 volts — it is somewhere near,
+    drifting with temperature and interference — and a system that only needs to decide "high
+    or low?" can be wrong by a large margin and still be right. A system that tried to read
+    ten distinct voltage levels per cell, decimal-style, would confuse 7 with 8 every time a
+    wire got warm. <strong>Binary wins because reliability beats compactness</strong>: two
+    states survive noise, ten do not. Everything in this lesson follows from that one
+    engineering trade.
   </p>
   <p>
-    One switch holds one <strong>bit</strong> — a single 0 or 1. Eight bits make a <strong>byte</strong>,
-    which counts from 0 to 255 and is enough to store one typed letter ("A" is 65, or
-    <code>01000001</code>). And the master pattern of the whole subject is arithmetic, not magic:
-    <strong>n bits give 2ⁿ distinct values</strong>. Sixteen bits reach 65,536 (the "16-bit" era of
-    games and sound cards); 24 bits of colour give 16,777,216 shades — the "true colour" of your screen;
-    32 bits of memory address reach about 4 billion locations (a wall 2000s PCs actually hit); 64-bit
-    processors address memory in spaces no machine has filled.
+    One switch holds one <strong>bit</strong> — a single 0 or 1. Eight bits make a
+    <strong>byte</strong>, which counts from 0 to 255 and is enough to store one typed letter
+    ("A" is 65, or <code>01000001</code>). And the master pattern of the whole subject is
+    arithmetic, not magic: <strong>n bits give 2ⁿ distinct values</strong>. Sixteen bits reach
+    65,536 (the "16-bit" era of games and sound cards); 24 bits of colour give 16,777,216
+    shades — the "true colour" of your screen; 32 bits of memory address reach about 4 billion
+    locations (a wall 2000s PCs actually hit); 64-bit processors address memory in spaces no
+    machine has filled. Turned around, the same pattern tells you how many bits an alphabet
+    needs: enough that 2ⁿ covers every symbol — three bits for eight symbols, seven for an
+    alphabet of a hundred or so.
   </p>
 
   <Widget no="1" caption="why bytes stop at 255 — set the bit count and read the ceiling" widget="sliderLab" config={bitsCfg} />
-
   <p>
-    Drag the slider and watch both readouts: the count of representable values and the largest storable
-    number. They differ by exactly one, and the reason is that zero is a value too — with 8 bits you can
-    name 256 different numbers, but one of them is 0, so the ceiling is 255, not 256. Every "out of
-    memory", every "integer overflow", every year-2000-style bug is this slider failing quietly: the
-    value you needed to store simply needed one more bit than the box had.
+    <strong>What to notice:</strong> the two readouts differ by exactly one, and the reason is
+    that zero is a value too — with 8 bits you can name 256 different numbers, but one of them
+    is 0, so the ceiling is 255, not 256. Watch what one extra bit buys: the capacity doubles
+    every time, which is why memory sizes come in powers of two. Every "out of memory", every
+    "integer overflow", every year-2000-style bug is this slider failing quietly: the value
+    you needed to store simply needed one more bit than the box had.
+  </p>
+  <p>
+    <strong>So far:</strong> bits are cheap, reliable switches; n of them name 2ⁿ things, and
+    the ceiling is one below the count because zero takes a slot. Now: how a pile of switches
+    becomes a <em>number system</em>.
   </p>
 
   <h2>Number systems: binary, denary and hexadecimal</h2>
   <p>
-    Binary is a place-value system exactly like decimal — only the base changes. Decimal 4,093 means
-    4×1000 + 0×100 + 9×10 + 3×1; binary 1101 means 1×8 + 1×4 + 0×2 + 1×1 = 13. Converting
-    denary → binary is the widget below's greedy algorithm: repeatedly subtract the largest power of two
-    that fits. Converting binary → denary is even easier: add the place values under every 1. Two
-    refinements complete the number-system toolkit. <strong>Hexadecimal</strong> (base 16, digits
-    0–9 then A = 10 through F = 15) is not a third counting system the hardware uses — the machine only
-    ever sees binary — but a human shorthand, because one hex digit encodes exactly four bits (one
-    <em>nybble</em>): 1111 = F, 1010 0111 = A7. Memory addresses, colour codes (#FF8000 = red 255, green
-    128, blue 0) and error dumps are written in hex because a 32-bit address in binary is 32 characters
-    and in hex is 8. <strong>Negative numbers</strong> use <strong>two's complement</strong>: flip every
-    bit and add 1, so −13 in 8 bits is 11110011. The beautiful consequence is that the same adder
-    circuit handles subtraction for free (a − b = a + (−b)), with no separate subtraction hardware —
-    and the leading bit doubles as a sign flag: 0 means non-negative, 1 means negative. The cost is a
-    fixed range (−128 to +127 for 8 bits) and the famous <strong>overflow</strong> error when a result
-    exceeds the bits available — 127 + 1 in 8 bits wraps around to −128, which is the arithmetic
-    version of the odometer rolling over.
+    Binary is a place-value system exactly like decimal — only the base changes. Decimal
+    4,093 means 4×1000 + 0×100 + 9×10 + 3×1; binary 1101 means 1×8 + 1×4 + 0×2 + 1×1 = 13.
+    Converting denary → binary is the greedy algorithm the widget below runs: repeatedly
+    subtract the largest power of two that fits. Converting binary → denary is even easier:
+    add the place values under every 1. A merchant's balance makes the uniqueness visible:
+    with one weight of each power of two — 1, 2, 4, 8 grams — any whole weight balances in
+    exactly one way, because each power either fits (digit 1) or does not (digit 0). That is
+    precisely why every binary pattern names exactly one number and every number has exactly
+    one binary spelling.
   </p>
+  <p><em>Common misconception:</em> binary numbers are "different numbers" from denary ones —
+  as if 1101 were a strange object of a different kind. It is the same number as 13, spelled
+  differently: thirteen is a count, and 1101 is merely how that count is written with place
+  values of two instead of ten. Nothing about the quantity changes; only the notation does.
+  Keeping this straight matters, because every later topic — hex, two's complement, colour
+  depths — is a re-spelling of one underlying store of bits.</p>
 
   <Widget no="2" caption="counting like a computer — 13 in binary, honestly" widget="equationStep" config={binCfg} />
+  <p>
+    <strong>What to notice:</strong> the algorithm always asks the same question — does the
+    next power of two fit? — and each answer is one bit, read left to right. The remainder
+    shrinks with every step, so the process must end, and it ends in exactly four decisions
+    for a 4-bit number. This greedy subtraction is the whole of denary-to-binary conversion,
+    at any width.
+  </p>
+  <p>
+    Two refinements complete the toolkit. <strong>Hexadecimal</strong> (base 16, digits 0–9
+    then A = 10 through F = 15) is not a third counting system the hardware uses — the machine
+    only ever sees binary — but a human shorthand, because one hex digit encodes exactly four
+    bits (one <em>nybble</em>): 1111 = F, 1010 0111 = A7. Memory addresses, colour codes
+    (#FF8000 = red 255, green 128, blue 0) and error dumps are written in hex because a 32-bit
+    address in binary is 32 characters and in hex is 8 — and the two-step translation (split
+    into nybbles, look each up) is error-proof where reading thirty-two raw bits is not.
+    <strong>Negative numbers</strong> use <strong>two's complement</strong>: flip every bit
+    and add 1, so −13 in 8 bits is 11110011. The beautiful consequence is that the same adder
+    circuit handles subtraction for free (a − b = a + (−b)), with no separate subtraction
+    hardware. The cost is a fixed range (−128 to +127 for 8 bits) and the famous
+    <strong>overflow</strong> error when a result exceeds the bits available — 127 + 1 in 8
+    bits wraps around to −128, the arithmetic version of an odometer rolling over.
+  </p>
+  <p><em>Common misconception:</em> in two's complement the leading bit is "just a sign flag",
+  a minus sign bolted on in front of an ordinary number. If it were, the 8-bit pattern
+  10000000 would be "minus zero" — and indeed the older <em>sign-magnitude</em> scheme, which
+  really does spend a bit on a flag, wastes exactly that code, keeping both 00000000 and
+  10000000 for zero. Two's complement drops the flag idea: negative numbers are full
+  arithmetic citizens, chosen so that a number and its negation sum to zero by ordinary
+  addition (13 + 11110011 = 00000000 with the carry falling off the end), and 10000000 is
+  genuinely −128, not a second zero. That is why one adder does both addition and
+  subtraction.</p>
 
   <h2>Text: agreeing on lookup tables</h2>
   <p>
-    Text is the easiest encoding to understand because it is pure agreement. <strong>ASCII</strong>
-    (1963) assigned numbers to characters: 65 = A, 97 = a, 48 = 0, 32 = space — originally 7 bits, 128
-    characters, enough for English and arithmetic and nothing else (no é, no 中文, no emoji). The
-    successor, <strong>Unicode</strong>, assigns a number to <em>every</em> character in every living
-    writing system — over 150,000 of them — and defines encodings (UTF-8 the most common) that store
-    those numbers as one to four bytes each, chosen so that plain English text still costs one byte per
-    letter and stays backward-compatible with ASCII. The deep point is that a character set is a
-    dictionary between symbols and integers; once text is integers, it is bits, and every operation —
-    sorting, searching, upper-casing — becomes arithmetic on codes. It also means encoding mismatches
-    are real bugs: reading a UTF-8 file as an older single-byte encoding is exactly how you get
-    "cafÃ©" instead of "café" — the bytes are the same, the dictionary used to decode them differs.
+    Text is the easiest encoding to understand because it is pure agreement.
+    <strong>ASCII</strong> (1963) assigned numbers to characters: 65 = A, 97 = a, 48 = 0,
+    32 = space — originally 7 bits, 128 characters, enough for English and arithmetic and
+    nothing else (no é, no 中文, no emoji). The successor, <strong>Unicode</strong>, assigns a
+    number to <em>every</em> character in every living writing system — over 150,000 of them —
+    and defines encodings (UTF-8 the most common) that store those numbers as one to four
+    bytes each, chosen so that plain English text still costs one byte per letter and stays
+    backward-compatible with ASCII. The deep point is that a character set is a dictionary
+    between symbols and integers; once text is integers, it is bits, and every operation —
+    sorting, searching, upper-casing — becomes arithmetic on codes. It also means encoding
+    mismatches are real bugs: reading a UTF-8 file as an older single-byte encoding is exactly
+    how you get "cafÃ©" instead of "café" — the bytes are the same, the dictionary used to
+    decode them differs.
   </p>
-  <p><em>Common misconception:</em> letters are not "stored" in memory. Only integers are stored;
-  letters exist at the moment of interpretation — 65 is the code for A when the program treats it as
-  text, and a perfectly good number 65 when it doesn't. The same bytes can be a character, a pixel
-  value or an instruction depending entirely on what the reader expects.</p>
+  <p><em>Common misconception:</em> letters are not "stored" in memory. Only integers are
+  stored; letters exist at the moment of interpretation — 65 is the code for A when the
+  program treats it as text, and a perfectly good number 65 when it doesn't. The same bytes
+  can be a character, a pixel value or an instruction depending entirely on what the reader
+  expects.</p>
 
-  <h2>Images and sound: sampling reality</h2>
+  <h2>Images and sound: quantising reality</h2>
   <p>
-    Both image and audio digitisation are the same idea — <em>measure at intervals, store the
-    measurements as numbers</em> — applied in two dimensions of different kinds. A <strong>bitmap
-    image</strong> is a grid of <strong>pixels</strong>; each pixel's colour is a number whose size is
-    the <strong>colour depth</strong> (24-bit true colour = 8 bits each for red, green and blue). Two
-    dials control quality: <strong>resolution</strong> (how many pixels) and colour depth (how many
-    colours each can be). File size follows immediately: width × height × depth ÷ 8 bytes. A 1920 ×
-    1080 photo at 24 bits is 1920 × 1080 × 3 ≈ 6.2 MB before compression. Digital
-    <strong>sound</strong> measures a wave's amplitude over time: the <strong>sampling rate</strong> is
-    how many measurements per second (CD quality: 44,100 Hz — chosen because human hearing ends near
-    20 kHz and you must sample at better than twice the highest frequency you want to keep), and the
-    <strong>sample resolution</strong> is how many bits each measurement gets (16-bit for CD: 65,536
-    possible loudness levels). File size = rate × resolution × channels × seconds; one stereo minute at
-    CD quality is 44,100 × 16 × 2 × 60 ≈ 10.6 MB. The two dials trade fidelity against size in both
-    media, and increasing either multiplies file size linearly — which is why the third topic, compression,
-    is not optional but structural.
+    Both image and audio digitisation are the same idea — <em>chop a continuous quantity into
+    small cells, agree one value to stand for each cell, store that value's binary code</em> —
+    applied to two different dimensions. Engineers call the chopping
+    <strong>quantisation</strong>, and it is how any analog-to-digital converter works: a
+    voltage between 0 and its maximum falls into one of many equal cells, is approximated by
+    (say) the cell's midpoint, and the cell's number is what gets stored. The stored value is
+    slightly wrong — quantisation error — but with enough cells the error sinks below
+    perception.
+  </p>
+  <p>
+    A <strong>bitmap image</strong> quantises space: a grid of <strong>pixels</strong>, each
+    pixel's colour a number whose size is the <strong>colour depth</strong> (24-bit true
+    colour = 8 bits each for red, green and blue). Two dials control quality:
+    <strong>resolution</strong> (how many pixels) and colour depth (how many colours each can
+    be). File size follows immediately: width × height × depth ÷ 8 bytes. A 1920 × 1080 photo
+    at 24 bits is 1920 × 1080 × 3 ≈ 6.2 MB before compression. Digital <strong>sound</strong>
+    quantises time: a wave's amplitude is measured again and again, the <strong>sampling
+    rate</strong> counting measurements per second (CD quality: 44,100 Hz — chosen because
+    human hearing ends near 20 kHz and you must sample at better than twice the highest
+    frequency you want to keep), and the <strong>sample resolution</strong> giving each
+    measurement its bits (16-bit for CD: 65,536 possible loudness levels). File size =
+    rate × resolution × channels × seconds; one stereo minute at CD quality is
+    44,100 × 16 × 2 × 60 ≈ 10.6 MB. The two dials trade fidelity against size in both media,
+    and increasing either multiplies file size linearly — which is why compression, the next
+    topic, is not optional but structural.
   </p>
 
   <h2>Storage units and compression</h2>
   <p>
-    First the units, because the gap here confuses everyone: <strong>KiB vs KB</strong>. Memory is
-    binary — 1 KiB = 1,024 bytes = 2¹⁰ — while storage marketing uses decimal — 1 KB = 1,000 bytes.
-    The gap compounds: a "1 TB" drive holds 10¹² bytes, which is about 931 GiB, and that is why your
-    drive shows ~931 GB. Nothing is missing; two definitions of "giga" are meeting. (The ISO/IEC 80000-13
-    standard created the "i" units — kibibyte, mebibyte, gibibyte — precisely to stop the argument.)
+    First the units, because the gap here confuses everyone: <strong>KiB vs KB</strong>.
+    Memory is binary — 1 KiB = 1,024 bytes = 2¹⁰ — while storage marketing uses decimal —
+    1 KB = 1,000 bytes. The gap compounds: a "1 TB" drive holds 10¹² bytes, which is about
+    931 GiB, and that is why your drive shows roughly 931 GB. Nothing is missing; two
+    definitions of "giga" are meeting. (The ISO/IEC 80000-13 standard created the "i" units —
+    kibibyte, mebibyte, gibibyte — precisely to stop the argument.)
   </p>
+  <p><em>Common misconception:</em> a drive sold as "1 TB" that shows 931 GB is defective, or
+  the manufacturer is hiding space. The bytes are all there; the operating system is
+  measuring in binary gigabytes (GiB) while the label counts decimal trillions. Divide
+  1,000,000,000,000 by 1,024 three times and you get 931.32 — the "missing" 7% is arithmetic,
+  not theft.</p>
   <p>
-    <strong>Compression</strong> exploits redundancy: real data repeats itself, and repetition can be
-    described more briefly than it occurs. <strong>Lossless</strong> compression shrinks a file and can
-    restore it bit-for-bit — essential for text, code and archives. <strong>Run-length encoding</strong>
-    stores runs as (count, value) pairs: the row WWWWWWWWWWWWBWWWW becomes 12W1B4W; great for cartoons
-    with flat colour, useless for photographs where runs are short. Dictionary methods (LZ77 and
-    descendants, inside ZIP and PNG) replace repeated phrases with references to earlier occurrences.
-    <strong>Lossy</strong> compression throws information away — <em>permanently</em> — but throws away
-    the information humans barely perceive. JPEG discards colour detail the eye is less sensitive to
-    than brightness and keeps only a subset of spatial frequencies; MP3 discards frequencies and
-    "masked" sounds that psychoacoustic research says you will not miss. The compression ratios are
-    dramatic (10:1 is normal) and the loss is, by design, invisible — until you re-save a JPEG a
-    hundred times and watch artifacts accumulate, because each pass loses a little more. The rule that
-    tells you which to use: if the data's <em>meaning</em> must survive exactly (text, medical records,
-    programs), lossless only; if the data's <em>appearance</em> is the point (photos, music, video),
+    <strong>Compression</strong> exploits redundancy: real data repeats itself, and repetition
+    can be described more briefly than it occurs. <strong>Lossless</strong> compression
+    shrinks a file and can restore it bit-for-bit — essential for text, code and archives.
+    <strong>Run-length encoding</strong> stores runs as (count, value) pairs: the row
+    WWWWWWWWWWWWBWWWW becomes 12W1B4W; great for cartoons with flat colour, useless for
+    photographs where runs are short. Dictionary methods (LZ77 and descendants, inside ZIP and
+    PNG) replace repeated phrases with references to earlier occurrences. <strong>Lossy</strong>
+    compression throws information away — <em>permanently</em> — but throws away the
+    information humans barely perceive. JPEG discards colour detail the eye is less sensitive
+    to than brightness; MP3 discards frequencies and "masked" sounds that psychoacoustic
+    research says you will not miss. The ratios are dramatic (10:1 is normal) and the loss is,
+    by design, invisible — until you re-save a JPEG a hundred times and watch artefacts
+    accumulate, because each pass loses a little more. The rule that tells you which to use:
+    if the data's <em>meaning</em> must survive exactly (text, medical records, programs),
+    lossless only; if the data's <em>appearance</em> is the point (photos, music, video),
     lossy is usually the honest bargain.
   </p>
-
-  <h2>Binary arithmetic: addition, shifts, and hex in practice</h2>
   <p>
-    Binary arithmetic works column-by-column exactly like the arithmetic you know, with simpler
-    carries. Add 0110 (6) + 0111 (7): rightmost 0+1 = 1; next 1+1 = 0 carry 1; next 1+1+1 = 1 carry 1;
-    leftmost 0+0+1 = 1 — result 1101 (13). Each column's rule is tiny (0+0 = 0, 0+1 = 1, 1+1 = 0
-    carry 1, 1+1+1 = 1 carry 1), and that simplicity is the point: the same adder circuit, replicated
-    and chained, adds numbers of any width. Two more operations show why binary suits machinery.
-    <strong>Shifting left</strong> (every bit moves one place up, 0 fills the gap) multiplies by two —
-    0110 (6) shifted left is 1100 (12) — exactly as appending a zero multiplies by ten in decimal;
-    <strong>shifting right</strong> divides by two, discarding the remainder. Multiplication by a
-    constant becomes add-and-shift: ×10 is (×8) + (×2), two shifts and one add. And a worked hex
-    conversion closes the loop: split 10101101 into nybbles 1010 | 1101, look each up (1010 = 10 = A,
-    1101 = 13 = D), read AD — the whole reason memory dumps and colour codes are written in hex is
-    that this two-step translation is error-proof where reading thirty-two raw bits is not.
+    <strong>So far:</strong> text, images and sound all end as agreed dictionaries from
+    meaning to integers, and compression is the art of describing the repetitions those
+    dictionaries leave visible. One layer of the subject remains: doing arithmetic on the bits
+    directly.
+  </p>
+
+  <h2>Binary arithmetic: addition, shifts, and short cuts</h2>
+  <p>
+    Binary arithmetic works column-by-column exactly like the arithmetic you know, with
+    simpler carries. Add 0110 (6) + 0111 (7): rightmost 0+1 = 1; next 1+1 = 0 carry 1; next
+    1+1+1 = 1 carry 1; leftmost 0+0+1 = 1 — result 1101 (13). Each column's rule is tiny
+    (0+0 = 0, 0+1 = 1, 1+1 = 0 carry 1, 1+1+1 = 1 carry 1), and that simplicity is the point:
+    the same adder circuit, replicated and chained, adds numbers of any width. Two more
+    operations show why binary suits machinery. <strong>Shifting left</strong> (every bit moves
+    one place up, 0 fills the gap) multiplies by two — 0110 (6) shifted left is 1100 (12) —
+    exactly as appending a zero multiplies by ten in decimal; <strong>shifting right</strong>
+    divides by two, discarding the remainder. Multiplication by a constant becomes
+    add-and-shift: ×10 is (×8) + (×2), two shifts and one add. And the place values double as
+    quick tests: a binary number is even exactly when it ends in 0, divisible by 4 exactly
+    when it ends in 00 — the same trick as "ends in 0" testing divisibility by 10 in decimal,
+    and for the same reason.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why can 8 bits store 256 values but only up to 255?</li>
+    <li>Convert binary 101101 to denary, then to hexadecimal.</li>
+    <li>A friend says a photo "contains the colours" of the scene. What does a bitmap actually contain?</li>
+    <li>You are archiving a program's source code and a concert recording. Which compression do you choose for each, and why?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) 256 patterns exist (2⁸), and pattern 00000000 is spent on
+    zero, so the largest storable value is 255. The count and the ceiling differ by one
+    because zero is a value too. (2) 101101 = 32 + 8 + 4 + 1 = 45. For hex, split into
+    nybbles: 0010 = 2, 1101 = D, so 2D. (3) Numbers — one integer per pixel giving its
+    quantised colour; the colours of the scene were approximated into cells at capture time,
+    and only the cell numbers are stored. (4) Lossless for the code: its meaning must survive
+    bit-for-bit, and a single altered character is a bug. Lossy for the recording: its
+    appearance (sound) is the point, so discarding imperceptible detail buys a much smaller
+    file with no audible cost.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Binary wins because two states survive noise and ten do not — reliability beats compactness.</li>
+    <li>n bits give 2ⁿ distinct values; the largest storable number is 2ⁿ − 1, because zero takes a pattern.</li>
+    <li>Binary is decimal with base 2: place values 1, 2, 4, 8…, each used at most once, so every number has exactly one spelling.</li>
+    <li>Hexadecimal is a human shorthand for bits — one hex digit per four-bit nybble.</li>
+    <li>Two's complement makes the same adder do subtraction; the leading 1 means negative, and −128 is real, not "minus zero".</li>
+    <li>Text is a lookup table (ASCII, now Unicode/UTF-8); images and sound are quantised measurements; file size follows from resolution × depth.</li>
+    <li>KiB counts in powers of two, KB in powers of ten — a 1 TB drive shows about 931 GiB, and nothing is missing.</li>
+    <li>Lossless compression removes redundancy exactly; lossy removes detail humans barely perceive — choose by whether meaning or appearance must survive.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    With numbers, text, images and sound all reduced to agreed bit patterns, the next lessons
+    climb the stack: logic gates that combine bits into circuits, then memory and the CPU that
+    shuffles those patterns billions of times a second, then the programs that give the
+    patterns purpose. Every layer above keeps trusting the two guarantees you can now prove —
+    n bits name 2ⁿ things, and the meaning of a pattern lives in the reader, not the bits.
   </p>
 
   <h2>Going deeper</h2>
   <p>
     Why is there a limit on compression? Because information has a measurable quantity:
-    <strong>entropy</strong>, defined by Claude Shannon in 1948 as (roughly) the base-2 logarithm of the
-    number of possible messages. A source with 8 equally likely symbols carries 3 bits per symbol, and
-    no lossless scheme can beat that average — compression can only remove the gap between a symbol's
-    raw size and its true probability. That is why a text file zips well (letters are wildly uneven in
-    frequency) and a file of random bytes zips not at all (every value equally likely — no redundancy
-    <em>is</em> maximum entropy). Shannon's coding theorems set the exact boundary, and practical coders
-    approach it: Huffman coding assigns short bit patterns to frequent symbols and long patterns to
-    rare ones; arithmetic coding squeezes closer to the entropy limit. The other deep current is the
-    trade between number systems and hardware: binary-coded decimal survives in financial processors
-    precisely because decimal fractions like 0.1 have no exact binary representation (0.1 in binary is
-    an infinitely repeating pattern, the reason 0.1 + 0.2 ≠ 0.3 in floating point), and banks would
-    rather pay in hardware than let a penny drift. And the frontier is still place-value: quantum
-    computers replace the bit with the qubit, which can hold a <em>superposition</em> of 0 and 1 — but
-    every classical machine you will ever touch remains, at bottom, a very fast arrangement of
-    two-letter spellings of the world. Learn to read 1101 and you have learned the alphabet.
+    <strong>entropy</strong>, defined by Claude Shannon in 1948 as (roughly) the base-2
+    logarithm of the number of possible messages. A source with 8 equally likely symbols
+    carries 3 bits per symbol, and no lossless scheme can beat that average — compression can
+    only remove the gap between a symbol's raw size and its true probability. That is why a
+    text file zips well (letters are wildly uneven in frequency) and a file of random bytes
+    zips not at all (every value equally likely — no redundancy <em>is</em> maximum entropy).
+    The practical coders work by the same frequency logic: give short bit patterns to frequent
+    symbols and long patterns to rare ones, but arrange the patterns so that no code is a
+    prefix of another — that prefix-free property makes a bitstream
+    <em>instantaneously decodable</em>, each code recognised the moment it completes, without
+    waiting to see what follows. Huffman coding builds such a code automatically from the
+    frequencies; arithmetic coding squeezes closer to Shannon's limit.
   </p>
-  <p class="sources"><strong>Sources:</strong> Shannon, "A Mathematical Theory of Communication" (1948); Petzold, Code: The Hidden Language of Computer Hardware and Software; ISO/IEC 80000-13 units standard; Cambridge International AS & A Level Computer Science 9618 syllabus (data representation).</p>
+  <p>
+    The other deep current is the trade between number systems and hardware: binary-coded
+    decimal survives in financial processors precisely because decimal fractions like 0.1 have
+    no exact binary representation (0.1 in binary is an infinitely repeating pattern, the
+    reason 0.1 + 0.2 ≠ 0.3 in floating point), and banks would rather pay in hardware than let
+    a penny drift. The same halving habit that organises the bit pattern reappears far from
+    hardware: binary search finds an item in a sorted list by asking one yes/no question per
+    step, halving what remains each time. And the frontier is still place-value: quantum
+    computers replace the bit with the qubit, which can hold a <em>superposition</em> of 0 and
+    1 — but every classical machine you will ever touch remains, at bottom, a very fast
+    arrangement of two-letter spellings of the world. Learn to read 1101 and you have learned
+    the alphabet.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Shannon, "A Mathematical Theory of Communication" (1948); Petzold, Code: The Hidden Language of Computer Hardware and Software; ISO/IEC 80000-13 units standard; Cambridge International AS &amp; A Level Computer Science 9618 syllabus (data representation). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
+
 </TopicPage>
