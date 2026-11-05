@@ -1,469 +1,175 @@
 # Source pack — subjects/speech-therapy/foundational/speech-and-hearing-sciences
 Lesson title: Speech and Hearing Sciences
 Level: foundational
-Match confidence: 1.02
+Match confidence: 1.37
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.02 — Biology2e-WEB_ICOFkGu § 36.4 Hearing and
+## Match 1.37 — LibreTexts: 17.6: Hearing
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/College_Physics/College_Physics_1e_(OpenStax)/17%3A_Physics_of_Hearing/17.06%3A_Hearing
 
-Vestibular
-Sensation
-36.5 Vision
-
-Senses provide information about the body and its environment. Humans have five special senses: olfaction
-(smell), gustation (taste), equilibrium (balance and body position), vision, and hearing. Additionally, we
-possess general senses, also called somatosensation, which respond to stimuli like temperature, pain,
-pressure, and vibration. Vestibular sensation, which is an organism’s sense of spatial orientation and
-balance, proprioception (position of bones, joints, and muscles), and the sense of limb position that is used
-to track kinesthesia (limb movement) are part of somatosensation. Although the sensory systems associated
-with these senses are very different, all share a common function: to convert a stimulus (such as light, or
-sound, or the position of the body) into an electrical signal in the nervous system. This process is called
-sensory transduction.
-There are two broad types of cellular systems that perform sensory transduction. In one, a neuron works
-with a sensory receptor, a cell, or cell process that is specialized to engage with and detect a specific
-stimulus. Stimulation of the sensory receptor activates the associated afferent neuron, which carries
-information about the stimulus to the central nervous system. In the second type of sensory transduction, a
-sensory nerve ending responds to a stimulus in the internal or external environment: this neuron constitutes
-the sensory receptor. Free nerve endings can be stimulated by several different stimuli, thus showing little
-receptor specificity. For example, pain receptors in your gums and teeth may be stimulated by temperature
-changes, chemical stimulation, or pressure.
-Reception
-The first step in sensation is reception, which is the activation of sensory receptors by stimuli such as
-mechanical stimuli (being bent or squished, for example), chemicals, or temperature. The receptor can then
-respond to the stimuli. The region in space in which a given sensory receptor can respond to a stimulus, be it
-far away or in contact with the body, is that receptor’s receptive field. Think for a moment about the
-differences in receptive fields for the different senses. For the sense of touch, a stimulus must come into
-contact with the body. For the sense of hearing, a stimulus can be a moderate distance away (some baleen
-whale sounds can propagate for many kilometers). For vision, a stimulus can be very far away; for example,
-the visual system perceives light from stars at enormous distances.
-Transduction
-The most fundamental function of a sensory system is the translation of a sensory signal to an electrical
-signal in the nervous system. This takes place at the sensory receptor, and the change in electrical potential
-that is produced is called the receptor potential. How is sensory input, such as pressure on the skin,
-changed to a receptor potential? In this example, a type of receptor called a mechanoreceptor (as shown in
-Figure 36.2) possesses specialized membranes that respond to pressure. Disturbance of these dendrites by
-compressing them or bending them opens gated ion channels in the plasma membrane of the sensory
-neuron, changing its electrical potential. Recall that in the nervous system, a positive change of a neuron’s
-electrical potential (also called the membrane potential), depolarizes the neuron. Receptor potentials are
-graded potentials: the magnitude of these graded (receptor) potentials varies with the strength of the
-stimulus. If the magnitude of depolarization is sufficient (that is, if membrane potential reaches a
-threshold), the neuron will fire an action potential. In most cases, the correct stimulus impinging on a
-sensory receptor will drive membrane potential in a positive direction, although for some receptors, such as
-those in the visual system, this is not always the case.
-1018
-Chapter 36 • Sensory Systems
-Access for free at openstax.org.
-
-Figure 36.2 (a) Mechanosensitive ion channels are gated ion channels that respond to mechanical deformation of the plasma membrane. A
-mechanosensitive channel is connected to the plasma membrane and the cytoskeleton by hair-like tethers. When pressure causes the
-extracellular matrix to move, the channel opens, allowing ions to enter or exit the cell. (b) Stereocilia in the human ear are connected to
-mechanosensitive ion channels. When a sound causes the stereocilia to move, mechanosensitive ion channels transduce the signal to the
-cochlear nerve.
-Sensory receptors for different senses are very different from each other, and they are specialized according to the type of
-stimulus they sense: they have receptor specificity. For example, touch receptors, light receptors, and sound receptors are each
-activated by different stimuli. Touch receptors are not sensitive to light or sound; they are sensitive only to touch or pressure.
-However, stimuli may be combined at higher levels in the brain, as happens with olfaction, contributing to our sense of taste.
-Encoding and Transmission of Sensory Information
-Four aspects of sensory information are encoded by sensory systems: the type of stimulus, the location of the stimulus in the
-receptive field, the duration of the stimulus, and the relative intensity of the stimulus. Thus, action potentials transmitted over a
-sensory receptor’s afferent axons encode one type of stimulus, and this segregation of the senses is preserved in other sensory
-circuits. For example, auditory receptors transmit signals over their own dedicated system, and electrical activity in the axons of
-the auditory receptors will be interpreted by the brain as an auditory stimulus—a sound.
-The intensity of a stimulus is often encoded in the rate of action potentials produced by the sensory receptor. Thus, an intense
-stimulus will produce a more rapid train of action potentials, and reducing the stimulus will likewise slow the rate of production
-of action potentials. A second way in which intensity is encoded is by the number of receptors activated. An intense stimulus
-might initiate action potentials in a large number of adjacent receptors, while a less intense stimulus might stimulate fewer
-receptors. Integration of sensory information begins as soon as the information is received in the CNS, and the brain will
-further process incoming signals.
-36.1 • Sensory Processes
-1019
-
-Perception
-Perception is an individual’s interpretation of a sensation. Although perception relies on the activation of sensory receptors,
-perception happens not at the level of the sensory receptor, but at higher levels in the nervous system, in the brain. The brain
-distinguishes sensory stimuli through a sensory pathway: action potentials from sensory receptors travel along neurons that are
-dedicated to a particular stimulus. These neurons are dedicated to that particular stimulus and synapse with particular neurons
-in the brain or spinal cord.
-All sensory signals, except those from the olfactory system, are transmitted though the central nervous system and are routed to
-the thalamus and to the appropriate region of the cortex. Recall that the thalamus is a structure in the forebrain that serves as a
-clearinghouse and relay station for sensory (as well as motor) signals. When the sensory signal exits the thalamus, it is
-conducted to the specific area of the cortex (Figure 36.3) dedicated to processing that particular sense.
-How are neural signals interpreted? Interpretation of sensory signals between individuals of the same species is largely similar,
-owing to the inherited similarity of their nervous systems; however, there are some individual differences. A good example of
-this is individual tolerances to a painful stimulus, such as dental pain, which certainly differ.
-Figure 36.3 In humans, with the exception of olfaction, all sensory signals are routed from the (a) thalamus to (b) final processing regions in
-the cortex of the brain. (credit b: modification of work by Polina Tishina)
-SCIENTIFIC METHOD CONNECTION
-Just-Noticeable Difference
-It is easy to differentiate between a one-pound bag of rice and a two-pound bag of rice. There is a one-pound difference, and one
-bag is twice as heavy as the other. However, would it be as easy to differentiate between a 20- and a 21-pound bag?
-Question: What is the smallest detectible weight difference between a one-pound bag of rice and a larger bag? What is the
-smallest detectible difference between a 20-pound bag and a larger bag? In both cases, at what weights are the differences
-detected? This smallest detectible difference in stimuli is known as the just-noticeable difference (JND).
-Background: Research background literature on JND and on Weber’s Law, a description of a proposed mathematical
-relationship between the overall magnitude of the stimulus and the JND. You will be testing JND of different weights of rice in
-bags. Choose a convenient increment that is to be stepped through while testing. For example, you could choose 10 percent
-increments between one and two pounds (1.1, 1.2, 1.3, 1.4, and so on) or 20 percent increments (1.2, 1.4, 1.6, and 1.8).
-Hypothesis: Develop a hypothesis about JND in terms of percentage of the whole weight being tested (such as “the JND between
-the two small bags and between the two large bags is proportionally the same,” or “. . . is not proportionally the same.”) So, for
-the first hypothesis, if the JND between the one-pound bag and a larger bag is 0.2 pounds (that is, 20 percent; 1.0 pound feels
-the same as 1.1 pounds, but 1.0 pound feels less than 1.2 pounds), then the JND between the 20-pound bag and a larger bag will
-also be 20 percent. (So, 20 pounds feels the same as 22 pounds or 23 pounds, but 20 pounds feels less than 24 pounds.)
-Test the hypothesis: Enlist 24 participants, and split them into two groups of 12. To set up the demonstration, assuming a 10
-percent increment was selected, have the first group be the one-pound group. As a counter-balancing measure against a
-1020
-Chapter 36 • Sensory Systems
-Access for free at openstax.org.
-
-systematic error, however, six of the first group will compare one pound to two pounds, and step down in weight (1.0 to 2.0, 1.0
-to 1.9, and so on), while the other six will step up (1.0 to 1.1, 1.0 to 1.2, and so on). Apply the same principle to the 20-pound
-group (20 to 40, 20 to 38, and so on, and 20 to 22, 20 to 24, and so on). Given the large difference between 20 and 40 pounds, you
-may wish to use 30 pounds as your larger weight. In any case, use two weights that are easily detectable as different.
-Record the observations: Record the data in a table similar to the table below. For the one-pound and 20-pound groups (base
-weights) record a plus sign (+) for each participant that detects a difference between the base weight and the step weight. Record
-a minus sign (-) for each participant that finds no difference. If one-tenth steps were not used, then replace the steps in the
-“Step Weight” columns with the step you are using.
-Results of JND Testing (+ = difference; – = no difference)
-Step Weight
-One pound
-20 pounds
-Step Weight
-1.1
-22
-1.2
-24
-1.3
-26
-1.4
-28
-1.5
-30
-1.6
-32
-1.7
-34
-1.8
-36
-1.9
-38
-2.0
-40
-Table 36.1
-Analyze the data/report the results: What step weight did all participants find to be equal with one-pound base weight? What
-about the 20-pound group?
-Draw a conclusion: Did the data support the hypothesis? Are the final weights proportionally the same? If not, why not? Do the
-findings adhere to Weber’s Law? Weber’s Law states that the concept that a just-noticeable difference in a stimulus is
-proportional to the magnitude of the original stimulus.
-
-## Match 1.01 — AmericanGovernment3e-WEB § 10.5 Free Speech and the Regulation of Interest Groups
-
-LEARNING OBJECTIVES
+17.6: Hearing
+Learning Objectives
 By the end of this section, you will be able to:
-•
-Identify the various court cases, policies, and laws that outline what interest groups can and cannot do
-•
-Evaluate the arguments for and against whether contributions are a form of freedom of speech
-How are lobbying and interest group activity regulated? As we noted earlier in the chapter, James Madison
-viewed factions as a necessary evil and thought preventing people from joining together would be worse than
-any ills groups might cause. The First Amendment guarantees, among other things, freedom of speech,
-petition, and assembly. However, people have different views on how far this freedom extends. For example,
-should freedom of speech as afforded to individuals in the U.S. Constitution also apply to corporations and
-unions? To what extent can and should government restrict the activities of lobbyists and lawmakers, limiting
-who may lobby and how they may do it?
-INTEREST GROUPS AND FREE SPEECH
-Most people would agree that interest groups have a right under the Constitution to promote a particular point
-of view. What people do not necessarily agree upon, however, is the extent to which certain interest group and
-lobbying activities are protected under the First Amendment.
-In addition to free speech rights, the First Amendment grants people the right to assemble. We saw above that
-pluralists even argued that assembling in groups is natural and that people will gravitate toward others with
-similar views. Most people acknowledge the right of others to assemble to voice unpopular positions, but this
-was not always the case. At various times, groups representing racial and religious minorities, communists,
-and members of the LGBTQ community have had their First Amendment rights to speech and assembly
-curtailed. And as noted above, organizations like the ACLU support free speech rights regardless of whether
-the speech is popular.
-Today, the debate about interest groups often revolves around whether the First Amendment protects the
-rights of individuals and groups to give money, and whether government can regulate the use of this money. In
-1971, the Federal Election Campaign Act was passed, setting limits on how much presidential and vice-
-presidential candidates and their families could donate to their own campaigns.75 The law also allowed
-corporations and unions to form PACs and required public disclosure of campaign contributions and their
-sources. In 1974, the act was amended in an attempt to limit the amount of money spent on congressional
-campaigns. The amended law banned the transfer of union, corporate, and trade association money to parties
-for distribution to campaigns.
-In Buckley v. Valeo (1976), the Supreme Court upheld Congress’s right to regulate elections by restricting
-contributions to campaigns and candidates. However, at the same time, it overturned restrictions on
-expenditures by candidates and their families, as well as total expenditures by campaigns.76 In 1979, an
-exemption was granted to get-out-the vote and grassroots voter registration drives, creating what has become
-known as the soft-money loophole; soft money was a way in which interests could spend money on behalf of
-candidates without being restricted by federal law. To close this loophole, Senators John McCain and Russell
-Feingold sponsored the Bipartisan Campaign Reform Act in 2002 to ban parties from collecting and
-distributing unregulated money.
-10.5 • Free Speech and the Regulation of Interest Groups
-363
+- Define hearing, pitch, loudness, timbre, note, tone, phon, ultrasound, and infrasound.
+- Compare loudness to frequency and intensity of a sound.
+- Identify structures of the inner ear and explain how they relate to sound perception.
+The human ear has a tremendous range and sensitivity. It can give us a wealth of simple information—such as pitch, loudness, and direction. And from its input we can detect musical quality and nuances of voiced emotion. How is our hearing related to the physical qualities of sound, and how does the hearing mechanism work?
+Hearing is the perception of sound. (Perception is commonly defined to be awareness through the senses, a typically circular definition of higher-level processes in living organisms.) Normal human hearing encompasses frequencies from 20 to 20,000 Hz, an impressive range. Sounds below 20 Hz are called infrasound , whereas those above 20,000 Hz are ultrasound . Neither is perceived by the ear, although infrasound can sometimes be felt as vibrations. When we do hear low-frequency vibrations, such as the sounds of a diving board, we hear the individual vibrations only because there are higher-frequency sounds in each. Other animals have hearing ranges different from that of humans. Dogs can hear sounds as high as 30,000 Hz, whereas bats and dolphins can hear up to 100,000-Hz sounds. You may have noticed that dogs respond to the sound of a dog whistle which produces sound out of the range of human hearing. Elephants are known to respond to frequencies below 20 Hz.
+The perception of frequency is called pitch . Most of us have excellent relative pitch, which means that we can tell whether one sound has a different frequency from another. Typically, we can discriminate between two sounds if their frequencies differ by 0.3% or more. For example, 500.0 and 501.5 Hz are noticeably different. Pitch perception is directly related to frequency and is not greatly affected by other physical quantities such as intensity. Musical notes are particular sounds that can be produced by most instruments and in Western music have particular names. Combinations of notes constitute music. Some people can identify musical notes, such as A-sharp, C, or E-flat, just by listening to them. This uncommon ability is called perfect pitch. The ear is remarkably sensitive to low-intensity sounds. The lowest audible intensity or threshold is about \(10^{-12} \, W/m^2\) or 0 dB. Sounds as much as \(10^{12}\) more intense can be briefly tolerated. Very few measuring devices are capable of observations over a range of a trillion. The perception of intensity is called loudness . At a given frequency, it is possible to discern differences of about 1 dB, and a change of 3 dB is easily noticed. But loudness is not related to intensity alone. Frequency has a major effect on how loud a sound seems. The ear has its maximum sensitivity to frequencies in the range of 2000 to 5000 Hz, so that sounds in this range are perceived as being louder than, say, those at 500 or 10,000 Hz, even when they all have the same intensity. Sounds near the high- and low-frequency extremes of the hearing range seem even less loud, because the ear is even less sensitive at those frequencies. Table \(\PageIndex{1}\) gives the dependence of certain human hearing perceptions on physical quantities.
+| Perception | Physical quantity |
+|---|---|
+| Pitch | Frequency |
+| Loudness | Intensity and Frequency |
+| Timbre |
+Number and relative intensity of multiple frequencies. Subtle craftsmanship leads to non-linear effects and more detail. |
+| Note | Basic unit of music with specific names, combined to generate tunes |
+| Tone | Number and relative intensity of multiple frequencies. |
+When a violin plays middle C, there is no mistaking it for a piano playing the same note. The reason is that each instrument produces a distinctive set of frequencies and intensities. We call our perception of these combinations of frequencies and intensities tone quality, or more commonly the timbre of the sound. It is more difficult to correlate timbre perception to physical quantities than it is for loudness or pitch perception. Timbre is more subjective. Terms such as dull, brilliant, warm, cold, pure, and rich are employed to describe the timbre of a sound. So the consideration of timbre takes us into the realm of perceptual psychology, where higher-level processes in the brain are dominant. This is true for other perceptions of sound, such as music and noise. We shall not delve further into them; rather, we will concentrate on the question of loudness perception.
+A unit called a phon is used to express loudness numerically. Phons differ from decibels because the phon is a unit of loudness perception, whereas the decibel is a unit of physical intensity. Figure \(\PageIndex{2}\) shows the relationship of loudness to intensity (or intensity level) and frequency for persons with normal hearing. The curved lines are equal-loudness curves. Each curve is labeled with its loudness in phons. Any sound along a given curve will be perceived as equally loud by the average person. The curves were determined by having large numbers of people compare the loudness of sounds at different frequencies and sound intensity levels. At a frequency of 1000 Hz, phons are taken to be numerically equal to decibels. The following example helps illustrate how to use the graph:
+Example \(\PageIndex{1}\): Measuring Loudness: Loudness Versus Intensity Level and Frequency
+(a) What is the loudness in phons of a 100-Hz sound that has an intensity level of 80 dB? (b) What is the intensity level in decibels of a 4000-Hz sound having a loudness of 70 phons? (c) At what intensity level will an 8000-Hz sound have the same loudness as a 200-Hz sound at 60 dB?
+Strategy for (a)
+The graph in Figure \(\PageIndex{2}\) should be referenced in order to solve this example. To find the loudness of a given sound, you must know its frequency and intensity level and locate that point on the square grid, then interpolate between loudness curves to get the loudness in phons.
+Solution for (a)
+(1) Identify knowns:
+- The square grid of the graph relating phons and decibels is a plot of intensity level versus frequency—both physical quantities.
+- 100 Hz at 80 dB lies halfway between the curves marked 70 and 80 phons.
+(2) Find the loudness: 75 phons.
+Strategy for (b)
+The graph in Figure \(\PageIndex{2}\) should be referenced in order to solve this example. To find the intensity level of a sound, you must have its frequency and loudness. Once that point is located, the intensity level can be determined from the vertical axis.
+Solution for (b)
+(1) Identify knowns:
+- Values are given to be 4000 Hz at 70 phons.
+(2) Follow the 70-phon curve until it reaches 4000 Hz. At that point, it is below the 70 dB line at about 67 dB.
+(3) Find the intensity level:
+67 dB
+Strategy for (c)
+The graph in Figure \(\PageIndex{2}\) should be referenced in order to solve this example.
+Solution for (c)
+(1) Locate the point for a 200 Hz and 60 dB sound.
+(2) Find the loudness: This point lies just slightly above the 50-phon curve, and so its loudness is 51 phons.
+(3) Look for the 51-phon level is at 8000 Hz: 63 dB.
+Discussion
+These answers, like all information extracted from Figure \(\PageIndex{2}\), have uncertainties of several phons or several decibels, partly due to difficulties in interpolation, but mostly related to uncertainties in the equal-loudness curves.
+Further examination of the graph in Figure \(\PageIndex{2}\) reveals some interesting facts about human hearing. First, sounds below the 0-phon curve are not perceived by most people. So, for example, a 60 Hz sound at 40 dB is inaudible. The 0-phon curve represents the threshold of normal hearing. We can hear some sounds at intensity levels below 0 dB. For example, a 3-dB, 5000-Hz sound is audible, because it lies above the 0-phon curve. The loudness curves all have dips in them between about 2000 and 5000 Hz. These dips mean the ear is most sensitive to frequencies in that range. For example, a 15-dB sound at 4000 Hz has a loudness of 20 phons, the same as a 20-dB sound at 1000 Hz. The curves rise at both extremes of the frequency range, indicating that a greater-intensity level sound is needed at those frequencies to be perceived to be as loud as at middle frequencies. For example, a sound at 10,000 Hz must have an intensity level of 30 dB to seem as loud as a 20 dB sound at 1000 Hz. Sounds above 120 phons are painful as well as damaging.
+We do not often utilize our full range of hearing. This is particularly true for frequencies above 8000 Hz, which are rare in the environment and are unnecessary for understanding conversation or appreciating music. In fact, people who have lost the ability to hear such high frequencies are usually unaware of their loss until tested. The shaded region in Figure \(\PageIndex{3}\) is the frequency and intensity region where most conversational sounds fall. The curved lines indicate what effect hearing losses of 40 and 60 phons will have. A 40-phon hearing loss at all frequencies still allows a person to understand conversation, although it will seem very quiet. A person with a 60-phon loss at all frequencies will hear only the lowest frequencies and will not be able to understand speech unless it is much louder than normal. Even so, speech may seem indistinct, because higher frequencies are not as well perceived. The conversational speech region also has a gender component, in that female voices are usually characterized by higher frequencies. So the person with a 60-phon hearing impediment might have difficulty understanding the normal conversation of a woman.
+Hearing tests are performed over a range of frequencies, usually from 250 to 8000 Hz, and can be displayed graphically in an audiogram like that in Figure \(\PageIndex{4}\). The hearing threshold is measured in dB relative to the normal threshold , so that normal hearing registers as 0 dB at all frequencies. Hearing loss caused by noise typically shows a dip near the 4000 Hz frequency, irrespective of the frequency that caused the loss and often affects both ears. The most common form of hearing loss comes with age and is called presbycusis —literally elder ear. Such loss is increasingly severe at higher frequencies, and interferes with music appreciation and speech recognition.
+Hearing Mechanism
+The hearing mechanism involves some interesting physics. The sound wave that impinges upon our ear is a pressure wave. The ear is a transducer that converts sound waves into electrical nerve impulses in a manner much more sophisticated than, but analogous to, a microphone. Figure \(\PageIndex{5}\) shows the gross anatomy of the ear with its division into three parts: the outer ear or ear canal; the middle ear, which runs from the eardrum to the cochlea; and the inner ear, which is the cochlea itself. The body part normally referred to as the ear is technically called the pinna.
+The outer ear, or ear canal, carries sound to the recessed protected eardrum. The air column in the ear canal resonates and is partially responsible for the sensitivity of the ear to sounds in the 2000 to 5000 Hz range. The middle ear converts sound into mechanical vibrations and applies these vibrations to the cochlea. The lever system of the middle ear takes the force exerted on the eardrum by sound pressure variations, amplifies it and transmits it to the inner ear via the oval window, creating pressure waves in the cochlea approximately 40 times greater than those impinging on the eardrum (Figure \(\PageIndex{6}\).) Two muscles in the middle ear (not shown) protect the inner ear from very intense sounds. They react to intense sound in a few milliseconds and reduce the force transmitted to the cochlea. This protective reaction can also be triggered by your own voice, so that humming while shooting a g
 
-Some continued to argue that campaign expenditures are a form of speech, a position with which two recent
-Supreme Court decisions are consistent. The Citizens United v. Federal Election Commission77 and the
-McCutcheon v. Federal Election Commission78 cases opened the door for a substantially greater flow of money
-into elections. Citizens United overturned the soft money ban of the Bipartisan Campaign Reform Act and
-allowed corporations and unions to spend unlimited amounts of money on elections. Essentially, the Supreme
-Court argued in a 5–4 decision that these entities had free speech rights, much like individuals, and that free
-speech included campaign spending. The McCutcheon decision further extended spending allowances based
-on the First Amendment by striking down aggregate contribution limits. These limits put caps on the total
-contributions allowed and some say have contributed to a subsequent increase in groups and lobbying
-activities (Figure 10.15).
-FIGURE 10.15 With his Harper’s Weekly cartoon of William “Boss” Tweed with a moneybag for a head, Thomas
-Nast provided an enduring image of the corrupting power of money on politics. Some denounce “fat cat” lobbyists
-and the effects of large sums of money in lobbying, while others suggest that interests have every right to spend
-money to achieve their objectives.
-LINK TO LEARNING
-Read about the rights (https://openstax.org/l/29nprcorprig) that corporations share with people.
-Should corporations have the same rights as people?
-The Koch Brothers
-Beginning in the 1980s, conservative billionaires Charles and David Koch became increasingly active in U.S.
-elections . Until David's death in August 2019, the brothers together ran Koch Industries, a multinational
-corporation that manufactures and produces a number of products including paper, plastics, petroleum-based
-products, and chemicals. In the 2012 election, the Koch brothers and their affiliates spent nearly $400 million
-supporting Republican candidates. Many people have suggested that this spending helped put many Republicans
-in office. The Kochs and their related organizations planned to raise and spend nearly $900 million on the 2016
-elections; however Koch Industries spending in that cycle amounted to only $11.4 million. The amounts for the
-INSIDER PERSPECTIVE
-364
-10 • Interest Groups and Lobbying
-Access for free at openstax.org.
+## Match 1.36 — LibreTexts: 5.5: Hearing
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Psychology/Introductory_Psychology/Introductory_Psychology_1e_(OpenStax)/05%3A_Sensation_and_Perception/5.05%3A_Hearing
 
-2018 midterms and 2020 general election were $12.1 million and $14.6 million, respectively.79 80 Critics have
-accused them and other wealthy donors of attempting to buy elections. However, others point out that their
-activities are legal according to current campaign finance laws and recent Supreme Court decisions, and that
-these individuals, their companies, and their affiliates should be able to spend what they want politically. As you
-might expect, there are wealthy donors on both the political left and the right who will continue to spend money
-on U.S. elections. Some critics have called for a constitutional amendment restricting spending that would
-overturn recent Supreme Court decisions.81
-Do you agree, as some have argued, that the Constitution protects the ability to donate unlimited amounts of
-money to political candidates as a First Amendment right? Is spending money a form of exercising free speech?
-If so, does a PAC have this right? Why or why not?
-REGULATING LOBBYING AND INTEREST GROUP ACTIVITY
-While the Supreme Court has paved the way for increased spending in politics, lobbying is still regulated in
-many ways.82 The 1995 Lobbying Disclosure Act defined who can and cannot lobby, and requires lobbyists and
-interest groups to register with the federal government.83 The Honest Leadership and Open Government Act of
-2007 further increased restrictions on lobbying. For example, the act prohibited contact between members of
-Congress and lobbyists who were the spouses of other Congress members. The laws broadened the definition
-of lobbyist and require detailed disclosure of spending on lobbying activity, including who is lobbied and what
-bills are of interest. In addition, President Biden's Executive Order 13989 broadened regulations on federal
-employees by prohibiting appointees in the executive branch from accepting gifts from lobbyists, by requiring
-them to sign an ethics pledge, and lessens the revolving door by disallowing lobbying for two years after the
-leave the administration.84 The states also have their own registration requirements, with some defining
-lobbying broadly and others more narrowly.
-Second, the federal and state governments prohibit certain activities like providing gifts to lawmakers and
-compensating lobbyists with commissions for successful lobbying. Many activities are prohibited to prevent
-accusations of vote buying or currying favor with lawmakers. Some states, for example, have strict limits on
-how much money lobbyists can spend on lobbying lawmakers, or on the value of gifts lawmakers can accept
-from lobbyists. According to the Honest Leadership and Open Government Act, lobbyists must certify that they
-have not violated the law regarding gift giving, and the penalty for knowingly violating the law increased from a
-fine of $50,000 to one of $200,000. Also, revolving door laws also prevent lawmakers from lobbying
-government immediately after leaving public office. Members of the House of Representatives cannot register
-to lobby for a year after they leave office, while senators have a two-year “cooling off” period before they can
-officially lobby. Former cabinet secretaries must wait the same period of time after leaving their positions
-before lobbying the department of which they had been the head. These laws are designed to restrict former
-lawmakers from using their connections in government to give them an advantage when lobbying. Still, many
-former lawmakers do become lobbyists, including former Senate majority leader Trent Lott and former House
-minority leader Richard Gephardt.
-Third, governments require varying levels of disclosure about the amount of money spent on lobbying efforts.
-The logic here is that lawmakers will think twice about accepting money from controversial donors. The other
-advantage to disclosure requirements is that they promote transparency. Many have argued that the public has
-a right to know where candidates get their money. Candidates may be reluctant to accept contributions from
-donors affiliated with unpopular interests such as hate groups. This was one of the key purposes of the
-Lobbying Disclosure Act and comparable laws at the state level.
-Finally, there are penalties for violating the law. Lobbyists and, in some cases, government officials can be
-fined, banned from lobbying, or even sentenced to prison. While state and federal laws spell out what activities
-are legal and illegal, the attorneys general and prosecutors responsible for enforcing lobbying regulations may
-10.5 • Free Speech and the Regulation of Interest Groups
-365
+5.5: Hearing
+Learning Objectives
+- Describe the basic anatomy and function of the auditory system
+- Explain how we encode and perceive pitch
+- Discuss how we localize sound
+Our auditory system converts pressure waves into meaningful sounds. This translates into our ability to hear the sounds of nature, to appreciate the beauty of music, and to communicate with one another through spoken language. This section will provide an overview of the basic anatomy and function of the auditory system. It will include a discussion of how the sensory stimulus is translated into neural impulses, where in the brain that information is processed, how we perceive pitch, and how we know where sound is coming from.
+Anatomy of the Auditory System
+The ear can be separated into multiple sections. The outer ear includes the pinna , which is the visible part of the ear that protrudes from our heads, the auditory canal, and the tympanic membrane , or eardrum. The middle ear contains three tiny bones known as the ossicles , which are named the malleus (or hammer), incus (or anvil), and the stapes (or stirrup). The inner ear contains the semi-circular canals, which are involved in balance and movement (the vestibular sense), and the cochlea. The cochlea is a fluid-filled, snail-shaped structure that contains the sensory receptor cells (hair cells) of the auditory system.
+Sound waves travel along the auditory canal and strike the tympanic membrane, causing it to vibrate. This vibration results in movement of the three ossicles. As the ossicles move, the stapes presses into a thin membrane of the cochlea known as the oval window. As the stapes presses into the oval window, the fluid inside the cochlea begins to move, which in turn stimulates hair cells , which are auditory receptor cells of the inner ear embedded in the basilar membrane. The basilar membrane is a thin strip of tissue within the cochlea.
+The activation of hair cells is a mechanical process: the stimulation of the hair cell ultimately leads to activation of the cell. As hair cells become activated, they generate neural impulses that travel along the auditory nerve to the brain. Auditory information is shuttled to the inferior colliculus, the medial geniculate nucleus of the thalamus, and finally to the auditory cortex in the temporal lobe of the brain for processing. Like the visual system, there is also evidence suggesting that information about auditory recognition and localization is processed in parallel streams (Rauschecker & Tian, 2000; Renier et al., 2009).
+Pitch Perception
+Different frequencies of sound waves are associated with differences in our perception of the pitch of those sounds. Low-frequency sounds are lower pitched, and high-frequency sounds are higher pitched. How does the auditory system differentiate among various pitches?
+Several theories have been proposed to account for pitch perception. We’ll discuss two of them here: temporal theory and place theory. The temporal theory of pitch perception asserts that frequency is coded by the activity level of a sensory neuron. This would mean that a given hair cell would fire action potentials related to the frequency of the sound wave. While this is a very intuitive explanation, we detect such a broad range of frequencies (20–20,000 Hz) that the frequency of action potentials fired by hair cells cannot account for the entire range. Because of properties related to sodium channels on the neuronal membrane that are involved in action potentials, there is a point at which a cell cannot fire any faster (Shamma, 2001).
+The place theory of pitch perception suggests that different portions of the basilar membrane are sensitive to sounds of different frequencies. More specifically, the base of the basilar membrane responds best to high frequencies and the tip of the basilar membrane responds best to low frequencies. Therefore, hair cells that are in the base portion would be labeled as high-pitch receptors, while those in the tip of basilar membrane would be labeled as low-pitch receptors (Shamma, 2001).
+In reality, both theories explain different aspects of pitch perception. At frequencies up to about \(4000\) Hz, it is clear that both the rate of action potentials and place contribute to our perception of pitch. However, much higher frequency sounds can only be encoded using place cues (Shamma, 2001).
+Sound Localization
+The ability to locate sound in our environments is an important part of hearing . Localizing sound could be considered similar to the way that we perceive depth in our visual fields. Like the monocular and binocular cues that provided information about depth, the auditory system uses both monaural (one-eared) and binaural (two-eared) cues to localize sound.
+Each pinna interacts with incoming sound waves differently, depending on the sound’s source relative to our bodies. This interaction provides a monaural cue that is helpful in locating sounds that occur above or below and in front or behind us. The sound waves received by your two ears from sounds that come from directly above, below, in front, or behind you would be identical; therefore, monaural cues are essential (Grothe, Pecka, & McAlpine, 2010).
+Binaural cues, on the other hand, provide information on the location of a sound along a horizontal axis by relying on differences in patterns of vibration of the eardrum between our two ears. If a sound comes from an off-center location, it creates two types of binaural cues: interaural level differences and interaural timing differences. Interaural level difference refers to the fact that a sound coming from the right side of your body is more intense at your right ear than at your left ear because of the attenuation of the sound wave as it passes through your head. Interaural timing difference refers to the small difference in the time at which a given sound wave arrives at each ear. Certain brain areas monitor these differences to construct where along a horizontal axis a sound originates (Grothe et al., 2010).
+Hearing Loss
+Deafness is the partial or complete inability to hear. Some people are born deaf, which is known as congenital deafness . Many others begin to suffer from conductive hearing loss because of age, genetic predisposition, or environmental effects, including exposure to extreme noise (noise-induced hearing loss, as shown in the figure below), certain illnesses (such as measles or mumps), or damage due to toxins (such as those found in certain solvents and metals).
+Given the mechanical nature by which the sound wave stimulus is transmitted from the eardrum through the ossicles to the oval window of the cochlea, some degree of hearing loss is inevitable. With conductive hearing loss, hearing problems are associated with a failure in the vibration of the eardrum and/or movement of the ossicles. These problems are often dealt with through devices like hearing aids that amplify incoming sound waves to make vibration of the eardrum and movement of the ossicles more likely to occur.
+When the hearing problem is associated with a failure to transmit neural signals from the cochlea to the brain, it is called sensorineural hearing loss . One disease that results in sensorineural hearing loss is Ménière's disease . Although not well understood, Ménière's disease results in a degeneration of inner ear structures that can lead to hearing loss, tinnitus (constant ringing or buzzing), vertigo (a sense of spinning), and an increase in pressure within the inner ear (Semaan & Megerian, 2011). This kind of loss cannot be treated with hearing aids, but some individuals might be candidates for a cochlear implant as a treatment option. Cochlear implants are electronic devices that consist of a microphone, a speech processor, and an electrode array. The device receives incoming sound information and directly stimulates the auditory nerve to transmit information to the brain.
+ This is called deaf culture . In the United States, deaf individuals often communicate using American Sign Language (ASL); ASL has no verbal component and is based entirely on visual signs and gestures. The primary mode of communication is signing. One of the values of deaf culture is to continue traditions like using sign language rather than teaching deaf children to try to speak, read lips, or have cochlear implant surgery.
+When a child is diagnosed as deaf, parents have difficult decisions to make. Should the child be enrolled in mainstream schools and taught to verbalize and read lips? Or should the child be sent to a school for deaf children to learn ASL and have significant exposure to deaf culture? Do you think there might be differences in the way that parents approach these decisions depending on whether or not they are also deaf?
+Summary
+Sound waves are funneled into the auditory canal and cause vibrations of the eardrum; these vibrations move the ossicles. As the ossicles move, the stapes presses against the oval window of the cochlea, which causes fluid inside the cochlea to move. As a result, hair cells embedded in the basilar membrane become enlarged, which sends neural impulses to the brain via the auditory nerve.
+Pitch perception and sound localization are important aspects of hearing. Our ability to perceive pitch relies on both the firing rate of the hair cells in the basilar membrane as well as their location within the membrane. In terms of sound localization, both monaural and binaural cues are used to locate where sounds originate in our environment.
+Individuals can be born deaf, or they can develop deafness as a result of age, genetic predisposition, and/or environmental causes. Hearing loss that results from a failure of the vibration of the eardrum or the resultant movement of the ossicles is called conductive hearing loss. 
+Glossary
+- basilar membrane
+- thin strip of tissue within the cochlea that contains the hair cells which serve as the sensory receptors for the auditory system
+- binaural cue
+- two-eared cue to localize sound
+- cochlea
+- fluid-filled, snail-shaped structure that contains the sensory receptor cells of the auditory system
+- cochlear implant
+- electronic device that consists of a microphone, a speech processor, and an electrode array to directly stimulate the auditory nerve to transmit information to the brain
+- conductive hearing loss
+- failure in the vibration of the eardrum and/or movement of the ossicles
+- congenital deafness
+- deafness from birth
+- deafness
+- partial or complete inability to hear
+- hair cell
+- auditory receptor cell of the inner ear
+- incus
+- middle ear ossicle; also known as the anvil
+- interaural level difference
+- sound coming from one side of the body is more intense at the closest ear because of the attenuation of the sound wave as it passes through the head
+- interaural timing difference
+- small difference in the time at which a given sound wave arrives at each ear
+- malleus
+- middle ear ossicle; also known as the hammer
+- Ménière's disease
+- results in a degeneration of inner ear structures that can lead to hearing loss, tinnitus, vertigo, and an increase in pressure within the inner ear
+- monaural cue
+- one-eared cue to localize sound
+- pinna
+- visible part of the ear that protrudes from the head
+- place theory of pitch perception
+- different portions of the basilar membrane are sensitive to sounds of different frequencies
+- sensorineural hearing loss
+- failure to transmit neural signals from the cochlea to the brain
+- stapes
+- middle ear ossicle; also known as the stirrup
+- temporal theory of pitch perception
+- sound’s frequency is coded by the activity level of a sensory neuron
+- tympanic membrane
+- eardrum
+- vertigo
+- spinning sensation
+Contributors and Attributions
+-
+Rose M. Spielman with many significant contributors. The OpenStax name, OpenStax logo, OpenStax book covers, OpenStax CNX name, and OpenStax CNX logo are not subject to the creative commons license and may not be reproduced without the prior and express 
 
-be understaffed, have limited budgets, or face backlogs of work, making it difficult for them to investigate or
-prosecute alleged transgressions. While most lobbyists do comply with the law, exactly how the laws alter
-behavior is not completely understood. We know the laws prevent lobbyists from engaging in certain
-behaviors, such as by limiting campaign contributions or preventing the provision of certain gifts to
-lawmakers, but how they alter lobbyists’ strategies and tactics remains unclear.
-The need to strictly regulate the actions of lobbyists became especially relevant after the activities of lobbyist
-Jack Abramoff were brought to light (Figure 10.16). A prominent lobbyist with ties to many of the Republican
-members of Congress, Abramoff used funds provided by his clients to fund reelection campaigns, pay for trips,
-and hire the spouses of members of Congress. Between 1994 and 2001, Abramoff, who then worked as a
-lobbyist for a prominent law firm, paid for eighty-five members of Congress to travel to the Northern Mariana
-Islands, a U.S. territory in the Pacific. The territory’s government was a client of the firm for which he worked.
-At the time, Abramoff was lobbying Congress to exempt the Northern Mariana Islands from paying the federal
-minimum wage and to allow the territory to continue to operate sweatshops in which people worked in
-deplorable conditions. In 2000, while representing Native American casino interests who sought to defeat anti-
-gambling legislation, Abramoff paid for a trip to Scotland for Tom DeLay, the majority whip in the House of
-Representatives, and an aide. Shortly thereafter, DeLay helped to defeat anti-gambling legislation in the House.
-He also hired DeLay’s wife Christine to research the favorite charity of each member of Congress and paid her
-$115,000 for her efforts.85 In 2008, Jack Abramoff was sentenced to four years in prison for tax evasion, fraud,
-and corruption of public officials.86 He was released early, in December 2010.
-FIGURE 10.16 Jack Abramoff (center) began his lifetime engagement in politics with his involvement in the 1980
-presidential campaign of Ronald Reagan (left) while an undergraduate at Brandeis University and continued it with
-his election to chair of the College Republican National Committee in a campaign managed by Grover Norquist
-(right). Abramoff thus gained unique access to influential politicians, upon which he capitalized in his later work as a
-DC lobbyist. Since his release from federal prison in 2010 after being convicted for illegal lobbying activity, Abramoff
-has become an outspoken critic of the lobbying industry.87
-Lobbying of U.S. governmental institutions by interest groups takes place across a variety of branches and at
-many levels of government. Furthermore, attempts at influence through lobbying take place on topics of
-domestic policy as well as foreign policy. In the latter area, as U.S. institutions take up U.S. policies that may
-affect people in other countries, it is not surprising that we see lobbying of the U.S. government by
-representatives of these foreign interests. These individuals face the same requirements as domestic lobbyists
-under the Lobby Disclosure Act. Moreover, they are required to register as foreign agents under the Foreign
-Agents Registration Act. Despite these requirements, some have raised concerns about the dangers of foreign
-influence, as enforcement of these disclosure requirements can be tough. Others argue that freedom of speech
-and assembly applies to
+## Match 1.36 — LibreTexts: 36.4: Hearing and Vestibular Sensation
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_1e_(OpenStax)/7%3A_Animal_Structure_and_Function/36%3A_Sensory_Systems/36.4%3A_Hearing_and_Vestibular_Sensation
 
-## Match 0.70 — Anatomy_and_Physiology_2e_-_WEB_c9nD9QL § 16.3 The Cranial Nerve Exam
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe the functional grouping of cranial nerves
-•
-Match the regions of the forebrain and brain stem that are connected to each cranial nerve
-•
-Suggest diagnoses that would explain certain losses of function in the cranial nerves
-•
-Relate cranial nerve deficits to damage of adjacent, unrelated structures
-The twelve cranial nerves are typically covered in introductory anatomy courses, and memorizing their names is
-facilitated by numerous mnemonics developed by students over the years of this practice. But knowing the names
-of the nerves in order often leaves much to be desired in understanding what the nerves do. The nerves can be
-categorized by functions, and subtests of the cranial nerve exam can clarify these functional groupings.
-Three of the nerves are strictly responsible for special senses whereas four others contain fibers for special and
-general senses. Three nerves are connected to the extraocular muscles resulting in the control of gaze. Four nerves
-Everyday Connection
-Left Brain, Right Brain
-Popular media often refer to right-brained and left-brained people, as if the brain were two independent halves
-that work differently for different people. This is a popular misinterpretation of an important neurological
-phenomenon. As an extreme measure to deal with a debilitating condition, the corpus callosum may be
-sectioned to overcome intractable epilepsy. When the connections between the two cerebral hemispheres are
-cut, interesting effects can be observed.
-If a person with an intact corpus callosum is asked to put their hands in their pockets and describe what is there
-on the basis of what their hands feel, they might say that they have keys in their right pocket and loose change in
-the left. They may even be able to count the coins in their pocket and say if they can afford to buy a candy bar
-from the vending machine. If a person with a sectioned corpus callosum is given the same instructions, they will
-do something quite peculiar. They will only put their right hand in their pocket and say they have keys there.
-They will not even move their left hand, much less report that there is loose change in the left pocket.
-The reason for this is that the language functions of the cerebral cortex are localized to the left hemisphere in 95
-percent of the population. Additionally, the left hemisphere is connected to the right side of the body through
-the corticospinal tract and the ascending tracts of the spinal cord. Motor commands from the precentral gyrus
-control the opposite side of the body, whereas sensory information processed by the postcentral gyrus is
-received from the opposite side of the body. For a verbal command to initiate movement of the right arm and
-hand, the left side of the brain needs to be connected by the corpus callosum. Language is processed in the left
-side of the brain and directly influences the left brain and right arm motor functions, but is sent to influence the
-right brain and left arm motor functions through the corpus callosum. Likewise, the left-handed sensory
-perception of what is in the left pocket travels across the corpus callosum from the right brain, so no verbal
-report on those contents would be possible if the hand happened to be in the pocket.
-16.3 • The Cranial Nerve Exam
-635
-
-connect to muscles of the face, oral cavity, and pharynx, controlling facial expressions, mastication, swallowing, and
-speech. Four nerves make up the cranial component of the parasympathetic nervous system responsible for
-pupillary constriction, salivation, and the regulation of the organs of the thoracic and upper abdominal cavities.
-Finally, one nerve controls the muscles of the neck, assisting with spinal control of the movement of the head and
-neck.
-The cranial nerve exam allows directed tests of forebrain and brain stem structures. The twelve cranial nerves serve
-the head and neck. The vagus nerve (cranial nerve X) has autonomic functions in the thoracic and superior
-abdominal cavities. The special senses are served through the cranial nerves, as well as the general senses of the
-head and neck. The movement of the eyes, face, tongue, throat, and neck are all under the control of cranial nerves.
-Preganglionic parasympathetic nerve fibers that control pupillary size, salivary glands, and the thoracic and upper
-abdominal viscera are found in four of the nerves. Tests of these functions can provide insight into damage to
-specific regions of the brain stem and may uncover deficits in adjacent regions.
-Sensory Nerves
-The olfactory, optic, and vestibulocochlear nerves (cranial nerves I, II, and VIII) are dedicated to four of the special
-senses: smell, vision, equilibrium, and hearing, respectively. Taste sensation is relayed to the brain stem through
-fibers of the facial and glossopharyngeal nerves. The trigeminal nerve is a mixed nerve that carries the general
-somatic senses from the head, similar to those coming through spinal nerves from the rest of the body.
-Testing smell is straightforward, as common smells are presented to one nostril at a time. The patient should be
-able to recognize the smell of coffee or mint, indicating the proper functioning of the olfactory system. Loss of the
-sense of smell is called anosmia and can be lost following blunt trauma to the head or through aging. The short
-axons of the first cranial nerve regenerate on a regular basis. The neurons in the olfactory epithelium have a limited
-life span, and new cells grow to replace the ones that die off. The axons from these neurons grow back into the CNS
-by following the existing axons—representing one of the few examples of such growth in the mature nervous system.
-If all of the fibers are sheared when the brain moves within the cranium, such as in a motor vehicle accident, then no
-axons can find their way back to the olfactory bulb to re-establish connections. If the nerve is not completely
-severed, the anosmia may be temporary as new neurons can eventually reconnect.
-Olfaction is not the pre-eminent sense, but its loss can be quite detrimental. The enjoyment of food is largely based
-on our sense of smell. Anosmia means that food will not seem to have the same taste, though the gustatory sense is
-intact, and food will often be described as being bland. However, the taste of food can be improved by adding
-ingredients (e.g., salt) that stimulate the gustatory sense.
-Testing vision relies on the tests that are common in an optometry office. The Snellen chart (Figure 16.7)
-demonstrates visual acuity by presenting standard Roman letters in a variety of sizes. The result of this test is a
-rough generalization of the acuity of a person based on the normal accepted acuity, such that a letter that subtends
-a visual angle of 5 minutes of an arc at 20 feet can be seen. To have 20/60 vision, for example, means that the
-smallest letters that a person can see at a 20-foot distance could be seen by a person with normal acuity from 60
-feet away. Testing the extent of the visual field means that the examiner can establish the boundaries of peripheral
-vision as simply as holding their hands out to either side and asking the patient when the fingers are no longer
-visible without moving the eyes to track them. If it is necessary, further tests can establish the perceptions in the
-visual fields. Physical inspection of the optic disk, or where the optic nerve emerges from the eye, can be
-accomplished by looking through the pupil with an ophthalmoscope.
-636
-16 • The Neurological Exam
-Access for free at openstax.org
-
-FIGURE 16.7
-The Snellen Chart
-The Snellen chart for visual acuity presents a limited number of Roman letters in lines of decreasing
-size. The line with letters that subtend 5 minutes of an arc from 20 feet represents the smallest letters that a person with normal acuity
-should be able to read at that distance. The different sizes of letters in the other lines represent rough approximations of what a person of
-normal acuity can read at different distances. For example, the line that represents 20/200 vision would have larger letters so that they are
-legible to the person with normal acuity at 200 feet.
-The optic nerves from both sides enter the cranium through the respective optic canals and meet at the optic
-chiasm at which fibers sort such that the two halves of the visual field are processed by the opposite sides of the
-brain. Deficits in visual field perception often suggest damage along the length of the optic pathway between the
-orbit and the diencephalon. For example, loss of peripheral vision may be the result of a pituitary tumor pressing on
-the optic chiasm (Figure 16.8). The pituitary, seated in the sella turcica of the sphenoid bone, is directly inferior to
-the optic chiasm. The axons that decussate in the chiasm are from the medial retinae of either eye, and therefore
-carry information from the peripheral visual field.
-FIGURE 16.8
-Pituitary Tumor
-The pituitary gland is located in the sella turcica of the sphenoid bone within the cranial floor, placing it
-immediately inferior to the optic chiasm. If the pituitary gland develops a tumor, it can press against the fibers crossing in the chiasm.
-16.3 • The Cranial Nerve Exam
-637
-
-Those fibers are conveying peripheral visual information to the opposite side of the brain, so the patient will experience “tunnel
-vision”—meaning that only the central visual field will be perceived.
-The vestibulocochlear nerve (CN VIII) carries both equilibrium and auditory sensations from the inner ear to the
-medulla. Though the two senses are not directly related, anatomy is mirrored in the two systems. Problems with
-balance, such as vertigo, and deficits in hearing may both point to problems with the inner ear. Within the petrous
-region of the temporal bone is the bony labyrinth of the inner ear. The vestibule is the portion for equilibrium,
-composed of the utricle, saccule, and the three semicircular canals. The cochlea is responsible for transducing
-sound waves into a neural signal. The sensory nerves from these two structures travel side-by-side as the
-vestibulocochlear nerve, though they are really separate divisions. They both emerge from the inner ear, pass
-through the internal auditory meatus, and synapse in nuclei of the superior medulla. Though they are part of distinct
-sensory systems, the vestibular nuclei and the cochlear nuclei are close neighbors with adjacent inputs. Deficits in
-one or both systems could occur from damage that encompasses structures close to both. Damage to structures
-near the two nuclei can result in deficits to one or both systems.
-Balance or hearing deficits may be the result of damage to the middle or inner ear structures. Ménière's disease is a
-disorder that can affect both equilibrium and audition in a variety of ways. The patient can suffer from vertigo, a low-
-frequency ringing in the ears, or a loss of hearing. From patient to patient, the exact presentation of the disease can
-be different. Additionally, within a single patient, the symptoms and signs may change as the disease progresses.
-Use of the neurological exam subtests for the vestibulocochlear nerve illuminates the changes a patient may go
-through. The disease appears to be the result of accumulation, or over-production, of fluid in the inner ear, in either
-the vestibule or cochlea.
-Tests of equilibrium are important for coordination and gait and are related to other aspects of the neurological
-exam. The vestibulo-ocular reflex involves the cranial nerves for gaze control. Balance and equilibrium, as tested by
-the Romberg test, are part of spinal and cerebellar processes and involved in those components of the neurological
-exam, as discussed later.
-Hearing is tested by using a tuning fork in a couple of different ways. The Rinne test involves using a tuning fork to
-distinguish between conductive hearing and sensorineural hearing. Conductive hearing relies on vibrations being
-conducted through the ossicles of the middle ear. Sensorineural hearing is the transmission of sound stimuli through
-the neural components of the inner ear and cranial nerve. A vibrating tuning fork is placed on the mastoid process
-and the patient indicates when the sound produced from this is no longer present. Then the fork is immediately
-moved to just next to the ear canal so the sound travels through the air. If the sound is not heard through the ear,
-meaning the sound is conducted better through the temporal bone than through the ossicles, a conductive hearing
-deficit is present. The Weber test also uses a tuning fork to differentiate between conductive versus sensorineural
-hearing loss. In this test, the tuning fork is placed at the top of the skull, and the sound of the tuning fork reaches
-both inner ears by travelling through bone. In a healthy patient, the sound would appear equally loud in both ears.
-With unilateral conductive hearing loss, however, the tuning fork sounds louder in the ear with hearing loss. This is
-because the sound of the tuning fork has to compete with background noise coming from the outer ear, but in
-conductive hearing loss, the background noise is blocked in the damaged ear, allowing the tuning fork to sound
-relatively louder in that ear. With unilateral sensorineural hearing loss, however, damage to the cochlea or
-associated nervous tissue means that the tuning fork sounds quieter in that ear.
-The trigeminal system of the head and neck is the equivalent of the ascending spinal cord systems of the dorsal
-column and the spinothalamic pathways. Somatosensation of the face is conveyed along the nerve to enter the brain
-stem at the level of the pons. Synapses of those axons, however, are distributed across nuclei found throughout the
-brain stem. The mesencephalic nucleus processes proprioceptive information of the face, which is the movement
-and position of facial muscles. It is the sensory component of the jaw-jerk reflex, a stretch reflex of the
+36.4: Hearing and Vestibular Sensation
+Skills to Develop
+- Describe the relationship of amplitude and frequency of a sound wave to attributes of sound
+- Trace the path of sound through the auditory system to the site of transduction of sound
+- Identify the structures of the vestibular system that respond to gravity
+Audition , or hearing, is important to humans and to other animals for many different interactions. It enables an organism to detect and receive information about danger, such as an approaching predator, and to participate in communal exchanges like those concerning territories or mating. On the other hand, although it is physically linked to the auditory system, the vestibular system is not involved in hearing. Instead, an animal’s vestibular system detects its own movement, both linear and angular acceleration and deceleration, and balance.
+Sound
+Auditory stimuli are sound waves, which are mechanical, pressure waves that move through a medium, such as air or water. There are no sound waves in a vacuum since there are no air molecules to move in waves. The speed of sound waves differs, based on altitude, temperature, and medium, but at sea level and a temperature of 20º C (68º F), sound waves travel in the air at about 343 meters per second.
+As is true for all waves, there are four main characteristics of a sound wave: frequency, wavelength, period, and amplitude. Frequency is the number of waves per unit of time, and in sound is heard as pitch. High-frequency (≥15.000Hz) sounds are higher-pitched (short wavelength) than low-frequency (long wavelengths; ≤100Hz) sounds. Frequency is measured in cycles per second, and for sound, the most commonly used unit is hertz (Hz), or cycles per second. Most humans can perceive sounds with frequencies between 30 and 20,000 Hz. Women are typically better at hearing high frequencies, but everyone’s ability to hear high frequencies decreases with age. Dogs detect up to about 40,000 Hz; cats, 60,000 Hz; bats, 100,000 Hz; and dolphins 150,000 Hz, and American shad ( Alosa sapidissima ), a fish, can hear 180,000 Hz. Those frequencies above the human range are called ultrasound .
+Amplitude, or the dimension of a wave from peak to trough, in sound is heard as volume and is illustrated in Figure \(\PageIndex{1}\). The sound waves of louder sounds have greater amplitude than those of softer sounds. For sound, volume is measured in decibels (dB). The softest sound that a human can hear is the zero point. Humans speak normally at 60 decibels.
+Reception of Sound
+In mammals, sound waves are collected by the external, cartilaginous part of the ear called the pinna , then travel through the auditory canal and cause vibration of the thin diaphragm called the tympanum or ear drum, the innermost part of the outer ear (illustrated in Figure \(\PageIndex{2}\)). Interior to the tympanum is the middle ear . The middle ear holds three small bones called the ossicles , which transfer energy from the moving tympanum to the inner ear. The three ossicles are the malleus (also known as the hammer), the incus (the anvil), and stapes (the stirrup). The aptly named stapes looks very much like a stirrup. The three ossicles are unique to mammals, and each plays a role in hearing. The malleus attaches at three points to the interior surface of the tympanic membrane. The incus attaches the malleus to the stapes. In humans, the stapes is not long enough to reach the tympanum. If we did not have the malleus and the incus, then the vibrations of the tympanum would never reach the inner ear. These bones also function to collect force and amplify sounds. The ear ossicles are homologous to bones in a fish mouth: the bones that support gills in fish are thought to be adapted for use in the vertebrate ear over evolutionary time. Many animals (frogs, reptiles, and birds, for example) use the stapes of the middle ear to transmit vibrations to the middle ear.
+Transduction of Sound
+Vibrating objects, such as vocal cords, create sound waves or pressure waves in the air. When these pressure waves reach the ear, the ear transduces this mechanical stimulus (pressure wave) into a nerve impulse (electrical signal) that the brain perceives as sound. The pressure waves strike the tympanum, causing it to vibrate. The mechanical energy from the moving tympanum transmits the vibrations to the three bones of the middle ear. The stapes transmits the vibrations to a thin diaphragm called the oval window , which is the outermost structure of the inner ear . The structures of the inner ear are found in the labyrinth , a bony, hollow structure that is the most interior portion of the ear. Here, the energy from the sound wave is transferred from the stapes through the flexible oval window and to the fluid of the cochlea. The vibrations of the oval window create pressure waves in the fluid (perilymph) inside the cochlea. The cochlea is a whorled structure, like the shell of a snail, and it contains receptors for transduction of the mechanical wave into an electrical signal (as illustrated in Figure \(\PageIndex{3}\)). Inside the cochlea, the basilar membrane is a mechanical analyzer that runs the length of the cochlea, curling toward the cochlea’s center.
+The mechanical properties of the basilar membrane change along its length, such that it is thicker, tauter, and narrower at the outside of the whorl (where the cochlea is largest), and thinner, floppier, and broader toward the apex, or center, of the whorl (where the cochlea is smallest). Different regions of the basilar membrane vibrate according to the frequency of the sound wave conducted through the fluid in the cochlea. For these reasons, the fluid-filled cochlea detects different wave frequencies (pitches) at different regions of the membrane. When the sound waves in the cochlear fluid contact the basilar membrane, it flexes back and forth in a wave-like fashion. Above the basilar membrane is the tectorial membrane .
+Exercise
+Cochlear implants can restore hearing in people who have a nonfunctional cochlear. The implant consists of a microphone that picks up sound. A speech processor selects sounds in the range of human speech, and a transmitter converts these sounds to electrical impulses, which are then sent to the auditory nerve. Which of the following types of hearing loss would not be restored by a cochlear implant?
+- Hearing loss resulting from absence or loss of hair cells in the organ of Corti.
+- Hearing loss resulting from an abnormal auditory nerve.
+- Hearing loss resulting from fracture of the cochlea.
+- Hearing loss resulting from damage to bones of the middle ear.
+- Answer
+-
+B
+The site of transduction is in the organ of Corti (spiral organ). It is composed of hair cells held in place above the basilar membrane like flowers projecting up from soil, with their exposed short, hair-like stereocilia contacting or embedded in the tectorial membrane above them. The inner hair cells are the primary auditory receptors and exist in a single row, numbering approximately 3,500. The stereocilia from inner hair cells extend into small dimples on the tectorial membrane’s lower surface. The outer hair cells are arranged in three or four rows. They number approximately 12,000, and they function to fine tune incoming sound waves. The longer stereocilia that project from the outer hair cells actually attach to the tectorial membrane. All of the stereocilia are mechanoreceptors, and when bent by vibrations they respond by opening a gated ion channel. As a result, the hair cell membrane is depolarized, and a signal is transmitted to the chochlear nerve. Intensity (volume) of sound is determined by how many hair cells at a particular location are stimulated.
+The hair cells are arranged on the basilar membrane in an orderly way. The basilar membrane vibrates in different regions, according to the frequency of the sound waves impinging on it. Likewise, the hair cells that lay above it are most sensitive to a specific frequency of sound waves. Hair cells can respond to a small range of similar frequencies, but they require stimulation of greater intensity to fire at frequencies outside of their optimal range. The difference in response frequency between adjacent inner hair cells is about 0.2 percent. Compare that to adjacent piano strings, which are about six percent different. Place theory, which is the model for how biologists think pitch detection works in the human ear, states that high frequency sounds selectively vibrate the basilar membrane of the inner ear near the entrance port (the oval window). Lower frequencies travel farther along the membrane before causing appreciable excitation of the membrane. The basic pitch-determining mechanism is based on the location along the membrane where the hair cells are stimulated. The place theory is the first step toward an understanding of pitch perception. Considering the extreme pitch sensitivity of the human ear, it is thought that there must be some auditory “sharpening” mechanism to enhance the pitch resolution.
+When sound waves produce fluid waves inside the cochlea, the basilar membrane flexes, bending the stereocilia that attach to the tectorial membrane. Their bending results in action potentials in the hair cells, and auditory information travels along the neural endings of the bipolar neurons of the hair cells (collectively, the auditory nerve) to the brain. When the hairs bend, they release an excitatory neurotransmitter at a synapse with a sensory neuron, which then conducts action potentials to the central nervous system. The cochlear branch of the vestibulocochlear cranial nerve sends information on hearing. The auditory system is very refined, and there is some modulation or “sharpening” built in. The brain can send signals back to the cochlea, resulting in a change of length in the outer hair cells, sharpening or dampening the hair cells’ response to certain frequencies.
+Higher Processing
+The inner hair cells are most important for conveying auditory information to the brain. About 90 percent of the afferent neurons carry information from inner hair cells, with each hair cell synapsing with 10 or so neurons. Outer hair cells connect to only 10 percent of the afferent neurons, and each afferent neuron innervates many hair cells. The afferent, bipolar neurons that convey auditory information travel from the cochlea to the medulla, through the pons and midbrain in the brainstem, finally reaching the primary auditory cortex in the temporal lobe.
+Vestibular Information
+The stimuli associated with the vestibular system are linear acceleration (gravity) and angular acceleration and deceleration. Gravity, acceleration, and deceleration are detected by evaluating the inertia on receptive cells in the vestibular system. Gravity is detected through head position. Angular acceleration and deceleration are expressed through turning or tilting of the head.
+The vestibular system has some similarities with the auditory system. It utilizes hair cells just like the auditory system, but it excites them in different ways. There are five vestibular receptor organs in the inner ear: the utricle, the saccule, and three semicircular canals. Together, they make up what’s known as the vestibular labyrinth that is shown in Figure \(\PageIndex{4}\). The utricle and saccule respond to acceleration in a straight line, such as gravity. The roughly 30,000 hair cells in the utricle and 16,000 hair cells in the saccule lie below a gelatinous layer, with their stereocilia projecting into the gelatin. Embedded in this gelatin are calcium carbonate crystals—like tiny rocks. When the head is tilted, the crystals continue to be pulled straight down by gravity, but the new angle of the head causes the gelatin to shift, thereby bending the stereocilia. The bending of the stereocilia stimulates the neurons, and they signal to the brain that the head is tilted, allowing the maintenance of balance. It is the vestibular b

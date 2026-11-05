@@ -1,755 +1,115 @@
 # Source pack — subjects/earth-science/foundational/fossils-and-geologic-time
 Lesson title: Fossils & Geologic Time
 Level: foundational
-Match confidence: 1.03
+Match confidence: 2.40
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.03 — College_Physics-WEB_2s5sHvR § 28.2 Simultaneity And Time Dilation
+## Match 2.40 — LibreTexts: 2.2: Geology and Geologic Time
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://geo.libretexts.org/Bookshelves/Geography_(Physical)/California_Geography_(Patrich)/02%3A_Californias_Geology/2.02%3A_GEOLOGY_and_GEOLOGIC_TIME
 
-Figure 28.4 Elapsed time for a foot race is the same for all observers, but at relativistic speeds, elapsed time depends on the relative
-motion of the observer and the event that is observed. (credit: Jason Edward Scott Bain, Flickr)
-Do time intervals depend on who observes them? Intuitively, we expect the time for a process, such as the elapsed time for a foot
-race, to be the same for all observers. Our experience has been that disagreements over elapsed time have to do with the
-accuracy of measuring time. When we carefully consider just how time is measured, however, we will find that elapsed time
-depends on the relative motion of an observer with respect to the process being measured.
-Simultaneity
-Consider how we measure elapsed time. If we use a stopwatch, for example, how do we know when to start and stop the watch?
-One method is to use the arrival of light from the event, such as observing a light turning green to start a drag race. The timing
-will be more accurate if some sort of electronic detection is used, avoiding human reaction times and other complications.
-Now suppose we use this method to measure the time interval between two flashes of light produced by flash lamps. (See Figure
-28.5.) Two flash lamps with observer A midway between them are on a rail car that moves to the right relative to observer B.
-Observer B arranges for the light flashes to be emitted just as A passes B, so that both A and B are equidistant from the lamps
-when the light is emitted. Observer B measures the time interval between the arrival of the light flashes. According to postulate
-2, the speed of light is not affected by the motion of the lamps relative to B. Therefore, light travels equal distances to him at
-equal speeds. Thus observer B measures the flashes to be simultaneous.
-28.2 • Simultaneity And Time Dilation
-1215
+2.2: Geology and Geologic Time
+Geology describes the structures of the Earth at and beneath its surface, and the processes that have shaped that structure. It also provides tools to determine the relative and absolute ages of rocks found in each location, and to describe the histories of those rocks. By combining these tools, geologists can chronicle the geological history of the Earth as a whole, and to demonstrate the age of Earth. Geology provides the primary evidence for plate tectonics, the evolutionary history of life, and the Earth's past climates.
+Geology often applies information from physics and chemistry to the natural world, like understanding the physical forces in a landslide or the chemical interaction between water and rocks. The term comes from the Greek word geo, meaning Earth, and logos, meaning to think or reckon with.
+Geologic Time Scale
+William “Strata” Smith worked as a surveyor in the coal mining and canal-building industries in southwestern England in the late 1700s and early 1800s. While doing his work, he had many opportunities to look at the Paleozoic and Mesozoic sedimentary rocks of the region, and he did so in a way that few had done before. Smith noticed the textural similarities and differences between rocks in different locations, and more importantly, he discovered that fossils could be used to correlate rocks of the same age. Smith is credited with formulating the principle of faunal succession (the concept that specific types of organisms lived during different time intervals), and he used it to great effect in his monumental project to create a geological map of England and Wales, published in 1815.
+Geologic Time has been subdivided into a series of divisions by geologists. Eon is the largest division of time, followed by era, period, epoch, and age. The partitions of the geologic time scale are the same everywhere on Earth; however, rocks may or may not be present at a given location depending on the geologic activity going on during a particular period. Thus, we have the concept of time vs. rock, in which time is an unbroken continuum but rocks may be missing and/or unavailable for study. The figure of the geologic time scale represents time flowing continuously from the beginning of the Earth, with the time units presented in an unbroken sequence. But that does not mean there are rocks available for study for all these time units, since erosion has removed much of the depositional sequences.
+Geological Time has been divided into four eons: Hadean, Archean, Proterozoic, and Phanerozoic, and as shown below, the first three of these represent almost 90% of Earth’s history. The last one, the Phanerozoic (meaning “visible life”), is the time that we are most familiar with because Phanerozoic rocks are the most common on Earth, and they contain evidence of life forms that we are all somewhat familiar with.
+The Phanerozoic, the past 540 Ma of Earth’s history, is divided into three eras: the Paleozoic (“early life”), the Mesozoic (“middle life”), and the Cenozoic (“new life”), and each of these is divided into several periods. Most of the organisms that we share Earth with, evolved at various times during the Phanerozoic.
+The Cenozoic, which represents the past 65.5 Ma, is divided into three periods: Paleogene, Neogene, and Quaternary, and seven epochs. Dinosaurs became extinct at the start of the Cenozoic, after which birds and mammals radiated to fill the available habitats. Earth was very warm during the early Eocene and has steadily cooled ever since. Glaciers first appeared in Antarctica in the Oligocene and then in Greenland in the Miocene and covered much of North America and Europe by the Pleistocene. The most recent of the Pleistocene glaciations ended around 11,700 years ago. The current epoch is known as the Holocene. Epochs are further divided into ages or stages.
+Most of the boundaries between the periods and epochs of the geological time scale have been fixed based on significant changes in the fossil record, due to significant geologic events that significantly changed the environments. For example, as already noted, the boundary between the Cretaceous and the Paleogene coincides exactly with the extinction of the dinosaurs. That’s not a coincidence. Many other types of organisms went extinct at this time, and the boundary between the two periods marks the division between sedimentary rocks with Cretaceous organisms below and Paleogene organisms above.
 
-Figure 28.5 Observer B measures the elapsed time between the arrival of light flashes as described in the text. Observer A moves with the
-lamps on a rail car. Observer B views the light flashes occurring simultaneously. Observer B views the light on the right reaching observer A
-before the light on the left does.
-Now consider what observer B sees happen to observer A. Observer B views light from the right reaching observer A before light
-from the left, because she has moved toward that flash lamp, lessening the distance the light must travel and reducing the time
-it takes to get to her. Light travels at speed
-relative to both observers, but observer B remains equidistant between the points
-where the flashes were emitted, while A gets closer to the emission point on the right. From observer B’s point of view, then,
-there is a time interval between the arrival of the flashes to observer A. Observer B measures the flashes to arrive simultaneously
-relative to him but not relative to A.
-Now consider what observer A sees happening. She sees the light from the right at the same time that she sees the light from the
-left. Since both lamps are the same distance from her in her reference frame, from her perspective, the flashes occurred at the
-same time. Here a relative velocity between observers affects whether two events are observed to be simultaneous. Simultaneity
-is not absolute
-This illustrates the power of clear thinking. We might have guessed incorrectly that if light is emitted simultaneously, then two
-observers halfway between the sources would see the flashes simultaneously. But careful analysis shows this not to be the case.
-Einstein was brilliant at this type of thought experiment (in German, “Gedankenexperiment”). He very carefully considered how
-an observation is made and disregarded what might seem obvious. The validity of thought experiments, of course, is
-determined by actual observation. The genius of Einstein is evidenced by the fact that experiments have repeatedly confirmed
-his theory of relativity.
-In summary: Two events are defined to be simultaneous if an observer measures them as occurring at the same time (such as by
-receiving light from the events). Two events are not necessarily simultaneous to all observers.
-Time Dilation
-The consideration of the measurement of elapsed time and simultaneity leads to an important relativistic effect.
-Time dilation
-Time dilation is the phenomenon of time passing slower for an observer who is moving relative to another observer.
-1216
-Chapter 28 • Special Relativity
-Access for free at openstax.org.
+## Match 1.70 — LibreTexts: Geologic Sketches
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://geo.libretexts.org/Courses/SUNY_Potsdam/Sedimentary_Geology%3A_Rocks_Environments_and_Stratigraphy/Appendices/Geologic_Sketches
 
-Suppose, for example, an astronaut measures the time it takes for light to cross her ship, bounce off a mirror, and return. (See
-Figure 28.6.) How does the elapsed time the astronaut measures compare with the elapsed time measured for the same event by
-a person on the Earth? Asking this question (another thought experiment) produces a profound result. We find that the elapsed
-time for a process depends on who is measuring it. In this case, the time measured by the astronaut is smaller than the time
-measured by the Earth-bound observer. The passage of time is different for the observers because the distance the light travels
-in the astronaut’s frame is smaller than in the Earth-bound frame. Light travels at the same speed in each frame, and so it will
-take longer to travel the greater distance in the Earth-bound frame.
-Figure 28.6 (a) An astronaut measures the time
-for light to cross her ship using an electronic timer. Light travels a distance
-in the
-astronaut’s frame. (b) A person on the Earth sees the light follow the longer path
-and take a longer time
-. (c) These triangles are used
-to find the relationship between the two distances
-and
-.
-To quantitatively verify that time depends on the observer, consider the paths followed by light as seen by each observer. (See
-Figure 28.6(c).) The astronaut sees the light travel straight across and back for a total distance of
-, twice the width of her ship.
-The Earth-bound observer sees the light travel a total distance
-. Since the ship is moving at speed
-to the right relative to the
-Earth, light moving to the right hits the mirror in this frame. Light travels at a speed
-in both frames, and because time is the
-distance divided by speed, the time measured by the astronaut is
-This time has a separate name to distinguish it from the time measured by the Earth-bound observer.
-In the case of the astronaut observe the reflecting light, the astronaut measures proper time. The time measured by the Earth-
-bound observer is
-To find the relationship between
-and
-, consider the triangles formed by
-and . (See Figure 28.6(c).) The third side of
-28.1
-Proper Time
-Proper time
-is the time measured by an observer at rest relative to the event being observed.
-28.2
-28.2 • Simultaneity And Time Dilation
-1217
+Geologic Sketches
+The importance of sketching
+Sketches are an effective way for geologists to quickly and effectively convey key geologic observations and relationships. They began out of necessity at a time when the only way to convey what you were seeing was a sketch or a written description. Although technology now allows us to take photographs and even make three dimensional models, sketches remain an important way to capture information because they allow the creator to highlight things that are important, de-emphasize things that are not, and convey what it all means. The example in Figure 1 shows an outcrop-scale sketch; other common types/scales including: views through a microscope (see 5: Siliciclastic Sedimentary Rocks and 6: Carbonate Sedimentary Rocks ), hand samples (Figure 2), general notes (Figure 3), sketch maps (Figure 4), and measured sections (Figure 5).
+Sketching is a skill that can be learned and does not require someone to be a gifted artist; it just requires neatness and a plan. In fact, a good sketch does not require photo-realism, but rather a simplified portrayal that conveys geologic realism. In many cases, annotations on sketches are of greater or equal value than the artwork itself.
+Notebook best practices
+A geologic sketch is just one part of the geologist's notebook. No matter whether you are in the field, in a lab, or looking through a microscope, a notebook is an extremely important tool for geologic data collection. The details will vary based on the task, but in general, one's notebook entry for a day/project should include:
+- A descriptive heading
+- Day, date, time
+- Location - as appropriate this could include coordinates, sketch map, access details, etc.
+- Overview of goals/objectives
+- Names of field party or collaborators
+- Notes on weather, challenges, or anything extraordinary that might help you recall the specifics of that day.
+- Pencil is generally much better for making detailed sketches because it allows you to erase.
+How to make a sketch
+- Identify the subject of your sketch and think about what is most important about it.
+- Define the limits of the subject and orient your notebook in a way that matches with the layout of the subject. Paper is relatively inexpensive and its typically worth it to center the drawing in the page and give yourself ample margins for annotations.
+- Frame the subject by using a few simple strokes to outline its basic shape in the area you've allotted for the drawing. Don't start with detailed lines, that is a great way to run out of room or end up with inaccurate proportions. Instead, begin with a few simple strokes and then come back and modify them if needed. Things like edges of a feature, the skyline, and/or the boundaries with the background and foreground are good things to start with.
+-
+Once you've framed the edges of the subject, you should start making lines that represent the most important geologic features. You can and should use artistic license to show things that might not be obvious given the perspective that you are drawing from. Most commonly the major geologic lines are going to be things like:
+- Stratification - to shows changes in orientation and boundaries between units
+- Edges of grains, clasts, fossils to show things like size, shape, orientation, and changes in these characteristics
+- Structural features like folds, faults, and cleavage - these features are often easier to draw if done in combination the things listed above.
+- Remember that you should show only the most important features.
+- Remember that if you can't show everything that you need to with a sketch of a given scale that you can use things like pop-out windows to illustrate details.
+- Use subtle labels or lines/shading to show things like talus and vegetation to help the viewer link the drawing to the view. You can also use geologically-appropriate fill patterns to help show lithology, texture, etc. Avoid cross-hatching and other bold geometric patterns because they can confuse the reader.
+- Annotate your drawing to make it obvious to yourself and others what you are drawing and why. If you can show everything that you need to, remember that you can have windows that show enlarged areas.
+- Give the drawing a title, a vertical and horizontal scale bar, and a label to indicate perspective (facing north, map view, cross-sectional view, etc.). Be sure to record structural data if appropriate
 
-these similar triangles is
-, the distance the astronaut moves as the light goes across her ship. In the frame of the Earth-bound
-observer,
-Using the Pythagorean Theorem, the distance
-is found to be
-Substituting
-into the expression for the time interval
-gives
-We square this equation, which yields
-Note that if we square the first expression we had for
-, we get
-. This term appears in the preceding equation,
-giving us a means to relate the two time intervals. Thus,
-Gathering terms, we solve for
-:
-Thus,
-Taking the square root yields an important relationship between elapsed times:
-where
-This equation for
-is truly remarkable. First, as contended, elapsed time is not the same for different observers moving
-relative to one another, even though both are in inertial frames. Proper time
-measured by an observer, like the astronaut
-moving with the apparatus, is smaller than time measured by other observers. Since those other observers measure a longer
-time
-, the effect is called time dilation. The Earth-bound observer sees time dilate (get longer) for a system moving relative to
-the Earth. Alternatively, according to the Earth-bound observer, time slows in the moving frame, since less time passes there. All
-clocks moving relative to an observer, including biological clocks such as aging, are observed to run slow compared with a clock
-stationary relative to the observer.
-Note that if the relative velocity is much less than the speed of light (
-), then
-is extremely small, and the elapsed times
-and
-are nearly equal. At low velocities, modern relativity approaches classical physics—our everyday experiences have
-very small relativistic effects.
-28.3
-28.4
-28.5
-28.6
-28.7
-28.8
-28.9
-28.10
-28.11
-1218
-Chapter 28 • Special Relativity
-Access for free at openstax.org.
+## Match 1.70 — LibreTexts: 1.10: Reading- Geologic Tools
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://geo.libretexts.org/Bookshelves/Geology/Geology_(Lumen)/01%3A_Science_of_Geology/1.10%3A_Reading-_Geologic_Tools
 
-The equation
-also implies that relative velocity cannot exceed the speed of light. As
-approaches ,
-approaches
-infinity. This would imply that time in the astronaut’s frame stops at the speed of light. If
-exceeded , then we would be taking
-the square root of a negative number, producing an imaginary value for
-.
-There is considerable experimental evidence that the equation
-is correct. One example is found in cosmic ray
-particles that continuously rain down on the Earth from deep space. Some collisions of these particles with nuclei in the upper
-atmosphere result in short-lived particles called muons. The half-life (amount of time for half of a material to decay) of a muon
-is
-when it is at rest relative to the observer who measures the half-life. This is the proper time
-. Muons produced by
-cosmic ray particles have a range of velocities, with some moving near the speed of light. It has been found that the muon’s half-
-life as measured by an Earth-bound observer (
-) varies with velocity exactly as predicted by the equation
-. The
-faster the muon moves, the longer it lives. We on the Earth see the muon’s half-life time dilated—as viewed from our frame, the
-muon decays more slowly than it does when at rest relative to us.
-EXAMPLE 28.1
-Calculating
-for a Relativistic Event: How Long Does a Speedy Muon Live?
-Suppose a cosmic ray colliding with a nucleus in the Earth’s upper atmosphere produces a muon that has a velocity
-.
-The muon then travels at constant velocity and lives
-as measured in the muon’s frame of reference. (You can imagine
-this as the muon’s internal clock.) How long does the muon live as measured by an Earth-bound observer? (See Figure 28.7.)
-Figure 28.7 A muon in the Earth’s atmosphere lives longer as measured by an Earth-bound observer than measured by the muon’s internal
-clock.
-Strategy
-A clock moving with the system being measured observes the proper time, so the time we are given is
-. The
-Earth-bound observer measures
-as given by the equation
-. Since we know the velocity, the calculation is
-straightforward.
-Solution
-1) Identify the knowns.
-,
-2) Identify the unknown.
-3) Choose the appropriate equation.
-Use,
-where
-28.12
-28.2 • Simultaneity And Time Dilation
-1219
-
-4) Plug the knowns into the equation.
-First find .
-Use the calculated value of
-to determine
-.
-Discussion
-One implication of this example is that since
-at
-of the speed of light (
-), the relativistic effects are
-significant. The two time intervals differ by this factor of 3.20, where classically they would be the same. Something moving at
-is said to be highly relativistic.
-Another implication of the preceding example is that everything an astronaut does when moving at
-of the speed of light
-relative to the Earth takes 3.20 times longer when observed from the Earth. Does the astronaut sense this? Only if she looks
-outside her spaceship. All methods of measuring time in her frame will be affected by the same factor of 3.20. This includes her
-wristwatch, heart rate, cell metabolism rate, nerve impulse rate, and so on. She will have no way of telling, since all of her clocks
-will agree with one another because their relative velocities are zero. Motion is relative, not absolute. But what if she does look
-out the window?
-The Twin Paradox
-An intriguing consequence of time dilation is that a space traveler moving at a high velocity relative to the Earth would age less
-than her Earth-bound twin. Imagine the astronaut moving at such a velocity that
-, as in Figure 28.8. A trip that takes
-2.00 years in her frame would take 60.0 years in her Earth-bound twin’s frame. Suppose the astronaut traveled 1.00 year to
-another star system. She briefly explored the area, and then traveled 1.00 year back. If the astronaut was 40 years old when she
-left, she would be 42 upon her return. Everything on the Earth, however, would have aged 60.0 years. Her twin, if still alive,
-would be 100 years old.
-The situation would seem different to the astronaut. Because motion is relative, the spaceship would seem to be stationary and
-the Earth would appear to move. (This is the sensation you have when flying in a jet.) If the astronaut looks out the window of
-28.13
-28.14
-28.15
-Real-World Connections
-It may seem that special relativity has little effect on your life, but it is probably more important than you realize. One of the
-most common effects is through the Global Positioning System (GPS). Emergency vehicles, package delivery services,
-electronic maps, and communications devices are just a few of the common uses of GPS, and the GPS system could not
-work without taking into account relativistic effects. GPS satellites rely on precise time measurements to communicate. The
-signals travel at relativistic speeds. Without corrections for time dilation, the satellites could not communicate, and the GPS
-system would fail within minutes.
-1220
-Chapter 28 • Special Relativity
-Access for free at openstax.org.
-
-the spaceship, she will see time slow down on the Earth by a factor of
-. To her, the Earth-bound sister will have aged
-only 2/30 (1/15) of a year, while she aged 2.00 years. The two sisters cannot both be correct.
-Figure 28.8 The twin paradox asks why the traveling twin ages less than the Earth-bound twin. That is the prediction we obtain if we
-consider the Earth-bound twin’s frame. In the astronaut’s frame, however, the Earth is moving and time runs slower there. Who is correct?
-As with all paradoxes, the premise is faulty and leads to contradictory conclusions. In fact, the astronaut’s motion i
-
-## Match 1.03 — College_Physics_2e-WEB_7Zesafu § 28.2 Simultaneity And Time Dilation
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe simultaneity.
-•
-Describe time dilation.
-•
-Calculate γ.
-•
-Compare proper time and the observer’s measured time.
-•
-Explain why the twin paradox is a false paradox.
-FIGURE 28.4 Elapsed time for a foot race is the same for all observers, but at relativistic speeds, elapsed time depends on the relative
-motion of the observer and the event that is observed. (credit: Jason Edward Scott Bain, Flickr)
-Do time intervals depend on who observes them? Intuitively, we expect the time for a process, such as the elapsed
-time for a foot race, to be the same for all observers. Our experience has been that disagreements over elapsed time
-have to do with the accuracy of measuring time. When we carefully consider just how time is measured, however, we
-will find that elapsed time depends on the relative motion of an observer with respect to the process being
-measured.
-Simultaneity
-Consider how we measure elapsed time. If we use a stopwatch, for example, how do we know when to start and
-stop the watch? One method is to use the arrival of light from the event, such as observing a light turning green to
-start a drag race. The timing will be more accurate if some sort of electronic detection is used, avoiding human
-reaction times and other complications.
-Now suppose we use this method to measure the time interval between two flashes of light produced by flash
-lamps. (See Figure 28.5.) Two flash lamps with observer A midway between them are on a rail car that moves to the
-right relative to observer B. Observer B arranges for the light flashes to be emitted just as A passes B, so that both A
-and B are equidistant from the lamps when the light is emitted. Observer B measures the time interval between the
-arrival of the light flashes. According to postulate 2, the speed of light is not affected by the motion of the lamps
-relative to B. Therefore, light travels equal distances to him at equal speeds. Thus observer B measures the flashes
-to be simultaneous.
-28.2 • Simultaneity And Time Dilation
-1241
-
-FIGURE 28.5 Observer B measures the elapsed time between the arrival of light flashes as described in the text. Observer A moves with
-the lamps on a rail car. Observer B views the light flashes occurring simultaneously. Observer B views the light on the right reaching
-observer A before the light on the left does.
-Now consider what observer A sees happening. Since both lamps are the same distance from her in her reference
-frame and the train is moving to the right, she perceives the flash from the right-hand bulb occurring before the left-
-hand bulb. Here a relative velocity between observers affects whether two events are observed to be simultaneous.
-Simultaneity is not absolute..
-This illustrates the power of clear thinking. We might have guessed incorrectly that if light is emitted simultaneously,
-then two observers halfway between the sources would see the flashes simultaneously. But careful analysis shows
-this not to be the case. Einstein was brilliant at this type of thought experiment (in German,
-“Gedankenexperiment”). He very carefully considered how an observation is made and disregarded what might
-seem obvious. The validity of thought experiments, of course, is determined by actual observation. The genius of
-Einstein is evidenced by the fact that experiments have repeatedly confirmed his theory of relativity.
-In summary: Two events are defined to be simultaneous if an observer measures them as occurring at the same
-time (such as by receiving light from the events). Two events are not necessarily simultaneous to all observers.
-Time Dilation
-The consideration of the measurement of elapsed time and simultaneity leads to an important relativistic effect.
-Suppose, for example, an astronaut measures the time it takes for light to cross her ship, bounce off a mirror, and
-return. (See Figure 28.6.) How does the elapsed time the astronaut measures compare with the elapsed time
-measured for the same event by a person on the Earth? Asking this question (another thought experiment) produces
-a profound result. We find that the elapsed time for a process depends on who is measuring it. In this case, the time
-measured by the astronaut is smaller than the time measured by the Earth-bound observer. The passage of time is
-different for the observers because the distance the light travels in the astronaut’s frame is smaller than in the
-Time dilation
-Time dilation is the phenomenon of time passing slower for an observer who is moving relative to another
-observer.
-1242
-28 • Special Relativity
-Access for free at openstax.org
-
-Earth-bound frame. Light travels at the same speed in each frame, and so it will take longer to travel the greater
-distance in the Earth-bound frame.
-FIGURE 28.6 (a) An astronaut measures the time
-for light to cross her ship using an electronic timer. Light travels a distance
-in the
-astronaut’s frame. (b) A person on the Earth sees the light follow the longer path
-and take a longer time
-. (c) These triangles are used
-to find the relationship between the two distances
-and
-.
-To quantitatively verify that time depends on the observer, consider the paths followed by light as seen by each
-observer. (See Figure 28.6(c).) The astronaut sees the light travel straight across and back for a total distance of
-,
-twice the width of her ship. The Earth-bound observer sees the light travel a total distance
-. Since the ship is
-moving at speed
-to the right relative to the Earth, light moving to the right hits the mirror in this frame. Light travels
-at a speed
-in both frames, and because time is the distance divided by speed, the time measured by the astronaut
-is
-This time has a separate name to distinguish it from the time measured by the Earth-bound observer.
-In the case of the astronaut observe the reflecting light, the astronaut measures proper time. The time measured by
-the Earth-bound observer is
-To find the relationship between
-and
-, consider the triangles formed by
-and . (See Figure 28.6(c).) The
-third side of these similar triangles is
-, the distance the astronaut moves as the light goes across her ship. In the
-frame of the Earth-bound observer,
-Using the Pythagorean Theorem, the distance
-is found to be
-28.1
-Proper Time
-Proper time
-is the time measured by an observer at rest relative to the event being observed.
-28.2
-28.3
-28.2 • Simultaneity And Time Dilation
-1243
-
-Substituting
-into the expression for the time interval
-gives
-We square this equation, which yields
-Note that if we square the first expression we had for
-, we get
-. This term appears in the preceding
-equation, giving us a means to relate the two time intervals. Thus,
-Gathering terms, we solve for
-:
-Thus,
-Taking the square root yields an important relationship between elapsed times:
-where
-This equation for
-is truly remarkable. First, as contended, elapsed time is not the same for different observers
-moving relative to one another, even though both are in inertial frames. Proper time
-measured by an observer,
-like the astronaut moving with the apparatus, is smaller than time measured by other observers. Since those other
-observers measure a longer time
-, the effect is called time dilation. The Earth-bound observer sees time dilate
-(get longer) for a system moving relative to the Earth. Alternatively, according to the Earth-bound observer, time
-slows in the moving frame, since less time passes there. All clocks moving relative to an observer, including
-biological clocks such as aging, are observed to run slow compared with a clock stationary relative to the observer.
-Note that if the relative velocity is much less than the speed of light (
-), then
-is extremely small, and the
-elapsed times
-and
-are nearly equal. At low velocities, modern relativity approaches classical physics—our
-everyday experiences have very small relativistic effects.
-The equation
-also implies that relative velocity cannot exceed the speed of light. As
-approaches ,
-approaches infinity. This would imply that time in the astronaut’s frame stops at the speed of light. If
-exceeded ,
-then we would be taking the square root of a negative number, producing an imaginary value for
-.
-28.4
-28.5
-28.6
-28.7
-28.8
-28.9
-28.10
-28.11
-1244
-28 • Special Relativity
-Access for free at openstax.org
-
-There is considerable experimental evidence that the equation
-is correct. One example is found in
-cosmic ray particles that continuously rain down on the Earth from deep space. Some collisions of these particles
-with nuclei in the upper atmosphere result in short-lived particles called muons. The half-life (amount of time for
-half of a material to decay) of a muon is
-when it is at rest relative to the observer who measures the half-life.
-This is the proper time
-. Muons produced by cosmic ray particles have a range of velocities, with some moving
-near the speed of light. It has been found that the muon’s half-life as measured by an Earth-bound observer (
-)
-varies with velocity exactly as predicted by the equation
-. The faster the muon moves, the longer it lives.
-We on the Earth see the muon’s half-life time dilated—as viewed from our frame, the muon decays more slowly than
-it does when at rest relative to us.
-EXAMPLE 28.1
-Calculating
-for a Relativistic Event: How Long Does a Speedy Muon Live?
-Suppose a cosmic ray colliding with a nucleus in the Earth’s upper atmosphere produces a muon that has a velocity
-. The muon then travels at constant velocity and lives
-as measured in the muon’s frame of
-reference. (You can imagine this as the muon’s internal clock.) How long does the muon live as measured by an
-Earth-bound observer? (See Figure 28.7.)
-FIGURE 28.7 A muon in the Earth’s atmosphere lives longer as measured by an Earth-bound observer than measured by the muon’s
-internal clock.
-Strategy
-A clock moving with the system being measured observes the proper time, so the time we are given is
-. The Earth-bound observer measures
-as given by the equation
-. Since we know the
-velocity, the calculation is straightforward.
-Solution
-1) Identify the knowns.
-,
-2) Identify the unknown.
-3) Choose the appropriate equation.
-Use,
-where
-28.12
-28.2 • Simultaneity And Time Dilation
-1245
-
-4) Plug the knowns into the equation.
-First find .
-Use the calculated value of
-to determine
-.
-Discussion
-One implication of this example is that since
-at
-of the speed of light (
-), the relativistic
-effects are significant. The two time intervals differ by this factor of 3.20, where classically they would be the same.
-Something moving at
-is said to be highly relativistic.
-Another implication of the preceding example is that everything an astronaut does when moving at
-of the
-speed of light relative to the Earth takes 3.20 times longer when observed from the Earth. Does the astronaut sense
-this? Only if she looks outside her spaceship. All methods of measuring time in her frame will be affected by the
-same factor of 3.20. This includes her wristwatch, heart rate, cell metabolism rate, nerve impulse rate, and so on.
-She will have no way of telling, since all of her clocks will agree with one another because their relative velocities are
-zero. Motion is relative, not absolute. But what if she does look out the window?
-The Twin Paradox
-An intriguing consequence of time dilation is that a space traveler moving at a high velocity relative to the Earth
-would age less than her Earth-bound twin. Imagine the astronaut moving at such a velocity that
-, as in
-Figure 28.8. A trip that takes 2.00 years in her frame would take 60.0 years in her Earth-bound twin’s frame.
-Suppose the astronaut traveled 1.00 year to another star system. She briefly explored the area, and then traveled
-1.00 year back. If the astronaut was 40 years old when she left, she would be 42 upon her return. Everything on the
-Earth, however, would have aged 60.0 years. Her twin, if still alive, would be 100 years old.
-The situation would seem different to the astronaut. Because motion is relative, the spaceship would seem to be
-28.13
-28.14
-28.15
-Real-World Connections
-It may seem that special relativity has little effect on your life, but it is probably more important than you realize.
-One of the most common effects is through the Global Positioning System (GPS). Emergency vehicles, package
-delivery services, electronic maps, and communications devices are just a few of the common uses of GPS, and
-the GPS system could not work without taking into account relativistic effects. GPS satellites rely on precise time
-measurements to communicate. The signals travel at relativistic speeds. Without corrections for time dilation,
-the satellites could not communicate, and the GPS system would fail within minutes.
-1246
-28 • Special Relativity
-Access for free at openstax.org
-
-stationary and the Earth would appear to move. (This is the sensation you have when flying in a jet.) If the astronaut
-looks out the window of the spaceship, she will see time slow down on the Earth by a factor of
-. To her, the
-Earth-bound sister will have aged only 2/30 (1/15) of a year, while she aged 2.00 years. The two sisters cannot both
-be correct.
-FIGURE 28.8 The twin paradox asks why the traveling twin ages less than the Earth-bound twin. That is the prediction we obtain if we
-consider the Earth-bound twin’s frame. In the astronaut’s frame, however, the Earth is moving and time runs slower there. Who is correct?
-As with all paradoxes, the premise is faulty and leads to contradictory conclusions. In fact, the astronaut’s motion is
-significantly different from that of the Earth-bound twin. The astronaut accelerates to a high velocity and then
-decelerates to view the star system. To return to the Earth, she again accelerates and decelerates. The Earth-bound
-twin does not experience these accelerations. So the situation is not symmetric, and it is not correct to claim that
-the astronaut will observe the same effects as her Earth-bound twin. If you use special relativity to examine the twin
-paradox, you must keep in m
-
-## Match 1.03 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 28.2 Simultaneity And Time Dilation
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe simultaneity.
-•
-Describe time dilation.
-•
-Calculate γ.
-•
-Compare proper time and the observer’s measured time.
-•
-Explain why the twin paradox is a false paradox.
-FIGURE 28.4 Elapsed time for a foot race is the same for all observers, but at relativistic speeds, elapsed time depends on the relative
-motion of the observer and the event that is observed. (credit: Jason Edward Scott Bain, Flickr)
-Do time intervals depend on who observes them? Intuitively, we expect the time for a process, such as the elapsed
-time for a foot race, to be the same for all observers. Our experience has been that disagreements over elapsed time
-have to do with the accuracy of measuring time. When we carefully consider just how time is measured, however, we
-will find that elapsed time depends on the relative motion of an observer with respect to the process being
-measured.
-Simultaneity
-Consider how we measure elapsed time. If we use a stopwatch, for example, how do we know when to start and
-stop the watch? One method is to use the arrival of light from the event, such as observing a light turning green to
-start a drag race. The timing will be more accurate if some sort of electronic detection is used, avoiding human
-reaction times and other complications.
-Now suppose we use this method to measure the time interval between two flashes of light produced by flash
-lamps. (See Figure 28.5.) Two flash lamps with observer A midway between them are on a rail car that moves to the
-right relative to observer B. Observer B arranges for the light flashes to be emitted just as A passes B, so that both A
-and B are equidistant from the lamps when the light is emitted. Observer B measures the time interval between the
-arrival of the light flashes. According to postulate 2, the speed of light is not affected by the motion of the lamps
-relative to B. Therefore, light travels equal distances to him at equal speeds. Thus observer B measures the flashes
-to be simultaneous.
-MISCONCEPTION ALERT: CONSTANCY OF THE SPEED OF LIGHT
-The speed of light is a constant
-in a vacuum. If you remember the effect of the index of
-refraction from The Law of Refraction, the speed of light is lower in matter.
-28.2 • Simultaneity And Time Dilation
-1321
-
-FIGURE 28.5 Observer B measures the elapsed time between the arrival of light flashes as described in the text. Observer A moves with
-the lamps on a rail car. Observer B views the light flashes occurring simultaneously. Observer B views the light on the right reaching
-observer A before the light on the left does.
-Now consider what observer A sees happening. Since both lamps are the same distance from her in her reference
-frame and the train is moving to the right, she perceives the flash from the right-hand bulb occurring before the left-
-hand bulb. Here a relative velocity between observers affects whether two events are observed to be simultaneous.
-Simultaneity is not absolute..
-This illustrates the power of clear thinking. We might have guessed incorrectly that if light is emitted simultaneously,
-then two observers halfway between the sources would see the flashes simultaneously. But careful analysis shows
-this not to be the case. Einstein was brilliant at this type of thought experiment (in German,
-“Gedankenexperiment”). He very carefully considered how an observation is made and disregarded what might
-seem obvious. The validity of thought experiments, of course, is determined by actual observation. The genius of
-Einstein is evidenced by the fact that experiments have repeatedly confirmed his theory of relativity.
-In summary: Two events are defined to be simultaneous if an observer measures them as occurring at the same
-time (such as by receiving light from the events). Two events are not necessarily simultaneous to all observers.
-Time Dilation
-The consideration of the measurement of elapsed time and simultaneity leads to an important relativistic effect.
-Suppose, for example, an astronaut measures the time it takes for light to cross her ship, bounce off a mirror, and
-return. (See Figure 28.6.) How does the elapsed time the astronaut measures compare with the elapsed time
-measured for the same event by a person on the Earth? Asking this question (another thought experiment) produces
-a profound result. We find that the elapsed time for a process depends on who is measuring it. In this case, the time
-measured by the astronaut is smaller than the time measured by the Earth-bound observer. The passage of time is
-different for the observers because the distance the light travels in the astronaut’s frame is smaller than in the
-TIME DILATION
-Time dilation is the phenomenon of time passing slower for an observer who is moving relative to another
-observer.
-1322
-28 • Special Relativity
-Access for free at openstax.org
-
-Earth-bound frame. Light travels at the same speed in each frame, and so it will take longer to travel the greater
-distance in the Earth-bound frame.
-FIGURE 28.6 (a) An astronaut measures the time
-for light to cross her ship using an electronic timer. Light travels a distance
-in the
-astronaut’s frame. (b) A person on the Earth sees the light follow the longer path
-and take a longer time
-. (c) These triangles are used
-to find the relationship between the two distances
-and
-.
-To quantitatively verify that time depends on the observer, consider the paths followed by light as seen by each
-observer. (See Figure 28.6(c).) The astronaut sees the light travel straight across and back for a total distance of
-,
-twice the width of her ship. The Earth-bound observer sees the light travel a total distance
-. Since the ship is
-moving at speed
-to the right relative to the Earth, light moving to the right hits the mirror in this frame. Light travels
-at a speed
-in both frames, and because time is the distance divided by speed, the time measured by the astronaut
-is
-This time has a separate name to distinguish it from the time measured by the Earth-bound observer.
-In the case of the astronaut observe the reflecting light, the astronaut measures proper time. The time measured by
-the Earth-bound observer is
-To find the relationship between
-and
-, consider the triangles formed by
-and . (See Figure 28.6(c).) The
-third side of these similar triangles is
-, the distance the astronaut moves as the light goes across her ship. In the
-frame of the Earth-bound observer,
-Using the Pythagorean Theorem, the distance
-is found to be
-28.1
-PROPER TIME
-Proper time
-is the time measured by an observer at rest relative to the event being observed.
-28.2
-28.3
-28.2 • Simultaneity And Time Dilation
-1323
-
-Substituting
-into the expression for the time interval
-gives
-We square this equation, which yields
-Note that if we square the first expression we had for
-, we get
-. This term appears in the preceding
-equation, giving us a means to relate the two time intervals. Thus,
-Gathering terms, we solve for
-:
-Thus,
-Taking the square root yields an important relationship between elapsed times:
-where
-This equation for
-is truly remarkable. First, as contended, elapsed time is not the same for different observers
-moving relative to one another, even though both are in inertial frames. Proper time
-measured by an observer,
-like the astronaut moving with the apparatus, is smaller than time measured by other observers. Since those other
-observers measure a longer time
-, the effect is called time dilation. The Earth-bound observer sees time dilate
-(get longer) for a system moving relative to the Earth. Alternatively, according to the Earth-bound observer, time
-slows in the moving frame, since less time passes there. All clocks moving relative to an observer, including
-biological clocks such as aging, are observed to run slow compared with a clock stationary relative to the observer.
-Note that if the relative velocity is much less than the speed of light (
-), then
-is extremely small, and the
-elapsed times
-and
-are nearly equal. At low velocities, modern relativity approaches classical physics—our
-everyday experiences have very small relativistic effects.
-The equation
-also implies that relative velocity cannot exceed the speed of light. As
-approaches ,
-approaches infinity. This would imply that time in the astronaut’s frame stops at the speed of light. If
-exceeded ,
-then we would be taking the square root of a negative number, producing an imaginary value for
-.
-28.4
-28.5
-28.6
-28.7
-28.8
-28.9
-28.10
-28.11
-1324
-28 • Special Relativity
-Access for free at openstax.org
-
-There is considerable experimental evidence that the equation
-is correct. One example is found in
-cosmic ray particles that continuously rain down on the Earth from deep space. Some collisions of these particles
-with nuclei in the upper atmosphere result in short-lived particles called muons. The half-life (amount of time for
-half of a material to decay) of a muon is
-when it is at rest relative to the observer who measures the half-life.
-This is the proper time
-. Muons produced by cosmic ray particles have a range of velocities, with some moving
-near the speed of light. It has been found that the muon’s half-life as measured by an Earth-bound observer (
-)
-varies with velocity exactly as predicted by the equation
-. The faster the muon moves, the longer it lives.
-We on the Earth see the muon’s half-life time dilated—as viewed from our frame, the muon decays more slowly than
-it does when at rest relative to us.
-EXAMPLE 28.1
-Calculating
-for a Relativistic Event: How Long Does a Speedy Muon Live?
-Suppose a cosmic ray colliding with a nucleus in the Earth’s upper atmosphere produces a muon that has a velocity
-. The muon then travels at constant velocity and lives
-as measured in the muon’s frame of
-reference. (You can imagine this as the muon’s internal clock.) How long does the muon live as measured by an
-Earth-bound observer? (See Figure 28.7.)
-FIGURE 28.7 A muon in the Earth’s atmosphere lives longer as measured by an Earth-bound observer than measured by the muon’s
-internal clock.
-Strategy
-A clock moving with the system being measured observes the proper time, so the time we are given is
-. The Earth-bound observer measures
-as given by the equation
-. Since we know the
-velocity, the calculation is straightforward.
-Solution
-1) Identify the knowns.
-,
-2) Identify the unknown.
-3) Choose the appropriate equation.
-Use,
-where
-28.12
-28.2 • Simultaneity And Time Dilation
-1325
-
-4) Plug the knowns into the equation.
-First find .
-Use the calculated value of
-to determine
-.
-Discussion
-One implication of this example is that since
-at
-of the speed of light (
-), the relativistic
-effects are significant. The two time intervals differ by this factor of 3.20, where classically they would be the same.
-Something moving at
-is said to be highly relativistic.
-Another implication of the preceding example is that everything an astronaut does when moving at
-of the
-speed of light relative to the Earth takes 3.20 times longer when observed from the Earth. Does the astronaut sense
-this? Only if she looks outside her spaceship. All methods of measuring time in her frame will be affected by the
-same factor of 3.20. This includes her wristwatch, heart rate, cell metabolism rate, nerve impulse rate, and so on.
-She will have no way of telling, since all of her clocks will agree with one another because their relative velocities are
-zero. Motion is relative, not absolute. But what if she does look out the window?
-The Twin Paradox
-An intriguing consequence of time dilation is that a space traveler moving at a high velocity relative to the Earth
-would age less than her Earth-bound twin. Imagine the astronaut moving at such a velocity that
-, as in
-Figure 28.8. A trip that takes 2.00 years in her frame would take 60.0 years in her Earth-bound twin’s frame.
-Suppose the astronaut traveled 1.00 year to another star system. She briefly explored the area, and then traveled
-1.00 year back. If the astronaut was 40 years old when she left, she would be 42 upon her return. Everything on the
-Earth, however, would have aged 60.0 years. Her twin, if still alive, would be 100 years old.
-The situation would seem different to the astronaut. Because motion is relative, the spaceship would seem to be
-28.13
-28.14
-28.15
-REAL-WORLD CONNECTIONS
-It may seem that special relativity has little effect on your life, but it is probably more important than you realize.
-One of the most common effects is through the Global Positioning System (GPS). Emergency vehicles, package
-delivery services, electronic maps, and communications devices are just a few of the common uses of GPS, and
-the GPS system could not work without taking into account relativistic effects. GPS satellites rely on precise time
-measurements to communicate. The signals travel at relativistic speeds. Without corrections for time dilation,
-the satellites could not communicate, and the GPS system would fail within minutes.
-1326
-28 • Special Relativity
-Access for free at openstax.org
-
-stationary and the Earth would appear to move. (This is the sensation you have when flying in a jet.) If the astronaut
-looks out the window of the spaceship, she will see time slow down on the Earth by a factor of
-. To her, the
-Earth-bound sister will have aged only 2/30 (1/15) of a year, while she aged 2.00 years. The two sisters cannot both
-be correct.
-FIGURE 28.8 The twin paradox asks why the traveling twin ages less than the Earth-bound twin. That is the prediction we obtain if we
-consider the Earth-bound twin’s frame. In the astronaut’s frame, however, the Earth is moving and time runs slower there. Who is correct?
-As with all paradoxes, the premise is faulty and leads to contradictory conclusions. In fact, the astronaut’s motion is
-significantly different from that of the Earth-bound twin. The astronaut accelerates to a high velocity and then
-decelerates to view the star system. To return to the Earth, she again accelerates and decelerates. The Earth-bound
-twin does not experience these acceleration
+1.10: Reading- Geologic Tools
+Geologists use a lot of tools to aid their studies. Some of the most common tools used are compasses, rock hammers, hand lenses, and field books.
+Compasses
+There are a number of different (specialised) magnetic compasses used by geologists to measure orientation of geological structures, as they map in the field, to analyse (and document) the geometry of bedding planes, joints, and/or metamorphic foliations and lineations. [1] In this aspect the most common device used to date is the analogue compass.
+Classic geological compasses
+Classic geological compasses that are of practical use combine two functions, direction finding and navigation (especially in remote areas), and the ability to measure strike and dip of bedding surfaces and/or metamorphic foliation planes. Structural geologists (i.e. those concerned with geometry and the pattern of relative movement) also have a need to measure the plunge and plunge direction of lineations.
+Compasses in common use include the Brunton compass and the Silva compass.
+Modern Geological Compasses
+The concept of modern geological compass was developed by Eberhard Clar of the University of Vienna during his work as structural geologist. He published it in 1954. [2] An advantage of his concept is that strike and dip is measured in one step, using the vertical circle for dip angle and the compass for the strike direction. The first implementation was done by the VEB Freiberger Präzisionsmechanik in Freiberg, Germany. The details of the design were made in a close cooperation with the Freiberg University of Mining and Technology. [3]
+Usage
+At first sight it appears confusing to the novice user, for the numbers on the compass dial ascend in an anticlockwise direction. This is because the compass is used to determine dip and dip-direction of surfaces (foliations), and plunge and plunge-direction of lines (lineations). To use the compass one aligns the lid of the compass with the orientation of the surface to be measured (to obtain dip and dip direction), or the edge of the lid of the compass with the orientation of the line (to obtain plunge and plunge direction). The compass must be twisted so that the base of the compass becomes horizontal, as accomplished using the spirit level incorporated in it. The needle of the compass is then freed by using the side button, and allowed to spin until the damping action slows its movement, and then stabilises. The side button is released and the needle is then firmly held in place, allowing the user thereafter to conveniently read the orientation measured. One first reads the scale that shows the angle subtended by the lid of the compass, and then depending on the colour shown (red or black) the end of the compass needle with the corresponding colour. Data are then recorded as (for example) 25°->333° (dip and dip-direction) or (plunge and plunge-direction).
+This compass has the most use by structural geologists, measuring foliation and lineation in metamorphic rocks, or faults and joints in mining areas.
+Digital Compasses
+With the advent of the smartphone, geological compass programs based on the 3-axis teslameter and the 3-axis accelerometer have also begun to appear. These compass programs use vector algebra to compute plane and lineation orientations from the accelerometer and magnetometer data, and permit rapid collection of many measurements. However, some problems are potentially present. Smartphones produce a strong magnetic field of their own which must be compensated by software; as well, because the Earth’s magnetic field fluctuates rapidly, measurements made by smartphone geological compasses can potentially be susceptible to considerable noise. Users of a smartphone compass should carefully calibrate their devices and run several tests against traditional magnetic compasses in order to understand the limitations of their chosen program.
+Rock Hammers
+A geologist’s hammer , rock hammer , rock pick , or geological pick is a hammer used for splitting and breaking rocks. In field geology, they are used to obtain a fresh surface of a rock to determine its composition, nature, mineralogy, history, and field estimate of rock strength. In fossil and mineral collecting, they are employed to break rocks with the aim of revealing fossils inside. Geologist’s hammers are also sometimes used for scale in a photograph.
+Shape
+Geologist’s hammers, as with most hammers, have two heads, one on either side. Most commonly, the tool consists of a flat head on one end, with either a chisel or a pick head at the other end. [4]
+- A chisel head (pictured), which is shaped like a chisel, is useful for clearing covering vegetation from exposures and is sometimes (though inadvisedly) used to pry open fissures. Some rocks can be easily split, like slate or shale, to reveal any fossils.
+- A pick head, which terminates in a sharp point to deliver maximum pressure, is often preferred for harder rocks. A geologist’s hammer bearing a pick end is often referred to as a rock pick or geological pick instead of a geologist’s hammer.
+- A flat head is used to deliver a blow to a rock with the intention of splitting it. Specimens or samples can be trimmed to remove sharp corners or reduce them in size.
+Construction
+The effective power of a geologist’s hammer is mainly considered to be a reflection of its head weight and handle length. Head weight may range from 8 oz (225 g) or less on a small hammer—such as would generally be used for casual use or by children—to 24 oz (680 g) and greater. A hammer of 16 oz (450 g) is often quoted as sufficient for all rock types, although metamorphic or igneous rocks often require heavier hammers for a more powerful blow.
+The best geologist’s hammers are forged from one piece of hardened steel, which renders them sturdy and long-lasting. Alternatives such as tubular- and wooden-shafted hammers are more commonly used, in part due to their lower cost. Such alternative handles sacrifice strength and make the hammer unsuitable for high-strain activities such as prying.
+The form and weighting of the shaft defines the balance, which itself defines the ease, efficiency, and comfort of use of the geologist’s hammer.
+Hand Lenses
+The hand lens is a vital geological field tool used to identify small mineral crystals and structures in rocks. It is a simple, small magnification device used to see small details more closely. Unlike a magnifying glass, a loupe does not have an attached handle, and its focusing lens(es) are contained in an opaque cylinder or cone or fold into an enclosing housing that protects the lenses when not in use.
+Three basic types of hand lenses exist:
+- Simple lenses, which result in the highest degree of optical aberration and are generally lower magnification.
+- Multiple lenses, generally higher magnification because of the reduced optical aberration.
+- Prismatic, Multiple lenses with prisms used to change the perspective.
+Jewelers typically use a monocular, handheld loupe in order to magnify gemstones and other jewelry that they wish to inspect. [5] A 10x magnification is good to use for inspecting jewelry and hallmarks [6] and is the Gemological Institute of America’s standard for grading diamond clarity. Stones will sometimes be inspected at higher magnifications than 10x, although the depth of field, which is the area in focus, becomes too small to be instructive. [7] The accepted standard for grading diamonds is therefore that inclusions and blemishes visible at 10x impact the clarity grade. [8]
+Field Books
+Field books are used to take fieldnotes; they can be anything from a composition type notebook to a spiral, but most use an actual “field book” like those available for purchase here . Fieldnotes refer to qualitative notes recorded by scientists during or after their observation of a specific phenomenon they are studying. They are intended to be read as evidence that gives meaning and aids in the understanding of the phenomenon. Fieldnotes allow the researcher to access the subject and record what they observe in an unobtrusive manner.
+One major disadvantage of taking fieldnotes is that they are recorded by an observer and are thus subject to (a) memory [9] and (b) possibly, the conscious or unconscious bias of the observer. It is best to record fieldnotes immediately after leaving the site to avoid forgetting important details.
+Fieldnotes are particularly valued in geology and other descriptive sciences such as ethnography, biology, and archaeology.
+Structure
+There are two components of fieldnotes: descriptive information and reflective information. [10]
+- Descriptive information is factual data that is being recorded. Factual data includes time and date, the state of the physical setting, social environment, descriptions of the subjects being studied and their roles in the setting, and the impact that the observer may have had on the environment. [11]
+- Reflective information is the observer’s reflections about the observation being conducted. These reflections are ideas, questions, concerns, and other related thoughts. [12]
+Fieldnotes can also include sketches, diagrams, and other drawings. Visually capturing a phenomenon requires the observer to pay more attention to every detail as to not overlook anything. [13]
+- The Mapping of Geological Structures (Geological Society of London Handbook Series) [Paperback] K. R. McClay; Statistics of Earth Science Data: Their Distribution in Time, Space and Orientation [Paperback] Graham J. Borradaile (Author) ↵
+- Clar, E.: A dual-circle geologist’s and miner’s compass for the measurement of areal and linear geological elements. Separate print from the negotiations of the Federal Institute of Geology Vienna, 1954, vol. 4 ↵
+- "Geologist's Compass: Operating Manual," Freiberger Präzisionsmechanik . http://www.fpm.de/downloads/GeologistCompass_eng.pdf . ↵
+- MartinS (2006). "'Geological Hammers' info page" ↵
+- "Jewelry - How to Use a Loupe - Using Jewelry Magnifiers" . Jewelry.About.com ↵
+- Ibid . ↵
+- http://www.gemsociety.org/article/10x-loupe-the-gemologists-best-friend/ ↵
+- "The 4C's Of Diamonds: Diamond Clarity" . Leibish & Co. ↵
+- Canfield, Michael (2011). Field Notes on Science & Nature . Harvard University Pres. p. 21. ↵
+- Labaree, Robert V. "Research Guides: Organizing Your Social Sciences Research Paper: Writing Field Notes" . libguides.usc.edu . Retrieved 2016-04-12 . ↵
+- Ibid . ↵
+- Ibid . ↵
+- Canfield,Michael (2011). Field Notes on Science & Nature . p. 162. ↵
+Contributors and Attributions
+- Revision, Adaptation, and Original Content. Authored by : Kimberly Schulte and Lumen Learning. Provided by : Lumen Learning. License : CC BY-SA: Attribution-ShareAlike
+- Geological compass. Provided by : Wikipedia. Located at : https://en.Wikipedia.org/wiki/Geological_compass . License : CC BY-SA: Attribution-ShareAlike
+- Geologist's hammer. Provided by : Wikipedia. Located at : https://en.Wikipedia.org/wiki/Geologist%27s_hammer . License : CC BY-SA: Attribution-ShareAlike
+- Loupe. Provided by : Wikipedia. Located at : https://en.Wikipedia.org/wiki/Loupe . License : CC BY-SA: Attribution-ShareAlike
+- Fieldnotes. Provided by : Wikipedia. Located at : https://en.Wikipedia.org/wiki/Fieldnotes . License : CC BY-SA: Attribution-ShareAlike

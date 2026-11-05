@@ -5,6 +5,37 @@ Match confidence: 1.36
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
+## Match 1.36 — LibreTexts: 1.7: The Foundations of Communication References
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Communication/Introduction_to_Communication/Introduction_to_Communication_(Paynton_and_Hahn)/01%3A_The_Foundations_of_Communication/1.07%3A_The_Foundations_of_Communication_References
+
+1.7: The Foundations of Communication References
+-
+- Last updated
+- Save as PDF
+Adams, Susan. “The 10 Skills Employers Most Want In 20-Something Employees” Forbes . 11 Oct. 2013. Web. 15 Dec. 2014.
+Barnlund, Dean. “A Transactional Model of Communication.” Foundations of Communication Theory . New York: Harper & Row, 1970. Print.
+Dance, Frank E. X. “The ‘Concept’ of Communication.” Journal of Communication 20.2 (1970): 201–210. Wiley Online Library. Web. 16 Dec. 2014.
+—. “What Is Communication?: Nailing Jello to the Wall.” Association for Communication Administration Bulletin 48.4 (1984): 4–7. Print.
+Dunleavy, Katie Neary et al. “Daughters’ Perceptions of Communication with Their Fathers: The Role of Skill Similarity and Co-Orientation in Relationship Satisfaction.” Communication Studies 62.5 (2011): 581–596. EBSCOhost. Web. 16 Dec. 2014.
+Hovland, Carl I. “Social Communication.” Proceedings of the American Philosophical Society 92.5 (1948): 371–375. Print.
+Koenig Kellas, Jody, and Elizabeth A. Suter. “Accounting for Lesbian-Headed Families: Lesbian Mothers’ Responses to Discursive Challenges.” Communication Monographs 79.4 (2012): 475–498. EBSCOhost. Web. 16 Dec. 2014.
+Lee, Dick. Developing Effective Communications . University of Missouri Extension. 31 March 2008. Web. Dec. 2014.
+Miller-Day, Michelle, and Josephine W. Lee. “Communicating Disappointment: The Viewpoint of Sons and Daughters.” Journal of Family Communication 1.2 (2001): 111–131. Taylor and Francis+NEJM. Web. 16 Dec. 2014.
+Morris, Charles. Signs, Language and Behavior . xii. Oxford, England: Prentice-Hall, 1946. Print.
+NCA. What is Communication?. National Communication Association, 2014. Web. 15 December 2014.
+Nilsen, Thomas R. “On Defining Communication.” The Speech Teacher 6.1 (1957): 10–17. Taylor and Francis+NEJM. Web. 16 Dec. 2014.
+Panek, Elliot. “Left to Their Own Devices: College Students’ ‘Guilty Pleasure’ Media Use and Time Management.” Communication Research 41.4 (2014): 561–577. EBSCOhost. Web.
+Sapir, Edward. “Communication.” Encylopedia of the Social Sciences . New York: Macmillan Company, 1933. Print.
+Schramm, William. Communication in Modern Society: Fifteen Studies of the Mass Media Prepared for the University of Illinois Institution of Communication Research . Urbana, IL: University of Illinois Press. Print.
+Shannon, Claude, and Weaver, Warren. A Mathematical Model of Communication . Urbana, IL: University of Illinois Press, 1949. Print.
+Smith, Bruce Lannes, Harold Dwight Lasswell, and Ralph Droz Casey. Propaganda, Communication, and Public Opinion: A Comprehensive Reference Guide . Princeton University press, 1946. Print.
+Soukup, Paul A. “Looking At, With, and through YouTube.” Communication Research Trends 33.3 (2014): 3–34. Print.
+Stevens, Sam. “Introduction: A Definition of Communication.” The Journal of the Acoustical Society of America 22.6 (1950): 689–690. scitation.aip.org. Web. 16 Dec. 2014.
+Tyme, Justin. Organizational Leadership: 73 Tips from Aristotle . Amazon, 2012. Kindle.
+Wise, Megan, and Dariela Rodriguez. “Detecting Deceptive Communication Through Computer-Mediated Technology: Applying Interpersonal Deception Theory to Texting Behavior.” Communication Research Reports 30.4 (2013): 342–346. EBSCOhost. Web. 16 Dec. 2014.
+Contributions and Affiliations
+- Survey of Communication Study. Authored by : Scott T Paynton and Linda K Hahn. Provided by : Humboldt State University. Located at : en.wikibooks.org/wiki/Survey_of_Communication_Study. License : CC BY-SA: Attribution-ShareAlike
+
 ## Match 1.36 — Microbiology-WEB § 12.3 Whole Genome Methods and Pharmaceutical
 
 Applications of Genetic Engineering
@@ -199,390 +230,64 @@ types of RNA, cells also produce several types of small noncoding RNA molecules 
 regulation of gene expression. These include antisense RNA molecules, which are complementary to regions
 12.3 • Whole Genome Methods and Pharmaceutical Applications of 
 
-## Match 1.02 — Microbiology-WEB § 3.2 Foundations of Modern Cell Theory
+## Match 1.35 — LibreTexts: 3.2: Methodological Foundations of Sociology (1921)
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Sociology/Introduction_to_Sociology/Classical_Sociological_Theory_and_Foundations_of_American_Sociology_(Hurst)/03%3A_Weber/3.02%3A_Methodological_Foundations_of_Sociology_(1921)
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Explain the key points of cell theory and the individual contributions of Hooke, Schleiden, Schwann, Remak,
-and Virchow
-•
-Explain the key points of endosymbiotic theory and cite the evidence that supports this concept
-•
-Explain the contributions of Semmelweis, Snow, Pasteur, Lister, and Koch to the development of germ theory
-While some scientists were arguing over the theory of spontaneous generation, other scientists were making
-3.2 • Foundations of Modern Cell Theory
-77
-
-discoveries leading to a better understanding of what we now call the cell theory. Modern cell theory has two
-basic tenets:
-•
-All cells only come from other cells (the principle of biogenesis).
-•
-Cells are the fundamental units of organisms.
-Today, these tenets are fundamental to our understanding of life on earth. However, modern cell theory grew
-out of the collective work of many scientists.
-The Origins of Cell Theory
-The English scientist Robert Hooke first used the term “cells” in 1665 to describe the small chambers within
-cork that he observed under a microscope of his own design. To Hooke, thin sections of cork resembled
-“Honey-comb,” or “small Boxes or Bladders of Air.” He noted that each “Cavern, Bubble, or Cell” was distinct
-from the others (Figure 3.5). At the time, Hooke was not aware that the cork cells were long dead and,
-therefore, lacked the internal structures found within living cells.
-Figure 3.5
-Robert Hooke (1635–1703) was the first to describe cells based upon his microscopic observations of cork. This illustration
-was published in his work Micrographia.
-Despite Hooke’s early description of cells, their significance as the fundamental unit of life was not yet
-recognized. Nearly 200 years later, in 1838, Matthias Schleiden (1804–1881), a German botanist who made
-extensive microscopic observations of plant tissues, described them as being composed of cells. Visualizing
-plant cells was relatively easy because plant cells are clearly separated by their thick cell walls. Schleiden
-believed that cells formed through crystallization, rather than cell division.
-Theodor Schwann (1810–1882), a noted German physiologist, made similar microscopic observations of
-animal tissue. In 1839, after a conversation with Schleiden, Schwann realized that similarities existed between
-plant and animal tissues. This laid the foundation for the idea that cells are the fundamental components of
-plants and animals.
-In the 1850s, two Polish scientists living in Germany pushed this idea further, culminating in what we
-recognize today as the modern cell theory. In 1852, Robert Remak (1815–1865), a prominent neurologist and
-embryologist, published convincing evidence that cells are derived from other cells as a result of cell division.
-However, this idea was questioned by many in the scientific community. Three years later, Rudolf Virchow
-(1821–1902), a well-respected pathologist, published an editorial essay entitled “Cellular Pathology,” which
-popularized the concept of cell theory using the Latin phrase omnis cellula a cellula (“all cells arise from
-cells”), which is essentially the second tenet of modern cell theory.5 Given the similarity of Virchow’s work to
-Remak’s, there is some controversy as to which scientist should receive credit for articulating cell theory. See
-the following Eye on Ethics feature for more about this controversy.
-5 M. Schultz. “Rudolph Virchow.” Emerging Infectious Diseases 14 no. 9 (2008):1480–1481.
-78
-3 • The Cell
-Access for free at openstax.org.
-
-Eye on Ethics
-Science and Plagiarism
-Rudolf Virchow, a prominent, Polish-born, German scientist, is often remembered as the “Father of
-Pathology.” Well known for innovative approaches, he was one of the first to determine the causes of
-various diseases by examining their effects on tissues and organs. He was also among the first to use
-animals in his research and, as a result of his work, he was the first to name numerous diseases and
-created many other medical terms. Over the course of his career, he published more than 2,000 papers and
-headed various important medical facilities, including the Charité – Universitätsmedizin Berlin, a
-prominent Berlin hospital and medical school. But he is, perhaps, best remembered for his 1855 editorial
-essay titled “Cellular Pathology,” published in Archiv für Pathologische Anatomie und Physiologie, a journal
-that Virchow himself cofounded and still exists today.
-Despite his significant scientific legacy, there is some controversy regarding this essay, in which Virchow
-proposed the central tenet of modern cell theory—that all cells arise from other cells. Robert Remak, a
-former colleague who worked in the same laboratory as Virchow at the University of Berlin, had published
-the same idea 3 years before. Though it appears Virchow was familiar with Remak’s work, he neglected to
-credit Remak’s ideas in his essay. When Remak wrote a letter to Virchow pointing out similarities between
-Virchow’s ideas and his own, Virchow was dismissive. In 1858, in the preface to one of his books, Virchow
-wrote that his 1855 publication was just an editorial piece, not a scientific paper, and thus there was no
-need to cite Remak’s work.
-By today’s standards, Virchow’s editorial piece would certainly be considered an act of plagiarism, since he
-presented Remak’s ideas as his own. However, in the 19th century, standards for academic integrity were
-much less clear. Virchow’s strong reputation, coupled with the fact that Remak was a Jew in a somewhat
-anti-Semitic political climate, shielded him from any significant repercussions. Today, the process of peer
-review and the ease of access to the scientific literature help discourage plagiarism. Although scientists are
-still motivated to publish original ideas that advance scientific knowledge, those who would consider
-plagiarizing are well aware of the serious consequences.
-In academia, plagiarism represents the theft of both individual thought and research—an offense that can
-destroy reputations and end careers.6 7 8 9
-6 B. Kisch. “Forgotten Leaders in Modern Medicine, Valentin, Gouby, Remak, Auerbach.” Transactions of the American
-Philosophical Society 44 (1954):139–317.
-7 H. Harris. The Birth of the Cell. New Haven, CT: Yale University Press, 2000:133.
-8 C. Webster (ed.). Biology, Medicine and Society 1840-1940. Cambridge, UK; Cambridge University Press, 1981:118–119.
-9 C. Zuchora-Walske. Key Discoveries in Life Science. Minneapolis, MN: Lerner Publishing, 2015:12–13.
-3.2 • Foundations of Modern Cell Theory
-79
-
-CHECK YOUR UNDERSTANDING
-•
-What are the key points of the cell theory?
-•
-What contributions did Rudolf Virchow and Robert Remak make to the development of the cell theory?
-Endosymbiotic Theory
-As scientists were making progress toward understanding the role of cells in plant and animal tissues, others
-were examining the structures within the cells themselves. In 1831, Scottish botanist Robert Brown
-(1773–1858) was the first to describe observations of nuclei, which he observed in plant cells. Then, in the
-early 1880s, German botanist Andreas Schimper (1856–1901) was the first to describe the chloroplasts of
-plant cells, identifying their role in starch formation during photosynthesis and noting that they divided
-independent of the nucleus.
-Based upon the chloroplasts’ ability to reproduce independently, Russian botanist Konstantin Mereschkowski
-(1855–1921) suggested in 1905 that chloroplasts may have originated from ancestral photosynthetic bacteria
-living symbiotically inside a eukaryotic cell. He proposed a similar origin for the nucleus of plant cells. This
-was the first articulation of the endosymbiotic hypothesis, and would explain how eukaryotic cells evolved
-from ancestral bacteria.
-Mereschkowski’s endosymbiotic hypothesis was furthered by American anatomist Ivan Wallin (1883–1969),
-who began to experimentally examine the similarities between mitochondria, chloroplasts, and bacteria—in
-other words, to put the endosymbiotic hypothesis to the test using objective investigation. Wallin published a
-series of papers in the 1920s supporting the endosymbiotic hypothesis, including a 1926 publication co-
-authored with Mereschkowski. Wallin claimed he could culture mitochondria outside of their eukaryotic host
-cells. Many scientists dismissed his cultures of mitochondria as resulting from bacterial contamination.
-Modern genome sequencing work supports the dissenting scientists by showing that much of the genome of
-mitochondria had been transferred to the host cell’s nucleus, preventing the mitochondria from being able to
-live on their own.10 11
-Figure 3.6
-(a) Rudolf Virchow (1821–1902) popularized the cell theory in an 1855 essay entitled “Cellular Pathology.” (b) The idea
-that all cells originate from other cells was first published in 1852 by his contemporary and former colleague Robert Remak
-(1815–1865).
-10 T. Embley, W. Martin. “Eukaryotic Evolution, Changes, and Challenges.” Nature Vol. 440 (2006):623–630.
-11 O.G. Berg, C.G. Kurland. “Why Mitochondrial Genes Are Most Often Found in Nuclei.” Molecular Biology and Evolution 17 no. 6
-80
-3 • The Cell
-Access for free at openstax.org.
-
-Wallin’s ideas regarding the endosymbiotic hypothesis were largely ignored for the next 50 years because
-scientists were unaware that these organelles contained their own DNA. However, with the discovery of
-mitochondrial and chloroplast DNA in the 1960s, the endosymbiotic hypothesis was resurrected. Lynn
-Margulis (1938–2011), an American geneticist, published her ideas regarding the endosymbiotic hypothesis of
-the origins of mitochondria and chloroplasts in 1967.12 In the decade leading up to her publication, advances
-in microscopy had allowed scientists to differentiate prokaryotic cells from eukaryotic cells. In her publication,
-Margulis reviewed the literature and argued that the eukaryotic organelles such as mitochondria and
-chloroplasts are of prokaryotic origin. She presented a growing body of microscopic, genetic, molecular
-biology, fossil, and geological data to support her claims.
-Again, this hypothesis was not initially popular, but mounting genetic evidence due to the advent of DNA
-sequencing supported the endosymbiotic theory, which is now defined as the theory that mitochondria and
-chloroplasts arose as a result of prokaryotic cells establishing a symbiotic relationship within a eukaryotic host
-(Figure 3.7). With Margulis’ initial endosymbiotic theory gaining wide acceptance, she expanded on the theory
-in her 1981 book Symbiosis in Cell Evolution. In it, she explains how endosymbiosis is a major driving factor in
-the evolution of organisms. More recent genetic sequencing and phylogenetic analysis show that
-mitochondrial DNA and chloroplast DNA are highly related to their bacterial counterparts, both in DNA
-sequence and chromosome structure. However, mitochondrial DNA and chloroplast DNA are reduced
-compared with nuclear DNA because many of the genes have moved from the organelles into the host cell’s
-nucleus. Additionally, mitochondrial and chloroplast ribosomes are structurally similar to bacterial ribosomes,
-rather than to the eukaryotic ribosomes of their hosts. Last, the binary fission of these organelles strongly
-resembles the binary fission of bacteria, as compared with mitosis performed by eukaryotic cells. Since
-Margulis’ original proposal, scientists have observed several examples of bacterial endosymbionts in modern-
-day eukaryotic cells. Examples include the endosymbiotic bacteria found within the guts of certain insects,
-such as cockroaches,13 and photosynthetic bacteria-like organelles found in protists.14
-Figure 3.7
-According to the endosymbiotic theory, mitochondria and chloroplasts are each derived from the uptake of bacteria. These
-(2000):951–961.
-12 L. Sagan. “On the Origin of Mitosing Cells.” Journal of Theoretical Biology 14 no. 3 (1967):225–274.
-13 A.E. Douglas. “The Microbial Dimension in Insect Nutritional Ecology.” Functional Ecology 23 (2009):38–47.
-14 J.M. Jaynes, L.P. Vernon. “The Cyanelle of Cyanophora paradoxa: Almost a Cyanobacterial Chloroplast.” Trends in Biochemical
-Sciences 7 no. 1 (1982):22–24.
-3.2 • Foundations of Modern Cell Theory
-81
-
-bacteria established a symbiotic relationship with their host cell that eventually led to the bacteria evolving into mitochondria and
-chloroplasts.
-CHECK YOUR UNDERSTANDING
-•
-What does the modern endosymbiotic theory state?
-•
-What evidence supports the endosymbiotic theory?
-The Germ Theory of Disease
-Prior to the discovery of microbes during the 17th century, other theories circulated about the origins of
-disease. For example, the ancient Greeks proposed the miasma theory, which held that disease originated
-from particles emanating from decomposing matter, such as that in sewage or cesspits. Such particles infected
-humans in close proximity to the rotting material. Diseases including the Black Death, which ravaged Europe’s
-population during the Middle Ages, were thought to have originated in this way.
-In 1546, Italian physician Girolamo Fracastoro proposed, in his essay De Contagione et Contagiosis Morbis,
-that seed-like spores may be transferred between individuals through direct contact, exposure to
-contaminated clothing, or through the air. We now recognize Fracastoro as an early proponent of the germ
-theory of disease, which states that diseases may result from microbial infection. However, in the 16th
-century, Fracastoro’s ideas were not widely accepted and would be largely forgotten until the 19th century.
-In 1847, Hungarian obstetrician Ignaz Semmelweis (Figure 3.8) observed that mothers who gave birth in
-hospital wards staffed by physicians and medical students were more likely to suffer and die from puerperal
-fever after childbirth (10%–20% mortality rate) than were mothers in wards staffed by midwives (1% mortality
-rate). Semmelweis observed medical students performing autopsies and then subseque
-
-## Match 0.70 — ContemporaryMathematics-WEB § 13.3 Math and Medicine
-
-Figure 13.9 Shoppers wear masks during the Covid-19 pandemic. (credit: "True Covid Scene - Mask Buying" by Joey
-Zanotti/Flickr, CC BY 2.0)
-Learning Objectives
-After completing this section, you should be able to:
-1.
-Compute the mathematical factors utilized in concentrations/dosages of drugs.
-2.
-Describe the history of validating effectiveness of a new drug.
-3.
-Describe how mathematical modeling is used to track the spread of a virus.
-The pandemic that rocked the world starting in 2020 turned attention to finding a cure for the Covid-19 strain into a
-world race and dominated conversations from major news channels to households around the globe. News reports
-decreeing the number of new cases and deaths locally as well as around the world were part of the daily news for over a
-year and progress on vaccines soon followed. How was a vaccine able to be found so quickly? Is the vaccine safe? Is the
-vaccine effective? These and other questions have been raised through communities near and far and some remain
-debatable. However, we can educate ourselves on the foundations of these discussions and be more equipped to analyze
-new information related to these questions as it becomes available.
-Concentrations and Dosages of Drugs
-Consider any drug and the recommended dosage varies based on several factors such as age, weight, and degree of
-illness of a person. Hospitals and medical dispensaries do not stock every possible needed concentration of medicines.
-Drugs that are delivered in liquid form for intravenous (IV) methods in particular can be easily adjusted to meet the
-needs of a patient. Whether administering anesthesia prior to an operation or administering a vaccine, calculation of the
-concentration of a drug is needed to ensure the desired amount of medicine is delivered.
-The formula to determine the volume needed of a drug in liquid form is a relatively simple formula. The volume needed
-is calculated based on the required dosage of the drug with respect to the concentration of the drug. For drugs in liquid
-form, the concentration is noted as the amount of the drug per the volume of the solution that the drug is suspended in
-which is commonly measured in g/mL or mg/mL.
-Suppose a doctor writes a prescription for 6 mg of a drug, which a nurse calculates when retrieving the needed
-prescription from their secure pharmaceutical storage space. On the shelves, the drug is available in liquid form as 2 mg
-per mL. This means that 1 mg of the drug is found in 0.5 mL of the solution. Multiplying 6 mg by 0.5 mL yields 3 mL,
-which is the volume of the prescription per single dose.
-FORMULA
+Methodological Foundations of Sociology (in 11 Points)
+Sociology, in the sense we adopt here, is a science that interprets the meaning of social action and through that interpretation clarifies the causal procedures and effects of those actions. Actions here are those acts, whether active, refraining from action, or allowing actions to take place, when and only when done with subjective intent. They are “social” actions when they involve the subjective intentions relative to another person’s actions and when that social relation orients the action.
+Point 1. Meanings are Empirically Situated
+The meaning may either refer to the meaning of a particular individual on a particular occasion or as an average meaning in a given set of cases or even a typical meaning attributed in the abstract (e.g., “capitalists replace workers with machinery with the intention of increasing profits”). It
+does not
+signify that the intended meaning is true or correct. Herein lies the difference between the empirical sciences of sociology (and history) and disciplines such as jurisprudence, logic, ethics, or aesthetics that seek the “correct” rule or meaning from their objects of study.
+Point 2. We cannot always find the intentions of the actors; the line between intentional and reactive behavior is blurred
+There is not a sharp line between meaningful action and reactive action, actions for which actors do not intend a meaning. A great deal of interesting and important behavior for the sociologist to study, especially when we talk about traditional actions, lies between intentional and reactive action. In some cases, such as mystical experiences, we cannot hope to understand the meanings of the action because the actors do not understand the actions themselves. It is often necessary to separate out those aspects which can be understood from those elements which cannot.
+Point 3. The goal of interpretation is to generate evidence about the world, and we can do this both rationally and empathetically
+The goal of all our interpretations is to find evidence. This evidence can take a rational or an empathetic form. Rational evidence is obtained in the case of actions in which the intended meanings can be intellectually understood wholly and clearly. Empathetic evidence is obtained when actions and their attendant feelings and lived experience are completely relived in the sociological imagination. For the first, every interpretation of a rationally directed purposive action, is quite clearly evidence.
+we can say with some assurance that introduction of machinery operates to increase the profits of capitalists.
+But even of the second, we can learn almost as much about the world from this empathetic understanding. For example, we can try to relive empathetically actions of extreme religious devotion, even as they go against our own beliefs. We can gain some understanding of the intended meanings through empathy, allowing for the influence of various emotions (anxiety, anger, ambition, envy, jealousy, love, pride, lust, etc.) on the course of the action and the means used to perform the action. It is even possible to understand many irrational and emotional actions as deviations from pure types of action that would happen if everything proceeded in a rationally purposive way.
+For example, capitalists in a panic when the stock market crashes may sell their machinery even though such may reduce their profits in the long run
 .
-A common calculation for the weight of a liquid drug is measured in grams of a drug per 100 mL of solution and is also
-called the percentage weight by volume measurement and labeled as % w/v or simply w/v.
-Note that the units for a desired dose of a drug and the units for a solution containing the drug or pill form of the
-drug must be the same. If they are not the same, the units must first be converted to be measured in the same
-13.3 • Math and Medicine
-1431
-
-units.
-Suppose you visit your doctor with symptoms of an upset stomach and unrelenting heartburn. One possible recourse is
-sodium bicarbonate, which aids in reducing stomach acid.
-EXAMPLE 13.12
-Calculating the Quantity in a Mixture
-How much sodium bicarbonate is there in a 250 mL solution of 1.58% w/v sodium bicarbonate?
-Solution
-sodium bicarbonate in 100 mL. If there is 250 mL of the solution, we have 2.5 times as much sodium
-bicarbonate as in 100 mL. Thus, we multiply 1.58 by 2.5 to yield 3.95 g sodium bicarbonate in 250 mL solution.
-YOUR TURN 13.12
-1. How many milligrams of sodium chloride are there in 200 mL of a 0.9% w/v normal saline solution?
-EXAMPLE 13.13
-Calculating the Quantity of Pills Needed
-A doctor prescribes 25.5 mg of a drug to take orally per day and pills are available in 8.5 mg. How many pills will be
-needed each day?
-Solution
-The prescription and the pills are in the same units which means no conversions are needed. We can divide the units of
-the drug prescribed by the units in each pill:
-. So, 3 pills will be needed each day.
-YOUR TURN 13.13
-1. How many pills would be needed for a patient who has been prescribed 25.5 mg of a drug if each pill contains
-4.25 mg.
-EXAMPLE 13.14
-Calculating the Drug Dose in Milligrams, Based on Patient Weight
-A patient is prescribed 2 mg/kg of a drug to be delivered intramuscularly, divided into 3 doses per day. If the patient
-weighs 45 kg, how many milligrams of the drug should be given per dose?
-Solution
-Step 1: Calculate the total daily dose of the drug based on the patient’s weight (measured in kilograms):
-Step 2: Divide the total daily dose by the number of doses per day:
-The patient should receive 30 mg of the drug in each dose.
-YOUR TURN 13.14
-1. A patient is prescribed 1.4 mg/kg of a drug to be delivered intramuscularly, divided into 2 doses per day. If the
-1432
-13 • Math and...
-Access for free at openstax.org
-
-patient weighs 60 kg, how many milliliters of the drug should be given per dose?
-Note that the units for a patient’s weight must be compatible with the units used in the medicine measurement. If
-they are not the same, the units must first be converted to be measured in the same units.
-EXAMPLE 13.15
-Calculating the Drug Dose in Milliliters, Based on Patient Weight
-A patient is prescribed 2 mg/kg of a drug to be delivered intramuscularly, divided into 3 doses per day. If the drug is
-available in 20 mg/mL and the patient weighs 60 kg, how many milliliters of the drug should be given per dose?
-Solution
-Step 1: Calculate the total daily dose of the drug (measured in milligrams) based on the patient’s weight (measured in
-kilograms):
-Step 2: Calculate the volume in each dose:
-Step 3: Calculate the volume based on the strength of the stock:
-The patient should receive 2 mL of the stock drug in each dose.
-YOUR TURN 13.15
-1. A patient is prescribed 2.5 mg/kg of a drug to be delivered intramuscularly, divided into 2 doses per day. If the
-drug is available in 5 mg/mL and the patient weighs 52 kg, how many milligrams of the drug should be given per
-dose?
-WHO KNEW?
-Math Statistics from the CDC
-The Centers for Disease Control and Prevention (CDC) states that about half the U.S. population in 2019 used at least
-one prescription drug each month, and about 25% of people used three or more prescription drugs in a month. The
-resulting overall collective impact of the pharmaceutical industry in the United States exceeded $1.3 trillion a year
-prior to the 2020 pandemic.
-Validating Effectiveness of a New Vaccine
-The process to develop a new vaccine and be able to offer it to the public typically takes 10 to 15 years. In the United
-States, the system typically involves both public and private participation in a process. During the 1900s, several vaccines
-were successfully developed, including the following: polio vaccine in the 1950s and chickenpox vaccine in the 1990s.
-Both of these vaccines took years to be developed, tested, and available to the public. Knowing the typical timeline for a
-vaccine to move from development to administration, it is not surprising that some people wondered how a vaccine for
-Covid-19 was released in less than a year’s time.
-Lesser known is that research on coronavirus vaccines has been in process for approximately 10 years. Back in 2012,
-concern over the Middle Eastern respiratory syndrome (MERS) broke out and scientists from all over the world began
-working on researching coronaviruses and how to combat them. It was discovered that the foundation for the virus is a
-spike protein, which, when delivered as part of a vaccine, causes the human body to generate antibodies and is the
-13.3 • Math and Medicine
-1433
-
-platform for coronavirus vaccines.
-When the Covid-19 pandemic broke out, Operation Warp Speed, fueled by the U.S. federal government and private
-sector, poured unprecedented human resources into applying the previous 10 years of research and development into
-targeting a specific vaccine for the Covid-19 strain.
-PEOPLE IN MATHEMATICS
-Shibo Jiang
-Dr. Shibo Jiang, MD, PhD, is co-director the Center for Vaccine Development at the Texas Children’s Hospital and head
-of a virology group at the New York Blood Center. Together with his colleagues, Jiang has been working on vaccines
-and treatments for a range of viruses and infections including influenzas, HIV, Sars, HPV and more recently Covid-19.
-His work has been recognized around the world and is marked with receiving grants amounting to over $20 million
-from U.S. sources as well as the same from foundations in China, producing patents in the United States and China
-for his antiviral products to combat world concerns.
-Jiang has been a voice for caution in the search for a vaccine for Covid-19, emphasizing the need for caution to ensure
-safety in the development and deployment of a vaccine. His work and that of his colleagues for over 10 years on other
-coronaviruses paved the way for the vaccines that have been shared to combat the Covid-19 pandemic.
-Mathematical Modeling to Track the Spread of a Vaccine
-With a large number of people receiving a Covid-19 vaccine, the concern at this time is how to create an affordable
-vaccine to reach people all over the world. If a world solution is not found, those without access to a vaccine will serve as
-incubators to variants that might be resistant to the existing vaccines.
-As we work to vaccinate the world, attention continues with tracking the spread of the Covid-19 and its multiple variants.
-Mathematical modeling is the process of creating a representation of the behavior of a system using mathematical
-language. Digital mathematical modeling plays a key role in analyzing the vast amounts of data reported from a variety
-of sources such as hospitals and apps on cell phones.
-When attempting to represent an observed quantitative data set, mathematical models can aid in finding patterns and
-concentrations as well as aid in predicting growth or decline of the system. Mathematical models can also be useful to
-determine strengths and vulnerabilities of a system, which can be helpful in arresting the spread of a virus.
-The chapter on Graph Theory explores one such method of mathematical modeling using paths and circuits. Cell phones
-have been helpful in tracking the spread of the Covid-19 virus using apps regulated by regional government public
-health authorities to collect data on the network of people exposed to an individual who tests positive for the Covid-19
-virus.
-1434
-13 • Math and...
-Access for free at openstax.org
-
-PEOPLE IN MATHEMATICS
-Gladys West
-Figure 13.10 Gladys West (credit: "Dr. Gladys West Hall" by The US Air Force/Wikimedia Commons, Public Domain)
-Dr. Gladys West is a mathematician and hidden figure with a rich résumé of accomplishments spanning Air Force
-applications and work at NASA. Born in 1930, West rose and excelled both academically and in her professional life at
-a time when Black women were not embraced in STEM positions. One of her many accomplishments is the Global
-Positioning System (GPS) used on cell phones for driving directions.
-West began work as a human computer, someone who computes mathematical computations by hand. Considering
-the time and complexity of some calculations, she became involved in programming computers to crunch
-computations. Eventually, West created a mathematical model of Earth with detail and precision that made GPS
-possible, which is utilized in an array of devices from satellites to cell phones. The next time you tag a photo or obtain
-driving directions, you are tapping into the mathematical modeling of Earth that West developed.
-Consider the following graph (Figure 13.11):
-Figure 13.11 Contact Tracing for Math 111 Section 1
-At the center of the graph, we find Alyssa, whom we will consider positive for a virus. Utilizing the technology of phone
-apps voluntarily installed on each phone of the individuals in the graph, tracking of the spread of the virus among the 6
-individuals that Alyssa had direct contact with can be implemented, namely Suad, Rocio, Braeden, Soren, and Sandra.
-Let’s look at José’s exposure risk as it relates to Alyssa. There are multiple paths connecting José with Alyssa. One path
-includes the following individuals: José to Mikaela to Nate to Sandra to Alyssa. This path contains a length of 4 units, or
-people, in the contact tracing line. There are 2 more paths connecting José to Alyssa. A second path of the same length
-consists of José to Lucia to Rocio to Braeden to Alyssa. Path 3 is the shortest and consists of José to Lucia to Rocio to
-13.3 • Math and Medicine
-1435
-
-Alyssa. Tracking the spread of positive cases in the line between Alyssa and José aids in monitoring the spread of the
-infection.
-Now consider the complexity of tracking a pandemic across the nation. Graphs such as the one above are not practical to
-be drawn on paper but can be managed by computer programs capable of computing large volumes of data. In fact, a
-computer-generated mathematical model of contact tracing would look more like a sphere with paths on the exterior as
-well as on the interior. Mathematical modeling of contact tracing is complex and feasible through the use of technology.
-EXAMPLE 13.16
-Using Mathematical Modeling
-For the following exercises, use the sample contact tracing graph to identify paths (Figure 13.12).
-Figure 13.12 Contact Tracing for ECON 250 Section 1
-1.
-How many people have a path of length 2 from Jeffrey?
-2.
-Find 2 paths between Kayla and Rohan.
-3.
-Find the shortest path between Yara and Kalani. State the length and people in the path.
-Solution
-1.
-5 (Lura, Naomi, Kalani, Vega, Yara)
-2.
-Answers will vary. Two possible answers are as follows:
-a.
-Kayla, Jeffrey, Rohan
-b.
-Kayla, Lura, Yara, Lev, Vega, Uma, Kalani, Rohan
-3.
-Length is 4. People in path = Yara, Lev, Vega, Uma, Kalani
-YOUR TURN 13.16
-For the following exercises, use Figure 13.12.
-1. List all the names of those who have a 
+Point 4. Meaningless actions are still important insofar they impact social actions
+Operations and actions which are meaningless must still be taken into account if they cause or are caused by, promote or place obstacles in the way of, social actions. Even inanimate objects, such as machines, can have meanings related to their use by humans in social interactions. The flooding of a river may be a natural occurrence, but the way humans respond (for example, by moving away from areas likely to flood) is an important object of sociological study. Or take the way we deal with death, and entire cycle of life, from infancy to old age. In all cases, the sociologists; task is to interpret the meanings humans give to their actions and by doing so to understand the actions themselves.
+Point 5. Sociological understanding is explanatory
+Understanding can mean two things. In the first, direct understanding, we comprehend the meaning an actor gives. For example, we understand an outburst of anger, seeing evidence of it in a red face or exclamation. We can directly understand the action of aiming a gun. But understanding can be more than direct; it can be explanatory. We understand something aiming a gun not merely directly but also more deeply in terms of motive, if we know other facts about why the person is aiming the gun. If he has been ordered to do so in battle, for example, that is a rational motive; on the other hand, if he is aiming at someone out of fear, this is an irrational motive. To understand sociologically means to grasp the complex of meanings surrounding the specific observed action.
+Point 6. Sociological understanding is hypothetical
+The goal of every interpretation is the creation of evident facts about the world.
+For example, in times of panic, capitalists often take actions that harm their profitability in the long run; in normal times, however, they seek to increase profits, and one way they may do this is by replacing workers with machinery
+.
+But all of our interpretations are
+hypotheses
+about the world. We cannot know for sure if our interpretation is correct. As with all hypotheses, it is crucial to have some way of checking our interpretation. The best way to do this would be by experiment, using the scientific method. Statistical methods can give some approximate results, but only in cases that are measurable in which numerical relationships are possible to establish. Apart from these methods, then, the best option is to compare as many events as possible, keeping as many things similar as possible and investigating one particular point, motive or cause.
+Point 7. Motives of actions are crucial to sociological interpretation because they are related to causality
+A motive is a set of meanings which prompts the actor to act in a certain way (either from her perspective, or the sociological observer’s perspective). To give a correct causal interpretation of a particular act is to see the action and the motive for the action as related to each other in a way whose meaning can be understood. Sociological laws only exist where statistical generalization fit our interpretation of the intended meaning of a social action. Sociology proceeds by constructing models of intelligible action which apply to real-world situations. Note the difference between meaningless and meaningful (hence, sociological) statistics. Death rates, or the output of machinery are examples of the former. Crime rates and occupational distributions are examples of the latter.
+Point 8. Meaningless actions are not unimportant, but they are not sociological facts
+Certain facts of life,
+such as birth and death or the flooding of a river
+, do not count as sociological because they lack the meaningfulness derived from motives described above. This does not mean they are less important, however. But they do operate in an area distinct from that of meaningful social action. They are conditions of action, or obstacles to action, or promoters of action, but not social actions themselves.
+Point 9. Individuals, and individuals alone, are the intelligible performers of meaningful actions
+Action for our purposes must refer only to the behavior of one or more individuals. Other disciplines may refer to states or whole societies as individual cases and actors, but from the standpoint of sociological understanding of the meaning of actions we must see these systems as the outcomes of interactions between individuals. For the sociologist, individual human beings are the only intelligible performers of meaningful actions. When a sociologist does speak of something like “the state” or “the family” or any other collectivity, she means a structured outcome of the social actions of individuals, either in actual reality or ideally constructed.
+This way of proceeding is quite different from the “organic sociology” proposed by others. In this view, the sociologist is like a natural scientist who examines individuals as so many cells in the body of society. The methods of sociology we present here are quite different. The sociologist does not work like a biologist, who observes organisms at the cellular level. A biologist may observe cells and make inferences about the way they operate in functional terms (
+e.g. the spleen filters blood),
+but the biologist cannot interpret the action of the cells involved in the spleen. In contrast, the sociologist can understand the behavior of the individuals involved in a way that simply cannot be done by natural scientists. This interpretation comes with a cost, however. Our interpretations of the social actions of individuals are by nature more hypothetical and partial than those of direct observation of action/function. But this is exactly what sets sociology apart from the natural sciences.
+Point 10. Sociology is distinct from psychology
+Sociological laws are but theories generated by interpretative sociology. They are observationally verified statements of the likelihood of an expectation of a certain outcome from a particular social action. Sociological laws are most intelligible when the outcome results from a rational pursuit of a clear goal and when the means-end context is clear.
+e.g.,
+capitalists are constantly seeking to replace workers with machinery to enable higher profits.
+Psychology would add nothing to our sociological interpretation here. When a capitalist deliberates in a rational way whether his profits would increase by replacing workers with machinery, thinking rationally in terms of likely consequences of this action, and comes to the conclusion that, yes, he thinks he will make more money this way, then there is nothing that ‘psychology’ will add to our understanding. Now, when the sociologist attempts to explain
+irrational
+elements in action (e.g., the panicked capitalist who sells off his machinery during an economic crisis), she can learn a thing or two from psychology, based on its keener understanding of such irrational elements.
+Point 11. Sociology is distinct from the discipline of history
+The sociologist seeks to formulate general statements about what happens. This is in contrast with historians, who seek to provide a causal analysis of a specific historic event.
+We sociologists may study the rise of capitalism to learn more about how cultural beliefs affect the adoption of new practices, whereas a historian is interested in knowing about
+these particular
+early adopters of capitalism.
+There are pros and cons to this approach. As with any generalizing science, the abstract nature of the concepts of sociology means that there is relatively less content here than in historical analyses. In return, sociology offers greater conceptual clarity. Sociology abstracts from reality. She does this often by creating “ideal types”, stripped of their historical particularities.
+Questions for Contemplation and Discussion
+-
+How does Weber’s method for doing sociology (social action) differ from Durkheim’s emphasis on social facts?
+-
+In point six, how would you go about devising an experiment using the scientific method to test the interpretation that capitalists’ behavior becomes more irrational during times of stock market volatility? Why is it nearly impossible for sociologists to conduct such experiments? Given the difficulties of using experiments, how would you arrange a comparative case study of capitalist actions during panics?
+-
+In point seven, what makes crime rates sociological, where death rates are “meaningless statistics’?
+-
+In point nine, compare and contrast “organic so

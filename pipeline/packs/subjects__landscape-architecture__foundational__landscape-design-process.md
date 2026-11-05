@@ -1,620 +1,131 @@
 # Source pack — subjects/landscape-architecture/foundational/landscape-design-process
 Lesson title: Landscape Design Process
 Level: foundational
-Match confidence: 1.37
+Match confidence: 2.02
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.37 — WritingGuide-WEB § 13.2 The Research Process: How to Create Sources
+## Match 2.02 — LibreTexts: 3.2: Process Design
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Courses/Western_Technical_College/Operations_Management_(Hammond)/03%3A_Process_Planning/3.02%3A_Process_Design
 
-LEARNING OUTCOMES
+3.2: Process Design
+Every firm that produces a good or a service will do so by the use of a process. This process will use the firm’s resources in order to transform the primary inputs into some type of output. In designing the actual process, particularly the number and sequence of steps, several important factors need to be considered.
+- Product variety – Is the product highly standardized, or is the product highly customized?
+- Volume of output – Is the business created to produce large volumes or a small amount of output?
+- Is the technology to be used general purpose or specialized? Is it capital intensive?
+- The skill level of employees, it is very high or low?
+- What is the expected duration?
+Make-to-order and Make-to-stock
+It is useful to categorize processes as either make-to-order or make-to-stock.
+In a make-to-order business, the customer’s order is not manufactured until the order is received. This allows customization to the exact specifications that the customer requires. It may also be referred to as build-to-order. This type of production is considered a pull type system. The work is “pulled” through the process when customer demand is present.
+The disadvantage of this type of system is that it takes time for the firm to acquire any materials and needed components, and then to schedule and produce the customers order. Goods are made in small amounts, and may be more expensive.
+The advantage of this type of process is that inventory is lower than in a typical make-to-stock system. There is not any uncertainty about what the customer desires and there is no obsolete stock to be disposed of. Dell Computer has utilized this type of system to produce personal computers very successfully.
+In a make-to-stock process, goods are produced in anticipation of customer demand, usually from a sales forecast. These products are generally made in larger amounts and put into storage to wait for customer orders. Although the unit cost may be lower due to large production volumes, there may be losses due to forecast error, excess inventory, obsolescence and theft. Lead times however are short because goods are available when the customer places the order. These goods are not customized, but standardized.
+Process Types
+Project
+A one-time event, such as construction of an apartment building, implementation of a new ERP system, or writing a book, would all be considered a project type of process. Each of these projects have a high degree of customization, substantial use of resources, and a complex set of related activities. There is only a single output at the end of the project.
+Job Shop
+Many businesses have a job shop type of process. This is most commonly used when the product being produced is unique for each customer. It is a make-to-order type of business where production is intermittent (i.e. rather than one entire product being completed at a time, work will continue on multiple products as time permits). Often the product has unique characteristics for each customer. The workers in this type of business are very highly skilled in their craft or trade. Often they are referred to as craftsmen or makers. The volume of output is low in a job shop. The equipment used is quite general purpose. Examples include a small bakery that produces beautiful custom wedding cakes, or a business that makes custom guitars or bicycles based on the customers measurements and preferences of materials and components.
+Batch
+Some businesses are in the situation where they make groups of identical products on a regular basis. These groups are referred to as a batch. The batch will progress through a set of steps to be completed from the start to the end. An organization may have multiple batches at different stages coming through the process. This type of processing is also intermittent. (start, stop, start) There is less variety in this type of business (compared to a job shop) and the equipment used will be relatively general purpose and suited to the industry that they are in. Employees need to be skilled and experienced at operating that equipment and producing these products. Examples of products made using batch production are baked goods, aircraft parts, clothing, and vaccines. An important decision by these firms is how big the batch should be.
+Repetitive
+This type of business produces products that are more standardized in nature. Usually the output is high. Since the goods are quite standardized, the equipment used tends to be quite specialized and often highly customized for that process. The skill level of the employees is usually low because the steps are highly standardized. Although these types of jobs may not require a trade or extensive experience, they often do require skills such as multi-tasking, concentration, problem solving, and teamwork. Often, these processes use flexible automation that allows for customization such as the addition of upgraded features. Examples of a repetitive process include assembly lines such as assembling automobiles or electronics, a carwash, or a cafeteria line.
+Continuous
+A continuous process is when a very high volume of standardized product is produced. The type of product being made is described as non-discrete. This means that these businesses do not produce individual products, rather a product that is often a liquid or a product such as sugar, gasoline, or steel. An example of this type of process is an oil refinery. There are not separate individual workstations, rather the product flows from one step to the next within the system. The equipment in this type of process is highly complex and designed solely for that product at that facility. There are very few workers except for those that are responsible for process monitoring, maintenance, and cleaning.
+Hybrids
+There are many firms using mixtures of process types. One such common exception is the Mass Customization model of production. In mass customization, a company combines low-cost high volume of output, but each and every customer order is customized to the customers specifications. Usually the use of computer-aided manufacturing systems is what permits this customization. Examples include furniture makers who wait to produce the exact model of sofa based on the customers dimensions and fabric choice, or the vehicle manufacturer that has dozens of customization packages and paint options such that each vehicle is custom for the purchaser. A key requirement for successful mass customization is a modular design to allow fast seamless change from each product to the next.
+Facility Layout
+Layout refers to the way in which organizations position their equipment, departments, or work centers. Having an effective layout can streamline production activities, eliminate wasted or redundant movement and improve safety. The general types of layouts are: a fixed position layout, a process layout (functional), a product (line) layout, and a cellular layout, which is considered a hybrid. Other common layouts include office layouts, retail layouts, and warehouse layout.
+Fixed Position Layout
+When producing a product that is not easily able to be moved, it may require that the worker, their tools and equipment are brought to the site where the production is taking place. This is a common layout in manufacturing a building, a ship or performing repairs to major equipment.
+Process Layout
+A process layout is a layout in which departments, equipment, or work centers are arranged according to their function. In a manufacturing environment, all of the milling machines may be in one area or “department,” the lathes may be in another area, and the drilling machines all in another area. This layout is also common in services. In a department store, similar goods are arranged together such as footwear, jewelry, and housewares. At a hospital, cardiology is in one area, maternity in another location, and pediatrics elsewhere. The specific dedicated equipment and skilled practitioners work in each of these areas.
+An advantage to a process layout is that equipment tends to be quite general-purpose. If one particular piece of equipment breaks down, it will not halt the entire process. This type of process gives flexibility to handle a variety of products or customers. It is ideal for job shops or small batch manufacturing.
+A disadvantage of a process layout is that a particular product will likely have to travel from department to department to get the set of processes completed. This often leads to lots of material handling and movement of goods throughout the facility. A flexible material-handling system is needed such as forklifts. Inventory will sit in each area waiting for its turn to be processed. This waiting inventory is referred to as queue. When examining the total throughput time of jobs through the system, it is often discovered that each order spends much more time waiting in queue than it does actually being processed. For that reason, this type of layout is generally very inefficient . A major consideration in a process layout is to ensure that departments with a large amount of interaction are located nearby one another.
+Below is an example of a machinery plant with a process layout:
+Product (Line) Layout
+These are used in businesses that use assembly lines or production lines. If the product has high volume an assembly line might be the best option. The equipment in these types of layouts are often very capital intensive and are laid out according to the progressive steps of the process. Each work station is located along the line and may consist of a worker with equipment, or robots. Often each work station is adding components (assembly line) or modifying a product (production line). It is important to note that it is not necessarily a straight line, often assembly lines zig zag or are in a shape to use the maximum amount of space available. Some services may use a line layout, such as preparing hospital meals, or a cafeteria line. Due to considerable cost involved with setting up an assembly line, a large volume of product needs to be produced. Demand that is steady and consistent is ideal.
+The goods produced in a line layout are generally very standardized, and the work processes are also highly standardized. Each product follows the same set of steps so that a fixed path material handling system is used such as a conveyor belt. This conveyor belt may be manual or automatic. It may operate at a pre determined speed, or it may be worker paced. It may run continuously or pulsed. The speed of the conveyor will determine the amount of product that will be produced per shift.
+In contrast to a process layout a product layout is very efficient . There are a number of reasons for this.
+- Because of the division of labour and the repetition, there is less variability in the work performed
+- There is no build up of inventory, and no waiting. When completed at one work station, the job automatically moves to the next workstation. Only the inventory that is in process is in the system. Goods tend to be shipped when they are completed.
+- Due to the material handling system, goods move quickly and not very far.
+- Changeovers are not necessary so very little time is lost in changing between products.
+It is important that assembly lines are balanced . The amount of time required at a preceding work station should be relatively similar to the amount of time required at the following work station.
+Challenges in a product (line) layout include:
+- The fact that the line may be susceptible to shut downs if there are equipment malfunctions so preventative maintenance is critical. Preventative maintenance involves the inspection and replacement of any parts that have a high probability of failures, as well as holding ample spare parts in stock and having a detailed maintenance schedule for each piece of equipment.
+- Training and job rotation are critical activities to make sure employees are capable of completin
+
+## Match 1.70 — LibreTexts: 13.3: What Are The Roles of The Design Team?
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Education_and_Professional_Development/Book%3A_Education_for_a_Digital_World_-_Advice_Guidelines_and_Effective_Practice_from_Around_Globe_(Hirtz)/13%3A_Planning_Your_Online_Course/13.3%3A_What_Are_The_Roles_of_The_Design_Team
+
+13.3: What Are The Roles of The Design Team?
+-
+- Last updated
+- Save as PDF
+The project management approach to developing and delivering technology-based teaching and learning ensures that resources are used efficiently and that individual team members contribute appropriate skills and knowledge to the project”. (Bates, 2000, p. 68).
+Overview of The Design Team
+Online courses are designed using a variety of configurations. For quite some time, a very common approach focused on the single instructor acting as content expert, course writer, and designer. This approach is what has been popularly called the “Lone Ranger” or “laissezfaire” style (Bates, 2000). “Certainly, there is a time in an organization when the laissez-faire or Lone Ranger approach may be suitable, and that is when a university or college is just beginning to commit to the use of new technologies” (p. 66).
+A number of factors favoured this approach to design, most notably, cost and workload issues. The ‘going it alone’ approach is still alive and well in the e-learning landscape, but some experts stress that the disadvantages of this method far outweigh the benefits. “It is too hit and miss. It wastes resources, ignores the experience and many lessons that have been learned outside the higher education sector about how to design and develop creative media products and services, and above all fails to ensure high-quality, technology-based teaching in any consistent or widespread form” (Bates, 2000, p. 66). On the other hand, there are expert instructors who do have the pedagogical, technical, and content expertise to create viable and high quality courses on their own (Struthers, 2002). However, in reality, there are several different configurations adopted by various institutions, ranging from the single-course author supported by information technology experts to the extensive project team approach described in this section.
+Current instructional design and e-learning research and practice usually stress the need for a project team approach, where a diverse variety of experts work together to create high quality, pedagogically sound courses and programs. This project team can be made up of a number of people filling specific team roles, the most common include a project manager, content or subject matter expert, a content writer, a multimedia developer, an editor, and an instructional designer. Often, a concurrent instructional design approach is used, where each member works on their portion of the project simultaneously or “as needed”, creating a modulated, synergistic milieu for designing the course or program. For instance, once the content expert and writer have determined the desired topics and inherent content, the multimedia and/or graphic designer can begin to work on the supportive visual and multi-sensory content or learning objects to augment the foundational content.
+There are some drawbacks to using the project team approach to course design. The biggest hurdle may well be teacher buy-in. Most faculty, especially in higher education, are used to functioning autonomously, and may be resistant to sharing the design of a course because of intellectual property considerations. “The project management approach is often seen as a bureaucratic, expensive, and unnecessarily complicated process, and a process that restricts the freedom and autonomy of the teacher” (Bates, 2000, p. 72).
+Another possible drawback is the notion that project management can restrict the creativity and/or originality of the course designer. Obviously, there needs to be open communication between administration and the various members of the project team to be able to design a top quality course together successfully. As long as each member of the team is respected for their own expertise and contribution, and the issues of ownership and copyright are amicably decided, most teachers feel some relief that creative and knowledgeable team members support their efforts. Unless an individual course designer is multi-talented, with skills in content writing, editing, multimedia design, and so on, it is unlikely that a truly interactive, original, dynamic course can be created all alone.
+Human Infrastructure
+Four levels of human infrastructure support are fundamental to the development of any course or program, especially when done at an across-institutional, regional or national level (Bates, 2001). These include:
+- technology infrastructure support people (design, maintain the learning network)
+- educational technology infrastructure support people (design, maintain the learning interface structure such as navigation, screen components)
+- instructional design infrastructure support people (coordinate the actual online course components and structure such as structure of learning activities or modules)
+- subject expert infrastructure support people (design content, provide instruction).
+Instructional Design Team Roles
+Often, the human infrastructure needed to design a high quality course is best achieved by appointing a diverse instructional design team. Each member of the instructional design team fulfills specific roles.
+Project manager
+The project manager or leader often applies project management methodology to organize the project plan in conjunction with the rest of the design team. Often, the project manager liaisons with the instructional designer to set project start and end dates, determine what resources are needed to fulfill each project task, and set the project goals, challenges, milestones, and needs. The project manager is also responsible for ensuring that all team members are able to fulfill their tasks on time, and responds to challenges as they occur across the project timeline. The manager also coordinates copyright adherence and final details of the course project.
+Instructional designer
+The instructional designer is responsible for the course layout, branching, and positioning the written content within the online environment. Often the designer is involved with determining the course module or lesson objectives, the evaluative components, and may help the content writer and/or expert to develop the content. The instructional designer also works with the multimedia/graphics designer to determine the specific graphics, audio, video, movie and other multi-sensory components to augment the content. The role of coordination is often shared between the instructional designer and the project manager, to ensure consistency across the team, and to help identify problems and obstacles that emerge as the design process progresses.
+Content or subject matter expert
+The content expert is the team member who has well developed knowledge about the subject content. The content expert usually works very closely with the writer to ensure that the core essentials of the determined content are current, accurate, and meet the learning objectives of the course or program. The content expert also assesses the written content to verify that it addresses the intended audience, and, in conjunction with the instructional designer, helps to decide what multimedia and graphical objects are required to make the learning experience rich and meaningful for the learners.
+Content writer
+The content writer is the member who brings expertise in writing content for the course. Sometimes, one team member serves as both the content writer and subject matter expert. Their role entails researching the content, incorporating the input from the subject matter expert into the written component of the course (or sometimes, rewriting and editing existing content), and fashioning the content so that it suits the online course environment. The content writer works with the rest of the team to determine course and individual lesson objectives and other components, and selects the supportive materials such as text books and readings, usually with the content expert, instructional designer, and project manager.
+Multimedia and graphics designer/technologist
+The multimedia designer is responsible for designing the animations, visual graphics, audio segments, and other multi-sensory objects that will support the instructional requirements of the course. Working with all members of the team, especially the course writer, expert, and instructional designer, the multimedia designer helps to bring the course to life, providing a robustness and aesthetic appeal to the course design.
+Editor or technical writer
+The editor is responsible for ensuring that the content is well written and meets quality standards. The editor edits the course content for spelling, grammar, tone, and general usability, usually working closely with the content writer and the instructional designer.
+“Communication is human nature. Knowledge sharing is human nurture”. – Alison Tucker, Buckman Laboratories.
+
+## Match 1.70 — LibreTexts: 2.2: The Process of Becoming an Enterpreneur
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Bookshelves/Business/Entrepreneurship/Entrepreneurship_(OpenStax)/02%3A_The_Entrepreneurial_Journey_and_Pathways/2.02%3A_The_Process_of_Becoming_an_Enterpreneur
+
+2.2: The Process of Becoming an Enterpreneur
 By the end of this section, you will be able to:
-•
-Locate and create primary research materials.
-•
-Apply methods and technologies used for research and communication in various fields.
-Introducing Research as Evidence and Compiling Sources for an Annotated Bibliography explain the
-difference between primary and secondary sources in the research process. Almost all of the source-gathering
-information in this chapter thus far has focused on gathering secondary sources. However, your research
-assignment may require that you use primary sources—not only those you find in the library but also those you
-create yourself, outside the library, by doing field research, also called fieldwork.
-Conducting Field Research
-If not applicable for this class, you may be asked at some point in your college career to conduct fieldwork,
-which is considered primary research (the collection or development of primary sources). You may already
-have engaged in primary research by performing experiments in a laboratory for a science course or by
-documenting your observation of a musical or artistic performance.
-Fieldwork is the kind of research done when a person goes out into the “field” to collect data. This term is often
-used by both biologists, who may observe nature to understand plant growth, and anthropologists, who
-observe people to understand human cultural habits. Social scientists interested in language use and
-development, for example, have borrowed the term fieldwork to describe the ways they collect data about how
-people learn or use language. In fact, fieldwork is common to subjects such as education, medicine,
-engineering, sociology, journalism, criminology, and advertising.
-Different disciplines—and different rhetorical situations—require different kinds of fieldwork. If your task, for
-instance, is to find out what consumers think of a new product, you may need to create and distribute a survey
-or questionnaire. If you want to find out how many people stop at a certain fast-food restaurant along the
-highway just to use the restroom, as compared with the number of customers who purchase food, you will have
-to spend some time observing the location.
-No matter what kind of data you collect, the way you represent your research in your written work requires
-careful attention to fairness and accuracy. These ideas are particularly important when you write about the
-people you interview or observe. The way you represent them, as well as their words and actions, may present
-challenges. Be aware of those challenges by considering personal biases as you write about your research
-participants. Finally, be considerate of interviewees’ time, and acknowledge their help by sending a follow-up
-email thanking them.
-Planning Field Research
-Unlike a library, which bundles millions of bits of every kind of information in a single location, “fields” are
-everywhere, including the campus of your university (academic departments, administrative offices, labs,
-libraries, dining and sports facilities, and dormitories) as well as the neighborhood beyond the campus
-(theaters, restaurants, malls, parks, playgrounds, farms, factories, schools, and so on). Field information is not
-cataloged, organized, indexed, or shelved for your convenience. Obtaining it requires diligence, energy, and
-careful planning. Some considerations are listed below:
-•
-Think about your research question. What field sources might strengthen your argument or add to your
-report?
-•
-Select your contacts and sites. Find the person, place, thing, or event that you would see as most helpful
-to you. Will you set up observations, conduct interviews, distribute surveys, or use a combination of
-methods?
-•
-Schedule research in advance. Interviews, trips, and events don’t always work out according to plans.
-420
-13 • Research Process: Accessing and Recording Information
-Access for free at openstax.org.
-
-Allow time for glitches, such as having to reschedule an interview or return for more information.
-•
-Do your homework. Visit the library or do a Google search before conducting extensive field research. No
-matter from whom or from where you intend to collect information, having background knowledge can
-help you make more insightful observations and formulate better interview questions.
-•
-Log what you find. Record visits, questions, phone calls, and conversations in a research log
-(https://openstax.org/r/reasearchlog). From the very beginning of your research, enter information
-about topics, questions, methods, and answers into a journal, or use another record-keeping method.
-Record even dead-end searches to remind yourself that you tried them. This method of organizing
-information is the writing task for this chapter and will be discussed at length in Glance at the Research
-Process: Key Skills and Annotated Student Sample.
-FIGURE 13.5 Biologists work in the field to gather samples for further study. (credit: “Biologists track frogs in
-Eastern Oregon desert” by U.S. Bureau of Land Management/Maria Thi Mai/Wikimedia Commons, CC BY 2.0)
-Observation
-In general, fieldwork that relies on observation as a method of data collection involves taking notes while
-observing events, activities, people, places, animals, and so on. Observations can range from a single visit to
-one event or location to several visits over an extended period. Consider your research question and topic to
-determine whether you need to observe over time or just once to get the information you need. You can
-prepare for your observation by doing some of the preliminary work in your research log. At this time,
-consider the limitations of only one observation session, which may yield only partial information.
-As you plan for your observation, and before you arrive, decide whether you will be a participant observer,
-which involves taking part in what you are observing. For example, if you observed a volleyball club meeting
-that you attend regularly, and thus know most of its members or join in activities, you would be a participant
-observer. You will need to consider, though, how well you will be able to focus on the observation tasks. How
-actively will you participate in the group/event? While participating, how frequently will you be able to jot
-down notes or otherwise document your experience? Might you become distracted and forget your
-observation tasks, and if so, how will you handle that possibility?
-Another option is to be a nonparticipant observer. In this capacity, you try to let your presence go unnoticed.
-Although you are there and observing, you do not influence the situation in any way. If you sat in a corner of an
-art class at your university to observe what materials students use, for example, you would be an unobtrusive
-and nonparticipant observer.
-When you observe, take detailed notes; without them, you may forget much of what you observed after you
-leave a site. After recording your notes in your research log, review and rewrite your observation notes as soon
-13.2 • The Research Process: How to Create Sources
-421
-
-after your site visit as possible. Take precise notes, indicating the color, shape, size, texture, and arrangement
-of everything relevant as applicable. Pay special attention to any anomalies you notice in a situation. Visual
-images provide excellent memory aids, so consider sketching, photographing, or videotaping the site you visit.
-If you speak your notes into a recording device, you will also pick up the characteristic sounds of the site.
-Your observation notes will become very important as you begin to analyze your data. When you have finished
-observing, review your notes to consider them for analysis. Ask yourself what kinds of questions or
-conclusions your observations raise. Record your questions and conclusions in the speculations section of
-your research log; this material serves as your tentative interpretation of observation notes. These questions
-and conclusions can help direct further analysis of what you have observed and what you write based on those
-observations.
-For example, consider that you want to determine whether seating is an issue for students eating in on-
-campus restaurants. You might organize your observations, questions, and speculations as shown in Table
-13.2.
-Observations
-Questions and Speculation
-Student enters campus restaurant with friends. Friends
-look around for seating before rejoining student at the
-counter. Friends take over five minutes to find an empty
-table that will seat them. Both the students searching
-for tables and the student at the counter keep checking
-their watches. The time is between classes but later in
-the afternoon than normal lunch time: 2:30.
-How many seats are available in the campus
-restaurant? Are students at the tables eating, studying,
-or both? The students appear concerned about time
-and the opportunity to eat as a group.
-TABLE 13.2 Observations, questions, and speculations
-In the “Observations” column, the writer describes, whereas in the “Questions and Speculation” column, the
-writer evaluates the situation. The “Questions and Speculation” section is particularly important, as different
-observers usually will have different interpretations. Moreover, both columns might be different at different
-times of the day or on different days of the week. To increase the validity of your findings, you might get a
-second opinion on your interpretation by sharing your observations with a peer.
-Surveys
-Researchers in the social sciences often use surveys to collect data from a large number of individuals or from
-groups of people. A survey is a structured interview in which respondents are all asked the same questions
-and their answers are tabulated and interpreted. A survey would be a good source of data if, for example, you
-were comparing the eating habits of students who eat off campus with those of students who eat in college
-dining facilities. Or you may want to conduct research that compares the overall eating habits of students in
-one on-campus dining facility with those of students in another. You might ask questions such as these:
-•
-How often do you eat at a campus facility? This question could provide several options to assist survey
-takers with some ranges.
-•
-When you eat on campus, which of these dining facilities do you choose? A list of the dining facilities you
-are comparing would follow this question to refamiliarize survey takers with the names of the venues.
-For research purposes, respondents to surveys can be treated as experts because they are being asked for
-opinions or information about their own behavior. Design your survey questions to be answered quickly and to
-generate useful information about your topic. To get this kind of information, ask questions skillfully. What and
-who questions are easy for respondents to answer easily and accurately. Less valuable for a survey is a why
-question, which requires a more thorough and planned answer. Respondents are less likely to give the proper
-422
-13 • Research Process: Accessing and Recording Information
-Access for free at openstax.org.
-
-attention to a why question for this reason. Furthermore, wording that suggests a right or wrong answer
-reveals the researcher’s biases more than the subject’s candid responses.
-The format of the questioning and the way the research is conducted also influence responses. For example, to
-get complete and honest answers about a sensitive or highly personal issue, the researcher would probably use
-anonymous written surveys to ensure confidentiality. Other survey techniques include oral interviews in
-which the researcher records each subject’s responses on a written form. Surveys are usually brief in order to
-gain the cooperation of a sufficiently large number of respondents. To enable the researcher to compare
-answers, the questions are usually closed, although researchers may sometimes ask open-ended questions to
-gain additional information or insights. Treated briefly here, surveys involve complex procedures for the
-designing of questions, distribution of the survey, and assessment of the results.
-A complication arises when a survey requests sensitive information, such as personal experience with drugs,
-alcohol, or sex, from identifiable subjects. Colleges and universities have “human subject” boards or
-committees that need to approve any research that could compromise the privacy of students, staff, or faculty.
-Consequently, consult your instructor before launching any survey on or off campus. However, the simple,
-informal polling of people to request opinions takes place quite often in daily college life, such as every time a
-class takes a vote or an instructor asks the class for opinions or interpretations of texts.
-In one case, a student who was writing a self-profile wanted to find out how others perceived her. First, she
-listed 10 people who knew her in different ways—her mother, father, older sister, roommate, best friend,
-favorite teacher, and so on. Next, she invited each to list five words that best characterized her. Finally, she
-asked each to call her answering machine on a day when she knew she would not be home and name those five
-words. ln this way, she was able to collect original outside opinion (fieldwork research) in a nonthreatening
-manner. She then wove those opinions into her profile paper, combining them with her own self-assessment.
-The external points of view added an interesting (and sometimes surprising) view of herself as well as other
-voices to her paper.
-Interviews
-Conducting interviews is another method of gathering information. Consulting, interviewing, and using
-information gathered from professionals in specific fields can offer authoritative perspectives. Other
-possibilities include interviewing people who have direct experience with your research topic.
-If you are comfortable talking to people you don’t know, then you have a head start as a successful interviewer.
-In many respects, a good interview is simply a good conversati
-
-## Match 1.36 — WritingGuide-WEB § 17.5 Writing Process: Thinking Critically and Writing Persuasively About
-
-Images
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Develop a writing project through multiple drafts.
-•
-Employ a variety of drafting strategies to complete an analysis of images.
-•
-Apply aspects of visual rhetoric to a writing project.
-•
-Participate in the collaborative and social aspects of writing processes.
-•
-Give and act effectively on productive feedback.
-In this section, you will combine what you learned earlier about reflecting on and analyzing images with
-another way of writing about images: writing persuasively, or persuading. Like reflecting and analyzing,
-writing persuasively requires clear, vivid descriptions of the technical aspects of an artwork, such as point of
-view, arrangement, color, and symbolism, as explained in Glance at Genre: Relationship Between Image and
-Rhetoric. Remember that reflecting on an image helps you make sense of both the image and your experience
-from different perspectives. Reading other people’s reflections expands your universe of experience. Analyzing
-images improves your critical thinking skills by synthesizing description, reflection, and logical thinking to
-determine what an image’s design elements mean. You write persuasively about images when you determine
-that an image’s meaning has or does not have a value (that you define) for its viewers. For example, Leo Davis,
-in his analysis of Dancing Sailors in Annotated Student Sample, determines the homoerotic message in the
-image and the painter’s tone or attitude toward his subject. You can also extend the scope of persuasion to
-make a recommendation about the status or merit of the work, as you will do in this assignment.
-Writing Persuasively about Images
-Like reflection, persuasion starts with context and description and can include personal reflections. The
-difference is primarily in the purpose and often the tone, or attitude toward the subject and audience. The
-purpose generally falls into one of three categories:
-•
-What is the image’s value? In the art world, these discussions are commonplace. Major publications such
-as the New Yorker or Harper’s Magazine publish reviews of artists, galleries, and exhibitions. Critics and
-scholars argue that such discussions serve to establish a society’s values and to benchmark the limits of
-what a society will and will not tolerate. Certainly, 2020 witnessed an explosion of such conversations.
-Protestors created images meant for display on public property, many of which were identified as graffiti
-or acts of vandalism; streets and other locations were renamed to reflect a growing awareness of the role
-that Black excellence has played in America’s history; and monuments and memorials relating to injustice
-were reevaluated, vandalized, and removed.
-•
-What happened? Forensic arguments often relate to legal situations, in which lawyers, judges, and juries
-try to determine what happened and how to respond. In the case of images, these techniques are applied
-to assess the circumstances of an image’s creation as well as its critical and modern reception.
-•
-What should happen? In the public sector, officials decide whether to fund artistic works. In the private
-sector, companies decide on images that faithfully represent their brands and values.
-In persuasive writing, the purpose is usually revealed in a thesis statement, a single sentence, sometimes two,
-that defines the author’s position and gives one or more reasons for it. The thesis usually appears at the end of
-the introduction, although it can occur at the start of either the introduction or the conclusion.
-Look again at Figure 17.3, in which a woman wears a mask that reads, “I can’t breathe.” Table 17.1 below
-outlines a thesis statement based on that image that might apply to each of the three persuasive writing
-purposes.
-17.5 • Writing Process: Thinking Critically and Writing Persuasively About Images
-557
-
-Persuasion
-Purpose
-Sample Thesis Statement
-What is the
-image’s
-value?
-The image of the mask, its text, and the woman wearing it convey an important message that
-serves as a valuable artifact representing many of the complexities of 2020.
-What
-happened?
-The mask wearer is sending a valuable message that people need to hear in the context of the
-controversies surrounding both the pandemic and the racial situation in America in 2020.
-What should
-happen?
-The mask’s message and context are inflammatory during a public health crisis; therefore, the use
-of masks with potentially political commentary should be discouraged in public places.
-TABLE 17.1 Sample thesis statements by persuasion purpose
-Tone
-The tone of a persuasive piece can range from educational to impassioned and is largely based on the audience
-to which it is directed. Most writing about images is done in the neutral tone typically adopted in academic
-writing, although you may find reviews or essays that are informal and others that are scholarly.
-Taking a Side
-In ‘Reading’ Images, you read a description of and some reflections on Figure 17.3, an image of woman
-wearing a mask reading, “I Can’t Breathe.” You also read a brief analysis of the figure, combining description,
-historical context, and the visual design element of juxtaposition. Now, in Table 17.2, look at what two sides of
-a persuasive discussion of Figure 17.3 might look like.
-Side A
-Side B
-Purpose / Thesis
-Figure 17.3 represents an important moment in
-American history and should be included in a
-yearbook recording historical events of 2020.
-Figure 17.3 depicts an ordinary occurrence and does not
-warrant inclusion in a yearbook recording historical events
-of 2020.
-Audience
-Committee commissioned by the National Endowment for the Humanities
-Context
-The committee has been commissioned to publish a yearbook of 2020, entitled The Year Democracy Roared.
-They are looking for pictures that represent large movements in America in 2020 that tie into the country’s history
-and depict individuals in interesting or unique settings.
-Evidence
-TABLE 17.2 Elements of a persuasive argument about an image
-558
-17 • Image Analysis: What You See
-Access for free at openstax.org.
-
-Side A
-Side B
-•
-The image features a Black woman wearing a
-mask that reads, “I Can’t Breathe.”
-•
-The pandemic of 2020 caused many people to
-wear masks, either by choice or by mandate.
-•
-Some people did not support mask wearing
-because of their political beliefs regarding
-personal liberties.
-•
-During 2020, the Black Lives Matter
-movement gained widespread support.
-•
-“I Can’t Breathe” was one of several slogans
-adopted by the Black Lives Matter movement.
-•
-The image juxtaposes the mask with the
-slogan in an ironic statement open to multiple
-interpretations.
-•
-Many people wore masks in 2020 for reasons
-unassociated with politics or controversy.
-•
-Many people decorated their masks with a variety of
-images and slogans.
-•
-The choice of whether to wear a mask was, in many
-cases, not a choice but a mandate.
-•
-This woman is not in obvious distress or at a protest.
-•
-The image includes another woman, reflected in the
-first woman’s sunglasses, not wearing a mask, calling
-into question the seriousness of her mask message.
-•
-The woman does not appear to be part of a larger
-movement, engaged in a unique or interesting activity,
-or placed in an unusual setting.
-TABLE 17.2 Elements of a persuasive argument about an image
-Summary of Assignment: Writing Persuasively about an Image
-Public works projects such as stadiums or convention centers, private developments such as condominiums
-and shopping centers, and online spaces such as websites and social media platforms all commission artists to
-create exclusive works for display. These works are intended to reflect the vision of the artist as well as to
-promote the brand or mission of the space. Imagine that you have been asked to analyze an artist’s work to
-determine whether the artist should contribute to the development of a local space that you select. Select the
-work of an artist, either Sara Ludy (https://openstax.org/r/Sara.Ludy) or another artist whose work is familiar to
-you or whose work you would like to learn more about. See Further Resources at the end of this chapter for
-suggested museums to visit in person or online. You can choose from historical figures or living artists. You
-can even choose an artist who illustrated a graphic novel you have read. Once you have chosen an artist and an
-image created by that artist, identify the aspects of the work you wish to assess, and support your analysis with
-technical descriptions of the image. Then, explain why you reached your decision about the artist’s
-contribution to the selected space.
-The parts in this section will take you through the development of a sample essay, using the example of
-American sculptor James Earle Fraser’s (1876–1953) Equestrian Statue of Theodore Roosevelt. As you follow
-along in this process, consider how it applies to your topic. Think of the process as divided into these six steps:
-1.
-Identify the rhetorical situation.
-2.
-Outline the elements you intend to analyze.
-3.
-Write an introduction in which you frame the image and the context in which you intend to discuss it.
-4.
-As you draft, or before you draft the body of the essay, write topic sentences to identify the focus of each
-paragraph on a specific technical or contextual aspect of the image.
-5.
-Build your paragraphs by describing the relevant elements.
-6.
-Conclude by suggesting directions to consider in the future.
-Another Lens 1. Visit Sara Ludy’s website (https://openstax.org/r/Sara.Ludy) and select an image, a rendering,
-or an animation that speaks to you in some way, and identify the technical aspects you wish to assess. Support
-your analysis with descriptions of the image, using the vocabulary introduced in “Reading” Images and Glance
-at Genre: Relationship Between Image and Rhetoric. Then, as an option, consider whether or not you would
-advise an individual to purchase the work or how you would advise an organization to use it (or not use it) as a
-17.5 • Writing Process: Thinking Critically and Writing Persuasively About Images
-559
-
-representative image—for example, as part of a logo or cover for a publication.
-Another Lens 2. Another option for assessing an artist’s work is to compare and contrast this work with
-another piece, either by Sara Ludy or by a different artist. In doing so, you may consider ways in which the
-artist and their work have changed over time, or you may consider the influence one artist has on another.
-Finally, you may consider the images in different contexts through the lens of the artists’ experiences, places
-in history, personal identities, and artistic practices.
-Another Lens 3. Consider a work from a multimodal perspective. If you are interested in the connections of art
-and culture, consider choosing a piece of historic or contemporary Native American art. You can find
-information and view images at the websites for the National Museum of the American Indian
-(https://openstax.org/r/National) and the Hearts of Our People: Native Women Artists (https://openstax.org/r/
-Hearts-of-Our) exhibition at the Smithsonian American Art Museum. Create an infographic or a short video
-assessing the chosen artwork. An infographic incorporates multiple images and texts into a single image that
-can be read and understood quickly. A short video could work in a similar way, but the images would be
-presented sequentially with narration, either spoken or written. Your multimodal work should consider the
-elements of visual rhetoric discussed throughout this chapter and combine reflection with analysis and
-persuasion. See Multimodal and Online Writing: Creative Interaction between Text and Image for more
-information on creating a multimodal work.
-Quick Launch: Identify Rhetorical Context
-FIGURE 17.16 Equestrian Statue of Theodore Roosevelt , 1940, by James Earle Fraser, New York City (credit:
-“Theodore Roosevelt Memorial Hall entrance” by edwardhblake/Wikimedia Commons, CC BY 2.0)
-In this writing example, the statue of former U.S. president Theodore Roosevelt (1858–1919) (Figure 17.16) is
-analyzed as part of the museum’s decision to keep it or remove it. To begin, the author of this paper (a college
-student, U.S. citizen, and nursing major) defines the rhetorical situation: purpose, audience, genre, stance,
-context, and culture. Complete the first step in the assignment as this author has done by consulting the
-writer’s triangle to sketch out these elements. The writer’s triangle (Figure 17.17) includes audience, genre,
-560
-17 • Image Analysis: What You See
-Access for free at openstax.org.
-
-and stance and is surrounded by the circle of context/culture. The image allows you to “shorthand” your ideas
-about these elements during the brainstorming phase, as the author has done beneath the figure.
-FIGURE 17.17 Writer’s triangle (attribution: Copyright Rice University, OpenStax, under CC BY 4.0 license)
-•
-Purpose: To analyze the Equestrian Statue of Theodore Roosevelt
-•
-Audience: Instructor, fellow students, and U.S. residents
-•
-Genre: Print or digital newsletter or magazine article
-•
-Stance: To support the American Museum of Natural History’s decision to remove the statue of Theodore
-Roosevelt
-•
-Context: Roosevelt’s presidency and what he accomplished, the relationship between him and the
-American Museum of Natural History, and the elements of the statue warranting its inclusion or exclusion
-•
-Culture: Critics have said that the statue depicts Black people and Native Americans as conquered and
-culturally substandard.
-Note: Do not confuse context with your rhetorical situation, which, in this case, is a writing assignment for a
-college course, part of a portfolio and a learning technique in which you practice a type of civil discourse.
-Meanwhile, context in this case refers to the image—the circumstances of its creation, its technical elements,
-and how its meaning may change over time.
-Sometimes the elements of your rhetorical situation are not made explicit. Signs that you nee
-
-## Match 1.36 — WritingGuide-WEB § 19.5 Writing Process: Writing to Speak
-
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Develop a writing project through multiple drafts.
-•
-Compose texts that use rhetorical concepts appropriately in a speech.
-•
-Apply effective shifts in voice, diction, tone, formality, design, medium, and structure.
-•
-Demonstrate orality as an aspect of culture.
-•
-Provide and act on productive feedback to works in progress through the collaborative and social aspects of the
-writing process.
-•
-Adapt composing processes for a variety of technologies and modalities.
-Now it’s time to try your hand at writing a script or speaking outline for a public audience. Decide on a topic,
-and take that topic through the planning, drafting, and revision processes. Remember that even the informal
-writing you do when planning a script or speaking outline is recursive, meaning it is not linear. You will
-probably go back and forth between sections and processes.
-You may question of the wisdom of preparation before speaking to the public. After all, you may post regularly
-to social media, for example, without following the processes of drafting and revising. However, “winging it”
-when it comes to speech is not a wise strategy. As a genre, social media in particular lends itself to short and
-simple messaging. Viewers allow producers very little time and attention before clicking to view the next item.
-Some sources say that you have 10 seconds to get the attention of a viewer; by the one-minute mark, you may
-have lost up to 45 percent of your viewers. Live adult audiences will pay attention for about 20 minute
-increments before their minds begin to wander; for young audiences, the time is even less. Given that
-knowledge, you must craft your message accordingly.
-Summary of Assignment: Writing to Speak, Speaking to Act
-You may have heard that merely believing in a cause is not enough; you must take action to create change. As
-you keep the idea of social, political, or economic change in mind, your task is to develop an outline as the
-basis for a speech to a live audience or on a social media platform of your choice. The topic is an issue you care
-about. Speaking from an outline rather than from a written script helps ensure that your speech is natural and
-smooth. Your audience should not feel as though you are reading aloud to them. If you are free to choose your
-own topic, consider a cause meaningful to you, or consider using one of the following suggestions as your topic
-or as inspiration for it:
-•
-Police and mental health services reform
-•
-Standards-based reform in education
-•
-Global human rights
-•
-Liberty and justice for all
-•
-Reduction of carbon emissions
-630
-19 • Scripting for the Public Forum: Writing to Speak
-Access for free at openstax.org.
-
-Your speech may incorporate multimedia components as you see fit. You’ll also need to plan how to access the
-audience or platform you have in mind.
-As you craft your outline, keep in mind your audience, your purpose for addressing them, and your support for
-that purpose by using key ideas, reasons, and evidence. When planning your script, use an organizer to collect
-information so that you can support your ideas credibly with a well-developed argument.
-Using Your Authentic Voice
-Unlike most formal academic papers, oral presentations give you an opportunity to consider how you might
-challenge formal writing conventions by delivering your script in your authentic voice. Oral compositions offer
-an opportunity to bring through conventions of your own culture, perhaps including discursive patterns of
-language and grammar and challenges to standard language ideologies. As always, keep your audience and
-purpose in mind as you make choices about your use of language.
-Researching and Narrowing the Topic
-After choosing the overall subject of your script, research the general topic to learn about context, background
-information, and related issues. Then narrow the topic and focus your research, as guided by your working
-thesis and purpose. You can return to Argumentative Research: Enhancing the Art of Rhetoric with Evidence,
-Research Process: Accessing and Recording Information, and Annotated Bibliography: Gathering, Evaluating,
-and Documenting Sources to review research processes, including how to allow research to shape your thesis
-and organization.
-After choosing a topic, you will probably need to narrow it further. One way to achieve this task is by
-brainstorming, which involves generating possible ideas and thoughts quickly and informally. A basic, fast-
-paced brainstorming technique is simply to list all your possible ideas on paper and combine those that are
-related. Then you can eliminate some ideas to narrow the range. For example, for this assignment, you might
-list all of the causes toward which you feel sympathetic. Beginning with an idea that already interests you will
-help you remain enthusiastic about the idea and generate a positive tone that will come across to the audience
-and maximize the effectiveness of the presentation.
-For example, if you’re interested in the environment, your brainstorm might include the following:
-•
-Animal endangerment
-◦
-Deforestation
-•
-Ocean pollution
-◦
-Plastic waste
-•
-Rising carbon levels
-•
-Global warming
-If you think you still need new ideas at this point, spend some time researching advocacy organizations. Next,
-expand each idea by creating subtopics. This activity will help you eliminate topics that are difficult to
-elaborate on—or at least you will know that you need to conduct more research. In summary, follow this
-process as you choose and narrow your topic:
-1.
-Brainstorm ideas that already interest you or with which you have experience.
-2.
-Circle topics appropriate for the assignment.
-3.
-Cross out topics that you think you cannot make relevant to the audience. Remember, you are developing a
-presentation for a public forum.
-4.
-For remaining topics, flesh out subtopics with ideas you might cover in your script. You should have
-between two and five key ideas; three is fairly typical.
-5.
-Eliminate topics for which you lack sufficient material, or do the necessary research to obtain more.
-6.
-Finally, decide on a topic that you have the resources to research.
-19.5 • Writing Process: Writing to Speak
-631
-
-Another Lens. Because this chapter focuses on activism and you have read the Trailblazer feature about Alice
-Wong’s work in the disability activism space, think about content consumers (readers, listeners) who
-experience the world through the lens of disability. Challenge yourself to create content that meets the needs
-of diverse consumers. Because the assignment is an activist script outline for a presentation, it naturally lends
-itself to those who are abled in the areas of sight and hearing. Consider people who are visually impaired or
-hard of hearing. How might you adapt your script and its delivery to make it accessible to all?
-One option to consider is visual representation of your presentation through an infographic that depicts the
-thesis, main reasoning, and evidence to reach those who cannot hear a speech. Or consider how you might
-adapt the delivery of a script to reach those who experience visual limitations. By making considerations for
-accessibility, you will strengthen your message for all who interact with it.
-Quick Launch: Outlining
-Before your presentation, create an outline of the main ideas you plan to discuss. An outline is a framework
-that helps you organize your major claims, reasoning, supporting details, and evidence. Creating an outline is
-also a way to create a natural flow for your ideas and provide a foundation for engaging your audience. Doing
-this basic organizational work at the beginning will help you present your ideas so that they will have the
-greatest impact on your audience.
-The first step in creating your outline is to develop a purpose statement. This one-sentence statement reveals
-what you hope to accomplish in the presentation—that is, your objective. The purpose statement isn’t
-something that you will include in your actual presentation; the purpose statement is for you. It will help you
-keep your audience at the center of your script, create a central idea, and, most of all, give you a realistic goal.
-One example of a purpose statement for an informational speech might read, “By the end of this presentation,
-my audience will better understand the impact of plastic waste on the ocean and the world.” Or, for a
-persuasive speech, a purpose statement on a similar topic might read, “By the end of this presentation, my
-audience will feel compelled to reduce their use of disposable plastic.”
-Although a speaking outline resembles an outline for an academic paper, with special considerations for the
-genre, it does not need to be as detailed as an outline for a research paper. Rather, a speaking outline will form
-the framework for speech. Feel free to write your outline as complete thoughts, sentence fragments, or even
-bullet points.
-A presentation’s basic format is relatively similar to most other writing: an introduction, three to five major
-supporting points, and a conclusion. The major differences will be the genre-specific choices you make about
-presenting this information.
-Introduction
-Like most persuasive writing, your presentation needs an introduction that establishes its purpose. The
-introduction should engage the audience, present the topic and main ideas, and validate the speaker’s
-credibility. Engaging your audience is important. You can capture an audience’s attention by relating an
-anecdote or a quotation, posing a question, using humor, relating surprising facts or statistics, or any other
-method you think will do the job.
-The introduction will usually lead seamlessly into a definitive statement of the main theme or claim. As you
-would include a thesis in the introduction of a piece of persuasive writing, your introduction here also should
-include a statement that previews the main idea and briefly touches on key points. Though you are outlining
-your presentation rather than writing a full script, it is a good idea to write your thesis so that you clearly
-identify your aim. When presenting, you won’t have to read your script word for word, but recording the thesis
-clearly will enable you to summarize the central idea of your presentation easily.
-Finally, the introduction is your opportunity to establish credibility with your audience and to tell them why
-632
-19 • Scripting for the Public Forum: Writing to Speak
-Access for free at openstax.org.
-
-they should listen to what you have to say. Include a brief statement of your credentials, experience, and
-knowledge that demonstrates your credibility or authority on the topic.
-Body
-The main section of the outline, the body is the longest part of the script and the one in which you present key
-points to support the main idea. Each key point should stem organically from the script’s goal and your thesis.
-Although standard practice is to present three key ideas, you may choose to have between two and five. Any
-fewer, and you won’t support your thesis sufficiently; any more, and your audience will lose track of them. Back
-each key idea with several points, including reasoning, evidence, and audiovisual support.
-You can organize your key ideas in several ways. Determining an organizational pattern helps you narrow the
-central ideas generated from research and allows you to plan material for your script. Topical patterns break
-main ideas into smaller ideas or subcategories. After dividing the topics into subtopics, consider the most
-logical order of points. There is often no right answer to this order, so feel free to move your ideas around to
-create the greatest impact. For example, a topic discussing World War II battles might best be presented in
-chronological order (listed or arranged according to time sequence), but a topic broken down to address the
-causes of World War II (diplomatic factors, nationalism, World War I peace treaty) may not fit into an obvious
-pattern. In a persuasive script, problem-and-solution or cause-and-effect patterns of reasoning may be the
-best way to organize ideas. These and other organizational patterns are discussed in Reasoning Strategies:
-Improving Critical Thinking.
-Conclusion
-This portion of the script provides a summary and is your final opportunity to make an impression on your
-audience. Typically, in this section, you restate the thesis convincingly and, if applicable in a persuasive script,
-tell your audience what you believe they should do. Also, you briefly revisit each key idea in the context of how
-it supports your thesis. Strong conclusions are especially important in scripts.
-One strategy for writing conclusions is the “mirrored” conclusion that ties back to the introduction. For
-example, if you use a statistic to engage your audience’s attention, you return to that statistic in the conclusion.
-Consider the following example.
-Introduction: It takes 450 years for one plastic bottle to decompose in a landfill. Now consider the fact that,
-according to the U.S. government, at least 50 million plastic bottles are thrown away each day in the United
-States.
-Mirrored Conclusion: Each time you’re tempted to reach for a plastic bottle, contemplate the 50 million that
-end up in landfills each year. Consider other options that spare our environment from the centuries of
-decomposition that each one contributes to.
-For writers who have difficulty beginning, one idea is to reverse-engineer the structure of the script. Beginning
-with the conclusion will help you know where you need to end up, thus making it easier to create a roadmap for
-getting there. This strategy can provide consistency and add emphasis to the key ideas in the script.
-Outline
-Keeping in mind the basic parts of a script outline, you can now begin to craft a skeletal version your own. Use
-a graphic organizer like Table 19.1 to gather and organize your initial thoughts.
-Topic:
-General
-Purpose:
-Purpose Statement:
-TABLE 19.1 P
+- Describe the evolution of entrepreneurship through American historical periods
+- Understand the nine stages of the entrepreneurial life cycle
+Scholars of business and entrepreneurship have long debated how people become entrepreneurs. Are entrepreneurs born or made? That is, are some people born with the natural skills, talent, and temperament to pursue entrepreneurship? Or can you develop entrepreneurship skills through training, education, and experience? These questions reflect the classic debates known as “nature versus nurture” or “born versus made,” which attempt to explain the determinants of a person’s personality and character.
+This debate has been around for centuries. In classical Greece, Plato supported the nature argument, whereas Aristotle believed in the nurture perspective. During the eighteenth-century Enlightenment period, Immanuel Kant (1724–1824; supported the supremacy of human reason) and John Locke (1632–1704; opposed authoritarianism) argued their views. Kant firmly believed that obedience was the expected and desired behavior, whereas Locke believed in allowing some degree of freedom and creativity. The focus of the aspects of this argument changed when late-nineteenth-century psychologists sought to understand how individuals obtain knowledge, and as modern psychologists concentrated on additional factors such as intelligence, personality, and mental illness.
+Scott Shane, a professor of entrepreneurial studies at Case Western Reserve University, codirected a study using identical twins and fraternal twins as the research subjects. Shane determined that entrepreneurs are about 40 percent born and 60 percent made, meaning that nature—that is, an individual’s DNA—is responsible for 40 percent of entrepreneurial behaviors, whereas nurture is responsible for about 60 percent of entrepreneurial behaviors. 14 Although “nature versus nurture” and “born versus made” are parallel arguments, researchers and experienced entrepreneurs suggest a combined viewpoint. You can unite your natural talents and abilities with training and development to achieve a well-rounded entrepreneurial experience and outcome. Once you determine that entrepreneurship is in your future, the next action is to establish a process to follow, such as identifying useful reading materials, attending classes or workshops, finding a mentor, or learning by doing through simulations or firsthand experiences. Firsthand experiences occur throughout our days and lives as we gain relevant experiences and as we develop a mindset to seek out opportunity-recognition behaviors. Completing coursework, such as reading this textbook, and reviewing the suggested resources provided within this textbook are actions that can support your knowledge and awareness of entrepreneurship as a valid option for your future.
+Entrepreneurial Personality Test
+Review Bill Wagner’s article “What’s Your Entrepreneurial Personality Type?” in Entrepreneur at this link: https://www.entrepreneur.com/article/84134 . Then, go to The Entrepreneur Next Door at http://www.theentrepreneurnextdoor.com/ to take the Entrepreneurial Personality Test to find your personality type.
+- Think about your results. Are you a generalist or a specialist?
+- Once you know this information, what other entrepreneurial personality types do you fit into?
+- How can you use this information in your pursuits as an entrepreneur?
+- What does this information tell you about selecting members of your startup team?
+Historical Perspective
+The evolution of entrepreneurship in the United States has spanned centuries. Entrepreneurs have responded to and innovated within the political and economic conditions of their times. The United States’ economic and industrial spirit has inspired generations of entrepreneurial Americans. Understanding this history might help you appreciate the importance of entrepreneurship as you consider your own entrepreneurial journey.
+During the late 1700s, the Pembina Band of Chippewa Indians lived along the Red River of the North, which flows through North Dakota and Minnesota, and into Canada. European explorers established trading posts in this region and bargained with the Pembina and others for pemmican, a buffalo or fish jerky created by tribes for survival during harsh winters when food was scarce. The Pembina pemmican was exported internationally through trading with French, Canadian, British, and other explorers. 15 The Pembina solved a problem of food scarcity, then leveraged the product to trade for other products they needed that were available through the trading posts.
+In the late 1880s, Madam C. J. Walker, an African American hair-care entrepreneur, developed and marketed her products across the United States ( Figure 2.12 ), hiring sales agents and founding the Madam C. J. Walker Hair Culturists Union of America and the National Negro Cosmetics Manufacturers Association in 1917. 16 She started her company with a philosophy of “hair culture,” which quickly became popular and eventually led to steady employment for African American women. Another African American, Charles Drew, established the national blood bank in the late 1930s, just before World War II gave rise to the need for quick access to blood. 17 He researched transfusion medicine and saw a need that he wanted to fulfill. Drew applied the ideas from his doctoral thesis to create the blood bank and continued to innovate, developing mobile blood donation stations.
+Many innovations and entrepreneurial activities are not achieved by one person acting alone. One example is the invention of the cotton gin in 1794, attributed to Eli Whitney, and possibly based on a design by Catherine Greene and African Americans working as slaves. Some scholars believe that the cotton gin had the unintended consequence of hardening the grip of slavery in the South. 18 Eli Whitney, a descendant of a British immigrant, leveraged his status as the creator of the cotton gin to manufacture muskets for the US government, becoming known as a pioneer of American industry with a focus on standardization. 19
+Colonial and Early America: 1607–1776
+The earliest concept of an “entrepreneur” can be traced to this era, from the French entreprendre , which translates as “to do something” or “to undertake.” 20 Jean-Baptiste Say (1767–1832), a French philosopher, economist, and businessman, supported lifting restraints to encourage business growth, a highly liberal view in the late 1700s. “The entrepreneur shifts economic resources out of an area of lower and into an area of higher productivity and greater yield,” is a concept attributed to Say, as is the word entrepreneur . 21
+Entrepreneurial-minded persons included merchants, landowners, manufacturers in textile-related trades, shipbuilders, explorers, merchants, and world market traders. 22 The first immigrants to the British colonies took advantage of several key inventions developed before this era, such as printing, double-entry bookkeeping, and improvements in ship design and navigational instruments. The first North American patent was granted in 1641 by the Massachusetts General Court to Samuel Winslow for a new process for making salt. The entrepreneurial spirit of the early colonists helped shape an economic landscape that lasted for generations. Some notable pioneering inventors and entrepreneurs are shown in Table 2.2 and ( Figure 2.13 ).
+| Inventor or Entrepreneur | Contribution(s) | Significance |
+|---|---|---|
+| Pierre-Esprit Radisson (1640–1710), French explorer | Founded Hudson’s Bay trading company | Offered bartering of furs for textiles and guns |
+| William Penn (1644–1718), colonist | Founded Commonwealth of Pennsylvania as a sanctuary for Quakers | Early social entrepreneur |
+| Sybilla Masters (1676–1720), inventor | Invented method to clean and refine Indian corn grown by early settlers | Patent for a process for cleaning and milling Indian corn (1715) |
+| Thomas Hancock (1703–1764), merchant | Founded trading house that furnished multiple goods | Sought alternative funding sources to finance business interests |
+| Benjamin Franklin (1706–1790), inventor, publisher, statesman | Established printing franchises and an infrastructure for his apprentices to launch in other colonies | Epitome of an inventor and serial entrepreneur |
+As entrepreneurship flourished in the American colonies, the economic structure also began to emerge. The prevailing view of economics was associated with the stockpiling of gold and silver. Colonists perceived imports as a reduction of metal wealth—gold and silver money—and felt that exports channeled these metals back to the colonies. To categorize the economic mindset of the time, the Scottish philosopher and economist Adam Smith (1723–1790) wrote An Inquiry into the Nature and Causes of the Wealth of Nations (1776). This influential treatise outlined the concepts of free trade and economic expansion through capitalism , a system in which individuals, people, and companies have the freedom to make decisions and own property as well as benefit from their own efforts, with government playing a secondary role in oversight. This book confirmed Smith as the “father of economics” and modern free trade. Among the most significant concepts that Smith proposed were the “invisible hand” theory of supply and demand in the marketplace; the use of the GDP to measure a country’s level of production and commerce; and the self-interest concept, whereby individuals inadvertently help others as they pursue their own goals. 23 The ability to gain personally from entrepreneurial activities is a key factor in supporting entrepreneurial behavior. Smith’s concepts continue to influence modern economics and entrepreneurial activity.
+The First Industrial Revolution: 1776–1865
+As the colonies expanded, so did opportunities and interest in property ownership, manufacturing, inventions, and innovations. An innovation is any new idea, process, or product, or a change to an existing product or process. The understanding and acceptance of innovation developed around 1730, when the economist Richard Cantillon identified the first academic meaning and characteristics of “entrepreneurship” as the “willingness to bear the personal financial risk of a business venture.” 24 The First Industrial Revolution was notable for the explosion of inventive activities by the “great inventors,” who pursued entrepreneurial opportunities to meet market needs, demands, and economic incentives. 25
+An important thing to keep in mind is that dates of inventions don’t necessarily reflect specific launch dates. Development of these inventions may have been ongoing for years or decades before they were considered market-viable products.
+A plethora of inventors and their inventions transformed several industries and economic classes across the growing nation. During this era, the country benefited from inventions that created, expanded, or revolutionized industry and increased wealth and expansion. These revolutionary inventors included Eli Whitney (cotton gin, 1794), Elias Howe (sewing machine, 1845), and Samuel Morse (telegraph, 1830s–1840s) ( Figure 2.14 ). Many other people contributed to these and other inventions.
+Although he was not an inventor but an industrialist, Andrew Carnegie provides an interesting example. A manufacturer who focused on the value of innovations and how to implement them, Carnegie adopted newly developed techniques to improve steel production. He also was among the first to implement vertical integration , the strategy of gaining control over suppliers of raw materials and distributors of finished products to expand or control the relevant supply chain. He developed a reliable network of suppliers and distributors to support his steel factories. Carnegie also was one of the first magnates to practice philanthropy. He gave away much

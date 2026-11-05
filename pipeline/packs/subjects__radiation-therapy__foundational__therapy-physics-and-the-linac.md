@@ -1,448 +1,171 @@
 # Source pack — subjects/radiation-therapy/foundational/therapy-physics-and-the-linac
 Lesson title: Therapy Physics and the Linac
 Level: foundational
-Match confidence: 1.36
+Match confidence: 1.38
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.36 — College_Physics-WEB_2s5sHvR § 1.1 Physics: An Introduction
+## Match 1.38 — LibreTexts: 32.E: Medical Applications of Nuclear Physics (Exercises)
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/College_Physics/College_Physics_1e_(OpenStax)/32%3A_Medical_Applications_of_Nuclear_Physics/32.E%3A_Medical_Applications_of_Nuclear_Physics_(Exercises)
 
-Figure 1.2 The flight formations of migratory birds such as Canada geese are governed by the laws of physics. (credit: David Merrett)
-The physical universe is enormously complex in its detail. Every day, each of us observes a great variety of objects and
-phenomena. Over the centuries, the curiosity of the human race has led us collectively to explore and catalog a tremendous
-wealth of information. From the flight of birds to the colors of flowers, from lightning to gravity, from quarks to clusters of
-galaxies, from the flow of time to the mystery of the creation of the universe, we have asked questions and assembled huge
-arrays of facts. In the face of all these details, we have discovered that a surprisingly small and unified set of physical laws can
-explain what we observe. As humans, we make generalizations and seek order. We have found that nature is remarkably
-cooperative—it exhibits the underlying order and simplicity we so value.
-It is the underlying order of nature that makes science in general, and physics in particular, so enjoyable to study. For example,
-what do a bag of chips and a car battery have in common? Both contain energy that can be converted to other forms. The law of
-conservation of energy (which says that energy can change form but is never lost) ties together such topics as food calories,
-batteries, heat, light, and watch springs. Understanding this law makes it easier to learn about the various forms energy takes
-and how they relate to one another. Apparently unrelated topics are connected through broadly applicable physical laws,
-6
-Chapter 1 • Introduction: The Nature of Science and Physics
-Access for free at openstax.org.
+32.E: Medical Applications of Nuclear Physics (Exercises)
+-
+- Last updated
+- Save as PDF
+Conceptual Questions
+32.1: Medical Imaging and Diagnostics
+1. In terms of radiation dose, what is the major difference between medical diagnostic uses of radiation and medical therapeutic uses?
+2. One of the methods used to limit radiation dose to the patient in medical imaging is to employ isotopes with short half-lives. How would this limit the dose?
+32.2: Biological Effects of Ionizing Radiation
+3. Isotopes that emit \(\displaystyle α\) radiation are relatively safe outside the body and exceptionally hazardous inside. Yet those that emit \(\displaystyle γ\) radiation are hazardous outside and inside. Explain why.
+4. Why is radon more closely associated with inducing lung cancer than other types of cancer?
+5. The RBE for low-energy \(\displaystyle βs\) is 1.7, whereas that for higher-energy \(\displaystyle βs\) is only 1. Explain why, considering how the range of radiation depends on its energy.
+6. Which methods of radiation protection were used in the device shown in the first photo in Figure? Which were used in the situation shown in the second photo?
+(a) This x-ray fluorescence machine is one of the thousands used in shoe stores to produce images of feet as a check on the fit of shoes. They are unshielded and remain on as long as the feet are in them, producing doses much greater than medical images. Children were fascinated with them. These machines were used in shoe stores until laws preventing such unwarranted radiation exposure were enacted in the 1950s. (credit: Andrew Kuchling ) (b) Now that we know the effects of exposure to radioactive material, safety is a priority. (credit: U.S. Navy)
+7. What radioisotope could be a problem in homes built of cinder blocks made from uranium mine tailings? (This is true of homes and schools in certain regions near uranium mines.)
+8. Are some types of cancer more sensitive to radiation than others? If so, what makes them more sensitive?
+9. Suppose a person swallows some radioactive material by accident. What information is needed to be able to assess possible damage?
+32.3: Therapeutic Uses of Ionizing Radiation
+10. Radiotherapy is more likely to be used to treat cancer in elderly patients than in young ones. Explain why. Why is radiotherapy used to treat young people at all?
+32.4: Food Irradiation
+11. Does food irradiation leave the food radioactive? To what extent is the food altered chemically for low and high doses in food irradiation?
+12. Compare a low dose of radiation to a human with a low dose of radiation used in food treatment.
+13. Suppose one food irradiation plant uses a \(\displaystyle ^{137}Cs\) source while another uses an equal activity of \(\displaystyle ^{60}Co\). Assuming equal fractions of the \(\displaystyle γ\) rays from the sources are absorbed, why is more time needed to get the same dose using the \(\displaystyle ^{137}Cs\) source?
+32.5: Fusion
+14. Why does the fusion of light nuclei into heavier nuclei release energy?
+15. Energy input is required to fuse medium-mass nuclei, such as iron or cobalt, into more massive nuclei. Explain why.
+16. In considering potential fusion reactions, what is the advantage of the reaction \(\displaystyle ^2H+^3H→^4He+n\) over the reaction \(\displaystyle ^2H+^2H→^3He+n\)?
+17. Give reasons justifying the contention made in the text that energy from the fusion reaction \(\displaystyle ^2H+^2H→^4He+γ\) is relatively difficult to capture and utilize.
+32.6: Fission
+19. Explain why the fission of heavy nuclei releases energy. Similarly, why is it that energy input is required to fission light nuclei?
+20. Explain, in terms of conservation of momentum and energy, why collisions of neutrons with protons will thermalize neutrons better than collisions with oxygen.
+21. The ruins of the Chernobyl reactor are enclosed in a huge concrete structure built around it after the accident. Some rain penetrates the building in winter, and radioactivity from the building increases. What does this imply is happening inside?
+22. Since the uranium or plutonium nucleus fissions into several fission fragments whose mass distribution covers a wide range of pieces, would you expect more residual radioactivity from fission than fusion? Explain.
+23. The core of a nuclear reactor generates a large amount of thermal energy from the decay of fission products, even when the power-producing fission chain reaction is turned off. Would this residual heat be greatest after the reactor has run for a long time or short time? What if the reactor has been shut down for months?
+24. How can a nuclear reactor contain many critical masses and not go supercritical? What methods are used to control the fission in the reactor?
+25. Why can heavy nuclei with odd numbers of neutrons be induced to fission with thermal neutrons, whereas those with even numbers of neutrons require more energy input to induce fission?
+26. Why is a conventional fission nuclear reactor not able to explode as a bomb?
+32.7: Nuclear Weapons
+27. What are some of the reasons that plutonium rather than uranium is used in all fission bombs and as the trigger in all fusion bombs?
+28. Use the laws of conservation of momentum and energy to explain how a shape charge can direct most of the energy released in an explosion in a specific direction. (Note that this is similar to the situation in guns and cannons—most of the energy goes into the bullet.)
+29. How does the lithium deuteride in the thermonuclear bomb shown in Figure supply tritium (\(\displaystyle ^3H\)) as well as deuterium (\(\displaystyle ^2H\))?
+30. Fallout from nuclear weapons tests in the atmosphere is mainly \(\displaystyle ^{90}Sr\) and \(\displaystyle ^{137}Cs\), which have 28.6- and 32.2-y half-lives, respectively. Atmospheric tests were terminated in most countries in 1963, although China only did so in 1980. It has been found that environmental activities of these two isotopes are decreasing faster than their half-lives. Why might this be?
+Problems & Exercises
+32.1: Medical Imaging and Diagnostics
+31. A neutron generator uses an \(\displaystyle α\) source, such as radium, to bombard beryllium, inducing the reaction \(\displaystyle ^4He+^9Be→^{12}C+n\). Such neutron sources are called RaBe sources, or PuBe sources if they use plutonium to get the \(\displaystyle α\)s. Calculate the energy output of the reaction in MeV.
+Solution
+5.701 MeV
+32. Neutrons from a source (perhaps the one discussed in the preceding problem) bombard natural molybdenum, which is 24 percent \(\displaystyle ^{98}Mo\). What is the energy output of the reaction \(\displaystyle ^{98}Mo+n→^{99}Mo+γ\)? The mass of \(\displaystyle ^{98}Mo\) is given in Appendix A: Atomic Masses, and that of \(\displaystyle ^{99}Mo\_ is 98.907711 u.
+33. The purpose of producing \(\displaystyle ^{99}Mo\) (usually by neutron activation of natural molybdenum, as in the preceding problem) is to produce \(\displaystyle ^{99m}Tc\). Using the rules, verify that the \(\displaystyle β^−\) decay of \(\displaystyle ^{99}Mo\) produces \(\displaystyle ^{99m}Tc\). (Most \(\displaystyle ^{99m}Tc\) nuclei produced in this decay are left in a metastable excited state denoted \(\displaystyle ^{99m}Tc\).)
+Solution
+\(\displaystyle ^{99}_{42}Mo_{57}→^{99}_{43}Tc_{56}+β^−+\bar{v_e}\)
+34. (a) Two annihilation \(\displaystyle γ\) rays in a PET scan originate at the same point and travel to detectors on either side of the patient. If the point of origin is 9.00 cm closer to one of the detectors, what is the difference in arrival times of the photons? (This could be used to give position information, but the time difference is small enough to make it difficult.)
+(b) How accurately would you need to be able to measure arrival time differences to get a position resolution of 1.00 mm?
+35. Table indicates that 7.50 mCi of \(\displaystyle ^{99m}Tc\) is used in a brain scan. What is the mass of technetium?
+Solution
+\(\displaystyle 1.43×10^{−9}g\)
+36. The activities of \(\displaystyle ^{131}I\) and \(\displaystyle ^{123}I\) used in thyroid scans are given in Table to be 50 and \(\displaystyle 70 μCi\), respectively. Find and compare the masses of \(\displaystyle ^{131}I\) and \(\displaystyle ^{123}I\) in such scans, given their respective half-lives are 8.04 d and 13.2 h. The masses are so small that the radioiodine is usually mixed with stable iodine as a carrier to ensure normal chemistry and distribution in the body.
+37. (a) Neutron activation of sodium, which is 100% \(\displaystyle ^{23}Na\), produces \(\displaystyle ^{24}Na\), which is used in some heart scans, as seen in Table. The equation for the reaction is \(\displaystyle ^{23}Na+n→^{24}Na+γ\). Find its energy output, given the mass of \(\displaystyle ^{24}Na\) is 23.990962 u.
+(b) What mass of \(\displaystyle ^{24}Na\) produces the needed 5.0-mCi activity, given its half-life is 15.0 h?
+Solution
+(a) 6.958 MeV
+(b) \(\displaystyle 5.7×10^{−10}g\)
+32.2: Biological Effects of Ionizing Radiation
+38. What is the dose in mSv for:
+(a) a 0.1 Gy x-ray?
+(b) 2.5 mGy of neutron exposure to the eye?
+(c) 1.5 mGy of α exposure?
+Solution
+(a) 100 mSv
+(b) 80 mSv
+(c) ~30 mSv
+39. Find the radiation dose in Gy for:
+(a) A 10-mSv fluoroscopic x-ray series.
+(b) 50 mSv of skin exposure by an \(\displaystyle α\) emitter.
+(c) 160 mSv of \(\displaystyle β^–\) and \(\displaystyle γ\) rays from the \(\displaystyle ^{40}K\) in your body.
+40. How many Gy of exposure is needed to give a cancerous tumor a dose of 40 Sv if it is exposed to α activity?
+Solution
+~2 Gy
+41. What is the dose in Sv in a cancer treatment that exposes the patient to 200 Gy of \(\displaystyle γ\) rays?
+42. One half the \(\displaystyle γ\) rays from \(\displaystyle ^{99m}Tc\) are absorbed by a 0.170-mm-thick lead shielding. Half of the \(\displaystyle γ\) rays that pass through the first layer of lead are absorbed in a second layer of equal thickness. What thickness of lead will absorb all but one in 1000 of these \(\displaystyle γ\) rays?
+Solution
+1.69 mm
+43. A plumber at a nuclear power plant receives a whole-body dose of 30 mSv in 15 minutes while repairing a crucial valve. Find the radiation-induced yearly risk of death from cancer and the chance of genetic defect from this maximum allowable exposure.
+44. In the 1980s, the term picowave was used to describe food irradiation in order to overcome public resistance by playing on the well-known safety of microwave radiation. Find the energy in MeV of a photon having a wavelength of a picometer.
+Solution
+1.24 MeV
+45. Find the mass of \(\displaystyle ^{239}Pu\) that has an activity of \(\displaystyle 1.00 μCi\).
+32.3: Therapeutic Uses of Ionizing Radiation
+46. A beam of 168-MeV nitrogen nuclei is used for cancer therapy. If this beam is directed onto a 0.200-kg tumor and gives it a 2.00-Sv dose, how many nitrogen nuclei were stopped? (Use an RBE of 20 for heavy ions.)
+Solution
+\(\displaystyle 7.44×10^8\)
+47. (a) If the average molecular mass of compounds in food is 50.0 g, how many molecules are there in 1.00 kg of food?
+(b) How many ion pairs are created in 1.00 kg of food, if it is exposed to 1000 Sv and it takes 32.0 eV to create an ion pair?
+(c) Find the ratio of ion pairs to molecules.
+(d) If these ion pairs recombine into a distribution of 2000 new compounds, how many parts per billion is each?
+48. Calculate the dose in Sv to the chest of a patient given an x-ray under the following conditions. The x-ray beam intensity is \(\displaystyle 1.50 W/m^2\), the area of the chest exposed is \(\displaystyle 0.0750m^2\), 35.0% of the x-rays are absorbed in 20.0 kg of tissue, and the exposure time is 0.250 s.
+Solution
+\(\displaystyle 4.92×10^{–4}Sv\)
+49. (a) A cancer patient is exposed to γ rays from a 5000-Ci \(\displaystyle ^{60}Co\) transillumination unit for 32.0 s. The \(\displaystyle γ\) rays are collimated in such a manner that only 1.00% of them strike the patient. Of those, 20.0% are absorbed in a tumor having a mass of 1.50 kg. Wh
 
-permitting an understanding beyond just the memorization of lists of facts.
-The unifying aspect of physical laws and the basic simplicity of nature form the underlying themes of this text. In learning to
-apply these laws, you will, of course, study the most important topics in physics. More importantly, you will gain analytical
-abilities that will enable you to apply these laws far beyond the scope of what can be included in a single book. These analytical
-skills will help you to excel academically, and they will also help you to think critically in any professional career you choose to
-pursue. This module discusses the realm of physics (to define what physics is), some applications of physics (to illustrate its
-relevance to other disciplines), and more precisely what constitutes a physical law (to illuminate the importance of
-experimentation to theory).
-Science and the Realm of Physics
-Science consists of the theories and laws that are the general truths of nature as well as the body of knowledge they encompass.
-Scientists are continually trying to expand this body of knowledge and to perfect the expression of the laws that describe it.
-Physics is concerned with describing the interactions of energy, matter, space, and time, and it is especially interested in what
-fundamental mechanisms underlie every phenomenon. The concern for describing the basic phenomena in nature essentially
-defines the realm of physics.
-Physics aims to describe the function of everything around us, from the movement of tiny charged particles to the motion of
-people, cars, and spaceships. In fact, almost everything around you can be described quite accurately by the laws of physics.
-Consider a smart phone (Figure 1.3). Physics describes how electricity interacts with the various circuits inside the device. This
-knowledge helps engineers select the appropriate materials and circuit layout when building the smart phone. Next, consider a
-GPS system. Physics describes the relationship between the speed of an object, the distance over which it travels, and the time it
-takes to travel that distance. When you use a GPS device in a vehicle, it utilizes these physics equations to determine the travel
-time from one location to another.
-Figure 1.3 The Apple “iPhone” is a common smart phone with a GPS function. Physics describes the way that electricity flows through the
-circuits of this device. Engineers use their knowledge of physics to construct an iPhone with features that consumers will enjoy. One
-specific feature of an iPhone is the GPS function. GPS uses physics equations to determine the driving time between two locations on a
-map. (credit: @gletham GIS, Social, Mobile Tech Images)
-Applications of Physics
-You need not be a scientist to use physics. On the contrary, knowledge of physics is useful in everyday situations as well as in
-nonscientific professions. It can help you understand how microwave ovens work, why metals should not be put into them, and
-why they might affect pacemakers. (See Figure 1.4 and Figure 1.5.) Physics allows you to understand the hazards of radiation and
-rationally evaluate these hazards more easily. Physics also explains the reason why a black car radiator helps remove heat in a car
-engine, and it explains why a white roof helps keep the inside of a house cool. Similarly, the operation of a car’s ignition system
-as well as the transmission of electrical signals through our body’s nervous system are much easier to understand when you
-think about them in terms of basic physics.
-1.1 • Physics: An Introduction
-7
+## Match 1.36 — LibreTexts: 1.2: The Scope and Scale of Physics
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_(OpenStax)/Book%3A_University_Physics_I_-_Mechanics_Sound_Oscillations_and_Waves_(OpenStax)/01%3A_Units_and_Measurement/1.02%3A_The_Scope_and_Scale_of_Physics
 
-Physics is the foundation of many important disciplines and contributes directly to others. Chemistry, for example—since it
-deals with the interactions of atoms and molecules—is rooted in atomic and molecular physics. Most branches of engineering
-are applied physics. In architecture, physics is at the heart of structural stability, and is involved in the acoustics, heating,
-lighting, and cooling of buildings. Parts of geology rely heavily on physics, such as radioactive dating of rocks, earthquake
-analysis, and heat transfer in the Earth. Some disciplines, such as biophysics and geophysics, are hybrids of physics and other
-disciplines.
-Physics has many applications in the biological sciences. On the microscopic level, it helps describe the properties of cell walls
-and cell membranes (Figure 1.6 and Figure 1.7). On the macroscopic level, it can explain the heat, work, and power associated
-with the human body. Physics is involved in medical diagnostics, such as x-rays, magnetic resonance imaging (MRI), and
-ultrasonic blood flow measurements. Medical therapy sometimes directly involves physics; for example, cancer radiotherapy
-uses ionizing radiation. Physics can also explain sensory phenomena, such as how musical instruments make sound, how the
-eye detects color, and how lasers can transmit information.
-It is not necessary to formally study all applications of physics. What is most useful is knowledge of the basic laws of physics and
-a skill in the analytical methods for applying them. The study of physics also can improve your problem-solving skills.
-Furthermore, physics has retained the most basic aspects of science, so it is used by all of the sciences, and the study of physics
-makes other sciences easier to understand.
-Figure 1.4 The laws of physics help us understand how common appliances work. For example, the laws of physics can help explain how
-microwave ovens heat up food, and they also help us understand why it is dangerous to place metal objects in a microwave oven. (credit:
-MoneyBlogNewz)
-Figure 1.5 These two applications of physics have more in common than meets the eye. Microwave ovens use electromagnetic waves to
-heat food. Magnetic resonance imaging (MRI) also uses electromagnetic waves to yield an image of the brain, from which the exact location
-of tumors can be determined. (credit: Rashmi Chawla, Daniel Smith, and Paul E. Marik)
-8
-Chapter 1 • Introduction: The Nature of Science and Physics
-Access for free at openstax.org.
+1.2: The Scope and Scale of Physics
+- Describe the scope of physics.
+- Calculate the order of magnitude of a quantity.
+- Compare measurable length, mass, and timescales quantitatively.
+- Describe the relationships among models, theories, and laws.
+Physics is devoted to the understanding of all natural phenomena. In physics, we try to understand physical phenomena at all scales—from the world of subatomic particles to the entire universe. Despite the breadth of the subject, the various subfields of physics share a common core. The same basic training in physics will prepare you to work in any area of physics and the related areas of science and engineering. In this section, we investigate the scope of physics; the scales of length, mass, and time over which the laws of physics have been shown to be applicable; and the process by which science in general, and physics in particular, operates.
+The Scope of Physics
+Take another look at the thumbnail image. The Whirlpool Galaxy contains billions of individual stars as well as huge clouds of gas and dust. Its companion galaxy is also visible to the right. This pair of galaxies lies a staggering billion trillion miles (1.4 x 10 21 mi) from our own galaxy (which is called the Milky Way ). The stars and planets that make up the Whirlpool Galaxy might seem to be the furthest thing from most people’s everyday lives, but the Whirlpool is a great starting point to think about the forces that hold the universe together. The forces that cause the Whirlpool Galaxy to act as it does are thought to be the same forces we contend with here on Earth, whether we are planning to send a rocket into space or simply planning to raise the walls for a new home. The gravity that causes the stars of the Whirlpool Galaxy to rotate and revolve is thought to be the same as what causes water to flow over hydroelectric dams here on Earth. When you look up at the stars, realize the forces out there are the same as the ones here on Earth. Through a study of physics, you may gain a greater understanding of the interconnectedness of everything we can see and know in this universe.
+Think, now, about all the technological devices you use on a regular basis. Computers, smartphones, global positioning systems (GPSs), MP3 players, and satellite radio might come to mind. Then, think about the most exciting modern technologies you have heard about in the news, such as trains that levitate above tracks, “invisibility cloaks” that bend light around them, and microscopic robots that fight cancer cells in our bodies. All these groundbreaking advances, commonplace or unbelievable, rely on the principles of physics. Aside from playing a significant role in technology, professionals such as engineers, pilots, physicians, physical therapists, electricians, and computer programmers apply physics concepts in their daily work. For example, a pilot must understand how wind forces affect a flight path; a physical therapist must understand how the muscles in the body experience forces as they move and bend. As you will learn in this text, the principles of physics are propelling new, exciting technologies, and these principles are applied in a wide range of careers.
+The underlying order of nature makes science in general, and physics in particular, interesting and enjoyable to study. For example, what do a bag of chips and a car battery have in common? Both contain energy that can be converted to other forms. The law of conservation of energy (which says that energy can change form but is never lost) ties together such topics as food calories, batteries, heat, light, and watch springs. Understanding this law makes it easier to learn about the various forms energy takes and how they relate to one another. Apparently unrelated topics are connected through broadly applicable physical laws, permitting an understanding beyond just the memorization of lists of facts.
+Science consists of theories and laws that are the general truths of nature, as well as the body of knowledge they encompass. Scientists are continuously trying to expand this body of knowledge and to perfect the expression of the laws that describe it. Physics , which comes from the Greek phúsis , meaning “nature,” is concerned with describing the interactions of energy, matter, space, and time to uncover the fundamental mechanisms that underlie every phenomenon. This concern for describing the basic phenomena in nature essentially defines the scope of physics .
+Physics aims to understand the world around us at the most basic level. It emphasizes the use of a small number of quantitative laws to do this, which can be useful to other fields pushing the performance boundaries of existing technologies. Consider a smartphone (Figure \(\PageIndex{1}\)). Physics describes how electricity interacts with the various circuits inside the device. This knowledge helps engineers select the appropriate materials and circuit layout when building a smartphone. Knowledge of the physics underlying these devices is required to shrink their size or increase their processing speed. Or, think about a GPS. Physics describes the relationship between the speed of an object, the distance over which it travels, and the time it takes to travel that distance. When you use a GPS in a vehicle, it relies on physics equations to determine the travel time from one location to another.
+Knowledge of physics is useful in everyday situations as well as in nonscientific professions. It can help you understand how microwave ovens work, why metals should not be put into them, and why they might affect pacemakers. Physics allows you to understand the hazards of radiation and to evaluate these hazards rationally and more easily. Physics also explains the reason why a black car radiator helps remove heat in a car engine, and it explains why a white roof helps keep the inside of a house cool. Similarly, the operation of a car’s ignition system as well as the transmission of electrical signals throughout our body’s nervous system are much easier to understand when you think about them in terms of basic physics.
+Physics is a key element of many important disciplines and contributes directly to others. Chemistry, for example—since it deals with the interactions of atoms and molecules—has close ties to atomic and molecular physics. Most branches of engineering are concerned with designing new technologies, processes, or structures within the constraints set by the laws of physics. In architecture, physics is at the heart of structural stability and is involved in the acoustics, heating, lighting, and cooling of buildings. Parts of geology rely heavily on physics, such as radioactive dating of rocks, earthquake analysis, and heat transfer within Earth. Some disciplines, such as biophysics and geophysics, are hybrids of physics and other disciplines.
+Physics has many applications in the biological sciences. On the microscopic level, it helps describe the properties of cells and their environments. On the macroscopic level, it explains the heat, work, and power associated with the human body and its various organ systems. Physics is involved in medical diagnostics, such as radiographs, magnetic resonance imaging, and ultrasonic blood flow measurements. Medical therapy sometimes involves physics directly; for example, cancer radiotherapy uses ionizing radiation. Physics also explains sensory phenomena, such as how musical instruments make sound, how the eye detects color, and how lasers transmit information.
+It is not necessary to study all applications of physics formally. What is most useful is knowing the basic laws of physics and developing skills in the analytical methods for applying them. The study of physics also can improve your problem-solving skills. Furthermore, physics retains the most basic aspects of science, so it is used by all the sciences, and the study of physics makes other sciences easier to understand.
+The Scale of Physics
+From the discussion so far, it should be clear that to accomplish your goals in any of the various fields within the natural sciences and engineering, a thorough grounding in the laws of physics is necessary. The reason for this is simply that the laws of physics govern everything in the observable universe at all measurable scales of length, mass, and time. Now, that is easy enough to say, but to come to grips with what it really means, we need to get a little bit quantitative. So, before surveying the various scales that physics allows us to explore, let’s first look at the concept of “order of magnitude,” which we use to come to terms with the vast ranges of length, mass, and time that we consider in this text (Figure \(\PageIndex{2}\)).
+Order of Magnitude
+The order of magnitude of a number is the power of 10 that most closely approximates it. Thus, the order of magnitude refers to the scale (or size) of a value. Each power of 10 represents a different order of magnitude. For example, 10 1 , 10 2 , 10 3 , and so forth, are all different orders of magnitude, as are 10 0 = 1, 10 −1 , 10 −2 , and 10 −3 . To find the order of magnitude of a number, take the base-10 logarithm of the number and round it to the nearest integer, then the order of magnitude of the number is simply the resulting power of 10. For example, the order of magnitude of 800 is 10 3 because log 10 800 ≈ 2.903, which rounds to 3. Similarly, the order of magnitude of 450 is 10 3 because log 10 450 ≈ 2.653, which rounds to 3 as well. Thus, we say the numbers 800 and 450 are of the same order of magnitude: 10 3 . However, the order of magnitude of 250 is 10 2 because log 10 250 ≈ 2.397, which rounds to 2.
+An equivalent but quicker way to find the order of magnitude of a number is first to write it in scientific notation and then check to see whether the first factor is greater than or less than \(\sqrt{10}\) = 10 0.5 ≈ 3. The idea is that \(\sqrt{10}\) = 10 0.5 is halfway between 1 = 10 0 and 10 = 10 1 on a log base-10 scale. Thus, if the first factor is less than \(\sqrt{10}\), then we round it down to 1 and the order of magnitude is simply whatever power of 10 is required to write the number in scientific notation. On the other hand, if the first factor is greater than \(\sqrt{10}\), then we round it up to 10 and the order of magnitude is one power of 10 higher than the power needed to write the number in scientific notation. For example, the number 800 can be written in scientific notation as 8 x 10 2 . Because 8 is bigger than \(\sqrt{10}\) ≈ 3, we say the order of magnitude of 800 is 10 2 + 1 = 10 3 . The number 450 can be written as 4.5 x 10 2 , so its order of magnitude is also 10 3 because 4.5 is greater than 3. However, 250 written in scientific notation is 2.5 x 10 2 and 2.5 is less than 3, so its order of magnitude is 10 2 .
+The order of magnitude of a number is designed to be a ballpark estimate for the scale (or size) of its value. It is simply a way of rounding numbers consistently to the nearest power of 10. This makes doing rough mental math with very big and very small numbers easier. For example, the diameter of a hydrogen atom is on the order of 10 −10 m, whereas the diameter of the Sun is on the order of 10 9 m, so it would take roughly 10 9 /10 −10 = 10 19 hydrogen atoms to stretch across the diameter of the Sun. This is much easier to do in your head than using the more precise values of 1.06 x 10 −10 m for a hydrogen atom diameter and 1.39 x 10 9 m for the Sun’s diameter, to find that it would take 1.31 x 10 19 hydrogen atoms to stretch across the Sun’s diameter. In addition to being easier, the rough estimate is also nearly as informative as the precise calculation.
+Known Ranges of Length, Mass, and Time
+The vastness of the universe and the breadth over which physics applies are illustrated by the wide range of examples of known lengths, masses, and times (given as orders of magnitude) in Figure \(\PageIndex{3}\). Examining this table will give
 
-Figure 1.6 Physics, chemistry, and biology help describe the properties of cell walls in plant cells, such as the onion cells seen here. (credit:
-Umberto Salvagnin)
-Figure 1.7 An artist’s rendition of the the structure of a cell membrane. Membranes form the boundaries of animal cells and are complex in
-structure and function. Many of the most fundamental properties of life, such as the firing of nerve cells, are related to membranes. The
-disciplines of biology, chemistry, and physics all help us understand the membranes of animal cells. (credit: Mariana Ruiz)
-Models, Theories, and Laws; The Role of Experimentation
-The laws of nature are concise descriptions of the universe around us; they are human statements of the underlying laws or rules
-that all natural processes follow. Such laws are intrinsic to the universe; humans did not create them and so cannot change
-them. We can only discover and understand them. Their discovery is a very human endeavor, with all the elements of mystery,
-imagination, struggle, triumph, and disappointment inherent in any creative effort. (See Figure 1.8 and Figure 1.9.) The
-cornerstone of discovering natural laws is observation; science must describe the universe as it is, not as we may imagine it to
-be.
-1.1 • Physics: An Introduction
-9
+## Match 1.36 — LibreTexts: 1.1: Physics- An Introduction
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/College_Physics/College_Physics_1e_(OpenStax)/01%3A_The_Nature_of_Science_and_Physics/1.01%3A_Physics-_An_Introduction
 
-Figure 1.8 Isaac Newton (1642–1727) was very reluctant to publish his revolutionary work and had to be convinced to do so. In his later
-years, he stepped down from his academic post and became exchequer of the Royal Mint. He took this post seriously, inventing reeding (or
-creating ridges) on the edge of coins to prevent unscrupulous people from trimming the silver off of them before using them as currency.
-(credit: Arthur Shuster and Arthur E. Shipley: Britain’s Heritage of Science. London, 1917.)
-Figure 1.9 Marie Curie (1867–1934) sacrificed monetary assets to help finance her early research and damaged her physical well-being
-with radiation exposure. She is the only person to win Nobel prizes in both physics and chemistry. One of her daughters also won a Nobel
-Prize. (credit: Wikimedia Commons)
-We all are curious to some extent. We look around, make generalizations, and try to understand what we see—for example, we
-look up and wonder whether one type of cloud signals an oncoming storm. As we become serious about exploring nature, we
-become more organized and formal in collecting and analyzing data. We attempt greater precision, perform controlled
-experiments (if we can), and write down ideas about how the data may be organized and unified. We then formulate models,
-theories, and laws based on the data we have collected and analyzed to generalize and communicate the results of these
-experiments.
-A model is a representation of something that is often too difficult (or impossible) to display directly. While a model is justified
-with experimental proof, it is only accurate under limited situations. An example is the planetary model of the atom in which
-electrons are pictured as orbiting the nucleus, analogous to the way planets orbit the Sun. (See Figure 1.10.) We cannot observe
-electron orbits directly, but the mental image helps explain the observations we can make, such as the emission of light from hot
-gases (atomic spectra). Physicists use models for a variety of purposes. For example, models can help physicists analyze a
-scenario and perform a calculation, or they can be used to represent a situation in the form of a computer simulation. A theory
-is an explanation for patterns in nature that is supported by scientific evidence and verified multiple times by various groups of
-researchers. Some theories include models to help visualize phenomena, whereas others do not. Newton’s theory of gravity, for
-10
-Chapter 1 • Introduction: The Nature of Science and Physics
-Access for free at openstax.org.
-
-example, does not require a model or mental image, because we can observe the objects directly with our own senses. The
-kinetic theory of gases, on the other hand, is a model in which a gas is viewed as being composed of atoms and molecules.
-Atoms and molecules are too small to be observed directly with our senses—thus, we picture them mentally to understand what
-our instruments tell us about the behavior of gases.
-A law uses concise language to describe a generalized pattern in nature that is supported by scientific evidence and repeated
-experiments. Often, a law can be expressed in the form of a single mathematical equation. Laws and theories are similar in that
-they are both scientific statements that result from a tested hypothesis and are supported by scientific evidence. However, the
-designation law is reserved for a concise and very general statement that describes phenomena in nature, such as the law that
-energy is conserved during any process, or Newton’s second law of motion, which relates force, mass, and acceleration by the
-simple equation
-. A theory, in contrast, is a less concise statement of observed phenomena. For example, the Theory of
-Evolution and the Theory of Relativity cannot be expressed concisely enough to be considered a law. The biggest difference
-between a law and a theory is that a theory is much more complex and dynamic. A law describes a single action, whereas a
-theory explains an entire group of related phenomena. And, whereas a law is a postulate that forms the foundation of the
-scientific method, a theory is the end result of that process.
-Less broadly applicable statements are usually called principles (such as Pascal’s principle, which is applicable only in fluids), but
-the distinction between laws and principles often is not carefully made.
-Figure 1.10 What is a model? This planetary model of the atom shows electrons orbiting the nucleus. It is a drawing that we use to form a
-mental image of the atom that we cannot see directly with our eyes because it is too small.
-The models, theories, and laws we devise sometimes imply the existence of objects or phenomena as yet unobserved. These
-predictions are remarkable triumphs and tributes to the power of science. It is the underlying order in the universe that enables
-scientists to make such spectacular predictions. However, if experiment does not verify our predictions, then the theory or law
-is wrong, no matter ho
-
-## Match 1.36 — APCollegePhysics-OP_js6ZFp7 § 1.1 Physics: An Introduction
-
-Figure 1.2 The flight formations of migratory birds such as Canada geese are governed by the laws of physics. (credit: David Merrett)
+1.1: Physics- An Introduction
 Learning Objectives
 By the end of this section, you will be able to:
-•
-Explain the difference between a principle and a law.
-•
-Explain the difference between a model and a theory.
-The physical universe is enormously complex in its detail. Every day, each of us observes a great variety of objects and
-phenomena. Over the centuries, the curiosity of the human race has led us collectively to explore and catalog a tremendous
-wealth of information. From the flight of birds to the colors of flowers, from lightning to gravity, from quarks to clusters of galaxies,
-from the flow of time to the mystery of the creation of the universe, we have asked questions and assembled huge arrays of
-facts. In the face of all these details, we have discovered that a surprisingly small and unified set of physical laws can explain
-what we observe. As humans, we make generalizations and seek order. We have found that nature is remarkably cooperative—it
-exhibits the underlying order and simplicity we so value.
-It is the underlying order of nature that makes science in general, and physics in particular, so enjoyable to study. For example,
-what do a bag of chips and a car battery have in common? Both contain energy that can be converted to other forms. The law of
-conservation of energy (which says that energy can change form but is never lost) ties together such topics as food calories,
-batteries, heat, light, and watch springs. Understanding this law makes it easier to learn about the various forms energy takes
-and how they relate to one another. Apparently unrelated topics are connected through broadly applicable physical laws,
-permitting an understanding beyond just the memorization of lists of facts.
-The unifying aspect of physical laws and the basic simplicity of nature form the underlying themes of this text. In learning to apply
-these laws, you will, of course, study the most important topics in physics. More importantly, you will gain analytical abilities that
-will enable you to apply these laws far beyond the scope of what can be included in a single book. These analytical skills will help
-you to excel academically, and they will also help you to think critically in any professional career you choose to pursue. This
-module discusses the realm of physics (to define what physics is), some applications of physics (to illustrate its relevance to
-other disciplines), and more precisely what constitutes a physical law (to illuminate the importance of experimentation to theory).
+- Explain the difference between a principle and a law.
+- Explain the difference between a model and a theory.
+The physical universe is enormously complex in its detail. Every day, each of us observes a great variety of objects and phenomena. Over the centuries, the curiosity of the human race has led us collectively to explore and catalog a tremendous wealth of information. From the flight of birds to the colors of flowers, from lightning to gravity, from quarks to clusters of galaxies, from the flow of time to the mystery of the creation of the universe, we have asked questions and assembled huge arrays of facts. In the face of all these details, we have discovered that a surprisingly small and unified set of physical laws can explain what we observe. As humans, we make generalizations and seek order. We have found that nature is remarkably cooperative—it exhibits the underlying order and simplicity we so value.
+It is the underlying order of nature that makes science in general, and physics in particular, so enjoyable to study. For example, what do a bag of chips and a car battery have in common? Both contain energy that can be converted to other forms. The law of conservation of energy (which says that energy can change form but is never lost) ties together such topics as food calories, batteries, heat, light, and watch springs. Understanding this law makes it easier to learn about the various forms energy takes and how they relate to one another. Apparently unrelated topics are connected through broadly applicable physical laws, permitting an understanding beyond just the memorization of lists of facts.
+The unifying aspect of physical laws and the basic simplicity of nature form the underlying themes of this text. In learning to apply these laws, you will, of course, study the most important topics in physics. More importantly, you will gain analytical abilities that will enable you to apply these laws far beyond the scope of what can be included in a single book. These analytical skills will help you to excel academically, and they will also help you to think critically in any professional career you choose to pursue. This module discusses the realm of physics (to define what physics is), some applications of physics (to illustrate its relevance to other disciplines), and more precisely what constitutes a physical law (to illuminate the importance of experimentation to theory).
 Science and the Realm of Physics
-Science consists of the theories and laws that are the general truths of nature as well as the body of knowledge they encompass.
-Scientists are continually trying to expand this body of knowledge and to perfect the expression of the laws that describe it.
-Physics is concerned with describing the interactions of energy, matter, space, and time, and it is especially interested in what
-fundamental mechanisms underlie every phenomenon. The concern for describing the basic phenomena in nature essentially
-defines the realm of physics.
-Physics aims to describe the function of everything around us, from the movement of tiny charged particles to the motion of
-people, cars, and spaceships. In fact, almost everything around you can be described quite accurately by the laws of physics.
-Consider a smart phone (Figure 1.3). Physics describes how electricity interacts with the various circuits inside the device. This
-8
-Chapter 1 | Introduction: The Nature of Science and Physics
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-knowledge helps engineers select the appropriate materials and circuit layout when building the smart phone. Next, consider a
-GPS system. Physics describes the relationship between the speed of an object, the distance over which it travels, and the time
-it takes to travel that distance. When you use a GPS device in a vehicle, it utilizes these physics equations to determine the
-travel time from one location to another.
-Figure 1.3 The Apple “iPhone” is a common smart phone with a GPS function. Physics describes the way that electricity flows through the circuits of
-this device. Engineers use their knowledge of physics to construct an iPhone with features that consumers will enjoy. One specific feature of an iPhone
-is the GPS function. GPS uses physics equations to determine the driving time between two locations on a map. (credit: @gletham GIS, Social, Mobile
-Tech Images)
+Science consists of the theories and laws that are the general truths of nature as well as the body of knowledge they encompass. Scientists are continually trying to expand this body of knowledge and to perfect the expression of the laws that describe it. Physics is concerned with describing the interactions of energy, matter, space, and time, and it is especially interested in what fundamental mechanisms underlie every phenomenon. The concern for describing the basic phenomena in nature essentially defines the realm of physics .
+Physics aims to describe the function of everything around us, from the movement of tiny charged particles to the motion of people, cars, and spaceships. In fact, almost everything around you can be described quite accurately by the laws of physics. Consider a smart phone (Figure \(\PageIndex{2}\)). Physics describes how electricity interacts with the various circuits inside the device. This knowledge helps engineers select the appropriate materials and circuit layout when building the smart phone. Next, consider a GPS system. Physics describes the relationship between the speed of an object, the distance over which it travels, and the time it takes to travel that distance. When you use a GPS device in a vehicle, it utilizes these physics equations to determine the travel time from one location to another.
 Applications of Physics
-You need not be a scientist to use physics. On the contrary, knowledge of physics is useful in everyday situations as well as in
-nonscientific professions. It can help you understand how microwave ovens work, why metals should not be put into them, and
-why they might affect pacemakers. (See Figure 1.4 and Figure 1.5.) Physics allows you to understand the hazards of radiation
-and rationally evaluate these hazards more easily. Physics also explains the reason why a black car radiator helps remove heat
-in a car engine, and it explains why a white roof helps keep the inside of a house cool. Similarly, the operation of a car's ignition
-system as well as the transmission of electrical signals through our body's nervous system are much easier to understand when
-you think about them in terms of basic physics.
-Physics is the foundation of many important disciplines and contributes directly to others. Chemistry, for example—since it deals
-with the interactions of atoms and molecules—is rooted in atomic and molecular physics. Most branches of engineering are
-applied physics. In architecture, physics is at the heart of structural stability, and is involved in the acoustics, heating, lighting,
-and cooling of buildings. Parts of geology rely heavily on physics, such as radioactive dating of rocks, earthquake analysis, and
-heat transfer in the Earth. Some disciplines, such as biophysics and geophysics, are hybrids of physics and other disciplines.
-Physics has many applications in the biological sciences. On the microscopic level, it helps describe the properties of cell walls
-and cell membranes (Figure 1.6 and Figure 1.7). On the macroscopic level, it can explain the heat, work, and power associated
-with the human body. Physics is involved in medical diagnostics, such as x-rays, magnetic resonance imaging (MRI), and
-ultrasonic blood flow measurements. Medical therapy sometimes directly involves physics; for example, cancer radiotherapy
-uses ionizing radiation. Physics can also explain sensory phenomena, such as how musical instruments make sound, how the
-eye detects color, and how lasers can transmit information.
-It is not necessary to formally study all applications of physics. What is most useful is knowledge of the basic laws of physics and
-a skill in the analytical methods for applying them. The study of physics also can improve your problem-solving skills.
-Furthermore, physics has retained the most basic aspects of science, so it is used by all of the sciences, and the study of
-physics makes other sciences easier to understand.
-Figure 1.4 The laws of physics help us understand how common appliances work. For example, the laws of physics can help explain how microwave
-ovens heat up food, and they also help us understand why it is dangerous to place metal objects in a microwave oven. (credit: MoneyBlogNewz)
-Chapter 1 | Introduction: The Nature of Science and Physics
-9
-
-Figure 1.5 These two applications of physics have more in common than meets the eye. Microwave ovens use electromagnetic waves to heat food.
-Magnetic resonance imaging (MRI) also uses electromagnetic waves to yield an image of the brain, from which the exact location of tumors can be
-determined. (credit: Rashmi Chawla, Daniel Smith, and Paul E. Marik)
-Figure 1.6 Physics, chemistry, and biology help describe the properties of cell walls in plant cells, such as the onion cells seen here. (credit: Umberto
-Salvagnin)
-Figure 1.7 An artist's rendition of the the structure of a cell membrane. Membranes form the boundaries of animal cells and are complex in structure
-and function. Many of the most fundamental properties of life, such as the firing of nerve cells, are related to membranes. The disciplines of biology,
-chemistry, and physics all help us understand the membranes of animal cells. (credit: Mariana Ruiz)
+You need not be a scientist to use physics. On the contrary, knowledge of physics is useful in everyday situations as well as in nonscientific professions. It can help you understand how microwave ovens work, why metals should not be put into them, and why they might affect pacemakers (Figures \(\PageIndex{3}\) and \(\PageIndex{4}\)). Physics allows you to understand the hazards of radiation and rationally evaluate these hazards more easily. Physics also explains the reason why a black car radiator helps remove heat in a car engine, and it explains why a white roof helps keep the inside of a house cool. Similarly, the operation of a car’s ignition system as well as the transmission of electrical signals through our body’s nervous system are much easier to understand when you think about them in terms of basic physics.
+Physics is the foundation of many important disciplines and contributes directly to others. Chemistry, for example—since it deals with the interactions of atoms and molecules—is rooted in atomic and molecular physics. Most branches of engineering are applied physics. In architecture, physics is at the heart of structural stability, and is involved in the acoustics, heating, lighting, and cooling of buildings. Parts of geology rely heavily on physics, such as radioactive dating of rocks, earthquake analysis, and heat transfer in the Earth. Some disciplines, such as biophysics and geophysics, are hybrids of physics and other disciplines.
+Physics has many applications in the biological sciences. On the microscopic level, it helps describe the properties of cell walls and cell membranes (Figures \(\PageIndex{5}\) and \(\PageIndex{6}\)). On the macroscopic level, it can explain the heat, work, and power associated with the human body. Physics is involved in medical diagnostics, such as x-rays, magnetic resonance imaging (MRI), and ultrasonic blood flow measurements. Medical therapy sometimes directly involves physics; for example, cancer radiotherapy uses ionizing radiation. Physics can also explain sensory phenomena, such as how musical instruments make sound, how the eye detects color, and how lasers can transmit information.
+It is not necessary to formally study all applications of physics. What is most useful is knowledge of the basic laws of physics and a skill in the analytical methods for applying them. The study of physics also can improve your problem-solving skills. Furthermore, physics has retained the most basic aspects of science, so it is used by all of the sciences, and the study of physics makes other sciences easier to understand.
 Models, Theories, and Laws; The Role of Experimentation
-The laws of nature are concise descriptions of the universe around us; they are human statements of the underlying laws or rules
-that all natural processes follow. Such laws are intrinsic to the universe; humans did not create them and so cannot change
-them. We can only discover and understand them. Their discovery is a very human endeavor, with all the elements of mystery,
-imagination, struggle, triumph, and disappointment inherent in any creative effort. (See Figure 1.8 and Figure 1.9.) The
-cornerstone of discovering natural laws is observation; science must describe the universe as it is, not as we may imagine it to
-be.
-10
-Chapter 1 | Introduction: The Nature of Science and Physics
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-Figure 1.8 Isaac Newton (1642–1727) was very reluctant to publish his revolutionary work and had to be convinced to do so. In his later years, he
-stepped down from his academic post and became exchequer of the Royal Mint. He took this post seriously, inventing reeding (or creating ridges) on
-the edge of coins to prevent unscrupulous people from trimming the silver off of them before using them as currency. (credit: Arthur Shuster and Arthur
-E. Shipley: Britain's Heritage of Science. London, 1917.)
-Figure 1.9 Marie Curie (1867–1934) sacrificed monetary assets to help finance her early research and damaged her physical well-being with radiation
-exposure. She is the only person to win Nobel prizes in both physics and chemistry. One of her daughters also won a Nobel Prize. (credit: Wikimedia
-Commons)
-We all are curious to some extent. We look around, make generalizations, and try to understand what we see—for example, we
-look up and wonder whether one type of cloud signals an oncoming storm. As we become serious about exploring nature, we
-become more organized and formal in collecting and analyzing data. We attempt greater precision, perform controlled
-experiments (if we can), and write down ideas about how the data may be organized and unified. We then formulate models,
-theories, and laws based on the data we have collected and analyzed to generalize and communicate the results of these
-experiments.
-A model is a representation of something that is often too difficult (or impossible) to display directly. While a model is justified
-with experimental proof, it is only accurate under limited situations. An example is the planetary model of the atom in which
-electrons are pictured as orbiting the nucleus, analogous to the way planets orbit the Sun. (See Figure 1.10.) We cannot observe
-electron orbits directly, but the mental image helps explain the observations we can make, such as the emission of light from hot
-gases (atomic spectra). Physicists use models for a variety of purposes. For example, models can help physicists analyze a
-scenario and perform a calculation, or they can be used to represent a situation in the form of a computer simulation. A theory is
-an explanation for patterns in nature that is supported by scientific evidence and verified multiple times by various groups of
-researchers. Some theories include models to help visualize phenomena, whereas others do not. Newton's theory of gravity, for
-example, does not require a model or mental image, because we can observe the objects directly with our own senses. The
-kinetic theory of gases, on the other hand, is a model in which a gas is viewed as being composed of atoms and molecules.
-Atoms and molecules are too small to be observed directly with our senses—thus, we picture them mentally to understand what
-our instruments tell us about the behavior of gases.
-A law uses concise language to describe a generalized pattern in nature that is supported by scientific evidence and repeated
-experiments. Often, a law can be expressed in the form of a single mathematical equation. Laws and theories are similar in that
-they are both scientific statements that result from a tested hypothesis and are supported by scientific evidence. However, the
-Chapter 1 | Introduction: The Nature of Science and Physics
-11
-
-designation law is reserved for a concise and very general statement that describes phenomena in nature, such as the law that
-energy is conserved during any process, or Newton's second law of motion, which relates force, mass, and acceleration by the
-simple equation F = ma . A theory, in contrast, is a less concise statement of observed phenomena. For example, the Theory of
-Evolution and the Theory of Relativity cannot be expressed concisely enough to be considered a law. The biggest difference
-between a law and a theory is that a theory is much more complex and dynamic. A law describes a single action, whereas a
-theory explains an entire group of related phenomena. And, whereas a law is a postulate that forms the foundation of the
-scientific method, a theory is the end result of that process.
-Less broadly applicable statements are usually called principles (such as Pascal's principle, which is applicable only in fluids),
-but the distinction between laws and principles often is not carefully made.
-Figure 1.10 What is a model? This planetary model of the atom shows electrons orbiting the nucleus. It is a drawing that we use to form a mental
-image of the atom that we cannot see directly with our eyes because it is too small.
-Models, Theories, and Laws
-Models, theories, and laws are used to help scientists analyze the data they have already collected. However, often after a
-mod
-
-## Match 1.36 — College_Physics_2e-WEB_7Zesafu § 1.1 Physics: An Introduction
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain the difference between a principle and a law.
-•
-Explain the difference between a model and a theory.
-6
-1 • Introduction: The Nature of Science and Physics
-Access for free at openstax.org
-
-FIGURE 1.2 The flight formations of migratory birds such as Canada geese are governed by the laws of physics. (credit: David Merrett)
-The physical universe is enormously complex in its detail. Every day, each of us observes a great variety of objects
-and phenomena. Over the centuries, the curiosity of the human race has led us collectively to explore and catalog a
-tremendous wealth of information. From the flight of birds to the colors of flowers, from lightning to gravity, from
-quarks to clusters of galaxies, from the flow of time to the mystery of the creation of the universe, we have asked
-questions and assembled huge arrays of facts. In the face of all these details, we have discovered that a surprisingly
-small and unified set of physical laws can explain what we observe. As humans, we make generalizations and seek
-order. We have found that nature is remarkably cooperative—it exhibits the underlying order and simplicity we so
-value.
-It is the underlying order of nature that makes science in general, and physics in particular, so enjoyable to study.
-For example, what do a bag of chips and a car battery have in common? Both contain energy that can be converted
-to other forms. The law of conservation of energy (which says that energy can change form but is never lost) ties
-together such topics as food calories, batteries, heat, light, and watch springs. Understanding this law makes it
-easier to learn about the various forms energy takes and how they relate to one another. Apparently unrelated topics
-are connected through broadly applicable physical laws, permitting an understanding beyond just the memorization
-of lists of facts.
-The unifying aspect of physical laws and the basic simplicity of nature form the underlying themes of this text. In
-learning to apply these laws, you will, of course, study the most important topics in physics. More importantly, you
-will gain analytical abilities that will enable you to apply these laws far beyond the scope of what can be included in
-a single book. These analytical skills will help you to excel academically, and they will also help you to think critically
-in any professional career you choose to pursue. This module discusses the realm of physics (to define what physics
-is), some applications of physics (to illustrate its relevance to other disciplines), and more precisely what constitutes
-a physical law (to illuminate the importance of experimentation to theory).
-Science and the Realm of Physics
-Science consists of the theories and laws that are the general truths of nature as well as the body of knowledge they
-encompass. Scientists are continually trying to expand this body of knowledge and to perfect the expression of the
-laws that describe it. Physics is concerned with describing the interactions of energy, matter, space, and time, and it
-is especially interested in what fundamental mechanisms underlie every phenomenon. The concern for describing
-the basic phenomena in nature essentially defines the realm of physics.
-Physics aims to describe the function of everything around us, from the movement of tiny charged particles to the
-motion of people, cars, and spaceships. In fact, almost everything around you can be described quite accurately by
-the laws of physics. Consider a smart phone (Figure 1.3). Physics describes how electricity interacts with the various
-circuits inside the device. This knowledge helps engineers select the appropriate materials and circuit layout when
-building the smart phone. Next, consider a GPS system. Physics describes the relationship between the speed of an
-object, the distance over which it travels, and the time it takes to travel that distance. GPS relies on precise
-calculations that account for variations in the Earth's landscapes, the exact distance between orbiting satellites, and
-even the effect of a complex occurrence of time dilation. Most of these calculations are founded on algorithms
-developed by Gladys West, a mathematician and computer scientist who programmed the first computers capable
-of highly accurate remote sensing and positioning. When you use a GPS device, it utilizes these algorithms to
-1.1 • Physics: An Introduction
-7
-
-recognize where you are and how your position relates to other objects on Earth.
-FIGURE 1.3 The Apple iPhone is a common smart phone with a GPS function, sophisticated camera, haptic (vibration) capabilities, and
-many other functions. Physics describes the way that electricity flows through the circuits of this device. Engineers use their knowledge of
-physics to construct an iPhone with features that consumers will enjoy. One specific feature of an iPhone is the GPS function. GPS uses
-physics equations to determine the driving time between two locations on a map. (credit: Tinh tế Photo/Flickr)
-Applications of Physics
-You need not be a scientist to use physics. On the contrary, knowledge of physics is useful in everyday situations as
-well as in nonscientific professions. It can help you understand how microwave ovens work, why metals should not
-be put into them, and why they might affect pacemakers. (See Figure 1.4 and Figure 1.5.) Physics allows you to
-understand the hazards of radiation and rationally evaluate these hazards more easily. Physics also explains the
-reason why a black car radiator helps remove heat in a car engine, and it explains why a white roof helps keep the
-inside of a house cool. Similarly, the operation of a car’s ignition system as well as the transmission of electrical
-signals through our body’s nervous system are much easier to understand when you think about them in terms of
-basic physics.
-Physics is the foundation of many important disciplines and contributes directly to others. Chemistry, for
-example—since it deals with the interactions of atoms and molecules—is rooted in atomic and molecular physics.
-Most branches of engineering are applied physics. In architecture, physics is at the heart of structural stability, and
-is involved in the acoustics, heating, lighting, and cooling of buildings. Parts of geology rely heavily on physics, such
-as radioactive dating of rocks, earthquake analysis, and heat transfer in the Earth. Some disciplines, such as
-biophysics and geophysics, are hybrids of physics and other disciplines.
-Physics has many applications in the biological sciences. On the microscopic level, it helps describe the properties
-of cell walls and cell membranes (Figure 1.6 and Figure 1.7). On the macroscopic level, it can explain the heat, work,
-and power associated with the human body. Physics is involved in medical diagnostics, such as x-rays, magnetic
-resonance imaging (MRI), and ultrasonic blood flow measurements. Medical therapy sometimes directly involves
-physics; for example, cancer radiotherapy uses ionizing radiation. Physics can also explain sensory phenomena,
-such as how musical instruments make sound, how the eye detects color, and how lasers can transmit information.
-It is not necessary to formally study all applications of physics. What is most useful is knowledge of the basic laws of
-physics and a skill in the analytical methods for applying them. The study of physics also can improve your problem-
-solving skills. Furthermore, physics has retained the most basic aspects of science, so it is used by all of the
-sciences, and the study of physics makes other sciences easier to understand.
-8
-1 • Introduction: The Nature of Science and Physics
-Access for free at openstax.org
-
-FIGURE 1.4 The laws of physics help us understand how common appliances work. For example, the laws of physics can help explain how
-microwave ovens heat up food, and they also help us understand why it is dangerous to place metal objects in a microwave oven. (credit:
-MoneyBlogNewz)
-FIGURE 1.5 These two applications of physics have more in common than meets the eye. Microwave ovens use electromagnetic waves to
-heat food. Magnetic resonance imaging (MRI) also uses electromagnetic waves to yield an image of the brain, from which the exact location
-of tumors can be determined. (credit: Rashmi Chawla, Daniel Smith, and Paul E. Marik)
-FIGURE 1.6 Physics, chemistry, and biology help describe the properties of cell walls in plant cells, such as the onion cells seen here.
-(credit: Umberto Salvagnin)
-1.1 • Physics: An Introduction
-9
-
-FIGURE 1.7 An artist’s rendition of the structure of a cell membrane. Membranes form the boundaries of animal cells and are complex in
-structure and function. Many of the most fundamental properties of life, such as the firing of nerve cells, are related to membranes. The
-disciplines of biology, chemistry, and physics all help us understand the membranes of animal cells. (credit: Mariana Ruiz)
-Models, Theories, and Laws; The Role of Experimentation
-The laws of nature are concise descriptions of the universe around us; they are human statements of the underlying
-laws or rules that all natural processes follow. Such laws are intrinsic to the universe; humans did not create them
-and so cannot change them. We can only discover and understand them. Their discovery is a very human endeavor,
-with all the elements of mystery, imagination, struggle, triumph, and disappointment inherent in any creative effort.
-(See Figure 1.8 and Figure 1.9.) The cornerstone of discovering natural laws is observation; science must describe
-the universe as it is, not as we may imagine it to be.
-FIGURE 1.8 Isaac Newton (1642–1727) was very reluctant to publish his revolutionary work and had to be convinced to do so. In his later
-years, he stepped down from his academic post and became exchequer of the Royal Mint. He took this post seriously, inventing reeding (or
-creating ridges) on the edge of coins to prevent unscrupulous people from trimming the silver off of them before using them as currency.
-(credit: Arthur Shuster and Arthur E. Shipley: Britain’s Heritage of Science. London, 1917.)
-10
-1 • Introduction: The Nature of Science and Physics
-Access for free at openstax.org
-
-FIGURE 1.9 Marie Curie (1867–1934) sacrificed monetary assets to help finance her early research and damaged her physical well-being
-with radiation exposure. She is the only person to win Nobel prizes in both physics and chemistry. One of her daughters also won a Nobel
-Prize. (credit: Wikimedia Commons)
-We all are curious to some extent. We look around, make generalizations, and try to understand what we see—for
-example, we look up and wonder whether one type of cloud signals an oncoming storm. As we become serious
-about exploring nature, we become more organized and formal in collecting and analyzing data. We attempt greater
-precision, perform controlled experiments (if we can), and write down ideas about how the data may be organized
-and unified. We then formulate models, theories, and laws based on the data we have collected and analyzed to
-generalize and communicate the results of these experiments.
-A model is a representation of something that is often too difficult (or impossible) to display directly. While a model
-is justified with experimental proof, it is only accurate under limited situations. An example is the planetary model of
-the atom in which electrons are pictured as orbiting the nucleus, analogous to the way planets orbit the Sun. (See
-Figure 1.10.) We cannot observe electron orbits directly, but the mental image helps explain the observations we
-can make, such as the emission of light from hot gases (atomic spectra). Physicists use models for a variety of
-purposes. For example, models can help physicists analyze a scenario and perform a calculation, or they can be
-used to represent a situation in the form of a computer simulation. A theory is an explanation for patterns in nature
-that is supported by scientific evidence and verified multiple times by various groups of researchers. Some theories
-include models to help visualize phenomena, whereas others do not. Newton’s theory of gravity, for example, does
-not require a model or mental image, because we can observe the objects directly with our own senses. The kinetic
-theory of gases, on the other hand, is a model in which a gas is viewed as being composed of atoms and molecules.
-Atoms and molecules are too small to be observed directly with our senses—thus, we picture them mentally to
-understand what our instruments tell us about the behavior of gases.
-A law uses concise language to describe a generalized pattern in nature that is supported by scientific evidence and
-repeated experiments. Often, a law can be expressed in the form of a single mathematical equation. Laws and
-theories are similar in that they are both scientific statements that result from a tested hypothesis and are
-supported by scientific evidence. However, the designation law is reserved for a concise and very general statement
-that describes phenomena in nature, such as the law that energy is conserved during any process, or Newton’s
-second law of motion, which relates force, mass, and acceleration by the simple equation
-. A theory, in
-contrast, is a less concise statement of observed phenomena. For example, the Theory of Evolution and the Theory
-of Relativity cannot be expressed concisely enough to be considered a law. The biggest difference between a law
-and a theory is that a theory is much more complex and dynamic. A law describes a single action, whereas a theory
-explains an entire group of related phenomena. And, whereas a law is a postulate that forms the foundation of the
-scientific method, a theory is the end result of that process.
-Less broadly applicable statements are usually called principles (such as Pascal’s principle, which is applicable only
-in fluids), but the distinction between laws and principles often is not carefully made.
-1.1 
+The laws of nature are concise descriptions of the universe around us; they are human statements of the underlying laws or rules that all natural processes follow. Such laws are intrinsic to the universe; humans did not create them and so cannot change them. We can only discover and understand them. Their discovery is a very human endeavor, with all the elements of mystery, imagination, struggle, triumph, and disappointment inherent in any creative effort (Figures \(\PageIndex{7}\) and \(\PageIndex{8}\)). The cornerstone of discovering natural laws is observation; science must describe the universe as it is, not as we may imagine it to be.
+We all are curious to some extent. We look around, make generalizations, and try to understand what we see—for example, we look up and wonder whether one type of cloud signals an oncoming storm. As we become serious about exploring nature, we become more organized and formal in collecting and analyzing data. We attempt greater precision, perform controlled experiments (if we can), and write down ideas about how the data may be organized and unified. We then formulate models, theories, and laws based on the data we have collected and analyzed to generalize and communicate the results of these experiments.
+A model is a representation of something that is often too difficult (or impossible) to display directly. While a model is justified with experimental proof, it is only accurate under limited situations. An example is the planetary model of the atom in which electrons are pictured as orbiting the nucleus, analogous to the way planets orbit the Sun. (See Figure 9.) We cannot observe electron orbits directly, but the mental image helps explain the observations we can make, such as the emission of light from hot gases (atomic spectra). Physicists use models for a variety of purposes. For example, models can help physicists analyze a scenario and perform a calculation, or they can be used to represent a situation in the form of a computer simulation. A theory is an explanation for patterns in nature that is supported by scientific evidence and verified multiple times by various groups of researchers. Some theories include models to help visualize phenomena, whereas others do not. Newton’s theory of gravity, for example, does not require a model or mental image, because we can observe the objects directly with our own senses. The kinetic theory of gases, on the other hand, is a model in which a gas is viewed as being composed of atoms and molecules. 
+A law uses concise language to describe a generalized pattern in nature that is supported by scientific evidence and repeated experiments. Often, a law can be expressed in the form of a single mathematical equation. Laws and theories are similar in that they are both scientific statements that result from a tested hypothesis and are supported by scientific evidence. However, the designation law is reserved for a concise and very general statement that describes phenomena in nature, such as the law that energy is conserved during any process, or Newton’s second law of motion, which relates force, mass, and acceleration by the simple equation
+\[F =ma.\]
+A theory, in contrast, is a less concise statement of observed phenomena. For example, the Theory of Evolution and the Theory of Relativity cannot be expressed concisely enough to be considered a law. The biggest difference between a law and a theory is that a theory is much more complex and dynamic. A law describes a single action, whereas a theory explains an entire group of related phenomena. And, whereas a law is a postulate that forms the foundation of the scientific method, a theory is the end result of that process.
+Less broadly applicable statements are usually called principles (such as Pascal’s principle, which is applicable only in fluids), but the distinction between laws and principles often is not carefully made.
+MODELS, THEORIES, AND LAWS
+Models, theories, and laws are used to help scientists analyze the data they have already collected. However, often after a model, theory, or law has been developed, it points scientists toward new discoveries they would not otherwise have made.
+The models, theories, and laws we devise sometimes imply the existence of objects or phenomena as yet unobserved. These predictions are remarkable triumphs and tributes to the power of science. It is the underlying order in the universe that enables scientists to make such spectacular predictions. However, if experiment does not verify our predictions, then the theory or law is wrong, no matter how elegant or convenient it is. Laws can never be known with absolute certainty because it is impossible to perform every imaginable experiment in order to confirm a law in every possible scenario. Physicists operate under the assumption that all scientific laws and theories are valid until a counterexample is observed. If a good-quality, verifiable experiment contradicts a well-established law, then the law must be modified or overthrown completely.
+The study of science in general and physics in particular is an adventure much like the exploration of uncharted ocean. Discoveries are made; models, theories, and laws are formulated; and the beauty of the physical universe is made more sublime for the insights gained.
+THE SCIENTIFIC METHOD
+As scientists inquire and gather information about the world, 

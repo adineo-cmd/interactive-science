@@ -1,461 +1,218 @@
 # Source pack — subjects/environmental-engineering/foundational/water-chemistry-and-microbiology
 Lesson title: Water Chemistry and Microbiology
 Level: foundational
-Match confidence: 1.36
+Match confidence: 2.03
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.36 — ChemistryAtomsFirst2e-WEB § 16.1 Review of Redox Chemistry
+## Match 2.03 — LibreTexts: 2.4: A Close Look at Water Chemistry
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Bookshelves/Cell_and_Molecular_Biology/Book%3A_Basic_Cell_and_Molecular_Biology_(Bergtrom)/02%3A_Basic_Chemistry_Organic_Chemistry_and_Biochemistry/2.04%3A_A_Close_Look_at_Water_Chemistry
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe defining traits of redox chemistry
-•
-Identify the oxidant and reductant of a redox reaction
-•
-Balance chemical equations for redox reactions using the half-reaction method
-Since reactions involving electron transfer are essential to the topic of electrochemistry, a brief review of redox
-chemistry is provided here that summarizes and extends the content of an earlier text chapter (see chapter on
-reaction stoichiometry). Readers wishing additional review are referred to the text chapter on reaction
-stoichiometry.
-Oxidation Numbers
-By definition, a redox reaction is one that entails changes in oxidation number (or oxidation state) for one or
-more of the elements involved. The oxidation number of an element in a compound is essentially an
-assessment of how the electronic environment of its atoms is different in comparison to atoms of the pure
-element. By this description, the oxidation number of an atom in an element is equal to zero. For an atom in a
-compound, the oxidation number is equal to the charge the atom would have in the compound if the
-compound were ionic. Consequential to these rules, the sum of oxidation numbers for all atoms in a molecule
-is equal to the charge on the molecule. To illustrate this formalism, examples from the two compound classes,
-ionic and covalent, will be considered.
-Simple ionic compounds present the simplest examples to illustrate this formalism, since by definition the
-elements’ oxidation numbers are numerically equivalent to ionic charges. Sodium chloride, NaCl, is comprised
-of Na+ cations and Cl− anions, and so oxidation numbers for sodium and chlorine are, +1 and −1, respectively.
-Calcium fluoride, CaF2, is comprised of Ca2+ cations and F− anions, and so oxidation numbers for calcium and
-fluorine are, +2 and −1, respectively.
-Covalent compounds require a more challenging use of the formalism. Water is a covalent compound whose
-molecules consist of two H atoms bonded separately to a central O atom via polar covalent O−H bonds. The
-shared electrons comprising an O−H bond are more strongly attracted to the more electronegative O atom, and
-so it acquires a partial negative charge in the water molecule (relative to an O atom in elemental oxygen).
-Consequently, H atoms in a water molecule exhibit partial positive charges compared to H atoms in elemental
-hydrogen. The sum of the partial negative and partial positive charges for each water molecule is zero, and the
-water molecule is neutral.
-Imagine that the polarization of shared electrons within the O−H bonds of water were 100% complete—the
-result would be transfer of electrons from H to O, and water would be an ionic compound comprised of O2−
-anions and H+ cations. And so, the oxidations numbers for oxygen and hydrogen in water are −2 and +1,
-respectively. Applying this same logic to carbon tetrachloride, CCl4, yields oxidation numbers of +4 for carbon
-and −1 for chlorine. In the nitrate ion,
-, the oxidation number for nitrogen is +5 and that for oxygen is −2,
-summing to equal the 1− charge on the molecule:
-Balancing Redox Equations
-The unbalanced equation below describes the decomposition of molten sodium chloride:
-This reaction satisfies the criterion for redox classification, since the oxidation number for Na is decreased
-from +1 to 0 (it undergoes reduction) and that for Cl is increased from −1 to 0 (it undergoes oxidation). The
-equation in this case is easily balanced by inspection, requiring stoichiometric coefficients of 2 for the NaCl
-and Na:
-760
-16 • Electrochemistry
-Access for free at openstax.org
+2.4: A Close Look at Water Chemistry
+1. Hydrogen Bonds, the Polarity and Properties of Water
+Hydrogen bonds are a subcategory of electrostatic interaction (i.e., formed by the attraction of oppositely charges). As noted above, water molecules attract one another ( cohere ) because of strong electrostatic interactions that form H-bonds. Because of water’s polar covalent nature, it is able to attract positively and negatively charged groups of solutes, making it a good solvent. Solutes (water-soluble molecules) or molecular surfaces attracted to water are hydrophilic . Lipids like fats and oils are not polar molecules and therefore do not dissolve in water; they are hydrophobic (from hydro, water; phobic, fearing) .
+Soluble salts like NaCl dissolve because the Cl- and Na+ ions more strongly attract the partial positive and negative charges (respectively) of water molecules. The result is that the ions separate. We call this separation of salt ionization. The ionization of NaCl dissolving in water is shown below.
+Water is also a good solvent for macromolecules (proteins, nucleic acids) with exposed polar chemical groups on their surfaces that attract water molecules, as shown below.
+125 Water, Hydrogen & ionic Bonds
+In addition to being a good solvent, we recognize the following properties of water, all of which result from its polar nature and H-bonding abilities:
+- Cohesion : the ability of water molecules to stick together via H-bonds.
+- High Surface tension : water’s high cohesion means that it can be hard to break the surface; think the water strider, an insect that ‘walks’ on water.
+- Adhesion : this results from water’s electrostatic interactions with ions and the partial charges on polar covalent molecules or functional groups. Adhesion explains water’s solvent properties and (at least in part) capillary action where water molecules ‘crawl’ along hydrophilic surfaces, often against the force of gravity.
+- High specific heat : The cohesion of water molecules is so strong that it takes a lot of energy to separate the molecules and make them move faster, i.e., to heat water; specifically it takes 1 Kcal , (1 Calorie , with a capital C) to heat a gram of water 1oC. Incidentally, high specific heat also explains why water “holds its heat” (i.e., stays hotter longer that the pot that it’s in!).
+- High heat of vaporization : It takes even more energy per gram of water to turn it into water vapor!
+2. Water Ionization and pH
+One last property of water: it ionizes weakly to form H+ and OH- ions, - or more correctly, pairs of water molecules form H3O+ and OH- ions. You can think of this as happening in the following two reactions:
+Acid molecules added to water dissociate and release protons. This drives reaction #2, forming more H3O+ ions in the solution, in turn driving reaction #1 forward. A pH meter measures the relative acidity or concentration of protons in a solution. Acidic solutions have a pH below 7.0 (neutrality).
+Bases ionizing in water release OH- (hydroxyl) ions. The increase in OH- ions removes protons from the solution, driving both reaction in reverse and raising the pH of the solution.
+To summarize acid-base chemistry:
+When dissolved in water
+- Acids release H+
+- Bases accept H+
+Since the pH of a solution is the negative logarithm of the hydrogen ion concentration,
+PH and solution
+- at pH 7.0, a solution is neutral
+- below a pH of 7.0, a solution is acidic
+- above a pH of 7.0, a solution is basic
+Check a basic chemistry book to remind yourself of the relationship between pH and the [H+] in a solution!
 
-Redox reactions that take place in aqueous solutions are commonly encountered in electrochemistry, and
-many involve water or its characteristic ions, H+(aq) and OH−(aq), as reactants or products. In these cases,
-equations representing the redox reaction can be very challenging to balance by inspection, and the use of a
-systematic approach called the half-reaction method is helpful. This approach involves the following steps:
-1.
-Write skeletal equations for the oxidation and reduction half-reactions.
-2.
-Balance each half-reaction for all elements except H and O.
-3.
-Balance each half-reaction for O by adding H2O.
-4.
-Balance each half-reaction for H by adding H+.
-5.
-Balance each half-reaction for charge by adding electrons.
-6.
-If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal
-to the number produced in the other.
-7.
-Add the two half-reactions and simplify.
-8.
-If the reaction takes place in a basic medium, add OH− ions the equation obtained in step 7 to neutralize
-the H+ ions (add in equal numbers to both sides of the equation) and simplify.
-The examples below demonstrate the application of this method to balancing equations for aqueous redox
-reactions.
-EXAMPLE 16.1
-Balancing Equations for Redox Reactions in Acidic Solutions
-Write the balanced equation representing reaction between solid copper and nitric acid to yield aqueous
-copper(II) ions and nitrogen monoxide gas.
-Solution
-Following the steps of the half-reaction method:
-1.
-Write skeletal equations for the oxidation and reduction half-reactions.
-2.
-Balance each half-reaction for all elements except H and O.
-3.
-Balance each half-reaction for O by adding H2O.
-4.
-Balance each half-reaction for H by adding H+.
-5.
-Balance each half-reaction for charge by adding electrons.
-6.
-If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal
-to the number produced in the other.
-7.
-Add the two half-reactions and simplify.
-8.
-If the reaction takes place in a basic medium, add OH− ions the equation obtained in step 7 to neutralize
-the H+ ions (add in equal numbers to both sides of the equation) and simplify.
-16.1 • Review of Redox Chemistry
-761
+## Match 2.03 — LibreTexts: 1.2: Water Chemistry and Standards
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://workforce.libretexts.org/Bookshelves/Water_Systems_Technology/Water_151/01%3A_Chapters/1.02%3A_Water_Chemistry_and_Standards
 
-This step not necessary since the solution is stipulated to be acidic.
-The balanced equation for the reaction in an acidic solution is then
-Check Your Learning
-The reaction above results when using relatively diluted nitric acid. If concentrated nitric acid is used,
-nitrogen dioxide is produced instead of nitrogen monoxide. Write a balanced equation for this reaction.
-Answer:
-EXAMPLE 16.2
-Balancing Equations for Redox Reactions in Basic Solutions
-Write the balanced equation representing reaction between aqueous permanganate ion,
-, and solid
-chromium(III) hydroxide, Cr(OH)3, to yield solid manganese(IV) oxide, MnO2, and aqueous chromate ion,
-The reaction takes place in a basic solution.
-Solution
-Following the steps of the half-reaction method:
-1.
-Write skeletal equations for the oxidation and reduction half-reactions.
-2.
-Balance each half-reaction for all elements except H and O.
-3.
-Balance each half-reaction for O by adding H2O.
-4.
-Balance each half-reaction for H by adding H+.
-5.
-Balance each half-reaction for charge by adding electrons.
-6.
-If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal
-to the number produced in the other.
-This step is not necessary since the number of electrons is already in balance.
-7.
-Add the two half-reactions and simplify.
-8.
-If the reaction takes place in a basic medium, add OH− ions the equation obtained in step 7 to neutralize
-the H+ ions (add in equal numbers to both sides of the equation) and simplify.
-Check Your Learning
-Aqueous permanganate ion may also be reduced using aqueous bromide ion, Br−, the products of this reaction
-being solid manganese(IV) oxide and aqueous bromate ion, BrO3−. Write the balanced equation for this
-762
-16 • Electrochemistry
-Access for free at openstax.org
+1.2: Water Chemistry and Standards
+Learning Objectives
+After reading the chapter the student should be able to identify:
+- Matter, elements, and compounds
+- Public water systems: community and non-community
+- Primary and secondary standards
+- Water treatment violations
+- Volume math problems
+Water treatment is a complex process that involves parts that the human eye cannot see. In this chapter, you will learn about the basic scientific principals related to the water treatment. We will also discuss drinking water standards in the United States and different community standards.
+Matter, Elements, and Compounds
+Matter
+The smallest parts of an element are comprised of particles known as atoms. Even though they are so small, atoms still retain the characteristics of the element. Even with technological advancements, microscopes are still unable to capture atoms. The multiple arrangements of atoms make each element unique. The atom ever so small, is comprised of three particles known as the proton, neutron, and electron. Each particle is associated by different charges.
+- Proton-positive
+- Neutron-no charge
+- Electron- Negative charge
+The defining characteristic of an atom is identified by the proton. The proton, located in the nucleus, has a distinctive number. For example, carbon has six protons located in the nucleus. No other element has six protons in the nucleus. The number of protons is represented as the atomic number. The atomic weight is the number of protons and neutrons. The number of protons that exist for a given element is always the same, but the number of neutrons can vary. When there is a varying number of neutrons of a given element, it is known as an isotope. When an atom has a difference in electrons, it is called an ion. When the charges of the atom are not balanced, they become unstable. An atom that has more protons than neutrons is called a cation. An atom that has more electrons than protons is called an anion.
+Most common elements in the water treatment profession:
+- Aluminum (Al)
+- Antimony (Sb)
+- Arsenic (As)
+- Barium (Ba)
+- Beryllium (Be)
+- Boron (B)
+- Bromine (Br)
+- Cadmium (Cd)
+- Calcium (Ca)
+- Carbon (C)
+- Chlorine (Cl)
+- Chromium (Cr)
+- Copper (Cu)
+- Fluorine (F)
+- Hydrogen (H)
+- Iodine (I)
+- Iron (I)
+- Lead (Pb)
+- Magnesium (Mg)
+- Manganese (Mn)
+- Mercury (Mn)
+- Nickel (Ni)
+- Nitrogen (N)
+- Oxygen (O)
+- Phosphorus (P)
+- Potassium (K)
+- Radium (Ra)
+- Selenium (Se)
+- Silicon (Si)
+- Silver (Ag)
+- Sodium (Na)
+- Strontium (Sr)
+- Sulfur (S)
+- Thallium (Tl)
+There are elements that are pure in form, such as oxygen. Since elements are unstable, they often combine with other elements to form compounds. Water (H 2 O), for example, is a compound. It is a combination of two hydrogen atoms and one oxygen atom. A compound is two or more elements that are bonded together due to their attraction by reverse charges. The combining elements form a molecule. When two chemicals are mixed together without a chemical reaction it is called a mixture. The difference between a mixture and a compound is bonded together by a chemical reaction. A good example of a mixture is saltwater. The salt can be removed from the water through distillation. Water chemistry will be covered in greater detail in the Water Quality text and course.
+Drinking Water Standards
+The first drinking water standards created in the United States occurred in 1974 and were called the Safe Drinking Water Act (SDWA). The US EPA sets drinking Water Standards that all Water Municipalities must adhere to. Although States are able to come up with their own Standards, they must meet the minimum requirements set forth by the federal EPA. In California, drinking water standards are much more stringent than the federal requirements and therefore have primacy. As of 2014, the State regulatory group responsible for drinking water is the State Water Resources Control Board. Revisions to the safe drinking water act include approval techniques for treatment plants, specifying criteria for filtration of public water supplies, distinguishing different treatment techniques for surface and groundwater, and prohibiting lead products in drinking water systems. There are two sets of drinking water Standards identified as primary standards and secondary standards. Primary Standards affect human health and are mandated with Maximum Contaminant Levels (MCL). The MCL is the official safe level at which a human can consume the given contaminant without adverse health effects. Secondary Standards do not affect human health and are controlled with Maximum Contaminant Level Goals (MCLG). When a contaminant is reported, there is no such thing as zero. Levels are set to protect human health but are also set based on the best available technology. As technology improves MCL’s may be reexamined. Instrumentation to measure contaminant levels are not always capable of reading to absolute zero. Because of this, a Detection level for reporting is required.
+Public Water Systems
+There are three different categories of public water systems:
+- Community Public Water System: A community public water system has 15 or more service connections and serves at least 25 or more people year-round. These would include municipalities, mobile home parks, condos, and apartment buildings.
+- Nontransient, NonCommunity System: A nontransient, NonCommunity public water system owns its own system and serves an average of 25 people for at least six months. Schools, hospitals, and office buildings are included in this category.
+- Transient, NonCommunity System: A transient, NonCommunity public water system owns their own water system and serves an average of 25 people per day. In this category people consume the water for a short period of time. This category includes churches, parks, restaurants, and motels.
+Primary Drinking Water Standards are split into five categories. The categories include Inorganics, Organics, Turbidity, Microbiological, and Radiological.
+- Inorganics: Metals, Nitrate, and Fluoride
+- Organics: Pesticides, solvents, and Disinfectant byproducts (DBP’s)—The combination of Chlorine and natural organic material. This topic will be discussed in greater detail later in the text.
+- Turbidity: The cloudiness of the water. Turbidity has the ability to shield microbiological material.
+- Microbiological: Coliform testing (This will be covered in greater detail later in the text. Water operators do not test for specific microbiological agents. We test for the indicator organism coliform. They colonize in greater numbers so if a sample comes back positive there is a greater likelihood of fecal contamination.)
+- Radiological: Gross alpha, beta, and radon
+Secondary drinking water standards are solely based on the aesthetic quality of drinking water. The main focus of secondary standards is taste, odor, and color. A glass of water that smells like fish and is orange in color may be “safe” to drink but wouldn’t be well received or readily consumed. California, as well as some other states, has endorsable secondary standards.
+|
+Contaminant/characteristic |
+Recommended level |
+|---|---|
+|
+Aluminum |
+0.05 to 0.2 mg/L |
+|
+Chloride |
+250 mg/L |
+|
+Color |
+15 color units |
+|
+Copper |
+1 mg/L |
+|
+Corrosivity |
+Non-corrosive |
+|
+Fluoride |
+2 mg/L |
+|
+Foaming agents |
+0.5 mg/L |
+|
+Iron |
+0.3 mg/L |
+|
+Manganese |
+0.05 mg/L |
+|
+Odor |
+3 threshold odor number |
+|
+pH |
+6.5 to 8.5 |
+|
+Silver |
+0.10 mg/L |
+|
+Sulfate |
+250 mg/L |
+|
+Total dissolved solids |
+500 mg/L |
+|
+Zinc |
+5 mg/L |
+Source: Graph by the EPA is in the public domain
+Public Notification
+In the event that a treatment plant does not meet requirements of the SDWA, the public must be notified. There are three different tiers of notification with tier I being the worst of violations and tier III being the least. The EPA provides very specific language for public notifications in the event of a violation. Violating a SDWA compliance is bad enough, but failing to report violations brings even stiffer penalties and fines. In 2014 in Flint Michigan 15 people were criminally charged due to their negligence in the water treatment profession. It all started when the city of Flint changed their source water without properly testing. Officials knew the water was not safe to drink and numerous violations had been made. The public was not properly informed of these violations which resulted in 10 deaths and 77 others becoming severely ill. It is something that is rarely discussed because people in industrialized countries never really worry about the quality of their drinking water. The most important thing you can do as an operator is say something if there appears to be a problem with the quality of the drinking water. Otherwise, you may end up in jail. Notification options include radio or television announcements, newspapers, hand delivery, posting in public places, loudspeakers, texting, and reverse 911. The notification will vary based on the severity of the violation.
+Violations
+Tier I
+- Any positive fecal coliform positive test and failure to sample after an initial positive test
+- Nitrate or Nitrite violation
+- Chlorine Dioxide Maximum residual disinfection limit
+- Exceed treatment plants allowable turbidity level. Can be a tier II if the primacy agency does not elevate violation.
+- Waterborne emergency or outbreak of waterborne illness
+Tier II
+- MCL, MRDL and, Treatment Technique (TT) violations if treatment plant does not perform corrective actions to fix issues in treatment plant or fails to inform public.
+- Water quality monitoring violation—not taking required water quality samples. Can also be a tier III violation but can be elevated for gross negligence
+- Noncompliance of a variance or an exemption
+Tier III
+- Water testing and monitoring violation
+- Any time the treatment system is running under a variance or exception. Primacy agency may give a treatment plant a variance or exemption for a short period of time. The public notification is to inform the public that a water agency is not running in accordance with an approved treatment technique. It doesn’t mean the water is unsafe to drink, but the operating manuals are very specific.
+Water Quality monitoring
+Continuous monitoring of drinking water ensures quality; reliable drinking water is being delivered to the public. The number of samples taken, frequency of sampling, sampling location, testing procedures, and requirements for record-keeping are all specified by state and federal requirements. If sampling requirements are not met, it can lead to public notification. The tier violation is based on the contaminant and whether or not the contaminant causes acute health effects.
+The type of monitoring is based on the source of the water, the treatment technique, and the size of the system. Reporting and record keeping is based on the primacy agency’s regulations. The state regulations must meet federal requirements at a minimum but may be more stringent as is the case in California.
+Record Keeping
+Below is a list of records that must be kept and the amount of time the records must be retained on file.
+- Bacteriological and Turbidity—5 years
+- Chemical analysis—10 years
+- Corrective actions from violations—3 years
+- Sanitary surveys—10 years
+- Exemptions—5 years after expiration
+Variances and Exemptions
+In the event a water system is unable to meet a MCL because of the source water, a primacy agency can grant a variance or exemption. The variance is only given when the agency has incorporated the best available technology and there is zero risk to public health. In the case of Flint Michigan, the new source water was not properly tested before it was used in the system. Flint Water plant was unable to properly treat the source water which had elevated levels of lead and the City was not using the best available technology. Even if the City of Flint would have applied for a variance or exemption, it would not have been granted because the lead levels in the
 
-reaction occurring in a basic medium.
-Answer:
+## Match 1.40 — LibreTexts: 1.2.2: Applied Microbiology
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://bio.libretexts.org/Courses/Mansfield_University_of_Pennsylvania/BSC_3271%3A_Microbiology_for_Health_Sciences_Sp21_(Kagle)/01%3A_Introduction/1.02%3A_The_Science_of_Microbiology/1.2.02%3A_Applied_Microbiology
 
-## Match 1.36 — Chemistry2e-WEB § 17.1 Review of Redox Chemistry
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe defining traits of redox chemistry
-•
-Identify the oxidant and reductant of a redox reaction
-•
-Balance chemical equations for redox reactions using the half-reaction method
-Since reactions involving electron transfer are essential to the topic of electrochemistry, a brief review of redox
-chemistry is provided here that summarizes and extends the content of an earlier text chapter (see chapter on
-reaction stoichiometry). Readers wishing additional review are referred to the text chapter on reaction
-stoichiometry.
-Oxidation Numbers
-By definition, a redox reaction is one that entails changes in oxidation number (or oxidation state) for one or
-more of the elements involved. The oxidation number of an element in a compound is essentially an
-assessment of how the electronic environment of its atoms is different in comparison to atoms of the pure
-element. By this description, the oxidation number of an atom in an element is equal to zero. For an atom in a
-compound, the oxidation number is equal to the charge the atom would have in the compound if the
-compound were ionic. Consequential to these rules, the sum of oxidation numbers for all atoms in a molecule
-is equal to the charge on the molecule. To illustrate this formalism, examples from the two compound classes,
-ionic and covalent, will be considered.
-Simple ionic compounds present the simplest examples to illustrate this formalism, since by definition the
-elements’ oxidation numbers are numerically equivalent to ionic charges. Sodium chloride, NaCl, is comprised
-of Na+ cations and Cl− anions, and so oxidation numbers for sodium and chlorine are, +1 and −1, respectively.
-Calcium fluoride, CaF2, is comprised of Ca2+ cations and F− anions, and so oxidation numbers for calcium and
-fluorine are, +2 and −1, respectively.
-Covalent compounds require a more challenging use of the formalism. Water is a covalent compound whose
-molecules consist of two H atoms bonded separately to a central O atom via polar covalent O−H bonds. The
-shared electrons comprising an O−H bond are more strongly attracted to the more electronegative O atom, and
-so it acquires a partial negative charge in the water molecule (relative to an O atom in elemental oxygen).
-Consequently, H atoms in a water molecule exhibit partial positive charges compared to H atoms in elemental
-hydrogen. The sum of the partial negative and partial positive charges for each water molecule is zero, and the
-water molecule is neutral.
-Imagine that the polarization of shared electrons within the O−H bonds of water were 100% complete—the
-result would be transfer of electrons from H to O, and water would be an ionic compound comprised of O2−
-anions and H+ cations. And so, the oxidations numbers for oxygen and hydrogen in water are −2 and +1,
-respectively. Applying this same logic to carbon tetrachloride, CCl4, yields oxidation numbers of +4 for carbon
-and −1 for chlorine. In the nitrate ion,
-, the oxidation number for nitrogen is +5 and that for oxygen is −2,
-summing to equal the 1− charge on the molecule:
-Balancing Redox Equations
-The unbalanced equation below describes the decomposition of molten sodium chloride:
-This reaction satisfies the criterion for redox classification, since the oxidation number for Na is decreased
-from +1 to 0 (it undergoes reduction) and that for Cl is increased from −1 to 0 (it undergoes oxidation). The
-equation in this case is easily balanced by inspection, requiring stoichiometric coefficients of 2 for the NaCl
-and Na:
-818
-17 • Electrochemistry
-Access for free at openstax.org
-
-Redox reactions that take place in aqueous solutions are commonly encountered in electrochemistry, and
-many involve water or its characteristic ions, H+(aq) and OH−(aq), as reactants or products. In these cases,
-equations representing the redox reaction can be very challenging to balance by inspection, and the use of a
-systematic approach called the half-reaction method is helpful. This approach involves the following steps:
-1.
-Write skeletal equations for the oxidation and reduction half-reactions.
-2.
-Balance each half-reaction for all elements except H and O.
-3.
-Balance each half-reaction for O by adding H2O.
-4.
-Balance each half-reaction for H by adding H+.
-5.
-Balance each half-reaction for charge by adding electrons.
-6.
-If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal
-to the number produced in the other.
-7.
-Add the two half-reactions and simplify.
-8.
-If the reaction takes place in a basic medium, add OH− ions the equation obtained in step 7 to neutralize
-the H+ ions (add in equal numbers to both sides of the equation) and simplify.
-The examples below demonstrate the application of this method to balancing equations for aqueous redox
-reactions.
-EXAMPLE 17.1
-Balancing Equations for Redox Reactions in Acidic Solutions
-Write the balanced equation representing reaction between solid copper and nitric acid to yield aqueous
-copper(II) ions and nitrogen monoxide gas.
-Solution
-Following the steps of the half-reaction method:
-1.
-Write skeletal equations for the oxidation and reduction half-reactions.
-2.
-Balance each half-reaction for all elements except H and O.
-3.
-Balance each half-reaction for O by adding H2O.
-4.
-Balance each half-reaction for H by adding H+.
-5.
-Balance each half-reaction for charge by adding electrons.
-6.
-If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal
-to the number produced in the other.
-7.
-Add the two half-reactions and simplify.
-8.
-If the reaction takes place in a basic medium, add OH− ions the equation obtained in step 7 to neutralize
-the H+ ions (add in equal numbers to both sides of the equation) and simplify.
-17.1 • Review of Redox Chemistry
-819
-
-This step not necessary since the solution is stipulated to be acidic.
-The balanced equation for the reaction in an acidic solution is then
-Check Your Learning
-The reaction above results when using relatively diluted nitric acid. If concentrated nitric acid is used,
-nitrogen dioxide is produced instead of nitrogen monoxide. Write a balanced equation for this reaction.
-Answer:
-EXAMPLE 17.2
-Balancing Equations for Redox Reactions in Basic Solutions
-Write the balanced equation representing reaction between aqueous permanganate ion,
-, and solid
-chromium(III) hydroxide, Cr(OH)3, to yield solid manganese(IV) oxide, MnO2, and aqueous chromate ion,
-The reaction takes place in a basic solution.
-Solution
-Following the steps of the half-reaction method:
-1.
-Write skeletal equations for the oxidation and reduction half-reactions.
-2.
-Balance each half-reaction for all elements except H and O.
-3.
-Balance each half-reaction for O by adding H2O.
-4.
-Balance each half-reaction for H by adding H+.
-5.
-Balance each half-reaction for charge by adding electrons.
-6.
-If necessary, multiply one or both half-reactions so that the number of electrons consumed in one is equal
-to the number produced in the other.
-This step is not necessary since the number of electrons is already in balance.
-7.
-Add the two half-reactions and simplify.
-8.
-If the reaction takes place in a basic medium, add OH− ions the equation obtained in step 7 to neutralize
-the H+ ions (add in equal numbers to both sides of the equation) and simplify.
-Check Your Learning
-Aqueous permanganate ion may also be reduced using aqueous bromide ion, Br−, the products of this reaction
-being solid manganese(IV) oxide and aqueous bromate ion, BrO3−. Write the balanced equation for this
-820
-17 • Electrochemistry
-Access for free at openstax.org
-
-reaction occurring in a basic medium.
-Answer:
-
-## Match 1.36 — ChemistryAtomsFirst2e-WEB § 1.1 Chemistry in Context
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Outline the historical development of chemistry
-•
-Provide examples of the importance of chemistry in everyday life
-•
-Describe the scientific method
-•
-Differentiate among hypotheses, theories, and laws
-•
-Provide examples illustrating macroscopic, microscopic, and symbolic domains
-Throughout human history, people have tried to convert matter into more useful forms. Our Stone Age
-Figure 1.1
-Chemical substances and processes are essential for our existence, providing sustenance, keeping us
-clean and healthy, fabricating electronic devices, enabling transportation, and much more. (credit “left”:
-modification of work by “vxla”/Flickr; credit “left middle”: modification of work by “the Italian voice”/Flickr; credit
-“right middle”: modification of work by Jason Trim; credit “right”: modification of work by “gosheshe”/Flickr)
-CHAPTER OUTLINE
-
-ancestors chipped pieces of flint into useful tools and carved wood into statues and toys. These endeavors
-involved changing the shape of a substance without changing the substance itself. But as our knowledge
-increased, humans began to change the composition of the substances as well—clay was converted into
-pottery, hides were cured to make garments, copper ores were transformed into copper tools and weapons,
-and grain was made into bread.
-Humans began to practice chemistry when they learned to control fire and use it to cook, make pottery, and
-smelt metals. Subsequently, they began to separate and use specific components of matter. A variety of drugs
-such as aloe, myrrh, and opium were isolated from plants. Dyes, such as indigo and Tyrian purple, were
-extracted from plant and animal matter. Metals were combined to form alloys—for example, copper and tin
-were mixed together to make bronze—and more elaborate smelting techniques produced iron. Alkalis were
-extracted from ashes, and soaps were prepared by combining these alkalis with fats. Alcohol was produced by
-fermentation and purified by distillation.
-Attempts to understand the behavior of matter extend back for more than 2500 years. As early as the sixth
-century BC, Greek philosophers discussed a system in which water was the basis of all things. You may have
-heard of the Greek postulate that matter consists of four elements: earth, air, fire, and water. Subsequently, an
-amalgamation of chemical technologies and philosophical speculations was spread from Egypt, China, and the
-eastern Mediterranean by alchemists, who endeavored to transform “base metals” such as lead into “noble
-metals” like gold, and to create elixirs to cure disease and extend life (Figure 1.2).
-FIGURE 1.2
-(a) This portrayal shows an alchemist’s workshop circa 1580. Although alchemy made some useful
-contributions to how to manipulate matter, it was not scientific by modern standards. (b) While the equipment used
-by Alma Levant Hayden in this 1952 picture might not seem as sleek as you might find in a lab today, her approach
-was highly methodical and carefully recorded. A department head at the FDA, Hayden is most famous for exposing
-an aggressively marketed anti-cancer drug as nothing more than an unhelpful solution of common substances.
-(credit a: Chemical Heritage Foundation; b: NIH History Office)
-From alchemy came the historical progressions that led to modern chemistry: the isolation of drugs from
-natural sources, such as plants and animals. But while many of the substances extracted or processed from
-those natural sources were critical in the treatment of diseases, many were scarce. For example, progesterone,
-which is critical to women's health, became available as a medicine in 1935, but its animal sources produced
-extremely small quantities, limiting its availability and increasing its expense. Likewise, in the 1940s,
-cortisone came into use to treat arthritis and other disorders and injuries, but it took a 36-step process to
-synthesize. Chemist Percy Lavon Julian turned to a more plentiful source: soybeans. Previously, Julian had
-developed a lab to isolate soy protein, which was used in firefighting among other applications. He focused on
-using the soy sterols—substances mostly used in plant membranes—and was able to quickly produce
-progesterone and later testosterone and other hormones. He later developed a process to do the same for
-cortisone, and laid the groundwork for modern drug design. Since soybeans and similar plant sources were
-extremely plentiful, the drugs soon became widely available, saving many lives.
-10
-1 • Essential Ideas
-Access for free at openstax.org
-
-Chemistry: The Central Science
-Chemistry is sometimes referred to as “the central science” due to its interconnectedness with a vast array of
-other STEM disciplines (STEM stands for areas of study in the science, technology, engineering, and math
-fields). Chemistry and the language of chemists play vital roles in biology, medicine, materials science,
-forensics, environmental science, and many other fields (Figure 1.3). The basic principles of physics are
-essential for understanding many aspects of chemistry, and there is extensive overlap between many
-subdisciplines within the two fields, such as chemical physics and nuclear chemistry. Mathematics, computer
-science, and information theory provide important tools that help us calculate, interpret, describe, and
-generally make sense of the chemical world. Biology and chemistry converge in biochemistry, which is crucial
-to understanding the many complex factors and processes that keep living organisms (such as us) alive.
-Chemical engineering, materials science, and nanotechnology combine chemical principles and empirical
-findings to produce useful substances, ranging from gasoline to fabrics to electronics. Agriculture, food
-science, veterinary science, and brewing and wine making help provide sustenance in the form of food and
-drink to the world’s population. Medicine, pharmacology, biotechnology, and botany identify and produce
-substances that help keep us healthy. Environmental science, geology, oceanography, and atmospheric science
-incorporate many chemical ideas to help us better understand and protect our physical world. Chemical ideas
-are used to help understand the universe in astronomy and cosmology.
-FIGURE 1.3
-Knowledge of chemistry is central to understanding a wide range of scientific disciplines. This diagram
-shows just some of the interrelationships between chemistry and other fields.
-What are some changes in matter that are essential to daily life? Digesting and assimilating food, synthesizing
-polymers that are used to make clothing, containers, cookware, and credit cards, and refining crude oil into
-gasoline and other products are just a few examples. As you proceed through this course, you will discover
-many different examples of changes in the composition and structure of matter, how to classify these changes
-and how they occurred, their causes, the changes in energy that accompany them, and the principles and laws
-involved. As you learn about these things, you will be learning chemistry, the study of the composition,
-properties, and interactions of matter. The practice of chemistry is not limited to chemistry books or
-laboratories: It happens whenever someone is involved in changes in matter or in conditions that may lead to
-such changes.
-The Scientific Method
-Chemistry is a science based on observation and experimentation. Doing chemistry involves attempting to
-answer questions and explain observations in terms of the laws and theories of chemistry, using procedures
-that are accepted by the scientific community. There is no single route to answering a question or explaining
-an observation, but there is an aspect common to every approach: Each uses knowledge based on experiments
-that can be reproduced to verify the results. Some routes involve a hypothesis, a tentative explanation of
-1.1 • Chemistry in Context
-11
-
-observations that acts as a guide for gathering and checking information. A hypothesis is tested by
-experimentation, calculation, and/or comparison with the experiments of others and then refined as needed.
-Some hypotheses are attempts to explain the behavior that is summarized in laws. The laws of science
-summarize a vast number of experimental observations, and describe or predict some facet of the natural
-world. If such a hypothesis turns out to be capable of explaining a large body of experimental data, it can reach
-the status of a theory. Scientific theories are well-substantiated, comprehensive, testable explanations of
-particular aspects of nature. Theories are accepted because they provide satisfactory explanations, but they
-can be modified if new data become available. The path of discovery that leads from question and observation
-to law or hypothesis to theory, combined with experimental verification of the hypothesis and any necessary
-modification of the theory, is called the scientific method (Figure 1.4).
-FIGURE 1.4
-The scientific method follows a process similar to the one shown in this diagram. All the key
-components are shown, in roughly the right order. Scientific progress is seldom neat and clean: It requires open
-inquiry and the reworking of questions and ideas in response to findings.
-The Domains of Chemistry
-Chemists study and describe the behavior of matter and energy in three different domains: macroscopic,
-microscopic, and symbolic. These domains provide different ways of considering and describing chemical
-behavior.
-Macro is a Greek word that means “large.” The macroscopic domain is familiar to us: It is the realm of
-everyday things that are large enough to be sensed directly by human sight or touch. In daily life, this includes
-the food you eat and the breeze you feel on your face. The macroscopic domain includes everyday and
-laboratory chemistry, where we observe and measure physical and chemical properties such as density,
-solubility, and flammability.
-Micro comes from Greek and means “small.” The microscopic domain of chemistry is often visited in the
-imagination. Some aspects of the microscopic domain are visible through standard optical microscopes, for
-example, many biological cells. More sophisticated instruments are capable of imaging even smaller entities
-such as molecules and atoms (see Figure 1.5 (b)).
-However, most of the subjects in the microscopic domain of chemistry are too small to be seen even with the
-most advanced microscopes and may only be pictured in the mind. Other components of the microscopic
-12
-1 • Essential Ideas
-Access for free at openstax.org
-
-domain include ions and electrons, protons and neutrons, and chemical bonds, each of which is far too small
-to see.
-The symbolic domain contains the specialized language used to represent components of the macroscopic
-and microscopic domains. Chemical symbols (such as those used in the periodic table), chemical formulas,
-and chemical equations are part of the symbolic domain, as are graphs, drawings, and calculations. These
-symbols play an important role in chemistry because they help interpret the behavior of the macroscopic
-domain in terms of the components of the microscopic domain. One of the challenges for students learning
-chemistry is recognizing that the same symbols can represent different things in the macroscopic and
-microscopic domains, and one of the features that makes chemistry fascinating is the use of a domain that
-must be imagined to explain behavior in a domain that can be observed.
-A helpful way to understand the three domains is via the essential and ubiquitous substance of water. That
-water is a liquid at moderate temperatures, will freeze to form a solid at lower temperatures, and boil to form a
-gas at higher temperatures (Figure 1.5) are macroscopic observations. But some properties of water fall into
-the microscopic domain—what cannot be observed with the naked eye. The description of water as comprising
-two hydrogen atoms and one oxygen atom, and the explanation of freezing and boiling in terms of attractions
-between these molecules, is within the microscopic arena. The formula H2O, which can describe water at
-either the macroscopic or microscopic levels, is an example of the symbolic domain. The abbreviations (g) for
-gas, (s) for solid, and (l) for liquid are also symbolic.
-FIGURE 1.5
-(a) Moisture in the air, icebergs, and the ocean represent water in the macroscopic domain. (b) At the
-molecular level (microscopic domain), gas molecules are far apart and disorganized, solid water molecules are close
-together and organized, and liquid molecules are close together and disorganized. (c) The formula H2O symbolizes
-water, and (g), (s), and (l) symbolize its phases. Note that clouds are actually comprised of either very small liquid
-water droplets or solid water crystals; gaseous water in our atmosphere is not visible to the naked eye, although it
-may be sensed as humidity. (credit a: modification of work by “Gorkaazk”/Wikimedia Commons)
-1.1 • Chemistry in Context
-13
-
+1.2.2: Applied Microbiology
+The information gained by microbiologists can be applied to many medicinal and commercial endeavors.
+Learning Objectives
+- Explain applied microbiology
+Related Chapter Learning Outcomes:
+- Describe the field of microbiology
+- Appreciate the variety of impacts of microbes and microbiology on humans and the environment
+Key Points
+- Using knowledge gained by microbiologists studying microbes, several fields of applied microbiology have formed.
+- While food and medicinal applications are a big portion of applied microbiology, the study of microbes has lead to entire commercial industries which affect almost all aspects of human life.
+- There are a myriad of practical applications that microbiology contributes to, including several parts of food production and medicinal applications.
+Microbiology is the study of microbes, which affect almost every aspect of life on the earth. In addition, there are huge commercial and medicinal benefits in understanding microbes. The application of this understanding is known as applied microbiology. There are many different types of applied microbiology which can be briefly defined as follows:
+Medical Microbiology
+Medical microbiology is the study of the pathogenic microbes and the role of microbes in human illness. This includes the study of microbial pathogenesis and epidemiology and is related to the study of disease pathology and immunology.
+Pharmaceutical Microbiology
+The study of microorganisms that are related to the production of antibiotics, enzymes, vitamins, vaccines, and other pharmaceutical products. Pharmaceutical microbiology also studies the causes of pharmaceutical contamination and spoil.
+Industrial Microbiology
+The exploitation of microbes for use in industrial processes. Examples include industrial fermentation and waste-water treatment. Closely linked to the biotechnology industry. This field also includes brewing, an important application of microbiology.
+Microbial Biotechnology
+The manipulation of microorganisms at the genetic and molecular level to generate useful products.
+Food Microbiology and Dairy Microbiology
+The study of microorganisms causing food spoilage and food-borne illness. Microorganisms can also produce foods, for example by fermentation.
+Agricultural Microbiology
+The study of agriculturally relevant microorganisms. This field can be further classified into the following subfields:
+- Plant microbiology and plant pathology – The study of the interactions between microorganisms and plants and plant pathogens.
+- Soil microbiology – The study of those microorganisms that are found in soil.
+- Veterinary microbiology – The study of the role in microbes in veterinary medicine or animal taxonomy.
+Environmental microbiology
+The study of the function and diversity of microbes in their natural environments. This involves the characterization of key bacterial habitats such as the rhizosphere and phyllosphere, soil and groundwater ecosystems, open oceans or extreme environments (extremophiles). This field includes other branches of microbiology such as: microbial ecology (the role of microbes in ecosystems), geomicrobiology (interactions between microbes and their physical and chemical surroundings), microbial diversity, water microbiology (the study of those microorganisms that are found in water), aeromicrobiology (the study of airborne microorganisms) and epidemiology (the study of the incidence, spread, and control of disease). Bioremediation involves the application of microbial processes to remove pollutants from the environment.
+This is by no means an exhaustive list of the different types of applied microbiology, but gives an indication of the expansive variety of the field and some of the benefits these studies entail.

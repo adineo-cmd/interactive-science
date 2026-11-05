@@ -1,444 +1,127 @@
 # Source pack — subjects/illustration/foundational/drawing-as-illustration-s-root
 Lesson title: Drawing as Illustration's Root
 Level: foundational
-Match confidence: 1.03
+Match confidence: 1.37
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.03 — Biology2e-WEB_ICOFkGu § 25.3 Bryophytes
+## Match 1.37 — LibreTexts: 12: Charcoal Drawing
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://human.libretexts.org/Courses/University_of_the_Pacific/Drawing_-_An_Introduction_to_Studio_Drawing/12%3A_Charcoal_Drawing
 
-By the end of this section, you will be able to do the following:
-•
-Identify the main characteristics of bryophytes
-•
-Describe the distinguishing traits of liverworts, hornworts, and mosses
-•
-Chart the development of land adaptations in the bryophytes
-•
-Describe the events in the bryophyte lifecycle
-Bryophytes are the closest extant relatives of early terrestrial plants. The first bryophytes (liverworts) most likely appeared in the
-Ordovician period, about 450 million years ago. Because they lack lignin and other resistant structures, the likelihood of
-bryophytes forming fossils is rather small. Some spores protected by sporopollenin have survived and are attributed to early
-bryophytes. By the Silurian period (435 MYA), however, vascular plants had spread through the continents. This compelling fact
-is used as evidence that non-vascular plants must have preceded the Silurian period.
-More than 25,000 species of bryophytes thrive in mostly damp habitats, although some live in deserts. They constitute the major
-flora of inhospitable environments like the tundra, where their small size and tolerance to desiccation offer distinct advantages.
-They generally lack lignin and do not have actual tracheids (xylem cells specialized for water conduction). Rather, water and
-nutrients circulate inside specialized conducting cells. Although the term non-tracheophyte is more accurate, bryophytes are
-commonly called non-vascular plants.
-In a bryophyte, all the conspicuous vegetative organs—including the photosynthetic leaf-like structures, the thallus (“plant
-body”), stem, and the rhizoid that anchors the plant to its substrate—belong to the haploid organism or gametophyte. The male
-gametes formed by bryophytes swim with a flagellum, so fertilization is dependent on the presence of water. The bryophyte
-650
-Chapter 25 • Seedless Plants
-Access for free at openstax.org.
+12: Charcoal Drawing
+Charcoal
+Student Drawings in Charcoal. 2011
+Charcoal is arguably the oldest of drawing media used by humans going back over 20,000 years. It has several advantages over other drawing media. You can achieve a rich black at one end of the value scale. Also, it can be blended into the subtlest of tones, while also being able to be scrubbed into the paper so you can erase out the areas you want revealed. That is much like drawing in reverse! Using that technique, which I call a “reverse-out” drawing, you can achieve amazing results in a matter of a few hours at the drawing table. To use a graphite pencil and create a similar visual illusion would take days, instead of hours.
+Because of the subtleties of the medium, charcoal is a favorite of artists producing figurative drawings. Charcoal clubs were popular venues for professional and aspiring amateur artists to draw from the nude or partially draped model. Today, figure study sessions and classes are still available for artists to learn to draw human anatomy and to learn the aesthetics of this specialized art genre. Charcoal as a medium is a great choice for portraits and figurative work.
+The preferred erasers for charcoal drawing are the kneaded eraser and the white plastic eraser, each performing specific tasks. The kneaded eraser works well for subtle and detailed erasing when made into a point. Flattening out this eraser allows for broad areas to be lifted from the paper. The pressure from your hand or fingers determines the amount of the drawing removed. With enough practice, you can become adept at removing very specific area and amounts of the drawing with this eraser. It really is a versatile tool! The white plastic eraser can also be used for detail work if it is trimmed to the desired size and shape using a blade, and held in a brass ferulle. You can even draw with the eraser in this way. Of course, you can purchase a white plastic eraser that is in the shape of a pencil and use that to erase and draw as well. The white plastic eraser also is used for firm scrubbing of the charcoal to remove it. Again, another versatile tool for the artist with some specific uses.
+Student Reverse Out Charcoal Drawing (using kneaded and white plastic erasers). 2018
+Illustration using brushes and carbon dust (charcoal/Conté mixed powder). 1982
+Conté Pencils and Crayons
+Drawing demonstration. Conté (white and burnt sienna). 2008 - 2011 Demonstration drawing from live model. Conté. circa. 1995
+The characteristics of Conté are similar to charcoal, yet there are some differences that should be noted. The size of the Conté sticks is ideal for both drawing with the end, as well as drawing from the side of the stick. Conté comes in different levels of hardness as does charcoal. I prefer the softer sticks since I find it easier to get a range of tone and textures on the paper surface. Drawing directly with the sticks yields a drawing different from one that is blended and pushed into the paper with brushes, paper stumps, or blending tools. Conté is harder to erase than charcoal, yet is more permanent on the paper surface. Both charcoal and Conté benefit from using a fixative to help prevent smudging and lifting of the drawing. To protect and preserve a finished charcoal or Conté drawing, it is best to place it under glass after placing a properly sized cut mat around the drawing.
+Charcoal reverse out drawing by student. circa. 2015
+Variety of media with compressed charcoal jet black (on the right)
+Demonstration using compressed charcoal (some scrubbing and blending of the charcoal). circa. 2016
+Charcoal drawing demonstration (without blending). Conté. 2018
+Student Charcoal Drawing on Newsprint. 2012
+Charcoal student drawing. 1978
+Charcoal "Painting"
+Charcoal and pastels have a unique ability to appear as either a drawing, or as a painting depending on the application. The beautiful drawing above is more like a charcoal painting in the strokes and subtle shifts in value.
+Figure Drawing
+Drawing the human figure is a difficult task for beginning artists. The complexities of the forms may frustrate the student since the human body is all so familiar. We see our heads, hands, and feet regularly, but try to draw them accurately! A thorough study of the anatomy for artists helps to unlock the mysteries behind drawing this challenging subject.  Keep practicing and carefully observing the model. Make connections with the textbooks and other resources and your observations of the figure in the drawing studio. First learn to recognize the bony landmarks.  Study the human figure proportional systems associated with the male, female, and children. Do not neglect the most challenging areas of study – head, hands and feet. Devote extra practice time to drawing those parts of the body. Perfect practice makes perfect, so use reliable sources to help guide you in your figure studies.
+The quick gesture drawing is a staple of the figure drawing studio. In my drawing studio, drawings from the model are timed at 2:00 minute intervals, 5:00 minute intervals, 10 minutes, with a maximum of 20 minutes per model pose. Longer poses can combine 20 minute poses into 40, 60, 80 minutes combined as needed. The above drawing on the left is from the 5:00 minute poses. The drawing on the right demonstrates ways of using geometric shapes to better capture the quick gesture.
+The artists of the 1800s were often banned from drawing from nude models. Here are two charcoal drawings from that era.
+This is a longer drawing demonstration of about 40 minutes. Black and white Conté are used with a middle value of gray established by the paper. 2019
+20 minute drawing demonstration using Conté. 2019
+10 minute drawing demonstration using Conté. 2019
 
-embryo also remains attached to the parent plant, which protects and nourishes it. The sporophyte that develops from the
-embryo is barely noticeable. The sporangium—the multicellular sexual reproductive structure in which meiosis produces
-haploid spores—is present in bryophytes and absent in the majority of algae. This is also a characteristic of land plants.
-The bryophytes are divided into three phyla: the liverworts or Marchantiophyta, the hornworts or Anthocerotophyta, and the
-mosses or true Bryophyta.
-Liverworts
-Liverworts (Marchantiophyta) are currently classified as the plants most closely related to the ancestor of vascular plants that
-adapted to terrestrial environments. In fact, liverworts have colonized every terrestrial habitat on Earth and diversified to more
-than 7000 existing species (Figure 25.9). Lobate liverworts form a flat thallus, with lobes that have a vague resemblance to the
-lobes of the liver (Figure 25.10), which accounts for the name given to the phylum. Leafy liverworts have tiny leaflike structures
-attached to a stalk. Several leafy liverworts are shown in Figure 25.9.
-Figure 25.9 Liverworts. This 1904 drawing shows the variety of forms of Marchantiophyta.
-25.3 • Bryophytes
-651
+## Match 1.37 — LibreTexts: 3.5: Drawing Conclusions from Data
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/3.0/ · https://chem.libretexts.org/Bookshelves/General_Chemistry/Chem1_(Lower)/03%3A_Measuring_Matter/3.05%3A_Drawing_Conclusions_from_Data
 
-Figure 25.10 Liverwort gametophyte. A liverwort, Lunularia cruciata, displays its lobate, flat thallus. The organism in the photograph is in
-the gametophyte stage, but has not yet produced gametangia. Lunularia gametophytes produce crescent-shaped gemmae (circled), which
-contain asexual spores. The tiny white dots on the surface of the thallus are air pores.
-Openings in the thallus that allow the movement of gases may be observed in liverworts (Figure 25.10). However, these are not
-stomata, because they do not actively open and close by the action of guard cells. Instead, the thallus takes up water over its
-entire surface and has no cuticle to prevent desiccation, which explains their preferred wet habitats. Figure 25.11 represents the
-lifecycle of a lobate liverwort. Haploid spores germinate into flattened thalli attached to the substrate by thin, single-celled
-filaments. Stalk-like structures (gametophores) grow from the thallus and carry male and female gametangia, which may
-develop on separate, individual plants, or on the same plant, depending on the species. Flagellated male gametes develop within
-antheridia (male gametangia). The female gametes develop within archegonia (female gametangia). Once released, the male
-gametes swim with the aid of their flagella to an archegonium, and fertilization ensues. The zygote grows into a small
-sporophyte still contained in the archegonium. The diploid zygote will give rise, by meiosis, to the next generation of haploid
-spores, which can be disseminated by wind or water. In many liverworts, spore dispersal is facilitated by elaters—long single
-cells that suddenly change shape as they dry out and throw adjacent spores out of the spore capsule. Liverwort plants can also
-reproduce asexually, by the breaking of “branches” or the spreading of leaf fragments called gemmae. In this latter type of
-reproduction, the gemmae—small, intact, complete pieces of plant that are produced in a cup on the surface of the thallus
-(shown in Figure 25.11 and Figure 25.12)—are splashed out of the cup by raindrops. The gemmae then land nearby and develop
-into gametophytes.
-652
-Chapter 25 • Seedless Plants
-Access for free at openstax.org.
+3.5: Drawing Conclusions from Data
+Make sure you thoroughly understand the following essential ideas which have been presented above. It is especially important that you know the precise meanings of all the italicized terms in the context of this topic.
+- What is the deviation from the population mean , why can we not know its value, and why is it neverthless a fundamentally important quantity in statistics?
+- Sketch out a Gaussian curve , and label the two axes, showing on the x-axis the deviation from the mean in terms of standard deviations . Shade in the area corresponding to the 95.4-percent confidence level ,
+- State the meaning of a confidence interval and how it relates to the standard deviation on a plot of the Gaussian curve.
+- State the meaning of a confidence interval and how it relates to the standard deviation on a plot of the Gaussian curve .
+- What is the distinction between a confidence interval and the confidence level ?
+- Describe the circumstances when a Student's t statistic is useful.
+- Describe some of the major problems that can cause statistics to be erroneous or misleading.
+OK, you have collected your data, so what does it mean? This question commonly arises when measurements made on different samples yield different values. How well do measurements of mercury concentrations in ten cans of tuna reflect the composition of the factory's entire output? Why can't you just use the average of these measurements? How much better would the results of 100 such tests be? This final lesson on measurement will examine these questions and introduce you to some of the methods of dealing with data. This stuff is important not only for scientists, but also for any intelligent citizen who wishes to independently evaluate the flood of numbers served up by advertisers, politicians, "experts", and yes— by other scientists.
+The Standard Deviation
+Each of these sets has the same mean value of 40, but the "quality" of the set shown on the right is greater because the data points are less scattered; the precision of the result is greater.
+The quantitative measure of this precision is given by the standard deviation
+whose value works out to 28 and 7 for the two sets illustrated above. A data set containing only two values is far too small for a proper statistical analysis— you would not want to judge the average mercury content of canned tuna on the basis of only two samples, for instance. Suppose, then, for purposes of illustration, that we have accumulated many more data points but the standard deviations of the two sets remain at 28 and 7 as before. What conclusions can we draw about how close the mean value of 40 is likely to come to the "true value" (the population mean μ) in each case?
+Although we cannot ordinarily know the value of μ, we can assign to each data point x i a quantity ( x i – x m ) which we call the deviation from the [population] mean , an index of how far each data point differs from the elusive “true value”. We now divide this deviation from the mean by the standard deviation of the entire data set:
+If we plot the values of z that correspond to each data point, we obtain the following curves for the two data sets we are using as examples:
+Bear in mind that we cannot actually plot these curves from our experimental data points because we don't know the value of the population mean μ (if we did, there would be no need to make the measurements in the first place!), and we are unlikely to have enough data points to obtain a smooth curve anyway.
+We won’t attempt to prove it here, but the mathematical properties of a Gaussian curve are such that its shape depends on the scale of units along the x-axis and on the standard deviation of the corresponding data set. In other words, if we know the standard deviation of a data set, we can construct a plot of z that shows how the measurements would be distributed
+- if the number of observations is very large
+- if the different values are due only to random error
+An important corollary to the second condition is that if the data points do not approximate the shape of this curve, then it is likely that the sample is not representative, or that some complicating factor is involved. The latter often happens when a teacher plots a set of student exam scores, and gets a curve having two peaks instead of one— representing perhaps the two sub-populations of students who devote their time to studying and partying.
+This minor gem was devised by the statistician W.J. Youdan and appears in The visual display of quantitative information , an engaging book by Edward R. Tufte (Graphics Press, Cheshire CT, 1983).
+Confidence intervals
+Clearly, the sharper and more narrow the standard error curve for a set of measurement, the more likely it will be that any single observed value approximates the true value we are trying to find. Because the shape of the curve is determined by S , we can make quantitative predictions about the reliability of our data from its standard deviation. In particular, if we plot z as a function of the number of standard deviations from the mean (rather than as the number of absolute deviations from the mean as was done above), the shape of the curve depends only on the value of S . That is, the dependence on the particular units of measurement is removed.
+Moreover, it can be shown that if all measurement error is truly random, 68.3 percent (about two-thirds) of the data points will fall within one standard deviation of the population mean, while 95.4 percent of the observations will differ from the population mean by no more than two standard deviations. This is extremely important, because it allows us to express the reliability of a measurement quantitatively, in terms of confidence intervals .
+You might occasionally see or hear a news report stating that the results of a certain public opinion poll are considered reliable to within, say, 5%, “nineteen times out of twenty”. This is just another way of saying that the confidence interval in the poll is 95%, the standard deviation is about 2.5% of the stated result, and that there is no more than a 5% chance that an identical poll carried out on another set of randomly-selected individuals from the same population would yield a different result. This is as close to “the truth” as we can get in scientific measurements.
+Note carefully: Confidence interval (CI) and confidence level (CL) are not the same!
+A given CI (denoted by the shaded range of 18-33 ppm in the diagram) is always defined in relation to some particular CL; specifying the first without the second is meaningless. If the CI illustrated here is at the 90% CL, then a CI for a higher CL would be wider, while that for a smaller CL would encompass a smaller range of values.
+How the confidence level depends on the number of measurements
+The more measurements we make, the more likely will their average value approximate the true value. The width of the confidence interval (expressed in the actual units of measurement) is directly proportional to the standard deviation S and to the value of z (both of these terms are defined above). The confidence interval of a single measurement in terms these quantities and of the observed sample mean is given by:
+CI = x m + z S
+If n replicate measurements are made, the confidence interval becomes smaller:
+This relation is often used “in reverse”, that is, to determine how many replicate measurements n must be carried out in order to obtain a value within a desired confidence interval.
+As we pointed out above, any relation involving the quantity z (which the standard error curve is a plot of) is of limited use unless we have some idea of the value of the population mean μ. If we make a very large number of measurements (100 to 1000, for example), then we can expect that our observed sample mean approximates μ quite closely, so there is no difficulty.
+The shaded area in each plot shows the fraction of measurements that fall within two standard deviations (2 S ) of the "true" value (that is, the population mean μ). It is evident that the width of the confidence interval diminishes as the number of measurements becomes greater. This is basically a result of the fact that relatively large random errors tend to be less common than smaller ones, and are therefore less likely to cancel out if only a small number of measurements is made.
+Dealing with small data sets
+OK, so larger data sets are better than small ones. But what if it is simply not practical to measure the mercury content of 10,000 cans of tuna? Or if you were carrying out a forensic examination of a tiny chip of paint, you might have only enough sample (or enough time) to do two or three replicate analyses. There are two common ways of dealing with such a difficulty.
+One way of getting around this is to use pooled data ; that is, to rely on similar prior determinations, carried out on other comparable samples, to arrive at a standard deviation that is representative of this particular type of determination. The other common way of dealing with small numbers of replicate measurements is to look up, in a table, a quantity t , whose value depends on the number of measurements and on the desired confidence level. For example, for a confidence level of 95%, t would be 4.3 for three samples and 2.8 for five. The magnitude of the confidence interval is then given by
+CI = ± t S
+This procedure is not black magic, but is based on a careful analysis of the way that the Gaussian curve becomes distorted as the number of samples diminishes. Why was the t -test invented in a brewery? And why does it have such a funny name?
+Using statistical tests to make decisions
+Once we have obtained enough information on a given sample to evaluate parameters such as means and standard deviations, we are often faced with the necessity of comparing that sample (or the population it represents) with another sample or with some kind of a standard. The following sections paraphrase some of the typical questions that can be decided by statistical tests based on the quantities we have defined above. It is important to understand, however, that because we are treating the questions statistically, we can only answer them in terms of statistics— that is, to a given confidence level.
+The usual approach is to begin by assuming that the answer to any of the questions given below is “no” (this is called the null hypothesis ), and then use the appropriate statistical test to judge the validity of this hypothesis to the desired confidence level. Because our purpose here is to show you what can be done rather than how to do it, the following sections do not present formulas or example calculations, which are covered in most textbooks on analytical chemistry. You should concentrate here on trying to understand why questions of this kind are of importance.
+“Should I throw this measurement out?”
+That is, is it likely that something other than ordinary indeterminate error is responsible for this suspiciously different result? Anyone who collects data of almost any kind will occasionally be faced with this question. Very often, ordinary common sense will be sufficient, but if you need some help, two statistical tests, called the Q test and the T test, are widely employed for this purpose.
+We won’t describe them here, but both tests involve computing a quantity ( Q or T ) for a particular result by means of a simple formula, and then consulting a table to determine the likelihood that the value being questioned is a member of the population represented by the other values in the data set.
+“Does this met hod yield reliable results?"
+This must always be asked when trying a new method for the first time; it is essentially a matter of testing for determinate error. The answer can only be had by running the same procedure on a sample whose composition is known. The deviation of the mean value of the “known” x m from its true value μ is used to compute a Student'
 
-Figure 25.11 Reproductive cycle of liverworts. The life cycle of a typical lobate liverwort is shown. This image shows a liverwort in which
-antheridia and archegonia are produced on separate gametophytes. (credit: modification of work by Mariana Ruiz Villareal)
-Hornworts
-The defining characteristic of the hornworts (Anthocerotophyta) is the narrow, pipe-like sporophyte. Hornworts have colonized
-a variety of habitats on land, although they are never far from a source of moisture. The short, blue-green gametophyte is the
-dominant phase of the life cycle of a hornwort. The sporophytes emerge from the parent gametophyte and continue to grow
-throughout the life of the plant (Figure 25.12).
-Figure 25.12 Hornwort sporophytes. Hornworts grow a tall and slender sporophyte. (credit: modification of work by Jason Hollinger)
-Stomata (air pores that can be opened and closed) appear in the hornworts and are abundant on the sporophyte. Photosynthetic
-cells in the thallus each contain a single chloroplast. Meristem cells at the base of the plant keep dividing and adding to the
-height of the sporophyte. This growth pattern is unique to the hornworts. Many hornworts establish symbiotic relationships
-25.3 • Bryophytes
-653
+## Match 1.04 — LibreTexts: 4.10: Illustration
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://human.libretexts.org/Courses/Lumen_Learning/English_Composition_I_(Lumen)/04%3A_Writing_in_College/4.10%3A_Illustration
 
-with cyanobacteria that fix nitrogen from the environment.
-The lifecycle of hornworts (Figure 25.13) follows the general pattern of alternation of generations. The gametophytes grow as flat
-thalli on the soil with embedded male and female gametangia. Flagellated sperm swim to the archegonia and fertilize eggs. The
-zygote develops into a long and slender sporophyte that eventually splits open down the side, releasing spores. Thin branched
-cells called pseudoelaters surround the spores and help propel them farther in the environment. The haploid spores germinate
-and give rise to the next generation of gametophytes.
-Figure 25.13 Reproductive cycle of hornworts. The alternation of generation in hornworts is shown. (credit: modification of work by
-“Smith609”/Wikimedia Commons based on original work by Mariana Ruiz Villareal)
-Mosses
-The mosses are the most numerous of the non-vascular plants. More than 10,000 species of mosses have been catalogued. Their
-habitats vary from the tundra, where they are the main vegetation, to the understory of tropical forests. In the tundra, the
-mosses’ shallow rhizoids allow them to fasten to a substrate without penetrating the frozen soil. Mosses slow down erosion,
-store moisture and soil nutrients, and provide shelter for small animals as well as food for larger herbivores, such as the musk
-ox. Mosses are very sensitive to air pollution and are used to monitor air quality. They are also sensitive to copper salts, so these
-salts are a common ingredient of compounds marketed to eliminate mosses from lawns.
-Mosses form diminutive gametophytes, which are the dominant phase of the lifecycle. Green, flat structures with a simple
-midrib—resembling true leaves, but lacking stomata and vascular tissue—are attached in a spiral to a central stalk. Mosses have
-stomata only on the sporophyte. Water and nutrients are absorbed directly through the leaflike structures of the gametophyte.
-Some mosses have small branches. A primitive conductive system that carries water and nutrients runs up the gametophyte's
-stalk, but does not extend into the leaves. Additionally, mosses are anchored to the substrate—whether it is soil, rock, or roof
-tiles—by multicellular rhizoids, precursors of roots. They originate from the base of the gametophyte, but are not the major
-route for the absorption of water and minerals. The lack of a true root system explains why it is so easy to rip moss mats from a
-tree trunk. The mosses therefore occupy a threshold position between other bryophytes and the vascular plants.
-The moss lifecycle follows the pattern of alternation of generations as shown in Figure 25.14. The most familiar structure is the
-haploid gametophyte, which germinates from a haploid spore and forms first a protonema—usually, a tangle of single-celled
-filaments that hug the ground. Cells akin to an apical meristem actively divide and give rise to a gametophore, consisting of a
-photosynthetic stem and foliage-like structures. Male and female gametangia develop at the tip of separate gametophores. The
-654
-Chapter 25 • Seedless Plants
-Access for free at openstax.org.
-
-antheridia (male organs) produce many sperm, whereas the archegonia (the female organs) each form a single egg at the base
-(venter) of a flask-shaped structure. The archegonium produces attractant substances and at fertilization, the sperm swims
-down the neck to the venter and unites with the egg inside the archegonium. The zygote, protected by the archegonium, divides
-and grows into a sporophyte, still attached by its foot to the gametophyte.
-VISUAL CONNECTION
-Figure 25.14 Reproductive cycle of mosses. This illustration shows the life cycle of mosses. (credit: modification of work by Mariana Ruiz
-Villareal)
-Which of the following statements about the moss life cycle is false?
-a.
-The mature gametophyte is haploid.
-b.
-The sporophyte produces haploid spores.
-c.
-The calyptra buds to form a mature gametophyte.
-d.
-The zygote is housed in the venter.
-The moss sporophyte is dependent on the gametophyte for nutrients. The slender seta (plural, setae), as seen in Figure 25.15,
-25.3 • Bryophytes
-655
-
-contains tubular cells that transfer nutrients from the base of the sporophyte (the foot) to the sporangium or capsule.
-Figure 25.15 Moss sporophyte. This photograph shows the long slender stems, called setae, connected to capsules of the moss
-Thamnobryum alopecurum. The operculum and remnants of the calyptra are visible in some capsules. (credit: modification of work by
-Hermann Schachner)
-Spore mother cells in the sporangium undergo meiosis to produce haploid spores. The sporophyte has several features that
-protect the developing spores and aid in their dispersal. The calyptra, derived from the walls of the archegonium, covers the
-sporangium. A structure called the operculum is at the tip of the spore capsule. The calyptra and operculum fall off when the
-spores are ready for dispersal. The peristome, tissue around the mouth of the capsule, is made of triangular, close-fitting units
-like little “teeth.” The peristome opens and closes, depending on moisture levels, and periodically releases spores.
-
-## Match 1.02 — OrganicChemistry-SAMPLE_9ADraVJ § 2.6 Drawing Resonance Forms
-
-Look back at the resonance forms of the acetate ion and the acetone anion shown in the previous section. The
-pattern seen there is a common one that leads to a useful technique for drawing resonance forms. In general,
-any three-atom grouping with a p orbital on each atom has two resonance forms:
-The atoms X, Y, and Z in the general structure might be C, N, O, P, S, or others, and the asterisk (*) might mean
-that the p orbital on atom Z is vacant, that it contains a single electron, or that it contains a lone pair of electrons.
-The two resonance forms differ simply by an exchange in position of the multiple bond and the asterisk from
-one end of the three-atom grouping to the other.
-By learning to recognize such three-atom groupings within larger structures, resonance forms can be
-systematically generated. Look, for instance, at the anion produced when H+ is removed from 2,4-pentanedione
-by reaction with a base. How many resonance structures does the resultant anion have?
-46
-2 • Polar Covalent Bonds; Acids and Bases
-Access for free at openstax.org
-
-The 2,4-pentanedione anion has a lone pair of electrons and a formal negative charge on the central carbon
-atom, next to a
-bond on the left. The
-grouping is a typical one for which two resonance
-structures can be drawn.
-Just as there is a
-bond to the left of the lone pair, there is a second
-bond to the right. Thus, we can
-draw a total of three resonance structures for the 2,4-pentanedione anion.
-WORKED EXAMPLE 2.2
-Drawing Resonance Forms for an Anion
-Draw three resonance structures for the carbonate ion, CO32–.
-Strategy
-Look for three-atom groupings that contain a multiple bond next to an atom with a p orbital. Then exchange the
-positions of the multiple bond and the electrons in the p orbital. In the carbonate ion, each singly bonded oxygen
-atom with three lone pairs and a negative charge is adjacent to the
-double bond, giving the grouping
-.
-Solution
-Exchanging the position of the double bond and an electron lone pair in each grouping generates three
-resonance structures.
-WORKED EXAMPLE 2.3
-Drawing Resonance Forms for a Radical
-Draw three resonance forms for the pentadienyl radical, where a radical is a substance that contains a single,
-unpaired electron in one of its orbitals, denoted by a dot (·).
-2.6 • Drawing Resonance Forms
-47
-
-Strategy
-Find the three-atom groupings that contain a multiple bond next to an atom with a p orbital.
-Solution
-The unpaired electron is on a carbon atom next to a
-bond, giving a typical three-atom grouping that has
-two resonance forms.
-In the second resonance form, the unpaired electron is next to another double bond, giving another three-atom
-grouping and leading to another resonance form.
-Thus, the three resonance forms for the pentadienyl radical are:
-PROBLEM
-2-9
-Which of the following pairs of structures represent resonance forms, and which do not? Explain.
-(a)
-(b)
-PROBLEM
-2-10
-Draw the indicated number of resonance forms for each of the following substances:
-(a) The methyl phosphate anion, CH3OPO32– (3)
-(b) The nitrate anion, NO3– (3)
-(c)
-The allyl cation, H2C CH–CH2+ (2)
-(d) The benzoate anion (4)
-2.7 Acids and Bases: The Brønsted–Lowry Definition
-Perhaps the most important of all concepts related to electronegativity and polarity is that of acidity and
-basicity. We’ll soon see, in fact, that the acid–base behavior of organic molecules explains much of their
-48
-2 • Polar Covalent Bonds; Acids and Bases
-Access for free at openstax.org
-
-chemistry. You may recall from a course in general chemistry that two definitions of acidity are frequently used:
-the Brønsted–Lowry definition and the Lewis definition. We’ll look at the Brønsted–Lowry definition in this and
-the following three sections and then discuss the Lewis definition in Section 2.11.
-A Brønsted–Lowry acid is a substance that donates a hydrogen ion, H+, and a Brønsted–Lowry base is a
-substance that accepts a hydrogen ion. (The name proton is often used as a synonym for H+ because loss of
-the valence electron from a neutral hydrogen atom leaves only the hydrogen nucleus—a proton.) When gaseous
-hydrogen chloride dissolves in water, for example, a polar HCl molecule acts as an acid and donates a proton,
-while a water molecule acts as a base and accepts the proton, yielding chloride anion (Cl–) and hydronium
-cation (H3O+). This and other acid–base reactions are reversible, so we’ll write them with double, forward-and-
-backward arrows.
-Chloride ion, the product that results when the acid HCl loses a proton, is called the conjugate base of the acid,
-and hydronium ion, the product that results when the base H2O gains a proton, is called the conjugate acid of
-the base. Other common mineral acids such as H2SO4 and HNO3 behave similarly, as do organic acids such as
-acetic acid, CH3CO2H.
-In a general sense,
-For example:
-Notice that water can act either as an acid or as a base, depending on the circumstances. In its reaction with
-HCl, water is a base that accepts a proton to give the hydronium ion, H3O+. In its reaction with ammonia (NH3),
-however, water is an acid that donates a proton to give ammonium ion (NH4+) and hydroxide ion, HO–.
-PROBLEM
-2-11
-Nitric acid (HNO3) reacts with ammonia (NH3) to yield ammonium nitrate. Write the reaction, and
-identify the acid, the base, the conjugate acid product, and the conjugate base product.
-
-## Match 1.01 — UniversityPhysicsVol1-WEB § 5.7 Drawing Free-Body Diagrams
-
-When you drive across a bridge, you expect it to remain stable. You also expect to speed up
-or slow your car in response to traffic changes. In both cases, you deal with forces. The forces on the bridge are
-in equilibrium, so it stays in place. In contrast, the force produced by your car engine causes a change in
-motion. Isaac Newton discovered the laws of motion that describe these situations.
-Forces affect every moment of your life. Your body is held to Earth by force and held together by the forces of
-Figure 5.1
-The Golden Gate Bridge, one of the greatest works of modern engineering, was the longest suspension
-bridge in the world in the year it opened, 1937. It is still among the 10 longest suspension bridges as of this writing.
-In designing and building a bridge, what physics must we consider? What forces act on the bridge? What forces keep
-the bridge from falling? How do the towers, cables, and ground interact to maintain stability?
-Chapter Outline
-
-charged particles. When you open a door, walk down a street, lift your fork, or touch a baby’s face, you are
-applying forces. Zooming in deeper, your body’s atoms are held together by electrical forces, and the core of
-the atom, called the nucleus, is held together by the strongest force we know—strong nuclear force.
-5.1 Forces
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Distinguish between kinematics and dynamics
-•
-Understand the definition of force
-•
-Identify simple free-body diagrams
-•
-Define the SI unit of force, the newton
-•
-Describe force as a vector
-The study of motion is called kinematics, but kinematics only describes the way objects move—their velocity
-and their acceleration. Dynamics is the study of how forces affect the motion of objects and systems. It
-considers the causes of motion of objects and systems of interest, where a system is anything being analyzed.
-The foundation of dynamics are the laws of motion stated by Isaac Newton (1642–1727). These laws provide an
-example of the breadth and simplicity of principles under which nature functions. They are also universal laws
-in that they apply to situations on Earth and in space.
-Newton’s laws of motion were just one part of the monumental work that has made him legendary (Figure 5.2).
-The development of Newton’s laws marks the transition from the Renaissance to the modern era. Not until the
-advent of modern physics was it discovered that Newton’s laws produce a good description of motion only
-when the objects are moving at speeds much less than the speed of light and when those objects are larger
-than the size of most molecules (about
-m in diameter). These constraints define the realm of Newtonian
-mechanics. At the beginning of the twentieth century, Albert Einstein (1879–1955) developed the theory of
-relativity and, along with many other scientists, quantum mechanics. Quantum mechanics does not have the
-constraints present in Newtonian physics. All of the situations we consider in this chapter, and all those
-preceding the introduction of relativity in Relativity, are in the realm of Newtonian physics.
-Figure 5.2
-Isaac Newton (1642–1727) published his amazing work, Philosophiae Naturalis Principia Mathematica, in 1687. It proposed
-scientific laws that still apply today to describe the motion of objects (the laws of motion). Newton also discovered the law of gravity,
-invented calculus, and made great contributions to the theories of light and color.
-196
-5 • Newton's Laws of Motion
-Access for free at openstax.org.
-
-Working Definition of Force
-Dynamics is the study of the forces that cause objects and systems to move. To understand this, we need a
-working definition of force. An intuitive definition of force—that is, a push or a pull—is a good place to start. We
-know that a push or a pull has both magnitude and direction (therefore, it is a vector quantity), so we can
-define force as the push or pull on an object with a specific magnitude and direction. Force can be represented
-by vectors or expressed as a multiple of a standard force.
-The push or pull on an object can vary considerably in either magnitude or direction. For example, a cannon
-exerts a strong force on a cannonball that is launched into the air. In contrast, Earth exerts only a tiny
-downward pull on a flea. Our everyday experiences also give us a good idea of how multiple forces add. If two
-people push in different directions on a third person, as illustrated in Figure 5.3, we might expect the total
-force to be in the direction shown. Since force is a vector, it adds just like other vectors. Forces, like other
-vectors, are represented by arrows and can be added using the familiar head-to-tail method or trigonometric
-methods. These ideas were developed in Vectors.
-Figure 5.3
-(a) An overhead view of two ice skaters pushing on a third skater. Forces are vectors and add like other vectors, so the total
-force on the third skater is in the direction shown. (b) A free-body diagram representing the forces acting on the third skater.
-Figure 5.3(b) is our first example of a free-body diagram, which is a sketch showing all external forces acting
-on an object or system. The object or system is represented by a single isolated point (or free body), and only
-those forces acting on it that originate outside of the object or system—that is, external forces—are shown.
-(These forces are the only ones shown because only external forces acting on the free body affect its motion.
-We can ignore any internal forces within the body.) The forces are represented by vectors extending outward
-from the free body.
-Free-body diagrams are useful in analyzing forces acting on an object or system, and are employed extensively
-in the study and application of Newton’s laws of motion. You will see them throughout this text and in all your
-studies of physics. The following steps briefly explain how a free-body diagram is created; we examine this
-strategy in more detail in Drawing Free-Body Diagrams.
-PROBLEM-SOLVING STRATEGY
-Drawing Free-Body Diagrams
-1.
-Draw the object under consideration. If you are treating the object as a particle, represent the object as a
-point. Place this point at the origin of an xy-coordinate system.
-2.
-Include all forces that act on the object, representing these forces as vectors. However, do not include the
-net force on the object or the forces that the object exerts on its environment.
-3.
-Resolve all force vectors into x- and y-components.
-4.
-Draw a separate free-body diagram for each object in the problem.
-5.1 • Forces
-197
-
-We illustrate this strategy with two examples of free-body diagrams (Figure 5.4). The terms used in this figure
-are explained in more detail later in the chapter.
-Figure 5.4
-In these free-body diagrams,
-is the normal force,
-is the weight of the object, and
-is the friction.
-The steps given here are sufficient to guide you in this important problem-solving strategy. The final section of
-this chapter explains in more detail how to draw free-body diagrams when working with the ideas presented in
-this chapter.
-Development of the Force Concept
-A quantitative definition of force can be based on some standard force, just as distance is measured in units
-relative to a standard length. One possibility is to stretch a spring a certain fixed distance (Figure 5.5) and use
-the force it exerts to pull itself back to its relaxed shape—called a restoring force—as a standard. The
-magnitude of all other forces can be considered as multiples of this standard unit of force. Many other
-possibilities exist for standard forces. Some alternative definitions of force will be given later in this chapter.
-Figure 5.5
-The force exerted by a stretched spring can be used as a standard unit of force. (a) This spring has a length x when undistorted.
-(b) When stretched a distance
-, the spring exerts a restoring force
-which is reproducible. (c) A spring scale is one device that
-uses a spring to measure force. The force
-is exerted on whatever is attached to the hook. Here, this force has a magnitude of six
-units of the force standard being employed.
-Let’s analyze force more deeply. Suppose a physics student sits at a table, working diligently on his homework
-(Figure 5.6). What external forces act on him? Can we determine the origin of these forces?
-198
-5 • Newton's Laws of Motion
-Access for free at openstax.org.
-
-Figure 5.6
-(a) The forces acting on the student are due to the chair, the table, the floor, and Earth’s gravitational attraction. (b) In solving a
-problem involving the student, we may want to consider only the forces acting along the line running through his torso. A free-body diagram
-for this situation is shown.
-In most situations, forces are grouped into two categories: contact forces and field forces. As you might guess,
-contact forces are due to direct physical contact between objects. For example, the student in Figure 5.6
-experiences the contact forces
-,
-, and
-, which are exerted by the chair on his posterior, the floor on his feet,
-and the table on his forearms, respectively. Field forces, however, act without the necessity of physical contact
-between objects. They depend on the presence of a “field” in the region of space surrounding the body under
-consideration. Since the student is in Earth’s gravitational field, he feels a gravitational force
-; in other words,
-he has weight.
-You can think of a field as a property of space that is detectable by the forces it exerts. Scientists think there are
-only four fundamental force fields in nature. These are the gravitational, electromagnetic, strong nuclear, and
-weak fields (we consider these four forces in nature later in this text). As noted for
-in Figure 5.6, the
-gravitational field is responsible for the weight of a body. The forces of the electromagnetic field include those
-of static electricity and magnetism; they are also responsible for the attraction among atoms in bulk matter.
-Both the strong nuclear and the weak force fields are effective only over distances roughly equal to a length of
-scale no larger than an atomic nucleus (
-). Their range is so small that neither field has influence in the
-macroscopic world of Newtonian mechanics.
-Contact forces are fundamentally electromagnetic. While the elbow of the student in Figure 5.6 is in contact
-with the tabletop, the atomic charges in his skin interact electromagnetically with the charges in the surface of
-the table. The net (total) result is the force
-. Similarly, when adhesive tape sticks to a piece of paper, the atoms
-of the tape are intermingled with those of the paper to cause a net electromagnetic force between the two
-objects. However, in the context of Newtonian mechanics, the electromagnetic origin of contact forces is not an
-important concern.
-Vector Notation for Force
-As previously discussed, force is a vector; it has both magnitude and direction. The SI unit of force is called the
-newton (abbreviated N), and 1 N is the force needed to accelerate an object with a mass of 1 kg at a rate of
-:
-An easy way to remember the size of a newton is to imagine holding a small apple; it
-has a weight of about 1 N.
-We can thus describe a two-dimensional force in the form
-(the unit vectors
-indicate the
-5.1 • Forces
-199
-
-direction of these forces along the x-axis and the y-axis, respectively) and a three-dimensional force in the
-form
-In Figure 5.3, let’s suppose that ice skater 1, on the left side of the figure, pushes
-horizontally with a force of 30.0 N to the right; we represent this as
-Similarly, if ice skater 2
-pushes with a force of 40.0 N in the positive vertical direction shown, we would write
-The
-resultant of the two forces causes a mass to accelerate—in this case, the third ice skater. This resultant is called
-the net external force
-and is found by taking the vector sum of all external forces acting on an object or
-system (thus, we can also represent net external force as
-):
-This equation can be extended to any number of forces.
-In this example, we have
-. The hypotenuse of the triangle shown in
-Figure 5.3 is the resultant force, or net force. It is a vector. To find its magnitude (the size of the vector, without
-regard to direction), we use the rule given in Vectors, taking the square root of the sum of the squares of the
-components:
-The direction is given by
-measured from the positive x-axis, as shown in the free-body diagram in Figure 5.3(b).
-Let’s suppose the ice skaters now push the third ice skater with
-and
-.
-What is the resultant of these two forces? We must recognize that force is a vector; therefore, we must add
-using the rules for vector addition:
-CHECK YOUR UNDERSTANDING 5.1
-Find the magnitude and direction of the net force in the ice skater example just given.
-INTERACTIVE
-View this interactive simulation (https://openstax.org/l/21addvectors) to learn how to add vectors. Drag vectors
-onto a graph, change their length and angle, and sum them together. The magnitude, angle, and components of
-each vector can be displayed in several formats.
+4.10: Illustration
+- Describe techniques for illustrating a point
+Illustration is a rhetorical style that uses examples to support the thesis or main idea of a paragraph or essay. Don’t confuse illustration with the use of pictures, although we will be discussing later how visual images can be used effectively in multimedia writing. Illustration is most often used at the paragraph level to help illustrate or support a point, but you may also encounter illustration essays of various types in your college courses.
+In an illustration essay or a paragraph that employs illustration, your focus is on using examples that are relevant and strong to your argument and appropriate for your audience.
+The point of any illustration assignment is for the writer to assert an overall observation and back up that assertion with evidence-based examples. Like other rhetorical modes, it can be simply informative—providing a neutral presentation of information for readers to use to draw their own conclusions, or it can be argumentative—providing a stance or point of view on the topic. The key to organizing the overall essay is to decide on categories of main ideas that are needed to provide a comprehensive overview of the topic.
+An Illustrative Thesis
+The thesis statement for an illustration essay should convey the main point and suggest why further clarification or development of a deeper understanding of the topic is necessary or important.
+Examples:
+- The over-reliance on social media and texting has created an environment where people feel comfortable sharing critical feelings they would have previously kept to themselves.
+- Many of today’s popular movies rely on excessive gore and violence to entertain audiences which could explain why book adaptations are more violent than the original text.
+- If money is no object, then a vacation to the Kanaapali Shores Beach Resort will satisfy a tourist’s paradise dream.
+Using scientific studies, experts in a particular field, statistics, historical events, current events, analogies, and personal anecdotes are all ways in which a writer can illustrate a thesis. Ultimately, you want the evidence to help the reader “see” your point, as one would see a good illustration in a magazine or on a website. The stronger your evidence is, the more clearly the reader will consider your point.
+Using evidence effectively can be challenging, though. The evidence you choose will usually depend on your subject and who your reader is (your audience). When writing an illustration essay, keep in mind the following:
+- Use evidence that is appropriate to your topic as well as appropriate for your audience.
+- Assess how much evidence you need to adequately explain your point depending on the complexity of the subject and the knowledge of your audience regarding that subject.
+For example, if you are writing about a new communication software and your audience is a group of English-major undergrads, you might want to use an analogy or a personal story to illustrate how the software works. However, if you are writing about the same subject and your audience members are information technology (IT) specialists, your personal experience is less likely to be an effective illustration. Instead, you need to use more technical evidence because your audience has more familiarity with and greater knowledge of the subject.
+Keeping your subject matter in mind in relation to your audience will increase your chances of effectively illustrating your point. Be careful not to overexplain simple concepts that your readers are already familiar with—you don’t want to insult their intelligence! Instead of more explanation, consider using an example.
+Organizing an Illustration
+The organization of an illustration essay depends on the purpose of the essay and requires a clear rationale for why the examples apply as an illustration of a concept. When pulling in examples, you may rely on words or phrases such as: for example, for instance, in particular, to illustrate, or specifically.
+Typically in a single supporting paragraph, a writer uses a topic sentence to designate the main idea followed by primary and secondary support structure. In a full essay devoted to illustration, primary supports are the main ideas to support a topic sentence, and secondary supports are the examples and details to provide the concrete information to complete the writer’s point.
+Introduction and Thesis:
+- Purpose of Illustration: To demonstrate how a vacation at the Kanaapali Shores Beach Club Resort is enjoyable and affordable.
+Primary support 1: The hotel amenities
+- Secondary supporting details: the room, the bed, the bathroom, the kitchenette, the view, the concierge services
+Primary support 2: The restaurants
+- Secondary supporting details: the variety of food, the quality of food, the service, the ambiance
+Primary support 3: The beach and activities
+- Secondary supporting details: the beauty of the sand, sky, and water; sunbathing, snorkeling, windsurfing
+Primary support 4: The cost
+- Secondary supporting details: the price of the room per night, the prices of meals, the price of activities/entertainment
+Conclusion
+Now that you have had the chance to learn about illustration essays, it’s time to see one in practice. Here you’ll see a traditional or typical sample illustration essay from a beginning writing class. In this assignment, the student was asked to write an essay using illustration to make his points, to follow APA guidelines, and to use at least two sources.
+Contributors and Attributions
+- Organizing an Illustration. Authored by : Marianne Botos, Lynn McClelland, Stephanie Polliard, Pamela Osback . Located at : https://pvccenglish.files.wordpress.com/2010/09/eng-101-inside-pages-proof2-no-pro.pdf . Project : Horse of a Different Color: English Composition and Rhetoric . License : CC BY: Attribution
+- Illustration Essay. Provided by : Excelsior College Online Writing Lab. Located at : https://owl.excelsior.edu/rhetorical-styles/illustration-essay/ . License : CC BY: Attribution

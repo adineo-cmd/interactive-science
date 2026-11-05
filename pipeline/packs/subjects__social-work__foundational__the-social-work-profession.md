@@ -1,550 +1,124 @@
 # Source pack — subjects/social-work/foundational/the-social-work-profession
 Lesson title: The Social Work Profession
 Level: foundational
-Match confidence: 2.03
+Match confidence: 2.38
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.03 — Psychology2e_WEB § 13.3 Organizational Psychology: The Social Dimension of Work
+## Match 2.38 — LibreTexts: 1.1: Introduction to Social Work
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Courses/Folsom_Lake_College/SWHS_300%3A_Introduction_to_Social_Work_Human_Services_(Bradshaw)/01%3A_Untitled_Chapter_1/01%3A_Chapter_1/1.01%3A_Introduction_to_Social_Work
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Define organizational psychology
-•
-Explain the measurement and determinants of job satisfaction
-•
-Describe key elements of management and leadership
-•
-Explain the significance of organizational culture
-Organizational psychology is the second major branch of study and practice within the discipline of industrial
-and organizational psychology. In organizational psychology, the focus is on social interactions and their effect
-on the individual and on the functioning of the organization. In this section, you will learn about the work
-organizational psychologists have done to understand job satisfaction, different styles of management,
-different styles of leadership, organizational culture, and teamwork.
-Job Satisfaction
-Some people love their jobs, some people tolerate their jobs, and some people cannot stand their jobs. Job
-satisfaction describes the degree to which individuals enjoy their job. It was described by Edwin Locke (1976)
-as the state of feeling resulting from appraising one’s job experiences. While job satisfaction results from both
-how we think about our work (our cognition) and how we feel about our work (our affect) (Saari & Judge, 2004),
-it is described in terms of affect. Job satisfaction is impacted by the work itself, our personality, and the culture
-we come from and live in (Saari & Judge, 2004).
-Job satisfaction is typically measured after a change in an organization, such as a shift in the management
-model, to assess how the change affects employees. It may also be routinely measured by an organization to
-assess one of many factors expected to affect the organization’s performance. In addition, polling companies
-like Gallup regularly measure job satisfaction on a national scale to gather broad information on the state of
-the economy and the workforce (Saad, 2012).
-Job satisfaction is measured using questionnaires that employees complete. Sometimes a single question
-might be asked in a very straightforward way to which employees respond using a rating scale, such as a Likert
-scale, which was discussed in the chapter on personality. A Likert scale (typically) provides five possible
-answers to a statement or question that allows respondents to indicate their positive-to-negative strength of
-agreement or strength of feeling regarding the question or statement. Thus the possible responses to a
-question such as “How satisfied are you with your job today?” might be “Very satisfied,” “Somewhat satisfied,”
-“Neither satisfied, nor dissatisfied,” “Somewhat dissatisfied,” and “Very dissatisfied.” More commonly the
-survey will ask a number of questions about the employee’s satisfaction to determine more precisely why they
-are satisfied or dissatisfied. Sometimes these surveys are created for specific jobs; at other times, they are
-designed to apply to any job. Job satisfaction can be measured at a global level, meaning how satisfied in
-general the employee is with work, or at the level of specific factors intended to measure which aspects of the
-job lead to satisfaction (Table 13.2).
-Factors Involved in Job Satisfaction and Dissatisfaction
-Factor
-Description
-Autonomy
-Individual responsibility, control over decisions
-Work content
-Variety, challenge, role clarity
-Communication
-Feedback
-TABLE 13.2
-13.3 • Organizational Psychology: The Social Dimension of Work
-467
+1.1: Introduction to Social Work
+-
+- Last updated
+- Save as PDF
+The History of Social Work in the United States
+Interactive Element
+The inception of the social work profession in the United States can be traced back to the late 1800’s beginning with charity work performed by local churches and communities seeing to meet the needs of the poor. Some of the earliest social work interventions were designed to meet basic human needs of populations and placed great value in providing support, assistance, and resources to families and communities in an attempt to alleviate suffering (Nsonwu, Casey, Cook & Armendariz, 2013). The profession now known as social work ultimately began as a result of a practice originally known as “helping” others to improve the well being of individuals, families, and communities. Throughout the years the social work profession played vital roles in the facilitation of social changes aimed at diminishing inequalities among various populations. Through the practice of “helping,” social workers were able to address many social problems that plagued vulnerable populations through facilitating, advocating, and influencing individuals, communities, politicians, and law makers (Langer & Leitz, 2014).
+Throughout the progressive movement era, many social workers emerged and were identified as key players known to have advanced the profession. These individuals came to be known as pioneers of the social work profession as their careers were devoted to improving the well being of individuals, families, and communities. In an effort to help conceptualize the social work profession, we will look closer at the origin of the social practice, as well as discuss a few pioneers and their contributions to the social work profession (Hansan, 2013).
+In the early 20th century, Robert Hunter’s book Poverty was published. Hunter’s book placed a spotlight on America’s poor and challenged society’s long held belief that poverty signified moral failure (Hansan, 2013). Hunter’s book demonstrated a critical need to implement specific social measures in order to prevent the destruction of the working class population on the verge of poverty. Hunter additionally identified conditions known to breed poverty calling into question the need but also the tolerance for these unjust conditions particularly by a professed Christian population (Hunter, 1904).
+Another known pioneer of the social work profession is Mary Richmond. Throughout her career, Richmond searched for answers surrounding the reasons and causes of poverty while also examining the interactions between individuals and their environments. Richmond believed that interventions and treatment approaches needed to be focused on the person within their environment. As a result of this belief, Richmond developed the circle diagram as a way to help her clients identify sources of power available to them within their own environment. One of Richmond’s biggest contributions to the social work profession was her book Social Diagnosis which was published in 1917. Richmond’s book focused on the practice of casework with individuals and was the first book to identify a systematic and methodological way to document and diagnose clients ( Social Welfare History Project , 2011).
+Jane Addams is another well-known pioneer to the social work profession. Addams, along with Ellen Gates Starr, founded Hull-House in 1889. Hull-House was a successful settlement house located in an area of Chicago that was largely populated by immigrants. Residents of Hull-House were provided with multiple services which included daycare and kindergarten facilities for the children of the residents. Throughout her career Addams’ continued to contribute to the social work profession by advocating for the rights and well-being of women and children on several important issues, one of those issues being the implementation of child labor laws (Hansan, 2010).
+Jane Hoey’s career as a social worker began in 1916 when she was appointed as the Assistant Secretary of the Board of Child Welfare in New York City. Throughout the course of her career she would work in multiple social welfare agencies: serving as the Director of Field Service for the Atlanta Division of the American Red Cross, the Secretary of the Bronx Committee of the New York TB and Health Association, the Director of the Welfare Council of New York City, and ultimately as the Director of the Bureau of Public Assistance. Hoey is best known for her role in the enactment of the Social Security Public Assistance Act which became law in 1935. Following the law’s enactment, Hoey became the Director of the Bureau of Public Assistance within the Social Security Administration and was responsible for organizing and implementing the distribution of the public welfare provisions ( Social Welfare History Project , 2011).
+Additional Reading Material
+Mary Richmond’s Social Diagnosis : https://archive.org/details/socialdiagnosis00richiala
+Robert Hunter’s Poverty : https://archive.org/details/povertypoor00huntuoft
+Social Work: What is it?
+For over a century the answer to this question has been not only varied but also debated among members of the general public as well as in the professional social work community. The definition of “social work” may not be as clear as one may think when attempting to understand the meaning of social work. Embedded within these definitions of “social work” are common themes which can help to conceptualize social work. Although there are many varying definitions used to describe social work, what matters the most is the purpose of social work and what guides and directs social work practice. According to the Council on Social Work Education (CSWE), the purpose of the social work profession is to “promote human and community well-being”; which can be achieved through promoting social and economic justice and preventing conditions that limit human rights for all people.
+Even after defining social work and identifying the purpose of the social work profession, there continues to be some misalignment among the profession with the overall mission of social work. This is not surprising considering the increasingly diverse populations being served by the profession. What is becoming increasing clear as the diversity of client systems continues to expand, is the critical importance of professional competence in order to meet the unique needs of individuals as well as emerging social issues. In an effort to better prepare new social workers to respond to these new challenges and social issues, the CSWE adopted a competency-based education framework, Educational Policy and Accreditation Standards, which gives students the opportunity to demonstrate and integrate social work knowledge and skills in various practice settings. More than ever social work requires a broad knowledge base in order to effectively meet the needs of others but also to help clients find hope in the process. Finding hope is essential to the social work practice as hope helps to empower diverse populations facing unique challenges (Clark & Hoffler, 2014).
+The feelings associated with a sense of hope are considered to be fundamental to the social work practice. Hope is essential to social work as it allows those facing challenges to believe in a positive outcome and hope can play a major role in how the challenges/circumstances are viewed. A sense of hope is as essential to clients as it is for social workers who are helping clients. Social workers struggling to feel hope may communicate this verbally and non-verbally in their approach with their clients, ultimately impacting the effectiveness of the intervention. This is one of several reasons individuals wishing to pursue a career in social work should explore their personal values, overall worldview, beliefs, abilities, skills, and priorities as well as personal and career goals. This type of exploration is essential to determining whether or not a career in the social work field will be a good fit. In addition, individuals should also consider the demands, stressors, and challenges common to the social work practice giving serious consideration to whether helping the most vulnerable populations will negatively impact their own physical and/or mental health and overall quality of life (Sheafor, Horejsi, & Horejsi, 2000).
+Additional Activities:
+When in Doubt, Give Hope . (Speech starts at 2:20)
+Allison Brunner a newly graduated MSW talks about her anxieties and doubts that recent graduates feel with their professional responsibility to hold hope for their clients. She describes her own doubts as a social worker, relates those to her personal moments of doubt and shares how she drew from those experiences to help her client. Using our experiences to benefit our clients rather than ourselves, is what we call “professional use of self.” And as Carl Rogers demonstrated many years ago, bringing our genuine self to the clinical relationship is one of the most important things we can do to help our clients.
+Retrieved from: http://www.socialworkpodcast.com/GraduationSpeech2009.mp3
+Bachelors of Social Work (BSW) versus Masters of Social Work (MSW)
+According to the Bureau of Labor Statistics, the minimum pre-requisite needed to gain employment in the social work profession is a Bachelor’s Degree in Social Work (BSW). However, those with specific career goals may be required to obtain a higher level of education. Therefore, some may wish to pursue a Master’s Degree in Social Work (MSW).
+Social workers may serve in all of these different roles in varying degrees at any time in their career.
+There are some similarities between the two degrees which include the expectation that both BSW and MSW students complete supervised field placements within a social service type agency. The requirements related to the length of placement, expected tasks, and/or hours may vary based on degree. Common social service agency placements for both BSW and MSW students include places such as hospitals, schools, or mental health or substance abuse clinics. In addition to this requirement, both BSW and MSW graduates must be granted a license in the state they wish to practice. Licensure for an MSW requires a minimum of 2 years of supervised clinical experience following graduation and a passing score on the Association of Social Work Boards (ASWB) licensing examination.
+There are several key differences between BSW and MSW degrees. One of the first differences is the pre-requisite for entrance into the programs. Typically the only requirement needed to enter into an accredited BSW program at a college or university is that the candidate has declared social work as their major. This differs from an MSW program as MSW candidates apply for entrance into the program after already having obtained a Bachelor’s Degree in which the graduate has likely earned credits in coursework areas related to psychology and sociology.
+Another difference is the coursework required based on the desired degree. The Council on Social Work Education (CSWE), which accredits U.S. social work programs, designates BSW undergraduate programs teach students about diverse populations, human behavior, social welfare policy, and ethics in social work. Additionally, students are required to complete a supervised field placement at a social service agency. Baccalaureate social workers have the ability to obtain specialty certification in certain areas through their state chapter of the National Association of Social Workers (NASW), which offers specialty certification available in child, youth and family social work, gerontology, casework, and hospice, and palliative care. Master’s degree programs focus on developing clinical assessment and management skills and prepare students for work in a more targeted areas depending on the student’s interest.
+The other important differences between the two degrees involves the type of employment each degree ho
 
-Factor
-Description
-Financial rewards
-Salary and benefits
-Growth and development
-Personal growth, training, education
-Promotion
-Career advancement opportunity
-Coworkers
-Professional relations or adequacy
-Supervision and feedback
-Support, recognition, fairness
-Workload
-Time pressure, tedium
-Work demands
-Extra work requirements, insecurity of position
-TABLE 13.2
-Research has suggested that the work-content factor, which includes variety, difficulty level, and role clarity of
-the job, is the most strongly predictive factor of overall job satisfaction (Saari & Judge, 2004). In contrast, there
-is only a weak correlation between pay level and job satisfaction (Judge, Piccolo, Podsakoff, Shaw, & Rich,
-2010). Judge et al. (2010) suggest that individuals adjust or adapt to higher pay levels: Higher pay no longer
-provides the satisfaction the individual may have initially felt when their salary increased.
-Why should we care about job satisfaction? Or more specifically, why should an employer care about job
-satisfaction? Measures of job satisfaction are somewhat correlated with job performance; in particular, they
-appear to relate to organizational citizenship or discretionary behaviors on the part of an employee that
-further the goals of the organization (Judge & Kammeyer-Mueller, 2012). Job satisfaction is related to general
-life satisfaction, although there has been limited research on how the two influence each other or whether
-personality and cultural factors affect both job and general life satisfaction. One carefully controlled study
-suggested that the relationship is reciprocal: Job satisfaction affects life satisfaction positively, and vice versa
-(Judge & Watanabe, 1993). Of course, organizations cannot control life satisfaction’s influence on job
-satisfaction. Job satisfaction, specifically low job satisfaction, is also related to withdrawal behaviors, such as
-leaving a job or absenteeism (Judge & Kammeyer-Mueller, 2012). The relationship with turnover itself,
-however, is weak (Judge & Kammeyer-Mueller, 2012). Finally, it appears that job satisfaction is related to
-organizational performance, which suggests that implementing organizational changes to improve employee
-job satisfaction will improve organizational performance (Judge & Kammeyer-Mueller, 2012).
-There is opportunity for more research in the area of job satisfaction. For example, Weiss (2002) suggests that
-the concept of job satisfaction measurements have combined both emotional and cognitive concepts, and
-measurements would be more reliable and show better relationships with outcomes like performance if the
-measurement of job satisfaction separated these two possible elements of job satisfaction.
-Job Satisfaction in Federal Government Agencies
-A 2013 study of job satisfaction in the U.S. federal government found indexes of job satisfaction plummeting
-compared to the private sector. The largest factor in the decline was satisfaction with pay, followed by training
-and development opportunities. The Partnership for Public Service, a nonprofit, nonpartisan organization, has
-conducted research on federal employee job satisfaction since 2003. Its primary goal is to improve the federal
-government’s management. However, the results also provide information to those interested in obtaining
-DIG DEEPER
-468
-13 • Industrial-Organizational Psychology
-Access for free at openstax.org
+## Match 2.37 — LibreTexts: 5.1: Social Work Practice Settings
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Courses/Folsom_Lake_College/SWHS_300%3A_Introduction_to_Social_Work_Human_Services_(Bradshaw)/02%3A_Untitled_Chapter_2/05%3A_Chapter_5/5.01%3A_Social_Work_Practice_Settings
 
-employment with the federal government.
-Among large agencies, the highest job satisfaction ranking went to NASA, followed by the Department of
-Commerce and the intelligence community. The lowest scores went to the Department of Homeland Security.
-The data used to derive the job satisfaction score come from three questions on the Federal Employee Viewpoint
-Survey. The questions are:
-1.
-I recommend my organization as a good place to work.
-2.
-Considering everything, how satisfied are you with your job?
-3.
-Considering everything, how satisfied are you with your organization?
-The questions have a range of six possible answers, spanning a range of strong agreement or satisfaction to
-strong disagreement or dissatisfaction. How would you answer these questions with regard to your own job?
-Would these questions adequately assess your job satisfaction?
-You can explore the Best Places To Work In The Federal Government study at their Web site:
-www.bestplacestowork.org. The Office of Personnel Management also produces a report based on their survey:
-www.fedview.opm.gov.
-Job stress affects job satisfaction. Job stress, or job strain, is caused by specific stressors in an occupation.
-Stress can be an ambiguous term as it is used in common language. Stress is the perception and response of
-an individual to events judged as overwhelming or threatening to the individual’s well-being (Gyllensten &
-Palmer, 2005). The events themselves are the stressors. Stress is a result of an employee’s perception that the
-demands placed on them exceed their ability to meet them (Gyllensten & Palmer, 2005), such as having to fill
-multiple roles in a job or life in general, workplace role ambiguity, lack of career progress, lack of job security,
-lack of control over work outcomes, isolation, work overload, discrimination, harassment, and bullying
-(Colligan & Higgins, 2005). The stressors are different for women than men and these differences are a
-significant area of research (Gyllensten & Palmer, 2005). Job stress leads to poor employee health, job
-performance, and family life (Colligan & Higgins, 2005).
-As already mentioned, job insecurity contributes significantly to job stress. Two increasing threats to job
-security are downsizing events and corporate mergers. Businesses typically involve I-O psychologists in
-planning for, implementing, and managing these types of organizational change.
-Downsizing is an increasingly common response to a business’s pronounced failure to achieve profit goals,
-and it involves laying off a significant percentage of the company’s employees. Industrial-organizational
-psychologists may be involved in all aspects of downsizing: how the news is delivered to employees (both those
-being let go and those staying), how laid-off employees are supported (e.g., separation packages), and how
-retained employees are supported. The latter is important for the organization because downsizing events
-affect the retained employee’s intent to quit, organizational commitment, and job insecurity (Ugboro, 2006).
-In addition to downsizing as a way of responding to outside strains on a business, corporations often grow
-larger by combining with other businesses. This can be accomplished through a merger (i.e., the joining of two
-organizations of equal power and status) or an acquisition (i.e., one organization purchases the other). In an
-acquisition, the purchasing organization is usually the more powerful or dominant partner. In both cases,
-there is usually a duplication of services between the two companies, such as two accounting departments and
-two sales forces. Both departments must be merged, which commonly involves a reduction of staff (Figure
-13.14). This leads to organizational processes and stresses similar to those that occur in downsizing events.
-Mergers require determining how the organizational culture will change, to which employees also must adjust
-(van Knippenberg, van Knippenberg, Monden, & de Lima, 2002). There can be additional stress on workers as
-they lose their connection to the old organization and try to make connections with the new combined group
-(Amiot, Terry, Jimmieson, & Callan, 2006). Research in this area focuses on understanding employee reactions
-13.3 • Organizational Psychology: The Social Dimension of Work
-469
+5.1: Social Work Practice Settings
+-
+- Last updated
+- Save as PDF
+Social Work practice begins with the purpose of the social worker. Understanding of the social work profession starts with an intense appreciation of the person in which the social worker serves (Sheafor & Horejsi, 2008). The social worker understands that humans are social beings, these social creature’s growth and development need the guidance of nurturing and protection provided by others around them. It’s this inter-connectedness and interdependence of people in the social environment that is the foundation of practice in social work as a profession. The environment a person lives in has a lot to do with how a social worker may apply knowledge and guidance. There are two distinct types of social work practice that are used according to the type of setting.
+Social work practice setting
+Direct Practice
+Direct practice is when the social worker works directly with an individual, family, or group of people. The first direct meeting can occur in a variety of ways such as a crisis, voluntary, or involuntary. The first meeting is a critical point in establishing a good helping relationship. A social worker should prepare for any type of first contact, so that they may set up the best relationship possible with the client (Sheafor & Horejsi, 2008).
+Advocacy day
+At the BSW level, direct practice is primarily done as a case worker. The case worker may met with the individual daily, weekly, or monthly depending on the type of work. For example, in short term crisis work, the person may have daily meetings. For adults with intellectual disabilities, a monthly check in may be more appropriate and required by the supervising agency. Direct practice is typically done as a worker at an agency, non- profit, or government setting. A direct case worker may be involved in many different areas of practice, including but not limited to working in adoption, Child Protective Services, in a group home for individuals with brain injuries, a shelter for abuse survivors, or with Community Mental Health. The caseworker may be involved in finding resources or providing support for the client. Meetings may take place at an agency or in the client’s home.
+At the MSW level, direct practice is usually done in the role of the therapist or counselor. Therapists generally see their clients on a weekly basis, although this time frame may vary. Therapists often work at the same agencies as BSW level caseworkers, but in a different role. While the BSW worker is involved with taking care of the many logistical issues a client may have (housing, food, etc.), the MSW worker is usually assisting the client with skill building, learning coping strategies, and focusing on their overall mental health treatment. Sessions may take place at an agency or in the client’s home.
+Indirect Practice
+Indirect practice is generally when the social worker is involved in activities that consist with facilitating change through programs and policies. This type of practice is more of behind the scenes and is aimed to help prevent problems from developing. Also, the social worker may participate in this type of practice by advocating through agency administrators, legislators, or other powerful people to effect a change (Sheafor & Horejsi, 2008). You may also hear the term Macro system practice, which means systems larger than a small group or single person (Zastrow & Kirst-Ashman, 2010). Micro systems are continuously affected by the Macro systems. The two major Macro systems that impact individuals the most are communities and organizations.
+Community is defined by Merriam-Webster a unified body of individuals: such as a state or common wealth; the people with common interests living in an area geographically. Community can also me the individuals are connected in other ways, such as an activity, job or an identifying ethnic trait (Zastrow & Kirst-Ashman, 2010). Community Theory, is a theoretical frame work adopted when working within a community. Community Theory consists of two components; the nature of the community such as perspectives which may include how it is defined. The second component is how social workers practice in the community (Zastrow & Kirst-Ashman, 2010).
+An organization is defined by Merriam-Webster as an administrative and functional structure; this is a group of individuals that come together to work towards a common goal (as cited in Zastrow & Kirst-Ashman, 2010). Each of the individuals involved in the organization preform specific duties.
+ The social (Zastrow & Kirst-Ashman, 2010) worker can help facilitate change by reaching out to other agencies that can assist in meeting other needs of the client.
+According to an article written by Johnson (1999), Indirect social practice has often referred to environmental intervention in the client’s networks or social aspect. The belief was to help alleviate challenges in the client’s surroundings. There are two elements associated with indirect practice. The first one is called concrete assistance, this is resources available to the client to help with basic needs. For example, food assistance programs are the most common resource needed for clients. The second element to indirect social work practice is sociopsychological intervention. Which is the adjustment of attitude or behavior of significant people with in the client’s social environment (Johnson, 1999).
+Human behavior occurs within a community, it is ever present and continuous. Individuals develop through the interactions with others. Behavior is ever dependent on others in the environment, as well as the individual client’s behavior affecting those they interact making behavior interdependent (Zastrow & Kirst-Ashman, 2010). The term community can mean so many various things. As a social worker, one must figure out in what context the clients community affects them. What makes up that person’s community? Do all the community members suffer the same common problems? Due to the broad nature of the meaning Community, we can break it down in three categories; A designated group of people; this group has something in common; and we know that because of a commonality the individuals in the community, they interact in some way or possibly will in the future (Zastrow & Kirst-Ashman, 2010).
+Rural environment
+Rural Communities
+Agreement among scholars have lead the social work profession to use a more generalist approach in small towns. The generalist approach allows the social worker to gain skills for working with individuals, families, small groups, organizations and communities. The rationale for this type of practice is solely based on the structural normality’s in the majority of rural areas. These areas are usually characterized by a lack of formal resources which includes the services of private social entities. The Social workers that serve in these areas often work in the public service. They are asked to perform in a range of problems that are presented by those they serve.
+There is no set-definition of what defines a rural community, but as such can be understood as those non-metropolitan areas, including surrounding towns with a reduced population that have limited to no access to social services (Lohmann, 2012). It is important to note that despite the stereotype that all rural areas are the same, the reality is that all rural areas differ from one to the next based on socioeconomics, climate, surrounding culture, present ethnicities, and religious structures to name just a few. With this in mind, the rural social worker must be able to work positively within this communities, and take into consideration the differences that exist within them. These areas are usually characterized by a lack of formal resources which includes the services of private social entities. The Social workers that serve in these areas often work in the public service.
+Such limited resources in consideration include available locations, trained and licensed individuals, and monetary founds. Thus, as Lohmann (2011) describes, social workers must play multiple roles, from community organizers to caseworkers. As such, these roles are valued for their creativity in how treatment occurs, and how flexible the social worker is with switching between the individual and the community. Limited resources also mean that rural social workers often practice in isolation, without direct supervision and with difficulty accessing continuing educational materials. As such, it is important that these workers seek additional opportunities to expand their professional development and continue advocating for best practices.
+Agreement among scholars have lead the social work profession to use a more generalist approach in small towns (Lohmann, 2012; Waltman, 2013). The generalist approach allows the social worker to gain skills for working with individuals, families, small groups, organizations, and communities. The rationale for generalist practice refers to the limited social resources available for rural communities that must be substituted by Social Workers. As such, the generalist approach is best used in rural settings, as it allows the social worker to take on multiple roles that the community needs.
+One notable complication with rural communities is the potential of dual relationships between the Social Worker and their clientele. These relationships refer to the proximity of Social Workers living and working in the same environment, where clients may be neighbors or members of similar social groups. Pugh (2007) discusses that these situations present ethical problems, such as maintaining a professional appearance by avoiding invitations for conversations, but ultimately that the social workers role is defined by how they conduct themselves in the community. Additionally, Humble, Lewis, Scott, and Herzog (2013) describe the potential for professional fatigue when the social work is always “on duty”. Despite the additional transparency, rural social workers must balance their professional and private lives in order to work effectively in these areas.
+Urban environment
+Urban Communities
+In contrast to rural communities, urban communities are those settings involving metropolitan areas with an increase in population density, a decrease in general size, and an increase in access to social services for its population. The rise of industrialization has led to a migration from rural communities to urban ones, resulting in a population shift between the two areas where urban areas hold the majority of the population. This, in term, leads to an increase in problems, such as differences in socioeconomic status, an increase in migrant and immigrant populations, higher crime rates, and differences in health outcomes of residents.
+Social workers in urban environments will find considerable job opportunities in both the public and the private sectors. Publicly, Social Workers may find jobs with Community Mental Health programs, alliances that work with veteran or homeless populations, and with educational settings to name a few. Privately, Social Workers may find opportunities for clinical care roles and job specialties, such as working with victims of sexual assault. What urban environments offer is the ability for the social work individual to focus on what area, while allowing referrals to other qualified individuals.
+Unlike rural environments, urban environments allow for a range of continual educational options, including seminars at meeting halls or college campuses, specialized opportunities for trainings in issues such as a trauma, and the ability for social workers to gather in conferences. This, in turn, allows social workers to have outside supervision, as well as an increase in communication across the profession.
+Despite the advantages urban environments offer in terms of networking and job opportunities, it is important to remember that there are setbacks. As mentioned, with
 
-and making practical recommendations for managing these organizational changes.
-FIGURE 13.14 When companies are combined through a merger (or acquisition), there are often cuts due to
-duplication of core functions, like sales and accounting, at each company.
-Work–Family Balance
-Many people juggle the demands of work life with the demands of their home life, whether it be caring for
-children or taking care of an elderly parent; this is known as work-family balance. We might commonly think
-about work interfering with family, but it is also the case that family responsibilities may conflict with work
-obligations (Carlson, Kacmar, & Williams, 2000). Greenhaus and Beutell (1985) first identified three sources of
-work–family conflicts:
-•
-time devoted to work makes it difficult to fulfill requirements of family, or vice versa,
-•
-strain from participation in work makes it difficult to fulfill requirements of family, or vice versa, and
-•
-specific behaviors required by work make it difficult to fulfill the requirements of family, or vice versa.
-Women often have greater responsibility for family demands, including home care, child care, and caring for
-aging parents, yet men in the United States are increasingly assuming a greater share of domestic
-responsibilities. However, research has documented that women report greater levels of stress from
-work–family conflict (Gyllensten & Palmer, 2005).
-There are many ways to decrease work–family conflict and improve people’s job satisfaction (Posig & Kickul,
-2004). These include support in the home, which can take various forms: emotional (listening), practical (help
-with chores). Workplace support can include understanding supervisors, flextime, leave with pay, and
-telecommuting. Flextime usually involves a requirement of core hours spent in the workplace around which
-the employee may schedule their arrival and departure from work to meet family demands. Telecommuting
-involves employees working at home and setting their own hours, which allows them to work during different
-parts of the day, and to spend part of the day with their family; this may also be known as ecommuting,
-working remotely, flexible workspace, or simply working from home. Recall that Yahoo! had a policy of allowing
-employees to telecommute and then rescinded the policy. There are also organizations that have onsite
-daycare centers, and some companies even have onsite fitness centers and health clinics. In a study of the
-effectiveness of different coping methods, Lapierre & Allen (2006) found practical support from home more
-important than emotional support. They also found that immediate-supervisor support for a worker
-significantly reduced work–family conflict through such mechanisms as allowing an employee the flexibility
-470
-13 • Industrial-Organizational Psychology
-Access for free at openstax.org
+## Match 2.36 — LibreTexts: 12.1: Service Members and Social Work
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Courses/Folsom_Lake_College/SWHS_300%3A_Introduction_to_Social_Work_Human_Services_(Bradshaw)/04%3A_Untitled_Chapter_4/12%3A_Chapter_12/12.01%3A_Service_Members_and_Social_Work
 
-needed to fulfill family obligations. In contrast, flextime 
-
-## Match 1.68 — IntroductiontoSociology3e-WEB_9QTqRGQ § 9.4 Theoretical Perspectives on Social Stratification
-
-Jarrett grew up on a farm in rural Ohio, left home to serve in the Army, and returned a few
-years later to take over the family farm. He moved into his family house, and eighteen months later married
-Eric, with whom he had maintained a long-distance relationship for several years. Eric had two children from a
-previous marriage. They quickly realized the income from the farm was no longer sufficient to meet their
-needs. Jarrett, with little experience beyond the farm, took on a job at a grocery store to supplement his
-income. This part-time job shifted the direction of their family’s life.
-One of the managers at the store liked Jarrett, his attitude, and his work ethic. He began to groom Jarrett for
-advancement at the store, and encouraged him to take a few classes at a local college. Despite knowing he'd
-receive financial support from the military, this was the first time Jarrett had seriously thought about college.
-Could he be successful, Jarrett wondered? Could he actually become the first in his family to earn a degree?
-Fortunately, Eric also believed in him. Jarrett kept his college enrollment a secret from his mother, his
-brothers, and his friends. He did not want others to know about it, in case he failed.
-Jarrett was nervous on his first day of class. He was older than the other students, and he had never considered
-9
-Social Stratification in the United
-States
-
-himself college material. When he earned only a C- on his first test, he thought his fears were being realized,
-and that it was perhaps not a fit for him. But his instructor strongly recommended that Jarrett pay a visit to the
-academic success center. After a few sessions, he utilized a better study schedule and got a B- on the next
-exam. He was successful in that class, and enrolled in two more the next semester.
-Unfortunately, life took a difficult turn when Jarrett's and Eric's daughter became ill; he couldn't focus on his
-studies and he dropped all of his classes. With his momentum slowed, Jarrett wasn't sure he was ready to
-resume after his daughter recovered. His daughter, though, set him straight. One day after telling her to start
-her homework, she was reluctant and said, "You're not doing your homework anymore; I shouldn’t have to do
-mine." A bit annoyed, Jarrett and Eric explained the difference between being an adult with work and family
-obligations and being a child in middle school. But Jarrett realized he was most upset at himself for using her
-illness as an excuse. He thought he wasn't living up to the example he wanted to set for her. The next day, he
-called his academic advisor and re-enrolled.
-Just under two years later, Jarrett was walking across the stage to receive a Bachelor’s degree with a special
-certificate for peer support. The ceremony seemed surreal to Jarrett. He'd earned medals and other
-recognition in the military, but he always felt those accomplishments were shared among his team. While he'd
-had a lot of help with college, he felt that graduating was a milestone that was more closely tied to himself.
-Stories like this permeate American society and may sound familiar, yet this quest to achieve the American
-Dream is often hard for many Americans to achieve, even with hard work. After all, nearly one in three first-
-year college students is a first-generation college student and many are not as successful as Jarrett. According
-to the Center for Student Opportunity, a national nonprofit, 89% of first-generation students will not earn an
-undergraduate degree within six years of starting their studies. In fact, these students “drop out of college at
-four times the rate of peers whose parents have postsecondary degrees” (Center for Student Opportunity
-quoted in Huot 2014).
-Why do students with parents who have completed college tend to graduate more often than those students
-whose parents do not hold degrees? That question and many others will be answered as we explore social
-stratification.
-9.1 What Is Social Stratification?
-LEARNING OBJECTIVES
-By the end of this section, you should be able to:
-•
-Differentiate between open and closed stratification systems
-•
-Distinguish between caste and class systems
-•
-Explain why meritocracy is considered an ideal system of stratification
-236
-9 • Social Stratification in the United States
-Access for free at openstax.org.
-
-FIGURE 9.2 In the upper echelons of the working world, people with the most power reach the top. These people
-make the decisions and earn the most money. The majority of Americans will never see the view from the top.
-(Credit: Alex Proimos/flickr)
-Sociologists use the term social stratification to describe the system of social standing. Social stratification
-refers to a society’s categorization of its people into rankings based on factors like wealth, income, education,
-family background, and power.
-Geologists also use the word “stratification” to describe the distinct vertical layers found in rock. Typically,
-society’s layers, made of people, represent the uneven distribution of society’s resources. Society views the
-people with more resources as the top layer of the social structure of stratification. Other groups of people,
-with fewer and fewer resources, represent the lower layers. An individual’s place within this stratification is
-called socioeconomic status (SES).
-9.1 • What Is Social Stratification?
-237
-
-FIGURE 9.3 Strata in rock illustrate social stratification. People are sorted, or layered, into social categories. Many
-factors determine a person’s social standing, such as wealth, income, education, family background, and power.
-(Credit: Just a Prairie Boy/flickr)
-Most people and institutions in the United States indicate that they value equality, a belief that everyone has an
-equal chance at success. In other words, hard work and talent—not inherited wealth, prejudicial treatment,
-institutional racism, or societal values—determine social mobility. This emphasis on choice, motivation, and
-self-effort perpetuates the American belief that people control their own social standing.
-However, sociologists recognize social stratification as a society-wide system that makes inequalities apparent.
-While inequalities exist between individuals, sociologists are interested in larger social patterns. Sociologists
-look to see if individuals with similar backgrounds, group memberships, identities, and location in the country
-share the same social stratification. No individual, rich or poor, can be blamed for social inequalities, but
-instead all participate in a system where some rise and others fall. Most Americans believe the rising and
-falling is based on individual choices. But sociologists see how the structure of society affects a person's social
-standing and therefore is created and supported by society.
-238
-9 • Social Stratification in the United States
-Access for free at openstax.org.
-
-FIGURE 9.4 The people who live in these houses most likely share similar levels of income and education.
-Neighborhoods often house people of the same social standing. Wealthy families do not typically live next door to
-poorer families, though this varies depending on the particular city and country. (Credit: Orin Zebest/flickr)
-Factors that define stratification vary in different societies. In most societies, stratification is an economic
-system, based on wealth, the net value of money and assets a person has, and income, a person’s wages or
-investment dividends. While people are regularly categorized based on how rich or poor they are, other
-important factors influence social standing. For example, in some cultures, prestige is valued, and people who
-have them are revered more than those who don’t. In some cultures, the elderly are esteemed, while in others,
-the elderly are disparaged or overlooked. Societies’ cultural beliefs often reinforce stratification.
-One key determinant of social standing is our parents. Parents tend to pass their social position on to their
-children. People inherit not only social standing but also the cultural norms, values, and beliefs that
-accompany a certain lifestyle. They share these with a network of friends and family members that provide
-resources and support. This is one of the reasons first-generation college students do not fare as well as other
-students. They lack access to the resources and support commonly provided to those whose parents have gone
-to college.
-Other determinants are found in a society’s occupational structure. Teachers, for example, often have high
-levels of education but receive relatively low pay. Many believe that teaching is a noble profession, so teachers
-should do their jobs for love of their profession and the good of their students—not for money. Yet, the same
-attitude is not applied to professional athletes, executives, or those working in corporate world. Cultural
-attitudes and beliefs like these support and perpetuate social and economic inequalities.
-Systems of Stratification
-Sociologists distinguish between two types of systems of stratification. Closed systems accommodate little
-change in social position. They do not allow people to shift levels and do not permit social relationships
-between levels. Closed systems include estate, slavery, and caste systems. Open systems are based on
-achievement and allow for movement and interaction between layers and classes. How different systems
-operate reflect, emphasize, and foster specific cultural values, shaping individual beliefs. In this section, we’ll
-review class and caste stratification systems, plus discuss the ideal system of meritocracy.
-9.1 • What Is Social Stratification?
-239
-
-The Caste System
-FIGURE 9.5 India used to have a rigid caste system. The people in the lowest caste suffered from extreme poverty
-and were shunned by society. Some aspects of India’s defunct caste system remain socially relevant. (Credit:
-Elessar/flickr)
-Caste systems are closed stratification systems where people can do little or nothing to change the social
-standing of their birth. The caste system determines all aspects of an individual’s life: occupations, marriage
-partners, and housing. Individual talents, interests, or potential do not provide opportunities to improve a
-person's social position.
-In the Hindu caste tradition, people expect to work in an occupation and to enter into a marriage based on
-their caste. Accepting this social standing is considered a moral duty and people are socialized to accept their
-social standing. Cultural values reinforced the system. Caste systems promote beliefs in fate, destiny, and the
-will of a higher power, rather than promoting individual freedom as a value. This belief system is an ideology.
-Every culture has an ideology that supports its system of stratification.
-The caste system in India has been officially dismantled, but is still deeply embedded in Indian society,
-particularly in rural areas. In India’s larger cities, people now have more opportunities to choose their own
-career paths and marriage partners. As a global center of employment, corporations have introduced merit-
-based hiring and employment to the nation shifting the cultural expectations of the caste system.
-The Class System
-A class system is based on both social factors and individual achievement. A class consists of a set of people
-who share similar status based on factors like wealth, income, education, family background, and occupation.
-Unlike caste systems, class systems are open. People may move to a different level (vertical movement) of
-education or employment status than their parents. Though family and other societal models help guide a
-person toward a career, personal choice and opportunity play a role.
-They can also socialize with and marry members of other classes. People have the option to form an
-exogamous marriage, a union of spouses from different social categories. Exogamous marriages often focus
-on values such as love and compatibility. Though social conformities still exist that encourage people to choose
-partners within their own class, called an endogamous marriage, people are not as pressured to choose
-240
-9 • Social Stratification in the United States
-Access for free at openstax.org.
-
-marriage partners based solely on their social location.
-Meritocracy
-Meritocracy is a hypothetical system in which social stratification is determined by personal effort and merit.
-The concept of meritocracy is an ideal because no society has ever existed where social standing was based
-entirely on merit. Rather, multiple factors influence social standing, including processes like socialization and
-the realities of inequality within economic systems. While a meritocracy has never existed, sociologists see
-aspects of meritocracies in modern societies when they study the role of academic and job performance and
-the systems in place for evaluating and rewarding achievement in these areas.
-The differences between an open and closed system are explored further in the example below.
-Status Consistency
-Sociologists use the term status consistency to describe the consistency, or lack thereof, of an individual’s
-rank across the factors that determine social stratification within a lifetime. Caste systems correlate with high
-status consistency, due to the inability to move out of a class, whereas the more flexible class system
-demonstrates lower status consistency.
-To illustrate, let’s consider Serena. Serena earned her high school diploma but did not go to college.
-Completing high school but not college is a trait more common to the lower-middle class. After high school,
-she began landscaping, which, as manual labor, tracks with lower-middle class or even lower class. However,
-over time, Serena started her own company. She hired employees. She won larger contracts. Serena became a
-business owner and earned more money. Those traits represent the upper-middle class. Inconsistencies
-between Serena’s educational level, her occupation, and income show Serena’s flexibility in her social status,
-giving her l
-
-## Match 1.38 — Business_Law_I_Essentials_-_WEB § 3.2 Social Responsibility
-
+12.1: Service Members and Social Work
+-
+- Last updated
+- Save as PDF
 Introduction
-Learning Outcome
-•
-Analyze the role of ethics and social responsibility in business.
-3.1
-Business Ethics
-Businesses must establish a clear set of values that promote ethical practices and social responsibility. In
-today’s business climate, companies are increasingly under scrutiny by private citizens. A company that builds
-its foundation on sound principles will have a better chance of staying competitive in a volatile market.
-Figure 3.1 (Credit: rawpixel/ pixabay/ Attribution 2.0 Generic (CC BY 2.0))
-3
-Business Ethics and Social Responsibility
-
-Figure 3.2
-A group of employees who uphold strong corporate values can be an asset to the company they
-work for. (Credit: rawpixel/ pexels/ License: CC0)
-Business ethics are considered to be the blueprint for building a successful organization. If an organization is
-built on socially responsible values, it will be stronger than an organization that is built on profit alone. More
-than just a positive reputation, the core ethics of a business dictate how every decision, process, and
-procedure will take place. This steadfast governance applies even if the business faces hard times or difficult
-situations. Some will even argue that businesses require full transparency in today’s world.
-Over the last few decades, numerous cases of bad business practices have made headlines. From McDonalds’
-funding of President Nixon’s campaign in an effort to reduce workers’ wages in the 1970s, to the more recent
-case of Uber employees alleging sexual harassment and the company’s CEO having a public meltdown in the
-back of a driver’s car, there’s no shortage of ethics-related problems in the business world. Businesses are
-more than people working together to offer a product or service. Businesses are often viewed as entities that
-should protect stakeholders from unethical behaviors and activities. A set of governing rules should be in
-place to set the bar high for ethical compliance in every organization.
-Why Is Corporate Ethics So Important in Business?
-The idea of business ethics may seem subjective, but it comes down to acceptable levels of behavior for each
-individual who makes up the organization. This behavior must start at the top with responsible actions
-demonstrated by leadership. By doing so, leaders create a set of rules that are to be followed by others in the
-company. These rules can be based on the deep values that the company has concerning the quality of
-products and services, the commitment to customers, or how the organization gives something back to the
-community. The more a company lives by its set of ethics, the more likely it is to be successful.
-Anna Spooner, who writes for LovetoKnow, shares tips on how to evaluate whether or not an organization is
-creating ethical practices by determining the impact of each practice. Some examples include:
-32
-Chapter 3 Business Ethics and Social Responsibility
-This OpenStax book is available for free at http://cnx.org/content/col30149/1.5
-
-Executive compensation rates during employee layoffs. Let’s say a company is struggling during an
-economic downturn and must lay off a portion of its workforce. Does the CEO of the company take his or her
-annual raise or take a pay cut when others are losing their jobs? One could say that to take a raise is unethical
-because the CEO should also sacrifice some pay for the good of the company.
-Fair compensation for employees. Paying employees minimum wage, or just above minimum wage, is not
-always fair compensation. In most regions, the cost of living has not been adjusted in years, meaning that
-people are surviving on less money. Ethics can make a difference here.
-Ethical business practices, guided by a corporate set of standards, can have many positive outcomes, including
-recruitment and retention improvement, better relationships with customers, and positive PR. In 2015, Dan
-Price, CEO of the Seattle payment processing firm Gravity Payments, voluntarily took a huge pay cut and
-vowed to raise his employees’ wages to $70,000. This move was great for the company, which claims that
-revenues and profits skyrocketed, and they experienced a 91 percent employee retention rate over the last few
-years.
-On the opposite side, unethical business behaviors can have a negative impact on any business. Even if an
-unethical decision is made by a single member of the executive team, it can have far-reaching repercussions.
-Some possible results of unethical business actions may include:
-Poor company reputation. In an increasingly transparent world, unethical decisions made by businesspeople
-become permanent stains on the company. Social networks have become sounding boards for anything
-deemed unethical or politically incorrect, and everyone from disgruntled employees to dissatisfied customers
-can rate companies on public company review websites.
-Negative employee relations. If employees continually see a discrepancy between what’s expected of them
-and how leadership behaves, this contrast can create serious problems in the management of employees.
-Some employees may become disengaged, while others will stop working as hard. After all, if the same rules
-don’t apply to everyone, why even bother? The downside to negative employee relations is that the entire
-company becomes less productive, less responsive to customers, and less profitable.
-Recruitment and retention problems. Once a company has developed a negative reputation, it can be
-difficult to recruit new talent, let alone retain the talent that’s already there. Disengaged employees who grow
-tired of the double standards will leave. This attrition can impact customers who then have to deal with less
-experienced and less interested employees, who are already overworked and frustrated.
-Company credibility lost. Customers are savvy enough to follow what’s going on from an ethics standpoint. If
-they hear of a problem, they begin to question the actions of every person at the company. For example, if a
-member of the board is accepting expensive gifts from clients in exchange for favorable pricing of materials,
-this situation could set off major alarms for other customers, and even vendors. The company can expect to
-lose business if this unethical behavior continues.
-As you can see, poor ethics can quickly spiral downward, destroying every aspect of the business and making it
-very difficult to compete. It’s critical for every business to pay attention to ethical standards and continually
-remind employees at all levels that their behavior has an impact on the entire organization.
-History of Corporate Governance
-The concept of corporate governance is relatively new compared to the entire history of free trade and
-business formation. There was likely some “code of honor” followed by businesses in the past, but it wasn’t
-Chapter 3 Business Ethics and Social Responsibility
-33
-
-until the 21st century that greater attention was paid to how companies operate and how the operation
-impacts employees and the communities in which they serve.
-According to the Ethics and Compliance Initiative, which is comprised of organizations that are committed to
-creating best practices in ethics, each decade has been influenced by external factors, such as war or economic
-turmoil, combined with major ethical focal areas, and the result has been the development of ethics and
-compliance programs. For example, in the mid-1980s, the United States was thrust into a recessionary period.
-During this period, government contractors were billing outrageous amounts for equipment and services,
-further increasing the government’s deficit.
-At the same time, larger companies began downsizing to cut costs, which eroded the trust that employees
-once had. People felt the need to look out for themselves. Greed appeared to be everywhere, from political
-bribes to the earliest financial schemers. As a result, General Dynamics established the first business ethics
-office in 1985 to crack down on this kind of activity, and other companies created ombudsman positions to
-help ethics officers identify and prosecute corporate ethics violators.
-Ethical Decision-Making Policies
-In any organization, sound moral, business, and financial practices must be followed at all times. No one is
-above the law or has special privileges when it comes to ethics. Decision making needs to happen with
-corporate governance in mind. According to Michigan State University, the six steps to ethical decision making
-are:
-1.
-Make sure leaders understand the issue at hand and have gathered all of the facts related to it.
-2.
-Leaders should list all of the facts they know, and list any assumptions they are making about the issue.
-This step ensures that the leaders keep the facts and assumptions differentiated and in mind.
-3.
-Note all of the concerns related to the issue, including all of the people concerned, the laws related to the
-issue, and any corporate or professional ethical guidelines that may be involved.
-4.
-Construct a potential solution to the problem.
-5.
-Evaluate the proposed solution, making sure to consider all of the ethical aspects noted in step 3.
-6.
-Once leaders have come to a solution, they recommend it, as well as any actions that need to be taken.
-Establishing a Code of Conduct
-To educate and guide others in the organization, a set of ethics, or a code of conduct, should be developed
-and distributed. Kimberlee Leonard, who writes for the Houston Chronicle, states, “A code of ethics is
-important for businesses to establish to ensure that everyone in the company is clear on the mission, values
-and guiding principles of the company.” While it takes some time to create a code of conduct, the ideals
-involved should already be present in the company’s culture.
-The elements that belong in a code of conduct, according to Kimberlee Leonard, are:
-Legal considerations. The business is a legal entity, and therefore all employees should be thinking about
-their behavior and how it could easily turn into a lawsuit. Establishing conduct rules at this level can clear up
-any gray areas. For example, a company should define what sexual harassment is and what to do if an
-employee experiences it. New items that detail specific codes of conduct can be added as they come up.
-Value-based ethics. These are specific ethics that dig under the surface of a corporate culture. A business
-should think about how it wants to be viewed by the community. Examples could be a commitment to green
-office practices, reduction of a company’s carbon footprint, giving a certain percentage of a company’s profits
-34
-Chapter 3 Business Ethics and Social Responsibility
-This OpenStax book is available for free at http://cnx.org/content/col30149/1.5
-
-to the local food pantry to support the community, etc.
-Regulatory ethics. These are designed to maintain certain standards of performance based on the industry.
-One example is a commitment to maintaining data privacy at all times, as it pertains to customer records. This
-element defines how employees are to handle sensitive data and what will happen if someone doesn’t follow
-the rules.
-Professional behaviors. One should never assume that just because someone puts on a business suit and
-goes to work that he or she will behave professionally. Problems such as bullying, harassment, and abuse can
-happen in the workplace. Establishing behavioral standards for professionalism should include what is
-acceptable in the office, while traveling, during meetings, and after hours, when colleagues meet with clients
-and one another.
-A good code of conduct is a working document that can be updated and shared as needed. Many companies
-include this document as part of their employee manual, while others use a secure intranet for displaying this
-information. No matter where it is housed, employees need to be educated on the code of conduct and refer
-to it often, starting on the first day on the job.
-What to Do When Something Goes Wrong
-It should be noted that along with a code of conduct, there needs to be a clear “whistleblower” policy in which
-violators are identified and action is taken. This process should be handled with complete confidentiality and
-sensitivity to the company and all parties involved. Retaliation should never be tolerated when it comes to
-ethics violations. The company should have a step-by-step plan of action for dealing with ethics problems at all
-levels, up to and including the executive leadership of the company. A third-party investigative firm can be
-used to handle such matters to remove the burden and influence that internal resources may have.
-3.2
-Social Responsibility
-Over the last few decades, there has been a movement throughout the global business community to improve
-the world through smarter use of resources and giving back to communities. This movement is called
-corporate social responsibility. The concept is catching on at companies that range in size from small startups
-to large Fortune 500 corporations. In the following section, you will learn what social responsibility is and how
-it is a win-win for businesses and consumers.
-Chapter 3 Business Ethics and Social Responsibility
-35
-
-Figure 3.3
-Employees often like to participate in volunteer activities through their employer. (Credit:
-rawpixel/ pixabay/ License: CC0)
-What Is Corporate Responsibility?
-Corporate responsibility refers to the idea that a business is given the opportunity and privilege to make the
-world a better place. This process can happen through a variety of methods, including the donation of funds,
-volunteerism, and implementation of environmentally friendly policies. It is up to each organization to
-determine the best way to demonstrate social responsibility.
-While certainly not mandatory, corporate social responsibility has become a popular way for companies to
-improve their image and promote causes they believe in at the same time. Corporate social responsibility may
-involve focusing on the immediate community in which a company does business. Howeve
+You will likely find veterans in just about every facet of the social work profession. For example, veterans are young and old, and come from very diverse backgrounds. Veterans have families, spouses, and children. They struggle with poverty and experience homelessness. They seek aid from state and federal assistance programs, and struggle with mental and physical health disorders, both military-related and non. Veterans pursue employment, and often struggle to bridge the gap between military and civilian life, battle addictions, and are part of the criminal justice system. Though military core values stress excellence and a “never lose” mentality, veterans are no strangers to defeat. Regardless of whether you set out to work with veterans or not, it is very likely that you will interface with them at some point or another. Throughout this chapter, general background information on cultural aspects of veterans, as well as common benefits and services available to former members of the armed forces will be discussed. Specific to this section of the chapter, the question of “what is a veteran?” will be reviewed, and will include some key characteristics of military life, rank, and pay. Some insight on basic military organization and structure, core values and some common misconceptions, will also be addressed, along with the differences between Active Duty and Part-time components. Additionally, common military language and how it might impact services will also be provided. Hopefully better prepare you for the day a veteran knocks on your office door seeking aid.
+With all that in mind, it’s important to stress that when talking about any cultural information, it is impossible to avoid generalizations. We, the authors, as veterans ourselves, feel safe talking for some, but not for all. This is basic information, after all. We have a chapter to define what could easily take volumes to adequately articulate. With that in mind, the views and opinions shared from this point forward are that of our own, and were peer-reviewed by members of academia and by those currently working in and/or are a part of the veteran community.
+Section I. Components of the Military
+Army
+Seal – Department of the Army
+The United States Army serves as the land-based branch of the U.S. Armed Forces. The U.S. Code of Military Justice (UCMJ) defines the Army in Section 3062 of Title 10, U.S. Code of Military Justice. It’s mission is to preserve the peace and security, provide a defense for the United States and the Commonwealths and possessions and any areas occupied by the United States. It supports the national policies implementing the national objectives overcoming any nations responsible for aggressive acts that imperil the peace and security of the United States.
+Navy
+Seal – Department of the Navy
+The mission of the United States Navy is to protect and defend the right of the United States and our allies to move freely on the oceans and to protect our country against her enemies. UCMJ defines the Navy in Section 3062 of Title 10, U.S. Code of Military Justice.
+Marines
+Seal – United States Marine Corps
+The United States Marine Corps (USMC) is a branch of the United States Armed Forces responsible for providing power projection, using the mobility of the US Navy to deliver rapidly, combined-arms task forces on land, at sea, and in the air.
+Air Force
+Seal – Department of the Air Force
+According to the National Security Act of 1947 (61 Stat . 502), which created the USAF: §8062 of Title 10 US Code defines the purpose of the USAF to preserve the peace and security, and provide for the defense, of the United States, the Territories, Commonwealths, and possessions, and any areas occupied by the United States. The stated mission of the USAF today is to “fly, fight, and win in air, space, and cyberspace.”
+U.S. Coast Guard
+The Coast Guard is one of our nation’s five military services. It’s core values—honor, respect, and devotion to duty – are the guiding principles used to defend and preserve the United States of America. The Coast Guard protects the personal safety and security of our people; the marine transportation system and infrastructure; our natural and economic resources; and the territorial integrity of our nation–from both internal and external threats, natural and man-made. We protect these interests in U.S. ports, inland waterways, along the coasts, and on international waters.
+Each branch of service has their own traditions, trademarks, flags, uniforms, requirements, boot camp, and way of training; however, combined they stand together for the protection of freedom, equality, and rights govern to us by us. The men and women who serve the United States are regular people but when they join the military service a higher standard of personal conduct, integrity, respect, honor, and sacrifice is expected.
+Different branches of the military have different uniforms, histories, and tradiations
+Section II. Military Culture
+Military culture is comprised of the environment veterans have been a part of, and has had a major impact on the lives lead since exiting the military. It is important for those that have never served in the military to be familiar with some fundamentals of military service. Before moving on to specific information, there are a few key terms and characteristics that help describe some common threads that make up the backbone of military culture. These components include Camaraderie, Pride and Esprit de Corps, Tradition, and The Mission .
+Camaraderie
+The first term, camaraderie, is arguably the largest component of military culture. The relationship dynamics that arise out of a group of individuals whose success or failures dictates the groups’ fate is a hint of the camaraderie experienced in the military. The companionship that comes out of that type of environment is lifelong.
+To further reinforce this point, refer to the following quote from an article from the newspaper that focuses and reports on matters concerning the armed forces, Stars and Stripes :
+“It’s an unbreakable trust and kinship forged as men push their brains and bodies to the limits each day, together, in an environment that won’t forgive them should one man mess up. One guy keeps the next guy going, to keep all the brothers from falling.”
+(Ziezulewicz, 2009)
+This TED talk by Sebastian Junger entitled Why Veterans Miss War might help describe the strong sense of camaraderie a little better. https://www.youtube.com/watch?v=TGZMSmcuiXM
+Pride and Esprit de Corps
+Pride is undoubtedly a term you are familiar with. To a member of the military, pride (which could also be called Military Bearing) is a driving force behind much of our actions. The uniforms and the way they are worn, the walk, the talk: it is very explicit, strenuously orchestrated, and delivered with the highest possible standards of excellence. It’s meant to present an imposing force that inspires faith in our allies, and fear in our enemies. It stirs competition between service members, especially with those in different branches of the military (Sion, 2016). It boosts confidence to the point of thinking and feeling invincible. Pride is understandably a huge driving force in the actions of all those who don the uniform (Schumm, 2003, p.837). All of this is magnified by what the military refers to as esprit de corps .
+Esprit de corps is essentially the glue that keeps a group of military men and women united; the common spirit that invokes enthusiasm, devotion, and pride in the unit a service member is part of. With hope and aspirations of being the best, they strive to bring honor to those serving with them and to those that served before them in the same unit. A phenomenal example of this can be found in the following video, Marine Corps Silent Drill Platoon Stun a Packed Arena . On the surface, this is a spectacle aimed to entertain. Under the surface, the preparation, precision, and delivery are all aspects of pride. Pride in themselves, pride in their brothers and sisters they serve with, pride in their unit (esprit de corps), and meant to invoke pride in the country’s military. The next component, tradition, has its roots in pride and esprit de corps.
+Tradition
+Four generations of a military family from Cumberland County, Tennessee
+Any group of Soldiers, Marines, Airmen, or Seamen are organized into various-sized groups commonly referred to as units. (More on military organization will be detailed further in this chapter.) Each unit has its own traditions and each military member is part of those traditions, carrying on a tradition of honor, pride, ability, courage, and competence. The things service members do while assigned to that unit echo throughout time and bring honor or shame to those the individual is serving with, and those that served before him or her. In the HBO series Band of Brothers , the Army’s 82 nd Airborne Division was glorified for their valor, courage, and bravery during various operations of World War II. Such a fine example can be tarnished and that reputation dwarfed by just a few poor decisions of an overzealous service member.
+The Mission
+The last term is potentially the most important one, and potentially the most ambiguous. The mission is any task that a service member or group is focused on at any given moment. And that task becomes the embodiment of their being until the task is completed. That task can be small or large and may require individual effort or a group approach. Furthermore, each specific unit within the military carries on its own specific mission, regardless of the size of the unit. Within the military, the Mission, especially when in combat, always comes first. It is placed in higher priority than hopes, dreams, health, and safety.
+What is a Veteran?
+So now that you have a basic understanding of what it is like to serve in the United States military, the next topic to be addressed is the term Veteran. What is a Veteran? This may seem a simple question at first, but in actuality it is a very murky subject. This is evident by conducting a quick online search for “what is a veteran.” Search results yield a new definition for practically every different site you go to. Quite frequently, the various sites contradict one another, as well. While most declare that anybody who has served in the military is a veteran, regardless of any other details, some sources include more specific categories, such as total time served in the military, if they served at times of conflict or war, or type of discharge character. To make matters worse, there is confusion among former service members as to what a veteran is, as well.
+The safest answer can be gathered from the Department of Veterans Affairs (VA). The following exert helps to clear some of the fog: “Title 38 of the Code of Federal Regulations defines a veteran as a person who served in the active military, naval, or air service and who was discharged or released under conditions other than dishonorable (Veterans Authority, 2017).”
+The different branches of the military, differences between Active Duty and the part-time components, as well as the different discharge characters will be detailed later in this chapter. For now, the above definition suggests that if they served at all in any branch of the military and were not dishonorably discharged, they are classified as a veteran. This same definition will be utilized for the purposes of this chapter. However, the initial question of what is a veteran is not entirely answered yet.
+As a social worker, rarely will you yourself have to award veteran status to any individual. If and when you do, the program you are working with will have its own detailed and specific criteria to establish veteran status. For example, when this author (Brian) administered the Supportive Services for Veteran Families (SSVF) grant, a veterans-exclusive, VA-fun

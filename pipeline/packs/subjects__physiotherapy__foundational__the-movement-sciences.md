@@ -1,312 +1,184 @@
 # Source pack — subjects/physiotherapy/foundational/the-movement-sciences
 Lesson title: The Movement Sciences
 Level: foundational
-Match confidence: 1.52
+Match confidence: 2.02
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.52 — Introduction_to_Political_Science_-_WEB § 4.4 Freedom of Movement
+## Match 2.02 — LibreTexts: 3.7: Human Relations Movement
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Bookshelves/Management/Principles_of_Management_(OpenStax)/03%3A_The_History_of_Management/3.07%3A_Human_Relations_Movement
 
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Outline the components of freedom of movement that are deemed essential according to human rights norms.
-•
-Analyze how different government systems treat freedom of movement around the world.
-Freedom of movement can be divided into two categories: the freedom to move about within one’s home
-country and the freedom to move internationally. Article 13 of the Universal Declaration of Human Rights
-recognizes both rights:
-1.
-Everyone has the right to freedom of movement and residence within the borders of each state.
-2.
-Everyone has the right to leave any country, including his own, and to return to his country.84
-How each country interprets and applies the right to freedom of movement varies widely.
-The US Constitution protects travel within the United States as an unenumerated fundamental right.85 The US
-Supreme Court has identified three aspects of the right of persons to travel within the United States:
-1.
-the right to enter and leave each state, fundamental to the founding of the United States;
-2.
-the right to be treated equally to residents of each state, protected by article 4, section 2 of the
-Constitution; and
-3.
-the right to be treated equally to native-born citizens: “Despite fundamentally differing views concerning
-the coverage of the Privileges or Immunities Clause of the Fourteenth Amendment . . . it has always been
-common ground that this Clause protects the third component of the right to travel.”86
-While general interstate travel is a fundamental right, many federal statutes restrict activities that may utilize
-interstate travel. For example, the Mann Act, enacted in 1910, bans interstate transport of females for
-“immoral purposes.” The act has since been amended to be gender neutral and to apply solely to sexual
-activity that is separately illegal, such as prostitution or sex with a minor. In addition, the Supreme Court has
-struck down state laws requiring one-year residency requirements for access to state services and voting. Still,
-it has upheld shorter minimal residency requirements for certain activities.87
-Sweden’s constitution, the Basic Laws of Sweden, contains a guarantee that “everyone shall have access to the
-natural environment in accordance with the right of public access.”88 This right allows travel inside the
-country and access to private property to experience nature as long as an individual does not cause damage to
-the property. Thus, the Swedish constitution’s guarantee in this respect is even broader than the US right to
-interstate travel, which does not allow access to private property without the property owner’s specific
-permission except in certain states and for particular types of property, usually beach or lakeshore access.
-China’s hukou (household registration) system prevents many internal migrants from enjoying full legal status
-as residents in the cities where they work.89 Other Chinese citizens face obstacles to freedom of internal
-movement due to police checkpoints throughout the country that restrict the movement of certain ethnic
-groups.90 In addition, the government has implemented a “social credit system” by which individuals must
-earn points to be allowed to travel within the country or internationally.91
-International Travel
-While the UDHR applies the same standard to travel within a country that it applies to international travel, the
-126
-4 • Civil Liberties
-Access for free at openstax.org
+3.7: Human Relations Movement
+- Understand how Elton Mayo influenced management theory, and how the human relations movement affects current management theory.
+The human relations movement was a natural response to some of the issues related to scientific management and the under-socialized view of the worker that ignored social aspects of work. The key uniting characteristics of Taylor, Weber, and Fayol were the ideas of efficiency produced through either operational, legal, or administrative improvements. One of the principal assumptions was an emphasis on rationality. 48 According to scientific management, there was a logic to actions, and formal and knowledge authority were the principal catalysts of workplace motivation. Scientific management tended to downplay the effects of social pressures on human interactions. 49 The human relations movement enhanced scientific management because it acknowledged that peoples’ attitudes, perceptions, and desires play a role in their workplace performance. With this acknowledgement, for example, managers began to realize that settling disputes was more difficult than the scientific management approach described.
+The major difference between scientific management and human relations theory was that human relations theory recognized that social factors were a source of power in the workplace. While Taylor recognized the existence of social pressures in an organization, he sought to diminish them through pay, that is, compensating workers for production even though social pressure forced workers to reduce production. Fayol recognized the existence of social issues as well, but he emphasized commitment to the organization as a management technique rather than commitment of workers to each other or to their supervisor. Weber placed emphasis on the rule of law and believed that laws and regulations would guide society and corporations. Yet he did not spend enough energy recognizing the outcomes that happen when rules break down. Fayol and Weber did not recognize the role of corporate culture in an organization and did not examine more closely why workers do not follow orders. The human relations movement added more of the social element to the study and theory of work. 50
+Perhaps no research studies have been as misunderstood as the Hawthorne studies. The Hawthorne studies are the most influential, misunderstood, and criticized research experiment in all of the social sciences. The legend goes that Elton Mayo (1880–1949) researched, theorized, and developed human relations theory based on a 1924–1932 experiment he conducted at the Hawthorne plant of the Western Electric Company in Cicero Illinois. However, there is very little of the legend that is true. The truth is more complicated and difficult to understand. Most textbooks claim that Mayo researched and conducted the studies. Yet this is fiction. The studies were commenced by scholars from the Massachusetts Institute of Technology. Mayo did not become involved until 1927. Nevertheless, it is Mayo’s vision of Hawthorne that has come to dominate the literature.
+The first phase of the Hawthorne studies was called the illumination study, and it sought to measure the impact of light upon productivity. The study was inconclusive because there were too many variables other than light that could have affected worker productivity. The researchers had difficulty understanding why productivity increased. The second phase of the study was called the relay-assembly-test-oom, and these experiments were carried out in a room where researchers tested the effect that working conditions such as breaks, length of the workday, company-provided lunches, and payment method had on productivity. They selected six young female workers to be part of a team that produced a phone relay switch. Each woman was young and unlikely to be married any time soon. One woman was assigned to gather the parts to make the switch, and each of the other five women was assigned to assemble one component of the phone relay. The researchers found that production increased regardless of what variable was manipulated. Nevertheless, soldiering still occurred during the experiment. After two workers were fired for a health issue and getting married, production increased even more. The results were surprising to the researchers: they had expected to see a reduction but instead saw a consistent increase.
+The Hawthorne executives turned to Elton Mayo, an Australian psychologist from Harvard University, to explain the puzzling results. Most of the controversy regarding the Hawthorne studies stems from Mayo’s involvement. Mayo observed that production could be increased if management understood the role of individual workers’ attitudes toward work and also took into account how group attitudes affected behavior. Mayo theorized that social issues and attention paid by the supervisor to these issues played a role in increasing production. The Hawthorne women were granted freedoms at work, including the ability to make suggestions regarding their work conditions. Many of the Hawthorne women felt that they were special and that if they performed well on the relay assembly task, they would be treated better by the company’s management. Additionally, the Hawthorne women became very friendly with each other. Their connection as a team and increased satisfaction in their work appeared to drive the women to greater performance. Yet the study found that financial incentives were a clear driver of performance as well.
+A third study, called the bank wiring room study, was conducted between 1931 and 1932. Rather than being selected to form a new group, participants in the bank wiring room study consisted of an already existing group, one that had a number of bad behaviors. Regardless of financial incentives, group members decided that they would only produce 6,000 to 6,600 connections a day. Workers who produced more were ostracized or hit on the arm to lower production. George Homans summarized the difference in the results of the relay assembly and the bank wiring room experiments:
+“Both groups developed an informal social organization, but while the Bank Wiremen were organized in opposition to management, the Relay Assemblers were organized in cooperation with management in the pursuit of a common purpose. Finally, the responses of the two groups to their industrial situation were, on the one hand, restriction of output and, on the other, steady and welcome increase of output. These contrasts carry their own lesson.”
+Researchers found that cliques were formed that placed informal rules on the workers within a group. According to Homans, the workers also made a connection with one of the managers to control production. The discovery that management could ally themselves with the workforce to limit production was a notable contribution to management thought at the time. It suggests that managerial authority can break down if the manager disagrees with management’s policy toward the workers.
+What did the studies mean? On some level, they were meaningless because they proved little. Indeed, they have been called scientifically worthless. There were too many variables being manipulated; the sample size was too small; observations were collected at random; the Hawthorne researchers viewed the experiments through their own ideological lenses. They made mistakes in assuming that that the wage was insignificant to the workers, when in reality the wage was a significant driving force. Yet these criticisms ignore two major facts about the Hawthorne studies. The first is that the Hawthorne studies were the first to focus on the actual work life of the workers. This was a notable change in sociological research. The second fact is that the studies were intended to generate future research, and future research did discover that attitudes play a major role in determining workplace outcomes. Another important finding concerned the role of the supervisor. Many worker behaviors, attitudes, and emotions have their genesis in their supervisor’s actions. Stress and fatigue can be the result of interactions with supervisors and coworkers; they are not just a response to less-than-ideal physical conditions. Finally, the Hawthorne studies showed that work motivation is a function of a wide variety of factors, including pay, social relationships, meaning, interests, and attitudes.
+Barnard and the “Zone of Indifference”
+Chester Barnard (1886–1961) was president of the New Jersey Bell Telephone Company. 51 As president, he was given an unusual amount of time to conduct research. Barnard had been a student at Harvard, and through his connections there, he found out about some of the industrial research going on. His notable contribution was a book called The Functions of the Executive . 52 Barnard argued that an executive’s purpose is to gain resources from members within the organization by ensuring that they perform their jobs and that cooperation exists between various groups within the organization. The other notable function of an executive is to hire and retain talented employees. Barnard defined a formal organization as consciously coordinated activities between two or more people but noted that such coordination is not likely to last for very long, a factor that may explain why many companies do not survive for long periods of time.
+Barnard believed that executives best exerted authority through communication and the use of incentives. Communication within an organization should include definite channels of communication, and workers should have access to knowledge and information. Communication should be clear, direct, and honest so that members of an organization understand what is expected of them.
+Barnard stressed several important outcomes regarding incentives. Some of his incentives reflected the human relations movement’s occupation with social outcomes but tempered that movement’s emphasis with an understanding that workers labored for pay. The first incentive was that there should be monetary and other material inducements to encourage better performance and production. The second incentive was that there should be nonmaterial incentives, such as recognition. The third incentive was that working conditions should be desirable. The fourth and final incentive was that workers should find pride and meaning in the work they do. Barnard believed that a combination of these elements would ensure cooperation and contributions from organizational members.
+While his findings on executive functions, communication, and incentives were significant, Barnard’s largest contribution to the study of management involved what he called the “ zone of indifference .” The idea behind the zone of indifference is that workers will comply with orders if they are indifferent to them. This does not mean they have to agree with or support the orders. Rather the zone of indifference suggests that workers need merely to be indifferent to an order to follow it and that workers will follow orders due to an individual’s natural tendency to follow authority. The zone of indifference must be reached through the following factors. First, the workers must have the ability to comply with the order. Second, workers must understand the order. Third, the order must be consistent with organizational goals. For both management and the worker to cooperate, their interests must be aligned. Fourth, the order must not violate an individual’s personal beliefs. Barnard provided an explanation for why workers do not always obey orders.
+Follett and Conflict Resolution
+Mary Parker Follett (1868–1933) found a way to use the tenets of the human relations movement to solve some of the problems with the scientific management framework. Follett was a political scientist from Harvard. (Her work on the Speaker of the House remains the classic in the field.) After graduating from Harvard, given the limited opportu
 
-latter is more strictly regulated around the world. In the United States before World War II, passport
-requirements came and went, and immigration controls targeted particular racial or ethnic groups. Beginning
-with the Immigration and Nationality Act of 1952, all US citizens have been required to obtain a government-
-issued passport to leave or enter the country.92 A citizen is entitled to due process via a hearing if the
-government refuses to provide the requested passport. In Kent v. Dulles, the Supreme Court held:
-“The right to travel is a part of the “liberty” of which the citizen cannot be deprived without due process of law
-under the Fifth Amendment. . . . If a citizen’s liberty to travel is to be regulated, it must be pursuant to the law-
-making functions of Congress. . . . Freedom of movement across frontiers in either direction, and inside
-frontiers as well, was a part of our heritage. Travel abroad, like travel within the country, may be . . . as close to
-the heart of the individual as the choice of what he eats, or wears, or reads. Freedom of movement is basic in
-our scheme of values.”93
-Most countries utilize passports as a control mechanism for their citizens to exit or reenter the country.
-Conditions for obtaining a passport vary widely. Even if a person has a passport, countries may still impose
-restrictions on their ability to leave the country. For example, it is common for a person under criminal
-investigation to not be allowed to leave the country. If a person is on a terrorist watch list, they will not be
-allowed to leave the country. In some countries, specific groups of people may not be allowed to leave the
-country due to disfavor by the government. In China, the Uyghurs must get permission to travel, and that
-permission is rarely granted.94 Many countries require foreigners to obtain official authorization, in the form
-of visas, to enter or even to leave. Further restrictions are placed on citizens immigrating to another country.
-Migration and Immigration Law
-Migration differs from international travel because the traveler does not intend to return to their starting point.
-Migration involves a number of legal issues, including general immigration laws, refugee status, and a political
-concept called open borders. The UDHR states:
-Article 14
-1.
-Everyone has the right to seek and to enjoy in other countries asylum from persecution.
-2.
-This right may not be invoked in the case of prosecutions genuinely arising from non-political crimes or
-from acts contrary to the purposes and principles of the United Nations.
-Article 15
-1.
-Everyone has the right to a nationality.
-2.
-No one shall be arbitrarily deprived of his nationality nor denied the right to change his nationality.95
-Every country has laws regulating who can leave the country permanently and who can enter and stay.96 In
-many countries, failure to comply with immigration laws is treated as a crime, and a person can be sentenced
-to prison for violating the laws.97 Some countries welcome immigrants,98 while others actively discourage
-them.99 Though the UDHR affirms human migration rights, many countries enact laws restricting the
-permanent movement of people.
-Refugees are one area of considerable controversy. Refugees leave areas in extreme crisis and flee to safety in
-other countries, not necessarily in compliance with emigration or immigration laws.100 Specific UN programs
-aid refugees, and some countries assist.101 A sudden influx of people with no means of caring for themselves is
-a significant issue for most countries in which refugees seek asylum. Conflicts within these countries arise
-around the number of people who can be accommodated, how long they will be allowed to stay, and whether or
-not the residents of the country feel threatened by their presence.
-There is an ongoing debate about changing the world to one of open borders, where people are free to move
-about the world as they want. When there are open borders, there are no restrictions on emigration or
-immigration, except for safety and criminal issues.102 Emigration and immigration issues are complex, and
-society’s acceptance of emigrating and immigrating peoples varies widely depending on a country’s political
-4.4 • Freedom of Movement
-127
+## Match 2.02 — LibreTexts: 2.8: Human Relations Movement
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Courses/Concordia_University_Chicago/Principles_of_Management/02%3A_The_History_of_Management/2.08%3A_Human_Relations_Movement
 
-climate.
+2.8: Human Relations Movement
+- Understand how Elton Mayo influenced management theory, and how the human relations movement affects current management theory.
+The human relations movement was a natural response to some of the issues related to scientific management and the under-socialized view of the worker that ignored social aspects of work. The key uniting characteristics of Taylor, Weber, and Fayol were the ideas of efficiency produced through either operational, legal, or administrative improvements. One of the principal assumptions was an emphasis on rationality (Sonnenfeld, 1985). According to scientific management, there was a logic to actions, and formal and knowledge authority were the principal catalysts of workplace motivation. Scientific management tended to downplay the effects of social pressures on human interaction (Wren & Bedeian, 2009). The human relations movement enhanced scientific management because it acknowledged that peoples’ attitudes, perceptions, and desires play a role in their workplace performance. With this acknowledgment, for example, managers began to realize that settling disputes was more difficult than the scientific management approach had described.
+The major difference between scientific management and human relations theory was that human relations theory recognized that social factors were a source of power in the workplace. While Taylor recognized the existence of social pressures in an organization, he sought to diminish them through pay: that is, compensating workers for production even though social pressure forced workers to reduce production. Fayol recognized the existence of social issues as well, but he emphasized commitment to the organization as a management technique rather than commitment of workers to each other or to their supervisor. Weber emphasized the rule of law and believed that laws and regulations would guide society and corporations. Yet, he did not spend enough energy recognizing the outcomes when rules break down. Fayol and Weber did not recognize the role of corporate culture in an organization and did not examine more closely why workers do not follow orders. The human relations movement added more of the social element to the study and theory of work (Wren & Bedeian, 2009).
+Perhaps no research studies have been as misunderstood as the Hawthorne studies. The Hawthorne studies are the most influential, misunderstood, and criticized research experiment in all of the social sciences. The legend goes that Elton Mayo (1880–1949) researched, theorized, and developed human relations theory based on a 1924–1932 experiment he conducted at the Hawthorne plant of the Western Electric Company in Cicero Illinois. However, very little of the legend is true. The truth is more complicated and difficult to understand. Most textbooks claim that Mayo researched and conducted the studies. Yet this is fiction: the studies were commenced by scholars from the Massachusetts Institute of Technology. Mayo did not become involved until 1927. Nevertheless, it is Mayo’s vision of Hawthorne that has come to dominate the literature.
+The first phase of the Hawthorne studies was called the illumination study, and it sought to measure the impact of light on productivity. The study was inconclusive because too many variables other than light could have affected worker productivity. The researchers had difficulty understanding why productivity increased. The second phase of the study was called the relay-assembly-test-room, and these experiments were carried out in a room where researchers tested the effect that working conditions such as breaks, length of the workday, company-provided lunches, and payment method had on productivity. They selected six young female workers for a team that produced a phone relay switch. Each woman was young and unlikely to be married any time soon. One woman was assigned to gather the parts to make the switch, and each of the other five women was assigned to assemble one component of the phone relay. The researchers found that production increased regardless of what variable was manipulated. Nevertheless, soldiering still occurred during the experiment. After two workers were fired for a health issue and for getting married, production increased even more. The results surprised the researchers: they had expected to see a reduction but instead saw a consistent increase.
+The Hawthorne executives turned to Elton Mayo, an Australian psychologist from Harvard University, to explain the puzzling results. Most of the controversy regarding the Hawthorne studies stems from Mayo’s involvement. Mayo observed that production could be increased if management understood the role of individual workers’ attitudes toward work and also took into account how group attitudes affected behavior. Mayo theorized that social issues and attention paid by the supervisor to these issues played a role in increasing production. The Hawthorne women were granted freedoms at work, including the ability to make suggestions regarding their work conditions. Many of the Hawthorne women felt that they were special and that if they performed well on the relay assembly task, they would be treated better by the company’s management. Additionally, the Hawthorne women became very friendly with each other. Their connection as a team and increased satisfaction in their work appeared to drive the women to greater performance. Yet the study found that financial incentives were also a clear driver of performance.
+A third study, called the bank wiring room study, was conducted between 1931 and 1932. Rather than being selected to form a new group, participants in the bank wiring room study consisted of an already existing group, one that had a number of bad behaviors. Regardless of financial incentives, group members decided that they would only produce 6,000 to 6,600 connections a day. Workers who produced more were ostracized or hit on the arm to lower production. George Homans summarized the difference in the results of the relay assembly and the bank wiring room experiments:
+“Both groups developed an informal social organization, but while the Bank Wiremen were organized in opposition to management, the Relay Assemblers were organized in cooperation with management in the pursuit of a common purpose. Finally, the responses of the two groups to their industrial situation were, on the one hand, restriction of output and, on the other, steady and welcome increase of output. These contrasts carry their own lesson.”
+Researchers found that cliques were formed that placed informal rules on the workers within a group. According to Homans, the workers also made a connection with one of the managers to control production. The discovery that management could ally themselves with the workforce to limit production was a notable contribution to management thought at the time. It suggests that managerial authority can break down if the manager disagrees with management’s policy toward the workers.
+What did the studies mean? On some level, they were meaningless because they proved little. Indeed, they have been called scientifically worthless. There were too many variables being manipulated; the sample size was too small; observations were collected at random; the Hawthorne researchers viewed the experiments through their own ideological lenses. They made mistakes in assuming that the wage was insignificant to the workers when, in reality, the wage was a significant driving force. Yet these criticisms ignore two major facts about the Hawthorne studies. The first is that the Hawthorne studies were the first to focus on the actual work life of the workers. This was a notable change in sociological research. The second fact is that the studies were intended to generate future research, and future research did discover that attitudes play a major role in determining workplace outcomes. Another important finding concerned the role of the supervisor. Many worker behaviors, attitudes, and emotions have their genesis in their supervisor’s actions. Stress and fatigue can result from interactions with supervisors and coworkers; they are not just a response to less-than-ideal physical conditions. Finally, the Hawthorne studies showed that work motivation is a function of a wide variety of factors, including pay, social relationships, meaning, interests, and attitudes.
+Barnard and the “Zone of Indifference”
+Chester Barnard (1886–1961) was president of the New Jersey Bell Telephone Company (Gehani, 2002). As president, he was given an unusual amount of time to conduct research. Barnard had been a student at Harvard, and through his connections there, he found out about some of the current industrial research. His notable contribution was a book called The Functions of the Executive ( Chester, 1938). Barnard argued that an executive’s purpose is to gain resources from members within the organization by ensuring that they perform their jobs and that cooperation exists between various groups within the organization. The other notable function of an executive is to hire and retain talented employees. Barnard defined a formal organization as consciously coordinated activities between two or more people but noted that such coordination is not likely to last for very long, a factor that may explain why many companies do not survive for long periods.
+Barnard believed that executives best exerted authority through communication and the use of incentives. Communication within an organization should include definite channels of communication, and workers should have access to knowledge and information. Communication should be clear, direct, and honest so that members of an organization understand what is expected of them.
+Barnard stressed several important outcomes regarding incentives. Some of his incentives reflected the human relations movement’s occupation with social outcomes but tempered that movement’s emphasis with an understanding that workers labored for pay. The first incentive was that there should be monetary and other material inducements to encourage better performance and production. The second incentive was that there should be nonmaterial incentives, such as recognition. The third incentive was that working conditions should be desirable. The fourth and final incentive was that workers should find pride and meaning in the work they do. Barnard believed that combining these elements would ensure cooperation and contributions from organizational members.
+Although his findings on executive functions, communication, and incentives were significant, Barnard’s largest contribution to the study of management involved what he called the “ zone of indifference .” The idea behind the zone of indifference is that workers will comply with orders if they are indifferent to them. This does not mean they have to agree with or support the orders. Rather, the zone of indifference suggests that workers must merely be indifferent to an order to follow it and that workers will follow orders due to an individual’s natural tendency to follow authority. The zone of indifference must be reached through the following factors. First, the workers must have the ability to comply with the order. Second, workers must understand the order. Third, the order must be consistent with organizational goals. For management and the worker to cooperate, their interests must be aligned. Fourth, the order must not violate an individual’s personal beliefs. Barnard provided an explanation for why workers do not always obey orders.
+Follett and Conflict Resolution
+Mary Parker Follett (1868–1933) found a way to use the tenets of the human relations movement to solve some of the problems with the scientific management framework. Follett was a political scientist from Harvard. (Her work on the Speaker of the House remains the classic in the field.) After graduating from Harvard, given the limited opportunities for wom
 
-## Match 1.52 — World_History_Volume_1-WEB § 13.4 The Crusading Movement
+## Match 1.54 — LibreTexts: 9.10C: Muscles that Cause Movement at the Foot
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://med.libretexts.org/Bookshelves/Anatomy_and_Physiology/Anatomy_and_Physiology_(Boundless)/9%3A_Muscular_System/9.10%3A_Muscles_of_the_Lower_Limb/9.10C%3A_Muscles_that_Cause_Movement_at_the_Foot
 
-Western Afro-Eurasia faced a number of challenges in the early Middle Ages, the period from
-about 500 to 1000 CE. With the collapse of Roman authority came a time of political instability and insecurity.
-Cities declined, and institutions of learning weakened. Western Europe became increasingly rural. Because
-there was no longer a strong centralized state to develop and police the roads, travel became more difficult and
-more dangerous, harming commerce. However, this is not the whole story. Trade and urban life flourished in
-the early Islamic kingdoms, which eventually extended from Spain to India. The Byzantine Greeks maintained
-some classical traditions, and their capital in Constantinople was a center of global trade for centuries.
-Germanic kings sought to form new alliances with Christian leaders and participate in world trade and
-diplomacy.
-Perhaps no figure better exemplifies the merging of cultures in western Europe than Charlemagne, a Germanic
-ruler who reigned from 768 to 814. Charlemagne dreamed of reviving the Roman world in terms of territory,
-13
-The Post-Roman West and the
-Crusading Movement
-
-education, and art. Despite his belief in spreading Christianity through conquest, he sent embassies to Muslim
-leaders and even received the sumptuous gift of an elephant from the Abbasid ruler Harun al-Rashid in 802
-(Figure 13.1). It might be tempting to see this period as one of just conflict, but as Charlemagne’s reign
-demonstrates, it was also a dynamic time of merging cultures and social transformation.
-FIGURE 13.2 Timeline: The Post-Roman West and the Crusading Movement. (credit “552”: modification of work
-“Saint Radegonde” by Poitiers Municipal Library/Wikimedia Commons, Public Domain; credit “800”: modification of
-work “Emperor Charlemagne and Emperor Sigismund” by Germanisches Nationalmuseum/Wikimedia Commons,
-Public Domain; credit “910”: modification of work Consécration de Cluny III par Urbain II” by Bibliothèque
-Nationale de France/Wikimedia Commons, Public Domain; credit “1095”: modification of work “Peter the Hermit
-Preaching the First Crusade” by Cassell’s History of England, Vol. 1 (of 8)/Wikimedia Commons, Public Domain;
-credit “1200”: modification of work “Franz Wilhelm Schiertz Borgunds Kirke i Lærdal i Sogn” by Norge fremstillet i
-Tegninger fra Digitalarkivet/Wikimedia Commons, Public Domain)
-534
-13 • The Post-Roman West and the Crusading Movement
-Access for free at openstax.org
-
-FIGURE 13.3 Locator Map: The Post-Roman West and the Crusading Movement. (credit: modification of work
-“World map blank shorelines” by Maciej Jaros/Wikimedia Commons, Public Domain)
-
-## Match 1.52 — World_History_Volume_2-WEB_LdwoslB § 14.3 The Non-Aligned Movement
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe the relationship between Yugoslavia and the Soviet Union
-•
-Discuss the goals of the Non-Aligned Movement
-•
-Explain how Indonesia, India, and Egypt attempted to avoid joining either the Western or the
-Eastern Bloc
-•
-Identify the causes of the Israeli-Arab conflict in the Middle East
-As the Soviet Union and the United States struggled for supremacy, they sought to attract the support of the
-world’s nations by offering financial aid, military support, and technical advice. Many countries were willing to
-align with one side or the other for a variety of reasons, sometimes ideological but often not. Some nations,
-however, resisted being drawn into either camp.
-Yugoslavia
-In the aftermath of World War II, the nations of Europe speedily aligned themselves with either the Western or
-the Eastern Bloc, with one exception: Yugoslavia. In 1942, communist partisans who had fought the Axis
-powers on behalf of the People’s Liberation Front formed a government, the Anti-Fascist Council for the
-National Liberation of Yugoslavia (AVNOJ). When Italian forces evacuated Yugoslavia in 1943, AVNOJ assumed
-control of the territory and established the state of Democratic Federal Yugoslavia. The partisans’ leader, Josip
-Broz Tito, was named prime minister. In 1945, Yugoslavia’s monarchy was abolished, and Tito was recognized
-as the leader of the country. This result was confirmed by a nationwide election held shortly thereafter.
-Yugoslavia was a communist state from the beginning and was one of the founders of the Cominform, the
-Information Bureau of the Communist and Workers’ Parties, in 1947. Cominform’s purpose was to give
-direction to the communist governments of Europe after World War II so that they might coordinate their
-efforts to oppose anti-communist activity in the rest of Europe. The Soviet Union would be at the fore,
-providing guidance for the others.
-Tito and Stalin clashed early on, however. Tito wished to incorporate within Yugoslavia the countries of
-Bulgaria and Albania, as well as parts of Greece, Italy, and Austria. Stalin opposed Yugoslavia’s claims,
-believing them to be unreasonable and likely to cause trouble with Western Europe. Yugoslavia also aided the
-Greek communists in their civil war, which Stalin opposed as well, again believing the West would be angered
-590
-14 • Cold War Conflicts
-Access for free at openstax.org
-
-by it. Tito, for his part, refused to accept a secondary position for Yugoslavia. Unlike the other members of the
-Eastern Bloc, Yugoslavia had liberated itself from the Axis without Soviet assistance. Thus, Tito believed it
-should be treated by the Soviet Union as an equal, not as a satellite state to which it gave orders.
-In 1948 Cominform expelled Yugoslavia. For assistance Tito turned to the United States, which helped
-Yugoslavia survive despite its inability to trade with its Eastern Bloc neighbors. Tito, however, was equally
-concerned about becoming a puppet of the United States, and during the 1950s and 1960s, Yugoslavia became
-economically self-sufficient and traded with members of both the Western and Eastern Blocs. In 1960, Tito
-spoke before the General Assembly of the United Nations and called upon “non-bloc countries” to unite to
-achieve common goals of decolonization, disarmament, bans on nuclear testing, and equality of economic
-development.
-The Bandung Conference and Indonesia
-Among European nations, Yugoslavia’s refusal to become a member of either the Western or the Eastern Bloc
-made it an exception. But a desire to plot a middle path between the superpowers was common in former
-colonies or protectorates of European powers, especially in South Asia, Africa, and the Middle East.
-In April 1955 representatives from twenty-nine such countries in Asia and Africa gathered at a conference in
-Bandung, Indonesia. Their goal was to be able to rely on one another as they strove to industrialize and avoid
-the need to turn to Europe, the United States, or the Soviet Union for assistance. This aim formed the basis for
-the Non-Aligned Movement, an attempt by newly independent nations to stay out of the orbit of either the
-Western or the Eastern Bloc.
-Indonesia assumed a leading role in the Non-Aligned Movement. An anti-Dutch independence campaign had
-developed there before World War II, and in August 1945 two of its leaders, Mohammad Hatta and Kusno
-Sosrodihardjo, known as Sukarno, proclaimed independence for Indonesia, a status that became official in
-1949. Sukarno, on becoming president, stressed that the nation wished to remain neutral in foreign affairs.
-Both the United States and the Soviet Union desired Indonesia as an ally. It was a country with a large
-population, oil deposits, and a strategically advantageous geographical position. Both sides believed
-Indonesia’s future path—communist or democratic—would greatly influence the other nations of Asia.
-Accordingly, both courted Sukarno, and Sukarno accepted aid from both. In his eyes, so long as he did not
-allow either superpower to determine Indonesia’s affairs, his country was neutral.
-In 1956, Sukarno visited China and was impressed by what Mao Zedong had been able to achieve. Believing
-Mao’s ability to centralize power lay at the heart of China’s success, upon his return to Indonesia, Sukarno
-established a National Council made up of representatives of larger social groups, such as peasants and
-workers, to reach decisions by consensus rather than by voting. In the new “Guided Democracy” he
-established in 1959, the consensus of the nation would be expressed through the president instead of the
-legislature. To shore up his autocratic authority, Sukarno turned to both the Indonesian Communist Party and
-the conservative armed forces. His goal was the creation of an Indonesian state based on what he called
-NASAKOM, an acronym standing for nationalism, religion, and communism.
-By 1964 Sukarno had abandoned all pretense of neutrality and sought alliances with communist countries
-while encouraging anti–United States sentiment in Indonesia. In 1965, Suharto, a general in the Indonesian
-military, claimed that Indonesian communists had sought to subvert the government by plotting to kill
-Sukarno. Suharto’s subsequent destruction of Indonesia’s communists, carried out with the aid of the CIA, may
-have cost the lives of some one million people (Figure 14.12). In 1967, Suharto removed Sukarno from office
-and assumed dictatorial powers.
-14.3 • The Non-Aligned Movement
-591
-
-FIGURE 14.12 Suharto. Major-General Suharto (right) attends a funeral for generals he claimed were killed in a
-communist coup. He used the supposed coup as an excuse to kill Indonesian communists. (credit: “Suharto at
-funeral” by Department of Information of the Republic of Indonesia/Wikimedia Commons, Public Domain)
-India
-Like Indonesia, India sought to plot its own path and remain free of the entangling alliances of the Cold War,
-and it was also one of the initiators of the Non-Aligned Movement. In 1947, the United Kingdom granted India
-its independence. Anti-British protests had rocked India throughout 1946, and, exhausted from fighting World
-War II, Britain could no longer afford to maintain control over its colony. In addition, although the United
-Kingdom had sufficient troops there, the majority were Indian, and it was uncertain where their loyalties lay.
-Indeed, in 1946 Indians in the British Navy had mutinied throughout the country. Finally, the United
-Kingdom’s greatest ally and creditor, the United States, pressured the nation to grant India its independence,
-as the United States had given independence to the Philippines following the war.
-The announcement that the British would be withdrawing sparked waves of religious violence throughout the
-nation. Much of it was caused by a dispute over what an independent India would consist of. Hindus in the
-Indian National Congress called for the maintenance of a single, unified India. Muslims, however, feared that
-the Hindu majority would dominate the government to their detriment, and many were reluctant to agree to
-such a situation. A compromise was reached, and at midnight on August 15, 1947, when India achieved its
-independence, the region of Pakistan, home to a Muslim majority, became an independent nation as well.
-Kashmir
-In August 1947, when India became independent of the United Kingdom and Pakistan was established as a
-separate nation, the status of the Indian state of Jammu and Kashmir (usually referred to simply as Kashmir) was
-in question. India wished to retain control of it, but because the state had a largely Muslim population, Pakistan
-lay claim to it; thus, India and Pakistan went to war. Peace was established when the United Nations intervened,
-and Kashmir remained part of India. In 1965, war broke out again when Pakistan tried to seize the Indian state
-by force. As a result of negotiations mediated by the Soviet Union, both sides withdrew their forces from the
-region. War erupted a third time in 1971, and fighting broke out yet again in 1999.
-Between 2016 and 2018, Kashmiri separatists launched a series of attacks on Indian security forces, with India
-placing the blame on Pakistan as the instigator of the violence. In 2019, following a suicide attack on an Indian
-army convoy by militants based in Pakistan, the government of India revoked Article 370 of its constitution,
-which had granted Kashmir a degree of autonomy. In February 2021, a cease-fire agreement was reached
-between India and Pakistan, and peace returned to the region as local tourists, unable to vacation abroad
-because of the COVID-19 pandemic, flocked to the mountainous region to enjoy winter sports.
-THE PAST MEETS THE PRESENT
-592
-14 • Cold War Conflicts
-Access for free at openstax.org
-
-•
-How does the Kashmir conflict reflect the politics of the Cold War?
-•
-How might the continuing tension in the region represent a new kind of Cold War?
-India’s geographic location, bordering both the Soviet Union and China, made it of great interest to the West.
-The United Kingdom continued to trade with India, supply it with weapons, and train its military officers.
-India’s first prime minister, Jawaharlal Nehru, wished to maintain his distance from the United States,
-however. He was sympathetic to socialism and had visited the Soviet Union. He recognized the People’s
-Republic of China and opposed the U.S. refusal to allow the PRC to hold China’s seat on the UN Security
-Council. He was also suspicious of U.S. intentions toward India, given the government’s treatment of its own
-citizens of color. Nevertheless, Nehru accepted aid from the United States in the 1950s, just as he did from the
-Soviet Union.
-In 1950, India’s relationship with China changed when China established border posts in Tibet to demarcate
-its territory, including land India claimed. India and China sought to maintain an amicable relationship and
-even signed a treaty affirming the Five Principles of Peaceful Coexistence in 1954. But when Tibet’s leader, the
-Fourteenth Dalai Lama, sought protection in India after fleeing Tibet during an anti-Chinese uprising in 1959,
-India’s support for him angered China. In 1962, a confrontation along the disputed border with Tibet led to war
-between the two countries. The United States aided India, and while the Soviet Union officially remained
-neutral, it also continued to provide funds and technology to India. This decision deepened a divide that was
-already growing between the USSR and China.
-Egypt and the Middle East
-Before World War II, the United States had demonstrated relatively little concern for the Middle East, which fell
-largely under British control. Following the war, however, problems in the region, some of which stemmed
-from British policies and actions, threatened to move Arab and Iranian leaders closer to the Soviet Union. This
-possibility alarmed the United States and led to attempts to forge relationships with Middle Eastern
-governments. The nations that proved of greatest interest were Iran, Egypt, and the newly formed state of
-Israel.
-Iran first became a place of concern to the United States immediately following World War II, when the Soviet
-Union proved reluctant to end its occupation of the country. Following the war, the United Kingdom had
-resumed its activities in the region, which largely consisted of drilling for oil. In 1951, Mohammad Mossadegh,
-an Iranian nationalist, became the country’s prime minister and moved to nationalize the oil fields belonging
-to British companies. This action led to protests by the United Kingdom and by pro-Western Iranian elites who
-supported British interests. In 1952, Iran’s monarch, the pro-Western shah Mohammad Reza Pahlavi, removed
-Mossadegh from power. He was forced to reinstate him, however, following massive popular protests.
-Mossadegh’s actions convinced both the United Kingdom and the United States that he favored communism
-and might ally Iran with the Soviet Union, with which it shared a border. Although it is unlikely he intended to
-make Iran a satellite state of the Soviet Union, British arguments that this was the case convinced the United
-States to take action. In August 1953, a coup plotted by the CIA and Iran’s military, which supported the Shah,
-removed Mossadegh from power again. He was arrested and imprisoned.
-British actions laid the groundwork for another conflict in the Middle East following World War II. In 1917,
-Britain’s foreign secretary Arthur James Balfour had declared that Britain would support the establishment of
-a Jewish homeland in Palestine. Throughout the 1930s, Jewish people from Europe had streamed to the
-region, and as their numbers increased, so did violence between them and Arabs, who demanded an end to
-Jewish immigration and the creation of an independent Arab state. Following the end of World War II, as
-Jewish survivors of the Holocaust sought refuge in Palestine, the British government requested that the 
+9.10C: Muscles that Cause Movement at the Foot
+Movement of the foot and toes requires the action of many muscles.
+- Differentiate among the muscles that cause feet to move
+Key Points
+- The hallux or large toe is extended by the extensor hallucis brevis on the top of the foot.
+- The flexor hallucis brevis and abductor hallucis flex and abduct the big toe. The adductor hallucis adducts the big toe.
+- The remaining toes are flexed by the flexor digitorum longus, lumbricals, flexor digitorum brevis, and quadratus plantae.
+- The little toe is also controlled by the flexor digiti minimi and abductor digiti minimi.
+- The toes (other than the big toe) are extended by the extensor digitorum brevis.
+- The dorsal and plantar interossei are muscles between the metatarsals that help maintain the foot’s arch. The also aid in flexion and extension.
+Key Terms
+- plantar : The sole of the foot.
+- dorsal : The top surface of foot.
+The foot plays a fundamental role in maintaining upright walking posture and balance, so it must provide a strong base while allowing for small, accurate movements. The foot can be split into dorsal and plantar compartments, the latter of which contains significantly more muscles.
+Dorsal Compartment
+Although many extrinsic muscles attach within the dorsal compartment, there are only three intrinsic muscles which act on the foot and two extrinsic muscles which act on the foot rather than the ankle.
+-
+Extensor Digitorum Longus
+: The extensor digitorum longus is a deep-lying extrinsic muscle that lies runs down the length of the tibia.
+- Attachments: Originates from the tibia and transitions into a tendon, passes into the foot, splits into four, and attaches to the toes.
+- Actions: Extension of the toes.
+-
+Extensor Digitorum Brevis
+: The extensor digitorum brevis muscle is a deep-lying intrinsic muscle lying beneath the tendon of the extensor digitorum longus.
+- Attachments: Originates from the heel and attaches to the toes.
+- Actions: Extension of the toes.
+-
+Extensor Hallucis Longus
+: The extensor hallucis longus is a deep-lying extrinsic muscle lying beneath the extensor digitorum longus.
+- Attachments: Originates from the fibula and attaches to the big toe.
+- Actions: Extension of the big toe.
+-
+Extensor Hallucis Brevis
+: The extensor hallucis brevis muscle is an intrinsic muscle of the foot lying between the extensor digitorum longus and lateral to extensor hallucis longus.
+- Attachments: Originates from the heel and attaches to the big toe.
+- Actions: Extension of the big toe.
+-
+Dorsal Interossei
+: There are four dorsal interossei located between the metatarsals. Each arises from two metatarsals.
+- Attachments: Originates from the sides of metatarsals one to five (big toe to little toe). The first muscle attaches to the medial side of the phalanx of the second toe. The second to fourth interossei attach to the lateral sides of the phalanxes of toes two to four.
+- Actions: Abduct and flexes digits two to four.
+Plantar Compartment
+The muscles of the plantar compartment play a key role in stabilizing the arch of the foot and controlling the digits, providing the necessary strength and fine movements to maintain balance and posture and promote walking.
+Plantar View of Foot : The muscles, tendons, and ligaments of the sole of the foot with flexor digitorum brevis shown in red.
+-
+Abductor Hallucis
+: The abductor hallucis muscle is located on the medial side of the sole.
+- Attachments: Originates from the heel and attaches to the base of the big toe.
+- Actions: Abducts and flexes the big toe.
+-
+Flexor Digitorum Brevis
+: The flexor digitorum brevis muscle is located laterally to the abductor hallucis and lies in the middle of the sole of the foot.
+- Attachments: Originates from the heel and attaches to all the toes excluding the little toe.
+- Actions: Flexes the toes at the proximal interphalangeal (between the phalanges preoxmales and phalanges mediae) joints.
+-
+Abductor Digiti Minimi
+: The abductor digiti minimi muscle is located on the lateral side of the foot.
+- Attachments: Originates from the heel and attaches to the little toe.
+- Actions: Abducts and flexes the little toe.
+-
+Quadratus Plantae
+: The quadratus plantae muscle is located superior to the flexor digitorum longus tendons.
+- Attachments: Originates from the heel and attaches to the tendons of flexor digitorum longus.
+- Actions: Assists flexor digitorum longus in flexing the lateral four toes.
+-
+Lumbricals
+: The lumbricals are four small skeletal muscles, accessory to the tendons of the flexor digitorum longus and numbered from the medial side of the foot.
+- Attachments: Originates from the tendons of flexor digitorum longus. Attaches to the toes.
+- Actions: Flexes at the metatarsophalangeal (between the metatarsals and phalanges proximale) joints, while extending the interphalangeal joints (between the phalanges proximale and phalanges mediae).
+-
+Flexor Hallucis Brevis
+: The flexor hallucis brevis muscle is located on the medial side of the foot.
+- Attachments: Originates from the plantar surfaces of the cuboid and lateral cuneiform bones in the sole of the foot and attaches to the big toe.
+- Actions: Flexes the big toe.
+-
+Adductor Hallucis
+: The adductor hallucis muscle is located laterally to the flexor hallucis brevis.
+- Attachments: The adductor hallucis originates from the bases of the first four metatarsals, and also from the plantar ligaments before attaching to the big toe.
+- Actions: Adduct the big toe and maintains the arch of the foot.
+-
+Plantar Interossei
+: The three plantar interossei lie beneath rather than between the metatarsal bones. Each is connected with one metatarsal bone.
+- Attachments: Originates from the medial side of metatarsals three to five. Attaches to the medial sides of the phalanges of digits three to five.
+- Actions: Adducts and flexes digits three to five.
+-
+Flexor Digiti Minimi Brevis
+: Similar to the interossei in structure, the flexor digiti minimi brevis muscle is located on the lateral side of the foot underneath the metatarsal of the little toe.
+- Attachments: Originates from the base of the fifth metatarsal and attaches to the base of phalanx of the little toe
+- Actions: Flexes the little toe.
+LICENSES AND ATTRIBUTIONS
+CC LICENSED CONTENT, SHARED PREVIOUSLY
+- Curation and Revision. Authored by : Boundless.com. Provided by : Boundless.com. License : CC BY-SA: Attribution-ShareAlike
+CC LICENSED CONTENT, SPECIFIC ATTRIBUTION
+- Muscles of the hip. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Muscles_of_the_hip . License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physiology.../gluteal-group . License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physiology...liopsoas-group . License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physiology...-rotator-group . License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physiology...adductor-group . License : CC BY-SA: Attribution-ShareAlike
+- image434.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus434.html . License : Public Domain: No Known Copyright
+- image433.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus433.html . License : Public Domain: No Known Copyright
+- image430.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus430.html . License : Public Domain: No Known Copyright
+- Hamstrings. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Hamstrings . License : CC BY-SA: Attribution-ShareAlike
+- Popliteus muscle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Popliteus_muscle . License : CC BY-SA: Attribution-ShareAlike
+- Patellar reflex. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Patellar_reflex . License : CC BY-SA: Attribution-ShareAlike
+- Quadriceps femoris muscle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Quadric...femoris_muscle . License : CC BY-SA: Attribution-ShareAlike
+- quadriceps. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/quadriceps . License : CC BY-SA: Attribution-ShareAlike
+- popliteus. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/popliteus . License : CC BY-SA: Attribution-ShareAlike
+- patellar reflex. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/patellar_reflex . License : CC BY-SA: Attribution-ShareAlike
+- image434.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus434.html . License : Public Domain: No Known Copyright
+- image433.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus433.html . License : Public Domain: No Known Copyright
+- image430.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus430.html . License : Public Domain: No Known Copyright
+- image434.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus434.html . License : Public Domain: No Known Copyright
+- Provided by : Wikimedia. Located at : upload.wikimedia.org/wikipedi...c1/Gray439.png . License : Public Domain: No Known Copyright
+- Ankle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Ankle%23Ligaments . License : CC BY-SA: Attribution-ShareAlike
+- Fibularis longus. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Fibularis_longus . License : CC BY-SA: Attribution-ShareAlike
+- Tibialis anterior muscle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Tibialis_anterior_muscle . License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physiology...ltoid-ligament . License : CC BY-SA: Attribution-ShareAlike
+- inversion. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/inversion . License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physiology...ialis-anterior . License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physiology...bular-ligament . License : CC BY-SA: Attribution-ShareAlike
+- image434.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus434.html . License : Public Domain: No Known Copyright
+- image433.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus433.html . License : Public Domain: No Known Copyright
+- image430.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus430.html . License : Public Domain: No Known Copyright
+- image434.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus434.html . License : Public Domain: No Known Copyright
+- Provided by : Wikimedia. Located at : upload.wikimedia.org/wikipedi...c1/Gray439.png . License : Public Domain: No Known Copyright
+- image438.gif. Provided by : Anatomy of the Human Body. Located at : http://www.bartleby.com/107/illus438.html . License : Public Domain: No Known Copyright
+- Tibialis anterior 2. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:Ti...anterior_2.png . License : Public Domain: No Known Copyright
+- Extensor hallucis brevis muscle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Extenso..._brevis_muscle . License : CC BY-SA: Attribution-ShareAlike
+- Lumbrical muscle (foot). Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Lumbrical_muscle_(foot) . License : CC BY-SA: Attribution-ShareAlike
+- Abductor digiti minimi muscle (foot). Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Abducto..._muscle_(foot) . License : CC BY-SA: Attribution-Shar

@@ -5,6 +5,111 @@ Match confidence: 1.72
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
+## Match 1.72 — LibreTexts: 1.5: Culture
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Psychology/Culture_and_Community/Dress_Appearance_and_Diversity_in_U.S._Society_(Reddy-Best_Elder_and_Hassall)/01%3A_Dress_Theories_and_Concepts/1.05%3A_Culture
+
+MLO 5.1 Identify foundational concepts and theories related to culture, identity, and dress. [CLO 1]
+MLO 5.2 Identify the factors that influence different cultural aspects of dress. [CLO 1]
+MLO 5.3 Identify the different cultural perspectives an individual can take to approach understanding the dress and identity of others. [CLO 1]
+MLO 5.4 Explain the role of dress in identity development. [CLO 1]
+MLO 5.5 Examine how marginalized communities in the United States use dress and appearance to negotiate their identities. [CLO 2]
+MLO 5.6 Deconstruct your own perspectives and approach to understanding the dress of others. [CLO 4]
+What Is Culture?
+Culture
+refers to aspects of human-made elements, including tools, dress, and media, in addition to values, attitudes, and norms. Dress is a significant part of almost every culture.
+As more cultures have cross-cultural contact, people from begin to change aspects of their cultures by incorporating aspects of different cultures they come into contact with. This includes changes in dress. This process of cultural change is often referred to as
+cultural authentication
+.
+It should be noted though, that there is a long history of forced assimilation, especially for Native or Indigenous communities in North America (
+Little, 2018
+). That is, Native communities were forced to assimilate into European culture; Native people were not interested in incorporating European cultural elements.
+Culture vs. Cultured
+All people have culture
+. Culture is not something held only by society elites, such as only the wealthiest, most educated, or most sophisticated.
+Culture is a system
+of learned behavior patterns that are characteristic of the members of a society (Hoebel, 1958). Note the emphasis on the learning of behaviors or ways of doing things. Culture is learned, and individuals learn culture through an ongoing process of socialization. Parents, families, schools, peers, and workplaces, for example, all socialize individuals to ways of doing things. We find differences across cultures in dress, language, food preferences, and other behaviors in part because these are learned behaviors—not knowledge that is innate, instinctual, or determined by genetic programming.
+Cultural patterns are characteristic behaviors and often include a complex array of choices. A culture may afford more than one way of doing the same thing. Hence, diversity in behaviors may be found in some aspects of any culture
+Culture is a complex whole
+that includes knowledge, belief, art, morals, law, customs, and any other capabilities and habits that members of a society acquire (Linton, 1936). Linton emphasized that culture is a complex whole—a network of behaviors related to all aspects of life. Dress is shaped by and reflects many characteristics in any culture, so dress is a complex map of cultural characteristics.
+Culture includes both abstract and concrete components
+(Scupin, 1998).
+Abstract components
+include the meanings of symbols, events, activities, or actions and how the meanings are created and selected.
+Concrete components
+include the forms of action, behavior, event, activity, or artifact. Dress may be a concrete object, such as a shirt, a pair of shoes, or a hairstyle, but those artifacts develop meanings in a culture. The fashion process, situations in which we use dress, and groups associated with wearing of types of dress all bring meaning to those artifacts.
+Culture is
+mentifacts,
+what people know;
+sociofacts,
+what people do; and
+artifacts,
+what people make (Spradley, 1972):
+Mentifacts: Ideas, Ideals, Values, Knowledge, and How We Know
+Culture shapes how people think about things.
+Mentifacts
+are the ideas, values, and knowledge that shape how we see a culture and how we know or recognize patterns. This includes stereotypes that are held about groups of people who look certain ways. Note that “how we know” also refers to educational and media systems. Fashion magazines are part of these media systems; so are television and the Internet.
+How people in a culture think and what they value are often reflected in dress. For example, in the United States, where we value the freedom to consume and material plenty, consumers tend to prefer large wardrobes (Sproles & Burns, 1994). In some European countries, the average consumer has a comparatively small wardrobe that often includes several high-quality, expensive items. These few items are worn over and over during the season in which they are fashionable.
+Sociofacts: Characteristics of Social Organizations and How People Organize Themselves.
+Sociofacts
+reflect how people behave in groups and social interactions. For example, police officers wear uniforms to indicate their occupations and rank within the police force. A store like Target has a dress code—red shirts and khaki pants—to help customers identify employees. Many individuals dress up or “clean up” when going to dinner at someone’s house; this small act shows respect to the hosts and indicates participation in a social event.
+Sometimes patterns of dress in the larger society reflect how people organize themselves. In the United States today, socioeconomic status is usually only vaguely communicated in our clothing. One hundred years ago, the social class of everyone passing us on the street would have been made clear by their dress.
+Artifacts: Things People Make and Tools and Processes for Making Them
+Dress such as clothing, makeup, tattoos, and shoes are artifacts made by people.
+Artifacts
+reflect multiple aspects of a culture, such as mentifacts, sociofacts, and the technological knowledge of a culture that shapes manufacturing processes and materials used. For example, Gore-Tex fabric, now used in high-performance sportswear, was invented through the NASA space program.
+Technological advancements and economic reality may exclude some clothing options. In ready-to-wear clothing that most people in the United States buy today, only simple seams, darts, and a few gathers comprise construction. Knits and pandex rather than intricate construction details accomplish, a tight fit. During the 1940s and earlier, however, ordinary clothing often had many tucks, darts, godets, and complex seams, for example. The handwork and sewing skill required for those designs is too expensive to produce today in assembly-line factories. Complex fit through construction also requires customized fitting that is too expensive, time-consuming, and difficult for most of us. We save that expense for business suits and special-occasion garments such as wedding dresses.
+Society vs. Culture
+Anthropologists disagree on how to distinguish the terms
+culture
+and
+society.
+We will use the terms fairly interchangeably. One definition of
+society
+is “a group of people living and working together in a systematic way” (Mead, 1934). An important implication of this definition is that society requires people to coordinate their actions with each other. Each individual cannot haphazardly do their own thing with no concern for others. With no traffic laws, for example, we would run into each other fairly frequently. Indeed, with no coordination of human effort, automobiles and roads would never have been invented. Dress would have no meaning; fashions and traditions in dress would not exist. We would have no idea who anyone might be on first meeting of them. Dress is a product of systematic human interaction, and it helps us to coordinate our interactions with others.
+What Factors Influence Types of Dress Worn in a Culture?
+Ruth Benedict (1959) drew an “arc of human potential” to indicate that every culture makes choices from among a wide array of possibilities for any form of behavior. Each culture, then, chooses different language sounds, foods, dress materials and designs, and other behaviors.
+In any culture, the following
+factors
+shape choices for dress and other behaviors:
+climate and natural resources
+religion, ideology, ritual
+technology
+culture contact and diffusion of ideas
+social and political organization
+history
+aesthetic rules.
+This short film features the
+Korowai tribe,
+whose members had no contact with anyone outside of their community until the 1970s. This isolation affected their dress in numerous ways.
+Taking a cultural perspective on dress throughout the semester requires that we adopt specific some ways of thinking about people and the world:
+Holistic approach
+The meaning of dress can be understood only through the study of all aspects of a culture. Dress does not mean one single thing at a time. Many meanings and aspects of a culture are embedded in any example of dress. And sometimes these meanings are difficult to read. For example, why is it that in the United States, where we value individuality so much, so many students on college campuses wear jeans and T-shirts to classes?
+Cultural relativism
+Seek to understand dress as it has meaning to a society “insider.” What dress worn in nations outside your home country means to you, a visitor or tourist, is not necessarily related to what it means to people in that culture. We need to examine the characteristics of a culture and talk to people within that culture to find out what their dress means. Something as simple as color may have very different meanings in dress in different cultures. For example, red is a common funeral color in Zambia, Africa, and a wedding dress color in traditional China. What would it mean if someone wore a bright red dress to a close relative’s funeral or a bride wore a bright red dress to her wedding in the United States today?
+Ethnocentrism
+Ethnocentrism is judgment of people of other cultures by one’s own cultural standards and beliefs. Dress that is different from our own can be challenging to accept or appreciate.
+Ethnocentricity is hard to avoid, for example, when members of other cultures or some groups within our own culture do things to the body that are harmful to the individuals. Acting to end these practices may be seen as important for humanity. It is equally important to recognize, however, that these practices may have deep meanings and roots in religious values or beauty standards previously considered good or “healthful.” Simply marching in and making such practices illegal will not necessarily end them. We must take great care when we attempt to change deeply held beliefs about these practices. Change is likely to be slow.
+Sometimes it can be quite difficult to avoid ethnocentrism. Here are some examples that individuals may or may not view as harmful:
+corset wearing
+foot binding
+tanning
+web sites promoting anorexia
+female circumcision
+little people lengthening their legs
+embracing one’s transgender identity
+women exposing their breasts in public
+steroid use
+scarification, or the carving of permanent designs in the skin
+practicing bondage and discipline, dominance and submission, sadochism and masochism (BDSM) or kink such as wearing dog collars, chastity belts, or other restrictive garments.
+The video highlights how these women embrace their BDSM identity when others sometimes view these practices as harmful.
+Query \(\PageIndex{1}\)
+Cultural Appropriation
+Another term related to changing cultural aesthetics or norms is
+cultural appropriation
+. The concept of cultural appropriation is highly debated. For example, in a video that went viral, Amandla Stenberg discusses her opinions about white people adopting Black hairstyles (
+2015
+). Stenberg discusses how the adoption of hairstyles such as braids or cornrows by white people is wrong because when Black people wear these styles, they are viewed as “thugs” or “gangsters,” yet when white people adopt these styles they can be seen as “cool” or “edgy,” which reinforces longstanding racial hierarchies and stereotypes of white people having power. There are also arguments such as appreciation versus appropriation, where individuals will argue that their adoption of a particular style or aesthetic is not wrong; they merely appreciate that part o
+
 ## Match 1.72 — IntroductiontoAnthropology-WEB § 6.3 Language, Community, and Culture
 
 LEARNING OUTCOMES
@@ -287,107 +392,3 @@ different parts of the world; however, since immigration patterns have changed o
 that the three cultures no longer match the country’s current reality. Today’s immigrants are less likely to
 come from European countries and are more likely to originate in Latin American and Asian countries.27 In
 addition, advances in technology and transportation 
-
-## Match 1.71 — IntroductiontoAnthropology-WEB § 16.3 An Anthropological View of Sport throughout Time
-
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Describe the anthropology of sports.
-•
-Explain how sports are a form of performance.
-•
-Identify the role that sports can play for young people.
-Sports are also deeply intertwined with the human experience. The anthropology of sports is a rapidly
-developing field that includes specialties such as physiological anthropology and human growth and
-development. Sports can be quite diverse; picture a Roman gladiator, a modern-day European football (soccer)
-player, and an ancient or recent Olympic competitor. Another example of a sport is Trobriand cricket, a bat-
-502
-16 • Art, Music, and Sport
-Access for free at openstax.org
-
-and-ball game played by Trobriand Islanders that had evolved considerably since its introduction by Christian
-missionaries at the turn of the 20th century. Sports are expressions of passions and reflections of the human
-experience. They have been practiced by many cultures throughout time and across the globe. This section will
-specifically focus on how sports have impacted human culture and how human culture has impacted sports in
-turn. It will consider the historical foundation of the culture of sports and briefly analyze the way people
-interact with sports today, examining how human culture and societal practices are influenced by not only
-individual athletes but also social structures.
-The Anthropology of Sports
-Anthropologists understand sports as a cultural performance. The term performance can describe a plethora
-of actions, including any that are artful, active, or competitive—and sometimes some combination of all of
-these. Anthropologist Ajeet Jaiswal (2019) describes the anthropology of sports as the study of human growth
-and development. If one conceives of sports as a sort of performance, one also sees that each performance is
-unique to the performer. Each athlete, even the most impressive and seemingly unique, is a part of a larger
-performance. Consider your favorite sport or athletic competition. How long has it been in existence? Does it
-have roots in ancient times? Often, athletes and sports personalities—from Roman gladiators to more recent
-English footballers, American basketball players, and Olympic athletes—are considered singularly talented at
-their respective sports; however, without the broader cultural context that has cultivated gymnastics, tennis,
-soccer, and basketball, these talents would have no stage on which to perform.
-Anthropologists who study sports do so within a larger context of sports and society. Interests of
-anthropologists researching sports might include archaeological research related to sports tools, cultural
-anthropological research pertaining to how humans interact with sports, or even biological/physical
-anthropological research on biological maturation or physical growth (Damo, Oliven, and Guedes 2008).
-FIGURE 16.17
-A Roman bronze reproduction of Discobolus, by the ancient Greek sculptor Myron. Throwing the
-discus, still an event in contemporary track and field meets, has been traced back to the original Olympic Games in
-Ancient Greece. (credit: “Myron (fl c 460-440 BC) - Diskobolus (Discus Thrower), Plaster Replica with Broken Left
-Hand, Right, Ashmolean Museum, Oxford, May 2013” by ketrin1407/flickr, CC BY 2.0)
-Sports artifacts such as the weapons of gladiators and tools used in old and recent Olympic sports have offered
-16.3 • An Anthropological View of Sport throughout Time
-503
-
-significant contributions to the anthropology of material art. Picture your favorite sport. It likely involves a
-specific tool that is a representation of that sport. Notable examples of such tools and artifacts include the
-lacrosse sticks of the Iroquois, hammers from the oldest Olympic hammer-throw competitions, and the
-modern-day American football uniform, which is designed for safety and decorated to represent affiliation,
-professionalism, and individual athletes.
-Sports have also offered theatrical performances since ancient times. Picture the gladiators of ancient Rome
-entertaining the wealthy who could afford the best seats or wealthy English footballers entertaining those who
-are likely less wealthy. The status reversal of sports entertainers and audiences in modern-day sports
-represents the dichotomous nature of social status and is just one of many examples of cultural change
-throughout time.
-The Evolution of Sports
-For most of documented human history, sports have been a significant part of the human experience for both
-audience and participants. Archaeological artifacts pertaining to sports, including colosseums, weapons, and
-artistic representations of competition, have been traced back to as early as 2000 BCE in China. These ancient
-sports featured competitions that tested the strength, stamina, and techniques of performers, such as
-footraces and physical fights. Today, many nations around the world participate in a version of the Olympic
-Games that were popular in the ancient Greek village of Olympia. Early events included a marathon run and
-wrestling. The Olympics were revived in the late 19th century, with the first modern games occurring in 1896
-in Athens, Greece. Though rules and regulation may have been less stringent and defined in the sports of
-previous centuries, competition as entertainment has existed for millennia.
-FIGURE 16.18
-These professional lacrosse players are take part in a game that originated with the Indigenous
-people of what is now Canada. (credit: “Tailgate Bayhawks Game Navy Marine Corps Memorial Stadium” by
-Maryland GovPics/flickr, CC BY 2.0)
-Sports can provide much more than mere entertainment to people and societies. Today, when thinking about
-modern sports, a person may think of professional athletes such as National Basketball Association (NBA) star
-Kobe Bryant or National Football League (NFL) great Walter Payton. In early competitions, the wealthy
-attended sporting events in which the athletes were typically not wealthy or privileged. In modern times, the
-commercialization of sports has largely reversed this trend, with “common” people attending sporting events
-to watch wealthy athletes compete. The business of sports has created opportunities for financial and cultural
-success for people with exceptional athletic abilities. The success of athletes such as Kobe Bryant created
-opportunities for other athletes, paving the way for the success of people who may not have otherwise thought
-it possible to experience the fame, notoriety, and financial success of a modern athlete (Chacko 2020).
-504
-16 • Art, Music, and Sport
-Access for free at openstax.org
-
-FIGURE 16.19
-Ed Smith was a running back in college and the NFL in the 1930s. As homage to his skill, he was
-asked to model for the Heisman Trophy, which has immortalized the now iconic “stiff arm” pose he took. (credit: “A
-Quick Stop to See the First Ever Heisman Trophy Statue @UChicago” by Cole Camplese/flickr, CC BY 2.0)
-Youth Sports
-Recreational sports for youth are common in various cultures. This can be especially important in
-marginalized communities, where youth sports are often viewed as deterrents from (or alternatives to)
-potentially dangerous activities or preventive structures that support youth development and community by
-focusing on positive actions that reduce adverse social behaviors. Youth sports programs are often
-community-building initiatives. One such initiative is the NFL’s Play 60 program, which challenges NFL
-football players to engage in activities with underrepresented communities, encouraging kids of all skill levels
-to come together to play sports.
-Among Indigenous Americans, an aggressive style of basketball called reservation ball, or rezball for short, is
-prominent in reservation communities. Rezball is different from traditional basketball, as the techniques used
-encourage relentlessly aggressive play and quick shooting. For youth on reservations, this may be one of a
-limited number of recreation opportunities. Rezball is documented in the Netflix docuseries Basketball or
-Nothing and a 2009 ESPN story about the role of rezball in the culture of Native American children.

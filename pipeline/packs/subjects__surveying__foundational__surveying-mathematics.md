@@ -1,761 +1,158 @@
 # Source pack — subjects/surveying/foundational/surveying-mathematics
 Lesson title: Surveying Mathematics
 Level: foundational
-Match confidence: 1.53
+Match confidence: 1.54
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.53 — UniversityPhysicsVolume3-WEB § 3.2 Mathematics of Interference
+## Match 1.54 — LibreTexts: 7: Mathematics and the Arts
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://math.libretexts.org/Courses/College_of_the_Canyons/Math_100%3A_Liberal_Arts_Mathematics_(Saburo_Matsumoto)/07%3A_Mathematics_and_the_Arts
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Determine the angles for bright and dark fringes for double slit interference
-•
-Calculate the positions of bright fringes on a screen
-Figure 3.7(a) shows how to determine the path length difference
-for waves traveling from two slits to a
-common point on a screen. If the screen is a large distance away compared with the distance between the slits,
-then the angle
-between the path and a line from the slits to the screen [part (b)] is nearly the same for each
-path. In other words,
-and
-are essentially parallel. The lengths of
-and
-differ by
-, as indicated by the
-two dashed lines in the figure. Simple trigonometry shows
-where d is the distance between the slits. Combining this result with Equation 3.1, we obtain constructive
-interference for a double slit when the path length difference is an integral multiple of the wavelength, or
-Similarly, to obtain destructive interference for a double slit, the path length difference must be a half-integral
-multiple of the wavelength, or
-where
-is the wavelength of the light, d is the distance between slits, and
-is the angle from the original
-direction of the beam as discussed above. We call m the order of the interference. For example,
-is
-fourth-order interference.
-3.3
-3.4
-3.5
-3.2 • Mathematics of Interference
-117
+7: Mathematics and the Arts
+-
+- 7.1: Projective Geometry
+- Before drawing a 3-dimensional object on a flat surface, such as a sketch book or a canvas, one needs to learn some principles of perspective. This skill, based on projective geometry and developed during the Renaissance, allows the artist to draw things more realistically. All of us have seen, for instance, pictures of railroad tracks and straight highways where the two lines, though parallel in space, appear to converge to a point, referred to as the principal vanishing point.
+-
+- 7.2: The Golden Ratio and Fibonacci Sequence
+- In this section, we will discuss a very special number called the Golden Ratio. It is an irrational number, slightly bigger than 1.6, and it has (somewhat surprisingly) had huge significance in the world of science, art and music. It was also discovered that this number has an amazing connection with what is called the Fibonacci Sequence, originally studied in the context of biology centuries ago. This link among algebra, biology, and the arts suggests the mathematical unity of the world.
+Thumbnail: Golden spirals are self-similar. The shape is infinitely repeated when magnified. (Public Domain; Jahobr via Wikipedia )
+Contributors and Attributions
+-
+Saburo Matsumoto
+CC-BY-4.0
 
-Figure 3.7
-(a) To reach P, the light waves from
-and
-must travel different distances. (b) The path difference between the two rays is
-.
-The equations for double-slit interference imply that a series of bright and dark lines are formed. For vertical
-slits, the light spreads out horizontally on either side of the incident beam into a pattern called interference
-fringes (Figure 3.8). The closer the slits are, the more the bright fringes spread apart. We can see this by
-examining the equation
-. For fixed
-and m, the smaller d is, the larger
-must be, since
-. This is consistent with our contention that wave effects are most noticeable when the object the
-wave encounters (here, slits a distance d apart) is small. Small d gives large , hence, a large effect.
-Referring back to part (a) of the figure,
-is typically small enough that
-, where
-is the
-distance from the central maximum to the mth bright fringe and D is the distance between the slit and the
-screen. Equation 3.4 may then be written as
-or
-3.6
-118
-3 • Interference
-Access for free at openstax.org.
+## Match 1.54 — LibreTexts: 1.2: Surveying Spacetime
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/Relativity/Spacetime_Physics_(Taylor_and_Wheeler)/01%3A_Spacetime_Overview/1.02%3A_Surveying_Spacetime
 
-Figure 3.8
-The interference pattern for a double slit has an intensity that falls off with angle. The image shows multiple bright and dark
-lines, or fringes, formed by light passing through a double slit.
-EXAMPLE 3.1
-Finding a Wavelength from an Interference Pattern
-Suppose you pass light from a He-Ne laser through two slits separated by 0.0100 mm and find that the third
-bright line on a screen is formed at an angle of
-relative to the incident beam. What is the wavelength of
-the light?
-Strategy
-The phenomenon is two-slit interference as illustrated in Figure 3.8 and the third bright line is due to third-
-order constructive interference, which means that
-. We are given
-and
-. The
-wavelength can thus be found using the equation
-for constructive interference.
-Solution
-Solving
-for the wavelength
-gives
-Substituting known values yields
-Significance
-To three digits, this is the wavelength of light emitted by the common He-Ne laser. Not by coincidence, this red
-color is similar to that emitted by neon lights. More important, however, is the fact that interference patterns
-can be used to measure wavelength. Young did this for visible wavelengths. This analytical techinque is still
-widely used to measure electromagnetic spectra. For a given order, the angle for constructive interference
-increases with
-, so that spectra (measurements of intensity versus wavelength) can be obtained.
-3.2 • Mathematics of Interference
-119
-
-EXAMPLE 3.2
-Calculating the Highest Order Possible
-Interference patterns do not have an infinite number of lines, since there is a limit to how big m can be. What is
-the highest-order constructive interference possible with the system described in the preceding example?
-Strategy
-The equation
-(for
-) describes constructive interference from two slits. For
-fixed values of
-, the larger m is, the larger
-is. However, the maximum value that
-can have is 1,
-for an angle of
-. (Larger angles imply that light goes backward and does not reach the screen at all.) Let us
-find what value of m corresponds to this maximum diffraction angle.
-Solution
-Solving the equation
-for m gives
-Taking
-and substituting the values of
-from the preceding example gives
-Therefore, the largest integer m can be is 15, or
-.
-Significance
-The number of fringes depends on the wavelength and slit separation. The number of fringes is very large for
-large slit separations. However, recall (see The Propagation of Light and the introduction for this chapter) that
-wave interference is only prominent when the wave interacts with objects that are not large compared to the
-wavelength. Therefore, if the slit separation and the sizes of the slits become much greater than the
-wavelength, the intensity pattern of light on the screen changes, so there are simply two bright lines cast by the
-slits, as expected, when light behaves like rays. We also note that the fringes get fainter farther away from the
-center. Consequently, not all 15 fringes may be observable.
-CHECK YOUR UNDERSTANDING 3.1
-In the system used in the preceding examples, at what angles are the first and the second bright fringes
-formed?
-
-## Match 1.52 — UniversityPhysicsVol1-WEB § 16.2 Mathematics of Waves
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Model a wave, moving with a constant wave velocity, with a mathematical expression
-•
-Calculate the velocity and acceleration of the medium
-•
-Show how the velocity of the medium differs from the wave velocity (propagation velocity)
-In the previous section, we described periodic waves by their characteristics of wavelength, period, amplitude,
-and wave speed of the wave. Waves can also be described by the motion of the particles of the medium through
-which the waves move. The position of particles of the medium can be mathematically modeled as wave
-functions, which can be used to find the position, velocity, and acceleration of the particles of the medium of
-the wave at any time.
-Pulses
-A pulse can be described as wave consisting of a single disturbance that moves through the medium with a
-constant amplitude. The pulse moves as a pattern that maintains its shape as it propagates with a constant
-wave speed. Because the wave speed is constant, the distance the pulse moves in a time
-is equal to
-(Figure 16.8).
-Figure 16.8
-The pulse at time
-is centered on
-with amplitude A. The pulse moves as a pattern with a constant shape, with a
-constant maximum value A. The velocity is constant and the pulse moves a distance
-in a time
-The distance traveled is
-measured with any convenient point on the pulse. In this figure, the crest is used.
-Modeling a One-Dimensional Sinusoidal Wave using a Wave Function
-Consider a string kept at a constant tension
-where one end is fixed and the free end is oscillated between
-and
-by a mechanical device at a constant frequency. Figure 16.9 shows snapshots of the wave
-at an interval of an eighth of a period, beginning after one period
-774
-16 • Waves
-Access for free at openstax.org.
-
-Figure 16.9
-Snapshots of a transverse wave moving through a string under tension, beginning at time
-and taken at intervals of
-Colored dots are used to highlight points on the string. Points that are a wavelength apart in the x-direction are highlighted with the same
-color dots.
-Notice that each select point on the string (marked by colored dots) oscillates up and down in simple harmonic
-motion, between
-and
-with a period T. The wave on the string is sinusoidal and is translating
-in the positive x-direction as time progresses.
-At this point, it is useful to recall from your study of algebra that if f(x) is some function, then
-is the
-same function translated in the positive x-direction by a distance d. The function
-is the same
-function translated in the negative x-direction by a distance d. We want to define a wave function that will give
-the y-position of each segment of the string for every position x along the string for every time t.
-Looking at the first snapshot in Figure 16.9, the y-position of the string between
-and
-can be
-modeled as a sine function. This wave propagates down the string one wavelength in one period, as seen in the
-last snapshot. The wave therefore moves with a constant wave speed of
-Recall that a sine function is a function of the angle , oscillating between
-and
-, and repeating every
-radians (Figure 16.10). However, the y-position of the medium, or the wave function, oscillates between
-and
-, and repeats every wavelength
-.
-16.2 • Mathematics of Waves
-775
-
-Figure 16.10
-A sine function oscillates between
-and
-every
-radians.
-To construct our model of the wave using a periodic function, consider the ratio of the angle and the position,
-Using
-and multiplying the sine function by the amplitude A, we can now model the y-position of the
-string as a function of the position x:
-The wave on the string travels in the positive x-direction with a constant velocity v, and moves a distance vt in
-a time t. The wave function can now be defined by
-It is often convenient to rewrite this wave function in a more compact form. Multiplying through by the ratio
-leads to the equation
-The value
-is defined as the wave number. The symbol for the wave number is k and has units of inverse
-meters,
-Recall from Oscillations that the angular frequency is defined as
-The second term of the wave function
-becomes
-The wave function for a simple harmonic wave on a string reduces to
-where A is the amplitude,
-is the wave number,
-is the angular frequency, the minus sign is for
-waves moving in the positive x-direction, and the plus sign is for waves moving in the negative x-direction. The
-velocity of the wave is equal to
-Think back to our discussion of a mass on a spring, when the position of the mass was modeled as
-16.2
-16.3
-776
-16 • Waves
-Access for free at openstax.org.
-
-The angle
-is a phase shift, added to allow for the fact that the mass may have initial
-conditions other than
-and
-For similar reasons, the initial phase is added to the wave function.
-The wave function modeling a sinusoidal wave, allowing for an initial phase shift
-is
-The value
-is known as the phase of the wave, where
-is the initial phase of the wave function. Whether the temporal
-term
-is negative or positive depends on the direction of the wave. First consider the minus sign for a wave
-with an initial phase equal to zero
-The phase of the wave would be
-Consider following a
-point on a wave, such as a crest. A crest will occur when
-, that is, when
-for any integral value of n. For instance, one particular crest occurs at
-As the wave moves, time
-increases and x must also increase to keep the phase equal to
-Therefore, the minus sign is for a wave
-moving in the positive x-direction. Using the plus sign,
-As time increases, x must decrease to
-keep the phase equal to
-The plus sign is used for waves moving in the negative x-direction. In summary,
-models a wave moving in the positive x-direction and
-models a wave moving in the negative x-direction.
-Equation 16.4 is known as a simple harmonic wave function. A wave function is any function such that
-Later in this chapter, we will see that it is a solution to the linear wave equation. Note that
-works equally well because it corresponds to a different phase shift
-PROBLEM-SOLVING STRATEGY
-Finding the Characteristics of a Sinusoidal Wave
-1.
-To find the amplitude, wavelength, period, and frequency of a sinusoidal wave, write down the wave
-function in the form
-2.
-The amplitude can be read straight from the equation and is equal to A.
-3.
-The period of the wave can be derived from the angular frequency
-4.
-The frequency can be found using
-5.
-The wavelength can be found using the wave number
-EXAMPLE 16.3
-Characteristics of a Traveling Wave on a String
-A transverse wave on a taut string is modeled with the wave function
-Find the amplitude, wavelength, period, and speed of the wave.
-Strategy
-All these characteristics of the wave can be found from the constants included in the equation or from simple
-combinations of these constants.
-Solution
-1.
-The amplitude, wave number, and angular frequency can be read directly from the wave equation:
-16.4
-16.5
-16.2 • Mathematics of Waves
-777
-
-2.
-The wave number can be used to find the wavelength:
-3.
-The period of the wave can be found using the angular frequency:
-4.
-The speed of the wave can be found using the wave number and the angular frequency. The direction of
-the wave can be determined by considering the sign of
-: A negative sign suggests that the wave is
-moving in the positive x-direction:
-Significance
-All of the characteristics of the wave are contained in the wave function. Note that the wave speed is the speed
-of the wave in the direction parallel to the motion of the wave. Plotting the height of the medium y versus the
-position x for two times
-and
-can provide a graphical visualization of the wave (Figure
-16.11).
-Figure 16.11
-A graph of height of the wave y as a function of position x for snapshots of the wave at two times. The dotted line represents
-the wave at time
-and the solid line represents the wave at
-Since the wave velocity is constant, the distance the wave
-travels is the wave velocity times the time interval. The black dots indicate the points used to measure the displacement of the wave. The
-medium moves up and down, whereas the wave moves to the right.
-There is a second velocity to the motion. In this example, the wave is transverse, moving horizontally as the
-medium oscillates up and down perpendicular to the direction of motion. The graph in Figure 16.12 shows the
-motion of the medium at point
-as a function of time. Notice that the medium of the wave oscillates
-up and down between
-and
-every period of 4.0 seconds.
-778
-16 • Waves
-Access for free at openstax.org.
-
-Figure 16.12
-A graph of height of the wave y as a function of time t for the position
-The medium oscillates between
-and
-every period. The period represented picks two convenient points in the oscillations to measure the period.
-The period can be measured between any two adjacent points with the same amplitude and the same velocity,
-The velocity can be
-found by looking at the slope tangent to the point on a y-versus-t plot. Notice that at times
-and
-the heights and the
-velocities are the same and the period of the oscillation is 4.00 s.
-CHECK YOUR UNDERSTANDING 16.3
-The wave function above is derived using a sine function. Can a cosine function be used instead?
-Velocity and Acceleration of the Medium
-As seen in Example 16.4, the wave speed is constant and represents the speed of the wave as it propagates
-through the medium, not the speed of the particles that make up the medium. The particles of the medium
-oscillate around an equilibrium position as the wave propagates through the medium. In the case of the
-transverse wave propagating in the x-direction, the particles oscillate up and down in the y-direction,
-perpendicular to the motion of the wave. The velocity of the particles of the medium is not constant, which
-means there is an acceleration. The velocity of the medium, which is perpendicular to the wave velocity in a
-transverse wave, can be found by taking the partial derivative of the position equation with respect to time. The
-partial derivative is found by taking the derivative of the function, treating all variables as constants, except for
-the variable in question. In the case of the partial derivative with respect to time t, the position x is treated as a
-constant. Although this may sound strange if you haven’t seen it before, the object of this exercise is to find the
-transverse velocity at a point, so in this sense, the x-position is not changing. We have
-The magnitude of the maximum velocity of the medium is
-. This may look familiar from the
-Oscillations and a mass on a spring.
-We can find the acceleration of the medium by taking the partial derivative of the velocity equation with
-respect to time,
-16.2 • Mathematics of Waves
-779
-
-The magnitude of the maximum acceleration is
-The particles of the medium, or the mass
-elements, oscillate in simple harmonic motion for a mechanical wave.
-The Linear Wave Equation
-We have just determined the velocity of the medium at a position x by taking the partial derivative, with
-respect to time, of the position y. For a transverse wave, this velocity is perpendicular to the direction of
-propagation of the wave. We found the acceleration by taking the partial derivative, with respect to time, of the
-velocity, which is the second time derivative of the position:
-Now consider the partial derivatives with respect to the other variable, the position x, holding the time
-constant. The first derivative is the slope of the wave at a point x at a time t,
-The second partial derivative expresses how the slope of the wave changes with respect to position—in other
-words, the curvature of the wave, where
-The ratio of the acceleration and the curvature leads to a very important relationship in physics known as the
-linear wave equation. Taking the ratio and using the equation
-yields the linear wave equation (also
-known simply as the wave equation or the equation of a vibrating string),
-Equation 16.6 is the linear wave equation, which is one of the most important equations in physics and
-engineering. We derived it here for a transverse wave, but it is equally important when investigating
-longitudinal waves. This relationship was also derived using a sinusoidal wave, but it successfully describes
-any wave or pulse that has the form
-These waves result due to a linear restoring force of
-the medium—thus, the name linear wave equation. Any wave function that satisfies this equation is a linear
-wave function.
-An interesting aspect of the linear wave equation is that if two wave functions are individually solutions to the
-linear wave equation, then the sum of the two linear wave functions is also a solution to the wave equation.
-Consider two transverse waves that propagate along the x-axis, occupying the same medium. Assume that the
-individual waves can be modeled with the wave functions
-and
-which are solutions to the linear wave equations and are therefore linear wave functions. The sum of the wave
-functions is the wave function
-Consider the linear wave equation:
-16.6
-780
-16 • Waves
-Access for free at openstax.org.
-
-This has shown that if two linear wave functions are added algebraically, the resulting wave function is also
-linear. This wave function models the displacement of the medium of the resulting wave at each position along
-the x-axis. If two linear waves occupy the same medium, they are said to interfere. If these waves can be
-modeled with a linear wave function, these wave functions add to form the wave equation of the wave resulting
-from the interference of the individual waves. The displacement of the medium at every point of the resulting
-wave is the algebraic sum of the displacements due to the individual waves.
-Taking this analysis a step further, if wave functions
-and
-are
-solutions to the linear wave equation, then
-where A and B are constants, is also a
-solution to the linear wave equation. This property is known as the principle of superposition. Interference
-and superposition are covered in more detail in Interference of Waves.
-EXAMPLE 16.4
-Interfe
-
-## Match 1.04 — ContemporaryMathematics-WEB § 10.8 Right Triangle Trigonometry
-
-Figure 10.137 In the lower left corner of the fresco The School of Athens by Raphael, the figure in white writing in the
-book represents Pythagoras. Alongside him, to the right, the figure with the long, light-brown hair is said to depict
-Archimedes. (credit: modification of work “School of Athens” by Raphael (1483–1520), Vatican Museums/Wikimedia,
-Public Domain)
-Learning Objectives
-After completing this section, you should be able to:
-1.
-Apply the Pythagorean Theorem to find the missing sides of a right triangle.
-2.
-Apply the
-and
-right triangle relationships to find the missing sides of a triangle.
-3.
-Apply trigonometric ratios to find missing parts of a right triangle.
-4.
-Solve application problems involving trigonometric ratios.
-This is another excerpt from Raphael’s The School of Athens. The man writing in the book represents Pythagoras, the
-namesake of one of the most widely used formulas in geometry, engineering, architecture, and many other fields, the
-Pythagorean Theorem. However, there is evidence that the theorem was known as early as 1900–1100 BC by the
-Babylonians. The Pythagorean Theorem is a formula used for finding the lengths of the sides of right triangles.
-Born in Greece, Pythagoras lived from 569–500 BC. He initiated a cult-like group called the Pythagoreans, which was a
-secret society composed of mathematicians, philosophers, and musicians. Pythagoras believed that everything in the
-world could be explained through numbers. Besides the Pythagorean Theorem, Pythagoras and his followers are
-credited with the discovery of irrational numbers, the musical scale, the relationship between music and mathematics,
-and many other concepts that left an immeasurable influence on future mathematicians and scientists.
-The focus of this section is on right triangles. We will look at how the Pythagorean Theorem is used to find the
-unknown sides of a right triangle, and we will also study the special triangles, those with set ratios between the lengths
-of sides. By ratios we mean the relationship of one side to another side. When you think about ratios, you should think
-about fractions. A fraction is a ratio, the ratio of the numerator to the denominator. Finally, we will preview trigonometry.
-We will learn about the basic trigonometric functions, sine, cosine and tangent, and how they are used to find not only
-unknown sides but unknown angles, as well, with little information.
-1098
-10 • Geometry
-Access for free at openstax.org
-
-Pythagorean Theorem
-The Pythagorean Theorem is used to find unknown sides of right triangles. The theorem states that the sum of the
-squares of the two legs of a right triangle equals the square of the hypotenuse (the longest side of the right triangle).
-FORMULA
-The Pythagorean Theorem states
-where
-and
-are two sides (legs) of a right triangle and
-is the hypotenuse, as shown in Figure 10.138.
-Figure 10.138 Pythagorean Right Triangle
-For example, given that side
-and side
-we can find the measure of side
-using the Pythagorean Theorem.
-Thus,
-EXAMPLE 10.64
-Using the Pythagorean Theorem
-Find the length of the missing side of the triangle (Figure 10.139).
-Figure 10.139
-Solution
-Using the Pythagorean Theorem, we have
-10.8 • Right Triangle Trigonometry
-1099
-
-When we take the square root of a number, the answer is usually both the positive and negative root. However, lengths
-cannot be negative, which is why we only consider the positive root.
-YOUR TURN 10.64
-1. Use the Pythagorean Theorem to find the missing side of the right triangle shown.
+1.2: Surveying Spacetime
+disagree on separations in space and time; agree on spacetime interval
+The Parable of the Surveyors illustrates the naive state of physics before the discovery of special relativity by Einstein of Bern, Lorentz of Leiden, and Poincaré of Paris. Naive in what way? Three central points compare physics at the turn of the twentieth century with surveying before the student arrived to help Daytimers and Nighttimers .
+The second: A sacred unit
+First, surveyors in the mythical kingdom measured northward separations in a sacred unit, the mile, different from the unit used in measuring eastward separations. Similarly, people studying physics measured time in a sacred unit, called the second, 1 different from the unit used to measure space. No one suspected the powerful results of using the same unit for both, or of squaring and combining space and time separations when both were measured in meters. Time in meters is just the time it takes a light flash to go that number of meters. The conversion factor between seconds and meters is the speed of light, \(c=299,792,458\) meters/second. The velocity of light \(c\) (in meters/second) multiplied by time \(t\) (in seconds) yields \(c t\) (in meters).
+Speed of light converts seconds to meters
+The speed of light is the only natural constant that has the necessary units to convert a time to a length. 2 Historically the value of the speed of light was regarded as a sacred number. It was not recognized as a mere conversion factor, like the factor of conversion between miles and meters — a factor that arose out of historical accident in humankind's choice of units for space and time, with no deeper physical significance.
+Time between events: Different for different frames
+Second, in the parable northward readings as recorded by two surveyors did not differ much because the two directions of north were inclined to one another by only the small angle of \(1.15\) degrees. At first our mythical student thought that small differences between Daytime and Nighttime northward measurements were due to surveying error alone. Analogously, we used to think of the separation in time between two electric sparks as the same, regardless of the motion of the observer. Only with the publication of Einstein's relativity paper in 1905 did we learn that the separation in time between two sparks really has different values for observers in different states of motion — in different frames . 3
+Think of John standing quietly in the front doorway of his laboratory building. Suddenly a rocket carrying Mary flashes through the front door past John, zooms down the middle of the long corridor, and shoots out the back door. An antenna projects from the side of Mary's rocket. As the rocket passes John, a spark jumps across the 1-millimeter gap between the antenna and a pen in John's shirt pocket. The rocket continues down the corridor. A second spark jumps 1 millimeter between the antenna and the fire extinguisher mounted on the wall 2 meters farther down the corridor. Still later other metal objects nearer the rear receive additional sparks from the passing rocket before it finally exits through the rear door.
+One observer uses laboratory frame
+John and Mary each measure the lapse of time between "pen spark" and "fire extinguisher spark." They use accurate and fast electronic clocks. John measures this time lapse as \(33.6900\) thousand-millionths of a second \((0.0000000336900\) second \(=33.6900 \times 10^{-9}\) second) 4 . This equals \(33.6900\) nanoseconds in the terminology of high-speed electronic circuitry. (One nanosecond \(=10^{-9}\) second.) Mary measures a slightly different value for the time lapse between the two sparks, \(33.0228\) nanoseconds 5 . For John the fire-extinguisher spark is separated in space by \(2.0000\) meters from the pen spark.
+Another observer uses rocket frame
+For Mary in the rocket the pen spark and fire-extinguisher spark occur at the same place, namely at the end of her antenna. Thus for her their space separation equals zero.
+Later, laboratory and rocket observers compare their space and time measurements between the various sparks (Table \(\PageIndex{1}\)). Space locations and time lapses in both frames are measured from the pen spark.
+| Distance and time between sparks as measured by observer who is | ||||
+|---|---|---|---|---|
+| standing in laboratory (John) | moving by in rocket (Mary) | |||
+|
 Distance
-The applications of the Pythagorean Theorem are countless, but one especially useful application is that of distance. In
-fact, the distance formula stems directly from the theorem. It works like this:
-In Figure 10.140, the problem is to find the distance between the points
-and
-We call the length from
-point
-to point
-side
-, and the length from point
-to point
-side
-. To find side , we use the
-distance formula and we will explain it relative to the Pythagorean Theorem. The distance formula is
-such that
-is a substitute for
-in the Pythagorean Theorem and is equal to
-and
-is a substitute for
-in the Pythagorean Theorem and is equal to
-When we
-plug in these numbers to the distance formula, we have
-Thus,
-, the hypotenuse, in the Pythagorean Theorem.
-1100
-10 • Geometry
-Access for free at openstax.org
+(meters) |
+Time
+(nanoseconds) |
+Distance
+(meters) |
+Time
+(nanoseconds) |
+|
+| Reference spark (pen spark) | 0 | 0 | 0 | 0 |
+| Spark A (fire-extinguisher spark) | 2.0000 | 33.6900 | 0 | 33.0228 |
+| Spark B | 3.0000 | 505350 | 0 | 49.5343 |
+| Spark C | 5.0000 | 84.2250 | 0 | 82.5572 |
+| Spark D | 8.0000 | 134.7600 | 0 | 132.0915 |
+Discovery: Invariance of spacetime interval
+The third point of comparison between the Parable of the Surveyors and the state of physics before special relativity is this: The mythical student's discovery of the concept of distance is matched by the Einstein-Poincare discovery in 1905 of the invariant spacetime interval (formal name Lorentz interval , but we often say just interval ), a central theme of this book 6 . Let each time measurement in seconds be converted to meters by multiplying it by the "conversion factor \(c\) ," the speed of light:
+\[\begin{align*} c &=299,792,458 \text { meters/second } \\
+&=2.99792458 \times 10^{8} \text { meters/second } \\ &=0.299792458 \times 10^{9} \text { meters/second }\\&=0.299792458 \text { meters/nanosecond } \end{align*}\]
+Then the square of the spacetime interval is calculated from the laboratory observer's measurements by subtracting the square of the space separation from the square of the time separation. Note the minus sign in equation \(\eqref{1}\) .
+\[\begin{array}{ccc} & \textbf{Laboratory } & \textbf{Laboratory } \\ & (\text { interval })^{2} =\left[c \times\left(\begin{array}{c} \text { time } \\ \text { separation } \\ \text { (seconds) } \end{array}\right)\right]^{2} & - ~ \left[\begin{array}{c} \text { space } \\ \text { separation } \\ \text { (meters) } \end{array}\right]^{2} \end{array} \label{1}\]
+The rocket calculation gives exactly the same value of the interval as the laboratory calculation,
+\[\begin{array}{ccc} & \qquad \textbf{Rocket } & \textbf{Rocket } \\ & (\text { interval })^{2} =\left[c \times\left(\begin{array}{c} \text { time } \\ \text { separation } \\ \text { (seconds) } \end{array}\right)\right]^{2} & - ~ \left[\begin{array}{c} \text { space } \\ \text { separation } \\ \text { (meters) } \end{array}\right]^{2} \end{array} \nonumber\]
+even though the respective space and time separations are not the same. Two observers find different space and time separations, respectively, between pen spark and fire extinguisher spark, but when they calculate the spacetime interval between these sparks their results agree (Table \(\PageIndex{2}\)).
+| Laboratory measurements | Rocket measurements | ||
+|---|---|---|---|
+| Time lapse |
+33.6900 \(\times\) 10
+-9
+seconds
+= 33.6900 nanoseconds |
+Time lapse | 33.0228 \(\times\) 10 -9 seconds = 33.0228 nanoseconds |
+|
+Multiply by
+\(c\) = 0.299792458 meters per nanosecond to convert to meters: |
+10.1000 meters |
+Multiply by
+\(c\) = 0.299792458 meters per nanosecond to convert to meters: |
+9.9000 meters |
+| Square the value | 102.010 (meters) 2 | Square the value | 98.010 (meters) 2 |
+| Spatial separation 2.000 meters | \(\underline{- 4.000 \text { (meters)}^{2}}\) | Spatial separation zero | \(\underline{- \qquad 0 \quad}\) |
+| Square the value and subtract | \(=98.010 \text { (meters)}^{2}\) | Square the value and subtract | \(=98.010 \text { (meters)}^{2}\) |
+| Result of subtraction expressed as a number squared | \(=(9.900 \text { meters })^{2}\) | Result of subtraction expressed as a number squared | \(=(9.900 \text { meters })^{2}\) |
+| This is the square of what measurement? | 9.900 meters | This is the square of what measurement? | 9.900 meters |
+Note that both laboratory and rocket measurements have same spacetime internal from the refrence event.
+The student surveyor found that invariance of distance was most simply written with both northward and eastward separations expressed in the same unit, the meter Likewise, invariance of the spacetime interval is most simply written with space and time separations expressed in the same unit. Time is converted to meters: \(t\) (meters) \(=\) \(c \times t\) (seconds). Then the interval appears in simplified form:
+\[(\text { interval })^{2}=\left[\begin{array}{c} \text { time } \\ \text { separation } \\ \text { (meters) } \end{array}\right]^{2}-\left[\begin{array}{c} \text { space } \\ \text { separation } \\ \text { (meters) } \end{array}\right]^{2} \nonumber\]
+Space and time are part of spacetime
+The invariance of the spacetime interval — its independence of the state of motion of the observer — forces us to recognize that time cannot be separated from space 7 . Space and time are part of a single entity, spacetime . Space has three dimensions: northward, eastward, and upward. Time has one dimension: onward! The interval combines all four dimensions in a single expression. The geometry of spacetime is truly four-dimensional.
+To recognize the unity of spacetime we follow the procedure that makes a landscape take on depth — we look at it from several angles. That is why we compare space and time separations between events \(A\) and \(B\) as recorded by two different observers in relative motion.
+Why the minus sign in the equation for the interval? Pythagoras tells us to ADD the squares of northward and eastward separations to get the square of the distance. Who tells us to SUBTRACT the square of the space separation between events from the square of their time separation in order to get the square of the spacetime interval?
+Answer
+Shocked? Then you're well on the way to understanding the new world of very fast motion! This world goes beyond the three-dimensional textbook geometry of Euclid, in which distance is reckoned from a sum of squares. In this book we use another kind of geometry, called Lorentz geometry , more real, more powerful than Euclid for the world of the very fast. In Lorentz geometry the squared space separation is combined with the squared time separation in a new way—by subtraction . The result is the square of a new unity called the spacetime interval between events. The numerical value of this interval is invariant , the same for all observers, no matter how fast they are moving past one another. Proof? Every minute of every day an experiment somewhere in the world demonstrates it. In Chapter 3 we derive the invariance of the spacetime interval—with its minus sign—from experiments. They show the finding that no experiment conducted in a closed room will reveal whether that room is "at rest" or "in motion" (Einstein's Principle of Relativity). We won't wait until then to cash in on the idea of interval. We can begin to enjoy the payoff right now
+Another, even faster rocket follows the first, entering the ftont door, zipping down the long corridor, and exiting through the back doorway. Each time the rocket clock ticks it emits a spark. As before, the first spark jumps the 1 millimeter from the passing rocket antenna to the pen in the pocket of John, the laboratory observer. The second flash jumps when the rocket antenna reaches a doorknob 4.00000000 meters farther along the hall as measured by the laboratory observer, who records the time between these two sparks as 16.6782048 nanoseconds.
+a. What is the time between sparks, measured in meters by John, the laboratory observer?
+b. What is the value of the spacetime interval between the two events, calculated from John's laboratory measurements?
+c. Predict: What is the value of the interval calculated from measurements in the new rocket frame?
+d. What is the distance between sparks as measured in this rocket frame?
+e. What is the time (in meters) between sparks as m
 
-Figure 10.140 Distance
-EXAMPLE 10.65
-Calculating Distance Using the Distance Formula
-You live on the corner of First Street and Maple Avenue, and work at Star Enterprises on Tenth Street and Elm Drive
-(Figure 10.141). You want to calculate how far you walk to work every day and how it compares to the actual distance (as
-the crow flies). Each block measures 200 ft by 200 ft.
-Figure 10.141
-Solution
-You travel 7 blocks south and 9 blocks west. If each block measures 200 ft by 200 ft, then
-.
-As the crow flies, use the distance formula. We have
-YOUR TURN 10.65
-1. How far is it to your workplace (as the crow flies) if the blocks in the previous example measure 100 ft by 100 ft?
-10.8 • Right Triangle Trigonometry
-1101
+## Match 1.53 — LibreTexts: 10.10: Surveying the Stars
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Courses/Grossmont_College/ASTR_110%3A_Astronomy_(Fitzgerald)/10%3A_Nature_of_Stars/10.10%3A_Surveying_the_Stars
 
-EXAMPLE 10.66
-Calculating Distance with the Pythagorean Theorem
-The city has specific building codes for wheelchair ramps. Every vertical rise of 1 in requires that the horizontal length be
-12 inches. You are constructing a ramp at your business. The plan is to make the ramp 130 inches in horizontal length
-and the slanted distance will measure approximately 132.4 inches (Figure 10.142). What should the vertical height be?
-Figure 10.142
-Solution
-The Pythagorean Theorem states that the horizontal length of the base of the ramp, side a, is 130 in. The length of c, or
-the length of the hypotenuse, is 132.4 in. The length of the height of the triangle is side b.
-Then, by the Pythagorean Theorem, we have:
-If you construct the ramp with a 25 in vertical rise, will it fulfill the building code? If not, what will have to change?
-The building code states 12 in of horizontal length for each 1 in of vertical rise. The vertical rise is 25 in, which means
-that the horizontal length has to be
-So, no, this will not pass the code. If you must keep the vertical rise
-at 25 in, what will the other dimensions have to be? Since we need a minimum of 300 in for the horizontal length:
-The new ramp will look like Figure 10.143.
-Figure 10.143
-YOUR TURN 10.66
-1. If 10 in is the maximum possible vertical rise as shown in the figure, how long would the ramp have to be to pass
-the building code rule of 12 horizontal inches to 1 vertical inch?
-Triangles
-In geometry, as in all fields of mathematics, there are always special rules for special circumstances. An example is the
-perfect square rule in algebra. When expanding an expression like
-we do not have to expand it the long way:
-1102
-10 • Geometry
-Access for free at openstax.org
-
-If we know the perfect square formula, given as
-we can skip the middle step and just start writing down the answer. This may seem trivial with problems like
-However, what if you have a problem like
-That is a different story. Nevertheless, we use the same
-perfect square formula. The same idea applies in geometry. There are special formulas and procedures to apply in
-certain types of problems. What is needed is to remember the formula and remember the kind of problems that fit.
-Sometimes we believe that because a formula is labeled special, we will rarely have use for it. That assumption is
-incorrect. So, let us identify the
-triangle and find out why it is special. See Figure 10.144.
-Figure 10.144 The
-We see that the shortest side is opposite the smallest angle, and the longest side, the hypotenuse, will always be
-opposite the right angle. There is a set ratio of one side to another side for the
-triangle given as
-or
-Thus, you only need to know the length of one side to find the other two sides in a
-triangle.
-EXAMPLE 10.67
-Finding Missing Lengths in a
-Triangle
-Find the measures of the missing lengths of the triangle (Figure 10.145).
-Figure 10.145
-Solution
-We can see that this is a
-triangle because we have a right angle and a
-angle. The remaining angle,
-therefore, must equal
-Because this is a special triangle, we have the ratios of the sides to help us identify the
-missing lengths. Side
-is the shortest side, as it is opposite the smallest angle
-and we can substitute
-The
-ratios are
-We have the hypotenuse equaling 10, which corresponds to side , and side
-is equal to 2 .
-Now, we must solve for
-:
-Side
-is equal to
-or
-The lengths are
-10.8 • Right Triangle Trigonometry
-1103
-
-YOUR TURN 10.67
-1. Find the lengths of the missing sides in the given figure.
-EXAMPLE 10.68
-Applying
-Triangle to the Real World
-A city worker leans a 40-foot ladder up against a building at a
-angle to the ground (Figure 10.146). How far up the
-building does the ladder reach?
-Figure 10.146
-Solution
-We have a
-triangle, and the hypotenuse is 40 ft. This length is equal to 2 , where
-is the shortest side. If
-, then
-. The ladder is leaning on the wall 20 ft up from the ground.
-YOUR TURN 10.68
-1. You want to repair a window on the second floor of your home. If you place the ladder at a
-angle to the
-ground, the ladder just about reaches the window. How far from the wall should you place the ladder? How far
-up will the ladder reach? Make a sketch as an aid.
-1104
-10 • Geometry
-Access for free at openstax.org
-
-Triangles
-The
-triangle is another special triangle such that with the measure of one side we can find the measures of
-all the sides. The two angles adjacent to the
-angle are equal, and each measures
-If two angles are equal, so are
-their opposite sides. The ratio among sides is
-or
-as shown in Figure 10.147.
-Figure 10.147
-Triangles
-EXAMPLE 10.69
-Finding Missing Lengths of a
-Triangle
-Find the measures of the unknown sides in the triangle (Figure 10.148).
-Figure 10.148
-Solution
-Because we have a
-triangle, we know that the two legs are equal in length and the hypotenuse is a product
-of one of the legs and
-One leg measures 3, so the other leg,
-, measures 3. Remember the ratio of
-Then, the hypotenuse, , equals
-YOUR TURN 10.69
-1. Find the measures of the unknown sides in the given figure.
-Trigonometry Functions
-Trigonometry developed around 200 BC from a need to determine distances and to calculate the measures of angles in
-the fields of astronomy and surveying. Trigonometry is about the relationships (or ratios) of angle measurements to side
-lengths in primarily right triangles. However, trigonometry is useful in calculating missing side lengths and angles in
-other triangles and many applications.
-NOTE: You will need either a scientific calculator or a graphing calculator for this section. It must have the capability
-to calculate trigonometric functions and express angles in degrees.
-Trigonometry is based on three functions. We title these functions using the following abbreviations:
-10.8 • Right Triangle Trigonometry
-1105
-
-•
-•
-•
-Letting
-which is the hypotenuse of a right triangle, we have Table 10.1. The functions are given in terms
-of
-,
-, and , and in terms of sides relative to the angle, like opposite, adjacent, and the hypotenuse.
-Table 10.1 Trigonometric Ratios
-We will be applying the sine function, cosine function, and tangent function to find side lengths and angle
-measurements for triangles we cannot solve using any of the techniques we have studied to this point. In Figure 10.149,
-we have an illustration mainly to identify
-and the sides labeled
-and
-.
-Figure 10.149 Angle
-An angle
-sweeps out in a counterclockwise direction from the positive
--axis and stops when the angle reaches the
-desired measurement. That ray extending from the origin that marks
-is called the terminal side because that is where
-the angle terminates. Regardless of the information given in the triangle, we can find all missing sides and angles using
-the trigonometric functions. For example, in Figure 10.150, we will solve for the missing sides.
-Figure 10.150 Solving for Missing Sides
-Let’s use the trigonometric functions to find the sides
-and
-. As long as your calculator mode is set to degrees, you do
-not have to enter the degree symbol. First, let’s solve for
-.
-We have
-and
-Then,
-Next, let’s find
-. This is the cosine function. We have
-Then,
-1106
-10 • Geometry
-Access for free at openstax.org
-
-Now we have all sides,
-You can also check the sides using the
-ratio of
-Table 10.2 is a list
-of common angles, which you should find helpful.
-Table 10.2 Common Angles
-EXAMPLE 10.70
-Using Trigonometric Functions
-Find the lengths of the missing sides for the triangle (Figure 10.151).
-Figure 10.151
-Solution
-We have a
-angle, and the length of the triangle on the
--axis is 6 units.
-Step 1: To find the length of , we can use the cosine function, as
-We manipulate this equation a bit to solve
-for :
-Step 2: We can use the Pythagorean Theorem to find the length of
-. Prove that your answers are correct by using other
-trigonometric ratios:
-Step 3: Now that we have
-, we can use the sine function to prove that
-is correct. We have
-10.8 • Right Triangle Trigonometry
-1107
-
-YOUR TURN 10.70
-1. Find the lengths of the missing sides in the given figure.
-To find angle measurements when we have two side measurements, we use the inverse trigonometric functions
-symbolized as
-or
-The –1 looks like an exponent, but it means inverse. For example, in the previous
-example, we had
-and
-To find what angle has these values, enter the values for the inverse cosine
-function
-in your calculator:
-You can also use the inverse sine function and enter the values of
-in your calculator given
-and
-We have
-Finally, we can also use the inverse tangent function. Recall
-We have
-EXAMPLE 10.71
-Solving for Lengths in a Right Triangle
-Solve for the lengths of a right triangle in which
-and
-(Figure 10.152).
-1108
-10 • Geometry
-Access for free at openstax.org
-
-Figure 10.152
-Solution
-Step 1: To find side
-, we use the sine function:
-Step 2: To find
-, we use the cosine function:
-Step 3: Since this is a
-triangle and side
-should equal
-if we input 3 for
-, we have
-Put this in
-your calculator and you will get
-YOUR TURN 10.71
-1. Find the mis
+10.10: Surveying the Stars
+Learning Objectives
+By the end of this section, you will be able to:
+- Understand the concept of triangulating distances to distant objects, including stars
+- Explain why space-based satellites deliver more precise distances than ground-based methods
+- Discuss astronomers’ efforts to study the stars closest to the Sun
+It is an enormous step to go from the planets to the stars. For example, our Voyager 1 probe, which was launched in 1977, has now traveled farther from Earth than any other spacecraft. As this is written in 2016, Voyager 1 is 134 AU from the Sun. 1 The nearest star, however, is hundreds of thousands of AU from Earth. Even so, we can, in principle, survey distances to the stars using the same technique that a civil engineer employs to survey the distance to an inaccessible mountain or tree—the method of triangulation .
+Triangulation in Space
+A practical example of triangulation is your own depth perception. As you are pleased to discover every morning when you look in the mirror, your two eyes are located some distance apart. You therefore view the world from two different vantage points, and it is this dual perspective that allows you to get a general sense of how far away objects are.
+ Look at it first with one eye (closing the other) and then switch eyes. Note how the pen seems to shift relative to objects across the room. Now hold the pen at arm’s length: the shift is less. If you play with moving the pen for a while, you will notice that the farther away you hold it, the less it seems to shift. 
+If your arms were made of rubber, you could stretch the pen far enough away from your eyes that the shift would become imperceptible. This is because our depth perception fails for objects more than a few tens of meters away. In order to see the shift of an object a city block or more from you, your eyes would need to be spread apart a lot farther.
+Let’s see how surveyors take advantage of the same idea. Suppose you are trying to measure the distance to a tree across a deep river (Figure \(\PageIndex{1}\)). You set up two observing stations some distance apart. That distance (line AB in Figure \(\PageIndex{1}\)) is called the baseline . Now the direction to the tree (C in the figure) in relation to the baseline is observed from each station. Note that C appears in different directions from the two stations. This apparent change in direction of the remote object due to a change in vantage point of the observer is called parallax .
+The parallax is also the angle that lines AC and BC make—in mathematical terms, the angle subtended by the baseline. A knowledge of the angles at A and B and the length of the baseline, AB, allows the triangle ABC to be solved for any of its dimensions—say, the distance AC or BC. The solution could be reached by constructing a scale drawing or by using trigonometry to make a numerical calculation. If the tree were farther away, the whole triangle would be longer and skinnier, and the parallax angle would be smaller. Thus, we have the general rule that the smaller the parallax, the more distant the object we are measuring must be.
+In practice, the kinds of baselines surveyors use for measuring distances on Earth are completely useless when we try to gauge distances in space. The farther away an astronomical object lies, the longer the baseline has to be to give us a reasonable chance of making a measurement. Unfortunately, nearly all astronomical objects are very far away. To measure their distances requires a very large baseline and highly precise angular measurements. The Moon is the only object near enough that its distance can be found fairly accurately with measurements made without a telescope. Ptolemy determined the distance to the Moon correctly to within a few percent. He used the turning Earth itself as a baseline, measuring the position of the Moon relative to the stars at two different times of night.
+With the aid of telescopes, later astronomers were able to measure the distances to the nearer planets and asteroids using Earth’s diameter as a baseline. This is how the AU was first established. To reach for the stars, however, requires a much longer baseline for triangulation and extremely sensitive measurements. Such a baseline is provided by Earth’s annual trip around the Sun.
+Distances to Stars
+As Earth travels from one side of its orbit to the other, it graciously provides us with a baseline of 2 AU, or about 300 million kilometers. Although this is a much bigger baseline than the diameter of Earth, the stars are so far away that the resulting parallax shift is still not visible to the naked eye—not even for the closest stars.
+In the chapter on Observing the Sky: The Birth of Astronomy, we discussed how this dilemma perplexed the ancient Greeks, some of whom had actually suggested that the Sun might be the center of the solar system, with Earth in motion around it. Aristotle and others argued, however, that Earth could not be revolving about the Sun. If it were, they said, we would surely observe the parallax of the nearer stars against the background of more distant objects as we viewed the sky from different parts of Earth’s orbit (Figure \(\PageIndex{3}\)). Tycho Brahe (1546–1601) advanced the same faulty argument nearly 2000 years later, when his careful measurements of stellar positions with the unaided eye revealed no such shift.
+These early observers did not realize how truly distant the stars were and how small the change in their positions therefore was, even with the entire orbit of Earth as a baseline. The problem was that they did not have tools to measure parallax shifts too small to be seen with the human eye. By the eighteenth century, when there was no longer serious doubt about Earth’s revolution, it became clear that the stars must be extremely distant. Astronomers equipped with telescopes began to devise instruments capable of measuring the tiny shifts of nearby stars relative to the background of more distant (and thus unshifting) celestial objects.
+This was a significant technical challenge, since, even for the nearest stars, parallax angles are usually only a fraction of a second of arc. Recall that one second of arc (arcsec) is an angle of only 1/3600 of a degree. A coin the size of a US quarter would appear to have a diameter of 1 arcsecond if you were viewing it from a distance of about 5 kilometers (3 miles). Think about how small an angle that is. No wonder it took astronomers a long time before they could measure such tiny shifts.
+The first successful detections of stellar parallax were in the year 1838, when Friedrich Bessel in Germany (Figure \(\PageIndex{2}\)), Thomas Henderson, a Scottish astronomer working at the Cape of Good Hope, and Friedrich Struve in Russia independently measured the parallaxes of the stars 61 Cygni, Alpha Centauri, and Vega, respectively. Even the closest star, Alpha Centauri, showed a total displacement of only about 1.5 arcseconds during the course of a year.
+Figure \(\PageIndex{3}\) shows how such measurements work. Seen from opposite sides of Earth’s orbit, a nearby star shifts position when compared to a pattern of more distant stars. Astronomers actually define parallax to be one-half the angle that a star shifts when seen from opposite sides of Earth’s orbit (the angle labeled P in Figure \(\PageIndex{3}\)). The reason for this definition is just that they prefer to deal with a baseline of 1 AU instead of 2 AU.
+Units of Stellar Distance
+With a baseline of one AU, how far away would a star have to be to have a parallax of 1 arcsecond? The answer turns out to be 206,265 AU, or 3.26 light-years. This is equal to 3.1 × 10 13 kilometers (in other words, 31 trillion kilometers). We give this unit a special name, the parsec (pc)—derived from “the distance at which we have a par allax of one sec ond.” The distance (\(D\)) of a star in parsecs is just the reciprocal of its parallax ( p ) in arcseconds; that is,
+\[D=\frac{1}{p} \nonumber\]
+Thus, a star with a parallax of 0.1 arcsecond would be found at a distance of 10 parsecs, and one with a parallax of 0.05 arcsecond would be 20 parsecs away.
+Back in the days when most of our distances came from parallax measurements, a parsec was a useful unit of distance, but it is not as intuitive as the light-year. One advantage of the light-year as a unit is that it emphasizes the fact that, as we look out into space, we are also looking back into time. The light that we see from a star 100 light-years away left that star 100 years ago. What we study is not the star as it is now, but rather as it was in the past. The light that reaches our telescopes today from distant galaxies left them before Earth even existed.
+In this text, we will use light-years as our unit of distance, but many astronomers still use parsecs when they write technical papers or talk with each other at meetings. To convert between the two distance units, just bear in mind: 1 parsec = 3.26 light-year, and 1 light-year = 0.31 parsec.
+Example \(\PageIndex{1}\): How Far Is a Light-Year?
+A light-year is the distance light travels in 1 year. Given that light travels at a speed of 300,000 km/s, how many kilometers are there in a light-year?
+- Answer
+-
+We learned earlier that speed = distance/time. We can rearrange this equation so that \(\text{distance } = \text{ velocity } \times \text{ time }\). Now, we need to determine the number of seconds in a year.
+There are approximately 365 days in 1 year. To determine the number of seconds, we must estimate the number of seconds in 1 day.
+We can change units as follows (notice how the units of time cancel out):
+\[ 1 \text{ day } \times 24 \text{ hr/day } \times 60 \text{ min/hr } \times 60 \text{ s/min } = 86,400 \text{ s/day} \nonumber\]
+Next, to get the number of seconds per year:
+\[ 365 \text{ days/year } \times 86,400 \text{ s/day } = 31,536,000 \text{ s/year} \nonumber\]
+Now we can multiply the speed of light by the number of seconds per year to get the distance traveled by light in 1 year:
+\[ \begin{aligned} \text{distance } & = \text{ velocity } \times \text{ time} \\ & = 300,000 \text{ km/s } \times 31,536,000 \text{ s} \\ & =9.46 \times 10^{12} \text{ km} \end{aligned} \nonumber\]
+That’s almost 10,000,000,000,000 km that light covers in a year. To help you imagine how long this distance is, we’ll mention that a string 1 light-year long could fit around the circumference of Earth 236 million times.
+Exercise \(\PageIndex{1}\)
+The number above is really large. What happens if we put it in terms that might be a little more understandable, like the diameter of Earth? Earth’s diameter is about 12,700 km.
+- Answer
+-
+\[ \begin{aligned} 1 \text{ light-year } & = 9.46 \times 10^{12} \text{ km} \\ & =9.46 \times 10^{12} \text{ km } \times \frac{1 \text{ Earth diameter}}{12,700 \text{ km}} \\ & =7.45 \times 10^8 \text{ Earth diameters} \end{aligned} \nonumber\]
+That means that 1 light-year is about 745 million times the diameter of Earth.
+NAMING STARS
+You may be wondering why stars have such a confusing assortment of names. Just look at the first three stars to have their parallaxes measured: 61 Cygni, Alpha Centauri, and Vega. Each of these names comes from a different tradition of designating stars.
+The brightest stars have names that derive from the ancients. Some are from the Greek, such as Sirius, which means “the scorched one”—a reference to its brilliance. A few are from Latin, but many of the best-known names are from Arabic because, as discussed in Observing the Sky: The Birth of Astronomy, much of Greek and Roman astronomy was “rediscovered” in Europe after the Dark Ages by means of Arabic translations. Vega, for example, means “swooping Eagle,” and Betelgeuse (pronounced “Beetle-juice”) means “right hand of the central one.”
+In 1603, German astronomer Johann Bayer (1572–1625) introduced a more systematic approach to naming stars. For each constellation, he assigned a Greek letter to the 

@@ -1,9 +1,98 @@
 # Source pack — subjects/physics/intermediate/electrostatics
 Lesson title: Electrostatics
 Level: intermediate
-Match confidence: 3.07
+Match confidence: 3.08
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 3.08 — LibreTexts: 5: Electrostatics
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/Berea_College/Electromagnetics_I/05%3A_Electrostatics
+
+5: Electrostatics
+Electrostatics is the theory of the electric field in conditions in which its behavior is independent of magnetic fields, including
+- The electric field associated with fixed distributions of electric charge
+- Capacitance (the ability of a structure to store energy in an electric field)
+- The energy associated with the electrostatic field
+- Steady current induced in a conducting material in the presence of an electrostatic field (essentially, Ohm’s Law)
+The term “static” refers to the fact that these aspects of electromagnetic theory can be developed by assuming sources are time-invariant; we might say that electrostatics is the study of the electric field at DC. However, many aspects of electrostatics are relevant to AC, radio frequency, and higher-frequency applications as well.
+-
+- 5.1: Coulomb’s Law
+- Consider two charge-bearing particles in free space. Let the charges borne by these particles be q1 and q2 , and let R be the distance between them. If the particles bear charges of the same sign, then the particles repel; otherwise, they attract. This repulsion or attraction can be quantified as a force experienced by each particle. Physical observations reveal that the magnitude of the force is proportional to the product of charges, and inversely proportional to R2 . For particle 2 we f
+-
+- 5.3: Charge Distributions
+- In principle, the smallest unit of electric charge that can be isolated is the charge of a single electron. This is very small, and we rarely deal with electrons one at a time, so it is usually more convenient to describe charge as a quantity that is continuous over some region of space. In particular, it is convenient to describe charge as being distributed in one of three ways: along a curve, over a surface, or within a volume.
+-
+- 5.4: Electric Field Due to a Continuous Distribution of Charge
+- It is common to have a continuous distribution of charge as opposed to a countable number of charged particles. In this section, we extend the discrete perspective of charge distributions into the concept of continuous distribution of charge so that we may address this more general class of problems.
+-
+- 5.6: Electric Field Due to an Infinite Line Charge using Gauss’ Law
+- One application of Gauss’ Law is to find the electric field due to a charged particle. In this section, we present another application – the electric field due to an infinite line of charge. The result serves as a useful “building block” in a number of other problems, including determination of the capacitance of coaxial cable.
+-
+- 5.7: Gauss’ Law - Differential Form
+- However, even the Coulomb’s Law / direct integration approach has a limitation that is very important to recognize: It does not account for the presence of structures that may influence the electric field. For example, the electric field due to a charge in free space is different from the electric field due to the same charge located near a perfectly-conducting surface. In fact, these approaches do not account for the possibility of any spatial variation in material composition.
+-
+- 5.8: Force, Energy, and Potential Difference
+- The force Fe experienced by a particle at location r bearing charge q in an electric field intensity E is Fe=qE(r)(5.8.1) If left alone in free space, this particle would immediately begin to move. The resulting displacement represents a loss of potential energy. This loss can quantified using the concept of work, W . The incremental work ΔW done by moving the particle a short distance Δl , over which we assume the change in Fe is negligible.
+-
+- 5.11: Kirchoff’s Voltage Law for Electrostatics - Differential Form
+- The integral form of Kirchoff’s Voltage Law for electrostatics states that an integral of the electric field along a closed path is equal to zero. In this section, we derive the differential form of this equation. In some applications, this differential equation, combined with boundary conditions imposed by structure and materials and can be used to solve for the electric field in arbitrarily complicated scenarios.
+-
+- 5.14: Electric Field as the Gradient of Potential
+- We defined the scalar electric potential field V(r) as the electric potential difference at r relative to a datum at infinity. In this section, we address the “inverse problem” – namely, how to calculate E(r) given V(r) . Specifically, we are interested in a direct “point-wise” mathematical transform from one to the other.
+-
+- 5.15: Poisson’s and Laplace’s Equations
+- The electric scalar potential field V(r) is useful for a number of reasons including the ability to conveniently compute potential differences and the ability to conveniently determine the electric field by taking the gradient. In this section, we develop an alternative approach to calculating V(r) that accommodates these boundary conditions, and facilitates the analysis of the scalar potential field. This alternative approach is based on Poisson’s Equation.
+-
+- 5.16: Potential Field Within a Parallel Plate Capacitor
+- This section presents a simple example that demonstrates the use of Laplace’s Equation to determine the potential field in a source free region. The example pertains to an important structure in electromagnetic theory – the parallel plate capacitor. Here we are concerned only with the potential field V(r) between the plates of the capacitor; you do not need to be familiar with capacitance or capacitors to follow this section.
+-
+- 5.17: Boundary Conditions on the Electric Field Intensity (E)
+- In homogeneous media, electromagnetic quantities vary smoothly and continuously. At an interface between dissimilar media, however, it is possible for electromagnetic quantities to be discontinuous. These discontinuities can be described mathematically as boundary conditions and used to to constrain solutions for the associated electromagnetic quantities. In this section, we derive boundary conditions on the electric field intensity E .
+-
+- 5.20: Dielectric Media
+- Dielectric is particular category of materials that exhibit low conductivity because their constituent molecules remain intact when exposed to an electric field, as opposed to shedding electrons as is the case in good conductors. Subsequently, dielectrics do not effectively pass current, and are therefore considered “good insulators” as well as “poor conductors.” An important application of dielectrics in electrical engineering is as a spacer material in printed circuit boards & coaxial cables.
+-
+- 5.21: Dielectric Breakdown
+- All practical dielectrics fail with sufficiently strong electric field, which is abrupt and is observed as a sudden, dramatic increase in conductivity, signaling that electrons are being successfully dislodged from their host molecules. The threshold value of the electric field intensity at which this occurs is known as the dielectric strength, and the sudden change in behavior observed in the presence of an electric field greater than this threshold value is known as dielectric breakdown.
+-
+- 5.25: Electrostatic Energy
+- Assuming the conductors are not free to move, potential energy is stored in the electric field associated with the surface charges. We now ask the question, what is the energy stored in this field? The answer to this question has relevance in several engineering applications. For example, when capacitors are used as batteries, it is useful to know to amount of energy that can be stored.
+Thumbnail: Electric field lines due to a point charge in the vicinity of PEC regions (shaded) of various shapes. (CC BY SA 4.0; K. Kikkeri).
+Contributors and Attributions
+-
+Ellingson, Steven W. (2018) Electromagnetics, Vol. 1. Blacksburg, VA: VT Publishing. https://doi.org/10.21061/electromagnetics-vol-1 Licensed with CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0 . Report adoption of this book here . If you are a professor reviewing, adopting, or adapting this textbook please help us understand a little more about your use by filling out this form.
+
+## Match 3.08 — LibreTexts: 7.1: Comparison of Electrostatics and Magnetostatics
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/Berea_College/Electromagnetics_I/07%3A_Magnetostatics/7.01%3A_Comparison_of_Electrostatics_and_Magnetostatics
+
+7.1: Comparison of Electrostatics and Magnetostatics
+-
+- Last updated
+- Save as PDF
+Students encountering magnetostatics for the first time have usually been exposed to electrostatics already. Electrostatics and magnetostatics exhibit many similarities. These are summarized in Table \(\PageIndex{1}\). The elements of magnetostatics presented in this table are all formally introduced in other sections; the sole purpose of this table is to point out the similarities. The technical term for these similarities is duality . Duality also exists between voltage and current in electrical circuit theory.
+| electrostatics | magnetostatics | |
+|---|---|---|
+| Sources | static charge | steady current, magnetizable material |
+| Field intensity | \({\bf E}\) (V/m) | \({\bf H}\) (A/m) |
+| Flux density | \({\bf D}\) (C/m\(^2\)) | \({\bf B}\) (Wb/m\(^2\)=T) |
+| Material relations | \({\bf D}=\epsilon{\bf E}\) | \({\bf B}=\mu{\bf H}\) |
+| \({\bf J}=\sigma{\bf E}\) | ||
+| Force on charge \(q\) | \({\bf F}=q{\bf E}\) | \({\bf F}=q{\bf v} \times {\bf B}\) |
+|
+Maxwell’s Eqs.
+(integral) |
+\(\oint_{\mathcal S}{\bf D}\cdot d{\bf s} = Q_{encl}\) | \(\oint_{\mathcal S}{\bf B}\cdot d{\bf s} = 0\) |
+| \(\oint_{\mathcal C}{\bf E}\cdot d{\bf l} = 0\) | \(\oint_{\mathcal C}{\bf H}\cdot d{\bf l} = I_{encl}\) | |
+|
+Maxwell’s Eqs.
+(differential) |
+\(\nabla\cdot{\bf D}=\rho_v\) | \(\nabla\cdot{\bf B}=0\) |
+| \(\nabla\times{\bf E}=0\) | \(\nabla\times{\bf H}={\bf J}\) | |
+| Boundary Conditions | \(\hat{\bf n} \times \left[{\bf E}_1-{\bf E}_2\right] = 0\) | \(\hat{\bf n} \times \left[{\bf H}_1-{\bf H}_2\right] = {\bf J}_s\) |
+| \(\hat{\bf n} \cdot \left[{\bf D}_1-{\bf D}_2\right] = \rho_s\) | \(\hat{\bf n} \cdot \left[{\bf B}_1-{\bf B}_2\right] = 0\) | |
+| Energy storage | Capacitance | Inductance |
+| Energy density | \(w_e=\frac{1}{2}\epsilon E^2\) | \(w_m=\frac{1}{2}\mu H^2\) |
+| Energy dissipation | Resistance |
 
 ## Match 3.07 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 18.8 Applications of Electrostatics
 
@@ -159,97 +248,3 @@ Access for free at openstax.org
 charge.
 Click to view content (https://openstax.org/books/college-physics-ap-courses-2e/pages/18-connection-for-
 ap-r-courses)
-
-## Match 3.07 — College_Physics-WEB_2s5sHvR § 18.8 Applications of Electrostatics
-
-•
-Name several real-world applications of the study of electrostatics.
-The image of American politician and scientist Benjamin
-Franklin (1706–1790) flying a kite in a thunderstorm is familiar to every schoolchild. (See Figure 18.2.) In this experiment,
-Franklin demonstrated a connection between lightning and static electricity. Sparks were drawn from a key hung on a kite
-string during an electrical storm. These sparks were like those produced by static electricity, such as the spark that jumps from
-your finger to a metal doorknob after you walk across a wool carpet. What Franklin demonstrated in his dangerous experiment
-was a connection between phenomena on two different scales: one the grand power of an electrical storm, the other an effect of
-more human proportions. Connections like this one reveal the underlying unity of the laws of nature, an aspect we humans find
-particularly appealing.
-762
-Chapter 18 • Electric Charge and Electric Field
-Access for free at openstax.org.
-
-Figure 18.2 When Benjamin Franklin demonstrated that lightning was related to static electricity, he made a connection that is now part of
-the evidence that all directly experienced forces except the gravitational force are manifestations of the electromagnetic force.
-Much has been written about Franklin. His experiments were only part of the life of a man who was a scientist, inventor,
-revolutionary, statesman, and writer. Franklin’s experiments were not performed in isolation, nor were they the only ones to
-reveal connections.
-For example, the Italian scientist Luigi Galvani (1737–1798) performed a series of experiments in which static electricity was used
-to stimulate contractions of leg muscles of dead frogs, an effect already known in humans subjected to static discharges. But
-Galvani also found that if he joined two metal wires (say copper and zinc) end to end and touched the other ends to muscles, he
-produced the same effect in frogs as static discharge. Alessandro Volta (1745–1827), partly inspired by Galvani’s work,
-experimented with various combinations of metals and developed the battery.
-During the same era, other scientists made progress in discovering fundamental connections. The periodic table was developed
-as the systematic properties of the elements were discovered. This influenced the development and refinement of the concept of
-atoms as the basis of matter. Such submicroscopic descriptions of matter also help explain a great deal more.
-Atomic and molecular interactions, such as the forces of friction, cohesion, and adhesion, are now known to be manifestations
-of the electromagnetic force. Static electricity is just one aspect of the electromagnetic force, which also includes moving
-electricity and magnetism.
-All the macroscopic forces that we experience directly, such as the sensations of touch and the tension in a rope, are due to the
-electromagnetic force, one of the four fundamental forces in nature. The gravitational force, another fundamental force, is
-actually sensed through the electromagnetic interaction of molecules, such as between those in our feet and those on the top of a
-bathroom scale. (The other two fundamental forces, the strong nuclear force and the weak nuclear force, cannot be sensed on the
-human scale.)
-This chapter begins the study of electromagnetic phenomena at a fundamental level. The next several chapters will cover static
-electricity, moving electricity, and magnetism—collectively known as electromagnetism. In this chapter, we begin with the
-study of electric phenomena due to charges that are at least temporarily stationary, called electrostatics, or static electricity.
-Click to view content (https://www.youtube.com/embed/SglzRDD1oNI)
-Chapter 18 • Introduction
-763
-
-
-## Match 3.06 — College_Physics_2e-WEB_7Zesafu § 18.8 Applications of Electrostatics
-
-The image of American politician and scientist
-Benjamin Franklin (1706–1790) flying a kite in a thunderstorm is familiar to every schoolchild. (See Figure 18.2.) In
-this experiment, Franklin demonstrated a connection between lightning and static electricity. Sparks were drawn
-from a key hung on a kite string during an electrical storm. These sparks were like those produced by static
-electricity, such as the spark that jumps from your finger to a metal doorknob after you walk across a wool carpet.
-What Franklin demonstrated in his dangerous experiment was a connection between phenomena on two different
-scales: one the grand power of an electrical storm, the other an effect of more human proportions. Connections like
-this one reveal the underlying unity of the laws of nature, an aspect we humans find particularly appealing.
-FIGURE 18.1 Static electricity from this plastic slide causes the child’s hair to stand on end. The sliding motion stripped electrons away
-from the child’s body, leaving an excess of positive charges, which repel each other along each strand of hair. (credit: Ken Bosma/Wikimedia
-Commons)
-CHAPTER OUTLINE
-
-FIGURE 18.2 When Benjamin Franklin demonstrated that lightning was related to static electricity, he made a connection that is now part
-of the evidence that all directly experienced forces except the gravitational force are manifestations of the electromagnetic force.
-Much has been written about Franklin. His experiments were only part of the life of a man who was a scientist,
-inventor, revolutionary, statesman, and writer. Franklin’s experiments were not performed in isolation, nor were they
-the only ones to reveal connections.
-For example, the Italian scientist Luigi Galvani (1737–1798) performed a series of experiments in which static
-electricity was used to stimulate contractions of leg muscles of dead frogs, an effect already known in humans
-subjected to static discharges. But Galvani also found that if he joined two metal wires (say copper and zinc) end to
-end and touched the other ends to muscles, he produced the same effect in frogs as static discharge. Alessandro
-Volta (1745–1827), partly inspired by Galvani’s work, experimented with various combinations of metals and
-developed the battery.
-During the same era, other scientists made progress in discovering fundamental connections. The periodic table
-was developed as the systematic properties of the elements were discovered. This influenced the development and
-refinement of the concept of atoms as the basis of matter. Such submicroscopic descriptions of matter also help
-explain a great deal more.
-Atomic and molecular interactions, such as the forces of friction, cohesion, and adhesion, are now known to be
-manifestations of the electromagnetic force. Static electricity is just one aspect of the electromagnetic force, which
-also includes moving electricity and magnetism.
-All the macroscopic forces that we experience directly, such as the sensations of touch and the tension in a rope, are
-due to the electromagnetic force, one of the four fundamental forces in nature. The gravitational force, another
-fundamental force, is actually sensed through the electromagnetic interaction of molecules, such as between those
-in our feet and those on the top of a bathroom scale. (The other two fundamental forces, the strong nuclear force
-and the weak nuclear force, cannot be sensed on the human scale.)
-This chapter begins the study of electromagnetic phenomena at a fundamental level. The next several chapters will
-cover static electricity, moving electricity, and magnetism—collectively known as electromagnetism. In this chapter,
-we begin with the study of electric phenomena due to charges that are at least temporarily stationary, called
-electrostatics, or static electricity.
-Click to view content (https://openstax.org/books/college-physics-2e/pages/18-introduction-to-electric-charge-
-and-electric-field)
-774
-18 • Electric Charge and Electric Field
-Access for free at openstax.org
-

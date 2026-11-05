@@ -1,573 +1,250 @@
 # Source pack — subjects/biology/foundational/evolution-natural-selection
 Lesson title: Evolution by Natural Selection
 Level: foundational
-Match confidence: 2.35
+Match confidence: 3.05
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.35 — Biology2e-WEB_ICOFkGu § 45.2 Life Histories and Natural Selection
+## Match 3.05 — LibreTexts: 13.E: Evolution and Natural Selection (Exercises)
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Courses/Citrus_College/Citrus_College_General_Biology_Textbook/13%3A_Evolution_and_Natural_Selection/13.E%3A_Evolution_and_Natural_Selection_(Exercises)
 
-By the end of this section, you will be able to do the following:
-•
-Describe how life history patterns are influenced by natural selection
-•
-Explain different life history patterns and how different reproductive strategies affect species’ survival
-A species’ life history describes the series of events over its lifetime, such as how resources are allocated for growth,
-maintenance, and reproduction. Life history traits affect the life table of an organism. A species’ life history is genetically
-determined and shaped by the environment and natural selection.
-Life History Patterns and Energy Budgets
-Energy is required by all living organisms for their growth, maintenance, and reproduction; at the same time, energy is often a
-major limiting factor in determining an organism’s survival. Plants, for example, acquire energy from the sun via
-photosynthesis, but must expend this energy to grow, maintain health, and produce energy-rich seeds to produce the next
-generation. Animals have the additional burden of using some of their energy reserves to acquire food. Furthermore, some
-animals must expend energy caring for their offspring. Thus, all species have an energy budget: they must balance energy intake
-with their use of energy for metabolism, reproduction, parental care, and energy storage (such as bears building up body fat for
-winter hibernation).
-Parental Care and Fecundity
-Fecundity is the potential reproductive capacity of an individual within a population. In other words, fecundity describes how
-many offspring could ideally be produced if an individual has as many offspring as possible, repeating the reproductive cycle as
-soon as possible after the birth of the offspring. In animals, fecundity is inversely related to the amount of parental care given to
-an individual offspring. Species, such as many marine invertebrates, that produce many offspring usually provide little if any
-care for the offspring (they would not have the energy or the ability to do so anyway). Most of their energy budget is used to
-produce many tiny offspring. Animals with this strategy are often self-sufficient at a very early age. This is because of the energy
-tradeoff these organisms have made to maximize their evolutionary fitness. Because their energy is used for producing
-offspring instead of parental care, it makes sense that these offspring have some ability to be able to move within their
-environment and find food and perhaps shelter. Even with these abilities, their small size makes them extremely vulnerable to
-predation, so the production of many offspring allows enough of them to survive to maintain the species.
-Animal species that have few offspring during a reproductive event usually give extensive parental care, devoting much of their
-energy budget to these activities, sometimes at the expense of their own health. This is the case with many mammals, such as
-humans, kangaroos, and pandas. The offspring of these species are relatively helpless at birth and need to develop before they
-45.2 • Life Histories and Natural Selection
-1301
+13.E: Evolution and Natural Selection (Exercises)
+13.1: Discovering How Populations Change
+Multiple Choice
+Which scientific concept did Charles Darwin and Alfred Wallace independently discover?
+A. mutation
+B. natural selection
+C. overbreeding
+D. sexual reproduction
+- Answer
+-
+B
+Which of the following situations will lead to natural selection?
+A. The seeds of two plants land near each other and one grows larger than the other.
+B. Two types of fish eat the same kind of food, and one is better able to gather food than the other.
+C. Male lions compete for the right to mate with females, with only one possible winner.
+D. all of the above
+- Answer
+-
+D
+What is the difference between micro- and macroevolution?
+A. Microevolution describes the evolution of small organisms, such as insects, while macroevolution describes the evolution of large organisms, like people and elephants.
+B. Microevolution describes the evolution of microscopic entities, such as molecules and proteins, while macroevolution describes the evolution of whole organisms.
+C. Microevolution describes the evolution of populations, while macroevolution describes the emergence of new species over long periods of time.
+D. Microevolution describes the evolution of organisms over their lifetimes, while macroevolution describes the evolution of organisms over multiple generations.
+- Answer
+-
+C
+Population genetics is the study of ________.
+A. how allele frequencies in a population change over time
+B. populations of cells in an individual
+C. the rate of population growth
+D. how genes affect embryological development
+- Answer
+-
+A
+Free Response
+If a person scatters a handful of plant seeds from one species in an area, how would natural selection work in this situation?
+- Answer
+-
+The plants that can best use the resources of the area, including competing with other individuals for those resources, will produce more seeds themselves and those traits that allowed them to better use the resources will increase in the population of the next generation.
+Explain the Hardy-Weinberg principle of equilibrium.
+- Answer
+-
+The Hardy-Weinberg principle of equilibrium states that a population’s allele frequencies are inherently stable. Unless an evolutionary force is acting upon the population, the population would carry the same genes at the same frequencies generation after generation, and individuals would, as a whole, look essentially the same.
+13.2: Evidence of Evolution
+Multiple Choice
+The wing of a bird and the arm of a human are examples of ________.
+A. vestigial structures
+B. molecular structures
+C. homologous structures
+D. analogous structures
+- Answer
+-
+C
+The fact that DNA sequences are more similar in more closely related organisms is evidence of what?
+A. optimal design in organisms
+B. adaptation
+C. mutation
+D. descent with modification
+- Answer
+-
+D
+Free Response
+Why do scientists consider vestigial structures evidence for evolution?
+- Answer
+-
+A vestigial structure is an example of a homologous structure that has apparently been reduced through evolution to a non-functional state because its function is no longer utilized by the species exhibiting it; therefore, any mutations which might reduce its structure are not selected against. The fact that the species has vestiges of the structure rather than no structure at all is evidence that it was present in an ancestor and evolved to non-functionality through accumulation of random mutations.
+13.3: Mechanisms of Evolution
+Multiple Choice
+Galápagos medium ground finches are found on Santa Cruz and San Cristóbal islands, which are separated by about 100 km of ocean. Occasionally, individuals from either island fly to the other island to stay. This can alter the allele frequencies of the population through which of the following mechanisms?
+A. natural selection
+B. genetic drift
+C. gene flow
+D. mutation
+- Answer
+-
+C
+In which of the following pairs do both evolutionary processes introduce new genetic variation into a population?
+A. natural selection and genetic drift
+B. mutation and gene flow
+C. natural selection and gene flow
+D. gene flow and genetic drift
+- Answer
+-
+B
+Free Response
+Describe a situation in which a population would undergo the bottleneck effect and explain what impact that would have on the population’s gene pool.
+- Answer
+-
+Answers may vary.
+A bottleneck effect occurs when a significant portion of a population is suddenly reduced due to a catastrophic event or other factors, leading to a drastic reduction in genetic diversity within the population. An example of this might be a natural disaster, such as a volcanic eruption, wildfire, or hurricane, that kills a large number of individuals in a population of animals, leaving only a small, random subset of the original population to survive and reproduce. The resulting effect of the gene pool would be and overall decrease in the genetic diversity of the population, since the genetic make up of the survivors does not necessarily represent the original population, and an increase in inbreeding since the population is small. These factors lead the population ot be less adaptable to fututre changes in the environment.
+13.4: Natural Selection - A Deeper Dive
+Multiple Choice
+Which type of selection results in greater genetic variability in a population?
+A. stabilizing selection
+B. directional selection
+C. diversifying selection
+D. positive frequency-dependent selection
+- Answer
+-
+C
+When males and females of a population look or act differently, it is referred to as ________.
 
-achieve self-sufficiency.
-Plants with low fecundity produce few energy-rich seeds (such as coconuts and chestnuts) with each having a good chance to
-germinate into a new organism; plants with high fecundity usually have many small, energy-poor seeds (like orchids) that have a
-relatively poor chance of surviving. Although it may seem that coconuts and chestnuts have a better chance of surviving, the
-energy tradeoff of the orchid is also very effective. It is a matter of where the energy is used, for large numbers of seeds or for
-fewer seeds with more energy.
-Early versus Late Reproduction
-The timing of reproduction in a life history also affects species survival. Organisms that reproduce at an early age have a greater
-chance of producing offspring, but this is usually at the expense of their growth and the maintenance of their health.
-Conversely, organisms that start reproducing later in life often have greater fecundity or are better able to provide parental care,
-but they risk that they will not survive to reproductive age. Examples of this can be seen in fishes. Small fish, like guppies, use
-their energy to reproduce rapidly, but never attain the size that would give them defense against some predators. Larger fish,
-like the bluegill or shark, use their energy to attain a large size, but do so with the risk that they will die before they can
-reproduce or at least reproduce to their maximum. These different energy strategies and tradeoffs are key to understanding the
-evolution of each species as it maximizes its fitness and fills its niche. In terms of energy budgeting, some species “blow it all”
-and use up most of their energy reserves to reproduce early before they die. Other species delay having reproduction to become
-stronger, more experienced individuals and to make sure that they are strong enough to provide parental care if necessary.
-Single versus Multiple Reproductive Events
-Some life history traits, such as fecundity, timing of reproduction, and parental care, can be grouped together into general
-strategies that are used by multiple species. Semelparity occurs when a species reproduces only once during its lifetime and
-then dies. Such species use most of their resource budget during a single reproductive event, sacrificing their health to the point
-that they do not survive. Examples of semelparity are bamboo, which flowers once and then dies, and the Chinook salmon
-(Figure 45.7a), which uses most of its energy reserves to migrate from the ocean to its freshwater nesting area, where it
-reproduces and then dies. Scientists have posited alternate explanations for the evolutionary advantage of the Chinook’s post-
-reproduction death: a programmed suicide caused by a massive release of corticosteroid hormones, presumably so the parents
-can become food for the offspring, or simple exhaustion caused by the energy demands of reproduction; these are still being
-debated.
-Iteroparity describes species that reproduce repeatedly during their lives. Some animals are able to mate only once per year, but
-survive multiple mating seasons. The pronghorn antelope is an example of an animal that goes into a seasonal estrus cycle
-(“heat”): a hormonally induced physiological condition preparing the body for successful mating (Figure 45.7b). Females of these
-species mate only during the estrus phase of the cycle. A different pattern is observed in primates, including humans and
-chimpanzees, which may attempt reproduction at any time during their reproductive years, even though their menstrual cycles
-make pregnancy likely only a few days per month during ovulation (Figure 45.7c).
-Figure 45.7 The (a) Chinook salmon mates once and dies. The (b) pronghorn antelope mates during specific times of the year during its
-reproductive life. Primates, such as humans and (c) chimpanzees, may mate on any day, independent of ovulation. (credit a: modification of
-work by Roger Tabor, USFWS; credit b: modification of work by Mark Gocke, USDA; credit c: modification of work by “Shiny Things”/Flickr)
-LINK TO LEARNING
-Play this interactive PBS evolution-based mating game (http://openstax.org/l/mating_game) to learn more about reproductive
-strategies.
-1302
-Chapter 45 • Population and Community Ecology
-Access for free at openstax.org.
+A. why more fit individuals are more likely to have more offspring
+B. why alleles that confer beneficial traits or behaviors are selected for by natural selectio
+C. why some deleterious mutations are maintained in the population
+D. why individuals of one sex develop impressive ornamental traits
+- Answer
+-
+D
+Free Response
+Describe natural selection and give an example of natural selection at work in a population.
+- Answer
+-
+The theory of natural selection stems from the observation that some individuals in a population survive longer and have more offspring than others, thus passing on more of their genes to the next generation. For example, a big, powerful male gorilla is much more likely than a smaller, weaker gorilla to become the population’s silverback, the pack’s leader who mates far more than the other males of the group. The pack leader will, therefore, father more offspring, who share half of his genes, and are thus likely to also grow bigger and stronger like their father. Over time, the genes for bigger size will increase in frequency in the population, and the population will, as a result, grow larger on average.
+List the ways in which natural selection can affect population variation and describe how they influence allele frequencies.
+- Answer
+-
+Natural selection affects population variation in these ways:
+- Directional Selection: Favors one extreme trait, increasing its alleles and shifting traits in one direction.
+- Stabilizing Selection: Favors average traits, increasing those alleles and reducing variation
+- Disruptive Selection: Favors both extremes, increasing variation and potentially leading to new species.
+Each type influences allele frequencies by increasing or decreasing certain traits in a population
+13.5: Speciation
+Multiple Choice
+Which situation would most likely lead to allopatric speciation?
+A. A flood causes the formation of a new lake.
+B. A storm causes several large trees to fall down.
+C. A mutation causes a new trait to develop.
+D. An injury causes an organism to seek out a new food source.
+- Answer
+-
+A
+What is the main difference between dispersal and vicariance?
+A. One leads to allopatric speciation, whereas the other leads to sympatric speciation.
+B. One involves the movement of the organism, whereas the other involves a change in the environment.
+C. One depends on a genetic mutation occurring, whereas the other does not.
+D. One involves closely related organisms, whereas the other involves only individuals of the same species.
+- Answer
+-
+B
+Which variable increases the likelihood of allopatric speciation taking place more quickly?
+A. lower rate of mutation
+B. longer distance between divided groups
+C. increased instances of hybrid formation
+D. equivalent numbers of individuals in each population
+- Answer
+-
+B
+Free Response
+Why do island chains provide ideal conditions for adaptive radiation to occur?
+- Answer
+-
+Organisms of one species can arrive to an island together and then disperse throughout the chain, each settling into different niches, exploiting different food resources and, evolving independently with little gene flow between different islands.
+Two species of fish had recently undergone sympatric speciation. The males of each species had a different coloring through which females could identify and choose a partner from her own species. After some time, pollution made the lake so cloudy it was hard for females to distinguish colors. What might take place in this situation?
+- Answer
+-
+It is likely the two species would start to reproduce with each other if hybridization is still possible. Depending on the viability of their offspring, they may fuse back into one species.
+13.6: Common Misconceptions about Evolution
+Multiple Choice
+The word “theory” in theory of evolution is best replaced by ________.
+A. fact
+B. hypothesis
+C. idea
+D. alternate explanation
+- Answer
+-
+A
+Why are alternative scientific theories to evolution not taught in public school?
+A. more theories would confuse students
+B. there are no viable scientific alternatives
+C. it is against the law
+D. alternative scientific theories are suppressed by the science establishment
+- Answer
+-
+B
+Free Response
+How does the scientific meaning of “theory” differ from the common, everyday meaning of the word?
+- Answer
+-
+In science, a theory is a thoroughly tested and verified set of explanations for a body of observations of nature. It is the strongest form of knowledge in science. In contrast, a theory in common usage can mean a guess or speculation about something, meaning that the knowledge implied by the theory may be very weak.
+Explain why the statement that a monkey is more evolved than a mouse is incorrect.
+- Answer
+-
+The statement implies that there is a goal to evolution and that the monkey represents greater progress to that goal than the mouse. Both species are likely to be well adapted to their particular environment, which is the outcome of natural selection.
+Contributors and Attributions
+Remixed and/or curated from the following works:
+Fowler, S., Roush, R., & Wise, J. (2013). 11.E Evolution and Its Processes (Exercises) . In Concepts of Biology . OpenStax (CC BY 4.0; Access for free at https://openstax.org/books/concepts-biology/pages/1-introduction ).
+Clark, M. A., Douglas, M., & Choi, J. (2018). 19 Review Questions and 19 Critical Thinking Questions . In Biology 2e . OpenStax (CC BY 4.0; Access for free at https://openstax.org/books/biology-2e/pages/1-introduction ).
 
-EVOLUTION CONNECTION
-Energy Budgets, Reproductive Costs, and Sexual Selection in Drosophila
-Research into how animals allocate their energy resources for growth, maintenance, and reproduction has used a variety of
-experimental animal models. Some of this work has been done using the common fruit fly, Drosophila melanogaster. Studies
-have shown that not only does reproduction have a cost as far as how long male fruit flies live, but also fruit flies that have
-already mated several times have limited sperm remaining for reproduction. Fruit flies maximize their last chances at
-reproduction by selecting optimal mates.
-In a 1981 study, male fruit flies were placed in enclosures with either virgin or inseminated females. The males that mated with
-virgin females had shorter life spans than those in contact with the same number of inseminated females with which they were
-unable to mate. This effect occurred regardless of how large (indicative of their age) the males were. Thus, males that did not
-mate lived longer, allowing them more opportunities to find mates in the future.
-More recent studies, performed in 2006, show how males select the female with which they will mate and how this is affected by
-previous matings (Figure 45.8).2 Males were allowed to select between smaller and larger females. Findings showed that larger
-females had greater fecundity, producing twice as many offspring per mating as the smaller females did. Males that had
-previously mated, and thus had lower supplies of sperm, were termed “resource-depleted,” while males that had not mated were
-termed “non-resource-depleted.” The study showed that although non-resource-depleted males preferentially mated with larger
-females, this selection of partners was more pronounced in the resource-depleted males. Thus, males with depleted sperm
-supplies, which were limited in the number of times that they could mate before they replenished their sperm supply, selected
-larger, more fecund females, thus maximizing their chances for offspring. This study was one of the first to show that the
-physiological state of the male affected its mating behavior in a way that clearly maximizes its use of limited reproductive
-resources.
-Figure 45.8 Male fruit flies that had previously mated (sperm-depleted) picked larger, more fecund females more often than those that had
-not mated (non-sperm-depleted). This change in behavior causes an increase in the efficiency of a limited reproductive resource: sperm.
-These studies demonstrate two ways in which the energy budget is a factor in reproduction. First, energy expended on mating
-may reduce an animal’s lifespan, but by this time they have already reproduced, so in the context of natural selection this early
-death is not of much evolutionary importance. Second, when resources such as sperm (and the energy needed to replenish it)
-are low, an organism’s behavior can change to give them the best chance of passing their genes on to the next generation. These
-changes in behavior, so important to evolution, are studied in a discipline known as behavioral biology, or ethology, at the
-interface between population biology and psychology.
+## Match 3.04 — LibreTexts: 13: Evolution and Natural Selection
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Courses/Citrus_College/Citrus_College_General_Biology_Textbook/13%3A_Evolution_and_Natural_Selection
 
-## Match 1.73 — Biology2e-WEB_ICOFkGu § 19.1 Population Evolution
+13: Evolution and Natural Selection
+-
+- 13.2: Discovering How Populations Change
+- Evolution by natural selection arises from three conditions: individuals within a species vary, some of those variations are heritable, and organisms have more offspring than resources can support. The consequence is that individuals with relatively advantageous variations will be more likely to survive and have higher reproductive rates than those individuals with different traits. The advantageous traits will be passed on to offspring in greater proportion.
+-
+- 13.3: Evidence of Evolution
+- The evidence for evolution is found at all levels of organization in living things and in the extinct species we know about through fossils. Fossils provide evidence for the evolutionary change through now extinct forms that led to modern species. For example, there is a rich fossil record that shows the evolutionary transitions from horse ancestors to modern horses that document intermediate forms and a gradual adaptation t changing ecosystems.
+-
+- 13.4: Mechanisms of Evolution
+- Four factors that can change the allele frequencies of a population. Natural selection works by selecting for alleles that confer beneficial traits or behaviors, while selecting against those for deleterious qualities. Mutations introduce new alleles into a population. Genetic drift stems from the chance occurrence that some individuals have more offspring than others and results in changes in allele frequencies that are random in direction.
+-
+- 13.5: Natural Selection - A Deeper Dive
+- Fitness is often quantifiable and is measured by scientists in the field. However, it is not the absolute fitness of an individual that counts, but rather how it compares to the other organisms in the population. This concept, called relative fitness, allows researchers to determine which individuals are contributing additional offspring to the next generation, and thus, how the population might evolve.
+-
+- 13.6: Speciation
+- Speciation occurs along two main pathways: geographic separation (allopatric speciation) and through mechanisms that occur within a shared habitat (sympatric speciation). Both pathways force reproductive isolation between populations. Sympatric speciation can occur through errors in meiosis that form gametes with extra chromosomes, called polyploidy. Autopolyploidy occurs within a single species, whereas allopolyploidy occurs because of a mating between closely related species.
+-
+- 13.7: Common Misconceptions about Evolution
+- Although the theory of evolution initially generated some controversy, by 20 years after the publication of On the Origin of Species it was almost universally accepted by biologists, particularly younger biologists. Nevertheless, the theory of evolution is a difficult concept and misconceptions about how it works abound. In addition, there are those that reject it as an explanation for the diversity of life.
+Thumbnail: A couple of large lizards sitting on top of a sandy beach in the Galapagos Islands. (CC0 License; Dylan Shaw , via Unsplash )
 
-By the end of this section, you will be able to do the following:
-•
-Define population genetics and describe how scientists use population genetics in studying
-population evolution
-•
-Define the Hardy-Weinberg principle and discuss its importance
-People did not understand the mechanisms of inheritance, or genetics, at the time Charles Darwin and
-Figure 19.1 Living things may be single-celled or complex, multicellular organisms. They may be
-plants, animals, fungi, bacteria, or archaea. This diversity results from evolution. (credit "wolf":
-modification of work by Gary Kramer; credit "coral": modification of work by William Harrigan,
-NOAA; credit "river": modification of work by Vojtěch Dostál; credit "fish" modification of work by
-Christian Mehlführer; credit "mushroom": modification of work by Cory Zanker; credit "tree":
-modification of work by Joseph Kranak; credit "bee": modification of work by Cory Zanker)
-INTRODUCTION All life on Earth is related. Evolutionary theory states that humans, beetles, plants,
-and bacteria all share a common ancestor, but that millions of years of evolution have shaped each of
-these organisms into the forms we see today. Scientists consider evolution a key concept to
-understanding life. It is one of the most dominant evolutionary forces. Natural selection acts to promote
-traits and behaviors that increase an organism’s chances of survival and reproduction, while eliminating
-those traits and behaviors that are detrimental to the organism. However, natural selection can only, as
-its name implies, select—it cannot create. We can attribute novel traits and behaviors to another
-evolutionary force—mutation. Mutation and other sources of variation among individuals, as well as the
-evolutionary forces that act upon them, alter populations and species. This combination of processes has
-led to the world of life we see today.
-Chapter Outline
+## Match 2.40 — LibreTexts: 22.1.1.2: Charles Darwin and Natural Selection
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/Map%3A_Raven_Biology_12th_Edition/22%3A_The_Origin_of_Species/22.01%3A_The_Nature_of_Species_and_the_Biological_Species_Concept/22.1.01%3A_Understanding_Evolution/22.1.1.2%3A_Charles_Darwin_and_Natural_Selection
 
-## Match 1.72 — APBiology-OP_5meoFaG § 19.3 Adaptive Evolution
-
-Because natural selection acts to increase the frequency of beneficial alleles and traits while decreasing the frequency of
-deleterious qualities, it is adaptive evolution. Natural selection acts at the level of the individual, selecting for those that
-have a higher overall fitness compared to the rest of the population. If the fit phenotypes are those that are similar, natural
-selection will result in stabilizing selection, and an overall decrease in the population’s variation. Directional selection
-works to shift a population’s variance toward a new, fit phenotype, as environmental conditions change. In contrast,
-diversifying selection results in increased genetic variance by selecting for two or more distinct phenotypes.
-Other types of selection include frequency-dependent selection, in which individuals with either common (positive
-frequency-dependent selection) or rare (negative frequency-dependent selection) are selected for. Finally, sexual selection
-results from the fact that one sex has more variance in the reproductive success than the other. As a result, males and
-females experience different selective pressures, which can often lead to the evolution of phenotypic differences, or sexual
-dimorphisms, between the two.
-REVIEW QUESTIONS
-1. What is the ultimate source of all variation in and
-among populations?
-Chapter 19 | The Evolution of Populations
-793
-
-a.
-genetic mutations that result in viable offspring
-b.
-natural selection
-c.
-diverse habitats
-d.
-factors in the environment that may affect
-development
-2. When male lions reach sexual maturity, they are thrown
-out of their group, or pride, and must live on their own or
-with other males until they can take over their own pride.
-This can alter the allele frequencies of the population
-through which of the following mechanisms?
-a.
-natural selection
-b.
-gene flow
-c.
-random mating
-d.
-genetic drift
-3. Which of the following populations has violated the
-conditions of Hardy-Weinberg Equilibrium?
-a.
-an infinitely large population
-b.
-a population in which the allele frequencies do
-not change over time
-c.
-a population in which the Hardy-Weinberg
-equation is equal to 1
-d.
-a population undergoing natural selection
-4. What is the difference between micro and
-macroevolution?
-a.
-Microevolution describes the evolution of small
-organisms, such as insects, while
-macroevolution describes the evolution of large
-organisms, like people and elephants.
-b.
-Microevolution describes the evolution of
-microscopic entities, such as molecules and
-proteins, while macroevolution describes the
-evolution of whole organisms.
-c.
-Microevolution describes the evolution of
-organisms in populations, while macroevolution
-describes the evolution of species over long
-periods of time.
-d.
-Microevolution describes the evolution of
-organisms over their lifetimes, while
-macroevolution describes the evolution of
-organisms over multiple generations.
-5. Which of the following would be supported by
-Lamarck?
-a.
-Natural selection leads to changes in organisms
-over time
-b.
-The strong arms of a gorilla are the result of its
-parents constantly climbing, lifting and fighting.
-c.
-Lack of resources led to the death of three of
-four fox cubs.
-d.
-The founder effect is when a few individuals in a
-population are separated from the original
-population.
-6. What is population variance influenced by?
-a.
-genetic structure
-b.
-environment
-c.
-diet composition
-d.
-All of the above
-7. What is genetic variance?
-a.
-the change in a population’s genetic structure
-b.
-the effect of chance on a population’s gene pool
-c.
-the diversity of alleles and genotypes within a
-population
-d.
-the magnification of genetic drift as a result of
-natural events or catastrophes
-8. When closely related individuals mate with each other,
-or inbreed, the offspring are often not as fit as the offspring
-of two unrelated individuals. Why?
-a.
-Inbreeding causes normally silent alleles to be
-expressed.
-b.
-The DNA of close relatives reacts negatively in
-the offspring.
-c.
-Inbreeding can bring together rare, deleterious
-mutations that lead to harmful phenotypes
-d.
-Close relatives are genetically incompatible.
-9. What could cause genetic drift to occur within a
-population?
-a.
-accidental deaths
-b.
-predators
-c.
-disease
-d.
-lack of gene flow
-10. What is the evolutionary mechanism that alters allele
-frequencies by chance called?
-a.
-genetic drift
-b.
-natural selection
-c.
-inbreeding
-d.
-migration
-11. What is assortative mating?
-794
-Chapter 19 | The Evolution of Populations
-This OpenStax book is available for free at http://cnx.org/content/col12078/1.6
-
-a.
-when individuals mate with those who are
-similar to themselves
-b.
-when individuals mate with those who are
-dissimilar to themselves
-c.
-when individuals mate with those who are most
-fit in the population
-d.
-when individuals mate with those who are least
-fit in the population
-12. What is an example of a cline?
-a.
-a random fluctuation in a species gene
-frequencies
-b.
-a mutation that spreads across the ecological
-range of a species
-c.
-the females of a species preferring males that are
-orange in coloration instead of white
-d.
-a species having greater cold tolerance in the
-colder parts of its range than in the warmer parts
-of its range
-13. Which type of selection results in greater genetic
-variance in a population?
-a.
-stabilizing selection
-b.
-directional selection
-c.
-diversifying selection
-d.
-positive frequency-dependent selection
-14. What types of phenotypes does negative frequency-
-dependent selection favor?
-a.
-advantageous
-b.
-rare
-c.
-common
-d.
-disadvantageous
-15. The good genes hypothesis is a theory that explains
-what?
-a.
-why more fit individuals are more likely to have
-more offspring
-b.
-why alleles that confer beneficial traits or
-behaviors are selected for by natural selection
-c.
-why some deleterious mutations are maintained
-in the population
-d.
-why individuals of one sex develop impressive
-ornament traits
-16. Which of the following describes when males and
-females of a population look or act differently/
-a.
-sexual selection
-b.
-diversifying selection
-c.
-sexual dimorphism
-d.
-a cline
-CRITICAL THINKING QUESTIONS
-17. Describe natural selection and give an example of
-natural selection at work in a population.
-a.
-The process in which genes flow from one
-population to another. The beak size of Darwin’s
-finches changing as the availability of different-
-sized seeds changes.
-b.
-The process in which genes flow from one
-population to another. The Founder Effect
-occurring among humans immigrating to a new
-country.
-c.
-The process in which better-adapted organisms
-are able to survive and reproduce; The beak size
-of Darwin’s finches changing as the availability
-of different-sized seeds changes.
-d.
-The process in which better-adapted organisms
-are able to survive and reproduce; The Founder
-Effect occurring among humans immigrating to
-a new country.
-18. Imagine you are trying to test whether a population of
-flowers is undergoing evolution. You suspect there is
-selection pressure on the color of the flower: bees seem to
-cluster around the red flowers more often than the blue
-flowers. In a separate experiment, you discover that blue
-flower color is dominant to red flower color. In a field, you
-count 600 blue flowers and 200 red flowers. What would
-you expect the genetic structure of the flowers to be?
-a.
-You would expect 300 homozygous dominant
-blue flowers, 300 heterozygous blue flowers,
-and 200 homozygous recessive red flowers.
-b.
-You would expect 200 homozygous dominant
-blue flowers, 400 heterozygous blue flowers,
-and 200 homozygous recessive red flowers.
-c.
-You would expect 100 homozygous dominant
-red flowers, 100 heterozygous red flowers, and
-600 homozygous recessive blue flowers.
-d.
-You would expect 14 homozygous dominant red
-flowers, 186 heterozygous blue flowers, and 600
-homozygous recessive blue flowers.
-19. What must occur in order for a new trait to appear in a
-population and then reach a steady, high frequency within
-that population?
-Chapter 19 | The Evolution of Populations
-795
-
-a.
-New traits appear through gene mutations or
-through genetic drift. In order to reach a steady,
-high frequency in the population, there must be
-many mutagens, such as UV radiation, in the
-environment to produce many mutations.
-b.
-New traits appear through gene mutations or
-through genetic drift. In order to reach a steady,
-high frequency in the population, there must be a
-consistent source of immigrant individuals with
-the allele.
-c.
-New traits appear through gene mutations or
-through evolution. In order to reach a steady,
-high frequency in the population, the allele must
-code for a favorable adaptation.
-d.
-New traits appear through gene mutations or
-through gene flow. In order to reach a steady,
-high frequency in the population, the trait
-associated with the gene must be favored by
-either natural or sexual selection.
-20. Define and identify an example of population
-variation.
-a.
-Population variation is a description of the
-diversity of different forms of life. An example
-of population variation would be the different
-forms and functions of prokaryotes versus
-eukaryotes.
-b.
-Population variation is the geographic
-distribution of different phenotypes in a
-population. An example of population variation
-would be the fact that warm-blooded mammals
-that live near the poles tend to be larger than
-their southern counterparts to conserve heat.
-c.
-Population variation is the distribution of
-phenotypes in a population. An example of
-population variation would be the many different
-fur colors and patterns found in domestic dogs.
-d.
-Population variation is the distribution of
-genotypes in a population. An example of
-population variation would be Mendel’s pea
-plants that were homozygous dominant,
-heterozygous and homozygous recessive for
-various traits.
-21. People who breed domesticated animals try to avoid
-inbreeding even though most domesticated animals are
-indiscriminate. Evaluate why this is a good practice.
-a.
-A breeder would not allow close relatives to
-mate because inbreeding increases the likelihood
-of fatal mutations in offspring.
-b.
-A breeder would not allow close relatives to
-mate because inbreeding prevents gene flow
-which can bring new, successful genes into the
-population.
-c.
-A breeder would not allow close relatives to
-mate because inbreeding causes diversifying
-selection, which dilutes the breeder’s desired
-genes in the population.
-d.
-A breeder would not allow close relatives to
-mate because inbreeding can bring together
-deleterious recessive mutations that can cause
-abnormalities and susceptibility to disease.
-22. Explain the founder effect and identify the best
-example.
-796
-Chapter 19 | The Evolution of Populations
-This OpenStax book is available for free at http://cnx.org/content/col12078/1.6
-
-a.
-The founder effect is an event that isolates part
-of a population, generating an allele frequency
-which is not typical of the original population.
-An example of the founder effect is the Amish
-population. The Amish population was
-established from about 200 German immigrants.
-Individuals of this founding population carried
-gene mutations that cause inherited disorders
-such as Ellis-van Creveld syndrome. This form
-of dwarfism is found in a large concentration in
-the Amish population today because the
-immigrants that established the population had a
-high concentration of the disorder in a very
-small population.
-b.
-The founder effect is an event that kills off a
-significant proportion of a population,
-generating an allele frequency which is not
-typical of the original population. An example of
-the founder effect is the Northern elephant seal.
-At one point, hunting of these seals had reduced
-their numbers to less than 50 individuals. The
-population has since rebounded, but still
-contains less genetic variation than the related
-Southern elephant seal due to the loss of some
-alleles.
-c.
-The founder effect is when only a few males
-within a population are selected by females to
-reproduce, generating an allele frequency which
-is different from the original population. An
-example of the founder effect is the reproductive
-pattern of mountain gorillas. Mountain gorillas
-tend to have a single dominant male, the
-silverback, who gets the vast majority of the
-matings in the population. This leads to the next
-generation expressing mainly genes from the
-silverback and very few genes from the other
-males, changing the genetic structure of the
-population.
-d.
-The founder effect occurs when the selective
-pressure on a trait varies depending on the
-alleles expressed within the population,
-generating varying allele frequencies based on
-the genetic makeup of the original population.
-An example of the founder effect is the cyclical
-dominance of three throat-color patterns in side-
-blotched lizards.
-23. Explain what a cline is and identify an example.
-a.
-A cline is a type of geographic variation that is
-seen in populations of a given species that vary
-gradually across an ecological gradient. For
-example, endothermic animals tend to have
-larger bodies in the cooler climates closer to the
-earth’s poles, allowing them to better conserve
-heat.
-b.
-A cline is a change in ecological conditions over
-a geographic distance. For example, a latitudinal
-cline is the decrease in temperature towards the
-Earth’s poles, and an altitudinal cline is the
-decrease in temperature with increase in altitude.
-c.
-A cline is the specific set of traits in a population
-of a given species that have been influenced by
-the local environment. For example, a
-population of warm-blooded animals that lived
-in a cooler climate closer to the North Pole
-would have larger bodies, allowing them to
-better conserve heat.
-d.
-A cline is the specific set of ecological
-conditions in a geographic region. For example,
-towards the North Pole it is cold and there is
-little precipitation. This will influence the traits
-of the organisms that live there.
-24. The table below shows data for a small population of
-mice. The mice are either brown or white. Based on
+<IP_ADDRESS>: Charles Darwin and Natural Selection
+-
+- Last updated
+- Save as PDF
+- Boundless
+- Boundless
+Learning Objectives
+- Explain how natural selection can lead to evolution
+Charles Darwin and Natural Selection
+In the mid-nineteenth century, the mechanism for evolution was independently conceived of and described by two naturalists: Charles Darwin and Alfred Russel Wallace. Importantly, each naturalist spent time exploring the natural world on expeditions to the tropics. From 1831 to 1836, Darwin traveled around the world to places like South America, Australia, and the southern tip of Africa. Wallace traveled to Brazil to collect insects in the Amazon rainforest from 1848 to 1852 and to the Malay Archipelago from 1854 to 1862. Darwin’s journey, as with Wallace’s later journeys to the Malay Archipelago, included stops at several island chains, the last being the Galápagos Islands west of Ecuador. On these islands, Darwin observed that species of organisms on different islands were clearly similar, yet had distinct differences. For example, the ground finches inhabiting the Galápagos Islands comprised several species with a unique beak shape. The species on the islands had a graded series of beak sizes and shapes with very small differences between the most similar. He observed that these finches closely resembled another finch species on the mainland of South America. Darwin imagined that the island species might be modified from one of the original mainland species. Upon further study, he realized that the varied beaks of each finch helped the birds acquire a specific type of food. For example, seed-eating finches had stronger, thicker beaks for breaking seeds, while insect-eating finches had spear-like beaks for stabbing their prey.
+Natural Selection
+Wallace and Darwin observed similar patterns in other organisms and independently developed the same explanation for how and why such changes could take place. Darwin called this mechanism natural selection. Natural selection, also known as “survival of the fittest,” is the more prolific reproduction of individuals with favorable traits that survive environmental change because of those traits. This leads to evolutionary change, the trait becoming predominant within a population. For example, Darwin observed that a population of giant tortoises found in the Galapagos Archipelago have longer necks than those that lived on other islands with dry lowlands. These tortoises were “selected” because they could reach more leaves and access more food than those with short necks. In times of drought, when fewer leaves would be available, those that could reach more leaves had a better chance to eat and survive than those that could not reach the food source. Consequently, long-necked tortoises would more probably be reproductively successful and pass the long-necked trait to their offspring. Over time, only long-necked tortoises would be present in the population.
+Natural selection, Darwin argued, was an inevitable outcome of three principles that operated in nature. First, most characteristics of organisms are inherited, or passed from parent to offspring, although how traits were inherited was unknown. Second, more offspring are produced than are able to survive. The capacity for reproduction in all organisms outstrips the availability of resources to support their numbers. Thus, there is competition for those resources in each generation. Both Darwin and Wallace were influenced by an essay written by economist Thomas Malthus who discussed this principle in relation to human populations. Third, Darwin and Wallace reasoned that offspring with the inherited characteristics that allow them to best compete for limited resources will survive and have more offspring than those individuals with variations that are less able to compete. Because characteristics are inherited, these traits will be better represented in the next generation. This will lead to change in populations over successive generations in a process that Darwin called descent with modification. Ultimately, natural selection leads to greater adaptation of the population to its local environment; it is the only mechanism known for adaptive evolution.
+Papers by Darwin and Wallace presenting the idea of natural selection were read together in 1858 before the Linnean Society in London. The following year, Darwin’s book, On the Origin of Species , was published. His book outlined his arguments for evolution by natural selection.
+Key Points
+- Wallace traveled to Brazil to collect and observe insects from the Amazon rainforest.
+- Darwin observed that finches in the Galápagos Islands had different beaks than finches in South America; these adaptations equiped the birds to acquire specific food sources.
+- Wallace and Darwin observed similar patterns in the variation of organisms and independently developed the same explanation for how such variations could occur over time, a mechanism Darwin called natural selection.
+- According to natural selection, also known as “survival of the fittest,” individuals with traits that enable them to survive are more reproductively successful; this leads to those traits becoming predominant within a population.
+- Natural selection is an inevitable outcome of three principles: most characteristics are inherited, more offspring are produced than are able to survive, and offspring with more favorable characteristics will survive and have more offspring than those individuals with less favorable traits.
+Key Terms
+- natural selection : a process in which individual organisms or phenotypes that possess favorable traits are more likely to survive and reproduce
+- descent with modification : change in populations over generations

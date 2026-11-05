@@ -1,448 +1,106 @@
 # Source pack — subjects/environmental-science/foundational/ecosystems-energy
 Lesson title: Ecosystems and Energy Flow
 Level: foundational
-Match confidence: 3.05
+Match confidence: 3.06
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 3.05 — Biology2e-WEB_ICOFkGu § 46.2 Energy Flow through Ecosystems
+## Match 3.06 — LibreTexts: 12.3: Energy Flow Through Ecosystems
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://geo.libretexts.org/Bookshelves/Geography_(Physical)/The_Physical_Environment_(Ritter)/12%3A_Biogeography_of_the_Earth/12.03%3A_Energy_Flow_Through_Ecosystems
 
-By the end of this section, you will be able to do the following:
-•
-Describe how organisms acquire energy in a food web and in associated food chains
-•
-Explain how the efficiency of energy transfers between trophic levels affects ecosystem structure and
-dynamics
-•
-Discuss trophic levels and how ecological pyramids are used to model them
-All living things require energy in one form or another. Energy is required by most complex metabolic pathways (often in the
-form of adenosine triphosphate, ATP), especially those responsible for building large molecules from smaller compounds, and
-life itself is an energy-driven process. Living organisms would not be able to assemble macromolecules (proteins, lipids, nucleic
-acids, and complex carbohydrates) from their monomeric subunits without a constant energy input.
-It is important to understand how organisms acquire energy and how that energy is passed from one organism to another
-through food webs and their constituent food chains. Food webs illustrate how energy flows directionally through ecosystems,
-including how efficiently organisms acquire it, use it, and how much remains for use by other organisms of the food web.
-How Organisms Acquire Energy in a Food Web
-Energy is acquired by living things in three ways: photosynthesis, chemosynthesis, and the consumption and digestion of other
-living or previously living organisms by heterotrophs.
-Photosynthetic and chemosynthetic organisms are both grouped into a category known as autotrophs: organisms capable of
-synthesizing their own food (more specifically, capable of using inorganic carbon as a carbon source). Photosynthetic
-autotrophs (photoautotrophs) use sunlight as an energy source, whereas chemosynthetic autotrophs (chemoautotrophs) use
-inorganic molecules as an energy source. Autotrophs are critical for all ecosystems. Without these organisms, energy would not
-be available to other living organisms and life itself would not be possible.
-Photoautotrophs, such as plants, algae, and photosynthetic bacteria, serve as the energy source for a majority of the world’s
-ecosystems. These ecosystems are often described by grazing food webs. Photoautotrophs harness the solar energy of the sun by
-converting it to chemical energy in the form of ATP (and NADP). The energy stored in ATP is used to synthesize complex organic
-molecules, such as glucose.
-Chemoautotrophs are primarily bacteria that are found in rare ecosystems where sunlight is not available, such as in those
-associated with dark caves or hydrothermal vents at the bottom of the ocean (Figure 46.9). Many chemoautotrophs in
-hydrothermal vents use hydrogen sulfide (H2S), which is released from the vents as a source of chemical energy. This allows
-chemoautotrophs to synthesize complex organic molecules, such as glucose, for their own energy and in turn supplies energy to
-the rest of the ecosystem.
-1350
-Chapter 46 • Ecosystems
-Access for free at openstax.org.
+12.3: Energy Flow Through Ecosystems
+Energy capture and use
+Photosynthesis
+At the base of an ecosystem, primary producers are actively converting solar energy into stored chemical energy. Photosynthesis is the process of converting solar energy, water, and carbon dioxide into carbohydrates and oxygen. The process occurs in two steps: first light energy is absorbed by chlorophyll to split a molecule of water releasing hydrogen and oxygen. The second step uses the energy to convert carbon dioxide to carbohydrates.
+Solar Energy
+6CO 2 + 12H 2 O --------------> C 6 H 12 O 6 + 6O 2 + 6H 2 O
+(chlorophyll)
+The carbohydrate (C 6 H 12 O 6 ) can be converted into starch and stored by the plant. Carbohydrate can be combined with other sugar molecules to make cellulose, the basic structural material of a plant.
+Video : "Photosynthesis". (Courtesy of Britannica)
+Oddly enough, of all the solar radiation striking a plant, only about 1% is used in photosynthesis. The rate of photosynthesis is dependent on several things, especially the amount of light received ... up to a point. As solar radiation increases the rate of photosynthesis increases. For many plants there is an upper limit to the rate of photosynthesis. In some plants as incident solar radiation increases the rate of photosynthesis levels off, or may decrease. The increasing solar energy load causes the plant to be too hot and the need to cool the plant increases. As a result, transpiration takes over as the dominate plant process. Transpiration , the loss of water from plants, acts to cool the plant by releasing latent energy. Adequate supplies of water, carbon dioxide and the availability of nutrients in the soil affect photosynthesis.
+Respiration
+While photosynthesis builds stored chemical energy in a plant, respiration is the process of "burning" stored chemical energy, basically through oxidation, for maintaining plant metabolism. During plant respiration, carbohydrates combine with oxygen and is reduced to carbon dioxide, water, and heat.
+C 6 H 12 O 6 + 6O 2 ---> 6CO 2 + 6H 2 O + 2830 kj
+While photosynthesis operates only during day when sunshine is available, respiration goes on both night and day. Plant growth occurs so long as photosynthesis exceeds respiration.
+Transpiration
+Transpiration is the loss of water from plant leaves. Water exits the leaf through stomata , which are tiny pore spaces in the leaf. The rate of transpiration depends on air temperature and solar radiation. As pointed out earlier, transpiration is a cooing process for plants when temperatures or incident light rise too high and cause heating of the plant. Low humidity, often aided by windy conditions, creates a vapor gradient between the plant and the air. This too induces transpiration. Soil factors are important control over transpiration. If the pore space between soil particles are too large the soil will have poor or low soil capillary. That is, the rate of water rise is too low for plants to extract water from the soil and maintain proper moisture supply. Low soil capillary results from soil drying too. During the moist season, ample soil water is available to line soil particles to aid the movement of soil water upwards to the root zone.
+However, during the dry season, a dry layer of soil develops beneath the root zone inhibiting the upward movement of capillary water causing a capillary lag . The plant ultimately wilts as it cannot extract enough water to meet the increasing demand for water during warm seasons. A small soil moisture reserve will inhibit transpiration too.
+Biomass Productivity
+Net biomass productivity is the difference between gross productivity (production of plant material by photosynthesis) and respiration. So long as the rate of production exceeds that of respiration, the plant will grow. Net productivity represents the amount of organic material produced by a plant. Net productivity is closely related to a number of environmental factors like climate, soils, and available nutrients. Net biomass production will be highest where there is an ample supply of moisture to meet the needs of plants. Biomass productivity is also high where soils are rich in nutrients and have a positive soil moisture balance. The figure below illustrates this well. With ample rainfall and sunlight, the tropical rain forest ranks the highest in terms of organic matter production.
+Human pressure on land and vegetation resources for food, wood-based fuel, fiber, and building materials is calling into question whether the earth's net production can sustain such use. Scientists are employing satellite technology to determine the trends in human consumption of net primary production as described in the video below. Human use of earth's annual production rose from 20 to 25 percent from 1995 to 2005. As society looks to land conversion for biofuels, climate changes, and biodiversity loss occurs, a tipping point at which net production fails to meet demand may be reached in the not so distant future.
+Video : Human Consumption of NPP. (Courtesy NASA GSFC)
+Trophic Levels and Food Chains
+The biotic elements that comprise an ecosystem fall into one of several trophic levels . The trophic level of an organism is its position in a food chain , the sequence of consumption and energy transfer through the environment. For example, a simple grazing food chain is comprised of
+Plant -> herbivore -> carnivore
+At the base of the food chain lies the primary producers . Primary producers are principally green plants and certain bacteria. They convert solar energy into organic energy. Above the primary producers are the consumers who ingest live plants or the prey of others. Decomposers , such as, bacteria, molds, and fungi make use of energy stored in already dead plant and animal tissues. Fungi, like mushrooms, absorb nutrients from the organisms by secreting enzymes to break up the chemical compounds that make up dead plants and animals.
+Two laws of physics are important in the study of energy flow through ecosystems. The first law of thermodynamics states that energy cannot be created or destroyed; it can only be changed from one form to another. Energy for the functioning of an ecosystem comes from the Sun. Solar energy is absorbed by plants where in it is converted to stored chemical energy.
+The second law of thermodynamics states that whenever energy is transformed, there is a loss energy through the release of heat. This occurs when energy is transferred between trophic levels as illustrated in a food web . When one animal feeds off another, there is a loss of heat (energy) in the process. Additional loss of energy occurs during respiration and movement. Hence, more and more energy is lost as one moves up through trophic levels. This fact lends more credence to the advantages of a vegetarian diet. For example, 1350 kilograms of corn and soybeans is capable of supporting one person if converted to beef. However, 1350 kilograms of soybeans and corn utilized directly without converting to beef will support 22 people!
 
-Figure 46.9 Swimming shrimp, a few squat lobsters, and hundreds of vent mussels are seen at a hydrothermal vent at the bottom of the
-ocean. As no sunlight penetrates to this depth, the ecosystem is supported by chemoautotrophic bacteria and organic material that sinks
-from the ocean’s surface. This picture was taken in 2006 at the submerged NW Eifuku volcano off the coast of Japan by the National
-Oceanic and Atmospheric Administration (NOAA). The summit of this highly active volcano lies 1535 m below the surface.
-Productivity within Trophic Levels
-Productivity within an ecosystem can be defined as the percentage of energy entering the ecosystem incorporated into biomass
-in a particular trophic level. Biomass is the total mass, in a unit area at the time of measurement, of living or previously living
-organisms within a trophic level. Ecosystems have characteristic amounts of biomass at each trophic level. For example, in the
-English Channel ecosystem the primary producers account for a biomass of 4 g/m2 (grams per square meter), while the primary
-consumers exhibit a biomass of 21 g/m2.
-The productivity of the primary producers is especially important in any ecosystem because these organisms bring energy to
-other living organisms by photoautotrophy or chemoautotrophy. The rate at which photosynthetic primary producers
-incorporate energy from the sun is called gross primary productivity. An example of gross primary productivity is shown in the
-compartment diagram of energy flow within the Silver Springs aquatic ecosystem as shown (Figure 46.8). In this ecosystem, the
-total energy accumulated by the primary producers (gross primary productivity) was shown to be 20,810 kcal/m2/yr.
-Because all organisms need to use some of this energy for their own functions (like respiration and resulting metabolic heat loss)
-scientists often refer to the net primary productivity of an ecosystem. Net primary productivity is the energy that remains in
-the primary producers after accounting for the organisms’ respiration and heat loss. The net productivity is then available to the
-primary consumers at the next trophic level. In our Silver Springs example, 13,187 of the 20,810 kcal/m2/yr were used for
-respiration or were lost as heat, leaving 7,633 kcal/m2/yr of energy for use by the primary consumers.
-Ecological Efficiency: The Transfer of Energy between Trophic Levels
-As illustrated in (Figure 46.8), as energy flows from primary producers through the various trophic levels, the ecosystem loses
-large amounts of energy. The main reason for this loss is the second law of thermodynamics, which states that whenever energy
-is converted from one form to another, there is a tendency toward disorder (entropy) in the system. In biologic systems, this
-energy takes the form of metabolic heat, which is lost when the organisms consume other organisms. In the Silver Springs
-ecosystem example (Figure 46.8), we see that the primary consumers produced 1103 kcal/m2/yr from the 7618 kcal/m2/yr of
-energy available to them from the primary producers. The measurement of energy transfer efficiency between two successive
-trophic levels is termed the trophic level transfer efficiency (TLTE) and is defined by the formula:
-In Silver Springs, the TLTE between the first two trophic levels was approximately 14.8 percent. The low efficiency of energy
-46.2 • Energy Flow through Ecosystems
-1351
+## Match 3.05 — LibreTexts: 46.2: Energy Flow through Ecosystems
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_1e_(OpenStax)/8%3A_Ecology/46%3A_Ecosystems/46.2%3A_Energy_Flow_through_Ecosystems
 
-transfer between trophic levels is usually the major factor that limits the length of food chains observed in a food web. The fact
-is, after four to six energy transfers, there is not enough energy left to support another trophic level. In the Lake Ontario
-example shown in (Figure 46.6), only three energy transfers occurred between the primary producer, (green algae), and the apex
-consumer (Chinook salmon).
-Ecologists have many different methods of measuring energy transfers within ecosystems. Measurement difficulty depends on
-the complexity of the ecosystem and how much access scientists have to observe the ecosystem. In other words, some
-ecosystems are more difficult to study than others, and sometimes the quantification of energy transfers has to be estimated.
-Other parameters are important in characterizing energy flow within an ecosystem. Net production efficiency (NPE) allows
-ecologists to quantify how efficiently organisms of a particular trophic level incorporate the energy they receive into biomass; it
-is calculated using the following formula:
-Net consumer productivity is the energy content available to the organisms of the next trophic level. Assimilation is the
-biomass (energy content generated per unit area) of the present trophic level after accounting for the energy lost due to
-incomplete ingestion of food, energy used for respiration, and energy lost as waste. Incomplete ingestion refers to the fact that
-some consumers eat only a part of their food. For example, when a lion kills an antelope, it will eat everything except the hide
-and bones. The lion is missing the energy-rich bone marrow inside the bone, so the lion does not make use of all the calories its
-prey could provide.
-Thus, NPE measures how efficiently each trophic level uses and incorporates the energy from its food into biomass to fuel the
-next trophic level. In general, cold-blooded animals (ectotherms), such as invertebrates, fish, amphibians, and reptiles, use less
-of the energy they obtain for respiration and heat than warm-blooded animals (endotherms), such as birds and mammals. The
-extra heat generated in endotherms, although an advantage in terms of the activity of these organisms in colder environments,
-is a major disadvantage in terms of NPE. Therefore, many endotherms have to eat more often than ectotherms to get the energy
-they need for survival. In general, NPE for ectotherms is an order of magnitude (10x) higher than for endotherms. For example,
-the NPE for a caterpillar eating leaves has been measured at 18 percent, whereas the NPE for a squirrel eating acorns may be as
-low as 1.6 percent.
-The inefficiency of energy use by warm-blooded animals has broad implications for the world's food supply. It is widely accepted
-that the meat industry uses large amounts of crops to feed livestock, and because the NPE is low, much of the energy from
-animal feed is lost. For example, it costs about $0.01 to produce 1000 dietary calories (kcal) of corn or soybeans, but
-approximately $0.19 to produce a similar number of calories growing cattle for beef consumption. The same energy content of
-milk from cattle is also costly, at approximately $0.16 per 1000 kcal. Much of this difference is due to the low NPE of cattle. Thus,
-there has been a growing movement worldwide to promote the consumption of nonmeat and nondairy foods so that less energy
-is wasted feeding animals for the meat industry.
-Modeling Ecosystems Energy Flow: Ecological Pyramids
-The structure of ecosystems can be visualized with ecological pyramids, which were first described by the pioneering studies of
-Charles Elton in the 1920s. Ecological pyramids show the relative amounts of various parameters (such as number of organisms,
-energy, and biomass) across trophic levels.
-Pyramids of numbers can be either upright or inverted, depending on the ecosystem. As shown in Figure 46.10, typical
-grassland during the summer has a base of many plants, and the numbers of organisms decrease at each trophic level. However,
-during the summer in a temperate forest, the base of the pyramid consists of few trees compared with the number of primary
-consumers, mostly insects. Because trees are large, they have great photosynthetic capability, and dominate other plants in this
-ecosystem to obtain sunlight. Even in smaller numbers, primary producers in forests are still capable of supporting other
-trophic levels.
-Another way to visualize ecosystem structure is with pyramids of biomass. This pyramid measures the amount of energy
-converted into living tissue at the different trophic levels. Using the Silver Springs ecosystem example, this data exhibits an
-upright biomass pyramid (Figure 46.10), whereas the pyramid from the English Channel example is inverted. The plants
-(primary producers) of the Silver Springs ecosystem make up a large percentage of the biomass found there. However, the
-phytoplankton in the English Channel example make up less biomass than the primary consumers, the zooplankton. As with
-1352
-Chapter 46 • Ecosystems
-Access for free at openstax.org.
-
-inverted pyramids of numbers, this inverted pyramid is not due to a lack of productivity from the primary producers, but results
-from the high turnover rate of the phytoplankton. The phytoplankton are consumed rapidly by the primary consumers, thus,
-minimizing their biomass at any particular point in time. However, phytoplankton reproduce quickly, thus they are able to
-support the rest of the ecosystem.
-Pyramid ecosystem modeling can also be used to show energy flow through the trophic levels. Notice that these numbers are the
-same as those used in the energy flow compartment diagram in (Figure 46.8). Pyramids of energy are always upright, and an
-ecosystem without sufficient primary productivity cannot be supported. All types of ecological pyramids are useful for
-characterizing ecosystem structure. However, in the study of energy flow through the ecosystem, pyramids of energy are the
-most consistent and representative models of ecosystem structure (Figure 46.10).
-VISUAL CONNECTION
-Figure 46.10 Ecological pyramids depict the (a) biomass, (b) number of organisms, and (c) energy in each trophic level.
-Pyramids depicting the number of organisms or biomass may be inverted, upright, or even diamond-shaped. Energy pyramids,
-however, are always upright. Why?
-Consequences of Food Webs: Biological Magnification
-One of the most important environmental consequences of ecosystem dynamics is biomagnification. Biomagnification is the
-increasing concentration of persistent, toxic substances in organisms at each trophic level, from the primary producers to the
-apex consumers. Many substances have been shown to bioaccumulate, including the pesticide dichlorodiphenyltrichloroethane
-(DDT), which was described in the 1960s bestseller, Silent Spring, by Rachel Carson. DDT was a commonly used pesticide before
-its dangers became known. In some aquatic ecosystems, organisms from each trophic level consumed many organisms of the
-lower level, which caused DDT to increase in birds (apex consumers) that ate fish. Thus, the birds accumulated sufficient
-amounts of DDT to cause fragility in their eggshells. This effect increased egg breakage during nesting and was shown to have
-adverse effects on these bird populations. The use of DDT was banned in the United States in the 1970s.
-Other substances that biomagnify are polychlorinated biphenyls (PCBs), which were used in coolant liquids in the United States
-until their use was banned in 1979, and heavy metals, such as mercury, lead, and cadmium. These substances were best studied
-46.2 • Energy Flow through Ecosyst
-
-## Match 1.36 — Anatomy_and_Physiology_2e_-_WEB_c9nD9QL § 24.6 Energy and Heat Balance
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe how the body regulates temperature
-•
-Explain the significance of the metabolic rate
-The body tightly regulates the body temperature through a process called thermoregulation, in which the body can
-maintain its temperature within certain boundaries, even when the surrounding temperature is very different. The
-core temperature of the body remains steady at around 36.5–37.5 °C (or 97.7–99.5 °F). In the process of ATP
-production by cells throughout the body, approximately 60 percent of the energy produced is in the form of heat
-used to maintain body temperature. Thermoregulation is an example of negative feedback.
-The hypothalamus in the brain is the master switch that works as a thermostat to regulate the body’s core
-temperature (Figure 24.23). If the temperature is too high, the hypothalamus can initiate several processes to lower
-it. These include increasing the circulation of the blood to the surface of the body to allow for the dissipation of heat
-through the skin and initiation of sweating to allow evaporation of water on the skin to cool its surface. Conversely, if
-the temperature falls below the set core temperature, the hypothalamus can initiate shivering to generate heat. The
-body uses more energy and generates more heat. In addition, thyroid hormone will stimulate more energy use and
-heat production by cells throughout the body. An environment is said to be thermoneutral when the body does not
-expend or release energy to maintain its core temperature. For a naked human, this is an ambient air temperature of
-around 84 °F. If the temperature is higher, for example, when wearing clothes, the body compensates with cooling
-mechanisms. The body loses heat through the mechanisms of heat exchange.
-24.6 • Energy and Heat Balance
-1091
-
-FIGURE 24.23
-Hypothalamus Controls Thermoregulation
-The hypothalamus controls thermoregulation.
-1092
-24 • Metabolism and Nutrition
-Access for free at openstax.org
-
-Mechanisms of Heat Exchange
-When the environment is not thermoneutral, the body uses four mechanisms of heat exchange to maintain
-homeostasis: conduction, convection, radiation, and evaporation. Each of these mechanisms relies on the property
-of heat to flow from a higher concentration to a lower concentration; therefore, each of the mechanisms of heat
-exchange varies in rate according to the temperature and conditions of the environment.
-Conduction is the transfer of heat by two objects that are in direct contact with one another. It occurs when the skin
-comes in contact with a cold or warm object. For example, when holding a glass of ice water, the heat from your skin
-will warm the glass and in turn melt the ice. Alternatively, on a cold day, you might warm up by wrapping your cold
-hands around a hot mug of coffee. Only about 3 percent of the body’s heat is lost through conduction.
-Convection is the transfer of heat to the air surrounding the skin. The warmed air rises away from the body and is
-replaced by cooler air that is subsequently heated. Convection can also occur in water. When the water temperature
-is lower than the body’s temperature, the body loses heat by warming the water closest to the skin, which moves
-away to be replaced by cooler water. The convection currents created by the temperature changes continue to draw
-heat away from the body more quickly than the body can replace it, resulting in hyperthermia. About 15 percent of
-the body’s heat is lost through convection.
-Radiation is the transfer of heat via infrared waves. This occurs between any two objects when their temperatures
-differ. A radiator can warm a room via radiant heat. On a sunny day, the radiation from the sun warms the skin. The
-same principle works from the body to the environment. About 60 percent of the heat lost by the body is lost
-through radiation.
-Evaporation is the transfer of heat by the evaporation of water. Because it takes a great deal of energy for a water
-molecule to change from a liquid to a gas, evaporating water (in the form of sweat) takes with it a great deal of
-energy from the skin. However, the rate at which evaporation occurs depends on relative humidity—more sweat
-evaporates in lower humidity environments. Sweating is the primary means of cooling the body during exercise,
-whereas at rest, about 20 percent of the heat lost by the body occurs through evaporation.
-Metabolic Rate
-The metabolic rate is the amount of energy consumed minus the amount of energy expended by the body. The
-basal metabolic rate (BMR) describes the amount of daily energy expended by humans at rest, in a neutrally
-temperate environment, while in the postabsorptive state. It measures how much energy the body needs for
-normal, basic, daily activity. About 70 percent of all daily energy expenditure comes from the basic functions of the
-organs in the body. Another 20 percent comes from physical activity, and the remaining 10 percent is necessary for
-body thermoregulation or temperature control. This rate will be higher if a person is more active or has more lean
-body mass. As you age, the BMR generally decreases as the percentage of less lean muscle mass decreases.
-
-## Match 1.36 — UniversityPhysicsVolume2-WEB_5eNhMSa § 2.3 Heat Capacity and Equipartition of Energy
-
+46.2: Energy Flow through Ecosystems
 Learning Objectives
-By the end of this section, you will be able to:
-•
-Solve problems involving heat transfer to and from ideal monatomic gases whose volumes are held constant
-•
-Solve similar problems for non-monatomic ideal gases based on the number of degrees of freedom of a
-molecule
-•
-Estimate the heat capacities of metals using a model based on degrees of freedom
-In the chapter on temperature and heat, we defined the specific heat capacity with the equation
-or
-. However, the properties of an ideal gas depend directly on the number of moles in a sample,
-so here we define specific heat capacity in terms of the number of moles, not the mass. Furthermore, when
-talking about solids and liquids, we ignored any changes in volume and pressure with changes in
-temperature—a good approximation for solids and liquids, but for gases, we have to make some condition on
-volume or pressure changes. Here, we focus on the heat capacity with the volume held constant. We can
-calculate it for an ideal gas.
-Heat Capacity of an Ideal Monatomic Gas at Constant Volume
-We define the molar heat capacity at constant volume
-as
-This is often expressed in the form
-2.12
-2.13
-88
-2 • The Kinetic Theory of Gases
-Access for free at openstax.org.
+- Describe how organisms acquire energy in a food web and in associated food chains
+- Explain how the efficiency of energy transfers between trophic levels affects ecosystem structure and dynamics
+- Discuss trophic levels and how ecological pyramids are used to model them
+All living things require energy in one form or another. Energy is required by most complex metabolic pathways (often in the form of adenosine triphosphate, ATP), especially those responsible for building large molecules from smaller compounds, and life itself is an energy-driven process. Living organisms would not be able to assemble macromolecules (proteins, lipids, nucleic acids, and complex carbohydrates) from their monomeric subunits without a constant energy input.
+It is important to understand how organisms acquire energy and how that energy is passed from one organism to another through food webs and their constituent food chains. Food webs illustrate how energy flows directionally through ecosystems, including how efficiently organisms acquire it, use it, and how much remains for use by other organisms of the food web.
+How Organisms Acquire Energy in a Food Web
+Energy is acquired by living things in three ways: photosynthesis, chemosynthesis, and the consumption and digestion of other living or previously living organisms by heterotrophs.
+Photosynthetic and chemosynthetic organisms are both grouped into a category known as autotrophs: organisms capable of synthesizing their own food (more specifically, capable of using inorganic carbon as a carbon source). Photosynthetic autotrophs (photoautotrophs) use sunlight as an energy source, whereas chemosynthetic autotrophs (chemoautotrophs) use inorganic molecules as an energy source. Autotrophs are critical for all ecosystems. Without these organisms, energy would not be available to other living organisms and life itself would not be possible.
+Photoautotrophs, such as plants, algae, and photosynthetic bacteria, serve as the energy source for a majority of the world’s ecosystems. These ecosystems are often described by grazing food webs. Photoautotrophs harness the solar energy of the sun by converting it to chemical energy in the form of ATP (and NADP). The energy stored in ATP is used to synthesize complex organic molecules, such as glucose.
+Chemoautotrophs are primarily bacteria that are found in rare ecosystems where sunlight is not available, such as in those associated with dark caves or hydrothermal vents at the bottom of the ocean (Figure \(\PageIndex{1}\)). Many chemoautotrophs in hydrothermal vents use hydrogen sulfide (H 2 S), which is released from the vents as a source of chemical energy. This allows chemoautotrophs to synthesize complex organic molecules, such as glucose, for their own energy and in turn supplies energy to the rest of the ecosystem.
+Productivity within Trophic Levels
+Productivity within an ecosystem can be defined as the percentage of energy entering the ecosystem incorporated into biomass in a particular trophic level. Biomass is the total mass, in a unit area at the time of measurement, of living or previously living organisms within a trophic level. Ecosystems have characteristic amounts of biomass at each trophic level. For example, in the English Channel ecosystem the primary producers account for a biomass of 4 g/m 2 (grams per meter squared), while the primary consumers exhibit a biomass of 21 g/m 2 .
+The productivity of the primary producers is especially important in any ecosystem because these organisms bring energy to other living organisms by photoautotrophy or chemoautotrophy. The rate at which photosynthetic primary producers incorporate energy from the sun is called gross primary productivity . An example of gross primary productivity is shown in the compartment diagram of energy flow within the Silver Springs aquatic ecosystem as shown ( Figure 46.1.7 ). In this ecosystem, the total energy accumulated by the primary producers (gross primary productivity) was shown to be 20,810 kcal/m 2 /yr.
+Because all organisms need to use some of this energy for their own functions (like respiration and resulting metabolic heat loss) scientists often refer to the net primary productivity of an ecosystem. Net primary productivity is the energy that remains in the primary producers after accounting for the organisms’ respiration and heat loss. The net productivity is then available to the primary consumers at the next trophic level. In our Silver Spring example, 13,187 of the 20,810 kcal/m 2 /yr were used for respiration or were lost as heat, leaving 7,632 kcal/m 2 /yr of energy for use by the primary consumers.
+Ecological Efficiency: The Transfer of Energy between Trophic Levels
+As illustrated in Figure 46.1.7 , large amounts of energy are lost from the ecosystem from one trophic level to the next level as energy flows from the primary producers through the various trophic levels of consumers and decomposers. The main reason for this loss is the second law of thermodynamics, which states that whenever energy is converted from one form to another, there is a tendency toward disorder (entropy) in the system. In biologic systems, this means a great deal of energy is lost as metabolic heat when the organisms from one trophic level consume the next level. In the Silver Springs ecosystem example ( Figure 46.1.7 ), we see that the primary consumers produced 1103 kcal/m 2 /yr from the 7618 kcal/m 2 /yr of energy available to them from the primary producers. The measurement of energy transfer efficiency between two successive trophic levels is termed the trophic level transfer efficiency (TLTE) and is defined by the formula:
+\[\text{TLTE} = \frac{\text{production at present trophic level}}{\text{production at previous trophic level}} * 100 \nonumber\]
+In Silver Springs, the TLTE between the first two trophic levels was approximately 14.8 percent. The low efficiency of energy transfer between trophic levels is usually the major factor that limits the length of food chains observed in a food web. The fact is, after four to six energy transfers, there is not enough energy left to support another trophic level. In the Lake Ontario example shown in Figure 46.1.5 , only three energy transfers occurred between the primary producer, (green algae), and the apex consumer (Chinook salmon).
+Ecologists have many different methods of measuring energy transfers within ecosystems. Some transfers are easier or more difficult to measure depending on the complexity of the ecosystem and how much access scientists have to observe the ecosystem. In other words, some ecosystems are more difficult to study than others, and sometimes the quantification of energy transfers has to be estimated.
+Another main parameter that is important in characterizing energy flow within an ecosystem is the net production efficiency. Net production efficiency (NPE) allows ecologists to quantify how efficiently organisms of a particular trophic level incorporate the energy they receive into biomass; it is calculated using the following formula:
+\[\text{NPE} = \frac{\text{net consumer productivity}}{\text{assimilation}} * 100 \nonumber\]
+Net consumer productivity is the energy content available to the organisms of the next trophic level. Assimilation is the biomass (energy content generated per unit area) of the present trophic level after accounting for the energy lost due to incomplete ingestion of food, energy used for respiration, and energy lost as waste. Incomplete ingestion refers to the fact that some consumers eat only a part of their food. For example, when a lion kills an antelope, it will eat everything except the hide and bones. The lion is missing the energy-rich bone marrow inside the bone, so the lion does not make use of all the calories its prey could provide.
+Thus, NPE measures how efficiently each trophic level uses and incorporates the energy from its food into biomass to fuel the next trophic level. In general, cold-blooded animals (ectotherms), such as invertebrates, fish, amphibians, and reptiles, use less of the energy they obtain for respiration and heat than warm-blooded animals (endotherms), such as birds and mammals. The extra heat generated in endotherms, although an advantage in terms of the activity of these organisms in colder environments, is a major disadvantage in terms of NPE. Therefore, many endotherms have to eat more often than ectotherms to get the energy they need for survival. In general, NPE for ectotherms is an order of magnitude (10x) higher than for endotherms. For example, the NPE for a caterpillar eating leaves has been measured at 18 percent, whereas the NPE for a squirrel eating acorns may be as low as 1.6 percent.
+The inefficiency of energy use by warm-blooded animals has broad implications for the world's food supply. It is widely accepted that the meat industry uses large amounts of crops to feed livestock, and because the NPE is low, much of the energy from animal feed is lost. For example, it costs about 1¢ to produce 1000 dietary calories (kcal) of corn or soybeans, but approximately $0.19 to produce a similar number of calories growing cattle for beef consumption. The same energy content of milk from cattle is also costly, at approximately $0.16 per 1000 kcal. Much of this difference is due to the low NPE of cattle. Thus, there has been a growing movement worldwide to promote the consumption of non-meat and non-dairy foods so that less energy is wasted feeding animals for the meat industry.
+Modeling Ecosystems Energy Flow: Ecological Pyramids
+The structure of ecosystems can be visualized with ecological pyramids, which were first described by the pioneering studies of Charles Elton in the 1920s. Ecological pyramids show the relative amounts of various parameters (such as number of organisms, energy, and biomass) across trophic levels.
+Pyramids of numbers can be either upright or inverted, depending on the ecosystem. As shown in Figure \(\PageIndex{2}\), typical grassland during the summer has a base of many plants and the numbers of organisms decrease at each trophic level. However, during the summer in a temperate forest, the base of the pyramid consists of few trees compared with the number of primary consumers, mostly insects. Because trees are large, they have great photosynthetic capability, and dominate other plants in this ecosystem to obtain sunlight. Even in smaller numbers, primary producers in forests are still capable of supporting other trophic levels.
+Another way to visualize ecosystem structure is with pyramids of biomass. This pyramid measures the amount of energy converted into living tissue at the different trophic levels. Using the Silver Springs ecosystem example, this data exhibits an upright biomass pyramid (Figure \(\PageIndex{2}\)), whereas the pyramid from the English Channel example is inverted. The plants (primary producers) of the Silver Springs ecosystem make up a large percentage of the biomass found there. However, the phytoplankton in the English Channel example make up less biomass than the primary consumers, the zooplankton. As with inverted pyramids of numbers, this inverted pyramid is not due to a lack of productivity from the primary producers, but results from the high turnover rate of the phytoplankton. The phytoplankton are consumed rapidly by the primary consumers, thus, minimizing their biomass at any particular point in time. However, phytoplankton reproduce quickly, thus they are able to support the rest of the ecosystem.
+Pyramid ecosystem modeling can also be used to show energy flow through the trophic levels. Notice that these numbers are the same as those used in the energy flow compartment diagram in Figure 46.1.7 . Pyramids of energy are always upright, and an ecosystem without sufficient primary productivity cannot be supported. All types of ecological pyramids are useful for characterizing ecosystem structure
 
-If the volume does not change, there is no overall displacement, so no work is done, and the only change in
-internal energy is due to the heat flow
-(This statement is discussed further in the next chapter.) We
-use the equation
-to write
-and substitute
-for Q to find
-,
-which gives the following simple result for an ideal monatomic gas:
-It is independent of temperature, which justifies our use of finite differences instead of a derivative. This
-formula agrees well with experimental results.
-In the next chapter we discuss the molar specific heat at constant pressure
-which is always greater than
-EXAMPLE 2.8
-Calculating Temperature
-A sample of 0.125 kg of xenon is contained in a rigid metal cylinder, big enough that the xenon can be modeled
-as an ideal gas, at a temperature of
-. The cylinder is moved outside on a hot summer day. As the xenon
-comes into equilibrium by reaching the temperature of its surroundings, 180 J of heat are conducted to it
-through the cylinder walls. What is the equilibrium temperature? Ignore the expansion of the metal cylinder.
-Solution
-1.
-Identify the knowns: We know the initial temperature
-is
-, the heat Q is 180 J, and the mass m of
-the xenon is 0.125 kg.
-2.
-Identify the unknown. We need the final temperature, so we’ll need
-.
-3.
-Determine which equations are needed. Because xenon gas is monatomic, we can use
-Then we need the number of moles,
-4.
-Substitute the known values into the equations and solve for the unknowns.
-The molar mass of xenon is 131.3 g, so we obtain
-Therefore, the final temperature is
-. The problem could equally well be solved in kelvin; as a kelvin
-is the same size as a degree Celsius of temperature change, you would get
-Significance
-The heating of an ideal or almost ideal gas at constant volume is important in car engines and many other
-practical systems.
-CHECK YOUR UNDERSTANDING 2.6
-Suppose 2 moles of helium gas at 200 K are mixed with 2 moles of krypton gas at 400 K in a calorimeter. What
-is the final temperature?
-We would like to generalize our results to ideal gases with more than one atom per molecule. In such systems,
-the molecules can have other forms of energy beside translational kinetic energy, such as rotational kinetic
-energy and vibrational kinetic and potential energies. We will see that a simple rule lets us determine the
-average energies present in these forms and solve problems in much the same way as we have for monatomic
-gases.
-2.3 • Heat Capacity and Equipartition of Energy
-89
+## Match 3.05 — LibreTexts: 16.2: Energy Flow through Ecosystems
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Courses/Citrus_College/Citrus_College_General_Biology_Textbook/16%3A_Ecosystems_and_the_Biosphere/16.02%3A_Energy_Flow_through_Ecosystems
 
-Degrees of Freedom
-In the previous section, we found that
-and
-, from which it follows that
-. The same equation holds for
-and for
-. Thus, we can look at our energy of
-as the
-sum of contributions of
-from each of the three dimensions of translational motion. Shifting to the gas as
-a whole, we see that the 3 in the formula
-also reflects those three dimensions. We define a degree of
-freedom as an independent possible motion of a molecule, such as each of the three dimensions of
-translation. Then, letting d represent the number of degrees of freedom, the molar heat capacity at constant
-volume of a monatomic ideal gas is
-where
-.
-The branch of physics called statistical mechanics tells us, and experiment confirms, that
-of any ideal gas
-is given by this equation, regardless of the number of degrees of freedom. This fact follows from a more
-general result, the equipartition theorem, which holds in classical (non-quantum) thermodynamics for
-systems in thermal equilibrium under technical conditions that are beyond our scope. Here, we mention only
-that in a system, the energy is shared among the degrees of freedom by collisions.
-This result is due to the Scottish physicist James Clerk Maxwell (1831−1871), whose name will appear several
-more times in this book.
-For example, consider a diatomic ideal gas (a good model for nitrogen,
-and oxygen,
-Such a gas has
-more degrees of freedom than a monatomic gas. In addition to the three degrees of freedom for translation, it
-has two degrees of freedom for rotation perpendicular to its axis. Furthermore, the molecule can vibrate along
-its axis. This motion is often modeled by imagining a spring connecting the two atoms, and we know from
-simple harmonic motion that such motion has both kinetic and potential energy. Each of these forms of energy
-corresponds to a degree of freedom, giving two more.
-We might expect that for a diatomic gas, we should use 7 as the number of degrees of freedom; classically, if
-the molecules of a gas had only translational kinetic energy, collisions between molecules would soon make
-them rotate and vibrate. However, as explained in the previous module, quantum mechanics controls which
-degrees of freedom are active. The result is shown in Figure 2.13. Both rotational and vibrational energies are
-limited to discrete values. For temperatures below about 60 K, the energies of hydrogen molecules are too low
-for a collision to bring the rotational state or vibrational state of a molecule from the lowest energy to the
-second lowest, so the only form of energy is translational kinetic energy, and
-or
-as in a
-monatomic gas. Above that temperature, the two rotational degrees of freedom begin to contribute, that is,
-some molecules are excited to the rotational state with the second-lowest energy. (This temperature is much
-lower than that where rotations of monatomic gases contribute, because diatomic molecules have much higher
-rotational inertias and hence much lower rotational energies.) From about room temperature (a bit less than
-300 K) to about 600 K, the rotational degrees of freedom are fully active, but the vibrational ones are not, and
-. Then, finally, above about 3000 K, the vibrational degrees of freedom are fully active, and
-as the
-classical theory predicted.
-Equipartition Theorem
-The energy of a thermodynamic system in equilibrium is partitioned equally among its degrees of
-freedom. Accordingly, the molar heat capacity of an ideal gas is proportional to its number of degrees of
-freedom, d:
-2.14
-90
-2 • The Kinetic Theory of Gases
-Access for free at openstax.org.
-
-Figure 2.13
-The molar heat capacity of hydrogen as a function of temperature (on a logarithmic scale). The three “steps” or “plateaus”
-show different numbers of degrees of freedom that the typical energies of molecules must achieve to activate. Translational kinetic energy
-corresponds to three degrees of freedom, rotational to another two, and vibrational to yet another two.
-Polyatomic molecules typically have one additional rotational degree of freedom at room temperature, since
-they have comparable moments of inertia around any axis. Thus, at room temperature, they have
-and at
-high temperature,
-We usually assume that gases have the theoretical room-temperature values of d.
-As shown in Table 2.3, the results agree well with experiments for many monatomic and diatomic gases, but
-the agreement for triatomic gases is only fair. The differences arise from interactions that we have ignored
-between and within molecules.
-Gas
-at
-and 1 atm
-Ar
-1.50
-He
-1.50
-Ne
-1.50
-CO
-2.50
-2.47
-2.50
-2.53
-2.8
-3.48
-3.13
-3.66
-Table 2.3
-for Various Monatomic, Diatomic, and Triatomic Gases
-2.3 • Heat Capacity and Equipartition of Energy
-91
-
-What about internal energy for diatomic and polyatomic gases? For such gases,
-is a function of
-temperature (Figure 2.13), so we do not have the kind of simple result we have for monatomic ideal gases.
-Molar Heat Capacity of Solid Elements
-The idea of equipartition leads to an estimate of the molar heat capacity of solid elements at ordinary
-temperatures. We can model the atoms of a solid as attached to neighboring atoms by springs (Figure 2.14).
-Figure 2.14
-In a simple model of a solid element, each atom is attached to others by six springs, two for each possible motion: x, y, and z.
-Each of the three motions corresponds to two degrees of freedom, one for kinetic energy and one for potential energy. Thus
-Analogously to the discussion of vibration in the previous module, each atom has six degrees of freedom: one
-kinetic and one potential for each of the x-, y-, and z-directions. Accordingly, the molar specific heat of a metal
-should be 3R. This result, known as the Law of Dulong and Petit, works fairly well experimentally at room
-temperature. (For every element, it fails at low temperatures for quantum-mechanical reasons. Since quantum
-effects are particularly important for low-mass particles, the Law of Dulong and Petit already fails at room
-temperature for some light elements, such as beryllium and carbon. It also fails for some heavier elements for
-various reasons beyond what we can cover.)
-PROBLEM-SOLVING STRATEGY
-Heat Capacity and Equipartition
-The strategy for solving these problems is the same as the one in Phase Changes for the effects of heat transfer.
-The only new feature is that you should determine whether the case just presented—ideal gases at constant
-volume—applies to the problem. (For solid elements, looking up the specific heat capacity is generally better
-than estimating it from the Law of Dulong and Petit.) In the case of an ideal gas, determine the number d of
-degrees of freedom from the number of atoms in the gas molecule and use it to calculate
-(or use
-to
-solve for d).
-EXAMPLE 2.9
-Calculating Temperature: Calorimetry with an Ideal Gas
-A 300-g piece of solid gallium (a metal used in semiconductor devices) at its melting point of only
-is in
-contact with 12.0 moles of air (assumed diatomic) at
-in an insulated container. When the air reaches
-equilibrium with the gallium, 202 g of the gallium have melted. Based on those data, what is the heat of fusion
-92
-2 • The Kinetic Theory of Gases
-Access for free at openstax.org.
-
-of gallium? Assume the volume of the air does not change and there are no other heat transfers.
-Strategy
-We’ll use the equation
-As some of the gallium doesn’t melt, we know the final temperature is
-still the melting point. Then the only
-is the heat lost as the air cools,
-where
-The only
-is the latent heat of fusion of the gallium,
-It is positive because
-heat flows into the gallium.
-Solution
-1.
-Set up the equation:
-2.
-Substitute the known values and solve:
-We solve to find that the heat of fusion of gallium is 80.2 kJ/kg.
+16.2: Energy Flow through Ecosystems
+By the end of this section, you will be able to do the following:
+- Describe the basic types of ecosystems on Earth
+- Differentiate between food chains and food webs and recognize the importance of each
+- Describe how organisms acquire energy in a food web and in associated food chains
+- Explain how the efficiency of energy transfers between trophic levels affects ecosystems
+An ecosystem is a community of living organisms and their abiotic (non-living) environment. Ecosystems can be small, such as the tide pools found near the rocky shores of many oceans, or large, such as those found in the tropical rainforest of the Amazon in Brazil (Figure \(\PageIndex{1}\)).
+There are three broad categories of ecosystems based on their general environment: freshwater, marine, and terrestrial. Within these three categories are individual ecosystem types based on the environmental habitat and organisms present.
+Ecology of Ecosystems
+Life in an ecosystem often involves competition for limited resources, which occurs both within a single species and between different species. Organisms compete for food, water, sunlight, space, and mineral nutrients. These resources provide the energy for metabolic processes and the matter to make up organisms’ physical structures. Other critical factors influencing community dynamics are the components of its physical environment: a habitat’s climate (seasons, sunlight, and rainfall), elevation, and geology. These can all be important environmental variables that determine which organisms can exist within a particular area.
+Freshwater ecosystems are the least common, occurring on only 1.8 percent of Earth's surface. These systems comprise lakes, rivers, streams, and springs; they are quite diverse, and support a variety of animals, plants, fungi, protists and prokaryotes.
+Marine ecosystems are the most common, comprising 75 percent of Earth's surface and consisting of three basic types: shallow ocean, deep ocean water, and deep ocean bottom. Shallow ocean ecosystems include extremely biodiverse coral reef ecosystems, yet the deep ocean water is known for large numbers of plankton and krill (small crustaceans) that support it. These two environments are especially important to aerobic respirators worldwide, as the phytoplankton perform 40 percent of all photosynthesis on Earth. Although not as diverse as the other two, deep ocean bottom ecosystems contain a wide variety of marine organisms. Such ecosystems exist even at depths where light is unable to penetrate through the water.
+Terrestrial ecosystems, also known for their diversity, are grouped into large categories called biomes. A biome is a large-scale community of organisms, primarily defined on land by the dominant plant types that exist in geographic regions of the planet with similar climatic conditions. Examples of biomes include tropical rainforests, savannas, deserts, grasslands, temperate forests, and tundras. Grouping these ecosystems into just a few biome categories obscures the great diversity of the individual ecosystems within them. For example, the saguaro cacti ( Carnegiea gigantean ) and other plant life in the Sonoran Desert, in the United States, are relatively diverse compared with the desolate rocky desert of Boa Vista, an island off the coast of Western Africa (Figure \(\PageIndex{2}\)).
+Ecosystems and Disturbance
+Ecosystems are complex with many interacting parts. They are routinely exposed to various disturbances: changes in the environment that affect their compositions, such as yearly variations in rainfall and temperature. Many disturbances are a result of natural processes. For example, when lightning causes a forest fire and destroys part of a forest ecosystem, the ground is eventually populated with grasses, followed by bushes and shrubs, and later mature trees: thus, the forest is restored to its former state. This process is so universal that ecologists have given it a name—succession. The impact of environmental disturbances caused by human activities is now as significant as the changes wrought by natural processes. Human agricultural practices, air pollution, acid rain, global deforestation, overfishing, oil spills, and illegal dumping on land and into the ocean all have impacts on ecosystems.
+Equilibrium is a dynamic state of an ecosystem in which, despite changes in species numbers and occurrence, biodiversity remains somewhat constant. In ecology, two parameters are used to measure changes in ecosystems: resistance and resilience. The ability of an ecosystem to remain at equilibrium in spite of disturbances is called resistance. The speed at which an ecosystem recovers equilibrium after being disturbed is called resilience. Ecosystem resistance and resilience are especially important when considering human impact. The nature of an ecosystem may change to such a degree that it can lose its resilience entirely. This process can lead to the complete destruction or irreversible altering of the ecosystem.
+Food Chains and Food Webs
+A food chain is a linear sequence of organisms through which nutrients and energy pass as one organism eats another; the levels in the food chain are producers, primary consumers, higher-level consumers, and finally decomposers. These levels are used to describe ecosystem structure and dynamics. There is a single path through a food chain. Each organism in a food chain occupies a specific trophic level (energy level), its position in the food chain or food web.
+In many ecosystems, the base, or foundation, of the food chain consists of photosynthetic organisms (plants or phytoplankton), which are called producers. The organisms that consume the producers are herbivores: the primary consumers. Secondary consumers are usually carnivores that eat the primary consumers. Tertiary consumers are carnivores that eat other carnivores. Higher-level consumers feed on the next lower trophic levels, and so on, up to the organisms at the top of the food chain: the apex consumers. In the Lake Ontario food chain, shown in Figure \(\PageIndex{3}\), the Chinook salmon is the apex consumer at the top of this food chain.
+One major factor that limits the number of steps in a food chain is energy. Energy is lost at each trophic level and between trophic levels as heat and in the transfer to decomposers (Figure \(\PageIndex{4}\)). Thus, after a limited number of trophic energy transfers, the amount of energy remaining in the food chain may not be great enough to support viable populations at yet a higher trophic level.
+There is a one problem when using food chains to describe most ecosystems. Even when all organisms are grouped into appropriate trophic levels, some of these organisms can feed on more than one trophic level; likewise, some of these organisms can also be fed on from multiple trophic levels. In addition, species feed on and are eaten by more than one species. In other words, the linear model of ecosystems, the food chain, is a hypothetical, overly simplistic representation of ecosystem structure. A holistic model—which includes all the interactions between different species and their complex interconnected relationships with each other and with the environment—is a more accurate and descriptive model for ecosystems. A food web is a concept that accounts for the multiple trophic (feeding) interactions between each species and the many species it may feed on, or that feed on it. In a food web, the several trophic connections between each species and the other species that interact with it may cross multiple trophic levels. The matter and energy movements of virtually all ecosystems are more accurately described by food webs (Figure \(\PageIndex{5}\)).
+CONCEPT IN ACTION
+Head to this food web online interactive simulator (new window) to investigate food web function. In the Interactive Labs box, under Food Web , click Step 1 . Read the instructions first, and then click Step 2 for additional instructions. When you are ready to create a simulation, in the upper-right corner of the Interactive Labs box, click OPEN SIMULATOR .
+Two general types of food webs are often shown interacting within a single ecosystem. A grazing food web has plants or other photosynthetic organisms at its base, followed by herbivores and various carnivores. A detrital food web consists of a base of organisms that feed on decaying organic matter (dead organisms), including decomposers (which break down dead and decaying organisms) and detritivores (which consume organic detritus). These organisms are usually bacteria, fungi, and invertebrate animals that recycle organic material back into the biotic part of the ecosystem as they themselves are consumed by other organisms. As ecosystems require a method to recycle material from dead organisms, grazing food webs have an associated detrital food web. For example, in a meadow ecosystem, plants may support a grazing food web of different organisms, primary and other levels of consumers, while at the same time supporting a detrital food web of bacteria and fungi feeding off dead plants and animals. Simultaneously, a detrital food web can contribute energy to a grazing food web, as when a robin eats an earthworm.
+How Organisms Acquire Energy in a Food Web
+All living things require energy in one form or another. Energy is used by most complex metabolic pathways (usually in the form of ATP), especially those responsible for building large molecules from smaller compounds. Living organisms would not be able to assemble macromolecules (proteins, lipids, nucleic acids, and complex carbohydrates) from their monomers without a constant energy input.
+Food-web diagrams illustrate how energy flows directionally through ecosystems. They can also indicate how efficiently organisms acquire energy, use it, and how much remains for use by other organisms of the food web. Energy is acquired by living things in two ways: autotrophs harness light or chemical energy and heterotrophs acquire energy through the consumption and digestion of other living or previously living organisms.
+Photosynthetic and chemosynthetic organisms are autotrophs, which are organisms capable of synthesizing their own food (more specifically, capable of using inorganic carbon as a carbon source). Photosynthetic autotrophs (photoautotrophs) use sunlight as an energy source, and chemosynthetic autotrophs (chemoautotrophs) use inorganic molecules as an energy source. Autotrophs are critical for most ecosystems: they are the producer trophic level. Without these organisms, energy would not be available to other living organisms, and life itself would not be possible.
+Photoautotrophs, such as plants, algae, and photosynthetic bacteria, are the energy source for a majority of the world’s ecosystems. These ecosystems are often described by grazing and detrital food webs. Photoautotrophs harness the Sun’s solar energy by converting it to chemical energy in the form of ATP (and NADP). The energy stored in ATP is used to synthesize complex organic molecules, such as glucose. The rate at which photosynthetic producers incorporate energy from the Sun is called gross primary productivity. However, not all of the energy incorporated by producers is available to the other organisms in the food web because producers must also grow and reproduce, which consumes energy. Net primary productivity is the energy that remains in the producers after accounting for these organisms’ respiration and heat loss. The net productivity is then available to the primary consumers at the next trophic level.
+Chemoautotrophs are primarily bacteria and archaea that are found in rare ecosystems where sunlight is not available, such as those associated with dark caves or hydrothermal vents at the bottom of the ocean (Figure \(\PageIndex{6}\)). Many chemoautotrophs in hydrothermal vents use hydrogen sulfide (H 2 S), which is released from the vents as a source of chemical energy; this al

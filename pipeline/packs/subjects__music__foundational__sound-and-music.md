@@ -1,711 +1,105 @@
 # Source pack — subjects/music/foundational/sound-and-music
 Lesson title: Sound and Music
 Level: foundational
-Match confidence: 2.03
+Match confidence: 2.08
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.03 — ContemporaryMathematics-WEB § 13.4 Math and Music
+## Match 2.08 — LibreTexts: 2.1: The Dimensions of Sound
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://human.libretexts.org/Bookshelves/Music/Ethnomusicology/Resonances_-_Engaging_Music_in_its_Cultural_Context_(Morgan-Ellis_Ed.)/01%3A_Music_as_a_Field_of_Practice_and_Study/02%3A_The_Elements_of_Music/2.01%3A_The_Dimensions_of_Sound
 
-Figure 13.13 Friends sing music together around a campfire. (credit: modification of work “Fire is hot! (2)” by Chetan
-Sarva/Flickr, CC BY 2.0)
-Learning Objectives
-After completing this section, you should be able to:
-1.
-Describe the basics of frequency related to sound.
-2.
-Describe the basics of pitch as it relates to music.
-3.
-Describe and evaluate musical notes, half-steps, whole steps, and octaves.
-4.
-Describe and find frequencies of octaves.
-“The world’s most famous and popular language is music.”
-Psy, South Korean singer, rapper, songwriter, and record producer
-Imagine a world without music and many of us would struggle to fill the void. Music uplifts, inspires, heals, and generally
-adds dimension to virtually every aspect of our lives. But what is music? For some it is a song; for others it may be the
-sounds of birds or the rhythmic sound of drumming or a myriad of other sounds. Whatever you consider music, it is all
-around us and is an integral part of our lives. “Music can raise someone’s mood, get them excited, or make them calm
-and relaxed. Music also—and this is important—allows us to feel nearly or possibly all emotions that we experience in
-our lives. The possibilities are endless” (Galindo, 2009).
-What music you listen to can impact your mood and emotions. In similar fashion, the music we choose can often tell
-those around us something about our current moods and emotions. Consider the music you may have been listening to
-as you today or even as you are reading this text. What cues to your mood do your music selections share? Albert
-Einstein is quoted as saying, “If I were not a physicist, I would probably be a musician. I often think in music. I live my
-daydreams in music. I see my life in terms of music.” What clues do your recent music choices say about your mood or
-how your day is going?
-Basics of Frequency as It Relates to Sound
-Every sound is created by an object vibrating and these vibrations travel in waves that are captured by our ears. Some
-vibrations we may be able to see, such as a plucked guitar string moving, whereas other vibrations we may not be able
-to see, such as the sound created when we hold our breath when accidentally dropping our cell phone on a hard floor.
-We don’t see the vibrations of our cell phone hitting the floor; however, any audible sound created in the fall is the result
-of vibrations in the form of sound waves, which can be pictured similarly to waves moving through the ocean.
-The waves of sounds each have a frequency, or rate of vibration of sound waves, that measures the number of waves
-completed in a single second and are measured in hertz (Hz; one Hz is one cycle per second). Louder sounds have
-stronger vibrations or are created closer to our ear. The further an ear is from the source of the sound, the quieter the
-sound will appear.
-Sounds range in frequency from 16 Hz to ultrasonic values, with humans able to hear sounds in a frequency range of
-about 20 Hz to 20,000 Hz. Adults lose the ability to hear the upper end of the range and typically top out in the ability to
-hear in a frequency of 15,000–17,000 Hz. Sounds with a frequency above 17,000 Hz are less likely to be heard by adults
-while still being audible to children.
-While frequency plays a key role in audible sounds, so too does the sound level, which can be measured in decibels (dB),
-which are the units of measure for the intensity of a sound or the degree of loudness. As a sound level increases, the
-decibel level increases.
-1438
-13 • Math and...
-Access for free at openstax.org
+2.1: The Dimensions of Sound
+Whether we are listening to noise or music, we will perceive the same elements: rhythm , pitch , volume , articulation , and timbre . These elements will combine in time to produce a sonic object of a given texture that either exhibits or lacks form . In the following sections, we will define each of these dimensions and explore the roles that each plays in the creation and perception of music.
+Rhythm
+Rhythm is the temporal aspect of sound. It is the pattern of “on” and “off” states exhibited by any sound as time passes. Rhythm is by no means unique to music. When you speak, the consonants of your words produce rhythm. When a car drives by, the oscillating sounds of the tires and engines create rhythm.
+Music often (although not always) features rhythmic patterns. The most basic of these is the pulse , which—like the pulse produced by your own heart—is a sequence of regularly-spaced sounds. The frequency of the pulses determines tempo , which can range from very slow to very fast. It makes sense that music should tend to be organized around a pulse, since our very existence is organized around pulses. Our hearts beat to a pulse, we often breathe to a pulse, we walk to a pulse, and we organize time into pulses (seconds). It is usually not difficult to detect the pulse in a musical work: simply tap your foot or clap your hands, and there it is.
+Pulses, however, are usually not all of equal weight. Some have a greater musical significance than others. When pulses are organized into groups containing strong and weak beats, meter is established. Each metrical group is called a measure or bar . In notated music, these groups are physically separated by bar lines , which help performers to easily perceive how the pulses are grouped and to identify which is the strongest. While measures can contain any number of pulses, the most common grouping are two, three, and four. These groupings are termed duple , triple , and quadruple meter . Each measure in all three of these meters will begin with a strong pulse, termed the downbeat . In duple meter, the pattern of pulses is [strong-weak]. In triple, it is [strong-weak-weak]. And in quadruple, it is [strong-weak-medium-weak].
+Pitch
+Pitch refers to the “highness” or “lowness” of sound. Sound, of course, is not physically located in high or low spaces, but most listeners can easily perceive the difference between a high-pitched sound and a low-pitched sound. Our use of the terms high and low to describe pitch reflects the characteristics of sound waves.
+All sounds are produced by vibrating bodies, which in turn produce sound waves that can be perceived by mechanisms in your ear and decoded by your brain. Pitch is determined by the frequency of those sound waves. A high pitch is produced by a high-frequency sound wave, and a low pitch is produced by a low-frequency sound wave. The frequency of sound waves is in turn determined by the characteristics of the vibrating body that sparks them into action. All other parameters being equal, a long string, once plucked and set into motion, will produce a lower pitch than a short string. Likewise, a thick string will produce a lower pitch than a thin string of the same length. The same principles apply when you blow across the ends of tubes, strike bells, or beat drums: the larger, longer, and heavier the vibrating body, the lower the sound it will produce.
+This online oscilloscope allows you to visualize sounds. Pitch is reflected in the distance between waves, which will decrease as pitch level increases. Volume is reflected by the size of the waves, which will grow in amplitude as dynamic level increases.
+Music is usually characterized by the careful organization of pitches. To begin with, most musical systems recognize what is termed octave equivalence . This is the consensus that you can halve or double the frequency of the pitch without changing its essential identity. To see this principle in action, attend any birthday party at which both women and men are present. When the guests sing “Happy Birthday,” they will not sing exactly the same pitches. Instead, the women will tend to sing in a high octave, and the men will tend to sing in a low octave. In technical terms, this means that the women will probably sing pitches that have frequencies equal to twice that of those sung by the men. However, all participants will agree that they are all singing the same pitches, or in unison . An octave is an example of an interval , which is the distance between two pitches.
+6.
+7. This video introduces the concept of melodic range.
+In the Western system, we acknowledge this phenomenon by using the same letter names to designate pitches in different octaves. For example, pitches at the frequencies of 110 hz, 220 hz, 440 hz, 880 hz, and 1,760 hz are all called “A.” However, specific frequencies are still important. Music that contains mostly high pitches has a different effect on listeners than music containing mostly low pitches, even if the rhythms and sequence of pitches are the same. Additionally, melodic range (the distance between low and high pitches) and changes in register (the use of high or low pitches) can be important musical elements.
+The Western system—that is to say, the system of musical organization that was first developed in medieval Europe and continues to dominate global listening today—goes quite a bit further in its efforts to organize pitch. Let us return to the octave. Between the A at 220 Hz and the A at 440 Hz, there are a near-infinite assortment of possible frequencies at which an intermediary pitch might sound. However, we do not use all of those pitches when we create music. Instead, we identify a limited number of specific pitches to be used. The Western system is best represented by the piano keyboard, which is both familiar and useful.
+8. This video demonstrates the chromatic pitch set.
+9. This video demonstrates a major scale.
+As you can see, the space between the A at 220 Hz and the A at 440 Hz is divided across twelve piano keys. This is called the chromatic 8 pitch set, and it includes all of the pitches used in Western music. However, composers only rarely use the entire chromatic pitch set. When you do hear music that uses every available note, you will probably find that it makes you uncomfortable. This is because we are used to hearing music built using a set of only seven pitches that is called a scale . Most music is based on one of two scales: the major scale9 and the minor scale10. If the pitches in a piece of music are drawn from a major scale, it is described as being in the major mode . Likewise, if the pitches are drawn from a minor scale, it is in the minor mode . A scale can start on any pitch, which then determines the key of music that is based on that scale. For example, music created using pitches drawn from the A major scale is in the key of A major.
+10. This video demonstrates a minor scale.
+11. This video demonstrates the melody to Beethoven’s “Ode to Joy.”
+12. This video demonstrates melody and a possible harmony to Beethoven’s “Ode to Joy.”
+13. Here, you can hear Beethoven’s melody and harmony in the context of his original composition.
+14. This video introduces the concept of melodic shape.
+15. This video introduces the concept of melodic motion.
+In most pieces of music, pitches are assigned to two different roles: melody and harmony . Melodies are constructed out of a sequence of pitches. This is the part of a musical work that you might sing along with or that might get stuck in your head. Melodies have various characteristics, including shape and motion , which can be conjunct (in which the melody primarily moves up and down the scale) and disjunct (in which the melody contains larger intervals and leaps). Harmonies are constructed out of groups of pitches that are usually sounded simultaneously and constitute chords , while a sequence of harmonies is termed a chord progression . In a musical work, the harmony is usually unobtrusive and might be repetitive. A melody and a harmony sound good together when they are based on the same scale and contain some of the same pitches. However, every melody can be harmonized in many different ways, using various chords. Likewise, a single harmony can be used to accompany many different melodies.
+16. This video demonstrates chords, which are used to harmonize melodies.
+Although this text will not offer a technical explanation of harmony (which can become very complicated indeed), it is often central to the listening experience.  It is not necessary to understand harmonies from a theoretical perspective to feel their impact. You also don’t need a theoretical background to understand the role harmony plays in establishing and then satisfying or frustrating expectations. As long as a piece of music is in a key, one chord—the chord built on the note that the key is named after—will serve as a home base, while other chords in the key will facilitate journeys away from or back towards that home base. We get used to hearing certain chord progressions and come to expect them, so we often have a sense of where the music is going to go. If we hear an unexpected chord or—most shocking of all—a chord that is not in the key of the piece of music, we tend to respond emotionally.
+Volume
+Like pitch, volume—the loudness or softness of a sound—is a parameter of every soundwave. Volume is determined by the amplitude of the wave, such that waves with a large amplitude produce high-volume sound and waves with a small amplitude produce low-volume sounds. While volume is simple to understand and assess (we can all tell whether music is “loud” or “soft”), its significance in the creation of musical meaning cannot be overlooked. On the one hand, certain genres of music depend on volume for their identity. You cannot appreciate the impact of heavy metal by listening to it with the dial turned down, just as you cannot sing a baby to sleep at the top of your voice. Changes in volume can also communicate meaning in music. A gradual increase in volume can indicate growing excitement, while a sudden change in volume can indicate a dramatic mood shift.
+A few terms will help us to talk about volume, which is also referred to as dynamic level . An increase in volume is referred to as a crescendo , while a decrease is termed a decrescendo or diminuendo . Musicians in orchestras, bands, and choirs describe volume using Italian terms including fortissimo (very loud), forte (loud), mezzo forte (medium loud), mezzo piano (medium soft), piano (soft), and pianissimo (very soft). While this book will not employ these terms, you might encounter them elsewhere.
+Articulation
+Articulation has to do with how pitches are begun, sustained, and released, and it is driven primarily by changes in dynamic level. In music production language, this dimension of sound is referred to as the envelope. The envelope is independent of pitch, but it determines the character of that pitch. For example, a pitch might begin with a gentle increase in volume, or a sudden decrease, or no dynamic change. Once it has begun to sound, a pitch might be sustained for a long time, or it might be abruptly cut off. And when it is ended, it might be released with a decrease in volume, and increase in volume, or no dynamic change.
+17. This video explains the four elements of the envelope: attack, decay, sustain, and release.
+Although the preceding description was highly technical, the effects of articulation are easy to perceive. At one end of the spectrum, a series of pitches might be heavily punctuated, with forceful onsets and no sustain. The traditional Italian term for this articulation is staccato —a term that means short and accented, and which is difficult to replace with an English equivalent. At the other end, a series of pitches might be smoothly connected, with gentle onsets and a great deal of sustain. The term for this articulation is l
 
-A person with average hearing can hear sounds down to 0 dB. Those with exceptionally good hearing can hear even
-quieter sounds, down to approximately –5 dB. The following table includes sample sounds with their related decibel
-values.
-Sound
-Decibels (dB)
-Firecrackers
-140
-Take-off of military jet from aircraft carrier
-130
-Clap of thunder
-120
-Auto horn standing next to the vehicle
-110
-Outboard motor
-100
-Motorcycle
-90
-Noise inside a car in city traffic
-80
-Typical washing machine
-70
-Public conversation, such as at a restaurant
-60
-Private conversation
-50
-Hum of a computer with fan blowing
-40
-Quiet whisper
-30
-Swishing leaves
-20
-Regular breathing
-10
-Lowest typical sound audible by teenagers
-0
-EXAMPLE 13.17
-Selecting Decibel Value of Sounds
-Select the most representative decibel value for each of the following sounds:
-1.
-car wash: 25 dB, 55 dB, 85 dB
-2.
-vacuum cleaner: 15 dB, 70 dB, 90 dB
-3.
-ship’s engine room: 30 dB, 65 dB, 95 dB
-4.
-approaching subway car: 70 dB, 100 dB, 120 dB
-Solution
-1.
-85 dB
-2.
-70 dB
-3.
-95 dB
-4.
-100 dB
-13.4 • Math and Music
-1439
+## Match 2.06 — LibreTexts: 5.1: Acoustics for Music Theory
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/3.0/ · https://human.libretexts.org/Bookshelves/Music/Music_Theory/Understanding_Basic_Music_Theory_(Schmidt-Jones)/05%3A_The_Physical_Basis/5.01%3A_Acoustics_for_Music_Theory
 
-YOUR TURN 13.17
-Match each of the following sounds with a corresponding decibel level: live outdoor concert, birds chirping, window
-air conditioner, garbage disposal.
-1. 40 dB
-2. 60 dB
-3. 80 dB
-4. 100 dB
-Basics of Pitch
-When considering the various sound levels the human ear can hear, the ear perceives sound both from the frequency
-level and the pitch of a sound. The quality of the sound is referred to as pitch, the tonal quality of a sound and how high
-or low the tone. Sounds with a high frequency have a high pitch, such as 900 Hz, and sounds with a low pitch have a low
-frequency, such as 50 Hz.
-Let’s take a look at frequency and pitch using a string instrument such as a guitar or piano. When a string is plucked on a
-guitar or a key is played on a piano, the related string vibrates at a frequency that is related to the length and thickness
-of the string. The frequency is measurable and has a singular value. The pitch of the note played is open for
-interpretation, as the pitch is a function of personal opinion.
-WHO KNEW?
-Graphing Calculators and Music
-It may be interesting to note that a TI-84 and TI-Nspire graphing calculators can be utilized to tune a musical
-instrument by measuring the frequency of a note using a small plug-in accessory that captures the sound waves from
-a note and displays the corresponding frequency. Using the displayed frequency, an instrumentalist can then make
-the needed adjustment to perfectly tune an instrument. This method of tuning an instrument can be helpful whether
-a novice player or a seasoned instrumentalist because the instrument can be tuned precisely to the correct frequency.
-Note Values, Half-Steps, Whole Steps, and Octaves
-“There are not more than five musical notes, yet the combinations of these five give rise to more melodies than can ever
-be heard.”
-Sun Tzu, Chinese strategist
-Figure 13.14 Piano Keys and Notes (credit: modification of work "Contemplate" by Walt Stoneburner/Flickr, CC BY 2.0)
-Moving our exploration to note values, the frequency of all notes is well defined by a specific and unique frequency for
-1440
-13 • Math and...
-Access for free at openstax.org
+5.1: Acoustics for Music Theory
+- For adults, a short review of the physics underlying music theory.
+Music is Organized Sound Waves
+Music is sound that's organized by people on purpose, to dance to, to tell a story, to make other people feel a certain way, or just to sound pretty or be entertaining. Music is organized on many different levels. Sounds can be arranged into melodies, harmonies, rhythms, textures and phrases. Beats, measures, cadences, and form all help to keep the music organized and understandable. But the most basic way that music is organized is by arranging the actual sound waves themselves so that the sounds are interesting and pleasant and go well together.
+A rhythmic, organized set of thuds and crashes is perfectly good music - think of your favorite drum solo - but many musical instruments are designed specifically to produce the regular, evenly spaced sound waves that we hear as particular pitches. Crashes, thuds, and bangs are loud, short jumbles of lots of different wavelengths. These are the kinds of sound we often call "noise", when they're random and disorganized, but as soon as they are organized in time (rhythm), they begin to sound like music. (When used as a scientific term, noise refers to continuous sounds that are random mixtures of different wavelengths, not shorter crashes and thuds.)
+However, to get the melodic kind of sounds more often associated with music, the sound waves must themselves be organized and regular, not random mixtures. Most of the sounds we hear are brought to our ears through the air. A movement of an object causes a disturbance of the normal motion of the air molecules near the object. Those molecules in turn disturb other nearby molecules out of their normal patterns of random motion, so that the disturbance itself becomes a thing that moves through the air - a sound wave. If the movement of the object is a fast, regular vibration, then the sound waves are also very regular. We hear such regular sound waves as tones, sounds with a particular pitch. It is this kind of sound that we most often associate with music, and that many musical instruments are designed to make.
+Musicians have terms that they use to describe tones. (Musicians also have other meanings for the word "tone", but this course will stick to the "a sound with pitch" meaning.) This kind of (regular, evenly spaced) wave is useful for things other than music, however, so scientists and engineers also have terms that describe pitched sound waves. As we talk about where music theory comes from, it will be very useful to know both the scientific and the musical terms and how they are related to each other.
+For example, the closer together those evenly-spaced waves are, the higher the note sounds. Musicians talk about the pitch of the sound, or name specific notes, or talk about tuning. Scientists and engineers, on the other hand, talk about the frequency and the wavelength of the sound. They are all essentially talking about the same things, but talking about them in slightly different ways, and using the scientific ideas of wavelength and frequency can help clarify some of the main ideas underlying music theory.
+Longitudinal and Transverse Waves
+So what are we talking about when we speak of sound waves? Waves are disturbances; they are changes in something - the surface of the ocean, the air, electromagnetic fields. Normally, these changes are travelling (except for standing waves); the disturbance is moving away from whatever created it, in a kind of domino effect.
+Most kinds of waves are transverse waves. In a transverse wave, as the wave is moving in one direction, it is creating a disturbance in a different direction. The most familiar example of this is waves on the surface of water. As the wave travels in one direction - say south - it is creating an up-and-down (not north-and-south) motion on the water's surface. This kind of wave is fairly easy to draw; a line going from left-to-right has up-and-down wiggles. (See Figure 2)
+Transverse and Longitudinal Waves
+But sound waves are not transverse. Sound waves are longitudinal waves. If sound waves are moving south, the disturbance that they are creating is giving the air molecules extra north-and-south (not east-and-west, or up-and-down) motion. If the disturbance is from a regular vibration, the result is that the molecules end up squeezed together into evenly-spaced waves. This is very difficult to show clearly in a diagram, so most diagrams, even diagrams of sound waves, show transverse waves .
+Longitudinal waves may also be a little difficult to imagine, because there aren't any examples that we can see in everyday life (unless you like to play with toy slinkies). A mathematical description might be that in longitudinal waves, the waves (the disturbances) are along the same axis as the direction of motion of the wave; transverse waves are at right angles to the direction of motion of the wave. If this doesn't help, try imagining yourself as one of the particles that the wave is disturbing (a water drop on the surface of the ocean, or an air molecule).  You can view here animations of longitudinal and transverse waves , single particles being disturbed by a transverse wave or by a longitudinal wave , and particles being disturbed by transverse and longitudinal waves .
+The result of these "forward and backward" waves is that the "high point" of a sound wave is where the air molecules are bunched together, and the "low point" is where there are fewer air molecules. In a pitched sound, these areas of bunched molecules are very evenly spaced. In fact, they are so even, that there are some very useful things we can measure and say about them. In order to clearly show you what they are, most of the diagrams in this course will show sound waves as if they are transverse waves .
+Wave Amplitude and Loudness
+Both transverse and longitudinal waves cause a displacement of something: air molecules, for example, or the surface of the ocean. The amount of displacement at any particular spot changes as the wave passes. If there is no wave, or if the spot is in the same state it would be in if there was no wave, there is no displacement. Displacement is biggest (furthest from "normal") at the highest and lowest points of the wave. In a sound wave, then, there is no displacement wherever the air molecules are at a normal density. The most displacement occurs wherever the molecules are the most crowded or least crowded.
+Displacement
+The amplitude of the wave is a measure of the displacement: how big is the change from no displacement to the peak of a wave? Are the waves on the lake two inches high or two feet? Are the air molecules bunched very tightly together, with very empty spaces between the waves, or are they barely more organized than they would be in their normal course of bouncing off of each other? Scientists measure the amplitude of sound waves in decibels. Leaves rustling in the wind are about 10 decibels; a jet engine is about 120 decibels.
+Musicians call the loudness of a note its dynamic level. Forte (pronounced "FOR-tay") is a loud dynamic level; piano is soft. Dynamic levels don't correspond to a measured decibel level. An orchestra playing "fortissimo" (which basically means "even louder than forte") is going to be quite a bit louder than a string quartet playing "fortissimo". (See Dynamics for more of the terms that musicians use to talk about loudness.) Dynamics are more of a performance issue than a music theory issue, so amplitude doesn't need much discussion here.
+Amplitude is Loudness
+Wavelength, Frequency, and Pitch
+The aspect of evenly-spaced sound waves that really affects music theory is the spacing between the waves, the distance between, for example, one high point and the next high point. This is the wavelength, and it affects the pitch of the sound; the closer together the waves are, the higher the tone sounds.
+All sound waves are travelling at about the same speed - the speed of sound. So waves with a shorter wavelength arrive (at your ear, for example) more often (frequently) than longer waves. This aspect of a sound - how often a peak of a wave goes by, is called frequency by scientists and engineers. They measure it in hertz, which is how many peaks go by per second. People can hear sounds that range from about 20 to about 17,000 hertz.
+Wavelength, Frequency, and Pitch
+The word that musicians use for frequency is pitch. The shorter the wavelength, the higher the frequency, and the higher the pitch, of the sound. In other words, short waves sound high; long waves sound low. Instead of measuring frequencies, musicians name the pitches that they use most often. They might call a note "middle C" or "second line G" or "the F sharp in the bass clef". (See Octaves and Diatonic Music and Tuning Systems for more on naming specific frequencies.) These notes have frequencies (Have you heard of the "A 440" that is used as a tuning note?), but the actual frequency of a middle C can vary a little from one orchestra, piano, or performance, to another, so musicians usually find it more useful to talk about note names.
+Most musicians cannot name the frequencies of any notes other than the tuning A (440 hertz). The human ear can easily distinguish two pitches that are only one hertz apart when it hears them both, but it is the very rare musician who can hear specifically that a note is 442 hertz rather than 440. So why should we bother talking about frequency, when musicians usually don't? As we will see, the physics of sound waves - and especially frequency - affects the most basic aspects of music, including pitch, tuning, consonance and dissonance, harmony, and timbre.
 
-each note that is measurable. We will explore keys on a keyboard to discuss notes that have the same relationships with
-any instrument or musical piece.
-Let’s look at Figure 13.14. The white keys are labeled with the letters A–G and the photo begins with middle C, which can
-be found in the middle of a keyboard. This labeling of the keys repeats across an entire keyboard and keys to the right
-have a higher pitch and frequency than keys to the left. Each of the keys correlates to a musical note.
-Movement up or down between any two consecutive keys (black and white) or notes constitutes a half-step. Movement
-of one half-step sometimes involves a sharp (#) or a flat (♭) symbol. For example, D# is one half-step above D and D♭ is
-one half-step below D. Note that this is not always true as one half-step above B is C, and one half-step below F is E. In
-similar fashion, a whole step is movement up or down between any two half-steps on a keyboard.
-EXAMPLE 13.18
-Identifying Half-Steps
-Name which keys are one half-step up and one half-step down from the following:
-1.
-D
-2.
-E
-3.
-G#
-Solution
-1.
-up D#, down D♭
-2.
-up F, down E♭
-3.
-up A, down G
-YOUR TURN 13.18
-Name which keys are one half-step up and one half-step down from the following:
-1. F#
-2. B
-3. G♭
-EXAMPLE 13.19
-Identifying Whole Steps
-Name which keys are one whole step up and one whole step down from the following:
-1.
-F#
-2.
-E
-3.
-A♭
-Solution
-1.
-Up G#, down E
-2.
-Up F#, down D
-3.
-Up B♭, down G♭
-YOUR TURN 13.19
-Name which keys are one whole step up and one whole step down from the following:
-1. D♭
-2. C#
-3. E
-You may have noticed that there are eight letters of the alphabet used to label notes. Selecting any one note and
-counting up 12 half-steps you will find that the numbering for notes begins at the same value as you started from. This
-13.4 • Math and Music
-1441
+## Match 2.05 — LibreTexts: 4.2: Music in the Baroque Period
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://human.libretexts.org/Bookshelves/Music/Music_Appreciation/Understanding_Music_-_Past_and_Present_(Clark_et_al.)/04%3A_Music_of_the_Baroque_Period/4.02%3A_Music_in_the_Baroque_Period
 
-collection of 12 consecutive half-notes is called an octave and is a basic foundational component in music theory.
-EXAMPLE 13.20
-Listing All Notes in an Octave
-List the 12 notes forming an octave, beginning with the note C.
-Solution
-C, C#, D, D#, E, F, F#, G, G#, A, A#, B
-YOUR TURN 13.20
-1. List the 12 notes forming an octave, beginning with the note G.
-Frequencies of Octaves
-Notes that are one octave apart have the same name and are related in frequency values. Given the frequency of any
-note, the frequency of same note one octave higher is doubled and this pattern continues as you move up and down the
-notes on a keyboard or any other musical instrument. Song writers and singers use this knowledge to change the pitch
-of a note up or down to align with a person’s vocal range. Regardless of which C is played or sung, the pitch is the same
-and the frequency is related by a power or two.
-Labeled keys on a keyboard are numbered for ease in identification. For example, middle C is labeled as C4 on a full
-keyboard as it is the fourth C from the left in a set of eight notes. The frequency of C4 is 262 Hz, rounded to the nearest
-whole number.
-EXAMPLE 13.21
-Calculating the Frequency Values of Octaves
-Given that the frequency of C4 is 262 Hz, find the approximate frequency of C6.
-Solution
-The frequency of each consecutive higher octave doubles. Given that the frequency of C4 is 262 Hz, the frequency of C5 is
-found by doubling the frequency of C4, which is 524 Hz. In similar fashion, the frequency of C6 is found by doubling the
-frequency of C5, which yields 1,048 Hz.
-YOUR TURN 13.21
-1. Given that the frequency of E4 is 330 Hz, find the approximate frequency of E2 rounded to the nearest whole
-number.
-PEOPLE IN MATHEMATICS
-David Cope
-David Cope has a somewhat eclectic list of job titles ranging from author and music professor to scientist and artificial
-intelligence researcher. Cope combined his interests when he developed software that can analyze a piece of music
-and create a new and unique musical piece in the same style as the original. Some of his well-known products have
-been based off of the classical music of Mozart, creating what has been called Mozart’s “42nd Symphony,” as well as
-other genres including opera and a range of current music styles. Cope has also composed original musical pieces in
-collaboration with a computer.
-We have explored some basics components of frequency, pitch, note relationships, and octaves, which are building
-blocks of music. It may be exciting to learn that the mathematical relationships found in music are vast and grow in
-1442
-13 • Math and...
-Access for free at openstax.org
-
-complexity beyond the math commonly studied in high school.
-WHO KNEW?
-Spotify Royalty Payments
-Streaming services have grown exponentially in popularity thanks in large part to customized music listening through
-cell phone use and devices such as Google as well as Amazon Echo and Alexa devices for home and vehicles, adding
-to ways that artists are paid royalties. Spotify, which was launched in 2008, typically plays artists $0.06 per time a song
-is streamed, with some artists receiving up to $0.84 per play amounting to over $9 billion in revenue for Spotify in
-2020. Since 2014, Spotify’s revenue has grown over a billion dollars a year, with roughly half of their revenue being
-paid out in royalties, which was good news for artists during the Covid-19 pandemic when in-person concerts and
-shopping were hindered.
-Check Your Understanding
-11. What is the difference between frequency and pitch of a note?
-12. Are higher frequencies associated with higher or lower pitch notes?
-13. What frequency range can humans hear?
-14. As a sound appears louder, does the decibel value increase or decrease?
-15. What is the lowest decibel value that most people can hear?
-16. What is the typical audible frequency range that adults can hear?
-17. How does the frequency of a note change when increased by one octave?
-SECTION 13.4 EXERCISES
-For the following exercises, select the most representative decibel level for each sound.
-1. Gas lawn mower: 70 dB, 100 dB, 120 dB
-2. Radio playing loud enough to sing along to at home: 20 dB, 50 dB, 70 dB
-3. Office noise on a floor of people working at desks: 40 dB, 60, dB, 80 dB
-4. Conversation in a quiet room: 60 dB, 80 dB, 100 dB
-5. Fast-moving train passing by when sitting in a car about 20 ft from the tracks with windows down: 40 dB, 60 dB,
-80 dB
-For the following exercises, state the requested note.
-6. What is one half-step above G#?
-7. What is one whole step down from G♭?
-8. What is three half-steps above D?
-9. What is two whole steps down from A#?
-10. What is two half-steps down from E?
-11. What is an octave above B4?
-12. What is two octaves below F5?
-13. What is three octaves above G2?
-14. What is an octave below G2?
-15. Given that the frequency of
-, what is the frequency of A1?
-16. Given that the approximate frequency of
-, what is the approximate frequency of F5, rounded to the
-nearest whole number?
-17. Given that the approximate frequency of
-, what is the approximate frequency of A6#, rounded to the
-nearest whole number?
-18. Given that the approximate frequency of
-, what is the approximate frequency of D2, rounded to the
-nearest whole number?
-19. Given that the approximate frequency of
-, what is the approximate frequency of G3#, rounded to the
-13.4 • Math and Music
-1443
-
-nearest whole number?
-
-
-## Match 2.03 — Physics-WEB_Sab7RrQ § 14.2 Sound Intensity and Sound Level
-
-Section Learning Objectives
-By the end of this section, you will be able to do the following:
-•
-Relate amplitude of a wave to loudness and energy of a sound wave
-•
-Describe the decibel scale for measuring sound intensity
-•
-Solve problems involving the intensity of a sound wave
-•
-Describe how humans produce and hear sounds
-Section Key Terms
-amplitude
-decibel
-hearing
-loudness
-pitch
-sound intensity
-sound intensity level
-Amplitude, Loudness and Energy of a Sound Wave
-Figure 14.9 Noise on crowded roadways like this one in Delhi makes it hard to hear others unless they shout. (Lingaraj G J, Flickr)
-In a quiet forest, you can sometimes hear a single leaf fall to the ground. But in a traffic jam filled with honking cars, you may
-have to shout just so the person next to you can hear Figure 14.9.The loudness of a sound is related to how energetically its source
-is vibrating. In cartoons showing a screaming person, the cartoonist often shows an open mouth with a vibrating uvula (the
-hanging tissue at the back of the mouth) to represent a loud sound coming from the throat. Figure 14.10 shows such a cartoon
-depiction of a bird loudly expressing its opinion.
-A useful quantity for describing the loudness of sounds is called sound intensity. In general, the intensity of a wave is the power
-per unit area carried by the wave. Power is the rate at which energy is transferred by the wave. In equation form, intensity I is
-where P is the power through an area A. The SI unit for I is W/m2. The intensity of a sound depends upon its pressure amplitude.
-14.5
-14.2 • Sound Intensity and Sound Level
-423
-
-The relationship between the intensity of a sound wave and its pressure amplitude (or pressure variation Δp) is
-where ρ is the density of the material in which the sound wave travels, in units of kg/m3, and v is the speed of sound in the
-medium, in units of m/s. Pressure amplitude has units of pascals (Pa) or N/m2. Note that Δp is half the difference between the
-maximum and minimum pressure in the sound wave.
-We can see from the equation that the intensity of a sound is proportional to its amplitude squared. The pressure variation is
-proportional to the amplitude of the oscillation, and so I varies as (Δp)2. This relationship is consistent with the fact that the
-sound wave is produced by some vibration; the greater its pressure amplitude, the more the air is compressed during the
-vibration. Because the power of a sound wave is the rate at which energy is transferred, the energy of a sound wave is also
-proportional to its amplitude squared.
-TIPS FOR SUCCESS
-Pressure is usually denoted by capital P, but we are using a lowercase p for pressure in this case to distinguish it from power
-P above.
-Figure 14.10 Graphs of the pressures in two sound waves of different intensities. The more intense sound is produced by a source that has
-larger-amplitude oscillations and has greater pressure maxima and minima. Because pressures are higher in the greater-intensity sound, it
-can exert larger forces on the objects it encounters.
-The Decibel Scale
-You may have noticed that when people talk about the loudness of a sound, they describe it in units of decibels rather than watts
-per meter squared. While sound intensity (in W/m2) is the SI unit, the sound intensity level in decibels (dB) is more relevant for
-how humans perceive sounds. The way our ears perceive sound can be more accurately described by the logarithm of the
-intensity of a sound rather than the intensity of a sound directly. The sound intensity level β is defined to be
-where I is sound intensity in watts per meter squared, and I0 = 10–12 W/m2 is a reference intensity. I0 is chosen as the reference
-point because it is the lowest intensity of sound a person with normal hearing can perceive. The decibel level of a sound having
-an intensity of 10–12 W/m2 is β = 0 dB, because log10 1 = 0. That is, the threshold of human hearing is 0 decibels.
-Each factor of 10 in intensity corresponds to 10 dB. For example, a 90 dB sound compared with a 60 dB sound is 30 dB greater, or
-three factors of 10 (that is, 103 times) as intense. Another example is that if one sound is 107 as intense as another, it is 70 dB
-higher.
-Since β is defined in terms of a ratio, it is unit-less. The unit called decibel (dB) is used to indicate that this ratio is multiplied by
-10. The sound intensity level is not the same as sound intensity—it tells you the level of the sound relative to a reference intensity
-rather than the actual intensity.
-14.6
-14.7
-424
-Chapter 14 • Sound
-Access for free at openstax.org.
-
-Solving Sound Wave Intensity Problems
-WORKED EXAMPLE
-Calculating Sound Intensity Levels: Sound Waves
-Calculate the sound intensity level in decibels for a sound wave traveling in air at 0 ºC and having a pressure amplitude of 0.656
-Pa.
-STRATEGY
-We are given Δp, so we can calculate I using the equation
-. Using I , we can calculate β straight from its definition in
-.
-Solution
-(1) Identify knowns:
-Sound travels at 331 m/s in air at 0 °C.
-Air has a density of 1.29 kg/m3 at atmospheric pressure and 0ºC.
-(2) Enter these values and the pressure amplitude into
-.
-(3) Enter the value for I and the known value for I0 into
-. Calculate to find the sound intensity level in
-decibels.
-Snap Lab
-Feeling Sound
-In this lab, you will play music with a heavy beat to literally feel the vibrations and explore what happens when the volume
-changes.
-•
-CD player or portable electronic device connected to speakers
-•
-rock or rap music CD or mp3
-•
-a lightweight table
-Procedure
-1.
-Place the speakers on a light table, and start playing the CD or mp3.
-2.
-Place your hand gently on the table next to the speakers.
-3.
-Increase the volume and note the level when the table just begins to vibrate as the music plays.
-4.
-Increase the reading on the volume control until it doubles. What has happened to the vibrations?
-GRASP CHECK
-Do you think that when you double the volume of a sound wave you are doubling the sound intensity level (in dB) or the
-sound intensity (in
-)? Why?
-a.
-The sound intensity in
-, because it is a closer measure of how humans perceive sound.
-b.
-The sound intensity level in
-because it is a closer measure of how humans perceive sound.
-c.
-The sound intensity in
-because it is the only unit to express the intensity of sound.
-d.
-The sound intensity level in
-because it is the only unit to express the intensity of sound.
-14.2 • Sound Intensity and Sound Level
-425
-
-Discussion
-This 87.0 dB sound has an intensity five times as great as an 80 dB sound. So a factor of five in intensity corresponds to a
-difference of 7 dB in sound intensity level. This value is true for any intensities differing by a factor of five.
-WORKED EXAMPLE
-Change Intensity Levels of a Sound: What Happens to the Decibel Level?
-Show that if one sound is twice as intense as another, it has a sound level about 3 dB higher.
-STRATEGY
-You are given that the ratio of two intensities is 2 to 1, and are then asked to find the difference in their sound levels in decibels.
-You can solve this problem using of the properties of logarithms.
-Solution
-(1) Identify knowns:
-The ratio of the two intensities is 2 to 1, or:
-We want to show that the difference in sound levels is about 3 dB. That is, we want to show
-Note that
-(2) Use the definition of β to get
-Therefore,
-Discussion
-This means that the two sound intensity levels differ by 3.01 dB, or about 3 dB, as advertised. Note that because only the ratio
-I2/I1 is given (and not the actual intensities), this result is true for any intensities that differ by a factor of two. For example, a
-56.0 dB sound is twice as intense as a 53.0 dB sound, a 97.0 dB sound is half as intense as a 100 dB sound, and so on.
-Practice Problems
-7. Calculate the intensity of a wave if the power transferred is 10 W and the area through which the wave is transferred is 5
-square meters.
-a.
-200 W / m2
-b.
-50 W / m2
-c.
-0.5 W / m2
-d.
-2 W / m2
-8. Calculate the sound intensity for a sound wave traveling in air at
-and having a pressure amplitude of
-.
-a.
-b.
-c.
-d.
-Hearing and Voice
-People create sounds by pushing air up through their lungs and through elastic folds in the throat called vocal cords. These folds
-14.8
-14.9
-14.10
-426
-Chapter 14 • Sound
-Access for free at openstax.org.
-
-open and close rhythmically, creating a pressure buildup. As air travels up and past the vocal cords, it causes them to vibrate.
-This vibration escapes the mouth along with puffs of air as sound. A voice changes in pitch when the muscles of the larynx relax
-or tighten, changing the tension on the vocal chords. A voice becomes louder when air flow from the lungs increases, making the
-amplitude of the sound pressure wave greater.
-Hearing is the perception of sound. It can give us plenty of information—such as pitch, loudness, and direction. Humans can
-normally hear frequencies ranging from approximately 20 to 20,000 Hz. Other animals have hearing ranges different from that
-of humans. Dogs can hear sounds as high as 45,000 Hz, whereas bats and dolphins can hear up to 110,000 Hz sounds. You may
-have noticed that dogs respond to the sound of a dog whistle which produces sound out of the range of human hearing.
-Sounds below 20 Hz are called infrasound, whereas those above 20,000 Hz are ultrasound. The perception of frequency is called
-pitch, and the perception of intensity is called loudness.
-The way we hear involves some interesting physics. The sound wave that hits our ear is a pressure wave. The ear converts sound
-waves into electrical nerve impulses, similar to a microphone.
-Figure 14.11 shows the anatomy of the ear with its division into three parts: the outer ear or ear canal; the middle ear, which runs
-from the eardrum to the cochlea; and the inner ear, which is the cochlea itself. The body part normally referred to as the ear is
-technically called the pinna.
-Figure 14.11 The illustration shows the anatomy of the human ear.
-The outer ear, or ear canal, carries sound to the eardrum protected inside of the ear. The middle ear converts sound into
-mechanical vibrations and applies these vibrations to the cochlea. The lever system of the middle ear takes the force exerted on
-the eardrum by sound pressure variations, amplifies it and transmits it to the inner ear via the oval window. Two muscles in the
-middle ear protect the inner ear from very intense sounds. They react to intense sound in a few milliseconds and reduce the
-force transmitted to the cochlea. This protective reaction can also be triggered by your own voice, so that humming during a
-fireworks display, for example, can reduce noise damage.
-Figure 14.12 shows the middle and inner ear in greater detail. As the middle ear bones vibrate, they vibrate the cochlea, which
-contains fluid. This creates pressure waves in the fluid that cause the tectorial membrane to vibrate. The motion of the tectorial
-membrane stimulates tiny cilia on specialized cells called hair cells. These hair cells, and their attached neurons, transform the
-motion of the tectorial membrane into electrical signals that are sent to the brain.
-The tectorial membrane vibrates at different positions based on the frequency of the incoming sound. This allows us to detect
-the pitch of sound. Additional processing in the brain also allows us to determine which direction the sound is coming from
-(based on comparison of the sound’s arrival time and intensity between our two ears).
-14.2 • Sound Intensity and Sound Level
-427
-
-Figure 14.12 The inner ear, or cochlea, is a coiled tube about 3 mm in diameter and 3 cm in length when uncoiled. As the stapes vibrates
-against the oval window, it creates pressure waves that travel through fluid in the cochlea. These waves vibrate the tectorial membrane,
-which bends the cilia and stimulates nerves in the organ of Corti. These nerves then send information about the sound to the brain.
-FUN IN PHYSICS
-Musical Instruments
-Figure 14.13 Playing music, also known as “rocking out”, involves creating vibrations using musical instruments. (John Norton)
-Yet another way that people make sounds is through playing musical instruments (see the previous figure). Recall that the
-perception of frequency is called pitch. You may have noticed that the pitch range produced by an instrument tends to depend
-upon its size. Small instruments, such as a piccolo, typically make high-pitch sounds, while larger instruments, such as a tuba,
-typically make low-pitch sounds. High-pitch means small wavelength, and the size of a musical instrument is directly related to
-the wavelengths of sound it produces. So a small instrument creates short-wavelength sounds, just as a large instrument creates
-long-wavelength sounds.
-Most of us have excellent relative pitch, which means that we can tell whether one sound has a different frequency from another.
-We can usually distinguish one sound from another if the frequencies of the two sounds differ by as little as 1 Hz. For example,
-500.0 and 501.5 Hz are noticeably different.
-Musical notes are particular sounds that can be produced by most instruments, and are the building blocks of a song. In
-Western music, musical notes have particular names, such as A-sharp, C, or E-flat. Some people can identify musical notes just
-by listening to them. This rare ability is called perfect, or absolute, pitch.
-When a violin plays middle C, there is no mistaking it for a piano playing the same note. The reason is that each instrument
-produces a distinctive set of frequencies and intensities. We call our perception of these combinations of frequencies and
-intensities the timbre of the sound. It is more difficult to quantify timbre than loudness or pitch. Timbre is more subjective.
-Evocative adjectives such as dull, brilliant, warm, cold, pure, and rich are used to describe the timbre of a sound rather than
-428
-Chapter 14 • Sound
-Access for free at openstax.org.
-
-quantities with units, which makes for a difficult topic to dissect with physics. So the consideration of timbre takes us into the
-realm of 
-
-## Match 2.03 — College_Physics-WEB_2s5sHvR § 17.2 Speed of Sound, Frequency, and Wavelength
-
-Figure 17.7 When a firework explodes, the light energy is perceived before the sound energy. Sound travels more slowly than light does.
-(credit: Dominic Alves, Flickr)
-Sound, like all waves, travels at a certain speed and has the properties of frequency and wavelength. You can observe direct
-evidence of the speed of sound while watching a fireworks display. The flash of an explosion is seen well before its sound is
-heard, implying both that sound travels at a finite speed and that it is much slower than light. You can also directly sense the
-frequency of a sound. Perception of frequency is called pitch. The wavelength of sound is not directly sensed, but indirect
-evidence is found in the correlation of the size of musical instruments with their pitch. Small instruments, such as a piccolo,
-typically make high-pitch sounds, while large instruments, such as a tuba, typically make low-pitch sounds. High pitch means
-small wavelength, and the size of a musical instrument is directly related to the wavelengths of sound it produces. So a small
-instrument creates short-wavelength sounds. Similar arguments hold that a large instrument creates long-wavelength sounds.
-The relationship of the speed of sound, its frequency, and wavelength is the same as for all waves:
-17.1
-716
-Chapter 17 • Physics of Hearing
-Access for free at openstax.org.
-
-where
-is the speed of sound,
-is its frequency, and
-is its wavelength. The wavelength of a sound is the distance between
-adjacent identical parts of a wave—for example, between adjacent compressions as illustrated in Figure 17.8. The frequency is
-the same as that of the source and is the number of waves that pass a point per unit time.
-Figure 17.8 A sound wave emanates from a source vibrating at a frequency , propagates at
-, and has a wavelength .
-Table 17.1 makes it apparent that the speed of sound varies greatly in different media. The speed of sound in a medium is
-determined by a combination of the medium’s rigidity (or compressibility in gases) and its density. The more rigid (or less
-compressible) the medium, the faster the speed of sound. For materials that have similar rigidities, sound will travel faster
-through the one with the lower density because the sound energy is more easily transferred from particle to particle. The speed
-of sound in air is low, because air is compressible. Because liquids and solids are relatively rigid and very difficult to compress,
-the speed of sound in such media is generally greater than in gases.
-Medium
-vw(m/s)
-Gases at
-Air
-331
-Carbon dioxide
-259
-Oxygen
-316
-Helium
-965
-Hydrogen
-1290
-Liquids at
-Ethanol
-1160
-Mercury
-1450
-Water, fresh
-1480
-Sea water
-1540
-Human tissue
-1540
-Solids (longitudinal or bulk)
-Vulcanized rubber
-54
-Table 17.1 Speed of Sound in
-Various Media
-17.2 • Speed of Sound, Frequency, and Wavelength
-717
-
-Medium
-vw(m/s)
-Polyethylene
-920
-Marble
-3810
-Glass, Pyrex
-5640
-Lead
-1960
-Aluminum
-5120
-Steel
-5960
-Table 17.1 Speed of Sound in
-Various Media
-Earthquakes, essentially sound waves in Earth’s crust, are an interesting example of how the speed of sound depends on the
-rigidity of the medium. Earthquakes have both longitudinal and transverse components, and these travel at different speeds.
-The bulk modulus of granite is greater than its shear modulus. For that reason, the speed of longitudinal or pressure waves (P-
-waves) in earthquakes in granite is significantly higher than the speed of transverse or shear waves (S-waves). Both components
-of earthquakes travel slower in less rigid material, such as sediments. P-waves have speeds of 4 to 7 km/s, and S-waves
-correspondingly range in speed from 2 to 5 km/s, both being faster in more rigid material. The P-wave gets progressively farther
-ahead of the S-wave as they travel through Earth’s crust. The time between the P- and S-waves is routinely used to determine the
-distance to their source, the epicenter of the earthquake.
-The speed of sound is affected by temperature in a given medium. For air at sea level, the speed of sound is given by
-where the temperature (denoted as
-) is in units of kelvin. The speed of sound in gases is related to the average speed of
-particles in the gas,
-, and that
-where
-is the Boltzmann constant (
-) and
-is the mass of each (identical) particle in the gas. So, it is
-reasonable that the speed of sound in air and other gases should depend on the square root of temperature. While not
-negligible, this is not a strong dependence. At
-, the speed of sound is 331 m/s, whereas at
-it is 343 m/s, less than a 4%
-increase. Figure 17.9 shows a use of the speed of sound by a bat to sense distances. Echoes are also used in medical imaging.
-Figure 17.9 A bat uses sound echoes to find its way about and to catch prey. The time for the echo to return is directly proportional to the
-distance.
-One of the more important properties of sound is that its speed is nearly independent of frequency. This independence is
-17.2
-17.3
-718
-Chapter 17 • Physics of Hearing
-Access for free at openstax.org.
-
-certainly true in open air for sounds in the audible range of 20 to 20,000 Hz. If this independence were not true, you would
-certainly notice it for music played by a marching band in a football stadium, for example. Suppose that high-frequency sounds
-traveled faster—then the farther you were from the band, the more the sound from the low-pitch instruments would lag that
-from the high-pitch ones. But the music from all instruments arrives in cadence independent of distance, and so all frequencies
-must travel at nearly the same speed. Recall that
-In a given medium under fixed conditions,
-is constant, so that there is a relationship between
-and ; the higher the
-frequency, the smaller the wavelength. See Figure 17.10 and consider the following example.
-Figure 17.10 Because they travel at the same speed in a given medium, low-frequency sounds must have a greater wavelength than high-
-frequency sounds. Here, the lower-frequency sounds are emitted by the large speaker, called a woofer, while the higher-frequency sounds
-are emitted by the small speaker, called a tweeter.
-EXAMPLE 17.1
-Calculating Wavelengths: What Are the Wavelengths of Audible Sounds?
-Calculate the wavelengths of sounds at the extremes of the audible range, 20 and 20,000 Hz, in
-air. (Assume that the
-frequency values are accurate to two significant figures.)
-Strategy
-To find wavelength from frequency, we can use
-.
-Solution
-1.
-Identify knowns. The value for
-, is given by
-2.
-Convert the temperature into kelvin and then enter the temperature into the equation
-3.
-Solve the relationship between speed and wavelength for :
-4.
-Enter the speed and the minimum frequency to give the maximum wavelength:
-5.
-Enter the speed and the maximum frequency to give the minimum wavelength:
-17.4
-17.5
-17.6
-17.7
-17.8
-17.9
-17.2 • Speed of Sound, Frequency, and Wavelength
-719
-
-Discussion
-Because the product of
-multiplied by
-equals a constant, the smaller
-is, the larger
-must be, and vice versa.
-The speed of sound can change when sound travels from one medium to another. However, the frequency usually remains the
-same because it is like a driven oscillation and has the frequency of the original source. If
-changes and
-remains the same,
-then the wavelength
-must change. That is, because
-, the higher the speed of a sound, the greater its wavelength for a
-given frequency.
-CHECK YOUR UNDERSTANDING
-Imagine you observe two fireworks explode. You hear the explosion of one as soon as you see it. However, you see the other
-firework for several milliseconds before you hear the explosion. Explain why this is so.
-Solution
-Sound and light both travel at definite speeds. The speed of sound is slower than the speed of light. The first firework is probably
-very close by, so the speed difference is not noticeable. The second firework is farther away, so the light arrives at your eyes
-noticeably sooner than the sound wave arrives at your ears.
-CHECK YOUR UNDERSTANDING
-You observe two musical instruments that you cannot identify. One plays high-pitch sounds and the other plays low-pitch
-sounds. How could you determine which is which without hearing either of them play?
-Solution
-Compare their sizes. High-pitch instruments are generally smaller than low-pitch instruments because they generate a smaller
-wavelength.
+4.2: Music in the Baroque Period
+4.4.1 Music Comparison Overview
+| Renaissance Music Baroque Music | Baroque Music |
+|
+|
+4.4.2 General Trends of baroque music
+The characteristics highlighted in the chart above give Baroque music its unique sound and appear in the music of Monteverdi, Pachelbel, Bach, and others. To elaborate:
+- Definite and regular rhythms in the form of meter and “motor rhythm” (the constant subdivision of the beat) appear in most music. Bar lines become more prominent.
+- The use of polyphony continues with more elaborate techniques of imitative polyphony used in the music of Handel and Bach.
+- Homophonic (melody plus accompaniment) textures emerge including the use of basso continuo (a continuous bass line over which chords were built used to accompany a melodic line)
+- Homophonic textures lead to increased use of major and minor keys and chord progressions (see chapter one)
+- The accompaniment of melodic lines in homophonic textures are provided by the continuo section: a sort of improvised “rhythm section” that features lutes, viola da gambas, cellos, and harpsichords. Continuo sections provide the basso continuo (continuous bass line) and are used in Baroque opera, concerti, and chamber music
+- Instrumental music featuring the violin family—such as suites, sonatas, and concertos emerge and grow prominent.
+- These compositions are longer, often with multiple movements that use defined forms having multiple sections, such as ritornello form and binary form.
+- Composers start to notate dynamics and often write abrupt changes between loud and softs, what are called terraced dynamics.
+4.4.3 Genres of the baroque Period
+Much great music was composed during the Baroque period, and many of the most famous composers of the day were extremely prolific. To approach this mu- sic, we’ll break the historical era into the early period (the first seventy-five years or so) and the late period (from roughly 1675 to 1750). Both periods contain vocal music and instrumental music.
+The main genres of the early Baroque vocal music are: madrigal, motet, and opera. The main genres of early Baroque instrumental music include the canzona (also known as the sonata) and suite. The main genres of the late Baroque instru- mental music are the concerto, fugue, and suite. The main genres of late Baroque vocal music are: Italian opera seria, oratorio, and the church cantata (which was rooted in the Lutheran chorale, already discussed in chapter three). Many of these genres will be discussed later in the chapter.
+Solo music of the Baroque era was composed for all the different types of in- struments but with a major emphasis on violin and keyboard. The common term for a solo instrumental work is sonata. Please note that the non-keyboard solo instrument is usually accompanied by a keyboard, such as the organ, harpsichord or clavichord.
+Small ensembles are basically named in regard to the number of performers in each (trio = three performers, etc.). The most common and popular small ensemble during the Baroque period was the trio sonata. These trios feature two melody instruments (usually violins) accompanied by basso continuo (considered the third single member of the trio).
+The large ensembles genre can be divided into two subcategories, orchestral and vocal. The concerto was the leading form of large ensemble orchestral mu- sic. Concerto featured two voices, that of the orchestra and that of either a solo instrument or small ensemble. Throughout the piece, the two voices would play together and independently, through conversation, imitation, and in contrast with one another. A concerto that pairs the orchestra with a small ensemble is called a concerto grosso and a concert that pairs the orchestra with a solo instrument is called a solo concerto .
+The two large vocal/choral genres for the Baroque period were sacred works and opera . Two forms of the sacred choral works include the oratorio and the mass . The oratorio is an opera without all the acting. Oratorios tell a story using a cast of characters who speak parts and may include recitative (speak singing) and arias (sung solos). The production is performed to the audience without the per- formers interacting. The Mass served as the core of the Catholic religious service and commemorates the Last Supper. Opera synthesizes theatrical performance and music. Opera cast members act and interact with each other. Types of vocal se- lections utilized in an opera include recitative and aria. Smaller ensembles (duets, trios etc.) and choruses are used in opera productions.
+| Oratorio | Opera Seria | Cantata |
+|
+|
+|

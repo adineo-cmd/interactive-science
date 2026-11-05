@@ -1,9 +1,52 @@
 # Source pack — subjects/biology/foundational/biological-molecules
 Lesson title: Biological Molecules
 Level: foundational
-Match confidence: 2.55
+Match confidence: 3.06
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 3.06 — LibreTexts: 1.3: Biological Molecules
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Courses/Monterey_Peninsula_College/BIOL_30%3A_Genetics/01%3A_Introduction_to_Genetics/1.03%3A_Biological_Molecules
+
+1.3: Biological Molecules
+-
+- Last updated
+- Save as PDF
+- Princess Gilbert
+- Monterey Peninsula College
+The large molecules necessary for life that are built from smaller organic molecules are called biological macromolecules. There are four major classes of biological macromolecules (carbohydrates, lipids, proteins, and nucleic acids), and each is an important component of the cell and performs a wide array of functions. Combined, these molecules make up the majority of a cell’s mass. Biological macromolecules are organic, meaning that they contain carbon (with some exceptions, like carbon dioxide). In addition, they may contain hydrogen, oxygen, nitrogen, phosphorus, sulfur, and additional minor elements.
+Carbon
+It is often said that life is “carbon-based.” This means that carbon atoms, bonded to other carbon atoms or other elements, form the fundamental components of many, if not most, of the molecules found uniquely in living things. Other elements play important roles in biological molecules, but carbon certainly qualifies as the “foundation” element for molecules in living things. It is the bonding properties of carbon atoms that are responsible for its important role.
+Carbon Bonding
+Carbon contains four electrons in its outer shell. Therefore, it can form four covalent bonds with other atoms or molecules. The simplest organic carbon molecule is methane (CH 4 ), in which four hydrogen atoms bind to a carbon atom (Figure \(\PageIndex{1}\)).
+However, structures that are more complex are made using carbon. Any of the hydrogen atoms can be replaced with another carbon atom covalently bonded to the first carbon atom. In this way, long and branching chains of carbon compounds can be made (Figure \(\PageIndex{2}\) a ). The carbon atoms may bond with atoms of other elements, such as nitrogen, oxygen, and phosphorus (Figure \(\PageIndex{2}\) b ). The molecules may also form rings, which themselves can link with other rings (Figure \(\PageIndex{2}\) c ). This diversity of molecular forms accounts for the diversity of functions of the biological macromolecules and is based to a large degree on the ability of carbon to form multiple bonds with itself and other atoms.
+Carbohydrates
+Carbohydrates are macromolecules with which most consumers are somewhat familiar. To lose weight, some individuals adhere to “low-carb” diets. Athletes, in contrast, often “carb-load” before important competitions to ensure that they have sufficient energy to compete at a high level. Carbohydrates are, in fact, an essential part of our diet; grains, fruits, and vegetables are all natural sources of carbohydrates. Carbohydrates provide energy to the body, particularly through glucose, a simple sugar. Carbohydrates also have other important functions in humans, animals, and plants.
+Carbohydrates can be represented by the formula (CH 2 O) n , where n is the number of carbon atoms in the molecule. In other words, the ratio of carbon to hydrogen to oxygen is 1:2:1 in carbohydrate molecules. Carbohydrates are classified into three subtypes: monosaccharides, disaccharides, and polysaccharides.
+Monosaccharides (mono- = “one”; sacchar- = “sweet”) are simple sugars, the most common of which is glucose. In monosaccharides, the number of carbon atoms usually ranges from three to six. Most monosaccharide names end with the suffix -ose. Depending on the number of carbon atoms in the sugar, they may be known as trioses (three carbon atoms), pentoses (five carbon atoms), and hexoses (six carbon atoms).
+Monosaccharides may exist as a linear chain or as ring-shaped molecules; in aqueous solutions, they are usually found in the ring form.
+The chemical formula for glucose is C 6 H 12 O 6 . In most living species, glucose is an important source of energy. During cellular respiration, energy is released from glucose, and that energy is used to help make adenosine triphosphate (ATP). Plants synthesize glucose using carbon dioxide and water by the process of photosynthesis, and the glucose, in turn, is used for the energy requirements of the plant. The excess synthesized glucose is often stored as starch that is broken down by other organisms that feed on plants.
+Galactose (part of lactose, or milk sugar) and fructose (found in fruit) are other common monosaccharides. Although glucose, galactose, and fructose all have the same chemical formula (C 6 H 12 O 6 ), they differ structurally and chemically (and are known as isomers) because of differing arrangements of atoms in the carbon chain (Figure \(\PageIndex{3}\)).
+Disaccharides (di- = “two”) form when two monosaccharides undergo a dehydration reaction (a reaction in which the removal of a water molecule occurs). During this process, the hydroxyl group (–OH) of one monosaccharide combines with a hydrogen atom of another monosaccharide, releasing a molecule of water (H 2 O) and forming a covalent bond between atoms in the two sugar molecules.
+Common disaccharides include lactose, maltose, and sucrose. Lactose is a disaccharide consisting of the monomers glucose and galactose. It is found naturally in milk. Maltose, or malt sugar, is a disaccharide formed from a dehydration reaction between two glucose molecules. The most common disaccharide is sucrose, or table sugar, which is composed of the monomers glucose and fructose.
+A long chain of monosaccharides linked by covalent bonds is known as a polysaccharide (poly- = “many”). The chain may be branched or unbranched, and it may contain different types of monosaccharides. Polysaccharides may be very large molecules. Starch, glycogen, cellulose, and chitin are examples of polysaccharides.
+Starch is the stored form of sugars in plants and is made up of amylose and amylopectin (both polymers of glucose). Plants are able to synthesize glucose, and the excess glucose is stored as starch in different plant parts, including roots and seeds. The starch that is consumed by animals is broken down into smaller molecules, such as glucose. The cells can then absorb the glucose.
+Glycogen is the storage form of glucose in humans and other vertebrates, and is made up of monomers of glucose. Glycogen is the animal equivalent of starch and is a highly branched molecule usually stored in liver and muscle cells. Whenever glucose levels decrease, glycogen is broken down to release glucose.
+Cellulose is one of the most abundant natural biopolymers. The cell walls of plants are mostly made of cellulose, which provides structural support to the cell. Wood and paper are mostly cellulosic in nature. Cellulose is made up of glucose monomers that are linked by bonds between particular carbon atoms in the glucose molecule.
+Every other glucose monomer in cellulose is flipped over and packed tightly as extended long chains. This gives cellulose its rigidity and high tensile strength—which is so important to plant cells. Cellulose passing through our digestive system is called dietary fiber. While the glucose-glucose bonds in cellulose cannot be broken down by human digestive enzymes, herbivores such as cows, buffalos, and horses are able to digest grass that is rich in cellulose and use it as a food source. In these animals, certain species of bacteria reside in the rumen (part of the digestive system of herbivores) and secrete the enzyme cellulase. The appendix also contains bacteria that break down cellulose, giving it an important role in the digestive systems of ruminants. Cellulases can break down cellulose into glucose monomers that can be used as an energy source by the animal.
+Carbohydrates serve other functions in different animals. Arthropods, such as insects, spiders, and crabs, have an outer skeleton, called the exoskeleton, which protects their internal body parts. This exoskeleton is made of the biological macromolecule chitin, which is a nitrogenous carbohydrate. It is made of repeating units of a modified sugar containing nitrogen.
+Thus, through differences in molecular structure, carbohydrates are able to serve the very different functions of energy storage (starch and glycogen) and structural support and protection (cellulose and chitin) (Figure \(\PageIndex{4}\)).
+CAREERS IN ACTION: Registered Dietitian
+Obesity is a worldwide health concern, and many diseases, such as diabetes and heart disease, are becoming more prevalent because of obesity. This is one of the reasons why registered dietitians are increasingly sought after for advice. Registered dietitians help plan food and nutrition programs for individuals in various settings. They often work with patients in health-care facilities, designing nutrition plans to prevent and treat diseases. For example, dietitians may teach a patient with diabetes how to manage blood-sugar levels by eating the correct types and amounts of carbohydrates. Dietitians may also work in nursing homes, schools, and private practices.
+To become a registered dietitian, one needs to earn at least a bachelor’s degree in dietetics, nutrition, food technology, or a related field. In addition, registered dietitians must complete a supervised internship program and pass a national exam. Those who pursue careers in dietetics take courses in nutrition, chemistry, biochemistry, biology, microbiology, and human physiology. Dietitians must become experts in the chemistry and functions of food (proteins, carbohydrates, and fats).
+Lipids
+Lipids include a diverse group of compounds that are united by a common feature. Lipids are hydrophobic (“water-fearing”), or insoluble in water, because they are nonpolar molecules. This is because they are hydrocarbons that include only nonpolar carbon-carbon or carbon-hydrogen bonds. Lipids perform many different functions in a cell. Cells store energy for long-term use in the form of lipids called fats. Lipids also provide insulation from the environment for plants and animals (Figure \(\PageIndex{5}\)). For example, they help keep aquatic birds and mammals dry because of their water-repelling nature. Lipids are also the building blocks of many hormones and are an important constituent of the plasma membrane. Lipids include fats, oils, waxes, phospholipids, and steroids.
+ Glycerol is an organic compound with three carbon atoms, five hydrogen atoms, and three hydroxyl (–OH) groups. Fatty acids have a long chain of hydrocarbons to which an acidic carboxyl group is attached, hence the name “fatty acid.” The number of carbons in the fatty acid may range from 4 to 36; most common are those containing 12–18 carbons. In a fat molecule, a fatty acid is attached to each of the three oxygen atoms in the –OH groups of the glycerol molecule with a covalent bond (Figure \(\PageIndex{6}\)).
+During this covalent bond formation, three water molecules are released. The three fatty acids in the fat may be similar or dissimilar. These fats are also called triglycerides because they have three fatty acids. Some fatty acids have common names that specify their origin. For example, palmitic acid, a saturated fatty acid, is derived from the palm tree. Arachidic acid is derived from Arachis hypogaea , the scientific name for peanuts.
+Fatty acids may be saturated or unsaturated. In a fatty acid chain, if there are only single bonds between neighboring carbons in the hydrocarbon chain, the fatty acid is saturated. Saturated fatty acids are saturated with hydrogen; in other words, the number of hydrogen atoms attached to the carbon skeleton is maximized.
+When the hydrocarbon chain contains a double bond, the fatty acid is an unsaturated fatty acid.
+Most unsaturated fats are liquid at room temperature and are called oils. If there is one double bond in the molecule, then it is known as a monounsaturated fat (e.g., olive oil), and if there is more than one double bond, then it is known as a polyunsaturated fat (e.g., canola oil).
+Saturated fats tend to get packed tightly and are solid at room temperature. Animal fats with stearic acid and palmitic acid contained in meat, and the fat with butyric acid contained in b
 
 ## Match 2.55 — ConceptsBiology-OP_Jyx0DT8 § 2.3 Biological Molecules
 
@@ -269,207 +312,24 @@ Figure 3.4 These uterine cervix cells, viewed through a light microscope, were o
 Normal cells are on the left. The cells on the right are infected with human papillomavirus. (credit: modification of
 work by Ed Uthman; scale-bar d
 
-## Match 2.06 — Microbiology-WEB § 7.1 Organic Molecules
+## Match 2.11 — LibreTexts: 3: Biological Macromolecules
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_1e_(OpenStax)/1%3A_The_Chemistry_of_Life/3%3A_Biological_Macromolecules
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Identify common elements and structures found in organic molecules
-•
-Explain the concept of isomerism
-•
-Identify examples of functional groups
-•
-Describe the role of functional groups in synthesizing polymers
-Biochemistry is the discipline that studies the chemistry of life, and its objective is to explain form and
-function based on chemical principles. Organic chemistry is the discipline devoted to the study of carbon-
-based chemistry, which is the foundation for the study of biomolecules and the discipline of biochemistry.
-Both biochemistry and organic chemistry are based on the concepts of general chemistry, some of which are
-presented in Appendix A.
-Elements in Living Cells
-The most abundant element in cells is hydrogen (H), followed by carbon (C), oxygen (O), nitrogen (N),
-phosphorous (P), and sulfur (S). We call these elements macronutrients, and they account for about 99% of the
-dry weight of cells. Some elements, such as sodium (Na), potassium (K), magnesium (Mg), zinc (Zn), iron (Fe),
-calcium (Ca), molybdenum (Mo), copper (Cu), cobalt (Co), manganese (Mn), or vanadium (V), are required by
-some cells in very small amounts and are called micronutrients or trace elements. All of these elements are
-essential to the function of many biochemical reactions, and, therefore, are essential to life.
-The four most abundant elements in living matter (C, N, O, and H) have low atomic numbers and are thus light
-elements capable of forming strong bonds with other atoms to produce molecules (Figure 7.2). Carbon forms
-four chemical bonds, whereas nitrogen forms three, oxygen forms two, and hydrogen forms one. When bonded
-together within molecules, oxygen, sulfur, and nitrogen often have one or more “lone pairs” of electrons that
-play important roles in determining many of the molecules’ physical and chemical properties (see Appendix
-A). These traits in combination permit the formation of a vast number of diverse molecular species necessary
-to form the structures and enable the functions of living organisms.
-Clinical Focus
-Part 1
-Penny is a 16-year-old student who visited her doctor, complaining about an itchy skin rash. She had a
-history of allergic episodes. The doctor looked at her sun-tanned skin and asked her if she switched to a
-different sunscreen. She said she had, so the doctor diagnosed an allergic eczema. The symptoms were
-mild so the doctor told Penny to avoid using the sunscreen that caused the reaction and prescribed an
-over-the-counter moisturizing cream to keep her skin hydrated and to help with itching.
-•
-What kinds of substances would you expect to find in a moisturizing cream?
-•
-What physical or chemical properties of these substances would help alleviate itching and
-inflammation of the skin?
-Jump to the next Clinical Focus box.
-258
-7 • Microbial Biochemistry
-Access for free at openstax.org.
-
-Figure 7.2
-Some common molecules include carbon dioxide, ammonia, and oxygen, which consist of combinations of oxygen atoms (red
-spheres), carbon atoms (gray spheres), hydrogen atoms (white spheres), or nitrogen atoms (blue spheres).
-Living organisms contain inorganic compounds (mainly water and salts; see Appendix A) and organic
-molecules. Organic molecules contain carbon; inorganic compounds do not. Carbon oxides and carbonates are
-exceptions; they contain carbon but are considered inorganic because they do not contain hydrogen. The
-atoms of an organic molecule are typically organized around chains of carbon atoms.
-Inorganic compounds make up 1%–1.5% of the dry weight of living cells. They are small, simple compounds
-that play important roles in the cell, although they do not form cell structures. Most of the carbon found in
-organic molecules originates from inorganic carbon sources such as carbon dioxide captured via carbon
-fixation by microorganisms.
-CHECK YOUR UNDERSTANDING
-•
-Describe the most abundant elements in nature.
-•
-What are the differences between organic and inorganic molecules?
-Organic Molecules and Isomerism
-Organic molecules in organisms are generally larger and more complex than inorganic molecules. Their
-carbon skeletons are held together by covalent bonds. They form the cells of an organism and perform the
-chemical reactions that facilitate life. All of these molecules, called biomolecules because they are part of
-living matter, contain carbon, which is the building block of life. Carbon is a very unique element in that it has
-four valence electrons in its outer orbitals and can form four single covalent bonds with up to four other atoms
-at the same time (see Appendix A). These atoms are usually oxygen, hydrogen, nitrogen, sulfur, phosphorous,
-and carbon itself; the simplest organic compound is methane, in which carbon binds only to hydrogen (Figure
-7.3).
-As a result of carbon’s unique combination of size and bonding properties, carbon atoms can bind together in
-large numbers, thus producing a chain or carbon skeleton. The carbon skeleton of organic molecules can be
-straight, branched, or ring shaped (cyclic). Organic molecules are built on chains of carbon atoms of varying
-lengths; most are typically very long, which allows for a huge number and variety of compounds. No other
-element has the ability to form so many different molecules of so many different sizes and shapes.
-Figure 7.3
-A carbon atom can bond with up to four other atoms. The simplest organic molecule is methane (CH4), depicted here.
-Molecules with the same atomic makeup but different structural arrangement of atoms are called isomers.
-7.1 • Organic Molecules
-259
-
-The concept of isomerism is very important in chemistry because the structure of a molecule is always directly
-related to its function. Slight changes in the structural arrangements of atoms in a molecule may lead to very
-different properties. Chemists represent molecules by their structural formula, which is a graphic
-representation of the molecular structure, showing how the atoms are arranged. Compounds that have
-identical molecular formulas but differ in the bonding sequence of the atoms are called structural isomers.
-The monosaccharides glucose, galactose, and fructose all have the same molecular formula, C6H12O6, but we
-can see from Figure 7.4 that the atoms are bonded together differently.
-Figure 7.4
-Glucose, galactose, and fructose have the same chemical formula (C6H12O6), but these structural isomers differ in their
-physical and chemical properties.
-Isomers that differ in the spatial arrangements of atoms are called stereoisomers; one unique type is
-enantiomers. The properties of enantiomers were originally discovered by Louis Pasteur in 1848 while using a
-microscope to analyze crystallized fermentation products of wine. Enantiomers are molecules that have the
-characteristic of chirality, in which their structures are nonsuperimposable mirror images of each other.
-Chirality is an important characteristic in many biologically important molecules, as illustrated by the
-examples of structural differences in the enantiomeric forms of the monosaccharide glucose or the amino acid
-alanine (Figure 7.5).
-Many organisms are only able to use one enantiomeric form of certain types of molecules as nutrients and as
-building blocks to make structures within a cell. Some enantiomeric forms of amino acids have distinctly
-different tastes and smells when consumed as food. For example, L-aspartame, commonly called aspartame,
-tastes sweet, whereas D-aspartame is tasteless. Drug enantiomers can have very different pharmacologic
-affects. For example, the compound methorphan exists as two enantiomers, one of which acts as an antitussive
-(dextromethorphan, a cough suppressant), whereas the other acts as an analgesic (levomethorphan, a drug
-similar in effect to codeine).
-260
-7 • Microbial Biochemistry
-Access for free at openstax.org.
-
-Figure 7.5
-Enantiomers are stereoisomers that exhibit chirality. Their chemical structures are nonsuperimposable mirror images of each
-other. (a) D-glucose and L-glucose are monosaccharides that are enantiomers. (b) The enantiomers D-alanine and L-alanine are
-enantiomers found in bacterial cell walls and human cells, respectively.
-Enantiomers are also called optical isomers because they can rotate the plane of polarized light. Some of the
-crystals Pasteur observed from wine fermentation rotated light clockwise whereas others rotated the light
-counterclockwise. Today, we denote enantiomers that rotate polarized light clockwise (+) as d forms, and the
-mirror image of the same molecule that rotates polarized light counterclockwise (−) as the l form. The d and l
-labels are derived from the Latin words dexter (on the right) and laevus (on the left), respectively. These two
-different optical isomers often have very different biological properties and activities. Certain species of
-molds, yeast, and bacteria, such as Rhizopus, Yarrowia, and Lactobacillus spp., respectively, can only
-metabolize one type of optical isomer; the opposite isomer is not suitable as a source of nutrients. Another
-important reason to be aware of optical isomers is the therapeutic use of these types of chemicals for drug
-treatment, because some microorganisms can only be affected by one specific optical isomer.
-CHECK YOUR UNDERSTANDING
-•
-We say that life is carbon based. What makes carbon so suitable to be part of all the macromolecules of
-living organisms?
-Biologically Significant Functional Groups
-In addition to containing carbon atoms, biomolecules also contain functional groups—groups of atoms within
-molecules that are categorized by their specific chemical composition and the chemical reactions they
-perform, regardless of the molecule in which the group is found. Some of the most common functional groups
-are listed in Figure 7.6. In the formulas, the symbol R stands for “residue” and represents the remainder of the
-molecule. R might symbolize just a single hydrogen atom or it may represent a group of many atoms. Notice
-that some functional groups are relatively simple, consisting of just one or two atoms, while some comprise
-two of these simpler functional groups. For example, a carbonyl group is a functional group composed of a
-carbon atom double bonded to an oxygen atom: C=O. It is present in several classes of organic compounds as
-part of larger functional groups such as ketones, aldehydes, carboxylic acids, and amides. In ketones, the
-carbonyl is present as an internal group, whereas in aldehydes it is a terminal group.
-7.1 • Organic Molecules
-261
-
-Figure 7.6
-Macromolecules
-Carbon chains form the skeletons of most organic molecules. Functional groups combine with the chain to
-form biomolecules. Because these biomolecules are typically large, we call them macromolecules. Many
-biologically relevant macromolecules are formed by linking together a great number of identical, or very
-similar, smaller organic molecules. The smaller molecules act as building blocks and are called monomers,
-262
-7 • Microbial Biochemistry
-Access for free at openstax.org.
-
-and the macromolecules that result from their linkage are called polymers. Cells and cell structures include
-four main groups of carbon-containing macromolecules: polysaccharides, proteins, lipids, and nucleic acids.
-The first three groups of molecules will be studied throughout this chapter. The biochemistry of nucleic acids
-will be discussed in Biochemistry of the Genome.
-Of the many possible ways that monomers may be combined to yield polymers, one common approach
-encountered in the formation of biological macromolecules is dehydration synthesis. In this chemical
-reaction, monomer molecules bind end to end in a process that results in the formation of water molecules as
-a byproduct:
-Figure 7.7 shows dehydration synthesis of glucose binding together to form maltose and a water molecule.
-Table 7.1 summarizes macromolecules and some of their functions.
-Figure 7.7
-In this dehydration synthesis reaction, two molecules of glucose are linked together to form maltose. In the process, a water
-molecule is formed.
-Some Functions of Macromolecules
-Macromolecule
-Functions
-Carbohydrates
-Energy storage, receptors, food, structural role in plants, fungal cell walls, exoskeletons of
-insects
-Lipids
-Energy storage, membrane structure, insulation, hormones, pigments
-Nucleic acids
-Storage and transfer of genetic information
-Proteins
-Enzymes, structure, receptors, transport, structural role in the cytoskeleton of a cell and
-the extracellular matrix
-Table 7.1
-CHECK YOUR UNDERSTANDING
-•
-What is the byproduct of a dehydration synthesis reaction?
-
-## Match 2.05 — ConceptsBiology-OP_Jyx0DT8 § 2.1 The Building Blocks of Molecules
-
-Matter is anything that occupies space and has mass. It is made up of atoms of different elements. All of the 92 elements
-that occur naturally have unique qualities that allow them to combine in various ways to create compounds or molecules.
-Atoms, which consist of protons, neutrons, and electrons, are the smallest units of an element that retain all of the
-properties of that element. Electrons can be donated or shared between atoms to create bonds, including ionic, covalent,
-and hydrogen bonds, as well as van der Waals interactions.
-2.2 Water
-Water has many properties that are critical to maintaining life. It is polar, allowing for the formation of hydrogen bonds,
-which allow ions and other polar molecules to dissolve in water. Therefore, water is an excellent solvent. The hydrogen
-bonds between water molecules give water the ability to hold heat better than many other substances. As the temperature
-rises, the hydrogen bonds between water continually break and reform, allowing for the overall temperature to remain
-stable, although increased energy is added to the system. Water’s cohesive forces allow for the property of surface tension.
-All of these unique properties of water are important in the chemistry of living organisms.
-The pH of a solution is a measure of the concentration of hydrogen ions in the solution. A solution with a high number of
-hydrogen ions is acidic and has a low pH value. A solution with a high number of hydroxide ions is basic and has a high
-pH value. The pH scale ranges from 0 to 14, with a pH of 7 being neutral. Buffers are solutions that moderate pH changes
-when an acid or base is added to the buffer system. Buffers are important in biological systems because of their ability to
-maintain constant pH conditions.
+3: Biological Macromolecules
+Food provides the body with the nutrients it needs to survive. Many of these critical nutrients are biological macromolecules, or large molecules, necessary for life. These macromolecules (polymers) are built from different combinations of smaller organic molecules (monomers). What specific types of biological macromolecules do living things require? How are these molecules formed? What functions do they serve? In this chapter, these questions will be explored.
+-
+- 3.0: Prelude to Biological Macromolecules
+- Food provides the body with the nutrients it needs to survive. Many of these critical nutrients are biological macromolecules, or large molecules, necessary for life. These macromolecules (polymers) are built from different combinations of smaller organic molecules (monomers). What specific types of biological macromolecules do living things require? How are these molecules formed? What functions do they serve? In this chapter, these questions will be explored.
+-
+- 3.1: Synthesis of Biological Macromolecules
+- Biological macromolecules are large molecules, necessary for life, that are built from smaller organic molecules. There are four major classes of biological macromolecules (carbohydrates, lipids, proteins, and nucleic acids); each is an important cell component and performs a wide array of functions. Combined, these molecules make up the majority of a cell’s dry mass (recall that water makes up the majority of its complete mass).
+-
+- 3.2: Carbohydrates
+- Carbohydrates are, in fact, an essential part of our diet; grains, fruits, and vegetables are all natural sources of carbohydrates. Carbohydrates provide energy to the body, particularly through glucose, a simple sugar that is a component of starch and an ingredient in many staple foods. Carbohydrates also have other important functions in humans, animals, and plants.
+-
+- 3.3: Lipids
+- Lipids include a diverse group of compounds that are largely nonpolar in nature. This is because they are hydrocarbons that include mostly nonpolar carbon–carbon or carbon–hydrogen bonds. Non-polar molecules are hydrophobic (“water fearing”), or insoluble in water. Lipids perform many different functions in a cell. Cells store energy for long-term use in the form of fats. Lipids also provide insulation from the environment for plants and animals.
+-
+- 3.4: Proteins
+- Proteins are one of the most abundant organic molecules in living systems and have the most diverse range of functions of all macromolecules. Proteins may be structural, regulatory, contractile, or protective; they may serve in transport, storage, or membranes; or they may be toxins or enzymes. Each cell in a living system may contain thousands of proteins, each with a unique function. Their structures, like their functions, vary greatly.
+Thumbnail: 1K6F_Crystal Structure Of The Collagen Triple Helix Model Pro- Pro-Gly103. (CC-SA-BY-3.0; Nevit Dilmen)

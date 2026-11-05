@@ -1,449 +1,141 @@
 # Source pack — subjects/media-studies/foundational/the-theoretical-framework
 Lesson title: The theoretical framework
 Level: foundational
-Match confidence: 1.53
+Match confidence: 2.03
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.53 — IntroductiontoSociology3e-WEB_9QTqRGQ § 16.2 Theoretical Perspectives on Education
+## Match 2.03 — LibreTexts: 4.3.4: Theoretical Perspectives on Culture
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/3.0/ · https://socialsci.libretexts.org/Courses/Collin_College/SOCI_1306%3A_Social_Problems/04%3A_Culture/4.03%3A_Culture_and_Meaning/4.3.04%3A_Theoretical_Perspectives_on_Culture
 
-LEARNING OBJECTIVES
-By the end of this section, you should be able to:
-•
-Define manifest and latent functions of education
-•
-Explain and discuss how functionalism, conflict theory, feminism, and interactionism view issues of education
-While it is clear that education plays an integral role in individuals’ lives as well as society as a whole,
-sociologists view that role from many diverse points of view. Functionalists believe that education equips
-people to perform different functional roles in society. Conflict theorists view education as a means of
-widening the gap in social inequality. Feminist theorists point to evidence that sexism in education continues
-to prevent women from achieving a full measure of social equality. Symbolic interactionists study the
-dynamics of the classroom, the interactions between students and teachers, and how those affect everyday life.
-In this section, you will learn about each of these perspectives.
-16.2 • Theoretical Perspectives on Education
-475
+4.3.4: Theoretical Perspectives on Culture
+-
+- Last updated
+- Save as PDF
+- Anonymous
+- LibreTexts
+The social structure plays an integral role in the social location (i.e., place or position) people occupy in society. Your social location is a result of cultural values and norms from the time-period and place in which you live. Culture effects personal and social development including the way people will think or behave. Cultural characteristics pertaining to age, gender, race, education, income and other social factors influence the location people occupy at any given time.
+Furthermore, social location influences how people perceive and understand the world in which we live. People have a difficult time being objective in all contexts because of their social location within cultural controls and standards derived from values and norms. Objective conditions exist without bias because they are measureable and quantifiable (Carl 2013). Subjective concerns rely on judgments rather than external facts. Personal feelings and opinions from a person’s social location drive subjective concerns. The sociological imagination is a tool to help people step outside subjective or personal biography, and look at objective facts and the historical background of a situation, issue, society, or person (Carl 2013).
+PERCEPTIONS OF REALITY
+The time period we live (history) and our personal life experiences (biography) influence our perspectives and understanding about others and the world. Our history and biography guide our perceptions of reality reinforcing our personal bias and subjectivity. Relying on subjective viewpoints and perspectives leads to diffusion of misinformation and fake news that can be detrimental to our physical and socio-cultural environment and negatively impact our interactions with others. We must seek out facts and develop knowledge to enhance our objective eye. By using valid, reliable, proven facts, data, and information, we establish credibility and make better decisions for the world and ourselves.
+- Consider a socio-cultural issue you are passionate about and want to change or improve.
+- What is your position on the issue? What ideological or value-laden reasons or beliefs support your position? What facts or empirical data support your position?
+- What portion of your viewpoint or perspective on the issue relies on personal values, opinions, or beliefs in comparison to facts?
+- Why is it important to identity and use empirical data or facts in our lives rather than relying on ideological reasoning and false or fake information?
+According to C. Wright Mills (1959), the sociological imagination requires individuals to “think themselves away” in examining personal and social influences on people’s life choices and outcomes. Large-scale or macrosociological influences help create understanding about the effect of the social structure and history on people’s lives. Whereas, small-scale or microsociological influences focus on interpreting personal viewpoints from an individual’s biography. Using only a microsociological perspective leads to an unclear understanding of the world from bias perceptions and assumptions about people, social groups, and society (Carl 2013).
+Sociologists use theories to study the people. “The theoretical paradigms provide different lenses into the social constructions of life and the relationships of people” (Kennedy, Norwood, and Jendian 2017:22). The theoretical paradigms in sociology help us examine and understand cultural reflections including the social structure and social value culture creates and sustains to fulfill human needs as mediated by society itself. Each paradigm provides an objective framework of analysis and evaluation for understanding the social structure including the construction of the cultural values and norms and their influence on thinking and behavior.
+The Theoretical Paradigms
+Macrosociology studies large-scale social arrangements or constructs in the social world. The macro perspective examines how groups, organizations, networks, processes, and systems influences thoughts and actions of individuals and groups (Kennedy et al. 2017). Functionalism, Conflict Theory, Feminism, and Environmental Theory are macrosociological perspectives.
+Microsociology studies the social interactions of individuals and groups. The micro perspective observes how thinking and behavior influences the social world such as groups, organizations, networks, processes, and systems (Kennedy et al. 2017). Symbolic Interactionism and Exchange Theory are microsociological perspectives.
+Functionalism is a macrosociological perspective examining the purpose or contributions of interrelated parts within the social structure. Functionalists examine how parts of society contribute to the whole. Everything in society has a purpose or function. Even a negative contribution helps society discern its function. For example, driving under the influence of alcohol or drugs inspired society to define the behavior as undesirable, develop laws, and consequences for people committing such an act. A manifest function in society results in expected outcomes (i.e., using a pencil to develop written communication). Whereas, a latent function has an unexpected result (i.e., using a pencil to stab someone). When a function creates unexpected results that cause hardships, problems, or negative consequences the result is a latent dysfunction.
+Conflict Theory is a macrosociological perspective exploring the fight among social groups over resources in society. Groups compete for status, power, control, money, territory, and other resources for economic or other social gain. Conflict Theory explores the struggle between those in power and those who are not in power within the context of the struggle. Cultural wars are common in society, whether controversy over a deity and way of life or ownership and rights over Holy Land.
+Symbolic Interactionism is a microsociological perspective observing the influence of interactions on thinking and behavior. Interactionists consider how people interpret meaning and symbols to understand and navigate the social world. Individuals create social reality through verbal and non-verbal interactions. These interactions form thoughts and behaviors in response to others influencing motivation and decision-making. Hearing or reading a word in a language one understands develop a mental image and comprehension about information shared or communicated (i.e., the English word “bread” is most commonly visualized as a slice or loaf and considered a food item).
+There are three modern approaches to sociological theory (Carl 2013). Feminism , a macrosociological perspective, studies the experiences of women and minorities in the social world including the outcomes of inequality and oppression for these groups. One major focus of the feminist theoretical approach is to understand how age, ethnicity, race, sexuality, and social class interact with gender to determine outcomes for people (Carl 2013). Exchange Theory examines decision-making of individuals in society. This microsociological perspective focuses on understanding how people consider a cost versus benefit analysis accentuating their self-interest to make decisions. Environmental Theory explores how people adjust to ecological (environmental and social) changes over time (Carl 2013). The focal point of this macrosociological perspective is to figure out how people adapt or evolve over time and share the same ecological space.
+Applying Theories
+Functionalists view how people work together to create society as a whole. From this perspective, societies needs culture to exist (Griffiths, Keirns, Strayer, Cody-Rydzewsk, Scaramuzzo, Sadler, Vyain, Byer, and Jones 2015). For example, cultural norms or rules function to support the social structure of society, and cultural values guide people in their thoughts and actions. Consider how education is an important concept in the United States because it is valued. The culture of education including the norms surrounding registration, attendance, grades, graduation, and material culture (i.e., classrooms, textbooks, libraries) all support the emphasis placed on the value of education in the United States. Just as members of a society work together to fulfill the needs or society, culture exists to meet the basic needs of its members.
+Conflict theorists understand the social structure as inherently unequal resulting from the differences in power based on age, class, education, gender, income, race, sexuality, and other social factors. For a conflict theorist, culture reinforces issues of "privilege” groups and their status in social categories (Griffiths et al. 2015). Inequalities exist in every cultural system. Therefore, cultural norms benefit people with status and power while harming others and at the expense of others. For example, although cultural diversity is valued in the United States, some people and states prohibit interracial marriages, same-sex marriages, and polygamy (Griffiths et al. 2015).
+Symbolic interactionists see culture as created and maintained by the interactions and interpretations of each other’s actions. These theorists conceptualize human interactions as a continuous process of deriving meaning from the physical and social environment. “Every object and action has a symbolic meaning, and language serves as a means for people to represent and communicate their interpretations of these meanings to others” (Griffiths et al. 2015:72). Interactionists evaluate how culture depends on the interpretation of meaning and how individuals interact when exchanging comprehension and meaning. For instance, derogatory terms such as the “N” word might be acceptable among people of the same cultural group but viewed as offensive and antagonistic when used by someone outside of the group.
+Feminists explore the cultural experiences of women and minorities. For example, women in Lebanon do not have the right to dissolve a marriage without her husband’s consent even in cases of spousal abuse (Human Rights Watch 2015). Feminism explicitly examines oppression structures within culture systems and the inequity some groups confront in relation to their age, gender, race, social class, sexuality, or other social category.
+Exchange theorists observe how culture influences decision-making. Cultural values and beliefs often influence people’s choices about premarital sex and cohabitation before marriage. If you evaluate your decisions on a daily basis, you might see elements of culture behind the motivation driving your choices.
+Environmental theorists assess how culture, as part of the social and physical environment, adapts and changes over time. If you contemplate any rule of law, you can see how culture has altered because of shifts in social ideas or ecological fluctuations. Consider the anti-tobacco laws in the United States making it illegal to smoke in public areas as an example of social shifts towards health and wellness or water meters to control and regulate residential water usage and waste as an example of ecological drought and prolonged water shortages in the United States.
+THEORETICAL APPLICATION
+Popular culture reflects prominent values, beliefs, norms, symbolic expressions, and practices while re-enforcing American ideologies and myths. Develop a written response exploring the depiction of contemporary American culture in an episode of a contemporary television show drama (i.e., NCIS, Game of Thrones, Agents of S.H.I.E.L.D., Breaking Bad, etc.)
+- Describe American cultural ideologies or principles portrayed in the show (i.e., unity, diversity, patriotism, etc.).
+- Explain which myths or untruths are evident in the film that express fundamental cultural values or norms.
+- Discuss how the show mirrors social and cultural trends.
+- Analyze the culture portrayed in the television show using each of the theoretical paradigms: Functionalis
 
+## Match 2.03 — LibreTexts: 2.4: Theoretical Perspectives and Key Concepts
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Sociology/Marriage_and_Family/Contemporary_Families_-_An_Equity_Lens_(Pearce_et_al.)/02%3A_Studying_Families/2.04%3A_Theoretical_Perspectives_and_Key_Concepts
+
+We will examine families from a variety of theoretical perspectives. A theoretical perspective, or more briefly, a “theory” is not just an idea that someone has. Rather it is a structural framework, explanation, or tool that has been tested and evaluated over time. Theories are developed and utilized via scholarship, research, discussion, and debate. Theories help us to understand the world in general, and in this instance the ways in which families form, function, interact with, and experience the world. In addition, we will define several key concepts important to your understanding of equity and families in this course.
+Because the study of families overlaps several disciplines, we will utilize sociological, human development, psychological, and anthropological theories and concepts.
+Play this video to learn about five of the foundational theories related to the study of families: Social Exchange, Symbolic Interaction, Feminist, Postmodern, and Life Course. (It is recommended that you play it at 1.25x speed and you can disregard the references to chapter numbers)
+Here is a summary table of these five theories and a couple of others that are commonly used in this field and that will be discussed in this text.
+Table 2.2. Foundational theories related to the study of families.
+Theory
+Major Principles
+Relation to Family Life
+Key Vocabulary and Concepts
+Important
+Conflict
+Opposition, power, and conflict within the family and society are needed for society to develop and change
+Emphasizes the competing interests of familial roles including the male dominating the family and providing stability to society
+Ecological Systems
+Individuals are part of a group of concentric systems that impact their development and growth.
+Children are influenced by the people and environments in which they spend the most time,, as well as the greater social events, trends and values.
+Micro, Meso, Exo, Macro, and Chronosystems.
+Urie Bronfenbrenner developed this theory in the second half of the 20th century; he influenced the creation of HeadStart in the United States.
+Exchange (aka Social Exchange)
+Individuals have different strengths, resources and weaknesses and enter into relationships via the evaluation of benefits and costs.
+Emphasizes the motivation for familial relationships: that each person is giving and gaining within the family.
+The “breadwinner-homemaker family” is the classic example.
+Feminism (aka Feminist)
+Society is structured in a way that privileges men over women; the theory works to understand and to transform inequalities.
+This theory emphasizes the way that gender roles are constructed within the family including the socialization of children.
+Gender differences are mostly socially constructed. This theory draws on the Conflict, Exchange, and Symbolic Interaction perspectives.
+Different from the Feminist Activist movement! Read and listen carefully, so that you can distinguish it.
 Functionalism
-Functionalists view education as one of the more important social institutions in a society. They contend that
-education contributes two kinds of functions: manifest (or primary) functions, which are the intended and
-visible functions of education; and latent (or secondary) functions, which are the hidden and unintended
-functions.
-Manifest Functions
-There are several major manifest functions associated with education. The first is socialization. Beginning in
-preschool and kindergarten, students are taught to practice various societal roles. The French sociologist
-Émile Durkheim (1858–1917), who established the academic discipline of sociology, characterized schools as
-“socialization agencies that teach children how to get along with others and prepare them for adult economic
-roles” (Durkheim 1898). Indeed, it seems that schools have taken on this responsibility in full.
-This socialization also involves learning the rules and norms of the society as a whole. In the early days of
-compulsory education, students learned the dominant culture. Today, since the culture of the United States is
-increasingly diverse, students may learn a variety of cultural norms, not only that of the dominant culture.
-School systems in the United States also transmit the core values of the nation through manifest functions like
-social control. One of the roles of schools is to teach students conformity to law and respect for authority.
-Obviously, such respect, given to teachers and administrators, will help a student navigate the school
-environment. This function also prepares students to enter the workplace and the world at large, where they
-will continue to be subject to people who have authority over them. Fulfillment of this function rests primarily
-with classroom teachers and instructors who are with students all day.
-FIGURE 16.5 The teacher’s authority in the classroom is a way in which education fulfills the manifest functions of
-social control. (Credit: US Department of Education/flickr)
-Education also provides one of the major methods used by people for upward social mobility. This function is
-referred to as social placement. College and graduate schools are viewed as vehicles for moving students
-closer to the careers that will give them the financial freedom and security they seek. As a result, college
-students are often more motivated to study areas that they believe will be advantageous on the social ladder. A
-student might value business courses over a class in Victorian poetry because she sees business class as a
-476
-16 • Education
-Access for free at openstax.org.
+Social institutions function together in order to meet individual and group needs.
+The family can be seen as an institution (e.g. breadwinner-homemaker family) that contributes to a harmonious society
+Formulated originally in 19th century France, it was the dominant sociological theory in mid-20th century United States
+Hierarchy of Needs
+Individuals meet one set of needs first in order to be motivated and able to achieve other needs.
+This theory influences family life in its arrangement of what needs are most important.
+There is evidence that indigenous cultures in North America developed a hierarchy of needs earlier than the more well-known model created by Abraham Maslow.
+Life Course
+Significant social and historical events shape the trajectories of birth cohorts and the individuals in them.
+Family life is impacted by large national and international events: wars, natural disasters, pandemics, economic depressions. In particular, children and adolescents in a given cohort will be impacted by these events over time.
+Emerging Early Adulthood: the period of life when people shift into adulthood as they end their education, start a career and begin families. This period of life has become more varied and complex because of societal change.
+Do not confuse this with the Lifespan theory which has a different emphasis! Read and listen carefully, so that you can distinguish it.
+Postmodern (aka Modernity)
+Choice and individuality are emphasized in the postmodern era. Humans are able to act in the way they choose with society and within institutions.
+Individuals have a much greater choice than they did in the past about how they form their families, the roles they play and who is in their family. History, family, and tradition have decreasing roles in family life.
+Reflexivity: the way in which people take in new information, reflect upon it, and adjust and act with new knowledge
+This theory is a very broad one and applies to many aspects of work, societal, and family life. Social Theorist Anthony Giddens has written about this theory.
+Symbolic Interaction
+This theory focuses on the changing nature of symbols and the ways we interact with one another based on those symbols. Humans see themselves through the eyes of others and this affects the roles they play.
+Changing roles and symbols affect the ways family members interact with each other and with society. Societal expectations and social constructions of fathering and mothering roles have changed over time and this interacts with the way fathers and mothers actually behave.
+Interpretation of shared understandings influences how humans respond and interact.
+Has a basis in philosophy (George Herbert Mead) and in Sociology (Herbert Blumer.)
+What is a Social Problem?
+A social problem is any condition or behavior that has negative consequences for large numbers of people and that is generally recognized as a condition or behavior that needs to be addressed. This definition has both an objective component and a subjective component.
+The objective component is this: For any condition or behavior to be considered a social problem, it must have negative consequences for large numbers of people, as each chapter of this book discusses. How do we know if a social problem has negative consequences? Reasonable people can and do disagree on whether such consequences exist and, if so, on their extent and seriousness, but ordinarily a body of data accumulates—from work by academic researchers, government agencies, and other sources—that strongly points to extensive and serious consequences. The reasons for these consequences are often hotly debated, and sometimes, as we shall see in certain chapters in this book, sometimes the very existence of these consequences is disputed. A current example is climate change: Although the overwhelming majority of climate scientists say that climate change (changes in the earth’s climate due to the buildup of greenhouse gases in the atmosphere) is real and serious, fewer than two-thirds of Americans (64 percent) in a 2011 poll said they “think that global warming is happening.”
+[1]
+This type of dispute points to the subjective component of the definition of social problems: There must be a perception that a condition or behavior needs to be addressed for it to be considered a social problem. This component lies at the heart of the social constructionist view of social problems.
+[2]
+In this view, many types of negative conditions and behaviors exist. Many of these are considered sufficiently negative to acquire the status of a social problem; some do not receive this consideration and thus do not become a social problem; and some become considered a social problem only if citizens, policymakers, or other parties call attention to the condition or behavior.
+The history of attention given to rape and sexual assault in the United States before and after the 1970s provides an example of this latter situation. These acts of sexual violence against women have probably occurred from the beginning of humanity and certainly were very common in the United States before the 1970s. Thus although sexual violence existed, it was not considered a social problem.  Thanks to this focus, rape and sexual assault eventually entered the public consciousness, views of these crimes began to change, and legal policymakers began to give them more attention. In short, sexual violence against women became a social problem.
+The social constructionist view raises an interesting question: When is a social problem a social problem? According to some sociologists who adopt this view, negative conditions and behaviors are not a social problem unless they are recognized as such by policymakers, large numbers of lay citizens, or other segments of our society; these sociologists would thus say that rape and sexual assault before the 1970s were not a social problem because our society as a whole paid them little attention. Other sociologists say that negative conditions and behaviors should be considered a social problem even if they receive little or no attention; these sociologists would thus say that rape and sexual assault before the 1970s were a social problem.
+This type of debate is probably akin to the age-old question: If a tree falls in a forest and no one is there to hear it, is a sound made? As such, it is not easy to answer, but it does reinforce one of the key beliefs of the social constructionist view: Perception matters at least as much as reality, and sometimes more so. In line with this belief, social constructionism emphasizes that citizens, interest groups, policymakers, and other parties often compete to influence popular perceptions of many types of conditions and behaviors. They try to influence news media coverage and popular views of the nature and extent of any negative consequences that may be occurring, the reasons underlying the condition or behavior in question, and possible solutions to the problem.
+Social constructionism’s emphasis on perception has a provocative implication: Just as a condition or behavior may not be considered a social problem even if there is strong basis for this perception, so may a condition or behavior be considered a social problem even if there is little or no basis for this perception. The “issue” of women in college provides a historical example of this latter possibility. In the late 1800s, leading physicians and medical researchers in the United States wrote journal articles, textbooks, and newspaper columns in which they warned women not to go to college. The reason? They feared that the stress of college would disrupt women’s menstrual cycles, and they also feared that women would not do well in exams during “that time of the month.”
+[4]
+We now know better, of course, but the sexist beliefs of these writers turned the idea of women going to college into a social problem and helped to reinforce restrictions by colleges and universities on the admission of women.
+In a related dynamic, various parties can distort certain aspects of a social problem that does exist: politicians can give speeches, the news media can use scary headlines and heavy coverage to capture readers’ or viewers’ interest, businesses can use advertising and influence news coverage. News media coverage of violent crime provides many examples of this dynamic.
+[5]
+[6]
+The news media overdramatize violent crime, which is far less common than property crime like burglary and larceny, by featuring so many stories about it, and this coverage contributes to public fear of crime. Media stories about violent crime also tend to be more common when the accused offender is Black and the victim is White and when the offender is a juvenile. This type of coverage is thought to heighten the public’s
+prejudice
+toward African Americans and to contribute to negative views about teenagers.
+The Sociological Imagination
+Many individuals experience one or more social problems personally. For example, many people are poor and unemployed, many are in poo
 
-stronger vehicle for financial success.
-Latent Functions
-Education also fulfills latent functions. As you well know, much goes on in a school that has little to do with
-formal education. For example, you might notice an attractive fellow student when he gives a particularly
-interesting answer in class—catching up with him and making a date speaks to the latent function of courtship
-fulfilled by exposure to a peer group in the educational setting.
-The educational setting introduces students to social networks that might last for years and can help people
-find jobs after their schooling is complete. Of course, with social media such as Facebook and LinkedIn, these
-networks are easier than ever to maintain. Another latent function is the ability to work with others in small
-groups, a skill that is transferable to a workplace and that might not be learned in a homeschool setting.
-The educational system, especially as experienced on university campuses, has traditionally provided a place
-for students to learn about various social issues. There is ample opportunity for social and political advocacy,
-as well as the ability to develop tolerance to the many views represented on campus. In 2011, the Occupy Wall
-Street movement swept across college campuses all over the United States, leading to demonstrations in which
-diverse groups of students were unified with the purpose of changing the political climate of the country.
-Manifest Functions: Openly stated functions
-with intended goals
-Latent Functions: Hidden, unstated functions with
-sometimes unintended consequences
-Socialization
-Courtship
-Transmission of culture
-Social networks
-Social control
-Group work
-Social placement
-Creation of generation gap
-Cultural innovation
-Political and social integration
-TABLE 16.2 Manifest and Latent Functions of Education According to functionalist theory, education contributes
-both manifest and latent functions.
-Functionalists recognize other ways that schools educate and enculturate students. One of the most important
-U.S. values students in the United States learn is that of individualism—the valuing of the individual over the
-value of groups or society as a whole. In countries such as Japan and China, where the good of the group is
-valued over the rights of the individual, students do not learn as they do in the United States that the highest
-rewards go to the “best” individual in academics as well as athletics. One of the roles of schools in the United
-States is fostering self-esteem; conversely, schools in Japan focus on fostering social esteem—the honoring of
-the group over the individual.
-In the United States, schools also fill the role of preparing students for competition in life. Obviously, athletics
-foster a competitive nature, but even in the classroom students compete against one another academically.
-Schools also fill the role of teaching patriotism. Students recite the Pledge of Allegiance each morning and take
-history classes where they learn about national heroes and the nation’s past.
-16.2 • Theoretical Perspectives on Education
-477
+## Match 1.54 — LibreTexts: 3.6: Winning Combo - Content, Marketing, and Measurement - The "See, Think, Do, Care" Framework
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Bookshelves/Marketing/Intro_to_Social_Media_(Lawson)/03%3A_Social_Media_101/3.06%3A_Winning_Combo_-_Content_Marketing_and_Measurement_-_The_See_Think_Do_Care_Framework
 
-FIGURE 16.6 Starting each day with the Pledge of Allegiance is one way in which students are taught patriotism.
-According to a number of court rulings, students in the United States cannot be compelled to recite or salute during
-the Pledge. (Credit: SC National Guard/flickr)
-Another role of schools, according to functionalist theory, is that of sorting, or classifying students based on
-academic merit or potential. The most capable students are identified early in schools through testing and
-classroom achievements. Such students are placed in accelerated programs in anticipation of successful
-college attendance.
-Functionalists also contend that school, particularly in recent years, is taking over some of the functions that
-were traditionally undertaken by family. Society relies on schools to teach about human sexuality as well as
-basic skills such as budgeting and job applications—topics that at one time were addressed by the family.
-Conflict Theory
-Conflict theorists do not believe that public schools reduce social inequality. Rather, they believe that the
-educational system reinforces and perpetuates social inequalities that arise from differences in class, gender,
-race, and ethnicity. Where functionalists see education as serving a beneficial role, conflict theorists view it
-more negatively. To them, educational systems preserve the status quo and push people of lower status into
-obedience.
-478
-16 • Education
-Access for free at openstax.org.
-
-FIGURE 16.7 Conflict theorists see the education system as a means by which those in power stay in power.
-(Credit: Thomas Ricker/flickr)
-The fulfillment of one’s education is closely linked to social class. Students of low socioeconomic status are
-generally not afforded the same opportunities as students of higher status, no matter how great their academic
-ability or desire to learn. Picture a student from a working-class home who wants to do well in school. On a
-Monday, he’s assigned a paper that’s due Friday. Monday evening, he has to babysit his younger sister while his
-divorced mother works. Tuesday and Wednesday, he works stocking shelves after school until 10:00 p.m. By
-Thursday, the only day he might have available to work on that assignment, he’s so exhausted he can’t bring
-himself to start the paper. His mother, though she’d like to help him, is so tired herself that she isn’t able to give
-him the encouragement or support he needs. And since English is her second language, she has difficulty with
-some of his educational materials. They also lack a computer and printer at home, which most of his
-classmates have, so they have to rely on the public library or school system for access to technology. As this
-story shows, many students from working-class families have to contend with helping out at home,
-contributing financially to the family, poor study environments and a lack of support from their families. This
-is a difficult match with education systems that adhere to a traditional curriculum that is more easily
-understood and completed by students of higher social classes.
-Such a situation leads to social class reproduction, extensively studied by French sociologist Pierre Bourdieu.
-He researched how cultural capital, or cultural knowledge that serves (metaphorically) as currency that helps
-us navigate a culture, alters the experiences and opportunities available to French students from different
-social classes. Members of the upper and middle classes have more cultural capital than do families of lower-
-class status. As a result, the educational system maintains a cycle in which the dominant culture’s values are
-rewarded. Instruction and tests cater to the dominant culture and leave others struggling to identify with
-values and competencies outside their social class. For example, there has been a great deal of discussion over
-what standardized tests such as the SAT truly measure. Many argue that the tests group students by cultural
-ability rather than by natural intelligence.
-The cycle of rewarding those who possess cultural capital is found in formal educational curricula as well as in
-the hidden curriculum, which refers to the type of nonacademic knowledge that students learn through
-informal learning and cultural transmission. This hidden curriculum reinforces the positions of those with
-higher cultural capital and serves to bestow status unequally.
-Conflict theorists point to tracking, a formalized sorting system that places students on “tracks” (advanced
-versus low achievers) that perpetuate inequalities. While educators may believe that students do better in
-tracked classes because they are with students of similar ability and may have access to more individual
-16.2 • Theoretical Perspectives on Education
-479
-
-attention from teachers, conflict theorists feel that tracking leads to self-fulfilling prophecies in which students
-live up (or down) to teacher and societal expectations (Education Week 2004).
-To conflict theorists, schools play the role of training working-class students to accept and retain their position
-as lower members of society. They argue that this role is fulfilled through the disparity of resources available to
-students in richer and poorer neighborhoods as well as through testing (Lauen and Tyson 2008).
-IQ tests have been attacked for being biased—for testing cultural knowledge rather than actual intelligence. For
-example, a test item may ask students what instruments belong in an orchestra. To correctly answer this
-question requires certain cultural knowledge—knowledge most often held by more affluent people who
-typically have more exposure to orchestral music. Though experts in testing claim that bias has been
-eliminated from tests, conflict theorists maintain that this is impossible. These tests, to conflict theorists, are
-another way in which education does not provide opportunities, but instead maintains an established
-configuration of power.
-Feminist Theory
-Feminist theory aims to understand the mechanisms and roots of gender inequality in education, as well as
-their societal repercussions. Like many other institutions of society, educational systems are characterized by
-unequal treatment and opportunity for women. Almost two-thirds of the world’s 862 million illiterate people
-are women, and the illiteracy rate among women is expected to increase in many regions, especially in several
-African and Asian countries (UNESCO 2005; World Bank 2007).
-Women in the United States have been relatively late, historically speaking, to be granted entry to the public
-university system. In fact, it wasn’t until the establishment of Title IX of the Education Amendments in 1972
-that discriminating on the basis of sex in U.S. education programs became illegal. In the United States, there is
-also a post-education gender disparity between what male and female college graduates earn. A study released
-in May 2011 showed that, among men and women who graduated from college between 2006 and 2010, men
-out-earned women by an average of more than $5,000 each year. First-year job earnings for men averaged
-$33,150; for women the average was $28,000 (Godofsky, Zukin, and van Horn 2011). Similar trends are seen
-among salaries of professionals in virtually all industries.
-When women face limited opportunities for education
-
-## Match 1.53 — Business_Law_I_Essentials_-_WEB § 14.2 The Framework of Securities Regulation
-
-Introduction
-Learning Outcome
-•
-Describe the Securities Exchange Act of 1934 and its impact on business.
-14.1
-Liability Under the Securities Act
-As explained in the previous section, many companies were initially irritated by the creation of the Securities
-Exchange Act of 1934, as it created a myriad of legal responsibilities and potential liabilities that impacted their
-business models. Companies came to recognize that they needed legal counsel and internal systems in place
-to ensure that they were in compliance. The liabilities for not complying with the Securities and Exchange Act
-of 1934 include not only monetary fines, but also civil penalties, and in some cases, criminal proceedings.
-Insider trading is one violation that can result in criminal charges.
-Insider Trading
-While laws vary from country to country, insider trading can be understood by what the SEC defines as the
-“buying or selling a security, in breach of a fiduciary duty or other relationship of trust and confidence, on the
-basis of material, nonpublic information about the security.” The word fiduciary comes from the Latin word
-Figure 14.1 (Credit: Sam Valadi/ flickr/ Attribution 2.0 Generic (CC BY 2.0))
-14
-Securities Regulation
-
-for trust and refers to someone who is charged with the responsibility to act in the best interest of the other
-party. In the case of businesses, fiduciaries are expected to act in the best interests of their investors.
-However, they are often aware of information that the public is not. This knowledge has important
-implications as addressed by Section 10(b) and Rule 10b-5 of the Securities Exchange Act of 1934, which
-prohibits the purchase or sale of securities on the basis of "material nonpublic information,"; meaning
-information of any kind that would impact the market price of securities that has not been disclosed to the
-public, i.e., insider information. The directors, large shareholders, and officers of companies frequently have
-access to nonpublic information that could affect the future value of a security. While an individual, as
-opposed to an entire company, is often charged as an insider trader, such charges can affect the entire
-company’s reputation, putting it in a negative light and eroding investor trust.
-One instance of insider trading that received widespread media attention involved Martha Stewart, who in
-2003 became the subject of legal scrutiny after selling her shares in the pharmaceutical company ImClone.
-Following the advice of her broker, David Bacanovic, Stewart sold all of her shares of ImClone before it lost 16
-percent of its value. Bacanovic represented ImClone CEO Sam Waksal, who was selling $5 million of his
-ImClone shares. While Bacanovic claimed he did not know why, he shared this information with Stewart. As it
-turned out, the FDA had not approved ImClone’s primary pharmaceutical product, Erbitux, which was a
-setback that only insiders were privy to. Stewart avoided a $45,673 loss by selling her shares before the public
-announcement. Even though Stewart may not have known exactly why ImClone would go down in value, the
-court decided that her decision to act upon her broker’s suggestion constituted a wrongdoing. Stewart’s role
-as a public figure was also relevant to this decision, as explained by SEC’s Director of Enforcement Stephen M.
-Cutler, who said, “It is fundamentally unfair for someone to have an edge on the market just because she has
-a stockbroker who is willing to break the rules and give her an illegal tip. It’s worse still when the individual
-engaging in the insider trading is the Chairman and CEO of a public company.”
-Figure 14.2
-Insider trading can result in criminal conviction and possibly jail time. (Credit: Suzy Hazelwood/
-pexels/ License: CC0)
-Insider trading is not always illegal. In certain instances, individuals in possession of insider knowledge can
-disclose their trading activity to the SEC. However, disclosure alone is not enough to make trading on the basis
-of insider information legally acceptable. Another instance in which the officers of publicly held companies can
-152
-Chapter 14 Securities Regulation
-This OpenStax book is available for free at http://cnx.org/content/col30149/1.5
-
-legally transact securities involves pre-arranged trading plans. For example, SEC Rule 10b5-1 permits
-executives at public companies to transact securities so long as it is arranged in good faith beforehand to take
-place on certain predetermined future dates and involves pre-set amounts. So long as these criteria are
-followed, they are granted safe harbor. Safe harbor, in this context, refers to exemption from insider trading
-charges for compliant pre-arranged equity trades.
-Schedule 13D
-In 1968, the Williams Act amended the Securities Exchange Act of 1934 so that investors could have advance
-warning of possible corporate takeovers. If someone (individual/corporation) becomes the beneficial owner
-of more than 5% of a company’s stock, that entity must file a Schedule 13D with the SEC within 10 days of
-purchase. A beneficial owner is anyone with “voting and investment power over their shares.” There are a few
-exceptions that apply, such as qualified institutional investors—large investors who are deemed to have
-sophisticated knowledge of securities such that they do not need the same level of protection as general
-investors. Insurance companies, state employee benefits plans, and investment companies are examples of
-qualified institutional investors who are allowed to report their holdings at the end of the calendar year.
-Insider Transactions
-Corporate insiders are those officers, directors, and beneficial owners who own more than 10% of a class of
-securities, registered under Section 12 of the Securities Exchange Act of 1934. Corporate insiders must file a
-statement of ownership with the SEC to be in compliance, and as of August 27, 2002, the SEC implemented
-new rules that shortened the time period to report insider transactions. It is important for a company to have
-internal controls and a system to ensure their corporate insiders are reporting their trades in a timely fashion.
-Companies that do not implement and enforce compliance procedures can become liable for the actions of
-their employees who fail to follow the law.
-Reporting Requirements
-Publicly owned companies that meet certain size requirements are called reporting companies, and per
-Section 13(a) of the Securities Exchange Act of 1934, they must file periodic disclosures. The purpose of these
-disclosures is to help investors make educated decisions regarding how to invest their money. These reports
-include information about a company’s line of business, corporate officers and directors, and financial
-statements.
-•
-Form 10-K. Form 10-K, also known as the annual report, contains audited financial statements. Audited
-financial statements have been reviewed by one or more CPAs who are not affiliated with the company
-and who provide an objective opinion about whether or not the financial statements, such as the balance
-sheet, income statement, statement of changes to retained earnings, and cash flow statement, conform
-with accounting standards known as the Generally Accepted Accounting Principles (GAAP). When the
-Securities Exchange Act of 1934 was first passed, most companies’ annual reports contained only the bare
-minimum amount of information. However, over time, companies came to view their annual reports as a
-way to not only comply with SEC requirements, but also to attract new investors and impress securities
-analysts, or financial professionals who study various industries to make recommendations on whether a
-security should be bought, held, or sold. Today, many annual reports contain not only the required facts,
-Chapter 14 Securities Regulation
-153
-
-but also compelling narratives that detail the company’s mission and strategic goals. The annual reports
-of certain companies—for example, Berkshire Hathaway, written by Warren Buffett and Charlie
-Munger—provide not only their opinions on their own operations, known as the management
-discussion, but also their thoughts on the economy overall. The Form 10-K is a large responsibility for a
-company because it must disclose the company’s analysis of its financial conditions, potential market
-risks, internal controls, legal proceedings, defaults, and other information that is deemed important for
-investors to make sound investment decisions.
-•
-Form 10-Q. Form 10-Qs are quarterly unaudited financial statements that contain financial information.
-Since they are unaudited, they are less expensive and time-consuming for the company to prepare;
-however, investors do not have the additional assurance that they have been analyzed by a neutral CPA.
-•
-Form 8-K. Certain events require the company to file a Form 8-K, such as a change in the company’s
-officers, mergers, or declarations of bankruptcy. These are required to be filed within four business days
-with the SEC.
-•
-Proxy Statements. Proxy statements are documents that the SEC requires that shareholders of
-companies with securities registered under Section 12 of the Securities Exchange Act of 1934 receive to
-allow them to vote on issues that will be decided at a stockholder meeting. This process is commonly
-applied when voting for directors or deciding corporate actions. Even shareholders who own just one
-share of a company receive proxy statements; thus, the process of sending out these statements is a
-large undertaking for companies. While some companies still use the mail to deliver proxy statements,
-others send a “Notice of Internet Availability of Proxy Materials” to shareholders a minimum of 40 days
-before the shareholders’ meeting.
-Ongoing Responsibilities
-Businesses must stay current with changes in securities laws that impact their liabilities and responsibilities.
-The Exchange Act allows the SEC to make new laws, like it did in 2000 with Regulation FD, which stands for “fair
-disclosure”. In 2013, the SEC started to allow the use of social media channels, in certain circumstances, as a
-means of distributing information to shareholders.
-Summary
-These two sections have provided an overview of some of the most important points of the Securities
-Exchange Act of 1934. Considering the sheer number of exceptions and complexities, coupled with today’s
-rapidly changing technological and political climates, a successful company needs competent legal counsel to
-help it navigate the compliance requirements of the SEC. While certain illegal actions can be due to malicious
-intent, such as insider trading, this situation is not always the case; a corporate insider can fail to comply
-simply because he or she is not aware of the nuances of the law.
-14.2
-The Framework of Securities Regulation
-The Securities Exchange Act of 1934
-In 1929, the United States stock market crashed and lost $25 billion, which would be approximately $319 billion
-today. The Stock Market crash of 1929 was one cause of the American Great Depression of the 1930s, which
-caused the failure of nearly half of American banks and created unemployment rates of almost 25 percent by
-154
-Chapter 14 Securities Regulation
-This OpenStax book is available for free at http://cnx.org/content/col30149/1.5
-
-1933. These dire economic conditions created the need for breadlines, quite literally, hungry people who
-waited in line at charitable and government organizations for loaves of bread, and shanty towns, or areas
-where families who had lost their homes lived in cloistered tents on the outskirts of cities. Farmers could not
-even afford to harvest their crops.
-Figure 14.3
-Florence Owens Thompson and her children were living on frozen vegetables and birds they
-killed in this famous photograph taken in 1936 in California. (Credit: Dorothea Lange/ wikimedia/ License:
-Public Domain)
-It was amid this social and economic unrest that Congress passed the Securities Exchange Act of 1934. Signed
-by President Franklin D. Roosevelt, the Securities Exchange Act of 1934 recognized that the stock market crash
-of 1929 was caused by wild speculation, large and sudden fluctuations, and manipulations involving securities.
-An article in the 1934 California Law Review described the condition of the market at the time by writing,
-Chapter 14 Securities Regulation
-155
-
-“Artificial prices of securities were the rule rather than the exception.… The result was vast economic power,
-with all that implies in a democracy, in the hand of men whose ethical standards were substantially those of
-gangsters.”
-Roosevelt wanted to enact legislature to try to prevent this wild speculation in securities from happening again
-and to restore the public’s faith. He recognized that stock market crashes would not only destroy wealth in
-securities markets, but they were also instrumental to the financial security of the nation as a whole. The
-passing of the Security Exchange Act of 1934 was not only a reaction to the market crash, but it also
-represented a broad shift in the social and economic paradigms and legal frameworks of the United States.
-Previously, the United States had largely followed a laissez-faire economic policy. Laissez faire, as popularized
-by Scottish economist Adam Smith and British philosopher Herbert Spencer, describes an economic
-philosophy that markets function best when left to their own devices, i.e., without, or with minimal,
-government involvement or regulations. The rejection of laissez faire was part of a larger social shift that
-opposed the long hours, unsafe working conditions, and child labor that had become commonplace as a result
-of the Industrial Revolution.
-The SEC
-Section 4 of the Securities Exchange Act of 1934 created the Securities and Exchange Commission (SEC) to
-enforce its ongoing mission. The SEC is an independent agency of the United States federal government. It
-regulates securities laws and regulations. The first chairperson of the SEC was Joseph P. Kennedy, the father of
-President John F. Kennedy. The SEC i
-
-## Match 1.53 — IntroductiontoSociology3e-WEB_9QTqRGQ § 11.2 Theoretical Perspectives on Race and Ethnicity
-
-LEARNING OBJECTIVES
-By the end of this section, you should be able to:
-•
-Describe how major sociological perspectives view race and ethnicity
-•
-Identify examples of culture of prejudice
-Theoretical Perspectives on Race and Ethnicity
-We can examine race and ethnicity through three major sociological perspectives: functionalism, conflict
-theory, and symbolic interactionism. As you read through these theories, ask yourself which one makes the
-most sense and why.
-Functionalism
-Functionalism emphasizes that all the elements of society have functions that promote solidarity and maintain
-order and stability in society. Hence, we can observe people from various racial and ethnic backgrounds
-interacting harmoniously in a state of social balance. Problems arise when one or more racial or ethnic groups
-experience inequalities and discriminations. This creates tension and conflict resulting in temporary
-dysfunction of the social system. For example, the killing of a Black man George Floyd by a White police officer
-in 2020 stirred up protests demanding racial justice and changes in policing in the United States. To restore
-the society’s pre-disturbed state or to seek a new equilibrium, the police department and various parts of the
-system require changes and compensatory adjustments.
-Another way to apply the functionalist perspective to race and ethnicity is to discuss the way racism can
-contribute positively to the functioning of society by strengthening bonds between in-group members through
-the ostracism of out-group members. Consider how a community might increase solidarity by refusing to allow
-outsiders access. On the other hand, Rose (1951) suggested that dysfunctions associated with racism include
-the failure to take advantage of talent in the subjugated group, and that society must divert from other
-purposes the time and effort needed to maintain artificially constructed racial boundaries. Consider how
-much money, time, and effort went toward maintaining separate and unequal educational systems prior to the
-civil rights movement.
-In the view of functionalism, racial and ethnic inequalities must have served an important function in order to
-exist as long as they have. This concept, sometimes, can be problematic. How can racism and discrimination
-contribute positively to society? Nash (1964) focused his argument on the way racism is functional for the
-dominant group, for example, suggesting that racism morally justifies a racially unequal society. Consider the
-way slave owners justified slavery in the antebellum South, by suggesting Black people were fundamentally
-inferior to White and preferred slavery to freedom.
-Interactionism
-For symbolic interactionists, race and ethnicity provide strong symbols as sources of identity. In fact, some
-interactionists propose that the symbols of race, not race itself, are what lead to racism. Famed Interactionist
-Herbert Blumer (1958) suggested that racial prejudice is formed through interactions between members of the
-dominant group: Without these interactions, individuals in the dominant group would not hold racist views.
-These interactions contribute to an abstract picture of the subordinate group that allows the dominant group
-to support its view of the subordinate group, and thus maintains the status quo. An example of this might be an
-individual whose beliefs about a particular group are based on images conveyed in popular media, and those
-are unquestionably believed because the individual has never personally met a member of that group.
-Another way to apply the interactionist perspective is to look at how people define their races and the race of
-others. Some people who claim a White identity have a greater amount of skin pigmentation than some people
-who claim a Black identity; how did they come to define themselves as Black or White?
-294
-11 • Race and Ethnicity
-Access for free at openstax.org.
-
-Conflict Theory
-Conflict theories are often applied to inequalities of gender, social class, education, race, and ethnicity. A
-conflict theory perspective of U.S. history would examine the numerous past and current struggles between
-the White ruling class and racial and ethnic minorities, noting specific conflicts that have arisen when the
-dominant group perceived a threat from the minority group. In the late nineteenth century, the rising power of
-Black Americans after the Civil War resulted in draconian Jim Crow laws that severely limited Black political
-and social power. For example, Vivien Thomas (1910–1985), the Black surgical technician who helped develop
-the groundbreaking surgical technique that saves the lives of “blue babies” was classified as a janitor for many
-years, and paid as such, despite the fact that he was conducting complicated surgical experiments. The years
-since the Civil War have showed a pattern of attempted disenfranchisement, with gerrymandering and voter
-suppression efforts aimed at predominantly minority neighborhoods.
-Intersection Theory
-Feminist sociologist Patricia Hill Collins (1990) further developed intersection theory, originally articulated in
-1989 by Kimberlé Crenshaw, which suggests we cannot separate the effects of race, class, gender, sexual
-orientation, and other attributes (Figure 11.4). When we examine race and how it can bring us both advantages
-and disadvantages, it is important to acknowledge that the way we experience race is shaped, for example, by
-our gender and class. Multiple layers of disadvantage intersect to create the way we experience race. For
-example, if we want to understand prejudice, we must understand that the prejudice focused on a White
-woman because of her gender is very different from the layered prejudice focused on an Asian woman in
-poverty, who is affected by stereotypes related to being poor, being a woman, and her ethnic status.
-FIGURE 11.3 Our identities are formed by dozens of factors, sometimes represented in intersection wheels.
-11.2 • Theoretical Perspectives on Race and Ethnicity
-295
-
-Consider the subset of identity elements represented here. Generally, the outer ring contains elements that may
-change relatively often, while the elements in the inner circle are often considered more permanent. (There are
-certainly exceptions.) How does each contribute to who you are, and how would possible change alter your self-
-defined identity?
-Culture of Prejudice
-Culture of prejudice refers to the theory that prejudice is embedded in our culture. We grow up surrounded by
-images of stereotypes and casual expressions of racism and prejudice. Consider the casually racist imagery on
-grocery store shelves or the stereotypes that fill popular movies and advertisements. It is easy to see how
-someone living in the Northeastern United States, who may know no Mexican Americans personally, might
-gain a stereotyped impression from such sources as Speedy Gonzalez or Taco Bell’s talking Chihuahua.
-Because we are all exposed to these images and thoughts, it is impossible to know to what extent they have
-influenced our thought processes.
+3.6: Winning Combo - Content, Marketing, and Measurement - The "See, Think, Do, Care" Framework
+Introducing Avinash Kaushik’s “See, Think, Do, Care” framework – a snappy, innovative strategy to understand your customer’s journey and align it with your social and digital content. Imagine it as a cycle that your customers are constantly flowing through, with each stage reflecting a different state of mind, a different need, a different level of engagement.
+Here’s a brief rundown
+See: This is the largest possible audience, all the folks out there who could potentially be interested in your products or services. They may not know they need your product yet, but we’re trying to catch their eye.
+Think: This is a subset of the “See” crowd. These are the people who are actively thinking about a product or service like yours, but haven’t quite made the decision to purchase yet.
+Do: Now we’re getting into serious territory. This group is smaller still, made up of people who are ready to make a move. They’re ready to buy, subscribe, download, you name it.
+Care: This last group is the cream of the crop. These are your most loyal customers. They’ve bought, they’re happy, and they’re likely to do it again. Not only that, but they’re also likely to tell their friends about how great you are.
+Now, how do we tackle content for each of these stages? This is where the fun begins. Each stage requires a different approach.
+See-Think-Do-Care framework for Social Media Content
+The beauty of the See-Think-Do-Care framework lies in its versatility and applicability to virtually any content marketing strategy, including social media. It provides a clear roadmap to content creation, helping you address the unique needs of audiences at different stages in their customer journey. Let’s break down how to use it in your social media strategy:
+See: At this stage, your aim is to raise awareness and attract potential customers. Content here should be engaging, informative, and shareable, but it doesn’t need to directly promote your product or service. Think of blog posts, infographics, and videos that answer common questions or solve problems in your industry. Share this content on your social platforms to attract a broad audience, gain followers, and build your brand reputation.
+Think: Here, your audience is contemplating their options. They’re aware of their needs and are actively seeking solutions. Your social media content should guide them towards your offerings without being overly promotional. Case studies, customer testimonials, product comparison posts, and ‘how-to’ content that features your product or service can be effective here. This type of content can help sway their opinion in your favor and push them further down the funnel.
+Do: At this stage, your audience is ready to take action. They’ve done their research, they’ve weighed their options, and they’re ready to make a decision. The content here should be targeted, direct, and persuasive, with clear calls to action. Offer exclusive discounts, highlight the unique selling points of your product or service, share product demos, or promote free trials.
+Care: This stage is all about nurturing and retaining your existing customers. Engage with your loyal customers on social media by sharing user-generated content, offering exclusive promotions or sneak peeks at new products, and asking for their input on upcoming features or products. Your goal here is to keep them interested and engaged with your brand, transforming them into brand advocates.
+By understanding and implementing the See-Think-Do-Care framework, you can ensure that your social media content marketing is hitting all the necessary touchpoints, effectively guiding your audience from awareness to conversion, and beyond.
+Query \(\PageIndex{1}\)

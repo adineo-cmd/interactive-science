@@ -18,7 +18,7 @@ This script:
 
 Usage:  python3 pipeline/build_source_packs.py [--subject physics] [--tier foundational] [--limit N]
 """
-import glob, json, math, os, re, sys
+import glob, json, math, os, pickle, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "astro-website")
@@ -105,6 +105,12 @@ def main():
     nsec = sum(len(s) for s in library.values())
     print(f"parsed {len(library)} books, {nsec} sections total")
 
+    LT_KW = os.path.join(ROOT, "pipeline", "libretexts-kw.pkl")
+    LT_PAGES = os.path.join(ROOT, "books", "hf", "libretexts", "pages.jsonl")
+    lt = pickle.load(open(LT_KW, "rb")) if os.path.exists(LT_KW) else []
+    if lt:
+        print(f"LibreTexts index: {len(lt)} pages")
+
     # pre-compute per-section keyword sets once (the scan is repeated per lesson)
     body_cache = {}
     title_cache = {}
@@ -160,23 +166,63 @@ def main():
                 s = 2.0 * tsec + 1.0 * tbody + 0.5 * cos
                 if s > 0:
                     scored.append((s, book, no, stitle))
+        for e in lt:
+            bkw = e["body_kw"]
+            if not title_kw or not bkw:
+                continue
+            tsec = len(title_kw & e["title_kw"]) / max(1, len(title_kw))
+            tbody = len(title_kw & bkw) / max(1, len(title_kw))
+            cos = 0.0
+            if summary_kw and bkw:
+                cos = len(summary_kw & bkw) / math.sqrt(len(summary_kw) * len(bkw))
+            s = 2.0 * tsec + 1.0 * tbody + 0.5 * cos
+            if s > 0:
+                scored.append((s, "LT", e["line"], e["title"]))
         scored.sort(reverse=True)
         top = scored[:3]
+        low = False
         if not top or top[0][0] < 0.6:
-            nocover += 1
-            continue
+            top = [x for x in scored if x[0] >= 0.25][:3]
+            if not top:
+                nocover += 1
+                continue
+            low = True
         lvl = topic.get("level", "?") if topic else "?"
         out = [f"# Source pack — {slug}",
                f"Lesson title: {title}",
                f"Level: {lvl}",
-               f"Match confidence: {top[0][0]:.2f}",
+               f"Match confidence: {top[0][0]:.2f}" + ("  [LOW — lean on AI generation for structure, verify every fact]" if low else ""),
                "",
                ATTRIBUTION,
                ""]
+        seen_titles = set()
+        shown = 0
         for s, book, no, stitle in top:
-            body = library[book][no][1]
-            out += [f"## Match {s:.2f} — {book} § {no} {stitle}", "",
-                    body[:14000], ""]
+            key = re.sub(r"[^a-z0-9]", "", stitle.lower())[:40]
+            if key in seen_titles:
+                continue
+            seen_titles.add(key)
+            shown += 1
+            if book == "LT":
+                rec = None
+                with open(LT_PAGES, encoding="utf-8") as pf:
+                    for i, pl in enumerate(pf, 1):
+                        if i == no:
+                            rec = json.loads(pl)
+                            break
+                if not rec:
+                    continue
+                lic = rec.get("license") or "CC BY"
+                out += [f"## Match {s:.2f} — LibreTexts: {stitle}",
+                        f"License: {lic} · {rec.get('url','')}",
+                        "",
+                        rec.get("text", "")[:14000], ""]
+            else:
+                body = library[book][no][1]
+                out += [f"## Match {s:.2f} — {book} § {no} {stitle}", "",
+                        body[:14000], ""]
+            if shown >= 3:
+                break
         pack_path = os.path.join(PACKS, slug.replace("/", "__") + ".md")
         open(pack_path, "w", encoding="utf-8").write("\n".join(out))
         built += 1

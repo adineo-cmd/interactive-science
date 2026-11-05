@@ -1,1101 +1,218 @@
 # Source pack — subjects/nursing/foundational/the-sciences-behind-nursing
 Lesson title: The Sciences Behind Nursing
 Level: foundational
-Match confidence: 0.69
+Match confidence: 1.37
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 0.69 — APBiology-OP_5meoFaG § 24.3 Homeostasis
+## Match 1.37 — LibreTexts: 36.1: Appendix B- Community/Public Health Nursing [C/PHN] Competencies
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Population_Health_for_Nurses_(OpenStax)/36%3A_Appendix/36.01%3A_Appendix_B-_Community_Public_Health_Nursing_C_PHN_Competencies
 
-Homeostasis is a dynamic equilibrium that is maintained in body tissues and organs. It is dynamic because it is constantly
-adjusting to the changes that the systems encounter. It is in equilibrium because body functions are kept within a normal
-range, with some fluctuations around a set point for the processes.
-REVIEW QUESTIONS
-1. The pleural cavity is part of which cavity?
-a.
-dorsal
-b.
-thoracic
-c.
-abdominal
-d.
-pericardial
-2. A plane that divides an animal into dorsal and ventral
-portions is the ____ plane.
-a.
-sagittal
-b.
-midsagittal
-c.
-frontal
-d.
-transverse
-3. What is the term for a hard covering or shell that
-provides protection and muscle attachment?
-a.
-apodeme
-b.
-fusiform
-c.
-exoskeleton
-d.
-endotherm
-4. Which organism has a fusiform shape?
-a.
-elephant
-b.
-dolphin
-c.
-spider
-d.
-human
-Chapter 24 | The Animal Body: Basic Form and Function
-1047
+36.1: Appendix B- Community/Public Health Nursing [C/PHN] Competencies
+The core competencies of public health nursing are defined as the fundamental knowledge, skills, and attitudes that a person holds that allow for growth and success and guide all public health professionals. The definition and practice of public health nursing were updated in 2013 to address the evolving trends in the U.S. economy as well as the changing landscape of health practices, politics, and society.
+According to public health professionals, the key elements of public health nursing practice include a focus on population-based health care needs with attention to many of the social determinants of health (SDOH), a comprehensive and systematic approach to assess populations with an emphasis on preventative strategies, and key interventions at the level of individuals, families, communities, countries, and across the globe.
+American Association of Colleges of Nursing
+The American Association of Colleges of Nursing (AACN) defines a population as a “discrete group that the nurse and others care for across settings at local, regional, national, and global levels.”
+The AACN defines nursing competencies for managing the health of populations at the level of the entry-level nurse as well as for advanced practice nurses, called The Essentials.
+American Nurses Association
+The American Nurses Association (ANA) has defined the scope and standards for public health nursing. The ANA has published the third edition of its scope and standards for public health nursing, available for purchase at this link.
+American Public Health Association
+The American Public Health Association defines public health practice and public health nursing in its official statement.
+Quad Council Coalition of Public Health Organizations
+The Quad Council Coalition of Public Health Organizations was founded in 1988 to provide a united voice for the specialty of public health nursing practice. The coalition represents the joint efforts of the Alliance of Nurses for Healthy Environments (AHNE), the Association of Community Health Nursing Educators (ACHNE), the Association of Public Health Nurses (APHN), and the American Public Health Association – Public Health Nursing Section (APHA-PHN).
+A thorough description of the Quad Council Coalition competencies is available at Quad Council Coalition Competency Review Task Force (2018) Community/Public Health Nursing Competencies .
+These competencies are defined as the combination of observable and measurable knowledge, skills, abilities, and personal attributes that contribute to enhanced employee performance and ultimately result in organizational success. Core competencies are detailed in three tiers.
+- Tier 1 competencies are those performed by the generalist public health nurse.
+- Tier 2 competencies apply to public health nurses involved in management activities.
+- Tier 3 competencies apply to public health nurses in executive or senior management roles.
+The core competencies are described by the Quad Council within the following eight domains:
+- Assessment and analytic skills
+- Policy development/program planning skills
+- Communication skills
+- Cultural competency skills
+- Community dimensions of practice skills
+- Public health sciences skills
+- Financial planning
+- Evaluation and management skills
+- Leadership and systems thinking skills
+For example, assessment and analytic skills are included as competencies in domain 1 for the entry-level public nurse and include the following:
+1A1: Assessing the health status and health literacy of individuals and families, including determinants of health, using multiple sources of data.
+1A2a: Use of an ecological perspective and epidemiological data to identify health risks for a population.
+1A2b. Identifying individual and family assets, needs, values, beliefs, resources and relevant environmental factors.
+1A3. Selecting variables that measure health and public health conditions.
+1A4. Using a data collection plan that incorporates valid and reliable methods and instruments for collection of qualitative and quantitative data to inform the service for individuals, families, and a community.
+1A5. Interpreting valid and reliable data that impacts the health of individuals, families, and communities to make comparisons that are understandable to all who were involved in the assessment process.
+The Council on Linkages between Academia and Public Health Practice
+The Council on Linkages between Academia and Public Health Practice is a collaborative formed by 24 national organizations, including the American Nursing Association (ANA). This council developed core competencies for public health professionals in 2021. The core competencies were developed in eight domains that include specific responsibilities at three levels: front line, program management, and senior management. Complete mapping of these competencies is available at this link . The eight domains are as follows:
+- Data Analytics and Assessment Skills
+- Policy Development and Program Planning Skills
+- Communication Skills
+- Health Equity Skills
+- Community Partnership Skills
+- Public Health Sciences Skills
+- Management and Finance Skills
+- Leadership and Systems Thinking Skills
+For public health nurses seeking to build their competencies through graduate education with a master’s degree, this link provides important considerations regarding the roles and competencies of the public health practitioner, a public health physician, and a public health nurse.
+Community-Based Participatory Research: In order to engage and collaborate with communities, specific competencies include the following (adapted from www.ncbi.nlm.nih.gov/pmc/articles/PMC9219558/):
+-
+Involving community partners as members of the research team when identifying the research problem
+- For example, public health nurses may request discussion of a health concern at a city chamber of commerce meeting.
+-
+Collaborating with the community during the creation of a study design as well as implementation to ensure accordance with local values and challenges
+- When planning to assess a community, respected local leaders in the community can provide clarity in how to best access individuals, families, and sub-communities.
+-
+Building upon strengths and challenges in the community to help build capacity within the community as well the opportunities for the researcher
+- This competency may involve identifying and accessing current community organizations in order to build a coalition.
+-
+The researchers and community partners convening to plan how a community-based health initiative will be disseminated and communicated to relevant audiences within the community served
+- While flyers in local restaurants may be helpful, some communities may be better accessed through local television or a particular form of social media.
 
-5. Which type of animal maintains a constant internal body
-temperature?
-a.
-endotherm
-b.
-ectotherm
-c.
-poikilotherm
-d.
-fusiform
-6. Smaller endothermic animals have _______ surface area
-for their mass compared with larger endothermic animals.
-a.
-equal
-b.
-greater
-c.
-less
-d.
-no
-7. What is the term for epithelial cells that are composed
-of multiple layers?
-a.
-simple
-b.
-stratified
-c.
-squamous
-d.
-transitional
-8. Which type of epithelial cell is best adapted to aid
-diffusion?
-a.
-squamous
-b.
-cuboidal
-c.
-columnar
-d.
-transitional
-9. Why do osteoclasts need to break down bone?
-a.
-to deposit bone material into the bone matrix
-b.
-to facilitate osteoclast persistence without using
-excess energy
-c.
-to provide access to calcium in the tissue
-d.
-to facilitate compact bone structure
-10. Plasma is the ____.
-a.
-fibers in the blood
-b.
-matrix of the blood
-c.
-cell that phagocytizes bacteria
-d.
-cell that functions in response to antigens
-11. Why is it necessary for most muscle cells to be under
-voluntary control?
-a.
-to facilitate response to local conditions of
-tissues
-b.
-to facilitate movement of bone
-c.
-to speed up or slow down the autonomic nervous
-system
-d.
-to facilitate movement of internal organs
-12. Cardiac muscle contains specialized regions along the
-plasma membrane called intercalated discs. What is the
-role of intercalated discs?
-a.
-efficiently pass electrical impulses between
-cardiac cells
-b.
-facilitate immune response to foreign antigens
-c.
-cushion body organs from damage
-d.
-keeps blood vessels in place
-13. The part of a neuron that contains the nucleus is the
-____.
-a.
-axon
-b.
-dendrite
-c.
-cell body
-d.
-oligodendrocyte
-14. Schwann cells or oligodendrocytes manufacture a lipid
-called myelin. Which statement best describes the function
-of this lipid?
-a.
-regulates the chemical environment
-b.
-sends input
-c.
-receives input
-d.
-improves signal transfer efficiency
-15. Animals maintain an overall steady state of internal
-conditions by ___.
-a.
-ectothermy
-b.
-homeostasis
-c.
-basal metabolic rate
-d.
-standard metabolic rate
-16. To what does the term “equilibrium” refer in the
-context of organismal homeostasis?
-a.
-control mechanisms that amplify a response
-b.
-control mechanisms that increase or decrease a
-stimulus
-c.
-the target point in homeostasis
-d.
-body functions are maintained within a given
-range
-17. What type of feedback loop pushes an organism’s
-physiology further away from it normal setpoints?
-a.
-positive feedback loop
-b.
-negative feedback loop
-c.
-set point
-d.
-receptor
-18. When faced with a sudden drop in environmental
-temperature, an endothermic animal will ____.
-1048
-Chapter 24 | The Animal Body: Basic Form and Function
-This OpenStax book is available for free at http://cnx.org/content/col12078/1.6
+## Match 1.36 — LibreTexts: 18.3: Nursing Care During the Second Stage of Labor
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Maternal-Newborn_Nursing_(OpenStax)/18%3A_Nursing_Care_and_Interventions_During_Labor_and_Birth/18.03%3A_Nursing_Care_During_the_Second_Stage_of_Labor
 
-a.
-experience a substantial drop in its body
-temperature
-b.
-find a warm rock on which to bask
-c.
-increase muscle activity to generate heat
-d.
-increase fur or fat to increase insulation
-19. Homeostasis is primarily controlled by _______
-feedback loops.
-a.
-positive
-b.
-negative
-c.
-acclimatization
-d.
-receptor
-20. Which is an example of negative feedback?
-a.
-lowering of blood glucose after a meal
-b.
-blood clotting after an injury
-c.
-lactation during nursing
-d.
-uterine contractions during labor
-21. Which method of heat exchange occurs during direct
-contact between the source and the animal?
-a.
-radiation
-b.
-evaporation
-c.
-convection
-d.
-conduction
-22. Which of the following is a strategy that may be
-employed by an ectotherm to immediately increase body
-temperature?
-a.
-Consume more food to increase fat as insulation.
-b.
-Increase amount of vasodilation.
-c.
-Increase amount of muscle contraction.
-d.
-Sit on a warm rock.
-CRITICAL THINKING QUESTIONS
-23. How does an asymmetrical body plan differ from
-radial or bilateral body plans?
-a.
-Asymmetrical organisms can produce equal
-halves if cut along a certain plane, whereas
-radially and bilaterally symmetric organisms
-have no distinct pattern.
-b.
-Asymmetrical organisms have no distinct
-pattern, whereas radially and bilaterally
-symmetric organisms can produce equal halves
-if cut along a certain plane.
-c.
-Asymmetrical organisms produce equal halves if
-cut along a certain plane with no definite right or
-left side, whereas radially and bilaterally
-symmetric organisms can produce equal halves.
-d.
-Asymmetrical organisms produce equal halves if
-cut along a certain plane with definite right and
-left sides, whereas radially and bilaterally
-symmetric organisms can produce equal halves.
-24. Why are most organisms with exoskeletons relatively
-small?
-a.
-Increases in body weight increase body size by a
-factor of eight, and the chitin thickness of the
-exoskeleton has to significantly decrease to
-accommodate increase in body size.
-b.
-Doubling of body size increases body weight by
-a factor of eight, and the chitin thickness of the
-exoskeleton has to significantly decrease to
-accommodate weight increase.
-c.
-Increases in body weight increase body size by a
-factor of eight, and the chitin thickness of the
-exoskeleton has to significantly increase to
-accommodate increase in body size.
-d.
-Doubling of body size increases body weight by
-a factor of eight, and the chitin thickness of the
-exoskeleton has to significantly increase to
-accommodate weight increase.
-25. What is the relationship between basal metabolic rate
-(BMR) and body size? Why?
-Chapter 24 | The Animal Body: Basic Form and Function
-1049
-
-a.
-BMR decreases with body size, because larger
-animals require more energy to maintain their
-size. However, smaller animals have relatively
-higher BMRs per body weight because they
-have greater surface area.
-b.
-BMR increases with body size, because smaller
-animals require more energy to maintain their
-size. However, larger animals have relatively
-higher BMRs per body weight because they
-have greater surface area.
-c.
-BMR increases with body size, because larger
-animals require more energy to maintain their
-size. However, smaller animals have relatively
-higher BMRs per body weight because they
-have greater surface area for their mass.
-d.
-BMR decreases with body size, because smaller
-animals require more energy to maintain their
-size. However, larger animals have relatively
-higher BMRs per body weight because they
-have greater surface area for their mass.
-26. Radial symmetry is typically found in aquatic
-organisms. What is radial symmetry and why is it
-advantageous to certain aquatic organisms?
-a.
-Radially symmetric means that a plane cut from
-the front to back of the organism produces
-distinct left and right sides that are mirror
-images of each other. It helps certain aquatic
-organisms to extract food from surrounding
-environments.
-b.
-Radially symmetric means that a plane cut from
-the front to back of the organism produces
-distinct left and right sides that are mirror
-images of each other. It helps certain aquatic
-organisms to perform photosynthesis.
-c.
-Radially symmetric means that a plane cut along
-its longitudinal axis will produce equal halves,
-and there is no distinct left or right. It helps
-certain aquatic organisms to perform
-photosynthesis.
-d.
-Radially symmetric means that a plane cut along
-its longitudinal axis to produce equal halves, and
-there is no distinct left or right. It helps certain
-aquatic organisms to extract food from
-surrounding environments.
-27. Columnar epithelial cells, which are typically found in
-a single-layer arrangement, are found along the digestive
-tract. What is the role of columnar epithelial cells in
-digestion?
-a.
-Columnar epithelial cells absorb material from
-the lumen of the digestive tract to prepare the
-material for entry into the body.
-b.
-Columnar epithelial cells release mucus for
-lubrication as well as antimicrobial agents in the
-digestive tract.
-c.
-Columnar epithelial cells secrete enzymes like
-salivary amylase which aid in digestion by the
-breakdown of carbohydrates in the body.
-d.
-Columnar epithelial cells help in the propulsion
-of food by peristalsis in the digestive tract of the
-body.
-28. In vertebrates, cartilage is found in fetal bones, ears,
-and intervertebral discs, whereas bone is found in the
-skeleton. What are the similarities between cartilage and
-bone?
-a.
-Both are types of connective tissue in the body
-and cells of both are known as chondrocytes.
-b.
-Both are types of connective tissue in the body
-and have non-vascular organic matrix material
-that provides strength and flexibility.
-c.
-Both are types of connective tissue in the body
-and have organic matrix material that provides
-strength and flexibility.
-d.
-Both consist of bone marrow and have organic
-matrix material that provides strength and
-flexibility.
-29. A friend sneaks up behind you and scares you,
-speeding up your heart rate. How and why did this event
-influence cardiac muscle contraction?
-a.
-Muscle contraction speed increases as the enteric
-nervous system responds to local conditions and
-makes muscle contraction speed up or slow
-down.
-b.
-Muscle contraction speed increases as the
-autonomic nervous system responds to local
-conditions and makes muscle contraction speed
-up or slow down.
-c.
-Muscle contraction speed increases as the
-somatic nervous system responds to local
-conditions and makes muscle contraction speed
-up or slow down.
-d.
-Muscle contraction speed increases as the central
-nervous system responds to local conditions and
-makes muscle contraction speed up or slow
-down.
-30. Neurons have several specialized structures, including
-dendrites. What might happen if an individual has
-malformed dendrites?
-1050
-Chapter 24 | The Animal Body: Basic Form and Function
-This OpenStax book is available for free at http://cnx.org/content/col12078/1.6
-
-a.
-The individual’s neurons would not be able to
-receive input properly.
-b.
-The individual’s neurons would not be able to
-synthesize proteins.
-c.
-The individual’s neurons would not be able to
-communicate with target neurons.
-d.
-The individual’s neurons would not be able to
-carry nerve signals.
-31. How can squamous epithelia, which have a high
-surface area-to-volume ratio, both facilitate diffusion and
-prevent damage from abrasion?
-a.
-Single layers of squamous epithelia facilitate
-gas, nutrient or waste exchange, whereas
-stratified layers provide protection but are not
-replaceable following damage.
-b.
-Stratified layers of squamous epithelia facilitate
-gas, nutrient or waste exchange, whereas single
-layers provide protection and are replaceable
-following damage.
-c.
-Single layers of squamous epithelia facilitate
-gas, nutrient or waste exchange whereas
-stratified layers provide protection and are
-replaceable following damage.
-d.
-Single layers of squamous epithelia facilitate
-only exchange of gases by diffusion, whereas
-stratified layers provide protection and are
-replaceable following damage.
-32. What is homeostasis and how does it help maintain
-equilibrium of various body functions throughout the
-body?
-a.
-Homeostasis is the process of achieving stability,
-which occurs through behavioral changes.
-Equilibrium is maintained by that ensuring body
-functions remain within a certain range.
-b.
-Homeostasis is the process by which constant
-adjustments to changes in the body occur, and
-equilibrium is maintained by ensuring that body
-functions remain within a certain range.
-c.
-Homeostasis is the process that prevents blood
-loss from circulation when a blood vessel is
-ruptured, and equilibrium is maintained by
-ensuring that circulation of blood is kept within
-a normal range.
-d.
-Homeostasis is the process by which constant
-adjustment to changes in the body occurs, and
-equilibrium is maintained as body functions
-remain within a certain range without any
-fluctuations.
-33. How can an environmental change result in an
-alteration of gland secretion?
-a.
-A receptor detects change, sends a signal to the
-control center, which sends a signal to the gland
-to inhibit the gland secretions.
-b.
-A receptor detects change, sends a signal to the
-control center, which sends a signal to the gland
-to increase the secretions of the gland.
-c.
-A receptor detects change and sends a signal to
-the effector directly ,which in this case is the
-gland.
-d.
-A receptor detects change, sends a signal to the
-control center, which in turn sends a signal to the
-effector, which in this case is the gland.
-34. How is a condition such as diabetes a good example of
-the failure of a set point in humans?
-a.
-A negative feedback loop cannot proceed in
-diabetic individuals, as they do not produce
-enough functional insulin to lower blood sugar.
-b.
-Negative feedback loop cannot proceed in
-diabetic individuals, as they do not produce
-enough functional insulin to increase the blood
-sugar.
-c.
-Positive feedback loop cannot proceed in
-diabetic individuals, as they do not produce
-enough functional insulin to lower blood sugar.
-d.
-Positive feedback loop cannot proceed in
-diabetic individuals, as they do not produce
-enough functional insulin to increase the blood
-sugar.
-35. What are the roles of vasodilation and vasoconstriction
-in maintaining body temperature?
-a.
-Vasodilation allows for radiation and
-evaporative heat loss, and vasoconstriction
-brings blood to the core to conserve heat by vital
-organs.
-b.
-Vasodilation brings blood to the core 
-
-## Match 0.69 — WritingGuide-WEB § 8.7 Evaluation: Reviewing the Final Draft
-
-LEARNING OUTCOMES
+18.3: Nursing Care During the Second Stage of Labor
 By the end of this section, you will be able to:
-•
-Evaluate feedback on your report as a whole.
-•
-Apply another reader’s response to the rhetorical choices you made as a writer.
-When you have finished revising and editing your report, have a friend or classmate evaluate it using the
-following rubric, which is similar to the one your instructor might use. At the end of the rubric is a section for
-your reader to offer additional feedback or expand on the reasoning behind their assessment. Pay attention to
-the feedback, and ask questions if something isn’t clear. Then, revise your paper again, using the feedback you
-find helpful.
-underline
-end underline
-underline
-end underline
-underline
-end underline
-underline
-end underline
-underline
-end underline
-underline
-end underline
-underline
-end underline
-underline
-end underline
-underline
-end underline
-underline
-end underline
-260
-8 • Analytical Report: Writing from Facts
-Access for free at openstax.org.
+- Obtain assessment data on the birthing person and fetus during the second stage of labor
+- Discuss nursing interventions during the second stage of labor
+- Explain the nursing actions when monitoring the fetus during the second stage of labor
+- Explain the nursing actions when monitoring the birthing person for complications during the second stage of labor
+- Explain the nursing actions when preparing for a vaginal delivery
+Nursing care during the second stage of labor involves assisting the birthing person with pain management, positioning, and efforts to bear down during the contractions and birth. The laboring person is now completely dilated and feeling the urge to push. Successful coordination of the person’s bearing-down efforts and contraction pattern is an essential part of the nurse’s role during the second stage of labor. At the same time, the nurse also continues to monitor the birthing person’s progress, emotional and physical response, and fetal adaptation while preparing for the birth of the newborn.
+Assessment of the Laboring Person and Fetus during the Second Stage of Labor
+During the second stage of labor, nursing care is focused on providing essential support for both the laboring person and the fetus. The nurse will closely monitor the progression of contractions, the descent of the fetus through the birth canal, and the fetal heart rate. The nurse is a source of encouragement and guidance through the second stage and supports the birthing person with pain management. Ensuring the birthing person’s and support person’s comfort, safety, and informed decision making remains a priority for the nurse, as the health-care team readies for the safe delivery of the baby. Continuous assessment, communication, and collaboration are key components during the second stage of labor.
+Monitoring the Physical Response of the Person during the Second Stage of Labor
+Maternal vital signs are routinely assessed at least every 30 minutes during the second stage of labor unless otherwise determined by order or protocol (Table 18.6). The nurse should assist the patient into a position of the birthing person’s choosing and provide support and encouragement, or guidance with pushing. If the birthing person desires, the nurse may provide the birthing person with sips of water or ice chips (Milton, 2024).
+| Assessment Data | Second Stage of Labor |
+|---|---|
+| Vital signs |
+Every 30 minutes
+Temperature
+|
+| Contraction pattern | Intermittently or continuously every 15 minutes, documented at the same interval as FHR |
+| Progress in descent | As indicated based on pressure, perineal bulging or crowning, abnormalities in the FHR |
+| Pain | Hourly, or more frequently as needed |
+| Emotional response | Continuous |
+| Intake and output | Continuous |
+The nurse continues to monitor contraction strength and frequency during the second stage of labor. The contraction pattern is typically assessed every 15 minutes. During the strongest part of the contractions, the nurse coaches the birthing person through the bearing down effort s and monitors for fatigue. If necessary, additional instructions for bearing down are provided between contractions when indicated.
+The nurse also monitors the descent of the fetus through the pelvis by assessing the fetal station and presence of crowning. As the fetus descends, the nurse provides updates to the birthing person and their support persons. These updates aid in keeping the birthing person motivated to keep the bearing-down efforts most effective (Milton, 2024).
+Monitoring the Fetal Response to the Second Stage of Labor
+The fetal heart rate is monitored during the second stage of labor, assessing for patterns that can indicate fetal compromise (Table 18.7). Abnormal patterns are associated with hypoxemia. which may lead to hypoxia, resulting in metabolic acidosis. The type and frequency of fetal monitoring are determined by provider order, protocol, and clinical situation (AWHONN, 2018). Fetal monitoring may be done intermittently, continuously with an external fetal monitor, or internally with a fetal scalp electrode . The nurse should be in regular contact with the provider, relaying critical information about the fetal monitoring findings and implementing interventions when compromise is identified.
+| Fetal Assessment Data | Second Stage of Labor | |
+|---|---|---|
+| Low risk without oxytocin | With risk factors or oxytocin | |
+|
+FHR baseline
+FHR variability Periodic changes |
+Every 5–15 minutes | Every 5–15 minutes |
+Nursing Interventions during the Second Stage of Labor
+In many cases, the nurse is at the bedside frequently during the second stage of labor and exclusively during pushing. The role of the nurse during the second stage of labor is to assess the labor progress, monitor the fetal heart rate and contraction patterns, guide and support the birthing person, and aid the provider.
+Encouraging Bearing-Down Efforts during the Second Stage of Labor
+The direct contact of the fetus on the pelvic floor usually initiates the maternal urge to push. This sensation may be dulled when the birthing person has an epidural in place. The role of the nurse during this stage of labor is to provide motivation and encouragement for the birthing person. The strategies implemented may include emphasizing to the birthing person the benefits of relaxation of the perineum or coordinating bearing-down efforts with the contraction pattern via the tocodynamometer in a birthing person with an epidural. The nurse will coach the birthing person to maximize pushing efforts and coordinate pushing and breathing efforts. The nurse will also provide feedback to the birthing person about their pushing efforts and maintain continuous communication with the provider about the pushing progress.
+In open glottis pushing , the laboring person follows their body’s spontaneous, natural urges to push without specific instructions or holding their breath or can be directed to bear down while exhaling. Directed open glottis pushing contrasts with the traditional closed glottis or Valsalva pushing technique, in which the laboring person is instructed to hold their breath and push forcefully for a specified duration during each contraction (Barasinski et al., 2020). During open glottis pushing, the laboring person continues to breathe normally. They take deep breaths in and exhale naturally as they feel the urge to bear down and push. There is no forced breath-holding. Open glottis pushing allows for more natural pushing efforts. Studies suggest that there is no difference in the incidence of perineal lacerations between open and closed glottis pushing (Barasinski et al., 2020).
+Changing positions during labor can be highly beneficial in aiding the descent of the fetus through the birth canal (Huang et al., 2019). Different positions can help optimize the alignment of the fetal head with the pelvis, facilitate uterine contraction s, and reduce pressure on specific areas, potentially making the labor process more efficient and comfortable. It’s important to note that the effectiveness of positions may vary for each laboring person, and the choice of position should be based on comfort and what feels most effective during labor. Continuous communication with the health-care team and a supportive birthing environment are essential to ensure safety and to optimize the labor process.
+Promoting Relaxation and Rest during the Second Stage of Labor
+The role of the nurse in promoting relaxation and rest during the second stage of labor may vary based on the pain control decisions of the birthing person. For a birthing person who has an epidural, the nurse can assist the person with positioning and creating a calm, quiet environment. For a birthing person who has chosen analgesia or nonpharmacologic methods, the nurse can support the person with positioning, bearing down, and breathing techniques (Heim & Makuch, 2023).
+Providing Comfort Measures during the Second Stage of Labor
+The second stage of labor can bring discomfort that the nurse can assist in alleviating. Warm compresses may be applied to the perineum or lower back, and the nurse or support person may apply pressure to or massage the lower back. Cool cloths can also be applied to the birthing person’s forehead or neck. To encourage family-centered care, the nurse can teach the family or friends of the birthing person to apply these techniques.
+Monitoring for Complications during the Second Stage of Labor
+The second stage of labor brings about the potential for complications that may affect the laboring person or the fetus. The nurse continues to monitor maternal vital signs, discomfort, and pain while supporting pushing. The nurse should continually assess for complications of the laboring person, including bladder distention , perineal tears, excessive bleeding, and slow or lack of progress in descent (Milton, 2024). These complications are outlined in (Table 18.8). (Please see further discussion of shoulder dystocia in Chapter 19 Complications of Labor and Birth.)
+| Complication | Nursing Assessment |
+|---|---|
+| Prolonged second stage | Assess cervical dilation and descent of the fetus. |
+| Monitor uterine contractions for frequency and strength. | |
+| Evaluate the laboring person’s pushing efforts. | |
+| Observe the fetal heart rate for signs of distress. | |
+| Assess for signs of exhaustion or distress in the laboring person. | |
+| Assess for distended bladder. | |
+| Fetal distress | Continuously monitor the fetal heart rate. |
+| Document heart rate patterns (e.g., decelerations). | |
+| Evaluate maternal vital signs for signs of infection or fever. | |
+| Assess amniotic fluid color, odor, and meconium presence. | |
+| Notify the health-care provider of the presence and associated symptoms. | |
+| Shoulder dystocia | Assist with maneuvers such as McRoberts and suprapubic pressure, as directed by the health-care provider. |
+| Document the time of occurrence and actions taken. | |
+| Assist with the evaluation for maternal and fetal injuries. | |
+| Rapid delivery | Notify the health-care provider. |
+| Support the baby’s head and guide the shoulders if the health-care provider is not present. | |
+| Ensure a safe and controlled birth process. | |
+| Document the time of birth and any complications. |
+The second stage of labor is a time of increased stress on the fetus. The nurse must monitor the fetal heart rate to ensure the safe delivery of the newborn. The nurse should monitor for an abnormal fetal heart rate with pushing and notify the health provider when indicated. The nurse must also monitor the birthing person’s progress for any risk of shoulder dystocia , a situation in which the head of the newborn is delivered but a shoulder is trapped behind the birthing person’s pubic bone during the delivery. If a shoulder dystocia does occur, the nurse must be prepared to react and assist the provider in repositioning maneuvers, or cesarean birth, to deliver the newborn (Milton, 2024). (Please see further discussion of shoulder dystocia in Chapter 19 Complications of Labor and Birth.)
+Communication with the Health-Care Provider
+Communication with a health-care provider who is not at the bedside should continue regularly and consistently throughout the second stage of labor and during pushing. The nurse is responsible for the continued assessment of the birthing person and the fetal heart rate pattern and descent of the fetus through the pelvis. The provider should be aware of any potential maternal complications, abnormal fetal heart rate patterns, progress of the second stage, and pushing efforts. Any changes in maternal or fetal status should be reported immediately to the health-care provider.
+Perineal Hygiene
+Perineal hygiene is recommended during the second stage. Hygiene includes keeping the perineum clean using warm water poured over t
 
-Rubric
-Score
-Critical Language
-Awareness
-Clarity and Coherence
-Rhetorical Choices
-5
-Skillful
-The text always adheres
-to the “Editing Focus” of
-this chapter: commas
-with nonessential and
-essential information, as
-discussed in Section 8.6.
-The text also shows
-ample evidence of the
-writer’s intent to
-consciously meet or
-challenge conventional
-expectations in
-rhetorically effective
-ways
-The introduction sparks interest
-and leads expertly to a clear,
-intriguing thesis. All main points
-are expertly developed in body
-paragraphs with clear central
-points and fact-based, reliable
-evidence, which is analyzed
-appropriately and thoroughly.
-Appropriate transitions clearly
-connect ideas and evidence,
-which is abundant and integrated
-smoothly into the sentences.
-The topic of the report
-demonstrates superior
-understanding of the purpose.
-The report consistently shows
-expert awareness of audience,
-context, and community
-expectations. The presentation is
-highly appropriate to the
-content. The writer’s voice is
-objective and trustworthy.
-Language is consistently clear
-and appropriate. Correct
-citations are included in the text
-and bibliography.
-4
-Accomplished
-The text usually adheres
-to the “Editing Focus” of
-this chapter: commas
-with nonessential and
-essential information, as
-discussed in Section 8.6.
-The text also shows
-some evidence of the
-writer’s intent to
-consciously meet or
-challenge conventional
-expectations in
-rhetorically effective
-ways.
-The introduction sparks interest
-and leads smoothly to a clear
-thesis. Most main points are well
-developed in body paragraphs
-with clear central points and
-solid, sufficient evidence, which
-is analyzed adequately.
-Appropriate transitions connect
-ideas and evidence, which is
-integrated smoothly into most
-sentences.
-The topic of the report
-demonstrates comprehensive
-understanding of the purpose.
-The report usually shows
-awareness of audience, context,
-and community expectations.
-The presentation is appropriate
-to the content. The writer’s voice
-is objective and trustworthy.
-Language is usually clear and
-appropriate. Correct citations are
-included in the text and
-bibliography
-TABLE 8.6
-8.7 • Evaluation: Reviewing the Final Draft
-261
+## Match 1.36 — LibreTexts: 18.4: Nursing Care During the Third Stage of Labor
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Maternal-Newborn_Nursing_(OpenStax)/18%3A_Nursing_Care_and_Interventions_During_Labor_and_Birth/18.04%3A_Nursing_Care_During_the_Third_Stage_of_Labor
 
-Score
-Critical Language
-Awareness
-Clarity and Coherence
-Rhetorical Choices
-3
-Capable
-The text generally
-adheres to the “Editing
-Focus” of this chapter:
-commas with
-nonessential and
-essential information, as
-discussed in Section 8.6.
-The text also shows
-limited evidence of the
-writer’s intent to
-consciously meet or
-challenge conventional
-expectations in
-rhetorically effective
-ways.
-The introduction may spark some
-interest and leads to a fairly clear
-thesis. Most main points are
-stated, but some may not be fully
-developed in body paragraphs,
-which may lack sufficient
-evidence or adequate analysis.
-Appropriate transitions connect
-some ideas and evidence, which
-is integrated inconsistently into
-sentences.
-The topic of the report
-demonstrates understanding of
-the purpose. The report shows
-some, but possibly inconsistent,
-awareness of audience, context,
-and community expectations.
-The presentation is generally
-appropriate to the content. The
-writer’s voice strays occasionally
-from objectivity and
-trustworthiness, but language is
-generally clear. Some citations
-may be incorrect or missing.
-2
-Developing
-The text occasionally
-adheres to the “Editing
-Focus” of this chapter:
-commas with
-nonessential and
-essential information, as
-discussed in Section 8.6.
-The text also shows
-emerging evidence of the
-writer’s intent to
-consciously meet or
-challenge conventional
-expectations in
-rhetorically effective
-ways.
-The introduction may be
-somewhat interesting but may
-lack a smooth transition to the
-thesis. Main points are missing
-from some body paragraphs,
-which may have no discernible
-central point and are
-insufficiently developed.
-Inappropriate or insufficient
-transitions minimally connect
-ideas and evidence, which is
-poorly integrated into sentences.
-Language is often confusing or
-inappropriate.
-The topic of the report
-demonstrates a weak
-understanding of the purpose.
-The report shows little
-awareness of audience, context,
-and community expectations.
-The presentation may be
-somewhat appropriate to the
-content. The writer’s voice is
-only occasionally objective and
-trustworthy. Citations are
-incomplete, incorrect, or missing.
-TABLE 8.6
-262
-8 • Analytical Report: Writing from Facts
-Access for free at openstax.org.
-
-Score
-Critical Language
-Awareness
-Clarity and Coherence
-Rhetorical Choices
-1
-Beginning
-The text does not adhere
-to the “Editing Focus” of
-this chapter: commas
-with nonessential and
-essential information, as
-discussed in Section 8.6.
-The text also shows little
-to no evidence of the
-writer’s intent to
-consciously meet or
-challenge conventional
-expectations in
-rhetorically effective
-ways.
-The introduction, if it is present,
-may be somewhat interesting but
-lacks a thesis. Most or all of the
-body paragraphs have no central
-point and are undeveloped.
-There are no clear connections
-among ideas and evidence, which
-is insufficient, unconvincing, and
-poorly integrated into the
-sentences.
-The topic of the report
-demonstrates poor or no
-understanding of the purpose.
-The report shows little or no
-awareness of audience, context,
-or community expectations. The
-presentation is inappropriate to
-content. The writer’s voice is
-neither objective nor trustworthy.
-Language is confusing or
-inappropriate. Citations are
-missing or incorrect.
-TABLE 8.6
-8.8 Spotlight on … Discipline-Specific and Technical Language
-LEARNING OUTCOMES
+18.4: Nursing Care During the Third Stage of Labor
 By the end of this section, you will be able to:
-•
-Explain the role of discipline-specific and technical language in various situations and contexts.
-•
-Implement purposeful shifts in voice, tone, level of formality, and word choice.
-•
-Pursue options for publishing your report.
-Proficient report writers in all academic disciplines and professions use language that is clear, direct,
-economical, and conventional. Moreover, they often use a specialized vocabulary to convey information to
-others in their field. These technical words allow specialists to communicate precisely and efficiently with
-other experts, but such terms can be confusing to nonspecialists. The following guidelines can help you shape
-the language of a report in a social science, natural science, or technical field:
-•
-Define disciplinary and technical terms. For example, in a report about computer storage, you might
-need to define terms such as kilobyte, terabyte, gigabyte, and megabyte. In the following example, the
-writer defines these terms.
-Computer storage space is measured in units called kilobytes (KB). Each KB equals 1,024 “bytes,”
-or approximately 1000 single typewriter characters. Therefore, one KB equals about 180 English
-words, or a little less than half of a single-spaced typed page, or maybe three minutes of fast
-typing. One terabyte (TB) is 1024 gigabytes (GB), one GB is 1024 megabytes (MB), and one MB is
-1024 KB.
-•
-Write out full names the first time you use them, followed by abbreviations or acronyms in
-parentheses. Then you can use the abbreviation or acronym throughout the rest of the report. For
-example, write out U.S. Department of Agriculture (USDA) or Occupational Safety and Health
-Administration (OSHA) the first time you refer to it, and use USDA or OSHA subsequently. In the previous
-example about computer storage, the writer used the abbreviations for KB, TB, GB, and MB after writing
-out the full words. The sentence below, from Trevor Garcia’s report, gives another example:
-s
-end s
-8.8 • Spotlight on … Discipline-Specific and Technical Language
-263
-
-After the first U.S. coronavirus case was confirmed in 2020, the secretary of the Department of
-Health and Human Services (HHS) was named to lead a task force on a response, but after several
-months he was replaced when then vice president Mike Pence was officially charged with leading
-the White House Coronavirus Task Force (Ballhaus & Armour, 2020).
-•
-Write in third-person point of view. Third-person point of view will help you use objective language that
-is free of value judgments and emotional responses, as demonstrated in the following examples:
-The causes of obesity are complex and involve multiple factors, including genetics, underlying
-health conditions, cultural attitudes toward food and exercise, access to healthy food and health
-care, safe outdoor spaces, income, and leisure time.
-The survey respondents self-identified as cisgender female (153), cisgender male (131), gender
-nonbinary (12), and transgender (4).
-•
-Consider occasional use of the passive voice. Traditionally, writers in the sciences and technical fields
-have used the passive voice for objectivity and neutrality. In the passive voice, the subject of the sentence
-is acted upon; in the active voice, the subject acts. Increasingly, scientific and technical writers use the
-active voice in the introduction and conclusion sections of reports, which are more interpretative. They
-use the passive voice in the method and results sections, which are more straight-up reporting.
-Notice that by using the passive voice, the writer is able to avoid naming the person or group who conducted
-the survey. The passive voice is a technique that writers often use when they don’t want to make the name of
-an individual or group public. See Clear and Effective Sentences for more on passive and active voice.
-Passive voice: A survey of 300 students was conducted at a large state university in the southern
-United States.
-Active voice: We conducted a survey of 300 students at a large state university in the southern United
-States.
-•
-Pay attention to the details of meaning, grammar, punctuation, and mechanics. Each discipline values
-precision and correctness, and each has its own specialized vocabulary for talking about knowledge.
-Writers are expected to use terms precisely and to spell them correctly. Your writing will gain greater
-respect when it reflects standard grammar, punctuation, and mechanics.
-Publish Your Report
-Now that you have completed all stages of your report, you may want to think about sharing it with students at
-your school or other colleges. Your college may have a journal that publishes undergraduate research work. If
-so, find out about submitting your work. Also, listed here are some of the many publications that feature
-undergraduate student research. Check them out.
-•
-Papers & Publications: Interdisciplinary Journal of Undergraduate Research (https://openstax.org/r/
-papersandpublications) (accepts work from students in the southeastern United States)
-•
-Journal of Undergraduate Research (https://openstax.org/r/journalofugresearch) (peer-reviewed
-undergraduate journal; accepts research work in all subjects)
-•
-Journal of Student Research (https://openstax.org/r/journalofstudentresearch) (accepts student work from
-high school through graduate school)
-•
-Crossing Borders: A Multidisciplinary Journal of Undergraduate Scholarship (https://openstax.org/r/
-crossingborders) (published at Kansas State University; accepts student research in all disciplines from
-undergraduates throughout the country)
-•
-1890: A Journal of Undergraduate Research (https://openstax.org/r/1890UGresearch) (accepts
-undergraduate works of research, creative writing, poetry, reviews, and art)
-s
-end s
-s
-end s
-s
-end s
-underline
-end underline
-underline
-end underline
-264
-8 • Analytical Report: Writing from Facts
-Access for free at openstax.org.
-
-
-## Match 0.69 — Biology2e-WEB_ICOFkGu § 43.3 Human Reproductive Anatomy and Gametogenesis
-
-By the end of this section, you will be able to do the following:
-•
-Describe human male and female reproductive anatomies
-•
-Discuss the human sexual response
-•
-Describe spermatogenesis and oogenesis and discuss their differences and similarities
-As animals became more complex, specific organs and organ systems developed to support specific functions for the organism.
-The reproductive structures that evolved in land animals allow males and females to mate, fertilize internally, and support the
-growth and development of offspring.
-Human Reproductive Anatomy
-The reproductive tissues of male and female humans develop similarly in utero until a low level of the hormone testosterone is
-released from male gonads. Testosterone causes the undeveloped tissues to differentiate into male sexual organs. When
-testosterone is absent, the tissues develop into female sexual tissues. Primitive gonads become testes or ovaries. Tissues that
-produce a penis in males produce a clitoris in females. The tissue that will become the scrotum in a male becomes the labia in a
-female; that is, they are homologous structures.
-Male Reproductive Anatomy
-In the male reproductive system, the scrotum houses the testicles or testes (singular: testis), including providing passage for
-blood vessels, nerves, and muscles related to testicular function. The testes are a pair of male reproductive organs that produce
-sperm and some reproductive hormones. Each testis is approximately 2.5 by 3.8 cm (1.5 by 1 in.) in size and divided into wedge-
-shaped lobules by connective tissue called septa. Coiled in each wedge are seminiferous tubules that produce sperm.
-Sperm are immobile at body temperature; therefore, the scrotum and penis are external to the body, as illustrated in Figure 43.8
-so that a proper temperature is maintained for motility. In land mammals, the pair of testes must be suspended outside the
-body at about 2° C lower than body temperature to produce viable sperm. Infertility can occur in land mammals when the testes
-do not descend through the abdominal cavity during fetal development.
-43.3 • Human Reproductive Anatomy and Gametogenesis
-1231
-
-VISUAL CONNECTION
-Figure 43.8 The reproductive structures of the human male are shown.
-Which of the following statements about the male reproductive system is false?
-a.
-The vas deferens carries sperm from the testes to the penis.
-b.
-Sperm mature in seminiferous tubules in the testes.
-c.
-Both the prostate and the bulbourethral glands produce components of the semen.
-d.
-The prostate gland is located in the testes.
-Sperm mature in seminiferous tubules that are coiled inside the testes, as illustrated in Figure 43.8. The walls of the
-seminiferous tubules are made up of the developing sperm cells, with the least developed sperm at the periphery of the tubule
-and the fully developed sperm in the lumen. The sperm cells are mixed with “nursemaid” cells called Sertoli cells which protect
-the germ cells and promote their development. Other cells mixed in the wall of the tubules are the interstitial cells of Leydig.
-These cells produce high levels of testosterone once the male reaches adolescence.
-When the sperm have developed flagella and are nearly mature, they leave the testicles and enter the epididymis, shown in
-Figure 43.8. This structure resembles a comma and lies along the top and posterior portion of the testes; it is the site of sperm
-maturation. The sperm leave the epididymis and enter the vas deferens (or ductus deferens), which carries the sperm, behind
-the bladder, and forms the ejaculatory duct with the duct from the seminal vesicles. During a vasectomy, a section of the vas
-deferens is removed, preventing sperm from being passed out of the body during ejaculation and preventing fertilization.
-Semen is a mixture of sperm and spermatic duct secretions (about 10 percent of the total) and fluids from accessory glands that
-contribute most of the semen’s volume. Sperm are haploid cells, consisting of a flagellum as a tail, a neck that contains the cell’s
-energy-producing mitochondria, and a head that contains the genetic material. Figure 43.9 shows a micrograph of human
-sperm as well as a diagram of the parts of the sperm. An acrosome is found at the top of the head of the sperm. This structure
-contains lysosomal enzymes that can digest the protective coverings that surround the egg to help the sperm penetrate and
-fertilize the egg. An ejaculate will contain from two to five milliliters of fluid with from 50–120 million sperm per milliliter.
-1232
-Chapter 43 • Animal Reproduction and Development
-Access for free at openstax.org.
-
-Figure 43.9 Human sperm, visualized using scanning electron microscopy, have a flagellum, neck, and head. (credit b: modification of work
-by Mariana Ruiz Villareal; scale-bar data from Matt Russell)
-The bulk of the semen comes from the accessory glands associated with the male reproductive system. These are the seminal
-vesicles, the prostate gland, and the bulbourethral gland, all of which are illustrated in Figure 43.8. The seminal vesicles are a
-pair of glands that lie along the posterior border of the urinary bladder. The glands make a solution that is thick, yellowish, and
-alkaline. As sperm are only motile in an alkaline environment, a basic pH is important to reverse the acidity of the vaginal
-environment. The solution also contains mucus, fructose (a sperm mitochondrial nutrient), a coagulating enzyme, ascorbic
-acid, and local-acting hormones called prostaglandins. The seminal vesicle glands account for 60 percent of the bulk of semen.
-The penis, illustrated in Figure 43.8, is an organ that drains urine from the renal bladder and functions as a copulatory organ
-during intercourse. The penis contains three tubes of erectile tissue running through the length of the organ. These consist of a
-pair of tubes on the dorsal side, called the corpus cavernosum, and a single tube of tissue on the ventral side, called the corpus
-spongiosum. This tissue will become engorged with blood, becoming erect and hard, in preparation for intercourse. The organ
-is inserted into the vagina culminating with an ejaculation. During intercourse, the smooth muscle sphincters at the opening to
-the renal bladder close and prevent urine from entering the penis. An orgasm is a two-stage process: first, glands and accessory
-organs connected to the testes contract, then semen (containing sperm) is expelled through the urethra during ejaculation. After
-intercourse, the blood drains from the erectile tissue and the penis becomes flaccid.
-The walnut-shaped prostate gland surrounds the urethra, the connection to the urinary bladder. It has a series of short ducts
-that directly connect to the urethra. The gland is a mixture of smooth muscle and glandular tissue. The muscle provides much of
-the force needed for ejaculation to occur. The glandular tissue makes a thin, milky fluid that contains citrate (a nutrient),
-enzymes, and prostate specific antigen (PSA). PSA is a proteolytic enzyme that helps to liquefy the ejaculate several minutes
-after release from the male. Prostate gland secretions account for about 30 percent of the bulk of semen.
-The bulbourethral gland, or Cowper’s gland, releases its secretion prior to the release of the bulk of the semen. It neutralizes any
-acid residue in the urethra left over from urine. This usually accounts for a couple of drops of fluid in the total ejaculate and may
-contain a few sperm. Withdrawal of the penis from the vagina before ejaculation to prevent pregnancy may not work if sperm
-are present in the bulbourethral gland secretions. The location and functions of the male reproductive organs are summarized
-in Table 43.1.
-Male Reproductive Anatomy
-Organ
-Location
-Function
-Scrotum
-External
-Carry and support testes
-Penis
-External
-Deliver urine, copulating organ
-Testes
-Internal
-Produce sperm and male hormones
-Table 43.1
-43.3 • Human Reproductive Anatomy and Gametogenesis
-1233
-
-Organ
-Location
-Function
-Seminal Vesicles
-Internal
-Contribute to semen production
-Prostate Gland
-Internal
-Contribute to semen production
-Bulbourethral Glands
-Internal
-Clean urethra at ejaculation
-Table 43.1
-Female Reproductive Anatomy
-A number of reproductive structures are exterior to the female’s body. These include the breasts and the vulva, which consists of
-the mons pubis, clitoris, labia majora, labia minora, and the vestibular glands, all illustrated in Figure 43.10. The location and
-functions of the female reproductive organs are summarized in Table 43.2. The vulva is an area associated with the vestibule
-which includes the structures found in the inguinal (groin) area of women. The mons pubis is a round, fatty area that overlies
-the pubic symphysis. The clitoris is a structure with erectile tissue that contains a large number of sensory nerves and serves as
-a source of stimulation during intercourse. The labia majora are a pair of elongated folds of tissue that run posterior from the
-mons pubis and enclose the other components of the vulva. The labia majora derive from the same tissue that produces the
-scrotum in a male. The labia minora are thin folds of tissue centrally located within the labia majora. These labia protect the
-openings to the vagina and urethra. The mons pubis and the anterior portion of the labia majora become covered with hair
-during adolescence; the labia minora is hairless. The greater vestibular glands are found at the sides of the vaginal opening and
-provide lubrication during intercourse.
-Figure 43.10 The reproductive structures of the human female are shown. (credit a: modification of work by Gray's Anatomy; credit b:
-modification of work by CDC)
-Female Reproductive Anatomy
-Organ
-Location
-Function
-Clitoris
-External
-Sensory organ
-Mons pubis
-External
-Fatty area overlying pubic bone
-Table 43.2
-1234
-Chapter 43 • Animal Reproduction and Development
-Access for free at openstax.org.
-
-Organ
-Location
-Function
-Labia majora
-External
-Covers labia minora
-Labia minora
-External
-Covers vestibule
-Greater vestibular glands
-External
-Secrete mucus; lubricate vagina
-Breasts
-External
-Produce and deliver milk
-Ovaries
-Internal
-Carry and develop eggs
-Oviducts (Fallopian tubes)
-Internal
-Transport egg to uterus
-Uterus
-Internal
-Support developing embryo
-Vagina
-Internal
-Common tube for intercourse, birth canal, passing menstrual flow
-Table 43.2
-The breasts consist of mammary glands and fat. The size of the breast is determined by the amount of fat deposited behind the
-gland. Each gland consists of 15 to 25 lobes that have ducts that empty at the nipple and that supply the nursing child with
-nutrient- and antibody-rich milk to aid development and protect the child.
-Internal female reproductive structures include ovaries, oviducts, the uterus, and the vagina, shown in Figure 43.10. The pair of
-ovaries is held in place in the abdominal cavity by a system of ligaments. Ovaries consist of a medulla and cortex: the medulla
-contains nerves and blood vessels to supply the cortex with nutrients and remove waste. The outer layers of cells of the cortex are
-the functional parts of the ovaries. The cortex is made up of follicular cells that surround eggs that develop during fetal
-development in utero. During the menstrual period, a batch of follicular cells develops and prepares the eggs for release. At
-ovulation, one follicle ruptures and one egg is released, as illustrated in Figure 43.11a.
-Figure 43.11 Oocytes develop in (a) follicles, located in the ovary. At the beginning of the menstrual cycle, the follicle matures. At ovulation,
-the follicle ruptures, releasing the egg. The follicle becomes a corpus luteum, which eventually degenerates. The (b) follicle in this light
-micrograph has an oocyte at its center. (credit a: modification of work by NIH; scale-bar data from Matt Russell)
-The oviducts, or fallopian tubes, extend from the uterus in the lower abdominal cavity to the ovaries, but they are not in contact
-with the ovaries. The lateral ends of the oviducts flare out into a trumpet-like structure and have a fringe of finger-like
-projections called fimbriae, illustrated in Figure 43.10b. When an egg is released at ovulation, the fimbrae help the nonmotile
-egg enter into the tube and passage to the uterus. The walls of the oviducts are ciliated and are made up mostly of smooth
-43.3 • Human Reproductive Anatomy and Gametogenesis
-1235
-
-muscle. The cilia beat toward the middle, and the smooth muscle contracts in the same direction, moving the egg toward the
-uterus. Fertilization usually takes place within the oviducts and the developing embryo is moved toward the uterus for
-development. It usually takes the egg or embryo a week to travel through the oviduct. Sterilization in women is called a tubal
-ligation; it is analogous to a vasectomy in males in that the oviducts are severed and sealed.
-The uterus is a structure about the size of a woman’s fist. This is lined with an endometrium rich in blood vessels and mucus
-glands. The uterus supports the developing embryo and fetus during gestation. The thickest portion of the wall of the uterus is
-made of smooth muscle. Contractions of the smooth muscle in the uterus aid in passing the baby through the vagina during
-labor. A portion of the lining of the uterus sloughs off during each menstrual period, and then builds up again in preparation for
-an implantation. Part of the uterus, called the cervix, protrudes into the top of the vagina. The cervix functions as the birth
-canal.
-The vagina is a muscular tube that serves several purposes. It allows menstrual flow to leave the body. It is the receptacle for the
-penis during intercourse and the vessel for the delivery of offspring. It is lined by stratified squamous epithelial cells to protect
-the underlying tissue.
-Sexual Response during Intercourse
-The sexual response in humans is both psychological and physiological. Both sexes experience sexual arousal through
-psychological and physical stimulation. There are four phases of the sexual respon
+- Obtain assessment data on the birthing person during the third stage of labor
+- Explain the nursing actions when caring for the birthing person during the third stage of labor
+The third stage of labor begins with the birth of the newborn and ends with the separation and expulsion of the placenta. Following the delivery of the newborn, the infant may be placed on the birthing person’s abdomen and then chest to initiate skin-to-skin contact. Initial skin-to-skin contact has been shown to promote bonding and aid in the newborn’s transition to extrauterine life (Bigelow & Power, 2020). While the newborn is on the birthing person’s chest and before the expulsion of the placenta, the umbilical cord is clamped by the health-care provider and cut by the support person or health-care provider. Waiting 30 to 60 seconds for delayed cord clamping in newborns is associated with significant benefits to the newborn, including increased hemoglobin levels and improved circulation, among others (ACOG, 2020a). If the newborn is compromised or if skin-to-skin contact or delayed cord clamping is not appropriate for any reason, the newborn may be taken to the infant warmer for additional support, observation, or resuscitation.
+Following the birth of the newborn, the uterus reduces in size, creating a decrease in the placental site and causing it to separate from the placental wall. The separation and expulsion of the placenta may be active or passive, including the use of uterotonics, early cord clamping, or gentle cord traction. Promotion of endogenous oxytocin to aid in the expulsion of the placenta may also be facilitated by encouraging skin-to-skin contact and early efforts to latch the baby to the maternal breast. Placenta delivery time of more than 30 minutes after delivery of the infant is associated with a higher risk of postpartum hemorrhage ( PPH ) or the need for manual removal of the placenta (Hutchison et al., 2023). Immediately after the birth of the placenta, most health-care providers order intravenous oxytocin to be administered by the nurse.
+Assessment during the Third Stage of Labor
+During the third stage of labor , the nurse’s responsibilities include the assessment of the patient (Table 18.10) and newborn (Table 18.11). The nurse should continually complete the following patient assessments throughout the duration of the third stage of labor:
+- assessment of vital signs
+- assessment of the fundus for height, firmness, and tone to ensure uterine contraction and decrease the risk of postpartum hemorrhage
+- assessment of pain and discomfort
+- assessment of the bladder for any distention that may increase the risk of postpartum hemorrhage
+- assessment of the amount and type of vaginal bleeding
+| Assessment Data | Third Stage of Labor |
+|---|---|
+| Vital signs |
+Every 15 minutes
+Temperature Every 1 hour |
+| Contraction pattern | Manually by palpation, usually by the health-care provider |
+| Labor progress | As indicated based on signs of placental separation |
+| Pain | As needed |
+| Emotional response | Continuous |
+| Assessment Data | First 30 Minutes after Birth |
+|---|---|
+|
+Apgar Score
+(see Chapter 22 Immediate Care of the Newborn) |
+1 and 5 minutes
+(10 minutes when newborn is in distress) |
+| Temperature | Within first 15 minutes |
+| Apical pulse |
+Low-risk: every 30 minutes after Apgar scoring
+With risk factors: every 5 minutes |
+| Respiratory rate and quality |
+Low-risk: every 30 minutes after Apgar scoring
+With risk factors: every 1–5 minutes |
+Vital Signs
+Vitals signs during the third stage of labor should be obtained at a minimum of every 15 minutes in stable birthing persons. Blood pressure should be closely monitored during the third stage, as a drop in blood pressure could indicate excessive blood loss or other life-threatening complication. The birthing person’s pulse rate should be monitored, and a rapid or weak pulse should be reported immediately, as it could indicate a potential hemorrhage. Respiratory rate and oxygen saturation should be included in the assessment of vital signs during the third stage of labor. Any abnormal findings or changes in trends in the vital signs of the birthing person should be reported to the provider immediately (Hutchison et al., 2023).
+The newborn’s temperature should be taken as soon after birth as possible, especially with prolonged rupture of the membranes or increased maternal temperature during the first or second stages of labor. Newborn temperatures below 96.8° F (36° C) or above 100.4° F (38° C) are considered abnormal and should be reported by the nurse to the health-care provider and neonatal team (Lubkowska et al., 2019).
+Signs of Placental Separation
+The reduction in uterine size, contractions, and cord traction contribute to the separation of the placenta from the uterine wall (Figure 18.5). Separation of the placenta from the uterus results in the following three hallmark signs (Milton, 2024):
+- The shape of the uterus changes to a spherical or round shape.
+- A gush of blood from behind the placenta appears in the vagina.
+- The umbilical cord lengthens as the placenta detaches and moves into the introitus.
+Spontaneous delivery of the placenta occurs following the separation from the uterus. If the placenta is not delivered spontaneously, the health-care provider may manually extract the placenta from the uterine wall. Manual extraction increases the risk of infection and postpartum hemorrhage (PPH). Following spontaneous or manual expulsion of the placenta, the health-care provider inspects that the placenta is intact. Any piece of the placenta that remains inside the uterus or attached to the uterine wall interferes with the effective contraction of the uterus and increases the risk of PPH (Agrawal et al., 2018).
+Vaginal Bleeding
+Following placental separation from the uterus, contractions cause the expulsion of the placenta. Once the placenta is expelled, uterine massage is performed by the health-care provider, ensuring the uterus is firm to aid in the constriction of uterine blood vessels. Median blood loss in a vaginal birth is approximately 125 mL, with up to 500 mL considered acceptable, while in a cesarean birth, blood loss may measure up to 1,000 mL (Rabie et al, 2018). Any blood loss greater than 1,000 mL or causing symptoms in the birthing person is considered a postpartum hemorrhage (PPH). A PPH is an obstetric emergency and requires interventions to reduce risks associated with morbidity and mortality. Careful monitoring by direct measurement of the blood loss (quantitative blood loss) has been shown to be more accurate than a visual estimation (EBL) of the blood loss during the process of labor and birth (ACOG, 2022).
+The Association of Women’s Health, Obstetric and Neonatal Nurses (AWHONN) provides guidelines for quantifying blood loss during childbirth. Accurate measurement of blood loss is crucial for identifying postpartum hemorrhage and ensuring timely interventions. This video describes how to accurately quantify blood loss.
+Nursing Interventions during the Third Stage of Labor
+Nursing care during the third stage of labor focuses on the initial assessment of the newborn, the administration of uterotonics, assessment of the uterus and lochia, and promotion of parent-newborn bonding. During this time, the nurse may assist the health-care provider while caring for the mother and newborn.
+Monitoring the Physical Response during the Third Stage of Labor
+The nurse will assess the birthing person’s vital signs, including blood pressure, pulse, respiratory rate, and pain while awaiting the delivery of the placenta. The uterus continues to contract following the birth of the newborn, which may result in the birthing person experiencing mild to moderate pain. The nurse may need to administer pain medication to the birthing person or guide them in nonpharmacologic pain management techniques. (See the full discussion in Chapter 17 Pain Management During Labor and Birth.) The nurse may guide the birthing person in bearing down to aid in the delivery of the placenta. After the placenta is delivered, the nurse will assess the vaginal bleeding for color, consistency, and amount, and the uterus for firmness, location, and tone (Milton, 2024).
+Promoting Relaxation and Rest during the Third Stage of Labor
+With the birth of a newborn comes many emotions. The birthing person may experience joy, sadness, or excitement. The nurse can support the birthing person through these emotions and promote rest and relaxation. Promoting relaxation during the third stage of labor can be done in many ways, including the following:
+- encouraging deep breathing
+- providing a calm, quiet environment
+- offering warm blankets
+- gently massaging the birthing person’s abdomen
+- encouraging the birthing person to close their eyes and use imagery to relax
+- offering emotional support
+- offering reassurance
+Providing a relaxed environment during the third stage of labor can help provide a safe and healthy delivery experience for the birthing person and their partner.
+Administering Uterotonics
+Active management of the third stage of labor is aimed at preventing postpartum hemorrhage (PPH). Medications that increase the tone and contractility of the uterus, called uterotonics , are administered immediately following the birth of the newborn or delivery of the placenta. The first-choice oxytocic medication for the prevention of PPH is oxytocin (Pitocin). Administered through intravenous or intramuscular routes, prophylactic use of oxytocin during the third stage of labor reduces maternal blood loss and the need for additional oxytocic medications (Salati et al., 2019). When the use of additional uterotonics is required, a provider may opt to administer misoprostol ( Cytotec ), methylergonovine ( Methergine ), carboprost ( Hemabate ), or tranexamic acid ( Lysteda ) to decrease the complications of PPH.
+Perineal Cleansing
+After the delivery of the placenta, the health-care provider may perform perineal cleansing to view the vagina and perineum for lacerations. Nursing actions include providing the health-care provider with sponges and cleansing solutions. Perineal cleansing practices may vary based on the health-care provider’s preference and the birthing person’s need. During this time, the health-care team will count the used blades and needles, sponges, and vaginal packing, if used, to ensure that no foreign bodies are retained.
+Monitoring the Newborn
+Immediately upon birth, assessment of the newborn begins and will continue until the newborn is discharged. Initial observation allows the health-care providers to monitor for any distress or complications. At 1 and 5 minutes of life, an Apgar score is assigned to the newborn; five specific parameters are assessed to evaluate the physiologic state of the newborn, starting with (1) heart rate, (2) respiratory effort, (3) muscle tone, (4) response to irritating stimuli, and (5) color. For a full discussion of Apgar scoring, refer to Chapter 22 Immediate Care of the Newborn.
+Monitoring and maintaining the newborn’s body temperature is essential to the transition to extrauterine life. At birth, the fetal body temperature is dependent on the maternal temperature. The delivery room temperature and the evaporation of fluid from the newborn’s skin result in a rapid drop in temperature (approximately 2 o C or 2 o to 3 o F) following birth and during the first half hour of life. 
+Promoting Parental Attachment to the Newborn
+To promote bonding, skin-to-skin contact is initiated by placing the newborn directly on the skin of a parent. In many cases, the newborn is placed on the abdomen of the birthing person immediately after birth. After the cord is clamped, the newborn is moved up to the birthing person’s chest to continue skin-to-skin contact. This immediate contact has significant benefits for the new

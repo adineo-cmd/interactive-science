@@ -1,588 +1,94 @@
 # Source pack — subjects/public-health/foundational/profession-and-science-of-public-health
 Lesson title: Profession & Science of Public Health
 Level: foundational
-Match confidence: 1.53
+Match confidence: 1.80
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.53 — Microbiology-WEB § 16.4 Global Public Health
+## Match 1.80 — LibreTexts: 1.7: Models of Public Health
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Courses/Glendale_Community_College/Public_Health_101_(Calderone)/01%3A_What_is_Public_Health/1.07%3A_Models_of_Public_Health
 
-•
-The World Health Organization (WHO) is an
-agency of the United Nations that collects and
-analyzes data on disease occurrence from
-member nations. WHO also coordinates public
-health programs and responses to international
-health emergencies.
-•
-Emerging diseases are those that are new to
-human populations or that have been increasing
-in the past two decades. Reemerging diseases
-are those that are making a resurgence in
-susceptible populations after previously having
-been controlled in some geographic areas.
-16 • Summary
-677
+1.7: Models of Public Health
+As discussed in the previous section, finding out what causes negative health outcomes and how to change these outcomes is a complicated process. Fortunately, there are different models that we can use when we try to understand and solve health problems. These models provide a framework with which public health professionals can identify different points at which to intervene in order to prevent diseases and improve health outcomes.
+The Biomedical Model addresses health issues “as a function of risk factors, symptoms, diagnoses, and treatments.” (Acolin & Fishman, 2023) A doctor using the biomedical model might ask you about your symptoms and health-history, order different lab tests for you and ultimately make a diagnosis. This model attempts to identify a causal relationship between risk factors and diseases, ultimately to identify treatments and solutions. The biomedical model can also be used in public health. For example, we might identify that the leading cause of death for Americans is heart disease. Scientific literature identifies that one of the major risk factors for heart disease is obesity. Therefore, we might design education for individuals on weight management, create clinical weight-loss programs, research weight-loss medication, or even develop policies (such as getting government funds to pay for specific obesity-prevention programs, or requiring labels on high-calorie foods).
+The Social Ecological Model identifies health outcomes as influenced by “the interaction between the individual, the group/community, and the physical, social, and political environments'' (Clinical and Translational Science Awards (CTSA) Consortium’s Community Engagement Key Function Committee 1997/2011). This could be illustrated by nutritional habits. What we eat on a daily basis is often our familiar foods, perhaps those we grew up enjoying, or can be influenced by close relationships such as friends, roommates or a significant other. In this way, the individual’s behaviors are influenced by their close relationships - what they were fed as a child growing up, what they tend to eat-out with friends, or what their significant other eats. These are all influenced by the community in which they live - which could be their geographical location but also includes cultural, and/or religious norms. In turn, this community food is also influenced by the society at large: what food is grown, produced and sold in that region, what is affordable and accessible, etc. Using the social-ecological model, a public health practitioner might attempt to address policies to prevent obesity, like banning sugar-sweetened beverages of a specific size. Or they might address access to fruits and vegetables by coordinating a public-private partnership to put a grocery store in a neighborhood that doesn't have one, in order to change that community’s access to health-promoting foods. Perhaps a healthy cooking class might be offered at a community center - thus hopefully having a positive effect on the individual’s nutritional knowledge and skill, and also on the nutritional habits of the attendee’s families. The diagram in Figure \(\PageIndex{2}\) was developed by the CDC in 2007, and is used to visually represent the social-ecological model.
 
-REVIEW QUESTIONS
-Multiple Choice
-1. Which is the most common type of biological
-vector of human disease?
-a.
-viruses
-b.
-bacteria
-c.
-mammals
-d.
-arthropods
-2. A mosquito bites a person who subsequently
-develops a fever and abdominal rash. What type
-of transmission would this be?
-a.
-mechanical vector transmission
-b.
-biological vector transmission
-c.
-direct contact transmission
-d.
-vehicle transmission
-3. Cattle are allowed to pasture in a field that
-contains the farmhouse well, and the farmer’s
-family becomes ill with a gastrointestinal
-pathogen after drinking the water. What type of
-transmission of infectious agents would this be?
-a.
-biological vector transmission
-b.
-direct contact transmission
-c.
-indirect contact transmission
-d.
-vehicle transmission
-4. A blanket from a child with chickenpox is likely
-to be contaminated with the virus that causes
-chickenpox (Varicella-zoster virus). What is the
-blanket called?
-a.
-fomite
-b.
-host
-c.
-pathogen
-d.
-vector
-5. Which of the following would NOT be considered
-an emerging disease?
-a.
-Ebola hemorrhagic fever
-b.
-West Nile virus fever/encephalitis
-c.
-Zika virus disease
-d.
-Tuberculosis
-6. Which of the following would NOT be considered
-a reemerging disease?
-a.
-Drug-resistant tuberculosis
-b.
-Drug-resistant gonorrhea
-c.
-Malaria
-d.
-West Nile virus fever/encephalitis
-7. Which of the following factors can lead to
-reemergence of a disease?
-a.
-A mutation that allows it to infect humans
-b.
-A period of decline in vaccination rates
-c.
-A change in disease reporting procedures
-d.
-Better education on the signs and symptoms
-of the disease
-8. Why are emerging diseases with very few cases
-the focus of intense scrutiny?
-a.
-They tend to be more deadly
-b.
-They are increasing and therefore not
-controlled
-c.
-They naturally have higher transmission
-rates
-d.
-They occur more in developed countries
-678
-16 • Review Questions
-Access for free at openstax.org.
+## Match 1.80 — LibreTexts: 3.3: Public/Community Health Nursing Practice
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Population_Health_for_Nurses_(OpenStax)/03%3A_Public_Community_Health_in_Practice/3.03%3A_Public_Community_Health_Nursing_Practice
 
-Matching
-9. Match each term with its description.
-___sporadic disease
-A. the number of
-disease cases per
-100,000 individuals
-___endemic disease
-B. a disease in higher
-than expected numbers
-around the world
-___pandemic disease
-C. the number of deaths
-from a disease for
-every 10,000
-individuals
-___morbidity rate
-D. a disease found
-occasionally in a region
-with cases occurring
-mainly in isolation
-from each other
-___mortality rate
-E. a disease found
-regularly in a region
-10. Match each type of epidemiology study with its
-description.
-___experimental
-A. examination of past case
-histories and medical test
-results conducted on
-patients in an outbreak
-___analytical
-B. examination of current
-case histories, interviews
-with patients and their
-contacts, interpretation of
-medical test results;
-frequently conducted
-while outbreak is still in
-progress
-___prospective
-C. use of a set of test
-subjects (human or
-animal) and control
-subjects that are treated
-the same as the test
-subjects except for the
-specific treatment being
-studied
-___descriptive
-D. observing groups of
-individuals to look for
-associations with disease
-___retrospective
-E. a comparison of a cohort
-of individuals through the
-course of the study
-16 • Review Questions
-679
-
-11. Match each pioneer of epidemiology with his or
-her contribution.
-___Florence Nightingale
-A. determined the
-source of a cholera
-outbreak in
-London
-___Robert Koch
-B. showed that
-surgical wound
-infection rates
-could be
-dramatically
-reduced by using
-carbolic acid to
-disinfect surgical
-tools, bandages,
-and surgical sites
-___Joseph Lister
-C. compiled data on
-causes of mortality
-in soldiers, leading
-to innovations in
-military medical
-care
-___John Snow
-D. developed a
-methodology for
-conclusively
-determining the
-etiology of disease
-Fill in the Blank
-12. The ________ collects data and conducts
-epidemiologic studies in the United States.
-13. ________occurs when an infected individual
-passes the infection on to other individuals, who
-pass it on to still others, increasing the
-penetration of the infection into the susceptible
-population.
-14. A batch of food contaminated with botulism
-exotoxin, consumed at a family reunion by most
-of the members of a family, would be an
-example of a ________ outbreak.
-15. A patient in the hospital with a urinary catheter
-develops a bladder infection. This is an example
-of a(n) ________ infection.
-16. A ________ is an animal that can transfer
-infectious pathogens from one host to another.
-17. The ________ collects data and conducts
-epidemiologic studies at the global level.
-Short Answer
-18. During an epidemic, why might the prevalence
-of a disease at a particular time not be equal to
-the sum of the incidences of the disease?
-19. In what publication would you find data on
-emerging/reemerging diseases in the United
-States?
-680
-16 • Review Questions
-Access for free at openstax.org.
-
-20. What activity did John Snow conduct, other
-than mapping, that contemporary
-epidemiologists also use when trying to
-understand how to control a disease?
-21. Differentiate between droplet vehicle
-transmission and airborne transmission.
-Critical Thinking
-22. Why might an epidemiological population in a
-state not be the same size as the number of
-people in a state? Use an example.
-23. Many people find that they become ill with a
-cold after traveling by airplane. The air
-circulation systems of commercial aircraft use
-HEPA filters that should remove any infectious
-agents that pass through them. What are the
-possible reasons for increased incidence of
-colds after flights?
-24. An Atlantic crossing by boat from England to
-New England took 60–80 days in the 18th
-century. In the late 19th century the voyage took
-less than a week. How do you think these time
-differences for travel might have impacted the
-spread of infectious diseases from Europe to the
-Americas, or vice versa?
-16 • Review Questions
-681
-
-682
-16 • Review Questions
-Access for free at openstax.org.
-
-INTRODUCTION
-CHAPTER 17
-Innate Nonspecific Host
-Defenses
-
-## Match 1.28 — IntroductiontoSociology3e-WEB_9QTqRGQ § 19.3 Health in the United States
-
-LEARNING OBJECTIVES
+3.3: Public/Community Health Nursing Practice
 By the end of this section, you should be able to:
-•
-Apply social epidemiology to health in the United States
-•
-Explain disparities of health based on gender, socioeconomic status, race, and ethnicity
-•
-Summarize mental health and disability issues in the United States
-•
-Explain the terms stigma and medicalization
-Health in the United States is a complex and often contradictory issue. One the one hand, as one of the
-wealthiest nations, the United States fares well in health comparisons with the rest of the world. However, the
-United States also lags behind almost every industrialized country in terms of providing care to all its citizens.
-The following sections look at different aspects of health in the United States.
-Health by Race and Ethnicity
-When looking at the social epidemiology of the United States, it is hard to miss the disparities among races.
-The discrepancy between Black and White Americans shows the gap clearly; in 2018, the average life
-expectancy for White males was approximately five years longer than for Black males: 78.8 compared to 74.7
-(Wamsley 2021). (Note that in 2020 life expectancies of all races declined further, though the unprecedented
-COVID-19 pandemic was a significant cause.) Other indicates show a similar disparity. The 2018 infant
-mortality rates for different races and ethnicities are as follows:
-•
-Non-Hispanic Black people: 10.8
-•
-Native Hawaiian people or other Pacific Islanders: 9.4
-•
-Native American/Alaska Native people: 8.2
-•
-Hispanic people: 4.9
-•
-Non-Hispanic White people: 4.6
-•
-Asian and Asian American people: 3.6 (Centers for Disease Control 2021)
-According to a report from the Henry J. Kaiser Foundation (2007), African Americans also have higher
-incidence of several diseases and causes of mortality, from cancer to heart disease to diabetes. In a similar
-vein, it is important to note that ethnic minorities, including Mexican Americans and Native Americans, also
-have higher rates of these diseases and causes of mortality than White people.
-Lisa Berkman (2009) notes that this gap started to narrow during the Civil Rights movement in the 1960s, but
-it began widening again in the early 1980s. What accounts for these perpetual disparities in health among
-different ethnic groups? Much of the answer lies in the level of healthcare that these groups receive. The
-National Healthcare Disparities Report shows that even after adjusting for insurance differences, racial and
-ethnic minority groups receive poorer quality of care and less access to care than dominant groups. The
-Report identified these racial inequalities in care:
-•
-Black people, Native Americans, and Alaska Native people received worse care than Whites for about 40
-percent of quality measures.
-•
-Hispanic people, Native Hawaiian people, and Pacific Islanders received worse care than White people for
-more than 30 percent of quality measures.
-•
-Asian people received worse care than White people for nearly 30 percent of quality measures but better
-care for nearly 30 percent of quality measures (Agency for Healthcare Research and Quality 2020).
-Health by Socioeconomic Status
-Discussions of health by race and ethnicity often overlap with discussions of health by socioeconomic status,
-since the two concepts are intertwined in the United States. As the Agency for Health Research and Quality
-19.3 • Health in the United States
-565
+- Identify how the public health system interfaces with nursing care.
+- Explain the nurse’s role in public/community health.
+- Describe how public/community health nurses facilitate the core functions of public health.
+- Explain why public/community health nursing is essential to promoting and protecting the health of communities.
+Using the Community/Public Health Nursing Competencies as a guide, nurses in this specialty significantly impact the health of populations. Public/community health nurses collaborate with clinicians across the care continuum to bridge the gap between care that is offered or available and care that is needed or accessed. Health promotion and education, social prescribing, community assessments, advocacy, and disease and disaster response are several examples of essential public/community health nursing interventions that promote and protect the health of community members.
+Interface of Public Health with Nursing Care
+Public health and clinical care can interact on a daily basis to support health across populations of clients. Some interactions are more visible than others, such as during times of a global pandemic. Despite increases in the visibility of and focus on public health during the COVID-19 pandemic, collaborations between public health and clinical care have been longstanding and ongoing. Such collaborations support both communicable and noncommunicable health concerns.
+During the COVID-19 pandemic, public health efforts such as global, national, county, or city-specific disease surveillance and reporting played a crucial role in guiding clinical care decisions. Such efforts helped hospitals and other care facilities predict the need for services, directed policies on physical distancing and whether businesses and other community centers were open to the public, and helped clients and families evaluate the risk of socializing with those from other households. Public health efforts such as requiring masks when in public helped individuals, families, and essential workers avoid spreading or contracting COVID-19 (Cowger et al., 2022; Kociolek et al., 2022). Places that implemented public health policies to facilitate distancing, such as mandating quarantine and isolation when ill, school closures, household confinement, and limiting social gatherings, coincided with fewer COVID-19 cases and lower disease transmission rates than in places that did not implement such procedures early or stringently (Zweig et al., 2021). As public health efforts in prevention, screening, and later vaccination aimed to reduce the clinical care needed across the globe, clinical care efforts were supported by public health initiatives (Figure 3.6). Clinical care included treatment of active infection, but also testing and diagnosis in established care centers and drive-through operations . Public health efforts also supported the availability of needed medications, supplies, and equipment to treat active infections in hospitals and homes. Once a vaccine was developed, clinical care included vaccine administration. At the same time, public health initiatives determined priority groups for vaccination, established vaccine clinics across communities, and promoted vaccines as a method of health promotion and disease control.
+Infectious disease response and control presents an opportunity for public/community health frameworks to guide clinical care and for nursing care to support public/community health goals. However, public/community health and nursing care also work in concert to address noncommunicable diseases and health concerns. Addressing the population’s mental health is a key example. Mental health impacts people of all genders, races, ages, occupations, parenting status, and education levels. In fact, 25 percent of youth experience depressive symptoms, 35 percent of adults aged 45 years and older feel lonely, and the suicide rate among all nurses is 18 percent higher than the U.S. general population, with female nurses having twice the risk of dying by suicide than the general population (Blazer, 2020; Lee and Friese, 2021; Office of the Surgeon General [OSG], 2021). Public health agencies may develop promotional campaigns to reduce the stigma surrounding mental health disorders and educate the public on signs that indicate help is needed for a mental health concern. Clinicians provide comprehensive mental health care that can include similar education personalized for the client. Public health agencies may work with clinicians to implement standard mental health screening tools into every preventative health encounter and then provide referral sites where other clinicians can offer expert mental health care and counseling. Clinicians may also engage in public health data sharing, making relevant public health agencies and organizations aware of the rates of mental health concerns in a community or nationally. Such sharing supports proper funding of programs to support mental health for all and treat mental illness among affected clients.
+In this video, Dr. Deboki Chakravarti of the American Public Health Association (APHA) shares information about unintentional injuries as a public health issue. Unintentional injuries are another example of a non-communicable category that presents an opportunity for public health and clinical care to interact.
+Watch the video, and then respond to the following questions.
+- Dr. Chakravarti shares information about public health initiatives aimed at addressing injuries across age groups. She discusses unsafe sleeping conditions for infants, drowning for young children, car accidents for teens, and workplace injuries for adults. What are some components of clinical care that work in concert with public health interventions to address these accidents?
+- Since the video has been published, new evidence has emerged that names gun violence as the leading cause of death in children (Goldstick et al., 2022). Can you think of the public health and clinical care interventions that can address this public health crisis?
+Remember that efforts across clinical and health areas might address upstream or downstream factors. As discussed in What Is Population Health? upstream factors involve actions and initiatives that address the root causes of health issues, whereas downstream factors include responses to health issues without focusing on solving or preventing the health problem. Thinking about how to create meaningful change in upstream factors can be overwhelming and is much more labor-intensive than, say, teaching a client about the safe administration of medications. Importantly, it is not the responsibility of one nurse to change upstream factors or to move an entire health system to a focus on prevention over treatment. Working with individual clients who have diagnosed conditions is, of course, important to their health and quality of life and is a duty of nurses. However, nurses also have a duty to support meaningful upstream change for their clients and the community at large. Nurses can contribute to advancing this area through advocacy and activism, which are detailed in Advocating for Population Health. Nurses are well positioned, and have a professional duty, to leverage their personal, social, and political capital (Florell, 2021) as members of a highly trusted profession to engage in nursing activism and advance health equity through upstream change.
+The Role and Significance of the Community Health Nurse
+As frontline clinicians on whom community members rely for health care and guidance, public/community health nurses play a crucial role in sharing health information, promoting health through education and counseling, and implementing preventative care activities. Public/community health nurses meet the needs of community members seeking health guidance and health care through several key roles and responsibilities.
+Health Promotion and Education
+Public/community health nurses educate clients, families, and communities on health topics and conditions, preventative measures , and approaches to wellness . For example, nurses in this specialty may teach caregivers of toddlers about nutrient-dense foods that picky eaters may enjoy or hold a weekly session to help seniors on a fixed income create recipes based on the local grocery store’s weekly sale flyer. Nurses may employ many teaching methods, including conducting live and in-person class sessions, holding Zoom meetings, or distributing printed material. Nurses can create their own teaching material informed by current research, best practices, or clinical guidelines or may access freely available toolkits. Toolkits are often developed by health departments, colleges and universities, or national health organizations. For example, teaching toolkits are available for HPV vaccination , substance-use prevention , healthy sleep , hypertension , interpreting nutrition labels , and many other health topics.
+Health promotion efforts also involve screening for conditions and diseases so that the public/community health nurse can make appropriate and early referrals for care. A nurse may offer monthly vision and hearing screening s to alert community members to the need for sensory aids. Preventing diseases before they occur through education and other health promotion activities helps communities reduce disease prevalence, incidence, and impact. This is important for the health of the population but also decreases the burden and spending on the health care system and resources of the community. In fact, one study of a nurse-led community-based clinic in which clients could receive nonurgent health care and guidance demonstrated a $34 savings to society for every $1 invested (Bicki et al., 2013). While there is some rhetoric regarding the utility and cost of nurse-led clinics, a comprehensive review determined that these clinics do not increase health care costs and have improved client satisfaction with and access to health services (Connolly & Cotter, 2023). Ongoing rigorous research regarding the role of nurse-led initiatives is needed to reach additional conclusions regarding their impact on population health.
+Social Prescribing
+Social prescribing involves referrals to community resources other than those traditionally considered directly related to the health care setting. Social prescribing is a cost-effective way to support clients and families with chronic conditions with symptom management and health promotion (Husk et al., 2020). Public/community health nurses may facilitate connections to community agencies that support health and social needs, such as financial planning, a walking group, or a community garden (Figure 3.7). Activities like ballroom dancing, volunteering, seeing plays, or visiting museums can benefit clients’ emotional health, social connectedness, and feelings of empowerment (Chen, 2022). Social prescribing interventions can engage the diverse population in social and health-promoting experiences that also decrease utilization of formal health care services and prevent development of chronic conditions (Howarth et al., 2020). To learn more about this topic, watch the video What is social prescribing? .
+Food insecurity refers to limited or uncertain access to food. Income, employment, race/ethnicity, and disability may all be contributing factors. Neighborhood access to grocery stores impacts food security, given the limited options and higher prices at smaller convenience stores. Additionally, lack of personal transportation or access to public transportation to travel to a faraway grocery stores can precipitate food insecurity. The Healthy People 2030 program aims to reduce household food insecurity and hunger, eliminate very low food security in children, and increase the consumption of fruits and vegetables among people ages 2 and older.
+Community Ass
 
-(2010) notes, “racial and ethnic minorities are more likely than non-Hispanic whites to be poor or near poor,”
-so much of the data pertaining to subordinate groups is also likely to be pertinent to low socioeconomic
-groups. Marilyn Winkleby and her research associates (1992) state that “one of the strongest and most
-consistent predictors of a person's morbidity and mortality experience is that person's socioeconomic status
-(SES). This finding persists across all diseases with few exceptions, continues throughout the entire lifespan,
-and extends across numerous risk factors for disease.” Morbidity is the incidence of disease.
-It is important to remember that economics are only part of the SES picture; research suggests that education
-also plays an important role. Phelan and Link (2003) note that many behavior-influenced diseases like lung
-cancer (from smoking), coronary artery disease (from poor eating and exercise habits), and AIDS initially were
-widespread across SES groups. However, once information linking habits to disease was disseminated, these
-diseases decreased in high SES groups and increased in low SES groups. This illustrates the important role of
-education initiatives regarding a given disease, as well as possible inequalities in how those initiatives
-effectively reach different SES groups.
-Health by Gender
-Women are affected adversely both by unequal access to and institutionalized sexism in the healthcare
-industry. According to a recent report from the Kaiser Family Foundation, women experienced a decline in
-their ability to see needed specialists between 2001 and 2008. In 2008, one quarter of women questioned the
-quality of their healthcare (Ranji and Salganico 2011). Quality is partially indicated by access and cost. In 2018,
-roughly one in four (26%) women—compared to one in five (19%) men—reported delaying healthcare or letting
-conditions go untreated due to cost. Because of costs, approximately one in five women postponed preventive
-care, skipped a recommended test or treatment, or reduced their use of medication due to cost (Kaiser Family
-Foundation 2018).
-We can see an example of institutionalized sexism in the way that women are more likely than men to be
-diagnosed with certain kinds of mental disorders. Psychologist Dana Becker notes that 75 percent of all
-diagnoses of Borderline Personality Disorder (BPD) are for women according to the Diagnostic Statistical
-Manual of Mental Disorders. This diagnosis is characterized by instability of identity, of mood, and of behavior,
-and Becker argues that it has been used as a catch-all diagnosis for too many women. She further decries the
-pejorative connotation of the diagnosis, saying that it predisposes many people, both within and outside of the
-profession of psychotherapy, against women who have been so diagnosed (Becker).
-Many critics also point to the medicalization of women’s issues as an example of institutionalized sexism.
-Medicalization refers to the process by which previously normal aspects of life are redefined as deviant and
-needing medical attention to remedy. Historically and contemporaneously, many aspects of women’s lives
-have been medicalized, including menstruation, premenstrual syndrome, pregnancy, childbirth, and
-menopause. The medicalization of pregnancy and childbirth has been particularly contentious in recent
-decades, with many women opting against the medical process and choosing a more natural childbirth. Fox
-and Worts (1999) find that all women experience pain and anxiety during the birth process, but that social
-support relieves both as effectively as medical support. In other words, medical interventions are no more
-effective than social ones at helping with the difficulties of pain and childbirth. Fox and Worts further found
-that women with supportive partners ended up with less medical intervention and fewer cases of postpartum
-depression. Of course, access to quality birth care outside the standard medical models may not be readily
-available to women of all social classes.
-566
-19 • Health and Medicine
-Access for free at openstax.org.
+## Match 1.80 — LibreTexts: 1.32: Laying the foundation for public health priorities- Healthy People 2030
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Pharmacology_and_Neuroscience/Public_Health_in_Pharmacy_Practice_2e_-_A_Casebook_(Covvey_Arya_and_Mager)/01%3A_Chapters/1.32%3A_Laying_the_foundation_for_public_health_priorities-_Healthy_People_2030
 
-Medicalization of Sleeplessness
-FIGURE 19.4 Many people fail to get enough sleep. But is insomnia a disease that should be cured with medication?
-(Credit: Wikimedia Commons)
-How is your “sleep hygiene?” Sleep hygiene refers to the lifestyle and sleep habits that contribute to sleeplessness.
-Bad habits that can lead to sleeplessness include inconsistent bedtimes, lack of exercise, late-night employment,
-napping during the day, and sleep environments that include noise, lights, or screen time (National Institutes of
-Health 2011a).
-According to the National Institute of Health, examining sleep hygiene is the first step in trying to solve a problem
-with sleeplessness.
-For many people in the United States, however, making changes in sleep hygiene does not seem to be enough.
-According to a 2006 report from the Institute of Medicine, sleeplessness is an underrecognized public health
-problem affecting up to 70 million people. It is interesting to note that in the months (or years) after this report was
-released, advertising by the pharmaceutical companies behind Ambien, Lunesta, and Sepracor (three sleep aids)
-averaged $188 million weekly promoting these drugs (Gellene 2009).
-According to a study in the American Journal of Public Health (2011), prescriptions for sleep medications increased
-dramatically from 1993 to 2007. While complaints of sleeplessness during doctor’s office visits more than doubled
-during this time, insomnia diagnoses increased more than sevenfold, from about 840,000 to 6.1 million. The authors
-of the study conclude that sleeplessness has been medicalized as insomnia, and that “insomnia may be a public
-health concern, but potential overtreatment with marginally effective, expensive medications with nontrivial side
-effects raises definite population health concerns” (Moloney, Konrad, and Zimmer 2011). Indeed, a study published
-in 2004 in the Archives of Internal Medicine shows that cognitive behavioral therapy, not medication, was the most
-effective sleep intervention (Jacobs, Pace-Schott, Stickgold, and Otto 2004).
-A century ago, people who couldn’t sleep were told to count sheep. Now they pop a pill, and all those pills add up to
-a very lucrative market for the pharmaceutical industry. Is this industry behind the medicalization of sleeplessness,
-SOCIOLOGY IN THE REAL WORLD
-19.3 • Health in the United States
-567
-
-or is it just responding to a need?
-Mental Health and Disability
-The treatment received by those defined as mentally ill or disabled varies greatly from country to country. In
-the post-millennial United States, those of us who have never experienced such a disadvantage take for
-granted the rights our society guarantees for each citizen. We do not think about the relatively recent nature of
-the protections, unless, of course, we know someone constantly inconvenienced by the lack of
-accommodations or misfortune of suddenly experiencing a temporary disability.
-Mental Health
-People with mental disorders (a condition that makes it more difficult to cope with everyday life) and people
-with mental illness (a severe, lasting mental disorder that requires long-term treatment) experience a wide
-range of effects. According to the National Institute of Mental Health (NIMH), the United States has over 50
-million adults with mental illness or mental disorder, or 20 percent of the total adult population. Of these, 13
-million have what is considered serious mental illness or mental disorder (5 percent of the adult population);
-serious mental illness is that which causes impairment or disability (National Institute of Mental Health 2021).
-Finally, 16.5 percent of children aged 6-17 experienced mental illness or disorder (National Alliance on Mental
-Illness 2021).
-The most common mental disorders in the United States are anxiety disorders. Almost 18 percent of U.S.
-adults are likely to be affected in a single year, and 28 percent are likely to be affected over the course of a
-lifetime (Anxiety and Depression Institute of America 2021). It is important to distinguish between occasional
-feelings of anxiety and a true anxiety disorder. Anxiety is a normal reaction to stress that we all feel at some
-point, but anxiety disorders are feelings of worry and fearfulness that last for months at a time. Anxiety
-disorders include obsessive compulsive disorder (OCD), panic disorders, posttraumatic stress disorder (PTSD),
-and both social and specific phobias.
-The second most common mental disorders in the United States are mood disorders; roughly 10 percent of
-U.S. adults are likely to be affected yearly, while 21 percent are likely to be affected over the course of a lifetime
-(National Institute of Mental Health 2005). Mood disorders are the most common causes of illness-related
-hospitalization in the U.S. (Agency for Healthcare Research and Quality 2021). Major mood disorders are
-depression and dysthymic disorder. Like anxiety, depression might seem like something that everyone
-experiences at some point, and it is true that most people feel sad or “blue” at times in their lives. A true
-depressive episode, however, is more than just feeling sad for a short period. It is a long-term, debilitating
-illness that usually needs treatment to cure. Bipolar disorder is characterized by dramatic shifts in energy and
-mood, often affecting the individual’s ability to carry out day-to-day tasks. Bipolar disorder used to be called
-manic depression because of the way people would swing between manic and depressive episodes.
-Depending on what definition is used, there is some overlap between mood disorders and personality
-disorders, which affect 9 percent of people in the United States yearly. A personality disorder is an enduring
-and inflexible pattern of long duration leading to significant distress or impairment, that is not due to use of
-substances or another medical condition. In other words, personality disorders cause people to behave in ways
-that are seen as abnormal to society but seem normal to them.
-The diagnosis and classification regarding personality disorders has been evolving and is somewhat
-controversial. To guide diagnosis and potential treatments of mental disorders, the American Psychological
-Association publishes the Diagnostic and Statistical Manual on Mental Disorders (DSM). Experts working on
-the latest version initially proposed changing the categories of personality disorders. However, the final
-publication retains the original ten categories, but contains an alternate/emer
-
-## Match 1.27 — USHistory-WEB § 13.3 Reforms to Human Health
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain the different reforms aimed at improving the health of the human body
-•
-Describe the various factions and concerns within the temperance movement
-Antebellum reform efforts aimed at perfecting the spiritual and social worlds of individuals, and as an
-outgrowth of those concerns, some reformers moved in the direction of ensuring the health of American
-citizens. Many Americans viewed drunkenness as a major national problem, and the battle against alcohol and
-the many problems associated with it led many to join the temperance movement. Other reformers offered
-plans to increase physical well-being, instituting plans designed to restore vigor. Still others celebrated new
-sciences that would unlock the mysteries of human behavior and, by doing so, advance American civilization.
-TEMPERANCE
-According to many antebellum reformers, intemperance (drunkenness) stood as the most troubling problem
-in the United States, one that eroded morality, Christianity, and played a starring role in corrupting American
-democracy. Americans consumed huge quantities of liquor in the early 1800s, including gin, whiskey, rum,
-and brandy. Indeed, scholars agree that the rate of consumption of these drinks during the first three decades
-of the 1800s reached levels that have never been equaled in American history.
-A variety of reformers created organizations devoted to temperance, that is, moderation or self-restraint. Each
-of these organizations had its own distinct orientation and target audience. The earliest ones were formed in
-the 1810s in New England. The Massachusetts Society for the Suppression of Intemperance and the
-Connecticut Society for the Reformation of Morals were both formed in 1813. Protestant ministers led both
-organizations, which enjoyed support from New Englanders who clung to the ideals of the Federalist Party and
-later the Whigs. These early temperance societies called on individuals to lead pious lives and avoid sin,
-including the sin of overindulging in alcohol. They called not for the eradication of drinking but for a more
-restrained and genteel style of imbibing.
-The Drunkard’s Progress
-This 1840 temperance illustration (Figure 13.13) charts the path of destruction for those who drink. The step-by-
-step progression reads:
-“ Step 1. A glass with a friend.
-Step 2. A glass to keep the cold out.
-Step 3. A glass too much.
-Step 4. Drunk and riotous.
-Step 5. The summit attained. Jolly companions. A confirmed drunkard.
-Step 6. Poverty and disease.
-Step 7. Forsaken by Friends.
-Step 8. Desperation and crime.
-Step 9. Death by suicide.”
-AMERICANA
-13.3 • Reforms to Human Health
-337
-
-FIGURE 13.13 This 1846 image, The Drunkards Progress. From the First Glass to the Grave, by Nathaniel Currier,
-shows the destruction that prohibitionists thought could result from drinking alcoholic beverages.
-Who do you think was the intended audience for this engraving? How do you think different audiences (children,
-drinkers, nondrinkers) would react to the story it tells? Do you think it is an effective piece of propaganda? Why or
-why not?
-In the 1820s, temperance gained ground largely through the work of Presbyterian minister Lyman Beecher. In
-1825, Beecher delivered six sermons on temperance that were published the follow year as Six Sermons on the
-Nature, Occasions, Signs, Evils, and Remedy of Intemperance. He urged total abstinence from hard liquor and
-called for the formation of voluntary associations to bring forth a new day without spirits (whiskey, rum, gin,
-brandy). Lyman’s work enjoyed a wide readership and support from leading Protestant ministers as well as the
-emerging middle class; temperance fit well with the middle-class ethic of encouraging hard work and a sober
-workforce.
-In 1826, the American Temperance Society was formed, and by the early 1830s, thousands of similar societies
-had sprouted across the country. Members originally pledged to shun only hard liquor. By 1836, however,
-leaders of the temperance movement, including Beecher, called for a more comprehensive approach.
-Thereafter, most temperance societies advocated total abstinence; no longer would beer and wine be tolerated.
-Such total abstinence from alcohol is known as teetotalism.
-Teetotalism led to disagreement within the movement and a loss of momentum for reform after 1836.
-However, temperance enjoyed a revival in the 1840s, as a new type of reformer took up the cause against
-alcohol. The engine driving the new burst of enthusiastic temperance reform was the Washington Temperance
-Society (named in deference to George Washington), which organized in 1840. The leaders of the
-Washingtonians came not from the ranks of Protestant ministers but from the working class. They aimed their
-efforts at confirmed alcoholics, unlike the early temperance advocates who mostly targeted the middle class.
-Washingtonians welcomed the participation of women and children, as they cast alcohol as the destroyer of
-families, and those who joined the group took a public pledge of teetotalism. Americans flocked to the
-Washingtonians; as many as 600,000 had taken the pledge by 1844. The huge surge in membership had much
-to do with the style of this reform effort. The Washingtonians turned temperance into theater by dramatizing
-the plight of those who fell into the habit of drunkenness. Perhaps the most famous fictional drama put
-forward by the temperance movement was Ten Nights in a Bar-Room (1853), a novel that became the basis for
-popular theatrical productions. The Washingtonians also sponsored picnics and parades that drew whole
-families into the movement. The group’s popularity quickly waned in the late 1840s and early 1850s, when
-questions arose about the effectiveness of merely taking a pledge. Many who had done so soon relapsed into
-alcoholism.
-338
-13 • Antebellum Idealism and Reform Impulses, 1820–1860
-Access for free at openstax.org.
-
-Still, by that time, temperance had risen to a major political issue. Reformers lobbied for laws limiting or
-prohibiting alcohol, and states began to pass the first temperance laws. The earliest, an 1838 law in
-Massachusetts, prohibited the sale of liquor in quantities less than fifteen gallons, a move designed to make it
-difficult for ordinary workmen of modest means to buy spirits. The law was repealed in 1840, but
-Massachusetts towns then took the initiative by passing local laws banning alcohol. In 1845, close to one
-hundred towns in the state went “dry.”
-An 1839 Mississippi law, similar to Massachusetts’ original law, outlawed the sale of less than a gallon of liquor.
-Mississippi’s law illustrates the national popularity of temperance; regional differences notwithstanding,
-citizens in northern and southern states agreed on the issue of alcohol. Nonetheless, northern states pushed
-hardest for outlawing alcohol. Maine enacted the first statewide prohibition law in 1851. New England, New
-York, and states in the Midwest passed local laws in the 1850s, prohibiting the sale and manufacture of
-intoxicating beverages.
-REFORMS FOR THE BODY AND THE MIND
-Beyond temperance, other reformers looked to ways to maintain and improve health in a rapidly changing
-world. Without professional medical organizations or standards, health reform went in many different
-directions; although the American Medical Association was formed in 1847, it did not have much power to
-oversee medical practices. Too often, quack doctors prescribed regimens and medicines that did far more
-harm that good.
-Sylvester Graham stands out as a leading light among the health reformers in the antebellum years. A
-Presbyterian minister, Graham began his career as a reformer, lecturing against the evils of strong drink. He
-combined an interest in temperance with vegetarianism and sexuality into what he called a “Science of Human
-Life,” calling for a regimented diet of more vegetables, fruits, and grain, and no alcohol, meat, or spices.
-Graham advocated baths and cleanliness in general to preserve health; hydropathy, or water cures for various
-ailments, became popular in the United States in the 1840s and 1850s. He also viewed masturbation and
-excessive sex as a cause of disease and debility. His ideas led him to create what he believed to be a perfect
-food that would maintain health: the Graham cracker, which he invented in 1829. Followers of Graham, known
-as Grahamites, established boardinghouses where lodgers followed the recommended strict diet and sexual
-regimen.
-During the early nineteenth century, reformers also interested themselves in the workings of the mind in an
-effort to better understand the effects of a rapidly changing world awash with religious revivals and democratic
-movements. Phrenology—the mapping of the cranium to specific human attributes—stands as an early type of
-science, related to what would become psychology and devoted to understanding how the mind worked.
-Although their theories would ultimately be proven wrong, phrenologists believed that the mind contained
-thirty-seven “faculties,” the strengths or weaknesses of which could be determined by a close examination of
-the size and shape of the cranium (Figure 13.14).
-13.3 • Reforms to Human Health
-339
-
-FIGURE 13.14 This March 1848 cover of the American Phrenological Journal illustrates the different faculties of the
-mind as envisioned by phrenologists.
-Initially developed in Europe by Franz Joseph Gall, a German doctor, phrenology first came to the United
-States in the 1820s. In the 1830s and 1840s, it grew in popularity as lecturers crisscrossed the republic. It was
-sometimes used as an educational test, and like temperance, it also became a form of popular entertainment.
-While phrenology is now considered pseudoscience, Gall's assertion that different parts of the brain were
-responsible for different functions is viewed as an important scientific advance.
-CLICK AND EXPLORE
-Map the brain! Check out all thirty-seven of phrenology’s purported faculties (http://openstax.org/l/
-15Phrenology) of the mind.
-The popularity of phrenology offers us some insight into the emotional world of the antebellum United States.
-Its popularity speaks to the desire of those living in a rapidly changing society, where older ties to community
-and family were being challenged, to understand one another. It appeared to offer a way to quickly recognize
-an otherwise-unknown individual as a readily understood set of human faculties.
+1.32: Laying the foundation for public health priorities- Healthy People 2030
+Introduction
+Healthy People is a framework that provides direction regarding the nation’s most pressing public health challenges. This health initiative, coordinated by the Office of Disease Prevention and Health Promotion within the United States Department of Health and Human Services, is a future-oriented approach to promote health and prevent disease. At the start of each decade, measurable objectives are released with the intent to work toward their achievement over the next 10 years. The most recent edition is Healthy People 2030 . 1
+Table 1 lists the vision, mission, foundational principles, and overarching goals of Healthy People 2030 . While most of the overarching goals are similar to Healthy People 2020 , there are two notable changes. This iteration maintains an emphasis on health equity and social determinants of health (SDH/SDOH), but for the first time, explicitly states attaining health literacy as an area of focus. Additionally, as there is growing recognition of factors outside of the healthcare system that influence health, a new overarching goal was added to collaborate across public, private, and not-for-profit sectors to improve health and well-being. 1
+There are 355 measurable objectives included in Healthy People 2030 ; this represents a decrease from Healthy People 2020 , which had over 1,000 objectives. The number of objectives were intentionally reduced to bring attention to the highest-priority public health issues, diminish overlap, and use higher data standards than in previous decades. There is an online crosswalk available that shows how objectives have changed from 2020 to 2030. Users of Healthy People 2030 are encouraged to utilize the website to identify the needs and priority populations in their own communities and to take national data to set local targets for their programs. In this way, Healthy People helps guide the work of both public health and clinical health professionals. 1 Pharmacists have embraced their role in public health by providing services such as chronic disease management, counseling for smoking cessation, immunizations, emergency preparedness and response, and health education. Working with public health officials to solve health problems and using Healthy People 2030 objectives to identify priority areas of intervention justifies the essential role that pharmacists play in public health and improving the health of our communities and nation.
+Table 1 . Healthy People 2030 Framework 1
+| Item | Description |
+|---|---|
+| Vision | A society in which all people can achieve their full potential for health and well-being across the lifespan |
+| Mission | To promote, strengthen and evaluate the Nation’s efforts to improve the health and well-being of all people |
+| Foundational Principles |
+Health and well-being of all people and communities are essential to a thriving, equitable society
+Promoting health and well-being and preventing disease are linked efforts that encompass physical, mental, and social health dimensions Investing to achieve the full potential for health and well-being for all provides valuable benefits to society Achieving health and well-being requires eliminating health disparities, achieving health equity, and attaining health literacy. Healthy physical, social, and economic environments strengthen the potential to achieve health and well-being Promoting and achieving health and well-being nationwide is a shared responsibility that is distributed across the national, state, tribal, and community levels, including the public, private, and not-for-profit sectors Working to attain the full potential for health and well-being of the population is a component of decision-making and policy formulation across all sectors |
+| Overarching Goals |
+Attain healthy, thriving lives and well-being, free of preventable disease, disability, injury, and premature death
+Eliminate health disparities, achieve health equity, and attain health literacy to improve the health and well-being of all Create social, physical, and economic environments that promote attaining full potential for health and well-being for all Promote healthy development, healthy behaviors, and well-being across all life stages Engage leadership, key constituents, and the public across multiple sectors to take action and design policies that improve the health and well-being of all |
+Case and Questions
+You have been asked to serve on a public health advisory committee at the local health department. The committee has been tasked to create a roadmap to achieve public health goals for the local community. Your committee has decided to use Healthy People 2030 as a framework to understand the most pressing public health challenges. By using the findings from Healthy People, local health department activities will be more aligned with state and national public health priorities. You have also been asked to discuss the role of the pharmacist in helping to achieve Healthy People objective targets.
+To begin your work, navigate to: https://health.gov/healthypeople . Review the “Home” and “About” tabs to become more familiar with Healthy People 2030 and why this document is important.
+Select one of the leading health indicators (across the life spans) listed below:
+- Adults who receive a colorectal screening based on the most recent guidelines
+- Adults with hypertension whose blood pressure is under control
+- Cigarette smoking in adults
+- New cases of diagnosed diabetes in the population
+- Current use of any tobacco products among adolescents
+- Maternal deaths
+- Drug overdose deaths
+- Persons who are vaccinated annually against seasonal flu
+- Adolescents with major depressive episodes (MDE) who receive treatment
+- Persons who know their HIV status
+Click on the arrow next to “Objectives and Data.” Once in the drop-down menu you see two tabs: “Leading Health Indicators” and “Social Determinants of Health.” Work through these sections to complete the questions for your selected indicator.
+- What is the overall purpose of Healthy People 2030 ? Describe the purpose of the leading health indicators (LHIs). What is the focus of the indicators and what do they address?
+- Review the leading health indicator you selected, and health behaviors associated with the indicator. Click on the indicator highlighted in blue in this section. This will take you to an objective overview page. On the top of the page you will see the objective for your leading health indicator and status for this objective. Below the baseline status is a summary and topic (health behavior) the objective. What was the objective for your leading health indicator? What was the baseline for your leading health indicator objective? What is the target for 2030? In the “Data methodology and measurement” section on this page, what were the changes for this objective from Healthy People 2020 to Healthy People 2030 ? Do you think these changes will impact the measurement of this objective? If so, how?
+- After reviewing the status of your leading health indicator objective and reading the summary, click on the topic (health behavior) in blue. Select 2-3 objectives from this page that you may be interested in and review. What is the current status of each of the objectives you selected? What is the target for 2030? Do you think we will be on target to achieve this objective(s)? Why or why not? What are the opportunities and challenges for pharmacists and student pharmacists in helping to achieve the objective targets?
+- Next go to the “Social Determinants” tab. What are the social determinants of health? Which determinants of health should be considered? How can pharmacists and student pharmacists help to address these determinants of health?
+- Why is it important for pharmacists and student pharmacists to use information from Healthy People 2030 in the planning of public health programs and interventions?
+Author Commentary
+Pharmacists have had long-standing roles in public health activities, and Healthy People provides direction for the profession’s continued efforts. 2-3 Pharmacists and student pharmacists can impact many of the objectives included in Healthy People 2030 directly or as members of interdisciplinary teams. Although pharmacists have made significant contributions to public health, gaps in services exist in our communities. The pharmacists’ role in public health must be broadened and include collaboration with other public health professionals to improve access to care and health equity. Increasingly, pharmacists have been incorporated into a wide range of public health initiatives, including disease surveillance, community outreach, chronic disease management, emergency preparedness, and vaccinations. Additional roles that would support community health and the public health infrastructure include participating in community needs assessments and monitoring health outcomes. Other roles may also include program planning and evaluation, policy development and analysis, and health informatics. To be most effective in these expanded roles, it will be important that pharmacists in all practice settings have greater access to data from public health and healthcare health information exchanges and surveillance systems. 4
+Student pharmacists must receive adequate education and training to deliver a full range of public health interventions that address health problems and support patients in understanding and navigating an increasingly complex healthcare system. To that end, the Healthy People Curriculum Task Force (HPCTF), a group of representatives from eight health professional education associations, including the American Association of Colleges of Pharmacy, have created the Clinical Prevention and Population Health Curriculum Framework as guidance on topic areas to be included in health professions education to prepare students to impact population health. 5
+Patient Approaches and Opportunities
+Even if not an “official” part of their job title or description, by the very nature of their work, pharmacists impact public health every day. Similarly, student pharmacists who intern in pharmacies, administer immunizations, or perform outreach activities focused on areas including patient screening and community education are also engaged in public health activities. These interventions at the individual or local level are termed the “micro” level of public health and roll up to big changes at the population, or “macro” level. 2,3 The Healthy People objectives guide where these efforts should be focused to make the greatest impact. Additionally, the Healthy People website includes evidence-based resources that can be used or adapted when planning action on the topic areas. 1
+Healthy People also has an emphasis on health equity, SDH/SDOH, and health literacy. 1 Health equity is key to ensuring that everyone has fair opportunity to attain their full health potential. 6 SDH/SDOH are the non-medical factors that affect people’s health, well-being, and quality of life. Healthy People 2030 has an increased and overarching focus on social determinants of health as they are key to attaining better health and well-being. Healthy People 2030 now defines and differentiates personal health literacy and organizational health literacy. It is important for pharmacists to not only assess patients’ understanding and involve them in decision-making, but also to realize that pharmacies, pharmacy organizations, and healthcare systems have a responsibility to address health literacy. 1 Pharmacists’ recognition and action on these areas are key to improving the nation’s health.
+Related chapters of interest:
+- Deciphering immunization codes: making evidence-based recommendations
+- Getting to the point: importance of immunizations for public health
+- Hormonal contraception: from emergency coverage to long-term therapy
+- From belly to baby: preparing for

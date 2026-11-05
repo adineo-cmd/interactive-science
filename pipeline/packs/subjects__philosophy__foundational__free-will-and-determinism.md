@@ -1,9 +1,44 @@
 # Source pack — subjects/philosophy/foundational/free-will-and-determinism
 Lesson title: Free Will & Determinism
 Level: foundational
-Match confidence: 1.54
+Match confidence: 2.05
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 2.05 — LibreTexts: 8.1.2: Determinism
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://human.libretexts.org/Courses/American_River_College/HUM_301%3A_Introduction_to_Humanities_Textbook_(Collom)/08%3A_Freedom/8.01%3A_Freedom_of_the_Will/8.1.02%3A_Determinism
+
+8.1.2: Determinism
+-
+- Last updated
+- Save as PDF
+“Physical Determinism” 33
+Physical determinism generally refers to the assertion of a deterministic physical universe (greater physical system). This holds that a complete description of the physical state of the world at any given time and a complete statement of the physical laws of nature together entail every truth as to what physical events happen after that time. In a scientific context, the term 'event' is somewhat technical, depending upon which theory one is considering, and basically is the occurrence of some 'state' peculiar to that theory, for example, a quantum state or a thermodynamic state. Physical determinism includes (but is not restricted to) nomological determinism, which holds that all future events are governed by the past or present according to all-encompassing deterministic laws.
+The concept of physical determinism has also been used to denote the predictability of a physical system, although this usage is uncommon. Physical determinism can also be viewed as an observed phenomenon of our experience, or a thesis only relevant to mathematical models of physics and other physical sciences. Physical determinism has also been used as a specific deterministic hypothesis about human behavior. Although somewhat unrelated to its standard context, physical determinism has also been used in social engineering theory.
+History
+The notion of physical determinism takes its classical form in the ideas of Laplace, who posited (in agreement with the physics of his time) that an omniscient observer (called sometimes Laplace's demon) knowing with infinite precision the positions and velocities of every particle in the universe could predict the future entirely. Although such an omniscient observer is a hypothetical construct, and infinite precision exceeds the capacities of human measurement, the illustration is presented as a statement of what in principle would be possible if physical determinism were true, and so reduction to practice is not an issue.
+Physical determinism is currently under heavy debate in modern science. For example, physical indeterminism has been proposed to accommodate various interpretations of quantum mechanics. Suggestions have also been made to reformulate the conception of determinism with respect to its application to physical law.
+Causal completeness
+Physical determinism is related to the question of causal completeness of physics, which is synonymous with the weaker form of causal closure. This is the idea that every real event has a scientific explanation, that science need not search for explanations beyond itself. If causal completeness does not apply to everything in the universe, then the door is open to events that are not subject to physical law. For example, a relatively common view of mental events is that they are an epiphenomenon produced as a by-product of neurological activity, and without causal impact. In this case, only a failure of deterministic physical law would allow room for their causal significance.
+Other formulations
+A more modern formulation of physical determinism skirts the issue of causal completeness. It is based upon connections between 'events' supplied by a theory:
+"a theory is deterministic if, and only if, given its state variables for some initial period, the theory logically determines a unique set of values for those variables for any other period."
+— Ernest Nagel, Alternative descriptions of physical state p. 292
+This quote replaces the idea of 'cause-and-effect' with that of 'logical implication' according to one or another theory that connects events. In addition, an 'event' is related by the theory itself to formalized states described using the parameters defined by that theory. Thus, the details of interpretation are placed where they belong, fitted to the context in which the chosen theory applies. Using the definition of physical determinism above, the limitations of a theory to some particular domain of experience also limits the associated definition of 'physical determinism' to that same domain.
+“Determinism” 34
+Determinism is the philosophical position that for every event there exist conditions that could cause no other event. "There are many determinisms, depending on what pre-conditions are considered to be determinative of an event or action." Deterministic theories throughout the history of philosophy have sprung from diverse and sometimes overlapping motives and considerations. Some forms of determinism can be empirically tested with ideas from physics and the philosophy of physics. The opposite of determinism is some kind of indeterminism (otherwise called nondeterminism). Determinism is often contrasted with free will.
+Determinism often is taken to mean causal determinism, which in physics is known as cause-and-effect. It is the concept that events within a given paradigm are bound by causality in such a way that any state (of an object or event) is completely determined by prior states. This meaning can be distinguished from other varieties of determinism mentioned below.
+Other debates often concern the scope of determined systems, with some maintaining that the entire universe is a single determinate system and others identifying other more limited determinate systems (or multiverse). Numerous historical debates involve many philosophical positions and varieties of determinism. They include debates concerning determinism and free will, technically denoted as compatibilistic (allowing the two to coexist) and incompatibilistic (denying their coexistence is a possibility).
+Determinism should not be confused with self-determination of human actions by reasons, motives, and desires. Determinism rarely requires that perfect prediction be practically possible.
+Varieties
+Below are some of the more common viewpoints meant by, or confused with "determinism".
+- Causal determinism is "the idea that every event is necessitated by antecedent events and conditions together with the laws of nature". However, causal determinism is a broad enough term to consider that "one's deliberations, choices, and actions will often be necessary links in the causal chain that brings something about. In other words, even though our deliberations, choices, and actions are themselves determined like everything else, it is still the case, according to causal determinism, that the occurrence or existence of yet other things depends upon our deliberating, choosing and acting in a certain way". Causal determinism proposes that there is an unbroken chain of prior occurrences stretching back to the origin of the universe. The relation between events may not be specified, nor the origin of that universe. Causal determinists believe that there is nothing in the universe that is uncaused or self-caused. Historical determinism (a sort of path dependence) can also be synonymous with causal determinism. Causal determinism has also been considered more generally as the idea that everything that happens or exists is caused by antecedent conditions. In the case of nomological determinism, these conditions are considered events also, implying that the future is determined completely by preceding events—a combination of prior states of the universe and the laws of nature. Yet they can also be considered metaphysical of origin (such as in the case of theological determinism).
+- Nomological determinism is the most common form of causal determinism. It is the notion that the past and the present dictate the future entirely and necessarily by rigid natural laws, that every occurrence results inevitably from prior events. Quantum mechanics and various interpretations thereof pose a serious challenge to this view. Nomological determinism is sometimes illustrated by the thought experiment of Laplace's demon. Nomological determinism is sometimes called 'scientific' determinism, although that is a misnomer. Physical determinism is generally used synonymously with nomological determinism (its opposite being physical indeterminism).
+- Necessitarianism is closely related to the causal determinism described above. It is a metaphysical principle that denies all mere possibility; there is exactly one way for the world to be. Leucippus claimed there were no uncaused events, and that everything occurs for a reason and by necessity.
+- Predeterminism is the idea that all events are determined in advance. The concept of predeterminism is often argued by invoking causal determinism, implying that there is an unbroken chain of prior occurrences stretching back to the origin of the universe. In the case of predeterminism, this chain of events has been pre-established, and human actions cannot interfere with the outcomes of this pre-established chain. Predeterminism can be used to mean such pre-established causal determinism, in which case it is categorised as a specific type of determinism. It can also be used interchangeably with causal determinism—in the context of its capacity to determine future events. Despite this, predeterminism is often considered as independent of causal determinism. The term predeterminism is also frequently used in the context of biology and hereditary, in which case it represents a form of biological determinism.
+- Fatalism is normally distinguished from "determinism" and it is a form of teleological determinism. Fatalism is the idea that everything is fated to happen, so that humans have no control over their future. Fate has arbitrary power, and need not follow any causal or otherwise deterministic laws. Types of Fatalism include hard theological determinism and the idea of predestination, where there is a God who determines all that humans will do. This may be accomplished either by knowing their actions in advance, via some form of omniscience or by decreeing their actions in advance.
+- Theological determinism is a form of determinism which states that all events that happen are pre-ordained, or predestined to happen, by a monotheistic deity, or that they are destined to occur given its omniscience. Two forms of theological determinism exist, here referenced as strong and weak theological determinism. The first one, strong theological determinism, is based on the concept of a creator deity dictating all events in history: "everything that happens has been predestined to happen by an omniscient, omnipotent divinity". The second form, weak theological determinism, is based on the concept of divine foreknowledge—"because God's omniscience is perfect, what God knows about the future will inevitably happen, which means, consequently, that the future is already fixed". There exist slight variations on the above categorisation. Some claim that theological determinism requires predestination of all events and outcomes by the divinity (i.e. they do not classify the weaker version as 'theological determinism' unless libertarian free will is assumed to be denied as a consequence), or that the weaker version does not constitute 'theological determinism' at all. With respect to free will, "theological determinism is the thesis that God exists and has infallible knowledge of all true propositions including propositions about our future actions", more minimal criteria designed to encapsulate all forms of theological determinism. Theological determinism can also be seen as a form of causal determinism, in which the antecedent conditions are the nature and will of God.
+- Logical determinism or Determinateness is the notion that all propositions, whether about the past, present, or future, are either true or false. Note that one can support Causal Determinism without necessarily supporting Logical Determinism and vice versa (depending on one's views on the nature of time, but also randomness). The problem of free will is especially salient now with Logical Determinism: how can choices be free, given that propositions about the future already have a truth value in the present (i.e. it
 
 ## Match 1.54 — Introduction_to_Philosophy-WEB_cszrKYp § 6.4 Free Will
 
@@ -50,387 +85,11 @@ Wikimedia, Public Doman)
 Access for free at openstax.org
 
 
-## Match 1.53 — UniversityPhysicsVolume3-WEB § 9.4 Free Electron Model of Metals
+## Match 1.53 — LibreTexts: 14.5: Free-Body Diagrams
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/Merrimack_College/Conservation_Laws_Newton's_Laws_and_Kinematics_version_2.0/14%3A_N1)_Newton's_Laws/14.05%3A_Free-Body_Diagrams
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Describe the classical free electron model of metals in terms of the concept electron number density
-•
-Explain the quantum free-electron model of metals in terms of Pauli’s exclusion principle
-•
-Calculate the energy levels and energy-level spacing of a free electron in a metal
-Metals, such as copper and aluminum, are held together by bonds that are very different from those of
-molecules. Rather than sharing and exchanging electrons, a metal is essentially held together by a system of
-free electrons that wander throughout the solid. The simplest model of a metal is the free electron model.
-This model views electrons as a gas. We first consider the simple one-dimensional case in which electrons
-move freely along a line, such as through a very thin metal rod. The potential function U(x) for this case is a
-one-dimensional infinite square well where the walls of the well correspond to the edges of the rod. This model
-ignores the interactions between the electrons but respects the exclusion principle. For the special case of
-N electrons fill up the energy levels, from lowest to highest, two at a time (spin up and spin down),
-until the highest energy level is filled. The highest energy filled is called the Fermi energy.
-The one-dimensional free electron model can be improved by considering the three-dimensional case:
-electrons moving freely in a three-dimensional metal block. This system is modeled by a three-dimensional
-9.4 • Free Electron Model of Metals
-409
-
-infinite square well. Determining the allowed energy states requires us to solve the time-independent
-Schrödinger equation
-where we assume that the potential energy inside the box is zero and infinity otherwise. The allowed wave
-functions describing the electron’s quantum states can be written as
-where
-and
-are positive integers representing quantum numbers corresponding to the motion in the
-x-, y-, and z-directions, respectively, and
-are the dimensions of the box in those directions.
-Equation 9.27 is simply the product of three one-dimensional wave functions. The allowed energies of an
-electron in a cube
-are
-Associated with each set of quantum numbers
-are two quantum states, spin up and spin down. In a
-real material, the number of filled states is enormous. For example, in a cubic centimeter of metal, this
-number is on the order of
-Counting how many particles are in which state is difficult work, which often
-requires the help of a powerful computer. The effort is worthwhile, however, because this information is often
-an effective way to check the model.
-EXAMPLE 9.4
-Energy of a Metal Cube
-Consider a solid metal cube of edge length 2.0 cm. (a) What is the lowest energy level for an electron within the
-metal? (b) What is the spacing between this level and the next energy level?
-Strategy
-An electron in a metal can be modeled as a wave. The lowest energy corresponds to the largest wavelength and
-smallest quantum number:
-Equation 9.28 supplies this “ground state” energy value.
-Since the energy of the electron increases with the quantum number, the next highest level involves the
-smallest increase in the quantum numbers, or
-or (1, 1, 2).
-Solution
-The lowest energy level corresponds to the quantum numbers
-From Equation 9.28, the
-energy of this level is
-The next-higher energy level is reached by increasing any one of the three quantum numbers by 1. Hence,
-there are actually three quantum states with the same energy. Suppose we increase
-by 1. Then the energy
-becomes
-9.26
-9.27
-ℏ
-9.28
-410
-9 • Condensed Matter Physics
-Access for free at openstax.org.
-
-The energy spacing between the lowest energy state and the next-highest energy state is therefore
-Significance
-This is a very small energy difference. Compare this value to the average kinetic energy of a particle,
-,
-where
-is Boltzmann’s constant and T is the temperature. The product
-is about 1000 times greater than
-the energy spacing.
-CHECK YOUR UNDERSTANDING 9.4
-What happens to the ground state energy of an electron if the dimensions of the solid increase?
-Often, we are not interested in the total number of particles in all states, but rather the number of particles dN
-with energies in a narrow energy interval. This value can be expressed by
-where n(E) is the electron number density, or the number of electrons per unit volume; g(E) is the density of
-states, or the number of allowed quantum states per unit energy; dE is the size of the energy interval; and F is
-the Fermi factor. The Fermi factor is the probability that the state will be filled. For example, if g(E)dE is 100
-available states, but F is only
-, then the number of particles in this narrow energy interval is only five.
-Finding g(E) requires solving Schrödinger’s equation (in three dimensions) for the allowed energy levels. The
-calculation is involved even for a crude model, but the result is simple:
-where V is the volume of the solid,
-is the mass of the electron, and E is the energy of the state. Notice that
-the density of states increases with the square root of the energy. More states are available at high energy than
-at low energy. This expression does not provide information of the density of the electrons in physical space,
-but rather the density of energy levels in “energy space.” For example, in our study of the atomic structure, we
-learned that the energy levels of a hydrogen atom are much more widely spaced for small energy values (near
-than ground state) than for larger values.
-This equation tells us how many electron states are available in a three-dimensional metallic solid. However, it
-does not tell us how likely these states will be filled. Thus, we need to determine the Fermi factor, F. Consider
-the simple case of
-. From classical physics, we expect that all the electrons
-would
-simply go into the ground state to achieve the lowest possible energy. However, this violates Pauli’s exclusion
-principle, which states that no two electrons can be in the same quantum state. Hence, when we begin filling
-the states with electrons, the states with lowest energy become occupied first, then states with progressively
-higher energies. The last electron we put in has the highest energy. This energy is the Fermi energy
-of the
-free electron gas. A state with energy
-is occupied by a single electron, and a state with energy
-is unoccupied. To describe this in terms of a probability F(E) that a state of energy E is occupied, we write for
-:
-9.29
-9.30
-9.4 • Free Electron Model of Metals
-411
-
-The density of states, Fermi factor, and electron number density are plotted against energy in Figure 9.12.
-Figure 9.12
-(a) Density of states for a free electron gas; (b) probability that a state is occupied at
-; (c) density of occupied states
-at
-.
-A few notes are in order. First, the electron number density (last row) distribution drops off sharply at the
-Fermi energy. According to the theory, this energy is given by
-Fermi energies for selected materials are listed in the following table.
-Element
-Conduction Band Electron Density
-Free-Electron Model Fermi Energy
-Table 9.3 Conduction Electron Densities and Fermi Energies for Some Metals
-Note also that only the graph in part (c) of the figure, which answers the question, “How many particles are
-found in the energy range?” is checked by experiment. The Fermi temperature or effective “temperature” of
-an electron at the Fermi energy is
-EXAMPLE 9.5
-Fermi Energy of Silver
-Metallic silver is an excellent conductor. It has
-conduction electrons per cubic meter. (a) Calculate
-its Fermi energy. (b) Compare this energy to the thermal energy
-of the electrons at a room temperature of
-300 K.
-Solution
-a.
-From Equation 9.31, the Fermi energy is
-9.31
-9.32
-412
-9 • Condensed Matter Physics
-Access for free at openstax.org.
-
-This is a typical value of the Fermi energy for metals, as can be seen from Table 9.3.
-b.
-We can associate a Fermi temperature
-with the Fermi energy by writing
-We then find for
-the Fermi temperature
-which is much higher than room temperature and also the typical melting point
-of a metal. The
-ratio of the Fermi energy of silver to the room-temperature thermal energy is
-To visualize how the quantum states are filled, we might imagine pouring water slowly into a glass, such as that
-of Figure 9.13. The first drops of water (the electrons) occupy the bottom of the glass (the states with lowest
-energy). As the level rises, states of higher and higher energy are occupied. Furthermore, since the glass has a
-wide opening and a narrow stem, more water occupies the top of the glass than the bottom. This reflects the
-fact that the density of states g(E) is proportional to
-, so there is a relatively large number of higher energy
-electrons in a free electron gas. Finally, the level to which the glass is filled corresponds to the Fermi energy.
-Figure 9.13
-An analogy of how electrons fill energy states in a metal. As electrons fill energy states, lowest to highest, the number of
-available states increases. The highest energy state (corresponding to the water line) is the Fermi energy. (credit: modification of work by
-“Didriks”/Flickr)
-Suppose that at
-, the number of conduction electrons per unit volume in our sample is
-. Since each
-field state has one electron, the number of filled states per unit volume is the same as the number of electrons
-per unit volume.
-9.4 • Free Electron Model of Metals
-413
-
-
-## Match 1.53 — UniversityPhysicsVol1-WEB § 3.5 Free Fall
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Use the kinematic equations with the variables y and g to analyze free-fall motion.
-•
-Describe how the values of the position, velocity, and acceleration change during a free fall.
-•
-Solve for the position, velocity, and acceleration as functions of time when an object is in a free fall.
-An interesting application of Equation 3.4 through Equation 3.14 is called free fall, which describes the motion
-of an object falling in a gravitational field, such as near the surface of Earth or other celestial objects of
-planetary size. Let’s assume the body is falling in a straight line perpendicular to the surface, so its motion is
-one-dimensional. For example, we can estimate the depth of a vertical mine shaft by dropping a rock into it
-and listening for the rock to hit the bottom. But “falling,” in the context of free fall, does not necessarily imply
-the body is moving from a greater height to a lesser height. If a ball is thrown upward, the equations of free fall
-apply equally to its ascent as well as its descent.
-Gravity
-The most remarkable and unexpected fact about falling objects is that if air resistance and friction are
-negligible, then in a given location all objects fall toward the center of Earth with the same constant
-acceleration, independent of their mass. This experimentally determined fact is unexpected because we are so
-accustomed to the effects of air resistance and friction that we expect light objects to fall slower than heavy
-ones. Until Galileo Galilei (1564–1642) proved otherwise, people believed that a heavier object has a greater
-acceleration in a free fall. We now know this is not the case. In the absence of air resistance, heavy objects
-arrive at the ground at the same time as lighter objects when dropped from the same height Figure 3.26.
-Figure 3.26
-A hammer and a feather fall with the same constant acceleration if air resistance is negligible. This is a general characteristic
-of gravity not unique to Earth, as astronaut David R. Scott demonstrated in 1971 on the Moon, where the acceleration from gravity is only
-1.67 m/s2 and there is no atmosphere.
-In the real world, air resistance can cause a lighter object to fall slower than a heavier object of the same size. A
-tennis ball reaches the ground after a baseball dropped at the same time. (It might be difficult to observe the
-difference if the height is not large.) Air resistance opposes the motion of an object through the air, and friction
-between objects—such as between clothes and a laundry chute or between a stone and a pool into which it is
-dropped—also opposes motion between them.
-For the ideal situations of these first few chapters, an object falling without air resistance or friction is defined
-to be in free fall. The force of gravity causes objects to fall toward the center of Earth. The acceleration of free-
-3.5 • Free Fall
-129
-
-falling objects is therefore called acceleration due to gravity. Acceleration due to gravity is constant, which
-means we can apply the kinematic equations to any falling object where air resistance and friction are
-negligible. This opens to us a broad class of interesting situations.
-Acceleration due to gravity is so important that its magnitude is given its own symbol, g. It is constant at any
-given location on Earth and has the average value
-Although g varies from 9.78 m/s2 to 9.83 m/s2, depending on latitude, altitude, underlying geological
-formations, and local topography, let’s use an average value of 9.8 m/s2 rounded to two significant figures in
-this text unless specified otherwise. Neglecting these effects on the value of g as a result of position on Earth’s
-surface, as well as effects resulting from Earth’s rotation, we take the direction of acceleration due to gravity to
-be downward (toward the center of Earth). In fact, its direction defines what we call vertical. Note that whether
-acceleration a in the kinematic equations has the value +g or −g depends on how we define our coordinate
-system. If we define the upward direction as positive, then
-and if we define the downward
-direction as positive, then
-.
-One-Dimensional Motion Involving Gravity
-The best way to see the basic features of motion involving gravity is to start with the simplest situations and
-then progress toward more complex ones. So, we start by considering straight up-and-down motion with no air
-resistance or friction. These assumptions mean the velocity (if there is any) is vertical. If an object is dropped,
-we know the initial velocity is zero when in free fall. When the object has left contact with whatever held or
-threw it, the object is in free fall. When the object is thrown, it has the same initial speed in free fall as it did
-before it was released. When the object comes in contact with the ground or any other object, it is no longer in
-free fall and its acceleration of g is no longer valid. Under these circumstances, the motion is one-dimensional
-and has constant acceleration of magnitude g. We represent vertical displacement with the symbol y.
-PROBLEM-SOLVING STRATEGY
-Free Fall
-1.
-Decide on the sign of the acceleration of gravity. In Equation 3.15 through Equation 3.17, acceleration g is
-negative, which says the positive direction is upward and the negative direction is downward. In some
-problems, it may be useful to have acceleration g as positive, indicating the positive direction is downward.
-2.
-Draw a sketch of the problem. This helps visualize the physics involved.
-3.
-Record the knowns and unknowns from the problem description. This helps devise a strategy for selecting
-the appropriate equations to solve the problem.
-4.
-Decide which of Equation 3.15 through Equation 3.17 are to be used to solve for the unknowns.
-Kinematic Equations for Objects in Free Fall
-We assume here that acceleration equals −g (with the positive direction upward).
-3.15
-3.16
-3.17
-130
-3 • Motion Along a Straight Line
-Access for free at openstax.org.
-
-EXAMPLE 3.14
-Free Fall of a Ball
-Figure 3.27 shows the positions of a ball, at 1-s intervals, with an initial velocity of 4.9 m/s downward, that is
-thrown from the top of a 98-m-high building. (a) How much time elapses before the ball reaches the ground?
-(b) What is the velocity when it arrives at the ground?
-Figure 3.27
-The positions and velocities at 1-s intervals of a ball thrown downward from a tall building at 4.9 m/s.
-Strategy
-Choose the origin at the top of the building with the positive direction upward and the negative direction
-downward. To find the time when the position is −98 m, we use Equation 3.16, with
-.
-Solution
-a.
-Substitute the given values into the equation:
-This simplifies to
-This is a quadratic equation with roots
-. The positive root is the one we are
-interested in, since time
-is the time when the ball is released at the top of the building. (The time
-represents the fact that a ball thrown upward from the ground would have been in the air for 5.0
-s when it passed by the top of the building moving downward at 4.9 m/s.)
-b.
-Using Equation 3.15, we have
-Significance
-For situations when two roots are obtained from a quadratic equation in the time variable, we must look at the
-physical significance of both roots to determine which is correct. Since
-corresponds to the time when the
-ball was released, the negative root would correspond to a time before the ball was released, which is not
-physically meaningful. When the ball hits the ground, its velocity is not immediately zero, but as soon as the
-ball interacts with the ground, its acceleration is not g and it accelerates with a different value over a short time
-to zero velocity. This problem shows how important it is to establish the correct coordinate system and to keep
-the signs of g in the kinematic equations consistent.
-3.5 • Free Fall
-131
-
-EXAMPLE 3.15
-Vertical Motion of a Baseball
-A batter hits a baseball straight upward at home plate and the ball is caught 5.0 s after it is struck Figure 3.28.
-(a) What is the initial velocity of the ball? (b) What is the maximum height the ball reaches? (c) How long does it
-take to reach the maximum height? (d) What is the acceleration at the top of its path? (e) What is the velocity of
-the ball when it is caught? Assume the ball is hit and caught at the same location.
-Figure 3.28
-A baseball hit straight up is caught by the catcher 5.0 s later.
-Strategy
-Choose a coordinate system with a positive y-axis that is straight up and with an origin that is at the spot where
-the ball is hit and caught.
-Solution
-a.
-Equation 3.16 gives
-which gives
-.
-b.
-At the maximum height,
-. With
-, Equation 3.17 gives
-or
-c.
-To find the time when
-, we use Equation 3.15:
-This gives
-. Since the ball rises for 2.5 s, the time to fall is 2.5 s.
-d.
-The acceleration is 9.8 m/s2 everywhere, even when the velocity is zero at the top of the path. Although the
-velocity is zero at the top, it is changing at the rate of 9.8 m/s2 downward.
-e.
-The velocity at
-can be determined with Equation 3.15:
-132
-3 • Motion Along a Straight Line
-Access for free at openstax.org.
-
-Significance
-The ball returns with the speed it had when it left. This is a general property of free fall for any initial velocity.
-We used a single equation to go from throw to catch, and did not have to break the motion into two segments,
-upward and downward. We are used to thinking that the effect of gravity is to create free fall downward toward
-Earth. It is important to understand, as illustrated in this example, that objects moving upward away from
-Earth are also in a state of free fall.
-CHECK YOUR UNDERSTANDING 3.7
-A chunk of ice breaks off a glacier and falls 30.0 m before it hits the water. Assuming it falls freely (there is no
-air resistance), how long does it take to hit the water? Which quantity increases faster, the speed of the ice
-chunk or its distance traveled?
-EXAMPLE 3.16
-Rocket Booster
-A small rocket with a booster blasts off and heads straight upward. When at a height of
-and velocity of
-200.0 m/s, it releases its booster. (a) What is the maximum height the booster attains? (b) What is the velocity
-of the booster at a height of 6.0 km? Neglect air resistance.
-Figure 3.29
-A rocket releases its booster at a given height and velocity. How high and how fast does the booster go?
-3.5 • Free Fall
-133
-
-Strategy
-We need to select the coordinate system for the acceleration of gravity, which we take as negative downward.
-We are given the initial velocity of the booster and its height. We consider the point of release as the origin. We
-know the velocity is zero at the maximum position within the acceleration interval; thus, the velocity of the
-booster is zero at its maximum height, so we can use this information as well. From these observations, we use
-Equation 3.17, which gives us the maximum height of the booster. We also use Equation 3.17 to give the
-velocity at 6.0 km. The initial velocity of the booster is 200.0 m/s.
-Solution
-a.
-From Equation 3.17,
-. With
-, we can solve for y:
-This solution gives the maximum height of the booster in our coordinate system, which has its origin at
-the point of release, so the maximum height of the booster is roughly 7.0 km.
-b.
-An altitude of 6.0 km corresponds to
-in the coordinate system we are using. The other
-initial conditions are
-.
-We have, from Equation 3.17,
-Significance
-We have both a positive and negative solution in (b). Since our coordinate system has the positive direction
-upward, the +142.8 m/s corresponds to a positive upward velocity at 6000 m during the upward leg of the
-trajectory of the booster. The value v = −142.8 m/s corresponds to the velocity at 6000 m on the downward leg.
-This example is also important in that an object is given an initial velocity at the origin of our coordinate
-system, but the origin is at an altitude above the surface of Earth, which must be taken into account when
-forming the solution.
-INTERACTIVE
-Visit this site (https://openstax.org/l/21equatgraph) to learn about graphing polynomials. The shape of the
-curve changes as the constants are adjusted. View the curves for the individual terms (for example, y = bx) to
-see how they add to generate the polynomial curve.
+14.5: Free-Body Diagrams
+Trying to draw every single force acting on every single object can very quickly become pretty messy. And anyway, this is not usually what we need: what we need is to separate cleanly all the forces acting on any given object, one object at a time, so we can apply Newton’s second law, \(F_{net} = ma\), to each object individually.
+In order to accomplish this, we use what are known as free-body diagrams . In a free-body diagram, a potentially very complicated object is replaced symbolically by a dot or a small circle, and all the forces acting on the object are drawn (approximately to scale and properly labeled) as acting on the dot. Regardless of whether a force is a pulling or pushing force, the convention is to always draw it as a vector that originates at the dot . If the system is accelerating, it is also a good idea to indicate the acceleration’s direction also somewhere on the diagram.
+The figure below shows, as an example, a free-body diagram for a block, in the presence of both a nonzero acceleration and a friction force. The diagram includes all the forces, even gravity and the normal force.
+Note that I have drawn \(F^n\) and the force of gravity \(F^G_{E,1}\) as having the same magnitude, since there is no vertical acceleration for that block. If I know the value of the friction force, I should also try to draw \(F^k\) approximately to scale with the other two forces. Then, since I know that there is an acceleration to the right, I need to draw \(F^t\) greater than \(F^k\), since the net force on the block must be to the right as well.

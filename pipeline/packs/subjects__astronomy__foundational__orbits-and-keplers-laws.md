@@ -5,6 +5,38 @@ Match confidence: 2.42
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
+## Match 2.42 — LibreTexts: 13.2: Kepler's Laws
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/Merrimack_College/Conservation_Laws_Newton's_Laws_and_Kinematics_version_2.0/13%3A_Application_-_Orbits_and_Kepler's_Laws/13.02%3A_Kepler's_Laws
+
+13.2: Kepler's Laws
+Kepler's Laws
+The first great success of Newton’s theory was to account for the results that Johannes Kepler had extracted from astronomical data on the motion of the planets around the sun. Kepler had managed to find a number of regularities in a mountain of data (most of which were observations by his mentor, the Danish astronomer Tycho Brahe), and expressed them in a succinct way in mathematical form. These results have come to be known as Kepler’s laws , and they are as follows:
+- The planets move around the sun in elliptical orbits, with the sun at one focus of the ellipse
+- (Law of areas) A line that connects the planet to the sun (the planet’s position vector) sweeps equal areas in equal times.
+- The square of the orbital period of any planet is proportional to the cube of the semimajor axis of its orbit (the same proportionality constant holds for all the planets).
+I have discussed the first “law” at length in the previous section, and also pointed out that the math necessary to prove it is far from trivial. The second law, on the other hand, while it sounds complicated, turns out to be a straightforward consequence of the conservation of angular momentum. To see what it means, consider Figure \(\PageIndex{7}\).
+Figure \(\PageIndex{7}\): Illustrating Kepler’s law of areas. The two gray “curved triangles” have the same area, so the particle must take the same time to go from A to A\(^{\prime}\) as it does to go from B to B\(^{\prime}\).
+Suppose that, at some time \(t_A\), the particle is at point A, and a time \(\Delta t\) later it has moved to A\(^{\prime}\). The area “swept” by its position vector is shown in grey in the figure, and Kepler’s second law states that it must be the same, for the same time interval, at any point in the trajectory; so, for instance, if the particle starts out at B instead, then in the same time interval \(\Delta t\) it will move to a point B\(^{\prime}\) such that the area of the “curved triangle” OBB\(^{\prime}\) equals the area of OAA\(^{\prime}\).
+Qualitatively, this means that the particle needs to move more slowly when it is farther from the center of attraction, and faster when it is closer. Quantitatively, this actually just means that its angular momentum is constant! To see this, note that the straight distance from A to A\(^{\prime}\) is the displacement vector \(\Delta \vec{r}_A\), which, for a sufficiently short interval \(\Delta t\), will be approximately equal to \(\vec{v}_A \Delta t\). Again, for small \(\Delta t\), the area of the curved triangle will be approximately the same as that of the straight triangle OAA\(^{\prime}\). It is a well-known result in trigonometry that the area of a triangle is equal to 1/2 the product of the lengths of any two of its sides times the sine of the angle they make. So, if the two triangles in the figures have the same areas, we must have
+\[ \left|\vec{r}_{A}\right|\left|\vec{v}_{A}\right| \Delta t \sin \theta_{A}=\left|\vec{r}_{B}\right|\left|\vec{v}_{B}\right| \Delta t \sin \theta_{B} \label{eq:10.17} \]
+and we recognize here the condition \(\left|\vec{L}_{\boldsymbol{A}}\right|=\left|\vec{L}_{B}\right|\), which is to say, conservation of angular momentum. (Once the result is established for infinitesimally small \(\Delta t\), we can establish it for finite-size areas by using integral calculus, which is to say, in essence, by breaking up large triangles into sums of many small ones.)
+As for Kepler’s third result, it is easy to establish for a circular orbit, and definitely not easy for an elliptical one. Let us call \(T\) the orbital period, that is, the time it takes for the less massive object to go around the orbit once. For a circular orbit, the angular velocity \(\omega\) can be written in terms of \(T\) as \(\omega = 2\pi / T\), and hence the regular speed \(v = R\omega = 2\pi R/T\). Substituting this in Equation (\ref{eq:10.11}), we get \(GM/R^2 = 4\pi^{2}R/T^{2}\), which can be simplified further to read
+\[ T^{2}=\frac{4 \pi^{2}}{G M} R^{3} \label{eq:10.18} .\]
+Again, this turns out to work for an elliptical orbit if we replace \(R\) by \(a\).
+Note that the proportionality constant in Equation (\ref{eq:10.18}) depends only on the mass of the central body. For the solar system, that would be the sun, of course, and then the formula would apply to any planet, asteroid, or comet, with the same proportionality constant. This gives you a quick way to calculate the orbital period of anything orbiting the sun, if you know its distance (or vice-versa), based on the fact that you know what these quantities are for the Earth.
+More generally, suppose you have two planets, 1 and 2, both orbiting the same star, at distances \(R_1\) and \(R_2\), respectively. Then their orbital periods \(T_1\) and \(T_2\) must satisfy \(T_{1}^{2}=\left(4 \pi^{2} / G M\right) R_{1}^{3}\) and \( T_{2}^{2}=\left(4 \pi^{2} / G M\right) R_{2}^{3} \). Divide one equation by the other, and the proportionality constant cancels, so you get
+\[ \left(\frac{T_{2}}{T_{1}}\right)^{2}=\left(\frac{R_{2}}{R_{1}}\right)^{3} \label{eq:10.19} .\]
+From this, some simple manipulation gives you
+\[ T_{2}=T_{1}\left(\frac{R_{2}}{R_{1}}\right)^{3 / 2} \label{eq:10.20} .\]
+Note you can express \(R_1\) and \(R_2\) in any units you like, as long as you use the same units for both, and similarly \(T_1\) and \(T_2\). For instance, if you use the Earth as your reference “planet 1,” then you know that \(T_1\) = 1 (in years), and \(R_1\) = 1, in AU (an AU, or “astronomical unit,” is the distance from the Earth to the sun). A hypothetical planet at a distance of 4 AU from the sun should then have an orbital period of 8 Earth-years, since \(4^{3 / 2}=\sqrt{4^{3}}=\sqrt{64}=8\).
+A formula just like (\ref{eq:10.18}), but with a different proportionality constant, would apply to the satellites of any given planet; for instance, the myriad of artificial satellites that orbit the Earth. Again, you could introduce a “reference satellite” labeled 1, with known period and distance to the Earth (the moon, for instance?), and derive again the result (\ref{eq:10.20}), which would allow you to get the period of any other satellite, if you knew how its distance to the earth compares to the moon’s (or, conversely, the distance at which you would need to place it in order to get a desired orbital period).
+For instance, suppose I want to place a satellite on a “geosynchronous” orbit, meaning that it takes 1 day for it to orbit the Earth. I know the moon takes 29 days, so I can write Equation (\ref{eq:10.20}) as \(1 = 29(R_2/R_1)^{3/2}\), or, solving it, \(R_2/R_1 = (1/29)^{2/3} = 0.106\), meaning the satellite would have to be approximately 1/10 of the Earth-moon distance from (the center of) the Earth.
+In hindsight, it is somewhat remarkable that Kepler’s laws are as accurate, for the solar system, as they turned out to be, since they can only be mathematically derived from Newton’s theory by making a number of simplifying approximations: that the sun does not move, that the gravitational force of the other planets has no effect on each planet’s orbit, and that the planets (and the sun) are perfect spheres, for instance. The first two of these approximations work as well as they do because the sun is so massive; the third one works because the sizes of all the objects involved (including the sun) are much smaller than the corresponding orbits. Nevertheless, Newton’s work made it clear that Kepler’s laws could only be approximately valid, and scientists soon set to work on developing ways to calculate the corrections necessary to deal with, for instance, the trajectories of comets or the orbit of the moon.
+Of the main approximations I have listed above, the easiest one to get rid of (mathematically) is the first one, namely, that the sun does not move. Instead, what one finds is that, as long as the sun and the planet are still treated as an isolated system, they will both revolve around the system’s center of mass. Of course, the sun’s motion (a slight “wobble”) is very small, but not completely negligible. You can even see it in the simulation I mentioned earlier, at
+phet.colorado.edu/en/simulation/gravity-and-orbits.
+What is much harder to deal with, mathematically, is the fact that none of the planets in the solar system actually forms an isolated system with the sun, since all the planets are really pulling gravitationally on each other all the time. Particularly, Jupiter and Saturn have a non-negligible influence on each other’s orbits, and on the orbits of every other planet, which can only be perceived over centuries. Basically, the orbits still look like ellipses to a very good degree, but the ellipses rotate very, very slowly (so they fail to exactly close in on themselves). This effect, known as orbital precession, is most dramatic for Mercury, where the ellipse’s axes rotate by more than one degree per century.
+Nevertheless, the Newtonian theory is so accurate, and the calculation techniques developed over the centuries so sophisticated, that by the early 20th century the precession of the orbits of all planets except Mercury had been calculated to near exact agreement with the best observational data. The unexplained discrepancy for Mercury amounted only to 43 seconds of arc per century, out of 5600 (an error of only 0.8%). It was eventually resolved by Einstein’s general theory of relativity.
+
 ## Match 2.42 — Physics-WEB_Sab7RrQ § 7.1 Kepler's Laws of Planetary Motion
 
 Section Learning Objectives
@@ -239,546 +271,60 @@ Day 459
 2. A geosynchronous Earth satellite is one that has an orbital period of precisely 1 day. Such orbits are useful for
 communication and weather 
 
-## Match 2.41 — UniversityPhysicsVol1-WEB § 13.5 Kepler's Laws of Planetary Motion
+## Match 2.42 — LibreTexts: 7.2: Kepler's Laws
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/University_of_California_Davis/UCD%3A_Classical_Mechanics/7%3A_Gravitation/7.2%3A_Kepler's_Laws
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Describe the conic sections and how they relate to orbital motion
-•
-Describe how orbital velocity is related to conservation of angular momentum
-•
-Determine the period of an elliptical orbit from its major axis
-Using the precise data collected by Tycho Brahe, Johannes Kepler carefully analyzed the positions in the sky of
-all the known planets and the Moon, plotting their positions at regular intervals of time. From this analysis, he
-formulated three laws, which we address in this section.
+7.2: Kepler's Laws
+More than 20 years before Newton was born, a fellow named Johannes Kepler took a shot at explaining the orbits of the planets. He too posited that physical laws might be able to explain the motions, but didn’t possess the tools (mathematical and physical) at Newton’s disposal decades later (though admittedly, Newton did develop these tools for himself). Instead, what Kepler had were the remarkably detailed and accurate measurements of planetary motions made by an astronomer named Tycho Brahe, which he used to look for patterns in the motions. Amazingly, he found that the planets indeed moved with mathematical precision, and published his three laws of celestial motion, all of which are in exact accordance with the law of universal gravitation. While reading about his three laws, consider what a monumental accomplishment this was. Tycho Brahe's data detailed the motions of the planets as he viewed them from Earth (which itself is orbiting the sun).
 Kepler’s First Law
-The prevailing view during the time of Kepler was that all planetary orbits were circular. The data for Mars
-presented the greatest challenge to this view and that eventually encouraged Kepler to give up the popular
-idea. Kepler’s first law states that every planet moves along an ellipse, with the Sun located at a focus of the
-ellipse. An ellipse is defined as the set of all points such that the sum of the distance from each point to two foci
-is a constant. Figure 13.16 shows an ellipse and describes a simple way to create it.
-636
-13 • Gravitation
-Access for free at openstax.org.
-
-Figure 13.16
-(a) An ellipse is a curve in which the sum of the distances from a point on the curve to two foci
-is a constant.
-From this definition, you can see that an ellipse can be created in the following way. Place a pin at each focus, then place a loop of string
-around a pencil and the pins. Keeping the string taught, move the pencil around in a complete circuit. If the two foci occupy the same place,
-the result is a circle—a special case of an ellipse. (b) For an elliptical orbit, if
-, then m follows an elliptical path with M at one focus.
-More exactly, both m and M move in their own ellipse about the common center of mass.
-For elliptical orbits, the point of closest approach of a planet to the Sun is called the perihelion. It is labeled
-point A in Figure 13.16. The farthest point is the aphelion and is labeled point B in the figure. For the Moon’s
-orbit about Earth, those points are called the perigee and apogee, respectively.
-An ellipse has several mathematical forms, but all are a specific case of the more general equation for conic
-sections. There are four different conic sections, all given by the equation
-The variables r and
-are shown in Figure 13.17 in the case of an ellipse. The constants
-and e are determined
-by the total energy and angular momentum of the satellite at a given point. The constant e is called the
-eccentricity. The values of
-and e determine which of the four conic sections represents the path of the
-satellite.
-Figure 13.17
-As before, the distance between the planet and the Sun is r, and the angle measured from the x-axis, which is along the
-major axis of the ellipse, is .
-One of the real triumphs of Newton’s law of universal gravitation, with the force proportional to the inverse of
-13.10
-13.5 • Kepler's Laws of Planetary Motion
-637
-
-the distance squared, is that when it is combined with his second law, the solution for the path of any satellite
-is a conic section. Every path taken by m is one of the four conic sections: a circle or an ellipse for bound or
-closed orbits, or a parabola or hyperbola for unbounded or open orbits. These conic sections are shown in
-Figure 13.18.
-Figure 13.18
-All motion caused by an inverse square force is one of the four conic sections and is determined by the energy and direction
-of the moving body.
-If the total energy is negative, then
-, and Equation 13.10 represents a bound or closed orbit of either
-an ellipse or a circle, where
-. [You can see from Equation 13.10 that for
-,
-, and hence the radius
-is constant.] For ellipses, the eccentricity is related to how oblong the ellipse appears. A circle has zero
-eccentricity, whereas a very long, drawn-out ellipse has an eccentricity near one.
-If the total energy is exactly zero, then
-and the path is a parabola. Recall that a satellite with zero total
-energy has exactly the escape velocity. (The parabola is formed only by slicing the cone parallel to the tangent
-line along the surface.) Finally, if the total energy is positive, then
-and the path is a hyperbola. These last
-two paths represent unbounded orbits, where m passes by M once and only once. This situation has been
-observed for several comets that approach the Sun and then travel away, never to return.
-We have confined ourselves to the case in which the smaller mass (planet) orbits a much larger, and hence
-stationary, mass (Sun), but Equation 13.10 also applies to any two gravitationally interacting masses. Each
-mass traces out the exact same-shaped conic section as the other. That shape is determined by the total energy
-and angular momentum of the system, with the center of mass of the system located at the focus. The ratio of
-the dimensions of the two paths is the inverse of the ratio of their masses.
-INTERACTIVE
-You can see an animation of two interacting objects at the My Solar System page at Phet (https://openstax.org/l/
-21mysolarsys) . Choose the Sun and Planet preset option. You can also view the more complicated multiple
-body problems as well. You may find the actual path of the Moon quite surprising, yet is obeying Newton’s
-simple laws of motion.
-Orbital Transfers
-People have imagined traveling to the other planets of our solar system since they were discovered. But how
-can we best do this? The most efficient method was discovered in 1925 by Walter Hohmann, inspired by a
-popular science fiction novel of that time. The method is now called a Hohmann transfer. For the case of
-traveling between two circular orbits, the transfer is along a “transfer” ellipse that perfectly intercepts those
-orbits at the aphelion and perihelion of the ellipse. Figure 13.19 shows the case for a trip from Earth’s orbit to
-that of Mars. As before, the Sun is at the focus of the ellipse.
-For any ellipse, the semi-major axis is defined as one-half the sum of the perihelion and the aphelion. In Figure
-13.17, the semi-major axis is the distance from the origin to either side of the ellipse along the x-axis, or just
-638
-13 • Gravitation
-Access for free at openstax.org.
-
-one-half the longest axis (called the major axis). Hence, to travel from one circular orbit of radius
-to another
-circular orbit of radius
-, the aphelion of the transfer ellipse will be equal to the value of the larger orbit, while
-the perihelion will be the smaller orbit. The semi-major axis, denoted a, is therefore given by
-.
-Figure 13.19
-The transfer ellipse has its perihelion at Earth’s orbit and aphelion at Mars’ orbit.
-Let’s take the case of traveling from Earth to Mars. For the moment, we ignore the planets and assume we are
-alone in Earth’s orbit and wish to move to Mars’ orbit. From Equation 13.9, the expression for total energy, we
-can see that the total energy for a spacecraft in the larger orbit (Mars) is greater (less negative) than that for the
-smaller orbit (Earth). To move onto the transfer ellipse from Earth’s orbit, we will need to increase our kinetic
-energy, that is, we need a velocity boost. The most efficient method is a very quick acceleration along the
-circular orbital path, which is also along the path of the ellipse at that point. (In fact, the acceleration should be
-instantaneous, such that the circular and elliptical orbits are congruent during the acceleration. In practice,
-the finite acceleration is short enough that the difference is not a significant consideration.) Once you have
-arrived at Mars orbit, you will need another velocity boost to move into that orbit, or you will stay on the
-elliptical orbit and simply fall back to perihelion where you started. For the return trip, you simply reverse the
-process with a retro-boost at each transfer point.
-To make the move onto the transfer ellipse and then off again, we need to know each circular orbit velocity and
-the transfer orbit velocities at perihelion and aphelion. The velocity boost required is simply the difference
-between the circular orbit velocity and the elliptical orbit velocity at each point. We can find the circular orbital
-velocities from Equation 13.7. To determine the velocities for the ellipse, we state without proof (as it is beyond
-the scope of this course) that total energy for an elliptical orbit is
-where
-is the mass of the Sun and a is the semi-major axis. Remarkably, this is the same as Equation 13.9
-for circular orbits, but with the value of the semi-major axis replacing the orbital radius. Since we know the
-potential energy from Equation 13.4, we can find the kinetic energy and hence the velocity needed for each
-point on the ellipse. We leave it as a challenge problem to find those transfer velocities for an Earth-to-Mars
-trip.
-We end this discussion by pointing out a few important details. First, we have not accounted for the
-gravitational potential energy due to Earth and Mars, or the mechanics of landing on Mars. In practice, that
-must be part of the calculations. Second, timing is everything. You do not want to arrive at the orbit of Mars to
-find out it isn’t there. We must leave Earth at precisely the correct time such that Mars will be at the aphelion of
-our transfer ellipse just as we arrive. That opportunity comes about every 2 years. And returning requires
-correct timing as well. The total trip would take just under 3 years! There are other options that provide for a
-13.5 • Kepler's Laws of Planetary Motion
-639
-
-faster transit, including a gravity assist flyby of Venus. But these other options come with an additional cost in
-energy and danger to the astronauts.
-INTERACTIVE
-Visit this site (https://openstax.org/l/21plantripmars) for more details about planning a trip to Mars.
+Kepler's First Law: The paths of bodies trapped in orbits form closed ellipses, with the gravitating body at one of the foci.
+The many elements of an ellipse and how an orbit fits into the picture are expressed in Figure 7.2.1 .
+ A common way is to write the distance between the two bodies as a function of the angle that the line between them makes with the major (longer) axis:
+Figure 7.2.2 – Polar Coordinate Description of Ellipse
+The formula for the ellipse in these coordinates is:
+\[ r\left(\theta\right)=\dfrac{a\left(1-e^2\right)}{1-e\cos\theta} \]
+[ Note: It is also possible to measure the angle in the opposite direction (with \(\theta=0\) corresponding to the perihelion), in which case the denominator is a sum rather than a difference. ]
+Circles are special cases of ellipses (eccentricity equal to zero), so naturally circular orbits are possible. Notice that if we plug in \(e=0\) above, we get the simple orbit equation \(r=a\). With a great deal of mathematics (first surmounted by Isaac Newton), one can can show that in fact this is a natural consequence of the inverse-square force law we already stated for gravitation. While we won't go quite so far as to perform this derivation, below we will make a closer examination of features of the ellipse (which we have expressed as a purely mathematical object here) in terms of physical quantities.
 Kepler’s Second Law
-Kepler’s second law states that a planet sweeps out equal areas in equal times, that is, the area divided by
-time, called the areal velocity, is constant. Consider Figure 13.20. The time it takes a planet to move from
-position A to B, sweeping out area
-, is exactly the time taken to move from position C to D, sweeping area
-, and to move from E to F, sweeping out area
-. These areas are the same:
-.
-Figure 13.20
-The shaded regions shown have equal areas and represent the same time interval.
-Comparing the areas in the figure and the distance traveled along the ellipse in each case, we can see that in
-order for the areas to be equal, the planet must speed up as it gets closer to the Sun and slow down as it moves
-away. This behavior is completely consistent with our conservation equation, Equation 13.5. But we will show
-that Kepler’s second law is actually a consequence of the conservation of angular momentum, which holds for
-any system with only radial forces.
-Recall the definition of angular momentum from Angular Momentum,
-. For the case of orbiting
-motion,
-is the angular momentum of the planet about the Sun,
-is the position vector of the planet
-measured from the Sun, and
-is the instantaneous linear momentum at any point in the orbit. Since the
-planet moves along the ellipse,
-is always tangent to the ellipse.
-We can resolve the linear momentum into two components: a radial component
-along the line to the Sun,
-and a component
-perpendicular to . The cross product for angular momentum can then be written as
-.
-The first term on the right is zero because
-is parallel to
-, and in the second term
-is perpendicular to
-, so the magnitude of the cross product reduces to
-. Note that the angular
-momentum does not depend upon
-. Since the gravitational force is only in the radial direction, it can
-change only
-and not
-; hence, the angular momentum must remain constant.
-Now consider Figure 13.21. A small triangular area
-is swept out in time
-. The velocity is along the path
-and it makes an angle
-with the radial direction. Hence, the perpendicular velocity is given by
-.
-The planet moves a distance
-projected along the direction perpendicular to r. Since the area of a
-triangle is one-half the base (r) times the height
-, for a small displacement, the area is given by
-. Substituting for
-, multiplying by m in the numerator and denominator, and rearranging, we
-obtain
-640
-13 • Gravitation
-Access for free at openstax.org.
-
-Figure 13.21
-The element of area
-swept out in time
-as the planet moves through angle
-. The angle between the radial
-direction and
-is .
-The areal velocity is simply the rate of change of area with time, so we have
-Since the angular momentum is constant, the areal velocity must also be constant. This is exactly Kepler’s
-second law. As with Kepler’s first law, Newton showed it was a natural consequence of his law of gravitation.
-INTERACTIVE
-You can view an animated version (https://openstax.org/l/21animationgrav) of Figure 13.20, and many other
-interesting animations as well, at the School of Physics (University of New South Wales) site.
+Kepler's Second Law: An orbiting planet sweeps out equal areas in equal times during its orbit.
+Kepler noticed that the planet moved faster when it was near the perihelion than when it was near the aphelion, and through painstaking examination of the data determined that in fact the amount of area the orbit sweeps out in a given period of time is the same everywhere in the orbit.
+Figure 7.2.3 – Equal Areas in Equal Times
+Note that while the diagram compares areas swept out through the perihelion and aphelion, the result applies to any part of the orbit – if we wait the same period of time, the area swept out will be the same: \(A_1=A_2\). We will soon look into the physical aspects of gravitational orbits that lead to this result, but again one can't help but marvel at what it must have taken to derive this remarkable discovery from the raw data.
 Kepler’s Third Law
-Kepler’s third law states that the square of the period is proportional to the cube of the semi-major axis of the
-orbit. In Satellite Orbits and Energy, we derived Kepler’s third law for the special case of a circular orbit.
-Equation 13.8 gives us the period of a circular orbit of radius r about Earth:
-For an ellipse, recall that the semi-major axis is one-half the sum of the perihelion and the aphelion. For a
-circular orbit, the semi-major axis (a) is the same as the radius for the orbit. In fact, Equation 13.8 gives us
-Kepler’s third law if we simply replace r with a and square both sides.
-We have changed the mass of Earth to the more general M, since this equation applies to satellites orbiting any
-large mass.
-EXAMPLE 13.13
-Orbit of Halley’s Comet
-Determine the semi-major axis of the orbit of Halley’s comet, given that it arrives at perihelion every 75.3
-years. If the perihelion is 0.586 AU, what is the aphelion?
-Strategy
-We are given the period, so we can rearrange Equation 13.11, solving for the semi-major axis. Since we know
-the value for the perihelion, we can use the definition of the semi-major axis, given earlier in this section, t
-
-## Match 2.40 — APCollegePhysics-OP_js6ZFp7 § 6.6 Satellites and Kepler's Laws: An Argument for Simplicity
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-State Kepler's laws of planetary motion.
-•
-Derive Kepler's third law for circular orbits.
-•
-Discuss the Ptolemaic model of the universe.
-Examples of gravitational orbits abound. Hundreds of artificial satellites orbit Earth together with thousands of pieces of debris.
-The Moon's orbit about Earth has intrigued humans from time immemorial. The orbits of planets, asteroids, meteors, and comets
-about the Sun are no less interesting. If we look further, we see almost unimaginable numbers of stars, galaxies, and other
-celestial objects orbiting one another and interacting through gravity.
-All these motions are governed by gravitational force, and it is possible to describe them to various degrees of precision. Precise
-descriptions of complex systems must be made with large computers. However, we can describe an important class of orbits
-without the use of computers, and we shall find it instructive to study them. These orbits have the following characteristics:
-1.
-A small mass m orbits a much larger mass M . This allows us to view the motion as if M were stationary—in fact, as if
-from an inertial frame of reference placed on M —without significant error. Mass m is the satellite of M , if the orbit is
-gravitationally bound.
-2.
-The system is isolated from other masses. This allows us to neglect any small effects due to outside masses.
-The conditions are satisfied, to good approximation, by Earth's satellites (including the Moon), by objects orbiting the Sun, and by
-the satellites of other planets. Historically, planets were studied first, and there is a classical set of three laws, called Kepler's
-laws of planetary motion, that describe the orbits of all bodies satisfying the two previous conditions (not just planets in our solar
-system). These descriptive laws are named for the German astronomer Johannes Kepler (1571–1630), who devised them after
-careful study (over some 20 years) of a large amount of meticulously recorded observations of planetary motion done by Tycho
-Brahe (1546–1601). Such careful collection and detailed recording of methods and data are hallmarks of good science. Data
-constitute the evidence from which new interpretations and meanings can be constructed.
-Chapter 6 | Gravitation and Uniform Circular Motion
-247
-
-Kepler's Laws of Planetary Motion
+Kepler's Third Law: For every object orbiting the same gravitational source, the ratio of the cube of the semi-major axis of the orbital ellipse and the square of the orbital period is the same constant: \(\dfrac{a^3}{T^2} = constant\).
+While the first law makes a general statement about all gravitational orbits, and the second law relates two different parts of a specific gravitational orbit, the third law gives a way of comparing different orbits of the same gravitating object (in Kepler's case, this gravitating object was the sun). Of the three laws, this one has the greatest practical value, because it means that even without knowing anything about the law of gravitation, one can make a prediction about one orbiting body based on observations of another orbiting body, if both are going around the same gravitating object. We will see what this mysterious constant is in terms of physical details, but to solve certain problems, knowing the actual value of the constant isn't necessary.
+Example \(\PageIndex{1}\)
+An astronomer notices that an asteroid is positioned such that the Earth is directly between it and the Sun. It has a roughly circular orbit (like the Earth), which is in the same plane and in the same direction as the Earth. This asteroid is far away from the Earth – about 8 times farther from the Earth than the distance separating the Earth and the Sun. These are all approximations, but about how long will this astronomer have to wait see these three bodies reach these same positions?
+- Solution
+-
+For a circular orbit, the semi-major axis of the orbit is simply the radius of the orbit, and since the asteroid and Earth are both orbiting the same gravitational source (the sun), then Kepler's third law results in the same constant for both:
+\[ \dfrac{R_{earth}^3}{T_{earth}^2} = constant = \dfrac{R_{asteroid}^3}{T_{asteroid}^2} \;\;\; \Rightarrow \;\;\; T_{asteroid}=\left(\dfrac{R_{asteroid}}{R_{earth}}\right)^{\frac{3}{2}}T_{earth} \nonumber \]
+The period of the Earth's orbit is exactly 1 year, and the asteroid is 9 times farther from the sun as the Earth, so the time it will take the asteroid to come back to the same spot will be:
+\[ T_{asteroid} = 27years \nonumber \]
+Of course, in 27 years, the Earth will also be in the spot where it started, so this is our answer.
+Note that if the question asked for the time that elapses before the sun, Earth, and asteroid are all aligned again (which is different from reaching their original positions), the answer is different: When they realign for the first time, the Earth will have completed one orbit plus a bit more, while the asteroid will have completed a fraction of an orbit. Let's call the angle that the asteroid moves through in that first year \(\Delta \theta\). The Earth catches up to it after a full revolution, so the angle the Earth moves through is:
+\[ \theta_{earth} = 2\pi + \Delta \theta \nonumber \]
+The Earth is moving 27 times as fast as the asteroid, so in this equal time frame the Earth has moved through an angle 27 times as great as the asteroid, which gives:
+\[ 2\pi + \Delta \theta = 27\Delta \theta \;\;\; \Rightarrow \;\;\; \Delta \theta = \dfrac{2 \pi}{26} \nonumber \]
+That is, the asteroid completes 1/26th of its orbit at the point when the Earth catches up to it. The asteroid's orbit takes 27 years, so the first alignment occurs at:
+\[\Delta T = \dfrac{27years}{26} = 1 year, 14 days \nonumber \]
+A nice application of Kepler’s 3rd law involves man-made satellites that orbit the Earth. Telecommunications satellites we like to remain at a single position in the sky, so that we don’t have to turn our satellite dishes to find them – we just point them in the right direction and leave it. To accomplish this, we need two things: The satellite has to be directly above the equator, and it has to be orbiting the Earth in the same direction that the Earth is rotating, with an orbital period of exactly 1 day. This is known as a geostationary orbit. We can use Kepler’s 3rd law to determine how high off the Earth’s surface this satellite needs to be.
+Reconciling Kepler’s Laws with Universal Gravitation
+There are a couple of things we can say about the physics of gravitational orbits. First, gravity is a conservative force, which means that the mechanical energy of the system is conserved. We don't yet know how to describe the potential energy due to the gravitational force (hopefully it is clear that our old "\(U\left(y\right) = mgy + U_o\)" treatment is no longer adequate, since this results in a constant force), but we will look at this in Section 7.3 . The point is that the mechanical energy is a "constant of the motion," which we can use, for example, to describe the speed of the orbiting body as a function of the distance from the gravitational source.
+Consider the Earth + sun system. The fraction of this system's mass that belongs to the Earth is about \(3 \times 10^{-6}\), which means that the distance from the center of the sun to the center of mass of the system is this fraction multiplied by the (on average) 92 million miles separating the two bodies. The distance from the center of the sun to the center of mass of the system is therefore:
+\[ r_{cm} = \left(3 \times 10^{-6}\right)\left(92 \times 10^6\;miles\right) = 276 \; miles\]
+The radius of the sun is about 432,000 miles, so the center of mass of the system lies less than one tenth of one percent of the sun's radius from the sun's center. It's therefore a pretty good approximation to treat the center of the sun as a fixed point. [ Note: Even the center of mass of the Jupiter + sun system barely lies outside the sun's radius, even though Jupiter is much more massive than Earth, and is much farther away. ] The gravitational force is directed at this fixed point, so it constitutes a central force. As we found in Section 6.2 , central forces have the property of conserving the angular momentum of the system (since they produce no torque). We therefore conclude that like the mechanical energy, the angular momentum of an orbiting body is also a constant of the motion, when the gravitating body is significantly more massive than the orbiting body. [ Note: The angular momentum of the whole system is always conserved, even when the two masses are comparable, but in that case we can't treat one object as orbiting another stationary one, which means we have to consider the motion of both objects, complicating our picture. ]
 Kepler's First Law
-The orbit of each planet about the Sun is an ellipse with the Sun at one focus.
-Figure 6.29 (a) An ellipse is a closed curve such that the sum of the distances from a point on the curve to the two foci ( f1 and f2 ) is a constant.
-You can draw an ellipse as shown by putting a pin at each focus, and then placing a string around a pencil and the pins and tracing a line on paper. A
-circle is a special case of an ellipse in which the two foci coincide (thus any point on the circle is the same distance from the center). (b) For any closed
-gravitational orbit, m follows an elliptical path with M at one focus. Kepler's first law states this fact for planets orbiting the Sun.
-Kepler's Second Law
-Each planet moves so that an imaginary line drawn from the Sun to the planet sweeps out equal areas in equal times (see
-Figure 6.30).
-Kepler's Third Law
-The ratio of the squares of the periods of any two planets about the Sun is equal to the ratio of the cubes of their average
-distances from the Sun. In equation form, this is
-(6.55)
-T1
- 2
-T2
- 2 = r1
- 3
-r2
- 3,
-where T is the period (time for one orbit) and r is the average radius. This equation is valid only for comparing two small
-masses orbiting the same large one. Most importantly, this is a descriptive equation only, giving no information as to the cause of
-the equality.
-248
-Chapter 6 | Gravitation and Uniform Circular Motion
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-Figure 6.30 The shaded regions have equal areas. It takes equal times for m to go from A to B, from C to D, and from E to F. The mass m moves
-fastest when it is closest to M . Kepler's second law was originally devised for planets orbiting the Sun, but it has broader validity.
-Note again that while, for historical reasons, Kepler's laws are stated for planets orbiting the Sun, they are actually valid for all
-bodies satisfying the two previously stated conditions.
-Example 6.7 Find the Time for One Orbit of an Earth Satellite
-Given that the Moon orbits Earth each 27.3 d and that it is an average distance of 3.84×108 m from the center of Earth,
-calculate the period of an artificial satellite orbiting at an average altitude of 1500 km above Earth's surface.
-Strategy
-The period, or time for one orbit, is related to the radius of the orbit by Kepler's third law, given in mathematical form in
-T1
- 2
-T2
- 2 = r1
- 3
-r2
- 3 . Let us use the subscript 1 for the Moon and the subscript 2 for the satellite. We are asked to find T2 . The
-given information tells us that the orbital radius of the Moon is r1 = 3.84×108 m , and that the period of the Moon is
-T1 = 27.3 d . The height of the artificial satellite above Earth's surface is given, and so we must add the radius of Earth
-(6380 km) to get r2 = (1500 + 6380) km = 7880 km . Now all quantities are known, and so T2 can be found.
-Solution
-Kepler's third law is
-(6.56)
-T1
- 2
-T2
- 2 = r1
- 3
-r2
- 3.
-To solve for T2 , we cross-multiply and take the square root, yielding
-(6.57)
-T2
- 2 = T1
- 2 ⎛
-⎝
-r2
-r1
-⎞
-⎠
-3
-(6.58)
-T2 = T1
-⎛
-⎝
-r2
-r1
-⎞
-⎠
-3 / 2
-.
-Substituting known values yields
-(6.59)
-T2 = 27.3 d×24.0 h
-d
-×⎛
-⎝
-7880 km
-3.84×105 km
-⎞
-⎠
-3 / 2
-= 1.93 h.
-Discussion This is a reasonable period for a satellite in a fairly low orbit. It is interesting that any satellite at this altitude will
-orbit in the same amount of time. This fact is related to the condition that the satellite's mass is small compared with that of
-Chapter 6 | Gravitation and Uniform Circular Motion
-249
-
-Earth.
-People immediately search for deeper meaning when broadly applicable laws, like Kepler's, are discovered. It was Newton who
-took the next giant step when he proposed the law of universal gravitation. While Kepler was able to discover what was
-happening, Newton discovered that gravitational force was the cause.
-Derivation of Kepler's Third Law for Circular Orbits
-We shall derive Kepler's third law, starting with Newton's laws of motion and his universal law of gravitation. The point is to
-demonstrate that the force of gravity is the cause for Kepler's laws (although we will only derive the third one).
-Let us consider a circular orbit of a small mass m around a large mass M , satisfying the two conditions stated at the beginning
-of this section. Gravity supplies the centripetal force to mass m . Starting with Newton's second law applied to circular motion,
-(6.60)
-Fnet = mac = mv2
-r .
-The net external force on mass m is gravity, and so we substitute the force of gravity for Fnet :
-(6.61)
-GmM
-r2 = mv2
-r .
-The mass m cancels, yielding
-(6.62)
-GMr = v2.
-The fact that m cancels out is another aspect of the oft-noted fact that at a given location all masses fall with the same
-acceleration. Here we see that at a given orbital radius r , all masses orbit at the same speed. (This was implied by the result of
-the preceding worked example.) Now, to get at Kepler's third law, we must get the period T into the equation. By definition,
-period T is the time for one complete orbit. Now the average speed v is the circumference divided by the period—that is,
-(6.63)
-v = 2πr
-T .
-Substituting this into the previous equation gives
-(6.64)
-GMr = 4π2 r2
-T 2 .
-Solving for T 2 yields
-(6.65)
-T 2 = 4π2
-GMr3.
-Using subscripts 1 and 2 to denote two different satellites, and taking the ratio of the last equation for satellite 1 to satellite 2
-yields
-(6.66)
-T1
- 2
-T2
- 2 = r1
- 3
-r2
- 3.
-This is Kepler's third law. Note that Kepler's third law is valid only for comparing satellites of the same parent body, because only
-then does the mass of the parent body M cancel.
-Now consider what we get if we solve T 2 = 4π2
-GMr3 for the ratio r3 / T 2 . We obtain a relationship that can be used to
-determine the mass M of a parent body from the orbits of its satellites:
-(6.67)
-r3
-T 2 = G
-4π2M.
-If r and T are known for a satellite, then the mass M of the parent can be calculated. This principle has been used
-extensively to find the masses of heavenly bodies that have satellites. Furthermore, the ratio r3 / T 2 should be a constant for all
-satellites of the same parent body (because r3 / T 2 = GM / 4π2 ). (See Table 6.2).
-It is clear from Table 6.2 that the ratio of r3 / T 2 is constant, at least to the third digit, for all listed satellites of the Sun, and for
-those of Jupiter. Small variations in that ratio have two causes—uncertainties in the r and T data, and perturbations of the
-250
-Chapter 6 | Gravitation and Uniform Circular Motion
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-orbits due to other bodies. Interestingly, those perturbations can be—and have been—used to predict the location of new planets
-and moons. This is another verification of Newton's universal law of gravitation.
-Making Connections: General Relativity and Mercury
-Newton's universal law of gravitation is modified by Einstein's general theory of relativity, as we shall see in Particle
-Physics. Newton's gravity is not seriously in error—it was and still is an extremely good approximation for most situations.
-Einstein's modification is most noticeable in extremely large gravitational fields, such as near black holes. However, general
-relativity also explains such phenomena as small but long-known deviations of the orbit of the planet Mercury from classical
-predictions.
-The Case for Simplicity
-The development of the universal law of gravitation by Newton played a pivotal role in the history of ideas. While it is beyond the
-scope of this text to cover that history in any detail, we note some important points. The definition of planet set in 2006 by the
-International Astronomical Union (IAU) states that in the solar system, a planet is a celestial body that:
-1.
-is in orbit around the Sun,
-2.
-has sufficient mass to assume hydrostatic equilibrium and
-3.
-has cleared the neighborhood around its orbit.
-A non-satellite body fulfilling only the first two of the above criteria is classified as “dwarf planet.”
-In 2006, Pluto was demoted to a ‘dwarf planet' after scientists revised their definition of what constitutes a “true” planet.
-Table 6.2 Orbital Data and Kepler's Third Law
-Parent
-Satellite
-Average orbital radius r(km)
-Period T(y)
-r3 / T2 (km3 / y2)
-Earth
-Moon
-3.84×105
-0.07481
-1.01×1019
-Sun
-Mercury
-5.79×107
-0.2409
-3.34×1024
-Venus
-1.082×108
-0.6150
-3.35×1024
-Earth
-1.496×108
-1.000
-3.35×1024
-Mars
-2.279×108
-1.881
-3.35×1024
-Jupiter
-7.783×108
-11.86
-3.35×1024
-Saturn
-1.427×109
-29.46
-3.35×1024
-Neptune
-4.497×109
-164.8
-3.35×1024
-Pluto
-5.90×109
-248.3
-3.33×1024
-Jupiter
-Io
-4.22×105
-0.00485 (1.77 d) 3.19×1021
-Europa
-6.71×105
-0.00972 (3.55 d) 3.20×1021
-Ganymede
-1.07×106
-0.0196 (7.16 d)
-3.19×1021
-Callisto
-1.88×106
-0.0457 (16.19 d) 3.20×1021
-The universal law of gravitation is a good example of a physical principle that is very broadly applicable. That single equation for
-the gravitational force describes all situations in which gravity acts. It gives a cause for a vast number of effects, such as the
-orbits of the planets and moons in the solar system. It epitomizes the underlying unity and simplicity of physics.
-Before the discoveries of Kepler, Copernicus, Galileo, Newton, and others, the solar system was thought to revolve around Earth
-as shown in Figure 6.31(a). This is called the Ptolemaic view, for the Greek philosopher who lived in the second century AD.
-This model is characterized by a list of facts for the motions of planets with no cause and effect explanation. There tended to be
-a different rule for each heavenly body and a general lack of simplicity.
-Figure 6.31(b) represents the modern or Copernican model. In this model, a small set of rules and a single underlying force
-explain not only all motions in the solar system, but all other situations involving gravity. The breadth and simplicity of the laws of
-physics are compelling. As our knowledge of nature has grown, the basic simplicity of its laws has become ever more evident.
-Chapter 6 | Gravitation and Uniform Circular Motion
-251
-
-angular velocity:
-arc length:
-banked curve:
-center of mass:
-centrifugal force:
-centripetal acceleration:
-centripetal force:
-Coriolis force:
-fictitious force:
-gravitational constant, G:
-ideal angle:
-ideal banking:
-ideal speed:
-microgravity:
-Newton's universal law of gravitation:
-non-inertial frame of reference:
-pit:
-radians:
-Figure 6.31 (a) The Ptolemaic model of the universe has Earth at the center with the Moon, the planets, the Sun, and the stars revolving about it in
-complex superpositions of circular paths. This geocentric model, which can be made progressively more accurate by adding more circles, is purely
-descriptive, containing no hints as to what are the causes of these motions. (b) The Copernican model has the Sun at the center of the solar system. It
-is fully explained by a small number of laws of physics, including Newton's universal law of gravitation.
-Glossary
-ω , the rate of change of the angle with which an object moves on a circular path
-Δs , the distance traveled by an object along a circular path
-the curve in a road that is sloping in a manner that helps a vehicle negotiate the curve
-the point where the entire mass of an object can be thought to be concentrated
-a fictitious force that tends to throw an object off when the object is rotating in a non-inertial frame of
-reference
-the acceleration of an object moving in a circle, directed toward the center
-any net force causing uniform circular motion
-the fictitious force causing the apparent deflection of moving objects when viewed in a rotating frame of
-reference
-a force having no physical origin
-a proportionality factor used in the equation for Newton's universal law of gr
+Showing that elliptical orbits are a direct result of the law of universal gravitation is a mathematical exercise that is somewhat beyond the scope of this work. While this derivation could nevertheless be included here, the value of doing so is minimal, and will therefore be left for the reader to explore in an upper-division treatment of classical mechanics. Instead, we will look at only small – but very instructive – aspects of Kepler's first law.
+Never mind that we have no reason to expect that orbits will be elliptical... Why would we even expect them to be closed ? That is, it certainly isn't clear that when the polar angle \(\theta\) changes by \(2\pi\), that the orbiting body's distance from the gravitating body will be the same. It turns out, however, that this element of gravitational orbits is not hard to demonstrate. Start by applying Newton's second law to the orbiting body on which a net force due to gravity is acting:
+\[ m\dfrac{d\overrightarrow v}{dt} = -\dfrac{GMm}{r^2} \widehat r \]
+We can rewrite this in terms of how the velocity changes with the angle \(\theta\) by using the chain rule:
+\[ m\dfrac{d\overrightarrow v}{d\theta}\dfrac{d\theta}{dt} = -\dfrac{GMm}{r^2} \widehat r \]
+The angular momentum of the orbiting body can be written in terms of its mass, its angular velocity \(\omega = \dfrac{d\theta}{dt}\), and its distance from the fixed point:
+\[ L = mr^2\omega \]
+This angular momentum is a constant of the motion (i.e. it is conserved throughout the orbit), so we find that the rate at which the velocity vector changes with respect to \(\theta\) is a vector with a constant magnitude:
+\[ \dfrac{d\overrightarrow v}{d\theta} = -\dfrac{GMm}{L} \widehat r \]
+We can write the position unit vector in terms of the angle relative to a cartesian coordinate system, as we did in Equation 1.6.11 :
+\[ \dfrac{d\overrightarrow v}{d\theta} = -\dfrac{GMm}{L} \left( \cos \theta \; \widehat i \ + \sin \theta \; \widehat j \right) \]
+Integrating over the angle gives the velocity vector as a function of \(\theta\) (and an undetermined constant of integration \(\overrightarrow v_o\)):
+From this result we can conclude that the magnitude and direction of the velocity return to the same value every time \(\theta\) changes 

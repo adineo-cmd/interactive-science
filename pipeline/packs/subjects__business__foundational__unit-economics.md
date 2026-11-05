@@ -1,537 +1,93 @@
 # Source pack — subjects/business/foundational/unit-economics
 Lesson title: Unit Economics
 Level: foundational
-Match confidence: 2.05
+Match confidence: 2.06
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.05 — Microeconomics3e-WEB § 12.1 The Economics of Pollution
+## Match 2.06 — LibreTexts: 8.1: Health Care Economics Introduction
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Nursing_Management_and_Professional_Concepts_1e_(OpenRN)/08%3A_Health_Care_Economics/8.01%3A_Health_Care_Economics_Introduction
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain and give examples of positive and negative externalities
-•
-Identify equilibrium price and quantity
-•
-Evaluate how firms can contribute to market failure
-From 1970 to 2020, the U.S. population increased by 63 percent, and the size of the U.S. economy increased by
-more than 3.8-fold. Since the 1970s, however, the United States, using a variety of anti-pollution policies, has
-made genuine progress against a number of pollutants. Table 12.1 lists the change in carbon dioxide
-emissions by energy users (from residential to industrial) according to the U.S. Energy Information
-Administration (EIA). The table shows that emissions of certain key air pollutants declined substantially from
-2007 to 2012. They dropped 740 million metric tons (MMT) a year—a 12% reduction. This seems to indicate
-that there has been progress made in the United States in reducing overall carbon dioxide emissions, which
-contribute to the greenhouse effect.
-282
-12 • Environmental Protection and Negative Externalities
-Access for free at openstax.org
+8.1: Health Care Economics Introduction
+Learning Objectives
+- Practice and advocate for cost-effective care
+- Summarize funding and reimbursement sources for patient-care services
+- Explore how political, social, and demographic trends have affected the patient population and delivery of health care
+- Analyze the link between economics and quality
+- Describe nursing strategies to provide cost-effective care
+- Examine economic pressures impacting case management and the management of institutional resources
+- Describe the impact of evidence-based practice on health care economics and patient care outcomes
+Whether health care is a right or a privilege is a historical ethical question debated around the world that ultimately leads to the question, “Who gets what resources?” Economics is the study of how individuals and societies make decisions about how to use their limited resources. Health care is considered a limited resource because there isn’t enough money or time in the world to purchase and provide care for every individual in every conceivable manner. The ethical question of who pays for that care is referred to as the ethics of rationing health care.
+Economics is split into two broad categories called macroeconomics and microeconomics. Macroeconomics looks at decisions that affect the entire society as a whole, whereas microeconomics looks at the financial decisions of businesses and individuals. [1] This chapter will provide an overview of the broad topics of health care funding and reimbursement models at a societal level, as well as staffing and budgeting issues at the institutional level that impact nurses in their day-to-day work. Economics in health care affects an individual’s ability to pay for and receive health care, the ability of an institution to provide health care services, and nurses’ ability to provide safe, quality care to the communities they serve.
+- Khan Academy. (2017, August 8). Macroeconomics unit: Basic economics concepts . https://www.khanacademy.org/economics-finance-domain/macroeconomics/macro-basic-economics-concepts ↵
 
-Year
-Coal
-Natural Gas
-Petroleum
-Total
-1973
-1,221
-1,175
-2,325
-4,721
-2007
-2,171
-1,245
-2,587
-6,016
-2020
-875
-1,648
-2,042
-4,576
-TABLE 12.1 Carbon Dioxide Emissions from Energy
-Consumption, by Source (Source: EIA Monthly
-Energy Review)
-Despite the gradual reduction in emissions from fossil fuels, many important environmental issues remain.
-Along with the still high levels of air and water pollution, other issues include hazardous waste disposal,
-destruction of wetlands and other wildlife habitats, and the impact on human health from pollution.
-Externalities
-Private markets, such as the cell phone industry, offer an efficient way to put buyers and sellers together and
-determine what goods they produce, how they produce them and who gets them. The principle that voluntary
-exchange benefits both buyers and sellers is a fundamental building block of the economic way of thinking.
-However, what happens when a voluntary exchange affects a third party who is neither the buyer nor the
-seller?
-As an example, consider a concert producer who wants to build an outdoor arena that will host country music
-concerts a half-mile from your neighborhood. You will be able to hear these outdoor concerts while sitting on
-your back porch—or perhaps even in your dining room. In this case, the sellers and buyers of concert tickets
-may both be quite satisfied with their voluntary exchange, but you have no voice in their market transaction.
-The effect of a market exchange on a third party who is outside or “external” to the exchange is called an
-externality. Because externalities that occur in market transactions affect other parties beyond those
-involved, they are sometimes called spillovers.
-Externalities can be negative or positive. If you hate country music, then having it waft into your house every
-night would be a negative externality. If you love country music, then what amounts to a series of free
-concerts would be a positive externality.
-Pollution as a Negative Externality
-Pollution is a negative externality. Economists illustrate the social costs of production with a demand and
-supply diagram. The social costs include the private costs of production that a company incurs and the
-external costs of pollution that pass on to society. Figure 12.2 shows the demand and supply for manufacturing
-refrigerators. The demand curve (D) shows the quantity demanded at each price. The supply curve (Sprivate)
-shows the quantity of refrigerators that all firms in the industry supply at each price assuming they are taking
-only their private costs into account and they are allowed to emit pollution at zero cost. The market
-equilibrium (E0), where quantity supplied equals quantity demanded, is at a price of $650 per refrigerator and
-a quantity of 45,000 refrigerators. Table 12.2 reflects this information in the first three columns.
-12.1 • The Economics of Pollution
-283
+## Match 2.06 — LibreTexts: 6: Economics and Externalities
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://human.libretexts.org/Bookshelves/History/National_History/American_Environmental_History_(Allosso)/Chapters/06%3A_Economics_and_Externalities
 
-FIGURE 12.2 Taking Social Costs into Account: A Supply Shift If the firm takes only its own costs of production into
-account, then its supply curve will be Sprivate, and the market equilibrium will occur at E0. Accounting for additional
-external costs of $100 for every unit produced, the firm’s supply curve will be Ssocial. The new equilibrium will occur
-at E1.
-Price
-Quantity
-Demanded
-Quantity Supplied before Considering
-Pollution Cost
-Quantity Supplied after Considering
-Pollution Cost
-$600
-50,000
-40,000
-30,000
-$650
-45,000
-45,000
-35,000
-$700
-40,000
-50,000
-40,000
-$750
-35,000
-55,000
-45,000
-$800
-30,000
-60,000
-50,000
-$850
-25,000
-65,000
-55,000
-$900
-20,000
-70,000
-60,000
-TABLE 12.2 A Supply Shift Caused by Pollution Costs
-However, as a by-product of the metals, plastics, chemicals and energy that refrigerator manufacturers use,
-some pollution is created. Let’s say that, if these pollutants were emitted into the air and water, they would
-create costs of $100 per refrigerator produced. These costs might occur because of adverse effects on human
-health, property values, or wildlife habitat, reduction of recreation possibilities, or because of other negative
-impacts. In a market with no anti-pollution restrictions, firms can dispose of certain wastes absolutely free.
-Now imagine that firms which produce refrigerators must factor in these external costs of pollution—that is,
-the firms have to consider not only labor and material costs, but also the broader costs to society of harm to
-health and other costs caused by pollution. If the firm is required to pay $100 for the additional external costs
-of pollution each time it produces a refrigerator, production becomes more costly and the entire supply curve
-shifts up by $100.
-As Table 12.2 and Figure 12.2 illustrate, the firm will need to receive a price of $700 per refrigerator and
-produce a quantity of 40,000—and the firm’s new supply curve will be Ssocial. The new equilibrium will occur at
-284
-12 • Environmental Protection and Negative Externalities
-Access for free at openstax.org
+6: Economics and Externalities
+The study of economics as a distinct academic field began at about the same time as the industrial revolution and many of the economic ideas proposed by early writers on the subject, such as Adam Smith, David Ricardo, Friedrich Engels and Karl Marx, are still taken very seriously today. Economics is described as the science of human choice, but unlike other scientists in fields like psychology, economists often claim to be able to extrapolate from numerical data about people’s behaviors (that is, from the records of transactions in markets) to predict the future. And although most of the economic news and analysis we hear seems very dry and statistical, it is important to understand some of the basic philosophical beliefs and assumptions about human nature that stand behind these numbers.
+At its most basic level, economics is the study of supply and demand. The classical supply and demand curves of modern economics textbooks go all the way back to Smith and Ricardo. They remain the bedrock of the field, and the first things students learn in high school or college courses. So let’s look at them first.
+The first philosophical assumption supporting the supply-demand graph is so obvious that most people, including many economists, don’t even notice it. There are two curves, supply and demand. Where they meet is where the transaction happens: where two players in the market exchange goods and services for money. See the assumption? Two players. Separating the world into producers and consumers is so basic nowadays that it’s difficult to imagine a different way to think about economic relationships. Of course economists understand that a person can be a producer in one transaction (say, as a teacher, a bricklayer, or an office worker) and then be a consumer in the next (at the grocery store or buying a car). But even so, these different activities are generally thought of as being completely separate from each other. What you do to earn a paycheck, for example, is not supposed to influence the brand of breakfast cereal or yogurt you prefer.
+This reductive logic makes some sense, since for most of us the paycheck-yogurt relationship is probably pretty tenuous. And seeing that, economists conclude they are just describing reality when they tally up the dollars we spend on particular yogurt brands; that they have accurately described the real world without making any “normative” judgments about it. But as any photographer knows, choosing what to exclude and include when framing an image has a profound effect on its meaning and significance and can completely change the viewers’ understanding of what they see.
+Societies like America before the industrial revolution are often described as non-commercial. Historians have argued for generations whether early Americans went through some sort of “Market Transition” as they became more embedded in commerce — and if so, where and when that may have happened. This was one of the areas I studied closely in Graduate School, and I think historians’ ideas about what commercial behavior looks like have changed at least as much as Early Americans’ actual behavior. As we saw at the very beginning of this course, Americans have always bought and sold products in markets. The Spanish Empire exported hundreds of shiploads of gold and silver from its colonies to Europe. The North American colonies depended on financing from Britain to get off the ground at all, and later depended on trade with the West Indies for their survival when the support of their British patrons was cut off by Cromwell’s civil war. Later, western settlers sent grain down rivers or hauled barrels of whiskey over the Appalachian Mountains.
+Every sack of flour and barrel of whiskey or salted pork that changed hands in Early America was a market transaction. But what was special about these transactions was that at first they were usually between people who knew each other and had a relationship that extended beyond that moment when the seller’s supply curve and the buyer’s demand curve intersected. In Early America, commercial transactions usually took place in a larger social context. Buyers and sellers were often neighbors. A farmer who sold his grain to the local miller often also bought supplies at the general store the miller ran. And beyond their purely business transactions, they probably saw each other at town meetings, or at the local tavern or church. They probably helped each other build barns and fences, and their children went to school together and occasionally even married. The big change came, as we saw in Chapter 7, when transactions became impersonal and exchanges were more often between strangers than between neighbors and friends. Government inspections were never necessary when your meat came from the butcher down the street whom you had known your whole life. But it was the only thing that prevented Chicago packing corporations from cutting corners and selling bad meat to strangers half a continent away. Similarly, when prices were negotiated between people who had complicated ongoing relationships with one another (especially where people changed roles and were sometimes buyers and at other times sellers), they often reflected more than simply a meeting of supply and demand curves. The economic logic of supply and demand expects buyers to always pay the least they can to acquire a product and sellers to always try to maximize their profits on each transaction. Real transactions were often more complicated, especially where economic relationships were embedded in a larger context of other social interaction.
+The other change brought about by the rise of central markets was that not only did buyers and sellers become anonymous strangers to each other, but the products themselves became standardized and undifferentiated. As discussed in Chapter 7, railroad technology made the centralization of production in cities like Chicago and Minneapolis possible. Telegraph technology made it possible to establish national prices for commodities. And mass media allowed central producers like General Mills and Armour to create brands that tried to replace the familiarity and trust that had been part of buying from someone you knew. All these technologies helped concentrate wealth in the centers, as farmers on the periphery often became little more than sources of raw materials. Consumers became increasingly dependent on powerful corporations whose decisions they could have little hope of influencing. One sign of this change, which we have trouble seeing because it is such a regular part of life, is fixed retail pricing. You don’t haggle with the supermarket checkout clerk over the price a box of Cheerios. You take it or leave it. General Mills doesn’t really care whether you buy them or not, as long as the rest of the faceless consumers do; just as they don’t really need the oats from any particular farmer, as long as the rail cars are full when they reach the factory.
+Economists consider the independence of these huge corporations an important part of “economies of scale,” which they explain are a good thing because they result in lower costs for the producer, and often (although not always) in lower prices to consumers of the final product. The basic idea is that it’s cheaper to make a million boxes of Cheerios in a huge factory than to make one box of Cheerios in your kitchen. Usually the explanation is that expensive capital equipment and technology is used that makes producing each individual unit less expensive — but only if you’re making enough of them to average the cost of that equipment over a large number of units. But as critics of this logic have pointed out, the real source of savings is often in the raw materials. A single buyer purchasing oats from a hundred thousand farmers clearly has the upper hand in negotiations about price. So the low cost of Cheerios may come partly from the machines used to manufacture them, but it also comes from the corporation’s ability to make the farmer accept a lower price for his oats than he might like to get. This is how profits at the center can be thought of as forced subsidies from the periphery. Technology (and the field of economics itself) tends to make this relationship harder to see by focusing attention on the apparent impartiality of the markets and on the profits achieved in the center.
+In addition to being a source of cheap raw materials for central processors, the periphery is often a dumping-ground for waste the center chooses not to deal with. Economists so frequently ignore adverse effects of economic transactions when they take place outside of the center of profit that they have a special name for this type of “market failure.” They call it externality. Standard economic textbooks describe externalities as “the costs created by one party or group and imposed on or spilled over onto some other non-consenting party or group.” Economists understand that “When the act of producing or consuming a product creates external costs, an exclusive reliance on private markets and the pursuit of self-interest will result in a misallocation of society’s resources.” In other words, economists understand that you can’t expect people acting in self-interest to work these issues out for themselves. Often the result of ignoring these externalities, economists admit, is that much more of a product will be made than even the economists view as “socially efficient output.”
+The introductory economics textbook I’m quoting from (William D. Rohlf, Jr., Introduction to Economic Reasoning, Seventh Edition, 2008) includes a chapter called “Market Failure” that discusses externalities and possible ways of dealing with them. The textbook says that in some cases the externality can be addressed by considering the property rights of the injured party (in a lawsuit of negotiation). This remedy would clearly work best when the injured property was privately owned and the owner had the resources to pursue legal action or other types of arbitration. The textbook also mentions government regulation, but warns that such regulations often specify remedies that are “needlessly expensive” (by what standard? The textbook doesn’t say) and that regulations reduce the incentives for business to solve its own problems. The chapter gives simple examples of “local externalities” with “local remedies” but fails to mention that often the externality happens far from the corporation’s headquarters, where it is less visible but not necessarily more serious. For example. coal from the Appalachian Mountains in West Virginia, Kentucky, and Tennessee to generate electricity that lights the major cities of the East Coast, like New York City. Mountaintop removal destroys habitats and poisons streams and rivers throughout the region. But this externality is not reflected in the cost of electricity to New York City consumers. The fact that the residents of Appalachia who protest for clean water have much less economic clout than the urban-based mining and power companies and their customers, certainly effects the outcome of negotiations over the externality and its remedies.
+Critics of our free market economy often claim that large corporations deliberately produce externalities in faraway places where the residents are powerless to object. Global corporations can now choose to work wherever in the world costs are lowest. In effect, they are exporting externalities to the “less developed world” — which in fact has to remain less developed in order to keep the cost of those externalities as low as possible. This is what critics of capitalism mean when they say that the wealth of the center comes at the expense of the periphery. In the past, it was American corporations such as Union Carbide who built factories in places like India where safety regulations were much less stringent and the people had no recourse when avoidable accidents
 
-E1. In short, taking the additional external costs of pollution into account results in a higher price, a lower
-quantity of production, and a lower quantity of pollution. The following Work It Out feature will walk you
-through an example, this time with musical accompaniment.
-Identifying the Equilibrium Price and Quantity
-Table 12.3 shows the supply and demand conditions for a firm that will play trumpets on the streets when
-requested. We measure output as the number of songs played.
-Price
-Quantity
-Demanded
-Quantity Supplied without paying the
-costs of the externality
-Quantity Supplied after paying the
-costs of the externality
-$20
-0
-10
-8
-$18
-1
-9
-7
-$15
-2.5
-7.5
-5.5
-$12
-4
-6
-4
-$10
-5
-5
-3
-$5
-7.5
-2.5
-0.5
-TABLE 12.3 Supply and Demand Conditions for a Trumpet-Playing Firm
-Step 1. Determine the negative externality in this situation. To do this, you must think about the situation and
-consider all parties that might be impacted. A negative externality might be the increase in noise pollution in the
-area where the firm is playing.
-Step 2. Identify the initial equilibrium price and quantity only taking private costs into account. Next, identify the
-new equilibrium taking into account social costs as well as private costs. Remember that equilibrium is where the
-quantity demanded is equal to the quantity supplied.
-Step 3. Look down the columns to where the quantity demanded (the second column) is equal to the “quantity
-supplied without paying the costs of the externality” (the third column). Then refer to the first column of that row
-to determine the equilibrium price. In this case, the equilibrium price and quantity would be at a price of $10 and
-a quantity of five when we only take into account private costs.
-Step 4. Identify the equilibrium price and quantity when we take into account the additional external costs. Look
-down the columns of quantity demanded (the second column) and the “quantity supplied after paying the costs
-of the externality” (the fourth column) then refer to the first column of that row to determine the equilibrium
-price. In this case, the equilibrium will be at a price of $12 and a quantity of four.
-Step 5. Consider how taking into account the externality affects the equilibrium price and quantity. Do this by
-comparing the two equilibrium situations. If the firm is forced to pay its additional external costs, then
-production of trumpet songs becomes more costly, and the supply curve will shift up.
-Remember that the supply curve is based on choices about production that firms make while looking at their
-marginal costs, while the demand curve is based on the benefits that individuals perceive while maximizing
-utility. If no externalities existed, private costs would be the same as the costs to society as a whole, and private
-benefits would be the same as the benefits to society as a whole. Thus, if no externalities existed, the
-WORK IT OUT
-12.1 • The Economics of Pollution
-285
+## Match 2.05 — LibreTexts: 37.1: Introduction to the Agriculture Economics
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Economics/Economics_(Boundless)/37%3A_Agriculture_Economics/37.1%3A_Introduction_to_the_Agriculture_Economics
 
-interaction of demand and supply will coordinate social costs and benefits.
-However, when the externality of pollution exists, the supply curve no longer represents all social costs.
-Because externalities represent a case where markets no longer consider all social costs, but only some of
-them, economists commonly refer to externalities as an example of market failure. When there is market
-failure, the private market fails to achieve efficient output, because either firms do not account for all costs
-incurred in the production of output and/or consumers do not account for all benefits obtained (a positive
-externality). In the case of pollution, at the market output, social costs of production exceed social benefits to
-consumers, and the market produces too much of the product.
-We can see a general lesson here. If firms were required to pay the social costs of pollution, they would create
-less pollution but produce less of the product and charge a higher price. In the next module, we will explore
-how governments require firms to account for the social costs of pollution.
-
-## Match 2.05 — Economics3e-WEB § 12.1 The Economics of Pollution
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain and give examples of positive and negative externalities
-•
-Identify equilibrium price and quantity
-•
-Evaluate how firms can contribute to market failure
-From 1970 to 2020, the U.S. population increased by 63 percent, and the size of the U.S. economy increased by
-more than 3.8-fold. Since the 1970s, however, the United States, using a variety of anti-pollution policies, has
-made genuine progress against a number of pollutants. Table 12.1 lists the change in carbon dioxide
-emissions by energy users (from residential to industrial) according to the U.S. Energy Information
-Administration (EIA). The table shows that emissions of certain key air pollutants declined substantially from
-2007 to 2012. They dropped 740 million metric tons (MMT) a year—a 12% reduction. This seems to indicate
-that there has been progress made in the United States in reducing overall carbon dioxide emissions, which
-contribute to the greenhouse effect.
-282
-12 • Environmental Protection and Negative Externalities
-Access for free at openstax.org
-
-Year
-Coal
-Natural Gas
-Petroleum
-Total
-1973
-1,221
-1,175
-2,325
-4,721
-2007
-2,171
-1,245
-2,587
-6,016
-2020
-875
-1,648
-2,042
-4,576
-TABLE 12.1 Carbon Dioxide Emissions from Energy
-Consumption, by Source (Source: EIA Monthly
-Energy Review)
-Despite the gradual reduction in emissions from fossil fuels, many important environmental issues remain.
-Along with the still high levels of air and water pollution, other issues include hazardous waste disposal,
-destruction of wetlands and other wildlife habitats, and the impact on human health from pollution.
-Externalities
-Private markets, such as the cell phone industry, offer an efficient way to put buyers and sellers together and
-determine what goods they produce, how they produce them and who gets them. The principle that voluntary
-exchange benefits both buyers and sellers is a fundamental building block of the economic way of thinking.
-However, what happens when a voluntary exchange affects a third party who is neither the buyer nor the
-seller?
-As an example, consider a concert producer who wants to build an outdoor arena that will host country music
-concerts a half-mile from your neighborhood. You will be able to hear these outdoor concerts while sitting on
-your back porch—or perhaps even in your dining room. In this case, the sellers and buyers of concert tickets
-may both be quite satisfied with their voluntary exchange, but you have no voice in their market transaction.
-The effect of a market exchange on a third party who is outside or “external” to the exchange is called an
-externality. Because externalities that occur in market transactions affect other parties beyond those
-involved, they are sometimes called spillovers.
-Externalities can be negative or positive. If you hate country music, then having it waft into your house every
-night would be a negative externality. If you love country music, then what amounts to a series of free
-concerts would be a positive externality.
-Pollution as a Negative Externality
-Pollution is a negative externality. Economists illustrate the social costs of production with a demand and
-supply diagram. The social costs include the private costs of production that a company incurs and the
-external costs of pollution that pass on to society. Figure 12.2 shows the demand and supply for manufacturing
-refrigerators. The demand curve (D) shows the quantity demanded at each price. The supply curve (Sprivate)
-shows the quantity of refrigerators that all firms in the industry supply at each price assuming they are taking
-only their private costs into account and they are allowed to emit pollution at zero cost. The market
-equilibrium (E0), where quantity supplied equals quantity demanded, is at a price of $650 per refrigerator and
-a quantity of 45,000 refrigerators. Table 12.2 reflects this information in the first three columns.
-12.1 • The Economics of Pollution
-283
-
-FIGURE 12.2 Taking Social Costs into Account: A Supply Shift If the firm takes only its own costs of production into
-account, then its supply curve will be Sprivate, and the market equilibrium will occur at E0. Accounting for additional
-external costs of $100 for every unit produced, the firm’s supply curve will be Ssocial. The new equilibrium will occur
-at E1.
-Price
-Quantity
-Demanded
-Quantity Supplied before Considering
-Pollution Cost
-Quantity Supplied after Considering
-Pollution Cost
-$600
-50,000
-40,000
-30,000
-$650
-45,000
-45,000
-35,000
-$700
-40,000
-50,000
-40,000
-$750
-35,000
-55,000
-45,000
-$800
-30,000
-60,000
-50,000
-$850
-25,000
-65,000
-55,000
-$900
-20,000
-70,000
-60,000
-TABLE 12.2 A Supply Shift Caused by Pollution Costs
-However, as a by-product of the metals, plastics, chemicals and energy that refrigerator manufacturers use,
-some pollution is created. Let’s say that, if these pollutants were emitted into the air and water, they would
-create costs of $100 per refrigerator produced. These costs might occur because of adverse effects on human
-health, property values, or wildlife habitat, reduction of recreation possibilities, or because of other negative
-impacts. In a market with no anti-pollution restrictions, firms can dispose of certain wastes absolutely free.
-Now imagine that firms which produce refrigerators must factor in these external costs of pollution—that is,
-the firms have to consider not only labor and material costs, but also the broader costs to society of harm to
-health and other costs caused by pollution. If the firm is required to pay $100 for the additional external costs
-of pollution each time it produces a refrigerator, production becomes more costly and the entire supply curve
-shifts up by $100.
-As Table 12.2 and Figure 12.2 illustrate, the firm will need to receive a price of $700 per refrigerator and
-produce a quantity of 40,000—and the firm’s new supply curve will be Ssocial. The new equilibrium will occur at
-284
-12 • Environmental Protection and Negative Externalities
-Access for free at openstax.org
-
-E1. In short, taking the additional external costs of pollution into account results in a higher price, a lower
-quantity of production, and a lower quantity of pollution. The following Work It Out feature will walk you
-through an example, this time with musical accompaniment.
-Identifying the Equilibrium Price and Quantity
-Table 12.3 shows the supply and demand conditions for a firm that will play trumpets on the streets when
-requested. We measure output as the number of songs played.
-Price
-Quantity
-Demanded
-Quantity Supplied without paying the
-costs of the externality
-Quantity Supplied after paying the
-costs of the externality
-$20
-0
-10
-8
-$18
-1
-9
-7
-$15
-2.5
-7.5
-5.5
-$12
-4
-6
-4
-$10
-5
-5
-3
-$5
-7.5
-2.5
-0.5
-TABLE 12.3 Supply and Demand Conditions for a Trumpet-Playing Firm
-Step 1. Determine the negative externality in this situation. To do this, you must think about the situation and
-consider all parties that might be impacted. A negative externality might be the increase in noise pollution in the
-area where the firm is playing.
-Step 2. Identify the initial equilibrium price and quantity only taking private costs into account. Next, identify the
-new equilibrium taking into account social costs as well as private costs. Remember that equilibrium is where the
-quantity demanded is equal to the quantity supplied.
-Step 3. Look down the columns to where the quantity demanded (the second column) is equal to the “quantity
-supplied without paying the costs of the externality” (the third column). Then refer to the first column of that row
-to determine the equilibrium price. In this case, the equilibrium price and quantity would be at a price of $10 and
-a quantity of five when we only take into account private costs.
-Step 4. Identify the equilibrium price and quantity when we take into account the additional external costs. Look
-down the columns of quantity demanded (the second column) and the “quantity supplied after paying the costs
-of the externality” (the fourth column) then refer to the first column of that row to determine the equilibrium
-price. In this case, the equilibrium will be at a price of $12 and a quantity of four.
-Step 5. Consider how taking into account the externality affects the equilibrium price and quantity. Do this by
-comparing the two equilibrium situations. If the firm is forced to pay its additional external costs, then
-production of trumpet songs becomes more costly, and the supply curve will shift up.
-Remember that the supply curve is based on choices about production that firms make while looking at their
-marginal costs, while the demand curve is based on the benefits that individuals perceive while maximizing
-utility. If no externalities existed, private costs would be the same as the costs to society as a whole, and private
-benefits would be the same as the benefits to society as a whole. Thus, if no externalities existed, the
-WORK IT OUT
-12.1 • The Economics of Pollution
-285
-
-interaction of demand and supply will coordinate social costs and benefits.
-However, when the externality of pollution exists, the supply curve no longer represents all social costs.
-Because externalities represent a case where markets no longer consider all social costs, but only some of
-them, economists commonly refer to externalities as an example of market failure. When there is market
-failure, the private market fails to achieve efficient output, because either firms do not account for all costs
-incurred in the production of output and/or consumers do not account for all benefits obtained (a positive
-externality). In the case of pollution, at the market output, social costs of production exceed social benefits to
-consumers, and the market produces too much of the product.
-We can see a general lesson here. If firms were required to pay the social costs of pollution, they would create
-less pollution but produce less of the product and charge a higher price. In the next module, we will explore
-how governments require firms to account for the social costs of pollution.
-
-## Match 2.04 — Microeconomics3e-WEB § 6.3 Behavioral Economics: An Alternative Framework for Consumer Choice
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Evaluate the reasons for making intertemporal choices
-•
-Interpret an intertemporal budget constraint
-•
-Analyze why people in America tend to save such a small percentage of their income
-As we know, people sometimes make decisions that seem “irrational” and not in their own best interest.
-People’s decisions can seem inconsistent from one day to the next and they even deliberately ignore ways to
-save money or time. The traditional economic models assume rationality, which means that people take all
-available information and make consistent and informed decisions that are in their best interest. (In fact,
-economics professors often delight in pointing out so-called “irrational behavior” each semester to their new
-students, and present economics as a way to become more rational.)
-However, a new group of economists, known as behavioral economists, argue that the traditional method omits
-something important: people’s state of mind. For example, one can think differently about money if one is
-feeling revenge, optimism, or loss. These are not necessarily irrational states of mind, but part of a range of
-emotions that can affect anyone on a given day. In addition, actions under these conditions are predictable, if
-one better understands the underlying environment. Behavioral economics seeks to enrich our
-understanding of decision-making by integrating the insights of psychology into economics. It does this by
-investigating how given dollar amounts can mean different things to individuals depending on the situation.
-This can lead to decisions that appear outwardly inconsistent, or irrational, to the outside observer.
-The way the mind works, according to this view, may seem inconsistent to traditional economists but is
-actually far more complex than an unemotional cost-benefit adding machine. For example, a traditional
-economist would say that if you lost a $10 bill today, and also received an extra $10 in your paycheck, you
-should feel perfectly neutral. After all, –$10 + $10 = $0. You are the same financially as you were before.
-However, behavioral economists have conducted research that shows many people will feel some negative
-emotion, such as anger or frustration, after those two things happen. We tend to focus more on the loss than
-the gain. We call this loss aversion, where a $1 loss pains us 2.25 times more than a $1 gain helps us, according
-to the economists Daniel Kahneman and Amos Tversky in a famous 1979 article in the journal Econometrica.
-This insight has implications for investing, as people tend to “overplay” the stock market by reacting more to
-losses than to gains. This behavior looks irrational to traditional economists, but is consistent once we
-understand better how the mind works, these economists argue.
-Traditional economists also assume human beings have complete self control, but, for instance, people will
-buy cigarettes by the pack instead of the carton even though the carton saves them money, to keep usage
-down. They purchase locks for their refrigerators and overpay on taxes to force themselves to save. In other
-words, we protect ourselves from our worst temptations but pay a price to do so. One way behavioral
-economists are responding to this is by establishing ways for people to keep themselves free of these
-temptations. This includes what we call “nudges” toward more rational behavior rather than mandatory
-regulations from government. For example, up to 20 percent of new employees do not enroll in retirement
-savings plans immediately, because of procrastination or feeling overwhelmed by the different choices. Some
-companies are now moving to a new system, where employees are automatically enrolled unless they “opt
-out.” Almost no-one opts out in this program and employees begin saving at the early years, which are most
-critical for retirement.
-Another area that seems illogical is the idea of mental accounting, or putting dollars in different mental
-6.3 • Behavioral Economics: An Alternative Framework for Consumer Choice
-151
-
-categories where they take different values. Economists typically consider dollars to be fungible, or having
-equal value to the individual, regardless of the situation.
-You might, for instance, think of the $25 you found in the street differently from the $25 you earned from three
-hours working in a fast food restaurant. You might treat the street money as “mad money” with little rational
-regard to getting the best value. This is in one sense strange, since it is still equivalent to three hours of hard
-work in the restaurant. Yet the “easy come-easy go” mentality replaces the rational economizer because of the
-situation, or context, in which you attained the money.
-In another example of mental accounting that seems inconsistent to a traditional economist, a person could
-carry a credit card debt of $1,000 that has a 15% yearly interest cost, and simultaneously have a $2,000
-savings account that pays only 2% per year. That means she pays $150 a year to the credit card company, while
-collecting only $40 annually in bank interest, so she loses $110 a year. That doesn’t seem wise.
-The “rational” decision would be to pay off the debt, since a $1,000 savings account with $0 in debt is the
-equivalent net worth, and she would now net $20 per year. Curiously, it is not uncommon for people to ignore
-this advice, since they will treat a loss to their savings account as higher than the benefit of paying off their
-credit card. They do not treat the dollars as fungible so it looks irrational to traditional economists.
-Which view is right, the behavioral economists’ or the traditional view? Both have their advantages, but
-behavioral economists have at least identified trying to describe and explain behavior that economists have
-historically dismissed as irrational. If most of us are engaged in some “irrational behavior,” perhaps there are
-deeper underlying reasons for this behavior in the first place.
-Making Choices
-In what category did consumers worldwide increase their spending during the Great Recession? Higher education.
-According to the United Nations Educational, Scientific, and Cultural Organization (UNESCO), enrollment in colleges
-and universities rose one-third in China and almost two-thirds in Saudi Arabia, nearly doubled in Pakistan, tripled in
-Uganda, and surged by three million—18 percent—in the United States. Why were consumers willing to spend on
-education during lean times? Both individuals and countries view higher education as the way to prosperity. Many
-feel that increased earnings are a significant benefit of attending college.
-U.S. Bureau of Labor Statistics data from May 2012 supports this view, as Figure 6.6 shows. They show a positive
-correlation between earnings and education. The data also indicate that unemployment rates fall with higher levels
-of education and training.
-Why spend the money to go to college during recession? Because if you are unemployed (or underemployed,
-working fewer hours than you would like), the opportunity cost of your time is low. If you’re unemployed, you don’t
-have to give up work hours and income by going to college.
-BRING IT HOME
-152
-6 • Consumer Choices
-Access for free at openstax.org
-
-FIGURE 6.6 The Impact of Education on Earnings and Unemployment Rates, 2012 Those with the highest degrees
-in 2012 had substantially lower unemployment rates; whereas, those with the least formal education suffered from
-the highest unemployment rates. The national median average weekly income was $815, and the nation
-unemployment average in 2012 was 6.8%. (Source: U.S. Bureau of Labor Statistics, May 22, 2013)
-6.3 • Behavioral Economics: An Alternative Framework for Consumer Choice
-153
-
-Key Terms
-behavioral economics a branch of economics that seeks to enrich the understanding of decision-making by
-integrating the insights of psychology and by investigating how given dollar amounts can mean different
-things to individuals depending on the situation
-budget constraint (or budget line) shows the possible combinations of two goods that are affordable given a
-consumer’s limited income
-consumer equilibrium point on the budget line where the consumer gets the most satisfaction; this occurs
-when the ratio of the prices of goods is equal to the ratio of the marginal utilities.
-diminishing marginal utility the common pattern that each marginal unit of a good consumed provides less
-of an addition to utility than the previous unit
-fungible the idea that units of a good, such as dollars, ounces of gold, or barrels of oil are capable of mutual
-substitution with each other and carry equal value to the individual
-income effect a higher price means that, in effect, the buying power of income has been reduced, even though
-actual income has not changed; always happens simultaneously with a substitution effect
-marginal utility the additional utility provided by one additional unit of consumption
-marginal utility per dollar the additional satisfaction gained from purchasing a good given the price of the
-product; MU/Price
-substitution effect when a price changes, consumers have an incentive to consume less of the good with a
-relatively higher price and more of the good with a relatively lower price; always happens simultaneously
-with an income effect
-total utility satisfaction derived from consumer choices
-Key Concepts and Summary
+37.1: Introduction to the Agriculture Economics
+-
+- Last updated
+- Save as PDF
+- Boundless
+- Boundless
+The Agricultural Market Landscape
+The agricultural market landscape is the economic system that produces, distributes, and consumes agricultural products and services.
+learning objectives
+- Outline the evolution of the agriculture market over time
+Agriculture, in many ways, has been the fundamental economic industry throughout history. The production and exchange of food laid the groundwork for all bartering, making it likely to be the oldest market in history. The production of food in modern times in developed nations is oddly taken for granted, as surpluses tend to define the market in pursuit of providing options.
+Developing nations view agriculture quite differently, where famines and low yield years can dramatically affect the overall food supply in a given region. Due to the critical importance of food production, the agricultural market landscape is one of the most studied and evolved economic segments.
+The History of Agriculture
+The history of agriculture is complex, spanning back thousands of years across a wide variety of different geographic regions, climates, cultures, and technological approaches. Over 10,000 years ago, tribes began executing forest gardening. This evolved in the Fertile Crescent region into the domestication of animals (i.e. cattle, sheep, goats, pigs), growing of wheat and barley in Jordan Valley and the growth of cereal in Syria (all still about 10,000 years ago).
+As population expanded dramatically over time (see ), so did the efficiency of agriculture economics. This began with agricultural improvements such as the hoe and the plow (2500 B.C.), irrigation via canals, and biological pest control as early as the bronze and iron ages. This evolved further in the middle ages with the advent of fertilizers, three field techniques, draft horses, and improved international exchange. Indeed, until the Industrial Revolution (18th and 19th centuries) the vast majority of the human population labored long hard days to generate enough food to feed the masses.
+Human Population Growth : This chart illustrates the way in which human population growth evolved over time, underlining the difficulty in maintaining supplies to fill the needs of such a large population.
+The modern era of farming is increasingly defined by selective breeding, crop rotation, economies of scale, electronic machinery, genetic modification, pesticides, and a host of other solutions that have rapidly expanded the overall potential capacity in farming.
+Agricultural Economics
+This rapid expansion coupled with the essential role of food in our society has generated a field of economics solely dedicated to observing and predicting trends within the agriculture market landscape. Basic macro and micro-economic principles apply to farming, as do the existence of externalities such as climate change and nutritional health. Agricultural economics is defined as the economic system that produces, distributes, and consumes agricultural products and services. This represents a large interconnected supply chain on a global scale.
+Interesting trends in the agricultural market pertain to the decrease in cost for the actual farming aspects and an increase in costs for the distribution and sales system (particularly in the U.S.). This is largely a result of technological progress greatly reducing the need for human labor in the production of agricultural goods, weighting the costs more heavily on the human resources side of the equation.
+The politics and economics of agriculture are also relevant issues on the global scale. US agricultural subsidies have had a large impact on international trade flows. The subsidies make US agricultural products artificially cheap, too cheap for developing nations to compete with. Developing nations, which may rely more heavily on agriculture in their economy than developed nations, argue that the US should reduce its agriculture subsidies. This tension is perhaps the biggest cause of the failure of the Doha Round, a World Trade Organization push for more open global trade, to make any progress since its initiation in 2001.
+Subsidies and Income Supports
+An agricultural subsidy is a government grant paid to incumbents in the industry to reduce costs and influence the supply of commodities.
+learning objectives
+- Analyze the positive and negative affects of subsidies on agricultural economics.
+When governments want to ensure their citizens have access to healthy foods at reasonable prices, a variety of governmental supports are provided to the industry to ensure it maintains low costs of production and high output. This is generally in the form of subsidy and income supports, which alleviate some competitive dynamics and operating expenses to maintain reasonable price points in the market economically.
+Subsidies
+An agricultural subsidy is defined as a government grant paid to farmers to supplement income and influence the overall cost and supply of certain commodities. In this industry, subsidized goods generally include wheat, corn, barley, oats, sorghum, milk, rice, peanuts, tobacco, soybean, cotton, lamb, beef, chicken and pork. illustrates the governmental priorities, based upon subsidies provided, for specific agricultural goods in the United States. These subsidies play a large role in enabling higher supply at lower price points, supporting the domestic agricultural industry.
+Agriculture Subsidies in the U.S. (2005) : This chart illustrates the governmental priorities, based upon subsidies provided, for specific agriculture goods in the United States.
+Another, less direct, form of subsidy is in the taxing system for consumers. Consumers are not charged tax on food goods and clothes, which are considered necessities and thus should be provided at the lowest costs possible. These consumer-based subsidies are another governmental attempt to enable citizens in the country to purchase basic food stuffs required to survive. Food stamps are a similar concept, used to empower low income individuals and ensure they have access to these basic foods as well (food stamps are often limited to milk, eggs, bread and other core foods).
+Impacts of Subsidies
+While these subsidies above are designed to have a positive effect on consumers looking to purchase foods, there are externalities to this process that can have a damaging affect on other groups:
+- Global Effects: While domestic subsidies are good for driving up production domestically, it suppresses competition in the context of international trade. Government assistance in an industry is argued to provide an unfair competitive advantage for those companies, artificially lowering their costs of production, sometimes below the feasible level for countries (especially developing nations) not receiving these supports.
+- Developing Nations: A complement to the above discussion is the effect on poverty and developing nations without the infrastructure to provide subsidies for their own farmers. The International Food Policy Research Institute has estimated a total loss of economic growth in developing nations at $24 billion in 2003, all of which translate to lost income for individuals who desperately need it.
+- Nutrition: Another interesting side effect of subsidies and the artificially reduced price of food is obesity and overeating. Some argue that these low prices provide the incentive to buy more food than is necessary, and this over consumption has resulted in a highly unhealthy culture (particularly in the U.S.).
+- Environmental Implications: As food prices reduce distribution increases, thus driving an environmental externality which already existed even further. The cost, environmentally, of transporting a high quantity of agricultural goods across the globe has resulted in high degrees of pollution and waste.
+Overall, while subsidies are largely a good thing and enable individuals to buy the necessities, there are clear cut downsides to subsidies as well. Politics must find a way to mitigate the negative consequences while increasing the positive effects, allowing for balanced and healthy consumption across all demographics.
+Price Supports
+Price supports are subsidies or price controls used by the government to artificially increase or decrease prices in the agriculture market.
+learning objectives
+- Assess the way in which price controls affect supply, demand, and equilibrium pricing in agricultural economics.
+The agriculture industry is a critical component of any national economy because it represents both a substantial portion of gross domestic product and it is a core necessity for citizens within the system. Due to the fact that these goods are necessities, it is also important to keep in mind the way in which supply and demand would operate if there was a limited supply (required for survival, and thus potential demand upsides could be boundless). Due to these factors, governments enact a variety of price controls on the agriculture business, both in the U.S. and abroad.
+Defining Price Supports
+Price supports are defined as subsidies or price controls that are leveraged by the government to artificially increase or decrease prices, and thus alter the supply consumed/quantity demanded by individuals within the system. Understanding the effects of subsidies and price controls is critical in industries with a high degree of government involvement, and agriculture is one of the most affected industries.
+is simply a supply and demand curve that demonstrates the consumer surplus and producer surplus opportunities in basic supply and demand chart. In this scenario, without external governmental intervention, the price equilibrium will remain in the center of the graph. However, the government may implement price supports that artificially consume some of the consumer surplus (in, this is 200 units). This drives the price upwards to $6 per unit despite the fact that the consumer is not gaining additional quantity (it is artificial quantity, as purchased by the government).
+Consumer Surplus with Price Support : This graph is a complement to the first graph. It demonstrates the effect of implementing a price support on a basic supply and demand chart. The overall consumption will decrease as the government buys up consumer surplus. This demonstrates a price control on behalf of the government.
+Consumer Surplus : This chart, in conjunction with the one below, illustrates the way in which price supports can alter supply and overall consumption. It demonstrates the consumer surplus and producer surplus opportunities on a basic supply and demand chart.
+This can happen in reverse as well in the form of subsidies. Subsidies are the reduction of costs for producers, generally in the form of governmental grants provided to suppliers. In this scenario, prices are artificially reduced, allowing for an outward shift of the supply curve along the demand line, which creates a higher amount of consumption by consumers as a result of the reduced price. This is illustrated in, where the governmental subsidy allows for increased consumption power on behalf of the consumers in that market.
+Subsidies and Supply : This chart shows how subsidies and price controls affect supply and demand. A subsidy, as illustrated here, will reduce the price and extend the overall supply demanded and consumed by individuals within the system. This is the most relevant chart to agricultural economics specifically.
+Applying Price Supports to Agricultural Economics
+The United States currently pays out around $20 billion annually to farmers and producers in agriculture in the form of subsidies via farm bills in order to artificially reduce prices and shift the supply curve outward to ensure the overall supply in the market is high enough to satisfy all prospective consumers. It is important to note how dramatically the recipients of farming subsidies have cha

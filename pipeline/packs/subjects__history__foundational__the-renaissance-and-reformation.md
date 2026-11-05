@@ -1,9 +1,22 @@
 # Source pack — subjects/history/foundational/the-renaissance-and-reformation
 Lesson title: The Renaissance & Reformation
 Level: foundational
-Match confidence: 2.03
+Match confidence: 2.04
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 2.04 — LibreTexts: 1.23: Protestant Reformation
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://human.libretexts.org/Bookshelves/Music/Music_Appreciation/Music_Appreciation_I_(Jones)/01%3A_Medieval_and_Renaissance/1.23%3A_Protestant_Reformation
+
+1.23: Protestant Reformation
+The Reformation and subsequent counter-reformation encompass some of the most sweeping religious, social, and political transitions of the Renaissance era. Both movements exert a profound influence on the music of that time. We will actually explore some of the effects of the Protestant Reformation on music, specifically those put forward by Martin Luther, a little later when we study the cantatas of J.S. Bach in the Baroque. For now, an overview of the Reformation will suffice. As you read here, notice the mention of the role of the printing press and the Catholic Church’s response, the counter-reformation. The next page will focus on the counter-reformation and its effects on Renaissance music, specifically that of Giovanni Pierluigi da Palestrina.
+The Protestant Reformation , often referred to simply as the Reformation , was the schism within Western Christianity initiated by Martin Luther, John Calvin, Huldrych Zwingli and other early Protestant Reformers.
+Although there had been significant earlier attempts to reform the Roman Catholic Church before Luther—such as those of Jan Hus, Peter Waldo, and John Wycliffe—it is Martin Luther who is widely acknowledged to have started the Reformation with his 1517 work The Ninety-Five Theses . Luther began by criticizing the selling of indulgences, insisting that the Pope had no authority over purgatory and that the Catholic doctrine of the merits of the saints had no foundation in the gospel. The attacks widened to cover many of the doctrines and devotional Catholic practices. The new movement within Germany diversified almost immediately, and other reform impulses arose independently of Luther. The largest groupings were the Lutherans and Calvinists, or Reformed. Lutheran churches were founded mostly in Germany, the Baltics and Scandinavia, while the Reformed ones were founded in France, Switzerland, Hungary, the Netherlands and Scotland. The new movement influenced the Church of England decisively after 1547 under Edward VI and Elizabeth I, although the national church had been made independent under Henry VIII in the early 1530s for political rather than religious reasons. There were also reformation movements throughout continental Europe known as the Radical Reformation, which gave rise to the Anabaptist, Moravian, and other Pietisticmovements.
+Although the core motivation behind these changes was theological, many other factors played a part, including the rise of nationalism, the Western Schism which eroded people’s faith in the Papacy, the corruption of the Curia, and the new learning of the Renaissance which questioned much traditional thought. On a technological level the spread of the printing press provided the means for the rapid dissemination of religious materials in the vernacular.
+The Roman Catholic Church responded with a Counter-Reformation initiated by the Council of Trent. Much work in battling Protestantism was done by the well-organized new order of the Jesuits. In general, Northern Europe, with the exception of most of Ireland, came under the influence of Protestantism. Southern Europe remained Roman Catholic, while Central Europe was a site of a fierce conflict, culminating in the Thirty Years’ War, which left it massively devastated.
+Contributors and Attributions
+- Authored by : Elliott Jones. Provided by : Santa Ana College. Located at : http://www.sac.edu . License : CC BY: Attribution
+- Protestant Reformation. Provided by : Wikipedia. Located at : http://en.Wikipedia.org/wiki/Protestant_Reformation . License : CC BY-SA: Attribution-ShareAlike
 
 ## Match 2.03 — World_History_Volume_2-WEB_LdwoslB § 5.1 The Protestant Reformation
 
@@ -178,58 +191,36 @@ Other Anabaptist movements included the Hutterites, the Mennonites, and the Amis
 larger Mennonite movement in the seventeenth century. Besides believing in adult baptism, Anabaptist groups
 advocated the separation of church and stat
 
-## Match 0.52 — Precalculus_2e-WEB § 10.5 Conic Sections in Polar Coordinates
+## Match 2.03 — LibreTexts: 9.3: Early, Middle, and Late Renaissance Music
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://human.libretexts.org/Bookshelves/Music/Music_Appreciation/Music_Appreciation_II_(Kuznetsova)/09%3A_The_Renaissance/9.03%3A_Early_Middle_and_Late_Renaissance_Music
 
-Introduction to Analytic Geometry
-The Greek mathematician Menaechmus (c. 380–c. 320 BCE) is generally credited with discovering the shapes formed by
-the intersection of a plane and a right circular cone. Depending on how he tilted the plane when it intersected the cone,
-he formed different shapes at the intersection–beautiful shapes with near-perfect symmetry.
-It was also said that Aristotle may have had an intuitive understanding of these shapes, as he observed the orbit of the
-planet to be circular. He presumed that the planets moved in circular orbits around Earth, and for nearly 2000 years this
-was the commonly held belief.
-It was not until the Renaissance movement that Johannes Kepler noticed that the orbits of the planet were not circular in
-nature. His published law of planetary motion in the 1600s changed our view of the solar system forever. He claimed that
-the sun was at one end of the orbits, and the planets revolved around the sun in an oval-shaped path.
-Other objects in the solar system (and perhaps other systems) follow a similar elliptical path, including the spectacular
-rings of Saturn. Using this understanding as a basis, 19th century mathematicians like James Clerk Maxwell and Sofya
-Kovalevskaya showed that despite their appearance through the telescopes of the day (and even in current telescopes),
-the rings are not solid and continuous, but are rather composed of small particles. Even after the Voyager and Cassini
-missions have provided close-up and detailed data regarding the ring structures, full understanding of their construction
-relies heavily on mathematical analysis. Of particular interest are the influences of Saturn's moons and moonlets, and
-the ways they both disrupt and preserve the ring structure.
-In this chapter, we will investigate the two-dimensional figures that are formed when a right circular cone is intersected
-by a plane. We will begin by studying each of three figures created in this manner. We will develop defining equations for
-each figure and then learn how to use these equations to solve a variety of problems.
-ANALYTIC GEOMETRY
-10
-10 • Introduction to Analytic Geometry
-1041
-
-
-## Match 0.52 — Algebra-and-Trigonometry-2e-WEB § 12.5 Conic Sections in Polar Coordinates
-
-Introduction to Analytic Geometry
-The Greek mathematician Menaechmus (c. 380–c. 320 BCE) is generally credited with discovering the shapes formed by
-the intersection of a plane and a right circular cone. Depending on how he tilted the plane when it intersected the cone,
-he formed different shapes at the intersection–beautiful shapes with near-perfect symmetry.
-It was also said that Aristotle may have had an intuitive understanding of these shapes, as he observed the orbit of the
-planet to be circular. He presumed that the planets moved in circular orbits around Earth, and for nearly 2000 years this
-was the commonly held belief.
-It was not until the Renaissance movement that Johannes Kepler noticed that the orbits of the planet were not circular in
-nature. His published law of planetary motion in the 1600s changed our view of the solar system forever. He claimed that
-the sun was at one end of the orbits, and the planets revolved around the sun in an oval-shaped path.
-Other objects in the solar system (and perhaps other systems) follow a similar elliptical path, including the spectacular
-rings of Saturn. Using this understanding as a basis, 19th century mathematicians like James Clerk Maxwell and Sofya
-Kovalevskaya showed that despite their appearance through the telescopes of the day (and even in current telescopes),
-the rings are not solid and continuous, but are rather composed of small particles. Even after the Voyager and Cassini
-missions have provided close-up and detailed data regarding the ring structures, full understanding of their construction
-relies heavily on mathematical analysis. Of particular interest are the influences of Saturn's moons and moonlets, and
-the ways they both disrupt and preserve the ring structure.
-In this chapter, we will investigate the two-dimensional figures that are formed when a right circular cone is intersected
-by a plane. We will begin by studying each of three figures created in this manner. We will develop defining equations for
-each figure and then learn how to use these equations to solve a variety of problems.
-ANALYTIC GEOMETRY
-12
-12 • Introduction
-1147
-
+9.3: Early, Middle, and Late Renaissance Music
+Early Renaissance Music (1400–1467)
+This group gradually dropped the late medieval period’s complex devices of isorhythm and extreme syncopation, resulting in a more limpid and flowing style. What their music lost in rhythmic complexity, however, it gained in rhythmic vitality, as a “drive to the cadence” became a prominent feature around mid-century.
+Middle Renaissance Music (1467–1534)
+In the early 1470s, music started to be printed using a printing press. Music printing had a major effect on how music spread for not only did a printed piece of music reach a larger audience than any manuscript ever could, it did it far more cheaply as well. Also during this century, a tradition of famous makers began for many instruments. These makers were masters of their craft. An example is Neuschel for his trumpets.
+Towards the end of the fifteenth century, polyphonic sacred music (as exemplified in the masses of Johannes Ockeghem and Jacob Obrecht) had once again become more complex, in a manner that can perhaps be seen as correlating to the increased exploration of detail in painting at the time. Ockeghem, particularly, was fond of canon, both contrapuntal and mensural. He composed a mass, Missa prolationum , in which all the parts are derived canonically from one musical line.
+It was in the opening decades of the next century that music felt in a tactus (think of the modern-time signature) of two semibreves-to-a-breve began to be as common as that with three semibreves-to-a-breve, as had prevailed prior to that time.
+In the early sixteenth century, there is another trend towards simplification, as can be seen to some degree in the work of Josquin des Prez and his contemporaries in the Franco-Flemish School, then later in that of G. P. Palestrina, who was partially reacting to the strictures of the Council of Trent, which discouraged excessively complex polyphony as inhibiting understanding the text. Early sixteenth-century Franco-Flemings moved away from the complex systems of canonic and other mensural play of Ockeghem’s generation, tending toward points of imitation and duet or trio sections within an overall texture that grew to five and six voices. They also began, even before the Tridentine reforms, to insert ever-lengthening passages of homophony, to underline important text or points of articulation. Palestrina, on the other hand, came to cultivate a freely flowing style of counterpoint in a thick, rich texture within which consonance followed dissonance on a nearly beat-by-beat basis, and suspensions ruled the day. By now, tactus was generally two semibreves per breve with three per breve used for special effects and climactic sections; this was a nearly exact reversal of the prevailing technique a century before.
+Late Renaissance Music (1534–1600)
+In Venice, from about 1534 until around 1600, an impressive polychoral style developed, which gave Europe some of the grandest, most sonorous music composed up until that time, with multiple choirs of singers, brass and strings in different spatial locations in the Basilica San Marco di Venezia. These multiple revolutions spread over Europe in the next several decades, beginning in Germany and then moving to Spain, France and England somewhat later, demarcating the beginning of what we now know as the Baroque musical era.
+The Roman School was a group of composers of predominantly church music in Rome, spanning the late Renaissance and early Baroque eras. Many of the composers had a direct connection to the Vatican and the papal chapel, though they worked at several churches; stylistically they are often contrasted with the Venetian School of composers, a concurrent movement which was much more progressive. By far the most famous composer of the Roman School is Giovanni Pierluigi da Palestrina. While best known as a prolific composer of masses and motets, he was also an important madrigalist. His ability to bring together the functional needs of the Catholic Church with the prevailing musical styles during the Counter-Reformation period gave him his enduring fame.
+The brief but intense flowering of the musical madrigal in England, mostly from 1588 to 1627, along with the composers who produced them, is known as the English Madrigal School. The English madrigals were a cappella, predominantly light in style, and generally began as either copies or direct translations of Italian models. Most were for three to six voices.
+Musica reservata is either a style or a performance practice in a cappella vocal music of the latter, mainly in Italy and southern Germany, involving refinement, exclusivity, and intense emotional expression of sung text.
+The cultivation of European music in the Americas began in the sixteenth century soon after the arrival of the Spanish, and the conquest of Mexico. Although fashioned in European style, uniquely Mexican hybrid works based on native Mexican language and European musical practice, appeared very early. Musical practices in New Spain continually coincided with European tendencies throughout the subsequent Baroque and Classical music periods. Among these New World composers were Hernando Franco, Antonio de Salazar, and Manuel de Zumaya.
+In addition, many composers observed a division in their own works between a prima pratica (music in the Renaissance polyphonic style) and a seconda pratica (music in the new style) during the first part of the seventeenth century.
+Masses
+The fifteenth- and sixteenth-century masses had two kinds of sources that were used, monophonic and polyphonic, with two main forms of elaboration, based on cantus firmus practice or, beginning some time around 1500, the new style of pervasive imitation. Four types of masses resulted:
+- Cantus firmus mass (tenor mass)
+- The cantus firmus/imitation mass
+- The paraphrase mass
+- The imitation mass (parody mass)
+Masses were normally titled by the source from which they borrowed. Cantus firmus mass uses the same monophonic melody, usually drawn from chant and usually in the tenor and most often in longer note values than the other voices.
+Mannerism
+In the late sixteenth century, as the Renaissance era closed, an extremely manneristic style developed. In secular music, especially in the madrigal, there was a trend towards complexity and even extreme chromaticism (as exemplified in madrigals of Luzzaschi, Marenzio, and Gesualdo). The term “mannerism” derives from art history.
+Transition to the Baroque
+Beginning in Florence, there was an attempt to revive the dramatic and musical forms of Ancient Greece, through the means of monody, a form of declaimed music over a simple accompaniment; a more extreme contrast with the preceding polyphonic style would be hard to find; this was also, at least at the outset, a secular trend. These musicians were known as the Florentine Camerata.
+Contributors and Attributions
+- Renaissance music. Provided by : Wikipedia. Located at : https://en.Wikipedia.org/wiki/Renaissance_music . License : CC BY-SA: Attribution-ShareAlike
+- DESPREZ . Authored by : Clattuc . Provided by : Wikimedia Commons. Located at : https://commons.wikimedia.org/wiki/File:DESPREZ.jpg#/media/File:DESPREZ.jpg . License : Public Domain: No Known Copyright
+- The Musicians. Provided by : Metropolitan Museum of Art. Located at : https://commons.wikimedia.org/wiki/File:Caravaggio_-_I_Musici.jpg . License : Public Domain: No Known Copyright

@@ -1,9 +1,101 @@
 # Source pack — subjects/physics/intermediate/thermal-physics
 Lesson title: Thermal Physics
 Level: intermediate
-Match confidence: 2.07
+Match confidence: 3.07
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 3.07 — LibreTexts: 8.1: Introduction to Thermal Physics
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/Conceptual_Physics/Introduction_to_Physics_(Park)/04%3A_Unit_3-_Classical_Physics_-_Thermodynamics_Electricity_and_Magnetism_and_Light/08%3A_Thermal_Physics/8.01%3A_Introduction_to_Thermal_Physics
+
+8.1: Introduction to Thermal Physics
+Heat is something familiar to each of us. We feel the warmth of the summer Sun, the chill of a clear summer night, the heat of coffee after a winter stroll, and the cooling effect of our sweat. Heat transfer is maintained by temperature differences. Manifestations of heat transfer —the movement of heat energy from one place or material to another—are apparent throughout the universe. Heat from beneath Earth’s surface is brought to the surface in flows of incandescent lava. The Sun warms Earth’s surface and is the source of much of the energy we find on it. Rising levels of atmospheric carbon dioxide threaten to trap more of the Sun’s energy, perhaps fundamentally altering the ecosphere. In space, supernovas explode, briefly radiating more heat than an entire galaxy does.
+What is heat? How do we define it? How is it related to temperature? What are heat’s effects? How is it related to other forms of energy and to work? We will find that, in spite of the richness of the phenomena, there is a small set of underlying physical principles that unite the subjects and tie them to other fields.
+Most notably, heat transfer can be used to do work. It can also be converted to any other form of energy. A car engine, for example, burns fuel for heat transfer into a gas. Work is done by the gas as it exerts a force through a distance, converting its energy into a variety of other forms—into the car’s kinetic or gravitational potential energy; into electrical energy to run the spark plugs, radio, and lights; and back into stored energy in the car’s battery. But most of the heat transfer produced from burning fuel in the engine does not do work on the gas-the engine is quite inefficient.
+Basic physical laws govern how heat transfer for doing work takes place and place insurmountable limits onto its efficiency. This chapter will explore these laws as well as some applications and concepts associated with them. These topics are part of thermodynamics—the study of heat transfer and its relationship to doing work.
+
+## Match 3.05 — LibreTexts: 8.E: Thermal Physics (Exercises)
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/Conceptual_Physics/Introduction_to_Physics_(Park)/04%3A_Unit_3-_Classical_Physics_-_Thermodynamics_Electricity_and_Magnetism_and_Light/08%3A_Thermal_Physics/8.E%3A_Thermal_Physics_(Exercises)
+
+8.E: Thermal Physics (Exercises)
+Conceptual Questions
+9.1: Temperature
+1. What does it mean to say that two systems are in thermal equilibrium?
+2. Give an example of a physical property that varies with temperature and describe how it is used to measure temperature.
+3. When a cold alcohol thermometer is placed in a hot liquid, the column of alcohol goes down slightly before going up. Explain why.
+4. If you add boiling water to a cup at room temperature, what would you expect the final equilibrium temperature of the unit to be? You will need to include the surroundings as part of the system. Consider the zeroth law of thermodynamics.
+9.2: The Ideal Gas Law
+5. Under what circumstances would you expect a gas to behave significantly differently than predicted by the ideal gas law?
+6. A constant-volume gas thermometer contains a fixed amount of gas. What property of the gas is measured to indicate its temperature?
+9.3: Heat
+7. How is heat transfer related to temperature?
+8. Describe a situation in which heat transfer occurs. What are the resulting forms of energy?
+9. When heat transfers into a system, is the energy stored as heat? Explain briefly.
+9.4: Heat Transfer Methods
+10. What are the main methods of heat transfer from the hot core of Earth to its surface? From Earth’s surface to outer space?
+11. When our bodies get too warm, they respond by sweating and increasing blood circulation to the surface to transfer thermal energy away from the core. What effect will this have on a person in a 40.0ºC hot tub?
+12. Figure \(\PageIndex{1}\) shows a cut-away drawing of a thermos bottle (also known as a Dewar flask), which is a device designed specifically to slow down all forms of heat transfer. Explain the functions of the various parts, such as the vacuum, the silvering of the walls, the thin-walled long glass neck, the rubber support, the air layer, and the stopper.
+9.5: Temperature Change and Heat Capacity
+13. What three factors affect the heat transfer that is necessary to change an object’s temperature?
+14. The brakes in a car increase in temperature by \(\Delta T\) when bringing the car to rest from a speed \(v\). How much greater would \(\Delta T\) be if the car initially had twice the speed? You may assume the car to stop sufficiently fast so that no heat transfers out of the brakes.
+9.6: Phase Change and Latent Heat
+15. Heat transfer can cause temperature and phase changes. What else can cause these changes?
+16. How does the latent heat of fusion of water help slow the decrease of air temperatures, perhaps preventing temperatures from falling significantly below \(0^{\circ} \mathrm{C}\), in the vicinity of large bodies of water?
+17. What is the temperature of ice right after it is formed by freezing water?
+18. If you place \(0^{\circ} \mathrm{C}\) ice into \(0^{\circ} \mathrm{C}\) water in an insulated container, what will happen? Will some ice melt, will more water freeze, or will neither take place?
+19. What effect does condensation on a glass of ice water have on the rate at which the ice melts? Will the condensation speed up the melting process or slow it down?
+20. In very humid climates where there are numerous bodies of water, such as in Florida, it is unusual for temperatures to rise above about 35ºC(95ºF). In deserts, however, temperatures can rise far above this. Explain how the evaporation of water helps limit high temperatures in humid climates.
+21. In winters, it is often warmer in San Francisco than in nearby Sacramento, 150 km inland. In summers, it is nearly always hotter in Sacramento. Explain how the bodies of water surrounding San Francisco moderate its extreme temperatures.
+22. Putting a lid on a boiling pot greatly reduces the heat transfer necessary to keep it boiling. Explain why.
+23. Freeze-dried foods have been dehydrated in a vacuum. During the process, the food freezes and must be heated to facilitate dehydration. Explain both how the vacuum speeds up dehydration and why the food freezes as a result.
+24. When still air cools by radiating at night, it is unusual for temperatures to fall below the dew point. Explain why.
+25. In a physics classroom demonstration, an instructor inflates a balloon by mouth and then cools it in liquid nitrogen. When cold, the shrunken balloon has a small amount of light blue liquid in it, as well as some snow-like crystals. As it warms up, the liquid boils, and part of the crystals sublimate, with some crystals lingering for awhile and then producing a liquid. Identify the blue liquid and the two solids in the cold balloon. Justify your identifications using data from Table 9.6.1.
+9.7: The First Law of Thermodynamics
+26. Describe the photo of the tea kettle at the beginning of this section in terms of heat transfer, work done, and internal energy. How is heat being transferred? What is the work done and what is doing it? How does the kettle maintain its internal energy?
+27. The first law of thermodynamics and the conservation of energy are clearly related. How do they differ in the types of energy considered?
+28. Heat transfer \(Q\) and work done \(W\) are always energy in transit, whereas internal energy \(U\) is energy stored in a system. Give an example of each type of energy, and state specifically how it is either in transit or resides in a system.
+29. How do heat transfer and internal energy differ? In particular, which can be stored as such in a system and which cannot?
+30. 
+31. Give an explanation of how food energy (calories) can be viewed as molecular potential energy (consistent with the atomic and molecular definition of internal energy).
+32. Identify the type of energy transferred to your body in each of the following as either internal energy, heat transfer, or doing work:
+(a) basking in sunlight;
+(b) eating food;
+(c) riding an elevator to a higher floor.
+9.8: The First Law of Thermodynamics and Heat Engine Processes
+33. A great deal of effort, time, and money has been spent in the quest for the so-called perpetual-motion machine, which is defined as a hypothetical machine that operates or produces useful work indefinitely and/or a hypothetical machine that produces more work or energy than it consumes. Explain, in terms of heat engines and the first law of thermodynamics, why or why not such a machine is likely to be constructed.
+34. One method of converting heat transfer into doing work is for heat transfer into a gas to take place, which expands, doing work on a piston, as shown in the figure below.
+(a) Is the heat transfer converted directly to work in an isobaric process, or does it go through another form first? Explain your answer.
+(b) What about in an isothermal process?
+(c) What about in an adiabatic process (where heat transfer occurred prior to the adiabatic process)?
+35. Would the previous question make any sense for an isochoric process? Explain your answer.
+36. We ordinarily say that \(\Delta U=0\) for an isothermal process. Does this assume no phase change takes place? Explain your answer.
+37. The temperature of a rapidly expanding gas decreases. Explain why in terms of the first law of thermodynamics. (Hint: Consider whether the gas does work and whether heat transfer occurs rapidly into the gas through conduction.)
+38. A real process may be nearly adiabatic if it occurs over a very short time. How does the short time span help the process to be adiabatic?
+39. It is unlikely that a process can be isothermal unless it is a very slow process. Explain why. Is the same true for isobaric and isochoric processes? Explain your answer.
+9.9: Introduction to the Second Law of Thermodynamics- Heat Engines and Their Efficiency
+40. Imagine you are driving a car up Pike’s Peak in Colorado. To raise a car weighing 1000 kilograms a distance of 100 meters would require about a million joules. You could raise a car 12.5 kilometers with the energy in a gallon of gas.  But other considerations have to be taken into account. Explain, in terms of efficiency, what factors may keep you from realizing your ideal energy use on this trip.
+41. Is a temperature difference necessary to operate a heat engine? State why or why not.
+42. Definitions of efficiency vary depending on how energy is being converted. Compare the definitions of efficiency for the human body and heat engines. How does the definition of efficiency in each relate to the type of energy being converted into doing work?
+43. Why—other than the fact that the second law of thermodynamics says reversible engines are the most efficient—should heat engines employing reversible processes be more efficient than those employing irreversible processes? Consider that dissipative mechanisms are one cause of irreversibility.
+9.10: Carnot’s Perfect Heat Engine- The Second Law of Thermodynamics Restated
+44. Think about the drinking bird at the beginning of this section ( Figure 9.10.1). Although the bird enjoys the theoretical maximum efficiency possible, if left to its own devices over time, the bird will cease “drinking.” What are some of the dissipative processes that might cause the bird’s motion to cease?
+45. Can improved engineering and materials be employed in heat engines to reduce heat transfer into the environment? Can they eliminate heat transfer into the environment entirely?
+46. Does the second law of thermodynamics alter the conservation of energy principle?
+9.11: Applications of Thermodynamics- Heat Pumps and Refrigerators
+47. Explain why heat pumps do not work as well in very cold climates as they do in milder ones. Is the same true of refrigerators?
+48. In some Northern European nations, homes are being built without heating systems of any type. They are very well insulated and are kept warm by the body heat of the residents. However, when the residents are not at home, it is still warm in these houses. What is a possible explanation?
+49. Why do refrigerators, air conditioners, and heat pumps operate most cost-effectively for cycles with a small difference between \(T_{\mathrm{h}}\) and \(T_{\mathrm{c}}\)? (Note that the temperatures of the cycle employed are crucial to its \(C O P\).)
+50. Grocery store managers contend that there is less total energy consumption in the summer if the store is kept at a low temperature. Make arguments to support or refute this claim, taking into account that there are numerous refrigerators and freezers in the store.
+51. Can you cool a kitchen by leaving the refrigerator door open?
+9.12: Entropy and the Second Law of Thermodynamics- Disorder and the Unavailability of Energy
+52. Does a gas become more orderly when it liquefies? Does its entropy change? If so, does the entropy increase or decrease? Explain your answer.
+53. Explain how water’s entropy can decrease when it freezes without violating the second law of thermodynamics. Specifically, explain what happens to the entropy of its surroundings.
+54. Is a uniform-temperature gas more or less orderly than one with several different temperatures? Which is more structured? In which can heat transfer result in work done without heat transfer from another system?
+55. Give an example of a spontaneous process in which a system becomes less ordered and energy becomes less available to do work. What happens to the system’s entropy in this process?
+56. What is the change in entropy in an adiabatic process? Does this imply that adiabatic processes are reversible? Can a process be precisely adiabatic for a macroscopic system?
+57. Does the entropy of a star increase or decrease as it radiates? Does the entropy of the space into which it radiates (which has a temperature of about 3 K) increase or decrease? What does this do to the entropy of the universe?
+58. Explain why a building made of bricks has smaller entropy than the same bricks in a disorganized pile. Do this by considering the number of ways that each could be formed (the number of microstates in each macrostate).
+9.13: Statistical Interpretation of Entropy and the Second Law of Thermodynamics- The Underlying Explanati
 
 ## Match 2.07 — Physics-WEB_Sab7RrQ § 11.1 Temperature and Thermal Energy
 
@@ -234,313 +326,3 @@ c.
 a thermometer
 d.
 a voltmeter
-
-## Match 2.06 — Physics-WEB_Sab7RrQ § 12.2 First law of Thermodynamics: Thermal Energy and Work
-
-Section Learning Objectives
-By the end of this section, you will be able to do the following:
-•
-Describe how pressure, volume, and temperature relate to one another and to work, based on the ideal gas
-law
-•
-Describe pressure–volume work
-•
-Describe the first law of thermodynamics verbally and mathematically
-•
-Solve problems involving the first law of thermodynamics
-Section Key Terms
-Boltzmann constant
-first law of thermodynamics
-ideal gas law
-internal energy
-pressure
-Pressure, Volume, Temperature, and the Ideal Gas Law
-Before covering the first law of thermodynamics, it is first important to understand the relationship between pressure, volume,
-and temperature. Pressure, P, is defined as
-where F is a force applied to an area, A, that is perpendicular to the force.
-Depending on the area over which it is exerted, a given force can have a significantly different effect, as shown in Figure 12.3.
-Figure 12.3 (a) Although the person being poked with the finger might be irritated, the force has little lasting effect. (b) In contrast, the
-same force applied to an area the size of the sharp end of a needle is great enough to break the skin.
-The SI unit for pressure is the pascal, where
-Pressure is defined for all states of matter but is particularly important when discussing fluids (such as air). You have probably
-heard the word pressure being used in relation to blood (high or low blood pressure) and in relation to the weather (high- and
-low-pressure weather systems). These are only two of many examples of pressures in fluids.
-The relationship between the pressure, volume, and temperature for an ideal gas is given by the ideal gas law. A gas is
-considered ideal at low pressure and fairly high temperature, and forces between its component particles can be ignored. The
-ideal gas law states that
-where P is the pressure of a gas, V is the volume it occupies, N is the number of particles (atoms or molecules) in the gas, and T is
-12.1
-12.2
-358
-Chapter 12 • Thermodynamics
-Access for free at openstax.org.
-
-its absolute temperature. The constant k is called the Boltzmann constant and has the value
-For the
-purposes of this chapter, we will not go into calculations using the ideal gas law. Instead, it is important for us to notice from the
-equation that the following are true for a given mass of gas:
-•
-When volume is constant, pressure is directly proportional to temperature.
-•
-When temperature is constant, pressure is inversely proportional to volume.
-•
-When pressure is constant, volume is directly proportional to temperature.
-This last point describes thermal expansion—the change in size or volume of a given mass with temperature. What is the
-underlying cause of thermal expansion? An increase in temperature means that there’s an increase in the kinetic energy of the
-individual atoms. Gases are especially affected by thermal expansion, although liquids expand to a lesser extent with similar
-increases in temperature, and even solids have minor expansions at higher temperatures. This is why railroad tracks and bridges
-have expansion joints that allow them to freely expand and contract with temperature changes.
-To get some idea of how pressure, temperature, and volume of a gas are related to one another, consider what happens when
-you pump air into a deflated tire. The tire’s volume first increases in direct proportion to the amount of air injected, without
-much increase in the tire pressure. Once the tire has expanded to nearly its full size, the walls limit volume expansion. If you
-continue to pump air into tire (which now has a nearly constant volume), the pressure increases with increasing temperature
-(see Figure 12.4).
-Figure 12.4 (a) When air is pumped into a deflated tire, its volume first increases without much increase in pressure. (b) When the tire is
-filled to a certain point, the tire walls resist further expansion, and the pressure increases as more air is added. (c) Once the tire is inflated
-fully, its pressure increases with temperature.
-Pressure–Volume Work
-Pressure–volume work is the work that is done by the compression or expansion of a fluid. Whenever there is a change in
-volume and external pressure remains constant, pressure–volume work is taking place. During a compression, a decrease in
-volume increases the internal pressure of a system as work is done on the system. During an expansion (Figure 12.5), an increase
-in volume decreases the internal pressure of a system as the system does work.
-12.2 • First law of Thermodynamics: Thermal Energy and Work
-359
-
-Figure 12.5 An expansion of a gas requires energy transfer to keep the pressure constant. Because pressure is constant, the work done is
-.
-Recall that the formula for work is
-We can rearrange the definition of pressure,
-to get an expression for force
-in terms of pressure.
-Substituting this expression for force into the definition of work, we get
-Because area multiplied by displacement is the change in volume,
-, the mathematical expression for
-pressure–volume work is
-Just as we say that work is force acting over a distance, for fluids, we can say that work is the pressure acting through the change
-in volume. For pressure–volume work, pressure is analogous to force, and volume is analogous to distance in the traditional
-definition of work.
-WATCH PHYSICS
-Work from Expansion
-This video describes work from expansion (or pressure–volume work). Sal combines the equations
-and
-to get
-.
-Click to view content (https://www.openstax.org/l/28expansionWork)
-GRASP CHECK
-If the volume of a system increases while pressure remains constant, is the value of work done by the system W positive or
-negative? Will this increase or decrease the internal energy of the system?
-a.
-Positive; internal energy will decrease
-b.
-Positive; internal energy will increase
-c.
-Negative; internal energy will decrease
-d.
-Negative; internal energy will increase
-The First Law of Thermodynamics
-Heat (Q) and work (W) are the two ways to add or remove energy from a system. The processes are very different. Heat is driven
-12.3
-12.4
-12.5
-360
-Chapter 12 • Thermodynamics
-Access for free at openstax.org.
-
-by temperature differences, while work involves a force exerted through a distance. Nevertheless, heat and work can produce
-identical results. For example, both can cause a temperature increase. Heat transfers energy into a system, such as when the sun
-warms the air in a bicycle tire and increases the air’s temperature. Similarly, work can be done on the system, as when the
-bicyclist pumps air into the tire. Once the temperature increase has occurred, it is impossible to tell whether it was caused by
-heat or work. Heat and work are both energy in transit—neither is stored as such in a system. However, both can change the
-internal energy, U, of a system.
-Internal energy is the sum of the kinetic and potential energies of a system’s atoms and molecules. It can be divided into many
-subcategories, such as thermal and chemical energy, and depends only on the state of a system (that is, P, V, and T), not on how
-the energy enters or leaves the system.
-In order to understand the relationship between heat, work, and internal energy, we use the first law of thermodynamics. The
-first law of thermodynamics applies the conservation of energy principle to systems where heat and work are the methods of
-transferring energy into and out of the systems. It can also be used to describe how energy transferred by heat is converted and
-transferred again by work.
-TIPS FOR SUCCESS
-Recall that the principle of conservation of energy states that energy cannot be created or destroyed, but it can be altered
-from one form to another.
-The first law of thermodynamics states that the change in internal energy of a closed system equals the net heat transfer into the
-system minus the net work done by the system. In equation form, the first law of thermodynamics is
-Here,
-is the change in internal energy, U, of the system. As shown in Figure 12.6, Q is the net heat transferred into the
-system—that is, Q is the sum of all heat transfers into and out of the system. W is the net work done by the system—that is, W is
-the sum of all work done on or by the system. By convention, if Q is positive, then there is a net heat transfer into the system; if
-W is positive, then there is net work done by the system. So positive Q adds energy to the system by heat, and positive W takes
-energy from the system by work. Note that if heat transfers more energy into the system than that which is done by work, the
-difference is stored as internal energy.
-Figure 12.6 The first law of thermodynamics is the conservation of energy principle stated for a system, where heat and work are the
-methods of transferring energy to and from a system. Q represents the net heat transfer—it is the sum of all transfers of energy by heat into
-and out of the system. Q is positive for net heat transfer into the system.
-is the work done by the system, and
-is the work done on
-the system. W is the total work done on or by the system. W is positive when more work is done by the system than on it. The change in the
-internal energy of the system,
-, is related to heat and work by the first law of thermodynamics:
-It follows also that negative Q indicates that energy is transferred away from the system by heat and so decreases the system’s
-internal energy, whereas negative W is work done on the system, which increases the internal energy.
-WATCH PHYSICS
-First Law of Thermodynamics/Internal Energy
-This video explains the first law of thermodynamics, conservation of energy, and internal energy. It goes over an example of
-energy transforming between kinetic energy, potential energy, and heat transfer due to air resistance.
-Click to view content (https://www.openstax.org/l/28FirstThermo)
-12.6
-12.2 • First law of Thermodynamics: Thermal Energy and Work
-361
-
-GRASP CHECK
-Consider the example of tossing a ball when there’s air resistance. As air resistance increases, what would you expect to
-happen to the final velocity and final kinetic energy of the ball? Why?
-a.
-Both will decrease. Energy is transferred to the air by heat due to air resistance.
-b.
-Both will increase. Energy is transferred from the air to the ball due to air resistance.
-c.
-Final velocity will increase, but final kinetic energy will decrease. Energy is transferred by heat to the air from the ball
-through air resistance.
-d.
-Final velocity will decrease, but final kinetic energy will increase. Energy is transferred by heat from the air to the ball
-through air resistance.
-WATCH PHYSICS
-More on Internal Energy
-This video goes into further detail, explaining internal energy and how to use the equation
-Note that Sal uses
-the equation
-, where W is the work done on the system, whereas we use W to represent work done by the
-system.
-Click to view content (https://www.openstax.org/l/28IntrnEnergy)
-GRASP CHECK
-If
-are taken away by heat from the system, and the system does
-of work, what is the change in internal energy of the
-system?
-a.
-b.
-c.
-d.
-LINKS TO PHYSICS
-Biology: Biological Thermodynamics
-We often think about thermodynamics as being useful for inventing or testing machinery, such as engines or steam turbines.
-However, thermodynamics also applies to living systems, such as our own bodies. This forms the basis of the biological
-thermodynamics (Figure 12.7).
-Figure 12.7 (a) The first law of thermodynamics applies to metabolism. Heat transferred out of the body (Q) and work done by the body (W)
-remove internal energy, whereas food intake replaces it. (Food intake may be considered work done on the body.) (b) Plants convert part of
-362
-Chapter 12 • Thermodynamics
-Access for free at openstax.org.
-
-the radiant energy in sunlight into stored chemical energy, a process called photosynthesis.
-Life itself depends on the biological transfer of energy. Through photosynthesis, plants absorb solar energy from the sun and use
-this energy to convert carbon dioxide and water into glucose and oxygen. Photosynthesis takes in one form of
-energy—light—and converts it into another form—chemical potential energy (glucose and other carbohydrates).
-Human metabolism is the conversion of food into energy given off by heat, work done by the body’s cells, and stored fat.
-Metabolism is an interesting example of the first law of thermodynamics in action. Eating increases the internal energy of the
-body by adding chemical potential energy; this is an unromantic view of a good burrito.
-The body metabolizes all the food we consume. Basically, metabolism is an oxidation process in which the chemical potential
-energy of food is released. This implies that food input is in the form of work. Exercise helps you lose weight, because it provides
-energy transfer from your body by both heat and work and raises your metabolic rate even when you are at rest.
-Biological thermodynamics also involves the study of transductions between cells and living organisms. Transduction is a
-process where genetic material—DNA—is transferred from one cell to another. This often occurs during a viral infection (e.g.,
-influenza) and is how the virus spreads, namely, by transferring its genetic material to an increasing number of previously
-healthy cells. Once enough cells become infected, you begin to feel the effects of the virus (flu symptoms—muscle weakness,
-coughing, and congestion).
-Energy is transferred along with the genetic material and so obeys the first law of thermodynamics. Energy is transferred—not
-created or destroyed—in the process. When work is done on a cell or heat transfers energy to a cell, the cell’s internal energy
-increases. When a cell does work or loses heat, its internal energy decreases. If the amount of work done by a cell is the same as
-the amount of energy transferred in by heat, or the amount of work performed on a cell matches the amount of energy
-transferred out by heat, there will be no net change in internal energy.
-GRASP CHECK
-Based on what you know about heat transfer and the first law of t
-
-## Match 2.05 — Physics-WEB_Sab7RrQ § 12.1 Zeroth Law of Thermodynamics: Thermal Equilibrium
-
-Section Learning Objectives
-By the end of this section, you will be able to do the following:
-•
-Explain the zeroth law of thermodynamics
-Section Key Terms
-thermal equilibrium
-zeroth law of thermodynamics
-We learned in the previous chapter that when two objects (or systems) are in contact with one another, heat will transfer thermal
-energy from the object at higher temperature to the one at lower temperature until they both reach the same temperature. The
-objects are then in thermal equilibrium, and no further temperature changes will occur if they are isolated from other systems.
-The systems interact and change because their temperatures are different, and the changes stop once their temperatures are the
-same. Thermal equilibrium is established when two bodies are in thermal contact with each other—meaning heat transfer (i.e.,
-the transfer of energy by heat) can occur between them. If two systems cannot freely exchange energy, they will not reach
-thermal equilibrium. (It is fortunate that empty space stands between Earth and the sun, because a state of thermal equilibrium
-with the sun would be too toasty for life on this planet!)
-If two systems, A and B, are in thermal equilibrium with each another, and B is in thermal equilibrium with a third system, C,
-then A is also in thermal equilibrium with C. This statement may seem obvious, because all three have the same temperature,
-but it is basic to thermodynamics. It is called the zeroth law of thermodynamics.
-TIPS FOR SUCCESS
-The zeroth law of thermodynamics is very similar to the transitive property of equality in mathematics: If a = b and b =
-c, then a = c.
-You may be wondering at this point, why the wacky name? Shouldn’t this be called the first law of thermodynamics rather than
-the zeroth? The explanation is that this law was discovered after the first and second laws of thermodynamics but is so
-fundamental that scientists decided it should logically come first.
-As an example of the zeroth law in action, consider newborn babies in neonatal intensive-care units in hospitals. Prematurely
-born or sick newborns are placed in special incubators. These babies have very little covering while in the incubators, so to an
-observer, they look as though they may not be warm enough. However, inside the incubator, the temperature of the air, the cot,
-and the baby are all the same—that is, they are in thermal equilibrium. The ambient temperature is just high enough to keep the
-baby safe and comfortable.
-WORK IN PHYSICS
-Thermodynamics Engineer
-Thermodynamics engineers apply the principles of thermodynamics to mechanical systems so as to create or test products that
-rely on the interactions between heat, work, pressure, temperature, and volume. This type of work typically takes place in the
-aerospace industry, chemical manufacturing companies, industrial manufacturing plants, power plants (Figure 12.2), engine
-manufacturers, or electronics companies.
-356
-Chapter 12 • Thermodynamics
-Access for free at openstax.org.
-
-Figure 12.2 An engineer makes a site visit to the Baghdad South power plant.
-The need for energy creates quite a bit of demand for thermodynamics engineers, because both traditional energy companies
-and alternative (green) energy startups rely on interactions between heat and work and so require the expertise of
-thermodynamics engineers. Traditional energy companies use mainly nuclear energy and energy from burning fossil fuels, such
-as coal. Alternative energy is finding new ways to harness renewable and, often, more readily available energy sources, such as
-solar, water, wind, and bio-energy.
-A thermodynamics engineer in the energy industry can find the most efficient way to turn the burning of a biofuel or fossil fuel
-into energy, store that energy for times when it’s needed most, or figure out how to best deliver that energy from where it’s
-produced to where it’s used: in homes, factories, and businesses. Additionally, he or she might also design pollution-control
-equipment to remove harmful pollutants from the smoke produced as a by-product of burning fuel. For example, a
-thermodynamics engineer may develop a way to remove mercury from burning coal in a coal-fired power plant.
-Thermodynamics engineering is an expanding field, where employment opportunities are expected to grow by as much as 27
-percent between 2012 and 2022, according to the U.S. Bureau of Labor Statistics. To become a thermodynamics engineer, you
-must have a college degree in chemical engineering, mechanical engineering, environmental engineering, aerospace
-engineering, civil engineering, or biological engineering (depending on which type of career you wish to pursue), with
-coursework in physics and physical chemistry that focuses on thermodynamics.
-GRASP CHECK
-What would be an example of something a thermodynamics engineer would do in the aeronautics industry?
-a.
-Test the fuel efficiency of a jet engine
-b.
-Test the functioning of landing gear
-c.
-Test the functioning of a lift control device
-d.
-Test the autopilot functions
-Check Your Understanding
-1. What is thermal equilibrium?
-a.
-When two objects in contact with each other are at the same pressure, they are said to be in thermal equilibrium.
-b.
-When two objects in contact with each other are at different temperatures, they are said to be in thermal equilibrium.
-c.
-When two objects in contact with each other are at the same temperature, they are said to be in thermal equilibrium.
-d.
-When two objects not in contact with each other are at the same pressure, they are said to be in thermal equilibrium.
-2. What is the zeroth law of thermodynamics?
-12.1 • Zeroth Law of Thermodynamics: Thermal Equilibrium
-357
-
-a.
-Energy can neither be created nor destroyed in a chemical reaction.
-b.
-If two systems, A and B, are in thermal equilibrium with each another, and B is in thermal equilibrium with a third
-system, C, then A is also in thermal equilibrium with C.
-c.
-Entropy of any isolated system not in thermal equilibrium always increases.
-d.
-Entropy of a system approaches a constant value as temperature approaches absolute zero.

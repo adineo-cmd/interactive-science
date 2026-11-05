@@ -108,369 +108,167 @@ other examples are found in hospitals. Microshock-sensitive patients, for instan
 currents as low as 0.1 mA may cause ventricular fibrillation. The interested reader can use the material presented here as a
 basis for further study.
 
-## Match 2.02 — College_Success_-_WEB_uM60O3O § 11.6 Your Safety
+## Match 2.02 — LibreTexts: 1.1: Safety Training and Orientation
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://geo.libretexts.org/Bookshelves/Soil_Science/Soils_Laboratory_Manual_(Moorberg_and_Crouse)/01%3A_Introduction_and_Review/01.1%3A_Safety_Training_and_Orientation
 
-Introduction
-Student Survey
-How do you feel about health and wellness? These questions will help you determine how the chapter
-concepts relate to you right now. As we are introduced to new concepts and practices, it can be informative to
-reflect on how your understanding changes over time. We’ll revisit these questions at the end of the chapter
-to help you identify opportunities for improved health. Take this quick survey to figure it out, ranking
-questions on a scale of 1–4, 1 meaning “least like me” and 4 meaning “most like me.”
-1.
-I eat enough fruits and vegetables every day.
-2.
-I get enough sleep.
-3.
-I have, for the most part, healthy relationships with friends and family.
-4.
-I feel like I know how to manage stress.
-You can also take the Chapter 11 survey (https://openstax.org/l/collegesurvey11) anonymously online.
-Figure 11.1 Movement, in all its forms, is an important element of health and wellness. Movement
-contributes to balance, cardiovascular health, strength, and flexibility; it can also help clear your mind in the
-midst of study and stress. (Credit: Steven Pisano / Flickr / Attribution 2.0 Generic (CC-BY 2.0))
-11
-Engaging in a Healthy Lifestyle
+1.1: Safety Training and Orientation
+Learning Objectives
+- Orient students on all safety aspects of the Soils Teaching Lab.
+- Review the course syllabus and the structure of the Soils Laboratory Manual.
+Proper safety precautions are essential for any laboratory or fieldwork in soil science, and the first step towards ensuring safety for all students and instructors is to review the potential hazards, safety equipment, and procedures for the Soils Teaching Lab. In addition, a thorough understanding of the structure of this laboratory manual, and instructor expectations is essential for student success.
+Materials
+- Course syllabus
+Course Syllabus
+You will receive a syllabus for AGRON 305 during lab. This syllabus will contain information for both the lecture and the lab components of the course. If updates are required, the most up-to-date syllabus version is available on K-State Online.
+Lab Safety Training
+- All students must exercise proper safety precautions in the laboratory. The safety guidelines below will be reviewed during the first lab period and as required during the semester.
+- Food and drink are not allowed in the Agronomy 305 teaching laboratory.
+- In the event of a fire alarm, the class will make an orderly exit of the laboratory, calmly proceed down the hall to the exit near the loading dock, and regroup on the loading dock parking lot.
+- The emergency shower is on the east side of the laboratory near the bookshelf.
+- Eyewashes are on the east side of the laboratory near the bookshelf.
+- Sandals, flip-flops, and other open-toed shoes that do not fully cover the foot are not acceptable footwear for Agronomy 305 labs activities and field trips.
+- Shorts, mini-skirts and other clothing that not fully covering the leg above the knee are not allowed for Agronomy 305 labs activities and field trips.
+- Chemical spills should be immediately reported to the lab instructor.
+- Broken glassware should be immediately reported to the lab instructor.
+- Injuries during the laboratory activities should be immediately reported to the lab instructor.
+- Transportation will be provided by K-State for all field trips.
+- Some field trips may involve short hikes over uneven terrain. If you are unable to partake in such hikes, please notify the instructor at the beginning of the semester so that other arrangements can be made.
+- Guests are not allow guests to join you during AGRON 305 laboratory sessions.
 
-About this Chapter
-This chapter explores the many ways your health is impacted by your lifestyle choices. The goal of this material
-is to help you do the following:
-- Describe actions you can take to improve your physical health.
-- Identify ways to maintain and enhance your emotional health.
-- Understand mental health risks and warning signs.
-- Articulate reasons and ways to maintain healthy relationships.
-- Outline steps you can take to be more safety conscious.
-Recent headlines were buzzing with news about a 17-year-old boy who lost his eyesight because of a poor diet.
-While the boy ate enough food and his weight was considered normal, when doctors investigated, they
-discovered he didn’t eat enough nutrient-rich food. A self-described picky eater, the teen’s daily diet consisted
-of sausage, deli ham, white bread, Pringles, and french fries. His food choices led to numerous nutritional
-deficiencies of several essential vitamins and minerals, causing nutritional optic neuropathy.
-[1]
-Have you heard the saying “you are what you eat”? If so, likely a parent or someone who loves you said it
-while coaxing you to eat your vegetables. Are we really what we eat, and what does this phrase actually mean?
-While the example of the boy who lost his vision may be extreme, the food we eat does impact our physical
-and mental health. What’s at the end of our fork can keep us healthy or eventually make us sick. Every 27 days,
-our skin replaces itself and our body makes new cells from the food we eat.
-[2] And according to Dr. Libby
-Weaver, every three months we completely rebuild and replace our blood supply. What you eat becomes you.
-It’s not only what you eat that impacts your health but also how much you exercise, how effectively you deal
-"My freshman year of college, I started at a pretty big university. I had what some call “social anxiety”
-and even cried before getting out the car on my first day. That year was a struggle for me, and I
-constantly had to fight with myself to step out of my comfort zone in order to succeed. I knew that if I
-made positive changes to my life then I would easily succeed in school. I joined a group of students who
-were a support system for me during my first year of college. Together we studied together and even
-worked out together. It helped me be more involved on my campus and less worried. Being connected
-with other students has taught me a lot of ways to cope with common problems many students face.
-"My first advice would be first and foremost, always make sure you are being kind to yourself. It’s not
-advisable to work 40 hours a week and also try to be a full time student. You need to set up a realistic
-home and school life so that way you are balanced with your assignments and other responsibilities. You
-need to give your body and your brain time to rest so you can absorb as much as you want to without
-restrictions. I found it useful to start working out to make sure that I’m dedicating the time I should be
-to myself and not working myself until exhaustion. Little things like exercise, yoga and meditation can do
-amazing things for your body as well as your mind. If you take care of your body, your body will take
-care of you."
-–Felicia Santiago, Delgado Community College
-S T U D E N T  P R O F I L E
-1
-Harrison, Warburton, Lux, and Atan. Blindness caused by a junk food diet. Annals of Intern Med. September 3, 2019.
-2
-https://www.webmd.com/beauty/cosmetic-procedures-overview-skin#1
-366
-Chapter 11 Engaging in a Healthy Lifestyle
-This OpenStax book is available for free at http://cnx.org/content/col30990/1.7
+## Match 2.02 — LibreTexts: 1.4: Social Science Theories
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Psychology/Culture_and_Community/Dress_Appearance_and_Diversity_in_U.S._Society_(Reddy-Best_Elder_and_Hassall)/01%3A_Dress_Theories_and_Concepts/1.04%3A_Social_Science_Theories
 
-with stress, how well you sleep, your work habits, and even your relationships—these things all have an impact
-on your well-being.
-There are two primary reasons we become unhealthy. First, we do not deliver enough nutrients for our cells to
-operate properly, and second, our cells are bombarded with too many toxins. Keeping it simple, good health is
-proper nutrients in, toxins out. Toxins come from a host of sources—certain foods, the environment, stressful
-relationships, smoking, vaping, and alcohol and drug use. And if we don’t sleep and exercise enough, toxins
-can hang around long enough to cause us harm.
-As a first-year college student you will make many choices without parental oversight, including the food you
-eat and the way you take care of your body and brain. Some choices put you on a path to health, and other
-choices can lead you down a path toward illness. There is a strong connection between success in college and
-your ability to stay healthy.
-Health is more than a strong body that doesn’t get sick. Health also includes your overall sense of well-being
-(mental, emotional) and healthy relationships. Good health is about making positive choices in all of these
-areas, and avoiding destructive choices. It’s about learning to be smart, to set boundaries, to watch out for
-your safety, and to take care of the one body that will carry you through life.
-While health and wellness are often interchanged, it is important to differentiate the two concepts.Health is a
-state of physical, mental, and social well-being, while wellness is a process through which people become
-aware of and make choices toward a healthy and fulfilling life.
-11.1
-Taking Care of Your Physical Health
-Estimated completion time: 26 minutes.
-Questions to consider:
-•
-What is healthy eating?
-•
-Why is it important to stay hydrated?
-•
-How important is exercise to a healthy body?
-•
-Are you getting enough sleep to be healthy?
-•
-What are toxins, and how can they affect your health?
-You have one body. Treat it well so as to maximize its ability to serve you throughout your life. Often physical
-health gets moved to the bottom of the priority list when we are busy. Taking care of your physical health
-doesn’t mean six-pack abs or training for a marathon. It means honoring your physical needs so your body
-can function properly, feeding your cells the nutrients that will keep your body working well your entire life,
-and minimizing exposure to toxins to reduce your risk of disease.
-Healthy Eating
-While it’s not the only thing that contributes to great health, what you eat makes a huge difference. We have
-37 trillion cells in our body. The only way they function optimally is with good nutrition. As a college student,
-you will be surrounded by temptations to eat poorly or even to overeat. It’s now up to you to make wise
-choices in the face of these temptations. Your dining hall is likely full of many healthy foods and just as many
-unhealthy foods. You may grab food on the run while racing to class or order a pizza at midnight while
-studying for a test. Lobby vending machines or a stash of snacks in your room should not turn into a
-substitute for real meals. The downside of fast food and easy access treats is that many are loaded with sugar,
-Chapter 11 Engaging in a Healthy Lifestyle
-367
+MLO 4.1 Identify foundational concepts and theories related to identity and dress. [CLO 1]
+MLO 4.2 Summarize the role of dress in identity development. [CLO 1]
+MLO 4.3 Analyze identity and dress with social science theories and concepts. [CLO 2]
+MLO 4.4 Analyze the norms that influence your own identities and dress. [CLO 4]
+There are thousands of social science theories that relate to and help explain dress, appearance, and identity. This chapter describes a few of these.
+Role Theory
+A role
+is a position a person occupies in a social relationship (Biddle & Thomas, 1966). Roles require and shape
+behavior associated with the role, including dress
+knowledge and values needed to perform the role
+status.
+For example, police officers have uniforms that must be worn according to regulations, as well as codes of behavior guiding their performance of this role. They need to learn laws and procedures to perform the role. If a police officer does not value and take pride in their role, they are not likely to perform well.
+Many of our roles have less specific dress regulations. University students, for example, display some variety in their dress, but the norm on campus tends to be fairly casual and comfortable. Students usually dress recognizably different from faculty and administrators.
+Status
+: position in relation to other positions. These include
+complementary positions
+within a general role type, such as
+family roles of mom, dad, child, grandma, parent
+gender roles of man, woman, nonbinary person
+positions on a continuum,
+where someone ranks higher than another in terms of wealth, authority, or prestige. Examples include
+owner, manager, assistant manager, salespersons in a store
+upper, middle, and lower socioeconomic classes.
+Role norms
+are expected sets of behaviors for persons holding roles and status (Biddle & Thomas, 1966). Role norms regulate behaviors including dress, demeanor, and expressions of politeness. For example, we expect medical doctors to dress in specific attire in a hospital or at the office. If a doctor violates these expectations (working in shorts and a T-shirt, for instance), some patients may perceive them as less competent or serious. Other patients may find the violation of expectations to be amusing in this era of lax dress rules.
+Purpose of Role Dress
+learning a role
+performing a role
+identify others performing a role
+shape reactions of others
+assist in role change
+Role dress helps an individual take on a role and be perceived by others as fitting that role. If a person looks like they have a role, other people are likely to assume that the person has the skills and knowledge to carry out the role. Solomon (1983) proposed that
+people who are early in their careers often dress more in accordance with role dress expectations. Responses from coworkers and clients to the role-appropriate dress help the newcomer to feel more adept in and a part of the role while learning it.
+as people become more experienced and recognized as competent, they are more likely to feel comfortable relaxing the dress rules or exploring more variety in role appearance.
+Research supports these propositions for many, but not all, roles and individuals.
+Some restrictions of role adoption include (Horn & Gurel, 1981)
+Some restrictions of the ways individuals adopt rules are
+Intrinsic:
+An individual lacks resources to acquire role props and settings. Resources include money and time.
+Example: Most of us do not have the wealth or connections to be wealthy jetsetters who attend exclusive parties with the rich and famous.
+Moral:
+An individual has morals or values that keep them from performing behaviors essential to a role.
+Example: Due to misalignment with morals about selling sex for money, an individual does not want to dress like a prostitute and perform that role, even if it might be affordable to dress like a prostitute.
+Organic:
+One’s body does not fit the appearance requirements of the role.
+Example: Many women do not fit beauty pageant “appearance requirements.”
+Cultivation
+and
+socialization:
+The individual lacks the knowledge and training to take on a role.
+Example: A person might be able to don a lab coat and stethoscope, but most could not effectively carry off the role of a medical doctor when the time came to demonstrate expertise about medicine. In many US hospitals, physician interns are required to wear shorter, blazer-length white coats while licensed doctors wear knee-length white coats. The shorter coats indicate doctors-in-training who do not yet have full credentials to practice medicine (Coleman, 2000).
+Identity
+is defined to a great extent by the roles we play (Kaiser, 1990). In a sense, we have multiple identities because we all have many roles.
+ Your dress may vary greatly or slightly in these roles, and it may reflect several of these role identities at one time.
 
-salt, or both.
-The United States Department of Agriculture (USDA) updated their Healthy Plate Guidelines in 2011. MyPlate
-illustrates five different food groups considered the building blocks for a healthy diet—vegetables, fruits,
-protein, grains, and dairy.
-Figure 11.2
-Eating healthy is a journey shaped by many factors, including our state of life, situations,
-preferences, access to food, culture, traditions, and the personal decisions we make over time. The USDA
-recommends that vegetables and fruits make up the largest portions of your diet, and dairy the smallest
-portion. All your food and beverage choices count. MyPlate offers ideas and tips to help you create a healthier
-eating style that meets your individual needs and improves your health. (Credit: USDA / Public Domain)
-It’s also important to know what is not a healthy plate. A healthy plate is low in refined carbohydrates (donuts,
-pastries, pasta, cookies), low in sugar, and low in saturated fat (although we need healthy fats like avocado
-and nuts). You can learn more at https://www.choosemyplate.gov/.
-While the USDA’s MyPlate was revised to reflect some key findings at that time, nutritionists at Harvard felt it
-didn’t offer the most complete picture when it comes to basic nutrition guidelines. They created The Healthy
-Eating Plate, which is based on what they consider to be the best available science. Similar to MyPlate, half the
-plate is vegetables and fruit. Aim for eight servings of veggies or fruits a day, more veggies than fruits. It’s
-important to note that the Harvard version was created without the political pressure from food industry
-lobbyists (for example, the dairy industry). Note that grains are further defined as whole grains, protein is now
-healthy protein, and water is emphasized over dairy/milk. What other differences do you see?
-This table (https://openstax.org/l/healthyeatingplate) provides more detail on how The Healthy Eating plate
-compares to USDA’s MyPlate.
-Healthy eating also includes choosing organic fruits and vegetables when possible. By choosing organic, you
-help lower the amount of toxins your body encounters (since conventional fruits and vegetables are often
-sprayed with pesticides). Organic foods may not be readily available on your campus or in your local grocery
-store, so strive to choose the best options possible given availability and your budget. Many college and
-universities are adding organic food as a result of student demand. If healthy eating is something you are
-passionate about, consider organizing an effort to influence the dining options on your campus. When
-shopping on your own, the Dirty Dozen list provided by the Environmental Working Group (EWG) is a good
-guide of which produce is most important to eat organic, as these are the fruits and vegetables with the most
-368
-Chapter 11 Engaging in a Healthy Lifestyle
-This OpenStax book is available for free at http://cnx.org/content/col30990/1.7
-
-pesticide residue. The EWG also compiles a Clean 15 list (https://openstax.org/l/producepesticideguide) of the
-vegetables and fruits with the least amount of pesticides.
-Whole Foods vs. Processed Foods
-Choose whole foods. Whole foods are any foods that have not been processed, packaged, or altered in any
-way. Whole foods are an essential part of a healthy diet because they contain the vitamins and minerals our
-bodies need.
-Examples of whole foods include the following:
-•
-Vegetables: Carrots, broccoli, kale, avocados, cauliflower, spinach, peppers
-•
-Fruits: Apples, bananas, blueberries, strawberries, grapes, melons, peaches
-•
-Grains: Brown rice, oatmeal, barley, buckwheat, quinoa, millet
-•
-Beans: Black, pinto, kidney, black-eyed peas, chickpeas
-Minimize non-whole foods. These are foods that have been processed, such as cookies, hot dogs, chips, pasta,
-deli meat, and ice cream. Even seemingly healthy foods like yogurt, granola, and protein bars are processed
-and should be checked for added sugar and other unhealthy ingredients.
-The average American eats 62 percent of their daily calories from processed foods.
-[3] In order for your body to
-be as healthy as possible, it’s extremely important to include lots of whole foods in your diet.
-"When you eat junk food you think junk thoughts."
-— Michael Bernard Beckwith
-How to Read a Food Label
-The U.S. government requires food manufacturers to put a label on every processed food product. This is so
-we, as consumers, know what we are putting into our bodies and can make good dietary choices. A quick
-review of the label will provide a lot of important information about what you are eating, yet most people
-don’t take the time to read the label. This is a big mistake.
-Think of the front of the package as a marketing billboard. Don’t be fooled by the marketing. Every day
-millions of dollars are spent to persuade us to eat foods that are not healthy for us. Through visuals (like the
-strawberry on the bottle of dressing below) and words (like natural, healthy, or gluten free), the food industry
-wants us to make assumptions about the nature of a food product without looking at the facts. For example,
-many people eat protein bars thinking they are a healthy choice, but protein bars can have up to 30 grams of
-sugar! Understanding the nutrition information and ingredients will help you make healthier choices. When
-you take the time to read the labeled ingredients, you are no longer being marketed to—you are staring at the
-facts.
-3
-Dr. Joel Furhman https://www.mensjournal.com/features/joel-fuhrman-the-doctor-is-out-there-20121107/
-Chapter 11 Engaging in a Healthy Lifestyle
-369
-
-Figure 11.3
-This label displays the key nutritional information about a common container of fruit salad.
-Though fruit is generally healthy, be aware of the amount of calories and sugars, and particularly the serving
-size to which those amounts are tied. Note that the US government has updated food label requirements and
-this 
-
-## Match 1.53 — World_History_Volume_2-WEB_LdwoslB § 15.3 Science and Technology for Today’s World
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Discuss the development of complex digital computers and their effects on human society
-•
-Analyze the effects of the internet and social media on society
-•
-Describe important medical developments of the last fifty years and current medical challenges
-World War II brought about a massive technological transformation as countries like Germany and the United
-States rapidly innovated to avoid destruction and defeat their enemies. In the decades after the war, there was
-major progress in medical technology, the creation of new vaccines, and the elimination of deadly diseases. All
-642
-15 • The Contemporary World and Ongoing Challenges
-Access for free at openstax.org
-
-these achievements had profound effects on the way people lived, traveled, and worked. Underlying them were
-major advancements in the field of information technologies, such as computers. Once the war was over, the
-development of increasingly powerful computers ushered in a computer revolution as powerful as the
-nineteenth century’s Industrial Revolution, and with it a digital age.
-The Digital Computer Revolution
-Many of the technological advancements of the 1940s and 1950s came in the form of increasingly powerful
-analog computers, which analyze a continuous stream of information, much like that recorded on vinyl
-records. Analog computers worked well for solving big mathematical problems, such as the calculations
-related to electrical power delivery systems or the study of nuclear physics. However, one of their weaknesses
-was that they were inefficient at managing large amounts of data. Digital computers, or those that translate
-information into a complex series of ones and zeros, were far more capable of managing bulk data. Just a few
-years after the war, digital computing received a huge boost with the invention of the transistor, a device with
-far more computing potential than its predecessor the vacuum tube. Scientists could amplify this enlarged
-computing capacity even further by wiring multiple transistors together in increasingly complex ways.
-The use of multiple transistors for computing purposes was an important step, but it had obvious drawbacks.
-Making machines capable of processing a great deal of information required connecting many transistors,
-which took up a great deal of space. Then, in the late 1950s, inventors in the United States developed an
-innovative solution. Using silicon, they could integrate transistors and capacitors in a way that clumsy wiring
-could not accomplish. The silicon-based integrated circuit freed computer technology from size constraints
-and opened the door to additional advancements in computing power.
-Even so, digital computers remained large, expensive, and complicated to operate, and their use was largely
-confined to universities and the military. Only gradually over the 1970s did computing technology become
-more widely available, largely thanks to mass-produced general-purpose computers, sometimes called
-minicomputers, designed by IBM and the Digital Equipment Company. These served a variety of government
-and private purposes, such as calculating the Census, managing the flow of tax monies, and processing
-calculations related to creditworthiness (Figure 15.15). But despite being somewhat cheaper, minicomputers
-remained out of reach for average users.
-15.3 • Science and Technology for Today’s World
-643
-
-FIGURE 15.15 Computers, 1950s. In the 1950s, computers required complex data management systems to
-operate. The U.S. Census Bureau used this device to transfer data from paper questionnaires to microfilm to allow
-for rapid processing by its computers. (credit: modification of work “Woman inspecting FOSDIC film” by U. S. Census
-Bureau/Wikimedia Commons, Public Domain)
-The journey from minicomputers to personal computers began with the Intel Corporation, established in 1968
-in Mountain View, California, in a region now commonly called Silicon Valley. During the 1970s, Intel
-developed a line of integrated circuits that were not only more powerful than their predecessors but also
-programmable. These became known as microprocessors, and they revolutionized computing by holding all of
-a computer’s processing power in a single integrated circuit. In 1975, a company in New Mexico released the
-first marketed personal computer, the Altair 8800. This used an Intel microprocessor and was promoted to
-computer hobbyists eager to wield a level of computing power once available to only a few. The Altair’s
-popularity inspired competing products like the Apple, the Commodore, and the Tandy Radio Shack computer
-(Figure 15.16). These personal computer systems were far easier to use and appealed to a much larger market
-than just hobbyists.
-644
-15 • The Contemporary World and Ongoing Challenges
-Access for free at openstax.org
-
-FIGURE 15.16 Personal Computer, 1980s. The Tandy Color Computer 3 shown here, released in 1986 and
-nicknamed the CoCo 3, was one of many personal computers released in the 1980s that average consumers were
-able to buy for their homes. (credit: “CoCo3system” by Unknown/Wikimedia Commons, Public Domain)
-By 1982, there were 5.5 million personal computers in the United States, and over the next decade, their
-number and computing power rose exponentially. Computers proliferated in government offices, private firms,
-and family homes. Then, in 1984, Apple introduced the world to the Macintosh computer, which not only used
-a mouse but also replaced the standard code-based user interface with one based on graphics and icons.
-Recognizing the user-friendly possibilities of this graphic interface, competitors followed suit. Before long, the
-design popularized by Apple had become the norm.
-By the end of the 1980s, not only had personal computers become common, but the microprocessor itself
-could be found everywhere. Microprocessors were incorporated into automobiles, cash registers, televisions,
-and household appliances and made possible a variety of other electronic devices like videocassette recorders
-and video game systems (Figure 15.17). Computer systems were created to store and manage financial,
-educational, and health-care information. In one form or another and whether they realized it or not, by the
-1990s, almost everyone in the developed world was interacting with computers.
-FIGURE 15.17 The Atari Video Computer System, 1977. Released in 1977, the Atari Video Computer System could
-be connected to almost any television, allowing users to play video games at home. The software was stored on
-small plastic cartridges that were plugged directly into the machine. (credit: “Atari 2600 mit Joystick” by
-“joho345”/Wikimedia Commons, Public Domain)
-Modems were hardly new in the 1990s, but they became much faster and more common with the rise of the
-internet. The origins of the internet date back to the 1960s and the efforts by government researchers in the
-15.3 • Science and Technology for Today’s World
-645
-
-United States to use computers to share information. These developments were especially important for the
-U.S. Department of Defense during the Cold War and resulted in the emergence of the Advanced Research
-Projects Agency Network (ARPANET). In creating ARPANET, researchers developed many of the technologies
-that over the next few decades formed the basis for the internet we know today.
-The Internet and Social Media
-The process of globalization has been accelerated by the rise of the internet and the various social media
-platforms like Instagram, Facebook, and Twitter that exist there. Many people were introduced to the potential
-of computer networks for sharing information and creating small social networks in the 1980s, when
-individual users became able to connect their computers to others by using modems and telephone networks.
-This connectivity gave rise to regional bulletin board systems (BBSs), in which one person’s computer served
-as a host for those of other users (Figure 15.18). BBSs functioned much like websites today. Though they ran
-far more slowly and had limited capabilities, they allowed users to share computer files like games and images,
-post messages for others to read, participate in virtual discussions and debates, and play text-based online
-games. BBSs used phone networks to communicate, and long-distance calls were then expensive, so their
-users tended to be local.
-FIGURE 15.18 A Bulletin Board System, 1980s. Bulletin board systems like this one relied on colorful text and
-simple graphics to make them appealing. They appear very limited compared to today’s websites, but in the 1980s,
-they were revolutionary and opened new possibilities for the future of communication. (credit: “Screenshot of
-OpenTG’s Group Permissions Editor” by Chris Tusa/Wikimedia Commons, Public Domain)
-Throughout the 1980s, BBSs continued to be popular with computer hobbyists and those intrigued by the idea
-of unique virtual communities, while networking technology improved steadily behind the scenes. The United
-States, Europe, and other developed countries were busy adopting a uniform protocol system that would allow
-computers around the world to easily communicate with others. Once this protocol had been established, the
-commercial internet as we currently understand it was born.
-As early as 1987, about thirty thousand hosts resided on the burgeoning internet. Soon telecommunications
-and software companies began to exploit this new network by creating online service providers like America
-Online (AOL) to act as gateways to the internet. Initially, they used standard phone lines and modems to
-connect, much as BBSs had. But as the volume of information on the internet increased exponentially, service
-providers turned to more expensive broadband connections that used cable television lines and even
-dedicated lines to connect. During the 1990s, the first websites, the first internet search engines, and the first
-commercial internet platforms were established.
-646
-15 • The Contemporary World and Ongoing Challenges
-Access for free at openstax.org
-
-By 2005, more than one billion people worldwide were using the internet regularly. They were able to shop
-online, make phone calls around the world, and even create their own websites with almost no technical
-training. Never before had the world been so connected. In 2004, Facebook was launched. Originally a
-networking tool for Harvard students, it quickly expanded globally to become a giant in the new world of social
-media. By 2010, nearly half a billion Facebook users around the world were sharing images and messages,
-creating communities, and linking to news stories. By 2022, the number of Facebook users had reached nearly
-three billion.
-Before 2007, almost all internet users gained access to the network via a personal computer, either at home or
-at work. That year, however, Apple Inc. released the first iPhone, a powerful cell phone but also a portable
-computer capable of performing all the tasks it once required a desktop computer to do. Even more
-revolutionary, it connected to the internet wirelessly through cell-phone infrastructure. While the iPhone was
-not the first phone to connect to the internet, its revolutionary touch-screen interface was far superior to
-earlier systems. Within just a few years, other cell-phone manufacturers were imitating its design and putting
-smartphones, and thus internet access, in the pockets of users around the world.
-Smartphones have transformed life in developing countries, where they have helped bypass some of the
-traditional stages of infrastructure creation. In Africa, for example, people living where no landlines existed
-can now communicate with others using cell phones. Small farmers and traders can use cell phones for
-banking and to connect with potential suppliers and customers. In communities without libraries,
-schoolchildren can access the internet’s resources to study.
-Smartphones have also democratized the internet, serving as powerful tools for organizing and promoting
-political change. The large pro-democracy movement in Cairo’s Tahrir Square captured the world’s attention in
-2011, for example. But it began with twenty-five-year-old activist Asmaa Mahfouz’s YouTube video of January
-18, 2011, in which she spoke directly to the camera and urged young Egyptians to protest at the square as part
-of the larger Arab Spring, a call for government reform and democracy that echoed across in the Arab world.
-The Arab Spring was touched off in December 2010 when Muhammad Bouazizi, a young college graduate, set
-himself on fire in Tunisia after government officials there tried to interfere with the fruit cart that was his only
-source of income. Other young Tunisians took to the streets in protest, and demonstrations began again in
-January 2011. As people died in confrontations with government forces, President Zine al-Abidine Ben Ali fled
-the country, and Tunisia’s prime minister resigned shortly thereafter.
-The Tunisian protests led to similar demonstrations in Egypt. On January 17, 2011, an Egyptian set himself on
-fire near the nation’s Parliament to protest the lack of economic opportunities. Crowds of mostly young people
-responded with massive demonstrations that lasted weeks (Figure 15.19). These demonstrations were fueled
-by and broadcast to the world through text messages, photos, tweets, videos, and Facebook posts sent by
-thousands of mobile phones, including that of Mahfouz. The devices amplified the calls for democracy and
-showed the world the Egyptian government’s use of violence to try to silence the protestors. Egyptian president
-Hosni Mubarak resigned on February 11, 2011. He was later convicted for his role in ordering government
-forces to harm and kill protestors.
-15.3 • Science and Technology for Today’s World
-647
-
-FIGURE 15.19 The Egyptian Revolution. (a) Internet-connected cell phones using social media applications like
-Facebook were a common site at the large 2011 protests at Ta
+Role Conflict
+In carrying out some roles, individuals may experience conflicts. An
+inter-role conflict
+, or a conflict between two roles, may occur when an individual finds that two sets of role demands are not always compatible. Appearance can help solve role conflicts if the individual changes clothes for each role or wears the attire for the most demanding role.
+For example, a parent who is a marketing director prefers to change clothes after arriving home to spend time with their infant, who throws food around and perhaps spits up on the parent’s clothes. But work stress and time limitations may require the individual to be a parent sometimes while wearing their work suit.
+In contrast, an
+intra-role conflict
+is one that conflicts within a role due to changing expectations for that role across different groups in a society. In these situations, the role player may change clothes with differing audiences or limit the audiences with access to them.
+An example of intra-role conflict might be a medical doctor who prefers to wear semicasual street clothes when seeing patients at the office. They do this to seem more approachable and easier to talk to. But ome older patients expect to see the doctor in a lab coat, so the doctor may put on a traditional white doctor’s coat when seeing older patients (Blumhagen, 1979).
+Role embracement vs. role distance (Goffman, 1959)
+An individual who takes on a role and learns to embrace it as part of identity is more likely to accept role-appropriate clothing than an individual who has a role but feels distanced from it or from societal definitions of the roles.
+Conformity
+Conformity
+is a change in an individual’s behavior or attitude to achieve consistency with real or imagined group norms (Kaiser, 1990).
+Watch this short video to demonstrate the power of cultural norms
+Dress is an outward sign of conformity. Conformity
+faciliatates a sense of identification, belonging, definition of self, role embracement
+supports safety or comfort in group acceptance
+fosters group solidarity, peer bonding; conformity through dress defines group boundaries by identifying who is in a group and who is not
+indicates similarity, which is conducive to attraction
+emphasizes social inclusion vs. social uniqueness.
+Conformity has its negative outcomes. It can be boring and monotonous. Too much required conformity can stifle creativity. Some people are more prone to conformity through dress, while others are more interested in differentiating themselves from others. Some basic personality characteristics may incline individuals to be (Storm, 1987)
+Check out this object video from ISU’s Textiles and Clothing Museum Collection. The video features a 1930s Girl Scout uniform with patches on the sleeve demonstrating the wearer’s various achievements in the program.
+Uniforms
+indicate the prestige level of the wearer
+symbolize skill level attained by the wearer
+facilitate efficiency and organizational control
+suppress the expression of individuality and idiosyncrasy
+encourage group behavior and thinking rather than focus on the self.
+Uniformity more likely for role dress when the role requires special expertise and extensive training (i.e., hospital surgeons)
+involves safety or security control (i.e., armed forces, police)
+requires dress that protects the body or facilitates task performance (i.e., fire fighters)
+benefits from group or team solidarity and identification (i.e., players on sports teams)
+establishes brand or organization image (i.e., McDonald’s servers, Target employees)
+enforces identity control (i.e., prisoners).
+In coercive total institutions such as prisons, uniforms are used to (Goffman, 1961)
+strip personal identity to force an inmate to become part of the system
+help (i.e., force) the inmates to leave their independent lives outside.
+Symbolic Interactionism—Public, Intimate, and Secret Self
+According to Eicher (1981), there are three ways to think about the self: the public, intimate, and secret selves.
+The
+public self
+is the part of a person in front of others in public, including those outside of the friend or family network. Therefore, the public self is usually a part of the self that one is comfortable sharing in a broader sense. For example, some people are comfortable sharing their occupations. That is, if an individual works as a public transportation bus driver, they might wear their uniform to the grocery store after work without feeling uncomfortable sharing this part of who they are. However, if someone has a stigmatized occupation, such as a sex worker, they may conceal this from their public self-presentation (
+Oselin, 2018
+).
+The
+intimate self
+is a part of the self that individuals share only with those close to them, such as friends or family. For example, an individual might be more relaxed after work and wear casual or pajama-style garments around the house in front of their family members.
+Finally,
+secret self
+refers to aspects of the self that one does not share with others. For example, one transwoman describes how she would sometimes dress in female-gendered garments without letting others know (
+Coates, 2016
+). Trans people experience significant discrimination (
+National Center for
+Transgender Equality
+, 2022
+)
+; therefore, the transition and coming-out process for trans people is complex and may include a variety of experiences, such as experimenting in the secret-self space with different clothing styles.
+According to
+symbolic interaction theory
+, individuals negotiate their appearances (and public and intimate selves) in social interactions (Goffman, 1959). In this theory, the
+program
+is a term that refers to your response to your own appearance. In the process of the program, you evaluate your own appearance based on how you look in the mirror and/or how you think others might perceive you. The concept of the
+generalized other
+is what you expect others to think of a particular identity. For example, if you are a librarian, you might wear a cardigan and glasses, as these are sometimes stereotypes associated with librarians or how individuals might assume librarians dress. In symbolic interaction theory, the
+review
+is also a part of identity negotiations in symbolic interaction theory. The review is others’ evaluation of one’s appearance. People can give both verbal and nonverbal reviews. Verbal examples include “Wow, I love that shirt” or “That makes you look terrible.” Nonverbal reviews include, for example, a person holding their purse closer to their chest as they walk by you; Black men frequently report this experience (
+Lowe, 2000
+).
+Focused Example: Prison Uniforms
+The Stanford Prison Experiment is a famous study that was conducted at Stanford University in the 1970s. Watch this short film and pay attention to how dress was used to strip inmates of their identities and to enable the guards to enact control.
+Step Two: Submit your complete assignment on Canvas.
+Format your document.
+Remember to check the submission against the rubric.
+References
+Biddle, B. J., & Thomas, E. J. (1966).
+Role theory: Concepts and research
+. New York: Wiley.
+Blumha

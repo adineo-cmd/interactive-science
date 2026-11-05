@@ -1,656 +1,113 @@
 # Source pack — subjects/chemistry/foundational/states-of-matter
 Lesson title: States of Matter
 Level: foundational
-Match confidence: 2.04
+Match confidence: 3.07
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.04 — ChemistryAtomsFirst2e-WEB § 10.5 The Solid State of Matter
+## Match 3.07 — LibreTexts: 2.2: The States of Matter
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://chem.libretexts.org/Bookshelves/Introductory_Chemistry/Book%3A_Introductory_Chemistry_Online_(Young)/02%3A_The_Physical_and_Chemical_Properties_of_Matter/2.2%3A_The_States_of_Matter
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Define and describe the bonding and properties of ionic, molecular, metallic, and covalent network crystalline
-solids
-•
-Describe the main types of crystalline solids: ionic solids, metallic solids, covalent network solids, and
-molecular solids
-•
-Explain the ways in which crystal defects can occur in a solid
-When most liquids are cooled, they eventually freeze and form crystalline solids, solids in which the atoms,
-ions, or molecules are arranged in a definite repeating pattern. It is also possible for a liquid to freeze before its
-molecules become arranged in an orderly pattern. The resulting materials are called amorphous solids or
-noncrystalline solids (or, sometimes, glasses). The particles of such solids lack an ordered internal structure
-and are randomly arranged (Figure 10.37).
-FIGURE 10.37
-The entities of a solid phase may be arranged in a regular, repeating pattern (crystalline solids) or
-FIGURE 10.36
-(a) Caffeine molecules have both polar and nonpolar regions, making it soluble in solvents of
-varying polarities. (b) The schematic shows a typical decaffeination process involving supercritical carbon
-dioxide.
-510
-10 • Liquids and Solids
-Access for free at openstax.org
+2.2: The States of Matter
+As described in Section 2.1, a molecule of water is composed of two atoms of hydrogen bonded to one atom of oxygen(H 2 O). All water molecules are exactly the same (same ratio of elements, same geometric bonding pattern), but we encounter water in three different forms in the world around us. At low temperature, water exists as a solid (ice). As the temperature increases, water exists as a liquid, and at high temperature, as water vapor, a gas. These three forms of water represent the three states of matter : solids, liquids and gases. States of matter are examples of physical properties of a substance. Other physical properties include appearance (shiny, dull, smooth, rough), odor, electrical conductivity, thermal conductivity, hardness and density, to name just a few. We will discuss density in more detail in the next section, but first let’s examine the states of matter and how they differ on an atomic level.
+If ice, liquid water and water vapor all consist of identical molecules, then what accounts for the difference in their properties? So far, we have talked about molecules as if they were standing still, but in fact, they are always moving. In chemistry, we often explain the states of matter in terms of the kinetic molecular theory (KMT) . The word kinetic refers to motion and the kinetic molecular theory suggests that atoms and molecules are always in motion. The energy associated with this motion is termed kinetic energy. The amount of kinetic energy that a particle has is a direct function of temperature, and it is the kinetic energy of the water molecules under different conditions that determines the different properties of the three states of water.
+Atoms and molecules move in different ways under different conditions because of the forces attracting them to each other, called intermolecular forces . Intermolecular forces is a general term describing the fact that all atoms, and molecules share a certain inherent attraction for each other. These attractive forces are much weaker than the bonds that hold molecules together, but in a large cluster of atoms or molecules the sum of all of these attractive forces can be quite significant.
+Now, consider a group of molecules or atoms clustered together and held in place by these attractive forces. At low temperature, the molecules or atoms will remain stuck together in a lump of defined shape and structure, like water in the form of an ice cube. This is referred to as the solid phase . At the atomic level, the molecules or atoms in a solid are closely packed, and although they are still all rapidly moving, their movements are so small that they can be thought of as vibrating about a fixed position. As an analogy here, think of a handful of small magnets stuck together in a solid mass. Solids and liquids are the most tightly packed states of matter. Because of the intermolecular forces, solids have a defined shape, which is independent of the container in which they are placed. As energy is added to the system, usually in the form of heat, the individual molecules or atoms acquire enough energy to overcome some of the attractive intermolecular forces between them so that neighboring particles are free to move past or slide over one another. This state of matter is called the liquid phase . As in a solid, in a liquid, the attractive forces are strong enough to hold the molecules or atoms close together so they are not easily compressed and have a definite volume. Unlike in a solid, however, the particles will flow (slide over each other) so that they can assume the shape of their container.
+Finally, if enough energy is put into the system, the individual molecules or atoms acquire enough energy to totally break all of the attractive forces between them and they are free to separate and rapidly move throughout the entire volume of their container. This is called the gas phase and atoms or molecules in the gas phase will totally fill whatever container they occupy, taking on the shape and volume of their container. Because there is so much space between the particles in a gas, a gas is highly compressible, which means that the molecules can be forced closer together to fit in a much smaller space. We are all familiar with cylinders of compressed gas, where the compressibility of gasses is exploited to allow a large amount of gas to be transported in a very small space.
+Returning to our example of water, at low temperature, water exists as the solid, ice. As the solid is warmed, the water molecules acquire enough energy to overcome the strongest of the attractive forces between them and the ice melts to form liquid water. This transition from the solid phase to the liquid phase happens at a fixed temperature for each substance called the melting point . The melting point of a solid is one of the physical properties of that solid. If we remove energy from the liquid molecules they will slow down enough for the attractive forces to take hold again and a solid will form. The temperature that this happens is called the freezing point and is the same temperature as the melting point.
+As more energy is put into the system, the water heats up, the molecules begin moving faster and faster until there is finally enough energy in the system to totally overcome the attractive forces. When this happens, the water molecules are free to fly away from each other, fill whatever container they are occupying and become a gas. The transition from the liquid phase to the gas phase happens at a fixed temperature for each substance and is called the boiling point . Like the melting point, the boiling point is another physical property of a liquid.
+Phase transitions for a typical substance can be shown using simple diagram showing the physical states, separated by transitions for melting and boiling points. For example, if you are told that a pure substance is 15˚ C above its boiling point, you can use the diagram to plot the temperature relative to the boiling point. Because you are above the boiling point, the substance will exist in the gas phase.
+There are, however, some exceptions to the rules for changes of state that we have just established,. For example, ice is a solid and the molecules in the interior are held together tightly by intermolecular forces. Surface molecules, however, are exposed and they have the opportunity to absorb energy from the environment (think of a patch of snow on a bright sunny day). If some of these surface molecules absorb enough energy, they can break the attractive forces that are holding them and escape as a gas (water vapor) without ever going through the liquid phase. The transition from a solid directly into a gas is called sublimation . The reverse process, a direct transition from a gas to a solid, is called deposition . Perhaps the most common example of a solid that does not melt, but only sublimes, is dry ice (solid carbon dioxide;CO 2 ). This property of dry ice is what makes it a good refrigerant for shipping perishables. It is quite cold, keeping things well frozen, but does not melt into a messy liquid as it warms during shipment.
+Just like surface molecules in solids can move directly into the gas phase, surface molecules in liquids also absorb energy from the environment and move into the gas phase, even though the liquid itself is below the boiling point. This is the process of vaporization (evaporation). The reverse process, a transition from a gas to a liquid, is called condensation . Liquid substances undergo vaporization and the space above any liquid has molecules of that substance in the gas state. This is called the vapor pressure of the liquid, and vapor pressure (at a given temperature) is another of the physical properties of liquid substances.
+Summarizing what we know about the different states of matter:
+In a gas :
+- the molecules or atoms are highly separated, making a gas highly compressible,
+- attractive forces between the particles are minimal , allowing the gas to take on the shape and volume of its container.
+In a liquid :
+- the molecules or atoms are closely spaced, making a liquid much less compressible than a gas,
+- attractive forces between the particles are intermediate , allowing the molecules or atoms to move past, or slide over one another,
+- liquids have a definite volume, but will take on the shape of their container.
+In a solid :
+- the attractive forces are strong, keeping the atoms or molecules in relatively fixed positions,
+- the neighboring atoms or molecules are close together, making the solid not compressible and giving it a definite shape that is independent of the shape and size of its container.
 
-randomly (amorphous).
-Metals and ionic compounds typically form ordered, crystalline solids. Substances that consist of large
-molecules, or a mixture of molecules whose movements are more restricted, often form amorphous solids. For
-examples, candle waxes are amorphous solids composed of large hydrocarbon molecules. Some substances,
-such as silicon dioxide (shown in Figure 10.38), can form either crystalline or amorphous solids, depending on
-the conditions under which it is produced. Also, amorphous solids may undergo a transition to the crystalline
-state under appropriate conditions.
-FIGURE 10.38
-(a) Silicon dioxide, SiO2, is abundant in nature as one of several crystalline forms of the mineral
-quartz. (b) Rapid cooling of molten SiO2 yields an amorphous solid known as “fused silica”.
-Crystalline solids are generally classified according to the nature of the forces that hold its particles together.
-These forces are primarily responsible for the physical properties exhibited by the bulk solids. The following
-sections provide descriptions of the major types of crystalline solids: ionic, metallic, covalent network, and
-molecular.
-Ionic Solids
-Ionic solids, such as sodium chloride and nickel oxide, are composed of positive and negative ions that are
-held together by electrostatic attractions, which can be quite strong (Figure 10.39). Many ionic crystals also
-have high melting points. This is due to the very strong attractions between the ions—in ionic compounds, the
-attractions between full charges are (much) larger than those between the partial charges in polar molecular
-compounds. This will be looked at in more detail in a later discussion of lattice energies. Although they are
-hard, they also tend to be brittle, and they shatter rather than bend. Ionic solids do not conduct electricity;
-however, they do conduct when molten or dissolved because their ions are free to move. Many simple
-compounds formed by the reaction of a metallic element with a nonmetallic element are ionic.
-FIGURE 10.39
-Sodium chloride is an ionic solid.
-Metallic Solids
-Metallic solids such as crystals of copper, aluminum, and iron are formed by metal atoms Figure 10.40. The
-structure of metallic crystals is often described as a uniform distribution of atomic nuclei within a “sea” of
-delocalized electrons. The atoms within such a metallic solid are held together by a unique force known as
-metallic bonding that gives rise to many useful and varied bulk properties. All exhibit high thermal and
-electrical conductivity, metallic luster, and malleability. Many are very hard and quite strong. Because of their
-10.5 • The Solid State of Matter
-511
+## Match 3.06 — LibreTexts: 2.2: Phases and Physical States of Matter
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/DeVoes_Thermodynamics_and_Chemistry/02%3A_Systems_and_Their_Properties/2.02%3A_Phases_and_Physical_States_of_Matter
 
-malleability (the ability to deform under pressure or hammering), they do not shatter and, therefore, make
-useful construction materials. The melting points of the metals vary widely. Mercury is a liquid at room
-temperature, and the alkali metals melt below 200 °C. Several post-transition metals also have low melting
-points, whereas the transition metals melt at temperatures above 1000 °C. These differences reflect
-differences in strengths of metallic bonding among the metals.
-FIGURE 10.40
-Copper is a metallic solid.
-Covalent Network Solid
-Covalent network solids include crystals of diamond, silicon, some other nonmetals, and some covalent
-compounds such as silicon dioxide (sand) and silicon carbide (carborundum, the abrasive on sandpaper).
-Many minerals have networks of covalent bonds. The atoms in these solids are held together by a network of
-covalent bonds, as shown in Figure 10.41. To break or to melt a covalent network solid, covalent bonds must be
-broken. Because covalent bonds are relatively strong, covalent network solids are typically characterized by
-hardness, strength, and high melting points. For example, diamond is one of the hardest substances known
-and melts above 3500 °C.
-FIGURE 10.41
-A covalent crystal contains a three-dimensional network of covalent bonds, as illustrated by the
-structures of diamond, silicon dioxide, silicon carbide, and graphite. Graphite is an exceptional example, composed
-of planar sheets of covalent crystals that are held together in layers by noncovalent forces. Unlike typical covalent
-solids, graphite is very soft and electrically conductive.
-Molecular Solid
-Molecular solids, such as ice, sucrose (table sugar), and iodine, as shown in Figure 10.42, are composed of
-neutral molecules. The strengths of the attractive forces between the units present in different crystals vary
-widely, as indicated by the melting points of the crystals. Small symmetrical molecules (nonpolar molecules),
-such as H2, N2, O2, and F2, have weak attractive forces and form molecular solids with very low melting points
-(below −200 °C). Substances consisting of larger, nonpolar molecules have larger attractive forces and melt at
-higher temperatures. Molecular solids composed of molecules with permanent dipole moments (polar
-512
-10 • Liquids and Solids
-Access for free at openstax.org
+2.2: Phases and Physical States of Matter
+A phase is a region of the system in which each intensive property (such as temperature and pressure) has at each instant either the same value throughout (a uniform or homogeneous phase), or else a value that varies continuously from one point to another. Whenever this e-book mentions a phase, it is a uniform phase unless otherwise stated. Two different phases meet at an interface surface , where intensive properties have a discontinuity or change over a small distance.
+Some intensive properties (e.g., refractive index and polarizability) can have directional characteristics. A uniform phase may be either isotropic , exhibiting the same values of these properties in all directions, or anisotropic , as in the case of some solids and liquid crystals. A vacuum is a uniform phase of zero density.
+Suppose we have to deal with a nonuniform region in which intensive properties vary continuously in space along one or more directions—for example, a tall column of gas in a gravitational field whose density decreases with increasing altitude. There are two ways we may treat such a nonuniform, continuous region: either as a single nonuniform phase, or else as an infinite number of uniform phases, each of infinitesimal size in one or more dimensions.
+2.2.1 Physical states of matter
+We are used to labeling phases by physical state, or state of aggregation. It is common to say that a phase is a solid if it is relatively rigid, a liquid if it is easily deformed and relatively incompressible, and a gas if it is easily deformed and easily compressed. Since these descriptions of responses to external forces differ only in degree, they are inadequate to classify intermediate cases.
+The way in which \(Z\) varies with \(p\) at different temperatures is shown for the case of carbon dioxide in Fig. 2.3(a).
+A temperature at which the initial slope is zero is called the Boyle temperature , which for CO\(_2\) is \(710\K\). Both \(B\) and \(B_p\) must be zero at the Boyle temperature. At lower temperatures \(B\) and \(B_p\) are negative, and at higher temperatures they are positive—see Fig. 2.3(b). This kind of temperature dependence is typical for other gases. Experimentally, and also according to statistical mechanical theory, \(B\) and \(B_p\) for a gas can be zero only at a single Boyle temperature.
+The fact that at any temperature other than the Boyle temperature \(B\) is nonzero is significant since it means that in the limit as \(p\) approaches zero at constant \(T\) and the gas approaches ideal-gas behavior, the difference between the actual molar volume \(V\m\) and the ideal-gas molar volume \(RT/p\) does not approach zero. Instead, \(V\m - RT/p\) approaches the nonzero value \(B\) (see Eq. 2.2.8). However, the ratio of the actual and ideal molar volumes, \(V\m/(RT/p)\), approaches unity in this limit.
+Virial equations of gas mixtures will be discussed in Sec. 9.3.4.
+2.2.6 Solids
+A solid phase responds to a small applied stress by undergoing a small elastic deformation . When the stress is removed, the solid returns to its initial shape and the properties return to those of the unstressed solid. Under these conditions of small stress, the solid has an equation of state just as a fluid does, in which \(p\) is the pressure of a fluid surrounding the solid (the hydrostatic pressure) as explained in Sec. 2.3.4. The stress is an additional independent variable. For example, the length of a metal spring that is elastically deformed is a unique function of the temperature, the pressure of the surrounding air, and the stretching force.
+If, however, the stress applied to the solid exceeds its elastic limit, the response is plastic deformation . This deformation persists when the stress is removed, and the unstressed solid no longer has its original properties. Plastic deformation is a kind of hysteresis, and is caused by such microscopic behavior as the slipping of crystal planes past one another in a crystal subjected to shear stress, and conformational rearrangements about single bonds in a stretched macromolecular fiber. Properties of a solid under plastic deformation depend on its past history and are not unique functions of a set of independent variables; an equation of state does not exist.
 
-molecules) melt at still higher temperatures. Examples include ice (melting point, 0 °C) and table sugar
-(melting point, 185 °C).
-FIGURE 10.42
-Carbon dioxide (CO2) consists of small, nonpolar molecules and forms a molecular solid with a
-melting point of −78 °C. Iodine (I2) consists of larger, nonpolar molecules and forms a molecular solid that melts at
-114 °C.
-Properties of Solids
-A crystalline solid, like those listed in Table 10.4, has a precise melting temperature because each atom or
-molecule of the same type is held in place with the same forces or energy. Thus, the attractions between the
-units that make up the crystal all have the same strength and all require the same amount of energy to be
-broken. The gradual softening of an amorphous material differs dramatically from the distinct melting of a
-crystalline solid. This results from the structural nonequivalence of the molecules in the amorphous solid.
-Some forces are weaker than others, and when an amorphous material is heated, the weakest intermolecular
-attractions break first. As the temperature is increased further, the stronger attractions are broken. Thus
-amorphous materials soften over a range of temperatures.
-Types of Crystalline Solids and Their Properties
-Type of
-Solid
-Type of
-Particles
-Type of
-Attractions
-Properties
-Examples
-ionic
-ions
-ionic
-bonds
-hard, brittle, conducts electricity as a liquid but
-not as a solid, high to very high melting points
-NaCl,
-Al2O3
-metallic
-atoms of
-electropositive
-elements
-metallic
-bonds
-shiny, malleable, ductile, conducts heat and
-electricity well, variable hardness and melting
-temperature
-Cu, Fe, Ti,
-Pb, U
-covalent
-network
-atoms of
-electronegative
-elements
-covalent
-bonds
-very hard, not conductive, very high melting
-points
-C
-(diamond),
-SiO2, SiC
-molecular
-molecules (or
-atoms)
-IMFs
-variable hardness, variable brittleness, not
-conductive, low melting points
-H2O, CO2,
-I2,
-C12H22O11
-TABLE 10.4
-10.5 • The Solid State of Matter
-513
+## Match 3.06 — LibreTexts: 1.4: States of Matter - Solid, Liquid, and Gas
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://chem.libretexts.org/Courses/American_River_College/CHEM_309%3A_Applied_Chemistry_for_the_Health_Sciences/01%3A_Topics_in_General_Chemistry_I/1.04%3A_States_of_Matter_-_Solid_Liquid_and_Gas
 
-HOW SCIENCES INTERCONNECT
-Graphene: Material of the Future
-Carbon is an essential element in our world. The unique properties of carbon atoms allow the existence of
-carbon-based life forms such as ourselves. Carbon forms a huge variety of substances that we use on a daily
-basis, including those shown in Figure 10.43. You may be familiar with diamond and graphite, the two most
-common allotropes of carbon. (Allotropes are different structural forms of the same element.) Diamond is one
-of the hardest-known substances, whereas graphite is soft enough to be used as pencil lead. These very
-different properties stem from the different arrangements of the carbon atoms in the different allotropes.
-FIGURE 10.43
-Diamond is extremely hard because of the strong bonding between carbon atoms in all directions.
-Graphite (in pencil lead) rubs off onto paper due to the weak attractions between the carbon layers. An image of a
-graphite surface shows the distance between the centers of adjacent carbon atoms. (credit left photo: modification
-of work by Steve Jurvetson; credit middle photo: modification of work by United States Geological Survey)
-You may be less familiar with a recently discovered form of carbon: graphene. Graphene was first isolated in
-2004 by using tape to peel off thinner and thinner layers from graphite. It is essentially a single sheet (one
-atom thick) of graphite. Graphene, illustrated in Figure 10.44, is not only strong and lightweight, but it is also
-an excellent conductor of electricity and heat. These properties may prove very useful in a wide range of
-applications, such as vastly improved computer chips and circuits, better batteries and solar cells, and
-stronger and lighter structural materials. The 2010 Nobel Prize in Physics was awarded to Andre Geim and
-Konstantin Novoselov for their pioneering work with graphene.
-514
-10 • Liquids and Solids
-Access for free at openstax.org
-
-FIGURE 10.44
-Graphene sheets can be formed into buckyballs, nanotubes, and stacked layers.
-Crystal Defects
-In a crystalline solid, the atoms, ions, or molecules are arranged in a definite repeating pattern, but occasional
-defects may occur in the pattern. Several types of defects are known, as illustrated in Figure 10.45. Vacancies
-are defects that occur when positions that should contain atoms or ions are vacant. Less commonly, some
-atoms or ions in a crystal may occupy positions, called interstitial sites, located between the regular positions
-for atoms. Other distortions are found in impure crystals, as, for example, when the cations, anions, or
-molecules of the impurity are too large to fit into the regular positions without distorting the structure. Trace
-amounts of impurities are sometimes added to a crystal (a process known as doping) in order to create defects
-in the structure that yield desirable changes in its properties. For example, silicon crystals are doped with
-varying amounts of different elements to yield suitable electrical properties for their use in the manufacture of
-semiconductors and computer chips.
-10.5 • The Solid State of Matter
-515
-
-FIGURE 10.45
-Types of crystal defects include vacancies, interstitial atoms, and substitutions impurities.
-
-## Match 2.04 — Chemistry2e-WEB § 10.5 The Solid State of Matter
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Define and describe the bonding and properties of ionic, molecular, metallic, and covalent network crystalline
-solids
-•
-Describe the main types of crystalline solids: ionic solids, metallic solids, covalent network solids, and
-molecular solids
-•
-Explain the ways in which crystal defects can occur in a solid
-When most liquids are cooled, they eventually freeze and form crystalline solids, solids in which the atoms,
-ions, or molecules are arranged in a definite repeating pattern. It is also possible for a liquid to freeze before its
-molecules become arranged in an orderly pattern. The resulting materials are called amorphous solids or
-noncrystalline solids (or, sometimes, glasses). The particles of such solids lack an ordered internal structure
-and are randomly arranged (Figure 10.37).
-FIGURE 10.37
-The entities of a solid phase may be arranged in a regular, repeating pattern (crystalline solids) or
-FIGURE 10.36
-(a) Caffeine molecules have both polar and nonpolar regions, making it soluble in solvents of
-varying polarities. (b) The schematic shows a typical decaffeination process involving supercritical carbon
-dioxide.
-510
-10 • Liquids and Solids
-Access for free at openstax.org
-
-randomly (amorphous).
-Metals and ionic compounds typically form ordered, crystalline solids. Substances that consist of large
-molecules, or a mixture of molecules whose movements are more restricted, often form amorphous solids. For
-examples, candle waxes are amorphous solids composed of large hydrocarbon molecules. Some substances,
-such as silicon dioxide (shown in Figure 10.38), can form either crystalline or amorphous solids, depending on
-the conditions under which it is produced. Also, amorphous solids may undergo a transition to the crystalline
-state under appropriate conditions.
-FIGURE 10.38
-(a) Silicon dioxide, SiO2, is abundant in nature as one of several crystalline forms of the mineral
-quartz. (b) Rapid cooling of molten SiO2 yields an amorphous solid known as “fused silica”.
-Crystalline solids are generally classified according to the nature of the forces that hold its particles together.
-These forces are primarily responsible for the physical properties exhibited by the bulk solids. The following
-sections provide descriptions of the major types of crystalline solids: ionic, metallic, covalent network, and
-molecular.
-Ionic Solids
-Ionic solids, such as sodium chloride and nickel oxide, are composed of positive and negative ions that are
-held together by electrostatic attractions, which can be quite strong (Figure 10.39). Many ionic crystals also
-have high melting points. This is due to the very strong attractions between the ions—in ionic compounds, the
-attractions between full charges are (much) larger than those between the partial charges in polar molecular
-compounds. This will be looked at in more detail in a later discussion of lattice energies. Although they are
-hard, they also tend to be brittle, and they shatter rather than bend. Ionic solids do not conduct electricity;
-however, they do conduct when molten or dissolved because their ions are free to move. Many simple
-compounds formed by the reaction of a metallic element with a nonmetallic element are ionic.
-FIGURE 10.39
-Sodium chloride is an ionic solid.
-Metallic Solids
-Metallic solids such as crystals of copper, aluminum, and iron are formed by metal atoms Figure 10.40. The
-structure of metallic crystals is often described as a uniform distribution of atomic nuclei within a “sea” of
-delocalized electrons. The atoms within such a metallic solid are held together by a unique force known as
-metallic bonding that gives rise to many useful and varied bulk properties. All exhibit high thermal and
-electrical conductivity, metallic luster, and malleability. Many are very hard and quite strong. Because of their
-10.5 • The Solid State of Matter
-511
-
-malleability (the ability to deform under pressure or hammering), they do not shatter and, therefore, make
-useful construction materials. The melting points of the metals vary widely. Mercury is a liquid at room
-temperature, and the alkali metals melt below 200 °C. Several post-transition metals also have low melting
-points, whereas the transition metals melt at temperatures above 1000 °C. These differences reflect
-differences in strengths of metallic bonding among the metals.
-FIGURE 10.40
-Copper is a metallic solid.
-Covalent Network Solid
-Covalent network solids include crystals of diamond, silicon, some other nonmetals, and some covalent
-compounds such as silicon dioxide (sand) and silicon carbide (carborundum, the abrasive on sandpaper).
-Many minerals have networks of covalent bonds. The atoms in these solids are held together by a network of
-covalent bonds, as shown in Figure 10.41. To break or to melt a covalent network solid, covalent bonds must be
-broken. Because covalent bonds are relatively strong, covalent network solids are typically characterized by
-hardness, strength, and high melting points. For example, diamond is one of the hardest substances known
-and melts above 3500 °C.
-FIGURE 10.41
-A covalent crystal contains a three-dimensional network of covalent bonds, as illustrated by the
-structures of diamond, silicon dioxide, silicon carbide, and graphite. Graphite is an exceptional example, composed
-of planar sheets of covalent crystals that are held together in layers by noncovalent forces. Unlike typical covalent
-solids, graphite is very soft and electrically conductive.
-Molecular Solid
-Molecular solids, such as ice, sucrose (table sugar), and iodine, as shown in Figure 10.42, are composed of
-neutral molecules. The strengths of the attractive forces between the units present in different crystals vary
-widely, as indicated by the melting points of the crystals. Small symmetrical molecules (nonpolar molecules),
-such as H2, N2, O2, and F2, have weak attractive forces and form molecular solids with very low melting points
-(below −200 °C). Substances consisting of larger, nonpolar molecules have larger attractive forces and melt at
-higher temperatures. Molecular solids composed of molecules with permanent dipole moments (polar
-512
-10 • Liquids and Solids
-Access for free at openstax.org
-
-molecules) melt at still higher temperatures. Examples include ice (melting point, 0 °C) and table sugar
-(melting point, 185 °C).
-FIGURE 10.42
-Carbon dioxide (CO2) consists of small, nonpolar molecules and forms a molecular solid with a
-melting point of −78 °C. Iodine (I2) consists of larger, nonpolar molecules and forms a molecular solid that melts at
-114 °C.
-Properties of Solids
-A crystalline solid, like those listed in Table 10.4, has a precise melting temperature because each atom or
-molecule of the same type is held in place with the same forces or energy. Thus, the attractions between the
-units that make up the crystal all have the same strength and all require the same amount of energy to be
-broken. The gradual softening of an amorphous material differs dramatically from the distinct melting of a
-crystalline solid. This results from the structural nonequivalence of the molecules in the amorphous solid.
-Some forces are weaker than others, and when an amorphous material is heated, the weakest intermolecular
-attractions break first. As the temperature is increased further, the stronger attractions are broken. Thus
-amorphous materials soften over a range of temperatures.
-Types of Crystalline Solids and Their Properties
-Type of
-Solid
-Type of
-Particles
-Type of
-Attractions
-Properties
-Examples
-ionic
-ions
-ionic
-bonds
-hard, brittle, conducts electricity as a liquid but
-not as a solid, high to very high melting points
-NaCl,
-Al2O3
-metallic
-atoms of
-electropositive
-elements
-metallic
-bonds
-shiny, malleable, ductile, conducts heat and
-electricity well, variable hardness and melting
-temperature
-Cu, Fe, Ti,
-Pb, U
-covalent
-network
-atoms of
-electronegative
-elements
-covalent
-bonds
-very hard, not conductive, very high melting
-points
-C
-(diamond),
-SiO2, SiC
-molecular
-molecules (or
-atoms)
-IMFs
-variable hardness, variable brittleness, not
-conductive, low melting points
-H2O, CO2,
-I2,
-C12H22O11
-TABLE 10.4
-10.5 • The Solid State of Matter
-513
-
-HOW SCIENCES INTERCONNECT
-Graphene: Material of the Future
-Carbon is an essential element in our world. The unique properties of carbon atoms allow the existence of
-carbon-based life forms such as ourselves. Carbon forms a huge variety of substances that we use on a daily
-basis, including those shown in Figure 10.43. You may be familiar with diamond and graphite, the two most
-common allotropes of carbon. (Allotropes are different structural forms of the same element.) Diamond is one
-of the hardest-known substances, whereas graphite is soft enough to be used as pencil lead. These very
-different properties stem from the different arrangements of the carbon atoms in the different allotropes.
-FIGURE 10.43
-Diamond is extremely hard because of the strong bonding between carbon atoms in all directions.
-Graphite (in pencil lead) rubs off onto paper due to the weak attractions between the carbon layers. An image of a
-graphite surface shows the distance between the centers of adjacent carbon atoms. (credit left photo: modification
-of work by Steve Jurvetson; credit middle photo: modification of work by United States Geological Survey)
-You may be less familiar with a recently discovered form of carbon: graphene. Graphene was first isolated in
-2004 by using tape to peel off thinner and thinner layers from graphite. It is essentially a single sheet (one
-atom thick) of graphite. Graphene, illustrated in Figure 10.44, is not only strong and lightweight, but it is also
-an excellent conductor of electricity and heat. These properties may prove very useful in a wide range of
-applications, such as vastly improved computer chips and circuits, better batteries and solar cells, and
-stronger and lighter structural materials. The 2010 Nobel Prize in Physics was awarded to Andre Geim and
-Konstantin Novoselov for their pioneering work with graphene.
-514
-10 • Liquids and Solids
-Access for free at openstax.org
-
-FIGURE 10.44
-Graphene sheets can be formed into buckyballs, nanotubes, and stacked layers.
-Crystal Defects
-In a crystalline solid, the atoms, ions, or molecules are arranged in a definite repeating pattern, but occasional
-defects may occur in the pattern. Several types of defects are known, as illustrated in Figure 10.45. Vacancies
-are defects that occur when positions that should contain atoms or ions are vacant. Less commonly, some
-atoms or ions in a crystal may occupy positions, called interstitial sites, located between the regular positions
-for atoms. Other distortions are found in impure crystals, as, for example, when the cations, anions, or
-molecules of the impurity are too large to fit into the regular positions without distorting the structure. Trace
-amounts of impurities are sometimes added to a crystal (a process known as doping) in order to create defects
-in the structure that yield desirable changes in its properties. For example, silicon crystals are doped with
-varying amounts of different elements to yield suitable electrical properties for their use in the manufacture of
-semiconductors and computer chips.
-10.5 • The Solid State of Matter
-515
-
-FIGURE 10.45
-Types of crystal defects include vacancies, interstitial atoms, and substitutions impurities.
-
-## Match 2.04 — ChemistryAtomsFirst2e-WEB § 1.2 Phases and Classification of Matter
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe the basic properties of each physical state of matter: solid, liquid, and gas
-•
-Distinguish between mass and weight
-•
-Apply the law of conservation of matter
-•
-Classify matter as an element, compound, homogeneous mixture, or heterogeneous mixture with regard to its
-physical state and composition
-•
-Define and give examples of atoms and molecules
-Matter is defined as anything that occupies space and has mass, and it is all around us. Solids and liquids are
-more obviously matter: We can see that they take up space, and their weight tells us that they have mass. Gases
-are also matter; if gases did not take up space, a balloon would not inflate (increase its volume) when filled with
-gas.
-Solids, liquids, and gases are the three states of matter commonly found on earth (Figure 1.6). A solid is rigid
-and possesses a definite shape. A liquid flows and takes the shape of its container, except that it forms a flat or
-slightly curved upper surface when acted upon by gravity. (In zero gravity, liquids assume a spherical shape.)
-Both liquid and solid samples have volumes that are very nearly independent of pressure. A gas takes both the
-shape and volume of its container.
-FIGURE 1.6
-The three most common states or phases of matter are solid, liquid, and gas.
-A fourth state of matter, plasma, occurs naturally in the interiors of stars. A plasma is a gaseous state of matter
-that contains appreciable numbers of electrically charged particles (Figure 1.7). The presence of these charged
-particles imparts unique properties to plasmas that justify their classification as a state of matter distinct from
-gases. In addition to stars, plasmas are found in some other high-temperature environments (both natural and
-man-made), such as lightning strikes, certain television screens, and specialized analytical instruments used
-to detect trace amounts of metals.
-14
-1 • Essential Ideas
-Access for free at openstax.org
-
-FIGURE 1.7
-A plasma torch can be used to cut metal. (credit: “Hypertherm”/Wikimedia Commons)
-LINK TO LEARNING
-In a tiny cell in a plasma television, the plasma emits ultraviolet light, which in turn causes the display at that
-location to appear a specific color. The composite of these tiny dots of color makes up the image that you see.
-Watch this video (http://openstax.org/l/16plasma) to learn more about plasma and the places you encounter it.
-Some samples of matter appear to have properties of solids, liquids, and/or gases at the same time. This can
-occur when the sample is composed of many small pieces. For example, we can pour sand as if it were a liquid
-because it is composed of many small grains of solid sand. Matter can also have properties of more than one
-state when it is a mixture, such as with clouds. Clouds appear to behave somewhat like gases, but they are
-actually mixtures of air (gas) and tiny particles of water (liquid or solid).
-The mass of an object is a measure of the amount of matter in it. One way to measure an object’s mass is to
-measure the force it takes to accelerate the object. It takes much more force to accelerate a car than a bicycle
-because the car has much more mass. A more common way to determine the mass of an object is to use a
-balance to compare its mass with a standard mass.
-Although weight is related to mass, it is not the same thing. Weight refers to the force that gravity exerts on an
-object. This force is directly proportional to the mass of the object. The weight of an object changes as the force
-of gravity changes, but its mass does not. An astronaut’s mass does not change just because she goes to the
-moon. But her weight on the moon is only one-sixth her earth-bound weight because the moon’s gravity is only
-one-sixth that of the earth’s. She may feel “weightless” during her trip when she experiences negligible
-external forces (gravitational or any other), although she is, of course, never “massless.”
-The law of conservation of matter summarizes many scientific observations about matter: It states that there
-is no detectable change in the total quantity of matter present when matter converts from one type to another
-(a chemical change) or changes among solid, liquid, or gaseous states (a physical change). Brewing beer and
-the operation of batteries provide examples of the conservation of matter (Figure 1.8). During the brewing of
-beer, the ingredients (water, yeast, grains, malt, hops, and sugar) are converted into beer (water, alcohol,
-carbonation, and flavoring substances) with no actual loss of substance. This is most clearly seen during the
-bottling process, when glucose turns into ethanol and carbon dioxide, and the total mass of the substances
-does not change. This can also be seen in a lead-acid car battery: The original substances (lead, lead oxide, and
-sulfuric acid), which are capable of producing electricity, are changed into other substances (lead sulfate and
-water) that do not produce electricity, with no change in the actual amount of matter.
-1.2 • Phases and Classification of Matter
-15
-
-FIGURE 1.8
-(a) The mass of beer precursor materials is the same as the mass of beer produced: Sugar has
-become alcohol and carbon dioxide. (b) The mass of the lead, lead oxide, and sulfuric acid consumed by the
-production of electricity is exactly equal to the mass of lead sulfate and water that is formed.
-Although this conservation law holds true for all conversions of matter, convincing examples are few and far
-between because, outside of the controlled conditions in a laboratory, we seldom collect all of the material that
-is produced during a particular conversion. For example, when you eat, digest, and assimilate food, all of the
-matter in the original food is preserved. But because some of the matter is incorporated into your body, and
-much is excreted as various types of waste, it is challenging to verify by measurement.
-Classifying Matter
-Matter can be classified into several categories. Two broad categories are mixtures and pure substances. A
-pure substance has a constant composition. All specimens of a pure substance have exactly the same makeup
-and properties. Any sample of sucrose (table sugar) consists of 42.1% carbon, 6.5% hydrogen, and 51.4%
-oxygen by mass. Any sample of sucrose also has the same physical properties, such as melting point, color, and
-sweetness, regardless of the source from which it is isolated.
-Pure substances may be divided into two classes: elements and compounds. Pure substances that cannot be
-broken down into simpler substances by chemical changes are called elements. Iron, silver, gold, aluminum,
-sulfur, oxygen, and copper are familiar examples of the more than 100 known elements, of which about 90
-occur naturally on the earth, and two dozen or so have been created in laboratories.
-Pure substances that are comprised of two or more elements are called compounds. Compounds may be
-broken down by chemical changes to yield either elements or other compounds, or both. Mercury(II) oxide, an
-orange, crystalline solid, can be broken down by heat into the elements mercury and oxygen (Figure 1.9).
-When heated in the absence of air, the compound sucrose is broken down into the element carbon and the
-compound water. (The initial stage of this process, when the sugar is turning brown, is known as
-caramelization—this is what imparts the characteristic sweet and nutty flavor to caramel apples, caramelized
-onions, and caramel). Silver(I) chloride is a white solid that can be broken down into its elements, silver and
-chlorine, by absorption of light. This property is the basis for the use of this compound in photographic films
-and photochromic eyeglasses (those with lenses that darken when exposed to light).
-16
-1 • Essential Ideas
-Access for free at openstax.org
-
-FIGURE 1.9
-(a) The compound mercury(II) oxide, (b) when heated, (c) decomposes into silvery droplets of liquid
-mercury and invisible oxygen gas. (credit: modification of work by Paul Flowers)
-LINK TO LEARNING
-Many compounds break down when heated. This site (http://openstax.org/l/16mercury) shows the breakdown
-of mercury oxide, HgO. You can also view an example of the photochemical decomposition of silver chloride
-(http://openstax.org/l/16silvchloride) (AgCl), the basis of early photography.
-The properties of combined elements are different from those in the free, or uncombined, state. For example,
-white crystalline sugar (sucrose) is a compound resulting from the chemical combination of the element
-carbon, which is a black solid in one of its uncombined forms, and the two elements hydrogen and oxygen,
-which are colorless gases when uncombined. Free sodium, an element that is a soft, shiny, metallic solid, and
-free chlorine, an element that is a yellow-green gas, combine to form sodium chloride (table salt), a compound
-that is a white, crystalline solid.
-A mixture is composed of two or more types of matter that can be present in varying amounts and can be
-separated by physical changes, such as evaporation (you will learn more about this later). A mixture with a
-composition that varies from point to point is called a heterogeneous mixture. Italian dressing is an example
-of a heterogeneous mixture (Figure 1.10). Its composition can vary because it may be prepared from varying
-amounts of oil, vinegar, and herbs. It is not the same from point to point throughout the mixture—one drop
-may be mostly vinegar, whereas a different drop may be mostly oil or herbs because the oil and vinegar
-separate and the herbs settle. Other examples of heterogeneous mixtures are chocolate chip cookies (we can
-see the separate bits of chocolate, nuts, and cookie dough) and granite (we can see the quartz, mica, feldspar,
-and more).
-A homogeneous mixture, also called a solution, exhibits a uniform composition and appears visually the
-same throughout. An example of a solution is a sports drink, consisting of water, sugar, coloring, flavoring, and
-electrolytes mixed together uniformly (Figure 1.10). Each drop of a sports drink tastes the same because each
-drop contains the same amounts of water, sugar, and other components. Note that the composition of a sports
-drink can vary—it could be made with somewhat more or less sugar, flavoring, or other components, and still
-be a sports drink. Other examples of homogeneous mixtures include air, maple syrup, gasoline, and a solution
-of salt in water.
-FIGURE 1.10
-(a) Oil and vinegar salad dressing is a heterogeneous mixture because its composition is not uniform
-throughout. (b) A commercial sports drink is a homogeneous mixture because its composition is uniform
-throughout. (credit a “left”: modification of work by John Mayer; credit a “right”: modification of work by Umberto
-Salvagnin; credit b “left: modification of work by Jeff Bedford)
-1.2 • Phases and Classification of Matter
-17
-
-Although there are just over 100 elements, tens of millions of chemical compounds result from different
-combinations of these elements. Each compound has a specific composition and possesses definite chemical
-and physical properties that distinguish it from all other compounds. And, of course, there are innumerable
-ways to combine elements and compounds to form different mixtures. A summary of how to distinguish
-between the various major classifications of matter is shown in (Figure 1.11).
-FIGURE 1.11
-Depending on its properties, a given substance can be classified as a homogeneous mixture, a
-heterogeneous mixture, a compound, or an element.
-Eleven elements make up about 99% of the earth’s crust and atmosphere (Table 1.1). Oxygen constitutes
-nearly one-half and silicon about one-quarter of the total quantity of these elements. A majority of elements on
-earth are found in chemical combinations with other elements; about one-quarter of the elements are also
-found in the free state.
-Elemental Composition of Earth
-Element
-Symbol
-Percent Mass
-Element
-Symbol
-Percent Mass
-oxygen
-O
-49.20
-chlorine
-Cl
-0.19
-silicon
-Si
-25.67
-phosphorus
-P
-0.11
-aluminum
-Al
-7.50
-manganese
-Mn
-0.09
-iron
-Fe
-4.71
-carbon
-C
-0.08
-calcium
-Ca
-3.39
-sulfur
-S
-0.06
-sodium
-Na
-2.63
-barium
-Ba
-0.04
-potassium
-K
-2.40
-nitrogen
-N
-0.03
-magnesium
-Mg
-1.93
-fluorine
-F
-0.03
-hydrogen
-H
-0.87
-strontium
-Sr
-0.02
-titanium
-Ti
-0.58
-all others
+1.4: States of Matter - Solid, Liquid, and Gas
+- To describe the solid, liquid and gas phases.
+Water can take many forms. At low temperatures (below \(0^\text{o} \text{C}\)), it is a solid. Between \(0^\text{o} \text{C}\) and \(100^\text{o} \text{C}\)), it is a liquid. At temperatures above \(100^\text{o} \text{C}\), water is a gas (steam). The state that water is in depends upon the temperature, each state has its own unique set of physical properties. Matter typically exists in one of three states: solid , liquid , or gas .
+The state that a given substance exhibits is also a physical property. Some substances exist as gases at room temperature such as oxygen and carbon dioxide. Others, like water and mercury metal, exist as liquids at room temperature. Most metals exist as solids at room temperature. Figure \(\PageIndex{2}\) shows the differences among solids, liquids, and gases at the molecular level. A solid has definite volume and shape, a liquid has a definite volume but no definite shape, and a gas has neither a definite volume nor shape.
+Technically speaking, a fourth state of matter called plasma exists. However, it does not naturally occur on earth. So we will omit it from our study here.
+A plasma globe operating in a darkened room. (CC BY-SA 3.0; Chocolateoak).
+Solids
+In the solid state, the individual particles of a substance are in fixed positions with respect to each other because there is not enough thermal energy to overcome the intermolecular interactions between the particles. As a result, solids have a definite shape and volume. Most solids are hard, but some (like waxes) are relatively soft. Many solids composed of ions can also be quite brittle.
+Solids are defined by the following characteristics:
+- Definite shape (rigid)
+- Definite volume
+- Particles vibrate around fixed axes
+If we were to cool liquid mercury to its freezing point of \(-39^\text{o} \text{C}\) under the right pressure conditions, we would notice all of the liquid particles would go into the solid state. Mercury can be solidified when its temperature is brought to its freezing point. However, when returned to room temperature conditions, mercury does not exist in solid state for long, and returns back to its more common liquid form.
+Solids usually have their constituent particles arranged in a regular, three-dimensional array of alternating positive and negative ions called a crystal . The effect of this regular arrangement of particles is sometimes visible macroscopically, as shown in Figure \(\PageIndex{3}\). Some solids, especially those composed of large molecules, cannot easily organize their particles in such regular crystals and exist as amorphous (literally, “without form”) solids. Glass is one example of an amorphous solid.
+Liquids
+If the particles of a substance have enough energy to partially overcome intermolecular interactions, then the particles can move about each other while remaining in contact. This describes the liquid state. In a liquid, the particles are still in close contact, so liquids have a definite volume. However, because the particles can move about each other rather freely, a liquid has no definite shape and instead takes a shape dictated by its container.
+Liquids have the following characteristics:
+- No definite shape (takes the shape of its container)
+- Has definite volume
+- Particles are free to move over each other, but are still attracted to each other
+A familiar liquid is mercury metal. Mercury is an anomaly. It is the only metal we know of that is liquid at room temperature.
+Gases
+If the particles of a substance have enough energy to completely overcome intermolecular interactions, then the particles can separate from each other and move about randomly in space. This describes the gas state, which we will consider in more detail in a later chapter. Like liquids, gases have no definite shape, but unlike solids and liquids, gases have no definite volume. The change from solid to liquid usually does not significantly change the volume of a substance. However, the change from a liquid to a gas significantly increases the volume of a substance, by a factor of 1,000 or more. Gases have the following characteristics:
+- No definite shape (takes the shape of its container)
+- No definite volume
+- Particles move in random motion with little or no attraction to each other
+- Highly compressible
+| Characteristics | Solids | Liquids | Gases |
+|---|---|---|---|
+| shape | definite | indefinite | indefinite |
+| volume | definite | definite | indefinite |
+| relative intermolecular interaction strength | strong | moderate | weak |
+| relative particle positions | in contact and fixed in place | in contact but not fixed | not in contact, random positions |
+What state or states of matter does each statement describe?
+- This state has a definite volume, but no definite shape.
+- This state has no definite volume.
+- This state allows the individual particles to move about while remaining in contact.
+Solution
+- This statement describes the liquid state.
+- This statement describes the gas state.
+- This statement describes the liquid state.
+What state or states of matter does each statement describe?
+- This state has individual particles in a fixed position with regard to each other.
+- This state has individual particles far apart from each other in space.
+- This state has a definite shape.
+- Answer a:
+- solid
+- Answer b:
+- gas
+- Answer c:
+- solid
+Summary
+- Three states of matter exist - solid, liquid, and gas.
+- Solids have a definite shape and volume.
+- Liquids have a definite volume, but take the shape of the container.
+- Gases have no definite shape or volume
+Contributions & Attributions
+This page was constructed from content via the following contributor(s) and edited (topically or extensively) by the LibreTexts development team to meet platform style, presentation, and quality:
 -
-0.47
-TABLE 1.1
-18
-1 • Essential Ideas
-Access for free at openstax.org
-
-Atoms and Molecules
-An atom is the smallest particle of an element that has the properties of that element and can enter into a
-chemical combination. Consider the element gold, for example. Imagine cutting a gold nugget in half, then
-cutting one of the halves in half, and repeating this process until a piece of gold remained that was so small
-that it could not be cut in half (regardless of how tiny your knife may be). This minimally sized piece of gold is
-an atom (from the Greek atomos, meaning “indivisible”) (Figure 1.12). This atom would no longer be gold if it
-were divided any further.
-FIGURE 1.12
-(a) This photograph shows a gold nugget. (b) A scanning-tunneling microscope (STM) can generate
-views of the surfaces of solids, such as this image of a gold crystal. Each sphere represents one gold atom. (credit a:
-modification of work by United States Geological Survey; credit b: modification of work by “Erwinrossen”/Wikimedia
-Commons)
-The first suggestion that matter is composed of atoms is attributed to the Greek philosophers Leucippus and
-Democritus, who developed their ideas in the 5th century BCE. However, it was not until the early nineteenth
-century that John Dalton (1766–1844), a British schoolteacher with a keen interest in science, supported this
-hypothesis with quantitative measurements. Since that time, repeated experiments have confirmed many
-aspects of this hypothesis, and it has become one of the central theories of chemistry. Other aspects of Dalton’s
-atomic theory are still used but with minor revisions (details of Dalton’s theory are provided in the chapter on
-atoms and molecules).
-An atom is so small tha
+Henry Agnew (UC Davis)

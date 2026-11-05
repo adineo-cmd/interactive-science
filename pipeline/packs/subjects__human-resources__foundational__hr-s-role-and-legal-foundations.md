@@ -1,514 +1,181 @@
 # Source pack — subjects/human-resources/foundational/hr-s-role-and-legal-foundations
 Lesson title: HR's Role and Legal Foundations
 Level: foundational
-Match confidence: 1.36
+Match confidence: 2.01
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.36 — Microbiology-WEB § 3.2 Foundations of Modern Cell Theory
+## Match 2.01 — LibreTexts: 2.3: Legal Foundations and National Guidelines for Safe Medication Administration
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Courses/Monterey_Peninsula_College/Nursing_Pharmacology_(OpenRN)/02%3A_Legal_and_Ethical/2.03%3A_Legal_Foundations_and_National_Guidelines_for_Safe_Medication_Administration
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Explain the key points of cell theory and the individual contributions of Hooke, Schleiden, Schwann, Remak,
-and Virchow
-•
-Explain the key points of endosymbiotic theory and cite the evidence that supports this concept
-•
-Explain the contributions of Semmelweis, Snow, Pasteur, Lister, and Koch to the development of germ theory
-While some scientists were arguing over the theory of spontaneous generation, other scientists were making
-3.2 • Foundations of Modern Cell Theory
-77
+2.3: Legal Foundations and National Guidelines for Safe Medication Administration
+-
+- Last updated
+- Save as PDF
+- Ernstmeyer & Christman (Eds.)
+- Chippewa Valley Technical College via OpenRN
+There are many federal and state laws, as well as national guidelines, that have been established to protect public health and safety. This section will explain how the FDA, DEA, Joint Commission, CMS, a State’s Nurse Practice Act, State Boards of Nursing, and state legislatures protect the consumer from medication harm.
+2.3a – Food and Drug Administration
+To protect the public, the U.S. Food and Drug Administration (FDA) is responsible for protecting the public health by ensuring the safety, efficacy, and security of human and veterinary drugs, biological products, and medical devices; and by ensuring the safety of our nation’s food supply, cosmetics, and products that emit radiation. [1] Some of the ways that the FDA protects the public health regarding medications are by enforcing an official drug approval process based on evidence-based research; issuing Black Box Warnings for medications with serious adverse reactions; and regulating over-the-counter (OTC) medications. Each of these actions are further explained below.
+Developing New Drugs
+American consumers benefit from having access to the safest and most advanced pharmaceutical system in the world. The main consumer watchdog in this system is the FDA’s Center for Drug Evaluation and Research (CDER).
+The center’s best-known job is to evaluate new drugs before they can be sold. CDER’s evaluation not only prevents quackery, but also provides doctors and patients the information they need to use medicines wisely. The center ensures that drugs, both brand-name and generic, work correctly and that their health benefits outweigh their known risks.
+Development and Approval Process of Drugs by the FDA
+Drug companies conduct extensive research and work to develop and test a drug. The company then sends CDER the evidence from these tests to prove the drug is safe and effective for its intended use. Before the drug is approved as safe for use in the United States, a team of CDER physicians, statisticians, chemists, pharmacologists, and other scientists reviews the company’s data and proposed labeling. If this independent and unbiased review establishes a drug’s health benefits outweigh its known risks, the drug is approved for sale. Before a drug can be tested in people, the drug company or sponsor performs laboratory and animal tests to discover how the drug works and whether it’s likely to be safe and work well in humans. Next, a series of clinical trials involving volunteers is conducted to determine whether the drug is safe when used to treat a disease and whether it provides a real health benefit.
+FDA Approval: What it Means
+FDA approval of a drug means that data on the drug’s effects have been reviewed by CDER, and the drug is determined to provide benefits that outweigh its known and potential risks for the intended population. The drug approval process takes place within a structured framework that includes:
+- Analysis of the target condition and available treatments: FDA reviewers analyze the condition or illness for which the drug is intended and evaluate the current treatment landscape, which provide the context for weighing the drug’s risks and benefits. For example, a drug intended to treat patients with a life-threatening disease for which no other therapy exists may be considered to have benefits that outweigh the risks even if those risks would be considered unacceptable for a condition that is not life threatening.
+- Assessment of benefits and risks from clinical data: FDA reviewers evaluate clinical benefit and risk information submitted by the drug maker, taking into account any uncertainties that may result from imperfect or incomplete data. Generally, the agency expects that the drug maker will submit results from two well-designed clinical trials to be sure the findings from the first trial are not the result of chance or bias. In certain cases, especially if the disease is rare and multiple trials may not be feasible, convincing evidence from one clinical trial may be enough. Evidence that the drug will benefit the target population should outweigh any risks and uncertainties.
+- Strategies for managing risks: All drugs have risks. Risk management strategies include an FDA-approved drug label, which clearly describes the drug’s benefits and risks and information pertaining to the detection and management of any risks. Sometimes, more effort is needed to manage risks. In these cases, a drug maker may need to implement a Risk Management and Mitigation Strategy (REMS).
+Although many of the FDA’s risk-benefit assessments and decisions are straightforward, sometimes the benefits and risks are uncertain and may be difficult to interpret or predict. The agency and the drug maker may reach different conclusions after analyzing the same data, or there may be differences of opinion among members of the FDA’s review team. As a science-led organization, the FDA uses scientific and technological information to make decisions through a deliberative process. [2]
+Black Box Warnings
+The Food and Drug Administration (FDA) approves a drug for marketing after determining that the drug’s benefits of use outweigh the risks for the condition that the drug will treat. However, even with the rigorous FDA evaluation process, some safety problems surface only after a drug has been on the market and has been used in a broader population. If a safety problem surfaces, Black Box Warnings are issued by the FDA and appear on a prescription drug’s label. The purpose is to call attention to serious or life-threatening risks. [3]
+Critical Thinking Activity 2.3a
+Levofloxacin is an antibiotic that received FDA approval. However, after the drug was on the market, it was discovered that some patients who took levofloxacin developed serious, irreversible adverse effects such as tendon rupture. The FDA issued a Black Box Warning with recommendations to reserve levofloxacin for use in patients who have no alternative treatment options for certain indications: uncomplicated UTI, acute exacerbation of chronic bronchitis, and acute bacterial sinusitis. [4]
+A nurse is preparing to administer medications to a patient and notices that levofloxacin has been prescribed for the indication of pneumonia. There is no other documentation in the provider’s notes related to the use of this medication.
+What is the nurse’s best response?
+Note: Answers to the Critical Thinking activities can be found in the “Answer Key” sections at the end of the book.
+2.3b – U.S. Drug Enforcement Agency (DEA)
+The U.S. Drug Enforcement Agency (DEA) enforces the controlled substances laws and regulations of the United States. This includes enforcement of the Controlled Substances Act (CSA) that pertains to the manufacture, distribution, and dispensing of legally produced controlled substances that nurses administer to patients. [5]
+Because controlled substances have a greater chance of being misused and abused, there are additional laws and procedures that must be followed when working with these medications. The federal government administers some laws regarding controlled substances. The DEA is responsible for enforcing these laws, and many federal laws are summarized in a document called the Pharmacist’s Manual . [6] Most controlled substance laws, however, come from the state governments. Health care professionals are responsible for following the most stringent of the two laws, whether it be state law or federal law.
+Federal Laws
+The following are excerpts of federal laws that are applicable to professional nursing.
+Prescriptions: A prescription for a controlled substance may be written only by a provider (physician or mid-level provider like a nurse practitioner) that has a DEA registration number.
+A prescription for a Schedule II (most controlled class of medications, like opioids) must be written or electronically sent to the pharmacy through DEA approved software. Prescriptions over the phone or fax are not accepted.
+It is then up to state law to decide how long a written Schedule II prescription is valid and if there are any limits on the quantity of medication that can be dispensed.
+Refilling a Schedule II medication is not allowed. Schedule III or IV medications may be refilled only 5 times.
+Records: There is a “closed system” for record keeping of controlled substances to prevent diversion.
+To maintain a “closed system” of record keeping for controlled substances, hospitals, clinics, and pharmacies must maintain records on the whereabouts of the medication from manufacturing the medication, receipt by the pharmacy, distribution to the patient, to disposal of waste. What does this look like in practice? Inventory counts of controlled medications occur frequently, controlled substance access by individual employees is audited often, detailed records are kept for all transactions, and waste is often disposed of differently than other pharmaceuticals.
+Wisconsin State Laws
+Prescriptions: A Schedule II prescription is only good for 60 days after it is written.
+Pharmacies and practitioners are required to participate in a prescription drug monitoring program when dispensing or prescribing a monitored prescription drug (most often opioid pain medications).
+Scheduled Medications
+The Controlled Substances Act (CSA) places all substances that are regulated under existing federal law into one of five schedules. This placement is based on the substance’s medical use, potential for abuse, and safety or dependence liability. Schedule I drugs have a high potential for abuse and the potential to create severe psychological and/or physical dependence, whereas Schedule V drugs represent the least potential for abuse. An alphabetic listing of drugs and their schedule are located on the DEA website at “CSA Scheduling by Alphabetical Order.” [8] , [9] Sample medications for each schedule are included in Figure 2.2. [10]
+Figure 2.2 Definitions and Sample Medications for Each Type of Scheduled Medication
+Schedule |
+Definition |
+Examples |
+|---|---|---|
+| Schedule I | No currently accepted medical use and a high potential for abuse. | Heroin, LSD, and marijuana |
+| Schedule II | High potential for abuse, with use potentially leading to severe psychological or physical dependence. These drugs are also considered dangerous. | Vicodin, cocaine, methamphetamine, methadone, hydromorphone (Dilaudid), meperidine (Demerol), oxycodone (OxyContin), fentanyl, Dexedrine, Adderall, and Ritalin |
+| Schedule III | Moderate to low potential for physical and psychological dependence. Abuse potential is less than Schedule I and Schedule II drugs but more than Schedule IV. | Tylenol with codeine, ketamine, anabolic steroids, testosterone |
+| Schedule IV | Low potential for abuse and low risk of dependence. | Xanax, Soma, Valium, Ativan, Talwin, Ambien, Tramadol |
+| Schedule V | Lower potential for abuse than Schedule IV and consist of preparations containing limited quantities of certain narcotics. Generally used for antidiarrheal, antitussive, and analgesic purposes. | Robitussin AC with codeine, Lomotil, Lyrica |
+Drug overdoses are still a public health crisis in the United States, and the misuse of prescription opioids, which are scheduled medications, continue to contribute to a large percentage of overdose deaths. Many problems associated with drug abuse are the result of legitimately made controlled substances being diverted from their lawful purpose into illicit drug traffic. The mission of DEA’s Diversion Control Division is to prevent, detect, and investigate the diversion of controlled pharmaceuticals from legitimate sources while ensuring an adequate and uninterrupted supply for legitimate medical, commercial, and scientific needs. The DEA provides education regarding related topics that apply to nurses such a
 
-discoveries leading to a better understanding of what we now call the cell theory. Modern cell theory has two
-basic tenets:
-•
-All cells only come from other cells (the principle of biogenesis).
-•
-Cells are the fundamental units of organisms.
-Today, these tenets are fundamental to our understanding of life on earth. However, modern cell theory grew
-out of the collective work of many scientists.
-The Origins of Cell Theory
-The English scientist Robert Hooke first used the term “cells” in 1665 to describe the small chambers within
-cork that he observed under a microscope of his own design. To Hooke, thin sections of cork resembled
-“Honey-comb,” or “small Boxes or Bladders of Air.” He noted that each “Cavern, Bubble, or Cell” was distinct
-from the others (Figure 3.5). At the time, Hooke was not aware that the cork cells were long dead and,
-therefore, lacked the internal structures found within living cells.
-Figure 3.5
-Robert Hooke (1635–1703) was the first to describe cells based upon his microscopic observations of cork. This illustration
-was published in his work Micrographia.
-Despite Hooke’s early description of cells, their significance as the fundamental unit of life was not yet
-recognized. Nearly 200 years later, in 1838, Matthias Schleiden (1804–1881), a German botanist who made
-extensive microscopic observations of plant tissues, described them as being composed of cells. Visualizing
-plant cells was relatively easy because plant cells are clearly separated by their thick cell walls. Schleiden
-believed that cells formed through crystallization, rather than cell division.
-Theodor Schwann (1810–1882), a noted German physiologist, made similar microscopic observations of
-animal tissue. In 1839, after a conversation with Schleiden, Schwann realized that similarities existed between
-plant and animal tissues. This laid the foundation for the idea that cells are the fundamental components of
-plants and animals.
-In the 1850s, two Polish scientists living in Germany pushed this idea further, culminating in what we
-recognize today as the modern cell theory. In 1852, Robert Remak (1815–1865), a prominent neurologist and
-embryologist, published convincing evidence that cells are derived from other cells as a result of cell division.
-However, this idea was questioned by many in the scientific community. Three years later, Rudolf Virchow
-(1821–1902), a well-respected pathologist, published an editorial essay entitled “Cellular Pathology,” which
-popularized the concept of cell theory using the Latin phrase omnis cellula a cellula (“all cells arise from
-cells”), which is essentially the second tenet of modern cell theory.5 Given the similarity of Virchow’s work to
-Remak’s, there is some controversy as to which scientist should receive credit for articulating cell theory. See
-the following Eye on Ethics feature for more about this controversy.
-5 M. Schultz. “Rudolph Virchow.” Emerging Infectious Diseases 14 no. 9 (2008):1480–1481.
-78
-3 • The Cell
-Access for free at openstax.org.
+## Match 2.01 — LibreTexts: 1.4: The Role of the U.S. Legal System
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Bookshelves/Civil_Law/Introduction_to_Intellectual_Property_(OpenStax)/01%3A_Patent_Basics/1.04%3A_The_Role_of_the_U.S._Legal_System
 
-Eye on Ethics
-Science and Plagiarism
-Rudolf Virchow, a prominent, Polish-born, German scientist, is often remembered as the “Father of
-Pathology.” Well known for innovative approaches, he was one of the first to determine the causes of
-various diseases by examining their effects on tissues and organs. He was also among the first to use
-animals in his research and, as a result of his work, he was the first to name numerous diseases and
-created many other medical terms. Over the course of his career, he published more than 2,000 papers and
-headed various important medical facilities, including the Charité – Universitätsmedizin Berlin, a
-prominent Berlin hospital and medical school. But he is, perhaps, best remembered for his 1855 editorial
-essay titled “Cellular Pathology,” published in Archiv für Pathologische Anatomie und Physiologie, a journal
-that Virchow himself cofounded and still exists today.
-Despite his significant scientific legacy, there is some controversy regarding this essay, in which Virchow
-proposed the central tenet of modern cell theory—that all cells arise from other cells. Robert Remak, a
-former colleague who worked in the same laboratory as Virchow at the University of Berlin, had published
-the same idea 3 years before. Though it appears Virchow was familiar with Remak’s work, he neglected to
-credit Remak’s ideas in his essay. When Remak wrote a letter to Virchow pointing out similarities between
-Virchow’s ideas and his own, Virchow was dismissive. In 1858, in the preface to one of his books, Virchow
-wrote that his 1855 publication was just an editorial piece, not a scientific paper, and thus there was no
-need to cite Remak’s work.
-By today’s standards, Virchow’s editorial piece would certainly be considered an act of plagiarism, since he
-presented Remak’s ideas as his own. However, in the 19th century, standards for academic integrity were
-much less clear. Virchow’s strong reputation, coupled with the fact that Remak was a Jew in a somewhat
-anti-Semitic political climate, shielded him from any significant repercussions. Today, the process of peer
-review and the ease of access to the scientific literature help discourage plagiarism. Although scientists are
-still motivated to publish original ideas that advance scientific knowledge, those who would consider
-plagiarizing are well aware of the serious consequences.
-In academia, plagiarism represents the theft of both individual thought and research—an offense that can
-destroy reputations and end careers.6 7 8 9
-6 B. Kisch. “Forgotten Leaders in Modern Medicine, Valentin, Gouby, Remak, Auerbach.” Transactions of the American
-Philosophical Society 44 (1954):139–317.
-7 H. Harris. The Birth of the Cell. New Haven, CT: Yale University Press, 2000:133.
-8 C. Webster (ed.). Biology, Medicine and Society 1840-1940. Cambridge, UK; Cambridge University Press, 1981:118–119.
-9 C. Zuchora-Walske. Key Discoveries in Life Science. Minneapolis, MN: Lerner Publishing, 2015:12–13.
-3.2 • Foundations of Modern Cell Theory
-79
+1.4: The Role of the U.S. Legal System
+After completing this section, you will be able to
+- Describe the differences between the U.S. and European patent laws.
+- Describe the history of patent litigation in the United States.
+U.S. Patent Law vs. European Patent Law
+Just as with any other property right, patent rights would be meaningless without the ability to enforce them in court. And from the earliest days of the patent system, says Khan, “Our legal system remained true to the Constitution in the belief that the defense of rights in patented invention was important in fostering industrial and economic development.”
+In Britain and other European countries, patents were viewed as “pernicious monopolies that restricted community rights and [Had] to be carefully monitored and narrowly construed.” xxvii The enforcement and interpretation of patent laws by the courts in Europe also tended to be highly variable and dependent upon the whims of each individual judge.
+In the United States, however, early courts treated inventors’ patent rights with deference, just as they did the rights of other property owners. Famed Supreme Court Justice Joseph Story repeatedly declared that patent rights were “sacred” and were the just reward for inventive ingenuity. As he noted in Lowell v. Lewis ( https://openstax.org/l/Lowell_v_Lewis ) (1817), “the proper duty of the court” is to ensure that “wrongdoers may not reap the fruits of the labor and genius of other men.”
+The relative uniformity and certainty of enforcement of patent rights by the courts also proved critical in encouraging capital to invest in commercializing those patent rights.
+Contrasting the patent laws and policies of the United States and Britain, Supreme Court Justice Henry Baldwin went to some lengths in Whitney v. Emmett ( https://openstax.org/l/Whitney_v_Emmett ) (1831) to show how English courts saw patents as a zero-sum trade-off between private rights and the public good. The explicit intention of U.S. patent law, however, was “to benefit the inventor, in the belief that maximizing individual welfare leads to maximum social welfare.”
+Nonetheless, U.S. intellectual property laws did try to strike a balance between the needs of the many and the few. “Patent laws ensured the security of private property rights in invention. However, it was also necessary to balance the just claims of inventors against the dangers of exclusive monopolies that might restrict the scope of current and future invention.” xxviii
+Changes in the U.S. Patent Law Through the Years
+Over the years, of course, that balance has moved back and forth between relatively stronger versus weaker enforcement of patent rights. With the rise of the robber barons in the late nineteenth century, government and the courts increasingly viewed patents through the prism of antitrust, in some cases even compelling large firms like IBM to license their patents to competitors. Then with the advent of the high-tech revolution in the 1980s, antitrust concerns faded and the courts began once again to view stronger patent rights as helpful in fostering innovation.
+Interestingly, the U.S. legal system has always operated on the theory that the best way to achieve the proper balance between private rights and public interest was not through government decree, centralized management, or compulsory licensing but rather through the decentralized decision making and market interactions of inventors themselves. The court’s role was to resolve the inevitable conflicts that arose, on a case by case basis.
+Throughout all the twists and turns in patent enforcement over the centuries, however, the federal courts have remained unwavering on four key principles of U.S. patent law.
+An "Explosion" of Patent Litigation?
+Patent litigation, of course, has always been an integral feature of the U.S. patent system. The first patent case on record was that of Benjamin Folger, whose patent for the production of candles was invalidated by the district federal court for New York in 1792. This was merely the first of many hundreds (and eventually thousands) of cases in which patent litigation served the important function of settling either the validity or the disputed ownership of the rights to critical new technologies—the litigation between telephone inventors Alexander Graham Bell and Elisha Gray being perhaps the most famous case in point. By doing so, the courts provided greater certainty regarding the value of such rights to entrepreneurs and investors alike.
+Today, some critics contend that an “explosion of patent litigation” unlike any in history is harming business and diverting resources better spent on innovation. No responsible observer would deny that the courts have seen an increase in patent infringement suits in recent years, just as they have seen a rise in personal injury claims and product liability suits. But that said, the evidence shows that the rate of patent litigation today is actually below historical norms.
+According to USCourts.gov ( https://www.USCourts.gov ) figures, the number of patent infringement suits filed in the United States increased 59 percent between 2001 and 2011—from 2,520 cases in 2001 to 4,015 cases in 2011. Meanwhile, the number of patents granted in that same period increased by only 35 percent, which supports the view that patent litigation has become more frequent over the last decade as the role and value of intellectual property has increased in the Knowledge Economy.
+Statistics from USCourts.gov ( https://www.USCourts.gov ) show an even sharper rise in the number of patent suits filed in 2012, to 5,189 cases. But analysts attribute most of this increase to the anti-joinder provisions of the Patent Act of 2011, which curtailed the practice of naming multiple defendants in a single infringement suit. According to Carla Rydholm of the patent analytics firm Lex Machina, “Plaintiffs must [now] meet more stringent requirements to file a case against multiple defendants. So instead of Plaintiff X filing one case naming 20 defendants, Plaintiff X might file 20 lawsuits (one per defendant) each with unique civil action numbers.”
+When looked at over the longer term, however, it turns out that 96 percent of all the increase in patent infringement suits since 1991 can be explained by a corresponding increase in patents granted, reports the PricewaterhouseCoopers’s 2013 Patent Litigation Study. xxix
+In case you’re wondering if the increase in patents granted is itself a sign of a patent system being increasingly gamed by speculators wanting to cash in on the new “patent gold rush,” note that the average number of patents issued per billion dollars of GDP has remained at or below the same level—13 patents per billion dollars of GDP—since 1963. xxx
+Interestingly, although the number of suits filed has increased in rough correlation to patent grants, the number that actually go to trial has remained fairly constant over the last 30 years. About 90 percent of the suits filed each year are abandoned or settled. Of the three hundred that remain, two-thirds never go to trial, and are adjudicated on summary judgment (of noninfringement in most cases).
+The nation is thus left with, at most, between 90 and 112 patent infringement trials per year—exactly the same number that went to trial 10, 20, and even 30 years ago. xxxi
+To be sure, there can be significant costs to business even in litigating and settling patent suits that never go to trial. But no one has shown that the relative cost of patent litigation today is higher than it was historically, or that the cost of patent litigation is more burdensome than other customary legal costs in business, especially the huge cost of regulatory compliance.
+The evidence does not suggest that patent litigation is “out of control” today. As retired Chief Judge Paul Michel of the U.S. Court of Appeals for the Federal Circuit, the main court for patent appeals since 1982, notes, “The level of patent litigation today is rather modest for a nation with two million active patents and hundreds of thousands of businesses competing against each other.”
+History supports Judge Michel on this point. The estimated 124-plus smartphone patent suits filed between 2009 and 2012 xxxii are less than one- quarter the number of patent suits filed during the first “Telephone Wars” of Alexander Graham Bell’s time. Back then, the American Bell Telephone Company and its successor, AT&T, litigated 587 patent cases alone. xxxiii
+Even more surprising, given the common belief in a patent litigation “explosion” today, patent and legal records from the golden age of invention during the mid-nineteenth century U.S. Industrial Revolution show that the patent litigation rate at that time—defined as the number of patent suits filed in a decade divided by the number of patents issued in that decade—reached 3.6 percent. xxxiv
+In contrast, USCourts.gov ( https://www.USCourts.gov ) figures show the patent litigation rate during the decade 2001 to 2011 was less than half that—only 1.52 percent. From 2002 to 2012, reflecting the increased suits but also the increased (276,788) patents issued, the litigation rate was 1.57 percent.
+Over the entire period from 1790 to 1860, the patent litigation rate averaged 1.65 percent.
+Today’s smartphone wars, then, are simply “back to the future” when it comes to the ways in which disruptive new industries are developed. Historians have noted that every major industrial breakthrough of the last 150 years—from the development of the sewing machine, telephone, automobile, radio, aircraft, medical stent, and even disposable diaper industries, to the birth of the semiconductor and Internet e-commerce industries—witnessed exactly the same surge in patenting and patent litigation that we see in today’s smartphone field. xxxv
+And just as with smartphones today, the most competitive technology arenas have always been the most litigious. In Edison’s time, the inventors of electrical discoveries were four times more likely than other inventors to be involved in patent litigation, and accounted for 41 percent of all patent suits filed during that period. xxxvi
+In any event, by early 2015, it had already become clear that a noticeable decline in patent litigation was under way. Most analysts attributed the decline to a series of U.S. Supreme Court rulings in 2014 limiting the patentability of software and increasing the ability of the courts to impose sanctions on abusive litigants, which will be discussed later in this chapter. Also driving this decline in litigation was the availability of new post-grant review proceedings under the new America Invents Act, which allow third parties to challenge patents and, if the evidence so warrants, have their claims invalidated by the USPTO’s Patent Trial and Appeal Board.
+Although patent litigation is costly, the historical record suggests that it serves a vital function by settling the validity and disputed ownership of patent rights so these can be commercialized into new products, new services, and new medical treatments.
+This is, in fact, the proper role of the courts.
+Footnotes
+- xxvii B.Zorina Khan, The Democratization of Invention: Patents and Copyrights in American Economic Development, 1790-1920 , Cambridge University Press, 2005.
+- xxviii Op. cit., Khan.
+- xxix Http ://www.pwc.com/en_US/us/forensic...s/2012-patent- litigation-study.pdf
+- xxx Sean Connolly, “Patent Litigation Rates: What They Tell Us and What They Don’t,” derived from: http://connollyip.com/patent-litigat...hat-they-dont/
+- xxxi Gene Quinn, “Patent Litigation Statistics: 1980- 2010, IP Watchdog , derived from: http://www.ipwatchdog.com/2011/08/02...2010/id=17995/
+- xxxii http ://en.Wikipedia.org/wiki/Smartphone_wars .
+- xxxiii “The Telephone Cases,” Wikipedia, http://en.Wikipedia.org/wiki/The_Telephone_Cases .
+- xxxiv B. Zorina Khan, “ Property Rights and Patent Litigation in Early Nineteenth-Century America ,” Journal of E
 
-CHECK YOUR UNDERSTANDING
-•
-What are the key points of the cell theory?
-•
-What contributions did Rudolf Virchow and Robert Remak make to the development of the cell theory?
-Endosymbiotic Theory
-As scientists were making progress toward understanding the role of cells in plant and animal tissues, others
-were examining the structures within the cells themselves. In 1831, Scottish botanist Robert Brown
-(1773–1858) was the first to describe observations of nuclei, which he observed in plant cells. Then, in the
-early 1880s, German botanist Andreas Schimper (1856–1901) was the first to describe the chloroplasts of
-plant cells, identifying their role in starch formation during photosynthesis and noting that they divided
-independent of the nucleus.
-Based upon the chloroplasts’ ability to reproduce independently, Russian botanist Konstantin Mereschkowski
-(1855–1921) suggested in 1905 that chloroplasts may have originated from ancestral photosynthetic bacteria
-living symbiotically inside a eukaryotic cell. He proposed a similar origin for the nucleus of plant cells. This
-was the first articulation of the endosymbiotic hypothesis, and would explain how eukaryotic cells evolved
-from ancestral bacteria.
-Mereschkowski’s endosymbiotic hypothesis was furthered by American anatomist Ivan Wallin (1883–1969),
-who began to experimentally examine the similarities between mitochondria, chloroplasts, and bacteria—in
-other words, to put the endosymbiotic hypothesis to the test using objective investigation. Wallin published a
-series of papers in the 1920s supporting the endosymbiotic hypothesis, including a 1926 publication co-
-authored with Mereschkowski. Wallin claimed he could culture mitochondria outside of their eukaryotic host
-cells. Many scientists dismissed his cultures of mitochondria as resulting from bacterial contamination.
-Modern genome sequencing work supports the dissenting scientists by showing that much of the genome of
-mitochondria had been transferred to the host cell’s nucleus, preventing the mitochondria from being able to
-live on their own.10 11
-Figure 3.6
-(a) Rudolf Virchow (1821–1902) popularized the cell theory in an 1855 essay entitled “Cellular Pathology.” (b) The idea
-that all cells originate from other cells was first published in 1852 by his contemporary and former colleague Robert Remak
-(1815–1865).
-10 T. Embley, W. Martin. “Eukaryotic Evolution, Changes, and Challenges.” Nature Vol. 440 (2006):623–630.
-11 O.G. Berg, C.G. Kurland. “Why Mitochondrial Genes Are Most Often Found in Nuclei.” Molecular Biology and Evolution 17 no. 6
-80
-3 • The Cell
-Access for free at openstax.org.
+## Match 1.72 — LibreTexts: 2.2: Ethical and Professional Foundations of Safe Medication Administration by Nurses
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Courses/Monterey_Peninsula_College/Nursing_Pharmacology_(OpenRN)/02%3A_Legal_and_Ethical/2.02%3A_Ethical_and_Professional_Foundations_of_Safe_Medication_Administration_by_Nurses
 
-Wallin’s ideas regarding the endosymbiotic hypothesis were largely ignored for the next 50 years because
-scientists were unaware that these organelles contained their own DNA. However, with the discovery of
-mitochondrial and chloroplast DNA in the 1960s, the endosymbiotic hypothesis was resurrected. Lynn
-Margulis (1938–2011), an American geneticist, published her ideas regarding the endosymbiotic hypothesis of
-the origins of mitochondria and chloroplasts in 1967.12 In the decade leading up to her publication, advances
-in microscopy had allowed scientists to differentiate prokaryotic cells from eukaryotic cells. In her publication,
-Margulis reviewed the literature and argued that the eukaryotic organelles such as mitochondria and
-chloroplasts are of prokaryotic origin. She presented a growing body of microscopic, genetic, molecular
-biology, fossil, and geological data to support her claims.
-Again, this hypothesis was not initially popular, but mounting genetic evidence due to the advent of DNA
-sequencing supported the endosymbiotic theory, which is now defined as the theory that mitochondria and
-chloroplasts arose as a result of prokaryotic cells establishing a symbiotic relationship within a eukaryotic host
-(Figure 3.7). With Margulis’ initial endosymbiotic theory gaining wide acceptance, she expanded on the theory
-in her 1981 book Symbiosis in Cell Evolution. In it, she explains how endosymbiosis is a major driving factor in
-the evolution of organisms. More recent genetic sequencing and phylogenetic analysis show that
-mitochondrial DNA and chloroplast DNA are highly related to their bacterial counterparts, both in DNA
-sequence and chromosome structure. However, mitochondrial DNA and chloroplast DNA are reduced
-compared with nuclear DNA because many of the genes have moved from the organelles into the host cell’s
-nucleus. Additionally, mitochondrial and chloroplast ribosomes are structurally similar to bacterial ribosomes,
-rather than to the eukaryotic ribosomes of their hosts. Last, the binary fission of these organelles strongly
-resembles the binary fission of bacteria, as compared with mitosis performed by eukaryotic cells. Since
-Margulis’ original proposal, scientists have observed several examples of bacterial endosymbionts in modern-
-day eukaryotic cells. Examples include the endosymbiotic bacteria found within the guts of certain insects,
-such as cockroaches,13 and photosynthetic bacteria-like organelles found in protists.14
-Figure 3.7
-According to the endosymbiotic theory, mitochondria and chloroplasts are each derived from the uptake of bacteria. These
-(2000):951–961.
-12 L. Sagan. “On the Origin of Mitosing Cells.” Journal of Theoretical Biology 14 no. 3 (1967):225–274.
-13 A.E. Douglas. “The Microbial Dimension in Insect Nutritional Ecology.” Functional Ecology 23 (2009):38–47.
-14 J.M. Jaynes, L.P. Vernon. “The Cyanelle of Cyanophora paradoxa: Almost a Cyanobacterial Chloroplast.” Trends in Biochemical
-Sciences 7 no. 1 (1982):22–24.
-3.2 • Foundations of Modern Cell Theory
-81
-
-bacteria established a symbiotic relationship with their host cell that eventually led to the bacteria evolving into mitochondria and
-chloroplasts.
-CHECK YOUR UNDERSTANDING
-•
-What does the modern endosymbiotic theory state?
-•
-What evidence supports the endosymbiotic theory?
-The Germ Theory of Disease
-Prior to the discovery of microbes during the 17th century, other theories circulated about the origins of
-disease. For example, the ancient Greeks proposed the miasma theory, which held that disease originated
-from particles emanating from decomposing matter, such as that in sewage or cesspits. Such particles infected
-humans in close proximity to the rotting material. Diseases including the Black Death, which ravaged Europe’s
-population during the Middle Ages, were thought to have originated in this way.
-In 1546, Italian physician Girolamo Fracastoro proposed, in his essay De Contagione et Contagiosis Morbis,
-that seed-like spores may be transferred between individuals through direct contact, exposure to
-contaminated clothing, or through the air. We now recognize Fracastoro as an early proponent of the germ
-theory of disease, which states that diseases may result from microbial infection. However, in the 16th
-century, Fracastoro’s ideas were not widely accepted and would be largely forgotten until the 19th century.
-In 1847, Hungarian obstetrician Ignaz Semmelweis (Figure 3.8) observed that mothers who gave birth in
-hospital wards staffed by physicians and medical students were more likely to suffer and die from puerperal
-fever after childbirth (10%–20% mortality rate) than were mothers in wards staffed by midwives (1% mortality
-rate). Semmelweis observed medical students performing autopsies and then subseque
-
-## Match 1.35 — Macroeconomics3e-WEB § 14.3 The Role of Banks
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain how banks act as intermediaries between savers and borrowers
-•
-Evaluate the relationship between banks, savings and loans, and credit unions
-•
-Analyze the causes of bankruptcy and recessions
-Somebody once asked the late bank robber named Willie Sutton why he robbed banks. He answered: “That’s
-where the money is.” While this may have been true at one time, from the perspective of modern economists,
-Sutton is both right and wrong. He is wrong because the overwhelming majority of money in the economy is
-not in the form of currency sitting in vaults or drawers at banks, waiting for a robber to appear. Most money is
-in the form of bank accounts, which exist only as electronic records on computers. From a broader
-perspective, however, the bank robber was more right than he may have known. Banking is intimately
-interconnected with money and consequently, with the broader economy.
-Banks make it far easier for a complex economy to carry out the extraordinary range of transactions that occur
-in goods, labor, and financial capital markets. Imagine for a moment what the economy would be like if
-everybody had to make all payments in cash. When shopping for a large purchase or going on vacation you
-might need to carry hundreds of dollars in a pocket or purse. Even small businesses would need stockpiles of
-cash to pay workers and to purchase supplies. A bank allows people and businesses to store this money in
-either a checking account or savings account, for example, and then withdraw this money as needed through
-the use of a direct withdrawal, writing a check, or using a debit card.
-Banks are a critical intermediary in what we call the payment system, which helps an economy exchange
-goods and services for money or other financial assets. Also, those with extra money that they would like to
-save can store their money in a bank rather than look for an individual who is willing to borrow it from them
-and then repay them at a later date. Those who want to borrow money can go directly to a bank rather than
-trying to find someone to lend them cash. Transaction costs are the costs associated with finding a lender or a
-borrower for this money. Thus, banks lower transactions costs and act as financial intermediaries—they bring
-savers and borrowers together. Along with making transactions much safer and easier, banks also play a key
-role in creating money.
-Banks as Financial Intermediaries
-An “intermediary” is one who stands between two other parties. Banks are a financial intermediary—that is,
-an institution that operates between a saver who deposits money in a bank and a borrower who receives a loan
-from that bank. Financial intermediaries include other institutions in the financial market such as insurance
-companies and pension funds, but we will not include them in this discussion because they are not depository
-institutions, which are institutions that accept money deposits and then use these to make loans. All the
-deposited funds mingle in one big pool, which the financial institution then lends. Figure 14.4 illustrates the
-position of banks as financial intermediaries, with deposits flowing into a bank and loans flowing out. Of
-course, when banks make loans to firms, the banks will try to funnel financial capital to healthy businesses
-that have good prospects for repaying the loans, not to firms that are suffering losses and may be unable to
-repay.
-344
-14 • Money and Banking
-Access for free at openstax.org
-
-FIGURE 14.4 Banks as Financial Intermediaries Banks act as financial intermediaries because they stand between
-savers and borrowers. Savers place deposits with banks, and then receive interest payments and withdraw money.
-Borrowers receive loans from banks and repay the loans with interest. In turn, banks return money to savers in the
-form of withdrawals, which also include interest payments from banks to savers.
-How are banks, savings and loans, and credit unions related?
-Banks have a couple of close cousins: savings institutions and credit unions. Banks, as we explained, receive
-deposits from individuals and businesses and make loans with the money. Savings institutions are also sometimes
-called “savings and loans” or “thrifts.” They also take loans and make deposits. However, from the 1930s until the
-1980s, federal law limited how much interest savings institutions were allowed to pay to depositors. They were also
-required to make most of their loans in the form of housing-related loans, either to homebuyers or to real-estate
-developers and builders.
-A credit union is a nonprofit financial institution that its members own and run. Members of each credit union decide
-who is eligible to be a member. Usually, potential members would be everyone in a certain community, or groups of
-employees, or members of a certain organization. The credit union accepts deposits from members and focuses on
-making loans back to its members. While there are more credit unions than banks and more banks than savings and
-loans, the total assets of credit unions are growing.
-In 2008, there were 7,085 banks. Due to the bank failures of 2007–2009 and bank mergers, there were 5,571
-banks in the United States at the end of the fourth quarter in 2014. By 2020, there were 4,374 commercial banks
-and 627 savings institutions. According to the National Credit Union Association, as of September 2021 there were
-4,990 credit unions with assets totaling $2.0 trillion. A day of “Transfer Your Money” took place in 2009 out of
-general public disgust with big bank bailouts. People were encouraged to transfer their deposits to credit unions.
-This has grown into the ongoing Move Your Money Project. Consequently, some now hold assets with a total value as
-large as $111 billion.
-A Bank’s Balance Sheet
-A balance sheet is an accounting tool that lists assets and liabilities. An asset is something of value that you
-own and you can use to produce something. For example, you can use the cash you own to pay your tuition. If
-you own a home, this is also an asset. A liability is a debt or something you owe. Many people borrow money to
-buy homes. In this case, a home is the asset, but the mortgage is the liability. The net worth is the asset value
-minus how much is owed (the liability). A bank’s balance sheet operates in much the same way. A bank’s net
-worth as bank capital. We also refer to a bank has assets such as cash held in its vaults, monies that the bank
-CLEAR IT UP
-14.3 • The Role of Banks
-345
-
-holds at the Federal Reserve bank (called “reserves”), loans that it makes to customers, and bonds.
-Figure 14.5 illustrates a hypothetical and simplified balance sheet for the Safe and Secure Bank. Because of the
-two-column format of the balance sheet, with the T-shape formed by the vertical line down the middle and the
-horizontal line under “Assets” and “Liabilities,” we sometimes call it a T-account.
-FIGURE 14.5 A Balance Sheet for the Safe and Secure Bank
-The “T” in a T-account separates the assets of a firm, on the left, from its liabilities, on the right. All firms use
-T-accounts, though most are much more complex. For a bank, the assets are the financial instruments that
-either the bank is holding (its reserves) or those instruments where other parties owe money to the bank—like
-loans made by the bank and U.S. Government Securities, such as U.S. treasury bonds purchased by the bank.
-Liabilities are what the bank owes to others. Specifically, the bank owes any deposits made in the bank to those
-who have made them. The net worth of the bank is the total assets minus total liabilities. Net worth is included
-on the liabilities side to have the T account balance to zero. For a healthy business, net worth will be positive.
-For a bankrupt firm, net worth will be negative. In either case, on a bank’s T-account, assets will always equal
-liabilities plus net worth.
-When bank customers deposit money into a checking account, savings account, or a certificate of deposit, the
-bank views these deposits as liabilities. After all, the bank owes these deposits to its customers, when the
-customers wish to withdraw their money. In the example in Figure 14.5, the Safe and Secure Bank holds $10
-million in deposits.
-Loans are the first category of bank assets in Figure 14.5. Say that a family takes out a 30-year mortgage loan to
-purchase a house, which means that the borrower will repay the loan over the next 30 years. This loan is
-clearly an asset from the bank’s perspective, because the borrower has a legal obligation to make payments to
-the bank over time. However, in practical terms, how can we measure the value of the mortgage loan that the
-borrower is paying over 30 years in the present? One way of measuring the value of something—whether a loan
-or anything else—is by estimating what another party in the market is willing to pay for it. Many banks issue
-home loans, and charge various handling and processing fees for doing so, but then sell the loans to other
-banks or financial institutions who collect the loan payments. We call the market where financial institutions
-make loans to borrowers the primary loan market, while the market in which financial institutions buy and sell
-these loans is the secondary loan market.
-One key factor that affects what financial institutions are willing to pay for a loan, when they buy it in the
-secondary loan market, is the perceived riskiness of the loan: that is, given the borrower's characteristics, such
-as income level and whether the local economy is performing strongly, what proportion of loans of this type
-will the borrower repay? The greater the risk that a borrower will not repay loan, the less that any financial
-institution will pay to acquire the loan. Another key factor is to compare the interest rate the financial
-institution charged on the original loan with the current interest rate in the economy. If the original loan
-requires the borrower to pay a low interest rate, but current interest rates are relatively high, then a financial
-institution will pay less to acquire the loan. In contrast, if the original loan requires the borrower to pay a high
-interest rate, while current interest rates are relatively low, then a financial institution will pay more to acquire
-the loan. For the Safe and Secure Bank in this example, the total value of its loans if they sold them to other
-financial institutions in the secondary market is $5 million.
-The second category of bank asset is bonds, which are a common mechanism for borrowing, used by the
-federal and local government, and also private companies, and nonprofit organizations. A bank takes some of
-the money it has received in deposits and uses the money to buy bonds—typically bonds issued that the U.S.
-346
-14 • Money and Banking
-Access for free at openstax.org
-
-government issues. Government bonds are low-risk because the government is virtually certain to pay off the
-bond, albeit at a low rate of interest. These bonds are an asset for banks in the same way that loans are an
-asset: The bank will receive a stream of payments in the future. In our example, the Safe and Secure Bank
-holds bonds worth a total value of $4 million.
-The final entry under assets is reserves, which is money that the bank keeps on hand, and that it does not lend
-or invest in bonds—and thus does not lead to interest payments. The Federal Reserve requires that banks keep
-a certain percentage of depositors’ money on “reserve,” which means either in their vaults or at the Federal
-Reserve Bank. We call this a reserve requirement. (Monetary Policy and Bank Regulation will explain how the
-level of these required reserves are one policy tool that governments have to influence bank behavior.)
-Additionally, banks may also want to keep a certain amount of reserves on hand in excess of what is required.
-The Safe and Secure Bank is holding $2 million in reserves.
-We define net worth of a bank as its total assets minus its total liabilities. For the Safe and Secure Bank in
-Figure 14.5, net worth is equal to $1 million; that is, $11 million in assets minus $10 million in liabilities. For a
-financially healthy bank, the net worth will be positive. If a bank has negative net worth and depositors tried to
-withdraw their money, the bank would not be able to give all depositors their money.
-LINK IT UP
-For some concrete examples of what banks do, watch this video (http://openstax.org/l/makingsense) from Paul
-Solman’s “Making Sense of Financial News.”
-How Banks Go Bankrupt
-A bank that is bankrupt will have a negative net worth, meaning its assets will be worth less than its liabilities.
-How can this happen? Again, looking at the balance sheet helps to explain.
-A well-run bank will assume that a small percentage of borrowers will not repay their loans on time, or at all,
-and factor these missing payments into its planning. Remember, the calculations of the banks' expenses every
-year include a factor for loans that borrowers do not repay, and the value of a bank’s loans on its balance sheet
-assumes a certain level of riskiness because some customers will not repay loans. Even if a bank expects a
-certain number of loan defaults, it will suffer if the number of loan defaults is much greater than expected, as
-can happen during a recession. For example, if the Safe and Secure Bank in Figure 14.5 experienced a wave of
-unexpected defaults, so that its loans declined in value from $5 million to $3 million, then the assets of the Safe
-and Secure Bank would decline so that the bank had negative net worth.
-What led to the 2008–2009 financial crisis?
-Many banks make mortgage loans so that people can buy a home, but then do not keep the loans on their books as
-an asset. Instead, the bank sells the loan. These loans are “securitized,” which means that they are bundled
-together into a financial security that a financial institution sells to investors. Investors in these mortgage-backed
-securities receive a rate
-
-## Match 1.35 — Economics3e-WEB § 27.3 The Role of Banks
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain how banks act as intermediaries between savers and borrowers
-•
-Evaluate the relationship between banks, savings and loans, and credit unions
-•
-Analyze the causes of bankruptcy and recessions
-Somebody once asked the late bank robber named Willie Sutton why he robbed banks. He answered: “That’s
-where the money is.” While this may have been true at one time, from the perspective of modern economists,
-Sutton is both right and wrong. He is wrong because the overwhelming majority of money in the economy is
-not in the form of currency sitting in vaults or drawers at banks, waiting for a robber to appear. Most money is
-in the form of bank accounts, which exist only as electronic records on computers. From a broader
-perspective, however, the bank robber was more right than he may have known. Banking is intimately
-interconnected with money and consequently, with the broader economy.
-Banks make it far easier for a complex economy to carry out the extraordinary range of transactions that occur
-in goods, labor, and financial capital markets. Imagine for a moment what the economy would be like if
-everybody had to make all payments in cash. When shopping for a large purchase or going on vacation you
-might need to carry hundreds of dollars in a pocket or purse. Even small businesses would need stockpiles of
-cash to pay workers and to purchase supplies. A bank allows people and businesses to store this money in
-either a checking account or savings account, for example, and then withdraw this money as needed through
-the use of a direct withdrawal, writing a check, or using a debit card.
-Banks are a critical intermediary in what we call the payment system, which helps an economy exchange
-goods and services for money or other financial assets. Also, those with extra money that they would like to
-save can store their money in a bank rather than look for an individual who is willing to borrow it from them
-and then repay them at a later date. Those who want to borrow money can go directly to a bank rather than
-trying to find someone to lend them cash. Transaction costs are the costs associated with finding a lender or a
-borrower for this money. Thus, banks lower transactions costs and act as financial intermediaries—they bring
-savers and borrowers together. Along with making transactions much safer and easier, banks also play a key
-role in creating money.
-Banks as Financial Intermediaries
-An “intermediary” is one who stands between two other parties. Banks are a financial intermediary—that is,
-an institution that operates between a saver who deposits money in a bank and a borrower who receives a loan
-from that bank. Financial intermediaries include other institutions in the financial market such as insurance
-companies and pension funds, but we will not include them in this discussion because they are not depository
-institutions, which are institutions that accept money deposits and then use these to make loans. All the
-deposited funds mingle in one big pool, which the financial institution then lends. Figure 27.4 illustrates the
-position of banks as financial intermediaries, with deposits flowing into a bank and loans flowing out. Of
-course, when banks make loans to firms, the banks will try to funnel financial capital to healthy businesses
-that have good prospects for repaying the loans, not to firms that are suffering losses and may be unable to
-repay.
-654
-27 • Money and Banking
-Access for free at openstax.org
-
-FIGURE 27.4 Banks as Financial Intermediaries Banks act as financial intermediaries because they stand between
-savers and borrowers. Savers place deposits with banks, and then receive interest payments and withdraw money.
-Borrowers receive loans from banks and repay the loans with interest. In turn, banks return money to savers in the
-form of withdrawals, which also include interest payments from banks to savers.
-How are banks, savings and loans, and credit unions related?
-Banks have a couple of close cousins: savings institutions and credit unions. Banks, as we explained, receive
-deposits from individuals and businesses and make loans with the money. Savings institutions are also sometimes
-called “savings and loans” or “thrifts.” They also take loans and make deposits. However, from the 1930s until the
-1980s, federal law limited how much interest savings institutions were allowed to pay to depositors. They were also
-required to make most of their loans in the form of housing-related loans, either to homebuyers or to real-estate
-developers and builders.
-A credit union is a nonprofit financial institution that its members own and run. Members of each credit union decide
-who is eligible to be a member. Usually, potential members would be everyone in a certain community, or groups of
-employees, or members of a certain organization. The credit union accepts deposits from members and focuses on
-making loans back to its members. While there are more credit unions than banks and more banks than savings and
-loans, the total assets of credit unions are growing.
-In 2008, there were 7,085 banks. Due to the bank failures of 2007–2009 and bank mergers, there were 5,571
-banks in the United States at the end of the fourth quarter in 2014. By 2020, there were 4,374 commercial banks
-and 627 savings institutions. According to the National Credit Union Association, as of September 2021 there were
-4,990 credit unions with assets totaling $2.0 trillion. A day of “Transfer Your Money” took place in 2009 out of
-general public disgust with big bank bailouts. People were encouraged to transfer their deposits to credit unions.
-This has grown into the ongoing Move Your Money Project. Consequently, some now hold assets with a total value as
-large as $111 billion.
-A Bank’s Balance Sheet
-A balance sheet is an accounting tool that lists assets and liabilities. An asset is something of value that you
-own and you can use to produce something. For example, you can use the cash you own to pay your tuition. If
-you own a home, this is also an asset. A liability is a debt or something you owe. Many people borrow money to
-buy homes. In this case, a home is the asset, but the mortgage is the liability. The net worth is the asset value
-minus how much is owed (the liability). A bank’s balance sheet operates in much the same way. A bank’s net
-worth as bank capital. We also refer to a bank has assets such as cash held in its vaults, monies that the bank
-CLEAR IT UP
-27.3 • The Role of Banks
-655
-
-holds at the Federal Reserve bank (called “reserves”), loans that it makes to customers, and bonds.
-Figure 27.5 illustrates a hypothetical and simplified balance sheet for the Safe and Secure Bank. Because of the
-two-column format of the balance sheet, with the T-shape formed by the vertical line down the middle and the
-horizontal line under “Assets” and “Liabilities,” we sometimes call it a T-account.
-FIGURE 27.5 A Balance Sheet for the Safe and Secure Bank
-The “T” in a T-account separates the assets of a firm, on the left, from its liabilities, on the right. All firms use
-T-accounts, though most are much more complex. For a bank, the assets are the financial instruments that
-either the bank is holding (its reserves) or those instruments where other parties owe money to the bank—like
-loans made by the bank and U.S. Government Securities, such as U.S. treasury bonds purchased by the bank.
-Liabilities are what the bank owes to others. Specifically, the bank owes any deposits made in the bank to those
-who have made them. The net worth of the bank is the total assets minus total liabilities. Net worth is included
-on the liabilities side to have the T account balance to zero. For a healthy business, net worth will be positive.
-For a bankrupt firm, net worth will be negative. In either case, on a bank’s T-account, assets will always equal
-liabilities plus net worth.
-When bank customers deposit money into a checking account, savings account, or a certificate of deposit, the
-bank views these deposits as liabilities. After all, the bank owes these deposits to its customers, when the
-customers wish to withdraw their money. In the example in Figure 27.5, the Safe and Secure Bank holds $10
-million in deposits.
-Loans are the first category of bank assets in Figure 27.5. Say that a family takes out a 30-year mortgage loan to
-purchase a house, which means that the borrower will repay the loan over the next 30 years. This loan is
-clearly an asset from the bank’s perspective, because the borrower has a legal obligation to make payments to
-the bank over time. However, in practical terms, how can we measure the value of the mortgage loan that the
-borrower is paying over 30 years in the present? One way of measuring the value of something—whether a loan
-or anything else—is by estimating what another party in the market is willing to pay for it. Many banks issue
-home loans, and charge various handling and processing fees for doing so, but then sell the loans to other
-banks or financial institutions who collect the loan payments. We call the market where financial institutions
-make loans to borrowers the primary loan market, while the market in which financial institutions buy and sell
-these loans is the secondary loan market.
-One key factor that affects what financial institutions are willing to pay for a loan, when they buy it in the
-secondary loan market, is the perceived riskiness of the loan: that is, given the borrower's characteristics, such
-as income level and whether the local economy is performing strongly, what proportion of loans of this type
-will the borrower repay? The greater the risk that a borrower will not repay loan, the less that any financial
-institution will pay to acquire the loan. Another key factor is to compare the interest rate the financial
-institution charged on the original loan with the current interest rate in the economy. If the original loan
-requires the borrower to pay a low interest rate, but current interest rates are relatively high, then a financial
-institution will pay less to acquire the loan. In contrast, if the original loan requires the borrower to pay a high
-interest rate, while current interest rates are relatively low, then a financial institution will pay more to acquire
-the loan. For the Safe and Secure Bank in this example, the total value of its loans if they sold them to other
-financial institutions in the secondary market is $5 million.
-The second category of bank asset is bonds, which are a common mechanism for borrowing, used by the
-federal and local government, and also private companies, and nonprofit organizations. A bank takes some of
-the money it has received in deposits and uses the money to buy bonds—typically bonds issued that the U.S.
-656
-27 • Money and Banking
-Access for free at openstax.org
-
-government issues. Government bonds are low-risk because the government is virtually certain to pay off the
-bond, albeit at a low rate of interest. These bonds are an asset for banks in the same way that loans are an
-asset: The bank will receive a stream of payments in the future. In our example, the Safe and Secure Bank
-holds bonds worth a total value of $4 million.
-The final entry under assets is reserves, which is money that the bank keeps on hand, and that it does not lend
-or invest in bonds—and thus does not lead to interest payments. The Federal Reserve requires that banks keep
-a certain percentage of depositors’ money on “reserve,” which means either in their vaults or at the Federal
-Reserve Bank. We call this a reserve requirement. (Monetary Policy and Bank Regulation will explain how the
-level of these required reserves are one policy tool that governments have to influence bank behavior.)
-Additionally, banks may also want to keep a certain amount of reserves on hand in excess of what is required.
-The Safe and Secure Bank is holding $2 million in reserves.
-We define net worth of a bank as its total assets minus its total liabilities. For the Safe and Secure Bank in
-Figure 27.5, net worth is equal to $1 million; that is, $11 million in assets minus $10 million in liabilities. For a
-financially healthy bank, the net worth will be positive. If a bank has negative net worth and depositors tried to
-withdraw their money, the bank would not be able to give all depositors their money.
-LINK IT UP
-For some concrete examples of what banks do, watch this video (http://openstax.org/l/makingsense) from Paul
-Solman’s “Making Sense of Financial News.”
-How Banks Go Bankrupt
-A bank that is bankrupt will have a negative net worth, meaning its assets will be worth less than its liabilities.
-How can this happen? Again, looking at the balance sheet helps to explain.
-A well-run bank will assume that a small percentage of borrowers will not repay their loans on time, or at all,
-and factor these missing payments into its planning. Remember, the calculations of the banks' expenses every
-year include a factor for loans that borrowers do not repay, and the value of a bank’s loans on its balance sheet
-assumes a certain level of riskiness because some customers will not repay loans. Even if a bank expects a
-certain number of loan defaults, it will suffer if the number of loan defaults is much greater than expected, as
-can happen during a recession. For example, if the Safe and Secure Bank in Figure 27.5 experienced a wave of
-unexpected defaults, so that its loans declined in value from $5 million to $3 million, then the assets of the Safe
-and Secure Bank would decline so that the bank had negative net worth.
-What led to the 2008–2009 financial crisis?
-Many banks make mortgage loans so that people can buy a home, but then do not keep the loans on their books as
-an asset. Instead, the bank sells the loan. These loans are “securitized,” which means that they are bundled
-together into a financial security that a financial institution sells to investors. Investors in these mortgage-backed
-securities receive a rate
+2.2: Ethical and Professional Foundations of Safe Medication Administration by Nurses
+-
+- Last updated
+- Save as PDF
+- Ernstmeyer & Christman (Eds.)
+- Chippewa Valley Technical College via OpenRN
+ANA Code of Ethics for Nurses
+The American Nurses Association (ANA) is a professional organization that represents the interests of the nation’s 4 million registered nurses and is at the forefront of improving the quality of health care for all. [1] The ANA developed the Code of Ethics for Nurses as a guide for carrying out nursing responsibilities in a manner consistent with quality in nursing care and the ethical obligations of the profession. [2] Several provisions from the Code of Ethics impact how nurses should administer medication in an ethical manner. A summary of each provision from the Code of Ethics and how it affects medication administration is outlined below.
+- Provision 1 focuses on respect for human dignity and the right for self-determination: “The nurse practices with compassion and respect for the inherent dignity, worth, and unique attributes of every person.”
+- Provision 2 states, “The nurse’s primary commitment is to the patient…” [3] In health care settings, nurses often experience several competing loyalties, such as to their employer, to the doctor(s), to their supervisor, or to others on the health care team. However, the patient should always receive the primary commitment of the nurse. Additionally, the patient has the right to accept, refuse, or terminate any treatment, including medications.
+- Provision 3 states, “The nurse promotes, advocates for, and protects the rights, health, and safety of the patient…” [4] This provision includes a nurse’s responsibility to promote a culture of safety for patients. If errors occur, they must be reported, and nurses should ensure responsible disclosure of errors to patients. This also includes proper disclosure of questionable practices, such as drug diversion or impaired practice by any professional.
+- Provision 4 involves authority, accountability, and responsibility by a nurse to follow legal requirements, such state practice acts and professional standards of care.
+- Provision 5 includes the responsibility of the nurse to promote health and safety.
+- Provision 6 focuses on virtues that make a nurse a morally good person. For example, nurses are held accountable to use their clinical judgment to avoid causing harm to patients ( maleficence ) and to do good ( beneficence ). When administering medications, nurses should validate the medication is doing more “good” than “harm” (adverse or side effects).
+- Provision 7 focuses on a nurse practicing within the professional standards set forth by their state nurse practice act , as well as standards established by professional nursing organizations.
+- Provision 8 explains that a nurse must address the social determinants of health, such as poverty, education, safe medication, and healthcare disparities. [5]
+Whenever a nurse provides patient care, the ANA Code of Ethics should be kept in mind.
+Critical Thinking Activity 2.2a
+A nurse is preparing to administer medications to a patient. While reviewing the chart, the nurse notices two medications with similar mechanisms of action have been prescribed by two different providers.
+What is the nurse’s best response?
+Note: Answers to the Critical Thinking activities can be found in the “Answer Key” sections at the end of the book.
+ANA Professional Standards and Scope of Practice
+The American Nurses Association (ANA) publishes the Nursing: Scope and Standards of Practice . This resource is updated regularly and outlines professional nursing performance according to national standards. [6] The ANA defines nursing as “the protection, promotion, and optimization of health and abilities, prevention of illness and injury, facilitation of healing, alleviation of suffering through the diagnosis and treatment of human response, and advocacy in the care of individuals, families, groups, communities, and populations.” A registered nurse (RN) is defined as an individual who is educationally prepared and licensed by a state to practice as a registered nurse. Nursing practice is characterized by the following tenets:
+- Caring and health are central to the practice of the registered nurse.
+- Nursing practice is individualized to the unique needs of the healthcare consumer.
+- Registered nurses use the nursing process to plan and provide individualized care for healthcare consumers.
+- Nurses coordinate care by establishing partnerships to reach a shared goal of delivering safe, quality health care. [7]
+State nurse practice acts further define the scope of practice of RNs and Licensed Practical Nurses (LPNs) within each state. The Wisconsin Nurse Practice Act is further discussed in the “Legal Foundations” section.
+ANA Standards of Practice
+ANA Standards of Practice are authoritative statements of duties that all registered nurses, regardless of role, population, or specialty, are expected to perform competently. Standards of Practice include assessment, diagnosis, outcome identification, planning, implementation, and evaluation (ADOPIE) components of providing patient care. Implementation also includes the components of health promotion and health teaching. Medication administration should include all components of ADOPIE.
+Health Promotion and Patient Teaching
+The ANA standards for patient teaching state, “The registered nurse employs strategies to promote health and a safe environment.” [8] Specific behaviors related to patient teaching about medication include:
+- Use health promotion and health teaching methods in collaboration with the patient’s values, beliefs, health practices, developmental level, learning needs, readiness and ability to learn, language preference, spirituality, culture, and socioeconomic status.
+- Provide patients with information about intended effects and potential adverse effects of the plan of care.
+- Provide anticipatory guidance to patients to promote health and prevent or reduce the risk of negative health outcomes. [9]
+In the book Preventing Medication Errors by the Institute of Medicine (2007), additional key actions to include when teaching patients about safe use of their medications are:
+- Patients should maintain an active list of all prescription drugs, over-the-counter (OTC) drugs, and dietary supplements they are taking, the reasons for taking them, and any known drug allergies. Every provider involved in the medication-use process for a patient should have access to this list.
+- Patients should be provided information about side effects, contraindications, methods for handling adverse reactions, and sources for obtaining additional objective, high-quality information. [10]
+ANA Standards of Professional Performance
+ANA Standards of Professional Performance describe a competent level of behavior in the professional role, including activities related to ethics, culturally congruent practice, communication, collaboration, leadership, education, evidence-based practice, and quality of practice. [11]
+Cultural Congruent Practice
+The ANA defines culturally congruent practice as the application of evidence-based nursing that is in agreement with the preferred cultural values, beliefs, worldview, and practices of the healthcare consumer and other stakeholders. Cultural competence represents the process by which nurses demonstrate culturally congruent practice. Nurses must assess the cultural beliefs and practices of their patients and implement culturally congruent interventions when administering medications and teaching about them. Additional information about cultural implications for medication administration is further discussed in the “Cultural and Social Determinants Related to Medication Administration” section later in this chapter.
+Critical Thinking Activity 2.2b
+A nurse is preparing to administer metoprolol, a cardiac medication, to a patient and implements the nursing process:
+ASSESSES the vital signs prior to administration and discovers the heart rate is 48.
+DIAGNOSES that the heart rate is too low to safely administer the medication per the parameters provided. Establishes the OUTCOME to keep the patient’s heart rate within normal range of 60-100.
+PLANS to call the physician, as well as report this incident in the shift handoff report.
+Implements INTERVENTIONS by withholding the metoprolol at this time, documenting the incident that the medication is withheld, and notifying the provider.
+Continues to EVALUATE the patient status throughout the shift after not receiving the metoprolol.
+The nurse is providing patient teaching to a patient about the medication before discharge. The nurse provides a handout with instructions, as well as a list of the current medications.
+What other information should be provided to the patient?
+Note: Answers to the Critical Thinking activities can be found in the “Answer Key” sections at the end of the book.
+Figure 2.1 is an image from Nursing: Scope and Standards of Practice by the ANA (2015). [12] It explains how professional scope of practice, standards, and code of ethics are the “base” of nursing practice. Nursing practice is further defined by the State’s Nurse Practice Act, rules and regulations, institutional policies and procedures, and self-determination by the individual nurse. All these components are required to provide quality, safe patient care that is evidence-based.
+- American Nurses Association. (2019). About ANA. https://www.nursingworld.org/ana/about-ana /. ↵
+- American Nurses Association. (2015). Code of ethics for nurses with interpretive statements. www.nursingworld.org/coe-view-only↵
+- American Nurses Association. (2015). Code of ethics for nurses with interpretive statements. www.nursingworld.org/coe-view-only↵
+- American Nurses Association. (2015). Code of ethics for nurses with interpretive statements. www.nursingworld.org/coe-view-only↵
+- American Nurses Association. (2015). Code of ethics for nurses with interpretive statements. www.nursingworld.org/coe-view-only↵
+- American Nurses Association. (2015). Nursing : scope and standards of practice (3rd ed.). Available for all Chippewa Valley Technical College students and employees through OneSearch . ↵
+- American Nurses Association. (2015). Nursing : scope and standards of practice (3rd ed.). Available for all Chippewa Valley Technical College students and employees through OneSearch . ↵
+- American Nurses Association. (2015). Nursing : scope and standards of practice (3rd ed.). Available for all Chippewa Valley Technical College students and employees through OneSearch . ↵
+- American Nurses Association. (2015). Nursing : scope and standards of practice (3rd ed.). Available for all Chippewa Valley Technical College students and employees through OneSearch . ↵
+- Institute of Medicine. (2007). Preventing medication errors. The National Academies Press. https://doi.org/10.17226/11623 ↵
+- American Nurses Association. (2015). Nursing : scope and standards of practice (3rd ed.). Available for all Chippewa Valley Technical College students and employees through OneSearch . ↵
+- American Nurses Association. (2015). Nursing : scope and standards of practice (3rd ed.) Available for all Chippewa Valley Technical College students and employees through OneSearch . ↵

@@ -5,473 +5,94 @@ Match confidence: 1.54
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.54 — IntroductiontoSociology3e-WEB_9QTqRGQ § 4.2 Theoretical Perspectives on Society
+## Match 1.54 — LibreTexts: 17.4: Connections Across Cultures- Personality within Society
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Psychology/Culture_and_Community/Personality_Theory_in_a_Cultural_Context_(Kelland)/17%3A_Learning_Theory_and_Personality_Development/17.04%3A_Connections_Across_Cultures-_Personality_within_Society
 
-LEARNING OBJECTIVES
-By the end of this section, you should be able to:
-•
-Describe Durkheim’s functionalist view of society
-•
-Summarize the conflict theorist view of society
-•
-Explain Marx’s concepts of class and alienation
-•
-Identify how symbolic interactionists understand society
-FIGURE 4.5 Warren Buffett’s ideas about taxation and spending habits of the very wealthy are controversial,
-particularly since they raise questions about America’s embedded system of class structure and social power. The
-three major sociological paradigms differ in their perspectives on these issues. (Credit: Medill DC/flickr)
-While many sociologists have contributed to research on society and social interaction, three thinkers form
-the base of modern-day perspectives. Émile Durkheim, Karl Marx, and Max Weber developed different
-theoretical approaches to help us understand the way societies function.
-Émile Durkheim and Functionalism
-As a functionalist, Émile Durkheim’s (1858–1917) perspective on society stressed the necessary
-interconnectivity of all of its elements. To Durkheim, society was greater than the sum of its parts. He asserted
-that individual behavior was not the same as collective behavior and that studying collective behavior was
-quite different from studying an individual’s actions. Durkheim called the communal beliefs, morals, and
-attitudes of a society the collective conscience. In his quest to understand what causes individuals to act in
-similar and predictable ways, he wrote, “If I do not submit to the conventions of society, if in my dress I do not
-4.2 • Theoretical Perspectives on Society
-103
+17.4: Connections Across Cultures- Personality within Society
+-
+- Last updated
+- Save as PDF
+John Dollard was one of three theorists whom we will cover in this book who made significant contributions to studying racial issues and minority groups. However, unlike Erik Erikson (see Chapter 7) and Gordon Allport (see Chapter 13), both of whom addressed these issues later in their careers, Dollard (trained in sociology and anthropology) began these studies before he made his significant contributions to psychology. This fact had an important influence on his later approach to how personality is learned, and the use he and Miller made of cross-cultural examples in the books they published together. Indeed, as something of a prelude to his work with Miller, Dollard ends the book Caste and Class in a Southern Town (Dollard, 1937) with the following passage:
+…It is one of the urgent needs of social psychology to see the life-history problem against the background of class structure and to get life records from persons who are also described from the sociological standpoint. (pg. 459; Dollard, 1937)
+Dollard made an important distinction between class and caste , as it applies to Blacks and Whites living in the Southern United States in the 1930s. Class generally refers to a group of people of similar economic and political status, such as lower (or working) class, middle class or upper class. A caste is a group defined by some social and/or hereditary factor, such as being ethnically Black or White. There are lower class Blacks and Whites, and there are middle class Blacks and Whites. However, in our society it has been the Blacks who were most dramatically oppressed, through the institution of slavery. Thus, Blacks have been relegated to a lower caste, regardless of whether their economic success qualifies them for middle class status, or even whether they are wealthy. This has had a detrimental influence on family structure in the Black community, and with it an important influence of personality development:
+Personality formation must be intelligible in terms of patterns in the family. The study of the family as a formal unit has been slighted in this research, but some things are known. One is that the lower-class Negro family differs from the middle-class white family and seems by comparison to be “disorganized.” This is undoubtedly a result of the fact that during slavery days it was impossible for Negroes to approximate white family structure. (pp. 413-414; Dollard, 1937)
+Dollard discusses a variety of ways in which White plantation owners worked to eliminate all trace of the African family structure and culture among their slaves, not the least of which was the dramatic removal of them from Africa to America. In many ways the slave owners encouraged pleasure-seeking, lack of discipline, and independence from family. These values helped to keep male slaves somewhat satisfied in spite of their conditions, and they encouraged the independence of children so that they might begin working at a young age (Dollard, 1937). These values slowly established a new culture for Blacks in America, often with negative consequences. After the Civil War, some Blacks also began to adopt the values of the White culture, but they were not accepted by many people in America. This conflict is what ultimately led the Supreme Court of the United States, in the 1954 ruling Brown v. Board Education , to declare that separate is not equal.
+Dollard also co-authored Children of Bondage , with a social anthropologist named Allison Davis (Davis & Dollard, 1940). Davis was one of the first Black professors to receive tenure at a university that was not an historically Black institution (the University of Chicago). He successfully challenged the racial bias in IQ tests of the past, helping to eliminate their use in the school systems of many cities, and he was recognized by the U. S. government with a postage stamp in a series that included Dr. Martin Luther King, Jr. and Jackie Robinson. In their work together, Davis and Dollard focus on describing the personalities and socialization of eight adolescent Blacks in the deep south. They emphasize the demands placed on these youth by both their particular caste position and the social class into which they were born. Individuals may attempt to rebel against their feelings of inferiority with regard to class, and class mobility is possible, but not so with one’s racial identity:
+In studying the status controls operating upon an individual one finds that most persons in our society are disposed to conceal, even from themselves, any inferiority in their social rank…Refusal to acknowledge one’s inferior status, and the building of defenses to decrease anxiety on this score are especially complex with regard to class status…Color caste, however, is so clearly and so rigidly defined that persons in the lower-caste society (as well as the general American reader of this book) will exhibit much less psychological resistance to the fact of caste status than to that of class position. (pg. 17; Davis & Dollard, 1940)
+It was within this context, recognizing caste and class as socializing factors influencing personality development, that Dollard went on to study learning theories related to personality development:
+“But what,” one may ask, “is the practical use of studying these class patterns of behavior?”…what good is such knowledge to the student of human nature, and to our society?…is it a valuable tool which will help us to predict behavior in any given situation and in the end to change it?
+The writers’ studies of the class conditioning of Negro children have convinced them…that when properly understood the sanctions of the class position, as enforced by the family, the clique, and the larger class environment, are among the most important controls in the formation of human habits. In order to understand the powerful grip of this class behavior, we must first examine the social environment in which Negro children learn their habits and the specific methods by which this learning is reinforced. (pg. 259; Davis & Dollard, 1940)
 
-conform to the customs observed in my country and in my class, the ridicule I provoke, the social isolation in
-which I am kept, produce, although in an attenuated form, the same effects as punishment” (Durkheim 1895).
-Durkheim also believed that social integration, or the strength of ties that people have to their social groups,
-was a key factor in social life.
-Following the ideas of Comte and Spencer, Durkheim likened society to a living organism, in which each organ
-plays a necessary role in keeping the being alive. Even the socially deviant members of society are necessary,
-Durkheim argued, as punishments for deviance affirm established cultural values and norms. That is,
-punishment of a crime reaffirms our moral consciousness. “A crime is a crime because we condemn it,”
-Durkheim wrote in 1893. “An act offends the common consciousness not because it is criminal, but it is
-criminal because it offends that consciousness” (Durkheim 1893). Durkheim called these elements of society
-“social facts.” By this, he meant that social forces were to be considered real and existed outside the individual.
-As an observer of his social world, Durkheim was not entirely satisfied with the direction of society in his day.
-His primary concern was that the cultural glue that held society together was failing, and people were
-becoming more divided. In his book The Division of Labor in Society (1893), Durkheim argued that as society
-grew more complex, social order made the transition from mechanical to organic.
-Preindustrial societies, Durkheim explained, were held together by mechanical solidarity, a type of social
-order maintained by the collective conscience of a culture. Societies with mechanical solidarity act in a
-mechanical fashion; things are done mostly because they have always been done that way. This type of
-thinking was common in preindustrial societies where strong bonds of kinship and a low division of labor
-created shared morals and values among people, such as hunter-gatherer groups. When people tend to do the
-same type of work, Durkheim argued, they tend to think and act alike.
-In industrial societies, mechanical solidarity is replaced with organic solidarity, which is social order based
-around an acceptance of economic and social differences. In capitalist societies, Durkheim wrote, division of
-labor becomes so specialized that everyone is doing different things. Instead of punishing members of a
-society for failure to assimilate to common values, organic solidarity allows people with differing values to
-coexist. Laws exist as formalized morals and are based on restitution rather than revenge.
-While the transition from mechanical to organic solidarity is, in the long run, advantageous for a society,
-Durkheim noted that it can be a time of chaos and “normlessness.” One of the outcomes of the transition is
-something he called social anomie. Anomie—literally, “without law”—is a situation in which society no longer
-has the support of a firm collective consciousness. Collective norms are weakened. People, while more
-interdependent to accomplish complex tasks, are also alienated from each other. Anomie is experienced in
-times of social uncertainty, such as war or a great upturn or downturn in the economy. As societies reach an
-advanced stage of organic solidarity, they avoid anomie by redeveloping a set of shared norms. According to
-Durkheim, once a society achieves organic solidarity, it has finished its development.
-Karl Marx and Conflict Theory
-Karl Marx (1818–1883) is certainly among the most significant social thinkers in recent history. While there
-are many critics of his work, it is still widely respected and influential. For Marx, society’s constructions were
-predicated upon the idea of “base and superstructure.” This term refers to the idea that a society’s economic
-character forms its base, upon which rests the culture and social institutions, the superstructure. For Marx, it
-is the base (economy) that determines what a society will be like.
-104
-4 • Society and Social Interaction
-Access for free at openstax.org.
+## Match 1.54 — LibreTexts: 3.2: Media, Society, Culture and You
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Courses/Sacramento_City_College/COMM_325%3A_Intercultural_Communication_(Williams)/03%3A_Media_and_Culture/3.02%3A_Media_Society_Culture_and_You
 
-FIGURE 4.6 Karl Marx asserted that all elements of a society’s structure depend on its economic structure.
-Additionally, Marx saw conflict in society as the primary means of change. Economically, he saw conflict
-existing between the owners of the means of production—the bourgeoisie—and the laborers, called the
-proletariat.
-Marx maintained that these conflicts appeared consistently throughout history during times of social
-revolution. These revolutions or “class antagonisms” as he called them, were a result of one class dominating
-another. Most recently, with the end of feudalism, a new revolutionary class he called the bourgeoisie
-dominated the proletariat laborers. The bourgeoisie were revolutionary in the sense that they represented a
-radical change in the structure of society. In Marx’s words, “Society as a whole is more and more splitting up
-into two great hostile camps, into two great classes directly facing each other—Bourgeoisie and Proletariat”
-(Marx and Engels 1848).
-In the mid-nineteenth century, as industrialization was booming, industrial employers, the "owners of the
-means of production" in Marx's terms, became more and more exploitative toward the working class. The large
-manufacturers of steel were particularly ruthless, and their facilities became popularly dubbed “satanic mills”
-based on a poem by William Blake. Marx’s colleague and friend, Frederick Engels, wrote The Condition of the
-Working-Class in England in 1844, which described in detail the horrid conditions.
-“Such is the Old Town of Manchester, and on re-reading my description, I am forced to admit that instead of
-being exaggerated, it is far from black enough to convey a true impression of the filth, ruin, and
-uninhabitableness, the defiance of all considerations of cleanliness, ventilation, and health which characterise
-the construction of this single district, containing at least twenty to thirty thousand inhabitants. And such a
-district exists in the heart of the second city of England, the first manufacturing city of the world.”
-Add to that the long hours, the use of child labor, and exposure to extreme conditions of heat, cold, and toxic
-chemicals, and it is no wonder that Marx and Engels referred to capitalism, which is a way of organizing an
-economy so that the things that are used to make and transport products (such as land, oil, factories, ships,
-etc.) are owned by individual people and companies rather than by the government, as the “dictatorship of the
-bourgeoisie.”
-4.2 • Theoretical Perspectives on Society
-105
+3.2: Media, Society, Culture and You
+-
+- Last updated
+- Save as PDF
+"Society not only continues to exist by transmission, by communication, but it may fairly be said to exist in transmission, in communication." — John Dewey in Democracy and Education , 1916
+The purpose of this chapter is to define media, society, and culture broadly. Additionally, the term "communication" is defined in its many forms.
+The Role of Mass Media in Society
+More than one hundred years ago , John Dewey wrote in Democracy and Education that society is not only supported by various forms of communication but also enveloped in communication. Dewey reiterated what philosophers and scholars had noted for centuries: small groups, larger communities and vast institutions — all the things that make up a society — function in relation to how communication flows within and between groups.
+There are different forms of communication. At the broadest level, communication is an exchange of meaning between people using symbols. The most common symbols we use are verbal and written words, but there are also many forms of nonverbal communication such as American Sign Language. What sign language, verbal communication and written communication have in common is the use of abstract symbols to convey meaning. Whether you say "thank you" in face-to-face communication, send someone a card with the words "thank you" written on it, or use nonverbal cues to express thanks , the meaning is the same.
+Interpersonal communication generally refers to the exchange of meaning between two or more people on a personal, often one-on-one, level. Interpersonal communication can be verbal or nonverbal. Most often, it happens in face-to-face settings. It differs from mass communication , which involves sharing meaning through symbolic messages to a wide audience from one source to many receivers. Sometimes, particularly in computer-mediated communication , messages conveyed using computers, it can be difficult to tell the difference between interpersonal communication and mass communication because individuals can send messages intended only for other individuals that might quickly reach large numbers of people. Social media platforms are often structured in ways that allow interpersonal messages to "go viral" and become mass messages whether the original sender intended to address a mass audience or not.
+It is not the type of message that determines interpersonal or mass communication. It is the way the message is distributed and the relationships between sender and receiver(s). This text will continue to grapple with the overlap of interpersonal communication and mass communication structures on networked communication platforms, but first, another form of communication commonly studied in academic settings should be introduced.
+Organizational communication is the symbolic exchange of messages carrying specific meaning for members belonging to formal organizations. In practical terms, it is the internal communication that helps governments, businesses, schools, and hospitals to run.
+People working together in organizations get usually things done by communicating directly with one another or in small groups. Organizations cannot function without communication. Organizational communication effectiveness can influence the success or failure of businesses and other social institutions. Thus, communication does not merely happen within organizations; it is an essential part of the way they are structured. Organizational communication is a separate field of study, introduced well in this YouTube video .
+Successful communication, whether intended for personal use, for use within an organization, or for a wide audience, can help people to understand each other and to get things done.
+If good organizational communication is necessary for groups to function with a formal purpose, mass communication is essential for societies to function. Societies are made up of formal organizations of various sizes. Usually, the larger the group, the more complex its communication structures.
+Communication structure refers to a combination of information and communication technologies (ICTs), guidelines for using those technologies, and professional workers dedicated to managing information and messages. In the mass communication field, communication structures are more than computers and transmission networks. The guidelines for using networks to create and distribute messages for mass consumption are a matter of corporate policy as well as law.
+It has been noted that a society is made up of small groups, larger communities, and vast institutions. A more complete definition of the term comes from the field of sociology. A society is a very large group of people organized into institutions held together over time through formalized relationships. Nations, for example, are made up of formal institutions organized by law. Governments of different size, economic institutions, educational institutions, and others all come together to form a society.
+By comparison, culture — the knowledge, beliefs, and practices of groups large and small — is not necessarily formalized. Culture is necessary for enjoying and making sense of the human experience, but there are few formalized rules governing culture.
+Mass communication influences both society and culture. Different societies have different media systems, and the way they are set up by law influences how the society works. Different forms of communication, including messages in the mass media, give shape and structure to society. Additionally, mass media outlets can spread cultural knowledge and artistic works around the globe. People exercise cultural preferences when it comes to consuming media, but mass media corporations often decide which stories to tell and which to promote, particularly when it comes to forms of mass media that are costly to produce such as major motion pictures, major video game releases and global news products.
+More than any other, the field of mass communication transmits culture. 
+The Mass Media Dynamic
+The mass media system is an institution itself. What sets it apart is its potential to influence the thinking of massive numbers of individuals. In fact, the ideas exchanged in organizational communication and interpersonal communication are often established, reinforced or negated by messages in the mass media. This is what it means for societies "to exist in transmission, in communication." Different types of communication influence each other.
+But the mass media are also shaped and influenced by social groups and institutions. This is the nature of the mass media dynamic.
+Individuals and groups in society influence what mass media organizations produce through their creativity on the input side and their consumption habits on the output side. It is not accurate to say that society exists within the mass media or under mass media "control." Social structures are too powerful for mass media to completely govern how they operate. But neither is it accurate to say that the mass media are contained within societies. Many mass media products transcend social structures to influence multiple societies, and even in societies that heavily censor their mass media the news of scandals and corruption can get out. The mass media and society are bound together and shape each other.
+Almost everything you read, see, and hear is framed within a mass media context; however, mere familiarity is no guarantee of success. Products in the mass media that fail to resonate with audiences do not last long, even if they seem in tune with current tastes and trends.
+The Mass Communication Origin Story
+In his book, John notes how, in the early 20th century, the mass media were beginning to connect large institutions in new ways. The production of mass media messages accelerated with the development of the telegraph and the popular newspaper. The spread of telegraph technology that began in the mid-1800s continued through the early 1900s to network the globe with a nearly instantaneous information transmission system. Much of the growth of newspapers occurred as a result of improvements in telegraph technology.
+Thus, a primary function of the global mass communication system is to save time. People have a need to understand what is going on in the world, and they desire entertainment. Global electronic telecommunication networks collapse space by transmitting messages in much less time than the older, physical delivery systems.
+The dynamic between society and mass media that is so prevalent today developed throughout the 20th century. Starting near the end of the 1800s, communication flows began to move at electronic speeds. More people knew about more things than ever before, but scholars are quick to point out that communication is not synonymous with understanding.
+Dewey wanted to focus on educating people so that they could live and work well in societies heavily shaped by global telecommunication networks. For him, education was the meaning of life and the global information and communication system needed to be molded into an educational tool. Many of us still hold out hope for Dewey’s educational goals, but as ICTs have advanced over the past century or two, it has become clear that the mere existence of global mass communication networks does not ensure that societies will learn to coexist and thrive.
+This can be difficult for people to acknowledge. Shortly after the widespread dissemination of the telegraph , the radio , broadcast television , and public internet access, some form of communication utopia was imagined or even expected. The telegraph collapsed space. Radio enabled instantaneous mass communication. Television brought live images from one side of the globe to the other for even larger mass audiences, and internet access gave individuals the power to be information senders, not just receivers. At each step hope and imagination flourished, but social and cultural clashes persisted. Communication systems can be used as weapons. The evolution of mass communication tools is the story of increased capacity to do the same good and evil things people have always done in societies and between them.
+Looking beyond technological utopianism — the idea that new technologies (particularly ICTs) will lead to greater social understanding and better conditions for the global population — we are left with a tedious but massively meaningful project. We must find ways to coexist with other societies even as we are constantly aware of our differences and of possible threats that may have existed before but now are much easier to see.
+Perhaps if we are to make the best of our digital global communication network, it would help to track the evolution of different forms of mass communication. This text very briefly touched on the continuum from telegraph to widespread internet adoption, but the first mass medium was ink on paper.
+The First Mass Medium
+The first global medium, besides the spoken word, was neither the internet nor the telegraph. In fact, it was not a mass medium at all. It was paper. Via trade routes, messages in the form of letters moved around the world in a matter of weeks or months. It was global communication, but it was slow.
+The development of a global telegraph network made it possible for messages to spread in minutes. When the telegraph was wed to mass-consumed newspapers, the world saw the rise of fast, global, mass communication that had the power to potentially influence large groups of people at once.
+Books transmitted messages widely and inspired literacy, but they did not establish a channel for consistent, timely communication meant for mass audiences. After the Gutenberg printing press was developed around 1440, the Gutenberg Bible was slowly mass-produced and disseminated around the Western world. It opened up access to sacred texts that had been bound up for centuries by large ins
 
-FIGURE 4.7 Karl Marx (left) and Friedrich Engels (right) analyzed differences in social power between “have” and
-“have-not” groups. (Credit: (a) Wikimedia Commons; Photo (b) George Lester/Wikimedia Commons)
-For Marx, what we do defines who we are. In historical terms, in spite of the persistent nature of one class
-dominating another, some element of humanity existed. There was at least some connection between the
-worker and the product, augmented by the natural conditions of seasons and the rise and fall of the sun, such
-as we see in an agricultural society. But with the bourgeoisie revolution and the rise of industry and capitalism,
-the worker now worked for wages alone. His relationship to his efforts was no longer of a human nature, but
-based on artificial conditions.
-Marx described modern society in terms of alienation. Alienation refers to the condition in which the
-individual is isolated and divorced from his or her society, work, or the sense of self. Marx defined four specific
-types of alienation.
-Alienation from the product of one’s labor. An industrial worker does not have the opportunity to relate to the
-product he labors on. Instead of training for years as a watchmaker, an unskilled worker can get a job at a
-watch factory pressing buttons to seal pieces together. The worker does not care if he is making watches or
-cars, simply that the job exists. In the same way, a worker may not even know or care what product to which he
-is contributing. A worker on a Ford assembly line may spend all day installing windows on car doors without
-ever seeing the rest of the car. A cannery worker can spend a lifetime cleaning fish without ever knowing what
-product they are used for.
-Alienation from the process of one’s labor. A worker does not control the conditions of her job because she does
-not own the means of production. If a person is hired to work in a fast food restaurant, she is expected to make
-the food the way she is taught. All ingredients must be combined in a particular order and in a particular
-quantity; there is no room for creativity or change. An employee at Burger King cannot decide to change the
-spices used on the fries in the same way that an employee on a Ford assembly line cannot decide to place a
-car’s headlights in a different position. Everything is decided by the bourgeoisie who then dictate orders to the
-laborers.
-Alienation from others. Workers compete, rather than cooperate. Employees vie for time slots, bonuses, and
-job security. Even when a worker clocks out at night and goes home, the competition does not end. As Marx
-commented in The Communist Manifesto (1848), “No sooner is the exploitation of the laborer by the
-manufacturer, so far at an end, that he receives his wages in cash, than he is set upon by the other portion of
-the bourgeoisie, the landlord, the shopkeeper, the pawnbroker.”
-Alienation from one’s self. A final outcome of industrialization is a loss of connectivity between a worker and
-her occupation. Because there is nothing that ties a worker to her labor, there is no longer a sense of self.
-106
-4 • Society and Social Interaction
-Access for free at openstax.org.
+## Match 1.54 — LibreTexts: 15.6: Community, Society, and Culture
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Courses/Rio_Hondo/CD_106%3A_Child_Growth_and_Development_(Andrade)/15%3A_Adolescence_-_Social_Emotional_Development/15.06%3A_Community_Society_and_Culture
 
-Instead of being able to take pride in an identity such as being a watchmaker, automobile builder, or chef, a
-person is simply a cog in the machine.
-Taken as a whole, then, alienation in modern society means that an individual has no control over his life. Even
-in feudal societies, a person controlled the manner of his labor as to when and how it was carried out. But why,
-then, does the modern working class not rise up and rebel? (Indeed, Marx predicted that this would be the
-ultimate outcome and collapse of capitalism.)
-Another idea that Marx developed is the concept of false consciousness. False consciousness is a condition in
-which the beliefs, ideals, or ideology of a person are not in the person’s own best interest. In fact, it is the
-ideology of the dominant class (here, the bourgeoisie capitalists) that is imposed upon the proletariat. Ideas
-such as the emphasis of competition over cooperation, or of hard work being its own reward, clearly benefit
-the owners of industry. Therefore, workers are less likely to question their place in society and assume
-individual responsibility for existing conditions.
-In order for society to overcome false consciousness, Marx proposed that it be replaced with class
-consciousness, the awareness of one’s rank in society. Instead of existing as a “class in itself,” the proletariat
-must become a “class for itself” in order to produce social change (Marx and Engels 1848), meaning that
-instead of just being an inert strata of society, the class could become an advocate for social improvements.
-Only once society entered this state of political consciousness would it be ready for a social revolution.
-FIGURE 4.8 An assembly line worker installs car parts with the aid of complex machinery. Has technology made
-this type of labor more or less alienating? (Credit: Carol Highsmith/Wikimedia Commons)
-Max Weber and Symbolic Interactionism
-While Karl Marx may be one of the best-known thinkers of the nineteenth century, Max Weber is certainly one
-of the greatest influences in the field of sociology. Like the other social thinkers discussed here, he was
-concerned with the important changes taking place in Western society with the advent of industrialization.
-And, like Marx and Durkheim, he feared that industrialization would have negative effects on individuals.
-Weber’s primary focus on the structure of society lay in the elements of class, status, and power. Similar to
-Marx, Weber saw class as economically determined. Society, he believed, was split between owners and
-laborers. Status, on the other hand, was based on non
-
-## Match 1.53 — Economics3e-WEB § 19.5 How Well GDP Measures the Well-Being of Society
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Discuss how productivity influences the standard of living
-•
-Explain the limitations of GDP as a measure of the standard of living
-•
-Analyze the relationship between GDP data and fluctuations in the standard of living
-The level of GDP per capita clearly captures some of what we mean by the phrase “standard of living.” Most of
-the migration in the world, for example, involves people who are moving from countries with relatively low
-GDP per capita to countries with relatively high GDP per capita.
-“Standard of living” is a broader term than GDP. While GDP focuses on production that is bought and sold in
-markets, standard of living includes all elements that affect people’s well-being, whether they are bought and
-sold in the market or not. To illuminate the difference between GDP and standard of living, it is useful to spell
-out some things that GDP does not cover that are clearly relevant to standard of living.
-Limitations of GDP as a Measure of the Standard of Living
-GDP measures economic activity, not all activity. As a result, economists like Kate Raworth see it as a
-somewhat outdated and limited indication of well-being and prosperity. While GDP measures output of work
-done at home, as well as spending on travel, it doesn't capture unpaid work or leisure time. So, two countries
-may have equal GDP, but one nation's workers may have an average workday of eight hours, while the other has
-an average workday of twelve hours. In that case, is their equal GDP truly measuring the prosperity of those
-CLEAR IT UP
-470
-19 • The Macroeconomic Perspective
-Access for free at openstax.org
-
-nations? The GDP per capita of the U.S. economy is larger than the GDP per capita of Germany, as Table 19.9
-showed, but does that prove that the standard of living in the United States is higher? Not necessarily, since it
-is also true that the average U.S. worker works several hundred hours more per year more than the average
-German worker. Calculating GDP does not account for the German worker’s extra vacation weeks.
-While GDP includes what a country spends on environmental protection, healthcare, and education, it does
-not include actual levels of environmental cleanliness, health, and learning. GDP includes the cost of buying
-pollution-control equipment, but it does not address whether the air and water are actually cleaner or dirtier.
-GDP includes spending on medical care, but does not address whether life expectancy or infant mortality have
-risen or fallen. Similarly, it counts spending on education, but does not address directly how much of the
-population can read, write, or do basic mathematics.
-GDP includes production that is exchanged in the market, but it does not cover production that is not
-exchanged in the market. For example, hiring someone to mow your lawn or clean your house is part of GDP,
-but doing these tasks yourself is not part of GDP. One remarkable change in the U.S. economy in recent
-decades is the growth in women’s participation in the labor force. As of 1970, only about 42% of women
-participated in the paid labor force. By the second decade of the 2000s, nearly 60% of women participated in
-the paid labor force according to the Bureau of Labor Statistics. As women are now in the labor force, many of
-the services they used to produce in the non-market economy like food preparation and child care have shifted
-to some extent into the market economy, which makes the GDP appear larger even if people actually are not
-consuming more services. However, as Raworth points out and was explored in the chapter on the labor
-market, even women who are fully employed expend significant effort (generally more than men) in raising
-children and maintaining a home. Raworth advocates that economic measures include monetized and un-
-monetized goods and services, so that the status and contributors to each economy are more accurate.
-GDP has nothing to say about the level of inequality in society. GDP per capita is only an average. When GDP
-per capita rises by 5%, it could mean that GDP for everyone in the society has risen by 5%, or that GDP of some
-groups has risen by more while that of others has risen by less—or even declined. GDP also has nothing in
-particular to say about the amount of variety available. If a family buys 100 loaves of bread in a year, GDP does
-not care whether they are all white bread, or whether the family can choose from wheat, rye, pumpernickel,
-and many others—it just looks at the total amount the family spends on bread.
-Likewise, GDP has nothing much to say about what technology and products are available. The standard of
-living in, for example, 1950 or 1900 was not affected only by how much money people had—it was also affected
-by what they could buy. No matter how much money you had in 1950, you could not buy an iPhone or a
-personal computer.
-In certain cases, it is not clear that a rise in GDP is even a good thing. If a city is wrecked by a hurricane, and
-then experiences a surge of rebuilding construction activity, it would be peculiar to claim that the hurricane
-was therefore economically beneficial. If people are led by a rising fear of crime, to pay for installing bars and
-burglar alarms on all their windows, it is hard to believe that this increase in GDP has made them better off.
-Similarly, some people would argue that sales of certain goods, like pornography or extremely violent movies,
-do not represent a gain to society’s standard of living.
-Does a Rise in GDP Overstate or Understate the Rise in the Standard of Living?
-The fact that GDP per capita does not fully capture the broader idea of standard of living has led to a concern
-that the increases in GDP over time are illusory. It is theoretically possible that while GDP is rising, the
-standard of living could be falling if human health, environmental cleanliness, and other factors that are not
-included in GDP are worsening. Fortunately, this fear appears to be overstated.
-In some ways, the rise in GDP understates the actual rise in the standard of living. For example, the typical
-workweek for a U.S. worker has fallen over the last century from about 60 hours per week to less than 40 hours
-per week. Life expectancy and health have risen dramatically, and so has the average level of education. Since
-19.5 • How Well GDP Measures the Well-Being of Society
-471
-
-1970, the air and water in the United States have generally been getting cleaner. Companies have developed
-new technologies for entertainment, travel, information, and health. A much wider variety of basic products
-like food and clothing is available today than several decades ago. Because GDP does not capture leisure,
-health, a cleaner environment, the possibilities that new technology creates, or an increase in variety, the
-actual rise in the standard of living for Americans in recent decades has exceeded the rise in GDP.
-On the other side, crime rates, traffic congestion levels, and income inequality are higher in the United States
-now than they were in the 1960s. Moreover, a substantial number of services that women primarily provided in
-the non-market economy are now part of the market economy that GDP counts. By ignoring these factors, GDP
-would tend to overstate the true rise in the standard of living.
-LINK IT UP
-Visit this website (http://openstax.org/l/amdreamvalue) to read about the American Dream and standards of
-living.
-GDP is Rough, but Useful
-A high level of GDP should not be the only goal of macroeconomic policy, or government policy more broadly.
-Even though GDP does not measure the broader standard of living with any precision, it does measure
-production well and it does indicate when a country is materially better or worse off in terms of jobs and
-incomes. In most countries, a significantly higher GDP per capita occurs hand in hand with other
-improvements in everyday life along many dimensions, like education, health, and environmental protection.
-No single number can capture all the elements of a term as broad as “standard of living.” Nonetheless, GDP per
-capita is a reasonable, rough-and-ready measure of the standard of living.
-How is the Economy Doing? How Does One Tell?
-To determine the state of the economy, one needs to examine economic indicators, such as GDP. To calculate GDP is
-quite an undertaking. It is the broadest measure of a nation’s economic activity and we owe a debt to Simon
-Kuznets, the creator of the measurement, for that.
-The sheer size of the U.S. economy as measured by nominal GDP is huge—as of the third quarter of 2021, $23.2
-trillion worth of goods and services were produced annually. During the COVID-19-induced recession, which lasted
-just two months according to NBER and was concentrated across Quarters 1 and 2 of 2020, real GDP dropped
-9%—much larger and quicker of a drop than during the previous economic downturn, the Great Recession
-(2007–2009). The economy quickly bounced back, and as of Quarter 1 of 2021, real GDP had slightly surpassed the
-level it was at prior to the start of the pandemic. These statistics show the severity of the pandemic-induced
-recession, and while real GDP fully recovered, there are other ways in which the economy has not. While GDP and
-GDP per capita give us a rough estimate of a nation's standard of living, there are many other ways to track the
-health of the economy. This chapter is the building block for other chapters that explore more economic indicators
-such as unemployment, inflation, or interest rates, and perhaps more importantly, will explain how they are related
-and what causes them to rise or fall.
-BRING IT HOME
-472
-19 • The Macroeconomic Perspective
-Access for free at openstax.org
-
-Key Terms
-business cycle the economy's relatively short-term movement in and out of recession
-depreciation the process by which capital ages over time and therefore loses its value
-depression an especially lengthy and deep decline in output
-double counting a potential mistake to avoid in measuring GDP, in which output is counted more than once as
-it travels through the stages of production
-durable good long-lasting good like a car or a refrigerator
-exchange rate the price of one currency in terms of another currency
-final good and service output used directly for consumption, investment, government, and trade purposes;
-contrast with “intermediate good”
-GDP per capita GDP divided by the population
-gross domestic product (GDP) the value of the output of all final goods and services produced within a
-country in a year
-gross national product (GNP) includes what is produced domestically and what is produced by domestic
-labor and business abroad in a year
-intermediate good output provided to other businesses at an intermediate stage of production, not for final
-users; contrast with “final good and service”
-inventory good that has been produced, but not yet been sold
-national income includes all income earned: wages, profits, rent, and profit income
-net national product (NNP) GNP minus depreciation
-nominal value the economic statistic actually announced at that time, not adjusted for inflation; contrast with
-real value
-nondurable good short-lived good like food and clothing
-peak during the business cycle, the highest point of output before a recession begins
-real value an economic statistic after it has been adjusted for inflation; contrast with nominal value
-recession a significant decline in national output
-service product which is intangible (in contrast to goods) such as entertainment, healthcare, or education
-standard of living all elements that affect people’s happiness, whether people buy or sell these elements in
-the market or not
-structure building used as residence, factory, office building, retail store, or for other purposes
-trade balance gap between exports and imports
-trade deficit exists when a nation's imports exceed its exports and it calculates them as imports –exports
-trade surplus exists when a nation's exports exceed its imports and it calculates them as exports – imports
-trough during the business cycle, the lowest point of output in a recession, before a recovery begins
-Key Concepts and Summary
-
-## Match 1.53 — Macroeconomics3e-WEB § 6.5 How Well GDP Measures the Well-Being of Society
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Discuss how productivity influences the standard of living
-•
-Explain the limitations of GDP as a measure of the standard of living
-•
-Analyze the relationship between GDP data and fluctuations in the standard of living
-The level of GDP per capita clearly captures some of what we mean by the phrase “standard of living.” Most of
-the migration in the world, for example, involves people who are moving from countries with relatively low
-GDP per capita to countries with relatively high GDP per capita.
-“Standard of living” is a broader term than GDP. While GDP focuses on production that is bought and sold in
-markets, standard of living includes all elements that affect people’s well-being, whether they are bought and
-sold in the market or not. To illuminate the difference between GDP and standard of living, it is useful to spell
-out some things that GDP does not cover that are clearly relevant to standard of living.
-Limitations of GDP as a Measure of the Standard of Living
-GDP measures economic activity, not all activity. As a result, economists like Kate Raworth see it as a
-somewhat outdated and limited indication of well-being and prosperity. While GDP measures output of work
-done at home, as well as spending on travel, it doesn't capture unpaid work or leisure time. So, two countries
-may have equal GDP, but one nation's workers may have an average workday of eight hours, while the other has
-an average workday of twelve hours. In that case, is their equal GDP truly measuring the prosperity of those
-CLEAR IT UP
-158
-6 • The Macroeconomic Perspective
-Access for free at openstax.org
-
-nations? The GDP per capita of the U.S. economy is larger than the GDP per capita of Germany, as Table 6.9
-showed, but does that prove that the standard of living in the United States is higher? Not necessarily, since it
-is also true that the average U.S. worker works several hundred hours more per year more than the average
-German worker. Calculating GDP does not account for the German worker’s extra vacation weeks.
-While GDP includes what a country spends on environmental protection, healthcare, and education, it does
-not include actual levels of environmental cleanliness, health, and learning. GDP includes the cost of buying
-pollution-control equipment, but it does not address whether the air and water are actually cleaner or dirtier.
-GDP includes spending on medical care, but does not address whether life expectancy or infant mortality have
-risen or fallen. Similarly, it counts spending on education, but does not address directly how much of the
-population can read, write, or do basic mathematics.
-GDP includes production that is exchanged in the market, but it does not cover production that is not
-exchanged in the market. For example, hiring someone to mow your lawn or clean your house is part of GDP,
-but doing these tasks yourself is not part of GDP. One remarkable change in the U.S. economy in recent
-decades is the growth in women’s participation in the labor force. As of 1970, only about 42% of women
-participated in the paid labor force. By the second decade of the 2000s, nearly 60% of women participated in
-the paid labor force according to the Bureau of Labor Statistics. As women are now in the labor force, many of
-the services they used to produce in the non-market economy like food preparation and child care have shifted
-to some extent into the market economy, which makes the GDP appear larger even if people actually are not
-consuming more services. However, as Raworth points out and was explored in the chapter on the labor
-market, even women who are fully employed expend significant effort (generally more than men) in raising
-children and maintaining a home. Raworth advocates that economic measures include monetized and un-
-monetized goods and services, so that the status and contributors to each economy are more accurate.
-GDP has nothing to say about the level of inequality in society. GDP per capita is only an average. When GDP
-per capita rises by 5%, it could mean that GDP for everyone in the society has risen by 5%, or that GDP of some
-groups has risen by more while that of others has risen by less—or even declined. GDP also has nothing in
-particular to say about the amount of variety available. If a family buys 100 loaves of bread in a year, GDP does
-not care whether they are all white bread, or whether the family can choose from wheat, rye, pumpernickel,
-and many others—it just looks at the total amount the family spends on bread.
-Likewise, GDP has nothing much to say about what technology and products are available. The standard of
-living in, for example, 1950 or 1900 was not affected only by how much money people had—it was also affected
-by what they could buy. No matter how much money you had in 1950, you could not buy an iPhone or a
-personal computer.
-In certain cases, it is not clear that a rise in GDP is even a good thing. If a city is wrecked by a hurricane, and
-then experiences a surge of rebuilding construction activity, it would be peculiar to claim that the hurricane
-was therefore economically beneficial. If people are led by a rising fear of crime, to pay for installing bars and
-burglar alarms on all their windows, it is hard to believe that this increase in GDP has made them better off.
-Similarly, some people would argue that sales of certain goods, like pornography or extremely violent movies,
-do not represent a gain to society’s standard of living.
-Does a Rise in GDP Overstate or Understate the Rise in the Standard of Living?
-The fact that GDP per capita does not fully capture the broader idea of standard of living has led to a concern
-that the increases in GDP over time are illusory. It is theoretically possible that while GDP is rising, the
-standard of living could be falling if human health, environmental cleanliness, and other factors that are not
-included in GDP are worsening. Fortunately, this fear appears to be overstated.
-In some ways, the rise in GDP understates the actual rise in the standard of living. For example, the typical
-workweek for a U.S. worker has fallen over the last century from about 60 hours per week to less than 40 hours
-per week. Life expectancy and health have risen dramatically, and so has the average level of education. Since
-6.5 • How Well GDP Measures the Well-Being of Society
-159
-
-1970, the air and water in the United States have generally been getting cleaner. Companies have developed
-new technologies for entertainment, travel, information, and health. A much wider variety of basic products
-like food and clothing is available today than several decades ago. Because GDP does not capture leisure,
-health, a cleaner environment, the possibilities that new technology creates, or an increase in variety, the
-actual rise in the standard of living for Americans in recent decades has exceeded the rise in GDP.
-On the other side, crime rates, traffic congestion levels, and income inequality are higher in the United States
-now than they were in the 1960s. Moreover, a substantial number of services that women primarily provided in
-the non-market economy are now part of the market economy that GDP counts. By ignoring these factors, GDP
-would tend to overstate the true rise in the standard of living.
-LINK IT UP
-Visit this website (http://openstax.org/l/amdreamvalue) to read about the American Dream and standards of
-living.
-GDP is Rough, but Useful
-A high level of GDP should not be the only goal of macroeconomic policy, or government policy more broadly.
-Even though GDP does not measure the broader standard of living with any precision, it does measure
-production well and it does indicate when a country is materially better or worse off in terms of jobs and
-incomes. In most countries, a significantly higher GDP per capita occurs hand in hand with other
-improvements in everyday life along many dimensions, like education, health, and environmental protection.
-No single number can capture all the elements of a term as broad as “standard of living.” Nonetheless, GDP per
-capita is a reasonable, rough-and-ready measure of the standard of living.
-How is the Economy Doing? How Does One Tell?
-To determine the state of the economy, one needs to examine economic indicators, such as GDP. To calculate GDP is
-quite an undertaking. It is the broadest measure of a nation’s economic activity and we owe a debt to Simon
-Kuznets, the creator of the measurement, for that.
-The sheer size of the U.S. economy as measured by nominal GDP is huge—as of the third quarter of 2021, $23.2
-trillion worth of goods and services were produced annually. During the COVID-19-induced recession, which lasted
-just two months according to NBER and was concentrated across Quarters 1 and 2 of 2020, real GDP dropped
-9%—much larger and quicker of a drop than during the previous economic downturn, the Great Recession
-(2007–2009). The economy quickly bounced back, and as of Quarter 1 of 2021, real GDP had slightly surpassed the
-level it was at prior to the start of the pandemic. These statistics show the severity of the pandemic-induced
-recession, and while real GDP fully recovered, there are other ways in which the economy has not. While GDP and
-GDP per capita give us a rough estimate of a nation's standard of living, there are many other ways to track the
-health of the economy. This chapter is the building block for other chapters that explore more economic indicators
-such as unemployment, inflation, or interest rates, and perhaps more importantly, will explain how they are related
-and what causes them to rise or fall.
-BRING IT HOME
-160
-6 • The Macroeconomic Perspective
-Access for free at openstax.org
-
-Key Terms
-business cycle the economy's relatively short-term movement in and out of recession
-depreciation the process by which capital ages over time and therefore loses its value
-depression an especially lengthy and deep decline in output
-double counting a potential mistake to avoid in measuring GDP, in which output is counted more than once as
-it travels through the stages of production
-durable good long-lasting good like a car or a refrigerator
-exchange rate the price of one currency in terms of another currency
-final good and service output used directly for consumption, investment, government, and trade purposes;
-contrast with “intermediate good”
-GDP per capita GDP divided by the population
-gross domestic product (GDP) the value of the output of all final goods and services produced within a
-country in a year
-gross national product (GNP) includes what is produced domestically and what is produced by domestic
-labor and business abroad in a year
-intermediate good output provided to other businesses at an intermediate stage of production, not for final
-users; contrast with “final good and service”
-inventory good that has been produced, but not yet been sold
-national income includes all income earned: wages, profits, rent, and profit income
-net national product (NNP) GNP minus depreciation
-nominal value the economic statistic actually announced at that time, not adjusted for inflation; contrast with
-real value
-nondurable good short-lived good like food and clothing
-peak during the business cycle, the highest point of output before a recession begins
-real value an economic statistic after it has been adjusted for inflation; contrast with nominal value
-recession a significant decline in national output
-service product which is intangible (in contrast to goods) such as entertainment, healthcare, or education
-standard of living all elements that affect people’s happiness, whether people buy or sell these elements in
-the market or not
-structure building used as residence, factory, office building, retail store, or for other purposes
-trade balance gap between exports and imports
-trade deficit exists when a nation's imports exceed its exports and it calculates them as imports –exports
-trade surplus exists when a nation's exports exceed its imports and it calculates them as exports – imports
-trough during the business cycle, the lowest point of output in a recession, before a recovery begins
-Key Concepts and Summary
+15.6: Community, Society, and Culture
+-
+- Last updated
+- Save as PDF
+There are certain characteristics of adolescent development that are more rooted in culture than in human biology or cognitive structures. Culture is learned and socially shared, and it affects all aspects of an individual’s life. Social responsibilities, sexual expression, and belief-system development, for instance, are all likely to vary based on culture. Furthermore, many distinguishing characteristics of an individual (such as dress, employment, recreation, and language) are all products of culture.
+Many factors that shape adolescent development vary by culture. For instance, the degree to which adolescents are perceived as autonomous, or independent beings varies widely in different cultures, as do the behaviors that represent this emerging autonomy. The lifestyle of an adolescent in a given culture is also profoundly shaped by the roles and responsibilities he or she is expected to assume. The extent to which an adolescent is expected to share family responsibilities, for example, is one large determining factor in normative adolescent behavior. Adolescents in certain cultures are expected to contribute significantly to household chores and responsibilities, while others are given more freedom or come from families with more privilege where responsibilities are fewer. Differences between families in the distribution of financial responsibilities or provision of allowance may reflect various socioeconomic backgrounds, which are further influenced by cultural norms and values.
+Adolescents begin to develop unique belief systems through their interaction with social, familial, and cultural environments. These belief systems encompass everything from religion and spirituality to gender, sexuality, work ethics, and politics. The range of attitudes that a culture embraces on a particular topic affects the beliefs, lifestyles, and perceptions of its adolescents, and can have both positive and negative impacts on their development.
+Development of Ethnic Identity
+Adolescent development does not necessarily follow the same pathway for all individuals. Certain features of adolescence, particularly with respect to biological changes associated with puberty and cognitive changes associated with brain development, are relatively universal. But other features of adolescence depend largely on circumstances that are more environmentally variable. For example, adolescents growing up in one country might have different opportunities for risk-taking than adolescents in a different country, and supports and sanctions for different behaviors in adolescence depend on laws and values that might be specific to where adolescents live.
+Different cultural norms regarding family and peer relationships shape adolescents’ experiences in these domains. For example, in some countries, adolescents’ parents are expected to remain in control over major decisions, whereas in other countries, adolescents are expected to begin sharing in or taking control of decision making . Even within the same country, adolescents’ gender, ethnicity, immigrant status, religion, sexual orientation, socioeconomic status, and personality can shape both how adolescents behave and how others respond to them, creating diverse developmental contexts for different adolescents. 47
+Ethnic Identity refers to how people come to terms with who they are based on their ethnic or racial ancestry. “The task of ethnic identity formation involves sorting out and resolving positive and negative feelings and attitudes about one’s own ethnic group and about other groups and identifying one’s place in relation to both” (Phinney, 2006, p. 119). When groups differ in status in a culture—those from the non-dominant group have to be cognizant of the customs and values of those from the dominant culture. The reverse is rarely the case. This makes ethnic identity far less important for members of the dominant culture.
+In the United States, those of European ancestry engage in less exploration of ethnic identity, than do those of non-European ancestry (Phinney, 1989). However, according to the U.S. Census (2012) more than 40% of Americans under the age of 18 are from ethnic minorities. For many ethnic minority teens, discovering one’s ethnic identity is an important part of identity formation. Phinney’s model of ethnic identity formation is based on Erikson and Marcia’s model of identity formation (Phinney, 1990; Syed & Juang, 2014). Through the process of exploration and commitment, individual’s come to understand and create an ethnic identity.
+Phinney’s Three Stages or Statuses of Ethnic Identity
+Phinney’s model of ethnic identity formation is based on Erikson’s and Marcia’s model of identity formation (Phinney, 1990; Syed & Juang, 2014). Through the process of exploration and commitment, individual’s come to understand and create an ethic identity. Phinney suggests three stages or statuses with regard to ethnic identity:
+| Stage | Descriptions |
+|---|---|
+| Stage 1: Unexamined Ethnic Identity | Adolescents and adults who have not been exposed to ethnic identity issues may be in the first stage, unexamined ethnic identity. This is often characterized with a preference for the dominant culture, or where the individual has given little thought to the question of their ethnic heritage. This is similar to diffusion in Marcia’s model of identity. Included in this group are also those who have adopted the ethnicity of their parents and other family members with little thought about the issues themselves, similar to Marcia’s foreclosure status (Phinney, 1990). |
+| Stage 2: Ethnic Identity Search | Adolescents and adults who are exploring the customs, culture, and history of their ethnic group are in the ethnic identity search stage, similar to Marcia’s moratorium status (Phinney, 1990). Often some event “awakens” a teen or adult to their ethnic group; either a personal experience with prejudice, a highly profiled case in the media, or even a more positive event that recognizes the contribution of someone from the individual’s ethnic group. Teens and adults in this stage will immerse themselves in their ethnic culture. For some, “it may lead to a rejection of the values of the dominant culture” (Phinney, 1990, p. 503). |
+| Stage 3: Achieved Ethnic Identity | Those who have actively explored their culture are likely to have a deeper appreciation and understanding of their ethnic heritage, leading to progress toward an achieved ethnic identity (Phinney, 1990). An achieved ethnic identity does not necessarily imply that the individual is highly involved in the customs and values of their ethnic culture. One can be confident in their ethnic identity without wanting to maintain the language or other customs. |
+The development of ethnic identity takes time, with about 25% of tenth graders from ethnic minority backgrounds having explored and resolved the issues (Phinney, 1989). The more ethnically homogeneous the high school, the less identity exploration and achievement (Umana-Taylor, 2003). Moreover, even in more ethnically diverse high schools, teens tend to spend more time with their own group, reducing exposure to other ethnicities. This may explain why, for many, college becomes the time of ethnic identity exploration. “[The] transition to college may serve as a consciousness-raising experience that triggers exploration” (Syed & Azmitia, 2009, p. 618).
+It is also important to note that those who do achieve ethnic identity may periodically reexamine the issues of ethnicity. This cycling between exploration and achievement is common not only for ethnic identity formation, but in other aspects of identity development (Grotevant, 1987) and is referred to (from Marcia’s Theory: Stages of Identity) as MAMA cycling or moving back and forth between moratorium and achievement. 48
+Bicultural/Multiracial Identity
+Ethnic minorities must wrestle with the question of how, and to what extent, they will identify with the culture of their surroundings, thus society and with the culture of their family. Phinney (2006) suggests that people may handle it in different ways. Some may keep the identities separate, others may combine them in some way, while others may reject some of them.
+Bicultural identity means individuals sees themselves as part of both the ethnic minority group and the larger society. Those who are multiracial , that is whose parents come from two or more ethnic or racial groups, have a more challenging task. In some cases their appearance may be ambiguous. This can lead to others constantly asking them to categorize themselves.
+Phinney (2006) notes that the process of identity formation may start earlier and take longer to accomplish in those who are not monoracial or a single ethnicity. 49
+Contributors and Attributions
+47. Adolescent Development by Jennifer Lansford is licensed under CC BY-NC-SA 4.0
+48. Lifespan Development: A Psychological Perspective by Martha Lally and Suzanne Valentine-French is licensed under CC BY-NC-SA 3.0
+49. Lifespan Development: A Psychological Perspective by Martha Lally and Suzanne Valentine-French is licensed under CC BY-NC-SA 3.0

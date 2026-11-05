@@ -1,468 +1,154 @@
 # Source pack — subjects/electrical-engineering/foundational/dc-circuit-analysis
 Lesson title: DC Circuit Analysis
 Level: foundational
-Match confidence: 1.53
+Match confidence: 3.05
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.53 — UniversityPhysicsVolume2-WEB_5eNhMSa § 15.5 Resonance in an AC Circuit
+## Match 3.05 — LibreTexts: 4.9: Circuit Analysis
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/3.0/ · https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Introductory_Electrical_Engineering/A_First_Course_in_Electrical_and_Computer_Engineering_(Scharf)/04%3A_Linear_Algebra/4.09%3A_Circuit_Analysis
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Determine the peak ac resonant angular frequency for a RLC circuit
-•
-Explain the width of the average power versus angular frequency curve and its significance using terms like
-bandwidth and quality factor
-In the RLC series circuit of Figure 15.11, the current amplitude is, from Equation 15.10,
-If we can vary the frequency of the ac generator while keeping the amplitude of its output voltage constant,
-then the current changes accordingly. A plot of
-versus
-is shown in Figure 15.17.
-Figure 15.17
-At an RLC circuit’s resonant frequency,
-the current amplitude is at its maximum value.
-15.15
-660
-15 • Alternating-Current Circuits
-Access for free at openstax.org.
+4.9: Circuit Analysis
+In this section we use the linear algebra we have developed to find the voltages and currents in a simple electrical circuit, such as the one shown in Figure 1. There are many reasons why this might be necessary; in this example we need to know the current flowing through the lamp to tell whether or not it will glow. Too little current will have no visible effect; too much current will cause the lamp to burn out. We will apply a few physical laws relating the voltages and currents in a circuit, turn these laws into systems of linear equations, and solve the equations for the voltages and currents.
+Current, Voltage, and Resistance
+We will use three physical quantities in our analysis of electrical circuits: current, voltage, and resistance. Current is the flow of electrical charge from one place to another. Electrons flowing through a wire or through some other electronic device comprise a current. Voltage is a difference in electric potential that makes electrons flow. Voltage is sometimes called electromotive force because it is like a “force” that moves electrons. Resistance is a property of the device through which the electron current flows. The lower the resistance of a device, the more easily current can flow through the device.
+The analogy of water flowing through pipes can help you develop intuition about electrical circuits. In this analogy, electrical current corresponds to the flow rate of water. Voltage corresponds to the pressure that forces the water to flow, and resistance is the friction of flow. A small pipe would impede the flow of water more than would a large pipe, so the small pipe would correspond to a higher resistance. While this analogy can be helpful, keep in mind that electricity is not water. All analogies break down at some point.
+We measure electrical current in amperes . The standard symbol for current is \(i\), and the direction of positive flow is indicated by an arrow on the circuit diagram. The arrow is for reference only; if the true current is in the opposite direction, we get negative values for \(i\). Because electrons are negatively charged, current is defined as flowing in the opposite direction as electron motion. But to reduce confusion, you should learn to think in terms of current rather than electron motion.
+A point in a circuit where several devices are connected together is called a node . The conservation law for current says that “what flows in must flow out of a node,” a principle known as Kirchhoff ' s current law . Kirchhoff's current law states that the sum of all currents leaving a node is zero . In this law, a current entering the node is considered to be a negative current leaving the node.
+Voltage is measured in volts and is usually written as \(\nu\) (or \(e\)). Since voltage is a difference in potential between two points (nodes), we can show it on a circuit diagram with a + and a –sign to indicate which two nodes we are comparing and which one of the nodes is considered negative. As with current, the markings are for reference only and we may end up with a negative value of \(\nu\).
+In an electrical circuit, one node is usually chosen as a reference node and is considered to have a voltage of zero. Then the voltage at every other node is measured with respect to the reference node. This saves us the trouble of always specifying pairs of nodes for voltage measurements and marking + and – signs for each voltage. Other names for the reference node are common and ground .
+A constant voltage source is a device that always forces the voltage between its two terminals to be a constant value. In Figure 1 the circle at the left represents a constant voltage source of 5 volts, so that the voltage at the upper (+) end is always exactly 5 volts higher than the voltage at the lower (-) end. A voltage source is something like a battery, but idealized. Real batteries do not maintain a constant output voltage under all conditions.
+Resistance is measured in ohms and is denoted by \(R\). A resistor is shown as a zig-zag line in circuit diagrams and labeled with the value of its resistance in ohms. In this chapter we will consider only devices whose resistance is positive and the same in both directions. Ohm's law , also called the resistor law , relates the voltage and current in a resistor. For the resistor shown in Figure 2, with reference directions assigned to \(\nu\) and \(i\) as shown, Ohm's law is
+\[\nu=i R \nonumber \]
+Note that current flows from + to - through the resistor.
+Ohm's law and Kirchhoff's current law are the only principles we need to write equations that will allow us to find the voltages and currents in the resistive circuit of Figure 1. We begin by choosing a reference node and assigning variables to the voltages at every other node (with respect to the reference node). These choices are shown in Figure 3.
+The constant voltage source forces \(\nu _1\) to be exactly 5 volts higher than the reference node. Thus
+\[\nu _{1}=5 \nonumber \]
+Next we write equations by applying Kirchhoff's current law to each node in the circuit (except the reference node and \(\nu _1\), whose voltages we already know). At the node labeled \(\nu _2\) are three paths for leaving current. The current leaving through the 50 ohm resistor can be found by Ohm's law, where the voltage across that resistor is \(\nu _2 − \nu _1\):
+\[i_{50}=\frac{v}{R}=\frac{\left(v_{2}-v_{1}\right)}{50} \nonumber \]
+For current leaving through the 300 ohm resistor, the voltage is \(\nu _2\). Pay careful attention to the sign; since we are interested in the current leaving the node labeled \(\nu _2\), Figure 4.14 indicates that to apply Ohm's law we should take the voltage as \(+ \nu _2 −\) reference = \(\nu _2 − 0 = \nu _2\). So
+\[i_{300}=\frac{v_{2}}{300} \nonumber \]
+For the 100 ohm resistor, we can write
+\[i_{100}=\frac{\left(v_{2}-v_{3}\right)}{100} \nonumber \]
+According to Kirchhoff's current law, the sum of these three leaving currents is zero:
+\[\begin{align}
+\quad \tfrac{\left(v_{2}-v_{1}\right)}{50}+\tfrac{v_{2}}{300}+\tfrac{\left(v_{2}-v_{3}\right)}{100}=0 \nonumber \\
+\Rightarrow 6\left(v_{2}-v_{1}\right)+v_{2}+3\left(v_{2}-v_{3}\right)=0 \nonumber \\
+\Rightarrow \qquad \quad -6 v_{1}+10 v_{2}-3 v_{3}=0 \label{}
+\end{align} \nonumber \]
+Notice that when we wrote the equation for the node labeled \(\nu _2\), the variable \(\nu _2\) had a + sign each time it occurred in the equation, while the others had a - sign. This is always the case, and watching for it can help you avoid sign errors. Now we apply Kirchhoff's current law at the node labeled \(\nu _3\) to get the equation
+\[\begin{align}
+\frac{\left(v_{3}-v_{2}\right)}{100}+\frac{v_{3}}{2}=0 \nonumber \\
+\Rightarrow \quad\left(v_{3}-v_{2}\right)+50 v_{3}=0 \nonumber \\
+\Rightarrow \quad 0 v_{1}-1 v_{2}+51 v_{3}=0 \label{}
+\end{align} \nonumber \]
+Note that this time it is \(\nu _3\) that always shows up with a + sign.
+Equations 2 , 6 , and 7 give us a system of three equations in the three unknown variables \(\nu _1\), \(\nu _2\), and \(\nu _3\). We now write them in matrix form as
+\[\left[\begin{array}{lll}
+1 & 0 & 0 \\
+-6 & 10 & -3 \\
+0 & -1 & 51
+\end{array}\right]\left[\begin{array}{l}
+v_{1} \\
+v_{2} \\
+v_{3}
+\end{array}\right]=\left[\begin{array}{l}
+5 \\
+0 \\
+0
+\end{array}\right] \nonumber \]
+(MATLAB) Use MATLAB to solve Equation 8 . You should find
+\(\nu _1\) = 5.0000 volts
+\(\nu _2\) = 3.0178 volts
+\(\nu _3\) = 0.0592 volt
+What is the determinant of the coefficient matrix \(A\)? Is the solution unique?
+We can determine the current flowing through the lamp from \(\nu _3\) to ground in Example 1 by Ohm's law:
+\[i=\frac{\nu}{R}=\frac{\nu _{3}}{2}=0.0296 \text { ampere } \nonumber \]
+The visible effect will, of course, depend on the lamp. Let us assume that the specifications for our lamp indicate that 0.05 ampere or more is required before it will glow, and more than 0.075 ampere will cause it to burn out. In this case, our circuit would not make the lamp glow.
+(MATLAB) Write and solve equations for the circuit in Figure 4. What are the voltages at the nodes labeled \(\nu _1\) through \(\nu _4\)? What is the current labeled \(i_1\)? And \(i_2\)?
 
-In Oscillations, we encountered a similar graph where the amplitude of a damped harmonic oscillator was
-plotted against the angular frequency of a sinusoidal driving force (see Forced Oscillations). This similarity is
-more than just a coincidence, as shown earlier by the application of Kirchhoff’s loop rule to the circuit of
-Figure 15.11. This yields
-or
-where we substituted dq(t)/dt for i(t). A comparison of Equation 15.16 and, from Oscillations, Damped
-Oscillations for damped harmonic motion clearly demonstrates that the driven RLC series circuit is the
-electrical analog of the driven damped harmonic oscillator.
-The resonant frequency
-of the RLC circuit is the frequency at which the amplitude of the current is a
-maximum and the circuit would oscillate if not driven by a voltage source. By inspection, this corresponds to
-the angular frequency
-at which the impedance Z in Equation 15.15 is a minimum, or when
-and
-This is the resonant angular frequency of the circuit. Substituting
-into Equation 15.9, Equation 15.10, and
-Equation 15.11, we find that at resonance,
- 
- 
- 
-Therefore, at resonance, an RLC circuit is purely resistive, with the applied emf and current in phase.
-What happens to the power at resonance? Equation 15.14 tells us how the average power transferred from an
-ac generator to the RLC combination varies with frequency. In addition,
-reaches a maximum when Z,
-which depends on the frequency, is a minimum, that is, when
-Thus, at resonance, the
-average power output of the source in an RLC series circuit is a maximum. From Equation 15.14, this
-maximum is
-Figure 15.18 is a typical plot of
-versus
-in the region of maximum power output. The bandwidth
-of
-the resonance peak is defined as the range of angular frequencies
-over which the average power
-is
-greater than one-half the maximum value of
-The sharpness of the peak is described by a dimensionless
-quantity known as the quality factor Q of the circuit. By definition,
-where
-is the resonant angular frequency. A high Q indicates a sharp resonance peak. We can give Q in
-terms of the circuit parameters as
-15.16
-15.17
-15.18
-15.19
-15.5 • Resonance in an AC Circuit
-661
+## Match 2.11 — LibreTexts: 10: DC Network Analysis
+License: GNU Free Documentation License · https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Book%3A_Electric_Circuits_I_-_Direct_Current_(Kuphaldt)/10%3A_DC_Network_Analysis
 
-Figure 15.18
-Like the current, the average power transferred from an ac generator to an RLC circuit peaks at the resonant frequency.
-Resonant circuits are commonly used to pass or reject selected frequency ranges. This is done by adjusting the
-value of one of the elements and hence “tuning” the circuit to a particular resonant frequency. For example, in
-radios, the receiver is tuned to the desired station by adjusting the resonant frequency of its circuitry to match
-the frequency of the station. If the tuning circuit has a high Q, it will have a small bandwidth, so signals from
-other stations at frequencies even slightly different from the resonant frequency encounter a high impedance
-and are not passed by the circuit. Cell phones work in a similar fashion, communicating with signals of around
-1 GHz that are tuned by an inductor-capacitor circuit. One of the most common applications of capacitors is
-their use in ac-timing circuits, based on attaining a resonant frequency. A metal detector also uses a shift in
-resonance frequency in detecting metals (Figure 15.19).
-Figure 15.19
-When a metal detector comes near a piece of metal, the self-inductance of one of its coils changes. This causes a shift in the
-resonant frequency of a circuit containing the coil. That shift is detected by the circuitry and transmitted to the diver by means of the
-headphones. (credit: modification of work by Eric Lippmann, U.S. Navy)
-EXAMPLE 15.4
-Resonance in an RLC Series Circuit
-(a) What is the resonant frequency of a circuit using the voltage and LRC values all wired in series from
-662
-15 • Alternating-Current Circuits
-Access for free at openstax.org.
+Skip to main content
+-
+-
+10.1: What is Network Analysis?
+-
+Generally speaking, network analysis is any structured technique used to mathematically analyze a circuit (a “network” of interconnected components). Quite often the technician or engineer will encounter circuits containing multiple sources of power or component configurations which defy simplification by series/parallel analysis techniques. In those cases, he or she will be forced to use other means. This chapter presents a few techniques useful in analyzing such complex circuits.
+-
+-
+10.2: Branch Current Method
+-
+he first and most straightforward network analysis technique is called the Branch Current Method. In this method, we assume directions of currents in a network, then write equations describing their relationships to each other through Kirchhoff’s and Ohm’s Laws. Once we have one equation for every unknown current, we can solve the simultaneous equations and determine all currents, and therefore all voltage drops in the network.
+-
+-
+10.3: Mesh Current Method and Analysis
+-
+The Mesh Current Method, also known as the Loop Current Method, is quite similar to the Branch Current method in that it uses simultaneous equations, Kirchhoff’s Voltage Law, and Ohm’s Law to determine unknown currents in a network. It differs from the Branch Current method in that it does not use Kirchhoff’s Current Law, and it is usually able to solve a circuit with less unknown variables and less simultaneous equations, which is especially nice if you’re forced to solve without a calculator.
+-
+-
+10.4: Node Voltage Method
+-
+The node voltage method of analysis solves for unknown voltages at circuit nodes in terms of a system of KCL equations. This analysis looks strange because it involves replacing voltage sources with equivalent current sources. Also, resistor values in ohms are replaced by equivalent conductances in siemens, G = 1/R. The siemens (S) is the unit of conductance, having replaced the mho unit. In any event S = Ω-1. And S = mho (obsolete).
+-
+-
+10.5: Introduction to Network Theorems
+-
+-
+-
+10.6: Millman’s Theorem
+-
+In Millman’s Theorem, the circuit is re-drawn as a parallel network of branches, each branch containing a resistor or series battery/resistor combination. Millman’s Theorem is applicable only to those circuits which can be re-drawn accordingly.
+-
+-
+10.7: Superposition Theorem
+-
+Superposition theorem is one of those strokes of genius that takes a complex subject and simplifies it in a way that makes perfect sense. A theorem like Millman’s certainly works well, but it is not quite obvious why it works so well. Superposition, on the other hand, is obvious.
+-
+-
+10.8: Thevenin’s Theorem
+-
+Thevenin’s Theorem states that it is possible to simplify any linear circuit, no matter how complex, to an equivalent circuit with just a single voltage source and series resistance connected to a load. The qualification of “linear” is identical to that found in the Superposition Theorem, where all the underlying equations must be linear (no exponents or roots). If we’re dealing with passive components (such as resistors, and later, inductors and capacitors), this is true. However, there are som
+-
+-
+10.9: Norton’s Theorem
+-
+-
+-
+10.10: Thevenin-Norton Equivalencies
+-
+Since Thevenin’s and Norton’s Theorems are two equally valid methods of reducing a complex network down to something simpler to analyze, there must be some way to convert a Thevenin equivalent circuit to a Norton equivalent circuit, and vice versa (just what you were dying to know, right?). Well, the procedure is very simple.
+-
+-
+10.11: Millman’s Theorem Revisited
+-
+-
+-
+10.12: Maximum Power Transfer Theorem
+-
+The Maximum Power Transfer Theorem is not so much a means of analysis as it is an aid to system design. Simply stated, the maximum amount of power will be dissipated by a load resistance when that load resistance is equal to the Thevenin/Norton resistance of the network supplying the power. If the load resistance is lower or higher than the Thevenin/Norton resistance of the source network, its dissipated power will be less than the maximum.
+-
+-
+10.13: Δ-Y and Y-Δ Conversions
+-
 
-Example 15.1? (b) If the ac generator is set to this frequency without changing the amplitude of the output
-voltage, what is the amplitude of the current?
-Strategy
-The resonant frequency for a RLC circuit is calculated from Equation 15.17, which comes from a balance
-between the reactances of the capacitor and the inductor. Since the circuit is at resonance, the impedance is
-equal to the resistor. Then, the peak current is calculated by the voltage divided by the resistance.
-Solution
-a.
-The resonant frequency is found from Equation 15.17:
-b.
-At resonance, the impedance of the circuit is purely resistive, and the current amplitude is
-Significance
-If the circuit were not set to the resonant frequency, we would need the impedance of the entire circuit to
-calculate the current.
-EXAMPLE 15.5
-Power Transfer in an RLC Series Circuit at Resonance
-(a) What is the resonant angular frequency of an RLC circuit with
-and
-(b) If an ac source of constant amplitude 4.00 V is set to this frequency, what is the
-average power transferred to the circuit? (c) Determine Q and the bandwidth of this circuit.
-Strategy
-The resonant angular frequency is calculated from Equation 15.17. The average power is calculated from the
-rms voltage and the resistance in the circuit. The quality factor is calculated from Equation 15.19 and by
-knowing the resonant frequency. The bandwidth is calculated from Equation 15.18 and by knowing the quality
-factor.
-Solution
-a.
-The resonant angular frequency is
-b.
-At this frequency, the average power transferred to the circuit is a maximum. It is
-c.
-The quality factor of the circuit is
-15.5 • Resonance in an AC Circuit
-663
+## Match 2.06 — LibreTexts: 10.1: What is Network Analysis?
+License: GNU Free Documentation License · https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Book%3A_Electric_Circuits_I_-_Direct_Current_(Kuphaldt)/10%3A_DC_Network_Analysis/10.01%3A_What_is_Network_Analysis%3F
 
-We then find for the bandwidth
-Significance
-If a narrower bandwidth is desired, a lower resistance or higher inductance would help. However, a lower
-resistance increases the power transferred to the circuit, which may not be desirable, depending on the
-maximum power that could possibly be transferred.
-CHECK YOUR UNDERSTANDING 15.6
-In the circuit of Figure 15.11,
-and
-(a) What is the resonant
-frequency? (b) What is the impedance of the circuit at resonance? (c) If the voltage amplitude is 10 V, what is
-i(t) at resonance? (d) The frequency of the AC generator is now changed to 200 Hz. Calculate the phase
-difference between the current and the emf of the generator.
-CHECK YOUR UNDERSTANDING 15.7
-What happens to the resonant frequency of an RLC series circuit when the following quantities are increased
-by a factor of 4: (a) the capacitance, (b) the self-inductance, and (c) the resistance?
-CHECK YOUR UNDERSTANDING 15.8
-The resonant angular frequency of an RLC series circuit is
-An ac source operating at this
-frequency transfers an average power of
-to the circuit. The resistance of the circuit is
-Write an expression for the emf of the source.
-
-## Match 1.52 — UniversityPhysicsVolume2-WEB_5eNhMSa § 15.4 Power in an AC Circuit
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Describe how average power from an ac circuit can be written in terms of peak current and voltage and of
-rms current and voltage
-•
-Determine the relationship between the phase angle of the current and voltage and the average power,
-known as the power factor
-A circuit element dissipates or produces power according to
-where I is the current through the
-element and V is the voltage across it. Since the current and the voltage both depend on time in an ac circuit,
-the instantaneous power
-is also time dependent. A plot of p(t) for various circuit elements is
-shown in Figure 15.16. For a resistor, i(t) and v(t) are in phase and therefore always have the same sign (see
-Figure 15.5). For a capacitor or inductor, the relative signs of i(t) and v(t) vary over a cycle due to their phase
-differences (see Figure 15.7 and Figure 15.9). Consequently, p(t) is positive at some times and negative at
-others, indicating that capacitive and inductive elements produce power at some instants and absorb it at
-others.
-656
-15 • Alternating-Current Circuits
-Access for free at openstax.org.
-
-Figure 15.16
-Graph of instantaneous power for various circuit elements. (a) For the resistor,
-whereas for (b) the capacitor
-and (c) the inductor,
-(d) For the source,
-which may be positive, negative, or zero, depending on
-Because instantaneous power varies in both magnitude and sign over a cycle, it seldom has any practical
-importance. What we’re almost always concerned with is the power averaged over time, which we refer to as
-the average power. It is defined by the time average of the instantaneous power over one cycle:
-where
-is the period of the oscillations. With the substitutions
-and
-this integral becomes
-15.4 • Power in an AC Circuit
-657
-
-Using the trigonometric relation
-we obtain
-Evaluation of these two integrals yields
-and
-Hence, the average power associated with a circuit element is given by
-In engineering applications,
-is known as the power factor, which is the amount by which the power
-delivered in the circuit is less than the theoretical maximum of the circuit due to voltage and current being out
-of phase. For a resistor,
-so the average power dissipated is
-A comparison of p(t) and
-is shown in Figure 15.16(d). To make
-look like its dc
-counterpart, we use the rms values
-of the current and the voltage. By definition, these are
-where
-With
-we obtain
-We may then write for the average power dissipated by a resistor,
-This equation further emphasizes why the rms value is chosen in discussion rather than peak values. Both
-equations for average power are correct for Equation 15.13, but the rms values in the formula give a cleaner
-representation, so the extra factor of 1/2 is not necessary.
-Alternating voltages and currents are usually described in terms of their rms values. For example, the 110 V
-from a household outlet is an rms value. The amplitude of this source is
-Because most ac
-meters are calibrated in terms of rms values, a typical ac voltmeter placed across a household outlet will read
-110 V.
-For a capacitor and an inductor,
-respectively. Since
-we find
-15.12
-15.13
-658
-15 • Alternating-Current Circuits
-Access for free at openstax.org.
-
-from Equation 15.12 that the average power dissipated by either of these elements is
-Capacitors and
-inductors absorb energy from the circuit during one half-cycle and then discharge it back to the circuit during
-the other half-cycle. This behavior is illustrated in the plots of Figure 15.16, (b) and (c), which show p(t)
-oscillating sinusoidally about zero.
-The phase angle for an ac generator may have any value. If
-the generator produces power; if
-it absorbs power. In terms of rms values, the average power of an ac generator is written as
-For the generator in an RLC circuit,
-and
-Hence the average power of the generator is
-This can also be written as
-which designates that the power produced by the generator is dissipated in the resistor. As we can see, Ohm’s
-law for the rms ac is found by dividing the rms voltage by the impedance.
-EXAMPLE 15.3
-Power Output of a Generator
-An ac generator whose emf is given by
-is connected to an RLC circuit for which
-,
-, and
-. (a) What is
-the rms voltage across the generator? (b) What is the impedance of the circuit? (c) What is the average power
-output of the generator?
-Strategy
-The rms voltage is the amplitude of the voltage times
-. The impedance of the circuit involves the
-resistance and the reactances of the capacitor and the inductor. The average power is calculated by Equation
-15.14, or more specifically, the last part of the equation, because we have the impedance of the circuit Z, the
-rms voltage
-, and the resistance R.
-Solution
-a.
-Since
-the rms voltage across the generator is
-b.
-The impedance of the circuit is
-15.14
-15.4 • Power in an AC Circuit
-659
-
-c.
-From Equation 15.14, the average power transferred to the circuit is
-Significance
-If the resistance is much larger than the reactance of the capacitor or inductor, the average power is a dc
-circuit equation of
-where V replaces the rms voltage.
-CHECK YOUR UNDERSTANDING 15.4
-An ac voltmeter attached across the terminals of a 45-Hz ac generator reads 7.07 V. Write an expression for the
-emf of the generator.
-CHECK YOUR UNDERSTANDING 15.5
-Show that the rms voltages across a resistor, a capacitor, and an inductor in an ac circuit where the rms current
-is
-are given by
-respectively. Determine these values for the components of
-the RLC circuit of Equation 15.12.
-
-## Match 1.52 — UniversityPhysicsVol1-WEB § 1.4 Dimensional Analysis
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Find the dimensions of a mathematical expression involving physical quantities.
-•
-Determine whether an equation involving physical quantities is dimensionally consistent.
-The dimension of any physical quantity expresses its dependence on the base quantities as a product of
-symbols (or powers of symbols) representing the base quantities. Table 1.3 lists the base quantities and the
-symbols used for their dimension. For example, a measurement of length is said to have dimension L or L1, a
-measurement of mass has dimension M or M1, and a measurement of time has dimension T or T1. Like units,
-dimensions obey the rules of algebra. Thus, area is the product of two lengths and so has dimension L2, or
-length squared. Similarly, volume is the product of three lengths and has dimension L3, or length cubed. Speed
-has dimension length over time, L/T or LT–1. Volumetric mass density has dimension M/L3 or ML–3, or mass
-over length cubed. In general, the dimension of any physical quantity can be written as
-for
-some powers
-and g. We can write the dimensions of a length in this form with
-and the
-remaining six powers all set equal to zero:
-Any quantity with a dimension that can
-be written so that all seven powers are zero (that is, its dimension is
-) is called
-dimensionless (or sometimes “of dimension 1,” because anything raised to the zero power is one). Physicists
-often call dimensionless quantities pure numbers.
-Base Quantity
-Symbol for Dimension
-Length
-L
-Mass
-M
-Time
-T
-Current
-I
-Thermodynamic temperature
-Θ
-Amount of substance
-N
-Luminous intensity
-J
-Table 1.3 Base Quantities and Their Dimensions
-Physicists often use square brackets around the symbol for a physical quantity to represent the dimensions of
-that quantity. For example, if
-is the radius of a cylinder and
-is its height, then we write
-and
-to indicate the dimensions of the radius and height are both those of length, or L. Similarly, if we use the
-symbol
-for the surface area of a cylinder and
-for its volume, then [A] = L2 and [V] = L3. If we use the symbol
-for the mass of the cylinder and
-for the density of the material from which the cylinder is made, then
-and
-The importance of the concept of dimension arises from the fact that any mathematical equation relating
-physical quantities must be dimensionally consistent, which means the equation must obey the following
-rules:
-•
-Every term in an expression must have the same dimensions; it does not make sense to add or subtract
-quantities of differing dimension (think of the old saying: “You can’t add apples and oranges”). In
-particular, the expressions on each side of the equality in an equation must have the same dimensions.
-•
-The arguments of any of the standard mathematical functions such as trigonometric functions (such as
-1.4 • Dimensional Analysis
-21
-
-sine and cosine), logarithms, or exponential functions that appear in the equation must be dimensionless.
-These functions require pure numbers as inputs and give pure numbers as outputs.
-If either of these rules is violated, an equation is not dimensionally consistent and cannot possibly be a correct
-statement of physical law. This simple fact can be used to check for typos or algebra mistakes, to help
-remember the various laws of physics, and even to suggest the form that new laws of physics might take. This
-last use of dimensions is beyond the scope of this text, but is something you will undoubtedly learn later in
-your academic career.
-EXAMPLE 1.4
-Using Dimensions to Remember an Equation
-Suppose we need the formula for the area of a circle for some computation. Like many people who learned
-geometry too long ago to recall with any certainty, two expressions may pop into our mind when we think of
-circles:
-and
-One expression is the circumference of a circle of radius r and the other is its area. But
-which is which?
-Strategy
-One natural strategy is to look it up, but this could take time to find information from a reputable source.
-Besides, even if we think the source is reputable, we shouldn’t trust everything we read. It is nice to have a way
-to double-check just by thinking about it. Also, we might be in a situation in which we cannot look things up
-(such as during a test). Thus, the strategy is to find the dimensions of both expressions by making use of the
-fact that dimensions follow the rules of algebra. If either expression does not have the same dimensions as
-area, then it cannot possibly be the correct equation for the area of a circle.
-Solution
-We know the dimension of area is L2. Now, the dimension of the expression
-is
-since the constant
-is a pure number and the radius
-is a length. Therefore,
-has the dimension of area.
-Similarly, the dimension of the expression
-is
-since the constants
-and
-are both dimensionless and the radius
-is a length. We see that
-has the
-dimension of length, which means it cannot possibly be an area.
-We rule out
-because it is not dimensionally consistent with being an area. We see that
-is dimensionally
-consistent with being an area, so if we have to choose between these two expressions,
-is the one to choose.
-Significance
-This may seem like kind of a silly example, but the ideas are very general. As long as we know the dimensions
-of the individual physical quantities that appear in an equation, we can check to see whether the equation is
-dimensionally consistent. On the other hand, knowing that true equations are dimensionally consistent, we
-can match expressions from our imperfect memories to the quantities for which they might be expressions.
-Doing this will not help us remember dimensionless factors that appear in the equations (for example, if you
-had accidentally conflated the two expressions from the example into
-then dimensional analysis is no
-help), but it does help us remember the correct basic form of equations.
-CHECK YOUR UNDERSTANDING 1.5
-Suppose we want the formula for the volume of a sphere. The two expressions commonly mentioned in
-elementary discussions of spheres are
-and
-One is the volume of a sphere of radius r and the other
-is its surface area. Which one is the volume?
-22
-1 • Units and Measurement
-Access for free at openstax.org.
-
-EXAMPLE 1.5
-Checking Equations for Dimensional Consistency
-Consider the physical quantities
-and
-with dimensions
-and
-Determine whether each of the following equations is dimensionally consistent: (a)
-(b)
-and (c)
-Strategy
-By the definition of dimensional consistency, we need to check that each term in a given equation has the same
-dimensions as the other terms in that equation and that the arguments of any standard mathematical
-functions are dimensionless.
-Solution
-a.
-There are no trigonometric, logarithmic, or exponential functions to worry about in this equation, so we
-need only look at the dimensions of each term appearing in the equation. There are three terms, one in the
-left expression and two in the expression on the right, so we look at each in turn:
-All three terms have the same dimension, so this equation is dimensionally consistent.
-b.
-Again, there are no trigonometric, exponential, or logarithmic functions, so we only need to look at the
-dimensions of each of the three terms appearing in the equation:
-None of the three terms has the same dimension as any other, so this is about as far from being
-dimensionally consistent as you can get. The technical term for an equation like this is nonsense.
-c.
-This equation has a trigonometric function in it, so first we should check that the argument of the sine
-function is dimensionless:
-The argument is dimensionless. So far, so good. Now we need to check the dimensions of each of the two
-terms (that is, the left expression and the right expression) in the equation:
-The two terms have different dimensions—meaning, the equation is not dimensionally consistent. This
-equation is another example of “nonsense.”
-Significance
-If we are trusting people, these types of dimensional checks might seem unnecessary. But, rest assured, any
-textbook on a quantitative subject such as physics (including this one) almost certainly contains some
-equations with typos. Checking equations routinely by dimensional analysis save us the embarrassment of
-using an incorrect equation. Also, checking the dimensions of an equation we obtain through algebraic
-manipulation is a great way to make sure we did not make a mistake (or to spot a mistake, if we made one).
-CHECK YOUR UNDERSTANDING 1.6
-Is the equation v = at dimensionally consistent?
-1.4 • Dimensional Analysis
-23
-
-One further point that needs to be mentioned is the effect of the operations of calculus on dimensions. We have
-seen that dimensions obey the rules of algebra, just like units, but what happens when we take the derivative of
-one physical quantity with respect to another or integrate a physical quantity over another? The derivative of a
-function is just the slope of the line tangent to its graph and slopes are ratios, so for physical quantities v and t,
-we have that the dimension of the derivative of v with respect to t is just the ratio of the dimension of v over
-that of t:
-Similarly, since integrals are just sums of products, the dimension of the integral of v with respect to t is simply
-the dimension of v times the dimension of t:
-By the same reasoning, analogous rules hold for the units of physical quantities derived from other quantities
-by integration or differentiation.
+10.1: What is Network Analysis?
+To illustrate how even a simple circuit can defy analysis by breakdown into series and parallel portions, take start with this series-parallel circuit:
+To analyze the above circuit, one would first find the equivalent of R 2 and R 3 in parallel, then add R 1 in series to arrive at a total resistance. Then, taking the voltage of battery B 1 with that total circuit resistance, the total current could be calculated through the use of Ohm’s Law (I=E/R), then that current figure used to calculate voltage drops in the circuit. All in all, a fairly simple procedure.
+However, the addition of just one more battery could change all of that:
+Resistors R 2 and R 3 are no longer in parallel with each other, because B 2 has been inserted into R 3 ‘s branch of the circuit. Upon closer inspection, it appears there are no two resistors in this circuit directly in series or parallel with each other. This is the crux of our problem: in series-parallel analysis, we started off by identifying sets of resistors that were directly in series or parallel with each other, reducing them to single equivalent resistances. If there are no resistors in a simple series or parallel configuration with each other, then what can we do?
+It should be clear that this seemingly simple circuit, with only three resistors, is impossible to reduce as a combination of simple series and simple parallel sections: it is something different altogether. However, this is not the only type of circuit defying series/parallel analysis:
+Here we have a bridge circuit, and for the sake of example we will suppose that it is not balanced (ratio R 1 /R 4 not equal to ratio R 2 /R 5 ). If it were balanced, there would be zero current through R 3 , and it could be approached as a series/parallel combination circuit (R 1 —R 4 // R 2 —R 5 ). However, any current through R 3 makes a series/parallel analysis impossible. R 1 is not in series with R 4 because there’s another path for electrons to flow through R 3 . Neither is R 2 in series with R 5 for the same reason. Likewise, R 1 is not in parallel with R 2 because R 3 is separating their bottom leads. Neither is R 4 in parallel with R 5 . Aaarrggghhhh!
+Although it might not be apparent at this point, the heart of the problem is the existence of multiple unknown quantities. At least in a series/parallel combination circuit, there was a way to find total resistance and total voltage, leaving total current as a single unknown value to calculate (and then that current was used to satisfy previously unknown variables in the reduction process until the entire circuit could be analyzed). With these problems, more than one parameter (variable) is unknown at the most basic level of circuit simplification.
+With the two-battery circuit, there is no way to arrive at a value for “total resistance,” because there are two sources of power to provide voltage and current (we would need two “total” resistances in order to proceed with any Ohm’s Law calculations). With the unbalanced bridge circuit, there is such a thing as total resistance across the one battery (paving the way for a calculation of total current), but that total current immediately splits up into unknown proportions at each end of the bridge, so no further Ohm’s Law calculations for voltage (E=IR) can be carried out.
+So what can we do when we’re faced with multiple unknowns in a circuit? The answer is initially found in a mathematical process known as simultaneous equations or systems of equations , whereby multiple unknown variables are solved by relating them to each other in multiple equations. In a scenario with only one unknown (such as every Ohm’s Law equation we’ve dealt with thus far), there only needs to be a single equation to solve for the single unknown:
+However, when we’re solving for multiple unknown values, we need to have the same number of equations as we have unknowns in order to reach a solution. There are several methods of solving simultaneous equations, all rather intimidating and all too complex for explanation in this chapter. However, many scientific and programmable calculators are able to solve for simultaneous unknowns, so it is recommended to use such a calculator when first learning how to analyze these circuits.
+This is not as scary as it may seem at first . Trust me!
+Later on we’ll see that some clever people have found tricks to avoid having to use simultaneous equations on these types of circuits. We call these tricks network theorems , and we will explore a few later in this chapter.
+Review
+- Some circuit configurations (“networks”) cannot be solved by reduction according to series/parallel circuit rules, due to multiple unknown values.
+- Mathematical techniques to solve for multiple unknowns (called “simultaneous equations” or “systems”) can be applied to basic Laws of circuits to solve networks.

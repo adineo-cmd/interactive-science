@@ -1,577 +1,141 @@
 # Source pack — subjects/information-technology/foundational/types-and-components-of-computer-systems
 Lesson title: Types and components of computer systems
 Level: foundational
-Match confidence: 1.77
+Match confidence: 1.83
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.77 — UniversityPhysicsVol1-WEB § 2.2 Coordinate Systems and Components of a Vector
+## Match 1.83 — LibreTexts: 2.2.1: Types of Operating Systems (continued)
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://eng.libretexts.org/Courses/Delta_College/Operating_System%3A_The_Basics/02%3A_Operating_System_Overview/2.02%3A_Types_of_Operating_Systems/2.2.01%3A_Types_of_Operating_Systems_(continued)
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Describe vectors in two and three dimensions in terms of their components, using unit vectors along the
-axes.
-•
-Distinguish between the vector components of a vector and the scalar components of a vector.
-•
-Explain how the magnitude of a vector is defined in terms of the components of a vector.
-•
-Identify the direction angle of a vector in a plane.
-•
-Explain the connection between polar coordinates and Cartesian coordinates in a plane.
-Vectors are usually described in terms of their components in a coordinate system. Even in everyday life we
-naturally invoke the concept of orthogonal projections in a rectangular coordinate system. For example, if you
-ask someone for directions to a particular location, you will more likely be told to go 40 km east and 30 km
-north than 50 km in the direction
-north of east.
-2.2 • Coordinate Systems and Components of a Vector
-55
-
-In a rectangular (Cartesian) xy-coordinate system in a plane, a point in a plane is described by a pair of
-coordinates (x, y). In a similar fashion, a vector
-in a plane is described by a pair of its vector coordinates. The
-x-coordinate of vector
-is called its x-component and the y-coordinate of vector
-is called its y-component.
-The vector x-component is a vector denoted by
-. The vector y-component is a vector denoted by
-. In the
-Cartesian system, the x and y vector components of a vector are the orthogonal projections of this vector onto
-the x- and y-axes, respectively. In this way, following the parallelogram rule for vector addition, each vector on
-a Cartesian plane can be expressed as the vector sum of its vector components:
-As illustrated in Figure 2.16, vector
-is the diagonal of the rectangle where the x-component
-is the side
-parallel to the x-axis and the y-component
-is the side parallel to the y-axis. Vector component
-is
-orthogonal to vector component
+2.2.1: Types of Operating Systems (continued)
+3. Distributed Operating System
+Various autonomous interconnected computers communicate each other using a shared communication network. Independent systems possess their own memory unit and CPU. These are referred as
+loosely coupled systems
+or distributed systems. These system’s processors differ in size and function. The major benefit of working with these types of operating system is that it is always possible that one user can access the files or software which are not actually present on his system but on some other system connected within this network i.e., remote access is enabled within the devices connected in that network.
+Advantages of Distributed Operating System:
+- Failure of one will not affect the other network communication, as all systems are independent from each other
+- Electronic mail increases the data exchange speed
+- Since resources are being shared, computation is highly fast and durable
+- Load on host computer reduces
+- These systems are easily scalable as many systems can be easily added to the network
+- Delay in data processing reduces
+Disadvantages of Distributed Operating System:
+- Failure of the main network will stop the entire communication
+- To establish distributed systems the language which are used are not well defined yet
+- These types of systems are not readily available as they are very expensive. Not only that the underlying software is highly complex and not understood well yet
+Examples of Distributed Operating System are- LOCUS .
+4. Network Operating System
+Historically operating systems with networking capabilities were described as network operating system, because they allowed personal computers (PCs) to participate in computer networks and shared file and printer access within a local area network (LAN). This description of operating systems is now largely historical, as common operating systems include a network stack to support a
+client–server model
 .
-Figure 2.16
-Vector
-in a plane in the Cartesian coordinate system is the vector sum of its vector x- and y-components. The x-vector
-component
-is the orthogonal projection of vector
-onto the x-axis. The y-vector component
-is the orthogonal projection of vector
-onto the y-axis. The numbers
-and
-that multiply the unit vectors are the scalar components of the vector.
-It is customary to denote the positive direction on the x-axis by the unit vector
-and the positive direction on
-the y-axis by the unit vector
-. Unit vectors of the axes,
-and
-, define two orthogonal directions in the plane.
-As shown in Figure 2.16, the x- and y- components of a vector can now be written in terms of the unit vectors of
-the axes:
-The vectors
-and
-defined by Equation 2.11 are the vector components of vector
-. The numbers
-and
-that define the vector components in Equation 2.11 are the scalar components of vector
-. Combining
-Equation 2.10 with Equation 2.11, we obtain the component form of a vector:
-If we know the coordinates
-of the origin point of a vector (where b stands for “beginning”) and the
-coordinates
-of the end point of a vector (where e stands for “end”), we can obtain the scalar
-components of a vector simply by subtracting the origin point coordinates from the end point coordinates:
-2.10
-2.11
-2.12
-56
-2 • Vectors
-Access for free at openstax.org.
-
-EXAMPLE 2.3
-Displacement of a Mouse Pointer
-A mouse pointer on the display monitor of a computer at its initial position is at point (6.0 cm, 1.6 cm) with
-respect to the lower left-side corner. If you move the pointer to an icon located at point (2.0 cm, 4.5 cm), what is
-the displacement vector of the pointer?
-Strategy
-The origin of the xy-coordinate system is the lower left-side corner of the computer monitor. Therefore, the
-unit vector
-on the x-axis points horizontally to the right and the unit vector
-on the y-axis points vertically
-upward. The origin of the displacement vector is located at point b(6.0, 1.6) and the end of the displacement
-vector is located at point e(2.0, 4.5). Substitute the coordinates of these points into Equation 2.13 to find the
-scalar components
-and
-of the displacement vector
-. Finally, substitute the coordinates into Equation
-2.12 to write the displacement vector in the vector component form.
-Solution
-We identify
+These limited client/server networks were gradually replaced by Peer-to-peer networks, which used networking capabilities to share resources and files located on a variety of computers of all sizes. A peer-to-peer network sets all connected computers equal; they all share the same abilities to use resources available on the network. The most popular peer-to-peer networks as of 2020 are Ethernet, Wi-Fi and the Internet protocol suite. Software that allowed users to interact with these networks, despite a lack of networking support in the underlying manufacturer's operating system, was sometimes called a network operating system. Examples of such add-on software include Phil Karn's KA9Q NOS (adding Internet support to CP/M and MS-DOS), PC/TCP Packet Drivers (adding Ethernet and Internet support to MS-DOS), and LANtastic (for MS-DOS, Microsoft Windows and OS/2), and Windows for Workgroups (adding NetBIOS to Windows). Examples of early operating systems with peer-to-peer networking capabilities built-in include MacOS (using AppleTalk and LocalTalk), and the Berkeley Software Distribution.
+Today, distributed computing and groupware applications have become the norm. Computer operating systems include a networking stack as a matter of course. During the 1980s the need to integrate dissimilar computers with network capabilities grew and the number of networked devices grew rapidly. Partly because it allowed for multi-vendor interoperability, and could route packets globally rather than being restricted to a single building, the Internet protocol suite became almost universally adopted in network architectures. Thereafter, computer operating systems and the firmware of network devices tended to support Internet protocols.
+Advantages of Network Operating System:
+- Highly stable centralized servers
+- Security concerns are handled through servers
+- New technologies and hardware up-gradation are easily integrated to the system
+- Server access are possible remotely from different locations and types of systems
+Disadvantages of Network Operating System:
+- Servers are costly
+- User has to depend on central location for most operations
+- Maintenance and updates are required regularly
+Examples of Network Operating System are: Microsoft Windows Server 2003, Microsoft Windows Server 2008, UNIX, Linux, Mac OS X, Novell NetWare, and BSD etc.
+Adapted from:
+"Types of Operating Systems"
+by
+akash1295
 ,
+Geeks for Geeks
+is licensed under
+CC BY-SA 4.0
+"Network operating system"
+by
+Multiple Contributors
 ,
-, and
-, where the physical unit is 1 cm. The scalar x- and
-y-components of the displacement vector are
-The vector component form of the displacement vector is
-This solution is shown in Figure 2.17.
-Figure 2.17
-The graph of the displacement vector. The vector points from the origin point at b to the end point at e.
-Significance
-Notice that the physical unit—here, 1 cm—can be placed either with each component immediately before the
-unit vector or globally for both components, as in Equation 2.14. Often, the latter way is more convenient
-because it is simpler.
-2.13
-2.14
-2.2 • Coordinate Systems and Components of a Vector
-57
+Wikipedia
+is licensed under
+CC BY-SA 3.0
 
-The vector x-component
-of the displacement vector has the magnitude
-because the magnitude of the unit vector is
-. Notice, too, that the direction of the
-x-component is
-, which is antiparallel to the direction of the +x-axis; hence, the x-component vector
-points to the left, as shown in Figure 2.17. The scalar x-component of vector
-is
-.
-Similarly, the vector y-component
-of the displacement vector has magnitude
-because the magnitude of the unit vector is
-. The direction of the y-component is
-, which is parallel to
-the direction of the +y-axis. Therefore, the y-component vector
-points up, as seen in Figure 2.17. The scalar
-y-component of vector
-is
-. The displacement vector
-is the resultant of its two vector
-components.
-The vector component form of the displacement vector Equation 2.14 tells us that the mouse pointer has been
-moved on the monitor 4.0 cm to the left and 2.9 cm upward from its initial position.
-CHECK YOUR UNDERSTANDING 2.4
-A blue fly lands on a sheet of graph paper at a point located 10.0 cm to the right of its left edge and 8.0 cm
-above its bottom edge and walks slowly to a point located 5.0 cm from the left edge and 5.0 cm from the bottom
-edge. Choose the rectangular coordinate system with the origin at the lower left-side corner of the paper and
-find the displacement vector of the fly. Illustrate your solution by graphing.
-When we know the scalar components
-and
-of a vector
-, we can find its magnitude A and its direction
-angle
-. The direction angle—or direction, for short—is the angle the vector forms with the positive direction
-on the x-axis. The angle
-is measured in the counterclockwise direction from the +x-axis to the vector
-(Figure 2.18). Because the lengths A,
-, and
-form a right triangle, they are related by the Pythagorean
-theorem:
-This equation works even if the scalar components of a vector are negative. The direction angle
-of a vector
-is defined via the tangent function of angle
-in the triangle shown in Figure 2.18:
-Figure 2.18
-When the vector lies either in the first quadrant or in the fourth quadrant, where component
-is positive (Figure 2.19), the
-2.15
-2.16
-58
-2 • Vectors
-Access for free at openstax.org.
+## Match 1.82 — LibreTexts: 2.2: Types of Operating Systems
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://eng.libretexts.org/Courses/Delta_College/Operating_System%3A_The_Basics/02%3A_Operating_System_Overview/2.02%3A_Types_of_Operating_Systems
 
-direction angle
-in Equation 2.16) is identical to the angle
-.
-When the vector lies either in the first quadrant or in the fourth quadrant, where component
-is positive
-(Figure 2.19), the angle
-in Equation 2.16 is identical to the direction angle
-. For vectors in the fourth
-quadrant, angle
-is negative, which means that for these vectors, direction angle
-is measured clockwise
-from the positive x-axis. Similarly, for vectors in the second quadrant, angle
-is negative. When the vector lies
-in either the second or third quadrant, where component
-is negative, the direction angle is
-(Figure 2.19).
-Figure 2.19
-Scalar components of a vector may be positive or negative. Vectors in the first quadrant (I) have both scalar components
-positive and vectors in the third quadrant have both scalar components negative. For vectors in quadrants II and III, the direction angle of a
-vector is
-.
-EXAMPLE 2.4
-Magnitude and Direction of the Displacement Vector
-You move a mouse pointer on the display monitor from its initial position at point (6.0 cm, 1.6 cm) to an icon
-located at point (2.0 cm, 4.5 cm). What are the magnitude and direction of the displacement vector of the
-pointer?
-Strategy
-In Example 2.3, we found the displacement vector
-of the mouse pointer (see Equation 2.14). We identify its
-scalar components
-and
-and substitute into Equation 2.15 and Equation 2.16 to
-find the magnitude D and direction
-, respectively.
-Solution
-The magnitude of vector
-is
-The direction angle is
-Vector
-lies in the second quadrant, so its direction angle is
-2.2 • Coordinate Systems and Components of a Vector
-59
-
-CHECK YOUR UNDERSTANDING 2.5
-If the displacement vector of a blue fly walking on a sheet of graph paper is
-, find its
-magnitude and direction.
-In many applications, the magnitudes and directions of vector quantities are known and we need to find the
-resultant of many vectors. For example, imagine 400 cars moving on the Golden Gate Bridge in San Francisco
-in a strong wind. Each car gives the bridge a different push in various directions and we would like to know
-how big the resultant push can possibly be. We have already gained some experience with the geometric
-construction of vector sums, so we know the task of finding the resultant by drawing the vectors and
-measuring their lengths and angles may become intractable pretty quickly, leading to huge errors. Worries like
-this do not appear when we use analytical methods. The very first step in an analytical approach is to find
-vector components when the direction and magnitude of a vector are known.
-Let us return to the right triangle in Figure 2.18. The quotient of the adjacent side
-to the hypotenuse A is
-the cosine function of direction angle
+2.2: Types of Operating Systems
+What are the Types of Operating Systems
+An Operating System performs all the basic tasks like managing file,process, and memory. Thus operating system acts as manager of all the resources, i.e. resource manager . Thus operating system becomes an interface between user and machine.
+Types of Operating Systems: Some of the widely used operating systems are as follows-
+1. Batch Operating System
+This type of operating system does not interact with the computer directly. There is an operator which takes similar jobs having same requirement and group them into batches. It is the responsibility of operator to sort the jobs with similar needs.
+Advantages of Batch Operating System:
+- It is very difficult to guess or know the time required by any job to complete. Processors of the batch systems know how long the job would be when it is in queue
+- Multiple users can share the batch systems
+- The idle time for batch system is very less
+- It is easy to manage large work repeatedly in batch systems
+Disadvantages of Batch Operating System:
+- The computer operators should be well known with batch systems
+- Batch systems are hard to debug
+- It is sometime costly
+- The other jobs will have to wait for an unknown time if any job fails
+Examples of Batch based Operating System: Payroll System, Bank Statements etc.
+2. Time-Sharing Operating Systems
+Each task is given some time to execute, so that all the tasks work smoothly. Each user gets time of CPU as they use single system. These systems are also known as Multitasking Systems. The task can be from single user or from different users also. The time that each task gets to execute is called quantum. After this time interval is over OS switches over to next task.
+Advantages of Time-Sharing OS:
+- Each task gets an equal opportunity
+- Less chances of duplication of software
+- CPU idle time can be reduced
+Disadvantages of Time-Sharing OS:
+- Reliability problem
+- One must have to take care of security and integrity of user programs and data
+- Data communication problem
+Examples of Time-Sharing OSs are: Linux, Unix etc.
+Adapted from:
+"Types of Operating Systems"
+by
+akash1295
 ,
-, and the quotient of the opposite side
-to the
-hypotenuse A is the sine function of
-,
-. When magnitude A and direction
-are known, we
-can solve these relations for the scalar components:
-When calculating vector components with Equation 2.17, care must be taken with the angle. The direction
-angle
-of a vector is the angle measured counterclockwise from the positive direction on the x-axis to the
-vector. The clockwise measurement gives a negative angle.
-EXAMPLE 2.5
-Components of Displacement Vectors
-A rescue party for a missing child follows a search dog named Trooper. Trooper wanders a lot and makes many
-trial sniffs along many different paths. Trooper eventually finds the child and the story has a happy ending, but
-his displacements on various legs seem to be truly convoluted. On one of the legs he walks 200.0 m southeast,
-then he runs north some 300.0 m. On the third leg, he examines the scents carefully for 50.0 m in the direction
-west of north. On the fourth leg, Trooper goes directly south for 80.0 m, picks up a fresh scent and turns
-west of south for 150.0 m. Find the scalar components of Trooper’s displacement vectors and his
-displacement vectors in vector component form for each leg.
-Strategy
-Let’s adopt a rectangular coordinate system with the positive x-axis in the direction of geographic east, with
-the positive y-direction pointed to geographic north. Explicitly, the unit vector
-of the x-axis points east and
-the unit vector
-of the y-axis points north. Trooper makes five legs, so there are five displacement vectors. We
-start by identifying their magnitudes and direction angles, then we use Equation 2.17 to find the scalar
-components of the displacements and Equation 2.12 for the displacement vectors.
-Solution
-On the first leg, the displacement magnitude is
-and the direction is southeast. For direction
-angle
-we can take either
-measured clockwise from the east direction or
-measured
-counterclockwise from the east direction. With the first choice,
-. With the second choice,
-. We can use either one of these two angles. The components are
-2.17
-60
-2 • Vectors
-Access for free at openstax.org.
+Geeks for Geeks
+is licensed under
+CC BY-SA 4.0
 
-The displacement vector of the first leg is
-On the second leg of Trooper’s wanderings, the magnitude of the displacement is
-and the
-direction is north. The direction angle is
-. We obtain the following results:
-On the third leg, the displacement magnitude is
-and the direction is
-west of north. The
-direction angle measured counterclockwise from the eastern direction is
-. This gives
-the following answers:
-On the fourth leg of the excursion, the displacement magnitude is
-and the direction is south. The
-direction angle can be taken as either
-or
-. We obtain
-On the last leg, the magnitude is
-and the angle is
-west of south),
-which gives
-CHECK YOUR UNDERSTANDING 2.6
-If Trooper runs 20 m west before taking a rest, what is his displacement vector?
-Polar Coordinates
-To describe locations of points or vectors in a plane, we need two orthogonal directions. In the Cartesian
-coordinate system these directions are given by unit vectors
-and
-along the x-axis and the y-axis,
-respectively. The Cartesian coordinate system is very convenient to use in describing displacements and
-velocities of objects and the forces acting on them. However, it becomes cumbersome when we need to
-describe the rotation of objects. When describing rotation, we usually work in the polar coordinate system.
-In the polar coordinate system, the location of point P in a plane is given by two polar coordinates (Figure
-2.20). The first polar coordinate is the radial coordinate r, which is the distance of point P from the origin. The
-second polar coordinate is an angle
-that the radial vector makes with some chosen direction, usually the
-positive x-direction. In polar coordinates, angles are measured in radians, or rads. The radial vector is
-attached at the origin and points away from the origin to point P. This radial direction is described by a unit
-radial vector
-. The second unit vector
-is a vector orthogonal to the radial direction
-. The positive
-direction indicates how the angle
-changes in the counterclockwise direction. In this way, a point P that has
-2.2 • Coordinate Systems and Components of a Vector
-61
+## Match 1.81 — LibreTexts: 1.2: Identifying the Components of Information Systems
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://workforce.libretexts.org/Courses/Evergreen_Valley_College/Information_Systems_for_Business_(Revised_1st_Edition_2021)/01%3A_What_is_an_Information_System/01%3A_What_Is_an_Information_System/1.02%3A_Identifying_the_Components_of_Information_Systems
 
-coordinates (x, y) in the rectangular system can 
-
-## Match 1.52 — Biology2e-WEB_ICOFkGu § 38.1 Types of Skeletal Systems
-
-By the end of this section, you will be able to do the following:
-•
-Discuss the different types of skeletal systems
-•
-Explain the role of the human skeletal system
-•
-Compare and contrast different skeletal systems
-Figure 38.1 Improvements in the design of prostheses have allowed for a wider range of activities
-in recipients. (credit: modification of work by Stuart Grout)
-INTRODUCTION The muscular and skeletal systems provide support to the body and allow for a wide
-range of movement. The bones of the skeletal system protect the body’s internal organs and support the
-weight of the body. The muscles of the muscular system contract and pull on the bones, allowing for
-movements as diverse as standing, walking, running, and grasping items.
-Injury or disease affecting the musculoskeletal system can be very debilitating. In humans, the most
-common musculoskeletal diseases worldwide are caused by malnutrition. Ailments that affect the joints
-are also widespread, such as arthritis, which can make movement difficult and—in advanced
-cases—completely impair mobility. In severe cases in which the joint has suffered extensive damage,
-joint replacement surgery may be needed.
-Progress in the science of prosthesis design has resulted in the development of artificial joints, with joint
-replacement surgery in the hips and knees being the most common. Replacement joints for shoulders,
-elbows, and fingers are also available. Even with this progress, there is still room for improvement in the
-design of prostheses. The state-of-the-art prostheses have limited durability and therefore wear out
-quickly, particularly in young or active individuals. Current research is focused on the use of new
-materials, such as carbon fiber, that may make prostheses more durable.
-Chapter Outline
-
-## Match 1.51 — Introduction_to_Political_Science_-_WEB § 11.3 Types of Legal Systems around the World
-
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Describe the different types of legal systems and explain how they differ.
-•
-Explain how the rule of law applies in different judicial systems.
-•
-Analyze how different judicial systems operate.
-There are five basic types of legal systems in the world. They are civil law, common law, customary law,
-religious law, and hybrid or mixed systems. Today, mixed or hybrid systems are common. Because each
-system varies by country, this chapter will focus on the characteristic traits of each kind of system.
-11.3 • Types of Legal Systems around the World
-345
-
-FIGURE 11.4 This map shows the different types of legal systems in place around the world.43 (attribution:
-Copyright Rice University, OpenStax, under CC BY 4.0 license)
-Note that before discussing different law systems, it is important to distinguish between what the term civil
-means in the context of legal systems and what it means in terms of civil versus criminal laws.
-Common Law Systems
-The US legal system, and other legal systems that emanate from British rule, is a common law system.44
-Originally, common law meant judge-made law that filled in gaps when there was no written law. Judges looked
-to prior decisions to determine the unwritten judge-made law and apply it to new cases. However, today,
-almost all law is in writing and enacted by a legislature as statutes. Many statutes codify established common
-law, change it, or abolish it altogether, depending on the topic of the law. There are instances in which some
-unwritten common law is still enforced, but these are rare.
-In a common law system such as the one in the United States, the courts’ reliance on precedent is referred to
-as stare decisis, or a policy of using judicial decisions made in the past to interpret written laws and
-appropriately apply those laws to the facts in the present case.45 The court interprets written laws, and these
-interpretations and applications of precedent from prior interpretations constitute what is meant by common
-law today. Precedent is critical for interpreting later cases, and only the same or a higher court can overturn
-precedent. The court process is adversarial rather than investigatory, with each side trying to win or persuade
-the court to agree with its perspective.46
-VIDEO
-What Is Precedent?
-Click to view content (https://openstax.org/books/introduction-political-science/pages/11-3-types-of-legal-
-systems-around-the-world)
-This video discusses precedent and its importance in common law systems.
-Common law courts are adversarial; that is, there is a winner-takes-all attitude in the court. In an adversarial
-system, each side determines the issues and questions it wants the court to resolve, conducts its own
-investigation, and prepares and presents its own evidence. Each side calls witnesses, who are questioned
-directly and by cross-examination. Each side brings out information it thinks is pertinent to prove its point. In
-a criminal case, the police and prosecutor work together closely to establish their viewpoint using the
-346
-11 • Courts and Law
-Access for free at openstax.org
-
-government’s resources. Defendants must rely on their own resources to defend against the charges, either
-hiring an attorney or using a court-appointed one. In a civil case, the procedures are similar; however, each
-side must rely on its resources to prove its point. If a jury is present, it decides all factual questions while the
-judge determines the legal issues and moderates the proceedings. In some cases, the judge can act as a fact
-finder in place of a jury.
-Civil Law Systems
-Most of Europe and South America use a civil law system.47 A civil law system relies on comprehensive legal
-codes that contain all laws for the country. Case law—that is, judicial decisions—is secondary to these codes.
-Decisions are binding only on the parties to the case, not as a precedent for later cases on the same issues.
-While attorneys will consult prior decisions when advising clients, judges are rarely bound to follow precedent.
-For this reason, codes of statutes are usually more extensive and detailed than in common law systems.
-In civil law systems, court cases are investigations by the court to see how the facts fit into the already
-established codes applicable to the situation. The court system is set up so that the jurisdiction of each court is
-a specific type of code: tax courts, administrative courts, maritime courts, constitutional courts, and so on.
-The system is more inquisitorial than adversarial. The process is a series of meetings, hearings, and written
-communications in which the judge takes testimony. The judge crafts the issues to be decided based on
-discussions with the parties. Typically, the judge questions the witnesses and can include or exclude any
-queries submitted by the attorneys when crafting questions. Finally, the judge determines the issues and
-gathers the evidence before announcing a decision.48 Only at the final hearing do the attorneys and parties
-make arguments to the judge. If there is a jury, its members usually are not drawn from the general public but
-are selected for their expertise in the particular area in question. While juries of ordinary people are rare in
-civil law systems, they are increasingly used in serious criminal cases.
-These two systems, common law and civil law systems, are the most widely used legal systems in the world.
-They differ in terms of the weight they give to judicial precedent and their views on the purpose of the trial
-process.
-Religious Systems
-In a religious law system, the law relies on religious texts as its primary basis, and the courts interpret the
-present facts and statutes in light of those religious texts. Many Middle Eastern countries use religious law
-systems for all or part of their laws.49 For example, in Saudi Arabia, the legal system is based on sharia law,
-derived from the Koran, the Islamic religious text, as well as from the Sunnah and the Hadith.50 The legislature
-enacts statutes, but all are tested against Islamic tenets. Certain religious leaders can overrule any government
-act, including court decisions, on religious grounds. The legal system includes general and summary sharia
-courts, with some administrative tribunals for specific topics. Religious law systems do not use juries, and
-criminal trials do not present defensive evidence to the same extent as in other legal systems. Each judge, a
-specialist in the religious sharia text, makes their interpretation of the law and is not bound by any precedent.
-Israel also uses some religious laws and courts to determine cases.51 For example, religious courts in Israel
-include Jewish rabbinical courts, Islamic sharia courts, Druze religious courts, and ecclesiastical courts of the
-10 recognized Christian communities. In Israel, these courts are limited to some specific issues of family law.
-The secular court system decides all other matters.
-Customary Systems
-A customary law system is a system based on long-standing traditions in a particular community. The
-traditions have become so ingrained in society that the courts recognize them as enforceable rules. However, it
-is rare for customary laws to be interpreted and enforced by the government. Instead, select leaders of the
-group usually implement the customary laws. As a result, customary laws are typically unwritten and revealed
-only to group members. Today, customary laws are found in closed, isolated communities combined with
-11.3 • Types of Legal Systems around the World
-347
-
-common or civil law systems, allowing them to exist alongside government systems in a hybrid system.
-Andorra, a small country in the Pyrenees bordering Spain and France, relies partly on customary law. In
-Andorra, sources of customary law include canon law, the ecclesiastical law of the Catholic Church, Castilian
-law, French law, and Roman law. Andorra was invaded and under the control of other European powers at
-different times in its history, and the Andorran legal system now reflects elements of each invader’s laws.
-Today, Andorra is a parliamentary co-principality between the president of France and the Roman Catholic
-bishop of Catalonia (Urgell). Andorra also has an elected parliament that can enact new laws.52
-Common Law
-Civil Law
-Religious Law
-Customary Law
-Other Names
-Judge-made law; Anglo-
-American law
-Continental law;
-European law; Roman
-law
-Differs by religion;
-two prominent ones
-are sharia (Islamic
-law) and halakha
-(Jewish law)
-Differs by area,
-ethnicity, and tribe
-Source of Law
-Case law and statutes,
-which may be organized
-in codes
-Statutes organized in
-codes
-Religious texts
-Long-standing
-customs, which
-may be oral or
-written
-Degree of
-Judicial
-Independence
-High; important to society
-that judiciary appears to
-be independent of
-executive and legislature
-High; important to
-society that judiciary
-appears to be
-independent of
-executive and
-legislature
-Wide range, from
-very limited to high
-Wide range, from
-limited to high
-Judges
-Wide variety of selection
-and qualification
-standards
-Career position
-requiring training and
-testing; civil servants
-Religious and legal
-training
-Varies widely with
-customs of the area
-Policy-Making
-Role
-Due to stare decisis,
-shares power with
-individuals who come
-before the court and with
-government branches
-Equal but separate
-power as the enforcer
-of codes
-Depends on territory
-and topic area;
-paramount in some
-cases, advisory only
-in others
-Depends on
-territory and topic
-area; paramount in
-some cases,
-advisory only in
-others
-Examples
-US (except Louisiana),
-UK, Canada (except
-Quebec)
-All European Union
-countries, Quebec,
-Louisiana
-Saudi Arabia, Iran,
-United Arab
-Emirates, Israel
-Guernsey, Andorra
-TABLE 11.1 Differences among Major Legal Systems
-The island of Guernsey is another example of a customary law system. Though it is one of the Channel Islands
-off the coast of England, Guernsey is not part of the United Kingdom. Guernsey’s legal system is derived from
-the medieval power of the monarch, the Duke of Normandy.53 The ancient duchy law of Normandy is an
-influential source of law in Guernsey. The duchy laws developed in two periods, the Ancienne coutume of
-1199–1538 and the Coutume reformée of 1538–1804.54 Guernsey’s legal system also has elements of English
-common law and modern statutory law enacted by the island’s elected legislature. Guernsey enjoys almost
-348
-11 • Courts and Law
-Access for free at openstax.org
-
-complete autonomy over its internal affairs, and the country determines many issues based on ancient
-customary laws, with elected bailiffs and jurats making decisions.55
-In the United States, some customary laws may be used in tribal matters on tribal lands recognized by the US
-government.56 However, the US government does exercise some control over tribal legal systems in the United
-States. There is a growing worldwide movement to recognize tribal autonomy and customary legal systems.57
-For example, some Maori customary law is now recognized in New Zealand.58
-Hybrid or Mixed Systems
-A hybrid legal system combines parts of more than one approach to create a system unique to the country.
-Many countries have mixed legal systems incorporating common, civil, religious, and customary law
-systems.59 For example, the US state of Louisiana has a hybrid system. Louisiana uses some common law, but
-it also utilizes a civil law system for much of its state law and procedures because of its origins as a French
-territory. Also, on recognized tribal lands, customary laws of the tribe may be used rather than state or federal
-laws. Another example is the Philippine system, which includes French civil law, US-style common law, sharia
-law, and Indigenous customary law due to its history.60 Many African countries include a parallel tribal or
-ethnic legal system to adjudicate family law matters.61
-FIGURE 11.5 This map shows the different types of legal systems present in Africa. (attribution: Copyright Rice
-University, OpenStax, under CC BY 4.0 license)
-11.3 • Types of Legal Systems around the World
-349
-
+1.2: Identifying the Components of Information Systems
+Let’s use your experience as users to understand the above definitions. For example, let’s say you work for a small business, and your manager asks you to track the expenses of the business and send her the list so that she can see where the money has gone. You decide to use a spreadsheet on your laptop to enter the list of expenses you have collected and then email the spreadsheet to her once you are done. You will need to have a system, a laptop, a spreadsheet running and connect to email, and an internet connection . All these components must work together perfectly! In essence, you are using the interrelated components in an IS to allow it to collect, process, store, and disseminate information. The role of this IS system is to enable you to create new value (i.e., expense tracker) and for your manager to use the information you disseminate “to support decision making, coordination, control, analysis, and visualization in an organization.” (Laudon et al., 2011) You and your manager have obtained your goals through the processes you have created to capture the data, calculate it, check it, and how and when your manager receives the new information you created to make her decision to manage her company.
+Hence, information systems can be viewed as having six major components: hardware, software, network communications, data, people, and processes.
+Each has a specific role, and all roles must work together to have a working information system. In this book, we group the first four components as Technology. People and Processes are the two components that deliver value to organizations in how they use the collection of technologies to meet specific organizations’ goals.
+Technology
+Technology can be thought of as the application of scientific knowledge for practical purposes. From the invention of the wheel to the harnessing of electricity for artificial lighting, technology is a part of our lives in so many ways that we tend to take it for granted. As discussed before, the first four components of information systems – hardware, software, network communication, and data, are all technologies that must integrate well together. Each of these will get its own chapter and a much lengthier discussion, but we will take a moment to introduce them to give you a big picture of what each component is and how they work together.
+Hardware
+Hardware represents the physical components of an information system . So me can be seen or touched easily, while others reside inside a device that can only be seen by opening up the device's case. K eyboards , mice, pens, disk drives, iPads, printers, and flash drives are all visible examples. Computer chips, motherboards, and internal memory chips are the hardware that resides inside a computer case and not usually visible from the outside. Chapter 2 will go into more details to discuss how they function and work together. For example, users use a keyboard to enter data or use a pen to draw a picture.
+Software
+Software is a set of instructions that tell the hardware what to do. Software is not tangible – it cannot be touched. Programmers create software programs by following a specific process to enter a list of instructions that tell the hardware what to do. There are several categories of software, with the two main categories being operating-system and application software .
+Operating system software provides an interface between the hardware and application to protect the programmers from learning about the underlying hardware's specifics. Chapter 3 will discuss Software more thoroughly. Here are a few examples:
+|
+Devices |
+Operating Systems |
+Applications |
+|---|---|---|
+|
+Desktop |
+Apple macOS, Microsoft Windows |
+Adobe Photoshop, Microsoft Excel, Google Map |
+|
+Mobile |
+Google Android, Apple iOS |
+Texting, Google Map |
+Data
+The third component is data. You can think of data as a collection of non-disputable raw facts. For example, your first name, driver's license number, the city you live in, a picture of your pet, a clip of your voice, and your phone number are all pieces of raw data. You can see or hear your data, but by themselves, they don’t give you any additional meanings beyond the data itself. For example, you can read a driver's license number of a person, you may recognize it as a driver's license number, but you know nothing else about this person. They are typically what IS would need to collect from you or other sources. However, once these raw data are aggregated, indexed, and organized together into a logical fashion using software such as a spreadsheet, or a database, the collection of these organized data will present new information and insights that a single raw fact can’t convey. The example of collecting all expenses (i.e., raw data) to create an expense tracker (new information derived) discussed earlier is also a good example. In fact, all of the definitions presented at the beginning of this chapter focused on how information systems manage data. Organizations collect all kinds of data, processed and organized them in some fashion, and use it to make decisions. These decisions can then be analyzed as to their effectiveness, and the organization can be improved. Chapter 4 will focus on data and databases and their uses in organizations.
+Networking Communication
+The components of hardware, software, and data have long been considered the core technology of information systems. However, networking communication is another component of an IS that some believe should be in its own category. An information system can exist without the ability to communicate. For instance, the first personal computers were stand-alone machines that did not have access to the Internet. Information Systems, however, have evolved since they were developed. For example, we used to have only desktop operating system software or hardware. However, in today’s environment, the operating system software now includes mobile OS, and hardware now includes other hardware devices besides desktops. It is extremely rare for a computer device that does not connect to another device or a network. Chapter 5 will go into this topic in greater detail.
+People
+People built computers for people to use. This means that there are many different categories in the development and management of information systems to help organizations to create value and improve productivity, such as:
+- Users : these are the people who actually use an IS to perform a job function or task. Examples include: a student uses a spreadsheet or a word processing software program.
+- Technical Developers : these are the people who actually create the technologies used to build an information system. Examples include a computer chip engineer, a software programmer, and an application programmer.
+- Business Professionals : these are the CEOs, owners, managers, entrepreneurs, employees who use IS to start or expand their business to perform their job functions such as accounting, marketing, sales, human resources, support customers, among others. Examples include famous CEOs such as Jeff Bezos of Amazon, Steve Jobs of Apple, Bill Gates of Microsoft , and Marc Benioff of Salesforce.
+- IT Support : These specialized professionals are trained to keep the information systems running smoothly to support the business and keep it safe from illegal attacks. Examples include network analysts, data center support, help-desk support.
+These are just some of the key people; more details will be covered in Chapters 9 and 10.
+Process
+The last component of information systems is Process . A business process is a series of steps undertaken to achieve a desired outcome or goal. Businesses have to continually innovate to either create more revenues through new products and services that fulfill customers’ needs or to find cost-saving opportunities in the ways they run their companies . Simply automating activities using technology is not enough. Information systems are becoming more and more integrated with organizational processes to deliver value in revenue-generating and cost-saving activities that can give companies competitive advantages over their competitors. Specialized standards or processes such as “business process reengineering,” “business process management,” “enterprise resource planning,” and “customer relationship management” all have to do with the continued improvement of these business procedures and the integration of technology with them to improve internal efficiencies and to gain a deeper understanding of customers’ needs. Businesses hoping to gain an advantage over their competitors are highly focused on this component of information systems. We will discuss processes in Chapter 8.
+Reference
+Laudon, K. C., & Laudon, J. P. (2011). Management information systems. Upper Saddle River, NJ: Prentice-Hall.

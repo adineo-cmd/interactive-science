@@ -1,537 +1,109 @@
 # Source pack — subjects/special-education/foundational/special-education-law-and-the-iep
 Lesson title: Special Education Law and the IEP
 Level: foundational
-Match confidence: 2.03
+Match confidence: 2.06
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.03 — IntroductiontoSociology3e-WEB_9QTqRGQ § 16.1 Education around the World
+## Match 2.06 — LibreTexts: 4.3: Public Policies on Including Children with Special Needs
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Early_Childhood_Education/Observation_and_Assessment_in_Early_Childhood_Education_(Peterson_and_Elam)/04%3A_The_Purpose_Process_and_Practice_of_Monitoring_Screening_and_Evaluating/4.03%3A_Public_Policies_on_Including_Children_with_Special_Needs
 
-LEARNING OBJECTIVES
-By the end of this section, you should be able to:
-•
-Identify differences in educational resources around the world
-•
-Describe the concept of universal access to education
-FIGURE 16.3 These students in Cambodia have a relatively informal classroom setting. Other schools, both nearby
-and around the world, have very different environments and practices. (Credit: Nguyen Hun Vu/flickr)
-Education is a social institution through which members of a society are taught basic academic knowledge,
-learning skills, and cultural norms. Every nation in the world is equipped with some form of education system,
-though those systems vary greatly. The major factors that affect education systems are the resources and
-money that are utilized to support those systems in different nations. As you might expect, a country’s wealth
-has much to do with the amount of money spent on education. Countries that do not have such basic amenities
-as running water are unable to support robust education systems or, in many cases, any formal schooling at all.
-The result of this worldwide educational inequality is a social concern for many countries, including the
-United States.
-International differences in education systems are not solely a financial issue. The value placed on education,
-the amount of time devoted to it, and the distribution of education within a country also play a role in those
-differences. For example, students in South Korea spend 220 days a year in school, compared to the 180 days a
-year of their United States counterparts (Pellissier 2010).
-Then there is the issue of educational distribution and changes within a nation. The Program for International
-Student Assessment (PISA) is administered to samples of fifteen-year-old students worldwide. In 2010, the
-results showed that students in the United States had fallen from fifteenth to twenty-fifth in the rankings for
-science and math (National Public Radio 2010). The same program showed that by 2018, U.S. student
-achievement had remained on the same level for mathematics and science, but had shown improvements in
-reading. In 2018, about 4,000 students from about 200 high schools in the United States took the PISA test
-(OECD 2019).
-Analysts determined that the nations and city-states at the top of the rankings had several things in common.
-For one, they had well-established standards for education with clear goals for all students. They also recruited
-teachers from the top 5 to 10 percent of university graduates each year, which is not the case for most
-countries (National Public Radio 2010).
-Finally, there is the issue of social factors. One analyst from the Organization for Economic Cooperation and
-Development, the organization that created the PISA test, attributed 20 percent of performance differences
-and the United States’ low rankings to differences in social background. Researchers noted that educational
-16.1 • Education around the World
-469
+4.3: Public Policies on Including Children with Special Needs
+-
+- Last updated
+- Save as PDF
+- Gina Peterson and Emily Elam
+- College of the Canyons
+Public Policies on Including Children with Special Needs
+Throughout the past 40 years there have been some significant changes in both state and federal laws, as well as with public policy and social attitudes towards integrating children with special needs and learning disabilities into typical classroom settings. Stigmas from the past have dissipated and more inclusive practices are in place. In addition to Federal laws such as the Individuals with Disabilities Act (IDEA) and the Americans with Disabilities Act (ADA), there are national associations such as the Division for Early Childhood (DEC) and the National Association for the Education of Young Children (NAEYC) who rally to protect the rights of children with disabilities or other special needs. As stated in their joint position on inclusion, the DEC and NAEYC believe:
+Early childhood inclusion embodies the values, policies, and practices that support the right of every infant and young child and his or her family, regardless of ability, to participate in a broad range of activities and contexts as full members of families, communities, and society. The desired results of inclusive experiences for children with and without disabilities and their families include a sense of belonging and membership, positive social relationships and friendships, and development and learning to reach their full potential. The defining features of inclusion that can be used to identify high quality early childhood programs and services are access, participation, and supports. (p. 141; DEC and NAEYC 2009, 1)
+When early caregivers and preschool teachers practice monitoring as part of their regular routines, they demonstrate accountability and responsive caregiving. Nearly 65% of children are identified as having a special need, disability, delay or impairment, and will require some special services or intervention. As early educators our role is twofold:
+- Provide an environment where children feel safe, secure and cared for
+- Help children develop coping skills to decrease stress and promote learning and development
+Individualized Education Plan?
+Some children may need more individualized support and might benefit from specialized services or individualized accommodations. Children who are over the age of 3 who qualify for special education must have an individualized education program (IEP) in place. As required by both federal and state laws, IEPs must have clearly identified goals and objectives that can be regularly monitored. IEPs are designed by a TEAM that usually includes the child’s parents or guardians, the preschool teacher, special education professionals (e.g. behaviorists, speech pathologists, occupational therapists). Together the team plans appropriately accommodations, modifications and makes recommendations that will help the child meet their developmental goals.
+While everyone on the team has a role, the teacher’s role is to integrate approaches that can best support the child while in class. For example, if the IEP notes that the child needs support with language development, the teacher would consider finding someone in class who could provide peer to peer scaffolding. The teacher would want to find someone who has strong language skills, and who is cooperative and kind to others. She would then partner the two children up throughout the day so that the typical child could model ideal language skills to the child with the IEP. The teacher would also provide regular updates to parents, continue observing and monitoring the child’s development, and would provide access to alternative resources and materials as much as possible. [47]
+Creating Inclusive Learning Environments
+To ensure that all children feel safe, secure and nurtured, teachers must strive to create a climate of cooperation, mutual respect and tolerance. To support healthy development, teachers must offer multiple opportunities for children to absorb learning experiences, as well as process information, at their own pace. While one child may be comfortable with simple verbal instructions to complete a particular task, another child may benefit from a more direct approach such as watching another child or adult complete the requested task first. Teachers who are devoted to observing their children are motivated to provide experiences that children will enjoy and be challenged by. The classroom is not a stagnant environment - it is ever-changing. In order to maintain a high-quality classroom setting, it is essential to utilize your daily observations of children and the environment to monitor the experiences and interactions to ensure there is a good fit. [48]
 
-resources, including money and quality teachers, are not distributed equitably in the United States. In the top-
-ranking countries, limited access to resources did not necessarily predict low performance. Analysts also
-noted what they described as “resilient students,” or those students who achieve at a higher level than one
-might expect given their social background. In Shanghai and Singapore, the proportion of resilient students is
-about 70 percent. In the United States, it is below 30 percent. These insights suggest that the United States’
-educational system may be on a descending path that could detrimentally affect the country’s economy and its
-social landscape (National Public Radio 2010).
-Education in Finland
-With public education in the United States under such intense criticism, why is it that Singapore, South Korea,
-and especially Finland (which is culturally most similar to us), have such excellent public education? Over the
-course of thirty years, the country has pulled itself from among the lowest rankings by the Organization of
-Economic Cooperation (OEDC) to first in 2012, and remains, as of 2014, in the top five. Contrary to the rigid
-curriculum and long hours demanded of students in South Korea and Singapore, Finnish education often seems
-paradoxical to outside observers because it appears to break a lot of the rules we take for granted. It is common
-for children to enter school at seven years old, and children will have more recess and less hours in school than
-U.S. children—approximately 300 less hours. Their homework load is light when compared to all other
-industrialized nations (nearly 300 fewer hours per year in elementary school). There are no gifted programs,
-almost no private schools, and no high-stakes national standardized tests (Laukkanen 2008; LynNell Hancock
-2011).
-Prioritization is different than in the United States. There is an emphasis on allocating resources for those who
-need them most, high standards, support for special needs students, qualified teachers taken from the top 10
-percent of the nation's graduates and who must earn a Master's degree, evaluation of education, balancing
-decentralization and centralization.
-"We used to have a system which was really unequal," stated the Finnish Education Chief in an interview. "My
-parents never had a real possibility to study and have a higher education. We decided in the 1960s that we would
-provide a free quality education to all. Even universities are free of charge. Equal means that we support
-everyone and we’re not going to waste anyone’s skills." As for teachers, "We don’t test our teachers or ask them
-to prove their knowledge. But it’s true that we do invest in a lot of additional teacher training even after they
-become teachers" (Gross-Loh 2014).
-Yet over the past decade Finland has consistently performed among the top nations on the PISA. Finland’s
-school children didn’t always excel. Finland built its excellent, efficient, and equitable educational system in a
-few decades from scratch, and the concept guiding almost every educational reform has been equity. The Finnish
-paradox is that by focusing on the bigger picture for all, Finland has succeeded at fostering the individual
-potential of most every child.
-“We created a school system based on equality to make sure we can develop everyone’s potential. Now we can
-see how well it’s been working. Last year the OECD tested adults from twenty-four countries measuring the skill
-levels of adults aged sixteen to sixty-five on a survey called the PIAAC (Programme for International Assessment
-of Adult Competencies), which tests skills in literacy, numeracy, and problem solving in technology-rich
-environments. Finland scored at or near the top on all measures.”
-Formal and Informal Education
-As already mentioned, education is not solely concerned with the basic academic concepts that a student
-learns in the classroom. Societies also educate their children, outside of the school system, in matters of
-BIG PICTURE
-470
-16 • Education
-Access for free at openstax.org.
+## Match 2.05 — LibreTexts: 8.8: Special care placement
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://workforce.libretexts.org/Bookshelves/Corrections/Introduction_to_Corrections_(Wymore_and_Raber)/08%3A_Juvenile_Corrections/8.08%3A_Special_care_placement
 
-everyday practical living. These two types of learning are referred to as formal education and informal
-education.
-Formal education describes the learning of academic facts and concepts through a formal curriculum. Arising
-from the tutelage of ancient Greek thinkers, centuries of scholars have examined topics through formalized
-methods of learning. Education in earlier times was only available to the higher classes; they had the means
-for access to scholarly materials, plus the luxury of leisure time that could be used for learning. The Industrial
-Revolution and its accompanying social changes made education more accessible to the general population.
-Many families in the emerging middle class found new opportunities for schooling.
-The modern U.S. educational system is the result of this progression. Today, basic education is considered a
-right and responsibility for all citizens. Expectations of this system focus on formal education, with curricula
-and testing designed to ensure that students learn the facts and concepts that society believes are basic
-knowledge.
-In contrast, informal education describes learning about cultural values, norms, and expected behaviors by
-participating in a society. This type of learning occurs both through the formal education system and at home.
-Our earliest learning experiences generally happen via parents, relatives, and others in our community.
-Through informal education, we learn important life skills that help us get through the day and interact with
-each other, including how to dress for different occasions, how to perform regular tasks such as shopping for
-and preparing food, and how to keep our bodies clean. Many professional tasks and local customs are learned
-informally, as well.
-FIGURE 16.4 Children showing younger siblings how to serve food is an example of informal education. (Credit: Tim
-Pierce/flickr)
-Cultural transmission refers to the way people come to learn the values, beliefs, and social norms of their
-culture. Both informal and formal education include cultural transmission. For example, a student will learn
-about cultural aspects of modern history in a U.S. History classroom. In that same classroom, the student
-might learn the cultural norm for asking a classmate out on a date through passing notes and whispered
-conversations.
-Access to Education
-Another global concern in education is universal access. This term refers to people’s equal ability to
-participate in an education system. On a world level, access might be more difficult for certain groups based on
-class or gender (as was the case in the United States earlier in the nation’s history, a dynamic we still struggle
-16.1 • Education around the World
-471
-
-to overcome). The modern idea of universal access arose in the United States as a concern for people with
-disabilities. In the United States, one way in which universal education is supported is through federal and
-state governments covering the cost of free public education. Of course, the way this plays out in terms of
-school budgets and taxes makes this an often-contested topic on the national, state, and community levels.
-472
-16 • Education
-Access for free at openstax.org.
-
-Rank
-State
-Education Spending Per Student
-1
-New York
-$24,040
-2
-District of Columbia
-$22,759
-3
-Connecticut
-$20,635
-4
-New Jersey
-$20,021
-5
-Vermont
-$19,340
-6
-Alaska
-$17,726
-7
-Massachusetts
-$17,058
-8
-New Hampshire
-$16,893
-9
-Pennsylvania
-$16,395
-10
-Wyoming
-$16,224
-11
-Rhode Island
-$16,121
-12
-Illinois
-$15,741
-13
-Delaware
-$15,639
-14
-Hawaii
-$15,242
-15
-Maryland
-$14,762
-16
-Maine
-$14,145
-17
-North Dakota
-$13,758
-18
-Ohio
-$13,027
-19
-Washington
-$12,995
-20
-Minnesota
-$12,975
-21
-California
-$12,498
-22
-Nebraska
-$12,491
-23
-Michigan
-$12,345
-TABLE 16.1 How does state spending affect educational
-opportunities? (EducationData.org 2018)
-16.1 • Education around the World
-473
-
-Rank
-State
-Education Spending Per Student
-24
-Wisconsin
-$12,285
-25
-Virginia
-$12,216
-26
-Oregon
-$11,920
-27
-Iowa
-$11,732
-28
-Montana
-$11,680
-29
-Kansas
-$11,653
-30
-Louisiana
-$11,452
-31
-West Virginia
-$11,334
-32
-Kentucky
-$11,110
-33
-South Carolina
-$10,856
-34
-Missouri
-$10,810
-34
-Georgia
-$10,810
-36
-Indiana
-$10,262
-37
-Colorado
-$10,202
-38
-Arkansas
-$10,139
-39
-South Dakota
-$10,073
-40
-Alabama
-$9,696
-41
-Texas
-$9,606
-42
-New Mexico
-$9,582
-43
-Tennessee
-$9,544
-44
-Nevada
-$9,417
-45
-North Carolina
-$9,377
-46
-Florida
-$9,346
-TABLE 16.1 How does state spending affect educational
-opportunities? (EducationData.org 2018)
-474
-16 • Education
-Access for free at openstax.org.
-
-Rank
-State
-Education Spending Per Student
-47
-Mississippi
-$8,935
-48
-Oklahoma
-$8,239
-49
-Arizona
-$8,239
-50
-Idaho
-$7,771
-51
-Utah
-$7,628
-TABLE 16.1 How does state spending affect educational
-opportunities? (EducationData.org 2018)
-A precedent for universal access to education in the United States was set with the 1972 U.S. District Court for
-the District of Columbia’s decision in Mills v. Board of Education of the District of Columbia. This case was
-brought on the behalf of seven school-age children with special needs who argued that the school board was
-denying their access to free public education. The school board maintained that the children’s “exceptional”
-needs, which included intellectual disabilities, precluded their right to be educated for free in a public school
-setting. The board argued that the cost of educating these children would be too expensive and that the
-children would therefore have to remain at home without access to education.
-This case was resolved in a hearing without any trial. The judge, Joseph Cornelius Waddy, upheld the students’
-right to education, finding that they were to be given either public education services or private education paid
-for by the Washington, D.C., board of education. He noted that
-Constitutional rights must be afforded citizens despite the greater expense involved … the District of
-Columbia’s interest in educating the excluded children clearly must outweigh its interest in
-preserving its financial resources. … The inadequacies of the District of Columbia Public School
-System whether occasioned by insufficient funding or administrative inefficiency, certainly cannot be
-permitted to bear more heavily on the “exceptional” or handicapped child than on the normal child
-(Mills v. Board of Education 1972).
-Today, the optimal way to include people with disabilities students in standard classrooms is still being
-researched and debated. “Inclusion” is a method that involves complete immersion in a standard classroom,
-whereas “mainstreaming” balances time in a special-needs classroom with standard classroom participation.
-There continues to be social debate surrounding how to implement the ideal of universal access to education.
-
-## Match 1.52 — IntroductiontoSociology3e-WEB_9QTqRGQ § 16.3 Issues in Education
-
-“What the educator does in teaching is to make it possible for the students to become
-themselves” (Paulo Freire, Pedagogy of the Oppressed). David Simon, in his book Social Problems and the
-Sociological Imagination: A Paradigm for Analysis (1995), points to the notion that social problems are, in
-essence, contradictions—that is, statements, ideas, or features of a situation that are opposed to one another.
-Consider then, that one of the greatest expectations in U.S. society is that to attain any form of success in life, a
-person needs an education. In fact, a college degree is rapidly becoming an expectation at many levels of
-success, not merely an enhancement to our occupational choices. And, as you might expect, the number of
-people graduating from college in the United States continues to rise dramatically.
-The contradiction, however, lies in the fact that the more impactful a college degree has become, the harder it
-has become to achieve it. The cost of getting a college degree has risen sharply since the mid-1980s, while
-many important forms of government support have barely increased.
-The net result is that those who do graduate from college are likely to begin a career in debt. As of 2009, a
-typical student’s loans amounted to around $23,000. Ten years later, the average amount of debt for students
-who took loans grew to over $30,000. The overall national student loan debt topped $1.6 trillion in 2020,
-according to the Federal Reserve. These rising costs and risky debt burdens have led to a number of diverse
-proposals for solutions. Some call for cancelling current college debt and making more colleges free to
-16
+8.8: Special care placement
+Special Education in Juvenile Delinquency Cases Individual Disability Education Act's (IDEA) comprehensive system of identification, evaluation, service delivery, and review has special relevance for juvenile justice professionals. The purpose of the special education system, like the juvenile justice system, is to provide individualized services designed to meet the needs of a particular youth. The enhanced behavioral intervention and transition service needs requirements in the 1997 IDEA amendments bring special education goals even closer to those of the juvenile court. Moreover, the careful documentation of service needs and ongoing assessment of progress required by IDEA bring valuable informational resources to juvenile justice professionals. This section presents a brief overview of how special education information may be helpful as cases make their way through juvenile court.
+Some of the issues discussed, such as insanity or incompetence, arise only occasionally. Others, such as the impact on disposition of whether a child has a disability, are relevant in every case in which a delinquent youth is eligible for special education services.
+Figure 8.6 Law enforcement transport juveniles to detention facilities such as this to be booked. Security is a concern and officers must enter through a sally port. This is a secure area where the first door is locked before the second door can be opened into the facility. Booking photo by Tabitha Raber is used under a CC BY 4.0 license.
+Intake and Initial Interviews
+The short time frame for juvenile court proceedings leaves little room for missed opportunities. Juvenile justice professionals must be alert from the earliest moment for clues to the youth’s special education status or existing unidentified disabilities. This process, which should become part of the standard operating procedure, includes carefully interviewing the youth and his or her parents, routinely gathering educational records, procuring examinations by educational and mental health experts, investigating educational services at potential placement facilities, and coordinating juvenile court proceedings with the youth’s IEP team.
+Under the 1997 IDEA amendments, whenever a school reports a crime allegedly committed by a youth with a disability, school officials must provide copies of the youth’s special education and disciplinary records to the appropriate authorities to whom the school reports the crime, but only to the extent that the Family Educational Rights and Privacy Act (FERPA) permits the transmission. FERPA allows school officials to transmit school records to law enforcement officials only if parents’ consent in writing to the transmission and in certain other narrowly tailored situations (see 34 C.F.R. § 99.30). This requirement should help ensure that, at least in appropriate school-related cases, special education history, assessments, and service information are readily available early in the court process.
+Juvenile justice professionals can learn to recognize disabilities by carefully reading the legal definitions of disability. It is important to understand that youth may have a variety of impairments that are not immediately apparent. Numerous checklists and screening instruments are available to help recognize signs of disabilities and to determine eligibility for special education services (National Council of Juvenile and Family Court Judges, 1991).
+If circumstances suggest the need for an eligibility evaluation, modification of a previously existing IEP, or some other exercise of the youth’s rights under special education law, juvenile justice professionals should ensure that appropriate action is expeditiously taken. They should request that parents give written consent for the release of records and should submit a written request for information, evaluation, or review to the LEA.
+Juvenile justice professionals could start by contacting the LEA to obtain its policies and procedures for providing special education services to youth in the juvenile justice system. Some districts have designated an individual to deal with compliance issues, and that person may be helpful in expediting or forwarding requests to the right person or agency. Most jurisdictions have a number of other groups that can provide advocacy or other assistance in navigating the special education system. Protection and advocacy offices, special education advocacy groups, learning disabilities associations, and other groups providing support or advocacy for particular disabilities may greatly assist juvenile justice professionals.
+Determination of Whether Formal Juvenile Proceedings Should Go Forward
+Nothing in IDEA prohibits an agency from “reporting a crime committed by a child with a disability to appropriate authorities” or prevents law enforcement and judicial authorities from “exercising their responsibilities with regard to the application of Federal and State law to crimes committed by a child with a disability. These provisions, outlined in the 1997 amendments, were made in response to concerns that IDEA’s procedural protections could be interpreted to preclude juvenile court jurisdiction over school-related crimes committed by youth with disabilities. In the past, at least one court ruled under State law that a school could not initiate a juvenile court prosecution as a means of evading the procedural requirements of IDEA. Other courts found the juvenile court lacked jurisdiction in cases involving noncriminal school related misconduct in which special education procedures had not been followed.
+In at least one case decided after the 1997 amendments, the court confirmed that IDEA does not prevent juvenile courts from exercising jurisdiction over students with disabilities, even if the school is attempting to evade its special education responsibilities. Nonetheless, intake officers and prosecutors should scrutinize whether such evasion has occurred in determining whether a particular case belongs in the juvenile justice system and how it should be processed. Courts and hearing officers have stressed that the school’s responsibility to comply with IDEA procedural requirements does not end when a youth with a disability enters the juvenile justice system.
+Even if courts have the power to act, that does not mean the power should be exercised in every case. Long before the 1997 IDEA amendments, a number of courts found that the best course was to dismiss the juvenile court case or defer it until special education proceedings stemming from the misbehavior could be completed.
+Many juvenile justice professionals have encountered cases in which a youth enters the juvenile justice system for a relatively minor offense and his or her stay escalates into long-term incarceration because of the youth’s inability to succeed in programs developed for low-risk delinquent youth. This may happen either because the disability-related behavior makes it difficult for the youth to understand or comply with program demands or because his or her behavior is misinterpreted as showing a poor attitude, lack of remorse, or disrespect for authority.
+If the juvenile court petition involves a youth with an identified or suspected disability, juvenile justice professionals should first consider whether school-based special education proceedings could provide services or other interventions that would obviate the need for juvenile court proceedings. This is particularly true for incidents occurring at school. The 1997 IDEA amendments require thorough scrutiny of behavioral needs and implementation of appropriate interventions that may far exceed what most juvenile courts are able to provide. In appropriate cases, the juvenile court may wish to consider:
+- Continuing or deferring the formal prosecution pending the outcome of special education due process and disciplinary proceedings that may alleviate the need for juvenile court intervention.
+- Placing first-time offenders and/or youth alleged to have committed offenses that are not considered too serious for informal handling into diversion or informal supervision programs. Through such programs, the court imposes specific conditions on the youth’s behavior, such as regular school attendance, participation in counseling, observation of specified curfews, or involvement in community service programs. If the youth successfully complies with these conditions, the case is dismissed at the end of a specified period—usually 6 months to 1 year. Allowing the youth to remain in the community, subject to such conditions, may facilitate the completion of special education proceedings while ensuring heightened supervision of the youth. Through IEP development or modification, the youth might be determined eligible for services that supplant the need for formal juvenile court proceedings.
+- Dismissing the case in the interest of justice. This option should be considered in cases in which the disability is so severe that it may be difficult or impossible for the youth to comply with court orders. This may occur, for example, if the offense is relatively minor; the youth suffers from mental illness, emotional disturbance, or mental retardation; and/ or services are forthcoming through the special education system.
+Think about it . . . Mental health treatment
+Many young people in South Carolina have better access to mental health care in juvenile jail than they do outside the fence, back in their own communities. Read these personal interviews of youth in the system in treatment centers. Do you think this approach to treating juvenile delinquents with mental illness instead of jailing them is effective? Why or why not?
+Detention
+Youth taken into secure custody at the time of arrest are entitled to judicial review of the detention decision within a statutory time period. Depending on the jurisdiction and characteristics of the case, the length of detention may range from several hours to several months. Many professionals view the detention decision as the most significant point in a case. Detention subjects the youth to potential physical and emotional harm. It also restricts the youth’s ability to assist in his or her defense and to demonstrate an ability to act appropriately in the community.
+Unfortunately, youth with disabilities are detained disproportionately (Leone et al., 1995). Experts posit that one reason for this is that many youths with disabilities lack the communication and social skills to make a good presentation to arresting officers or intake probation officers. Behavior interpreted as hostile, impulsive, unconcerned, or otherwise inappropriate may reflect the youth’s disability. This is another reason why it is important to establish the existence of special education needs or suspected disabilities early in the proceedings. Juvenile justice professionals must be sensitive to the impact of disabilities on case presentation at this initial stage and work to dispel inaccurate first impressions at the detention hearing.
+In some cases, it may be appropriate for the court to order the youth’s release to avoid disrupting special education services. This is particularly true if adjustments in supervision (e.g., modification of the IEP or behavioral intervention plans) may reduce the likelihood of further misbehavior pending the jurisdictional hearing. Similarly, if there are early indications that a special education evaluation is needed, it may be important for the youth to remain in the community to facilitate the evaluation. Many jurisdictions have home detention programs that facilitate this type of release by imposing curfews or other restrictions on liberty that allow the youth to live at home and attend school pending the outcome of the delinquency proceedings.
 Education
+Education may be the single most important service the juvenile justice system can offer young offenders in its efforts to rehabilitate them a
 
-qualifying students. Others advocate for more focused and efficient education in order to achieve needed
-career requirements more quickly. Employers, seeking both to widen their applicant pool and increase equity
-among their workforce, have increasingly sought ways to eliminate unnecessary degree requirements: If a
-person has the skills and knowledge to do the job, they have more access to it (Kerr 2020).
-FIGURE 16.2 Unemployment rates for people age 25 and older by educational attainment. As can be seen in the
-graph, the overall unemployment rate began falling in 2009 after it peaked during the financial crisis and continued
-its downward trend through the decade from 2010 to 2020. (This graph does not account for the unemployment
-spike during the COVID-19 pandemic.) Note the differences in educational attainment and their impact on
-unemployment. People with bachelor's degrees have always had the lowest levels of unemployment, while those
-without a high school diploma have always had the highest level. (Credit: Bureau of Labor Statistics)
-Is a college degree still worth it? Lifetime earnings among those with a college degree are, on average, still
-much higher than for those without. A 2019 Federal Reserve report indicated that, on average, college
-graduates earn $30,000 per year more than non-college graduates. Also, that wage gap has nearly doubled in
-the past 40 years (Abel 2019).
-Is the wage advantage enough to overcome the potential debt? And what’s behind those averages? Remember,
-since the $30,000 is an average, it also confirms what we see from other data: That certain people and certain
-college majors earn far more than others. As a result, earning a college degree in a field that has a smaller wage
-advantage over non-college graduates might not seem “worth it.”
-But is college worth more than money?
-A student earning Associate’s and Bachelor’s degrees generally will often take a wide array of courses,
-including many outside of their major. The student is exposed to a fairly broad range of topics, from
-mathematics and the physical sciences to history and literature, the social sciences, and music and art through
-introductory and survey-styled courses. It is in this period that the student’s world view is, it is hoped,
-expanded. Then, when they begin the process of specialization, it is with a much broader perspective than
-might be otherwise. This additional “cultural capital” can further enrich the life of the student, enhance their
-ability to work with experienced professionals, and build wisdom upon knowledge. Over two thousand years
-ago, Socrates said, “The unexamined life is not worth living.” The real value of an education, then, is to
-enhance our skill at self-examination. Education, its impact, and its costs are important not just to sociologists,
-but to policymakers, employers, and of course to parents.
-468
-16 • Education
-Access for free at openstax.org.
+## Match 2.04 — LibreTexts: 8.1.3: Special Funding Strategies
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Courses/Folsom_Lake_College/BUS_350%3A_Small_Business_Management_Entrepreneurship_(Buch)/03%3A_The_Business_Plan_-_Marketing_Organization_Location_Finances/08%3A_Financial_Statements_and_Plan/8.01%3A_Entrepreneurial_Finance_and_Accounting/8.1.03%3A_Special_Funding_Strategies
 
-
-## Match 1.52 — Microeconomics3e-WEB § 18.2 Special Interest Politics
-
-LEARNING OBJECTIVES
+8.1.3: Special Funding Strategies
+Learning Objectives
 By the end of this section, you will be able to:
-•
-Explain how special interest groups and lobbyists can influence campaigns and elections
-•
-Describe pork-barrel spending and logrolling
-Many political issues are of intense interest to a relatively small group, as we noted above. For example, many
-U.S. drivers do not much care where their car tires were made—they just want good quality as inexpensively as
-possible. In September 2009, President Obama and Congress enacted a tariff (taxes added on imported goods)
-on tires imported from China that would increase the price by 35 percent in its first year, 30 percent in its
-second year, and 25 percent in its third year. Interestingly, the U.S. companies that make tires did not favor this
-step, because most of them also import tires from China and other countries. (See Globalization and
-Protectionism for more on tariffs.) However, the United Steelworkers union, which had seen jobs in the tire
-438
-18 • Public Economy
-Access for free at openstax.org
+- Identify funding strategies used by charitable organizations
+- Describe financing opportunities available to startups
+- Define bootstrapping
+- Describe the advantages and disadvantages of bootstrapping
+It’s important to recognize that not all startups are Silicon Valley tech companies. These companies create high-profile products, such as applications and websites, which can take years to become profitable or even generate revenue. Much more common are the small businesses founded every day by entrepreneurs seeking to create value in their local communities. Moreover, not all startups are founded with a profit motive in mind.
+Charitable organizations , or certain nonprofit companies, are often founded for altruistic purposes, such as advancing the arts, education, and science; protecting the natural environment; providing disaster relief; and defending human rights.
+| Mission | Examples |
+|---|---|
+| Advance education | Teach for America, Khan Academy |
+| Protect the natural environment | Sierra Club, Wildlife Conservation Society |
+| Defend human rights | Amnesty International, Human Rights Watch |
+| Provide disaster relief | American Red Cross |
+| Support the arts | Metropolitan Museum of Art, Americans for the Arts |
+These goals supersede the profit motive that a traditional company would have. As a result, the funding strategies of these enterprises often differ quite dramatically from those of standard for-profit businesses. Without the emphasis on profit, it can be difficult to provide for the cost of ongoing operations. Thus, these organizations must develop a sustainable strategy —one that can maintain the organization’s financial stability.
+In the United States, such organizations can qualify for tax-exempt status , meaning that if there is a profit from operations, it is not typically subject to taxes. Organizations seeking this exemption must apply to the Internal Revenue Service for tax-exempt status and provide information about what kind of mission the organization carries out—charitable, scientific, educational, and so on.
+Consider a museum. What is its purpose? Traditional companies provide a product or service to their customers in exchange for payment, and typically fill a need their customers have. A grocery store sells food because human beings need to eat food to survive. Although viewing paintings and sculptures is not a physical requirement for life, this experience arguably enriches our lives and helps educate and shape our society. That is why museums are founded. Consider the original mission statement of the Metropolitan Museum of Art (commonly known as the “Met”) in New York City.
+This is a different goal than that of most small businesses (providing a product or service in exchange for a profit) and, as a result, requires different financing strategies, such as a combination of program services, donations, and grants.
+LINK TO LEARNING
+Go to the Internal Revenue Service’s website and look at the most recently updated Pub 334 Tax Guide for Small Business to learn more about the rules for income tax preparation for a small business.
+Program Services
+Program services are the basic offerings that a nonprofit organization provides that result in revenue, although not typically enough to cover the overall cost of running the organization. These services most closely resemble the customer interactions of a traditional business. The organization provides a product or service in exchange for a customer’s money.
+In our museum example, program services could take a few different forms. First, the museum likely charges a fee for admission to view the artwork and artifacts. The individual ticket price multiplied by the number of museum visitors equals the museum’s ticket revenue. An established museum will have a good sense of how many visitors it has on average and can use these data to create a budget.
+Another source of program service revenue for a museum could take the form of hands-on educational activities or events with guest speakers or presenters. Often museums will host local artists, or their own employees might conduct art classes or special-topic tours. These events and activities typically have a charge (revenue) beyond the regular admission cost.
+Despite these revenue-generating activities, nonprofit organizations still face many funding challenges in covering all the operating costs of a normal business, such as employee wages, facility costs, and advertising. Thus, they need many different sources of income. To illustrate, the Met’s 2018 program service income only made up 2.3 percent of its total revenue for the year.
+Donations
+One benefit to a business with a charitable mission is inherent public support, which can foster community involvement above and beyond patronage. For nonprofits, this can translate into a willingness to donate money to the organization. A donation is a financial gift with no expectation of repayment or receiving anything in return. A traditional business must provide something valuable to create a customer exchange: Their customers demand value in exchange for their hard-earned money.
+The benefactors of a charitable organization want to help further the mission of the organization. This type of entity—whether it’s a museum, a hospital, or the Red Cross—relies on the goodwill of community supporters. For the Met, with such a low percentage of revenue generated by program services, it’s clear that donations and charitable gifts are vital to the organization’s financial viability .
+Grants
+Another source of funding for nonprofit organizations is grants. A grant is a financial gift given for a specific purpose by a government agency or a charitable organization such as the Bill and Melinda Gates Foundation. Like a donation, a grant does not have to be repaid. Unlike with donations, both nonprofit and for-profit organizations can compete for grants. Whereas donations are typically given without restriction to offset the general operating expenses of the organization, grants often specify how the funds are to be used. Most grant-providing entities have an agenda or purpose behind their funding. For example, the National Institutes of Health (NIH) provides grants “to support the advancement of the NIH mission to enhance health, extend healthy lives, and reduce the burdens of illness and disability.” This federal organization invests over $32 billion annually for medical research.
+Grants can be very competitive, requiring a rigorous application process. Usually, multiple organizations apply for the same grant; the organization issuing the grant reviews the many competing applications to make its selection. Grantees generally must submit audited financial statements and are required to update the grantor subsequent to the grant award to ensure proper intended use. The NIH awards almost 50,000 grants annually, most of which are competitive. Although that is an enormous number of projects to fund, only 20 percent of applications submitted to the NIH in 2018 actually were accepted. In other words, the NIH rejected four out of every five applications. For entrepreneurs, this means that when you identify a grant that is specific to your organization’s mission, you should weigh your chances of being awarded the grant when considering it as part of your funding strategy.
+To understand grants in practice, let’s further examine the NIH. The NIH Small Grant Program provides funds for activities such as the development of new research technology. This specific grant can be awarded for up to a two-year period, with funds of up to $50,000 in direct costs per year. A grant like this could provide vital support to a nonprofit startup.
+Some business ventures fall somewhere between organizations completely committed to charitable work and traditional small businesses with entrepreneurs focused on social entrepreneurship. Social entrepreneurs develop products and services as solutions to societal problems. For example, the TOMS shoe company was able to create a business model through which the company gives one pair of shoes to children in need in foreign countries for every pair of shoes that a customer purchases. This practice pioneered what they refer to as “One for One.”
+The company’s website describes the origins of both the company and this model, which are based on the experiences of its founder, Blake Mycoskie.
+Social entrepreneurship offers the ability to effect positive change in the world without simply relying on donations. It pairs a profitable, sustainable business model with a good cause. This combination often creates positive word of mouth. It gives potential customers a good feeling about the product beyond just its style or function.
 
-industry fall by 5,000 over the previous five years, lobbied fiercely for the tariff. With this tariff, the cost of all
-tires increased significantly. (See the closing Bring It Home feature at the end of this chapter for more
-information on the tire tariff.)
-Special interest groups are groups that are small in number relative to the nation, but quite well organized
-and focused on a specific issue. A special interest group can pressure legislators to enact public policies that
-do not benefit society as a whole. Imagine an environmental rule to reduce air pollution that will cost 10 large
-companies $8 million each, for a total cost of $80 million. The social benefits from enacting this rule provide
-an average benefit of $10 for every person in the United States, for a total of about $3 trillion. Even though the
-benefits are far higher than the costs for society as a whole, the 10 companies are likely to lobby much more
-fiercely to avoid $8 million in costs than the average person is to argue for $10 worth of benefits.
-As this example suggests, we can relate the problem of special interests in politics to an issue we raised in
-Environmental Protection and Negative Externalities about economic policy with respect to negative
-externalities and pollution—the problem called regulatory capture (which we defined in Monopoly and
-Antitrust Policy). In legislative bodies and agencies that write laws and regulations about how much
-corporations will pay in taxes, or rules for safety in the workplace, or instructions on how to satisfy
-environmental regulations, you can be sure the specific industry affected has lobbyists who study every word
-and every comma. They talk with the legislators who are writing the legislation and suggest alternative
-wording. They contribute to the campaigns of legislators on the key committees—and may even offer those
-legislators high-paying jobs after they have left office. As a result, it often turns out that those regulated can
-exercise considerable influence over the regulators.
-LINK IT UP
-Visit this website (http://openstax.org/l/lobbying) to read about lobbying.
-In the early 2000s, about 40 million people in the United States were eligible for Medicare, a government
-program that provides health insurance for those 65 and older. On some issues, the elderly are a powerful
-interest group. They donate money and time to political campaigns, and in the 2020 presidential election, 76%
-of those ages 65–74 voted, while just 51% of those aged 18 to 24 cast a ballot, according to the U.S. Census.
-In 2003, Congress passed and President George Bush signed into law a substantial expansion of Medicare that
-helped the elderly to pay for prescription drugs. The prescription drug benefit cost the federal government
-about $40 billion in 2006, and the Medicare system projected that the annual cost would rise to $121 billion by
-2016. The political pressure to pass a prescription drug benefit for Medicare was apparently quite high, while
-the political pressure to assist the 40 million with no health insurance at all was considerably lower. One
-reason might be that the American Association for Retired People AARP, a well-funded and well-organized
-lobbying group represents senior citizens, while there is no umbrella organization to lobby for those without
-health insurance.
-In the battle over passage of the 2010 Affordable Care Act (ACA), which became known as “Obamacare,” there
-was heavy lobbying on all sides by insurance companies and pharmaceutical companies. However, labor
-unions and community groups financed a lobby group, Health Care for America Now (HCAN), to offset
-corporate lobbying. HCAN, spending $60 million dollars, was successful in helping pass legislation which
-added new regulations on insurance companies and a mandate that all individuals will obtain health
-insurance by 2014. The following Work It Out feature further explains voter incentives and lobbyist influence.
-18.2 • Special Interest Politics
-439
-
-Paying To Get Your Way
-Suppose Congress proposes a tax on carbon emissions for certain factories in a small town of 10,000 people.
-Congress estimates the tax will reduce pollution to such an extent that it will benefit each resident by an
-equivalent of $300. The tax will also reduce profits to the town’s two large factories by $1 million each. How
-much should the factory owners be willing to spend to fight the tax passage, and how much should the
-townspeople be willing to pay to support it? Why is society unlikely to achieve the optimal outcome?
-Step 1. The two factory owners each stand to lose $1 million if the tax passes, so each should be willing to spend
-up to that amount to prevent the passage, a combined sum of $2 million. Of course, in the real world, there is no
-guarantee that lobbying efforts will be successful, so the factory owners may choose to invest an amount that is
-substantially lower.
-Step 2. There are 10,000 townspeople, each standing to benefit by $300 if the tax passes. Theoretically, then,
-they should be willing to spend up to $3 million (10,000 × $300) to ensure passage. (Again, in the real world with
-no guarantees of success, they may choose to spend less.)
-Step 3. It is costly and difficult for 10,000 people to coordinate in such a way as to influence public policy. Since
-each person stands to gain only $300, many may feel lobbying is not worth the effort.
-Step 4. The two factory owners, however, find it very easy and profitable to coordinate their activities, so they
-have a greater incentive to do so.
-Special interests may develop a close relationship with one political party, so their ability to influence
-legislation rises and falls as that party moves in or out of power. A special interest may even hurt a political
-party if it appears to a number of voters that the relationship is too cozy. In a close election, a small group that
-has been under-represented in the past may find that it can tip the election one way or another—so that group
-will suddenly receive considerable attention. Democratic institutions produce an ebb and flow of political
-parties and interests and thus offer both opportunities for special interests and ways of counterbalancing
-those interests over time.
-Identifiable Winners, Anonymous Losers
-A number of economic policies produce gains whose beneficiaries are easily identifiable, but costs that are
-partly or entirely shared by a large number who remain anonymous. A democratic political system probably
-has a bias toward those who are identifiable.
-For example, policies that impose price controls—like rent control—may look as if they benefit renters and
-impose costs only on landlords. However, when landlords then decide to reduce the number of rental units
-available in the area, a number of people who would have liked to rent an apartment end up living somewhere
-else because no units were available. These would-be renters have experienced a cost of rent control, but it is
-hard to identify who they are.
-Similarly, policies that block imports will benefit the firms that would have competed with those imports—and
-workers at those firms—who are likely to be quite visible. Consumers who would have preferred to purchase
-the imported products, and who thus bear some costs of the protectionist policy, are much less visible.
-Specific tax breaks and spending programs also have identifiable winners and impose costs on others who are
-hard to identify. Special interests are more likely to arise from a group that is easily identifiable, rather than
-from a group where some of those who suffer may not even recognize they are bearing costs.
-WORK IT OUT
-440
-18 • Public Economy
-Access for free at openstax.org
-
-Pork Barrels and Logrolling
-Politicians have an incentive to ensure that they spend government money in their home state or district,
-where it will benefit their constituents in a direct and obvious way. Thus, when legislators are negotiating over
-whether to support a piece of legislation, they commonly ask each other to include pork-barrel spending,
-legislation that benefits mainly a single political district. Pork-barrel spending is another case in which
-concentrated benefits and widely dispersed costs challenge democracy: the benefits of pork-barrel spending
-are obvious and direct to local voters, while the costs are spread over the entire country. Read the following
-Clear It Up feature for more information on pork-barrel spending.
-How much impact can pork-barrel spending have?
-Many observers widely regard U.S. Senator Robert C. Byrd of West Virginia, who was originally elected to the Senate
-in 1958 and served until 2010, as one of the masters of pork-barrel politics, directing a steady stream of federal
-funds to his home state. A journalist once compiled a list of structures in West Virginia at least partly government
-funded and named after Byrd: “the Robert C. Byrd Highway; the Robert C. Byrd Locks and Dam; the Robert C. Byrd
-Institute; the Robert C. Byrd Life Long Learning Center; the Robert C. Byrd Honors Scholarship Program; the Robert
-C. Byrd Green Bank Telescope; the Robert C. Byrd Institute for Advanced Flexible Manufacturing; the Robert C. Byrd
-Federal Courthouse; the Robert C. Byrd Health Sciences Center; the Robert C. Byrd Academic and Technology
-Center; the Robert C. Byrd United Technical Center; the Robert C. Byrd Federal Building; the Robert C. Byrd Drive;
-the Robert C. Byrd Hilltop Office Complex; the Robert C. Byrd Library; and the Robert C. Byrd Learning Resource
-Center; the Robert C. Byrd Rural Health Center.” This list does not include government-funded projects in West
-Virginia that were not named after Byrd. Of course, we would have to analyze each of these expenditures in detail to
-figure out whether we should treat them as pork-barrel spending or whether they provide widespread benefits that
-reach beyond West Virginia. At least some of them, or a portion of them, certainly would fall into that category.
-Because there are currently no term limits for Congressional representatives, those who have been in office longer
-generally have more power to enact pork-barrel projects.
-The amount that government spends on individual pork-barrel projects is small, but many small projects can
-add up to a substantial total. A nonprofit watchdog organization, called Citizens against Government Waste,
-produces an annual report, the Pig Book that attempts to quantify the amount of pork-barrel spending,
-focusing on items that only one member of Congress requested, that were passed into law without any public
-hearings, or that serve only a local purpose. Whether any specific item qualifies as pork can be controversial.
-The 2021 Congressional Pig Book identified 285 earmarks in FY 2021, with a cost of $16.8 billion. Recent
-growth in earmarks and their cost is apparent: in FY 2017, there were 163 earmarks at a cost of $6.8 billion.
-Hence, in only four years, there was a 75% increase in the number of earmarks and a 147% increase in the
-cost of those earmarks.
-Logrolling, an action in which all members of a group of legislators agree to vote for a package of otherwise
-unrelated laws that they individually favor, can encourage pork barrel spending. For example, if one member
-of the U.S. Congress suggests building a new bridge or hospital in their own congressional district, the other
-members might oppose it. However, if 51% of the legislators come together, they can pass a bill that includes a
-bridge or hospital for every one of their districts.
-As a reflection of this interest of legislators in their own districts, the U.S. government has typically spread out
-its spending on military bases and weapons programs to congressional districts all across the country. In part,
-the government does this to help create a situation that encourages members of Congress to vote in support of
-defense spending.
-CLEAR IT UP
-18.2 • Special Interest Politics
-441
-
+Social Entrepreneurship
+Like the founder of TOMS, sometimes in our everyday life, we are presented with an opportunity to help people. We may even find out that we’re not alone in this desire to help. What opportunities to help—individuals, society, or environment—do you see in your own community? What are some ways that you could raise awareness around this issue?
+No-Loan Finance Strategies
+As you’ve learned, many startups come into being through the extensive use of debt. Although borrowing is a legitimate source of funding, it can be risky, especially if the entrepreneur is personally responsible for repayment. In practice, some entrepreneurs max out credit cards, take out home-equity loans against their primary residences, or secure other high-interest personal loans. If the entrepreneur fails to repay the loans, the result can be repossession of equipment, home foreclosure, and other legal action.
+We now examine funding strategies attractive to many startups that do not require going into debt or exchanging ownership of the business for financial support (debt and equity financing). The financing methods described here are more creative funding strategies, including crowdfunding, bartering, and other methods.
+Crowdfunding
+Recall the story of iBackPack. This venture was originally funded by contributions through Indiegogo and Kickstarter. These websites are a form of crowdfunding , which involves collecting small sums of money from a large number of people. The people who contribute money are typically referred to as backers because they are backing the project or supporting the business idea.
+Browsing these crowdfunding websites, you will see many different kinds of ventures seeking financial backing—from creating new board games to opening donut cafes. Each project identifies an overall specific funding goal in terms of a dollar amount. Some crowdfunding websites, such as Kickstarter, implement an “all or nothing” model in which projects do not receive any funds unless their overall funding goal is met. The amount can be exceeded, but if it is not met, the project receives nothing. For an entrepreneur utilizing this resource, selecting an attainable funding goal must be a core part of their strategy. The funding goal must also be appropriate to the scale of the project. For example, setting a goal of $50,000 may be reasonable for launching a food truck (which could be a prototype for a full restaurant), but it is a mere fraction of the cost of constructing an entire table-service restaurant, which would come closer to $750,000. An entrepreneur seeking to enter the culinary world should consider which target would be most achievable as well as most beneficial in meeting both short- and long-term goals. Also, remember that meeting the funding goal does not ensure success of the business, as was the case with iBackPack.
+Entrepreneurs vying for crowdfunding usually employ some common tactics. First, they often post an introductory video that explains the project goal and the specific value proposition. (For example, a chef might seek $75,000 to open a food truck specializing in a relati

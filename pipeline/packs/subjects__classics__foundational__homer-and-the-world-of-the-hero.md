@@ -1,9 +1,55 @@
 # Source pack — subjects/classics/foundational/homer-and-the-world-of-the-hero
 Lesson title: Homer and the World of the Hero
 Level: foundational
-Match confidence: 1.34
+Match confidence: 1.36
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 1.36 — LibreTexts: 36.7: J. Hector St. John de Crevecoeur- National Hero or Portrayal of White Guilt?
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://human.libretexts.org/Bookshelves/Literature_and_Literacy/American_Literature/The_Open_Anthology_of_Earlier_American_Literature_(DeRosa_Goode_et_al.)/36%3A_Letters_from_an_American_Farmer_(1767)_Supplementary_Readings/36.07%3A_J._Hector_St._John_de_Crevecoeur-_National_Hero_or_Portrayal_of_White_Guilt
+
+36.7: J. Hector St. John de Crevecoeur- National Hero or Portrayal of White Guilt?
+J. Hector St. John de Crevecoeur’s views are as synonymous to me as a parent whose child is a disobeying the rules and ruining every other students’ experience at school. The parent (Crevecoeur) believes that their child (America) is completely innocent of ever having done something wrong. In this metaphor, Crevecoeur is the parent of his country that keeps messing up everything, and the rest of the world knows the truth about the country, but he is too blindsided to see it. The fact that our country was built on disrespect, pain, and causing other people pain, is not influential to how he sees our country. He shows clearly that he knows that America has issues, but those do not affect him, and therefore, do not matter in his own opinions of what America is. He is the definition of white guilt.
+He begins to discuss slavery later on in the piece, which gives a bit of light to the conversation in that I knew he thought slavery was wrong.
+American life was effective in creating slavery, because the slaves technically were not considered people at that point in time. Crevecoeur grappled with this notion, continually questioning what it means to be a person. He asked himself if a “wretch who wanders about, who works and starves, whose life is a continual scene of sore affiliation or pinching penury, can that man call England or any other kingdom his country?” (19). Asking this question shows that he is already a little bit more aware of society and those surrounding him than other people of that time. He understands that slavery is wrong. He understands that these people who are being forced into slavery have no place to call their home. Does that mean that he’s a good person–that he’s super woke, and totally understands the meaning of being an American? No! On the contrary, actually. He views America in such an idealized lens, that he doesn’t see that this is a problem with America. 
+Overall, Crevecoeur’s connection and thoughts on the world around him have idealized and completely overtaken his opinions about America. His moral compass says that slavery is wrong, but it’s ingrained in him since day one to call slaves degrading names. He struggles internally over and over again about what’s right, what’s not right, and what he should be standing up for. Crevecoeur is the definition of white guilt. He feels bad for what his people did to other minorities and talks about it, but does not talk about it extensively, in order to save face. His empty claims about how horrible racism is, how we shouldn’t stand for slavery, make it clear that he is apologetic when he has to be, but silent when it’s convenient for him.
+
+## Match 1.36 — LibreTexts: 48: Guardians of the Galaxy and the Fall of the Classic Hero (Lewis)
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://human.libretexts.org/Bookshelves/Literature_and_Literacy/Poetry_Plays_Essays_and_other_Genres/88_Open_Essays_-_A_Reader_for_Students_of_Composition_and_Rhetoric_(Wangler_and_Ulrich)/Open_Essays/48%3A_Guardians_of_the_Galaxy_and_the_Fall_of_the_Classic_Hero_(Lewis)
+
+48: Guardians of the Galaxy and the Fall of the Classic Hero (Lewis)
+By A. David Lewis
+A beautiful assassin. A superstrong thug. A star-lost child of the ‘80s. A sentient tree. A gun-toting raccoon. Meet the morally gray protagonists of Marvel’s Guardians of the Galaxy, the film that raked in $770 million at the box office this past summer and was just released on DVD.
+ Trust me, you’ll have a lot to talk about.
+…Oh, what’s that? You already know Mr. Campbell? 
+For those unfamiliar with the term: Campbell’s monomyth, also known as the “Hero’s Quest” or “Hero’s Journey,” is a narrative pattern derived from his extensive analysis of myths and stories from all around the world. In his 1949 book The Hero with a Thousand Faces , Campbell outlines the pattern that nearly every “heroic” protagonist, going all the way back to ancient times, follows.
+A hero ventures forth from the world of common day into a region of supernatural wonder: fabulous forces are encountered and a decisive victory is won: the hero comes back from this mysterious adventure with the power to bestow boons on his fellow man.
+In other words, the protagonist is placed outside of his or her comfort zone, and, after toiling through various obstacles and setbacks, emerges to beat the bad guys and change the world for the better.
+Since the trailer of its newest installment was released last week, think of the original Star Wars as an example. George Lucas had Campbell in mind when he created Luke Skywalker, farmboy turned rebel hero. Lucas even paid attention to the finer points of Campbell’s model, giving Luke a teacher (Obi-Wan), helpers (Han Solo, the droids), a magic talisman or weapon (the light-saber), and, most importantly, a moment that Campbell calls “the Abyss.”
+It’s this Abyss – also known as “The Belly of the Whale” – that’s the low point in the monomythic cycle and vital to understanding what’s so notable about Guardians of the Galaxy. In the original Star Wars, Luke Skywalker experiences – all things considered – an “easy” low point: he’s sucked underwater in the Death Star trash compactor. In The Empire Strikes Back, things get a bit thornier: he gets his whole hand chopped off ( rumored to be a plot point in JJ Abrams’s The Force Awakens ) and plummets from Cloud City. Basically, if a hero doesn’t face an actual death, he or she has to (at least) deal with a metaphorical death before returning as a stronger, savvier version of himself.
+But where was the Abyss moment in Guardians of the Galaxy? Was it when young Peter Quill loses his mother and is taken by aliens? Or, wait – maybe it’s when he’s thrown into that space prison and escapes? There’s also that moment when his team is nearly killed by an explosion in the Collector’s establishment. And Quill is all-but-dead when he leaves the safety of his ship to freeze and suffocate in exposed space while selflessly saving his teammate Gamora. And who can forget the scene when he is practically torn apart by wielding the Infinity Stone?
+It’s as if Quill and his Guardians are running in loops around Campbell’s monomyth. Or, even better, the movie-makers are flagrantly disregarding it. They’re nearly satirizing it.
+If audiences step back a bit, it’s easier to see how Guardians of the Galaxy might be a satire of the classic hero tradition. Villains are constantly interrupted mid-maniacal monologue, elaborate plans are impulsively overturned, and Quill, the movie’s closest thing to a hero, challenges the film’s protagonist to a dance-off. (Of course, there’s also the fact that two of the main characters are a tree and a raccoon!)
+This is not to write off Guardians of the Galaxy and claim it’s a goof on Campbell’s model. Instead, it could be seen as a reaction to just how predictable, how tired, and even how broken the monomyth is today. The Guardians, remember, are just as much rogues as they are good guys. As Quill asks his team of misfits, “What should we do next: Something good, something bad? Bit of both?”
+What Guardians of the Galaxy will do next – presumably in their Summer 2016 sequel – is continue to challenge our modern notions of heroism. Campbell’s monomyth was proposed just after World War II, at the dawn of the Cold War. It was a time when, in popular culture, the distinctions between heroes and villains were far more explicit.
+Today, Quill and company are being presented to movie-going audiences at a time when when we’re distancing ourselves from old models – when we sorely crave a new pattern. The pure hero, the “white hat” of the old Westerns, is largely lost to us. Brilliant actors like Robin Williams and Phillip Seymour Hoffman are done in by their own personal ghosts, musicians like Amy Winehouse and Whitney Houston succumb to their addictions, and politicians – like the four Illinois governors who have been sent to prison – continue to disappoint. 
+The monomyth is making its final orbit. Heroes are so yesterday. Welcome, instead, to the tomorrow of the Guardians: characters who are a little good, a little bad, and more unpredictable than ever.
+____________________
+A. David Lewis is an
+Arts & Sciences Faculty Associate at Massachusetts College of Pharmacy and Health Sciences. He is the author of
+American Comic Books, Literary Theory, and Religion: The Superhero Afterlife
+, as well as the co-editor of both
+Graven Images: Religion in Comic Books and Graphic Novels
+, and
+Digital Death: Mortality and Beyond in the Online Age.
+His essay originally appeared in
+The Conservation
+.
+Guardians of the Galaxy and the Fall of the Classic Hero by
+A. David Lewis
+is licensed under a
+Creative Commons Attribution-NoDerivatives 4.0 International License
+.
 
 ## Match 1.34 — World_History_Volume_2-WEB_LdwoslB § 12.1 Recovering from World War I
 
@@ -177,392 +223,3 @@ the German military had reached its breaking point in 1918 and was not in a posi
 especially given the continuous arrival of fresh U.S. troops.)
 The U.S. Senate’s biggest worry about the Treaty of Versailles was that if the United States joined the League of
 Nations, its 
-
-## Match 1.05 — World_History_Volume_1-WEB § 6.2 Ancient Greece
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Identify the historical factors that shaped the development of the Greek city-state
-•
-Describe the evolution of the political, economic, and social systems of Athens and Sparta
-•
-Discuss the alliances and hostilities among the Greek city-states during the Classical period
-•
-Identify the major accomplishments of Ancient Greek philosophy, literature, and art
-In the centuries following the collapse of the Bronze Age Mycenaean kingdoms around 1100 BCE, a dynamic
-new culture evolved in Iron Age Greece and the Aegean region. During this period, the Greek city-states
-developed innovative consensual governments. Free adult males participated in their own governance and
-voted to create laws and impose taxes. This system of government contrasted with the earlier monarchies of
-the ancient Near East, in which rulers claimed to govern their subjects through the will of the gods.
-The degree of political participation in the Greek city-states varied from monarchy and oligarchy, or
-government by a small group of wealthy elites, to democracy, literally “rule by the people,” a broader-based
-participation that eventually included both rich and poor adult males. These systems influenced Ancient
-Roman and European political thought through the centuries. The Greek Classical period (500–323 BCE)
-witnessed constant warfare among rival city-states, yet it was marked by the creation of enduring works of
-literature and art that inspired centuries of European artists and writers. Greek philosophers also subjected
-the human condition and the natural world to rational analysis, rejecting traditional beliefs and sacred myths.
-Archaic Greece
-The Greek Dark Ages (1100–800 BCE) persisted after the collapse of the Mycenaean civilization but began to
-recede around 800 BCE. From this point and for the next few centuries, Greece experienced a revival in which
-a unique and vibrant culture emerged and evolved into what we recognize today as Classical Greek civilization.
-This era, from 800 to 500 BCE, is called Archaic Greece after arche, Greek for “beginning.”
-The Greek renaissance was marked by rapid population growth and the organization of valleys and islands into
-independent city-states, each known as a polis (Greek for city-state). Towns arose around a hill fortress or
-acropolis to which inhabitants could flee in times of danger. Each polis had its own government and religious
-cults, and each built monumental temples for the gods, such as the temple of Hera, wife of Zeus and protector
-of marriage and the home, at the city-state of Argos. Though politically disunited, the Greeks, who began to
-refer to themselves as Hellenes after the mythical king Hellen, did share a common language and religion. The
-most famous of their sacred sites were Delphi, near Mount Parnassus in central Greece and seat of the oracle of
-Apollo, the god of prophecy, and Olympia in southern Greece, sacred to Zeus, who ruled the pantheon of gods
-at Mount Olympus (Figure 6.9). Beginning in 776 BCE, according to Aristotle, Greeks traveled to Olympia every
-four years to compete in athletic contests in Zeus’s honor, the origin of the Olympic Games.
-6.2 • Ancient Greece
-225
-
-FIGURE 6.9 Zeus. This larger-than-life marble bust of the Greek god Zeus is believed to be a Roman copy of a
-fourth-century BCE Greek original. It was found in Otricoli, Italy, in 1775. (credit: “So-called “Zeus of Otricoli”.
-Marble, Roman copy after a Greek original from the 4th century” by “Jastrow”/Wikimedia Commons, Public Domain)
-The Olympic Games
-Postponed a year because of the COVID-19 pandemic, the 2021 Games of the XXXII Olympiad in Japan included
-more than three hundred events in thirty-three sports, including new entries like skateboarding, rock climbing,
-and surfing. Modern games have been held since 1896, when the new International Olympic Committee started
-the tradition, but as the name suggests, the inspiration came from Ancient Greece.
-Athletic events in Ancient Greece were important displays of strength and endurance. There were contests at the
-sanctuaries at Delphi and Nemea (near Argos), but none was as renowned as the Olympic Games, held at the
-sanctuary in Olympia that was dedicated to Zeus. Contestants came from all over the Greek world, including
-Sicily and southern Italy.
-Unlike the skateboarding and surfing of modern games, the ancient games focused on skills necessary for war:
-running, jumping, throwing, and wrestling. Over time, sports that included horses, like chariot racing, were also
-incorporated. Such events were referenced in Homer’s Iliad, when the hero Achilles held athletic contests to
-honor his fallen comrade Patroclus and awarded prizes or athla (from which the word “athlete” is derived). The
-centerpiece of the ancient games was the two-hundred-yard sprint, or stadion, from which comes the modern
-word “stadium” (Figure 6.10).
-THE PAST MEETS THE PRESENT
-226
-6 • Mediterranean Peoples
-Access for free at openstax.org
-
-FIGURE 6.10 The Original Olympic Track. These are the ruins of the original Olympic stadion at Olympia. The
-track was made of hard-packed clay for a race to be won by the fastest athlete in the Greek world. (credit:
-“Olympic Race Track in modern Olympia, Greece” by “Dwaipayanc”/Wikimedia Commons, Public Domain)
-Unlike the modern games, where attendees pay great sums to watch athletes compete, admission to the ancient
-games was free—for men. Women were forbidden from watching and, if they dared to attend, could pay with their
-lives. Competitors were likely locals with proven abilities, though over time professional athletes came to
-dominate the sport. They could earn a good living from prizes and other rewards gained through their talent and
-celebrity, and their statues adorned the sanctuary at Olympia. The poet Pindar in the early fifth century BCE was
-renowned for composing songs to honor them when they returned home as victors. The Olympic Games
-continued to be celebrated until 393 CE, when they were halted during the reign of the Christian Roman emperor
-Theodosius.
-•
-Why might the organizers of the modern Olympic Games have named their contest after the ancient Greek
-version?
-•
-How are the ancient games similar to the modern Olympic Games? How are they different?
-The start of the Archaic period also witnessed the reemergence of specialization in Greek society. Greek artists
-became more sophisticated and skilled in their work. They often copied artistic styles from Egypt and
-Phoenicia, where Greek merchants were engaging in long-distance trade. At the site of Al-Mina, along the
-Mediterranean coast in Syria where historians believe the Phoenician alphabet was first transmitted to the
-Greeks, Greek and Phoenician merchants exchanged goods. Far to the west, on the island of Ischia off the west
-coast of Italy, Greeks were competing with Phoenician merchants for trade with local peoples, whose iron ore
-was in strong demand. Thanks to their contact and trade with the Phoenicians, Greeks adapted the Phoenician
-alphabet to their own language, making an important innovation by adding vowels (a, e, i, o, u). The eighth
-century BCE thus witnessed the return of literacy and the end of the Aegean world’s relative isolation after the
-6.2 • Ancient Greece
-227
-
-interlude of the Greek Dark Ages.
-The eighth century BCE was also the period in which the epic poems the Iliad and the Odyssey were composed,
-traditionally attributed to the blind poet Homer. While historians debate whether Homer was a historical or a
-legendary figure, they agree the epics originated in the songs of oral poets in the Greek Dark Ages. In the eighth
-century BCE, using the Greek alphabet, scribes wrote these stories down for the first time.
-As the population expanded during the Archaic period, a shortage of farmland brought dramatic changes.
-Many Greeks in search of land to farm left their homes and founded colonies along the shores of the Black Sea
-and the northern Aegean, in North Africa at Cyrene in Libya, and in southern Gaul (modern France) at Massalia
-(Marseille). The largest number were on the island of Sicily and in southern Italy, the region the Greeks
-referred to as Magna Graecia or “Greater Greece.” When Greeks established a colony, it became an
-independent polis with its own laws. The free adult males of the community divided the colony’s land into
-equal lots. Thus, a new idea developed in the colonies that citizenship in a community was associated with
-equality and participation in the governing of the state.
-In the society of Archaic Greece, the elite landowners, or aristoi, traditionally controlled the government and
-the priesthoods in the city-states. But thanks to the new ideas from the colonies, the common people, or kakoi,
-began demanding land and a voice in the governing of the polis. They were able to gain leverage in these
-negotiations because city-states needed troops in their wars for control of farmland. The nobility relied on the
-wealthier commoners, who could afford to equip themselves with iron weapons and armor. In some city-states,
-the aristoi and the kakoi were not able to resolve their differences peaceably. In such cases, a man who had
-strong popular support in the city would seize power and rule over the city. The Greeks referred to such
-populist leaders as tyrants.
-In the sixth century BCE, the difficulties caused by the land shortage were relieved by the invention of coinage.
-A century before, adopting a practice of the kings of Lydia in western Asia Minor (Turkey), Athens stamped
-silver pieces with the image of an owl, a symbol of wisdom often associated with the goddess Athena (See
-Figure 6.11). Instead of weighing precious metals to use as currency or arguing over the value of bartered
-goods to trade, merchants could use coins as a simple medium of exchange. The agora, or place of assembly in
-each city-state, thus became a marketplace to buy and sell goods. In the sixth century BCE, this rise of a market
-economy stimulated economic growth as farmers, artisans, and merchants discovered stronger incentives to
-produce and procure more goods for profit. For example, farmers learned how to produce more food with the
-land they already possessed rather than always seeking more land. The economic growth of this period is
-reflected in the many new temples the Greek city-states constructed then.
-FIGURE 6.11 Athenian Money. This Athenian silver coin from the fifth century BCE depicts Athena on one side and
-an owl, Athena’s symbol, on the other. (credit: “Athens owl coin” by “yuichi”/Wikimedia Commons, CC0 1.0)
-228
-6 • Mediterranean Peoples
-Access for free at openstax.org
-
-Sparta and Athens
-In the Archaic period, Athens and Sparta emerged as two of the most important of the many Greek city-states.
-Not only did their governments and cultures dominate the Greek world in the subsequent Classical period;
-they also fired the imaginations of Western cultures for centuries to come. Athens was the birthplace of
-democracy, whereas Sparta was an oligarchy headed by two kings.
-The Rise and Organization of Sparta
-Sparta in the eighth century BCE was a collection of five villages in Laconia, a mountain valley in the
-Peloponnese in southern Greece. Due to the shortage of farmland, the citizens (adult males) of these villages,
-the Spartiates, all served in the military and waged war on neighboring towns, forcing them to pay tribute. The
-Spartiates also appropriated farmland for themselves and enslaved the inhabitants of these lands, most
-famously the Messenians, who became known as the helots. Just as Greek colonists at this time divided land
-among themselves into equal lots, the Spartiates likewise divided the conquered land equally and assigned to
-each landowner a certain number of helot families to work it. Helots, unlike enslaved people in other parts of
-Greece, could not be bought or sold but remained on the land as forced laborers from generation to generation.
-In the seventh century BCE, Sparta conquered the land of Messene to its west and divided its farmland equally
-among the Spartiates.
-By the late sixth century BCE, the wealth from the rich agricultural land that Sparta then controlled had made
-it the most powerful state in the Peloponnese. Sparta also organized the city-states of this region and parts
-beyond into a system of alliances that historians refer to as the Peloponnesian League. Its members still had
-self-government and paid no tribute to Sparta, but all were expected to have the same friends and enemies as
-Sparta, which maintained its dominance in the league. Sparta also used its army to overthrow tyrants in the
-Peloponnesian city-states and restore political power to the aristoi.
-The Spartans were proud of their unique system of government, or constitution, which was a set of laws and
-traditional political practices rather than a single document. It was said to have been created by a great
-lawgiver named Lycurgus around 800 BCE, but modern historians view its development as an evolutionary
-process during the Archaic period rather than the work of a single person.
-Sparta had two hereditary kings drawn from rival royal families. Their powers were very limited, though both
-sat as permanent members of the Council of Elders and were priests in the state religion. On occasion, the
-Spartan kings also led armies into battle. The Assembly of Spartiates passed all laws and approved all treaties
-with the advice of the Council of Elders. This Assembly also elected five judges every year who administered
-the affairs of state, as well as the members of the Council of Elders.
-The unique element of Spartan culture was the agoge, its educational system. At the age of seven, boys were
-separated from their families and raised by the state. To teach them to live by their wits and courage, they were
-fed very little so they had to learn how to steal food to survive. At the age of twelve they began an even more
-severe regimen. They were not al
-
-## Match 1.01 — Introduction_to_Political_Science_-_WEB § 11.3 Types of Legal Systems around the World
-
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Describe the different types of legal systems and explain how they differ.
-•
-Explain how the rule of law applies in different judicial systems.
-•
-Analyze how different judicial systems operate.
-There are five basic types of legal systems in the world. They are civil law, common law, customary law,
-religious law, and hybrid or mixed systems. Today, mixed or hybrid systems are common. Because each
-system varies by country, this chapter will focus on the characteristic traits of each kind of system.
-11.3 • Types of Legal Systems around the World
-345
-
-FIGURE 11.4 This map shows the different types of legal systems in place around the world.43 (attribution:
-Copyright Rice University, OpenStax, under CC BY 4.0 license)
-Note that before discussing different law systems, it is important to distinguish between what the term civil
-means in the context of legal systems and what it means in terms of civil versus criminal laws.
-Common Law Systems
-The US legal system, and other legal systems that emanate from British rule, is a common law system.44
-Originally, common law meant judge-made law that filled in gaps when there was no written law. Judges looked
-to prior decisions to determine the unwritten judge-made law and apply it to new cases. However, today,
-almost all law is in writing and enacted by a legislature as statutes. Many statutes codify established common
-law, change it, or abolish it altogether, depending on the topic of the law. There are instances in which some
-unwritten common law is still enforced, but these are rare.
-In a common law system such as the one in the United States, the courts’ reliance on precedent is referred to
-as stare decisis, or a policy of using judicial decisions made in the past to interpret written laws and
-appropriately apply those laws to the facts in the present case.45 The court interprets written laws, and these
-interpretations and applications of precedent from prior interpretations constitute what is meant by common
-law today. Precedent is critical for interpreting later cases, and only the same or a higher court can overturn
-precedent. The court process is adversarial rather than investigatory, with each side trying to win or persuade
-the court to agree with its perspective.46
-VIDEO
-What Is Precedent?
-Click to view content (https://openstax.org/books/introduction-political-science/pages/11-3-types-of-legal-
-systems-around-the-world)
-This video discusses precedent and its importance in common law systems.
-Common law courts are adversarial; that is, there is a winner-takes-all attitude in the court. In an adversarial
-system, each side determines the issues and questions it wants the court to resolve, conducts its own
-investigation, and prepares and presents its own evidence. Each side calls witnesses, who are questioned
-directly and by cross-examination. Each side brings out information it thinks is pertinent to prove its point. In
-a criminal case, the police and prosecutor work together closely to establish their viewpoint using the
-346
-11 • Courts and Law
-Access for free at openstax.org
-
-government’s resources. Defendants must rely on their own resources to defend against the charges, either
-hiring an attorney or using a court-appointed one. In a civil case, the procedures are similar; however, each
-side must rely on its resources to prove its point. If a jury is present, it decides all factual questions while the
-judge determines the legal issues and moderates the proceedings. In some cases, the judge can act as a fact
-finder in place of a jury.
-Civil Law Systems
-Most of Europe and South America use a civil law system.47 A civil law system relies on comprehensive legal
-codes that contain all laws for the country. Case law—that is, judicial decisions—is secondary to these codes.
-Decisions are binding only on the parties to the case, not as a precedent for later cases on the same issues.
-While attorneys will consult prior decisions when advising clients, judges are rarely bound to follow precedent.
-For this reason, codes of statutes are usually more extensive and detailed than in common law systems.
-In civil law systems, court cases are investigations by the court to see how the facts fit into the already
-established codes applicable to the situation. The court system is set up so that the jurisdiction of each court is
-a specific type of code: tax courts, administrative courts, maritime courts, constitutional courts, and so on.
-The system is more inquisitorial than adversarial. The process is a series of meetings, hearings, and written
-communications in which the judge takes testimony. The judge crafts the issues to be decided based on
-discussions with the parties. Typically, the judge questions the witnesses and can include or exclude any
-queries submitted by the attorneys when crafting questions. Finally, the judge determines the issues and
-gathers the evidence before announcing a decision.48 Only at the final hearing do the attorneys and parties
-make arguments to the judge. If there is a jury, its members usually are not drawn from the general public but
-are selected for their expertise in the particular area in question. While juries of ordinary people are rare in
-civil law systems, they are increasingly used in serious criminal cases.
-These two systems, common law and civil law systems, are the most widely used legal systems in the world.
-They differ in terms of the weight they give to judicial precedent and their views on the purpose of the trial
-process.
-Religious Systems
-In a religious law system, the law relies on religious texts as its primary basis, and the courts interpret the
-present facts and statutes in light of those religious texts. Many Middle Eastern countries use religious law
-systems for all or part of their laws.49 For example, in Saudi Arabia, the legal system is based on sharia law,
-derived from the Koran, the Islamic religious text, as well as from the Sunnah and the Hadith.50 The legislature
-enacts statutes, but all are tested against Islamic tenets. Certain religious leaders can overrule any government
-act, including court decisions, on religious grounds. The legal system includes general and summary sharia
-courts, with some administrative tribunals for specific topics. Religious law systems do not use juries, and
-criminal trials do not present defensive evidence to the same extent as in other legal systems. Each judge, a
-specialist in the religious sharia text, makes their interpretation of the law and is not bound by any precedent.
-Israel also uses some religious laws and courts to determine cases.51 For example, religious courts in Israel
-include Jewish rabbinical courts, Islamic sharia courts, Druze religious courts, and ecclesiastical courts of the
-10 recognized Christian communities. In Israel, these courts are limited to some specific issues of family law.
-The secular court system decides all other matters.
-Customary Systems
-A customary law system is a system based on long-standing traditions in a particular community. The
-traditions have become so ingrained in society that the courts recognize them as enforceable rules. However, it
-is rare for customary laws to be interpreted and enforced by the government. Instead, select leaders of the
-group usually implement the customary laws. As a result, customary laws are typically unwritten and revealed
-only to group members. Today, customary laws are found in closed, isolated communities combined with
-11.3 • Types of Legal Systems around the World
-347
-
-common or civil law systems, allowing them to exist alongside government systems in a hybrid system.
-Andorra, a small country in the Pyrenees bordering Spain and France, relies partly on customary law. In
-Andorra, sources of customary law include canon law, the ecclesiastical law of the Catholic Church, Castilian
-law, French law, and Roman law. Andorra was invaded and under the control of other European powers at
-different times in its history, and the Andorran legal system now reflects elements of each invader’s laws.
-Today, Andorra is a parliamentary co-principality between the president of France and the Roman Catholic
-bishop of Catalonia (Urgell). Andorra also has an elected parliament that can enact new laws.52
-Common Law
-Civil Law
-Religious Law
-Customary Law
-Other Names
-Judge-made law; Anglo-
-American law
-Continental law;
-European law; Roman
-law
-Differs by religion;
-two prominent ones
-are sharia (Islamic
-law) and halakha
-(Jewish law)
-Differs by area,
-ethnicity, and tribe
-Source of Law
-Case law and statutes,
-which may be organized
-in codes
-Statutes organized in
-codes
-Religious texts
-Long-standing
-customs, which
-may be oral or
-written
-Degree of
-Judicial
-Independence
-High; important to society
-that judiciary appears to
-be independent of
-executive and legislature
-High; important to
-society that judiciary
-appears to be
-independent of
-executive and
-legislature
-Wide range, from
-very limited to high
-Wide range, from
-limited to high
-Judges
-Wide variety of selection
-and qualification
-standards
-Career position
-requiring training and
-testing; civil servants
-Religious and legal
-training
-Varies widely with
-customs of the area
-Policy-Making
-Role
-Due to stare decisis,
-shares power with
-individuals who come
-before the court and with
-government branches
-Equal but separate
-power as the enforcer
-of codes
-Depends on territory
-and topic area;
-paramount in some
-cases, advisory only
-in others
-Depends on
-territory and topic
-area; paramount in
-some cases,
-advisory only in
-others
-Examples
-US (except Louisiana),
-UK, Canada (except
-Quebec)
-All European Union
-countries, Quebec,
-Louisiana
-Saudi Arabia, Iran,
-United Arab
-Emirates, Israel
-Guernsey, Andorra
-TABLE 11.1 Differences among Major Legal Systems
-The island of Guernsey is another example of a customary law system. Though it is one of the Channel Islands
-off the coast of England, Guernsey is not part of the United Kingdom. Guernsey’s legal system is derived from
-the medieval power of the monarch, the Duke of Normandy.53 The ancient duchy law of Normandy is an
-influential source of law in Guernsey. The duchy laws developed in two periods, the Ancienne coutume of
-1199–1538 and the Coutume reformée of 1538–1804.54 Guernsey’s legal system also has elements of English
-common law and modern statutory law enacted by the island’s elected legislature. Guernsey enjoys almost
-348
-11 • Courts and Law
-Access for free at openstax.org
-
-complete autonomy over its internal affairs, and the country determines many issues based on ancient
-customary laws, with elected bailiffs and jurats making decisions.55
-In the United States, some customary laws may be used in tribal matters on tribal lands recognized by the US
-government.56 However, the US government does exercise some control over tribal legal systems in the United
-States. There is a growing worldwide movement to recognize tribal autonomy and customary legal systems.57
-For example, some Maori customary law is now recognized in New Zealand.58
-Hybrid or Mixed Systems
-A hybrid legal system combines parts of more than one approach to create a system unique to the country.
-Many countries have mixed legal systems incorporating common, civil, religious, and customary law
-systems.59 For example, the US state of Louisiana has a hybrid system. Louisiana uses some common law, but
-it also utilizes a civil law system for much of its state law and procedures because of its origins as a French
-territory. Also, on recognized tribal lands, customary laws of the tribe may be used rather than state or federal
-laws. Another example is the Philippine system, which includes French civil law, US-style common law, sharia
-law, and Indigenous customary law due to its history.60 Many African countries include a parallel tribal or
-ethnic legal system to adjudicate family law matters.61
-FIGURE 11.5 This map shows the different types of legal systems present in Africa. (attribution: Copyright Rice
-University, OpenStax, under CC BY 4.0 license)
-11.3 • Types of Legal Systems around the World
-349
-

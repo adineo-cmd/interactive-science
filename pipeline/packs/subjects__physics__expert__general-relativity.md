@@ -1,455 +1,66 @@
 # Source pack — subjects/physics/expert/general-relativity
 Lesson title: General Relativity
 Level: expert
-Match confidence: 3.05
+Match confidence: 3.08
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 3.05 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 34.2 General Relativity and Quantum Gravity
+## Match 3.08 — LibreTexts: 9.4: Einstein’s Theory of General Relativity
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/Berea_College/Introductory_Physics%3A_Berea_College/09%3A_Gravity/9.04%3A_Einsteins_Theory_of_General_Relativity
 
-LEARNING OBJECTIVES
+9.4: Einstein’s Theory of General Relativity
+-
+- Last updated
+- Save as PDF
+Newton’s Universal Theory of Gravity was extremely successful at describing the motion of planets in the solar system, and allowed for high precision astronomy. For example, precision measurements of Uranus’s orbit showed that it appeared to be inconsistent with Newton’s theory, unless the gravitational influence of another planet was included in the model. This led to the discovery of the planet Neptune.
+However, some issues with Newton’s theory were uncovered. The orbit of Mercury was shown to be different than what Newton’s theory could describe, but searches for another planet (Vulcan) were unsuccessful. In addition, Albert Einstein’s theory of Special Relativity, published in 1905, was found to be incompatible with Newton’s theory of gravity. One of the consequences of Special Relativity is that nothing can propagate faster than the speed of light. Newton’s Universal Theory of Gravity implies that the gravitational force is transmitted instantaneously. In Newton’s theory, if the Sun suddenly disappeared, Earth would immediately “fall out” of its orbit, and we would immediately know that the Sun has disappeared. This would violate Special Relativity because there cannot be a mechanism that would allow us to know that the Sun has disappeared faster than it would take light to propagate from the Sun. In other words, for the 8 min that are required for light to travel from the Sun to the Earth, we cannot know that the Sun has disappeared: only when we literally see the Sun disappear would the Earth be “allowed” to fall out of its orbit.
+Einstein’s Theory of General Relativity is a theory developed by Einstein in order to describe gravity in a way that is consistent with Special Relativity and the propagation of light. Einstein was famous for his “thought experiments,” which allow us to think about some of the implications of a theory, even if the experiments would be very difficult to carry out in practice. One such thought experiment is to consider what someone would observe in an accelerating frame of reference.
+Consider an observer in an elevator, as illustrated in Figure \(\PageIndex{1}\). If the elevator is stationary at the surface of the Earth (left panel), and the observer is standing on a scale, they could measure their weight, \(mg\), on the scale. The two forces on the observer are their weight and the normal force, which would be equal in magnitude since the observer is not accelerating. The normal force, read out by the scale, would thus correspond to their weight. To be more precise, the normal force would be equal to \(m_{G}g\), where \(m_{G}\) is the gravitational mass of the observer (that mass which is related to the force of gravity experienced by a mass).
+If the elevator was instead placed in empty space, and the elevator was accelerating upwards with an acceleration of \(g\) (right panel), the observer would still be able to measure their weight by stepping on the scale. The only force on the observer is the normal force from the scale, which must be equal to its mass times their acceleration \(N = ma = mg\), since the observer is accelerating with the elevator. In this case, it is the inertial mass of the observer, \(m_{I}\), that comes into play, so the normal force read on the scale is \(m_{I}g\).
+Einstein postulated that it would be impossible for the observer to distinguish whether they are at rest on the surface of the Earth, or in empty space accelerating with an acceleration of \(g\). In other words, he postulated that the inertial and gravitational masses are exactly equivalent. This is what is called the “Equivalence Principle”.
+This simple statement has dramatic implications. Special Relativity requires that light will travel in a straight line in empty space. If a beam of light enters and then exits the elevator, the observer on Earth and the one accelerating in empty space must observe the same thing, since they cannot distinguish between being on Earth or accelerating in space. The observer in space, who is accelerating, will observe that the beam of light bends as it crosses the elevator (the beam travels in a straight line as observed in an inertial reference frame, so the person in the accelerating elevator would see it follow a parabolic path). The observer on Earth must thus observe the same thing, namely that light will follow a curved path in the presence of a gravitational field.
+But...light must travel in a straight line in empty space. That means that if the path of a beam of light is curved near Earth, it must be because space itself is curved in the presence of a gravitational field! In other words, Einstein’s Theory of General Relativity describes how the presence of mass (or energy) results in a curvature of space (and time).
+Imagine a ladybug on the side of a basketball. If the ladybug starts moving in what it believes to be a straight line, it will actually move in a curved path along the surface of the ball, as in Figure \(\PageIndex{2}\). This is like the curved path of light that we observe. If we didn’t know the ball was there, we would just think that the bug was moving along a curved path. In the same way, if an observer is not aware of the curvature of spacetime, it appears that light follows a curved path.
+Now imagine there’s a second ladybug. Both bugs start at the middle of the ball and start moving towards the top of the ball in what they think is a straight line (as shown in the center panel of Figure \(\PageIndex{2}\)). When the bugs start moving, they are parallel to each other, so if the ball was not curved, the ladybugs would never meet. However, because it is curved, the ladybugs will eventually cross paths. If you were not aware that the ball was there, you would have to conclude that there was some force attracting the bugs to each other, just like if you were unaware that spacetime was curved, you would conclude that massive bodies moving towards each other are attracted by a gravitational force.
+Objects that are moving in a gravitational field are actually following Newton’s First Law (they are moving at constant velocity in a straight line and no force is exerted on them). It is strange and unexpected, but high precision measurements confirm that this correctly describes everything that we have measured!
+Einstein’s theory was able to describe the orbit of Mercury, and the prediction that gravity leads to light following a curved path was confirmed by Eddington within five years of Einstein’s theory being published. Another implication of the theory is that time goes by slower in the presence of a gravitational field. Clocks on Earth run slower than clocks in orbit (where the gravitational field is weaker). This effect is taken into account when using GPS to determine your position on Earth, since this is based on comparing the time that it takes signals to arrive to your position on Earth from different satellites. This is also somewhat reasonably well described in the movie “Interstallar”, where time is seen to pass much slower for a set of astronauts in the vicinity of a black hole, where the gravitational field is strong.
+
+## Match 3.07 — LibreTexts: 3.8: The Metric in General Relativity
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Bookshelves/Relativity/General_Relativity_(Crowell)/03%3A_Differential_Geometry/3.08%3A_The_Metric_in_General_Relativity
+
+3.8: The Metric in General Relativity
+So far we’ve considered a variety of examples in which the metric is predetermined. This is not the case in general relativity. For example, Einstein published general relativity in 1915, but it was not until 1916 that Schwarzschild found the metric for a spherical, gravitating body such as the sun or the earth.
+When masses are present, finding the metric is analogous to finding the electric field made by charges, but the interpretation is more difficult. In the electromagnetic case, the field is found on a preexisting background of space and time. In general relativity, there is no preexisting geometry of spacetime. The metric tells us how to find distances in terms of our coordinates, but the coordinates themselves are completely arbitrary. So what does the metric even mean? This was an issue that caused Einstein great distress and confusion, and at one point, in 1914, it even led him to publish an incorrect, dead-end theory of gravity in which he abandoned coordinate-independence.
+With the benefit of hindsight, we can consider these issues in terms of the general description of measurements in relativity given in section 3.4 :
+- We can tell whether events and world-lines are incident.
+- We can do measurements in local Lorentz frames.
+The Hole Argument
+The main factor that led Einstein to his false start is known as the hole argument. Suppose that we know about the distribution of matter throughout all of spacetime, including a particular region of finite size — the “hole” — which contains no matter. By analogy with other classical field theories, such as electromagnetism, we expect that the metric will be a solution to some kind of differential equation, in which matter acts as the source term. We find a metric \(g(x)\) that solves the field equations for this set of sources, where \(x\) is some set of coordinates. Now if the field equations are coordinate-independent, we can introduce a new set of coordinates x', which is identical to \(x\) outside the hole, but differs from it on the inside. If we reexpress the metric in terms of these new coordinates as \(g'(x')\), then we are guaranteed that \(g'(x')\) is also a solution. But furthermore, we can substitute \(x\) for \(x'\), and \(g'(x)\) will still be a solution. For outside the hole there is no difference between the primed and unprimed quantities, and inside the hole there is no mass distribution that has to match the metric’s behavior on a point-by-point basis.
+We conclude that in any coordinate-invariant theory, it is impossible to uniquely determine the metric inside such a hole. Einstein initially decided that this was unacceptable, because it showed a lack of determinism; in a classical theory such as general relativity, we ought to be able to predict the evolution of the fields, and it would seem that there is no way to predict the metric inside the hole. He eventually realized that this was an incorrect interpretation. The only type of global observation that general relativity lets us do is measurements of the incidence of world-lines. Relabeling all the points inside the hole doesn’t change any of the incidence relations. For example, if two test particles sent into the region collide at a point x inside the hole, then changing the point’s name to x' doesn’t change the observable fact that they collided.
+A Machian Paradox
+Another type of argument that made Einstein suffer is also resolved by a correct understanding of measurements, this time the use of measurements in local Lorentz frames. The earth is in hydrostatic equilibrium, and its equator bulges due to its rotation. Suppose that the universe was empty except for two planets, each rotating about the line connecting their centers. 13 Since there are no stars or other external points of reference, the inhabitants of each planet have no external reference points against which to judge their rotation or lack of rotation. They can only determine their rotation, Einstein said, relative to the other planet. Now suppose that one planet has an equatorial bulge and the other doesn’t. This seems to violate determinism, since there is no cause that could produce the differing effect. The people on either planet can consider themselves as rotating and the other planet as stationary, or they can describe the situation the other way around. Einstein believed that this argument proved that there could be no difference between the sizes of the two planets’ equatorial bulges.
+Note
+The example is described in Einstein’s paper “The Foundation of the General Theory of Relativity.” An excerpt, which includes the example, is given in Appendix A .
+The flaw in Einstein’s argument was that measurements in local Lorentz frames do allow one to make a distinction between rotation and a lack of rotation. For example, suppose that scientists on planet A notice that their world has no equatorial bulge, while planet B has one. They send a space probe with a clock to B, let it stay on B’s surface for a few years, and then order it to return. When the clock is back in the lab, they compare it with another clock that stayed in the lab on planet A, and they find that less time has elapsed according to the one that spent time on B’s surface. They conclude that planet B is rotating more quickly than planet A, and that the motion of B’s surface was the cause of the observed time dilation. This resolution of the apparent paradox depends specifically on the Lorentzian form of the local geometry of spacetime; it is not available in, e.g., Cartan’s curved-spacetime description of Newtonian gravity .
+Einstein’s original, incorrect use of this example sprang from his interest in the ideas of the physicist and philosopher Ernst Mach. Mach had a somewhat ill-defined idea that since motion is only a well-defined notion when we speak of one object moving relative to another object, the inertia of an object must be caused by the influence of all the other matter in the universe. Einstein referred to this as Mach’s principle. Einstein’s false starts in constructing general relativity were frequently related to his attempts to make his theory too “Machian.” Section 8.3 discusses an alternative, more Machian theory of gravity proposed by Brans and Dicke in 1951.
+
+## Match 3.07 — LibreTexts: 24.4: Tests of General Relativity
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/Astronomy__Cosmology/Astronomy_2e_(OpenStax)/24%3A_Black_Holes_and_Curved_Spacetime/24.04%3A_Tests_of_General_Relativity
+
+24.4: Tests of General Relativity
 By the end of this section, you will be able to:
-•
-Explain the effect of gravity on light.
-•
-Discuss black hole.
-•
-Explain quantum gravity.
-When we talk of black holes or the unification of forces, we are actually discussing aspects of general relativity and
-quantum gravity. We know from Special Relativity that relativity is the study of how different observers measure the
-same event, particularly if they move relative to one another. Einstein’s theory of general relativity describes all
-types of relative motion including accelerated motion and the effects of gravity. General relativity encompasses
-special relativity and classical relativity in situations where acceleration is zero and relative velocity is small
-compared with the speed of light. Many aspects of general relativity have been verified experimentally, some of
-which are better than science fiction in that they are bizarre but true. Quantum gravity is the theory that deals with
-particle exchange of gravitons as the mechanism for the force, and with extreme conditions where quantum
-mechanics and general relativity must both be used. A good theory of quantum gravity does not yet exist, but one
-will be needed to understand how all four forces may be unified. If we are successful, the theory of quantum gravity
-will encompass all others, from classical physics to relativity to quantum mechanics—truly a Theory of Everything
-(TOE).
-General Relativity
-Einstein first considered the case of no observer acceleration when he developed the revolutionary special theory of
-relativity, publishing his first work on it in 1905. By 1916, he had laid the foundation of general relativity, again
-almost on his own. Much of what Einstein did to develop his ideas was to mentally analyze certain carefully and
-clearly defined situations—doing this is to perform a thought experiment. Figure 34.10 illustrates a thought
-experiment like the ones that convinced Einstein that light must fall in a gravitational field. Think about what a
-person feels in an elevator that is accelerated upward. It is identical to being in a stationary elevator in a
-gravitational field. The feet of a person are pressed against the floor, and objects released from hand fall with
-1608
-34 • Frontiers of Physics
-Access for free at openstax.org
-
-identical accelerations. In fact, it is not possible, without looking outside, to know what is happening—acceleration
-upward or gravity. This led Einstein to correctly postulate that acceleration and gravity will produce identical effects
-in all situations. So, if acceleration affects light, then gravity will, too. Figure 34.10 shows the effect of acceleration
-on a beam of light shone horizontally at one wall. Since the accelerated elevator moves up during the time light
-travels across the elevator, the beam of light strikes low, seeming to the person to bend down. (Normally a tiny
-effect, since the speed of light is so great.) The same effect must occur due to gravity, Einstein reasoned, since there
-is no way to tell the effects of gravity acting downward from acceleration of the elevator upward. Thus gravity affects
-the path of light, even though we think of gravity as acting between masses and photons are massless.
-FIGURE 34.10 (a) A beam of light emerges from a flashlight in an upward-accelerating elevator. Since the elevator moves up during the
-time the light takes to reach the wall, the beam strikes lower than it would if the elevator were not accelerated. (b) Gravity has the same
-effect on light, since it is not possible to tell whether the elevator is accelerating upward or acted upon by gravity.
-Einstein’s theory of general relativity got its first verification in 1919 when starlight passing near the Sun was
-observed during a solar eclipse. (See Figure 34.11.) During an eclipse, the sky is darkened and we can briefly see
-stars. Those in a line of sight nearest the Sun should have a shift in their apparent positions. Not only was this shift
-observed, but it agreed with Einstein’s predictions well within experimental uncertainties. This discovery created a
-scientific and public sensation. Einstein was now a folk hero as well as a very great scientist. The bending of light by
-matter is equivalent to a bending of space itself, with light following the curve. This is another radical change in our
-concept of space and time. It is also another connection that any particle with mass or energy (massless photons) is
-affected by gravity.
-There are several current forefront efforts related to general relativity. One is the observation and analysis of
-gravitational lensing of light. Another is analysis of the definitive proof of the existence of black holes. Direct
-observation of gravitational waves or moving wrinkles in space is being searched for. Theoretical efforts are also
-being aimed at the possibility of time travel and wormholes into other parts of space due to black holes.
-Gravitational lensing As you can see in Figure 34.11, light is bent toward a mass, producing an effect much like a
-converging lens (large masses are needed to produce observable effects). On a galactic scale, the light from a
-distant galaxy could be “lensed” into several images when passing close by another galaxy on its way to Earth.
-Einstein predicted this effect, but he considered it unlikely that we would ever observe it. A number of cases of this
-effect have now been observed; one is shown in Figure 34.12. This effect is a much larger scale verification of
-general relativity. But such gravitational lensing is also useful in verifying that the red shift is proportional to
-34.2 • General Relativity and Quantum Gravity
-1609
-
-distance. The red shift of the intervening galaxy is always less than that of the one being lensed, and each image of
-the lensed galaxy has the same red shift. This verification supplies more evidence that red shift is proportional to
-distance. Confidence that the multiple images are not different objects is bolstered by the observations that if one
-image varies in brightness over time, the others also vary in the same manner.
-FIGURE 34.11 This schematic shows how light passing near a massive body like the Sun is curved toward it. The light that reaches the
-Earth then seems to be coming from different locations than the known positions of the originating stars. Not only was this effect observed,
-the amount of bending was precisely what Einstein predicted in his general theory of relativity.
-FIGURE 34.12 (a) Light from a distant galaxy can travel different paths to the Earth because it is bent around an intermediary galaxy by
-gravity. This produces several images of the more distant galaxy. (b) The images around the central galaxy are produced by gravitational
-lensing. Each image has the same spectrum and a larger red shift than the intermediary. (credit: NASA, ESA, and STScI)
-Black holes Black holes are objects having such large gravitational fields that things can fall in, but nothing, not
-even light, can escape. Bodies, like the Earth or the Sun, have what is called an escape velocity. If an object moves
-straight up from the body, starting at the escape velocity, it will just be able to escape the gravity of the body. The
-greater the acceleration of gravity on the body, the greater is the escape velocity. As long ago as the late 1700s, it
-was proposed that if the escape velocity is greater than the speed of light, then light cannot escape. Simon Laplace
-(1749–1827), the French astronomer and mathematician, even incorporated this idea of a dark star into his
-writings. But the idea was dropped after Young’s double slit experiment showed light to be a wave. For some time,
-light was thought not to have particle characteristics and, thus, could not be acted upon by gravity. The idea of a
-black hole was very quickly reincarnated in 1916 after Einstein’s theory of general relativity was published. It is now
-thought that black holes can form in the supernova collapse of a massive star, forming an object perhaps 10 km
-across and having a mass greater than that of our Sun. It is interesting that several prominent physicists who
-1610
-34 • Frontiers of Physics
-Access for free at openstax.org
-
-worked on the concept, including Einstein, firmly believed that nature would find a way to prohibit such objects.
-Black holes are difficult to observe directly, because they are small and no light comes directly from them. In fact,
-no light comes from inside the event horizon, which is defined to be at a distance from the object at which the
-escape velocity is exactly the speed of light. The radius of the event horizon is known as the Schwarzschild radius
-and is given by
-where
-is the universal gravitational constant,
-is the mass of the body, and
-is the speed of light. The event
-horizon is the edge of the black hole and
-is its radius (that is, the size of a black hole is twice
-). Since
-is
-small and
-is large, you can see that black holes are extremely small, only a few kilometers for masses a little
-greater than the Sun’s. The object itself is inside the event horizon.
-Physics near a black hole is fascinating. Gravity increases so rapidly that, as you approach a black hole, the tidal
-effects tear matter apart, with matter closer to the hole being pulled in with much more force than that only slightly
-farther away. This can pull a companion star apart and heat inflowing gases to the point of producing X rays. (See
-Figure 34.13.) We have observed X rays from certain binary star systems that are consistent with such a picture.
-This is not quite proof of black holes, because the X rays could also be caused by matter falling onto a neutron star.
-These objects were first discovered in 1967 by the British astrophysicists, Jocelyn Bell and Anthony Hewish.
-Neutron stars are literally a star composed of neutrons. They are formed by the collapse of a star’s core in a
-supernova, during which electrons and protons are forced together to form neutrons (the reverse of neutron
-decay). Neutron stars are slightly larger than a black hole of the same mass and will not collapse further because of
-resistance by the strong force. However, neutron stars cannot have a mass greater than about eight solar masses or
-they must collapse to a black hole. With recent improvements in our ability to resolve small details, such as with the
-orbiting Chandra X-ray Observatory, it has become possible to measure the masses of X-ray-emitting objects by
-observing the motion of companion stars and other matter in their vicinity. What has emerged is a plethora of X-ray-
-emitting objects too massive to be neutron stars. This evidence is considered conclusive and the existence of black
-holes is widely accepted. These black holes are concentrated near galactic centers.
-We also have evidence that supermassive black holes may exist at the cores of many galaxies, including the Milky
-Way. Such a black hole might have a mass millions or even billions of times that of the Sun, and it would probably
-have formed when matter first coalesced into a galaxy billions of years ago. Supporting this is the fact that very
-distant galaxies are more likely to have abnormally energetic cores. Some of the moderately distant galaxies, and
-hence among the younger, are known as quasars and emit as much or more energy than a normal galaxy but from a
-region less than a light year across. Quasar energy outputs may vary in times less than a year, so that the energy-
-emitting region must be less than a light year across. The best explanation of quasars is that they are young galaxies
-with a supermassive black hole forming at their core, and that they become less energetic over billions of years. In
-closer superactive galaxies, we observe tremendous amounts of energy being emitted from very small regions of
-space, consistent with stars falling into a black hole at the rate of one or more a month. The Hubble Space Telescope
-(1994) observed an accretion disk in the galaxy M87 rotating rapidly around a region of extreme energy emission.
-(See Figure 34.13.) A jet of material being ejected perpendicular to the plane of rotation gives further evidence of a
-supermassive black hole as the engine.
-FIGURE 34.13 A black hole is shown pulling matter away from a companion star, forming a superheated accretion disk where X rays are
-emitted before the matter disappears forever into the hole. The in-fall energy also ejects some material, forming the two vertical spikes.
-(See also the photograph in the Introduction to Frontiers of Physics.) There are several X-ray-emitting objects in space that are consistent
-with this picture and are likely to be black holes.
-Gravitational waves If a massive object distorts the space around it, like the foot of a water bug on the surface of a
-34.2
-34.2 • General Relativity and Quantum Gravity
-1611
-
-pond, then movement of the massive object should create waves in space like those on a pond. Gravitational
-waves are mass-created distortions in space that propagate at the speed of light and are predicted by general
-relativity. Since gravity is by far the weakest force, extreme conditions are needed to generate significant
-gravitational waves. Gravity near binary neutron star systems is so great that significant gravitational wave energy is
-radiated as the two neutron stars orbit one another. American astronomers, Joseph Taylor and Russell Hulse,
-measured changes in the orbit of such a binary neutron star system. They found its orbit to change precisely as
-predicted by general relativity, a strong indication of gravitational waves, and were awarded the 1993 Nobel Prize.
-But direct detection of gravitational waves on Earth would be conclusive. For many years, various attempts have
-been made to detect gravitational waves by observing vibrations induced in matter distorted by these waves.
-American physicist Joseph Weber pioneered this field in the 1960s, but no conclusive events have been observed.
-(No gravity wave detectors were in operation at the time of t
-
-## Match 3.05 — College_Physics_2e-WEB_7Zesafu § 34.2 General Relativity and Quantum Gravity
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain the effect of gravity on light.
-•
-Discuss black hole.
-•
-Explain quantum gravity.
-When we talk of black holes or the unification of forces, we are actually discussing aspects of general relativity and
-quantum gravity. We know from Special Relativity that relativity is the study of how different observers measure the
-same event, particularly if they move relative to one another. Einstein’s theory of general relativity describes all
-types of relative motion including accelerated motion and the effects of gravity. General relativity encompasses
-special relativity and classical relativity in situations where acceleration is zero and relative velocity is small
-compared with the speed of light. Many aspects of general relativity have been verified experimentally, some of
-which are better than science fiction in that they are bizarre but true. Quantum gravity is the theory that deals with
-particle exchange of gravitons as the mechanism for the force, and with extreme conditions where quantum
-mechanics and general relativity must both be used. A good theory of quantum gravity does not yet exist, but one
-will be needed to understand how all four forces may be unified. If we are successful, the theory of quantum gravity
-will encompass all others, from classical physics to relativity to quantum mechanics—truly a Theory of Everything
-(TOE).
-General Relativity
-Einstein first considered the case of no observer acceleration when he developed the revolutionary special theory of
-relativity, publishing his first work on it in 1905. By 1916, he had laid the foundation of general relativity, again
-almost on his own. Much of what Einstein did to develop his ideas was to mentally analyze certain carefully and
-clearly defined situations—doing this is to perform a thought experiment. Figure 34.10 illustrates a thought
-experiment like the ones that convinced Einstein that light must fall in a gravitational field. Think about what a
-person feels in an elevator that is accelerated upward. It is identical to being in a stationary elevator in a
-gravitational field. The feet of a person are pressed against the floor, and objects released from hand fall with
-1512
-34 • Frontiers of Physics
-Access for free at openstax.org
-
-identical accelerations. In fact, it is not possible, without looking outside, to know what is happening—acceleration
-upward or gravity. This led Einstein to correctly postulate that acceleration and gravity will produce identical effects
-in all situations. So, if acceleration affects light, then gravity will, too. Figure 34.10 shows the effect of acceleration
-on a beam of light shone horizontally at one wall. Since the accelerated elevator moves up during the time light
-travels across the elevator, the beam of light strikes low, seeming to the person to bend down. (Normally a tiny
-effect, since the speed of light is so great.) The same effect must occur due to gravity, Einstein reasoned, since there
-is no way to tell the effects of gravity acting downward from acceleration of the elevator upward. Thus gravity affects
-the path of light, even though we think of gravity as acting between masses and photons are massless.
-FIGURE 34.10 (a) A beam of light emerges from a flashlight in an upward-accelerating elevator. Since the elevator moves up during the
-time the light takes to reach the wall, the beam strikes lower than it would if the elevator were not accelerated. (b) Gravity has the same
-effect on light, since it is not possible to tell whether the elevator is accelerating upward or acted upon by gravity.
-Einstein’s theory of general relativity got its first verification in 1919 when starlight passing near the Sun was
-observed during a solar eclipse. (See Figure 34.11.) During an eclipse, the sky is darkened and we can briefly see
-stars. Those in a line of sight nearest the Sun should have a shift in their apparent positions. Not only was this shift
-observed, but it agreed with Einstein’s predictions well within experimental uncertainties. This discovery created a
-scientific and public sensation. Einstein was now a folk hero as well as a very great scientist. The bending of light by
-matter is equivalent to a bending of space itself, with light following the curve. This is another radical change in our
-concept of space and time. It is also another connection that any particle with mass or energy (massless photons) is
-affected by gravity.
-There are several current forefront efforts related to general relativity. One is the observation and analysis of
-gravitational lensing of light. Another is analysis of the definitive proof of the existence of black holes. Direct
-observation of gravitational waves or moving wrinkles in space is being searched for. Theoretical efforts are also
-being aimed at the possibility of time travel and wormholes into other parts of space due to black holes.
-Gravitational lensing As you can see in Figure 34.11, light is bent toward a mass, producing an effect much like a
-converging lens (large masses are needed to produce observable effects). On a galactic scale, the light from a
-distant galaxy could be “lensed” into several images when passing close by another galaxy on its way to Earth.
-Einstein predicted this effect, but he considered it unlikely that we would ever observe it. A number of cases of this
-effect have now been observed; one is shown in Figure 34.12. This effect is a much larger scale verification of
-general relativity. But such gravitational lensing is also useful in verifying that the red shift is proportional to
-34.2 • General Relativity and Quantum Gravity
-1513
-
-distance. The red shift of the intervening galaxy is always less than that of the one being lensed, and each image of
-the lensed galaxy has the same red shift. This verification supplies more evidence that red shift is proportional to
-distance. Confidence that the multiple images are not different objects is bolstered by the observations that if one
-image varies in brightness over time, the others also vary in the same manner.
-FIGURE 34.11 This schematic shows how light passing near a massive body like the Sun is curved toward it. The light that reaches the
-Earth then seems to be coming from different locations than the known positions of the originating stars. Not only was this effect observed,
-the amount of bending was precisely what Einstein predicted in his general theory of relativity.
-FIGURE 34.12 (a) Light from a distant galaxy can travel different paths to the Earth because it is bent around an intermediary galaxy by
-gravity. This produces several images of the more distant galaxy. (b) The images around the central galaxy are produced by gravitational
-lensing. Each image has the same spectrum and a larger red shift than the intermediary. (credit: NASA, ESA, and STScI)
-Black holes Black holes are objects having such large gravitational fields that things can fall in, but nothing, not
-even light, can escape. Bodies, like the Earth or the Sun, have what is called an escape velocity. If an object moves
-straight up from the body, starting at the escape velocity, it will just be able to escape the gravity of the body. The
-greater the acceleration of gravity on the body, the greater is the escape velocity. As long ago as the late 1700s, it
-was proposed that if the escape velocity is greater than the speed of light, then light cannot escape. Simon Laplace
-(1749–1827), the French astronomer and mathematician, even incorporated this idea of a dark star into his
-writings. But the idea was dropped after Young’s double slit experiment showed light to be a wave. For some time,
-light was thought not to have particle characteristics and, thus, could not be acted upon by gravity. The idea of a
-black hole was very quickly reincarnated in 1916 after Einstein’s theory of general relativity was published. It is now
-thought that black holes can form in the supernova collapse of a massive star, forming an object perhaps 10 km
-across and having a mass greater than that of our Sun. It is interesting that several prominent physicists who
-1514
-34 • Frontiers of Physics
-Access for free at openstax.org
-
-worked on the concept, including Einstein, firmly believed that nature would find a way to prohibit such objects.
-Black holes are difficult to observe directly, because they are small and no light comes directly from them. In fact,
-no light comes from inside the event horizon, which is defined to be at a distance from the object at which the
-escape velocity is exactly the speed of light. The radius of the event horizon is known as the Schwarzschild radius
-and is given by
-where
-is the universal gravitational constant,
-is the mass of the body, and
-is the speed of light. The event
-horizon is the edge of the black hole and
-is its radius (that is, the size of a black hole is twice
-). Since
-is
-small and
-is large, you can see that black holes are extremely small, only a few kilometers for masses a little
-greater than the Sun’s. The object itself is inside the event horizon.
-Physics near a black hole is fascinating. Gravity increases so rapidly that, as you approach a black hole, the tidal
-effects tear matter apart, with matter closer to the hole being pulled in with much more force than that only slightly
-farther away. This can pull a companion star apart and heat inflowing gases to the point of producing X rays. (See
-Figure 34.13.) We have observed X rays from certain binary star systems that are consistent with such a picture.
-This is not quite proof of black holes, because the X rays could also be caused by matter falling onto a neutron star.
-These objects were first discovered in 1967 by the British astrophysicists, Jocelyn Bell and Anthony Hewish.
-Neutron stars are literally a star composed of neutrons. They are formed by the collapse of a star’s core in a
-supernova, during which electrons and protons are forced together to form neutrons (the reverse of neutron
-decay). Neutron stars are slightly larger than a black hole of the same mass and will not collapse further because of
-resistance by the strong force. However, neutron stars cannot have a mass greater than about eight solar masses or
-they must collapse to a black hole. With recent improvements in our ability to resolve small details, such as with the
-orbiting Chandra X-ray Observatory, it has become possible to measure the masses of X-ray-emitting objects by
-observing the motion of companion stars and other matter in their vicinity. What has emerged is a plethora of X-ray-
-emitting objects too massive to be neutron stars. This evidence is considered conclusive and the existence of black
-holes is widely accepted. These black holes are concentrated near galactic centers.
-We also have evidence that supermassive black holes may exist at the cores of many galaxies, including the Milky
-Way. Such a black hole might have a mass millions or even billions of times that of the Sun, and it would probably
-have formed when matter first coalesced into a galaxy billions of years ago. Supporting this is the fact that very
-distant galaxies are more likely to have abnormally energetic cores. Some of the moderately distant galaxies, and
-hence among the younger, are known as quasars and emit as much or more energy than a normal galaxy but from a
-region less than a light year across. Quasar energy outputs may vary in times less than a year, so that the energy-
-emitting region must be less than a light year across. The best explanation of quasars is that they are young galaxies
-with a supermassive black hole forming at their core, and that they become less energetic over billions of years. In
-closer superactive galaxies, we observe tremendous amounts of energy being emitted from very small regions of
-space, consistent with stars falling into a black hole at the rate of one or more a month. The Hubble Space Telescope
-(1994) observed an accretion disk in the galaxy M87 rotating rapidly around a region of extreme energy emission.
-(See Figure 34.13.) A jet of material being ejected perpendicular to the plane of rotation gives further evidence of a
-supermassive black hole as the engine.
-FIGURE 34.13 A black hole is shown pulling matter away from a companion star, forming a superheated accretion disk where X rays are
-emitted before the matter disappears forever into the hole. The in-fall energy also ejects some material, forming the two vertical spikes.
-(See also the photograph in Introduction to Frontiers of Physics.) There are several X-ray-emitting objects in space that are consistent with
-this picture and are likely to be black holes.
-Gravitational waves If a massive object distorts the space around it, like the foot of a water bug on the surface of a
-34.2
-34.2 • General Relativity and Quantum Gravity
-1515
-
-pond, then movement of the massive object should create waves in space like those on a pond. Gravitational
-waves are mass-created distortions in space that propagate at the speed of light and are predicted by general
-relativity. Since gravity is by far the weakest force, extreme conditions are needed to generate significant
-gravitational waves. Gravity near binary neutron star systems is so great that significant gravitational wave energy is
-radiated as the two neutron stars orbit one another. American astronomers, Joseph Taylor and Russell Hulse,
-measured changes in the orbit of such a binary neutron star system. They found its orbit to change precisely as
-predicted by general relativity, a strong indication of gravitational waves, and were awarded the 1993 Nobel Prize.
-But direct detection of gravitational waves on Earth would be conclusive. For many years, various attempts have
-been made to detect gravitational waves by observing vibrations induced in matter distorted by these waves.
-American physicist Joseph Weber pioneered this field in the 1960s, but no conclusive events have been observed.
-(No gravity wave detectors were in operation at the time of the 1
-
-## Match 3.05 — APCollegePhysics-OP_js6ZFp7 § 34.2 General Relativity and Quantum Gravity
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Explain the effect of gravity on light.
-•
-Discuss black holes.
-•
-Explain quantum gravity.
-When we talk of black holes or the unification of forces, we are actually discussing aspects of general relativity and quantum
-gravity. We know from Special Relativity that relativity is the study of how different observers measure the same event,
-particularly if they move relative to one another. Einstein's theory of general relativity describes all types of relative motion
-including accelerated motion and the effects of gravity. General relativity encompasses special relativity and classical relativity in
-situations where acceleration is zero and relative velocity is small compared with the speed of light. Many aspects of general
-relativity have been verified experimentally, some of which are better than science fiction in that they are bizarre but true.
-Quantum gravity is the theory that deals with particle exchange of gravitons as the mechanism for the force, and with extreme
-conditions where quantum mechanics and general relativity must both be used. A good theory of quantum gravity does not yet
-exist, but one will be needed to understand how all four forces may be unified. If we are successful, the theory of quantum gravity
-will encompass all others, from classical physics to relativity to quantum mechanics—truly a Theory of Everything (TOE).
-General Relativity
-Einstein first considered the case of no observer acceleration when he developed the revolutionary special theory of relativity,
-publishing his first work on it in 1905. By 1916, he had laid the foundation of general relativity, again almost on his own. Much of
-what Einstein did to develop his ideas was to mentally analyze certain carefully and clearly defined situations—doing this is to
-perform a thought experiment. Figure 34.10 illustrates a thought experiment like the ones that convinced Einstein that light
-must fall in a gravitational field. Think about what a person feels in an elevator that is accelerated upward. It is identical to being
-in a stationary elevator in a gravitational field. The feet of a person are pressed against the floor, and objects released from hand
-fall with identical accelerations. In fact, it is not possible, without looking outside, to know what is happening—acceleration
-upward or gravity. This led Einstein to correctly postulate that acceleration and gravity will produce identical effects in all
-situations. So, if acceleration affects light, then gravity will, too. Figure 34.10 shows the effect of acceleration on a beam of light
-shone horizontally at one wall. Since the accelerated elevator moves up during the time light travels across the elevator, the
-beam of light strikes low, seeming to the person to bend down. (Normally a tiny effect, since the speed of light is so great.) The
-same effect must occur due to gravity, Einstein reasoned, since there is no way to tell the effects of gravity acting downward from
-acceleration of the elevator upward. Thus gravity affects the path of light, even though we think of gravity as acting between
-masses and photons are massless.
-Chapter 34 | Frontiers of Physics
-1525
-
-Figure 34.10 (a) A beam of light emerges from a flashlight in an upward-accelerating elevator. Since the elevator moves up during the time the light
-takes to reach the wall, the beam strikes lower than it would if the elevator were not accelerated. (b) Gravity has the same effect on light, since it is not
-possible to tell whether the elevator is accelerating upward or acted upon by gravity.
-Einstein's theory of general relativity got its first verification in 1919 when starlight passing near the Sun was observed during a
-solar eclipse. (See Figure 34.11.) During an eclipse, the sky is darkened and we can briefly see stars. Those in a line of sight
-nearest the Sun should have a shift in their apparent positions. Not only was this shift observed, but it agreed with Einstein's
-predictions well within experimental uncertainties. This discovery created a scientific and public sensation. Einstein was now a
-folk hero as well as a very great scientist. The bending of light by matter is equivalent to a bending of space itself, with light
-following the curve. This is another radical change in our concept of space and time. It is also another connection that any
-particle with mass or energy (massless photons) is affected by gravity.
-There are several current forefront efforts related to general relativity. One is the observation and analysis of gravitational lensing
-of light. Another is analysis of the definitive proof of the existence of black holes. Direct observation of gravitational waves or
-moving wrinkles in space is being searched for. Theoretical efforts are also being aimed at the possibility of time travel and
-wormholes into other parts of space due to black holes.
-Gravitational lensing As you can see in Figure 34.11, light is bent toward a mass, producing an effect much like a converging
-lens (large masses are needed to produce observable effects). On a galactic scale, the light from a distant galaxy could be
-“lensed” into several images when passing close by another galaxy on its way to Earth. Einstein predicted this effect, but he
-considered it unlikely that we would ever observe it. A number of cases of this effect have now been observed; one is shown in
-Figure 34.12. This effect is a much larger scale verification of general relativity. But such gravitational lensing is also useful in
-verifying that the red shift is proportional to distance. The red shift of the intervening galaxy is always less than that of the one
-being lensed, and each image of the lensed galaxy has the same red shift. This verification supplies more evidence that red shift
-is proportional to distance. Confidence that the multiple images are not different objects is bolstered by the observations that if
-one image varies in brightness over time, the others also vary in the same manner.
-1526
-Chapter 34 | Frontiers of Physics
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-Figure 34.11 This schematic shows how light passing near a massive body like the Sun is curved toward it. The light that reaches the Earth then
-seems to be coming from different locations than the known positions of the originating stars. Not only was this effect observed, the amount of bending
-was precisely what Einstein predicted in his general theory of relativity.
-Figure 34.12 (a) Light from a distant galaxy can travel different paths to the Earth because it is bent around an intermediary galaxy by gravity. This
-produces several images of the more distant galaxy. (b) The images around the central galaxy are produced by gravitational lensing. Each image has
-the same spectrum and a larger red shift than the intermediary. (credit: NASA, ESA, and STScI)
-Black holes Black holes are objects having such large gravitational fields that things can fall in, but nothing, not even light, can
-escape. Bodies, like the Earth or the Sun, have what is called an escape velocity. If an object moves straight up from the body,
-starting at the escape velocity, it will just be able to escape the gravity of the body. The greater the acceleration of gravity on the
-body, the greater is the escape velocity. As long ago as the late 1700s, it was proposed that if the escape velocity is greater than
-the speed of light, then light cannot escape. Simon Laplace (1749–1827), the French astronomer and mathematician, even
-incorporated this idea of a dark star into his writings. But the idea was dropped after Young's double slit experiment showed light
-to be a wave. For some time, light was thought not to have particle characteristics and, thus, could not be acted upon by gravity.
-The idea of a black hole was very quickly reincarnated in 1916 after Einstein's theory of general relativity was published. It is now
-thought that black holes can form in the supernova collapse of a massive star, forming an object perhaps 10 km across and
-having a mass greater than that of our Sun. It is interesting that several prominent physicists who worked on the concept,
-including Einstein, firmly believed that nature would find a way to prohibit such objects.
-Black holes are difficult to observe directly, because they are small and no light comes directly from them. In fact, no light comes
-from inside the event horizon, which is defined to be at a distance from the object at which the escape velocity is exactly the
-speed of light. The radius of the event horizon is known as the Schwarzschild radius RS and is given by
-(34.2)
-RS = 2GM
-c2 ,
-where G is the universal gravitational constant, M is the mass of the body, and c is the speed of light. The event horizon is
-Chapter 34 | Frontiers of Physics
-1527
-
-the edge of the black hole and RS is its radius (that is, the size of a black hole is twice RS ). Since G is small and c2 is large,
-you can see that black holes are extremely small, only a few kilometers for masses a little greater than the Sun's. The object
-itself is inside the event horizon.
-Physics near a black hole is fascinating. Gravity increases so rapidly that, as you approach a black hole, the tidal effects tear
-matter apart, with matter closer to the hole being pulled in with much more force than that only slightly farther away. This can pull
-a companion star apart and heat inflowing gases to the point of producing X rays. (See Figure 34.13.) We have observed X rays
-from certain binary star systems that are consistent with such a picture. This is not quite proof of black holes, because the X rays
-could also be caused by matter falling onto a neutron star. These objects were first discovered in 1967 by the British
-astrophysicists, Jocelyn Bell and Anthony Hewish. Neutron stars are literally a star composed of neutrons. They are formed by
-the collapse of a star's core in a supernova, during which electrons and protons are forced together to form neutrons (the reverse
-of neutron β decay). Neutron stars are slightly larger than a black hole of the same mass and will not collapse further because
-of resistance by the strong force. However, neutron stars cannot have a mass greater than about eight solar masses or they
-must collapse to a black hole. With recent improvements in our ability to resolve small details, such as with the orbiting Chandra
-X-ray Observatory, it has become possible to measure the masses of X-ray-emitting objects by observing the motion of
-companion stars and other matter in their vicinity. What has emerged is a plethora of X-ray-emitting objects too massive to be
-neutron stars. This evidence is considered conclusive and the existence of black holes is widely accepted. These black holes are
-concentrated near galactic centers.
-We also have evidence that supermassive black holes may exist at the cores of many galaxies, including the Milky Way. Such a
-black hole might have a mass millions or even billions of times that of the Sun, and it would probably have formed when matter
-first coalesced into a galaxy billions of years ago. Supporting this is the fact that very distant galaxies are more likely to have
-abnormally energetic cores. Some of the moderately distant galaxies, and hence among the younger, are known as quasars and
-emit as much or more energy than a normal galaxy but from a region less than a light year across. Quasar energy outputs may
-vary in times less than a year, so that the energy-emitting region must be less than a light year across. The best explanation of
-quasars is that they are young galaxies with a supermassive black hole forming at their core, and that they become less
-energetic over billions of years. In closer superactive galaxies, we observe tremendous amounts of energy being emitted from
-very small regions of space, consistent with stars falling into a black hole at the rate of one or more a month. The Hubble Space
-Telescope (1994) observed an accretion disk in the galaxy M87 rotating rapidly around a region of extreme energy emission.
-(See Figure 34.13.) A jet of material being ejected perpendicular to the plane of rotation gives further evidence of a
-supermassive black hole as the engine.
-Figure 34.13 A black hole is shown pulling matter away from a companion star, forming a superheated accretion disk where X rays are emitted before
-the matter disappears forever into the hole. The in-fall energy also ejects some material, forming the two vertical spikes. (See also the photograph in
-Introduction to Frontiers of Physics.) There are several X-ray-emitting objects in space that are consistent with this picture and are likely to be black
-holes.
-Gravitational waves If a massive object distorts the space around it, like the foot of a water bug on the surface of a pond, then
-movement of the massive object should create waves in space like those on a pond. Gravitational waves are mass-created
-distortions in space that propagate at the speed of light and are predicted by general relativity. Since gravity is by far the weakest
-force, extreme conditions are needed to generate significant gravitational waves. Gravity near binary neutron star systems is so
-great that significant gravitational wave energy is radiated as the two neutron stars orbit one another. American astronomers,
-Joseph Taylor and Russell Hulse, measured changes in the orbit of such a binary neutron star system. They found its orbit to
-change precisely as predicted by general relativity, a strong indication of gravitational waves, and were awarded the 1993 Nobel
-Prize. But direct detection of gravitational waves on Earth would be conclusive. For many years, various attempts have been
-made to detect gravitational waves by observing vibrations induced in matter distorted by these waves. American physicist
-Joseph Weber pioneered this field in the 1960s, but no conclusive events have been observed. (No gravity wave detectors were
-in operation at the time of
+- Describe unusual motion of Mercury around the Sun and explain how general relativity explains the observed behavior
+- Provide examples of evidence for light rays being bent by massive objects, as predicted by general relativity’s theory about the warping of spacetime
+What Einstein proposed was nothing less than a major revolution in our understanding of space and time. It was a new theory of gravity, in which mass determines the curvature of spacetime and that curvature, in turn, controls how objects move. Like all new ideas in science, no matter who advances them, Einstein’s theory had to be tested by comparing its predictions against the experimental evidence. This was quite a challenge because the effects of the new theory were apparent only when the mass was quite large. (For smaller masses, it required measuring techniques that would not become available until decades later.)
+When the distorting mass is small, the predictions of general relativity must agree with those resulting from Newton’s law of universal gravitation, which, after all, has served us admirably in our technology and in guiding space probes to the other planets. In familiar territory, therefore, the differences between the predictions of the two models are subtle and difficult to detect. Nevertheless, Einstein was able to demonstrate one proof of his theory that could be found in existing data and to suggest another one that would be tested just a few years later.
+The Motion of Mercury
+Of the planets in our solar system, Mercury orbits closest to the Sun and is thus most affected by the distortion of spacetime produced by the Sun’s mass. Einstein wondered if the distortion might produce a noticeable difference in the motion of Mercury that was not predicted by Newton’s law. It turned out that the difference was subtle, but it was definitely there. Most importantly, it had already been measured.
+Mercury has a highly elliptical orbit, so that it is only about two-thirds as far from the Sun at perihelion as it is at aphelion. (These terms were defined in the chapter on Orbits and Gravity.) The gravitational effects (perturbations) of the other planets on Mercury produce a calculable advance of Mercury’s perihelion. What this means is that each successive perihelion occurs in a slightly different direction as seen from the Sun (Figure 24.9).
+According to Newtonian gravitation, the gravitational forces exerted by the planets will cause Mercury’s perihelion to advance by about 531 seconds of arc (arcsec) per century. In the nineteenth century, however, it was observed that the actual advance is 574 arcsec per century. The discrepancy was first pointed out in 1859 by Urbain Le Verrier, the codiscoverer of Neptune. Just as discrepancies in the motion of Uranus allowed astronomers to discover the presence of Neptune, so it was thought that the discrepancy in the motion of Mercury could mean the presence of an undiscovered inner planet. Astronomers searched for this planet near the Sun, even giving it a name: Vulcan, after the Roman god of fire. (The name would later be used for the home planet of a famous character on a popular television show about future space travel.)
+But no planet has ever been found nearer to the Sun than Mercury, and the discrepancy was still bothering astronomers when Einstein was doing his calculations. General relativity, however, predicts that due to the curvature of spacetime around the Sun, the perihelion of Mercury should advance slightly more than is predicted by Newtonian gravity. The result is to make the major axis of Mercury’s orbit rotate slowly in space because of the Sun’s gravity alone. The prediction of general relativity is that the direction of perihelion should change by an additional 43 arcsec per century. This is remarkably close to the observed discrepancy, and it gave Einstein a lot of confidence as he advanced his theory. The relativistic advance of perihelion was later also observed in the orbits of several asteroids that come close to the Sun.
+Deflection of Starlight
+Einstein’s second test was something that had not been observed before and would thus provide an excellent confirmation of his theory. Since spacetime is more curved in regions where the gravitational field is strong, we would expect light passing very near the Sun to appear to follow a curved path (Figure 24.10), just like that of the ant in our analogy. Einstein calculated from general relativity theory that starlight just grazing the Sun’s surface should be deflected by an angle of 1.75 arcsec. Could such a deflection be observed?
+We encounter a small “technical problem” when we try to photograph starlight coming very close to the Sun: the Sun is an outrageously bright source of starlight itself. But during a total solar eclipse, much of the Sun’s light is blocked out, allowing the stars near the Sun to be photographed. In a paper published during World War I, Einstein (writing in a German journal) suggested that photographic observations during an eclipse could reveal the deflection of light passing near the Sun.
+The technique involves taking a photograph of the stars six months prior to the eclipse and measuring the position of all the stars accurately. Then the same stars are photographed during the eclipse. This is when the starlight has to travel to us by skirting the Sun and moving through measurably warped spacetime. As seen from Earth, the stars closest to the Sun will seem to be “out of place”—slightly away from their regular positions as measured when the Sun is not nearby.
+A single copy of that paper, passed through neutral Holland, reached the British astronomer Arthur S. Eddington, who noted that the next suitable eclipse was on May 29, 1919. The British organized two expeditions to observe it: one on the island of Príncipe, off the coast of West Africa, and the other in Sobral, in northern Brazil. Despite some problems with the weather, both expeditions obtained successful photographs. The stars seen near the Sun were indeed displaced, and to the accuracy of the measurements, which was about 20%, the shifts were consistent with the predictions of general relativity. More modern experiments with radio waves traveling close to the Sun have confirmed that the actual displacements are within 1% of what general relativity predicts.
+The confirmation of the theory by the eclipse expeditions in 1919 was a triumph that made Einstein a world celebrity.

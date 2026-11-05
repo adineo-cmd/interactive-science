@@ -1,0 +1,91 @@
+# Source pack — subjects/neuroscience/expert/computational-neuroscience
+Lesson title: Computational Neuroscience
+Level: expert
+Match confidence: 1.57
+
+Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 1.57 — LibreTexts: 4: Emergent Topics in Neuroscience
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Pharmacology_and_Neuroscience/Neuroscience_(Ju)/04%3A_Emergent_Topics_in_Neuroscience
+
+4: Emergent Topics in Neuroscience
+As a discipline, neuroscience encompasses the entire range of biology from genetics and molecules to system level approaches to understanding neurons and the brain. Often this means that neuroscientists are finding new and previously unsuspected influences on how neurons function, and therefore affect behaviour. This unit highlights some of the exciting areas of neuroscience that have emerged over the past decade that promise to give the discipline new avenues of research for the next generation of neuroscientists.
+-
+- 4.1: The Gut Microbiome and its Impact on the Brain
+- Specifically, within all fields of biology there is an emerging theme that an organ (such as skin) can be colonized by different types of microbes and this colonization does not have to be homogeneous across a particular organ. Although many of these gut bacteria can be treated pharmacologically in order for them to be eliminated, this may not be always be the best treatment.
+-
+- 4.2: Gut Microbiome and the Brain
+- There are several ways in which the gut microbiota interacts with the brain. Components of bacteria, such as lipopolysaccharides, activate the innate immune system. In dysbiosis, the innate immune system is overactive, which may result in inflammation of the central nervous system. Certain bacterially-derived metabolites, such as D-lactic acid and ammonia, have also been found to have neurotoxic effects. Many gut bacteria interact with the brain through the production of neurotransmitters.
+-
+- 4.3: Exercise and the Brain
+- It has now been established that exercise, even among minimal commitment exercise routines, has an array of robust effects on the brain, such as enhanced memory, mood, cognitive functioning, plasticity, and learning capabilities. Most notably, exercise has been implicated in having anti-depressant effects and counteracting disease or age-related mental impairment and atrophy, such as Alzheimer’s disease or dementia.
+-
+- 4.4: Integrative and Contemplative Neuroscience
+- A new field of scientific study, contemplative science, is concerned with how training the mind through meditation can induce neuroplasticity. In this chapter, we explore how contemplative practices, such as mindfulness meditation, influence neural activity and the architecture of the brain. Contemplative practices involve training a complex array of cognitive processing, including attentional and emotional regulation. In this chapter, we will take a closer look at this methodology.
+
+## Match 1.54 — LibreTexts: 7: Computational Characterization of Membranes
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Courses/University_of_California_Davis/Biophysics_241%3A_Membrane_Biology/07%3A_Computational_Characterization_of_Membranes
+
+Skip to main content
+7: Computational Characterization of Membranes
+-
+-
+Last updated
+-
+-
+Save as PDF
+-
+-
+-
+7.1: Mathematical Continuum Descriptions of Membranes
+-
+Membranes have many roles in cellular function. To better understand membrane mechanics and how it affects cellular function, it is important to be able to mathematically describe the membrane morphology. Continuum descriptions are commonly used to do this, in which the membrane is treated as a two-dimensional sheet and the energy of a conformation is calculated. This energy can be minimized to determine equilibrium shapes of a biological system.
+-
+-
+7.2: Monte Carlo for Biomembranes
+-
+The fluid mosaic model served as the starting point for our modern understanding of biological membranes. This model describes the biological membrane bilayer as an integration of proteins and lipids, which interact to control movement of material in and out of the cell through protein pores, form lipid rafts, and regulate vesicle formation. This Modules will focus on computational methods used to study biomembranes (specifically Monte Carlo).
+-
+-
+7.3: Molecular Dynamics for Biomembranes
+-
+Molecular dynamics (MD) is a simulation method used in many fields to help understand the movement of atoms and molecules. This method is based on Newton's equations of motion. Each atom or molecule in the simulation is defined by a force field and mass, and is allowed to interact for a given time period. Biomembrane systems have various parameters that for MD simulations that can change the way the system evolves such as charged lipids, explicit vs implicit solvents, and membrane proteins.
+-
+-
+7.4: Designing Molecular Membranes Models with VMD
+-
+This page describes how to use basic tools in Visual Molecular Dynamics (VMD) for visualization of membranes. The page also describes how to create homogeneous and heterogeneous membranes using VMD's MembraneBuilder and CHARMM-GUI's Membrane Builder tools, respectively.
+-
+-
+7.5: Coarse Grain Simulations of Membranes
+-
+Capturing the time and length scale of biological processes using computational methods remains a challenge for molecular modeling as resolution is limited to the order of less than 100 ns and 10 nm in all-atom detail. Coarse graining reduces the degrees of freedom of the system to achieve greater size and time scales at the expense of molecular detail to simulate biological processes currently inaccessible to all atom models.
+
+## Match 1.53 — LibreTexts: 12.3: Computational Knowledge Representation
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Psychology/Cognitive_Psychology/Cognitive_Psychology_and_Cognitive_Neuroscience_(Wikibooks)/12%3A_Knowledge_Representation_and_Hemispheric_Specialization/12.03%3A_Computational_Knowledge_Representation
+
+12.3: Computational Knowledge Representation
+-
+- Last updated
+- Save as PDF
+- Wikipedia
+Computational knowledge representation is concerned with how knowledge can be represented symbolically and how it can be manipulated in automated ways. Almost all of the theories mentioned above evolved in symbiosis with computer science. On the one hand, computer science uses the human brain as an inspiration for computational systems, on the other hand, artificial models are used to further our understanding of the biological basis of knowledge representation.
+Knowledge representation is connected to many other fields related to information processing, e.g. logic, linguistics, reasoning, and the philosophical aspects of these fields. In particular, it is one of the crucial topics of Artificial Intelligence, as it deals with information encoding, storing and usage for computational models of cognition.
+There are three main points that need to be addressed with regard to computational knowledge representation: The process, the formalisms and the applications of knowledge engineering.
+Knowledge Engineering
+The process of developing computational knowledge-based systems is called knowledge engineering. This process involves assessing the problem, developing a structure for the knowledge base and implementing actual knowledge into the knowledge base. The main task for knowledge engineers is to identify an appropriate conceptual vocabulary.
+There are different kinds of knowledge, for instance rules of games, attributes of objects and temporal relations, and each type is expressed best by its own specific vocabulary. Related conceptual vocabularies that are able to describe objects and their relationships are called ontologies . These conceptual vocabularies are highly formal and each is able to express meaning in specific fields of knowledge. They are used for queries and assertions to knowledge bases and make sharing knowledge possible. In order to represent different kinds of knowledge in one framework, Jerry Hobbs (1985) proposed the principle of ontological promiscuity . Thereby several ontologies are mixed together to cover a range of different knowledge types.
+A query to a system that represents knowledge about a world made of everyday items and that can perform actions in this world may look like this: “Take the cube from the table!”. This query could be processed as follows: First, since we live in a temporal world, the action needs to be a processed in a way that can be broken down into successive steps. Secondly, we make general statements about the rules for our system, for example that gravitational forces have a certain effect. Finally, we try out the chain of tasks that have to be done to take the cube from the table. 1) Reach out for the cube with the hand, 2) grab it, 3) raise the hand with the cube, etc. Logical Reasoning is the perfect tool for this task, because a logical system can also recognise if the task is possible at all.
+There is a problem with the procedure described above. It is called the frame problem . The system in the example deals with changing states. The actions that take place change the environment. That is, the cube changes its place. Yet, the system does not make any propositions about the table so far. We need to make sure, that after picking up the cube from the table, the table does not change its state. It should not disappear or break down. This could happen, since the table is no longer needed. The systems tells that the cube is in the hand and omits any information about the table. In order to tackle the Frame Problem there have to be stated some special axioms or similar things. The Frame Problem has not been solved completely. There are different approaches to a resolution. Some add object spatial and temporal boundaries to the system/world (Hayes 1985). Others try more direct modeling. They do transformations on state descriptions. For example: Before the transformation the cube is on the table, after transformation , the table still exists, but independent from the cube.
+Knowledge Representation Formalisms
+The type of knowledge representation formalism determines how information is stored. Most knowledge representation applications are developed for a specific purpose, for example a digital map for robot navigation or a graph like account of events for visualizing stories.
+Each knowledge representation formalisms needs a strict syntax, semantics and inference procedure in order to be clear and computable. Most formalisms have the following attributes to be able to express information more clearly: The Semantic Network Approach, hierarchies of concepts (e.g. vehicle -> car -> truck) and property inheritance (e.g. red cars have four wheels since cars have four wheels). There are attributes that provide the possibility to add new information to the system without creating any inconsistencies, and the possibility to create a "closed-world" assumption. For example if the information that we have gravitation on earth is omitted, the closed-world assumption must be false for our earth/world.
+A problem for knowledge representation formalisms is that expressive power and deductive reasoning are mutually exclusive. If a formalism has a big expressive power, it is able to describe a wide range of (different) information, but is not able to do brilliant inferring from (given) data. Propositional logic is restricted to Horn clauses. A Horn clause is a disjunction of literals with at most one positive literal. It has a very good decision procedure(inferring), but can not express generalisations. An example is given in the logical programming language Prolog. If a formalism has a big deductive complexity, it is able to do brilliant inferring, i.e. make conclusions, but has a poor range of what it can describe. An example is second-order logic. So, the formalism has to be tailored to the application of the KR system. This is reached by compromises between expressiveness and deductive complexity. In order to get a greater deductive power, expressiveness is sacrificed and vice versa.
+With the growth of the field of knowledge bases, many different standards have been developed. They all have different syntactic restrictions. To allow intertranslation, different "interchange" formalisms have been created. One example is the Knowledge Interchange Format which is basically first-order set theory plus LISP (Genesereth et al. 1992).
+Applications of Knowledge Representation
+Computational knowledge representation is mostly not used as a model of cognition but to make pools of information accessible, i.e. as an extension of database technology. In these cases general rules and models are not needed. With growing storage media, one is capable of creating simple knowledge bases stating all specific facts. The information is stored in the form of sentential knowledge, that is knowledge saved in form of sentences comparable to propositions and program code. Knowledge is seen as a reservoir of useful information rather than as supporting a model of cognitive activity. More recently, increased available memory size has made it feasible to use "compute-intensive" representations that simply list all the particular facts rather than stating general rules. These allow the use of statistical techniques such as Markov simulation, but seem to abandon any claim to psychological plausibility.
+Artificial Intelligence
+Artificial intelligence or intelligence added to a system that can be arranged in a scientific context or Artificial Intelligence (English: Artificial Intelligence or simply abbreviated AI) is defined as the intelligence of a scientific entity. This system is generally considered a computer. Intelligence is created and incorporated into a machine (computer) in order to be able to do work as human beings can. Several types of fields that use artificial intelligence include expert systems, computer games (games), fuzzy logic, artificial neural networks and robotics. Many things seem difficult for human intelligence, but for Informatics it is relatively unproblematic. For example: transforming equations, solving integral equations, making chess games or Backgammon. On the other hand, things that for humans seem to demand a little intelligence, until now are still difficult to realize in Informatics. For example: Object / Face Introduction, playing soccer.
+Although AI has a strong connotation of science fiction, AI forms a very important branch of computer science, dealing with behavior, learning and intelligent adaptation in a machine. Research in AI involves making machines to automate tasks that require intelligent behavior. Examples include control, planning and scheduling, the ability to answer customer diagnoses and questions, as well as handwriting recognition, voice and face. Such things have become separate disciplines, which focus on providing solutions to real life problems. The AI system is now often used in the fields of economics, medicine, engineering and the military, as has been built in several home computer and video game software applications. This 'artificial intelligence' not only wants to understand what an intelligence system is, but also constructs it. There is no satisfactory definition for 'intelligence': 1. intelligence: the ability to acquire knowledge and use it 2. or intelligence is what is measured by a 'Intelligence Test'
+Broadly speaking, AI is divided into two notions namely Conventional AI and Computational Intelligence (CI, Computational Intelligence). Conventional AI mostly involves methods now classified as machine learning, which are characterized by formalism and statistical analysis. Also known as symbolic AI, logical AI, pure AI and GOFAI, Good Old Fashioned Artificial Intelligence. The methods include: 1. Expert system: apply the capability of consideration to reach conclusions. An expert system can process a large amount of information that is known and provides conclusions based on these information. 2. Case based considerations 3. Bayesian Network 4. Behavior-based AI: a modular method for manually establishing AI systems Computational intelligence involves iterative development or learning (e.g. tuning parameters as in connectionist systems. This learning is based on empirical data and is associated with non-symbolic AI, irregular AI and soft calculations. The main methods include: 1. Neural Network: a system with very strong pattern recognition capabilities 2. Fuzzy systems: techniques for consideration under uncertainty, have been used extensively in modern industry and consumer product control systems. 3. Evolutionary computing: applying biologically inspired concepts such as population, mutation and "survival of the fittest" to produce better problem solving. These methods are mainly divided into evolutionary algorithms (e.g. genetic algorithms) and group intelligence (e.g. ant algorithms) With a hybrid intelligent system, experiments were made to combine these two groups. Expert inference rules can be generated through neural networks or production rules from statistical learning as in ACT-R. A promising new approach states that strengthening intelligence tries to achieve artificial intelligence in the process of evolutionary development as a side effect of strengthening human intelligence through technology.
+History of artificial intelligence In the early 17th century, René Descartes argued that an animal's body was nothing but complicated machines. Blaise Pascal invented the first mechanical digital calculating machine in 1642. At 19, Charles Babbage and Ada Lovelace worked on programmable mechanical calculators. Bertrand Russell and Alfred North Whitehead published Principia Mathematica, which overhauled formal logic. Warren McCulloch and Walter Pitts published "Logical Calculus of Ideas that Remain in Activities" in 1943 which laid the foundation for neural networks. The 1950s were a period of active effort in AI

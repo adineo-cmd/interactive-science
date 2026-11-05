@@ -1,200 +1,58 @@
 # Source pack — subjects/development-studies/foundational/what-is-development
 Lesson title: What Is Development?
 Level: foundational
-Match confidence: 3.03
+Match confidence: 3.05
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 3.03 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 4.1 Development of Force Concept
+## Match 3.05 — LibreTexts: 9.1: Development and Geography- An Introduction
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Geography_(Human)/Introduction_to_Human_Geography_(Dorrell_and_Henderson)/09%3A_Development_and_Wealth/9.01%3A_Development_and_Geography-_An_Introduction
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Understand the definition of force.
-Dynamics is the study of the forces that cause objects and systems to move. To understand this, we need a working
-definition of force. Our intuitive definition of force—that is, a push or a pull—is a good place to start. We know that a
-push or pull has both magnitude and direction (therefore, it is a vector quantity) and can vary considerably in each
-regard. For example, a cannon exerts a strong force on a cannonball that is launched into the air. In contrast, Earth
-exerts only a tiny downward pull on a flea. Our everyday experiences also give us a good idea of how multiple forces
-add. If two people push in different directions on a third person, as illustrated in Figure 4.3, we might expect the
-total force to be in the direction shown. Since force is a vector, it adds just like other vectors, as illustrated in Figure
-4.3(a) for two ice skaters. Forces, like other vectors, are represented by arrows and can be added using the familiar
-head-to-tail method or by trigonometric methods. These ideas were developed in Two-Dimensional Kinematics.
-FIGURE 4.3 Part (a) shows an overhead view of two ice skaters pushing on a third. Forces are vectors and add like other vectors, so the
-total force on the third skater is in the direction shown. In part (b), we see a free-body diagram representing the forces acting on the third
-skater.
-Figure 4.3(b) is our first example of a free-body diagram, which is a technique used to illustrate all the external
-forces acting on a body. The body is represented by a single isolated point (or free body), and only those forces
-acting on the body from the outside (external forces) are shown. (These forces are the only ones shown, because
-only external forces acting on the body affect its motion. We can ignore any internal forces within the body.) Free-
-body diagrams are very useful in analyzing forces acting on a system and are employed extensively in the study and
-application of Newton’s laws of motion.
-A more quantitative definition of force can be based on some standard force, just as distance is measured in units
-relative to a standard distance. One possibility is to stretch a spring a certain fixed distance, as illustrated in Figure
-4.4, and use the force it exerts to pull itself back to its relaxed shape—called a restoring force—as a standard. The
-magnitude of all other forces can be stated as multiples of this standard unit of force. Many other possibilities exist
-for standard forces. (One that we will encounter in Magnetism is the magnetic force between two wires carrying
-electric current.) Some alternative definitions of force will be given later in this chapter.
-FIGURE 4.4 The force exerted by a stretched spring can be used as a standard unit of force. (a) This spring has a length
-when undistorted.
-(b) When stretched a distance
-, the spring exerts a restoring force,
-, which is reproducible. (c) A spring scale is one device that
-uses a spring to measure force. The force
-is exerted on whatever is attached to the hook. Here
-has a magnitude of 6 units in
-the force standard being employed.
-4.1 • Development of Force Concept
-157
+9.1: Development and Geography- An Introduction
+If you could choose anywhere on the planet, where would you like to live? Would you choose a place with mountains or with beaches? A place with high taxes or few regulations? Do you love your community/state/country? Could you make more money somewhere else or might you be happier with warmer/colder weather? Do you think that you are able to realize your full personal potential in the place where you live now? Why or why not?  Nonetheless, there are certain indicators that geographers can use to categorize places according to how developed they are in terms of technology, infrastructure, wealth, and opportunity. As you might guess, the differences between places can be quite stark, but it’s important to understand the dynamics and geography of the patterns and processes associated with income, well-being, and opportunity. This chapter explains how those distinctions are made and how they vary across time and place using the concept of development (the processes related to improving people’s lives through access to resources, technology, education, wealth, opportunity, and choice).
+Which places on earth are the most developed? There is no simple answer to this question. San Francisco is often voted as the most beautiful city in the U.S. but the cost of living makes this place unaffordable for all but the wealthiest of residents. Ancient cities like Jerusalem, Athens, and Baghdad contain amazing architecture and the roots of western civilization, but streets also tend to be narrow and housing crowded. China has experienced the fastest economic growth of any other country in the past 30 years, but it is accompanied by catastrophic levels of air pollution, poor working conditions, and severe limits on personal liberty. Within the United States, people in Colorado tend to be the healthiest while those in Utah have the largest houses and people in Texas are the most loyal to their home state. There are multiple ways to measure development, and geographers spend a great deal of time and effort studying, measuring, and quantifying the differences and commonalities.
+A few general truths about development and wealth in our 21 st century world can simplify the complexity:
+- The world continues to be divided into the Global North and Global South by the Brandt Line (See Figure 9.1 ). Levels of wealth, well- being, access to technology, and health tend to be higher in northern countries than in southern ones. The line is problematic because it over-generalizes, but it remains a meaningful starting point to understanding development from a global scale.
+- The majority of people living in the 21 st century have a higher standard of living, earn more money, are healthier, and live longer than was the case for people 50 years ago.
+- In spite of #2, the wealth disparity between those at the bottom and those at the top remains greater than ever before. According to Credit Suisse’s global wealth report, the globe’s richest 1% (of people) control more than half of the world’s wealth, up from 42.5% in 2008.
 
+## Match 3.04 — LibreTexts: 7.6: Introduction to Cognitive Development in Adolescence
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Human_Development/Lifespan_Development_(Lumen)/07%3A_Adolescence/7.06%3A_Introduction_to_Cognitive_Development_in_Adolescence
 
-## Match 3.03 — College_Physics_2e-WEB_7Zesafu § 4.1 Development of Force Concept
+7.6: Introduction to Cognitive Development in Adolescence
+-
+-
+Last updated
+-
+-
+Save as PDF
+-
+What you’ll learn to do: describe changes in cognitive development and moral reasoning during adolescence
+Here we learn about adolescent cognitive development. In adolescence, changes in the brain interact with experience, knowledge, and social demands and produce rapid cognitive growth. The changes in how adolescents think, reason, and understand can be even more dramatic than their obvious physical changes. This stage of cognitive development, termed by Piaget as the formal operational stage, marks a movement from the ability to think and reason logically only about concrete, visible events to an ability to also think logically about abstract concepts.
+Adolescents are now able to analyze situations logically in terms of cause and effect and to entertain hypothetical situations and entertain what-if possibilities about the world. This higher-level thinking allows them to think about the future, evaluate alternatives, and set personal goals. Although there are marked individual differences in cognitive development among teens, these new capacities allow adolescents to engage in the kind of introspection and mature decision making that was previously beyond their cognitive capacity.
+Contributors and Attributions
+CC licensed content, Original
+-
+Introduction to Cognitive Development in Adolescence.
+Authored by
+: Tera Jones for Lumen Learning.
+Provided by
+: Lumen Learning.
+License
+:
+CC BY: Attribution
+CC licensed content, Shared previously
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Understand the definition of force.
-Dynamics is the study of the forces that cause objects and systems to move. To understand this, we need a working
-definition of force. Our intuitive definition of force—that is, a push or a pull—is a good place to start. We know that a
-push or pull has both magnitude and direction (therefore, it is a vector quantity) and can vary considerably in each
-regard. For example, a cannon exerts a strong force on a cannonball that is launched into the air. In contrast, Earth
-exerts only a tiny downward pull on a flea. Our everyday experiences also give us a good idea of how multiple forces
-add. If two people push in different directions on a third person, as illustrated in Figure 4.3, we might expect the
-total force to be in the direction shown. Since force is a vector, it adds just like other vectors, as illustrated in Figure
-4.3(a) for two ice skaters. Forces, like other vectors, are represented by arrows and can be added using the familiar
-head-to-tail method or by trigonometric methods. These ideas were developed in Two-Dimensional Kinematics.
-FIGURE 4.3 Part (a) shows an overhead view of two ice skaters pushing on a third. Forces are vectors and add like other vectors, so the
-total force on the third skater is in the direction shown. In part (b), we see a free-body diagram representing the forces acting on the third
-skater.
-Figure 4.3(b) is our first example of a free-body diagram, which is a technique used to illustrate all the external
-forces acting on a body. The body is represented by a single isolated point (or free body), and only those forces
-acting on the body from the outside (external forces) are shown. (These forces are the only ones shown, because
-only external forces acting on the body affect its motion. We can ignore any internal forces within the body.) Free-
-body diagrams are very useful in analyzing forces acting on a system and are employed extensively in the study and
-application of Newton’s laws of motion.
-A more quantitative definition of force can be based on some standard force, just as distance is measured in units
-relative to a standard distance. One possibility is to stretch a spring a certain fixed distance, as illustrated in Figure
-4.4, and use the force it exerts to pull itself back to its relaxed shape—called a restoring force—as a standard. The
-magnitude of all other forces can be stated as multiples of this standard unit of force. Many other possibilities exist
-for standard forces. (One that we will encounter in Magnetism is the magnetic force between two wires carrying
-electric current.) Some alternative definitions of force will be given later in this chapter.
-FIGURE 4.4 The force exerted by a stretched spring can be used as a standard unit of force. (a) This spring has a length
-when undistorted.
-(b) When stretched a distance
-, the spring exerts a restoring force,
-, which is reproducible. (c) A spring scale is one device that
-uses a spring to measure force. The force
-is exerted on whatever is attached to the hook. Here
-has a magnitude of 6 units in
-the force standard being employed.
-4.1 • Development of Force Concept
-149
+## Match 3.04 — LibreTexts: 9.5: New Models of Development
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Geography_(Human)/Introduction_to_Human_Geography_(Dorrell_and_Henderson)/09%3A_Development_and_Wealth/9.05%3A_New_Models_of_Development
 
-
-## Match 3.03 — IntroductiontoAnthropology-WEB § 15.6 Community, Development, and Broadcast Media
-
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Explain how radio is associated with different themes and audiences than print media.
-•
-Define the concept of community radio.
-•
-Explain how community radio gives expression to local forms of identity and social action.
-•
-Define the notion of Indigenous media.
-The media scholar Marshall McLuhan is famous for his aphorism “the medium is the message” (1964, 23).
-What he meant by this is that each genre of media has its own set of features that suggest certain uses and
-kinds of content. In contrast to print media, radio allows for real-time talk and discussion as well as music.
-Radio reaches beyond the limited audience of avid readers who have time to focus on text to wider audiences
-of listeners who may be too busy to read or have not had access to formal education. As an oral medium, radio
-lends itself more readily to linguistic diversity. In places where many languages are spoken, often the language
-of state is the only one that circulates in written form, while the rest function as spoken languages only. Print
-media may therefore be limited to dominant languages, while the oral genre of radio can provide content in
-alternative and even multiple languages. Finally, while reading print media is largely a solitary and silent
-experience, radio provides a shared and noisy experience. A personal experience shared by Jennifer Hasty
-illustrates this.
-In Ghana, I could nearly always hear a radio blasting from someone’s compound or kiosk or car. Radio
-was woven into daily life, a sort of auditory backdrop to everyday work and leisure. News headlines
-were read out each day on the morning talk shows, generating discussions in households and buses as
-people made their way to work. On the popular radio talk shows, Ghanaians from all walks of life
-called in to broadcast their perspectives on the issues of the day. Even during the music shows,
-listeners participated with heartfelt requests dedicated to friends, lovers, and family members.
-Because of its distinctive features, the genre of radio is not as narrowly focused as print media on themes of
-political economy such as nationalism and democracy. While including attention to current events, radio
-typically provides listeners with a wider variety of content, including music, talk shows, drama, and quiz
-shows. In an effort to provide relevant content to the broadest spectrum of listeners in an area, local radio
-stations design their programming to reflect the tastes and issues of particular communities. Certainly, print
-media does this to some degree, but the audience for print media constitutes a narrower segment of the
-community. Radio attempts to address the community as a whole.
-Commercial and state radio are dominant forces in the media landscapes of most countries, but an alternative
-form, community radio, has been growing rapidly in recent decades. Community radio refers to radio stations
-that are community owned and operated, staffed by groups of professionals and volunteers. The involvement
-of local volunteers allows for community participation in programming, production, and on-air performance.
-Community radio stations often focus on local current events, educational programs, and development
-initiatives. Typically, they are low wattage with minimal range and thus are nonprofit.
-In places where people want to start up a community radio station but lack the capital and technological know-
-how, nongovernmental organizations (NGOs) and development organizations have provided support in
-partnership with community organizations. Such collaborations between community groups and foreign
-NGOs have made possible the start-up of community radio stations in many countries, including Nepal, Sri
-Lanka, and the Philippines. Throughout Africa, community radio stations sponsored by government and/or
-NGOs have been used to educate rural peoples about farming methods and spread public interest health
-messages. In Thailand, the global leader in community radio, more than 7,000 independent radio stations
-have been started since 2001.
-Established in 1997, the Nepalese station Radio Sagarmatha was the first independent community radio
-station in South Asia. The station was started by the Nepal Forum of Environmental Journalists in an effort to
-break the government monopoly on radio and provide better coverage of community issues. Regulated by
-government, Radio Sagarmatha is not allowed to address political or economic issues. Focusing instead on
-472
-15 • Anthropology of Media
-Access for free at openstax.org
-
-community development, the station features daily discussion programs addressing such issues as public
-health, education, women’s empowerment, and workers’ concerns. Though not explicitly political, the station
-identifies itself as the defender of democracy and free speech in Nepal, giving voice to the people. In 2005, the
-army raided the studio, seizing equipment and arresting staff for rebroadcasting a BBC interview with a
-politician. The station reemerged after the incident and remains on air today. With 2.5 million regular
-listeners, Radio Sagarmatha is one of the largest and most successful community radio stations in the world.
-Community radio stations in Brazil have faced similar forms of government regulation and harassment.
-Anthropologist Derek Pardue (2011) describes the expansion of community radio in the wake of political
-liberalization in the 1980s. As of 2013, there were 4,700 community radio stations operating in Brazil, an
-increase of 70 percent since 2002. Moreover, approximately 5,000 such stations have been shut down by
-government, their equipment confiscated and management prosecuted as felons. Associated with free speech
-and political activism, community radio attracts involvement by counterculture artists and performers such as
-the hip-hop communities of impoverished favela neighborhoods in São Paulo. Through community radio, local
-hip-hop artists narrate their stories of hardship and heroism, defining their spatially marginal neighborhoods
-as economically and politically marginalized periferias (peripheries). Pardue describes how community radio
-gives hip-hop artists and other community members a platform for demonstrating their awareness of social
-issues and command of information. Using slang that signals racial and class identities, they publicize
-otherwise unreported events and perspectives such as police violence and gang activities, providing a much
-more inclusive public sphere than commercial media.
-In Australia, more than 400 independent radio stations broadcast in 70 different community languages. Many
-of these community radio stations have been started by Indigenous Australian communities as a means of
-cultural survival and language preservation. Indigenous media refers to the use of media by Indigenous
-communities for community identity, cultural representation, and activism. In the 1990s, some Indigenous
-broadcasters developed the ability to link community radio stations together in regional and national
-networks. As many Indigenous community stations featured call-in request programs, the linking of stations
-allowed a person in one community to publicly greet a relative in a faraway community with a song dedication.
-Anthropologist Daniel Fisher (2009) describes how radio has become a way for Indigenous Australian people to
-celebrate kinship connections in the context of kin dispersal due to government policy, travel, work, and
-incarceration. Throughout the 20th century, Indigenous children were seized from their families and sent to
-state institutions and foster homes in order to assimilate them into White Australian settler culture. In the
-present, Indigenous family ties are further troubled by the disproportionate numbers of young men
-incarcerated in Australian prisons. In this context, call-in request shows have become wildly popular on
-Indigenous radio networks, as relatives phone in to dedicate emotionally charged songs about love, separation,
-and loss to relatives in distant places.
-Inspired by a wide variety of social issues, community radio is catching hold in the United States as well. In
-response to the domination of American radio by large media corporations, the US Congress passed the Local
-Community Radio Act in 2010, authorizing the Federal Communications Commission (FCC) to provide licenses
-to low-powered community radio stations. A group of community organizers in Madrid, New Mexico, just
-outside of Albuquerque, was awarded a license and began broadcasting KMRD 96.9 in 2015. As an alternative
-to commercial radio programming, KMRD, like many community stations, features more diverse and locally
-relevant content. Local DJs host call-in and talk programs about community issues and spin a wide variety of
-music, including alternative, pop, techno, garage, folk, and western. Local bands get frequent airplay,
-stimulating the local music scene. On Monday nights, you can hear a program devoted to African music, hosted
-by the author of this chapter. Those not within range of the station can listen to KRMD online
-(https://openstax.org/r/kmrdlisten). Over a thousand new community radio stations have emerged as a result
-of the Local Community Radio Act.
-15.6 • Community, Development, and Broadcast Media
-473
-
+9.5: New Models of Development
+9.5.1 Is There More to Life Than Money?
+This may seem like more of a philosophical question than one you’d find in a geography textbook, but it’s an important one to consider. In the previous section, we learned that the end-point of development is to arrive to a state of high mass consumption relying primarily on indicators of wealth, income, and production to evaluate one place compared to another. Do you think this a fair assessment or are there other ways to gauge development? Think about some of the things that make you feel good or bad about any particular place. Does it have good parks, safe roads, low levels of traffic, or lots of fun things to do? While some of those things are connected to income and wealth, some markers of development do not necessarily have to be connected to wealth.
+Indian economist and Nobel Prize winner Amartya Sen argued that our understanding of development needed to be dramatically altered to include a capabilities approach to measuring, encountering, and improving people’s lives. In his book ‘Development as Freedom’, Sen argues that abject poverty comes from a lack of rights and the absence of freedom that are very different from simplistic notions wealth and poverty. For example, a country that produces a lot of oil like Saudi Arabia may demonstrate high GDP growth, but if it doesn’t positively affect the lives of most people in the country, then the GDP is not improving people’s lives in a meaningful way. As obvious as it may sound today, this transformative thinking drove the United Nations to redefine thinking on development as the organization unveiled its first annual Human Development Report (http:// www.hdr.undp.org) in 1990, which incorporated a brand new index, called the Human Development Index (HDI) (Figure 9.9) . Instead of relying solely on income, the index is derived from indicators of 1) life expectancy , 2) adult literacy , 3) school enrollment, and 4) income to provide a meaningful comparison for almost all countries (a few countries like North Korea choose not to participate). The index provides reason for optimism in that 105 countries are now categorized as ‘very high’ (51 countries) or ‘high’ (54) human development with an HDI of .70 or higher.
+You can view the entire list of countries here: http://hdr.undp.org/en/ composite/trends, and the regional trends over time are included in Figure 9.10 , which shows that the areas with the greatest improvement since 1990 have been East Asia and South Asia. Most notably, China moved from low human development to high and India moved from low to medium during the short period from 1990-2015. Sub-Saharan Africa contains the majority of those with the lowest levels of human development, but nearly every country experienced persistent improvement since 1990. Moreover, developing countries everywhere have seen improvements in educational access and life expectancy during the past 50 years. HDI helps us to quantify those improvements over time. One final point about this index is that some countries do a very good job of providing human development, in spite of low income. Find Mexico and Cuba on the map, for example. In both countries, incomes are low, but life expectancy is high. In the case of Cuba, life expectancy is higher than it is in the U.S. Cuba has followed a protectionist strategy for several years, which has limited financial growth, but its provision of healthcare and education gives it a higher HDI than would otherwise be predicted. Meanwhile, countries like Kuwait and others in the Middle East enjoy high incomes but lower levels of development when measured by the index. HDI also has its limitations since it uses only 4 indicators. Can you think of some other measure that might be meaningful? Some examples might be gender empowerment, levels of inequality, or simply quality of life. Other indexes measure such things, and access to the Internet or to modern sanitation systems. Among those living in rural areas of India, for example, only one quarter of the population has access to a working toilet. The Population Reference Bureau ( http://www.prb.org/DataFinder ) collects data on these and other indicators by country that are readily accessible. You are encouraged to check out the website to find out more of these!
+It’s also important to keep in mind that differences within countries can be very stark. People living in Shanghai, China, for example enjoy a standard of living very similar to the average Italian. Meanwhile, rural dwellers in that country are not much better off than an average person from Sub-Saharan Africa. Just as many rural residents in Tennessee, Mississippi, and West Virginia struggle with access to basic health care and have unemployment rates much higher than in other parts of the U.S. The small country of Bhutan has taken a novel approach to measuring its own development by considering one factor above all others – happiness. Rather than measuring GDP, it closely monitors gross national happiness as a barometer of the spiritual, physical, social and environmental health of its citizens and natural environment. As stated by the Minister of Education, “It’s easy to mine the land and fish the seas and get rich. Yet we believe you cannot have a prosperous nation in the long run that does not conserve its natural environment or take care of the wellbeing of its people.” As you may have noticed, none of the indicators of development presented in this chapter take into account the well-being of the environment or the long-term cost of development. As people become wealthier, they consume more of the earth’s resources. The Bhutan model might seem a little strange to the average American student, but it is one of the few models that takes seriously the notion of environmental sustainability as a component of development.
+9.5.2 What Is Microfinance?
+Inherent in all forms of development strategies is the importance of money. Previous sections described how the World Bank and the IMF offer development assistance to developing countries. Both of those entities are limited to relatively large-scale projects, however. In recent decades a new form of development assistance has emerged that has proven much more impactful at the local level. The term micro-finance refers to all of financial services normally available through a bank to the wealthy around the world. These include credit cards, short-term loans, interest bearing accounts, and financial insurance. Something as simple as a credit card that allows for a college student to buy books (not this book, however!) can be the difference between staying and leaving college. Small-scale farmers in lessdeveloped countries are at constant risk when they do not have access to such credit. With even a very small loan, or micro-loan (e.g. $500), hundreds of millions of farmers can increase their income significantly. If you sell milk, but you only own 3 cows, imagine what you could do with 6 cows! Large-scale development programs don’t offer such things to individual farmers, but new programs and websites are doing exactly that. Perhaps most well-known among these is Kiva.org (kiva. org). What started as a small endeavor to match lenders and borrowers by 2 people has morphed into a major provider of loans to more than 100,000 people in 2016, while raising nearly $150 million. Most incredibly, the repayment rate of loans given to the poorest of the poor stands at 97%, an astounding accomplishment.
+9.5.3 What Does the Future Hold For Development Around The World?
+Predicting the future is always risky. Climate change, emergent untreatable diseases, and massive political upheavals have historically altered the course of history beyond anyone’s imagination. Those caveats aside, the immediate future is expected to be a good one when measured by human development index. As total fertility rates decline across all of the developing world, women’s empowerment will also increase. As more women enter the workforce globally, family incomes are expected to continue to rise. The overarching story of the 20th century was that life expectancies skyrocketed, infant mortality rates declined, and the spread of many communicable diseases was curtailed. Economists argue that, as more countries increase their connectivity to the global system via trade, that the wealth of everyone increases. As hundreds of millions of farmers left the countryside in China and India to seek manufacturing jobs, levels of development increased dramatically. Many predict that the same spatial pattern will occur in African and in other parts of the world in the coming decades as manufacturers seek new markets and new, lower cost labor deep into the 21st century. Many of the improvements worldwide are directly connected to technological improvements. Anyone with an Internet connection in 2018 has access to more information, imagery, and knowledge than average people had throughout their entire lifetime even just one generation ago. As globalization allows for the free flow of information, commerce,currency, and ideas, there is also an increased risk that dangerous things travel along those same routes. The dark web makes for easy illicit exchanges of drugs, weapons, stolen credit cards, human trafficking victims, and all sorts of otherhorrible things. The challenge for development in the future clearly lies in balancing the risks and benefits of a world that has experienced such a massive time-space compression in such a short period of time.

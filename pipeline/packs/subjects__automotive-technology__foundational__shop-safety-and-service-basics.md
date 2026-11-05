@@ -1,309 +1,156 @@
 # Source pack — subjects/automotive-technology/foundational/shop-safety-and-service-basics
 Lesson title: Shop Safety and Service Basics
 Level: foundational
-Match confidence: 1.04
+Match confidence: 1.54
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.04 — APCollegePhysics-OP_js6ZFp7 § 23.8 Electrical Safety: Systems and Devices
+## Match 1.54 — LibreTexts: 10.2: Shop set up, safety assessments and exam prep-study guides, equipment checklists
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://workforce.libretexts.org/Bookshelves/Safety_and_Emergency_Management/Workplace_Safety_for_US_Workers_-_Workbook/10%3A_Welding_Safety/10.02%3A_Shop_set_up_safety_assessments_and_exam_prep-study_guides_equipment_checklists
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Explain how various modern safety features in electric circuits work, with an emphasis on how induction is employed.
-The information presented in this section supports the following AP® learning objectives and science practices:
-•
-4.E.2.1 The student is able to construct an explanation of the function of a simple electromagnetic device in which an
-induced emf is produced by a changing magnetic flux through an area defined by a current loop (i.e., a simple
-microphone or generator) or of the effect on behavior of a device in which an induced emf is produced by a constant
-magnetic field through a changing area. (S.P. 6.4)
-Electricity has two hazards. A thermal hazard occurs when there is electrical overheating. A shock hazard occurs when electric
-current passes through a person. Both hazards have already been discussed. Here we will concentrate on systems and devices
-that prevent electrical hazards.
-Figure 23.31 shows the schematic for a simple AC circuit with no safety features. This is not how power is distributed in practice.
-Modern household and industrial wiring requires the three-wire system, shown schematically in Figure 23.32, which has
-several safety features. First is the familiar circuit breaker (or fuse) to prevent thermal overload. Second, there is a protective
-case around the appliance, such as a toaster or refrigerator. The case’s safety feature is that it prevents a person from touching
-exposed wires and coming into electrical contact with the circuit, helping prevent shocks.
-1046
-Chapter 23 | Electromagnetic Induction, AC Circuits, and Electrical Technologies
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
+10.2: Shop set up, safety assessments and exam prep-study guides, equipment checklists
+Shop set up, safety assessments
+The following accessible links cover welding lab/shop safety.
+- Safe Working Conditions PPT
+- Student Reference Guide - Shop Safety Checklist
+- Shop Safety Checklist Quiz
+- AWS/ANSI Welding Safety Standard PPT
+- Student Reference Guide - SAFE AWS ANSI Standard
+- AWS/ANSI Standard Assessment
+- Welding Shop Equipment Safety Checklist
+- Sample Welding Equipment Inspection Checklist
+Exam Prep-Safety certifications, qualifications
+National Center for Construction Education and Research NCCER’s four-level curriculum covers topics such as Oxyfuel Cutting, Welding Symbols, and Stainless Steel Groove Welds. NCCER’s curriculum also correlates to the AWS SENSE (Schools Excelling through national Skills Education) standards and guidelines for Entry Welder.
+OSHA 10 in the Construction Industry, NCCER Core Curriculum, NCCER Welding Level I
+Based on the ANSI Z49.1:2012 Safety in Welding Standard, this course includes a broad range of topics, including hazards, safety equipment, ventilation, welding in confined spaces, safety precautions, and safety specifications.
+Presented in easy-to-access, online modules, the AWS Safety in Welding course is equally accessible to students, hobbyists and established professionals who want to expand their knowledge base and core competencies.
+SAFETY IN WELDING - Welding Safety Course (Free Version)
+The AWS Safety in Welding Course is now FREE!
+WITH ACCESS TO MORE INFO THAN EVER >
+11 Modules with Pre & Post Quizzes
+ANSI Z49.1 National Standard
+Safety & Health Fact Sheets
+The American Welding Society is accredited by the International Association for Continuing Education and Training (IACET) and is accredited to issue the IACET CEU
 
-Figure 23.31 Schematic of a simple AC circuit with a voltage source and a single appliance represented by the resistance R . There are no safety
-features in this circuit.
-Figure 23.32 The three-wire system connects the neutral wire to the earth at the voltage source and user location, forcing it to be at zero volts and
-supplying an alternative return path for the current through the earth. Also grounded to zero volts is the case of the appliance. A circuit breaker or fuse
-protects against thermal overload and is in series on the active (live/hot) wire. Note that wire insulation colors vary with region and it is essential to
-check locally to determine which color codes are in use (and even if they were followed in the particular installation).
-There are three connections to earth or ground (hereafter referred to as “earth/ground”) shown in Figure 23.32. Recall that an
-earth/ground connection is a low-resistance path directly to the earth. The two earth/ground connections on the neutral wire force
-it to be at zero volts relative to the earth, giving the wire its name. This wire is therefore safe to touch even if its insulation, usually
-white, is missing. The neutral wire is the return path for the current to follow to complete the circuit. Furthermore, the two earth/
-ground connections supply an alternative path through the earth, a good conductor, to complete the circuit. The earth/ground
-connection closest to the power source could be at the generating plant, while the other is at the user’s location. The third earth/
-ground is to the case of the appliance, through the green earth/ground wire, forcing the case, too, to be at zero volts. The live or
-hot wire (hereafter referred to as “live/hot”) supplies voltage and current to operate the appliance. Figure 23.33 shows a more
-pictorial version of how the three-wire system is connected through a three-prong plug to an appliance.
-Figure 23.33 The standard three-prong plug can only be inserted in one way, to assure proper function of the three-wire system.
-Chapter 23 | Electromagnetic Induction, AC Circuits, and Electrical Technologies
-1047
+## Match 1.53 — LibreTexts: 7.B: Tool and Shop Safety
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://workforce.libretexts.org/Bookshelves/Safety_and_Emergency_Management/Workplace_Safety_for_US_Workers_-_Workbook/07%3A_Industrial_Safety_and_Manufacturing/7.B%3A_Tool_and_Shop_Safety
 
-A note on insulation color-coding: Insulating plastic is color-coded to identify live/hot, neutral and ground wires but these codes
-vary around the world. Live/hot wires may be brown, red, black, blue or grey. Neutral wire may be blue, black or white. Since the
-same color may be used for live/hot or neutral in different parts of the world, it is essential to determine the color code in your
-region. The only exception is the earth/ground wire which is often green but may be yellow or just bare wire. Striped coatings are
-sometimes used for the benefit of those who are colorblind.
-The three-wire system replaced the older two-wire system, which lacks an earth/ground wire. Under ordinary circumstances,
-insulation on the live/hot and neutral wires prevents the case from being directly in the circuit, so that the earth/ground wire may
-seem like double protection. Grounding the case solves more than one problem, however. The simplest problem is worn
-insulation on the live/hot wire that allows it to contact the case, as shown in Figure 23.34. Lacking an earth/ground connection
-(some people cut the third prong off the plug because they only have outdated two hole receptacles), a severe shock is possible.
-This is particularly dangerous in the kitchen, where a good connection to earth/ground is available through water on the floor or a
-water faucet. With the earth/ground connection intact, the circuit breaker will trip, forcing repair of the appliance. Why are some
-appliances still sold with two-prong plugs? These have nonconducting cases, such as power tools with impact resistant plastic
-cases, and are called doubly insulated. Modern two-prong plugs can be inserted into the asymmetric standard outlet in only one
-way, to ensure proper connection of live/hot and neutral wires.
-Figure 23.34 Worn insulation allows the live/hot wire to come into direct contact with the metal case of this appliance. (a) The earth/ground connection
-being broken, the person is severely shocked. The appliance may operate normally in this situation. (b) With a proper earth/ground, the circuit breaker
-trips, forcing repair of the appliance.
-Electromagnetic induction causes a more subtle problem that is solved by grounding the case. The AC current in appliances can
-induce an emf on the case. If grounded, the case voltage is kept near zero, but if the case is not grounded, a shock can occur as
-pictured in Figure 23.35. Current driven by the induced case emf is called a leakage current, although current does not
-1048
-Chapter 23 | Electromagnetic Induction, AC Circuits, and Electrical Technologies
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
+7.B: Tool and Shop Safety
+Tools are such a common part of our lives that it is difficult to remember that they may pose hazards. Tragically, a serious incident can occur before steps are taken to identify and avoid or eliminate tool-related hazards.
+Five basic safety rules can help prevent hazards associated with the use of hand and power tools:
+- Keep all tools in good condition with regular maintenance.
+- Use the right tool for the job.
+- Examine each tool for damage before use and do not use damaged tools.
+- Operate tools according to the manufacturers’ instructions.
+- Provide and properly use appropriate personal protective equipment.
+Tool Safety Video
+An interactive or media element has been excluded from this version of the text. You can view it online here:
+Hand Tool Safety
+Hand tools are tools that are powered manually and include anything from axes to wrenches. The greatest hazards posed by hand tools result from misuse and improper maintenance.
+Some examples include the following:
+- If a chisel is used as a screwdriver, the tip of the chisel may break and fly off, hitting the user or other employees.
+- If a wooden handle on a tool, such as a hammer or an axe, is loose, splintered, or cracked, the head of the tool may fly off and strike the user or other employees.
+- If the jaws of a wrench are sprung, the wrench might slip.
+- If impact tools such as chisels, wedges, or drift pins have mushroomed heads, the heads might shatter on impact, sending sharp fragments flying toward the user or other employees.
+Guidance on hand tool use:
+- Wear safety glasses when striking objects with tools or the potential for breakage, chips, dust or any other hazard exists.
+- Tap fasteners such as nails to start.
+- Remove free hand to avoid impact to hand and fingers before striking fastener with force.
+- Do not cut towards yourself with sharp tools.
+- Avoid storing sharp tools with sensitive tools and equipment.
+- Be cautious of wrenches and tools slipping from fasteners to avoid hand injuries and loss of balance.
+- Use insulated tools when working with energized circuits.
+- Do not operate power tools with cut or frayed power cords, or inoperable or missing safety guards or devices.
+- Never carry sharp tools in your pockets.
+Power Tool Safety
+Employees using electric tools must be aware of several dangers. Among the most serious hazards are electrical burns and shocks.
+Electrical shocks, which can lead to injuries such as heart failure and burns, are among the major hazards associated with electric-powered tools. Under certain conditions, even a small amount of electric current can result in fibrillation of the heart and death. An electric shock also can cause the user to fall off a ladder or other elevated work surface and be injured due to the fall.
+To protect the user from shock and burns, electric tools must have a three-wire cord with a ground and be plugged into a grounded receptacle, be double insulated, or be powered by a low-voltage isolation transformer. Three-wire cords contain two current-carrying conductors and a grounding conductor. Any time an adapter is used to accommodate a two-hole receptacle, the adapter wire must be attached to a known ground. The third prong must never be removed from the plug.
+Double-insulated tools are available that provide protection against electrical shock without third-wire grounding. On double-insulated tools, an internal layer of protective insulation completely isolates the external housing of the tool.
+The following general practices should be followed when using electric tools:
+- Wear appropriate eye and hearing protection.
+- Read manual and operate electric tools within their design limitations.
+- Ensure tool is in the off position prior to connecting to outlet.
+- Use gloves and appropriate safety footwear when using electric tools.
+- Always use a GFCI protected device for outside and damp location power tool use.
+- Do not use electric tools in damp or wet locations unless they are approved for that purpose.
+- Do not use portable power tools which have cords that are cut, frayed, or separated from the tool housing. Such cords should be repaired before continued use.
+- Keep work areas well lighted when operating electric tools.
+- Ensure that cords from electric tools do not present a tripping hazard.
+- Never place power cords over shoulders or around neck.
+- Secure long hair and loose clothing prior to power tool use.
+- Allow the tool to do the work. Never force or apply excessive pressure to the tool.
+- Maintain sure footing and well balanced stance.
+Additional practices for storage, transportation and maintenance:
+- Unplug or remove batteries from power tools before changing accessories.
+- Keep tools and equipment well maintained, i.e. blades sharp, cords well maintained, guards in good working order, etc. Store electric tools in a dry place when not in use.
+- Do not carry tools by the power cord.
+- Make sure that long extension cords are sufficiently large in size to carry the current (amps) necessary for the tools being used. Sufficiently large wire size in cords will help avoid large voltage drop and tool burn-out.
+An interactive or media element has been excluded from this version of the text. You can view it online here:
+Refer to Tool Choices and Application for safety related to specific hand and power tools.
 
-necessarily pass from the resistor to the case.
-Figure 23.35 AC currents can induce an emf on the case of an appliance. The voltage can be large enough to cause a shock. If the case is grounded,
-the induced emf is kept near zero.
-A ground fault interrupter (GFI) is a safety device found in updated kitchen and bathroom wiring that works based on
-electromagnetic induction. GFIs compare the currents in the live/hot and neutral wires. When live/hot and neutral currents are not
-equal, it is almost always because current in the neutral is less than in the live/hot wire. Then some of the current, again called a
-leakage current, is returning to the voltage source by a path other than through the neutral wire. It is assumed that this path
-presents a hazard, such as shown in Figure 23.36. GFIs are usually set to interrupt the circuit if the leakage current is greater
-than 5 mA, the accepted maximum harmless shock. Even if the leakage current goes safely to earth/ground through an intact
-earth/ground wire, the GFI will trip, forcing repair of the leakage.
-Figure 23.36 A ground fault interrupter (GFI) compares the currents in the live/hot and neutral wires and will trip if their difference exceeds a safe
-value. The leakage current here follows a hazardous path that could have been prevented by an intact earth/ground wire.
-Figure 23.37 shows how a GFI works. If the currents in the live/hot and neutral wires are equal, then they induce equal and
-opposite emfs in the coil. If not, then the circuit breaker will trip.
-Chapter 23 | Electromagnetic Induction, AC Circuits, and Electrical Technologies
-1049
+## Match 1.31 — LibreTexts: 9.2: Auto Lab Equipment Safety
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://workforce.libretexts.org/Bookshelves/Safety_and_Emergency_Management/Workplace_Safety_for_US_Workers_-_Workbook/09%3A_Automotive-Transportation_Safety/9.02%3A_Auto_Lab_Equipment_Safety
 
-Figure 23.37 A GFI compares currents by using both to induce an emf in the same coil. If the currents are equal, they will induce equal but opposite
-emfs.
-Another induction-based safety device is the isolation transformer, shown in Figure 23.38. Most isolation transformers have
-equal input and output voltages. Their function is to put a large resistance between the original voltage source and the device
-being operated. This prevents a complete circuit between them, even in the circumstance shown. There is a complete circuit
-through the appliance. But there is not a complete circuit for current to flow through the person in the figure, who is touching only
-one of the transformer’s output wires, and neither output wire is grounded. The appliance is isolated from the original voltage
-source by the high resistance of the material between the transformer coils, hence the name isolation transformer. For current to
-flow through the person, it must pass through the high-resistance material between the coils, through the wire, the person, and
-back through the earth—a path with such a large resistance that the current is negligible.
-Figure 23.38 An isolation transformer puts a large resistance between the original voltage source and the device, preventing a complete circuit
-between them.
-The basics of electrical safety presented here help prevent many electrical hazards. Electrical safety can be pursued to greater
-depths. There are, for example, problems related to different earth/ground connections for appliances in close proximity. Many
-other examples are found in hospitals. Microshock-sensitive patients, for instance, require special protection. For these people,
-currents as low as 0.1 mA may cause ventricular fibrillation. The interested reader can use the material presented here as a
-basis for further study.
-
-## Match 1.03 — College_Physics-WEB_2s5sHvR § 23.8 Electrical Safety: Systems and Devices
-
-Electricity has two hazards. A thermal hazard occurs when there is electrical overheating. A shock hazard occurs when electric
-current passes through a person. Both hazards have already been discussed. Here we will concentrate on systems and devices
-that prevent electrical hazards.
-Figure 23.31 shows the schematic for a simple AC circuit with no safety features. This is not how power is distributed in practice.
-Modern household and industrial wiring requires the three-wire system, shown schematically in Figure 23.32, which has several
-safety features. First is the familiar circuit breaker (or fuse) to prevent thermal overload. Second, there is a protective case
-around the appliance, such as a toaster or refrigerator. The case’s safety feature is that it prevents a person from touching
-exposed wires and coming into electrical contact with the circuit, helping prevent shocks.
-Figure 23.31 Schematic of a simple AC circuit with a voltage source and a single appliance represented by the resistance
-. There are no
-safety features in this circuit.
-Figure 23.32 The three-wire system connects the neutral wire to the earth at the voltage source and user location, forcing it to be at zero
-volts and supplying an alternative return path for the current through the earth. Also grounded to zero volts is the case of the appliance. A
-23.8 • Electrical Safety: Systems and Devices
-1007
-
-circuit breaker or fuse protects against thermal overload and is in series on the active (live/hot) wire. Note that wire insulation colors vary
-with region and it is essential to check locally to determine which color codes are in use (and even if they were followed in the particular
-installation).
-There are three connections to earth or ground (hereafter referred to as “earth/ground”) shown in Figure 23.32. Recall that an
-earth/ground connection is a low-resistance path directly to the earth. The two earth/ground connections on the neutral wire
-force it to be at zero volts relative to the earth, giving the wire its name. This wire is therefore safe to touch even if its insulation,
-usually white, is missing. The neutral wire is the return path for the current to follow to complete the circuit. Furthermore, the
-two earth/ground connections supply an alternative path through the earth, a good conductor, to complete the circuit. The
-earth/ground connection closest to the power source could be at the generating plant, while the other is at the user’s location.
-The third earth/ground is to the case of the appliance, through the green earth/ground wire, forcing the case, too, to be at zero
-volts. The live or hot wire (hereafter referred to as “live/hot”) supplies voltage and current to operate the appliance. Figure 23.33
-shows a more pictorial version of how the three-wire system is connected through a three-prong plug to an appliance.
-Figure 23.33 The standard three-prong plug can only be inserted in one way, to assure proper function of the three-wire system.
-A note on insulation color-coding: Insulating plastic is color-coded to identify live/hot, neutral and ground wires but these codes
-vary around the world. Live/hot wires may be brown, red, black, blue or grey. Neutral wire may be blue, black or white. Since the
-same color may be used for live/hot or neutral in different parts of the world, it is essential to determine the color code in your
-region. The only exception is the earth/ground wire which is often green but may be yellow or just bare wire. Striped coatings are
-sometimes used for the benefit of those who are colorblind.
-The three-wire system replaced the older two-wire system, which lacks an earth/ground wire. Under ordinary circumstances,
-insulation on the live/hot and neutral wires prevents the case from being directly in the circuit, so that the earth/ground wire
-may seem like double protection. Grounding the case solves more than one problem, however. The simplest problem is worn
-insulation on the live/hot wire that allows it to contact the case, as shown in Figure 23.34. Lacking an earth/ground connection
-(some people cut the third prong off the plug because they only have outdated two hole receptacles), a severe shock is possible.
-This is particularly dangerous in the kitchen, where a good connection to earth/ground is available through water on the floor or
-a water faucet. With the earth/ground connection intact, the circuit breaker will trip, forcing repair of the appliance. Why are
-some appliances still sold with two-prong plugs? These have nonconducting cases, such as power tools with impact resistant
-plastic cases, and are called doubly insulated. Modern two-prong plugs can be inserted into the asymmetric standard outlet in
-only one way, to ensure proper connection of live/hot and neutral wires.
-1008
-Chapter 23 • Electromagnetic Induction, AC Circuits, and Electrical Technologies
-Access for free at openstax.org.
-
-Figure 23.34 Worn insulation allows the live/hot wire to come into direct contact with the metal case of this appliance. (a) The earth/ground
-connection being broken, the person is severely shocked. The appliance may operate normally in this situation. (b) With a proper earth/
-ground, the circuit breaker trips, forcing repair of the appliance.
-Electromagnetic induction causes a more subtle problem that is solved by grounding the case. The AC current in appliances can
-induce an emf on the case. If grounded, the case voltage is kept near zero, but if the case is not grounded, a shock can occur as
-pictured in Figure 23.35. Current driven by the induced case emf is called a leakage current, although current does not
-necessarily pass from the resistor to the case.
-23.8 • Electrical Safety: Systems and Devices
-1009
-
-Figure 23.35 AC currents can induce an emf on the case of an appliance. The voltage can be large enough to cause a shock. If the case is
-grounded, the induced emf is kept near zero.
-A ground fault interrupter (GFI) is a safety device found in updated kitchen and bathroom wiring that works based on
-electromagnetic induction. GFIs compare the currents in the live/hot and neutral wires. When live/hot and neutral currents are
-not equal, it is almost always because current in the neutral is less than in the live/hot wire. Then some of the current, again
-called a leakage current, is returning to the voltage source by a path other than through the neutral wire. It is assumed that this
-path presents a hazard, such as shown in Figure 23.36. GFIs are usually set to interrupt the circuit if the leakage current is
-greater than 5 mA, the accepted maximum harmless shock. Even if the leakage current goes safely to earth/ground through an
-intact earth/ground wire, the GFI will trip, forcing repair of the leakage.
-Figure 23.36 A ground fault interrupter (GFI) compares the currents in the live/hot and neutral wires and will trip if their difference exceeds
-a safe value. The leakage current here follows a hazardous path that could have been prevented by an intact earth/ground wire.
-Figure 23.37 shows how a GFI works. If the currents in the live/hot and neutral wires are equal, then they induce equal and
-opposite emfs in the coil. If not, then the circuit breaker will trip.
-1010
-Chapter 23 • Electromagnetic Induction, AC Circuits, and Electrical Technologies
-Access for free at openstax.org.
-
-Figure 23.37 A GFI compares currents by using both to induce an emf in the same coil. If the currents are equal, they will induce equal but
-opposite emfs.
-Another induction-based safety device is the isolation transformer, shown in Figure 23.38. Most isolation transformers have
-equal input and output voltages. Their function is to put a large resistance between the original voltage source and the device
-being operated. This prevents a complete circuit between them, even in the circumstance shown. There is a complete circuit
-through the appliance. But there is not a complete circuit for current to flow through the person in the figure, who is touching
-only one of the transformer’s output wires, and neither output wire is grounded. The appliance is isolated from the original
-voltage source by the high resistance of the material between the transformer coils, hence the name isolation transformer. For
-current to flow through the person, it must pass through the high-resistance material between the coils, through the wire, the
-person, and back through the earth—a path with such a large resistance that the current is negligible.
-Figure 23.38 An isolation transformer puts a large resistance between the original voltage source and the device, preventing a complete
-circuit between them.
-The basics of electrical safety presented here help prevent many electrical hazards. Electrical safety can be pursued to greater
-depths. There are, for example, problems related to different earth/ground connections for appliances in close proximity. Many
-other examples are found in hospitals. Microshock-sensitive patients, for instance, require special protection. For these people,
-currents as low as 0.1 mA may cause ventricular fibrillation. The interested reader can use the material presented here as a basis
-for further study.
-
-## Match 1.03 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 23.8 Electrical Safety: Systems and Devices
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain how various modern safety features in electric circuits work, with an emphasis on how induction
-is employed.
-Electricity has two hazards. A thermal hazard occurs when there is electrical overheating. A shock hazard occurs
-when electric current passes through a person. Both hazards have already been discussed. Here we will concentrate
-on systems and devices that prevent electrical hazards.
-Figure 23.29 shows the schematic for a simple AC circuit with no safety features. This is not how power is
-distributed in practice. Modern household and industrial wiring requires the three-wire system, shown
-schematically in Figure 23.30, which has several safety features. First is the familiar circuit breaker (or fuse) to
-prevent thermal overload. Second, there is a protective case around the appliance, such as a toaster or refrigerator.
-The case’s safety feature is that it prevents a person from touching exposed wires and coming into electrical contact
-with the circuit, helping prevent shocks.
-FIGURE 23.29 Schematic of a simple AC circuit with a voltage source and a single appliance represented by the resistance
-. There are no
-safety features in this circuit.
-23.8 • Electrical Safety: Systems and Devices
-1099
-
-FIGURE 23.30 The three-wire system connects the neutral wire to the earth at the voltage source and user location, forcing it to be at zero
-volts and supplying an alternative return path for the current through the earth. Also grounded to zero volts is the case of the appliance. A
-circuit breaker or fuse protects against thermal overload and is in series on the active (live/hot) wire. Note that wire insulation colors vary
-with region and it is essential to check locally to determine which color codes are in use (and even if they were followed in the particular
-installation).
-There are three connections to earth or ground (hereafter referred to as “earth/ground”) shown in Figure 23.30.
-Recall that an earth/ground connection is a low-resistance path directly to the earth. The two earth/ground
-connections on the neutral wire force it to be at zero volts relative to the earth, giving the wire its name. This wire is
-therefore safe to touch even if its insulation, usually white, is missing. The neutral wire is the return path for the
-current to follow to complete the circuit. Furthermore, the two earth/ground connections supply an alternative path
-through the earth, a good conductor, to complete the circuit. The earth/ground connection closest to the power
-source could be at the generating plant, while the other is at the user’s location. The third earth/ground is to the
-case of the appliance, through the green earth/ground wire, forcing the case, too, to be at zero volts. The live or hot
-wire (hereafter referred to as “live/hot”) supplies voltage and current to operate the appliance. Figure 23.31 shows
-a more pictorial version of how the three-wire system is connected through a three-prong plug to an appliance.
-FIGURE 23.31 The standard three-prong plug can only be inserted in one way, to assure proper function of the three-wire system.
-A note on insulation color-coding: Insulating plastic is color-coded to identify live/hot, neutral and ground wires but
-these codes vary around the world. Live/hot wires may be brown, red, black, blue or grey. Neutral wire may be blue,
-black or white. Since the same color may be used for live/hot or neutral in different parts of the world, it is essential
-to determine the color code in your region. The only exception is the earth/ground wire which is often green but may
-be yellow or just bare wire. Striped coatings are sometimes used for the benefit of those who are colorblind.
-1100
-23 • Electromagnetic Induction, AC Circuits, and Electrical Technologies
-Access for free at openstax.org
-
-The three-wire system replaced the older two-wire system, which lacks an earth/ground wire. Under ordinary
-circumstances, insulation on the live/hot and neutral wires prevents the case from being directly in the circuit, so
-that the earth/ground wire may seem like double protection. Grounding the case solves more than one problem,
-however. The simplest problem is worn insulation on the live/hot wire that allows it to contact the case, as shown in
-Figure 23.32. Lacking an earth/ground connection (some people cut the third prong off the plug because they only
-have outdated two hole receptacles), a severe shock is possible. This is particularly dangerous in the kitchen, where
-a good connection to earth/ground is available through water on the floor or a water faucet. With the earth/ground
-connection intact, the circuit breaker will trip, forcing repair of the appliance. Why are some appliances still sold with
-two-prong plugs? These have nonconducting cases, such as power tools with impact resistant plastic cases, and are
-called doubly insulated. Modern two-prong plugs can be inserted into the asymmetric standard outlet in only one
-way, to ensure proper connection of live/hot and neutral wires.
-FIGURE 23.32 Worn insulation allows the live/hot wire to come into direct contact with the metal case of this appliance. (a) The earth/
-ground connection being broken, the person is severely shocked. The appliance may operate normally in this situation. (b) With a proper
-earth/ground, the circuit breaker trips, forcing repair of the appliance.
-Electromagnetic induction causes a more subtle problem that is solved by grounding the case. The AC current in
-appliances can induce an emf on the case. If grounded, the case voltage is kept near zero, but if the case is not
-grounded, a shock can occur as pictured in Figure 23.33. Current driven by the induced case emf is called a leakage
-23.8 • Electrical Safety: Systems and Devices
-1101
-
-current, although current does not necessarily pass from the resistor to the case.
-FIGURE 23.33 AC currents can induce an emf on the case of an appliance. The voltage can be large enough to cause a shock. If the case is
-grounded, the induced emf is kept near zero.
-A ground fault interrupter (GFI) is a safety device found in updated kitchen and bathroom wiring that works based
-on electromagnetic induction. GFIs compare the currents in the live/hot and neutral wires. When live/hot and
-neutral currents are not equal, it is almost always because current in the neutral is less than in the live/hot wire.
-Then some of the current, again called a leakage current, is returning to the voltage source by a path other than
-through the neutral wire. It is assumed that this path presents a hazard, such as shown in Figure 23.34. GFIs are
-usually set to interrupt the circuit if the leakage current is greater than 5 mA, the accepted maximum harmless
-shock. Even if the leakage current goes safely to earth/ground through an intact earth/ground wire, the GFI will trip,
-forcing repair of the leakage.
-FIGURE 23.34 A ground fault interrupter (GFI) compares the currents in the live/hot and neutral wires and will trip if their difference
-exceeds a safe value. The leakage current here follows a hazardous path that could have been prevented by an intact earth/ground wire.
-Figure 23.35 shows how a GFI works. If the currents in the live/hot and neutral wires are equal, then they induce
-equal and opposite emfs in the coil. If not, then the circuit breaker will trip.
-1102
-23 • Electromagnetic Induction, AC Circuits, and Electrical Technologies
-Access for free at openstax.org
-
-FIGURE 23.35 A GFI compares currents by using both to induce an emf in the same coil. If the currents are equal, they will induce equal
-but opposite emfs.
-Another induction-based safety device is the isolation transformer, shown in Figure 23.36. Most isolation
-transformers have equal input and output voltages. Their function is to put a large resistance between the original
-voltage source and the device being operated. This prevents a complete circuit between them, even in the
-circumstance shown. There is a complete circuit through the appliance. But there is not a complete circuit for
-current to flow through the person in the figure, who is touching only one of the transformer’s output wires, and
-neither output wire is grounded. The appliance is isolated from the original voltage source by the high resistance of
-the material between the transformer coils, hence the name isolation transformer. For current to flow through the
-person, it must pass through the high-resistance material between the coils, through the wire, the person, and back
-through the earth—a path with such a large resistance that the current is negligible.
-FIGURE 23.36 An isolation transformer puts a large resistance between the original voltage source and the device, preventing a complete
-circuit between them.
-The basics of electrical safety presented here help prevent many electrical hazards. Electrical safety can be pursued
-to greater depths. There are, for example, problems related to different earth/ground connections for appliances in
-close proximity. Many other examples are found in hospitals. Microshock-sensitive patients, for instance, require
-special protection. For these people, currents as low as 0.1 mA may cause ventricular fibrillation. The interested
-reader can use the material presented here as a basis for further study.
+9.2: Auto Lab Equipment Safety
+Reflection: Auto Shop Equipment
+Vehicles are used in everyday life as people drive to work, to see family, or just for the enjoyment of travel. In order for vehicles to be road-worthy, they must be in top operating condition. Failure of any vehicle’s component or system may result in injury or even death. Auto technicians receive vehicles brought in for routine maintenance and/or service. Technicians in automotive shops when servicing vehicles utilize numerous equipment that must be routinely inspected, operated correctly and safely.
+Review the Automotive Shop Equipment discussed below and identify the standard that would compliment a safety protocol for the safe use of that equipment. Considering the hierarchy of controls what type of control is it? Reference workbook section 7: Tools and Equipment-Industrial Safety and Manufacturing and textbook chapter 12: Crane and Hoists for insight.
+Automotive Shop Equipment-Hazards
+There are several different areas in an auto shop. You must describe the areas by name and understand the basic rules that apply to each. It is important that you learn your shop layout and organization to improve work efficiency and safety. The auto shop includes the following work areas:
+- Repair area
+- Tool room
+- Classroom
+Repair Area
+The repair area includes any location in the shop where repair operations are performed, such as in the shop stall, lift, alignment rack, and outside work area. It normally includes every area except the classroom, locker room, and tool room.
+Shop Stall
+A shop stall is a small work area where a vehicle can be parked for repairs. Sometimes, each stall is numbered and marked off with lines painted on the floor. Some auto shop facilities have an outside work area adjacent to the garage overhead doors. In good weather, this area can be used for auto repairs. Always raise the shop doors all the way and pull cars through the doors very slowly.
+Lift
+The lift is used to raise a vehicle into the air. It is necessary for working under the car (draining oil, greasing front end ball sockets, or repairing exhaust systems).
+Remember these lift safety steps:
+- Ask your instructor for a demonstration and get permission before using the lift. You must be trained and authorized to use the lift.
+- Always read manufacturer's operating instructions closely before using a lift.  A-Most lifts have a mechanical safety catch. A large metal lug must be engaged fully into the metal post before working under the vehicle. Without the mechanical catch engaged, a hydraulic failure could make the vehicle drop instantly to the ground with deadly crushing force.
+- Inspect the lift, the floor area around the lift.
+- Position the vehicle's center of gravity (point of perfect balance) on the lift as described in the vehicle service manual. If a front-engine vehicle or a pickup truck with no weight in the bed, position the lift arms (if applicable) more to the front of the chassis. In a mid- or rear-engine car, place the lift pads more to the rear so the car will not slide or tilt off the lift.
+- Raise vehicle slowly while keeping your fingers away from any moving parts on the lift. Raise the car about one inch off the ground. Double check your lift points and make sure the vehicle is perfectly level. Always place your head next to the shop floor so you can see the alignment of the liftpad and vehicle pinch welds or frame rails.
+- When the vehicle is high enough to be worked on, make sure the lift's mechanical safety catch is engaged. Do not walk under the lift without the catch in the fully locked position
+Figure \(\PageIndex{1}\): Diagram of Lift. (Source; Greg Ling-Long Beach City College)
+Alignment Rack
+The alignment rack is used when working on a car's steering and suspension systems. It may contain a special tool board and equipment used when replacing worn suspension and steering parts, or adjusting wheel alignment. When using an alignment rack, the car should be pulled onto the rack slowly and carefully. Someone should guide the driver and help keep the tires centered on the rack. As with other complicated and potentially dangerous equipment, obtain a full demonstration before using the alignment rack.
+Tool room
+The tool room is a shop area where larger pieces of repair equipment are stored. The tool room is used to store shop tools, small equipment, and supplies, such as nuts, bolts, and oil. It is normally located adjacent to (next to) the repair area or classroom. When working in the tool room, you will be responsible for keeping track of shop tools. Every tool checked out of the tool room must be recorded and called in or retrieved before the end of the class period.
+Normally, the tools hang on the walls of the tool room for easy access. Each tool may have a painted silhouette, which indicates where it should be kept. Your instructor will detail specific tool room policies and procedures.
+Classroom / Training Room
+The classroom is usually an office-like area in a school or large repair facility, where students or mechanics can meet to increase their knowledge of auto service and repair. Either a certified instructor or the service manager presents the information to the students or experienced technicians. The classroom is used for seminars, demonstrations, and other technician training activities. It is often located adjacent to the repair area. Follow all posted safety rules for the classroom.
+Flash Card-Key terms and Definitions
+This interactive feature not available in print version of this workbook
+Standard Mapping - Identify Overlapping Standards for Automotive Safety
+Working in the automotive shop is a hazardous environment which requires safety to avoid injury or possible death. As a technician, you will be working with tools and equipment to service and repair vehicles. In this activity you will map the requirements for tool and equipment safety and specific safety warnings and procedures to safety standards to OSHA safety standards applicable to shop safety.
+Standard Mapping Table
+| General Industry Standard Subpart | Section | Shop Equipment or tool Safety Warning, Safety Procedure |
+|---|---|---|
+| 1910 Subpart F – Powered Platforms, Manlifts, and Vehicle-Mounted Work Platforms | 1910.67 – Vehicle-Mounted elevating and rotating work platforms | |
+| 1910 Subpart H - Hazardous Materials | 1910.106 - Flammable liquids | |
+| 1910 Subpart I - Personal Protective Equipment | 1910.132 - General requirements | |
+| 1910 Subpart I - Personal Protective Equipment | 1910.133 - Eye and face protection | |
+| 1910 Subpart I - Personal Protective Equipment | 1910.134 - Respiratory Protection | |
+| 1910 Subpart I - Personal Protective Equipment | 1910.138 - Hand Protection | |
+| 1910 Subpart K - Medical and First Aid | 1910.151 - Medical services and first aid | |
+| 1910 Subpart L - Fire Protection | 1910.157 - Portable fire extinguishers | |
+| 1910 Subpart L - Fire Protection | 1910.165 - Employee alarm systems | |
+| 1910 Subpart N - Materials Handling and Storage | 1910.179 - Overhead and gantry cranes | |
+| 1910 Subpart O - Machinery and Machine Guarding | 1910.212 - General requirements for all machines | |
+| 1910 Subpart O - Machinery and Machine Guarding | 1910.217 - Mechanical power presses | |
+| 1910 Subpart P - Hand and Portable Powered Tools and Other Hand-Held Equipment | 1910.242 - Hand and portable powered tools and equipment, general |
+Video-Equipment Safety
+How to use 2-post Lift
+How it works?!? The CAR WIZARD shows how to operate a two-post car lift.
+Vehicle Lift Failures
+Case Study – Fatality
+Discuss in your group the specifics of the case below. The details are summarized. View the figures in the report showing the shop equipment and usage of the vehicle lift. Discuss in your groups how you would have prevented this incident. Consider creating a JHA to support your case.
+Are there any standards that mitigate or are a work around for servicing a vehicle while on a lift? What are they and how would you implement?
+Subject: Accident: 14543334 - Vehicle Fell From Auto Lift, Mechanic Crushed Under Auto
+Accident detail
+Introduction
+Employee #1, A mechanic, was repairing a tie-rod on a vehicle which was suspended over his head on an auto lift. He inadvertently struck the lift securing pad with his hammer, causing the telescoping movable securing lift arm to move. The vehicle fell from the auto lift to the garage floor. The mechanic was caught under the falling car and crushed to death. The auto lift was manufactured by The Dover Corp., Rotary Lift Division. The auto lift's ID number was E770 3022M; serial number 0500, part number P451. The lift’s model number was AB00137-SP80 MARK II. It had a 7,000 pound lift capacity. The manufacturer’s lift instructions were not followed during installation of the auto lift.
+Employer: Gronski Enterprises 3905 Birney Avenue Scranton, PA 18505

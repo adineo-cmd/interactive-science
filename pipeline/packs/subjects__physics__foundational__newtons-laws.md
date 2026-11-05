@@ -1,856 +1,95 @@
 # Source pack — subjects/physics/foundational/newtons-laws
 Lesson title: Newton's Three Laws
 Level: foundational
-Match confidence: 2.39
+Match confidence: 3.09
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.39 — APCollegePhysics-OP_js6ZFp7 § 4.7 Further Applications of Newton's Laws of Motion
+## Match 3.09 — LibreTexts: 14.1: Forces and Newton's Three Laws
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/Merrimack_College/Conservation_Laws_Newton's_Laws_and_Kinematics_version_2.0/14%3A_N1)_Newton's_Laws/14.01%3A_Forces_and_Newton's_Three_Laws
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Apply problem-solving techniques to solve for quantities in more complex systems of forces.
-•
-Integrate concepts from kinematics to solve problems using Newton's laws of motion.
-The information presented in this section supports the following AP® learning objectives and science practices:
-•
-3.A.2.1 The student is able to represent forces in diagrams or mathematically using appropriately labeled vectors with
-magnitude, direction, and units during the analysis of a situation. (S.P. 1.1)
-•
-3.A.3.1 The student is able to analyze a scenario and make claims (develop arguments, justify assertions) about the
-forces exerted on an object by other objects for different types of forces or components of forces. (S.P. 6.4, 7.2)
-•
-3.A.3.3 The student is able to describe a force as an interaction between two objects and identify both objects for any
-force. (S.P. 1.4)
-•
-3.B.1.1 The student is able to predict the motion of an object subject to forces exerted by several objects using an
-application of Newton's second law in a variety of physical situations with acceleration in one dimension. (S.P. 6.4, 7.2)
-•
-3.B.1.3 The student is able to re-express a free-body diagram representation into a mathematical representation and
-solve the mathematical representation for the acceleration of the object. (S.P. 1.5, 2.2)
-•
-3.B.2.1 The student is able to create and use free-body diagrams to analyze physical situations to solve problems with
-motion qualitatively and quantitatively. (S.P. 1.1, 1.4, 2.2)
-There are many interesting applications of Newton’s laws of motion, a few more of which are presented in this section. These
-serve also to illustrate some further subtleties of physics and to help build problem-solving skills.
-Example 4.7 Drag Force on a Barge
-Suppose two tugboats push on a barge at different angles, as shown in Figure 4.23. The first tugboat exerts a force of
-2.7×105 N in the x-direction, and the second tugboat exerts a force of 3.6×105 N in the y-direction.
-Chapter 4 | Dynamics: Force and Newton's Laws of Motion
-169
+14.1: Forces and Newton's Three Laws
+Newton's Laws
+Up to this point in the semester, we've been studying the interaction between objects by modeling the interactions with energy and momentum. The transfer and conservation of these quantities allowed us to determine their motion. Now, we would like to describe the interactions between objects using forces . In some ways, this description of the physical world is more intuitive; forces push and pull on objects, much like how we interaction with objects in our everyday lives. Of course, momentum and energy is still being transferred around, but the force description gives us a different perspective, and intuition about the motion is often more direct. On the other hand, since forces are vectors, it requires more mathematical sophistication and care then when dealing with energy.
+Forces Are Vectors
+When you push or pull on an object, it matters what direction you are pushing or pulling it. This is very natural; if you push in one direction and your friend pushes just as hard in the opposite direction, the object will not move. But what happens if you push in one direction and your friend pushes just as hard, but not quite in the opposite direction? The object might move in some other direction, and that's what we want to know about. All these various direction-and-magnitude complexities can be easily dealt with by modeling all forces as vectors . They must be written as \(\vec{F}=F_x\hat{x}+F_y\hat{y}\) in the \((x,y)\)-coordinate system you specify in order to get any answers right!
+Newton's First Law
+Newton's first law can be summarized as ``an object in motion tends to stay in motion unless acted on by a net external force''. The converse is also true; ``an object at rest tends to stay at rest unless acted on by a net external force''. An important word here is net , which means sum of all . A hockey puck sliding across the ice will continue to slide forever if there is no friction, but it does have external forces acting on it (gravity and the normal force, in this case). But these forces balance out, so there is no net force on the hockey puck. Newton's first law does not really help us solve problems, but rather it helps with our modeling process. It tells us when we should expect objects to exhibit motion.
+Newton's Second Law
+Newton's second law is the primary tool we will use to determine the motion of an object given some forces acting on it. We usually remember it as
+\[\sum \vec{F}=m\vec{a},\]
+where the \(\sum\) symbol means ``add up all the forces''. This is an important thing to remember - an object can have several forces acting on it, but a single object only ever has one acceleration \(\vec{a}\). A very common mistake is to think ``each force makes an acceleration \(F/m\), and I will add them all up to get the acceleration of the object'', but that is incorrect. A single object has only a single path in space, and therefore only has a single acceleration.
+We can actually derive Newton's second law from the definition of force and momentum we have already encountered, namely
+\[\vec{F}_{net}=\frac{d\vec{p}}{dt}.\]
+(Recall that "net" means "sum of all", which is mathematically the same thing as the symbol \(\Sigma\).)To do this, we just use the definition of momentum, \(\vec{p}=m\vec{v}\), and assume the mass is constant in time (as it often is). Then we get:
+\[\vec{F}_{net}=\frac{d}{dt}(m\vec{v})=m\frac{d\vec{v}}{dt}=m\vec{a}.\]
+I typically write Newton's second law in a slightly different way,
+\[\boxed{\vec{a}=\frac{\sum\vec{F}}{m}},\]
+which mathematically identical, but reads more like ``the acceleration is the sum of the forces divided by the mass'', which is more like how we use Newton's second law.
+Finally, since this is a vector equation, it actually contains several independent equations inside it, one for each direction. For instance, if you are doing a 2d Newton's second law problem, you will actually have components in each direction,
+\[a_x=\frac{\sum F_x}{m},\qquad a_y=\frac{\sum F_y}{m},\]
+and you will have to solve for these independently.
+Newton's Third Law
+Newton's third law is ``for every action there is an equal and opposite reaction''. In this case, our ``actions'' are forces. The typical example of this is ``I push on the wall with a force \(\vec{F}\), so the wall pushes on me with a force \(-\vec{F}\)''. Mathematically, if we have a force \(\vec{F}_{AB}\) acting from object A to object B, Newton's third law tells us that we know there must be a force \(\vec{F}_{BA}\) acting from object B to object A. The magnitudes of these forces are equal, and their directions are opposite:
+\[|\vec{F}_{AB}|=|\vec{F}_{BA}|,\qquad \vec{F}_{AB}=-\vec{F}_{BA}.\]
+Notice the way we've notated this - each force corresponds with a pair of objects , one that creates the force and one that experiences it. All forces have both - you push on a wall ( you and wall are the objects), the force of the floor pushing up on you, etc. In the case of the forces above, we're writing \(\vec{F}_{AB}\) to mean "the force created by A, acting on B", or "the force from A to B". The order of these subscripts is not always that important (since Newton's third law tells us that \(|F_{AB}|=|F_{BA}|\)), but we will try to be careful when we are writing them.
 
-Figure 4.23 (a) A view from above of two tugboats pushing on a barge. (b) The free-body diagram for the ship contains only forces acting in the
-plane of the water. It omits the two vertical forces—the weight of the barge and the buoyant force of the water supporting it cancel and are not
-shown. Since the applied forces are perpendicular, the x- and y-axes are in the same direction as Fx and Fy . The problem quickly becomes a
-one-dimensional problem along the direction of Fapp , since friction is in the direction opposite to Fapp .
-If the mass of the barge is 5.0×106 kg and its acceleration is observed to be 7.5×10−2 m/s2 in the direction shown,
-what is the drag force of the water on the barge resisting the motion? (Note: drag force is a frictional force exerted by fluids,
-such as air or water. The drag force opposes the motion of the object.)
-Strategy
-The directions and magnitudes of acceleration and the applied forces are given in Figure 4.23(a). We will define the total
-force of the tugboats on the barge as Fapp so that:
-(4.59)
-Fapp=Fx + Fy
-Since the barge is flat bottomed, the drag of the water FD will be in the direction opposite to Fapp , as shown in the free-
-body diagram in Figure 4.23(b). The system of interest here is the barge, since the forces on it are given as well as its
-acceleration. Our strategy is to find the magnitude and direction of the net applied force Fapp , and then apply Newton’s
-second law to solve for the drag force FD .
-Solution
-Since Fx and Fy are perpendicular, the magnitude and direction of Fapp are easily found. First, the resultant magnitude
-is given by the Pythagorean theorem:
-(4.60)
-Fapp =
-Fx2 + Fy2
-Fapp =
-(2.7×105 N)2 + (3.6×105 N)2 = 4.5×105 N.
-The angle is given by
-(4.61)
-θ = tan−1⎛
-⎝
-Fy
-Fx
-⎞
-⎠
-θ = tan−1⎛
-⎝
-3.6×105 N
-2.7×105 N
-⎞
-⎠ = 53º,
-which we know, because of Newton’s first law, is the same direction as the acceleration. FD is in the opposite direction of
-Fapp , since it acts to slow down the acceleration. Therefore, the net external force is in the same direction as Fapp , but its
-magnitude is slightly less than Fapp . The problem is now one-dimensional. From Figure 4.23(b), we can see that
-(4.62)
-Fnet = Fapp − FD.
-But Newton’s second law states that
-(4.63)
-Fnet = ma.
-Thus,
-(4.64)
-Fapp − FD = ma.
-170
-Chapter 4 | Dynamics: Force and Newton's Laws of Motion
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
+## Match 3.07 — LibreTexts: 5.1: Newton’s Three Laws
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/Berea_College/Introductory_Physics%3A_Berea_College/05%3A_Newtons_Laws/5.01%3A_Newtons_Three_Laws
 
-This can be solved for the magnitude of the drag force of the water FD in terms of known quantities:
-(4.65)
-FD = Fapp − ma.
-Substituting known values gives
-(4.66)
-FD = (4.5×105 N) − (5.0×106 kg)(7.5×10–2 m/s2 ) = 7.5×104 N.
-The direction of FD has already been determined to be in the direction opposite to Fapp , or at an angle of 53º south of
-west.
-Discussion
-The numbers used in this example are reasonable for a moderately large barge. It is certainly difficult to obtain larger
-accelerations with tugboats, and small speeds are desirable to avoid running the barge into the docks. Drag is relatively
-small for a well-designed hull at low speeds, consistent with the answer to this example, where FD is less than 1/600th of
-the weight of the ship.
-In the earlier example of a tightrope walker we noted that the tensions in wires supporting a mass were equal only because the
-angles on either side were equal. Consider the following example, where the angles are not equal; slightly more trigonometry is
-involved.
-Example 4.8 Different Tensions at Different Angles
-Consider the traffic light (mass 15.0 kg) suspended from two wires as shown in Figure 4.24. Find the tension in each wire,
-neglecting the masses of the wires.
-Chapter 4 | Dynamics: Force and Newton's Laws of Motion
-171
+5.1: Newton’s Three Laws
+-
+- Last updated
+- Save as PDF
+Newton’s classical theory of physics is based on the three following laws:
+- Law 1 : An object will remain in its state of motion, be it at rest or moving with constant velocity, unless a net external force is exerted on the object.
+- Law 2 : An object’s acceleration is proportional to the net force exerted on the object , inversely proportional to the mass of the object, and in the same direction as the net force exerted on the object.
+- Law 3 : If one object exerts a force on another object, the second object exerts a force on the first object that is equal in magnitude and opposite in direction.
+The three statements above are sufficient to describe almost all of the natural phenomena that we experience in our lives. Concepts such as energy, center of mass, torque, etc, which you may have already encountered, are derived naturally from these three laws. In order to build models to describe specific experiments or observations using Newton’s Laws, one needs to understand the two main mathematical concepts that are introduced by the theory: force and mass. A few comments on each of the three laws are first provided before the concepts of force and mass are developed further.
+Newton’s First Law
+Newton’s First Law is often referred to as the law of inertia which was originally stated by Galileo. The first law is counter-intuitive, as our experience is that if you push a block on a table and let it go, it will eventually stop. Indeed, Aristotle proposed that the natural state of objects is to be at rest. As a result of Newton’s theory, we now understand that if you model a block sliding on a table, one must include a force of friction between the table and the block that acts to slow it down; a sliding block is thus not in a situation where no net external force is exerted on the object.
+Newton’s First Law is useful in defining what we call an “inertial frame of reference”, which is a frame of reference in which Newton’s First Law holds true. A frame of reference can be thought of as a coordinate system which can be moving. For example, if a train is moving with constant velocity, we can consider the train as an inertial frame of reference since objects in the train would follow Newton’s First Law for observers that are in the train. If a train passenger placed an object on a table, they would observe that the object does not spontaneously start moving; if they slide an object on a frictionless table, they would observe that it keeps on sliding at constant velocity.
+However, if the train is accelerating forwards, then an object placed on a frictionless table would appear, for observers in the train’s frame of reference, to be accelerating in the direction opposite to that of the train, and violate Newton’s First Law. An accelerating train is thus not an inertial frame of reference. To an observer on the ground, looking into the accelerating train through a window, the object placed on the table would appear to move with the same constant velocity as when it was placed on the table (the velocity of the train at the instant the object is placed on the table). In a similar way, when you are in a car, Newton’s First Law holds if the car is going at constant velocity, but if the car goes around a curve (and thus accelerates even its speed is constant), you will find that all objects in the car suddenly appear to be pushed towards the outside of the curve, in conflict with Newton’s First Law; this is because the accelerating car is not an inertial frame of reference and Newton’s First Law is thus not expected to hold.
+Newton’s First Law thus allows us to define an inertial frame of reference; Newton’s Three Laws only hold in inertial frames of reference.
+Exercise \(\PageIndex{1}\)
+You are in an elevator accelerating upwards.
+- The elevator is an inertial frame of reference.
+- The elevator is not an inertial frame of reference.
+- Answer
+- B.
+Newton’s Second Law
+Newton’s Second Law is often written as a vector equation:
+\[\begin{aligned} \sum \vec F = m\vec a\end{aligned}\]
+where \(\sum \vec F\) is the vector sum of the forces exerted on an object, \(\vec a\) is the acceleration vector of the object, and \(m\) is the “inertial mass” of the object. As we will see, a force is represented by a vector, and the sum of the force vectors on an object is often called the “net force”. Recall that using vectors to write an equation is just a shorthand for writing the equation out for each component. In three dimensions, this would thus correspond to three independent scalar equations (one for each component of the force and acceleration vectors):
+\[\begin{aligned} \sum F_x &= ma_x \\[4pt] \sum F_y &= ma_y \\[4pt] \sum F_z &= ma_z\end{aligned}\]
+Newton’s Second Law is the foundation for Classical Physics, in which we seek to quantitatively describe the motion of any object. The motion of an object is fully specified by its acceleration as long as we know the position and velocity at a specific point in time. That is, by knowing the position and velocity of the object at a point in time and its acceleration, we can describe its motion both in the future and in the in past; we call Classical Physics a deterministic theory (as opposed to, say, Quantum Mechanics, which would only tell us the probability that a particle would be at some particular position in the future). The right-hand side of Newton’s Second Law thus contains the kinematic description of the object; if we know the acceleration, we know everything about the motion of the object.
+The left-hand side of the equation contains all of the “dynamics” to describe the object; force is the tool that Newton introduced in order to be able to determine the acceleration of an object. Newton’s Second Law thus tells how to determine the kinematics of an object by using the concept of forces; it relates the dynamics to the kinematics. Having already covered kinematics, we will now focus on understanding dynamics and how to develop models that allow us to calculate the net force on an object. The inertial mass, \(m\) , is a specific property of an object that tells us how large an acceleration it will experience based on a given net force. Thus, objects with different masses will experience different accelerations if subject to the same net force.
+Exercise \(\PageIndex{1}\)
+Object 1 has twice the inertial mass of object 2. If both objects have the same acceleration vector.
+- The net force on both objects is the same.
+- The net force on object 1 is twice that on object 2.
+- The net force on object 1 is half of that on object 2.
+- Answer
+- B.
+Newton’s Third Law
+Newton’s Third Law relates the forces that two objects exert on each other. It is important to understand that the forces that are mentioned in the Newton’s Third Law are exerted on different objects. If object A exerts a force on object B, then object B will also exert a force on object A. The two forces have the same magnitude but opposite directions. Sometimes, the forces are called “action” and “reaction” forces, although this is misleading, because it makes it sound like the reaction force is “in response to” some voluntary action force. However, inanimate objects can exert forces, and so this can lead to needless confusion as to which force is the reaction force.
+It does not matter which force you choose to call the action (reaction) force. If a block is pushing down on a table (action force), then the table is pushing up on the block (reaction force). However, one could just as well say that the table is pushing up on the block (action force) so the block is pushing down on the table (reaction force). It does not matter which force you call the action force. This can be confusing, because if you choose to push on a wall (exerting an action force), then the wall exerts a force on you (the reaction force). If you choose not to push on the wall (exerting no force), then the wall does not exert the reaction force. This leads to people thinking that the reaction force is in response to an action force exerted by a sentient being, which is not the case. You can call the force that you choose to exert on the wall the reaction force and Newton’s Laws will still work just as well!
+Newton’s Third law often leads to confusion when Newton’s Second Law is applied. Recall that Newton’s Second Law involves the sum of the forces on a particular object (the “net force” on that object). The two forces that are mentioned in Newton’s Third Law are not exerted on the same object , so they would never appear together in the sum of the forces from Newton’s Second Law, and they never cancel each other.
+Exercise \(\PageIndex{3}\)
+You push a heavy block in the North direction. The block is twice as heavy as you are. Which statement is true?
+- The block exerts half of the force on you, in the North direction.
+- The block exerts the same force on you, but in the South direction.
+- The block exerts double of the force on you, in the South direction.
+- The block is inanimate and thus does not exert a force on you.
+- Answer
+- B.
 
-Figure 4.24 A traffic light is suspended from two wires. (b) Some of the forces involved. (c) Only forces acting on the system are shown here. The
-free-body diagram for the traffic light is also shown. (d) The forces projected onto vertical (y) and horizontal (x) axes. The horizontal components
-of the tensions must cancel, and the sum of the vertical components of the tensions must equal the weight of the traffic light. (e) The free-body
-diagram shows the vertical and horizontal forces acting on the traffic light.
-Strategy
-The system of interest is the traffic light, and its free-body diagram is shown in Figure 4.24(c). The three forces involved are
-not parallel, and so they must be projected onto a coordinate system. The most convenient coordinate system has one axis
-vertical and one horizontal, and the vector projections on it are shown in part (d) of the figure. There are two unknowns in
-this problem ( T1 and T2 ), so two equations are needed to find them. These two equations come from applying Newton’s
-second law along the vertical and horizontal axes, noting that the net external force is zero along each axis because
-acceleration is zero.
-Solution
-First consider the horizontal or x-axis:
-(4.67)
-Fnetx = T2x − T1x = 0.
-Thus, as you might expect,
-172
-Chapter 4 | Dynamics: Force and Newton's Laws of Motion
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
+## Match 2.42 — LibreTexts: 4.2: Newton's laws of motion
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://eng.libretexts.org/Bookshelves/Mechanical_Engineering/Introductory_Dynamics%3A_2D_Kinematics_and_Kinetics_of_Point_Masses_and_Rigid_Bodies_(Steeneken)/01%3A_Introduction/04%3A_Introduction_to_Dynamics/4.02%3A_Newton's_laws_of_motion
 
-(4.68)
-T1x = T2x.
-This gives us the following relationship between T1 and T2 :
-(4.69)
-T1 cos (30º) = T2 cos (45º).
-Thus,
-(4.70)
-T2 = (1.225)T1.
-Note that T1 and T2 are not equal in this case, because the angles on either side are not equal. It is reasonable that T2
-ends up being greater than T1 , because it is exerted more vertically than T1 .
-Now consider the force components along the vertical or y-axis:
-(4.71)
-Fnet y = T1y + T2y − w = 0.
-This implies
-(4.72)
-T1y + T2y = w.
-Substituting the expressions for the vertical components gives
-(4.73)
-T1 sin (30º) + T2 sin (45º) = w.
-There are two unknowns in this equation, but substituting the expression for T2 in terms of T1 reduces this to one
-equation with one unknown:
-(4.74)
-T1(0.500) + (1.225T1)(0.707) = w = mg,
-which yields
-(4.75)
-(1.366)T1 = (15.0 kg)(9.80 m/s2).
-Solving this last equation gives the magnitude of T1 to be
-(4.76)
-T1 = 108 N.
-Finally, the magnitude of T2 is determined using the relationship between them, T2 = 1.225 T1 , found above. Thus we
-obtain
-(4.77)
-T2 = 132 N.
-Discussion
-Both tensions would be larger if both wires were more horizontal, and they will be equal if and only if the angles on either
-side are the same (as they were in the earlier example of a tightrope walker).
-The bathroom scale is an excellent example of a normal force acting on a body. It provides a quantitative reading of how much it
-must push upward to support the weight of an object. But can you predict what you would see on the dial of a bathroom scale if
-you stood on it during an elevator ride? Will you see a value greater than your weight when the elevator starts up? What about
-when the elevator moves upward at a constant speed: will the scale still read more than your weight at rest? Consider the
-following example.
-Example 4.9 What Does the Bathroom Scale Read in an Elevator?
-Figure 4.25 shows a 75.0-kg man (weight of about 165 lb) standing on a bathroom scale in an elevator. Calculate the scale
-reading: (a) if the elevator accelerates upward at a rate of 1.20 m/s2 , and (b) if the elevator moves upward at a constant
-speed of 1 m/s.
-Chapter 4 | Dynamics: Force and Newton's Laws of Motion
-173
-
-Figure 4.25 (a) The various forces acting when a person stands on a bathroom scale in an elevator. The arrows are approximately correct for
-when the elevator is accelerating upward—broken arrows represent forces too large to be drawn to scale. T is the tension in the supporting
-cable, w is the weight of the person, ws is the weight of the scale, we is the weight of the elevator, Fs is the force of the scale on the
-person, Fp is the force of the person on the scale, Ft is the force of the scale on the floor of the elevator, and N is the force of the floor
-upward on the scale. (b) The free-body diagram shows only the external forces acting on the designated system of interest—the person.
-Strategy
-If the scale is accurate, its reading will equal Fp , the magnitude of the force the person exerts downward on it. Figure
-4.25(a) shows the numerous forces acting on the elevator, scale, and person. It makes this one-dimensional problem look
-much more formidable than if the person is chosen to be the system of interest and a free-body diagram is drawn as in
-Figure 4.25(b). Analysis of the free-body diagram using Newton’s laws can produce answers to both parts (a) and (b) of this
-example, as well as some other questions that might arise. The only forces acting on the person are his weight w and the
-upward force of the scale Fs . According to Newton’s third law Fp and Fs are equal in magnitude and opposite in
-direction, so that we need to find Fs in order to find what the scale reads. We can do this, as usual, by applying Newton’s
-second law,
-(4.78)
-Fnet = ma.
-From the free-body diagram we see that Fnet = Fs − w , so that
-(4.79)
-Fs − w = ma.
-Solving for Fs gives an equation with only one unknown:
-(4.80)
-Fs = ma + w,
-or, because w = mg , simply
-(4.81)
-Fs = ma + mg.
-No assumptions were made about the acceleration, and so this solution should be valid for a variety of accelerations in
-addition to the ones in this exercise.
-Solution for (a)
-174
-Chapter 4 | Dynamics: Force and Newton's Laws of Motion
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-In this part of the problem, a = 1.20 m/s2 , so that
-(4.82)
-Fs = (75.0 kg)(1.20 m/s2 ) + (75.0 kg)(9.80 m/s2),
-yielding
-(4.83)
-Fs = 825 N.
-Discussion for (a)
-This is about 185 lb. What would the scale have read if he were stationary? Since his acceleration would be zero, the force
-of the scale would be equal to his weight:
-(4.84)
-Fnet = ma = 0 = Fs − w
-Fs
-= w = mg
-Fs
-= (75.0 kg)(9.80 m/s2)
-Fs
-= 735 N.
-So, the scale reading in the elevator is greater than his 735-N (165 lb) weight. This means that the scale is pushing up on
-the person with a force greater than his weight, as it must in order to accelerate him upward. Clearly, the greater the
-acceleration of the elevator, the greater the scale reading, consistent with what you feel in rapidly accelerating versus slowly
-accelerating elevators.
-Solution for (b)
-Now, what happens when the elevator reaches a constant upward velocity? Will the scale still read more than his weight?
-For any constant velocity—up, down, or stationary—acceleration is zero because a = Δv
-Δt , and Δv = 0 .
-Thus,
-(4.85)
-Fs = ma + mg = 0 + mg.
-Now
-(4.86)
-Fs = (75.0 kg)(9.80 m/s2),
-which gives
-(4.87)
-Fs = 735 N.
-Discussion for (b)
-The scale reading is 735 N, which equals the person’s weight. This will be the case whenever the elevator has a constant
-velocity—moving up, moving down, or stationary.
-The solution to the previous example also applies to an elevator accelerating downward, as mentioned. When an elevator
-accelerates downward, a is negative, and the scale reading is less than the weight of the person, until a constant downward
-velocity is reached, at which time the scale reading again becomes equal to the person’s weight. If the elevator is in free-fall and
-accelerating downward at g , then the scale reading will be zero and the person will appear to be weightless.
-Integrating Concepts: Newton’s Laws of Motion and Kinematics
-Physics is most interesting and most powerful when applied to general situations that involve more than a narrow set of physical
-principles. Newton’s laws of motion can also be integrated with other concepts that have been discussed previously in this text to
-solve problems of motion. For example, forces produce accelerations, a topic of kinematics, and hence the relevance of earlier
-chapters. When approaching problems that involve various types of forces, acceleration, velocity, and/or position, use the
-following steps to approach the problem:
-Problem-Solving Strategy
-Step 1. Identify which physical principl
-
-## Match 2.39 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 4.7 Further Applications of Newton’s Laws of Motion
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Apply problem-solving techniques to solve for quantities in more complex systems of forces.
-•
-Integrate concepts from kinematics to solve problems using Newton's laws of motion.
-There are many interesting applications of Newton’s laws of motion, a few more of which are presented in this
-section. These serve also to illustrate some further subtleties of physics and to help build problem-solving skills.
-EXAMPLE 4.7
-Drag Force on a Barge
-Suppose two tugboats push on a barge at different angles, as shown in Figure 4.21. The first tugboat exerts a force
-of
-in the x-direction, and the second tugboat exerts a force of
-in the y-direction.
-FIGURE 4.21 (a) A view from above of two tugboats pushing on a barge. (b) The free-body diagram for the ship contains only forces acting
-in the plane of the water. It omits the two vertical forces—the weight of the barge and the buoyant force of the water supporting it cancel
-and are not shown. Since the applied forces are perpendicular, the x- and y-axes are in the same direction as
-and
-. The problem
-quickly becomes a one-dimensional problem along the direction of
-, since friction is in the direction opposite to
-.
-If the mass of the barge is
-and its acceleration is observed to be
-in the direction
-APPLYING NEWTON’S SECOND LAW
-Before you write net force equations, it is critical to determine whether the system is accelerating in a particular
-direction. If the acceleration is zero in a particular direction, then the net force is zero in that direction. Similarly,
-if the acceleration is nonzero in a particular direction, then the net force is described by the equation:
-.
-For example, if the system is accelerating in the horizontal direction, but it is not accelerating in the vertical
-direction, then you will have the following conclusions:
-You will need this information in order to determine unknown forces acting in a system.
-4.57
-4.58
-180
-4 • Dynamics: Force and Newton's Laws of Motion
-Access for free at openstax.org
-
-shown, what is the drag force of the water on the barge resisting the motion? (Note: drag force is a frictional force
-exerted by fluids, such as air or water. The drag force opposes the motion of the object.)
-Strategy
-The directions and magnitudes of acceleration and the applied forces are given in Figure 4.21(a). We will define the
-total force of the tugboats on the barge as
-so that:
-Since the barge is flat bottomed, the drag of the water
-will be in the direction opposite to
-, as shown in the
-free-body diagram in Figure 4.21(b). The system of interest here is the barge, since the forces on it are given as well
-as its acceleration. Our strategy is to find the magnitude and direction of the net applied force
-, and then apply
-Newton’s second law to solve for the drag force
-.
-Solution
-Since
-and
-are perpendicular, the magnitude and direction of
-are easily found. First, the resultant
-magnitude is given by the Pythagorean theorem:
-The angle is given by
-which we know, because of Newton’s first law, is the same direction as the acceleration.
-is in the opposite
-direction of
-, since it acts to slow down the acceleration. Therefore, the net external force is in the same
-direction as
-, but its magnitude is slightly less than
-. The problem is now one-dimensional. From Figure
-4.21(b), we can see that
-But Newton’s second law states that
-Thus,
-This can be solved for the magnitude of the drag force of the water
-in terms of known quantities:
-Substituting known values gives
-The direction of
-has already been determined to be in the direction opposite to
-, or at an angle of
-south
-of west.
-Discussion
-The numbers used in this example are reasonable for a moderately large barge. It is certainly difficult to obtain
-larger accelerations with tugboats, and small speeds are desirable to avoid running the barge into the docks. Drag is
-relatively small for a well-designed hull at low speeds, consistent with the answer to this example, where
-is less
-than 1/600th of the weight of the ship.
-4.59
-4.60
-4.61
-4.62
-4.63
-4.64
-4.65
-4.66
-4.7 • Further Applications of Newton’s Laws of Motion
-181
-
-In the earlier example of a tightrope walker we noted that the tensions in wires supporting a mass were equal only
-because the angles on either side were equal. Consider the following example, where the angles are not equal;
-slightly more trigonometry is involved.
-EXAMPLE 4.8
-Different Tensions at Different Angles
-Consider the traffic light (mass 15.0 kg) suspended from two wires as shown in Figure 4.22. Find the tension in each
-wire, neglecting the masses of the wires.
-FIGURE 4.22 A traffic light is suspended from two wires. (b) Some of the forces involved. (c) Only forces acting on the system are shown
-here. The free-body diagram for the traffic light is also shown. (d) The forces projected onto vertical (y) and horizontal (x) axes. The
-horizontal components of the tensions must cancel, and the sum of the vertical components of the tensions must equal the weight of the
-traffic light. (e) The free-body diagram shows the vertical and horizontal forces acting on the traffic light.
-182
-4 • Dynamics: Force and Newton's Laws of Motion
-Access for free at openstax.org
-
-Strategy
-The system of interest is the traffic light, and its free-body diagram is shown in Figure 4.22(c). The three forces
-involved are not parallel, and so they must be projected onto a coordinate system. The most convenient coordinate
-system has one axis vertical and one horizontal, and the vector projections on it are shown in part (d) of the figure.
-There are two unknowns in this problem (
-and
-), so two equations are needed to find them. These two
-equations come from applying Newton’s second law along the vertical and horizontal axes, noting that the net
-external force is zero along each axis because acceleration is zero.
-Solution
-First consider the horizontal or x-axis:
-Thus, as you might expect,
-This gives us the following relationship between
-and
-:
-Thus,
-Note that
-and
-are not equal in this case, because the angles on either side are not equal. It is reasonable that
-ends up being greater than
-, because it is exerted more vertically than
-.
-Now consider the force components along the vertical or y-axis:
-This implies
-Substituting the expressions for the vertical components gives
-There are two unknowns in this equation, but substituting the expression for
-in terms of
-reduces this to one
-equation with one unknown:
-which yields
-Solving this last equation gives the magnitude of
-to be
-Finally, the magnitude of
-is determined using the relationship between them,
-= 1.225
-, found above. Thus
-we obtain
-Discussion
-Both tensions would be larger if both wires were more horizontal, and they will be equal if and only if the angles on
-either side are the same (as they were in the earlier example of a tightrope walker).
-The bathroom scale is an excellent example of a normal force acting on a body. It provides a quantitative reading of
-how much it must push upward to support the weight of an object. But can you predict what you would see on the
-4.67
-4.68
-4.69
-4.70
-4.71
-4.72
-4.73
-4.74
-4.75
-4.76
-4.77
-4.7 • Further Applications of Newton’s Laws of Motion
-183
-
-dial of a bathroom scale if you stood on it during an elevator ride? Will you see a value greater than your weight
-when the elevator starts up? What about when the elevator moves upward at a constant speed: will the scale still
-read more than your weight at rest? Consider the following example.
-EXAMPLE 4.9
-What Does the Bathroom Scale Read in an Elevator?
-Figure 4.23 shows a 75.0-kg man (weight of about 165 lb) standing on a bathroom scale in an elevator. Calculate the
-scale reading: (a) if the elevator accelerates upward at a rate of
-, and (b) if the elevator moves upward at a
-constant speed of 1 m/s.
-FIGURE 4.23 (a) The various forces acting when a person stands on a bathroom scale in an elevator. The arrows are approximately correct
-for when the elevator is accelerating upward—broken arrows represent forces too large to be drawn to scale.
-is the weight of the scale,
-is the weight of the elevator,
-is the force of the scale on the person,
-is the force of the person on the scale,
-is the force of the
-scale on the floor of the elevator, and
-is the force of the floor upward on the scale. (b) The free-body diagram shows only the external
-forces acting on the designated system of interest—the person.
-Strategy
-If the scale is accurate, its reading will equal
-, the magnitude of the force the person exerts downward on it.
-Figure 4.23(a) shows the numerous forces acting on the elevator, scale, and person. It makes this one-dimensional
-problem look much more formidable than if the person is chosen to be the system of interest and a free-body
-diagram is drawn as in Figure 4.23(b). Analysis of the free-body diagram using Newton’s laws can produce answers
-to both parts (a) and (b) of this example, as well as some other questions that might arise. The only forces acting on
-the person are his weight
-and the upward force of the scale
-. According to Newton’s third law
-and
-are
-equal in magnitude and opposite in direction, so that we need to find
-in order to find what the scale reads. We
-can do this, as usual, by applying Newton’s second law,
-From the free-body diagram we see that
-, so that
-4.78
-184
-4 • Dynamics: Force and Newton's Laws of Motion
-Access for free at openstax.org
-
-Solving for
-gives an equation with only one unknown:
-or, because
-, simply
-No assumptions were made about the acceleration, and so this solution should be valid for a variety of accelerations
-in addition to the ones in this exercise.
-Solution for (a)
-In this part of the problem,
-, so that
-yielding
-Discussion for (a)
-This is about 185 lb. What would the scale have read if he were stationary? Since his acceleration would be zero, the
-force of the scale would be equal to his weight:
-So, the scale reading in the elevator is greater than his 735-N (165 lb) weight. This means that the scale is pushing
-up on the person with a force greater than his weight, as it must in order to accelerate him upward. Clearly, the
-greater the acceleration of the elevator, the greater the scale reading, consistent with what you feel in rapidly
-accelerating versus slowly accelerating elevators.
-Solution for (b)
-Now, what happens when the elevator reaches a constant upward velocity? Will the scale still read more than his
-weight? For any constant velocity—up, down, or stationary—acceleration is zero because
-, and
-.
-Thus,
-Now
-which gives
-Discussion for (b)
-The scale reading is 735 N, which equals the person’s weight. This will be the case whenever the elevator has a
-constant velocity—moving up, moving down, or stationary.
-The solution to the previous example also applies to an elevator accelerating downward, as mentioned. When an
-elevator accelerates downward,
-is negative, and the scale reading is less than the weight of the person, until a
-constant downward velocity is reached, at which time the scale reading again becomes equal to the person’s weight.
-If the elevator is in free-fall and accelerating downward at
-, then the scale reading will be zero and the person will
-appear to be weightless.
-4.79
-4.80
-4.81
-4.82
-4.83
-4.84
-4.85
-4.86
-4.87
-4.7 • Further Applications of Newton’s Laws of Motion
-185
-
-Integrating Concepts: Newton’s Laws of Motion and Kinematics
-Physics is most interesting and most powerful when applied to general situations that involve more than a narrow
-set of physical principles. Newton’s laws of motion can also be integrated with other concepts that have been
-discussed previously in this text to solve problems of motion. For example, forces produce accelerations, a topic of
-kinematics, and hence the relevance of earlier chapters. When approaching problems that involve various types of
-forces, acceleration, velocity, and/or position, use the following steps to approach the problem:
-Problem-Solving Strategy
-Step 1. Identify which physical principles are involved. Listing the givens and the quantities to be calculated will
-allow you to identify the principles involved.
-Step 2. Solve the problem using strategies outlined in the text. If these are available for the specific topic, you
-should refer to them. You should also refer to the sections of the text that deal with a particular topic. The following
-worked example illustrates how these strategies are applied to an integrated concept problem.
-EXAMPLE 4.10
-What Force Must a Soccer Player Exert to Reach Top Speed?
-A soccer player starts from rest and accelerates forward, reaching a velocity of 8.00 m/s in 2.50 s. (a) What was his
-average acceleration? (b) What average force did he exert backward on the ground to achieve this acceleration? The
-player’s mass is 70.0 kg, and air resistance is negligible.
-Strategy
-1.
-To solve an integrated concept problem, we must first identify the physical principles involved and identify the
-chapters in which they are found. Part (a) of this example considers acceleration along a straight line. This is a
-topic of kinematics. Part (b) deals with force, a topic of dynamics found in this chapter.
-2.
-The following solutions to each part of the example illustrate how the specific problem-solving strategies are
-applied. These involve identifying knowns and unknowns, checking to see if the answer is reasonable, and so
-forth.
-Solution for (a)
-We are given the initial and final velocities (zero and 8.00 m/s forward); thus, the change in velocity is
-. We are given the elapsed time, and so
-. The unknown is acceleration, which can be
-found from its definition:
-Substituting the known values yields
-Discussion for (a)
-This is an attainable acceleration for an athlete in good condition.
-Solution for (b)
-Here we are asked to find the average force the player exerts backward to achieve this forward acceleration.
-Neglecting air resistance, this would be equal in magnitude to the net external force on the player, since this force
-causes his acceleration. Since we now know
-
-## Match 2.39 — College_Physics_2e-WEB_7Zesafu § 4.7 Further Applications of Newton’s Laws of Motion
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Apply problem-solving techniques to solve for quantities in more complex systems of forces.
-•
-Integrate concepts from kinematics to solve problems using Newton's laws of motion.
-There are many interesting applications of Newton’s laws of motion, a few more of which are presented in this
-section. These serve also to illustrate some further subtleties of physics and to help build problem-solving skills.
-EXAMPLE 4.7
-Drag Force on a Barge
-Suppose two tugboats push on a barge at different angles, as shown in Figure 4.21. The first tugboat exerts a force
-of
-in the x-direction, and the second tugboat exerts a force of
-in the y-direction.
-FIGURE 4.21 (a) A view from above of two tugboats pushing on a barge. (b) The free-body diagram for the ship contains only forces acting
-in the plane of the water. It omits the two vertical forces—the weight of the barge and the buoyant force of the water supporting it cancel
-and are not shown. Since the applied forces are perpendicular, the x- and y-axes are in the same direction as
-and
-. The problem
-quickly becomes a one-dimensional problem along the direction of
-, since friction is in the direction opposite to
-.
-If the mass of the barge is
-and its acceleration is observed to be
-in the direction
-Applying Newton’s Second Law
-Before you write net force equations, it is critical to determine whether the system is accelerating in a particular
-direction. If the acceleration is zero in a particular direction, then the net force is zero in that direction. Similarly,
-if the acceleration is nonzero in a particular direction, then the net force is described by the equation:
-.
-For example, if the system is accelerating in the horizontal direction, but it is not accelerating in the vertical
-direction, then you will have the following conclusions:
-You will need this information in order to determine unknown forces acting in a system.
-4.57
-4.58
-172
-4 • Dynamics: Force and Newton's Laws of Motion
-Access for free at openstax.org
-
-shown, what is the drag force of the water on the barge resisting the motion? (Note: drag force is a frictional force
-exerted by fluids, such as air or water. The drag force opposes the motion of the object.)
-Strategy
-The directions and magnitudes of acceleration and the applied forces are given in Figure 4.21(a). We will define the
-total force of the tugboats on the barge as
-so that:
-Since the barge is flat bottomed, the drag of the water
-will be in the direction opposite to
-, as shown in the
-free-body diagram in Figure 4.21(b). The system of interest here is the barge, since the forces on it are given as well
-as its acceleration. Our strategy is to find the magnitude and direction of the net applied force
-, and then apply
-Newton’s second law to solve for the drag force
-.
-Solution
-Since
-and
-are perpendicular, the magnitude and direction of
-are easily found. First, the resultant
-magnitude is given by the Pythagorean theorem:
-The angle is given by
-which we know, because of Newton’s first law, is the same direction as the acceleration.
-is in the opposite
-direction of
-, since it acts to slow down the acceleration. Therefore, the net external force is in the same
-direction as
-, but its magnitude is slightly less than
-. The problem is now one-dimensional. From Figure
-4.21(b), we can see that
-But Newton’s second law states that
-Thus,
-This can be solved for the magnitude of the drag force of the water
-in terms of known quantities:
-Substituting known values gives
-The direction of
-has already been determined to be in the direction opposite to
-, or at an angle of
-south
-of west.
-Discussion
-The numbers used in this example are reasonable for a moderately large barge. It is certainly difficult to obtain
-larger accelerations with tugboats, and small speeds are desirable to avoid running the barge into the docks. Drag is
-relatively small for a well-designed hull at low speeds, consistent with the answer to this example, where
-is less
-than 1/600th of the weight of the ship.
-4.59
-4.60
-4.61
-4.62
-4.63
-4.64
-4.65
-4.66
-4.7 • Further Applications of Newton’s Laws of Motion
-173
-
-In the earlier example of a tightrope walker we noted that the tensions in wires supporting a mass were equal only
-because the angles on either side were equal. Consider the following example, where the angles are not equal;
-slightly more trigonometry is involved.
-EXAMPLE 4.8
-Different Tensions at Different Angles
-Consider the traffic light (mass 15.0 kg) suspended from two wires as shown in Figure 4.22. Find the tension in each
-wire, neglecting the masses of the wires.
-FIGURE 4.22 A traffic light is suspended from two wires. (b) Some of the forces involved. (c) Only forces acting on the system are shown
-here. The free-body diagram for the traffic light is also shown. (d) The forces projected onto vertical (y) and horizontal (x) axes. The
-horizontal components of the tensions must cancel, and the sum of the vertical components of the tensions must equal the weight of the
-traffic light. (e) The free-body diagram shows the vertical and horizontal forces acting on the traffic light.
-174
-4 • Dynamics: Force and Newton's Laws of Motion
-Access for free at openstax.org
-
-Strategy
-The system of interest is the traffic light, and its free-body diagram is shown in Figure 4.22(c). The three forces
-involved are not parallel, and so they must be projected onto a coordinate system. The most convenient coordinate
-system has one axis vertical and one horizontal, and the vector projections on it are shown in part (d) of the figure.
-There are two unknowns in this problem (
-and
-), so two equations are needed to find them. These two
-equations come from applying Newton’s second law along the vertical and horizontal axes, noting that the net
-external force is zero along each axis because acceleration is zero.
-Solution
-First consider the horizontal or x-axis:
-Thus, as you might expect,
-This gives us the following relationship between
-and
-:
-Thus,
-Note that
-and
-are not equal in this case, because the angles on either side are not equal. It is reasonable that
-ends up being greater than
-, because it is exerted more vertically than
-.
-Now consider the force components along the vertical or y-axis:
-This implies
-Substituting the expressions for the vertical components gives
-There are two unknowns in this equation, but substituting the expression for
-in terms of
-reduces this to one
-equation with one unknown:
-which yields
-Solving this last equation gives the magnitude of
-to be
-Finally, the magnitude of
-is determined using the relationship between them,
-= 1.225
-, found above. Thus
-we obtain
-Discussion
-Both tensions would be larger if both wires were more horizontal, and they will be equal if and only if the angles on
-either side are the same (as they were in the earlier example of a tightrope walker).
-The bathroom scale is an excellent example of a normal force acting on a body. It provides a quantitative reading of
-how much it must push upward to support the weight of an object. But can you predict what you would see on the
-4.67
-4.68
-4.69
-4.70
-4.71
-4.72
-4.73
-4.74
-4.75
-4.76
-4.77
-4.7 • Further Applications of Newton’s Laws of Motion
-175
-
-dial of a bathroom scale if you stood on it during an elevator ride? Will you see a value greater than your weight
-when the elevator starts up? What about when the elevator moves upward at a constant speed: will the scale still
-read more than your weight at rest? Consider the following example.
-EXAMPLE 4.9
-What Does the Bathroom Scale Read in an Elevator?
-Figure 4.23 shows a 75.0-kg man (weight of about 165 lb) standing on a bathroom scale in an elevator. Calculate the
-scale reading: (a) if the elevator accelerates upward at a rate of
-, and (b) if the elevator moves upward at a
-constant speed of 1 m/s.
-FIGURE 4.23 (a) The various forces acting when a person stands on a bathroom scale in an elevator. The arrows are approximately correct
-for when the elevator is accelerating upward—broken arrows represent forces too large to be drawn to scale.
-is the weight of the scale,
-is the weight of the elevator,
-is the force of the scale on the person,
-is the force of the person on the scale,
-is the force of the
-scale on the floor of the elevator, and
-is the force of the floor upward on the scale. (b) The free-body diagram shows only the external
-forces acting on the designated system of interest—the person.
-Strategy
-If the scale is accurate, its reading will equal
-, the magnitude of the force the person exerts downward on it.
-Figure 4.23(a) shows the numerous forces acting on the elevator, scale, and person. It makes this one-dimensional
-problem look much more formidable than if the person is chosen to be the system of interest and a free-body
-diagram is drawn as in Figure 4.23(b). Analysis of the free-body diagram using Newton’s laws can produce answers
-to both parts (a) and (b) of this example, as well as some other questions that might arise. The only forces acting on
-the person are his weight
-and the upward force of the scale
-. According to Newton’s third law
-and
-are
-equal in magnitude and opposite in direction, so that we need to find
-in order to find what the scale reads. We
-can do this, as usual, by applying Newton’s second law,
-From the free-body diagram we see that
-, so that
-4.78
-176
-4 • Dynamics: Force and Newton's Laws of Motion
-Access for free at openstax.org
-
-Solving for
-gives an equation with only one unknown:
-or, because
-, simply
-No assumptions were made about the acceleration, and so this solution should be valid for a variety of accelerations
-in addition to the ones in this exercise.
-Solution for (a)
-In this part of the problem,
-, so that
-yielding
-Discussion for (a)
-This is about 185 lb. What would the scale have read if he were stationary? Since his acceleration would be zero, the
-force of the scale would be equal to his weight:
-So, the scale reading in the elevator is greater than his 735-N (165 lb) weight. This means that the scale is pushing
-up on the person with a force greater than his weight, as it must in order to accelerate him upward. Clearly, the
-greater the acceleration of the elevator, the greater the scale reading, consistent with what you feel in rapidly
-accelerating versus slowly accelerating elevators.
-Solution for (b)
-Now, what happens when the elevator reaches a constant upward velocity? Will the scale still read more than his
-weight? For any constant velocity—up, down, or stationary—acceleration is zero because
-, and
-.
-Thus,
-Now
-which gives
-Discussion for (b)
-The scale reading is 735 N, which equals the person’s weight. This will be the case whenever the elevator has a
-constant velocity—moving up, moving down, or stationary.
-The solution to the previous example also applies to an elevator accelerating downward, as mentioned. When an
-elevator accelerates downward,
-is negative, and the scale reading is less than the weight of the person, until a
-constant downward velocity is reached, at which time the scale reading again becomes equal to the person’s weight.
-If the elevator is in free-fall and accelerating downward at
-, then the scale reading will be zero and the person will
-appear to be weightless.
-4.79
-4.80
-4.81
-4.82
-4.83
-4.84
-4.85
-4.86
-4.87
-4.7 • Further Applications of Newton’s Laws of Motion
-177
-
-Integrating Concepts: Newton’s Laws of Motion and Kinematics
-Physics is most interesting and most powerful when applied to general situations that involve more than a narrow
-set of physical principles. Newton’s laws of motion can also be integrated with other concepts that have been
-discussed previously in this text to solve problems of motion. For example, forces produce accelerations, a topic of
-kinematics, and hence the relevance of earlier chapters. When approaching problems that involve various types of
-forces, acceleration, velocity, and/or position, use the following steps to approach the problem:
-Problem-Solving Strategy
-Step 1. Identify which physical principles are involved. Listing the givens and the quantities to be calculated will
-allow you to identify the principles involved.
-Step 2. Solve the problem using strategies outlined in the text. If these are available for the specific topic, you
-should refer to them. You should also refer to the sections of the text that deal with a particular topic. The following
-worked example illustrates how these strategies are applied to an integrated concept problem.
-EXAMPLE 4.10
-What Force Must a Soccer Player Exert to Reach Top Speed?
-A soccer player starts from rest and accelerates forward, reaching a velocity of 8.00 m/s in 2.50 s. (a) What was his
-average acceleration? (b) What average force did he exert backward on the ground to achieve this acceleration? The
-player’s mass is 70.0 kg, and air resistance is negligible.
-Strategy
-1.
-To solve an integrated concept problem, we must first identify the physical principles involved and identify the
-chapters in which they are found. Part (a) of this example considers acceleration along a straight line. This is a
-topic of kinematics. Part (b) deals with force, a topic of dynamics found in this chapter.
-2.
-The following solutions to each part of the example illustrate how the specific problem-solving strategies are
-applied. These involve identifying knowns and unknowns, checking to see if the answer is reasonable, and so
-forth.
-Solution for (a)
-We are given the initial and final velocities (zero and 8.00 m/s forward); thus, the change in velocity is
-. We are given the elapsed time, and so
-. The unknown is acceleration, which can be
-found from its definition:
-Substituting the known values yields
-Discussion for (a)
-This is an attainable acceleration for an athlete in good condition.
-Solution for (b)
-Here we are asked to find the average force the player exerts backward to achieve this forward acceleration.
-Neglecting air resistance, this would be equal in magnitude to the net external force on the player, since this force
-causes his acceleration. Since we now know
+4.2: Newton's laws of motion
+In his Principia Newton introduced three laws of motion that can mathematically be expressed in vector format as follows:
+\[\begin{align} & \text { 1. If } \sum_{j} \overrightarrow{\boldsymbol{F}}_{i j}=\overrightarrow{\mathbf{0}} \text { then } \overrightarrow{\boldsymbol{a}}_{i}=\overrightarrow{\mathbf{0}} \tag{4.1} \label{4.1}\\[4pt] & \text { 2. } \sum_{j} \overrightarrow{\boldsymbol{F}}_{i j}=m_{i} \overrightarrow{\boldsymbol{a}}_{i} \tag{4.2} \label{4.2}\\[4pt] & \text { 3. } \overrightarrow{\boldsymbol{F}}_{i j}=-\overrightarrow{\boldsymbol{F}}_{j i} \tag{4.3} \label{4.3}\end{align}\]
+These equations and the variables will be explained and defined in more detail in the next two chapters. It can be seen that Newton’s first law is a direct consequence of Newton’s second law when setting \(\sum \overrightarrow{\boldsymbol{F}}_{i j}=\overrightarrow{\mathbf{0}}\). Newton’s third law (action=-reaction), describes a property of all known fundamental forces of nature, which states that for every force \(\overrightarrow{\boldsymbol{F}}_{i j}\) that acts on point mass \(i\) there is another collinear force \(\overrightarrow{\boldsymbol{F}}_{j i}\) that acts on another point mass \(j\) with equal magnitude and opposite direction. In other words if point mass \(j\) generates a force \(\overrightarrow{\boldsymbol{F}}_{i j}\) on object \(i\), then point mass \(i\) generates a force \(\overrightarrow{\boldsymbol{F}}_{j i}=-\overrightarrow{\boldsymbol{F}}_{i j}\) on point
+mass \(j\). The points of action of both forces coincide with the positions of the corresponding point masses. The first and third laws should be familiar if you followed a course in statics. Newton’s second law \(\sum \overrightarrow{\boldsymbol{F}}=m \overrightarrow{\boldsymbol{a}}\) is the essential equation in dynamics.
+Note. Newton’s laws are strictly only valid for objects that are point masses, which are so small that they can be described by a single point (position vector) in space. By applying Newton’s laws to each point mass in an object or system that consists of many point masses, new laws can be derived for these larger systems. Much of this textbook is dedicated to deriving and discussing these new laws and using them to analyse more complex dynamical systems, like rigid bodies.

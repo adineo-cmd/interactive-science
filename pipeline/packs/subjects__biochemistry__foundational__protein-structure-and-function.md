@@ -1,779 +1,150 @@
 # Source pack — subjects/biochemistry/foundational/protein-structure-and-function
 Lesson title: Protein Structure and Function
 Level: foundational
-Match confidence: 2.38
+Match confidence: 2.41
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.38 — Microbiology-WEB § 10.3 Structure and Function of RNA
+## Match 2.41 — LibreTexts: 23.4C: Protein Structure
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://med.libretexts.org/Bookshelves/Anatomy_and_Physiology/Anatomy_and_Physiology_(Boundless)/23%3A_Nutrition_and_Metabolism/23.4%3A_Proteins/23.4C%3A_Protein_Structure
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Describe the biochemical structure of ribonucleotides
-•
-Describe the similarities and differences between RNA and DNA
-•
-Describe the functions of the three main types of RNA used in protein synthesis
-•
-Explain how RNA can serve as hereditary information
-Structurally speaking, ribonucleic acid (RNA), is quite similar to DNA. However, whereas DNA molecules are
-typically long and double stranded, RNA molecules are much shorter and are typically single stranded. RNA
-molecules perform a variety of roles in the cell but are mainly involved in the process of protein synthesis
-(translation) and its regulation.
-RNA Structure
-RNA is typically single stranded and is made of ribonucleotides that are linked by phosphodiester bonds. A
-ribonucleotide in the RNA chain contains ribose (the pentose sugar), one of the four nitrogenous bases (A, U, G,
-and C), and a phosphate group. The subtle structural difference between the sugars gives DNA added stability,
-making DNA more suitable for storage of genetic information, whereas the relative instability of RNA makes it
-more suitable for its more short-term functions. The RNA-specific pyrimidine uracil forms a complementary
-base pair with adenine and is used instead of the thymine used in DNA. Even though RNA is single stranded,
-most types of RNA molecules show extensive intramolecular base pairing between complementary sequences
-within the RNA strand, creating a predictable three-dimensional structure essential for their function (Figure
-10.20 and Figure 10.21).
-Figure 10.20
-(a) Ribonucleotides contain the pentose sugar ribose instead of the deoxyribose found in deoxyribonucleotides. (b) RNA
-contains the pyrimidine uracil in place of thymine found in DNA.
-drink lots of fluids to replace what he was losing and discharged him from the hospital.
-ETEC produces several plasmid-encoded virulence factors that make it pathogenic compared with typical
-E. coli. These include the secreted toxins heat-labile enterotoxin (LT) and heat-stabile enterotoxin (ST), as
-well as colonization factor (CF). Both LT and ST cause the excretion of chloride ions from intestinal cells to
-the intestinal lumen, causing a consequent loss of water from intestinal cells, resulting in diarrhea. CF
-encodes a bacterial protein that aids in allowing the bacterium to adhere to the lining of the small intestine.
-•
-Why did Alex’s physician use genetic analysis instead of either isolation of bacteria from the stool
-sample or direct Gram stain of the stool sample alone?
-Jump to the next Clinical Focus box. Go back to the previous Clinical Focus box.
-10.3 • Structure and Function of RNA
-389
+23.4C: Protein Structure
+Each successive level of protein folding ultimately contributes to its shape and therefore its function.
+- Summarize the four levels of protein structure
+Key Points
+- Protein structure depends on its amino acid sequence and local, low-energy chemical bonds between atoms in both the polypeptide backbone and in amino acid side chains.
+- Protein structure plays a key role in its function; if a protein loses its shape at any structural level, it may no longer be functional.
+- Primary structure is the amino acid sequence.
+- Secondary structure is local interactions between stretches of a polypeptide chain and includes α-helix and β-pleated sheet structures.
+- Tertiary structure is the overall the three-dimension folding driven largely by interactions between R groups.
+- Quarternary structures is the orientation and arrangement of subunits in a multi-subunit protein.
+Key Terms
+- antiparallel : The nature of the opposite orientations of the two strands of DNA or two beta strands that comprise a protein’s secondary structure
+- disulfide bond : A bond, consisting of a covalent bond between two sulfur atoms, formed by the reaction of two thiol groups, especially between the thiol groups of two proteins
+- β-pleated sheet : secondary structure of proteins where N-H groups in the backbone of one fully-extended strand establish hydrogen bonds with C=O groups in the backbone of an adjacent fully-extended strand
+- α-helix : secondary structure of proteins where every backbone N-H creates a hydrogen bond with the C=O group of the amino acid four residues earlier in the same helix.
+The shape of a protein is critical to its function because it determines whether the protein can interact with other molecules. Protein structures are very complex, and researchers have only very recently been able to easily and quickly determine the structure of complete proteins down to the atomic level. (The techniques used date back to the 1950s, but until recently they were very slow and laborious to use, so complete protein structures were very slow to be solved.) Early structural biochemists conceptually divided protein structures into four “levels” to make it easier to get a handle on the complexity of the overall structures. To determine how the protein gets its final shape or conformation, we need to understand these four levels of protein structure: primary, secondary, tertiary, and quaternary.
+Primary Structure
+A protein’s primary structure is the unique sequence of amino acids in each polypeptide chain that makes up the protein. Really, this is just a list of which amino acids appear in which order in a polypeptide chain, not really a structure. But, because the final protein structure ultimately depends on this sequence, this was called the primary structure of the polypeptide chain. For example, the pancreatic hormone insulin has two polypeptide chains, A and B.
+Primary structure : The A chain of insulin is 21 amino acids long and the B chain is 30 amino acids long, and each sequence is unique to the insulin protein.
+The gene, or sequence of DNA, ultimately determines the unique sequence of amino acids in each peptide chain. A change in nucleotide sequence of the gene’s coding region may lead to a different amino acid being added to the growing polypeptide chain, causing a change in protein structure and therefore function.
+Sickle cell disease : Sickle cells are crescent shaped, while normal cells are disc-shaped.
+The oxygen-transport protein hemoglobin consists of four polypeptide chains, two identical α chains and two identical β chains. In sickle cell anemia, a single amino substitution in the hemoglobin β chain causes a change the structure of the entire protein. When the amino acid glutamic acid is replaced by valine in the β chain, the polypeptide folds into an slightly-different shape that creates a dysfunctional hemoglobin protein. So, just one amino acid substitution can cause dramatic changes. These dysfunctional hemoglobin proteins, under low-oxygen conditions, start associating with one another, forming long fibers made from millions of aggregated hemoglobins that distort the red blood cells into crescent or “sickle” shapes, which clog arteries. People affected by the disease often experience breathlessness, dizziness, headaches, and abdominal pain.
+Secondary Structure
+A protein’s secondary structure is whatever regular structures arise from interactions between neighboring or near-by amino acids as the polypeptide starts to fold into its functional three-dimensional form. Secondary structures arise as H bonds form between local groups of amino acids in a region of the polypeptide chain. Rarely does a single secondary structure extend throughout the polypeptide chain. It is usually just in a section of the chain. The most common forms of secondary structure are the α-helix and β-pleated sheet structures and they play an important structural role in most globular and fibrous proteins.
+Secondary structure : The α-helix and β-pleated sheet form because of hydrogen bonding between carbonyl and amino groups in the peptide backbone. Certain amino acids have a propensity to form an α-helix, while others have a propensity to form a β-pleated sheet.
+In the α-helix chain, the hydrogen bond forms between the oxygen atom in the polypeptide backbone carbonyl group in one amino acid and the hydrogen atom in the polypeptide backbone amino group of another amino acid that is four amino acids farther along the chain. This holds the stretch of amino acids in a right-handed coil. Every helical turn in an alpha helix has 3.6 amino acid residues. The R groups (the side chains) of the polypeptide protrude out from the α-helix chain and are not involved in the H bonds that maintain the α-helix structure.
+In β-pleated sheets, stretches of amino acids are held in an almost fully-extended conformation that “pleats” or zig-zags due to the non-linear nature of single C-C and C-N covalent bonds. β-pleated sheets never occur alone. They have to held in place by other β-pleated sheets. The stretches of amino acids in β-pleated sheets are held in their pleated sheet structure because hydrogen bonds form between the oxygen atom in a polypeptide backbone carbonyl group of one β-pleated sheet and the hydrogen atom in a polypeptide backbone amino group of another β-pleated sheet. The β-pleated sheets which hold each other together align parallel or antiparallel to each other. The R groups of the amino acids in a β-pleated sheet point out perpendicular to the hydrogen bonds holding the β-pleated sheets together, and are not involved in maintaining the β-pleated sheet structure.
+Tertiary Structure
+The tertiary structure of a polypeptide chain is its overall three-dimensional shape, once all the secondary structure elements have folded together among each other. Interactions between polar, nonpolar, acidic, and basic R group within the polypeptide chain create the complex three-dimensional tertiary structure of a protein. When protein folding takes place in the aqueous environment of the body, the hydrophobic R groups of nonpolar amino acids mostly lie in the interior of the protein, while the hydrophilic R groups lie mostly on the outside. Cysteine side chains form disulfide linkages in the presence of oxygen, the only covalent bond forming during protein folding. All of these interactions, weak and strong, determine the final three-dimensional shape of the protein. When a protein loses its three-dimensional shape, it will no longer be functional.
+Tertiary structure : The tertiary structure of proteins is determined by hydrophobic interactions, ionic bonding, hydrogen bonding, and disulfide linkages.
+Quaternary Structure
+The quaternary structure of a protein is how its subunits are oriented and arranged with respect to one another. As a result, quaternary structure only applies to multi-subunit proteins; that is, proteins made from more than one polypeptide chain. Proteins made from a single polypeptide will not have a quaternary structure.
+In proteins with more than one subunit, weak interactions between the subunits help to stabilize the overall structure. Enzymes often play key roles in bonding subunits to form the final, functioning protein.
+For example, insulin is a ball-shaped, globular protein that contains both hydrogen bonds and disulfide bonds that hold its two polypeptide chains together. Silk is a fibrous protein that results from hydrogen bonding between different β-pleated chains.
+Four levels of protein structure : The four levels of protein structure can be observed in these illustrations.
+LICENSES AND ATTRIBUTIONS
+CC LICENSED CONTENT, SHARED PREVIOUSLY
+- Curation and Revision. Authored by : Boundless.com. Provided by : Boundless.com. License : CC BY-SA: Attribution-ShareAlike
+CC LICENSED CONTENT, SPECIFIC ATTRIBUTION
+- amino acid. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/amino_acid . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Biology. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44402/latest...ol11448/latest . License : CC BY: Attribution
+- Proteins. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Proteins . License : CC BY-SA: Attribution-ShareAlike
+- Structural Biochemistry/Proteins/Amino Acids. Provided by : Wikibooks. Located at : en.wikibooks.org/wiki/Structu...ns/Amino_Acids . License : CC BY-SA: Attribution-ShareAlike
+- catalyze. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/catalyze . License : CC BY-SA: Attribution-ShareAlike
+- polypeptide. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/polypeptide . License : CC BY-SA: Attribution-ShareAlike
+- BPAE cells | Flickr - Photo Sharing!. Provided by : Flickr. Located at : http://www.flickr.com/photos/6345024...-dtyzGH-duUj14 . License : CC BY: Attribution
+- 1GZX Haemoglobin. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:1G...aemoglobin.png . License : CC BY-SA: Attribution-ShareAlike
+- Induced fit diagram. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:In...it_diagram.svg . License : Public Domain: No Known Copyright
+- amino acid. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/amino_acid . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Biology. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44402/latest...ol11448/latest . License : CC BY: Attribution
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//biology/definition/r-group . License : CC BY-SA: Attribution-ShareAlike
+- polypeptide. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/polypeptide . License : CC BY-SA: Attribution-ShareAlike
+- BPAE cells | Flickr - Photo Sharing!. Provided by : Flickr. Located at : http://www.flickr.com/photos/6345024...-dtyzGH-duUj14 . License : CC BY: Attribution
+- 1GZX Haemoglobin. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:1G...aemoglobin.png . License : CC BY-SA: Attribution-ShareAlike
+- Induced fit diagram. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:In...it_diagram.svg . License : Public Domain: No Known Copyright
+- OpenStax College, Proteins. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44402/latest...e_03_04_03.jpg . License : CC BY: Attribution
+- OpenStax College, Proteins. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44402/latest...e_03_04_02.png . License : CC BY: Attribution
+- OpenStax College, Proteins. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44402/latest...e_03_04_01.jpg . License : CC BY: Attribution
+- hydrogen bond. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/hydrogen_bond . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Biology. October 16, 2013. Provided by : OpenStax CNX. 
 
-Figure 10.21
-(a) DNA is typically double stranded, whereas RNA is typically single stranded. (b) Although it is single stranded, RNA can
-fold upon itself, with the folds stabilized by short areas of complementary base pairing within the molecule, forming a three-dimensional
-structure.
-CHECK YOUR UNDERSTANDING
-•
-How does the structure of RNA differ from the structure of DNA?
-Functions of RNA in Protein Synthesis
-Cells access the information stored in DNA by creating RNA to direct the synthesis of proteins through the
-process of translation. Proteins within a cell have many functions, including building cellular structures and
-serving as enzyme catalysts for cellular chemical reactions that give cells their specific characteristics. The
-three main types of RNA directly involved in protein synthesis are messenger RNA (mRNA), ribosomal RNA
-(rRNA), and transfer RNA (tRNA).
-In 1961, French scientists François Jacob and Jacques Monod hypothesized the existence of an intermediary
-between DNA and its protein products, which they called messenger RNA.16 Evidence supporting their
-hypothesis was gathered soon afterwards showing that information from DNA is transmitted to the ribosome
-for protein synthesis using mRNA. If DNA serves as the complete library of cellular information, mRNA serves
-as a photocopy of specific information needed at a particular point in time that serves as the instructions to
-make a protein.
-The mRNA carries the message from the DNA, which controls all of the cellular activities in a cell. If a cell
-requires a certain protein to be synthesized, the gene for this product is “turned on” and the mRNA is
-synthesized through the process of transcription (see RNA Transcription). The mRNA then interacts with
-ribosomes and other cellular machinery (Figure 10.22) to direct the synthesis of the protein it encodes during
-the process of translation (see Protein Synthesis). mRNA is relatively unstable and short-lived in the cell,
-especially in prokaryotic cells, ensuring that proteins are only made when needed.
-16 A. Rich. “The Era of RNA Awakening: Structural Biology of RNA in the Early Years.” Quarterly Reviews of Biophysics 42 no. 2
-(2009):117–137.
-390
-10 • Biochemistry of the Genome
-Access for free at openstax.org.
+## Match 2.40 — LibreTexts: 3.2: Levels (Orders) of Protein Structure
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Bookshelves/Cell_and_Molecular_Biology/Book%3A_Basic_Cell_and_Molecular_Biology_(Bergtrom)/03%3A_Details_of_Protein_Structure/3.02%3A_Levels_(Orders)_of_Protein_Structure
 
-Figure 10.22
-A generalized illustration of how mRNA and tRNA are used in protein synthesis within a cell.
-rRNA and tRNA are stable types of RNA. In prokaryotes and eukaryotes, tRNA and rRNA are encoded in the
-DNA, then copied into long RNA molecules that are cut to release smaller fragments containing the individual
-mature RNA species. In eukaryotes, synthesis, cutting, and assembly of rRNA into ribosomes takes place in the
-nucleolus region of the nucleus, but these activities occur in the cytoplasm of prokaryotes. Neither of these
-types of RNA carries instructions to direct the synthesis of a polypeptide, but they play other important roles in
-protein synthesis.
-Ribosomes are composed of rRNA and protein. As its name suggests, rRNA is a major constituent of
-ribosomes, composing up to about 60% of the ribosome by mass and providing the location where the mRNA
-binds. The rRNA ensures the proper alignment of the mRNA, tRNA, and the ribosomes; the rRNA of the
-ribosome also has an enzymatic activity (peptidyl transferase) and catalyzes the formation of the peptide
-bonds between two aligned amino acids during protein synthesis. Although rRNA had long been thought to
-serve primarily a structural role, its catalytic role within the ribosome was proven in 2000.17 Scientists in the
-laboratories of Thomas Steitz (1940–) and Peter Moore (1939–) at Yale University were able to crystallize the
-ribosome structure from Haloarcula marismortui, a halophilic archaeon isolated from the Dead Sea. Because
-of the importance of this work, Steitz shared the 2009 Nobel Prize in Chemistry with other scientists who made
-significant contributions to the understanding of ribosome structure.
-Transfer RNA is the third main type of RNA and one of the smallest, usually only 70–90 nucleotides long. It
-carries the correct amino acid to the site of protein synthesis in the ribosome. It is the base pairing between
-the tRNA and mRNA that allows for the correct amino acid to be inserted in the polypeptide chain being
-synthesized (Figure 10.23). Any mutations in the tRNA or rRNA can result in global problems for the cell
-because both are necessary for proper protein synthesis (Table 10.1).
-17 P. Nissen et al. “The Structural Basis of Ribosome Activity in Peptide Bond Synthesis.” Science 289 no. 5481 (2000):920–930.
-10.3 • Structure and Function of RNA
-391
+3.2: Levels (Orders) of Protein Structure
+A. Primary Structure
+1. L amino acids and the C-N-C-N-… polypeptide backbone
+The primary structure of a protein refers to the amino acid sequence of its polypeptide chain(s). Cells use only 20 amino acids to make polypeptides and proteins, although they do use a few additional amino acids for other purposes. Peptide linkages between amino acids in polypeptides form in condensation reactions in cells during protein synthesis (i.e., translation ). The linkages involve multiple covalent bonds. They break and rearrange between the carboxyl and amino groups of amino acids during linkage formation.
+The 20 amino acids found in proteins are shown below.
+Except for glycine, the a-carbon in the 19 other amino acids is bound to four different groups, making them chiral or optically active .
+Recall that chiral carbons allow for mirror image D and L or d and l optical isomers. Recall also that only the lower case d or l defines the optical properties of isomers. Just to make life interesting, L amino acids are actually dextrorotary in a polarimeter, making them d-amino acids ! While both enantiomers exist in cells, only dextrorotary d (i.e., L ) amino acids (along with glycine) are used by cells to build polypeptides and proteins. A partial polypeptide is illustrated below.
+The result of translation in a cell is a polypeptide chain with a carboxyl end and an amino end . Amino acid side chains (circled above) end up alternating on opposite sides of a C-N-C-N-… polypeptide backbone because of the covalent bond angles along the backbone. You could prove this to yourself by assembling a short polypeptide with a molecular modeling kit, the kind you might have used in a chemistry class! The C-N-C-N-…backbone is the underlying basis of higher orders, or levels of protein structure (see below).
+2. Determining Protein Primary Structure - Polypeptide Sequencing
+Frederick Sanger was the first to demonstrate a practical method for sequencing proteins when he reported the amino acid sequence of the two polypeptides of Bovine (cow) insulin . Briefly, the technique involves stepwise hydrolysis of polypeptide fragments, called an Edman Degradation . Each hydrolysis leaves behind a polypeptide fragment shortened by one amino acid that can be identified. Sanger received a Nobel Prize in 1958 for this feat. By convention, the display and counting of amino acids always starts at the amino-, or N-terminal end (the end with a free NH2-group). Primary structure is dictated directly by the gene encoding the protein. After transcription of a gene), a ribosome translates the resulting mRNA into a polypeptide.
+For some time now, the sequencing of DNA has replaced most direct protein sequencing. The method of DNA sequencing, colloquially referred to as the Sanger dideoxy method, quickly became widespread and was eventually automated, enabling rapid gene (and even whole genome) sequencing. Now, instead of directly sequencing polypeptides, we can infer amino acid sequences from gene sequences isolated by cloning or revealed after complete genome sequencing projects. This is the same Sanger who first sequenced proteins, and yes…, he won a second Nobel Prize for the DNA sequencing work in 1980!
+The different physical and chemical properties of amino acids themselves result from the side chains on their a-carbons . The unique physical and chemical properties of polypeptides and proteins are determined by their unique combination of amino acid side chains and their interactions within and between polypeptides. In this way, primary structure reflects the genetic underpinnings of polypeptide and protein function. The higher order structures that account for the functional motifs and domains of a mature protein derive from its primary structure. Christian Anfinsen won a half-share of the 1972 Nobel Prize in Chemistry for demonstrating that this was the case for the ribonuclease enzyme (Stanford Moore and William H. Stein earned their share of the prize for relating the structure of the active site of the enzyme to its catalytic function). See 1972 Nobel Prize in Chemistry for more.
+B. Secondary Structure
+Secondary structure refers to highly regular local structures within a polypeptide (e.g., a helix ) and either within or between polypeptides ( b-pleated sheets ). Linus Pauling and coworkers suggested these two types of secondary structure in 1951. A little Linus Pauling history is would be relevant here! By 1932, Pauling had developed his Electronegativity Scale of the elements that could predict the strength of atomic bonds in molecules. He contributed much to our understanding of atomic orbitals and later to the structure of biological molecules. He earned the 1954 Nobel Prize in Chemistry for this work. He and his colleagues later discovered that sickle cell anemia was due to an abnormal hemoglobin, and went on to predict the alpha helical and pleated sheet secondary structure of proteins. While he did not earn a second Nobel for these novel molecular genetics studies, he did win the 1962 Nobel Peace prize for convincing almost 10,000 scientists to petition the United Nations to vote to ban atmospheric nuclear bomb tests. A more detailed review of his extraordinary life (e.g., at Linus Pauling-Short Biography ) is worth a read!
+Secondary structure conformations occur due to the spontaneous formation of hydrogen bonds between amino groups and oxygens along the polypeptide backbone, as shown in the two left panels in the drawing below. Note that amino acid side chains play no significant role in secondary structure.
+133 Protein secondary structure
+The a helix or b sheets are a most stable arrangement of H-bonds in the chain(s). These regions of ordered secondary structure in a polypeptide can be separated by varying lengths of less structured peptide called random coils . All three of these elements of secondary structure can occur in a single polypeptide or protein that has folded into its tertiary structure, as shown at the right in the illustration above. The pleated sheets are shown as ribbons with arrowheads representing N-to-C or C-to-N polarity of the sheets. As you can see, a pair of peptide regions forming a pleated sheet may do so either in the parallel or antiparallel directions (look at the arrowheads of the ribbons), which will depend on other influences dictating protein folding to form tertiary structure. Some polypeptides never go beyond their secondary structure, remaining fibrous and insoluble. Keratin is perhaps the best-known example of a fibrous protein , making up hair, fingernails, bird feathers, and even filaments of the cytoskeleton. Most polypeptides and proteins however, do fold and assume tertiary structure, becoming soluble globular proteins .
+C. Tertiary Structure
+Polypeptides acquire their tertiary structure when hydrophobic and non-polar side chains spontaneously come together to exclude water, aided by the formation of salt bridges and H-bonds between polar side chains that find themselves inside the globular polypeptide. In this way, a helices or b sheets are folded and incorporated into globular shapes. The forces that cooperate to form and stabilize 3-dimensional polypeptide and protein structures are illustrated below.
+Polar ( hydrophilic ) side chains that can find no other side-chain partners are typically found on the outer surface of the ‘’globule’, where they interact with water and thus dissolve the protein (recall water of hydration ). Based on non-covalent bonds, tertiary structures are nonetheless strong simply because of the large numbers of otherwise weak interactions that form them. Nonetheless, covalent disulfide bonds between cysteine amino acids in the polypeptide (shown above) can further stabilize tertiary structure. Disulfide bonds (bridges) form when cysteines far apart in the primary structure of the molecule end up near each other in a folded polypeptide. Then the –SH ( sulfhydryl ) groups in the cysteine side chains are oxidized, forming the disulfide (–S-S- ) bonds.
+The sulfhydryl oxidation reaction is shown below.
+134 Protein Tertiary (30) Structure
+135 Disulfide Bridges Stabilize 30 Structure
+To better understand how disulfide bridges can support the 3-dimensional structure of a protein, just imagine its physical and chemical environment. Changing the temperature or salt concentration surrounding a protein might disrupt non-covalent bonds involved in the 3D shape of the active protein. Unaffected by these changes, disulfide bridges limit the disruption and enable the protein to re-fold correctly and quickly when conditions return to normal (think homeostasis !).
 
-Figure 10.23
-A tRNA molecule is a single-stranded molecule that exhibits significant intracellular base pairing, giving it its characteristic
-three-dimensional shape.
-Structure and Function of RNA
-mRNA
-rRNA
-tRNA
-Structure
-Short, unstable, single-
-stranded RNA
-corresponding to a
-gene encoded within
-DNA
-Longer, stable RNA molecules
-composing 60% of ribosome’s
-mass
-Short (70-90 nucleotides), stable
-RNA with extensive
-intramolecular base pairing;
-contains an amino acid binding
-site and an mRNA binding site
-Function
-Serves as intermediary
-between DNA and
-protein; used by
-ribosome to direct
-synthesis of protein it
-encodes
-Ensures the proper alignment
-of mRNA, tRNA, and ribosome
-during protein synthesis;
-catalyzes peptide bond
-formation between amino acids
-Carries the correct amino acid to
-the site of protein synthesis in
-the ribosome
-Table 10.1
-CHECK YOUR UNDERSTANDING
-•
-What are the functions of the three major types of RNA molecules involved in protein synthesis?
-RNA as Hereditary Information
-Although RNA does not serve as the hereditary information in most cells, RNA does hold this function for many
-392
-10 • Biochemistry of the Genome
-Access for free at openstax.org.
+## Match 2.39 — LibreTexts: 26.10: Protein Structure
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_III_(Morsch_et_al.)/26%3A_Amino_Acids_Peptides_and_Proteins/26.10%3A_Protein_Structure
 
-viruses that do not contain DNA. Thus, RNA clearly does have the additional capacity to serve as genetic
-information. Although RNA is typically single stranded within cells, there is significant diversity in viruses.
-Rhinoviruses, which cause the common cold; influenza viruses; and the Ebola virus are single-stranded RNA
-viruses. Rotaviruses, which cause severe gastroenteritis in children and other immunocompromised
-individuals, are examples of double-stranded RNA viruses. Because double-stranded RNA is uncommon in
-eukaryotic cells, its presence serves as an indicator of viral infection. The implications for a virus having an
-RNA genome instead of a DNA genome are discussed in more detail in Viruses.
-
-## Match 2.37 — Microbiology-WEB § 10.2 Structure and Function of DNA
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Describe the biochemical structure of deoxyribonucleotides
-•
-Identify the base pairs used in the synthesis of deoxyribonucleotides
-•
-Explain why the double helix of DNA is described as antiparallel
-In Microbial Metabolism, we discussed the microbial catabolism of three classes of macromolecules: proteins,
-lipids and carbohydrates. In this chapter, we will discuss the genetic role of a fourth class of molecules: nucleic
-acids. Like other macromolecules, nucleic acids are composed of monomers, called nucleotides, which are
-polymerized to form large strands. Each nucleic acid strand contains certain nucleotides that appear in a
-certain order within the strand, called its base sequence. The base sequence of deoxyribonucleic acid (DNA)
-is responsible for carrying and retaining the hereditary information in a cell. In Mechanisms of Microbial
-Genetics, we will discuss in detail the ways in which DNA uses its own base sequence to direct its own
-synthesis, as well as the synthesis of RNA and proteins, which, in turn, gives rise to products with diverse
-structure and function. In this section, we will discuss the basic structure and function of DNA.
-DNA Nucleotides
-The building blocks of nucleic acids are nucleotides. Nucleotides that compose DNA are called
-deoxyribonucleotides. The three components of a deoxyribonucleotide are a five-carbon sugar called
-deoxyribose, a phosphate group, and a nitrogenous base, a nitrogen-containing ring structure that is
-responsible for complementary base pairing between nucleic acid strands (Figure 10.11). The carbon atoms of
-the five-carbon deoxyribose are numbered 1ʹ, 2ʹ, 3ʹ, 4ʹ, and 5ʹ (1ʹ is read as “one prime”). A nucleoside
-comprises the five-carbon sugar and nitrogenous base.
-10.2 • Structure and Function of DNA
-381
-
-Figure 10.11
-(a) Each deoxyribonucleotide is made up of a sugar called deoxyribose, a phosphate group, and a nitrogenous base—in this
-case, adenine. (b) The five carbons within deoxyribose are designated as 1ʹ, 2ʹ, 3ʹ, 4ʹ, and 5ʹ.
-The deoxyribonucleotide is named according to the nitrogenous bases (Figure 10.12). The nitrogenous bases
-adenine (A) and guanine (G) are the purines; they have a double-ring structure with a six-carbon ring fused to
-a five-carbon ring. The pyrimidines, cytosine (C) and thymine (T), are smaller nitrogenous bases that have
-only a six-carbon ring structure.
-Figure 10.12
-Nitrogenous bases within DNA are categorized into the two-ringed purines adenine and guanine and the single-ringed
-pyrimidines cytosine and thymine. Thymine is unique to DNA.
-Individual nucleoside triphosphates combine with each other by covalent bonds known as 5ʹ-3ʹ
-phosphodiester bonds, or linkages whereby the phosphate group attached to the 5ʹ carbon of the sugar of one
-nucleotide bonds to the hydroxyl group of the 3ʹ carbon of the sugar of the next nucleotide. Phosphodiester
-bonding between nucleotides forms the sugar-phosphate backbone, the alternating sugar-phosphate
-structure composing the framework of a nucleic acid strand (Figure 10.13). During the polymerization process,
-deoxynucleotide triphosphates (dNTP) are used. To construct the sugar-phosphate backbone, the two terminal
-phosphates are released from the dNTP as a pyrophosphate. The resulting strand of nucleic acid has a free
-phosphate group at the 5ʹ carbon end and a free hydroxyl group at the 3ʹ carbon end. The two unused
-phosphate groups from the nucleotide triphosphate are released as pyrophosphate during phosphodiester
-bond formation. Pyrophosphate is subsequently hydrolyzed, releasing the energy used to drive nucleotide
-polymerization.
-382
-10 • Biochemistry of the Genome
-Access for free at openstax.org.
-
-Figure 10.13
-Phosphodiester bonds form between the phosphate group attached to the 5ʹ carbon of one nucleotide and the hydroxyl
-group of the 3ʹ carbon in the next nucleotide, bringing about polymerization of nucleotides in to nucleic acid strands. Note the 5ʹ and 3ʹ
-ends of this nucleic acid strand.
-CHECK YOUR UNDERSTANDING
-•
-What is meant by the 5ʹ and 3ʹ ends of a nucleic acid strand?
-Discovering the Double Helix
-By the early 1950s, considerable evidence had accumulated indicating that DNA was the genetic material of
-cells, and now the race was on to discover its three-dimensional structure. Around this time, Austrian
-biochemist Erwin Chargaff5 (1905–2002) examined the content of DNA in different species and discovered
-that adenine, thymine, guanine, and cytosine were not found in equal quantities, and that it varied from
-species to species, but not between individuals of the same species. He found that the amount of adenine was
-very close to equaling the amount of thymine, and the amount of cytosine was very close to equaling the
-amount of guanine, or A = T and G = C. These relationships are also known as Chargaff’s rules.
-Other scientists were also actively exploring this field during the mid-20th century. In 1952, American
-scientist Linus Pauling (1901–1994) was the world’s leading structural chemist and odds-on favorite to solve
-the structure of DNA. Pauling had earlier discovered the structure of protein α helices, using X-ray diffraction,
-and, based upon X-ray diffraction images of DNA made in his laboratory, he proposed a triple-stranded model
-of DNA.6 At the same time, British researchers Rosalind Franklin (1920–1958) and her graduate student R.G.
-Gosling were also using X-ray diffraction to understand the structure of DNA (Figure 10.14). It was Franklin’s
-scientific expertise that resulted in the production of more well-defined X-ray diffraction images of DNA that
-would clearly show the overall double-helix structure of DNA.
-5 N. Kresge et al. “Chargaff's Rules: The Work of Erwin Chargaff.” Journal of Biological Chemistry 280 (2005):e21.
-6 L. Pauling, “A Proposed Structure for the Nucleic Acids.” Proceedings of the National Academy of Science of the United States of
-10.2 • Structure and Function of DNA
-383
-
-Figure 10.14
-The X-ray diffraction pattern of DNA shows its helical nature. (credit: National Institutes of Health)
-James Watson (1928–), an American scientist, and Francis Crick (1916–2004), a British scientist, were
-working together in the 1950s to discover DNA’s structure. They used Chargaff’s rules and Franklin and
-Wilkins’ X-ray diffraction images of DNA fibers to piece together the purine-pyrimidine pairing of the double
-helical DNA molecule (Figure 10.15). In April 1953, Watson and Crick published their model of the DNA double
-helix in Nature.7 The same issue additionally included papers by Wilkins and colleagues,8 as well as by
-Franklin and Gosling,9 each describing different aspects of the molecular structure of DNA. In 1962, James
-Watson, Francis Crick, and Maurice Wilkins were awarded the Nobel Prize in Physiology and Medicine.
-Unfortunately, by then Franklin had died, and Nobel prizes at the time were not awarded posthumously. Work
-continued, however, on learning about the structure of DNA. In 1973, Alexander Rich (1924–2015) and
-colleagues were able to analyze DNA crystals to confirm and further elucidate DNA structure.10
-Figure 10.15
-In 1953, James Watson and Francis Crick built this model of the structure of DNA, shown here on display at the Science
-Museum in London.
-America 39 no. 2 (1953):84–97.
-7 J.D. Watson, F.H.C. Crick. “A Structure for Deoxyribose Nucleic Acid.” Nature 171 no. 4356 (1953):737–738.
-8 M.H.F. Wilkins et al. “Molecular Structure of Deoxypentose Nucleic Acids.” Nature 171 no. 4356 (1953):738–740.
-9 R. Franklin, R.G. Gosling. “Molecular Configuration in Sodium Thymonucleate.” Nature 171 no. 4356 (1953):740–741.
-10 R.O. Day et al. “A Crystalline Fragment of the Double Helix: The Structure of the Dinucleoside Phosphate Guanylyl-3',5'-Cytidine.”
-Proceedings of the National Academy of Sciences of the United States of America 70 no. 3 (1973):849–853.
-384
-10 • Biochemistry of the Genome
-Access for free at openstax.org.
-
-CHECK YOUR UNDERSTANDING
-•
-Which scientists are given most of the credit for describing the molecular structure of DNA?
-DNA Structure
-Watson and Crick proposed that DNA is made up of two strands that are twisted around each other to form a
-right-handed helix. The two DNA strands are antiparallel, such that the 3ʹ end of one strand faces the 5ʹ end of
-the other (Figure 10.16). The 3ʹ end of each strand has a free hydroxyl group, while the 5ʹ end of each strand
-has a free phosphate group. The sugar and phosphate of the polymerized nucleotides form the backbone of the
-structure, whereas the nitrogenous bases are stacked inside. These nitrogenous bases on the interior of the
-molecule interact with each other, base pairing.
-Analysis of the diffraction patterns of DNA has determined that there are approximately 10 bases per turn in
-DNA. The asymmetrical spacing of the sugar-phosphate backbones generates major grooves (where the
-backbone is far apart) and minor grooves (where the backbone is close together) (Figure 10.16). These grooves
-are locations where proteins can bind to DNA. The binding of these proteins can alter the structure of DNA,
-regulate replication, or regulate transcription of DNA into RNA.
-Figure 10.16
-Watson and Crick proposed the double helix model for DNA. (a) The sugar-phosphate backbones are on the outside of the
-double helix and purines and pyrimidines form the “rungs” of the DNA helix ladder. (b) The two DNA strands are antiparallel to each other.
-(c) The direction of each strand is identified by numbering the carbons (1 through 5) in each sugar molecule. The 5ʹ end is the one where
-carbon #5 is not bound to another nucleotide; the 3ʹ end is the one where carbon #3 is not bound to another nucleotide.
-Base pairing takes place between a purine and pyrimidine. In DNA, adenine (A) and thymine (T) are
-complementary base pairs, and cytosine (C) and guanine (G) are also complementary base pairs, explaining
-Chargaff’s rules (Figure 10.17). The base pairs are stabilized by hydrogen bonds; adenine and thymine form
-two hydrogen bonds between them, whereas cytosine and guanine form three hydrogen bonds between them.
-10.2 • Structure and Function of DNA
-385
-
-Figure 10.17
-Hydrogen bonds form between complementary nitrogenous bases on the interior of DNA.
-In the laboratory, exposing the two DNA strands of the double helix to high temperatures or to certain
-chemicals can break the hydrogen bonds between complementary bases, thus separating the strands into two
-separate single strands of DNA (single-stranded DNA [ssDNA]). This process is called DNA denaturation and is
-analogous to protein denaturation, as described in Proteins. The ssDNA strands can also be put back together
-as double-stranded DNA (dsDNA), through reannealing or renaturing by cooling or removing the chemical
-denaturants, allowing these hydrogen bonds to reform. The ability to artificially manipulate DNA in this way is
-the basis for several important techniques in biotechnology (Figure 10.18). Because of the additional hydrogen
-bonding between the C = G base pair, DNA with a high GC content is more difficult to denature than DNA with a
-lower GC content.
-Figure 10.18
-In the laboratory, the double helix can be denatured to single-stranded DNA through exposure to heat or chemicals, and
-then renatured through cooling or removal of chemical denaturants to allow the DNA strands to reanneal. (credit: modification of work by
-Hernández-Lemus E, Nicasio-Collazo LA, Castañeda-Priego R)
-LINK TO LEARNING
-View an animation (https://www.openstax.org/l/22dnastruanim) on DNA structure from the DNA Learning
-Center to learn more.
-CHECK YOUR UNDERSTANDING
-•
-What are the two complementary base pairs of DNA and how are they bonded together?
-386
-10 • Biochemistry of the Genome
-Access for free at openstax.org.
-
-DNA Function
-DNA stores the information needed to build and control the cell. The transmission of this information from
-mother to daughter cells is called vertical gene transfer and it occurs through the process of DNA replication.
-DNA is replicated when a cell makes a duplicate copy of its DNA, then the cell divides, resulting in the correct
-distribution of one DNA copy to each resulting cell. DNA can also be enzymatically degraded and used as a
-source of nucleosides and nucleotides for the cell. Unlike other macromolecules, DNA does not serve a
-structural role in cells.
-CHECK YOUR UNDERSTANDING
-•
-How does DNA transmit genetic information to offspring?
-Eye on Ethics
-Paving the Way for Women in Science and Health Professions
-Historically, women have been underrepresented in the sciences and in medicine, and often their
-pioneering contributions have gone relatively unnoticed. For example, although Rosalind Franklin
-performed the X-ray diffraction studies demonstrating the double helical structure of DNA, it is Watson
-and Crick who became famous for this discovery, building on her data. There still remains great
-controversy over whether their acquisition of her data was appropriate and whether personality conflicts
-and gender bias contributed to the delayed recognition of her significant contributions. Similarly, Barbara
-McClintock did pioneering work in maize (corn) genetics from the 1930s through 1950s, discovering
-transposons (jumping genes), but she was not recognized until much later, receiving a Nobel Prize in
-Physiology or Medicine in 1983 (Figure 10.19).
-Today, women still remain underrepresented in many fields of science and medicine. While more than half
-of the undergraduate degrees in science are awarded to women, only 46% of doctoral degrees in science
-are awarded to women. In academia, the number of women at each level of career advancement continues
-to decrease, with women holding less than one-third of the positions of Ph.D.-level scientists in tenure-
-track positions, and less than one-quarter of the full professorships at 4-year colleges and universities.11
-Even in the health professions, like nearly all other fields, women are often unde
-
-## Match 2.37 — Microbiology-WEB § 10.4 Structure and Function of
-
-Cellular Genomes
-•
-The entire genetic content of a cell is its
-genome.
-•
-Genes code for proteins, or stable RNA
-molecules, each of which carries out a specific
-function in the cell.
-•
-Although the genotype that a cell possesses
-remains constant, expression of genes is
-dependent on environmental conditions.
-•
-A phenotype is the observable characteristics of
-a cell (or organism) at a given point in time and
-results from the complement of genes currently
-being used.
-•
-The majority of genetic material is organized
-into chromosomes that contain the DNA that
-controls cellular activities.
-•
-Prokaryotes are typically haploid, usually
-having a single circular chromosome found in
-the nucleoid. Eukaryotes are diploid; DNA is
-organized into multiple linear chromosomes
-found in the nucleus.
-•
-Supercoiling and DNA packaging using DNA
-binding proteins allows lengthy molecules to fit
-inside a cell. Eukaryotes and archaea use
-histone proteins, and bacteria use different
-proteins with similar function.
-•
-Prokaryotic and eukaryotic genomes both
-contain noncoding DNA, the function of which
-is not well understood. Some noncoding DNA
-appears to participate in the formation of small
-noncoding RNA molecules that influence gene
-expression; some appears to play a role in
-maintaining chromosomal structure and in DNA
-packaging.
-•
-Extrachromosomal DNA in eukaryotes
-includes the chromosomes found within
-organelles of prokaryotic origin (mitochondria
-and chloroplasts) that evolved by
-endosymbiosis. Some viruses may also
-maintain themselves extrachromosomally.
-•
-Extrachromosomal DNA in prokaryotes is
-commonly maintained as plasmids that encode
-a few nonessential genes that may be helpful
-under specific conditions. Plasmids can be
-spread through a bacterial community by
-horizontal gene transfer.
-•
-Viral genomes show extensive variation and
-may be composed of either RNA or DNA, and
-may be either double or single stranded.
-REVIEW QUESTIONS
-Multiple Choice
-1. Frederick Griffith infected mice with a
-combination of dead R and live S bacterial
-strains. What was the outcome, and why did it
-occur?
-A.
-The mice will live. Transformation was not
-required.
-B.
-The mice will die. Transformation of genetic
-material from R to S was required.
-C.
-The mice will live. Transformation of genetic
-material from S to R was required.
-D.
-The mice will die. Transformation was not
-required.
-2. Why was the alga Acetabularia a good model
-organism for Joachim Hämmerling to use to
-identify the location of genetic material?
-A.
-It lacks a nuclear membrane.
-B.
-It self-fertilizes.
-C.
-It is a large, asymmetrical, single cell easy to
-see with the naked eye.
-D.
-It makes a protein capsid.
-402
-10 • Review Questions
-Access for free at openstax.org.
-
-3. Which of the following best describes the results
-from Hershey and Chase’s experiment using
-bacterial viruses with 35S-labeled proteins or 32P-
-labeled DNA that are consistent with protein
-being the molecule responsible for hereditary?
-A.
-After infection with the 35S-labeled viruses
-and centrifugation, only the pellet would be
-radioactive.
-B.
-After infection with the 35S-labeled viruses
-and centrifugation, both the pellet and the
-supernatant would be radioactive.
-C.
-After infection with the 32P-labeled viruses
-and centrifugation, only the pellet would be
-radioactive.
-D.
-After infection with the 32P-labeled viruses
-and centrifugation, both the pellet and the
-supernatant would be radioactive.
-4. Which method did Morgan and colleagues use to
-show that hereditary information was carried on
-chromosomes?
-A.
-statistical predictions of the outcomes of
-crosses using true-breeding parents
-B.
-correlations between microscopic
-observations of chromosomal movement and
-the characteristics of offspring
-C.
-transformation of nonpathogenic bacteria to
-pathogenic bacteria
-D.
-mutations resulting in distinct defects in
-metabolic enzymatic pathways
-5. According to Beadle and Tatum’s “one gene–one
-enzyme” hypothesis, which of the following
-enzymes will eliminate the transformation of
-hereditary material from pathogenic bacteria to
-nonpathogenic bacteria?
-A.
-carbohydrate-degrading enzymes
-B.
-proteinases
-C.
-ribonucleases
-D.
-deoxyribonucleases
-6. Which of the following is not found within DNA?
-A.
-thymine
-B.
-phosphodiester bonds
-C.
-complementary base pairing
-D.
-amino acids
-7. If 30% of the bases within a DNA molecule are
-adenine, what is the percentage of thymine?
-A.
-20%
-B.
-25%
-C.
-30%
-D.
-35%
-8. Which of the following statements about base
-pairing in DNA is incorrect?
-A.
-Purines always base pairs with pyrimidines.
-B.
-Adenine binds to guanine.
-C.
-Base pairs are stabilized by hydrogen bonds.
-D.
-Base pairing occurs at the interior of the
-double helix.
-9. If a DNA strand contains the sequence 5ʹ-
-ATTCCGGATCGA-3ʹ, which of the following is the
-sequence of the complementary strand of DNA?
-A.
-5ʹ-TAAGGCCTAGCT-3ʹ
-B.
-5ʹ-ATTCCGGATCGA-3ʹ
-C.
-3ʹ-TAACCGGTACGT-5ʹ
-D.
-5ʹ-TCGATCCGGAAT-3ʹ
-10. During denaturation of DNA, which of the
-following happens?
-A.
-Hydrogen bonds between complementary
-bases break.
-B.
-Phosphodiester bonds break within the
-sugar-phosphate backbone.
-C.
-Hydrogen bonds within the sugar-
-phosphate backbone break.
-D.
-Phosphodiester bonds between
-complementary bases break.
-11. Which of the following types of RNA codes for a
-protein?
-a.
-dsRNA
-b.
-mRNA
-c.
-rRNA
-d.
-tRNA
-12. A nucleic acid is purified from a mixture. The
-molecules are relatively small, contain uracil,
-and most are covalently bound to an amino
-acid. Which of the following was purified?
-A.
-DNA
-B.
-mRNA
-C.
-rRNA
-D.
-tRNA
-13. Which of the following types of RNA is known
-for its catalytic abilities?
-A.
-dsRNA
-B.
-mRNA
-C.
-rRNA
-D.
-tRNA
-14. Ribosomes are composed of rRNA and what
-other component?
-A.
-protein
-B.
-carbohydrates
-C.
-DNA
-D.
-mRNA
-10 • Review Questions
-403
-
-15. Which of the following may use RNA as its
-genome?
-A.
-a bacterium
-B.
-an archaeon
-C.
-a virus
-D.
-a eukaryote
-16. Which of the following correctly describes the
-structure of the typical eukaryotic genome?
-A.
-diploid
-B.
-linear
-C.
-singular
-D.
-double stranded
-17. Which of the following is typically found as part
-of the prokaryotic genome?
-A.
-chloroplast DNA
-B.
-linear chromosomes
-C.
-plasmids
-D.
-mitochondrial DNA
-18. Serratia marcescens cells produce a red
-pigment at room temperature. The red color of
-the colonies is an example of which of the
-following?
-A.
-genotype
-B.
-phenotype
-C.
-change in DNA base composition
-D.
-adaptation to the environment
-19. Which of the following genes would not likely be
-encoded on a plasmid?
-A.
-genes encoding toxins that damage host
-tissue
-B.
-genes encoding antibacterial resistance
-C.
-gene encoding enzymes for glycolysis
-D.
-genes encoding enzymes for the
-degradation of an unusual substrate
-20. Histones are DNA binding proteins that are
-important for DNA packaging in which of the
-following?
-A.
-double-stranded and single-stranded DNA
-viruses
-B.
-archaea and bacteria
-C.
-bacteria and eukaryotes
-D.
-eukaryotes and archaea
-True/False
-21. The work of Rosalind Franklin and R.G. Gosling
-was important in demonstrating the helical
-nature of DNA.
-22. The A-T base pair has more hydrogen bonding
-than the C-G base pair.
-23. Ribosomes are composed mostly of RNA.
-24. Double-stranded RNA is commonly found
-inside cells.
-25. Within an organism, phenotypes may change
-while genotypes remain constant.
-26. Noncoding DNA has no biological purpose.
-Matching
-27. Match the correct molecule with its description:
-___tRNA
-___rRNA
-___mRNA
-A. is a major component of
-ribosome
-B. is a copy of the information in a
-gene
-C. carries an amino acid to the
-ribosome
-Fill in the Blank
-28. The element ____________ is unique to nucleic
-acids compared with other macromolecules.
-29. In the late 1800s and early 1900s, the
-macromolecule thought to be responsible for
-heredity was ______________.
-30. The end of a nucleic acid strand with a free
-phosphate group is called the ________.
-31. Plasmids are typically transferred among
-members of a bacterial community by ________
-gene transfer.
-404
-10 • Review Questions
-Access for free at openstax.org.
-
-Short Answer
-32. Why do bacteria and viruses make good model
-systems for various genetic studies?
-33. Why was nucleic acid disregarded for so long as
-the molecule responsible for the transmission
-of hereditary information?
-34. Bacteriophages inject their genetic material into
-host cells, whereas animal viruses enter host
-cells completely. Why was it important to use a
-bacteriophage in the Hershey–Chase
-experiment rather than an animal virus?
-35. What is the role of phosphodiester bonds within
-the sugar-phosphate backbone of DNA?
-36. What is meant by the term “antiparallel?”
-37. Why is DNA with a high GC content more
-difficult to denature than that with a low GC
-content?
-38. What are the differences between DNA
-nucleotides and RNA nucleotides?
-39. How is the information stored within the base
-sequence of DNA used to determine a cell’s
-properties?
-40. How do complementary base pairs contribute to
-intramolecular base pairing within an RNA
-molecule?
-41. If an antisense RNA has the sequence
-5ʹAUUCGAAUGC3ʹ, what is the sequence of the
-mRNA to which it will bind? Be sure to label the
-5ʹ and 3ʹ ends of the molecule you draw.
-42. Why does double-stranded RNA (dsRNA)
-stimulate RNA interference?
-43. What are some differences in chromosomal
-structures between prokaryotes and
-eukaryotes?
-44. How do prokaryotes and eukaryotes manage to
-fit their lengthy DNA inside of cells? Why is this
-necessary?
-45. What are some functions of noncoding DNA?
-46. In the chromatin of eukaryotic cells, which
-regions of the chromosome would you expect to
-be more compact: the regions that contain
-genes being actively copied into RNA or those
-that contain inactive genes?
-Critical Thinking
-47. In the figure shown, if the nuclei were contained
-within the stalks of Acetabularia, what types of caps
-would you expect from the pictured grafts?
-48. Why are Hershey and Chase credited with
-identifying DNA as the carrier of heredity even
-though DNA had been discovered many years
-before?
-49. A certain DNA sample is found to have a makeup
-consisting of 22% thymine. Use Chargaff’s rules to
-fill in the percentages for the other three
-nitrogenous bases.
-50. In considering the structure of the DNA double
-helix, how would you expect the structure to
-differ if there was base pairing between two
-purines? Between two pyrimidines?
-51. Identify the location of mRNA, rRNA, and tRNA in
-the figure.
-52. Why does it make sense that tRNA and rRNA
-molecules are more stable than mRNA
-molecules?
-53. A new type of bacteriophage has been isolated
-and you are in charge of characterizing its
-genome. The base composition of the
-bacteriophage is A (15%), C (20%), T (35%), and
-G (30%). What can you conclude about the
-genome of the virus?
-10 • Review Questions
-405
-
-406
-10 • Review Questions
-Access for free at openstax.org.
-
-INTRODUCTION
-CHAPTER 11
-Mechanisms of Microbial
-Genetics
+26.10: Protein Structure
+-
+- Last updated
+- Save as PDF
+- Steven Farmer, Dietmar Kennepohl, Tim Soderberg, William Reusch, & Ed Vitz
+- University of Illinois Springfield
+Objectives
+After completing this section, you should be able to
+- discuss, with reference to a suitable example (either given or of your own choice), the structure of proteins, paying particular attention to distinguishing between the primary, secondary, tertiary and quaternary structure.
+- describe the α ‑helical secondary structure displayed by many proteins.
+- describe the β ‑pleated‑sheet structure displayed by many proteins.
+Key Terms
+Make certain that you can define, and use in context, the key terms below.
+- α helix
+- β pleated sheet
+- primary structure
+- quaternary structure
+- secondary structure
+- tertiary structure
+Study Notes
+Note that in a diagram of the α ‑helical structure of a protein, the C‑terminal of the protein is at the bottom of the diagram and the N‑terminal is at the top. In an α helix, such as the one shown in Figure 26.9.1, the bulky R groups are all found on the outside of the helix, where they have the most room.
+The four levels of protein structure
+Protein structure can be discussed at four distinct levels. A protein’s primary structure is two-dimensional - simply the sequence of amino acids in the peptide chain. Below is a Lewis structure of a short segment of a protein with the sequence CHEM (cysteine - histidine - glutamate - methionine)
+Secondary structure is three-dimensional, but is a local phenomenon, confined to a relatively short stretch of amino acids. For the most part, there are three important elements of secondary structure: helices, beta-sheets, and loops. In a helix, the main chain of the protein adopts the shape of a clockwise spiral staircase, and the side chains point out laterally.
+In a beta-sheet (or beta-strand) structure, two sections of protein chain are aligned side-by-side in an extended conformation. The figure below shows two different views of the same beta-sheet: in the left-side view, the two regions of protein chain are differentiated by color.
+Loops are relatively disordered segments of protein chain, but often assume a very ordered structure when in contact with a second protein or a smaller organic compound.
+Both helix and the beta-sheet structures are held together by very specific hydrogen-bonding interactions between the amide nitrogen on one amino acid and the carbonyl oxygen on another. The hydrogen bonding pattern in a section of a beta-strand is shown below.
+Secondary structure refers to the shape of a folding protein due exclusively to hydrogen bonding between its backbone amide and carbonyl groups. Secondary structure does not include bonding between the R-groups of amino acids, hydrophobic interactions, or other interactions associated with tertiary structure. The two most commonly encountered secondary structures of a polypeptide chain are α-helices and beta-pleated sheets. These structures are the first major steps in the folding of a polypeptide chain, and they establish important topological motifs that dictate subsequent tertiary structure and the ultimate function of the protein.
+α-Helices
+An α-helix is a right-handed coil of amino-acid residues on a polypeptide chain, typically ranging between 4 and 40 residues. This coil is held together by hydrogen bonds between the oxygen of C=O on top coil and the hydrogen of N-H on the bottom coil. Such a hydrogen bond is formed exactly every 4 amino acid residues, and every complete turn of the helix is only 3.6 amino acid residues. This regular pattern gives the α-helix very definite features with regards to the thickness of the coil and the length of each complete turn along the helix axis.
+The structural integrity of an α-helix is in part dependent on correct steric configuration.  Proline also destabilizes α-helices because of its irregular geometry; its R-group bonds back to the nitrogen of the amide group, which causes steric hindrance. In addition, the lack of a hydrogen on Proline's nitrogen prevents it from participating in hydrogen bonding.
+Another factor affecting α-helix stability is the total dipole moment of the entire helix due to individual dipoles of the C=O groups involved in hydrogen bonding. Stable α-helices typically end with a charged amino acid to neutralize the dipole moment.
+BETA-PLEATED SHEETS
+This structure occurs when two (or more, e.g. ψ-loop) segments of a polypeptide chain overlap one another and form a row of hydrogen bonds with each other. This can happen in a parallel arrangement:
+Or in anti-parallel arrangement:
+Parallel and anti-parallel arrangement is the direct consequence of the directionality of the polypeptide chain. In anti-parallel arrangement, the C-terminus end of one segment is on the same side as the N-terminus end of the other segment. In parallel arrangement, the C-terminus end and the N-terminus end are on the same sides for both segments. The "pleat" occurs because of the alternating planes of the peptide bonds between amino acids; the aligned amino and carbonyl group of each opposite segment alternate their orientation from facing towards each other to facing opposite directions.
+The parallel arrangement is less stable because the geometry of the individual amino acid molecules forces the hydrogen bonds to occur at an angle, making them longer and thus weaker. Contrarily, in the anti-parallel arrangement the hydrogen bonds are aligned directly opposite each other, making for stronger and more stable bonds.
+Commonly, an anti-parallel beta-pleated sheet forms when a polypeptide chain sharply reverses direction. This can occur in the presence of two consecutive proline residues, which create an angled kink in the polypeptide chain and bend it back upon itself. This is not necessary for distant segments of a polypeptide chain to form beta-pleated sheets, but for proximal segments it is a definite requirement. For short distances, the two segments of a beta-pleated sheet are separated by 4+2n amino acid residues, with 4 being the minimum number of residues.
+α-PLEATED SHEETS
+A similar structure to the beta-pleated sheet is the α-pleated sheet. This structure is energetically less favorable than the beta-pleated sheet, and is fairly uncommon in proteins. An α-pleated sheet is characterized by the alignment of its carbonyl and amino groups; the carbonyl groups are all aligned in one direction, while all the N-H groups are aligned in the opposite direction. The polarization of the amino and carbonyl groups results in a net dipole moment on the α-pleated sheet. The carbonyl side acquires a net negative charge, and the amino side acquires a net positive charge.
+A protein’s tertiary structure is the shape in which the entire protein chain folds together in three-dimensional space, and it is this level of structure that provides protein scientists with the most information about a protein’s specific function.
+While a protein's secondary and tertiary structure is defined by how the protein chain folds together, quaternary structure is defined by how two or more folded protein chains come together to form a 'superstructure'. Many proteins consist of only one protein chain, or subunit , and thus have no quaternary structure. Many other proteins consist of two identical subunits (these are called homodimers) or two non-identical subunits (these are called heterodimers).
+Quaternary structures can be quite elaborate: below we see a protein whose quaternary structure is defined by ten identical subunits arranged in two five-membered rings, forming what can be visualized as a 'double donut' shape (this is fructose 1,6-bisphosphate aldolase):
+The molecular forces that hold proteins together
+The question of exactly how a protein ‘finds’ its specific folded structure out of the vast number of possible folding patterns is still an active area of research. What is known, however, is that the forces that cause a protein to fold properly and to remain folded are the same basic noncovalent forces that we talked about in chapter 2: ion-ion, ion-dipole, dipole-dipole, hydrogen bonding, and hydrophobic (van der Waals) interactions. One interesting type of hydrophobic interaction is called ‘aromatic stacking’, and occurs when two or more planar aromatic rings on the side chains of phenylalanine, tryptophan, or tyrosine stack together like plates, thus maximizing surface area contact.
+Hydrogen bonding networks are extensive within proteins, with both side chain and main chain atoms participating. Ionic interactions often play a role in protein structure, especially on the protein surface, as negatively charged residues such as aspartate interact with positively-charged groups on lysine or arginine.
+One of the most important ideas to understand regarding tertiary structure is that a protein, when properly folded, is polar on the surface and nonpolar in the interior . It is the protein's surface that is in contact with water, and therefore the surface must be hydrophilic in order for the whole structure to be soluble. If you examine a three dimensional protein structure you will see many charged side chains (e.g. lysine, arginine, aspartate, glutamate) and hydrogen-bonding side chains (e.g. serine, threonine, glutamine, asparagine) exposed on the surface, in direct contact with water. Inside the protein, out of contact with the surrounding water, there tend to be many more hydrophobic residues such as alanine, valine, phenylalanine, etc. If a protein chain is caused to come unfolded (through exposure to heat, for example, or extremes of pH), it will usually lose its solubility and form solid precipitates, as the hydrophobic residues from the interior come into contact with water. You can see this phenomenon for yourself if you pour a little bit of vinegar (acetic acid) into milk. The solid clumps that form in the milk are proteins that have come unfolded due to the sudden acidification, and precipitated out of solution.
+In recent years, scientists have become increasing interested in the proteins of so-called ‘thermophilic’ (heat-loving) microorganisms that thrive in hot water environments such as geothermal hot springs. While the proteins in most organisms (including humans) will rapidly unfold and precipitate out of solution when put in hot water, the proteins of thermophilic microbes remain completely stable, sometimes even in water that is just below the boiling point. In fact, these proteins typically only gain full biological activity when in appropriately hot water - at room-temperature they act is if they are ‘frozen’. Is the chemical structure of these thermostable proteins somehow unique and exotic? As it turns out, the answer to this question is ‘no’: the overall three-dimensional structures of thermostable proteins look very much like those of ‘normal’ proteins. The critical difference seems to be simply that thermostable proteins have more extensive networks of noncovalent interactions, particularly ion-ion interactions on their surface, that provides them with a greater stability to heat. Interestingly, the proteins of ‘psychrophilic’ (cold-loving) microbes isolated from pockets of water in arctic ice show the opposite characteristic: they have far fewer ion-ion interactions, which gives them greater flexibility in cold temperatures but leads to their rapid unfolding in room temperature water.

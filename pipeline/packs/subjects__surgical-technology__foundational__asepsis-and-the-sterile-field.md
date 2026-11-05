@@ -1,451 +1,153 @@
 # Source pack — subjects/surgical-technology/foundational/asepsis-and-the-sterile-field
 Lesson title: Asepsis and the Sterile Field
 Level: foundational
-Match confidence: 1.04
+Match confidence: 2.38
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.04 — Microbiology-WEB § 13.1 Controlling Microbial Growth
+## Match 2.38 — LibreTexts: 1.5: Surgical Asepsis and the Principles of Sterile Technique
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Clinical_Procedures_for_Safer_Patient_Care_(Doyle_and_McCutcheon)/01%3A_Infection_Control/1.05%3A_Surgical_Asepsis_and_the_Principles_of_Sterile_Technique
 
-Learning Objectives
+1.5: Surgical Asepsis and the Principles of Sterile Technique
+Surgical Asepsis
+Asepsis refers to the absence of infectious material or infection. Surgical asepsis is the absence of all microorganisms within any type of invasive procedure. Sterile technique is a set of specific practices and procedures performed to make equipment and areas free from all microorganisms and to maintain that sterility (BC Centre for Disease Control, 2010). In the literature, surgical asepsis and sterile technique are commonly used interchangeably, but they mean different things (Kennedy, 2013). Principles of sterile technique help control and prevent infection, prevent the transmission of all microorganisms in a given area, and include all techniques that are practised to maintain sterility.
+Sterile technique is most commonly practised in operating rooms, labour and delivery rooms, and special procedures or diagnostic areas. It is also used when performing a sterile procedure at the bedside, such as inserting devices into sterile areas of the body or cavities (e.g., insertion of chest tube, central venous line, or indwelling urinary catheter). In health care, sterile technique is always used when the integrity of the skin is accessed, impaired, or broken (e.g., burns or surgical incisions). Sterile technique may include the use of sterile equipment, sterile gowns, and gloves (Perry et al., 2014).
+Sterile technique is essential to help prevent surgical site infections (SSI) , an unintended and oftentimes preventable complication arising from surgery. SSI is defined as an “infection that occurs after surgery in the area of surgery” (CDC, 2010, p. 2). Preventing and reducing SSI are the most important reasons for using sterile technique during invasive procedures and surgeries.
+Principles of Surgical Asepsis
+All personnel involved in an aseptic procedure are required to follow the principles and practice set forth by the Association of periOperative Registered Nurses (AORN). These principles must be strictly applied when performing any aseptic procedures, when assisting with aseptic procedures, and when intervening when the principles of surgical asepsis are breached. It is the responsibility of all health care workers to speak up and protect all patients from infection. See Checklist 9 for the principles of sterile technique.
+Checklist 9: Principles of Sterile TechniqueDisclaimer: Always review and follow your hospital policy regarding this specific skill. |
+|||
+Safety considerations:
+|
+|||
+Steps |
+Additional Information |
+||
+| 1. All objects used in a sterile field must be sterile. |
+Commercially packaged sterile supplies are marked as sterile; other packaging will be identified as sterile according to agency policy.
+Check packages for sterility by assessing intactness, dryness, and expiry date prior to use. Any torn, previously opened, or wet packaging, or packaging that has been dropped on the floor, is considered non-sterile and may not be used in the sterile field. |
+||
+| 2. A sterile object becomes non-sterile when touched by a non-sterile object. |
+Sterile objects must only be touched by sterile equipment or sterile gloves.
+Whenever the sterility of an object is questionable, consider it non-sterile. Fluid flows in the direction of gravity. Keep the tips of forceps down during a sterile procedure to prevent fluid travelling over entire forceps and potentially contaminating the sterile field. |
+||
+| 3. Sterile items that are below the waist level, or items held below waist level, are considered to be non-sterile. |
+Keep all sterile equipment and sterile gloves above waist level.
+Table drapes are only sterile at waist level. |
+||
+| 4. Sterile fields must always be kept in sight to be considered sterile. |
+Sterile fields must always be kept in sight throughout entire sterile procedure.
+Never turn your back on the sterile field as sterility cannot be guaranteed. |
+||
+| 5. When opening sterile equipment and adding supplies to a sterile field, take care to avoid contamination. |
+Set up sterile trays as close to the time of use as possible.
+ Place large items on the sterile field using sterile gloves or sterile transfer forceps. Sterile objects can become non-sterile by prolonged exposure to airborne microorganisms. |
+||
+| 6. Any puncture, moisture, or tear that passes through a sterile barrier must be considered contaminated. | Keep sterile surface dry and replace if wet or torn. | ||
+| 7. Once a sterile field is set up, the border of one inch at the edge of the sterile drape is considered non-sterile. | Place all objects inside the sterile field and away from the one-inch border. | ||
+| 8. If there is any doubt about the sterility of an object, it is considered non-sterile. | Known sterility must be maintained throughout any procedure. | ||
+| 9. Sterile persons or sterile objects may only contact sterile areas; non-sterile persons or items contact only non-sterile areas. |
+The front of the sterile gown is sterile between the shoulders and the waist, and from the sleeves to two inches below the elbow.
+Non-sterile items should not cross over the sterile field. For example, a non-sterile person should not reach over a sterile field. When opening sterile equipment, follow best practice for adding supplies to a sterile field to avoid contamination. Do not place non-sterile items in the sterile field. |
+||
+| 10. Movement around and in the sterile field must not compromise or contaminate the sterile field. |
+Do not sneeze, cough, laugh, or talk over the sterile field.
+Maintain a safe space or margin of safety between sterile and non-sterile objects and areas. Refrain from reaching over the sterile field. Keep operating room (OR) traffic to a minimum, and keep doors closed. Keep hair tied back. When pouring sterile solutions, only the lip and inner cap of the pouring container is considered sterile. The pouring container must not touch any part of the sterile field. Avoid splashes. |
+||
+| Data source: Kennedy, 2013; Infection Control Today, 2000; ORNAC, 2011; Perry et al., 2014; Rothrock, 2014 |
+Critical Thinking Exercises
+- When should a sterile field be opened (under normal circumstances)?
+- What part of the sterile field is considered non-sterile?
+
+## Match 1.74 — LibreTexts: 4.4: Sterile Fields
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Nursing_Skills_(OpenRN)/04%3A_Aseptic_Technique/4.04%3A_Sterile_Fields
+
+4.4: Sterile Fields
+A sterile field is established whenever a patient’s skin is intentionally punctured or incised, during procedures involving entry into a body cavity, or when contact with nonintact skin is possible (e.g., surgery or trauma). Surgical asepsis requires adherence to strict principles and intentional actions to prevent contamination and to maintain the sterility of specific parts of a sterile field during invasive procedures. Creating and maintaining a sterile field is foundational to aseptic technique and encompasses practice standards that are performed immediately prior to and during a procedure to reduce the risk of infection, including the following:
+- Handwashing
+- Using sterile barriers, including drapes and appropriate personal protective equipment
+- Preparing the patient using an approved antimicrobial product
+- Maintaining a sterile field
+- Using aseptically safe techniques
+There are basic principles of asepsis that are critical to understand and follow when creating and maintaining a sterile field. The most basic principle is to allow only sterile supplies within the sterile field once it is established. This means that prior to using any supplies, exterior packaging must be checked for any signs of damage, such as previous exposure to moisture, holes, or tears. Packages should not be used if they are expired or if sterilization indicators are not the appropriate color. Sterile contents inside packages are dispensed onto the sterile field using the methods outlined below. See Figure \(\PageIndex{1}\) [1] for an image of a nurse dispensing sterile supplies from packaging onto an established sterile field.
+When establishing and maintaining a sterile field, there are other important principles to strictly follow:
+- Disinfect any work surfaces and allow to them thoroughly dry before placing any sterile supplies on the surface.
+-
+Be aware of areas of sterile fields that are considered contaminated:
+- Any part of the field within 1 inch from the edge.
+- Any part of the field that extends below the planar surface (i.e., a drape hanging down below the tray tabletop).
+- Any part of the field below waist level or above shoulder level.
+- Any supplies or field that you have not directly monitored (i.e., turned away from the sterile field or walked out of the room).
+- Within 1 inch of any visible holes, tears, or moisture wicked from an unsterile area.
+-
+When handling sterile kits and trays:
+- Sterile kits and trays generally have an outer protective wrapper and four inner flaps that must be opened aseptically.
+- Open sterile kits away from your body first, touching only the very edge of the opening flap.
+- Using the same technique, open each of the side flaps one at a time using only one hand, being careful not to allow your body or arms to be directly above the opened drape. Take care not to allow already-opened corners to flip back into the sterile area again.
+- Open the final flap toward you, being careful to not allow any part of your body to be directly over the field. See Figure \(\PageIndex{2}\) [2] for images of opening the flaps of a sterile kit.
+- If you must remove parts of the sterile kit (i.e., sterile gloves), reach into the sterile field with the elbow raised, using only the tips of the fingers before extracting. Pay close attention to where your body and clothing are in relationship to the sterile field to avoid inadvertent contamination.
+-
+When dispensing sterile supplies onto a sterile field:
+- Before dispensing sterile supplies to a sterile field, do not allow sterile items to touch any part of the outer packaging once it is opened, including the former package seal.
+- Heavy or irregular items should be opened and held, allowing a second person with sterile gloves to transfer them to the sterile field.
+- Wrapped sterile items should be opened similarly to a sterile kit. Tuck each flap securely within your palm, and then open the flap away from your body first. Then open each side flap; secure the flap in the palm one at a time and open. Finally, open the flap (closest to you) toward you, while also protecting the other opened flaps from springing back onto the wrapped item.
+- Peel pouches (i.e., gloves, gauze, syringes, etc.) can be opened by firmly grasping each side of the sealed edge with the thumb side of each hand parallel to the seal and pulling carefully apart.
+- Drop items from six inches away from the sterile field.
+- Sterile solutions should be poured into a sterile bowl or tray from the side of the sterile field and not directly over it. Use only sealed, sterile, unexpired solutions when pouring onto a sterile field. Solution should be held six inches away from the field as it is being poured. Avoid splashing solutions because this allows wicking and transfer of microbes. After pouring of solution stops, it should not be restarted because the edge is considered contaminated. See Figure \(\PageIndex{3}\) [3] of an image of a nurse pouring sterile solution into a receptacle in a sterile field before the procedure begins.
+- Don sterile gloves away from the sterile field to avoid contaminating the sterile field.
+- “DSC_0319-1024x678.jpg” by British Columbia Institute of Technology is licensed under CC BY 4.0 . Access for free at https://opentextbc.ca/clinicalskills/chapter/sterile-gloving/ ↵
+- “Book-pictures-2015-700.jpg," "Book-pictures-2015-706.jpg," "Book-pictures-2015-708.jpg," and "Book-pictures-2015-709.jpg” by British Columbia Institute of Technology are licensed under CC BY 4.0 . Access for free at https://opentextbc.ca/clinicalskills/chapter/sterile-gloving/ ↵
+- “DSC_0313.jpg” by British Columbia Institute of Technology is licensed under CC BY 4.0 . Access for free at https://opentextbc.ca/clinicalskills/chapter/sterile-gloving/ ↵
+
+## Match 1.71 — LibreTexts: 6.3: Sterile Technique
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Nursing/Clinical_Nursing_Skills_(OpenStax)/06%3A_Infection_Prevention_Techniques_and_Safety_in_the_Clinical_Setting/6.03%3A_Sterile_Technique
+
+6.3: Sterile Technique
 By the end of this section, you will be able to:
-•
-Compare disinfectants, antiseptics, and sterilants
-•
-Describe the principles of controlling the presence of microorganisms through sterilization and disinfection
-•
-Differentiate between microorganisms of various biological safety levels and explain methods used for
-handling microbes at each level
-To prevent the spread of human disease, it is necessary to control the growth and abundance of microbes in or
-on various items frequently used by humans. Inanimate items, such as doorknobs, toys, or towels, which may
-harbor microbes and aid in disease transmission, are called fomites. Two factors heavily influence the level of
-cleanliness required for a particular fomite and, hence, the protocol chosen to achieve this level. The first
-factor is the application for which the item will be used. For example, invasive applications that require
-insertion into the human body require a much higher level of cleanliness than applications that do not. The
-second factor is the level of resistance to antimicrobial treatment by potential pathogens. For example, foods
-preserved by canning often become contaminated with the bacterium Clostridium botulinum, which produces
-the neurotoxin that causes botulism. Because C. botulinum can produce endospores that can survive harsh
-conditions, extreme temperatures and pressures must be used to eliminate the endospores. Other organisms
-may not require such extreme measures and can be controlled by a procedure such as washing clothes in a
-laundry machine.
-Laboratory Biological Safety Levels
-For researchers or laboratory personnel working with pathogens, the risks associated with specific pathogens
-determine the levels of cleanliness and control required. The Centers for Disease Control and Prevention (CDC)
-and the National Institutes of Health (NIH) have established four classification levels, called “biological safety
-levels” (BSLs). Various organizations around the world, including the World Health Organization (WHO) and
-the European Union (EU), use a similar classification scheme. According to the CDC, the BSL is determined by
-the agent’s infectivity, ease of transmission, and potential disease severity, as well as the type of work being
-done with the agent.2
-Each BSL requires a different level of biocontainment to prevent contamination and spread of infectious
-agents to laboratory personnel and, ultimately, the community. For example, the lowest BSL, BSL-1, requires
-the fewest precautions because it applies to situations with the lowest risk for microbial infection.
-BSL-1 agents are those that generally do not cause infection in healthy human adults. These include
-noninfectious bacteria, such as nonpathogenic strains of Escherichia coli and Bacillus subtilis, and viruses
-Clinical Focus
-Part 1
-Roberta is a 46-year-old real estate agent who recently underwent a cholecystectomy (surgery to remove
-painful gallstones). The surgery was performed laparoscopically with the aid of a duodenoscope, a
-specialized endoscope that allows surgeons to see inside the body with the aid of a tiny camera. On
-returning home from the hospital, Roberta developed abdominal pain and a high fever. She also
-experienced a burning sensation during urination and noticed blood in her urine. She notified her surgeon
-of these symptoms, per her postoperative instructions.
-•
-What are some possible causes of Roberta’s symptoms?
-Jump to the next Clinical Focus box.
-2 US Centers for Disease Control and Prevention. “Recognizing the Biosafety Levels.” http://www.cdc.gov/training/quicklearns/
-biosafety/. Accessed June 7, 2016.
-508
-13 • Control of Microbial Growth
-Access for free at openstax.org.
-
-known to infect animals other than humans, such as baculoviruses (insect viruses). Because working with
-BSL-1 agents poses very little risk, few precautions are necessary. Laboratory workers use standard aseptic
-technique and may work with these agents at an open laboratory bench or table, wearing personal protective
-equipment (PPE) such as a laboratory coat, goggles, and gloves, as needed. Other than a sink for handwashing
-and doors to separate the laboratory from the rest of the building, no additional modifications are needed.
-Agents classified as BSL-2 include those that pose moderate risk to laboratory workers and the community,
-and are typically “indigenous,” meaning that they are commonly found in that geographical area. These
-include bacteria such as Staphylococcus aureus and Salmonella spp., and viruses like hepatitis, mumps, and
-measles viruses. BSL-2 laboratories require additional precautions beyond those of BSL-1, including restricted
-access; required PPE, including a face shield in some circumstances; and the use of biological safety cabinets
-for procedures that may disperse agents through the air (called “aerosolization”). BSL-2 laboratories are
-equipped with self-closing doors, an eyewash station, and an autoclave, which is a specialized device for
-sterilizing materials with pressurized steam before use or disposal. BSL-1 laboratories may also have an
-autoclave.
-BSL-3 agents have the potential to cause lethal infections by inhalation. These may be either indigenous or
-“exotic,” meaning that they are derived from a foreign location, and include pathogens such as Mycobacterium
-tuberculosis, Bacillus anthracis, West Nile virus, and human immunodeficiency virus (HIV). Because of the
-serious nature of the infections caused by BSL-3 agents, laboratories working with them require restricted
-access. Laboratory workers are under medical surveillance, possibly receiving vaccinations for the microbes
-with which they work. In addition to the standard PPE already mentioned, laboratory personnel in BSL-3
-laboratories must also wear a respirator and work with microbes and infectious agents in a biological safety
-cabinet at all times. BSL-3 laboratories require a hands-free sink, an eyewash station near the exit, and two
-sets of self-closing and locking doors at the entrance. These laboratories are equipped with directional airflow,
-meaning that clean air is pulled through the laboratory from clean areas to potentially contaminated areas.
-This air cannot be recirculated, so a constant supply of clean air is required.
-BSL-4 agents are the most dangerous and often fatal. These microbes are typically exotic, are easily
-transmitted by inhalation, and cause infections for which there are no treatments or vaccinations. Examples
-include Ebola virus and Marburg virus, both of which cause hemorrhagic fevers, and smallpox virus. There are
-only a small number of laboratories in the United States and around the world appropriately equipped to work
-with these agents. In addition to BSL-3 precautions, laboratory workers in BSL-4 facilities must also change
-their clothing on entering the laboratory, shower on exiting, and decontaminate all material on exiting. While
-working in the laboratory, they must either wear a full-body protective suit with a designated air supply or
-conduct all work within a biological safety cabinet with a high-efficiency particulate air (HEPA)-filtered air
-supply and a doubly HEPA-filtered exhaust. If wearing a suit, the air pressure within the suit must be higher
-than that outside the suit, so that if a leak in the suit occurs, laboratory air that may be contaminated cannot be
-drawn into the suit (Figure 13.2). The laboratory itself must be located either in a separate building or in an
-isolated portion of a building and have its own air supply and exhaust system, as well as its own
-decontamination system. The BSLs are summarized in Figure 13.3.
-13.1 • Controlling Microbial Growth
-509
-
-Figure 13.2
-A protective suit like this one is an additional precaution for those who work in BSL-4 laboratories. This suit has its own air
-supply and maintains a positive pressure relative to the outside, so that if a leak occurs, air will flow out of the suit, not into it from the
-laboratory. (Credit: James Gathany, CDC, public domain)
-Figure 13.3
-The CDC classifies infectious agents into four biosafety levels based on potential risk to laboratory personnel and the
-510
-13 • Control of Microbial Growth
-Access for free at openstax.org.
-
-community. Each level requires a progressively greater level of precaution. (credit “pyramid”: modification of work by Centers for Disease
-Control and Prevention)
-LINK TO LEARNING
-To learn more (https://openstax.org/l/22cdcfourbsls) about the four BSLs, visit the CDC’s website.
-CHECK YOUR UNDERSTANDING
-•
-What are some factors used to determine the BSL necessary for working with a specific pathogen?
+- Describe the different levels of clean and how to achieve each
+- Recall common methods of sterilization and disinfection in the healthcare setting
+- Demonstrate the different principles of sterile technique
+Environmental cleanliness is a foundational concept in nursing. Maintaining a clean environment is essential for preventing infectious disease and the spread of HAIs. In the absence of a properly cleaned environment, the acts of handwashing and donning PPE are substantially less effective in the spread of infection and transfer of pathogens. Nurses must recognize which items in the healthcare environment should be cleaned as well as the proper way this cleaning should be done. They must also be able to identify when an item is contaminated and the proper steps that must be taken for disposal or sterilization. Agency policies, along with governmental guidelines, will help nurses seeking specific answers to these questions.
+Levels of Clean
+For the chain of infection (see Figure 6.2) to be broken, it is critical that nurses comprehend the proper knowledge and resources for how to clean their environment. To minimize the risk of transmission of infection, there are three levels of cleanliness, in increasing degrees of purity, that specify how specific objects and items should be cleaned: sanitization, disinfection, or sterilization. The concepts of asepsis discussed in 6.2 Asepsis and PPE provides a strong foundation for the three levels of cleanliness.
+Sanitization
+The removal of visible soil from objects and materials using water with detergents or products that are enzymatically formulated to inhibit microbial growth is called sanitation . Sanitation and cleaning coincide with the goal of medical asepsis, which is to keep all employee and patient-care areas free of debris and contamination. All items must first be cleaned before they can be disinfected or sterilized.
+See the competency checklist for Surgical Hand Scrub and Gloving. You can find the checklists on the Student resources tab of your book page on openstax.org.
+Disinfection
+The process of disinfection removes microorganisms and disease-causing pathogens from inanimate objects. This process is completed on both semicritical and noncritical items. Semicritical items include items that have contact with mucous membranes or nonintact skin. Examples of these types of items include reusable devices, such as endoscopes and respiratory therapy equipment. Noncritical items have contact with skin but not mucous membranes. Because of this, they do not carry a high risk of infection transmission. Examples of these items include stethoscopes, blood pressure cuffs, and bed linens.
 Sterilization
-The most extreme protocols for microbial control aim to achieve sterilization: the complete removal or killing
-of all vegetative cells, endospores, and viruses from the targeted item or environment. Sterilization protocols
-are generally reserved for laboratory, medical, manufacturing, and food industry settings, where it may be
-imperative for certain items to be completely free of potentially infectious agents. Sterilization can be
-accomplished through either physical means, such as exposure to high heat, pressure, or filtration through an
-appropriate filter, or by chemical means. Chemicals that can be used to achieve sterilization are called
-sterilants. Sterilants effectively kill all microbes and viruses, and, with appropriate exposure time, can also kill
-endospores.
-For many clinical purposes, aseptic technique is necessary to prevent contamination of sterile surfaces.
-Aseptic technique involves a combination of protocols that collectively maintain sterility, or asepsis, thus
-preventing contamination of the patient with microbes and infectious agents. Failure to practice aseptic
-technique during many types of clinical procedures may introduce microbes to the patient’s body and put the
-patient at risk for sepsis, a systemic inflammatory response to an infection that results in high fever, increased
-heart and respiratory rates, shock, and, possibly, death. Medical procedures that carry risk of contamination
-must be performed in a sterile field, a designated area that is kept free of all vegetative microbes, endospores,
-and viruses. Sterile fields are created according to protocols requiring the use of sterilized materials, such as
-packaging and drapings, and strict procedures for washing and application of sterilants. Other protocols are
-followed to maintain the sterile field while the medical procedure is being performed.
-One food sterilization protocol, commercial sterilization, uses heat at a temperature low enough to preserve
-food quality but high enough to destroy common pathogens responsible for food poisoning, such as C.
-botulinum. Because C. botulinum and its endospores are commonly found in soil, they may easily contaminate
-crops during harvesting, and these endospores can later germinate within the anaerobic environment once
-foods are canned. Metal cans of food contaminated with C. botulinum will bulge due to the microbe’s
-production of gases; contaminated jars of food typically bulge at the metal lid. To eliminate the risk for C.
-botulinum contamination, commercial food-canning protocols are designed with a large margin of error. They
-assume an impossibly large population of endospores (1012 per can) and aim to reduce this population to 1
-endospore per can to ensure the safety of canned foods. For example, low- and medium-acid foods are heated
-to 121 °C for a minimum of 2.52 minutes, which is the time it would take to reduce a population of 1012
-endospores per can down to 1 endospore at this temperature. Even so, commercial sterilization does not
-eliminate the presence of all microbes; rather, it targets those pathogens that cause spoilage and foodborne
-diseases, while allowing many nonpathogenic organisms to survive. Therefore, “sterilization” is somewhat of a
-misnomer in this context, and commercial sterilization may be more accurately described as “quasi-
-sterilization.”
-CHECK YOUR UNDERSTANDING
-•
-What is the difference between sterilization and aseptic technique?
-13.1 • Controlling Microbial Growth
-511
-
-LINK TO LEARNING
-The Association of Surgical Technologists publishes standards (https://openstax.org/l/22ASTstanasepte) for
-aseptic technique, including creating and maintaining a sterile field.
-Other Methods of Control
-Sterilization protocols require procedures that are not practical, or necessary, in many settings. Various other
-methods are used in clinical and nonclinical settings to reduce the microbial load on items. Although the
-terms for these methods are often used interchangeably, there are important distinctions (Figure 13.4).
-The process of disinfection inactivates most microbes on the surface of a fomite by using antimicrobial
-chemicals or heat. Because some microbes remain, the disinfected item is not considered sterile. Ideally,
-disinfectants should be fast acting, stable, easy to prepare, inexpensive, and easy to use. An example of a
-natural disinfectant is vinegar; its acidity kills most microbes. Chemical disinfectants, such as chlorine bleach
-or products containing chlorine, are used to clean nonliving surfaces such as laboratory benches, clinical
-surfaces, and bathroom sinks. Typical disinfection does not lead to sterilization because endospores tend to
-survive even when all vegetative cells have been killed.
-Unlike disinfectants, antiseptics are antimicrobial chemicals safe for use on living skin or tissues. Examples of
-antiseptics include hydrogen peroxide and isopropyl alcohol. The process of applying an antiseptic is called
-antisepsis. In addition to the characteristics of a good disinfectant, antiseptics must also be selectively
-effective against microorganisms and able to penetrate tissue deeply without causing tissue damage.
-The type of protocol required to achieve the desired level of cleanliness depends on the particular item to be
-cleaned. For example, those used clinically are categorized as critical, semicritic
-
-## Match 1.02 — College_Physics-WEB_2s5sHvR § 18.5 Electric Field Lines: Multiple Charges
-
-Drawings using lines to represent electric fields around charged objects are very useful in visualizing field strength and
-direction. Since the electric field has both magnitude and direction, it is a vector. Like all vectors, the electric field can be
-represented by an arrow that has length proportional to its magnitude and that points in the correct direction. (We have used
-arrows extensively to represent force vectors, for example.)
-18.14
-18.15
-776
-Chapter 18 • Electric Charge and Electric Field
-Access for free at openstax.org.
-
-Figure 18.22 shows two pictorial representations of the same electric field created by a positive point charge
-. Figure 18.22 (b)
-shows the standard representation using continuous lines. Figure 18.22 (a) shows numerous individual arrows with each arrow
-representing the force on a test charge . Field lines are essentially a map of infinitesimal force vectors.
-Figure 18.22 Two equivalent representations of the electric field due to a positive charge
-. (a) Arrows representing the electric field’s
-magnitude and direction. (b) In the standard representation, the arrows are replaced by continuous field lines having the same direction at
-any point as the electric field. The closeness of the lines is directly related to the strength of the electric field. A test charge placed
-anywhere will feel a force in the direction of the field line; this force will have a strength proportional to the density of the lines (being
-greater near the charge, for example).
-Note that the electric field is defined for a positive test charge , so that the field lines point away from a positive charge and
-toward a negative charge. (See Figure 18.23.) The electric field strength is exactly proportional to the number of field lines per
-unit area, since the magnitude of the electric field for a point charge is
-and area is proportional to
-. This pictorial
-representation, in which field lines represent the direction and their closeness (that is, their areal density or the number of lines
-crossing a unit area) represents strength, is used for all fields: electrostatic, gravitational, magnetic, and others.
-Figure 18.23 The electric field surrounding three different point charges. (a) A positive charge. (b) A negative charge of equal magnitude. (c)
-A larger negative charge.
-In many situations, there are multiple charges. The total electric field created by multiple charges is the vector sum of the
-individual fields created by each charge. The following example shows how to add electric field vectors.
-EXAMPLE 18.4
-Adding Electric Fields
-Find the magnitude and direction of the total electric field due to the two point charges,
-and
-, at the origin of the
-coordinate system as shown in Figure 18.24.
-18.5 • Electric Field Lines: Multiple Charges
-777
-
-Figure 18.24 The electric fields
-and
-at the origin O add to
-.
-Strategy
-Since the electric field is a vector (having magnitude and direction), we add electric fields with the same vector techniques used
-for other types of vectors. We first must find the electric field due to each charge at the point of interest, which is the origin of
-the coordinate system (O) in this instance. We pretend that there is a positive test charge, , at point O, which allows us to
-determine the direction of the fields
-and
-. Once those fields are found, the total field can be determined using vector
-addition.
-Solution
-The electric field strength at the origin due to
-is labeled
-and is calculated:
-Similarly,
-is
-Four digits have been retained in this solution to illustrate that
-is exactly twice the magnitude of
-. Now arrows are drawn
-to represent the magnitudes and directions of
-and
-. (See Figure 18.24.) The direction of the electric field is that of the
-force on a positive charge so both arrows point directly away from the positive charges that create them. The arrow for
-is
-exactly twice the length of that for
-. The arrows form a right triangle in this case and can be added using the Pythagorean
-theorem. The magnitude of the total field
-is
-The direction is
-or
-above the x-axis.
-Discussion
-In cases where the electric field vectors to be added are not perpendicular, vector components or graphical techniques can be
-18.16
-18.17
-18.18
-18.19
-778
-Chapter 18 • Electric Charge and Electric Field
-Access for free at openstax.org.
-
-used. The total electric field found in this example is the total electric field at only one point in space. To find the total electric
-field due to these two charges over an entire region, the same technique must be repeated for each point in the region. This
-impossibly lengthy task (there are an infinite number of points in space) can be avoided by calculating the total field at
-representative points and using some of the unifying features noted next.
-Figure 18.25 shows how the electric field from two point charges can be drawn by finding the total field at representative points
-and drawing electric field lines consistent with those points. While the electric fields from multiple charges are more complex
-than those of single charges, some simple features are easily noticed.
-For example, the field is weaker between like charges, as shown by the lines being farther apart in that region. (This is because
-the fields from each charge exert opposing forces on any charge placed between them.) (See Figure 18.25 and Figure 18.26(a).)
-Furthermore, at a great distance from two like charges, the field becomes identical to the field from a single, larger charge.
-Figure 18.26(b) shows the electric field of two unlike charges. The field is stronger between the charges. In that region, the fields
-from each charge are in the same direction, and so their strengths add. The field of two unlike charges is weak at large distances,
-because the fields of the individual charges are in opposite directions and so their strengths subtract. At very large distances, the
-field of two unlike charges looks like that of a smaller single charge.
-Figure 18.25 Two positive point charges
-and
-produce the resultant electric field shown. The field is calculated at representative
-points and then smooth field lines drawn following the rules outlined in the text.
-18.5 • Electric Field Lines: Multiple Charges
-779
-
-Figure 18.26 (a) Two negative charges produce the fields shown. It is very similar to the field produced by two positive charges, except that
-the directions are reversed. The field is clearly weaker between the charges. The individual forces on a test charge in that region are in
-opposite directions. (b) Two opposite charges produce the field shown, which is stronger in the region between the charges.
-We use electric field lines to visualize and analyze electric fields (the lines are a pictorial tool, not a physical entity in
-themselves). The properties of electric field lines for any charge distribution can be summarized as follows:
-1.
-Field lines must begin on positive charges and terminate on negative charges, or at infinity in the hypothetical case of
-isolated charges.
-2.
-The number of field lines leaving a positive charge or entering a negative charge is proportional to the magnitude of the
-charge.
-3.
-The strength of the field is proportional to the closeness of the field lines—more precisely, it is proportional to the number
-of lines per unit area perpendicular to the lines.
-4.
-The direction of the electric field is tangent to the field line at any point in space.
-5.
-Field lines can never cross.
-The last property means that the field is unique at any point. The field line represents the direction of the field; so if they crossed,
-the field would have two directions at that location (an impossibility if the field is unique).
-
-## Match 1.02 — College_Physics_2e-WEB_7Zesafu § 18.5 Electric Field Lines: Multiple Charges
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Calculate the total force (magnitude and direction) exerted on a test charge from more than one charge
-•
-Describe an electric field diagram of a positive point charge; of a negative point charge with twice the
-magnitude of positive charge
-•
-Draw the electric field lines between two points of the same charge; between two points of opposite
-charge.
-Drawings using lines to represent electric fields around charged objects are very useful in visualizing field strength
-and direction. Since the electric field has both magnitude and direction, it is a vector. Like all vectors, the electric
-field can be represented by an arrow that has length proportional to its magnitude and that points in the correct
-direction. (We have used arrows extensively to represent force vectors, for example.)
-Figure 18.19 shows two pictorial representations of the same electric field created by a positive point charge
-.
-Figure 18.19 (b) shows the standard representation using continuous lines. Figure 18.19 (a) shows numerous
-individual arrows with each arrow representing the force on a test charge . Field lines are essentially a map of
-infinitesimal force vectors.
-FIGURE 18.19 Two equivalent representations of the electric field due to a positive charge
-. (a) Arrows representing the electric field’s
-magnitude and direction. (b) In the standard representation, the arrows are replaced by continuous field lines having the same direction at
-any point as the electric field. The closeness of the lines is directly related to the strength of the electric field. A test charge placed
-anywhere will feel a force in the direction of the field line; this force will have a strength proportional to the density of the lines (being
-greater near the charge, for example).
-Note that the electric field is defined for a positive test charge , so that the field lines point away from a positive
-charge and toward a negative charge. (See Figure 18.20.) The electric field strength is exactly proportional to the
-number of field lines per unit area, since the magnitude of the electric field for a point charge is
-and
-area is proportional to
-. This pictorial representation, in which field lines represent the direction and their
-closeness (that is, their areal density or the number of lines crossing a unit area) represents strength, is used for all
-fields: electrostatic, gravitational, magnetic, and others.
-788
-18 • Electric Charge and Electric Field
-Access for free at openstax.org
-
-FIGURE 18.20 The electric field surrounding three different point charges. (a) A positive charge. (b) A negative charge of equal magnitude.
-(c) A larger negative charge.
-In many situations, there are multiple charges. The total electric field created by multiple charges is the vector sum
-of the individual fields created by each charge. The following example shows how to add electric field vectors.
-EXAMPLE 18.4
-Adding Electric Fields
-Find the magnitude and direction of the total electric field due to the two point charges,
-and
-, at the origin of
-the coordinate system as shown in Figure 18.21.
-FIGURE 18.21 The electric fields
-and
-at the origin O add to
-.
-Strategy
-Since the electric field is a vector (having magnitude and direction), we add electric fields with the same vector
-techniques used for other types of vectors. We first must find the electric field due to each charge at the point of
-interest, which is the origin of the coordinate system (O) in this instance. We pretend that there is a positive test
-charge, , at point O, which allows us to determine the direction of the fields
-and
-. Once those fields are
-found, the total field can be determined using vector addition.
-Solution
-The electric field strength at the origin due to
-is labeled
-and is calculated:
-Similarly,
-is
-Four digits have been retained in this solution to illustrate that
-is exactly twice the magnitude of
-. Now arrows
-18.16
-18.17
-18.5 • Electric Field Lines: Multiple Charges
-789
-
-are drawn to represent the magnitudes and directions of
-and
-. (See Figure 18.21.) The direction of the electric
-field is that of the force on a positive charge so both arrows point directly away from the positive charges that create
-them. The arrow for
-is exactly twice the length of that for
-. The arrows form a right triangle in this case and
-can be added using the Pythagorean theorem. The magnitude of the total field
-is
-The direction is
-or
-above the x-axis.
-Discussion
-In cases where the electric field vectors to be added are not perpendicular, vector components or graphical
-techniques can be used. The total electric field found in this example is the total electric field at only one point in
-space. To find the total electric field due to these two charges over an entire region, the same technique must be
-repeated for each point in the region. This impossibly lengthy task (there are an infinite number of points in space)
-can be avoided by calculating the total field at representative points and using some of the unifying features noted
-next.
-Figure 18.22 shows how the electric field from two point charges can be drawn by finding the total field at
-representative points and drawing electric field lines consistent with those points. While the electric fields from
-multiple charges are more complex than those of single charges, some simple features are easily noticed.
-For example, the field is weaker between like charges, as shown by the lines being farther apart in that region. (This
-is because the fields from each charge exert opposing forces on any charge placed between them.) (See Figure
-18.22 and Figure 18.23(a).) Furthermore, at a great distance from two like charges, the field becomes identical to
-the field from a single, larger charge.
-Figure 18.23(b) shows the electric field of two unlike charges. The field is stronger between the charges. In that
-region, the fields from each charge are in the same direction, and so their strengths add. The field of two unlike
-charges is weak at large distances, because the fields of the individual charges are in opposite directions and so
-their strengths subtract. At very large distances, the field of two unlike charges looks like that of a smaller single
-charge.
-18.18
-18.19
-790
-18 • Electric Charge and Electric Field
-Access for free at openstax.org
-
-FIGURE 18.22 Two positive point charges
-and
-produce the resultant electric field shown. The field is calculated at representative
-points and then smooth field lines drawn following the rules outlined in the text.
-FIGURE 18.23 (a) Two negative charges produce the fields shown. It is very similar to the field produced by two positive charges, except
-that the directions are reversed. The field is clearly weaker between the charges. The individual forces on a test charge in that region are in
-opposite directions. (b) Two opposite charges produce the field shown, which is stronger in the region between the charges.
-We use electric field lines to visualize and analyze electric fields (the lines are a pictorial tool, not a physical entity in
-themselves). The properties of electric field lines for any charge distribution can be summarized as follows:
-1.
-Field lines must begin on positive charges and terminate on negative charges, or at infinity in the hypothetical
-case of isolated charges.
-2.
-The number of field lines leaving a positive charge or entering a negative charge is proportional to the
-magnitude of the charge.
-3.
-The strength of the field is proportional to the closeness of the field lines—more precisely, it is proportional to
-the number of lines per unit area perpendicular to the lines.
-4.
-The direction of the electric field is tangent to the field line at any point in space.
-5.
-Field lines can never cross.
-The last property means that the field is unique at any point. The field line represents the direction of the field; so if
-they crossed, the field would have two directions at that location (an impossibility if the field is unique).
-18.5 • Electric Field Lines: Multiple Charges
-791
-
-PHET EXPLORATIONS
-Charges and Fields
-Move point charges around on the playing field and then view the electric field, voltages, equipotential lines, and
-more. It's colorful, it's dynamic, it's free.
-Click to view content (https://openstax.org/books/college-physics-2e/pages/18-5-electric-field-lines-multiple-
-charges)
+The process of sterilization is a procedure that eliminates all microorganisms and spores in or on an object. Critical items require sterilization due to their high risk for infection if they are contaminated. Examples of this include all surgical instruments, catheters, needles, and chest tubes.
+A tool that nurses may use in a healthcare setting is an autoclave (Figure 6.9). Autoclaves use high-pressure steam for a designated amount of time to kill pathogens on objects of various shapes and sizes. Common examples are surgical tools, lab instruments, and pharmaceutical objects. Nurses may have various roles in sterilization dependent upon their healthcare setting. Nurses in an outpatient office setting may be responsible for the entire sterilization process, while in contrast, in a surgical setting there may be technicians who complete this process. Nurses must be aware of their specific responsibility in sterilization and develop those skills accordingly.
+See the competency checklist for Sanitizing Instruments. You can find the checklists on the Student resources tab of your book page on openstax.org.
+Methods of Sterilization and Disinfection
+The process of disinfection is carried out by using chemical disinfectants. While some chemicals may have a broad spectrum of effectiveness, those that have a narrower spectrum are typically easier to use and less toxic. Common chemicals used as disinfectants include alcohol, hydrogen peroxide, and chlorine. Sterilization can be done by both physical and chemical methods, or a combination of both.
+Physical
+The process of physical sterilization within a hospital uses large equipment, such as autoclaving with steam. The steam heats up to 250 to 273°F (121 to 134°C) and inactivates all fungi, bacteria , viruses, and bacterial spores. Steam sterilization is the most common form of physical sterilization used in hospitals. Heat can also be used to sterilize by heating, flaming, incineration, boiling in water, and dry heat.
+Chemical
+Chemical sterilization uses products, such as ethylene oxide, concentrated bleach, and formaldehyde. This type of sterilization is typically used for instruments, such as those containing rubber, plastic, or glass, that could not tolerate high heat temperatures and/or humidity.
+In May 2022, the World Health Organization released a Global Strategy on Infection Prevention and Control to promote the prevention of infections in all healthcare settings.
+Principles of Sterile Technique
+A sterile technique is the use of practices and procedures that inhibit microorganisms in a specific environment and prevent contamination. This technique is an essential element for patient safety, and it is vital that all nurses understand the principles of the skill. Sterile technique is most commonly practiced in operating rooms and during special procedures, diagnostics, and labor and delivery. It is also used at the bedside for sterile procedures, such as the insertion of chest tubes, central venous lines, and indwelling urinary catheters.
+Definition: Quality and Safety Education for Nurses (QSEN) competencies were designed to emphasize key elements that pre-licensure nursing students should be competent in at the time of graduation. Employing evidence-based practice means “integrating best current evidence with clinical expertise and patient/family preferences and values for delivery of optimal health care.”
+Sterile technique entails using evidence-based practices and procedures to minimize pathogens and deter contamination in a healthcare environment. Student nurses must know these practices, as recommended by governmental bodies and healthcare-setting policies. Students must demonstrate effective use of sterile technique to reduce risk of harm to self or others.
+Clinical scenario: Prior to initiating sterile technique, the nurse must take several critical steps to ensure sterility:
+Step 1:
+Always perform hand hygiene before initiating any sterile procedure.
+Step 2:
+Ensure all working surfaces remain clean and dry.
+Step 3:
+Verify you have all supplies that are needed and that they are within the expiration date.
+Step 4:
+Keep all supplies in reach to prevent them rubbing against things or dropping.
+Step 5:
+Bring a second pair of sterile gloves in the event of a break in sterility.
+Opening a Sterile Package
+Remove any paper or plastic layer that is used to form a barrier between the work surface and inner wrapper. Inspect the package to ensure that it is intact and within the expiration date. To open a sterile package, lay it on a clean and dry surface so that the flaps are facing up, and the top flap is pointed down (forming an upside-down triangle like an envelope). The outside of the package is unsterile as is the 1 in (2.5 cm) border of the package.
+Proper technique when preparing a sterile field is critical in order to provide safe care to patients during procedure. Lecturio Nursing has put together a video that describes how to open a sterile kit that reviews this skill.
+Applying Sterile Gloves
+Clean gloves are different from sterile gloves because with sterile gloves the sterilization process is completed by the manufacturer; they are free from microorganisms and are individually packaged as a pair to remain free of pathogens. Prior to applying sterile gloves, determine your size. The gloves should fit snugly but not tightly. Place the glove package on a clean and dry surface. Using the outside flaps that form the 1 in (2.5 cm) border, open the glove package so that the cuffs are closest to you. Using your nondominant hand, pick up the opposite glove, touching only the inner cuff (the part that will touch skin). Keeping the hand flat and the thumb tucked in, slide your dominant hand into the glove, being careful not to lower hands below the waist (Figure 6.10). Using the gloved hand, slip your fingers into the cuff of the remaining glove. Lift the glove up and away from the table. Slide your nondominant hand into the glove. Keep the gloved thumb up and back to prevent it from touching bare skin. Once both gloves are on, you can adjust to fit fingers as needed. Keep hands above the waist and within the visual field to avoid breaking sterility.
+Preparing and Maintaining a Sterile Field
+In order to maintain a sterile field, it is critical to follow several protocols. The nurse must always be able to see the field. This means that if you turn your back and can no longer see the field, sterility is broken. Do not reach over the sterile field; even after donning sterile gloves , your arms and sleeves are not sterile. Be aware of any stethoscopes or bandages that may hang into the field, breaking sterility. Any sterile object that is held below the waist is considered nonsterile, including a sterile-gloved hand. Any objects that become wet are no longer considered sterile due to the ability for bacteria to grow rapidly in a wet environment.
+Pouring Sterile Solutions
+Part of a sterile field may include the use of sterile solution. In order to pour a sterile solution, healthcare providers must follow several steps to avoid breaking sterility. Note first that a solution is sealed and unexpired. Sterile solutions should be poured 6 in (15 cm) away from the field into a sterile bowl or tray from the side of the sterile field, not directly over it. Pour solutions slowly to prevent splashing.
+As with all aspects of a sterile field pouring sterile solutions should be done following appropriate technique.

@@ -1,892 +1,172 @@
 # Source pack — subjects/physics/advanced/statistical-mechanics
 Lesson title: Statistical Mechanics
 Level: advanced
-Match confidence: 1.56
+Match confidence: 3.05
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.56 — APCollegePhysics-OP_js6ZFp7 § 15.7 Statistical Interpretation of Entropy and the Second Law of
+## Match 3.05 — LibreTexts: 1.19: Equilibrium Statistical Mechanics
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Courses/University_of_California_Davis/Physics_156%3A_A_Cosmology_Workbook/01%3A_Workbook/1.19%3A_Equilibrium_Statistical_Mechanics
 
-Thermodynamics: The Underlying Explanation
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Identify probabilities in entropy.
-•
-Analyze statistical probabilities in entropic systems.
-The information presented in this section supports the following AP® learning objectives and science practices:
-•
-7.B.1.1 The student is able to construct an explanation, based on atomic-scale interactions and probability, of how a
-system approaches thermal equilibrium when energy is transferred to it or from it in a thermal process. (S.P. 6.2)
-Figure 15.40 When you toss a coin a large number of times, heads and tails tend to come up in roughly equal numbers. Why doesn't heads come up
-100, 90, or even 80% of the time? (credit: Jon Sullivan, PDPhoto.org)
-The various ways of formulating the second law of thermodynamics tell what happens rather than why it happens. Why should
-heat transfer occur only from hot to cold? Why should energy become ever less available to do work? Why should the universe
-become increasingly disorderly? The answer is that it is a matter of overwhelming probability. Disorder is simply vastly more
-likely than order.
-When you watch an emerging rain storm begin to wet the ground, you will notice that the drops fall in a disorganized manner
-both in time and in space. Some fall close together, some far apart, but they never fall in straight, orderly rows. It is not
-impossible for rain to fall in an orderly pattern, just highly unlikely, because there are many more disorderly ways than orderly
-ones. To illustrate this fact, we will examine some random processes, starting with coin tosses.
-Coin Tosses
-What are the possible outcomes of tossing 5 coins? Each coin can land either heads or tails. On the large scale, we are
-concerned only with the total heads and tails and not with the order in which heads and tails appear. The following possibilities
-exist:
-(15.67)
-5 heads, 0 tails
-4 heads, 1 tail
-3 heads, 2 tails
-2 heads, 3 tails
-1 head, 4 tails
-0 head, 5 tails
-These are what we call macrostates. A macrostate is an overall property of a system. It does not specify the details of the
-system, such as the order in which heads and tails occur or which coins are heads or tails.
-Using this nomenclature, a system of 5 coins has the 6 possible macrostates just listed. Some macrostates are more likely to
-occur than others. For instance, there is only one way to get 5 heads, but there are several ways to get 3 heads and 2 tails,
-making the latter macrostate more probable. Table 15.3 lists of all the ways in which 5 coins can be tossed, taking into account
-the order in which heads and tails occur. Each sequence is called a microstate—a detailed description of every element of a
-system.
-664
-Chapter 15 | Thermodynamics
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
+1.19: Equilibrium Statistical Mechanics
+Out of the early Universe we get the light elements, a lot of photons and, as it turns out, a bunch of neutrinos and other relics of our hot past as well. To understand the production of these particles we now turn to the subject of Equilibrium Statistical Mechanics.
+Phase Space
+A collection of particles is conveniently described by how it is distributed in both position and momentum. We usually assume three spatial dimensions, and in this case, the momentum of a particle is a three-dimensional quantity (it takes 3 numbers to specify the momentum of a particle, \(p_x\), \(p_y\) and \(p_z\)). We refer to the space itself as “configuration space” (\(x\), \(y\), \(z\)) and the three-dimensional space associated with momentum as “momentum space.” We can put these spaces together into one six-dimensional object (\(x\), \(y\), \(z\), \(p_x\), \(p_y\), \(p_z\)) we call “phase space.”
+The phase space distribution function
+We conventionally describe the location in phase space of large numbers of particles in a statistical manner, where we just state the average number of particles as a function of location in phase space. More specifically, we define a phase space distribution function, \(f\), such that the number of particles at (\(x\), \(y\), \(z\), \(p_x\), \(p_y\), \(p_z\)) in a phase-space volume of size \(dx\,dy\,dz\,dp_x\,dp_y\,dp_z\) is
+\[dN = \frac{f(\vec x, \vec p)}{h^3} dx\,dy\,dz\,dp_x\,dp_y\,dp_z \label{eqn:Definef}\]
+where \(h\) is Planck's constant. This equation serves to define \(f\): It tells us the number of particles in a phase space volume equal to \(h^3\).
+Types of Equilibria
+We are going to introduce some results of statistical mechanics that are quite amazing and useful and that apply in equilibrium . So let us first define equilibrium. In fact, we will define two different kinds of equilibrium: kinetic and chemical.
+Kinetic equilibrium obtains when reactions that exchange energy between particles (such as collisions) occur rapidly compared to the time-scale under which conditions are changing. For example, the gas particles in this room interact very rapidly. For a given particle, the typical time between collisions is well below a second. Given that conditions in the room are not changing rapidly (that is, the temperature in the room is quite stable), the gas particles in the room will be in kinetic equilibrium.
+Chemical equilibrium obtains when reactions that exchange particle type are rapidly occurring. An example of a reaction that changes particle type is electron, positron annihilation:
+\[e^- + e^+ \rightarrow 2\gamma\]
+where \(\gamma\) is a photon. Another example is given by chemical processes, and is where “chemical equilibrium” gets its name, such as
+\[\ce{2H + O <=>H_2O}.\]
+When these reactions are fast, chemical equilibrium is rapidly achieved. In chemical equilibrium, just as many forward reactions as backward reactions are happening (so the number densities of all the particles are independent of time).
+Equilibrium forms for \(f\)
+The first of two amazing results from statistical mechanics we will use (without proof) is the following. In kinetic equilibrium the phase space distribution function always has the following form:
+\[f = \left[\exp\left(\frac{E(p)-\mu}{k_BT}\right) \pm 1\right]^{-1}. \label{eqn:f}\]
+where the + is for fermions and the - is for bosons, \(T\) is the temperature, \(\mu\) is the chemical potential and \(E\) is the energy of each particle, \(E^2 = p^2c^2 + m^2c^4\).
+You already have some intuition for what is meant by temperature. We will soon do some exercises to see how the way that \(T\) affects \(f\) is consistent with your ideas about temperature. You may have less of a feeling about the physical meaning of \(\mu\). We'll do some exercises to address that. In the meantime, I'll tell you that when two systems are allowed to exchange kinetic energy, after a sufficiently long time if conditions are not changing, then their temperatures become related (in fact, equal). Similarly, if particles are allowed to change type , then the chemical potentials of the different types of particles also become related (though not necessarily equal). For example, if this reaction is proceeding rapidly, in both the forwards and backwards direction:
+\[a+b \leftarrow \rightarrow c+d\]
+then chemical equilibrium will obtain and the number densities \(n_a\), \(n_b\), \(n_c\) and \(n_d\) will be independent of time. Further, and this is our second result from statistical mechanics, we will have this relation between their chemical potentials:
+\[\mu_a + \mu_b = \mu_c + \mu_d.\]
+More generally, for
+\[a+b+... \leftarrow \rightarrow c+d+ …\]
+happening rapidly, then \(\mu_a + \mu_b + ... = \mu_c + \mu_d + ....\)
+As a further example, if the reactions
+\[e^- + e^+ \leftarrow \rightarrow 2\gamma\]
+are happening rapidly then \(\mu_{e^{-}} + \mu_{e^{+}} = 2 \mu_\gamma\).
+How to go from \(f\) to number density, energy density and pressure
+The number density, energy density and pressure of a collection of free particles is:
+\[\begin{equation}
+\begin{aligned}
+n({\vec x}) &= g \int \frac{d^3p}{h^3} f({\vec x},{\vec p}) \\ \\ \epsilon({\vec x}) &= g \int \frac{d^3p}{h^3} E(p) f({\vec x},{\vec p}) \\ \\ P({\vec x}) &= g \int \frac{d^3p}{h^3} \frac{p^2c^2}{3E}f({\vec x},{\vec p})
+\end{aligned} \label{eqn:n}
+\end{equation}\]
+where \(f\) is the phase-space distribution function and \(g\) counts the number of internal degrees of freedom for the particles. For example, electrons have two spin states so for them \(g=2\).
+Box \(\PageIndex{1}\)
+Exercise 19.1.1: From the definition of \(f\) in Eq.\ref{eqn:Definef}, derive the above expression for the number density \(n({\vec x})\) assuming that \(f\) is the same for each internal degree of freedom. (If this "internal degrees of freedom" part is concerning you, it's OK to simplify the problem a bit by doing it for a particle with a single internal degree of freedom, so \(g=1\); i.e., just ignore \(g\).)
+Exercise 19.1.2: From the definition of \(f\), derive the above expression for the energy density \(\epsilon({\vec x})\).
+Exercise 19.1.3: (Optional) From the definition of \(f\), derive the above expression for the pressure \(P({\vec x})\). This one is significantly harder. You need to recall that pressure is force per unit area. The force on a wall from particles hitting it in time interval \(\Delta t\) is equal to the sum of the changes in each particle's momentum as it bounces off the wall, divided by \(\Delta t\). First show that for a wall perpendicular to the \(x\) axis this force is given by \(F =\frac{1}{2} \int d^3p f A (v_x \Delta t) (2p_x)/\Delta t\) so that \(P = \int d^3p f v_x p_x\). Then use the fact that \(v_x = p_xc^2/E\) (see footnote 2 ) and that \(\int d^3p f p_x^2 = 1/3\int d^3p f p^2\) as long as \(f\) only depends on \(p^2 = p_x^2+p_y^2 + p_z^2\) to get \(P = \int d^3p f p^2c^2/(3E)\). If there are \(g\) internal degrees of freedom, that's that many more particles doing exactly the same thing (\(f\) tells us the distribution for each internal degree of freedom) so we get the desired result including the factor of \(g\).
+An example: black body (thermal) radiation
+From Equation \ref{eqn:f} and Equation \ref{eqn:n} we can derive a lot of results. For example, a gas of photons (\(g=2\)) in kinetic equilibrium with \(\mu = 0\) (how this arises physically to be explained later) has a contribution to its number density from particles with magnitude of momentum between \(p\) and \(p+dp\) equal to
+\[n(p)dp = \frac{8\pi }{h^3} \frac{p^2dp}{\exp(pc/(k_B T)) -1}.\]
+Note that by \(n(p)\) we mean the function of the magnitude of momentum that when integrated over \(p\) gives number density \(n = \int_0^\infty dp \, n(p)\).
+Box \(\PageIndex{2}\)
+Exercise 19.2.1: Derive the above equation for \(n(p) dp\). Start from the integral above (one of equations \ref{eqn:n}) that gives the number density. Because the energy of each particle (and therefore the whole integrand) only depends on the magnitude of the momentum, \(p = \sqrt{p_x^2+p_y^2+p_z^2}\), switch from Cartesian to spherical coordinates and integrate over the angular variables. That is, replace \(d^3p = dp_xdp_ydp_z\) with \(p^2dp d(\cos\theta_p)d\phi_p\) and integrate over the angular variables \(\theta_p\) and \(\phi_p\). Remember that \(E(p) = pc\) for photons.
+Exercise 19.2.2: If you sampled one photon out of the distribution, there is a probability that it will have a magnitude of momentum between \(p\) and \(p+dp\). For what value of \(p\) does this probability peak? Note that answering this question will require you to solve a transcendental equation. That's a bit too much work so instead you can just show that \(p = 1.58 k_B T/c\) is quite close to the peak.
+Exercise 19.2.3: How does that most probable \(p\) depend on temperature? Notice that this is qualitatively consistent with what you expect for temperature.
+To perform the integral over \(p\) and obtain an expression for the number density of photons in kinetic equilibrium with zero chemical potential, we make a change of variables \(x = pc/(k_BT)\) to remove all dimensionful constants from the integral and find:
+\[\int_0^\infty n(p) dp = \frac{8\pi }{c^3h^3}(k_BT)^3 \int_0^\infty \frac{x^2dx}{\exp(x) -1}.\]
+The integral can be looked up in a table or performed numerically. It's equal to 2\(\zeta(3) \simeq 2.404\) where \(\zeta\) is the Riemann zeta function.
+What physical conditions lead to \(\mu = 0\)?
+If a particle can be freely created or destroyed, without other particles being created or destroyed, and these reactions are sufficiently fast, then the chemical potential will be driven towards zero. We can see this from the rule we already learned.
+Assume this reaction is fast, called free-free, or Bremstrahlung:
+\[e^- + p^+ \rightarrow e^- + p^+ + \gamma\]
+in which an electron is accelerated in the electric field of a proton and thus radiates a photon. If the photon can get absorbed in some way, then we also effectively have the reverse reaction as well. In this case we would have \(\mu_{e^-} + \mu_{p^+} = \mu_{e^-} + \mu_{p^+}+\mu_\gamma\) which leads us to \(\mu_\gamma = 0\).
+Equilibrium Statistical Mechanics Results in Various Limits
+All of these results come from doing the appropriate integral over \(f = \left(\exp\left[(E(p)-\mu)/(k_BT)\right] \pm 1\right)^{-1}\). We will refer back to these later.
+In the relativistic \((k_BT >> mc^2\)) and \(k_B T >> \mu\) limit for bosons
+\[\begin{equation}
+\begin{aligned}
+\epsilon &= \frac{\pi^2}{30\hbar^3 c^3} g(k_BT)^4 \\ \\ n &= \frac{\zeta(3)}{\pi^2 \hbar^3 c^3} g (k_BT)^3 \\ \\ P &= \epsilon/3.
+\end{aligned}
+\end{equation}\]
+where \(\zeta\) is the Riemann Zeta function and \(\zeta(3) = 1.202...\).
+In the relativistic and \(k_B T >> \mu\) limit for fermions we get
+\[\begin{equation}
+\begin{aligned}
+\epsilon &= \frac{7}{8}\frac{\pi^2}{30\hbar^3c^3} g(k_BT)^4 \\ \\ n &= \frac{3}{4}\frac{\zeta(3)}{\pi^2\hbar^3 c^3} g (k_BT)^3 \\ \\ P &= \epsilon/3.
+\end{aligned}
+\end{equation}\]
+In the non-relativistic and dilute (\(f <<1\) for most particles) limits we can neglect the \(\pm 1\) factor in the denominator of \(f\) so we get the same result for both bosons and fermions:
+\[\begin{equation}
+\begin{aligned}
+n &= g\left(\frac{mc^2 k_BT}{2\pi \hbar^2 c^2}\right)^{3/2} \exp\left[-(mc^2-\mu)/(k_BT)\right] \\ \\ \epsilon &= mc^2n \\ \\ P &= nk_BT << \epsilon.
+\end{aligned}
+\end{equation}\]
+Homework
+19.1: Starting from the appropriate integrals of the phase space distribution function over momentum space show that for relativistic massless bosons with \(\mu = 0\) that \(P = \epsilon/3\). [Note: this is a result you've seen before.]
+19.2: The gas in this room consists of non-relativistic particles so to a very good approximation \(E(p) = mc^2 + p^2/(2m)\). Derive this approximation from \(E^2 = p^2c^2 + m^2 c^4\).
+19.3: Derive the Maxwell-Boltzmann distribution of velocities for the gas in the room (assuming for simp
 
-Table 15.3 5-Coin Toss
-Individual microstates
-Number of
-microstates
-5 heads, 0
-tails
-HHHHH
-1
-4 heads, 1 tail
-HHHHT, HHHTH, HHTHH, HTHHH, THHHH
-5
-3 heads, 2
-tails
-HTHTH, THTHH, HTHHT, THHTH, THHHT HTHTH, THTHH, HTHHT, THHTH,
-THHHT
-10
-2 heads, 3
-tails
-TTTHH, TTHHT, THHTT, HHTTT, TTHTH, THTHT, HTHTT, THTTH, HTTHT,
-HTTTH
-10
-1 head, 4 tails
-TTTTH, TTTHT, TTHTT, THTTT, HTTTT
-5
-0 heads, 5
-tails
-TTTTT
-1
-Total: 32
-The macrostate of 3 heads and 2 tails can be achieved in 10 ways and is thus 10 times more probable than the one having 5
-heads. Not surprisingly, it is equally probable to have the reverse, 2 heads and 3 tails. Similarly, it is equally probable to get 5
-tails as it is to get 5 heads. Note that all of these conclusions are based on the crucial assumption that each microstate is equally
-probable. With coin tosses, this requires that the coins not be asymmetric in a way that favors one side over the other, as with
-loaded dice. With any system, the assumption that all microstates are equally probable must be valid, or the analysis will be
-erroneous.
-The two most orderly possibilities are 5 heads or 5 tails. (They are more structured than the others.) They are also the least
-likely, only 2 out of 32 possibilities. The most disorderly possibilities are 3 heads and 2 tails and its reverse. (They are the least
-structured.) The most disorderly possibilities are also the most likely, with 20 out of 32 possibilities for the 3 heads and 2 tails and
-its reverse. If we start with an orderly array like 5 heads and toss the coins, it is very likely that we will get a less orderly array as
-a result, since 30 out of the 32 possibilities are less orderly. So even if you start with an orderly state, there is a strong tendency
-to go from order to disorder, from low entropy to high entropy. The reverse can happen, but it is unlikely.
-Chapter 15 | Thermodynamics
-665
+## Match 3.05 — LibreTexts: 2.16: S20 Equilibrium Statistical Mechanics SOLUTIONS
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Courses/University_of_California_Davis/Physics_156%3A_A_Cosmology_Workbook/02%3A_Exercise_Solutions/2.16%3A_S20_Equilibrium_Statistical_Mechanics_SOLUTIONS
 
-Table 15.4 100-Coin Toss
-Macrostate
-Number of microstates
-Heads
-Tails
-(W)
-100
-0
-1
-99
-1
-1.0×102
-95
-5
-7.5×107
-90
-10
-1.7×1013
-75
-25
-2.4×1023
-60
-40
-1.4×1028
-55
-45
-6.1×1028
-51
-49
-9.9×1028
-50
-50
-1.0×1029
-49
-51
-9.9×1028
-45
-55
-6.1×1028
-40
-60
-1.4×1028
-25
-75
-2.4×1023
-10
-90
-1.7×1013
-5
-95
-7.5×107
-1
-99
-1.0×102
-0
-100
-1
-Total: 1.27×1030
-This result becomes dramatic for larger systems. Consider what happens if you have 100 coins instead of just 5. The most
-orderly arrangements (most structured) are 100 heads or 100 tails. The least orderly (least structured) is that of 50 heads and 50
-tails. There is only 1 way (1 microstate) to get the most orderly arrangement of 100 heads. There are 100 ways (100 microstates)
-to get the next most orderly arrangement of 99 heads and 1 tail (also 100 to get its reverse). And there are 1.0×1029 ways to
-get 50 heads and 50 tails, the least orderly arrangement. Table 15.4 is an abbreviated list of the various macrostates and the
-number of microstates for each macrostate. The total number of microstates—the total number of different ways 100 coins can
-be tossed—is an impressively large 1.27×1030 . Now, if we start with an orderly macrostate like 100 heads and toss the coins,
-there is a virtual certainty that we will get a less orderly macrostate. If we keep tossing the coins, it is possible, but exceedingly
-unlikely, that we will ever get back to the most orderly macrostate. If you tossed the coins once each second, you could expect to
-get either 100 heads or 100 tails once in 2×1022 years! This period is 1 trillion ( 1012 ) times longer than the age of the
-universe, and so the chances are essentially zero. In contrast, there is an 8% chance of getting 50 heads, a 73% chance of
-getting from 45 to 55 heads, and a 96% chance of getting from 40 to 60 heads. Disorder is highly likely.
-Disorder in a Gas
-The fantastic growth in the odds favoring disorder that we see in going from 5 to 100 coins continues as the number of entities in
-the system increases. Let us now imagine applying this approach to perhaps a small sample of gas. Because counting
-microstates and macrostates involves statistics, this is called statistical analysis. The macrostates of a gas correspond to its
-macroscopic properties, such as volume, temperature, and pressure; and its microstates correspond to the detailed description
-of the positions and velocities of its atoms. Even a small amount of gas has a huge number of atoms: 1.0 cm3 of an ideal gas
-at 1.0 atm and 0º C has 2.7×1019 atoms. So each macrostate has an immense number of microstates. In plain language,
-this means that there are an immense number of ways in which the atoms in a gas can be arranged, while still having the same
-pressure, temperature, and so on.
-666
-Chapter 15 | Thermodynamics
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
+2.16: S20 Equilibrium Statistical Mechanics SOLUTIONS
+Exercise 20.1.1
+- Answer
+-
+Since \(f/h^3\) is the density of particles in phase space, the number in some small volume V, small enough such that \(f\) does not change much throughout the volume, is given by N = V\(\int d^3p f/h^3\). So the number density is \(n = \int d^3p f/h^3.\) If every internal degree of freedom has the same value of \(f\) and if we want to count all the particles, regardless of internal state, then we have \(n = g \int d^3p f/h^3.\)
+Exercise 20.1.2
+- Answer
+-
+Same as above except instead of calculating the total number in some small volume, we want the total energy. Therefore we just insert E(p) into the integral, to add up the energy from each region of momentum space, instead of just the number of particles from each region of momentum space.
+Exercise 20.1.3
+- Answer
+-
+I have not produced a written solution for this yet.
+Exercise 20.2.1
+- Answer
+-
+The integral over angular variables results in \(n = \frac{g}{h^3} \int_0^\infty 4\pi p^2 dp f\). Now the integral is adding up numbers of particles from momentum space shells of momentum space volume \(4\pi p^2 dp\). We need only substitute in the appropriate expression for \(f\), set \(E=pc, \mu = 0\) and \(g=2\) to get the answer.
+Exercise 20.2.2
+- Answer
+-
+To find the peak of the distribution set \(dn(p)/dp = 0\) and solve for \(p\). One ends up with a transcendental equation to solve. Setting \(x = pc/kT\) makes it possible to write it down fairly compactly as \( (2-x)e^x = 2\). One can narrow in on the solution numerically with a calculator -- especially a graphing one if you just plot the left-hand side and choose the value of \(x\) that gives 2. I used a calculator and in a few tries had \(x=1.6\) which is pretty close as \((2-1.6)e^{1.6} = 1.98.\) So the most probable \(p\) is \(p = 1.6 k_B T/c\).
+Exercise 20.2.3
+- Answer
+-
+The most probable \(p\) corresponds to an energy that is \(pc = 1.6 k_B T\). This corresponds to what we expect since we see that \(\simeq k_B T\) is a typical particle kinetic energy.
 
-The most likely conditions (or macrostates) for a gas are those we see all the time—a random distribution of atoms in space with
-a Maxwell-Boltzmann distribution of speeds in random directions, as predicted by kinetic theory. This is the most disorderly and
-least structured condition we can imagine. In contrast, one type of very orderly and structured macrostate has all of the atoms in
-one corner of a container with identical velocities. There are very few ways to accomplish this (very few microstates
-corresponding to it), and so it is exceedingly unlikely ever to occur. (See Figure 15.41(b).) Indeed, it is so unlikely that we have a
-law saying that it is impossible, which has never been observed to be violated—the second law of thermodynamics.
-Figure 15.41 (a) The ordinary state of gas in a container is a disorderly, random distribution of atoms or molecules with a Maxwell-Boltzmann
-distribution of speeds. It is so unlikely that these atoms or molecules would ever end up in one corner of the container that it might as well be
-impossible. (b) With energy transfer, the gas can be forced into one corner and its entropy greatly reduced. But left alone, it will spontaneously increase
-its entropy and return to the normal conditions, because they are immensely more likely.
-The disordered condition is one of high entropy, and the ordered one has low entropy. With a transfer of energy from another
-system, we could force all of the atoms into one corner and have a local decrease in entropy, but at the cost of an overall
-increase in entropy of the universe. If the atoms start out in one corner, they will quickly disperse and become uniformly
-distributed and will never return to the orderly original state (Figure 15.41(b)). Entropy will increase. With such a large sample of
-atoms, it is possible—but unimaginably unlikely—for entropy to decrease. Disorder is vastly more likely than order.
-The arguments that disorder and high entropy are the most probable states are quite convincing. The great Austrian physicist
-Ludwig Boltzmann (1844–1906)—who, along with Maxwell, made so many contributions to kinetic theory—proved that the
-entropy of a system in a given state (a macrostate) can be written as
-(15.68)
-S = klnW,
-where k = 1.38×10−23 J/K is Boltzmann's constant, and lnW is the natural logarithm of the number of microstates W
-corresponding to the given macrostate. W is proportional to the probability that the macrostate will occur. Thus entropy is
-directly related to the probability of a state—the more likely the state, the greater its entropy. Boltzmann proved that this
-expression for S is equivalent to the definition ΔS = Q / T , which we have used extensively.
-Thus the second law of thermodynamics is explained on a very basic level: entropy either remains the same or increases in
-every process. This phenomenon is due to the extraordinarily small probability of a decrease, based on the extraordinarily larger
-number of microstates in systems with greater entropy. Entropy can decrease, but for any macroscopic system, this outcome is
-so unlikely that it will never be observed.
-Example 15.9 Entropy Increases in a Coin Toss
-Suppose you toss 100 coins starting with 60 heads and 40 tails, and you get the most likely result, 50 heads and 50 tails.
-What is the change in entropy?
-Strategy
-Noting that the number of microstates is labeled W in Table 15.4 for the 100-coin toss, we can use
-ΔS = Sf − Si = klnWf - klnWi to calculate the change in entropy.
-Chapter 15 | Thermodynamics
-667
+## Match 2.07 — LibreTexts: 4: Some Basic Applications of Statistical Thermodynamics
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://chem.libretexts.org/Courses/Pacific_Union_College/Kinetics/04%3A_Some_Basic_Applications_of_Statistical_Thermodynamics
 
-Solution
-The change in entropy is
-(15.69)
-ΔS = Sf – Si = klnWf – klnWi,
-where the subscript i stands for the initial 60 heads and 40 tails state, and the subscript f for the final 50 heads and 50 tails
-state. Substituting the values for W from Table 15.4 gives
-(15.70)
-ΔS = (1.38×10 – 23 J/K)[ln(1.0×1029 ) – ln(1.4×1028)]
-= 2.7×10 – 23 J/K
-Discussion
-This increase in entropy means we have moved to a less orderly situation. It is not impossible for further tosses to produce
-the initial state of 60 heads and 40 tails, but it is less likely. There is about a 1 in 90 chance for that decrease in entropy (
-– 2.7×10 – 23 J/K ) to occur. If we calculate the decrease in entropy to move to the most orderly state, we get
-ΔS = – 92×10 – 23 J/K . There is about a 1 in 1030 chance of this change occurring. So while very small decreases in
-entropy are unlikely, slightly greater decreases are impossibly unlikely. These probabilities imply, again, that for a
-macroscopic system, a decrease in entropy is impossible. For example, for heat transfer to occur spontaneously from 1.00
-kg of 0ºC ice to its 0ºC environment, there would be a decrease in entropy of 1.22×103 J/K . Given that a
-ΔS of 10 – 21 J/K corresponds to about a 1 in 1030 chance, a decrease of this size ( 103 J/K ) is an utter impossibility.
-Even for a milligram of melted ice to spontaneously refreeze is impossible.
-Problem-Solving Strategies for Entropy
-1.
-Examine the situation to determine if entropy is involved.
-2.
-Identify the system of interest and draw a labeled diagram of the system showing energy flow.
-3.
-Identify exactly what needs to be determined in the problem (identify the unknowns). A written list is useful.
-4.
-Make a list of what is given or can be inferred from the problem as stated (identify the knowns). You must carefully
-identify the heat transfer, if any, and the temperature at which the process takes place. It is also important to identify
-the initial and final states.
-5.
-Solve the appropriate equation for the quantity to be determined (the unknown). Note that the change in entropy can
-be determined between any states by calculating it for a reversible process.
-6.
-Substitute the known value along with their units into the appropriate equation, and obtain numerical solutions
-complete with units.
-7.
-To see if it is reasonable: Does it make sense? For example, total entropy should increase for any real process or be
-constant for a reversible process. Disordered states should be more probable and have greater entropy than ordered
-states.
-Exercise 15.1
-(a) If you toss 10 coins, what percent of the time will you get the three most likely macrostates (6 heads and 4 tails, 5 heads
-and 5 tails, 4 heads and 6 tails)? (b) You can realistically toss 10 coins and count the number of heads and tails about twice
-a minute. At that rate, how long will it take on average to get either 10 hea
-
-## Match 1.56 — College_Physics_2e-WEB_7Zesafu § 15.7 Statistical Interpretation of Entropy and the Second Law of
-
-Thermodynamics: The Underlying Explanation
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Identify probabilities in entropy.
-•
-Analyze statistical probabilities in entropic systems.
-FIGURE 15.37 When you toss a coin a large number of times, heads and tails tend to come up in roughly equal numbers. Why doesn’t
-heads come up 100, 90, or even 80% of the time? (credit: Jon Sullivan, PDPhoto.org)
-The various ways of formulating the second law of thermodynamics tell what happens rather than why it happens.
-15.7 • Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation
-661
-
-Why should heat transfer occur only from hot to cold? Why should energy become ever less available to do work?
-Why should the universe become increasingly disorderly? The answer is that it is a matter of overwhelming
-probability. Disorder is simply vastly more likely than order.
-When you watch an emerging rain storm begin to wet the ground, you will notice that the drops fall in a disorganized
-manner both in time and in space. Some fall close together, some far apart, but they never fall in straight, orderly
-rows. It is not impossible for rain to fall in an orderly pattern, just highly unlikely, because there are many more
-disorderly ways than orderly ones. To illustrate this fact, we will examine some random processes, starting with coin
-tosses.
-Coin Tosses
-What are the possible outcomes of tossing 5 coins? Each coin can land either heads or tails. On the large scale, we
-are concerned only with the total heads and tails and not with the order in which heads and tails appear. The
-following possibilities exist:
-These are what we call macrostates. A macrostate is an overall property of a system. It does not specify the details
-of the system, such as the order in which heads and tails occur or which coins are heads or tails.
-Using this nomenclature, a system of 5 coins has the 6 possible macrostates just listed. Some macrostates are more
-likely to occur than others. For instance, there is only one way to get 5 heads, but there are several ways to get 3
-heads and 2 tails, making the latter macrostate more probable. Table 15.3 lists of all the ways in which 5 coins can
-be tossed, taking into account the order in which heads and tails occur. Each sequence is called a microstate—a
-detailed description of every element of a system.
-Individual microstates
-Number of
-microstates
-5 heads, 0
-tails
-HHHHH
-1
-4 heads, 1
-tail
-HHHHT, HHHTH, HHTHH, HTHHH, THHHH
-5
-3 heads, 2
-tails
-HTHTH, THTHH, HTHHT, THHTH, THHHT HTHTH, THTHH, HTHHT,
-THHTH, THHHT
-10
-2 heads, 3
-tails
-TTTHH, TTHHT, THHTT, HHTTT, TTHTH, THTHT, HTHTT, THTTH, HTTHT,
-HTTTH
-10
-1 head, 4
-tails
-TTTTH, TTTHT, TTHTT, THTTT, HTTTT
-5
-TABLE 15.3 5-Coin Toss
-15.67
-662
-15 • Thermodynamics
-Access for free at openstax.org
-
-Individual microstates
-Number of
-microstates
-0 heads, 5
-tails
-TTTTT
-1
-Total: 32
-TABLE 15.3 5-Coin Toss
-The macrostate of 3 heads and 2 tails can be achieved in 10 ways and is thus 10 times more probable than the one
-having 5 heads. Not surprisingly, it is equally probable to have the reverse, 2 heads and 3 tails. Similarly, it is equally
-probable to get 5 tails as it is to get 5 heads. Note that all of these conclusions are based on the crucial assumption
-that each microstate is equally probable. With coin tosses, this requires that the coins not be asymmetric in a way
-that favors one side over the other, as with loaded dice. With any system, the assumption that all microstates are
-equally probable must be valid, or the analysis will be erroneous.
-The two most orderly possibilities are 5 heads or 5 tails. (They are more structured than the others.) They are also
-the least likely, only 2 out of 32 possibilities. The most disorderly possibilities are 3 heads and 2 tails and its reverse.
-(They are the least structured.) The most disorderly possibilities are also the most likely, with 20 out of 32
-possibilities for the 3 heads and 2 tails and its reverse. If we start with an orderly array like 5 heads and toss the
-coins, it is very likely that we will get a less orderly array as a result, since 30 out of the 32 possibilities are less
-orderly. So even if you start with an orderly state, there is a strong tendency to go from order to disorder, from low
-entropy to high entropy. The reverse can happen, but it is unlikely.
-Macrostate
-Number of microstates
-Heads
-Tails
-(W)
-100
-0
-1
-99
-1
-×
-95
-5
-×
-90
-10
-×
-75
-25
-×
-60
-40
-×
-55
-45
-×
-51
-49
-×
-50
-50
-×
-TABLE 15.4 100-Coin Toss
-15.7 • Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation
-663
-
-Macrostate
-Number of microstates
-49
-51
-×
-45
-55
-×
-40
-60
-×
-25
-75
-×
-10
-90
-×
-5
-95
-×
-1
-99
-×
-0
-100
-1
-Total:
-×
-TABLE 15.4 100-Coin Toss
-This result becomes dramatic for larger systems. Consider what happens if you have 100 coins instead of just 5. The
-most orderly arrangements (most structured) are 100 heads or 100 tails. The least orderly (least structured) is that
-of 50 heads and 50 tails. There is only 1 way (1 microstate) to get the most orderly arrangement of 100 heads.
-There are 100 ways (100 microstates) to get the next most orderly arrangement of 99 heads and 1 tail (also 100 to
-get its reverse). And there are
-ways to get 50 heads and 50 tails, the least orderly arrangement. Table
-15.4 is an abbreviated list of the various macrostates and the number of microstates for each macrostate. The total
-number of microstates—the total number of different ways 100 coins can be tossed—is an impressively large
-. Now, if we start with an orderly macrostate like 100 heads and toss the coins, there is a virtual
-certainty that we will get a less orderly macrostate. If we keep tossing the coins, it is possible, but exceedingly
-unlikely, that we will ever get back to the most orderly macrostate. If you tossed the coins once each second, you
-could expect to get either 100 heads or 100 tails once in
-years! This period is 1 trillion (
-) times longer
-than the age of the universe, and so the chances are essentially zero. In contrast, there is an 8% chance of getting
-50 heads, a 73% chance of getting from 45 to 55 heads, and a 96% chance of getting from 40 to 60 heads. Disorder
-is highly likely.
-Disorder in a Gas
-The fantastic growth in the odds favoring disorder that we see in going from 5 to 100 coins continues as the number
-of entities in the system increases. Let us now imagine applying this approach to perhaps a small sample of gas.
-Because counting microstates and macrostates involves statistics, this is called statistical analysis. The
-macrostates of a gas correspond to its macroscopic properties, such as volume, temperature, and pressure; and its
-microstates correspond to the detailed description of the positions and velocities of its atoms. Even a small amount
-of gas has a huge number of atoms:
-of an ideal gas at 1.0 atm and
-has
-atoms. So each
-macrostate has an immense number of microstates. In plain language, this means that there are an immense
-number of ways in which the atoms in a gas can be arranged, while still having the same pressure, temperature, and
-so on.
-The most likely conditions (or macrostates) for a gas are those we see all the time—a random distribution of atoms
-in space with a Maxwell-Boltzmann distribution of speeds in random directions, as predicted by kinetic theory. This
-664
-15 • Thermodynamics
-Access for free at openstax.org
-
-is the most disorderly and least structured condition we can imagine. In contrast, one type of very orderly and
-structured macrostate has all of the atoms in one corner of a container with identical velocities. There are very few
-ways to accomplish this (very few microstates corresponding to it), and so it is exceedingly unlikely ever to occur.
-(See Figure 15.38(b).) Indeed, it is so unlikely that we have a law saying that it is impossible, which has never been
-observed to be violated—the second law of thermodynamics.
-FIGURE 15.38 (a) The ordinary state of gas in a container is a disorderly, random distribution of atoms or molecules with a Maxwell-
-Boltzmann distribution of speeds. It is so unlikely that these atoms or molecules would ever end up in one corner of the container that it
-might as well be impossible. (b) With energy transfer, the gas can be forced into one corner and its entropy greatly reduced. But left alone, it
-will spontaneously increase its entropy and return to the normal conditions, because they are immensely more likely.
-The disordered condition is one of high entropy, and the ordered one has low entropy. With a transfer of energy from
-another system, we could force all of the atoms into one corner and have a local decrease in entropy, but at the cost
-of an overall increase in entropy of the universe. If the atoms start out in one corner, they will quickly disperse and
-become uniformly distributed and will never return to the orderly original state (Figure 15.38(b)). Entropy will
-increase. With such a large sample of atoms, it is possible—but unimaginably unlikely—for entropy to decrease.
-Disorder is vastly more likely than order.
-The arguments that disorder and high entropy are the most probable states are quite convincing. The great Austrian
-physicist Ludwig Boltzmann (1844–1906)—who, along with Maxwell, made so many contributions to kinetic
-theory—proved that the entropy of a system in a given state (a macrostate) can be written as
-where
-is Boltzmann’s constant, and
-is the natural logarithm of the number of
-microstates
-corresponding to the given macrostate.
-is proportional to the probability that the macrostate will
-occur. Thus entropy is directly related to the probability of a state—the more likely the state, the greater its entropy.
-Boltzmann proved that this expression for
-is equivalent to the definition
-, which we have used
-extensively.
-Thus the second law of thermodynamics is explained on a very basic level: entropy either remains the same or
-increases in every process. This phenomenon is due to the extraordinarily small probability of a decrease, based on
-the extraordinarily larger number of microstates in systems with greater entropy. Entropy can decrease, but for any
-macroscopic system, this outcome is so unlikely that it will never be observed.
-15.68
-15.7 • Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation
-665
-
-EXAMPLE 15.9
-Entropy Increases in a Coin Toss
-Suppose you toss 100 coins starting with 60 heads and 40 tails, and you get the most likely result, 50 heads and 50
-tails. What is the change in entropy?
-Strategy
-Noting that the number of microstates is labeled
-in Table 15.4 for the 100-coin toss, we can use
-to calculate the change in entropy.
-Solution
-The change in entropy is
-where the subscript i stands for the initial 60 heads and 40 tails state, and the subscript f for the final 50 heads and
-50 tails state. Substituting the values for
-from Table 15.4 gives
-Discussion
-This increase in entropy means we have moved to a less orderly situation. It is not impossible for further tosses to
-produce the initial state of 60 heads and 40 tails, but it is less likely. There is about a 1 in 90 chance for that
-decrease in entropy (
-) to occur. If we calculate the decrease in entropy to move to the most
-orderly state, we get
-. There is about a
-chance of this change occurring. So while
-very small decreases in entropy are unlikely, slightly greater decreases are impossibly unlikely. These probabilities
-imply, again, that for a macroscopic system, a decrease in entropy is impossible. For example, for heat transfer to
-occur spontaneously from 1.00 kg of
-ice to its
-environment, there would be a decrease in entropy of
-. Given that a
-corresponds to about a
-chance, a decrease of this size
-(
-) is an utter impossibility. Even for a milligram of melted ice to spontaneously refreeze is impossible.
-15.69
-15.70
-Problem-Solving Strategies for Entropy
-1.
-Examine the situation to determine if entropy is involved.
-2.
-Identify the system of interest and draw a labeled diagram of the system showing energy flow.
-3.
-Identify exactly what needs to be determined in the problem (identify the unknowns). A written list is
-useful.
-4.
-Make a list of what is given or can be inferred from the problem as stated (identify the knowns). You must
-carefully identify the heat transfer, if any, and the temperature at which the process takes place. It is also
-important to identify the initial and final states.
-5.
-Solve the appropriate equation for the quantity to be determined (the unknown). Note that the change in
-entropy can be determined between any states by calculating it for a reversible process.
-6.
-Substitute the known value along with their units into the appropriate equation, and obtain numerical
-solutions complete with units.
-7.
-To see if it is reasonable: Does it make sense? For example, total entropy should increase for any real
-process or be constant for a reversible process. Disordered states should be more probable and have
-greater entropy than ordered states.
-666
-15 • Thermodynamics
-Access for free at openstax.org
-
-Glossary
-adiabatic process
-a process in which no heat transfer
-takes place
-Carnot cycle
-a cyclical process that uses only
-reversible processes, the adiabatic and isothermal
-processes
-Carnot efficiency
-the maximum theoretical efficiency
-for a heat engine
-Carnot engine
-a heat engine that uses a Carnot cycle
-change in entropy
-the ratio of heat transfer to
-temperature
-coefficient of performance
-for a heat pump, it is the
-ratio of heat transfer at the output (the hot
-reservoir) to the work supplied; for a refrigerator or
-air conditioner, it is the ratio of heat transfer from
-the cold reservoir to the work supplied
-cyclical process
-a process in which the path returns
-to its original state at the end of every cycle
-entropy
-a measurement of a system's disorder and
-its inability to do work in a system
-first law of thermodynamics
-states that the change
-in internal energy of a system equals the net heat
-
-## Match 1.56 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 15.7 Statistical Interpretation of Entropy and the Second Law of
-
-Thermodynamics: The Underlying Explanation
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Identify probabilities in entropy.
-•
-Analyze statistical probabilities in entropic systems.
-FIGURE 15.37 When you toss a coin a large number of times, heads and tails tend to come up in roughly equal numbers. Why doesn’t
-heads come up 100, 90, or even 80% of the time? (credit: Jon Sullivan, PDPhoto.org)
-The various ways of formulating the second law of thermodynamics tell what happens rather than why it happens.
-700
-15 • Thermodynamics
-Access for free at openstax.org
-
-Why should heat transfer occur only from hot to cold? Why should energy become ever less available to do work?
-Why should the universe become increasingly disorderly? The answer is that it is a matter of overwhelming
-probability. Disorder is simply vastly more likely than order.
-When you watch an emerging rain storm begin to wet the ground, you will notice that the drops fall in a disorganized
-manner both in time and in space. Some fall close together, some far apart, but they never fall in straight, orderly
-rows. It is not impossible for rain to fall in an orderly pattern, just highly unlikely, because there are many more
-disorderly ways than orderly ones. To illustrate this fact, we will examine some random processes, starting with coin
-tosses.
-Coin Tosses
-What are the possible outcomes of tossing 5 coins? Each coin can land either heads or tails. On the large scale, we
-are concerned only with the total heads and tails and not with the order in which heads and tails appear. The
-following possibilities exist:
-These are what we call macrostates. A macrostate is an overall property of a system. It does not specify the details
-of the system, such as the order in which heads and tails occur or which coins are heads or tails.
-Using this nomenclature, a system of 5 coins has the 6 possible macrostates just listed. Some macrostates are more
-likely to occur than others. For instance, there is only one way to get 5 heads, but there are several ways to get 3
-heads and 2 tails, making the latter macrostate more probable. Table 15.3 lists of all the ways in which 5 coins can
-be tossed, taking into account the order in which heads and tails occur. Each sequence is called a microstate—a
-detailed description of every element of a system.
-Individual microstates
-Number of
-microstates
-5 heads, 0
-tails
-HHHHH
-1
-4 heads, 1
-tail
-HHHHT, HHHTH, HHTHH, HTHHH, THHHH
-5
-3 heads, 2
-tails
-HTHTH, THTHH, HTHHT, THHTH, THHHT HTHTH, THTHH, HTHHT,
-THHTH, THHHT
-10
-2 heads, 3
-tails
-TTTHH, TTHHT, THHTT, HHTTT, TTHTH, THTHT, HTHTT, THTTH, HTTHT,
-HTTTH
-10
-1 head, 4
-tails
-TTTTH, TTTHT, TTHTT, THTTT, HTTTT
-5
-TABLE 15.3 5-Coin Toss
-15.67
-15.7 • Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation
-701
-
-Individual microstates
-Number of
-microstates
-0 heads, 5
-tails
-TTTTT
-1
-Total: 32
-TABLE 15.3 5-Coin Toss
-The macrostate of 3 heads and 2 tails can be achieved in 10 ways and is thus 10 times more probable than the one
-having 5 heads. Not surprisingly, it is equally probable to have the reverse, 2 heads and 3 tails. Similarly, it is equally
-probable to get 5 tails as it is to get 5 heads. Note that all of these conclusions are based on the crucial assumption
-that each microstate is equally probable. With coin tosses, this requires that the coins not be asymmetric in a way
-that favors one side over the other, as with loaded dice. With any system, the assumption that all microstates are
-equally probable must be valid, or the analysis will be erroneous.
-The two most orderly possibilities are 5 heads or 5 tails. (They are more structured than the others.) They are also
-the least likely, only 2 out of 32 possibilities. The most disorderly possibilities are 3 heads and 2 tails and its reverse.
-(They are the least structured.) The most disorderly possibilities are also the most likely, with 20 out of 32
-possibilities for the 3 heads and 2 tails and its reverse. If we start with an orderly array like 5 heads and toss the
-coins, it is very likely that we will get a less orderly array as a result, since 30 out of the 32 possibilities are less
-orderly. So even if you start with an orderly state, there is a strong tendency to go from order to disorder, from low
-entropy to high entropy. The reverse can happen, but it is unlikely.
-Macrostate
-Number of microstates
-Heads
-Tails
-(W)
-100
-0
-1
-99
-1
-×
-95
-5
-×
-90
-10
-×
-75
-25
-×
-60
-40
-×
-55
-45
-×
-51
-49
-×
-50
-50
-×
-TABLE 15.4 100-Coin Toss
-702
-15 • Thermodynamics
-Access for free at openstax.org
-
-Macrostate
-Number of microstates
-49
-51
-×
-45
-55
-×
-40
-60
-×
-25
-75
-×
-10
-90
-×
-5
-95
-×
-1
-99
-×
-0
-100
-1
-Total:
-×
-TABLE 15.4 100-Coin Toss
-This result becomes dramatic for larger systems. Consider what happens if you have 100 coins instead of just 5. The
-most orderly arrangements (most structured) are 100 heads or 100 tails. The least orderly (least structured) is that
-of 50 heads and 50 tails. There is only 1 way (1 microstate) to get the most orderly arrangement of 100 heads.
-There are 100 ways (100 microstates) to get the next most orderly arrangement of 99 heads and 1 tail (also 100 to
-get its reverse). And there are
-ways to get 50 heads and 50 tails, the least orderly arrangement. Table
-15.4 is an abbreviated list of the various macrostates and the number of microstates for each macrostate. The total
-number of microstates—the total number of different ways 100 coins can be tossed—is an impressively large
-. Now, if we start with an orderly macrostate like 100 heads and toss the coins, there is a virtual
-certainty that we will get a less orderly macrostate. If we keep tossing the coins, it is possible, but exceedingly
-unlikely, that we will ever get back to the most orderly macrostate. If you tossed the coins once each second, you
-could expect to get either 100 heads or 100 tails once in
-years! This period is 1 trillion (
-) times longer
-than the age of the universe, and so the chances are essentially zero. In contrast, there is an 8% chance of getting
-50 heads, a 73% chance of getting from 45 to 55 heads, and a 96% chance of getting from 40 to 60 heads. Disorder
-is highly likely.
-Disorder in a Gas
-The fantastic growth in the odds favoring disorder that we see in going from 5 to 100 coins continues as the number
-of entities in the system increases. Let us now imagine applying this approach to perhaps a small sample of gas.
-Because counting microstates and macrostates involves statistics, this is called statistical analysis. The
-macrostates of a gas correspond to its macroscopic properties, such as volume, temperature, and pressure; and its
-microstates correspond to the detailed description of the positions and velocities of its atoms. Even a small amount
-of gas has a huge number of atoms:
-of an ideal gas at 1.0 atm and
-has
-atoms. So each
-macrostate has an immense number of microstates. In plain language, this means that there are an immense
-number of ways in which the atoms in a gas can be arranged, while still having the same pressure, temperature, and
-so on.
-The most likely conditions (or macrostates) for a gas are those we see all the time—a random distribution of atoms
-in space with a Maxwell-Boltzmann distribution of speeds in random directions, as predicted by kinetic theory. This
-15.7 • Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation
-703
-
-is the most disorderly and least structured condition we can imagine. In contrast, one type of very orderly and
-structured macrostate has all of the atoms in one corner of a container with identical velocities. There are very few
-ways to accomplish this (very few microstates corresponding to it), and so it is exceedingly unlikely ever to occur.
-(See Figure 15.38(b).) Indeed, it is so unlikely that we have a law saying that it is impossible, which has never been
-observed to be violated—the second law of thermodynamics.
-FIGURE 15.38 (a) The ordinary state of gas in a container is a disorderly, random distribution of atoms or molecules with a Maxwell-
-Boltzmann distribution of speeds. It is so unlikely that these atoms or molecules would ever end up in one corner of the container that it
-might as well be impossible. (b) With energy transfer, the gas can be forced into one corner and its entropy greatly reduced. But left alone, it
-will spontaneously increase its entropy and return to the normal conditions, because they are immensely more likely.
-The disordered condition is one of high entropy, and the ordered one has low entropy. With a transfer of energy from
-another system, we could force all of the atoms into one corner and have a local decrease in entropy, but at the cost
-of an overall increase in entropy of the universe. If the atoms start out in one corner, they will quickly disperse and
-become uniformly distributed and will never return to the orderly original state (Figure 15.38(b)). Entropy will
-increase. With such a large sample of atoms, it is possible—but unimaginably unlikely—for entropy to decrease.
-Disorder is vastly more likely than order.
-The arguments that disorder and high entropy are the most probable states are quite convincing. The great Austrian
-physicist Ludwig Boltzmann (1844–1906)—who, along with Maxwell, made so many contributions to kinetic
-theory—proved that the entropy of a system in a given state (a macrostate) can be written as
-where
-is Boltzmann’s constant, and
-is the natural logarithm of the number of
-microstates
-corresponding to the given macrostate.
-is proportional to the probability that the macrostate will
-occur. Thus entropy is directly related to the probability of a state—the more likely the state, the greater its entropy.
-Boltzmann proved that this expression for
-is equivalent to the definition
-, which we have used
-extensively.
-Thus the second law of thermodynamics is explained on a very basic level: entropy either remains the same or
-increases in every process. This phenomenon is due to the extraordinarily small probability of a decrease, based on
-the extraordinarily larger number of microstates in systems with greater entropy. Entropy can decrease, but for any
-macroscopic system, this outcome is so unlikely that it will never be observed.
-15.68
-704
-15 • Thermodynamics
-Access for free at openstax.org
-
-EXAMPLE 15.9
-Entropy Increases in a Coin Toss
-Suppose you toss 100 coins starting with 60 heads and 40 tails, and you get the most likely result, 50 heads and 50
-tails. What is the change in entropy?
-Strategy
-Noting that the number of microstates is labeled
-in Table 15.4 for the 100-coin toss, we can use
-to calculate the change in entropy.
-Solution
-The change in entropy is
-where the subscript i stands for the initial 60 heads and 40 tails state, and the subscript f for the final 50 heads and
-50 tails state. Substituting the values for
-from Table 15.4 gives
-Discussion
-This increase in entropy means we have moved to a less orderly situation. It is not impossible for further tosses to
-produce the initial state of 60 heads and 40 tails, but it is less likely. There is about a 1 in 90 chance for that
-decrease in entropy (
-) to occur. If we calculate the decrease in entropy to move to the most
-orderly state, we get
-. There is about a
-chance of this change occurring. So while
-very small decreases in entropy are unlikely, slightly greater decreases are impossibly unlikely. These probabilities
-imply, again, that for a macroscopic system, a decrease in entropy is impossible. For example, for heat transfer to
-occur spontaneously from 1.00 kg of
-ice to its
-environment, there would be a decrease in entropy of
-. Given that a
-corresponds to about a
-chance, a decrease of this size
-(
-) is an utter impossibility. Even for a milligram of melted ice to spontaneously refreeze is impossible.
-15.69
-15.70
-PROBLEM-SOLVING STRATEGIES FOR ENTROPY
-1.
-Examine the situation to determine if entropy is involved.
-2.
-Identify the system of interest and draw a labeled diagram of the system showing energy flow.
-3.
-Identify exactly what needs to be determined in the problem (identify the unknowns). A written list is
-useful.
-4.
-Make a list of what is given or can be inferred from the problem as stated (identify the knowns). You must
-carefully identify the heat transfer, if any, and the temperature at which the process takes place. It is also
-important to identify the initial and final states.
-5.
-Solve the appropriate equation for the quantity to be determined (the unknown). Note that the change in
-entropy can be determined between any states by calculating it for a reversible process.
-6.
-Substitute the known value along with their units into the appropriate equation, and obtain numerical
-solutions complete with units.
-7.
-To see if it is reasonable: Does it make sense? For example, total entropy should increase for any real
-process or be constant for a reversible process. Disordered states should be more probable and have
-greater entropy than ordered states.
-15.7 • Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation
-705
-
-Glossary
-adiabatic process
-a process in which no heat transfer
-takes place
-Carnot cycle
-a cyclical process that uses only
-reversible processes, the adiabatic and isothermal
-processes
-Carnot efficiency
-the maximum theoretical efficiency
-for a heat engine
-Carnot engine
-a heat engine that uses a Carnot cycle
-change in entropy
-the ratio of heat transfer to
-temperature
-coefficient of performance
-for a heat pump, it is the
-ratio of heat transfer at the output (the hot
-reservoir) to the work supplied; for a refrigerator or
-air conditioner, it is the ratio of heat transfer from
-the cold reservoir to the work supplied
-cyclical process
-a process in which the path returns
-to its original state at the end of every cycle
-entropy
-a measurement of a system's disorder and
-its inability to do work in a system
-first law of thermodynamics
-states that the change
-in internal energy of a system equals the net heat
+Skip to main content
+4: Some Basic Applications of Statistical Thermodynamics
+-
+-
+Last updated
+-
+-
+Save as PDF
+-
+-
+-
+4.1: Interpreting the Partition Function
+-
+Only quantum states whose energy is less than kT can make substantial contributions to the magnitude of a partition function. Very approximately, we can say that the partition function is equal to the number of quantum states for which the energy is less than kT . Each such quantum state will contribute approximately one to the sum that comprises the partition function; the contribution of the corresponding energy level will be approximately equal to its degeneracy.
+-
+-
+4.2: Conditions under which Integrals Approximate Partition Functions
+-
+A common approximation is to substitue integrals for sums. This section looks at the constraints that must be satisfied in order to make the integral a good approximation to the sum.
+-
+-
+4.3: Probability Density Functions from the Energies of Classical-mechanical Models
+-
+We could postulate probability density functions apply to other energies derived from classical-mechanical models for molecular motion. We will see that this can indeed be done. The results correspond to the results that we get from the Boltzmann equation, where we assume for both derivations that many energy levels satisfy ϵ≪kT. The point is that, at a sufficiently high temperature, the behavior predicted by the quantum mechanical model and that predicted from classical mechanics converge.
+-
+-
+4.4: Partition Functions and Average Energies at High Temperatures
+-
+It is important to remember that the use of integrals to approximate Boltzmann-equation sums assumes that there are a large number of energy levels, ϵi , for which ϵi≪kT . If we select a high enough temperature, the energy levels for any motion will always satisfy this condition. The energy levels for translational motion satisfy this condition even at sub-ambient temperatures. This is the reason that Maxwell’s derivation of the probability density function for translational motion is successf
+-
+-
+4.5: Energy Levels for a Three-dimensional Harmonic Oscillator
+-
+One of the earliest applications of quantum mechanics was Einstein’s demonstration that the union of statistical mechanics and quantum mechanics explains the temperature variation of the heat capacities of solid materials. The physical model underlying Einstein’s development is that a monatomic solid consists of atoms vibrating about fixed points in a lattice. The particles of this solid are distinguishable from one another, because the location of each lattice point is uniquely specified.
+-
+-
+4.6: Energy and Heat Capacity of the "Einstein Crystal"
+-
+-
+-
+4.7: Applications of Other Entropy Relationships
+-
+-
+-
+4.8: Problems
+-

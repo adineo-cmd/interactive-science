@@ -1,9 +1,63 @@
 # Source pack — subjects/philosophy/foundational/ethics-three-theories
 Lesson title: Ethics: Three Big Answers
 Level: foundational
-Match confidence: 1.71
+Match confidence: 1.75
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 1.75 — LibreTexts: 1.27:  Ethics — Seeking to Discover What the Highest Principles of Behavior and the Things of Greatest Value Are
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Psychology/Social_Psychology_and_Personality/The_Meaning_of_Love_2e_(Garlikov)/01%3A_Chapters/1.27%3A__Ethics__Seeking_to_Discover_What_the_Highest_Principles_of_Behavior_and_the_Things_of_Greatest_Value_Are
+
+1.27: Ethics — Seeking to Discover What the Highest Principles of Behavior and the Things of Greatest Value Are
+-
+- Last updated
+- Save as PDF
+Learning Objectives
+- Discuss the major theories of ethics about what makes acts right or wrong, and understanding what their flaws (and good points) are.
+- Employ the principles meant to keep the good points of each theory, and to avoid their flaws.
+Watch this video or scan the QR code to learn more about ethics.
+The actual doing of ethics or moral philosophy — the search for principles that characterize and determine right action, duty, obligations, good values, good people, wrong actions, evil, etc. — as opposed to the previous kind of activity of talking about the nature and logic of the search and the concepts involved in it, is what philosophers and university philosophy teachers today call normative ethics. Since this activity is what most people call simply ethics, I will dispense with the adjective normative.
+It is useful to consider ethical theories about what kinds of actions are right or wrong in two types of categories to begin with: (1) theories that right actions are those actions whose consequences create or allow the greatest amount of good (or least amount of evil, or greatest balance of good over evil), and (2) other theories — any theory which holds that what is right is not dependent upon how much good (or how little evil) is created, but on other things — things which the theory will explain or describe. At first look, theories of the first sort — call them, say, “good-requiring” theories — perhaps seem the most obviously reasonable, but let me give some examples of cases of the second sort so that you can see what plausibility they themselves have. People who would be more inclined to hold one of the second kind of theories would be those who might follow a set of rules like the ten commandments, regardless of the consequences following those rules might bring, or people who believe that you should always obey the law, even if you think a law is a bad one or that some harm or evil will result in following it. (“If you think a law is a bad one,” they usually say, “then get it changed” — as if you could — “but until it is changed, you ought to obey it.”) Examples of other kinds of principles of this second sort are the Golden Rule in either of its forms — (1) do unto others as you would have them do unto you; or (2) do not do unto others what you would not have them do unto you — and the philosopher Immanuel Kant’s principle that you should only do what you could will that everyone should do (popularly usually expressed rhetorically as “What if everybody did that?”). None of these rules have any reference to whether following them will turn out to give the greatest good in the long run or not, though in some cases I think it is assumed (though probably incorrectly) that using them properly will bring about the greatest amount of good or presupposes (as in using Kant’s principle or the Golden Rule) that you will choose the alternative that will.
+I will call theories of the first sort “good-requiring” and those of the second sort “formal” or “procedural” rule theories, this latter because following the procedure or form of the rule, not looking at consequences, makes the determination for you of what is right or not. (For those who might take a philosophy course, philosophers call “good-requiring” theories Consequentialist (also called ‘teleological’) principles and theories of ethics, “formal rule” theories and Non-consequentialist (also called deontological) principles and theories of ethics , but I shall not use those somewhat foreboding and generally undescriptive terms here.)
+Good-Requiring Principles
+These are many principles that say an act is right if and only if, of all the acts that are possible for the person in question, its consequences create the most good, least evil, or greatest balance of good over evil. The following are three categories of good requiring principles, derived from their different answers to the question of who ought to most benefit from the good that they require to be done:
+(1) the agent performing the act? — the theory called “egoism”;
+(2) everyone other than the agent performing the act? — altruism; or,
+(3) everyone; or at least the majority or greatest number? — utilitarianism .
+Also, consider the question of what things are good. There have been serious attempts to show that there is ultimately only one good — one and only one final good toward which all other goods are only a means, but which it itself is an end. This, it is argued, is pleasure or happiness or contentment. (Though these three words perhaps mean somewhat different things, what I am interested in saying about theories claiming that any or all of them, or other similar things, are the only ultimate good will apply equally to all; so any specific distinctions between them will be unimportant here.) Such a theory of the ultimate goal and value of life — joy, contentment, happiness, pleasure, etc. — is called a hedonistic one.
+Now, except for categorizing theories, the names of the theories are not important, though the contents of the theories are, since many hold or have held various forms of these theories. We can have “egoistic hedonistic” theories of ethics — Ethical hedonism theories that say everyone should act for his or her own greatest happiness (not just good, but the specific good happiness; we can have “altruistic hedonistic” theories of ethics — theories that you should act for other people’s happiness; and we can have utilitarian hedonistic theories of ethics such as those of John Stuart Mill or Jeremy Bentham which hold that one should always act to promote the greatest happiness for the greatest number. And, apart from hedonism, there can be egoistic, altruistic, or utilitarian theories designating for whom one ought to increase those good or rewarding benefits that include things besides happiness or pleasure, in case happiness or pleasure is not the only ultimate good.
+I will say nothing much about altruism in the sense that I use it here, meaning a principle requiring one always to ignore one’s own good and to think only of the good of others. That is because I think everyone owes themself, simply because they too are a human being, some consideration; the question is simply how much. Why should other people, just because they are not you, be considered by you to be more important than you, or why should their good or happiness be considered by you to be of more value than yours! And why should you consider, as this theory of ethics would require, another person to be of more worth than you allow them to consider themself! The theory or principle, as stated here, would hold that you must always take their good into consideration but they should never do so; and they must always place your welfare first, but you should never do so.
+Egoism
+Let me first consider one particular argument given for ethical egoism — the principle that one ought to do what will bring about one’s own greatest good, least bad, or greatest balance of good over bad — and for ethical egoistic hedonism — the same theory but where good is considered specifically to be pleasure or happiness, and bad is considered to be pain or sorrow, etc. This is the argument derived from their psychological counterparts, psychological egoism and psychological hedonism , psychological theories which say that people only can act for their own (perceived) greatest interests or happiness. And since one can only be obligated to act in a way that one can act, these theories about how people do and must act leads directly to the ethical theories about how they should act. The contention is that since people are psychologically required to act in ways they perceive to be in their own best interests (or that will give them the most pleasure), that is the (only) way they can ethically be required to act; to require anything else ethically of people is to require the impossible and so is not a really legitimate, realistic, or meaningful ethical principle.
+Criticism: It is true one can only be morally obligated to do what is possible; but it is not true that it is impossible to act unselfishly. And in many cases, it is not even difficult to act unselfishly. If this is the case, as I will argue shortly, psychological egoism and hedonism, since they are false theories of human nature, cannot justify ethical egoism or hedonism, theories about human obligation. People do, in fact, act altruistically, at least some people do, at least some of the time. People can act unselfishly; many often do. Altruism, in the sense of taking the welfare of others into consideration, and even sometimes putting it above one’s own welfare — whether that welfare is in terms of happiness or some other good — is not an impossible human attribute. People can and do act in regard for others, act in ways that they know or believe will cause less good to themselves than they could otherwise get; but they act that way because they know or believe that it will cause more good for others and that sometimes that is better or more important.
+Many teachers, for example, have done extra work for their students’ benefit, not for their own benefit. Many people do extra things for others even when it is an inconvenience to themselves. Parents, for example, often do unselfish things for their children. They may work harder so that their kids have the extra opportunities occasioned by greater wealth; they may give their children their time and energy to teach them, chauffeur them, chaperon them, or to listen to them about matters of little consequence or interest in themselves, even though it may not cause the parent any great joy or pleasure and even though it may be boring, tedious, or sacrificial of their time or energy that would otherwise be spent on personally fonder projects.
+And any argument that tries to show these people believe they will get more pleasure out of acting altruistically and are therefore really acting in, and because of, their own self-interest, after all, shows little understanding of human nature in such matters. Of course, there are selfish acts done by people for others so that they themselves will receive a benefit or honor or feel better or have their consciences assuaged, but not all acts are like that, and not all people act selfishly like that. In many cases of altruistic acts or of self-sacrificing utilitarian acts there is no particular benefit expected or perceived to be gained by the agent performing the act. And if one does get pleasure out of an unselfish act, that pleasure is usually the result and not the cause of one’s doing something selflessly. Furthermore, in cases where there is some pleasure for the agent, it is usually hardly sufficient pleasure to have balanced the amount of selfish pleasure sacrificed.
+(More about this shortly.) To repeat, not all acts have much to do with the agent’s expecting to receive any or sufficiently rewarding pleasure for his or her deeds; nor do they have much to do with the agent’s actually receiving any or sufficient benefit for them; and even when some pleasure does also result for the agent, it is just that — an accompanying result — and not the cause of his or her performing the act.
+For example, when you root for a sports hero, a movie hero, kidnap victim, politician, or whomever, you do it because you want him or her to triumph, and then you feel good if he or she does. Unless you have placed a bet on them, you do not root for them so that you will feel good. Why should you feel good about their winning if you did not already have some sort of concern or feeling for them! Why ever root for the underdog, since by doing so you are more likely to end up feeling bad — underdogs usually lose. Why not root for the kidnapper rather than the victim if all you are concerned about is how you feel! Why, in fact, root f
+
+## Match 1.71 — LibreTexts: 4.1: Ethics
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://human.libretexts.org/Bookshelves/Philosophy/It's_Funny_'Cause_It's_True_(Henrigillis_and_Gimbel)/04%3A_Ethics/4.01%3A_Ethics
+
+4.1: Ethics
+The next two chapters will look at the part of philosophy we call axiology. Axiology is the study of value judgements. We say things are good or bad, right or wrong, beautiful or ugly, sublime or mundane. The central question of axiology is “on what basis can we justify such claims?” There are two branches of axiology corresponding to two different sorts of judgements we make. Judgements about the moral rightness or wrongness of a freely chosen human action is ethics and that will be the topic of this chapter. The study of the basis for judgements concerning beauty and the quality of art is what we call aesthetics and will be the topic of the next chapter.
+Before we launch into in depth discussions of the rational grounds upon which to make ethical judgments, we first need to answer two objections: (1) there can be no rational grounds for judgments in ethics because it is just whatever a person/society thinks, and (2) there are grounds for making ethical judgments, context-dependent and subjective to each person’s experience, but they are not rational, human reason is not enough to justify them. How we respond to these questions depends on our ethical system .
+An ethical system is a working definition of the concepts of morally right and morally wrong. We all have vague ethical intuitions that suffice for most day-to-day situations. We just know that it is good to help the needy and bad to torture newborn infants with a fork just for the fun of it. But if we want to be able to approach the sticky, hard to answer issues, then we need explicit definitions for our basic moral concepts. When we say that an act is morally wrong, we need to be able to clearly and unambiguously explain why. In other words, we need to articulate reasons to defend these intuitions.
+That is why we need an ethical system. Think of an ethical system as a box with a slot on one side, a button on the top, and three lights on the front. The top light is green and has the word “MUST” written in large bold letters. The middle light is yellow and has “ok” etched into it. The bottom light is red and imprinted with the words “Stop! No! Verboten! Cut it out, you degenerate! What kind of sicko are you, anyway?” You stick the description of an action into the slot, push the button, and one of the lights comes on. If green lights up, the action is ethically necessary; you are morally obliged to do it. If the yellow light comes on, then the action is morally permissible, that is, you don’t have to 88 do it, but there’s no problem if you do. If the red light comes on, then the action is morally impermissible, it is an ethically wrong behavior.
+The two central claims that we need to establish are – playing along with the metaphor – 1) that such a box exists and 2) that we can pop the hood and see how the gears are put together, that is, that we can understand exactly why an action is determined by the machine to categorize why the morally necessary, permissible, or wrong buttons light up. The idea that we can and should understand the intellectual mechanism behind moral judgments is called ethical rationalism . It contends that “ethically right” and “ethically wrong” are meaningful notions and that people with minds like ours can fully understand them; in other words, that there is a box, and we can understand its programming.
+In the next section, we will examine several ethical systems that have been proposed by important, and for the most part dead, philosophers through the last twenty-four centuries. We will be quality control, testing the calibration of each proposed box by sticking in uncontroversial actions that we can all agree are right or wrong and making sure that we get the desired output. If you put into the box the action “Rescue drowning child at the edge of the pool right in front of me” and the green light doesn’t come on, we know that the box is faulty. If you stick in “Enslave the next-door neighbors so I never again have to mow the lawn” and the red, morally impermissible light doesn’t come on, again, we know the internal workings of the box are to be rejected as a way of determining moral rightness and wrongness.
+The goal of determining how a box works is equivalent to being able to fill in the blank in the sentence, “Act x is morally right if and only if _________.” We want to be able to explain clearly and completely what makes an action morally right or morally wrong because if we can’t explain our judgments, we can’t defend them. And then moral discourse completely collapses into the sort of closed-minded shouting matches that plague us now. To make progress on the hard issues before us, we need to clear up a few questions at the foundational, theoretical level before we try to apply them to the world around us.
+Before we can do that, however, we need to answer the two challenges to ethical rationalism that have emerged from contemporary, politically infected, pseudo-ethics speak. On the one hand we have what’s called moral relativism and comes in two 89 flavors. The first, ethical subjectivism , contends that moral rightness is just whatever any given person thinks it is. There’s my morality, your morality, Soupy Sales’ morality, but no objective, universal morality apart from what any given person holds. Moral rightness and wrongness only have meaning relative to some person or other. In other words, what makes an action moral is whether or not I feel that it is moral. The second flavor of this view is cultural relativism , the position that moral right and wrong are a function of the social acceptability of an act. There is no real sense of right and wrong, according to this view, only how a given culture defines it. “Because I was brought up that way,” simply ends the discussion. In other words, what makes an action moral is whether or not a society has decided that it is moral.
+Neither of these are unusual views today, and if you listen carefully you can frequently find people sliding back and forth between subjectivism and cultural relativism as if they were the same thing. The similarity that interests us is that either view, if true, would eliminate the possibility of there being a box of the sort we are seeking. No one could possibly be wrong about any ethical statement they make, and thus, moral judgment is trivial to the point of disappearing. Everyone has his or her own box and no box is any better than any other. Because morality would just be a matter of how you feel or what society thinks, there would be no such thing as an objective moral truth – in other words, there would be no “right answer” to any moral question. Say that I feel that killing kittens is wrong, and my society agrees with me. But you feel that it’s right, and your society agrees with you. Without some sort of objective moral standard, or truth, to determine which of us is right, we have no way of determining who is right. Morality becomes meaningless if we have no way to determine whose moral feeling or moral society is right.
+On the other hand, there are those who do not deny the existence of a box whatsoever. Indeed, quite to the contrary, people who argue for a brand of moral imperialism assert that a box must exist, that there are absolute answers to every moral question. Some even claim to have in their very possession The One and Only True Box and are willing to do very nasty things to the bodies and relatives of others who have what they deem to be fake versions of The One and Only True Box. The problem is, while they contend that a box exists, they hold that it is impossible to see how the box works and why exactly it works that way. They claim that there is absolute 90 right and absolute wrong, but, in their view, there is no rational reason that human beings could understand as to why any given act is morally right or morally wrong. It is a matter of faith and not reason. Ethics ceases to be a matter open to rational consideration.
+The first view undermines ethical rationalism because they claim that a box does not exist, and the second view undermines ethics because they say it exists, but you can’t know how it works. So, before we can start comparison-shopping for ethical systems, it is imperative that we first understand the flaws in these positions. The fact that they are unworkable does not mean that there is not something in both sides that is attractive on some level. There is, and will always be, an aspect from each that needs to be incorporated into a successful, complete ethical system. What we want to do in the next section is figure out what is wrong with each of these views, what is right about each of these views, and what can be saved.
+Ethical Subjectivism
+Ethical subjectivism is the view that moral judgments are purely a matter of personal decision. Everyone has his or her own ethical system, and the fact that you consider an act morally right for whatever reason (or, indeed, for no reason at all) means that, for you, the act is morally right. We can set it out like this:
+Ethical subjectivism – An act x is morally right for me if and only if I think it is.
+There are two things we need to focus upon in this definition. First, it is a relativistic definition; that is to say, the truth of any moral claim is relative to the person judging it. It is not universalized to all people. The second aspect is the infallibility of moral judgments. According to this view, it is impossible for anyone to be wrong when they make a moral claim. If I say so, then I must be right simply because I said so. It is logically impossible for me to be wrong about any moral claim.
+Reasoning about ethics now becomes akin to reasoning about your favorite flavor of Ben and Jerry’s ice cream. If your favorite flavor is Cherry Garcia, then no matter how good of an orator I am, no matter how strong of a rational argument I formulate, I could never get you to change your mind and assert that, “While I thought that Cherry Garcia 91 tasted better than New York Superfudge Chunk, I have now come to understand that I was wrong and, in spite of what I tasted, I now assert for rational reasons that New York Superfudge Chunk actually tastes better than Cherry Garcia.” The simple fact is there is no accounting for taste. If Cherry Garcia tastes better to you, then it tastes better to you. The matter is not open to rational conversation. If you came across two people in a screaming match, one yelling passionately, “I prefer Cherry Garcia,” and the other responding with equal volume and zeal, “I prefer New York Superfudge Chunk,” you’d do well to think that these two will never convince the other they are right.
+He screams, she screams, but we need not all scream for ice cream. The real problem is not that one’s favorite ice cream flavor seems insufficiently important to warrant fisticuffs (although, yes, some anger management therapy might not be the worst of things in this case). No, the real problem is that the two people have nothing that they disagree about. They are both simultaneously correct. There is no point of contention; his favorite flavor is Cherry Garcia and her favorite flavor is New York Superfudge Chunk. So long as they are truthfully reporting their preferences, they are both right.
+The ethical subjectivist reduces morality to this same level. From time to time, you will even find a sense of taste explicitly substituted for moral reasoning. The usual form is “Act x is morally wrong for me because I think it is yucky.” For example, “Eating meat is wrong, I can’t imagine killing a little pig, it’s gross.” It may be, but that does not necessarily make it morally problematic.
+The real crime of ethical subjectivism is that it makes moral disagreement impossible. If ethical subjectivism were true, then if Hitler really thought exterminating Jews, homosexuals, and political opponents were morally acceptable actions, then for him it was. And we can’t really object to this anymore than we can object to h
 
 ## Match 1.71 — IntroductoryBusinessStatistics-OP § 1.4 Experimental Design and Ethics
 
@@ -516,206 +570,3 @@ Coolidge
 Table 2.5 Presidential Age at Death
 Another type of graph that is useful for specific data values is a line graph. In the particular line graph shown in Example
 2.4, the x-axis (horizontal axis) consists of data values and the y-axis (vertical axis) co
-
-## Match 1.70 — Introduction_to_Philosophy-WEB_cszrKYp § 10.3 Business Ethics and Emerging Technology
-
-Most of us think about ethical issues in our everyday lives. We might wonder, for instance,
-whether we have an obligation to reduce our use of plastics because of their impact on the environment. We
-might question whether we treated someone fairly at work or whether we acted in a way that was morally
-problematic. When we reflect on whether a given action is right or wrong, we are doing applied ethics. We
-attempt to determine the rightness of some specified action through moral deliberation and the application of
-ethical principles and norms. Questions in applied ethics focus on whether some action is right, and
-philosophers apply diverse perspectives when analyzing the morality of a specific action.
-Developments and advances in areas like technology and medicine can potentially create otherwise
-unforeseen or unexpected ethical dilemmas. In most cases, it is very difficult, if not impossible, to predict
-10
-Applied Ethics
-
-potential ethical issues pertaining to an innovation until it is already in use and in the world. Imagine, for
-instance, trying to predict what moral dilemmas and disruptions the internet would cause before it was
-created and widely used. Indeed, even after its creation and widespread adoption in the 1990s, there were still
-many innovations and challenges to come that would have been hard to predict. Ethical dilemmas created by
-new innovations emerge with use and are often confronted and debated only after they become apparent. This
-is why it can sometimes seem like ethical debates are always playing catch-up, that we are motivated to debate
-the ethical implications of something only after issues become apparent.
-Metaethics, normative ethics, and applied ethics are the three main areas of ethics, which are each
-distinguished by a different level of inquiry and analysis. Applied ethics focuses on the application of moral
-norms and principles to controversial issues to determine the rightness of specific actions. While people have
-done applied ethics throughout human history, as a field of study, applied ethics is relatively new, emerging in
-the early 1970s. Issues like abortion, environmental racism, the use of humans in biomedical research, and
-online privacy are just a few of the controversial moral issues explored in applied ethics.
-Making sense of these complicated issues often requires a multidisciplinary approach. Applied ethics rarely
-finds answers within the philosophical frame alone. While philosophy provides the normative framework for
-analysis by way of the ethical theories, philosophy often generates more questions than functional answers,
-and in the field of ethics, concerns about the right to life, social justice, and the like sometimes fall into the
-arena of politics. As a result, many applied dilemmas are solved and resolved through law and policy. As such,
-applied ethics becomes an interdisciplinary or cross-disciplinary field of study.
-This chapter explores major subfields in applied ethics including bioethics, environmental ethics, and
-business ethics and emerging technology.
-
-## Match 1.38 — Introduction_to_Philosophy-WEB_cszrKYp § 9.4 Virtue Ethics
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Identify the central principles of virtue ethics.
-•
-Distinguish the major features of Confucianism.
-•
-Evaluate Aristotle’s moral theory.
-Virtue ethics takes a character-centered approach to morality. Whereas Mohists and utilitarians look to
-consequences to determine the rightness of an action and deontologists maintain that a right action is the one
-that conforms to moral rules and norms, virtue ethicists argue that right action flows from good character
-traits or dispositions. We become a good person, then, through the cultivation of character, self-reflection, and
-self-perfection.
-There is often a connection between the virtuous life and the good life in virtue ethics because of its emphasis
-on character and self-cultivation. Through virtuous development, we realize and perfect ourselves, laying the
-foundation for a good life. In Justice as a Virtue, for example, Mark LeBar (2020) notes that “on the Greek
-eudaimonist views (including here Plato, Aristotle, the Stoics, and Epicurus) our reasons for action arise from
-our interest in [eudaimonia, or] a happy life.” The ancient Greeks thought the aim of life was eudaimonia.
-Though eudaimonia is often translated as “happiness,” it means something closer to “a flourishing life.”
-Confucianism, with its strong emphasis on repairing the fractured social world, connects the promotion of
-virtuous development and social order. Confucians believe virtuous action is informed by social roles and
-relationships, such that promoting virtuous development also promotes social order.
-Confucianism
-As discussed earlier, the Warring States period in ancient China (ca. 475–221 BCE) was a period marked by
-warfare, social unrest, and suffering. Warfare during this period was common because China was comprised of
-small states that were not politically unified. New philosophical approaches were developed to promote social
-harmony, peace, and a better life. This period in China’s history is also sometimes referred to as the era of the
-“Hundred Schools of Thought” because the development of new philosophical approaches led to cultural
-expansion and intellectual development. Mohism, Daoism, and Confucianism developed in ancient China
-during this period. Daoism and Confucianism would later spread to Japan, Korea, and Vietnam, where they
-would be adopted and changed in response to local social and cultural circumstances.
-Confucius
-Confucius (551–479 BCE) rose from lowly positions to become a minister in the government of a province in
-eastern China. After a political conflict with the hereditary aristocracy, Confucius resigned his position and
-began traveling to other kingdoms and teaching. Confucius’s teachings centered on virtue, veering into
-practical subjects such as social obligations, ritual performance, and governance. During his lifetime,
-Confucius despaired that his advice to rulers fell on deaf ears: “How can I be like a bitter gourd that hangs from
-the end of a string and can not be eaten?” (Analects 17:7). He did not foresee that his work and ideas would
-influence society, politics, and culture in East Asia for over 2000 years.
-282
-9 • Normative Moral Theory
-Access for free at openstax.org
-
-FIGURE 9.7 This statue of Confucius, the largest in the world, stands at the Yushima Seido, a Confucian temple in
-Japan. (credit: “Confucius Statue at the Yushima Seido” by Abasaa/Wikimedia Commons, Public Domain)
-Confucius is credited with authoring or editing the classical texts that became the curriculum of the imperial
-exams, which applicants had to pass to obtain positions in government. His words, sayings, and exchanges
-with rulers and his disciples were written down and recorded in the Lun Yu, or the Analects of Confucius,
-which has heavily influenced the moral and social practice in China and elsewhere.
-Relational Aspect of Virtue
-Like Mohism, Confucianism aimed to restore social order and harmony by establishing moral and social
-norms. Confucius believed the way to achieve this was through an ordered, hierarchical society in which
-people know their place in relationship to other people. Confucius said, “There is government, when the prince
-is prince, and the minister is minister; when the father is father, and the son is son” (Analects, 7:11). In
-Confucianism, relationships and social roles shape moral responsibilities and structure moral life.
-A cornerstone of Confucian virtue is filial piety. Confucius felt that the role of the father was to care for and
-educate his son, but the duty of the son must be to respect his father by obediently abiding by his wishes.
-“While a man's father is alive, look at the bent of his will; when his father is dead, look at his conduct. If for
-three years he does not alter from the way of his father, he may be called filial” (Analects, 1:11). Indeed, when
-the Duke of Sheh informed Confucius that his subjects were so truthful that if their father stole a sheep, they
-would bear witness to it, Confucius replied, “Among us, in our part of the country, those who are upright are
-different from this. The father conceals the misconduct of the son, and the son conceals the misconduct of the
-father. Uprightness is to be found in this.” The devotion of the son to the father is more important than what
-Kant would call the universal moral law of truth telling.
-There is therefore an important relational aspect of virtue that a moral person must understand. The virtuous
-person must not only be aware of and care for others but must understand the “human dance,” or the complex
-practices and relationships that we participate in and that define social life (Wong 2021). The more we begin to
-understand the “human dance,” the more we grasp how we relate to one another and how social roles and
-relationships must be accounted for to act virtuously.
-9.4 • Virtue Ethics
-283
-
-Ritual and Ren
-Important to both early and late Confucian ethics is the concept of li (ritual and practice). Li plays an important
-role in the transformation of character. These rituals are a guide or become a means by which we develop and
-start to understand our moral responsibilities. Sacrificial offerings to parents and other ancestors after their
-death, for example, cultivate filial piety. By carrying out rituals, we transform our character and become more
-sensitive to the complexities of human interaction and social life.
-In later Confucian thought, the concept of li takes on a broader role and denotes the customs and practices that
-are a blueprint for many kinds of respectful behavior (Wong 2021). In this way, it relates to ren, a concept that
-refers to someone with complete virtue or specific virtues needed to achieve moral excellence. Confucians
-maintain that it is possible to perfect human nature through personal development and transformation. They
-believe society will improve if people abide by moral and social norms and focus on perfecting themselves.
-The aim is to live according to the dao. The word dao means “way” in the sense of a road or path of virtue.
-Junzi and Self-Perfection
-Confucius used the term junzi to refer to an exemplary figure who lives according to the dao. This figure is an
-ethical ideal that reminds us that self-perfection can be achieved through practice, self-transformation, and a
-deep understanding of social relationships and norms. A junzi knows what is right and chooses it, taking into
-account social roles and norms, while serving as a role model. Whenever we act, our actions are observed by
-others. If we act morally and strive to embody the ethical ideal, we can become an example for others to follow,
-someone they can look to and emulate.
-The Ethical Ruler
-Any person of any status can become a junzi. Yet, it was particularly important that rulers strive toward this
-ideal because their subjects would then follow this ideal. When the ruler Chi K’ang consulted with Confucius
-about what to do about the number of thieves in his domain, Confucius responded, “If you, sir, were not
-covetous, although you should reward them to do it, they would not steal” (Analects, 7:18).
-Confucius thought social problems were rooted in the elite’s behavior and, in particular, in their pursuit of
-their own benefit to the detriment of the people. Hence, government officials must model personal integrity,
-understand the needs of the communities over which they exercised authority, and place the welfare of the
-people over and above their own (Koller 2007, 204).
-In adherence to the ethical code, a ruler’s subjects must show obedience to honorable people and emulate
-those higher up in the social hierarchy. Chi K’ang, responding to Confucius’s suggestion regarding thievery,
-asked Confucius, “What do you say to killing the unprincipled for the good of the principled?” Confucius
-replied that there was no need to kill at all. “Let your evinced desires be for what is good, and the people will be
-good.” Confucius believed that the relationship between rulers and their subjects is and should be like that
-between the wind and the grass. “The grass must bend, when the wind blows across it” (Analects, 7:19).
-284
-9 • Normative Moral Theory
-Access for free at openstax.org
-
-FIGURE 9.8 The elaborate Temple of Confucius in Beijing, China was initially built in 1302, with additions added in
-the centuries that followed. (credit: “Temple of Confucius, Beijing, China” by Fabio Achilli/Flickr, CC BY 2.0)
-Japanese Confucianism
-Although Confucianism was initially developed in China, it spread to Japan in the mid-sixth century, via Korea,
-and developed its own unique attributes. Confucianism is one of the dominant philosophical teachings in
-Japan. As in China, Japanese Confucianism focuses on teaching individual perfection and moral development,
-fostering harmonious and healthy familial relations, and promoting a functioning and prosperous society. In
-Japan, Confucianism has been changed and transformed in response to local social and cultural factors. For
-example, Confucianism and Buddhism were introduced around the same time in Japan. It is therefore not
-uncommon to find variations of Japanese Confucianism that integrate ideas and beliefs from Buddhism. Some
-neo-Confucian philosophers like Zhu Xi, for example, developed “Confucian thinking after earlier study and
-practice of Chan Buddhism” (Tucker 2018).
-Aristotelianism
-FIGURE 9.9 This painting by Gerard Hoet depicts Olympias presenting the young Alexander the Great to Aristotle.
-Aristotle traveled to Macedonian in 343 BCE to tutor the 13-year-old boy, Alexander, who would later become
-9.4 • Virtue Ethics
-285
-
-Alexander the Great. (credit: “Olympias presenting the young Alexander the Great to Aristotle” by Gerard Hoet/
-Wikimedia Commons, Public Domain)
-Aristotle (384–322 BCE) was a preeminent ancient Greek philosopher. He studied with Plato (ca. 429–347 BCE)
-at the Academy, a fraternal organization where participants pursued knowledge and self-development. After
-Plato’s death, Aristotle traveled, tutored the boy who would later become Alexander the Great, and among
-other things, established his own place of learning, dedicated to the god Apollo (Shields 2020).
-Aristotle spent his life in the pursuit of knowledge and wisdom. His extant works today represent only a
-portion of his total life’s work, much of which was lost to history. During his life, Aristotle was, for example,
-principal to the creation of logic, created the first system of classification for animals, and wrote on diverse
-topics of philosophical interest. Along with his teacher, Plato, Aristotle is considered one of the pillars of
-Western philosophy.
-Human Flourishing as the Goal of Human Action
-In the first line of Book I of Aristotle’s Nicomachean Ethics, he observes that “[every] art and every inquiry, and
-similarly every action and pursuit, is thought to aim at some good” (Aristotle [350 BCE] 1998, 1094a). If
-everything we do aims at some good, he argues, then there must be a final or highest good that is the end of all
-action (life’s telos), which is eudaimonia, the flourishing life (Aristotle [350 BCE] 1998, 1097a34–b25).
-Everything else we pursue is pursued for the sake of this end.
-CONNECTIONS
-See the chapter on epistemology for more on the topic of eudaimonia.
-Nicomachean Ethics is a practical exploration of the flourishing life and how to live it. Aristotle, like other
-ancient Greek and Roman philosophers (e.g., Plato and the Stoics), asserts that virtuous development is central
-to human flourishing. Virtue (or aretê) means “excellence. We determine something’s virtue, Aristotle argued,
-by identifying its peculiar function or purpose because “the good and the ‘well’ is thought to reside in the
-function” (Aristotle [350 BCE] 1998, 1097b25–1098a15). We might reasonably say, for example, that a knife’s
-function is to cut. A sharp knife that cuts extremely well is an excellent (or virtuous) knife. The sharp knife
-realizes its function and embodies excellence (or it is an excellent representation of knife-ness).
-Aristotle assumed our rational capacity makes us distinct from other (living) things. He identifies rationality as
-the unique function of human beings and says that human virtue, or excellence, is therefore realized through
-the development or perfection of reason. For Aristotle, virtuous development is the transformation and
-perfection of character in accordance with reason. While most thinkers (like Aristotle and Kant) assign similar
-significance to reason, it is interesting to note how they arrive at such different theories.
-Deliberation, Practical Wisdom, and Character
-To exercise or possess virtue is to demonstrate excellent character. For ancient Greek and Roman
-philosophers, the pursuit of intentional, directed self-development to cultivate virtues is the pursuit of
-excellence. Someone with a virtuous character is consistent, firm, self-controlled, and well-off. Aristotle
-characterized the virtuous character state as the mean between two v

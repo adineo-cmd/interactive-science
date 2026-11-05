@@ -1,666 +1,129 @@
 # Source pack — subjects/dance/foundational/performance-technique-and-expression
 Lesson title: Performance: Technique and Expression
 Level: foundational
-Match confidence: 1.36
+Match confidence: 1.69
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.36 — IntroductiontoAnthropology-WEB § 16.4 Anthropology, Representation, and Performance
+## Match 1.69 — LibreTexts: 16.8: What performance assessments can be used for elementary art?
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Education_and_Professional_Development/Foundations_of_Education_and_Instructional_Assessment_(Kidd_et_al.)/16%3A_Instructional_Assessment-_Performance_Assessment_and_Rubrics/16.08%3A_What_performance_assessments_can_be_used_for_elementary_art
 
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Identify how cultural identities, norms, values, and social structures are represented in art, music, and sports.
-•
-Describe how art, music, and sports can function as means of resistance to dominant sociocultural forms and
-processes.
-Art, music, and sports all articulate the experiences of people. One of these experiences might be resistance or
-rebellion. Whether it is a piece of art depicting a revolution, a rap song challenging the establishment, or a
-protest at a sporting event on a global stage, expression of the need for change are common in contemporary
-culture. This section will explore cultural identities; the use of art, music, and sports as resistance; and the
-16.4 • Anthropology, Representation, and Performance
-505
+16.8: What performance assessments can be used for elementary art?
+-
+- Last updated
+- Save as PDF
+By A. Jones
+Learning Objectives
+- The reader will be able to define why art is taught.
+- The reader will be able to define some specific art assessments.
+- The reader will know the ways to evaulate and assess art.
+Note
+'"The art room is...the teachers canvas on which ideas are showcased, the curiours are challenged, and responses are invited. George Szekely"
+Why We Teach Art ?
+In order to assess art you must first understand why we teach and make art. Art is a means to engage all students senses for learning and expression. Creating art helps children express their imaginative and emotional personal development. Art lessons contribute to the cognitive development and their critical thinking skills. Art is crucial in helping students to understand and explore their world and develop their own abilities to function in it. Art exposes students to world cultures, individual expressions, visual symbols, and it helps them to develop their own preferences, and it makes them aware of influences in society. Art has the ability to integrates all major subjects : Math, Science, Social Studies, History, Language Art, and Technology. Students enjoy art classes because it allows them to touch on experiences not addressed in any other classes. In art, students can express opinions and ideas that are uniquely different then their peers.In art there is always more than one way to achieve excellence. According to Elliot Eisner "the arts teaches children: to make good judgement, that problems can have more than one answer, the arts celebrate multiple perspectives,the art teaches that in complex forms of problem solving are seldom fixed, the arts makes vivid facts that neither words in their literal form nor numbers exhaust what we know, the art teaches students that small differences can have large effects, the art teaches students to think through and within a material, the art enables us to have experiences no other source has the capability of."(Eisner,2006)
+Note
+" Learning to draw will put you in touch with a long respected tradition that begins in Prehistoric times. Drawing remains a natural way for creative people to visually express their attitudes about the world around them. Wayne Enstice and Melody Peters"
+Art Evaluations
+Creating art objectives and evaluations usually consist of two parts examining artwork during the process and after artwork is completed. There are several ways a teacher can monitor the students progress, which might include : examining the students projects in art portfolios, engaging students in written and verbal critiques about their artworks and their peers artwork, and assessing learning in student and in art journals. Art Portfolios are a collection of student artwork representing a selection of different performances. Art portfolios showcase students accomplishments and progress through various stages of art production. Art Journals are like mini art diary's they contain sketches, art thought process, and students own views and interpretation of certain lessons and art vocabulary.Portfolios are a great way to assess and demonstrate improvement over time.
+The website below has examples of art Evaluations www.mmwindowtoart.com/evaluations.html
+"Defined Objectives"
+Defined objectives are important to meet standards and provide assessments of performance. All students need to be clearly informed of objectives and grading rubrics on every lesson. A Rubric is a grading chart it has specific details on what is be evaluated. For example most art rubrics give you: O is for Outstanding artwork done with no help 100-95% , V is for Very Good Work with little help from Teacher 90-86% ,S is for Satisfactory basic artwork 85-76% no real thrills , N is for Needs Improvement 75-69% did just enough to get by , U is for Unsatisfactory 68% and lower did not master much of the lesson. A art rubric usually states specific goals of the project. For example student will learn to mix paint from dark to light within a grid. You can look at the grid and tell if the students have the same five to six colors you gave them, or if they experimented and made some shades and tints of those colors by mixing the paints with white or black.Stating specific objectives allow students the ability to achieve these goals.The Following website list art rubrics http://www.goshen.edu/art/ed/rubric3.html .Many state and local systems set broad goals. These goals are set by the National Art Education Association that are recommended for standard based art instructions.The following website has the National Standards for Dance, Music, Theater, and Visual Arts http://artsedge.kennedy-center.org/teach/standards.cfm .
+Art Objectives and Assessments
+There are many different ways to evaluate art lessons. Many teachers objectives reflect their personal values about art education,their teaching styles and their students age and ability. All art teachers teach a specific skills that you build upon and expand into more quality artwork.Too many directions at once may confuse younger students and students with ADHD or special education requirements. Wise art teachers expand lessons to cover more than one class meeting. By expanding class lessons you gives students the opportunity and time to build up and reflect in order to master the skills. Mastery of skills builds confidence giving them a great piece as a end result in which they are proud of.No teacher teaches with the hopes of students to become failures . Many art teachers use performance-based assessments.Performance based assessments require students to perform or demonstrate a task. Most art grades are based on artwork , art learning and can be based on some extent on test results. There are five main art objectives 1.Production 2. Perception 3. Critcism 4. Aesthetics and 5. Art History. Art Production is the process of making or producing art. Art Perception is how students see and digest what they are doing , looking at, or learning. Art Criticism is the students ability to point out evidence and make connections to the artwork that supports their perception. Art Aesthetics in the students questioning " Why" . For example if you show students a pieces of artwork that they find to be ugly or weird ? Why do you think this is ugly ? Why do you think this is weird ? This is a example Aesthetics. Art History is the study of past art masters, ancient civilizations, valuable objects from various cultures,and artifacts.
+Types Of Formal and Informal Assessments
+"Through educators often think the primary purpose of assessments is grading, a thorough assessment plan ,consist of a variety of eveidence on student acquisition of learning" (Rohrer,2009) Informal assessments is the teacher assessing who is grasping a lesson and who is not. As a class progress a teacher can tell who is engaged in art production and who not by looking at students. Teachers can quietly talk to students and give them some encouraging words, demonstrate a technique they can try, and also make mention of the overall rubrics and goals and objective timewise. For example by the end of this class we should all have our background sky painting in, when we meet again we will be filling in details of the landscape and will not have any sky colored paint available. Formal assessments are vital to gain information for educational decision making to revise programs and increase grades."In recent years, policymakers have been reassessing their conception of teacher quality by beginning to focus attention on examining the relationship between the assessment of the teacher competence and student achievement."(Randall,2005) Verification of student learning is the main reason for formal assessment. Assessments help teachers evaluate their programs, diagnose learning,revise,compare,and anticipate educational needs and determine if needs have been achieved.These assessments also help determine how to adjust lessons to increase student learning. Assessment informs teachers if they need to shift instruction strategies to reach more students." Instead of using traditional assessment,such as standardized test, many teachers are choosing to use performace based, authentic assessment to measure the quality of an eduaction program by comprehensively examining the individuals performance"(Yauying,2004).
+Conclusion
+We teach art to help students explore the world around them and find their place in society . Art asessments have been performance based and are starting to influence other subjects to include more performance based activities instead of just quizzes and test.By reflection on different types of art assessments, and how teachers can use art portfolios and art journals to see what students have digested the lesson or not. Assessments are not just used for grades but also needed to inform students and teachers of progress and what may need to be retaught or reworked strategy wise to close the gap between successful students and unsuccessful students.In conclusion good assessments evaluates and summarize both student learning and teachers effectiveness.Art mimics much of society it is constantly changing and evolving.
+Exercise \(\PageIndex{1}\)
+Add exercises text here.
+1. Why do we teach art?
+a.because it is a state requirement.
+b.to engage in students sense of learning and expression.
+c.to enable children to draw and paint very well.
+d.to give teacher's a planning break.
+2. What are the two parts to art evaluations?
+a. examining the artwork during the process and once artwork is completed.
+b. examining for the best quality of artwork at the completion only.
+c. examining the work to see who could include the most in their artwork.
+d. examining the artwork for evidence of art principles.
+3. What is the purpose of assessments ?
+a.to give grades only.
+b.to inform students and teachers on learning targets.
+c.to evaluate teachers only.
+d.to evaluate teachers and students.
+4. What are the art objectives?
+a.art assessment only to give a grade.
+b.art assessing, the artmaking, and art history aspect.
+c.production, history, perception, aesthetics, and criticism.
+d.the art of making artworks
+- Answer
+-
+1. b
+2. a
+3. d
+4. c
+References
+Eisner,E.(2006). The Arts and The Creation Of Mind ,pp. 70–92).Yale University Press.NAEA Publication
+Randall,J.(2005)Performance Assessments and Electronic Portfolios.Retrieved March 20, 2009,from elibrary Website Http://elibrary.bigchalk.com/libweb/elib/do/documents
+Rohrer,K.(2009)Art Teacher Assessment. Retrieved March 20, 2009, from elibrarywebsite Http://www.princetonol.com/groups/ia...ssessment.html
+Yaoying,X.(2004)Teacher Portfolios: An Effective Way To Asesses Teacher Performance and Enhance Learning. Retrieved March 20, 2009, from elibrary Website Http://elibrary.bigchalk.com/libweb/elib/do/document
 
-representations created by each specialization.
-Cultural Identities
-Think about sporting team uniforms or a clothing style worn by members of a musical group. Each outfit on its
-own may not be distinct or significant, but when worn by a group of athletes or musicians and their fans, they
-become a source of identity. Since prehistoric times, art, music, and sports have been a source of cultural
-identity. Arts and sports have been intertwined with several human rights movements and the push for
-diversity, equity, and inclusion. Music has been a means of coded language for escape. Sports have long been a
-platform for cultural identity and has presented opportunities for cultural evolution and resistance. The
-Olympics are just one example of a sporting event that is linked deeply with national identity and nation pride.
-FIGURE 16.20
-The opening ceremonies of the Olympic games are celebrations of national identity and nation
-pride. (credit: “The team of Chile at the opening ceremony of the 1912 Summer Olympics” by photographer of IOC/
-Official Olympic Report/Wikimedia Commons, Public Domain)
-Art as Resistance
-Art is often used as an act of resistance. Graffiti and hip-hop are two forms of artistic expression that have been
-viewed as acts of resistance in modern times. The practice of graffiti as it is known today is reminiscent of
-ancient cave painting, as both are drawings, depictions, and writings on a wall. Ancient graffiti can help
-archaeologists understand general levels of literacy among a population of people or provide linguistic
-anthropologists with insight into the development of language through time.
-While writings on walls is an ancient practice, graffiti became a popular form of cultural expression in Western
-countries in the 1960s. Modern graffiti is often performed in public view, as it is intended to make a statement.
-Today, during most political uprisings, researchers are able to easily find graffiti expressing views that inform
-and shape the political movement. Although many appreciate the communicative and artistic qualities of
-graffiti, others view it as visual pollution, and graffiti continues to be met with opposition.
-One of the most iconic modern graffiti artists is Banksy, whose art is depicted in Figure 16.24. Banksy is the
-pseudonym of an English street artist who has been active for more than three decades (Ellsworth-Jones
-2013). His identity remains unconfirmed. His work began to appear in the early 1990s in Bristol, England, and
-can now be found in cities around the world, including London, New York, and Paris. Based on reports from
-those who have secured interviews with him, Banksy views his art as an act of rebellion. He was often in
-trouble as a teenager, which is when he first began exploring art. His art typically responds to social or cultural
-issues. One example is his series in New Orleans, Louisiana, which critiqued the government response to
-Hurricane Katrina in 2005.
-506
-16 • Art, Music, and Sport
-Access for free at openstax.org
+## Match 1.37 — LibreTexts: 17.7: Management by Objectives- A Planning and Control Technique
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Bookshelves/Management/Principles_of_Management_(OpenStax)/17%3A_Organizational_Planning_and_Controlling/17.07%3A_Management_by_Objectives-_A_Planning_and_Control_Technique
 
-FIGURE 16.21
-This mural by graffiti artist Banksy references both the Grim Reaper and the yellow “smiley face.”
-(credit: “Banksy - Grin Reaper With Tag” by Szater/Wikimedia Commons, Public Domain)
-Music as Resistance
-Hip-hop is a form of music that has consistently served as a means of protesting injustice toward people of
-color. From its inception in the 1970s at neighborhood block parties, hip-hop has rapidly spread worldwide to
-influence various cultures, transitioning from the margins of American culture to a central element of global
-pop culture. The culture of hip-hop offers possibilities for rich anthropological exploration, including
-linguistics factors, performance, music, and lyricism. The messages expressed by hip-hop often include
-complex social commentaries.
-With increased representation has come increased acceptance of hip-hop as a respected art form. In 2018, rap
-artist Kendrick Lamar was awarded a Pulitzer Prize for his album DAMN. and lauded by former president
-Barack Obama (Hubbard 2019). His fourth album release, DAMN. demonstrated why some call him one of the
-most influential rappers of his time. Perhaps better known is Public Enemy, the mid-1980s rap group created
-by Chuck D and Flavor Flav. The group’s lyrics often cite their political beliefs and deep-seated opinions about
-American racism and the American media.
-The evolution of hip-hop can be observed in many countries and societies. In the 1980s, it first began
-appearing in Japan and the Middle East. In Japan, it is thought to have begun with Hiroshi Fujiwara, who had
-an appreciation for old-school hip-hop and began to play it publicly. In the Middle East, some call it Arab rap or
-Arabic hip-hop. Heavily influenced by Western culture, these artistic representations demonstrate the vast and
-culturally diverse adoption of hip-hop as art and expression. Klash, the Muslim rapper shown in Figure 16.25,
-is well known in Middle Eastern cultures for telling the story of Muslim people through his artistry. Rap is not a
-subculture but a media and method for telling a story and at times expressing the resistance of a group of
-people.
-16.4 • Anthropology, Representation, and Performance
-507
+17.7: Management by Objectives- A Planning and Control Technique
+- Describe management by objectives as a philosophy and as a management tool/technique; describe its effects.
+When people are personally committed to their organization’s plans, those plans are more likely to be accomplished. This truism is the philosophy underlying management by objectives.
+Management by objectives (MBO) is a philosophy of management, a planning and controlling technique, and an employee-involvement program. 60 As a management philosophy, MBO stems from the human resource model and Theory Y’s assumption that employees are capable of self-direction and self- control. MBO also is anchored in Maslow’s need theory. The reasoning is that employee involvement in the planning and control processes provides opportunities for the employee to immerse the self in work-related activities, to experience work as more meaningful, and to satisfy higher-order needs (such as self-esteem), which leads to increased motivation and job performance (see Figure 17.7.1). It is hypothesized that, through involvement, employee commitment to a planned course of action will be enhanced and job satisfaction will be increased.
+Although there are many variations in the practice of MBO, it is basically a process by which an organization’s goals, plans, and control systems are defined through collaboration between managers and their employees. Together they identify common goals, define the results expected from each individual, and use these measurements to guide the operation of their unit and to assess individual contributions. 61 In this process, the knowledge and skills of many organizational members are used. Rather than managers telling workers “These are your goals”—the approach of classical management philosophy—managers ask workers to join them in deciding what their goals should be.
+After an acceptable set of goals has been established for each employee through a give-and-take, collaborative process, employees play a major role in developing an action plan for achieving these goals. In the final stage in the MBO process, employees develop control processes, monitor their own performance, and recommend corrections if unplanned deviations occur. At this stage, the entire process begins again. Figure 17.7.2 depicts the major stages of the MBO process.
+The Theory of MBO
+MBO has the potential to enhance organizational effectiveness. The following four major components of the MBO process are believed to contribute to its effectiveness: (1) setting specific goals; (2) setting realistic and acceptable goals; (3) joint participation in goal setting, planning, and controlling; and (4) feedback. 62 First, as we saw earlier, employees working with goals outperform employees working without goals. Second, it is assumed that participation contributes to the setting of realistic goals for which there is likely to be goal acceptance and commitment. Setting realistic and acceptable goals is an important precondition for successful outcomes, especially if the goals are difficult and challenging in nature. Finally, feedback plays an important role. It is only through feedback that employees learn whether they should sustain or redirect their efforts in order to reach their goal, and it is only through feedback that they learn whether or not they are investing sufficient effort.
+Thus, from a theoretical perspective, there are several reasons why MBO should produce a positive impact on employee performance, motivation, commitment, and job satisfaction. In the next section, we briefly look at what the research tells us about the effectiveness of MBO programs.
+The Evidence
+In both the public and private sectors, MBO is a widely employed management tool. A recent review of the research on MBO provides us with a clear and consistent view of the effects of these programs. In the 70 cases studied by Robert Rodgers and John Hunter, 68 showed increased productivity gains, and only 2 showed losses. 63 In addition, the increases in performance were significant. Rodgers and Hunter report that the mean increase exceeded 40 percent.
+While the results are generally positive in nature, differences in performance effects appear to be associated with the level of top management commitment. In those cases where top management is emotionally, intellectually (that is, top management espouses the value and importance of MBO), and behaviorally (top management actually uses MBO themselves) committed, the performance effects tend to be the strongest. The weakest MBO effects appear when top management does very little to “talk the value/importance of MBO” and they don’t use the system themselves, even as they implement it for others. 64 This evidence tells us that “the processes” used to implement MBO may render a potentially effective program ineffective. Thus, not only should managers pay attention to the strategies used to facilitate planning and controlling (like MBO), they should also be concerned with how they go about implementing the plans. MBO requires top management commitment, and it should be initiated from the top down. 65
+Research shows that an MBO program can play a meaningful role in achieving commitment to a course of action and improving performance. In fact, research clearly documents instances where MBO programs have increased organizational effectiveness. Still, there have been failures. After reviewing 185 studies of MBO programs, one researcher concluded that they are effective under some circumstances but not all. 66 For example, MBO tends to be more effective in the short term (less than two years), in the private sector, and in organizations removed from direct contact with customers. These factors also affect the success of an MBO program:
+- The intensity of upper-level managers’ commitment: Half-hearted commitment to an MBO system is associated with a higher failure rate.
+- The time element: Is there enough time for employees to learn how to participate in an MBO process, that is, to learn how to set meaningful goals, develop good action statements, and develop effective monitoring systems? Is there enough time for employees to learn how to assume responsibility in a new context? Is there enough time for employees and managers to collaborate in a joint planning and controlling process?
+- The legitimacy of the system: Is it integrated into an overall philosophy of management? Or does it seem like a gimmick to seduce employees into being more productive?
+- The integration of employees’ goals: Are goals for each employee integrated well enough into the goals of their larger work unit?
+To be truly effective over the long haul, MBO programs probably need to be coupled with some type of gainsharing program (that is, programs whereby organizations share some of the financial gains accrued from the ideas, productivity improvements, and cost savings that stem from employee participation). Based on his extensive observation of involvement-oriented organizations, Edward E. Lawler III notes that information, knowledge, power, and rewards are four key components of an effective and sustained high involvement. 67 Typically, MBO systems don’t provide mechanisms through which employees share in the economic gains that may accrue to the organization as a result of their expanded role and responsibility. In light of the conditions that influence the effectiveness of MBO programs, management is challenged to provide an appropriate context for the design and maintenance of an effective MBO system.
+- What is management by objectives?
 
-FIGURE 16.22
-Muslim rapper Klash with fellow rap artist Loon. From its origins in American inner cities, rap has
-spread around the globe. (credit: “klash with loon in jeddah city” by Ahmed550055/Wikimedia Commons, Public
-Domain)
-Even more recently, Native American hip-hop has been a medium for Native Americans to tell their story and
-preserve the history of their peoples. Founded in American rap and hip-hop culture, this new form of
-expression has been embraced by rappers throughout Native American communities. It has been used to tell
-stories, explain history, and even encourage political activism on social issues.
-Sports as Resistance
-Throughout time, sports have been a global focal point for resistance. The Olympics have repeatedly been a
-site of global resistance and a setting for challenging societal norms and expectations. In Figure 16.26, Black
-American athletes Tommie Smith and John Carlos, gold and bronze medalists respectively, are depicted
-raising black-gloved fists during their medal ceremony as the US national anthem plays (Smith 2011). This
-gesture became known as the 1968 Olympics Black Power salute. Smith later described his raised, black-
-gloved fist as a symbol of support for all those who are and have been oppressed. Smith and Carlos made their
-demonstration in response to human rights violations perpetuated in the United States. Another example of
-resistance was seen four years later, when Jackie Robinson, the first Black player in Major League Baseball,
-wrote in his autobiography, recalling the opening game of his first World Series championship: “As I write this
-twenty years later, I cannot stand and sing the anthem. I cannot salute the flag; I know that I am a black man in
-a white world” (Robinson [1972] 1995, xxiv).
-508
-16 • Art, Music, and Sport
-Access for free at openstax.org
+## Match 1.36 — LibreTexts: 3.2.1: Techniques of Performance Appraisal
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://biz.libretexts.org/Courses/Western_Technical_College/Managing_People_(Gehrett)/03%3A_Module_3_-_Employee_Evaluation_and_Counseling/3.02%3A_Employee_Training_and_Development/3.2.01%3A_Techniques_of_Performance_Appraisal
 
-FIGURE 16.23
-When Tommie Smith and John Carlos raised black-gloved fists at their Olympic medal ceremonies
-in 1968, they publicly expressed support for oppressed people and resistance to a culture viewed as perpetuating
-that oppression. (credit: “IMGP7613-olympics-mural” by Rae Allen/flickr, CC BY 2.0)
-For many, a more familiar act of protest is likely NFL player Colin Kaepernick’s kneeling during the singing of
-the nation anthem in 2016 following the shooting deaths of Black men Michael Brown, Alton Sterling, and
-Philando Castille at the hands of police officers (Lief 2019). In 2016, approximately 68 percent of all NFL
-players were Black (Gertz 2017). Kaepernick continued to kneel during the anthem for the remainder of the
-season. His gesture was a symbol of support for the Black Lives Matter movement, which seeks to end police
-brutality against Black people and other forms of racially motivated violence in the United States. Initially,
-feedback regarding Kaepernick’s gesture within the sports world was negative. However, following the death of
-George Floyd in 2020, there has been an increased interest in understanding systemic oppression. This had
-led to initiatives by organizations such as the NFL, Black Lives Matter, and others to support inclusion and
-open dialogues about racism. Throughout the seasons following Kaepernick’s initial act of kneeling, it became
-common practice in the world of professional sports for athletes to kneel in solidarity. This included Black
-players and some White players.
-The 2016 Olympics in Rio de Janeiro were a demonstration of social stratification. Media coverage of the 2016
-Rio Olympics reported on the less-than-acceptable environmental, safety, and health conditions. Athletes from
-more developed nations openly criticized the unsanitary and inhospitable conditions of the housing and
-training facilities, which included unpotable water sources, trash in commons areas, and dirty and unsanitary
-dormitories. While some protested silently, others used their global notoriety to publicly protest the
-conditions. The images and stories provided from Rio by journalists and mainstream media sources showed
-garbage-ridden streets, unsanitary rooms and facilities, and irreparably damaged buildings. For Rio, the
-Olympics were supposed to be a pinnacle of national pride and a positive contribution to the global stage. For
-many who attended, the event proved to be far less than the Olympic image depicted in popular imagination.
-Integral Features
-Art, music, and sports can themselves be forms of resistance and at the same time can display evidence of
-historical resistance. A protest, a cultural statement, the overthrow of a regime—all can be found in, and at
-times have even been started by, works of art, music, and sports. From the ancient Romans to professional
-American football players, people have used these mediums to fight for their causes and to ensure that the
-histories of their plights are recorded in the archives of time.
-Art, music, and sports have told the stories of people since prehistoric times. Ingrained in the human
-experience, these mediums have been used to establish cultural and national identity. The images in art, the
-words of song, and the traditions of sport have had significant impacts on established norms and senses of
-16.4 • Anthropology, Representation, and Performance
-509
-
-personal and group identity. These aspects of the human condition are so foundational that each has been
-used as a form of resistance. Art, music, and sports have each contributed to the development of people and
-societies in important ways, and can each reveal important aspects of both past and current cultures.
-MINI-FIELDWORK ACTIVITY
-A Study of Ethnomusicology
-Music is one of the most expressive and diverse forms of art. For this activity, do the following:
-1.
-Review ethnomusicological study techniques.
-2.
-Conduct your own ethnomusicological fieldwork. This can be done by interacting with musicians,
-attending a music event virtually or in person, or interviewing audience members at a musical
-performance. Interview both musicians and audience members about the meaning of the music. What did
-they hear? How did it make them feel? What did it make them want to do? Record the results of your
-interviews.
-3.
-Additionally, record your own response to the music. What did you hear? How did it make you feel? What
-does it make you want to do?
-4.
-Collect the information and write a 3–5-page comparative reflection paper on what you learned from your
-interviews and how they compare and contrast to your own experience and discoveries.
-All music-making activities are appropriate, whether a formal or informal concert, a street performance, or
-gospel singing in church. You should maintain a field journal to record data, observations, and analysis.
-Research and Literature Review Activity
-1.
-Pick two (2) different examples of visual art, from the same time period but different socioeconomic
-microcultures, to compare and contrast.
-2.
-Write a 3–5-page summary paper in which you do the following:
-◦
-Identify people and/or studies that have reported on anthropological finds relevant to the images you
-selected.
-◦
-Describe the evolution of the art form you are analyzing from an early time.
-◦
-Explain how the anthropological studies you cite compare with other anthropological study
-approaches.
-◦
-Address how the art studied is an evolutionary example of the human experience.
-◦
-Evaluate what you perceive to be the future of the art as it continues to develop and evolve in future
-generations.
-Resources
-Basketball or Nothing. 2019. Philadelphia: WorkShop Content Studios. Netflix, 6 episodes.
-Rice, Timothy. 2014. Ethnomusicology: A Very Short Introduction. New York: Oxford University Press.
-Stone, Ruth M. Theory for Ethnomusicology. 2008. Upper Saddle River, NJ: Pearson.
-510
-16 • Art, Music, and Sport
-Access for free at openstax.org
-
-Key Terms
-art
-the application of human creative skill and
-imagination to produce works intended to be
-appreciated primarily for their beauty or
-emotional power, typically but not exclusively in a
-visual form such as a
-
-## Match 1.35 — WritingGuide-WEB § 19.3 Glance at Genre: Language Performance and Visuals
-
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Apply appropriate genre conventions for structure, tone, mechanics, format, and design in writing speech.
-•
-Demonstrate relationships between ideas, patterns of organization, and interplay of verbal and nonverbal
-elements.
-•
-Articulate how genre conventions are shaped and vary by purpose, culture, and expectation.
-Oral communication skills are integral to personal and professional success. While many aspects of script
-writing are similar to those used in writing for print or electronic formats, speech incorporates another
-domain with its own considerations.
-Writing for Listeners and Readers
-The script for a speech may begin as a traditional text, but it must be written and delivered in a way that makes
-it available and accessible to readers and listeners alike. Think of your favorite radio show or podcast. If the
-author wrote as if composing a written text with no consideration for listeners, the effect for listeners would
-likely be compromised.
-When writing for listeners, think about not only what you want to express but also how you can best support
-your ideas and claims. Because speech relies heavily on audience members’ auditory skills, listeners with little
-practice in these skills or who learn better through visual or experiential text may be at a disadvantage.
-Therefore, the speaker-writer must make a concerted effort to support listeners in other ways.
-Writing for Delivery
-Text for speech will be only as good as its delivery. If you write for speech in the exact way you write an
-academic paper, the result is likely to be lackluster, for speech is immediate—that is, it makes an impact as
-soon as it is heard. A powerful written argument, if orally delivered without voice modulation or emphasis, is
-unlikely to move listeners and likely to have fluency glitches, as written sentences tend to be longer and more
-complex. Although topical outlines for a paper and a script might look similar, the way you translate ideas into
-writing for speech will vary to increase effectiveness. One strategy for making this “conversion” is to read your
-script aloud during or after writing. Hearing the script will allow you to make revisons and edits to ensure oral
-fluency, or smooth delivery, including pronunciation, phrasing, stress, and tone.
-You can write effectively for delivery by doing the following:
-•
-Support information by including visual and audio aids to help the audience remember and understand
-information.
-•
-Demonstrate information through action, such as dynamic movement or demonstrations.
-•
-Engage your audience with vocal techniques such as gestures, inflection, changes in speed and pitch, and
-strategically placed pauses.
-Writing with Media
-Script writing and presentations often take a multimedia approach. Multimedia can include a variety of
-channels, media types, and visual aids, including videos, images, infographics, and animations that enhance
-understanding and bring a new level of engagement among media consumers. The use of media can reinforce
-the content of a script or presentation, provide a vehicle for delivery, and generally enhance the speaker’s
-purpose and message.
-19.3 • Glance at Genre: Language Performance and Visuals
-625
-
-While formal speeches are still featured at contemporary political, religious, and academic events, other forms
-of media have become alternatives to traditional public addresses. Free and readily available video platforms
-such as YouTube mean that more people than ever before are able to share their experiences. Also free and
-readily accessible for the most part, podcasts are increasingly used as a vehicle to share ideas through an oral
-medium. Plus, podcasts such as Serial (https://openstax.org/r/Serial) have led to changes within the criminal
-justice system. Social media platforms now are filled with multimedia, including video, audio, and images, that
-play a more prominent role than at the time these platforms first were launched. As you develop your
-presentation in the next section of this chapter, consider which methods of presentation you might explore in
-order to harness the power of media to your benefit.
-Key Terms
-Below are key terms and characteristics of scripts and other oral media.
-•
-audience: the people for and to whom a script is written.
-•
-Body: the middle and main portion of a script, in which key ideas, evidence, and reasons are presented
-and elaborated.
-•
-Citation: credit given to a source used in a writer’s research.
-•
-Conclusion: the final portion of a script, in which the thesis and key ideas are reiterated and/or expanded
-to include action or additional consideration.
-•
-ethos: appeal to readers’/listeners’ ethics, establishing authority and credibility.
-•
-Evidence: information, such as facts, statistics, and examples, that proves or disproves the validity of a key
-idea.
-•
-Introduction: the first portion of a script, in which the author engages the audience and usually states the
-thesis.
-•
-Logos: appeal to readers’/listeners’ logic, or reasoning.
-•
-Parallelism: a rhetorical technique of using similar words, phrases, or other grammatical constructions to
-connect related ideas, emphasize a point, or add rhythm.
-•
-Pathos: appeal to readers’/listeners’ emotions.
-•
-purpose: a writer’s reason for creating a script, often to persuade readers/listeners to agree with a
-viewpoint or take action.
-•
-reasoning: logical and sensible explanation of a concept.
-•
-Repetition: a rhetorical technique of repeating a key word or phrase for emphasis.
-•
-Rhetorical appeals: methods of persuasion, including ethos, logos, and pathos.
-•
-Rhetorical devices: ways that writers use language to convey meaning, create emphasis, and draw
-attention to their words and ideas. Repetition and parallelism are rhetorical devices.
-•
-Signpost language: statements that help the audience know where your presentation is going. Transitions
-are examples of signpost language.
-•
-Topic: the subject of a script.
-•
-Thesis: a statement indicating a writer’s/speaker’s position on the topic.
-19.4 Annotated Student Sample: “Are New DOT Regulations Discriminatory?”
-by Zain A. Kumar
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Explain how conventions of writing, including rhetorical devices, reflect purpose, culture, or audience
-expectations.
-•
-Analyze the relationships between ideas and patterns of organization in a speech.
-Introduction
-A script may take many forms, but effective speakers connect with their audience, clearly state a main idea or
-626
-19 • Scripting for the Public Forum: Writing to Speak
-Access for free at openstax.org.
-
-thesis, and support that thesis by backing up key ideas with evidence and reasoning. In this feature, you will
-read a speech that examines whether U.S. Department of Transportation regulations discriminate against
-people who depend on service animals. The full transcript of the speech, rather than the outline, is provided
-here to allow you to study aspects of delivery as well as preparation. Notice not only the disapproving tone and
-conversational style but also the way in which the author builds and supports the thesis.
-It's a Dog Fight
-Several years ago, I sat in the waiting area of a major airport, trying to ignore the constant yapping of a small,
-clearly agitated dog being restrained with difficulty on the lap of a fellow passenger. An airline rep approached
-the passenger and asked the only two questions allowed by law: “Is that a service animal? What service does it
-provide for you?”
-“Yes. It keeps me from having panic attacks,” the woman said defiantly, and the airline employee retreated.
-Shortly after that, another passenger arrived at the gate. She gripped the high, stiff handle on the harness of a
-Labrador retriever that wore a vest emblazoned with the words “The Seeing Eye.” Without warning, the smaller
-dog launched itself from its owner’s lap, snarling and snapping at the guide dog. The owner of the small dog
-jumped up and retrieved her animal from the Labrador’s vest and stomped back to her seat. That neither she
-nor the still-yapping dog had an obvious panic attack amazed me, as I questioned, to myself of course, what
-service was being provided—other than a moment of exercise for the woman and her dog.
-Introduction. The opening anecdote grabs the listener’s attention with a relatable story about an interaction at an
-airport. It provides an illustration of the point that Zain A. Kumar will make next in the introduction.
-Pathos. Using strong words such as snarling and snapping, Kumar connects his argument to emotions.
-Tone. Kumar clearly expresses disapproval of the small dog and its owner, implying that the woman is lying and the
-dog is untrained.
-The U.S. Department of Transportation (DOT) has recently established new regulations regarding service
-animals on domestic and international flights. This regulation has provoked a flurry of protests by people who
-are accustomed to taking their pets for free in airplane cabins by claiming they are emotional support animals.
-Are these new regulations discriminating against persons with disabilities? Let’s look at some details.
-Signpost Language. Kumar uses a rhetorical question, or a question used for effect and not meant to be answered,
-to establish the central discussion in the script: whether restrictions put in place for service animals infringe on the
-rights of people with disabilities. This signpost language tells listeners that this is important information.
-Introduction. Following the anecdote, this introductory paragraph establishes the problem and provides
-background information.
-Tone. Kumar’s use of rhetorical questions and phrases such as Let’s look at creates an informal, conversational tone
-that is well suited to script.
-The new rule has 12 provisions. The first is the definition: a service animal is a dog that is individually trained to
-do work or perform tasks for the benefit of a person with a disability.
-Definition. The definition of a service animal provides context for the focus of the script.
-LIVING BY THEIR OWN WORDS
-s
-end s
-s
-end s
-s
-end s
-annotat
-end annotat
-annotat
-end annotat
-annotat
-end annotat
-s
-end s
-annotat
-end annotat
-annotat
-end annotat
-annotat
-end annotat
-s
-end s
-annotat
-end annotat
-19.4 • Annotated Student Sample: “Are New DOT Regulations Discriminatory?” by Zain A. Kumar
-627
-
-Okay, how was the service dog trained? Well, as a puppy it lived with a foster family that taught it basic behavior
-and socialization. When it was between 13 and 19 months old, it came to the Seeing Eye campus to work with
-an individual instructor for four months of intensive training. At the end of the four months, the dog took a final
-exam: leading the instructor successfully on a field trip to New York City. About 75 percent of the dogs pass this
-training and are matched with a person who is blind or visually impaired. The new owner works with the dog
-and its instructor for an additional 25 days on campus before the owner and the dog go home. But the training
-doesn’t end there. The new owner continually reinforces the dog with praise and correction, and The Seeing Eye
-staff members are always available for telephone consultations and even home visits if needed.
-Tone. The question opening the paragraph contributes to the conversational tone of the script.
-Evidence. This paragraph firmly establishes the “credibility” of the guide dog, detailing its training. This rigorous
-process will be contrasted with the background of the emotional support dog from the opening anecdote to draw a
-comparison.
-Now, what about that emotional support dog in the airport? The law requires no specific training for emotional
-support animals. The rationale is that their presence is enough to support people who have anxiety, depression,
-or stress. The only requirement is that the animal be manageable in public and not create a nuisance. In light of
-this requirement, the little dog did not do well.
-Evidence. This paragraph contrasts the guide dog with the emotional support dog and shows that the latter cannot
-meet even the minimum standard set by the airlines.
-The second provision of the new DOT regulation is that emotional support animals are no longer considered
-service animals. However, the third provision grants psychiatric service animals the same status as other
-service animals. In other words, a person with an emotional or psychiatric disability can still obtain and travel
-with a service companion that has appropriate documentation.
-Transition. This signpost language allows the listener to know that the author is moving from one key idea to
-another.
-Three other regulations deal with this documentation. The DOT has developed forms attesting to the animal’s
-health, behavior, and training. Airlines may require these to be submitted 48 hours before travel or may require
-them at the departure gate. Providing these forms is no problem for a passenger with a Seeing Eye–certified or
-other officially trained dog.
-FIGURE 19.7 Certified Seeing Eye dogs provide accessibility to those with vision impairments. (credit: “Kaye Kay-
-Smith and Patsy Reddy” by New Zealand Government, Office of the Governor-General/Wikimedia Creative
-Commons, CC BY 4.0)
-s
-end s
-annotat
-end annotat
-annotat
-end ann
-s
-end s
-annotat
-end annotat
-s
-end s
-annotat
-end annotat
-s
-end s
-628
-19 • Scripting for the Public Forum: Writing to Speak
-Access for free at openstax.org.
-
-But what about the certification for an emotional support animal? Until the new regulations were passed, this
-wasn’t a problem. A person wishing to claim a pet as an emotional support animal could simply go online and
-purchase certification from a for-profit agency. On one such site, for $54, a basic kit offers lifetime registration
-in a national database maintained by the company, plus a framed certificate, ID card with leash clip, and two
-official-looking vest patches. “Deluxe” and “premium” packages added more goodies for $114 and $154,
-respe
-
-## Match 1.03 — Psychology2e_WEB § 3.5 The Endocrine System
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Identify the major glands of the endocrine system
-•
-Identify the hormones secreted by each gland
-•
-Describe each hormone’s role in regulating bodily functions
-The endocrine system consists of a series of glands that produce chemical substances known as hormones
-(Figure 3.30). Like neurotransmitters, hormones are chemical messengers that must bind to a receptor in
-order to send their signal. However, unlike neurotransmitters, which are released in close proximity to cells
-with their receptors, hormones are secreted into the bloodstream and travel throughout the body, affecting any
-cells that contain receptors for them. Thus, whereas neurotransmitters’ effects are localized, the effects of
-hormones are widespread. Also, hormones are slower to take effect, and tend to be longer lasting.
-3.5 • The Endocrine System
-97
-
-FIGURE 3.30 The major glands of the endocrine system are shown.
-Hormones are involved in regulating all sorts of bodily functions, and they are ultimately controlled through
-interactions between the hypothalamus (in the central nervous system) and the pituitary gland (in the
-endocrine system). Imbalances in hormones are related to a number of disorders. This section explores some
-of the major glands that make up the endocrine system and the hormones secreted by these glands (Table 3.2).
-Major Glands
-The pituitary gland descends from the hypothalamus at the base of the brain, and acts in close association
-with it. The pituitary is often referred to as the “master gland” because its messenger hormones control all the
-other glands in the endocrine system, although it mostly carries out instructions from the hypothalamus. In
-addition to messenger hormones, the pituitary also secretes growth hormone, endorphins for pain relief, and a
-number of key hormones that regulate fluid levels in the body.
-Located in the neck, the thyroid gland releases hormones that regulate growth, metabolism, and appetite. In
-hyperthyroidism, or Grave’s disease, the thyroid secretes too much of the hormone thyroxine, causing
-agitation, bulging eyes, and weight loss. In hypothyroidism, reduced hormone levels cause sufferers to
-experience tiredness, and they often complain of feeling cold. Fortunately, thyroid disorders are often treatable
-with medications that help reestablish a balance in the hormones secreted by the thyroid.
-The adrenal glands sit atop our kidneys and secrete hormones involved in the stress response, such as
-epinephrine (adrenaline) and norepinephrine (noradrenaline). The pancreas is an internal organ that secretes
-hormones that regulate blood sugar levels: insulin and glucagon. These pancreatic hormones are essential for
-maintaining stable levels of blood sugar throughout the day by lowering blood glucose levels (insulin) or
-raising them (glucagon). People who suffer from diabetes do not produce enough insulin; therefore, they must
-take medications that stimulate or replace insulin production, and they must closely control the amount of
-sugars and carbohydrates they consume.
-The gonads secrete sexual hormones, which are important in reproduction, and mediate both sexual
-motivation and behavior. The female gonads are the ovaries; the male gonads are the testes. Ovaries secrete
-estrogens and progesterone, and the testes secrete androgens, such as testosterone.
-98
-3 • Biopsychology
-Access for free at openstax.org
-
-Major Endocrine Glands and Associated Hormone Functions
-Endocrine
-Gland
-Associated Hormones
-Function
-Pituitary
-Growth hormone, releasing and inhibiting hormones (such as
-thyroid stimulating hormone)
-Regulate growth, regulate hormone
-release
-Thyroid
-Thyroxine, triiodothyronine
-Regulate metabolism and appetite
-Pineal
-Melatonin
-Regulate some biological rhythms
-such as sleep cycles
-Adrenal
-Epinephrine, norepinephrine
-Stress response, increase metabolic
-activities
-Pancreas
-Insulin, glucagon
-Regulate blood sugar levels
-Ovaries
-Estrogen, progesterone
-Mediate sexual motivation and
-behavior, reproduction
-Testes
-Androgens, such as testosterone
-Mediate sexual motivation and
-behavior, reproduction
-TABLE 3.2
-Athletes and Anabolic Steroids
-Although it is against Federal laws and many professional athletic associations (The National Football League, for
-example) have banned their use, anabolic steroid drugs continue to be used by amateur and professional
-athletes. The drugs are believed to enhance athletic performance. Anabolic steroid drugs mimic the effects of the
-body’s own steroid hormones, like testosterone and its derivatives. These drugs have the potential to provide a
-competitive edge by increasing muscle mass, strength, and endurance, although not all users may experience
-these results. Moreover, use of performance-enhancing drugs (PEDs) does not come without risks. Anabolic
-steroid use has been linked with a wide variety of potentially negative outcomes, ranging in severity from largely
-cosmetic (acne) to life threatening (heart attack). Furthermore, use of these substances can result in profound
-changes in mood and can increase aggressive behavior (National Institute on Drug Abuse, 2001).
-Baseball player Alex Rodriguez (A-Rod) spent the latter part of his playing career at the center of a media storm
-regarding his use of illegal PEDs. Rodriguez excelled while using the drugs; his success played a large role in
-negotiating a contract that made him the highest paid player in professional baseball. A subsequent scandal and
-suspension tarnished his reputation and, according to a statement he made once retired, cost him over $40
-million. Even lower-profile athletes, particularly in cycling and Olympic sports, have been revealed as steroid
-users. What are your thoughts on athletes and doping? Why or why not should the use of PEDs be banned? What
-advice would you give an athlete who was considering using PEDs?
-DIG DEEPER
-3.5 • The Endocrine System
-99
-
-Key Terms
-action potential electrical signal that moves down the neuron’s axon
-adrenal gland sits atop our kidneys and secretes hormones involved in the stress response
-agonist drug that mimics or strengthens the effects of a neurotransmitter
-all-or-none phenomenon that incoming signal from another neuron is either sufficient or insufficient to reach
-the threshold of excitation
-allele specific version of a gene
-amygdala structure in the limbic system involved in our experience of emotion and tying emotional meaning
-to our memories
-antagonist drug that blocks or impedes the normal activity of a given neurotransmitter
-auditory cortex strip of cortex in the temporal lobe that is responsible for processing auditory information
-autonomic nervous system controls our internal organs and glands
-axon major extension of the soma
-biological perspective view that psychological disorders like depression and schizophrenia are associated
-with imbalances in one or more neurotransmitter systems
-Broca’s area region in the left hemisphere that is essential for language production
-central nervous system (CNS) brain and spinal cord
-cerebellum hindbrain structure that controls our balance, coordination, movement, and motor skills, and it is
-thought to be important in processing some types of memory
-cerebral cortex surface of the brain that is associated with our highest mental capabilities
-chromosome long strand of genetic information
-computerized tomography (CT) scan imaging technique in which a computer coordinates and integrates
-multiple x-rays of a given area
-corpus callosum thick band of neural fibers connecting the brain’s two hemispheres
-dendrite branch-like extension of the soma that receives incoming signals from other neurons
-deoxyribonucleic acid (DNA) helix-shaped molecule made of nucleotide base pairs
-diabetes disease related to insufficient insulin production
-dominant allele allele whose phenotype will be expressed in an individual that possesses that allele
-electroencephalography (EEG) recording the electrical activity of the brain via electrodes on the scalp
-endocrine system series of glands that produce chemical substances known as hormones
-epigenetics study of gene-environment interactions, such as how the same genotype leads to different
-phenotypes
-fight or flight response activation of the sympathetic division of the autonomic nervous system, allowing
-access to energy reserves and heightened sensory capacity so that we might fight off a given threat or run
-away to safety
-forebrain largest part of the brain, containing the cerebral cortex, the thalamus, and the limbic system,
-among other structures
-fraternal twins twins who develop from two different eggs fertilized by different sperm, so their genetic
-material varies the same as in non-twin siblings
-frontal lobe part of the cerebral cortex involved in reasoning, motor control, emotion, and language; contains
-motor cortex
-functional magnetic resonance imaging (fMRI) MRI that shows changes in metabolic activity over time
-gene sequence of DNA that controls or partially controls physical characteristics
-genetic environmental correlation view of gene-environment interaction that asserts our genes affect our
-environment, and our environment influences the expression of our genes
-genotype genetic makeup of an individual
-glial cell nervous system cell that provides physical and metabolic support to neurons, including neuronal
-insulation and communication, and nutrient and waste transport
-gonad secretes sexual hormones, which are important for successful reproduction, and mediate both sexual
-100
-3 • Key Terms
-Access for free at openstax.org
-
-motivation and behavior
-gyrus (plural: gyri) bump or ridge on the cerebral cortex
-hemisphere left or right half of the brain
-heterozygous consisting of two different alleles
-hindbrain division of the brain containing the medulla, pons, and cerebellum
-hippocampus structure in the temporal lobe associated with learning and memory
-homeostasis state of equilibrium—biological conditions, such as body temperature, are maintained at optimal
-levels
-homozygous consisting of two identical alleles
-hormone chemical messenger released by endocrine glands
-hypothalamus forebrain structure that regulates sexual motivation and behavior and a number of
-homeostatic processes; serves as an interface between the nervous system and the endocrine system
-identical twins twins that develop from the same sperm and egg
-lateralization concept that each hemisphere of the brain is associated with specialized functions
-limbic system collection of structures involved in processing emotion and memory
-longitudinal fissure deep groove in the brain’s cortex
-magnetic resonance imaging (MRI) magnetic fields used to produce a picture of the tissue being imaged
-medulla hindbrain structure that controls automated processes like breathing, blood pressure, and heart rate
-membrane potential difference in charge across the neuronal membrane
-midbrain division of the brain located between the forebrain and the hindbrain; contains the reticular
-formation
-motor cortex strip of cortex involved in planning and coordinating movement
-mutation sudden, permanent change in a gene
-myelin sheath fatty substance that insulates axons
-neuron cells in the nervous system that act as interconnected information processors, which are essential for
-all of the tasks of the nervous system
-neuroplasticity nervous system's ability to change
-neurotransmitter chemical messenger of the nervous system
-Nodes of Ranvier open spaces that are found in the myelin sheath that encases the axon
-occipital lobe part of the cerebral cortex associated with visual processing; contains the primary visual cortex
-pancreas secretes hormones that regulate blood sugar
-parasympathetic nervous system associated with routine, day-to-day operations of the body
-parietal lobe part of the cerebral cortex involved in processing various sensory and perceptual information;
-contains the primary somatosensory cortex
-peripheral nervous system (PNS) connects the brain and spinal cord to the muscles, organs and senses in
-the periphery of the body
-phenotype individual’s inheritable physical characteristics
-pituitary gland secretes a number of key hormones, which regulate fluid levels in the body, and a number of
-messenger hormones, which direct the activity of other glands in the endocrine system
-polygenic multiple genes affecting a given trait
-pons hindbrain structure that connects the brain and spinal cord; involved in regulating brain activity during
-sleep
-positron emission tomography (PET) scan involves injecting individuals with a mildly radioactive substance
-and monitoring changes in blood flow to different regions of the brain
-prefrontal cortex area in the frontal lobe responsible for higher-level cognitive functioning
-psychotropic medication drugs that treat psychiatric symptoms by restoring neurotransmitter balance
-range of reaction asserts our genes set the boundaries within which we can operate, and our environment
-interacts with the genes to determine where in that range we will fall
-receptor protein on the cell surface where neurotransmitters attach
-recessive allele allele whose phenotype will be expressed only if an individual is homozygous for that allele
-3 • Key Terms
-101
-
-resting potential the state of readiness of a neuron membrane’s potential between signals
-reticular formation midbrain structure important in regulating the sleep/wake cycle, arousal, alertness, and
-motor activity
-reuptake neurotransmitter is pumped back into the neuron that released it
-semipermeable membrane cell membrane that allows smaller molecules or molecules without an electrical
-charge to pass through it, while stopping larger or highly charged molecules
-soma cell body
-somatic nervous system relays sensory and motor information to and from the CNS
-somatosensory cortex essential for processing sensory information from across the body, such as touch,
-temperature, and pain
-substantia nigra midbrain structure where dopamine is produced; involved in control of mo
+3.2.1: Techniques of Performance Appraisal
+-
+- Last updated
+- Save as PDF
+2. What practices are used in the performance appraisal process?
+Organizations use numerous methods to evaluate personnel. We will summarize several popular techniques. Although countless variations on these themes can be found, the basic methods presented provide a good summary of the commonly available techniques. Following this review, we will consider the various strengths and weaknesses of each technique. Six techniques are reviewed here: (1) graphic rating scales, (2) critical incident technique, (3) behaviorally anchored rating scales, (4) behavioral observation scales, (5) management by objectives, and (6) assessment centers.
+Graphic Rating Scales
+Certainly, the most popular method of evaluation used in organizations today is the graphic rating scale . One study found that 57 percent of the organizations surveyed used rating scales, and another study found the figure to be 65 percent. 5 Although this method appears in many formats, the supervisor or rater is typically presented with a printed or online form that contains both the employee’s name and several evaluation dimensions (quantity of work, quality of work, knowledge of job, attendance). The rater is then asked to rate the employee by assigning a number or rating on each of the dimensions. An example of a graphic rating scale is shown in Table 8.1 .
+By using this method, if we assume that evaluator biases can be minimized, it is possible to compare employees objectively. It is also possible to examine the relative strengths and weaknesses of a single employee by comparing scores on the various dimensions.
+However, one of the most serious drawbacks of this technique is its openness to central tendency, strictness, and leniency errors. It is possible to rate almost everyone in the middle of the scale or, conversely, at one end of the scale. In order to control for this, some companies have assigned required percentage distributions to the various scale points. Supervisors may be allowed to rate only 10 percent of their people outstanding and are required to rate 10 percent unsatisfactory, perhaps assigning 20 percent, 40 percent, and 20 percent to the remaining middle categories. By doing this, a distribution is forced within each department. However, this procedure may penalize a group of truly outstanding performers or reward a group of poor ones.
+Critical Incident Technique
+With the critical incident technique of performance appraisal, supervisors record incidents, or examples, of each subordinate’s behavior that led to either unusual success or unusual failure on some aspect of the job. These incidents are recorded in a daily or weekly log under predesignated categories (planning, decision- making, interpersonal relations, report writing). The final performance rating consists of a series of descriptive paragraphs or notes about various aspects of an employee’s performance (see Table 8.2 ).
+The critical incident method provides useful information for appraisal interviews, and managers and subordinates can discuss specific incidents. Good qualitative information is generated. However, because little quantitative data emerge, it is difficult to use this technique for promotion or salary decisions. The qualitative output here has led some companies to combine the critical incident technique with one of the quantitative techniques, such as the rating scale, to provide different kinds of feedback to the employees.
+Behaviorally Anchored Rating Scales
+An appraisal system that has received increasing attention in recent years is the behaviorally anchored rating scale (BARS). This system requires considerable work prior to evaluation but, if the work is carefully done, can lead to highly accurate ratings with high inter-rater reliability. Specifically, the BARS technique begins by selecting a job that can be described in observable behaviors. Managers and personnel specialists then identify these behaviors as they relate to superior or inferior performance.
+An example of this is shown in Exhibit 8.4 , where the BARS technique has been applied to the job of college professor. As shown, as one moves from extremely poor performance to extremely good performance, the performance descriptions, or behavioral anchors, increase. Oftentimes, six to ten scales are used to describe performance on the job. Exhibit 8.4 evaluates the professor’s organizational skills. Other scales could relate to the professor’s teaching effectiveness, knowledge of the material, availability to students, and fairness in grading. Once these scales are determined, the evaluator has only to check the category that describes what she observes on the job, and the employee’s rating is simultaneously determined. The BARS technique has several purported advantages. In particular, many of the sources of error discussed earlier (central tendency, leniency, halo) should be significantly reduced because raters are considering verbal descriptions of specific behaviors instead of general categories of behaviors, such as those used in graphic rating scales. In addition, the technique focuses on job-related behaviors and ignores less relevant issues such as the subordinate’s personality, race, or gender. This technique should also lead to employees being less defensive during performance appraisals, because the focus of the discussion would be actual measured behaviors, not the person. Finally, BARS can aid in employee training and development by identifying those domains needing most attention.
+On the negative side, as noted above, considerable time and effort in designing the forms are required before the actual rating. Because a separate BARS is required for each distinct job, it is only cost-efficient for common jobs. Finally, because the technique relies on observable behaviors, it may have little applicability for such jobs in such areas as research science (and sometimes management), where much of the work is mental and relevant observable behaviors are difficult to obtain.
+Behavioral Observation Scales
+The behavioral observation scale (BOS) is similar to BARS in that both focus on identifying observable behaviors as they relate to performance. It is, however, less demanding of the evaluator. Typically, the evaluator is asked to rate each behavior on a scale from 1 to 5 to indicate the frequency with which the employee exhibits the behavior. Evaluation of an employee’s performance on a particular dimension is derived by summing the frequency ratings for the behaviors in each dimension.
+For example, in Table 8.3 we can see an example of a form to evaluate a manager’s ability to overcome resistance to change. The rater simply has to circle the appropriate numbers describing observed behaviors and get a summary rating by adding the results. The BOS technique is easier to construct than the BARS and makes the evaluator’s job somewhat simpler. Even so, this is a relatively new technique that is only now receiving some support in industry.
+Management by Objectives
+A popular technique for evaluating employees who are involved in jobs that have clear quantitative output is management by objectives (MBO). Although the concept of MBO encompasses much more than just the appraisal process (incorporating an organization-wide motivation, performance, and control system), we will focus here on its narrower application to evaluating employee performance. MBO is closely related to the goal-setting theory of motivation.
+Under MBO, individual employees work with their supervisor to establish goals and objectives for which they will be responsible during the coming year. These goals are stated in clear language and relate to tasks that are within the domain of the employee. An example of these goals for a sales representative is shown in Table 8.4 . Following a specified period of time, the employee’s performance is compared to the preset goals to determine the extent to which the goals have been met or exceeded.
+Several advantages of MBO have been observed. These include the ability to do better planning; improved motivation, because of knowledge of results; fairer evaluations, done on the basis of results rather than personality; improved commitment through participation; and improved supervisory skills in such areas as listening, counseling, and evaluating. On the negative side, however, MBO has been criticized because it emphasizes quantitative goals at the expense of qualitative goals and often creates too much paperwork. It is difficult to compare performance levels among employees because most are responsible for different goals. Sometimes the implementation of MBO goals are autocratic and therefore ineffective or even counterproductive. As discussed in the study of motivation, goals must be accepted to be effective. Finally, in order to be successful, MBO implementation must have constant attention and support from top management; MBO does not run itself. In the absence of this support, the technique loses legitimacy and often falls into disrepair.
+Assessment Centers
+A relatively new method of evaluation is the assessment center . Assessment centers are unique among appraisal techniques in that they focus more on evaluating an employee’s long-range potential to an organization than on her performance over the past year. They are also unique in that they are used almost exclusively among managerial personnel.
+An assessment center consists of a series of standardized evaluations of behavior based on multiple inputs. Over a two- or three-day period (away from the job), trained observers make judgments on managers’ behavior in response to specially developed exercises. These exercises may consist of in-basket exercises, role- playing, and case analyses, as well as personal interviews and psychological tests. An example of an assessment center program is shown in Table 8.5 .
+On the basis of these exercises, the trained observers make judgments on employees’ potential for future managerial assignments in the organization. More specifically, information is obtained concerning employees’ interpersonal skills, communication ability, creativity, problem-solving skills, tolerance for stress and ambiguity, and planning ability. This technique has been used successfully by some of the largest corporations in the United States, including AT&T, IBM, and General Electric.
+Results from a series of assessment center programs appear promising, and the technique is growing in popularity as a means of identifying future managerial potential. For example, Coca-Cola USA experimented with using assessment centers to select its managerial personnel. After a detailed study, the company found that those selected in this way were only one-third as likely to leave the company or be fired than those selected in the traditional way. Although the assessment center approach added about 6 percent to the cost of hiring, the lower turnover rate led to large overall savings. 6
+Some problems with the technique have been noted. In particular, because of the highly stressful environment created in assessment centers, many otherwise good managers may simply not perform to their potential. Moreover, the results of a poor evaluation in an assessment center may be far-reaching; individuals may receive a “loser” image that will follow them for a long time. And, finally, there is some question concerning exactly how valid and reliable assessment centers really are in predicting future managerial success. 7 Despite these problems, assessment centers remain a popular vehicle in some companies for developing and appraising managerial potential.
+ethics in practice
+Tesla’s Performance Review
+At Tesla, the automotive giant, the standards are set extremely high for their employees. In 2017, Tesla conducted its annual performance reviews as it does each year. Due to the review process, the company sees both voluntary and involuntary departures

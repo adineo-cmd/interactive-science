@@ -1,699 +1,115 @@
 # Source pack — subjects/meteorology/foundational/the-atmosphere-and-its-energy
 Lesson title: The Atmosphere and Its Energy
 Level: foundational
-Match confidence: 2.05
+Match confidence: 2.10
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 2.05 — APCollegePhysics-OP_js6ZFp7 § 31.6 Binding Energy
+## Match 2.10 — LibreTexts: 3: The Atmosphere
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://geo.libretexts.org/Bookshelves/Geography_(Physical)/The_Physical_Environment_(Ritter)/03%3A_The_Atmosphere
 
-Learning Objectives
+3: The Atmosphere
+The atmosphere that envelops us reflects the complex interactions between the major spheres that comprise the Earth system. The gaseous composition of the atmosphere is being regulated by the biotic elements of the Earth system as well as the geological processes that have shaped our Earth. Volcanic eruptions release vast quantities of gases and particles into the air causing changes to the composition and heat dynamics of the atmosphere. Human activity has also had a profound impact on the composition of the atmosphere locally, regionally, and globally. In this chapter you will investigate the structure and composition of the atmosphere and its influence on physical systems of the Earth.
+By the end of the chapter you should be able to:
+- Draw a diagram of the layers of the atmosphere based on temperature change.
+- List and explain the importance of the permanent and variable gases that comprise the atmosphere.
+- Explain what the greenhouse effect is and how human activities influence global warming.
+- Explain the difference between normal and environmental lapse rate.
+- Explain the function of the ionosphere and ozonosphere.
+See if you are prepared for this chapter by Getting Ready for Chapter 3: The Atmosphere.
+-
+- 3.3: Greenhouse Effect
+- Solar radiation (shortwave) passes through most of the atmospheric gases without being absorbed to a significant extent. However, longwave radiation emitted from the Earth's surface and directed toward the sky is readily absorbed by greenhouse gases. When absorbed, the temperature of the atmosphere increases. Some of this absorbed energy is emitted to space while some is emitted back towards the Earth. This is the basis for the greenhouse effect.
+
+## Match 2.06 — LibreTexts: 2.6.3: Internal Energy and Enthaply
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://bio.libretexts.org/Bookshelves/Microbiology/Microbiology_(Boundless)/02%3A_Chemistry/2.06%3A_Energy/2.6.03%3A_Internal_Energy_and_Enthaply
+
+2.6.3: Internal Energy and Enthaply
+- Review enthalpy of reaction
+In thermodynamics, work ( W ) is defined as the process of an energy transfer from one system to another. The first law of thermodynamics states that the energy of a closed system is equal to the amount of heat supplied to the system minus the amount of work done by the system on its surroundings. The amount of energy for a closed system is written as follows:
+ΔU=Q−WΔU=Q−W
+In this equation, U is the total energy of the system, Q is heat, and W is work. In chemical systems, the most common type of work is pressure-volume ( PV ) work, in which the volume of a gas changes. Substituting this in for work in the above equation, we can define the change in internal energy for a chemical system:
+ΔU=Q−PΔVΔU=Q−PΔV
+Internal Energy Change at Constant Volume
+Let’s examine the internal energy change, ΔUΔU, at constant volume. At constant volume, ΔV=0ΔV=0, the equation for the change in internal energy reduces to the following:
+ΔU=QVΔU=QV
+The subscript V is added to Q to indicate that this is the heat transfer associated with a chemical process at constant volume. This internal energy is often very difficult to calculate in real life settings, though, because chemists tend to run their reactions in open flasks and beakers that allow gases to escape to the atmosphere. Therefore, volume is not held constant, and calculating ΔUΔU becomes problematic. To correct for this, we introduce the concept of enthalpy , which is much more commonly used by chemists.
+Standard Enthalpy of Reaction
+The enthalpy of reaction is defined as the internal energy of the reaction system, plus the product of pressure and volume. It is given by:
+H=U+PVH=U+PV
+By adding the PV term, it becomes possible to measure a change in energy within a chemical system, even when that system does work on its surroundings. Most often, we are interested in the change in enthalpy of a given reaction, which can be expressed as follows:
+ΔH=ΔU+PΔVΔH=ΔU+PΔV
+When you run a chemical reaction in a laboratory, the reaction occurs at constant pressure, because the atmospheric pressure around us is relatively constant. We will examine the change in enthalpy for a reaction at constant pressure, in order to see why enthalpy is such a useful concept for chemists.
+Enthalpy of Reaction at Constant Pressure
+Let’s look once again at the change in enthalpy for a given chemical process. It is given as follows:
+ΔH=ΔU+PΔVΔH=ΔU+PΔV
+However, we also know that:
+ΔU=Q−W=Q−PΔVΔU=Q−W=Q−PΔV
+Substituting to combine these two equations, we have:
+ΔH=Q−PΔV+PΔV=QPΔH=Q−PΔV+PΔV=QP
+Thus, at constant pressure, the change in enthalpy is simply equal to the heat released/absorbed by the reaction. Due to this relation, the change in enthalpy is often referred to simply as the “heat of reaction.”
+Enthalpy : An explanation of why enthalpy can be viewed as “heat content” in a constant pressure system.
+LICENSES AND ATTRIBUTIONS
+CC LICENSED CONTENT, SPECIFIC ATTRIBUTION
+- OpenStax College, Biology. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44422/latest...ol11448/latest . License : CC BY: Attribution
+- NADPH. Provided by : Wiktionary. Located at : http://en.wiktionary.org/wiki/NADPH . License : CC BY-SA: Attribution-ShareAlike
+- glucose. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/glucose. License : CC BY-SA: Attribution-ShareAlike
+- adenosine triphosphate. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/adenosine%20triphosphate. License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Energy and Metabolism. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44422/latest...e_06_01_02.jpg . License : CC BY: Attribution
+- Gibbs Free Energy. Provided by : Steve Lower's Website. Located at : http://www.chem1.com/acad/webtext/th.../TE4.html#SEC2 . License : CC BY-SA: Attribution-ShareAlike
+- Standard Gibbs free energy change of formation. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Standar...e_of_formation. License : CC BY-SA: Attribution-ShareAlike
+- spontaneous change. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/spontaneous%20change. License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Energy and Metabolism. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44422/latest...e_06_01_02.jpg . License : CC BY: Attribution
+- First law of thermodynamics. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/First_l...thermodynamics. License : CC BY-SA: Attribution-ShareAlike
+- Enthalpy. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Enthalpy. License : CC BY-SA: Attribution-ShareAlike
+- Enthalpy of reaction. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Enthalpy_of_reaction. License : CC BY-SA: Attribution-ShareAlike
+- Work (thermodynamics). Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Work_(thermodynamics). License : CC BY-SA: Attribution-ShareAlike
+- first law of thermodynamics. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/first%2...thermodynamics. License : CC BY-SA: Attribution-ShareAlike
+- enthalpy. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/enthalpy. License : CC BY-SA: Attribution-ShareAlike
+- Boundless. Provided by : Boundless Learning. Located at : www.boundless.com//physics/de...nternal-energy. License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Energy and Metabolism. October 16, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44422/latest...e_06_01_02.jpg . License : CC BY: Attribution
+- Enthalpy. Located at : http://www.youtube.com/watch?v=fucyI7Ouj2c . License : Public Domain: No Known Copyright . License Terms : Standard YouTube license
+Key Points
+- At constant volume, the heat of reaction is equal to the change in the internal energy of the system.
+- At constant pressure, the heat of reaction is equal to the enthalpy change of the system.
+- Most chemical reactions occur at constant pressure, so enthalpy is more often used to measure heats of reaction than internal energy.
+Key Terms
+- enthalpy : In thermodynamics, a measure of the heat content of a chemical or physical system.
+- internal energy : A property characteristic of the state of a thermodynamic system, the change in which is equal to the heat absorbed minus the work done by the system.
+- first law of thermodynamics : Heat and work are forms of energy transfer; the internal energy of a closed system changes as heat and work are transferred into or out of it.
+
+## Match 2.06 — LibreTexts: 11.4: Atmosphere of the Giant Planets
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/Astronomy__Cosmology/Astronomy_2e_(OpenStax)/11%3A_The_Giant_Planets/11.04%3A_Atmosphere_of_the_Giant_Planets
+
+11.4: Atmosphere of the Giant Planets
 By the end of this section, you will be able to:
-•
-Define and discuss binding energy.
-•
-Calculate the binding energy per nucleon of a particle.
-The information presented in this section supports the following AP® learning objectives and science practices:
-•
-3.G.3.1 The student is able to identify the strong force as the force that is responsible for holding the nucleus together.
-The more tightly bound a system is, the stronger the forces that hold it together and the greater the energy required to pull it
-apart. We can therefore learn about nuclear forces by examining how tightly bound the nuclei are. We define the binding energy
-(BE) of a nucleus to be the energy required to completely disassemble it into separate protons and neutrons. We can determine
-the BE of a nucleus from its rest mass. The two are connected through Einstein’s famous relationship E = (Δm)c2 . A bound
-system has a smaller mass than its separate constituents; the more tightly the nucleons are bound together, the smaller the
-mass of the nucleus.
-Imagine pulling a nuclide apart as illustrated in Figure 31.25. Work done to overcome the nuclear forces holding the nucleus
-together puts energy into the system. By definition, the energy input equals the binding energy BE. The pieces are at rest when
-separated, and so the energy put into them increases their total rest mass compared with what it was when they were glued
-together as a nucleus. That mass increase is thus Δm = BE / c2 . This difference in mass is known as mass defect. It implies
-that the mass of the nucleus is less than the sum of the masses of its constituent protons and neutrons. A nuclide AX has Z
-protons and N neutrons, so that the difference in mass is
-(31.60)
-Δm = (Zm p + Nmn) − mtot.
-Thus,
-(31.61)
-BE = (Δm)c2 = [(Zmp + Nmn) − mtot]c2,
-where mtot is the mass of the nuclide AX , m p is the mass of a proton, and mn is the mass of a neutron. Traditionally, we
-deal with the masses of neutral atoms. To get atomic masses into the last equation, we first add Z electrons to mtot , which
-gives m⎛
-⎝AX⎞
-⎠ , the atomic mass of the nuclide. We then add Z electrons to the Z protons, which gives Zm⎛
-⎝1 H⎞
-⎠ , or Z times
-the mass of a hydrogen atom. Thus the binding energy of a nuclide AX is
-Chapter 31 | Radioactivity and Nuclear Physics
-1417
-
-(31.62)
-BE =
-⎧
-⎩
-⎨[Zm(1 H) + Nmn] − m(A X)
-⎫
-⎭
-⎬c2.
-The atomic masses can be found in Appendix A, most conveniently expressed in unified atomic mass units u (
-1 u = 931.5 MeV / c2 ). BE is thus calculated from known atomic masses.
-Figure 31.25 Work done to pull a nucleus apart into its constituent protons and neutrons increases the mass of the system. The work to disassemble
-the nucleus equals its binding energy BE. A bound system has less mass than the sum of its parts, especially noticeable in the nuclei, where forces
-and energies are very large.
-Things Great and Small
-Nuclear Decay Helps Explain Earth’s Hot Interior
-A puzzle created by radioactive dating of rocks is resolved by radioactive heating of Earth’s interior. This intriguing story is
-another example of how small-scale physics can explain large-scale phenomena.
-Radioactive dating plays a role in determining the approximate age of the Earth. The oldest rocks on Earth solidified about
-3.5×109 years ago—a number determined by uranium-238 dating. These rocks could only have solidified once the
-surface of the Earth had cooled sufficiently. The temperature of the Earth at formation can be estimated based on
-gravitational potential energy of the assemblage of pieces being converted to thermal energy. Using heat transfer concepts
-discussed in Thermodynamics it is then possible to calculate how long it would take for the surface to cool to rock-
-formation temperatures. The result is about 109 years. The first rocks formed have been solid for 3.5×109 years, so that
-the age of the Earth is approximately 4.5×109 years. There is a large body of other types of evidence (both Earth-bound
-and solar system characteristics are used) that supports this age. The puzzle is that, given its age and initial temperature,
-the center of the Earth should be much cooler than it is today (see Figure 31.26).
-Figure 31.26 The center of the Earth cools by well-known heat transfer methods. Convection in the liquid regions and conduction move thermal
-energy to the surface, where it radiates into cold, dark space. Given the age of the Earth and its initial temperature, it should have cooled to a
-lower temperature by now. The blowup shows that nuclear decay releases energy in the Earth’s interior. This energy has slowed the cooling
-process and is responsible for the interior still being molten.
-We know from seismic waves produced by earthquakes that parts of the interior of the Earth are liquid. Shear or transverse
-waves cannot travel through a liquid and are not transmitted through the Earth’s core. Yet compression or longitudinal waves
-can pass through a liquid and do go through the core. From this information, the temperature of the interior can be
-estimated. As noticed, the interior should have cooled more from its initial temperature in the 4.5×109 years since its
-formation. In fact, it should have taken no more than about 109 years to cool to its present temperature. What is keeping it
-hot? The answer seems to be radioactive decay of primordial elements that were part of the material that formed the Earth
-(see the blowup in Figure 31.26).
-Nuclides such as 238 U and 40 K have half-lives similar to or longer than the age of the Earth, and their decay still
-contributes energy to the interior. Some of the primordial radioactive nuclides have unstable decay products that also
-1418
-Chapter 31 | Radioactivity and Nuclear Physics
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-release energy— 238 U has a long decay chain of these. Further, there were more of these primordial radioactive nuclides
-early in the life of the Earth, and thus the activity and energy contributed were greater then (perhaps by an order of
-magnitude). The amount of power created by these decays per cubic meter is very small. However, since a huge volume of
-material lies deep below the surface, this relatively small amount of energy cannot escape quickly. The power produced near
-the surface has much less distance to go to escape and has a negligible effect on surface temperatures.
-A final effect of this trapped radiation merits mention. Alpha decay produces helium nuclei, which form helium atoms when
-they are stopped and capture electrons. Most of the helium on Earth is obtained from wells and is produced in this manner.
-Any helium in the atmosphere will escape in geologically short times because of its high thermal velocity.
-What patterns and insights are gained from an examination of the binding energy of various nuclides? First, we find that BE is
-approximately proportional to the number of nucleons A in any nucleus. About twice as much energy is needed to pull apart a
-nucleus like 24 Mg compared with pulling apart 12 C , for example. To help us look at other effects, we divide BE by A and
-consider the binding energy per nucleon, BE / A . The graph of BE / A in Figure 31.27 reveals some very interesting
-aspects of nuclei. We see that the binding energy per nucleon averages about 8 MeV, but is lower for both the lightest and
-heaviest nuclei. This overall trend, in which nuclei with A equal to about 60 have the greatest BE / A and are thus the most
-tightly bound, is due to the combined characteristics of the attractive nuclear forces and the repulsive Coulomb force. It is
-especially important to note two things—the strong nuclear force is about 100 times stronger than the Coulomb force, and the
-nuclear forces are shorter in range compared to the Coulomb force. So, for low-mass nuclei, the nuclear attraction dominates
-and each added nucleon forms bonds with all others, causing progressively heavier nuclei to have progressively greater values
-of BE / A . This continues up to A ≈ 60 , roughly corresponding to the mass number of iron. Beyond that, new nucleons added
-to a nucleus will be too far from some others to feel their nuclear attraction. Added protons, however, feel the repulsion of all
-other protons, since the Coulomb force is longer in range. Coulomb repulsion grows for progressively heavier nuclei, but nuclear
-attraction remains about the same, and so BE / A becomes smaller. This is why stable nuclei heavier than A ≈ 40 have more
-neutrons than protons. Coulomb repulsion is reduced by having more neutrons to keep the protons farther apart (see Figure
-31.28).
-Figure 31.27 A graph of average binding energy per nucleon, BE / A , for stable nuclei. The most tightly bound nuclei are those with A near 60,
-where the attractive nuclear force has its greatest effect. At higher A s, the Coulomb repulsion progressively reduces the binding energy per nucleon,
-because the nuclear force is short ranged. The spikes on the curve are very tightly bound nuclides and indicate shell closures.
-Chapter 31 | Radioactivity and Nuclear Physics
-1419
-
-Figure 31.28 The nuclear force is attractive and stronger than the Coulomb force, but it is short ranged. In low-mass nuclei, each nucleon feels the
-nuclear attraction of all others. In larger nuclei, the range of the nuclear force, shown for a single nucleon, is smaller than the size of the nucleus, but
-the Coulomb repulsion from all protons reaches all others. If the nucleus is large enough, the Coulomb repulsion can add to overcome the nuclear
-attraction.
-There are some noticeable spikes on the BE / A graph, which represent particularly tightly bound nuclei. These spikes reveal
-further details of nuclear forces, such as confirming that closed-shell nuclei (those with magic numbers of protons or neutrons or
-both) are more tightly bound. The spikes also indicate that some nuclei with even numbers for Z and N , and with Z = N , are
-exceptionally tightly bound. This finding can be correlated with some of the cosmic abundances of the elements. The most
-common elements in the universe, as determined by observations of atomic spectra from outer space, are hydrogen, followed by
-4 He , with much smaller amounts of 12 C and other elements. It should be noted that the heavier elements are created in
-supernova explosions, while the lighter ones are produced by nuclear fusion during the normal life cycles of stars, as will be
-discussed in subsequent chapters. The most common elements have the most tightly bound nuclei. It is also no accident that
-one of the most tightly bound light nuclei is 4 He , emitted in α decay.
-Example 31.7 What Is BE/ A for an Alpha Particle?
-Calculate the binding energy per nucleon of 4 He , the α particle.
-Strategy
-To find BE / A , we first find BE using the Equation BE = {[Zm(1 H) + Nmn] − m(AX)}c2 and then divide by A . This
-is straightforward once we have looked up the appropriate atomic masses in Appendix A.
-Solution
-The binding energy for a nucleus is given by the equation
-(31.63)
-BE = {[Zm(1 H) + Nmn] − m(AX)}c2.
-For 4 He , we have Z = N = 2 ; thus,
-(31.64)
-BE = {[2m(1 H) + 2mn] − m(4 He)}c2.
-Appendix A gives these masses as m(4 He) = 4.002602 u , m(1 H) = 1.007825 u , and mn = 1.008665 u . Thus,
-(31.65)
-BE = (0.030378 u)c2.
-Noting that 1 u = 931.5 MeV/c2 , we find
-(31.66)
-BE = (0.030378)(931.5 MeV/c2)c2 = 28.3 MeV.
-Since A = 4 , we see that BE / A is this number divided by 4, or
-(31.67)
-BE / A = 7.07 MeV/nucleon.
-Discussion
-This is a large binding energy per nucleon compared with those for other low-mass nuclei, which have
-BE / A ≈ 3 MeV/nucleon . This indicates that 4 He is tightly bound compared with its neighbors on the chart of the
-nuclides. You can see the spike representing this value of BE / A for 4 He on the graph in Figure 31.27. This is why
-4 He is stable. Since 4 He is tightly bound, it has less mass than other A = 4 nuclei and, therefore, cannot
-spontaneously decay into them. The large binding energy also helps to explain why some nuclei undergo α decay. Smaller
-mass in the decay products can mean energy release, and such decays can be spontaneous. Further, it can happen that
-two protons and two neutrons in a nucleus can randomly find themselves together, experience the exceptionally large
-1420
-Chapter 31 | Radioactivity and Nuclear Physics
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-nuclear force that binds this combination, and act as a 4 He unit within the nucleus, at least for a while. In some cases, the
-4 He escapes, and α decay has then taken place.
-There is more to be learned from nuclear binding energies. The general trend in BE / A is fundamental to energy production in
-stars, and to fusion and fission energy sources on Earth, for example. This is one of the applications of nuclear physics covered
-in Medical Applications of Nuclear Physics. The abundance of elements on Earth, in stars, and in the universe as a whole is
-related to the binding energy of nuclei and has implications for the continued expansion of the universe.
-Problem-Solving Strategies
-For Reaction And Binding Energies and Activity Calculations in Nuclear Physics
-1.
-Identify exactly what needs to be determined in the problem (identify the unknowns). This will allow you to decide whether
-the energy of a decay or nuclear reaction is involved, for example, or whether the problem is primarily concerned with
-activity (rate of decay).
-2.
-Make a list of what is given or can be inferred from the problem as stated (identify the knowns).
-3.
-For reaction and binding-energy problems, we use atomic rather than nuclear masses. Since the masses of neutral atoms
-are used, you must count the number of electrons involved. If these do not balance (such as in β+ decay), then an energy
-adjustment of 0.511 MeV per electron must be made. Also note that atomic masses may not be given in a problem; they
-can be found in tables.
-4.
-For problems involving activity, the relationship o
-
-## Match 2.05 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 31.6 Binding Energy
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Define and discuss binding energy.
-•
-Calculate the binding energy per nucleon of a particle.
-The more tightly bound a system is, the stronger the forces that hold it together and the greater the energy required
-to pull it apart. We can therefore learn about nuclear forces by examining how tightly bound the nuclei are. We
-define the binding energy (BE) of a nucleus to be the energy required to completely disassemble it into separate
-protons and neutrons. We can determine the BE of a nucleus from its rest mass. The two are connected through
-Einstein’s famous relationship
-. A bound system has a smaller mass than its separate constituents; the
-more tightly the nucleons are bound together, the smaller the mass of the nucleus.
-Imagine pulling a nuclide apart as illustrated in Figure 31.22. Work done to overcome the nuclear forces holding the
-nucleus together puts energy into the system. By definition, the energy input equals the binding energy BE. The
-pieces are at rest when separated, and so the energy put into them increases their total rest mass compared with
-what it was when they were glued together as a nucleus. That mass increase is thus
-. This difference in
-31.58
-31.59
-1494
-31 • Radioactivity and Nuclear Physics
-Access for free at openstax.org
-
-mass is known as mass defect. It implies that the mass of the nucleus is less than the sum of the masses of its
-constituent protons and neutrons. A nuclide
-has
-protons and
-neutrons, so that the difference in mass is
-Thus,
-where
-is the mass of the nuclide
-,
-is the mass of a proton, and
-is the mass of a neutron. Traditionally,
-we deal with the masses of neutral atoms. To get atomic masses into the last equation, we first add
-electrons to
-, which gives
-, the atomic mass of the nuclide. We then add
-electrons to the
-protons, which gives
-, or
-times the mass of a hydrogen atom. Thus the binding energy of a nuclide
-is
-The atomic masses can be found in Appendix A, most conveniently expressed in unified atomic mass units u
-(
-). BE is thus calculated from known atomic masses.
-FIGURE 31.22 Work done to pull a nucleus apart into its constituent protons and neutrons increases the mass of the system. The work to
-disassemble the nucleus equals its binding energy BE. A bound system has less mass than the sum of its parts, especially noticeable in the
-nuclei, where forces and energies are very large.
-31.60
-31.61
-31.62
-THINGS GREAT AND SMALL
-Nuclear Decay Helps Explain Earth’s Hot Interior
-A puzzle created by radioactive dating of rocks is resolved by radioactive heating of Earth’s interior. This
-intriguing story is another example of how small-scale physics can explain large-scale phenomena.
-Radioactive dating plays a role in determining the approximate age of the Earth. The oldest rocks on Earth
-solidified about
-years ago—a number determined by uranium-238 dating. These rocks could only have
-solidified once the surface of the Earth had cooled sufficiently. The temperature of the Earth at formation can be
-estimated based on gravitational potential energy of the assemblage of pieces being converted to thermal
-energy. Using heat transfer concepts discussed in Thermodynamics it is then possible to calculate how long it
-would take for the surface to cool to rock-formation temperatures. The result is about
-years. The first rocks
-formed have been solid for
-years, so that the age of the Earth is approximately
-years. There
-is a large body of other types of evidence (both Earth-bound and solar system characteristics are used) that
-supports this age. The puzzle is that, given its age and initial temperature, the center of the Earth should be
-much cooler than it is today (see Figure 31.23).
-31.6 • Binding Energy
-1495
-
-What patterns and insights are gained from an examination of the binding energy of various nuclides? First, we find
-that BE is approximately proportional to the number of nucleons
-in any nucleus. About twice as much energy is
-needed to pull apart a nucleus like
-compared with pulling apart
-, for example. To help us look at other
-effects, we divide BE by
-and consider the binding energy per nucleon,
-. The graph of
-in Figure 31.24
-reveals some very interesting aspects of nuclei. We see that the binding energy per nucleon averages about 8 MeV,
-but is lower for both the lightest and heaviest nuclei. This overall trend, in which nuclei with
-equal to about 60
-have the greatest
-and are thus the most tightly bound, is due to the combined characteristics of the attractive
-nuclear forces and the repulsive Coulomb force. It is especially important to note two things—the strong nuclear
-force is about 100 times stronger than the Coulomb force, and the nuclear forces are shorter in range compared to
-the Coulomb force. So, for low-mass nuclei, the nuclear attraction dominates and each added nucleon forms bonds
-with all others, causing progressively heavier nuclei to have progressively greater values of
-. This continues up
-to
-, roughly corresponding to the mass number of iron. Beyond that, new nucleons added to a nucleus will be
-too far from some others to feel their nuclear attraction. Added protons, however, feel the repulsion of all other
-protons, since the Coulomb force is longer in range. Coulomb repulsion grows for progressively heavier nuclei, but
-FIGURE 31.23 The center of the Earth cools by well-known heat transfer methods. Convection in the liquid regions and conduction
-move thermal energy to the surface, where it radiates into cold, dark space. Given the age of the Earth and its initial temperature, it
-should have cooled to a lower temperature by now. The blowup shows that nuclear decay releases energy in the Earth’s interior. This
-energy has slowed the cooling process and is responsible for the interior still being molten.
-Danish geophysicist Inge Lehmann was the first to properly interpret seismological data from earthquakes as
-evidence that the Earth had a solid inner core surrounded by a liquid outer core. Shear or transverse waves
-cannot travel through a liquid and are not transmitted through the Earth’s core. Yet compression or longitudinal
-waves can pass through a liquid and do go through the core. From this information, the temperature of the
-interior can be estimated. As noticed, the interior should have cooled more from its initial temperature in the
-years since its formation. In fact, it should have taken no more than about
-years to cool to its
-present temperature. What is keeping it hot? The answer seems to be radioactive decay of primordial elements
-that were part of the material that formed the Earth (see the blowup in Figure 31.23).
-Nuclides such as
-and
-have half-lives similar to or longer than the age of the Earth, and their decay still
-contributes energy to the interior. Some of the primordial radioactive nuclides have unstable decay products that
-also release energy—
-has a long decay chain of these. Further, there were more of these primordial
-radioactive nuclides early in the life of the Earth, and thus the activity and energy contributed were greater then
-(perhaps by an order of magnitude). The amount of power created by these decays per cubic meter is very small.
-However, since a huge volume of material lies deep below the surface, this relatively small amount of energy
-cannot escape quickly. The power produced near the surface has much less distance to go to escape and has a
-negligible effect on surface temperatures.
-A final effect of this trapped radiation merits mention. Alpha decay produces helium nuclei, which form helium
-atoms when they are stopped and capture electrons. Most of the helium on Earth is obtained from wells and is
-produced in this manner. Any helium in the atmosphere will escape in geologically short times because of its
-high thermal velocity.
-1496
-31 • Radioactivity and Nuclear Physics
-Access for free at openstax.org
-
-nuclear attraction remains about the same, and so
-becomes smaller. This is why stable nuclei heavier than
-have more neutrons than protons. Coulomb repulsion is reduced by having more neutrons to keep the
-protons farther apart (see Figure 31.25).
-FIGURE 31.24 A graph of average binding energy per nucleon,
-, for stable nuclei. The most tightly bound nuclei are those with
-near
-60, where the attractive nuclear force has its greatest effect. At higher
-s, the Coulomb repulsion progressively reduces the binding energy
-per nucleon, because the nuclear force is short ranged. The spikes on the curve are very tightly bound nuclides and indicate shell closures.
-FIGURE 31.25 The nuclear force is attractive and stronger than the Coulomb force, but it is short ranged. In low-mass nuclei, each nucleon
-feels the nuclear attraction of all others. In larger nuclei, the range of the nuclear force, shown for a single nucleon, is smaller than the size
-of the nucleus, but the Coulomb repulsion from all protons reaches all others. If the nucleus is large enough, the Coulomb repulsion can
-add to overcome the nuclear attraction.
-There are some noticeable spikes on the
-graph, which represent particularly tightly bound nuclei. These
-spikes reveal further details of nuclear forces, such as confirming that closed-shell nuclei (those with magic
-numbers of protons or neutrons or both) are more tightly bound. The spikes also indicate that some nuclei with even
-numbers for
-and
-, and with
-, are exceptionally tightly bound. This finding can be correlated with some of
-the cosmic abundances of the elements. The most common elements in the universe, as determined by
-observations of atomic spectra from outer space, are hydrogen, followed by
-, with much smaller amounts of
-and other elements. It should be noted that the heavier elements are created in supernova explosions, while
-the lighter ones are produced by nuclear fusion during the normal life cycles of stars, as will be discussed in
-subsequent chapters. The most common elements have the most tightly bound nuclei. It is also no accident that
-one of the most tightly bound light nuclei is
-, emitted in
-decay.
-31.6 • Binding Energy
-1497
-
-EXAMPLE 31.7
-What Is
-for an Alpha Particle?
-Calculate the binding energy per nucleon of
-, the
-particle.
-Strategy
-To find
-, we first find BE using the Equation
-and then divide by
-. This is
-straightforward once we have looked up the appropriate atomic masses in Appendix A.
-Solution
-The binding energy for a nucleus is given by the equation
-For
-, we have
-; thus,
-Appendix A gives these masses as
-,
-, and
-. Thus,
-Noting that
-, we find
-Since
-, we see that
-is this number divided by 4, or
-Discussion
-This is a large binding energy per nucleon compared with those for other low-mass nuclei, which have
-. This indicates that
-is tightly bound compared with its neighbors on the chart of the
-nuclides. You can see the spike representing this value of
-for
-on the graph in Figure 31.24. This is why
-is stable. Since
-is tightly bound, it has less mass than other
-nuclei and, therefore, cannot
-spontaneously decay into them. The large binding energy also helps to explain why some nuclei undergo
-decay.
-Smaller mass in the decay products can mean energy release, and such decays can be spontaneous. Further, it can
-happen that two protons and two neutrons in a nucleus can randomly find themselves together, experience the
-exceptionally large nuclear force that binds this combination, and act as a
-unit within the nucleus, at least for a
-while. In some cases, the
-escapes, and
-decay has then taken place.
-There is more to be learned from nuclear binding energies. The general trend in
-is fundamental to energy
-production in stars, and to fusion and fission energy sources on Earth, for example. This is one of the applications of
-nuclear physics covered in Medical Applications of Nuclear Physics. The abundance of elements on Earth, in stars,
-and in the universe as a whole is related to the binding energy of nuclei and has implications for the continued
-expansion of the universe.
-Problem-Solving Strategies
-For Reaction And Binding Energies and Activity Calculations in Nuclear Physics
-1.
-Identify exactly what needs to be determined in the problem (identify the unknowns). This will allow you to
-decide whether the energy of a decay or nuclear reaction is involved, for example, or whether the problem is
-primarily concerned with activity (rate of decay).
-2.
-Make a list of what is given or can be inferred from the problem as stated (identify the knowns).
-3.
-For reaction and binding-energy problems, we use atomic rather than nuclear masses. Since the masses of
-neutral atoms are used, you must count the number of electrons involved. If these do not balance (such as in
-decay), then an energy adjustment of 0.511 MeV per electron must be made. Also note that atomic masses
-31.63
-31.64
-31.65
-31.66
-31.67
-1498
-31 • Radioactivity and Nuclear Physics
-Access for free at openstax.org
-
-may not be given in a problem; they can be found in tables.
-4.
-For problems involving activity, the relationship of activity to half-life, and the number of nuclei given in the
-equation
-can be very useful. Owing to the fact that number of nuclei is involved, you will also need
-to be familiar with moles and Avogadro’s number.
-5.
-Perform the desired calculation; keep careful track of plus and minus signs as well as powers of 10.
-6.
-Check the answer to see if it is reasonable: Does it make sense? Compare your results with worked examples
-and other information in the text. (Heeding the advice in Step 5 will also help you to be certain of your result.)
-You must understand the problem conceptually to be able to determine whether the numerical result is
-reasonable.
-PHET EXPLORATIONS
-Nuclear Fission
-Start a chain reaction, or introduce non-radioactive isotopes to prevent one. Control energy production in a nuclear
-reactor!
-Click to view content (https://openstax.org/l/16fission).
-
-## Match 2.05 — College_Physics_2e-WEB_7Zesafu § 31.6 Binding Energy
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Define and discuss binding energy.
-•
-Calculate the binding energy per nucleon of a particle.
-The more tightly bound a system is, the stronger the forces that hold it together and the greater the energy required
-to pull it apart. We can therefore learn about nuclear forces by examining how tightly bound the nuclei are. We
-define the binding energy (BE) of a nucleus to be the energy required to completely disassemble it into separate
-protons and neutrons. We can determine the BE of a nucleus from its rest mass. The two are connected through
-Einstein’s famous relationship
-. A bound system has a smaller mass than its separate constituents; the
-more tightly the nucleons are bound together, the smaller the mass of the nucleus.
-Imagine pulling a nuclide apart as illustrated in Figure 31.22. Work done to overcome the nuclear forces holding the
-nucleus together puts energy into the system. By definition, the energy input equals the binding energy BE. The
-pieces are at rest when separated, and so the energy put into them increases their total rest mass compared with
-what it was when they were glued together as a nucleus. That mass increase is thus
-. This difference in
-31.58
-31.59
-31.6 • Binding Energy
-1405
-
-mass is known as mass defect. It implies that the mass of the nucleus is less than the sum of the masses of its
-constituent protons and neutrons. A nuclide
-has
-protons and
-neutrons, so that the difference in mass is
-Thus,
-where
-is the mass of the nuclide
-,
-is the mass of a proton, and
-is the mass of a neutron. Traditionally,
-we deal with the masses of neutral atoms. To get atomic masses into the last equation, we first add
-electrons to
-, which gives
-, the atomic mass of the nuclide. We then add
-electrons to the
-protons, which gives
-, or
-times the mass of a hydrogen atom. Thus the binding energy of a nuclide
-is
-The atomic masses can be found in Appendix A, most conveniently expressed in unified atomic mass units u
-(
-). BE is thus calculated from known atomic masses.
-FIGURE 31.22 Work done to pull a nucleus apart into its constituent protons and neutrons increases the mass of the system. The work to
-disassemble the nucleus equals its binding energy BE. A bound system has less mass than the sum of its parts, especially noticeable in the
-nuclei, where forces and energies are very large.
-31.60
-31.61
-31.62
-Things Great and Small
-Nuclear Decay Helps Explain Earth’s Hot Interior
-A puzzle created by radioactive dating of rocks is resolved by radioactive heating of Earth’s interior. This
-intriguing story is another example of how small-scale physics can explain large-scale phenomena.
-Radioactive dating plays a role in determining the approximate age of the Earth. The oldest rocks on Earth
-solidified about
-years ago—a number determined by uranium-238 dating. These rocks could only have
-solidified once the surface of the Earth had cooled sufficiently. The temperature of the Earth at formation can be
-estimated based on gravitational potential energy of the assemblage of pieces being converted to thermal
-energy. Using heat transfer concepts discussed in Thermodynamics it is then possible to calculate how long it
-would take for the surface to cool to rock-formation temperatures. The result is about
-years. The first rocks
-formed have been solid for
-years, so that the age of the Earth is approximately
-years. There
-is a large body of other types of evidence (both Earth-bound and solar system characteristics are used) that
-supports this age. The puzzle is that, given its age and initial temperature, the center of the Earth should be
-much cooler than it is today (see Figure 31.23).
-1406
-31 • Radioactivity and Nuclear Physics
-Access for free at openstax.org
-
-What patterns and insights are gained from an examination of the binding energy of various nuclides? First, we find
-that BE is approximately proportional to the number of nucleons
-in any nucleus. About twice as much energy is
-needed to pull apart a nucleus like
-compared with pulling apart
-, for example. To help us look at other
-effects, we divide BE by
-and consider the binding energy per nucleon,
-. The graph of
-in Figure 31.24
-reveals some very interesting aspects of nuclei. We see that the binding energy per nucleon averages about 8 MeV,
-but is lower for both the lightest and heaviest nuclei. This overall trend, in which nuclei with
-equal to about 60
-have the greatest
-and are thus the most tightly bound, is due to the combined characteristics of the attractive
-nuclear forces and the repulsive Coulomb force. It is especially important to note two things—the strong nuclear
-force is about 100 times stronger than the Coulomb force, and the nuclear forces are shorter in range compared to
-the Coulomb force. So, for low-mass nuclei, the nuclear attraction dominates and each added nucleon forms bonds
-with all others, causing progressively heavier nuclei to have progressively greater values of
-. This continues up
-to
-, roughly corresponding to the mass number of iron. Beyond that, new nucleons added to a nucleus will be
-too far from some others to feel their nuclear attraction. Added protons, however, feel the repulsion of all other
-protons, since the Coulomb force is longer in range. Coulomb repulsion grows for progressively heavier nuclei, but
-FIGURE 31.23 The center of the Earth cools by well-known heat transfer methods. Convection in the liquid regions and conduction
-move thermal energy to the surface, where it radiates into cold, dark space. Given the age of the Earth and its initial temperature, it
-should have cooled to a lower temperature by now. The blowup shows that nuclear decay releases energy in the Earth’s interior. This
-energy has slowed the cooling process and is responsible for the interior still being molten.
-Danish geophysicist Inge Lehmann was the first to properly interpret seismological data from earthquakes as
-evidence that the Earth had a solid inner core surrounded by a liquid outer core. Shear or transverse waves
-cannot travel through a liquid and are not transmitted through the Earth’s core. Yet compression or longitudinal
-waves can pass through a liquid and do go through the core. From this information, the temperature of the
-interior can be estimated. As noticed, the interior should have cooled more from its initial temperature in the
-years since its formation. In fact, it should have taken no more than about
-years to cool to its
-present temperature. What is keeping it hot? The answer seems to be radioactive decay of primordial elements
-that were part of the material that formed the Earth (see the blowup in Figure 31.23).
-Nuclides such as
-and
-have half-lives similar to or longer than the age of the Earth, and their decay still
-contributes energy to the interior. Some of the primordial radioactive nuclides have unstable decay products that
-also release energy—
-has a long decay chain of these. Further, there were more of these primordial
-radioactive nuclides early in the life of the Earth, and thus the activity and energy contributed were greater then
-(perhaps by an order of magnitude). The amount of power created by these decays per cubic meter is very small.
-However, since a huge volume of material lies deep below the surface, this relatively small amount of energy
-cannot escape quickly. The power produced near the surface has much less distance to go to escape and has a
-negligible effect on surface temperatures.
-A final effect of this trapped radiation merits mention. Alpha decay produces helium nuclei, which form helium
-atoms when they are stopped and capture electrons. Most of the helium on Earth is obtained from wells and is
-produced in this manner. Any helium in the atmosphere will escape in geologically short times because of its
-high thermal velocity.
-31.6 • Binding Energy
-1407
-
-nuclear attraction remains about the same, and so
-becomes smaller. This is why stable nuclei heavier than
-have more neutrons than protons. Coulomb repulsion is reduced by having more neutrons to keep the
-protons farther apart (see Figure 31.25).
-FIGURE 31.24 A graph of average binding energy per nucleon,
-, for stable nuclei. The most tightly bound nuclei are those with
-near
-60, where the attractive nuclear force has its greatest effect. At higher
-s, the Coulomb repulsion progressively reduces the binding energy
-per nucleon, because the nuclear force is short ranged. The spikes on the curve are very tightly bound nuclides and indicate shell closures.
-FIGURE 31.25 The nuclear force is attractive and stronger than the Coulomb force, but it is short ranged. In low-mass nuclei, each nucleon
-feels the nuclear attraction of all others. In larger nuclei, the range of the nuclear force, shown for a single nucleon, is smaller than the size
-of the nucleus, but the Coulomb repulsion from all protons reaches all others. If the nucleus is large enough, the Coulomb repulsion can
-add to overcome the nuclear attraction.
-There are some noticeable spikes on the
-graph, which represent particularly tightly bound nuclei. These
-spikes reveal further details of nuclear forces, such as confirming that closed-shell nuclei (those with magic
-numbers of protons or neutrons or both) are more tightly bound. The spikes also indicate that some nuclei with even
-numbers for
-and
-, and with
-, are exceptionally tightly bound. This finding can be correlated with some of
-the cosmic abundances of the elements. The most common elements in the universe, as determined by
-observations of atomic spectra from outer space, are hydrogen, followed by
-, with much smaller amounts of
-and other elements. It should be noted that the heavier elements are created in supernova explosions, while
-the lighter ones are produced by nuclear fusion during the normal life cycles of stars, as will be discussed in
-subsequent chapters. The most common elements have the most tightly bound nuclei. It is also no accident that
-one of the most tightly bound light nuclei is
-, emitted in
-decay.
-1408
-31 • Radioactivity and Nuclear Physics
-Access for free at openstax.org
-
-EXAMPLE 31.7
-What Is
-for an Alpha Particle?
-Calculate the binding energy per nucleon of
-, the
-particle.
-Strategy
-To find
-, we first find BE using the Equation
-and then divide by
-. This is
-straightforward once we have looked up the appropriate atomic masses in Appendix A.
-Solution
-The binding energy for a nucleus is given by the equation
-For
-, we have
-; thus,
-Appendix A gives these masses as
-,
-, and
-. Thus,
-Noting that
-, we find
-Since
-, we see that
-is this number divided by 4, or
-Discussion
-This is a large binding energy per nucleon compared with those for other low-mass nuclei, which have
-. This indicates that
-is tightly bound compared with its neighbors on the chart of the
-nuclides. You can see the spike representing this value of
-for
-on the graph in Figure 31.24. This is why
-is stable. Since
-is tightly bound, it has less mass than other
-nuclei and, therefore, cannot
-spontaneously decay into them. The large binding energy also helps to explain why some nuclei undergo
-decay.
-Smaller mass in the decay products can mean energy release, and such decays can be spontaneous. Further, it can
-happen that two protons and two neutrons in a nucleus can randomly find themselves together, experience the
-exceptionally large nuclear force that binds this combination, and act as a
-unit within the nucleus, at least for a
-while. In some cases, the
-escapes, and
-decay has then taken place.
-There is more to be learned from nuclear binding energies. The general trend in
-is fundamental to energy
-production in stars, and to fusion and fission energy sources on Earth, for example. This is one of the applications of
-nuclear physics covered in Medical Applications of Nuclear Physics. The abundance of elements on Earth, in stars,
-and in the universe as a whole is related to the binding energy of nuclei and has implications for the continued
-expansion of the universe.
-Problem-Solving Strategies
-For Reaction And Binding Energies and Activity Calculations in Nuclear Physics
-1.
-Identify exactly what needs to be determined in the problem (identify the unknowns). This will allow you to
-decide whether the energy of a decay or nuclear reaction is involved, for example, or whether the problem is
-primarily concerned with activity (rate of decay).
-2.
-Make a list of what is given or can be inferred from the problem as stated (identify the knowns).
-3.
-For reaction and binding-energy problems, we use atomic rather than nuclear masses. Since the masses of
-neutral atoms are used, you must count the number of electrons involved. If these do not balance (such as in
-decay), then an energy adjustment of 0.511 MeV per electron must be made. Also note that atomic masses
-31.63
-31.64
-31.65
-31.66
-31.67
-31.6 • Binding Energy
-1409
-
-may not be given in a problem; they can be found in tables.
-4.
-For problems involving activity, the relationship of activity to half-life, and the number of nuclei given in the
-equation
-can be very useful. Owing to the fact that number of nuclei is involved, you will also need
-to be familiar with moles and Avogadro’s number.
-5.
-Perform the desired calculation; keep careful track of plus and minus signs as well as powers of 10.
-6.
-Check the answer to see if it is reasonable: Does it make sense? Compare your results with worked examples
-and other information in the text. (Heeding the advice in Step 5 will also help you to be certain of your result.)
-You must understand the problem conceptually to be able to determine whether the numerical result is
-reasonable.
-PHET EXPLORATIONS
-Nuclear Fission
-Start a chain reaction, or introduce non-radioactive isotopes to prevent one. Control energy production in a nuclear
-reactor!
-Click to view content (https://openstax.org/l/16fission).
+- Discuss the atmospheric composition of the giant planets
+- Describe the cloud formation and atmospheric structure of the gas giants
+- Characterize the giant planets’ wind and weather patterns
+- Understand the scale and longevity of storms on the giant planets
+The atmosphere s of the jovian planets are the parts we can observe or measure directly. Since these planets have no solid surfaces, their atmospheres are more representative of their general compositions than is the case with the terrestrial planets. These atmospheres also present us with some of the most dramatic examples of weather patterns in the solar system. As we will see, storms on these planets can grow bigger than the entire planet Earth.
+Atmospheric Composition
+When sunlight reflects from the atmospheres of the giant planets, the atmospheric gases leave their “fingerprints” in the spectrum of light. Spectroscopic observations of the jovian planets began in the nineteenth century, but for a long time, astronomers were not able to interpret the spectra they observed. As late as the 1930s, the most prominent features photographed in these spectra remained unidentified. Then better spectra revealed the presence of molecules of methane (CH 4 ) and ammonia (NH 3 ) in the atmospheres of Jupiter and Saturn.
+At first astronomers thought that methane and ammonia might be the main constituents of these atmospheres, but now we know that hydrogen and helium are actually the dominant gases. The confusion arose because neither hydrogen nor helium possesses easily detected spectral features in the visible spectrum. It was not until the Voyager spacecraft measured the far-infrared spectra of Jupiter and Saturn that a reliable abundance for the elusive helium could be found.
+The compositions of the two atmospheres are generally similar, except that on Saturn there is less helium as the result of the precipitation of helium that contributes to Saturn’s internal energy source. The most precise measurements of composition were made on Jupiter by the Galileo entry probe in 1995; as a result, we know the abundances of some elements in the jovian atmosphere even better than we know those in the Sun.
+The career of physicist James Van Allen spanned the birth and growth of the space age, and he played a major role in its development. Born in Iowa in 1914, Van Allen received his PhD from the University of Iowa. He then worked for several research institutions and served in the Navy during World War II.
+After the war, Van Allen (Figure 11.9) was appointed Professor of Physics at the University of Iowa. He and his collaborators began using rockets to explore cosmic radiation in Earth’s outer atmosphere. To reach extremely high altitudes, Van Allen designed a technique in which a balloon lifts and then launches a small rocket (the rocket is nicknamed “the rockoon”).
+Over dinner one night in 1950, Van Allen and several colleagues came up with the idea of the International Geophysical Year (IGY), an opportunity for scientists around the world to coordinate their investigations of the physics of Earth, especially research done at high altitudes. In 1955, the United States and the Soviet Union each committed themselves to launching an Earth-orbiting satellite during IGY, a competition that began what came to be known as the space race. The IGY (stretched to 18 months) took place between July 1957 and December 1958.
+The Soviet Union won the first lap of the race by launching Sputnik 1 in October 1957. The US government spurred its scientists and engineers to even greater efforts to get something into space to maintain the country’s prestige. However, the primary US satellite program, Vanguard, ran into difficulties: each of its early launches crashed or exploded. Simultaneously, a second team of rocket engineers and scientists had quietly been working on a military launch vehicle called Jupiter-C. Van Allen spearheaded the design of the instruments aboard a small satellite that this vehicle would carry. On January 31, 1958, Van Allen’s Explorer 1 became the first US satellite in space.
+Unlike Sputnik, Explorer 1 was equipped to make scientific measurements of high-energy charged particles above the atmosphere. Van Allen and his team discovered a belt of highly charged particles surrounding Earth, and these belts now bear his name. This first scientific discovery of the space program made Van Allen’s name known around the world.
+Van Allen and his colleagues continued to measure the magnetic and particle environment around planets with increasingly sophisticated spacecraft, including Pioneers 10 and 11, which made exploratory surveys of the environments of Jupiter and Saturn. Some scientists refer to the charged-particle zones around those planets as Van Allen belt s as well. (Once, when Van Allen was giving a lecture at the University of Arizona, the graduate students in planetary science asked him if he would leave his belt at the school. It is now proudly displayed as the university’s “Van Allen belt.”)
+Van Allen was a strong supporter of space science and an eloquent senior spokesperson for the American scientific community, warning NASA not to put all its efforts into human spaceflight, but to also use robotic spacecraft as productive tools for space exploration.
+Clouds and Atmospheric Structure
+The clouds of Jupiter (Figure 11.10) are among the most spectacular sights in the solar system, much beloved by makers of science-fiction films. They range in color from white to orange to red to brown, swirling and twisting in a constantly changing kaleidoscope of patterns. Saturn shows similar but much more subdued cloud activity; instead of vivid colors, its clouds have a nearly uniform butterscotch hue (Figure 11.11).
+Different gases freeze at different temperatures. At the temperatures and pressures of the upper atmospheres of Jupiter and Saturn, methane remains a gas, but ammonia can condense and freeze. (Similarly, water vapor condenses high in Earth’s atmosphere to produce clouds of ice crystals.) The primary clouds that we see around these planets, whether from a spacecraft or through a telescope, are composed of frozen ammonia crystals. The ammonia clouds mark the upper edge of the planets’ tropospheres; above that is the stratosphere, the coldest part of the atmosphere. (These layers were initially defined in Earth as a Planet.)
+The diagrams in Figure 11.12 show the structure and clouds in the atmospheres of all four jovian planets. On both Jupiter and Saturn, the temperature near the cloud tops is about 140 K (only a little cooler than the polar caps of Mars). On Jupiter, this cloud level is at a pressure of about 0.1 bar (one tenth the atmospheric pressure at the surface of Earth), but on Saturn it occurs lower in the atmosphere, at about 1 bar. Because the ammonia clouds lie so much deeper on Saturn, they are more difficult to see, and the overall appearance of the planet is much blander than is Jupiter’s appearance.
+Within the tropospheres of these planets, the temperature and pressure both increase with depth. Through breaks in the ammonia clouds, we can see tantalizing glimpses of other cloud layers that can form in these deeper regions of the atmosphere—regions that were sampled directly for Jupiter by the Galileo probe that fell into the planet.
+As it descended to a pressure of 5 bars, the probe should have passed into a region of frozen water clouds, then below that into clouds of liquid water droplets, perhaps similar to the common clouds of the terrestrial troposphere. At least this is what scientists expected. But the probe saw no water clouds, and it measured a surprisingly low abundance of water vapor in the atmosphere. It soon became clear to the Galileo scientists that the probe happened to descend through an unusually dry, cloud-free region of the atmosphere—a giant downdraft of cool, dry gas. Andrew Ingersoll of Caltech, a member of the Galileo team, called this entry site the “desert” of Jupiter. It’s a pity that the probe did not enter a more representative region, but that’s the luck of the cosmic draw. The probe continued to make measurements to a pressure of 22 bars but found no other cloud layers before its instruments stopped working. It also detected lightning storms, but only at great distances, further suggesting that the probe itself was in a region of clear weather.
+Above the visible ammonia clouds in Jupiter ’s atmosphere, we find the clear stratosphere, which reaches a minimum temperature near 120 K. At still higher altitudes, temperatures rise again, just as they do in the upper atmosphere of Earth, because here the molecules absorb ultraviolet light from the Sun. The cloud colors are due to impurities, the product of chemical reactions among the atmospheric gases in a process we call photochemistry . In Jupiter’s upper atmosphere, photochemical reactions create a variety of fairly complex compounds of hydrogen and carbon that form a thin layer of smog far above the visible clouds. We show this smog as a fuzzy orange region in Figure 11.12; however, this thin layer does not block our view of the clouds beneath it.
+The visible atmosphere of Saturn is composed of approximately 75% hydrogen and 25% helium, with trace amounts of methane, ethane, propane, and other hydrocarbons. The overall structure is similar to that of Jupiter. Temperatures are somewhat colder, however, and the atmosphere is more extended due to Saturn’s lower surface gravity. Thus, the layers are stretched out over a longer distance, as you can see in Figure 11.12. Overall, though, the same atmospheric regions, condensation cloud, and photochemical reactions that we see on Jupiter should be present on Saturn (Figure 11.13).
+Saturn has one anomalous cloud structure that has mystified scientists: a hexagonal wave pattern around the north pole, shown in Figure 11.14. The six sides of the hexagon are each longer than the diameter of Earth. Winds are also extremely high on Saturn, with speeds of up to 1800 kilometers per hour measured near the equator.
+Unlike Jupiter and Saturn, Uranus is almost entirely featureless as seen at wavelengths that range from the ultraviolet to the infrared (see its rather boring image in Figure 11.1). Calculations indicate that the basic atmospheric structure of Uranus should resemble that of Jupiter and Saturn, although its upper clouds (at the 1-bar pressure level) are composed of methane rather than ammonia. However, the absence of an internal heat source suppresses up-and-down movement and leads to a very stable atmosphere with little visible structure.
+Neptune differs from Uranus in its appearance, although their basic atmospheric temperatures are similar. The upper clouds are composed of methane, which forms a thin cloud layer near the top of the troposphere at a temperature of 70 K and a pressure of 1.5 bars. Most the atmosphere above this level is clear and transparent, with less haze than is found on Uranus. The scattering of sunlight by gas molecules lends Neptune a pale blue color similar to that of Earth’s atmosphere (Figure 11.15). Another cloud layer, perhaps composed of hydrogen sulfide ice particles, exists below the methane clouds at a pressure of 3 bars.
+Unlike Uranus, Neptune has an atmosphere in which convection currents —vertical drafts of gas—emanate from the interior, powered by the planet’s internal heat source. These currents carry warm gas above the 1.5-bar cloud level, forming additional clouds at elevations about 75 kilometers higher. These high-altitude clouds form bright white patterns against the blue planet beneath. Voyager photographed distinct shadows on the methane cloud tops, permitting the altitudes of the high clouds to be calculated. Figure 11.16 is a remarkable close-up of Neptune’s outer layers that could never have been obtained from Earth.
+Winds and Weather
+The atmosphere s of the j

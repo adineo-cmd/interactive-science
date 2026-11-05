@@ -5,552 +5,116 @@ Match confidence: 1.54
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.54 — Physics-WEB_Sab7RrQ § 9.3 Simple Machines
+## Match 1.54 — LibreTexts: 5.4: Learn with ePortfolios
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Education_and_Professional_Development/Learning_to_Learn_Online_(Page_and_Vincent)/05%3A_Professional_Communication_in_the_Online_Environment/5.04%3A_Learn_with_ePortfolios
 
-Section Learning Objectives
-By the end of this section, you will be able to do the following:
-•
-Describe simple and complex machines
-•
-Calculate mechanical advantage and efficiency of simple and complex machines
-Section Key Terms
-complex machine
-efficiency output
-ideal mechanical advantage
-inclined plane
-input work
-lever
-mechanical advantage
-output work
-pulley
-screw
-simple machine
-wedge
-wheel and axle
-Simple Machines
-Simple machines make work easier, but they do not decrease the amount of work you have to do. Why can’t simple machines
-change the amount of work that you do? Recall that in closed systems the total amount of energy is conserved. A machine cannot
-increase the amount of energy you put into it. So, why is a simple machine useful? Although it cannot change the amount of
-work you do, a simple machine can change the amount of force you must apply to an object, and the distance over which you
-apply the force. In most cases, a simple machine is used to reduce the amount of force you must exert to do work. The down side
-is that you must exert the force over a greater distance, because the product of force and distance, fd, (which equals work) does
-not change.
-Let’s examine how this works in practice. In Figure 9.7(a), the worker uses a type of lever to exert a small force over a large
-distance, while the pry bar pulls up on the nail with a large force over a small distance. Figure 9.7(b) shows the how a lever works
-mathematically. The effort force, applied at Fe, lifts the load (the resistance force) which is pushing down at Fr. The triangular
-pivot is called the fulcrum; the part of the lever between the fulcrum and Fe is the effort arm, Le; and the part to the left is the
-resistance arm, Lr. The mechanical advantage is a number that tells us how many times a simple machine multiplies the effort
-force. The ideal mechanical advantage, IMA, is the mechanical advantage of a perfect machine with no loss of useful work
-caused by friction between moving parts. The equation for IMA is shown in Figure 9.7(b).
-Figure 9.7 (a) A pry bar is a type of lever. (b) The ideal mechanical advantage equals the length of the effort arm divided by the length of the
-resistance arm of a lever.
-In general, the IMA = the resistance force, Fr, divided by the effort force, Fe. IMA also equals the distance over which the effort is
-applied, de, divided by the distance the load travels, dr.
-Getting back to conservation of energy, for any simple machine, the work put into the machine, Wi, equals the work the
-machine puts out, Wo. Combining this with the information in the paragraphs above, we can write
-290
-Chapter 9 • Work, Energy, and Simple Machines
-Access for free at openstax.org.
+5.4: Learn with ePortfolios
+Many online courses include the opportunity to learn and demonstrate your learning with ePortfolios. To get started with your ePortfolio, you may need to learn to use an online tool: Mahara and WordPress are two commonly used tools. Though ePortfolio assignments differ from class to class, there are some advantages to producing portfolios — both for your classes, and to extend your professional learning. Eportfolios offer the following benefits:
+- By recording your learning regularly, you are able to show your growth as a learner and a professional over time.
+- Eportfolios allow you to show and reflect on your learning process. While other assignments focus on the final product, an eportfolio allows you to record reflections, weekly learnings, and to document the changes in your learning and practice over a semester.
+- The process of considering the content to include and the best way to present it is itself a learning experience. By consolidating your learning from different course activities and assignments, and applying your learning to your past experience, present personal goals, and future practice, you are engaging in meaningful life-long learning.
+- Eportfolios provide a record of your learning to present in applications for future study programs or employment. [1]
+Developing your eportfolio might require you to develop new technical skills in Mahara or WordPress. For information on using Mahara, download this PDF quick-start guide.
+-
+Fenwick, T. J., & Parsons, J. (2009). The art of evaluation: a resource for educators and trainers (2nd ed.). Toronto: Thompson Educational Publishing.
+↵
 
-The equations show how a simple machine can output the same amount of work while reducing the amount of effort force by
-increasing the distance over which the effort force is applied.
-WATCH PHYSICS
-Introduction to Mechanical Advantage
-This video shows how to calculate the IMA of a lever by three different methods: (1) from effort force and resistance force; (2)
-from the lengths of the lever arms, and; (3) from the distance over which the force is applied and the distance the load moves.
-Click to view content (https://www.youtube.com/embed/pfzJ-z5Ij48)
-GRASP CHECK
-Two children of different weights are riding a seesaw. How do they position themselves with respect to the pivot point (the
-fulcrum) so that they are balanced?
-a.
-The heavier child sits closer to the fulcrum.
-b.
-The heavier child sits farther from the fulcrum.
-c.
-Both children sit at equal distance from the fulcrum.
-d.
-Since both have different weights, they will never be in balance.
-Some levers exert a large force to a short effort arm. This results in a smaller force acting over a greater distance at the end of the
-resistance arm. Examples of this type of lever are baseball bats, hammers, and golf clubs. In another type of lever, the fulcrum is
-at the end of the lever and the load is in the middle, as in the design of a wheelbarrow.
-The simple machine shown in Figure 9.8 is called a wheel and axle. It is actually a form of lever. The difference is that the effort
-arm can rotate in a complete circle around the fulcrum, which is the center of the axle. Force applied to the outside of the wheel
-causes a greater force to be applied to the rope that is wrapped around the axle. As shown in the figure, the ideal mechanical
-advantage is calculated by dividing the radius of the wheel by the radius of the axle. Any crank-operated device is an example of
-a wheel and axle.
-Figure 9.8 Force applied to a wheel exerts a force on its axle.
-An inclined plane and a wedge are two forms of the same simple machine. A wedge is simply two inclined planes back to back.
-Figure 9.9 shows the simple formulas for calculating the IMAs of these machines. All sloping, paved surfaces for walking or
-driving are inclined planes. Knives and axe heads are examples of wedges.
-9.3 • Simple Machines
-291
+## Match 1.54 — LibreTexts: 10.7: How can teachers continue to learn throughout life?
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://socialsci.libretexts.org/Bookshelves/Education_and_Professional_Development/Foundations_of_Education_and_Instructional_Assessment_(Kidd_et_al.)/10%3A_Effective_Teaching/10.07%3A_How_can_teachers_continue_to_learn_throughout_life
 
-Figure 9.9 An inclined plane is shown on the left, and a wedge is shown on the right.
-The screw shown in Figure 9.10 is actually a lever attached to a circular inclined plane. Wood screws (of course) are also examples
-of screws. The lever part of these screws is a screw driver. In the formula for IMA, the distance between screw threads is called
-pitch and has the symbol P.
-Figure 9.10 The screw shown here is used to lift very heavy objects, like the corner of a car or a house a short distance.
-Figure 9.11 shows three different pulley systems. Of all simple machines, mechanical advantage is easiest to calculate for pulleys.
-Simply count the number of ropes supporting the load. That is the IMA. Once again we have to exert force over a longer distance
-to multiply force. To raise a load 1 meter with a pulley system you have to pull N meters of rope. Pulley systems are often used to
-raise flags and window blinds and are part of the mechanism of construction cranes.
-Figure 9.11 Three pulley systems are shown here.
-292
-Chapter 9 • Work, Energy, and Simple Machines
-Access for free at openstax.org.
+10.7: How can teachers continue to learn throughout life?
+-
+- Last updated
+- Save as PDF
+by Christa Portlock
+“Give a man a fish, feed him for a day. Teach a man to fish; feed him for a lifetime.” The founder of Taoism, Lao Tzu, spoke these words over 2000 years ago. (Smith, xi) Education is similar to this principle. For centuries students were “fed” information and taught to memorize facts, in the hope they would retain a portion of what was taught. Today it isn’t enough just to feed information to students. Our world is changing so fast that new information becomes available faster than it can be taught. If a nation wants to keep pace with this ever-changing world, then learning can’t stop at graduation. Students as well as teachers must learn “how to fish” for knowledge by becoming life long learners. Teachers can become life-long learners by realizing and acknowledging that life long-learning is a necessity; by learning to keep up with changes through personal and professional development; and by teaching with passion, inspiring young minds to see learning as something wonderful.
+Life-long Learning is a Necessity
+The last century has brought about an explosion of inventions, new technologies and new information about our world and universe. Teachers have had to keep up with all the new information and knowledge. What would it be like if they hadn’t? Picture a classroom somewhere in America. The teacher has been teaching for many years; she might be in her 50’s. That means she started teaching during the 1970s. Think back about 30 years. What were American schools like then? What kind of things would you have found in her first classroom? Classrooms in those days had chalkboards and pull-down maps. Some schools had TVs, film-and overhead projectors that were shared between classes and could be rolled into the room. Calculators existed but were generally not used in the classroom. Now imagine for a minute what it would be like if this teacher had not adapted to change. What would it be like if she had buried herself in her classroom, not furthered her learning, not embraced all the new technologies, events and discoveries? If she had not been a life-long learner, what would she have missed? What would she not have learned, embraced, and passed on to students? Think of the things that have happened in the past 35 years. She would have missed, among other things, the hostage crisis in the late 70’s, Presidents coming and going, this country at war more than once, the attack of 9/11. She would not have seen the Soviet Union collapse, would not have heard of Aids or global warming. She would not have known much, if anything, about DNA. She wouldn’t know how to use a personal computer, the internet or cell phones. It is easy to see that if we stand still the world will pass us by. We live in a global society that is changing at breathtaking speed. We need to adapt and change. Life-long learning is a necessity for everyone.
+Personal and Professional Development
+In order to keep up with our changing environment and to stay informed, teachers make a conscious effort to continue learning. They will take part in professional training through the school district or through classes taken at universities. Most teachers read books and professional journals to keep up with the newest information about child development. They read magazines, newspapers, watch the news and surf the internet to keep up with changes that happen around the world. Teachers attend workshops to keep up with technology, the newest teaching strategies, and classroom management techniques. They are eager to take in new information about our world and look for ways to improve their teaching practices in the classroom. Another way a teacher can improve and move forward is to learn more about him or herself. In the book Those Who can, Teach by Ryan Cooper, a teacher is likened to a sculptor who “begins with a vision of what he or she wants to be and then sets to work transforming the vision into a reality… The process requires an understanding of … self … it takes long hours of chipping away and then smoothing the surfaces… To be a teacher, particularly a teacher who is continuously moving forward, is a lifelong commitment …” (Cooper, 473) A sculptor needs time, patience and the ability to see beyond what is easily visible on the surface to create his work of art. A teacher uses those same qualities, just like a sculptor, to patiently reflect and look deep within him- or herself to see where changes could be made. At the end of a day it is helpful for a teacher to think deeply about the events of that day, to analyze him- or herself and therefore better understand and react to situations in the future. It is good to take time to remember happy events, a chance to feel content about good things that may have happened. Reflection can help a person to learn and adjust to his or her environment. As previously discussed, teachers have to become life-long learners and have to adjust to keep up with our ever-changing world through personal and professional development. They are however, not the only ones who need to keep pace with new information and technology. One of the reasons it is so important for teachers to stay informed, is so they can pass this new knowledge and information on to students.
+Teaching with Passion
+Note
+If we can have “students see our passions – it gives them proof that we enjoy learning.” (Thomas, 2007)
+Children have a sense of wonder when they are young. “Keeping the joy in learning should be a priority of every school and every teacher.” (Warner, 2006)If children can keep their sense of excitement about the world, they will love to learn and that original excitement and love of learning will most likely stay with them for life. To help keep the excitement alive, teachers aim to inspire young minds. They want their students to see how much fun learning can be. In the article “A Return to Community: Inquiry in Action” Ann H. MacKenzie wrote: “Life-long learning implies a buy-in curiosity about life... an insatiable desire to be alive in ‘the now, the future,’ and immersed in the teeming life surrounding us every moment.” (Thomas, 2007) If we can have “students see our passions – it gives them proof that we enjoy learning.” (Thomas, 2007) It is wonderful to see the sparks when students understand a concept and take off excited with their new-found knowledge. “We must model that inquisitiveness in the classrooms. Our students must see us involved in our own life-long learning… Watch us passionately immerse ourselves in our own curiosities.” (MacKenzie)
+When teachers model excitement about learning, students will see learning as something positive to be imitated. In turn they will hopefully become life-long learners themselves. Rafe Esquinth wrote an inspiring book entitled Teach Like Your Hair’s on Fire . He teaches in a “rough” Los Angeles neighborhood and found a way to inspire his students to learn, imagine, and eventually succeed in school. Esquinth relates a story about a day that didn’t start out well. In the course of that day he became so involved in teaching that unbeknownst to him, his hair caught on fire during an experiment. He was so involved in teaching, he didn’t even notice. That day he realized that the key to teaching was to become absorbed and excited about learning. He was determined from then on to make his goal to “teach like his hair is on fire”. (Esquinth, xii) If we can convey to students excitement about a subject, about learning, and about life we will teach as if our “hair is on fire”. That kind of excitement will inspire children to become life-long learners.
+Note
+“We must model that inquisitiveness in the classrooms. Our students must see us involved in our own life-long learning… Watch us passionately immerse ourselves in our own curiosities.” (MacKenzie)
+Conclusion
+As individuals and as citizens of a global economy we have to keep pace with our world. We must continue to learn and then pass our knowledge and love of learning on to the next generation. We have to inspire the next generation to find joy in continuous learning so that, even after leaving school, students will be prepared for this ever-changing world, ready to embrace a world filled with new, exciting things, ready to investigate and ready to keep learning, never giving up on their quest for knowledge. A fish is only one meal… we want to teach students to be excited about learning, excited about fishing for information; we want to give them the tools to become life-long fishermen for knowledge.
+Exercise \(\PageIndex{1}\)
+1)Does learning stop at graduation? Why?
+a)Yes, because there are too many other things to do.
+b)Yes, because learning makes hair catch on fire.
+c)No, because it’s important to keep up with our ever-changing world.
+d)Of course we stop learning at graduation! We’re done with school!
+2)What is an example of professional development for teachers?
+a)Reading articles about child development
+b)Attending workshops
+c)Keeping up with technology
+d)All of the above
+3)What is an important part of personal development for teachers?
+a)Developing a seventh sense
+b)Getting a pedicure
+c)Practicing reflection
+d)Joining a teacher’s organization
+4)How does the practice of reflection help a teacher?
+a)Reflection helps a teacher learn about him or herself.
+b)Reflection can help a teacher to learn about and adjust to his or her environment.
+c)It’s important for a teacher to see her own reflection to make sure she looks proper before entering the classroom.
+d)Both a and b.
+5)Why is it important to teach with passion?
+a)It gives children proof that we enjoy learning.
+b)It shows children that learning is something positive to be imitated.
+c)It keeps excitement about learning alive.
+d)All of the above.
+- Answer
+-
+1. c
+2. d
+3. c
+4. d
+5. d
+Reaction Paper
+My Thoughts About Life-long Learning
+by Christa Portlock
+Investigating life-long learning and what it means made me think about what it means to me as a student and as a prospective future teacher. To me the world has always been a very interesting, exciting, and beautiful place to investigate and to learn about. I can’t imagine what my life would be like without that wonder and appreciation about learning new things. Life is so much more stimulating, rich and pleasurable when we engage our minds, use our imagination and fill our hearts with the beauty that surrounds us. I would love to pass that excitement on to someone else. It would be exciting to spark the imagination of children and watch them find the same joy that I have always felt when learning something new. I know I have much to learn to be able to know how to best pass on knowledge, as well as excitement about learning. I am on a learning quest right now. I want to learn how to become that teacher who can create those sparks that light up a child’s eyes and light his or her path through life with inquisitiveness and excitement. I will spend the next few years in school learning all I can. I have spent much time in classrooms in the past, but from this time on I will be spending time in the classroom watching with different eyes. I will have chances to observe experienced teachers.  I know, however, that this is just the beginning of my journey. Most of my learning about teaching will come through the time spent in the classroom. I want to venture and say that many of my most profound lessons will be taught to me by my future students without them even knowing they’ve been teaching me. I am looking forward to those lessons and am excited about what is to come. As a teacher I will continue to learn. I will take advantage of the training opportunities offered to me and learn individually as well. I hope I will have the opportunity to work with a mentor, learning through observation. I am excited about all the new things to learn and embrace. Life-long learning goes beyond the time spent at school; it goes 
 
-WATCH PHYSICS
-Mechanical Advantage of Inclined Planes and Pulleys
-The first part of this video shows how to calculate the IMA of pulley systems. The last part shows how to calculate the IMA of an
-inclined plane.
-Click to view content (https://www.khanacademy.org/embed_video?v=vSsK7Rfa3yA)
-GRASP CHECK
-How could you use a pulley system to lift a light load to great height?
-a.
-Reduce the radius of the pulley.
-b.
-Increase the number of pulleys.
-c.
-Decrease the number of ropes supporting the load.
-d.
-Increase the number of ropes supporting the load.
-A complex machine is a combination of two or more simple machines. The wire cutters in Figure 9.12 combine two levers and
-two wedges. Bicycles include wheel and axles, levers, screws, and pulleys. Cars and other vehicles are combinations of many
-machines.
-Figure 9.12 Wire cutters are a common complex machine.
-Calculating Mechanical Advantage and Efficiency of Simple Machines
-In general, the IMA = the resistance force, Fr, divided by the effort force, Fe. IMA also equals the distance over which the effort is
-applied, de, divided by the distance the load travels, dr.
-Refer back to the discussions of each simple machine for the specific equations for the IMA for each type of machine.
-No simple or complex machines have the actual mechanical advantages calculated by the IMA equations. In real life, some of the
-applied work always ends up as wasted heat due to friction between moving parts. Both the input work (Wi) and output work
-(Wo) are the result of a force, F, acting over a distance, d.
-The efficiency output of a machine is simply the output work divided by the input work, and is usually multiplied by 100 so that
-it is expressed as a percent.
-Look back at the pictures of the simple machines and think about which would have the highest efficiency. Efficiency is related
-to friction, and friction depends on the smoothness of surfaces and on the area of the surfaces in contact. How would
-lubrication affect the efficiency of a simple machine?
-WORKED EXAMPLE
-Efficiency of a Lever
-The input force of 11 N acting on the effort arm of a lever moves 0.4 m, which lifts a 40 N weight resting on the resistance arm a
-9.3 • Simple Machines
-293
+## Match 1.54 — LibreTexts: 0.3: How to Learn Physics
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://phys.libretexts.org/Courses/University_of_California_Davis/UCD%3A_Classical_Mechanics/0%3A_Preliminaries/0.3%3A_How_to_Learn_Physics
 
-distance of 0.1 m. What is the efficiency of the machine?
-Strategy
-State the equation for efficiency of a simple machine,
-and calculate Wo and Wi. Both work values
-are the product Fd.
-Solution
-= (11)(0.4) = 4.4 J and
-= (40)(0.1) = 4.0 J, then
-Discussion
-Efficiency in real machines will always be less than 100 percent because of work that is converted to unavailable heat by friction
-and air resistance. Wo and Wi can always be calculated as a force multiplied by a distance, although these quantities are not
-always as obvious as they are in the case of a lever.
-Practice Problems
-10. What is the IMA of an inclined plane that is
-long and
-high?
-a.
-b.
-c.
-d.
-11. If a pulley system can lift a 200N load with an effort force of 52 N and has an efficiency of almost 100 percent, how many
-ropes are supporting the load?
-a.
-1 rope is required because the actual mechanical advantage is 0.26.
-b.
-1 rope is required because the actual mechanical advantage is 3.80.
-c.
-4 ropes are required because the actual mechanical advantage is 0.26.
-d.
-4 ropes are required because the actual mechanical advantage is 3.80.
-Check Your Understanding
-12. True or false—The efficiency of a simple machine is always less than 100 percent because some small fraction of the input
-work is always converted to heat energy due to friction.
-a.
-True
-b.
-False
-13. The circular handle of a faucet is attached to a rod that opens and closes a valve when the handle is turned. If the rod has a
-diameter of 1 cm and the IMA of the machine is 6, what is the radius of the handle?
-A.
-0.08 cm
-B.
-0.17 cm
-C.
-3.0 cm
-D.
-6.0 cm
-294
-Chapter 9 • Work, Energy, and Simple Machines
-Access for free at openstax.org.
-
-KEY TERMS
-complex machine
-a machine that combines two or more
-simple machines
-efficiency
-output work divided by input work
-energy
-the ability to do work
-gravitational potential energy
-energy acquired by doing
-work against gravity
-ideal mechanical advantage
-the mechanical advantage of
-an idealized machine that loses no energy to friction
-inclined plane
-a simple machine consisting of a slope
-input work
-effort force multiplied by the distance over
-which it is applied
-joule
-the metric unit for work and energy; equal to 1
-newton meter (N∙m)
-kinetic energy energy of motion
-law of conservation of energy
-states that energy is neither
-created nor destroyed
-lever
-a simple machine consisting of a rigid arm that pivots
-on a fulcrum
-mechanical advantage
-the number of times the input force
-is multiplied
-mechanical energy
-kinetic or potential energy
-output work
-output force multiplied by the distance over
-which it acts
-potential energy
-stored energy
-power
-the rate at which work is done
-pulley
-a simple machine consisting of a rope that passes
-over one or more grooved wheels
-screw
-a simple machine consisting of a spiral inclined
-plane
-simple machine
-a machine that makes work easier by
-changing the amount or direction of force required to
-move an object
-watt
-the metric unit of power; equivalent to joules per
-second
-wedge
-a simple machine consisting of two back-to-back
-inclined planes
-wheel and axle
-a simple machine consisting of a rod fixed
-to the center of a wheel
-work
-force multiplied by distance
-work–energy theorem
-states that the net work done on a
-system equals the change in kinetic energy
-SECTION SUMMARY
-
-## Match 1.53 — APCollegePhysics-OP_js6ZFp7 § 9.5 Simple Machines
-
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Describe different simple machines.
-•
-Calculate the mechanical advantage.
-The information presented in this section supports the following AP® learning objectives and science practices:
-•
-3.F.1.1 The student is able to use representations of the relationship between force and torque. (S.P. 1.4)
-•
-3.F.1.2 The student is able to compare the torques on an object caused by various forces. (S.P. 1.4)
-•
-3.F.1.3 The student is able to estimate the torque on an object caused by various forces in comparison to other
-situations. (S.P. 2.3)
-•
-3.F.1.5 The student is able to calculate torques on a two-dimensional system in static equilibrium, by examining a
-representation or model (such as a diagram or physical construction). (S.P. 1.4, 2.2)
-Simple machines are devices that can be used to multiply or augment a force that we apply – often at the expense of a distance
-through which we apply the force. The word for “machine” comes from the Greek word meaning “to help make things easier.”
-Levers, gears, pulleys, wedges, and screws are some examples of machines. Energy is still conserved for these devices
-because a machine cannot do more work than the energy put into it. However, machines can reduce the input force that is
-needed to perform the job. The ratio of output to input force magnitudes for any simple machine is called its mechanical
-advantage (MA).
-Chapter 9 | Statics and Torque
-375
-
-(9.29)
-MA = Fo
-Fi
-One of the simplest machines is the lever, which is a rigid bar pivoted at a fixed place called the fulcrum. Torques are involved in
-levers, since there is rotation about a pivot point. Distances from the physical pivot of the lever are crucial, and we can obtain a
-useful expression for the MA in terms of these distances.
-Figure 9.24 A nail puller is a lever with a large mechanical advantage. The external forces on the nail puller are represented by solid arrows. The force
-that the nail puller applies to the nail ( Fo ) is not a force on the nail puller. The reaction force the nail exerts back on the puller ( Fn ) is an external
-force and is equal and opposite to Fo . The perpendicular lever arms of the input and output forces are li and l0 .
-Figure 9.24 shows a lever type that is used as a nail puller. Crowbars, seesaws, and other such levers are all analogous to this
-one. Fi is the input force and Fo is the output force. There are three vertical forces acting on the nail puller (the system of
-interest) – these are Fi , Fo , and N . Fn is the reaction force back on the system, equal and opposite to Fo . (Note that Fo
-is not a force on the system.) N is the normal force upon the lever, and its torque is zero since it is exerted at the pivot. The
-torques due to Fi and Fn must be equal to each other if the nail is not moving, to satisfy the second condition for equilibrium
-(net τ = 0) . (In order for the nail to actually move, the torque due to Fi must be ever-so-slightly greater than torque due to
-Fn .) Hence,
-(9.30)
-liFi = loFo
-where li and lo are the distances from where the input and output forces are applied to the pivot, as shown in the figure.
-Rearranging the last equation gives
-(9.31)
-Fo
-Fi
-= li
-lo.
-What interests us most here is that the magnitude of the force exerted by the nail puller, Fo , is much greater than the magnitude
-of the input force applied to the puller at the other end, Fi . For the nail puller,
-(9.32)
-MA = Fo
-Fi
-= li
-lo.
-This equation is true for levers in general. For the nail puller, the MA is certainly greater than one. The longer the handle on the
-nail puller, the greater the force you can exert with it.
-Two other types of levers that differ slightly from the nail puller are a wheelbarrow and a shovel, shown in Figure 9.25. All these
-lever types are similar in that only three forces are involved – the input force, the output force, and the force on the pivot – and
-thus their MAs are given by MA = Fo
-Fi
-and MA = d1
-d2
-, with distances being measured relative to the physical pivot. The
-wheelbarrow and shovel differ from the nail puller because both the input and output forces are on the same side of the pivot.
-In the case of the wheelbarrow, the output force or load is between the pivot (the wheel's axle) and the input or applied force. In
-the case of the shovel, the input force is between the pivot (at the end of the handle) and the load, but the input lever arm is
-376
-Chapter 9 | Statics and Torque
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-shorter than the output lever arm. In this case, the MA is less than one.
-Figure 9.25 (a) In the case of the wheelbarrow, the output force or load is between the pivot and the input force. The pivot is the wheel's axle. Here, the
-output force is greater than the input force. Thus, a wheelbarrow enables you to lift much heavier loads than you could with your body alone. (b) In the
-case of the shovel, the input force is between the pivot and the load, but the input lever arm is shorter than the output lever arm. The pivot is at the
-handle held by the right hand. Here, the output force (supporting the shovel's load) is less than the input force (from the hand nearest the load),
-because the input is exerted closer to the pivot than is the output.
-Example 9.3 What is the Advantage for the Wheelbarrow?
-In the wheelbarrow of Figure 9.25, the load has a perpendicular lever arm of 7.50 cm, while the hands have a perpendicular
-lever arm of 1.02 m. (a) What upward force must you exert to support the wheelbarrow and its load if their combined mass is
-45.0 kg? (b) What force does the wheelbarrow exert on the ground?
-Strategy
-Here, we use the concept of mechanical advantage.
-Solution
-(a) In this case, Fo
-Fi
-= li
-lo
-becomes
-(9.33)
-Fi = Folo
-li
-.
-Adding values into this equation yields
-(9.34)
-Fi =
-⎛
-⎝45.0 kg
-⎞
-⎠⎛
-⎝9.80 m/s2⎞
-⎠0.075 m
-1.02 m = 32.4 N.
-The free-body diagram (see Figure 9.25) gives the following normal force: Fi + N = W . Therefore,
-N = (45.0 kg)⎛
-⎝9.80 m/s2⎞
-⎠ − 32.4 N = 409 N . N is the normal force acting on the wheel; by Newton's third law, the
-force the wheel exerts on the ground is 409 N .
-Discussion
-An even longer handle would reduce the force needed to lift the load. The MA here is MA = 1.02 / 0.0750 = 13.6 .
-Another very simple machine is the inclined plane. Pushing a cart up a plane is easier than lifting the same cart straight up to the
-top using a ladder, because the applied force is less. However, the work done in both cases (assuming the work done by friction
-is negligible) is the same. Inclined lanes or ramps were probably used during the construction of the Egyptian pyramids to move
-large blocks of stone to the top.
-Chapter 9 | Statics and Torque
-377
-
-A crank is a lever that can be rotated 360º about its pivot, as shown in Figure 9.26. Such a machine may not look like a lever,
-but the physics of its actions remain the same. The MA for a crank is simply the ratio of the radii ri / r0 . Wheels and gears have
-this simple expression for their MAs too. The MA can be greater than 1, as it is for the crank, or less than 1, as it is for the
-simplified car axle driving the wheels, as shown. If the axle's radius is 2.0 cm and the wheel's radius is 24.0 cm , then
-MA = 2.0 / 24.0 = 0.083 and the axle would have to exert a force of 12,000 N on the wheel to enable it to exert a force of
-1000 N on the ground.
-Figure 9.26 (a) A crank is a type of lever that can be rotated 360º about its pivot. Cranks are usually designed to have a large MA. (b) A simplified
-automobile axle drives a wheel, which has a much larger diameter than the axle. The MA is less than 1. (c) An ordinary pulley is used to lift a heavy
-load. The pulley changes the direction of the force T exerted by the cord without changing its magnitude. Hence, this machine has an MA of 1.
-An ordinary pulley has an MA of 1; it only changes the direction of the force and not its magnitude. Combinations of pulleys, such
-as those illustrated in Figure 9.27, are used to multiply force. If the pulleys are friction-free, then the force output is
-approximately an integral multiple of the tension in the cable. The number of cables pulling directly upward on the system of
-interest, as illustrated in the figures given below, is approximately the MA of the pulley system. Since each attachment applies an
-external force in approximately the same direction as the others, they add, producing a total force that is nearly an integral
-multiple of the input force T .
-378
-Chapter 9 | Statics and Torque
-This OpenStax book is available for free at http://cnx.org/content/col11844/1.14
-
-Figure 9.27 (a) The combination of pulleys is used to multiply force. The force is an integral multiple of tension if the pulleys are frictionless. This pulley
-system has two cables attached to its load, thus applying a force of approximately 2T . This machine has MA ≈ 2 . (b) Three pulleys are used to
-lift a load in such a way that the mechanical advantage is about 3. Effectively, there are three cables attached to the load. (c) This pulley system
-applies a force of 4T , so that it has MA ≈ 4 . Effectively, four cables are pulling on the system of interest.
-
-## Match 1.52 — College_Physics_2e-WEB_7Zesafu § 9.5 Simple Machines
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe different simple machines.
-•
-Calculate the mechanical advantage.
-Simple machines are devices that can be used to multiply or augment a force that we apply – often at the expense of
-a distance through which we apply the force. The word for “machine” comes from the Greek word meaning “to help
-make things easier.” Levers, gears, pulleys, wedges, and screws are some examples of machines. Energy is still
-conserved for these devices because a machine cannot do more work than the energy put into it. However,
-machines can reduce the input force that is needed to perform the job. The ratio of output to input force magnitudes
-for any simple machine is called its mechanical advantage (MA).
-One of the simplest machines is the lever, which is a rigid bar pivoted at a fixed place called the fulcrum. Torques are
-involved in levers, since there is rotation about a pivot point. Distances from the physical pivot of the lever are
-crucial, and we can obtain a useful expression for the MA in terms of these distances.
-FIGURE 9.21 A nail puller is a lever with a large mechanical advantage. The external forces on the nail puller are represented by solid
-arrows. The force that the nail puller applies to the nail (
-) is not a force on the nail puller. The reaction force the nail exerts back on the
-puller (
-) is an external force and is equal and opposite to
-. The perpendicular lever arms of the input and output forces are
-and
-.
-Figure 9.21 shows a lever type that is used as a nail puller. Crowbars, seesaws, and other such levers are all
-analogous to this one.
-is the input force and
-is the output force. There are three vertical forces acting on the
-nail puller (the system of interest) – these are
-and
-.
-is the reaction force back on the system, equal and
-opposite to
-. (Note that
-is not a force on the system.)
-is the normal force upon the lever, and its torque is
-zero since it is exerted at the pivot. The torques due to
-and
-must be equal to each other if the nail is not
-moving, to satisfy the second condition for equilibrium
-. (In order for the nail to actually move, the torque
-due to
-must be ever-so-slightly greater than torque due to
-.) Hence,
-Notice that
-is the distance from the pivot point to the point where the input force
-is applied, and
-(not
-labeled on the diagram) is the distance from the pivot point to the point where the output force
-is applied. The
-distances
-and
-are the perpendicular components of the distances from where the input and output forces are
-applied to the pivot, as shown in the figure. Rearranging the last equation gives
-9.29
-9.30
-372
-9 • Statics and Torque
-Access for free at openstax.org
-
-What interests us most here is that the magnitude of the force exerted by the nail puller,
-, is much greater than
-the magnitude of the input force applied to the puller at the other end,
-. For the nail puller,
-This equation is true for levers in general. For the nail puller, the MA is certainly greater than one. The longer the
-handle on the nail puller, the greater the force you can exert with it.
-Two other types of levers that differ slightly from the nail puller are a wheelbarrow and a shovel, shown in Figure
-9.22. All these lever types are similar in that only three forces are involved – the input force, the output force, and
-the force on the pivot – and thus their MAs are given by
-and
-, with distances being measured
-relative to the physical pivot. The wheelbarrow and shovel differ from the nail puller because both the input and
-output forces are on the same side of the pivot.
-In the case of the wheelbarrow, the output force or load is between the pivot (the wheel’s axle) and the input or
-applied force. In the case of the shovel, the input force is between the pivot (at the end of the handle) and the load,
-but the input lever arm is shorter than the output lever arm. In this case, the MA is less than one.
-FIGURE 9.22 (a) In the case of the wheelbarrow, the output force or load is between the pivot and the input force. The pivot is the wheel’s
-axle. Here, the output force is greater than the input force. Thus, a wheelbarrow enables you to lift much heavier loads than you could with
-your body alone. (b) In the case of the shovel, the input force is between the pivot and the load, but the input lever arm is shorter than the
-output lever arm. The pivot is at the handle held by the right hand. Here, the output force (supporting the shovel’s load) is less than the
-input force (from the hand nearest the load), because the input is exerted closer to the pivot than is the output.
-EXAMPLE 9.3
-What is the Advantage for the Wheelbarrow?
-In the wheelbarrow of Figure 9.22, the load has a perpendicular lever arm of 7.50 cm, while the hands have a
-perpendicular lever arm of 1.02 m. (a) What upward force must you exert to support the wheelbarrow and its load if
-their combined mass is 45.0 kg? (b) What force does the wheelbarrow exert on the ground?
-9.31
-9.32
-9.5 • Simple Machines
-373
-
-Strategy
-Here, we use the concept of mechanical advantage.
-Solution
-(a) In this case,
-becomes
-Adding values into this equation yields
-The free-body diagram (see Figure 9.22) gives the following normal force:
-. Therefore,
-.
-is the normal force acting on the wheel; by Newton’s third law, the
-force the wheel exerts on the ground is
-.
-Discussion
-An even longer handle would reduce the force needed to lift the load. The MA here is
-.
-Another very simple machine is the inclined plane. Pushing a cart up a plane is easier than lifting the same cart
-straight up to the top using a ladder, because the applied force is less. However, the work done in both cases
-(assuming the work done by friction is negligible) is the same. Inclined lanes or ramps were probably used during
-the construction of the Egyptian pyramids to move large blocks of stone to the top.
-A crank is a lever that can be rotated
-about its pivot, as shown in Figure 9.23. Such a machine may not look like
-a lever, but the physics of its actions remain the same. The MA for a crank is simply the ratio of the radii
-.
-Wheels and gears have this simple expression for their MAs too. The MA can be greater than 1, as it is for the crank,
-or less than 1, as it is for the simplified car axle driving the wheels, as shown. If the axle’s radius is
-and the
-wheel’s radius is
-, then
-and the axle would have to exert a force of
-on
-the wheel to enable it to exert a force of
-on the ground.
-9.33
-9.34
-374
-9 • Statics and Torque
-Access for free at openstax.org
-
-FIGURE 9.23 (a) A crank is a type of lever that can be rotated
-about its pivot. Cranks are usually designed to have a large MA. (b) A
-simplified automobile axle drives a wheel, which has a much larger diameter than the axle. The MA is less than 1. (c) An ordinary pulley is
-used to lift a heavy load. The pulley changes the direction of the force
-exerted by the cord without changing its magnitude. Hence, this
-machine has an MA of 1.
-An ordinary pulley has an MA of 1; it only changes the direction of the force and not its magnitude. Combinations of
-pulleys, such as those illustrated in Figure 9.24, are used to multiply force. If the pulleys are friction-free, then the
-force output is approximately an integral multiple of the tension in the cable. The number of cables pulling directly
-upward on the system of interest, as illustrated in the figures given below, is approximately the MA of the pulley
-system. Since each attachment applies an external force in approximately the same direction as the others, they
-add, producing a total force that is nearly an integral multiple of the input force
-.
-FIGURE 9.24 (a) The combination of pulleys is used to multiply force. The force is an integral multiple of tension if the pulleys are
-9.5 • Simple Machines
-375
-
-frictionless. This pulley system has two cables attached to its load, thus applying a force of approximately
-. This machine has
-.
-(b) Three pulleys are used to lift a load in such a way that the mechanical advantage is about 3. Effectively, there are three cables attached
-to the load. (c) This pulley system applies a force of
-, so that it has
-. Effectively, four cables are pulling on the system of interest.
+0.3: How to Learn Physics
+No Shortcuts, No Memorizing
+In previous sections we discussed the importance of taking a class in physics, and why a true physics class is so challenging. Here we will try to put together what we learned there to come up with an effective way to get through this daunting task of learning physics.
+The first most important principle we need to embrace is that there is no easy path. Trying to gain an understanding of physics (or really, anything) without engaging in it fully is a losing battle. If you want to build muscle by lifting weights, you won't do so by watching videos of other people lifting those weights – you have to get in there and do it yourself.
+Students in physics classes tend to focus too much on having problem solutions to study from. Sample problems are only valuable for those that struggle with them. They are worthless if all they are used for is to "study" their solutions. In this case, the word "study" is just a euphemism for "memorize," and indeed physics study shortcuts all boil down to memorization. Going back to the weightlifting analogy, if the weight is lifted for you, and then handed to you to hold up, it may feel like you are accomplishing something (it is not trivial to hold it up), but this does not exercise your muscles. And a physics class, properly taught, seeks to test your "physics muscles," not your ability to regurgitate what you have seen before.
+So in the way of study advice, the point is this: Avoid looking at solutions as much as possible! Derive the maximum benefit by putting in your own effort. Even those times you fail to completely figure something out (and you will – physics is hard!), you will learn more than you will by avoiding this discomfort by jumping to the solutions. This is not to say that the solutions are not helpful – but like a spotter that helps you when you lift weights, the less you rely on them, the better.
+Deliberate Practice
+In the last couple decades a lot of stuff has been written about effective training of athletes and the achievement of expertise in general. One idea that has really taken hold is the idea of deliberate practice . Perhaps you have heard the claim that to become elite in some pursuit, one needs to invest on the order of 10,000 hours of practice? The number seems to be what gets all the attention, but what often gets lost in discussion is the form that this practice needs to take. For example, a player learning to hit a baseball better will not achieve the goal of elite hitter simply by spending 10,000 hours in a batting cage. Rather, those hours need to include reducing proper hitting technique to its infinitesimal constituent parts: Hours need to be spent on getting the swing-plane of the bat to the correct angle, getting hip rotation right, achieving proper weight transfer, and so on. And many more hours are needed to combine these tiny pieces together properly into an integrated swing. This deliberate practice of components is what those 10,000 hours must be comprised of, and coaching from someone knowledgeable about these things is pretty much a necessity.
+Now of course you will not have anything close to 10,000 hours available, but the goal here is to get a fruitful first exposure to physics, not become an elite practitioner. But the idea of deliberate practice is still an important one, no matter what the scale of the numbers of hours may be. Fortunately, you have an instructor, teaching assistants, and even this textbook to serve as "coaches" to help direct you through this practice. But the responsibility of maintaining the discipline necessary to do this right is on you, the student.
+You will find that there are many tools or templates offered during this and future physics courses that are intended to get you through problem solving. To employ deliberate practice in the context of these tools and template means that you should spend some time getting good at these without regard to your success in solving the problem itself . For example, one of the most important tools in this class on mechanics is called the "free-body diagram." A short amount of time is dedicated to teaching you how to draw one of these, but they are a critical part of solving so many different kinds of problems. Most students invest a short time on learning to do these, and move on well before mastering them – they focus much more on getting the answer to the problem, and hardly at all on getting this step right. Often when a problem is stated, if it does not include an explicit step that says, "draw a careful free-body diagram," many students will not bother to do so, or if they do it will be very crude and incomplete – they jump straight to writing down equations, and inevitably get things wrong. Free-body diagrams are not just "busy work" at the start of a problem – drawing them requires deep conceptual thought that is necessary for avoiding misconceptions and modeling the math properly.  Time must be spent on these components, or the whole pursuit fails.
+When in doubt as to whether you are applying proper focus on components when doing practice physics problems, simply remind yourself that your goal needs to be to get better at the process, not to get the right answer.
+Embrace the Big Picture
+Suppose you watch dozens of scenes from a movie, and are later asked to answer some questions about them. Hopefully it is clear that putting them into the context of the movie plot makes them easier to understand and easier to recall details than if they are viewed in random order and out of context. This is a general feature of human understanding – we are better at remembering details and extrapolating conclusions when the information is organized into a contextual framework. The same is true about physics. It's not always easy to see the bigger picture when struggling to understand specific concepts and nuanced mathematical models, but striving to do so can itself help one to overcome those struggles with the details.
+Put more succinctly: The best way to learn new ideas in physics is to relate them back to things you already understand. If some new topic seems utterly disjoint from what you have learned already, then you know there is something you are missing, and it is an indication that you need to delve in further. A good instructor will do their best to segue from one subject to the next, so that a big picture is developed. But if this doesn't happen, or if you are unable to grasp the connections the instructor is trying to make, then it is worth your time to go back and make those connections yourself.
+Students that have a disjointed understanding of physics feel like a useful approach to studying the subject is to do as many different practice problems as they can. There goal is to commit to memory as many different "tricks" as they can find, in the hope that the exam will involve a trick they have memorized. This approach is utterly ineffective in a properly-taught class that emphasizes understanding over memorization. Practice problems are helpful, but the emphasis should not be on how they are different (the "tricks"), but how they are the same . Once it is clear what elements a wide variety of problems have in common, seeing the big picture is easier, and one can focus their deliberate practice of those common elements. This is the path to success – building a simple, understandable, mental big-picture, and mastering the fundamental tools that go with it.
+Doing Sample Problems
+One of the most common pieces of advice given for studying physics is to "carpet bomb" your brain by doing countless sample problems. This is only half-true, and the fact that most people that give this advice seem to think it is some sort of magic pill shows that they don't understand the importance of the word "deliberate" in "deliberate practice". What unfortunately typically plays out for the unsuspecting student who follows this advice is this:
+- Finds a new problem to solve.
+-
+EITHER:
+- Solves it quickly and correctly so it was of no benefit, as nothing new was learned.
+-
+OR:
+- Gets stuck early, as it challenging.
+- Rather than struggling too much with the problem, decides not to "waste time" with blind alleys, and simply peeks at the solutions.
+- The solution makes sense, so after reading it, feels like they have learned something.
+- Repeats cycle.
+This cycle of "just doing lots of practice problems" is utterly useless for learning physics, and when the student that follows the advice in this way can't seem to solve any exam problems, they are understandably frustrated that so many hours of practice were not effective. That's the tragedy of this advice – it is so incomplete and deceptively simple that it frequently leads to lots of wasted hours of work that could have been better-spent.
+One might ask, "If this is all true, why do so many people that have been successful in their study of physics give this advice?" The answer depends upon which category of two categories the adviser belongs to. If it is a practicing physicist, then it is likely in their nature not to quickly resort to looking at solutions. They don't mind "wasting their time" with blind alleys – getting unstuck by themselves is the "fun part".
+If it is a fellow student that is claiming that this strategy got them through a class, and they are not of the same mentality described above for the practicing physicist, then the odds are that what made them successful was poor examinations.  When this is done, "practicing" by studying the solutions to a large number of sample problems is effective for the test-taking, because memorization is key. Unfortunately, this teaching practice is more common than it should be, and leads to lots of students believing they have learned more than they really have. This does not lead to success down the road, when a robust understanding of physics (and physics problem-solving) is needed, and the short-term memorization from the previously-taken class is useless. The general rule is, if your physics course (and particularly the exams) are easy, then it's not because the instructor is good at teaching it to you (no one can actually "make physics easy") – it's because they are actually not asking you (with their exams) to demonstrate that you have learned anything of any value. And usually, when exams don't require that students learn anything, students don't take the appropriate steps to do so.
+Using This Textbook's Sample Problems
+This textbook provides you with sample problems to help you get in your deliberate practice, and they are constructed to help you avoid the "study the solutions" pitfall described above. These sample problems come in two parts. The first part (given in the body of a chapter) provides only the physical situation, where you are asked to simply "analyze". There is no question for you to answer here – just flex your muscles with extracting as much as you can from what has been given. The second part of the sample problem appears at the end of the chapter, and it is a question that accompanies the physical situation given earlier. The reason for this split will be explained below, but here is the most effective use of these sample problems:
+- Do as much of the analysis as you possibly can without looking at the analysis provided in the textbook. Write this analysis down on a piece of paper – don't just think this through in your head! This is very important.
+- Open the analysis window to see what analysis has been provided for you. See if the analysis you did matches what is there, and make notes on your piece of paper about where you went wrong. Add notes to this piece of paper that describe in your own words any parts of the analysis that you overlooked that was provided by the textbook.
+- Go to the question at the end of the chapter, and try to solve it, referring to the notes you have written on your piece of paper.
+So why the split? In the analysis stage, without an end goal o

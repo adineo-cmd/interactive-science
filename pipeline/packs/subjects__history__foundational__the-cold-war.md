@@ -345,80 +345,33 @@ under a democratic, pro-capitalist government. The Soviet Union also feared the 
 Berlin, located entirely within the Soviet sector. Three days after the western allies authorized the introduction
 of a new currency in Western Germany—the Deutsche Mark—Stalin ordered all land and water 
 
-## Match 3.03 — Introduction_to_Political_Science_-_WEB § 16.4 The Post–Cold War Period and Modernization Theory
+## Match 3.04 — LibreTexts: 28.2: The Cold War
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://human.libretexts.org/Bookshelves/History/National_History/U.S._History_(OpenStax)/28%3A_Post-War_Prosperity_and_Cold_War_Fears_1945-1960/28.02%3A_The_Cold_War
 
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Describe changes inaugurated with the end of the Cold War.
-•
-Explain key tenets of modernization theory.
-•
-Cite a counterargument to modernization theory.
-From its beginning in the late 19th century until the end of the Cold War in 1989, international political
-economy was almost exclusively focused on the world’s international financial powers—liberal democracies in
-Western European countries and the United States. The majority of the research and discussions in the field
-did not include countries in regions that had different political and economic systems. Even when these other
-countries participated in international relations, as was the case in the Bretton Woods conference, they were
-considered mere spectators. The preferences of Western financial powers dominated the agenda.41
-MEET A PROFESSIONAL
-16.4 • The Post–Cold War Period and Modernization Theory
-519
-
-During the Cold War, economic transactions between the East and the West were very rare. Western liberal
-democracies interacted among themselves, and Eastern socialist republics did the same. The majority of
-international trade took place between the United States and European countries. However, the end of the Cold
-War highlighted the economic and political issues countries in other regions of the world, such as formerly
-communist and Latin American countries, were facing. With the end of the Cold War, the focus of IPE shifted
-from an exclusive interest in developed Western nations to promoting development across developing
-countries in different regions. Since the late 1940s, modernization theorists had been searching for ways to
-bring economic growth and democracy to developing societies.
-FIGURE 16.5 Oneida Gómez holds a coffee plant in the nursery she has planted with the help of Blue Harvest, a
-Catholic Relief Services partnership with Keurig Dr Pepper and the Inter-American Development Bank’s SAFE
-Platform that aims to improve the water supply to help the agricultural economy in El Salvador. This is just one
-example of a huge number of development projects in the post–Cold War era. (credit: “Blue Harvest El Salvador” by
-Maren Barbee/Flickr, Public Domain)
-Modernization theorist Seymour Martin Lipset was one of the first to propose a link between economic
-development and democracy. He argued that improved wealth and education levels would create the right
-conditions for the establishment of democratic institutions.42 Once people with low socioeconomic status are
-given access to education, Lipset contended, they become less committed to their existing ideologies and less
-isolated from people of other socioeconomic statuses. As these groups become more educated and politically
-active, they become part of the middle class, and as the middle class increases, it pushes for democratic
-institutions.
-In general, the key argument of modernization theory is that economic growth promotes structural changes
-in society that lead to increased political representation and, eventually, to the establishment of democratic
-institutions. Nevertheless, even though most developed countries are democracies, it is difficult to establish a
-causal mechanism, or a link, between economic growth and democratic institutions.
-UCLA emeritus professor Barbara Geddes, a political scientist who has examined developing societies for over
-20 years, contends that modernization is the most empirically supported hypothesis about the suitable
-conditions for democratization.43 Similarly, University of Chicago professor James A. Robinson has found
-statistical evidence indicating that economic development is highly correlated with democratization, even
-though the exact mechanism by which economic growth spurs democracy has not yet been uncovered.44
-VIDEO
-Why Does Democracy Matter for Development?
-Click to view content (https://openstax.org/books/introduction-political-science/pages/16-4-the-postcold-war-
-520
-16 • International Political Economy
-Access for free at openstax.org
-
-period-and-modernization-theory)
-At the Annual Democracy Forum 2014 in Gaborone, Botswana, Devex Associate Editor Richard Jones asked
-experts and high-level officials why democracy matters for development.
-New York University professor Adam Przeworski and Fundação Getúlio Vargas professor Fernando Limongi,
-two other prominent modernization scholars, argue that the impact of economic development in a society is so
-strong that once a country reaches a certain threshold of growth, a democratic regime will always survive.
-These scholars offer a metaphor to explain this relationship, suggesting that if modernization is a long walk,
-democracy is only the final step. In their empirical analyses, they find that transitions to democracy occur
-independently of the level of economic development (or high per capita income levels); however, once a
-transition happens, countries with higher levels of economic development tend to remain democratic.45
-Considering the difficulty of finding the causal mechanism between economic development and democracy,
-MIT professor Daron Acemoglu and colleagues have reevaluated the modernization hypothesis. They find that
-most studies that claim to have found a connection between economic development and democracy fail to
-account for relevant variables. They argue that events during critical historical moments lead to divergent
-economic and political outcomes—either promoting economic development and democracy or leading to
-poverty and authoritarianism. Thus, these scholars believe that these critical historical moments are an
-underlying cause of economic development and democracy.46
-The core debate in modernization theory has not been solved. While developing countries, with the support of
-international institutions such as the IMF, World Bank, and WTO, continue to pursue economic development,
-given the unwanted consequences of the market economy, the focus has shifted from development to
-sustainable development.
+28.2: The Cold War
+As World War II drew to a close, the alliance that had made the United States and the Soviet Union partners in their defeat of the Axis powers—Germany, Italy, and Japan—began to fall apart. Both sides realized that their visions for the future of Europe and the world were incompatible. Joseph Stalin, the premier of the Soviet Union, wished to retain hold of Eastern Europe and establish Communist, pro-Soviet governments there, in an effort to both expand Soviet influence and protect the Soviet Union from future invasions. He also sought to bring Communist revolution to Asia and to developing nations elsewhere in the world. The United States wanted to expand its influence as well by protecting or installing democratic governments throughout the world. It sought to combat the influence of the Soviet Union by forming alliances with Asian, African, and Latin American nations, and by helping these countries to establish or expand prosperous, free-market economies. The end of the war left the industrialized nations of Europe and Asia physically devastated and economically exhausted by years of invasion, battle, and bombardment. With Great Britain, France, Germany, Italy, Japan, and China reduced to shadows of their former selves, the United States and the Soviet Union emerged as the last two superpowers and quickly found themselves locked in a contest for military, economic, social, technological, and ideological supremacy.
+FROM ISOLATIONISM TO ENGAGEMENT
+The United States had a long history of avoiding foreign alliances that might require the commitment of its troops abroad. However, in accepting the realities of the post-World War II world, in which traditional powers like Great Britain or France were no longer strong enough to police the globe, the United States realized that it would have to make a permanent change in its foreign policy, shifting from relative isolation to active engagement.
+On assuming the office of president upon the death of Franklin Roosevelt, Harry Truman was already troubled by Soviet actions in Europe. He disliked the concessions made by Roosevelt at Yalta, which had allowed the Soviet Union to install a Communist government in Poland. At the Potsdam conference, held from July 17 to August 2, 1945, Truman also opposed Stalin’s plans to demand large reparations from Germany. He feared the burden that this would impose on Germany might lead to another cycle of German rearmament and aggression—a fear based on that nation’s development after World War I (Figure 28.2.1).
+Although the United States and the Soviet Union did finally reach an agreement at Potsdam, this was the final occasion on which they cooperated for quite some time. Each remained convinced that its own economic and political systems were superior to the other’s, and the two superpowers quickly found themselves drawn into conflict. The decades-long struggle between them for technological and ideological supremacy became known as the Cold War. So called because it did not include direct military confrontation between Soviet and U.S. troops, the Cold War was fought with a variety of other weapons: espionage and surveillance, political assassinations, propaganda, and the formation of alliances with other nations. It also became an arms race, as both countries competed to build the greatest stockpile of nuclear weapons, and also competed for influence in poorer nations, supporting opposite sides in wars in some of those nations, such as Korea and Vietnam.
+CONTAINMENT ABROAD
+In February 1946, George Kennan, a State Department official stationed at the U.S. embassy in Moscow, sent an eight-thousand-word message to Washington, DC. In what became known as the “Long Telegram,” Kennan maintained that Soviet leaders believed that the only way to protect the Soviet Union was to destroy “rival” nations and their influence over weaker nations. According to Kennan, the Soviet Union was not so much a revolutionary regime as a totalitarian bureaucracy that was unable to accept the prospect of a peaceful coexistence of the United States and itself. He advised that the best way to thwart Soviet plans for the world was to contain Soviet influence—primarily through economic policy—to those places where it already existed and prevent its political expansion into new areas. This strategy, which came to be known as the policy of containment, formed the basis for U.S. foreign policy and military decision making for more than thirty years.
+As Communist governments came to power elsewhere in the world, American policymakers extended their strategy of containment to what became known as the domino theory under the Eisenhower administration: Neighbors to Communist nations, so was the assumption, were likely to succumb to the same allegedly dangerous and infectious ideology. Like dominos toppling one another, entire regions would eventually be controlled by the Soviets. The demand for anti-Communist containment appeared as early as March 1946 in a speech by Winston Churchill, in which he referred to an Iron Curtain that divided Europe into the “free” West and the Communist East controlled by the Soviet Union.
+The commitment to containing Soviet expansion made necessary the ability to mount a strong military offense and defense. In pursuit of this goal, the U.S. military was reorganized under the National Security Act of 1947. This act streamlined the government in matters of security by creating the National Security Council and establishing the Central Intelligence Agency (CIA) to conduct surveillance and espionage in foreign nations. It also created the Department of the Air Force, which was combined with the Departments of the Army and Navy in 1949 to form one Department of Defense.
+The Truman Doctrine
+In Europe, the end of World War II witnessed the rise of a number of internal struggles for control of countries that had been occupied by Nazi Germany. Great Britain occupied Greece as the Nazi regime there collapsed. The British aided the authoritarian government of Greece in its battles against Greek Communists. In March 1947, Great Britain announced that it could no longer afford the cost of supporting government military activities and withdrew from participation in the Greek civil war. Stepping into this power vacuum, the United States announced the Truman Doctrine, which offered support to Greece and Turkey in the form of financial assistance, weaponry, and troops to help train their militaries and bolster their governments against Communism. Eventually, the program was expanded to include any state trying to withstand a Communist takeover. The Truman Doctrine thus became a hallmark of U.S. Cold War policy.
+In 1947, Great Britain, which had assumed responsibility for the disarming of German troops in Greece at the end of World War II, could no longer afford to provide financial support for the authoritarian Greek government, which was attempting to win a civil war against Greek leftist rebels. President Truman, unwilling to allow a Communist government to come to power there, requested Congress to provide funds for the government of Greece to continue its fight against the rebels. Truman also requested aid for the government of Turkey to fight the forces of Communism in that country. He said:
+At the present moment in world history nearly every nation must choose between alternative ways of life. The choice is too often not a free one.
+Should we fail to aid Greece and Turkey in this fateful hour, the effect will be far reaching to the West as well as to the East.
+The seeds of totalitarian regimes are nurtured by misery and want. They spread and grow in the evil soil of poverty and strife. They reach their full growth when the hope of a people for a better life has died. We must keep that hope alive.
+The free peoples of the world look to us for support in maintaining their freedoms.
+If we falter in our leadership, we may endanger the peace of the world—and we shall surely endanger the welfare of our own nation.
+Great responsibilities have been placed upon us by the swift movement of events.
+I am confident that the Congress will face these responsibilities squarely.
+What role is Truman suggesting that the United States assume in the postwar world? Does the United States still assume this role?
+The Marshall Plan
+By 1946, the American economy was growing significantly. At the same time, the economic situation in Europe was disastrous. The war had turned much of Western Europe into a battlefield, and the rebuilding of factories, public transportation systems, and power stations progressed exceedingly slowly. Starvation loomed as a real possibility for many. As a result of these conditions, Communism was making significant inroads in both Italy and France. These concerns led Truman, along with Secretary of State George C. Marshall, to propose to Congress the European Recovery Program, popularly known as the Marshall Plan. Between its implantation in April 1948 and its termination in 1951, this program gave $13 billion in economic aid to European nations.
+Truman’s motivation was economic and political, as well as humanitarian. The plan stipulated that the European nations had to work together in order to receive aid, thus enforcing unity through enticement, while seeking to undercut the political popularity of French and Italian Communists and dissuading moderates from forming coalition governments with them. Likewise, much of the money had to be spent on American goods, boosting the postwar economy of the United States as well as the American cultural presence in Europe. Stalin regarded the program as a form of bribery. The Soviet Union refused to accept aid from the Marshall Plan, even though it could have done so, and forbade the Communist states of Eastern Europe to accept U.S. funds as well. Those states that did accept aid began to experience an economic recovery.
+The youngest child of a Pennsylvania businessman and Democrat, George C. Marshall (Figure 28.2.2) chose a military career. He attended the Virginia Military Institute, was a veteran of World War I, and spent the rest of his life either in the military or otherwise in the service of his country, including as President Truman’s Secretary of State. He was awarded the Nobel Peace Prize in 1953, the only soldier to ever receive that honor. Below is an excerpt of his remarks as he accepted the award.
+There has been considerable comment over the awarding of the Nobel Peace Prize to a soldier. I am afraid this does not seem as remarkable to me as it quite evidently appears to others. I know a great deal of the horrors and tragedies of war. Today, as chairman of the American Battle Monuments Commission, it is my duty to supervise the construction and maintenance of military cemeteries in many countries overseas, particularly in Western Europe. The cost of war in human lives is constantly spread before me, written neatly in many ledgers whose columns are gravestones. I am deeply moved to find some means or method of avoiding another calamity of war. Almost daily I hear from the wives, or mothers, or families of the fallen. The tragedy of the aftermath is almost constantly before me.
+I share with you an active concern for some practical method for avoiding war. . . . A very strong military posture is vitally necessary today. How long it must continue I am not prepared to estimate, but I am sure that it is too narrow a basis on which to build a dependable, long-enduring peace. The guarantee for a long continued peace will depend on other factors in addition to a moderated military strength, and no less important. Perhaps the most important single factor will be a spiritual regeneration to develop goodwill, faith, and understanding among nations. Economic factors will undoubtedly play an important part. Agreements to secure a balance of power, however disagreeable they may seem, must likewise be considered. And with all these there must be wisdom

@@ -1,464 +1,201 @@
 # Source pack — subjects/nutrition-dietetics/foundational/nutrients-and-how-they-work
 Lesson title: Nutrients and How They Work
 Level: foundational
-Match confidence: 1.52
+Match confidence: 3.07
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.52 — Physics-WEB_Sab7RrQ § 12.2 First law of Thermodynamics: Thermal Energy and Work
+## Match 3.07 — LibreTexts: 8.1.5: Nutrients Work Together
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://med.libretexts.org/Bookshelves/Allied_Health/Foundations_for_Assisting_in_Home_Care_(McLain_O'Hara-Leslie_and_Wade)/08%3A_Food_Nutrition_and_Meal_Preparation/8.01%3A_Unit_A-_The_Basics_of_Nutrition/8.1.05%3A_Nutrients_Work_Together
 
-Section Learning Objectives
-By the end of this section, you will be able to do the following:
-•
-Describe how pressure, volume, and temperature relate to one another and to work, based on the ideal gas
-law
-•
-Describe pressure–volume work
-•
-Describe the first law of thermodynamics verbally and mathematically
-•
-Solve problems involving the first law of thermodynamics
-Section Key Terms
-Boltzmann constant
-first law of thermodynamics
-ideal gas law
-internal energy
-pressure
-Pressure, Volume, Temperature, and the Ideal Gas Law
-Before covering the first law of thermodynamics, it is first important to understand the relationship between pressure, volume,
-and temperature. Pressure, P, is defined as
-where F is a force applied to an area, A, that is perpendicular to the force.
-Depending on the area over which it is exerted, a given force can have a significantly different effect, as shown in Figure 12.3.
-Figure 12.3 (a) Although the person being poked with the finger might be irritated, the force has little lasting effect. (b) In contrast, the
-same force applied to an area the size of the sharp end of a needle is great enough to break the skin.
-The SI unit for pressure is the pascal, where
-Pressure is defined for all states of matter but is particularly important when discussing fluids (such as air). You have probably
-heard the word pressure being used in relation to blood (high or low blood pressure) and in relation to the weather (high- and
-low-pressure weather systems). These are only two of many examples of pressures in fluids.
-The relationship between the pressure, volume, and temperature for an ideal gas is given by the ideal gas law. A gas is
-considered ideal at low pressure and fairly high temperature, and forces between its component particles can be ignored. The
-ideal gas law states that
-where P is the pressure of a gas, V is the volume it occupies, N is the number of particles (atoms or molecules) in the gas, and T is
-12.1
-12.2
-358
-Chapter 12 • Thermodynamics
-Access for free at openstax.org.
+8.1.5: Nutrients Work Together
+It is important to have a well-balanced diet. While each of the individual nutrients discussed above are important, it is important that a person take in a combination of all of them to make a well-balanced diet. Together they work to keep the body working at its optimum (best) level.
+Select the nutrient category to which the food in the list belongs.
+A. Protein B. Carbohydrate C. Fat
+1. Butter
+2. Tuna fish
+3. Steak
+4. Noodles
+5. Margarine
+6. Canola oil
+7. Peanut butter
+8. Tortillas
+9. Eggs
+10. Olive oil
+11. Beef
+12. Bread
+13. Crackers
+14. Hamburger
+15. Shrimp
+16. Mashed potatoes
+17. Oatmeal
+18. Rice
+19. Vegetable oil
+20. Chicken
+21. Salad dressing
+22. Hot dogs
+23. Popcorn
+- Answer
+-
+1. C
+2. A
+3. A
+4. B
+5. C
+6. C
+7. A
+8. B
+9. A
+10. C
+11. A
+12. B
+13. B
+14. A
+15. A
+16. B
+17. B
+18. B
+19. C
+20. A
+21. C
+22. A
+23. B
+FEEDBACK :
+Protein sources include meats, poultry, fish, peanut butter, and eggs. Carbohydrate sources include pasta, rice, potatoes, popcorn, and grains. Fats include oils, butter, margarine, and salad dressings.
 
-its absolute temperature. The constant k is called the Boltzmann constant and has the value
-For the
-purposes of this chapter, we will not go into calculations using the ideal gas law. Instead, it is important for us to notice from the
-equation that the following are true for a given mass of gas:
-•
-When volume is constant, pressure is directly proportional to temperature.
-•
-When temperature is constant, pressure is inversely proportional to volume.
-•
-When pressure is constant, volume is directly proportional to temperature.
-This last point describes thermal expansion—the change in size or volume of a given mass with temperature. What is the
-underlying cause of thermal expansion? An increase in temperature means that there’s an increase in the kinetic energy of the
-individual atoms. Gases are especially affected by thermal expansion, although liquids expand to a lesser extent with similar
-increases in temperature, and even solids have minor expansions at higher temperatures. This is why railroad tracks and bridges
-have expansion joints that allow them to freely expand and contract with temperature changes.
-To get some idea of how pressure, temperature, and volume of a gas are related to one another, consider what happens when
-you pump air into a deflated tire. The tire’s volume first increases in direct proportion to the amount of air injected, without
-much increase in the tire pressure. Once the tire has expanded to nearly its full size, the walls limit volume expansion. If you
-continue to pump air into tire (which now has a nearly constant volume), the pressure increases with increasing temperature
-(see Figure 12.4).
-Figure 12.4 (a) When air is pumped into a deflated tire, its volume first increases without much increase in pressure. (b) When the tire is
-filled to a certain point, the tire walls resist further expansion, and the pressure increases as more air is added. (c) Once the tire is inflated
-fully, its pressure increases with temperature.
-Pressure–Volume Work
-Pressure–volume work is the work that is done by the compression or expansion of a fluid. Whenever there is a change in
-volume and external pressure remains constant, pressure–volume work is taking place. During a compression, a decrease in
-volume increases the internal pressure of a system as work is done on the system. During an expansion (Figure 12.5), an increase
-in volume decreases the internal pressure of a system as the system does work.
-12.2 • First law of Thermodynamics: Thermal Energy and Work
-359
+## Match 2.05 — LibreTexts: 23.1E: Food Requirements and Essential Nutrients
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://med.libretexts.org/Bookshelves/Anatomy_and_Physiology/Anatomy_and_Physiology_(Boundless)/23%3A_Nutrition_and_Metabolism/23.1%3A_Nutrition/23.1E%3A_Food_Requirements_and_Essential_Nutrients
 
-Figure 12.5 An expansion of a gas requires energy transfer to keep the pressure constant. Because pressure is constant, the work done is
-.
-Recall that the formula for work is
-We can rearrange the definition of pressure,
-to get an expression for force
-in terms of pressure.
-Substituting this expression for force into the definition of work, we get
-Because area multiplied by displacement is the change in volume,
-, the mathematical expression for
-pressure–volume work is
-Just as we say that work is force acting over a distance, for fluids, we can say that work is the pressure acting through the change
-in volume. For pressure–volume work, pressure is analogous to force, and volume is analogous to distance in the traditional
-definition of work.
-WATCH PHYSICS
-Work from Expansion
-This video describes work from expansion (or pressure–volume work). Sal combines the equations
-and
-to get
-.
-Click to view content (https://www.openstax.org/l/28expansionWork)
-GRASP CHECK
-If the volume of a system increases while pressure remains constant, is the value of work done by the system W positive or
-negative? Will this increase or decrease the internal energy of the system?
-a.
-Positive; internal energy will decrease
-b.
-Positive; internal energy will increase
-c.
-Negative; internal energy will decrease
-d.
-Negative; internal energy will increase
-The First Law of Thermodynamics
-Heat (Q) and work (W) are the two ways to add or remove energy from a system. The processes are very different. Heat is driven
-12.3
-12.4
-12.5
-360
-Chapter 12 • Thermodynamics
-Access for free at openstax.org.
+23.1E: Food Requirements and Essential Nutrients
+Essential nutrients are those that cannot be created by an animal’s metabolism and need to be obtained from the diet.
+- Describe the essential nutrients required for cellular function that cannot be synthesized by the animal body
+Key Points
+- The animal diet needs to be well-balanced in order to ensure that all necessary vitamins and minerals are being obtained.
+- Vitamins are important for maintaining bodily health, making bones strong, and seeing in the dark.
+- Water-soluble vitamins are not stored by the body and need to be consumed more regularly than fat-soluble vitamins, which build up within body tissues.
+- Essential fatty acids need to be consumed through the diet and are important building blocks of cell membranes.
+- Nine of the 20 amino acids cannot be synthesized by the body and need to be obtained from the diet.
+Key Terms
+- nutrient : a source of nourishment, such as food, that can be metabolized by an organism to give energy and build tissue
+- catabolism : destructive metabolism, usually including the release of energy and breakdown of materials
+- vitamin : any of a specific group of organic compounds essential in small quantities for healthy human growth, metabolism, development, and body function
+Food Requirements
+A balanced diet : For humans, a balanced diet includes fruits, vegetables, grains, and protein. Each of these food sources provides different nutrients the body cannot make for itself. These include vitamins, omega 3 fatty acids, and some amino acids.
+What are the fundamental requirements of the animal diet? The animal diet should be well balanced and provide nutrients required for bodily function along with the minerals and vitamins required for maintaining structure and regulation necessary for good health and reproductive capability.
+Organic Precursors
+The organic molecules required for building cellular material and tissues must come from food. Carbohydrates or sugars are the primary source of organic carbons in the animal body. During digestion, digestible carbohydrates are ultimately broken down into glucose and used to provide energy through metabolic pathways. The excess sugars in the body are converted into glycogen and stored in the liver and muscles for later use. Glycogen stores are used to fuel prolonged exertions, such as long-distance running, and to provide energy during food shortage. Excess digestible carbohydrates are stored by mammals in order to survive famine and aid in mobility.
+Another important requirement is that of nitrogen. Protein catabolism provides a source of organic nitrogen. Amino acids are the building blocks of proteins and protein breakdown provides amino acids that are used for cellular function. The carbon and nitrogen derived from these become the building block for nucleotides, nucleic acids, proteins, cells, and tissues. Excess nitrogen must be excreted, as it is toxic. Fats add flavor to food and promote a sense of satiety or fullness. Fatty foods are also significant sources of energy because one gram of fat contains nine calories. Fats are required in the diet to aid the absorption of fat-soluble vitamins and the production of fat-soluble hormones.
+Essential Nutrients
+While the animal body can synthesize many of the molecules required for function from the organic precursors, there are some nutrients that need to be consumed from food. These nutrients are termed essential nutrients: they must be eaten as the body cannot produce them.
+Vitamins and minerals are substances found in the food we eat. Your body needs them to be able to work properly and for growth and development. Each vitamin has its own special role to play. For example, vitamin D (added to whole milk or naturally-occurring in sardines), helps make bones strong, while vitamin A (found in carrots) helps with night vision. Vitamins fall into two categories: fat soluble and water soluble. The fat-soluble vitamins dissolve in fat and can be stored in your body, whereas the water-soluble vitamins need to dissolve in water before your body can absorb them; therefore, the body cannot store them.
+Fat-soluble vitamins are found primarily in foods that contain fat and oil, such as animal fats, vegetable oils, dairy foods, liver, and fatty fish. Your body needs these vitamins every day to enable it to work properly. However, you do not need to eat foods containing these every day. If your body does not need these vitamins immediately, they will be stored in the liver and fat tissues for future use. This means that stores can build up; if you have more than you need, fat soluble vitamins can become harmful. Some fat-soluble vitamins include vitamin A, vitamin K, vitamin D, and vitamin E. Unlike the other fat-soluble vitamins, vitamin D is difficult to obtain in adequate quantities in a normal diet; therefore, supplementation may be necessary.
+Water-soluble vitamins are not stored in the body; therefore, you need to have them more frequently. If you have more then you need, the body rids itself of the extra vitamins during urination. Because the body does not store these vitamins, they are generally not harmful. Water-soluble vitamins are found in foods that include fruits, vegetables, and grains. Unlike fat-soluble vitamins, they can be destroyed by heat. This means that sometimes these vitamins can often be lost during cooking. This is why it is better to steam or grill these foods rather then boil them. Some water-soluble vitamins include vitamin B6, vitamin B12, vitamin C, biotin, folic acid, niacin, and riboflavin.
+Sea buckthorn seed oil : Sea buckthorn seed oil contains many vital nutrients.
+The omega-3 alpha-linolenic acid and the omega-6 linoleic acid are essential fatty acids needed to synthesize some membrane phospholipids. Many people take supplements to ensure they are obtaining all the essential fatty acids they need. Sea buckthorn contains many of these fatty acids and is also high in vitamins. Sea buckthorn can be used to treat acne and promote weight loss and wound healing.
+Minerals are inorganic essential nutrients that must also be obtained from food. Among their many functions, minerals help in cell structure and regulation; they are also considered co-factors. In addition to vitamins and minerals, certain amino acids must also be procured from food and cannot be synthesized by the body. These amino acids are the “essential” amino acids. The human body can synthesize only 11 of the 20 required amino acids. The rest must be obtained from food.
+Amino Acids : There are 20 known amino acids. Animals can make only 11, so the others must be obtained through the diet. Meats are the best source of amino acids, although some amino acids can also be obtained from vegetables and grains.
+LICENSES AND ATTRIBUTIONS
+CC LICENSED CONTENT, SHARED PREVIOUSLY
+- Curation and Revision. Authored by : Boundless.com. Provided by : Boundless.com. License : CC BY-SA: Attribution-ShareAlike
+CC LICENSED CONTENT, SPECIFIC ATTRIBUTION
+- Digestive System. Provided by : sciencemasters Wikispace. Located at : http://sciencemasters.wikispaces.com/Digestive+System . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Biology. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44734/latest...ol11448/latest . License : CC BY: Attribution
+- macromolecule. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/macromolecule . License : CC BY-SA: Attribution-ShareAlike
+- digestion. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/digestion . License : CC BY-SA: Attribution-ShareAlike
+- alimentary canal. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/alimentary_canal . License : CC BY-SA: Attribution-ShareAlike
+- Anatomy and physiology of animals Summary of the main functions of the different regions of the gut. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/Fi...of_the_gut.jpg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Introduction. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44734/latest...e_34_00_01.jpg . License : CC BY: Attribution
+- Carbohydrate. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Carbohydrate%23Nutrition . License : CC BY-SA: Attribution-ShareAlike
+- glucose. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/glucose . License : CC BY-SA: Attribution-ShareAlike
+- saccharide. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/saccharide . License : CC BY-SA: Attribution-ShareAlike
+- carbohydrate. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/carbohydrate . License : CC BY-SA: Attribution-ShareAlike
+- Anatomy and physiology of animals Summary of the main functions of the different regions of the gut. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/Fi...of_the_gut.jpg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Introduction. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44734/latest...e_34_00_01.jpg . License : CC BY: Attribution
+- Starchy-foods.. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:Starchy-foods..jpg . License : Public Domain: No Known Copyright
+- Glucose. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/File:Glucose.PNG . License : Public Domain: No Known Copyright
+- Lipid. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Lipid%2...ion_and_health . License : CC BY-SA: Attribution-ShareAlike
+- trans fats. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/trans%20fats . License : CC BY-SA: Attribution-ShareAlike
+- phospholipids. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/phospholipids . License : CC BY-SA: Attribution-ShareAlike
+- fatty acid. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/fatty_acid . License : CC BY-SA: Attribution-ShareAlike
+- Anatomy and physiology of animals Summary of the main functions of the different regions of the gut. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/Fi...of_the_gut.jpg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Introduction. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44734/latest...e_34_00_01.jpg . License : CC BY: Attribution
+- Starchy-foods.. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:Starchy-foods..jpg . License : Public Domain: No Known Copyright
+- Glucose. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/File:Glucose.PNG . License : Public Domain: No Known Copyright
+- Salmon. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/File:Salmon.JPG . License : Public Domain: No Known Copyright
+- DHA Molecule. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/Fi...A_Molecule.gif . License : Public Domain: No Known Copyright
+- Protein. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Protein%23Nutrition . License : CC BY-SA: Attribution-ShareAlike
+- High-protein diet. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/High-protein_diet . License : CC BY-SA: Attribution-ShareAlike
+- protein. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/protein . License : CC BY-SA: Attribution-ShareAlike
+- denaturation. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/denaturation . License : CC BY-SA: Attribution-ShareAlike
+- amino acid. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/amino_acid . License : CC BY-SA: Attribution-ShareAlike
+- Anatomy and physiology of animals Summary of the main functions of the different regions of the gut. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/Fi...of_the_gut.jpg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Introduction. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44734/latest...e_34_00_01.
 
-by temperature differences, while work involves a force exerted through a distance. Nevertheless, heat and work can produce
-identical results. For example, both can cause a temperature increase. Heat transfers energy into a system, such as when the sun
-warms the air in a bicycle tire and increases the air’s temperature. Similarly, work can be done on the system, as when the
-bicyclist pumps air into the tire. Once the temperature increase has occurred, it is impossible to tell whether it was caused by
-heat or work. Heat and work are both energy in transit—neither is stored as such in a system. However, both can change the
-internal energy, U, of a system.
-Internal energy is the sum of the kinetic and potential energies of a system’s atoms and molecules. It can be divided into many
-subcategories, such as thermal and chemical energy, and depends only on the state of a system (that is, P, V, and T), not on how
-the energy enters or leaves the system.
-In order to understand the relationship between heat, work, and internal energy, we use the first law of thermodynamics. The
-first law of thermodynamics applies the conservation of energy principle to systems where heat and work are the methods of
-transferring energy into and out of the systems. It can also be used to describe how energy transferred by heat is converted and
-transferred again by work.
-TIPS FOR SUCCESS
-Recall that the principle of conservation of energy states that energy cannot be created or destroyed, but it can be altered
-from one form to another.
-The first law of thermodynamics states that the change in internal energy of a closed system equals the net heat transfer into the
-system minus the net work done by the system. In equation form, the first law of thermodynamics is
-Here,
-is the change in internal energy, U, of the system. As shown in Figure 12.6, Q is the net heat transferred into the
-system—that is, Q is the sum of all heat transfers into and out of the system. W is the net work done by the system—that is, W is
-the sum of all work done on or by the system. By convention, if Q is positive, then there is a net heat transfer into the system; if
-W is positive, then there is net work done by the system. So positive Q adds energy to the system by heat, and positive W takes
-energy from the system by work. Note that if heat transfers more energy into the system than that which is done by work, the
-difference is stored as internal energy.
-Figure 12.6 The first law of thermodynamics is the conservation of energy principle stated for a system, where heat and work are the
-methods of transferring energy to and from a system. Q represents the net heat transfer—it is the sum of all transfers of energy by heat into
-and out of the system. Q is positive for net heat transfer into the system.
-is the work done by the system, and
-is the work done on
-the system. W is the total work done on or by the system. W is positive when more work is done by the system than on it. The change in the
-internal energy of the system,
-, is related to heat and work by the first law of thermodynamics:
-It follows also that negative Q indicates that energy is transferred away from the system by heat and so decreases the system’s
-internal energy, whereas negative W is work done on the system, which increases the internal energy.
-WATCH PHYSICS
-First Law of Thermodynamics/Internal Energy
-This video explains the first law of thermodynamics, conservation of energy, and internal energy. It goes over an example of
-energy transforming between kinetic energy, potential energy, and heat transfer due to air resistance.
-Click to view content (https://www.openstax.org/l/28FirstThermo)
-12.6
-12.2 • First law of Thermodynamics: Thermal Energy and Work
-361
+## Match 2.05 — LibreTexts: 31.3C: Nutrients from Other Sources
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_(Boundless)/31%3A_Soil_and_Plant_Nutrition/31.03%3A__Nutritional_Adaptations_of_Plants/31.3C%3A_Nutrients_from_Other_Sources
 
-GRASP CHECK
-Consider the example of tossing a ball when there’s air resistance. As air resistance increases, what would you expect to
-happen to the final velocity and final kinetic energy of the ball? Why?
-a.
-Both will decrease. Energy is transferred to the air by heat due to air resistance.
-b.
-Both will increase. Energy is transferred from the air to the ball due to air resistance.
-c.
-Final velocity will increase, but final kinetic energy will decrease. Energy is transferred by heat to the air from the ball
-through air resistance.
-d.
-Final velocity will decrease, but final kinetic energy will increase. Energy is transferred by heat from the air to the ball
-through air resistance.
-WATCH PHYSICS
-More on Internal Energy
-This video goes into further detail, explaining internal energy and how to use the equation
-Note that Sal uses
-the equation
-, where W is the work done on the system, whereas we use W to represent work done by the
-system.
-Click to view content (https://www.openstax.org/l/28IntrnEnergy)
-GRASP CHECK
-If
-are taken away by heat from the system, and the system does
-of work, what is the change in internal energy of the
-system?
-a.
-b.
-c.
-d.
-LINKS TO PHYSICS
-Biology: Biological Thermodynamics
-We often think about thermodynamics as being useful for inventing or testing machinery, such as engines or steam turbines.
-However, thermodynamics also applies to living systems, such as our own bodies. This forms the basis of the biological
-thermodynamics (Figure 12.7).
-Figure 12.7 (a) The first law of thermodynamics applies to metabolism. Heat transferred out of the body (Q) and work done by the body (W)
-remove internal energy, whereas food intake replaces it. (Food intake may be considered work done on the body.) (b) Plants convert part of
-362
-Chapter 12 • Thermodynamics
-Access for free at openstax.org.
-
-the radiant energy in sunlight into stored chemical energy, a process called photosynthesis.
-Life itself depends on the biological transfer of energy. Through photosynthesis, plants absorb solar energy from the sun and use
-this energy to convert carbon dioxide and water into glucose and oxygen. Photosynthesis takes in one form of
-energy—light—and converts it into another form—chemical potential energy (glucose and other carbohydrates).
-Human metabolism is the conversion of food into energy given off by heat, work done by the body’s cells, and stored fat.
-Metabolism is an interesting example of the first law of thermodynamics in action. Eating increases the internal energy of the
-body by adding chemical potential energy; this is an unromantic view of a good burrito.
-The body metabolizes all the food we consume. Basically, metabolism is an oxidation process in which the chemical potential
-energy of food is released. This implies that food input is in the form of work. Exercise helps you lose weight, because it provides
-energy transfer from your body by both heat and work and raises your metabolic rate even when you are at rest.
-Biological thermodynamics also involves the study of transductions between cells and living organisms. Transduction is a
-process where genetic material—DNA—is transferred from one cell to another. This often occurs during a viral infection (e.g.,
-influenza) and is how the virus spreads, namely, by transferring its genetic material to an increasing number of previously
-healthy cells. Once enough cells become infected, you begin to feel the effects of the virus (flu symptoms—muscle weakness,
-coughing, and congestion).
-Energy is transferred along with the genetic material and so obeys the first law of thermodynamics. Energy is transferred—not
-created or destroyed—in the process. When work is done on a cell or heat transfers energy to a cell, the cell’s internal energy
-increases. When a cell does work or loses heat, its internal energy decreases. If the amount of work done by a cell is the same as
-the amount of energy transferred in by heat, or the amount of work performed on a cell matches the amount of energy
-transferred out by heat, there will be no net change in internal energy.
-GRASP CHECK
-Based on what you know about heat transfer and the first law of t
-
-## Match 1.52 — College_Physics-WEB_2s5sHvR § 7.1 Work: The Scientific Definition
-
-What It Means to Do Work
-The scientific definition of work differs in some ways from its everyday meaning. Certain things we think of as hard work, such
-as writing an exam or carrying a heavy load on level ground, are not work as defined by a scientist. The scientific definition of
-work reveals its relationship to energy—whenever work is done, energy is transferred.
-262
-Chapter 7 • Work, Energy, and Energy Resources
-Access for free at openstax.org.
-
-For work, in the scientific sense, to be done, a force must be exerted and there must be displacement in the direction of the
-force.
-Formally, the work done on a system by a constant force is defined to be the product of the component of the force in the
-direction of motion times the distance through which the force acts. For one-way motion in one dimension, this is expressed in
-equation form as
-where
-is work,
-is the displacement of the system, and
-is the angle between the force vector
-and the displacement vector
-, as in Figure 7.2. We can also write this as
-To find the work done on a system that undergoes motion that is not one-way or that is in two or three dimensions, we divide
-the motion into one-way one-dimensional segments and add up the work done over each segment.
-7.1
-7.2
-What is Work?
-The work done on a system by a constant force is the product of the component of the force in the direction of motion times
-the distance through which the force acts. For one-way motion in one dimension, this is expressed in equation form as
-where
-is work,
-is the magnitude of the force on the system,
-is the magnitude of the displacement of the system, and
-is the angle between the force vector
-and the displacement vector
-.
-7.3
-7.1 • Work: The Scientific Definition
-263
-
-Figure 7.2 Examples of work. (a) The work done by the force
-on this lawn mower is
-. Note that
-is the component of the
-force in the direction of motion. (b) A person holding a briefcase does no work on it, because there is no displacement. No energy is
-transferred to or from the briefcase. (c) The person moving the briefcase horizontally at a constant speed does no work on it, and transfers
-no energy to it. (d) Work is done on the briefcase by carrying it up stairs at constant speed, because there is necessarily a component of
-force
-in the direction of the motion. Energy is transferred to the briefcase and could in turn be used to do work. (e) When the briefcase is
-lowered, energy is transferred out of the briefcase and into an electric generator. Here the work done on the briefcase by the generator is
-negative, removing energy from the briefcase, because
-and
-are in opposite directions.
-To examine what the definition of work means, let us consider the other situations shown in Figure 7.2. The person holding the
-briefcase in Figure 7.2(b) does no work, for example. Here
-, so
-. Why is it you get tired just holding a load? The
-264
-Chapter 7 • Work, Energy, and Energy Resources
-Access for free at openstax.org.
-
-answer is that your muscles are doing work against one another, but they are doing no work on the system of interest (the
-“briefcase-Earth system”—see Gravitational Potential Energy for more details). There must be displacement for work to be done,
-and there must be a component of the force in the direction of the motion. For example, the person carrying the briefcase on
-level ground in Figure 7.2(c) does no work on it, because the force is perpendicular to the motion. That is,
-, and so
-.
-In contrast, when a force exerted on the system has a component in the direction of motion, such as in Figure 7.2(d), work is
-done—energy is transferred to the briefcase. Finally, in Figure 7.2(e), energy is transferred from the briefcase to a generator.
-There are two good ways to interpret this energy transfer. One interpretation is that the briefcase’s weight does work on the
-generator, giving it energy. The other interpretation is that the generator does negative work on the briefcase, thus removing
-energy from it. The drawing shows the latter, with the force from the generator upward on the briefcase, and the displacement
-downward. This makes
-, and
-; therefore,
-is negative.
-Calculating Work
-Work and energy have the same units. From the definition of work, we see that those units are force times distance. Thus, in SI
-units, work and energy are measured in newton-meters. A newton-meter is given the special name joule (J), and
-. One joule is not a large amount of energy; it would lift a small 100-gram apple a distance of
-about 1 meter.
-EXAMPLE 7.1
-Calculating the Work You Do to Push a Lawn Mower Across a Large Lawn
-How much work is done on the lawn mower by the person in Figure 7.2(a) if he exerts a constant force of
-at an angle
-below the horizontal and pushes the mower
-on level ground? Convert the amount of work from joules to kilocalories and
-compare it with this person’s average daily intake of
-(about
-) of food energy. One calorie (1 cal) of heat is
-the amount required to warm 1 g of water by
-, and is equivalent to
-, while one food calorie (1 kcal) is equivalent to
-.
-Strategy
-We can solve this problem by substituting the given values into the definition of work done on a system, stated in the equation
-. The force, angle, and displacement are given, so that only the work
-is unknown.
-Solution
-The equation for the work is
-Substituting the known values gives
-Converting the work in joules to kilocalories yields
-. The ratio of the work done to
-the daily consumption is
-Discussion
-This ratio is a tiny fraction of what the person consumes, but it is typical. Very little of the energy released in the consumption of
-food is used to do work. Even when we “work” all day long, less than 10% of our food energy intake is used to do work and more
-than 90% is converted to thermal energy or stored as chemical energy in fat.
-7.4
-7.5
-7.6
-7.1 • Work: The Scientific Definition
-265
-
-
-## Match 1.52 — College_Physics_for_AP_Courses_2e-WEB_DkhNbxV § 7.1 Work: The Scientific Definition
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Explain how an object must be displaced for a force on it to do work.
-•
-Explain how relative directions of force and displacement determine whether the work done is positive,
-negative, or zero.
-What It Means to Do Work
-The scientific definition of work differs in some ways from its everyday meaning. Certain things we think of as hard
-work, such as writing an exam or carrying a heavy load on level ground, are not work as defined by a scientist. The
-scientific definition of work reveals its relationship to energy—whenever work is done, energy is transferred.
-For work, in the scientific sense, to be done, a force must be exerted and there must be displacement in the
-direction of the force.
-Formally, the work done on a system by a constant force is defined to be the product of the component of the force
-in the direction of motion times the distance through which the force acts. For one-way motion in one dimension,
-this is expressed in equation form as
-where
-is work,
-is the displacement of the system, and
-is the angle between the force vector
-and the
-displacement vector
-, as in Figure 7.2. We can also write this as
-To find the work done on a system that undergoes motion that is not one-way or that is in two or three dimensions,
-we divide the motion into one-way one-dimensional segments and add up the work done over each segment.
-7.1
-7.2
-WHAT IS WORK?
-The work done on a system by a constant force is the product of the component of the force in the direction of
-motion times the distance through which the force acts. For one-way motion in one dimension, this is expressed
-in equation form as
-where
-is work,
-is the magnitude of the force on the system,
-is the magnitude of the displacement of the
-system, and
-is the angle between the force vector
-and the displacement vector
-.
-7.3
-7.1 • Work: The Scientific Definition
-283
-
-FIGURE 7.2 Examples of work. (a) The work done by the force
-on this lawn mower is
-. Note that
-is the component of the
-force in the direction of motion. (b) A person holding a briefcase does no work on it, because there is no displacement. No energy is
-transferred to or from the briefcase. (c) The person moving the briefcase horizontally at a constant speed does no work on it, and transfers
-no energy to it. (d) Work is done on the briefcase by carrying it up stairs at constant speed, because there is necessarily a component of
-force
-in the direction of the motion. Energy is transferred to the briefcase and could in turn be used to do work. (e) When the briefcase is
-lowered, energy is transferred out of the briefcase and into an electric generator. Here the work done on the briefcase by the generator is
-negative, removing energy from the briefcase, because
-and
-are in opposite directions.
-To examine what the definition of work means, let us consider the other situations shown in Figure 7.2. The person
-holding the briefcase in Figure 7.2(b) does no work, for example. Here
-, so
-. Why is it you get tired just
-holding a load? The answer is that your muscles are doing work against one another, but they are doing no work on
-the system of interest (the “briefcase-Earth system”—see Gravitational Potential Energy for more details). There
-must be displacement for work to be done, and there must be a component of the force in the direction of the
-284
-7 • Work, Energy, and Energy Resources
-Access for free at openstax.org
-
-motion. For example, the person carrying the briefcase on level ground in Figure 7.2(c) does no work on it, because
-the force is perpendicular to the motion. That is,
-, and so
-.
-In contrast, when a force exerted on the system has a component in the direction of motion, such as in Figure 7.2(d),
-work is done—energy is transferred to the briefcase. Finally, in Figure 7.2(e), energy is transferred from the briefcase
-to a generator. There are two good ways to interpret this energy transfer. One interpretation is that the briefcase’s
-weight does work on the generator, giving it energy. The other interpretation is that the generator does negative
-work on the briefcase, thus removing energy from it. The drawing shows the latter, with the force from the generator
-upward on the briefcase, and the displacement downward. This makes
-, and
-; therefore,
-is negative.
-Calculating Work
-Work and energy have the same units. From the definition of work, we see that those units are force times distance.
-Thus, in SI units, work and energy are measured in newton-meters. A newton-meter is given the special name joule
-(J), and
-. One joule is not a large amount of energy; it would lift a small 100-gram
-apple a distance of about 1 meter.
-EXAMPLE 7.1
-Calculating the Work You Do to Push a Lawn Mower Across a Large Lawn
-How much work is done on the lawn mower by the person in Figure 7.2(a) if he exerts a constant force of
-at
-an angle
-below the horizontal and pushes the mower
-on level ground? Convert the amount of work from
-joules to kilocalories and compare it with this person’s average daily intake of
-(about
-) of food
-energy. One calorie (1 cal) of heat is the amount required to warm 1 g of water by
-, and is equivalent to
-,
-while one food calorie (1 kcal) is equivalent to
-.
-Strategy
-We can solve this problem by substituting the given values into the definition of work done on a system, stated in the
-equation
-. The force, angle, and displacement are given, so that only the work
-is unknown.
-Solution
-The equation for the work is
-Substituting the known values gives
-Converting the work in joules to kilocalories yields
-. The ratio of the work
-done to the daily consumption is
-Discussion
-This ratio is a tiny fraction of what the person consumes, but it is typical. Very little of the energy released in the
-consumption of food is used to do work. Even when we “work” all day long, less than 10% of our food energy intake
-is used to do work and more than 90% is converted to thermal energy or stored as chemical energy in fat.
-7.4
-7.5
-7.6
-7.1 • Work: The Scientific Definition
-285
-
+31.3C: Nutrients from Other Sources
+- Differentiate among the sources of plant nutrition
+Nutrients from Other Sources
+Some plants cannot produce their own food and must obtain their nutrition from outside sources. This may occur with plants that are parasitic or saprophytic: ingesting and utilizing dead matter as a food source. In other cases, plants may be mutualistic symbionts, epiphytes, or insectivorous.
+Plant Parasites
+A parasitic plant depends on its host for survival. Some parasitic plants have no leaves. An example of this is the dodder, which has a weak, cylindrical stem that coils around the host and forms suckers. From these suckers, cells invade the host stem and grow to connect with the vascular bundles of the host. The parasitic plant obtains water and nutrients through these connections. The plant is a total parasite (a holoparasite) because it is completely dependent on its host. Other parasitic plants, called hemiparasites, are fully photosynthetic and only use the host for water and minerals. There are about 4,100 species of parasitic plants.
+Saprophytes
+A saprophyte is a plant that does not have chlorophyll, obtaining its food from dead matter, similar to bacteria and fungi. (Note that fungi are often called saprophytes, which is incorrect, because fungi are not plants). Plants such as these use enzymes to convert organic food materials into simpler forms from which they can absorb nutrients. Most saprophytes do not directly digest dead matter. Instead, they parasitize mycorrhizae or other fungi that digest dead matter, ultimately obtaining photosynthate from a fungus that derived photosynthate from its host. Saprophytic plants are uncommon with only a few, described species.
+Symbionts
+A symbiont is a plant in a symbiotic relationship with other organisms, such as mycorrhizae (with fungi) or nodule formation. Root nodules occur on plant roots (primarily Fabaceae ) that associate with symbiotic, nitrogen-fixing bacteria. Under nitrogen-limiting conditions, capable plants form a symbiotic relationship with a host-specific strain of bacteria known as rhizobia. Within legume nodules, nitrogen gas from the atmosphere is converted into ammonia, which is then assimilated into amino acids (the building blocks of proteins), nucleotides (the building blocks of DNA and RNA, as well as the important energy molecule ATP), and other cellular constituents such as vitamins, flavones, and hormones.
+Fungi also form symbiotic associations with cyanobacteria and green algae; the resulting symbiotic organism is called a lichen. Lichens can sometimes be seen as colorful growths on the surface of rocks and trees. The algal partner (phyco- or photobiont) makes food autotrophically, some of which it shares with the fungus; the fungal partner (mycobiont) absorbs water and minerals from the environment, which are made available to the green alga. If one partner was separated from the other, they would both die.
+Epiphytes
+An epiphyte is a plant that grows on other plants, but is not dependent upon the other plant for nutrition; it is non-parasitic. The epiphyte derives its moisture and nutrients from the air, rain, and sometimes from debris accumulating around it instead of from the structure to which it is fastened. Epiphytes have two types of roots: clinging aerial roots (which absorb nutrients from humus that accumulates in the crevices of trees) and aerial roots (which absorb moisture from the atmosphere).
+Insectivorous Plants
+An insectivorous plant has specialized leaves to attract and digest insects. The Venus flytrap is popularly known for its insectivorous mode of nutrition and has leaves that work as traps. The minerals it obtains from prey compensate for those lacking in the boggy (low pH) soil of its native North Carolina coastal plains. There are three sensitive hairs in the center of each half of each leaf. The edges of each leaf are covered with long spines. Nectar secreted by the plant attracts flies to the leaf. When a fly touches the sensory hairs, the leaf immediately closes. Fluids and enzymes then break down the prey and minerals are absorbed by the leaf. Since this plant is popular in the horticultural trade, it is threatened in its original habitat.
+Contributions and Attributions
+- OpenStax College, Biology. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/?collection=col11448/latest . License : CC BY: Attribution
+- nodule. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/nodule . License : CC BY-SA: Attribution-ShareAlike
+- rhizobia. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/rhizobia . License : CC BY-SA: Attribution-ShareAlike
+- nitrogen fixation. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/nitrogen_fixation . License : CC BY-SA: Attribution-ShareAlike
+- Nitrogen Cycle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:Nitrogen_Cycle.svg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/Figure_31_03_01abc.png . License : CC BY: Attribution
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/Figure_31_03_02ab.jpg . License : CC BY: Attribution
+- OpenStax College, Biology. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/?collection=col11448/latest . License : CC BY: Attribution
+- Mycorrhiza. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Mycorrhiza . License : CC BY-SA: Attribution-ShareAlike
+- mycorrhiza. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/mycorrhiza . License : CC BY-SA: Attribution-ShareAlike
+- hypha. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/hypha . License : CC BY-SA: Attribution-ShareAlike
+- mycelium. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/mycelium . License : CC BY-SA: Attribution-ShareAlike
+- Nitrogen Cycle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:Nitrogen_Cycle.svg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/Figure_31_03_01abc.png . License : CC BY: Attribution
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/Figure_31_03_02ab.jpg . License : CC BY: Attribution
+- Ectomycorrhizae 001. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/File:Ectomycorrhizae_001.jpg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest...e_31_03_03.jpg . License : CC BY: Attribution
+- OpenStax College, Biology. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/?collection=col11448/latest . License : CC BY: Attribution
+- OpenStax College, Biology. October 23, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/?collection=col11448/latest . License : CC BY: Attribution
+- Lichen. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Lichen . License : CC BY-SA: Attribution-ShareAlike
+- Root nodule. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/Root_nodule . License : CC BY-SA: Attribution-ShareAlike
+- mycobiont. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/mycobiont . License : CC BY-SA: Attribution-ShareAlike
+- insectivorous. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/insectivorous . License : CC BY-SA: Attribution-ShareAlike
+- photobiont. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/photobiont . License : CC BY-SA: Attribution-ShareAlike
+- epiphyte. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/epiphyte . License : CC BY-SA: Attribution-ShareAlike
+- photosynthate. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/photosynthate . License : CC BY-SA: Attribution-ShareAlike
+- saprophyte. Provided by : Wiktionary. Located at : en.wiktionary.org/wiki/saprophyte . License : CC BY-SA: Attribution-ShareAlike
+- Nitrogen Cycle. Provided by : Wikipedia. Located at : en.Wikipedia.org/wiki/File:Nitrogen_Cycle.svg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/Figure_31_03_01abc.png . License : CC BY: Attribution
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/Figure_31_03_02ab.jpg . License : CC BY: Attribution
+- Ectomycorrhizae 001. Provided by : Wikimedia. Located at : commons.wikimedia.org/wiki/File:Ectomycorrhizae_001.jpg . License : CC BY-SA: Attribution-ShareAlike
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest/Figure_31_03_03.jpg . License : CC BY: Attribution
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest...e_31_03_05.jpg . License : CC BY: Attribution
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest...e_31_03_06.jpg . License : CC BY: Attribution
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest...e_31_03_04.jpg . License : CC BY: Attribution
+- OpenStax College, Nutritional Adaptations of Plants. October 17, 2013. Provided by : OpenStax CNX. Located at : http://cnx.org/content/m44718/latest...e_31_03_08.jpg . License : CC BY: Attribution
+Key Points
+- Some plants are parasites, which acquire all of some of their nutrients from another host plant and are, therefore, entirely dependent upon it for their survival.
+- Saprophytes acquire nutrients from dead matter, using enzymes to convert complex organic compounds into simpler forms from which the plant can absorb nutrients.
+- A symbiont experiences a mutually-beneficial arrangement with a plant; both partners contribute necessary nutrients to the other.
+- An epiphyte is a plant that grows on other plants, but is not dependent upon the other plant for nutrition; instead, it uses the other plant for physical support.
+- Insectivorous plants have special adapatations for attracting and trapping insects, which they use to supplement their own nutrients, depleted in the surrounding soil.
+Key Terms
+- photosynthate : any compound that is a product of photosynthesis
+- photobiont : a photosynthetic symbiont
+- mycobiont : the fungus that is a component of a lichen
+- saprophyte : any organism that lives on dead organic matter, as certain fungi and bacteria
+- epiphyte : a plant that grows on another, using it as a physical support but neither obtaining nutrients from it nor causing it any damage if also offering no benefit
+- insectivorous : capable of trapping and absorbing insects; such as the sundew, pitcher plant and Venus flytrap

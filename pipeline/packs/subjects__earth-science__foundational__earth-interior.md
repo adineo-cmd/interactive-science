@@ -1,578 +1,140 @@
 # Source pack — subjects/earth-science/foundational/earth-interior
 Lesson title: Journey to the Centre of the Earth
 Level: foundational
-Match confidence: 1.06
+Match confidence: 1.42
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.06 — Astronomy-OP_zItt6LJ § 8.5 Cosmic Influences on the Evolution of Earth
+## Match 1.42 — LibreTexts: 9.2: The Temperature of Earth’s Interior
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://geo.libretexts.org/Bookshelves/Geology/Physical_Geology_(Earle)/09%3A_Earths_Interior/9.02%3A_The_Temperature_of_Earths_Interior
 
-Thinking Ahead
-Airless worlds in our solar system seem peppered with craters large and small. Earth, on the other hand, has
-few craters, but a thick atmosphere and much surface activity. Although impacts occurred on Earth at the same
-rate, craters have since been erased by forces in the planet’s crust and atmosphere. What can the comparison
-between the obvious persistent cratering on so many other worlds, and the different appearance of Earth, tell
-us about the history of our planet?
-As our first step in exploring the solar system in more detail, we turn to the most familiar planet, our own
-Earth. The first humans to see Earth as a blue sphere floating in the blackness of space were the astronauts
-who made the first voyage around the Moon in 1968. For many people, the historic images showing our world
-as a small, distant globe represent a pivotal moment in human history, when it became difficult for educated
-human beings to view our world without a global perspective. In this chapter, we examine the composition and
-structure of our planet with its envelope of ocean and atmosphere. We ask how our terrestrial environment
-came to be the way it is today, and how it compares with other planets.
-Figure 8.1 Active Geology. This image, taken from the International Space Station in 2006, shows a plume of ash coming from the Cleveland
-Volcano in the Aleutian Islands. Although the plume was only visible for around two hours, such events are a testament to the dynamic nature
-of Earth’s crust. (credit: modification of work by NASA)
-8
-EARTH AS A PLANET
-Chapter 8 Earth as a Planet
-265
+9.2: The Temperature of Earth’s Interior
+As we’ve discussed in the context of metamorphism, Earth’s internal temperature increases with depth. However, as shown in Figure \(\PageIndex{1}\) (right), that rate of increase is not linear. The temperature gradient is around 15° to 30°C per kilometre within the upper 100 kilometers; it then drops off dramatically through the mantle, increases more quickly at the base of the mantle, and then increases slowly through the core. The temperature is around 1000°C at the base of the crust, around 3500°C at the base of the mantle, and around 5,000°C at Earth’s centre. The temperature gradient within the lithosphere (upper 100 kilometers) is quite variable depending on the tectonic setting. Gradients are lowest in the central parts of continents, higher in the vicinity of subduction zones, and higher still at divergent boundaries.
+Figure \(\PageIndex{1}\) (left) shows a typical temperature curve for the upper 500 kilometers of the mantle in more detail, along with the melting curve for dry mantle rock. (Mantle rock will melt under conditions to the right of the dashed red line.) In general the mantle is not molten because the temperature lies to the left of the melting curve, but within the depth interval between 100 and 250 kilometers the temperature curve comes very close to the melting boundary for dry mantle rock. At these depths, therefore, mantle rock is either very nearly melted or partially melted. In some situations, where extra heat is present and the temperature line crosses over the melting line, or where water is present, it may be completely molten. This region of the mantle—the asthenosphere—is also known as the low-velocity zone because seismic waves are slowed within rock that is near its melting point. Below 250 kilometers the temperature stays on the left side of the melting line; in other words, the mantle is solid from here all the way down to the D” layer near the core-mantle-boundary.
+The fact that the temperature gradient is much less in the main part of the mantle than in the lithosphere has been interpreted to indicate that the mantle is convecting, and therefore that heat from depth is being brought toward the surface faster than it would be with only heat conduction. As we’ll see in Chapter 10, a convecting mantle is an key feature of plate tectonics.
+The convection of the mantle is a product of the upward transfer of heat from the core to the lower mantle. As in a pot of soup on a hot stove (Figure \(\PageIndex{2}\)), the material near the heat source becomes hot and expands, making it lighter than the material above. The force of buoyancy causes it to rise, and cooler material flows in from the sides. The mantle convects in this way because the heat transfer from below is not perfectly even, and also because, even though mantle material is solid rock, it is sufficiently plastic to slowly flow (at rates of centimeters per year) as long as a steady force is applied to it.
+As in the soup pot example, Earth’s mantle will no longer convect once the core has cooled to the point where there is not enough heat transfer to overcome the strength of the rock. This has already happened on smaller planets like Mercury and Mars, as well as on Earth’s Moon.
+Why is the inside of the Earth hot?
+The heat of Earth’s interior comes from two main sources, each contributing about 50% of the heat. One of those is the frictional heat left over from the collisions of large and small particles that created Earth in the first place, plus the subsequent frictional heat of redistribution of material within Earth by gravitational forces (e.g., sinking of iron to form the core).
+The other source is radioactivity , specifically the spontaneous radioactive decay of the isotopes 235 U, 238 U, 40 K, and 232 Th, which are primarily present in the mantle. As shown on Figure \(\PageIndex{3}\), the total heat produced that way has been decreasing over time (because these isotopes are getting used up), and is now roughly 25% of what it was when Earth formed. This means that Earth’s interior is slowly becoming cooler.
+Image Descriptions
+| Layer | Depth (kilometers) | Temperature increase (Celsius) | Temperature increase rate (Degrees per kilometre) |
+|---|---|---|---|
+| Lithosphere | 0 to 100 | 0 to 1400 | 14 |
+| Asthenosphere | 100 to 250 | 1400 to 1700 | 2 |
+| Mantle | 250 to 1000 | 1700 to 2100 | 0.53 |
+| 1000 to 2000 | 2100 to 2600 | 0.5 | |
+| 2000 to 2890 | 2600 to 3800 | 1.35 | |
+| Outer Core | 2890 to 4000 | 3800 to 4600 | 0.72 |
+| 4000 to 5100 | 4600 to 5000 | 0.36 | |
+| Inner core | 5100 to 6370 | 5000 to 5100 | 0.079 |
+Media Attributions
+- Figures 9.1.1, 9.1.2: © Steven Earle. CC BY.
+- Figure \(\PageIndex{3}\): © Steven Earle. CC BY. Based on R. Arevalo, W. McDonough, M. Luong, , The K/U ratio of Earth: insights into mantle composition, structure and thermal evolution, Earth and Planetary Science Letters, V 278, p. 361-369, 2009.
 
-8.1
-THE GLOBAL PERSPECTIVE
-Learning Objectives
-By the end of this section, you will be able to:
-Describe the components of Earth’s interior and explain how scientists determined its structure
-Specify the origin, size, and extent of Earth’s magnetic field
-Earth is a medium-size planet with a diameter of approximately 12,760 kilometers (Figure 8.2). As one of the
-inner or terrestrial planets, it is composed primarily of heavy elements such as iron, silicon, and oxygen—very
-different from the composition of the Sun and stars, which are dominated by the light elements hydrogen and
-helium. Earth’s orbit is nearly circular, and Earth is warm enough to support liquid water on its surface. It is the
-only planet in our solar system that is neither too hot nor too cold, but “just right” for the development of life
-as we know it. Some of the basic properties of Earth are summarized in Table 8.1.
-Figure 8.2 Blue Marble. This image of Earth from space, taken by the Apollo 17 astronauts, is known as the “Blue Marble.” This is one of the
-rare images of a full Earth taken during the Apollo program; most images show only part of Earth’s disk in sunlight. (credit: modification of
-work by NASA)
-Some Properties of Earth
-Property
-Measurement
-Semimajor axis
-1.00 AU
-Period
-1.00 year
-Mass
-5.98 × 1024 kg
-Diameter
-12,756 km
-Radius
-6378 km
-Table 8.1
-266
-Chapter 8 Earth as a Planet
-This OpenStax book is available for free at http://cnx.org/content/col11992/1.13
+## Match 1.42 — LibreTexts: 8.14: Earth's Interior
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://geo.libretexts.org/Bookshelves/Geology/Fundamentals_of_Geology_(Schulte)/08%3A_Earthquakes/8.14%3A_Earth's_Interior
 
-Some Properties of Earth
-Property
-Measurement
-Escape velocity
-11.2 km/s
-Rotational period
-23 h 56 m 4 s
-Surface area
-5.1 × 108 km2
-Density
-5.514 g/cm3
-Atmospheric pressure
-1.00 bar
-Table 8.1
-Earth’s Interior
-The interior of a planet—even our own Earth—is difficult to study, and its composition and structure must be
-determined indirectly. Our only direct experience is with the outermost skin of Earth’s crust, a layer no more
-than a few kilometers deep. It is important to remember that, in many ways, we know less about our own planet
-5 kilometers beneath our feet than we do about the surfaces of Venus and Mars.
-Earth is composed largely of metal and silicate rock (see the Composition and Structure of Planets section).
-Most of this material is in a solid state, but some of it is hot enough to be molten. The structure of material
-in Earth’s interior has been probed in considerable detail by measuring the transmission of seismic waves
-through Earth. These are waves that spread through the interior of Earth from earthquakes or explosion sites.
-Seismic waves travel through a planet rather like sound waves through a struck bell. Just as the sound
-frequencies vary depending on the material the bell is made of and how it is constructed, so a planet’s response
-depends on its composition and structure. By monitoring the seismic waves in different locations, scientists
-can learn about the layers through which the waves have traveled. Some of these vibrations travel along the
-surface; others pass directly through the interior. Seismic studies have shown that Earth’s interior consists of
-several distinct layers with different compositions, illustrated in Figure 8.3. As waves travel through different
-materials in Earth’s interior, the waves—just like light waves in telescope lenses—bend (or refract) so that some
-seismic stations on Earth receive the waves and others are in “shadows.” Detecting the waves in a network of
-seismographs helps scientists construct a model of Earth’s interior, showing liquid and solid layers. This type of
-seismic imaging is not unlike that used in ultrasound, a type of imaging used to see inside the body.
-Chapter 8 Earth as a Planet
-267
+8.14: Earth's Interior
+INTRODUCTION
+If we could journey to the center of the earth we would have to travel about 6,400 km (4,000 miles). Along the way to earth’s core we would pass layers of rock that can be classified in two different ways, either by their chemistry or their physical behavior.
+According to the chemical composition of the rocks, earth’s interior can be differentiated into three layers—crust, mantle, and core.
+When considering the rocks of earth’s interior in terms of their physical behavior, six layers can be differentiated from the surface to the core. The characteristics that distinguish these six different layers are based on the relative strength of a given layer in response to stress and whether it is solid or liquid.
+TOUR THROUGH THE LAYERS OF EARTH
+The chemical compositions and physical behaviors of the rocks of earth’s interior converge in many ways but it is worthwhile to become familiar with the each of the different set of layers individually before exploring how they overlap.
+The chemical composition and physical behavior of rock inside the earth relate to each other because the chemical composition of a rock is one of the factors that determines its physical behavior. However, the physical behavior of rock also depends on the pressure and temperature it is subjected to at its depth within the earth. As depth inside the earth increases, the pressure and temperature increase. Some layers in the earth are harder or softer than adjacent layers, even though they have the same composition, because they are at different pressures and temperatures.
+Surface to Core, Chemically
+Crust
+The tour starts at the surface with earth’s crust. Generally speaking, the crust is predominately silicon oxide and aluminum oxide. Continental crust is thicker and less dense than oceanic crust. Earth’s crust varies in thickness from less than 5 km (under mid-ocean spreading ridges) to more than 70 km (beneath the highest mountain range).
+Mantle
+The next layer down chemically is the mantle. The mantle has an ultramafic composition – it contains more iron, magnesium, less aluminum and somewhat less silicon than the crust. The mantle is roughly 2,900 km thick. In terms of volume, the mantle is the largest of earth’s three chemical layers.
+Core
+The final stop on the chemical tour is the core, which is mostly iron and nickel. The core is about 3,500 km thick.
+The following table summarizes the chemical layers of the earth.
+| Chemical Layers of Earth | ||
+|---|---|---|
+| Crust | Mantle | Core |
+| composition: high Si, Al, & O | composition: moderate Si, high Mg & Fe | composition: Fe & Ni |
+| thickness: 5 to 70 km | thickness: 2,900 km | thickness: 3,500 km |
+Surface to Core, Physically
+Lithosphere
+Starting at the surface, the first layer is the lithosphere. We humans, and the other creatures that live on earth, occupy the surface of the lithosphere. The lithosphere is entirely solid except where there are zones of magma beneath volcanoes or in places undergoing magma intrusion. The volume of molten rock in the lithosphere is a tiny fraction, less than 0.1%, of the volume of the entire lithosphere.
+The lithosphere itself has two parts. The top part is the crust. The bottom part is the lithospheric mantle. The two components of the lithosphere, in combination, form a relatively strong, rigid layer of rock that covers the earth. Earth’s tectonic plates, all of which are in motion relative to each other, make up the lithosphere.
+Asthenosphere
+Beneath the lithosphere is a relatively weak and ductile layer of the mantle called the asthenosphere. Although the asthenosphere is solid, not liquid, it flows at geological rates, up to several cm (several inches) per year. In other words, the asthenosphere behaves much more plastically than the rigid lithosphere above it does.
+The chemical composition of the asthenosphere is about the same as the chemical composition of the overlying lithospheric mantle. Why, then, is the asthenosphere soft and the lithosphere rigid? It is because at the depth of the asthenosphere, temperatures are very close to the melting point of the rock, weakening the rock. In fact, it is thought likely, from indirect evidence, that there is a small percentage of molten rock in the tiny spaces between the minerals of the asthenosphere, which contributes to the soft nature of the rock. However, the solid minerals of the asthenosphere are extensively in contact with each other, forming a material that is solid overall despite the possible presence of a small amount of partial melt.
+The asthenosphere is the primary source of most magma. Because the asthenosphere is close to its melting point and may contain everywhere a small proportion of partly molten rock, it does not take much to cause magma to form and separate from the asthenosphere. As explained in the igneous rocks Basics page, melting of the asthenosphere can be caused by addition of fluid, particularly water, or by a decrease in pressure. In subduction zones, slabs of sinking lithosphere release water into the asthenosphere, causing the asthenosphere to melt and produce magma which rises into and through the crust, producing the volcanic arc that is found at every subduction zone. At divergent plate boundaries, the asthenosphere flows upward, or upwells, which reduces the lithostatic pressure enough to cause the rock of the asthenosphere to melt. That is why divergent plate boundaries are volcanic zones. The solidified lavas and intrusions at divergent plate boundaries produce new lithosphere, which fills in and replaces the plate material that spreads away on either side.
+Upper Mesosphere
+Beneath the asthenosphere is the rest of the mantle, the mesosphere. The mesosphere makes up most of the volume of the mantle. The mesosphere is entirely solid. The temperature and pressure of the rock in the mesosphere keep it from breaking; therefore, no earthquakes originate from the mesosphere.
+The upper mesosphere is a transition zone in which the rock rapidly becomes denser with depth in response to the increasing lithostatic pressure.
+Lower Mesosphere
+The lower mesosphere starts at a depth of 660 km from earth’s surface. At that depth there is an abrupt increase in density. This increase is caused by changes in the crystal structures of the most abundant minerals in the rock. These minerals change from less dense crystal structures above the boundary to more dense crystal structures below the boundary. The lower mesosphere undergoes little density change from its top boundary at 660 km to its base at 2900 km where it meets the outer core.
+Outer Core
+The bottom of the mesosphere is the boundary with the earth’s core. The core is about twice as dense as the crust, and about 1.5 times as dense as the mantle. The outer core is liquid, as was discovered when it was first observed that S-waves will not pass through it.
+Inner Core
+The inner core is solid. The inner and outer cores are made of the same iron-rich, metallic composition. The temperature of the inner core is not very much greater than the temperature of the outer core. However, lithostatic pressure keeps increasing with depth and the inner core has the great weight of the rest of the earth pressing in on it. The pressure on the inner core is high enough to keep it in the solid state.
+REFLECTION QUESTIONS
+- What skill does this content help you develop?
+- What are the key topics covered in this content?
+- How can the content in this section help you demonstrate mastery of a specific skill?
+- What questions do you have about this content?
+Contributors and Attributions
+-
+Original content from Kimberly Schulte (Columbia Basin College) and supplemented by Lumen Learning . The content on this page is copyrighted under a Creative Commons Attribution 4.0 International license.
 
-Figure 8.3 Interior Structure of Earth. The crust, mantle, and inner and outer cores (liquid and solid, respectively) as shown as revealed by
-seismic studies.
-The top layer is the crust, the part of Earth we know best (Figure 8.4). Oceanic crust covers 55% of Earth’s
-surface and lies mostly submerged under the oceans. It is typically about 6 kilometers thick and is composed
-of volcanic rocks called basalt. Produced by the cooling of volcanic lava, basalts are made primarily of the
-elements silicon, oxygen, iron, aluminum, and magnesium. The continental crust covers 45% of the surface,
-some of which is also beneath the oceans. The continental crust is 20 to 70 kilometers thick and is composed
-predominantly of a different volcanic class of silicates (rocks made of silicon and oxygen) called granite. These
-crustal rocks, both oceanic and continental, typically have densities of about 3 g/cm3. (For comparison, the
-density of water is 1 g/cm3.) The crust is the easiest layer for geologists to study, but it makes up only about
-0.3% of the total mass of Earth.
-Figure 8.4 Earth’s Crust. This computer-generated image shows the surface of Earth’s crust as determined from satellite images and ocean
-floor radar mapping. Oceans and lakes are shown in blue, with darker areas representing depth. Dry land is shown in shades of green and
-brown, and the Greenland and Antarctic ice sheets are depicted in shades of white. (credit: modification of work by C. Amante, B. W. Eakins,
-National Geophysical Data Center, NOAA)
-268
-Chapter 8 Earth as a Planet
-This OpenStax book is available for free at http://cnx.org/content/col11992/1.13
+## Match 1.40 — LibreTexts: 9.1: Understanding Earth Through Seismology
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://geo.libretexts.org/Bookshelves/Geology/Physical_Geology_(Earle)/09%3A_Earths_Interior/9.01%3A_Understanding_Earth_Through_Seismology
 
-The largest part of the solid Earth, called the mantle, stretches from the base of the crust downward to a depth
-of 2900 kilometers. The mantle is more or less solid, but at the temperatures and pressures found there, mantle
-rock can deform and flow slowly. The density in the mantle increases downward from about 3.5 g/cm3 to more
-than 5 g/cm3 as a result of the compression produced by the weight of overlying material. Samples of upper
-mantle material are occasionally ejected from volcanoes, permitting a detailed analysis of its chemistry.
-Beginning at a depth of 2900 kilometers, we encounter the dense metallic core of Earth. With a diameter of
-7000 kilometers, our core is substantially larger than the entire planet Mercury. The outer core is liquid, but the
-innermost part of the core (about 2400 kilometers in diameter) is probably solid. In addition to iron, the core
-probably also contains substantial quantities of nickel and sulfur, all compressed to a very high density.
-The separation of Earth into layers of different densities is an example of differentiation, the process of sorting
-the major components of a planet by density. The fact that Earth is differentiated suggests that it was once
-warm enough for its interior to melt, permitting the heavier metals to sink to the center and form the dense
-core. Evidence for differentiation comes from comparing the planet’s bulk density (5.5 g/cm3) with the surface
-materials (3 g/cm3) to suggest that denser material must be buried in the core.
-Magnetic Field and Magnetosphere
-We can find additional clues about Earth’s interior from its magnetic field. Our planet behaves in some ways as
-if a giant bar magnet were inside it, aligned approximately with the rotational poles of Earth. This magnetic field
-is generated by moving material in Earth’s liquid metallic core. As the liquid metal inside Earth circulates, it sets
-up a circulating electric current. When many charged particles are moving together like that—in the laboratory
-or on the scale of an entire planet—they produce a magnetic field.
-Earth’s magnetic field extends into surrounding space. When a charged particle encounters a magnetic field
-in space, it becomes trapped in the magnetic zone. Above Earth’s atmosphere, our field is able to trap small
-quantities of electrons and other atomic particles. This region, called the magnetosphere, is defined as the
-zone within which Earth’s magnetic field dominates over the weak interplanetary magnetic field that extends
-outward from the Sun (Figure 8.5).
-Figure 8.5 Earth’s Magnetosphere. A cross-sectional view of our magnetosphere (or zone of magnetic influence), as revealed by numerous
-spacecraft missions. Note how the wind of charged particles from the Sun “blows” the magnetic field outward like a wind sock.
-Chapter 8 Earth as a Planet
-269
-
-Where do the charged particles trapped in our magnetosphere come from? They flow outward from the hot
-surface of the Sun; this is called the solar wind. It not only provides particles for Earth’s magnetic field to trap, it
-also stretches our field in the direction pointing away from the Sun. Typically, Earth’s magnetosphere extends
-about 60,000 kilometers, or 10 Earth radii, in the direction of the Sun. But, in the direction away from the Sun,
-the magnetic field can reach as far as the orbit of the Moon, and sometimes farther.
-The magnetosphere was discovered in 1958 by instruments on the first US Earth satellite, Explorer 1, which
-recorded the ions (charged particles) trapped in its inner part. The regions of high-energy ions in the
-magnetosphere are often called the Van Allen belts in recognition of the University of Iowa professor who built
-the scientific instrumentation for Explorer 1. Since 1958, hundreds of spacecraft have explored various regions
-of the magnetosphere. You can read more about its interaction with the Sun in a later chapter.
-8.2
-EARTH’S CRUST
-Learning Objectives
-By the end of this section, you will be able to:
-Denote the primary types of rock that constitute Earth’s crust
-Explain the theory of plate tectonics
-Describe the difference between rift and subduction zones
-Describe the relationship between fault zones and mountain building
-Explain the various types of volcanic activity occurring on Earth
-Let us now examine our planet’s outer layers in more detail. Earth’s crust is a dynamic place. Volcanic eruptions,
-erosion, and large-scale movements of the continents rework the surface of our planet constantly. Geologically,
-ours is the most active planet. Many of the geological processes described in this section have taken place
-on other planets as well, but usually in their distant pasts. Some of the moons of the giant planets also have
-impressive activity levels. For example, Jupiter’s moon Io has a remarkable number of active volcanoes.
-Composition of the Crust
-Earth’s crust is largely made up of oceanic basalt and continental granite. These are both igneous rock, the
-term used for any rock that has cooled from a molten state. All volcanically produced rock is igneous (Figure
-8.6).
-Figure 8.6 Formation of Igneous Rock as Liquid Lava Cools and Freezes. This is a lava flow from a basaltic eruption. Basaltic lava flows
-quickly and can move easily over distances of more than 20 kilometers. (credit: USGS)
-270
-Chapter 8 Earth as a Planet
-This OpenStax book is available for free at http://cnx.org/content/col11992/1.13
-
-Two other kinds of rock are familiar to us on Earth, although it turns out that neither is common on other
-planets. Sedimentary rocks are made of fragments of igneous rock or the shells of living organisms deposited
-by wind or water and cemented together without melting. On Earth, these rocks include the common
-sandstones, shales, and limestones. Metamorphic rocks are produced when high temperature or pressure
-alters igneous or sedimentary rock physically or chemically (the word metamorphic means “changed in form”).
-Metamorphic rocks are produced on Earth because geological activity carries surface rocks down to
-considerable depths and then brings them back up to the surface. Without such activity, these changed rocks
-would not exist at the surface.
-There is a fourth very important category of rock that can tell us much about the early history of the planetary
-system: primitive rock, which has largely escaped chemical modification by heating. Primitive rock represents
-the original material out of which the planetary system was made. No primitive material is left on Earth because
-the entire planet was heated early in its history. To find primitive rock, we must look to smaller objects such
-as comets, asteroids, and small planetary moons. We can sometimes see primitive rock in samples that fall to
-Earth from these smaller objects.
-A block of quartzite on Earth is composed of materials that have gone through all four of these states. Beginning
-as primitive material before Earth was born, it was heated in the early Earth to form igneous rock, transformed
-chemically and redeposited (perhaps many times) to form sedimentary rock, and finally changed several
-kilometers below Earth’s sur
-
-## Match 1.06 — Astronomy-2e-WEB_6qnoaIc § 8.5 Cosmic Influences on the Evolution of Earth
-
-Thinking Ahead
-Airless worlds in our solar system seem peppered with craters large and small. Earth, on the other hand, has
-few craters, but a thick atmosphere and much surface activity. Although impacts occurred on Earth at the
-same rate, craters have since been erased by forces in the planet’s crust and atmosphere. What can the
-comparison between the obvious persistent cratering on so many other worlds, and the different appearance
-of Earth, tell us about the history of our planet?
-As our first step in exploring the solar system in more detail, we turn to the most familiar planet, our own
-Earth. The first humans to see Earth as a blue sphere floating in the blackness of space were the astronauts
-who made the first voyage around the Moon in 1968. For many people, the historic images showing our world
-as a small, distant globe represent a pivotal moment in human history, when it became difficult for educated
-human beings to view our world without a global perspective. In this chapter, we examine the composition
-and structure of our planet with its envelope of ocean and atmosphere. We ask how our terrestrial
-environment came to be the way it is today, and how it compares with other planets.
-Earth as a Planet
-8
-8 • Thinking Ahead
-245
-
-8.1
-The Global Perspective
-Learning Objectives
-By the end of this section, you will be able to:
-Describe the components of Earth’s interior and explain how scientists determined its structure
-Specify the origin, size, and extent of Earth’s magnetic field
-Earth is a medium-size planet with a diameter of approximately 12,760 kilometers (Figure 8.2). As one of the
-inner or terrestrial planets, it is composed primarily of heavy elements such as iron, silicon, and oxygen—very
-different from the composition of the Sun and stars, which are dominated by the light elements hydrogen and
-helium. Earth’s orbit is nearly circular, and Earth is warm enough to support liquid water on its surface. It is
-the only planet in our solar system that is neither too hot nor too cold, but “just right” for the development of
-life as we know it. Some of the basic properties of Earth are summarized in Table 8.1.
-Figure 8.2 Blue Marble. This image of Earth from space, taken by the Apollo 17 astronauts, is known as the “Blue Marble.” This is
-one of the rare images of a full Earth taken during the Apollo program; most images show only part of Earth’s disk in sunlight.
-(credit: modification of work by NASA)
-Some Properties of Earth
-Property
-Measurement
-Semimajor axis
-1.00 AU
-Period
-1.00 year
-Mass
-5.98 × 1024 kg
-Diameter
-12,756 km
-Radius
-6378 km
-Escape velocity
-11.2 km/s
-Table 8.1
-246
-8 • Earth as a Planet
-Access for free at openstax.org
-
-Property
-Measurement
-Rotational period
-23 h 56 m 4 s
-Surface area
-5.1 × 108 km2
-Density
-5.514 g/cm3
-Atmospheric pressure
-1.00 bar
-Table 8.1
-Earth’s Interior
-The interior of a planet—even our own Earth—is difficult to study, and its composition and structure must be
-determined indirectly. Our only direct experience is with the outermost skin of Earth’s crust, a layer no more
-than a few kilometers deep. It is important to remember that, in many ways, we know less about our own
-planet 5 kilometers beneath our feet than we do about the surfaces of Venus and Mars.
-Earth is composed largely of metal and silicate rock (see the Composition and Structure of Planets section).
-Most of this material is in a solid state, but some of it is hot enough to be molten. The structure of material in
-Earth’s interior has been probed in considerable detail by measuring the transmission of seismic waves
-through Earth. These are waves that spread through the interior of Earth from earthquakes or explosion sites.
-Seismic waves travel through a planet rather like sound waves through a struck bell. Just as the sound
-frequencies vary depending on the material the bell is made of and how it is constructed, so a planet’s
-response depends on its composition and structure. By monitoring the seismic waves in different locations,
-scientists can learn about the layers through which the waves have traveled. Some of these vibrations travel
-along the surface; others pass directly through the interior. Seismic studies have shown that Earth’s interior
-consists of several distinct layers with different compositions, illustrated in Figure 8.3. As waves travel through
-different materials in Earth’s interior, the waves—just like light waves in telescope lenses—bend (or refract) so
-that some seismic stations on Earth receive the waves and others are in “shadows.” Detecting the waves in a
-network of seismographs helps scientists construct a model of Earth’s interior, showing liquid and solid layers.
-This type of seismic imaging is not unlike that used in ultrasound, a type of imaging used to see inside the
-body.
-8.1 • The Global Perspective
-247
-
-Figure 8.3 Interior Structure of Earth. The crust, mantle, and inner and outer cores (solid and liquid, respectively) as shown as
-revealed by seismic studies.
-The top layer is the crust, the part of Earth we know best (Figure 8.4). Oceanic crust covers 55% of Earth’s
-surface and lies mostly submerged under the oceans. It is typically about 6 kilometers thick and is composed
-of volcanic rocks called basalt. Produced by the cooling of volcanic lava, basalts are made primarily of the
-elements silicon, oxygen, iron, aluminum, and magnesium. The continental crust covers 45% of the surface,
-some of which is also beneath the oceans. The continental crust is 20 to 70 kilometers thick and is composed
-predominantly of a different volcanic class of silicates (rocks made of silicon and oxygen) called granite. These
-crustal rocks, both oceanic and continental, typically have densities of about 3 g/cm3. (For comparison, the
-density of water is 1 g/cm3.) The crust is the easiest layer for geologists to study, but it makes up only about
-0.3% of the total mass of Earth.
-Figure 8.4 Earth’s Crust. This computer-generated image shows the surface of Earth’s crust as determined from satellite images
-and ocean floor radar mapping. Oceans and lakes are shown in blue, with darker areas representing depth. Dry land is shown in
-shades of green and brown, and the Greenland and Antarctic ice sheets are depicted in shades of white. (credit: modification of work
-by C. Amante, B. W. Eakins, National Geophysical Data Center, NOAA)
-The largest part of the solid Earth, called the mantle, stretches from the base of the crust downward to a
-depth of 2900 kilometers. The mantle is more or less solid, but at the temperatures and pressures found there,
-248
-8 • Earth as a Planet
-Access for free at openstax.org
-
-mantle rock can deform and flow slowly. The density in the mantle increases downward from about 3.5 g/cm3
-to more than 5 g/cm3 as a result of the compression produced by the weight of overlying material. Samples of
-upper mantle material are occasionally ejected from volcanoes, permitting a detailed analysis of its chemistry.
-Beginning at a depth of 2900 kilometers, we encounter the dense metallic core of Earth. With a diameter of
-7000 kilometers, our core is substantially larger than the entire planet Mercury. The outer core is liquid, but the
-innermost part of the core (about 2400 kilometers in diameter) is probably solid. In addition to iron, the core
-probably also contains substantial quantities of nickel and sulfur, all compressed to a very high density.
-The separation of Earth into layers of different densities is an example of differentiation, the process of sorting
-the major components of a planet by density. The fact that Earth is differentiated suggests that it was once
-warm enough for its interior to melt, permitting the heavier metals to sink to the center and form the dense
-core. Evidence for differentiation comes from comparing the planet’s bulk density (5.5 g/cm3) with the surface
-materials (3 g/cm3) to suggest that denser material must be buried in the core.
-Magnetic Field and Magnetosphere
-We can find additional clues about Earth’s interior from its magnetic field. Our planet behaves in some ways as
-if a giant bar magnet were inside it, aligned approximately with the rotational poles of Earth. This magnetic
-field is generated by moving material in Earth’s liquid metallic core. As the liquid metal inside Earth circulates,
-it sets up a circulating electric current. When many charged particles are moving together like that—in the
-laboratory or on the scale of an entire planet—they produce a magnetic field.
-Earth’s magnetic field extends into surrounding space. When a charged particle encounters a magnetic field in
-space, it becomes trapped in the magnetic zone. Above Earth’s atmosphere, our field is able to trap small
-quantities of electrons and other atomic particles. This region, called the magnetosphere, is defined as the
-zone within which Earth’s magnetic field dominates over the weak interplanetary magnetic field that extends
-outward from the Sun (Figure 8.5).
-Figure 8.5 Earth’s Magnetosphere. A cross-sectional view of our magnetosphere (or zone of magnetic influence), as revealed by
-numerous spacecraft missions. Note how the wind of charged particles from the Sun “blows” the magnetic field outward like a wind
-sock.
-Where do the charged particles trapped in our magnetosphere come from? They flow outward from the hot
-surface of the Sun; this is called the solar wind. It not only provides particles for Earth’s magnetic field to trap,
-it also stretches our field in the direction pointing away from the Sun. Typically, Earth’s magnetosphere
-extends about 60,000 kilometers, or 10 Earth radii, in the direction of the Sun. But, in the direction away from
-the Sun, the magnetic field can reach as far as the orbit of the Moon, and sometimes farther.
-8.1 • The Global Perspective
-249
-
-The magnetosphere was discovered in 1958 by instruments on the first US Earth satellite, Explorer 1, which
-recorded the ions (charged particles) trapped in its inner part. The regions of high-energy ions in the
-magnetosphere are often called the Van Allen belts in recognition of the University of Iowa professor who built
-the scientific instrumentation for Explorer 1. Since 1958, hundreds of spacecraft have explored various regions
-of the magnetosphere. You can read more about its interaction with the Sun in a later chapter.
-8.2
-Earth’s Crust
-Learning Objectives
-By the end of this section, you will be able to:
-Denote the primary types of rock that constitute Earth’s crust
-Explain the theory of plate tectonics
-Describe the difference between rift and subduction zones
-Describe the relationship between fault zones and mountain building
-Explain the various types of volcanic activity occurring on Earth
-Let us now examine our planet’s outer layers in more detail. Earth’s crust is a dynamic place. Volcanic
-eruptions, erosion, and large-scale movements of the continents rework the surface of our planet constantly.
-Geologically, ours is the most active planet. Many of the geological processes described in this section have
-taken place on other planets as well, but usually in their distant pasts. Some of the moons of the giant planets
-also have impressive activity levels. For example, Jupiter’s moon Io has a remarkable number of active
-volcanoes.
-Composition of the Crust
-Earth’s crust is largely made up of oceanic basalt and continental granite. These are both igneous rock, the
-term used for any rock that has cooled from a molten state. All volcanically produced rock is igneous (Figure
-8.6).
-Figure 8.6 Formation of Igneous Rock as Liquid Lava Cools and Freezes. This is a lava flow from a basaltic eruption. Basaltic lava
-flows quickly and can move easily over distances of more than 20 kilometers. (credit: USGS)
-Two other kinds of rock are familiar to us on Earth, although it turns out that neither is common on other
-planets. Sedimentary rocks are made of fragments of igneous rock or the shells of living organisms
-deposited by wind or water and cemented together without melting. On Earth, these rocks include the
-common sandstones, shales, and limestones. Metamorphic rocks are produced when high temperature or
-pressure alters igneous or sedimentary rock physically or chemically (the word metamorphic means “changed
-in form”). Metamorphic rocks are produced on Earth because geological activity carries surface rocks down to
-considerable depths and then brings them back up to the surface. Without such activity, these changed rocks
-would not exist at the surface.
-There is a fourth very important category of rock that can tell us much about the early history of the planetary
-system: primitive rock, which has largely escaped chemical modification by heating. Primitive rock represents
-250
-8 • Earth as a Planet
-Access for free at openstax.org
-
-the original material out of which the planetary system was made. No primitive material is left on Earth
-because the entire planet was heated early in its history. To find primitive rock, we must look to smaller objects
-such as comets, asteroids, and small planetary moons. We can sometimes see primitive rock in samples that
-fall to Earth from these smaller objects.
-A block of quartzite on Earth is composed of materials that have gone through all four of these states.
-Beginning as primitive material before Earth was born, it was heated in the early Earth to form igneous rock,
-transformed chemically and redeposited (perhaps many times) to form sedimentary rock, and finally changed
-several kilometers below Earth’s surface into the hard, white metamorphic stone we see today.
-Plate Tectonics
-Geology is the study of Earth’s crust and the processes that have shaped its surface throughout history.
-(Although geo- means “related to Earth,” astronomers and planetary scientists also talk about the geology of
-other planets.) Heat escaping from the interior provides energy for the formation of our planet’s mountains,
-valleys, volcanoes, and even the continents and ocean basins themselves. But not until the middle of the
-twentieth century did geologist
-
-## Match 1.02 — IntroductiontoAnthropology-WEB § 4.7 Our Ancient Past: The Earliest Hominins
-
-This chapter applies evolutionary concepts to the understanding of human origins and
-explains the biological variation seen in our ancestors across time. Chapters 4, Biological Evolution and Early
-Human Evidence and Chapter 5, The Genus Homo and the Emergence of Us, represent a field of study that is
-probably the most dynamic, controversial and highly debated subfield of anthropology. Perspectives and
-opinions vary not only within the mindset of the general public but also amongst scientists and
-Figure 4.1
-The Grand Gallery of Evolution in the National Museum of Natural History in Paris, France displays
-9,500 specimens of the estimated millions of species that currently live or once lived on the Earth in its collections.
-In addition to educating the public about the mechanisms of evolution, the exhibitions in the museum honor the
-scientists who helped contribute to our current understanding of the history of life on Earth. (credit: “Great Gallery
-of Evolution” by Mustang Joe/flickr, Public Domain)
-CHAPTER OUTLINE
-
-anthropologists alike. As the human fossil puzzle begins to fill in with new discoveries, we find ourselves
-gaining valuable insights into what makes us human and the ways in which we are a part of, not separate from,
-the natural world. Despite our advances in the field, we also have to be prepared for the possibility we may end
-up with more questions than answers! It is these very reasons that explain why so many of us find this such a
-fascinating field and why so many of us take it so personally. It is after all a journey into the discovery of who
-we are and where we came from; and that should be of interest to all of us as members of the Homo genus.
-4.1 What Is Biological Anthropology?
-LEARNING OUTCOMES:
-By the end of this section, you will be able to:
-•
-Identify the five subfields of biological anthropology.
-•
-Explain how each of the subfields contributes to our understanding of human origins and evolution.
-•
-Understand the historical context of the field of biological anthropology.
-Looking to the Deep Past
-Biological anthropology, also referred to as physical anthropology or evolutionary anthropology, is one of the
-four major subfields of anthropology. While the other subfields focus on current and relatively recent human
-cultures, biological anthropology looks to the deeper past, asking questions about what it means to be human
-by exploring where humans came from as a species. Biological anthropology comprises numerous areas of
-study: human biological variation, paleoanthropology (human and primate evolution), primatology (the study
-of nonhuman primates), bioarchaeology (the study of bones found at archaeological sites), and genetic
-anthropology (the application of molecular science to archaeological, historical, and linguistic evidence to
-reveal the history of ancient human origins and migration). Each of these areas of study contributes something
-to anthropologists’ understanding of current human physical characteristics and behaviors.
-Exploring What It Means to Be Human
-Studies of human biological variation evaluate the physical similarities and differences between human
-populations across both time and space. Differences in morphology include features such as height, jawline,
-eye sockets, and ear and nose shape and size. Biochemical differences account for variations in the sense of
-smell, mutations in the CCR5 gene that offer resistance to HIV, and variations in skin pigmentation in response
-to levels of exposure to ultraviolet rays from the sun.
-FIGURE 4.2
-These variations in modern human skin pigmentation are the result of evolutionary adaptations to
-different levels of exposure to ultraviolet rays from the sun. (credit: “School Diversity Many Hands Held Together” by
-Wonder woman0731/flickr, CC BY 2.0)
-The study of human biological variation is closely linked to the original conception of biological anthropology,
-98
-4 • Biological Evolution and Early Human Evidence
-Access for free at openstax.org
-
-which was formalized in 1930 with the establishment of the American Association of Physical Anthropologists,
-recently renamed the American Association of Biological Anthropologists. The change in name is an effort to
-move away from the term physical anthropology, which has come to be associated with views promoting
-scientific racism that no longer represent or align with views held by anthropologists today. In 1951, American
-anthropologist Sherwood Washburn introduced a “new physical anthropology,” changing the focus from racial
-typology and classification to the study of human evolution and the evolutionary process. This new focus
-expanded anthropology as a field to include paleoanthropology and primatology
-Paleoanthropology looks at the fossil evidence of humanity’s ancestors along with ancient material culture
-such as tools and other human artifacts. The physical morphology (shape and size) of skulls and other
-postcranial material (skeletal remains other than the skull) allow paleoanthropologists to form hypotheses
-about important milestones in human evolution over time.
-Primatology examines the behavioral and physical attributes of both living and fossil primates as well as their
-relationships with their environments. Humans are primates who share a common ancestry with nonhuman
-primates. By studying nonhuman primates, anthropologists can gain a better understanding of what it means
-to be a primate and what it means to be human.
-Genetic anthropology is used within several areas of biological anthropology. In this specialized area, DNA
-testing is combined with archaeological, historical, and linguistic evidence to reveal the history of ancient
-human migration or to track human disease.
-Forensic anthropology is a subfield of biological anthropology that applies scientific methods to the analysis
-of human remains for the purposes of identifying a victim and determining the possible cause of death. A
-major difference between forensic anthropology and other types of biological anthropology is that forensic
-anthropology is usually focused on crime scenes involving the death of an individual, whereas other types
-primarily focus on understanding patterns and features that may appear in a group or an entire population.
-Beginning in World War II, forensic anthropologists have been instrumental in helping identify victims of war
-and disasters. They have played critical roles in identifying victims of the Thailand tsunami in 2004 and the
-destruction of the World Trade Center on September 11, 2001. Today, most forensic anthropologists work in a
-medical examiner’s office, assisting with autopsies and examinations of skeletal remains.
-Bioarchaeology studies human remains in archaeological settings with a focus on what skeletal material can
-reveal about the culture, diet, and presence of disease in a population. Bioarchaeologists are also interested in
-the socioecological system of a population, which helps anthropologists better understand the roles of
-environmental and ecological pressures and influences in shaping cultural identity, social inequity,
-sustainability, and access to and use of resources. Based on the biological remains found at archaeological
-sites, bioarchaeologists explore questions pertaining to social and funerary behavior, diet and nutrition,
-health, and disease. Bioarchaeology offers a window into the connections among biology, society, and culture.
-An example of what a bioarchaeologist might study is skeletal evidence of infant cranial boarding, which was
-practiced by many cultures, including the ancient Maya, the Inca, and some Native North American groups.
-The process involved binding a child’s head to a flat board in order to artificially deform the skull, possibly to
-meet an aesthetic ideal or to signify social status. Bioarcheologists have found that variations in how the board
-was attached to the skull provide important information about an individual’s social identity.
-4.1 • What Is Biological Anthropology?
-99
-
-FIGURE 4.3
-This elongated skull is from a member of the Nazca culture, which flourished in what is now Peru in
-the years 100 BCE to 800 CE. It’s long, oval shape is the result of infant cranial bonding, the practice of deliberately
-shaping the development of an infant’s skull by bonding it to stiff boards. (credit: “Nasca Peru Deformed Skull” by
-VasenkaPhotography/flickr, CC BY 2.0)
-PROFILES IN ANTHROPOLOGY
-Ann Rosalie David
-1946-
-FIGURE 4.4
-Professor Ann Rosalie David, Egyptologist and forensic and biological anthropologist at the University
-of Manchester, UK. (credit: Professor David, Public Domain)
-Personal History: Professor Ann Rosalie David was born in Cardiff, UK and earned a bachelor of arts degree in
-ancient history from University College London in 1967 and a doctorate from the University of Liverpool in
-1971. Her thesis was on ancient Egyptian temple rituals.
-100
-4 • Biological Evolution and Early Human Evidence
-Access for free at openstax.org
-
-Area of Anthropology: The focus of Professor’s David’s work has been biological anthropology and Egyptology.
-Accomplishments In the Field: Professor David is a Director of the KNH Centre for Biological and Forensic
-Studies in Egyptology at the University of Manchester. In this role, she established the Ancient Egyptian
-Mummy Tissue Bank, one of the only such tissue banks in the world. She served as the keeper of Egyptology at
-the Manchester Museum and has often worked in collaboration with Egypt’s Ministry of Health and Population
-on public health projects. One such project involved the identification of antibodies against schistosomiasis, a
-parasite spread by freshwater snails, in Egyptian mummies.
-David was made an Officer of the Order of the British Empire (OBE) in 2003 for her work in Egyptology. David
-has appeared in or consulted on several documentaries, including the television miniseries Private Lives of the
-Pharaohs (2000) and Secrets of the Pharaohs (2001) and the documentary short Mummies: Secrets of the
-Pharaohs (2007).
-Importance of Her Work: Ann Rosalie David was the first woman in Britain to hold a professorship in
-Egyptology. She was a pioneer in biomedical research, conducting research on disease, diet, and lifestyles in
-ancient Egypt. In 2010, her work on ancient Egyptian mummies found evidence to suggest that cancer may be
-a human-created disease, attributable in part to modern pollution and changes in lifestyle and diet (David and
-Zimmerman 2010).
-PODCAST
-In this podcast (https://openstax.org/r/interview-mummies-withprof.annrosaliedavid), Professor Rosalie
-discusses her work with ancient Egyptian mummies.
-4.2 What’s in a Name? The Science of Taxonomy
-LEARNING OUTCOMES:
-By the end of this section, you will be able to:
-•
-Describe the historical context of binomial nomenclature and scientific classification.
-•
-Distinguish between the different categories of groups found in Linnaean classification.
-•
-Explain the different definitions of species and how they are applied to different populations.
-Defining the Science of Taxonomy
-Taxonomy is defined as the classification and naming of things. Taxonomy organizes things into groups based
-on predefined criteria. The criteria can be as simple as color or height or as complex as the presence or
-absence of a trait, gene, or behavior. Taxonomy is a critical component of biological anthropology because it
-helps anthropologists organize humans and their evolutionary ancestors both spatially (by location) and
-temporally (through time).
-Taxon refers to a specific subgroup, such as the genus. Taxa is the plural form of taxon, used to refer to all
-groups. The classification system used for organizing living organisms was originally developed in the 18th
-century by Swedish botanist Carolus Linnaeus. His system, which he called the Systema Naturae, uses a
-structure known as binomial nomenclature. Binomial nomenclature assigns two Latin names to each
-organism. The first is termed the genus name. The second is the specific or the trivial name, commonly called
-the species name. In print, genus and species names are italicized. The first letter of the genus is capitalized,
-while the species or trivial name is lowercase. For example, the scientific name for the house cat is Felis catus,
-and the name for modern human beings is Homo sapiens. Linnaeus’s binomial nomenclature established a
-shared scientific language that would become universal across countries and cultures, avoiding the confusion
-caused by regional and colloquial names.
-In addition to establishing a shared language, Linnaeus’s naming system groups organisms that share
-common traits. For example, he grouped together animals with mammary glands into the category mammals.
-Mammals were further broken down according to other traits. For example, mammals that have opposable
-4.2 • What’s in a Name? The Science of Taxonomy
-101
-
-thumbs were grouped together as primates, and those without opposable thumbs were grouped as non-
-primates. This is a hierarchical classification scheme, meaning that organisms are grouped into successive
-levels from the broadest category of domain to the more specific level of species.
-When Linnaeus first created his Systema Naturae, he built five hierarchical levels into his taxonomy: kingdom,
-class, order, genus, and species. Humans are in the kingdom Animalia, the class Mammalia, the order
-Primates, the genus Homo, and the species sapiens. Over time, many levels have been added to the Linnaean
-system of classification, including domain, phylum, subclass, superorder, family, and tribe. The addition of
-these taxon groups has enabled biological anthropologists to better understand the variations present in
-various groups of organisms. However, biological anthropologists spend the majority of their time trying to
-understand the species level.
-FIGURE 4.5
-This chart details the Linnaean hierarchical classification for the monarch butterfly. The broadest
-category, “Life”, appears at the top of the chart, with classificat
+9.1: Understanding Earth Through Seismology
+Seismology is the study of vibrations within Earth. These vibrations are caused by various events: earthquakes, extraterrestrial impacts, explosions, storm waves hitting the shore, and tidal effects. Of course, seismic techniques have been most widely applied to the detection and study of earthquakes, but there are many other applications, and arguably seismic waves provide the most important information that we have concerning Earth’s interior. Before going any deeper into Earth, however, we need to take a look at the properties of seismic waves. The types of waves that are useful for understanding Earth’s interior are called body waves , meaning that, unlike the surface waves on the ocean, they are transmitted through Earth materials.
+Imagine hitting a large block of strong rock (e.g., granite) with a heavy sledgehammer (Figure \(\PageIndex{1}\)). At the point where the hammer strikes it, a small part of the rock will be compressed by a fraction of a millimetre. That compression will transfer to the neighbouring part of the rock, and so on through to the far side of the rock—all in a fraction of a second. This is known as a compression wave, and it can be illustrated by holding a loose spring (like a Slinky) that is attached to something (or someone) at the other end. If you give it a sharp push so the coils are compressed, the compression propagates (travels) along the length of the spring and back (Figure \(\PageIndex{2}\)). You can think of a compression wave as a “push” wave—it’s called a P wave (although the “P” stands for “primary” because P waves arrive first at seismic stations).
+When we hit a rock with a hammer, we also create a different type of body wave, one that is characterized by back-and-forth vibrations (as opposed to compressions). This is known as a shear wave ( S wave , where the “S” stands for “secondary”), and an analogy would be what happens when you flick a length of rope with an up-and-down motion. As shown in Figure \(\PageIndex{2}\), a wave will form in the rope, which will travel to the end of the rope and back.
+Compression waves and shear waves travel very quickly through geological materials. As shown in Figure \(\PageIndex{3}\), typical P wave velocities are between 0.5 kilometers per second (km/s) and 2.5 km/s in unconsolidated sediments, and between 3.0 km/s and 6.5 km/s in solid crustal rocks. Of the common rocks of the crust, velocities are greatest in basalt and granite. S waves are slower than P waves, with velocities between 0.1 km/s and 0.8 km/s in soft sediments, and between 1.5 km/s and 3.8 km/s in solid rocks.
+Imagine that a strong earthquake takes place on Vancouver Island within Strathcona Park (west of Courtenay). Assuming that the crustal average P wave velocity is 5 km per second, how long will it take (in seconds) for the first seismic waves (P waves) to reach you in the following places (distances from the epicentre are shown)?
+- Nanaimo (120 km away)
+- Surrey (200 km away)
+- Kamloops (390 km away)
+See Appendix 3 for Exercise 9.1 answers .
+Mantle rock is generally denser and stronger than crustal rock and both P- and S-waves travel faster through the mantle than they do through the crust. Moreover, seismic-wave velocities are related to how tightly compressed a rock is, and the level of compression increases dramatically with depth. Finally, seismic waves are affected by the phase state of rock. They are slowed if there is any degree of melting in the rock. If the material is completely liquid, P waves are slowed dramatically and S waves are stopped altogether.
+As shown on the right-hand part of Figure \(\PageIndex{4}\), the upper approximately 100 km of the Earth is known as the lithosphere. This includes the rigid upper part of the mantle (or lithospheric mantle) and the crust. The next 150 km is the asthenosphere or low velocity zone (because seismic waves are slowed as they pass through that material). As we’ll see below, that part of the mantle is close to it’s melting point and in some regions may be partially molten.
+Accurate seismometers have been used for earthquake studies since the late 1800s, and systematic use of seismic data to understand Earth’s interior started in the early 1900s. The rate of change of seismic waves with depth in Earth (as shown in Figure \(\PageIndex{4}\)) has been determined over the past several decades by analyzing seismic signals from large earthquakes at seismic stations around the world. Small differences in arrival time of signals at different locations have been interpreted to show that:
+- Velocities are greater in mantle rock than in the crust.
+- Velocities generally increase with pressure, and therefore with depth.
+- Velocities slow in the area between a 100 and 250 kilometre depth (called the “low-velocity zone”; equivalent to the asthenosphere).
+- Velocities increase dramatically at 660 kilometre depth (because of a mineralogical transition).
+- Velocities slow in the region just above the core-mantle boundary (the D” (d-double-prime) layer or “ultra-low-velocity zone”).
+- S waves do not pass through the outer part of the core.
+- P wave velocities increase dramatically at the boundary between the liquid outer core and the solid inner core.
+One of the first discoveries about Earth’s interior made through seismology was in 1909 when Croatian seismologist Andrija Mohorovičić (pronounced Moho-ro-vi-chich ) realized that at certain distances from an earthquake, two separate sets of seismic waves arrived at a seismic station within a few seconds of each other. He reasoned that the waves that went down into the mantle, traveled through the mantle, and then were bent upward back into the crust, reached the seismic station first because although they had farther to go, they traveled faster through mantle rock (as shown in Figure \(\PageIndex{5}\)). The boundary between the crust and the mantle is known as the Mohorovičić discontinuity (or Moho). Its depth is between 30 and 40 kilometers beneath most of the continental crust, and between 5 and 10 kilometers beneath the oceanic crust.
+Our current understanding of the patterns of seismic wave transmission through Earth is summarized in Figure \(\PageIndex{6}\). Because of the gradual increase in density (and therefore rock strength) with depth, all waves are refracted (toward the lower density material) as they travel through homogenous parts of Earth and thus tend to curve outward toward the surface. Waves are also refracted at boundaries within Earth, such as at the Moho, at the core-mantle boundary (CMB), and at the outer-core/inner-core boundary.
+S waves do not travel through liquids—they are stopped at the CMB—and there is an S wave shadow on the side of Earth opposite a seismic source. The angular distance from the seismic source to the shadow zone is 103° on either side, so the total angular distance of the shadow zone is 154°. We can use this information to infer the depth to the CMB.
+P waves do travel through liquids, so they can make it through the liquid part of the core. Because of the refraction that takes place at the CMB, waves that travel through the core are bent away from the surface, and this creates a P wave shadow zone on either side, from 103° to 150°. This information can be used to discover the differences between the inner and outer parts of the core.
+We know that other planets must have (or at least did have) liquid cores like ours, and we could use seismic data to find out how big they are. The S wave shadow zones on planets A and B are shown. Using the same method used for Earth (on the left), sketch in the outlines of the cores for these two other planets.
+See Appendix 3 for Exercise 9.2 answers .
+Using data from many seismometers and hundreds of earthquakes, it is possible to create a two- or three-dimensional image of the seismic properties of part of the mantle. This technique is known as seismic tomography, and an example of the result is shown in Figure \(\PageIndex{8}\).
+The Pacific Plate subducts beneath Tonga and appears in Figure \(\PageIndex{8}\) as a 100 kilometre thick slab of cold (blue-colored) oceanic crust that has pushed down into the surrounding hot mantle. The cold rock is more rigid than the surrounding hot mantle rock, so it is characterized by slightly faster seismic velocities. There is volcanism in the Lau spreading centre and also in the Fiji area, and the warm rock in these areas has slower seismic velocities (yellow and red colors).
+Image descriptions
+| Material | S Wave (kilometers per second) | P Wave (kilometers per second) |
+|---|---|---|
+| Dry sand | 0.1 to 0.4 | 0.4 to 1.3 |
+| Clay | 0.2 to 0.6 | 0.6 to 1.6 |
+| Wet sand | 0.7 to 0.8 | 1.5 to 2.2 |
+| Till | 0.8 to 1.0 | 1.9 to 2.6 |
+| Mudstone | 2.1 to 2.3 | 3.0 to 4.3 |
+| Sandstone | 1.4 to 2.5 | 3.0 to 5.0 |
+| Limestone | 2.4 to 3.1 | 4.2 to 5.8 |
+| Granite | 3.0 to 3.7 | 4.9 to 5.9 |
+| Basalt | 3.3 to 4.0 | 5.2 to 6.2 |
+[Return to Figure \(\PageIndex{3}\)]
+| Layer | Depth from surface (km) | S-Wave velocity (kilometers per second) | P-Wave velocity (kilometers per second) |
+|---|---|---|---|
+| Crust | 0 to 30 | 3.0 to 4.6 | 5.3 to 7.0 |
+| Lithosphere | 30 to 100 | 4.6 to 5.8 | 7.0 to 8.7 |
+| Asthenosphere | 100 to 250 | 5.0 to 5.9 | 7.8 to 8.5 |
+| Mantle | 250 to 2890 | 5. to 7.0 | 8.2 to 12.6 |
+| Outer core | 2890 to 5100 | 0 | 8.0 to 10.1 |
+| Inner core | 5100 to 6370 | 0 | 11.8 to 12.0 |
+Media Attributions
+- Figures 9.1.1, 9.1.2, 9.1.4, 9.1.5, 9.1.6, 9.1.7: © Steven Earle. CC BY.
+- Figure \(\PageIndex{3}\): “P Wave Velocity, m/s” and “Shear Wave Velocity, m/s” by the US Environment Protection Agency. Edited by Steven Earle. Public domain.
+- Figure \(\PageIndex{8}\): “P-wave Tomography” by D. Zhao, Y. Xu, D.A. Wiens, L. Dorman, J. Hildebrand, and S. Webb. (Science, p. 278, 254-257, 1997). Used with permission.

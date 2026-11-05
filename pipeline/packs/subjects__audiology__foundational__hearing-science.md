@@ -1,411 +1,67 @@
 # Source pack — subjects/audiology/foundational/hearing-science
 Lesson title: Hearing Science
 Level: foundational
-Match confidence: 1.54
+Match confidence: 2.02
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.54 — Biology2e-WEB_ICOFkGu § 36.4 Hearing and
+## Match 2.02 — LibreTexts: 4.3: What’s in a Name? The Science of Taxonomy
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://socialsci.libretexts.org/Bookshelves/Anthropology/Introductory_Anthropology/Introduction_to_Anthropology_(OpenStax)/04%3A_Biological_Evolution_and_Early_Human_Evidence/4.03%3A_Whats_in_a_Name_The_Science_of_Taxonomy
 
-Vestibular
-Sensation
-36.5 Vision
-
-Senses provide information about the body and its environment. Humans have five special senses: olfaction
-(smell), gustation (taste), equilibrium (balance and body position), vision, and hearing. Additionally, we
-possess general senses, also called somatosensation, which respond to stimuli like temperature, pain,
-pressure, and vibration. Vestibular sensation, which is an organism’s sense of spatial orientation and
-balance, proprioception (position of bones, joints, and muscles), and the sense of limb position that is used
-to track kinesthesia (limb movement) are part of somatosensation. Although the sensory systems associated
-with these senses are very different, all share a common function: to convert a stimulus (such as light, or
-sound, or the position of the body) into an electrical signal in the nervous system. This process is called
-sensory transduction.
-There are two broad types of cellular systems that perform sensory transduction. In one, a neuron works
-with a sensory receptor, a cell, or cell process that is specialized to engage with and detect a specific
-stimulus. Stimulation of the sensory receptor activates the associated afferent neuron, which carries
-information about the stimulus to the central nervous system. In the second type of sensory transduction, a
-sensory nerve ending responds to a stimulus in the internal or external environment: this neuron constitutes
-the sensory receptor. Free nerve endings can be stimulated by several different stimuli, thus showing little
-receptor specificity. For example, pain receptors in your gums and teeth may be stimulated by temperature
-changes, chemical stimulation, or pressure.
-Reception
-The first step in sensation is reception, which is the activation of sensory receptors by stimuli such as
-mechanical stimuli (being bent or squished, for example), chemicals, or temperature. The receptor can then
-respond to the stimuli. The region in space in which a given sensory receptor can respond to a stimulus, be it
-far away or in contact with the body, is that receptor’s receptive field. Think for a moment about the
-differences in receptive fields for the different senses. For the sense of touch, a stimulus must come into
-contact with the body. For the sense of hearing, a stimulus can be a moderate distance away (some baleen
-whale sounds can propagate for many kilometers). For vision, a stimulus can be very far away; for example,
-the visual system perceives light from stars at enormous distances.
-Transduction
-The most fundamental function of a sensory system is the translation of a sensory signal to an electrical
-signal in the nervous system. This takes place at the sensory receptor, and the change in electrical potential
-that is produced is called the receptor potential. How is sensory input, such as pressure on the skin,
-changed to a receptor potential? In this example, a type of receptor called a mechanoreceptor (as shown in
-Figure 36.2) possesses specialized membranes that respond to pressure. Disturbance of these dendrites by
-compressing them or bending them opens gated ion channels in the plasma membrane of the sensory
-neuron, changing its electrical potential. Recall that in the nervous system, a positive change of a neuron’s
-electrical potential (also called the membrane potential), depolarizes the neuron. Receptor potentials are
-graded potentials: the magnitude of these graded (receptor) potentials varies with the strength of the
-stimulus. If the magnitude of depolarization is sufficient (that is, if membrane potential reaches a
-threshold), the neuron will fire an action potential. In most cases, the correct stimulus impinging on a
-sensory receptor will drive membrane potential in a positive direction, although for some receptors, such as
-those in the visual system, this is not always the case.
-1018
-Chapter 36 • Sensory Systems
-Access for free at openstax.org.
-
-Figure 36.2 (a) Mechanosensitive ion channels are gated ion channels that respond to mechanical deformation of the plasma membrane. A
-mechanosensitive channel is connected to the plasma membrane and the cytoskeleton by hair-like tethers. When pressure causes the
-extracellular matrix to move, the channel opens, allowing ions to enter or exit the cell. (b) Stereocilia in the human ear are connected to
-mechanosensitive ion channels. When a sound causes the stereocilia to move, mechanosensitive ion channels transduce the signal to the
-cochlear nerve.
-Sensory receptors for different senses are very different from each other, and they are specialized according to the type of
-stimulus they sense: they have receptor specificity. For example, touch receptors, light receptors, and sound receptors are each
-activated by different stimuli. Touch receptors are not sensitive to light or sound; they are sensitive only to touch or pressure.
-However, stimuli may be combined at higher levels in the brain, as happens with olfaction, contributing to our sense of taste.
-Encoding and Transmission of Sensory Information
-Four aspects of sensory information are encoded by sensory systems: the type of stimulus, the location of the stimulus in the
-receptive field, the duration of the stimulus, and the relative intensity of the stimulus. Thus, action potentials transmitted over a
-sensory receptor’s afferent axons encode one type of stimulus, and this segregation of the senses is preserved in other sensory
-circuits. For example, auditory receptors transmit signals over their own dedicated system, and electrical activity in the axons of
-the auditory receptors will be interpreted by the brain as an auditory stimulus—a sound.
-The intensity of a stimulus is often encoded in the rate of action potentials produced by the sensory receptor. Thus, an intense
-stimulus will produce a more rapid train of action potentials, and reducing the stimulus will likewise slow the rate of production
-of action potentials. A second way in which intensity is encoded is by the number of receptors activated. An intense stimulus
-might initiate action potentials in a large number of adjacent receptors, while a less intense stimulus might stimulate fewer
-receptors. Integration of sensory information begins as soon as the information is received in the CNS, and the brain will
-further process incoming signals.
-36.1 • Sensory Processes
-1019
-
-Perception
-Perception is an individual’s interpretation of a sensation. Although perception relies on the activation of sensory receptors,
-perception happens not at the level of the sensory receptor, but at higher levels in the nervous system, in the brain. The brain
-distinguishes sensory stimuli through a sensory pathway: action potentials from sensory receptors travel along neurons that are
-dedicated to a particular stimulus. These neurons are dedicated to that particular stimulus and synapse with particular neurons
-in the brain or spinal cord.
-All sensory signals, except those from the olfactory system, are transmitted though the central nervous system and are routed to
-the thalamus and to the appropriate region of the cortex. Recall that the thalamus is a structure in the forebrain that serves as a
-clearinghouse and relay station for sensory (as well as motor) signals. When the sensory signal exits the thalamus, it is
-conducted to the specific area of the cortex (Figure 36.3) dedicated to processing that particular sense.
-How are neural signals interpreted? Interpretation of sensory signals between individuals of the same species is largely similar,
-owing to the inherited similarity of their nervous systems; however, there are some individual differences. A good example of
-this is individual tolerances to a painful stimulus, such as dental pain, which certainly differ.
-Figure 36.3 In humans, with the exception of olfaction, all sensory signals are routed from the (a) thalamus to (b) final processing regions in
-the cortex of the brain. (credit b: modification of work by Polina Tishina)
-SCIENTIFIC METHOD CONNECTION
-Just-Noticeable Difference
-It is easy to differentiate between a one-pound bag of rice and a two-pound bag of rice. There is a one-pound difference, and one
-bag is twice as heavy as the other. However, would it be as easy to differentiate between a 20- and a 21-pound bag?
-Question: What is the smallest detectible weight difference between a one-pound bag of rice and a larger bag? What is the
-smallest detectible difference between a 20-pound bag and a larger bag? In both cases, at what weights are the differences
-detected? This smallest detectible difference in stimuli is known as the just-noticeable difference (JND).
-Background: Research background literature on JND and on Weber’s Law, a description of a proposed mathematical
-relationship between the overall magnitude of the stimulus and the JND. You will be testing JND of different weights of rice in
-bags. Choose a convenient increment that is to be stepped through while testing. For example, you could choose 10 percent
-increments between one and two pounds (1.1, 1.2, 1.3, 1.4, and so on) or 20 percent increments (1.2, 1.4, 1.6, and 1.8).
-Hypothesis: Develop a hypothesis about JND in terms of percentage of the whole weight being tested (such as “the JND between
-the two small bags and between the two large bags is proportionally the same,” or “. . . is not proportionally the same.”) So, for
-the first hypothesis, if the JND between the one-pound bag and a larger bag is 0.2 pounds (that is, 20 percent; 1.0 pound feels
-the same as 1.1 pounds, but 1.0 pound feels less than 1.2 pounds), then the JND between the 20-pound bag and a larger bag will
-also be 20 percent. (So, 20 pounds feels the same as 22 pounds or 23 pounds, but 20 pounds feels less than 24 pounds.)
-Test the hypothesis: Enlist 24 participants, and split them into two groups of 12. To set up the demonstration, assuming a 10
-percent increment was selected, have the first group be the one-pound group. As a counter-balancing measure against a
-1020
-Chapter 36 • Sensory Systems
-Access for free at openstax.org.
-
-systematic error, however, six of the first group will compare one pound to two pounds, and step down in weight (1.0 to 2.0, 1.0
-to 1.9, and so on), while the other six will step up (1.0 to 1.1, 1.0 to 1.2, and so on). Apply the same principle to the 20-pound
-group (20 to 40, 20 to 38, and so on, and 20 to 22, 20 to 24, and so on). Given the large difference between 20 and 40 pounds, you
-may wish to use 30 pounds as your larger weight. In any case, use two weights that are easily detectable as different.
-Record the observations: Record the data in a table similar to the table below. For the one-pound and 20-pound groups (base
-weights) record a plus sign (+) for each participant that detects a difference between the base weight and the step weight. Record
-a minus sign (-) for each participant that finds no difference. If one-tenth steps were not used, then replace the steps in the
-“Step Weight” columns with the step you are using.
-Results of JND Testing (+ = difference; – = no difference)
-Step Weight
-One pound
-20 pounds
-Step Weight
-1.1
-22
-1.2
-24
-1.3
-26
-1.4
-28
-1.5
-30
-1.6
-32
-1.7
-34
-1.8
-36
-1.9
-38
-2.0
-40
-Table 36.1
-Analyze the data/report the results: What step weight did all participants find to be equal with one-pound base weight? What
-about the 20-pound group?
-Draw a conclusion: Did the data support the hypothesis? Are the final weights proportionally the same? If not, why not? Do the
-findings adhere to Weber’s Law? Weber’s Law states that the concept that a just-noticeable difference in a stimulus is
-proportional to the magnitude of the original stimulus.
-
-## Match 1.52 — World_History_Volume_2-WEB_LdwoslB § 15.3 Science and Technology for Today’s World
-
-LEARNING OBJECTIVES
+4.3: What’s in a Name? The Science of Taxonomy
+-
+- Last updated
+- Save as PDF
+- Jennifer Hasty, David G. Lewis, & Marjorie M. Snipes
+- OpenStax
+Learning Objectives
 By the end of this section, you will be able to:
-•
-Discuss the development of complex digital computers and their effects on human society
-•
-Analyze the effects of the internet and social media on society
-•
-Describe important medical developments of the last fifty years and current medical challenges
-World War II brought about a massive technological transformation as countries like Germany and the United
-States rapidly innovated to avoid destruction and defeat their enemies. In the decades after the war, there was
-major progress in medical technology, the creation of new vaccines, and the elimination of deadly diseases. All
-642
-15 • The Contemporary World and Ongoing Challenges
-Access for free at openstax.org
+- Describe the historical context of binomial nomenclature and scientific classification.
+- Distinguish between the different categories of groups found in Linnaean classification.
+- Explain the different definitions of species and how they are applied to different populations.
+Defining the Science of Taxonomy
+Taxonomy is defined as the classification and naming of things. Taxonomy organizes things into groups based on predefined criteria. The criteria can be as simple as color or height or as complex as the presence or absence of a trait, gene, or behavior. Taxonomy is a critical component of biological anthropology because it helps anthropologists organize humans and their evolutionary ancestors both spatially (by location) and temporally (through time).
+Taxon refers to a specific subgroup, such as the genus. Taxa is the plural form of taxon, used to refer to all groups. The classification system used for organizing living organisms was originally developed in the 18th century by Swedish botanist Carolus Linnaeus. His system, which he called the Systema Naturae , uses a structure known as binomial nomenclature . Binomial nomenclature assigns two Latin names to each organism. The first is termed the genus name. The second is the specific or the trivial name, commonly called the species name. In print, genus and species names are italicized. The first letter of the genus is capitalized, while the species or trivial name is lowercase. For example, the scientific name for the house cat is Felis catus , and the name for modern human beings is Homo sapiens . Linnaeus’s binomial nomenclature established a shared scientific language that would become universal across countries and cultures, avoiding the confusion caused by regional and colloquial names.
+In addition to establishing a shared language, Linnaeus’s naming system groups organisms that share common traits. For example, he grouped together animals with mammary glands into the category mammals. Mammals were further broken down according to other traits. For example, mammals that have opposable thumbs were grouped together as primates, and those without opposable thumbs were grouped as non-primates. This is a hierarchical classification scheme, meaning that organisms are grouped into successive levels from the broadest category of domain to the more specific level of species.
+When Linnaeus first created his Systema Naturae , he built five hierarchical levels into his taxonomy: kingdom, class, order, genus, and species. Humans are in the kingdom Animalia, the class Mammalia, the order Primates, the genus Homo , and the species sapiens . Over time, many levels have been added to the Linnaean system of classification, including domain, phylum, subclass, superorder, family, and tribe. The addition of these taxon groups has enabled biological anthropologists to better understand the variations present in various groups of organisms. However, biological anthropologists spend the majority of their time trying to understand the species level.
+Defining a Species
+While species is a word that most people are familiar with and comfortable using, just what determines a species is incredibly difficult to define. At the most basic level, a species comprises a group of organisms with shared characteristics that distinguish them from other groups. Most scientists distinguish a species based on behavior, genetics, and/or morphology. Species definitions are the basis for scientific names. The common name of a species, on the other hand, is usually based on general physical characteristics noted by a culture or local population. Common names are also referred to as folk taxonomy or ethnotaxonomy (classifications influenced by culture, etc.). There is a growing interest among anthropologists and the scientific community in preserving Indigenous classifications of the natural world and connecting them with scientific classifications.
+Decisions related to classification often involve tremendous taxonomical controversy, especially within the field of biological anthropology. There are more than 20 distinct species definitions, or ways of categorizing or distinguishing one type of organism from another. Below are the four most common definitions of a species.
+Biological Species
+The biological species definition states that a species is a group of interbreeding organisms that are reproductively isolated from other groups of organisms. Reproductive isolation means that members of a species are not able to mate successfully with members outside their species. Gorillas, for example, cannot successfully breed with Pan paniscus , the bonobo. The biological species definition uses the ability to interbreed as its foundation because successful mating leads to gene flow, or the movement of genetic material from one population to another.
+Ecological Species
+The ecological species definition emphasizes the role of natural selection in maintaining species boundaries. This concept is based on the idea that gene flow is neither necessary nor sufficient to maintain species boundaries. Instead, natural selection plays an important role in maintaining the boundaries between species. In nature, species boundaries are often maintained even though there is a substantial amount of gene flow between species. Gene flow between species generally occurs at places called hybrid zones , areas of overlap where two species are known to successfully breed. A classic example of a hybrid zone occurs on the island of Sulawesi in Southeast Asia, where Macaca maura (the moor macaque) and Macaca tonkeana (the Tonkean macaque) are known to have successfully interbred for more than 150 years. Despite this, the integrity of the two distinct species has been maintained.
+Phylogenetic Species
+The biological species definition is based on breeding behavior, specifically whether species are capable of mating with one another. This foundation is problematic when trying to identify species over time. It is hard to know whether two fossil specimens were capable of interbreeding. It is also difficult in the fossil record to distinguish between interspecific variation (differences between members of two different species) and intraspecific variation (variation within a species). Imagine finding the bones of two individuals, one five feet tall and the other six feet four inches. Identifying whether these individuals were members of two different species (interspecific variation) or representative of the normal variation within a given species would be extremely challenging.
+These problems are addressed by the phylogenetic species definition . The phylogenetic species definition states that a species can be determined by shared possession of one unique characteristic. For example, imagine you found a group of fossil leg bones. In order to decide if they were from the same species, you would need to determine if they had a trait in common that only these fossil leg bones possessed. If the bones all possessed trait A and this trait was not found in any other species already identified, then you would have a new species, and all of the fossil leg bones could be placed in that species.
+Mate Recognition Species
+The mate recognition species definition states that a species is a set of organisms that recognize one another as potential mates. A classic example of a group of species that can be distinguished using this definition is American crickets. Within a single habitat in the United States, there might be over 30 different species of crickets. Each species of cricket is known to produce a distinct song. Despite all these different species living side by side, the female cricket of each species will only mate with a male after hearing the male sing her species-specific song. The song, and the female recognition of it, constitutes a mate recognition system. This is analogous to the biological species definition in that the song acts as a reproductive isolating mechanism.
 
-these achievements had profound effects on the way people lived, traveled, and worked. Underlying them were
-major advancements in the field of information technologies, such as computers. Once the war was over, the
-development of increasingly powerful computers ushered in a computer revolution as powerful as the
-nineteenth century’s Industrial Revolution, and with it a digital age.
-The Digital Computer Revolution
-Many of the technological advancements of the 1940s and 1950s came in the form of increasingly powerful
-analog computers, which analyze a continuous stream of information, much like that recorded on vinyl
-records. Analog computers worked well for solving big mathematical problems, such as the calculations
-related to electrical power delivery systems or the study of nuclear physics. However, one of their weaknesses
-was that they were inefficient at managing large amounts of data. Digital computers, or those that translate
-information into a complex series of ones and zeros, were far more capable of managing bulk data. Just a few
-years after the war, digital computing received a huge boost with the invention of the transistor, a device with
-far more computing potential than its predecessor the vacuum tube. Scientists could amplify this enlarged
-computing capacity even further by wiring multiple transistors together in increasingly complex ways.
-The use of multiple transistors for computing purposes was an important step, but it had obvious drawbacks.
-Making machines capable of processing a great deal of information required connecting many transistors,
-which took up a great deal of space. Then, in the late 1950s, inventors in the United States developed an
-innovative solution. Using silicon, they could integrate transistors and capacitors in a way that clumsy wiring
-could not accomplish. The silicon-based integrated circuit freed computer technology from size constraints
-and opened the door to additional advancements in computing power.
-Even so, digital computers remained large, expensive, and complicated to operate, and their use was largely
-confined to universities and the military. Only gradually over the 1970s did computing technology become
-more widely available, largely thanks to mass-produced general-purpose computers, sometimes called
-minicomputers, designed by IBM and the Digital Equipment Company. These served a variety of government
-and private purposes, such as calculating the Census, managing the flow of tax monies, and processing
-calculations related to creditworthiness (Figure 15.15). But despite being somewhat cheaper, minicomputers
-remained out of reach for average users.
-15.3 • Science and Technology for Today’s World
-643
+## Match 2.02 — LibreTexts: 6.1.1: Science and Theology
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://human.libretexts.org/Courses/Folsom_Lake_College/PHIL_300%3A_Introduction_to_Philosophy_(Bauer)/06%3A_God/6.01%3A_Philosophy_of_Religion/6.1.01%3A_Science_and_Theology
 
-FIGURE 15.15 Computers, 1950s. In the 1950s, computers required complex data management systems to
-operate. The U.S. Census Bureau used this device to transfer data from paper questionnaires to microfilm to allow
-for rapid processing by its computers. (credit: modification of work “Woman inspecting FOSDIC film” by U. S. Census
-Bureau/Wikimedia Commons, Public Domain)
-The journey from minicomputers to personal computers began with the Intel Corporation, established in 1968
-in Mountain View, California, in a region now commonly called Silicon Valley. During the 1970s, Intel
-developed a line of integrated circuits that were not only more powerful than their predecessors but also
-programmable. These became known as microprocessors, and they revolutionized computing by holding all of
-a computer’s processing power in a single integrated circuit. In 1975, a company in New Mexico released the
-first marketed personal computer, the Altair 8800. This used an Intel microprocessor and was promoted to
-computer hobbyists eager to wield a level of computing power once available to only a few. The Altair’s
-popularity inspired competing products like the Apple, the Commodore, and the Tandy Radio Shack computer
-(Figure 15.16). These personal computer systems were far easier to use and appealed to a much larger market
-than just hobbyists.
-644
-15 • The Contemporary World and Ongoing Challenges
-Access for free at openstax.org
+6.1.1: Science and Theology
+-
+- Last updated
+- Save as PDF
+13 Science and Theology
+Science and Theology 17
+The relationship between science and theology has a long and complicated history that goes back four or five hundred years. This discussion blends into an even longer debate over the relationship between reason and revelation. In response to science theology has undergone a profound reformulation. The European Enlightenment and the rise of the historical-critical study of the Bible were also extremely important, but I will limit my attention to science. I am also focusing on the response of Protestant theology to science, since that is the area I know best.
+I want to list four important challenges arising from science that called orthodox theology into question and brought about a major revision of Christian thought.
+1. The first challenge was that the success of scientific method called into question truth claims based on supernatural revelation and tradition. Science has provided the modern world its most reliable standard of knowledge. Science is the dominant paradigm of truth about the world. At the extreme we get what can be called scientism: What cannot be known by science not only cannot be known but is not real. Along with this there was in many quarters a loss of confidence in speculative reason under the influence of philosophers like David Hume and Immanuel Kant. In the minds of many they demolished the traditional arguments for the existence of God. This took place in the context of the Enlightenment, which urged people to think for themselves. It called into question all ancient traditions, superstitions, and any claims about reality that could not stand the test of enlightened reason. The great themes of the Enlightenment were reason, nature, and progress. If we will use our reason to understand nature and history, we can make material and moral progress as we move toward an ultimate perfection of life on earth. Among the resources of reason none was more important than science in providing the truth that would enlighten us and help us make life better. Science was based on evidence we could test. It solved one problem after another. It worked. It was creating a picture of the world and of human beings that was so convincing to so many that it gradually weakened other ways of knowing or pushed them aside. For Christians it raised a disturbing question: If the Bible could be wrong in matters of fact, could it also be wrong about matters of faith?
+2. The second challenge was that science undermined biblical cosmology. The Bible had provided Christian Europe its basic story of the origin of the cosmos and the structure of the natural world for 1500 hundred years. Between 1500-1900 of the Christian era, this understanding was demolished.  This world came into being a few thousand years ago with all the species of plant and animal life reproducing after their kind. Adam and Eve were real people living in a garden that could roughly be located on a map. A series of discoveries from Copernicus to Darwin demonstrated that picture of the universe and of human origins to be in error. Copernicus showed that the earth was not in the center of the world. His suggestion that the sun was the center was also wrong, but that is another story. Next geology revealed the earth to be much older than the biblical chronology allowed. Then came Darwin with the big bombshell. In 1859 the world was shaken by the claim that present species of life have evolved over a long period of time by natural selection to produce the forms of life that now inhabit the earth. The most disturbing feature of this theory was that human beings did not descend from Adam and Eve a few thousand years ago but evolved from earlier species that could be traced back to the first beginnings of life on earth far in the distant past.
+The Christian world was deeply disturbed. A few came pretty quickly to the conclusion that Darwin was right. They saw that there was no point in trying to resist. Others were upset and simply refused to believe it. They insisted that the Bible not science gave us the true picture. In England Bishop Wilberforce reacted with sarcasm. He asked Julian Huxley, the great scientist, whether it was on his mother's side or his father's side that he was descended from apes. An upper class, aristocratic British lady upon hearing about Darwin's theory said, "Oh dear, that is so dreadful. Let us hope it is not true. But if it is, let us keep quiet about it." In America Charles Hodge, the eminent Presbyterian theologian at Princeton, said that Darwinism is atheism. This was all taking place from 1860-1900. I saw a book by a fundamentalist Christian written in this century who said that he had seen performers in the circus riding two horses at one time, one foot on one horse and the other foot on the other. However, he noted that he had never seen this done when the horses were going in opposite directions. In his mind the Bible and evolution were going in opposite directions.
+This, then, is the second impact of science. It undermined the biblical picture of the physical and biological world. The controversy raised by Darwin goes on today. Liberal Christians accept evolution and revise their view of the Bible and of the world accordingly. Fundamentalists still insist that Darwin was wrong and the Bible is right. Some want creationism taught in the public schools along with evolution.
+3. The third challenge was the fact that the scientific picture of a law-abiding world called into question the reality of miracle and the supernatural. Science pictures nature as a dynamic, causal network, self-contained and self-explanatory. There is one order of activities in which all events occur in a law-abiding fashion. In this view miracles are suspect. The Bible is full of miracles from the Red Sea incident to the Virgin Birth of Jesus and his Resurrection from the dead, to mention only a few. John Calvin had used miracles and the fulfillment of prophesy as evidence of the truth of Scripture. Now it was miracles themselves that were in question. Could Christians live everyday in a world that abided by the laws of nature and then go to church on Sunday and believe in miracles that violated them?
+4. The fourth challenge was that the picture of nature as a self-contained causal system called into question the need for a supernatural creator or for any reference to divine purpose. From the 17th century beginnings until the 20th century revolutions in physical science, the natural order had been described by science in mechanistic, deterministic, materialist terms. Nature consists of bits of material stuff - matter - organized into a machine that operates in accordance with inexorable laws. The natural order is at best a neutral and at worst a meaningless process. There are causes but no reasons or purposes in nature. In nature there is no freedom, no meaning, or value. This is the most powerful and daunting challenge of all. Science seemed to imply a universe that needed no God to create it. It was a machine that required no explanation beyond itself. This machine did just what it did do, not knowing or caring what it did or having any purpose in doing it . In 1903 Bertrand Russell offered the most extreme summary of this outlook by saying that the world science presents for our belief is meaningless and void of purpose, an accidental collocation of atoms. 18 A lot of people, including myself, do not think that present-day science requires this world-view, but it prevailed for 300 years. 19 Moreover, many scientists today still hold that nature is full of causes but exemplifies no purpose. 20
+We could go on with this at great length. I have by no means given the complete picture, but let me turn now to the response of theology to these challenges. Let me speak briefly of two main types of response. I will then divide the second type into two sub-groups. This will leave out a lot that needs to be said to get the complete picture, but it will at least give some hint as to how Christian theology has met the challenge of modern science. I will call the two basic responses by the short-hand terms of fundamentalism and liberalism, recognizing that each of these schools of thought comes in many varieties. Moreover, some views would fall in between. To get the main point before us at once, let me say that fundamentalism says the Bible is right about everything, and that if science says something different, it must be rejected. Liberals say that science and the Bible are both right within their own legitimate spheres, but they deal with different aspects of reality. Therefore, there need not be any conflict between science and theology.
+Fundamentalism: Fundamentalists hold the view that the Bible is inerrant, without error. It tells the truth about everything it mentions. It is right about nature, the universe, the origin of human beings, the reproduction of species, and so on. All of its historical claims are true. The miracle stories happened just the way the Bible says. There is to be no compromise of biblical truth. The Bible is the Word of God in a full, complete, total manner and in all respects. Hence, if the Bible teaches that Adam and Eve were literal people living a garden somewhere on earth that we could locate on earth, then that story is just true. If evolution teaches something contrary to what the right interpretation of Scripture requires, then it is wrong. True science is in harmony with the Bible. Whatever contradicts the Bible is bad science. Some conservatives have made a variety of accommodations to science with respect to biblical cosmology, the age of the earth, and even evolution. Some even venture to distinguish between matters of science not essential to religious truth and matters of faith in which the Bible is without any error at all. As the recognition of the authority of science grows with respect to its own legitimate field of inquiry, the closer it comes to blending in with a moderate liberal approach. At some point the boundaries between science and theology and between fundamentalism and liberalism may become fuzzy.
+Liberalism: What all forms of liberalism agree on is that science is not to be contested on its own terms. If the scientific evidence shows conclusively that evolution occurred in the way that present-day science says it did, then it must be accepted. We simply have to come to terms with it. The basic way of doing that is to distinguish between the realms that science and religion deal with. Here let me distinguish very broadly between two sub-types of liberal thinking that make the distinction between science and theology in somewhat different ways. They agree with the basic liberal premise is that we must distinguish between two spheres of knowledge about reality.
+1. The first approach is deeply influenced by the philosophy of Immanuel Kant. Kant distinguished between the realm of fact that science deals with and the realm of value that morality and religion deal with. It is true that science presents us with a world of fact that is law-abiding and void of freedom and value. However, we have another faculty of understanding as moral persons who are free, who can live in accordance with duty, and make value judgments. Theology interprets the moral and religious realms. Science and religion cannot contradict each other since they deal with different spheres of human activity and deal with the world in different ways. Many theologians in the 19th and 20th centuries have taken their clues from Kant. Karl Barth, Emil Brunner, Rudolf Bultmann, and H. Richard Niebuhr fall into this camp. Existential theology under the joint influence of Kant and Kierkegaard takes this approach. The world, then, is one order of activities that human beings deal with in two different ways. On the one hand, we have the realm of fact, law, cause, and determinism. On the other hand, we have the
 
-FIGURE 15.16 Personal Computer, 1980s. The Tandy Color Computer 3 shown here, released in 1986 and
-nicknamed the CoCo 3, was one of many personal computers released in the 1980s that average consumers were
-able to buy for their homes. (credit: “CoCo3system” by Unknown/Wikimedia Commons, Public Domain)
-By 1982, there were 5.5 million personal computers in the United States, and over the next decade, their
-number and computing power rose exponentially. Computers proliferated in government offices, private firms,
-and family homes. Then, in 1984, Apple introduced the world to the Macintosh computer, which not only used
-a mouse but also replaced the standard code-based user interface with one based on graphics and icons.
-Recognizing the user-friendly possibilities of this graphic interface, competitors followed suit. Before long, the
-design popularized by Apple had become the norm.
-By the end of the 1980s, not only had personal computers become common, but the microprocessor itself
-could be found everywhere. Microprocessors were incorporated into automobiles, cash registers, televisions,
-and household appliances and made possible a variety of other electronic devices like videocassette recorders
-and video game systems (Figure 15.17). Computer systems were created to store and manage financial,
-educational, and health-care information. In one form or another and whether they realized it or not, by the
-1990s, almost everyone in the developed world was interacting with computers.
-FIGURE 15.17 The Atari Video Computer System, 1977. Released in 1977, the Atari Video Computer System could
-be connected to almost any television, allowing users to play video games at home. The software was stored on
-small plastic cartridges that were plugged directly into the machine. (credit: “Atari 2600 mit Joystick” by
-“joho345”/Wikimedia Commons, Public Domain)
-Modems were hardly new in the 1990s, but they became much faster and more common with the rise of the
-internet. The origins of the internet date back to the 1960s and the efforts by government researchers in the
-15.3 • Science and Technology for Today’s World
-645
+## Match 1.57 — LibreTexts: 13.3: Audition (Hearing)
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://bio.libretexts.org/Bookshelves/Human_Biology/Human_Anatomy_Lab/13%3A_The_Somatic_Nervous_System_(Special_Senses)/13.03%3A_Audition_(Hearing)
 
-United States to use computers to share information. These developments were especially important for the
-U.S. Department of Defense during the Cold War and resulted in the emergence of the Advanced Research
-Projects Agency Network (ARPANET). In creating ARPANET, researchers developed many of the technologies
-that over the next few decades formed the basis for the internet we know today.
-The Internet and Social Media
-The process of globalization has been accelerated by the rise of the internet and the various social media
-platforms like Instagram, Facebook, and Twitter that exist there. Many people were introduced to the potential
-of computer networks for sharing information and creating small social networks in the 1980s, when
-individual users became able to connect their computers to others by using modems and telephone networks.
-This connectivity gave rise to regional bulletin board systems (BBSs), in which one person’s computer served
-as a host for those of other users (Figure 15.18). BBSs functioned much like websites today. Though they ran
-far more slowly and had limited capabilities, they allowed users to share computer files like games and images,
-post messages for others to read, participate in virtual discussions and debates, and play text-based online
-games. BBSs used phone networks to communicate, and long-distance calls were then expensive, so their
-users tended to be local.
-FIGURE 15.18 A Bulletin Board System, 1980s. Bulletin board systems like this one relied on colorful text and
-simple graphics to make them appealing. They appear very limited compared to today’s websites, but in the 1980s,
-they were revolutionary and opened new possibilities for the future of communication. (credit: “Screenshot of
-OpenTG’s Group Permissions Editor” by Chris Tusa/Wikimedia Commons, Public Domain)
-Throughout the 1980s, BBSs continued to be popular with computer hobbyists and those intrigued by the idea
-of unique virtual communities, while networking technology improved steadily behind the scenes. The United
-States, Europe, and other developed countries were busy adopting a uniform protocol system that would allow
-computers around the world to easily communicate with others. Once this protocol had been established, the
-commercial internet as we currently understand it was born.
-As early as 1987, about thirty thousand hosts resided on the burgeoning internet. Soon telecommunications
-and software companies began to exploit this new network by creating online service providers like America
-Online (AOL) to act as gateways to the internet. Initially, they used standard phone lines and modems to
-connect, much as BBSs had. But as the volume of information on the internet increased exponentially, service
-providers turned to more expensive broadband connections that used cable television lines and even
-dedicated lines to connect. During the 1990s, the first websites, the first internet search engines, and the first
-commercial internet platforms were established.
-646
-15 • The Contemporary World and Ongoing Challenges
-Access for free at openstax.org
-
-By 2005, more than one billion people worldwide were using the internet regularly. They were able to shop
-online, make phone calls around the world, and even create their own websites with almost no technical
-training. Never before had the world been so connected. In 2004, Facebook was launched. Originally a
-networking tool for Harvard students, it quickly expanded globally to become a giant in the new world of social
-media. By 2010, nearly half a billion Facebook users around the world were sharing images and messages,
-creating communities, and linking to news stories. By 2022, the number of Facebook users had reached nearly
-three billion.
-Before 2007, almost all internet users gained access to the network via a personal computer, either at home or
-at work. That year, however, Apple Inc. released the first iPhone, a powerful cell phone but also a portable
-computer capable of performing all the tasks it once required a desktop computer to do. Even more
-revolutionary, it connected to the internet wirelessly through cell-phone infrastructure. While the iPhone was
-not the first phone to connect to the internet, its revolutionary touch-screen interface was far superior to
-earlier systems. Within just a few years, other cell-phone manufacturers were imitating its design and putting
-smartphones, and thus internet access, in the pockets of users around the world.
-Smartphones have transformed life in developing countries, where they have helped bypass some of the
-traditional stages of infrastructure creation. In Africa, for example, people living where no landlines existed
-can now communicate with others using cell phones. Small farmers and traders can use cell phones for
-banking and to connect with potential suppliers and customers. In communities without libraries,
-schoolchildren can access the internet’s resources to study.
-Smartphones have also democratized the internet, serving as powerful tools for organizing and promoting
-political change. The large pro-democracy movement in Cairo’s Tahrir Square captured the world’s attention in
-2011, for example. But it began with twenty-five-year-old activist Asmaa Mahfouz’s YouTube video of January
-18, 2011, in which she spoke directly to the camera and urged young Egyptians to protest at the square as part
-of the larger Arab Spring, a call for government reform and democracy that echoed across in the Arab world.
-The Arab Spring was touched off in December 2010 when Muhammad Bouazizi, a young college graduate, set
-himself on fire in Tunisia after government officials there tried to interfere with the fruit cart that was his only
-source of income. Other young Tunisians took to the streets in protest, and demonstrations began again in
-January 2011. As people died in confrontations with government forces, President Zine al-Abidine Ben Ali fled
-the country, and Tunisia’s prime minister resigned shortly thereafter.
-The Tunisian protests led to similar demonstrations in Egypt. On January 17, 2011, an Egyptian set himself on
-fire near the nation’s Parliament to protest the lack of economic opportunities. Crowds of mostly young people
-responded with massive demonstrations that lasted weeks (Figure 15.19). These demonstrations were fueled
-by and broadcast to the world through text messages, photos, tweets, videos, and Facebook posts sent by
-thousands of mobile phones, including that of Mahfouz. The devices amplified the calls for democracy and
-showed the world the Egyptian government’s use of violence to try to silence the protestors. Egyptian president
-Hosni Mubarak resigned on February 11, 2011. He was later convicted for his role in ordering government
-forces to harm and kill protestors.
-15.3 • Science and Technology for Today’s World
-647
-
-FIGURE 15.19 The Egyptian Revolution. (a) Internet-connected cell phones using social media applications like
-Facebook were a common site at the large 2011 protests at Ta
-
-## Match 1.52 — Introduction_to_Political_Science_-_WEB § 1.3 Political Science: The Systematic Study of Politics
-
-LEARNING OUTCOMES
-By the end of this section, you will be able to:
-•
-Define political science.
-•
-Describe the scientific study of politics.
-The systematic study of the process of who gets what, when, and how—political science—investigates the
-reasons behind the decisions governments make. For example, political scientists investigate the degree of
-control governments choose to exercise over various forms of communication, like your smartphone. Political
-scientists examine both the ways individuals and groups seek to influence governmental action and the ways
-governmental decisions in turn affect individuals and groups.
-Political scientists may not have lab coats or electron microscopes, but like other types of scientists, they use
-theory, logic, and evidence in an attempt to answer questions, to make predictions, or to arrive at conclusions.
-Some political scientists strive to understand the fundamental laws of politics in much the same way
-theoretical physicists seek to comprehend the cosmos for pure knowledge. These political scientists try to
-uncover the universal principles of how humans and their institutions aim to prevail in political conflicts. But
-most political scientists accept that human behavior is not entirely deterministic (that is, perfectly
-predictable), so they instead look for patterns that may enable them to predict in general how humans and
-their institutions interact.
-18
-1 • What Is Politics and What Is Political Science?
-Access for free at openstax.org
-
-VIDEO
-What Logic Brings Palestinian and Israeli Women Together to March for Peace?
-Click to view content (https://openstax.org/books/introduction-political-science/pages/1-3-political-science-
-the-systematic-study-of-politics)
-When women on both sides of the conflict in Israel grew weary of its human consequences, they decided to
-take matters into their own hands in 2017. In human societies, there are many sources of and paths to political
-conflict and its resolution.
-Other political scientists are more like chemists, who may use their knowledge to develop and improve
-medicines or create more deadly toxins. These political scientists aspire to improve the institutions or
-processes of government.
-Some uses of political science are not so benign. Motivated actors can and have used political science
-knowledge to manipulate voters and suppress vulnerable populations. When people understand how political
-science works, they are less susceptible to such manipulation and suppression.
-So what is scientific about politics?
-One way to think about whether politics is “scientific” is to focus on the content of politics. Does political
-behavior follow general laws—that is, does it align with universal statements about nature, based on empirical
-observations? Does politics have the equivalent of Isaac Newton’s laws of motion (for example, Newton’s
-second law is “force is equal to mass multiplied by acceleration,” and his third law is “to every action there is
-an equal and opposite reaction”)? Not precisely, although political scientists have at times claimed that such
-laws exist.
-The sticking point is the word “universal.” Force always equals mass multiplied by acceleration. To every
-action there is always an equal and opposite reaction. In politics, it seems, virtually nothing is always the case.
-If one defines science as a body of universal laws about an unchanging universe, then politics is not and cannot
-be a science. Politics is not the same as physics. Empirical political science seeks to identify regularities—what
-is likely to happen given certain conditions.
-Political science is probabilistic rather than deterministic. An event is deterministic if it is possible to say, “If
-this happens, that will happen.” Events are probabilistic if one can say only, “If this happens, that is likely to
-happen.” The sun coming up in the east? Deterministic. Will it rain in the morning? Probabilistic. Will
-incumbents win their next bid for reelection? Political science gives us the ability to estimate the probability
-that they will win (again, given the rules, the reality, and the choices those incumbents make).
-So science does not require universal laws that explain an unchanging universe. What science does require is
-a way to learn about the world around us: this way is the scientific method. The scientific method seeks to
-understand the world by testing hypotheses (for example “The world is round”) by systematically collecting
-data sufficient to test that hypothesis and by making these hypotheses and data available to others so that your
-work can be challenged or verified. Political science uses the scientific method to understand the political
-world; political science carefully and methodically uses logic and evidence to find the answers to political
-questions.
-A hypothesis is a tentative statement about reality that can be tested to determine whether it is true or
-false—or, in practice, supported or unsupported based on the evidence. “A candidate’s ethnicity influences the
-likelihood that they will be elected” is an example of a hypothesis: ethnicity either does or does not influence
-election outcomes. An important task of the political scientist is to determine whether the evidence supports
-the hypothesis that they test.
-1.3 • Political Science: The Systematic Study of Politics
-19
-
-VIDEO
-Neil Degrasse Tyson: Analogy for the Scientific Method
-Click to view content (https://openstax.org/books/introduction-political-science/pages/1-3-political-science-
-the-systematic-study-of-politics)
-In this video clip, astrophysicist and author Neil Degrasse Tyson relates a humorous anecdote about an
-everyday experience in a coffee shop that illustrates the basic principles of the scientific method.
-The answers scientists find are always tentative, or uncertain. A hypothesis is supported rather than true or
-unsupported rather than false. Additional research may yield different answers as theories or methods
-improve or better data emerges, but also because political behavior itself can change in response to what
-people learn about it. The knowledge, for example, that politicians are likely to act in a certain way given
-certain circumstances might lead politicians to change their behavior if they believe that doing so will gain
-them an advantage. The specific knowledge (“politicians in this situation will behave in that way”) may become
-obsolete even if a broader general principle (“politicians will act strategically to advance their goals”) still
-appears to be true.
-There are two main, interrelated types of political science: normative political science (also called political
-philosophy or political theory) and empirical political science.
+13.3: Audition (Hearing)
+Hearing, or audition , is the transduction of sound waves into a neural signal that is made possible by the structures of the ear (Figure \(\PageIndex{1}\)). The large, fleshy structure on the lateral aspect of the head is known as the auricle . Some sources will also refer to this structure as the pinna, though that term is more appropriate for a structure that can be moved, such as the external ear of a cat. The C-shaped curves of the auricle direct sound waves toward the auditory canal. The canal enters the skull through the external auditory meatus of the temporal bone. At the end of the auditory canal is the tympanic membrane , or ear drum, which vibrates after it is struck by sound waves. The auricle, ear canal, and tympanic membrane are often referred to as the external ear . The middle ear consists of a space spanned by three small bones called the ossicles . The three ossicles are the malleus , incus , and stapes , which are Latin names that roughly translate to hammer, anvil, and stirrup. The malleus is attached to the tympanic membrane and articulates with the incus. The incus, in turn, articulates with the stapes. The stapes is then attached to the inner ear , where the sound waves will be transduced into a neural signal. The middle ear is connected to the pharynx through the Eustachian tube, which helps equilibrate air pressure across the tympanic membrane. The tube is normally closed but will pop open when the muscles of the pharynx contract during swallowing or yawning.
+A cross-sectional view of the cochlea shows that the scala vestibuli and scala tympani run along both sides of the cochlear duct (Figure \(\PageIndex{2}\)). The cochlear duct contains several organs of Corti , which tranduce the wave motion of the two scala into neural signals. The organs of Corti lie on top of the basilar membrane , which is the side of the cochlear duct located between the organs of Corti and the scala tympani. As the fluid waves move through the scala vestibuli and scala tympani, the basilar membrane moves at a specific spot, depending on the frequency of the waves. Higher frequency waves move the region of the basilar membrane that is close to the base of the cochlea. Lower frequency waves move the region of the basilar membrane that is near the tip of the cochlea.

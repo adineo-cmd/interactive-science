@@ -1,723 +1,146 @@
 # Source pack — subjects/chemical-engineering/foundational/material-and-energy-balances
 Lesson title: Material and Energy Balances
 Level: foundational
-Match confidence: 1.39
+Match confidence: 1.71
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.39 — UniversityPhysicsVolume2-WEB_5eNhMSa § 7.1 Electric Potential Energy
+## Match 1.71 — LibreTexts: 5.2: Building Design for Energy Efficient Livestock Housing
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://eng.libretexts.org/Bookshelves/Biological_Engineering/Introduction_to_Biosystems_Engineering_(Holden_et_al.)/05%3A_Plant_Animal_and_Facility_Systems/5.02%3A_Building_Design_for_Energy_Efficient_Livestock_Housing
 
-Learning Objectives
-By the end of this section, you will be able to:
-•
-Define the work done by an electric force
-•
-Define electric potential energy
-•
-Apply work and potential energy in systems with electric charges
-When a free positive charge q is accelerated by an electric field, it is given kinetic energy (Figure 7.2). The
-process is analogous to an object being accelerated by a gravitational field, as if the charge were going down an
-electrical hill where its electric potential energy is converted into kinetic energy, although of course the
-sources of the forces are very different. Let us explore the work done on a charge q by the electric field in this
-process, so that we may develop a definition of electric potential energy.
-Figure 7.2
-A charge accelerated by an electric field is analogous to a mass going down a hill. In both cases, potential energy decreases as
-kinetic energy increases,
-. Work is done by a force, but since this force is conservative, we can write
-.
-The electrostatic or Coulomb force is conservative, which means that the work done on q is independent of the
-path taken, as we will demonstrate later. This is exactly analogous to the gravitational force. When a force is
-conservative, it is possible to define a potential energy associated with the force. It is usually easier to work
-with the potential energy (because it depends only on position) than to calculate the work directly.
-To show this explicitly, consider an electric charge
-fixed at the origin and move another charge
-toward
-q in such a manner that, at each instant, the applied force
-exactly balances the electric force
-on Q (Figure
-7.3). The work done by the applied force
-on the charge Q changes the potential energy of Q. We call this
-potential energy the electrical potential energy of Q.
-Figure 7.3
-Displacement of “test” charge Q in the presence of fixed “source” charge q.
-The work
-done by the applied force
-when the particle moves from
-to
-may be calculated by
-280
-7 • Electric Potential
-Access for free at openstax.org.
-
-Since the applied force
-balances the electric force
-on Q, the two forces have equal magnitude and
-opposite directions. Therefore, the applied force is
-where we have defined positive to be pointing away from the origin and r is the distance from the origin. The
-directions of both the displacement and the applied force in the system in Figure 7.3 are parallel, and thus the
-work done on the system is positive.
-We use the letter U to denote electric potential energy, which has units of joules (J). When a conservative force
-does negative work, the system gains potential energy. When a conservative force does positive work, the
-system loses potential energy,
-In the system in Figure 7.3, the Coulomb force acts in the opposite
-direction to the displacement; therefore, the work is negative. However, we have increased the potential energy
-in the two-charge system.
-EXAMPLE 7.1
-Kinetic Energy of a Charged Particle
-A
-charge Q is initially at rest a distance of 10 cm (
-) from a
-charge q fixed at the origin
-(Figure 7.4). Naturally, the Coulomb force accelerates Q away from q, eventually reaching 15 cm (
-).
-Figure 7.4
-The charge Q is repelled by q, thus having work done on it and gaining kinetic energy.
-a.
-What is the work done by the electric field between
+5.2: Building Design for Energy Efficient Livestock Housing
+Andrea Costantino
+TEBE Research Group
+Department of Energy
+Politecnico di Torino
+Torino, Italy
 and
-?
-b.
-How much kinetic energy does Q have at
-?
-Strategy
-Calculate the work with the usual definition. Since Q started from rest, this is the same as the kinetic energy.
-Solution
-Integrating force over distance, we obtain
-This is also the value of the kinetic energy at
-Significance
-Charge Q was initially at rest; the electric field of q did work on Q, so now Q has kinetic energy equal to the
-work done by the electric field.
-CHECK YOUR UNDERSTANDING 7.1
-If Q has a mass of
-what is the speed of Q at
-7.1 • Electric Potential Energy
-281
+Institute of Animal Science and Technology
+Universitat Politècnica de València
+València, Spain
+Enrico Fabrizio
+TEBE Research Group
+Department of Energy
+Politecnico di Torino
+Torino, Italy
+| Key Terms |
+| Energy balance | Supplemental heating | Climate control |
+| Mass balance | Heat recovery | Ventilation |
+| Energy management | Cooling systems |
+Variables
+Introduction
+Energy usage on farms is considered direct when used to operate machinery and climate control systems or indirect when is used to manufacture feed and agro-chemicals. Direct on-farm energy consumption was estimated to be 6 EJ yr −1 , representing about 1.2% of total world energy consumption (OECD, 2008). If indirect energy is included, total farm energy consumption could be as much as 15 EJ yr −1 , representing about 3.1% of global energy consumption. Housed livestock require adequate indoor climate conditions to maximize both production and welfare, particularly avoiding thermal stress. The task of the engineer is to improve the energy use efficiency of livestock housing and to minimize energy consumption. This can be achieved by improving the energy performance of the equipment used for climate control and the design of the building.
+The focus of this chapter is on building design for efficient energy management in livestock housing. Improving building design requires understanding the mass and energy balance of the system to specify materials, dimensions, and equipment needed to maintain safe operating conditions. The importance of understanding the energy needs of buildings is illustrated by the report of St-Pierre et al. (2003), who estimated the economic losses by the dairy industry in the U.S. at $1.69 to $2.36 billion annually due to heat stress. Understanding and being able to use fundamental concepts for animal housing design provides the foundation for desirable welfare and more efficient production-centric animal housing.
+Outcomes
+After reading this chapter, you should be able to:
+- • Describe the energy needs for livestock housing
+- • Explain the energy management requirements of a livestock house
+- • Describe the main climate control systems used for livestock housing and the features that affect the energy management
+- • Calculate energy balances for livestock houses
+Concepts
+Energy and Mass Balance of a Livestock House
+Thermodynamically, a livestock house is an open system that exchanges energy and mass (such as air, moisture, and contaminants) between the indoor and outdoor environments and the animals that occupy the internal volume (the enclosure). The law of conservation of energy and mass is the basic principle for the mass balance. The building walls, floor, and roof represent the control surfaces and enclose the control volume of the thermodynamic system represented by the livestock house and its internal surfaces, such as animals, interior walls, and equipment. Energy and mass balance equations allow the analysis of the thermal behavior of a livestock house, but calculating these balances is challenging because many factors affect the thermal behavior of these buildings. It is essential to understand which terms to consider, and what to assume as negligible.
+Energy Balance
+Sensible heat is the amount of heat exchanged by a body and the surrounding thermodynamic system that involves a temperature change. Latent heat is the heat absorbed or released by a substance during a phase change without a change in temperature. These two forms of heat can be illustrated using an example of heating a pot of water on a stove. Initially, the water is at room temperature (say, 25°C), and as the water is heated, its temperature increases. The heat causing the temperature increase is sensible heat and for water is equal to 4,186 kJ kg −1 K −1 . When the water temperature reaches 100°C (boiling point of water at atmospheric pressure), the water changes phase from liquid to gas (steam). The heat provided during the phase change breaks the molecular bonds of the liquid water to transition to the gas phase, but the temperature does not change. The heat supplied to effect phase change is latent heat. The latent heat of vaporization for a unit of mass of water is 2,272 kJ kg −1 at 100°C and atmospheric pressure.
+The energy balance of a livestock house, considering only the sensible heat, can be written as follows (Panagakis and Axaopoulos, 2008):
+\[ \phi_{a}+\phi_{tr}+\phi_{sol}+\phi_{f}+\phi_{v}+\phi_{m}+(\gamma_{fog}\cdot \phi_{H})=\sum^{n}_{k=1}(M_{el,k}\cdot C_{el,k})\cdot \frac{dT_{air,i}}{dt} \]
+where \(\phi_{a}\) = sensible heat flow from the animals inside the enclosure (W)
+\(\phi_{tr}\) = sensible heat flow due to transmission through the control surfaces but excluding the floor (W)
+\(\phi_{sol}\) = sensible heat flow due to solar radiation through both opaque and glazed building elements (W)
+\(\phi_{f}\) = sensible heat flow due to transmission through the floor (W)
+\(\phi_{v}\) = sensible heat flow due to ventilation (W)
+\(\phi_{m}\)= sensible heat flow from internal sources, such as motors and lights (W)
+\(\gamma_{fog}\)= Boolean variable for the presence (\(\gamma_{fog}\)=1) or not (\(\gamma_{fog}\)=0) of a fogging system inside the livestock house
+\(\phi_{fog}\)= sensible heat flow due to fogging system (W)
+\(\gamma_{H}\)= Boolean variable for the presence (\(\gamma_{H}\)=1) or not (\(\gamma_{H}\)=0) of a supplemental heating system inside the livestock house
+\(\phi_{H}\)= sensible heat flow due to supplemental heating system (W)
+\(M_{el,k}\) = mass of the k th building element (kg)
+\(C_{el,k}\) = total heat capacity of k th building element (kJ kg −1 K −1 )
+\(\frac{dT_{air,i}}{dt}\) = variation of the indoor air temperature \(T_{air,i}\) with time t
+When using Equation 5.2.1 for calculations and sizing, pay attention to the heat flows because each term could be positive or negative depending on the physical context. Usually, heat flows coming into a control volume (the animal house) are positive, and the ones flowing out are negative. For example, in Equation (5.2.1), the terms \(\phi_{a}\) and \(\phi_{sol}\) are always positive or zero, since they represent incoming heat flow from animals and solar radiation, respectively, while the values of \(\phi_{tr}\) and \(\phi_{v}\) could be positive or negative, depending on the difference in temperature inside and outside the animal house. The term \(\phi_{f}\) depends on the floor construction. Although \(\phi_{tr}\) and \(\phi_{f}\) are both transmission heat flows through the control surface, they are always separated. Estimating the heat transfer through the ground is very challenging (Albright, 1990; Panagakis and Axaopoulos, 2008; Costantino et al., 2017), for example, in pig houses with ventilated pits for manure storage. To simplify the energy balance, the term \(\phi_{tr}\) is often considered as the sum of \(\phi_{tr}\) and \(\phi_{f}\) and a corrective coefficient is used when \(\phi_{f}\) is calculated.
+The term \(\phi_{fog}\) is always negative because it represents the sensible heat removed by water droplets of a fogging system. A fogging system provides cooling inside the animal house by putting a haze of tiny water droplets in the air to provide evaporative cooling for the animals. The term \(\phi_{H}\) is always positive. The parameters \(\gamma_{fog}\) and \(\gamma_{H}\) should not have a value of 1 at the same time but can both be 0.
+Sensible heat from the animals, \(\phi_{a}\), depends on species and body mass and ambient temperature. Sensible and latent heat values can be found in the literature, for example from ASABE (2012), Hellickson & Walker (1983), or Lindley & Whitaker (1996), and more detailed data are available in Pedersen and Sällvik (2002), who express sensible and latent heat from animals as a function of animal weight, indoor air temperature, and animal activity. In complex animal houses the sensible heat flow from internal sources, such as motors (fans and automatic feeding systems) and lights term (\(\phi_{m}\)) can be included (Albright, 1990), but in many calculations it is excluded because is very small compared with \(\phi_{a}\) (Midwest Plan Service, 1987). That exclusion is further justified when energy-efficient technologies such as LED/gas-discharge lamps and brushless motors are used.
+The product \(M_{el}\cdot C_{el}\) is the lumped effective heat capacity of a building element expressed in kJ K −1 . For each building element (walls and roof) the amount or mass of material must be known, and the amount of heat energy needed to raise the temperature of a unit mass of the material by one degree Celsius. The fraction \(\frac{dT_{air,i}}{dt}\) represents the variation of the indoor air temperature through time. This side of the equation represents the change in temperature of the building itself.
+It is possible to include additional terms to Equation 5.2.1 (Albright, 1990; Esmay and Dixon, 1986) such as the sensible heat flow to evaporate the water inside the control volume from structures such as water troughs and a slurry store (\(\phi_{e}\)). Some authors consider it important (Hamilton et al., 2016), while others do not (Midwest Plan Service, 1987). Liberati and Zappavigna (2005) consider sensible heat exchange between manure (especially when collected in pits) and the air inside the enclosure (\(\phi_{man}\)) to be important in large-scale houses equipped with storage pits and manure when it is not removed frequently. A Boolean variable \(\gamma_{man}\) may generalize Equation 5.2.1 further.
+Equation 5.2.1 is a dynamic energy balance. If a large time step (perhaps a week or more) is assumed it can be written for steady-state conditions, meaning that the state variables that describe the system can be considered constant with time, and the terms of the balance represent the average values for the system. For large time steps or in steady-state conditions with constant indoor and outdoor air temperature, heat accumulation by the building itself can be considered to be zero, so Equation 5.2.1 becomes:
+\[ \phi_{a}+\phi_{tr}+\phi_{sol}+\phi_{v}+\gamma_{fog}\cdot \phi_{fog}=0 \]
+To obtain the energy balance of a livestock house in cold condition requiring supplemental heating, the energy balance becomes:
+\[ \phi_{a}+\phi_{tr}+\phi_{H}+\phi_{sol}+\phi_{v}=0 \]
+Figure 5.2.1 presents an illustration of the sensible heat balance of Equation 5.2.3 for simple dairy cow housing. Equation 5.2.3 can be used to design a basic livestock house. Undoubtedly, the presented formulation is a simplification, and in literature, other terms are introduced in the energy balance. The calculation of each term of the energy balance of Equation 5.2.3 is provided in greater detail later in this chapter.
+Mass Balance
+Mass balances are necessary to plan the management of contaminants, such as carbon dioxide (CO 2 ), hydrogen sulfide (H 2 S), and ammonia (NH 3 ), produced by the animals (Esmay and Dixon, 1986) and to regulate the indoor environment temperature, moisture content, and relative humidity. Along with temperature and relative humidity, the indoor air quality (IAQ) must be controlled by ventilation to avoid animal health problems. Calculating ventilation requirements for contaminant control is a mass balance problem. With low indoor air temperatures, a minimum ventilation flow rate (base ventilation) is used to dilute contaminants such as H 2 S and NH 3 . The minimum ventilation flow rate can be increased to reduce the moisture content. When the indoor air temperature is higher than the cooling setpoint temperature used to maintain animal comfort, the ventilation flow rate must be increased to cool the animals (Esmay and Dixon, 1986). The maximum ventilation flow rate must avoid high airspeeds that hurt animal welfare. If cooling cannot be achieved using mass flow, a fo
 
-In this example, the work W done to accelerate a positive charge from rest is positive and results from a loss in
-U, or a negative
-. A value for U can be found at any point by taking one point as a reference and calculating
-the work needed to move a charge to the other point.
-Gravitational potential energy and electric potential energy are quite analogous. Potential energy accounts for
-work done by a conservative force and gives added insight regarding energy and energy transformation
-without the necessity of dealing with the force directly. It is much more common, for example, to use the
-concept of electric potential energy than to deal with the Coulomb force directly in real-world applications.
-In polar coordinates with q at the origin and Q located at r, the displacement element vector is
-and
-thus the work becomes
-Notice that this result only depends on the endpoints and is otherwise independent of the path taken. To
-explore this further, compare path
-to
-with path
-in Figure 7.5.
-Figure 7.5
-Two paths for displacement
-to
-The work on segments
-and
-are zero due to the electrical force being
-perpendicular to the displacement along these paths. Therefore, work on paths
-and
-are equal.
-The segments
-and
-are arcs of circles centered at q. Since the force on Q points either toward or
-away from q, no work is done by a force balancing the electric force, because it is perpendicular to the
-displacement along these arcs. Therefore, the only work done is along segment
-which is identical to
-One implication of this work calculation is that if we were to go around the path
-the net work
-would be zero (Figure 7.6). Recall that this is how we determine whether a force is conservative or not. Hence,
-because the electric force is related to the electric field by
-, the electric field is itself conservative. That
-is,
-Note that Q is a constant.
-Electric Potential Energy
-Work W done to accelerate a positive charge from rest is positive and results from a loss in U, or a negative
-. Mathematically,
-7.1
-282
-7 • Electric Potential
-Access for free at openstax.org.
+## Match 1.40 — LibreTexts: 11: Energy and Chemical Processes
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://chem.libretexts.org/Courses/UWMilwaukee/CHE_125%3A_GOB_Introductory_Chemistry/11%3A_Energy_and_Chemical_Processes
 
-Figure 7.6
-A closed path in an electric field. The net work around this path is zero.
-Another implication is that we may define an electric potential energy. Recall that the work done by a
-conservative force is also expressed as the difference in the potential energy corresponding to that force.
-Therefore, the work
-to bring a charge from a reference point to a point of interest may be written as
-and, by Equation 7.1, the difference in potential energy
-of the test charge Q between the two points
-is
-Therefore, we can write a general expression for the potential energy of two point charges (in spherical
-coordinates):
-We may take the second term to be an arbitrary constant reference level, which serves as the zero reference:
-A convenient choice of reference that relies on our common sense is that when the two charges are infinitely
-far apart, there is no interaction between them. (Recall the discussion of reference potential energy in
-Potential Energy and Conservation of Energy.) Taking the potential energy of this state to be zero removes the
-term
-from the equation (just like when we say the ground is zero potential energy in a gravitational
-potential energy problem), and the potential energy of Q when it is separated from q by a distance r assumes
-the form
-This formula is symmetrical with respect to q and Q, so it is best described as the potential energy of the two-
-charge system.
-EXAMPLE 7.2
-Potential Energy of a Charged Particle
-A
-charge Q is initially at rest a distance of 10 cm (
-) from a
-charge q fixed at the origin
-(Figure 7.7). Naturally, the Coulomb force accelerates Q away from q, eventually reaching 15 cm (
-).
-∞
-7.2
-7.1 • Electric Potential Energy
-283
+11: Energy and Chemical Processes
+-
+-
+Last updated
+-
+-
+Save as PDF
+-
+Energy is a vital component of the world around us. Nearly every physical and chemical process, including all the chemical reactions discussed in previous chapters, occurs with a simultaneous energy change. In this chapter, we will explore the nature of energy and how energy and chemistry are related.
+-
+-
+11.1: Prelude to Energy and Chemical Processes
+-
+Metabolism is the collective term for the chemical reactions that occur in cells and provide energy to keep cells alive. Some of the energy from metabolism is in the form of heat, and some animals use this heat to regulate their body temperatures. Such warm-blooded animals are called endotherms. In endotherms, problems with metabolism can lead to fluctuations in body temperature. When humans get sick, for instance, our body temperatures can rise higher than normal; we develop a fever.
+-
+-
+11.2: Energy and Its Units
+-
+Energy is the ability to do work. Heat is the transfer of energy due to temperature differences. Energy and heat are expressed in units of joules.
+-
+-
+11.3: Heat
+-
+Heat transfer is related to temperature change. Heat is equal to the product of the mass, the change in temperature, and a proportionality constant called the specific heat.
+-
+-
+11.4: Phase Changes
+-
+There is an energy change associated with any phase change.
+-
+-
+11.5: Bond Energies and Chemical Reactions
+-
+Atoms are held together by a certain amount of energy called bond energy. Chemical processes are labeled as exothermic or endothermic based on whether they give off or absorb energy, respectively.
+-
+-
+11.6: The Energy of Biochemical Reactions
+-
+Energy to power the human body comes from chemical reactions.
+-
+-
+11.E: Energy and Chemical Processes (Exercises)
+-
+Problems and Solutions to accompany the chapter.
+-
+-
+11.S: Energy and Chemical Processes (Summary)
+-
+To ensure that you understand the material in this chapter, you should review the meanings of the following bold terms in the following summary and ask yourself how they relate to the topics in the chapter.
+Template:HideTOC
 
-Figure 7.7
-The charge Q is repelled by q, thus having work done on it and losing potential energy.
-What is the change in the potential energy of the two-charge system from
-to
-Strategy
-Calculate the potential energy with the definition given above:
-Since Q started from
-rest, this is the same as the kinetic energy.
-Solution
-We have
-Significance
-The change in the potential energy is negative, as expected, and equal in magnitude to the change in kinetic
-energy in this system. Recall from Example 7.1 that the change in kinetic energy was positive.
-CHECK YOUR UNDERSTANDING 7.2
-What is the potential energy of Q relative to the zero reference at infinity at
-in the above example?
-Due to Coulomb’s law, the forces due to multiple charges on a test charge Q superimpose; they may be
-calculated individually and then added. This implies that the work integrals and hence the resulting potential
-energies exhibit the same behavior. To demonstrate this, we consider an example of assembling a system of
-four charges.
-EXAMPLE 7.3
-Assembling Four Positive Charges
-Find the amount of work an external agent must do in assembling four charges
-and
-at the vertices of a square of side 1.0 cm, starting each charge from infinity (Figure 7.8).
-Figure 7.8
-How much work is needed to assemble this charge configuration?
-284
-7 • Electric Potential
-Access for free at openstax.org.
+## Match 1.39 — LibreTexts: 2.6: The Energy of the System
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/DeVoes_Thermodynamics_and_Chemistry/02%3A_Systems_and_Their_Properties/2.06%3A_The_Energy_of_the_System
 
-Strategy
-We bring in the charges one at a time, giving them starting locations at infinity and calculating the work to
-bring them in from infinity to their final location. We do this in order of increasing charge.
-Solution
-Step 1. First bring the
-charge to the origin. Since there are no other charges at a finite distance from
-this charge yet, no work is done in bringing it from infinity,
-Step 2. While keeping the
-charge fixed at the origin, bring the
-charge to
-(Figure 7.9). Now, the applied force must do work against the force exerted by the
-charge fixed at the origin. The work done equals the change in the potential energy of the
-charge:
-Figure 7.9
-Step 2. Work
-to bring the
-charge from infinity.
-Step 3. While keeping the charges of
-and
-fixed in their places, bring in the
-charge to
-(Figure 7.10). The work done in this step is
-Figure 7.10
-Step 3. The work
-to bring the
-charge from infinity.
-Step 4. Finally, while keeping the first three charges in their places, bring the
-charge to
-(Figure 7.11). The work done here is
-7.1 • Electric Potential Energy
-285
-
-Figure 7.11
-Step 4. The work
-to bring the
-charge from infinity.
-Hence, the total work done by the applied force in assembling the four charges is equal to the sum of the work
-in bringing each charge from infinity to its final position:
-Significance
-The work on each charge depends only on its pairwise interactions with the other charges. No more
-complicated interactions need to be considered; the work on the third charge only depends on its interaction
-with the first and second charges, the interaction between the first and second charge does not affect the third.
-CHECK YOUR UNDERSTANDING 7.3
-Is the electrical potential energy of two point charges positive or negative if the charges are of the same sign?
-Opposite signs? How does this relate to the work necessary to bring the charges into proximity from infinity?
-Note that the electrical potential energy is positive if the two charges are of the same type, either positive or
-negative, and negative if the two charges are of opposite types. This makes sense if you think of the change in
-the potential energy
-as you bring the two charges closer or move them farther apart. Depending on the
-relative types of charges, you may have to work on the system or the system would do work on you, that is, your
-work is either positive or negative. If you have to do positive work on the system (actually push the charges
-closer), then the energy of the system should increase. If you bring two positive charges or two negative
-charges closer, you have to do positive work on the system, which raises their potential energy. Since potential
-energy is proportional to 1/r, the potential energy goes up when r goes down between two positive or two
-negative charges.
-On the other hand, if you bring a positive and a negative charge nearer, you have to do negative work on the
-system (the charges are pulling you), which means that you take energy away from the system. This reduces
-the potential energy. Since potential energy is negative in the case of a positive and a negative charge pair, the
-increase in 1/r makes the potential energy more negative, which is the same as a reduction in potential energy.
-The result from Example 7.1 may be extended to systems with any arbitrary number of charges. In this case, it
-is most convenient to write the formula as
-7.3
-286
-7 • Electric Potential
-Access for free at openstax.org.
-
-The factor of 1/2 accounts for adding each pair of charges twice.
-
-## Match 1.37 — ChemistryAtomsFirst2e-WEB § 20.4 Transmutation and Nuclear Energy
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe the synthesis of transuranium nuclides
-•
-Explain nuclear fission and fusion processes
-•
-Relate the concepts of critical mass and nuclear chain reactions
-•
-Summarize basic requirements for nuclear fission and fusion reactors
-After the discovery of radioactivity, the field of nuclear chemistry was created and developed rapidly during
-the early twentieth century. A slew of new discoveries in the 1930s and 1940s, along with World War II,
-combined to usher in the Nuclear Age in the mid-twentieth century. Scientists learned how to create new
-substances, and certain isotopes of certain elements were found to possess the capacity to produce
-unprecedented amounts of energy, with the potential to cause tremendous damage during war, as well as
-produce enormous amounts of power for society’s needs during peace.
-Synthesis of Nuclides
-Nuclear transmutation is the conversion of one nuclide into another. It can occur by the radioactive decay of a
-nucleus, or the reaction of a nucleus with another particle. The first manmade nucleus was produced in Ernest
-Rutherford’s laboratory in 1919 by a transmutation reaction, the bombardment of one type of nuclei with
-other nuclei or with neutrons. Rutherford bombarded nitrogen atoms with high-speed α particles from a
-natural radioactive isotope of radium and observed protons resulting from the reaction:
-The
-and
-nuclei that are produced are stable, so no further (nuclear) changes occur.
-To reach the kinetic energies necessary to produce transmutation reactions, devices called particle
-accelerators are used. These devices use magnetic and electric fields to increase the speeds of nuclear
-particles. In all accelerators, the particles move in a vacuum to avoid collisions with gas molecules. When
-neutrons are required for transmutation reactions, they are usually obtained from radioactive decay reactions
-or from various nuclear reactions occurring in nuclear reactors. The Chemistry in Everyday Life feature that
-follows discusses a famous particle accelerator that made worldwide news.
-Chemistry in Everyday Life
-CERN Particle Accelerator
-Located near Geneva, the CERN (“Conseil Européen pour la Recherche Nucléaire,” or European Council for
-Nuclear Research) Laboratory is the world’s premier center for the investigations of the fundamental
-particles that make up matter. It contains the 27-kilometer (17 mile) long, circular Large Hadron Collider
-(LHC), the largest particle accelerator in the world (Figure 20.13). In the LHC, particles are boosted to high
-energies and are then made to collide with each other or with stationary targets at nearly the speed of light.
-Superconducting electromagnets are used to produce a strong magnetic field that guides the particles
-around the ring. Specialized, purpose-built detectors observe and record the results of these collisions,
-which are then analyzed by CERN scientists using powerful computers.
-1002
-20 • Nuclear Chemistry
-Access for free at openstax.org
-
-LINK TO LEARNING
-Famous physicist Brian Cox talks about his work on the Large Hadron Collider at CERN, providing an
-entertaining and engaging tour (http://openstax.org/l/16tedCERN) of this massive project and the physics
-behind it.
-View a short video (http://openstax.org/l/16CERNvideo) from CERN, describing the basics of how its particle
-accelerators work.
-Prior to 1940, the heaviest-known element was uranium, whose atomic number is 92. Now, many artificial
-elements have been synthesized and isolated, including several on such a large scale that they have had a
-profound effect on society. One of these—element 93, neptunium (Np)—was first made in 1940 by McMillan
-and Abelson by bombarding uranium-238 with neutrons. The reaction creates unstable uranium-239, with a
-half-life of 23.5 minutes, which then decays into neptunium-239. Neptunium-239 is also radioactive, with a
-half-life of 2.36 days, and it decays into plutonium-239. The nuclear reactions are:
-Plutonium is now mostly formed in nuclear reactors as a byproduct during the fission of U-235. Additional
-neutrons are released during this fission process (see the next section), some of which combine with U-238
-nuclei to form uranium-239; this undergoes β decay to form neptunium-239, which in turn undergoes β decay
-to form plutonium-239 as illustrated in the preceding three equations. These processes are summarized in the
-equation:
-Heavier isotopes of plutonium—Pu-240, Pu-241, and Pu-242—are also produced when lighter plutonium
-FIGURE 20.13
-A small section of the LHC is shown with workers traveling along it. (credit: Christophe Delaere)
-In 2012, CERN announced that experiments at the LHC showed the first observations of the Higgs boson,
-an elementary particle that helps explain the origin of mass in fundamental particles. This long-
-anticipated discovery made worldwide news and resulted in the awarding of the 2013 Nobel Prize in
-Physics to François Englert and Peter Higgs, who had predicted the existence of this particle almost 50
-years previously.
-20.4 • Transmutation and Nuclear Energy
-1003
-
-nuclei capture neutrons. Some of this highly radioactive plutonium is used to produce military weapons, and
-the rest presents a serious storage problem because they have half-lives from thousands to hundreds of
-thousands of years.
-Although they have not been prepared in the same quantity as plutonium, many other synthetic nuclei have
-been produced. Nuclear medicine has developed from the ability to convert atoms of one type into other types
-of atoms. Radioactive isotopes of several dozen elements are currently used for medical applications. The
-radiation produced by their decay is used to image or treat various organs or portions of the body, among other
-uses.
-The elements beyond element 92 (uranium) are called transuranium elements. As of this writing, 22
-transuranium elements have been produced and officially recognized by IUPAC; several other elements have
-formation claims that are waiting for approval. Some of these elements are shown in Table 20.3.
-Preparation of Some of the Transuranium Elements
-Name
-Symbol
-Atomic Number
-Reaction
-americium
-Am
-95
-curium
-Cm
-96
-californium
-Cf
-98
-einsteinium
-Es
-99
-mendelevium
-Md
-101
-nobelium
-No
-102
-rutherfordium
-Rf
-104
-seaborgium
-Sg
-106
-meitnerium
-Mt
-107
-TABLE 20.3
-Nuclear Fission
-Many heavier elements with smaller binding energies per nucleon can decompose into more stable elements
-that have intermediate mass numbers and larger binding energies per nucleon—that is, mass numbers and
-binding energies per nucleon that are closer to the “peak” of the binding energy graph near 56 (see Figure
-20.3). Sometimes neutrons are also produced. This decomposition is called fission, the breaking of a large
-nucleus into smaller pieces. The breaking is rather random with the formation of a large number of different
-products. Fission usually does not occur naturally, but is induced by bombardment with neutrons. The first
-reported nuclear fission occurred in 1939 when three German scientists, Lise Meitner, Otto Hahn, and Fritz
-Strassman, bombarded uranium-235 atoms with slow-moving neutrons that split the U-238 nuclei into
-smaller fragments that consisted of several neutrons and elements near the middle of the periodic table. Since
-then, fission has been observed in many other isotopes, including most actinide isotopes that have an odd
-number of neutrons. A typical nuclear fission reaction is shown in Figure 20.14.
-1004
-20 • Nuclear Chemistry
-Access for free at openstax.org
-
-FIGURE 20.14
-When a slow neutron hits a fissionable U-235 nucleus, it is absorbed and forms an unstable U-236
-nucleus. The U-236 nucleus then rapidly breaks apart into two smaller nuclei (in this case, Ba-141 and Kr-92) along
-with several neutrons (usually two or three), and releases a very large amount of energy.
-Among the products of Meitner, Hahn, and Strassman’s fission reaction were barium, krypton, lanthanum, and
-cerium, all of which have nuclei that are more stable than uranium-235. Since then, hundreds of different
-isotopes have been observed among the products of fissionable substances. A few of the many reactions that
-occur for U-235, and a graph showing the distribution of its fission products and their yields, are shown in
-Figure 20.15. Similar fission reactions have been observed with other uranium isotopes, as well as with a
-variety of other isotopes such as those of plutonium.
-FIGURE 20.15
-(a) Nuclear fission of U-235 produces a range of fission products. (b) The larger fission products of
-U-235 are typically one isotope with a mass number around 85–105, and another isotope with a mass number that
-is about 50% larger, that is, about 130–150.
-LINK TO LEARNING
-View this link (http://openstax.org/l/16fission) to see a simulation of nuclear fission.
-A tremendous amount of energy is produced by the fission of heavy elements. For instance, when one mole of
-20.4 • Transmutation and Nuclear Energy
-1005
-
-U-235 undergoes fission, the products weigh about 0.2 grams less than the reactants; this “lost” mass is
-converted into a very large amount of energy, about 1.8
-1010 kJ per mole of U-235. Nuclear fission reactions
-produce incredibly large amounts of energy compared to chemical reactions. The fission of 1 kilogram of
-uranium-235, for example, produces about 2.5 million times as much energy as is produced by burning 1
-kilogram of coal.
-As described earlier, when undergoing fission U-235 produces two “medium-sized” nuclei, and two or three
-neutrons. These neutrons may then cause the fission of other uranium-235 atoms, which in turn provide more
-neutrons that can cause fission of even more nuclei, and so on. If this occurs, we have a nuclear chain reaction
-(see Figure 20.16). On the other hand, if too many neutrons escape the bulk material without interacting with a
-nucleus, then no chain reaction will occur.
-FIGURE 20.16
-The fission of a large nucleus, such as U-235, produces two or three neutrons, each of which is
-capable of causing fission of another nucleus by the reactions shown. If this process continues, a nuclear chain
-reaction occurs.
-1006
-20 • Nuclear Chemistry
-Access for free at openstax.org
-
-Material that can sustain a nuclear fission chain reaction is said to be fissile or fissionable. (Technically, fissile
-material can undergo fission with neutrons of any energy, whereas fissionable material requires high-energy
-neutrons.) Nuclear fission becomes self-sustaining when the number of neutrons produced by fission equals
-or exceeds the number of neutrons absorbed by splitting nuclei plus the number that escape into the
-surroundings. The amount of a fissionable material that will support a self-sustaining chain reaction is a
-critical mass. An amount of fissionable material that cannot sustain a chain reaction is a subcritical mass. An
-amount of material in which there is an increasing rate of fission is known as a supercritical mass. The
-critical mass depends on the type of material: its purity, the temperature, the shape of the sample, and how the
-neutron reactions are controlled (Figure 20.17).
-FIGURE 20.17
-(a) In a subcritical mass, the fissile material is too small and allows too many neutrons to escape
-the material, so a chain reaction does not occur. (b) In a critical mass, a large enough number of neutrons in the
-fissile material induce fission to create a chain reaction.
-An atomic bomb (Figure 20.18) contains several pounds of fissionable material,
-or
-a source of
-neutrons, and an explosive device for compressing it quickly into a small volume. When fissionable material is
-in small pieces, the proportion of neutrons that escape through the relatively large surface area is great, and a
-chain reaction does not take place. When the small pieces of fissionable material are brought together quickly
-to form a body with a mass larger than the critical mass, the relative number of escaping neutrons decreases,
-and a chain reaction and explosion result.
-20.4 • Transmutation and Nuclear Energy
-1007
-
-FIGURE 20.18
-(a) The nuclear fission bomb that destroyed Hiroshima on August 6, 1945, consisted of two
-subcritical masses of U-235, where conventional explosives were used to fire one of the subcritical masses into the
-other, creating the critical mass for the nuclear explosion. (b) The plutonium bomb that destroyed Nagasaki on
-August 9, 1945, consisted of a hollow sphere of plutonium that was rapidly compressed by conventional explosives.
-This led to a concentration of plutonium in the center that was greater than the critical mass necessary for the
-nuclear explosion.
-Fission Reactors
-Chain reactions of fissionable materials can be controlled and sustained without an explosion in a nuclear
-reactor (Figure 20.19). Any nuclear reactor that produces power via the fission of uranium or plutonium by
-bombardment with neutrons must have at least five components: nuclear fuel consisting of fissionable
-material, a nuclear moderator, reactor coolant, control rods, and a shield and containment system. We will
-discuss these components in greater detail later in the section. The reactor works by separating the fissionable
-nuclear material such that a critical mass cannot be formed, controlling both the flux and absorption of
-neutrons to allow shutting down the fission reactions. In a nuclear reactor used for the production of
-electricity, the energy released by fission reactions is trapped as thermal energy and used to boil water and
-produce steam. The steam is used to turn a turbine, which powers a generator for the production of electricity.
-1008
-20 • Nuclear Chemistry
-Access for free at openstax.org
-
-FIGURE 20.19
-(a) The Diablo Canyon Nuclear Power Plant near San Luis Obispo is the only nuclear power plant
-currently in operation in California. The domes are the containment structures for the nuclear reactors, and the
-brown building houses the turbine where electricity is generated. Ocean water is used for cooling. (b) The Diablo
-C
-
-## Match 1.37 — Chemistry2e-WEB § 21.4 Transmutation and Nuclear Energy
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe the synthesis of transuranium nuclides
-•
-Explain nuclear fission and fusion processes
-•
-Relate the concepts of critical mass and nuclear chain reactions
-•
-Summarize basic requirements for nuclear fission and fusion reactors
-After the discovery of radioactivity, the field of nuclear chemistry was created and developed rapidly during
-the early twentieth century. A slew of new discoveries in the 1930s and 1940s, along with World War II,
-combined to usher in the Nuclear Age in the mid-twentieth century. Scientists learned how to create new
-substances, and certain isotopes of certain elements were found to possess the capacity to produce
-unprecedented amounts of energy, with the potential to cause tremendous damage during war, as well as
-produce enormous amounts of power for society’s needs during peace.
-Synthesis of Nuclides
-Nuclear transmutation is the conversion of one nuclide into another. It can occur by the radioactive decay of a
-nucleus, or the reaction of a nucleus with another particle. The first manmade nucleus was produced in Ernest
-Rutherford’s laboratory in 1919 by a transmutation reaction, the bombardment of one type of nuclei with
-other nuclei or with neutrons. Rutherford bombarded nitrogen atoms with high-speed α particles from a
-natural radioactive isotope of radium and observed protons resulting from the reaction:
-The
-and
-nuclei that are produced are stable, so no further (nuclear) changes occur.
-To reach the kinetic energies necessary to produce transmutation reactions, devices called particle
-accelerators are used. These devices use magnetic and electric fields to increase the speeds of nuclear
-particles. In all accelerators, the particles move in a vacuum to avoid collisions with gas molecules. When
-neutrons are required for transmutation reactions, they are usually obtained from radioactive decay reactions
-or from various nuclear reactions occurring in nuclear reactors. The Chemistry in Everyday Life feature that
-follows discusses a famous particle accelerator that made worldwide news.
-Chemistry in Everyday Life
-CERN Particle Accelerator
-Located near Geneva, the CERN (“Conseil Européen pour la Recherche Nucléaire,” or European Council for
-Nuclear Research) Laboratory is the world’s premier center for the investigations of the fundamental
-particles that make up matter. It contains the 27-kilometer (17 mile) long, circular Large Hadron Collider
-(LHC), the largest particle accelerator in the world (Figure 21.13). In the LHC, particles are boosted to high
-energies and are then made to collide with each other or with stationary targets at nearly the speed of light.
-Superconducting electromagnets are used to produce a strong magnetic field that guides the particles
-around the ring. Specialized, purpose-built detectors observe and record the results of these collisions,
-which are then analyzed by CERN scientists using powerful computers.
-1042
-21 • Nuclear Chemistry
-Access for free at openstax.org
-
-LINK TO LEARNING
-Famous physicist Brian Cox talks about his work on the Large Hadron Collider at CERN, providing an
-entertaining and engaging tour (http://openstax.org/l/16tedCERN) of this massive project and the physics
-behind it.
-View a short video (http://openstax.org/l/16CERNvideo) from CERN, describing the basics of how its particle
-accelerators work.
-Prior to 1940, the heaviest-known element was uranium, whose atomic number is 92. Now, many artificial
-elements have been synthesized and isolated, including several on such a large scale that they have had a
-profound effect on society. One of these—element 93, neptunium (Np)—was first made in 1940 by McMillan
-and Abelson by bombarding uranium-238 with neutrons. The reaction creates unstable uranium-239, with a
-half-life of 23.5 minutes, which then decays into neptunium-239. Neptunium-239 is also radioactive, with a
-half-life of 2.36 days, and it decays into plutonium-239. The nuclear reactions are:
-Plutonium is now mostly formed in nuclear reactors as a byproduct during the fission of U-235. Additional
-neutrons are released during this fission process (see the next section), some of which combine with U-238
-nuclei to form uranium-239; this undergoes β decay to form neptunium-239, which in turn undergoes β decay
-to form plutonium-239 as illustrated in the preceding three equations. These processes are summarized in the
-equation:
-Heavier isotopes of plutonium—Pu-240, Pu-241, and Pu-242—are also produced when lighter plutonium
-FIGURE 21.13
-A small section of the LHC is shown with workers traveling along it. (credit: Christophe Delaere)
-In 2012, CERN announced that experiments at the LHC showed the first observations of the Higgs boson,
-an elementary particle that helps explain the origin of mass in fundamental particles. This long-
-anticipated discovery made worldwide news and resulted in the awarding of the 2013 Nobel Prize in
-Physics to François Englert and Peter Higgs, who had predicted the existence of this particle almost 50
-years previously.
-21.4 • Transmutation and Nuclear Energy
-1043
-
-nuclei capture neutrons. Some of this highly radioactive plutonium is used to produce military weapons, and
-the rest presents a serious storage problem because they have half-lives from thousands to hundreds of
-thousands of years.
-Although they have not been prepared in the same quantity as plutonium, many other synthetic nuclei have
-been produced. Nuclear medicine has developed from the ability to convert atoms of one type into other types
-of atoms. Radioactive isotopes of several dozen elements are currently used for medical applications. The
-radiation produced by their decay is used to image or treat various organs or portions of the body, among other
-uses.
-The elements beyond element 92 (uranium) are called transuranium elements. As of this writing, 22
-transuranium elements have been produced and officially recognized by IUPAC; several other elements have
-formation claims that are waiting for approval. Some of these elements are shown in Table 21.3.
-Preparation of Some of the Transuranium Elements
-Name
-Symbol
-Atomic Number
-Reaction
-americium
-Am
-95
-curium
-Cm
-96
-californium
-Cf
-98
-einsteinium
-Es
-99
-mendelevium
-Md
-101
-nobelium
-No
-102
-rutherfordium
-Rf
-104
-seaborgium
-Sg
-106
-meitnerium
-Mt
-107
-TABLE 21.3
-Nuclear Fission
-Many heavier elements with smaller binding energies per nucleon can decompose into more stable elements
-that have intermediate mass numbers and larger binding energies per nucleon—that is, mass numbers and
-binding energies per nucleon that are closer to the “peak” of the binding energy graph near 56 (see Figure
-21.3). Sometimes neutrons are also produced. This decomposition is called fission, the breaking of a large
-nucleus into smaller pieces. The breaking is rather random with the formation of a large number of different
-products. Fission usually does not occur naturally, but is induced by bombardment with neutrons. The first
-reported nuclear fission occurred in 1939 when three German scientists, Lise Meitner, Otto Hahn, and Fritz
-Strassman, bombarded uranium-235 atoms with slow-moving neutrons that split the U-238 nuclei into
-smaller fragments that consisted of several neutrons and elements near the middle of the periodic table. Since
-then, fission has been observed in many other isotopes, including most actinide isotopes that have an odd
-number of neutrons. A typical nuclear fission reaction is shown in Figure 21.14.
-1044
-21 • Nuclear Chemistry
-Access for free at openstax.org
-
-FIGURE 21.14
-When a slow neutron hits a fissionable U-235 nucleus, it is absorbed and forms an unstable U-236
-nucleus. The U-236 nucleus then rapidly breaks apart into two smaller nuclei (in this case, Ba-141 and Kr-92) along
-with several neutrons (usually two or three), and releases a very large amount of energy.
-Among the products of Meitner, Hahn, and Strassman’s fission reaction were barium, krypton, lanthanum, and
-cerium, all of which have nuclei that are more stable than uranium-235. Since then, hundreds of different
-isotopes have been observed among the products of fissionable substances. A few of the many reactions that
-occur for U-235, and a graph showing the distribution of its fission products and their yields, are shown in
-Figure 21.15. Similar fission reactions have been observed with other uranium isotopes, as well as with a
-variety of other isotopes such as those of plutonium.
-FIGURE 21.15
-(a) Nuclear fission of U-235 produces a range of fission products. (b) The larger fission products of
-U-235 are typically one isotope with a mass number around 85–105, and another isotope with a mass number that
-is about 50% larger, that is, about 130–150.
-LINK TO LEARNING
-View this link (http://openstax.org/l/16fission) to see a simulation of nuclear fission.
-A tremendous amount of energy is produced by the fission of heavy elements. For instance, when one mole of
-21.4 • Transmutation and Nuclear Energy
-1045
-
-U-235 undergoes fission, the products weigh about 0.2 grams less than the reactants; this “lost” mass is
-converted into a very large amount of energy, about 1.8
-1010 kJ per mole of U-235. Nuclear fission reactions
-produce incredibly large amounts of energy compared to chemical reactions. The fission of 1 kilogram of
-uranium-235, for example, produces about 2.5 million times as much energy as is produced by burning 1
-kilogram of coal.
-As described earlier, when undergoing fission U-235 produces two “medium-sized” nuclei, and two or three
-neutrons. These neutrons may then cause the fission of other uranium-235 atoms, which in turn provide more
-neutrons that can cause fission of even more nuclei, and so on. If this occurs, we have a nuclear chain reaction
-(see Figure 21.16). On the other hand, if too many neutrons escape the bulk material without interacting with a
-nucleus, then no chain reaction will occur.
-FIGURE 21.16
-The fission of a large nucleus, such as U-235, produces two or three neutrons, each of which is
-capable of causing fission of another nucleus by the reactions shown. If this process continues, a nuclear chain
-reaction occurs.
-1046
-21 • Nuclear Chemistry
-Access for free at openstax.org
-
-Material that can sustain a nuclear fission chain reaction is said to be fissile or fissionable. (Technically, fissile
-material can undergo fission with neutrons of any energy, whereas fissionable material requires high-energy
-neutrons.) Nuclear fission becomes self-sustaining when the number of neutrons produced by fission equals
-or exceeds the number of neutrons absorbed by splitting nuclei plus the number that escape into the
-surroundings. The amount of a fissionable material that will support a self-sustaining chain reaction is a
-critical mass. An amount of fissionable material that cannot sustain a chain reaction is a subcritical mass. An
-amount of material in which there is an increasing rate of fission is known as a supercritical mass. The
-critical mass depends on the type of material: its purity, the temperature, the shape of the sample, and how the
-neutron reactions are controlled (Figure 21.17).
-FIGURE 21.17
-(a) In a subcritical mass, the fissile material is too small and allows too many neutrons to escape
-the material, so a chain reaction does not occur. (b) In a critical mass, a large enough number of neutrons in the
-fissile material induce fission to create a chain reaction.
-An atomic bomb (Figure 21.18) contains several pounds of fissionable material,
-or
-a source of
-neutrons, and an explosive device for compressing it quickly into a small volume. When fissionable material is
-in small pieces, the proportion of neutrons that escape through the relatively large surface area is great, and a
-chain reaction does not take place. When the small pieces of fissionable material are brought together quickly
-to form a body with a mass larger than the critical mass, the relative number of escaping neutrons decreases,
-and a chain reaction and explosion result.
-21.4 • Transmutation and Nuclear Energy
-1047
-
-FIGURE 21.18
-(a) The nuclear fission bomb that destroyed Hiroshima on August 6, 1945, consisted of two
-subcritical masses of U-235, where conventional explosives were used to fire one of the subcritical masses into the
-other, creating the critical mass for the nuclear explosion. (b) The plutonium bomb that destroyed Nagasaki on
-August 9, 1945, consisted of a hollow sphere of plutonium that was rapidly compressed by conventional explosives.
-This led to a concentration of plutonium in the center that was greater than the critical mass necessary for the
-nuclear explosion.
-Fission Reactors
-Chain reactions of fissionable materials can be controlled and sustained without an explosion in a nuclear
-reactor (Figure 21.19). Any nuclear reactor that produces power via the fission of uranium or plutonium by
-bombardment with neutrons must have at least five components: nuclear fuel consisting of fissionable
-material, a nuclear moderator, reactor coolant, control rods, and a shield and containment system. We will
-discuss these components in greater detail later in the section. The reactor works by separating the fissionable
-nuclear material such that a critical mass cannot be formed, controlling both the flux and absorption of
-neutrons to allow shutting down the fission reactions. In a nuclear reactor used for the production of
-electricity, the energy released by fission reactions is trapped as thermal energy and used to boil water and
-produce steam. The steam is used to turn a turbine, which powers a generator for the production of electricity.
-1048
-21 • Nuclear Chemistry
-Access for free at openstax.org
-
-FIGURE 21.19
-(a) The Diablo Canyon Nuclear Power Plant near San Luis Obispo is the only nuclear power plant
-currently in operation in California. The domes are the containment structures for the nuclear reactors, and the
-brown building houses the turbine where electricity is generated. Ocean water is used for cooling. (b) The Diablo
-C
+2.6: The Energy of the System
+A large part of classical thermodynamics is concerned with the energy of the system. The total energy of a system is an extensive property whose value at any one instant cannot be measured in any practical way, but whose change is the focus of the first law of thermodynamics (Chap. 3).
+2.6.1 Energy and reference frames
+Classical thermodynamics ignores microscopic properties such as the behavior of individual atoms and molecules. Nevertheless, a consideration of the classical mechanics of particles will help us to understand the sources of the potential and kinetic energy of a thermodynamic system.
+In classical mechanics, the energy of a collection of interacting point particles is the sum of the kinetic energy \(\onehalf mv^2\) of each particle (where \(m\) is the particle’s mass and \(v\) is its velocity), and of various kinds of potential energies. The potential energies are defined in such a way that if the particles are isolated from the rest of the universe, as the particles move and interact with one another the total energy (kinetic plus potential) is constant over time. This principle of the conservation of energy also holds for real atoms and molecules whose electronic, vibrational, and rotational energies, absent in point particles, are additional contributions to the total energy.
+The positions and velocities of particles must be measured in a specified system of coordinates called a reference frame . This e-book will use reference frames with Cartesian axes. Since the kinetic energy of a particle is a function of velocity, the kinetic energy depends on the choice of the reference frame. A particularly important kind is an inertial frame, one in which Newton’s laws of motion are obeyed (see Sec. G.1 in Appendix G).
+A reference frame whose axes are fixed relative to the earth’s surface is what this e-book will call a lab frame . A lab frame for all practical purposes is inertial (Sec. G.10). It is in this kind of stationary frame that the laws of thermodynamics have been found by experiment to be valid.
+The energy \(E\) of a thermodynamic system is the sum of the energies of the particles contained in it and the potential energies of interaction between these particles. Just as for an individual particle, the energy of the system depends on the reference frame in which it is measured. The energy of the system may change during a process, but the principle of the conservation of energy ensures that the sum of the energy of the system, the energy of the surroundings, and any energy shared by both, all measured in the same reference frame, remains constant over time.
+This e-book uses the symbol \(E\sys\) for the energy of the system measured in a specified inertial frame. The system could be located in a weightless environment in outer space, and the inertial frame could be one that is either fixed or moving at constant velocity relative to local stars. Usually, however, the system is located in the earth’s gravitational field, and the appropriate inertial frame is then an earth-fixed lab frame.
+If during a process the system as a whole undergoes motion or rotation relative to the inertial frame, then \(E\sys\) depends in part on coordinates that are not properties of the system. In such situations \(E\sys\) is not a state function, and we need the concept of internal energy.
+2.6.2 Internal energy
+The internal energy , \(U\!\), is the energy of the system measured in a reference frame that allows \(U\) to be a state function—that is, at each instant the value of \(U\) depends only on the state of the system. This e-book will call a reference frame with this property a local frame . A local frame may also be, but is not necessarily, an earth-fixed lab frame.
+Here is a simple illustration of the distinction between the energy \(E\sys\) of a system measured in a lab frame and the internal energy \(U\!\) measured in a local frame. Let the system be a fixed amount of water contained in a glass beaker. (The glass material of the beaker is part of the surroundings.) We can define the state of this system by two independent variables: the temperature, \(T\), and pressure, \(p\), of the water. The most convenient local frame in which to measure \(U\) in this case is a frame fixed with respect to the beaker.
+-
+Section 3.1.1 will show that the relation between changes of the system energy and the internal energy in this example is \(\Del E\sys = \Del E\subs{k} + \Del E\subs{p} + \Del U\), where \(E\subs{k}\) and \(E\subs{p}\) are the kinetic and potential energies of the system as a whole measured in the lab frame.
+Our choice of the local frame used to define the internal energy \(U\) of any particular system during a given process is to some extent arbitrary. Three possible choices are as follows.
+- Is it possible to determine a numerical value for the internal energy of a system? The total energy of a body of mass \(m\) when it is at rest is given by the Einstein relation \(E = mc_0^2\), where \(c_0\) is the speed of light in vacuum. In principle, then, we could calculate the internal energy \(U\) of a system at rest from its mass, and we could determine \(\Del U\) for a process from the change in mass. In practice, however, an absolute value of \(U\) calculated from a measured mass has too much uncertainty to be of any practical use. For example, the typical uncertainty of the mass of an object measured with a microbalance, about \(0.1\units{\(\mu\)g}\) (Table 2.2), would introduce the enormous uncertainty in energy of about \(10^{10}\) joules. Only values of the change \(\Del U\) are useful, and these values cannot be calculated from \(\Del m\) because the change in mass during an ordinary chemical process is much too small to be detected.

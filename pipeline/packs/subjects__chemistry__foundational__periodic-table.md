@@ -1,9 +1,99 @@
 # Source pack — subjects/chemistry/foundational/periodic-table
 Lesson title: The Periodic Table
 Level: foundational
-Match confidence: 3.08
+Match confidence: 3.09
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
+
+## Match 3.09 — LibreTexts: 4: Atoms, Elements, and the Periodic Table
+License: Public Domain · https://chem.libretexts.org/Courses/UWMilwaukee/CHE_125%3A_GOB_Introductory_Chemistry/04%3A_Atoms_Elements_and_the_Periodic_Table
+
+Skip to main content
+4: Atoms, Elements, and the Periodic Table
+-
+-
+Last updated
+-
+-
+Save as PDF
+-
+-
+-
+4.1: Prelude to Elements, Atoms, and the Periodic Table
+-
+The hardest material in the human body is tooth enamel. It has to be hard so that our teeth can serve us for a lifetime of biting and chewing; however, tough as it is, tooth enamel is susceptible to chemical attack. Acids found in some foods or made by bacteria that feed on food residues on our teeth are capable of dissolving enamel. Unprotected by enamel, a tooth will start to decay, thus developing cavities and other dental problems.
+-
+-
+4.2: The Elements
+-
+This section will cover the importance of the elements, and further discuss element naming.
+-
+-
+4.3: Atomic Theory
+-
+Atoms are the ultimate building blocks of all matter. The modern atomic theory establishes the concepts of atoms and how they compose matter.
+-
+-
+4.4: Atomic Theory
+-
+Chemistry is based on the modern atomic theory, which states that all matter is composed of atoms. Atoms themselves are composed of protons, neutrons, and electrons. Each element has its own atomic number, which is equal to the number of protons in its nucleus. Isotopes of an element contain different numbers of neutrons. Elements are represented by an atomic symbol. The periodic table is a chart that organizes all the elements.
+-
+-
+4.5: Defining Isotopes
+-
+Elements can be identified by their atomic number and mass number. Isotopes are atoms of the same element that have different masses.
+-
+-
+4.6: Atomic Masses
+-
+Atoms have a mass that is based largely on the number of protons and neutrons in their nucleus.
+-
+-
+4.7: Arrangements of Electrons
+-
+Electrons are organized into shells and subshells about the nucleus of an atom.
+-
+-
+4.8: Orbital Shape
+-
+-
+-
+4.9: The Periodic Table
+-
+The chemical elements are arranged in a chart called the periodic table. Some characteristics of the elements are related to their position on the periodic table.
+-
+-
+4.10: Ions - Losing and Gaining Electrons
+-
+Atom may lose valence electrons quite to obtain a lower shell that contains an octet. Atoms that lose electrons acquire a positive charge as a result because they are left with fewer negatively charged electrons to balance the positive charges of the protons in the nucleus. Positively charged ions are called cations. Most metals become cations when they make ionic compounds.
+-
+-
+4.E: Elements, Atoms, and the Periodic Table (Exercises)
+-
+These are homework exercises to accompany Chapter 2 of the Ball et al. "The Basics of GOB Chemistry" Textmap.
+
+## Match 3.08 — LibreTexts: 2.4:  Atoms, Isotopes, Ions, and Molecules - The Periodic Table
+License: Creative Commons - Attribution Share-Alike - https://creativecommons.org/licenses/by-sa/4.0/ · https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_(Boundless)/02%3A_The_Chemical_Foundation_of_Life/2.04%3A__Atoms_Isotopes_Ions_and_Molecules_-_The_Periodic_Table
+
+2.4: Atoms, Isotopes, Ions, and Molecules - The Periodic Table
+- Discuss the organization of the periodic table
+Matter and Elements
+Matter comprises all of the physical objects in the universe, those that take up space and have mass. All matter is composed of atoms of one or more elements, pure substances with specific chemical and physical properties. There are 98 elements that naturally occur on earth, yet living systems use a relatively small number of these. Living creatures are composed mainly of just four elements: carbon, hydrogen, oxygen, and nitrogen (often remembered by the acronym CHON). As elements are bonded together they form compounds that often have new emergent properties that are different from the properties of the individual elements. Life is an example of an emergent property that arises from the specific collection of molecules found in cells.
+Elements of the human body arranged by percent of total mass : There are 25 elements believed to play an active role in human health. Carbon, hydrogen, oxygen, and nitrogen make up approximately 96% of the mass in a human body.
+The Periodic Table
+The different elements are organized and displayed in the periodic table. Devised by Russian chemist Dmitri Mendeleev (1834–1907) in 1869, the table groups elements that, although unique, share certain chemical properties with other elements. In the periodic table the elements are organized and displayed according to their atomic number and are arranged in a series of rows (periods) and columns (groups) based on shared chemical and physical properties. If you look at a periodic table, you will see the groups numbered at the top of each column from left to right starting with 1 and ending with 18. In addition to providing the atomic number for each element, the periodic table also displays the element’s atomic mass. Looking at carbon, for example, its symbol (C) and name appear, as well as its atomic number of six (in the upper left-hand corner) and its atomic mass of 12.11.
+The arrangement of the periodic table allows the elements to be grouped according to their chemical properties. Within the main group elements ( Groups 1-2, 13-18), there are some general trends that we can observe. The further down a given group, the elements have an increased metallic character: they are good conductors of both heat and electricity, solids at room temperature, and shiny in appearance. Moving from left to right across a period, the elements have greater non-metallic character. These elements are insulators, poor heat conductors, and can exist in different phases at room temperature (brittle solid, liquid, or gas). The elements at the boundary between the metallic elements (grey elements) and nonmetal elements (green elements) are metalloid in character (pink elements). They have low electrical conductivity that increases with temperature. They also share properties with both the metals and the nonmetals.
+Today, the periodic table continues to expand as heavier and heavier elements are synthesized in laboratories. These large elements are extremely unstable and, as such, are very difficult to detect; but their continued creation is an ongoing challenge undertaken by scientists around the world.
+Key Points
+- All matter is made from atoms of one or more elements. Living creatures consist mainly of carbon, hydrogen, oxygen, and nitrogen (CHON).
+- Combining elements creates compounds that may have emergent properties.
+- The periodic table is a listing of the elements according to increasing atomic number that is further organized into columns based on similar physical and chemical properties and electron configuration.
+- As one moves down a column or across a row, there are some general trends for the properties of the elements.
+- The periodic table continues to expand today as heavier and heavier elements are created in laboratories around the world.
+Key Terms
+- element : Pure chemical substances consisting of only one type of atom with a defined set of chemical and physical properties.
+- emergent properties : Properties found in compound structures that are different from those of the individual components and would not be predicted based on the properties of the individual components.
+- periodic table : A tabular chart of the chemical elements according to their atomic numbers so that elements with similar properties are in the same column.
 
 ## Match 3.08 — UniversityPhysicsVolume3-WEB § 8.4 The Exclusion Principle and the Periodic Table
 
@@ -358,296 +448,3 @@ attraction between these atoms forms a NaCl (salt) molecule. A chemical bond bet
 ionic bond. There are many kinds of chemical bonds. For example, in an oxygen molecule
 electrons are
 equally shared between the atoms. The bonding of oxygen atoms is an example of a covalent bond.
-
-## Match 3.06 — Chemistry2e-WEB § 2.5 The Periodic Table
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-State the periodic law and explain the organization of elements in the periodic table
-•
-Predict the general properties of elements based on their location within the periodic table
-•
-Identify metals, nonmetals, and metalloids by their properties and/or location on the periodic table
-As early chemists worked to purify ores and discovered more elements, they realized that various elements
-could be grouped together by their similar chemical behaviors. One such grouping includes lithium (Li),
-sodium (Na), and potassium (K): These elements all are shiny, conduct heat and electricity well, and have
-similar chemical properties. A second grouping includes calcium (Ca), strontium (Sr), and barium (Ba), which
-also are shiny, good conductors of heat and electricity, and have chemical properties in common. However, the
-specific properties of these two groupings are notably different from each other. For example: Li, Na, and K are
-much more reactive than are Ca, Sr, and Ba; Li, Na, and K form compounds with oxygen in a ratio of two of their
-atoms to one oxygen atom, whereas Ca, Sr, and Ba form compounds with one of their atoms to one oxygen
-atom. Fluorine (F), chlorine (Cl), bromine (Br), and iodine (I) also exhibit similar properties to each other, but
-these properties are drastically different from those of any of the elements above.
-84
-2 • Atoms, Molecules, and Ions
-Access for free at openstax.org
-
-Dimitri Mendeleev in Russia (1869) and Lothar Meyer in Germany (1870) independently recognized that there
-was a periodic relationship among the properties of the elements known at that time. Both published tables
-with the elements arranged according to increasing atomic mass. But Mendeleev went one step further than
-Meyer: He used his table to predict the existence of elements that would have the properties similar to
-aluminum and silicon, but were yet unknown. The discoveries of gallium (1875) and germanium (1886)
-provided great support for Mendeleev’s work. Although Mendeleev and Meyer had a long dispute over priority,
-Mendeleev’s contributions to the development of the periodic table are now more widely recognized (Figure
-2.25).
-FIGURE 2.25
-(a) Dimitri Mendeleev is widely credited with creating (b) the first periodic table of the elements.
-(credit a: modification of work by Serge Lachinov; credit b: modification of work by “Den fjättrade ankan”/Wikimedia
-Commons)
-By the twentieth century, it became apparent that the periodic relationship involved atomic numbers rather
-than atomic masses. The modern statement of this relationship, the periodic law, is as follows: the properties
-of the elements are periodic functions of their atomic numbers. A modern periodic table arranges the
-elements in increasing order of their atomic numbers and groups atoms with similar properties in the same
-vertical column (Figure 2.26). Each box represents an element and contains its atomic number, symbol,
-average atomic mass, and (sometimes) name. The elements are arranged in seven horizontal rows, called
-periods or series, and 18 vertical columns, called groups. Groups are labeled at the top of each column. In the
-United States, the labels traditionally were numerals with capital letters. However, IUPAC recommends that the
-numbers 1 through 18 be used, and these labels are more common. For the table to fit on a single page, parts of
-two of the rows, a total of 14 columns, are usually written below the main body of the table.
-2.5 • The Periodic Table
-85
-
-FIGURE 2.26
-Elements in the periodic table are organized according to their properties.
-Even after the periodic nature of elements and the table itself were widely accepted, gaps remained.
-Mendeleev had predicted, and others including Henry Moseley had later confirmed, that there should be
-elements below Manganese in Group 7. German chemists Ida Tacke and Walter Noddack set out to find the
-elements, a quest being pursued by scientists around the world. Their method was unique in that they did not
-only consider the properties of manganese, but also the elements horizontally adjacent to the missing
-elements 43 and 75 on the table. Thus, by investigating ores containing minerals of ruthenium (Ru), tungsten
-(W), osmium (Os), and so on, they were able to identify naturally occurring elements that helped complete the
-table. Rhenium, one of their discoveries, was one of the last natural elements to be discovered and is the last
-stable element to be discovered. (Francium, the last natural element to be discovered, was identified by
-Marguerite Perey in 1939.)
-Many elements differ dramatically in their chemical and physical properties, but some elements are similar in
-their behaviors. For example, many elements appear shiny, are malleable (able to be deformed without
-breaking) and ductile (can be drawn into wires), and conduct heat and electricity well. Other elements are not
-shiny, malleable, or ductile, and are poor conductors of heat and electricity. We can sort the elements into large
-classes with common properties: metals (elements that are shiny, malleable, good conductors of heat and
-electricity—shaded yellow); nonmetals (elements that appear dull, poor conductors of heat and
-electricity—shaded green); and metalloids (elements that conduct heat and electricity moderately well, and
-possess some properties of metals and some properties of nonmetals—shaded purple).
-86
-2 • Atoms, Molecules, and Ions
-Access for free at openstax.org
-
-The elements can also be classified into the main-group elements (or representative elements) in the
-columns labeled 1, 2, and 13–18; the transition metals in the columns labeled 3–123 ; and inner transition
-metals in the two rows at the bottom of the table (the top-row elements are called lanthanides and the bottom-
-row elements are actinides; Figure 2.27). The elements can be subdivided further by more specific properties,
-such as the composition of the compounds they form. For example, the elements in group 1 (the first column)
-form compounds that consist of one atom of the element and one atom of hydrogen. These elements (except
-hydrogen) are known as alkali metals, and they all have similar chemical properties. The elements in group 2
-(the second column) form compounds consisting of one atom of the element and two atoms of hydrogen: These
-are called alkaline earth metals, with similar properties among members of that group. Other groups with
-specific names are the pnictogens (group 15), chalcogens (group 16), halogens (group 17), and the noble
-gases (group 18, also known as inert gases). The groups can also be referred to by the first element of the
-group: For example, the chalcogens can be called the oxygen group or oxygen family. Hydrogen is a unique,
-nonmetallic element with properties similar to both group 1 and group 17 elements. For that reason, hydrogen
-may be shown at the top of both groups, or by itself.
-FIGURE 2.27
-The periodic table organizes elements with similar properties into groups.
-LINK TO LEARNING
-Click on this link (https://openstax.org/l/16Periodic) for an interactive periodic table, which you can use to
-explore the properties of the elements (includes podcasts and videos of each element). You may also want to
-try this one (https://openstax.org/l/16Periodic2) that shows photos of all the elements.
-EXAMPLE 2.7
-Naming Groups of Elements
-Atoms of each of the following elements are essential for life. Give the group name for the following elements:
-(a) chlorine
-3 Per the IUPAC definition, group 12 elements are not transition metals, though they are often referred to as such. Additional details
-on this group’s elements are provided in a chapter on transition metals and coordination chemistry.
-2.5 • The Periodic Table
-87
-
-(b) calcium
-(c) sodium
-(d) sulfur
-Solution
-The family names are as follows:
-(a) halogen
-(b) alkaline earth metal
-(c) alkali metal
-(d) chalcogen
-Check Your Learning
-Give the group name for each of the following elements:
-(a) krypton
-(b) selenium
-(c) barium
-(d) lithium
-Answer:
-(a) noble gas; (b) chalcogen; (c) alkaline earth metal; (d) alkali metal
-As you will learn in your further study of chemistry, elements in groups often behave in a somewhat similar
-manner. This is partly due to the number of electrons in their outer shell and their similar readiness to bond.
-These shared properties can have far-ranging implications in nature, science, and medicine. For example,
-when Gertrude Elion and George Hitchens were investigating ways to interrupt cell and virus replication to
-fight diseases, they utilized the similarity between sulfur and oxygen (both in Group 16) and their capacity to
-bond in similar ways. Elion focused on purines, which are key components of DNA and which contain oxygen.
-She found that by introducing sulfur-based compounds (called purine analogues) that mimic the structure of
-purines, molecules within DNA would bond to the analogues rather than the "regular" DNA purine. With the
-normal DNA bonding and structure altered, Elion successfully interrupted cell replication. At its core, the
-strategy worked because of the similarity between sulfur and oxygen. Her discovery led directly to important
-treatments for leukemia. Overall, Elion's work with George Hitchens not only led to more treatments, but also
-changed the entire methodology of drug development. By using specific elements and compounds to target
-specific aspects of tumor cells, viruses, and bacteria, they laid the groundwork for many of today's most
-common and important medicines, used to help millions of people each year. They were awarded the Nobel
-Prize in 1988.
-In studying the periodic table, you might have noticed something about the atomic masses of some of the
-elements. Element 43 (technetium), element 61 (promethium), and most of the elements with atomic number
-84 (polonium) and higher have their atomic mass given in square brackets. This is done for elements that
-consist entirely of unstable, radioactive isotopes (you will learn more about radioactivity in the nuclear
-chemistry chapter). An average atomic weight cannot be determined for these elements because their
-radioisotopes may vary significantly in relative abundance, depending on the source, or may not even exist in
-nature. The number in square brackets is the atomic mass number (an approximate atomic mass) of the most
-stable isotope of that element.
-88
-2 • Atoms, Molecules, and Ions
-Access for free at openstax.org
-
-
-## Match 3.06 — ChemistryAtomsFirst2e-WEB § 3.6 The Periodic Table
-
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-State the periodic law and explain the organization of elements in the periodic table
-•
-Predict the general properties of elements based on their location within the periodic table
-•
-Identify metals, nonmetals, and metalloids by their properties and/or location on the periodic table
-As early chemists worked to purify ores and discovered more elements, they realized that various elements
-could be grouped together by their similar chemical behaviors. One such grouping includes lithium (Li),
-sodium (Na), and potassium (K): These elements all are shiny, conduct heat and electricity well, and have
-similar chemical properties. A second grouping includes calcium (Ca), strontium (Sr), and barium (Ba), which
-also are shiny, good conductors of heat and electricity, and have chemical properties in common. However, the
-specific properties of these two groupings are notably different from each other. For example: Li, Na, and K are
-much more reactive than are Ca, Sr, and Ba; Li, Na, and K form compounds with oxygen in a ratio of two of their
-atoms to one oxygen atom, whereas Ca, Sr, and Ba form compounds with one of their atoms to one oxygen
-3.6 • The Periodic Table
-149
-
-atom. Fluorine (F), chlorine (Cl), bromine (Br), and iodine (I) also exhibit similar properties to each other, but
-these properties are drastically different from those of any of the elements above.
-Dimitri Mendeleev in Russia (1869) and Lothar Meyer in Germany (1870) independently recognized that there
-was a periodic relationship among the properties of the elements known at that time. Both published tables
-with the elements arranged according to increasing atomic mass. But Mendeleev went one step further than
-Meyer: He used his table to predict the existence of elements that would have the properties similar to
-aluminum and silicon, but were yet unknown. The discoveries of gallium (1875) and germanium (1886)
-provided great support for Mendeleev’s work. Although Mendeleev and Meyer had a long dispute over priority,
-Mendeleev’s contributions to the development of the periodic table are now more widely recognized (Figure
-3.36).
-FIGURE 3.36
-(a) Dimitri Mendeleev is widely credited with creating (b) the first periodic table of the elements.
-(credit a: modification of work by Serge Lachinov; credit b: modification of work by “Den fjättrade ankan”/Wikimedia
-Commons)
-By the twentieth century, it became apparent that the periodic relationship involved atomic numbers rather
-than atomic masses. The modern statement of this relationship, the periodic law, is as follows: the properties
-of the elements are periodic functions of their atomic numbers. A modern periodic table arranges the
-elements in increasing order of their atomic numbers and groups atoms with similar properties in the same
-vertical column (Figure 3.37). Each box represents an element and contains its atomic number, symbol,
-average atomic mass, and (sometimes) name. The elements are arranged in seven horizontal rows, called
-periods or series, and 18 vertical columns, called groups. Groups are labeled at the top of each column. In the
-United States, the labels traditionally were numerals with capital letters. However, IUPAC recommends that the
-numbers 1 through 18 be used, and these labels are more common. For the table to fit on a single page, parts of
-two of the rows, a total of 14 columns, are usually written below the main body of the table.
-150
-3 • Electronic Structure and Periodic Properties of Elements
-Access for free at openstax.org
-
-FIGURE 3.37
-Elements in the periodic table are organized according to their properties.
-Even after the periodic nature of elements and the table itself were widely accepted, gaps remained.
-Mendeleev had predicted, and others including Henry Moseley had later confirmed, that there should be
-elements below Manganese in Group 7. German chemists Ida Tacke and Walter Noddack set out to find the
-elements, a quest being pursued by scientists around the world. Their method was unique in that they did not
-only consider the properties of manganese, but also the elements horizontally adjacent to the missing
-elements 43 and 75 on the table. Thus, by investigating ores containing minerals of ruthenium (Ru), tungsten
-(W), osmium (Os), and so on, they were able to identify naturally occurring elements that helped complete the
-table. Rhenium, one of their discoveries, was one of the last natural elements to be discovered and is the last
-stable element to be discovered. (Francium, the last natural element to be discovered, was identified by
-Marguerite Perey in 1939.)
-Many elements differ dramatically in their chemical and physical properties, but some elements are similar in
-their behaviors. For example, many elements appear shiny, are malleable (able to be deformed without
-breaking) and ductile (can be drawn into wires), and conduct heat and electricity well. Other elements are not
-shiny, malleable, or ductile, and are poor conductors of heat and electricity. We can sort the elements into large
-classes with common properties: metals (elements that are shiny, malleable, good conductors of heat and
-electricity—shaded yellow); nonmetals (elements that appear dull, poor conductors of heat and
-electricity—shaded green); and metalloids (elements that conduct heat and electricity moderately well, and
-possess some properties of metals and some properties of nonmetals—shaded purple).
-3.6 • The Periodic Table
-151
-
-The elements can also be classified into the main-group elements (or representative elements) in the
-columns labeled 1, 2, and 13–18; the transition metals in the columns labeled 3–12; 1 and inner transition
-metals in the two rows at the bottom of the table (the top-row elements are called lanthanides and the bottom-
-row elements are actinides; Figure 3.38). The elements can be subdivided further by more specific properties,
-such as the composition of the compounds they form. For example, the elements in group 1 (the first column)
-form compounds that consist of one atom of the element and one atom of hydrogen. These elements (except
-hydrogen) are known as alkali metals, and they all have similar chemical properties. The elements in group 2
-(the second column) form compounds consisting of one atom of the element and two atoms of hydrogen: These
-are called alkaline earth metals, with similar properties among members of that group. Other groups with
-specific names are the pnictogens (group 15), chalcogens (group 16), halogens (group 17), and the noble
-gases (group 18, also known as inert gases). The groups can also be referred to by the first element of the
-group: For example, the chalcogens can be called the oxygen group or oxygen family. Hydrogen is a unique,
-nonmetallic element with properties similar to both group 1 and group 17 elements. For that reason, hydrogen
-may be shown at the top of both groups, or by itself.
-FIGURE 3.38
-The periodic table organizes elements with similar properties into groups.
-LINK TO LEARNING
-Click on this link (http://openstax.org/l/16Periodic) for an interactive periodic table, which you can use to
-explore the properties of the elements (includes podcasts and videos of each element). You may also want to
-try this one (http://openstax.org/l/16Periodic2) that shows photos of all the elements.
-EXAMPLE 3.14
-Naming Groups of Elements
-Atoms of each of the following elements are essential for life. Give the group name for the following elements:
-(a) chlorine
-1 Per the IUPAC definition, group 12 elements are not transition metals, though they are often referred to as such. Additional details
-on this group's elements are provided in a chapter on transition metals and coordination chemistry.
-152
-3 • Electronic Structure and Periodic Properties of Elements
-Access for free at openstax.org
-
-(b) calcium
-(c) sodium
-(d) sulfur
-Solution
-The family names are as follows:
-(a) halogen
-(b) alkaline earth metal
-(c) alkali metal
-(d) chalcogen
-Check Your Learning
-Give the group name for each of the following elements:
-(a) krypton
-(b) selenium
-(c) barium
-(d) lithium
-Answer:
-(a) noble gas; (b) chalcogen; (c) alkaline earth metal; (d) alkali metal
-As you will learn in your further study of chemistry, elements in groups often behave in a somewhat similar
-manner. This is partly due to the number of electrons in their outer shell and their similar readiness to bond.
-These shared properties can have far-ranging implications in nature, science, and medicine. For example,
-when Gertrude Elion and George Hitchens were investigating ways to interrupt cell and virus replication to
-fight diseases, they utilized the similarity between sulfur and oxygen (both in Group 16) and their capacity to
-bond in similar ways. Elion focused on purines, which are key components of DNA and which contain oxygen.
-She found that by introducing sulfur-based compounds (called purine analogues) that mimic the structure of
-purines, molecules within DNA would bond to the analogues rather than the "regular" DNA purine. With the
-normal DNA bonding and structure altered, Elion successfully interrupted cell replication. At its core, the
-strategy worked because of the similarity between sulfur and oxygen. Her discovery led directly to important
-treatments for leukemia. Overall, Elion's work with George Hitchens not only led to more treatments, but also
-changed the entire methodology of drug development. By using specific elements and compounds to target
-specific aspects of tumor cells, viruses, and bacteria, they laid the groundwork for many of today's most
-common and important medicines, used to help millions of people each year. They were awarded the Nobel
-Prize in 1988.
-In studying the periodic table, you might have noticed something about the atomic masses of some of the
-elements. Element 43 (technetium), element 61 (promethium), and most of the elements with atomic number
-84 (polonium) and higher have their atomic mass given in square brackets. This is done for elements that
-consist entirely of unstable, radioactive isotopes (you will learn more about radioactivity in the nuclear
-chemistry chapter). An average atomic weight cannot be determined for these elements because their
-radioisotopes may vary significantly in relative abundance, depending on the source, or may not even exist in
-nature. The number in square brackets is the atomic mass number (and approximate atomic mass) of the most
-stable isotope of that element.
-3.6 • The Periodic Table
-153
-

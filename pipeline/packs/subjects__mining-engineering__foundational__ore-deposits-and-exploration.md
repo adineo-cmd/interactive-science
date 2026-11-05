@@ -1,383 +1,108 @@
 # Source pack — subjects/mining-engineering/foundational/ore-deposits-and-exploration
 Lesson title: Ore Deposits and Exploration
 Level: foundational
-Match confidence: 1.51
+Match confidence: 1.54
 
 Source text: OpenStax (https://openstax.org), CC BY 4.0. Adapted and simplified for Interactive Atlas; interactive widgets added.
 
-## Match 1.51 — USHistory-WEB § 3.1 Spanish Exploration and Colonial Society
+## Match 1.54 — LibreTexts: 20.1: Metal Deposits
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://geo.libretexts.org/Bookshelves/Geology/Physical_Geology_(Earle)/20%3A_Geological_Resources/20.01%3A_Metal_Deposits
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Identify the main Spanish American colonial settlements of the 1500s and 1600s
-•
-Discuss economic, political, and demographic similarities and differences between the Spanish colonies
-FIGURE 3.2
-During the 1500s, Spain expanded its colonial empire to the Philippines in the Far East and to areas in the
-Americas that later became the United States. The Spanish dreamed of mountains of gold and silver and
-imagined converting thousands of eager Native Americans to Catholicism. In their vision of colonial society,
-everyone would know his or her place. Patriarchy (the rule of men over family, society, and government)
-shaped the Spanish colonial world. Women occupied a lower status. In all matters, the Spanish held
-themselves to be atop the social pyramid, with Native peoples and Africans beneath them. Both Africans and
-native peoples, however, contested Spanish claims to dominance. Everywhere the Spanish settled, they
-brought devastating diseases, such as smallpox, that led to a horrific loss of life among native peoples.
-European diseases killed far more native inhabitants than did Spanish swords.
-The world Native peoples had known before the coming of the Spanish was further upset by Spanish colonial
-practices. The Spanish imposed the encomienda system in the areas they controlled. Under this system,
-authorities assigned Native workers to mine and plantation owners with the understanding that the recipients
-would defend the colony and teach the workers the tenets of Christianity. In reality, the encomienda system
-exploited native workers. It was eventually replaced by another colonial labor system, the repartimiento,
-which required Native towns to supply a pool of labor for Spanish overlords.
-ST. AUGUSTINE, FLORIDA
-Spain gained a foothold in present-day Florida, viewing that area and the lands to the north as a logical
-extension of their Caribbean empire. In 1513, Juan Ponce de León had claimed the area around today’s St.
-Augustine for the Spanish crown, naming the land Pascua Florida (Feast of Flowers, or Easter) for the nearest
-feast day. Ponce de León was unable to establish a permanent settlement there, but by 1565, Spain was in need
-of an outpost to confront the French and English privateers using Florida as a base from which to attack
-58
-3 • Creating New Social Orders: Colonial Societies, 1500–1700
-Access for free at openstax.org.
+20.1: Metal Deposits
+Mining has always been a major part of Canada’s economy. Canada has some of the largest mining districts and deposits in the world, and for the past 150 years, we have been one of the world’s most important suppliers of metals. Extraction of Earth’s resources goes back a long way in Canada. For example, the First Nations of British Columbia extracted obsidian from volcanic regions for tools and traded it up and down the coast. In the 1850s, gold was discovered in central British Columbia, and in the 1890s, even more gold was discovered in the Klondike area of Yukon. These two events were critical to the early development of British Columbia, Yukon, and Alaska.
+Canada’s mining sector had revenues in the order of $44 billion in 2017 (Figure \(\PageIndex{1}\)). The 4 most valuable commodities were gold, coal, copper and potash, with important amounts from iron, nickel, diamonds, sand and gravel aggregates, stone and zinc. Revenues from the petroleum sector are significantly higher, at over $100 billion per year.
+A metal deposit is a body of rock in which one or more metals have been concentrated to the point of being economically viable for recovery. Some background levels of important metals in average rocks are shown on Table 20.1, along with the typical grades necessary to make a viable deposit, and the corresponding concentration factors. Looking at copper, for example, we can see that while average rock has around 40 ppm (parts per million) of copper, a grade of around 10,000 ppm or 1% is necessary to make a viable copper deposit. In other words, copper ore has about 250 times as much copper as typical rock. For the other elements in the list, the concentration factors are much higher. For gold, it’s 2,000 times and for silver it’s around 10,000 times.
+| Metal | Typical Background Level | Typical Economic Grade* | Concentration Factor |
+|---|---|---|---|
+| Copper | 40 ppm | 10,000 ppm (1%) | 250 times |
+| Gold | 0.003 ppm | 6 ppm (0.006%) | 2,000 times |
+| Lead | 10 ppm | 50,000 ppm (5%) | 5,000 times |
+| Molybdenum | 1 ppm | 1,000 ppm (0.1%) | 1,000 times |
+| Nickel | 25 ppm | 20,000 ppm (2%) | 800 times |
+| Silver | 0.1 ppm | 1,000 ppm (0.1%) | 10,000 times |
+| Uranium | 2 ppm | 10,000 ppm (1%) | 5,000 times |
+| Zinc | 50 ppm | 50,000 ppm (5%) | 1,000 times |
+| *It’s important to note that the economic viability of any deposit depends on a wide range of factors including its grade, size, shape, depth below the surface, and proximity to infrastructure, the current price of the metal, the labour and environmental regulations in the area, and many other factors. |
+It is clear that some very significant concentration must take place to form a mineable deposit. This concentration may occur during the formation of the host rock, or after the rock forms, through a number of different types of processes. There is a very wide variety of ore-forming processes, and there are hundreds of types of mineral deposits. The origins of a few of them are described below.
+Magmatic Nickel Deposits
+A magmatic deposit is one in which the metal concentration takes place primarily at the same time as the formation and emplacement of the magma. Most of the nickel mined in Canada comes from magmatic deposits such as those in Sudbury (Ontario), Thompson (Manitoba) (Figure \(\PageIndex{2}\)), and Voisey’s Bay (Labrador). The magmas from which these deposits form are of mafic or ultramafic composition (derived from the mantle), and therefore they had relatively high nickel and copper contents to begin with (as much as 100 times more than normal rocks in the case of nickel). These elements may be further concentrated within the magma as a result of the addition of sulfur from partial melting of the surrounding rocks. The heavy nickel and copper sulfide minerals are then concentrated further still by gravity segregation (i.e., crystals settling toward the bottom of the magma chamber). In some cases, there are also significant concentrations of platinum-bearing minerals in magmatic deposits.
+Most of these types of deposits around the world are Precambrian in age; the mantle was significantly hotter at that time, and the necessary mafic and ultramafic magmas were more likely to be emplaced in the continental crust.
+Volcanogenic Massive Sulphide Deposits
+Much of the copper, zinc, lead, silver, and gold mined in Canada is mined from volcanic-hosted massive sulfide (VHMS) deposits associated with submarine volcanism (VMS deposits). Examples are the deposits at Kidd Creek, Ontario, Flin Flon on the Manitoba-Saskatchewan border, Britannia on Howe Sound, and Myra Falls (within Strathcona Park) on Vancouver Island.
+VMS deposits are formed from the water discharged at high temperature (250° to 300°C) at ocean-floor hydrothermal vents, primarily in areas of subduction-zone volcanism. The environment is comparable to that of modern-day black smokers (Figure \(\PageIndex{3}\)), which form where hot metal- and sulfide-rich water issues from the sea floor. They are called massive sulfide deposits because the sulfide minerals (including pyrite (FeS2) , sphalerite (ZnS), chalcopyrite (CuFeS 2 ), and galena (PbS)) are generally present in very high concentrations (making up the majority of the rock in some cases). The metals and the sulfur are leached out of the sea-floor rocks by convecting groundwater driven by the volcanic heat, and then quickly precipitated where that hot water enters the cold seawater, causing it to cool suddenly and change chemically. The volcanic rock that hosts the deposits is formed in the same area and at the same general time as the accumulation of the ore minerals.
+Porphyry Deposits
+Porphyry deposits are the most important source of copper and molybdenum in British Columbia, the western United States, and Central and South America. Most porphyry deposits also host some gold, and in rare cases gold is the primary commodity. B.C. examples include several large deposits within the Highland Valley mine (Figure \(\PageIndex{1}\)) and numerous other deposits scattered around the central part of the province.
+A porphyry deposit forms around a cooling felsic stock in the upper part of the crust. They are called “porphyry” because upper crustal stocks are typically porphyritic in texture, the result of a two-stage cooling process. Metal enrichment results in part from convection of groundwater related to the heat of the stock, and also from metal-rich hot water expelled by the cooling magma (Figure \(\PageIndex{4}\)). The host rocks, which commonly include the stock itself and the surrounding country rocks, are normally highly fractured and brecciated. During the ore-forming process, some of the original minerals in these rocks are altered to potassium feldspar, biotite, epidote, and various clay minerals. The important ore minerals include chalcopyrite (CuFeS 2 ), bornite (Cu 5 FeS 4 ), and pyrite in copper porphyry deposits, or molybdenite (MoS 2 ) and pyrite in molybdenum porphyry deposits. Gold is present as minute flakes of native gold.
+This type of environment (i.e., around and above an intrusive body) is also favourable for the formation of other types of deposits—particularly vein-type gold deposits (a.k.a. epithermal deposits ). Some of the gold deposits of British Columbia (such as in the Eskay Creek area adjacent to the Alaska panhandle), and many of the other gold deposits situated along the western edge of both South and North America are of the vein type shown in Figure \(\PageIndex{4}\), and are related to nearby magma bodies.
+Banded Iron Formation
+Most of the world’s major iron deposits are of the banded iron formation type, and most of these formed during the initial oxygenation of Earth’s atmosphere between 2,400 and 1,800 Ma. At that time, iron that was present in dissolved form in the ocean (as Fe2+) became oxidized to its insoluble form (Fe3+) and accumulated on the sea floor, mostly as hematite interbedded with chert (Figure \(\PageIndex{5}\)). Unlike many other metals, which are economically viable at grades of around 1% or even much less, iron deposits are only viable if the grades are in the order of 50% iron and if they are very large.
+Unconformity-Type Uranium Deposits
+There are several different types of uranium deposits, but some of the largest and richest are those within the Athabasca Basin of northern Saskatchewan. These are called unconformity-type uranium deposits because they are all situated very close to the unconformity between the Proterozoic Athabasca Group sandstone and the much older Archean sedimentary, volcanic, and intrusive igneous rock (Figure \(\PageIndex{6}\)). The origin of unconformity-type U deposits is not perfectly understood, but it is thought that two particular features are important: (1) the relative permeability of the Athabasca Group sandstone, and (2) the presence of graphitic schist within the underlying Archean rocks. The permeability of the sandstone allowed groundwater to flow through it and leach out small amounts of U, which stayed in solution in the oxidized form U 6+ . The graphite (C) created a reducing (non-oxidizing) environment that converted the uranium from U 6+ to insoluble U 4+ , at which point it was precipitated as the mineral uraninite (UO 2 ).
+For a variety of reasons, thermal energy (heat) from within Earth is critical in the formation of many types of ore deposits. Look back through the deposit-type descriptions above and complete the following table, describing which of those deposit types depend on a source of heat for their formation, and why.
+| Deposit Type | Is heat a factor? | If so, what is the role of the heat? |
+|---|---|---|
+| Magmatic | ||
+| Volcanogenic massive sulfide | ||
+| Porphyry | ||
+| Banded iron formation | ||
+| Unconformity-type uranium |
+See Appendix 3 for Exercise 20.2 answers .
+Mining and Mineral Processing
+Metal deposits are mined in a variety of different ways depending on their depth, shape, size, and grade. Relatively large deposits that are quite close to the surface and somewhat regular in shape are mined using open-pit mine methods (Figure \(\PageIndex{1}\)). Creating a giant hole in the ground is generally cheaper than making an underground mine, but it is also less precise, so it is necessary to mine a lot of waste rock along with the ore. Relatively deep deposits or those with elongated or irregular shapes are typically mined from underground with deep vertical shafts , declines (sloped tunnels), and levels (horizontal tunnels) (Figures 20.1.7 and 20.1.9). In this way, it is possible to focus the mining on the ore body itself. However, with relatively large ore bodies, it may be necessary to leave some pillars to hold up the roof.
+In many cases, the near-surface part of an ore body is mined with an open pit, while the deeper parts are mined underground (Figures 20.1.8 and 20.1.9).
+A typical metal deposit might contain a few percent of ore minerals (e.g., chalcopyrite or sphalerite), mixed with the minerals of the original rock (e.g., quartz or feldspar). Other sulfide minerals are commonly present within the ore, especially pyrite.
+When ore is processed (typically very close to the mine), it is ground to a fine powder and the ore minerals are physically separated from the rest of the rock to make a concentrate . At a molybdenum mine, for example, this concentrate may be almost pure molybdenite (MoS 2 ). The rest of the rock is known as tailings . It comes out of the concentrator as a wet slurry and must be stored near the mine, in most cases, in a tailings pond.
+The tailings pond at the Myra Falls Mine on Vancouver Island and the settling ponds for waste water from the concentrator are shown in Figure \(\PageIndex{10}\). The tailings are contained by an embankment. Also visible in the foreground is a pile of waste rock, which is non-ore rock that was mined in order to access the ore. Although this waste rock contains little or no ore minerals, at many mines it 
 
-treasure-laden Spanish ships heading from Cuba to Spain. The threat to Spanish interests took a new turn in
-1562 when a group of French Protestants (Huguenots) established a small settlement they called Fort Caroline,
-north of St. Augustine. With the authorization of King Philip II, Spanish nobleman Pedro Menéndez led an
-attack on Fort Caroline, killing most of the colonists and destroying the fort. Eliminating Fort Caroline served
-dual purposes for the Spanish—it helped reduce the danger from French privateers and eradicated the French
-threat to Spain’s claim to the area. The contest over Florida illustrates how European rivalries spilled over into
-the Americas, especially religious conflict between Catholics and Protestants.
-In 1565, the victorious Menéndez founded St. Augustine, now the oldest European settlement in the Americas.
-In the process, the Spanish displaced the local Timucua Natives from their ancient town of Seloy, which had
-stood for thousands of years (Figure 3.3). The Timucua suffered greatly from diseases introduced by the
-Spanish, shrinking from a population of around 200,000 pre-contact to fifty thousand in 1590. By 1700, only
-one thousand Timucua remained. As in other areas of Spanish conquest, Catholic priests worked to bring
-about a spiritual conquest by forcing the surviving Timucua, demoralized and reeling from catastrophic losses
-of family and community, to convert to Catholicism.
-FIGURE 3.3 In this drawing by French artist Jacques le Moyne de Morgues, Timucua flee the Spanish settlers, who
-arrive by ship. Le Moyne lived at Fort Caroline, the French outpost, before the Spanish destroyed the colony in 1562.
-Spanish Florida made an inviting target for Spain’s imperial rivals, especially the English, who wanted to gain
-access to the Caribbean. In 1586, Spanish settlers in St. Augustine discovered their vulnerability to attack
-when the English pirate Sir Francis Drake destroyed the town with a fleet of twenty ships and one hundred
-men. Over the next several decades, the Spanish built more wooden forts, all of which were burnt by raiding
-European rivals. Between 1672 and 1695, the Spanish constructed a stone fort, Castillo de San Marcos (Figure
-3.4), to better defend St. Augustine against challengers.
-FIGURE 3.4 The Spanish fort of Castillo de San Marcos helped Spanish colonists in St. Augustine fend off marauding
-privateers from rival European countries.
-3.1 • Spanish Exploration and Colonial Society
-59
+## Match 1.53 — LibreTexts: 1.11: For Further Exploration
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/Astronomy__Cosmology/Astronomy_2e_(OpenStax)/01%3A_Science_and_the_Universe_-_A_Brief_Tour/1.11%3A_For_Further_Exploration
 
-CLICK AND EXPLORE
-Browse the National Park Service’s multimedia resources on Castillo de San Marcos (http://openstax.org/l/
-castillo) to see how the fort and gates have looked throughout history.
-SANTA FE, NEW MEXICO
-Farther west, the Spanish in Mexico, intent on expanding their empire, looked north to the land of the Pueblo
-Natives. Under orders from King Philip II, Juan de Oñate explored the American southwest for Spain in the late
-1590s. The Spanish hoped that what we know as New Mexico would yield gold and silver, but the land
-produced little of value to them. In 1610, Spanish settlers established themselves at Santa Fe—originally
-named La Villa Real de la Santa Fe de San Francisco de Asís, or “Royal City of the Holy Faith of St. Francis of
-Assisi”—where many Pueblo villages were located. Santa Fe became the capital of the Kingdom of New Mexico,
-an outpost of the larger Spanish Viceroyalty of New Spain, which had its headquarters in Mexico City.
-As they had in other Spanish colonies, Franciscan missionaries labored to bring about a spiritual conquest by
-converting the Pueblo to Catholicism. At first, the Pueblo adopted the parts of Catholicism that dovetailed with
-their own long-standing view of the world. However, Spanish priests insisted that natives discard their old
-ways entirely and angered the Pueblo by focusing on the young, drawing them away from their parents. This
-deep insult, combined with an extended period of drought and increased attacks by local Apache and Navajo
-in the 1670s—troubles that the Pueblo came to believe were linked to the Spanish presence—moved the Pueblo
-to push the Spanish and their religion from the area. Pueblo leader Popé demanded a return to native ways so
-the hardships his people faced would end. To him and to thousands of others, it seemed obvious that “when
-Jesus came, the Corn Mothers went away.” The expulsion of the Spanish would bring a return to prosperity and
-a pure, native way of life.
-In 1680, the Pueblo launched a coordinated rebellion against the Spanish. The Pueblo Revolt killed over four
-hundred Spaniards and drove the rest of the settlers, perhaps as many as two thousand, south toward Mexico.
-However, as droughts and attacks by rival tribes continued, the Spanish sensed an opportunity to regain their
-foothold. In 1692, they returned and reasserted their control of the area. Some of the Spanish explained the
-Pueblo success in 1680 as the work of the Devil. Satan, they believed, had stirred up the Pueblo to take arms
-against God’s chosen people—the Spanish—but the Spanish, and their God, had prevailed in the end.
+1.11: For Further Exploration
+Books
+Miller, Ron, and William Hartmann. The Grand Tour: A Traveler’s Guide to the Solar System . 3rd ed. Workman, 2005. This volume for beginners is a colorfully illustrated voyage among the planets.
+Sagan, Carl. Cosmos. Ballantine, 2013 [1980]. This tome presents a classic overview of astronomy by an astronomer who had a true gift for explaining things clearly. (You can also check out Sagan’s television series Cosmos: A Personal Voyage and Neil DeGrasse Tyson’s current series Cosmos: A Spacetime Odyssey. )
+Tyson, Neil DeGrasse, and Don Goldsmith. Origins: Fourteen Billion Years of Cosmic Evolution. Norton, 2004. This book provides a guided tour through the beginnings of the universe, galaxies, stars, planets, and life.
+Websites
+If you enjoyed the beautiful images in this chapter (and there are many more fabulous photos to come in other chapters), you may want to know where you can obtain and download such pictures for your own enjoyment. (Many astronomy images are from government-supported instruments or projects, paid for by tax dollars, and therefore are free of copyright laws.) Here are three resources we especially like:
+- Astronomy Picture of the Day: apod.nasa.gov/apod/astropix.html . Two space scientists scour the Internet and select one beautiful astronomy image to feature each day. Their archives range widely, from images of planets and nebulae to rockets and space instruments; they also have many photos of the night sky. The search function (see the menu on the bottom of the page) works quite well for finding something specific among the many years’ worth of daily images.
+- Hubble Space Telescope Images: https://www.spacetelescope.org/images/ . Here you can browse some of the remarkable images, select a particular subject in the menu boxes, or search for the name of an object that intrigues you in this book.
+- National Aeronautics and Space Administration’s (NASA’s) Planetary Photojournal: photojournal.jpl.nasa.gov . This site features thousands of images from planetary exploration, with captions of varied length. You can select images by world, feature name, date, or catalog number, and download images in a number of popular formats. However, only NASA mission images are included. Note the Photojournal Search option on the menu at the top of the homepage to access ways to search their archives.
+Videos
+Powers of Ten: www.youtube.com/watch?v=0fKBhvDjuy0 . This classic short video is a much earlier version of Powers of Ten, narrated by Philip Morrison (9:00).
+The Known Universe: www.youtube.com/watch?v=17jymDn0W6U . This video tour from the American Museum of Natural History has realistic animation, music, and captions (6:30).
+Wanderers: apod.nasa.gov/apod/ap141208.html . This video provides a tour of the solar system, with narrative by Carl Sagan, imagining other worlds with dramatically realistic paintings (3:50).
 
-## Match 1.51 — USHistory-WEB § 2.1 Portuguese Exploration and Spanish Conquest
+## Match 1.53 — LibreTexts: 25.10: For Further Exploration
+License: Creative Commons - Attribution - https://creativecommons.org/licenses/by/4.0/ · https://phys.libretexts.org/Bookshelves/Astronomy__Cosmology/Astronomy_2e_(OpenStax)/25%3A_The_Milky_Way_Galaxy/25.10%3A_For_Further_Exploration
 
-LEARNING OBJECTIVES
-By the end of this section, you will be able to:
-•
-Describe Portuguese exploration of the Atlantic and Spanish exploration of the Americas, and the importance of
-these voyages to the developing Atlantic World
-•
-Explain the importance of Spanish exploration of the Americas in the expansion of Spain’s empire and the
-development of Spanish Renaissance culture
-FIGURE 2.2
-Portuguese colonization of Atlantic islands in the 1400s inaugurated an era of aggressive European expansion
-across the Atlantic. In the 1500s, Spain surpassed Portugal as the dominant European power. This age of
-exploration and the subsequent creation of an Atlantic World marked the earliest phase of globalization, in
-which previously isolated groups—Africans, Native Americans, and Europeans—first came into contact with
-each other, sometimes with disastrous results.
-PORTUGUESE EXPLORATION
-Portugal’s Prince Henry the Navigator spearheaded his country’s exploration of Africa and the Atlantic in the
-1400s. With his support, Portuguese mariners successfully navigated an eastward route to Africa, establishing
-a foothold there that became a foundation of their nation’s trade empire in the fifteenth and sixteenth
-centuries.
-Portuguese mariners built an Atlantic empire by colonizing the Canary, Cape Verde, and Azores Islands, as well
-as the island of Madeira. Merchants then used these Atlantic outposts as debarkation points for subsequent
-journeys. From these strategic points, Portugal spread its empire down the western coast of Africa to the
-Congo, along the western coast of India, and eventually to Brazil on the eastern coast of South America. It also
-32
-2 • Early Globalization: The Atlantic World, 1492–1650
-Access for free at openstax.org.
-
-established trading posts in China and Japan. While the Portuguese didn’t rule over an immense landmass,
-their strategic holdings of islands and coastal ports gave them almost unrivaled control of nautical trade routes
-and a global empire of trading posts during the 1400s.
-The travels of Portuguese traders to western Africa introduced them to the African slave trade, already brisk
-among African states. Seeing the value of this source of labor in growing the profitable crop of sugar on their
-Atlantic islands, the Portuguese soon began exporting enslaved Africans along with African ivory and gold.
-Sugar fueled the Atlantic slave trade, and the Portuguese islands quickly became home to sugar plantations.
-The Portuguese also traded these enslaved people, introducing much-needed human capital to other
-European nations. In the following years, as European exploration spread, slavery spread as well. In time,
-much of the Atlantic World would become a gargantuan sugar-plantation complex in which Africans labored to
-produce the highly profitable commodity for European consumers.
-Elmina Castle
-In 1482, Portuguese traders built Elmina Castle (also called São Jorge da Mina, or Saint George’s of the Mine) in
-present-day Ghana, on the west coast of Africa (Figure 2.3). A fortified trading post, it had mounted cannons
-facing out to sea, not inland toward continental Africa; the Portuguese had greater fear of a naval attack from
-other Europeans than of a land attack from Africans. Portuguese traders soon began to settle around the fort and
-established the town of Elmina.
-FIGURE 2.3 Elmina Castle on the west coast of Ghana was used as a holding pen for captured people before
-they were brought across the Atlantic and sold. Originally built by the Portuguese in the fifteenth century, it
-appears in this image as it was in the 1660s, after being seized by Dutch slave traders in 1637.
-Although the Portuguese originally used the fort primarily for trading gold, by the sixteenth century they had
-shifted their focus. The dungeon of the fort now served as a holding pen for enslaved Africans from the interior of
-the continent, while on the upper floors Portuguese traders ate, slept, and prayed in a chapel. Enslaved people
-lived in the dungeon for weeks or months until ships arrived to transport them to Europe or the Americas. For
-them, the dungeon of Elmina was their last sight of their home country.
-SPANISH EXPLORATION AND CONQUEST
-The Spanish established the first European settlements in the Americas, beginning in the Caribbean and, by
-AMERICANA
-2.1 • Portuguese Exploration and Spanish Conquest
-33
-
-1600, extending throughout Central and South America. Thousands of Spaniards flocked to the Americas
-seeking wealth and status. The most famous of these Spanish adventurers are Christopher Columbus (who,
-though Italian himself, explored on behalf of the Spanish monarchs), Hernán Cortés, and Francisco Pizarro.
-The history of Spanish exploration begins with the history of Spain itself. During the fifteenth century, Spain
-hoped to gain advantage over its rival, Portugal. The marriage of Ferdinand of Aragon and Isabella of Castile in
-1469 unified Catholic Spain and began the process of building a nation that could compete for worldwide
-power. Since the 700s, much of Spain had been under Islamic rule, and King Ferdinand II and Queen Isabella I,
-arch-defenders of the Catholic Church against Islam, were determined to defeat the Muslims in Granada, the
-last Islamic stronghold in Spain. In 1492, they completed the Reconquista: the centuries-long Christian
-conquest of the Iberian Peninsula. The Reconquista marked another step forward in the process of making
-Spain an imperial power, and Ferdinand and Isabella were now ready to look further afield.
-Their goals were to expand Catholicism and to gain a commercial advantage over Portugal. To those ends,
-Ferdinand and Isabella sponsored extensive Atlantic exploration. Spain’s most famous explorer, Christopher
-Columbus, was actually from Genoa, Italy. He believed that, using calculations based on other mariners’
-journeys, he could chart a westward route to India, which could be used to expand European trade and spread
-Christianity. Starting in 1485, he approached Genoese, Venetian, Portuguese, English, and Spanish monarchs,
-asking for ships and funding to explore this westward route. All those he petitioned—including Ferdinand and
-Isabella at first—rebuffed him; their nautical experts all concurred that Columbus’s estimates of the width of
-the Atlantic Ocean were far too low. However, after three years of entreaties, and, more important, the
-completion of the Reconquista, Ferdinand and Isabella agreed to finance Columbus’s expedition in 1492,
-supplying him with three ships: the Nina, the Pinta, and the Santa Maria. The Spanish monarchs knew that
-Portuguese mariners had reached the southern tip of Africa and sailed the Indian Ocean. They understood that
-the Portuguese would soon reach Asia and, in this competitive race to reach the Far East, the Spanish rulers
-decided to act.
-Columbus held erroneous views that shaped his thinking about what he would encounter as he sailed west. He
-believed the earth to be much smaller than its actual size and, since he did not know of the existence of the
-Americas, he fully expected to land in Asia. On October 12, 1492, however, he made landfall on an island in the
-Bahamas. He then sailed to an island he named Hispaniola (present-day Dominican Republic and Haiti)
-(Figure 2.4). Believing he had landed in the East Indies, Columbus called the native Taínos he found there
-“Indios,” giving rise to the term “Indian” for any native people of the New World. Upon Columbus’s return to
-Spain, the Spanish crown bestowed on him the title of Admiral of the Ocean Sea and named him governor and
-viceroy of the lands he had discovered. As a devoted Catholic, Columbus had agreed with Ferdinand and
-Isabella prior to sailing west that part of the expected wealth from his voyage would be used to continue the
-fight against Islam.
-FIGURE 2.4 This sixteenth-century map shows the island of Hispaniola (present-day Haiti and Dominican Republic).
-Note the various fanciful elements, such as the large-scale ships and sea creatures, and consider what the creator
-34
-2 • Early Globalization: The Atlantic World, 1492–1650
-Access for free at openstax.org.
-
-of this map hoped to convey. In addition to navigation, what purpose would such a map have served?
-Columbus’s 1493 letter—or probanza de mérito (proof of merit)—describing his “discovery” of a New World
-did much to inspire excitement in Europe. Probanzas de méritos were reports and letters written by Spaniards
-in the New World to the Spanish crown, designed to win royal patronage. Today they highlight the difficult task
-of historical work; while the letters are primary sources, historians need to understand the context and the
-culture in which the conquistadors, as the Spanish adventurers came to be called, wrote them and distinguish
-their bias and subjective nature. While they are filled with distortions and fabrications, probanzas de méritos
-are still useful in illustrating the expectation of wealth among the explorers as well as their view that native
-peoples would not pose a serious obstacle to colonization.
-In 1493, Columbus sent two copies of a probanza de mérito to the Spanish king and queen and their minister
-of finance, Luis de Santángel. Santángel had supported Columbus’s voyage, helping him to obtain funding from
-Ferdinand and Isabella. Copies of the letter were soon circulating all over Europe, spreading news of the
-wondrous new land that Columbus had “discovered.” Columbus would make three more voyages over the next
-decade, establishing Spain’s first settlement in the New World on the island of Hispaniola. Many other
-Europeans followed in Columbus’s footsteps, drawn by dreams of winning wealth by sailing west. Another
-Italian, Amerigo Vespucci, sailing for the Portuguese crown, explored the South American coastline between
-1499 and 1502. Unlike Columbus, he realized that the Americas were not part of Asia but lands unknown to
-Europeans. Vespucci’s widely published accounts of his voyages fueled speculation and intense interest in the
-New World among Europeans. Among those who read Vespucci’s reports was the German mapmaker Martin
-Waldseemuller. Using the explorer’s first name as a label for the new landmass, Waldseemuller attached
-“America” to his map of the New World in 1507, and the name stuck.
-Columbus’s Probanza de mérito of 1493
-The exploits of the most famous Spanish explorers have provided Western civilization with a narrative of
-European supremacy and Native American savagery. However, these stories are based on the self-aggrandizing
-efforts of conquistadors to secure royal favor through the writing of probanzas de méritos (proofs of merit).
-Below are excerpts from Columbus’s 1493 letter to Luis de Santángel, which illustrates how fantastic reports
-from European explorers gave rise to many myths surrounding the Spanish conquest and the New World.
-“This island, like all the others, is most extensive. It has many ports along the sea-coast excelling any in
-Christendom—and many fine, large, flowing rivers. The land there is elevated, with many mountains and peaks
-incomparably higher than in the centre isle. They are most beautiful, of a thousand varied forms, accessible, and
-full of trees of endless varieties, so high that they seem to touch the sky, and I have been told that they never
-lose their foliage. . . . There is honey, and there are many kinds of birds, and a great variety of fruits. Inland there
-are numerous mines of metals and innumerable people. Hispaniola is a marvel. Its hills and mountains, fine
-plains and open country, are rich and fertile for planting and for pasturage, and for building towns and villages.
-The seaports there are incredibly fine, as also the magnificent rivers, most of which bear gold. The trees, fruits
-and grasses differ widely from those in Juana. There are many spices and vast mines of gold and other metals in
-this island. They have no iron, nor steel, nor weapons, nor are they fit for them, because although they are well-
-made men of commanding stature, they appear extraordinarily timid. The only arms they have are sticks of cane,
-cut when in seed, with a sharpened stick at the end, and they are afraid to use these. Often I have sent two or
-three men ashore to some town to converse with them, and the natives came out in great numbers, and as soon
-as they saw our men arrive, fled without a moment’s delay although I protected them from all injury.”
-What does this letter show us about Spanish objectives in the New World? How do you think it might have
-influenced Europeans reading about the New World for the first time?
-DEFINING AMERICAN
-2.1 • Portuguese Exploration and Spanish Conquest
-35
-
-The 1492 Columbus landfall accelerated the rivalry between Spain and Portugal, and the two powers vied for
-domination through the acquisition of new lands. In the 1480s, Pope Sixtus IV had granted Portugal the right to
-all land south of the Cape Verde islands, leading the Portuguese king to claim that the lands discovered by
-Columbus belonged to Portugal, not Spain. Seeking to ensure that Columbus’s finds would remain Spanish,
-Spain’s monarchs turned to the Spanish-born Pope Alexander VI, who issued two papal decrees in 1493 that
-gave legitimacy to Spain’s Atlantic claims at the expense of Portugal. Hoping to salvage Portugal’s Atlantic
-holdings, King João II began negotiations with Spain. The resulting Treaty of Tordesillas in 1494 drew a north-
-to-south line through South America (Figure 2.5); Spain gained territory west of the line, while Portugal
-retained the lands east of the line, including the east coast of Brazil.
-FIGURE 2.5 This 1502 map, known as the Cantino World Map, depicts the cartographer’s interpretation of the
-world in light of recent discoveries. The map shows areas of Portuguese and Spanish exploration, the two nations’
-claims under the Treaty of Tordesillas, and a variety of flora, fauna, figures, and structures. What does it reveal about
-the state of geographical knowledge, as well as European perceptions of
-
-## Match 1.02 — College_Physics-WEB_2s5sHvR § 16.5 Energy and the Simple Harmonic Oscillator
-
-To study the energy of a simple harmonic oscillator, we first consider all the forms of energy it can have We know from Hooke’s
-Law: Stress and Strain Revisited that the energy stored in the deformation of a simple harmonic oscillator is a form of potential
-energy given by:
-Because a simple harmonic oscillator has no dissipative forces, the other important form of energy is kinetic energy
-.
-Conservation of energy for these two forms is:
-Making Career Connections
-Knowing
-can be important in geological exploration; for example, a map of
-over large geographical regions aids the
-study of plate tectonics and helps in the search for oil fields and large mineral deposits.
-Take Home Experiment: Determining
-Use a simple pendulum to determine the acceleration due to gravity
-in your own locale. Cut a piece of a string or dental
-floss so that it is about 1 m long. Attach a small object of high density to the end of the string (for example, a metal nut or a
-car key). Starting at an angle of less than
-, allow the pendulum to swing and measure the pendulum’s period for 10
-oscillations using a stopwatch. Calculate . How accurate is this measurement? How might it be improved?
-16.33
-680
-Chapter 16 • Oscillatory Motion and Waves
-Access for free at openstax.org.
-
-or
-This statement of conservation of energy is valid for all simple harmonic oscillators, including ones where the gravitational force
-plays a role
-Namely, for a simple pendulum we replace the velocity with
-, the spring constant with
-, and the displacement
-term with
-. Thus
-In the case of undamped simple harmonic motion, the energy oscillates back and forth between kinetic and potential, going
-completely from one to the other as the system oscillates. So for the simple example of an object on a frictionless surface
-attached to a spring, as shown again in Figure 16.16, the motion starts with all of the energy stored in the spring. As the object
-starts to move, the elastic potential energy is converted to kinetic energy, becoming entirely kinetic energy at the equilibrium
-position. It is then converted back into elastic potential energy by the spring, the velocity becomes zero when the kinetic energy
-is completely converted, and so on. This concept provides extra insight here and in later applications of simple harmonic
-motion, such as alternating current circuits.
-Figure 16.16 The transformation of energy in simple harmonic motion is illustrated for an object attached to a spring on a frictionless
-surface.
-The conservation of energy principle can be used to derive an expression for velocity . If we start our simple harmonic motion
-with zero velocity and maximum displacement (
-), then the total energy is
-This total energy is constant and is shifted back and forth between kinetic energy and potential energy, at most times being
-shared by each. The conservation of energy for this system in equation form is thus:
-16.34
-16.35
-16.36
-16.37
-16.38
-16.5 • Energy and the Simple Harmonic Oscillator
-681
-
-Solving this equation for
-yields:
-Manipulating this expression algebraically gives:
-and so
-where
-From this expression, we see that the velocity is a maximum (
-) at
-, as stated earlier in
-. Notice
-that the maximum velocity depends on three factors. Maximum velocity is directly proportional to amplitude. As you might
-guess, the greater the maximum displacement the greater the maximum velocity. Maximum velocity is also greater for stiffer
-systems, because they exert greater force for the same displacement. This observation is seen in the expression for
-it is
-proportional to the square root of the force constant . Finally, the maximum velocity is smaller for objects that have larger
-masses, because the maximum velocity is inversely proportional to the square root of
-. For a given force, objects that have
-large masses accelerate more slowly.
-A similar calculation for the simple pendulum produces a similar result, namely:
-EXAMPLE 16.6
-Determine the Maximum Speed of an Oscillating System: A Bumpy Road
-Suppose that a car is 900 kg and has a suspension system that has a force constant
-. The car hits a bump
-and bounces with an amplitude of 0.100 m. What is its maximum vertical velocity if you assume no damping occurs?
-Strategy
-We can use the expression for
-given in
-to determine the maximum vertical velocity. The variables
-and
-are given in the problem statement, and the maximum displacement
-is 0.100 m.
-Solution
-1.
-Identify known.
-2.
-Substitute known values into
-:
-3.
-Calculate to find
-Discussion
-This answer seems reasonable for a bouncing car. There are other ways to use conservation of energy to find
-. We could use
-it directly, as was done in the example featured in Hooke’s Law: Stress and Strain Revisited.
-16.39
-16.40
-16.41
-16.42
-16.43
-16.44
-682
-Chapter 16 • Oscillatory Motion and Waves
-Access for free at openstax.org.
-
-The small vertical displacement
-of an oscillating simple pendulum, starting from its equilibrium position, is given as
-where
-is the amplitude,
-is the angular velocity and is the time taken. Substituting
-, we have
-Thus, the displacement of pendulum is a function of time as shown above.
-Also the velocity of the pendulum is given by
-so the motion of the pendulum is a function of time.
-CHECK YOUR UNDERSTANDING
-Why does it hurt more if your hand is snapped with a ruler than with a loose spring, even if the displacement of each system is
-equal?
-Solution
-The ruler is a stiffer system, which carries greater force for the same amount of displacement. The ruler snaps your hand with
-greater force, which hurts more.
-CHECK YOUR UNDERSTANDING
-You are observing a simple harmonic oscillator. Identify one way you could decrease the maximum velocity of the system.
-Solution
-You could increase the mass of the object that is oscillating.
+25.10: For Further Exploration
+Articles
+Blitz, L. “The Dark Side of the Milky Way.” Scientific American (October 2011): 36–43. How we find dark matter and what it tells us about our Galaxy, its warped disk, and its satellite galaxies.
+Dvorak, J. “Journey to the Heart of the Milky Way.” Astronomy (February 2008): 28. Measuring nearby stars to determine the properties of the black hole at the center.
+Gallagher, J., Wyse, R., & Benjamin, R. “The New Milky Way.” Astronomy (September 2011): 26. Highlights all aspects of the Milky Way based on recent observations.
+Goldstein, A. “Finding our Place in the Milky Way.” Astronomy (August 2015): 50. On the history of observations that pinpointed the Sun’s location in the Galaxy.
+Haggard, D., & Bower, G. “In the Heart of the Milky Way.” Sky & Telescope (February 2016): 16. On observations of the Galaxy’s nucleus and the supermassive black hole and magnetar there.
+Ibata, R., & Gibson, B. “The Ghosts of Galaxies Past.” Scientific American (April 2007): 40. About star streams in the Galaxy that are evidence of past mergers and collisions.
+Irion, R. “A Crushing End for Our Galaxy.” Science (January 7, 2000): 62. On the role of mergers in the evolution of the Milky Way.
+Irion, R. “Homing in on Black Holes.” Smithsonian (April 2008). On how astronomers probe the large black hole at the center of the Milky Way Galaxy.
+Kruesi, L. “How We Mapped the Milky Way.” Astronomy (October 2009): 28.
+Kruesi, L. “What Lurks in the Monstrous Heart of the Milky Way?” Astronomy (October 2015): 30. On the center of the Galaxy and the black hole there.
+Laughlin, G., & Adams, F. “Celebrating the Galactic Millennium.” Astronomy (November 2001): 39. The long-term future of the Milky Way in the next 90 billion years.
+Loeb, A., & Cox, T.J. “Our Galaxy’s Date with Destruction.” Astronomy (June 2008): 28. Describes the upcoming merger of Milky Way and Andromeda.
+Szpir, M. “Passing the Bar Exam.” Astronomy (March 1999): 46. On evidence that our Galaxy is a barred spiral.
+Tanner, A. “A Trip to the Galactic Center.” Sky & Telescope (April 2003): 44. Nice introduction, with observations pointing to the presence of a black hole.
+Trimble, V., & Parker, S. “Meet the Milky Way.” Sky & Telescope (January 1995): 26. Overview of our Galaxy.
+Wakker, B., & Richter, P. “Our Growing, Breathing Galaxy.” Scientific American (January 2004): 38. Evidence that our Galaxy is still being built up by the addition of gas and smaller neighbors.
+Waller, W. “Redesigning the Milky Way.” Sky & Telescope (September 2004): 50. On recent multi-wavelength surveys of the Galaxy.
+Whitt, K. “The Milky Way from the Inside.” Astronomy (November 2001): 58. Fantastic panorama image of the Galaxy, with finder charts and explanations.
+Websites
+International Dark Sky Sanctuaries: darksky.org/idsp/sanctuaries/. A listing of dark-sky sanctuaries, parks, and reserves.
+Multiwavelength Milky Way: https://asd.gsfc.nasa.gov/archive/mwmw/mmw_edu.html . This NASA site shows the plane of our Galaxy in a variety of wavelength bands, and includes background material and other resources.
+Shapley-Curtis Debate in 1920: https://apod.nasa.gov/debate/debate20.html . In 1920, astronomers Harlow Shapley and Heber Curtis engaged in a historic debate about how large our Galaxy was and whether other galaxies existed. Here you can find historical and educational material about the debate.
+UCLA Galactic Center Group: http://www.galacticcenter.astro.ucla.edu/ . Learn more about the work of Andrea Ghez and colleagues on the central region of the Milky Way Galaxy.
+Videos
+Crash of the Titans: http://www.spacetelescope.org/videos/hubblecast55a/ . This Hubblecast from 2012 features Jay Anderson and Roeland van der Marel explaining how Andromeda will collide with the Milky Way in the distant future (5:07).
+Diner at the Center of the Galaxy: https://www.youtube.com/watch?v=UP7ig8Gxftw . A short discussion from NASA ScienceCast of NuSTAR observations of flares from our Galaxy’s central black hole (3:23).
+Hunt for a Supermassive Black Hole: https://www.ted.com/talks/andrea_ghez_the_hunt_for_a_supermassive_black_hole . 2009 TED talk by Andrea Ghez on searching for supermassive black holes, particularly the one at the center of the Milky Way (16:19).
+Journey to the Galactic Center: https://www.youtube.com/watch?v=36xZsgZ0oSo . A brief silent trip into the cluster of stars near the galactic center showing their motions around the center (3:00).
+The Nobel Prize Lecture by Dr. Andrea Ghez in 2020: https://www.youtube.com/watch?v=wGw6_CdvGKM .
