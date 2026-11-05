@@ -60,3 +60,10 @@ Task 4 — Report dataset gaps:
 - Machine A commits and pushes everything (single writer for git).
 - Machine B works on a clone or simply returns files/notes through the chat;
   Machine B never runs `git push`.
+
+## UPDATE 2026-11-04 — PC agent tasks folded back to Machine A
+The PC agent is unavailable; ALL tasks below and all acquisition are handled by Machine A.
+The standing acquisition hierarchy is now codified in PEDAGOGY.md §16: extract → search
+for databases → verify → generate only as last resort. Current coverage gaps being filled
+by internet database searches: art history, film, journalism, dentistry, optometry,
+counseling, petroleum engineering, naval architecture, hospitality, accounting practice.

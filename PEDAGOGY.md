@@ -797,3 +797,25 @@ Always remember:
 A great educational resource does not demonstrate how much the author knows. It demonstrates how effectively the learner can understand what the author teaches.
 
 This is the permanent educational philosophy of Interactive Atlas.
+
+---
+
+# 16. CONTENT ACQUISITION HIERARCHY (2026-11-04, user directive)
+
+Interactive Atlas does NOT generate its educational library with AI. Content is ACQUIRED
+from open-licensed sources, transformed into the lesson structure, and AI is used only
+to simplify, fill gaps, place widgets, and check consistency. The acquisition order is:
+
+1. **EXTRACT from acquired databases** — OpenStax (73 books, CC BY), LibreTexts corpus
+   (36,117 pages), Saylor texts, NCERT, MedRAG — already downloaded into books/.
+2. **SEARCH the internet for a database covering any topic the acquired datasets miss.**
+   Hugging Face datasets first (scriptable), then OER Commons, Wikibooks/Wikiversity,
+   infobooks.org, freebookcentre.net, open textbook libraries.
+3. **VERIFY every new source** before use: check the license permits reuse/modification/
+   redistribution, check the content quality (accurate, pedagogically ordered), record
+   author/license/URL in the lesson's sources line.
+4. **GENERATE with AI only if no option is available** — and flag those lessons in
+   pipeline/packs/ (LOW-confidence packs) and the audit report for extra review.
+
+Rule: never pay generation cost for content that can be extracted; never publish
+extracted content without its attribution; never trust an unverified source.
