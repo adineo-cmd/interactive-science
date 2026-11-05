@@ -68,7 +68,6 @@
 - ** 39** subjects/sports-science/foundational/training-load-adaptation — 1891w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 
 ## Needs work (40–79) (79)
-- ** 40** subjects/chemistry/foundational/atomic-structure — 2058w, 3 callouts, 0 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); recaps 0/2 (10)
 - ** 40** subjects/geography/foundational/latitude-and-climate — 2126w, 3 callouts, 0 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); recaps 0/2 (10)
 - ** 40** subjects/geography/foundational/plate-tectonics — 2036w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/history/foundational/cradles-of-civilisation — 2006w, 3 callouts, 0 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); recaps 0/2 (10)
@@ -147,6 +146,7 @@
 - ** 66** subjects/math/foundational/euclidean-geometry — 2448w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
 - ** 66** subjects/math/foundational/perimeter-area-volume — 2328w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
 - ** 66** subjects/math/foundational/ratios-percentages-proportion — 2202w, 4 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
+- ** 75** subjects/chemistry/foundational/atomic-structure — 2605w, 3 callouts, 0 widgets — GAPS: recaps 1/2 (5)
 
 ## Good (≥80) (39)
 - ** 85** subjects/environmental-engineering/foundational/water-chemistry-and-microbiology — 3541w, 4 callouts, 2 widgets — GAPS: recaps 0/2 (10)
