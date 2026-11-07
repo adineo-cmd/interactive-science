@@ -1,26 +1,10 @@
 # Lesson health audit — intermediate tier
 
-194 lessons: Weak (<40): 3 · Needs work (40–79): 63 · Good (≥80): 128
+194 lessons: Weak (<40): 0 · Needs work (40–79): 50 · Good (≥80): 144
 
-## Weak (<40) (3)
-- ** 39** subjects/music/intermediate/music-history-eras — 1816w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 39** subjects/political-science/intermediate/constitutions-rights — 1885w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/religious-studies/intermediate/judaism — 1899w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+## Weak (<40) (0)
 
-## Needs work (40–79) (63)
-- ** 40** subjects/anthropology/intermediate/archaeology-reading-material-culture — 2023w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/anthropology/intermediate/human-evolution-a-timeline — 2094w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/anthropology/intermediate/the-four-fields — 2002w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/architecture/intermediate/a-history-of-architectural-styles — 2007w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/architecture/intermediate/what-buildings-must-do — 2048w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/art-history/intermediate/art-beyond-the-west — 2134w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/art-history/intermediate/renaissance-and-baroque — 2080w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/artificial-intelligence/intermediate/classification-and-regression — 2273w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/artificial-intelligence/intermediate/neural-networks-from-scratch — 1975w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/biology/intermediate/gas-exchange-in-humans — 1935w, 3 callouts, 3 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/3 (15); recaps 0/2 (10)
-- ** 40** subjects/business/intermediate/marketing-fundamentals — 1989w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/chemistry/intermediate/redox-and-electrochemistry — 1964w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/computer-science/intermediate/logic-gates-and-digital-circuits — 2135w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
+## Needs work (40–79) (50)
 - ** 40** subjects/computer-science/intermediate/programming-fundamentals — 2007w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/design/intermediate/ux-research — 1961w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/earth-science/intermediate/volcanoes-and-igneous-processes — 1999w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
@@ -72,29 +56,40 @@
 - ** 40** subjects/visual-arts/intermediate/colour-theory — 2097w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/visual-arts/intermediate/line-shape-and-value — 2090w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 
-## Good (≥80) (128)
+## Good (≥80) (144)
 - ** 95** subjects/agriculture/intermediate/animal-husbandry — 2621w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/farm-economics — 2923w, 3 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/pests-weeds-and-ipm — 2689w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/plant-nutrition-and-fertilisers — 2678w, 3 callouts, 2 widgets
 - ** 95** subjects/agriculture/intermediate/soil-health — 2701w, 4 callouts, 2 widgets
+- ** 95** subjects/anthropology/intermediate/archaeology-reading-material-culture — 2729w, 4 callouts, 2 widgets
+- ** 95** subjects/anthropology/intermediate/human-evolution-a-timeline — 2795w, 3 callouts, 2 widgets
 - ** 95** subjects/anthropology/intermediate/kinship-and-marriage-systems — 2779w, 3 callouts, 2 widgets
+- ** 95** subjects/anthropology/intermediate/the-four-fields — 2693w, 3 callouts, 2 widgets
+- ** 95** subjects/architecture/intermediate/a-history-of-architectural-styles — 2704w, 3 callouts, 2 widgets
 - ** 95** subjects/architecture/intermediate/plans-sections-and-scale — 2744w, 4 callouts, 2 widgets
+- ** 95** subjects/architecture/intermediate/what-buildings-must-do — 2781w, 3 callouts, 2 widgets
+- ** 95** subjects/art-history/intermediate/art-beyond-the-west — 2963w, 3 callouts, 2 widgets
 - ** 95** subjects/art-history/intermediate/impressionism-to-expressionism — 2692w, 4 callouts, 2 widgets
+- ** 95** subjects/art-history/intermediate/renaissance-and-baroque — 2825w, 3 callouts, 2 widgets
+- ** 95** subjects/artificial-intelligence/intermediate/classification-and-regression — 3054w, 3 callouts, 2 widgets
 - ** 95** subjects/artificial-intelligence/intermediate/image-recognition-cnns — 2728w, 4 callouts, 2 widgets
 - ** 95** subjects/artificial-intelligence/intermediate/machine-learning-in-one-picture — 2685w, 4 callouts, 2 widgets
+- ** 95** subjects/artificial-intelligence/intermediate/neural-networks-from-scratch — 2733w, 3 callouts, 2 widgets
 - ** 95** subjects/astronomy/intermediate/stellar-life-cycles — 2768w, 4 callouts, 2 widgets
 - ** 95** subjects/astronomy/intermediate/telescopes-and-the-electromagnetic-spectrum — 2668w, 4 callouts, 2 widgets
 - ** 95** subjects/astronomy/intermediate/the-milky-way — 2716w, 3 callouts, 2 widgets
 - ** 95** subjects/astronomy/intermediate/the-moon-and-eclipses — 2856w, 3 callouts, 2 widgets
 - ** 95** subjects/biology/intermediate/enzymes-and-metabolism — 2653w, 3 callouts, 2 widgets
 - ** 95** subjects/biology/intermediate/excretion-in-humans — 2653w, 3 callouts, 3 widgets
+- ** 95** subjects/biology/intermediate/gas-exchange-in-humans — 2776w, 3 callouts, 3 widgets
 - ** 95** subjects/biology/intermediate/genetics-inheritance-patterns — 2574w, 4 callouts, 1 widgets
 - ** 95** subjects/biology/intermediate/neurobiology-basics — 2576w, 3 callouts, 1 widgets
 - ** 95** subjects/biology/intermediate/plant-biology — 2686w, 3 callouts, 2 widgets
 - ** 95** subjects/biology/intermediate/reproduction-in-humans — 2637w, 3 callouts, 3 widgets
 - ** 95** subjects/biology/intermediate/the-immune-system — 2442w, 3 callouts, 1 widgets
 - ** 95** subjects/business/intermediate/customers-and-markets — 2528w, 3 callouts, 1 widgets
+- ** 95** subjects/business/intermediate/marketing-fundamentals — 2701w, 3 callouts, 1 widgets
 - ** 95** subjects/business/intermediate/operations-and-supply-chains — 2621w, 3 callouts, 1 widgets
 - ** 95** subjects/business/intermediate/people-and-organisations — 2469w, 3 callouts, 1 widgets
 - ** 95** subjects/business/intermediate/what-a-business-is — 2521w, 3 callouts, 1 widgets
@@ -102,9 +97,11 @@
 - ** 95** subjects/chemistry/intermediate/chemical-equilibrium — 2495w, 3 callouts, 1 widgets
 - ** 95** subjects/chemistry/intermediate/organic-chemistry-hydrocarbons — 2483w, 3 callouts, 1 widgets
 - ** 95** subjects/chemistry/intermediate/reaction-kinetics — 2493w, 3 callouts, 1 widgets
+- ** 95** subjects/chemistry/intermediate/redox-and-electrochemistry — 2675w, 3 callouts, 1 widgets
 - ** 95** subjects/chemistry/intermediate/thermodynamics-and-enthalpy — 2545w, 3 callouts, 1 widgets
 - ** 95** subjects/computer-science/intermediate/algorithms-searching-and-sorting — 2751w, 3 callouts, 2 widgets
 - ** 95** subjects/computer-science/intermediate/data-files-tables-json — 2720w, 3 callouts, 2 widgets
+- ** 95** subjects/computer-science/intermediate/logic-gates-and-digital-circuits — 2889w, 3 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/charts-that-tell-the-truth — 2714w, 4 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/cleaning-messy-data — 2693w, 4 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/exploratory-data-analysis — 2634w, 4 callouts, 2 widgets
@@ -172,6 +169,7 @@
 - ** 95** subjects/music/intermediate/form-and-structure — 2612w, 3 callouts, 2 widgets
 - ** 95** subjects/music/intermediate/harmony-and-chords — 2484w, 3 callouts, 1 widgets
 - ** 95** subjects/music/intermediate/instruments-and-timbre — 2493w, 3 callouts, 1 widgets
+- ** 95** subjects/music/intermediate/music-history-eras — 2550w, 3 callouts, 2 widgets
 - ** 95** subjects/music/intermediate/rhythm-and-time-signatures — 2531w, 3 callouts, 1 widgets
 - ** 95** subjects/neuroscience/intermediate/brain-anatomy-tour — 2570w, 3 callouts, 1 widgets
 - ** 95** subjects/neuroscience/intermediate/neurons-and-synapses — 2778w, 3 callouts, 1 widgets
@@ -185,6 +183,7 @@
 - ** 95** subjects/physics/intermediate/circular-motion-and-gravitation — 2736w, 3 callouts, 1 widgets
 - ** 95** subjects/physics/intermediate/magnetism-and-induction — 2672w, 3 callouts, 1 widgets
 - ** 95** subjects/physics/intermediate/thermal-physics — 2982w, 4 callouts, 1 widgets
+- ** 95** subjects/political-science/intermediate/constitutions-rights — 2551w, 3 callouts, 1 widgets
 - ** 95** subjects/political-science/intermediate/international-relations-theories — 2713w, 3 callouts, 2 widgets
 - ** 95** subjects/political-science/intermediate/political-ideologies — 2839w, 3 callouts, 2 widgets
 - ** 95** subjects/political-science/intermediate/voting-systems-and-electoral-design — 2656w, 3 callouts, 2 widgets
@@ -195,6 +194,7 @@
 - ** 95** subjects/psychology/intermediate/social-psychology — 2850w, 3 callouts, 2 widgets
 - ** 95** subjects/religious-studies/intermediate/buddhism — 2652w, 3 callouts, 1 widgets
 - ** 95** subjects/religious-studies/intermediate/islam — 2592w, 3 callouts, 1 widgets
+- ** 95** subjects/religious-studies/intermediate/judaism — 2568w, 3 callouts, 1 widgets
 - ** 95** subjects/religious-studies/intermediate/studying-religion-academically — 2633w, 3 callouts, 1 widgets
 - ** 95** subjects/sociology/intermediate/class-and-stratification — 2718w, 3 callouts, 2 widgets
 - ** 95** subjects/sports-science/intermediate/strength-and-hypertrophy — 2664w, 3 callouts, 2 widgets

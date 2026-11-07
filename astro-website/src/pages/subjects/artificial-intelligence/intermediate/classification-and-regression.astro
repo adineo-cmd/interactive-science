@@ -28,6 +28,23 @@ const fitCfg = {
 };
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/classification-and-regression">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    The foundational lesson How Machines Learn gave you the skeleton: a model is a function
+    fitted to labelled examples, and generalisation — not memorisation — is the goal. This
+    lesson puts muscles on that skeleton. Bring comfortable arithmetic (averages,
+    percentages) and patience with a little notation; every formula that appears is
+    explained in words first.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>say what a loss function is, and why squared error and log loss punish different mistakes;</li>
+    <li>fit and judge a linear regression honestly, against a naive baseline rather than against zero;</li>
+    <li>explain what a classifier's threshold changes, and why the operating point belongs to the business;</li>
+    <li>compute precision and recall from a confusion matrix and choose between them for a given cost structure;</li>
+    <li>recognise overfitting and underfitting, and use k-fold cross-validation to estimate performance on unseen data.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Classification and regression are <strong>supervised learning's two core tasks</strong>:
@@ -49,6 +66,17 @@ const fitCfg = {
   </p>
 
   <Widget no="1" caption="the task types and the metrics that don't lie" widget="equationStep" config={clsCfg} />
+  <p>
+    <strong>What to notice:</strong> the four panels move from task to metric — numbers
+    first, then categories, then the metric traps each task breeds. Linger on panel 3, the
+    fraud example: 99.9% accuracy that catches nothing. Almost everything in the rest of
+    this lesson exists to prevent exactly that failure.
+  </p>
+  <p>
+    <strong>So far:</strong> supervised learning is a search through candidate functions
+    for the one with the lowest loss, and low loss on the training data is not the goal.
+    The next question is what "wrong" means numerically.
+  </p>
 
   <h2>What "learning from examples" actually optimises</h2>
   <p>
@@ -94,12 +122,24 @@ const fitCfg = {
   </p>
 
   <Widget no="2" caption="fit the line by hand — the data wants slope ≈ 132, intercept ≈ 47" widget="plotter" config={fitCfg} />
+  <p>
+    <strong>What to notice:</strong> start from slope 132 and intercept 47, where the line
+    threads the points, then drag either dial away and watch the vertical gaps balloon.
+    Two habits to build here: the least-squares line is the bottom of a smooth bowl, not a
+    chase of any single point; and a fit is judged against the naive baseline (RMSE about
+    82), never against perfection.
+  </p>
 
   <p><em>Common misconception:</em> R² or RMSE alone tells you if a model is good. They only
   tell you how it compares — to a baseline, or to another model on the same data. A model
   with RMSE $11k is excellent for house prices and useless for stock returns; a "high R²"
   on training data is exactly what overfitting produces. Every metric only means something
   relative to something.</p>
+  <p>
+    <strong>So far:</strong> regression predicts numbers, and honesty means beating a naive
+    baseline on data the model never saw. The other core task predicts categories — and it
+    needs probabilities, not lines.
+  </p>
 
   <h2>Classification: from scores to probabilities</h2>
   <p>
@@ -124,6 +164,12 @@ const fitCfg = {
     and only near-certain spam gets filtered, at the cost of more spam in your inbox. The
     model outputs a number; the operating point is a choice — and as we will see, that
     choice belongs to the business, not the data scientist.
+  </p>
+  <p>
+    <strong>So far:</strong> a classifier outputs a probability, and a threshold turns the
+    probability into a decision — the model supplies the score, the business supplies the
+    operating point. Before more metrics, we need the machinery that keeps every score
+    honest: validation.
   </p>
 
   <h2>Flexibility: underfitting, overfitting and cross-validation</h2>
@@ -175,6 +221,11 @@ const fitCfg = {
     (freezing a paying customer wrongly is expensive). There is no single "best" number —
     only a best number <em>for a cost structure</em>.
   </p>
+  <p>
+    <strong>So far:</strong> precision and recall trade against each other, and which one
+    to maximise depends on what each kind of mistake costs. The ROC curve sweeps every
+    threshold so the whole trade-off can be seen at once.
+  </p>
 
   <h2>ROC curves: every threshold at once</h2>
   <p>
@@ -216,6 +267,44 @@ const fitCfg = {
     Europe) require it. A movie recommender can stay a black box; a parole model cannot.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A fraud model that always says "not fraud" scores 99.9% accuracy. Which two metrics expose the failure, and what does each measure?</li>
+    <li>Why is a model's R² or RMSE meaningless in isolation?</li>
+    <li>A missed fraud costs USD 1,000; each false alarm costs USD 10 of customer friction. Should the threshold move up or down from 0.5, and why?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Precision (when we raise an alarm, how often are we
+    right?) and recall (of all real fraud, what fraction did we catch?) — the always-negative
+    model catches zero fraud, so its recall is 0%, and its alarms tell you nothing because
+    it raises none. (2) Because every metric only means something relative to something: a
+    baseline, or another model on the same data. The naive mean predictor already scores an
+    RMSE of about 82 on the apartment data; a candidate fit must beat that to be worth
+    anything at all. (3) Down. The asymmetric costs justify accepting roughly a hundred
+    false alarms for each extra fraud caught, so the marginal trade keeps paying well below
+    a 0.5 cutoff — the threshold is an economics decision, not a mathematical one.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Supervised learning searches a space of candidate functions for the lowest loss; the loss function is the contract that defines "wrong".</li>
+    <li>Regression predicts numbers; classification predicts categories through probabilities and a threshold.</li>
+    <li>Judge every model against a naive baseline — R² or RMSE alone means nothing.</li>
+    <li>Precision and recall trade off, and which to maximise is a cost-structure decision.</li>
+    <li>Accuracy lies on imbalanced problems; the confusion matrix does not.</li>
+    <li>Near-zero training error is the signature of overfitting; k-fold cross-validation estimates performance on data that does not exist yet.</li>
+    <li>The data scientist ships a calibrated score; the threshold belongs to whoever owns the costs.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling intermediate lessons extend both directions of this page: Neural Networks
+    from Scratch replaces the linear search space with stacked weighted sums, and Image
+    Recognition (CNNs) shows what those networks do to pictures. Machine Learning in One
+    Picture is the map to consult if you want the whole territory at a glance first.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>The bias–variance decomposition.</strong> The expected squared error of a model
@@ -254,5 +343,5 @@ const fitCfg = {
     survive contact with production, where a slightly worse but simpler, faster, calibrated
     model is usually the right answer.
   </p>
-  <p class="sources"><strong>Sources:</strong> Hastie, Tibshirani &amp; Friedman, Elements of Statistical Learning; Géron, Hands-On Machine Learning; Molnar, Interpretable Machine Learning (free online); Russell &amp; Norvig, Artificial Intelligence: A Modern Approach, ch. 19; Chollet, Deep Learning with Python.</p>
+  <p class="sources"><strong>Sources:</strong> Hastie, Tibshirani &amp; Friedman, Elements of Statistical Learning; Géron, Hands-On Machine Learning; Molnar, Interpretable Machine Learning (free online); Russell &amp; Norvig, Artificial Intelligence: A Modern Approach, ch. 19; Chollet, Deep Learning with Python. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

@@ -22,6 +22,23 @@ const nnQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/neural-networks-from-scratch">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    You need the foundational lesson How Machines Learn behind you — loss, gradient
+    descent, the train/test discipline — and Machine Learning in One Picture is the ideal
+    companion, because the network is a supervised-learning model with a particular shape
+    and this lesson adds that shape. No matrix algebra is required: every computation here
+    is small enough to do with a pencil.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>compute one neuron's forward pass by hand — weighted sum, bias, activation — and say what its weights mean;</li>
+    <li>explain why a single neuron can only draw a straight boundary, and why XOR defeated it in 1969;</li>
+    <li>say what layers, depth and activation functions each contribute, and why nonlinearity is essential;</li>
+    <li>describe backpropagation as the chain rule organised for blame assignment, and list the steps of the training loop;</li>
+    <li>choose hyperparameters deliberately and run the overfit-one-batch sanity check before tuning anything.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     A neural network is <strong>stacked layers of tiny weighted sums</strong>, trained
@@ -44,6 +61,17 @@ const nnQuizCfg = {
   </p>
 
   <Widget no="1" caption="from single neuron to trained network, in five steps" widget="equationStep" config={nnCfg} />
+  <p>
+    <strong>What to notice:</strong> step through the five panels once quickly, then again
+    slowly — neuron, layers, forward pass, backprop, the 1969 crisis. Notice how small each
+    panel's computation is (multiply, add, squish, repeat) and that the last panel is a
+    story about funding and politics as much as mathematics.
+  </p>
+  <p>
+    <strong>So far:</strong> the plan is to build the network from one neuron upward,
+    because the whole architecture is genuinely understandable that way. Start with the
+    smallest possible unit and its arithmetic.
+  </p>
 
   <h2>One neuron: the weighted sum, computed</h2>
   <p>
@@ -80,6 +108,11 @@ const nnQuizCfg = {
   </p>
 
 <p><em>Common misconception:</em> "the trained network understands the data." Training only adjusts numbers to minimise a loss score on the examples seen — there is no semantics, only a function that happens to fit. Networks exploit whatever patterns correlate with the labels, which is why a model can score brilliantly and fail on examples collected slightly differently.</p>
+  <p>
+    <strong>So far:</strong> one neuron is a weighted sum bent by a squish, and its decision
+    boundary is a straight line — which is exactly why XOR stopped the field in 1969. The
+    escape was known even then: composition. Stack the little units.
+  </p>
 
   <h2>Layers: composition buys shapes</h2>
   <p>
@@ -128,6 +161,12 @@ const nnQuizCfg = {
     number, and training's entire purpose is to make that number smaller on data
     the network has not memorised.
   </p>
+  <p>
+    <strong>So far:</strong> a forward pass pushes one example through stacked weighted
+    sums and squishes, and the loss scores the result as a single number. What remains is
+    the bookkeeping problem: which of the millions of weights deserves the blame, and how
+    much of it?
+  </p>
 
   <h2>Backpropagation: the chain rule, organised</h2>
   <p>
@@ -152,6 +191,11 @@ const nnQuizCfg = {
   </p>
 
 <p><em>Common misconception:</em> "more layers is always better." Depth adds expressive power but also vanishing gradients, longer training and overfitting risk; many real problems are solved better by three layers tuned carefully than thirty tuned carelessly. Capacity must match the data, and the validation set — not ambition — decides.</p>
+  <p>
+    <strong>So far:</strong> backpropagation is the chain rule organised backwards, and
+    training is just the loop — forward, loss, backward, nudge — repeated at scale. Now
+    come the practical settings that decide whether the loop converges at all.
+  </p>
 
   <h2>Training practicalities: hyperparameters and the sanity check</h2>
   <p>
@@ -191,6 +235,43 @@ const nnQuizCfg = {
 
 <p><em>Common misconception:</em> "training finds the best possible weights." The loss landscape of a real network is rugged and non-convex: gradient descent stops in the first good valley it finds, and a different random seed usually lands in a different one. That is acceptable — several good solutions generalise similarly — but it means there is rarely a single "true" answer to compare yours against.</p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why is the activation function's nonlinearity essential — what would a stack of layers compute without it?</li>
+    <li>Describe backpropagation in one sentence, without using the word "backpropagate".</li>
+    <li>Your network cannot reach near-zero loss on 100 training examples. What does that tell you, and what should you do before touching any hyperparameter?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) A composition of linear maps is still linear — depth
+    would buy nothing, however many layers you stacked. The squish between layers is what
+    lets depth buy genuine expressive power. (2) The chain rule, organised so each layer's
+    computation is reused: blame for the loss flows backward through the outgoing weights,
+    one backward pass assigning a gradient to every weight. (3) Something is broken — a
+    sign error in the gradient, a frozen activation, a data pipeline feeding garbage.
+    Memorising 100 examples is nearly the easiest task a working network can do, so find
+    that bug first; tuning a broken network is fortune-telling.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A neuron is a weighted sum plus bias, bent by an activation function — dumber than a pocket calculator.</li>
+    <li>The weights are the knowledge; training is the search for weight values that make outputs match the labels.</li>
+    <li>A single neuron draws one straight boundary; XOR needs two lines, which is why 1969 froze the field.</li>
+    <li>Layers compose simple detectors into features; without nonlinear activations, depth collapses into one linear map.</li>
+    <li>Backpropagation is the chain rule applied in reverse, reusing each layer's computation to blame every weight.</li>
+    <li>Learning rate, batch size, capacity and epochs are chosen before training; the live loss curve is the first diagnostic.</li>
+    <li>Overfit a single batch as the sanity check; fight memorisation with dropout, weight decay, early stopping and data augmentation.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The natural next step is Image Recognition (CNNs), which gives the same forward-pass
+    machinery a shape suited to pictures; Machine Learning in One Picture places it in the
+    wider map. Keep the pencil forward pass — every architecture you will ever meet redraws
+    that same computation.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     The expert shelf. <strong>The GPU moment</strong>: neural networks are matrix
@@ -217,6 +298,12 @@ const nnQuizCfg = {
     because every architecture diagram you will ever meet, from CNNs to
     transformers, is that same computation redrawn to show where information flows.
   </p>
-  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton &amp; Williams, "Learning representations by back-propagating errors", Nature (1986); Minsky &amp; Papert, Perceptrons (1969); Goodfellow, Bengio &amp; Courville, Deep Learning (2016); Karpathy, "Neural Networks: Zero to Hero"; Krizhevsky et al., ImageNet classification (2012).</p>
+  <p class="sources"><strong>Sources:</strong> Rumelhart, Hinton &amp; Williams, "Learning representations by back-propagating errors", Nature (1986); Minsky &amp; Papert, Perceptrons (1969); Goodfellow, Bengio &amp; Courville, Deep Learning (2016); Karpathy, "Neural Networks: Zero to Hero"; Krizhevsky et al., ImageNet classification (2012). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: neurons to networks" widget="quiz" config={nnQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> commit to an answer before revealing each explanation
+    — the distractors are plausible-sounding half-truths (speed, cost, "smaller data is
+    easier"). Notice that all four correct answers describe structure rather than
+    horsepower: the network's power is composition, not computation speed.
+  </p>
 </TopicPage>
