@@ -1,24 +1,8 @@
 # Lesson health audit — advanced tier
 
-119 lessons: Weak (<40): 59 · Needs work (40–79): 44 · Good (≥80): 16
+119 lessons: Weak (<40): 43 · Needs work (40–79): 44 · Good (≥80): 32
 
-## Weak (<40) (59)
-- ** 26** subjects/finance/advanced/options-and-derivatives — 1871w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/law/advanced/contracts — 1864w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/law/advanced/property-law — 1863w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/literature/advanced/modernism-and-postmodernism — 1851w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/medicine/advanced/cancer-biology-and-oncology — 1883w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/medicine/advanced/clinical-trials-and-evidence — 1816w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/neuroscience/advanced/brain-imaging-methods — 1892w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/neuroscience/advanced/memory-circuits — 1887w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/philosophy/advanced/language-and-meaning — 1891w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/philosophy/advanced/modal-logic — 1850w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/physics/advanced/fluid-dynamics — 1889w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/physics/advanced/special-relativity — 1873w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/political-science/advanced/conflict-and-peace-studies — 1900w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/psychology/advanced/neuropsychology — 1897w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/religious-studies/advanced/scripture-and-interpretation — 1925w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/sociology/advanced/globalisation-and-society — 1850w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
+## Weak (<40) (43)
 - ** 26** subjects/sociology/advanced/social-networks — 1908w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
 - ** 26** subjects/sports-science/advanced/biomechanics — 1879w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
 - ** 26** subjects/statistics/advanced/bayesian-statistics — 1916w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
@@ -109,7 +93,7 @@
 - ** 40** subjects/statistics/advanced/non-parametric-methods — 2002w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 - ** 40** subjects/statistics/advanced/time-series-analysis — 1948w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 
-## Good (≥80) (16)
+## Good (≥80) (32)
 - ** 95** subjects/agriculture/advanced/precision-agriculture — 2737w, 3 callouts, 2 widgets
 - ** 95** subjects/anthropology/advanced/ethnographic-methods — 2749w, 3 callouts, 2 widgets
 - ** 95** subjects/astronomy/advanced/galaxies-and-the-expanding-universe — 2771w, 3 callouts, 2 widgets
@@ -123,6 +107,22 @@
 - ** 95** subjects/earth-science/advanced/geochemical-cycles — 2819w, 3 callouts, 2 widgets
 - ** 95** subjects/earth-science/advanced/paleoclimate-and-ice-ages — 2824w, 3 callouts, 2 widgets
 - ** 95** subjects/engineering/advanced/materials-selection — 2842w, 3 callouts, 2 widgets
+- ** 95** subjects/finance/advanced/options-and-derivatives — 2770w, 3 callouts, 2 widgets
 - ** 95** subjects/languages/advanced/register-idiom-and-slang — 2701w, 3 callouts, 1 widgets
+- ** 95** subjects/law/advanced/contracts — 2762w, 3 callouts, 2 widgets
+- ** 95** subjects/law/advanced/property-law — 2763w, 3 callouts, 2 widgets
 - ** 95** subjects/linguistics/advanced/psycholinguistics-and-acquisition — 2713w, 3 callouts, 1 widgets
 - ** 95** subjects/linguistics/advanced/sociolinguistics — 2758w, 3 callouts, 1 widgets
+- ** 95** subjects/literature/advanced/modernism-and-postmodernism — 2706w, 3 callouts, 1 widgets
+- ** 95** subjects/medicine/advanced/cancer-biology-and-oncology — 2783w, 3 callouts, 2 widgets
+- ** 95** subjects/medicine/advanced/clinical-trials-and-evidence — 2716w, 3 callouts, 2 widgets
+- ** 95** subjects/neuroscience/advanced/brain-imaging-methods — 2790w, 3 callouts, 2 widgets
+- ** 95** subjects/neuroscience/advanced/memory-circuits — 2769w, 3 callouts, 2 widgets
+- ** 95** subjects/philosophy/advanced/language-and-meaning — 2809w, 3 callouts, 1 widgets
+- ** 95** subjects/philosophy/advanced/modal-logic — 2773w, 3 callouts, 2 widgets
+- ** 95** subjects/physics/advanced/fluid-dynamics — 2809w, 3 callouts, 2 widgets
+- ** 95** subjects/physics/advanced/special-relativity — 2782w, 3 callouts, 2 widgets
+- ** 95** subjects/political-science/advanced/conflict-and-peace-studies — 2822w, 3 callouts, 2 widgets
+- ** 95** subjects/psychology/advanced/neuropsychology — 2813w, 3 callouts, 2 widgets
+- ** 95** subjects/religious-studies/advanced/scripture-and-interpretation — 2838w, 3 callouts, 1 widgets
+- ** 95** subjects/sociology/advanced/globalisation-and-society — 2774w, 3 callouts, 2 widgets
