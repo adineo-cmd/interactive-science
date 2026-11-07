@@ -1,30 +1,21 @@
 # Lesson health audit — foundational tier
 
-181 lessons: Weak (<40): 0 · Needs work (40–79): 14 · Good (≥80): 167
+181 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 181
 
 ## Weak (<40) (0)
 
-## Needs work (40–79) (14)
-- ** 66** subjects/biology/foundational/photosynthesis-respiration — 2363w, 3 callouts, 2 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15)
-- ** 66** subjects/chemistry/foundational/acids-bases-and-ph — 2599w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
-- ** 66** subjects/chemistry/foundational/mole-and-stoichiometry — 2238w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
-- ** 66** subjects/chemistry/foundational/periodic-table — 2394w, 3 callouts, 3 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/3 (15)
-- ** 66** subjects/chemistry/foundational/states-of-matter — 2324w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
-- ** 66** subjects/math/foundational/equations-and-inequalities — 2330w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
-- ** 66** subjects/math/foundational/euclidean-geometry — 2448w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
-- ** 66** subjects/math/foundational/perimeter-area-volume — 2328w, 3 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
-- ** 66** subjects/math/foundational/ratios-percentages-proportion — 2202w, 4 callouts, 1 widgets — GAPS: missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15)
-- ** 70** subjects/economics/foundational/supply-and-demand — 2656w, 3 callouts, 0 widgets — GAPS: recaps 0/2 (10)
-- ** 70** subjects/math/foundational/linear-functions — 2790w, 3 callouts, 0 widgets — GAPS: recaps 0/2 (10)
-- ** 70** subjects/physics/foundational/motion-1d — 2853w, 3 callouts, 0 widgets — GAPS: recaps 0/2 (10)
-- ** 75** subjects/chemistry/foundational/atomic-structure — 2605w, 3 callouts, 0 widgets — GAPS: recaps 1/2 (5)
-- ** 75** subjects/computer-science/foundational/growth-of-functions — 2944w, 3 callouts, 0 widgets — GAPS: recaps 1/2 (5)
+## Needs work (40–79) (0)
 
-## Good (≥80) (167)
+## Good (≥80) (181)
 - ** 80** subjects/astronomy/foundational/orbits-and-keplers-laws — 2764w, 3 callouts, 0 widgets
 - ** 80** subjects/biology/foundational/cell-structure — 2481w, 4 callouts, 0 widgets
+- ** 80** subjects/chemistry/foundational/atomic-structure — 2647w, 3 callouts, 0 widgets
+- ** 80** subjects/computer-science/foundational/growth-of-functions — 2991w, 3 callouts, 0 widgets
+- ** 80** subjects/economics/foundational/supply-and-demand — 2766w, 3 callouts, 0 widgets
 - ** 80** subjects/geography/foundational/latitude-and-climate — 2876w, 3 callouts, 0 widgets
 - ** 80** subjects/history/foundational/cradles-of-civilisation — 2648w, 3 callouts, 0 widgets
+- ** 80** subjects/math/foundational/linear-functions — 2886w, 3 callouts, 0 widgets
+- ** 80** subjects/physics/foundational/motion-1d — 2929w, 3 callouts, 0 widgets
 - ** 85** subjects/environmental-engineering/foundational/water-chemistry-and-microbiology — 3541w, 4 callouts, 2 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/game-development/foundational/game-design-foundations — 2963w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/physics/foundational/newtons-laws — 2792w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
@@ -108,10 +99,15 @@
 - ** 95** subjects/biology/foundational/evolution-natural-selection — 2371w, 4 callouts, 1 widgets
 - ** 95** subjects/biology/foundational/human-body-systems — 2683w, 4 callouts, 1 widgets
 - ** 95** subjects/biology/foundational/movement-into-and-out-of-cells — 2844w, 3 callouts, 4 widgets
+- ** 95** subjects/biology/foundational/photosynthesis-respiration — 2743w, 3 callouts, 2 widgets
 - ** 95** subjects/biomedical-engineering/foundational/physiology-for-engineers — 2785w, 4 callouts, 2 widgets
 - ** 95** subjects/botany/foundational/the-plant-cell — 2852w, 3 callouts, 2 widgets
 - ** 95** subjects/business/foundational/unit-economics — 2672w, 4 callouts, 1 widgets
 - ** 95** subjects/chemical-engineering/foundational/material-and-energy-balances — 2912w, 3 callouts, 2 widgets
+- ** 95** subjects/chemistry/foundational/acids-bases-and-ph — 2902w, 3 callouts, 1 widgets
+- ** 95** subjects/chemistry/foundational/mole-and-stoichiometry — 2512w, 3 callouts, 1 widgets
+- ** 95** subjects/chemistry/foundational/periodic-table — 2836w, 3 callouts, 3 widgets
+- ** 95** subjects/chemistry/foundational/states-of-matter — 2640w, 3 callouts, 1 widgets
 - ** 95** subjects/civil-engineering/foundational/statics-and-dynamics-for-civil-engineers — 3238w, 4 callouts, 2 widgets
 - ** 95** subjects/classics/foundational/homer-and-the-world-of-the-hero — 2883w, 3 callouts, 1 widgets
 - ** 95** subjects/communication-studies/foundational/communication-theory — 2894w, 3 callouts, 1 widgets
@@ -151,7 +147,11 @@
 - ** 95** subjects/marketing/foundational/introduction-and-company-analysis — 2675w, 3 callouts, 2 widgets
 - ** 95** subjects/massage-therapy/foundational/body-systems-and-movement — 2873w, 3 callouts, 2 widgets
 - ** 95** subjects/materials-science/foundational/why-materials-behave — 3313w, 4 callouts, 1 widgets
+- ** 95** subjects/math/foundational/equations-and-inequalities — 2596w, 3 callouts, 1 widgets
+- ** 95** subjects/math/foundational/euclidean-geometry — 2745w, 3 callouts, 1 widgets
+- ** 95** subjects/math/foundational/perimeter-area-volume — 2639w, 3 callouts, 1 widgets
 - ** 95** subjects/math/foundational/quadratics — 3187w, 4 callouts, 3 widgets
+- ** 95** subjects/math/foundational/ratios-percentages-proportion — 2532w, 4 callouts, 1 widgets
 - ** 95** subjects/mechanical-engineering/foundational/mechanics-foundations — 3383w, 4 callouts, 2 widgets
 - ** 95** subjects/media-studies/foundational/the-theoretical-framework — 3091w, 4 callouts, 2 widgets
 - ** 95** subjects/medical-laboratory-science/foundational/laboratory-operations-and-safety — 2644w, 3 callouts, 1 widgets
