@@ -46,6 +46,23 @@ const graphQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/graphs-and-dynamic-programming">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced lesson in Computer Science. It assumes the foundational lesson <em>Growth
+    of Functions</em> — every complexity claim below is Big-O arithmetic — and the intermediate
+    lesson <em>Algorithms: Searching and Sorting</em>, whose trace-table discipline this chapter
+    runs on real machinery. <em>Programming Fundamentals</em> supplies the recursion the DP
+    sections rebuild.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>choose a graph representation from sparsity, not habit — and say what each choice costs;</li>
+    <li>trace BFS and DFS, and state which structural answers each one is for;</li>
+    <li>run Dijkstra with a full trace table, and explain why non-negative weights are load-bearing;</li>
+    <li>build a DP table for knapsack and LCS, naming subproblem, recurrence and fill order;</li>
+    <li>decide between greedy, DP and brute force by testing whether local choices are safe.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Two tools unlock most of algorithmic computer science. <strong>Graphs</strong> model anything made of
@@ -57,6 +74,12 @@ const graphQuiz = {
   </p>
 
   <Widget no="1" caption="the graph–DP toolkit, in five sentences" widget="equationStep" config={graphCfg} />
+  <p>
+    <strong>What to notice:</strong> the five panels are ordered by the questions they answer —
+    model, explore two ways, weigh the edges, remember your work. Watch how BFS and DFS differ
+    only in their container (queue versus stack) while producing different guarantees, and how
+    the final panel turns an exponential call tree into a table you can fill by hand.
+  </p>
 
   <h2>Representing graphs — the first design decision</h2>
   <p>
@@ -83,6 +106,18 @@ const graphQuiz = {
     and connected components. The two traversals are the same loop with a different container — queue
     versus stack — a fact worth savouring: one data-structure choice produces two different worldviews.
   </p>
+  <p><em>Common misconception:</em> "BFS and DFS are the same loop with different containers, so
+  either one finds shortest paths." The shared loop is real — but the guarantee is not. It seems
+  reasonable because both visit every node eventually. The correct picture: only BFS exhausts
+  distance d before d+1, so its first arrival is provably a shortest unweighted path; DFS dives
+  and can reach a node by a long route first, which is fine because its job is structure —
+  cycles, topological order, components — not distance. Choosing the traversal means choosing
+  which question you are answering.</p>
+  <p>
+    <strong>So far:</strong> representation is a sparsity decision, and the two traversals are
+    one loop with two containers — each with its own guarantee. Next, what happens when edges
+    carry costs and the ring guarantee fails.
+  </p>
 
   <h2>Dijkstra: shortest paths with a trace</h2>
   <p>
@@ -104,6 +139,18 @@ const graphQuiz = {
     and detects negative cycles, which is how arbitrage detectors work on currency graphs). Complexity
     with a binary heap: O((V + E) log V) — how a maps app routes you through millions of road segments
     in milliseconds, on graphs whose edge weights (traffic) change continuously.
+  </p>
+  <p><em>Common misconception:</em> "you can run Dijkstra on negative edge weights as long as you
+  are careful with the priority queue." It seems reasonable because the relax step looks like it
+  adapts to whatever the weights say. But the greedy proof — settling each popped node as final —
+  is exactly what negative edges break: a longer route through a negative edge can cheapen an
+  already-settled node after the algorithm has stopped listening. The correct picture: with
+  negative weights use Bellman–Ford, which relaxes all edges V−1 times and detects negative
+  cycles as a bonus — the trick arbitrage detectors run on currency graphs.</p>
+  <p>
+    <strong>So far:</strong> Dijkstra keeps BFS's shortest-path promise alive for weighted
+    graphs, at the price of a provable greedy step. Next, the tool for problems where no greedy
+    choice is safe at all — and where remembering subproblems turns exponential into polynomial.
   </p>
 
   <h2>Dynamic programming: the two ingredients and a full worked example</h2>
@@ -198,6 +245,43 @@ const graphQuiz = {
     data topic is, in disguise, the DP method itself.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Name the two ingredients a problem needs before dynamic programming applies, and say what naive recursion does when they hold.</li>
+    <li>For the knapsack worked above (capacity 5; A weight 1 value 1, B 3/4, C 4/5, D 2/3), state the optimal selection and the table cell that produced it.</li>
+    <li>Why exactly does a negative edge weight break Dijkstra, and which algorithm would you switch to?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Optimal substructure (best answers compose) and overlapping
+    subproblems (the same ones recur); naive recursion then recomputes identical subproblems
+    exponentially — fib(2) tens of millions of times at n = 40 — while caching collapses the
+    tree to one entry per subproblem. (2) B + D, weights 3 + 2 = 5, value 4 + 3 = 7: the final
+    cell takes max(6, best[3] + 3) = 7, i.e. the best value at capacity 3 (item B) plus item D.
+    (3) Dijkstra settles each node as final when popped; a negative edge can shorten a settled
+    node afterwards, so the greedy proof fails. Bellman–Ford relaxes every edge V−1 times and
+    detects negative cycles — which is how arbitrage detectors work on currency graphs.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Representation is the first design decision: adjacency lists for sparse graphs, O(V + E); matrices cost O(V²) regardless.</li>
+    <li>BFS and DFS are one loop with two containers — queue gives shortest unweighted paths, stack gives structure.</li>
+    <li>Dijkstra extends BFS to weighted graphs; its greedy proof demands non-negative weights.</li>
+    <li>DP needs optimal substructure plus overlapping subproblems; memoise or tabulate, and the fill order is the correctness argument.</li>
+    <li>Kruskal and Prim are provably greedy — knowing when local safety holds is the design skill.</li>
+    <li>Modelling is the expert move: name the nodes, define the edges, state what shortest means.</li>
+    <li>Exponential becomes polynomial when a table replaces a recomputed call tree.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    <em>Data Structures</em> is the direct sequel — the queues, stacks, heaps and union-find
+    this chapter borrowed — and <em>Networking: How the Internet Works</em> shows shortest-path
+    thinking running the routing layer for real. For the theory boundary sketched below,
+    continue to the expert lesson <em>Computability and Complexity</em>.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>The boundary of the tractable.</strong> Shortest path, MST, max flow, matching — polynomial.
@@ -219,7 +303,13 @@ const graphQuiz = {
     and what new algorithmic primitives, if any, will quantum computers add to this toolkit?
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Dijkstra (1959); Bellman, <em>Dynamic Programming</em> (1957); Kleinberg &amp; Tardos, <em>Algorithm Design</em>; Cormen et al., <em>Introduction to Algorithms</em>.</p>
+  <p class="sources"><strong>Sources:</strong> Dijkstra (1959); Bellman, <em>Dynamic Programming</em> (1957); Kleinberg &amp; Tardos, <em>Algorithm Design</em>; Cormen et al., <em>Introduction to Algorithms</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: negative edges, memoisation counts, sparse graphs" widget="quiz" config={graphQuiz} />
+  <p>
+    <strong>What to notice:</strong> the questions probe the three places this chapter's
+    intuitions fail — negative edges breaking a greedy proof, memoisation's true call count,
+    and what sparsity does to representation. If you miss one, read the explanation before
+    moving on: each distractor is the mistake the lesson predicted.
+  </p>
 </TopicPage>

@@ -17,6 +17,23 @@ const rotCfg = {
 };
 ---
 <TopicPage slug="subjects/math/advanced/vectors-and-matrices">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Mathematics lesson. It assumes the foundational lessons on linear
+    functions and Euclidean geometry, and the intermediate lessons on trigonometry and circles
+    and coordinate geometry — Pythagoras, similar triangles and coordinates are the working
+    tools throughout. The physics arrows you have met are about to become lists of numbers that
+    any field can use.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>add, subtract and scale vectors component-wise, and say what each operation means geometrically;</li>
+    <li>compute magnitudes, unit vectors and dot products, and read alignment from the dot product's sign;</li>
+    <li>prove geometry facts — midpoints, collinearity, the parallelogram law — with component arithmetic;</li>
+    <li>build a transformation matrix from the images of the basis vectors, and compose transformations by multiplying matrices;</li>
+    <li>use the determinant as the area scale factor and the invertibility test, and solve systems with the inverse.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     By now you have met vectors twice: as physics arrows (displacement, velocity, force) and as
@@ -40,6 +57,12 @@ const rotCfg = {
   </p>
 
   <Widget no="1" caption="one vector, many uses — its components [x, y] are just a 2-entry list that matrices act on" widget="diagramBuilder" config={vecCfg} />
+  <p>
+    <strong>What to notice:</strong> drag the arrow around the plane and watch the component
+    pair follow it — the pair is the vector's entire data, and the drawing is only a convention.
+    Keep the length fixed and rotate: the components trade off against each other. Everything
+    this page computes — magnitude, dot products, matrices — reads those two numbers.
+  </p>
 
   <h2>Vectors in two dimensions (E7.2)</h2>
   <p>
@@ -83,6 +106,15 @@ const rotCfg = {
     mechanics, work = force · displacement is this same product; in machine learning,
     similarity between two documents is usually a (normalised) dot product.
   </p>
+  <p><em>Common misconception:</em> "multiplying two vectors should give another vector — the
+  dot product is just an odd kind of multiplication." Every multiplication you have met so far
+  outputs more of the same kind of thing, so a single-number output looks like a
+  mistake. It is not an oversight but the point: the dot product is a measuring instrument,
+  compressing two vectors into one number that reports their alignment — how much of one points
+  along the other. Positive means an acute angle, zero means perpendicular, negative means
+  obtuse. Test (1, 2) against (−2, 1): the sum of products is
+  −2 + 2 = 0, so they are at right angles — no trigonometry, one line of
+  arithmetic.</p>
 
   <h2>Vector geometry (E7.4)</h2>
   <p>
@@ -101,6 +133,12 @@ const rotCfg = {
     ½(A + (B)) = ½(A + B). The same point — so they bisect each other. Four symbols, no
     diagram required, and the proof works for parallelograms in 3D or 10D just as well.
     That dimension-independence is the quiet superpower of the method.
+  </p>
+  <p>
+    <strong>So far:</strong> vectors as objects — arithmetic with meanings, magnitude by
+    Pythagoras, alignment by the dot product — and geometry turned into component
+    proofs that never draw a diagram. Next, the verbs: rules that move the whole plane,
+    almost all of them matrices.
   </p>
 
   <h2>Transformations of the plane (E7.1)</h2>
@@ -126,6 +164,14 @@ const rotCfg = {
   </p>
 
   <Widget no="2" caption="composing rotations with matrix multiplication — watch a quarter-turn matrix act, then compose with itself" widget="equationStep" config={rotCfg} />
+  <p>
+    <strong>What to notice:</strong> the first two steps evaluate the matrix on the basis
+    vectors alone — east to north, north to west — and the plane is already determined; step 4
+    gets (3, 2) for free from the same columns — the content of linearity. Then
+    watch steps 5 and 6: applying the quarter-turn twice is a half-turn, four times is the
+    identity, so the inverse is the third power. Matrix multiplication is motion composition,
+    and the algebra of powers is the geometry of repeated turns.
+  </p>
 
   <p>
     <strong>Composition is matrix multiplication.</strong> Apply M then N and the combined
@@ -174,6 +220,52 @@ const rotCfg = {
     the lines are not parallel (parallel lines would give det = 0) — the algebra and the
     picture agree, as they always must.
   </p>
+  <p>
+    <strong>So far:</strong> the pipeline is assembled — vectors in, matrix verbs acting,
+    composition by multiplication, areas scaled by the determinant, systems solved by the
+    inverse. The deeper section points this machinery at directions a matrix cannot turn,
+    and where linearity breaks.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Recall: state the parallelogram law identity, and say what the sum and difference of two vectors represent in the parallelogram's picture.</li>
+    <li>Application: solve the system x + y = 5, x − y = 1 by the inverse-matrix method — write the matrix, compute its determinant and inverse, then check your answer in both equations.</li>
+    <li>Why does det M = 0 mean a system has either no solution or infinitely many — and never exactly one?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The identity is: the squared length of the sum plus the
+    squared length of the difference equals twice the squared length of each side. In the
+    picture, the sum and the difference are the parallelogram's two diagonals. (2) The matrix is [ 1 1 ;
+    1 −1 ], determinant (1)(−1) − (1)(1) = −2, so the inverse is (1/−2)[ −1 −1 ; −1 1 ].
+    Multiplying by (5, 1) gives (1/−2)(−6, −4) = (3, 2). Check: 3 + 2 = 5 and 3 − 2 = 1. The
+    determinant −2 also promised the lines are not parallel. (3) A zero determinant means the transformation crushes the whole plane
+    onto a single line, so two dimensions of information cannot survive. A target off that line
+    is unreachable — no solution; a target on it is hit by every point crushing to the
+    same spot — infinitely many. Exactly one input per output is what a nonzero
+    determinant guarantees.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A vector is a list of numbers; a matrix is a machine that eats vectors and outputs vectors — straight-line motion only, never bending.</li>
+    <li>Addition is walking, scalar multiplication is stretching, subtraction is the connector from A to B.</li>
+    <li>Magnitude is Pythagoras on the components; the dot product measures alignment, and zero means perpendicular.</li>
+    <li>Midpoints, collinearity and the parallelogram law become component proofs that work in any dimension.</li>
+    <li>A matrix's columns are the images of the basis vectors; composition is matrix multiplication, and the order is not commutative.</li>
+    <li>The determinant is the area scale factor — negative sign records an orientation flip — and det M = 0 means no inverse exists.</li>
+    <li>M⁻¹b solves Mx = b by un-transforming the output; algebra and picture must agree.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The advanced lesson <em>Differential Equations</em> relies on this page's deepest
+    idea: its superposition principle — solutions of linear equations add — is vector-space
+    thinking with functions as the vectors. The advanced
+    lesson <em>Logic &amp; Proof Techniques</em> formalises the proof style practised above:
+    every claim earned by a checkable calculation.
+  </p>
 
   <h2>Going deeper</h2>
   <p>
@@ -220,5 +312,5 @@ const rotCfg = {
     sparse matrices of a web search — become the same idea at different scales.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Mathematics syllabus units E7.1–E7.4; Strang, <em>Introduction to Linear Algebra</em>; 3Blue1Brown, <em>Essence of Linear Algebra</em> (visual intuition); Le Gall, "Faster algorithms for rectangular matrix multiplication" (exponent-ω bounds).</p>
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Mathematics syllabus units E7.1–E7.4; Strang, <em>Introduction to Linear Algebra</em>; 3Blue1Brown, <em>Essence of Linear Algebra</em> (visual intuition); Le Gall, "Faster algorithms for rectangular matrix multiplication" (exponent-ω bounds). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

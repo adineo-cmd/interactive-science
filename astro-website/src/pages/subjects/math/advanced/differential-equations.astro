@@ -31,6 +31,23 @@ const sepCfg = {
 };
 ---
 <TopicPage slug="subjects/math/advanced/differential-equations">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Mathematics lesson. It assumes the intermediate lesson <em>The
+    Derivative</em> — slope as an instantaneous rate of change — and the intermediate
+    <em>Exponentials &amp; Logarithms</em> lesson, whose curves are about to become the answers
+    to equations rather than graphs to sketch. The foundational lessons on linear functions and
+    quadratics supply the habit of reading graphs as statements about rates.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>read a differential equation as a rule for the slope at every point, and name its order;</li>
+    <li>solve separable first-order equations and recover the exponential, growth, decay and cooling laws from it;</li>
+    <li>solve linear equations that refuse to separate, with the integrating factor;</li>
+    <li>interpret second-order solutions — damping regimes and resonance — physically;</li>
+    <li>classify equilibria as stable or unstable from a phase line, and run Euler's method by hand.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Nature writes its laws as <strong>differential equations</strong>: statements about how
@@ -56,6 +73,13 @@ const sepCfg = {
   </p>
 
   <Widget no="1" caption="two answers to the same kind of law — unchecked growth versus growth capped by a carrying capacity" widget="plotter" config={modelCfg} />
+  <p>
+    <strong>What to notice:</strong> three sliders, two curves, one contrast. Raising k makes
+    both curves climb sooner — the growth rate is the lever — but only the green logistic curve
+    knows about the ceiling: drag the carrying capacity and the red exponential ignores it
+    completely, while the green curve flattens at exactly pₘₐₓ whatever you do to k. That
+    insensitivity of the ceiling to the growth rate is the whole difference between the two laws.
+  </p>
 
   <p>
     The red curve solves dP/dt = kP exactly. The green <strong>logistic</strong> curve
@@ -65,6 +89,11 @@ const sepCfg = {
     in their early weeks — wherever a growth rate is proportional both to what exists and
     to what remains, the S-curve appears. Drag the sliders: raising k compresses time but
     changes nothing structural, and the curve always levels off at exactly pₘₐₓ.
+  </p>
+  <p>
+    <strong>So far:</strong> a differential equation is a slope rule, and the same kind of law
+    with one corrective factor produces either runaway growth or an S-curve — the model decides
+    which world you live in. Next, the first technique for solving such laws exactly.
   </p>
 
   <h2>First-order equations I: separation of variables</h2>
@@ -77,6 +106,13 @@ const sepCfg = {
   </p>
 
   <Widget no="2" caption="separation in six steps — from a law of change to P(t) = P₀·e^(kt)" widget="equationStep" config={sepCfg} />
+  <p>
+    <strong>What to notice:</strong> watch where the constant lives. After integrating, the +C
+    sits in the exponent; exponentiating turns it into a multiplier A; and the initial condition
+    in step 5 finally fixes A to the starting value P₀. Step 6 is the habit to steal: substitute
+    the answer back into the original equation and check the slope rule holds — verification is
+    cheap and catches every algebra slip.
+  </p>
 
   <p>
     The same recipe solves the <strong>half-life and doubling-time</strong> questions. With
@@ -88,6 +124,11 @@ const sepCfg = {
     0.693/0.010 ≈ 69 years, and after four half-lives (about 277 years) 1/16 of the sample
     remains. One equation, both stories — growth and decay are the same mathematics with
     opposite signs.
+  </p>
+  <p>
+    <strong>So far:</strong> separation turned one slope rule into the exponential family, and
+    the same family told both the doubling-time and the half-life story. Next, the equations
+    separation cannot touch — and the trick that solves them anyway.
   </p>
   <p>
     Newton's <strong>law of cooling</strong> is the next classic: dT/dt = −k(T − T_room),
@@ -150,6 +191,12 @@ const sepCfg = {
     cap the growth through damping, but the peak response at resonance can still be
     enormous.
   </p>
+  <p>
+    <strong>So far:</strong> Newton's second law pushed us to second order, where two initial
+    conditions select among sine-and-cosine families, and damping or driving splits the
+    behaviour into named regimes. Next: reading where a system ends up without solving
+    anything at all.
+  </p>
 
   <h2>Equilibrium and stability: reading equations without solving them</h2>
   <p>
@@ -165,6 +212,13 @@ const sepCfg = {
     the nonlinear-dynamics research literature, where most equations cannot be solved
     exactly but their equilibria can still be classified completely.
   </p>
+  <p><em>Common misconception:</em> "an equilibrium is a resting point, so the system always
+  settles there eventually." Equilibrium means only that the rate is zero <em>at</em> that value
+  — it says nothing about whether the system will stay. Stability is a separate question, read
+  off the phase line: for the logistic law, any nudge above P = 0 grows away (unstable), while
+  every deviation from pₘₐₓ is pulled back (stable). Two equilibria, one equation, opposite
+  characters — the arrows on the phase line, not the equilibria's location, carry that
+  information.</p>
 
   <h2>When symbols fail: Euler's method</h2>
   <p>
@@ -188,6 +242,45 @@ const sepCfg = {
     (the equation omits something — friction, delays, stochasticity), not integration error.
     Distinguishing the two — refining the solver versus refining the equation — is the
     central judgement call of computational science.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Recall: what is the difference between a general solution and a particular solution, and what role does the initial condition play?</li>
+    <li>Application: coffee sits at 90 °C in a 20 °C room, with cooling constant k = 0.07 per minute. How long until the excess temperature above the room falls to a quarter of its starting value?</li>
+    <li>Why does Euler's method systematically undershoot the true solution of y′ = y, and what does that reveal about the method's structure?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The general solution is the whole family of functions that
+    satisfies the equation, with undetermined constants; the particular solution is the one
+    member an initial condition selects — the law of change describes a family of futures, and
+    the present state chooses among them. (2) The excess decays exponentially: 70 times
+    e^(−0.07t) equals 17.5 exactly when e^(−0.07t) = 1/4, so t = ln 4 over 0.07, about 19.8
+    minutes — two half-lives of the excess. (3) Each Euler step
+    uses the slope at the <em>start</em> of the step, but for y′ = y the true slope keeps rising
+    across the step, so every step falls short and the shortfall compounds. Undershooting is
+    baked into sampling the slope once per step, which is why
+    Runge–Kutta schemes sample it several times.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A differential equation is a rule for the slope at every point; solving means finding the graph that obeys the rule everywhere.</li>
+    <li>Order is the highest derivative appearing; the general solution is a family, and initial conditions select the particular member.</li>
+    <li>Separation solves y-stuff times dy/dx equals x-stuff, and yields the exponential: growth and decay are one equation with opposite signs.</li>
+    <li>Linear, non-separable equations yield to the integrating factor; RC charging fills 63% of the way in one time constant.</li>
+    <li>Second-order equations carry two constants; damping splits solutions into under-, over- and critically damped regimes; resonance is drive frequency meeting natural frequency.</li>
+    <li>Equilibria classify as stable or unstable from the phase line's arrows, without solving anything.</li>
+    <li>Euler's method steps along the prescribed slope; model error is a different beast from integration error.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The advanced lesson <em>Integration</em> develops the other half of the toolkit this page
+    kept borrowing — integrating both sides, reversing the product rule. The advanced lesson
+    <em>Logic &amp; Proof Techniques</em> houses the existence-and-uniqueness questions raised
+    below: Picard's theorem is a proof, not a computation.
   </p>
 
   <h2>Going deeper</h2>

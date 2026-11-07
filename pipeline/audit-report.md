@@ -1,24 +1,8 @@
 # Lesson health audit — advanced tier
 
-119 lessons: Weak (<40): 43 · Needs work (40–79): 44 · Good (≥80): 32
+119 lessons: Weak (<40): 27 · Needs work (40–79): 44 · Good (≥80): 48
 
-## Weak (<40) (43)
-- ** 26** subjects/sociology/advanced/social-networks — 1908w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/sports-science/advanced/biomechanics — 1879w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/statistics/advanced/bayesian-statistics — 1916w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 27** subjects/computer-science/advanced/cybersecurity-threats-and-defences — 1945w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 27** subjects/computer-science/advanced/databases-and-sql — 1935w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 27** subjects/computer-science/advanced/graphs-and-dynamic-programming — 1969w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 27** subjects/journalism/advanced/media-law-and-ethics — 1973w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 27** subjects/physics/advanced/quantum-foundations — 1984w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 27** subjects/religious-studies/advanced/myth-ritual-symbol — 2000w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 32** subjects/agriculture/advanced/agroecology — 1861w, 2 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 2/3 (7)
-- ** 32** subjects/philosophy/advanced/phenomenology-and-existentialism — 1845w, 2 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 2/3 (7)
-- ** 33** subjects/design/advanced/design-systems — 1947w, 2 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 2/3 (7)
-- ** 33** subjects/finance/advanced/corporate-finance — 2123w, 2 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 2/3 (7)
-- ** 33** subjects/materials-science/advanced/heat-treatment — 2174w, 2 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 2/3 (7)
-- ** 33** subjects/math/advanced/differential-equations — 1974w, 2 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 2/3 (7)
-- ** 33** subjects/math/advanced/vectors-and-matrices — 2382w, 2 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 2/3 (7)
+## Weak (<40) (27)
 - ** 39** subjects/architecture/advanced/environmental-design-light-heat-air — 1914w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 39** subjects/architecture/advanced/structural-systems-arches-to-skyscrapers — 1861w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 39** subjects/architecture/advanced/urban-design-and-public-space — 1877w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
@@ -93,7 +77,8 @@
 - ** 40** subjects/statistics/advanced/non-parametric-methods — 2002w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 - ** 40** subjects/statistics/advanced/time-series-analysis — 1948w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 
-## Good (≥80) (32)
+## Good (≥80) (48)
+- ** 95** subjects/agriculture/advanced/agroecology — 2749w, 3 callouts, 2 widgets
 - ** 95** subjects/agriculture/advanced/precision-agriculture — 2737w, 3 callouts, 2 widgets
 - ** 95** subjects/anthropology/advanced/ethnographic-methods — 2749w, 3 callouts, 2 widgets
 - ** 95** subjects/astronomy/advanced/galaxies-and-the-expanding-universe — 2771w, 3 callouts, 2 widgets
@@ -102,27 +87,42 @@
 - ** 95** subjects/biology/advanced/population-genetics — 2790w, 3 callouts, 2 widgets
 - ** 95** subjects/chemistry/advanced/coordination-chemistry — 2763w, 3 callouts, 2 widgets
 - ** 95** subjects/chemistry/advanced/spectroscopy-and-structure — 2848w, 3 callouts, 2 widgets
+- ** 95** subjects/computer-science/advanced/cybersecurity-threats-and-defences — 2840w, 3 callouts, 2 widgets
+- ** 95** subjects/computer-science/advanced/databases-and-sql — 2831w, 3 callouts, 2 widgets
+- ** 95** subjects/computer-science/advanced/graphs-and-dynamic-programming — 2861w, 3 callouts, 2 widgets
 - ** 95** subjects/computer-science/advanced/networking-how-the-internet-works — 2781w, 3 callouts, 2 widgets
 - ** 95** subjects/computer-science/advanced/software-engineering-and-version-control — 2787w, 3 callouts, 2 widgets
+- ** 95** subjects/design/advanced/design-systems — 2763w, 3 callouts, 1 widgets
 - ** 95** subjects/earth-science/advanced/geochemical-cycles — 2819w, 3 callouts, 2 widgets
 - ** 95** subjects/earth-science/advanced/paleoclimate-and-ice-ages — 2824w, 3 callouts, 2 widgets
 - ** 95** subjects/engineering/advanced/materials-selection — 2842w, 3 callouts, 2 widgets
+- ** 95** subjects/finance/advanced/corporate-finance — 3030w, 3 callouts, 2 widgets
 - ** 95** subjects/finance/advanced/options-and-derivatives — 2770w, 3 callouts, 2 widgets
+- ** 95** subjects/journalism/advanced/media-law-and-ethics — 2867w, 3 callouts, 1 widgets
 - ** 95** subjects/languages/advanced/register-idiom-and-slang — 2701w, 3 callouts, 1 widgets
 - ** 95** subjects/law/advanced/contracts — 2762w, 3 callouts, 2 widgets
 - ** 95** subjects/law/advanced/property-law — 2763w, 3 callouts, 2 widgets
 - ** 95** subjects/linguistics/advanced/psycholinguistics-and-acquisition — 2713w, 3 callouts, 1 widgets
 - ** 95** subjects/linguistics/advanced/sociolinguistics — 2758w, 3 callouts, 1 widgets
 - ** 95** subjects/literature/advanced/modernism-and-postmodernism — 2706w, 3 callouts, 1 widgets
+- ** 95** subjects/materials-science/advanced/heat-treatment — 3067w, 3 callouts, 2 widgets
+- ** 95** subjects/math/advanced/differential-equations — 2876w, 3 callouts, 2 widgets
+- ** 95** subjects/math/advanced/vectors-and-matrices — 3315w, 3 callouts, 2 widgets
 - ** 95** subjects/medicine/advanced/cancer-biology-and-oncology — 2783w, 3 callouts, 2 widgets
 - ** 95** subjects/medicine/advanced/clinical-trials-and-evidence — 2716w, 3 callouts, 2 widgets
 - ** 95** subjects/neuroscience/advanced/brain-imaging-methods — 2790w, 3 callouts, 2 widgets
 - ** 95** subjects/neuroscience/advanced/memory-circuits — 2769w, 3 callouts, 2 widgets
 - ** 95** subjects/philosophy/advanced/language-and-meaning — 2809w, 3 callouts, 1 widgets
 - ** 95** subjects/philosophy/advanced/modal-logic — 2773w, 3 callouts, 2 widgets
+- ** 95** subjects/philosophy/advanced/phenomenology-and-existentialism — 2666w, 3 callouts, 1 widgets
 - ** 95** subjects/physics/advanced/fluid-dynamics — 2809w, 3 callouts, 2 widgets
+- ** 95** subjects/physics/advanced/quantum-foundations — 2893w, 3 callouts, 2 widgets
 - ** 95** subjects/physics/advanced/special-relativity — 2782w, 3 callouts, 2 widgets
 - ** 95** subjects/political-science/advanced/conflict-and-peace-studies — 2822w, 3 callouts, 2 widgets
 - ** 95** subjects/psychology/advanced/neuropsychology — 2813w, 3 callouts, 2 widgets
+- ** 95** subjects/religious-studies/advanced/myth-ritual-symbol — 2895w, 3 callouts, 1 widgets
 - ** 95** subjects/religious-studies/advanced/scripture-and-interpretation — 2838w, 3 callouts, 1 widgets
 - ** 95** subjects/sociology/advanced/globalisation-and-society — 2774w, 3 callouts, 2 widgets
+- ** 95** subjects/sociology/advanced/social-networks — 2742w, 3 callouts, 2 widgets
+- ** 95** subjects/sports-science/advanced/biomechanics — 2775w, 3 callouts, 1 widgets
+- ** 95** subjects/statistics/advanced/bayesian-statistics — 2806w, 3 callouts, 1 widgets

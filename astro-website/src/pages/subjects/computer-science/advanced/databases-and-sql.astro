@@ -46,6 +46,23 @@ const sqlQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/databases-and-sql">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced lesson in Computer Science. It assumes the intermediate lessons
+    <em>Data Files, Tables and JSON</em> — you have already stored records and felt why flat
+    files hurt — and <em>Programming Fundamentals</em>, plus the foundational <em>Growth of
+    Functions</em>, which is what the O(log n) index arithmetic below rests on. No SQL is
+    assumed; it is built here from the first sentence.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>design a typed schema with primary and foreign keys that enforces integrity at the door;</li>
+    <li>recognise the three anomalies that justify normalisation, and normalise a spreadsheet into 3NF tables;</li>
+    <li>read and write the SQL workhorse — JOIN, GROUP BY, HAVING — including the LEFT JOIN and NULL traps;</li>
+    <li>predict when an index helps and when it taxes, using selectivity rather than folklore;</li>
+    <li>explain each ACID property from the bank-transfer example, and state which mechanism delivers it.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Every serious application — banking, booking, medical records — sits on a <strong>relational
@@ -58,6 +75,13 @@ const sqlQuiz = {
   </p>
 
   <Widget no="1" caption="the five SQL sentences that cover 90% of real work" widget="equationStep" config={sqlCfg} />
+  <p>
+    <strong>What to notice:</strong> the five panels climb from sentence to guarantee — pick
+    columns, filter rows, stitch tables, aggregate, then ACID. Watch the third panel in
+    particular: the join is only clean because the schema keeps each fact in one place, which
+    is the design half of the lesson. The fifth panel is not a query at all; it is the promise
+    that makes the other four safe to run on live money.
+  </p>
 
   <h2>Tables, types and keys: integrity by construction</h2>
   <p>
@@ -89,6 +113,20 @@ const sqlQuiz = {
     target is 3NF. The cost is paid at query time: the "who bought what" view now requires JOINs. The
     mature position: normalise by default, denormalise <em>deliberately</em> for measured performance,
     accepting the staleness risk with eyes open.
+  </p>
+  <p><em>Common misconception:</em> "one big table is simpler — splitting data across four
+  tables and joining them is ceremony for its own sake." It seems reasonable because the
+  spreadsheet reads fine and joins look like extra work. But the anomalies are not theoretical:
+  the tutor's room changes and 400 rows need editing, a student with no courses cannot exist
+  at all, and cancelling a last enrolment erases the student from the records. The correct
+  picture: normalisation stores each fact once so the table cannot disagree with itself, and
+  the join you pay at query time is cheap and automatic — a small, predictable price for
+  eliminating a whole class of silent corruption.</p>
+  <p>
+    <strong>So far:</strong> tables, types and keys refuse bad data at the door, and the three
+    anomalies show what happens when one fact lives in many rows. Next, the language that
+    reassembles those split facts into any view you need — declaratively, so the engine
+    chooses the how.
   </p>
 
   <h2>SQL and joins: reassembling the view</h2>
@@ -142,6 +180,19 @@ const sqlQuiz = {
     anomaly risk for concurrency; modern engines deliver it with locking or MVCC (multi-version concurrency
     control — readers never block writers), which is why one busy PostgreSQL database can serve thousands
     of simultaneous sessions honestly.
+  </p>
+  <p><em>Common misconception:</em> "the application can tidy up after a crash — check the
+  balance afterwards and repair any half-finished transfer." It seems reasonable because
+  applications do handle errors with try/catch all the time. But a power cut is not a catchable
+  error: the repair code never runs, because the process is gone. The correct picture is
+  atomicity delivered by machinery below the application — the write-ahead log records intent
+  before data pages change, so a restarting database replays or rolls back the half-transaction
+  on its own; the money either moved or did not, and no application code was consulted.</p>
+  <p>
+    <strong>So far:</strong> transactions wrap the reads and writes in four guarantees —
+    atomicity, consistency, isolation, durability — so concurrent sessions and crashes cannot
+    corrupt the books. Next, the design method applied end to end: turning a real spreadsheet
+    into a schema that makes those guarantees worth having.
   </p>
 
   <h2>A worked migration: from spreadsheet to schema</h2>
@@ -210,6 +261,40 @@ const sqlQuiz = {
     a well-typed table is an application that partly enforces its own correctness.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Name the three anomalies of an unnormalised orders table, and the design principle that cures all three.</li>
+    <li>A transfer debits account A by 100 and credits account B by 100, and the server loses power after the first write. Which ACID properties save the money, and through what mechanism?</li>
+    <li>You add an index on a status column with 6 distinct values across millions of rows. Why might range queries barely improve while every insert gets slower?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Update, insert and delete anomalies; the cure is "one fact,
+    one place" — normalise into tables where each entity and relationship is stored once, and
+    JOIN to reassemble views. (2) Atomicity makes the two writes one unit (both or neither),
+    durability commits them to the write-ahead log so the restarting database replays or rolls
+    back the half-transaction; isolation and consistency are about concurrency and constraints,
+    not this crash. (3) Selectivity: each index entry still points at roughly one sixth of the
+    table, so the plan barely improves — while every INSERT and UPDATE must now maintain the
+    index too. Selectivity (cardinality), not index presence, is the design variable.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The update, insert and delete anomalies justify normalisation: one fact, one place.</li>
+    <li>SQL is declarative: JOIN, GROUP BY and HAVING state the what; the engine chooses the how.</li>
+    <li>LEFT JOIN keeps non-matches, and NULL compares unknown — two classic result-shaping traps.</li>
+    <li>Indexes are a read/write arbitrage priced by selectivity; measure with EXPLAIN, not folklore.</li>
+    <li>ACID turns multi-step changes into all-or-nothing units that survive crashes and concurrency.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    <em>Data Structures</em> is the direct sequel — the B-trees and logs the engine runs on —
+    while <em>Cybersecurity: Threats and Defences</em> shows what happens when data crosses the
+    code boundary unguarded.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Inside the query planner.</strong> A database does not run your SQL; it optimises it. The
@@ -228,7 +313,13 @@ const sqlQuiz = {
     SQL — fifty years of challengers have so far only enriched it.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data for Large Shared Data Banks" (1970); Chamberlin &amp; Boyce (1974); PostgreSQL documentation; Silberschatz, Korth &amp; Sudarshan, <em>Database System Concepts</em>.</p>
+  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data for Large Shared Data Banks" (1970); Chamberlin &amp; Boyce (1974); PostgreSQL documentation; Silberschatz, Korth &amp; Sudarshan, <em>Database System Concepts</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: anomalies, ACID in a crash, and index selectivity" widget="quiz" config={sqlQuiz} />
+  <p>
+    <strong>What to notice:</strong> each question runs the lesson's design variables against a
+    real situation — a fact stored twice, a crash between two writes, a low-selectivity index.
+    If you miss one, read the explanation before moving on: the wrong options are the answers
+    that sound right in a spreadsheet worldview.
+  </p>
 </TopicPage>

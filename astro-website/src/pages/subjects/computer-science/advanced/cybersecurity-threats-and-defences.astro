@@ -51,6 +51,23 @@ const secQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/cybersecurity-threats-and-defences">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced lesson in Computer Science. It assumes the intermediate lessons
+    <em>Programming Fundamentals</em> and <em>Data Files, Tables and JSON</em> — you can read a
+    program and know where user input enters it — and the expert lesson <em>Cryptography</em>,
+    which supplied the primitives this chapter wires together. Foundational <em>Binary and
+    Bits</em> underlies every hash and key you will meet.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>threat-model a small system: assets, adversaries, attack surface, and a ranked backlog of controls;</li>
+    <li>trace an SQL injection end to end and name the structural fix, not the patch;</li>
+    <li>design password storage with salts and slow key-derivation, and say why MFA defeats whole attack classes;</li>
+    <li>map each attack in the catalogue — phishing, ransomware, DoS, supply-chain — to its matched defence;</li>
+    <li>re-run a realistic breach with the controls in place and show which links of the chain each one cuts.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Cybersecurity is <strong>asymmetric by construction</strong>: the attacker needs one weakness, once;
@@ -63,6 +80,12 @@ const secQuiz = {
   </p>
 
   <Widget no="1" caption="the five moves of a defensible system" widget="equationStep" config={secCfg} />
+  <p>
+    <strong>What to notice:</strong> the five panels are a process, in order — you cannot
+    threat-model paths before naming assets, and layering defences is wasted without knowing
+    the inputs to distrust. Watch how the last panel upends the first four: the human layer
+    is where most chains start, so training and MFA count as technical controls.
+  </p>
 
   <h2>Threat modelling: thinking like the attacker, first</h2>
   <p>
@@ -78,6 +101,14 @@ const secQuiz = {
     (confidentiality, integrity, availability) keeps the priorities honest: a "secure" system that is down,
     or that silently corrupts its data, has failed two of three.
   </p>
+  <p><em>Common misconception:</em> "security is a product you can buy — a firewall or antivirus
+  box makes us secure." It seems reasonable because that is exactly how the products are
+  marketed, and a wall is an intuitive metaphor. But the lesson's premise is that the attack is
+  asymmetric: the attacker needs one weakness, once, on systems that keep changing — so no
+  single device can close every door forever. The correct picture: security is a process
+  (inventory, threat-model, harden, monitor, rehearse, repeat), and the product is merely one
+  layer inside it; a threat model would have to tell you the firewall's own ports are part of
+  the attack surface.</p>
 
   <h2>Injection: the boundary discipline</h2>
   <p>
@@ -116,6 +147,12 @@ const secQuiz = {
   compromised box. Kerckhoffs's principle (assume the attacker knows the system; secrecy lives only in
   the key) generalises: assume the attacker knows your design, your framework and your stack overflow
   answers, too.</p>
+  <p>
+    <strong>So far:</strong> threat modelling turns vague fear into a ranked backlog, and the
+    injection family shows the oldest boundary discipline — keep data out of the code path.
+    Next, the credentials that unlock everything else: what to store, what never to store,
+    and the one control that rescues you when storage leaks anyway.
+  </p>
 
   <h2>The attack catalogue — and the matched defences</h2>
   <p>
@@ -135,6 +172,12 @@ const secQuiz = {
     the canonical case) — countered by dependency pinning, signed builds and reproducible builds.
     Throughout, the defender's superpower is <strong>least privilege</strong>: no human or service account
     holds more access than its job needs, so any single compromise stays small.
+  </p>
+  <p>
+    <strong>So far:</strong> every attack in the catalogue has a matched, mostly boring defence —
+    patching for ransomware, rate limiting for floods, dependency pinning for the supply chain —
+    and least privilege shrinks the blast radius of whatever gets through. Next, why these
+    defences must be layered rather than chosen, and what the system does on the day one fails.
   </p>
 
   <h2>Defence in depth, and what happens after</h2>
@@ -171,6 +214,13 @@ const secQuiz = {
     as a mechanism rather than a slogan, and it is why the boring controls (patching, MFA, backups,
     least privilege) dominate every serious breach report's recommendations.
   </p>
+  <p><em>Common misconception:</em> "one strong control is enough — with MFA (or a firewall), we
+  are secure." Some controls really are outstanding: MFA defeats whole attack classes cheaply.
+  But the breach anatomy shows why no single control ends the story: in the incident walked
+  above, MFA blocks step two outright, yet a chain that started elsewhere — an unphished
+  colleague, an over-privileged VPN account, reachable backups — still lands the ransomware.
+  The correct picture is the lesson's stated mechanism: no single control stops the chain, the
+  defences cut its links, and each layer exists because every other layer fails sometimes.</p>
 
   <h2>When cryptography is the weak point: a misuse catalogue</h2>
   <p>
@@ -211,6 +261,41 @@ const secQuiz = {
     they are unmodelled.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Name the three questions threat modelling answers before any control is chosen, and say what its output is.</li>
+    <li>A login builds its SQL by string concatenation. Walk through what the input ' OR '1'='1 does, and give the structural fix.</li>
+    <li>Why is an unsalted, fast-hash password store catastrophic after a leak even though hashing is one-way?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The assets (what actually hurts if stolen, altered or
+    lost), the adversaries and what they want, and the attack surface — the output is a
+    ranked backlog of doors and windows. (2) The input crosses the data/code boundary and
+    makes the name clause always true, logging the attacker in; the structural fix is a
+    parameterised query. (3) One-way is not unguessable: a fast hash lets a GPU check billions
+    of candidates per second, and without per-user salts one precomputed table cracks every
+    identical password at once — slow, salted, memory-hard functions price each guess in
+    milliseconds, and MFA covers the leak you did not prevent.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Security is asymmetric by construction — a process, not a product you can buy once.</li>
+    <li>Injection is confusion of data with code; parameterised queries and output escaping close the class structurally.</li>
+    <li>Store salted, slow, memory-hard hashes; MFA means a stolen password alone is not identity.</li>
+    <li>Every attack has a matched boring defence — fast patching, offline tested backups, least privilege.</li>
+    <li>No single control stops a breach chain; layered defences cut its links, and detection shrinks dwell time.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    Two sibling lessons connect directly: <em>Databases and SQL</em> goes deeper into the query
+    language that injection abuses, and <em>Networking: How the Internet Works</em> maps the
+    paths your threat model must cover. The expert lesson <em>Cryptography</em> opens the
+    mathematics this lesson treats as a black box.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>The economics explain most of the field.</strong> Attackers optimise effort per victim, so
@@ -231,7 +316,13 @@ const secQuiz = {
     input, layer your defences, and rehearse the day one of them fails.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> OWASP Top 10; NIST Cybersecurity Framework; Verizon Data Breach Investigations Report; Kerckhoffs (1883); CISA guidance on MFA and patching.</p>
+  <p class="sources"><strong>Sources:</strong> OWASP Top 10; NIST Cybersecurity Framework; Verizon Data Breach Investigations Report; Kerckhoffs (1883); CISA guidance on MFA and patching. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: injection, hashes and the stolen-password problem" widget="quiz" config={secQuiz} />
+  <p>
+    <strong>What to notice:</strong> the questions re-run the lesson's core diagnosis — where
+    data became code, why one-way is not unguessable, and what a stolen password alone can buy
+    an attacker. If you miss one, read the explanation before moving on: each wrong option is
+    a plausible misreading, not a joke.
+  </p>
 </TopicPage>

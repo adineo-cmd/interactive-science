@@ -12,6 +12,23 @@ const bayesCfg = {
 };
 ---
 <TopicPage slug="subjects/statistics/advanced/bayesian-statistics">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced lesson in Statistics. It assumes the foundational lessons <em>Describing
+    Data</em> and <em>Probability</em> — notation, conditional probability and tree diagrams —
+    and the intermediate lesson <em>Hypothesis Testing</em>, whose classical logic this chapter
+    holds up against the Bayesian alternative. Everything here is that probability grammar read
+    in reverse.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>state Bayes' theorem, derive it from the multiplication rule, and name prior, likelihood, posterior and evidence;</li>
+    <li>compute the medical-test trap with concrete numbers and explain why base rates dominate rare-event reasoning;</li>
+    <li>run a Bayesian update with a uniform and an informative prior, and predict how each behaves as data grows;</li>
+    <li>diagnose the prosecutor's fallacy as a likelihood-versus-posterior confusion;</li>
+    <li>explain how a loss function turns a posterior into a decision.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Bayesian statistics treats probability as <strong>degrees of belief that update with
@@ -25,6 +42,13 @@ const bayesCfg = {
   </p>
 
   <Widget no="1" caption="the theorem, the update loop, and the medical-test trap that saves lives to understand" widget="equationStep" config={bayesCfg} />
+  <p>
+    <strong>What to notice:</strong> step through the four panels in order — the theorem, the
+    update loop, then two places it runs in the wild. Watch the third panel especially: it is
+    the one where intuition and arithmetic disagree, and the disagreement is entirely a base
+    rate. The fourth panel shows the same loop running billions of times a second without
+    anybody calling it statistics.
+  </p>
 
   <h2>Probability notation and the rules of combination</h2>
   <p>
@@ -42,6 +66,20 @@ const bayesCfg = {
     (4/52) × (3/51) ≈ 0.0045. Every real gambler's fallacy is a violation of one of these rules
     — usually treating dependent events as independent.
   </p>
+  <p><em>Common misconception:</em> "after a run of heads, tails is due." It seems reasonable
+  because fairness feels like a promise of balance, and in the long run the frequencies do even
+  out. But coin flips are independent — P(A ∩ B) = P(A) × P(B) — so the coin has no memory and
+  the sixth flip is still ½; the long-run 50/50 emerges from many flips, not from any
+  self-correction. Contrast the one place "due" reasoning does work: the lesson's ace example —
+  draw without replacement and the deck's composition genuinely changes, making the second ace
+  less likely. Cards remember; coins do not.</p>
+  <p>
+    <strong>So far:</strong> the grammar is in place — complements, the addition rule,
+    independence, and above all conditional probability, which is asymmetric by nature. Next,
+    one line of algebra turns that grammar around, and the turnaround is the whole subject.
+  </p>
+
+  <h2>Bayes' theorem, derived rather than announced</h2>
   <p>
     The hinge of the whole subject is <strong>conditional probability</strong>: P(A|B) =
     P(A ∩ B) / P(B) — of the world where B happened, the fraction where A also happens. It is
@@ -70,6 +108,12 @@ const bayesCfg = {
     hypotheses). The theorem is nothing more than the multiplication rule read backwards — but
     that backwards reading is exactly the step human intuition refuses to take unaided, which
     is why the theorem has a name and a anniversary.
+  </p>
+  <p>
+    <strong>So far:</strong> Bayes' theorem is not a new rule but the multiplication rule read
+    backwards, converting "how strongly does the hypothesis predict the evidence" into "how
+    believable is the hypothesis given the evidence". Next, the trap that shows why that
+    reversal needs the prior — with a million people to make it undeniable.
   </p>
 
   <h2>The medical test trap, with numbers</h2>
@@ -142,6 +186,15 @@ const bayesCfg = {
     the prior odds, and the jury's job is the prior — precisely because this fallacy has
     contributed to real wrongful convictions. Same mathematics, higher stakes.
   </p>
+  <p><em>Common misconception:</em> "a one-in-a-million DNA match means the chance the defendant
+  is innocent is one in a million." It seems reasonable because the number is real and the
+  wording sounds interchangeable. But the 1-in-a-million is the <em>likelihood</em> — the
+  probability of the match given a random innocent person — while innocence given the match is
+  a <em>posterior</em>, which needs a prior. The correct picture: in a country of 60 million,
+  about 60 people are expected to share the profile, so with no other evidence the probability
+  of guilt given the match is roughly 1.7% — posterior odds = prior odds × the likelihood
+  ratio, exactly as in the medical test trap. Swapping the conditioning direction is the same
+  error intuition makes with the test, at liberty's price.</p>
 
   <h2>Decision theory: what the posterior is <em>for</em></h2>
   <p>
@@ -159,6 +212,41 @@ const bayesCfg = {
     likelihood-ratio transform of one) against a decision threshold, and setting that threshold
     is an explicit trade between false alarms and misses — a trade the mathematics cannot make
     for you, because it requires valuing outcomes, not just believing hypotheses.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Write Bayes' theorem from memory and name the role each term plays in the hypothesis reading.</li>
+    <li>In the medical-test scenario, one positive result leaves the odds of illness at about 1 : 101. A second independent positive result arrives. Compute the new odds and the posterior probability of illness.</li>
+    <li>Why does the prosecutor's fallacy feel so convincing even to intelligent jurors — and what single step of the theorem does it skip?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) P(A|B) = P(B|A)·P(A)/P(B): posterior = likelihood × prior,
+    divided by the total probability of the evidence — the normalising constant ensures
+    probabilities sum to one. (2) Posterior odds = prior odds × 99: 1 : 101 becomes roughly
+    1 : 1.02, a probability of about 49.5% — sequential updating is exactly why repeat testing
+    is the cure for the base-rate trap. (3) Because the likelihood really is 1 in a million and
+    the number sounds like it answers the question being asked; the skipped step is the prior —
+    the probability the guilty party was this person at all — which in a large population
+    produces dozens of matching innocents before any other evidence is counted.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Bayes' theorem is conditional probability read backwards: posterior = likelihood × prior ÷ evidence.</li>
+    <li>Base rates dominate rare-event reasoning: on a 99%-accurate test for a 1-in-10,000 disease, a positive still means probably healthy.</li>
+    <li>Sequential updating is the engine: each posterior becomes the next prior (0.98% → 49.5% → 99%).</li>
+    <li>Priors are stated knowledge, not contamination; their influence fades as data accumulates — and sensitivity analysis exposes them to attack.</li>
+    <li>The prosecutor's fallacy swaps likelihood for posterior; the jury's job is the prior.</li>
+    <li>A posterior becomes an action through a loss function — different losses rationally flip the decision on identical evidence.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The natural next step in this subject is <em>Experimental Design</em> — where the evidence
+    you will feed into an update is gathered so that the likelihood can be trusted. The
+    non-parametric and time-series lessons complete the advanced ladder from the other side.
   </p>
 
   <h2>Going deeper</h2>
@@ -194,5 +282,5 @@ const bayesCfg = {
     people sick.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Bayes (1763); Laplace, Théorie analytique des probabilités; McElreath, Statistical Rethinking; Gelman et al., Bayesian Data Analysis.</p>
+  <p class="sources"><strong>Sources:</strong> Bayes (1763); Laplace, Théorie analytique des probabilités; McElreath, Statistical Rethinking; Gelman et al., Bayesian Data Analysis. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
