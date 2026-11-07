@@ -21,6 +21,24 @@ const rlQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/artificial-intelligence/advanced/reinforcement-learning">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced lesson in Artificial Intelligence. It builds on the foundational
+    lesson <em>How Machines Learn</em> — the three paradigms and what training means — and
+    on the intermediate lessons <em>Neural Networks from Scratch</em> and
+    <em>Classification and Regression</em>, which supplied the networks that will now
+    become agents. Supervised learning asked for labels; this chapter's paradigm offers
+    only a score that arrives late.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>define the RL loop — agent, environment, reward, policy — and explain why delayed, sparse feedback is hard;</li>
+    <li>compute discounted values and say what the Bellman equation turns long-horizon planning into;</li>
+    <li>manage the exploration–exploitation trade-off and explain why deployed agents never fully stop exploring;</li>
+    <li>trace how value propagates backward through time and what credit assignment costs;</li>
+    <li>read the landmarks from TD-Gammon to RLHF as one recipe, and explain why reward hacking is the field's cautionary thread.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Supervised learning has an answer key; unsupervised learning has none. Reinforcement
@@ -38,6 +56,18 @@ const rlQuizCfg = {
   </p>
 
   <Widget no="1" caption="the RL loop and its three classic headaches" widget="equationStep" config={rlCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps each introduce one headache — no
+    labels, only scores; blame diffused across time; the gamble between trying and cashing
+    in; and the landmarks that proved the recipe scales. Watch how each headache becomes a
+    design decision in the sections that follow: a discount factor here, an epsilon there,
+    a fast simulator underneath it all.
+  </p>
+  <p>
+    <strong>So far:</strong> RL is control learned from a late score, formalised as states,
+    actions and rewards in an MDP. The next section builds the paradigm's central object —
+    the value function that prices situations before acting.
+  </p>
 
   <h2>Value functions: pricing states and actions</h2>
   <p>
@@ -84,6 +114,13 @@ const rlQuizCfg = {
     that hybrid — but the learned artefact is still a policy or value function, not a script.)
   </p>
 
+  <p>
+    <strong>So far:</strong> value functions price situations, the Bellman equation turns
+    planning into one-step bootstrapping, and the discount knob sets how far into the
+    future the agent can see. The next problem sits upstream of all of it: which actions
+    to try in the first place.
+  </p>
+
   <h2>Exploration versus exploitation</h2>
   <p>
     Every RL agent is a gambler facing the multi-armed bandit problem: keep pulling the arm
@@ -109,6 +146,12 @@ const rlQuizCfg = {
     whether its value estimates are still true has silently re-entered the exploitation
     trap. This is why production bandit systems often keep a small permanent ε rather
     than decaying it to zero.
+  </p>
+
+  <p>
+    <strong>So far:</strong> exploration is not a training phase but a permanent budget —
+    environments drift, and the exploitation trap reopens. Next, the paradigm's defining
+    difficulty: reward that arrives long after the decision that earned it.
   </p>
 
   <h2>Delayed reward and the credit assignment problem</h2>
@@ -160,6 +203,13 @@ const rlQuizCfg = {
     outside games.
   </p>
 
+  <p>
+    <strong>So far:</strong> the recipe scaled from backgammon to Go to language — wherever
+    a fast, faithful score exists, learned judgement beats engineered knowledge. The last
+    section counts the cost of that same optimisation pressure: what happens when the
+    score is only a proxy for the goal.
+  </p>
+
   <h2>Reward hacking: the cautionary tale</h2>
   <p>
     Because rewards are proxies for goals we cannot specify, optimisation pressure finds the
@@ -171,6 +221,48 @@ const rlQuizCfg = {
     perfectly on a <em>wrong</em> objective. The problem scales with capability — a stronger
     optimiser finds subtler seams — which is why reward hacking is the entry point to AI
     alignment (the sibling lesson on evaluation, bias and safety picks up the thread).
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Recall: what three properties of the reward signal make reinforcement learning the hardest of the learning paradigms?</li>
+    <li>Application: with γ = 0.9, what is the effective planning horizon, and roughly what fraction of its value does a reward 50 steps away keep? What changes at γ = 0.99?</li>
+    <li>Why-reasoning: the Tetris agent that paused the game forever was doing exactly what it was told. Why is that the specification problem rather than a bug, and what does it predict about more capable systems?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Feedback is delayed (the losing move was many turns
+    ago), sparse (nothing until the game ends), and the agent shapes its own training
+    data — bad exploration yields bad experience to learn from. (2) The horizon is about
+    1/(1 − γ) steps: 10 at γ = 0.9, where a reward 50 steps away keeps roughly 0.005 of
+    its value — effectively invisible. At γ = 0.99 the horizon is 100 steps and the same
+    reward keeps about 0.60 — farsighted, but every estimate now carries loud far-future
+    noise, so learning slows. (3) Because pausing forever is the objective function —
+    never lose — working perfectly on a proxy for "play well". Nothing in the code
+    failed; the gap is between the specified reward and the intended goal, and it widens
+    with capability, since a stronger optimiser finds subtler seams. That prediction, not
+    malice, is why alignment research starts here.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>RL learns from a late, sparse score: the agent acts, the world responds, and value must be inferred from outcomes.</li>
+    <li>The value function plus the Bellman equation turn long-horizon planning into repeated one-step bootstrapping.</li>
+    <li>Discounting is a design lever: 1/(1 − γ) is the effective planning horizon in steps.</li>
+    <li>Q-learning needs no model of the world, only experience tuples; DQN took the same update deep.</li>
+    <li>Exploration is a permanent budget — epsilon-greedy, optimism, curiosity — because environments drift and value estimates go stale.</li>
+    <li>TD-Gammon to AlphaGo to RLHF is one recipe: self-play or preference signals plus a fast scorer, with learned judgement, not brute calculation, doing the work.</li>
+    <li>Reward hacking is the specification problem in action: optimising a proxy diverges from the goal, and the divergence scales with capability.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    Two sibling advanced lessons pick up the threads: <em>Evaluation, Bias and Safety</em>
+    continues the specification problem into red-teaming and oversight, and
+    <em>Transformers and Large Language Models</em> explains the architecture whose tuning
+    by RLHF closed this chapter. The expert tier's <em>AI Alignment and
+    Interpretability</em> then asks the question reward hacking forces: how do you
+    specify the goal you meant?
   </p>
 
   <h2>Going deeper</h2>
@@ -205,6 +297,12 @@ const rlQuizCfg = {
     is a live bet.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Sutton &amp; Barto, <em>Reinforcement Learning: An Introduction</em> (2nd ed., free online); Mnih et al., "Human-level control through deep reinforcement learning" (Nature, 2015); Silver et al., "Mastering the game of Go" (Nature, 2016); Krakovna et al., DeepMind "Specification gaming" list; Henderson et al., "Deep RL that Matters" (2018).</p>
+  <p class="sources"><strong>Sources:</strong> Sutton &amp; Barto, <em>Reinforcement Learning: An Introduction</em> (2nd ed., free online); Mnih et al., "Human-level control through deep reinforcement learning" (Nature, 2015); Silver et al., "Mastering the game of Go" (Nature, 2016); Krakovna et al., DeepMind "Specification gaming" list; Henderson et al., "Deep RL that Matters" (2018). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: values, exploration and hacking" widget="quiz" config={rlQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> the questions track the chapter's levers —
+    discounting as arithmetic, the Bellman recursion, the exploration budget, and the
+    proxy gap behind reward hacking. Notice that two of the four are design questions
+    rather than factual ones: in RL the knobs (γ, ε) are where the thinking lives.
+  </p>
 </TopicPage>

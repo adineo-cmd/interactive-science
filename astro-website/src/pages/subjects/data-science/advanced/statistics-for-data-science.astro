@@ -21,6 +21,25 @@ const statQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/data-science/advanced/statistics-for-data-science">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Data Science lesson. It assumes the foundational <em>From Data to
+    Decisions</em> — dataset, question, claim — and the intermediate rungs where you learned
+    to prepare, query and look at data: <em>Cleaning Messy Data</em>, <em>SQL for
+    Analysts</em>, <em>Exploratory Data Analysis</em> and <em>Charts That Tell the
+    Truth</em>. This chapter adds the inference layer the working analyst needs on top of
+    all that: how much an estimate wobbles, whether a difference is real or luck, and which
+    of two groups is better.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>derive the mean and median from the loss functions they minimise, and choose between them by the shape of the data;</li>
+    <li>attach a standard error and a confidence interval to a proportion, and explain the square-root-of-n cost of precision;</li>
+    <li>bootstrap an interval for statistics with no closed-form formula;</li>
+    <li>define a p-value correctly — and simulate one rather than memorise a formula;</li>
+    <li>compare two groups with a permutation test and recognise Simpson's paradox before it ambushes an aggregate.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Data science runs on statistics whether or not it admits it. A machine-learning model is
@@ -35,6 +54,14 @@ const statQuizCfg = {
   </p>
 
   <Widget no="1" caption="the four statistical habits of effective data scientists" widget="equationStep" config={statCfg} />
+  <p>
+    <strong>What to notice:</strong> the four habits form a working order, not a syllabus —
+    every estimate wears an interval, the bootstrap covers the statistics no formula
+    reaches, the three workhorses divide the daily questions between them, and effect size
+    is reported before significance. Read the notes as a checklist for any number you are
+    about to put on a slide: each step catches a different way of quoting noise with
+    confidence.
+  </p>
 
   <h2>Why the mean matters — and when it lies</h2>
   <p>
@@ -69,6 +96,8 @@ const statQuizCfg = {
     between them is itself information about skew.
   </p>
 
+  <p><strong>So far:</strong> the mean earns its job by minimising squared deviations and the median by absolute ones — choose the loss, and the centre chooses itself — while spread is the other half of every summary. The next step is the first professional reflex: no point estimate leaves the room without its uncertainty.</p>
+
   <h2>Estimation: point estimates, standard errors and the bootstrap</h2>
   <p>
     Every metric on a dashboard is an estimate from a sample, and the first professional
@@ -100,6 +129,8 @@ const statQuizCfg = {
     you have committed to a prior, which is a modelling decision, not a free lunch.)
   </p>
 
+  <p><strong>So far:</strong> every dashboard number is a sample statistic, the standard error prices its wobble, and the bootstrap manufactures intervals where no closed form exists. The question changes next: not how big is the estimate, but could luck alone have produced it?</p>
+
   <h2>Testing hypotheses: the null, the statistic, the p-value</h2>
   <p>
     Hypothesis testing is a court procedure for data. The <strong>null hypothesis</strong> is
@@ -124,6 +155,8 @@ const statQuizCfg = {
     significance is not evidence of absence — a wide interval containing zero may merely mean
     the experiment was too small to see the effect you care about.
   </p>
+
+  <p><strong>So far:</strong> the p-value measures how surprising the data would be if nothing had changed — and it keeps that meaning only when the threshold and the analysis are fixed before looking. Applied to two groups at once, the same logic gets sharper and grows a famous trap.</p>
 
   <h2>Comparing two samples: A/B logic and the permutation test</h2>
   <p>
@@ -168,6 +201,47 @@ const statQuizCfg = {
     the design side in full.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A dataset of waiting times reads 1, 2, 3, 4 and 90 minutes. Which centre would you report, and what does the gap between mean and median tell you?</li>
+    <li>A conversion rate of 3.2% is measured on 400 users. Give the interval, and explain why quoting "3.2%" alone is malpractice.</li>
+    <li>In the kidney-stone study, treatment A beat treatment B in both size subgroups yet lost in the aggregate. What does that prove about aggregates, and which design flaw made it possible?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The median: 3 minutes, against a mean of 20 that no
+    customer actually experienced. The gap signals heavy right skew — report both, and the
+    distance between them is a direct read of the tail's weight. (2) The standard error is
+    about 0.88 points, so the 95% interval runs roughly from 1.5% to 4.9% — a band nearly
+    three points wide on a metric quoted to a tenth of a point; and halving that interval
+    would take 1,600 users, not 400, because precision improves with the square root of n.
+    (3) Aggregation is a modelling choice that can reverse a conclusion. Non-random
+    assignment sent the hardest cases to open surgery, so the pooled comparison was
+    confounded — and no arithmetic on the aggregated table repairs the confounding. Only
+    the design does, which is why the sibling lesson on A/B testing works the experimental
+    side in full.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The mean minimises squared error, the median absolute error — choose the loss, and the centre chooses itself.</li>
+    <li>Every estimate needs its standard error; precision scales with the square root of n.</li>
+    <li>The bootstrap turns uncertainty into a loop: resample with replacement, recompute, read the percentiles.</li>
+    <li>A p-value is the surprise level of the data under the null — nothing more, nothing less.</li>
+    <li>Fix thresholds and analyses before looking; twenty tests at 0.05 hand you a false winner about 64% of the time.</li>
+    <li>Report percentiles alongside means for skewed data — the tail is where the incidents live.</li>
+    <li>Statistics never assigns cause; only design — random assignment — does.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling advanced lessons put this machinery to work: <em>A/B Testing</em> is the
+    experimental-design side of two-sample comparison, <em>Dashboards &amp; Data
+    Storytelling</em> is where intervals and percentiles must survive a five-second read,
+    and <em>Machine Learning Basics</em> scales regression and classification — the same
+    least-squares core this chapter attached to the mean.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Why the central limit theorem lets all this work.</strong> The CLT says the
@@ -202,6 +276,13 @@ const statQuizCfg = {
     it at scale is the live research frontier.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Wasserman, <em>All of Statistics</em>; Efron &amp; Hastie, <em>Computer Age Statistical Inference</em>; Adhikari, DeNero &amp; Wagner, <em>Computational and Inferential Thinking</em> (Data 8); Efron &amp; Tibshirani, <em>An Introduction to the Bootstrap</em>; the statistics ladder of this atlas.</p>
+  <p class="sources"><strong>Sources:</strong> Wasserman, <em>All of Statistics</em>; Efron &amp; Hastie, <em>Computer Age Statistical Inference</em>; Adhikari, DeNero &amp; Wagner, <em>Computational and Inferential Thinking</em> (Data 8); Efron &amp; Tibshirani, <em>An Introduction to the Bootstrap</em>; the statistics ladder of this atlas. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: intervals, means and p-values" widget="quiz" config={statQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> the four answers share one theme — precision about what
+    a statistical statement actually claims. An interval is a procedure, the mean is a
+    least-squares centre, a p-value is conditional on the null, and the bootstrap is the
+    sample standing in for the population. Each wrong choice is the statement people wish
+    the statistic made; the right ones are what it actually says.
+  </p>
 </TopicPage>

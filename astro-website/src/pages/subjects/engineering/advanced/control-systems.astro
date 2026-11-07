@@ -21,6 +21,25 @@ const controlQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/engineering/advanced/control-systems">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Engineering lesson. It assumes the foundational <em>Statics: Why
+    Structures Stand</em> — forces, equilibrium, and the habit of checking every stage of a
+    calculation — and the intermediate rungs that feed a control loop: <em>Units, Estimates
+    &amp; Back-of-Envelope</em>, <em>Thermodynamics for Engineers</em> (the thermal inertia
+    every oven loop fights), <em>Forces, Beams &amp; Bridges</em> and <em>Fluid
+    Mechanics</em>. Here the static world starts to move: systems that hold a target while
+    the world pushes back, by measuring themselves and correcting.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>specify a sensor as an instrument — accuracy versus precision, resolution, hysteresis, and the response time that governs loop stability;</li>
+    <li>design the signal chain from millivolts to digits: amplify, filter against aliasing, convert at full span;</li>
+    <li>read and write ladder logic, including the start/stop seal-in circuit and fail-safe interlocks;</li>
+    <li>tune a PID loop and explain what each term contributes, including integral windup and its clamp;</li>
+    <li>explain why gain through lag oscillates, and what gain and phase margins predict before commissioning.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     A control system is a <strong>loop that corrects a machine from its own measurements</strong>:
@@ -36,6 +55,13 @@ const controlQuizCfg = {
   </p>
 
   <Widget no="1" caption="the loop, the three gains, stability, modern extensions" widget="equationStep" config={controlCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps walk outward from the loop. Step 1 is
+    the anatomy that every section of this lesson fleshes out; step 2 assigns the three
+    gains their separate jobs — note that the integral term exists precisely to kill the
+    offset that proportional action alone must leave; step 3 is the warning that the loop
+    can fight itself; step 4 is where single loops stop being enough.
+  </p>
 
   <h2>Sensing: the loop begins at the transducer</h2>
   <p>
@@ -66,6 +92,8 @@ const controlQuizCfg = {
     not catalogue shopping.
   </p>
 
+  <p><strong>So far:</strong> the loop begins at the transducer, and the sensor's dynamic properties — response time above all — decide what feedback can and cannot do. A measurement this small and noisy must now be made usable before any logic can act on it.</p>
+
   <h2>The signal chain: amplify, filter, convert</h2>
   <p>
     Raw sensor signals are millivolts buried in noise, so the chain conditions them before
@@ -85,6 +113,8 @@ const controlQuizCfg = {
     process history: trends reviewed after an excursion are often worth more than the
     control itself, because they show the disturbance you failed to model.
   </p>
+
+  <p><strong>So far:</strong> conditioned signals reach the controller, and the chain's rule is to fix each problem at the stage where it is cheapest — amplify the difference, filter before sampling, use the full span of the converter. Not every control decision is continuous, though; much of automation is on or off.</p>
 
   <h2>Logic diagrams: sequencing and protecting</h2>
   <p>
@@ -112,6 +142,8 @@ const controlQuizCfg = {
     when the power, the signal and the operator all disappear at once?", and the honest
     answers are physical — springs, gravity, normally-closed contacts — not software.
   </p>
+
+  <p><strong>So far:</strong> discrete logic — ladder rungs, interlocks, seal-in contacts, fail-safe wiring — handles the sequencing and the protection. What remains is the continuous heart of the loop: turning error into action, thousands of times a second.</p>
 
   <h2>Feedback: the PID law, with numbers</h2>
   <p>
@@ -172,6 +204,47 @@ const controlQuizCfg = {
     <li><strong>Everything is getting a loop:</strong> grid frequency (the energy lesson's second-by-second balance), drone attitude, insulin pumps (the control problem disguised as medicine), and LLM-agent feedback architectures — the 20th century's hidden discipline becoming visible.</li>
   </ul>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A thermocouple with an excellent accuracy figure but a slow response time is swapped into a loop that used to be stable, and the loop starts to oscillate. Explain why the "better" sensor made the loop worse.</li>
+    <li>An oven held at 200 degrees has its door opened for a minute; the heater saturates, and after the door closes there is a large overshoot. Name the mechanism and the standard fix.</li>
+    <li>Why does pure proportional control necessarily leave a standing offset on a plant that needs sustained heater output — and which term removes it?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) In a feedback loop, lag is what correction turns into
+    overshoot: a slow sensor reports the past, the controller corrects a state that has
+    already moved on, and gain through lag converts correction into oscillation. The static
+    accuracy figure was never the binding constraint — the dynamic properties are.
+    (2) Integral windup. A minute at 50 degrees of error accumulated 3,000 degree-seconds,
+    demanding far more than the heater can deliver; once the actuator saturates, the stored
+    integral holds output flat-out well past the setpoint. Clamp or back-calculate the
+    integral whenever the actuator saturates. (3) The plant needs, say, 40% heater output
+    forever to balance its losses, but P-only output is gain times error, so the loop
+    settles where the standing error still drives exactly 40% — offset equals the
+    disturbance divided by roughly one plus the gain. The integral term accumulates while
+    any offset persists and drives it to zero, and windup is the price of that power.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The loop is only as good as its weakest stage — sensor, signal chain, logic, or feedback law.</li>
+    <li>Response time beats accuracy: lag is what feedback converts into overshoot and oscillation.</li>
+    <li>Filter before you sample — content above half the sampling rate returns as counterfeit slow signals.</li>
+    <li>Fail-safe means failing into a safe state: springs, gravity and normally-closed contacts, not software.</li>
+    <li>P leaves an offset, I kills it (and winds up), D damps but amplifies noise.</li>
+    <li>Gain through lag oscillates; gain and phase margins compute the limit before commissioning.</li>
+    <li>From Watt's governor to fly-by-wire, feedback is the quiet discipline holding every target.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling advanced lessons sharpen the two halves of the loop: <em>Signal
+    Processing</em> goes deeper into the sampling and filtering this lesson treated
+    operationally, and <em>Materials Selection</em> is the hardware side — choosing the
+    sensors, actuators and structures the loop must push.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>The mathematical spine, briefly.</strong> Linearise the plant, describe dynamics
@@ -211,6 +284,14 @@ const controlQuizCfg = {
     exactly what it was in 1868.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Maxwell, "On Governors" (1868); Åström &amp; Murray, <em>Feedback Systems</em> (free online); Åström &amp; Hägglund, <em>PID Controllers: Theory, Design and Tuning</em>; Ziegler &amp; Nichols (1942); the signal-processing lesson of this ladder for sampling and filtering detail.</p>
+  <p class="sources"><strong>Sources:</strong> Maxwell, "On Governors" (1868); Åström &amp; Murray, <em>Feedback Systems</em> (free online); Åström &amp; Hägglund, <em>PID Controllers: Theory, Design and Tuning</em>; Ziegler &amp; Nichols (1942); the signal-processing lesson of this ladder for sampling and filtering detail. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: sensing, sampling and the three gains" widget="quiz" config={controlQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> the four questions cover the loop's chain in order —
+    ADC resolution chosen against the sensor's real precision, the anti-aliasing filter
+    that must be analogue because it acts before the damage, the standing offset that pure
+    proportional control must leave, and the seal-in contact that lets a momentary button
+    latch a motor. Each wrong answer is a plausible shortcut; each right one is the
+    discipline that keeps loops behaving.
+  </p>
 </TopicPage>

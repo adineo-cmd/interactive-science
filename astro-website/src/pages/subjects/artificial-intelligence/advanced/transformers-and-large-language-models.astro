@@ -22,6 +22,24 @@ const tfQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/artificial-intelligence/advanced/transformers-and-large-language-models">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced lesson in Artificial Intelligence, and it is the ladder's summit
+    for language: it presumes the foundational lesson <em>How Machines Learn</em> and the
+    intermediate lessons <em>Neural Networks from Scratch</em>, <em>Classification and
+    Regression</em> and <em>Image Recognition: CNNs</em>, where networks learned from
+    labelled examples. Here the labels disappear — text supervises itself — and one
+    architecture ends up doing translation, code and conversation at once.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain tokens and embeddings, and connect a model's famous failures to its tokenisation;</li>
+    <li>compute a softmax attention weight by hand and say what queries, keys and values do;</li>
+    <li>explain why next-token prediction yields knowledge, and what instruction tuning and RLHF add;</li>
+    <li>use the 20-tokens-per-parameter rule to reason about model sizing;</li>
+    <li>state honestly what LLMs can and cannot do — hallucination, context windows, tool use.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     The intermediate tiers gave you neural networks as stacked function approximators and NLP
@@ -39,6 +57,18 @@ const tfQuizCfg = {
   </p>
 
   <Widget no="1" caption="the LLM pipeline: tokens → attention → pretraining → alignment → scale" widget="equationStep" config={tfCfg} />
+  <p>
+    <strong>What to notice:</strong> the five steps are the honest pipeline — geometry
+    first, then the mixing mechanism, then the single training objective, then the
+    alignment overlay, then the scaling law that made the escalation predictable. Keep the
+    order in mind: each stage operates on the output of the one before, which is why a
+    compromise made at tokenisation propagates all the way up.
+  </p>
+  <p>
+    <strong>So far:</strong> one architecture, trained one way, replaced the
+    task-specific designs of the 2010s. The next sections walk the pipeline in order,
+    starting where every text enters it: tokens.
+  </p>
 
   <h2>Tokens and embeddings: language as geometry</h2>
   <p>
@@ -62,6 +92,12 @@ const tfQuizCfg = {
     boundaries inconsistently), and wordplay that lands flat. Tokenisation is an
     engineering compromise — vocabulary size against sequence length — and its seams
     show in behaviour whenever a task gets down to the character level.
+  </p>
+
+  <p>
+    <strong>So far:</strong> text has become geometry — tokens looked up as vectors whose
+    directions carry meaning. The next section adds the mechanism that made the
+    transformer famous: how tokens consult one another.
   </p>
 
   <h2>Attention: the mechanism, with numbers</h2>
@@ -116,6 +152,13 @@ const tfQuizCfg = {
     attention patterns), which is why model explanation is its own research field.
   </p>
 
+  <p>
+    <strong>So far:</strong> attention routes information between positions, softmax makes
+    it sharply selective, and positional encodings restore the order attention alone
+    cannot see. Next comes the training objective that turns this machinery into
+    something that knows things.
+  </p>
+
   <h2>Pretraining: knowledge as a side effect of prediction</h2>
   <p>
     Training has one objective: given a prefix of tokens, predict the next one, scored by
@@ -140,6 +183,13 @@ const tfQuizCfg = {
     why it can be fluent about things it gets subtly wrong, why quoting it is unsafe without
     verification, and why its knowledge is frozen at training time unless tools (search,
     retrieval) are bolted on.
+  </p>
+
+  <p>
+    <strong>So far:</strong> self-supervision made the labels free, compression under a
+    prediction deadline stored knowledge in weights, and post-training turned a
+    text-completer into an assistant. The final mechanism planned the whole era: what
+    happens when you scale it all up.
   </p>
 
   <h2>Scaling laws: the engine of the era</h2>
@@ -173,6 +223,47 @@ const tfQuizCfg = {
     <li><strong>Emergent abilities are disputed:</strong> some skills appear only at scale; researchers debate whether they're true capability jumps or measurement artefacts. The benchmark question is active research.</li>
     <li><strong>Tool use extends them:</strong> calling search, code execution and APIs turns the model into an orchestrator — agentic systems. Reliability, cost and safety of those loops are the current engineering frontier (the alignment lesson continues the story).</li>
   </ul>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Recall: why do positional encodings exist, and what exactly goes wrong without them?</li>
+    <li>Application: a query has dot-product scores 8, 2 and 1 against three keys. Without computing exact exponentials, say which token dominates the attention output and why softmax sharpens the gap.</li>
+    <li>Why-reasoning: why does asking an LLM to count the letters in a long word trip it up, and what does that reveal about where its knowledge lives?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Self-attention treats its input as a set — every token
+    sees every other with no built-in order — so "dog bites man" and "man bites dog" would
+    be identical without positional information added to the embeddings. (2)
+    Exponentiation magnifies score differences: 8, 2 and 1 become weights of roughly
+    0.997, 0.002 and 0.0009, so the output is a near-winner-take-all mix pulled almost
+    entirely from the first token — selectivity by computation, not by rule. (3) Because
+    the model reads chunks, not characters: tokenisation splits words into sub-word
+    units, so the individual characters are not present in its input. The same mechanism
+    explains arithmetic slips on large numbers, and it shows that the model's knowledge
+    lives in weights as a lossy statistical compression — not in a lookup table of
+    letters or facts.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The transformer's single mixing mechanism is attention: every token computes relevance to every other via query–key dot products.</li>
+    <li>Softmax's exponential turns modest score gaps into near-winner-take-all focus; positional encodings restore the order attention is blind to.</li>
+    <li>Pretraining predicts the next token on trillions of tokens; knowledge is a side effect of compression under a prediction deadline.</li>
+    <li>Instruction tuning and RLHF close the gap between text-completer and assistant — a small fraction of the compute, most of the difference.</li>
+    <li>Scaling laws made loss predictable: roughly 20 tokens per parameter is the compute-optimal ratio.</li>
+    <li>Generation is autoregressive and serial; the KV cache trades memory for speed and shifts the bottleneck to bandwidth.</li>
+    <li>Hallucination, frozen knowledge and tokenisation seams all trace to one fact: the model stores lossy statistical weights, not looked-up facts.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling advanced lessons complete the picture: <em>Reinforcement Learning</em>
+    explains the RLHF stage this chapter compressed into a paragraph, and
+    <em>Evaluation, Bias and Safety</em> interrogates exactly the benchmark scores and
+    failure modes this chapter's models produce. For what comes after — interpretability,
+    alignment, generative models beyond text — the expert tier continues the ladder.
+  </p>
 
   <h2>Going deeper</h2>
   <p>
@@ -208,6 +299,13 @@ const tfQuizCfg = {
     agentic evaluations (the sibling lesson on evaluation, bias and safety takes this up).
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Vaswani et al., "Attention Is All You Need" (2017); Mikolov et al., word2vec (2013); Kaplan et al., "Scaling Laws for Neural Language Models" (2020); Hoffmann et al., "Training Compute-Optimal Large Language Models" (Chinchilla, 2022); Olsson et al., "In-context Learning and Induction Heads" (2022); OpenAI GPT-4 technical report.</p>
+  <p class="sources"><strong>Sources:</strong> Vaswani et al., "Attention Is All You Need" (2017); Mikolov et al., word2vec (2013); Kaplan et al., "Scaling Laws for Neural Language Models" (2020); Hoffmann et al., "Training Compute-Optimal Large Language Models" (Chinchilla, 2022); Olsson et al., "In-context Learning and Induction Heads" (2022); OpenAI GPT-4 technical report. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: attention, pretraining and scale" widget="quiz" config={tfQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> the questions map the pipeline — the attention
+    computation, the order-blindness positional encodings fix, the sharpening effect of
+    softmax, and the arithmetic of compute-optimal scaling. Watch how one mathematical
+    property, exponentiation, explains both a mechanism (sharp attention) and a sizing
+    rule: single facts, working hard, is the transformer's whole style.
+  </p>
 </TopicPage>

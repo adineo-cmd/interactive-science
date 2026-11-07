@@ -21,6 +21,25 @@ const abQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/data-science/advanced/ab-testing">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Data Science lesson. It assumes the foundational <em>From Data to
+    Decisions</em> — what a dataset, a question and a claim are — and the intermediate rungs
+    where you learned to prepare and look at data honestly: <em>Cleaning Messy Data</em>,
+    <em>Exploratory Data Analysis</em>, <em>SQL for Analysts</em> and <em>Charts That Tell
+    the Truth</em>. Here the question changes character: not "what does the data show?" but
+    "what would have happened without the change?" — a question only an experiment can
+    answer.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain why random assignment, and nothing else, earns a causal claim;</li>
+    <li>score an observed lift against the standard error of a difference and read the p-value correctly;</li>
+    <li>size a test before launch from significance, power and the minimum detectable effect;</li>
+    <li>diagnose the four ways experiments lie — peeking, multiple comparisons, interference, proxy drift;</li>
+    <li>run the sample-ratio-mismatch health check before believing any experimental number.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     An A/B test is a <strong>randomised controlled experiment run on users at product
@@ -36,6 +55,13 @@ const abQuizCfg = {
   </p>
 
   <Widget no="1" caption="the four disciplines that separate real tests from theatre" widget="equationStep" config={abCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps are all pre-commitments made before any
+    data arrives — randomise and hold, size for the smallest effect worth detecting, name one
+    honestly primary metric, plan for whole business cycles. Each exists because a choice
+    made after seeing the data quietly converts the error budget into noise. Read the notes
+    as a launch checklist, not as background.
+  </p>
 
   <h2>Causality and experiments: why randomisation works</h2>
   <p>
@@ -70,6 +96,8 @@ const abQuizCfg = {
     flips, nowhere else.
   </p>
 
+  <p><strong>So far:</strong> randomisation balances every confounder — known and unknown — between the arms on average, leaving only two candidate explanations for a difference: the treatment, or bad luck. The next question is how much difference bad luck alone can plausibly produce, which is exactly what a hypothesis test measures.</p>
+
   <h2>Testing the hypothesis: scoring the difference</h2>
   <p>
     The null hypothesis is "B does nothing — the arms differ only by chance". The test
@@ -102,6 +130,8 @@ const abQuizCfg = {
     below the original estimate — regression toward the mean, wearing a product
     lanyard.
   </p>
+
+  <p><strong>So far:</strong> the test scores the observed lift against the standard error of a difference, and a "winner" is only an estimate drawn from a noisy distribution — expect replications to land lower than the headline. Before launch, then, comes the honest question: can this test see the effect at all?</p>
 
   <h2>Two samples and the arithmetic of power</h2>
   <p>
@@ -137,6 +167,8 @@ const abQuizCfg = {
     distinguishable from pointless?" — and only fixing the MDE before launch keeps the
     two questions apart.
   </p>
+
+  <p><strong>So far:</strong> power analysis fixes the sample size before launch, and confidence intervals expose what an underpowered test can and cannot say — a wide interval spanning zero is not a null result. Design can still betray the statistics, though, and the failure modes have names.</p>
 
   <h2>Four ways experiments lie</h2>
   <ul>
@@ -176,6 +208,47 @@ const abQuizCfg = {
     evaporate under scrutiny of design, not of statistics.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>In one sentence: why does random assignment justify the word "causes" where a before-and-after comparison cannot?</li>
+    <li>Your baseline conversion is 10% and the smallest change that would alter your decision is half a point. Roughly how many users per arm do you need at the usual thresholds, and what does that number tell a low-traffic product?</li>
+    <li>A colleague checks the dashboard daily and celebrates the first significant day. Why is that win suspect even if the assignment machinery was sound?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Randomisation severs the link between who received the
+    treatment and who they already were, so confounders — including the ones nobody thought
+    to measure — balance between the arms on average; a before-and-after comparison changes
+    the users and the world at the same time, so the difference has many possible parents.
+    (2) Roughly 55,000 per arm: halving the detectable lift from one point to half a point
+    multiplies the required sample by about four, because the needed n scales with one over
+    the square of the effect. For a low-traffic product the lesson is that the test cannot
+    run at all — change something bigger, or accept a noisier-but-faster proxy. (3) Each
+    daily check is another lottery ticket for a true-null test to cross the threshold by
+    luck; stop at the first significant look and the false-positive rate climbs from the
+    nominal 5% toward 20% or more. The fix is a horizon fixed in advance, or a sequential
+    design whose early looks use pre-agreed stricter thresholds.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Randomisation, not comparison, earns the causal claim — it balances the unknown confounders too.</li>
+    <li>Check the randomisation itself: a sample ratio mismatch at scale means the machinery is broken.</li>
+    <li>Size tests before launch from significance, power and the minimum detectable effect; the needed n scales with one over the squared effect.</li>
+    <li>An underpowered test misleads by absence — a wide interval spanning zero is not evidence of nothing.</li>
+    <li>Fix the horizon and the primary metric in advance: peeking and twenty opportunistic metrics spend the whole error budget.</li>
+    <li>Treat headline lifts as upper bounds — winners regress toward the mean when re-run.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling advanced lessons extend the two halves of this one: <em>Statistics for Data
+    Science</em> supplies the estimation machinery — intervals, permutation tests, Simpson's
+    paradox — that the decision rule here takes for granted, and <em>Machine Learning
+    Basics</em> is where behaviour gets learned from examples rather than tested with coins,
+    raising evaluation questions no single experiment answers.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Variance reduction: CUPED.</strong> The sample size arithmetic is governed by
@@ -211,6 +284,13 @@ const abQuizCfg = {
     statistical one.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Kohavi, Tang &amp; Xu, <em>Trustworthy Online Controlled Experiments</em> (2020); Microsoft ExP platform documentation; Deng, Xu, Kohavi &amp; Walker, "Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data" (CUPED, 2013); the statistics ladder of this atlas.</p>
+  <p class="sources"><strong>Sources:</strong> Kohavi, Tang &amp; Xu, <em>Trustworthy Online Controlled Experiments</em> (2020); Microsoft ExP platform documentation; Deng, Xu, Kohavi &amp; Walker, "Improving the Sensitivity of Online Controlled Experiments by Utilizing Pre-Experiment Data" (CUPED, 2013); the statistics ladder of this atlas. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: randomisation, power and peeking" widget="quiz" config={abQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> the questions run the lesson's order — why the coin
+    flips earn causation, what a small lift costs to detect, why peeking spends the error
+    budget, and how a sample ratio mismatch indicts everything downstream. The wrong choices
+    are the industry's common practice; if one of them felt natural, that is precisely the
+    instinct this widget is training out.
+  </p>
 </TopicPage>
