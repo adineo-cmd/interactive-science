@@ -61,6 +61,23 @@ const dataQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/computer-science/intermediate/data-files-tables-json">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an intermediate Computer Science lesson. You need the foundational lesson
+    <em>Binary and Bits</em> — bytes are about to become characters — and the intermediate
+    <em>Programming Fundamentals</em>, because variables, loops and arrays are the tools
+    that manipulate data in memory before and after it crosses to disk. Nothing beyond
+    those is assumed; every format is explained from its first principles here.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain why "plain text" is always bytes plus an encoding, and diagnose mojibake;</li>
+    <li>design a table with a sensible grain and atomic fields, and write the schema note that travels with it;</li>
+    <li>read and write CSV correctly, including quoted commas, dialects and missing values;</li>
+    <li>read and write JSON objects and arrays, and choose between CSV and JSON for a given job;</li>
+    <li>apply versioning, provenance and backup habits so a dataset survives its own pipeline.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Before algorithms and databases, a practical question: <strong>how is data written down, and
@@ -77,6 +94,13 @@ const dataQuizCfg = {
   </p>
 
   <Widget no="1" caption="the four facts that make data files usable" widget="equationStep" config={dataCfg} />
+  <p>
+    <strong>What to notice:</strong> step through the four cards in order — CSV, JSON,
+    schema, file tree — and treat each as one fact you will use for the rest of the
+    lesson. The first two are formats, the third is the promise that makes either format
+    trustworthy, and the fourth is where the files live. Together they are the minimum
+    kit for getting data back out of a file unchanged.
+  </p>
 
   <h2>Files, bytes and encoding: text is an interpretation</h2>
   <p>
@@ -94,6 +118,16 @@ const dataQuizCfg = {
     file format is bytes plus an interpretation, and corrupt output usually means the
     writer and reader disagreed about the interpretation — encoding, byte order or
     structure — rather than the file being physically damaged.
+  </p>
+  <p><em>Common misconception:</em> "a text file is just letters stored as letters — there
+  is nothing to decide." Every text file stores byte numbers, and the characters only
+  appear because reader and writer agree on the same decoding table. The mojibake symptom
+  is not damage but disagreement, which is why the fix is always an encoding decision
+  (UTF-8 everywhere is the modern default), never a repair tool.</p>
+  <p>
+    <strong>So far:</strong> a file is bytes plus an interpretation, and the file tree
+    gives every file a path — an address, not a shelf. Next: the shape of the data inside
+    the file, which is the same everywhere — records and fields.
   </p>
 
   <h2>The file tree: where data lives</h2>
@@ -149,6 +183,11 @@ const dataQuizCfg = {
     travel with a <strong>schema note</strong>: which separator, which encoding (UTF-8),
     what each column means and holds.
   </p>
+  <p>
+    <strong>So far:</strong> CSV writes a table as plain text — universal, but blind to
+    types and full of quoting traps, so it travels with a schema note. The next format
+    replaces positional columns with labels.
+  </p>
 
   <h2>JSON: labelled objects for nested data</h2>
   <p>
@@ -170,6 +209,10 @@ const dataQuizCfg = {
     easily. For wide flat tables, CSV stays simpler; for nested, hierarchical,
     labelled data, JSON wins outright.
   </p>
+  <p><em>Common misconception:</em> "JSON belongs to JavaScript." The name is history; the
+  format itself is a language-independent standard (RFC 8259) with parsers built into
+  Python, Java, Rust, spreadsheets and everything else that trades data on the web. JSON
+  documents are read and written by programs that have never heard of a browser.</p>
 
   <h2>Schemas: the promise about the data</h2>
   <p>
@@ -237,6 +280,43 @@ const dataQuizCfg = {
     lifecycle decides whether it still exists.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A CSV row reads: Smith,John,"London, UK",34. Why are there quotes around the third field?</li>
+    <li>You open a file and see "cafÃ©" where "café" should be. Is the file damaged?</li>
+    <li>Your program must store a class register — names, ages, homework submitted. What structure do you choose, and why?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The value itself contains a comma, so RFC 4180 quoting
+    keeps "London, UK" as one field instead of splitting it and shifting every later
+    column. (2) No — that is mojibake: the bytes are UTF-8 but were read with a
+    one-byte-per-character interpretation; agree on UTF-8 and the text is intact. (3) A
+    table: one record per student, one field per attribute, stored as header-plus-rows in
+    CSV or objects in a JSON array — records of the same kind belong together under a
+    declared schema.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Every file is bytes plus an interpretation; corrupt output usually means writer and reader disagreed.</li>
+    <li>The file tree gives data addresses; extensions and naming discipline are documentation for free.</li>
+    <li>A table is rows of records and columns of fields; the grain — one row per what — is the first design decision.</li>
+    <li>CSV is universal but type-blind and trap-prone; it travels with a schema note.</li>
+    <li>JSON labels values and nests freely — the lingua franca of web APIs — but has no date type and strict syntax.</li>
+    <li>A schema is a promise about meaning and types; the ten-year test judges whether the promise survives.</li>
+    <li>Keep raw data immutable, record provenance, and follow the 3-2-1 backup rule.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling lesson <em>Algorithms: Searching &amp; Sorting</em> shows what programs do
+    with well-formed tables once they are in memory, and <em>Logic Gates &amp; Digital
+    Circuits</em> drops beneath the bytes to the hardware that stores them. The
+    data-science ladder then takes over: cleaning, querying and charting the very files
+    this lesson teaches you to write.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Binary and columnar formats.</strong> Text formats trade efficiency for
@@ -264,7 +344,13 @@ const dataQuizCfg = {
     raw data kept immutably beside the cleaned version. The cheapest
     cleaning pass is the one that never runs.
   </p>
-  <p class="sources"><strong>Sources:</strong> RFC 8259 (JSON); RFC 4180 (CSV); The Unicode Standard; the data-science ladder's cleaning lesson.</p>
+  <p class="sources"><strong>Sources:</strong> RFC 8259 (JSON); RFC 4180 (CSV); The Unicode Standard; the data-science ladder's cleaning lesson. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself" widget="quiz" config={dataQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> attempt each question before reading its feedback,
+    and treat the "why" lines as the real syllabus — they cover the quoting rule that
+    saves CSV tables, the encoding logic behind mojibake, and the schema thinking that
+    makes a file readable ten years from now.
+  </p>
 </TopicPage>

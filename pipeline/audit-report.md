@@ -1,24 +1,8 @@
 # Lesson health audit — intermediate tier
 
-194 lessons: Weak (<40): 99 · Needs work (40–79): 63 · Good (≥80): 32
+194 lessons: Weak (<40): 83 · Needs work (40–79): 63 · Good (≥80): 48
 
-## Weak (<40) (99)
-- ** 26** subjects/computer-science/intermediate/algorithms-searching-and-sorting — 1881w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/computer-science/intermediate/data-files-tables-json — 1923w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/data-science/intermediate/exploratory-data-analysis — 1812w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/design/intermediate/typography-fundamentals — 1924w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/earth-science/intermediate/atmosphere-and-weather-systems — 1859w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/earth-science/intermediate/earthquakes-and-seismology — 1837w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/earth-science/intermediate/oceans-and-currents — 1844w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/economics/intermediate/gdp-national-accounts — 1863w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/economics/intermediate/unemployment-labour-markets — 1815w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/environmental-science/intermediate/air-quality-and-aerosols — 1810w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/environmental-science/intermediate/biodiversity-and-conservation — 1826w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/environmental-science/intermediate/waste-and-the-circular-economy — 1826w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/environmental-science/intermediate/water-resources-and-pollution — 1832w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/film/intermediate/cinematography-and-lighting — 1931w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/film/intermediate/shot-sizes-and-camera-grammar — 1813w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/film/intermediate/sound-design-and-score — 1903w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
+## Weak (<40) (83)
 - ** 26** subjects/finance/intermediate/diversification-and-portfolios — 1897w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
 - ** 26** subjects/finance/intermediate/stocks-and-bonds — 1814w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
 - ** 26** subjects/geography/intermediate/climate-change-causes-and-impacts — 1832w, 1 callouts, 3 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/3 (15); recaps 0/2 (10); callouts 1/3 (13)
@@ -168,7 +152,7 @@
 - ** 40** subjects/visual-arts/intermediate/colour-theory — 2097w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/visual-arts/intermediate/line-shape-and-value — 2090w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 
-## Good (≥80) (32)
+## Good (≥80) (48)
 - ** 95** subjects/agriculture/intermediate/animal-husbandry — 2621w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/pests-weeds-and-ipm — 2689w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/plant-nutrition-and-fertilisers — 2678w, 3 callouts, 2 widgets
@@ -187,10 +171,26 @@
 - ** 95** subjects/biology/intermediate/the-immune-system — 2442w, 3 callouts, 1 widgets
 - ** 95** subjects/business/intermediate/people-and-organisations — 2469w, 3 callouts, 1 widgets
 - ** 95** subjects/chemistry/intermediate/reaction-kinetics — 2493w, 3 callouts, 1 widgets
+- ** 95** subjects/computer-science/intermediate/algorithms-searching-and-sorting — 2751w, 3 callouts, 2 widgets
+- ** 95** subjects/computer-science/intermediate/data-files-tables-json — 2720w, 3 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/charts-that-tell-the-truth — 2714w, 4 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/cleaning-messy-data — 2693w, 4 callouts, 2 widgets
+- ** 95** subjects/data-science/intermediate/exploratory-data-analysis — 2634w, 4 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/sql-for-analysts — 2710w, 4 callouts, 2 widgets
+- ** 95** subjects/design/intermediate/typography-fundamentals — 2687w, 3 callouts, 2 widgets
+- ** 95** subjects/earth-science/intermediate/atmosphere-and-weather-systems — 2725w, 3 callouts, 2 widgets
+- ** 95** subjects/earth-science/intermediate/earthquakes-and-seismology — 2608w, 3 callouts, 1 widgets
+- ** 95** subjects/earth-science/intermediate/oceans-and-currents — 2698w, 3 callouts, 2 widgets
+- ** 95** subjects/economics/intermediate/gdp-national-accounts — 2670w, 3 callouts, 2 widgets
 - ** 95** subjects/economics/intermediate/market-failure-externalities — 2715w, 4 callouts, 2 widgets
+- ** 95** subjects/economics/intermediate/unemployment-labour-markets — 2695w, 3 callouts, 2 widgets
+- ** 95** subjects/environmental-science/intermediate/air-quality-and-aerosols — 2638w, 3 callouts, 1 widgets
+- ** 95** subjects/environmental-science/intermediate/biodiversity-and-conservation — 2585w, 3 callouts, 1 widgets
+- ** 95** subjects/environmental-science/intermediate/waste-and-the-circular-economy — 2604w, 3 callouts, 1 widgets
+- ** 95** subjects/environmental-science/intermediate/water-resources-and-pollution — 2653w, 3 callouts, 1 widgets
+- ** 95** subjects/film/intermediate/cinematography-and-lighting — 2803w, 3 callouts, 2 widgets
+- ** 95** subjects/film/intermediate/shot-sizes-and-camera-grammar — 2610w, 3 callouts, 2 widgets
+- ** 95** subjects/film/intermediate/sound-design-and-score — 2732w, 3 callouts, 2 widgets
 - ** 95** subjects/history/intermediate/the-islamic-golden-age — 2710w, 4 callouts, 2 widgets
 - ** 95** subjects/languages/intermediate/your-first-1000-words — 2687w, 3 callouts, 2 widgets
 - ** 95** subjects/linguistics/intermediate/morphology — 2700w, 3 callouts, 2 widgets

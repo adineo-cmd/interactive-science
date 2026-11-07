@@ -23,6 +23,23 @@ const sortQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/computer-science/intermediate/algorithms-searching-and-sorting">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an intermediate Computer Science lesson. It builds on the foundational lessons
+    <em>Binary and Bits</em> (whose powers of two are what binary search keeps halving
+    into) and <em>The Growth of Functions</em> (which introduced Big-O notation as a way
+    of comparing growth rates). If those are fresh, nothing else is assumed — every
+    algorithm in this lesson is built from scratch on the page.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>turn a problem statement into an algorithm using decomposition, pseudocode and refinement;</li>
+    <li>trace linear and binary search, and say when sorting first pays for itself;</li>
+    <li>write and amend the five standard patterns: totals, counts, max/min, search and sort;</li>
+    <li>compare bubble, insertion, merge and quick sort by growth rate and by best use;</li>
+    <li>design normal, boundary and erroneous test data, and use a trace table to hunt down a logic error.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Searching and sorting are the hello-world of algorithms — and the clearest
@@ -41,6 +58,13 @@ const sortQuizCfg = {
   </p>
 
   <Widget no="1" caption="naive vs divide-and-conquer — the curves part company early and never look back" widget="plotter" config={sortCfg} />
+  <p>
+    <strong>What to notice:</strong> the two curves track each other closely for small n —
+    below about twenty items you can barely separate them. Trace along the x-axis and
+    compare the two heights at n = 10, n = 20 and n = 40: the red n² curve pulls away
+    steeply while the green n log n curve stays nearly flat, and the gap keeps widening.
+    That widening gap, not any single value, is the whole argument of this lesson.
+  </p>
 
   <h2>Designing a solution: problem to algorithm</h2>
   <p>
@@ -57,6 +81,11 @@ const sortQuizCfg = {
     changes — which is a skill you should practise literally (take a working algorithm
     and amend it: find the maximum → find the <em>second</em> maximum; search for one
     value → count all matches).
+  </p>
+  <p>
+    <strong>So far:</strong> a problem becomes an algorithm through four moves — decompose,
+    specify, write pseudocode, refine — and vagueness is cheapest to fix on paper, before
+    any language is chosen. Next we stock the toolbox those designs are built from.
   </p>
 
   <h2>Standard methods: the five patterns</h2>
@@ -90,6 +119,16 @@ const sortQuizCfg = {
     and every "sorted by…" column in your life exist because someone planned to search
     repeatedly.
   </p>
+  <p><em>Common misconception:</em> "binary search is always faster, so I should always sort
+  first." It wins on comparisons, but sorting costs n log n up front: searching an unsorted
+  list once is cheaper with linear search, and sorting only pays when the list will be
+  searched many times. The right question is not "which search is faster?" but "how many
+  times will I search?".</p>
+  <p>
+    <strong>So far:</strong> linear search costs up to n comparisons and works on any list;
+    binary search costs log₂(n) but only after the data is sorted. That prerequisite is the
+    bridge to the next section: how sorting actually gets done.
+  </p>
 
   <h2>Sorting: the four classics</h2>
   <p>
@@ -117,6 +156,12 @@ const sortQuizCfg = {
   operations and is instantly done. The curves only part company at scale — which is
   exactly when it matters, and exactly why you think in growth rates before writing
   code.</p>
+  <p>
+    <strong>So far:</strong> the sorting classics trade growth rate against memory and
+    stability, and merge sort's n log n is the price of guaranteed speed at scale. But an
+    algorithm that is fast yet wrong is worthless — next comes the discipline that finds
+    the wrong parts.
+  </p>
 
   <h2>Test data and trace tables</h2>
   <p>
@@ -134,6 +179,11 @@ const sortQuizCfg = {
     the table forces you to run the code the computer runs, not the code you think
     you wrote.
   </p>
+  <p><em>Common misconception:</em> "if the program runs without crashing and passes my
+  normal examples, it works." Running is not correctness: the bugs that ship are boundary
+  bugs — the empty list, the single item, the value one past the limit — that normal data
+  never touches. Boundary and erroneous test data exist precisely because the happy path
+  cannot expose them.</p>
 
   <h2>Correctness is part of the deal</h2>
   <p>
@@ -199,6 +249,42 @@ const sortQuizCfg = {
     won.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A list of 1,000,000 sorted names is searched with binary search. At most how many comparisons are needed, and why?</li>
+    <li>Why must a max-finding algorithm be seeded with the first data item rather than with 0?</li>
+    <li>An algorithm passes every example you tried while writing it. Which test-data categories are still missing, and which bugs do they target?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) 20 — each comparison halves the candidates, and a million
+    is about 2²⁰, so twenty halvings reach one item. (2) Because the seed must be an item
+    of the data: all-negative temperatures would defeat a 0 seed and return a wrong maximum
+    — the classic boundary bug. (3) Boundary data (empty list, single item, exact limits)
+    and erroneous data (input that should be rejected) — off-by-one errors and unsafe
+    failures live there, not on the happy path.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Algorithm choice dominates hardware: n² versus n log n is a factor near 50,000 at a million items.</li>
+    <li>Design runs decompose, specify, pseudocode, refine — and vagueness is cheapest to fix on paper.</li>
+    <li>Binary search costs log₂(n) but needs sorted data, so sorting first pays only for repeated searches.</li>
+    <li>Seed max/min with a real item of the data, never a guess like 0.</li>
+    <li>Merge sort's n log n comes from log₂(n) levels of halving with about n merge work per level.</li>
+    <li>Attack a finished algorithm with normal, boundary and erroneous test data; use trace tables for logic errors.</li>
+    <li>Big-O is a growth rate, not a stopwatch — the curves part company only at scale.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The natural next steps on the intermediate shelf are <em>Programming Fundamentals</em>,
+    where these algorithm skeletons become working code, and <em>Data: Files, Tables &amp;
+    JSON</em>, which asks where the data being searched and sorted actually lives. Beyond
+    them, data structures and algorithm analysis extend this lesson's growth-rate thinking
+    to trees, graphs and hash tables.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     Four expert notes. <strong>The lower bound</strong>: comparison-based sorting cannot
@@ -215,6 +301,13 @@ const sortQuizCfg = {
     constants that Big-O hides are exactly what systems programmers get paid to
     notice.
   </p>
-  <p class="sources"><strong>Sources:</strong> Knuth, The Art of Computer Programming Vol. 3 (Sorting and Searching); Cormen et al., Introduction to Algorithms; Bentley, Programming Pearls (1986); Bloch, "Extra, Extra — Read All About It: Nearly All Binary Searches and Mergesorts are Broken" (2006).</p>
+  <p class="sources"><strong>Sources:</strong> Knuth, The Art of Computer Programming Vol. 3 (Sorting and Searching); Cormen et al., Introduction to Algorithms; Bentley, Programming Pearls (1986); Bloch, "Extra, Extra — Read All About It: Nearly All Binary Searches and Mergesorts are Broken" (2006). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: algorithms and their discipline" widget="quiz" config={sortQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> commit to an answer before reading the feedback, then
+    compare your reasoning with the "why" line — each one names the exact idea being
+    tested, from the halving arithmetic behind binary search to which test-data category
+    catches which class of bug. A wrong answer with a read explanation is worth more than
+    a lucky right one.
+  </p>
 </TopicPage>
