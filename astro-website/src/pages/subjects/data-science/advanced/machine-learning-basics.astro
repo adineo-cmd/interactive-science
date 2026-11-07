@@ -21,6 +21,23 @@ const mlQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/data-science/advanced/machine-learning-basics">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Data Science lesson. It assumes the foundational <em>From Data to
+    Decisions</em> and the intermediate rungs — <em>Cleaning Messy Data</em>, <em>Exploratory
+    Data Analysis</em>, <em>SQL for Analysts</em> and <em>Charts That Tell the Truth</em>.
+    You should already treat a dataset as a claim under examination; here the dataset starts
+    generating the claims.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>run the working loop: split, baseline, fit, diagnose, regularise;</li>
+    <li>explain what the train/test split guarantees and how leakage quietly voids it;</li>
+    <li>read the bias–variance trade-off off side-by-side train and validation errors;</li>
+    <li>compute precision, recall and accuracy from a confusion matrix and pick a threshold from a stated price list;</li>
+    <li>choose among the model families honestly — including when a dumb baseline is the right answer.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Machine learning is <strong>fitting functions to data and hoping they generalise</strong>.
@@ -43,6 +60,18 @@ const mlQuizCfg = {
   </p>
 
   <Widget no="1" caption="the working loop — split, baseline, fit, diagnose, regularise" widget="equationStep" config={mlCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps are an order of operations, not a buffet —
+    the split comes first because every later number is worthless without it, and the baseline
+    comes second because a model only means something relative to the cheapest alternative.
+    Step through with the chapter's spine in mind: protect the one number that matters,
+    performance on unseen data.
+  </p>
+  <p>
+    <strong>So far:</strong> learning is fitting with a generalisation contract attached. Next
+    we make the contract concrete for the field's most common task — classification — and meet
+    the family of models that all estimate the same object in different ways.
+  </p>
 
   <h2>Classification: the task</h2>
   <p>
@@ -133,6 +162,13 @@ const mlQuizCfg = {
     when real customers arrive.
   </p>
 
+  <p>
+    <strong>So far:</strong> the split measures generalisation and the bias–variance dial
+    explains what you see when you plot both errors — the gap is the overfitting. Before
+    reaching for remedies, though, there is an even earlier discipline: establishing the bar
+    any model must clear.
+  </p>
+
   <h2>Baselines first</h2>
   <p>
     Before any model, build the dumbest reasonable competitor and write its score down.
@@ -181,6 +217,12 @@ const mlQuizCfg = {
     conversation is a business conversation.
   </p>
 
+  <p>
+    <strong>So far:</strong> metrics now match decisions — precision, recall, ROC and the
+    costed example showed that the best threshold exists only relative to a price list. With
+    the discipline in place, we can compare the model families on equal terms.
+  </p>
+
   <h2>The model families, honestly compared</h2>
   <ul>
     <li><strong>Linear/logistic regression:</strong> transparent, fast, surprisingly hard to beat on tabular data. Always try first — it is the baseline that is also sometimes the answer.</li>
@@ -188,6 +230,48 @@ const mlQuizCfg = {
     <li><strong>Neural networks:</strong> dominant on images, audio and text, where the raw structure is rich and learned representations pay. Data-hungry, compute-hungry, opaque (the AI ladder covers why).</li>
     <li><strong>k-means and other clustering:</strong> the unsupervised default for segmentation — but the number of clusters and their meaning are judgement calls, not outputs, and there is no label to validate against.</li>
   </ul>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>What does the train/test split promise, and why does tuning against the test set void that promise?</li>
+    <li>A model flags 300 of 10,000 transactions; 90 of the flags are truly fraudulent and 150 frauds exist in total. Compute precision and recall, and compare the majority-class baseline's accuracy.</li>
+    <li>Why is "get more data" the one remedy for overfitting that practitioners say never hurts?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The split promises an honest grade: performance measured on
+    data the model never trained on, which is evidence the patterns transfer. Tuning against
+    the test set makes your choices depend on it, so it silently becomes training data — the
+    "honest measurement" is then grading decisions already shaped by the answers. (2) Precision
+    = 90/300 = 30% (when we flag, how often we are right); recall = 90/150 = 60% (of all real
+    frauds, the share caught). The baseline "flag nothing" is 9,850/10,000 = 98.5% accurate
+    while catching nothing — accuracy alone would crown it, which is exactly why imbalanced
+    problems demand the confusion matrix. (3) More data changes what the model sees, not how
+    flexible it is: noise is random per example and averages out as samples accumulate, while
+    signal repeats and accumulates — so the memorisable quirks of any particular sample matter
+    less. Simpler models, penalties and early stopping all trade capability away; more data
+    does not, which is why it is the only remedy with no downside.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Machine learning is fitting functions to data; the only performance that matters is on data never seen.</li>
+    <li>Split first, tune on a validation set, and touch the test set once — leakage is how teams fool themselves.</li>
+    <li>Plot train and validation errors together: the gap is the overfitting, and the U-shaped test curve is the bias–variance dial.</li>
+    <li>Regularisation, simplification, early stopping and ensembling spend capacity; more data is the fix that never hurts.</li>
+    <li>A baseline — mean or majority class — converts "our model works" into "our model beats the cheapest alternative".</li>
+    <li>On imbalanced data, precision, recall and costed thresholds replace accuracy as the decision language.</li>
+    <li>Prediction is conditional correlation; causal claims need experimental design.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The siblings complete the advanced tier. <em>A/B Testing</em> supplies the randomisation
+    this chapter kept pointing to — the experimental design that turns prediction into causal
+    knowledge. <em>Statistics for Data Science</em> formalises the uncertainty behind every
+    train/test score. <em>Dashboards &amp; Data Storytelling</em> carries the metrics you now
+    compute honestly into the rooms where decisions are made.
+  </p>
 
   <h2>Going deeper</h2>
   <p>
@@ -222,6 +306,14 @@ const mlQuizCfg = {
     stable; its boundaries are not.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Géron, <em>Hands-On Machine Learning</em>; Hastie, Tibshirani &amp; Friedman, <em>The Elements of Statistical Learning</em>; Breiman, "Random Forests" (2001); scikit-learn documentation; Belkin et al., "Reconciling modern machine-learning practice and the classical bias–variance trade-off" (2019).</p>
+  <p class="sources"><strong>Sources:</strong> Géron, <em>Hands-On Machine Learning</em>; Hastie, Tibshirani &amp; Friedman, <em>The Elements of Statistical Learning</em>; Breiman, "Random Forests" (2001); scikit-learn documentation; Belkin et al., "Reconciling modern machine-learning practice and the classical bias–variance trade-off" (2019). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: splits, baselines and metrics" widget="quiz" config={mlQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> commit to an answer before revealing — the questions
+    rehearse the chapter's spine. The first is the precision/recall distinction on the same
+    fraud numbers the worked example used; the second is why a 99%-accurate model can be
+    worthless; the third is reading the train–test gap as a diagnosis; the fourth is what a
+    baseline is for. Each explanation gives the reasoning, so a miss names the section worth
+    rereading.
+  </p>
 </TopicPage>

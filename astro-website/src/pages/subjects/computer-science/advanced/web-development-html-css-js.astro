@@ -50,6 +50,23 @@ const webQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/web-development-html-css-js">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Computer Science lesson. It assumes the foundational <em>Binary and
+    Bits</em> and <em>The Growth of Functions</em>, plus the intermediate <em>Programming
+    Fundamentals</em> and <em>Data: Files, Tables &amp; JSON</em> — you should already write
+    simple programs and know what a data format is. No web experience is presumed; the browser
+    itself is our laboratory.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>state the three layers' division of labour and explain what progressive enhancement buys;</li>
+    <li>compute CSS specificity and predict which rule wins a conflict;</li>
+    <li>explain the event loop: why a long fetch never freezes a page but a long loop always does;</li>
+    <li>trace the render pipeline and say where the milliseconds go;</li>
+    <li>recognise injection as a category and name the defences: escaping, same-origin policy, encrypted transport.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     The web runs on three languages with a clean division of labour: <strong>HTML is the structure, CSS
@@ -62,6 +79,17 @@ const webQuiz = {
   </p>
 
   <Widget no="1" caption="the page pipeline — from file to pixels" widget="equationStep" config={webCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps are the pipeline in miniature — structure,
+    then appearance, then behaviour, then the round trip that keeps a page alive. Watch the
+    layering as you step: each layer assumes the ones before it and can be removed without
+    destroying the page, which is progressive enhancement stated as architecture.
+  </p>
+  <p>
+    <strong>So far:</strong> the trio's division of labour is the web's founding decision. The
+    next three sections take each language in turn — meaning first, because everything else is
+    applied to the tree that HTML creates.
+  </p>
 
   <h2>HTML: structure with meaning</h2>
   <p>
@@ -132,6 +160,13 @@ const webQuiz = {
   the syllabus's security topic, because the browser's security model is learned through its classic
   failure.</p>
 
+  <p>
+    <strong>So far:</strong> the three languages are in place and the render pipeline explains
+    where performance goes — parse, style, layout, paint, with JavaScript able to interrupt
+    anywhere. What the pipeline renders, though, is chosen by whoever supplies the text; next
+    we meet what happens when that supplier is an attacker.
+  </p>
+
   <h2>Security meets the browser: injection</h2>
   <p>
     <strong>XSS (cross-site scripting)</strong> is the web's canonical vulnerability: if user-supplied
@@ -173,6 +208,13 @@ const webQuiz = {
     cannot reconstruct.
   </p>
 
+  <p>
+    <strong>So far:</strong> the worked build showed the trio cooperating on one honest page —
+    semantics, styling, behaviour, each layer removable. What the build did not answer is the
+    question every real page faces: where does continuity live, in a protocol that forgets
+    everything between requests?
+  </p>
+
   <h2>State, storage, and the request/response contract</h2>
   <p>
     Because HTTP is stateless, the browser-plus-server must reassemble continuity every time, and the
@@ -208,6 +250,47 @@ const webQuiz = {
     hold the state between events, and the event loop decides when.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>What are the three layers of the web stack, and what does progressive enhancement promise if the JavaScript layer fails?</li>
+    <li>A stylesheet contains <code>#main p</code> with colour red and <code>.intro</code> with colour blue. A paragraph inside the element with id <code>main</code> also carries class <code>intro</code>. Which colour wins, and why?</li>
+    <li>Why does a three-second synchronous loop freeze the whole page while a three-second <code>fetch</code> does not?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) HTML is the structure, CSS the appearance, JavaScript the
+    behaviour. Progressive enhancement layers them so each assumes only the layers below: with
+    JavaScript disabled the content and styling still exist — resilience is the design, not an
+    accident. (2) Red. Specificity is counted as (ids, classes, elements): <code>#main p</code>
+    scores (0,1,0,1) against <code>.intro</code>'s (0,0,1,0), and a higher id count outranks
+    any number of classes; source order only breaks exact ties. (3) The language runs
+    single-threaded on an event loop, which can only turn between tasks. A synchronous loop
+    occupies the thread for its whole three seconds, so clicks and repaints queue behind it. A
+    <code>fetch</code> delegates the waiting to the browser and schedules your callback when
+    the result arrives — the loop keeps turning throughout.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>HTML is structure, CSS is appearance, JavaScript is behaviour — and the DOM is the live tree, not the file you wrote.</li>
+    <li>Semantic HTML makes accessibility and findability nearly free at the source and expensive as rework later.</li>
+    <li>The cascade resolves conflicts by specificity — ids beat classes beat elements — and order only breaks ties.</li>
+    <li>JavaScript runs single-threaded on an event loop: blocking work is delegated, callbacks resume when results arrive.</li>
+    <li>The render pipeline is DOM → CSSOM → render tree → layout → paint; geometry changes force re-layout.</li>
+    <li>Whenever data and code share a channel, the parser's assumptions are the attack surface — escape at the boundary.</li>
+    <li>State has designated homes: HttpOnly cookies for identity, the client for UI, the database for durable truth.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The siblings deepen each pillar. <em>Networking: How the Internet Works</em> follows the
+    request outside the browser — packets, DNS and the TLS that turns HTTPS from an acronym
+    into a guarantee. <em>Databases &amp; SQL</em> takes the durable-state home, where the
+    lesson's SQL-injection boundary discipline becomes daily practice. <em>Cybersecurity:
+    Threats &amp; Defences</em> widens injection into a full catalogue of attacks and the
+    defences that answer them.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Rendering internals</strong> reward study: the compositor splits painting into layers so that
@@ -225,7 +308,15 @@ const webQuiz = {
     arguments in their native habitat: view source.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> MDN Web Docs; Berners-Lee, "Information Management: A Proposal" (1989); W3C accessibility guidelines (WCAG); Zakas, <em>Professional JavaScript for Web Developers</em>.</p>
+  <p class="sources"><strong>Sources:</strong> MDN Web Docs; Berners-Lee, "Information Management: A Proposal" (1989); W3C accessibility guidelines (WCAG); Zakas, <em>Professional JavaScript for Web Developers</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: specificity, injection and the event loop" widget="quiz" config={webQuiz} />
+  <p>
+    <strong>What to notice:</strong> answer before revealing — the three questions rehearse the
+    lesson's load-bearing ideas. The cascade question is a specificity audit, the exact move
+    that fixes most "why is my style ignored" bugs. The injection question is the boundary
+    discipline: unescaped user text in HTML is code in every visitor's browser. The event-loop
+    question separates the two kinds of waiting — one blocks the thread, one delegates it.
+    Each explanation carries the reasoning, so a miss names the section to reread.
+  </p>
 </TopicPage>

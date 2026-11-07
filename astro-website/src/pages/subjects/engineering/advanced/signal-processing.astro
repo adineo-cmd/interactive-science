@@ -21,6 +21,24 @@ const sigQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/engineering/advanced/signal-processing">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    The engineering sequence so far has been about making structures stand and forces
+    balance: Statics: Why Structures Stand, Forces, Beams &amp; Bridges and Fluid Mechanics,
+    with Units, Estimates &amp; Back-of-Envelope supplying the arithmetic discipline. This
+    lesson moves to the invisible half of the subject — information. It extends the
+    measurement chain from the intermediate lessons into its digital back half, and feeds
+    directly into Control Systems, where filtered signals close feedback loops.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>define signals and systems, and explain why one impulse response specifies an LTI system completely;</li>
+    <li>use the frequency domain: what the Fourier transform is, and why filtering becomes multiplication there;</li>
+    <li>apply the two sampling budgets — Nyquist rate and bit depth — and explain aliasing and quantisation noise;</li>
+    <li>plan a filter chain that trades transition width against delay and computation;</li>
+    <li>read decibel figures correctly and explain why amplification should follow filtering.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     The instrumentation lesson showed how a physical quantity becomes numbers; this lesson is
@@ -36,6 +54,19 @@ const sigQuizCfg = {
   </p>
 
   <Widget no="1" caption="signals, Fourier, sampling, filtering" widget="equationStep" config={sigCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps are the chapter map — read them as one
+    measurement chain rather than four topics. Step 2 is the licence for everything that
+    follows: if every waveform is a chord, then "which frequencies are present" becomes a
+    question you can compute instead of guess. Step 3 carries the caution that recurs all
+    lesson: sampling is only safe above twice the highest frequency, and its failure mode —
+    aliasing — is silent: data that looks clean and is wrong.
+  </p>
+  <p>
+    <strong>So far:</strong> a signal is variation that carries information, and a system is
+    anything that transforms it. The next section fixes the vocabulary properly — and shows
+    why one short kick can describe an entire system.
+  </p>
 
   <h2>Signals and systems: the vocabulary</h2>
   <p>
@@ -86,6 +117,13 @@ const sigQuizCfg = {
     inside every phone call, every Wi-Fi packet, every hearing aid.
   </p>
 
+  <p>
+    <strong>So far:</strong> every signal has a frequency-domain twin, and hard operations in
+    time become easy ones in frequency — which is also why the FFT's speed-up mattered so
+    much. But a computer cannot hold a continuous waveform; the next section covers the two
+    budgets that govern the crossing to digital.
+  </p>
+
   <h2>Sampling: the bridge to digital, with its two budgets</h2>
   <p>
     Sampling measures the signal at intervals T, at rate f_s. <strong>Nyquist–Shannon's
@@ -112,6 +150,11 @@ const sigQuizCfg = {
     budgets to be spent where the application needs them — a vibration sensor wants
     wide bandwidth at 24-bit depth; a telephone line gets by with 8 kHz and 8 bits —
     and "more" spent anywhere else is storage and cost with no information gained.
+  </p>
+  <p>
+    <strong>So far:</strong> two budgets — rate and resolution — decide how faithfully the
+    digital samples represent the analogue world. Once the signal is safely in numbers, the
+    craft of keeping the band you want begins.
   </p>
 
   <h2>Filtering: the frequency-selective craft</h2>
@@ -146,6 +189,11 @@ const sigQuizCfg = {
     upper band, so too sharp a notch distorts the very waveform the cardiologist needs
     to read. Every filter in the chain bought cleanliness at the price of some
     fidelity, and the art is spending as little as possible.
+  </p>
+  <p>
+    <strong>So far:</strong> every filter buys cleanliness at the price of fidelity, and the
+    ECG chain showed that trade in miniature. Before you design one, you need a way to score
+    the contest between signal and noise — which is exactly what the decibel scale is for.
   </p>
 
   <h2>Noise, SNR and the decibel</h2>
@@ -183,6 +231,46 @@ const sigQuizCfg = {
     <li><strong>The digital revolution's law:</strong> Shannon's capacity theorem (bits per second ≤ bandwidth × log(1 + SNR)) sets the ceiling every generation of modems has climbed toward for 75 years — theory leading engineering by decades, exactly as Maxwell led wireless.</li>
   </ul>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>State the Nyquist–Shannon sampling condition, and name the artefact that appears when it is violated.</li>
+    <li>An RC low-pass uses R = 1.6 kΩ and C = 100 nF. Estimate its cutoff frequency, and say roughly what happens to a 100 kHz interference component compared with a 100 Hz signal.</li>
+    <li>Why must the anti-aliasing filter act before the ADC rather than after — why can software not repair a badly sampled signal later?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Sample at more than twice the highest frequency present and
+    the samples determine the signal exactly. Violate it and <em>aliasing</em> strikes: high
+    frequencies masquerade as lower ones, as with the 5 kHz tone sampled at 6 kHz that becomes
+    an impostor at 1 kHz. (2) The cutoff is 1/(2πRC), about 1 kHz. The 100 Hz signal passes
+    nearly untouched; the 100 kHz component sits two decades above cutoff and falls 20 dB per
+    decade, so roughly 40 dB — a hundredfold attenuation. (3) Because aliasing destroys
+    information at the instant of sampling rather than adding a removable distortion: once two
+    different tones produce identical samples, the difference no longer exists anywhere in the
+    data, so no later processing can recover which was true. The filter must remove out-of-band
+    content before it can masquerade.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A signal is variation carrying information; an LTI system is fully described by its impulse response, and filtering is convolution.</li>
+    <li>Every waveform has a frequency-domain twin, where convolution becomes multiplication and noise becomes visible bands.</li>
+    <li>Sampling has two budgets: rate (above twice the highest frequency) and resolution (about 6 dB of dynamic range per bit).</li>
+    <li>Aliasing is silent and irreversible — the anti-aliasing filter must act before the ADC, never after.</li>
+    <li>Filter design trades transition width against delay against computation; noise inside the signal's own band is untouchable by frequency-selective filters.</li>
+    <li>Decibels are logarithmic ratios that need a stated reference; amplify the signal, not the noise — gain after filtering beats gain before.</li>
+    <li>Shannon's capacity theorem sets the speed limit that every communication system, from modem to Wi-Fi, climbs toward.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    Control Systems is the direct continuation: a filter is also a delay, and this lesson
+    flagged delay inside a feedback loop as instability fuel — the control course turns that
+    warning into design rules. Materials Selection completes the advanced engineering set on
+    the physical side: choosing the components whose behaviour produces the signals this
+    lesson processes.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>The convolution theorem.</strong> The deep structural fact of the field:
@@ -219,6 +307,13 @@ const sigQuizCfg = {
     benchmarks.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Fourier, <em>Théorie analytique de la chaleur</em> (1807/1822); Nyquist (1928); Shannon, "A Mathematical Theory of Communication" (1948) and "Communication in the Presence of Noise" (1949); Cooley &amp; Tukey (1965); Smith, <em>The Scientist and Engineer's Guide to Digital Signal Processing</em> (free online); Candès &amp; Wakin on compressed sensing (2008).</p>
+  <p class="sources"><strong>Sources:</strong> Fourier, <em>Théorie analytique de la chaleur</em> (1807/1822); Nyquist (1928); Shannon, "A Mathematical Theory of Communication" (1948) and "Communication in the Presence of Noise" (1949); Cooley &amp; Tukey (1965); Smith, <em>The Scientist and Engineer's Guide to Digital Signal Processing</em> (free online); Candès &amp; Wakin on compressed sensing (2008). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: sampling, filtering and noise" widget="quiz" config={sigQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> treat these four questions as diagnostics for the two
+    budgets and the filtering trade. The first is the aliasing trap in action — work out what
+    the samples <em>cannot</em> distinguish before reading the explanation. The second and
+    third exercise the quantitative backbone above, the 6 dB-per-bit rule and the RC cutoff;
+    the fourth explains why the FFT, not the textbook transform, actually runs on hardware.
+  </p>
 </TopicPage>

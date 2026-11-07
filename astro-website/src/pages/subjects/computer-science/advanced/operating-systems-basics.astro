@@ -50,6 +50,23 @@ const osQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/operating-systems-basics">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Computer Science lesson. It assumes the foundational <em>Binary and
+    Bits</em> and <em>The Growth of Functions</em>, plus the intermediate <em>Programming
+    Fundamentals</em>, <em>Logic Gates &amp; Digital Circuits</em> and <em>Algorithms:
+    Searching &amp; Sorting</em> — you should already know what a program is, what a gate is,
+    and how to read a growth rate.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain the interrupt mechanism — especially the timer interrupt — that makes an operating system possible;</li>
+    <li>compute waiting times under FCFS and SJF and say what each policy optimises;</li>
+    <li>describe what virtual memory protects, and diagnose thrashing from its symptoms;</li>
+    <li>reason about race conditions, locks and the four conditions of deadlock;</li>
+    <li>choose between threads and processes by weighing isolation against communication cost.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     The operating system is the <strong>referee and landlord between programs and hardware</strong>: it
@@ -62,6 +79,17 @@ const osQuiz = {
   </p>
 
   <Widget no="1" caption="the four jobs of every operating system" widget="equationStep" config={osCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps are the job description — juggle processes,
+    schedule them fairly, sustain the virtual-memory illusion, and present every device as
+    files. Step through and watch the same theme recur: each job is a way of keeping programs
+    from harming one another while letting them pretend they have the machine to themselves.
+  </p>
+  <p>
+    <strong>So far:</strong> the OS is referee and landlord, and its four duties are on the
+    table. The first section asks the prior question — where the referee itself comes from,
+    and the electrical mechanism that keeps it in charge.
+  </p>
 
   <h2>Software types, translators, and the interrupt</h2>
   <p>
@@ -139,6 +167,13 @@ const osQuiz = {
   slower than RAM: the mechanism is always on, but you want its disk-facing mode as rare as
   possible.</p>
 
+  <p>
+    <strong>So far:</strong> interrupts gave the OS control, scheduling shares the CPU, and
+    virtual memory isolates each process's RAM. One hazard remains before we turn to files:
+    what happens when the isolation is deliberately removed — when two threads must share one
+    address space.
+  </p>
+
   <h2>Concurrency: the price of parallelism</h2>
   <p>
     The moment two threads touch shared state, timing enters the semantics: a <strong>race condition</strong>
@@ -187,6 +222,13 @@ const osQuiz = {
     duty).
   </p>
 
+  <p>
+    <strong>So far:</strong> the referee manages the CPU, memory, concurrency and files — and
+    the boot sequence installed it, while the memory hierarchy set the physical price of every
+    miss. Next we watch an individual program's life through the referee's eyes: states,
+    signals, birth by fork, death by signal.
+  </p>
+
   <h2>Process states, signals, and the lifetime of a program</h2>
   <p>
     A process is not just "running" — the scheduler's world is a small state machine. A process is
@@ -223,6 +265,48 @@ const osQuiz = {
     communication — the same dial, redrawn at every scale from microcontrollers to data centres.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>What does the timer interrupt do, and why does multitasking collapse without it?</li>
+    <li>Jobs X (6 ms), Y (2 ms) and Z (8 ms) arrive in that order. Compute the average waiting time under FCFS and under SJF.</li>
+    <li>Your machine crawls, the disk light stays solid, yet CPU use is low. Why does that pattern point to thrashing rather than a slow processor?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The timer interrupt fires hundreds of times a second and
+    hands control back to the OS no matter what a program is doing — it is the only reason one
+    runaway loop cannot own the machine; without it, nothing can wrest the CPU back from a
+    program that never yields. (2) FCFS runs X, Y, Z: waits 0, 6, 8 — average 14 ÷ 3 ≈ 4.7 ms.
+    SJF runs Y, X, Z: waits 0, 2, 8 — average 10 ÷ 3 ≈ 3.3 ms. Same total work; policy alone
+    cuts average waiting by about 30%, with SJF's known costs (foresight, starving long jobs)
+    as the price. (3) A solid disk light with an idle CPU means the machine is busy moving
+    pages, not computing: when working sets exceed RAM, every needed page triggers a disk
+    fault roughly 10,000× slower than a RAM access, so the system page-faults continuously
+    while accomplishing little. A slow CPU would show high processor use — the signature here
+    is the disk.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The OS is referee and landlord: it schedules the CPU, manages memory, and presents every device as files.</li>
+    <li>Interrupts — above all the timer interrupt — are what keep the referee in charge; system calls enter through traps.</li>
+    <li>Scheduling policy alone can change apparent speed dramatically; real schedulers blend fairness, priority and interactivity.</li>
+    <li>Virtual memory gives each process a private illusion of RAM; page faults cost about 10,000× a RAM access, and thrashing is the emergency.</li>
+    <li>Races are cured by indivisible critical sections; deadlock needs four conditions, so real systems break one (lock ordering).</li>
+    <li>Files give one interface to every device; journaling buys crash consistency at the cost of a write-ahead log.</li>
+    <li>Threads trade isolation for cheap communication; processes trade communication cost for isolation — one dial at every scale.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    Three siblings extend this one. <em>Networking: How the Internet Works</em> follows the
+    OS's reach beyond the machine — interrupts and buffers meeting packets on a wire.
+    <em>Cybersecurity: Threats &amp; Defences</em> weaponises the questions this lesson raises:
+    what happens when processes, permissions or the boot chain are attacked. <em>Data
+    Structures</em> supplies the queues, heaps and trees that the scheduler and page tables
+    quietly run on.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Kernel architectures</strong> carry the design argument: monolithic kernels (Linux) run
@@ -241,7 +325,15 @@ const osQuiz = {
     does the OS boundary move up a level — the scheduling question of the next decade.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Tanenbaum, <em>Modern Operating Systems</em>; Arpaci-Dusseau, <em>Operating Systems: Three Easy Pieces</em>; Silberschatz, <em>Operating System Concepts</em>.</p>
+  <p class="sources"><strong>Sources:</strong> Tanenbaum, <em>Modern Operating Systems</em>; Arpaci-Dusseau, <em>Operating Systems: Three Easy Pieces</em>; Silberschatz, <em>Operating System Concepts</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: scheduling maths, races and the thrashing signature" widget="quiz" config={osQuiz} />
+  <p>
+    <strong>What to notice:</strong> commit to an answer before revealing the feedback. Question
+    one is the FCFS-versus-SJF arithmetic — same jobs, same total work, very different waiting,
+    which is the cleanest demonstration that policy is a real design variable. Question two is
+    the race condition and the fix that carries its own hazard. Question three is diagnosis
+    from symptoms: the disk light plus an idle CPU is the thrashing signature. The explanations
+    give the reasoning, so any miss points to the section worth rereading.
+  </p>
 </TopicPage>

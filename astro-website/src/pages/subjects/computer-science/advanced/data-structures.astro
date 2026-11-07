@@ -51,6 +51,23 @@ const dsQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/data-structures">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Computer Science lesson. It stands on the foundational <em>Binary and
+    Bits</em> and <em>The Growth of Functions</em> — you must already read O(n) and O(log n)
+    fluently — and on the intermediate <em>Programming Fundamentals</em>, <em>Algorithms:
+    Searching &amp; Sorting</em> and <em>Data: Files, Tables &amp; JSON</em>. Here those threads
+    fuse: containers get costs, and costs get justified.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain why array indexing is constant-time and what that costs elsewhere;</li>
+    <li>reason about hash tables quantitatively — load factors, collisions, resizing and adversarial keys;</li>
+    <li>say exactly what balancing buys a search tree, and why B-trees suit disks;</li>
+    <li>match stacks and queues to the problems that secretly want them;</li>
+    <li>run the selection discipline: operations with frequencies, candidates costed per operation.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     The intermediate lessons taught you arrays and files; the algorithms lesson taught you that operations
@@ -63,6 +80,17 @@ const dsQuiz = {
   </p>
 
   <Widget no="1" caption="the five containers everything else is built from" widget="equationStep" config={dsCfg} />
+  <p>
+    <strong>What to notice:</strong> each step names a container and, with it, the one question
+    that container answers fastest — position, name, recency, fairness, hierarchy. Step through
+    and ask for each: what does it make cheap, and what does it charge for? That pair of
+    answers is the whole selection skill this lesson trains.
+  </p>
+  <p>
+    <strong>So far:</strong> a structure is a trade-off, and the access pattern — not fashion —
+    picks the winner. We begin at the bottom of the stack of abstractions: the flat array that
+    every other container is built to escape or exploit.
+  </p>
 
   <h2>Arrays: the memory model everything sits on</h2>
   <p>
@@ -127,6 +155,13 @@ const dsQuiz = {
     "most recent, except pinned" feed is neither — now you are doing data-structure design).
   </p>
 
+  <p>
+    <strong>So far:</strong> arrays, hash tables and trees covered position, name and
+    hierarchy; stacks and queues add the two disciplines — recency and fairness — that
+    running systems quietly depend on. All of that lives in RAM, which forgets; next we cross
+    the boundary to storage that survives power loss.
+  </p>
+
   <h2>File handling: the persistent tier</h2>
   <p>
     The syllabus's file-handling topic is the same subject at the boundary of the machine: files are the
@@ -184,6 +219,12 @@ const dsQuiz = {
     and relationships, and the graph toolkit takes over.
   </p>
 
+  <p>
+    <strong>So far:</strong> the containers are all on the table — including graphs, the
+    general case that lists and trees merely specialise. What remains is the professional
+    habit that turns vocabulary into decisions: a worked selection under a real brief.
+  </p>
+
   <h2>Choosing under constraint: the worked selection</h2>
   <p>
     Practise the selection discipline on a realistic brief. An app stores a contact list; users scroll it
@@ -197,6 +238,46 @@ const dsQuiz = {
     a hash index over the same records, because display and lookup optimise differently — two indexes,
     one store. That is the expert habit in one example: <strong>state the operations with frequencies,
     cost each candidate per operation, and pay only for the operations that actually happen</strong>.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why is reading element i of an array a single arithmetic act, while reaching element i of a linked list takes i steps?</li>
+    <li>A chained hash table holds 3,000 entries in 4,000 slots. What is the load factor, roughly what does a failed lookup inspect, and what happens when the table crosses its resize threshold?</li>
+    <li>Why does binary search fail on a sorted linked list, and what does that failure reveal about what big-O hides?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) An array is contiguous, so element i sits at start + i ×
+    element-size — one multiply and one add, O(1). A linked list stores only a pointer to the
+    next node, so reaching item i is i pointer hops, O(i); the array's superpower is address
+    arithmetic, not cleverness. (2) Load factor α = 3000 ÷ 4000 = 0.75; a failed chained
+    lookup inspects about α of a chain — roughly one comparison. Cross the threshold and the
+    table rehashes every entry into a bigger table: amortised O(1) per insert, but one insert
+    pays the lump. (3) Binary search needs the middle in O(1) — arithmetic on an index, which
+    pointers cannot do; walking to the middle is itself O(n), so the logarithm collapses. The
+    reveal: big-O counts steps, but only O(1) steps of the right kind — the access pattern,
+    not the sortedness, decides the cost.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A data structure is a container plus a trade-off: some operations constant-time, others expensive by design.</li>
+    <li>Array indexing is O(1) by address arithmetic; inserting at the front is O(n); dynamic arrays amortise growth by doubling.</li>
+    <li>Hash tables deliver expected O(1) keyed on the load factor — with resizing lumps, statistical guarantees and adversarial worst cases.</li>
+    <li>Only balanced trees guarantee O(log n) with sorted iteration; B-trees size nodes to disk blocks for databases.</li>
+    <li>Stacks (LIFO) run function calls and undo; queues (FIFO) run fairness — scheduling, spools, breadth-first search.</li>
+    <li>Files are the persistent tier; an index file is a B-tree waiting to happen.</li>
+    <li>The expert habit: state operations with frequencies, cost each candidate per operation, pay only for what actually happens.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    Three siblings pick up the threads. <em>Graphs &amp; Dynamic Programming</em> develops the
+    graph machinery this lesson only opened — traversals, shortest paths, the general case of
+    every structure here. <em>Databases &amp; SQL</em> shows B-tree indexes and hash joins
+    running in production systems. <em>Operating Systems Basics</em> reveals the run queues,
+    stacks and memory tiers your structures were living on all along.
   </p>
 
   <h2>Going deeper</h2>
@@ -218,7 +299,15 @@ const dsQuiz = {
     the architecture behind modern databases? You now have the vocabulary to read those papers.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Cormen et al., <em>Introduction to Algorithms</em>; Sedgewick &amp; Wayne, <em>Algorithms</em>, 4th ed.; Knuth, <em>The Art of Computer Programming</em>, vol. 3.</p>
+  <p class="sources"><strong>Sources:</strong> Cormen et al., <em>Introduction to Algorithms</em>; Sedgewick &amp; Wayne, <em>Algorithms</em>, 4th ed.; Knuth, <em>The Art of Computer Programming</em>, vol. 3. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: load factors, degenerate trees, and composing for O(1)" widget="quiz" config={dsQuiz} />
+  <p>
+    <strong>What to notice:</strong> attempt each question before revealing its feedback — all
+    three rehearse this lesson's core moves. The first tests whether hash-table cost tracks the
+    load factor rather than table size; the second, whether you can spot the degenerate tree
+    that sorted input builds; the third, the composition habit — no single structure delivers
+    O(1) lookup <em>and</em> O(1) eviction, so the expert assembles one. Each explanation gives
+    the reasoning, so a miss tells you which section to reread.
+  </p>
 </TopicPage>
