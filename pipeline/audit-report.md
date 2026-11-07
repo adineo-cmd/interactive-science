@@ -1,128 +1,92 @@
-# Lesson health audit — advanced tier
+# Lesson health audit — expert tier
 
-119 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 119
+83 lessons: Weak (<40): 41 · Needs work (40–79): 26 · Good (≥80): 16
 
-## Weak (<40) (0)
+## Weak (<40) (41)
+- ** 39** subjects/business/expert/scaling-and-organisational-design — 1885w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/chemistry/expert/quantum-chemistry — 1933w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/computer-science/expert/computability-and-complexity — 1823w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/computer-science/expert/cryptography — 1827w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/computer-science/expert/distributed-systems — 1814w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/data-science/expert/data-engineering-and-pipelines — 1898w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/data-science/expert/ethics-privacy-and-bias — 1831w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/earth-science/expert/geophysics-of-plate-driving-forces — 1811w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/earth-science/expert/planetary-geology — 1892w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/economics/expert/econometrics — 1859w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/economics/expert/financial-economics — 1859w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/economics/expert/macroeconomic-models-dsge — 1856w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/environmental-science/expert/earth-system-tipping-points — 1876w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/environmental-science/expert/mitigation-and-adaptation-design — 1863w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/finance/expert/asset-pricing-models — 1875w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/journalism/expert/investigative-methods — 1852w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/languages/expert/multilingual-cognition — 1851w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/languages/expert/near-native-fluency — 1928w, 5 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/linguistics/expert/computational-linguistics — 1929w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/literature/expert/textual-criticism-and-editing — 1892w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/materials-science/expert/computational-materials-design — 1802w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/math/expert/abstract-algebra — 1896w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/math/expert/complex-analysis — 1801w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/math/expert/linear-algebra — 1859w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/medicine/expert/genomic-medicine — 1888w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/medicine/expert/health-systems-and-policy — 1859w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/music/expert/music-cognition — 1859w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/philosophy/expert/ethics-of-technology-and-ai — 1888w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/physics/expert/electrodynamics-maxwell — 1869w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/physics/expert/general-relativity — 1878w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/physics/expert/solid-state-physics — 1862w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/psychology/expert/behavioural-neuroscience — 1829w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/religious-studies/expert/philosophy-of-religion — 1911w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/sociology/expert/social-theory-marx-to-bourdieu — 1931w, 5 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/sports-science/expert/long-term-athlete-development — 1835w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/sports-science/expert/testing-and-analytics-in-elite-sport — 1884w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/statistics/expert/causal-inference — 1848w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/statistics/expert/multivariate-statistics — 1870w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/statistics/expert/statistical-computing — 1880w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/visual-arts/expert/critique-and-art-discourse — 1873w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 39** subjects/visual-arts/expert/developing-a-personal-style — 1822w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 
-## Needs work (40–79) (0)
+## Needs work (40–79) (26)
+- ** 40** subjects/anthropology/expert/anthropology-of-the-contemporary — 1944w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/art-history/expert/art-historiography-and-method — 2003w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/art-history/expert/attribution-conservation-and-forgery — 2213w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/chemistry/expert/biochemistry-bridge — 2052w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/chemistry/expert/polymer-chemistry — 1937w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/computer-science/expert/compilers-and-languages — 2077w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
+- ** 40** subjects/design/expert/design-strategy-and-leadership — 1966w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/engineering/expert/reliability-and-safety-engineering — 2217w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/engineering/expert/systems-engineering — 1937w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/film/expert/film-theory-and-criticism — 1951w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/finance/expert/behavioural-finance — 1950w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/law/expert/comparative-legal-systems — 2374w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/law/expert/jurisprudence-what-is-law — 2418w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/linguistics/expert/generative-grammar — 1938w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/literature/expert/comparative-literature — 1953w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/materials-science/expert/nanomaterials-and-biomaterials — 2042w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/math/expert/real-analysis — 2292w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/math/expert/topology — 2225w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/neuroscience/expert/computational-neuroscience — 2516w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/neuroscience/expert/consciousness-hard-problem — 2059w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/physics/expert/quantum-field-theory — 1954w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/political-science/expert/formal-political-theory — 1974w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/political-science/expert/global-governance — 1948w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/psychology/expert/clinical-practice-and-ethics — 1954w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/religious-studies/expert/religion-in-the-modern-world — 1984w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+- ** 40** subjects/sociology/expert/demography — 2012w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 
-## Good (≥80) (119)
-- ** 95** subjects/agriculture/advanced/agroecology — 2749w, 3 callouts, 2 widgets
-- ** 95** subjects/agriculture/advanced/breeding-and-gmos — 2876w, 3 callouts, 2 widgets
-- ** 95** subjects/agriculture/advanced/precision-agriculture — 2737w, 3 callouts, 2 widgets
-- ** 95** subjects/anthropology/advanced/economic-and-political-anthropology — 2951w, 4 callouts, 2 widgets
-- ** 95** subjects/anthropology/advanced/ethnographic-methods — 2749w, 3 callouts, 2 widgets
-- ** 95** subjects/architecture/advanced/environmental-design-light-heat-air — 2784w, 3 callouts, 2 widgets
-- ** 95** subjects/architecture/advanced/structural-systems-arches-to-skyscrapers — 2745w, 3 callouts, 2 widgets
-- ** 95** subjects/architecture/advanced/urban-design-and-public-space — 2763w, 3 callouts, 2 widgets
-- ** 95** subjects/art-history/advanced/art-market-and-museums — 2593w, 4 callouts, 1 widgets
-- ** 95** subjects/art-history/advanced/modern-and-contemporary-art — 2602w, 4 callouts, 1 widgets
-- ** 95** subjects/artificial-intelligence/advanced/evaluation-bias-and-safety — 2759w, 3 callouts, 2 widgets
-- ** 95** subjects/artificial-intelligence/advanced/reinforcement-learning — 2782w, 3 callouts, 2 widgets
-- ** 95** subjects/artificial-intelligence/advanced/transformers-and-large-language-models — 2709w, 3 callouts, 2 widgets
-- ** 95** subjects/astronomy/advanced/compact-objects — 2943w, 3 callouts, 2 widgets
-- ** 95** subjects/astronomy/advanced/exoplanets-and-detection — 2936w, 3 callouts, 2 widgets
-- ** 95** subjects/astronomy/advanced/galaxies-and-the-expanding-universe — 2771w, 3 callouts, 2 widgets
-- ** 95** subjects/biology/advanced/human-influences-on-ecosystems — 2717w, 3 callouts, 3 widgets
-- ** 95** subjects/biology/advanced/molecular-biology-techniques — 2753w, 3 callouts, 2 widgets
-- ** 95** subjects/biology/advanced/population-genetics — 2790w, 3 callouts, 2 widgets
-- ** 95** subjects/biology/advanced/speciation-and-phylogenetics — 2828w, 3 callouts, 2 widgets
-- ** 95** subjects/business/advanced/entrepreneurship-and-venture-funding — 2957w, 3 callouts, 2 widgets
-- ** 95** subjects/business/advanced/financial-modelling-for-managers — 2787w, 3 callouts, 1 widgets
-- ** 95** subjects/business/advanced/strategy-competitive-advantage — 2777w, 3 callouts, 2 widgets
-- ** 95** subjects/chemistry/advanced/coordination-chemistry — 2763w, 3 callouts, 2 widgets
-- ** 95** subjects/chemistry/advanced/organic-chemistry-functional-groups — 2827w, 3 callouts, 2 widgets
-- ** 95** subjects/chemistry/advanced/spectroscopy-and-structure — 2848w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/cybersecurity-threats-and-defences — 2840w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/data-structures — 2928w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/databases-and-sql — 2831w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/graphs-and-dynamic-programming — 2861w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/networking-how-the-internet-works — 2781w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/operating-systems-basics — 2965w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/software-engineering-and-version-control — 2787w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/advanced/web-development-html-css-js — 2784w, 3 callouts, 2 widgets
-- ** 95** subjects/data-science/advanced/ab-testing — 2759w, 4 callouts, 2 widgets
-- ** 95** subjects/data-science/advanced/dashboards-and-data-storytelling — 2715w, 3 callouts, 2 widgets
-- ** 95** subjects/data-science/advanced/machine-learning-basics — 2783w, 3 callouts, 2 widgets
-- ** 95** subjects/data-science/advanced/statistics-for-data-science — 2740w, 3 callouts, 2 widgets
-- ** 95** subjects/design/advanced/design-systems — 2763w, 3 callouts, 1 widgets
-- ** 95** subjects/design/advanced/interaction-design — 2770w, 3 callouts, 1 widgets
-- ** 95** subjects/earth-science/advanced/geochemical-cycles — 2819w, 3 callouts, 2 widgets
-- ** 95** subjects/earth-science/advanced/paleoclimate-and-ice-ages — 2824w, 3 callouts, 2 widgets
-- ** 95** subjects/economics/advanced/behavioural-economics — 3006w, 3 callouts, 1 widgets
-- ** 95** subjects/economics/advanced/development-economics — 2615w, 3 callouts, 1 widgets
-- ** 95** subjects/economics/advanced/game-theory — 2873w, 3 callouts, 1 widgets
-- ** 95** subjects/economics/advanced/international-trade — 2726w, 3 callouts, 1 widgets
-- ** 95** subjects/engineering/advanced/control-systems — 2795w, 3 callouts, 2 widgets
-- ** 95** subjects/engineering/advanced/materials-selection — 2842w, 3 callouts, 2 widgets
-- ** 95** subjects/engineering/advanced/signal-processing — 2938w, 3 callouts, 2 widgets
-- ** 95** subjects/environmental-science/advanced/climate-modelling-and-scenarios — 2902w, 3 callouts, 2 widgets
-- ** 95** subjects/environmental-science/advanced/environmental-economics-and-policy — 2862w, 3 callouts, 2 widgets
-- ** 95** subjects/environmental-science/advanced/sustainability-metrics-and-lca — 2795w, 3 callouts, 2 widgets
-- ** 95** subjects/film/advanced/documentary-form — 2613w, 3 callouts, 1 widgets
-- ** 95** subjects/film/advanced/mise-en-scene-analysis — 2657w, 5 callouts, 1 widgets
-- ** 95** subjects/film/advanced/screenwriting-craft — 2726w, 3 callouts, 1 widgets
-- ** 95** subjects/finance/advanced/corporate-finance — 3030w, 3 callouts, 2 widgets
-- ** 95** subjects/finance/advanced/options-and-derivatives — 2770w, 3 callouts, 2 widgets
-- ** 95** subjects/finance/advanced/portfolio-theory-markowitz — 2805w, 3 callouts, 2 widgets
-- ** 95** subjects/geography/advanced/economic-globalisation — 2928w, 3 callouts, 2 widgets
-- ** 95** subjects/geography/advanced/population-and-migration-geography — 2865w, 3 callouts, 2 widgets
-- ** 95** subjects/geography/advanced/remote-sensing-and-earth-observation — 2829w, 3 callouts, 2 widgets
-- ** 95** subjects/geography/advanced/resource-provision-food-energy — 3014w, 3 callouts, 3 widgets
-- ** 95** subjects/history/advanced/decolonisation-postcolonial-world — 2682w, 3 callouts, 1 widgets
-- ** 95** subjects/history/advanced/economic-history — 2658w, 3 callouts, 1 widgets
-- ** 95** subjects/history/advanced/germany-1918-1945 — 2782w, 3 callouts, 3 widgets
-- ** 95** subjects/history/advanced/historiography-debates-and-schools — 2717w, 3 callouts, 2 widgets
-- ** 95** subjects/journalism/advanced/data-journalism — 2741w, 3 callouts, 1 widgets
-- ** 95** subjects/journalism/advanced/media-law-and-ethics — 2867w, 3 callouts, 1 widgets
-- ** 95** subjects/languages/advanced/register-idiom-and-slang — 2701w, 3 callouts, 1 widgets
-- ** 95** subjects/languages/advanced/translation-versus-interpretation — 2973w, 3 callouts, 1 widgets
-- ** 95** subjects/languages/advanced/writing-systems-of-the-world — 2915w, 4 callouts, 1 widgets
-- ** 95** subjects/law/advanced/contracts — 2762w, 3 callouts, 2 widgets
-- ** 95** subjects/law/advanced/property-law — 2763w, 3 callouts, 2 widgets
-- ** 95** subjects/law/advanced/torts-and-liability — 2949w, 3 callouts, 2 widgets
-- ** 95** subjects/linguistics/advanced/historical-linguistics — 2874w, 3 callouts, 1 widgets
-- ** 95** subjects/linguistics/advanced/psycholinguistics-and-acquisition — 2713w, 3 callouts, 1 widgets
-- ** 95** subjects/linguistics/advanced/sociolinguistics — 2758w, 3 callouts, 1 widgets
-- ** 95** subjects/literature/advanced/literary-theory — 2836w, 4 callouts, 1 widgets
-- ** 95** subjects/literature/advanced/modernism-and-postmodernism — 2706w, 3 callouts, 1 widgets
-- ** 95** subjects/materials-science/advanced/failure-fracture-and-fatigue — 2857w, 3 callouts, 2 widgets
-- ** 95** subjects/materials-science/advanced/heat-treatment — 3067w, 3 callouts, 2 widgets
-- ** 95** subjects/materials-science/advanced/phase-diagrams — 2811w, 3 callouts, 2 widgets
-- ** 95** subjects/materials-science/advanced/semiconductors-and-doping — 2767w, 3 callouts, 2 widgets
-- ** 95** subjects/math/advanced/differential-equations — 2876w, 3 callouts, 2 widgets
-- ** 95** subjects/math/advanced/integration — 3060w, 3 callouts, 2 widgets
-- ** 95** subjects/math/advanced/logic-and-proof — 3089w, 3 callouts, 2 widgets
-- ** 95** subjects/math/advanced/number-theory — 3088w, 3 callouts, 2 widgets
-- ** 95** subjects/math/advanced/vectors-and-matrices — 3315w, 3 callouts, 2 widgets
-- ** 95** subjects/medicine/advanced/cancer-biology-and-oncology — 2783w, 3 callouts, 2 widgets
-- ** 95** subjects/medicine/advanced/cardiovascular-pathophysiology — 2914w, 4 callouts, 2 widgets
-- ** 95** subjects/medicine/advanced/clinical-trials-and-evidence — 2716w, 3 callouts, 2 widgets
-- ** 95** subjects/medicine/advanced/medical-imaging — 2837w, 3 callouts, 2 widgets
-- ** 95** subjects/neuroscience/advanced/brain-imaging-methods — 2790w, 3 callouts, 2 widgets
-- ** 95** subjects/neuroscience/advanced/memory-circuits — 2769w, 3 callouts, 2 widgets
-- ** 95** subjects/philosophy/advanced/language-and-meaning — 2809w, 3 callouts, 1 widgets
-- ** 95** subjects/philosophy/advanced/modal-logic — 2773w, 3 callouts, 2 widgets
-- ** 95** subjects/philosophy/advanced/phenomenology-and-existentialism — 2666w, 3 callouts, 1 widgets
-- ** 95** subjects/physics/advanced/fluid-dynamics — 2809w, 3 callouts, 2 widgets
-- ** 95** subjects/physics/advanced/quantum-foundations — 2893w, 3 callouts, 2 widgets
-- ** 95** subjects/physics/advanced/special-relativity — 2782w, 3 callouts, 2 widgets
-- ** 95** subjects/physics/advanced/statistical-mechanics — 2842w, 3 callouts, 2 widgets
-- ** 95** subjects/political-science/advanced/comparative-politics-methods — 2866w, 3 callouts, 2 widgets
-- ** 95** subjects/political-science/advanced/conflict-and-peace-studies — 2822w, 3 callouts, 2 widgets
-- ** 95** subjects/political-science/advanced/political-economy — 2992w, 4 callouts, 2 widgets
-- ** 95** subjects/psychology/advanced/cognitive-psychology-and-models — 2899w, 3 callouts, 2 widgets
-- ** 95** subjects/psychology/advanced/neuropsychology — 2813w, 3 callouts, 2 widgets
-- ** 95** subjects/psychology/advanced/psychometrics-and-testing — 2896w, 3 callouts, 2 widgets
-- ** 95** subjects/religious-studies/advanced/myth-ritual-symbol — 2895w, 3 callouts, 1 widgets
-- ** 95** subjects/religious-studies/advanced/scripture-and-interpretation — 2838w, 3 callouts, 1 widgets
-- ** 95** subjects/sociology/advanced/globalisation-and-society — 2774w, 3 callouts, 2 widgets
-- ** 95** subjects/sociology/advanced/social-networks — 2742w, 3 callouts, 2 widgets
-- ** 95** subjects/sports-science/advanced/biomechanics — 2775w, 3 callouts, 1 widgets
-- ** 95** subjects/sports-science/advanced/periodisation-and-programming — 2895w, 3 callouts, 1 widgets
-- ** 95** subjects/statistics/advanced/bayesian-statistics — 2806w, 3 callouts, 1 widgets
-- ** 95** subjects/statistics/advanced/experimental-design — 2900w, 4 callouts, 1 widgets
-- ** 95** subjects/statistics/advanced/non-parametric-methods — 2837w, 3 callouts, 1 widgets
-- ** 95** subjects/statistics/advanced/time-series-analysis — 2804w, 3 callouts, 1 widgets
-- ** 95** subjects/visual-arts/advanced/figure-drawing-and-anatomy — 2783w, 3 callouts, 2 widgets
-- ** 95** subjects/visual-arts/advanced/painting-mediums — 2799w, 3 callouts, 2 widgets
+## Good (≥80) (16)
+- ** 95** subjects/agriculture/expert/climate-smart-agriculture — 2523w, 3 callouts, 1 widgets
+- ** 95** subjects/agriculture/expert/food-systems-and-security — 2608w, 3 callouts, 1 widgets
+- ** 95** subjects/anthropology/expert/deep-history-of-our-species — 2648w, 3 callouts, 1 widgets
+- ** 95** subjects/architecture/expert/computational-and-parametric-design — 2514w, 3 callouts, 1 widgets
+- ** 95** subjects/architecture/expert/sustainable-and-passive-design — 2584w, 3 callouts, 1 widgets
+- ** 95** subjects/artificial-intelligence/expert/ai-alignment-and-interpretability — 2552w, 3 callouts, 1 widgets
+- ** 95** subjects/artificial-intelligence/expert/generative-models — 2530w, 3 callouts, 1 widgets
+- ** 95** subjects/artificial-intelligence/expert/robotics-and-embodied-ai — 2552w, 3 callouts, 1 widgets
+- ** 95** subjects/astronomy/expert/astrobiology — 2720w, 3 callouts, 1 widgets
+- ** 95** subjects/astronomy/expert/cosmology-and-general-relativity — 2768w, 3 callouts, 1 widgets
+- ** 95** subjects/astronomy/expert/dark-matter-and-dark-energy — 2762w, 3 callouts, 1 widgets
+- ** 95** subjects/biology/expert/bioinformatics — 2667w, 3 callouts, 1 widgets
+- ** 95** subjects/biology/expert/synthetic-biology — 2671w, 3 callouts, 1 widgets
+- ** 95** subjects/biology/expert/systems-biology — 2640w, 3 callouts, 1 widgets
+- ** 95** subjects/business/expert/corporate-governance — 2724w, 4 callouts, 1 widgets
+- ** 95** subjects/law/expert/international-law — 2872w, 3 callouts, 2 widgets

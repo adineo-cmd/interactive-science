@@ -12,6 +12,24 @@ const roboCfg = {
 };
 ---
 <TopicPage slug="subjects/artificial-intelligence/expert/robotics-and-embodied-ai">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is the capstone of the Artificial Intelligence track. It assumes the learning
+    machinery built in <em>Neural Networks from Scratch</em> and <em>Classification and
+    Regression</em> from the intermediate tier, and the policy-training and transformer ideas
+    of <em>Reinforcement Learning</em> and <em>Transformers and Large Language Models</em> from
+    the advanced tier. Here that machinery meets friction, gravity and time — the physical
+    world, where mistakes have mass.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>trace the perception–action loop and explain why control frequency, not model size, decides whether a robot stays upright;</li>
+    <li>explain what problem SLAM solves and how loop closure pulls accumulated drift back into agreement;</li>
+    <li>argue why domain randomisation beats photorealistic simulation when crossing the sim-to-real gap;</li>
+    <li>compare imitation learning, diffusion policies and vision-language-action models as routes to robot skill;</li>
+    <li>read a robot deployment as an economics decision about value per movement, environment structure and energy budget.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Embodied AI puts learning systems <strong>into the physical world, where mistakes break
@@ -35,6 +53,20 @@ const roboCfg = {
   </p>
 
   <Widget no="1" caption="the embodied loop, its map-making, and the bridges from simulation" widget="equationStep" config={roboCfg} />
+  <p>
+    <strong>What to notice:</strong> step through the four cards in order and watch one theme
+    recur — each is a bridge between software and physics. Step 1 is the loop that must run
+    faster than the world can change; step 2 is the map a robot must grow while standing on
+    it; step 3 is the crossing from free failure in simulation to paid-in-full failure on
+    hardware; step 4 is the current attempt to borrow generality from language and vision
+    models. Keep a robot problem you care about in mind and ask which bridge it actually
+    needs.
+  </p>
+  <p>
+    <strong>So far:</strong> embodied AI is not chatbot intelligence with motors attached —
+    it is a real-time control discipline with its own stack, its own failure modes and its own
+    frequencies. The next sections walk that stack layer by layer.
+  </p>
 
   <h2>The perception–action loop: robotics as real-time engineering</h2>
   <p>
@@ -99,6 +131,12 @@ const roboCfg = {
     everything simulated is robust to the one world it meets; chasing photorealistic
     simulation, by contrast, spends enormous compute to narrow the gap one arbitrary detail at
     a time.
+  </p>
+  <p>
+    <strong>So far:</strong> the loop supplies the reflexes, SLAM supplies the map, and
+    simulation supplies the practice. What simulation cannot supply is human judgement about
+    how a task should be done — that enters through demonstration, which is where the next
+    section begins.
   </p>
 
   <h2>Learning from demonstration — and foundation models for action</h2>
@@ -174,6 +212,46 @@ const roboCfg = {
     most deployments.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A walking robot's balance controller runs at kilohertz while a datacentre answers a prompt in about 300 milliseconds. Explain why "just call the big model" is not, by itself, a robot architecture.</li>
+    <li>A robot vacuum returns to a room it cleaned an hour ago and its floor plan visibly snaps into agreement. Which SLAM mechanism produced that snap, and why would satellite positioning not have helped indoors?</li>
+    <li>Why does the field prefer randomising simulation wildly over making simulation photorealistically exact?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Balance is a control-frequency problem, not a knowledge
+    problem: ground contact and torque must be corrected on millisecond timescales, and no
+    network round-trip of hundreds of milliseconds can close a loop that fast. The big model
+    earns its place as a planner layer above the real-time loop, not instead of it. (2) That
+    snap is <em>loop closure</em> — recognising a previously seen place and pulling the
+    accumulated drift back into agreement. GPS is unavailable or degraded indoors and
+    spoofable anywhere, so every serious mobile robot builds its position estimate from its
+    own sensors. (3) A policy trained on one exact simulator learns that simulator's exact
+    physics and fails on the first real surface, while a policy trained across thousands of
+    randomised variants is robust to variation — and reality is just one more variation.
+    Randomisation buys robustness; realism only buys detail.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Embodied AI adds physics to learning: control frequencies in the hundreds to thousands of hertz, noisy sensors, and failures with mass and no undo.</li>
+    <li>SLAM solves localisation and mapping together as probabilistic inference; loop closure snaps accumulated drift shut.</li>
+    <li>The sim-to-real gap is crossed by domain randomisation — robustness to variation — not by photorealism.</li>
+    <li>Imitation learning scales but suffers covariate shift; diffusion policies handle multimodal action; vision-language-action models import semantics from pretraining.</li>
+    <li>The field's bottleneck is action data, not algorithms — hence teleoperation fleets and shared datasets like Open X-Embodiment.</li>
+    <li>Deployment follows value per movement and tolerance for chaos: warehouses and factories first, homes still last.</li>
+    <li>Uptime is decided by hardware reliability and battery endurance more often than by model quality.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    Two sibling expert lessons pick up the threads: <em>Generative Models</em> explains the
+    diffusion machinery that modern robot policies borrow, and <em>AI Alignment and
+    Interpretability</em> treats the safety-case and audit questions this lesson flagged for
+    learned controllers — the same evidence problem, wearing a hard hat.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Manipulation remains the summit.</strong> Locomotion is largely solved (quadrupeds
@@ -205,5 +283,5 @@ const roboCfg = {
     controls.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Cadena et al., "Past, Present, and Future of SLAM" (2016); OpenAI Rubik's Cube hand (2019); DeepMind RT-2 (2023); Boston Dynamics video archive.</p>
+  <p class="sources"><strong>Sources:</strong> Cadena et al., "Past, Present, and Future of SLAM" (2016); OpenAI Rubik's Cube hand (2019); DeepMind RT-2 (2023); Boston Dynamics video archive. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
