@@ -64,6 +64,28 @@ const ciQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/statistics/intermediate/confidence-intervals">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This lesson sits in the middle of the statistics track, and it is the hinge where
+    description turns into inference. The foundational lessons — <strong>Describing
+    Data</strong> (centres, spread, outliers) and <strong>Probability Foundations</strong>
+    (randomness made computable) — built every tool this page consumes: quartiles, the
+    standard deviation, and the behaviour of random samples. Bring those forward; nothing
+    else is assumed.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>compute the range, the quartiles, the interquartile range and the standard deviation, and estimate quartiles from grouped data;</li>
+    <li>choose the right measure of spread for a given dataset — and defend the choice in context;</li>
+    <li>explain what the standard error measures and why it shrinks with the square root of the sample size;</li>
+    <li>work the confidence-interval recipe with real numbers, including planning a sample size for a target width;</li>
+    <li>read a reported interval critically, saying what the "95%" does and does not claim.</li>
+  </ul>
+  <p>
+    One habit carries the page: every formula is read for meaning before it is computed.
+    The computing is arithmetic; the meaning is the statistics.
+  </p>
+
   <h2>The idea</h2>
   <p>
     A sample mean is an estimate, not the truth — and the <strong>confidence interval</strong>
@@ -81,11 +103,24 @@ const ciQuizCfg = {
   </p>
 
   <Widget no="1" caption="interval width responds to noise (s) and sample size (√n) — shrink it by measuring better, or much more" widget="sliderLab" config={ciCfg} />
+  <p>
+    <strong>What to notice:</strong> two sliders, two levers, one readout panel. Slide the
+    sample size n and watch the 95% half-width fall by the square-root law — quadrupling n
+    from 100 to 400 only halves the interval, and the third readout keeps the score on how
+    expensive the next improvement will be. Then slide the standard deviation s: the same
+    sample size becomes more or less precise depending on how noisy the individuals are.
+    Measuring better and measuring more are the only two handles, and the panel prices both.
+  </p>
 
   <p>
     The mechanics: standard error = s/√n (how much sample means wobble), then stretch by 1.96 for
     95% confidence (the 68–95–99.7 rule from the describing-data lesson). Note the cruel geometry
     again — halving the interval takes four times the data.
+  </p>
+  <p>
+    <strong>So far:</strong> an estimate without an interval is a promise nobody can keep, and
+    the interval is assembled from measures of spread. Next: those spread measures themselves,
+    from the crude range to the standard deviation that the recipe consumes.
   </p>
 
   <h2>Spread I: range, quartiles and the interquartile range</h2>
@@ -138,6 +173,13 @@ const ciQuizCfg = {
     ingredient the confidence interval consumes.
   </p>
   <p><em>Common misconception:</em> collecting more data reduces the standard deviation. Sample size shrinks the standard error (s/√n) — the wobble of the mean — but the spread of the individuals themselves stays what it is: a larger poll does not make commutes more alike, it makes the estimate of their average steadier. That distinction is the hinge between spread of data and spread of estimates.</p>
+
+  <p>
+    <strong>So far:</strong> range, IQR and standard deviation each answer a different
+    question about spread, and each has a failure mode — the range dies on one outlier,
+    the IQR discards half the data, the SD punishes it. The adult skill is matching the
+    measure to the data and the question, which is the next section's work.
+  </p>
 
   <h2>Choosing a measure: the context decides</h2>
   <p>
@@ -205,6 +247,13 @@ const ciQuizCfg = {
   is about the <em>mean</em>, which is far more stable than the individuals it
   averages — that stability is the whole point of averaging.</p>
 
+  <p>
+    <strong>So far:</strong> the recipe turns the standard error into an interval, and exactly
+    three levers — the noise s, the sample size n and the confidence level — set its width.
+    What remains is the reading discipline that keeps an interval honest, which the next
+    section compresses into five habits.
+  </p>
+
   <h2>Reading intervals like a professional</h2>
   <ul>
     <li><strong>It's the procedure, not the one interval.</strong> Your specific 95% interval either contains the truth or doesn't — the confidence attaches to the method that generated it.</li>
@@ -229,6 +278,45 @@ const ciQuizCfg = {
     assumption (uniform spread inside classes) that individual data would
     not need — one reason statistical agencies publish both grouped
     summaries and, where privacy allows, microdata.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Eleven ordered test scores have Q1 = 18 and Q3 = 36. What is the IQR, and what does it measure?</li>
+    <li>A survey of 100 commuters reports a mean of 42 minutes with s = 8. Work the 95% confidence interval for the mean.</li>
+    <li>Why does quadrupling the sample size only halve the interval's width?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) IQR = 36 − 18 = 18 — the width of the middle 50% of the
+    data, immune to whatever happens at the extremes, which is why it pairs naturally with
+    the median on skewed data. (2) SE = 8/√100 = 0.8, so the interval is 42 ± 1.96 × 0.8 ≈
+    40.4 to 43.6 minutes; if you multiplied s by 1.96 without dividing by √n, you built an
+    interval for individuals — a much wider statement (26 to 58) about a different question.
+    (3) Because the standard error carries √n in its denominator: averaging independent
+    errors adds their variances, so the spread of the <em>mean</em> falls as 1/√n and
+    precision is sold at a square-root price — four times the data buys only two times the
+    narrowness.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A centre without a spread is a headline without a story; the confidence interval is spread made honest.</li>
+    <li>IQR = Q3 − Q1 is the middle 50%, robust to outliers; the standard deviation uses every value and is sensitive to them.</li>
+    <li>Pair the median with the IQR for skewed data; pair the mean with the SD for roughly symmetric data.</li>
+    <li>Standard error = s/√n: sample means wobble with the square root of the sample size.</li>
+    <li>The 95% CI is estimate ± 1.96 × SE; 2.576 buys 99% confidence at the price of width.</li>
+    <li>"95%" describes the procedure's long-run capture rate — not this one interval, and never the individuals.</li>
+    <li>Width is a design parameter: decide it in advance, then solve for n at the square-root price.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The interval sizes an effect with honest error bars; <strong>Hypothesis Testing</strong>
+    asks the complementary question — is the effect real at all? — and the two turn out to
+    be two views of the same mathematics. <strong>Sampling &amp; Survey Design</strong>
+    explains where the s and n in the recipe come from, and <strong>Correlation &amp;
+    Regression</strong> wraps the same inferential logic around lines instead of means.
   </p>
 
   <h2>Going deeper</h2>
@@ -263,4 +351,12 @@ const ciQuizCfg = {
   <p class="sources"><strong>Sources:</strong> OpenStax, Introductory Statistics (Confidence Intervals); Student (Gosset), "The Probable Error of a Mean" (1908); Wasserman, All of Statistics.</p>
 
   <Widget no="2" caption="check yourself" widget="quiz" config={ciQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> every question leans on the page's central distinction —
+    spread of data versus spread of estimates. The first and last items test what the "95%"
+    honestly attaches to (the procedure, never the individuals in it), while the middle two
+    make the square-root law and the SD's definition do visible work. If the sixteen-times-
+    the-data answer feels shocking, reread "From spread of data to spread of estimates":
+    that one algebraic line is the whole lesson.
+  </p>
 </TopicPage>
