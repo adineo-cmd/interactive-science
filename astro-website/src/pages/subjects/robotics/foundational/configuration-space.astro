@@ -13,6 +13,23 @@ const dofCfg = {
 };
 ---
 <TopicPage slug="subjects/robotics/foundational/configuration-space">
+
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an early lesson in Robotics and it assumes no prior robotics at all:
+    "configuration", "degree of freedom" and C-space are all defined here, and the only
+    mathematics this lesson demands is multiply-and-subtract — the power of the idea is that
+    it replaces tangled geometry with one clean abstraction.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain the C-space move: a robot's whole configuration treated as a single point in an abstract space;</li>
+    <li>count degrees of freedom with Grübler's formula for planar linkages — four-bar and slider–crank included;</li>
+    <li>distinguish configuration space, workspace and task space, and say which one planning actually lives in;</li>
+    <li>classify holonomic versus nonholonomic constraints, using the car and parallel parking as the test case;</li>
+    <li>explain why world obstacles grow when mapped into C-space, and why sampling-based planners exist at all.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Robotics' most powerful single abstraction is also its least physical: replace the whole
@@ -43,6 +60,14 @@ const dofCfg = {
   </p>
 
   <Widget no="1" caption="from robot to point: the C-space move" widget="equationStep" config={dofCfg} />
+  <p>
+    <strong>What to notice:</strong> the five steps are this chapter's whole argument in order:
+    a robot state becomes a point; the dimension of that space is counted honestly with
+    Grübler's formula; the room's obstacles reappear as forbidden regions of the space;
+    planning collapses into path-finding between two points; and dimension — the space grows
+    with every joint — is the enemy that kills grids and calls sampling-based planners into
+    being. Each section below takes one step.
+  </p>
 
   <h2>Degrees of freedom and Grübler's formula</h2>
   <p>
@@ -168,6 +193,47 @@ const dofCfg = {
   </p>
   <p><em>Common misconception:</em> it is enough to plan the gripper's path around the obstacle and let the rest of the arm follow. The arm is not a point: every link sweeps its own volume, so the same sofa that occupies one modest shape in the room becomes a large curved region in joint space — and a path that looks safely around the obstacle in the workspace can pass straight through its C-space shadow with an elbow. That growth of obstacles under the mapping is why "steer the wrist, ignore the elbow" is the classic first-planner bug.</p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A four-bar linkage has four links and four revolute joints. What does Grübler's formula give, and what does that single number certify about the design?</li>
+    <li>The driver controls only two things — steering and speed — yet the car's C-space is 3-dimensional. Why is nothing missing, and what does parallel parking prove?</li>
+    <li>Why can a gripper path that looks safely around a sofa in the workspace still collide with it?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) DOF = 3 × (4 − 1) − 2 × 4 = 9 − 8 = 1: one input, spin the
+    crank, determines the whole mechanism's motion — the certificate that it will move
+    predictably, never flop and never jam. (2) A planar car configuration needs three numbers
+    (x, y, heading); the nonholonomic rolling constraint restricts the <em>directions of
+    motion</em> at each point, not the reachable set — every point is reachable, but only by
+    paths that respect the turning radius, which is exactly what the back-and-forth parallel
+    park demonstrates. (3) The robot is not a point: every link sweeps its own volume, so the
+    sofa grows into a large curved region of joint-angle space, and a path that clears it in
+    the workspace can pass straight through its C-space shadow with an elbow — the classic
+    first-planner bug.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The configuration space replaces the whole robot with one point: "where is the robot?" becomes "where is the point?".</li>
+    <li>DOF is the dimension of C-space, and Grübler's formula certifies a linkage's motion from a parts list alone.</li>
+    <li>Industrial arms have six joints because a free body needs 6 DOF; the seventh buys redundancy — self-motion to spend on obstacle and singularity avoidance.</li>
+    <li>Configuration space, workspace and task space are distinct; planning happens in the biggest one, and the task never sees the difficulty.</li>
+    <li>Nonholonomic constraints restrict velocities, not positions: the car can reach anywhere, yet never slides sideways a centimetre.</li>
+    <li>World obstacles become forbidden regions in C-space — and they grow under the mapping (the Minkowski sum).</li>
+    <li>Grids die of dimensionality; sampling-based planners trade guaranteed optimality for probabilistic completeness.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    C-spaces have topology — joint angles wrap into circles and two-joint arms live on a torus
+    — and planners that ignore the wrap-around plan across a seam that does not exist. The
+    sampling-based planners, RRT and probabilistic roadmaps, are the field's answer to
+    dimension, and the open frontier runs through planning under uncertainty and contact, and
+    whole-body humanoid planning where dynamics, balance and foot-placement constraints all
+    bind at once.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     C-spaces have topology, and it bites. A single revolute joint's angle lives on a circle:
@@ -197,5 +263,5 @@ const dofCfg = {
     dynamics, balance and nonholonomic foot-placement constraints all bind at once.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Lynch &amp; Park, <em>Modern Robotics</em>, Ch. 2 (official companion site); LaValle, <em>Planning Algorithms</em>.</p>
+  <p class="sources"><strong>Sources:</strong> Lynch &amp; Park, <em>Modern Robotics</em>, Ch. 2 (official companion site); LaValle, <em>Planning Algorithms</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
