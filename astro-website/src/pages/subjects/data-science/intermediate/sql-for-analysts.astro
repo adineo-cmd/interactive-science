@@ -21,6 +21,23 @@ const sqlQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/data-science/intermediate/sql-for-analysts">
+
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an intermediate lesson in Data Science, building on the foundational lesson
+    <em>From Data to Decisions</em>: you should be comfortable with tables, filters and
+    simple summaries, and with the cleaning lesson's warning that data can misdescribe
+    itself. No database is needed to read it.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>trace a query through the logical order FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY;</li>
+    <li>state the grain of a query at every step and spot when a join changes it;</li>
+    <li>choose join types deliberately, knowing each defines a different population;</li>
+    <li>predict how NULLs change filters, joins and aggregates;</li>
+    <li>write multi-step analyses as readable CTE pipelines a teammate can audit.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     SQL is <strong>the analyst's primary interface to data</strong>. It is
@@ -43,6 +60,12 @@ const sqlQuizCfg = {
   </p>
 
   <Widget no="1" caption="the four techniques that cover most analyst work" widget="equationStep" config={sqlCfg} />
+  <p>
+    <strong>What to notice:</strong> the four techniques are one progression: joins
+    decide which rows exist, GROUP BY decides what one output row means, window
+    functions compute across rows without collapsing them, and CTEs package the whole
+    thing as a readable pipeline. The worked analysis near the end reassembles all four.
+  </p>
 
   <h2>SELECT, WHERE, and the relational frame</h2>
   <p>
@@ -61,6 +84,15 @@ const sqlQuizCfg = {
     — filter to completed, positive-amount orders, show the twenty largest.
     Every analysis, however long, is this pipeline repeated and layered.
   </p>
+  <p><em>Common misconception:</em> "SQL runs in the order it is written, so you can
+  filter on anything anywhere." The engine reorders your query into its logical
+  pipeline: FROM and JOIN first, WHERE before grouping, HAVING after, SELECT near the
+  end, ORDER BY and LIMIT last. That is why a column alias built in SELECT cannot be
+  used in WHERE.</p>
+  <p>
+    <strong>So far:</strong> a query is a pipeline through a fixed logical order, not a
+    list of lines. Next: what does one row represent at each stage?
+  </p>
 
   <h2>Grain: the question behind every query</h2>
   <p>
@@ -77,6 +109,15 @@ const sqlQuizCfg = {
     <em>before</em> joining when the measure belongs to the one-side (sum items per
     order first, then join to orders — the fan-out never happens). Analysts who
     internalise grain stop making the most common silent mistake in the craft.
+  </p>
+  <p><em>Common misconception:</em> "a join that returns more rows has given you more
+  information." A fan-out join has given you less: duplicated rows make every later sum
+  and average count the same fact several times, and the table still looks plausible.
+  Row growth after a join is a question to ask, not a success to enjoy.</p>
+  <p>
+    <strong>So far:</strong> grain is what one row means, and silent grain changes are
+    how SQL produces wrong numbers that look right. Joins are where grain changes most
+    often — and each join type also decides who is in the analysis at all.
   </p>
 
   <h2>Joins: choosing your population</h2>
@@ -119,6 +160,10 @@ const sqlQuizCfg = {
     known channel", and a denominator decision that changes every rate you
     compute.
   </p>
+  <p><em>Common misconception:</em> "WHERE and HAVING are two spellings of the same
+  filter." WHERE filters rows before groups exist; HAVING filters groups after they are
+  formed. A group condition in WHERE fails outright, and a row condition in HAVING
+  works only by accident; the placement tells the reader where your condition acts.</p>
 
   <h2>NULL semantics: not zero, not false, not equal to anything</h2>
   <p>
@@ -136,6 +181,12 @@ const sqlQuizCfg = {
     NULLs changed the numerator, the denominator, or the population — all three
     are possible, all three are silent.
   </p>
+  <p><em>Common misconception:</em> "NULL is just zero, or false, or an empty string you
+  can test for with an equals sign." NULL means no value: it fails every equality test,
+  drops out of filters without asking you, and leaves aggregates from both the sum and
+  the count, so an AVG silently becomes the average of known values only. Test with IS
+  NULL, substitute with COALESCE deliberately, and decide what "no sale" versus "sale
+  of 0" means for your metric.</p>
 
   <h2>Window functions: aggregates without collapsing</h2>
   <p>
@@ -194,6 +245,45 @@ const sqlQuizCfg = {
     nobody can re-run is an anecdote.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why does filtering on a SELECT alias inside WHERE fail, and what are the two fixes?</li>
+    <li>Orders (one row per order) joins order_items (three rows per order), and you then SUM a shipping fee that lives on the order. What happens, and what is the fix?</li>
+    <li>A LEFT JOIN plus "WHERE right.key IS NULL" answers which business question, and why does an INNER JOIN with the same filter answer a different one?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Aliases are born at SELECT, which runs after WHERE in
+    the logical order. Repeat the expression in WHERE, or wrap the query in a CTE and
+    filter on the alias outside. (2) The fee counts three times per order, inflating
+    revenue by the average items-per-order, with no error message. Aggregate items per
+    order first, then join — and check row counts at every step. (3) Customers with no
+    orders in the period: the anti-join keeps the unmatched left rows. An inner join
+    deleted the unmatched rows before the filter could see them, so it counts customers
+    who did order — the left join made the missingness visible; the inner join destroyed
+    it.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>SQL is declarative: you describe the result, the engine picks the plan.</li>
+    <li>The logical order FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY explains most beginner errors.</li>
+    <li>Grain — what one row represents — is the question behind every query, and joins are where it silently changes.</li>
+    <li>Join type is a population decision: INNER drops unmatched rows, LEFT keeps them and makes missingness visible.</li>
+    <li>NULL is not zero: it fails equality, escapes filters and leaves aggregates from numerator and denominator.</li>
+    <li>Window functions compute across rows while keeping them, unlocking top-per-group and period-over-period questions.</li>
+    <li>CTE pipelines with grain comments are the deliverable: an analysis nobody can re-run is an anecdote.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling intermediate lessons take the results further: <em>Exploratory Data
+    Analysis</em> and <em>Charts That Tell the Truth</em> interrogate and present what
+    your queries return, and <em>Cleaning Messy Data</em> fixes it upstream when the
+    numbers misbehave. Advanced work continues in <em>Statistics for Data Science</em>
+    and <em>AB Testing</em>.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     Four notes from the working edge. <strong>The engine is a planner</strong>:
@@ -215,6 +305,11 @@ const sqlQuizCfg = {
     architecture of serious teams — the query is the contract, and the warehouse
     is where the truth lives.
   </p>
-  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data for Large Shared Data Banks" (1970); PostgreSQL documentation; Mode SQL Tutorial; Kimball, The Data Warehouse Toolkit.</p>
+  <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data for Large Shared Data Banks" (1970); PostgreSQL documentation; Mode SQL Tutorial; Kimball, The Data Warehouse Toolkit. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: the analyst's SQL" widget="quiz" config={sqlQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> answer before revealing, then read each explanation
+    even when you were right. The wrong options are plausible-looking results of the
+    very mistakes this lesson warns about.
+  </p>
 </TopicPage>

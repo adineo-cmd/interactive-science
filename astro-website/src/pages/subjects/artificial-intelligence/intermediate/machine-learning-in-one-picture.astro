@@ -21,6 +21,23 @@ const mlpicQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/machine-learning-in-one-picture">
+
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an intermediate lesson in Artificial Intelligence, built directly on the
+    foundational lesson <em>How Machines Learn</em>: you should already know what a model, a
+    dataset and a prediction are, and why learning from data differs from hand-written
+    rules. No coding is needed; everything runs on ideas and worked examples.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>name the four learning paradigms and say what signal each one learns from;</li>
+    <li>state Tom Mitchell's definition of learning and use it to check whether a system is really learning;</li>
+    <li>decide, for a given problem, whether supervised, unsupervised, reinforcement or self-supervised learning fits;</li>
+    <li>read a train-versus-test gap as evidence of overfitting;</li>
+    <li>predict how each paradigm characteristically fails, and what evaluation discipline guards against it.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     The AI field organises itself into four learning paradigms, defined by a single
@@ -43,6 +60,14 @@ const mlpicQuizCfg = {
   </p>
 
   <Widget no="1" caption="the four paradigms, defined by their learning signal" widget="equationStep" config={mlpicCfg} />
+  <p>
+    <strong>What to notice:</strong> step through the four cards and read each one as an
+    answer to the same question: where does the learning signal come from? Labels supplied
+    by humans (supervised), structure discovered in raw data (unsupervised), reward returned
+    by an environment (reinforcement), labels manufactured from the data itself
+    (self-supervised). Try sorting a system you use daily — a spam filter, a photo
+    grouper — into one of the four boxes.
+  </p>
 
   <h2>Supervised: learning from labelled examples</h2>
   <p>
@@ -63,6 +88,11 @@ const mlpicQuizCfg = {
     training set, not lending — the gap between the two numbers is the most
     important number in applied ML.
   </p>
+  <p><em>Common misconception:</em> "the model scored 95% on its training data, so it is a
+  good model." Training performance is the easiest score to inflate: a model with enough
+  capacity can memorise its examples without learning anything that transfers. The only
+  number that matters is the one on data the model never saw — which is why the held-out
+  set is sacred.</p>
   <p>
     Where the labels come from is half the engineering: human annotation (expensive,
     slow, biased by whoever paid for it), historical records (free, but they encode
@@ -71,6 +101,11 @@ const mlpicQuizCfg = {
     did, not what was right). The supervised paradigm's whole character — its power
     and its pathologies — flows from this: <strong>the model can only be as good as
     the signal in the labels</strong>.
+  </p>
+  <p>
+    <strong>So far:</strong> supervised learning turns labelled examples into a mapping
+    from inputs to outputs, and its character is set by the quality of the labels. Next,
+    what can be learned when nobody supplies answers at all.
   </p>
 
   <h2>Unsupervised: finding structure without labels</h2>
@@ -91,6 +126,17 @@ const mlpicQuizCfg = {
     validation is practical: do the segments predict different behaviour? Do the
     anomalies, checked by hand, turn out to be real? Unsupervised structure earns
     trust only by usefulness.
+  </p>
+  <p><em>Common misconception:</em> "clustering finds the groups that are really in the
+  data." It finds the groups its distance measure defines: k-means will happily partition
+  customers by height when you meant spending, and it always returns k clusters whatever
+  you feed it. The structure is real arithmetic; whether it means anything is a human
+  judgment, validated by usefulness.</p>
+  <p>
+    <strong>So far:</strong> supervised learning fits a mapping to labelled examples;
+    unsupervised learning proposes structure in raw data and leaves the interpretation
+    to you. The third paradigm changes the question entirely: there, the machine acts
+    first and learns from what happens.
   </p>
 
   <h2>Reinforcement: learning from reward</h2>
@@ -114,6 +160,10 @@ const mlpicQuizCfg = {
     feedback) brought the paradigm into the mainstream: humans rank responses, a
     reward model learns the ranking, and the language model is nudged toward it.
   </p>
+  <p><em>Common misconception:</em> "the agent that beat the world champion must have
+  understood Go the way a human player does." It optimised a reward signal against itself
+  over millions of games. The triumph and the danger are the same fact: the system
+  optimises the reward it was given, not the understanding you imagined.</p>
 
   <h2>Self-supervised: the label generator</h2>
   <p>
@@ -131,6 +181,16 @@ const mlpicQuizCfg = {
     supervised learning with an automated label factory, which is why it inherits
     supervised learning's mechanics (loss, generalisation, overfitting) at a scale
     where the old intuitions about data volume stop applying.
+  </p>
+  <p><em>Common misconception:</em> "large language models learn without any supervision,
+  so they are unsupervised learning." They are self-supervised: supervision is there,
+  just manufactured from the data itself — mask a word, predict it, check the answer
+  against the text. That makes them supervised learners at heart, overfitting included,
+  which is why held-out evaluation never stops mattering.</p>
+  <p>
+    <strong>So far:</strong> four sources of signal, four paradigms — labels, structure,
+    reward, and labels made from the data itself. Next, a decision procedure for choosing
+    among them.
   </p>
 
   <h2>Choosing a paradigm by problem shape</h2>
@@ -196,6 +256,44 @@ const mlpicQuizCfg = {
     above all four boxes.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>State Mitchell's definition of learning: what are T, E and P?</li>
+    <li>Predicting a house price from features versus grouping customers with no target variable: which paradigm is each, and what decides it?</li>
+    <li>A model scores 96% on its training data and 70% on held-out data. What is the diagnosis, and what would you do?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) A program learns from experience E with respect to task
+    T and performance measure P if its performance at T, measured by P, improves with E.
+    (2) The price prediction
+    is supervised regression (a numeric target); the grouping is unsupervised clustering
+    (no labels). The learning signal, not the algorithm, decides the box. (3) Overfitting:
+    the model memorised the training set. Simplify the model or improve the signal, and
+    trust only the held-out number.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The four paradigms are defined by one question: where does the learning signal come from?</li>
+    <li>Supervised learning fits mappings to labelled examples; generalisation to unseen data is the objective.</li>
+    <li>Unsupervised learning proposes structure; clusters are suggestions to validate, not truths discovered.</li>
+    <li>Reinforcement learning optimises the reward you wrote — sample-hungry and fragile to misspecification.</li>
+    <li>Self-supervised learning manufactures labels from raw data, enabling the pretrain-then-fine-tune recipe.</li>
+    <li>The train-versus-test gap is the field's most important number: a big gap means overfitting.</li>
+    <li>Every paradigm optimises the signal it was given, not the intention you had — evaluation is permanent.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling intermediate lessons fill in the boxes: <em>Classification and
+    Regression</em> trains a supervised model properly, <em>Image Recognition (CNNs)</em>
+    applies it to vision, and <em>Neural Networks from Scratch</em> builds the training
+    loop by hand. The advanced strand then takes up <em>Reinforcement Learning</em>,
+    <em>Transformers and Large Language Models</em> and <em>Evaluation, Bias and
+    Safety</em>.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     Four notes from the expert shelf. <strong>No free lunch</strong>: averaged over
@@ -221,6 +319,12 @@ const mlpicQuizCfg = {
     LLM — arrives pre-explained: ask what the signal is, and the paradigm
     announces itself.
   </p>
-  <p class="sources"><strong>Sources:</strong> Mitchell, Machine Learning (1997); Goodfellow, Bengio &amp; Courville, Deep Learning (2016); Silver et al., "Mastering the game of Go" (2016); LeCun, "A Path Towards Autonomous Machine Intelligence" (2022); Bommasani et al., "On the Opportunities and Risks of Foundation Models" (2021).</p>
+  <p class="sources"><strong>Sources:</strong> Mitchell, Machine Learning (1997); Goodfellow, Bengio &amp; Courville, Deep Learning (2016); Silver et al., "Mastering the game of Go" (2016); LeCun, "A Path Towards Autonomous Machine Intelligence" (2022); Bommasani et al., "On the Opportunities and Risks of Foundation Models" (2021). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: the four learning signals" widget="quiz" config={mlpicQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> commit to an answer before revealing the choices,
+    then read the explanation even when you were right — each one names the distinction
+    the question was really testing. The wrong options are mostly beliefs the lesson has
+    already corrected.
+  </p>
 </TopicPage>

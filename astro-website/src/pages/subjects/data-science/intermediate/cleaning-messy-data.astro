@@ -21,6 +21,24 @@ const cleanQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/data-science/intermediate/cleaning-messy-data">
+
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an intermediate lesson in Data Science, and it assumes the foundational
+    lesson <em>From Data to Decisions</em>: you know what a dataset, a variable and an
+    aggregate are, and you have felt the gap between a tidy example and a real file.
+    Nothing here requires coding — the discipline is the sequence profile, decide,
+    encode, validate.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>profile a raw table systematically instead of fixing by guesswork;</li>
+    <li>classify missing data by its mechanism and choose a treatment that matches it;</li>
+    <li>define identity and deduplicate with respect to a stated key;</li>
+    <li>distinguish impossible values from implausible ones, and handle each correctly;</li>
+    <li>turn every cleaning decision into a repeatable, testable script.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Data cleaning is <strong>80% of the work and 100% of the reputation risk</strong> —
@@ -40,8 +58,20 @@ const cleanQuizCfg = {
     typed by a human somewhere. Cleaning is reading those fossils correctly, not
     scrubbing them away.
   </p>
+  <p><em>Common misconception:</em> "cleaning means deleting the bad rows until the
+  dataset looks tidy." Deletion is the riskiest tool: removed rows change the
+  population your results describe, and they are often the most informative ones —
+  the returning customers, the sickest patients, the real outliers. Most cleaning is
+  deciding what each oddity means and recording the decision.</p>
 
   <Widget no="1" caption="the cleaning workflow — profiling, mechanisms, identity, validation" widget="equationStep" config={cleanCfg} />
+  <p>
+    <strong>What to notice:</strong> the four steps are an order of operations, not a
+    menu. Profiling comes first because you cannot fix what you have not measured; the
+    missingness mechanism comes next because it decides the treatment; identity defines
+    what "a duplicate" even means; validation turns the whole session into something
+    that re-runs. Watch how often the right move is to write the decision down.
+  </p>
 
   <h2>Where mess comes from</h2>
   <p>
@@ -95,6 +125,16 @@ const cleanQuizCfg = {
     the variance — the data after imputation literally looks more average than the
     world was.
   </p>
+  <p><em>Common misconception:</em> "filling missing values with the column average is a
+  safe, neutral default." It is not neutral: it injects identical values at the mean,
+  shrinks the variance, and manufactures agreement where the world had variation, and
+  when missingness is not at random the surviving rows were already biased. Flag the
+  missingness, or impute with a method and a sensitivity check.</p>
+  <p>
+    <strong>So far:</strong> profiling produces the work plan, and the missingness
+    mechanism decides the treatment. Next we ask the question underneath every count:
+    what makes two rows the same thing?
+  </p>
 
   <h2>Identity, duplicates and keys</h2>
   <p>
@@ -127,6 +167,17 @@ const cleanQuizCfg = {
     newton-seconds — a unit mismatch worth a 125-million-dollar spacecraft, and the
     standing proof that "obviously wrong" values deserve a root-cause question
     ("why does this column contain this?") rather than a delete key.
+  </p>
+  <p><em>Common misconception:</em> "an outlier is, by definition, bad data, so the
+  professional move is to remove it." The word only means "far from the rest" — whether
+  it is an error or a finding takes a root-cause question. An age of 250 is a bug; a
+  transaction of 4,999,999 may be the whale customer you most need to understand.
+  Investigate implausible values before touching them; fix only the
+  impossible ones.</p>
+  <p>
+    <strong>So far:</strong> missingness has a mechanism and outliers have causes — both
+    are diagnosed, not deleted. Now the quality question moves from single cells to the
+    shape of the whole table.
   </p>
 
   <h2>Joins, merges and the shape of the data</h2>
@@ -177,6 +228,11 @@ const cleanQuizCfg = {
     decisions documented inline) is evidence; a hand-edited spreadsheet is a
     confession waiting to be discovered.
   </p>
+  <p><em>Common misconception:</em> "cleaning is a one-time stage, and a dataset that was
+  clean last month still is." Data rots upstream: schemas drift, partners change exports,
+  a temporary fix ships on a Friday and stays for a year. That is why professional
+  cleaning is assertions that re-run on every load — so the day the data changes
+  underneath you, something screams.</p>
 
   <h2>A worked cleaning session: one raw CSV</h2>
   <p>
@@ -200,6 +256,45 @@ const cleanQuizCfg = {
     can be defended line by line.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A survey's highest earners skip the income question. Why is dropping those rows wrong, and what would you do instead?</li>
+    <li>Your row count jumps from 1,000,000 to 1,800,000 after a join. What is the most likely cause, and what habit catches it?</li>
+    <li>You find an age of 250 and a transaction of 4,999,999 in the same table. How should the two be treated differently?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The missingness is not at random — it relates to the
+    unobserved value — so the surviving rows are a biased sample and every average is
+    skewed. Keep the missingness visible as a flag or model it explicitly, and report
+    the mechanism. (2) A many-to-many join fanned the rows out, and
+    every downstream total now double-counts. Check row counts before and after every
+    join, and aggregate the many-side first when the measure belongs to the one-side.
+    (3) 250 is impossible, so it is an error to fix once diagnosed (a birthdate
+    subtraction bug). 4,999,999 is merely implausible, so it is a finding to investigate
+    before touching — it may be the most important row in the file.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Messy data is archaeology: every oddity is a fossil of how the data was captured, merged or typed.</li>
+    <li>Profile first, hypothesise second, fix third, document always.</li>
+    <li>Missingness has a mechanism; only missing-completely-at-random is safe to drop.</li>
+    <li>Mean imputation fakes a cluster at the mean and shrinks variance; flags and model-based imputation are more honest.</li>
+    <li>"Duplicate" is meaningless until you define the key that makes a row unique.</li>
+    <li>Impossible values are errors; implausible values are findings to investigate first.</li>
+    <li>Every cleaning decision becomes a test that re-runs on every load.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling intermediate lessons build directly on it: <em>SQL for
+    Analysts</em> queries it, <em>Exploratory Data Analysis</em> inspects it and
+    <em>Charts That Tell the Truth</em> presents it. Advanced work continues in
+    <em>Machine Learning Basics</em>, and the expert strand takes up <em>Data
+    Engineering and Pipelines</em> and <em>Ethics, Privacy and Bias</em>.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     Four expert notes. <strong>Probabilistic record linkage</strong>: the formal
@@ -218,6 +313,11 @@ const cleanQuizCfg = {
     is a series of claims about who was included and excluded, and those claims
     deserve the same scrutiny as the findings.
   </p>
-  <p class="sources"><strong>Sources:</strong> Wickham, "Tidy Data", Journal of Statistical Software (2014); Kimball, The Data Warehouse Toolkit; Great Expectations data-quality documentation; NASA, Mars Climate Orbiter Mishap Investigation Board report (1999).</p>
+  <p class="sources"><strong>Sources:</strong> Wickham, "Tidy Data", Journal of Statistical Software (2014); Kimball, The Data Warehouse Toolkit; Great Expectations data-quality documentation; NASA, Mars Climate Orbiter Mishap Investigation Board report (1999). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: the cleaning discipline" widget="quiz" config={cleanQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> answer before revealing, then read each explanation
+    even when you were right — every one names the principle the question tests. Several
+    wrong options are habits that feel professional and are not.
+  </p>
 </TopicPage>
