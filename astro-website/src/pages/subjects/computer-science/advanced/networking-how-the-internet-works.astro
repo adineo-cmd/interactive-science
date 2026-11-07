@@ -51,6 +51,24 @@ const netQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/networking-how-the-internet-works">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Computer Science lesson, and it builds the internet from one
+    organising idea rather than assuming it. From the foundational tier you need
+    <em>Binary and bits</em> (what a packet actually carries) and <em>Growth of functions</em>
+    (why repeated round trips dominate); from the intermediate tier, <em>Programming
+    fundamentals</em> supplies the mental model of layered machinery. No networking knowledge
+    is assumed — the ladder is built here, layer by layer.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain packet switching, and why the network promises only best effort;</li>
+    <li>trace one page load through DNS, the TCP handshake, TLS and HTTP, with realistic timings;</li>
+    <li>describe how TCP manufactures reliability and fairness without any central control;</li>
+    <li>separate bandwidth from latency, and compute transfer times and physics floors;</li>
+    <li>map digital currency and cyber security onto the same layer stack.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     The internet is <strong>a packet-switched network with no owner and no centre</strong>, and its one
@@ -63,6 +81,12 @@ const netQuiz = {
   </p>
 
   <Widget no="1" caption="the journey of one page request, layer by layer" widget="equationStep" config={netCfg} />
+  <p>
+    <strong>What to notice:</strong> step through the five cards and watch responsibility
+    climb the stack: the network interior stays simple and best-effort throughout, while IP
+    routes, TCP guarantees, DNS names and TLS secures. That deliberate simplicity let one
+    1970s design absorb video, voice, gaming and apps nobody predicted.
+  </p>
 
   <h2>The packet principle: why everything arrives in pieces</h2>
   <p>
@@ -75,6 +99,19 @@ const netQuiz = {
     not at all — <strong>the network never promised neatness</strong>. All the neatness you experience is
     manufactured at the endpoints, which is the design's deepest lesson: <strong>best-effort inside,
     guarantees assembled at the edges</strong>.
+  </p>
+
+  <p><em>Common misconception:</em> "a file sent over the internet travels as one unbroken
+  stream down one wire, like water in a pipe." That is how the telephone network worked. In
+  reality your file is chopped into thousands of
+  labelled packets that share the wires with everyone else's and may take different routes,
+  arriving out of order, duplicated, or not at all. The neatness you experience is
+  manufactured at the endpoints by TCP: best effort inside, guarantees assembled at the
+  edges.</p>
+  <p>
+    <strong>So far:</strong> data crosses the internet as thousands of independent packets
+    that share the wires statistically and arrive in any order. Everything from here tames
+    that chaos.
   </p>
 
   <h2>IP: addressing and hop-by-hop routing</h2>
@@ -108,6 +145,18 @@ const netQuiz = {
     buyable; latency is physics — the reason content delivery networks move data closer to you.
   </p>
 
+  <p><em>Common misconception:</em> "my files always arrive intact, so the network hardware
+  must be reliable." The opposite is the design: packets are lost constantly, and the
+  reliability you experience is a protocol running on unreliable parts. TCP numbers every
+  byte, detects the gaps, re-requests the missing ranges and throttles the sender when loss
+  signals congestion. Remove TCP and the same cables deliver a garbled stream — the
+  guarantee lives in software at the edges, not in the wires.</p>
+  <p>
+    <strong>So far:</strong> IP routes packets hop by hop toward numeric addresses, and TCP
+    reassembles them into an ordered byte stream at the far end. One problem remains: humans
+    cannot remember the numbers.
+  </p>
+
   <h2>DNS: the phone book and its caches</h2>
   <p>
     Humans type names; machines need numbers. The <strong>Domain Name System</strong> is a globally
@@ -133,6 +182,12 @@ const netQuiz = {
     payloads and caching. Note the separation of concerns: <strong>the internet (IP) and the web (HTTP +
     HTML) are different layers</strong> — the web is one application riding the network, replaceable
     without touching the infrastructure below.
+  </p>
+
+  <p>
+    <strong>So far:</strong> the full trace assembles DNS, TCP, TLS and HTTP into roughly 200
+    milliseconds of coordinated work. Before attaching the syllabus's companion topics, the
+    two performance axes deserve their own arithmetic.
   </p>
 
   <h2>The syllabus companions: digital currency and the security layer</h2>
@@ -170,6 +225,13 @@ const netQuiz = {
     made peace with physics.
   </p>
 
+  <p><em>Common misconception:</em> "upgrading to a faster connection makes everything feel
+  snappier, since both are sold as speed." Bandwidth (how much per second) and latency (how
+  long a bit takes) are independent axes. The 1 GB file does finish sooner on a fatter link,
+  but every interactive exchange still pays the same fixed round-trip tax, and light in
+  fibre sets a floor no purchase lifts. That is why page-performance work fights round trips
+  and payload sizes rather than raw capacity.</p>
+
   <h2>The application zoo: mail, ports, and sessions</h2>
   <p>
     The web is the most visible application on TCP/IP, not the only one — and the zoo shares one
@@ -204,6 +266,42 @@ const netQuiz = {
     why this unit's ideas reappear in the expert rung's distributed-systems lesson nearly unchanged.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>In one sentence each: what do IP, TCP, DNS and TLS each contribute to a page load?</li>
+    <li>A 2 GB file crosses a 200 Mbps link. Ignoring latency, roughly how long does the transfer take?</li>
+    <li>Why is DNS built as a hierarchy of caches rather than one central phone book?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) IP routes packets to numeric addresses, best effort; TCP
+    reassembles them reliably at the endpoints; DNS translates names to addresses and caches
+    the answers; TLS encrypts and proves the server's identity. (2) 2,000 MB × 8 ÷ 200 ≈ 80
+    seconds — the section's 1 GB example doubled on both axes. (3) One central server would
+    be a single point of failure, a bottleneck and an attack target; caching at every level
+    puts answers milliseconds away and lets lookups scale — the price is that changes
+    propagate only as each record's TTL expires.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The internet is packet-switched and centreless: best effort inside, guarantees assembled at the endpoints.</li>
+    <li>IP routes hop by hop; no router knows the whole path — the path is an emergent fact.</li>
+    <li>TCP manufactures reliability and fairness by feedback: sequence numbers, ACKs, slow start, the sawtooth.</li>
+    <li>DNS is a hierarchy of caches; each record's TTL decides how long an answer may be reused.</li>
+    <li>Bandwidth and latency are independent; latency has a physics floor set by light in fibre.</li>
+    <li>The web, digital currency and security all ride the same ladder — layering is both the strength and the attack surface map.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The natural next steps in this subject's advanced tier are <em>Cybersecurity: threats and
+    defences</em>, which expands the attack-surface mapping sketched above, and <em>Web
+    development: HTML, CSS and JavaScript</em>, which builds on the application layer you
+    have just traced. <em>Operating systems basics</em> completes the picture of where the
+    sockets actually run.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     Three ideas take you to the research frontier. <strong>The end-to-end principle</strong>: keep the
@@ -222,7 +320,13 @@ const netQuiz = {
     IETF's "rough consensus and running code" is the internet's constitution, and it is being tested.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Cerf &amp; Kahn, "A Protocol for Packet Network Intercommunication" (1974); Kurose &amp; Ross, <em>Computer Networking: A Top-Down Approach</em>; RFC 793 (TCP), RFC 1035 (DNS).</p>
+  <p class="sources"><strong>Sources:</strong> Cerf &amp; Kahn, "A Protocol for Packet Network Intercommunication" (1974); Kurose &amp; Ross, <em>Computer Networking: A Top-Down Approach</em>; RFC 793 (TCP), RFC 1035 (DNS). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: reliability, physics and caches" widget="quiz" config={netQuiz} />
+  <p>
+    <strong>What to notice:</strong> each question's feedback names the layer doing the work
+    — TCP's sequence numbers, the speed of light in fibre, the DNS cache and its TTL. If any
+    answer surprised you, reread the matching section above: the quiz is a layer-by-layer map
+    of this lesson, not a memory test.
+  </p>
 </TopicPage>

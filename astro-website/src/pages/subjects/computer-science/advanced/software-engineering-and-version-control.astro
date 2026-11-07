@@ -51,6 +51,25 @@ const sweQuiz = {
 };
 ---
 <TopicPage slug="subjects/computer-science/advanced/software-engineering-and-version-control">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Computer Science lesson, and it is about the engineering that
+    surrounds the code rather than the code itself. From the foundational tier you
+    need <em>Binary and Bits</em> (how content becomes hashes) and <em>Growth of
+    Functions</em> (the logarithms and quadratics that recur below); from the
+    intermediate tier, <em>Programming Fundamentals</em> is assumed throughout, and
+    <em>Algorithms: Searching and Sorting</em> supplies the binary-search idea that
+    <code>git bisect</code> will reuse.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain what a commit, branch, merge and conflict are in Git's snapshot model;</li>
+    <li>defend the test pyramid and describe test-driven development's cycle;</li>
+    <li>argue the CI/CD and code-review case using the DORA evidence;</li>
+    <li>compute communication-channel growth and explain Brooks's law from it;</li>
+    <li>read a professional repository — README, CI config, protected main — and say what each element buys.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Writing code is a fraction of software engineering. The discipline exists because real software
@@ -61,6 +80,14 @@ const sweQuiz = {
   </p>
 
   <Widget no="1" caption="the five practices that make software survive its authors" widget="equationStep" config={sweCfg} />
+  <p>
+    <strong>What to notice:</strong> the five panels are not independent tips — they
+    lock together. Git makes change reversible, small commits make history readable,
+    tests convert belief into evidence, review adds the second pair of eyes, and
+    refactoring is safe only because the first three hold. When you reach the
+    incident walkthrough later, watch the same five practices reappear as the
+    difference between a minor scare and a disaster.
+  </p>
 
   <h2>Git: history as a first-class object</h2>
   <p>
@@ -81,6 +108,13 @@ const sweQuiz = {
     routine.
   </p>
 
+  <p>
+    <strong>So far:</strong> version control turns a codebase's history into a
+    first-class object — snapshots, branches and merges that make change reversible
+    and collaboration mergeable. But reversibility only matters if you can tell
+    whether the code <em>works</em>, which is the next section's problem.
+  </p>
+
   <h2>Testing: converting belief into evidence</h2>
   <p>
     Untested software is a rumour. The professional hierarchy is the <strong>test pyramid</strong>: many
@@ -95,6 +129,18 @@ const sweQuiz = {
     change, and it is precisely what makes the last practice in this lesson — fearless refactoring —
     possible. Coverage (the fraction of code the tests touch) is a useful smoke detector and a useless
     target: 100% coverage of assertions-free tests proves nothing.
+  </p>
+
+  <p>
+    <em>Common misconception:</em> "our test suite covers 100% of the lines, so the
+    code is well tested." Coverage measures what the tests <em>touch</em>, not what
+    they <em>check</em> — a test suite that calls every function with no assertions
+    can reach 100% while proving nothing. The number is a smoke detector, useful for
+    finding the untested corners, and useless as a target in itself. What makes a
+    suite a specification is the pyramid below it: many fast unit tests that fail
+    with pinpoint causes, plus TDD's discipline of writing the failing test first.
+    A contrasting example: delete the body of a function and a coverage-metric
+    suite can stay green if nothing asserts on the result.
   </p>
 
   <h2>The shipping discipline: CI/CD and review</h2>
@@ -164,6 +210,14 @@ const sweQuiz = {
     security, is a process — and the process is the software engineering.
   </p>
 
+  <p>
+    <strong>So far:</strong> the shipping discipline mechanises good intentions — CI
+    pays integration pain in small doses, review adds judgement the compiler lacks,
+    and the DORA numbers reward small batches. Brooks's arithmetic and technical
+    debt explain why scale strains all of it; the next section turns to the
+    beginning of a project, where most failures are seeded.
+  </p>
+
   <h2>Requirements and estimation: the honest beginning</h2>
   <p>
     Most failed projects fail before the first commit, at requirements and estimation. Requirements come
@@ -183,6 +237,18 @@ const sweQuiz = {
     stated with mercy.
   </p>
 
+  <p>
+    <em>Common misconception:</em> "a confident single-number estimate is the mark of
+    an experienced engineer." Experience actually teaches the opposite: before the
+    design exists, estimates are routinely 4× wrong in either direction (the cone of
+    uncertainty), so a precise date is precision the work cannot support yet. The
+    professional responses are relative sizing against known work, re-estimating
+    after each increment, and offering a time-boxed spike or a range when certainty
+    is demanded too early. Contrast the two engineers: one promises "six weeks" and
+    is trusted once; the other says "four to eight, and here is what would tell us
+    which" — and is trusted permanently.
+  </p>
+
   <h2>What a professional repository looks like</h2>
   <p>
     Concretise the practices as an artefact you can imitate. A healthy repository has:
@@ -199,6 +265,45 @@ const sweQuiz = {
     bureaucracy: each element removes a category of coordination cost the team would otherwise pay
     forever, and the aggregate is the difference between a codebase people contribute to and one they
     route around.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why is branching in Git essentially free, when branching in older systems meant copying files?</li>
+    <li>A team of 5 grows to 7. How many new communication channels appear, and why does this matter for Brooks's law?</li>
+    <li>Why is rebasing a <em>shared</em> branch forbidden while reverting on one is safe?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) A branch is just a movable pointer to one commit —
+    creating one writes a tiny pointer, not a copy of the project, and
+    content-addressed storage means identical content is stored once. (2) n(n − 1)/2:
+    5 people have 10 channels, 7 have 21 — eleven new channels for two new people.
+    That quadratic growth is the mechanism under Brooks's law: each addition
+    increases coordination cost faster than capacity. (3) Rebase rewrites history —
+    your collaborators' clones still reference the old commits, and their work now
+    points at nodes your graph no longer contains. Revert creates a <em>new</em>
+    commit that undoes an old one, so history stays intact and shared.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Software engineering is the discipline of helping programs survive their own authors.</li>
+    <li>Git stores a content-addressed graph of snapshots; branches are pointers, merges combine histories, conflicts are refused guesses.</li>
+    <li>The test pyramid is an economics argument; TDD turns "I think it works" into "I can prove it still works, forever."</li>
+    <li>CI/CD mechanises discipline; code review adds judgement — and DORA data shows small batches win empirically.</li>
+    <li>Communication channels grow as n(n − 1)/2, which is why adding people to a late project makes it later.</li>
+    <li>Technical debt is a tool when repaid deliberately and a catastrophe when it compounds.</li>
+    <li>Requirements and estimation fail first: separate functional from non-functional, and never pretend to certainty before design.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The cybersecurity lesson takes the supply-chain concerns raised at the end of
+    this lesson seriously — one compromised dependency poisons everything
+    downstream — and the data-structures lesson supplies the hashing and graph ideas
+    Git is built on. Operating systems basics completes the picture of what your
+    code runs on when it leaves your machine.
   </p>
 
   <h2>Going deeper</h2>
@@ -220,7 +325,14 @@ const sweQuiz = {
     under active revision.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Brooks, <em>The Mythical Man-Month</em> (1975); Knuth (1974); Chacon &amp; Straub, <em>Pro Git</em>; Google Engineering Practices documentation; DORA State of DevOps reports.</p>
+  <p class="sources"><strong>Sources:</strong> Brooks, <em>The Mythical Man-Month</em> (1975); Knuth (1974); Chacon &amp; Straub, <em>Pro Git</em>; Google Engineering Practices documentation; DORA State of DevOps reports. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself: channels, conflicts, and the test pyramid" widget="quiz" config={sweQuiz} />
+  <p>
+    <strong>What to notice:</strong> commit to an answer before reading each
+    explanation — the feedback gives the mechanism, not just the correct letter.
+    Question 1's channel arithmetic is the spine of Brooks's law; question 2 is
+    Git's rule that an overlap is an ambiguity only a human can resolve; question 3
+    is the test pyramid's economics in one choice.
+  </p>
 </TopicPage>
