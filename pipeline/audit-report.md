@@ -1,26 +1,10 @@
 # Lesson health audit — advanced tier
 
-119 lessons: Weak (<40): 11 · Needs work (40–79): 44 · Good (≥80): 64
+119 lessons: Weak (<40): 0 · Needs work (40–79): 39 · Good (≥80): 80
 
-## Weak (<40) (11)
-- ** 39** subjects/film/advanced/mise-en-scene-analysis — 1814w, 5 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/film/advanced/screenwriting-craft — 1863w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/history/advanced/decolonisation-postcolonial-world — 1803w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/history/advanced/economic-history — 1805w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/history/advanced/germany-1918-1945 — 1873w, 3 callouts, 3 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/3 (15); recaps 0/2 (10)
-- ** 39** subjects/history/advanced/historiography-debates-and-schools — 1814w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 39** subjects/journalism/advanced/data-journalism — 1920w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/materials-science/advanced/phase-diagrams — 1907w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 39** subjects/materials-science/advanced/semiconductors-and-doping — 1880w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 39** subjects/visual-arts/advanced/figure-drawing-and-anatomy — 1904w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 39** subjects/visual-arts/advanced/painting-mediums — 1900w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
+## Weak (<40) (0)
 
-## Needs work (40–79) (44)
-- ** 40** subjects/agriculture/advanced/breeding-and-gmos — 1994w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/anthropology/advanced/economic-and-political-anthropology — 2065w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/astronomy/advanced/compact-objects — 2044w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/astronomy/advanced/exoplanets-and-detection — 2090w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/biology/advanced/speciation-and-phylogenetics — 1962w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
+## Needs work (40–79) (39)
 - ** 40** subjects/business/advanced/entrepreneurship-and-venture-funding — 2105w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/business/advanced/financial-modelling-for-managers — 2023w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 - ** 40** subjects/chemistry/advanced/organic-chemistry-functional-groups — 2029w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
@@ -61,9 +45,11 @@
 - ** 40** subjects/statistics/advanced/non-parametric-methods — 2002w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 - ** 40** subjects/statistics/advanced/time-series-analysis — 1948w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 
-## Good (≥80) (64)
+## Good (≥80) (80)
 - ** 95** subjects/agriculture/advanced/agroecology — 2749w, 3 callouts, 2 widgets
+- ** 95** subjects/agriculture/advanced/breeding-and-gmos — 2876w, 3 callouts, 2 widgets
 - ** 95** subjects/agriculture/advanced/precision-agriculture — 2737w, 3 callouts, 2 widgets
+- ** 95** subjects/anthropology/advanced/economic-and-political-anthropology — 2951w, 4 callouts, 2 widgets
 - ** 95** subjects/anthropology/advanced/ethnographic-methods — 2749w, 3 callouts, 2 widgets
 - ** 95** subjects/architecture/advanced/environmental-design-light-heat-air — 2784w, 3 callouts, 2 widgets
 - ** 95** subjects/architecture/advanced/structural-systems-arches-to-skyscrapers — 2745w, 3 callouts, 2 widgets
@@ -73,10 +59,13 @@
 - ** 95** subjects/artificial-intelligence/advanced/evaluation-bias-and-safety — 2759w, 3 callouts, 2 widgets
 - ** 95** subjects/artificial-intelligence/advanced/reinforcement-learning — 2782w, 3 callouts, 2 widgets
 - ** 95** subjects/artificial-intelligence/advanced/transformers-and-large-language-models — 2709w, 3 callouts, 2 widgets
+- ** 95** subjects/astronomy/advanced/compact-objects — 2943w, 3 callouts, 2 widgets
+- ** 95** subjects/astronomy/advanced/exoplanets-and-detection — 2936w, 3 callouts, 2 widgets
 - ** 95** subjects/astronomy/advanced/galaxies-and-the-expanding-universe — 2771w, 3 callouts, 2 widgets
 - ** 95** subjects/biology/advanced/human-influences-on-ecosystems — 2717w, 3 callouts, 3 widgets
 - ** 95** subjects/biology/advanced/molecular-biology-techniques — 2753w, 3 callouts, 2 widgets
 - ** 95** subjects/biology/advanced/population-genetics — 2790w, 3 callouts, 2 widgets
+- ** 95** subjects/biology/advanced/speciation-and-phylogenetics — 2828w, 3 callouts, 2 widgets
 - ** 95** subjects/business/advanced/strategy-competitive-advantage — 2777w, 3 callouts, 2 widgets
 - ** 95** subjects/chemistry/advanced/coordination-chemistry — 2763w, 3 callouts, 2 widgets
 - ** 95** subjects/chemistry/advanced/spectroscopy-and-structure — 2848w, 3 callouts, 2 widgets
@@ -96,8 +85,15 @@
 - ** 95** subjects/engineering/advanced/control-systems — 2795w, 3 callouts, 2 widgets
 - ** 95** subjects/engineering/advanced/materials-selection — 2842w, 3 callouts, 2 widgets
 - ** 95** subjects/film/advanced/documentary-form — 2613w, 3 callouts, 1 widgets
+- ** 95** subjects/film/advanced/mise-en-scene-analysis — 2657w, 5 callouts, 1 widgets
+- ** 95** subjects/film/advanced/screenwriting-craft — 2726w, 3 callouts, 1 widgets
 - ** 95** subjects/finance/advanced/corporate-finance — 3030w, 3 callouts, 2 widgets
 - ** 95** subjects/finance/advanced/options-and-derivatives — 2770w, 3 callouts, 2 widgets
+- ** 95** subjects/history/advanced/decolonisation-postcolonial-world — 2682w, 3 callouts, 1 widgets
+- ** 95** subjects/history/advanced/economic-history — 2658w, 3 callouts, 1 widgets
+- ** 95** subjects/history/advanced/germany-1918-1945 — 2782w, 3 callouts, 3 widgets
+- ** 95** subjects/history/advanced/historiography-debates-and-schools — 2717w, 3 callouts, 2 widgets
+- ** 95** subjects/journalism/advanced/data-journalism — 2741w, 3 callouts, 1 widgets
 - ** 95** subjects/journalism/advanced/media-law-and-ethics — 2867w, 3 callouts, 1 widgets
 - ** 95** subjects/languages/advanced/register-idiom-and-slang — 2701w, 3 callouts, 1 widgets
 - ** 95** subjects/law/advanced/contracts — 2762w, 3 callouts, 2 widgets
@@ -106,6 +102,8 @@
 - ** 95** subjects/linguistics/advanced/sociolinguistics — 2758w, 3 callouts, 1 widgets
 - ** 95** subjects/literature/advanced/modernism-and-postmodernism — 2706w, 3 callouts, 1 widgets
 - ** 95** subjects/materials-science/advanced/heat-treatment — 3067w, 3 callouts, 2 widgets
+- ** 95** subjects/materials-science/advanced/phase-diagrams — 2811w, 3 callouts, 2 widgets
+- ** 95** subjects/materials-science/advanced/semiconductors-and-doping — 2767w, 3 callouts, 2 widgets
 - ** 95** subjects/math/advanced/differential-equations — 2876w, 3 callouts, 2 widgets
 - ** 95** subjects/math/advanced/vectors-and-matrices — 3315w, 3 callouts, 2 widgets
 - ** 95** subjects/medicine/advanced/cancer-biology-and-oncology — 2783w, 3 callouts, 2 widgets
@@ -126,3 +124,5 @@
 - ** 95** subjects/sociology/advanced/social-networks — 2742w, 3 callouts, 2 widgets
 - ** 95** subjects/sports-science/advanced/biomechanics — 2775w, 3 callouts, 1 widgets
 - ** 95** subjects/statistics/advanced/bayesian-statistics — 2806w, 3 callouts, 1 widgets
+- ** 95** subjects/visual-arts/advanced/figure-drawing-and-anatomy — 2783w, 3 callouts, 2 widgets
+- ** 95** subjects/visual-arts/advanced/painting-mediums — 2799w, 3 callouts, 2 widgets
