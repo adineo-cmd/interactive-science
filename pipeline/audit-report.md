@@ -1,26 +1,10 @@
 # Lesson health audit — intermediate tier
 
-194 lessons: Weak (<40): 0 · Needs work (40–79): 50 · Good (≥80): 144
+194 lessons: Weak (<40): 0 · Needs work (40–79): 34 · Good (≥80): 160
 
 ## Weak (<40) (0)
 
-## Needs work (40–79) (50)
-- ** 40** subjects/computer-science/intermediate/programming-fundamentals — 2007w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/design/intermediate/ux-research — 1961w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/earth-science/intermediate/volcanoes-and-igneous-processes — 1999w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/economics/intermediate/elasticity — 2048w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/economics/intermediate/fiscal-policy-public-debt — 2079w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/economics/intermediate/monetary-policy-central-banks — 2005w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/engineering/intermediate/thermodynamics-for-engineers — 2107w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/engineering/intermediate/units-estimates-and-back-of-envelope — 2020w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/environmental-science/intermediate/energy-systems-and-the-grid — 1988w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/film/intermediate/editing-the-cut — 2031w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/finance/intermediate/budgeting-and-personal-finance — 1987w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/geography/intermediate/coasts-and-oceans — 1983w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/geography/intermediate/urban-geography-and-cities — 2028w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/history/intermediate/ancient-greece-and-rome — 2064w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/history/intermediate/revolutions-of-1848 — 1972w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/history/intermediate/the-american-civil-war — 1966w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
+## Needs work (40–79) (34)
 - ** 40** subjects/history/intermediate/unification-of-italy-and-germany — 2599w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/journalism/intermediate/the-inverted-pyramid — 1974w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/languages/intermediate/grammar-without-tears — 2066w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
@@ -56,7 +40,7 @@
 - ** 40** subjects/visual-arts/intermediate/colour-theory — 2097w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/visual-arts/intermediate/line-shape-and-value — 2090w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 
-## Good (≥80) (144)
+## Good (≥80) (160)
 - ** 95** subjects/agriculture/intermediate/animal-husbandry — 2621w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/farm-economics — 2923w, 3 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/pests-weeds-and-ipm — 2689w, 4 callouts, 1 widgets
@@ -102,6 +86,7 @@
 - ** 95** subjects/computer-science/intermediate/algorithms-searching-and-sorting — 2751w, 3 callouts, 2 widgets
 - ** 95** subjects/computer-science/intermediate/data-files-tables-json — 2720w, 3 callouts, 2 widgets
 - ** 95** subjects/computer-science/intermediate/logic-gates-and-digital-circuits — 2889w, 3 callouts, 2 widgets
+- ** 95** subjects/computer-science/intermediate/programming-fundamentals — 2743w, 3 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/charts-that-tell-the-truth — 2714w, 4 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/cleaning-messy-data — 2693w, 4 callouts, 2 widgets
 - ** 95** subjects/data-science/intermediate/exploratory-data-analysis — 2634w, 4 callouts, 2 widgets
@@ -110,32 +95,47 @@
 - ** 95** subjects/design/intermediate/grids-and-layout — 2726w, 3 callouts, 2 widgets
 - ** 95** subjects/design/intermediate/prototyping-and-wireframes — 2813w, 3 callouts, 2 widgets
 - ** 95** subjects/design/intermediate/typography-fundamentals — 2687w, 3 callouts, 2 widgets
+- ** 95** subjects/design/intermediate/ux-research — 2697w, 3 callouts, 2 widgets
 - ** 95** subjects/earth-science/intermediate/atmosphere-and-weather-systems — 2725w, 3 callouts, 2 widgets
 - ** 95** subjects/earth-science/intermediate/earthquakes-and-seismology — 2608w, 3 callouts, 1 widgets
 - ** 95** subjects/earth-science/intermediate/oceans-and-currents — 2698w, 3 callouts, 2 widgets
+- ** 95** subjects/earth-science/intermediate/volcanoes-and-igneous-processes — 2722w, 3 callouts, 1 widgets
+- ** 95** subjects/economics/intermediate/elasticity — 2748w, 3 callouts, 2 widgets
+- ** 95** subjects/economics/intermediate/fiscal-policy-public-debt — 2916w, 4 callouts, 2 widgets
 - ** 95** subjects/economics/intermediate/gdp-national-accounts — 2670w, 3 callouts, 2 widgets
 - ** 95** subjects/economics/intermediate/market-failure-externalities — 2715w, 4 callouts, 2 widgets
+- ** 95** subjects/economics/intermediate/monetary-policy-central-banks — 2784w, 3 callouts, 2 widgets
 - ** 95** subjects/economics/intermediate/unemployment-labour-markets — 2695w, 3 callouts, 2 widgets
 - ** 95** subjects/engineering/intermediate/fluid-mechanics — 2855w, 3 callouts, 2 widgets
 - ** 95** subjects/engineering/intermediate/forces-beams-and-bridges — 2946w, 3 callouts, 2 widgets
+- ** 95** subjects/engineering/intermediate/thermodynamics-for-engineers — 2897w, 3 callouts, 2 widgets
+- ** 95** subjects/engineering/intermediate/units-estimates-and-back-of-envelope — 2720w, 3 callouts, 2 widgets
 - ** 95** subjects/environmental-science/intermediate/air-quality-and-aerosols — 2638w, 3 callouts, 1 widgets
 - ** 95** subjects/environmental-science/intermediate/biodiversity-and-conservation — 2585w, 3 callouts, 1 widgets
+- ** 95** subjects/environmental-science/intermediate/energy-systems-and-the-grid — 2693w, 3 callouts, 1 widgets
 - ** 95** subjects/environmental-science/intermediate/waste-and-the-circular-economy — 2604w, 3 callouts, 1 widgets
 - ** 95** subjects/environmental-science/intermediate/water-resources-and-pollution — 2653w, 3 callouts, 1 widgets
 - ** 95** subjects/film/intermediate/cinematography-and-lighting — 2803w, 3 callouts, 2 widgets
+- ** 95** subjects/film/intermediate/editing-the-cut — 2776w, 3 callouts, 2 widgets
 - ** 95** subjects/film/intermediate/shot-sizes-and-camera-grammar — 2610w, 3 callouts, 2 widgets
 - ** 95** subjects/film/intermediate/sound-design-and-score — 2732w, 3 callouts, 2 widgets
+- ** 95** subjects/finance/intermediate/budgeting-and-personal-finance — 2661w, 3 callouts, 1 widgets
 - ** 95** subjects/finance/intermediate/diversification-and-portfolios — 2768w, 4 callouts, 1 widgets
 - ** 95** subjects/finance/intermediate/financial-statements — 2561w, 3 callouts, 1 widgets
 - ** 95** subjects/finance/intermediate/stocks-and-bonds — 2685w, 4 callouts, 1 widgets
 - ** 95** subjects/finance/intermediate/time-value-of-money-npv — 2636w, 3 callouts, 1 widgets
 - ** 95** subjects/geography/intermediate/climate-change-causes-and-impacts — 2703w, 4 callouts, 3 widgets
+- ** 95** subjects/geography/intermediate/coasts-and-oceans — 2642w, 3 callouts, 1 widgets
 - ** 95** subjects/geography/intermediate/development-and-inequality — 2682w, 4 callouts, 3 widgets
 - ** 95** subjects/geography/intermediate/maps-projections-and-gis — 2595w, 3 callouts, 1 widgets
 - ** 95** subjects/geography/intermediate/monsoons-and-tropical-climates — 2694w, 4 callouts, 1 widgets
 - ** 95** subjects/geography/intermediate/rivers-floods-and-deltas — 2598w, 3 callouts, 1 widgets
+- ** 95** subjects/geography/intermediate/urban-geography-and-cities — 2668w, 4 callouts, 1 widgets
 - ** 95** subjects/history/intermediate/age-of-revolutions — 2874w, 3 callouts, 1 widgets
+- ** 95** subjects/history/intermediate/ancient-greece-and-rome — 2766w, 3 callouts, 2 widgets
 - ** 95** subjects/history/intermediate/colonialism-and-empire — 2889w, 3 callouts, 2 widgets
+- ** 95** subjects/history/intermediate/revolutions-of-1848 — 2691w, 3 callouts, 2 widgets
+- ** 95** subjects/history/intermediate/the-american-civil-war — 2707w, 3 callouts, 2 widgets
 - ** 95** subjects/history/intermediate/the-history-of-science — 2726w, 4 callouts, 2 widgets
 - ** 95** subjects/history/intermediate/the-islamic-golden-age — 2710w, 4 callouts, 2 widgets
 - ** 95** subjects/history/intermediate/the-league-of-nations — 2762w, 4 callouts, 2 widgets
