@@ -1,24 +1,8 @@
 # Lesson health audit — intermediate tier
 
-194 lessons: Weak (<40): 83 · Needs work (40–79): 63 · Good (≥80): 48
+194 lessons: Weak (<40): 67 · Needs work (40–79): 63 · Good (≥80): 64
 
-## Weak (<40) (83)
-- ** 26** subjects/finance/intermediate/diversification-and-portfolios — 1897w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/finance/intermediate/stocks-and-bonds — 1814w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/geography/intermediate/climate-change-causes-and-impacts — 1832w, 1 callouts, 3 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/3 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/geography/intermediate/development-and-inequality — 1809w, 1 callouts, 3 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/3 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/geography/intermediate/monsoons-and-tropical-climates — 1819w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/history/intermediate/the-history-of-science — 1853w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/history/intermediate/the-league-of-nations — 1888w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/history/intermediate/the-treaty-of-versailles — 1853w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/journalism/intermediate/news-vs-opinion-vs-analysis — 1838w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/languages/intermediate/pronunciation-and-the-ipa — 1802w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/law/intermediate/criminal-vs-civil-law — 1866w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/law/intermediate/how-a-case-moves-through-court — 1809w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/linguistics/intermediate/semantics-and-pragmatics — 1807w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/linguistics/intermediate/syntax-trees-and-rules — 1843w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/literature/intermediate/figures-of-speech — 1822w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
-- ** 26** subjects/literature/intermediate/the-novel-a-short-history — 1864w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
+## Weak (<40) (67)
 - ** 26** subjects/literature/intermediate/world-epics — 1923w, 1 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10); callouts 1/3 (13)
 - ** 26** subjects/math/intermediate/circles-and-coordinate-geometry — 1825w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
 - ** 26** subjects/medicine/intermediate/how-doctors-think — 1901w, 1 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10); callouts 1/3 (13)
@@ -152,7 +136,7 @@
 - ** 40** subjects/visual-arts/intermediate/colour-theory — 2097w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 - ** 40** subjects/visual-arts/intermediate/line-shape-and-value — 2090w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
 
-## Good (≥80) (48)
+## Good (≥80) (64)
 - ** 95** subjects/agriculture/intermediate/animal-husbandry — 2621w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/pests-weeds-and-ipm — 2689w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/plant-nutrition-and-fertilisers — 2678w, 3 callouts, 2 widgets
@@ -191,11 +175,27 @@
 - ** 95** subjects/film/intermediate/cinematography-and-lighting — 2803w, 3 callouts, 2 widgets
 - ** 95** subjects/film/intermediate/shot-sizes-and-camera-grammar — 2610w, 3 callouts, 2 widgets
 - ** 95** subjects/film/intermediate/sound-design-and-score — 2732w, 3 callouts, 2 widgets
+- ** 95** subjects/finance/intermediate/diversification-and-portfolios — 2768w, 4 callouts, 1 widgets
+- ** 95** subjects/finance/intermediate/stocks-and-bonds — 2685w, 4 callouts, 1 widgets
+- ** 95** subjects/geography/intermediate/climate-change-causes-and-impacts — 2703w, 4 callouts, 3 widgets
+- ** 95** subjects/geography/intermediate/development-and-inequality — 2682w, 4 callouts, 3 widgets
+- ** 95** subjects/geography/intermediate/monsoons-and-tropical-climates — 2694w, 4 callouts, 1 widgets
+- ** 95** subjects/history/intermediate/the-history-of-science — 2726w, 4 callouts, 2 widgets
 - ** 95** subjects/history/intermediate/the-islamic-golden-age — 2710w, 4 callouts, 2 widgets
+- ** 95** subjects/history/intermediate/the-league-of-nations — 2762w, 4 callouts, 2 widgets
+- ** 95** subjects/history/intermediate/the-treaty-of-versailles — 2725w, 4 callouts, 2 widgets
+- ** 95** subjects/journalism/intermediate/news-vs-opinion-vs-analysis — 2702w, 3 callouts, 2 widgets
+- ** 95** subjects/languages/intermediate/pronunciation-and-the-ipa — 2573w, 3 callouts, 2 widgets
 - ** 95** subjects/languages/intermediate/your-first-1000-words — 2687w, 3 callouts, 2 widgets
+- ** 95** subjects/law/intermediate/criminal-vs-civil-law — 2643w, 3 callouts, 1 widgets
+- ** 95** subjects/law/intermediate/how-a-case-moves-through-court — 2559w, 3 callouts, 1 widgets
 - ** 95** subjects/linguistics/intermediate/morphology — 2700w, 3 callouts, 2 widgets
 - ** 95** subjects/linguistics/intermediate/phonetics-and-the-ipa — 2773w, 3 callouts, 2 widgets
+- ** 95** subjects/linguistics/intermediate/semantics-and-pragmatics — 2583w, 3 callouts, 2 widgets
+- ** 95** subjects/linguistics/intermediate/syntax-trees-and-rules — 2629w, 3 callouts, 2 widgets
+- ** 95** subjects/literature/intermediate/figures-of-speech — 2592w, 3 callouts, 2 widgets
 - ** 95** subjects/literature/intermediate/shakespeares-craft — 2765w, 3 callouts, 2 widgets
+- ** 95** subjects/literature/intermediate/the-novel-a-short-history — 2686w, 3 callouts, 2 widgets
 - ** 95** subjects/materials-science/intermediate/metals-ceramics-polymers-composites — 2698w, 3 callouts, 2 widgets
 - ** 95** subjects/neuroscience/intermediate/senses-photons-to-perception — 2616w, 3 callouts, 1 widgets
 - ** 95** subjects/philosophy/intermediate/philosophy-of-mind — 2647w, 3 callouts, 1 widgets
