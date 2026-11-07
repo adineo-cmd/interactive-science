@@ -25,6 +25,24 @@ const attenPlot = {
 };
 ---
 <TopicPage slug="subjects/medicine/advanced/medical-imaging">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an advanced Medicine lesson. It assumes the foundational lesson The Heart and
+    Circulation for the anatomy the images decode, and the intermediate lesson How Doctors
+    Think: Diagnosis for the habit of treating every test as a measurement with an error
+    structure. The sibling advanced lessons keep reappearing — Cancer Biology &amp; Oncology
+    supplies the tumour metabolisms that PET lights up, and Clinical Trials and Evidence the
+    base-rate logic that turns a scan result into a decision.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain each modality's clinical profile — fast or slow, safe or ionising, cheap or costly — from its underlying physics;</li>
+    <li>work the exponential attenuation law, and say why a radiograph is a shadow map of density;</li>
+    <li>name the contrast each modality exploits — density, relaxation time, echo impedance, tracer metabolism — and how agents engineer more of it;</li>
+    <li>deduce modality choice in stroke, trauma and appendicitis from the physics trade-offs;</li>
+    <li>compare effective doses across scans and apply the relative-and-cumulative logic of imaging risk.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Diagnosis is a measurement problem: the pathology is inside, the clinician is outside. Every
@@ -43,6 +61,15 @@ const attenPlot = {
   </p>
 
   <Widget no="1" caption="the four modalities and their physics-to-diagnosis logic" widget="equationStep" config={imagingCfg} />
+  <p>
+    <strong>What to notice:</strong> each card states the physics in its first clause and the
+    clinical trade-offs as consequences — read them as derivations, not lists. X-ray is fast
+    and cheap because shadow-making is simple, and limited because projection squashes 3-D
+    onto 2-D; CT buys the missing dimension with dose; MRI buys soft-tissue contrast with
+    time, noise and magnets; ultrasound buys safety and real time at the price of operator
+    dependence. Every "slow, expensive, hazardous" judgement in the sections below traces
+    back to a physics choice made on these cards.
+  </p>
 
   <h2>X-ray attenuation: the exponential that underlies radiography</h2>
   <p>
@@ -58,12 +85,28 @@ const attenPlot = {
   </p>
 
   <Widget no="2" caption="beam attenuation through tissue — drag μ and watch bone vs lung behaviour" widget="plotter" config={attenPlot} />
+  <p>
+    <strong>What to notice:</strong> drag μ upward toward bone-like values and watch the
+    transmitted fraction collapse within a few centimetres; drop it toward lung-like values
+    and the beam sails through. The red curve differs from the blue only by a doubled
+    effective thickness, yet it falls far faster than half as fast — exponentials punish
+    thickness. That is why a few millimetres of calcium read radio-opaque, why small
+    thickness changes produce visible contrast, and why technique charts scale exposure with
+    body part.
+  </p>
 
   <p>
     Attenuation is also why X-ray technique charts exist: thicker or denser body parts need higher
     tube output (more photons survive to expose the detector), and beam hardening — low-energy photons
     filtered out preferentially — changes effective μ along the path, a distortion CT reconstruction
     must correct for.
+  <p>
+    <strong>So far:</strong> attenuation is exponential, so density differences become
+    visible contrast and thickness changes become visible shading — but a projection still
+    flattens the body onto one plate. Next, the machine that un-flattens it: CT reconstructs
+    the attenuation map from thousands of projections, and pays for the third dimension in
+    dose.
+  </p>
 
   <h2>CT: reconstruction from projections</h2>
   <p>
@@ -126,6 +169,12 @@ const attenPlot = {
     (echocardiography). The trade is operator dependence and air/bone barriers — ultrasound cannot
     see through gas or calcification, which is why the brain and lungs were long "ultrasound-blind"
     (point-of-care lung ultrasound has partially cracked the lung).
+  </p>
+  <p>
+    <strong>So far:</strong> the modalities have covered physics from absorbed photons to
+    rephasing spins to injected tracers, each buying a different contrast at a different
+    price. Next comes the layer where images turn into diagnoses: human perception with
+    documented failure modes, and the algorithms now entering the worklist queue.
   </p>
   <p>
     <strong>Nuclear medicine</strong> inverts the geometry: inject the signal. Gamma-emitting
@@ -198,6 +247,46 @@ const attenPlot = {
     — the population-level concern is the unindicated scan, repeated at scale.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Recall: what physically produces each image in CT and in MRI — and why does that make CT ionising and MRI not?</li>
+    <li>Application: a chest CT delivers roughly 5–7 mSv and a chest radiograph about 0.02 mSv. Make the comparison concrete, and explain why an indicated CT can still be the right call.</li>
+    <li>Why do sensitivity and specificity fail to answer "what does this positive scan mean for this patient?", and what replaces them?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) CT records the shadows of absorbed X-ray photons — the
+    absorption <em>is</em> ionising radiation at work; MRI reads radio-frequency signals from
+    hydrogen nuclei relaxing in a magnetic field, so its hazards are magnetic, not radiative.
+    (2) One chest CT equals roughly 250–350 chest radiographs. The comparison disciplines
+    ordering, yet a genuinely indicated scan that changes management can dominate one-scan
+    risk — the population-level worry is the unindicated scan repeated at scale, not the
+    trauma CT. (3) Sensitivity and specificity are properties of the test; predictive values
+    belong to the population, because the same positive scan means different things at
+    different prior probabilities. Prevalence-aware predictive values replace them — the
+    base-rate logic the clinical-trials lesson applied to every diagnostic test.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Every modality is a physical interaction exploited into a signal, and its clinical profile falls directly out of that physics.</li>
+    <li>Contrast is the whole game: an image is useful exactly to the degree pathology differs measurably from healthy tissue.</li>
+    <li>Attenuation is exponential — small thickness or density changes produce visible contrast, and CT exists to undo the projection's squash.</li>
+    <li>MRI reads relaxation, not X-rays: no ionising radiation, the richest soft-tissue contrast, and magnetic rather than radiative hazards.</li>
+    <li>Ultrasound buys safety and real time with echoes; nuclear medicine injects the signal and images physiology instead of anatomy.</li>
+    <li>Dose arithmetic in mSv disciplines ordering, and imaging risk is relative and cumulative, not categorical.</li>
+    <li>AI narrows the search but inherits labelling biases and degrades under distribution shift; the clinician owns the context and the call.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling advanced lessons lean on this page constantly. Cardiovascular
+    Pathophysiology depends on echocardiography and CT angiography for its ejection
+    fractions and stenoses; Cancer Biology &amp; Oncology uses FDG-PET to stage disease by
+    metabolism; and Clinical Trials and Evidence supplies the base-rate mathematics that
+    turns any scan result into a decision.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>The dose-risk model is contested.</strong> Radiation protection uses the linear
@@ -227,5 +316,5 @@ const attenPlot = {
     rates set what it means.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Röntgen (1895); Brant &amp; Helms, Fundamentals of Diagnostic Radiology; ICRP dose coefficients; Topol, Deep Medicine (2019); FDA-cleared AI device list; Nobel lectures in Physiology or Medicine 1979 (CT) and 2003 (MRI).</p>
+  <p class="sources"><strong>Sources:</strong> Röntgen (1895); Brant &amp; Helms, Fundamentals of Diagnostic Radiology; ICRP dose coefficients; Topol, Deep Medicine (2019); FDA-cleared AI device list; Nobel lectures in Physiology or Medicine 1979 (CT) and 2003 (MRI). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
