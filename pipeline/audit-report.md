@@ -1,30 +1,12 @@
 # Lesson health audit — intermediate tier
 
-194 lessons: Weak (<40): 0 · Needs work (40–79): 18 · Good (≥80): 176
+194 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 194
 
 ## Weak (<40) (0)
 
-## Needs work (40–79) (18)
-- ** 40** subjects/physics/intermediate/optics-lenses-and-mirrors — 1977w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/physics/intermediate/projectile-and-2d-motion — 2029w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/physics/intermediate/waves-and-sound — 2388w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/political-science/intermediate/the-public-policy-cycle — 1946w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/psychology/intermediate/perception — 2147w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/religious-studies/intermediate/christianity — 2021w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/religious-studies/intermediate/hinduism — 1969w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/sociology/intermediate/deviance-and-crime — 2022w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/sociology/intermediate/gender-and-society — 2116w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/sociology/intermediate/race-ethnicity-and-identity — 2017w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/sports-science/intermediate/muscles-and-energy-systems — 2132w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/sports-science/intermediate/nutrition-for-performance — 2040w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/statistics/intermediate/confidence-intervals — 2123w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/statistics/intermediate/correlation-and-regression — 2006w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/statistics/intermediate/hypothesis-testing — 2116w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/statistics/intermediate/sampling-and-survey-design — 2126w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/visual-arts/intermediate/colour-theory — 2097w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/visual-arts/intermediate/line-shape-and-value — 2090w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
+## Needs work (40–79) (0)
 
-## Good (≥80) (176)
+## Good (≥80) (194)
 - ** 95** subjects/agriculture/intermediate/animal-husbandry — 2621w, 4 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/farm-economics — 2923w, 3 callouts, 1 widgets
 - ** 95** subjects/agriculture/intermediate/pests-weeds-and-ipm — 2689w, 4 callouts, 1 widgets
@@ -182,22 +164,40 @@
 - ** 95** subjects/physics/intermediate/electrostatics — 2770w, 3 callouts, 1 widgets
 - ** 95** subjects/physics/intermediate/magnetism-and-induction — 2672w, 3 callouts, 1 widgets
 - ** 95** subjects/physics/intermediate/momentum-and-collisions — 2717w, 3 callouts, 1 widgets
+- ** 95** subjects/physics/intermediate/optics-lenses-and-mirrors — 2856w, 3 callouts, 1 widgets
+- ** 95** subjects/physics/intermediate/projectile-and-2d-motion — 2839w, 4 callouts, 1 widgets
 - ** 95** subjects/physics/intermediate/thermal-physics — 2982w, 4 callouts, 1 widgets
+- ** 95** subjects/physics/intermediate/waves-and-sound — 3288w, 3 callouts, 2 widgets
 - ** 95** subjects/political-science/intermediate/constitutions-rights — 2551w, 3 callouts, 1 widgets
 - ** 95** subjects/political-science/intermediate/international-relations-theories — 2713w, 3 callouts, 2 widgets
 - ** 95** subjects/political-science/intermediate/political-ideologies — 2839w, 3 callouts, 2 widgets
+- ** 95** subjects/political-science/intermediate/the-public-policy-cycle — 2767w, 3 callouts, 1 widgets
 - ** 95** subjects/political-science/intermediate/voting-systems-and-electoral-design — 2656w, 3 callouts, 2 widgets
 - ** 95** subjects/psychology/intermediate/abnormal-psychology-therapies — 2842w, 3 callouts, 2 widgets
 - ** 95** subjects/psychology/intermediate/development-piaget-to-today — 2645w, 3 callouts, 2 widgets
+- ** 95** subjects/psychology/intermediate/perception — 3040w, 3 callouts, 2 widgets
 - ** 95** subjects/psychology/intermediate/personality-theories — 2660w, 3 callouts, 2 widgets
 - ** 95** subjects/psychology/intermediate/research-methods — 3011w, 3 callouts, 1 widgets
 - ** 95** subjects/psychology/intermediate/social-psychology — 2850w, 3 callouts, 2 widgets
 - ** 95** subjects/religious-studies/intermediate/buddhism — 2652w, 3 callouts, 1 widgets
+- ** 95** subjects/religious-studies/intermediate/christianity — 2851w, 3 callouts, 1 widgets
+- ** 95** subjects/religious-studies/intermediate/hinduism — 2793w, 3 callouts, 1 widgets
 - ** 95** subjects/religious-studies/intermediate/islam — 2592w, 3 callouts, 1 widgets
 - ** 95** subjects/religious-studies/intermediate/judaism — 2568w, 3 callouts, 1 widgets
 - ** 95** subjects/religious-studies/intermediate/studying-religion-academically — 2633w, 3 callouts, 1 widgets
 - ** 95** subjects/sociology/intermediate/class-and-stratification — 2718w, 3 callouts, 2 widgets
+- ** 95** subjects/sociology/intermediate/deviance-and-crime — 2915w, 3 callouts, 2 widgets
+- ** 95** subjects/sociology/intermediate/gender-and-society — 3003w, 4 callouts, 2 widgets
+- ** 95** subjects/sociology/intermediate/race-ethnicity-and-identity — 2916w, 3 callouts, 2 widgets
+- ** 95** subjects/sports-science/intermediate/muscles-and-energy-systems — 3027w, 3 callouts, 2 widgets
+- ** 95** subjects/sports-science/intermediate/nutrition-for-performance — 2892w, 3 callouts, 2 widgets
 - ** 95** subjects/sports-science/intermediate/strength-and-hypertrophy — 2664w, 3 callouts, 2 widgets
 - ** 95** subjects/sports-science/intermediate/the-heart-and-lungs-in-exercise — 2720w, 3 callouts, 2 widgets
+- ** 95** subjects/statistics/intermediate/confidence-intervals — 3008w, 4 callouts, 2 widgets
+- ** 95** subjects/statistics/intermediate/correlation-and-regression — 2899w, 3 callouts, 2 widgets
+- ** 95** subjects/statistics/intermediate/hypothesis-testing — 3009w, 3 callouts, 2 widgets
+- ** 95** subjects/statistics/intermediate/sampling-and-survey-design — 2961w, 3 callouts, 2 widgets
+- ** 95** subjects/visual-arts/intermediate/colour-theory — 2939w, 3 callouts, 2 widgets
 - ** 95** subjects/visual-arts/intermediate/drawing-from-observation — 2672w, 3 callouts, 2 widgets
+- ** 95** subjects/visual-arts/intermediate/line-shape-and-value — 2950w, 4 callouts, 2 widgets
 - ** 95** subjects/visual-arts/intermediate/perspective-and-depth — 2827w, 3 callouts, 2 widgets
