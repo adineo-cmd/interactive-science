@@ -61,6 +61,22 @@ const cnnQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/image-recognition-cnns">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is an intermediate artificial-intelligence lesson. The foundational lesson <em>How
+    Machines Learn</em> supplies the base vocabulary - training, loss, overfitting - and the
+    intermediate <em>Neural Networks from Scratch</em> lesson is useful company, since a CNN
+    is a neural network with a strong opinion about images. The arithmetic is multiplication and addition, worked slowly the first time.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain convolution, weight sharing and pooling, and say what each one buys;</li>
+    <li>work a small convolution by hand and interpret the resulting feature map;</li>
+    <li>describe the learned feature hierarchy - edges to textures to parts to objects - and its biological echo;</li>
+    <li>summarise the 2012 ImageNet moment: what ReLU, GPUs and data each contributed;</li>
+    <li>name the three classic failure modes and the evaluation disciplines that catch them.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Convolutional Neural Networks (CNNs) are <strong>neural networks built for images</strong>:
@@ -74,6 +90,12 @@ const cnnQuizCfg = {
   </p>
 
   <Widget no="1" caption="the CNN pipeline, from filter to hierarchy to revolution" widget="equationStep" config={cnnCfg} />
+  <p>
+    <strong>What to notice:</strong> the four stages alternate mechanism and history:
+    convolution and pooling build the hierarchy, the hierarchy turns out to learn itself,
+    and 2012 is when the pieces finally scaled. Watch how small each mechanism is - a 3 by 3
+    filter and a max - and how much behaviour stacking them produces.
+  </p>
 
   <h2>Images as numbers, and the convolution operation</h2>
   <p>
@@ -107,6 +129,17 @@ const cnnQuizCfg = {
     map stays the same size, and <em>stride</em> skips positions to shrink it.)
   </p>
 
+  <p><em>Common misconception:</em> "connecting every pixel to every neuron uses more
+  information, so it should recognise more." It uses more parameters, not more information -
+  and it throws away the one structure images actually have, locality. Weight sharing is not
+  a compromise: it encodes the prior that the same pattern matters wherever it appears, which
+  is how 1,728 weights can beat 150 million on real images.</p>
+  <p>
+    <strong>So far:</strong> one small kernel, shared across every position, turns a grid of
+    pixels into a map of where its pattern occurs. One pattern is not enough to see a cat, though; the next section stacks and
+    summarises.
+  </p>
+
   <h2>Pooling and the hierarchy: how depth buys abstraction</h2>
   <p>
     After each convolution, a <strong>pooling</strong> layer summarises small neighbourhoods:
@@ -130,6 +163,11 @@ const cnnQuizCfg = {
     responding to oriented edges and complex cells tolerant to position, and Fukushima's
     neocognitron (1980) translated that circuit idea into a layered network; LeCun's LeNet
     (1989–98) added backpropagation and put CNNs to work reading bank cheque digits.
+  </p>
+
+  <p>
+    <strong>So far:</strong> stack convolve-pool-convolve-pool and the network composes its
+    own feature hierarchy, from edges to object parts - nobody draws it in. The remaining blocker was plumbing; the next section is the fix that unlocked depth.
   </p>
 
   <h2>ReLU, and the ImageNet moment</h2>
@@ -183,6 +221,12 @@ const cnnQuizCfg = {
     and evaluation on the new task will not necessarily reveal them.
   </p>
 
+  <p><em>Common misconception:</em> "a pretrained model has learned vision in general, so it
+  will work on my problem out of the box." Transfer buys the early layers' knowledge - edges,
+  textures, shapes - but whatever quirks the source dataset encoded arrive free with the
+  weights, and fine-tuning on a few hundred examples does not necessarily surface them.
+  Evaluation on data that looks like deployment is not optional.</p>
+
   <h2>Known failure modes</h2>
   <p>
     Three stand out, and each has changed practice. <strong>Adversarial examples</strong>:
@@ -198,6 +242,12 @@ const cnnQuizCfg = {
     professional response to all three is the same discipline: evaluate on data that looks
     like the real world, test the failure cases on purpose, and monitor after launch —
     because a broken model fails silently.
+  </p>
+
+  <p>
+    <strong>So far:</strong> the failure modes - adversarial flips, shortcut features,
+    distribution shift - share one professional response: test the failure cases on purpose
+    and monitor after launch. Whether that works depends on the half of the model the next section puts first.
   </p>
 
   <h2>Data is the other half of the model</h2>
@@ -217,6 +267,49 @@ const cnnQuizCfg = {
     set from the same collection as training flatters the model; a test set from new
     hospitals, new cameras, new years, tells the truth. In applied vision, the honest
     ordering is usually: dataset first, architecture second.
+  </p>
+
+  <p><em>Common misconception:</em> "the benchmark accuracy is the model's accuracy." Only
+  if the test set looks like the real world: a held-out set from the same collection as
+  training flatters the model, because it shares the collection's cameras, lighting and
+  population. The honest number comes from new hospitals, new cameras, new years.</p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A cat can appear in any corner of a photo. Which property of CNNs turns that fact into an architecture decision, and what does the decision save?</li>
+    <li>Layer 1 of a trained CNN responds to edges. Who specified that, and how do we know?</li>
+    <li>Your classifier scores 97 percent on its test set and 71 percent at the second hospital. What is the likely diagnosis, and what evaluation would have revealed it?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Weight sharing: because one edge detector should run at
+    every position, the same small kernel slides everywhere - collapsing the parameter count
+    by orders of magnitude and baking translation tolerance into the architecture. (2) Nobody:
+    the architecture only fixes "local, shared, stacked"; visualisation studies (Zeiler and
+    Fergus, 2014; occlusion experiments) showed the hierarchy emerged from training. (3)
+    Distribution shift: the test set was too similar to training - same scanners, same
+    population - so it flattered the model; a test set from new hospitals or new years would
+    have told the truth.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A convolution slides one small kernel everywhere: locality plus weight sharing, not brute force.</li>
+    <li>Pooling shrinks maps and buys shift tolerance; depth buys abstraction through a self-organised hierarchy.</li>
+    <li>ReLU, GPUs and ImageNet-scale data converged in 2012 to make deep vision the default method.</li>
+    <li>CNNs lean on texture and local statistics - they do not see the way you do.</li>
+    <li>Transfer learning reuses early-layer features but imports the source dataset's biases.</li>
+    <li>Adversarial examples, shortcut features and distribution shift are the three classic failures.</li>
+    <li>Dataset first, architecture second: the data decides the ceiling.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The intermediate lessons <em>Neural Networks from Scratch</em> and <em>Classification
+    &amp; Regression</em> open up the training machinery this lesson treated as a black box,
+    and the advanced <em>Transformers &amp; Large Language Models</em> lesson introduces the
+    attention architecture now rivalling convolution. For the failure modes, the advanced
+    <em>Evaluation, Bias &amp; Safety</em> lesson is where they are treated properly.
   </p>
 
   <h2>Going deeper</h2>
@@ -255,7 +348,12 @@ const cnnQuizCfg = {
     the field where deep learning won first, and it remains the field where the gap between
     benchmark and understanding is most instructive.
   </p>
-  <p class="sources"><strong>Sources:</strong> LeCun et al. (1998) LeNet; Krizhevsky, Sutskever &amp; Hinton (2012); Zeiler &amp; Fergus (2014); He et al. (2015) ResNet; Goodfellow, Bengio &amp; Courville, Deep Learning ch. 9; Russell &amp; Norvig, AIMA chs. 21, 25; Szegedy et al. (2013) on adversarial examples.</p>
+  <p class="sources"><strong>Sources:</strong> LeCun et al. (1998) LeNet; Krizhevsky, Sutskever &amp; Hinton (2012); Zeiler &amp; Fergus (2014); He et al. (2015) ResNet; Goodfellow, Bengio &amp; Courville, Deep Learning ch. 9; Russell &amp; Norvig, AIMA chs. 21, 25; Szegedy et al. (2013) on adversarial examples. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
   <Widget no="2" caption="check yourself" widget="quiz" config={cnnQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> commit to an answer before revealing the feedback - each
+    explanation carries one of the lesson's load-bearing ideas, and the distractors are
+    engineered from the misconceptions this page has been dismantling.
+  </p>
 </TopicPage>
