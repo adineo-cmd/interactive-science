@@ -13,6 +13,25 @@ const npCfg = {
 };
 ---
 <TopicPage slug="subjects/statistics/advanced/non-parametric-methods">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    The intermediate lessons built the classical test kit — <strong>Hypothesis Testing</strong>
+    gave you p-values and error types, <strong>Correlation &amp; Regression</strong> gave you
+    Pearson's line and r — and both lean on assumptions about how data is distributed. This
+    lesson is the toolkit for the days those assumptions fail. It stands directly on
+    <strong>Describing Data</strong>, whose medians, quartiles and interquartile ranges turn
+    out to be rank-based statistics already, and on <strong>Probability Foundations</strong>,
+    whose binomial arithmetic powers the sign test.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>read medians, quartiles and percentiles off sorted data, and estimate them for grouped frequency tables by interpolation;</li>
+    <li>justify a choice among range, IQR and standard deviation by outlier sensitivity, with numbers to back it;</li>
+    <li>run the sign test, Mann–Whitney U, Wilcoxon signed-rank, Kruskal–Wallis and Spearman's ρ on small data sets by hand;</li>
+    <li>explain what non-parametric tests assume and do not assume, and why picking the test before seeing p-values is a discipline and not a preference;</li>
+    <li>connect the rank tests to the permutation idea that modern computing made universal.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Classical tests assume distributions — usually the bell curve. <strong>Non-parametric
@@ -26,6 +45,14 @@ const npCfg = {
   </p>
 
   <Widget no="1" caption="the rank-based toolbox — one method per classic situation" widget="equationStep" config={npCfg} />
+  <p>
+    <strong>What to notice:</strong> each card pairs a situation where the classical test
+    wobbles — small samples, skew, ordinal ratings, outliers — with the rank-based instrument
+    built for it. The move is the same every time: replace values with order positions, then
+    test those. As you step through, ask which distributional assumption the classical
+    alternative would have needed, and notice that the first card is not a test at all but a
+    diagnosis — the skill of recognising when the toolbox is the one you need.
+  </p>
 
   <h2>Order statistics: quartiles and percentiles of small data sets</h2>
   <p>
@@ -45,6 +72,12 @@ const npCfg = {
     22.1. The median lands at 20 + ((15 − 5)/12) × 10 ≈ 28.3, Q3 at 30 + ((22.5 − 17)/8) × 10
     ≈ 36.9. These are estimates — the true values inside each class are unknowable from the
     table — which is the honest cost of grouped data.
+  </p>
+  <p>
+    <strong>So far:</strong> the sorted positions of a data set already carry the median, the
+    quartiles and any percentile you ask for — grouped tables just force you to interpolate
+    inside a class and admit the estimate. Next: put the three dispersion measures side by
+    side and watch what one corrupted value does to each.
   </p>
 
   <h2>Range, IQR, standard deviation: choosing the measure</h2>
@@ -66,6 +99,12 @@ const npCfg = {
     order statistics cap every observation's influence. Rule of thumb: skewed data or visible
     outliers → median and IQR; symmetric, well-behaved data where every point carries real
     information → mean and SD; and always say which you chose and why.
+  </p>
+  <p>
+    <strong>So far:</strong> ranks cap every observation's influence at "largest" — one
+    corrupted value thirteen-times inflated the standard deviation while the median and IQR
+    did not move. Next: that same protective idea stops being a summary choice and becomes a
+    whole family of tests.
   </p>
 
   <h2>The test family, one worked example at a time</h2>
@@ -175,6 +214,47 @@ const npCfg = {
     for checking whether residuals from a model look like white noise.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>In the nine-value set 2, 4, 4, 5, 6, 7, 8, 9, 15, replace the 15 with 150. State the median and IQR of the corrupted set, and say qualitatively what happens to the mean and the standard deviation.</li>
+    <li>Two judges rank five entries and Spearman's ρ comes out at 0.85. If both judges had scored on a 0–990 scale instead of a 0–90 scale, with the same ordering, what would ρ be, and why?</li>
+    <li>A colleague runs a t-test and a Mann–Whitney U on the same data and reports whichever is significant. Why is this a statistical error rather than thoroughness?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The median stays 6 and the IQR stays 4.5, because Q1 and
+    Q3 are order positions and the corrupted value is still just "the largest" — while the
+    mean jumps from about 6.7 to about 17.3 and the SD explodes roughly thirteen-fold, since
+    both use the raw magnitude of every point. (2) Still 0.85: Spearman correlates the
+    <em>ranks</em>, and rescaling both judges' scores leaves every ordering untouched — only
+    order entered the calculation. (3) Choosing the test after seeing the results is itself a
+    multiple comparison: with five independent tests at the 5% level the chance of at least
+    one false positive is about 23%, not 5%. The data's type and shape decide the test before
+    the p-values exist; agreement between the two tests is reassuring, disagreement is
+    diagnostic and belongs in the write-up.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Non-parametric methods replace values with ranks: a rank caps any observation's influence at "largest".</li>
+    <li>Median, quartiles and IQR are already rank-based statistics; grouped-data quartiles are interpolation estimates and are honest about it.</li>
+    <li>Outlier sensitivity decides the summary: skewed or contaminated data takes median and IQR; clean symmetric data earns mean and SD.</li>
+    <li>The family maps one-to-one onto classical situations: sign test, Mann–Whitney U, Wilcoxon signed-rank, Kruskal–Wallis, Friedman, Spearman's ρ.</li>
+    <li>The insurance is cheap — about a 4.5% efficiency penalty under exact normality — and pays off unboundedly under heavy tails.</li>
+    <li>Fewer assumptions is not no assumptions: independence, symmetric paired differences for Wilcoxon, and an honest sample all still apply.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    <strong>Experimental Design</strong> attacks the problem no test can repair — data
+    collected from the wrong mechanism — which is why this page's decision procedure starts
+    from how the data was gathered. <strong>Time Series Analysis</strong> handles the other
+    structure ranks were not built for, ordered observations correlated with their own past;
+    the runs test you just met is the first tool for asking whether such a series behaves
+    randomly. And <strong>Bayesian Statistics</strong> holds the whole reject-or-not logic
+    every test on this page shares up against a different way of reasoning from data.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Where the null distributions come from.</strong> Rank tests are exact small-sample
@@ -199,5 +279,5 @@ const npCfg = {
     cannot be ruined by magnitude.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Mann and Whitney (1947); Wilcoxon (1945); Kruskal and Wallis (1952); Wasserman, All of Statistics; Efron and Tibshirani, An Introduction to the Bootstrap.</p>
+  <p class="sources"><strong>Sources:</strong> Mann and Whitney (1947); Wilcoxon (1945); Kruskal and Wallis (1952); Wasserman, All of Statistics; Efron and Tibshirani, An Introduction to the Bootstrap. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

@@ -1,19 +1,12 @@
 # Lesson health audit — advanced tier
 
-119 lessons: Weak (<40): 0 · Needs work (40–79): 7 · Good (≥80): 112
+119 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 119
 
 ## Weak (<40) (0)
 
-## Needs work (40–79) (7)
-- ** 40** subjects/political-science/advanced/political-economy — 2097w, 4 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/psychology/advanced/cognitive-psychology-and-models — 2006w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/psychology/advanced/psychometrics-and-testing — 1997w, 3 callouts, 2 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/2 (15); recaps 0/2 (10)
-- ** 40** subjects/sports-science/advanced/periodisation-and-programming — 2087w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/statistics/advanced/experimental-design — 2080w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/statistics/advanced/non-parametric-methods — 2002w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/statistics/advanced/time-series-analysis — 1948w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+## Needs work (40–79) (0)
 
-## Good (≥80) (112)
+## Good (≥80) (119)
 - ** 95** subjects/agriculture/advanced/agroecology — 2749w, 3 callouts, 2 widgets
 - ** 95** subjects/agriculture/advanced/breeding-and-gmos — 2876w, 3 callouts, 2 widgets
 - ** 95** subjects/agriculture/advanced/precision-agriculture — 2737w, 3 callouts, 2 widgets
@@ -117,12 +110,19 @@
 - ** 95** subjects/physics/advanced/statistical-mechanics — 2842w, 3 callouts, 2 widgets
 - ** 95** subjects/political-science/advanced/comparative-politics-methods — 2866w, 3 callouts, 2 widgets
 - ** 95** subjects/political-science/advanced/conflict-and-peace-studies — 2822w, 3 callouts, 2 widgets
+- ** 95** subjects/political-science/advanced/political-economy — 2992w, 4 callouts, 2 widgets
+- ** 95** subjects/psychology/advanced/cognitive-psychology-and-models — 2899w, 3 callouts, 2 widgets
 - ** 95** subjects/psychology/advanced/neuropsychology — 2813w, 3 callouts, 2 widgets
+- ** 95** subjects/psychology/advanced/psychometrics-and-testing — 2896w, 3 callouts, 2 widgets
 - ** 95** subjects/religious-studies/advanced/myth-ritual-symbol — 2895w, 3 callouts, 1 widgets
 - ** 95** subjects/religious-studies/advanced/scripture-and-interpretation — 2838w, 3 callouts, 1 widgets
 - ** 95** subjects/sociology/advanced/globalisation-and-society — 2774w, 3 callouts, 2 widgets
 - ** 95** subjects/sociology/advanced/social-networks — 2742w, 3 callouts, 2 widgets
 - ** 95** subjects/sports-science/advanced/biomechanics — 2775w, 3 callouts, 1 widgets
+- ** 95** subjects/sports-science/advanced/periodisation-and-programming — 2895w, 3 callouts, 1 widgets
 - ** 95** subjects/statistics/advanced/bayesian-statistics — 2806w, 3 callouts, 1 widgets
+- ** 95** subjects/statistics/advanced/experimental-design — 2900w, 4 callouts, 1 widgets
+- ** 95** subjects/statistics/advanced/non-parametric-methods — 2837w, 3 callouts, 1 widgets
+- ** 95** subjects/statistics/advanced/time-series-analysis — 2804w, 3 callouts, 1 widgets
 - ** 95** subjects/visual-arts/advanced/figure-drawing-and-anatomy — 2783w, 3 callouts, 2 widgets
 - ** 95** subjects/visual-arts/advanced/painting-mediums — 2799w, 3 callouts, 2 widgets

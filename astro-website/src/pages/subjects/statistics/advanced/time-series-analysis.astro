@@ -14,6 +14,25 @@ const tsCfg = {
 };
 ---
 <TopicPage slug="subjects/statistics/advanced/time-series-analysis">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    Everything so far treated data as a bag of independent observations. <strong>Describing
+    Data</strong> summarised them, <strong>Correlation &amp; Regression</strong> related them,
+    <strong>Confidence Intervals</strong> and <strong>Hypothesis Testing</strong> drew
+    conclusions from them — and all of it quietly assumed one point tells you nothing about
+    the next. Time series break that assumption on purpose: the points are ordered and
+    correlated with their own past, and this lesson rebuilds the toolkit for data that comes
+    with a calendar attached.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>read a time-series graph and separate trend, seasonality and irregulars before any modelling;</li>
+    <li>compute a moving average over one full seasonal cycle, centre an even-window series, and explain why the smoother is not a forecast;</li>
+    <li>extract additive seasonal components by averaging deviations, deseasonalise a series, and choose additive versus multiplicative;</li>
+    <li>produce a forecast from an extended trend line plus a seasonal component — and state precisely what assumptions it carries;</li>
+    <li>read published seasonally adjusted and index-numbered statistics with informed suspicion.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Time-series data breaks ordinary statistics' rules: the points are <strong>ordered and
@@ -27,6 +46,15 @@ const tsCfg = {
   </p>
 
   <Widget no="1" caption="the classic decomposition — a rising trend, a yearly wave, and the residual noise between them" widget="plotter" config={tsCfg} />
+  <p>
+    <strong>What to notice:</strong> the grey curve is the composite — level, yearly wave and
+    trend all tangled together — while the faint red line underneath is the trend alone.
+    Across the 48 plotted months the wave peaks at the same spacing four times: that fixed
+    period is what makes it <em>seasonal</em> rather than noise. Now trace the vertical gap
+    between the curves: it swells and shrinks with the wave but drifts nowhere on its own —
+    that gap is the seasonal-and-irregular part the decomposition will strip out, and the
+    straight line is what the moving averages will be asked to recover.
+  </p>
 
   <p>
     Strip the seasonal wave and the straight trend from the wiggly line and what remains is the
@@ -58,6 +86,12 @@ const tsCfg = {
     three parts before any modelling prevents the classic double error: crediting the July
     surge to "our summer strategy" and blaming the January slump on "this year's
     management" — when both are the calendar doing what the calendar always does.
+  </p>
+  <p>
+    <strong>So far:</strong> naming trend, seasonality and irregulars on the plot — before
+    any modelling — prevents the classic double error of crediting the calendar to strategy.
+    Next: the hand tool that pulls the trend out from under the seasonal wave, and the
+    precise reason it works.
   </p>
 
   <h2>Moving averages: why, and how</h2>
@@ -91,6 +125,12 @@ const tsCfg = {
     a rising series sits below the series, of a falling series above it. Smoothing the past
     and predicting the future are different problems; the forecast comes from the extended
     trend line plus a seasonal component, never from the raw smoother.
+  </p>
+  <p>
+    <strong>So far:</strong> a window of one full seasonal cycle cancels the wave exactly,
+    and pairing consecutive averages re-centres an even window on real data points — the
+    centred series climbs smoothly where the raw data seesawed. Next: those centred averages
+    are not merely a smoothed picture, they are the trend, measured.
   </p>
 
   <h2>Trend and trend lines</h2>
@@ -152,6 +192,12 @@ const tsCfg = {
     noise. The professional habit: forecast with intervals, backtest against held-out data,
     and state what would falsify the trend assumption.
   </p>
+  <p>
+    <strong>So far:</strong> the forecast is arithmetic — extend the trend, add the seasonal
+    component — but the honest part is the limitations: extrapolation assumes continuation,
+    carries no error bar, and breaks at structural changes the model cannot see. Next: the
+    same mechanics, industrialised inside every headline statistic you have ever read.
+  </p>
   <h2>Seasonal adjustment in the wild — and index numbers</h2>
   <p>
     The mechanics above run inside every headline statistic you have ever read. Retail-sales
@@ -177,6 +223,46 @@ const tsCfg = {
     revenue and real staffing need. The point is to stop attributing the calendar to the
     strategy: after deseasonalising, a flat quarter reads as flat, not as "down 10% from
     summer, disaster".
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why does a moving average for quarterly data use a window of exactly 4 points — and what problem does an even window create that an odd one does not?</li>
+    <li>A quarter's actual value is 84; the trend at that quarter is 83.75; the seasonal component for that quarter is −8.75. Give the deseasonalised value and say what it is for.</li>
+    <li>A news report says retail sales "fell 20% from December to January". Give two distinct reasons, from this lesson, why that raw comparison can mislead.</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Four points is one full seasonal cycle, and the average of
+    a full cycle cancels the seasonal deviations exactly, leaving trend plus smoothed noise.
+    An even window then centres between data points, so consecutive averages must be paired
+    to sit on actual quarters — an odd window centres directly, at the cost of only partly
+    cancelling an even-period season. (2) 84 − (−8.75) = 92.75: deseasonalising removes the
+    calendar's contribution so this quarter can be compared honestly with other quarters —
+    it is the manager's instrument, not a dismissal of the seasonal pattern. (3) First, the
+    December-to-January crash is largely seasonal (Christmas ending), which is exactly why
+    the published figure is seasonally adjusted; second, the seasonal component itself drifts
+    and is re-estimated, so raw and revised series can disagree — and if the series is in
+    money, inflation means the raw trend measures the currency, not the business.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Time-series points are ordered and correlated with their own past, so they need their own statistics.</li>
+    <li>Name trend, seasonality and irregulars on the graph before modelling; a level shift may be a change in measurement, not in the world.</li>
+    <li>A moving average over one full seasonal cycle cancels the wave; even windows need centring; the smoother is not a forecast.</li>
+    <li>Additive models sum components; multiplicative models multiply them — the choice is whether seasonal swings scale with the level.</li>
+    <li>Deseasonalised values make consecutive quarters comparable; deseasonalising is for comparison, not dismissal.</li>
+    <li>A forecast extends the trend and adds the seasonal component — and inherits every assumption the trend line carries.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    <strong>Bayesian Statistics</strong> and <strong>Experimental Design</strong> round out
+    the advanced tier from different directions — how conclusions are updated, and how data
+    worth analysing is manufactured in the first place. When you reach the expert tier, the
+    autocorrelation and stationarity ideas previewed at the end of this page grow into the
+    formal ARIMA machinery this lesson's hand methods were preparing you for.
   </p>
 
   <h2>Going deeper</h2>
@@ -207,5 +293,5 @@ const tsCfg = {
     data to verify them outlives the careers that made them.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Box and Jenkins, Time Series Analysis (1970); Hyndman and Athanasopoulos, Forecasting: Principles and Practice (free online); Yule (1926) on spurious correlation.</p>
+  <p class="sources"><strong>Sources:</strong> Box and Jenkins, Time Series Analysis (1970); Hyndman and Athanasopoulos, Forecasting: Principles and Practice (free online); Yule (1926) on spurious correlation. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
