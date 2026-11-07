@@ -67,3 +67,17 @@ The standing acquisition hierarchy is now codified in PEDAGOGY.md §16: extract 
 for databases → verify → generate only as last resort. Current coverage gaps being filled
 by internet database searches: art history, film, journalism, dentistry, optometry,
 counseling, petroleum engineering, naval architecture, hospitality, accounting practice.
+
+## STANDING DIRECTIVE (user, 2026-11-07)
+"Continue by deploying multiple subagents, but identify knowledge gaps and improve the
+weakest areas rather than regenerating everything."
+
+Operational meaning:
+- Keep ≥2 subagents running at all times (hard concurrency ceiling; if a launch is
+  rejected, resume the failed agent via SendMessage instead of relaunching).
+- Before each wave, run `pipeline/audit_lessons.py --tier <tier>` — it scores every
+  lesson on PEDAGOGY.md structure compliance — and target the weakest first.
+- Improve (gap-fix or transform) what the audit flags; do NOT regenerate lessons that
+  already pass. Full-regeneration is reserved for lessons with no usable source pack.
+- This directive applies to every tier: foundational (in progress) → intermediate →
+  advanced → expert.
