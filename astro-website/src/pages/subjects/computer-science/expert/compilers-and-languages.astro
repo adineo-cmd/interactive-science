@@ -22,6 +22,23 @@ const compQuizCfg = {
 };
 ---
 <TopicPage slug="subjects/computer-science/expert/compilers-and-languages">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is the systems-level summit of the Computer Science ladder, and it assumes three
+    earlier lessons directly: "Programming fundamentals" (intermediate), whose code this
+    pipeline translates; "Logic gates and digital circuits" (intermediate), the hardware layer
+    the generated instructions drive; and "Operating systems basics" (advanced), whose
+    scheduler and interrupts this lesson explains from the hardware side.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>name the compiler's five stages in order and the one check each stage performs;</li>
+    <li>trace a line of code through lexing, parsing and semantic analysis, and say exactly where each error class is caught;</li>
+    <li>explain the boot chain (firmware to bootloader to kernel) and the interrupt mechanism that lets hardware seize the CPU;</li>
+    <li>place assembler, compiler and interpreter on the translation spectrum, and JIT systems on it too;</li>
+    <li>argue language-design trade-offs — static versus dynamic typing, manual versus managed memory — as choices, not progress.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     By the expert tier you can write algorithms, trace them, and read two or three languages —
@@ -44,6 +61,14 @@ const compQuizCfg = {
   </p>
 
   <Widget no="1" caption="the five stages between your text file and running silicon" widget="equationStep" config={compCfg} />
+  <p>
+    <strong>What to notice:</strong> step through the five stages and watch one idea repeat —
+    each stage checks something before passing the work down. Stage 1 checks that words are
+    well-formed, stage 2 that sentences are grammatical, stage 3 that they mean something;
+    only then does stage 4 dare to rewrite anything, and only in provably-equivalent ways,
+    because stage 5's output runs directly on silicon with no adult supervision. Read the
+    notes for stages 2 and 4 closely: they carry the lesson's two hardest claims.
+  </p>
 
   <h2>Inside the pipeline: lexing, parsing and semantic analysis</h2>
   <p>
@@ -87,6 +112,12 @@ const compQuizCfg = {
     Line-by-line translation is the interpreter's job, and it explains the interpreter's
     signature behaviour: it stops at the <em>first</em> error and re-translates the same lines
     every time you run.
+  </p>
+  <p>
+    <strong>So far:</strong> the compiler is a stack of translators, each cheaper and clearer
+    at its own level — and the whole-program read is what separates it from the interpreter.
+    Next we meet the software that runs the result: the operating system's job list, the boot
+    chain that gets it started, and the interrupt machinery that lets hardware seize the CPU.
   </p>
 
   <h2>Types of software and interrupts (4.1)</h2>
@@ -137,6 +168,12 @@ const compQuizCfg = {
     Multitasking feels simultaneous because the timer interrupt slices time so finely — a
     scheduler deciding 1,000 times a second among a dozen processes — that no single program
     ever notices the gaps.
+  </p>
+  <p>
+    <strong>So far:</strong> the OS turns out to be a referee that mostly rests — interrupt
+    signals are what wake it, and the timer interrupt is the heartbeat of multitasking. The
+    last content section climbs back up the translation ladder: machine code to assembly to
+    high-level languages, the three translators between them, and why languages differ.
   </p>
 
   <h2>Programming languages, translators and IDEs (4.2)</h2>
@@ -198,6 +235,51 @@ const compQuizCfg = {
     in common use.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Name the compiler's five stages in order and the one check each stage performs.</li>
+    <li>In <code>total = price + 4 * 2</code>, which stage catches the error "price was never declared", and why can neither the lexer nor the parser catch it?</li>
+    <li>Why would a 3 GHz CPU polling a keyboard 100 times a second waste effort — and what mechanism replaces polling?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Lexing (characters into tokens — well-formed words),
+    parsing (tokens into an AST — grammatical sentences), semantic analysis (symbol table,
+    types, scopes — meaningful sentences), optimisation (provably-equivalent rewrites — same
+    result, less work), code generation (tree into machine instructions for the target CPU).
+    (2) Semantic analysis. The lexer only classifies: <code>price</code> is a perfectly good
+    identifier token. The parser only checks grammar: "identifier = identifier + number *
+    number" is a grammatical sentence. Meaning lives in the third check, where the analyser
+    walks the AST carrying the symbol table of declared names, types and scopes — an
+    undeclared name is a meaning failure, not a spelling or grammar failure. (3) Polling
+    burns hundreds of millions of idle cycles asking devices that are almost always silent —
+    a keyboard is pressed perhaps ten times a minute. The interrupt replaces the question
+    with a signal: the device raises it, the CPU pushes its context onto the stack, looks up
+    the ISR in the interrupt vector table, runs it, restores state and resumes — attention is
+    spent only when there is news.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Every layer between intention and machine is a translator that also checks something — each check is cheapest at its own level.</li>
+    <li>The compiler reads the whole program first; the interpreter reads line by line, which explains both tools' signature behaviours.</li>
+    <li>Syntax errors are parser complaints; meaning errors (undeclared names, type clashes) are the semantic analyser's.</li>
+    <li>The OS mostly does not run: interrupts and system calls wake it, and the timer interrupt is multitasking's heartbeat.</li>
+    <li>The boot chain — firmware, bootloader, kernel — is small programs loading bigger ones from nothing.</li>
+    <li>"Compiled versus interpreted" is a spectrum: bytecode and JIT systems blur the clean line.</li>
+    <li>Language design is a trade space — typing, memory management, paradigms — not progress toward one perfect language.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling expert lesson "Computability and complexity" pushes the pipeline's limits:
+    which languages can be parsed at all, what no finite automaton can count, and which
+    problems no computer can solve in reasonable time. "Cryptography" extends the
+    translation-with-verification idea to messages that must survive adversaries, and
+    "Distributed systems" scales the operating system's scheduling questions to thousands of
+    cooperating machines.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Grammars have a formal hierarchy.</strong> Lexers work with regular languages —
@@ -234,6 +316,15 @@ const compQuizCfg = {
     written faster than it can be reviewed.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Aho, Lam, Sethi &amp; Ullman, <em>Compilers: Principles, Techniques and Tools</em> ("the dragon book"); Backus, "The FORTRAN Automatic Coding System" (1957); Cambridge IGCSE Computer Science 0478 syllabus, section 4; Leroy et al., the CompCert verified compiler.</p>
+  <p class="sources"><strong>Sources:</strong> Aho, Lam, Sethi &amp; Ullman, <em>Compilers: Principles, Techniques and Tools</em> ("the dragon book"); Backus, "The FORTRAN Automatic Coding System" (1957); Cambridge IGCSE Computer Science 0478 syllabus, section 4; Leroy et al., the CompCert verified compiler. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
   <Widget no="2" caption="check yourself: translators, interrupts and the pipeline" widget="quiz" config={compQuizCfg} />
+  <p>
+    <strong>What to notice:</strong> every distractor in this quiz is a real concept, not
+    noise — "interpreter" is a genuine translator that fails only the whole-program condition,
+    "parsing" is a genuine stage that fails the tokens-versus-tree distinction, and the
+    keyboard-interrupt question turns on the word <em>first</em>: the CPU saves its state
+    before any useful work can happen. If you missed one, the answer's explanation names the
+    exact distinction, and the pipeline, interrupts and translators sections above hold the
+    full argument.
+  </p>
 </TopicPage>
