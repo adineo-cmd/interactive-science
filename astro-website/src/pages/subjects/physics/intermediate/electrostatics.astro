@@ -9,6 +9,136 @@ const coulombCfg = {
   crossings: false,
   height: 350,
 };
+
+const esInductionOrder = {
+  "prompt": "Charging by induction, step by step:",
+  "items": [
+    "Bring a charged rod near a neutral sphere — electrons pile up on the near side",
+    "Earth the far side — electrons drain to or from the planet",
+    "Remove the earth connection",
+    "Remove the rod — the sphere keeps a net charge opposite to the rod, never having touched it"
+  ],
+  "why": "Conservation of charge does the rest: the rod never touched the sphere, yet the sphere ends up charged — which is how lightning charges rooftops from a distance."
+};
+
+const esMoveJudge = {
+  "statements": [
+    {
+      "s": "In a rubbed rod, positive charges travel from the hair to the balloon.",
+      "truth": false,
+      "why": "Protons are locked in nuclei; electrons do the moving — the 'positive direction' is an 18th-century convention we kept."
+    },
+    {
+      "s": "A charged balloon sticks to a neutral wall because the wall's near side is induced into opposite charge.",
+      "truth": true,
+      "why": "The near side is closer and opposite, so attraction wins — neutral objects are persuadable."
+    },
+    {
+      "s": "Rubbing creates the charge that makes static electricity.",
+      "truth": false,
+      "why": "Rubbing only separates charge; the pair's total is conserved — the balloon takes electrons, the hair loses them."
+    },
+    {
+      "s": "A charged balloon carries only a vanishing fraction of its total electrons.",
+      "truth": true,
+      "why": "About 10⁻⁸ C — some 60 billion electrons — is enough to hold it to the ceiling, yet a rounding error of the whole."
+    }
+  ]
+};
+
+const esCoulombEstimate = {
+  "prompt": "One coulomb is how many electrons' worth of charge?",
+  "unit": "×10¹⁸ electrons",
+  "answer": 6.2,
+  "factor": 1.5,
+  "why": "1 / 1.602×10⁻¹⁹ ≈ 6.2×10¹⁸ electrons per coulomb.",
+  "context": "A hefty static charge is a microcoulomb — 0.9 N between two of them at 10 cm, about the weight of a 90 g apple from two specks."
+};
+
+const esFieldCloze = {
+  "text": "Field lines exit %%0%% charges and enter negative ones, never crossing. Between parallel plates the uniform field has strength E = %%1%%/d, and inside a hollow conductor the interior field is exactly %%2%% — the Faraday cage.",
+  "answers": [
+    [
+      "positive",
+      "+"
+    ],
+    [
+      "V",
+      "voltage"
+    ],
+    [
+      "zero",
+      "0"
+    ]
+  ],
+  "hint": "Think of the oscilloscope geometry, and what the free electrons rearrange until they achieve."
+};
+
+const esPathPredict = {
+  "q": "An electron enters the uniform field between two parallel plates, moving horizontally. What path does it trace through the field?",
+  "choices": [
+    "It follows one of the field lines, straight across",
+    "It curves parabolically, like a thrown ball under gravity",
+    "It stops — the field blocks its motion entirely"
+  ],
+  "answer": 1,
+  "why": "Field lines are a map of the force, not a route plan: the electron keeps its horizontal inertia while the field bends it — a parabola, exactly like a horizontally thrown ball."
+};
+
+const esDemosBuckets = {
+  "prompt": "Each kitchen demo runs on a different mechanism. File them:",
+  "buckets": [
+    "Induction",
+    "Polar molecules",
+    "Frictional separation"
+  ],
+  "items": [
+    {
+      "label": "a charged balloon holding itself to the ceiling",
+      "bucket": 0
+    },
+    {
+      "label": "a charged rod bending a thin tap stream",
+      "bucket": 1
+    },
+    {
+      "label": "the crackle of pulled-off cling film",
+      "bucket": 2
+    },
+    {
+      "label": "lightning charging rooftops from a distance",
+      "bucket": 0
+    },
+    {
+      "label": "a rubbed balloon peeling electrons off your hair",
+      "bucket": 2
+    }
+  ],
+  "why": "Induction bends distant objects, polar molecules explain the water stream (the near side wins by asymmetry), and friction just separates charge that already existed."
+};
+
+const esMatMatch = {
+  "prompt": "Match each player in the charge game to its rule:",
+  "pairs": [
+    {
+      "left": "metals — the electron sea",
+      "right": "charge spreads over the whole surface until repulsion balances"
+    },
+    {
+      "left": "insulators — electrons held tight",
+      "right": "charge stays where it is put, which is why rubbing charges them at all"
+    },
+    {
+      "left": "sharp points on a conductor",
+      "right": "leak charge most easily — the lightning rod's trick"
+    },
+    {
+      "left": "semiconductors",
+      "right": "conductivity switched by impurities and fields — the transistor's raw material"
+    }
+  ],
+  "why": "And earthing is the universal tiebreaker: connect any conductor to the planet, and excess charge drains to neutrality — hence the bonding cable on every fuel nozzle."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/electrostatics">
 
@@ -20,6 +150,7 @@ const coulombCfg = {
     same machinery is pointed at a new quantity, charge; the concepts built here are the ones the
     circuits, magnetism and atomic chapters all spend.
   </p>
+  <Widget no="2" caption="rebuild the induction sequence — charging without touching" widget="order" config={esInductionOrder} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>explain what charge is, how objects acquire it, and why rubbing transfers rather than creates;</li>
@@ -86,6 +217,7 @@ const coulombCfg = {
   convention we kept. Also: a charged balloon sticks to a <em>neutral</em> wall — its nearby
   field shifts the wall's electrons slightly, inducing a surface charge that is closer and
   opposite, so attraction wins. Neutral objects are not immune; they are persuadable.</p>
+  <Widget no="3" caption="true or false — what actually moves" widget="judge" config={esMoveJudge} />
 
   <h2>Coulomb's law, with numbers</h2>
   <p>
@@ -104,6 +236,7 @@ const coulombCfg = {
     a whole microcoulomb is a <em>large</em> static charge, and ordinary rubbed objects sit
     far below it — which makes these forces all the more impressive.
   </p>
+  <Widget no="4" caption="call the magnitude — electrons in a coulomb" widget="estimate" config={esCoulombEstimate} />
   <p>
     <strong>So far:</strong> the force law works, with numbers you can now check by hand — but read
     literally it describes one charge reaching across empty space to another. The next section
@@ -128,12 +261,14 @@ const coulombCfg = {
     which is why a car (roughly) protects you from lightning and why a microwave's mesh door
     keeps 12 cm microwaves in while admitting visible light.
   </p>
+  <Widget no="5" caption="fill the blanks — field lines, plate fields and the cage" widget="cloze" config={esFieldCloze} />
   <p><em>Common misconception:</em> field lines are tracks that charges travel along, like
   rails or a ball rolling down a groove. A line shows only the <em>direction of the force</em>
   at each point; a moving charge has inertia, so its actual path generally departs from the
   line (an electron entering a uniform field between plates curves parabolically, exactly as
   a horizontally thrown ball curves under gravity). Field lines are a map of the force
   field, not the route plan of anything in it.</p>
+  <Widget no="6" caption="bet first — the electron's path between the plates" widget="predict" config={esPathPredict} />
   <p>
     Closely related is <strong>electric potential</strong>, V — the electric potential energy
     per unit charge at a point, measured in volts. Fields push; potentials score. Charge
@@ -163,6 +298,7 @@ const coulombCfg = {
     accelerated. Each demo is a textbook diagram with props, and each one is testable: do
     them under humid conditions and watch the effects weaken as leakage improves.
   </p>
+  <Widget no="7" caption="file the demos — three props, three mechanisms" widget="sort-buckets" config={esDemosBuckets} />
   <p>
     <strong>So far:</strong> charge, force, field and potential now form a working toolkit, and the
     three kitchen demos are each a textbook diagram with props. The next section sorts materials by
@@ -187,6 +323,7 @@ const coulombCfg = {
     fuel's friction charging can build enough potential to spark — the reason every petrol
     station nozzle and aircraft fuelling rig has a bonding cable.
   </p>
+  <Widget no="8" caption="pair each material with its electron rule" widget="match" config={esMatMatch} />
 
   <h2>Electrostatics at work</h2>
   <p>

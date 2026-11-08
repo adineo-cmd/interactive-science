@@ -13,6 +13,139 @@ const isothermCfg = {
   crossings: false,
   height: 350,
 };
+
+const thStatesBuckets = {
+  "prompt": "The kinetic particle model explains all three states. File each property:",
+  "buckets": [
+    "Solid",
+    "Liquid",
+    "Gas"
+  ],
+  "items": [
+    {
+      "label": "particles vibrate about fixed positions",
+      "bucket": 0
+    },
+    {
+      "label": "strong bonds hold the shape",
+      "bucket": 0
+    },
+    {
+      "label": "particles stay touching but free to slide",
+      "bucket": 1
+    },
+    {
+      "label": "fixed volume, no fixed shape",
+      "bucket": 1
+    },
+    {
+      "label": "particles far apart, fast and random until they collide",
+      "bucket": 2
+    },
+    {
+      "label": "fills whatever container it gets",
+      "bucket": 2
+    }
+  ],
+  "why": "One picture covers the ladder: vibrating solids, sliding liquids, flying gases — and melting, boiling, condensing and freezing are just transitions along it."
+};
+
+const thBoyleCloze = {
+  "text": "Boyle's law worked example: 0.10 m³ of air at 100 kPa compressed to 0.04 m³ gives P₂ = %%0%% kPa. And beware the scale trap: doubling a Celsius temperature does %%1%% double the pressure — only %%2%% may be doubled.",
+  "answers": [
+    [
+      "250"
+    ],
+    [
+      "not"
+    ],
+    [
+      "kelvins",
+      "kelvin"
+    ]
+  ],
+  "hint": "P₁V₁ = P₂V₂; and 20 °C is 293 K while 40 °C is only 313 K."
+};
+
+const thLakePredict = {
+  "q": "A lake in mid-winter, air at −10 °C, ice on top. What is the water temperature at the bottom of the lake?",
+  "choices": [
+    "−10 °C — it matches the air",
+    "0 °C — the whole lake sits at freezing",
+    "About 4 °C — water's density peak sinks below the ice"
+  ],
+  "answer": 2,
+  "why": "Water is the beautiful exception: it contracts as it warms from 0 to 4 °C, so 4 °C water is densest and sinks. Lakes freeze top-down, insulating the fish below."
+};
+
+const thKettleEstimate = {
+  "prompt": "A 3 kW kettle heats 1.5 kg of water from 20 °C to 100 °C. Roughly how long does it run?",
+  "unit": "minutes",
+  "answer": 2.8,
+  "factor": 1.6,
+  "why": "ΔE = mc·Δθ = 1.5 × 4,186 × 80 ≈ 500 kJ; at 3,000 J/s that is about 170 s — 2.8 minutes.",
+  "context": "Steel's c ≈ 490 is the contrast: a small iron pan screams hot while the full kettle is lukewarm on the same hob."
+};
+
+const thBreezeOrder = {
+  "prompt": "Put the daytime sea breeze in order:",
+  "items": [
+    "Land heats faster than the sea",
+    "Air over the land warms, expands and becomes less dense",
+    "Buoyancy floats the warm air upward",
+    "Cooler sea air sinks and flows in to replace it",
+    "The loop keeps circulating — the breeze you feel on your face"
+  ],
+  "why": "Convection moves energy by moving matter: heat does not rise — the heated fluid rises. The same loop runs thunderstorm updrafts and the mantle's slow conveyor."
+};
+
+const thBoilMatch = {
+  "prompt": "Related, not identical — match each property to its process:",
+  "pairs": [
+    {
+      "left": "happens at any temperature",
+      "right": "evaporation"
+    },
+    {
+      "left": "happens throughout the liquid, in bubbles",
+      "right": "boiling"
+    },
+    {
+      "left": "loses the fastest molecules — which is why the puddle cools",
+      "right": "evaporation"
+    },
+    {
+      "left": "vapour pressure matches atmospheric pressure",
+      "right": "boiling"
+    }
+  ],
+  "why": "Both cool what remains; only boiling demands the full latent-heat rate at one temperature — and near Everest's summit, that temperature drops to body heat."
+};
+
+const thSteamJudge = {
+  "statements": [
+    {
+      "s": "Steam at 100 °C scalds worse than boiling water at 100 °C.",
+      "truth": true,
+      "why": "Condensing on skin, steam deposits its latent heat — about 2,257 kJ/kg on top of the hot-liquid transfer."
+    },
+    {
+      "s": "Evaporating sweat carries away enough energy to cool a 70 kg human by over 10 °C.",
+      "truth": true,
+      "why": "1.5 kg of sweat ≈ 3,600 kJ — and humidity slows evaporation, which is what makes humid heat lethal."
+    },
+    {
+      "s": "Ice cools a drink only by being cold.",
+      "truth": false,
+      "why": "Melting adds another 334 kJ/kg on top of the temperature difference — the latent half of the cooling."
+    },
+    {
+      "s": "While water boils, its temperature keeps rising.",
+      "truth": false,
+      "why": "The thermometer freezes at 100 °C — the energy goes into breaking intermolecular bonds, not into jiggling."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/thermal-physics">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +210,7 @@ const isothermCfg = {
     because invisible molecules bombard them unevenly — visible evidence of invisible motion,
     and Einstein's 1905 analysis of it clinched the reality of atoms.
   </p>
+  <Widget no="2" caption="file the properties — one model, three behaviours" widget="sort-buckets" config={thStatesBuckets} />
   <p>
     <strong>So far:</strong> one particle model — vibrating solids, sliding liquids, flying
     gases — explains the three states and every change between them, and Brownian motion gave
@@ -103,6 +237,7 @@ const isothermCfg = {
     kinetic energy: at room temperature a nitrogen molecule zips at about 500 m/s (the speed
     of a rifle bullet), colliding billions of times per second.
   </p>
+  <Widget no="3" caption="fill the blanks — gas-law arithmetic and the kelvin rule" widget="cloze" config={thBoyleCloze} />
   <p><em>Common misconception:</em> "if 20 °C becomes 40 °C, the temperature has doubled, so
   the pressure doubles too." Only kelvins may be doubled: 20 °C is 293 K and 40 °C is 313 K —
   a rise of about 7%, not 100%. The Celsius zero point sits at the freezing point of water,
@@ -135,6 +270,7 @@ const isothermCfg = {
     deep: lakes freeze from the top down (4 °C water sinks, insulating the fish below),
     icebergs sail, and frozen pipes burst as expanding water finds no room.
   </p>
+  <Widget no="4" caption="bet first — the winter lake's bottom" widget="predict" config={thLakePredict} />
 
   <h2>Specific heat capacity: the energy price of a degree</h2>
   <p>
@@ -146,6 +282,7 @@ const isothermCfg = {
     Steel (c ≈ 490) heats and cools faster than water; a small iron pan can be screaming hot
     while its full kettle neighbour is lukewarm on the same hob.
   </p>
+  <Widget no="5" caption="call the magnitude — your kettle's running time" widget="estimate" config={thKettleEstimate} />
   <p>
     Water's c = 4,186 J/kg·K is among the highest of any common substance, and civilisation
     is built on it. Oceans store summer heat and release it in winter (maritime climates are
@@ -186,10 +323,12 @@ const isothermCfg = {
     body temperature near the summit of Everest, and astronauts' risk of blood boiling at
     extreme low pressure is a latent-heat fact with teeth.
   </p>
+  <Widget no="7" caption="pair the property — evaporation or boiling?" widget="match" config={thBoilMatch} />
   <p><em>Common misconception:</em> steam at 100 °C and boiling water at 100 °C scald
   equally, since they share a temperature. Steam scalds far worse: when it condenses on skin
   it deposits its latent heat of vaporisation — about 2,257 kJ/kg on top of whatever the
   hot liquid itself transfers. Same temperature, very different energy delivery.</p>
+  <Widget no="8" caption="true or false — steam, sweat and ice" widget="judge" config={thSteamJudge} />
 
   <h2>How heat travels: conduction, convection, radiation</h2>
   <p>
@@ -210,6 +349,7 @@ const isothermCfg = {
     sea breezes (land heats faster by day, air over it rises, sea air flows in), thunderstorm
     updrafts, and the mantle's slow conveyor beneath the tectonic plates.
   </p>
+  <Widget no="6" caption="rebuild the sea-breeze loop — convection by the coast" widget="order" config={thBreezeOrder} />
   <p><em>Common misconception:</em> "heat rises, which is why the upstairs flat is warmer."
   Heat is energy in transit, and energy does not have a preferred direction; what rises is
   the <em>heated fluid</em>, because buoyancy floats the less dense region. Put the same
