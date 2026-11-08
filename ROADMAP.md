@@ -70,46 +70,30 @@ Existing types (`plotter`, `sliderLab`, `equationStep`, `timeline`, `diagramBuil
 3. **Sequencing:** backfill foundational + intermediate (357 lessons) per subject;
    remaining planned lessons get per-paragraph activities in their first pass.
 
-## P2 — Register v2: the "conversational layer" (reference: ChatGPT tutoring style)
+## P2 — Register v2: the structural "conversational layer" (reference: ChatGPT tutoring style)
 
-Target feel (captured from the user's reference lesson): a tutor that teaches in small
-steps with room to breathe. Key characteristics to adopt site-wide:
+**User decision (2026-11-08): structural tactics only — NO content regeneration.** The
+prose-level tactics from the reference (micro-sentence rewriting, definition-unpacking boxes,
+example-first restructuring, onboarding prose) are deliberately **omitted**; existing lesson
+prose stays untouched. Everything below is CSS/build-time scripting over data that already
+exists — **zero LLM tokens**, shippable site-wide:
 
-1. **Small, easy sentences** — one idea per sentence; paragraphs of 1–3 sentences.
-   Jargon only after the plain word has been used first.
-2. **Generous spacing / gapping** — whitespace is pacing. More, shorter paragraphs;
-   breathing room between steps (CSS line-height/margins tuned for this).
-3. **Numbered topic positions** — hierarchical numbering inside lessons
-   ("1. Understanding the word", "2. What exactly is…", "3. Seven characteristics…"
-   with numbered sub-points). The reader always knows where they are.
-4. **Stage roadmaps** — every subject opens with a stage map (Stage 1 → N) like the
-   reference's 8-stage biology roadmap; the subject page's course contents become the
-   explicit "journey from beginner to advanced".
-5. **Lesson position labels** — "Beginner · Lesson 1" chips on lesson pages (tier +
-   index within the subject ladder, already derivable from `topics.json`).
-6. **Definition unpacking** — etymology/term-breakdown boxes ("Bios: Life / Logos:
-   Study / Therefore: …") for every new technical term.
-7. **Example-first explanations** — concrete example, then the rule
-   ("Look at these examples: …" → Living / Non-living labels).
-8. **Enumerated characteristics** — numbered list items each with a one-line definition
-   followed by "Example: …" on its own line.
-9. **End-of-lesson quiz is standard** — "Check your understanding" with 4 MCQs and a
-   progress indicator ("0/4 answered") closing every lesson.
-10. **The learning loop made explicit** — subject pages state the loop: Explore →
-    Learn → Visualize → Apply → Practice → Assess.
-11. **Friendly onboarding** — "You don't need any previous knowledge. We'll build it
-    from zero." openers; optional goal question per subject ("Why are you learning
-    this?" → tunes the Going deeper pointers).
+1. **Generous spacing / gapping** — whitespace is pacing: more breathing room between
+   paragraphs and steps (CSS line-height/margins tuned for the airy feel).
+2. **Numbered topic positions** — hierarchical numbering rendered on existing headings
+   ("1. Understanding the word", "2. What exactly is…") via CSS counters/build step.
+   The reader always knows where they are.
+3. **Stage roadmaps** — every subject's course contents framed as a stage map
+   (Stage 1 → N), the explicit "journey from beginner to advanced".
+4. **Lesson position labels** — "Beginner · Lesson 1" chips on lesson pages (tier +
+   index within the subject ladder, derivable from `topics.json`).
+5. **End-of-lesson quiz progress** — "0/4 answered" progress indicator on the existing
+   quiz widgets.
+6. **The learning loop made explicit** — subject pages state the loop: Explore →
+   Learn → Visualize → Apply → Practice → Assess.
 
 Layout implication: lesson pages get a max-width and line-height tuned for the airy
 register; widgets sit *between* short paragraphs, not after walls of text.
-
-**Production split (no second content pass):** items 2–5, 9 and 10 (numbering, spacing,
-lesson chips, quiz progress, stage framing, learning loop) are structural — CSS/build-time
-scripting over existing data, **zero LLM tokens**, shippable site-wide immediately. Only the
-prose-level items (1, 6, 7, 8, 11) touch text — those are **folded into P1's bulk pass**, so
-each paragraph is touched exactly once: its sentences tightened *and* its activity added in
-the same run. Never a separate P2 rewriting campaign.
 
 ## P3 — Career-role pages (deferred)
 
