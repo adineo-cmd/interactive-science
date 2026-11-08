@@ -7,20 +7,11 @@ const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
 const { subjects, topics } = data;
 const live = topics.filter((t) => t.status !== 'planned');
 
-const TIERS = [
-  ['foundational', 'Foundational'],
-  ['intermediate', 'Intermediate'],
-  ['advanced', 'Advanced'],
-  ['expert', 'Expert'],
-];
-
 const domainGroups = Object.entries(domains)
   .map(([id, label]) => {
     const items = subjects.filter((s) => (s.domain ?? '') === id).sort((a, b) => a.name.localeCompare(b.name));
-    const liveByTier = Object.fromEntries(
-      TIERS.map(([lv]) => [lv, live.filter((t) => items.some((s) => s.id === t.subject) && t.level === lv).length]),
-    );
-    return { id, label, count: items.length, liveByTier };
+    const liveTotal = live.filter((t) => items.some((s) => s.id === t.subject)).length;
+    return { id, label, count: items.length, liveTotal };
   })
   .filter((g) => g.count > 0);
 
@@ -66,36 +57,17 @@ const tools = [
     <div class="wrap">
       <div class="section-head">
         <h2>The index</h2>
-        <span class="side-note">{subjects.length} subjects · pick a depth, then a field</span>
+        <span class="side-note">{subjects.length} subjects · every field runs one ladder, foundational → expert</span>
       </div>
-      <div class="tier-tabs" role="tablist" aria-label="Course depth">
-        {TIERS.map(([lv, label], i) => (
-          <button
-            class:list={['tier-tab', { active: i === 0 }]}
-            type="button"
-            role="tab"
-            aria-selected={i === 0}
-            data-tier={lv}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-      <div class="domain-grid" data-tier="foundational">
+      <div class="domain-grid">
         {domainGroups.map((group) => (
           <a class="domain-card" href={`${B}/domains/${group.id}/`}>
             <h3>{group.label}</h3>
             <p class="domain-count">
               {group.count} subject{group.count === 1 ? '' : 's'}
             </p>
-            <p
-              class="domain-meta"
-              data-foundational={group.liveByTier.foundational}
-              data-intermediate={group.liveByTier.intermediate}
-              data-advanced={group.liveByTier.advanced}
-              data-expert={group.liveByTier.expert}
-            >
-              {group.liveByTier.foundational} lessons live
+            <p class="domain-meta">
+              {group.liveTotal} lessons live
             </p>
           </a>
         ))}
@@ -143,22 +115,3 @@ const tools = [
 </Layout>
 
 <script type="module" src={B + '/js/hero.js'} is:inline></script>
-
-<script>
-  // Tier tabs: switch the per-card live counts to the selected depth.
-  const tabs = document.querySelectorAll<HTMLButtonElement>('.tier-tabs .tier-tab');
-  tabs.forEach((tab) =>
-    tab.addEventListener('click', () => {
-      const tier = tab.dataset.tier ?? 'foundational';
-      tabs.forEach((t) => {
-        t.classList.toggle('active', t === tab);
-        t.setAttribute('aria-selected', String(t === tab));
-      });
-      document.querySelectorAll('.domain-grid').forEach((grid) => grid.setAttribute('data-tier', tier));
-      document.querySelectorAll<HTMLElement>('.domain-meta').forEach((meta) => {
-        const n = meta.getAttribute(`data-${tier}`) ?? '0';
-        meta.textContent = n === '0' ? 'coming at this level' : `${n} lessons live`;
-      });
-    }),
-  );
-</script>
