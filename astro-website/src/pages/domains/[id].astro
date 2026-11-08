@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SubjectIcon from '../../components/SubjectIcon.astro';
+import data from '../../data/topics.json';
+import domains from '../../data/domains.json';
+
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const live = topics.filter((t) => t.status !== 'planned');
+
+const TIERS = [
+  ['foundational', 'Foundational'],
+  ['intermediate', 'Intermediate'],
+  ['advanced', 'Advanced'],
+  ['expert', 'Expert'],
+];
+
+export function getStaticPaths() {
+  return Object.entries(domains).map(([id, label]) => ({ params: { id }, props: { label } }));
+}
+
+const { id } = Astro.params;
+const { label } = Astro.props;
+
+const items = subjects
+  .filter((s) => (s.domain ?? '') === id)
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((s) => {
+    const liveByTier = Object.fromEntries(
+      TIERS.map(([lv]) => [lv, live.filter((t) => t.subject === s.id && t.level === lv).length]),
+    );
+    return { ...s, liveByTier, total: Object.values(liveByTier).reduce((a, b) => a + b, 0) };
+  });
+---
+<Layout title={`${label} — Interactive Atlas`} description={`${label} subjects on Interactive Atlas — interactive, manipulable lessons from foundational to expert.`}>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span>{label}</p>
+      <h1>{label}</h1>
+      <p class="lede">
+        Pick a depth — every subject runs one ladder from foundational to expert.
+        Each subject opens with its own course contents.
+      </p>
+    </header>
+
+    <div class="tier-tabs" role="tablist" aria-label="Course depth">
+      {TIERS.map(([lv, tierLabel], i) => (
+        <button
+          class:list={['tier-tab', { active: i === 0 }]}
+          type="button"
+          role="tab"
+          aria-selected={i === 0}
+          data-tier={lv}
+        >
+          {tierLabel}
+        </button>
+      ))}
+    </div>
+
+    <div class="index domain-subjects" data-tier="foundational">
+      {items.map((s) => (
+        <a class="index-row" style={`--row-ink:${s.ink}`} href={`${B}/subjects/${s.id}/`}>
+          <span class="glyph"><SubjectIcon name={s.icon} size={26} /></span>
+          <span>
+            <span class="index-name">{s.name}</span>
+            <span class="index-tag" style="display:block">{s.tagline}</span>
+          </span>
+          <span
+            class="index-meta tier-meta"
+            data-foundational={s.liveByTier.foundational}
+            data-intermediate={s.liveByTier.intermediate}
+            data-advanced={s.liveByTier.advanced}
+            data-expert={s.liveByTier.expert}
+          >
+            {s.liveByTier.foundational} lesson{s.liveByTier.foundational === 1 ? '' : 's'}
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Tier tabs: switch per-subject counts and deep-link to the subject page's tier block.
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tier-tabs .tier-tab');
+  tabs.forEach((tab) =>
+    tab.addEventListener('click', () => {
+      const tier = tab.dataset.tier ?? 'foundational';
+      tabs.forEach((t) => {
+        t.classList.toggle('active', t === tab);
+        t.setAttribute('aria-selected', String(t === tab));
+      });
+      document.querySelectorAll('.domain-subjects').forEach((grid) => grid.setAttribute('data-tier', tier));
+      document.querySelectorAll<HTMLAnchorElement>('.domain-subjects .index-row').forEach((row) => {
+        const meta = row.querySelector<HTMLElement>('.tier-meta');
+        if (!meta) return;
+        const n = meta.getAttribute(`data-${tier}`) ?? '0';
+        meta.textContent = n === '0' ? 'coming at this level' : `${n} lesson${n === '1' ? '' : 's'}`;
+        const base = (row.getAttribute('href') ?? '').split('#')[0];
+        row.setAttribute('href', `${base}#${tier}`);
+      });
+    }),
+  );
+</script>

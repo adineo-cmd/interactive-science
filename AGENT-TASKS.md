@@ -1,5 +1,9 @@
 # AGENT-TASKS.md — Work division for the Interactive Atlas content pipeline
 
+> **Future work (2026-11-08): per-paragraph interactivity, register v2 (conversational
+> layer), token-cheap pipeline, pack expansion — see `ROADMAP.md`. Those priorities
+> fold into the remaining content waves below.**
+
 Agreed strategy (2026-11-04): **extract content from open-licensed textbooks, generate
 as little as possible with AI.** AI is used only to simplify hard passages, fill gaps,
 place interactive widgets, add practice questions, and check consistency — per PEDAGOGY.md.
