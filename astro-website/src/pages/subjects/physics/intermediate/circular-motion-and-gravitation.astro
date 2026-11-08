@@ -12,6 +12,138 @@ const orbitCfg = {
     { label: 'needed centripetal a = v²/r', expr: '398600/(r*r)', unit: 'km/s²' },
   ],
 };
+
+const cmCornerCloze = {
+  "text": "Double the cornering speed and the required grip multiplies by %%0%%, because both the momentum to bend and the rate of bending grow. On a wet road (μ ≈ 0.4) the 50 m corner's limit falls to about %%1%% km/h — whatever the sign says.",
+  "answers": [
+    [
+      "four",
+      "4",
+      "4x",
+      "x4"
+    ],
+    [
+      "50",
+      "fifty"
+    ]
+  ],
+  "hint": "F = mv²/r hides a square; √(0.4 × 9.8 × 50) hides a square root."
+};
+
+const cmBucketPredict = {
+  "q": "A child whirls a bucket of water overhead without spilling a drop. At the top of the swing, what keeps the water pressed in the bucket?",
+  "choices": [
+    "Centrifugal force pushing the water outward against the bucket's base",
+    "The bucket's base pushing inward on the water — the only real force there is",
+    "The water's stickiness to the bucket outweighing gravity at the top"
+  ],
+  "answer": 1,
+  "why": "There is no outward push to draw on: every real force points the way the surface actually pushes. The bucket's base supplies the inward centripetal force — and the whirl must be quick enough that at the top the required v²/r is at least g."
+};
+
+const cmMoonEstimate = {
+  "prompt": "The Moon is about 60 Earth-radii away. Roughly how strong is Earth's gravitational grip up there, in m/s²?",
+  "unit": "m/s²",
+  "answer": 0.0027,
+  "factor": 2,
+  "why": "9.8 / 60² ≈ 0.0027 m/s² — and the Moon's measured centripetal acceleration (v²/r from its 27.3-day period) matches it exactly. The falling Moon IS the falling apple.",
+  "context": "About 0.03% of what you feel standing up — inverse-square is a brutal discount."
+};
+
+const cmPeriodsMatch = {
+  "prompt": "One T²/r³ curve covers them all — match each resident of orbit to its period:",
+  "pairs": [
+    {
+      "left": "the ISS (6,780 km radius)",
+      "right": "92 minutes"
+    },
+    {
+      "left": "Hubble (6,900 km)",
+      "right": "95 minutes"
+    },
+    {
+      "left": "GPS satellites (about 20,200 km)",
+      "right": "half a day"
+    },
+    {
+      "left": "the geostationary ring (42,164 km)",
+      "right": "one sidereal day"
+    },
+    {
+      "left": "the Moon (384,000 km)",
+      "right": "27.3 days"
+    }
+  ],
+  "why": "Slide outward and the demanded speed falls as 1/√r while the circle lengthens — the period grows as r^(3/2), Kepler's third law explained by Newton's inverse square."
+};
+
+const cmSpeedPlace = {
+  "prompt": "You are moving around the Sun right now. Place Earth's orbital speed on the scale (km/s):",
+  "labels": [
+    "0",
+    "15",
+    "30",
+    "45",
+    "60"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 60
+  },
+  "answer": 30,
+  "tolerance": 3,
+  "why": "Earth orbits at about 30 km/s — sustained by nothing but your own inertia while the Sun's grip curves you around. Mercury runs 47 km/s; Neptune, thirty times farther out, ambles at 5.4.",
+  "context": "The speed ladder is v = √(GM/r) — closer means faster, no exceptions."
+};
+
+const cmStarBuckets = {
+  "prompt": "Sort each fate into the right ending:",
+  "buckets": [
+    "White dwarf",
+    "Supernova",
+    "Black hole"
+  ],
+  "items": [
+    {
+      "label": "the Sun's own retirement, after swelling into a red giant",
+      "bucket": 0
+    },
+    {
+      "label": "an Earth-sized ember left behind by puffed-off outer layers",
+      "bucket": 0
+    },
+    {
+      "label": "the explosive death of a star that burned hot and fast",
+      "bucket": 1
+    },
+    {
+      "label": "leaves a neutron star behind — a sugar-cube outweighing a mountain",
+      "bucket": 1
+    },
+    {
+      "label": "the forges where calcium and iron were made",
+      "bucket": 1
+    },
+    {
+      "label": "gravity's endgame, past a mass limit",
+      "bucket": 2
+    }
+  ],
+  "why": "Low-mass stars retire quietly as white dwarfs; massive ones die young in supernovae — forging the heavy elements and leaving neutron stars — and the most massive collapse past rescue into black holes."
+};
+
+const cmSunCompare = {
+  "prompt": "Drag the divider between the Sun's two acts:",
+  "before": {
+    "label": "Now — main sequence",
+    "text": "The core, squeezed to about 15 million kelvin, fuses hydrogen into helium: 4 million tonnes of mass become energy every second, holding the star inflated against its own gravity for roughly 10 billion years."
+  },
+  "after": {
+    "label": "Later — red giant, then white dwarf",
+    "text": "The fuel runs out and the balance tips: the Sun swells into a red giant, puffs off its outer layers as a nebula, and retires as a white dwarf — an Earth-sized ember."
+  },
+  "why": "A stellar life is fusion against gravity; when the hydrogen runs out, the same two forces stage the ending."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/circular-motion-and-gravitation">
 
@@ -81,6 +213,7 @@ const orbitCfg = {
     leaves the clothes where the drum's holes offer no centripetal force), a runner's lean
     into the bend, and a blood cell's load in a centrifuge.
   </p>
+  <Widget no="2" caption="fill the blanks — the quadratic cruelty of cornering" widget="cloze" config={cmCornerCloze} />
   <p><em>Common misconception:</em> centrifugal force, pushing you <em>outward</em> in a
   turning car. Nothing does: in the car's frame (which is accelerating) Newton's laws need a
   fiction to keep working, and that fiction is "centrifugal force". In the road's frame the
@@ -89,6 +222,7 @@ const orbitCfg = {
   (tangentially) once the drum stops supplying a centre-seeking force. If you ever catch
   yourself drawing an outward arrow in a free-body diagram, stop: every real force points the
   way the surface or field actually pushes.</p>
+  <Widget no="3" caption="bet first — what holds the water in the overhead bucket?" widget="predict" config={cmBucketPredict} />
   <p>
     <strong>So far:</strong> turning is acceleration, and something real — a string, a
     tyre, a seat, a floor — must always supply it. On the cosmic scale the supplier is
@@ -107,6 +241,7 @@ const orbitCfg = {
     <em>is</em> the falling apple, 3,600 times weaker and sixty times farther. One law, both
     events — and every planet, tide and galaxy since.
   </p>
+  <Widget no="4" caption="call the magnitude — how hard does Earth pull the Moon?" widget="estimate" config={cmMoonEstimate} />
   <p>
     A companion relation comes free: the gravitational <strong>field strength</strong> at
     distance r from mass M is g = GM/r². At the International Space Station's 400 km
@@ -141,6 +276,7 @@ const orbitCfg = {
     law explains: the Moon (384,000 km, 27.3 days), the ISS (6,780 km, 92 minutes) and the
     Hubble telescope (6,900 km, 95 minutes) all sit on the same T²/r³ curve.
   </p>
+  <Widget no="5" caption="pair each orbit with its period" widget="match" config={cmPeriodsMatch} />
   <p><em>Common misconception:</em> "heavier satellites must orbit faster, since gravity
   pulls them harder." Gravity does pull a heavier satellite harder — and its inertia is
   greater by exactly the same factor, so the two cancel: orbit speed depends only on the
@@ -169,6 +305,7 @@ const orbitCfg = {
     the board. Newton's inverse square turned Kepler's three empirical rules into corollaries
     — the moment physics and astronomy became the same subject.
   </p>
+  <Widget no="6" caption="place your own orbital speed on the scale" widget="place" config={cmSpeedPlace} />
 
   <h2>Stars and the universe</h2>
   <p>
@@ -185,6 +322,7 @@ const orbitCfg = {
     consequences outrun every escape. The elements heavier than helium, notably, were forged
     in such stars and their explosions: the calcium in your bones is stellar shrapnel.
   </p>
+  <Widget no="7" caption="file the stellar endings — how does each star retire?" widget="sort-buckets" config={cmStarBuckets} />
   <p>
     At the largest scale, gravity's structure shows up as motion. Galaxies rotate — and the
     outer stars orbit <em>too fast</em>: the visible mass cannot supply their centripetal
@@ -197,6 +335,7 @@ const orbitCfg = {
     the modern picture: an expanding, cooling universe 13.8 billion years old, whose large
     structure gravity has been sculpting ever since.
   </p>
+  <Widget no="8" caption="slide the divider — the Sun today vs the Sun after the fuel runs out" widget="compare" config={cmSunCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

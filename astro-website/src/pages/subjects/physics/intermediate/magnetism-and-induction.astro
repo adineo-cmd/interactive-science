@@ -11,6 +11,138 @@ const faradayCfg = {
     { math: '4 · Consequence: generators', note: 'Spin a coil in a field and flux swings sinusoidally — mains electricity is Faraday\'s law rotating at 50 or 60 Hz.' },
   ],
 };
+
+const magStickBuckets = {
+  "prompt": "The scrapyard crane is waiting. File each metal:",
+  "buckets": [
+    "sticks to a magnet",
+    "not magnetic"
+  ],
+  "items": [
+    {
+      "label": "pure iron — electromagnet cores",
+      "bucket": 0
+    },
+    {
+      "label": "steel — the car body the crane lifts",
+      "bucket": 0
+    },
+    {
+      "label": "cobalt",
+      "bucket": 0
+    },
+    {
+      "label": "copper — needing separate recovery",
+      "bucket": 1
+    },
+    {
+      "label": "aluminium",
+      "bucket": 1
+    },
+    {
+      "label": "gold",
+      "bucket": 1
+    }
+  ],
+  "why": "Only iron, steel, nickel and cobalt (plus a few rare alloys) respond; aluminium, copper, brass and gold are unmoved — which is why the crane lifts the car but not its wiring."
+};
+
+const magGripCloze = {
+  "text": "Right-hand grip rule: your thumb points along the %%0%%, and your fingers curl the way the field goes. Coiled into a solenoid with an iron core, that becomes a magnet with an %%1%% — and MRI scanners run fields some %%2%% times Earth's.",
+  "answers": [
+    [
+      "current"
+    ],
+    [
+      "on-switch",
+      "on switch"
+    ],
+    [
+      "30,000",
+      "30000"
+    ]
+  ],
+  "hint": "Ørsted's compass told you what goes with the thumb; the iron core sets the factor."
+};
+
+const magMotorOrder = {
+  "prompt": "Put the d.c. motor's rotation loop in order:",
+  "items": [
+    "Current flows through the loop sitting in the magnetic field",
+    "Opposite sideways forces on the loop's two sides form a couple",
+    "The couple rotates the loop",
+    "Every half-turn, the split-ring commutator reverses the current through the loop",
+    "The torque never changes sign, so the spin keeps going"
+  ],
+  "why": "The commutator is the clever part: without the half-turn reversal, the couple would flip sign and the loop would oscillate around its resting position instead of spinning."
+};
+
+const magTubePredict = {
+  "q": "A magnet falls in slow motion down a copper tube. Now cut the tube open lengthwise and drop the magnet through again. What happens?",
+  "choices": [
+    "It still falls slowly — copper's magnetism brakes it all the same",
+    "It falls normally — an unbroken loop is what lets the opposing induced currents exist",
+    "It falls faster than free fall — with Lenz removed, the field now assists"
+  ],
+  "answer": 1,
+  "why": "Lenz's braking needs circulating induced currents, and a slit tube has no loop for them. No changing-flux circuit, no opposition — and remember copper was never ferromagnetic to begin with."
+};
+
+const magMachinesMatch = {
+  "prompt": "One law, many machines — match each to what it actually does:",
+  "pairs": [
+    {
+      "left": "d.c. motor",
+      "right": "a split-ring commutator reverses the current every half-turn"
+    },
+    {
+      "left": "generator",
+      "right": "a spinning coil makes the flux swing sinusoidally — mains, made literal"
+    },
+    {
+      "left": "loudspeaker",
+      "right": "the coil's force oscillates a cone at the signal's frequency"
+    },
+    {
+      "left": "microphone",
+      "right": "the loudspeaker run backwards — motion induces the signal"
+    }
+  ],
+  "why": "Supply current and get motion, or supply motion and get current — F = B·I·L one way, EMF = −N·ΔΦ/Δt the other, same two actors."
+};
+
+const magChargerPlace = {
+  "prompt": "A phone charger steps 230 V mains down to 12 V. Place the ratio of primary turns to secondary turns (N₁ per N₂) on the scale:",
+  "labels": [
+    "1",
+    "8",
+    "15",
+    "22",
+    "30"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 30
+  },
+  "answer": 19,
+  "tolerance": 2,
+  "why": "V₂/V₁ = N₂/N₁, so the primary needs about 230/12 ≈ 19 turns for every secondary turn.",
+  "context": "The same lever, run the other way, takes generation at ~25 kV up to 400 kV for transmission."
+};
+
+const magStepSpot = {
+  "prompt": "One line of this transformer answer is wrong — click it:",
+  "lines": [
+    "A step-up transformer converts 12 V to 230 V, so V₂/V₁ ≈ 19.2.",
+    "Power delivered by the secondary is greater than power drawn by the primary — the transformer amplifies energy.",
+    "With 99% efficiency, a 100 W primary draw delivers about 99 W to the secondary.",
+    "The secondary current falls in the same proportion the voltage rose: about 8.3 A down to 0.43 A.",
+    "That trade is why the grid transmits at 400 kV: tiny current, tiny I²R loss."
+  ],
+  "errorLine": 1,
+  "correction": "Power out ≈ power in — voltage is multiplied at the cost of current divided in the same proportion; the transformer is a gear lever, not an energy source.",
+  "why": "The bookkeeping balances: 100 W in, ~99 W out. Step the voltage 19× and the current drops 19× — which is the entire grid trick, not free energy."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/magnetism-and-induction">
 
@@ -75,6 +207,7 @@ const faradayCfg = {
     the planet, deflecting the solar wind along the poles — the auroras are that traffic
     visible.
   </p>
+  <Widget no="2" caption="file the metals — what does a magnet actually grab?" widget="sort-buckets" config={magStickBuckets} />
   <p><em>Common misconception:</em> magnets attract all metals. They attract only iron,
   steel, nickel and cobalt (and a few rare alloys); aluminium, copper, brass and gold are
   unmoved — the reason a scrapyard crane lifts cars (steel) but the copper in the same car
@@ -98,6 +231,7 @@ const faradayCfg = {
     charge exists alone (a rubbed rod), but magnetic poles never do — a mystery that would
     take Maxwell to explain properly and remains true today.
   </p>
+  <Widget no="3" caption="fill the blanks — the grip rule and the on-switch magnet" widget="cloze" config={magGripCloze} />
   <p>
     <strong>So far:</strong> every current wraps itself in a magnetic field, and a
     solenoid with an iron core turns that field into a switchable magnet. Reverse the
@@ -120,6 +254,7 @@ const faradayCfg = {
     oscillates a cone at the signal's frequency, pushing air into sound (the microphone is
     the same device run backwards — induction, below).
   </p>
+  <Widget no="4" caption="rebuild the motor's spin cycle — where the commutator earns its keep" widget="order" config={magMotorOrder} />
 
   <h2>Changing fields make voltage: induction</h2>
   <p>
@@ -137,6 +272,7 @@ const faradayCfg = {
     slow motion: the induced currents' opposing fields brake it — the demo of Lenz in real
     time.)
   </p>
+  <Widget no="5" caption="bet first — slit the tube and what changes?" widget="predict" config={magTubePredict} />
   <p>
     The <strong>generator</strong> is induction industrialised. Spin a coil in a magnetic
     field and the flux swings sinusoidally through it, inducing an alternating emf — sine
@@ -147,6 +283,7 @@ const faradayCfg = {
     what turns the shaft. Slip rings deliver the AC out (a commutator, reversing instead,
     would give DC — that's a motor's trick run in reverse).
   </p>
+  <Widget no="6" caption="pair each machine with its trick" widget="match" config={magMachinesMatch} />
   <p><em>Common misconception:</em> "a stronger magnet sitting still should induce
   something — strength is what matters." A motionless magnet in a motionless coil does
   nothing, however strong: strength sets how much flux threads the loop, but only a
@@ -175,11 +312,13 @@ const faradayCfg = {
     currents" ended as it did, and why modern HVDC schemes (which do transmit DC) need
     expensive power electronics to play in transformers' territory.
   </p>
+  <Widget no="7" caption="place the phone charger's turns ratio on the scale" widget="place" config={magChargerPlace} />
   <p><em>Common misconception:</em> "a step-up transformer gives you more power out than
   in — free voltage." Voltage is multiplied at the cost of current divided in the same
   proportion: a 99%-efficient transformer passing 100 W steps 12 V up to 230 V while
   the current falls from about 8.3 A to 0.43 A. The transformer is a gear lever for
   voltage, not an energy source — the bookkeeping still balances.</p>
+  <Widget no="8" caption="find the faulty line — the free-energy claim" widget="spot-error" config={magStepSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
