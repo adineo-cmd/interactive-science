@@ -26,6 +26,137 @@ const acctLab = {
     { label: 'profit margin', expr: '(revenue - expenses)/revenue*100', unit: '%' },
   ],
 };
+
+const acStoryBuckets = {
+  "prompt": "The fruit stall tells two stories. File each item into the right one:",
+  "buckets": [
+    "Photograph — right now",
+    "Video — over the week"
+  ],
+  "items": [
+    {
+      "label": "the till cash on Friday evening",
+      "bucket": 0
+    },
+    {
+      "label": "what you sold during the week",
+      "bucket": 1
+    },
+    {
+      "label": "the 5 dollars borrowed from your neighbour",
+      "bucket": 0
+    },
+    {
+      "label": "what you spent over the week",
+      "bucket": 1
+    },
+    {
+      "label": "the unsold fruit on the shelf tonight",
+      "bucket": 0
+    },
+    {
+      "label": "what was left over once the week was done",
+      "bucket": 1
+    }
+  ],
+  "why": "The photograph becomes the accounting equation (what you have and owe right now); the video becomes the profit calculation (what happened over the period)."
+};
+
+const acWordsMatch = {
+  "prompt": "Three master words carry the whole subject — match them:",
+  "pairs": [
+    {
+      "left": "asset",
+      "right": "a resource of value the business owns or controls — cash, inventory, machinery"
+    },
+    {
+      "left": "liability",
+      "right": "an amount the business owes to outsiders — loans, unpaid supplier bills"
+    },
+    {
+      "left": "capital",
+      "right": "the owner's stake — what the business would owe back to the owner"
+    },
+    {
+      "left": "net assets",
+      "right": "assets minus liabilities — the number profit exists to grow"
+    }
+  ],
+  "why": "Vocabulary first, equation second: the equation is just these three words forced to balance."
+};
+
+const acAminaSpot = {
+  "prompt": "One line of this ledger story is wrong — click it:",
+  "lines": [
+    "Amina invests 10,000 dollars: assets +10,000, capital +10,000. The equation holds.",
+    "She buys a van for 5,000 with a bank loan: assets +5,000, liabilities +5,000. Holds again.",
+    "Her position: assets 15,000, liabilities 5,000, capital 10,000.",
+    "She repays 2,000 of the loan from cash: liabilities fall to 3,000 and capital falls to 8,000."
+  ],
+  "errorLine": 3,
+  "correction": "Repaying the loan reduces assets (cash −2,000) and liabilities (−2,000) equally — capital is untouched at 10,000.",
+  "why": "Loan repayment is a move between asset and liability. Only profit or drawings touch the owner's stake."
+};
+
+const acEquationCloze = {
+  "text": "The accounting equation reads %%0%% = liabilities + capital — every asset was paid for by an outsider or by the owner. Turned around, capital = assets %%1%% liabilities, the number accountants call net assets.",
+  "answers": [
+    [
+      "assets"
+    ],
+    [
+      "-",
+      "minus",
+      "less"
+    ]
+  ],
+  "hint": "Only two somehows exist: outsiders supplied the money, or the owner did."
+};
+
+const acCashJudge = {
+  "statements": [
+    {
+      "s": "A profitable business can run out of cash.",
+      "truth": true,
+      "why": "Sales on credit, or cash locked in inventory and machines that have not turned back into cash yet."
+    },
+    {
+      "s": "Profit measures performance over a period; cash measures a balance at a moment.",
+      "truth": true,
+      "why": "The video and the photograph again — the two readouts in the lab are deliberately independent."
+    },
+    {
+      "s": "Money the owner withdraws for personal use is an expense of the business.",
+      "truth": false,
+      "why": "Drawings come out of the owner's stake — the owner is not 'costing' the firm."
+    },
+    {
+      "s": "A loss-making business is always short of cash.",
+      "truth": false,
+      "why": "Fresh capital or asset sales can leave a loss-maker flush with cash."
+    }
+  ]
+};
+
+const acDualPredict = {
+  "q": "You sell goods for 800 dollars in cash that cost you 500 dollars. Which three things happen?",
+  "choices": [
+    "Inventory −500, cash +800, capital +300",
+    "Cash +800 only — profit arrives when the owner withdraws it",
+    "Inventory −500, cash +800, liabilities +300"
+  ],
+  "answer": 0,
+  "why": "The dual effect: inventory falls, cash rises, and the 300-dollar difference is profit — which belongs to the owner, so capital rises. Every transaction touches at least two things."
+};
+
+const acMarginEstimate = {
+  "prompt": "Profit is 13,000 dollars on sales of 50,000 dollars. Roughly what is the profit margin, in per cent?",
+  "unit": "%",
+  "answer": 26,
+  "factor": 1.3,
+  "why": "13,000 ÷ 50,000 = 26 per cent — a margin only means something against a benchmark: grocery chains run single digits on enormous turnover; software firms run huge margins on modest capital.",
+  "context": "The monitoring-progress purpose from earlier, come back around."
+};
 ---
 <TopicPage slug="subjects/accounting/foundational/the-fundamentals-of-accounting">
   <h2>Where you are, and what you will learn</h2>
@@ -35,6 +166,7 @@ const acctLab = {
     We start from zero and build up one idea at a time. Every new word is explained the
     moment it first appears.
   </p>
+  <Widget no="9" caption="call the magnitude — the fruit stall's margin" widget="estimate" config={acMarginEstimate} />
   <p>By the end of this lesson you will be able to:</p>
   <ul>
     <li>say what book-keeping and accounting each do, and why they are two different jobs;</li>
@@ -72,6 +204,7 @@ const acctLab = {
     left over. This lesson builds both stories: the video becomes the profit calculation,
     and the photograph becomes the accounting equation.
   </p>
+  <Widget no="3" caption="file each item — photograph (a moment) or video (a period)?" widget="sort-buckets" config={acStoryBuckets} />
   <p>
     <strong>So far:</strong> a business records every transaction (book-keeping), then
     checks, sums up and explains those records (accounting). Two views matter — a photograph
@@ -173,6 +306,7 @@ const acctLab = {
     equity, is the owner's stake: what the business would owe back to the owner if
     everything were sold and every debt paid.
   </p>
+  <Widget no="4" caption="pair the master words with their meaning" widget="match" config={acWordsMatch} />
   <p>
     Now the <strong>accounting equation</strong>:
   </p>
@@ -183,6 +317,7 @@ const acctLab = {
     the owner did (capital). So a firm's resources must exactly equal the claims on those
     resources — not because accountants are tidy, but because it could not be otherwise.
   </p>
+  <Widget no="6" caption="fill the blanks — the equation and its turn-around" widget="cloze" config={acEquationCloze} />
   <p>
     Watch the equation survive a real first day. Amina starts a courier business and invests
     10,000 dollars of her own money. Cash (an asset) rises by 10,000 dollars, and capital
@@ -194,6 +329,7 @@ const acctLab = {
     a useful definition: <code>capital = assets − liabilities</code>. Accountants call that
     number the owner's <em>net assets</em> — it is the number that profit exists to grow.
   </p>
+  <Widget no="5" caption="find the faulty line — Amina's first week" widget="spot-error" config={acAminaSpot} />
   <p>
     The first widget above builds this same story in six steps. Click through them until the
     funding logic feels obvious rather than memorised.
@@ -246,6 +382,7 @@ const acctLab = {
     up in a failed trial balance. The double entry system has its own lesson later in this
     course.
   </p>
+  <Widget no="8" caption="bet first — the dual effect on one sale" widget="predict" config={acDualPredict} />
   <p><em>Common misconception:</em> profit and cash are the same thing. They are not, and the
   difference is the first lesson accountants learn the hard way. A profitable business can run
   out of cash — it has made sales on credit (customers have not paid yet), or it spent cash on
@@ -253,6 +390,7 @@ const acctLab = {
   flush with cash — the owner just injected capital, or it is selling off its assets. Profit
   measures performance <em>over a period</em>; cash measures a balance <em>at a moment</em>. The
   two readouts in the lab above are deliberately independent for exactly this reason.</p>
+  <Widget no="7" caption="true or false — profit vs cash" widget="judge" config={acCashJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. The answers are right below.</p>
