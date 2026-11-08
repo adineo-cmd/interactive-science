@@ -1,4 +1,4 @@
-# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026)
+# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026) · register campaign COMPLETE (Nov 8, 2026)
 
 ## What this project is
 Interactive Atlas (adineo-cmd/interactive-science): 142 subjects / 12 domains, every subject
@@ -7,6 +7,15 @@ with a syllabus-backed program. All 577 live lessons are now 1,800–2,600-word 
 syllabus-topic sections with worked examples, "Common misconception" callouts, a
 <h2>Going deeper</h2> expert section, and sources last. **STATUS: COMPLETE and pushed
 (through 06a7a3e, Nov 1, 2026). Validator green, build green (724 pages).**
+
+## Register campaign COMPLETE (Nov 2026, through 83c9de3)
+Audit-driven waves (`pipeline/audit_lessons.py --tier <t>`, weakest-first, insert-only
+register devices: Where you are / So far recaps / What to notice per widget / Check yourself /
+Key takeaways / Where this goes next / OpenStax attribution) closed every tier at 100% Good:
+foundational 181/181, intermediate 194/194, advanced 119/119, expert 83/83. Every lesson now
+also has ≥3 misconception callouts and a What-to-notice under every widget (pre-existing
+quiz-after-sources layout left in place, notices placed after the quiz). Do NOT regenerate
+passing lessons; any future content work should re-run the audit and gap-fix only what it flags.
 
 Note: the 1,800 floor above is the strict visible-text count. An earlier convention counted
 raw file words (incl. markup), which left 37 lessons marginally short; they were topped up
