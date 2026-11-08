@@ -83,6 +83,120 @@ const checkCfg = {
 };
 
 const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min: -10, max: 10 }, start: [6, 4] };
+
+const mdQtyMatch = {
+  "prompt": "Three numbers tell every journey — match each to how you already meet it:",
+  "pairs": [
+    {
+      "left": "position s",
+      "right": "the odometer tracks it"
+    },
+    {
+      "left": "velocity v",
+      "right": "the speedometer shows its size — direction rides along"
+    },
+    {
+      "left": "acceleration a",
+      "right": "the shove you feel when the driver stamps the pedal"
+    },
+    {
+      "left": "constant acceleration",
+      "right": "two short equations pin the whole motion down"
+    }
+  ],
+  "why": "Position, rate of change of position, rate of change of the rate of change — that is the whole vocabulary of one-dimensional motion."
+};
+
+const mdSpeedCloze = {
+  "text": "A cyclist covers 300 m in 40 s, averaging %%0%% m/s. To convert km/h to m/s, divide by %%1%% — so 90 km/h is 25 m/s. Instantaneous speed is what the %%2%% needle reads: one instant, not the trip average.",
+  "answers": [
+    [
+      "7.5"
+    ],
+    [
+      "3.6"
+    ],
+    [
+      "speedometer"
+    ]
+  ],
+  "hint": "Average = total distance ÷ total time; 1 km/h is 1,000 m spread over 3,600 s."
+};
+
+const mdGraphPredict = {
+  "q": "A distance–time graph curves upward, growing steeper and steeper. What is the object doing?",
+  "choices": [
+    "Slowing down — flattening is normal for distance graphs",
+    "Speeding up — a steepening gradient means growing speed",
+    "Nothing physical — distance can only ever rise in a straight line"
+  ],
+  "answer": 1,
+  "why": "The gradient IS the speed. Steepening means faster; flattening means slowing; a horizontal line means at rest."
+};
+
+const mdBrakeEstimate = {
+  "prompt": "A car doing 20 m/s brakes at −5 m/s². Roughly how far does it travel before stopping?",
+  "unit": "m",
+  "answer": 40,
+  "factor": 1.4,
+  "why": "v² = u² + 2·a·s with v = 0: s = 400 ÷ 10 = 40 m — about eight car lengths.",
+  "context": "Double the speed and the stopping distance quadruples — the square is the danger."
+};
+
+const mdWellPlace = {
+  "prompt": "A stone drops down a 45 m well (u = 0, a = g). Place its fall time on the scale (s):",
+  "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 5
+  },
+  "answer": 3.0,
+  "tolerance": 0.3,
+  "why": "45 = ½ × 9.8 × t², so t² ≈ 9.2 and t ≈ 3.0 s — arriving at about 29 m/s, around 105 km/h.",
+  "context": "After 6 s the same stone would have fallen 176 m — four times as far in double the time."
+};
+
+const mdFallJudge = {
+  "statements": [
+    {
+      "s": "Heavier things fall faster near Earth's surface, if air resistance is small.",
+      "truth": false,
+      "why": "Gravity pulls twice as hard on 2 kg as on 1 kg, but the 2 kg has twice the inertia to move — the effects cancel exactly."
+    },
+    {
+      "s": "Apollo 15's hammer-and-feather drop settled the matter on the airless Moon.",
+      "truth": true,
+      "why": "1971: David Scott released both together and they hit the dust at once."
+    },
+    {
+      "s": "Paper flutters because gravity treats it differently.",
+      "truth": false,
+      "why": "Air resistance interferes — not a law of nature. Crumple the paper and it falls like the stone."
+    },
+    {
+      "s": "Galileo timed balls rolling down gently sloped ramps to slow the motion enough for his clocks.",
+      "truth": true,
+      "why": "The Pisa tower story is probably legend; the ramps were the real experiment."
+    }
+  ]
+};
+
+const mdSplitOrder = {
+  "prompt": "From one arrow to two problems — put the decomposition in order:",
+  "items": [
+    "Split the launch velocity into horizontal and vertical components",
+    "The horizontal component carries on unchanged — nothing pushes it sideways",
+    "Gravity steadily changes the vertical component",
+    "The two one-dimensional problems run side by side, sharing only a stopwatch"
+  ],
+  "why": "Direction becomes honest arrows, and the components behave independently — the idea that carries you through projectiles, river-crossings and orbits."
+};
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -156,9 +270,15 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
             are the two equations below, applied with care. Master this page and every harder
             problem, from projectiles to orbits, is assembled from these same parts.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>pair each quantity with how you already know it</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="match" data-config={JSON.stringify(mdQtyMatch)}></div>
+            </div>
+          </figure>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 1</span><span>position and velocity against time — drag the sliders and the curves follow</span></figcaption>
+            <figcaption><span class="fig-no">fig. 2</span><span>position and velocity against time — drag the sliders and the curves follow</span></figcaption>
             <div class="widget-body">
               <div data-widget="plotter" data-config={JSON.stringify(plotCfg)}></div>
             </div>
@@ -172,7 +292,7 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 2</span><span>the two equations, evaluated live</span></figcaption>
+            <figcaption><span class="fig-no">fig. 3</span><span>the two equations, evaluated live</span></figcaption>
             <div class="widget-body">
               <div data-widget="sliderLab" data-config={JSON.stringify(labCfg)}></div>
             </div>
@@ -237,6 +357,12 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
             car at 90 km/h is doing 25 m/s. <strong>Instantaneous speed</strong> is what the
             speedometer needle reads: the speed at one instant, not averaged over the trip.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 4</span><span>fill the blanks — reading speeds the honest way</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="cloze" data-config={JSON.stringify(mdSpeedCloze)}></div>
+            </div>
+          </figure>
           <p>
             A <strong>distance–time graph</strong> compresses the whole journey into one picture,
             and its ruling idea is that <em>the gradient (steepness) is the speed</em>. A straight
@@ -247,6 +373,12 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
             a single instant on a curve, draw a tangent to the curve at that point and take the
             tangent's gradient.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 5</span><span>bet first — the curve that steepens</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="predict" data-config={JSON.stringify(mdGraphPredict)}></div>
+            </div>
+          </figure>
 
           <h2>Acceleration and velocity–time graphs</h2>
           <p>
@@ -285,7 +417,7 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 3</span><span>two equations, six honest steps</span></figcaption>
+            <figcaption><span class="fig-no">fig. 6</span><span>two equations, six honest steps</span></figcaption>
             <div class="widget-body">
               <div data-widget="equationStep" data-config={JSON.stringify(stepsCfg)}></div>
             </div>
@@ -306,6 +438,12 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
             lengths, and the reason "double your speed, quadruple your stopping distance" is a rule
             of thumb worth respecting: stopping distance grows with the <em>square</em> of speed.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 7</span><span>call the magnitude — the braking stop</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="estimate" data-config={JSON.stringify(mdBrakeEstimate)}></div>
+            </div>
+          </figure>
 
           <h2>Free fall: gravity as an acceleration</h2>
           <p>
@@ -328,11 +466,23 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
             would have fallen 176 m, four times as far, because fallen distance grows with the
             square of the time.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 8</span><span>place the well-drop time on the scale</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="place" data-config={JSON.stringify(mdWellPlace)}></div>
+            </div>
+          </figure>
           <p><em>Common misconception:</em> heavier things do <em>not</em> fall faster. Gravity
           pulls twice as hard on a 2 kg stone as on a 1 kg one, but the 2 kg stone has twice the
           inertia to move, and the two effects cancel exactly. What differs in real life is air
           resistance relative to weight — a crumpled ball of paper falls faster than a flat sheet
           of the same mass.</p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 9</span><span>true or false — who falls faster?</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="judge" data-config={JSON.stringify(mdFallJudge)}></div>
+            </div>
+          </figure>
 
           <p>
             <strong>So far:</strong> two equations, their graphs and a = g now cover braking
@@ -352,7 +502,7 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 4</span><span>one arrow, two components — drag the head</span></figcaption>
+            <figcaption><span class="fig-no">fig. 10</span><span>one arrow, two components — drag the head</span></figcaption>
             <div class="widget-body">
               <div data-widget="diagramBuilder" data-config={JSON.stringify(vecCfg)}></div>
             </div>
@@ -372,6 +522,12 @@ const vecCfg = { type: 'vector', unit: 'm/s', x: { min: -10, max: 10 }, y: { min
             stopwatch. That decomposition idea will carry you through projectiles, river-crossings
             and eventually orbits.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 11</span><span>rebuild the two-problems decomposition</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="order" data-config={JSON.stringify(mdSplitOrder)}></div>
+            </div>
+          </figure>
 
           <h2>Check yourself</h2>
           <p>Try these before moving on. Feedback follows each answer.</p>

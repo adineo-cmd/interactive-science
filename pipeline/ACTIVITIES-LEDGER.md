@@ -50,13 +50,19 @@
 | philosophy/intermediate/philosophy-of-mind | 7 acts (PC pilot) | pilot |
 | physics/foundational/newtons-laws | sort-buckets, place, predict, match, judge, spot-error | physics-1 |
 | physics/intermediate/circuits-and-ohms-law | order, cloze, spot-error, judge, estimate, predict | physics-1 |
+| physics/intermediate/circular-motion-and-gravitation | cloze, predict, estimate, match, place, sort-buckets, compare | physics-2 |
+| physics/intermediate/magnetism-and-induction | sort-buckets, cloze, order, predict, match, place, spot-error | physics-2 |
+| physics/intermediate/thermal-physics | sort-buckets, cloze, predict, estimate, order, match, judge | physics-3 |
+| physics/intermediate/electrostatics | order, judge, estimate, cloze, predict, sort-buckets, match | physics-3 |
+| physics/intermediate/momentum-and-collisions | cloze, spot-error, predict, judge, order, estimate, match | physics-4 |
+| physics/intermediate/waves-and-sound | cloze, predict, match, order, place, estimate, spot-error, sort-buckets | physics-4 |
+| physics/intermediate/projectile-and-2d-motion | match, predict, estimate, sort-buckets, judge, cloze | physics-5 |
+| physics/intermediate/optics-lenses-and-mirrors | judge, compare, cloze, place, match, predict, spot-error | physics-5 |
+| physics/foundational/motion-1d | match, cloze, predict, estimate, place, judge, order | physics-6 |
 
-**Queue — physics first (user was reviewing physics), then subject by subject:**
-- physics/foundational/motion-1d *(Layout-direct page — the script works on it unchanged)*
-- physics/intermediate/: circular-motion-and-gravitation, magnetism-and-induction,
-  thermal-physics, electrostatics, momentum-and-collisions, waves-and-sound,
-  optics-lenses-and-mirrors, projectile-and-2d-motion
-- Then: continue subject by subject (use `src/data/topics.json` for the master list of the
+**Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
+
+**Next subject: continue subject by subject** (use `src/data/topics.json` for the master list of the
   ~578 remaining live lessons; skip the four done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
 
@@ -67,5 +73,6 @@
   sort-buckets, spot-error) + the original 7. Config schemas in each file's header.
 - P2 structural layer: **complete and shipped** (numbered topic positions, position chips,
   stage maps, learning-loop line, spacing) — commit 395dc79. Zero-token, no prose changes.
-- P1 backfill: **wave physics-1 done (2 lessons, 12 activities)** — commit 6bce9d2.
-  Everything else is queued.
+- P1 backfill: **physics subject COMPLETE** — 10/10 live lessons, 76 activities
+  (waves physics-1…6; motion-1d needed raw figure markup + sequential fig renumbering —
+  see commits after 513b885). Next: pick the next subject, 2–3 lessons per wave.
