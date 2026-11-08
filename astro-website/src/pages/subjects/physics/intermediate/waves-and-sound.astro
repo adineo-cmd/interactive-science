@@ -34,6 +34,148 @@ const superCfg = {
   crossings: false,
   height: 340,
 };
+
+const wsForkCloze = {
+  "text": "A tuning fork vibrates at 440 Hz (concert A) and sound leaves it at 343 m/s, so the wavelength in air is λ = v/f ≈ %%0%% m. Dip the fork in water and strike steel instead: the same 440 Hz vibration would launch a wave about %%1%% m long — same frequency, different %%2%%, different wavelength.",
+  "answers": [
+    [
+      "0.78",
+      "0.8",
+      ".78"
+    ],
+    [
+      "13.4",
+      "13"
+    ],
+    [
+      "medium"
+    ]
+  ],
+  "hint": "λ = v/f; the speed in steel is about 5,900 m/s. What survives the boundary is the frequency."
+};
+
+const wsBallPredict = {
+  "q": "Ripples cross a pond, passing a floating ball. Once the ripples have gone, where is the ball?",
+  "choices": [
+    "Swept several metres toward the shore, carried by the wave",
+    "Exactly where it was — it bobbed in little circles",
+    "Pushed to the bottom by the wave's pressure"
+  ],
+  "answer": 1,
+  "why": "What travels is the pattern and its energy; the medium's particles oscillate about fixed positions. (Surfers are the exception that proves the rule — they ride the breaking part, where water truly moves.)"
+};
+
+const wsBehavioursMatch = {
+  "prompt": "Four behaviours cover nearly everything a wave can do — match them to their exhibits:",
+  "pairs": [
+    {
+      "left": "Reflection",
+      "right": "an echo off a cliff"
+    },
+    {
+      "left": "Refraction",
+      "right": "the straight straw that looks bent in water"
+    },
+    {
+      "left": "Diffraction",
+      "right": "hearing someone around the corner but not seeing them"
+    },
+    {
+      "left": "Superposition",
+      "right": "noise-cancelling headphones"
+    }
+  ],
+  "why": "Sound and light obey the same four — and the headphone trick is interference in real time: the ambient noise played back half a cycle out of phase."
+};
+
+const wsFretOrder = {
+  "prompt": "From open string to octave — put the standing-wave logic in order:",
+  "items": [
+    "An open string, pinned at both ends, only sustains waves whose wavelength fits",
+    "Nodes are forced at each pinned end",
+    "Pressing at the 12th fret halves the vibrating length",
+    "The wavelength halves",
+    "The frequency doubles — one octave up"
+  ],
+  "why": "Standing waves demand nodes where the string is pinned; v = f·λ turns half the length into double the frequency."
+};
+
+const wsSpeedPlace = {
+  "prompt": "Sound's speed is the medium's decision. Place its speed in air at 20 °C (m/s):",
+  "labels": [
+    "0",
+    "350",
+    "700",
+    "1050",
+    "1400"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1400
+  },
+  "answer": 343,
+  "tolerance": 20,
+  "why": "343 m/s in cool air — and stiffness beats density: water carries it at 1,480, steel at 5,900, diamond at 12,000.",
+  "context": "The rule of thumb: stiff, light media carry sound fast; dense-but-squishy media carry it slowly."
+};
+
+const wsMiddleCEstimate = {
+  "prompt": "Middle C vibrates at 262 Hz, and sound runs at 343 m/s. Roughly what wavelength does it launch in air?",
+  "unit": "m",
+  "answer": 1.3,
+  "factor": 1.4,
+  "why": "λ = v/f = 343/262 ≈ 1.3 m — arm's length again.",
+  "context": "The piano's top note, 4,186 Hz, manages just 8 cm — pitch up, wavelength down."
+};
+
+const wsEchoSpot = {
+  "prompt": "One line of this echo answer is wrong — click it:",
+  "lines": [
+    "You shout at a cliff and hear the echo 1.2 s later; sound runs at 343 m/s.",
+    "The sound made a round trip: to the cliff and back.",
+    "So the distance is d = v·t/2 = 343 × 1.2 / 2 ≈ 206 m.",
+    "Sonar skips the factor of 2, since the seabed return is one-way only."
+  ],
+  "errorLine": 3,
+  "correction": "Sonar keeps the factor of 2 — the ping travels down AND back, so 1,480 × 2.0 / 2 = 1,480 m.",
+  "why": "Every echo is a round trip. The submarine's ping goes down and comes back exactly like the shout; dropping the 2 is the classic exam error."
+};
+
+const wsFamilyBuckets = {
+  "prompt": "One continuous family, one narrow visible band. File each member:",
+  "buckets": [
+    "longer than visible",
+    "visible light",
+    "shorter than visible"
+  ],
+  "items": [
+    {
+      "label": "FM radio at 100 MHz — a 3 m wave",
+      "bucket": 0
+    },
+    {
+      "label": "Wi-Fi at 2.4 GHz — a 12.5 cm wave",
+      "bucket": 0
+    },
+    {
+      "label": "heat radiation and TV remotes",
+      "bucket": 0
+    },
+    {
+      "label": "400–700 nm — violet to red",
+      "bucket": 1
+    },
+    {
+      "label": "the sunburn band, 10–400 nm",
+      "bucket": 2
+    },
+    {
+      "label": "bone imaging, 0.01–10 nm",
+      "bucket": 2
+    }
+  ],
+  "why": "Radio, microwave and infrared all run longer than visible; ultraviolet, X-rays and gamma rays run shorter — an FM station and a dental X-ray are the same phenomenon at different frequencies."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/waves-and-sound">
   <h2>Where you are, and what you will learn</h2>
@@ -46,6 +188,7 @@ const superCfg = {
     the definition this chapter stands on, since a wave is energy in transit without transport
     of matter. The payoffs run from guitar strings to radio antennas.
   </p>
+  <Widget no="10" caption="file the family — longer, visible, or shorter" widget="sort-buckets" config={wsFamilyBuckets} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>pin any wave down with three numbers — amplitude, wavelength, frequency — and bind them with v = f·λ;</li>
@@ -96,6 +239,7 @@ const superCfg = {
     time for one cycle. One full wavelength passes any point in one period, so the wave's speed
     must be wavelength divided by period: v = λ/T = f·λ.
   </p>
+  <Widget no="3" caption="fill the blanks — same fork, two media" widget="cloze" config={wsForkCloze} />
   <p>
     Worked example. A tuning fork vibrates at 440 Hz (concert A) and sound leaves it at 343 m/s.
     The wavelength in air is λ = v/f = 343/440 ≈ 0.78 m — about arm's length. Dip the fork in
@@ -108,6 +252,7 @@ const superCfg = {
   ripples pass: it bobs up and down and stays put. What travels is the pattern and its energy; the
   medium's particles oscillate about fixed positions. (A surfer is the exception that proves the
   rule — surfers ride the breaking part of the wave, where water genuinely does move shoreward.)</p>
+  <Widget no="4" caption="bet first — the ball after the ripples" widget="predict" config={wsBallPredict} />
 
   <Widget no="1" caption="two knobs, every wave — amplitude sets height, λ sets the stretch; the second curve lags in phase" widget="plotter" config={waveCfg} />
   <p>
@@ -151,6 +296,7 @@ const superCfg = {
     real time: a microphone samples the ambient noise and a speaker plays it back half a cycle out
     of phase, so the two sounds annihilate before reaching your eardrum.
   </p>
+  <Widget no="5" caption="pair the behaviour with its everyday exhibit" widget="match" config={wsBehavioursMatch} />
 
   <Widget no="2" caption="interference live — slide the phase gap from 0 (fully reinforced) to π ≈ 3.14 (fully cancelled)" widget="plotter" config={superCfg} />
   <p>
@@ -170,6 +316,7 @@ const superCfg = {
     why halving its length (pressing at the 12th fret) doubles the frequency and raises the pitch
     by one octave.
   </p>
+  <Widget no="6" caption="rebuild the 12th-fret sequence" widget="order" config={wsFretOrder} />
   <p>
     <strong>So far:</strong> reflection, refraction, diffraction and superposition are the
     complete behaviour list for any wave, and superposition already explains guitar frets and
@@ -194,6 +341,7 @@ const superCfg = {
     sound down, but it is also vastly stiffer — and stiffness wins, by a factor of about 16 in
     speed. (In a rigid solid like diamond, sound reaches 12,000 m/s.)
   </p>
+  <Widget no="7" caption="place the speed of sound on the scale" widget="place" config={wsSpeedPlace} />
   <p>
     <em>Common misconception:</em> louder sounds travel faster, or high-pitched sounds overtake
     low ones. For ordinary sounds neither is true — all frequencies and amplitudes travel together
@@ -213,6 +361,7 @@ const superCfg = {
     sound travels near 1,540 m/s, has a wavelength of about 0.5 mm, fine enough to resolve
     millimetre-scale structures in a fetus.
   </p>
+  <Widget no="8" caption="call the magnitude — middle C's wavelength" widget="estimate" config={wsMiddleCEstimate} />
   <p>
     <strong>Loudness is amplitude</strong>, but our ears judge it on a logarithmic scale: each
     10-decibel step is a tenfold increase in intensity, though it sounds about twice as loud. A
@@ -229,6 +378,7 @@ const superCfg = {
     the bats, which time chirps returning from insects with millisecond precision. Note the factor
     of 2 — forgetting it is the classic exam error.
   </p>
+  <Widget no="9" caption="find the faulty line — the echo arithmetic" widget="spot-error" config={wsEchoSpot} />
   <p>
     <strong>So far:</strong> sound turns out to be a longitudinal pressure wave whose speed is
     the medium's decision — 343 m/s in cool air, whether the sound is a whisper or a shout.

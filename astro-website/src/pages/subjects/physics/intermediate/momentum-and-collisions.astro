@@ -16,6 +16,113 @@ const collCfg = {
     { label: 'both stuck together (inelastic)', expr: '(m1*u1 + m2*u2)/(m1 + m2)', unit: 'm/s' },
   ],
 };
+
+const mcLedgerCloze = {
+  "text": "Momentum is mass times velocity, p = mv. Newton's original second law says force is the %%0%% of change of momentum, and when two objects collide their momentum changes are equal and %%1%% — so the system's total never drifts.",
+  "answers": [
+    [
+      "rate"
+    ],
+    [
+      "opposite"
+    ]
+  ],
+  "hint": "F = Δp/Δt, plus the third law acting for exactly the same instant."
+};
+
+const mcSignSpot = {
+  "prompt": "One line of this collision answer is wrong — click it:",
+  "lines": [
+    "Two carts approach: 4 kg at +5 m/s and 6 kg at −3 m/s.",
+    "Total momentum before: (4 × 5) + (6 × −3) = +20 − 18 = +2 kg·m/s.",
+    "They couple, so the 10 kg wreckage carries all 2 kg·m/s: v = 2/10 = 0.2 m/s.",
+    "The 6 kg cart's momentum must have been +18, since it was moving faster.",
+    "Head-on collisions that stop dead are the case where the momenta exactly cancel."
+  ],
+  "errorLine": 3,
+  "correction": "The 6 kg cart moving at −3 m/s carries −18 kg·m/s — without the sign, the ledger is meaningless.",
+  "why": "Momentum is a vector: pick a positive direction and keep it. 'Moving faster' says nothing without a sign — the +20 − 18 arithmetic only works because the signs were kept."
+};
+
+const mcGolfPredict = {
+  "q": "A golf club head (heavy) strikes a golf ball (light) in an elastic collision. Compared with the club head's speed, the ball leaves…",
+  "choices": [
+    "slower — the club shares its momentum with the ball",
+    "at nearly double the club head's speed",
+    "at exactly the same speed"
+  ],
+  "answer": 1,
+  "why": "The heavy-strikes-light elastic limit launches the light object at nearly twice the incoming speed — the same reason a Newton's cradle's end ball exits at the incoming speed."
+};
+
+const mcCurrencyJudge = {
+  "statements": [
+    {
+      "s": "Momentum is conserved in every collision of an isolated system.",
+      "truth": true,
+      "why": "Exact, always — even when the wreckage crumples."
+    },
+    {
+      "s": "Kinetic energy is conserved when the carts stick together.",
+      "truth": false,
+      "why": "36 J became 9 J in the worked case — three quarters went into crumpling, heating and sound."
+    },
+    {
+      "s": "The lost kinetic energy is destroyed.",
+      "truth": false,
+      "why": "It changed currency — thermal and acoustic energy, which the thermodynamics chapter tracks."
+    },
+    {
+      "s": "Solving a collision usually starts with deciding which quantity is conserved.",
+      "truth": true,
+      "why": "Momentum always balances; kinetic energy only in the elastic special case."
+    }
+  ]
+};
+
+const mcSkaterOrder = {
+  "prompt": "A 60 kg skater at rest throws a 3 kg ball forward at 10 m/s. Order the bookkeeping:",
+  "items": [
+    "Before: total momentum is zero — skater and ball both still",
+    "The ball leaves carrying 3 × 10 = 30 kg·m/s forward",
+    "The skater must carry 30 kg·m/s backward",
+    "Recoil speed: 30 ÷ 60 = 0.5 m/s",
+    "The centre of mass never moved"
+  ],
+  "why": "An explosion is a collision in reverse: momenta sum to zero, kinetic energy goes UP (paid for by the muscle's chemistry), and the ledger stays exact in both directions."
+};
+
+const mcHeroEstimate = {
+  "prompt": "A 10 g bullet at 400 m/s embeds in an 80 kg hero. Roughly what recoil speed does momentum actually give them?",
+  "unit": "m/s",
+  "answer": 0.05,
+  "factor": 1.6,
+  "why": "Bullet momentum: 0.01 × 400 = 4 kg·m/s. Shared over 80 kg: 0.05 m/s — a nudge, not a flight.",
+  "context": "Films show ten metres of backward flight; conservation allows five centimetres per second."
+};
+
+const mcToolMatch = {
+  "prompt": "Right tool for the question:",
+  "pairs": [
+    {
+      "left": "stopping distance from speed",
+      "right": "scales with speed squared — you're spending kinetic energy"
+    },
+    {
+      "left": "harder to stop: a 30,000 kg truck at 1 m/s or a 100 kg cyclist at 30 m/s?",
+      "right": "the truck — 30,000 vs 3,000 kg·m/s"
+    },
+    {
+      "left": "which vehicle changed velocity more in the crash?",
+      "right": "equal third-law forces, different masses — ask the ledger"
+    },
+    {
+      "left": "why the hero flies backward from a pistol shot",
+      "right": "he doesn't — momentum allows 0.05 m/s"
+    }
+  ],
+  "why": "Momentum answers 'how hard to stop'; kinetic energy answers 'what braking costs'; both beat the damage report."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/momentum-and-collisions">
 
@@ -48,6 +155,7 @@ const collCfg = {
     rule that survives even when energy does not — is what makes momentum the workhorse of
     crash analysis, rocketry and particle physics.
   </p>
+  <Widget no="2" caption="fill the blanks — the law nature refuses to bend" widget="cloze" config={mcLedgerCloze} />
 
   <Widget no="1" caption="a 2 kg cart at 6 m/s meets a 6 kg cart at rest — compare the elastic and stuck-together outcomes" widget="sliderLab" config={collCfg} />
   <p>
@@ -91,6 +199,7 @@ const collCfg = {
     bookkeeping. Head-on collisions that "stop dead" are the special case where the momenta
     exactly cancel, not a violation of conservation but its tidiest exhibit.
   </p>
+  <Widget no="3" caption="find the faulty line — signs are the whole method" widget="spot-error" config={mcSignSpot} />
   <ul>
     <li><strong>Perfectly inelastic</strong> (they couple): the combined 8 kg must carry all
     12, so v = 12/8 = <strong>1.5 m/s</strong>. But check kinetic energy: before,
@@ -109,6 +218,7 @@ const collCfg = {
     barely moves the target, which is why you can bat away a ping-pong ball with a bowling
     ball, but not vice versa.
   </p>
+  <Widget no="4" caption="bet first — the club and the ball" widget="predict" config={mcGolfPredict} />
   <p><em>Common misconception:</em> "momentum is conserved, so kinetic energy must be too —
   they're both 'motion stuff'." No: momentum conservation is exact in <em>every</em> collision
   of an isolated system; kinetic energy conservation is a special property of elastic ones.
@@ -116,6 +226,7 @@ const collCfg = {
   but 36 J became 9 J. The lost KE isn't destroyed — it's thermal and acoustic energy, which
   the thermodynamics chapter tracks. Exams love the pair of them together; solving a collision
   usually means <em>deciding which</em> of the two is conserved.</p>
+  <Widget no="5" caption="true or false — the two currencies" widget="judge" config={mcCurrencyJudge} />
   <p>
     <strong>So far:</strong> the ledger is exact in every collision — momentum always balances, and
     kinetic energy balances only in the elastic special case, so solving a collision starts with
@@ -167,6 +278,7 @@ const collCfg = {
     spacecraft manoeuvre, from Apollo to station reboosts, is momentum conservation with
     nothing to brace against.
   </p>
+  <Widget no="6" caption="rebuild the skater's recoil, step by step" widget="order" config={mcSkaterOrder} />
   <p>
     <strong>So far:</strong> the ledger stays exact even with nothing to push against — skaters
     recoil, rockets climb, the centre of mass never moves. The next section turns the same
@@ -184,6 +296,7 @@ const collCfg = {
     400 m/s carries 4 kg·m/s; sharing that with an 80 kg person gives them 0.05 m/s — a
     nudge, not a flight. Momentum arithmetic is lie detection for action films.
   </p>
+  <Widget no="7" caption="call the magnitude — the hero's real recoil" widget="estimate" config={mcHeroEstimate} />
   <p>
     And one caution about cause and effect: the forces in a crash are third-law pairs — the
     truck hits the car exactly as hard as the car hits the truck — but the <em>outcomes</em>
@@ -191,6 +304,7 @@ const collCfg = {
     1,000 kg, catastrophe. "Which hit harder" is the wrong question; "which changed velocity
     more" is the physics, and it is answered by the momentum ledger, not by the damage.
   </p>
+  <Widget no="8" caption="pair each question with the physics that answers it" widget="match" config={mcToolMatch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
