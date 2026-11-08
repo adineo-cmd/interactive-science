@@ -118,11 +118,11 @@ export function init(el, config = {}) {
 }
 
 function mountAll() {
-  document.querySelectorAll('[data-quiz]').forEach((el) => {
+  document.querySelectorAll('[data-widget="quiz"], [data-quiz]').forEach((el) => {
     if (el.dataset.mounted) return;
     el.dataset.mounted = '1';
     let cfg = {};
-    try { cfg = JSON.parse(el.dataset.quiz || '{}'); } catch { /* empty */ }
+    try { cfg = JSON.parse(el.dataset.config || el.dataset.quiz || '{}'); } catch { /* empty */ }
     init(el, cfg);
   });
 }

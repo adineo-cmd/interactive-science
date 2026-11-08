@@ -7,3 +7,8 @@ import './diagramBuilder.js';
 import './chart.js';
 import './diagram.js';
 import './quiz.js';
+import './cloze.js';
+import './judge.js';
+import './order.js';
+import './match.js';
+import './predict.js';

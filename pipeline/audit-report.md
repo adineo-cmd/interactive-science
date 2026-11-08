@@ -1,92 +1,196 @@
-# Lesson health audit — expert tier
+# Lesson health audit — foundational tier
 
-83 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 83
+187 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 187
 
 ## Weak (<40) (0)
 
 ## Needs work (40–79) (0)
 
-## Good (≥80) (83)
-- ** 95** subjects/agriculture/expert/climate-smart-agriculture — 2523w, 3 callouts, 1 widgets
-- ** 95** subjects/agriculture/expert/food-systems-and-security — 2608w, 3 callouts, 1 widgets
-- ** 95** subjects/anthropology/expert/anthropology-of-the-contemporary — 2753w, 3 callouts, 1 widgets
-- ** 95** subjects/anthropology/expert/deep-history-of-our-species — 2648w, 3 callouts, 1 widgets
-- ** 95** subjects/architecture/expert/computational-and-parametric-design — 2514w, 3 callouts, 1 widgets
-- ** 95** subjects/architecture/expert/sustainable-and-passive-design — 2584w, 3 callouts, 1 widgets
-- ** 95** subjects/art-history/expert/art-historiography-and-method — 2792w, 3 callouts, 1 widgets
-- ** 95** subjects/art-history/expert/attribution-conservation-and-forgery — 3049w, 3 callouts, 1 widgets
-- ** 95** subjects/artificial-intelligence/expert/ai-alignment-and-interpretability — 2552w, 3 callouts, 1 widgets
-- ** 95** subjects/artificial-intelligence/expert/generative-models — 2530w, 3 callouts, 1 widgets
-- ** 95** subjects/artificial-intelligence/expert/robotics-and-embodied-ai — 2552w, 3 callouts, 1 widgets
-- ** 95** subjects/astronomy/expert/astrobiology — 2720w, 3 callouts, 1 widgets
-- ** 95** subjects/astronomy/expert/cosmology-and-general-relativity — 2768w, 3 callouts, 1 widgets
-- ** 95** subjects/astronomy/expert/dark-matter-and-dark-energy — 2762w, 3 callouts, 1 widgets
-- ** 95** subjects/biology/expert/bioinformatics — 2667w, 3 callouts, 1 widgets
-- ** 95** subjects/biology/expert/synthetic-biology — 2671w, 3 callouts, 1 widgets
-- ** 95** subjects/biology/expert/systems-biology — 2640w, 3 callouts, 1 widgets
-- ** 95** subjects/business/expert/corporate-governance — 2724w, 4 callouts, 1 widgets
-- ** 95** subjects/business/expert/scaling-and-organisational-design — 2646w, 3 callouts, 1 widgets
-- ** 95** subjects/chemistry/expert/biochemistry-bridge — 2906w, 3 callouts, 1 widgets
-- ** 95** subjects/chemistry/expert/polymer-chemistry — 2725w, 3 callouts, 1 widgets
-- ** 95** subjects/chemistry/expert/quantum-chemistry — 2717w, 3 callouts, 1 widgets
-- ** 95** subjects/computer-science/expert/compilers-and-languages — 2966w, 3 callouts, 2 widgets
-- ** 95** subjects/computer-science/expert/computability-and-complexity — 2642w, 3 callouts, 1 widgets
-- ** 95** subjects/computer-science/expert/cryptography — 2598w, 3 callouts, 1 widgets
-- ** 95** subjects/computer-science/expert/distributed-systems — 2586w, 3 callouts, 1 widgets
-- ** 95** subjects/data-science/expert/data-engineering-and-pipelines — 2705w, 3 callouts, 1 widgets
-- ** 95** subjects/data-science/expert/ethics-privacy-and-bias — 2606w, 3 callouts, 1 widgets
-- ** 95** subjects/design/expert/design-strategy-and-leadership — 2838w, 3 callouts, 1 widgets
-- ** 95** subjects/earth-science/expert/geophysics-of-plate-driving-forces — 2596w, 3 callouts, 1 widgets
-- ** 95** subjects/earth-science/expert/planetary-geology — 2722w, 3 callouts, 1 widgets
-- ** 95** subjects/economics/expert/econometrics — 2661w, 3 callouts, 1 widgets
-- ** 95** subjects/economics/expert/financial-economics — 2650w, 3 callouts, 1 widgets
-- ** 95** subjects/economics/expert/macroeconomic-models-dsge — 2648w, 3 callouts, 1 widgets
-- ** 95** subjects/engineering/expert/reliability-and-safety-engineering — 3055w, 3 callouts, 1 widgets
-- ** 95** subjects/engineering/expert/systems-engineering — 2773w, 3 callouts, 1 widgets
-- ** 95** subjects/environmental-science/expert/earth-system-tipping-points — 2673w, 3 callouts, 1 widgets
-- ** 95** subjects/environmental-science/expert/mitigation-and-adaptation-design — 2727w, 3 callouts, 1 widgets
-- ** 95** subjects/film/expert/film-theory-and-criticism — 2844w, 3 callouts, 1 widgets
-- ** 95** subjects/finance/expert/asset-pricing-models — 2751w, 3 callouts, 1 widgets
-- ** 95** subjects/finance/expert/behavioural-finance — 2725w, 4 callouts, 1 widgets
-- ** 95** subjects/journalism/expert/investigative-methods — 2715w, 3 callouts, 1 widgets
-- ** 95** subjects/languages/expert/multilingual-cognition — 2711w, 3 callouts, 1 widgets
-- ** 95** subjects/languages/expert/near-native-fluency — 2734w, 5 callouts, 1 widgets
-- ** 95** subjects/law/expert/comparative-legal-systems — 3240w, 3 callouts, 1 widgets
-- ** 95** subjects/law/expert/international-law — 2872w, 3 callouts, 2 widgets
-- ** 95** subjects/law/expert/jurisprudence-what-is-law — 3300w, 3 callouts, 1 widgets
-- ** 95** subjects/linguistics/expert/computational-linguistics — 2770w, 4 callouts, 1 widgets
-- ** 95** subjects/linguistics/expert/generative-grammar — 2794w, 4 callouts, 1 widgets
-- ** 95** subjects/literature/expert/comparative-literature — 2806w, 3 callouts, 1 widgets
-- ** 95** subjects/literature/expert/textual-criticism-and-editing — 2782w, 4 callouts, 1 widgets
-- ** 95** subjects/materials-science/expert/computational-materials-design — 2698w, 3 callouts, 1 widgets
-- ** 95** subjects/materials-science/expert/nanomaterials-and-biomaterials — 2839w, 3 callouts, 1 widgets
-- ** 95** subjects/math/expert/abstract-algebra — 2731w, 4 callouts, 1 widgets
-- ** 95** subjects/math/expert/complex-analysis — 2656w, 3 callouts, 1 widgets
-- ** 95** subjects/math/expert/linear-algebra — 2758w, 3 callouts, 1 widgets
-- ** 95** subjects/math/expert/real-analysis — 3101w, 3 callouts, 1 widgets
-- ** 95** subjects/math/expert/topology — 3024w, 3 callouts, 1 widgets
-- ** 95** subjects/medicine/expert/genomic-medicine — 2584w, 3 callouts, 1 widgets
-- ** 95** subjects/medicine/expert/health-systems-and-policy — 2555w, 4 callouts, 1 widgets
-- ** 95** subjects/music/expert/music-cognition — 2582w, 4 callouts, 1 widgets
-- ** 95** subjects/neuroscience/expert/computational-neuroscience — 3290w, 3 callouts, 1 widgets
-- ** 95** subjects/neuroscience/expert/consciousness-hard-problem — 2850w, 3 callouts, 1 widgets
-- ** 95** subjects/philosophy/expert/ethics-of-technology-and-ai — 2688w, 4 callouts, 1 widgets
-- ** 95** subjects/physics/expert/electrodynamics-maxwell — 2606w, 3 callouts, 1 widgets
-- ** 95** subjects/physics/expert/general-relativity — 2713w, 3 callouts, 1 widgets
-- ** 95** subjects/physics/expert/quantum-field-theory — 2744w, 3 callouts, 1 widgets
-- ** 95** subjects/physics/expert/solid-state-physics — 2641w, 3 callouts, 1 widgets
-- ** 95** subjects/political-science/expert/formal-political-theory — 2786w, 3 callouts, 1 widgets
-- ** 95** subjects/political-science/expert/global-governance — 2812w, 4 callouts, 1 widgets
-- ** 95** subjects/psychology/expert/behavioural-neuroscience — 2597w, 4 callouts, 1 widgets
-- ** 95** subjects/psychology/expert/clinical-practice-and-ethics — 2721w, 4 callouts, 1 widgets
-- ** 95** subjects/religious-studies/expert/philosophy-of-religion — 2800w, 4 callouts, 1 widgets
-- ** 95** subjects/religious-studies/expert/religion-in-the-modern-world — 2739w, 3 callouts, 1 widgets
-- ** 95** subjects/sociology/expert/demography — 2891w, 4 callouts, 1 widgets
-- ** 95** subjects/sociology/expert/social-theory-marx-to-bourdieu — 2707w, 5 callouts, 1 widgets
-- ** 95** subjects/sports-science/expert/long-term-athlete-development — 2553w, 3 callouts, 1 widgets
-- ** 95** subjects/sports-science/expert/testing-and-analytics-in-elite-sport — 2630w, 3 callouts, 1 widgets
-- ** 95** subjects/statistics/expert/causal-inference — 2677w, 4 callouts, 1 widgets
-- ** 95** subjects/statistics/expert/multivariate-statistics — 2604w, 3 callouts, 1 widgets
-- ** 95** subjects/statistics/expert/statistical-computing — 2642w, 3 callouts, 1 widgets
-- ** 95** subjects/visual-arts/expert/critique-and-art-discourse — 2630w, 3 callouts, 1 widgets
-- ** 95** subjects/visual-arts/expert/developing-a-personal-style — 2582w, 3 callouts, 1 widgets
+## Good (≥80) (187)
+- ** 80** subjects/astronomy/foundational/orbits-and-keplers-laws — 2764w, 3 callouts, 0 widgets
+- ** 80** subjects/biology/foundational/cell-structure — 2481w, 4 callouts, 0 widgets
+- ** 80** subjects/chemistry/foundational/atomic-structure — 2647w, 3 callouts, 0 widgets
+- ** 80** subjects/computer-science/foundational/growth-of-functions — 2991w, 3 callouts, 0 widgets
+- ** 80** subjects/economics/foundational/supply-and-demand — 2766w, 3 callouts, 0 widgets
+- ** 80** subjects/geography/foundational/latitude-and-climate — 2876w, 3 callouts, 0 widgets
+- ** 80** subjects/history/foundational/cradles-of-civilisation — 2648w, 3 callouts, 0 widgets
+- ** 80** subjects/math/foundational/linear-functions — 2886w, 3 callouts, 0 widgets
+- ** 80** subjects/physics/foundational/motion-1d — 2929w, 3 callouts, 0 widgets
+- ** 83** subjects/physics/foundational/energy-conservation — 2598w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 85** subjects/environmental-engineering/foundational/water-chemistry-and-microbiology — 3541w, 4 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/game-development/foundational/game-design-foundations — 2963w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/physics/foundational/newtons-laws — 2792w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/physiotherapy/foundational/the-movement-sciences — 2639w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/plumbing/foundational/plumbing-tools-and-safety — 2722w, 4 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/political-science/foundational/forms-of-government — 2684w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/public-health/foundational/profession-and-science-of-public-health — 2775w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/religious-studies/foundational/worlds-traditions — 2647w, 3 callouts, 1 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/robotics/foundational/configuration-space — 2656w, 3 callouts, 1 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/software-engineering/foundational/software-requirements — 2663w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/surgical-technology/foundational/asepsis-and-the-sterile-field — 2831w, 3 callouts, 1 widgets — GAPS: recaps 0/2 (10)
+- ** 85** subjects/urban-planning/foundational/planning-history-and-theory — 2814w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
+- ** 90** subjects/cognitive-science/foundational/what-is-cognitive-science — 3203w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/cosmetology/foundational/infection-control-and-salon-safety — 3086w, 5 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/counseling/foundational/the-counselling-profession — 3044w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/creative-writing/foundational/craft-image-detail-and-the-sentence — 2931w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/criminology/foundational/changing-awareness-of-crime — 3300w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/culinary-arts/foundational/kitchen-essentials-safety-knives-mise-en-place — 3578w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/dental-hygiene/foundational/the-sciences-behind-hygiene — 3171w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/dentistry/foundational/biomedical-sciences-for-dentistry — 3139w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/earth-science/foundational/the-water-cycle — 3266w, 5 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/earth-science/foundational/weathering-erosion-and-landforms — 3207w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/economics/foundational/money-inflation — 3247w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/education/foundational/the-learning-process — 3300w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/electrical-engineering/foundational/dc-circuit-analysis — 3374w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/electrical-trades/foundational/electrical-safety-and-theory — 3869w, 5 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/emergency-management/foundational/the-emergency-management-cycle — 3309w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/engineering/foundational/statics-structures — 3719w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/environmental-science/foundational/carbon-cycle-climate — 3689w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/food-science/foundational/food-chemistry-fundamentals — 2785w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/forestry/foundational/forests-and-forestry — 2985w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/hvac/foundational/safety-and-the-science-of-air — 3065w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/illustration/foundational/drawing-as-illustration-s-root — 2868w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/information-technology/foundational/types-and-components-of-computer-systems — 2918w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/interior-design/foundational/interior-design-fundamentals — 2900w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/landscape-architecture/foundational/landscape-design-process — 2906w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/languages/foundational/how-to-learn-any-language — 3163w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/law/foundational/what-makes-a-law — 3043w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/literature/foundational/how-to-read-a-story — 2908w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/logistics-supply-chain/foundational/supply-chain-concepts-and-metrics — 3299w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/machining/foundational/measurement-and-materials — 2970w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/marine-science/foundational/earth-oceans-and-tides — 3134w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/masonry/foundational/masonry-safety-and-tools — 3538w, 5 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/nuclear-engineering/foundational/radiation-physics-and-detection — 3195w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/nursing/foundational/the-sciences-behind-nursing — 3025w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/nutrition-dietetics/foundational/nutrients-and-how-they-work — 2929w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/operations-research/foundational/linear-programming — 2938w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/petroleum-engineering/foundational/petroleum-geology-and-reservoir-rock — 2912w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/philosophy/foundational/ethics-three-theories — 3424w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/philosophy/foundational/free-will-and-determinism — 3490w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/philosophy/foundational/logic-arguments — 3106w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/photography/foundational/the-exposure-triangle — 3212w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/public-administration/foundational/the-administrative-state — 3497w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/public-relations/foundational/what-public-relations-is — 2977w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/radiography/foundational/x-ray-physics-and-safety — 2817w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/real-estate/foundational/property-and-ownership — 2891w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/social-work/foundational/the-social-work-profession — 2930w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/surveying/foundational/surveying-mathematics — 2839w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
+- ** 90** subjects/visual-arts/foundational/value-colour-composition — 3002w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
+- ** 95** subjects/accounting/foundational/the-fundamentals-of-accounting — 2635w, 3 callouts, 2 widgets
+- ** 95** subjects/actuarial-science/foundational/probability-for-actuaries — 2895w, 3 callouts, 2 widgets
+- ** 95** subjects/aerospace-engineering/foundational/aerodynamics-i-lift-and-airfoils — 2817w, 3 callouts, 2 widgets
+- ** 95** subjects/agriculture/foundational/soil-water-sun — 2780w, 3 callouts, 1 widgets
+- ** 95** subjects/animation/foundational/the-twelve-principles-of-animation — 2766w, 3 callouts, 1 widgets
+- ** 95** subjects/anthropology/foundational/culture-kin-long-view — 2868w, 3 callouts, 1 widgets
+- ** 95** subjects/archaeology/foundational/what-archaeology-is — 2711w, 3 callouts, 1 widgets
+- ** 95** subjects/architecture/foundational/career-paths-and-licensure — 2550w, 3 callouts, 1 widgets
+- ** 95** subjects/architecture/foundational/form-follows-forces — 2819w, 3 callouts, 1 widgets
+- ** 95** subjects/art-history/foundational/global-prehistory-art-before-writing — 2708w, 3 callouts, 1 widgets
+- ** 95** subjects/art-history/foundational/walk-through-western-art — 2885w, 3 callouts, 1 widgets
+- ** 95** subjects/art-therapy/foundational/what-art-therapy-is — 2711w, 3 callouts, 2 widgets
+- ** 95** subjects/artificial-intelligence/foundational/how-machines-learn — 2672w, 3 callouts, 1 widgets
+- ** 95** subjects/astronomy/foundational/planet-earth — 2929w, 3 callouts, 2 widgets
+- ** 95** subjects/astronomy/foundational/solar-system-scale — 2939w, 3 callouts, 2 widgets
+- ** 95** subjects/audiology/foundational/hearing-science — 2688w, 3 callouts, 2 widgets
+- ** 95** subjects/automotive-technology/foundational/shop-safety-and-service-basics — 2518w, 3 callouts, 1 widgets
+- ** 95** subjects/aviation-maintenance/foundational/amt-general — 2704w, 3 callouts, 2 widgets
+- ** 95** subjects/aviation/foundational/aircraft-systems-and-instruments — 2538w, 3 callouts, 1 widgets
+- ** 95** subjects/biochemistry/foundational/protein-structure-and-function — 2962w, 4 callouts, 2 widgets
+- ** 95** subjects/biology/foundational/biological-molecules — 3082w, 4 callouts, 2 widgets
+- ** 95** subjects/biology/foundational/classification-tree-of-life — 2539w, 3 callouts, 1 widgets
+- ** 95** subjects/biology/foundational/dna-heredity — 2765w, 3 callouts, 2 widgets
+- ** 95** subjects/biology/foundational/ecology-populations-communities — 2692w, 3 callouts, 1 widgets
+- ** 95** subjects/biology/foundational/evolution-natural-selection — 2371w, 4 callouts, 1 widgets
+- ** 95** subjects/biology/foundational/human-body-systems — 2683w, 4 callouts, 1 widgets
+- ** 95** subjects/biology/foundational/movement-into-and-out-of-cells — 2844w, 3 callouts, 4 widgets
+- ** 95** subjects/biology/foundational/photosynthesis-respiration — 2743w, 3 callouts, 2 widgets
+- ** 95** subjects/biomedical-engineering/foundational/physiology-for-engineers — 2785w, 4 callouts, 2 widgets
+- ** 95** subjects/botany/foundational/the-plant-cell — 2852w, 3 callouts, 2 widgets
+- ** 95** subjects/business/foundational/unit-economics — 2672w, 4 callouts, 1 widgets
+- ** 95** subjects/chemical-engineering/foundational/material-and-energy-balances — 2912w, 3 callouts, 2 widgets
+- ** 95** subjects/chemistry/foundational/acids-bases-and-ph — 2902w, 3 callouts, 1 widgets
+- ** 95** subjects/chemistry/foundational/mole-and-stoichiometry — 2512w, 3 callouts, 1 widgets
+- ** 95** subjects/chemistry/foundational/periodic-table — 2836w, 3 callouts, 3 widgets
+- ** 95** subjects/chemistry/foundational/states-of-matter — 2640w, 3 callouts, 1 widgets
+- ** 95** subjects/civil-engineering/foundational/statics-and-dynamics-for-civil-engineers — 3238w, 4 callouts, 2 widgets
+- ** 95** subjects/classics/foundational/homer-and-the-world-of-the-hero — 2883w, 3 callouts, 1 widgets
+- ** 95** subjects/communication-studies/foundational/communication-theory — 2894w, 3 callouts, 1 widgets
+- ** 95** subjects/computer-science/foundational/binary-bits — 3164w, 4 callouts, 2 widgets
+- ** 95** subjects/computer-science/foundational/computer-architecture-and-hardware — 3389w, 5 callouts, 2 widgets
+- ** 95** subjects/cybersecurity/foundational/security-foundations-the-cia-triad — 3293w, 3 callouts, 2 widgets
+- ** 95** subjects/dance/foundational/performance-technique-and-expression — 2913w, 3 callouts, 1 widgets
+- ** 95** subjects/data-science/foundational/from-data-to-decisions — 3195w, 3 callouts, 2 widgets
+- ** 95** subjects/design/foundational/design-is-deciding — 3434w, 3 callouts, 1 widgets
+- ** 95** subjects/design/foundational/structures-loads-and-forces — 3174w, 4 callouts, 2 widgets
+- ** 95** subjects/development-studies/foundational/what-is-development — 3459w, 3 callouts, 2 widgets
+- ** 95** subjects/drama/foundational/elements-of-practical-drama — 3492w, 3 callouts, 2 widgets
+- ** 95** subjects/earth-science/foundational/earth-interior — 3480w, 4 callouts, 1 widgets
+- ** 95** subjects/earth-science/foundational/fossils-and-geologic-time — 3185w, 3 callouts, 1 widgets
+- ** 95** subjects/earth-science/foundational/minerals-and-crystals — 3314w, 4 callouts, 1 widgets
+- ** 95** subjects/earth-science/foundational/rock-cycle — 3265w, 3 callouts, 2 widgets
+- ** 95** subjects/entomology/foundational/insects-the-dominant-animals — 3417w, 4 callouts, 2 widgets
+- ** 95** subjects/environmental-science/foundational/ecosystems-energy — 3768w, 3 callouts, 2 widgets
+- ** 95** subjects/fashion-design/foundational/fashion-design-research — 2794w, 4 callouts, 1 widgets
+- ** 95** subjects/film/foundational/grammar-of-cinema — 2821w, 4 callouts, 1 widgets
+- ** 95** subjects/finance/foundational/compound-interest — 2956w, 4 callouts, 1 widgets
+- ** 95** subjects/forensic-science/foundational/foundations-of-forensic-science — 3009w, 4 callouts, 2 widgets
+- ** 95** subjects/gender-studies/foundational/sex-gender-and-sexuality-the-vocabulary — 3052w, 4 callouts, 1 widgets
+- ** 95** subjects/geography/foundational/ecosystems-and-biomes — 4449w, 5 callouts, 3 widgets
+- ** 95** subjects/geography/foundational/plate-tectonics — 2679w, 3 callouts, 2 widgets
+- ** 95** subjects/history/foundational/how-historians-work — 3035w, 3 callouts, 1 widgets
+- ** 95** subjects/history/foundational/medieval-world — 3765w, 4 callouts, 2 widgets
+- ** 95** subjects/history/foundational/the-cold-war — 2993w, 3 callouts, 1 widgets
+- ** 95** subjects/history/foundational/the-renaissance-and-reformation — 3752w, 4 callouts, 1 widgets
+- ** 95** subjects/history/foundational/the-world-wars — 3081w, 4 callouts, 1 widgets
+- ** 95** subjects/horticulture/foundational/knowing-plants-classification-and-structure — 2958w, 4 callouts, 1 widgets
+- ** 95** subjects/hospitality-tourism/foundational/global-tourism — 2998w, 4 callouts, 2 widgets
+- ** 95** subjects/human-resources/foundational/hr-s-role-and-legal-foundations — 2611w, 3 callouts, 1 widgets
+- ** 95** subjects/industrial-engineering/foundational/statistics-quality-and-control-charts — 2727w, 3 callouts, 2 widgets
+- ** 95** subjects/international-relations/foundational/frameworks-for-understanding-international-relations — 2688w, 3 callouts, 2 widgets
+- ** 95** subjects/journalism/foundational/verification-before-publication — 3100w, 4 callouts, 1 widgets
+- ** 95** subjects/library-science/foundational/foundations-of-library-science — 2739w, 3 callouts, 1 widgets
+- ** 95** subjects/linguistics/foundational/how-language-works — 2966w, 3 callouts, 1 widgets
+- ** 95** subjects/marketing/foundational/introduction-and-company-analysis — 2675w, 3 callouts, 2 widgets
+- ** 95** subjects/massage-therapy/foundational/body-systems-and-movement — 2873w, 3 callouts, 2 widgets
+- ** 95** subjects/materials-science/foundational/why-materials-behave — 3313w, 4 callouts, 1 widgets
+- ** 95** subjects/math/foundational/equations-and-inequalities — 2596w, 3 callouts, 1 widgets
+- ** 95** subjects/math/foundational/euclidean-geometry — 2745w, 3 callouts, 1 widgets
+- ** 95** subjects/math/foundational/perimeter-area-volume — 2639w, 3 callouts, 1 widgets
+- ** 95** subjects/math/foundational/quadratics — 3187w, 4 callouts, 3 widgets
+- ** 95** subjects/math/foundational/ratios-percentages-proportion — 2532w, 4 callouts, 1 widgets
+- ** 95** subjects/mechanical-engineering/foundational/mechanics-foundations — 3383w, 4 callouts, 2 widgets
+- ** 95** subjects/media-studies/foundational/the-theoretical-framework — 3091w, 4 callouts, 2 widgets
+- ** 95** subjects/medical-laboratory-science/foundational/laboratory-operations-and-safety — 2644w, 3 callouts, 1 widgets
+- ** 95** subjects/medicine/foundational/heart-circulation — 2791w, 3 callouts, 2 widgets
+- ** 95** subjects/meteorology/foundational/the-atmosphere-and-its-energy — 3341w, 4 callouts, 2 widgets
+- ** 95** subjects/microbiology/foundational/the-microbial-world — 3150w, 4 callouts, 2 widgets
+- ** 95** subjects/mining-engineering/foundational/ore-deposits-and-exploration — 2833w, 3 callouts, 3 widgets
+- ** 95** subjects/music-technology/foundational/recording-fundamentals — 2776w, 3 callouts, 2 widgets
+- ** 95** subjects/music-therapy/foundational/what-music-therapy-is — 2673w, 3 callouts, 2 widgets
+- ** 95** subjects/music/foundational/sound-and-music — 2826w, 3 callouts, 1 widgets
+- ** 95** subjects/naval-architecture/foundational/floating-things-steadily-hydrostatics — 3205w, 3 callouts, 3 widgets
+- ** 95** subjects/neuroscience/foundational/the-neuron — 2783w, 3 callouts, 1 widgets
+- ** 95** subjects/nuclear-medicine-technology/foundational/radiopharmaceuticals — 2836w, 3 callouts, 2 widgets
+- ** 95** subjects/occupational-therapy/foundational/occupation-the-core-construct — 2944w, 3 callouts, 2 widgets
+- ** 95** subjects/optometry/foundational/optics-for-optometry — 3037w, 3 callouts, 2 widgets
+- ** 95** subjects/paramedicine/foundational/ems-systems-and-the-paramedic — 2834w, 3 callouts, 1 widgets
+- ** 95** subjects/peace-conflict-studies/foundational/what-are-peace-and-violence — 2820w, 4 callouts, 1 widgets
+- ** 95** subjects/pharmacy/foundational/pharmaceutical-sciences-foundations — 2836w, 4 callouts, 2 widgets
+- ** 95** subjects/philosophy/foundational/epistemology — 2660w, 3 callouts, 1 widgets
+- ** 95** subjects/philosophy/foundational/metaphysics — 3824w, 4 callouts, 1 widgets
+- ** 95** subjects/philosophy/foundational/what-is-philosophy — 2736w, 3 callouts, 1 widgets
+- ** 95** subjects/phlebotomy/foundational/veins-and-blood-the-phlebotomist-s-map — 2723w, 3 callouts, 1 widgets
+- ** 95** subjects/psychology/foundational/memory — 3311w, 4 callouts, 1 widgets
+- ** 95** subjects/radiation-therapy/foundational/therapy-physics-and-the-linac — 3095w, 4 callouts, 2 widgets
+- ** 95** subjects/religious-studies/foundational/worship-sacred-places-and-leaders — 3717w, 5 callouts, 1 widgets
+- ** 95** subjects/respiratory-therapy/foundational/cardiopulmonary-assessment — 3167w, 3 callouts, 2 widgets
+- ** 95** subjects/sociology/foundational/society-socialisation — 3508w, 3 callouts, 2 widgets
+- ** 95** subjects/special-education/foundational/special-education-law-and-the-iep — 2825w, 3 callouts, 1 widgets
+- ** 95** subjects/speech-therapy/foundational/speech-and-hearing-sciences — 3017w, 3 callouts, 2 widgets
+- ** 95** subjects/sports-science/foundational/training-load-adaptation — 2775w, 3 callouts, 1 widgets
+- ** 95** subjects/statistics/foundational/describing-data — 2768w, 3 callouts, 1 widgets
+- ** 95** subjects/statistics/foundational/probability — 2753w, 3 callouts, 1 widgets
+- ** 95** subjects/translation-studies/foundational/what-translation-is — 2866w, 3 callouts, 1 widgets
+- ** 95** subjects/veterinary-medicine/foundational/veterinary-biomedical-sciences — 2845w, 3 callouts, 2 widgets
+- ** 95** subjects/welding/foundational/welding-safety-first — 3211w, 4 callouts, 1 widgets
+- ** 95** subjects/zoology/foundational/the-animal-condition — 2860w, 3 callouts, 2 widgets

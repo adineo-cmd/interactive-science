@@ -1,0 +1,66 @@
+/* widgets-p1b — styles for the order.js and match.js sequence widgets.
+   Mirrors the .quiz visual language from global.css: same custom properties,
+   1px var(--line) borders, 12px container radius, .94rem items, and the
+   green #2e9e6b / red #c2413b state mixes. Every selector is scoped under
+   .order or .match — nothing leaks outside these widgets. */
+
+/* ---- shared action row + verdict (order + match) ---- */
+.order-actions, .match-actions, .seq-actions { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; margin-top: .8rem; }
+.seq-verdict { margin-top: .75rem; font-size: .9rem; color: var(--ink-2); min-height: 1.3rem; }
+.seq-verdict strong { color: var(--ink); }
+.seq-verdict.correct strong { color: #2e9e6b; }
+.seq-verdict.wrong strong { color: #c2413b; }
+
+/* ---- order: drag / click-to-swap sequence ---- */
+.order { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.order-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .85rem; line-height: 1.45; }
+.order-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.order-row {
+  display: flex; align-items: center; gap: .65rem;
+  font-size: .94rem; color: var(--ink);
+  background: var(--paper-raised); border: 1px solid var(--line-strong); border-radius: 8px;
+  padding: .6rem .8rem; cursor: grab;
+  touch-action: none; user-select: none; -webkit-user-select: none;
+  transition: border-color .15s ease, background .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.order-row:hover, .order-row.active, .order-row:focus-visible {
+  border-color: var(--subject-ink, var(--accent));
+  background: var(--subject-soft, var(--paper));
+  outline: none;
+}
+.order-row.dragging {
+  position: relative; z-index: 2; cursor: grabbing;
+  border-color: var(--subject-ink, var(--accent));
+  box-shadow: 0 5px 16px color-mix(in srgb, var(--ink) 16%, transparent);
+  transform: scale(1.01);
+}
+.order-row.correct { border-color: #2e9e6b; background: color-mix(in srgb, #2e9e6b 14%, var(--paper-raised)); }
+.order-row.wrong { border-color: #c2413b; background: color-mix(in srgb, #c2413b 12%, var(--paper-raised)); }
+.order-grip { flex: none; font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: -2px; }
+.order-reveal { font-family: var(--f-mono); font-size: .82rem; color: var(--subject-ink, var(--accent)); }
+.order-reveal:hover { text-decoration: underline; }
+.order-list.revealed .order-row { animation: order-settle .32s ease both; animation-delay: calc(var(--i, 0) * 65ms); }
+@keyframes order-settle { from { opacity: .3; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+
+/* ---- match: pair terms with meanings ---- */
+.match { border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.match-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .85rem; line-height: 1.45; }
+.match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem .75rem; }
+.match-left, .match-right { display: grid; gap: .45rem; align-content: start; }
+.match-item {
+  text-align: left; font: inherit; font-size: .94rem; color: var(--ink);
+  background: var(--paper-raised); border: 1px solid var(--line-strong); border-radius: 8px;
+  padding: .6rem .8rem; cursor: pointer;
+  transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.match-item:hover { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper)); }
+.match-item:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 2px; }
+.match-item.active { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper)); box-shadow: inset 0 0 0 1px var(--subject-ink, var(--accent)); }
+.match-item.correct { border-color: #2e9e6b; background: color-mix(in srgb, #2e9e6b 14%, var(--paper-raised)); cursor: default; }
+.match-item.wrong { border-color: #c2413b; background: color-mix(in srgb, #c2413b 12%, var(--paper-raised)); }
+.match-item:disabled { cursor: default; }
+.match-counter { font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); }
+
+@media (max-width: 640px) {
+  .match-grid { grid-template-columns: 1fr; }
+}

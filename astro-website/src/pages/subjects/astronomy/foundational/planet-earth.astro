@@ -1,0 +1,319 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const oblateCfg = {
+  curves: [
+    { expr: 'sqrt(6378^2 - x^2)', label: 'perfect sphere, r = 6378 km', color: '#475569', width: 2 },
+    { expr: '6378*(1 - 0.0033*f)*sqrt(1 - (x/6378)^2)', label: 'Earth, flattened (exaggerated)', color: '#1d4ed8', width: 2.4 },
+  ],
+  params: [
+    { name: 'f', label: 'flattening exaggeration', min: 1, max: 40, step: 1, value: 1, unit: 'x' },
+  ],
+  x: { min: -7000, max: 7000, label: 'distance from centre (km)' },
+  crossings: false,
+  height: 360,
+};
+
+const atmCfg = {
+  params: [
+    { name: 'z', label: 'zenith angle z (angle from straight up)', min: 0, max: 89, step: 1, value: 0, unit: 'deg' },
+  ],
+  readouts: [
+    { label: 'airmass X = 1 / cos z', expr: '1/cos(z*pi/180)' },
+    { label: 'starlight remaining after the air', expr: '100*pow(10, -0.08*(1/cos(z*pi/180)))', unit: '%' },
+    { label: 'light absorbed and scattered away', expr: '100 - 100*pow(10, -0.08*(1/cos(z*pi/180)))', unit: '%' },
+  ],
+};
+---
+<TopicPage slug="subjects/astronomy/foundational/planet-earth">
+
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is the first lesson of Astronomy, and it starts where every observation starts:
+    on the ground. You need no prior astronomy and no maths beyond multiplication and
+    division — just everyday experience of standing on a spinning, layered, wrapped-in-air
+    planet, most of which you have never had reason to think about carefully. Everything
+    else is built here, step by step.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain why the Earth is an oblate spheroid, quote its equatorial, polar and mean diameters, and show why the flattening is almost invisible at true scale;</li>
+    <li>name the Earth's major internal divisions and explain how their sizes and states (solid or liquid) were worked out without ever drilling to them;</li>
+    <li>use latitude and longitude correctly — as angles, not distances — and retrace Eratosthenes' measurement of the Earth's circumference;</li>
+    <li>predict where on the sky a degree of longitude shrinks, and why;</li>
+    <li>explain four ways the atmosphere meddles with every observation: scattering, absorption, refraction and twinkling.</li>
+  </ul>
+  <p>
+    One habit runs through the page: before trusting anything an observer reports, we ask
+    what the Earth itself did to the light on its way in.
+  </p>
+
+  <h2>The idea</h2>
+  <p>
+    Astronomy is usually imagined as the science of far-away things. But its baseline
+    instrument — the naked-eye or telescopic observer — stands on a planet that rotates,
+    bulges, quakes, conducts, and is wrapped in a shifting film of gas roughly 100 km
+    deep. Every photon arriving at an eye or a detector has crossed that whole structure.
+    So the specification begins at home: Topic 1 asks what the Earth is like — its shape,
+    its interior, the grid we draw on its surface — and then what its atmosphere does to
+    the view. Get this right, and two things follow at once: you understand the reference
+    planet every other world is compared against, and you know why real observations
+    never look quite like the ideal textbook picture.
+  </p>
+
+  <h2>An oblate spheroid: the flattened planet</h2>
+  <p>
+    The Earth is not a perfect sphere — it is an <strong>oblate spheroid</strong>, a sphere
+    gently flattened at the poles and bulging at the equator. The numbers: the
+    <strong>equatorial diameter</strong> is about 12,756 km, the <strong>polar
+    diameter</strong> about 12,714 km, and the <strong>mean diameter</strong> (the
+    specification's number to learn) about 12,742 km. The difference between equator and
+    pole is about 42 km — roughly 0.3 percent of the whole. Tiny, but real, and precisely
+    measurable.
+  </p>
+  <p>
+    Why the bulge? The Earth spins once in about 24 hours, and every part of it is being
+    thrown outward by that rotation — most strongly at the equator, where the surface
+    moves fastest: a full turn of the equator is about 40,000 km in 24 hours, which is
+    nearly 1,700 km per hour. Over the planet's formation history, this outward push has
+    shifted mass toward the equator the way a spun-up ball of dough flattens on a
+    pizza-spinner. Worked example: the flattening is (12,756 − 12,714) ÷ 12,756 ≈ 0.0033,
+    about 1 part in 300 — small enough that from space the Earth still looks like a smooth
+    ball, but large enough that satellites feel it and geodesists map it.
+  </p>
+  <p>
+    Because the true flattening is so small, the diagram below lets you exaggerate it.
+    At the real value (exaggeration 1) the blue profile and the grey sphere are almost
+    indistinguishable — that is the honest visual truth of an oblate spheroid.
+  </p>
+
+  <Widget no="1" caption="cut the planet in half — a perfect sphere against the flattened Earth; slide to exaggerate the flattening" widget="plotter" config={oblateCfg} />
+  <p>
+    <strong>What to notice:</strong> at exaggeration 1 the two curves nearly coincide —
+    0.3 percent hides in a drawing this size. Push the slider toward 20 or more and the
+    equatorial bulge emerges: the equator (left and right edges) stays wide while the
+    poles (top) drop. This is exactly how textbook diagrams cheat, and now you know they
+    are cheating — the real Earth is far rounder than any diagram can honestly show.
+  </p>
+  <p>
+    <strong>So far:</strong> the Earth is a sphere flattened by its own spin — mean
+    diameter about 12,742 km, equator about 42 km wider than pole to pole. Next we drill
+    inside, where no drill has ever reached, and see how the layers were mapped from
+    outside.
+  </p>
+
+  <h2>Inside the planet: four layers, mapped by waves</h2>
+  <p>
+    The deepest borehole ever drilled reached about 12 km — a pinprick through a
+    6,371 km radius. Everything below is known by <em>listening</em>. When earthquakes
+    ring through the planet, seismic waves speed up, slow down, bend or vanish depending
+    on what they cross, and thousands of stations worldwide read those signals.
+  </p>
+  <p>
+    The Earth divides into four major layers. The <strong>crust</strong> is the thin rocky
+    skin: about 5–10 km thick under the oceans, 30–70 km under continents. The
+    <strong>mantle</strong> is the vast middle — hot, dense silicate rock stretching down
+    to about 2,890 km. The <strong>outer core</strong> (about 2,890 to 5,150 km deep) is
+    liquid iron and nickel. The <strong>inner core</strong> (5,150 to 6,371 km) is solid
+    iron and nickel — solid not because it is cool but because the pressure there crushes
+    the metal into a fixed shape. Key evidence, straight from the waves: shear (S) waves
+    cannot travel through liquid, so the <em>shadow</em> they cast on the far side of the
+    planet proved the outer core is molten. A second clue is arithmetic: the Earth's
+    average density is about 5,500 kg per cubic metre, but surface rocks are only about
+    2,700 — so the interior must be packed with something far denser than rock. Iron fits.
+  </p>
+  <p>
+    Why it matters: the swirling liquid outer core generates the Earth's magnetic field —
+    the magnetosphere that deflects the solar wind and keeps the atmosphere from being
+    slowly stripped away. No liquid metal core, no protective field, a very different
+    planet. (Mars, with no global field today, is the cautionary comparison.)
+  </p>
+  <p><em>Common misconception:</em> "the Earth's core is molten rock, like lava." It seems
+  reasonable — every diagram shows a glowing orange interior, and lava is the only molten
+  thing most people have seen. But the core is mostly iron and nickel, <em>metal</em>, not
+  rock; and only the outer half of it is liquid, while the inner core is solid under
+  enormous pressure. Lava is melted rock that exists only in the crust and upper mantle.
+  The contrasting evidence: S waves — which cross rock — cannot cross the outer core, while
+  P waves punch through it; liquid metal explains both.</p>
+
+  <h2>Latitude and longitude: angles, not distances</h2>
+  <p>
+    To say where something is on the Earth, we draw two angular coordinates. <strong>Latitude</strong>
+    is the angle north or south of the equator, from 0° at the equator to 90° N at the
+    North Pole and 90° S at the South Pole; lines of equal latitude run parallel around
+    the planet. <strong>Longitude</strong> is the angle east or west of the prime meridian
+    through Greenwich, England, from 0° up to 180° E and 180° W. Every meridian (a
+    north–south half-circle) is half of a great circle; the equator is the only parallel
+    of latitude that is itself a great circle — the shortest route between two points on a
+    sphere always follows a great circle, which is why long-haul flights arc toward the pole.
+  </p>
+  <p>
+    Both coordinates are <em>angles measured at the Earth's centre</em>, which is where
+    surprises live. One degree of latitude spans about 111 km of surface (the pole-to-pole
+    circumference of about 40,008 km divided by 360). But one degree of longitude shrinks
+    as you approach the poles, because the circles of latitude shrink: at the equator a
+    degree of longitude is about 111 km, at 60° N or S only about 56 km, and at 89° a
+    couple of kilometres — all the meridians squeeze together at the pole itself.
+  </p>
+  <p>
+    Longitude also runs the clock: the Earth turns 360° in 24 hours, which is 15° per
+    hour — the logic behind time zones and the International Date Line near 180°.
+  </p>
+  <p>
+    The first person to turn these ideas into a measurement of the whole planet was
+    Eratosthenes, around 240 BC. He knew that at midday on the summer solstice, the Sun
+    stood exactly overhead at Syene (modern Aswan) — no shadow at the bottom of a well.
+    The same noon at Alexandria, further north, a vertical rod cast a shadow of about
+    7.2° — one fiftieth of a full circle. If the Earth is a sphere, the difference in
+    shadow angles equals the angle between the two cities as seen from the centre.
+    Alexandria was about 800 km from Syene (5,000 stadia in his units), so the
+    circumference was 50 × 800 = 40,000 km. The modern pole-to-pole value is 40,008 km —
+    the ancient measurement was right within a fraction of a percent (though the exact
+    length of his stadion is debated, so give or take a percent or two).
+  </p>
+  <p><em>Common misconception:</em> "latitude and longitude are distances, like metres."
+  It seems reasonable — maps show them as a tidy grid, and one degree of latitude does
+  correspond to about 111 km. But they are angles, and only latitude keeps a nearly
+  constant length per degree. Longitude per degree varies with latitude: 111 km at the
+  equator, 56 km at 60°, about 2 km at 89°. The correct picture: a coordinate pair names
+  a direction from the Earth's centre, and you convert to kilometres only after deciding
+  where you are. Navigators who treat degrees as distances sail in circles — literally.</p>
+
+  <h2>Looking up through 100 km of air</h2>
+  <p>
+    Every astronomical observer works at the bottom of an ocean of gas about 100 km deep
+    (the Kármán line at 100 km is the conventional edge of space). The atmosphere shapes
+    what can be seen in four distinct ways — and the first one is why the sky has a
+    colour at all.
+  </p>
+  <p>
+    <strong>Scattering.</strong> Air molecules fling sunlight sideways, and they do it
+    far more strongly for short wavelengths (blue) than for long ones (red) — the
+    strength falls as one over wavelength to the fourth power. Blue light is scattered
+    all over the sky, which is why the whole sky glows blue by day. The same physics
+    explains sunsets: near the horizon, sunlight crosses a much longer path of air, most
+    of the blue is scattered out en route, and what remains is red and orange. For
+    observers, scattering has a blunt consequence: by day the scattered sunlight is
+    brighter than starlight, so stars are invisible until the Sun is far enough below
+    the horizon.
+  </p>
+  <p>
+    <strong>Absorption.</strong> The atmosphere soaks up whole regions of the spectrum:
+    almost all ultraviolet, X-rays and gamma rays never reach the ground, and most of the
+    infrared is swallowed by water vapour. Only two clean "windows" reach the surface —
+    visible light and radio. Everything else must be observed from above the atmosphere,
+    which is why orbiting observatories exist at all.
+  </p>
+  <p>
+    <strong>Refraction and dimming.</strong> Light bends as it slants into the denser
+    air near the ground, so objects near the horizon appear lifted — by about half a
+    degree at the horizon, slightly more than the Sun's own apparent diameter of about
+    half a degree. The practical result: you see the Sun rise before it has geometrically
+    risen, and the same trick delays sunset. The same slanted path also dims: look
+    straight up and starlight crosses one "airmass"; look 60° from the vertical and it
+    crosses two; at the horizon, dozens. The panel below quantifies the toll.
+  </p>
+
+  <Widget no="2" caption="the airmass toll — slide the zenith angle and watch starlight bleed away toward the horizon" widget="sliderLab" config={atmCfg} />
+  <p>
+    <strong>What to notice:</strong> at the zenith (z = 0) the starlight budget is about
+    83 percent — the single airmass of overhead air costs roughly a sixth of it at a good
+    dark site. Slide to z = 60 and you are paying double the toll; slide past 80 toward
+    the horizon and the readout collapses toward zero — which is why observers plan
+    sessions around objects high in the sky, and why horizon-hugging objects are
+    effectively invisible in small instruments. Straight-line geometry (one over cosine)
+    already tells most of the story.
+  </p>
+  <p>
+    <strong>Twinkling.</strong> A star's light threads a kilometer-scale gauntlet of
+    turbulent, unevenly warm air cells, each bending the path slightly differently from
+    moment to moment — so the image jitters and the brightness flickers. This
+    scintillation is why stars twinkle. Planets barely twinkle: they are tiny discs, not
+    points, and the flickers from all across the disc average out. And from orbit, above
+    the atmosphere, stars do not twinkle at all.
+  </p>
+  <p><em>Common misconception:</em> "stars twinkle because the stars themselves flicker."
+  It seems reasonable — the flashing is visibly <em>in</em> the star, and it is easiest to
+  see near the horizon where the air path is longest. But the star is a steady source; the
+  flicker is created in the last 100 km by turbulence bending the light path, moment by
+  moment. The correct picture: twinkling is an Earth-atmosphere effect, strongest where
+  the airmass is largest. Contrasting example: planets — with discs wide enough to average
+  the turbulence — shine steadily, and from space no star twinkles at all.</p>
+  <p>
+    <strong>So far:</strong> between an observer and the universe stands 100 km of
+    scattering, absorbing, refracting, turbulent air — the sky is blue, stars hide by day,
+    windows are few, horizons dim and wiggle. Keep this in mind whenever a real observation
+    looks worse than the theory.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why is the Earth flattened at the poles, and why can you not see the flattening in a photograph from orbit?</li>
+    <li>Eratosthenes-style problem: at noon on the solstice the Sun is 9.0° from the vertical at one city and overhead at another, 950 km due south. Estimate the Earth's circumference.</li>
+    <li>A friend says the beautiful red sunset proves the Sun is turning red. What is really happening, and what does it predict about the daytime sky's colour?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Rotation throws the equator outward, so mass has piled
+    up there: equatorial diameter about 12,756 km against a polar 12,714 km. The
+    difference is about 0.3 percent — far too small to see at true scale (try
+    exaggeration 1 in fig. 1), though satellites measure it easily. (2) The shadow angle
+    is the central angle between the cities: 9.0° is one fortieth of 360°, so the
+    circumference is 40 × 950 = 38,000 km — within about 5 percent of the true
+    40,008 km. (3) The Sun is not changing; the air is. Red light survives the long,
+    low horizon path better than blue, which has been scattered away — the same
+    1/λ⁴ scattering that turns the whole overhead sky blue at midday. One mechanism,
+    two colours.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The Earth is an oblate spheroid: equatorial diameter about 12,756 km, polar about 12,714 km, mean diameter about 12,742 km — flattened about 0.3 percent by its spin.</li>
+    <li>Four internal layers — crust, mantle, liquid outer core, solid inner core — mapped mainly with seismic waves; the S-wave shadow proved the outer core is liquid.</li>
+    <li>The liquid-iron outer core generates the magnetic field that shields the atmosphere from the solar wind.</li>
+    <li>Latitude and longitude are angles from the Earth's centre, not distances; a degree of longitude shrinks from 111 km at the equator to nothing at the pole.</li>
+    <li>Eratosthenes measured the circumference to within a few percent using shadows, one geometry step, and a good distance estimate.</li>
+    <li>The atmosphere scatters (blue sky, red sunsets), absorbs (only visible and radio windows reach the ground), refracts (the Sun is visible before it truly rises) and twinkles the starlight that survives.</li>
+    <li>Observation quality depends on airmass: overhead is one, the horizon costs many, so astronomers plan around altitude.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    With the home planet understood, the programme steps outward: <em>Solar System
+    Scale</em> puts the Earth in context among the planets, and <em>Orbits and Kepler's
+    Laws</em> explains the spinning-and-falling that produced the bulge in the first
+    place. The atmosphere returns in <em>Telescopes and the Electromagnetic Spectrum</em>,
+    where the two windows become the reason orbiting observatories exist — and
+    <em>The Moon and Eclipses</em> shows how a shadow on the Moon gave Aristotle the
+    same "spherical Earth" evidence you used in the quiz.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The flattening number itself is a measurement of what is inside. A spinning,
+    self-gravitating fluid body settles into an oblate shape whose flattening depends on
+    how fast it rotates and how its mass is distributed; the Earth's observed 1/298
+    matches the hydrostatic prediction only once the dense core is included, so the
+    bulge is quietly a probe of the core. Related subtlety: one degree of latitude is not
+    quite constant either — it stretches from about 110.6 km at the equator to about
+    111.7 km at the poles, because meridians on an ellipsoid curve more tightly near the
+    flattened poles. Eighteenth-century geodesists literally measured degree lengths in
+    Lapland and Peru to settle the shape question; satellites now measure the whole
+    gravity-mapped surface, the geoid, to centimetre precision.
+  </p>
+  <p>
+    On the observing side, the one-over-cosine airmass law used in fig. 2 is itself an
+    approximation — it treats the atmosphere as flat layers of even thickness, and it
+    breaks down near the horizon where the Earth's curvature and refraction shorten the
+    path (the true airmass at the horizon is closer to 38 than the formula's infinity).
+    Professional observers calibrate the dimming empirically with standard stars and
+    correct for it — "extinction correction" — and adaptive-optics systems now fight the
+    twinkling in real time, reshaping a mirror hundreds of times a second to undo what
+    the turbulence just did. The atmosphere never stops meddling; observing is partly the
+    art of keeping score against it.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Edexcel GCSE Astronomy (1AS0) specification, Topic 1; OpenStax, <em>Astronomy 2e</em> (Earth, Moon, and Sky; Astronomical Instruments). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
+
+</TopicPage>

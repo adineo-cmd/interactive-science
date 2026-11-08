@@ -1,0 +1,313 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const loadCfg = {
+  unit: 'N',
+  x: { min: 0, max: 10 },
+  y: { min: 0, max: 10 },
+  start: [8, 6],
+  height: 320,
+};
+
+const beamCfg = {
+  params: [
+    { name: 'L', label: 'span between supports L', min: 0.4, max: 3, step: 0.1, value: 1.2, unit: 'm' },
+    { name: 'W', label: 'load on the middle W', min: 50, max: 1000, step: 10, value: 300, unit: 'N' },
+  ],
+  readouts: [
+    { label: 'upward reaction at each support', expr: 'W / 2', unit: 'N' },
+    { label: 'equivalent mass of the load', expr: 'W / 9.81', unit: 'kg' },
+    { label: 'max bending moment at midspan', expr: 'W * L / 4', unit: 'N·m' },
+  ],
+  height: 120,
+};
+---
+<TopicPage slug="subjects/design/foundational/structures-loads-and-forces">
+
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is a foundational lesson of Design, and it assumes nothing beyond everyday experience:
+    you have sat on chairs, leaned on shelves and seen scaffolding around a building. No physics
+    course and no workshop time is needed — every term is defined the moment it appears. The
+    lesson follows the Cambridge IGCSE Design &amp; Technology syllabus's structures content:
+    what structures are, what loads them, which forces tear at them, and how designers make
+    them survive.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>classify structures as shell, frame or mass, with natural and manufactured examples of each;</li>
+    <li>distinguish static loads from dynamic loads, and say why the dynamic ones are harder to design for;</li>
+    <li>name the five forces — tension, compression, shear, bending, torsion — and identify which is acting in a given situation;</li>
+    <li>compute basic load figures: weight from mass, reactions at supports, and the bending moment of a simple beam;</li>
+    <li>explain how triangulation and corrugation reinforce a structure, and why each works.</li>
+  </ul>
+  <p>
+    The habit to carry through the lesson: a structure is a <em>load path</em> — every force
+    that enters it must travel through material, stage by stage, to the ground. Design is
+    choosing that path.
+  </p>
+
+  <h2>The idea: every structure is a path for forces</h2>
+  <p>
+    Put a book on a table. Gravity pulls the book down; the book presses on the tabletop; the
+    tabletop presses on the legs; the legs press on the floor; the floor presses on the
+    building's frame, and so on down to the earth. Nothing in that chain is static in the
+    force sense — every piece is squeezed or stretched, working silently to redirect one
+    force (the book's weight) to its destination (the ground). That is what a structure
+    <em>is</em>: a path that carries loads. Designers and engineers say a structure
+    <strong>stands</strong> when every part of the path stays within what its material can
+    take, and it <strong>fails</strong> when some link exceeds it — the shelf sags, the chair
+    leg snaps, the bridge drops. Everything in this lesson is a way of answering two
+    questions: what forces will travel this path, and will each member survive them?
+  </p>
+
+  <h2>Shell, frame and mass structures</h2>
+  <p>
+    Structures fall into three families, and the classification works on natural and
+    manufactured examples alike. A <strong>shell structure</strong> holds its shape and
+    carries load through a thin, curved outer skin: an egg, a car body, a drinks can, a
+    soap bubble, a snail's shell — and, manufactured on purpose, an aircraft fuselage or a
+    bike helmet. The curve is the trick: a sheet that folds flat is weak, but the same
+    material curved into a shell spreads any push over its whole surface, which is why you
+    cannot crush an egg end-to-end in one hand and why an empty can dents the moment its
+    curve is cut. A <strong>frame structure</strong> carries load through a skeleton of
+    separate members: a bicycle frame, a scaffolding tower, a crane, a tent, an electricity
+    pylon — and in nature, a spider's web or the bones of your hand. Frame members are
+    individual struts and ties, each doing one job, and the design questions are about the
+    joints and the geometry (triangulation, coming later). A <strong>mass structure</strong>
+    resists loads by sheer bulk and weight: a dam, a sandbag wall, a brick garden wall, a
+    mountain, an ice shelf. Nothing is hollow or clever about it — gravity holds it down and
+    its own weight makes it expensive to push over. Mass structures are heavy, so they are
+    used where weight is free (against water, which is heavy too) and avoided where weight
+    costs energy (bicycles, aircraft).
+  </p>
+  <p>
+    The same object can mix families: a house is a mass structure at its foundation, a frame
+    in its timber skeleton and a shell in its tiled roof. Classification is a lens, not a
+    box.
+  </p>
+  <p><em>Common misconception:</em> "strong material makes a strong structure, so steel is
+  always best." It seems reasonable because steel is the strongest common material and we
+  associate it with bridges and towers. But the paper-bridge schoolroom classic proves the
+  opposite: a single sheet of paper lies limp across a 15 cm gap, yet the same sheet folded
+  into pleats carries a stack of coins — same material, new geometry. Materials supply
+  strength; <em>shape decides how that strength is used</em>. The correct picture: an eggshell
+  (calcium carbonate, a brittle chalk-like ceramic) outperforms a flat steel plate of the same
+  weight across the same span, because the shell's curve turns pushing into membrane
+  tension. Choose material after shape, never instead of it.</p>
+
+  <h2>Static and dynamic loads</h2>
+  <p>
+    A <strong>load</strong> is any force a structure must carry. <strong>Static loads</strong>
+    are steady and unchanging: the weight of the structure itself (the <em>dead load</em> —
+    roof tiles, walls, the shelf board), the things it permanently carries, and the slow,
+    predictable weights like furniture and a still tank of water. Static loads are the easy
+    case: you can weigh them once and design for them. <strong>Dynamic loads</strong> move,
+    hit or shift: a person dropping onto a chair, wind gusting against a sign, a truck
+    crossing a bridge, a door slamming, an earthquake. Dynamic loads are harder for two
+    reasons. First, <em>impact multiplies force</em>: landing stiff-legged from a 30 cm step
+    can load your knees with several times your body weight for the instant of deceleration —
+    a designer cannot simply read the number off a scale. Second, dynamic loads
+    <em>repeat</em>: a member that survives one gust may fail after a million of them, the
+    fatigue problem that grounds aircraft parts and cracks old bridges. Designers answer
+    dynamic loads with safety factors (design the shelf for five times the books), with
+    damping and flexibility (a tent flexes in wind where a brick wall would crack), and by
+    testing to destruction. One clarifying example with numbers: a 60 kg person
+    <em>standing</em> on a platform loads it with about 590 N (weight = mass times gravity,
+    60 × 9.81 ≈ 590 N); the same person <em>jumping</em> onto it can momentarily load it with
+    2,000 N or more — a dynamic load four times the static one, arriving in a tenth of a
+    second.
+  </p>
+  <p><em>Common misconception:</em> "a static load and a dynamic load of the same size stress
+  a structure the same way." It seems reasonable because a force is a force — 500 N is 500 N.
+  But structure failure depends on time as well as size: the dynamic 500 N arrives with
+  momentum that must be absorbed, it can excite vibration (a bridge swaying at its own
+  natural frequency), and repeated cycles grow microscopic cracks into fatal ones. The
+  correct picture: static design asks "can it hold this once?", dynamic design asks "can it
+  hold this arriving fast, moving, and a hundred thousand times?" The London Millennium
+  Bridge opened in 2000 and wobbled shut within days — not from overload, but from
+  pedestrians' synchronised footsteps feeding a dynamic load the designers had modelled as
+  static sideways pushes.</p>
+
+  <h2>The five forces that attack every structure</h2>
+  <p>
+    <strong>Tension</strong> pulls a member apart: the cable of a crane hook, the string of a
+    drawn bow, the ties of a suspension bridge, your shoelaces. <strong>Compression</strong>
+    pushes it together: table legs, brick walls, the stone columns of a temple, the struts of
+    a bicycle frame. Both are the gentle pair — a material in pure tension or pure compression
+    uses its full strength efficiently. <strong>Shear</strong> slices across a member, two
+    forces sliding past each other in opposite directions: scissors cutting paper, a paper
+    punch, the rivet joining two overlapping plates pulled in opposite directions, and the
+    failure of a poorly glued joint that slides apart. <strong>Bending</strong> is tension
+    and compression sharing one member: a shelf loaded with books stretches its bottom
+    surface while its top surface squeezes, with a neutral middle doing little. Bending is
+    expensive — most of the material near the middle is barely working, which is why
+    designers remove it (the I-beam's web, the hollow tube) or add material only at the
+    faces. <strong>Torsion</strong> twists a member around its axis: a screwdriver shaft
+    under load, a wrung-out towel, a car's drive shaft, a spindle turning a blind.
+  </p>
+  <p>
+    Numbers make it real. Tension: a sign of mass 12 kg hangs from a steel wire, so the wire
+    carries a force of 12 × 9.81 ≈ 118 N — about 120 N, throughout its whole length. Torsion:
+    a screwdriver blade 30 mm across transmits a hand force of 20 N at its 15 mm radius, a
+    twisting moment of 20 × 0.015 = 0.3 N·m — small, but a narrow blade concentrates it.
+    Bending: the worked beam below turns a load and a span into the moment the shelf or beam
+    must survive.
+  </p>
+  <Widget no="1" caption="one load, two lives — an angled force and its horizontal and vertical components" widget="diagramBuilder" config={loadCfg} />
+  <p>
+    <strong>What to notice:</strong> drag the arrow's head and read the three numbers. The
+    arrow is one force — but any force can be replaced by two components at right angles, and
+    the dashed lines show them. Start at 8 N horizontal and 6 N vertical and the magnitude
+    reads 10 N: the three sides of a right-angled triangle. This is the daily arithmetic of
+    structures — a sign pulled by an angled cable loads its wall fixings with both the
+    vertical pull (which the bracket carries in shear) and the horizontal tug (which tries to
+    pull the fixing out). One force, entering the structure; two members, carrying it away.
+  </p>
+  <p><em>Common misconception:</em> "bending and shear are the same thing because both
+  involve a member 'giving way' across its length." It seems reasonable because both fail a
+  beam sideways. But they are different force systems: shear is two equal forces sliding
+  past each other across a cut (scissors through paper), while bending is a gradient —
+  tension growing down one face, compression growing down the other. The correct picture:
+  the two stresses even have different failure surfaces — a shear cut is clean and flat, a
+  bending break is jagged and starts at the tension face, which is why a broken shelf shows
+  its torn underside. Test it: paper resists bending poorly but resists shear barely at
+  all — it cuts with almost no force, yet the same paper pleated into corrugations becomes
+  stiff enough to bend back.</p>
+
+  <p>
+    <strong>So far:</strong> static loads sit still and dynamic ones move, and five forces —
+    compression, tension, bending, shear, torsion — attack every structure made, whichever
+    family it belongs to.
+  </p>
+
+  <h2>Beams: the worked example that ties the forces together</h2>
+  <p>
+    A shelf between two brackets is a <strong>beam</strong> — the most common structural
+    member in design. Take a shelf of span 1.2 m with a 300 N load (about 30.6 kg of
+    dictionaries) sitting at the middle. The two supports share the load equally, 150 N each;
+    the shelf's middle experiences a bending moment of W × L ÷ 4 = 300 × 1.2 ÷ 4 = 90 N·m —
+    the number that decides whether the shelf sags visibly or stays straight. Change the
+    numbers below and watch which quantity responds to what.
+  </p>
+  <Widget no="2" caption="the shelf formula — load W on the middle of a span L" widget="sliderLab" config={beamCfg} />
+  <p>
+    <strong>What to notice:</strong> the support reactions track the load only — double the
+    books and each bracket carries double. The bending moment tracks load <em>and</em> span:
+    doubling the span to 2.4 m at the same 300 N doubles the moment to 180 N·m, which is why
+    long unsupported shelves sag while short ones do not, and why real shelving calls for a
+    bracket at every 60 cm or so rather than trusting the material. Structure is proportional
+    thinking: the formula W·L/4 is small, but it is the same one a bridge engineer uses at
+    full scale.
+  </p>
+
+  <h2>Reinforcement: triangulation and corrugation</h2>
+  <p>
+    Two reinforcement strategies cover most of design. <strong>Triangulation</strong> fixes
+    the geometry problem of frames: four members joined into a rectangle can lean into a
+    parallelogram without any member changing length — the garden gate that sags, the
+    scaffolding that sways. Add one diagonal and the rectangle becomes two triangles, and a
+    triangle cannot deform without one of its members stretching or squashing — which members
+    are built to resist. The whole of structural engineering hides in that observation: the
+    bicycle frame, the electricity pylon, the roof truss, the crane jib and the Eiffel Tower
+    are all assemblies of triangles, with every diagonal either pulling (a tie, in tension)
+    or pushing (a strut, in compression). Corrugation fixes the same problem for sheets: a
+    flat sheet bends easily, but fold it into a wave — the roof sheet, the cardboard box's
+    inner flute, the pleated paper — and the folds act like a series of tiny I-beams, moving
+    material away from the neutral middle to the faces where bending stress lives. Corrugated
+    cardboard earns its strength this way: the fluted middle layer holds the two flat liners
+    apart, converting a sandwich of weak paper into a stiff panel that ships the world's
+    goods.
+  </p>
+  <p>
+    <strong>So far:</strong> structures are load paths in three families (shell, frame,
+    mass), loaded statically or dynamically, attacked by five forces, and defended by
+    geometry — triangles to lock frames, folds to stiffen sheets. One more layer of design
+    judgement remains: reading real objects and asking which force is where.
+  </p>
+  <p><em>Common misconception:</em> "reinforcement means adding more material — a thicker
+  board, a heavier bracket." It seems reasonable because more stuff feels stronger. But
+  reinforcement is mostly about <em>placement</em>, not amount: the diagonal of a
+  triangulated gate might be 2% of the gate's mass and still eliminate the sag, because it
+  changes the geometry that lets the sag happen; corrugation stiffens a sheet by moving
+  material, adding none. The correct picture: ask where the force wants to go and put
+  material on that path — an I-beam has less material than the solid block it replaces and
+  is barely less stiff. Contrasting example: bicycle makers slim the tubes and add no
+  weight, because a round tube is already the corrugation idea in rotation — the same
+  stiffness as a solid rod at a fraction of the mass.</p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>An egg, a scaffolding tower and a dam: classify each as shell, frame or mass, and give one natural example of the family the other two belong to.</li>
+    <li>A shelf of span 1.6 m carries a 400 N load at its middle. What does each support carry, and what is the maximum bending moment?</li>
+    <li>A garden gate sags into a parallelogram. Why does adding one diagonal member fix it — and what forces does that diagonal now carry?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Egg — shell; scaffolding tower — frame; dam — mass. Natural
+    examples: shell — an egg, a nut, a snail's shell; frame — a spider's web, a skeleton,
+    a tree branch network; mass — a sand dune, a coral head, a boulder. (2) Each support
+    carries 400 ÷ 2 = 200 N; the maximum bending moment is W·L/4 = 400 × 1.6 ÷ 4 = 160 N·m.
+    If you divided by 2 instead of 4 for the moment, you computed the reaction twice — the
+    moment lives in the middle, where the lever arms meet. (3) The rectangle could deform
+    into a parallelogram with no member changing length; the diagonal converts it into two
+    triangles, which cannot deform without stretching or squashing a member. The diagonal
+    becomes either a tie in tension (if it crosses with the corner dropping) or a strut in
+    compression, depending on the load direction — which is why both ties and struts exist
+    in every truss.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A structure is a load path: every entering force must travel through material to the ground, and failure is a path that breaks.</li>
+    <li>Shell structures carry load through curved skins (egg, can, car body); frames through member skeletons (pylon, bike, tent); mass structures through sheer weight (dam, garden wall).</li>
+    <li>Static loads are steady and designable; dynamic loads arrive fast, repeat, and multiply through impact — design for multiples, not the number on the scale.</li>
+    <li>The five forces: tension pulls, compression pushes, shear slides across a cut, bending stretches one face while squeezing the other, torsion twists.</li>
+    <li>Bending is the expensive one — remove the idle middle (I-beams, tubes) or reinforce the faces.</li>
+    <li>A beam's midspan moment is W·L/4: load times span, quartered — reactions share the load, the moment scales with span too.</li>
+    <li>Triangulation locks frames; corrugation stiffens sheets — reinforcement is geometry and placement, not more material.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling foundational lesson <em>Design Is Deciding</em> steps back from structures to
+    the discipline as a whole — the decisions behind every product, from hierarchy and
+    affordance to anthropometrics and sustainability. The intermediate lessons then cover the
+    communication and digital side of the subject — typography, grids, prototyping and user
+    research — while the load-path thinking you built here returns in any later work on
+    materials and making.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    Why is a tube stiffer than a solid rod of the same weight, and an I-beam stiffer than the
+    block it replaces? The answer is the second moment of area, and it is the deepest idea in
+    this lesson. Bending stress in a member is proportional to its distance from the neutral
+    axis — the middle layer that neither stretches nor squeezes. Double the depth of a
+    rectangular beam and its stiffness against bending rises not by 2 but by 8 (stiffness
+    scales with depth cubed), because the outer fibres now work at double the lever arm while
+    carrying the same forces over a bigger cross-section of them. This single scaling law
+    explains the entire family of efficient sections: the I-beam concentrates material in two
+    flanges at maximum depth and leaves a thin web to fight shear; the tube is the same idea
+    wrapped around an axis, equally strong in every bending direction and also good against
+    torsion (a twist is just bending at an angle around the axis, resisted by material far
+    from the centre); the corrugated sheet is the I-beam repeated cheaply; the bamboo culm is
+    the tube grown naturally, hollow and ringed. When a designer "removes the idle middle",
+    they are applying d³ scaling with a pencil — which is why the strongest structures are
+    always the ones that look like they have holes in the right places.
+  </p>
+  <p>
+    The second deep idea is that structures fail by their weakest link in a specific force
+    system, so good designers name the failure mode before choosing the fix. A sagging gate
+    fails geometrically (no triangulation); a snapped shelf fails in bending (add depth or
+    support); a sheared rivet fails in shear (bigger diameter, or two rivets to share the
+    load); a wrung snapped screwdriver tip fails in torsion (wider blade); a dented can fails
+    as a shell (a full can resists where an empty one crumples — the liquid supports the
+    skin). Diagnosis before remedy is the professional habit: add the right material to the
+    right member for the right force, and most "strength problems" turn out to be geometry
+    problems wearing a disguise.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Design &amp; Technology 0445 syllabus (2028–2030), Section 1.6: Structures. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
+</TopicPage>

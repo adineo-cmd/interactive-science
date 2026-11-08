@@ -1,0 +1,343 @@
+---
+import TopicPage from '../../../../components/TopicPage.astro';
+import Widget from '../../../../components/Widget.astro';
+
+const fdeCfg = {
+  title: 'The fetch–decode–execute cycle',
+  steps: [
+    { math: '1 · FETCH', note: 'The program counter (PC) holds the address of the next instruction. The address travels down the address bus to memory; memory sends the instruction back down the data bus to the memory data register (MDR); the instruction moves to the current instruction register (CIR); the PC is incremented to point at the next instruction.' },
+    { math: '2 · DECODE', note: 'The control unit (CU) examines the instruction\'s operation code and works out what must be done and which data or registers are involved. Decode is translation: the instruction is just a binary pattern until the CU gives it meaning.' },
+    { math: '3 · EXECUTE', note: 'The instruction is carried out — the ALU adds two numbers, a value is written to memory or a register, a device is told to act. Then the cycle repeats: fetch, decode, execute, billions of times per second.' },
+    { math: 'Why a cycle at all?', note: 'Because one shared memory holds both data and instructions (the stored-program idea), one processor must take turns. The clock paces the turns; a 3 GHz chip completes roughly 3 billion cycles each second.' },
+  ],
+};
+
+const storageCfg = {
+  params: [
+    { name: 'size', label: 'file size to copy', min: 100, max: 50000, step: 100, value: 8000, unit: 'MB' },
+    { name: 'speed', label: 'transfer speed', min: 5, max: 2000, step: 5, value: 100, unit: 'MB/s' },
+  ],
+  readouts: [
+    { label: 'transfer time in seconds', expr: 'size / speed', unit: 's' },
+    { label: 'transfer time in minutes', expr: 'size / speed / 60', unit: 'min' },
+    { label: 'time if speed were 10 times higher', expr: 'size / (speed * 10) / 60', unit: 'min' },
+  ],
+  height: 120,
+};
+---
+<TopicPage slug="subjects/computer-science/foundational/computer-architecture-and-hardware">
+
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is a foundational lesson of Computer Science — the hardware half of the subject's
+    first section, computer systems. You need no prior lesson: if you have ever used a
+    laptop, phone or games console, you have operated the machine this lesson opens up.
+    Everyday arithmetic is enough; binary numbers help but are rebuilt where needed.
+    The lesson follows the Cambridge IGCSE Computer Science 0478 syllabus, Section 3
+    (Hardware): computer architecture, input and output devices, data storage, and network
+    hardware.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>describe the von Neumann architecture — stored programs, CPU, memory, buses — and name the registers and the ALU and control unit;</li>
+    <li>walk through the fetch–decode–execute cycle, saying what moves along which bus at each stage;</li>
+    <li>compare RAM and ROM, and explain why a computer needs both;</li>
+    <li>classify input and output devices, and explain how scanners, laser printers and 3D printers work;</li>
+    <li>compare magnetic, optical and solid-state storage in speed, capacity, cost and reliability;</li>
+    <li>state the job of each piece of network hardware — NIC, hub, switch, bridge, repeater, router, gateway — and choose the right device for a job.</li>
+  </ul>
+
+  <h2>The idea: one machine, one memory, one endless cycle</h2>
+  <p>
+    Open the case of any computer from the last seventy years and the same skeleton is
+    inside: a processor that calculates, a memory that holds, wires that connect, and
+    devices at the edges. The design is called the <strong>von Neumann architecture</strong>,
+    after the mathematician John von Neumann, whose 1945 report described a machine with one
+    decisive idea — the <strong>stored-program concept</strong>: instructions are stored in
+    the same memory as data, written in the same binary language. Before this idea, reprogramming
+    a computer meant rewiring it for days; after it, changing what the machine does means
+    loading new instructions into memory. Every phone, laptop, server and smart washing
+    machine is this design. The CPU (central processing unit) is the part that runs the
+    cycle: it fetches an instruction from memory, decodes what it means, executes it, and
+    repeats — billions of times a second. Hardware is the study of how that skeleton is
+    built, and of everything hanging off it.
+  </p>
+  <p><em>Common misconception:</em> "the CPU is the whole computer — the box under the desk
+  is 'the CPU'." It seems reasonable because shop assistants say it and the box is the
+  biggest thing in sight. But the CPU is one chip a few centimetres across; the box is the
+  case, which contains the CPU plus memory, storage, power supply, cooling and ports. The
+  correct picture: think of the case as the building, the CPU as one hyperactive office
+  worker in it, memory as the desk surface they work on, and storage as the filing
+  cabinets down the hall. A contrasting example: your phone has a CPU (actually several
+  cores on one chip) and no "box" at all — the case-equals-CPU confusion evaporates the
+  moment you notice the whole computer fits behind a sheet of glass.</p>
+
+  <h2>Inside the CPU: registers, ALU, control unit, buses</h2>
+  <p>
+    The CPU contains a handful of named parts, and the names matter because the exam asks
+    for them and because each has one job. The <strong>arithmetic and logic unit (ALU)</strong>
+    does the mathematics and the comparisons: addition, subtraction, AND, OR, shifts, tests
+    for zero. The <strong>control unit (CU)</strong> coordinates everything: it decodes
+    instructions and sends the control signals that tell memory, the ALU and devices what
+    to do and when. The <strong>registers</strong> are tiny, extremely fast storage cells
+    inside the CPU, each with a dedicated role: the <strong>program counter (PC)</strong>
+    holds the address of the next instruction; the <strong>memory address register (MAR)</strong>
+    holds the address currently being read from or written to; the <strong>memory data
+    register (MDR)</strong> holds the data just read or about to be written; the <strong>current
+    instruction register (CIR)</strong> holds the instruction being decoded; the
+    <strong>accumulator</strong> holds the ALU's running result. The parts are connected by
+    <strong>buses</strong> — shared wires with a direction contract: the <strong>address
+    bus</strong> carries addresses one way, from CPU to memory; the <strong>data bus</strong>
+    carries the data itself, both ways; the <strong>control bus</strong> carries the CU's
+    commands and the responses ("read now", "write now", "ready"). A wider address bus can
+    name more memory locations — 16 address lines reach 2 to the power 16 = 65,536
+    locations, which is the n-bits-give-2-to-the-n rule from the binary lesson, wearing
+    hardware.
+  </p>
+
+  <h2>The fetch–decode–execute cycle</h2>
+  <p>
+    Everything the computer does — every game frame, every search, every keystroke echoed —
+    reduces to one loop, paced by the system clock. The three stages and their traffic are
+    worth walking slowly, because they are the machine.
+  </p>
+  <Widget no="1" caption="fetch, decode, execute — the loop every processor runs forever" widget="equationStep" config={fdeCfg} />
+  <p>
+    <strong>What to notice:</strong> two registers only ever talk to memory (MAR sends
+    addresses, MDR carries data), and the PC is incremented <em>during</em> fetch, before
+    execution even starts — which is exactly how the machine knows where to go next without
+    being told. Notice too that "jump" instructions overwrite the PC at the execute stage:
+    that single move is what lets programs loop, branch and call functions. The cycle is
+    simple; its speed is the miracle.
+  </p>
+  <p>
+    <strong>So far:</strong> the stored-program machine runs one loop — fetch, decode,
+    execute — across a CPU of ALU, control unit and registers, connected to memory by
+    address, data and control buses. The loop needs somewhere to fetch from, so now the two
+    kinds of onboard memory.
+  </p>
+
+  <h2>RAM and ROM: the two onboard memories</h2>
+  <p>
+    A computer keeps two kinds of primary memory, and the difference is the first exam
+    question hardware asks. <strong>RAM</strong> (random access memory) is the working
+    memory: programs and their data are loaded into it while they run. It is fast, can be
+    read and written freely, and is <strong>volatile</strong> — power off, contents gone.
+    <strong>ROM</strong> (read-only memory) is fixed: it is <strong>non-volatile</strong>,
+    keeps its contents without power, and in ordinary operation is only read. Its job is to
+    hold the <strong>bootstrap</strong> (the startup firmware, the program the CPU runs the
+    instant power arrives, which finds the storage device, loads the operating system into
+    RAM and hands over). The division of labour follows: power on, CPU runs ROM's bootstrap,
+    operating system loads into RAM, your applications load into RAM, and everything you are
+    currently editing lives in RAM until saved. Why both? RAM is fast but forgets; ROM
+    remembers but is fixed and slow to change. The computer needs a permanent home for its
+    first instructions (ROM) and a large, fast scratchpad (RAM) — the same reason a kitchen
+    has both a recipe card nailed to the wall and a clearable worktop.
+  </p>
+  <p><em>Common misconception:</em> "ROM is where your files are kept, because it is
+  'read-only memory'." It seems reasonable from the name and the fact that files feel
+  permanent. But ROM holds only the machine's startup firmware — a few megabytes at most;
+  your files live on <em>secondary storage</em> (a hard drive or SSD), which is read-write
+  and non-volatile but a different device entirely. The correct picture: three tiers, three
+  roles — ROM (fixed startup instructions), RAM (fast, volatile workspace), secondary
+  storage (large, permanent filing). The contrasting example: pulling a computer's power
+  cable destroys everything in RAM instantly, while the files on the SSD survive untouched —
+  and the machine still boots afterwards, because ROM never lost anything.</p>
+
+  <h2>Input and output devices</h2>
+  <p>
+    Devices are how the digital world meets the physical one. <strong>Input devices</strong>
+    convert human or environmental information into binary data: keyboard, mouse, touch
+    screen; <strong>2D scanners</strong>, which sweep light across a page and record the
+    reflection with an array of light sensors to produce an image file (and, with
+    optical character recognition, editable text); <strong>3D scanners</strong>, which
+    sweep a laser or structured light over an object and triangulate thousands of surface
+    points into a 3D model used in CAD, prosthetics fitting and heritage preservation;
+    <strong>barcode and QR readers</strong>, which decode printed patterns; microphones;
+    and <strong>sensors</strong> — temperature, pressure, light, humidity, infrared, sound,
+    pH — the input devices of automatic systems, feeding measurements to a computer that
+    acts without a human. <strong>Output devices</strong> convert data back into light,
+    sound or matter: screens; <strong>speakers</strong>; <strong>actuators</strong>, which
+    turn control signals into physical motion (a valve, a motor, a heater — the output half
+    of every sensor-driven system); and printers. <strong>Laser printers</strong> build a
+    page electrostatically: a drum is given charge, a laser discharges the image onto it,
+    powdered toner sticks to the charged areas, transfers to paper, and is fused by heated
+    rollers — fast, sharp text, cheap per page, ideal for offices. <strong>Inkjet
+    printers</strong> fire microscopic droplets of liquid ink directly onto the page —
+    slower and costlier per page, but better for photo colour on many papers and cheaper
+    to buy. <strong>3D printers</strong> output matter, not marks: a nozzle melts plastic
+    filament and lays it down layer after layer (additive manufacturing) until a physical
+    object exists — the output device that makes the prototype. Touch screens, incidentally,
+    are both device types at once: input where you touch, output where you look.
+  </p>
+  <p><em>Common misconception:</em> "a scanner reads text the way it reads pictures — you
+  scan a page and get a document you can edit." It seems reasonable because the scanned
+  file looks exactly like the page. But a 2D scanner only ever produces an <em>image</em> —
+  a bitmap of coloured dots; the letters are ink shapes, not characters. The correct
+  picture: to get editable text, the scanned image must be processed by <strong>optical
+  character recognition (OCR)</strong> software, which classifies each shape as a letter
+  and makes mistakes with faint print and unusual fonts — which is why OCR output always
+  needs proofreading. The contrast: QR codes are designed for machines rather than being
+  read from them, with built-in error correction — a QR reader decodes them near-perfectly,
+  while OCR of human prose is a statistical best guess.</p>
+
+  <p>
+    <strong>So far:</strong> the machine computes in the CPU, remembers temporarily in RAM,
+    permanently in ROM, and talks to the world through input and output devices — now comes
+    the third memory role: holding everything when the power is off.
+  </p>
+
+  <h2>Data storage: magnetic, optical, solid state</h2>
+  <p>
+    Secondary storage holds data permanently, and three technologies compete on four axes:
+    capacity, speed, cost per gigabyte and reliability. <strong>Magnetic storage</strong>
+    (the hard disk drive, HDD) spins platters coated in magnetic material past a read-write
+    head: enormous capacities and the lowest cost per gigabyte, but mechanical — the head
+    must physically move, so access is slow (milliseconds) and drops and vibration are
+    dangerous. <strong>Optical storage</strong> (CD, DVD, Blu-ray) writes and reads pits in
+    a reflective disc with a laser: the finer the laser's wavelength, the smaller the pits —
+    CD's infrared laser gives about 700 MB, DVD's red laser about 4.7 GB per layer, Blu-ray's
+    blue-violet laser 25 GB per layer. Optical discs are cheap and portable, and useful for
+    distribution, but slow and small by modern standards. <strong>Solid-state storage</strong>
+    (the SSD, USB memory stick, SD card) stores bits as trapped charge in flash memory
+    cells: no moving parts at all — fast (dozens of times quicker than an HDD at typical
+    tasks), silent, shockproof and light, at the highest cost per gigabyte, with the quirk
+    that each cell survives a limited number of write cycles, managed invisibly by wear-
+    levelling. The modern default follows from the axes: SSDs for the operating system and
+    programs (speed), HDDs for bulk archives (cost), the cloud for backup (a copy held off
+    site). Watch the axes move in the widget below.
+  </p>
+  <Widget no="2" caption="size divided by speed — what a copy actually costs in waiting" widget="sliderLab" config={storageCfg} />
+  <p>
+    <strong>What to notice:</strong> the first two readouts are one arithmetic sentence —
+    time is size divided by speed — and the third shows the punchline of solid-state
+    storage: multiply the speed by ten and the wait divides by ten. Then compare honestly
+    with your own machine: an 8,000 MB game update at an old HDD's effective 100 MB/s costs
+    about 1.3 minutes; at a fast SSD's 2,000 MB/s, four seconds. Same data, same capacity —
+    different experience, which is exactly why the speed axis, not the capacity axis,
+    decided the last decade of hardware.
+  </p>
+  <p><em>Common misconception:</em> "a bigger drive makes the computer faster — my machine
+  slowed down, so I need more gigabytes." It seems reasonable because capacity numbers
+  dominate the adverts. But capacity and speed are separate axes: a 4 TB HDD is far slower
+  than a 256 GB SSD in practice. The correct picture: slowness usually means the processor
+  is waiting on storage — the fix is a faster device (SSD) or more RAM (so less swapping
+  of data between RAM and disk), not more room to fill. Contrasting example: two identical
+  laptops, one with a 2 TB HDD and one with a 512 GB SSD — the smaller machine boots in
+  seconds and opens programs instantly; the bigger one takes minutes, because it is
+  mechanical, not because it is small.</p>
+
+  <h2>Network hardware</h2>
+  <p>
+    The last topic is the hardware that lets machines talk. The <strong>NIC</strong>
+    (network interface card) is the device's own connection point — every computer, phone
+    and printer on a network has one, wired or wireless, and each carries a unique
+    hardware address (the MAC address) burned in at manufacture. A <strong>hub</strong> is
+    the simplest connector: it takes any incoming data and blindly repeats it out of every
+    other port — every machine hears everything, collisions multiply, and the design is
+    all but obsolete. A <strong>switch</strong> looks identical and behaves intelligently:
+    it learns which MAC address lives on which port and forwards each frame only to its
+    destination — no shouting, far higher throughput; modern LANs are built from switches.
+    A <strong>bridge</strong> joins two network segments and filters traffic between them,
+    so local chatter stays local. A <strong>repeater</strong> does one job: boosts a signal
+    that has degraded over distance, extending the network's reach. A <strong>router</strong>
+    connects <em>different networks</em> and forwards packets between them using IP
+    addresses — your home router sits between your local network and the internet,
+    choosing where each packet goes next. A <strong>gateway</strong> connects networks
+    that speak different protocols, translating at the boundary (the term also appears in
+    everyday use for any router-plus-translation box). A <strong>modem</strong>
+    (modulator–demodulator) converts between a computer's digital signals and the analogue
+    signals a telephone or cable line carries — in most homes it is packaged inside the
+    same box as the router. The selection logic: same network, connect (switch);
+    different network, route (router); different protocols, translate (gateway); weak
+    signal, amplify (repeater).
+  </p>
+  <p><em>Common misconception:</em> "a switch and a hub do the same job — both just connect
+  devices, so either will do." It seems reasonable because they look identical, share the
+  same ports and sit in the same rack slot. But the behaviour differs at the wire level: a
+  hub floods every bit of data to every port, so machines collide and waste time, while a
+  switch addresses its deliveries — one frame, one port. The correct picture: a hub is a
+  megaphone, a switch is a postal sorter; both "connect", but only one scales. The
+  contrasting evidence: ten machines on a hub each get a small share of the bandwidth and
+  degrade as more join; the same ten on a switch each get near full speed, because their
+  traffic never meets.</p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>During the fetch stage, name two registers and one bus that are used, and say what each carries.</li>
+    <li>A colleague says: "My laptop has 16 GB of storage, so it must be fast." Untangle the two mistakes in that sentence.</li>
+    <li>A office floor has 30 computers that must share a wired connection, and the building's own network runs on different equipment. Which devices are needed, and why not a hub?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The program counter holds the address of the next
+    instruction; that address travels down the address bus to memory; memory returns the
+    instruction along the data bus into the memory data register, which passes it to the
+    current instruction register — any two registers plus either bus, correctly described,
+    earn the marks. (2) Mistake one: storage (gigabytes of permanent space on SSD/HDD) and
+    RAM (the fast volatile workspace) are different things — "16 GB" could be either, and
+    modern laptops typically have much more storage than that. Mistake two: capacity does
+    not set speed; a machine feels fast because of processor, RAM sufficiency and storage
+    type — a 16 GB SSD would be slower than a 512 GB SSD despite any size comparison.
+    (3) A switch to connect the 30 computers (each frame delivered only to its
+    destination port, no collisions) and a router to join the floor's network to the
+    building's different network. A hub would broadcast every frame to all 30 machines,
+    so shared bandwidth collapses and collisions multiply as the floor grows — the postal
+    sorter beats the megaphone at this scale.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>The von Neumann architecture stores instructions and data in one memory — the stored-program concept that all modern computers share.</li>
+    <li>The CPU runs one loop forever: fetch (PC, MAR, address bus, data bus, MDR, CIR), decode (control unit), execute (ALU and beyond).</li>
+    <li>Buses have contracts: addresses one way (CPU to memory), data both ways, control signals from the CU.</li>
+    <li>RAM is fast, read-write and volatile — the workspace; ROM is non-volatile and fixed — the bootstrap; secondary storage is large, permanent and slower.</li>
+    <li>Input devices digitise people and environment (keyboards, 2D/3D scanners, barcode and QR readers, sensors); output devices materialise data (screens, laser/inkjet/3D printers, speakers, actuators).</li>
+    <li>Storage trades capacity, speed, cost and reliability: HDD cheap and big, optical small and portable, SSD fast and rugged at a price.</li>
+    <li>Network hardware has a grammar: NIC (connect), switch (deliver locally), bridge and repeater (extend), router (route between networks), gateway (translate), modem (convert).</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The foundational lesson <em>Binary and Bits</em> supplies the number system every device
+    in this lesson speaks — registers, buses and barcodes alike — and the intermediate
+    lesson <em>Logic Gates and Digital Circuits</em> builds the CPU itself out of
+    transistors, from AND and NAND to arithmetic and memory. <em>Programming
+    Fundamentals</em> shows what the fetch–decode–execute loop looks like from the
+    programmer's chair, and <em>Data Files, Tables and JSON</em> follows the storage topic
+    into the formats files actually take.
+  </p>
+
+  <h2>Going deeper</h2>
+  <p>
+    The von Neumann design has a known weakness with its own name: the <strong>von Neumann
+    bottleneck</strong>. Since one memory holds both instructions and data, and one
+    channel — the buses — serves it, the processor spends much of its life waiting for
+    fetches: the loop's speed is limited not by how fast the ALU computes but by how fast
+    instructions and data can travel in from memory. Forty years of processor engineering
+    is a series of answers to that waiting. <strong>Cache memory</strong> places small,
+    extremely fast memory between CPU and RAM and keeps there the instructions and data
+    used most recently, betting (correctly, most of the time) that programs reuse what
+    they just used. <strong>Pipelining</strong> overlaps the cycle's stages — while one
+    instruction executes, the next is decoded and the one after is fetched, so the
+    processor is an assembly line rather than a single queue. <strong>Multiple cores</strong>
+    put several complete CPUs on one chip so independent streams of work run at once —
+    which is why a "3 GHz, 8-core" phone chip is not three times faster than a 1 GHz
+    single-core chip of the same generation, but often thirty times: more lanes, less
+    waiting. Each refinement leaves the fetch–decode–execute skeleton intact — the loop
+    you learned is still the machine's heartbeat; engineering only hides the waiting.
+  </p>
+  <p>
+    A second depth worth carrying forward is that the syllabus's four topics are one story
+    about bandwidth. Input and output devices are the network between humans and silicon;
+    storage is the trade-off between permanence and speed; network hardware is the same
+    story between machines. The 3D scanner, the SSD and the switch are all answers to the
+    same question — how fast can the right bits get to the right place — asked at three
+    different scales, and each field's current frontier is the same chase: scanners reading
+    geometry in real time, storage replacing trapped-charge flash with faster memories,
+    switches forwarding packets in hardware rather than software. Learn the four topics as
+    one bandwidth story and the exam's device lists stop being lists.
+  </p>
+
+  <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Computer Science 0478 syllabus (2026–2028), Section 3: Hardware (3.1–3.4). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
+</TopicPage>
