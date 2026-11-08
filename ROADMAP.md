@@ -1,8 +1,8 @@
 # ROADMAP.md — future plan for Interactive Atlas
 
-Standing priorities, newest first. The register campaign state (foundational closed,
-intermediate 176/194, advanced/expert pending) is tracked in `AGENT-TASKS.md`; this file
-is the *what next*, not the *what now*.
+Standing priorities, newest first. The register campaign is COMPLETE (577/577 lessons Good
+across all four tiers, Nov 2026) — tracked in `AGENT-TASKS.md` and `CONTINUE.md`; this file
+is the *what next*.
 
 ---
 
@@ -29,7 +29,7 @@ between them, not reading a textbook with occasional figures.
   reveal (~100 lines, reusing quiz machinery). This is the only cheap way to make
   claim-paragraphs interactive; build it during the pilot.
 
-### Production (token-cheap, see P3)
+### Production
 
 1. **Pilot (2 lessons, hand-built):** one quantitative (`physics/foundational/
    energy-conservation`), one essay-ish intermediate. Defines density, UX, and the
@@ -38,9 +38,8 @@ between them, not reading a textbook with occasional figures.
    `(paragraph-anchor, widget-type, config)` JSON; a deterministic script inserts the
    frontmatter configs + `<Widget>` lines and runs the standard verification battery.
    ≈200–400k tokens/lesson (vs ~1M in the subagent loop).
-3. **Sequencing:** fold into the *first* pass of remaining content — finish the 18
-   intermediate lessons + advanced (124) + expert (81) **with** per-paragraph activities
-   built in, then backfill foundational + intermediate (357 lessons) per subject.
+3. **Sequencing:** backfill foundational + intermediate (357 lessons) per subject;
+   remaining planned lessons get per-paragraph activities in their first pass.
 
 ## P2 — Register v2: the "conversational layer" (reference: ChatGPT tutoring style)
 
@@ -76,34 +75,6 @@ steps with room to breathe. Key characteristics to adopt site-wide:
 Layout implication: lesson pages get a max-width and line-height tuned for the airy
 register; widgets sit *between* short paragraphs, not after walls of text.
 
-## P3 — Token-cheap content pipeline (adopted 2026-11-08)
-
-The subagent loop averaged ~1M tokens/lesson. Replacement:
-
-1. **Scripted scaffold** (`pipeline/insert_devices.py`): deterministic insertion of
-   register devices (tail sections, h2 markers, sources append, "Where you are"
-   skeleton, Check-yourself drafted from existing quiz configs). Zero tokens.
-2. **Bulk-JSON content pass**: one call per 3–4 lessons outputs device text
-   (misconceptions, What-to-notice, takeaways, questions) as JSON; script inserts and
-   verifies. ~100–200k tokens/batch.
-3. **Subagents only for stragglers** (Layout pages, odd structures the script rejects).
-
-## P4 — Pack expansion (book acquisition without tokens)
-
-- Download open corpora by script: **NCERT 10–12** (`AdithyaSNair/ncert-textbooks-10-12`),
-  **BCcampus OpenEd**, **OER Commons / Pressbooks** titles for gap subjects.
-- Registry of the 3 known gap sources in `pipeline/SOURCES.md`: Boundless Art History
-  (CC BY-SA), Moving Pictures (film), Broccoli and Chocolate (journalism) — OCR
-  (`ocrmypdf`) only if a source exists solely as a scan. Rebuild packs, re-run matcher.
-- Never paste whole chapters: packs feed adaptation; attribution stays embedded.
-
-## P5 — Remaining register campaign (tracked in AGENT-TASKS.md)
-
-- Intermediate: 176/194 Good — final 18 ranked in `pipeline/needs-remaining.json`
-  (all score 40, TopicPage, ≥3 callouts; need Where-you-are, recaps, notices,
-  Check-yourself, takeaways, Where-next + CC BY append).
-- Then advanced (124) → expert (81), weakest-first per audit, folded with P1/P2 above.
-
-## P6 — Career-role pages (deferred)
+## P3 — Career-role pages (deferred)
 
 O*NET / BLS / EURES career pages per subject, after all subject tiers close.
