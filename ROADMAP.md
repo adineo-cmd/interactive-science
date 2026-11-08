@@ -59,16 +59,22 @@ Existing types (`plotter`, `sliderLab`, `equationStep`, `timeline`, `diagramBuil
 
 ### Production
 
-1. **Pilot:** build the Answer + Sequence families first (`predict`, `cloze`, `judge`,
-   `order`, `match` — small JS modules reusing quiz/diagramBuilder machinery), then
-   hand-convert one quantitative + one essay-ish lesson end-to-end. Judge density and UX
-   before the big run; add Scale + Visual families next.
-2. **Bulk pipeline:** one LLM pass per 3–4 lessons reads stripped lesson text and emits
-   `(paragraph-anchor, widget-type, config)` JSON; a deterministic script inserts the
-   frontmatter configs + `<Widget>` lines and runs the standard verification battery.
+> **Rollout is live — the operating handoff is `pipeline/ACTIVITIES-LEDGER.md`** (user
+> directives, per-wave workflow, done/queue ledger). Read it before adding activities.
+> User quality bar (2026-11-08): innovative interactions, **never default to follow-up
+> questions** — pick the type from the paragraph (construct, locate, classify, pair,
+> detect-the-error, estimate, decide, explore); ≥6 distinct types per lesson; no adjacent
+> repeats; everything grounded in the lesson's own facts.
+
+1. **Pilot: DONE** — Answer + Sequence families built, plus Scale + Visual families
+   (all 12 types), hand-converted `energy-conservation` (9 activities) and
+   `philosophy-of-mind` (7).
+2. **Bulk pipeline: LIVE** — one batch JSON per 2–3 lessons (I generate the configs after
+   reading the lesson), `pipeline/insert_activities.py` inserts frontmatter consts +
+   `<Widget>` lines and self-verifies; build + mount-check per batch; commit + push.
    ≈200–400k tokens/lesson.
-3. **Sequencing:** backfill foundational + intermediate (357 lessons) per subject;
-   remaining planned lessons get per-paragraph activities in their first pass.
+3. **Sequencing:** physics subject first, then subject by subject across the ~578
+   remaining lessons — ledger tracks done vs queue.
 
 ## P2 — Register v2: the structural "conversational layer" (reference: ChatGPT tutoring style)
 
