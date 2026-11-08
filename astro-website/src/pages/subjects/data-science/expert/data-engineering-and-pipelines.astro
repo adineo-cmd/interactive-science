@@ -12,6 +12,25 @@ const pipeCfg = {
 };
 ---
 <TopicPage slug="subjects/data-science/expert/data-engineering-and-pipelines">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    You have already done the manual version of everything this lesson industrialises.
+    <em>Cleaning messy data</em> (intermediate) taught you to fix broken values by hand;
+    <em>SQL for analysts</em> (intermediate) gave you the language the modern warehouse runs on;
+    <em>Statistics for data science</em> (advanced) and <em>AB testing</em> (advanced) produced
+    the analyses whose numbers are only as trustworthy as the pipeline feeding them. This expert
+    lesson is about making the trustworthy part repeatable: what happens when the data keeps
+    arriving, forever, and someone must guarantee the tables stay fresh, correct and documented.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>locate data engineering inside the data science cycle as the layer that makes the middle of it repeatable;</li>
+    <li>explain the ETL-to-ELT inversion and why keeping raw data makes every transform re-runnable;</li>
+    <li>model a pipeline as a dependency graph and say what an orchestrator does that a folder of scripts cannot;</li>
+    <li>design the four-test quality battery — freshness, volume, schema, distribution — and place it where failures block propagation;</li>
+    <li>choose batch versus streaming from a decision's latency budget, and price the query habits that burn warehouse money.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Data engineering builds <strong>the reliable plumbing that turns raw events into trustworthy
@@ -34,6 +53,14 @@ const pipeCfg = {
   </p>
 
   <Widget no="1" caption="the four pillars of production data plumbing" widget="equationStep" config={pipeCfg} />
+  <p>
+    <strong>What to notice:</strong> the four panels are ordered by how much each one changes the
+    economics of the next. Panel 1's inversion (load raw first) is what makes panel 3's tests
+    re-runnable against history; panel 2's orchestrator is what stops panel 3's failed test from
+    being a note in a chat log and makes it a blocked table; and panel 4 is the decision you earn
+    the right to make only after the first three are solid. Step through twice: once for the
+    sequence, once asking what breaks downstream if you skip each pillar.
+  </p>
 
   <h2>What data science is — and where the plumbing sits</h2>
   <p>
@@ -50,6 +77,12 @@ const pipeCfg = {
     analysis of 10 million rows is a notebook; a system that ingests 10 million rows
     <em>per hour</em>, forever, with late arrivals and duplicate deliveries, is an engineering
     problem with solutions this chapter unpacks.
+  </p>
+  <p>
+    <strong>So far:</strong> the engineering layer's deliverable is tables whose semantics,
+    freshness and correctness are explicit — so "is this number right?" has a documented answer.
+    The next section starts at the bottom of that stack: the load order that decides whether
+    history itself is recoverable.
   </p>
 
   <h2>From ETL to ELT: the load order that changed the field</h2>
@@ -90,6 +123,12 @@ const pipeCfg = {
     they will run twice), late-arriving data, timezone drift between source and warehouse, schema
     evolution, credential rotation, and the organisational question of who is accountable when a
     number is wrong. Teams that budget only for the SQL ship the other 80% as incidents.
+  </p>
+  <p>
+    <strong>So far:</strong> ELT keeps raw data re-processable and the orchestrator walks the
+    dependency graph with retries and lineage. What neither supplies is truthfulness — nothing
+    yet knows whether today's numbers are sane. That is the next section's job: tests that run
+    where the data runs.
   </p>
 
   <h2>Data quality: tests that run where the data runs</h2>
@@ -172,6 +211,45 @@ const pipeCfg = {
     in the numbers.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>A transformation bug is discovered in March that has corrupted the revenue table since January. Why does an ELT architecture fix history while an ETL one cannot?</li>
+    <li>A payment provider changes a status code from "FAILED" to "failed_declined" overnight. Which of the four standard data tests fires, and what does the orchestrator do about it?</li>
+    <li>Your team wants a live fraud-detection score and a next-day revenue report from the same events. Which clock does each need, and what does the expert default say about the second one?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) ELT loaded the raw data permanently, so the fixed transform is
+    re-run from source and January onwards is rebuilt correctly; ETL transformed before storing,
+    so the originals were destroyed and the corrupted months are unrecoverable — the payoff of
+    keeping raw data is re-runnability. (2) The distribution test on the status column — a
+    category jumping from a stable share to a sudden new one — fires within the hour; the
+    orchestrator stops downstream propagation, so dashboards show a blocked table and an alert
+    instead of a phantom 40% drop in failures. (3) Fraud scoring decays in seconds, so it
+    genuinely earns streaming's cost; the revenue report's decision happens next day, so batch
+    is the expert default — simple, cheap, replayable — and streaming everything would re-derive
+    late-data and deduplication problems in a harder environment for no decision value.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Data engineering makes the middle of the data science cycle repeatable — tables with explicit semantics, freshness and correctness.</li>
+    <li>ELT inverts the old order: load raw first, transform inside the warehouse, and every transform becomes re-runnable from source.</li>
+    <li>Pipelines are dependency graphs: orchestrators supply retries, backfills and lineage that a folder of scripts cannot.</li>
+    <li>Four tests run where the data runs — freshness, volume, schema, distribution — and failures block propagation loudly.</li>
+    <li>Batch until a measured decision requires faster: streaming costs 5–10× the complexity plus 24/7 clusters.</li>
+    <li>Partitioning and pruning decide the warehouse bill; a catalog attaches owners and meaning to every table.</li>
+    <li>Schema contracts make producers declare and version their schemas, so breaking changes are rejected at deploy time.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling expert lesson <em>Ethics, privacy and bias</em> takes the pipeline's output and
+    asks the questions plumbing cannot answer: who is described by these tables, what the models
+    trained on them inherit, and what the law requires of data collected from people. Pipeline
+    correctness is the floor; that lesson is the responsibility layer above it.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>Idempotency and replay: the deep invariant.</strong> The property that makes
@@ -204,5 +282,5 @@ const pipeCfg = {
     is the honest definition of progress in this field.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Kleppmann, Designing Data-Intensive Applications; dbt Labs documentation; Kimball, The Data Warehouse Toolkit.</p>
+  <p class="sources"><strong>Sources:</strong> Kleppmann, Designing Data-Intensive Applications; dbt Labs documentation; Kimball, The Data Warehouse Toolkit. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

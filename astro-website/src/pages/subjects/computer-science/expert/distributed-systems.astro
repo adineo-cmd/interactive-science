@@ -13,6 +13,24 @@ const distCfg = {
 };
 ---
 <TopicPage slug="subjects/computer-science/expert/distributed-systems">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This is the capstone of the systems thread. <em>Networking: how the internet works</em>
+    (advanced) gave you packet switching, DNS and the layered stack — the original distributed
+    system this lesson re-reads as a design catalogue. <em>Databases and SQL</em> (advanced)
+    taught you transactions on one machine; here the single database is sharded and copied until
+    that guarantee is no longer free. And <em>Cybersecurity: threats and defences</em> (advanced)
+    returns with a twist: when there is no perimeter, security becomes a property of every hop.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain why distribution multiplies failure surface, and name the fallacies of distributed computing it exposes;</li>
+    <li>compute a quorum (N, W, R) and show why W + R over N keeps reads honest;</li>
+    <li>state the CAP choice precisely — per operation, during a partition — and avoid the one-mode-for-everything misreading;</li>
+    <li>describe how proof-of-work and proof-of-stake buy consensus without a referee, and what each costs;</li>
+    <li>explain Raft's majority-overlap safety argument and why its latency bill is paid in weaker consistency elsewhere.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     A distributed system is many machines cooperating as one — and it must work
@@ -34,6 +52,14 @@ const distCfg = {
   </p>
 
   <Widget no="1" caption="the five ideas that define the field" widget="equationStep" config={distCfg} />
+  <p>
+    <strong>What to notice:</strong> the panels escalate a single tension. Steps 1 to 3 buy
+    capacity and survival — sharding, then replication — and each purchase creates the problem
+    the next panel solves: copies that can disagree, and a theorem (CAP) saying disagreement
+    cannot be designed away, only bounded. Panel 5 is the field's answer when agreement is
+    non-negotiable: majority-based consensus. Watch how "pick two of three" in panel 4 is a
+    rule for a crisis, not a permanent architecture label.
+  </p>
 
   <h2>The internet and the web: the original distributed system</h2>
   <p>
@@ -56,6 +82,12 @@ const distCfg = {
     easily reach the buildings or tools to fix it, because internal routes went down with the
     announcement. One protocol-level mistake, planet-sized outage: the distributed-system lesson
     in one afternoon, and the reason serious teams treat routing and DNS as safety-critical.
+  </p>
+  <p>
+    <strong>So far:</strong> the internet's mechanisms — packet switching, hierarchical DNS,
+    stateless HTTP — are the design vocabulary every datacentre reuses, and the 2021 Facebook
+    outage showed the vocabulary's blast radius. Next we zoom from the network to the database
+    inside it, where copies of the same data force the field's defining choice.
   </p>
 
   <h2>Partitions, replication and the CAP choice</h2>
@@ -136,6 +168,12 @@ const distCfg = {
     thief. Encryption protects the pipe; the request handling, business logic and data storage
     behind it are separate disciplines, which is why fully-encrypted sites get breached weekly.
   </p>
+  <p>
+    <strong>So far:</strong> sharding and replication set the stage, CAP forces a choice during
+    every partition, and proof-of-work showed consensus is possible even among mutually
+    distrusting strangers — at a price. The final section builds the consensus machine proper:
+    the algorithm running underneath every serious distributed database.
+  </p>
 
   <h2>Consensus: agreeing despite failures</h2>
   <p>
@@ -161,6 +199,46 @@ const distCfg = {
     commit on the consumer side). The engineering consequence is universal: make your
     handlers idempotent — attach a request ID and ignore repeats — and you stop caring
     which guarantee the broker actually gives you.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>With N = 5 replicas, W = 3 and R = 2, why does a read still see the latest committed write? What fails if W drops to 2?</li>
+    <li>A payment service's requests are being delivered twice by the network. Compare the three delivery guarantees and name the handler-side property that makes duplicates harmless.</li>
+    <li>Raft requires every write to reach a majority before acknowledging. Why does two-majorities-overlap make that safe, and what does the cost look like for a geo-distributed deployment?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) Every read (2 responses) must overlap the write quorum
+    (3 acknowledgements), because 3 + 2 exceeds N = 5 — so at least one responding node holds
+    the freshest copy. With W = 2, a write and a read quorum (2 + 2) can miss each other
+    entirely on 5 nodes, and a stale read becomes possible. (2) At-most-once loses requests;
+    at-least-once duplicates them; exactly-once is at-least-once plus deduplication or
+    transactional commit on the consumer side. The universal fix is idempotent handlers — attach
+    a request ID and ignore repeats — after which the broker's exact guarantee stops mattering.
+    (3) Any two majorities of 3-of-5 share at least one node, so a new leader must possess every
+    committed entry and two conflicting decisions cannot both carry a majority — that is the
+    safety argument. The cost is latency: every write waits for inter-continental round-trips,
+    which is exactly why systems that cannot afford it choose weaker consistency instead.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Distribution buys capacity and survival and charges a new problem class: lost messages, split brains, and copies that disagree.</li>
+    <li>Quorums (W + R over N) keep reads honest by guaranteeing read and write quorums overlap.</li>
+    <li>CAP bites only during a partition, per operation — tune consistency per piece of data, not per company.</li>
+    <li>Bitcoin's proof-of-work buys Byzantine consensus with energy; proof-of-stake replaced burning electricity with staked capital.</li>
+    <li>Blockchain immutability is economic and social, not cryptographic — hashes make tampering detectable and expensive.</li>
+    <li>Raft and Paxos give majority-based consensus; their latency bill is why weaker consistency exists.</li>
+    <li>Idempotent handlers tame duplicate delivery regardless of the queue's advertised guarantee.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling expert lessons round out the picture from both sides: <em>Cryptography</em>
+    supplies the primitives (TLS, certificates, signatures) this lesson assumed at every hop,
+    and <em>Compilers and languages</em> shows how the programs running on these machines are
+    built, checked and executed.
   </p>
 
   <h2>Going deeper</h2>
@@ -197,5 +275,5 @@ const distCfg = {
     failure, and time behaving badly.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Brewer CAP theorem (2000, proved 2012); Ongaro & Ousterhout, Raft (2014); Kleppmann, Designing Data-Intensive Applications.</p>
+  <p class="sources"><strong>Sources:</strong> Brewer CAP theorem (2000, proved 2012); Ongaro & Ousterhout, Raft (2014); Kleppmann, Designing Data-Intensive Applications. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

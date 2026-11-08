@@ -13,6 +13,25 @@ const cryptoCfg = {
 };
 ---
 <TopicPage slug="subjects/computer-science/expert/cryptography">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    Three earlier lessons built the ground you stand on here. <em>Networking: how the internet
+    works</em> (advanced) showed you packet switching — this lesson opens by treating every
+    packet as readable, alterable and injectable by an adversary. <em>Cybersecurity: threats and
+    defences</em> (advanced) catalogued the attacks; here you meet the mathematical machinery
+    that answers them. And <em>Computability and complexity</em> (the sibling expert lesson)
+    supplied the hardness assumptions the whole subject rests on: crypto is only as strong as
+    the problems it asks attackers to fail at.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>separate the three jobs of a secure channel — confidentiality, integrity, authentication — and name the primitive that does each;</li>
+    <li>explain why error-detection codes catch noise but not adversaries, and what a MAC adds;</li>
+    <li>trace the Diffie–Hellman exchange and say which hard problem shields it;</li>
+    <li>justify the hybrid design that pairs RSA-style key agreement with AES bulk encryption;</li>
+    <li>read the padlock icon as a chain of signatures, and name its operational failure modes.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Cryptography is <strong>mathematics as a trust machine</strong>: making secrets provably hard
@@ -28,6 +47,13 @@ const cryptoCfg = {
   </p>
 
   <Widget no="1" caption="the five ideas between you and the padlock icon" widget="equationStep" config={cryptoCfg} />
+  <p>
+    <strong>What to notice:</strong> the panels tell the story in dependency order. Panel 1 ends
+    on a problem (how do two strangers share a key?), panel 2 answers it, and panel 3 generalises
+    the answer into public locks. Panels 4 and 5 then add what encryption alone never provided —
+    tampering evidence and identity. When you reach the last panel, note that none of the five
+    steps is "encryption makes data safe": the padlock is assembled, not switched on.
+  </p>
 
   <h2>Types and methods of data transmission: what the attacker sees</h2>
   <p>
@@ -49,6 +75,11 @@ const cryptoCfg = {
     flight (integrity problem), and <em>inject or replay</em> new ones (authentication problem).
     The man-in-the-middle café network is not a hypothetical — it is the default assumption, and
     the entire protocol stack below exists because of it.
+  </p>
+  <p>
+    <strong>So far:</strong> the adversary model is set — read, alter, inject. The next layer
+    handles the cheapest threat to reason about, accidental corruption, and its limits are
+    exactly what force the cryptographic machinery that follows.
   </p>
 
   <h2>Error detection: parity, checksums and CRC</h2>
@@ -90,6 +121,11 @@ const cryptoCfg = {
     symmetric encryption is nearly useless between strangers, because the key must already have
     travelled by some secure path — the problem that stymied every pre-1976 system from Caesar to
     Enigma, and the problem the next section dissolves.
+  </p>
+  <p>
+    <strong>So far:</strong> symmetric ciphers give you overwhelming strength with one fatal
+    dependency: the key must already be shared. Hold that unsolved problem in mind as you read
+    the next section — it is the single most consequential idea in the history of the subject.
   </p>
 
   <h2>Encryption, part two: public keys and the key-exchange miracle</h2>
@@ -163,6 +199,46 @@ const cryptoCfg = {
     a secure system; the guarantee lives at every layer or not at all.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>Why does a CRC catch every burst error up to 32 bits yet fail completely against a deliberate attacker?</li>
+    <li>Walk through Diffie–Hellman: Alice publishes g<sup>a</sup> mod p, Bob publishes g<sup>b</sup> mod p. What does each compute, what does the eavesdropper see, and which problem protects the secret?</li>
+    <li>TLS encrypts gigabytes of traffic with AES, not RSA. Why does the hybrid design win, and which numbers from this lesson quantify the answer?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) The generator polynomial is chosen so all burst errors of 32
+    bits or fewer leave a nonzero remainder — but the CRC is unkeyed: anyone who alters the
+    message recomputes the valid remainder in one step. Detecting noise is arithmetic; detecting
+    adversaries requires a keyed construction (a MAC). (2) Alice computes (g<sup>b</sup>)<sup>a</sup>,
+    Bob computes (g<sup>a</sup>)<sup>b</sup> — both equal g<sup>ab</sup> mod p, the shared key.
+    The eavesdropper sees only g, g<sup>a</sup> and g<sup>b</sup>, and recovering a from
+    g<sup>a</sup> is the discrete logarithm problem — hopeless for large p on any known classical
+    machine. (3) RSA at 2,048 bits offers roughly 112-bit security at about a thousandth of
+    AES's speed, so bulk encryption with it would be ruinous; AES has the keyspace budget but no
+    way to distribute keys between strangers. The hybrid uses public-key crypto once per session
+    to agree a session key, then AES for the traffic — which is the handshake behind the padlock.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>Packet-switched networks demand an adversary model of read, alter and inject — every layer of the protocol stack answers one of those.</li>
+    <li>Error-detection codes (parity, checksums, CRC) catch noise; only keyed constructions catch adversaries.</li>
+    <li>AES's 2<sup>128</sup> keyspace makes brute force hopeless; the real risks are implementation errors, nonce reuse and key distribution.</li>
+    <li>Diffie–Hellman lets strangers derive a shared secret in public, shielded by the discrete logarithm problem; RSA turns one-way maths into encryption and signatures.</li>
+    <li>Hybrid design assigns each tool where it wins: public-key for agreement and signatures, symmetric for bulk data.</li>
+    <li>Hashes, signatures and certificates assemble the padlock — a chain of trust ending in roots you agreed to trust, auditable via certificate transparency.</li>
+    <li>Forward secrecy and constant-time implementations guard against the failures that survive perfect mathematics.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    Two sibling expert lessons extend this one: <em>Distributed systems</em> applies the same
+    primitives to consensus among machines that share no perimeter, and <em>Compilers and
+    languages</em> shows how type systems and memory safety eliminate the bug classes that
+    implementation attacks feed on.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>What "provably secure" means.</strong> Shannon's one-time pad (key as long as the
@@ -197,5 +273,5 @@ const cryptoCfg = {
     use audited standard constructions, and treat the urge to invent your own as the first bug.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Diffie & Hellman (1976); Rivest, Shamir & Adleman (1978); NIST Post-Quantum Cryptography standards (2024); Kerckhoffs (1883).</p>
+  <p class="sources"><strong>Sources:</strong> Diffie & Hellman (1976); Rivest, Shamir & Adleman (1978); NIST Post-Quantum Cryptography standards (2024); Kerckhoffs (1883). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

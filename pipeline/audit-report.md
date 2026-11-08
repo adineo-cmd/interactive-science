@@ -1,24 +1,8 @@
 # Lesson health audit — expert tier
 
-83 lessons: Weak (<40): 41 · Needs work (40–79): 26 · Good (≥80): 16
+83 lessons: Weak (<40): 25 · Needs work (40–79): 26 · Good (≥80): 32
 
-## Weak (<40) (41)
-- ** 39** subjects/business/expert/scaling-and-organisational-design — 1885w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/chemistry/expert/quantum-chemistry — 1933w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/computer-science/expert/computability-and-complexity — 1823w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/computer-science/expert/cryptography — 1827w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/computer-science/expert/distributed-systems — 1814w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/data-science/expert/data-engineering-and-pipelines — 1898w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/data-science/expert/ethics-privacy-and-bias — 1831w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/earth-science/expert/geophysics-of-plate-driving-forces — 1811w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/earth-science/expert/planetary-geology — 1892w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/economics/expert/econometrics — 1859w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/economics/expert/financial-economics — 1859w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/economics/expert/macroeconomic-models-dsge — 1856w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/environmental-science/expert/earth-system-tipping-points — 1876w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/environmental-science/expert/mitigation-and-adaptation-design — 1863w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/finance/expert/asset-pricing-models — 1875w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 39** subjects/journalism/expert/investigative-methods — 1852w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+## Weak (<40) (25)
 - ** 39** subjects/languages/expert/multilingual-cognition — 1851w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 - ** 39** subjects/languages/expert/near-native-fluency — 1928w, 5 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 - ** 39** subjects/linguistics/expert/computational-linguistics — 1929w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
@@ -73,7 +57,7 @@
 - ** 40** subjects/religious-studies/expert/religion-in-the-modern-world — 1984w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 - ** 40** subjects/sociology/expert/demography — 2012w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
 
-## Good (≥80) (16)
+## Good (≥80) (32)
 - ** 95** subjects/agriculture/expert/climate-smart-agriculture — 2523w, 3 callouts, 1 widgets
 - ** 95** subjects/agriculture/expert/food-systems-and-security — 2608w, 3 callouts, 1 widgets
 - ** 95** subjects/anthropology/expert/deep-history-of-our-species — 2648w, 3 callouts, 1 widgets
@@ -89,4 +73,20 @@
 - ** 95** subjects/biology/expert/synthetic-biology — 2671w, 3 callouts, 1 widgets
 - ** 95** subjects/biology/expert/systems-biology — 2640w, 3 callouts, 1 widgets
 - ** 95** subjects/business/expert/corporate-governance — 2724w, 4 callouts, 1 widgets
+- ** 95** subjects/business/expert/scaling-and-organisational-design — 2646w, 3 callouts, 1 widgets
+- ** 95** subjects/chemistry/expert/quantum-chemistry — 2717w, 3 callouts, 1 widgets
+- ** 95** subjects/computer-science/expert/computability-and-complexity — 2642w, 3 callouts, 1 widgets
+- ** 95** subjects/computer-science/expert/cryptography — 2598w, 3 callouts, 1 widgets
+- ** 95** subjects/computer-science/expert/distributed-systems — 2586w, 3 callouts, 1 widgets
+- ** 95** subjects/data-science/expert/data-engineering-and-pipelines — 2705w, 3 callouts, 1 widgets
+- ** 95** subjects/data-science/expert/ethics-privacy-and-bias — 2606w, 3 callouts, 1 widgets
+- ** 95** subjects/earth-science/expert/geophysics-of-plate-driving-forces — 2596w, 3 callouts, 1 widgets
+- ** 95** subjects/earth-science/expert/planetary-geology — 2722w, 3 callouts, 1 widgets
+- ** 95** subjects/economics/expert/econometrics — 2661w, 3 callouts, 1 widgets
+- ** 95** subjects/economics/expert/financial-economics — 2650w, 3 callouts, 1 widgets
+- ** 95** subjects/economics/expert/macroeconomic-models-dsge — 2648w, 3 callouts, 1 widgets
+- ** 95** subjects/environmental-science/expert/earth-system-tipping-points — 2673w, 3 callouts, 1 widgets
+- ** 95** subjects/environmental-science/expert/mitigation-and-adaptation-design — 2727w, 3 callouts, 1 widgets
+- ** 95** subjects/finance/expert/asset-pricing-models — 2751w, 3 callouts, 1 widgets
+- ** 95** subjects/journalism/expert/investigative-methods — 2715w, 3 callouts, 1 widgets
 - ** 95** subjects/law/expert/international-law — 2872w, 3 callouts, 2 widgets

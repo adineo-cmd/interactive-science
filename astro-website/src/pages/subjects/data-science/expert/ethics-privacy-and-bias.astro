@@ -12,6 +12,26 @@ const ethicsCfg = {
 };
 ---
 <TopicPage slug="subjects/data-science/expert/ethics-privacy-and-bias">
+  <h2>Where you are, and what you will learn</h2>
+  <p>
+    This lesson is the responsibility layer over everything the course has built.
+    <em>Exploratory data analysis</em> and <em>Cleaning messy data</em> (intermediate) taught you
+    to interrogate and repair datasets; <em>Machine learning basics</em> (advanced) showed you
+    models that learn patterns from historical labels — the mechanism this lesson shows
+    inheriting historical discrimination; and <em>AB testing</em> (advanced) made you fluent in
+    per-group error rates, the arithmetic the fairness theorems live inside. Here those tools
+    are turned on the systems themselves: who is harmed, how the harm is measured, and what the
+    field's working fixes cost.
+  </p>
+  <p>By the end you will be able to:</p>
+  <ul>
+    <li>explain the bias-in, bias-out mechanism precisely, using COMPAS and Amazon's recruiting engine as worked cases;</li>
+    <li>state the calibration-versus-equalised-odds incompatibility and argue why choosing a fairness metric is a policy decision;</li>
+    <li>show why quasi-identifiers defeat naive anonymisation, citing the re-identification cases;</li>
+    <li>describe differential privacy's budget model and its three production deployments;</li>
+    <li>separate legal compliance from the professional question of fair use.</li>
+  </ul>
+
   <h2>The idea</h2>
   <p>
     Data ethics is <strong>the study of harm data systems cause — and the design choices that
@@ -33,6 +53,14 @@ const ethicsCfg = {
   </p>
 
   <Widget no="1" caption="the four problem areas and their working fixes" widget="equationStep" config={ethicsCfg} />
+  <p>
+    <strong>What to notice:</strong> each panel pairs a failure with its working fix, and each
+    fix carries a visible cost. Panel 1's fix is measurement per group, which sets up panel 2's
+    theorem: the groups' metrics cannot all be equalised at once, so a metric must be chosen —
+    and choosing is policy. Panel 3 trades accuracy for protection through a noise budget you
+    can actually spend; panel 4 trades design effort for consent that means something. Step
+    through and track where the cost of each fix lands.
+  </p>
 
   <h2>What data science is for — the responsibility layer</h2>
   <p>
@@ -48,6 +76,12 @@ const ethicsCfg = {
     data systems runs one way: a thousand users can be harmed in the minute a model is live, and
     none of them can see the model that did it. With great inferential power comes
     accountability to the described — the field's translation of an older principle.
+  </p>
+  <p>
+    <strong>So far:</strong> every stage of the data science cycle embeds an ethical decision,
+    and the audit must run before deployment because the harm runs at machine speed. The next
+    section works the most common failure concretely: what exactly happens when a model learns
+    from labels written by an unfair world.
   </p>
 
   <h2>Bias in, bias out: how models inherit discrimination</h2>
@@ -92,6 +126,12 @@ const ethicsCfg = {
     false-positive rates (liberty wrongly denied); a marketing system might accept parity of
     selection. What the field forbids is not any particular choice — it is the
     <em>unexamined</em> choice.
+  </p>
+  <p>
+    <strong>So far:</strong> bias is measurable per group, and the theorem says no metric
+    satisfies everyone at once — so the metric must be documented, not defaulted. With the model
+    side examined, the next sections turn to the data side: what "anonymised" actually buys, and
+    what mathematics can honestly promise instead.
   </p>
 
   <h2>Privacy beyond names: re-identification is the default</h2>
@@ -161,6 +201,48 @@ const ethicsCfg = {
   like financial controls: scheduled, versioned, owned, and re-run.
   </p>
 
+  <h2>Check yourself</h2>
+  <p>Try these before moving on. Feedback follows each answer.</p>
+  <ol>
+    <li>ProPublica and COMPAS's vendor disagreed about the same score. State both claims precisely and explain how both were simultaneously true.</li>
+    <li>A dataset is released with names stripped and postcodes generalised to the first three digits. Give one concrete route by which a person could still be re-identified.</li>
+    <li>Why is deleting race and gender from a model's inputs not a fix, and what practice does the field require instead?</li>
+  </ol>
+  <p>
+    <strong>Feedback:</strong> (1) ProPublica measured equalised odds: Black defendants who did
+    not reoffend were flagged high-risk at roughly twice the white false-positive rate (about
+    45% versus 23%). The vendor measured calibration: a score of 7 meant the same recidivism
+    probability for both groups. Kleinberg–Mullainathan–Raghavan (2016) and Chouldechova (2017)
+    proved that when base rates differ, calibration and equalised odds cannot both hold — so
+    each side held one horn of a proved dilemma, and the disagreement was arithmetic, not
+    dishonesty. (2) Sweeney's result: about 87% of the US population is unique on just ZIP code,
+    date of birth and sex; a joined public-records file (a voter list, a newspaper story naming
+    the Governor of Massachusetts) matches the "anonymous" record to a person. High-dimensional
+    data is a fingerprint. (3) Proxies reconstruct what you delete — postcode predicts race in
+    segregated cities, shopping patterns predict pregnancy. The required practice is
+    measurement: evaluate error rates per group, audit the proxy set, and treat the model's
+    decisions as the object of scrutiny, not its inputs.
+  </p>
+
+  <h2>Key takeaways</h2>
+  <ul>
+    <li>A model is a decision factory: every score is a decision about a person, at a scale no human review can audit.</li>
+    <li>Bias in, bias out: models inherit the discrimination in historical labels and apply it with machine consistency.</li>
+    <li>Calibration and equalised odds are mathematically incompatible when base rates differ — choosing a fairness metric is policy.</li>
+    <li>Quasi-identifiers defeat naive anonymisation; k-anonymity falls to homogeneity and background-knowledge attacks.</li>
+    <li>Differential privacy spends a budget of calibrated noise: smaller epsilon, stronger protection, measurably less accuracy.</li>
+    <li>GDPR moved the baseline from notice to enforceable rights — and compliance is the floor, not the ethics.</li>
+    <li>Fairness audits drift like models do: scheduled, versioned, owned, and re-run.</li>
+  </ul>
+
+  <h2>Where this goes next</h2>
+  <p>
+    The sibling expert lesson <em>Data engineering and pipelines</em> is the technical
+    infrastructure this lesson audits: the tests, contracts and lineage that make a fairness
+    audit re-runnable and the data's provenance provable. Ethics and engineering are the two
+    halves of the same production discipline.
+  </p>
+
   <h2>Going deeper</h2>
   <p>
     <strong>The impossibility results, formally.</strong> The fairness-conflict theorem has a
@@ -194,5 +276,5 @@ const ethicsCfg = {
     ones begin as someone's documented decision.
   </p>
 
-  <p class="sources"><strong>Sources:</strong> Angwin et al., ProPublica (2016); Narayanan & Shmatikov (2008) on de-anonymisation; Dwork & Roth, "The Algorithmic Foundations of Differential Privacy"; EU GDPR text.</p>
+  <p class="sources"><strong>Sources:</strong> Angwin et al., ProPublica (2016); Narayanan & Shmatikov (2008) on de-anonymisation; Dwork & Roth, "The Algorithmic Foundations of Differential Privacy"; EU GDPR text. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
