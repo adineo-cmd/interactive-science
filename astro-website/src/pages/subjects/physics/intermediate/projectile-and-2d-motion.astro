@@ -10,6 +10,125 @@ const projCfg = {
     { name: 'g', label: 'gravity g', min: 1.6, max: 25, step: 0.1, value: 9.8, unit: 'm/s²' },
   ],
 };
+
+const prDialsMatch = {
+  "prompt": "A 20 m/s launch at 40° has been split. Match each piece to its role:",
+  "pairs": [
+    {
+      "left": "u·cosθ = 15.3 m/s",
+      "right": "the horizontal dial — gravity never touches it"
+    },
+    {
+      "left": "u·sinθ = 12.9 m/s",
+      "right": "the vertical dial — gravity runs it down 9.8 m/s every second"
+    },
+    {
+      "left": "t, the flight time",
+      "right": "the glue between the two problems"
+    },
+    {
+      "left": "θ, the launch angle",
+      "right": "the choice that splits one speed into two independent dials"
+    }
+  ],
+  "why": "Two independent dials and one shared clock: 'solve the projectile' means solving the vertical problem for times and heights, the horizontal for distances."
+};
+
+const prApexPredict = {
+  "q": "A projectile launched at 30° reaches the top of its flight. Which is true at that instant?",
+  "choices": [
+    "The projectile stops completely for an instant",
+    "It still moves at its full horizontal speed — 17.3 m/s for a 20 m/s launch",
+    "Its horizontal speed has halved since launch"
+  ],
+  "answer": 1,
+  "why": "It stops RISING — the vertical component is zero for an instant — but nothing removes the horizontal component, and the downward acceleration never pauses."
+};
+
+const prTowerEstimate = {
+  "prompt": "A ball fired horizontally at 300 m/s from a 45 m tower lands after 3.03 s — same as the dropped ball. Roughly how far away does it land?",
+  "unit": "m",
+  "answer": 909,
+  "factor": 1.5,
+  "why": "Range = 300 × 3.03 ≈ 909 m — farther, but not later: both balls strike the ground simultaneously.",
+  "context": "Drop time depends only on the vertical problem: t = √(2h/g). No mass appears anywhere."
+};
+
+const prPathBuckets = {
+  "prompt": "Match each scenario to the path it traces:",
+  "buckets": [
+    "Parabola",
+    "Circle",
+    "Straight line"
+  ],
+  "items": [
+    {
+      "label": "a horizontal throw, with gravity pulling down throughout",
+      "bucket": 0
+    },
+    {
+      "label": "electrons steered by an electric force, as in old cathode-ray tubes",
+      "bucket": 0
+    },
+    {
+      "label": "a magnetic force acting sideways on a moving charge",
+      "bucket": 1
+    },
+    {
+      "label": "deep space, after the engines cut and no force remains",
+      "bucket": 2
+    },
+    {
+      "label": "a ball thrown off a 45 m tower",
+      "bucket": 0
+    }
+  ],
+  "why": "A vertical acceleration layered on steady horizontal motion is a quadratic in x — a parabola. A sideways force bends the path into a circle; no force leaves a straight line."
+};
+
+const prAngleJudge = {
+  "statements": [
+    {
+      "s": "45° maximises range on level ground with no air.",
+      "truth": true,
+      "why": "sin2θ peaks at 2θ = 90° — the textbook rule, for the textbook model."
+    },
+    {
+      "s": "A 30° drive and a 60° lob land together.",
+      "truth": true,
+      "why": "Complementary angles share range — the lob just takes longer, useful for clearing obstacles."
+    },
+    {
+      "s": "45° is the best angle for a shot released two metres above the ground.",
+      "truth": false,
+      "why": "With a launch-height difference (or drag) the optimum drops below 45° — the rule is the ideal model's, not your arm's."
+    },
+    {
+      "s": "A 20° launch reaches about 68% of maximum range.",
+      "truth": true,
+      "why": "The sensitivity is asymmetric: steep angles near 45° lose little, shallow angles lose it quickly."
+    }
+  ]
+};
+
+const prAirCloze = {
+  "text": "Drag grows with speed squared and steals horizontal speed continuously: a cricket ball thrown flat out flies farthest at roughly %%0%%°, a raindrop's descent is capped at about %%1%% m/s, and a spread-eagled skydiver's at about %%2%% m/s.",
+  "answers": [
+    [
+      "35",
+      "thirty-five"
+    ],
+    [
+      "9",
+      "nine"
+    ],
+    [
+      "55",
+      "fifty-five"
+    ]
+  ],
+  "hint": "One number per blank — two from the falling caps, one from the cricket ball's best angle."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/projectile-and-2d-motion">
   <h2>Where you are, and what you will learn</h2>
@@ -75,7 +194,9 @@ const projCfg = {
     problem for times and heights, the horizontal problem for distances, and let t glue them
     together".
   </p>
+  <Widget no="2" caption="pair each quantity with its role in the split" widget="match" config={prDialsMatch} />
   <p><em>Common misconception:</em> the horizontal component slows down as the projectile climbs and speeds up again as it falls. Only drag does that. In the model the horizontal component never changes; climbing and falling are entirely vertical events, which is precisely why the components can be solved separately.</p>
+  <Widget no="3" caption="bet first — the top of the flight" widget="predict" config={prApexPredict} />
 
   <h2>The independence principle, demonstrated</h2>
   <p>
@@ -90,6 +211,7 @@ const projCfg = {
     heavier falls faster — survives only where air resistance matters, which is a property of
     the <em>fluid</em>, not the law of falling.
   </p>
+  <Widget no="4" caption="call the magnitude — the tower demonstration's range" widget="estimate" config={prTowerEstimate} />
   <p><em>Common misconception:</em> "something must keep pushing the projectile along
   horizontally." Nothing does. After launch, the only force is gravity (plus drag); the
   horizontal velocity persists because nothing <em>removes</em> it — inertia, discovered
@@ -137,6 +259,7 @@ const projCfg = {
     (which acts sideways), the path becomes a circle instead — the shape of the path tells you
     the geometry of the force.
   </p>
+  <Widget no="5" caption="file the paths — the shape of the path is the geometry of the force" widget="sort-buckets" config={prPathBuckets} />
   <p><em>Common misconception:</em> the path bends because the projectile is slowing down. Gravity bends the velocity's <em>direction</em>, not (on level ground, without drag) its size: the landing speed equals the launch speed. A projectile can be curving the whole way yet never lose a joule of speed.</p>
 
   <h2>Angles, and the 45° rule</h2>
@@ -150,6 +273,7 @@ const projCfg = {
     different launch and landing heights the optimum shifts below 45° — which is one reason
     the real world never quite obeys the textbook.
   </p>
+  <Widget no="6" caption="true or false — the 45° rule and its fine print" widget="judge" config={prAngleJudge} />
   <p><em>Common misconception:</em> 45° is the best angle for every throw. The derivation assumes level ground and no air; release the shot from two metres above the ground, or add drag, and the optimum drops below 45°. The rule is a property of the ideal model, not of your arm.</p>
   <p>
     <strong>Real air changes the numbers.</strong> Drag grows with speed squared and steals
@@ -162,6 +286,7 @@ const projCfg = {
     such ceiling. Treat the parabola as the first model, the one whose errors tell you how
     strong the air is.
   </p>
+  <Widget no="7" caption="fill the blanks — what real air does to the parabola" widget="cloze" config={prAirCloze} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

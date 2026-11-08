@@ -9,6 +9,128 @@ const lensCfg = {
   crossings: false,
   height: 350,
 };
+
+const opMirrorJudge = {
+  "statements": [
+    {
+      "s": "A plane mirror's image is virtual — the rays do not actually pass through it.",
+      "truth": true,
+      "why": "Your brain extends the reflected rays backwards; the image is upright, same size, and as far behind the mirror as you are in front."
+    },
+    {
+      "s": "A mirror must be at least half your height to show your whole body.",
+      "truth": true,
+      "why": "Checkable with a friend and a rangefinder — and it works wherever the mirror hangs."
+    },
+    {
+      "s": "Mirrors reverse left and right.",
+      "truth": false,
+      "why": "They reverse front–back. Text reads reversed because YOU turned it around to face the mirror — a coordination trick, not an optical one."
+    },
+    {
+      "s": "A convex mirror's whole job is a shrunk, wide-angle field of view.",
+      "truth": true,
+      "why": "Diverging rays give small, upright virtual images — the security mirror's design brief."
+    }
+  ]
+};
+
+const opMirrorCompare = {
+  "prompt": "Drag the divider between the two halves of the mirror-writing mystery:",
+  "before": {
+    "label": "What the optics does",
+    "text": "Reverses front–back — the axis toward the mirror. Stand on the far side of a sheet of glass and your twin finds your left and right unswapped."
+  },
+  "after": {
+    "label": "What you did",
+    "text": "Turned the text around to face the mirror — that rotation swaps its sides, so the reflection reads backwards. The turning did it, not the optics."
+  },
+  "why": "Once the front–back reversal is separated from your own rotation, the 'mirror mystery' dissolves."
+};
+
+const opSnellCloze = {
+  "text": "Light travels at about ⅔ of c in glass, so glass's refractive index is about %%0%%. Entering a denser medium, light bends %%1%% the normal — and a 2 m-deep pool looks about %%2%% m deep, because the floor's image floats up on exit.",
+  "answers": [
+    [
+      "1.5"
+    ],
+    [
+      "toward"
+    ],
+    [
+      "1.5"
+    ]
+  ],
+  "hint": "n = c/v sets the first blank; the apparent depth is the real one divided by n."
+};
+
+const opCriticalPlace = {
+  "prompt": "Total internal reflection needs light to hit the boundary beyond the critical angle. Place it for glass-to-air (degrees):",
+  "labels": [
+    "0",
+    "15",
+    "30",
+    "45",
+    "60",
+    "75",
+    "90"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 90
+  },
+  "answer": 42,
+  "tolerance": 3,
+  "why": "arcsin(1/1.5) ≈ 42°. Water's is 48.8°; diamond's is tiny — which is the fire in the stone.",
+  "context": "The internet's backbone is this rule wearing glass: light bouncing down a hair-thin fibre for kilometres."
+};
+
+const opEyeMatch = {
+  "prompt": "The self-focusing camera, decoded:",
+  "pairs": [
+    {
+      "left": "the cornea",
+      "right": "does roughly two-thirds of the bending — air-to-fluid is the biggest index jump you own"
+    },
+    {
+      "left": "the crystalline lens",
+      "right": "fine-focuses by changing shape — fat for near, flat for far"
+    },
+    {
+      "left": "short sight (myopia)",
+      "right": "eyeball too long — fixed with a diverging lens"
+    },
+    {
+      "left": "the dioptre",
+      "right": "power = 1/f in metres — a +2.0 D lens has f = 0.5 m"
+    }
+  ],
+  "why": "Underwater the cornea's air interface vanishes and the eye nearly stops focusing — why swimming is blurry and goggles restore the air gap."
+};
+
+const opRainbowPredict = {
+  "q": "You and a friend stand 10 m apart, both facing the same rain shower with the sun behind you. What do you each see?",
+  "choices": [
+    "Exactly the same rainbow — it is one physical arc sitting at a place",
+    "Two different rainbows — each observer gets an arc built from their own drops",
+    "No rainbow at all — you must stand much closer together"
+  ],
+  "answer": 1,
+  "why": "A rainbow is an ANGLE — about 40 to 42 degrees from the point opposite the sun — built from whatever drops lie along your line of sight. Move, and different drops supply it; each eye gets its own."
+};
+
+const opCameraSpot = {
+  "prompt": "One line of this camera answer is wrong — click it:",
+  "lines": [
+    "An f/2 aperture means the aperture diameter is half the focal length.",
+    "Halving the f-number doubles the light-gathering area.",
+    "Wide open at f/1.8, backgrounds blur; stopped down at f/11, nearly everything is sharp.",
+    "Smartphones rebuild depth of field in software, because thin bodies cannot fit large lenses."
+  ],
+  "errorLine": 1,
+  "correction": "Halving the f-number QUADRUPLES the light-gathering area — the diameter doubles, and area goes as diameter squared.",
+  "why": "f/2 → f/1.4 doubles the diameter and quadruples the area: exposure stops are area ratios, not diameter ratios."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/optics-lenses-and-mirrors">
   <h2>Where you are, and what you will learn</h2>
@@ -81,11 +203,13 @@ const lensCfg = {
     million directions (diffuse reflection) — which is why paper and walls are visible from
     any angle while mirrors show you one.
   </p>
+  <Widget no="2" caption="true or false — mirrors and their images" widget="judge" config={opMirrorJudge} />
   <p><em>Common misconception:</em> mirrors reverse left and right. They actually reverse
   <em>front–back</em> (the axis toward the mirror). Text in a mirror reads reversed because
   <em>you</em> turned it around to face the mirror; stand on the far side of a sheet of
   glass and your twin would find your "left-right" unswapped. Mirror writing is a
   coordination trick, not an optical one.</p>
+  <Widget no="3" caption="slide the divider — what the mirror does vs what you did" widget="compare" config={opMirrorCompare} />
   <p>
     <strong>So far:</strong> reflection alone — one law, equal angles — already builds plane
     mirrors, shaving mirrors and security mirrors. But a lens, and the front of your own eye,
@@ -104,6 +228,7 @@ const lensCfg = {
     the floor refracts away on exit, so the floor's image floats up — a 2 m-deep pool looks
     about 1.5 m deep), and why spearfishing requires aiming below the fish.
   </p>
+  <Widget no="4" caption="fill the blanks — Snell's law in three numbers" widget="cloze" config={opSnellCloze} />
   <p>
     Push the geometry the other way — light going from dense to sparse — and past a certain
     angle it cannot exit at all: it reflects <em>totally</em>. The
@@ -122,6 +247,7 @@ const lensCfg = {
   up at a steep angle sees the water surface mirror the pool bottom. Diamond's fame comes
   only from its huge refractive index making the critical angle small, so the effect
   traps light at far shallower angles.</p>
+  <Widget no="5" caption="place the critical angle for glass-to-air on the scale" widget="place" config={opCriticalPlace} />
 
   <h2>Thin lenses: the equation and the images</h2>
   <p>
@@ -161,6 +287,7 @@ const lensCfg = {
     top of that scale. The retina's rods and cones, colour and night vision, belong to the
     perception lessons; the optics stops here.
   </p>
+  <Widget no="6" caption="pair each player in your eye with its job" widget="match" config={opEyeMatch} />
 
   <h2>Dispersion: why prisms and rainbows</h2>
   <p>
@@ -181,6 +308,7 @@ const lensCfg = {
   from whatever raindrops happen to be along your line of sight. Move, and a different set
   of drops supplies the arc; each observer, even each eye, gets its own rainbow, which is
   why nobody has ever reached the foot of one.</p>
+  <Widget no="7" caption="bet first — two people, one shower" widget="predict" config={opRainbowPredict} />
 
   <h2>The camera: the eye's mechanical twin</h2>
   <p>
@@ -196,6 +324,7 @@ const lensCfg = {
     larger lens would have delivered. The optics is unchanged; the compromises moved to the
     algorithm — but the lens equation still runs underneath every shot.
   </p>
+  <Widget no="8" caption="find the faulty line — the f-stop arithmetic" widget="spot-error" config={opCameraSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
