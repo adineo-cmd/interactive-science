@@ -1,15 +1,12 @@
 # Lesson health audit — expert tier
 
-83 lessons: Weak (<40): 0 · Needs work (40–79): 3 · Good (≥80): 80
+83 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 83
 
 ## Weak (<40) (0)
 
-## Needs work (40–79) (3)
-- ** 40** subjects/psychology/expert/clinical-practice-and-ethics — 1954w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/religious-studies/expert/religion-in-the-modern-world — 1984w, 3 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
-- ** 40** subjects/sociology/expert/demography — 2012w, 4 callouts, 1 widgets — GAPS: missing Where you are (8); missing Check yourself (8); missing Key takeaways (8); missing Where this goes next (6); what-to-notice 0/1 (15); recaps 0/2 (10)
+## Needs work (40–79) (0)
 
-## Good (≥80) (80)
+## Good (≥80) (83)
 - ** 95** subjects/agriculture/expert/climate-smart-agriculture — 2523w, 3 callouts, 1 widgets
 - ** 95** subjects/agriculture/expert/food-systems-and-security — 2608w, 3 callouts, 1 widgets
 - ** 95** subjects/anthropology/expert/anthropology-of-the-contemporary — 2753w, 3 callouts, 1 widgets
@@ -81,7 +78,10 @@
 - ** 95** subjects/political-science/expert/formal-political-theory — 2786w, 3 callouts, 1 widgets
 - ** 95** subjects/political-science/expert/global-governance — 2812w, 4 callouts, 1 widgets
 - ** 95** subjects/psychology/expert/behavioural-neuroscience — 2597w, 4 callouts, 1 widgets
+- ** 95** subjects/psychology/expert/clinical-practice-and-ethics — 2721w, 4 callouts, 1 widgets
 - ** 95** subjects/religious-studies/expert/philosophy-of-religion — 2800w, 4 callouts, 1 widgets
+- ** 95** subjects/religious-studies/expert/religion-in-the-modern-world — 2739w, 3 callouts, 1 widgets
+- ** 95** subjects/sociology/expert/demography — 2891w, 4 callouts, 1 widgets
 - ** 95** subjects/sociology/expert/social-theory-marx-to-bourdieu — 2707w, 5 callouts, 1 widgets
 - ** 95** subjects/sports-science/expert/long-term-athlete-development — 2553w, 3 callouts, 1 widgets
 - ** 95** subjects/sports-science/expert/testing-and-analytics-in-elite-sport — 2630w, 3 callouts, 1 widgets
