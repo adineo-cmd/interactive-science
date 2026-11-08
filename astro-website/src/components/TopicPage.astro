@@ -15,6 +15,13 @@ const seq = topics.filter((t) => t.status !== 'planned');
 const idx = seq.indexOf(topic);
 const prev = seq[(idx - 1 + seq.length) % seq.length];
 const next = seq[(idx + 1) % seq.length];
+
+// lesson position: index within the subject's tier ladder ("Beginner · Lesson 3 of 9")
+const tierSeq = topics.filter(
+  (t) => t.subject === topic.subject && t.level === topic.level && t.status !== 'planned',
+);
+const posInTier = tierSeq.findIndex((t) => t.slug === slug) + 1;
+const tierName = { foundational: 'Beginner' }[topic.level] ?? topic.level;
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -31,6 +38,7 @@ const next = seq[(idx + 1) % seq.length];
       <article>
         <header class="topic-head">
           <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span><a href={`${B}/subjects/${subject.id}/`}>{subject.name}</a><span class="sep">/</span>{topic.level}</p>
+          <p class="position-chip">{tierName} · Lesson {posInTier} of {tierSeq.length}</p>
           <h1>{topic.title}</h1>
           <p class="lede">{topic.summary}</p>
         </header>
@@ -51,3 +59,19 @@ const next = seq[(idx + 1) % seq.length];
     </div>
   </div>
 </Layout>
+
+<script>
+  // Numbered topic positions: "1. …", "2. …" on content headings, skipping the fixed
+  // register sections (Where you are / Check yourself / Key takeaways / …) so the
+  // numbers always mark the lesson's own teaching sequence.
+  const DEVICE = /^(where you are|check yourself|key takeaways|where this goes next|going deeper)/i;
+  let n = 0;
+  for (const h2 of document.querySelectorAll('.topic-body > h2')) {
+    if (DEVICE.test(h2.textContent.trim())) continue;
+    n += 1;
+    const marker = document.createElement('span');
+    marker.className = 'h2-no';
+    marker.textContent = `${n}.`;
+    h2.prepend(marker);
+  }
+</script>
