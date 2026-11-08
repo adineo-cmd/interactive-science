@@ -1,0 +1,140 @@
+/* ================================================================
+   widgets-p1d — compare / hotspot / trace / branch.
+   Companion to widgets-p1a/p1b and the .quiz block in global.css:
+   same paper-and-hairline language (solid 1px var(--line) cards,
+   12px radius, .94–1.04rem text, mono meta at 10.5px) and the green
+   #2e9e6b / red #c2413b state mixes. Every selector is scoped under
+   .compare/.hotspot/.trace/.branch or the shared .p1-* prefixes —
+   nothing leaks outside these widgets.
+   ================================================================ */
+
+/* ---- shared action row + verdict (hotspot, trace, branch) ---- */
+.p1-actions { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; margin-top: .8rem; }
+.p1-actions button {
+  font: inherit; font-size: .9rem; color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: 8px;
+  padding: .45rem .8rem; background: var(--paper-raised); cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.p1-actions button:hover { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper)); }
+.p1-actions button:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 2px; }
+.p1-verdict { margin-top: .75rem; font-size: .9rem; color: var(--ink-2); min-height: 1.3rem; }
+.p1-verdict strong { color: var(--ink); }
+.p1-verdict.correct strong { color: #2e9e6b; }
+.p1-verdict.wrong strong { color: #c2413b; }
+
+/* ---- compare: draggable before/after divider ---- */
+.compare { border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.compare-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .85rem; line-height: 1.45; }
+.compare-stage {
+  position: relative; overflow: hidden; min-height: 180px;
+  border: 1px solid var(--line-strong); border-radius: 10px; background: var(--paper-raised);
+  touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.compare-stage.dragging { cursor: grabbing; }
+.compare-panel { margin: 0; padding: 1rem 1.1rem; }
+.compare-before { position: relative; }
+.compare-after {
+  position: absolute; inset: 0; overflow: hidden;
+  clip-path: inset(0 0 0 var(--split, 50%));
+  background: color-mix(in srgb, var(--subject, var(--accent)) 5%, var(--paper-raised));
+}
+.compare-label {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--ink-3); margin: 0 0 .45rem;
+}
+.compare-text { font-size: .94rem; line-height: 1.55; color: var(--ink); margin: 0; }
+.compare-divider {
+  position: absolute; top: 0; bottom: 0; left: var(--split, 50%); width: 0;
+  border-left: 3px solid var(--subject-ink, var(--accent));
+  cursor: grab; touch-action: none;
+}
+.compare-stage.dragging .compare-divider { cursor: grabbing; }
+.compare-handle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 34px; height: 34px; border-radius: 999px; padding: 0;
+  border: 1px solid var(--subject-ink, var(--accent)); background: var(--paper-raised);
+  cursor: grab; touch-action: none;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.compare-handle::after {
+  content: '↔'; display: block; font-family: var(--f-mono); font-size: 13px;
+  color: var(--subject-ink, var(--accent)); line-height: 32px; text-align: center;
+}
+.compare-handle:active { cursor: grabbing; }
+.compare-handle:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 2px; }
+.compare-readout { font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); margin: .6rem 0 0; }
+.compare-foot { font-size: .82rem; color: var(--ink-3); margin: .7rem 0 0; }
+
+/* ---- hotspot: click the right region of a diagram ---- */
+.hotspot { border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.hotspot-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .85rem; line-height: 1.45; }
+.hotspot-frame {
+  position: relative; overflow: hidden;
+  border: 1px solid var(--line-strong); border-radius: 10px; background: var(--paper-raised);
+}
+.hotspot-img { display: block; width: 100%; height: auto; }
+.hotspot-region {
+  position: absolute; margin: 0; padding: 0; border: 0; border-radius: 6px;
+  background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.hotspot-region:hover, .hotspot-region:focus-visible {
+  outline: 1.5px dashed color-mix(in srgb, var(--subject-ink, var(--accent)) 60%, transparent);
+  outline-offset: -1.5px;
+  background: color-mix(in srgb, var(--subject-ink, var(--accent)) 7%, transparent);
+}
+.hotspot-region.correct, .hotspot-region.reveal {
+  outline: 2px solid #2e9e6b; outline-offset: -2px;
+  background: color-mix(in srgb, #2e9e6b 12%, transparent);
+}
+.hotspot-region.wrong {
+  outline: 2px solid #c2413b; outline-offset: -2px;
+  background: color-mix(in srgb, #c2413b 12%, transparent);
+  animation: hotspot-flash .45s ease;
+}
+@keyframes hotspot-flash { from { background: color-mix(in srgb, #c2413b 28%, transparent); } }
+.hotspot-region:disabled { cursor: default; }
+.hotspot-feedback { margin-top: .75rem; }
+
+/* ---- trace: pick the curve that matches the scenario ---- */
+.trace { border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.trace-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .85rem; line-height: 1.45; }
+.trace-canvas {
+  display: block; width: 100%; max-width: 100%;
+  border: 1px solid var(--line-strong); border-radius: 10px; background: #fff;
+}
+.trace-choices { display: grid; gap: .5rem; margin-top: .8rem; }
+.trace-choice { display: flex; align-items: center; gap: .55rem; }
+.trace-choice::before {
+  content: ''; flex: none; width: 14px; height: 4px; border-radius: 2px;
+  background: var(--c, var(--accent));
+}
+.trace-feedback { margin-top: .75rem; }
+
+/* ---- branch: mini decision tree ---- */
+.branch { border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.branch-scenario {
+  margin: 0 0 .8rem; padding: .7rem .85rem; font-size: .94rem; line-height: 1.55; color: var(--ink-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--subject-ink, var(--accent));
+  border-radius: 6px; background: var(--paper-raised);
+}
+.branch-breadcrumb { font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); margin: 0 0 .7rem; }
+.branch-node {
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: .9rem .95rem; background: var(--paper-raised);
+}
+.branch-text { margin: 0; font-size: .98rem; line-height: 1.55; color: var(--ink); }
+.branch-choices { display: grid; gap: .5rem; margin-top: .75rem; }
+.branch-choice.picked {
+  border-color: var(--subject-ink, var(--accent));
+  background: var(--subject-soft, var(--paper));
+  box-shadow: inset 0 0 0 1px var(--subject-ink, var(--accent));
+}
+.branch-choice:disabled { cursor: default; }
+.branch-feedback { margin: .7rem 0 0; font-size: .9rem; color: var(--ink-2); }
+.branch-actions { margin-top: .7rem; }
+.branch-why {
+  margin-top: .8rem; padding: .8rem .95rem; font-size: .9rem; line-height: 1.55; color: var(--ink-2);
+  border: 1px solid var(--line); border-left: 3px solid var(--subject-ink, var(--accent));
+  border-radius: 6px; background: var(--paper);
+}

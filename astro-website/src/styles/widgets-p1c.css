@@ -1,0 +1,165 @@
+/* ================================================================
+   widgets-p1c — styles for the place.js, estimate.js,
+   sort-buckets.js and spot-error.js widgets.
+   Mirrors the .quiz visual language from global.css (same custom
+   properties, 1px var(--line) borders, 12px container radius) and
+   the green #2e9e6b / red #c2413b state mixes. place + estimate use
+   dashed containers (inline-bet feel, like .predict/.cloze/.order);
+   sort-buckets + spot-error use solid ones (like .quiz/.match).
+   Every selector is scoped to these widgets — the one exception is
+   .sortb-ghost, the drag ghost that must live on <body> to follow
+   the pointer. Buttons share the .p1-actions row; verdicts share
+   .p1-verdict.
+   ================================================================ */
+
+/* ---- shared: action row + verdict ---- */
+.p1-actions { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin-top: .8rem; }
+.p1-actions button {
+  font: inherit; font-size: .88rem; color: var(--ink);
+  background: var(--paper-raised); border: 1px solid var(--line-strong); border-radius: 8px;
+  padding: .45rem .8rem; cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.p1-actions button:hover { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper)); }
+.p1-actions button:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 2px; }
+.p1-actions button:disabled { opacity: .45; cursor: default; }
+.p1-actions button[hidden] { display: none; }
+.p1-verdict { margin: .75rem 0 0; font-size: .9rem; color: var(--ink-2); min-height: 1.3rem; }
+.p1-verdict strong { color: var(--ink); }
+.p1-verdict.correct strong { color: #2e9e6b; }
+.p1-verdict.close strong { color: var(--subject-ink, var(--accent)); }
+.p1-verdict.wrong strong { color: #c2413b; }
+
+/* ---- place: marker on a labelled scale (dashed, inline-bet feel) ---- */
+.place { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.place-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .7rem; line-height: 1.45; }
+.place-readout { font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); margin: 0 0 .35rem; }
+.place-track {
+  position: relative; height: 44px; cursor: pointer;
+  touch-action: none; user-select: none; -webkit-user-select: none;
+}
+.place-track::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 3px;
+  transform: translateY(-50%); border-radius: 3px; background: var(--line-strong);
+}
+.place-marker {
+  position: absolute; top: 50%; left: 50%; width: 18px; height: 18px; padding: 0;
+  transform: translate(-50%, -50%); border-radius: 50%; cursor: grab;
+  background: var(--paper-raised); border: 2px solid var(--subject-ink, var(--accent));
+  box-shadow: 0 1px 6px color-mix(in srgb, var(--ink) 18%, transparent);
+  transition: left .35s ease, border-color .15s ease, background .15s ease;
+}
+.place-marker:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 3px; }
+.place-marker.correct { border-color: #2e9e6b; background: color-mix(in srgb, #2e9e6b 30%, var(--paper-raised)); cursor: default; }
+.place-marker.reveal { border-color: #2e9e6b; background: #2e9e6b; cursor: default; }
+.place-marker.wrong { border-color: #c2413b; background: color-mix(in srgb, #c2413b 30%, var(--paper-raised)); }
+.place-ticks { position: relative; height: 1.15rem; margin-top: .3rem; font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); }
+.place-tick { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+.place-tick:first-child { transform: none; }
+.place-tick:last-child { transform: translateX(-100%); }
+.place-tick::before { content: ''; position: absolute; top: -.5rem; left: 50%; width: 1px; height: .32rem; background: var(--line-strong); }
+.place-tick:first-child::before { left: 0; }
+.place-tick:last-child::before { left: auto; right: 0; }
+
+/* ---- estimate: guess the magnitude, then reveal (dashed) ---- */
+.estimate { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.estimate-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .8rem; line-height: 1.45; }
+.estimate-row { display: flex; align-items: baseline; gap: .5rem; }
+.estimate-input {
+  font-family: var(--f-mono); font-size: .92rem; color: var(--ink);
+  width: 12ch; padding: .45rem .6rem; text-align: right;
+  background: var(--paper-raised); border: 1px solid var(--line-strong); border-radius: 8px;
+  transition: border-color .15s ease, background .15s ease;
+}
+.estimate-input:focus { outline: none; border-color: var(--subject-ink, var(--accent)); }
+.estimate-input::placeholder { color: var(--ink-3); font-size: .82rem; text-align: left; }
+.estimate-input.correct { border-color: #2e9e6b; background: color-mix(in srgb, #2e9e6b 14%, var(--paper-raised)); }
+.estimate-input.close { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper)); }
+.estimate-input.wrong { border-color: #c2413b; background: color-mix(in srgb, #c2413b 12%, var(--paper-raised)); }
+.estimate-input:disabled { color: var(--ink); opacity: 1; cursor: default; }
+.estimate-unit { font-family: var(--f-mono); font-size: .85rem; color: var(--ink-2); }
+.estimate-context { font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); margin: .6rem 0 0; }
+
+/* ---- sortb: classify items into buckets (solid) ---- */
+.sortb { border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.sortb-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .85rem; line-height: 1.45; }
+.sortb-tray {
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: .5rem;
+  min-height: 2.9rem; margin-bottom: .7rem; padding: .55rem;
+  border: 1px dashed var(--line); border-radius: 8px; background: var(--paper-raised);
+}
+.sortb-item {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font: inherit; font-size: .9rem; color: var(--ink);
+  background: var(--paper); border: 1px solid var(--line-strong); border-radius: 8px;
+  padding: .45rem .7rem; cursor: grab;
+  touch-action: none; user-select: none; -webkit-user-select: none;
+  transition: border-color .15s ease, background .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.sortb-item:hover { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper)); }
+.sortb-item:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 2px; }
+.sortb-item.selected {
+  border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper));
+  box-shadow: inset 0 0 0 1px var(--subject-ink, var(--accent)); cursor: grab;
+}
+.sortb-item.dragging { opacity: .35; }
+.sortb-item.correct { border-color: #2e9e6b; background: color-mix(in srgb, #2e9e6b 14%, var(--paper-raised)); cursor: default; }
+.sortb-item.wrong { border-color: #c2413b; background: color-mix(in srgb, #c2413b 12%, var(--paper-raised)); }
+.sortb-item:disabled { cursor: default; }
+.sortb-item.bounce { animation: sortb-bounce .5s ease; }
+@keyframes sortb-bounce {
+  0% { transform: none; } 25% { transform: translateX(-6px); }
+  50% { transform: translateX(5px); } 75% { transform: translateX(-2px); } 100% { transform: none; }
+}
+.sortb-tick { font-family: var(--f-mono); font-size: .85rem; color: #2e9e6b; }
+.sortb-ghost {
+  position: fixed; z-index: 50; margin: 0; pointer-events: none; cursor: grabbing;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--ink) 22%, transparent);
+}
+.sortb-buckets { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .6rem; }
+.sortb-bucket {
+  display: flex; flex-direction: column; gap: .45rem; min-height: 5.4rem;
+  padding: .55rem .6rem .6rem; border: 1px solid var(--line-strong); border-radius: 8px;
+  background: var(--paper); transition: border-color .15s ease, background .15s ease;
+}
+.sortb-bucket.over { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper-raised)); }
+.sortb-bucket-name {
+  background: none; border: 0; padding: 0; font: inherit; font-size: .9rem; font-weight: 500;
+  color: var(--ink); text-align: left; cursor: pointer;
+}
+.sortb-bucket-name:hover { color: var(--subject-ink, var(--accent)); }
+.sortb-bucket-name:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 2px; }
+.sortb-drop {
+  flex: 1; display: flex; flex-wrap: wrap; align-content: flex-start; gap: .4rem;
+  min-height: 2.5rem; padding: .3rem;
+  border: 1px dashed var(--line); border-radius: 6px;
+}
+.sortb-counter { font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-3); }
+
+/* ---- spoterr: find the wrong line in a worked solution (solid) ---- */
+.spoterr { border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.15rem; background: var(--paper); }
+.spoterr-prompt { font-size: 1.04rem; font-weight: 500; margin: 0 0 .85rem; line-height: 1.45; }
+.spoterr-lines { display: grid; gap: .45rem; }
+.spoterr-line {
+  display: flex; align-items: baseline; gap: .65rem; text-align: left;
+  font-family: var(--f-mono); font-size: .84rem; color: var(--ink); line-height: 1.5;
+  background: var(--paper-raised); border: 1px solid var(--line-strong); border-radius: 8px;
+  padding: .5rem .75rem; cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.spoterr-line:hover { border-color: var(--subject-ink, var(--accent)); background: var(--subject-soft, var(--paper)); }
+.spoterr-line:focus-visible { outline: 2px solid var(--subject-ink, var(--accent)); outline-offset: 2px; }
+.spoterr-no { flex: none; min-width: 1.1rem; font-size: 10.5px; color: var(--ink-3); }
+.spoterr-text { word-break: break-word; }
+.spoterr-line.correct { border-color: #2e9e6b; background: color-mix(in srgb, #2e9e6b 14%, var(--paper-raised)); cursor: default; }
+.spoterr-line.reveal {
+  border-color: #2e9e6b; background: color-mix(in srgb, #2e9e6b 14%, var(--paper-raised));
+  box-shadow: inset 0 0 0 1px #2e9e6b; cursor: default;
+}
+.spoterr-line.wrong { border-color: #c2413b; background: color-mix(in srgb, #c2413b 12%, var(--paper-raised)); animation: spoterr-shake .4s ease; }
+.spoterr-line:disabled { cursor: default; }
+@keyframes spoterr-shake {
+  0% { transform: none; } 30% { transform: translateX(-5px); }
+  60% { transform: translateX(4px); } 100% { transform: none; }
+}
