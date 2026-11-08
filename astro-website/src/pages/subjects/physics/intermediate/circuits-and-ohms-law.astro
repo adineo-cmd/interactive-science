@@ -13,6 +13,95 @@ const ohmCfg = {
     { label: 'power via I²R', expr: '(V/R)*(V/R)*R', unit: 'W' },
   ],
 };
+
+const ohmFlipOrder = {
+  "prompt": "From flick to lap complete — put the story of a flipped switch in order:",
+  "items": [
+    "You flip the switch",
+    "The electric field propagates around the loop at nearly light speed",
+    "Every conduction electron in the loop starts drifting at once",
+    "The lamp responds within milliseconds",
+    "One individual electron finally completes a full lap — almost an hour later"
+  ],
+  "why": "The field travels, not the electrons. Their drift speed is under a millimetre per second, so the whole loop starts moving together in milliseconds while a single electron needs the best part of an hour for one lap of a torch circuit."
+};
+
+const voltCloze = {
+  "text": "A volt is a joule per %%0%%: a 12 V battery transfers %%1%% J of energy to every coulomb that passes through it, and under heavy load its terminal voltage %%2%% because of its internal resistance.",
+  "answers": [
+    [
+      "coulomb"
+    ],
+    [
+      "12"
+    ],
+    [
+      "sags",
+      "drops",
+      "falls"
+    ]
+  ],
+  "hint": "Think energy-per-charge, the battery's rating, and what a starter motor does to terminal voltage."
+};
+
+const heatSpot = {
+  "prompt": "This heater answer contains one faulty line — click it:",
+  "lines": [
+    "A heater draws I = 4 A on a 230 V supply, so R = V/I = 57.5 Ω.",
+    "Its power is P = V·I = 230 × 4 = 920 W.",
+    "A repair shortens the element, halving R; the current doubles to 8 A.",
+    "The power doubles too, to 1,840 W — at fixed voltage, power scales linearly with resistance.",
+    "That is exactly why a short circuit, with R collapsing toward zero, is dangerous."
+  ],
+  "errorLine": 3,
+  "correction": "At fixed voltage the power QUADRUPLES, to 3,680 W — P = V²/R, so halving R multiplies power by four.",
+  "why": "P = V²/R: power scales inversely with resistance at fixed voltage. Halve R → double I → the power jumps fourfold — the lesson's 12 Ω → 4 Ω example did exactly this (12 W → 36 W would be thirds; halves give fours)."
+};
+
+const flowJudge = {
+  "statements": [
+    {
+      "s": "Current gets used up as it travels around a series circuit.",
+      "truth": false,
+      "why": "Charge is conserved — the current is the same everywhere in the loop. What each component takes its share of is energy."
+    },
+    {
+      "s": "Voltage is a property of two points, not a substance that flows.",
+      "truth": true,
+      "why": "Current flows; voltage drives. 'Voltage flows' is the tell-tale sign of the misconception."
+    },
+    {
+      "s": "A battery moves charge that is already packed into the wires; what depletes is its chemistry.",
+      "truth": true,
+      "why": "The battery is an energy pump with a finite fuel supply — it exhausts reactions, not charge."
+    },
+    {
+      "s": "A car battery holds its terminal voltage constant no matter how much current is drawn.",
+      "truth": false,
+      "why": "Internal resistance makes terminal voltage sag under heavy load — cranking a starter can pull 12.6 V down to near 10 V."
+    }
+  ]
+};
+
+const kettleEstimate = {
+  "prompt": "A 2 kW heater runs for 3 hours. Roughly how many joules of energy did it burn?",
+  "unit": "MJ",
+  "answer": 21.6,
+  "factor": 2,
+  "why": "3 hours × 2 kW = 6 kWh, and 1 kWh = 3.6 MJ, so 6 × 3.6 = 21.6 MJ.",
+  "context": "That is why bills are written in kilowatt-hours — nobody wants to pay for 21,600,000 joules in words."
+};
+
+const fusePredict = {
+  "q": "A 3 A appliance keeps blowing its fuse, so a friend fits a 13 A fuse 'so it stops blowing'. What did that actually change?",
+  "choices": [
+    "The circuit is now protected with a safer margin",
+    "The cable can overheat and burn before the fuse ever melts",
+    "The appliance now draws less current than before"
+  ],
+  "answer": 1,
+  "why": "A fuse guards the cable, not your patience. Four times the design current can now cook the cable while the 13 A wire sits there unmelting — the correct move is matching the fuse to the thinnest link it guards."
+};
 ---
 <TopicPage slug="subjects/physics/intermediate/circuits-and-ohms-law">
 
@@ -77,6 +166,7 @@ const ohmCfg = {
     the grid), a distinction that matters the moment transformers appear in the magnetism
     chapter.
   </p>
+  <Widget no="2" caption="rebuild the switch-flip sequence — field first, electrons later" widget="order" config={ohmFlipOrder} />
   <p>
     <strong>So far:</strong> current is charge in transit — the movers drift slowly, but
     the field that starts them travels near light speed, and the same current runs
@@ -100,6 +190,7 @@ const ohmCfg = {
     of amps) drops from 12.6 V to near 10 V for the duration. Batteries do not "run out of
     current"; they exhaust the chemical reactions that supply energy.
   </p>
+  <Widget no="3" caption="fill the blanks — what a volt actually is" widget="cloze" config={voltCloze} />
 
   <h2>Resistance and Ohm's law</h2>
   <p>
@@ -117,6 +208,7 @@ const ohmCfg = {
     P = 12 W; drop R to 4 Ω and the current triples to 3 A while the power jumps ninefold
     to 36 W — the quadruple-the-heat warning of the short circuit, visible on sliders.
   </p>
+  <Widget no="4" caption="find the faulty line — heater resistance and power" widget="spot-error" config={heatSpot} />
   <p><em>Common misconception:</em> "current gets used up around the circuit." Nothing of the
   sort: charge is conserved, the current in a series loop is the <em>same everywhere</em>,
   and what gets "used up" is energy — each component takes its share of each coulomb's
@@ -127,6 +219,7 @@ const ohmCfg = {
   not spend it. What depletes is the chemical reactions that lift each coulomb's energy
   — the battery is an energy pump with a finite fuel supply, not a reservoir of electric
   fluid that drains away.</p>
+  <Widget no="5" caption="true or false — what flows, what runs out" widget="judge" config={flowJudge} />
 
   <h2>Power, energy and the electricity bill</h2>
   <p>
@@ -139,6 +232,7 @@ const ohmCfg = {
     on all year burns 876 kWh — more than a fridge — which is why LED retrofits (same light,
     10 W) changed national electricity demand.
   </p>
+  <Widget no="6" caption="call the magnitude — the kettle's energy appetite" widget="estimate" config={kettleEstimate} />
   <p>
     <strong>So far:</strong> one component at a time — push, flow, opposition, and the
     price of energy. Real circuits combine components, and there are only two ways to do
@@ -190,6 +284,7 @@ const ohmCfg = {
     "just for a second" multimeter mistakes across a mains socket are all the same failure:
     a low-resistance path where the equations promised high.
   </p>
+  <Widget no="7" caption="bet first — what does the bigger fuse actually protect?" widget="predict" config={fusePredict} />
   <p><em>Common misconception:</em> "a bigger fuse is safer." A fuse is a deliberate weak
   link rated slightly above the circuit's normal current, and it protects the cable, not
   the appliance's comfort: a 13 A fuse in a 3 A appliance will happily let the cable cook
