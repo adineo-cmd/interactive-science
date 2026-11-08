@@ -25,6 +25,141 @@ const probCfg = {
     { math: '5 · The law of large numbers is the business', note: 'Pooling more policies shrinks relative variance — scale itself is the oldest risk-reduction technology.' },
   ],
 };
+
+const atJobsMatch = {
+  "prompt": "Two numbers run the entire business — match each concept to its job:",
+  "pairs": [
+    {
+      "left": "expectation",
+      "right": "the long-run average — sets the floor for the price"
+    },
+    {
+      "left": "variance",
+      "right": "how far outcomes can wander — sizes the capital for bad years"
+    },
+    {
+      "left": "probability",
+      "right": "a number between 0 and 1 measuring how likely an event is"
+    },
+    {
+      "left": "pooling more policies",
+      "right": "shrinks the relative uncertainty — scale is the oldest risk-reduction technology"
+    }
+  ],
+  "why": "Every other idea in this lesson is elaboration on that pair: expectation prices, variance capitalises."
+};
+
+const atBayesSpot = {
+  "prompt": "One line of this fraud-screening answer is wrong — click it:",
+  "lines": [
+    "The model flags 99% of fraudulent claims and 5% of honest ones; 1% of all claims are fraudulent.",
+    "Out of 10,000 claims, 100 are fraudulent, and 99 of those get flagged.",
+    "5% of the 9,900 honest claims also get flagged — 495 false alarms.",
+    "Among the 594 flags, 99 are real fraud: 99 ÷ 594 ≈ 16.7 percent.",
+    "So a flagged claim is 99 percent likely to be fraudulent — the model catches 99% of fraud."
+  ],
+  "errorLine": 4,
+  "correction": "A flagged claim is fraudulent only about 16.7% of the time — honest claims vastly outnumber fraudulent ones.",
+  "why": "The 99% is the true-positive rate, not the probability the flag is right. Base rates rule: nearly five out of six flags are false alarms."
+};
+
+const atIndependenceBuckets = {
+  "prompt": "Independence is the licence to multiply. File each pairing:",
+  "buckets": [
+    "Plausibly independent",
+    "Dependent"
+  ],
+  "items": [
+    {
+      "label": "car accidents by separate drivers in separate towns",
+      "bucket": 0
+    },
+    {
+      "label": "fire losses across the flats of one building",
+      "bucket": 1
+    },
+    {
+      "label": "policies sharing one flood zone",
+      "bucket": 1
+    },
+    {
+      "label": "two distant drivers' accidents on the same icy morning",
+      "bucket": 1
+    },
+    {
+      "label": "2,000 similar policies each facing their own small fire chance",
+      "bucket": 0
+    }
+  ],
+  "why": "The test is the multiplication rule, never the vibe: learning one event must not change the probability of the other. One fire takes the whole floor; one icy morning takes both drivers."
+};
+
+const atDistCloze = {
+  "text": "The %%0%% counts successes in a fixed number of independent trials; the %%1%% counts rare events arriving at a steady rate; the %%2%% models waiting times and is memoryless; the %%3%% emerges when many small independent effects add up.",
+  "answers": [
+    [
+      "binomial"
+    ],
+    [
+      "Poisson",
+      "poisson"
+    ],
+    [
+      "exponential"
+    ],
+    [
+      "normal",
+      "normal distribution",
+      "bell curve"
+    ]
+  ],
+  "hint": "One name per blank — counts, arrivals, waits, sums."
+};
+
+const atBayesJudge = {
+  "statements": [
+    {
+      "s": "P(fraud given flag) equals P(flag given fraud).",
+      "truth": false,
+      "why": "17 percent vs 99 percent — the same evidence, two very different probabilities. Confusing them is the prosecutor's fallacy."
+    },
+    {
+      "s": "The prosecutor's fallacy ignores how many other people also match.",
+      "truth": true,
+      "why": "'One-in-a-million match' says nothing about guilt while a million-odd people also match."
+    },
+    {
+      "s": "A 99-percent-accurate test means a flagged claim is 99 percent likely to be fraudulent.",
+      "truth": false,
+      "why": "Base rates rule the answer — here it is about 16.7 percent."
+    },
+    {
+      "s": "Bayes' theorem converts 'probability of the evidence if the cause is true' into 'probability of the cause given the evidence'.",
+      "truth": true,
+      "why": "That reversal is the whole trick — and it sounds like a formality until it earns its keep."
+    }
+  ]
+};
+
+const atSdEstimate = {
+  "prompt": "The village at scale: 2,000,000 dollars of expected claims, standard deviation about 195,000. Roughly what per cent of the expected total is that typical miss?",
+  "unit": "%",
+  "answer": 10,
+  "factor": 1.4,
+  "why": "195,000 ÷ 2,000,000 ≈ 10% — and quadrupling the book only doubles the standard deviation (√n), so the relative uncertainty halves.",
+  "context": "That 1-over-√n shrinkage is the law of large numbers wearing a business suit."
+};
+
+const atMeanPredict = {
+  "q": "A press release quotes the 'average claim', and the number is smaller than the expected loss in the rate filing. Why?",
+  "choices": [
+    "Because the press release rounds down",
+    "Because heavy tails put the mean above the median — the typical claim is small, but rare enormous claims drag the mean up",
+    "Because the press release counts only claims that were actually paid"
+  ],
+  "answer": 1,
+  "why": "Most claims are fender-benders; the rare totals-a-factory claim really arrives and really must be paid. Price the mean, capitalise the tail."
+};
 ---
 <TopicPage slug="subjects/actuarial-science/foundational/probability-for-actuaries">
   <h2>Where you are, and what you will learn</h2>
@@ -34,6 +169,7 @@ const probCfg = {
     probability, no calculus. Just percentages, averages, and one square root, each used
     slowly and explained when it appears. Every new word is defined the moment it shows up.
   </p>
+  <Widget no="3" caption="pair each concept with its job in the business" widget="match" config={atJobsMatch} />
   <p>By the end of this lesson you will be able to:</p>
   <ul>
     <li>explain why one policy is unpredictable but a pool of thousands is not;</li>
@@ -108,6 +244,7 @@ const probCfg = {
     in fraud triage, in underwriting evidence, and in every "the test is 99 percent
     accurate" headline.
   </p>
+  <Widget no="4" caption="find the faulty line — the 99 percent trap" widget="spot-error" config={atBayesSpot} />
   <p>
     <em>Combinatorics</em> — the art of counting possibilities — is the engine beneath
     every probability, and two patterns cover most of the ground. <strong>Combinations</strong>
@@ -131,12 +268,14 @@ const probCfg = {
     claim deserves the question a regulator would ask: what happens in the year the
     equation fails?
   </p>
+  <Widget no="5" caption="file the pairs — may the probabilities multiply?" widget="sort-buckets" config={atIndependenceBuckets} />
   <p><em>Common misconception:</em> P(A given B) and P(B given A) are interchangeable. They
   are not, and confusing them is the <em>prosecutor's fallacy</em>: "the match is
   one-in-a-million, so the chance this defendant is innocent is one-in-a-million" ignores
   that a million-odd people also match. In the fraud example: P(fraud given flag) ≈ 17
   percent while P(flag given fraud) = 99 percent — the same evidence, two very different
   probabilities, and the whole of Bayesian practice lives in the space between.</p>
+  <Widget no="7" caption="true or false — evidence and updates" widget="judge" config={atBayesJudge} />
   <p>
     <strong>So far:</strong> evidence updates probabilities (Bayes), counting possibilities
     keeps the update honest, and independence decides when probabilities may be
@@ -165,6 +304,7 @@ const probCfg = {
     lognormal and Pareto, model claim <em>severities</em>: sizes of losses, where a fire
     that totals a factory must remain possible.
   </p>
+  <Widget no="6" caption="fill the blanks — the distribution catalogue" widget="cloze" config={atDistCloze} />
   <p>
     The actuary's first modelling decision follows from that catalogue: total loss equals
     the <em>number</em> of claims times the <em>size</em> of each claim, and the two
@@ -217,6 +357,7 @@ const probCfg = {
     risk-reduction technology, and pooling — not prediction — is insurance's core
     competence.
   </p>
+  <Widget no="8" caption="call the magnitude — the pool's typical miss" widget="estimate" config={atSdEstimate} />
   <p><em>Common misconception:</em> independence and "having nothing to do with each
   other" are the same thing. They are not. Independence is a precise condition — learning
   one event does not change the probability of the other — and it can hold or fail in
@@ -254,6 +395,7 @@ const probCfg = {
     mean, capitalise the tail, and never confuse the two. That is the whole profession in
     one sentence.
   </p>
+  <Widget no="9" caption="bet first — the press release vs the rate filing" widget="predict" config={atMeanPredict} />
   <p><em>Common misconception:</em> the expected value is the outcome you expect. It is
   not — it is the long-run average, and it may not be possible on any single run: the
   expected number of children per family might be 2.4, yet no family has 2.4 children. An

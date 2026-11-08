@@ -24,6 +24,131 @@ const liftStepsCfg = {
     { math: '5 · L = ½ρV²S·CL', note: 'Everything compresses into one equation: dynamic pressure × wing area × lift coefficient. Cruise is solved by balancing it against weight.' },
   ],
 };
+
+const aeHandPredict = {
+  "q": "You tilt your flat hand further upward out of the car window. What happens to the two forces?",
+  "choices": [
+    "Both increase — the push grows and tilts more upward, but backward too",
+    "Lift increases while drag vanishes — steeper means slipperier",
+    "Both decrease — a steeper hand slides through the air"
+  ],
+  "answer": 0,
+  "why": "Tilt more and the air pushes harder and more steeply: lift grows, and so does the backward component. Drag is the price that arrives with every extra degree."
+};
+
+const aeContinuityCloze = {
+  "text": "Continuity says area × %%0%% = constant: same volume per second through a smaller hole means faster flow. The wind-tunnel duct of 0.1 m² fed at 10 m/s narrows to 0.05 m², so the speed doubles to %%1%% m/s.",
+  "answers": [
+    [
+      "speed"
+    ],
+    [
+      "20",
+      "twenty"
+    ]
+  ],
+  "hint": "Squeeze the garden hose and the jet quickens — same water per second, smaller exit."
+};
+
+const aeChainOrder = {
+  "prompt": "From shape to lift — put the chain in order:",
+  "items": [
+    "The wing's curved top squeezes the streamlines together",
+    "Continuity speeds the air up over the top",
+    "Bernoulli drops the pressure where the flow sped up",
+    "Suction on the upper surface supplies about two-thirds of the lift",
+    "Newton's third law: the air deflected downward shoves the wing up"
+  ],
+  "why": "Two bookkeepings of one fact — suction above and deflection below are the same lift counted twice."
+};
+
+const aeMythBuckets = {
+  "prompt": "Two rival stories about lift are in circulation. File each claim:",
+  "buckets": [
+    "Real physics",
+    "The equal-transit myth"
+  ],
+  "items": [
+    {
+      "label": "the air is deflected downward, so the wing is pushed up",
+      "bucket": 0
+    },
+    {
+      "label": "suction over the curved upper surface pulls the wing up",
+      "bucket": 0
+    },
+    {
+      "label": "two particles splitting at the leading edge must reunite at the trailing edge",
+      "bucket": 1
+    },
+    {
+      "label": "the upper flow is faster because the shape and circulation impose it",
+      "bucket": 0
+    },
+    {
+      "label": "a flat plate at an angle cannot generate lift",
+      "bucket": 1
+    }
+  ],
+  "why": "Nothing enforces a rendezvous: measurements show the upper particle arrives far earlier. The myth predicts no lift for a flat plate — which demonstrably flies."
+};
+
+const aeLeverMatch = {
+  "prompt": "L = ½ρV²S·C_L: every letter is a design lever. Match the lever to the aircraft that pulls it:",
+  "pairs": [
+    {
+      "left": "long wings of large area",
+      "right": "gliders — slow flight buys lift with area"
+    },
+    {
+      "left": "the speed-squared term",
+      "right": "fighters — fast flight does the work, small wings suffice"
+    },
+    {
+      "left": "more speed at altitude",
+      "right": "airliners at cruise — heavier by far, buying lift in thinner air"
+    },
+    {
+      "left": "a C_L near 0.5 at cruise",
+      "right": "the safety margin — comfortably below the stall ceiling"
+    }
+  ],
+  "why": "At 80 m/s, a 30 m² wing at C_L = 0.8 makes about 94,000 N — enough for roughly 9.6 tonnes."
+};
+
+const aeDensityEstimate = {
+  "prompt": "Airliners cruise near 11,000 metres, where density is about 0.4 kg per cubic metre. Roughly what per cent of sea-level density (1.225 kg/m³) is that?",
+  "unit": "%",
+  "answer": 33,
+  "factor": 1.3,
+  "why": "0.4 ÷ 1.225 ≈ 33% — thin air is cheap air: drag falls with the same ½ρV² that lift does, so the aircraft simply flies faster.",
+  "context": "But not too slowly, or the C_L it needs would cross the stall ceiling — hence coffin corner."
+};
+
+const aeLedgerJudge = {
+  "statements": [
+    {
+      "s": "Bernoulli and Newton tell rival stories about lift — one must be wrong.",
+      "truth": false,
+      "why": "They are the same physics counted twice: a pressure difference integrated over the wing, and air deflected downward."
+    },
+    {
+      "s": "Wingtip vortices spiralling behind a landing airliner are the lift's downward momentum made visible.",
+      "truth": true,
+      "why": "An aircraft flying level throws air downward continuously — on a humid day you can watch it."
+    },
+    {
+      "s": "Air must arrive in step above and below the wing.",
+      "truth": false,
+      "why": "Nothing enforces the rendezvous; the upper particle arrives far earlier."
+    },
+    {
+      "s": "The Kutta–Joukowski theorem is a rival theory to the momentum view.",
+      "truth": false,
+      "why": "It is the momentum view rewritten in the language engineers can compute with."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/aerospace-engineering/foundational/aerodynamics-i-lift-and-airfoils">
   <h2>Where you are, and what you will learn</h2>
@@ -33,6 +158,7 @@ const liftStepsCfg = {
     ingredients are pushes and pulls, air, and one multiplication, each explained the
     moment it appears. The ideas are built one at a time, starting with your own hand.
   </p>
+  <Widget no="6" caption="file the explanations — real physics or the transit-time myth?" widget="sort-buckets" config={aeMythBuckets} />
   <p>By the end of this lesson you will be able to:</p>
   <ul>
     <li>explain where lift comes from, using air deflected downward and pressure differences;</li>
@@ -75,6 +201,7 @@ const liftStepsCfg = {
     lift (up) and drag (back). A wing is the refined shape that gets the most lift for the
     least drag. The five steps below assemble the full explanation — click through them.
   </p>
+  <Widget no="3" caption="bet first — tilt the hand further" widget="predict" config={aeHandPredict} />
 
   <Widget no="1" caption="how a wing makes lift" widget="equationStep" config={liftStepsCfg} />
   <p>
@@ -109,6 +236,7 @@ const liftStepsCfg = {
     faster; if the front of the queue sped up and a gap opened, the pressure difference
     ahead would smooth the flow until the books balanced.
   </p>
+  <Widget no="4" caption="fill the blanks — continuity is bookkeeping for mass" widget="cloze" config={aeContinuityCloze} />
 
   <h2>Bernoulli: the speed–pressure trade</h2>
   <p>
@@ -130,6 +258,7 @@ const liftStepsCfg = {
     top, and the paper rises — the fast flow above it has lower pressure than the still
     air below.
   </p>
+  <Widget no="5" caption="rebuild the wing's two-bookkeeping chain" widget="order" config={aeChainOrder} />
   <p>
     <strong>So far:</strong> flowing air obeys two bookkeeping rules. Continuity: narrow
     the channel, and the flow must speed up. Bernoulli: when the flow speeds up, its
@@ -187,6 +316,7 @@ const liftStepsCfg = {
     more speed at altitude, larger area, or a higher coefficient — and typically cruises
     at a C<sub>L</sub> near 0.5, safely below stall.
   </p>
+  <Widget no="7" caption="pair each design lever with who pulls it" widget="match" config={aeLeverMatch} />
   <p>
     Density is the quiet lever. Airliners cruise near 11,000 metres, where the air has
     thinned to roughly 0.4 kg per cubic metre — a third of its sea-level value. Why fly
@@ -196,6 +326,7 @@ const liftStepsCfg = {
     That tension gives us "coffin corner": at very high altitude, the speed that stalls
     the wing and the speed that overstresses it converge to within a few knots.
   </p>
+  <Widget no="8" caption="call the magnitude — how thin is cruise air?" widget="estimate" config={aeDensityEstimate} />
   <p>
     <em>Common misconception:</em> Bernoulli and Newton tell rival stories about lift, and
     one must be true while the other is wrong. They are the same physics counted twice —
@@ -204,6 +335,7 @@ const liftStepsCfg = {
     ledger (equal transit time, for instance) is not the other half of the truth; it is
     simply wrong.
   </p>
+  <Widget no="9" caption="true or false — rival stories or one physics?" widget="judge" config={aeLedgerJudge} />
 
   <Widget no="2" caption="drag the terms — find the wing that lifts the aircraft" widget="sliderLab" config={liftCfg} />
   <p>
