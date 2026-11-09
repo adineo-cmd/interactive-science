@@ -1,0 +1,145 @@
+[
+  {
+    "slug": "subjects/computer-science/expert/cryptography",
+    "activities": [
+      {
+        "anchor": "Data moves in characteristic patterns, and each exposes a different attack surface",
+        "type": "sort-buckets",
+        "caption": "file each channel by its direction",
+        "name": "cryptoDirectionSort",
+        "config": {
+          "prompt": "File each channel by its direction:",
+          "buckets": ["one way only", "both ways, one at a time", "both at once"],
+          "items": [
+            { "label": "a broadcast sensor", "bucket": 0 },
+            { "label": "a walkie-talkie", "bucket": 1 },
+            { "label": "your phone call", "bucket": 2 },
+            { "label": "simplex transmission", "bucket": 0 },
+            { "label": "half-duplex transmission", "bucket": 1 },
+            { "label": "full-duplex transmission", "bucket": 2 }
+          ],
+          "why": "Mode and timing expose their own weaknesses — serial, parallel, asynchronous, synchronous, packet-switched: each is a different door."
+        }
+      },
+      {
+        "anchor": "Cosmic rays, cable noise and buffer bugs corrupt data constantly",
+        "type": "match",
+        "caption": "pair each code with what it guarantees",
+        "name": "cryptoCodeMatch",
+        "config": {
+          "prompt": "Pair each code with what it guarantees:",
+          "pairs": [
+            { "left": "parity", "right": "catches any single-bit flip, misses any even number of them" },
+            { "left": "checksum", "right": "better than parity, but reordering two words slips through" },
+            { "left": "CRC-32", "right": "catches all burst errors of 32 bits or fewer and all odd numbers of bit flips" },
+            { "left": "Hamming distance d", "right": "detects up to d − 1 flips, corrects up to ⌊(d − 1)/2⌋" }
+          ],
+          "why": "Parity guards memory buses, CRC guards Ethernet frames and ZIP files, Reed–Solomon still talks to Voyager — but none of them catches an adversary, only accidents."
+        }
+      },
+      {
+        "anchor": "Confusing the two has shipped broken protocols",
+        "type": "compare",
+        "caption": "drag the divider across the check field",
+        "name": "cryptoTamperCompare",
+        "config": {
+          "prompt": "Two ways to guard a message — drag the divider:",
+          "before": { "label": "unkeyed code (CRC)", "text": "Recomputable by anyone: a man-in-the-middle edits the message and its check field in one step — it detects accidents, not adversaries." },
+          "after": { "label": "keyed construction (MAC)", "text": "A hash seeded with a secret key — the attacker cannot recompute the tag, so edits are caught." },
+          "why": "Guarding against accidents is arithmetic; guarding against intention is cryptography — and mixing them has sunk real systems."
+        }
+      },
+      {
+        "anchor": "Its security budget is the keyspace",
+        "type": "estimate",
+        "caption": "call the brute-force bill",
+        "name": "cryptoKeysEst",
+        "config": {
+          "prompt": "A 128-bit block cipher's key count is ≈ 3.4 × 10³⁸. At a trillion guesses per second, roughly how long to try them all?",
+          "unit": "years",
+          "answer": 10000000000000000000,
+          "factor": 3,
+          "why": "About 10¹⁹ years — a billionfold the universe's age. The dangers are elsewhere: botched wiring, repeated nonces, and getting the secret to the other party.",
+          "context": "Keyspace strength is the budget; distribution and wiring are where systems actually die."
+        }
+      },
+      {
+        "anchor": "It does nothing about the endpoints",
+        "type": "judge",
+        "caption": "true or false — what the cipher promises",
+        "name": "cryptoSafeJudge",
+        "config": {
+          "statements": [
+            { "s": "Encryption makes data safe, full stop.", "truth": false, "why": "It protects one state — on the wire or at rest; nothing about the two ends, stolen passwords, misconfigured databases, insiders, or the pasted-into-chat case." },
+            { "s": "Threat modelling starts where the cipher ends.", "truth": true, "why": "The two ends still see the secret in the clear — the maths is one layer of the trust machine." },
+            { "s": "Encryption at rest also protects data while an employee has it open on screen.", "truth": false, "why": "The ends see the secret in the clear — encryption guards states, not every moment of its life." },
+            { "s": "TLS on the wire and disk encryption are the same guarantee.", "truth": false, "why": "Different states, different mechanisms — 'safe' is always safe-against-what-and-when." }
+          ]
+        }
+      },
+      {
+        "anchor": "generates a fresh key for every session and erases it",
+        "type": "branch",
+        "caption": "walk the stolen-key scenario",
+        "name": "cryptoEphemeralBranch",
+        "config": {
+          "root": "An attacker records all of today's encrypted traffic and, next year, steals the server's long-term secret. Walk the design question.",
+          "nodes": {
+            "start": {
+              "text": "With static agreement, what can the attacker now do?",
+              "choices": [
+                { "label": "Decrypt everything recorded last week", "next": "static", "feedback": "Exactly the failure forward secrecy exists to prevent — today's capture becomes next year's plaintext." },
+                { "label": "Nothing — the maths still holds", "next": "ok", "feedback": "Only if the sessions were ephemeral: per-connection secrets, erased after use." }
+              ]
+            },
+            "ok": {
+              "text": "With ephemeral Diffie–Hellman (the E in DHE/ECDHE), what does the stolen long-term secret buy?",
+              "choices": [
+                { "label": "Impersonation going forward — but not decryption of the past", "next": "forward", "feedback": "Those per-connection secrets no longer exist anywhere: steal today's material, still cannot open last week's recording." },
+                { "label": "Full decryption of history", "next": "fail", "feedback": "That is the static world — which is why 'rotate your keys' is a design property, not a policy slogan." }
+              ]
+            },
+            "static": {
+              "text": "Static agreement turns next year's theft into last week's plaintext — the case that motivated ephemeral keys.",
+              "choices": []
+            },
+            "fail": {
+              "text": "Full history decryption is exactly what forward secrecy denies — Signal's double ratchet goes further, re-deriving per message.",
+              "choices": []
+            },
+            "forward": {
+              "text": "Forward secrecy: the stolen long-term secret buys impersonation going forward, but yesterday's capture stays closed.",
+              "choices": []
+            }
+          },
+          "why": "Ephemeral per-connection secrets mean even a later server compromise cannot open yesterday's capture."
+        }
+      },
+      {
+        "anchor": "the guarantee is conditional but precise",
+        "type": "cloze",
+        "caption": "fill the blanks — the one cipher with perfect secrecy",
+        "name": "cryptoPadCloze",
+        "config": {
+          "text": "Shannon's one-time pad (secret as long as the %%0%%, used once) is the only cipher with perfect secrecy — the ciphertext leaks literally %%1%% information — and its impracticality motivates the modern standard: %%2%%, where breaking the scheme would solve a stated hard problem.",
+          "answers": [["message"], ["zero"], ["reductions"]],
+          "hint": "Kerckhoffs's principle remains the foundation: assume the enemy knows the system; secrecy lives in the key alone."
+        }
+      },
+      {
+        "anchor": "The migration is the rare engineering project whose deadline is defined by an adversary's hardware roadmap",
+        "type": "place",
+        "caption": "slide to the standardisation year",
+        "name": "cryptoPqPlace",
+        "config": {
+          "prompt": "The quantum deadline: slide the marker to the year the first post-quantum algorithms were standardised.",
+          "labels": ["2015", "2020", "2024", "2030", "2035"],
+          "scale": { "min": 2015, "max": 2035 },
+          "answer": 2024,
+          "tolerance": 1,
+          "why": "2024 — ML-KEM for key exchange and ML-DSA for signatures, built on lattice problems with no known quantum attack; Chrome and Signal already negotiate hybrid handshakes. Traffic captured today could be opened in 2035."
+        }
+      }
+    ]
+  }
+]

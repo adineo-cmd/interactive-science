@@ -48,6 +48,202 @@ const osQuiz = {
     },
   ],
 };
+
+const osInterruptCloze = {
+  "text": "The %%0%% interrupt (typically %%1%%–1,000 times per second) hands the machine back to the supervisor no matter what a program is doing — the only reason one runaway program cannot own it. Software versions (%%2%%) are how system calls are implemented.",
+  "answers": [
+    [
+      "timer"
+    ],
+    [
+      "100"
+    ],
+    [
+      "traps"
+    ]
+  ],
+  "hint": "The heartbeat of multitasking — and a page fault is one too, raised by the memory unit."
+};
+
+const osPagefaultEst = {
+  "prompt": "Fetching one missing chunk from disk costs roughly how many times a RAM access?",
+  "unit": "×",
+  "answer": 10000,
+  "factor": 2,
+  "why": "A fault lands in milliseconds against ~100 ns of RAM — which is why the swapping death spiral is the classic emergency.",
+  "context": "L1 ≈ 1 ns, RAM ≈ 100 ns, SSD ≈ 100 µs (1,000× RAM), a spinning-disk seek ≈ 10 ms (100,000× RAM)."
+};
+
+const osBootOrder = {
+  "prompt": "From power-on to your session — put the boot sequence in order:",
+  "items": [
+    "The CPU executes firmware (UEFI), which initialises hardware and verifies the boot chain (secure boot checks signatures)",
+    "The bootloader (GRUB) loads the kernel image into memory and hands over control",
+    "The kernel mounts the root file system and starts init",
+    "init (systemd) spawns everything else: drivers, services, the login manager, your session"
+  ],
+  "why": "The boot log is a map of the whole architecture — and secure boot checks signatures along the way."
+};
+
+const osHierarchyPlace = {
+  "prompt": "The hierarchy in powers of nanoseconds: L1 at 10⁰, RAM at 10². Slide the marker to the SSD read.",
+  "labels": [
+    "10⁰ ns",
+    "10² ns",
+    "10⁴ ns",
+    "10⁶ ns",
+    "10⁸ ns"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 8
+  },
+  "answer": 5,
+  "tolerance": 0.5,
+  "why": "SSD ≈ 100 µs = 10⁵ ns — 1,000× RAM; a spinning-disk seek ≈ 10 ms = 10⁷ ns. Touching nearby data together — array walks, not pointer chases — is worth 10–100× at zero cost."
+};
+
+const osStatesSort = {
+  "prompt": "File each situation by what it does to the CPU:",
+  "buckets": [
+    "burns slices",
+    "waits without burning"
+  ],
+  "items": [
+    {
+      "label": "running — on a core",
+      "bucket": 0
+    },
+    {
+      "label": "ready — runnable, awaiting the nod",
+      "bucket": 0
+    },
+    {
+      "label": "blocked — waiting for disk, network or a lock",
+      "bucket": 1
+    },
+    {
+      "label": "a thousand idle connections",
+      "bucket": 1
+    },
+    {
+      "label": "a thousand busy loops",
+      "bucket": 0
+    },
+    {
+      "label": "SIGTERM's cleanup handlers running",
+      "bucket": 0
+    }
+  ],
+  "why": "Blocked processes consume no time slices — which is why a thousand idle connections cost almost nothing."
+};
+
+const osSignalMatch = {
+  "prompt": "The software-interrupt zoo — pair each with its behaviour:",
+  "pairs": [
+    {
+      "left": "SIGTERM",
+      "right": "asks politely — cleanup handlers run"
+    },
+    {
+      "left": "SIGKILL",
+      "right": "cannot be caught — the address space is simply reclaimed"
+    },
+    {
+      "left": "SIGSEGV",
+      "right": "the segment fault itself — delivered on touching an unmapped page"
+    },
+    {
+      "left": "zombie",
+      "right": "exited but whose status no one has collected — a parent's bookkeeping failure"
+    }
+  ],
+  "why": "Orphans get re-parented to init; fork clones the process and exec replaces it — understanding fork/exec is understanding the command line."
+};
+
+const osUnitBranch = {
+  "root": "You are designing a web server. Walk the choice of concurrency unit.",
+  "nodes": {
+    "start": {
+      "text": "One connection crashes with a pointer bug. What do you want to happen?",
+      "choices": [
+        {
+          "label": "Only that connection dies — isolation",
+          "next": "process",
+          "feedback": "Process per connection — the historical fork model: heavy creation, cold caches, but the blast radius is one."
+        },
+        {
+          "label": "Speed matters more — shared state, guarded",
+          "next": "thread",
+          "feedback": "Thread pools: cheap creation, warm caches, trivial communication — and every race, lock and deadlock hazard applies."
+        }
+      ]
+    },
+    "process": {
+      "text": "Isolation bought. What does a browser do about hostile sites?",
+      "choices": [
+        {
+          "label": "Sandbox each site in its own process",
+          "next": "chrome",
+          "feedback": "Isolation bought back at process scale, with threads inside each sandbox for speed."
+        },
+        {
+          "label": "One process for everything — simpler",
+          "next": "risk",
+          "feedback": "One stray site's pointer bug corrupts every open tab — the reason browsers pay the process price."
+        }
+      ]
+    },
+    "thread": {
+      "text": "Threads chosen. Guard the shared state.",
+      "choices": [
+        {
+          "label": "Locks around critical sections",
+          "next": "locks",
+          "feedback": "Indivisible critical sections cure races — and lock ordering is how you avoid the deadlock cycle."
+        }
+      ]
+    },
+    "chrome": {
+      "text": "The browser's model: process-per-site for isolation, threads inside for speed — the same dial at browser scale.",
+      "choices": []
+    },
+    "risk": {
+      "text": "A pointer bug in one thread corrupts a sibling rather than failing safely — isolation is why the browser pays for processes.",
+      "choices": []
+    },
+    "locks": {
+      "text": "Locks, atomics, and lock ordering to break the deadlock cycle — the discipline in your own server.",
+      "choices": []
+    }
+  },
+  "why": "Threads exchange isolation for cheap communication; processes exchange communication cost for isolation — one dial, redrawn at all scales."
+};
+
+const osKernelJudge = {
+  "statements": [
+    {
+      "s": "Monolithic kernels run everything in kernel mode for speed, at the price of a driver bug crashing the machine.",
+      "truth": true,
+      "why": "Linux's model: fast, monolithic — one bad driver takes the whole system down."
+    },
+    {
+      "s": "Microkernels keep a minimal core and push drivers to user-space servers for isolation.",
+      "truth": true,
+      "why": "Minix, seL4, QNX — at a message-passing cost."
+    },
+    {
+      "s": "seL4 is a monolithic kernel, formally proven fast.",
+      "truth": false,
+      "why": "It is a verified MICROkernel — formally proven correct against its specification, the field's proof the dream is achievable."
+    },
+    {
+      "s": "Containers share a kernel but isolate views; hypervisors give each guest OS the illusion of owning real hardware.",
+      "truth": true,
+      "why": "Virtualisation is virtual memory's generalisation — the same trick, one level up."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/operating-systems-basics">
   <h2>Where you are, and what you will learn</h2>
@@ -114,6 +310,7 @@ const osQuiz = {
     are implemented; a page fault is an interrupt raised by the memory unit. Interrupts convert "the OS is
     in charge" from a slogan into an electrical fact.
   </p>
+  <Widget no="10" caption="fill the blanks — the heartbeat of multitasking" widget="cloze" config={osInterruptCloze} />
   <p><em>Common misconception:</em> the operating system is the desktop — the windows, icons
   and wallpaper you interact with. Those belong to a desktop environment or shell, an
   application running <em>on</em> the OS; the operating system proper is the kernel and its
@@ -159,6 +356,7 @@ const osQuiz = {
     and zero-filled pages are all refinements of the same illusion — memory stopped being an address and
     became a managed cache.
   </p>
+  <Widget no="9" caption="call the price of one miss" widget="estimate" config={osPagefaultEst} />
   <p><em>Common misconception:</em> virtual memory is a backup that only switches on when RAM
   runs out. The translation through page tables runs on <em>every</em> memory access, from
   the first instruction, and its everyday job is protection and isolation — keeping one
@@ -221,6 +419,8 @@ const osQuiz = {
     lesson's cache warning, and the reason "free memory is wasted memory" (idle RAM is doing cache
     duty).
   </p>
+  <Widget no="8" caption="put the boot sequence in order" widget="order" config={osBootOrder} />
+  <Widget no="7" caption="slide to the SSD's rung on the hierarchy" widget="place" config={osHierarchyPlace} />
 
   <p>
     <strong>So far:</strong> the referee manages the CPU, memory, concurrency and files — and
@@ -246,6 +446,8 @@ const osQuiz = {
     copied) and the clone replaces itself with a new program (exec) — the shell's whole job, which is
     why understanding fork/exec is understanding how the command line works.
   </p>
+  <Widget no="6" caption="file each situation by what it does to the CPU" widget="sort-buckets" config={osStatesSort} />
+  <Widget no="5" caption="pair each signal with its behaviour" widget="match" config={osSignalMatch} />
 
   <h2>Threads versus processes, decided</h2>
   <p>
@@ -264,6 +466,7 @@ const osQuiz = {
     threads and processes, you are choosing where to spend on isolation versus where to spend on
     communication — the same dial, redrawn at every scale from microcontrollers to data centres.
   </p>
+  <Widget no="4" caption="walk the concurrency-unit choice" widget="branch" config={osUnitBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -324,6 +527,7 @@ const osQuiz = {
     kernel attack surfaces shrink as security pressure grows; and as data centres become "one computer,"
     does the OS boundary move up a level — the scheduling question of the next decade.
   </p>
+  <Widget no="3" caption="true or false — the kernel architecture argument" widget="judge" config={osKernelJudge} />
 
   <p class="sources"><strong>Sources:</strong> Tanenbaum, <em>Modern Operating Systems</em>; Arpaci-Dusseau, <em>Operating Systems: Three Easy Pieces</em>; Silberschatz, <em>Operating System Concepts</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 

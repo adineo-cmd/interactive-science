@@ -21,6 +21,181 @@ const staticsCfg = {
     { math: '5 · Dynamics when things move', note: 'Add inertia (F = ma) and moving loads become dynamic: impact factors, resonance, and the reason soldiers break step on bridges.' },
   ],
 };
+
+const ceDetermBranch = {
+  "root": "You are handed a structure and its supports. How do you know whether statics alone can finish the job?",
+  "nodes": {
+    "start": {
+      "text": "Count first: how many unknown support forces, against how many equilibrium statements?",
+      "choices": [
+        {
+          "label": "Three unknowns, three statements in 2-D",
+          "next": "determinate",
+          "feedback": "The budget matches — solve ΣFx = 0, ΣFy = 0, ΣM = 0 and every reaction falls out."
+        },
+        {
+          "label": "More unknowns than statements",
+          "next": "indeterminate",
+          "feedback": "Equilibrium alone cannot close it — material stiffness must be invited in."
+        }
+      ]
+    },
+    "determinate": {
+      "text": "Statically determinate: statics finds every reaction. Cut the members and equilibrium still holds, exposing axial force, shear and bending moment.",
+      "choices": []
+    },
+    "indeterminate": {
+      "text": "Indeterminate — a continuous beam over several supports, a rigid frame. What closes the surplus?",
+      "choices": [
+        {
+          "label": "Deformations: members must deflect together",
+          "next": "compat",
+          "feedback": "Compatibility plus stiffness — and stiffer members attract more load, which is why differential settlement matters more than novices expect."
+        }
+      ]
+    },
+    "compat": {
+      "text": "Material stiffness and compatibility of deformation close the surplus — the gateway from second-year mechanics to real design.",
+      "choices": []
+    }
+  },
+  "why": "Three per body is the hard budget in two dimensions: match it and statics finishes; exceed it and stiffness must join."
+};
+
+const ceMomentJudge = {
+  "statements": [
+    {
+      "s": "If the vertical forces balance, everything is fine.",
+      "truth": false,
+      "why": "Forces can cancel while turning effects do not — the second condition is about the twist, not the push."
+    },
+    {
+      "s": "Two equal, opposite forces on either side of a steering wheel produce zero net force and still spin it furiously.",
+      "truth": true,
+      "why": "A pure couple: zero net force, maximum turning effect."
+    },
+    {
+      "s": "A crane's counterweight is there to add upward force.",
+      "truth": false,
+      "why": "Its job is cancelling turning effects — placement, not push."
+    },
+    {
+      "s": "The moment of a force is the force times the perpendicular distance from the pivot to the force's line.",
+      "truth": true,
+      "why": "M = r·F — the see-saw rule and the door hinge are the same arithmetic."
+    }
+  ]
+};
+
+const ceTrussSort = {
+  "prompt": "File each member by what it does:",
+  "buckets": [
+    "tension — it pulls",
+    "compression — it pushes"
+  ],
+  "items": [
+    {
+      "label": "the rafters under the apex load",
+      "bucket": 1
+    },
+    {
+      "label": "the horizontal tie at the apex",
+      "bucket": 0
+    },
+    {
+      "label": "the cable stays of a suspension span",
+      "bucket": 0
+    },
+    {
+      "label": "columns under a building's weight",
+      "bucket": 1
+    },
+    {
+      "label": "the vertical hangers of a suspension bridge",
+      "bucket": 0
+    },
+    {
+      "label": "the ring of a masonry arch",
+      "bucket": 1
+    }
+  ],
+  "why": "A pin joint can pull or push but never bend — that is what turns a tangle of steel into pure arithmetic."
+};
+
+const ceJointsOrder = {
+  "prompt": "One apex, two rafters at 30°, a horizontal tie, a 10 kN load — put the working in order:",
+  "items": [
+    "Isolate the apex joint — two unknown bar forces, two useful statements",
+    "Vertical equilibrium: two rafters × sin 30° must carry 10 kN — each rafter pushes with 10 kN",
+    "The rafters are in compression — they will need buckling checks",
+    "Horizontal equilibrium: the tie pulls with 10 × cos 30° ≈ 8.7 kN",
+    "The tie is in tension — strength only, no buckling check"
+  ],
+  "why": "Each pin is a small body in equilibrium — three members, one apex, three sentences of algebra."
+};
+
+const ceJoistEst = {
+  "prompt": "A 100 mm × 200 mm timber joist stands on edge (I = b·h³/12 about the horizontal axis). Roughly what is its second moment of area?",
+  "unit": "×10⁶ mm⁴",
+  "answer": 66.7,
+  "factor": 1.5,
+  "why": "About 66.7 × 10⁶ mm⁴ — laid flat it collapses to 16.7 × 10⁶, four times less stiffness from the same plank, same weight.",
+  "context": "Depth enters cubed: growing 200 mm to 400 mm multiplies I by 2³ = 8 — the whole secret of the I-beam."
+};
+
+const ceDiagramMatch = {
+  "prompt": "Read the diagram like a designer — pair each feature with its use:",
+  "pairs": [
+    {
+      "left": "the peak at mid-span",
+      "right": "the maximum demand the worst section must carry"
+    },
+    {
+      "left": "the zeros at the supports",
+      "right": "where connections can be lighter"
+    },
+    {
+      "left": "spreading the same load uniformly",
+      "right": "peak drops from P·L/4 to w·L²/8 — half the value"
+    },
+    {
+      "left": "a heavier, misplaced load discovered after the fact",
+      "right": "what many failure investigations reduce to"
+    }
+  ],
+  "why": "Every load case draws its own diagram, and the design must survive the envelope of all of them."
+};
+
+const ceFloorPlace = {
+  "prompt": "Pedestrians walk at 1.6–2.4 steps per second, with harmonics at two and three times that. Slide the marker to the frequency guidance pushes rhythmic-occupancy floors above.",
+  "labels": [
+    "0 Hz",
+    "3 Hz",
+    "6 Hz",
+    "9 Hz",
+    "12 Hz"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 12
+  },
+  "answer": 7.5,
+  "tolerance": 1,
+  "why": "About 7.5 Hz — not so the floor is stronger, but so the crowd cannot find their rhythm. The worked floor sits at ≈6.4 Hz: above a brisk walk's second harmonic, but not comfortably."
+};
+
+const ceRegimesCompare = {
+  "prompt": "The same three equations, with and without inertia — drag the divider:",
+  "before": {
+    "label": "statics",
+    "text": "Bodies never accelerate: zero net force and zero net moment, three statements per body — a parked truck loads the deck no harder than it weighs."
+  },
+  "after": {
+    "label": "dynamics",
+    "text": "Add mass × acceleration: rolling trucks arrest suspension and hit harder (amplification often ~1.3), and rhythmic loads pump energy at natural frequencies."
+  },
+  "why": "Same three equations, new inertia terms — and suddenly crowds can walk a deck into swaying."
+};
 ---
 <TopicPage slug="subjects/civil-engineering/foundational/statics-and-dynamics-for-civil-engineers">
 
@@ -107,6 +282,7 @@ const staticsCfg = {
     equilibrium cannot finish the job, and material stiffness must be invited in. That is
     <strong>indeterminate</strong> analysis, and it waits for a later lesson.
   </p>
+  <Widget no="10" caption="run the budget check — can statics finish alone?" widget="branch" config={ceDetermBranch} />
   <p>
     One idealisation powers all of this: the <strong>rigid body</strong>. Statics treats every
     body as perfectly undeformable — geometry never changes, so forces never redistribute.
@@ -119,6 +295,7 @@ const staticsCfg = {
   applied on either side of a steering wheel produce zero net force and still spin the wheel
   furiously. A structure needs ΣM = 0 as well as ΣF = 0, which is precisely why a crane's
   counterweight is placed where it is: not to add force, but to cancel moments.</p>
+  <Widget no="9" caption="true or false — the balance trap" widget="judge" config={ceMomentJudge} />
   <p>
     <strong>So far:</strong> statics rests on one claim — a body at rest has zero net force
     <em>and</em> zero net moment — which becomes three equations per body in two dimensions.
@@ -135,6 +312,7 @@ const staticsCfg = {
     joint, each one contributes a force of known direction. That turns a daunting tangle of
     steel into pure arithmetic, because each joint is a small body in equilibrium.
   </p>
+  <Widget no="8" caption="file each member by what it does" widget="sort-buckets" config={ceTrussSort} />
   <p>
     The <strong>method of joints</strong> exploits this one pin at a time. Take two rafters
     meeting at an apex, joined by a horizontal tie, with a 10 kN load hanging at the apex. At
@@ -145,6 +323,7 @@ const staticsCfg = {
     members, one joint, three sentences of algebra — and a designer already knows which bars
     need buckling checks (the compression ones) and which need only strength (the tie).
   </p>
+  <Widget no="7" caption="put the apex working in order" widget="order" config={ceJointsOrder} />
   <p>
     Why triangles? Because a triangle is the only polygon whose shape is fixed by its side
     lengths: a rectangle of hinged bars can shear into a parallelogram, but a hinged triangle
@@ -180,6 +359,7 @@ const staticsCfg = {
     <code>σ = M·y ÷ I</code> — stress grows with distance y from the neutral axis (which is
     why the flanges, at maximum y, do the work) and shrinks in direct proportion to I.
   </p>
+  <Widget no="6" caption="call the stiffness of the joist on edge" widget="estimate" config={ceJoistEst} />
   <p><em>Common misconception:</em> "more area means more stiffness." Not so — geometry
   dominates. A thin steel rule stood on edge is far harder to bend than a much heavier plank
   laid flat, and a hollow tube beats a solid rod of the same area. Area controls axial
@@ -195,6 +375,7 @@ const staticsCfg = {
     load P, statics gives a triangular diagram with peak <code>M = P·L/4</code> at mid-span:
     with P = 10 kN and L = 8 m, the peak is 10 × 8 ÷ 4 = 20 kN·m.
   </p>
+  <Widget no="5" caption="pair each diagram feature with its design use" widget="match" config={ceDiagramMatch} />
 
   <Widget no="2" caption="bending moment under a central point load" widget="plotter" config={trussCfg} />
   <p>
@@ -247,6 +428,7 @@ const staticsCfg = {
     cannot find their rhythm. The same calculation, run laterally, is what the Millennium
     Bridge's designers under-weighted.
   </p>
+  <Widget no="4" caption="slide to the frequency floors must clear" widget="place" config={ceFloorPlace} />
   <p><em>Common misconception:</em> adding material always makes a structure safer. Mass is
   not free: it arrives as dead load the members must carry forever, and in an earthquake the
   inertia force is proportional to mass — a heavier building asks for a bigger earthquake
@@ -259,6 +441,7 @@ const staticsCfg = {
     trucks hit harder than their weight and crowds can walk a bridge into swaying. One
     toolkit, two regimes.
   </p>
+  <Widget no="3" caption="drag the divider across the two regimes" widget="compare" config={ceRegimesCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

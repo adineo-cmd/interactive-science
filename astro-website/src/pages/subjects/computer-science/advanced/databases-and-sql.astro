@@ -44,6 +44,189 @@ const sqlQuiz = {
     },
   ],
 };
+
+const sqlBigtableCompare = {
+  "prompt": "Same school register, two shapes — drag the divider:",
+  "before": {
+    "label": "one big table",
+    "text": "Reads fine, joins look like extra work — and the tutor's room changes while 400 rows need editing; a student with no courses cannot exist; cancelling a last enrolment erases the student."
+  },
+  "after": {
+    "label": "normalised schema",
+    "text": "Each fact stored once so the tables cannot disagree with themselves — the join you pay at query time is cheap and automatic."
+  },
+  "why": "A small, predictable price for eliminating a whole class of silent corruption — normalise by default, denormalise deliberately for measured performance."
+};
+
+const sqlJoinSort = {
+  "prompt": "File each behaviour under the join that does it:",
+  "buckets": [
+    "INNER JOIN",
+    "LEFT JOIN"
+  ],
+  "items": [
+    {
+      "label": "matches rows on the keys and drops non-matches",
+      "bucket": 0
+    },
+    {
+      "label": "keeps all left rows, fills missing right rows with NULL",
+      "bucket": 1
+    },
+    {
+      "label": "answers 'who bought what this year?'",
+      "bucket": 0
+    },
+    {
+      "label": "answers 'who did NOT buy?'",
+      "bucket": 1
+    },
+    {
+      "label": "customers with no orders this year disappear",
+      "bucket": 0
+    },
+    {
+      "label": "the single most useful join distinction",
+      "bucket": 1
+    }
+  ],
+  "why": "One declarative sentence; the engine chooses scan or index, join order and hash versus nested loops."
+};
+
+const sqlIndexTrace = {
+  "prompt": "Rows touched against data size — which curve is lookup by a highly varied key on a B-tree?",
+  "curves": [
+    {
+      "expr": "log(x)/log(2)",
+      "label": "curve A",
+      "color": "#d9480f"
+    },
+    {
+      "expr": "x/6",
+      "label": "curve B",
+      "color": "#1f6f54"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 1,
+    "max": 1000
+  },
+  "y": {
+    "min": 0,
+    "max": 200
+  },
+  "xlabel": "rows in the store",
+  "ylabel": "rows touched",
+  "why": "With a highly varied key the planner touches 3–4 nodes instead of millions of rows; with 6 distinct values, each entry still points at a sixth of the store — barely better than reading everything."
+};
+
+const sqlIsoBranch = {
+  "root": "Two sessions run against the same account table. Walk the concurrency choices.",
+  "nodes": {
+    "start": {
+      "text": "Session A reads a balance that Session B has written but not yet committed. What just happened?",
+      "choices": [
+        {
+          "label": "A dirty read — A may act on data that gets rolled back",
+          "next": "dirty",
+          "feedback": "Exactly the anomaly isolation exists to prevent — READ UNCOMMITTED allows it; production engines usually refuse."
+        },
+        {
+          "label": "Nothing yet — commits will sort it out",
+          "next": "later",
+          "feedback": "If B rolls back, A has already acted on money that never moved — the bug isolation prevents."
+        }
+      ]
+    },
+    "dirty": {
+      "text": "You need isolation. Which level, at what cost?",
+      "choices": [
+        {
+          "label": "READ COMMITTED — never see uncommitted data",
+          "next": "rc",
+          "feedback": "The common production floor: each read sees committed data only, trading some anomaly risk for concurrency."
+        },
+        {
+          "label": "SERIALIZABLE — as if transactions ran one at a time",
+          "next": "serial",
+          "feedback": "Maximum safety, minimum concurrency — the dial runs from READ UNCOMMITTED up to here."
+        }
+      ]
+    },
+    "later": {
+      "text": "If B rolls back, A has acted on money that never moved — the dirty read is why isolation is a guarantee, not a courtesy.",
+      "choices": []
+    },
+    "rc": {
+      "text": "READ COMMITTED or REPEATABLE READ: production trade-offs — anomaly risk priced against concurrency, delivered by locking or MVCC (readers never block writers).",
+      "choices": []
+    },
+    "serial": {
+      "text": "SERIALIZABLE: the strictest rung — safest books, least throughput; the dial is a spectrum, not a switch.",
+      "choices": []
+    }
+  },
+  "why": "Isolation is a range, not a binary — production systems trade anomaly risk for concurrency, and MVCC lets readers never block writers."
+};
+
+const sqlMigrateOrder = {
+  "prompt": "From spreadsheet to schema — put the moves in order:",
+  "items": [
+    "Identify entities — students, tutors, courses, enrolments: the nouns with their own identity",
+    "Assign surrogate keys to each",
+    "Move attributes to the entity they describe — dob to students, room to tutors",
+    "Model the relationship as its own table — enrolments(student_id, course_id, grade)",
+    "Four tables joined by foreign keys — update-proof by construction"
+  ],
+  "why": "The tutor's room exists once; history is preserved; the 'who takes what' view is one join away."
+};
+
+const sqlConstraintMatch = {
+  "prompt": "Pair each tool with the rule it enforces:",
+  "pairs": [
+    {
+      "left": "UNIQUE",
+      "right": "prevents double enrolment"
+    },
+    {
+      "left": "CHECK (grade IN ('A','B','C','D','F'))",
+      "right": "refuses typos — invalid states unrepresentable"
+    },
+    {
+      "left": "NOT NULL",
+      "right": "documents what is truly required"
+    },
+    {
+      "left": "INSERT ... ON CONFLICT DO UPDATE",
+      "right": "'create or refresh' as one atomic statement — no read-then-write race"
+    }
+  ],
+  "why": "The schema is policy: a well-typed table partly enforces its own correctness, surviving the next developer who has not read your comments."
+};
+
+const sqlTypeSpot = {
+  "prompt": "One of these type choices is wrong — click it:",
+  "lines": [
+    "Money in DECIMAL: binary representation makes 0.1 + 0.2 = 0.30000000000000004.",
+    "Dates as DATE, not strings: a typed DATE gives range queries, indexing and arithmetic for free.",
+    "A status column typed as an enumerated set makes invalid states unrepresentable.",
+    "CHAR vs VARCHAR: a two-letter country code wants VARCHAR(2) for flexibility.",
+    "Types are the cheapest constraints you will ever buy — enforced at every insert, no application code."
+  ],
+  "errorLine": 3,
+  "correction": "Fixed vs variable text trades padding for flexibility — a two-letter country code wants CHAR(2), the fixed-width type.",
+  "why": "Types are the cheapest constraints you will ever buy — schema is policy."
+};
+
+const sqlPlannerEst = {
+  "prompt": "For a join across 8 tables, roughly how many possible orderings must the optimiser enumerate?",
+  "unit": "orderings",
+  "answer": 17000,
+  "factor": 2,
+  "why": "About 17,000 — heuristics required; a 'fast query' is really 'a plan that could be estimated well'.",
+  "context": "Stale metadata is the classic cause of sudden slowness."
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/databases-and-sql">
   <h2>Where you are, and what you will learn</h2>
@@ -122,6 +305,7 @@ const sqlQuiz = {
   picture: normalisation stores each fact once so the table cannot disagree with itself, and
   the join you pay at query time is cheap and automatic — a small, predictable price for
   eliminating a whole class of silent corruption.</p>
+  <Widget no="10" caption="drag the divider across the redesign" widget="compare" config={sqlBigtableCompare} />
   <p>
     <strong>So far:</strong> tables, types and keys refuse bad data at the door, and the three
     anomalies show what happens when one fact lives in many rows. Next, the language that
@@ -149,6 +333,7 @@ const sqlQuiz = {
     drops rows whose status is NULL, because NULL compares unknown — a bug class every professional has
     met. One declarative sentence; the engine chooses scan or index, join order and hash versus nested loops.
   </p>
+  <Widget no="9" caption="file each behaviour under the join that does it" widget="sort-buckets" config={sqlJoinSort} />
 
   <h2>Indexes: trading writes for reads</h2>
   <p>
@@ -160,6 +345,7 @@ const sqlQuiz = {
     beats a scan while still taxing every write. Index the columns you filter, join and sort on; measure
     with the planner (EXPLAIN), not folklore.
   </p>
+  <Widget no="8" caption="which curve is the indexed lookup?" widget="trace" config={sqlIndexTrace} />
   <p><em>Common misconception:</em> "add an index and the query gets faster." Sometimes it gets slower (the
   planner may still scan if the index is unselective), and writes always get slower. Indexes are a
   read/write arbitrage, priced per insert.</p>
@@ -181,6 +367,7 @@ const sqlQuiz = {
     control — readers never block writers), which is why one busy PostgreSQL database can serve thousands
     of simultaneous sessions honestly.
   </p>
+  <Widget no="7" caption="walk the isolation dial" widget="branch" config={sqlIsoBranch} />
   <p><em>Common misconception:</em> "the application can tidy up after a crash — check the
   balance afterwards and repair any half-finished transfer." It seems reasonable because
   applications do handle errors with try/catch all the time. But a power cut is not a catchable
@@ -211,6 +398,7 @@ const sqlQuiz = {
     view is one join away. The migration is the syllabus's single-table topic graduate: the same data,
     reorganised around facts rather than rows-of-convenience.
   </p>
+  <Widget no="6" caption="from spreadsheet to schema, in order" widget="order" config={sqlMigrateOrder} />
 
   <h2>Writing data: constraints, upserts and windows</h2>
   <p>
@@ -227,6 +415,7 @@ const sqlQuiz = {
     usually asking for a join restructure or a window function — the language rewards reformulation
     over nesting.
   </p>
+  <Widget no="5" caption="pair each tool with the rule it enforces" widget="match" config={sqlConstraintMatch} />
 
   <h2>Designing the query: a planner's-eye pass</h2>
   <p>
@@ -260,6 +449,7 @@ const sqlQuiz = {
     no application code, surviving the next developer who has not read your comments. Schema is policy;
     a well-typed table is an application that partly enforces its own correctness.
   </p>
+  <Widget no="4" caption="find the faulty line — the type consequences" widget="spot-error" config={sqlTypeSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -312,6 +502,7 @@ const sqlQuiz = {
     based query optimisers; and the long-running empirical question of whether any interface will displace
     SQL — fifty years of challengers have so far only enriched it.
   </p>
+  <Widget no="3" caption="call the size of the planner's search" widget="estimate" config={sqlPlannerEst} />
 
   <p class="sources"><strong>Sources:</strong> Codd, "A Relational Model of Data for Large Shared Data Banks" (1970); Chamberlin &amp; Boyce (1974); PostgreSQL documentation; Silberschatz, Korth &amp; Sudarshan, <em>Database System Concepts</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 

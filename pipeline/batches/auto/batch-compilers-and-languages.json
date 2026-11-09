@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "subjects/computer-science/expert/compilers-and-languages",
+    "activities": [
+      {
+        "anchor": "Watch the pipeline work on one line of a made-up language",
+        "type": "order",
+        "caption": "one sentence through the funnel, in order",
+        "name": "compFunnelOrder",
+        "config": {
+          "prompt": "One sentence — total = price + 4 * 2 — through the funnel. Put the stages' actions in order:",
+          "items": [
+            "The lexer groups characters into seven tokens, whitespace discarded",
+            "The parser builds the AST — an assignment node, an addition node, a multiplication node",
+            "The grammar gives * higher precedence than +, so the tree is price + (4 * 2)",
+            "The semantic analyser walks the tree with the symbol table — was price ever declared?",
+            "The optimiser folds 4 * 2 to 8 — a provably-equivalent rewrite"
+          ],
+          "why": "Each stage checks something before passing the work down — verification rides the translation all the way to silicon."
+        }
+      },
+      {
+        "anchor": "A program can be perfectly grammatical and still meaningless",
+        "type": "sort-buckets",
+        "caption": "file each complaint by the stage that raises it",
+        "name": "compErrorSort",
+        "config": {
+          "prompt": "File each complaint by the stage that raises it:",
+          "buckets": ["the lexer's", "the parser's", "the semantic analyser's"],
+          "items": [
+            { "label": "an identifier starting with a digit", "bucket": 0 },
+            { "label": "'missing semicolon'", "bucket": 1 },
+            { "label": "'price was never declared' — absent from the symbol table", "bucket": 2 },
+            { "label": "a string added to a number", "bucket": 2 },
+            { "label": "the tokens arrive in an order the grammar forbids", "bucket": 1 },
+            { "label": "'colourless green ideas sleep furiously' — well-formed English that means nothing", "bucket": 2 }
+          ],
+          "why": "Each check is cheapest at its own level — spelling, then grammar, then sense."
+        }
+      },
+      {
+        "anchor": "each stage is a small program whose only job is to load the next",
+        "type": "cloze",
+        "caption": "fill the blanks — the chain from nothing to running",
+        "name": "compBootCloze",
+        "config": {
+          "text": "Power on, and the CPU executes %%0%% stored on the motherboard: it runs the power-on self-test, finds the boot device, loads the %%1%% from the disk's boot sector, and the bootloader loads the OS %%2%% into RAM and hands over.",
+          "answers": [["firmware"], ["bootloader"], ["kernel"]],
+          "hint": "Small programs loading bigger ones — nothing useful was in RAM when the chain began."
+        }
+      },
+      {
+        "anchor": "yet a keyboard is pressed perhaps ten times a minute",
+        "type": "estimate",
+        "caption": "call the polling bill",
+        "name": "compPollEst",
+        "config": {
+          "prompt": "A 3 GHz CPU polling one device 100 times a second — roughly how many idle cycles per second does that burn?",
+          "unit": "cycles",
+          "answer": 300000000,
+          "factor": 3,
+          "why": "Hundreds of millions of idle cycles — all for a device used about ten moments per minute; the interrupt replaces the question with a signal.",
+          "context": "Attention spent only when there is news: the device raises it, the CPU looks up the routine's address and runs it."
+        }
+      },
+      {
+        "anchor": "Three translators connect the levels",
+        "type": "match",
+        "caption": "pair each translator with its behaviour",
+        "name": "compTranslatorMatch",
+        "config": {
+          "prompt": "Pair each tool with its behaviour:",
+          "pairs": [
+            { "left": "assembler", "right": "converts assembly to machine code essentially one-for-one — fast, unforgiving" },
+            { "left": "compiler", "right": "translates a whole program before it runs — full-speed execution, no translator present" },
+            { "left": "interpreter", "right": "reads and executes a statement at a time, stopping at the first error" },
+            { "left": "JIT system", "right": "watches which code runs hot and compiles just those parts, with assumptions from actual runtime behaviour" }
+          ],
+          "why": "There is no clean line between compiled and interpreted — only points along a spectrum of how much is translated in advance."
+        }
+      },
+      {
+        "anchor": "The explosion of languages is not indecision",
+        "type": "branch",
+        "caption": "walk the language-design fork",
+        "name": "compTradeBranch",
+        "config": {
+          "root": "You are designing a language. Walk the fork in the road.",
+          "nodes": {
+            "start": {
+              "text": "When should type errors surface?",
+              "choices": [
+                { "label": "Before running — static typing", "next": "static", "feedback": "C, Rust, TypeScript: earlier error catching, more optimisation fuel — and more ceremony at write time." },
+                { "label": "At run time — dynamic typing", "next": "dynamic", "feedback": "Python, JavaScript: faster to write, errors surface later — the runtime pays for the flexibility." }
+              ]
+            },
+            "dynamic": {
+              "text": "Dynamic chosen. Now memory. Who frees it?",
+              "choices": [
+                { "label": "A garbage collector", "next": "gc", "feedback": "Java, Go — safe, with occasional pauses; the runtime does the bookkeeping." },
+                { "label": "The programmer, manually", "next": "manual", "feedback": "C — fast and dangerous; one forgotten free is a bug class." },
+                { "label": "The compiler, via ownership rules", "next": "owner", "feedback": "Rust — safe and fast, harder to learn: the borrow checker is the price." }
+              ]
+            },
+            "static": {
+              "text": "Static chosen. Now memory.",
+              "choices": [
+                { "label": "Ownership rules — the borrow checker", "next": "owner", "feedback": "Rust's point in the space: safe and fast, harder to learn." },
+                { "label": "A garbage collector", "next": "gc", "feedback": "Safe, with occasional pauses." }
+              ]
+            },
+            "gc": {
+              "text": "Garbage collection trades pauses for safety; ownership trades a learning curve for both — every point on the dial is a choice, not progress.",
+              "choices": []
+            },
+            "manual": {
+              "text": "Manual management buys speed and sells danger — device drivers and bootloaders still pay it deliberately.",
+              "choices": []
+            },
+            "owner": {
+              "text": "Ownership: the borrow checker proves safety at compile time — safe and fast, harder to learn.",
+              "choices": []
+            }
+          },
+          "why": "Typing, memory management, paradigms — choices, not progress toward one perfect language."
+        }
+      },
+      {
+        "anchor": "in what was once the slowest language class in common use",
+        "type": "judge",
+        "caption": "true or false — the JIT reversal",
+        "name": "compJitJudge",
+        "config": {
+          "statements": [
+            { "s": "Compiled programs are always faster than interpreted ones.", "truth": false, "why": "Modern JIT systems watch which code runs hot, compile just those parts with assumptions from actual runtime behaviour, and outperform naive ahead-of-time compilation." },
+            { "s": "JavaScript engines render modern 3D games at 60 frames a second.", "truth": true, "why": "A full reversal for a category long considered hopeless." },
+            { "s": "JIT compilation already uses machine learning to predict hot code before it runs.", "truth": false, "why": "That is an open question — prediction before the fact remains research; today's JITs measure and react." },
+            { "s": "There is a clean line between compiled and interpreted languages.", "truth": false, "why": "Java and Python both compile to bytecode for a virtual machine — only points along a spectrum of how much is translated in advance." }
+          ]
+        }
+      },
+      {
+        "anchor": "the jump is essential",
+        "type": "trace",
+        "caption": "which curve is the finite automaton?",
+        "name": "compBracketTrace",
+        "config": {
+          "prompt": "Memory use against input length while counting nested brackets — which curve is the finite automaton's attempt?",
+          "curves": [
+            { "expr": "0", "label": "curve A — no memory at all", "color": "#d9480f" },
+            { "expr": "x", "label": "curve B — grows with depth (a stack)", "color": "#1f6f54" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 10 },
+          "y": { "min": 0, "max": 12 },
+          "xlabel": "input length",
+          "ylabel": "memory needed",
+          "why": "The finite automaton has no memory beyond its current state — nested structures cannot be lexed, only parsed; the stack of a context-free grammar is what the count requires."
+        }
+      }
+    ]
+  }
+]

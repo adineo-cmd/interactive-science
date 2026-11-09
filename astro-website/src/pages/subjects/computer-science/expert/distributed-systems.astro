@@ -11,6 +11,203 @@ const distCfg = {
     { math: '5 · Consensus — agreeing anyway', note: 'Paxos and Raft let machines agree on one value despite crashes and lost messages — the algorithm behind every serious distributed database. elegantly simple; Raft\'s paper is genuinely readable.' },
   ],
 };
+
+const distOutageOrder = {
+  "prompt": "Put the October 2021 collapse in order:",
+  "items": [
+    "Facebook withdraws the BGP announcements that tell the internet how to reach its DNS servers",
+    "Facebook, Instagram and WhatsApp vanish for about six hours",
+    "The company's own staff cannot easily reach the buildings or tools to fix it — internal routes went down with the announcement",
+    "Serious teams begin treating routing and DNS as safety-critical"
+  ],
+  "why": "The distributed-system lesson in one afternoon — the mechanisms everyone reuses are the ones that can take a planet offline."
+};
+
+const distQuorumBranch = {
+  "root": "N = 3 replicas of one shard. Tune the settings.",
+  "nodes": {
+    "start": {
+      "text": "Writes need W acknowledgements; reads wait for R responses. Default suggestion?",
+      "choices": [
+        {
+          "label": "W = 2, R = 2 — W + R = 4 exceeds N",
+          "next": "safe",
+          "feedback": "Every read must overlap at least one fresh copy — consistency survives one crashed node, at the cost of every read contacting two machines."
+        },
+        {
+          "label": "W = 1, R = 1 — fastest",
+          "next": "fast",
+          "feedback": "Writes to one copy leave two stale: a read from a stale node returns old data — fast, and eventually consistent."
+        }
+      ]
+    },
+    "fast": {
+      "text": "Stale reads accepted. What does that buy during a cut?",
+      "choices": [
+        {
+          "label": "Availability — answer from whatever copy you have",
+          "next": "avail",
+          "feedback": "The CAP availability side: the system keeps answering while copies disagree."
+        },
+        {
+          "label": "Consistency — refuse reads that cannot reach a threshold",
+          "next": "consis",
+          "feedback": "The CAP consistency side: no answers during the cut, but nothing wrong leaves the building."
+        }
+      ]
+    },
+    "safe": {
+      "text": "The safe setting. What breaks it?",
+      "choices": [
+        {
+          "label": "A second node crashes — W = 2 now unreachable",
+          "next": "down",
+          "feedback": "With one live node, writes must refuse: the consistency side of CAP during a cut."
+        }
+      ]
+    },
+    "avail": {
+      "text": "Available and eventually consistent — the DNS school: staleness accepted, answers always.",
+      "choices": []
+    },
+    "consis": {
+      "text": "Consistent and unavailable during the cut — the bank-balance school: wrong is worse than slow.",
+      "choices": []
+    },
+    "down": {
+      "text": "Two down of three: no write threshold can be met, so the store refuses writes — availability sacrificed for consistency, one request at a time.",
+      "choices": []
+    }
+  },
+  "why": "Tune W and R per request, per piece of data — the CAP call belongs to the operation, not to the company."
+};
+
+const distWorkloadSort = {
+  "prompt": "File each workload by the mode that suits it:",
+  "buckets": [
+    "strong consistency first",
+    "availability first"
+  ],
+  "items": [
+    {
+      "label": "bank balances",
+      "bucket": 0
+    },
+    {
+      "label": "recommendations",
+      "bucket": 1
+    },
+    {
+      "label": "refuse reads that cannot reach a threshold",
+      "bucket": 0
+    },
+    {
+      "label": "answer from whatever copy you have",
+      "bucket": 1
+    },
+    {
+      "label": "a payment record",
+      "bucket": 0
+    },
+    {
+      "label": "cached profile pictures",
+      "bucket": 1
+    }
+  ],
+  "why": "Engineers who misread the theorem as one-mode-for-everything build systems that are either slow everywhere or wrong where it counts."
+};
+
+const distTpsEst = {
+  "prompt": "At the protocol's base layer, roughly how many payments can this network settle per second?",
+  "unit": "per second",
+  "answer": 7,
+  "factor": 2,
+  "why": "About 7 — Visa peaks in the tens of thousands; and each one burns more energy than many homes use in a year, which is why Ethereum switched its agreement mechanism in 2022.",
+  "context": "Rewriting history means re-mining every block since — economically self-defeating against an honest majority."
+};
+
+const distConsensusCompare = {
+  "prompt": "Two ways to buy the Byzantine Generals result — drag the divider:",
+  "before": {
+    "label": "proof-of-work",
+    "text": "Miners burn electricity: roughly 10²⁰ hashes per second network-wide, each block about 10 minutes of global luck — consensus bought with energy."
+  },
+  "after": {
+    "label": "proof-of-stake",
+    "text": "Validators stake coins instead of burning electricity — Ethereum's 2022 switch cut energy use by an estimated 99.9%."
+  },
+  "why": "Both buy agreement without a referee — and 'immutable' still has an asterisk: a majority cartel can reorganise recent blocks, so the guarantees are economic and probabilistic."
+};
+
+const distGuardMatch = {
+  "prompt": "Pair each mechanism with the layer it guards:",
+  "pairs": [
+    {
+      "left": "TLS",
+      "right": "data on the wire — nothing more"
+    },
+    {
+      "left": "mutual TLS and signed tokens",
+      "right": "service-to-service calls once attackers are inside — the zero-trust assumption"
+    },
+    {
+      "left": "idempotency keys",
+      "right": "replay — the network WILL deliver your payment request twice"
+    },
+    {
+      "left": "distributed defence",
+      "right": "assaults no single machine could survive"
+    }
+  ],
+  "why": "Mirai, 2016: hundreds of thousands of weak-password IoT devices flooded DNS provider Dyn — Twitter, Netflix and Reddit off the air for hours."
+};
+
+const distRaftJudge = {
+  "statements": [
+    {
+      "s": "Raft elects one leader and requires a majority to confirm each log entry.",
+      "truth": true,
+      "why": "2 of 3, 3 of 5 — the arithmetic IS the safety argument."
+    },
+    {
+      "s": "Paxos is famous for being nearly incomprehensible; Raft re-solved the problem to be teachable.",
+      "truth": true,
+      "why": "1998 versus 2014 — same guarantee, readable paper."
+    },
+    {
+      "s": "Two majorities can carry conflicting decisions.",
+      "truth": false,
+      "why": "Any two majorities overlap in at least one live node — conflicting decisions cannot both carry a majority."
+    },
+    {
+      "s": "etcd stores Kubernetes' entire cluster state on top of this machinery.",
+      "truth": true,
+      "why": "etcd, CockroachDB, Spanner — agreement with an engine attached."
+    }
+  ]
+};
+
+const distTailCloze = {
+  "text": "A service that calls %%0%% others, each 99.9% reliable, succeeds fully only about %%1%%% of the time — 1% of a million requests per day is %%2%% failures. A struggling service receiving three retries per failure is under %%3%%× the load it was already failing under.",
+  "answers": [
+    [
+      "10",
+      "ten"
+    ],
+    [
+      "99"
+    ],
+    [
+      "10,000",
+      "10000"
+    ],
+    [
+      "3",
+      "three"
+    ]
+  ],
+  "hint": "Hedged requests, backpressure and circuit breakers are the tail-taming toolkit."
+};
 ---
 <TopicPage slug="subjects/computer-science/expert/distributed-systems">
   <h2>Where you are, and what you will learn</h2>
@@ -83,6 +280,7 @@ const distCfg = {
     announcement. One protocol-level mistake, planet-sized outage: the distributed-system lesson
     in one afternoon, and the reason serious teams treat routing and DNS as safety-critical.
   </p>
+  <Widget no="9" caption="put the October 2021 collapse in order" widget="order" config={distOutageOrder} />
   <p>
     <strong>So far:</strong> the internet's mechanisms — packet switching, hierarchical DNS,
     stateless HTTP — are the design vocabulary every datacentre reuses, and the 2021 Facebook
@@ -104,6 +302,7 @@ const distCfg = {
     W + R = 4 exceeds N, so every read must overlap at least one fresh copy — consistency
     survives one crashed node, at the cost of every read contacting two machines.
   </p>
+  <Widget no="8" caption="tune the read and write settings yourself" widget="branch" config={distQuorumBranch} />
   <p>
     <em>Common misconception:</em> "CAP means you permanently give up one of the three
     properties." The choice only bites <em>during a partition</em>, and it is per-operation, not
@@ -112,6 +311,7 @@ const distCfg = {
     misread CAP as an excuse for one-mode-for-everything build systems that are either slow
     everywhere or wrong where it counts.
   </p>
+  <Widget no="7" caption="file each workload by the mode that suits it" widget="sort-buckets" config={distWorkloadSort} />
 
   <h2>Digital currency: consensus without a referee</h2>
   <p>
@@ -127,6 +327,7 @@ const distCfg = {
     self-defeating against an honest majority. This is the Byzantine Generals problem cracked by
     proof-of-work: agreement among parties who cannot trust each other or any messenger.
   </p>
+  <Widget no="6" caption="call the settlement rate" widget="estimate" config={distTpsEst} />
   <p>
     The trade-offs are the distributed-systems trade-offs wearing a currency: the network
     processes on the order of 7 transactions per second (Visa peaks in the tens of thousands) and
@@ -136,6 +337,7 @@ const distCfg = {
     of the hash power can reorganise recent blocks (51% attacks on smaller coins are documented),
     so the guarantees are economic and probabilistic, not mathematical absolutes.
   </p>
+  <Widget no="5" caption="drag the divider across the two agreement machines" widget="compare" config={distConsensusCompare} />
   <p>
     <em>Common misconception:</em> "blockchain is immutable because of cryptography." Hashes and
     signatures make tampering <em>detectable and expensive</em>; immutability comes from economics
@@ -161,6 +363,7 @@ const distCfg = {
     the air for hours for much of the US East Coast. The vulnerability was thousands of independent
     nodes; the blast radius was a distributed system nobody had treated as one.
   </p>
+  <Widget no="4" caption="pair each mechanism with the layer it guards" widget="match" config={distGuardMatch} />
   <p>
     <em>Common misconception:</em> "the padlock icon means this site is safe." TLS proves the
     connection to <em>example-pharmacy.ru</em> is encrypted and that the server controls a
@@ -190,6 +393,7 @@ const distCfg = {
     acknowledging, which is exactly why geo-distributed systems that cannot afford inter-continental
     round-trips on every write choose weaker consistency instead.
   </p>
+  <Widget no="3" caption="true or false — the consensus arithmetic" widget="judge" config={distRaftJudge} />
 
   <p>
     The delivery-guarantee vocabulary repays memorising, because every message queue
@@ -264,6 +468,7 @@ const distCfg = {
     which is why real systems add exponential backoff, jitter and circuit breakers that fail
     fast rather than multiplying the disaster.
   </p>
+  <Widget no="2" caption="fill the blanks — why the tails eat the average" widget="cloze" config={distTailCloze} />
   <p>
     <strong>Open frontiers.</strong> Serverless platforms push the consistency question to its
     limit (stateless functions force you to externalise every bit of state, re-creating the

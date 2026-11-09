@@ -12,6 +12,185 @@ const phaseCfg = {
   crossings: true,
   height: 340,
 };
+
+const somClingSort = {
+  "prompt": "Seven behaviours, three states — file each into the state that does it:",
+  "buckets": [
+    "solid",
+    "liquid",
+    "gas"
+  ],
+  "items": [
+    {
+      "label": "locked into an ordered lattice, only vibrating",
+      "bucket": 0
+    },
+    {
+      "label": "in contact but free to slide past each other",
+      "bucket": 1
+    },
+    {
+      "label": "flying freely through mostly empty space",
+      "bucket": 2
+    },
+    {
+      "label": "keeps its own shape without a container",
+      "bucket": 0
+    },
+    {
+      "label": "keeps a fixed volume but adopts the container's shape",
+      "bucket": 1
+    },
+    {
+      "label": "pushes on every wall with pressure",
+      "bucket": 2
+    },
+    {
+      "label": "can be squeezed into a smaller volume",
+      "bucket": 2
+    }
+  ],
+  "why": "Grip strength decides everything: locked in place, sliding in contact, or flying free — added heat walks a substance down the row."
+};
+
+const somPredMatch = {
+  "prompt": "Pair each claim with the observation behind it:",
+  "pairs": [
+    {
+      "left": "a gas is a thousand times less dense than its liquid",
+      "right": "same particles, different spacing — water vapour is about 1/1,700 the density of liquid water"
+    },
+    {
+      "left": "convection never works in solids",
+      "right": "heat can only crawl by vibration there; mobile carriers are needed to carry it by travelling"
+    },
+    {
+      "left": "air is light",
+      "right": "N₂ and O₂ at 28 and 32 g/mol are chunkier than water's 18 — the molecules are few and far between, not small"
+    },
+    {
+      "left": "a steel ball expands in a flame",
+      "right": "the iron atoms stay the same size — what grows is the spacing between them"
+    }
+  ],
+  "why": "Spacing, not particle size: one story covers density, conduction limits and expansion."
+};
+
+const somLatentEst = {
+  "prompt": "One gram of water, already at 100 °C — roughly how much energy does turning it fully to vapour take?",
+  "unit": "J per gram",
+  "answer": 2260,
+  "factor": 2,
+  "why": "About 2,260 J/g, versus 334 J/g to melt ice — pulling particles fully apart breaks far more attractions than merely loosening their grip.",
+  "context": "A steam burn is worse than a boiling-water burn because condensing hands this energy to skin; each gram of evaporating sweat carries it away at the same rate."
+};
+
+const somEverestPlace = {
+  "prompt": "At the top of the world's highest mountain, air pressure is roughly a third of sea level. Slide the marker to water's boiling point there.",
+  "labels": [
+    "60 °C",
+    "75 °C",
+    "90 °C",
+    "105 °C",
+    "120 °C",
+    "135 °C"
+  ],
+  "scale": {
+    "min": 60,
+    "max": 135
+  },
+  "answer": 71,
+  "tolerance": 5,
+  "why": "The answer is about 71 °C — the vapour has to match only a third of the outside push. Double the push in a pressure cooker and the boil climbs to about 121 °C: hotter water, not harder water."
+};
+
+const somSubSpot = {
+  "prompt": "A summary of the phase map contains one faulty line — click it:",
+  "lines": [
+    "Every point of a phase diagram is one pressure–temperature pair; the region it lands in is the state taken there.",
+    "The two boundary lines meet at the triple point — for water, 0.01 °C and 611 Pa — where all three phases coexist stably.",
+    "That fixed reference is where the kelvin scale is defined from.",
+    "Below the triple-point pressure there is no liquid, so ice must melt first and then evaporate — two steps, never one.",
+    "Dry ice smokes and vanishes at atmospheric pressure because its triple point lies far above what air can supply."
+  ],
+  "errorLine": 3,
+  "correction": "Below the triple point there is no liquid lane at all: ice goes straight to vapour — sublimation, the route Martian frost and shrinking freezer cubes take.",
+  "why": "No liquid lane survives below the crossing, so the solid-to-vapour route needs no intermediate step."
+};
+
+const somCurveJudge = {
+  "statements": [
+    {
+      "s": "While ice melts at 0 °C, the energy poured in is ungluing the lattice, not raising the temperature.",
+      "truth": true,
+      "why": "Latent heat: 334 J/g spent ungluing, so the thermometer stays pinned until the last cube is gone."
+    },
+    {
+      "s": "The boil is the shortest flat step on the curve because vapour warms fastest.",
+      "truth": false,
+      "why": "It is the longest step — 2,260 J/g, since separating particles completely breaks far more attractions than melting does."
+    },
+    {
+      "s": "A pure substance freezes at a single sharp temperature; a mixture slides through a range.",
+      "truth": true,
+      "why": "That is why a melting point is a standard identity and purity check in every chemistry lab."
+    },
+    {
+      "s": "Water's specific heat of 4.2 J/g per °C is unusually low, so liquid water warms very quickly.",
+      "truth": false,
+      "why": "It is unusually HIGH — another signature property of water, which is why the liquid rise on the curve is a gentle slope."
+    }
+  ]
+};
+
+const somGasCloze = {
+  "text": "Squeeze a gas into a smaller box and its %%0%% climbs — the same number of collisions now landing on less %%1%%. Warm it at fixed volume and the particles hit %%2%% and more often.",
+  "answers": [
+    [
+      "pressure"
+    ],
+    [
+      "wall"
+    ],
+    [
+      "harder"
+    ]
+  ],
+  "hint": "Pressure is nothing but collisions with the wall — fewer walls of space means more hits per second."
+};
+
+const somDiffTrace = {
+  "prompt": "Diffusion rate plotted against particle mass at fixed temperature — which curve is right?",
+  "curves": [
+    {
+      "expr": "6/sqrt(x)",
+      "label": "curve A — falls toward big masses",
+      "color": "#d9480f"
+    },
+    {
+      "expr": "0.5*x",
+      "label": "curve B — climbs with mass",
+      "color": "#1f6f54"
+    },
+    {
+      "expr": "3",
+      "label": "curve C — independent of mass",
+      "color": "#4455aa"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 1,
+    "max": 36
+  },
+  "y": {
+    "min": 0,
+    "max": 7
+  },
+  "xlabel": "molar mass (g/mol)",
+  "ylabel": "diffusion rate",
+  "why": "Lighter particles move faster at the same temperature — ammonia (17 g/mol) outruns hydrogen chloride (36.5 g/mol), so the white ammonium-chloride ring sits about 1.45× nearer the slow one."
+};
 ---
 <TopicPage slug="subjects/chemistry/foundational/states-of-matter">
 
@@ -52,6 +231,7 @@ const phaseCfg = {
     attraction gives a gas. Adding energy weakens the grip, which is how matter
     moves between states.
   </p>
+  <Widget no="9" caption="file each behaviour by the state it belongs to" widget="sort-buckets" config={somClingSort} />
 
   <h2>The three arrangements</h2>
   <p>
@@ -84,6 +264,7 @@ const phaseCfg = {
     works in liquids and gases but never in solids, where heat can only crawl by
     vibration (<strong>conduction</strong>).
   </p>
+  <Widget no="8" caption="pair each claim with the observation that backs it" widget="match" config={somPredMatch} />
   <p>
     <em>Common misconception:</em> "air is light because its molecules are small." The
     molecules of air are, particle for particle, chunkier than water molecules (N₂ and
@@ -118,6 +299,7 @@ const phaseCfg = {
     Boiling costs far more — about 2,260 J/g — because separating particles
     completely breaks far more attractions than merely loosening their positions.
   </p>
+  <Widget no="7" caption="call the energy bill for turning water to vapour" widget="estimate" config={somLatentEst} />
   <p>
     The bookkeeping runs both ways. When steam condenses on a window, or vapour
     freezes as frost, the same energy is released. That is why a steam burn is so
@@ -135,6 +317,7 @@ const phaseCfg = {
     atmospheric pressure. That is exactly why pressure cookers cook faster: hotter
     water, not harder water.
   </p>
+  <Widget no="6" caption="slide to the boiling point where the air is thin" widget="place" config={somEverestPlace} />
   <p>
     <em>Common misconception:</em> "steam is the white cloud you see over a kettle." The
     white cloud is not vapour — it is vapour that has already condensed into tiny
@@ -171,6 +354,7 @@ const phaseCfg = {
     triple-point pressure) and why your frost-free freezer slowly shrinks ice
     cubes left in it.
   </p>
+  <Widget no="5" caption="find the faulty line — the route below the triple point" widget="spot-error" config={somSubSpot} />
   <p>
     Sublimation is everyday as well as exotic. Dry ice (solid CO₂) skips the
     liquid at atmospheric pressure entirely — its triple-point pressure (518 kPa,
@@ -199,6 +383,7 @@ const phaseCfg = {
     signature properties; a long flat line at 100 °C for the boil (2,260 J/g, the
     longest step); then rising vapour.
   </p>
+  <Widget no="4" caption="true or false — reading the heating curve" widget="judge" config={somCurveJudge} />
   <p>
     The same curve read backwards is the cooling curve chemists use to test
     purity: a pure substance freezes at a single sharp temperature — one flat
@@ -212,6 +397,7 @@ const phaseCfg = {
     warming bike pump and the sealed can bursting on a stove are the same story
     told twice — and the gas laws in the Going deeper section make it exact.
   </p>
+  <Widget no="3" caption="fill the blanks — one story told twice" widget="cloze" config={somGasCloze} />
 
   <h2>Diffusion: the spreading you can smell</h2>
   <p>
@@ -248,6 +434,7 @@ const phaseCfg = {
     is why sugar dissolves and spreads so much faster in hot tea, and why a fridge
     slows bacterial spread as well as bacterial growth.
   </p>
+  <Widget no="2" caption="which curve tracks diffusion rate against mass?" widget="trace" config={somDiffTrace} />
   <p>
     <strong>So far:</strong> particles random-walk from crowded to uncrowded —
     through rooms, tea cups, lungs — and the walk speeds up when particles are

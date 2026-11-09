@@ -11,6 +11,195 @@ const cryptoCfg = {
     { math: '5 · Trust chains', note: 'Certificates bind keys to identities, signed by authorities your browser pre-trusts. The padlock is not "encryption" — it is a chain of signatures ending in one you agreed to trust.' },
   ],
 };
+
+const cryptoDirectionSort = {
+  "prompt": "File each channel by its direction:",
+  "buckets": [
+    "one way only",
+    "both ways, one at a time",
+    "both at once"
+  ],
+  "items": [
+    {
+      "label": "a broadcast sensor",
+      "bucket": 0
+    },
+    {
+      "label": "a walkie-talkie",
+      "bucket": 1
+    },
+    {
+      "label": "your phone call",
+      "bucket": 2
+    },
+    {
+      "label": "simplex transmission",
+      "bucket": 0
+    },
+    {
+      "label": "half-duplex transmission",
+      "bucket": 1
+    },
+    {
+      "label": "full-duplex transmission",
+      "bucket": 2
+    }
+  ],
+  "why": "Mode and timing expose their own weaknesses — serial, parallel, asynchronous, synchronous, packet-switched: each is a different door."
+};
+
+const cryptoCodeMatch = {
+  "prompt": "Pair each code with what it guarantees:",
+  "pairs": [
+    {
+      "left": "parity",
+      "right": "catches any single-bit flip, misses any even number of them"
+    },
+    {
+      "left": "checksum",
+      "right": "better than parity, but reordering two words slips through"
+    },
+    {
+      "left": "CRC-32",
+      "right": "catches all burst errors of 32 bits or fewer and all odd numbers of bit flips"
+    },
+    {
+      "left": "Hamming distance d",
+      "right": "detects up to d − 1 flips, corrects up to ⌊(d − 1)/2⌋"
+    }
+  ],
+  "why": "Parity guards memory buses, CRC guards Ethernet frames and ZIP files, Reed–Solomon still talks to Voyager — but none of them catches an adversary, only accidents."
+};
+
+const cryptoTamperCompare = {
+  "prompt": "Two ways to guard a message — drag the divider:",
+  "before": {
+    "label": "unkeyed code (CRC)",
+    "text": "Recomputable by anyone: a man-in-the-middle edits the message and its check field in one step — it detects accidents, not adversaries."
+  },
+  "after": {
+    "label": "keyed construction (MAC)",
+    "text": "A hash seeded with a secret key — the attacker cannot recompute the tag, so edits are caught."
+  },
+  "why": "Guarding against accidents is arithmetic; guarding against intention is cryptography — and mixing them has sunk real systems."
+};
+
+const cryptoKeysEst = {
+  "prompt": "A 128-bit block cipher's key count is ≈ 3.4 × 10³⁸. At a trillion guesses per second, roughly how long to try them all?",
+  "unit": "years",
+  "answer": 10000000000000000000,
+  "factor": 3,
+  "why": "About 10¹⁹ years — a billionfold the universe's age. The dangers are elsewhere: botched wiring, repeated nonces, and getting the secret to the other party.",
+  "context": "Keyspace strength is the budget; distribution and wiring are where systems actually die."
+};
+
+const cryptoSafeJudge = {
+  "statements": [
+    {
+      "s": "Encryption makes data safe, full stop.",
+      "truth": false,
+      "why": "It protects one state — on the wire or at rest; nothing about the two ends, stolen passwords, misconfigured databases, insiders, or the pasted-into-chat case."
+    },
+    {
+      "s": "Threat modelling starts where the cipher ends.",
+      "truth": true,
+      "why": "The two ends still see the secret in the clear — the maths is one layer of the trust machine."
+    },
+    {
+      "s": "Encryption at rest also protects data while an employee has it open on screen.",
+      "truth": false,
+      "why": "The ends see the secret in the clear — encryption guards states, not every moment of its life."
+    },
+    {
+      "s": "TLS on the wire and disk encryption are the same guarantee.",
+      "truth": false,
+      "why": "Different states, different mechanisms — 'safe' is always safe-against-what-and-when."
+    }
+  ]
+};
+
+const cryptoEphemeralBranch = {
+  "root": "An attacker records all of today's encrypted traffic and, next year, steals the server's long-term secret. Walk the design question.",
+  "nodes": {
+    "start": {
+      "text": "With static agreement, what can the attacker now do?",
+      "choices": [
+        {
+          "label": "Decrypt everything recorded last week",
+          "next": "static",
+          "feedback": "Exactly the failure forward secrecy exists to prevent — today's capture becomes next year's plaintext."
+        },
+        {
+          "label": "Nothing — the maths still holds",
+          "next": "ok",
+          "feedback": "Only if the sessions were ephemeral: per-connection secrets, erased after use."
+        }
+      ]
+    },
+    "ok": {
+      "text": "With ephemeral Diffie–Hellman (the E in DHE/ECDHE), what does the stolen long-term secret buy?",
+      "choices": [
+        {
+          "label": "Impersonation going forward — but not decryption of the past",
+          "next": "forward",
+          "feedback": "Those per-connection secrets no longer exist anywhere: steal today's material, still cannot open last week's recording."
+        },
+        {
+          "label": "Full decryption of history",
+          "next": "fail",
+          "feedback": "That is the static world — which is why 'rotate your keys' is a design property, not a policy slogan."
+        }
+      ]
+    },
+    "static": {
+      "text": "Static agreement turns next year's theft into last week's plaintext — the case that motivated ephemeral keys.",
+      "choices": []
+    },
+    "fail": {
+      "text": "Full history decryption is exactly what forward secrecy denies — Signal's double ratchet goes further, re-deriving per message.",
+      "choices": []
+    },
+    "forward": {
+      "text": "Forward secrecy: the stolen long-term secret buys impersonation going forward, but yesterday's capture stays closed.",
+      "choices": []
+    }
+  },
+  "why": "Ephemeral per-connection secrets mean even a later server compromise cannot open yesterday's capture."
+};
+
+const cryptoPadCloze = {
+  "text": "Shannon's one-time pad (secret as long as the %%0%%, used once) is the only cipher with perfect secrecy — the ciphertext leaks literally %%1%% information — and its impracticality motivates the modern standard: %%2%%, where breaking the scheme would solve a stated hard problem.",
+  "answers": [
+    [
+      "message"
+    ],
+    [
+      "zero"
+    ],
+    [
+      "reductions"
+    ]
+  ],
+  "hint": "Kerckhoffs's principle remains the foundation: assume the enemy knows the system; secrecy lives in the key alone."
+};
+
+const cryptoPqPlace = {
+  "prompt": "The quantum deadline: slide the marker to the year the first post-quantum algorithms were standardised.",
+  "labels": [
+    "2015",
+    "2020",
+    "2024",
+    "2030",
+    "2035"
+  ],
+  "scale": {
+    "min": 2015,
+    "max": 2035
+  },
+  "answer": 2024,
+  "tolerance": 1,
+  "why": "2024 — ML-KEM for key exchange and ML-DSA for signatures, built on lattice problems with no known quantum attack; Chrome and Signal already negotiate hybrid handshakes. Traffic captured today could be opened in 2035."
+};
 ---
 <TopicPage slug="subjects/computer-science/expert/cryptography">
   <h2>Where you are, and what you will learn</h2>
@@ -69,6 +258,7 @@ const cryptoCfg = {
     transmission is <strong>packet-switched</strong>: messages are sliced into packets that route
     independently, queue in buffers, and can arrive reordered, duplicated or not at all.
   </p>
+  <Widget no="9" caption="file each channel by its direction" widget="sort-buckets" config={cryptoDirectionSort} />
   <p>
     Why this matters to the cryptographer: on a packet-switched public network you must assume an
     adversary can <em>read</em> any packet (confidentiality problem), <em>alter</em> packets in
@@ -99,6 +289,7 @@ const cryptoCfg = {
     arithmetic behind RAID 6 (two parity blocks: any two failed disks survivable) and deep-space
     communication (Voyager still talks to Earth on Reed–Solomon codes).
   </p>
+  <Widget no="8" caption="pair each code with what it guarantees" widget="match" config={cryptoCodeMatch} />
   <p>
     <em>Common misconception:</em> "an error-detecting code also detects tampering." It detects
     <em>noise</em>, not adversaries — the CRC of a modified packet is recomputable by anyone, so a
@@ -107,6 +298,7 @@ const cryptoCfg = {
     secret key), which is a cryptographic primitive, not a transmission code. Confusing the two
     has shipped broken protocols.
   </p>
+  <Widget no="7" caption="drag the divider across the check field" widget="compare" config={cryptoTamperCompare} />
 
   <h2>Encryption, part one: symmetric ciphers and the key problem</h2>
   <p>
@@ -122,6 +314,7 @@ const cryptoCfg = {
     travelled by some secure path — the problem that stymied every pre-1976 system from Caesar to
     Enigma, and the problem the next section dissolves.
   </p>
+  <Widget no="6" caption="call the brute-force bill" widget="estimate" config={cryptoKeysEst} />
   <p>
     <strong>So far:</strong> symmetric ciphers give you overwhelming strength with one fatal
     dependency: the key must already be shared. Hold that unsolved problem in mind as you read
@@ -174,6 +367,7 @@ const cryptoCfg = {
     misconfigured databases or insiders, and nothing once an employee pastes the secret into a
     chat. Threat modelling starts where the cipher ends.
   </p>
+  <Widget no="5" caption="true or false — what the cipher promises" widget="judge" config={cryptoSafeJudge} />
 
   <p>
     Key management is where real systems actually fail, and the modern answer to its
@@ -186,6 +380,7 @@ const cryptoCfg = {
     backdoor debate hinged on metadata rather than message content, and why "rotate your
     keys" is a design property, not a policy slogan.
   </p>
+  <Widget no="4" caption="walk the stolen-key scenario" widget="branch" config={cryptoEphemeralBranch} />
 
   <p>
     The sophisticated attacker often skips the maths entirely and attacks the
@@ -251,6 +446,7 @@ const cryptoCfg = {
     in the key alone — which is why "security through obscurity" is a recognised anti-pattern and
     open algorithms win.
   </p>
+  <Widget no="3" caption="fill the blanks — the one cipher with perfect secrecy" widget="cloze" config={cryptoPadCloze} />
   <p>
     <strong>The quantum deadline.</strong> Shor's algorithm (1994) factors integers and computes
     discrete logs in polynomial time on a large quantum computer — collapsing RSA and
@@ -262,6 +458,7 @@ const cryptoCfg = {
     hybrid classical-plus-PQ handshakes. The migration is the rare engineering project whose
     deadline is defined by an adversary's hardware roadmap.
   </p>
+  <Widget no="2" caption="slide to the standardisation year" widget="place" config={cryptoPqPlace} />
   <p>
     <strong>Where crypto touches daily engineering.</strong> Password storage is the most common
     real deployment: never store passwords (even hashed with SHA-256 — billions of guesses per

@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "subjects/computer-science/advanced/web-development-html-css-js",
+    "activities": [
+      {
+        "anchor": "nesting everything in anonymous boxes when",
+        "type": "sort-buckets",
+        "caption": "file each choice by what it is",
+        "name": "webSemanticsSort",
+        "config": {
+          "prompt": "File each choice by what it is:",
+          "buckets": ["semantic element", "div soup"],
+          "items": [
+            { "label": "<article> — a self-contained composition", "bucket": 0 },
+            { "label": "<header> — the page's or section's banner", "bucket": 0 },
+            { "label": "<main> — the page's primary content", "bucket": 0 },
+            { "label": "a <table> used for page layout", "bucket": 1 },
+            { "label": "wrapping each region in unlabelled wrappers", "bucket": 1 },
+            { "label": "<nav> — site navigation", "bucket": 0 }
+          ],
+          "why": "Alt text on images, labels on inputs, keyboard-reachable controls — done at the semantic level it is nearly free; done after the fact, rework."
+        }
+      },
+      {
+        "anchor": "Layout is the modern layer",
+        "type": "match",
+        "caption": "pair each tool with its job",
+        "name": "webLayoutMatch",
+        "config": {
+          "prompt": "Pair each tool with its job:",
+          "pairs": [
+            { "left": "flexbox", "right": "one-dimensional arrangement — toolbars, lists, centring" },
+            { "left": "grid", "right": "two-dimensional pages — named rows and columns" },
+            { "left": "media queries", "right": "rules conditional on viewport size — one page serves phone and desktop" },
+            { "left": "box-sizing: border-box", "right": "width includes padding and border — the near-universal default" }
+          ],
+          "why": "A 200px element with 20px padding and 2px border is 244px wide — unless the default includes them."
+        }
+      },
+      {
+        "anchor": "the field's oldest prank",
+        "type": "judge",
+        "caption": "true or false — the naming and the language",
+        "name": "webNameJudge",
+        "config": {
+          "statements": [
+            { "s": "JavaScript is a browser version of Java.", "truth": false, "why": "The shared name was a 1995 marketing alliance: Java is class-based and compiled to bytecode; JavaScript is dynamically typed and prototype-based." },
+            { "s": "JavaScript was built at Netscape in a famous ten-day sprint to make pages react.", "truth": true, "why": "History's fastest language birth — and the naming has been confusing people ever since." },
+            { "s": "Java fluency transfers directly to JavaScript.", "truth": false, "why": "They share C-style syntax the way many modern languages do — and little else." },
+            { "s": "Functions in JavaScript are values — assignable, passable, returnable.", "truth": true, "why": "Which is why callbacks, event handlers and framework components are all functions in transit." }
+          ]
+        }
+      },
+      {
+        "anchor": "The browser assembles a page in a fixed order worth memorising",
+        "type": "order",
+        "caption": "put the render pipeline in order",
+        "name": "webRenderOrder",
+        "config": {
+          "prompt": "Put the assembly line in order:",
+          "items": [
+            "parse HTML → build the DOM",
+            "parse CSS → build the CSSOM",
+            "combine into a render tree",
+            "layout — compute every box's geometry",
+            "paint, then composite to the screen"
+          ],
+          "why": "DOM changes that alter geometry force a re-run of the expensive middle — which is why performance work targets the critical path."
+        }
+      },
+      {
+        "anchor": "Pair it with the browser's second core rule",
+        "type": "cloze",
+        "caption": "fill the blanks — the three pillars of browser security",
+        "name": "webPillarsCloze",
+        "config": {
+          "text": "The web's three-pillar security model: %%0%% isolation (one site's script cannot read another's data), %%1%% transport (HTTPS, the TLS of the networking lesson), and %%2%% boundaries (escape user text before it enters the page).",
+          "answers": [["origin"], ["encrypted"], ["escaped"]],
+          "hint": "Name all three — each pillar answers a different kind of attack."
+        }
+      },
+      {
+        "anchor": "larger per-origin key–value stores usable by scripts",
+        "type": "spot-error",
+        "caption": "find the faulty line — where state lives",
+        "name": "webStorageSpot",
+        "config": {
+          "prompt": "A summary of the state homes contains one faulty line — click it:",
+          "lines": [
+            "HTTP is stateless, so continuity must be reassembled every time.",
+            "Cookies are server-issued pairs the browser replays on every request to that site.",
+            "HttpOnly keeps cookies away from JavaScript — a direct XSS mitigation.",
+            "localStorage is the right home for session tokens, being larger and per-origin.",
+            "SameSite curbs cross-site request forgery by not sending cookies on third-party requests."
+          ],
+          "errorLine": 3,
+          "correction": "Web storage is convenient for preferences and WRONG for session tokens — readable by any injected script; identity belongs in HttpOnly cookies, UI state in the client, durable truth in the database.",
+          "why": "State has designated homes — small rules, strictly enforced, doing enormous work."
+        }
+      },
+      {
+        "anchor": "verbs carry semantics",
+        "type": "branch",
+        "caption": "place each piece of state in its home",
+        "name": "webStateBranch",
+        "config": {
+          "root": "You are adding 'remember my dark-mode preference' and 'stay logged in' to an app. Walk where each piece of state lives.",
+          "nodes": {
+            "start": {
+              "text": "The login session token. Where does it go?",
+              "choices": [
+                { "label": "An HttpOnly cookie", "next": "cookie", "feedback": "Right: the browser replays it, JavaScript can never read it, and the Secure flag restricts it to HTTPS." },
+                { "label": "localStorage, for easy access from scripts", "next": "local", "feedback": "Convenient and wrong: any injected script reads it — one XSS and the session is stolen." }
+              ]
+            },
+            "local": {
+              "text": "The stolen session shows why homes matter. Now the dark-mode preference?",
+              "choices": [
+                { "label": "localStorage — client-side UI state", "next": "ui", "feedback": "Right: preferences are UI state in the client — scripts reading them is fine." },
+                { "label": "A database table", "next": "db", "feedback": "Possible, but heavier than needed — UI state in the client, durable truth in the database." }
+              ]
+            },
+            "cookie": {
+              "text": "Identity secured. And the dark-mode preference?",
+              "choices": [
+                { "label": "localStorage — client-side UI state", "next": "ui", "feedback": "Right: preferences are client-side UI state." },
+                { "label": "An HttpOnly cookie too", "next": "overkill", "feedback": "Cookies replay on every request to that site — a preference would ride along forever; the client is the right home." }
+              ]
+            },
+            "ui": {
+              "text": "The rule of thumb: identity in HttpOnly cookies, UI state in the client, durable truth in the database — anything else is state you have misplaced.",
+              "choices": []
+            },
+            "db": {
+              "text": "Durable truth does belong in the database — but a theme preference is UI state; carry it in the client.",
+              "choices": []
+            },
+            "overkill": {
+              "text": "A preference in a cookie rides every request forever — the client is the right home.",
+              "choices": []
+            }
+          },
+          "why": "Small rules, strictly enforced, doing enormous work — misplace the state and you will find it in a bug report."
+        }
+      },
+      {
+        "anchor": "animations are cheap and",
+        "type": "trace",
+        "caption": "which curve is the compositor-owned animation?",
+        "name": "webFrameTrace",
+        "config": {
+          "prompt": "Frame cost against time during two animations — which curve belongs to the one running on the compositor?",
+          "curves": [
+            { "expr": "0.5", "label": "curve A — flat", "color": "#d9480f" },
+            { "expr": "x - 3*floor(x/3)", "label": "curve B — sawtoothing", "color": "#1f6f54" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 9 },
+          "y": { "min": 0, "max": 4 },
+          "xlabel": "frames",
+          "ylabel": "frame cost",
+          "why": "Those animated effects ride hardware planes — flat cost; top/left changes re-run geometry every frame and the cost sawtooths."
+        }
+      }
+    ]
+  }
+]

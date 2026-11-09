@@ -1,0 +1,130 @@
+[
+  {
+    "slug": "subjects/business/advanced/financial-modelling-for-managers",
+    "activities": [
+      {
+        "anchor": "Every block starts with",
+        "type": "spot-error",
+        "caption": "one line of the income statement is wrong",
+        "name": "fmIncomeSpot",
+        "config": {
+          "prompt": "One line of this worked income statement is wrong. Find it.",
+          "lines": [
+            "Revenue: 100,000 units × 20 = 2,000,000",
+            "COGS at 12 per unit: 1,200,000 — gross profit 800,000 (40%)",
+            "Operating expenses (semi-fixed): 500,000",
+            "EBIT: 800,000 − 500,000 = 400,000 — a 20% operating margin",
+            "Interest 32,000 on 400,000 of debt at 8%; tax at 25%; net income 201,000"
+          ],
+          "errorLine": 3,
+          "correction": "EBIT: 800,000 − 500,000 = 300,000 — a 15% operating margin.",
+          "why": "Every figure below a driver is a formula, and the formula says 300,000 — the model's whole virtue is that no number is typed in unexplained."
+        }
+      },
+      {
+        "anchor": "Working-capital items are driven off the income statement by days",
+        "type": "order",
+        "caption": "build the balance sheet block, driver by driver",
+        "name": "fmWorkingOrder",
+        "config": {
+          "prompt": "Build the balance sheet block in the model's own order:",
+          "items": [
+            "Receivables: 2,000,000 × 37 days outstanding / 365 ≈ 200,000",
+            "Inventory: 1,200,000 × 46 days / 365 ≈ 150,000",
+            "Payables: 37 days ≈ 120,000",
+            "Add cash 100,000 and fixed assets 650,000 — total assets 1,100,000",
+            "Equity comes out at 530,000 — rolled forward from net income, never typed in"
+          ],
+          "why": "Forecast every asset and liability from drivers, choose the financing, and let cash be the plug — the balance check becomes the model's lie detector."
+        }
+      },
+      {
+        "anchor": "The professional technique is to forecast every asset",
+        "type": "sort-buckets",
+        "caption": "the matching principle — which instrument funds which asset",
+        "name": "fmMatchingBuckets",
+        "config": {
+          "prompt": "The matching principle — file each financing need:",
+          "buckets": ["revolving / short-term credit", "term debt or equity"],
+          "items": [
+            { "label": "a seasonal inventory build", "bucket": 0 },
+            { "label": "a one-month receivables gap", "bucket": 0 },
+            { "label": "a machine earning returns over ten years", "bucket": 1 },
+            { "label": "a decade-long factory build", "bucket": 1 }
+          ],
+          "why": "Short-term working-capital gaps want revolving credit; long-lived assets want term debt or equity — never an overdraft that can be called in a bad month."
+        }
+      },
+      {
+        "anchor": "cash conversion cycle is the summary statistic",
+        "type": "estimate",
+        "caption": "call the magnitude — cash locked in operations",
+        "name": "fmCccEstimate",
+        "config": {
+          "prompt": "In this model firm, how many days of cash are locked in operations (receivables + inventory − payables days)?",
+          "unit": "days",
+          "answer": 46,
+          "factor": 1.25,
+          "why": "37 days of receivables + 46 days of inventory − 37 days of payables = 46 days — about 250,000 of cash locked in operations on 2,000,000 of sales.",
+          "context": "That is why the firm is profitable and still one late-paying customer away from an overdraft."
+        }
+      },
+      {
+        "anchor": "Fast-growing firms die of it most often",
+        "type": "judge",
+        "caption": "true or false — profit versus cash",
+        "name": "fmProfitJudge",
+        "config": {
+          "statements": [
+            { "s": "A profitable company cannot run out of money.", "truth": false, "why": "Profit is an accounting result; insolvency is a date on which the cash balance goes negative." },
+            { "s": "Fast-growing firms die of overtrading — every extra sale buys inventory and receivables before the cash arrives.", "truth": true, "why": "That is why the weekly cash forecast sits at the centre of the model, not the profit line." },
+            { "s": "The model firm books 2,000,000 of revenue while only ~1,800,000 has been collected — and is still solvent.", "truth": true, "why": "Accrual accounting spreads events across the periods that cash ignores." },
+            { "s": "Insolvency is a matter of totals, not dates.", "truth": false, "why": "It is a matter of dates — which is why cash forecasts are built weekly in practice." }
+          ]
+        }
+      },
+      {
+        "anchor": "Ratios stop being memorised formulas",
+        "type": "match",
+        "caption": "read the dashboard — ratio to value",
+        "name": "fmRatioMatch",
+        "config": {
+          "prompt": "Pair each ratio with this model firm's value:",
+          "pairs": [
+            { "left": "gross margin", "right": "40%" },
+            { "left": "operating margin", "right": "15%" },
+            { "left": "return on capital employed", "right": "32.3%" },
+            { "left": "gearing", "right": "75%" },
+            { "left": "interest cover", "right": "9.4×" }
+          ],
+          "why": "ROCE comfortably above any plausible WACC means value creation; DuPont then splits the 37.9% ROE into margin (10.1%) × turnover (1.82) × leverage (2.08)."
+        }
+      },
+      {
+        "anchor": "a 66.7% profit hit from a 10% price move",
+        "type": "estimate",
+        "caption": "call the magnitude — the price-cut stress test",
+        "name": "fmPriceEstimate",
+        "config": {
+          "prompt": "Cut price 10% (to 18) with volume unchanged. What percentage hit does this model firm's EBIT take?",
+          "unit": "%",
+          "answer": 66.7,
+          "factor": 1.3,
+          "why": "EBIT falls from 300,000 to 100,000 — the discount strips contribution margin from every unit while opex stays fixed. A 10% volume gain instead lifts EBIT only 26.7%.",
+          "context": "Price dominates volume in this business: the elasticity arithmetic of a discount is brutal."
+        }
+      },
+      {
+        "anchor": "and the headline is a lie",
+        "type": "cloze",
+        "caption": "fill the blanks — split the variance",
+        "name": "fmVarianceCloze",
+        "config": {
+          "text": "Forecast 100,000 units at 20; actual 105,000 at 19 — the headline gap is −5,000, which hides the real story. Split it: the volume effect at budget price is %%0%%, the price effect on actual volume is %%1%% — and the sales team's over-delivery was given away on price.",
+          "answers": [["+100,000", "100,000", "+100000"], ["−105,000", "-105,000", "-105000"]],
+          "hint": "Volume: +5,000 units × 20. Price: −1 × 105,000."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "subjects/chemistry/foundational/acids-bases-and-ph",
+    "activities": [
+      {
+        "anchor": "Baking soda fizzes in vinegar",
+        "type": "predict",
+        "caption": "bet on the handover before you read on",
+        "name": "abFizzPredict",
+        "config": {
+          "q": "Vinegar stings, soap feels slippery, and baking soda fizzes in vinegar. What is being handed over in every acid–base reaction?",
+          "choices": [
+            "Protons (H⁺ ions) — from acid to base",
+            "Electrons — from acid to base",
+            "Oxygen atoms — from base to acid"
+          ],
+          "answer": 0,
+          "why": "An acid is a proton donor and a base a proton acceptor (Brønsted and Lowry, 1923) — nearly every sharp taste and slick feel is that handover happening on your tongue or skin."
+        }
+      },
+      {
+        "anchor": "Read the curve from right to left",
+        "type": "estimate",
+        "caption": "call the log ruler's jump",
+        "name": "abLemonEstimate",
+        "config": {
+          "prompt": "Lemon juice sits at pH 2, neutral water at pH 7. Roughly how many times more H⁺ does the lemon juice hold?",
+          "unit": "× more H⁺",
+          "answer": 100000,
+          "factor": 1.5,
+          "why": "About 100,000 times — each single step on the pH scale is a tenfold change, and five steps down the scale is 10⁵.",
+          "context": "That compression is how fourteen powers of ten fit on one 0–14 ruler."
+        }
+      },
+      {
+        "anchor": "a tomato cannot outvote them",
+        "type": "judge",
+        "caption": "true or false — the alkaline-diet claim",
+        "name": "abBufferJudge",
+        "config": {
+          "statements": [
+            { "s": "Eating alkaline foods shifts your blood pH and prevents disease.", "truth": false, "why": "The bicarbonate buffer, the lungs exhaling CO₂ and the kidneys excreting the excess hold arterial blood between 7.35 and 7.45 regardless of diet." },
+            { "s": "Food can change the pH of urine — which is the system working.", "truth": true, "why": "Acid-forming diets impose a small excretory load, not a blood-pH shift." },
+            { "s": "Drifting 0.4 beyond the 7.35–7.45 band is life-threatening.", "truth": true, "why": "Which is why blood carries buffers that soak up small additions of acid or base." },
+            { "s": "A tomato can outvote the buffer arithmetic.", "truth": false, "why": "It cannot — the claim that diet alkalinises the blood fails against the buffer arithmetic." }
+          ]
+        }
+      },
+      {
+        "anchor": "Two words beginners must prise apart",
+        "type": "sort-buckets",
+        "caption": "file each fact — strength or concentration",
+        "name": "abStrengthBuckets",
+        "config": {
+          "prompt": "Strong is not concentrated. File each fact:",
+          "buckets": ["strength — chemistry", "concentration — arithmetic"],
+          "items": [
+            { "label": "the fraction of molecules that actually donate a proton", "bucket": 0 },
+            { "label": "how much acid per litre", "bucket": 1 },
+            { "label": "HCl: essentially every molecule ionises in water", "bucket": 0 },
+            { "label": "a bottle of it can be very dilute", "bucket": 1 },
+            { "label": "acetic acid: only about 1 in 100 molecules donates at any moment", "bucket": 0 }
+          ],
+          "why": "A dilute strong acid can out-acid a concentrated weak one — and safety rules treat them differently."
+        }
+      },
+      {
+        "anchor": "neutralisation always ends at pH 7",
+        "type": "spot-error",
+        "caption": "one line of the neutralisation summary is wrong",
+        "name": "abNeutralSpot",
+        "config": {
+          "prompt": "One line of this neutralisation summary is wrong. Find it.",
+          "lines": [
+            "Neutralisation: acid + base → salt + water",
+            "Strong acid + strong base at 25 °C ends at pH 7",
+            "Weak acid + strong base leaves a salt slightly alkaline — sodium ethanoate sits above 7",
+            "Strong acid + weak base such as ammonia also lands slightly alkaline",
+            "'Neutralised' means the acid and base have finished reacting — not that 7 was reached"
+          ],
+          "errorLine": 3,
+          "correction": "Strong acid + weak base lands slightly acidic.",
+          "why": "The endpoint's pH depends on which acid met which base — 'neutralised' means the reaction finished, not that the number 7 was reached."
+        }
+      },
+      {
+        "anchor": "Burn an element and the product left behind is its",
+        "type": "match",
+        "caption": "pair each oxide with its character",
+        "name": "abOxideMatch",
+        "config": {
+          "prompt": "What burning leaves behind — pair each oxide family with its character:",
+          "pairs": [
+            { "left": "metal oxides (Na₂O, CaO, MgO)", "right": "basic — react with acids; CaO + H₂O gives limewater" },
+            { "left": "non-metal oxides (CO₂, SO₂, P₄O₁₀)", "right": "acidic — CO₂ + H₂O makes rain naturally slightly acidic" },
+            { "left": "ZnO and Al₂O₃", "right": "amphoteric — react with both acids and bases, a handy fingerprint" },
+            { "left": "CO and N₂O", "right": "neutral — react with neither" }
+          ],
+          "why": "The pattern is a trend: across one row of the periodic table, Na₂O → Al₂O₃ → SO₃ runs from basic to amphoteric to strongly acidic."
+        }
+      },
+      {
+        "anchor": "The answer depends on one property of the wanted salt",
+        "type": "branch",
+        "caption": "choose the salt route by solubility",
+        "name": "abSaltBranch",
+        "config": {
+          "root": "Acid + base → salt + water works for any pair — the design question is which starting materials and how to purify. Choose each route.",
+          "nodes": {
+            "start": {
+              "text": "You want copper sulfate, a soluble salt. Which route?",
+              "choices": [
+                { "label": "Acid + insoluble base — copper oxide into warm sulfuric acid", "next": "soluble", "feedback": "Stir in black copper oxide until no more dissolves, filter off the excess, evaporate until crystals form. Done." },
+                { "label": "Precipitation — mix two soluble solutions", "next": "wrong1", "feedback": "That route is for insoluble salts; copper sulfate dissolves, so nothing precipitates." }
+              ]
+            },
+            "soluble": {
+              "text": "Now you want barium sulfate, which will not dissolve. Which route?",
+              "choices": [
+                { "label": "Precipitation — barium chloride plus sodium sulfate", "next": "precip", "feedback": "A white precipitate forms as the ions swap partners — filter, wash, dry. Safe enough for a barium meal precisely because it will not dissolve." },
+                { "label": "Acid + insoluble base", "next": "wrong2", "feedback": "The product would never come out of solution — insoluble salts need the swap trick." }
+              ]
+            },
+            "precip": {
+              "text": "Last: a sodium salt, from two colourless solutions with no visible endpoint. Which route?",
+              "choices": [
+                { "label": "Measured titration — trial run with phenolphthalein first", "next": "titrate", "feedback": "Find the neutralisation volume in the trial, then repeat without indicator to make the salt solution. Experimental design in one afternoon." },
+                { "label": "Evaporate and hope", "next": "wrong3", "feedback": "With no endpoint you cannot know when to stop — the assay needs the burette." }
+              ]
+            },
+            "titrate": { "text": "Route chosen by solubility: insoluble base for soluble salts, precipitation for insoluble ones, measured neutralisation for sodium and potassium salts." },
+            "wrong1": { "text": "Back to the tree — solubility of the product decides." },
+            "wrong2": { "text": "Back to the tree — an insoluble product needs two soluble parents." },
+            "wrong3": { "text": "Back to the tree — invisible endpoints demand an indicator." }
+          },
+          "why": "All sodium, potassium and ammonium salts dissolve; most carbonates and hydroxides do not — the solubility rules are the map for the whole decision."
+        }
+      },
+      {
+        "anchor": "the sea's surface pH has shifted",
+        "type": "estimate",
+        "caption": "call the ocean's log-scale shift",
+        "name": "abOceanEstimate",
+        "config": {
+          "prompt": "Since industrialisation the ocean's surface pH has dropped about 0.1 unit (8.2 → 8.1). On the log ruler, roughly what percentage more H⁺ is that?",
+          "unit": "% more H⁺",
+          "answer": 30,
+          "factor": 1.4,
+          "why": "About 30 per cent more H⁺ — the added CO₂ dissolves as carbonic acid, making it harder for corals, shellfish and plankton to build calcium-carbonate shells.",
+          "context": "Acid rain tells the same log-scale story on land: pH 5.6 natural rain dipping to 4 is twenty-five times more acidic."
+        }
+      }
+    ]
+  }
+]

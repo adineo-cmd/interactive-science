@@ -1,0 +1,157 @@
+[
+  {
+    "slug": "subjects/computer-science/advanced/cybersecurity-threats-and-defences",
+    "activities": [
+      {
+        "anchor": "turn this into a checklist per component",
+        "type": "cloze",
+        "caption": "fill the blanks — the triad that keeps priorities honest",
+        "name": "secTriadCloze",
+        "config": {
+          "text": "The %%0%% triad keeps the priorities honest: %%1%% (who can see), %%2%% (nothing silently altered), availability (up when needed). A 'secure' system that is down, or silently corrupts its data, has failed two of %%3%%.",
+          "answers": [["CIA"], ["confidentiality"], ["integrity"], ["three", "3"]],
+          "hint": "Name the three properties, then test any claim of 'secure' against all of them."
+        }
+      },
+      {
+        "anchor": "It seems reasonable because that is exactly how the products are marketed",
+        "type": "judge",
+        "caption": "true or false — what security actually is",
+        "name": "secProductJudge",
+        "config": {
+          "statements": [
+            { "s": "The attacker needs one weakness, once; the defender needs every weakness closed, always.", "truth": true, "why": "Asymmetric by construction — which is why security is a process, not a purchase." },
+            { "s": "A firewall or antivirus box, once bought, makes an organisation secure.", "truth": false, "why": "No single device closes every door forever — the firewall's own ports are part of the attack surface." },
+            { "s": "Defenders who patch fast and delete whole attack classes are in practice safe from most adversaries.", "truth": true, "why": "Attackers optimise effort per victim — refuse to be the lowest-hanging fruit and the economics turn your way." },
+            { "s": "Kerckhoffs's principle says secrecy should live in the design, not the key.", "truth": false, "why": "The reverse: assume the attacker knows the system; secrecy lives only in the key — and in your design, framework and stack overflow answers too." }
+          ]
+        }
+      },
+      {
+        "anchor": "bcrypt, scrypt or argon2",
+        "type": "estimate",
+        "caption": "call the cost of one password check",
+        "name": "secKdfEst",
+        "config": {
+          "prompt": "The professional stack tunes its password-checking so one verification takes roughly how long?",
+          "unit": "milliseconds",
+          "answer": 100,
+          "factor": 2,
+          "why": "~100 ms — imperceptible at login; devastating at scale, where each guess costs milliseconds instead of nanoseconds.",
+          "context": "Fast GPU-verifiable hashes fall in minutes; pricing each guess is the whole game."
+        }
+      },
+      {
+        "anchor": "Throughout, the defender's superpower is",
+        "type": "sort-buckets",
+        "caption": "file each item by the layer it defends",
+        "name": "secLayerSort",
+        "config": {
+          "prompt": "Two layers, one catalogue — file each item:",
+          "buckets": ["the human layer", "the technical layer"],
+          "items": [
+            { "label": "a convincing fake login", "bucket": 0 },
+            { "label": "an urgent request that beats most walls", "bucket": 0 },
+            { "label": "ransomware arriving through unpatched software", "bucket": 1 },
+            { "label": "traffic floods from hijacked botnets", "bucket": 1 },
+            { "label": "a poisoned dependency — the 2024 xz-utils backdoor attempt", "bucket": 1 },
+            { "label": "training plus a report button", "bucket": 0 },
+            { "label": "offline, tested backups", "bucket": 1 },
+            { "label": "dependency pinning and signed builds", "bucket": 1 }
+          ],
+          "why": "Phishing beats firewalls; patching beats ransomware — and keeping every account's access small shrinks the blast radius of whatever gets through."
+        }
+      },
+      {
+        "anchor": "is then a drilled procedure, not an improv",
+        "type": "branch",
+        "caption": "assume breach — walk the response",
+        "name": "secIncidentBranch",
+        "config": {
+          "root": "The intrusion happened yesterday; overnight logs show an unfamiliar login on a VPN account. Walk the response.",
+          "nodes": {
+            "start": {
+              "text": "First move?",
+              "choices": [
+                { "label": "Contain — cut the account's access and segment the network", "next": "contain", "feedback": "Contain first: every minute of dwell time is lateral movement." },
+                { "label": "Erase the affected servers and move on", "next": "erase", "feedback": "Eradication before containment invites re-entry — the attacker still holds other footholds." }
+              ]
+            },
+            "contain": {
+              "text": "Contained. Next?",
+              "choices": [
+                { "label": "Eradicate, recover, then a blameless post-mortem", "next": "postmortem", "feedback": "The rehearsed sequence: contain, eradicate, recover — and the post-mortem fixes the system, not the person." },
+                { "label": "Find who clicked the phishing link and fire them", "next": "blame", "feedback": "Blame guarantees the next breach goes unreported — the post-mortem's first rule is that it is blameless." }
+              ]
+            },
+            "erase": {
+              "text": "Eradication before containment invites re-entry — the attacker still holds other footholds, and the logs you wiped were your map.",
+              "choices": []
+            },
+            "postmortem": {
+              "text": "Rehearsed, not improvised: contain, eradicate, recover, then fix the system — the drill is why Saturday runs calm.",
+              "choices": []
+            },
+            "blame": {
+              "text": "Blame guarantees the next breach goes unreported — the post-mortem is blameless by design.",
+              "choices": []
+            }
+          },
+          "why": "Assume breach, make it visible, and rehearse the whole thing: contain, eradicate, recover, learn."
+        }
+      },
+      {
+        "anchor": "Assemble the pieces on one generic incident",
+        "type": "order",
+        "caption": "put the breach chain in order",
+        "name": "secChainOrder",
+        "config": {
+          "prompt": "The shape of most real ransomware cases — put the chain in order:",
+          "items": [
+            "Monday: a plausible invoice email — the credential-harvesting link (phishing)",
+            "The reused password, with no second factor, yields a real login (credential stuffing)",
+            "The VPN account still reaches a file share no one revokes (excessive access)",
+            "Data copied for leverage (exfiltration)",
+            "Saturday: ransomware detonates across the share — and the backups are reachable from the same credentials"
+          ],
+          "why": "No single control stops the chain — the defences cut its links."
+        }
+      },
+      {
+        "anchor": "Side channels",
+        "type": "spot-error",
+        "caption": "find the faulty line — crypto misused",
+        "name": "secSideSpot",
+        "config": {
+          "prompt": "One of these crypto claims is backwards — click it:",
+          "lines": [
+            "AES-ECB encrypts identical blocks to identical ciphertext — the test image still shows a penguin.",
+            "Reusing a GCM nonce cancels the keystream, leaking the XOR of two plaintexts.",
+            "'I'll XOR with a secret key twice for safety' — combinatorial intuition fails at crypto design.",
+            "A comparison loop that returns early on the first mismatched character is the safe way to check tokens.",
+            "Reviewed, standard constructions and libraries beat every homemade design."
+          ],
+          "errorLine": 3,
+          "correction": "Early return IS the leak: timing lets an attacker measure their way to a valid token character by character — the fix is constant-time comparison.",
+          "why": "The implementation, not the mathematics, is the attack surface."
+        }
+      },
+      {
+        "anchor": "Surfaces, walked with STRIDE",
+        "type": "match",
+        "caption": "pair each surface with its category and matched control",
+        "name": "secStrideMatch",
+        "config": {
+          "prompt": "Pair each surface with its category and matched control:",
+          "pairs": [
+            { "left": "the login form", "right": "spoofing — credential attacks; answered by MFA and rate limiting" },
+            { "left": "the file-upload endpoint", "right": "tampering — a 'photo' that is a webshell; type validation, separate origin" },
+            { "left": "the password-reset email", "right": "spoofing — account recovery is the side door; expiring, single-use, entropy-heavy tokens" },
+            { "left": "the admin panel", "right": "elevation of privilege — role checks server-side, never hidden buttons alone" }
+          ],
+          "why": "Twenty minutes of this finds the misconfigurations breach reports find every month — because most breaches are not exotic; they are unmodelled."
+        }
+      }
+    ]
+  }
+]

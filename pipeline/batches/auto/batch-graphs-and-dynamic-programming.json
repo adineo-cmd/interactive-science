@@ -1,0 +1,161 @@
+[
+  {
+    "slug": "subjects/computer-science/advanced/graphs-and-dynamic-programming",
+    "activities": [
+      {
+        "anchor": "The two traversals are the same loop with a different container",
+        "type": "sort-buckets",
+        "caption": "file each power under the traversal that supplies it",
+        "name": "gpTravSort",
+        "config": {
+          "prompt": "File each power under the traversal that supplies it:",
+          "buckets": ["BFS — the queue", "DFS — the stack"],
+          "items": [
+            { "label": "explores in rings: start, then all neighbours, then neighbours-of-neighbours", "bucket": 0 },
+            { "label": "dives along one path, backtracking at dead ends", "bucket": 1 },
+            { "label": "six-degrees-of-separation and chess move calculation", "bucket": 0 },
+            { "label": "cycle detection — a back edge to a node still on the stack", "bucket": 1 },
+            { "label": "topological ordering — build systems, course prerequisites", "bucket": 1 },
+            { "label": "web crawlers and puzzle solvers", "bucket": 0 }
+          ],
+          "why": "One data-structure choice produces two different worldviews — queue versus stack."
+        }
+      },
+      {
+        "anchor": "The shared loop is real",
+        "type": "judge",
+        "caption": "true or false — what each traversal guarantees",
+        "name": "gpLoopJudge",
+        "config": {
+          "statements": [
+            { "s": "BFS and DFS are the same loop with different containers, so either one finds shortest paths.", "truth": false, "why": "Only BFS exhausts distance d before d+1 — its first arrival is provably a shortest unweighted path; DFS dives and may arrive by a long route first." },
+            { "s": "DFS's job is structure — cycles, topological order, connected components.", "truth": true, "why": "A back edge to a node still on the stack means a cycle; finish-time order reverses into a valid task sequence." },
+            { "s": "Topological ordering is the algorithm behind build systems and course prerequisites.", "truth": true, "why": "DFS's finish-time order reversed is a valid task sequence." },
+            { "s": "BFS needs a weighted graph to promise shortest paths.", "truth": false, "why": "The ring property holds in unweighted graphs — or weighted with equal weights; costs are Dijkstra's territory." }
+          ]
+        }
+      },
+      {
+        "anchor": "The table cost 4 × 6 = 24 cells instead of 16",
+        "type": "estimate",
+        "caption": "call the brute-force bill for twenty items",
+        "name": "gpKnapsackEst",
+        "config": {
+          "prompt": "Brute force over a knapsack with twenty items checks every subset. Roughly how many is that?",
+          "unit": "subsets",
+          "answer": 1048576,
+          "factor": 2,
+          "why": "2²⁰ ≈ a million possibilities — the DP grid replaces it with 20 × capacity entries: exponential becomes polynomial.",
+          "context": "For the capacity-5 miniature, two dozen entries against sixteen possibilities."
+        }
+      },
+      {
+        "anchor": "Knowing which regime you are in is the design skill",
+        "type": "branch",
+        "caption": "walk the method choice for a new problem",
+        "name": "gpRegimeBranch",
+        "config": {
+          "root": "A new problem lands on your desk. Walk the method choice.",
+          "nodes": {
+            "start": {
+              "text": "Can a local choice be provably safe — is the cheapest edge crossing any partition always part of some optimum?",
+              "choices": [
+                { "label": "Yes — greedy it is", "next": "greedy", "feedback": "Kruskal and Prim territory: faster than DP, applicable to fewer problems — local safety holds, so no grid is needed." },
+                { "label": "No — but best answers compose from best subproblems that recur", "next": "dp", "feedback": "Both ingredients hold: dynamic programming — cache each subproblem once and the exponential tree collapses to a grid." }
+              ]
+            },
+            "dp": {
+              "text": "DP confirmed. Top-down or bottom-up?",
+              "choices": [
+                { "label": "Top-down — keep the recursion, add a cache", "next": "topdown", "feedback": "Memoisation: only reachable subproblems are computed — better when the state space is sparse." },
+                { "label": "Bottom-up — fill the grid in dependency order", "next": "bottomup", "feedback": "Tabulation: no call overhead, compiler-friendly, and the space trick becomes visible." }
+              ]
+            },
+            "greedy": {
+              "text": "Greedy confirmed. But test it — if local safety ever fails, the greedy answer is confidently wrong.",
+              "choices": [
+                { "label": "Local safety fails sometimes — fall back", "next": "fallback", "feedback": "That boundary — between provable local safety and the need for a grid — is the discipline." }
+              ]
+            },
+            "topdown": {
+              "text": "Sparse state spaces love memoisation — you pay only for states you actually visit.",
+              "choices": []
+            },
+            "bottomup": {
+              "text": "Dense, performance-critical grids love tabulation — and the previous-row trick shrinks memory to a single row.",
+              "choices": []
+            },
+            "fallback": {
+              "text": "Exact DP up to a size, approximation for provable near-answers, heuristics for good-enough — the professional spectrum.",
+              "choices": []
+            }
+          },
+          "why": "Greedy, DP or brute force — the choice is testing whether local choices are safe, not reaching for a favourite."
+        }
+      },
+      {
+        "anchor": "Worked miniature: nodes A-E",
+        "type": "order",
+        "caption": "run Kruskal on the miniature",
+        "name": "gpMstOrder",
+        "config": {
+          "prompt": "Kruskal at work on the miniature — put the steps in order:",
+          "items": [
+            "Sort the edges by weight: AB=1, AC=2, DE=2, BC=3, CD=5, BD=6",
+            "Take AB (1), AC (2), DE (2)",
+            "Consider BC (3) — it would cycle A-B-C: skip",
+            "Take CD (5) — C joins D",
+            "Tree complete at weight 10: four edges for five vertices — the n−1 shape"
+          ],
+          "why": "Both greedy algorithms are provably optimal — the cut property — which is exactly why these are not DP problems."
+        }
+      },
+      {
+        "anchor": "keeps the order but not contiguity",
+        "type": "cloze",
+        "caption": "fill the blanks — the recurrence behind git diff",
+        "name": "gpLcsCloze",
+        "config": {
+          "text": "LCS(\"ABCDE\", \"ACE\") = \"ACE\", length %%0%% — the shared letters in sequence, gaps allowed. If the last characters match, take %%1%% + LCS(i−1, j−1); otherwise max(LCS(i−1, j), LCS(i, j−1)). For two 5,000-letter genomes the grid holds %%2%% million cells.",
+          "answers": [["3"], ["1"], ["25"]],
+          "hint": "git diff, DNA alignment, spell-check — one recurrence, three industries."
+        }
+      },
+      {
+        "anchor": "The traversals are mechanical; the expert move is",
+        "type": "match",
+        "caption": "pair each scenario with the modelling recipe it asks for",
+        "name": "gpModelMatch",
+        "config": {
+          "prompt": "Pair each scenario with what the recipe yields:",
+          "pairs": [
+            { "left": "course catalogue", "right": "prerequisites as directed edges — reachability, topological sort, cycles caught by DFS" },
+            { "left": "knight on a chessboard", "right": "squares as vertices, legal jumps as edges — fewest hops is BFS on 64 nodes" },
+            { "left": "word ladder (cold → warm)", "right": "words as vertices, one-letter changes as edges — BFS over a 170,000-node construction" },
+            { "left": "the registrar's bug", "right": "an impossible requirement — the cycle DFS finds" }
+          ],
+          "why": "Name the nodes, define the edges, state what shortest means — then pick BFS, DFS or Dijkstra by weight structure."
+        }
+      },
+      {
+        "anchor": "no recursion overhead, friendlier to memory limits",
+        "type": "spot-error",
+        "caption": "find the faulty line — the fill-order detail",
+        "name": "gpFillSpot",
+        "config": {
+          "prompt": "A summary of the two DP styles contains one faulty line — click it:",
+          "lines": [
+            "Memoisation keeps the recursive structure — write the natural recurrence, add a cache.",
+            "Top-down only computes reachable subproblems — an advantage when the full grid is not needed.",
+            "Tabulation fills the grid in dependency order — no call overhead.",
+            "The knapsack row only needs the previous row, so iterate forwards to avoid reusing an item twice.",
+            "The fill order IS the correctness argument: each cell depends only on cells already final."
+          ],
+          "errorLine": 3,
+          "correction": "Iterate BACKWARDS, to avoid reusing an item twice — that single careful direction collapses the grid from O(n × capacity) to O(capacity) memory.",
+          "why": "Choose top-down when the recurrence is intricate or the state space sparse; bottom-up when dense and performance-critical."
+        }
+      }
+    ]
+  }
+]

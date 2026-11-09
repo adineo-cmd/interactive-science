@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "subjects/business/advanced/entrepreneurship-and-venture-funding",
+    "activities": [
+      {
+        "anchor": "Steve Blank's definition is the load-bearing sentence",
+        "type": "spot-error",
+        "caption": "one line of the definition's consequences is wrong",
+        "name": "evDefSpot",
+        "config": {
+          "prompt": "One line of this summary of Blank's definition is wrong. Find it.",
+          "lines": [
+            "A startup is a temporary organisation, not a small version of a large company",
+            "It is searching for a repeatable, scalable business model",
+            "The search runs under extreme uncertainty",
+            "Because the model is unknown, the right tools are detailed five-year plans",
+            "The cap table and the funding ladder exist to buy time for the search"
+          ],
+          "errorLine": 3,
+          "correction": "Because the model is unknown, the right tools are experiments — the search cannot be planned, only tested.",
+          "why": "Searching is an experimental activity: plans execute known models, experiments find unknown ones. Under extreme uncertainty the method must also be cheap, because the base rates are brutal."
+        }
+      },
+      {
+        "anchor": "Most new businesses are sole traders or partnerships for a reason",
+        "type": "branch",
+        "caption": "run the incorporation decision",
+        "name": "evFormBranch",
+        "config": {
+          "root": "You are incorporation-shopping for a new venture. Every choice has consequences — pick a path.",
+          "nodes": {
+            "start": {
+              "text": "You need to form quickly, keep total control, and no outside equity is needed yet. What do you become?",
+              "choices": [
+                { "label": "Sole trader", "next": "sole", "feedback": "Formation instant, control total, profits face no double layer — and unlimited liability is yours." },
+                { "label": "Private limited company (Ltd / LLC / C-corp)", "next": "ltd", "feedback": "Safe but heavier: this is the form for selling shares, which you do not need yet." },
+                { "label": "Public listed company", "next": "plc", "feedback": "Far beyond the startup stage — the ladder's top rung, not its first." }
+              ]
+            },
+            "sole": {
+              "text": "Two years on, you are raising outside equity. What has to change?",
+              "choices": [
+                { "label": "Convert to a private limited company and sell shares", "next": "convert", "feedback": "Exactly — selling shares is the precondition for outside equity investment, and dilution becomes possible." },
+                { "label": "Stay a sole trader and borrow the money", "next": "debt", "feedback": "Venture debt buys runway without dilution but must be repaid regardless of success." }
+              ]
+            },
+            "ltd": {
+              "text": "The investor asks for a stake. What are you selling?",
+              "choices": [
+                { "label": "Shares — equity for a return", "next": "convert", "feedback": "The cap table exists now: every round sells equity and dilutes." },
+                { "label": "A loan to be repaid", "next": "debt", "feedback": "That is venture debt, not a funding round — no dilution, but repayment regardless of success." }
+              ]
+            },
+            "plc": { "text": "A public listing is far beyond the startup stage — come back down the ladder and form something small first." },
+            "convert": { "text": "The corporate form is in place: the funding ladder from pre-seed to series A can now run." },
+            "debt": { "text": "Runway bought, ownership kept — at the price of repayment whatever happens." }
+          },
+          "why": "Every funding round in this lesson presumes the corporate form that makes dilution possible — formation choices are strategy, not bureaucracy."
+        }
+      },
+      {
+        "anchor": "Objectives deserve the syllabus's scepticism",
+        "type": "match",
+        "caption": "pair each stakeholder with what they want",
+        "name": "evStakeMatch",
+        "config": {
+          "prompt": "One firm, four objectives — pair each stakeholder with theirs:",
+          "pairs": [
+            { "left": "customers", "right": "the product" },
+            { "left": "employees", "right": "salaries and meaning" },
+            { "left": "founders", "right": "control and wealth — which pull apart" },
+            { "left": "investors", "right": "a return on a clock" }
+          ],
+          "why": "Survival dominates the first years, and good founders name these trade-offs early instead of discovering them in a dispute."
+        }
+      },
+      {
+        "anchor": "operationalises the search",
+        "type": "order",
+        "caption": "run one cycle of the lean loop",
+        "name": "evLeanOrder",
+        "config": {
+          "prompt": "One cycle of the lean loop, in order:",
+          "items": [
+            "Frame one measurable hypothesis — 'do 5% of visitors pre-order?'",
+            "Build the smallest artefact that generates real behaviour — the MVP",
+            "Put it in front of real users",
+            "Measure what they do, not what they say",
+            "Accept the result — even when six months of work say otherwise"
+          ],
+          "why": "The unit of progress is validated learning; the point of an MVP is to be wrong cheaply, because every feature is an expensive bet."
+        }
+      },
+      {
+        "anchor": "matches money to proof",
+        "type": "order",
+        "caption": "stack the sources ladder, cheapest first",
+        "name": "evLadderOrder",
+        "config": {
+          "prompt": "The sources ladder — order it, cheapest capital first:",
+          "items": [
+            "Personal savings and revenue — customer money dilutes nothing",
+            "Friends and family — fast, warm, socially risky",
+            "Grants and competitions",
+            "Angel investors — tens to hundreds of thousands, for a prototype with early users",
+            "Seed funds, then venture capital series A and beyond"
+          ],
+          "why": "The ladder matches money to proof. Venture debt sits apart — runway without dilution, repaid regardless of success — and bootstrapping on revenue preserves 100% of the equity."
+        }
+      },
+      {
+        "anchor": "Rounds compound",
+        "type": "trace",
+        "caption": "which curve is the founder's stake?",
+        "name": "evDilutionTrace",
+        "config": {
+          "prompt": "Each round dilutes everyone by 20%. Which curve shows the founder's stake across rounds?",
+          "curves": [
+            { "expr": "40*0.8^x", "color": "#1d4ed8", "label": "A: compounding dilution" },
+            { "expr": "40 - 6*x", "color": "#b42318", "label": "B: straight-line cut" },
+            { "expr": "40", "color": "#0f766e", "label": "C: flat" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 5 },
+          "y": { "min": 0, "max": 45 },
+          "xlabel": "rounds of 20% dilution",
+          "ylabel": "founder stake (%)",
+          "why": "40 → 32 → 25.6 → 20.5: three such rounds leave 20.5%. Model the cap table three rounds forward before signing round one — and remember the option pool, often created post-money, dilutes the founders."
+        }
+      },
+      {
+        "anchor": "A term sheet prices the round and sets the rights",
+        "type": "cloze",
+        "caption": "fill the blanks — the clauses that matter",
+        "name": "evTermsCloze",
+        "config": {
+          "text": "The document prices the round and sets the rights: the clause that matters most is the %%0%% %%1%% — who is paid first when the company sells. Founder shares carry vesting: four years with a one-year %%2%%, protecting cofounders when someone leaves early.",
+          "answers": [["liquidation"], ["preference"], ["cliff"]],
+          "hint": "One clause decides the exit maths; the other protects cofounders from each other."
+        }
+      },
+      {
+        "anchor": "A pitch deck is not a story about the product",
+        "type": "sort-buckets",
+        "caption": "file the deck's evidence by checklist",
+        "name": "evPitchBuckets",
+        "config": {
+          "prompt": "An investor's mental checklist, three boxes. File each pitch element:",
+          "buckets": ["market size", "traction", "the ask"],
+          "items": [
+            { "label": "total addressable market, top-down and bottom-up", "bucket": 0 },
+            { "label": "the slice your current channels can reach", "bucket": 0 },
+            { "label": "retention curves and weekly growth", "bucket": 1 },
+            { "label": "letters of intent", "bucket": 1 },
+            { "label": "750,000 for 18 months of runway, tied to milestones", "bucket": 2 },
+            { "label": "a bottom-up build to 72 million a year", "bucket": 0 }
+          ],
+          "why": "A pitch deck is an argument about a return: evidence of engagement beats projection decks, and the ask ties the number to milestones the next round can price higher."
+        }
+      }
+    ]
+  }
+]

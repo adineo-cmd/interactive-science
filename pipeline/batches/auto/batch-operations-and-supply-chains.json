@@ -1,0 +1,151 @@
+[
+  {
+    "slug": "subjects/business/intermediate/operations-and-supply-chains",
+    "activities": [
+      {
+        "anchor": "Three organising methods cover most production",
+        "type": "sort-buckets",
+        "caption": "file the examples by production method",
+        "name": "opsMethodBuckets",
+        "config": {
+          "prompt": "Job, batch or flow? File each example:",
+          "buckets": ["job", "batch", "flow (mass)"],
+          "items": [
+            { "label": "a wedding dress", "bucket": 0 },
+            { "label": "bespoke software", "bucket": 0 },
+            { "label": "morning bread, then afternoon cakes", "bucket": 1 },
+            { "label": "a factory's red cars before blue", "bucket": 1 },
+            { "label": "a bottling plant", "bucket": 2 },
+            { "label": "car assembly", "bucket": 2 }
+          ],
+          "why": "The choice is not aesthetic: it sets unit costs, the skills you must hire, and how fast you can change what you sell — flexibility traded against efficiency at every step."
+        }
+      },
+      {
+        "anchor": "Two classical results price the trade-off",
+        "type": "match",
+        "caption": "pair each inventory tool with its rule",
+        "name": "opsInventoryMatch",
+        "config": {
+          "prompt": "The warehouse's toolkit — pair each tool with what it does:",
+          "pairs": [
+            { "left": "economic order quantity (EOQ)", "right": "balances ordering cost against holding cost — optimum grows with √demand, not demand" },
+            { "left": "the newsvendor problem", "right": "order more as the margin of a sale rises and the cost of leftover falls" },
+            { "left": "reorder point", "right": "expected demand during the supplier's lead time plus safety stock" },
+            { "left": "lean's radical claim", "right": "most of the buffer is organisational scar tissue you could remove by fixing the process" }
+          ],
+          "why": "Inventory is simultaneously a service and a cost — conventionally 20–30 per cent of the item's value per year to hold."
+        }
+      },
+      {
+        "anchor": "The counter-movement has its own name and its own decade",
+        "type": "branch",
+        "caption": "run the resilience decision",
+        "name": "opsShockBranch",
+        "config": {
+          "root": "A grounded ship has halted roughly a tenth of world trade. Your just-in-time line idles over components worth a few dollars. Now what?",
+          "nodes": {
+            "start": {
+              "text": "The board asks what changes. Your first move?",
+              "choices": [
+                { "label": "Add buffer stock of critical components", "next": "buffer", "feedback": "Resilience is insurance with a premium: real money in good times, catastrophic payoff in bad ones." },
+                { "label": "Dual-source the vulnerable components", "next": "dual", "feedback": "Two suppliers for one part — redundancy bought at margin cost." },
+                { "label": "Stay pure JIT — the shock will pass", "next": "pure", "feedback": "The 2021 Suez blockage and the semiconductor shortages are what pure JIT bought: idled factories over dollar-parts." }
+              ]
+            },
+            "buffer": {
+              "text": "Next question: engineering support — outsource it or run it yourself?",
+              "choices": [
+                { "label": "Outsource — the unit price is lower", "next": "outsource", "feedback": "Unit price is the lazy answer: hidden coordination costs are why 'simple' outsourcing projects overrun." },
+                { "label": "Keep it in-house", "next": "inhouse", "feedback": "Capability stays: firms that outsourced engineering sometimes found they had outsourced their future." }
+              ]
+            },
+            "dual": { "text": "Redundancy in place — regional suppliers and visible pipelines are next on the same logic." },
+            "pure": { "text": "The premium goes unpaid — and the next shock collects it with interest." },
+            "outsource": { "text": "Cheaper per unit, costlier per surprise — price the dependency before signing." },
+            "inhouse": { "text": "Control and capability retained — the premium runs through the payroll." }
+          },
+          "why": "Which premium is worth paying is now a board-level question, not an operations footnote."
+        }
+      },
+      {
+        "anchor": "named by researchers at MIT",
+        "type": "spot-error",
+        "caption": "one line of the lean summary is wrong",
+        "name": "opsLeanSpot",
+        "config": {
+          "prompt": "One line of this lean/JIT summary is wrong. Find it.",
+          "lines": [
+            "Lean means producing exactly what is needed, when needed, with zero waste",
+            "Waste includes overproduction, waiting, transport, excess inventory, motion, defects and unused talent",
+            "Just-in-time arranges for components to arrive as they are used",
+            "JIT works because extra inventory hides defects until they are cheap to fix",
+            "The philosophy rests on quality being high enough that zero buffer is survivable"
+          ],
+          "errorLine": 3,
+          "correction": "JIT works because inventory approaches zero and defects surface immediately instead of hiding in a warehouse.",
+          "why": "The entire philosophy rests on quality being high enough that zero buffer is survivable — hiding defects is what the buffer used to do."
+        }
+      },
+      {
+        "anchor": "Work it: fixed costs 10,000 a month",
+        "type": "cloze",
+        "caption": "fill the blanks — the break-even run",
+        "name": "opsBreakevenCloze",
+        "config": {
+          "text": "Fixed costs 10,000 a month, price 25, variable cost 15 — contribution %%0%% per unit. Sell 900 and the month loses %%1%%; sell 1,300 and profit is %%2%%.",
+          "answers": [["10"], ["1,000", "1000"], ["3,000", "3000"]],
+          "hint": "Each unit past break-even drops its whole contribution to the bottom line."
+        }
+      },
+      {
+        "anchor": "Queueing mathematics says otherwise",
+        "type": "trace",
+        "caption": "which curve is the queue?",
+        "name": "opsQueueTrace",
+        "config": {
+          "prompt": "A system's average queue length as utilisation approaches capacity — which curve is it?",
+          "curves": [
+            { "expr": "1/(1-x)", "color": "#1d4ed8", "label": "A: explodes near capacity" },
+            { "expr": "x*2", "color": "#b42318", "label": "B: rises in a straight line" },
+            { "expr": "1", "color": "#0f766e", "label": "C: flat" }
+          ],
+          "correct": 0,
+          "x": { "min": 0.5, "max": 0.95 },
+          "y": { "min": 0, "max": 20 },
+          "xlabel": "utilisation",
+          "ylabel": "average queue length",
+          "why": "Waiting times explode non-linearly: a system at 90 per cent busy has roughly double the queue of one at 80 — and near-infinite queues at 99. Idle capacity in the right place is a service, not a waste."
+        }
+      },
+      {
+        "anchor": "rises roughly tenfold at each stage it travels",
+        "type": "estimate",
+        "caption": "call the multiplier — the 1–10–100 rule",
+        "name": "opsDefectEstimate",
+        "config": {
+          "prompt": "A defect caught at design costs 1. Roughly how many times more does the same defect cost once caught at production?",
+          "unit": "× the design cost",
+          "answer": 10,
+          "factor": 1.5,
+          "why": "The 1–10–100 rule: design 1, production 10, the customer's hands 100 — recall campaigns, reputational damage, litigation.",
+          "context": "Quality is usually the cost-cutter: rework, scrap, returns and lost customers are quietly among the largest lines in any operation's cost base."
+        }
+      },
+      {
+        "anchor": "Unit-cost comparisons routinely omit coordination costs",
+        "type": "judge",
+        "caption": "true or false — the location ledger",
+        "name": "opsLocationJudge",
+        "config": {
+          "statements": [
+            { "s": "The cheapest location is the best location.", "truth": false, "why": "The comparison omits coordination costs, quality variance, lead times, currency risk and the political risk of depending on one geography." },
+            { "s": "Longer lead times inflate the inventory you must carry.", "truth": true, "why": "Lead time is where the reorder point and safety stock come from." },
+            { "s": "The firms that repatriated production after 2020 were discovering sentiment, not missing line items.", "truth": false, "why": "They were discovering the missing line items." },
+            { "s": "Location has quietly become a risk-management question as much as a cost question.", "truth": true, "why": "Nearshoring, friend-shoring and reshoring all price fragility, tariffs and logistics shocks." }
+          ]
+        }
+      }
+    ]
+  }
+]

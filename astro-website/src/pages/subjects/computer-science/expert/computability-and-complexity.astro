@@ -12,6 +12,207 @@ const comp2Cfg = {
     { math: '6 · P vs NP — the $1M question', note: 'Does checking quickly imply finding quickly? If P = NP, modern cryptography collapses and optimisation becomes trivial. Most believe P ≠ NP; nobody can prove it (yet). One of the seven Millennium Prize Problems.' },
   ],
 };
+
+const ccDesignOrder = {
+  "prompt": "Put the design method in order:",
+  "items": [
+    "Decompose — 'produce a merit list' becomes read → average → sort descending → output",
+    "Identify inputs, outputs and preconditions — what if the file is empty or a mark is negative?",
+    "Choose representations — parallel arrays for index lookup, records for stable sorting",
+    "Write the algorithm as pseudocode — sequence, selection, iteration",
+    "Translate — an error at this point costs a release cycle, not minutes"
+  ],
+  "why": "Errors get costlier the later they are caught: minutes at the drawing stage, a debugging session in tested work, a release cycle in shipped software."
+};
+
+const ccSortEst = {
+  "prompt": "Bubble sort on a million items does about n²/2 comparisons — roughly how many?",
+  "unit": "comparisons",
+  "answer": 500000000000,
+  "factor": 2,
+  "why": "500 billion — hours of work; the n log₂ n alternative does about 20 million, under a second.",
+  "context": "The lookup side tells the same story: 20 comparisons against 500,000 for the same million items."
+};
+
+const ccGrowthTrace = {
+  "prompt": "Items against work — which curve is the n log₂ n sort?",
+  "curves": [
+    {
+      "expr": "x*x/2",
+      "label": "curve A",
+      "color": "#d9480f"
+    },
+    {
+      "expr": "x*log(x)/log(2)",
+      "label": "curve B",
+      "color": "#1f6f54"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 1,
+    "max": 60
+  },
+  "y": {
+    "min": 0,
+    "max": 2000
+  },
+  "xlabel": "items (n)",
+  "ylabel": "comparisons",
+  "why": "Quadratic growth against linearithmic — the whole argument for why libraries ship the fast one and nobody ships the naive one."
+};
+
+const ccTestSort = {
+  "prompt": "File each sample into its class:",
+  "buckets": [
+    "normal data",
+    "boundary data",
+    "erroneous data"
+  ],
+  "items": [
+    {
+      "label": "60 for a percentage input",
+      "bucket": 0
+    },
+    {
+      "label": "85 for a percentage input",
+      "bucket": 0
+    },
+    {
+      "label": "0 and 100 for a percentage",
+      "bucket": 1
+    },
+    {
+      "label": "the first and last record of a file",
+      "bucket": 1
+    },
+    {
+      "label": "negative marks",
+      "bucket": 2
+    },
+    {
+      "label": "'abc' where a number belongs",
+      "bucket": 2
+    }
+  ],
+  "why": "Extremes of iteration complete the set — zero times, once, many."
+};
+
+const ccTraceCloze = {
+  "text": "Trace the loop for marks 60, 40, 80: total starts 0, becomes 60, %%0%%, 180; count runs 1, 2, %%1%%; average printed as %%2%%/3 = 60. If the average is computed inside the loop, the trace shows three %%3%% averages in five seconds.",
+  "answers": [
+    [
+      "100"
+    ],
+    [
+      "3"
+    ],
+    [
+      "180"
+    ],
+    [
+      "partial"
+    ]
+  ],
+  "hint": "Assertions, unit tests and formal verification are automated versions of the same question."
+};
+
+const ccHaltingJudge = {
+  "statements": [
+    {
+      "s": "The halting problem means we can never tell whether any program halts.",
+      "truth": false,
+      "why": "Specific programs are routinely proven to halt — a bounded loop is trivial; what is impossible is a single procedure that decides every case."
+    },
+    {
+      "s": "Vendors claiming 100% guarantees are selling past a theorem.",
+      "truth": true,
+      "why": "No tool can ever detect all viruses, prove all programs bug-free, or optimise away all dead code — each reduces to halting."
+    },
+    {
+      "s": "Turing's machine needed an infinite tape, a head and a finite rule table — and computes everything every later proposal could.",
+      "truth": true,
+      "why": "The Church–Turing thesis: no effective procedure has ever escaped it."
+    },
+    {
+      "s": "The wall is about individual instances, not the general method.",
+      "truth": false,
+      "why": "The reverse: it is about the general method; individual instances are routinely decidable."
+    }
+  ]
+};
+
+const ccRouteBranch = {
+  "root": "A delivery company asks you to plan journeys for 200 cities, exactly. Walk the expert's path.",
+  "nodes": {
+    "start": {
+      "text": "First question: is this problem NP-hard — does finding fast seem to require searching exponentially many options?",
+      "choices": [
+        {
+          "label": "Yes — assume worst-case exponential and engineer around it",
+          "next": "around",
+          "feedback": "The pragmatic position: theory sets the wall's shape, engineering finds its doors."
+        },
+        {
+          "label": "No — it is in P, polynomial time",
+          "next": "poly",
+          "feedback": "Sorting, shortest paths, matrix multiply — n² or n³ stays civilised; just write the algorithm."
+        }
+      ]
+    },
+    "around": {
+      "text": "200 cities: brute force is astronomies even here. What actually works?",
+      "choices": [
+        {
+          "label": "Exploit structure no worst-case analysis sees",
+          "next": "structure",
+          "feedback": "The Concorde code found the exact optimum for 85,900 cities in 2006 by doing exactly that."
+        },
+        {
+          "label": "Approximate — a provable 2-approximation",
+          "next": "approx",
+          "feedback": "2-approximation algorithms and integer programming handle the rest of industry daily."
+        }
+      ]
+    },
+    "poly": {
+      "text": "In P: doubling the input multiplies the work by a civilised factor — the 'easy' class where sorting and shortest paths live.",
+      "choices": []
+    },
+    "structure": {
+      "text": "Exact answers, real instances: structure — not miracle algorithms — is what makes the impossible routinely solved.",
+      "choices": []
+    },
+    "approx": {
+      "text": "Provable near-answers in guaranteed time: the industrial compromise when exactness is priced out of reach.",
+      "choices": []
+    }
+  },
+  "why": "Assume worst-case exponential, exploit structure, approximate — theory sets the wall, engineering finds the doors."
+};
+
+const ccZooMatch = {
+  "prompt": "Pair each class with its residents:",
+  "pairs": [
+    {
+      "left": "P",
+      "right": "solvable in polynomial time — sorting, shortest paths, matrix multiplication"
+    },
+    {
+      "left": "NP",
+      "right": "proposed answers verify fast — a filled sudoku, a timetable"
+    },
+    {
+      "left": "PSPACE",
+      "right": "games like generalised Go and chess are complete here — even checking a win may take exponential time"
+    },
+    {
+      "left": "BQP",
+      "right": "what quantum computers solve efficiently — Shor's algorithm puts factoring here"
+    }
+  ],
+  "why": "The only field that sets the security budget of the internet: Shor moved factoring, so cryptography migrates to post-quantum schemes."
+};
 ---
 <TopicPage slug="subjects/computer-science/expert/computability-and-complexity">
   <h2>Where you are, and what you will learn</h2>
@@ -73,6 +274,7 @@ const comp2Cfg = {
     task at all — it is this discipline (what counts as a word? what latency? what happens to
     memory when the dictionary is 500,000 entries?) and candidates who skip it fail predictably.
   </p>
+  <Widget no="9" caption="put the design method in order" widget="order" config={ccDesignOrder} />
   <p>
     <strong>So far:</strong> design is a sequence, and its stages exist because errors get more
     expensive the later they are caught. Next we stock the toolbox the sequence draws from — the
@@ -94,6 +296,8 @@ const comp2Cfg = {
     invariant "target is inside the current range" is maintained), and composability is the point:
     hash a key, chain for collisions, sort the buckets — real structures are these atoms joined.
   </p>
+  <Widget no="8" caption="call the naive sort's bill" widget="estimate" config={ccSortEst} />
+  <Widget no="7" caption="which curve is the linearithmic sort?" widget="trace" config={ccGrowthTrace} />
 
   <h2>Test data, trace tables and debugging</h2>
   <p>
@@ -113,6 +317,8 @@ const comp2Cfg = {
     (halve the input until it breaks), instrument (breakpoints and watches), form a hypothesis,
     and fix the cause — never the symptom.
   </p>
+  <Widget no="6" caption="file each sample into its class" widget="sort-buckets" config={ccTestSort} />
+  <Widget no="5" caption="fill the blanks — the trace table that catches the classic bug" widget="cloze" config={ccTraceCloze} />
   <p>
     <em>Common misconception:</em> "if all my tests pass, the program is correct." Dijkstra's
     line is still the expert position: testing shows the presence of bugs, never their absence.
@@ -166,6 +372,7 @@ const comp2Cfg = {
     individual instance — the distinction between a theorem about the set and a fact about a
     member is the whole subtlety.
   </p>
+  <Widget no="4" caption="true or false — what the halting wall actually forbids" widget="judge" config={ccHaltingJudge} />
   <p>
     <strong>So far:</strong> undecidability is a wall of <em>kind</em> — no algorithm exists,
     fast or slow. The next section asks the gentler question: among problems an algorithm
@@ -191,6 +398,7 @@ const comp2Cfg = {
     analysis sees, while 2-approximation algorithms and integer programming handle the rest of
     industry daily.
   </p>
+  <Widget no="3" caption="walk the expert's path on a hard problem" widget="branch" config={ccRouteBranch} />
   <p>
     <em>Common misconception:</em> "NP-hard means unsolvable." NP-hardness is a statement about
     <em>worst-case scaling</em>, not about any particular instance: your 20-city delivery route is
@@ -252,6 +460,7 @@ const comp2Cfg = {
     P — which is why cryptography is already migrating to post-quantum schemes; complexity theory
     is the only field that sets the security budget of the internet.
   </p>
+  <Widget no="2" caption="pair each class with its residents" widget="match" config={ccZooMatch} />
   <p>
     <strong>The status of P versus NP.</strong> Fifty years of attack have produced barriers as
     well as progress: relativisation (Baker–Gill–Solovay, 1975), natural proofs (Razborov–Rudich,

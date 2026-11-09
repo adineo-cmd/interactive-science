@@ -1,0 +1,161 @@
+[
+  {
+    "slug": "subjects/computer-science/advanced/databases-and-sql",
+    "activities": [
+      {
+        "anchor": "the anomalies are not theoretical",
+        "type": "compare",
+        "caption": "drag the divider across the redesign",
+        "name": "sqlBigtableCompare",
+        "config": {
+          "prompt": "Same school register, two shapes — drag the divider:",
+          "before": { "label": "one big table", "text": "Reads fine, joins look like extra work — and the tutor's room changes while 400 rows need editing; a student with no courses cannot exist; cancelling a last enrolment erases the student." },
+          "after": { "label": "normalised schema", "text": "Each fact stored once so the tables cannot disagree with themselves — the join you pay at query time is cheap and automatic." },
+          "why": "A small, predictable price for eliminating a whole class of silent corruption — normalise by default, denormalise deliberately for measured performance."
+        }
+      },
+      {
+        "anchor": "Read the machinery inside it",
+        "type": "sort-buckets",
+        "caption": "file each behaviour under the join that does it",
+        "name": "sqlJoinSort",
+        "config": {
+          "prompt": "File each behaviour under the join that does it:",
+          "buckets": ["INNER JOIN", "LEFT JOIN"],
+          "items": [
+            { "label": "matches rows on the keys and drops non-matches", "bucket": 0 },
+            { "label": "keeps all left rows, fills missing right rows with NULL", "bucket": 1 },
+            { "label": "answers 'who bought what this year?'", "bucket": 0 },
+            { "label": "answers 'who did NOT buy?'", "bucket": 1 },
+            { "label": "customers with no orders this year disappear", "bucket": 0 },
+            { "label": "the single most useful join distinction", "bucket": 1 }
+          ],
+          "why": "One declarative sentence; the engine chooses scan or index, join order and hash versus nested loops."
+        }
+      },
+      {
+        "anchor": "lookups and",
+        "type": "trace",
+        "caption": "which curve is the indexed lookup?",
+        "name": "sqlIndexTrace",
+        "config": {
+          "prompt": "Rows touched against data size — which curve is lookup by a highly varied key on a B-tree?",
+          "curves": [
+            { "expr": "log(x)/log(2)", "label": "curve A", "color": "#d9480f" },
+            { "expr": "x/6", "label": "curve B", "color": "#1f6f54" }
+          ],
+          "correct": 0,
+          "x": { "min": 1, "max": 1000 },
+          "y": { "min": 0, "max": 200 },
+          "xlabel": "rows in the store",
+          "ylabel": "rows touched",
+          "why": "With a highly varied key the planner touches 3–4 nodes instead of millions of rows; with 6 distinct values, each entry still points at a sixth of the store — barely better than reading everything."
+        }
+      },
+      {
+        "anchor": "which is why one busy PostgreSQL database can serve thousands of simultaneous sessions honestly",
+        "type": "branch",
+        "caption": "walk the isolation dial",
+        "name": "sqlIsoBranch",
+        "config": {
+          "root": "Two sessions run against the same account table. Walk the concurrency choices.",
+          "nodes": {
+            "start": {
+              "text": "Session A reads a balance that Session B has written but not yet committed. What just happened?",
+              "choices": [
+                { "label": "A dirty read — A may act on data that gets rolled back", "next": "dirty", "feedback": "Exactly the anomaly isolation exists to prevent — READ UNCOMMITTED allows it; production engines usually refuse." },
+                { "label": "Nothing yet — commits will sort it out", "next": "later", "feedback": "If B rolls back, A has already acted on money that never moved — the bug isolation prevents." }
+              ]
+            },
+            "dirty": {
+              "text": "You need isolation. Which level, at what cost?",
+              "choices": [
+                { "label": "READ COMMITTED — never see uncommitted data", "next": "rc", "feedback": "The common production floor: each read sees committed data only, trading some anomaly risk for concurrency." },
+                { "label": "SERIALIZABLE — as if transactions ran one at a time", "next": "serial", "feedback": "Maximum safety, minimum concurrency — the dial runs from READ UNCOMMITTED up to here." }
+              ]
+            },
+            "later": {
+              "text": "If B rolls back, A has acted on money that never moved — the dirty read is why isolation is a guarantee, not a courtesy.",
+              "choices": []
+            },
+            "rc": {
+              "text": "READ COMMITTED or REPEATABLE READ: production trade-offs — anomaly risk priced against concurrency, delivered by locking or MVCC (readers never block writers).",
+              "choices": []
+            },
+            "serial": {
+              "text": "SERIALIZABLE: the strictest rung — safest books, least throughput; the dial is a spectrum, not a switch.",
+              "choices": []
+            }
+          },
+          "why": "Isolation is a range, not a binary — production systems trade anomaly risk for concurrency, and MVCC lets readers never block writers."
+        }
+      },
+      {
+        "anchor": "The migration, step by step",
+        "type": "order",
+        "caption": "from spreadsheet to schema, in order",
+        "name": "sqlMigrateOrder",
+        "config": {
+          "prompt": "From spreadsheet to schema — put the moves in order:",
+          "items": [
+            "Identify entities — students, tutors, courses, enrolments: the nouns with their own identity",
+            "Assign surrogate keys to each",
+            "Move attributes to the entity they describe — dob to students, room to tutors",
+            "Model the relationship as its own table — enrolments(student_id, course_id, grade)",
+            "Four tables joined by foreign keys — update-proof by construction"
+          ],
+          "why": "The tutor's room exists once; history is preserved; the 'who takes what' view is one join away."
+        }
+      },
+      {
+        "anchor": "constraints turn business rules into database-enforced facts",
+        "type": "match",
+        "caption": "pair each tool with the rule it enforces",
+        "name": "sqlConstraintMatch",
+        "config": {
+          "prompt": "Pair each tool with the rule it enforces:",
+          "pairs": [
+            { "left": "UNIQUE", "right": "prevents double enrolment" },
+            { "left": "CHECK (grade IN ('A','B','C','D','F'))", "right": "refuses typos — invalid states unrepresentable" },
+            { "left": "NOT NULL", "right": "documents what is truly required" },
+            { "left": "INSERT ... ON CONFLICT DO UPDATE", "right": "'create or refresh' as one atomic statement — no read-then-write race" }
+          ],
+          "why": "The schema is policy: a well-typed table partly enforces its own correctness, surviving the next developer who has not read your comments."
+        }
+      },
+      {
+        "anchor": "pricing arithmetic in floats accumulates errors that audits find and courts punish",
+        "type": "spot-error",
+        "caption": "find the faulty line — the type consequences",
+        "name": "sqlTypeSpot",
+        "config": {
+          "prompt": "One of these type choices is wrong — click it:",
+          "lines": [
+            "Money in DECIMAL: binary representation makes 0.1 + 0.2 = 0.30000000000000004.",
+            "Dates as DATE, not strings: a typed DATE gives range queries, indexing and arithmetic for free.",
+            "A status column typed as an enumerated set makes invalid states unrepresentable.",
+            "CHAR vs VARCHAR: a two-letter country code wants VARCHAR(2) for flexibility.",
+            "Types are the cheapest constraints you will ever buy — enforced at every insert, no application code."
+          ],
+          "errorLine": 3,
+          "correction": "Fixed vs variable text trades padding for flexibility — a two-letter country code wants CHAR(2), the fixed-width type.",
+          "why": "Types are the cheapest constraints you will ever buy — schema is policy."
+        }
+      },
+      {
+        "anchor": "The planner estimates selectivities from statistics",
+        "type": "estimate",
+        "caption": "call the size of the planner's search",
+        "name": "sqlPlannerEst",
+        "config": {
+          "prompt": "For a join across 8 tables, roughly how many possible orderings must the optimiser enumerate?",
+          "unit": "orderings",
+          "answer": 17000,
+          "factor": 2,
+          "why": "About 17,000 — heuristics required; a 'fast query' is really 'a plan that could be estimated well'.",
+          "context": "Stale metadata is the classic cause of sudden slowness."
+        }
+      }
+    ]
+  }
+]

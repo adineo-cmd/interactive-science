@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "subjects/computer-science/advanced/operating-systems-basics",
+    "activities": [
+      {
+        "anchor": "from a slogan into an electrical fact",
+        "type": "cloze",
+        "caption": "fill the blanks — the heartbeat of multitasking",
+        "name": "osInterruptCloze",
+        "config": {
+          "text": "The %%0%% interrupt (typically %%1%%–1,000 times per second) hands the machine back to the supervisor no matter what a program is doing — the only reason one runaway program cannot own it. Software versions (%%2%%) are how system calls are implemented.",
+          "answers": [["timer"], ["100"], ["traps"]],
+          "hint": "The heartbeat of multitasking — and a page fault is one too, raised by the memory unit."
+        }
+      },
+      {
+        "anchor": "cold pages migrate to",
+        "type": "estimate",
+        "caption": "call the price of one miss",
+        "name": "osPagefaultEst",
+        "config": {
+          "prompt": "Fetching one missing chunk from disk costs roughly how many times a RAM access?",
+          "unit": "×",
+          "answer": 10000,
+          "factor": 2,
+          "why": "A fault lands in milliseconds against ~100 ns of RAM — which is why the swapping death spiral is the classic emergency.",
+          "context": "L1 ≈ 1 ns, RAM ≈ 100 ns, SSD ≈ 100 µs (1,000× RAM), a spinning-disk seek ≈ 10 ms (100,000× RAM)."
+        }
+      },
+      {
+        "anchor": "Every subsequent program is a child of that chain",
+        "type": "order",
+        "caption": "put the boot sequence in order",
+        "name": "osBootOrder",
+        "config": {
+          "prompt": "From power-on to your session — put the boot sequence in order:",
+          "items": [
+            "The CPU executes firmware (UEFI), which initialises hardware and verifies the boot chain (secure boot checks signatures)",
+            "The bootloader (GRUB) loads the kernel image into memory and hands over control",
+            "The kernel mounts the root file system and starts init",
+            "init (systemd) spawns everything else: drivers, services, the login manager, your session"
+          ],
+          "why": "The boot log is a map of the whole architecture — and secure boot checks signatures along the way."
+        }
+      },
+      {
+        "anchor": "Locality is the programmer's only lever",
+        "type": "place",
+        "caption": "slide to the SSD's rung on the hierarchy",
+        "name": "osHierarchyPlace",
+        "config": {
+          "prompt": "The hierarchy in powers of nanoseconds: L1 at 10⁰, RAM at 10². Slide the marker to the SSD read.",
+          "labels": ["10⁰ ns", "10² ns", "10⁴ ns", "10⁶ ns", "10⁸ ns"],
+          "scale": { "min": 0, "max": 8 },
+          "answer": 5,
+          "tolerance": 0.5,
+          "why": "SSD ≈ 100 µs = 10⁵ ns — 1,000× RAM; a spinning-disk seek ≈ 10 ms = 10⁷ ns. Touching nearby data together — array walks, not pointer chases — is worth 10–100× at zero cost."
+        }
+      },
+      {
+        "anchor": "the scheduler's world is a small state machine",
+        "type": "sort-buckets",
+        "caption": "file each situation by what it does to the CPU",
+        "name": "osStatesSort",
+        "config": {
+          "prompt": "File each situation by what it does to the CPU:",
+          "buckets": ["burns slices", "waits without burning"],
+          "items": [
+            { "label": "running — on a core", "bucket": 0 },
+            { "label": "ready — runnable, awaiting the nod", "bucket": 0 },
+            { "label": "blocked — waiting for disk, network or a lock", "bucket": 1 },
+            { "label": "a thousand idle connections", "bucket": 1 },
+            { "label": "a thousand busy loops", "bucket": 0 },
+            { "label": "SIGTERM's cleanup handlers running", "bucket": 0 }
+          ],
+          "why": "Blocked processes consume no time slices — which is why a thousand idle connections cost almost nothing."
+        }
+      },
+      {
+        "anchor": "The kernel steers this machine with",
+        "type": "match",
+        "caption": "pair each signal with its behaviour",
+        "name": "osSignalMatch",
+        "config": {
+          "prompt": "The software-interrupt zoo — pair each with its behaviour:",
+          "pairs": [
+            { "left": "SIGTERM", "right": "asks politely — cleanup handlers run" },
+            { "left": "SIGKILL", "right": "cannot be caught — the address space is simply reclaimed" },
+            { "left": "SIGSEGV", "right": "the segment fault itself — delivered on touching an unmapped page" },
+            { "left": "zombie", "right": "exited but whose status no one has collected — a parent's bookkeeping failure" }
+          ],
+          "why": "Orphans get re-parented to init; fork clones the process and exec replaces it — understanding fork/exec is understanding the command line."
+        }
+      },
+      {
+        "anchor": "The design trade has a name in every architecture",
+        "type": "branch",
+        "caption": "walk the concurrency-unit choice",
+        "name": "osUnitBranch",
+        "config": {
+          "root": "You are designing a web server. Walk the choice of concurrency unit.",
+          "nodes": {
+            "start": {
+              "text": "One connection crashes with a pointer bug. What do you want to happen?",
+              "choices": [
+                { "label": "Only that connection dies — isolation", "next": "process", "feedback": "Process per connection — the historical fork model: heavy creation, cold caches, but the blast radius is one." },
+                { "label": "Speed matters more — shared state, guarded", "next": "thread", "feedback": "Thread pools: cheap creation, warm caches, trivial communication — and every race, lock and deadlock hazard applies." }
+              ]
+            },
+            "process": {
+              "text": "Isolation bought. What does a browser do about hostile sites?",
+              "choices": [
+                { "label": "Sandbox each site in its own process", "next": "chrome", "feedback": "Isolation bought back at process scale, with threads inside each sandbox for speed." },
+                { "label": "One process for everything — simpler", "next": "risk", "feedback": "One stray site's pointer bug corrupts every open tab — the reason browsers pay the process price." }
+              ]
+            },
+            "thread": {
+              "text": "Threads chosen. Guard the shared state.",
+              "choices": [
+                { "label": "Locks around critical sections", "next": "locks", "feedback": "Indivisible critical sections cure races — and lock ordering is how you avoid the deadlock cycle." }
+              ]
+            },
+            "chrome": {
+              "text": "The browser's model: process-per-site for isolation, threads inside for speed — the same dial at browser scale.",
+              "choices": []
+            },
+            "risk": {
+              "text": "A pointer bug in one thread corrupts a sibling rather than failing safely — isolation is why the browser pays for processes.",
+              "choices": []
+            },
+            "locks": {
+              "text": "Locks, atomics, and lock ordering to break the deadlock cycle — the discipline in your own server.",
+              "choices": []
+            }
+          },
+          "why": "Threads exchange isolation for cheap communication; processes exchange communication cost for isolation — one dial, redrawn at all scales."
+        }
+      },
+      {
+        "anchor": "hybrid designs (Windows, macOS's XNU) compromise",
+        "type": "judge",
+        "caption": "true or false — the kernel architecture argument",
+        "name": "osKernelJudge",
+        "config": {
+          "statements": [
+            { "s": "Monolithic kernels run everything in kernel mode for speed, at the price of a driver bug crashing the machine.", "truth": true, "why": "Linux's model: fast, monolithic — one bad driver takes the whole system down." },
+            { "s": "Microkernels keep a minimal core and push drivers to user-space servers for isolation.", "truth": true, "why": "Minix, seL4, QNX — at a message-passing cost." },
+            { "s": "seL4 is a monolithic kernel, formally proven fast.", "truth": false, "why": "It is a verified MICROkernel — formally proven correct against its specification, the field's proof the dream is achievable." },
+            { "s": "Containers share a kernel but isolate views; hypervisors give each guest OS the illusion of owning real hardware.", "truth": true, "why": "Virtualisation is virtual memory's generalisation — the same trick, one level up." }
+          ]
+        }
+      }
+    ]
+  }
+]

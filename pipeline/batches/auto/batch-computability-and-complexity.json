@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "subjects/computer-science/expert/computability-and-complexity",
+    "activities": [
+      {
+        "anchor": "Serious algorithm design starts before code, with a disciplined sequence",
+        "type": "order",
+        "caption": "put the design method in order",
+        "name": "ccDesignOrder",
+        "config": {
+          "prompt": "Put the design method in order:",
+          "items": [
+            "Decompose — 'produce a merit list' becomes read → average → sort descending → output",
+            "Identify inputs, outputs and preconditions — what if the file is empty or a mark is negative?",
+            "Choose representations — parallel arrays for index lookup, records for stable sorting",
+            "Write the algorithm as pseudocode — sequence, selection, iteration",
+            "Translate — an error at this point costs a release cycle, not minutes"
+          ],
+          "why": "Errors get costlier the later they are caught: minutes at the drawing stage, a debugging session in tested work, a release cycle in shipped software."
+        }
+      },
+      {
+        "anchor": "averaging n/2",
+        "type": "estimate",
+        "caption": "call the naive sort's bill",
+        "name": "ccSortEst",
+        "config": {
+          "prompt": "Bubble sort on a million items does about n²/2 comparisons — roughly how many?",
+          "unit": "comparisons",
+          "answer": 500000000000,
+          "factor": 2,
+          "why": "500 billion — hours of work; the n log₂ n alternative does about 20 million, under a second.",
+          "context": "The lookup side tells the same story: 20 comparisons against 500,000 for the same million items."
+        }
+      },
+      {
+        "anchor": "bubble sort does about n²/2 comparisons",
+        "type": "trace",
+        "caption": "which curve is the linearithmic sort?",
+        "name": "ccGrowthTrace",
+        "config": {
+          "prompt": "Items against work — which curve is the n log₂ n sort?",
+          "curves": [
+            { "expr": "x*x/2", "label": "curve A", "color": "#d9480f" },
+            { "expr": "x*log(x)/log(2)", "label": "curve B", "color": "#1f6f54" }
+          ],
+          "correct": 1,
+          "x": { "min": 1, "max": 60 },
+          "y": { "min": 0, "max": 2000 },
+          "xlabel": "items (n)",
+          "ylabel": "comparisons",
+          "why": "Quadratic growth against linearithmic — the whole argument for why libraries ship the fast one and nobody ships the naive one."
+        }
+      },
+      {
+        "anchor": "Testing has a taxonomy, and the exam-correct one is worth having exactly",
+        "type": "sort-buckets",
+        "caption": "file each sample into its class",
+        "name": "ccTestSort",
+        "config": {
+          "prompt": "File each sample into its class:",
+          "buckets": ["normal data", "boundary data", "erroneous data"],
+          "items": [
+            { "label": "60 for a percentage input", "bucket": 0 },
+            { "label": "85 for a percentage input", "bucket": 0 },
+            { "label": "0 and 100 for a percentage", "bucket": 1 },
+            { "label": "the first and last record of a file", "bucket": 1 },
+            { "label": "negative marks", "bucket": 2 },
+            { "label": "'abc' where a number belongs", "bucket": 2 }
+          ],
+          "why": "Extremes of iteration complete the set — zero times, once, many."
+        }
+      },
+      {
+        "anchor": "a column per variable, one row per iteration, recording every change",
+        "type": "cloze",
+        "caption": "fill the blanks — the trace table that catches the classic bug",
+        "name": "ccTraceCloze",
+        "config": {
+          "text": "Trace the loop for marks 60, 40, 80: total starts 0, becomes 60, %%0%%, 180; count runs 1, 2, %%1%%; average printed as %%2%%/3 = 60. If the average is computed inside the loop, the trace shows three %%3%% averages in five seconds.",
+          "answers": [["100"], ["3"], ["180"], ["partial"]],
+          "hint": "Assertions, unit tests and formal verification are automated versions of the same question."
+        }
+      },
+      {
+        "anchor": "the distinction between a theorem about the set and a fact about a member",
+        "type": "judge",
+        "caption": "true or false — what the halting wall actually forbids",
+        "name": "ccHaltingJudge",
+        "config": {
+          "statements": [
+            { "s": "The halting problem means we can never tell whether any program halts.", "truth": false, "why": "Specific programs are routinely proven to halt — a bounded loop is trivial; what is impossible is a single procedure that decides every case." },
+            { "s": "Vendors claiming 100% guarantees are selling past a theorem.", "truth": true, "why": "No tool can ever detect all viruses, prove all programs bug-free, or optimise away all dead code — each reduces to halting." },
+            { "s": "Turing's machine needed an infinite tape, a head and a finite rule table — and computes everything every later proposal could.", "truth": true, "why": "The Church–Turing thesis: no effective procedure has ever escaped it." },
+            { "s": "The wall is about individual instances, not the general method.", "truth": false, "why": "The reverse: it is about the general method; individual instances are routinely decidable." }
+          ]
+        }
+      },
+      {
+        "anchor": "a route under 1,000 km",
+        "type": "branch",
+        "caption": "walk the expert's path on a hard problem",
+        "name": "ccRouteBranch",
+        "config": {
+          "root": "A delivery company asks you to plan journeys for 200 cities, exactly. Walk the expert's path.",
+          "nodes": {
+            "start": {
+              "text": "First question: is this problem NP-hard — does finding fast seem to require searching exponentially many options?",
+              "choices": [
+                { "label": "Yes — assume worst-case exponential and engineer around it", "next": "around", "feedback": "The pragmatic position: theory sets the wall's shape, engineering finds its doors." },
+                { "label": "No — it is in P, polynomial time", "next": "poly", "feedback": "Sorting, shortest paths, matrix multiply — n² or n³ stays civilised; just write the algorithm." }
+              ]
+            },
+            "around": {
+              "text": "200 cities: brute force is astronomies even here. What actually works?",
+              "choices": [
+                { "label": "Exploit structure no worst-case analysis sees", "next": "structure", "feedback": "The Concorde code found the exact optimum for 85,900 cities in 2006 by doing exactly that." },
+                { "label": "Approximate — a provable 2-approximation", "next": "approx", "feedback": "2-approximation algorithms and integer programming handle the rest of industry daily." }
+              ]
+            },
+            "poly": {
+              "text": "In P: doubling the input multiplies the work by a civilised factor — the 'easy' class where sorting and shortest paths live.",
+              "choices": []
+            },
+            "structure": {
+              "text": "Exact answers, real instances: structure — not miracle algorithms — is what makes the impossible routinely solved.",
+              "choices": []
+            },
+            "approx": {
+              "text": "Provable near-answers in guaranteed time: the industrial compromise when exactness is priced out of reach.",
+              "choices": []
+            }
+          },
+          "why": "Assume worst-case exponential, exploit structure, approximate — theory sets the wall, engineering finds the doors."
+        }
+      },
+      {
+        "anchor": "The complexity zoo extends upward",
+        "type": "match",
+        "caption": "pair each class with its residents",
+        "name": "ccZooMatch",
+        "config": {
+          "prompt": "Pair each class with its residents:",
+          "pairs": [
+            { "left": "P", "right": "solvable in polynomial time — sorting, shortest paths, matrix multiplication" },
+            { "left": "NP", "right": "proposed answers verify fast — a filled sudoku, a timetable" },
+            { "left": "PSPACE", "right": "games like generalised Go and chess are complete here — even checking a win may take exponential time" },
+            { "left": "BQP", "right": "what quantum computers solve efficiently — Shor's algorithm puts factoring here" }
+          ],
+          "why": "The only field that sets the security budget of the internet: Shor moved factoring, so cryptography migrates to post-quantum schemes."
+        }
+      }
+    ]
+  }
+]

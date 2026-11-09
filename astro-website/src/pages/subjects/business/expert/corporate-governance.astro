@@ -10,6 +10,180 @@ const govCfg = {
     { math: '4 · Shareholders vs stakeholders', note: 'Shareholder primacy (maximise owner value) vs stakeholder governance (employees, customers, community). The practical question is measurement and accountability — stakeholders without voice are statements, not governance.' },
   ],
 };
+
+const govToolMatch = {
+  "prompt": "Incentive design is control — pair each failure with the tool that guards it:",
+  "pairs": [
+    {
+      "left": "one metric becomes the target (Goodhart)",
+      "right": "metric diversity"
+    },
+    {
+      "left": "options reward manufactured share-price moves",
+      "right": "vesting periods"
+    },
+    {
+      "left": "results later proven false were already paid",
+      "right": "clawbacks"
+    },
+    {
+      "left": "behaviour no bonus formula captures",
+      "right": "recognition and meaningful work (Herzberg)"
+    }
+  ],
+  "why": "Equity pay aligns managers with owners only directionally — share-price movements can be manufactured by buybacks and cost-cutting as easily as by value creation."
+};
+
+const govEmpireBranch = {
+  "root": "You run a firm generating cash well beyond good investment opportunities. Jensen (1986) is watching — and so are the owners.",
+  "nodes": {
+    "start": {
+      "text": "The cash pile grows. What does the firm do with it?",
+      "choices": [
+        {
+          "label": "Expand — acquisitions, prestige projects, headcount",
+          "next": "empire",
+          "feedback": "The empire is the manager's utility and the payout is only the shareholder's — the classic drift the hypothesis names."
+        },
+        {
+          "label": "Return it — dividends and buybacks",
+          "next": "return",
+          "feedback": "Contracted cash exits: the disciplining answer, because the money can no longer fund pet projects."
+        }
+      ]
+    },
+    "empire": {
+      "text": "The owners notice the returns on the expansions are thin. What arrives next?",
+      "choices": [
+        {
+          "label": "Debt — which contracts future discretion",
+          "next": "debt",
+          "feedback": "Governance in miniature: interest payments commit the cash before managers can spend it."
+        },
+        {
+          "label": "A takeover bid",
+          "next": "takeover",
+          "feedback": "The threat of takeover is the market's attempt to take the discretionary money back — the LBO wave followed exactly this logic in the cash-rich oil industry of the early 1980s."
+        }
+      ]
+    },
+    "return": {
+      "text": "Discretionary money exits under contract — the empire-builder's budget is gone."
+    },
+    "debt": {
+      "text": "Future discretion contracted away: discipline without a bid."
+    },
+    "takeover": {
+      "text": "New owners, new management — the external corrector for appointment failure."
+    }
+  },
+  "why": "Jensen's own target was the oil industry of the early 1980s — cash-rich firms drilling anyway — and the leveraged-buyout wave was the market's answer."
+};
+
+const govBoardJudge = {
+  "statements": [
+    {
+      "s": "The board runs the company's operations.",
+      "truth": false,
+      "why": "Boards oversee; executives run."
+    },
+    {
+      "s": "The board's actual jobs include hiring and firing the CEO, approving strategy and major transactions, and overseeing risk and audit.",
+      "truth": true,
+      "why": "Those three jobs require information and courage, not meeting time."
+    },
+    {
+      "s": "A board that starts managing operations has usually already abandoned overseeing.",
+      "truth": true,
+      "why": "Running operations is the failure signature, not a sign of engagement."
+    },
+    {
+      "s": "A weak board is decoration with liability.",
+      "truth": true,
+      "why": "The machinery only works when the people in it are willing to say no."
+    }
+  ]
+};
+
+const govCommitteeBuckets = {
+  "prompt": "One-tier boards work through committees. File each duty:",
+  "buckets": [
+    "audit committee",
+    "remuneration committee",
+    "nomination committee"
+  ],
+  "items": [
+    {
+      "label": "financial integrity and the external auditor relationship",
+      "bucket": 0
+    },
+    {
+      "label": "incentive design for executives",
+      "bucket": 1
+    },
+    {
+      "label": "who joins the board",
+      "bucket": 2
+    },
+    {
+      "label": "financial reporting integrity",
+      "bucket": 0
+    }
+  ],
+  "why": "Each committee carries independence requirements the codes specify — and CEO/chair separation plus genuinely independent audit committees correlate with fewer restatements."
+};
+
+const govCodeCompare = {
+  "prompt": "Enforcement philosophies — drag the divider across the systems:",
+  "before": {
+    "label": "UK — comply or explain",
+    "text": "Listing rules with principles that companies may depart from if they explain why to the market — a bet that investor scrutiny beats prescription."
+  },
+  "after": {
+    "label": "US — legislated duties",
+    "text": "Sarbanes–Oxley and exchange listing standards legislate specific duties, with regulators and criminal liability behind them."
+  },
+  "why": "None is clearly superior in outcomes; Germany's statutory two-tier removes some choices entirely — and cross-listed firms must satisfy all three national theories of who enforces governance."
+};
+
+const govIndexEstimate = {
+  "prompt": "BlackRock, Vanguard and State Street together hold roughly what fraction of a typical S&P 500 company's votes?",
+  "unit": "of votes",
+  "answer": 0.2,
+  "factor": 1.5,
+  "why": "About a fifth — engagement runs through proxy voting: directors elected, auditors appointed, and since Dodd-Frank (2010) an advisory say-on-pay vote.",
+  "context": "The open tension: passive funds cannot sell without un-indexing, so their governance power is decoupled from their economic exposure."
+};
+
+const govSayPaySpot = {
+  "prompt": "One line of this say-on-pay summary has the mechanism design backwards. Find it.",
+  "lines": [
+    "The US say-on-pay vote (Dodd-Frank, 2010) is advisory",
+    "Britain escalated to a binding statutory vote on remuneration policy from October 2013",
+    "A UK pay policy needs shareholder approval to operate at all",
+    "An advisory vote produces bargaining; a binding one produces information",
+    "Boards now negotiate pay packages with proxy advisers before the meeting"
+  ],
+  "errorLine": 3,
+  "correction": "An advisory vote produces information; a binding one produces bargaining.",
+  "why": "The regimes differ in legal force — and that difference, not the word 'vote', is what changes how boards behave before the meeting."
+};
+
+const govAppointCloze = {
+  "text": "Governance failures are usually %%0%% failures with a time lag: the wrong CEO selected, the compliant director retained, the auditor chosen for friendliness. Directors who owe their seats to the CEO are structurally compromised — the '%%1%% director' problem. Whistleblowing channels are the recruitment of %%2%%.",
+  "answers": [
+    [
+      "appointment"
+    ],
+    [
+      "grey"
+    ],
+    [
+      "bad news"
+    ]
+  ],
+  "hint": "One word names the compromised director; one names what a whistleblowing channel recruits."
+};
 ---
 <TopicPage slug="subjects/business/expert/corporate-governance">
   <h2>Where you are, and what you will learn</h2>
@@ -76,6 +250,7 @@ const govCfg = {
     (Herzberg) that recognition and meaningful work drive behaviour that no bonus formula
     captures.
   </p>
+  <Widget no="9" caption="pair each failure mode with its corrective tool" widget="match" config={govToolMatch} />
   <p>
     <strong>Empire building, theorised.</strong> Jensen's free-cash-flow hypothesis (1986) names
     the classic failure mode: firms generating cash well beyond good investment opportunities
@@ -87,12 +262,14 @@ const govCfg = {
     cash-rich firms drilling anyway — and the leveraged-buyout wave that followed was the
     market's attempt to take the discretionary money back.
   </p>
+  <Widget no="8" caption="run the discretionary-cash decision" widget="branch" config={govEmpireBranch} />
   <p>
     <em>Common misconception:</em> "the board runs the company." Boards <em>oversee</em>;
     executives run. A board that starts managing operations has usually already failed at its
     actual jobs — hiring and firing the CEO, approving strategy and major transactions, and
     overseeing risk and audit — because those require information and courage, not meeting time.
   </p>
+  <Widget no="7" caption="true or false — oversight versus running" widget="judge" config={govBoardJudge} />
   <p>
     <strong>So far:</strong> incentives align and misalign — equity pay plus a single metric
     produced the Wells Fargo failure, and empire building is the executive's version of the
@@ -116,6 +293,7 @@ const govCfg = {
     independent audit committees correlate with fewer restatements; the correlations are
     modest, because structure only works when the people in it are willing to say no.
   </p>
+  <Widget no="6" caption="file each duty under its committee" widget="sort-buckets" config={govCommitteeBuckets} />
   <p>
     The enforcement philosophies differ and the comparison teaches: Britain's Corporate
     Governance Code runs on <em>comply or explain</em> — listing rules with principles
@@ -128,6 +306,7 @@ const govCfg = {
     across systems must satisfy all three, which is why cross-listed firms carry the heaviest
     governance apparatus of all.
   </p>
+  <Widget no="5" caption="drag the divider — two theories of who enforces" widget="compare" config={govCodeCompare} />
   <p>
     <strong>The shareholder voice, mechanised.</strong> Ownership is now institutional —
     the three largest index managers (BlackRock, Vanguard, State Street) together hold on
@@ -140,6 +319,7 @@ const govCfg = {
     decoupled from their economic exposure — the biggest unsolved design question in
     modern ownership.
   </p>
+  <Widget no="4" caption="call the magnitude — the index managers' votes" widget="estimate" config={govIndexEstimate} />
   <p>
     <em>Common misconception:</em> "say on pay is the same everywhere — a symbolic vote
     shareholders can ignore." The regimes differ in legal force: the US vote (Dodd-Frank, 2010)
@@ -149,6 +329,7 @@ const govCfg = {
     advisory vote produces information, a binding one produces bargaining — and boards now
     negotiate pay packages with proxy advisers before the meeting rather than after.
   </p>
+  <Widget no="3" caption="one line of the say-on-pay summary is reversed" widget="spot-error" config={govSayPaySpot} />
   <p>
     <strong>So far:</strong> the machinery is in place — committees, codes, proxy votes —
     and the say-on-pay comparison showed how much legal force varies behind similar-sounding
@@ -171,6 +352,7 @@ const govCfg = {
     question. Whistleblowing channels belong in the same system: they are the recruitment of
     bad news, and their suppression is the signature of the governance failures below.
   </p>
+  <Widget no="2" caption="fill the blanks — appointment is destiny" widget="cloze" config={govAppointCloze} />
   <p>
     <strong>The external market for control.</strong> Appointment failure has an external
     corrector: the market for corporate control (Manne, 1965) — a badly governed firm's share

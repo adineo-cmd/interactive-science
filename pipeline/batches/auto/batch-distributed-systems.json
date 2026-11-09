@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "subjects/computer-science/expert/distributed-systems",
+    "activities": [
+      {
+        "anchor": "One protocol-level mistake, planet-sized outage",
+        "type": "order",
+        "caption": "put the October 2021 collapse in order",
+        "name": "distOutageOrder",
+        "config": {
+          "prompt": "Put the October 2021 collapse in order:",
+          "items": [
+            "Facebook withdraws the BGP announcements that tell the internet how to reach its DNS servers",
+            "Facebook, Instagram and WhatsApp vanish for about six hours",
+            "The company's own staff cannot easily reach the buildings or tools to fix it — internal routes went down with the announcement",
+            "Serious teams begin treating routing and DNS as safety-critical"
+          ],
+          "why": "The distributed-system lesson in one afternoon — the mechanisms everyone reuses are the ones that can take a planet offline."
+        }
+      },
+      {
+        "anchor": "Production systems operationalise it with quorums",
+        "type": "branch",
+        "caption": "tune the read and write settings yourself",
+        "name": "distQuorumBranch",
+        "config": {
+          "root": "N = 3 replicas of one shard. Tune the settings.",
+          "nodes": {
+            "start": {
+              "text": "Writes need W acknowledgements; reads wait for R responses. Default suggestion?",
+              "choices": [
+                { "label": "W = 2, R = 2 — W + R = 4 exceeds N", "next": "safe", "feedback": "Every read must overlap at least one fresh copy — consistency survives one crashed node, at the cost of every read contacting two machines." },
+                { "label": "W = 1, R = 1 — fastest", "next": "fast", "feedback": "Writes to one copy leave two stale: a read from a stale node returns old data — fast, and eventually consistent." }
+              ]
+            },
+            "fast": {
+              "text": "Stale reads accepted. What does that buy during a cut?",
+              "choices": [
+                { "label": "Availability — answer from whatever copy you have", "next": "avail", "feedback": "The CAP availability side: the system keeps answering while copies disagree." },
+                { "label": "Consistency — refuse reads that cannot reach a threshold", "next": "consis", "feedback": "The CAP consistency side: no answers during the cut, but nothing wrong leaves the building." }
+              ]
+            },
+            "safe": {
+              "text": "The safe setting. What breaks it?",
+              "choices": [
+                { "label": "A second node crashes — W = 2 now unreachable", "next": "down", "feedback": "With one live node, writes must refuse: the consistency side of CAP during a cut." }
+              ]
+            },
+            "avail": {
+              "text": "Available and eventually consistent — the DNS school: staleness accepted, answers always.",
+              "choices": []
+            },
+            "consis": {
+              "text": "Consistent and unavailable during the cut — the bank-balance school: wrong is worse than slow.",
+              "choices": []
+            },
+            "down": {
+              "text": "Two down of three: no write threshold can be met, so the store refuses writes — availability sacrificed for consistency, one request at a time.",
+              "choices": []
+            }
+          },
+          "why": "Tune W and R per request, per piece of data — the CAP call belongs to the operation, not to the company."
+        }
+      },
+      {
+        "anchor": "The choice only bites",
+        "type": "sort-buckets",
+        "caption": "file each workload by the mode that suits it",
+        "name": "distWorkloadSort",
+        "config": {
+          "prompt": "File each workload by the mode that suits it:",
+          "buckets": ["strong consistency first", "availability first"],
+          "items": [
+            { "label": "bank balances", "bucket": 0 },
+            { "label": "recommendations", "bucket": 1 },
+            { "label": "refuse reads that cannot reach a threshold", "bucket": 0 },
+            { "label": "answer from whatever copy you have", "bucket": 1 },
+            { "label": "a payment record", "bucket": 0 },
+            { "label": "cached profile pictures", "bucket": 1 }
+          ],
+          "why": "Engineers who misread the theorem as one-mode-for-everything build systems that are either slow everywhere or wrong where it counts."
+        }
+      },
+      {
+        "anchor": "Money is the hardest distributed-systems problem dressed in economics",
+        "type": "estimate",
+        "caption": "call the settlement rate",
+        "name": "distTpsEst",
+        "config": {
+          "prompt": "At the protocol's base layer, roughly how many payments can this network settle per second?",
+          "unit": "per second",
+          "answer": 7,
+          "factor": 2,
+          "why": "About 7 — Visa peaks in the tens of thousands; and each one burns more energy than many homes use in a year, which is why Ethereum switched its agreement mechanism in 2022.",
+          "context": "Rewriting history means re-mining every block since — economically self-defeating against an honest majority."
+        }
+      },
+      {
+        "anchor": "The trade-offs are the distributed-systems trade-offs wearing a currency",
+        "type": "compare",
+        "caption": "drag the divider across the two agreement machines",
+        "name": "distConsensusCompare",
+        "config": {
+          "prompt": "Two ways to buy the Byzantine Generals result — drag the divider:",
+          "before": { "label": "proof-of-work", "text": "Miners burn electricity: roughly 10²⁰ hashes per second network-wide, each block about 10 minutes of global luck — consensus bought with energy." },
+          "after": { "label": "proof-of-stake", "text": "Validators stake coins instead of burning electricity — Ethereum's 2022 switch cut energy use by an estimated 99.9%." },
+          "why": "Both buy agreement without a referee — and 'immutable' still has an asterisk: a majority cartel can reorganise recent blocks, so the guarantees are economic and probabilistic."
+        }
+      },
+      {
+        "anchor": "Distributing machines distributes the attack surface",
+        "type": "match",
+        "caption": "pair each mechanism with the layer it guards",
+        "name": "distGuardMatch",
+        "config": {
+          "prompt": "Pair each mechanism with the layer it guards:",
+          "pairs": [
+            { "left": "TLS", "right": "data on the wire — nothing more" },
+            { "left": "mutual TLS and signed tokens", "right": "service-to-service calls once attackers are inside — the zero-trust assumption" },
+            { "left": "idempotency keys", "right": "replay — the network WILL deliver your payment request twice" },
+            { "left": "distributed defence", "right": "assaults no single machine could survive" }
+          ],
+          "why": "Mirai, 2016: hundreds of thousands of weak-password IoT devices flooded DNS provider Dyn — Twitter, Netflix and Reddit off the air for hours."
+        }
+      },
+      {
+        "anchor": "Underneath replication sits the crown jewel",
+        "type": "judge",
+        "caption": "true or false — the consensus arithmetic",
+        "name": "distRaftJudge",
+        "config": {
+          "statements": [
+            { "s": "Raft elects one leader and requires a majority to confirm each log entry.", "truth": true, "why": "2 of 3, 3 of 5 — the arithmetic IS the safety argument." },
+            { "s": "Paxos is famous for being nearly incomprehensible; Raft re-solved the problem to be teachable.", "truth": true, "why": "1998 versus 2014 — same guarantee, readable paper." },
+            { "s": "Two majorities can carry conflicting decisions.", "truth": false, "why": "Any two majorities overlap in at least one live node — conflicting decisions cannot both carry a majority." },
+            { "s": "etcd stores Kubernetes' entire cluster state on top of this machinery.", "truth": true, "why": "etcd, CockroachDB, Spanner — agreement with an engine attached." }
+          ]
+        }
+      },
+      {
+        "anchor": "Retry storms deserve special respect",
+        "type": "cloze",
+        "caption": "fill the blanks — why the tails eat the average",
+        "name": "distTailCloze",
+        "config": {
+          "text": "A service that calls %%0%% others, each 99.9% reliable, succeeds fully only about %%1%%% of the time — 1% of a million requests per day is %%2%% failures. A struggling service receiving three retries per failure is under %%3%%× the load it was already failing under.",
+          "answers": [["10", "ten"], ["99"], ["10,000", "10000"], ["3", "three"]],
+          "hint": "Hedged requests, backpressure and circuit breakers are the tail-taming toolkit."
+        }
+      }
+    ]
+  }
+]

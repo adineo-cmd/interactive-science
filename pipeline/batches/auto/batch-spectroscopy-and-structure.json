@@ -1,0 +1,151 @@
+[
+  {
+    "slug": "subjects/chemistry/advanced/spectroscopy-and-structure",
+    "activities": [
+      {
+        "anchor": "One molecule, four instruments, four complementary answers",
+        "type": "match",
+        "caption": "pair each instrument with the rung it probes",
+        "name": "spInstrumentMatch",
+        "config": {
+          "prompt": "The energy ladder's instruments — pair each with the structural question it answers:",
+          "pairs": [
+            { "left": "radio waves (NMR)", "right": "the chemical neighbourhood of each hydrogen" },
+            { "left": "infrared (IR)", "right": "which bonds are present" },
+            { "left": "visible and UV", "right": "conjugation and colour" },
+            { "left": "X-rays", "right": "the full 3-D arrangement" }
+          ],
+          "why": "Molecules absorb only photons whose energy matches a gap between allowed states — each rung of the ladder probes a different feature."
+        }
+      },
+      {
+        "anchor": "the C=O of a carbonyl",
+        "type": "place",
+        "caption": "drop the marker on the carbonyl dip",
+        "name": "spCarbonylPlace",
+        "config": {
+          "prompt": "The C=O stretch sings near what wavenumber? Place the marker on the IR scale:",
+          "labels": ["1000", "1750", "2500", "3500"],
+          "scale": { "min": 1000, "max": 3500 },
+          "answer": 1750,
+          "tolerance": 120,
+          "why": "Near 1750 cm⁻¹ — a clean, deep cut. Position tells you which bond; the broad O–H dip near 3300 tells you its situation: this spectrum is basically vinegar introducing itself."
+        }
+      },
+      {
+        "anchor": "Two bonus features make MS quantitative and forensic",
+        "type": "sort-buckets",
+        "caption": "file the isotope doublets",
+        "name": "spIsotopeBuckets",
+        "config": {
+          "prompt": "Isotope patterns are instant element detection. File each signature:",
+          "buckets": ["chlorine — 3:1 doublet", "bromine — 1:1 pair"],
+          "items": [
+            { "label": "³⁵Cl and ³⁷Cl", "bucket": 0 },
+            { "label": "a peak split into a 3:1 doublet", "bucket": 0 },
+            { "label": "⁷⁹Br and ⁸¹Br", "bucket": 1 },
+            { "label": "a peak split into a 1:1 pair", "bucket": 1 }
+          ],
+          "why": "And high-resolution MS distinguishes 27.9949 (carbon monoxide) from 28.0062 (nitrogen) — eight decimal places apart — which is how breathalysers and sports drug testing work."
+        }
+      },
+      {
+        "anchor": "Three further pieces of information make the map complete",
+        "type": "order",
+        "caption": "stack the NMR reading order",
+        "name": "spNmrOrder",
+        "config": {
+          "prompt": "Reading an NMR map — put the three clues in working order:",
+          "items": [
+            "Chemical shift — where the resonance sits relative to TMS, reporting the electronic neighbourhood",
+            "Integral — counting the hydrogens in each group",
+            "Splitting — the n+1 rule, counting nearest non-equivalent neighbours",
+            "Coupling patterns — linking the groups to each other, as the triplet/quartet pairing does in ethanol"
+          ],
+          "why": "Hydrogens on carbons next to oxygen resonate downfield near 3–4 ppm; plain alkyl hydrogens near 1 ppm; aldehyde hydrogens near 10."
+        }
+      },
+      {
+        "anchor": "The n+1 rule counts only the",
+        "type": "spot-error",
+        "caption": "one line of the ethanol NMR reading is wrong",
+        "name": "spNmrSpot",
+        "config": {
+          "prompt": "One line of this ethanol NMR summary is wrong. Find it.",
+          "lines": [
+            "Ethanol's ¹H NMR shows three signals: CH₃, CH₂ and OH",
+            "The CH₃ peak appears as a triplet of 3 units at ~1.2 ppm",
+            "The CH₂ peak appears as a quartet of 2 units at ~3.7 ppm",
+            "The CH₃ signal is split by all seven other hydrogens into an eight-line multiplet",
+            "The triplet/quartet pairing proves the CH₃ and CH₂ groups are bonded to each other"
+          ],
+          "errorLine": 3,
+          "correction": "The n+1 rule counts only the nearest non-equivalent neighbours — the CH₃ protons feel their two CH₂ neighbours, hence a triplet.",
+          "why": "Coupling through bonds falls off rapidly with distance, and equivalent protons do not split each other at all."
+        }
+      },
+      {
+        "anchor": "Bragg in practice",
+        "type": "estimate",
+        "caption": "call the diffraction angle",
+        "name": "spBraggEstimate",
+        "config": {
+          "prompt": "Copper X-rays (λ = 0.154 nm) hit planes 0.2 nm apart. Roughly what angle does the first-order reflection sit at?",
+          "unit": "degrees",
+          "answer": 23,
+          "factor": 1.25,
+          "why": "sin θ = 0.154/0.4 = 0.385, so θ ≈ 23° — the arithmetic a diffractometer runs automatically, turning spot angles into distances between atomic planes.",
+          "context": "Collecting thousands of reflections reconstructs the electron density — the molecule in three dimensions, atoms placed directly."
+        }
+      },
+      {
+        "anchor": "a spot at 4.2 cm with the front",
+        "type": "cloze",
+        "caption": "fill the blanks — chromatography and wet tests",
+        "name": "spChromaCloze",
+        "config": {
+          "text": "Chromatography reports each spot as an Rf value: a spot at 4.2 cm with the solvent front at 7.0 cm has Rf = %%0%%. The wet tests close the loop: CO₂ turns limewater %%1%%, H₂ pops with a lit splint, and O₂ relights a %%2%% one.",
+          "answers": [["0.60", "0.6"], ["milky"], ["glowing"]],
+          "hint": "Rf is distance moved by spot divided by distance moved by solvent."
+        }
+      },
+      {
+        "anchor": "Every structure determination begins with a pure sample",
+        "type": "branch",
+        "caption": "run the purification decision tree",
+        "name": "spPurifyBranch",
+        "config": {
+          "root": "Purity is bought with the right separation — the tree runs on the property that differs. Choose for each sample.",
+          "nodes": {
+            "start": {
+              "text": "A crude solid with small amounts of soluble impurities. Which separation?",
+              "choices": [
+                { "label": "Recrystallisation — dissolve hot, cool, crystallise", "next": "recryst", "feedback": "The classic: the desired compound crystallises while the small impurity load stays dissolved — judged by melting-point sharpness." },
+                { "label": "Simple distillation", "next": "wrong1", "feedback": "That separates liquids by boiling point — the solid never boils." }
+              ]
+            },
+            "recryst": {
+              "text": "Now two liquids: ethanol at 78 °C and water at 100 °C. Which separation?",
+              "choices": [
+                { "label": "Simple distillation", "next": "distil", "feedback": "Right for liquids far apart — though azeotropes cap ethanol's purity near 96 per cent." },
+                { "label": "Paper chromatography", "next": "wrong2", "feedback": "Chromatography separates by affinity and volatility at tiny scale — not the industrial route for bulk liquids." }
+              ]
+            },
+            "distil": {
+              "text": "Last sample: a non-volatile, drug-scale molecule in solution. Which analysis?",
+              "choices": [
+                { "label": "HPLC — high-pressure liquid chromatography", "next": "hplc", "feedback": "Built for non-volatile molecules under pressure — and run the outlet into a mass spectrometer and separation plus identification happen in one instrument." },
+                { "label": "Gas chromatography", "next": "wrong3", "feedback": "GC needs volatility — this molecule never becomes a gas intact." }
+              ]
+            },
+            "hplc": { "text": "Separation chosen, purity verified — melting point, TLC single spot, a clean NMR." },
+            "wrong1": { "text": "Back to the tree: pick the property that actually differs." },
+            "wrong2": { "text": "Back to the tree: boiling point is the differing property here." },
+            "wrong3": { "text": "Back to the tree: volatility is the property GC runs on." }
+          },
+          "why": "An unverified yield is a guess with arithmetic on it — purity checks are part of the method, not an afterthought."
+        }
+      }
+    ]
+  }
+]

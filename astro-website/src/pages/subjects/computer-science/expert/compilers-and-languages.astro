@@ -20,6 +20,224 @@ const compQuizCfg = {
     { q: 'A high-level language is usually preferred over assembly because it is…', choices: ['faster on the specific machine it was written for', 'easier to read, debug and port to other machines', 'the only kind the CPU understands', 'free of all errors'], answer: 1, why: 'High-level code is portable and far easier for humans. Assembly only wins when you need precise hardware control — and modern optimising compilers often beat hand-written assembly anyway.' },
   ],
 };
+
+const compFunnelOrder = {
+  "prompt": "One sentence — total = price + 4 * 2 — through the funnel. Put the stages' actions in order:",
+  "items": [
+    "The lexer groups characters into seven tokens, whitespace discarded",
+    "The parser builds the AST — an assignment node, an addition node, a multiplication node",
+    "The grammar gives * higher precedence than +, so the tree is price + (4 * 2)",
+    "The semantic analyser walks the tree with the symbol table — was price ever declared?",
+    "The optimiser folds 4 * 2 to 8 — a provably-equivalent rewrite"
+  ],
+  "why": "Each stage checks something before passing the work down — verification rides the translation all the way to silicon."
+};
+
+const compErrorSort = {
+  "prompt": "File each complaint by the stage that raises it:",
+  "buckets": [
+    "the lexer's",
+    "the parser's",
+    "the semantic analyser's"
+  ],
+  "items": [
+    {
+      "label": "an identifier starting with a digit",
+      "bucket": 0
+    },
+    {
+      "label": "'missing semicolon'",
+      "bucket": 1
+    },
+    {
+      "label": "'price was never declared' — absent from the symbol table",
+      "bucket": 2
+    },
+    {
+      "label": "a string added to a number",
+      "bucket": 2
+    },
+    {
+      "label": "the tokens arrive in an order the grammar forbids",
+      "bucket": 1
+    },
+    {
+      "label": "'colourless green ideas sleep furiously' — well-formed English that means nothing",
+      "bucket": 2
+    }
+  ],
+  "why": "Each check is cheapest at its own level — spelling, then grammar, then sense."
+};
+
+const compBootCloze = {
+  "text": "Power on, and the CPU executes %%0%% stored on the motherboard: it runs the power-on self-test, finds the boot device, loads the %%1%% from the disk's boot sector, and the bootloader loads the OS %%2%% into RAM and hands over.",
+  "answers": [
+    [
+      "firmware"
+    ],
+    [
+      "bootloader"
+    ],
+    [
+      "kernel"
+    ]
+  ],
+  "hint": "Small programs loading bigger ones — nothing useful was in RAM when the chain began."
+};
+
+const compPollEst = {
+  "prompt": "A 3 GHz CPU polling one device 100 times a second — roughly how many idle cycles per second does that burn?",
+  "unit": "cycles",
+  "answer": 300000000,
+  "factor": 3,
+  "why": "Hundreds of millions of idle cycles — all for a device used about ten moments per minute; the interrupt replaces the question with a signal.",
+  "context": "Attention spent only when there is news: the device raises it, the CPU looks up the routine's address and runs it."
+};
+
+const compTranslatorMatch = {
+  "prompt": "Pair each tool with its behaviour:",
+  "pairs": [
+    {
+      "left": "assembler",
+      "right": "converts assembly to machine code essentially one-for-one — fast, unforgiving"
+    },
+    {
+      "left": "compiler",
+      "right": "translates a whole program before it runs — full-speed execution, no translator present"
+    },
+    {
+      "left": "interpreter",
+      "right": "reads and executes a statement at a time, stopping at the first error"
+    },
+    {
+      "left": "JIT system",
+      "right": "watches which code runs hot and compiles just those parts, with assumptions from actual runtime behaviour"
+    }
+  ],
+  "why": "There is no clean line between compiled and interpreted — only points along a spectrum of how much is translated in advance."
+};
+
+const compTradeBranch = {
+  "root": "You are designing a language. Walk the fork in the road.",
+  "nodes": {
+    "start": {
+      "text": "When should type errors surface?",
+      "choices": [
+        {
+          "label": "Before running — static typing",
+          "next": "static",
+          "feedback": "C, Rust, TypeScript: earlier error catching, more optimisation fuel — and more ceremony at write time."
+        },
+        {
+          "label": "At run time — dynamic typing",
+          "next": "dynamic",
+          "feedback": "Python, JavaScript: faster to write, errors surface later — the runtime pays for the flexibility."
+        }
+      ]
+    },
+    "dynamic": {
+      "text": "Dynamic chosen. Now memory. Who frees it?",
+      "choices": [
+        {
+          "label": "A garbage collector",
+          "next": "gc",
+          "feedback": "Java, Go — safe, with occasional pauses; the runtime does the bookkeeping."
+        },
+        {
+          "label": "The programmer, manually",
+          "next": "manual",
+          "feedback": "C — fast and dangerous; one forgotten free is a bug class."
+        },
+        {
+          "label": "The compiler, via ownership rules",
+          "next": "owner",
+          "feedback": "Rust — safe and fast, harder to learn: the borrow checker is the price."
+        }
+      ]
+    },
+    "static": {
+      "text": "Static chosen. Now memory.",
+      "choices": [
+        {
+          "label": "Ownership rules — the borrow checker",
+          "next": "owner",
+          "feedback": "Rust's point in the space: safe and fast, harder to learn."
+        },
+        {
+          "label": "A garbage collector",
+          "next": "gc",
+          "feedback": "Safe, with occasional pauses."
+        }
+      ]
+    },
+    "gc": {
+      "text": "Garbage collection trades pauses for safety; ownership trades a learning curve for both — every point on the dial is a choice, not progress.",
+      "choices": []
+    },
+    "manual": {
+      "text": "Manual management buys speed and sells danger — device drivers and bootloaders still pay it deliberately.",
+      "choices": []
+    },
+    "owner": {
+      "text": "Ownership: the borrow checker proves safety at compile time — safe and fast, harder to learn.",
+      "choices": []
+    }
+  },
+  "why": "Typing, memory management, paradigms — choices, not progress toward one perfect language."
+};
+
+const compJitJudge = {
+  "statements": [
+    {
+      "s": "Compiled programs are always faster than interpreted ones.",
+      "truth": false,
+      "why": "Modern JIT systems watch which code runs hot, compile just those parts with assumptions from actual runtime behaviour, and outperform naive ahead-of-time compilation."
+    },
+    {
+      "s": "JavaScript engines render modern 3D games at 60 frames a second.",
+      "truth": true,
+      "why": "A full reversal for a category long considered hopeless."
+    },
+    {
+      "s": "JIT compilation already uses machine learning to predict hot code before it runs.",
+      "truth": false,
+      "why": "That is an open question — prediction before the fact remains research; today's JITs measure and react."
+    },
+    {
+      "s": "There is a clean line between compiled and interpreted languages.",
+      "truth": false,
+      "why": "Java and Python both compile to bytecode for a virtual machine — only points along a spectrum of how much is translated in advance."
+    }
+  ]
+};
+
+const compBracketTrace = {
+  "prompt": "Memory use against input length while counting nested brackets — which curve is the finite automaton's attempt?",
+  "curves": [
+    {
+      "expr": "0",
+      "label": "curve A — no memory at all",
+      "color": "#d9480f"
+    },
+    {
+      "expr": "x",
+      "label": "curve B — grows with depth (a stack)",
+      "color": "#1f6f54"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 10
+  },
+  "y": {
+    "min": 0,
+    "max": 12
+  },
+  "xlabel": "input length",
+  "ylabel": "memory needed",
+  "why": "The finite automaton has no memory beyond its current state — nested structures cannot be lexed, only parsed; the stack of a context-free grammar is what the count requires."
+};
 ---
 <TopicPage slug="subjects/computer-science/expert/compilers-and-languages">
   <h2>Where you are, and what you will learn</h2>
@@ -82,6 +300,7 @@ const compQuizCfg = {
     expressions</strong>, the simplest class of patterns, which is why it runs in a single
     fast pass.
   </p>
+  <Widget no="10" caption="one sentence through the funnel, in order" widget="order" config={compFunnelOrder} />
   <p>
     The <strong>parser</strong> then asks whether the token stream is a grammatical sentence
     and builds the abstract syntax tree (AST): an assignment node whose left child is
@@ -104,6 +323,7 @@ const compQuizCfg = {
     <code>4 * 2</code> to <code>8</code> because the operands are literals that can never
     change; dead-code elimination deletes statements whose results can never be read.
   </p>
+  <Widget no="9" caption="file each complaint by the stage that raises it" widget="sort-buckets" config={compErrorSort} />
   <p>
     <em>Common misconception:</em> a compiler translates your code line by line, like a human
     translator reading aloud. It does not. A compiler reads the <strong>whole</strong> program
@@ -144,6 +364,7 @@ const compQuizCfg = {
     bootloader to kernel — is why a computer can start with literally nothing useful in RAM:
     each stage is a small program whose only job is to load the next, bigger one.
   </p>
+  <Widget no="8" caption="fill the blanks — the chain from nothing to running" widget="cloze" config={compBootCloze} />
   <p>
     <strong>Interrupts</strong> solve the problem of how hardware gets the CPU's attention.
     The naive alternative is <strong>polling</strong>: the CPU repeatedly asks each device
@@ -161,6 +382,7 @@ const compQuizCfg = {
     devices interrupt simultaneously; and <strong>masking</strong> lets the CPU ignore
     low-priority interrupts during critical sections.
   </p>
+  <Widget no="7" caption="call the polling bill" widget="estimate" config={compPollEst} />
   <p>
     <em>Common misconception:</em> the operating system runs "underneath" your programs,
     continuously. In fact the OS mostly does not run at all: your word processor has the CPU,
@@ -203,6 +425,7 @@ const compQuizCfg = {
     and interpreted by a virtual machine. There is no clean line between "compiled" and
     "interpreted" — only points along a spectrum of how much is translated in advance.
   </p>
+  <Widget no="6" caption="pair each translator with its behaviour" widget="match" config={compTranslatorMatch} />
   <p>
     <strong>Why languages differ</strong> is the same story told at design time. Static typing
     (C, Rust, TypeScript) checks types before running — earlier error catching, more
@@ -215,6 +438,7 @@ const compQuizCfg = {
     values from old. The explosion of languages is not indecision; it is different communities
     choosing different points in this trade space.
   </p>
+  <Widget no="5" caption="walk the language-design fork" widget="branch" config={compTradeBranch} />
   <p>
     An <strong>integrated development environment (IDE)</strong> bundles the toolchain into one
     program: a <strong>code editor</strong> with syntax highlighting, autocompletion and
@@ -234,6 +458,7 @@ const compQuizCfg = {
     render modern 3D games at 60 frames a second — in what was once the slowest language class
     in common use.
   </p>
+  <Widget no="4" caption="true or false — the JIT reversal" widget="judge" config={compJitJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -292,6 +517,7 @@ const compQuizCfg = {
     languages precisely because the grammar alone cannot decide. Language designers must
     choose grammars that parse efficiently (in linear time) or pay in compile times.
   </p>
+  <Widget no="3" caption="which curve is the finite automaton?" widget="trace" config={compBracketTrace} />
   <p>
     <strong>Optimisation is mathematics, not magic.</strong> After semantic analysis, serious
     compilers convert the AST into an intermediate representation in <em>single static

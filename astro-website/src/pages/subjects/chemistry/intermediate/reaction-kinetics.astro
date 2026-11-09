@@ -15,6 +15,194 @@ const arrheniusCfg = {
   crossings: false,
   height: 330,
 };
+
+const kinMgEst = {
+  "prompt": "0.12 g of magnesium (0.005 mol) in excess acid releases 0.005 mol of hydrogen. Roughly what volume does that occupy at room temperature?",
+  "unit": "cm³",
+  "answer": 120,
+  "factor": 1.5,
+  "why": "About 120 cm³ — the early average runs 1.5 cm³/s while the rest crawls over 5 minutes: fewer effective collisions as the acid is consumed.",
+  "context": "Molar gas volume ≈ 24,000 cm³ per mol — 0.005 mol × 24,000 = 120 cm³."
+};
+
+const kinDialSort = {
+  "prompt": "Every rate factor is a dial on one statement — file each move by what it changes:",
+  "buckets": [
+    "collide more often",
+    "clear the energy bar more easily"
+  ],
+  "items": [
+    {
+      "label": "double the acid concentration — magnesium fizzes about twice as fast",
+      "bucket": 0
+    },
+    {
+      "label": "swap a chalk chip for powder — ten thousandfold more reactive frontier",
+      "bucket": 0
+    },
+    {
+      "label": "double the pressure of a gas reaction",
+      "bucket": 0
+    },
+    {
+      "label": "raise the temperature — the fast tail of the energy distribution grows",
+      "bucket": 1
+    },
+    {
+      "label": "add iron to the ammonia bed — a lower-energy route",
+      "bucket": 1
+    },
+    {
+      "label": "hold reactants in reactive orientations while paying part of the bond-breaking cost",
+      "bucket": 1
+    }
+  ],
+  "why": "Enough energy and the right orientation: turn any dial and one of those two improves."
+};
+
+const kinHeatSpot = {
+  "prompt": "A student explains the 10 °C doubling rule. One line is wrong — click it:",
+  "lines": [
+    "Warming lifts the collision frequency a little — by about √T.",
+    "The violence of the effect comes from the energy distribution's tail.",
+    "A 10 °C rise roughly doubles the fraction of molecules carrying enough energy to react.",
+    "The modest speed increase is what runs the world.",
+    "Cold kills difficult reactions first — which is exactly why refrigeration preserves food."
+  ],
+  "errorLine": 3,
+  "correction": "It is the exponential statistics, not the speedometer, that runs the world — Arrhenius: k = A·e^(−Ea/RT).",
+  "why": "Frequency climbs modestly; the fraction clearing Ea roughly doubles per 10 °C — the exponential does the work."
+};
+
+const kinMBTrace = {
+  "prompt": "Molecular energy against fraction of molecules — which curve, shaded past the bar, is the fraction that can react?",
+  "curves": [
+    {
+      "expr": "x*exp(-x)",
+      "label": "curve A",
+      "color": "#d9480f"
+    },
+    {
+      "expr": "x",
+      "label": "curve B",
+      "color": "#1f6f54"
+    },
+    {
+      "expr": "exp(-x)",
+      "label": "curve C",
+      "color": "#4455aa"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 6
+  },
+  "y": {
+    "min": 0,
+    "max": 0.5
+  },
+  "xlabel": "molecular energy",
+  "ylabel": "fraction of molecules",
+  "why": "The long-tailed curve: heating stretches the tail — exponentially more area past the bar; a catalyst drags the bar leftward into the bulk; concentration just rescales the whole picture."
+};
+
+const kinCatJudge = {
+  "statements": [
+    {
+      "s": "A catalyst is consumed as it works and must be continually replaced.",
+      "truth": false,
+      "why": "It participates and is regenerated — a converter's platinum survives a decade of exhausts."
+    },
+    {
+      "s": "A catalyst lowers the activation hill for the forward and reverse paths alike.",
+      "truth": true,
+      "why": "Same lower road both ways — so it buys time, never yield."
+    },
+    {
+      "s": "No catalyst in history has shifted an equilibrium position.",
+      "truth": true,
+      "why": "It accelerates both directions equally; position and K are untouched, however much industry wished otherwise."
+    },
+    {
+      "s": "Enzymes accelerate reactions by factors of 10⁶ to beyond 10¹⁷.",
+      "truth": true,
+      "why": "Carbonic anhydrase hydrates about a million CO₂ molecules per second per enzyme."
+    }
+  ]
+};
+
+const kinHalfBranch = {
+  "root": "One dose at noon; the label promises a 6-hour first-order half-life. Walk the clock.",
+  "nodes": {
+    "start": {
+      "text": "Noon — 100% of the dose in the blood. What is true by 18:00?",
+      "choices": [
+        {
+          "label": "One half-life has passed — 50% remains",
+          "next": "evening",
+          "feedback": "6 hours → 50%. First order: the same fraction falls each half-life."
+        },
+        {
+          "label": "It depends on how big the dose was",
+          "next": "dose",
+          "feedback": "For first-order decay the fraction is fixed — large dose or small, half is gone every 6 hours."
+        }
+      ]
+    },
+    "dose": {
+      "text": "First-order decay halves the PERCENTAGE each half-life: 50, 25, 12.5… the amount depends on the dose, the fraction never does.",
+      "choices": []
+    },
+    "evening": {
+      "text": "18:00 — 50% remains. Midnight is two half-lives in. What is left by 06:00?",
+      "choices": [
+        {
+          "label": "25% — and 3.125% by 06:00 (five half-lives)",
+          "next": "morning",
+          "feedback": "50 → 25 → 12.5 → 6.25 → 3.125 — effectively gone after about 30 hours."
+        },
+        {
+          "label": "0% — the last of it clears at midnight",
+          "next": "zero",
+          "feedback": "First order never reaches zero: 12.5% at three half-lives, 6.25% at four — the tail thins forever."
+        }
+      ]
+    },
+    "morning": {
+      "text": "By 06:00 five half-lives have passed: about 3% remains — the mathematics behind carbon-14 dating, clearance curves and every exponential decay.",
+      "choices": []
+    },
+    "zero": {
+      "text": "Zero never arrives: each 6-hour tick halves what is left — 50, 25, 12.5, 6.25…",
+      "choices": []
+    }
+  },
+  "why": "First-order decay carries a constant half-life — the mathematics behind carbon-14 dating, clearance curves and every exponential decay."
+};
+
+const kinOzoneMatch = {
+  "prompt": "Pair each entry with its part in the story:",
+  "pairs": [
+    {
+      "left": "one chlorine radical",
+      "right": "converts roughly 100,000 ozone molecules before it is scavenged"
+    },
+    {
+      "left": "a few parts per trillion of CFCs",
+      "right": "enough to open the Antarctic ozone hole"
+    },
+    {
+      "left": "the Montreal Protocol (1987)",
+      "right": "banned the source — the most successful environmental treaty in history"
+    },
+    {
+      "left": "leaded petrol",
+      "right": "gummed converter surfaces — how catalysts really die"
+    }
+  ],
+  "why": "A catalyst's defining feature is multiplication — catalysis at planetary scale, for better and for worse."
+};
 ---
 <TopicPage slug="subjects/chemistry/intermediate/reaction-kinetics">
   <h2>Where you are, and what you will learn</h2>
@@ -76,6 +264,7 @@ const arrheniusCfg = {
     point — steepest at t = 0 (the "initial rate", the cleanest number for comparing
     experiments, since nothing has yet been consumed).
   </p>
+  <Widget no="8" caption="call the gas volume the syringe will hold" widget="estimate" config={kinMgEst} />
   <p>
     Two quick quantitative confirmations of the collision picture. <strong>Surface area:</strong>
     one marble of chalk (calcium carbonate, 1 cm³) exposes about 6 cm²; the same volume as
@@ -99,6 +288,7 @@ const arrheniusCfg = {
     energy Ea)</strong> <em>and</em> the <strong>right orientation</strong>. Every rate
     factor is one of four dials on that statement:
   </p>
+  <Widget no="7" caption="file each move by which dial it turns" widget="sort-buckets" config={kinDialSort} />
   <ul>
     <li><strong>Concentration/pressure</strong> — more particles per volume, more collisions
     per second. Acid at 2 mol/L fizzes magnesium roughly twice as fast as 1 mol/L.</li>
@@ -118,6 +308,7 @@ const arrheniusCfg = {
   <strong>energy distribution's tail</strong>: a 10 °C rise roughly doubles the fraction of
   molecules carrying enough energy to react. It is the exponential statistics, not the
   speedometer, that runs the world.</p>
+  <Widget no="6" caption="find the faulty line — why heat is so violent a lever" widget="spot-error" config={kinHeatSpot} />
 
   <h2>Temperature: Arrhenius's exponential</h2>
   <p>
@@ -176,6 +367,7 @@ const arrheniusCfg = {
     shaded-area argument on it can answer essentially every kinetics question a course will
     ask.
   </p>
+  <Widget no="5" caption="which curve is the Maxwell–Boltzmann distribution?" widget="trace" config={kinMBTrace} />
   <p>
     <strong>So far:</strong> rate laws are measured, not read off equations, and every argument
     in the chapter reduces to one picture — the Maxwell–Boltzmann distribution with the area
@@ -207,6 +399,8 @@ const arrheniusCfg = {
     buy time, never yield — no catalyst in history has ever shifted an equilibrium position,
     however hard industrial chemists have wished otherwise.
   </p>
+  <Widget no="4" caption="true or false — what a catalyst never does" widget="judge" config={kinCatJudge} />
+  <Widget no="3" caption="walk the clock on a 6-hour half-life" widget="branch" config={kinHalfBranch} />
 
   <p><em>Common misconception:</em> "a catalyst is used up as it works, and it pushes the
   reaction further towards completion." Neither: a catalyst participates and is regenerated —
@@ -258,6 +452,7 @@ const arrheniusCfg = {
     by banning the <em>source</em>, is the most successful environmental treaty in history.
     Kinetics, at altitude, saved the sky.
   </p>
+  <Widget no="2" caption="pair each entry with its part in the ozone story" widget="match" config={kinOzoneMatch} />
   <p>
     <strong>From hill to hobbyhorse: measuring Ea.</strong> Run a reaction at several
     temperatures, plot ln k against 1/T, and the Arrhenius equation straightens into a line

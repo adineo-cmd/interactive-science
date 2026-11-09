@@ -21,6 +21,151 @@ const balancesCfg = {
     { math: '5 · Recycle changes the arithmetic', note: 'Recycling unreacted feed raises overall conversion without a better reactor — but purge streams are needed to keep inerts from accumulating.' },
   ],
 };
+
+const mebBoxMatch = {
+  "prompt": "Choose the system boundary — pair each box with what it teaches you:",
+  "pairs": [
+    {
+      "left": "box around a single pump",
+      "right": "what the pump does"
+    },
+    {
+      "left": "box around a reactor plus its recycle loop",
+      "right": "what the loop achieves"
+    },
+    {
+      "left": "box around the whole plant",
+      "right": "what you are paying for at the fence line"
+    }
+  ],
+  "why": "The physics never changes — only the box. Learning where to draw it, and what to neglect once it is drawn, is the first genuine skill of the subject."
+};
+
+const mebSteadyCloze = {
+  "text": "A process is at %%0%% when nothing changes with time: gauges read constant values, tank levels sit still, temperatures hold. Then accumulation is %%1%%, and the equation collapses to %%2%% equals %%3%% — like a shop whose daily takings exactly match its daily sales.",
+  "answers": [
+    [
+      "steady state"
+    ],
+    [
+      "zero"
+    ],
+    [
+      "input"
+    ],
+    [
+      "output"
+    ]
+  ],
+  "hint": "The bathtub level sits still — what does that make the accumulation, and the two flows?"
+};
+
+const mebEvapEstimate = {
+  "prompt": "An evaporator concentrates juice from 10 per cent to 50 per cent solids, feed 1,000 kg per hour. Roughly what leaves as concentrated product?",
+  "unit": "kg per hour",
+  "answer": 200,
+  "factor": 1.3,
+  "why": "200 kg per hour of product — the solids balance reads 0.10 × 1,000 = 0.50 × P, and the total balance then hands over 800 kg per hour of vapour.",
+  "context": "That vapour rate sizes the condenser and tells you the steam bill."
+};
+
+const mebSteadyJudge = {
+  "statements": [
+    {
+      "s": "A candle burning steadily is at steady state.",
+      "truth": true,
+      "why": "Temperatures and flame shape are constant — but it is very far from chemical equilibrium."
+    },
+    {
+      "s": "Steady state and chemical equilibrium are the same thing.",
+      "truth": false,
+      "why": "Steady state is about flows balancing over time; equilibrium is about no net driving force left."
+    },
+    {
+      "s": "Plants are engineered to run at states deliberately far from equilibrium.",
+      "truth": true,
+      "why": "That is precisely where reactions and separations actually happen."
+    },
+    {
+      "s": "At equilibrium a reaction has no net driving force left.",
+      "truth": true,
+      "why": "Which is exactly why an equilibrium plant would produce nothing new."
+    }
+  ]
+};
+
+const mebElementBuckets = {
+  "prompt": "In a reacting system, what is conserved and what changes identity? File each:",
+  "buckets": [
+    "elements (conserved)",
+    "compounds (change identity)"
+  ],
+  "items": [
+    {
+      "label": "carbon atoms",
+      "bucket": 0
+    },
+    {
+      "label": "hydrogen atoms",
+      "bucket": 0
+    },
+    {
+      "label": "oxygen atoms",
+      "bucket": 0
+    },
+    {
+      "label": "methane",
+      "bucket": 1
+    },
+    {
+      "label": "carbon dioxide",
+      "bucket": 1
+    },
+    {
+      "label": "water",
+      "bucket": 1
+    }
+  ],
+  "why": "Atoms are never created or destroyed in an ordinary reaction — they only change partners; the compounds they form come and go."
+};
+
+const mebOxygenEstimate = {
+  "prompt": "Burning 100 mol per hour of methane needs 200 mol per hour of oxygen. With 20 per cent excess for safety, how much oxygen is supplied?",
+  "unit": "mol per hour",
+  "answer": 240,
+  "factor": 1.2,
+  "why": "240 mol per hour of oxygen — arriving inside about 1,143 mol per hour of air, carrying 903 mol per hour of nitrogen that takes no part in the reaction.",
+  "context": "The leftover 40 mol per hour is what the stack analyser reads as roughly 3.8 per cent oxygen."
+};
+
+const mebStackPlace = {
+  "prompt": "The dry flue gas from the complete burn reads near what oxygen percentage? Place the marker:",
+  "labels": [
+    "0%",
+    "7%",
+    "14%",
+    "21%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 21
+  },
+  "answer": 3.8,
+  "tolerance": 0.8,
+  "why": "Near 3.8 per cent — 40 mol of leftover oxygen in about 1,043 mol of flue gas; operators read it to tell whether the burner is running rich, lean, or leaking air."
+};
+
+const mebLoopOrder = {
+  "prompt": "The ammonia loop, from feed to purge — put it in order:",
+  "items": [
+    "Nitrogen and hydrogen enter the converter",
+    "Per-pass conversion is a modest 15 per cent",
+    "Ammonia is condensed out as product",
+    "Unreacted gas loops back to the converter",
+    "A purge bleeds out the inert argon at exactly the rate it enters"
+  ],
+  "why": "Per-pass conversion stays modest — which keeps the reaction controllable and the catalyst happy — while overall conversion of the fresh feed exceeds 97 per cent."
+};
 ---
 <TopicPage slug="subjects/chemical-engineering/foundational/material-and-energy-balances">
   <h2>Where you are, and what you will learn</h2>
@@ -68,6 +213,7 @@ const balancesCfg = {
     Learning where to draw it, and what to neglect once it is drawn, is the first
     genuine skill of the subject.
   </p>
+  <Widget no="10" caption="pair each box with what drawing it teaches" widget="match" config={mebBoxMatch} />
   <p>
     This is also why the discipline is described as "chemistry with consequences
     at scale". A bench chemist can throw away the 60 per cent that did not convert
@@ -107,6 +253,7 @@ const balancesCfg = {
     shutdown and upsets are the exceptions that transient (changing-with-time)
     balances handle.
   </p>
+  <Widget no="9" caption="fill the blanks — the master equation at work" widget="cloze" config={mebSteadyCloze} />
   <p>
     A worked example shows how little machinery is needed. An
     <strong>evaporator</strong> — a device that boils water out of a liquid —
@@ -118,6 +265,7 @@ const balancesCfg = {
     balance</em>: a balance on one thing inside a stream instead of the whole
     stream.
   </p>
+  <Widget no="8" caption="call the product rate — the evaporator" widget="estimate" config={mebEvapEstimate} />
   <p>
     Solids do not evaporate, so the solids balance reads: 0.10 × 1,000 = 0.50 × P.
     That gives P = 200 kg per hour of concentrated juice. The total balance then
@@ -133,6 +281,7 @@ const balancesCfg = {
     force left. Plants are engineered to run at steady states that are deliberately far from
     equilibrium, precisely because that is where reactions and separations actually happen.
   </p>
+  <Widget no="7" caption="true or false — steady state versus equilibrium" widget="judge" config={mebSteadyJudge} />
   <p>
     <strong>So far:</strong> at steady state, input equals output; when one
     equation is not enough, write a balance for a component that takes only one
@@ -148,6 +297,7 @@ const balancesCfg = {
     Atoms are never created or destroyed in an ordinary reaction — they only
     change partners.
   </p>
+  <Widget no="6" caption="file the bookkeeping — element or compound" widget="sort-buckets" config={mebElementBuckets} />
   <p>
     The tidy way to organise this is the <strong>extent of reaction</strong>: one
     number describing how far the reaction has run. For each species, the change
@@ -166,6 +316,7 @@ const balancesCfg = {
     is about 1,143 mol per hour — carrying about 903 mol per hour of nitrogen,
     which takes no part in the reaction.
   </p>
+  <Widget no="5" caption="call the oxygen feed" widget="estimate" config={mebOxygenEstimate} />
   <p>
     If the methane burns completely, the extent is 100 mol per hour. The flue gas
     — the exhaust, counted dry — contains 100 mol per hour of carbon dioxide, the
@@ -174,6 +325,7 @@ const balancesCfg = {
     is what a plant's oxygen analyser reads in the stack, and operators use it to
     tell whether the burner is running rich, lean, or leaking air.
   </p>
+  <Widget no="4" caption="drop the marker on the stack reading" widget="place" config={mebStackPlace} />
   <p>
     Two companion definitions matter. <em>Conversion</em> is the fraction of a
     reactant that is consumed. <em>Yield</em> and <em>selectivity</em> enter when
@@ -219,6 +371,7 @@ const balancesCfg = {
     modest — which keeps the reaction controllable and the catalyst happy — while
     overall conversion of the fresh feed exceeds 97 per cent.
   </p>
+  <Widget no="3" caption="walk the recycle loop, in order" widget="order" config={mebLoopOrder} />
   <p>
     But recycle has a catch that bit many early plants: whatever enters the loop
     and does not leave as product, or react away, will <em>accumulate</em>. Inert

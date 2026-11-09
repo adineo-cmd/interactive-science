@@ -1,0 +1,120 @@
+[
+  {
+    "slug": "subjects/computer-science/advanced/networking-how-the-internet-works",
+    "activities": [
+      {
+        "anchor": "that share the wires statistically, instead of reserving a",
+        "type": "estimate",
+        "caption": "call the packet count for one file",
+        "name": "netPacketsEst",
+        "config": {
+          "prompt": "A 10 MB file chopped into ~1,460-byte packets — roughly how many packets set off?",
+          "unit": "packets",
+          "answer": 7180,
+          "factor": 1.5,
+          "why": "About 7,180 — no circuit to hold idle, so capacity is shared among bursty users; packets may take different routes and arrive out of order, duplicated, or not at all.",
+          "context": "Best-effort inside, guarantees assembled at the edges."
+        }
+      },
+      {
+        "anchor": "on throughput graphs",
+        "type": "trace",
+        "caption": "which curve is TCP's congestion behaviour?",
+        "name": "netSawtoothTrace",
+        "config": {
+          "prompt": "Sending rate against round trips for one polite sender — which curve is it?",
+          "curves": [
+            { "expr": "x - 7*floor(x/3.5)", "label": "curve A — climbs, drops, repeats", "color": "#d9480f" },
+            { "expr": "0.5*x", "label": "curve B — steady growth", "color": "#1f6f54" },
+            { "expr": "5", "label": "curve C — flat", "color": "#4455aa" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 14 },
+          "y": { "min": 0, "max": 8 },
+          "xlabel": "round trips",
+          "ylabel": "sending rate",
+          "why": "Each sender roughly doubles its rate every round trip until packets drop, then cuts back sharply and probes upward — and the shared links divide themselves by feedback, not central control."
+        }
+      },
+      {
+        "anchor": "Now the whole trace for one page load",
+        "type": "order",
+        "caption": "assemble the 200 milliseconds in order",
+        "name": "netAssemblyOrder",
+        "config": {
+          "prompt": "Put the assembly line of one page load in order:",
+          "items": [
+            "DNS — example.com becomes an IP (~20 ms, usually cached)",
+            "TCP handshake — SYN, SYN-ACK, ACK: 'may I?' 'yes,' 'starting' (1 round trip)",
+            "TLS handshake — certificate checked, session keys derived (1–2 round trips)",
+            "HTTP request/response — GET /, HTML arrives, the browser fires requests for every image, stylesheet and script"
+          ],
+          "why": "Every click repeats the last three steps — which is why performance work is mostly fewer round trips, smaller payloads and caching."
+        }
+      },
+      {
+        "anchor": "layering is both the internet's strength and its attack surface map",
+        "type": "sort-buckets",
+        "caption": "file each threat by the floor it hits",
+        "name": "netLayerSort",
+        "config": {
+          "prompt": "File each threat by the floor it hits:",
+          "buckets": ["the application floor", "the network floor"],
+          "items": [
+            { "label": "DNS hijacking — poisoning the name service", "bucket": 0 },
+            { "label": "malicious payloads riding HTTP", "bucket": 0 },
+            { "label": "BGP hijacks stealing routes", "bucket": 1 },
+            { "label": "packet sniffing on unencrypted links", "bucket": 1 },
+            { "label": "firewalls as the matched control", "bucket": 1 },
+            { "label": "encryption as the matched control", "bucket": 0 }
+          ],
+          "why": "Each threat targets a floor, and defences must be matched to floors."
+        }
+      },
+      {
+        "anchor": "since both are sold as speed",
+        "type": "judge",
+        "caption": "true or false — the two performance axes",
+        "name": "netSpeedJudge",
+        "config": {
+          "statements": [
+            { "s": "Upgrading to a faster connection makes everything feel snappier.", "truth": false, "why": "Bandwidth and latency are independent — every interactive exchange still pays the same fixed round-trip tax." },
+            { "s": "A 1 GB file over a 100 Mbps link takes about 80 seconds, and no protocol genius changes that.", "truth": true, "why": "1,000 MB × 8 / 100 ≈ 80 s — capacity is capacity." },
+            { "s": "Light in fibre travels about 200,000 km/s, setting a floor no purchase lifts.", "truth": true, "why": "Earth's circumference is not negotiable — round-trip time to the far side stays ~150 ms." },
+            { "s": "Bandwidth got cheap while the round trip to the far side of Earth shrank proportionally.", "truth": false, "why": "Bandwidth grew 1000× in two decades; the round trip never moved — physics, not engineering." }
+          ]
+        }
+      },
+      {
+        "anchor": "the zoo shares one addressing trick",
+        "type": "match",
+        "caption": "pair each port with its tenant",
+        "name": "netPortMatch",
+        "config": {
+          "prompt": "16-bit numbers multiplex every service over one address — pair each with its tenant:",
+          "pairs": [
+            { "left": "80/443", "right": "the web — HTTP and HTTPS" },
+            { "left": "25/587", "right": "mail submission — SMTP's relay chain" },
+            { "left": "143", "right": "IMAP — fetching mail to your device" },
+            { "left": "53", "right": "DNS — the name service" }
+          ],
+          "why": "Email's anatomy shows the layering: SMTP relays between servers, IMAP fetches, MIME carries attachments — protocols composed, not fused."
+        }
+      },
+      {
+        "anchor": "Physical (fibres, radio — moves bits)",
+        "type": "place",
+        "caption": "slide to the floor where TCP lives",
+        "name": "netStackPlace",
+        "config": {
+          "prompt": "The debugging ritual walks the stack from the bottom upward. Slide the marker to the floor where TCP/UDP lives.",
+          "labels": ["1 — physical", "2 — link", "3 — network", "4 — transport", "5 — application"],
+          "scale": { "min": 1, "max": 5 },
+          "answer": 4,
+          "tolerance": 0,
+          "why": "Transport: bytes moved reliably (TCP) or fast and unreliably (UDP) between programs — and 'isolate the failing floor' debugs distributed systems generally."
+        }
+      }
+    ]
+  }
+]

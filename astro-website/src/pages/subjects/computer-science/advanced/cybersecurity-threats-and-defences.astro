@@ -49,6 +49,201 @@ const secQuiz = {
     },
   ],
 };
+
+const secTriadCloze = {
+  "text": "The %%0%% triad keeps the priorities honest: %%1%% (who can see), %%2%% (nothing silently altered), availability (up when needed). A 'secure' system that is down, or silently corrupts its data, has failed two of %%3%%.",
+  "answers": [
+    [
+      "CIA"
+    ],
+    [
+      "confidentiality"
+    ],
+    [
+      "integrity"
+    ],
+    [
+      "three",
+      "3"
+    ]
+  ],
+  "hint": "Name the three properties, then test any claim of 'secure' against all of them."
+};
+
+const secProductJudge = {
+  "statements": [
+    {
+      "s": "The attacker needs one weakness, once; the defender needs every weakness closed, always.",
+      "truth": true,
+      "why": "Asymmetric by construction — which is why security is a process, not a purchase."
+    },
+    {
+      "s": "A firewall or antivirus box, once bought, makes an organisation secure.",
+      "truth": false,
+      "why": "No single device closes every door forever — the firewall's own ports are part of the attack surface."
+    },
+    {
+      "s": "Defenders who patch fast and delete whole attack classes are in practice safe from most adversaries.",
+      "truth": true,
+      "why": "Attackers optimise effort per victim — refuse to be the lowest-hanging fruit and the economics turn your way."
+    },
+    {
+      "s": "Kerckhoffs's principle says secrecy should live in the design, not the key.",
+      "truth": false,
+      "why": "The reverse: assume the attacker knows the system; secrecy lives only in the key — and in your design, framework and stack overflow answers too."
+    }
+  ]
+};
+
+const secKdfEst = {
+  "prompt": "The professional stack tunes its password-checking so one verification takes roughly how long?",
+  "unit": "milliseconds",
+  "answer": 100,
+  "factor": 2,
+  "why": "~100 ms — imperceptible at login; devastating at scale, where each guess costs milliseconds instead of nanoseconds.",
+  "context": "Fast GPU-verifiable hashes fall in minutes; pricing each guess is the whole game."
+};
+
+const secLayerSort = {
+  "prompt": "Two layers, one catalogue — file each item:",
+  "buckets": [
+    "the human layer",
+    "the technical layer"
+  ],
+  "items": [
+    {
+      "label": "a convincing fake login",
+      "bucket": 0
+    },
+    {
+      "label": "an urgent request that beats most walls",
+      "bucket": 0
+    },
+    {
+      "label": "ransomware arriving through unpatched software",
+      "bucket": 1
+    },
+    {
+      "label": "traffic floods from hijacked botnets",
+      "bucket": 1
+    },
+    {
+      "label": "a poisoned dependency — the 2024 xz-utils backdoor attempt",
+      "bucket": 1
+    },
+    {
+      "label": "training plus a report button",
+      "bucket": 0
+    },
+    {
+      "label": "offline, tested backups",
+      "bucket": 1
+    },
+    {
+      "label": "dependency pinning and signed builds",
+      "bucket": 1
+    }
+  ],
+  "why": "Phishing beats firewalls; patching beats ransomware — and keeping every account's access small shrinks the blast radius of whatever gets through."
+};
+
+const secIncidentBranch = {
+  "root": "The intrusion happened yesterday; overnight logs show an unfamiliar login on a VPN account. Walk the response.",
+  "nodes": {
+    "start": {
+      "text": "First move?",
+      "choices": [
+        {
+          "label": "Contain — cut the account's access and segment the network",
+          "next": "contain",
+          "feedback": "Contain first: every minute of dwell time is lateral movement."
+        },
+        {
+          "label": "Erase the affected servers and move on",
+          "next": "erase",
+          "feedback": "Eradication before containment invites re-entry — the attacker still holds other footholds."
+        }
+      ]
+    },
+    "contain": {
+      "text": "Contained. Next?",
+      "choices": [
+        {
+          "label": "Eradicate, recover, then a blameless post-mortem",
+          "next": "postmortem",
+          "feedback": "The rehearsed sequence: contain, eradicate, recover — and the post-mortem fixes the system, not the person."
+        },
+        {
+          "label": "Find who clicked the phishing link and fire them",
+          "next": "blame",
+          "feedback": "Blame guarantees the next breach goes unreported — the post-mortem's first rule is that it is blameless."
+        }
+      ]
+    },
+    "erase": {
+      "text": "Eradication before containment invites re-entry — the attacker still holds other footholds, and the logs you wiped were your map.",
+      "choices": []
+    },
+    "postmortem": {
+      "text": "Rehearsed, not improvised: contain, eradicate, recover, then fix the system — the drill is why Saturday runs calm.",
+      "choices": []
+    },
+    "blame": {
+      "text": "Blame guarantees the next breach goes unreported — the post-mortem is blameless by design.",
+      "choices": []
+    }
+  },
+  "why": "Assume breach, make it visible, and rehearse the whole thing: contain, eradicate, recover, learn."
+};
+
+const secChainOrder = {
+  "prompt": "The shape of most real ransomware cases — put the chain in order:",
+  "items": [
+    "Monday: a plausible invoice email — the credential-harvesting link (phishing)",
+    "The reused password, with no second factor, yields a real login (credential stuffing)",
+    "The VPN account still reaches a file share no one revokes (excessive access)",
+    "Data copied for leverage (exfiltration)",
+    "Saturday: ransomware detonates across the share — and the backups are reachable from the same credentials"
+  ],
+  "why": "No single control stops the chain — the defences cut its links."
+};
+
+const secSideSpot = {
+  "prompt": "One of these crypto claims is backwards — click it:",
+  "lines": [
+    "AES-ECB encrypts identical blocks to identical ciphertext — the test image still shows a penguin.",
+    "Reusing a GCM nonce cancels the keystream, leaking the XOR of two plaintexts.",
+    "'I'll XOR with a secret key twice for safety' — combinatorial intuition fails at crypto design.",
+    "A comparison loop that returns early on the first mismatched character is the safe way to check tokens.",
+    "Reviewed, standard constructions and libraries beat every homemade design."
+  ],
+  "errorLine": 3,
+  "correction": "Early return IS the leak: timing lets an attacker measure their way to a valid token character by character — the fix is constant-time comparison.",
+  "why": "The implementation, not the mathematics, is the attack surface."
+};
+
+const secStrideMatch = {
+  "prompt": "Pair each surface with its category and matched control:",
+  "pairs": [
+    {
+      "left": "the login form",
+      "right": "spoofing — credential attacks; answered by MFA and rate limiting"
+    },
+    {
+      "left": "the file-upload endpoint",
+      "right": "tampering — a 'photo' that is a webshell; type validation, separate origin"
+    },
+    {
+      "left": "the password-reset email",
+      "right": "spoofing — account recovery is the side door; expiring, single-use, entropy-heavy tokens"
+    },
+    {
+      "left": "the admin panel",
+      "right": "elevation of privilege — role checks server-side, never hidden buttons alone"
+    }
+  ],
+  "why": "Twenty minutes of this finds the misconfigurations breach reports find every month — because most breaches are not exotic; they are unmodelled."
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/cybersecurity-threats-and-defences">
   <h2>Where you are, and what you will learn</h2>
@@ -101,6 +296,7 @@ const secQuiz = {
     (confidentiality, integrity, availability) keeps the priorities honest: a "secure" system that is down,
     or that silently corrupts its data, has failed two of three.
   </p>
+  <Widget no="10" caption="fill the blanks — the triad that keeps priorities honest" widget="cloze" config={secTriadCloze} />
   <p><em>Common misconception:</em> "security is a product you can buy — a firewall or antivirus
   box makes us secure." It seems reasonable because that is exactly how the products are
   marketed, and a wall is an intuitive metaphor. But the lesson's premise is that the attack is
@@ -109,6 +305,7 @@ const secQuiz = {
   (inventory, threat-model, harden, monitor, rehearse, repeat), and the product is merely one
   layer inside it; a threat model would have to tell you the firewall's own ports are part of
   the attack surface.</p>
+  <Widget no="9" caption="true or false — what security actually is" widget="judge" config={secProductJudge} />
 
   <h2>Injection: the boundary discipline</h2>
   <p>
@@ -142,6 +339,7 @@ const secQuiz = {
     since the large majority of breaches involve stolen or guessed credentials and the human element
     (recent Verizon DBIR reports put it near three-quarters).
   </p>
+  <Widget no="8" caption="call the cost of one password check" widget="estimate" config={secKdfEst} />
   <p><em>Common misconception:</em> "strong encryption makes us safe." Crypto is rarely broken; it is
   <em>bypassed</em> — keys stolen from configuration files, defaults left unchanged, TLS terminated at a
   compromised box. Kerckhoffs's principle (assume the attacker knows the system; secrecy lives only in
@@ -173,6 +371,7 @@ const secQuiz = {
     Throughout, the defender's superpower is <strong>least privilege</strong>: no human or service account
     holds more access than its job needs, so any single compromise stays small.
   </p>
+  <Widget no="7" caption="file each item by the layer it defends" widget="sort-buckets" config={secLayerSort} />
   <p>
     <strong>So far:</strong> every attack in the catalogue has a matched, mostly boring defence —
     patching for ransomware, rate limiting for floods, dependency pinning for the supply chain —
@@ -194,6 +393,7 @@ const secQuiz = {
     exploited by criminals. Authorisation is the entire moral boundary of the profession: the identical
     skill, with and without a signed contract, is crime on one side of the line.
   </p>
+  <Widget no="6" caption="assume breach — walk the response" widget="branch" config={secIncidentBranch} />
 
   <h2>A breach anatomy, mapped to defences</h2>
   <p>
@@ -214,6 +414,7 @@ const secQuiz = {
     as a mechanism rather than a slogan, and it is why the boring controls (patching, MFA, backups,
     least privilege) dominate every serious breach report's recommendations.
   </p>
+  <Widget no="5" caption="put the breach chain in order" widget="order" config={secChainOrder} />
   <p><em>Common misconception:</em> "one strong control is enough — with MFA (or a firewall), we
   are secure." Some controls really are outstanding: MFA defeats whole attack classes cheaply.
   But the breach anatomy shows why no single control ends the story: in the incident walked
@@ -240,6 +441,7 @@ const secQuiz = {
     implementation, not the mathematics, is the attack surface. Together these justify the field's
     standing advice — attackers bypass crypto; make the bypass paths expensive.
   </p>
+  <Widget no="4" caption="find the faulty line — crypto misused" widget="spot-error" config={secSideSpot} />
 
   <h2>Threat modelling, worked on a small system</h2>
   <p>
@@ -260,6 +462,7 @@ const secQuiz = {
     misconfigurations that breach reports find every month — because most breaches are not exotic;
     they are unmodelled.
   </p>
+  <Widget no="3" caption="pair each surface with its category and matched control" widget="match" config={secStrideMatch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

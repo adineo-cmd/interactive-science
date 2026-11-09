@@ -10,6 +10,146 @@ const modCfg = {
     { math: '4 · Hygiene is survival', note: 'Separate inputs from calculations; one formula per row; colour-code inputs; check the balance sheet balances. Spreadsheet errors are common and expensive (the EU\'s austerity spreadsheet error is the famous case).' },
   ],
 };
+
+const fmIncomeSpot = {
+  "prompt": "One line of this worked income statement is wrong. Find it.",
+  "lines": [
+    "Revenue: 100,000 units × 20 = 2,000,000",
+    "COGS at 12 per unit: 1,200,000 — gross profit 800,000 (40%)",
+    "Operating expenses (semi-fixed): 500,000",
+    "EBIT: 800,000 − 500,000 = 400,000 — a 20% operating margin",
+    "Interest 32,000 on 400,000 of debt at 8%; tax at 25%; net income 201,000"
+  ],
+  "errorLine": 3,
+  "correction": "EBIT: 800,000 − 500,000 = 300,000 — a 15% operating margin.",
+  "why": "Every figure below a driver is a formula, and the formula says 300,000 — the model's whole virtue is that no number is typed in unexplained."
+};
+
+const fmWorkingOrder = {
+  "prompt": "Build the balance sheet block in the model's own order:",
+  "items": [
+    "Receivables: 2,000,000 × 37 days outstanding / 365 ≈ 200,000",
+    "Inventory: 1,200,000 × 46 days / 365 ≈ 150,000",
+    "Payables: 37 days ≈ 120,000",
+    "Add cash 100,000 and fixed assets 650,000 — total assets 1,100,000",
+    "Equity comes out at 530,000 — rolled forward from net income, never typed in"
+  ],
+  "why": "Forecast every asset and liability from drivers, choose the financing, and let cash be the plug — the balance check becomes the model's lie detector."
+};
+
+const fmMatchingBuckets = {
+  "prompt": "The matching principle — file each financing need:",
+  "buckets": [
+    "revolving / short-term credit",
+    "term debt or equity"
+  ],
+  "items": [
+    {
+      "label": "a seasonal inventory build",
+      "bucket": 0
+    },
+    {
+      "label": "a one-month receivables gap",
+      "bucket": 0
+    },
+    {
+      "label": "a machine earning returns over ten years",
+      "bucket": 1
+    },
+    {
+      "label": "a decade-long factory build",
+      "bucket": 1
+    }
+  ],
+  "why": "Short-term working-capital gaps want revolving credit; long-lived assets want term debt or equity — never an overdraft that can be called in a bad month."
+};
+
+const fmCccEstimate = {
+  "prompt": "In this model firm, how many days of cash are locked in operations (receivables + inventory − payables days)?",
+  "unit": "days",
+  "answer": 46,
+  "factor": 1.25,
+  "why": "37 days of receivables + 46 days of inventory − 37 days of payables = 46 days — about 250,000 of cash locked in operations on 2,000,000 of sales.",
+  "context": "That is why the firm is profitable and still one late-paying customer away from an overdraft."
+};
+
+const fmProfitJudge = {
+  "statements": [
+    {
+      "s": "A profitable company cannot run out of money.",
+      "truth": false,
+      "why": "Profit is an accounting result; insolvency is a date on which the cash balance goes negative."
+    },
+    {
+      "s": "Fast-growing firms die of overtrading — every extra sale buys inventory and receivables before the cash arrives.",
+      "truth": true,
+      "why": "That is why the weekly cash forecast sits at the centre of the model, not the profit line."
+    },
+    {
+      "s": "The model firm books 2,000,000 of revenue while only ~1,800,000 has been collected — and is still solvent.",
+      "truth": true,
+      "why": "Accrual accounting spreads events across the periods that cash ignores."
+    },
+    {
+      "s": "Insolvency is a matter of totals, not dates.",
+      "truth": false,
+      "why": "It is a matter of dates — which is why cash forecasts are built weekly in practice."
+    }
+  ]
+};
+
+const fmRatioMatch = {
+  "prompt": "Pair each ratio with this model firm's value:",
+  "pairs": [
+    {
+      "left": "gross margin",
+      "right": "40%"
+    },
+    {
+      "left": "operating margin",
+      "right": "15%"
+    },
+    {
+      "left": "return on capital employed",
+      "right": "32.3%"
+    },
+    {
+      "left": "gearing",
+      "right": "75%"
+    },
+    {
+      "left": "interest cover",
+      "right": "9.4×"
+    }
+  ],
+  "why": "ROCE comfortably above any plausible WACC means value creation; DuPont then splits the 37.9% ROE into margin (10.1%) × turnover (1.82) × leverage (2.08)."
+};
+
+const fmPriceEstimate = {
+  "prompt": "Cut price 10% (to 18) with volume unchanged. What percentage hit does this model firm's EBIT take?",
+  "unit": "%",
+  "answer": 66.7,
+  "factor": 1.3,
+  "why": "EBIT falls from 300,000 to 100,000 — the discount strips contribution margin from every unit while opex stays fixed. A 10% volume gain instead lifts EBIT only 26.7%.",
+  "context": "Price dominates volume in this business: the elasticity arithmetic of a discount is brutal."
+};
+
+const fmVarianceCloze = {
+  "text": "Forecast 100,000 units at 20; actual 105,000 at 19 — the headline gap is −5,000, which hides the real story. Split it: the volume effect at budget price is %%0%%, the price effect on actual volume is %%1%% — and the sales team's over-delivery was given away on price.",
+  "answers": [
+    [
+      "+100,000",
+      "100,000",
+      "+100000"
+    ],
+    [
+      "−105,000",
+      "-105,000",
+      "-105000"
+    ]
+  ],
+  "hint": "Volume: +5,000 units × 20. Price: −1 × 105,000."
+};
 ---
 <TopicPage slug="subjects/business/advanced/financial-modelling-for-managers">
   <h2>Where you are, and what you will learn</h2>
@@ -65,6 +205,7 @@ const modCfg = {
     (drivers: the debt balance and the rate — never a typed number), pre-tax profit 268,000, tax at 25% =
     67,000, <strong>net income 201,000</strong>.
   </p>
+  <Widget no="9" caption="one line of the income statement is wrong" widget="spot-error" config={fmIncomeSpot} />
   <p>
     That is the whole skeleton, and its virtue is that every number on the page is now <em>explained</em>.
     When a manager asks "can we afford a sales push?", the model answers precisely: 10,000 more units at a
@@ -82,6 +223,7 @@ const modCfg = {
     50,000 = 570,000. Equity must then be 530,000 for the sheet to balance — and equity is not typed in; it is
     opening equity plus net income minus dividends, rolled forward year by year.
   </p>
+  <Widget no="8" caption="build the balance sheet block, driver by driver" widget="order" config={fmWorkingOrder} />
   <p>
     The professional technique is to forecast every asset and liability from drivers, choose the financing
     (debt, equity, dividends), and let <strong>cash be the plug</strong> — the one item that absorbs whatever
@@ -93,6 +235,7 @@ const modCfg = {
     machine that earns returns over ten years wants term debt or equity, not a bank overdraft that can be
     called in a bad month.
   </p>
+  <Widget no="7" caption="the matching principle — which instrument funds which asset" widget="sort-buckets" config={fmMatchingBuckets} />
 
   <h2>The cash-flow block: why profit is not cash</h2>
   <p>
@@ -107,7 +250,9 @@ const modCfg = {
     summary statistic of the same physics (here, 37 + 46 − 37 = 46 days of cash locked in operations ≈
     2,000,000 × 46 / 365 ≈ 250,000).
   </p>
+  <Widget no="6" caption="call the magnitude — cash locked in operations" widget="estimate" config={fmCccEstimate} />
   <p><em>Common misconception:</em> a profitable company cannot run out of money. Profit is an accounting result; insolvency is a date on which the cash balance goes negative. Fast-growing firms die of it most often — every extra sale buys inventory and receivables before the cash arrives (overtrading) — which is why the weekly cash forecast and the cash conversion cycle sit at the centre of the model, not the profit line.</p>
+  <Widget no="5" caption="true or false — profit versus cash" widget="judge" config={fmProfitJudge} />
 
   <h2>Analysis of accounts: ratios as the model's dashboard</h2>
   <p>
@@ -123,6 +268,7 @@ const modCfg = {
     gap between forecast and actual identifies <em>which driver was wrong</em>, and the next model iteration is
     informed, not improvised.
   </p>
+  <Widget no="4" caption="read the dashboard — ratio to value" widget="match" config={fmRatioMatch} />
 
   <p>
     <strong>So far:</strong> the three blocks are built and the dashboard reads — margins, return
@@ -145,6 +291,7 @@ const modCfg = {
     0.6M opex... exactly breakeven before interest), which is the number the bank will ask about. The output of
     good modelling is this ranked list of vulnerabilities — management's attention should follow it.
   </p>
+  <Widget no="3" caption="call the magnitude — the price-cut stress test" widget="estimate" config={fmPriceEstimate} />
   <p><em>Common misconception:</em> "the model's job is to predict the future." Its job is to make the
   <em>consequences of assumptions</em> inescapable. Anyone can produce a single impressive forecast; the analyst's
   contribution is showing which three assumptions carry the whole plan, and how wrong each can be before the
@@ -166,6 +313,7 @@ const modCfg = {
     — forecast, actual, decompose, revise the drivers — is the model's real operating rhythm; a model
     never re-forecast is a model nobody trusts.
   </p>
+  <Widget no="2" caption="fill the blanks — split the variance" widget="cloze" config={fmVarianceCloze} />
 
   <p>
     <strong>So far:</strong> the model survives contact with reality through variance

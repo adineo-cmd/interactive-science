@@ -16,6 +16,180 @@ const breakevenCfg = {
   crossings: true,
   height: 360,
 };
+
+const ueCostBuckets = {
+  "prompt": "Fixed costs are the price of existing; variable costs scale with each unit. File them:",
+  "buckets": [
+    "fixed costs",
+    "variable costs"
+  ],
+  "items": [
+    {
+      "label": "the stall's rent",
+      "bucket": 0
+    },
+    {
+      "label": "insurance",
+      "bucket": 0
+    },
+    {
+      "label": "the loan payment on the tea urn",
+      "bucket": 0
+    },
+    {
+      "label": "tea leaves",
+      "bucket": 1
+    },
+    {
+      "label": "the cup",
+      "bucket": 1
+    },
+    {
+      "label": "milk",
+      "bucket": 1
+    }
+  ],
+  "why": "The split matters because the two lines behave differently: one ignores volume, the other rides on it — and the gap between them is where profit lives."
+};
+
+const ueBreakevenCloze = {
+  "text": "Each cup contributes £4 − £2.50 = %%0%% toward the fixed costs. With rent of %%1%% a month, break-even is 240 ÷ 1.50 = %%2%% cups — the sales you must make before the business earns anything at all.",
+  "answers": [
+    [
+      "£1.50",
+      "1.50"
+    ],
+    [
+      "£240",
+      "240"
+    ],
+    [
+      "160"
+    ]
+  ],
+  "hint": "Contribution first, then divide the rent by it."
+};
+
+const ueSafetyEstimate = {
+  "prompt": "Selling 240 units against a 160-unit break-even — how big is the margin of safety, as a percentage of sales?",
+  "unit": "%",
+  "answer": 33,
+  "factor": 1.25,
+  "why": "About 33 per cent: an 80-unit cushion. A 15 per cent dip in demand survives it; a 40 per cent dip does not.",
+  "context": "Every cup after number 160 drops £1.50 of profit straight to the bottom."
+};
+
+const ueExperimentBranch = {
+  "root": "The big stall: price £40, variable cost £25, fixed costs £2,400 — break-even 160 units. Move one line and watch the consequence.",
+  "nodes": {
+    "start": {
+      "text": "The bank wants a lower break-even. Which line do you move?",
+      "choices": [
+        {
+          "label": "Raise the price",
+          "next": "price",
+          "feedback": "The crossing slides left — fewer sales needed. But will customers stay?"
+        },
+        {
+          "label": "Cut the variable cost per unit",
+          "next": "variable",
+          "feedback": "The gap between the lines widens — every unit after break-even earns that gap as profit."
+        },
+        {
+          "label": "Double the fixed costs to grow faster",
+          "next": "fixed",
+          "feedback": "The whole cost line rises: break-even moves right, and the business lives or dies on volume."
+        }
+      ]
+    },
+    "price": {
+      "text": "Higher margin per unit — the classic high-fixed-cost dilemma: fewer sales needed, more lost if demand sags."
+    },
+    "variable": {
+      "text": "Cheaper tea leaves, in effect — contribution up with no new risk of demand."
+    },
+    "fixed": {
+      "text": "This is why airlines, chip factories and cinema chains live or die on volume."
+    }
+  },
+  "why": "Profit is not a line on the chart — it is the vertical gap between the two lines, and every experiment moves one of them."
+};
+
+const ueMethodMatch = {
+  "prompt": "Three methods of production — pair each with what it buys:",
+  "pairs": [
+    {
+      "left": "job production (a wedding cake)",
+      "right": "maximal customisation, high cost per unit, no economies of scale"
+    },
+    {
+      "left": "batch production (a bakery's rye then sourdough)",
+      "right": "some variety and some scale — but every switch costs setup time"
+    },
+    {
+      "left": "flow production (bottled drinks, cars)",
+      "right": "lowest unit cost, but inflexible, and a line stoppage is expensive"
+    }
+  ],
+  "why": "Services run the same spectrum: a bespoke consultancy is job production; a coffee chain is flow production with milk."
+};
+
+const ueLeanSpot = {
+  "prompt": "One line of this lean-production summary is wrong. Find it.",
+  "lines": [
+    "Lean production's target is every form of waste — the Japanese word is muda",
+    "Just-in-time holds days of parts, not months, freeing cash and warehouse space",
+    "The cost is vulnerability to supply shocks, as the pandemic showed",
+    "Kaizen means big redesigns proposed by outside consultants twice a year",
+    "Error-proofing means defects never restart a process"
+  ],
+  "errorLine": 3,
+  "correction": "Kaizen means continuous small improvements proposed by the people doing the work.",
+  "why": "Lean's insight is accounting disguised as philosophy: inventory is money sitting still, and time is a cost line."
+};
+
+const ueUtilisationPlace = {
+  "prompt": "A factory pays full fixed costs while earning revenue on only part of its capacity — it runs at what utilisation in the example? Place the marker:",
+  "labels": [
+    "0%",
+    "25%",
+    "50%",
+    "75%",
+    "100%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 60,
+  "tolerance": 5,
+  "why": "60 per cent: high utilisation is how the fixed-cost line gets spread — which is why airlines discount last-minute seats rather than fly them empty."
+};
+
+const ueFixedJudge = {
+  "statements": [
+    {
+      "s": "Rent does not care whether you sell 10 cups or 1,000 this month.",
+      "truth": true,
+      "why": "Fixed versus variable describes how a cost behaves when volume changes — nothing more."
+    },
+    {
+      "s": "Fixed costs are fixed forever — the landlord can never raise them.",
+      "truth": false,
+      "why": "The landlord can raise the rent next year; 'fixed' means fixed with respect to output."
+    },
+    {
+      "s": "A big restaurant chain's locations each repeat the same small-scale costs, so being huge brings no scale economies automatically.",
+      "truth": true,
+      "why": "Ask which cost line moved, not how big the firm is."
+    },
+    {
+      "s": "A small firm can enjoy purchasing economies by joining a buying cooperative.",
+      "truth": true,
+      "why": "Scale economies come from spreading fixed costs and buying inputs cheaper — both visible without size."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/business/foundational/unit-economics">
   <h2>Where you are, and what you will learn</h2>
@@ -53,6 +227,7 @@ const breakevenCfg = {
     price of existing. A <strong>variable cost</strong> scales with each unit: the
     tea leaves, the cup, the milk.
   </p>
+  <Widget no="9" caption="file the stall's costs — fixed or variable" widget="sort-buckets" config={ueCostBuckets} />
   <p>
     Each cup contributes £4 − £2.50 = £1.50 toward the fixed costs. That £1.50 is
     called the <em>contribution margin</em>. Say the rent is £240 a month. How many
@@ -61,6 +236,7 @@ const breakevenCfg = {
     you must make before the business earns anything at all. Every cup after number
     160 drops £1.50 of profit straight to the bottom.
   </p>
+  <Widget no="8" caption="fill the blanks — the break-even arithmetic" widget="cloze" config={ueBreakevenCloze} />
 
   <Widget no="1" caption="the circled crossing is survival — drag price, costs and see exactly how many units it takes" widget="plotter" config={breakevenCfg} />
   <p>
@@ -81,12 +257,14 @@ const breakevenCfg = {
     line rises: this is why "high-fixed-cost" businesses (airlines, chip factories,
     cinema chains) live or die on volume.
   </p>
+  <Widget no="7" caption="run the experiments — move a line, take the consequence" widget="branch" config={ueExperimentBranch} />
   <p>
     One more number matters in practice: the <strong>margin of safety</strong> —
     how far current sales sit above break-even. Selling 240 units against a
     160-unit break-even is a 33 per cent cushion. A 15 per cent dip in demand
     survives it. A 40 per cent dip does not.
   </p>
+  <Widget no="6" caption="call the cushion — margin of safety" widget="estimate" config={ueSafetyEstimate} />
   <p>
     <strong>So far:</strong> every business lives on one calculation — does one
     unit pay for itself? Contribution margin pays the fixed costs; the crossing of
@@ -110,6 +288,7 @@ const breakevenCfg = {
     Services run the same spectrum: a bespoke consultancy is job production; a
     coffee chain is flow production with milk.
   </p>
+  <Widget no="5" caption="pair each production method with its trade-off" widget="match" config={ueMethodMatch} />
   <p>
     The second choice is <strong>labour-intensive versus capital-intensive</strong>
     — hand-tailoring versus an automated bottling line. The two differ in fixed
@@ -129,6 +308,7 @@ const breakevenCfg = {
     defects never restart a process. Lean's insight is accounting disguised as
     philosophy: inventory is money sitting still, and time is a cost line.
   </p>
+  <Widget no="4" caption="one line of the lean summary is wrong" widget="spot-error" config={ueLeanSpot} />
   <p>
     <strong>So far:</strong> one-off, batch or flow; people or machines; lean to
     cut waste. Every one of these choices moves the two cost lines. Next: what
@@ -161,6 +341,7 @@ const breakevenCfg = {
     earns nothing, but sold cheap it contributes something. Hotels, shipping and
     chip plants watch utilisation obsessively for the same reason.
   </p>
+  <Widget no="3" caption="drop the marker on the factory's utilisation" widget="place" config={ueUtilisationPlace} />
   <p><em>Common misconception:</em> economies of scale do not come from "being big" vaguely — they
   come from spreading fixed costs and buying inputs cheaper, both of which are visible in the two cost
   lines of the widget. A business can be huge and still have no scale economies (a big restaurant
@@ -170,6 +351,7 @@ const breakevenCfg = {
   only with respect to output: rent does not care whether you sell 10 cups or
   1,000 this month, but the landlord can still raise it next year. Fixed versus
   variable describes how a cost behaves when volume changes — nothing more.</p>
+  <Widget no="2" caption="true or false — the word 'fixed' on trial" widget="judge" config={ueFixedJudge} />
   <p>
     <strong>So far:</strong> scale spreads fixed costs and buys inputs cheaper —
     up to a point; capacity utilisation decides how well the fixed line is being

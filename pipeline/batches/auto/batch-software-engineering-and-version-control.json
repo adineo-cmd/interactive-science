@@ -1,0 +1,147 @@
+[
+  {
+    "slug": "subjects/computer-science/advanced/software-engineering-and-version-control",
+    "activities": [
+      {
+        "anchor": "The professional hierarchy is the",
+        "type": "sort-buckets",
+        "caption": "file each tier by what it runs",
+        "name": "swePyramidSort",
+        "config": {
+          "prompt": "File each tier by what it runs:",
+          "buckets": ["unit tests", "integration tests", "end-to-end tests"],
+          "items": [
+            { "label": "one function in isolation — cheap, precise failures", "bucket": 0 },
+            { "label": "modules together — database, API", "bucket": 1 },
+            { "label": "whole system through the UI — slow, brittle, irreplaceable", "bucket": 2 },
+            { "label": "fail in milliseconds with pinpoint cause", "bucket": 0 },
+            { "label": "a failing giant tells you only that something, somewhere broke", "bucket": 2 },
+            { "label": "the middle tier of the shape", "bucket": 1 }
+          ],
+          "why": "Its shape is an economics argument: hundreds of fast pinpointing checks at the base, a handful of slow whole-system ones at the top."
+        }
+      },
+      {
+        "anchor": "The transformative practice is",
+        "type": "order",
+        "caption": "put the red–green–refactor cycle in order",
+        "name": "sweTddOrder",
+        "config": {
+          "prompt": "Red–green–refactor — put the cycle in order:",
+          "items": [
+            "Write the failing test first",
+            "Watch it fail",
+            "Make it pass",
+            "Refactor, with the suite as the safety net"
+          ],
+          "why": "A suite is a specification that re-executes on every change — what makes fearless refactoring possible."
+        }
+      },
+      {
+        "anchor": "not an argument against knowing where you are going",
+        "type": "compare",
+        "caption": "drag the divider across the planning styles",
+        "name": "sweAgileCompare",
+        "config": {
+          "prompt": "Two planning styles — drag the divider:",
+          "before": { "label": "big-design-first", "text": "Plan everything upfront, then build — the empirical failure mode on changing requirements, where the plan and reality drift apart." },
+          "after": { "label": "agile iterations", "text": "Short cycles with working software each, re-prioritised against reality — continuous planning rather than no planning." },
+          "why": "Continuous planning replaces upfront planning — the destination stays known; the route gets re-planned."
+        }
+      },
+      {
+        "anchor": "you test each midpoint it offers",
+        "type": "estimate",
+        "caption": "call the bisect bill",
+        "name": "sweBisectEst",
+        "config": {
+          "prompt": "git bisect binary-searches history between a known-good and a known-bad commit. Roughly how many of its suggested stops localise a regression among 1,000 commits?",
+          "unit": "checks",
+          "answer": 10,
+          "factor": 1.5,
+          "why": "~10 — the logarithm pointed at your own mistakes.",
+          "context": "A thousand-commit regression collapses to about ten runs."
+        }
+      },
+      {
+        "anchor": "On-call runs the loop",
+        "type": "branch",
+        "caption": "walk the 02:14 incident",
+        "name": "sweIncidentBranch",
+        "config": {
+          "root": "02:14, pages fire: checkout times out. Walk the response.",
+          "nodes": {
+            "start": {
+              "text": "First move?",
+              "choices": [
+                { "label": "Rollback the deploy from 90 minutes earlier", "next": "rollback", "feedback": "Mitigate first: checkout recovers in minutes, and the rollback itself points at the deploy as cause." },
+                { "label": "Start reading code to find the root cause", "next": "diagnose", "feedback": "Customers bleed while you read: mitigation is minutes, diagnosis is hours — mitigation comes first." }
+              ]
+            },
+            "rollback": {
+              "text": "Mitigated. The commit changed a cache key format — a shared cache now misses on every request, and the database, sized for a 90% hit rate, melts at 0%.",
+              "choices": [
+                { "label": "Ship the fix behind a flag, then run the blameless review", "next": "postmortem", "feedback": "Tracked actions, not a villain: canary deploys, a cache hit-rate alert, a load test at 0%." },
+                { "label": "Find who pushed the commit and escalate", "next": "blame", "feedback": "A villain hunt teaches everyone to hide mistakes — the review is blameless on purpose." }
+              ]
+            },
+            "diagnose": {
+              "text": "Customers bleed while you read: mitigation first, diagnosis second — the sequence exists because minutes beat hours when users wait.",
+              "choices": []
+            },
+            "postmortem": {
+              "text": "The pattern generalises: small batches make rollbacks possible; observability makes diagnosis fast; the review converts incidents into permanent defences.",
+              "choices": []
+            },
+            "blame": {
+              "text": "A villain hunt teaches everyone to hide mistakes — the review is blameless on purpose.",
+              "choices": []
+            }
+          },
+          "why": "Mitigate first, then diagnose — and the review converts each incident into permanent defences."
+        }
+      },
+      {
+        "anchor": "is trusted once; the other says",
+        "type": "judge",
+        "caption": "true or false — the estimation folklore",
+        "name": "sweEstimateJudge",
+        "config": {
+          "statements": [
+            { "s": "A confident single-number estimate is the mark of an experienced engineer.", "truth": false, "why": "Before the design exists, estimates are routinely 4× wrong either way — a precise date is precision the work cannot support yet." },
+            { "s": "Agile means no planning.", "truth": false, "why": "Agile planning is continuous: short iterations, working software each cycle, re-prioritised against reality." },
+            { "s": "Estimates made before design are routinely 4× wrong in either direction.", "truth": true, "why": "The cone of uncertainty — estimates tighten only as the design exists." },
+            { "s": "'Four to eight weeks, and here is what would tell us which' earns more trust than a single promised date.", "truth": true, "why": "Relative sizing, re-estimating after each increment, and ranges over false certainty — Hofstadter's law is the cone, stated with mercy." }
+          ]
+        }
+      },
+      {
+        "anchor": "A healthy repository has",
+        "type": "match",
+        "caption": "pair each element of the artefact with what it buys",
+        "name": "sweRepoMatch",
+        "config": {
+          "prompt": "Pair each element of the artefact with what it buys:",
+          "pairs": [
+            { "left": "README", "right": "the ten-minute test — can a new engineer run the checks locally in under ten minutes?" },
+            { "left": "CI configuration in the repo", "right": "the pipeline is versioned like the code it verifies" },
+            { "left": "linters and formatters", "right": "style settled by machine, so reviews argue about design" },
+            { "left": "protected main", "right": "no direct pushes; everything arrives reviewed and green" }
+          ],
+          "why": "Each element removes a category of coordination cost the team would otherwise pay forever."
+        }
+      },
+      {
+        "anchor": "The commit convention itself is a skill",
+        "type": "cloze",
+        "caption": "fill the blanks — the anatomy of a good message",
+        "name": "sweCommitCloze",
+        "config": {
+          "text": "Subject line in the %%0%% under %%1%% characters ('Fix off-by-one in cart totals'), blank line, then the %%2%% — the what is visible in the diff; only the why needs prose.",
+          "answers": [["imperative"], ["50", "fifty"], ["why"]],
+          "hint": "Read the log: the diary's entries are the message."
+        }
+      }
+    ]
+  }
+]

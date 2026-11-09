@@ -48,6 +48,223 @@ const webQuiz = {
     },
   ],
 };
+
+const webSemanticsSort = {
+  "prompt": "File each choice by what it is:",
+  "buckets": [
+    "semantic element",
+    "div soup"
+  ],
+  "items": [
+    {
+      "label": "<article> — a self-contained composition",
+      "bucket": 0
+    },
+    {
+      "label": "<header> — the page's or section's banner",
+      "bucket": 0
+    },
+    {
+      "label": "<main> — the page's primary content",
+      "bucket": 0
+    },
+    {
+      "label": "a <table> used for page layout",
+      "bucket": 1
+    },
+    {
+      "label": "wrapping each region in unlabelled wrappers",
+      "bucket": 1
+    },
+    {
+      "label": "<nav> — site navigation",
+      "bucket": 0
+    }
+  ],
+  "why": "Alt text on images, labels on inputs, keyboard-reachable controls — done at the semantic level it is nearly free; done after the fact, rework."
+};
+
+const webLayoutMatch = {
+  "prompt": "Pair each tool with its job:",
+  "pairs": [
+    {
+      "left": "flexbox",
+      "right": "one-dimensional arrangement — toolbars, lists, centring"
+    },
+    {
+      "left": "grid",
+      "right": "two-dimensional pages — named rows and columns"
+    },
+    {
+      "left": "media queries",
+      "right": "rules conditional on viewport size — one page serves phone and desktop"
+    },
+    {
+      "left": "box-sizing: border-box",
+      "right": "width includes padding and border — the near-universal default"
+    }
+  ],
+  "why": "A 200px element with 20px padding and 2px border is 244px wide — unless the default includes them."
+};
+
+const webNameJudge = {
+  "statements": [
+    {
+      "s": "JavaScript is a browser version of Java.",
+      "truth": false,
+      "why": "The shared name was a 1995 marketing alliance: Java is class-based and compiled to bytecode; JavaScript is dynamically typed and prototype-based."
+    },
+    {
+      "s": "JavaScript was built at Netscape in a famous ten-day sprint to make pages react.",
+      "truth": true,
+      "why": "History's fastest language birth — and the naming has been confusing people ever since."
+    },
+    {
+      "s": "Java fluency transfers directly to JavaScript.",
+      "truth": false,
+      "why": "They share C-style syntax the way many modern languages do — and little else."
+    },
+    {
+      "s": "Functions in JavaScript are values — assignable, passable, returnable.",
+      "truth": true,
+      "why": "Which is why callbacks, event handlers and framework components are all functions in transit."
+    }
+  ]
+};
+
+const webRenderOrder = {
+  "prompt": "Put the assembly line in order:",
+  "items": [
+    "parse HTML → build the DOM",
+    "parse CSS → build the CSSOM",
+    "combine into a render tree",
+    "layout — compute every box's geometry",
+    "paint, then composite to the screen"
+  ],
+  "why": "DOM changes that alter geometry force a re-run of the expensive middle — which is why performance work targets the critical path."
+};
+
+const webPillarsCloze = {
+  "text": "The web's three-pillar security model: %%0%% isolation (one site's script cannot read another's data), %%1%% transport (HTTPS, the TLS of the networking lesson), and %%2%% boundaries (escape user text before it enters the page).",
+  "answers": [
+    [
+      "origin"
+    ],
+    [
+      "encrypted"
+    ],
+    [
+      "escaped"
+    ]
+  ],
+  "hint": "Name all three — each pillar answers a different kind of attack."
+};
+
+const webStorageSpot = {
+  "prompt": "A summary of the state homes contains one faulty line — click it:",
+  "lines": [
+    "HTTP is stateless, so continuity must be reassembled every time.",
+    "Cookies are server-issued pairs the browser replays on every request to that site.",
+    "HttpOnly keeps cookies away from JavaScript — a direct XSS mitigation.",
+    "localStorage is the right home for session tokens, being larger and per-origin.",
+    "SameSite curbs cross-site request forgery by not sending cookies on third-party requests."
+  ],
+  "errorLine": 3,
+  "correction": "Web storage is convenient for preferences and WRONG for session tokens — readable by any injected script; identity belongs in HttpOnly cookies, UI state in the client, durable truth in the database.",
+  "why": "State has designated homes — small rules, strictly enforced, doing enormous work."
+};
+
+const webStateBranch = {
+  "root": "You are adding 'remember my dark-mode preference' and 'stay logged in' to an app. Walk where each piece of state lives.",
+  "nodes": {
+    "start": {
+      "text": "The login session token. Where does it go?",
+      "choices": [
+        {
+          "label": "An HttpOnly cookie",
+          "next": "cookie",
+          "feedback": "Right: the browser replays it, JavaScript can never read it, and the Secure flag restricts it to HTTPS."
+        },
+        {
+          "label": "localStorage, for easy access from scripts",
+          "next": "local",
+          "feedback": "Convenient and wrong: any injected script reads it — one XSS and the session is stolen."
+        }
+      ]
+    },
+    "local": {
+      "text": "The stolen session shows why homes matter. Now the dark-mode preference?",
+      "choices": [
+        {
+          "label": "localStorage — client-side UI state",
+          "next": "ui",
+          "feedback": "Right: preferences are UI state in the client — scripts reading them is fine."
+        },
+        {
+          "label": "A database table",
+          "next": "db",
+          "feedback": "Possible, but heavier than needed — UI state in the client, durable truth in the database."
+        }
+      ]
+    },
+    "cookie": {
+      "text": "Identity secured. And the dark-mode preference?",
+      "choices": [
+        {
+          "label": "localStorage — client-side UI state",
+          "next": "ui",
+          "feedback": "Right: preferences are client-side UI state."
+        },
+        {
+          "label": "An HttpOnly cookie too",
+          "next": "overkill",
+          "feedback": "Cookies replay on every request to that site — a preference would ride along forever; the client is the right home."
+        }
+      ]
+    },
+    "ui": {
+      "text": "The rule of thumb: identity in HttpOnly cookies, UI state in the client, durable truth in the database — anything else is state you have misplaced.",
+      "choices": []
+    },
+    "db": {
+      "text": "Durable truth does belong in the database — but a theme preference is UI state; carry it in the client.",
+      "choices": []
+    },
+    "overkill": {
+      "text": "A preference in a cookie rides every request forever — the client is the right home.",
+      "choices": []
+    }
+  },
+  "why": "Small rules, strictly enforced, doing enormous work — misplace the state and you will find it in a bug report."
+};
+
+const webFrameTrace = {
+  "prompt": "Frame cost against time during two animations — which curve belongs to the one running on the compositor?",
+  "curves": [
+    {
+      "expr": "0.5",
+      "label": "curve A — flat",
+      "color": "#d9480f"
+    },
+    {
+      "expr": "x - 3*floor(x/3)",
+      "label": "curve B — sawtoothing",
+      "color": "#1f6f54"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 9
+  },
+  "y": {
+    "min": 0,
+    "max": 4
+  },
+  "xlabel": "frames",
+  "ylabel": "frame cost",
+  "why": "Those animated effects ride hardware planes — flat cost; top/left changes re-run geometry every frame and the cost sawtooths."
+};
 ---
 <TopicPage slug="subjects/computer-science/advanced/web-development-html-css-js">
   <h2>Where you are, and what you will learn</h2>
@@ -106,6 +323,7 @@ const webQuiz = {
     Note the asymmetry that makes accessibility cheap: done at the semantic level it is nearly free; done
     after the fact it is rework.
   </p>
+  <Widget no="10" caption="file each choice by what it is" widget="sort-buckets" config={webSemanticsSort} />
   <p><em>Common misconception:</em> the DOM is the HTML file. It is the live tree the parser builds from that file — corrected for errors, extended by JavaScript, and queryable in the console. View source and inspect element can legitimately disagree: the source is what the server sent, the DOM is what the browser has now. Everything that "changes the page" works by rewriting DOM nodes, which is why understanding the tree — not the text — is the skill the rest of the stack assumes.</p>
 
   <h2>CSS: the cascade, specificity, and the box model</h2>
@@ -124,6 +342,7 @@ const webQuiz = {
     columns); <strong>media queries</strong> apply rules conditional on viewport size, which is how one
     page serves phone and desktop — responsive design replacing the separate-mobile-site era.
   </p>
+  <Widget no="9" caption="pair each tool with its job" widget="match" config={webLayoutMatch} />
 
   <h2>JavaScript: the event loop's mental model</h2>
   <p>
@@ -142,6 +361,7 @@ const webQuiz = {
     the pipeline underneath is unchanged.
   </p>
   <p><em>Common misconception:</em> JavaScript is a browser version of Java. The shared name was a 1995 marketing alliance, not a family tree: Java is class-based and compiled to bytecode, while JavaScript is a dynamically typed, prototype-based language built (at Netscape, in the famous ten-day sprint) to make pages react. They share C-style syntax the way many modern languages do, and little else — which is why Java fluency does not transfer and why the naming remains the field's oldest prank.</p>
+  <Widget no="8" caption="true or false — the naming and the language" widget="judge" config={webNameJudge} />
 
   <h2>The pipeline, and where the milliseconds go</h2>
   <p>
@@ -154,6 +374,7 @@ const webQuiz = {
     kilobyte costs someone's data plan and a measurable fraction of users; caching, lazy loading and
     static generation (this atlas's approach) are how the fastest sites stay fast.
   </p>
+  <Widget no="7" caption="put the render pipeline in order" widget="order" config={webRenderOrder} />
   <p><em>Common misconception:</em> "the browser is a simple document viewer." It is closer to an operating
   system: a JIT-compiled language runtime, a rendering engine, a network stack, storage, cryptography —
   sandboxed so that a random website can execute code on your machine safely. Which brings the lesson to
@@ -181,6 +402,7 @@ const webQuiz = {
     another's data), plus HTTPS everywhere (the networking lesson's TLS), and you have the web's
     three-pillar security model: origin isolation, encrypted transport, escaped boundaries.
   </p>
+  <Widget no="6" caption="fill the blanks — the three pillars of browser security" widget="cloze" config={webPillarsCloze} />
 
   <h2>A worked build: the semantic skeleton of a page</h2>
   <p>
@@ -232,6 +454,8 @@ const webQuiz = {
     bug report. Together with the same-origin policy and escaped boundaries, this is the browser's whole
     security architecture: small rules, strictly enforced, doing enormous work.
   </p>
+  <Widget no="5" caption="find the faulty line — where state lives" widget="spot-error" config={webStorageSpot} />
+  <Widget no="4" caption="place each piece of state in its home" widget="branch" config={webStateBranch} />
 
   <h2>JavaScript's object model, enough to be dangerous</h2>
   <p>
@@ -307,6 +531,7 @@ const webQuiz = {
     consumption is inside apps that merely borrow its protocols? You now hold the vocabulary to read those
     arguments in their native habitat: view source.
   </p>
+  <Widget no="3" caption="which curve is the compositor-owned animation?" widget="trace" config={webFrameTrace} />
 
   <p class="sources"><strong>Sources:</strong> MDN Web Docs; Berners-Lee, "Information Management: A Proposal" (1989); W3C accessibility guidelines (WCAG); Zakas, <em>Professional JavaScript for Web Developers</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
