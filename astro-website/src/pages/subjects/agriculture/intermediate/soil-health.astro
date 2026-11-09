@@ -21,6 +21,158 @@ const infiltCfg = {
   crossings: false,
   height: 320,
 };
+
+const agTopsoilEstimate = {
+  "prompt": "Under natural conditions, how many years does it take to build one centimetre of topsoil?",
+  "unit": "years per cm",
+  "answer": 100,
+  "factor": 2,
+  "why": "Roughly a century per centimetre. Erosion on exposed farmland runs 10–100× faster — which is why losing topsoil is geological vandalism on a human timescale.",
+  "context": "A centimetre a century: a hand's depth of topsoil is a millennium's work."
+};
+
+const agHorizonOrder = {
+  "prompt": "Soil differentiates into horizons. Put them in order from the surface downward:",
+  "items": [
+    "A horizon — dark, organic-rich topsoil, the farming layer",
+    "E horizon — the leached layer, where present",
+    "B horizon — clay and minerals accumulating in the subsoil",
+    "C horizon — fractured parent material"
+  ],
+  "why": "Topsoil first, then the leached layer, then the accumulating subsoil, then parent rock. The order tells you where the biology and the farming live."
+};
+
+const agTextureJudge = {
+  "statements": [
+    {
+      "s": "Texture is essentially fixed — you farm the hand you are dealt.",
+      "truth": true,
+      "why": "The sand/silt/clay proportions are set by the parent material; structure, by contrast, is where management lives."
+    },
+    {
+      "s": "Adding a little sand to clay soil improves its drainage.",
+      "truth": false,
+      "why": "It makes a dense, brick-like mix, worse than either. Fix drainage with structure — organic matter, roots, no compaction — or engineered drains."
+    },
+    {
+      "s": "Ideal soil is about 45% mineral matter and 5% organic matter.",
+      "truth": true,
+      "why": "The remaining half splits between water and air, whose proportions swing with every rain and every drying day."
+    },
+    {
+      "s": "A smeared, shiny face on the spade cut is a good sign of tilth.",
+      "truth": false,
+      "why": "It is a compaction signature. Good structure shows crumb stability, deep roots and worms in the spadeful."
+    }
+  ]
+};
+
+const agGerminationPlace = {
+  "prompt": "Soil temperature drives germination. Place the marker where maize starts to germinate, with warmth still rising.",
+  "labels": [
+    "0 °C",
+    "5 °C",
+    "10 °C",
+    "15 °C",
+    "20 °C"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 20
+  },
+  "answer": 10,
+  "tolerance": 1.5,
+  "why": "Wheat germinates near 4 °C, but maize wants 10 °C and rising. That is why gardeners plant by soil thermometer, not by calendar — sow when the soil, not the sky, is ready."
+};
+
+const agIrrigationBuckets = {
+  "prompt": "The lesson ranks irrigation on an efficiency ladder. File each method:",
+  "buckets": [
+    "40–60% efficient",
+    "~70–85% efficient",
+    "up to 95% efficient"
+  ],
+  "items": [
+    {
+      "label": "flood and furrow",
+      "bucket": 0
+    },
+    {
+      "label": "sprinklers",
+      "bucket": 1
+    },
+    {
+      "label": "drip lines to the root zone, drop by drop",
+      "bucket": 2
+    }
+  ],
+  "why": "Flood is traditional and lossy, sprinklers sit in the middle, and drip — Israel's breakthrough that made desert horticulture viable — delivers to the root zone at up to 95%."
+};
+
+const agPhGateBranch = {
+  "root": "A crop looks pale and hungry. A pH test comes back 5.1 — below the 6.0–7.0 window — with exchangeable aluminium rising. The nutrient bag is already in the shed. What comes first?",
+  "nodes": {
+    "start": {
+      "text": "At pH 5.1 the nutrients may be present but locked away — and below 5.5 exchangeable aluminium turns soluble and poisons roots directly.",
+      "choices": [
+        {
+          "label": "Apply the fertiliser now — the crop is clearly short of something",
+          "next": "blind",
+          "feedback": "Blind fertilising of an acid field is the lesson's most common small-farm waste."
+        },
+        {
+          "label": "Lime the soil toward the 6.0–7.0 window, then re-test",
+          "next": "lime",
+          "feedback": "Liming acid soil precedes every fertiliser recommendation."
+        }
+      ]
+    },
+    "blind": {
+      "text": "You paid for nutrients the pH gate will not let the roots reach, and the aluminium is still poisoning the root tips.",
+      "choices": []
+    },
+    "lime": {
+      "text": "The pH gate opens: iron and phosphorus unlock, aluminium stops being soluble, and only what the soil test still flags gets bought.",
+      "choices": []
+    }
+  },
+  "why": "Test before treating: pH, N-P-K and organic matter tests cost little. If a crop looks hungry, the real constraint is often the pH gate or the structure, not the supply."
+};
+
+const agBiomeMatch = {
+  "prompt": "The soil biome is the workforce. Match each worker to the job:",
+  "pairs": [
+    {
+      "left": "bacteria",
+      "right": "run the nitrogen chemistry"
+    },
+    {
+      "left": "fungi and mycorrhizal threads",
+      "right": "build the architecture — extend root reach and pipe phosphorus to the plant"
+    },
+    {
+      "left": "earthworms",
+      "right": "engineer the soil — drag litter down and aerate with burrows"
+    },
+    {
+      "left": "protozoa and nematodes",
+      "right": "graze the food web that releases locked nutrients"
+    }
+  ],
+  "why": "Darwin's last book was about earthworms, and he measured their casting rates with patience worthy of the subject. Mycorrhizae are damaged by deep tillage and long bare fallows."
+};
+
+const agErosionPredict = {
+  "q": "A field loses its topsoil to sheet erosion. What is the argument that finally moves a farm budget?",
+  "choices": [
+    "Erosion is only an aesthetic problem — the lower field receives the sediment",
+    "Nutrients exported in eroded soil are fertiliser bought twice — applied, then exported",
+    "Erosion costs nothing until the subsoil is exposed completely",
+    "The sediment improves the nearest river's fertility, so the loss is recovered"
+  ],
+  "answer": 1,
+  "why": "Fertiliser bought twice: applied, then exported. Off-farm the sediment delivers that fertiliser to the nearest river, where it becomes the water lesson's eutrophication problem — soil conservation and water quality are the same budget."
+};
 ---
 <TopicPage slug="subjects/agriculture/intermediate/soil-health">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +229,8 @@ const infiltCfg = {
     fertile Andisols, tropical rainfall leaches ancient, acid, iron-rich Oxisols, grasslands
     build the deep black Chernozems of the world's breadbaskets.
   </p>
+  <Widget no="4" caption="stack the profile back into place" widget="order" config={agHorizonOrder} />
+  <Widget no="3" caption="guess the rate before the reveal" widget="estimate" config={agTopsoilEstimate} />
 
   <p><em>Common misconception:</em> "soil is a renewable resource, so losing some topsoil does
   not matter." Renewable only on geological time: topsoil forms at roughly a century per
@@ -113,6 +267,7 @@ const infiltCfg = {
     little sand to a lot of clay makes something worse than either — a dense, brick-like mix.
     Drainage is fixed with structure (organic matter, roots, avoiding compaction) or with
     engineered drainage, not by diluting the mineralogy.</p>
+  <Widget no="5" caption="true or false — the clay-and-sand myth" widget="judge" config={agTextureJudge} />
 
   <h2>Soil temperature and the seasonal clock</h2>
   <p>
@@ -130,6 +285,7 @@ const infiltCfg = {
     calendar, and why "sow when the soil, not the sky, is ready" is the oldest working
     advice in the craft.
   </p>
+  <Widget no="6" caption="put maize sowing on the thermometer" widget="place" config={agGerminationPlace} />
 
   <p>
     <strong>So far:</strong> texture and structure set the soil's physical housing, and
@@ -171,6 +327,7 @@ const infiltCfg = {
     historic farmland from Mesopotamia to modern Australia, which is why irrigation always
     includes drainage planning.
   </p>
+  <Widget no="7" caption="file each irrigation method by its efficiency band" widget="sort-buckets" config={agIrrigationBuckets} />
 
   <h2>Fertility: organic matter, pH and the nutrient bank</h2>
   <p>
@@ -190,6 +347,7 @@ const infiltCfg = {
     organic matter tests cost little and prevent the most common waste on small farms —
     blind fertilising of a field whose real constraint was acidity.
   </p>
+  <Widget no="8" caption="diagnose before you treat" widget="branch" config={agPhGateBranch} />
 
   <p><em>Common misconception:</em> "if a crop looks hungry, the fix is fertiliser." Often the
   real constraint is the pH gate or the structure, not the supply: at the wrong pH, nutrients
@@ -218,6 +376,7 @@ const infiltCfg = {
     which is why every soil-health prescription reduces, first, to "keep something growing
     here as much of the year as you can".
   </p>
+  <Widget no="9" caption="pair each member of the workforce with its trade" widget="match" config={agBiomeMatch} />
 
   <p><em>Common misconception:</em> "bags and bottles feed the soil biome." The workforce is
   fed through roots and residues, not purchased inputs - fertiliser changes the chemistry
@@ -249,6 +408,7 @@ const infiltCfg = {
     nearest river, where it becomes the water lesson's eutrophication problem: soil
     conservation and water quality are the same budget, spent well or badly.
   </p>
+  <Widget no="10" caption="bet before the economics lands" widget="predict" config={agErosionPredict} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -24,6 +24,185 @@ const nrespCfg = {
   crossings: false,
   height: 330,
 };
+
+const agDeficiencyBuckets = {
+  "prompt": "Deficiency reads in the leaf, and the pattern tells you which nutrient. File each symptom:",
+  "buckets": [
+    "Nitrogen short",
+    "Phosphorus short",
+    "Potassium short",
+    "Iron short"
+  ],
+  "items": [
+    {
+      "label": "oldest leaves yellow first — the plant cannibalises old tissue",
+      "bucket": 0
+    },
+    {
+      "label": "purple-tinged leaves and stunted roots",
+      "bucket": 1
+    },
+    {
+      "label": "scorched leaf margins",
+      "bucket": 2
+    },
+    {
+      "label": "youngest leaves yellow between green veins",
+      "bucket": 3
+    }
+  ],
+  "why": "Nitrogen is mobile, so the plant robs old leaves for new growth — hence yellowing from the bottom up. Iron is immobile, so the youngest leaves starve first. The patterns differ because the transport biology differs."
+};
+
+const agNitrogenCloze = {
+  "text": "The atmosphere is %%0%%% N₂, yet a nitrogen shortage is entirely possible. The triple bond is so stable that almost no organism can break it: until nitrogen is %%1%% into ammonium or nitrate, the sea of it overhead is as useless to a crop as air is to a fuel tank.",
+  "answers": [
+    [
+      "78"
+    ],
+    [
+      "fixed",
+      "fixated"
+    ]
+  ],
+  "hint": "The number is the same one in the paragraph's first sentence; the verb is the one from the section's title, Haber–Bosch's job."
+};
+
+const agUptakeEstimate = {
+  "prompt": "In the season it is applied, roughly what percentage of applied nitrogen does a crop actually take up?",
+  "unit": "% of applied N",
+  "answer": 40,
+  "factor": 1.5,
+  "why": "30–50%, so around 40% is the working figure. The rest leaves by four exits — leaching, volatilisation, denitrification and runoff — and managing nitrogen means managing those four exits.",
+  "context": "Roughly six kilos in every ten leave the field by one of four exits."
+};
+
+const agNetReturnTrace = {
+  "prompt": "Yield (green in the lesson's graph) rises toward a ceiling. Which shape does net return — yield value minus nitrogen cost — follow?",
+  "curves": [
+    {
+      "expr": "8*x/(x+60)",
+      "color": "#16a34a",
+      "label": "rises and flattens toward its ceiling, like yield"
+    },
+    {
+      "expr": "6*x/(x+60) - 0.02*x",
+      "color": "#dc2626",
+      "label": "peaks partway and then falls away"
+    },
+    {
+      "expr": "0.02*x",
+      "color": "#94a3b8",
+      "label": "rises in a straight line forever"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 300
+  },
+  "y": {
+    "min": -1,
+    "max": 7
+  },
+  "xlabel": "nitrogen applied (kg N/ha)",
+  "ylabel": "yield (t/ha) / net return",
+  "why": "Net return peaks visibly below the biological maximum and falls steeply beyond, because every extra kilogram now buys nothing and costs money. Everything between that peak and the ceiling is the flat region — nitrogen that becomes pollution, not grain."
+};
+
+const ag4RMatch = {
+  "prompt": "The 4Rs are the operating plan for staying near the response curve's peak. Match each R to its practice:",
+  "pairs": [
+    {
+      "left": "right source",
+      "right": "slow-release or inhibitor-treated forms that match crop demand"
+    },
+    {
+      "left": "right rate",
+      "right": "tuned to soil tests and realistic yield targets"
+    },
+    {
+      "left": "right time",
+      "right": "split-dressing at tillering and stem extension, not one autumn dump"
+    },
+    {
+      "left": "right place",
+      "right": "banded below the surface near roots, where uptake beats volatilisation"
+    }
+  ],
+  "why": "Right source, right rate, right time, right place. Each R attacks one of the four exits — the same programme seen from the loss side."
+};
+
+const agCompostSpot = {
+  "prompt": "A student writes up the composting recipe. One line is wrong — find it.",
+  "lines": [
+    "Composting is managed aerobic decomposition, and the recipe is chemistry you can smell.",
+    "A workable pile holds roughly 25–30 parts carbon to 1 part nitrogen.",
+    "Too much carbon — straw, woodchip — and the pile heats up fast and kills weed seeds.",
+    "Too much nitrogen — fresh grass, slurry — and the pile turns putrid and loses ammonia.",
+    "A well-built pile reaches 55–65 °C within days, then cures for weeks into stable humus."
+  ],
+  "errorLine": 2,
+  "correction": "Too much carbon (straw, woodchip) and the pile stalls, nitrogen-starved — the opposite of heating up.",
+  "why": "Carbon-rich material starves the microbes of nitrogen and the pile stalls. It is the nitrogen-rich heaps that run hot and putrid and lose ammonia."
+};
+
+const agHaberOrder = {
+  "prompt": "From the atmosphere to a human meal — put the nitrogen chain in order:",
+  "items": [
+    "The atmosphere holds N₂, locked by a triple bond that almost no organism can break",
+    "Nitrogen is fixed into reactive ammonium or nitrate — by lightning, by bacteria, or industrially",
+    "Haber–Bosch combines N₂ with H₂ over an iron catalyst to make ammonia fertiliser",
+    "The crop takes up 30–50% of the applied nitrogen and builds protein",
+    "The remainder leaves by leaching, volatilisation, denitrification and runoff"
+  ],
+  "why": "Synthetic nitrogen underpins roughly half the protein in human diets (Smil's estimate). The shadow side arrives last: the four exits, which are what nitrogen management actually manages."
+};
+
+const agMaizeBranch = {
+  "root": "A maize crop goes yellow in early June. The yellowing starts on the lower leaves and runs up the midrib — the mobile-nutrient pattern, so nitrogen is the suspect. Where does the checklist start?",
+  "nodes": {
+    "start": {
+      "text": "Pattern says nitrogen. But nitrogen can be absent, or present and lost. What is the first question?",
+      "choices": [
+        {
+          "label": "Is it uniform, or in patches?",
+          "next": "patches",
+          "feedback": "Patches tell you where the nitrogen went, not just that it went."
+        },
+        {
+          "label": "Buy more nitrogen and spread it evenly",
+          "next": "blind",
+          "feedback": "The worked diagnosis says otherwise: premises first."
+        }
+      ]
+    },
+    "patches": {
+      "text": "It is in low patches. Low spots stay wet — waterlogged soil denitrifies, converting nitrate to N₂O and N₂.",
+      "choices": [
+        {
+          "label": "Treat the drainage and the waterlogging, not just the nitrogen",
+          "next": "drain",
+          "feedback": "The patch tells you the exit: denitrification, not under-application."
+        },
+        {
+          "label": "Blanket the field with extra nitrogen anyway",
+          "next": "blind",
+          "feedback": "The wet zones will lose most of it the same way."
+        }
+      ]
+    },
+    "drain": {
+      "text": "You are now reading the four exits instead of guessing at supply. A tissue test confirms 2.4% N in leaf — below sufficiency — and 40 kg/ha of injected UAN at V6 side-dresses the deficit.",
+      "choices": []
+    },
+    "blind": {
+      "text": "The yield map still shows the low patches: the nitrogen left by the same exit it left last time.",
+      "choices": []
+    }
+  },
+  "why": "Diagnosis comes before treatment. Patches in low spots point to waterlogging and denitrification; unincorporated slurry points to volatilisation; and a chlorophyll meter against a reference strip quantifies whatever deficit remains."
+};
 ---
 <TopicPage slug="subjects/agriculture/intermediate/plant-nutrition-and-fertilisers">
   <h2>Where you are, and what you will learn</h2>
@@ -80,6 +259,7 @@ const nrespCfg = {
     lesson): a nutrient can be present and unusable at the wrong pH, so testing soil before
     buying fertiliser is the cheapest agronomy there is.
   </p>
+  <Widget no="3" caption="read the leaf — which nutrient is missing?" widget="sort-buckets" config={agDeficiencyBuckets} />
 
   <p>
     <strong>So far:</strong> a crop eats about fourteen mineral nutrients dissolved in soil
@@ -108,12 +288,15 @@ const nrespCfg = {
     and N₂O is a greenhouse gas ~270× CO₂'s warming power), and <strong>runoff</strong>
     (the eutrophication engine). Managing nitrogen is managing those four exits.
   </p>
+  <Widget no="9" caption="rebuild the chain from air to bread" widget="order" config={agHaberOrder} />
+  <Widget no="5" caption="guess how much of the bag the crop keeps" widget="estimate" config={agUptakeEstimate} />
 
   <p><em>Common misconception:</em> "the atmosphere is 78 percent nitrogen, so a nitrogen
   shortage should be impossible." It would be - if plants could drink air. The N2 molecule's
   triple bond is so stable that almost no organism can break it; until nitrogen is fixed into
   ammonium or nitrate, the sea of it overhead is as useless to a crop as the air is to a fuel
   tank.</p>
+  <Widget no="4" caption="fill the blank — why the sea of nitrogen is useless" widget="cloze" config={agNitrogenCloze} />
 
   <h2>The yield-response curve: fertiliser's economics</h2>
   <p>
@@ -126,6 +309,7 @@ const nrespCfg = {
     yield jump exceeding the marginal cost of nutrient — is the <strong>economic optimum
     rate</strong>, and it sits visibly below the biological maximum:
   </p>
+  <Widget no="6" caption="which curve peaks before the ceiling?" widget="trace" config={agNetReturnTrace} />
 
   <Widget no="2" caption="diminishing returns, priced — the green curve is yield, the red is net return; their gap is the runoff bill" widget="plotter" config={nrespCfg} />
   <p>
@@ -149,6 +333,7 @@ const nrespCfg = {
     placement near roots (banded below the surface, where uptake beats volatilisation
     and runoff).
   </p>
+  <Widget no="7" caption="pair each R with the practice that delivers it" widget="match" config={ag4RMatch} />
 
   <p>
     <strong>So far:</strong> the response curve turns fertiliser into economics - the first
@@ -224,6 +409,7 @@ const nrespCfg = {
     organic–mineral question, answered functionally: organic sources build the system,
     mineral sources calibrate it — sequencing both beats any either/or.
   </p>
+  <Widget no="8" caption="find the faulty line in this compost recipe" widget="spot-error" config={agCompostSpot} />
 
   <p><em>Common misconception:</em> "a compost heap is just rotted stuff, so any pile of
   garden waste is compost." A heap is compost only when the decomposition is managed - the
@@ -248,6 +434,7 @@ const nrespCfg = {
     with <em>young</em> leaves affected would have pointed to iron (immobile), and the
     fix (chelate, or fix the pH causing the lock-up) would be completely different.
   </p>
+  <Widget no="10" caption="work the diagnosis on the yellow maize" widget="branch" config={agMaizeBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
