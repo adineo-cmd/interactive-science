@@ -10,6 +10,165 @@ const ipmCfg = {
     { math: '4 · Pesticides last, precisely', note: 'When chemicals are needed: right product, right timing (pest\'s vulnerable stage, bees not foraging), rotation of modes of action (resistance management — the evolution lesson running in fast-forward on every spray). IPM integrates, never starts with the spray.' },
   ],
 };
+
+const agWeedLayerBuckets = {
+  "prompt": "The lesson stacks weed controls in layers. File each tactic:",
+  "buckets": [
+    "Cultural",
+    "Physical",
+    "Chemical"
+  ],
+  "items": [
+    {
+      "label": "rotations that swap crop architecture and planting dates",
+      "bucket": 0
+    },
+    {
+      "label": "narrower rows so the canopy closes sooner",
+      "bucket": 0
+    },
+    {
+      "label": "stale seedbeds — germinate the flush, kill it, then drill",
+      "bucket": 0
+    },
+    {
+      "label": "tillage and hoeing",
+      "bucket": 1
+    },
+    {
+      "label": "glyphosate on engineered resistant crops",
+      "bucket": 2
+    }
+  ],
+  "why": "Weeds are a resource-competition problem, so control is about timing and canopy rather than eradication — and tillage is effective but energy-costly and soil-damaging in excess."
+};
+
+const agCriticalPeriodPlace = {
+  "prompt": "In most row crops, weed competition costs yield inside one window. Place the marker where that window begins — as a fraction of the crop's life.",
+  "labels": [
+    "sowing",
+    "1/3 through",
+    "1/2 through",
+    "2/3 through",
+    "harvest"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 33,
+  "tolerance": 7,
+  "why": "Crops tolerate early weeds up to a competitive-balance date, and again after canopy closure. The window between — roughly the first third of the crop's life — is where competition costs yield."
+};
+
+const agThresholdJudge = {
+  "statements": [
+    {
+      "s": "Spraying below the economic threshold loses money twice.",
+      "truth": true,
+      "why": "You pay the chemical spend, and you kill beneficial insects that were doing free work."
+    },
+    {
+      "s": "A bug seen means a bug spray is needed.",
+      "truth": false,
+      "why": "Most insects in a field are neutral or beneficial. Blanket spraying kills the pest's enemies faster than the pest."
+    },
+    {
+      "s": "Calendar spraying can produce resurgent pest outbreaks and secondary pests.",
+      "truth": true,
+      "why": "Spider mites formerly suppressed by their own enemies explode after broad-spectrum sprays."
+    },
+    {
+      "s": "Scouting turns pest management from a calendar into a measurement discipline.",
+      "truth": true,
+      "why": "Counts per plant or per sweep net, compared to threshold tables, are what make the decision a measurement."
+    }
+  ]
+};
+
+const agToadPredict = {
+  "q": "The cane toad was released in Australia in 1935 as a biological control agent. What happened?",
+  "choices": [
+    "It controlled the pest and became a model programme copied worldwide",
+    "It ate everything except the target pest and became an invasive catastrophe",
+    "It died out within a season and left no trace",
+    "It controlled the pest but had to be re-released every year"
+  ],
+  "answer": 1,
+  "why": "It ate everything except the pest. Modern classical programmes run through quarantine screening and host-specificity testing for exactly this reason — a serious release is the opposite of hope."
+};
+
+const agTriangleMatch = {
+  "prompt": "Plant disease needs three vertices together. Match each vertex to the control that attacks it:",
+  "pairs": [
+    {
+      "left": "susceptible host",
+      "right": "resistant varieties plus certified disease-free seed and tubers"
+    },
+    {
+      "left": "favourable environment",
+      "right": "spacing, pruning and drip irrigation instead of overhead wetting"
+    },
+    {
+      "left": "virulent pathogen",
+      "right": "fungicides plus cleaning boots and machinery between fields"
+    }
+  ],
+  "why": "Pathogens travel on the farmer — hygiene rules matter more than any product. And most protectant fungicides work only before infection: they stop spores germinating and do nothing for tissue already colonised."
+};
+
+const agResistanceEstimate = {
+  "prompt": "Roughly how many arthropod species resist at least one insecticide?",
+  "unit": "species",
+  "answer": 500,
+  "factor": 2,
+  "why": "More than 500 arthropod species resist at least one insecticide, and herbicide-resistant weeds number in the hundreds of species-site combinations. Every repeated control selects for survivors.",
+  "context": "A club of 500-plus species, and Darwin collects his royalty on every overused mode of action."
+};
+
+const agResistanceSpot = {
+  "prompt": "A student writes a resistance-management plan. One line is wrong — find it.",
+  "lines": [
+    "Resistance management is population genetics at field scale.",
+    "Rotate modes of action — the IRAC and FRAC numbering systems exist so labels can say Group 4 this year, Group 9 next.",
+    "Mix products with different modes, and keep refuge blocks whose susceptible pests dilute resistance genes.",
+    "When resistance appears, spray more often and use half doses to wear the survivors down.",
+    "Integrate cultural, mechanical and chemical controls, and when you do spray, dose fully."
+  ],
+  "errorLine": 3,
+  "correction": "When resistance appears, never under-dose — under-dosing selects hardest of all; dose fully and rotate modes of action instead.",
+  "why": "Under-dosing is the worst move available: the partially-resistant heterozygotes survive a half dose and breed. Raising frequency or halving the dose only strengthens the selection."
+};
+
+const agAphidBranch = {
+  "root": "Scouting finds an average of 12 aphids per wheat tiller in late spring, with ladybird larvae and parasitoids visibly working the field. The advisory threshold sits around 5–10 per tiller when predators are scarce, but rises when beneficial activity is visible.",
+  "nodes": {
+    "start": {
+      "text": "The count is above the bare threshold, but the field's own defence is employed and doing part of the work.",
+      "choices": [
+        {
+          "label": "Spray a broad-spectrum pyrethroid now — 12 is over the number",
+          "next": "broad",
+          "feedback": "The spray costs about 20 €/ha and deletes the parasitoids that would have carried suppression into the next generation."
+        },
+        {
+          "label": "Hold, and re-scout in a few days",
+          "next": "hold",
+          "feedback": "Thresholds rise when predators are present — a count is only half the decision."
+        }
+      ]
+    },
+    "broad": {
+      "text": "Aphids rebound into a thinner enemy landscape, and the spray bill is paid for a suppression you already had for free.",
+      "choices": []
+    },
+    "hold": {
+      "text": "Two weeks later the population has plateaued — the predators caught up — and no spray is ever spent.",
+      "choices": []
+    }
+  },
+  "why": "Same field, same pest, opposite decisions: the difference is a count, a weather note, and a look for ladybird larvae. Reverse the case — 20 aphids per tiller, predators absent, cold weather — and a single selective spray (pirimicarb spares ladybirds; a pyrethroid kills both) is the right move."
+};
 ---
 <TopicPage slug="subjects/agriculture/intermediate/pests-weeds-and-ipm">
   <h2>Where you are, and what you will learn</h2>
@@ -20,6 +179,9 @@ const ipmCfg = {
     without wrecking it. A little food-web ecology and one encounter with natural selection
     will help, but both ideas are re-explained where they are used.
   </p>
+  <Widget no="9" caption="make the call with a count in hand" widget="branch" config={agAphidBranch} />
+  <Widget no="8" caption="find the faulty line in this resistance plan" widget="spot-error" config={agResistanceSpot} />
+  <Widget no="3" caption="locate the critical period on the crop's calendar" widget="place" config={agCriticalPeriodPlace} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>separate the three enemies of a crop - weeds, pests and diseases - and say what makes each one's biology different;</li>
@@ -72,6 +234,7 @@ const ipmCfg = {
     resistant crops from 1996 — a system whose overuse manufactured the resistance
     problem described below.
   </p>
+  <Widget no="2" caption="file each weed control by its layer" widget="sort-buckets" config={agWeedLayerBuckets} />
 
   <p>
     <strong>So far:</strong> weeds are a resource-competition problem, so control is about
@@ -99,6 +262,7 @@ const ipmCfg = {
     stage (larvae, not egg-laying adults; scale crawlers, not the armoured adults), and
     applied when bees are not foraging.
   </p>
+  <Widget no="4" caption="true or false — the economics that ends the calendar" widget="judge" config={agThresholdJudge} />
   <p><em>Common misconception:</em> "a bug seen means a bug spray." Most insects in a field
     are neutral or beneficial — predators, parasitoids, pollinators — and blanket spraying
     kills the pest's enemies faster than the pest, which is why the classic outcome of
@@ -137,6 +301,7 @@ const ipmCfg = {
     IPM: the alternative to banned blanket chemistry had to be smarter, more targeted
     management, and IPM was the discipline waiting with the framework.
   </p>
+  <Widget no="5" caption="bet on the cautionary tale first" widget="predict" config={agToadPredict} />
 
   <p><em>Common misconception:</em> "biological control means releasing insects and hoping."
   Serious releases are the opposite of hope: the agent is chosen for host specificity, screened
@@ -163,6 +328,7 @@ const ipmCfg = {
     warnings from weather data) now schedule sprays by infection risk rather than
     calendar — IPM's threshold logic, applied to spores.
   </p>
+  <Widget no="6" caption="pair each vertex of the triangle with its cheapest attack" widget="match" config={agTriangleMatch} />
 
   <p><em>Common misconception:</em> "a fungicide cures a diseased plant." Most protectant
   fungicides work only before infection - they stop spores germinating on the leaf and do
@@ -189,6 +355,7 @@ const ipmCfg = {
     hardest of all, because the partially-resistant heterozygotes survive. Darwin
     collects his royalty on every overused mode of action.
   </p>
+  <Widget no="7" caption="guess the scale of the resistance record" widget="estimate" config={agResistanceEstimate} />
 
   <p><em>Common misconception:</em> "resistance means the pest got used to the chemical, so
   raise the dose or spray more often." Nothing gets used to anything - each spray simply kills

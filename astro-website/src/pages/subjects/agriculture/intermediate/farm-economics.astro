@@ -10,6 +10,190 @@ const farmEconCfg = {
     { math: '4 · The cycles', note: 'Commodity price cycles (planting decisions respond to last year\'s price — the cobweb model), land booms and busts, and the generational succession problem: farming\'s capital intensity meets its demographic cliff (average farmer age ~58 in the US).' },
   ],
 };
+
+const agLandEconMatch = {
+  "prompt": "The land-use principles are economic propositions in disguise. Match each to its economic form:",
+  "pairs": [
+    {
+      "left": "capability matching",
+      "right": "assigning the fixed input to its highest-valued use — opportunity cost"
+    },
+    {
+      "left": "rotation",
+      "right": "an investment decision — this year's lower margin buys next year's lower fertiliser bill"
+    },
+    {
+      "left": "the harvest is a withdrawal",
+      "right": "fertility as a depreciating asset unless replaced"
+    }
+  ],
+  "why": "Ricardo worked out land rent as a differential in 1815 and it still prices farmland: the same wheat price leaves a large surplus above costs on a fertile plain, barely covering them on thin upland soil — and that surplus is what a landowner can charge."
+};
+
+const agGrossMarginCloze = {
+  "text": "Winter wheat: 8.5 t/ha at £180/t gives £1,530 of revenue; minus £620 of variable costs leaves a gross margin of £%%0%%/ha. Spring beans: 4.5 t/ha at £280/t gives £1,260 less £380, a gross margin of £%%1%%/ha. On paper wheat wins — but the beans fix nitrogen, cutting the wheat's fertiliser bill by perhaps £80/ha.",
+  "answers": [
+    [
+      "910"
+    ],
+    [
+      "880",
+      "£880"
+    ]
+  ],
+  "hint": "Revenue minus variable costs, for each enterprise. Wheat: 1530 − 620. Beans: 1260 − 380."
+};
+
+const agCombineEstimate = {
+  "prompt": "A £150,000 combine is spread over 400 hectares. What is the capital charge per hectare?",
+  "unit": "£ per hectare",
+  "answer": 375,
+  "factor": 1.5,
+  "why": "£375/ha. Over 40 hectares the same machine would cost ten times that — £3,750/ha. Commodity gross margins are thin, so survival is a cost-position game, and that single arithmetic is the engine of two centuries of farm consolidation.",
+  "context": "Ten times the cost per hectare on a farm a tenth the size — the whole consolidation story in one division."
+};
+
+const agEscapeBuckets = {
+  "prompt": "A price-taker cannot charge more for a better job. File each strategy:",
+  "buckets": [
+    "Stays a price-taker",
+    "Breaks a price-taker condition"
+  ],
+  "items": [
+    {
+      "label": "selling milling wheat at the market price",
+      "bucket": 0
+    },
+    {
+      "label": "growing more hectares to spread fixed costs",
+      "bucket": 0
+    },
+    {
+      "label": "organic certification",
+      "bucket": 1
+    },
+    {
+      "label": "direct-to-consumer sales",
+      "bucket": 1
+    },
+    {
+      "label": "rare-breed meat and agritourism",
+      "bucket": 1
+    }
+  ],
+  "why": "Each escape substitutes a brand or a relationship for the anonymous commodity. But certification takes a three-year transition selling at conventional prices while managing lower yields — a capital investment in market position, not a free lunch."
+};
+
+const agSubsidyBranch = {
+  "root": "A government introduces a flat per-hectare direct payment decoupled from what is grown. A decade passes.",
+  "nodes": {
+    "start": {
+      "text": "The payment is tied to land. What happens to the price anyone will pay for that land?",
+      "choices": [
+        {
+          "label": "Nothing — the money goes to whoever farms it",
+          "next": "nothing",
+          "feedback": "That ignores the capitalisation effect."
+        },
+        {
+          "label": "Land values and rents rise, absorbing much of the payment",
+          "next": "capitalised",
+          "feedback": "Capitalisation: the payment raises what anyone will bid for land."
+        }
+      ]
+    },
+    "nothing": {
+      "text": "Farms change hands at higher prices, and the new entrant's rent quietly absorbs the transfer. The cheque arrived; the margin did not.",
+      "choices": []
+    },
+    "capitalised": {
+      "text": "Over a decade the subsidy largely flows through into land prices and rents — benefiting landowners, who are not always the farmers. The transfer still worked, but not on the balance sheet people assumed.",
+      "choices": []
+    }
+  },
+  "why": "Analysing a subsidy means tracing its effect through the channels it moves — what gets planted, how much fertiliser is applied, what land is worth — not reading the transfer cheque."
+};
+
+const agInelasticTrace = {
+  "prompt": "Demand for staple grains. Which curve shows the near-vertical, price-inelastic demand the cobweb model depends on — where a 12% supply rise needs a 40–60% price fall to clear?",
+  "curves": [
+    {
+      "expr": "8 - 0.08*x",
+      "color": "#94a3b8",
+      "label": "flat and elastic — small price moves shift a lot of volume"
+    },
+    {
+      "expr": "8/(1+exp(0.9*(x-6)))",
+      "color": "#dc2626",
+      "label": "near-vertical — quantity barely moves however price swings"
+    },
+    {
+      "expr": "0.3*x",
+      "color": "#0ea5e9",
+      "label": "rising with price"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 12
+  },
+  "y": {
+    "min": 0,
+    "max": 9
+  },
+  "xlabel": "quantity demanded (arbitrary units)",
+  "ylabel": "price",
+  "why": "People and animals eat roughly the same amount whatever the price — short-run elasticity near −0.2. So supply surprises need violent price moves to clear, and the market traces a spider's web around equilibrium instead of settling on it."
+};
+
+const agCobwebJudge = {
+  "statements": [
+    {
+      "s": "Supply decisions are made against last year's price but consumed at this year's price.",
+      "truth": true,
+      "why": "A crop planted in spring cannot be un-planted in autumn — that lag is what makes the cobweb."
+    },
+    {
+      "s": "A bumper harvest is always good news for farm incomes.",
+      "truth": false,
+      "why": "With price-inelastic demand the extra supply needs a large price fall to clear, so revenue falls precisely when nature has been kindest."
+    },
+    {
+      "s": "A harvest shortfall in one region can leave its farmers better off than a perfect season.",
+      "truth": true,
+      "why": "The inverse of the bumper-harvest trap: less grain, higher price, inelastic demand."
+    },
+    {
+      "s": "When the response over-corrects by more than the shock, the cycles widen.",
+      "truth": true,
+      "why": "The explosive cobweb — elastic supply meeting inelastic demand — gave livestock farming its hog cycle, still visible in US hog prices."
+    }
+  ]
+};
+
+const agSubsidyEstimate = {
+  "prompt": "Across the OECD's monitored countries, roughly how many billion US dollars per year were transferred to their agricultural sectors over 2021–23?",
+  "unit": "billion USD per year",
+  "answer": 842,
+  "factor": 2,
+  "why": "About 842 billion US dollars a year, the large majority flowing to individual producers through price supports, direct payments and subsidised insurance.",
+  "context": "Close to a trillion dollars a year — the load-bearing policy behind the price-taker squeeze."
+};
+
+const agMarginSpot = {
+  "prompt": "A student reads the farm's accounts. One line is wrong — find it.",
+  "lines": [
+    "The workhorse measure is gross margin: revenue per hectare minus variable costs per hectare.",
+    "Fixed costs — rent, machinery depreciation, buildings, insurance — are owed whether the crop succeeds or fails.",
+    "A gross margin of £900/ha therefore means the farm has made a profit of £900 on every hectare.",
+    "Profit subtracts the fixed costs too, and on most commodity farms fixed costs eat most of the gross margin.",
+    "A farm that knows its own total costs per tonne — and keeps them under the price — wins over a decade even through terrible years."
+  ],
+  "errorLine": 2,
+  "correction": "A gross margin of £900/ha is not profit — fixed costs still have to come off it, and they usually eat most of it.",
+  "why": "Gross margin is the first question (which enterprise to run) because fixed costs are nearly the same across alternatives. Profit is the second question, and it is a much harsher one."
+};
 ---
 <TopicPage slug="subjects/agriculture/intermediate/farm-economics">
   <h2>Where you are, and what you will learn</h2>
@@ -20,6 +204,8 @@ const farmEconCfg = {
     everyday arithmetic - percentages, multiplication, reading a per-hectare number - and
     nothing else; every economic term used here is defined on the way in.
   </p>
+  <Widget no="9" caption="guess the size of the transfer before it lands" widget="estimate" config={agSubsidyEstimate} />
+  <Widget no="8" caption="true or false — the bumper harvest trap" widget="judge" config={agCobwebJudge} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>compute a gross margin for two enterprises and explain why it is not profit;</li>
@@ -79,6 +265,7 @@ const farmEconCfg = {
     covers them, and that surplus is exactly what the landowner can charge for. Ricardo worked this out
     in 1815, and it still prices farmland today.
   </p>
+  <Widget no="2" caption="pair each land-use principle with the economics behind it" widget="match" config={agLandEconMatch} />
   <p>
     <strong>So far:</strong> land is the farm's fixed, immobile, quality-varying input, and
     its rent is a differential set by the surplus above costs. Now attach the full cost
@@ -101,6 +288,7 @@ const farmEconCfg = {
     and labour calendars collide. Mixed farming often wins not because either enterprise peaks but
     because they share the fixed costs across the calendar and hedge each other's bad years.
   </p>
+  <Widget no="3" caption="fill the gross margins and settle the comparison" widget="cloze" config={agGrossMarginCloze} />
   <p>
     Then the fixed costs fall on top, and here farming is brutal. A £150,000 combine spread over 400
     hectares costs £375/ha of capital charge; over 40 hectares it would cost ten times that. Commodity
@@ -110,10 +298,12 @@ const farmEconCfg = {
     consolidation, and it is why "the middle is squeezed" is a law, not a complaint: mid-size farms are
     too small to spread machinery, too large to live on niche premiums.
   </p>
+  <Widget no="4" caption="guess the capital charge per hectare" widget="estimate" config={agCombineEstimate} />
   <p><em>Common misconception:</em> gross margin is not profit. Profit subtracts the fixed costs too,
   and on most commodity farms fixed costs eat most of the gross margin. A farm with a beautiful £900/ha
   gross margin can still lose money; a farm that knows its own total costs per tonne — and keeps them
   under the price — wins over a decade even through terrible years.</p>
+  <Widget no="10" caption="find the faulty line in this budget" widget="spot-error" config={agMarginSpot} />
 
   <h2>Price-takers and the escape routes</h2>
   <p>
@@ -134,6 +324,7 @@ const farmEconCfg = {
     profile: direct sales capture more of the retail price but convert a price risk into a customer-acquisition
     risk.
   </p>
+  <Widget no="5" caption="file each move — commodity squeeze or escape route?" widget="sort-buckets" config={agEscapeBuckets} />
   <p>
     <strong>So far:</strong> commodity farmers cannot set their price, so the margin is
     defended by cutting costs or by breaking a price-taker condition. Differentiation is not
@@ -163,6 +354,7 @@ const farmEconCfg = {
     flood storage and soil health — on the argument that if the taxpayer is paying anyway, it should buy
     things the market will not.
   </p>
+  <Widget no="6" caption="trace the subsidy past the cheque" widget="branch" config={agSubsidyBranch} />
   <p><em>Common misconception:</em> subsidies do not just "top up farmers' incomes." They change
   behaviour — what gets planted, how much fertiliser is applied, what land is worth — and they are
   partly capitalised into land prices. Analysing a subsidy means tracing its effect through those
@@ -188,6 +380,7 @@ const farmEconCfg = {
     land values fell roughly 27% peak-to-trough and foreclosures devastated rural communities, is the
     cautionary case study.
   </p>
+  <Widget no="7" caption="which demand curve makes the cobweb explosive?" widget="trace" config={agInelasticTrace} />
   <p><em>Common misconception:</em> a bumper harvest must be good news for farm incomes. With
   price-inelastic demand the opposite happens: the extra supply needs a large price fall to
   clear the market, so revenue falls precisely when nature has been kindest - and a harvest

@@ -10,6 +10,148 @@ const animalCfg = {
     { math: '4 · The systems spectrum', note: 'Pasture (low input, low density), mixed crop-livestock (nutrient cycling — the pasture feeds the soil), intensive (controlled environment, highest efficiency per animal, highest capital). Each fits a different land, labour and capital situation (the economics lesson\'s factor endowments, farmed).' },
   ],
 };
+
+const agFcrOrder = {
+  "prompt": "Feed conversion ratio is kilograms of feed per kilogram of live-weight gain. Order these from BEST converter to WORST:",
+  "items": [
+    "Chickens — about 1.7 kg feed per kg gain",
+    "Pigs — about 3 kg feed per kg gain",
+    "Beef cattle — about 6–10 kg feed per kg gain"
+  ],
+  "why": "The trophic lesson's ten-percent law compounded through another level. Ruminants' offsetting superpower is rumen fermentation: microbes digest cellulose, converting grass and crop residues that humans and pigs cannot eat."
+};
+
+const agWaterEstimate = {
+  "prompt": "How many litres of water does a dairy cow drink in a day?",
+  "unit": "litres per day",
+  "answer": 80,
+  "factor": 1.6,
+  "why": "60–100 litres a day, so about 80 is the working figure. Water is the first nutrient and the most forgotten: intake limits milk before any other factor.",
+  "context": "Roughly a bathtub's worth, every day, before a single kilogram of feed is counted."
+};
+
+const agComfortCompare = {
+  "prompt": "Drag the divider: two animals, opposite ends of the thermometer.",
+  "before": {
+    "label": "lactating dairy cow",
+    "text": "Thermal comfort roughly 5–20 °C. She is a walking furnace — her problem is shedding heat, which is why ventilation, not heating, is the core dairy engineering. Outside the zone she eats less and drops milk yield."
+  },
+  "after": {
+    "label": "newborn piglet",
+    "text": "Needs 30–34 °C at birth. Far outside that range a piglet huddles and chills — which is why farrowing rooms run heat lamps over cold-snouted mothers, heating the small animal rather than the whole room."
+  },
+  "why": "Housing exists to control what weather does to productivity and health. Outside the thermal comfort zone, feed intake shifts to thermoregulation instead of production."
+};
+
+const agBiosecurityBuckets = {
+  "prompt": "Livestock health is managed as a herd problem. File each measure:",
+  "buckets": [
+    "Keeps disease out",
+    "Manages resistance",
+    "Scores welfare"
+  ],
+  "items": [
+    {
+      "label": "boot dips, dedicated clothing, rodent and wild-bird control",
+      "bucket": 0
+    },
+    {
+      "label": "all-in/all-out batching with disinfection between groups",
+      "bucket": 0
+    },
+    {
+      "label": "count eggs, dose by weight, leave refugia untreated",
+      "bucket": 1
+    },
+    {
+      "label": "lameness scoring and body-condition scoring",
+      "bucket": 2
+    }
+  ],
+  "why": "Biosecurity is the disease lesson's chain-of-transmission logic applied to gates and lorries. The parasite rules are the IPM lesson's refuge strategy in a paddock — deliberately untreated animals so susceptible genes dilute resistance."
+};
+
+const agBreedingSpot = {
+  "prompt": "A student summarises the breeding record. One line is wrong — find it.",
+  "lines": [
+    "Selective breeding is husbandry's slow machine, and it compounds.",
+    "Broiler chickens reached about 2.5 kg in 12 weeks in the 1950s; the modern bird does it in under 6 weeks.",
+    "Pure selection for maximum production proved the winning long-run strategy, so indices weight yield alone.",
+    "Artificial insemination let one elite bull sire hundreds of thousands of daughters.",
+    "Genomic selection genotypes calves at birth and predicts lifetime performance, halving the generation interval."
+  ],
+  "errorLine": 2,
+  "correction": "Pure production selection bred animals that grew brilliantly and fell apart reproductively; modern indices weight longevity, health and foot traits alongside yield.",
+  "why": "The industry ran that experiment and paid for it in the 1990s. Low-heritability traits like fertility and disease resistance respond slowly, so they need deliberate selection pressure in a balanced index."
+};
+
+const agMastitisMatch = {
+  "prompt": "Mastitis is the costliest dairy disease. Match each control to what it actually targets:",
+  "pairs": [
+    {
+      "left": "clean, dry teats and post-milking dips",
+      "right": "contagious bacteria spreading cow-to-cow at milking"
+    },
+    {
+      "left": "dry bedding",
+      "right": "environmental bacteria picked up from the lying area"
+    },
+    {
+      "left": "culling chronic carriers",
+      "right": "the herd's persistent reservoir of infection"
+    },
+    {
+      "left": "somatic cell score on the national index",
+      "right": "the heritable layer — breeding for resistance"
+    }
+  ],
+  "why": "Nearly every major livestock disease is a management-system disease first and an infection second: the vet treats the case, the husbandry treats the rate."
+};
+
+const agGrainPredict = {
+  "q": "What is the honest nutritional comparison between grass-fed and grain-fed ruminant production?",
+  "choices": [
+    "Grain-fed is simply better-fed, so it is always the higher standard",
+    "Grass is always superior, so grain feeding has no defensible role",
+    "Not grass vs grain, but what could this land grow otherwise — a systems question",
+    "The comparison is meaningless because both feeds have identical composition"
+  ],
+  "answer": 2,
+  "why": "Cattle cannot thrive on grain alone — rumen acidosis is the feedlot vet's daily case. Much ruminant production is valuable precisely because it runs on land and by-products unsuited to crops, so the question is a systems one, not a feed label."
+};
+
+const agComfortTrace = {
+  "prompt": "Performance against air temperature for a lactating dairy cow. Which shape shows a comfort zone sitting roughly between 5 and 20 °C, with yield falling away on both sides?",
+  "curves": [
+    {
+      "expr": "7*exp(-((x-13)*(x-13))/260)",
+      "color": "#16a34a",
+      "label": "a plateau around the mid-teens, falling away both sides"
+    },
+    {
+      "expr": "0.1*x",
+      "color": "#94a3b8",
+      "label": "rising steadily with temperature forever"
+    },
+    {
+      "expr": "7*exp(-((x-32)*(x-32))/120)",
+      "color": "#dc2626",
+      "label": "a peak up at newborn-piglet temperatures"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 40
+  },
+  "y": {
+    "min": 0,
+    "max": 8
+  },
+  "xlabel": "air temperature (°C)",
+  "ylabel": "relative performance",
+  "why": "A lactating cow's comfort zone is roughly 5–20 °C — she is a furnace shedding heat. Piglets sit at the other end, needing 30–34 °C at birth, which is why farrowing rooms heat the piglet, not the room."
+};
 ---
 <TopicPage slug="subjects/agriculture/intermediate/animal-husbandry">
   <h2>Where you are, and what you will learn</h2>
@@ -19,6 +161,8 @@ const animalCfg = {
     cropping siblings <em>Plant Nutrition &amp; Fertilisers</em> and <em>Soil Health</em>
     cover the other half of the mixed farm; here the animals do the converting.
   </p>
+  <Widget no="9" caption="which curve shows a cow's comfort zone?" widget="trace" config={agComfortTrace} />
+  <Widget no="6" caption="find the faulty line in this breeding history" widget="spot-error" config={agBreedingSpot} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>work with feed conversion ratios and explain why ruminants still earn their keep;</li>
@@ -68,6 +212,8 @@ const animalCfg = {
     product (milk yield and butterfat track diet; omega-3 enrichment of eggs is feed
     engineering), and deficits show in the animal within weeks.
   </p>
+  <Widget no="3" caption="guess the forgotten nutrient" widget="estimate" config={agWaterEstimate} />
+  <Widget no="2" caption="rank the converters on the feed-to-gain ladder" widget="order" config={agFcrOrder} />
   <p><em>Common misconception:</em> "a ruminant's four-chambered stomach means cattle can
   thrive on whatever forage is available with no nutritional management." The rumen is a
   managed fermenter: fibre keeps it working, protein feeds the microbial population, and
@@ -105,6 +251,7 @@ const animalCfg = {
     measured in dry bedding, clean air you can breathe yourself, and animals that
     neither pant nor huddle — visible diagnostics before any meter.
   </p>
+  <Widget no="4" caption="drag between two very different comfort zones" widget="compare" config={agComfortCompare} />
   <p>
     <strong>So far:</strong> housing controls what weather and waste would otherwise do to
     productivity, and its quality shows in the animals before any meter. The next layer is
@@ -138,12 +285,14 @@ const animalCfg = {
     productivity, which is why the welfare–profit "trade-off" is smaller than either side
     of the old debate claimed.
   </p>
+  <Widget no="5" caption="file each herd measure by the job it does" widget="sort-buckets" config={agBiosecurityBuckets} />
   <p><em>Common misconception:</em> "grain-fed means better-fed." Cattle cannot thrive on
     grain alone — rumen acidosis is the feedlot vet's daily case — and much of the
     world's ruminant production is precisely valuable because it runs on land and
     by-products unsuited to crops. The honest nutritional comparison is not "grass vs
     grain" but "what could this land grow otherwise?" — which is a systems question, not
     a feed label.</p>
+  <Widget no="8" caption="bet on the feed label question" widget="predict" config={agGrainPredict} />
 
   <h2>Breeding: the compounding programme</h2>
   <p>
@@ -197,6 +346,7 @@ const animalCfg = {
     complexes in calves — is a management-system disease first and an infection second;
     the vet treats the case, the husbandry treats the rate.
   </p>
+  <Widget no="7" caption="pair each mastitis control with what it attacks" widget="match" config={agMastitisMatch} />
 
   <h2>Systems: the spectrum from pasture to intensive</h2>
   <p>
