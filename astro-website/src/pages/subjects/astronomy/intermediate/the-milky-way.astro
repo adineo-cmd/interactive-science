@@ -21,6 +21,121 @@ const rotCfg = {
   crossings: false,
   height: 330,
 };
+
+const mwBandPredict = {
+  "q": "Why does the Milky Way appear as a hazy band across dark skies?",
+  "choices": [
+    "We live inside a flat disc, edge-on — a hundred billion stars smear into a stripe",
+    "The galaxy is genuinely band-shaped",
+    "The band is a nearby nebula"
+  ],
+  "answer": 0,
+  "why": "The band is an illusion of viewpoint: seen from outside — as we see Andromeda — the same structure reveals itself as a spiral, not a stripe."
+};
+
+const mw21cmCloze = {
+  "text": "Optical astronomy cannot map our galaxy's structure because %%0%% blocks visible light. The %%1%% cm line of %%2%% sails through dust untouched — and its Doppler shift traced the spiral arms, revealing a barred spiral with the Sun on the Orion Spur.",
+  "answers": [
+    [
+      "dust"
+    ],
+    [
+      "21.1",
+      "21"
+    ],
+    [
+      "hydrogen"
+    ]
+  ],
+  "hint": "Predicted 1944, detected 1951 — and Gaia has since measured nearly two billion stars."
+};
+
+const mwSpeedPlace = {
+  "prompt": "The Sun orbits the galaxy's centre. Place its speed on the scale (km/s):",
+  "labels": [
+    "0",
+    "100",
+    "200",
+    "300",
+    "400"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 400
+  },
+  "answer": 230,
+  "tolerance": 12,
+  "why": "230 km/s — and clouds far beyond the visible disc orbit at essentially the same speed: the flat rotation curve no visible mass can explain.",
+  "context": "If the galaxy's mass were confined to its light, outer clouds should orbit slower — as Pluto orbits slower than Earth."
+};
+
+const mwDarkEstimate = {
+  "prompt": "Dark matter outweighs ordinary matter roughly five to one. Roughly what per cent of the universe's matter is dark?",
+  "unit": "%",
+  "answer": 83,
+  "factor": 1.3,
+  "why": "5-to-1 means 5/6 ≈ 83% dark — 'an anomaly repeated across a hundred billion galaxies is a census of the universe's contents, and it comes out roughly 85% missing.'",
+  "context": "Zwicky spotted the same discrepancy in clusters in 1933; Rubin's rotation curves made it unignorable in the 1970s."
+};
+
+const mwCleanOrder = {
+  "prompt": "The measurement that changed cosmology, step by step:",
+  "items": [
+    "A cloud's radial speed comes from the Doppler shift of its 21 cm line",
+    "Its distance from the centre follows from simple geometry and a rotation model",
+    "The numbers test a centuries-old prediction — Kepler's and Newton's orbit laws",
+    "The laws fail — and every other spiral galaxy measured since fails the same way"
+  ],
+  "why": "The Milky Way is the only galaxy whose internal motions we can measure star by star — and it fails the old laws exactly like the rest."
+};
+
+const mwDarkJudge = {
+  "statements": [
+    {
+      "s": "Dark matter is just cold gas, dead stars and planets — the MACHOs.",
+      "truth": false,
+      "why": "Astronomers have accounted for all of those; they fall short by a factor of several."
+    },
+    {
+      "s": "Dark matter interacts gravitationally — that is how we know it exists.",
+      "truth": true,
+      "why": "It must, since gravity is the only evidence — but its particle nature is unknown."
+    },
+    {
+      "s": "Dark matter outweighs ordinary matter roughly five to one.",
+      "truth": true,
+      "why": "Your galaxy is mostly an invisible scaffolding the stars happen to illuminate."
+    },
+    {
+      "s": "Dark matter is transparent to light of every wavelength.",
+      "truth": true,
+      "why": "Which rules out ordinary matter entirely — and points to something never detected in a laboratory."
+    }
+  ]
+};
+
+const mwNeighbourMatch = {
+  "prompt": "The Local Group, decoded:",
+  "pairs": [
+    {
+      "left": "Andromeda (M31)",
+      "right": "2.5 million light years away — the most distant naked-eye object, approaching at 110 km/s"
+    },
+    {
+      "left": "the Magellanic Clouds",
+      "right": "our largest satellites, tidally stretched, gas feeding us for billions of years"
+    },
+    {
+      "left": "Triangulum",
+      "right": "the Local Group's third spiral"
+    },
+    {
+      "left": "most group members",
+      "right": "dwarf galaxies barely brighter than a globular cluster — the statistical rule"
+    }
+  ],
+  "why": "In about 4.5 billion years Andromeda and the Milky Way braid into a single elliptical — stars almost never collide at these densities, but the merger is on the books."
+};
 ---
 <TopicPage slug="subjects/astronomy/intermediate/the-milky-way">
   <h2>Where you are, and what you will learn</h2>
@@ -30,6 +145,7 @@ const rotCfg = {
     its path) and <strong>the scale of the solar system</strong> (the light-year, and why big
     distances need big units). Everything else is built here.
   </p>
+  <Widget no="3" caption="bet first — the band across the sky" widget="predict" config={mwBandPredict} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>describe the Milky Way's shape, size and contents, and point out where the Sun sits in it;</li>
@@ -84,6 +200,7 @@ const rotCfg = {
     nearly two billion stars — revealing, among other things, star streams and ripples from
     smaller galaxies the Milky Way is still digesting.
   </p>
+  <Widget no="4" caption="fill the blanks — the 21 cm trick" widget="cloze" config={mw21cmCloze} />
   <p>
     <strong>So far:</strong> dust blinds optical astronomy to our galaxy's shape, but the 21 cm
     line of hydrogen sails through it — and traced a barred spiral with the Sun on a minor arm
@@ -91,6 +208,7 @@ const rotCfg = {
     had not asked for: the orbital speed of the gas at every radius. That is where the trouble
     starts.
   </p>
+  <Widget no="5" caption="place the Sun's galactic orbital speed" widget="place" config={mwSpeedPlace} />
 
   <h2>The rotation curve, and the dark matter problem</h2>
   <p>
@@ -123,6 +241,7 @@ const rotCfg = {
     universe. Your galaxy is mostly an invisible scaffolding that the stars happen to
     illuminate.
   </p>
+  <Widget no="6" caption="call the magnitude — the missing share" widget="estimate" config={mwDarkEstimate} />
   <p>
     It is worth appreciating how clean the measurement is, because it uses nothing exotic. A
     cloud's radial speed comes from the Doppler shift of its 21 cm line; its distance from the
@@ -133,11 +252,13 @@ const rotCfg = {
     other spiral galaxy does. An anomaly repeated across a hundred billion galaxies is not a
     curiosity; it is a census of the universe's contents, and it comes out roughly 85% missing.
   </p>
+  <Widget no="7" caption="rebuild the clean measurement — nothing exotic in it" widget="order" config={mwCleanOrder} />
   <p><em>Common misconception:</em> "dark matter is just dim matter — cold gas, dead stars,
     planets." Astronomers have accounted for all of those (they are called MACHOs), and they
     fall short by a factor of several. Whatever dark matter is, it is <em>transparent</em> to
     light of every wavelength — which rules out ordinary matter entirely and points to
     something (perhaps a new particle) that has never been detected in a laboratory.</p>
+  <Widget no="8" caption="true or false — what dark matter is not" widget="judge" config={mwDarkJudge} />
 
   <h2>The Local Group: our neighbourhood</h2>
   <p>
@@ -155,6 +276,7 @@ const rotCfg = {
     densities, but the galaxies will braid over a billion years into a single elliptical,
     already nicknamed "Milkomeda".
   </p>
+  <Widget no="9" caption="pair each neighbour with its relationship" widget="match" config={mwNeighbourMatch} />
   <p>
     <strong>So far:</strong> our galaxy turns out to be one member of a gravitationally bound
     family of more than 50, with a colossal merger already scheduled for the far future. Before

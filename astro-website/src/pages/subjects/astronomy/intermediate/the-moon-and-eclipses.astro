@@ -23,6 +23,140 @@ const tideCfg = {
   crossings: true,
   height: 320,
 };
+
+const mnFeatureMatch = {
+  "prompt": "The Moon's face is a two-terrain map — match feature to identity:",
+  "pairs": [
+    {
+      "left": "bright cratered highlands",
+      "right": "the original crust — anorthosite, 4 billion years of impacts"
+    },
+    {
+      "left": "dark maria ('seas')",
+      "right": "giant impact basins flooded by basalt lava — about 16% of the surface, mostly near side"
+    },
+    {
+      "left": "bright rays around craters like Tycho",
+      "right": "ejecta splashed across the surface, fading with age — a crude clock"
+    },
+    {
+      "left": "the terminator",
+      "right": "the day–night line where low sunlight casts the shadows that show relief"
+    }
+  ],
+  "why": "The far side, first photographed by Luna 3 in 1959, is almost all highlands — pocked and pale."
+};
+
+const mnFarPredict = {
+  "q": "Does the far side of the Moon ever receive sunlight?",
+  "choices": [
+    "Yes, equally — it is the FAR side, not a dark one",
+    "No — it is permanently shadowed",
+    "Only when Earth eclipses it"
+  ],
+  "answer": 0,
+  "why": "Tidal locking hides the far side from Earth, not from the Sun: 'the dark side' does not exist."
+};
+
+const mnLockCloze = {
+  "text": "The Moon's rotation period equals its orbital period — %%0%% days — and libration (±8° longitude, ±6.7° latitude) lets us see %%1%% per cent of the surface over time. Meanwhile Earth's day lengthens about %%2%% milliseconds per century.",
+  "answers": [
+    [
+      "27.3",
+      "27"
+    ],
+    [
+      "59"
+    ],
+    [
+      "2",
+      "two"
+    ]
+  ],
+  "hint": "Locking is inevitable; the wobble is instructive; the brake still runs."
+};
+
+const mnDistancePlace = {
+  "prompt": "The Moon sits 384,400 km away — how many Earth diameters is that? Place it on the scale:",
+  "labels": [
+    "0",
+    "15",
+    "30",
+    "45",
+    "60"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 60
+  },
+  "answer": 30,
+  "tolerance": 2,
+  "why": "30 Earth diameters — mostly empty space, and the cosmic coincidence (both ratio ≈ 400 and 390) that lets the Moon cover the Sun exactly.",
+  "context": "No other planet enjoys both a large Moon and a near-perfect size-to-distance match — total eclipses are ours alone."
+};
+
+const mnTideBuckets = {
+  "prompt": "The Sun contributes a pull about 46% as strong as the Moon's. File each arrangement:",
+  "buckets": [
+    "Spring tides",
+    "Neap tides"
+  ],
+  "items": [
+    {
+      "label": "Sun and Moon pulling in a line — their bulges add",
+      "bucket": 0
+    },
+    {
+      "label": "Sun and Moon pulling at right angles — partial cancellation",
+      "bucket": 1
+    },
+    {
+      "label": "new and full moon",
+      "bucket": 0
+    },
+    {
+      "label": "first and last quarter",
+      "bucket": 1
+    },
+    {
+      "label": "the month's higher high tides",
+      "bucket": 0
+    }
+  ],
+  "why": "The rhythm runs on a 14.8-day beat, and the two components (12.42 vs 12.00 hours) make the tide curve beat in and out over the day."
+};
+
+const mnPoleEstimate = {
+  "prompt": "Earth's axis precesses once every 25,772 years. Roughly how many years until Vega becomes the pole star instead of Polaris?",
+  "unit": "years",
+  "answer": 12000,
+  "factor": 1.3,
+  "why": "About 12,000 years — halfway round the 25,772-year circle — and Thuban, the pole star when Egyptians built the pyramids, gets another turn.",
+  "context": "Precession also shifts the equinoxes ~50 arcseconds per year, which is why star signs no longer match the Sun's constellation."
+};
+
+const mnOriginMatch = {
+  "prompt": "The Giant Impact Hypothesis earns its status by passing tests its rivals fail:",
+  "pairs": [
+    {
+      "left": "co-accretion (formed alongside Earth)",
+      "right": "the Moon's low iron vs Earth's iron-rich core doesn't match two siblings"
+    },
+    {
+      "left": "capture (a passing body grabbed)",
+      "right": "no plausible trajectory slows it without extravagant energy"
+    },
+    {
+      "left": "fission (spun off fast-spinning Earth)",
+      "right": "the system's angular momentum is far too small"
+    },
+    {
+      "left": "Giant Impact (Theia, 4.5 billion years ago)",
+      "right": "iron sank with Theia's core, mantle debris made the Moon, simulations match"
+    }
+  ],
+  "why": "One residue keeps research honest: Earth and Moon rocks have nearly identical oxygen isotopes — solved with a hot, well-mixed post-impact Earth."
+};
 ---
 <TopicPage slug="subjects/astronomy/intermediate/the-moon-and-eclipses">
   <h2>Where you are, and what you will learn</h2>
@@ -81,6 +215,7 @@ const tideCfg = {
     make relief visible: observe there, not at full moon, when overhead light flattens
     everything.
   </p>
+  <Widget no="3" caption="pair each lunar feature with what it really is" widget="match" config={mnFeatureMatch} />
 
   <h2>Synchronous rotation and libration: why "the dark side" doesn't exist</h2>
   <p>
@@ -93,6 +228,7 @@ const tideCfg = {
     The far side is therefore the <em>far</em> side, not a dark one: it gets exactly the same
     sunlight, only unseen from Earth.
   </p>
+  <Widget no="4" caption="bet first — the far side's day" widget="predict" config={mnFarPredict} />
   <p>
     Locking is imperfect in instructive ways. Because the Moon's orbit is elliptical, it moves
     slightly faster at perigee than its rotation carries it, and slower at apogee — letting us
@@ -103,6 +239,7 @@ const tideCfg = {
     visible from Earth over time</strong> — a slowly wobbling face, invisible unless you watch
     for it, predicted by the geometry and confirmed by watching crater positions.
   </p>
+  <Widget no="5" caption="fill the blanks — locking, libration and the slowing day" widget="cloze" config={mnLockCloze} />
   <p>
     <strong>So far:</strong> phases are geometry, the same face is the outcome of
     tidal braking, and libration lets 59% of the surface play hide-and-seek over
@@ -123,6 +260,7 @@ const tideCfg = {
     and the match is temporary: the Moon recedes, so far-future total eclipses will end, and
     eventually only annular ones will remain.
   </p>
+  <Widget no="6" caption="place the Moon's distance in Earth diameters" widget="place" config={mnDistancePlace} />
   <p><em>Common misconception:</em> the Moon is just above the rooftops — every
   classroom diagram puts it a few Earth-widths away. The honest numbers are 30
   Earth diameters of distance, roughly 384,400 km, with mostly empty space
@@ -166,6 +304,7 @@ const tideCfg = {
     <em>difference</em> in pull across Earth, which necessarily makes two. The far-side bulge
     is the clue students must be able to explain: that water is "left behind" less strongly
     pulled than the Earth beneath it, so it lags outward relative to the planet's centre.</p>
+  <Widget no="7" caption="file the tide facts — spring or neap?" widget="sort-buckets" config={mnTideBuckets} />
   <p>
     <strong>So far:</strong> the differential pull makes two bulges, Sun and Moon
     add or partially cancel on a 14.8-day beat, and tidal friction hands Earth's
@@ -217,6 +356,7 @@ const tideCfg = {
     Moon: its orbit's nodes precess in 18.6 years, the cycle that modulates when eclipses can
     happen and feeds the Saros.
   </p>
+  <Widget no="8" caption="call the gap — the next pole star" widget="estimate" config={mnPoleEstimate} />
 
   <h2>Inside the Moon, and where it came from</h2>
   <p>
@@ -244,6 +384,7 @@ const tideCfg = {
     of the Moon came from Theia — current models solve it with a hot, well-mixed post-impact
     Earth or a Theia surprisingly similar to Earth.
   </p>
+  <Widget no="9" caption="pair each origin hypothesis with why it fails" widget="match" config={mnOriginMatch} />
   <p>
     Reaching the Moon is an exercise in energy budgeting. Escaping Earth's gravity well to the
     Moon needs about 3.2 km/s of delta-v beyond low Earth orbit; Apollo missions crossed in

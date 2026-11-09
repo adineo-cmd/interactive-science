@@ -98,6 +98,8 @@
 | astronomy/foundational/solar-system-scale | cloze, place, estimate, sort-buckets, predict, judge, match | art-astro-1 |
 | astronomy/intermediate/stellar-life-cycles | estimate, cloze, judge, place, predict, match, sort-buckets | astro-2 |
 | astronomy/intermediate/telescopes-and-the-electromagnetic-spectrum | cloze, match, spot-error, estimate, predict, sort-buckets, judge, order | astro-2 |
+| astronomy/intermediate/the-milky-way | predict, cloze, place, estimate, order, judge, match | astro-3 |
+| astronomy/intermediate/the-moon-and-eclipses | match, predict, cloze, place, sort-buckets, estimate, match | astro-3 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -107,7 +109,7 @@
 **Architecture: 10 of 10 COMPLETE (waves 6–11).**
 
 **Art-history: 1 of 7 done (walk-through-western-art; remaining: global-prehistory, 3 intermediate, 2 advanced, 2 expert).**
-**Astronomy: 3 of 9 done (solar-system-scale, stellar-life-cycles, telescopes; remaining: foundational orbits-and-keplers-laws [Layout] + planet-earth, intermediate milky-way + moon-eclipses, advanced compact-objects/exoplanets/galaxies, expert astrobiology/cosmology/dark-matter).**
+**Astronomy: 5 of 9 done — intermediate COMPLETE (4/4). Remaining: foundational orbits-and-keplers-laws [Layout] + planet-earth; advanced compact-objects / exoplanets-and-detection / galaxies-and-the-expanding-universe; expert astrobiology / cosmology-and-general-relativity / dark-matter-and-dark-energy.**
 **Then next subjects (alphabetical): biology, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
