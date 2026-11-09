@@ -44,6 +44,98 @@ const chartCfg = {
   digits: 3,
   height: 300,
 };
+
+const okEightPredict = {
+  "q": "Kepler's circular model of Mars failed by eight arcminutes — a discrepancy almost anyone would have shrugged off. Why didn't he?",
+  "choices": [
+    "He knew Tycho's data was better than that — the discrepancy forced the ellipse",
+    "He wanted fame for inventing a new shape",
+    "Eight arcminutes are visible to the naked eye"
+  ],
+  "answer": 0,
+  "why": "'If I had believed that these eight minutes could be ignored, I would have patched up my hypothesis accordingly' — better data broke two millennia of circular dogma."
+};
+
+const okEarthCloze = {
+  "text": "Earth's orbital eccentricity is a modest %%0%%, so our orbit is nearly round; perihelion sits at a(1 − e) and aphelion at a(1 %%1%% e), and they spread apart as e grows.",
+  "answers": [
+    [
+      "0.017"
+    ],
+    [
+      "+",
+      "plus"
+    ]
+  ],
+  "hint": "e = 0 is a perfect circle; toward 1, the ellipse lengthens into a cigar."
+};
+
+const okCometOrder = {
+  "prompt": "A comet obeys the second law perfectly. Order its journey:",
+  "items": [
+    "Centuries crawling along the aphelion arc — far away, long and slow",
+    "Diving sunward, accelerating as the distance shrinks",
+    "A few frantic weeks past perihelion — short arc, fast motion",
+    "Equal areas in equal times the whole way round"
+  ],
+  "why": "Near the Sun the arc is short but fast; far away long but slow — the two effects cancel exactly (Newton: angular momentum conserved)."
+};
+
+const okYearEstimate = {
+  "prompt": "Kepler's third law: T² = a³. Double a planet's distance from the Sun. Roughly what factor does its year grow by?",
+  "unit": "× longer",
+  "answer": 2.8,
+  "factor": 1.3,
+  "why": "2^1.5 ≈ 2.8 — bigger orbits take disproportionately longer, not twice as long.",
+  "context": "The law is exact enough to say plainly: T² = a³ for anything orbiting the Sun, in years and AU."
+};
+
+const okLawsBuckets = {
+  "prompt": "Three laws, one breath:",
+  "buckets": [
+    "Law 1 — shape",
+    "Law 2 — speed",
+    "Law 3 — clock"
+  ],
+  "items": [
+    {
+      "label": "orbits are ellipses with the Sun at one focus",
+      "bucket": 0
+    },
+    {
+      "label": "equal areas in equal times",
+      "bucket": 1
+    },
+    {
+      "label": "T² = a³",
+      "bucket": 2
+    },
+    {
+      "label": "perihelion and aphelion spread apart as e grows",
+      "bucket": 0
+    },
+    {
+      "label": "a comet crawls at aphelion and dives at perihelion",
+      "bucket": 1
+    },
+    {
+      "label": "double the distance and the year grows 2.8×",
+      "bucket": 2
+    }
+  ],
+  "why": "Shape, speed, clock — the three laws in one breath, still the shape of every orbit in the Solar System."
+};
+
+const okSeasonPredict = {
+  "q": "Earth passes perihelion (closest to the Sun) in early January. What does that tell you about the seasons?",
+  "choices": [
+    "Nothing about them — seasons come from the 23.4° axis tilt, not distance; the North has winter while nearest the Sun",
+    "January should be the hottest month everywhere",
+    "The 3% distance change is what drives the seasons"
+  ],
+  "answer": 0,
+  "why": "If distance caused seasons, both hemispheres would have summer together. They do not — tilted toward the Sun means higher, longer-heating sunlight; distance is a rounding error."
+};
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -60,6 +152,12 @@ const chartCfg = {
       <article>
         <header class="topic-head">
           <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span><a href={`${B}/subjects/${subject.id}/`}>{subject.name}</a><span class="sep">/</span>{topic.level}</p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>fill the blanks — Earth's almost-circle</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="cloze" data-config={JSON.stringify(okEarthCloze)}></div>
+            </div>
+          </figure>
           <h1>{topic.title}</h1>
           <p class="lede">{topic.summary}</p>
         </header>
@@ -112,6 +210,12 @@ const chartCfg = {
             1619) are still, to extraordinary precision, the shape of every orbit in the Solar
             System.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 2</span><span>bet first — the eight minutes nobody could ignore</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="predict" data-config={JSON.stringify(okEightPredict)}></div>
+            </div>
+          </figure>
           <p>
             The animation below sweeps a planet around its star. The two shaded wedges were
             traversed in <em>equal times</em>; watch them stay equal in area even as the
@@ -119,7 +223,7 @@ const chartCfg = {
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 1</span><span>equal areas in equal times — drag e toward 0 for a circle</span></figcaption>
+            <figcaption><span class="fig-no">fig. 3</span><span>equal areas in equal times — drag e toward 0 for a circle</span></figcaption>
             <div class="widget-body">
               <div data-widget="sliderLab" data-config={JSON.stringify(orbitCfg)}></div>
             </div>
@@ -133,6 +237,12 @@ const chartCfg = {
             with them; drag e toward 0 and the orbit closes into a circle where the law
             becomes invisible because it is everywhere true.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 4</span><span>file the facts — which law does each belong to?</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="sort-buckets" data-config={JSON.stringify(okLawsBuckets)}></div>
+            </div>
+          </figure>
 
           <h2>The three laws, honestly stated</h2>
           <p>
@@ -154,6 +264,12 @@ const chartCfg = {
             a straight pull toward the Sun conserves angular momentum, and equal areas are that
             conservation made visible.)
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 5</span><span>rebuild the comet's obedient journey</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="order" data-config={JSON.stringify(okCometOrder)}></div>
+            </div>
+          </figure>
           <p>
             <strong>Law 3 — periods and distances are locked together.</strong> The square of a
             planet's orbital period is proportional to the cube of its average distance:
@@ -162,9 +278,15 @@ const chartCfg = {
             orbiting the Sun. Bigger orbits take <em>disproportionately</em> longer — double the
             distance and the year grows by 2^1.5 ≈ 2.8 times.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 6</span><span>call the factor — double the distance, the year…</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="estimate" data-config={JSON.stringify(okYearEstimate)}></div>
+            </div>
+          </figure>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 2</span><span>from observations to Newton</span></figcaption>
+            <figcaption><span class="fig-no">fig. 7</span><span>from observations to Newton</span></figcaption>
             <div class="widget-body">
               <div data-widget="equationStep" data-config={JSON.stringify(lawsCfg)}></div>
             </div>
@@ -201,7 +323,7 @@ const chartCfg = {
           </p>
 
           <figure class="widget">
-            <figcaption><span class="fig-no">fig. 3</span><span>the third law audited — T² ÷ a³ for every planet, in AU-years units</span></figcaption>
+            <figcaption><span class="fig-no">fig. 8</span><span>the third law audited — T² ÷ a³ for every planet, in AU-years units</span></figcaption>
             <div class="widget-body">
               <div data-widget="chart" data-config={JSON.stringify(chartCfg)}></div>
             </div>
@@ -259,6 +381,12 @@ const chartCfg = {
             toward the Sun means higher, longer-heating sunlight. Distance is a rounding error;
             tilt is the story.
           </p>
+  <figure class="widget">
+            <figcaption><span class="fig-no">fig. 9</span><span>bet first — the seasons trap</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="predict" data-config={JSON.stringify(okSeasonPredict)}></div>
+            </div>
+          </figure>
           <p><em>Common misconception:</em> "the Sun sits at the centre of the orbit." It sits
           at a <em>focus</em>, off-centre by an amount set by e — for Earth, about 2.5 million km
           from the ellipse's geometric centre. And "planets orbit the Sun" is itself an

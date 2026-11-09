@@ -25,6 +25,126 @@ const atmCfg = {
     { label: 'light absorbed and scattered away', expr: '100 - 100*pow(10, -0.08*(1/cos(z*pi/180)))', unit: '%' },
   ],
 };
+
+const peBulgeEstimate = {
+  "prompt": "Equatorial diameter 12,756 km; polar diameter 12,714 km. Roughly how many km wider is Earth at the equator?",
+  "unit": "km",
+  "answer": 42,
+  "factor": 1.2,
+  "why": "42 km — about 0.3%, or 1 part in 300: small enough to look smooth from space, big enough that satellites feel it.",
+  "context": "Flattening = (12,756 − 12,714) ÷ 12,756 ≈ 0.0033 — the spun-up dough of a planet turning 1,700 km/h at the equator."
+};
+
+const peLayerBuckets = {
+  "prompt": "Four layers, mapped by listening to earthquakes. File each fact:",
+  "buckets": [
+    "Crust",
+    "Mantle",
+    "Core"
+  ],
+  "items": [
+    {
+      "label": "5–10 km thick under oceans, 30–70 km under continents",
+      "bucket": 0
+    },
+    {
+      "label": "hot, dense silicate rock down to about 2,890 km",
+      "bucket": 1
+    },
+    {
+      "label": "liquid iron and nickel, 2,890–5,150 km deep",
+      "bucket": 2
+    },
+    {
+      "label": "solid iron-nickel, 5,150–6,371 km — solid from pressure, not coolness",
+      "bucket": 2
+    },
+    {
+      "label": "its S-wave shadow on the far side proved it molten",
+      "bucket": 2
+    }
+  ],
+  "why": "S waves cannot cross liquid — the shadow proved the outer core molten — and average density (5,500 vs 2,700 kg/m³ at the surface) demands iron."
+};
+
+const peMarsPredict = {
+  "q": "Mars has no global magnetic field today. What follows for the planet?",
+  "choices": [
+    "Its atmosphere is slowly stripped away by the solar wind",
+    "Its core stays molten forever",
+    "Its surface is shielded from radiation"
+  ],
+  "answer": 0,
+  "why": "No liquid metal core, no protective field, a very different planet — the magnetosphere is what keeps an atmosphere from being slowly stripped."
+};
+
+const peCoreJudge = {
+  "statements": [
+    {
+      "s": "The Earth's core is molten rock, like lava.",
+      "truth": false,
+      "why": "It is mostly iron and nickel — metal, not rock. Lava is melted rock, and exists only in the crust and upper mantle."
+    },
+    {
+      "s": "Only the outer core is liquid; the inner core is solid under enormous pressure.",
+      "truth": true,
+      "why": "Solid not because it is cool but because pressure crushes the metal into a fixed shape."
+    },
+    {
+      "s": "S waves cross the outer core; P waves cannot.",
+      "truth": false,
+      "why": "The reverse — S waves cannot cross liquid, so their shadow proved the outer core molten; P waves punch through."
+    },
+    {
+      "s": "The swirling liquid outer core generates Earth's magnetic field.",
+      "truth": true,
+      "why": "No liquid metal core, no field — Mars is the cautionary comparison."
+    }
+  ]
+};
+
+const peEratEstimate = {
+  "prompt": "Eratosthenes measured a 7.2° shadow at Alexandria, ~800 km from a well at Syene with no shadow at noon. Roughly what Earth circumference did he compute?",
+  "unit": "km",
+  "answer": 40000,
+  "factor": 1.3,
+  "why": "7.2° is one fiftieth of a circle, so 50 × 800 = 40,000 km — against the modern pole-to-pole value of 40,008 km.",
+  "context": "Right within a fraction of a percent, around 240 BC, with a well and a stick."
+};
+
+const peCoordMatch = {
+  "prompt": "Angles, not distances — match the coordinate to its behaviour:",
+  "pairs": [
+    {
+      "left": "latitude",
+      "right": "angle north/south of the equator — about 111 km per degree everywhere"
+    },
+    {
+      "left": "longitude",
+      "right": "angle east/west of Greenwich — 111 km per degree at the equator, 56 at 60°, ~2 at 89°"
+    },
+    {
+      "left": "the equator",
+      "right": "the only parallel of latitude that is itself a great circle"
+    },
+    {
+      "left": "15° per hour",
+      "right": "Earth's 360° turn in 24 hours — the logic of time zones"
+    }
+  ],
+  "why": "A coordinate pair names a direction from the Earth's centre; you convert to kilometres only after deciding where you are."
+};
+
+const peSkyPredict = {
+  "q": "Why is the sky blue by day, and the sunset red?",
+  "choices": [
+    "Air scatters short (blue) wavelengths far more than long (red) — scattered blue fills the sky, and at sunset the blue is scattered out en route",
+    "The ocean reflects blue upward, and red at dusk",
+    "Ozone tints the sky blue and dust tints sunsets red"
+  ],
+  "answer": 0,
+  "why": "Scattering strength falls as one over wavelength to the fourth power — the same physics that fills the day sky with blue paints the horizon red."
+};
 ---
 <TopicPage slug="subjects/astronomy/foundational/planet-earth">
 
@@ -36,6 +156,7 @@ const atmCfg = {
     planet, most of which you have never had reason to think about carefully. Everything
     else is built here, step by step.
   </p>
+  <Widget no="5" caption="bet first — Mars without a magnetic field" widget="predict" config={peMarsPredict} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>explain why the Earth is an oblate spheroid, quote its equatorial, polar and mean diameters, and show why the flattening is almost invisible at true scale;</li>
@@ -82,6 +203,7 @@ const atmCfg = {
     about 1 part in 300 — small enough that from space the Earth still looks like a smooth
     ball, but large enough that satellites feel it and geodesists map it.
   </p>
+  <Widget no="3" caption="call the magnitude — the equator's extra girth" widget="estimate" config={peBulgeEstimate} />
   <p>
     Because the true flattening is so small, the diagram below lets you exaggerate it.
     At the real value (exaggeration 1) the blue profile and the grey sphere are almost
@@ -123,6 +245,7 @@ const atmCfg = {
     average density is about 5,500 kg per cubic metre, but surface rocks are only about
     2,700 — so the interior must be packed with something far denser than rock. Iron fits.
   </p>
+  <Widget no="4" caption="file the layer facts — crust, mantle or core?" widget="sort-buckets" config={peLayerBuckets} />
   <p>
     Why it matters: the swirling liquid outer core generates the Earth's magnetic field —
     the magnetosphere that deflects the solar wind and keeps the atmosphere from being
@@ -136,6 +259,7 @@ const atmCfg = {
   enormous pressure. Lava is melted rock that exists only in the crust and upper mantle.
   The contrasting evidence: S waves — which cross rock — cannot cross the outer core, while
   P waves punch through it; liquid metal explains both.</p>
+  <Widget no="6" caption="true or false — the molten interior" widget="judge" config={peCoreJudge} />
 
   <h2>Latitude and longitude: angles, not distances</h2>
   <p>
@@ -172,6 +296,7 @@ const atmCfg = {
     the ancient measurement was right within a fraction of a percent (though the exact
     length of his stadion is debated, so give or take a percent or two).
   </p>
+  <Widget no="7" caption="call the magnitude — Eratosthenes' circumference" widget="estimate" config={peEratEstimate} />
   <p><em>Common misconception:</em> "latitude and longitude are distances, like metres."
   It seems reasonable — maps show them as a tidy grid, and one degree of latitude does
   correspond to about 111 km. But they are angles, and only latitude keeps a nearly
@@ -179,6 +304,7 @@ const atmCfg = {
   equator, 56 km at 60°, about 2 km at 89°. The correct picture: a coordinate pair names
   a direction from the Earth's centre, and you convert to kilometres only after deciding
   where you are. Navigators who treat degrees as distances sail in circles — literally.</p>
+  <Widget no="8" caption="pair each coordinate fact with its owner" widget="match" config={peCoordMatch} />
 
   <h2>Looking up through 100 km of air</h2>
   <p>
@@ -198,6 +324,7 @@ const atmCfg = {
     brighter than starlight, so stars are invisible until the Sun is far enough below
     the horizon.
   </p>
+  <Widget no="9" caption="bet first — why the sky is blue and the sunset red" widget="predict" config={peSkyPredict} />
   <p>
     <strong>Absorption.</strong> The atmosphere soaks up whole regions of the spectrum:
     almost all ultraviolet, X-rays and gamma rays never reach the ground, and most of the
