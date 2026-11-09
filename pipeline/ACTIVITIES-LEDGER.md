@@ -76,21 +76,20 @@
 | animation/foundational/the-twelve-principles-of-animation | estimate, sort-buckets, match, trace, judge, spot-error, branch, place | wave-5 |
 | anthropology/foundational/culture-kin-long-view | cloze, estimate, match, order, judge, spot-error, compare, sort-buckets | wave-5 |
 | anthropology/intermediate/the-four-fields | match, spot-error, branch, cloze, judge, order, compare, sort-buckets | wave-5 |
+| anthropology/intermediate/human-evolution-a-timeline | place, sort-buckets, judge, spot-error, estimate, match, predict, order, branch, timeline | anthropology-1 |
+| anthropology/intermediate/kinship-and-marriage-systems | compare, sort-buckets, spot-error, match, order, estimate, judge, branch, equationStep, quiz | anthropology-1 |
+| anthropology/intermediate/archaeology-reading-material-culture | estimate, match, order, sort-buckets, branch, predict, compare, equationStep, judge, quiz | anthropology-1 |
+| anthropology/advanced/ethnographic-methods | compare, sort-buckets, match, predict, order, branch, equationStep, quiz | anthropology-2 |
+| anthropology/advanced/economic-and-political-anthropology | order, spot-error, compare, sort-buckets, judge, match, branch, predict, equationStep, quiz | anthropology-2 |
+| anthropology/expert/deep-history-of-our-species | estimate, order, predict, branch, sort-buckets, cloze, match, place | anthropology-2 |
+| anthropology/expert/anthropology-of-the-contemporary | predict, judge, spot-error, sort-buckets, match, compare, estimate, order, equationStep | anthropology-3 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
-**Done subjects: physics, accounting, actuarial-science, aerospace-engineering, agriculture, animation — ALL lessons in each covered.**
+**Done subjects: physics, accounting, actuarial-science, aerospace-engineering, agriculture, animation, anthropology — ALL lessons in each covered.**
 
-**Anthropology: 3 of 9 lessons done. Remaining:**
-- intermediate/human-evolution-a-timeline
-- intermediate/kinship-and-marriage-systems
-- intermediate/archaeology-reading-material-culture
-- advanced/ethnographic-methods
-- advanced/economic-and-political-anthropology
-- expert/deep-history-of-our-species
-- expert/anthropology-of-the-contemporary
-
-**Then next subjects (alphabetical): archaeology, architecture, art-history, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
+**Anthropology: 9 of 9 COMPLETE** (waves 5 + anthropology-1..3, 55 new activities).
+Next: archaeology, architecture, art-history, … — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
 
@@ -101,12 +100,12 @@
   sort-buckets, spot-error) + the original 7. Config schemas in each file's header.
 - P2 structural layer: **complete and shipped** (numbered topic positions, position chips,
   stage maps, learning-loop line, spacing) — commit 395dc79. Zero-token, no prose changes.
-- P1 backfill: **27 lessons done, 234 activities** (physics 10/10 complete; accounting,
+- P1 backfill: **37 lessons done, 313 activities** (physics 10/10 complete; accounting,
   actuarial-science, aerospace-engineering foundational lessons done; **agriculture
-  11/11 COMPLETE** — waves agriculture-1..4; animation 1/1 COMPLETE and
-  anthropology 3/9 — wave 5). Each single-lesson subject done in one wave; multi-lesson
-  subjects go 2–3 per wave.
-- Remaining queue: **~550 live lessons** (counted as pages with fewer than 3 of the new
+  11/11 COMPLETE** — waves agriculture-1..4; animation 1/1 COMPLETE; **anthropology
+  9/9 COMPLETE** — wave 5 + anthropology-1..3). Each single-lesson subject done in one
+  wave; multi-lesson subjects go 2–3 per wave.
+- Remaining queue: **~546 live lessons** (counted as pages with fewer than 3 of the new
   activity types in `src/pages/<slug>.astro`).
 - Quality bars, verified every wave by script: ≥6 distinct interaction types, zero
   adjacent repeats, ≤2 answer-family widgets (predict/judge/cloze). Cloned-answer-heavy
