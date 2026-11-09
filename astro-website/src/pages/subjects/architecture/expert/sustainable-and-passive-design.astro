@@ -10,6 +10,117 @@ const passiveCfg = {
     { math: '4 · Retrofit is the real frontier', note: '80% of 2050\'s buildings already exist — deep retrofit (fabric, systems, heat pumps) at scale is the hardest sustainability problem in the built environment; EnerPHit (the retrofit standard), district heating, and facade-overcladding are the current toolkit (the energy lesson\'s demand side, wholesale).' },
   ],
 };
+
+const spHeatBuckets = {
+  "prompt": "The urban heat island is a feedback loop — file each fact:",
+  "buckets": [
+    "The loop",
+    "The countermeasure"
+  ],
+  "items": [
+    {
+      "label": "dark, dry, low-albedo surfaces running several degrees warmer",
+      "bucket": 0
+    },
+    {
+      "label": "air-conditioning demand rising, pushing ambient heat up again",
+      "bucket": 0
+    },
+    {
+      "label": "trees and green roofs",
+      "bucket": 1
+    },
+    {
+      "label": "high-albedo and permeable surfaces, water bodies",
+      "bucket": 1
+    }
+  ],
+  "why": "The same physics read generously gives the countermeasures — and vernacular architecture is the discipline's centuries-long dataset on the dynamic."
+};
+
+const spTriadOrder = {
+  "prompt": "Each stage shrinks what the next must do. Order the hierarchy:",
+  "items": [
+    "Passive design: orientation, compact form, envelope, shading, thermal mass",
+    "Efficient systems: serve the reduced demand well",
+    "Renewable supply: cover what is left",
+    "Panels on a leaky building spend their whole output fighting the envelope",
+    "The same panels on a Passivhaus-grade building can cover all of its demand"
+  ],
+  "why": "The Bullitt Center's net-zero depends on the fabric first — and envelope-plus-equipment measures cut demand by half to three-quarters at lower cost per tonne than generation."
+};
+
+const spPanelPredict = {
+  "q": "A client proposes solar panels on a leaky 1970s envelope and calls the building sustainable. What is the expert's first move?",
+  "choices": [
+    "Fix the audit order: reduce demand passively, supply efficiently, generate last — the fabric upgrade is usually the cheap part whole-life",
+    "Add more panels until the demand is met",
+    "Swap the panels for heat pumps and stop there"
+  ],
+  "answer": 0,
+  "why": "Panels are the LAST step of the triad, and on a poor envelope they are the most expensive way to buy comfort — the Passivhaus arithmetic proves near-zero heating demand with no generation device on site."
+};
+
+const spGapCloze = {
+  "text": "Buildings in use routinely consume %%0%% times their models' predictions. The countermeasures: thermal-bridge-free detailing (a repeating junction can add %%1%% per cent to heating demand), blower-door and thermographic %%2%% as quality gates, and commissioning as a deliverable.",
+  "answers": [
+    [
+      "1.5–2.5",
+      "1.5-2.5"
+    ],
+    [
+      "10",
+      "ten"
+    ],
+    [
+      "testing"
+    ]
+  ],
+  "hint": "The gap's range, the junction penalty, and what runs before handover."
+};
+
+const spEmbodiedMatch = {
+  "prompt": "The levers, in order of power:",
+  "pairs": [
+    {
+      "left": "build less",
+      "right": "adaptive reuse — the greenest building is usually the one already standing"
+    },
+    {
+      "left": "build lean",
+      "right": "structural efficiency: less material per carried load"
+    },
+    {
+      "left": "substitute",
+      "right": "mass timber sequesters roughly a tonne of carbon per tonne of wood"
+    },
+    {
+      "left": "procure deliberately",
+      "right": "EPDs make carbon a selectable attribute — RIBA 2030, LETI targets"
+    }
+  ],
+  "why": "Two equivalent floors — post-tensioned concrete vs timber — differ by tens of kgCO₂e/m² BEFORE either building operates."
+};
+
+const spRetrofitEstimate = {
+  "prompt": "Europe's residential stock averages about 190 kWh/m² per year; Passivhaus-grade renovation approaches 15. Roughly what per cent of typical demand does that represent?",
+  "unit": "%",
+  "answer": 8,
+  "factor": 1.5,
+  "why": "15 ÷ 190 ≈ 8% — deep-retrofit targets reach 60–80, and the replicated two-thirds-plus demand cut is among the largest single climate levers any profession owns.",
+  "context": "Around 80% of the buildings that will exist in 2050 are already standing — hence retrofit-first."
+};
+
+const spRazePredict = {
+  "q": "Why does a deep retrofit usually beat a tear-down rebuild on total emissions?",
+  "choices": [
+    "Demolition spends decades of embodied carbon up front — a debt the new building needs half a century or more to repay",
+    "New buildings are always leakier than old ones",
+    "Heritage law simply forbids demolition"
+  ],
+  "answer": 0,
+  "why": "Carl Elefante's phrase — 'the greenest building is the one that is already built' — captures the arithmetic; with 80% of 2050's stock already standing, retrofit-first is the governing hierarchy."
+};
 ---
 <TopicPage slug="subjects/architecture/expert/sustainable-and-passive-design">
   <h2>Where you are, and what you will learn</h2>
@@ -79,6 +190,7 @@ const passiveCfg = {
     before mechanical systems, read what the site gives and refuses, and let form —
     orientation, compactness, shading, mass — do the first and cheapest work.
   </p>
+  <Widget no="2" caption="file the heat-island facts — loop or countermeasure?" widget="sort-buckets" config={spHeatBuckets} />
 
   <h2>Mitigating climate change: the passive-first hierarchy</h2>
   <p>
@@ -101,6 +213,7 @@ const passiveCfg = {
     purchased, at lower cost per tonne of CO₂ than generation — demand-side abatement is the
     cheapest energy in the transition.
   </p>
+  <Widget no="3" caption="rebuild the passive-first triad" widget="order" config={spTriadOrder} />
   <p>
     <em>Common misconception:</em> "a sustainable building is a building with solar panels."
     Panels are the <em>last</em> step of the triad, and on a poor envelope they are the most
@@ -108,6 +221,7 @@ const passiveCfg = {
     the remainder efficiently, generate what is left — and the expensive-looking fabric
     upgrade is usually the cheap part when whole-life costs are counted.
   </p>
+  <Widget no="4" caption="bet first — the panels-on-a-leaky-roof client" widget="predict" config={spPanelPredict} />
   <p>
     <strong>So far:</strong> the passive-first hierarchy is an economic ordering, not a
     stylistic one — each stage shrinks what the next must buy — and Passivhaus proves the
@@ -134,6 +248,7 @@ const passiveCfg = {
     supply-chain property. A detail that cannot be built as drawn will not be; the designer's
     job is specifying what is buildable and then insisting, on site, that it was.
   </p>
+  <Widget no="5" caption="fill the blanks — closing the performance gap" widget="cloze" config={spGapCloze} />
 
   <h2>Embodied carbon: the other half of the ledger</h2>
   <p>
@@ -156,6 +271,7 @@ const passiveCfg = {
     over a 10,000-m² building, the material choice has the carbon effect of years of
     operational savings, paid immediately.
   </p>
+  <Widget no="6" caption="pair each embodied-carbon lever with its move" widget="match" config={spEmbodiedMatch} />
   <p>
     <em>Common misconception:</em> "as heating gets cleaner, the materials barely matter." The
     reverse: as operational emissions fall toward zero, embodied carbon becomes the
@@ -186,6 +302,7 @@ const passiveCfg = {
     minimum), rapid recovery, and graceful degradation — the safety-engineering chapter's
     properties, applied to a 60-year asset under a moving hazard map.
   </p>
+  <Widget no="7" caption="call the magnitude — the retrofit's demand cut" widget="estimate" config={spRetrofitEstimate} />
   <p>
     <strong>So far:</strong> the ledger has both halves — operational performance closed by
     testing and commissioning, embodied carbon counted upfront — and adaptation adds the
@@ -220,6 +337,7 @@ const passiveCfg = {
   which is why retrofit-first has become the profession's governing hierarchy, and why the
   hardest sustainability skill is working with walls that already exist.
   </p>
+  <Widget no="8" caption="bet first — retrofit vs tear-down" widget="predict" config={spRazePredict} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

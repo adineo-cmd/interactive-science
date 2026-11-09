@@ -89,18 +89,18 @@
 | architecture/intermediate/a-history-of-architectural-styles | match, cloze, predict, order, sort-buckets, estimate, judge | wave-7 |
 | architecture/intermediate/plans-sections-and-scale | match, predict, cloze, order, spot-error, judge | wave-7 |
 | architecture/intermediate/what-buildings-must-do | sort-buckets, predict, cloze, match, estimate, judge | wave-7 |
+| architecture/advanced/environmental-design-light-heat-air | place, predict, cloze, order, judge, spot-error, match | wave-8 |
+| architecture/advanced/structural-systems-arches-to-skyscrapers | match, predict, cloze, order, estimate, sort-buckets, judge | wave-8 |
+| architecture/advanced/urban-design-and-public-space | match, predict, order, estimate, judge, sort-buckets, cloze | wave-9 |
+| architecture/expert/computational-and-parametric-design | match, predict, cloze, order, sort-buckets, judge | wave-10 |
+| architecture/expert/sustainable-and-passive-design | sort-buckets, order, predict, cloze, match, estimate, predict | wave-11 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
-**Done subjects: physics, accounting, actuarial-science, aerospace-engineering, agriculture, animation, anthropology, archaeology — ALL lessons in each covered.**
+**Done subjects: physics, accounting, actuarial-science, aerospace-engineering, agriculture, animation, anthropology, archaeology, architecture — ALL lessons in each covered.**
 
 **Anthropology: 9 of 9 COMPLETE** (55 new activities). **Archaeology: 1 of 1 COMPLETE.**
-**Architecture: 5 of 10 done.** Remaining:
-- advanced/environmental-design-light-heat-air
-- advanced/structural-systems-arches-to-skyscrapers
-- advanced/urban-design-and-public-space
-- expert/computational-and-parametric-design
-- expert/sustainable-and-passive-design
+**Architecture: 10 of 10 COMPLETE (waves 6–11).**
 
 **Then next subjects (alphabetical): art-history, astronomy, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each

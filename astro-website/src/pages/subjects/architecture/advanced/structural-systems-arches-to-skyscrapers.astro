@@ -19,6 +19,132 @@ const structQuizCfg = {
     { q: 'Assessing a structural technology (say mass timber vs concrete) against project objectives means comparing…', choices: ['strength only', 'strength, cost, speed, embodied carbon, buildability and flexibility together — objectives the brief makes explicit', 'age of the technology', 'whatever the engineer prefers'], answer: 1, why: 'A technology is assessed against the objectives the project weights: speed and carbon favour timber; spans and acoustic mass may favour concrete. The method is explicit trade-off tables, not defaults.' },
   ],
 };
+
+const ssGeoMatch = {
+  "prompt": "Five geometries, five material strengths — match them:",
+  "pairs": [
+    {
+      "left": "load-bearing walls",
+      "right": "compression — thickness scales with height (Monadnock's 1.8 m base)"
+    },
+    {
+      "left": "arches and vaults",
+      "right": "redirect load along a thrust line into pure compression"
+    },
+    {
+      "left": "shells and domes",
+      "right": "strength from geometry — a few centimetres of concrete roofing a stadium"
+    },
+    {
+      "left": "tension structures",
+      "right": "steel's equal strength in tension — most material-efficient, least stiffness"
+    }
+  ],
+  "why": "Every real building is a combination; reading a section plan is recognising which geometry each element is playing."
+};
+
+const ssSystemPredict = {
+  "q": "Why do steel frames wrap around concrete cores in most tall buildings?",
+  "choices": [
+    "Concrete's compression stiffness pairs with steel's tension strength — strength is a system property",
+    "Concrete is simply cheaper everywhere it is used",
+    "Fire codes require the core to be concrete for appearance reasons"
+  ],
+  "answer": 0,
+  "why": "The materials excel at different jobs — steel in tension, concrete in compression — and every tall building is a negotiation between them. The system is the load path, not the material certificate."
+};
+
+const ssColumnCloze = {
+  "text": "Twenty floors at 5 kPa on 1,000 m²: each floor presses 5,000 kN, so the base columns together collect %%0%% MN — the Eiffel Tower's weight. At an allowable 10 MPa, each of twelve columns needs %%1%% m² of section — nearly a metre square.",
+  "answers": [
+    [
+      "100",
+      "100 MN"
+    ],
+    [
+      "0.83"
+    ]
+  ],
+  "hint": "One multiplication for the total, one division per column."
+};
+
+const ssWindOrder = {
+  "prompt": "Put the tall-building escalation in order:",
+  "items": [
+    "Gravity per floor is roughly constant — wind is not",
+    "The overturning moment grows with height squared",
+    "Sway grows with height to the fourth — codes limit drift to roughly h/500",
+    "Supertalls sprout stiffness: outriggers, tubes, diagrids, buttressed cores",
+    "Crosswind vortex shedding is countered by shaping and tuned mass dampers"
+  ],
+  "why": "Taipei 101's 660-tonne pendulum sways out of phase with the building — the lesson being that the real design limit is perceived motion, not stress."
+};
+
+const ssSlimEstimate = {
+  "prompt": "432 Park Avenue rises about 426 m at a 15:1 slenderness ratio. Roughly how wide is its plan?",
+  "unit": "m",
+  "answer": 28,
+  "factor": 1.3,
+  "why": "426 ÷ 15 ≈ 28 m — stiffness theatre in expensive dress.",
+  "context": "Stiffness grows with the square of the distance material sits from the neutral axis — which is why the slenderest towers put everything in the perimeter."
+};
+
+const ssTimberBuckets = {
+  "prompt": "'Advanced' is not a column in the table. File each choice against the brief that fits it:",
+  "buckets": [
+    "mass timber",
+    "concrete",
+    "steel"
+  ],
+  "items": [
+    {
+      "label": "a six-storey school on a tight carbon budget",
+      "bucket": 0
+    },
+    {
+      "label": "a 60-storey tower on a hurricane coast",
+      "bucket": 2
+    },
+    {
+      "label": "most long-span parking decks (a 1920s technology still winning)",
+      "bucket": 1
+    },
+    {
+      "label": "panels that bolt together in days — programme as a structural property",
+      "bucket": 0
+    },
+    {
+      "label": "embodied carbon around 300–500 kgCO₂e/m² of structure",
+      "bucket": 1
+    }
+  ],
+  "why": "Technologies are priced options against a brief — cheap or expensive, fast or slow, heavy or light in carbon, for a purpose."
+};
+
+const ssLandmarkJudge = {
+  "statements": [
+    {
+      "s": "The dome's two problems are outward thrust at the base and compression at the crown — answered by buttresses and the oculus ring.",
+      "truth": true,
+      "why": "The Pantheon has stood 2,000 years as the largest unreinforced concrete dome."
+    },
+    {
+      "s": "Thin concrete shells carry enormous loads by curvature — material efficiency cantilevers cannot match.",
+      "truth": true,
+      "why": "Nervi, Candela, Utzon's sails: form follows forces at its purest."
+    },
+    {
+      "s": "Cable structures pay for axial efficiency with stiffness — their movement must be designed, not ignored.",
+      "truth": true,
+      "why": "Suspension bridges and stadium roofs manage it with damping."
+    },
+    {
+      "s": "Mass timber is the right choice for a 60-storey tower on a hurricane coast.",
+      "truth": false,
+      "why": "The grid is deliberately indifferent to novelty — mass timber wins the school, loses the tower."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/architecture/advanced/structural-systems-arches-to-skyscrapers">
   <h2>Where you are, and what you will learn</h2>
@@ -31,6 +157,9 @@ const structQuizCfg = {
     behind every such drawing, follows them upward to the skyscraper, and prices them
     against real objectives.
   </p>
+  <Widget no="6" caption="rebuild the wind inversion — from constant gravity to the damper" widget="order" config={ssWindOrder} />
+  <Widget no="4" caption="bet first — the steel-and-concrete negotiation" widget="predict" config={ssSystemPredict} />
+  <Widget no="3" caption="pair each load-carrying geometry with its trick" widget="match" config={ssGeoMatch} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>name the five structural families and say which material strength each exploits;</li>
@@ -115,6 +244,7 @@ const structQuizCfg = {
     load-bearing masonry died above sixteen storeys: the walls needed to carry that
     stack would eat the floor area the building exists to rent.
   </p>
+  <Widget no="5" caption="fill the blanks — the Eiffel Tower on twelve footprints" widget="cloze" config={ssColumnCloze} />
 
   <p>
     <strong>So far:</strong> the five geometries each exploit one material strength, and the
@@ -171,6 +301,7 @@ const structQuizCfg = {
     (432 Park Avenue's 15:1 ratio) are stiffness theatre in expensive dress: every
     element's position, not quantity, is the design.
   </p>
+  <Widget no="7" caption="call the magnitude — the 15:1 tower's footprint" widget="estimate" config={ssSlimEstimate} />
 
   <p>
     <strong>So far:</strong> past about ten storeys the enemy changes from gravity to wind,
@@ -198,6 +329,7 @@ const structQuizCfg = {
     panels — design for disassembly is now a scored criterion). A competent brief names
     the weights; a competent engineer shows the table rather than the preference.
   </p>
+  <Widget no="8" caption="file the frame options — against a real brief" widget="sort-buckets" config={ssTimberBuckets} />
   <p>
     <em>Common misconception:</em> the newest structural technology is the one a serious
     project should specify. The assessment grid is deliberately indifferent to novelty:
@@ -217,6 +349,7 @@ const structQuizCfg = {
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
+  <Widget no="9" caption="true or false — landmark systems" widget="judge" config={ssLandmarkJudge} />
   <ol>
     <li>Recall: why can a well-shaped masonry arch stand for millennia while a badly shaped one of the same material fails?</li>
     <li>Application: a 300 m tower under a storm line load collects an overturning moment of about 2,250,000 newton-metres per metre of width. Which structural move buys back the most stiffness per kilogram, and why?</li>

@@ -19,6 +19,130 @@ const envQuizCfg = {
     { q: 'CO₂ concentration above ~1,000 ppm in a classroom usually means…', choices: ['the building is on fire', 'ventilation per person is too low — thinking performance measurably declines as CO₂ accumulates', 'the CO₂ sensor is broken', 'too many plants'], answer: 1, why: 'Occupants exhale ~0.005 L/s of CO₂ each; concentration is a live proxy for fresh-air supply per person. Above 1,000 ppm, decision-making studies show measurable declines — air quality is a cognitive design parameter.' },
   ],
 };
+
+const edSunPlace = {
+  "prompt": "At 40° latitude the June noon sun sits at ~73°. Place the December noon sun on the scale (degrees):",
+  "labels": [
+    "0",
+    "20",
+    "40",
+    "60",
+    "80"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 90
+  },
+  "answer": 27,
+  "tolerance": 3,
+  "why": "90 − 40 − 23.4 ≈ 27° — the 46° swing is a free seasonal switch: an overhang of d ≈ 0.58·h blocks the summer sun while covering only ~0.21·h of the winter window.",
+  "context": "One square metre of south glazing under 500 W/m² winter sun at SHGC 0.6 delivers ~300 W of free heat — and the same square metre in July is an air-conditioning bill."
+};
+
+const edGlassPredict = {
+  "q": "An all-glass facade ends its first summer with the blinds permanently down. What did the design get wrong?",
+  "choices": [
+    "It treated daylight as glass area instead of useful daylight at the desk without glare",
+    "The blinds were installed backwards",
+    "The glass was too thick to transmit light"
+  ],
+  "answer": 0,
+  "why": "Daylight is a flux to be admitted deliberately: glare and heat force the blinds, so the building delivers worse daylight AND a worse energy bill than a modest, well-oriented window would have."
+};
+
+const edDaylightCloze = {
+  "text": "Daylight penetrates roughly %%0%% times the window-head height — a 3 m head gives %%1%% m of usable depth — and the %%2%% reflects high-angle sun onto the ceiling to push the bright zone deeper while shading the desk.",
+  "answers": [
+    [
+      "2 to 2.5",
+      "2–2.5",
+      "2.5",
+      "two to two and a half"
+    ],
+    [
+      "6–7.5",
+      "6 to 7.5"
+    ],
+    [
+      "light shelf",
+      "light-shelf"
+    ]
+  ],
+  "hint": "One rule of thumb, one worked consequence, one horizontal baffle."
+};
+
+const edStackOrder = {
+  "prompt": "From buoyancy to flow — put the stack engine in order:",
+  "items": [
+    "Warm indoor air is buoyant",
+    "It vents through high-level atrium outlets",
+    "Replacement air is drawn through low-level inlets",
+    "The driving pressure runs about 0.5 Pa per metre of height at a 12 K difference",
+    "A five-metre atrium therefore offers about 2.5 Pa — small, but moving real air"
+  ],
+  "why": "That pressure doubles if either the height or the temperature difference doubles — which is why tall, section-first buildings ventilate themselves and single-storey slabs struggle without wind or fans."
+};
+
+const edTightJudge = {
+  "statements": [
+    {
+      "s": "Airtightness and ventilation are opposites — seal for efficiency and accept stale air.",
+      "truth": false,
+      "why": "Tight and ventilated beats leaky and accidental on every axis: the best-sealed buildings pair airtightness with deliberate supply."
+    },
+    {
+      "s": "Uncontrolled infiltration through a leaky fabric wastes more heat than controlled ventilation ever needs.",
+      "truth": true,
+      "why": "The ledger says so — which is why fabric-first comes before any equipment."
+    },
+    {
+      "s": "Heat-recovery units keep most of the exhaust air's warmth before it leaves.",
+      "truth": true,
+      "why": "Standard practice in cold climates: supply controlled, keep the warmth."
+    },
+    {
+      "s": "Night purging recharges the concrete slab for tomorrow by discharging today's heat overnight.",
+      "truth": true,
+      "why": "Air coupled to mass — vernacular windcatchers to Queensland verandas ran on exactly these physics."
+    }
+  ]
+};
+
+const edUvalueSpot = {
+  "prompt": "One line of this wall-upgrade answer is wrong — click it:",
+  "lines": [
+    "Solid brick wall: U ≈ 2.0 W/m²K.",
+    "Add 150 mm of mineral wool (λ = 0.035): R = 0.15/0.035 ≈ 4.3 m²K/W.",
+    "Add surface resistances (~0.17) and total R ≈ 4.5, so U ≈ 0.22 W/m²K.",
+    "On a 20 K winter difference, heat loss falls from 40 to ~44 W/m²."
+  ],
+  "errorLine": 3,
+  "correction": "Heat loss falls from 40 to ~4.4 W/m² — TENFOLD, from one design decision.",
+  "why": "Q = U·A·ΔT with U dropping tenfold gives a tenfold cut: 20 K × 0.22 ≈ 4.4 W/m². The wall section is the most consequential drawing in the building."
+};
+
+const edHierarchyMatch = {
+  "prompt": "The cost-effective hierarchy runs the other way from the equipment catalogue:",
+  "pairs": [
+    {
+      "left": "form and fabric first",
+      "right": "orientation, shading, insulation, airtightness, mass"
+    },
+    {
+      "left": "then efficiency",
+      "right": "heat recovery, LED, efficient plant"
+    },
+    {
+      "left": "then renewables",
+      "right": "cover the remainder"
+    },
+    {
+      "left": "equipment on an unshaded, west-glazed, poorly insulated building",
+      "right": "a permanent energy bill for geometry that was free to fix"
+    }
+  ],
+  "why": "A watt avoided by orientation costs nothing to run for sixty years — the ordering is the argument: geometry and material choice first, machines last."
+};
 ---
 <TopicPage slug="subjects/architecture/advanced/environmental-design-light-heat-air">
   <h2>Where you are, and what you will learn</h2>
@@ -30,6 +154,7 @@ const envQuizCfg = {
     decision below is made. Here those drawings acquire numbers: sun angles, daylight
     percentages and U-values become overhang depths, plan depths and wall build-ups.
   </p>
+  <Widget no="7" caption="true or false — tight vs leaky" widget="judge" config={edTightJudge} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>size a south-facing overhang from solar geometry so summer sun is blocked and winter sun admitted;</li>
@@ -86,6 +211,7 @@ const envQuizCfg = {
     bill. Shading, orientation and glass selection (SHGC tuned by facade direction) are the
     three levers, in descending order of cost-effectiveness.
   </p>
+  <Widget no="3" caption="place the December sun on the altitude scale" widget="place" config={edSunPlace} />
   <p>
     <em>Common misconception:</em> more glass means a brighter, more environmentally
     advanced building. Daylight is a flux to be admitted <em>deliberately</em>: the
@@ -94,6 +220,7 @@ const envQuizCfg = {
     energy bill than a modest, well-oriented window. The metric that matters is useful
     daylight at the desk without glare, not glass area on the elevation.
   </p>
+  <Widget no="4" caption="bet first — the blinds' honest report card" widget="predict" config={edGlassPredict} />
 
   <h2>Daylight: quantity with a health dividend</h2>
   <p>
@@ -112,6 +239,7 @@ const envQuizCfg = {
     and views out reduce stress — so daylight is now specified as a <em>health</em>
     requirement with minimum levels, not an amenity.
   </p>
+  <Widget no="5" caption="fill the blanks — the daylight depth rule" widget="cloze" config={edDaylightCloze} />
 
   <p>
     <strong>So far:</strong> sun and daylight are both geometry — angles fixed by astronomy,
@@ -151,6 +279,7 @@ const envQuizCfg = {
     without wind or fans — the section drawing, not the equipment schedule, is the
     ventilation design.
   </p>
+  <Widget no="6" caption="rebuild the stack-effect cascade" widget="order" config={edStackOrder} />
   <p>
     <em>Common misconception:</em> airtightness and ventilation are opposites — seal
     the building for efficiency and accept stale air, or ventilate and accept the
@@ -185,6 +314,7 @@ const envQuizCfg = {
     night ventilation to discharge it, and it interacts with insulation (insulate
     <em>outside</em> the mass, or the mass is disconnected from the room).
   </p>
+  <Widget no="8" caption="find the faulty line — the U-value upgrade" widget="spot-error" config={edUvalueSpot} />
   <p>
     <em>Common misconception:</em> the environmentally designed building is defined by its
     equipment — solar panels, heat pumps, smart controls. The hierarchy runs the other way:
@@ -193,6 +323,7 @@ const envQuizCfg = {
     the remainder. Equipment on an unshaded, west-glazed, poorly insulated building is
     paying a permanent energy bill for geometry that was free to fix.
   </p>
+  <Widget no="9" caption="pair the hierarchy with its levers" widget="match" config={edHierarchyMatch} />
 
   <h2>Integration and measurable outcomes (SC.6)</h2>
   <p>
