@@ -25,6 +25,153 @@ const scaleCfg = {
     { label: 'distance to nearest star', expr: '288 * s', unit: 'km' },
   ],
 };
+
+const asLightCloze = {
+  "text": "One AU is 149.6 million km, and light takes %%0%% minutes %%1%% seconds to cross it. Neptune is over four light-%%2%% away; Voyager 1's radio commands take nearly %%3%% days for the round trip.",
+  "answers": [
+    [
+      "8",
+      "eight"
+    ],
+    [
+      "20",
+      "twenty"
+    ],
+    [
+      "hours",
+      "hour"
+    ],
+    [
+      "2",
+      "two"
+    ]
+  ],
+  "hint": "The Sun you see is always 8 minutes old — and the lag only grows."
+};
+
+const asMercuryPlace = {
+  "prompt": "Every planet sits on the Kepler curve. Place Mercury's orbital period on the scale (days):",
+  "labels": [
+    "0",
+    "250",
+    "500",
+    "750",
+    "1000"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1000
+  },
+  "answer": 88,
+  "tolerance": 8,
+  "why": "88 days at 0.39 AU — the nearest dot on the curve. Neptune takes 165 years; one power law holds everywhere between.",
+  "context": "Discovered in 1619 from naked-eye data; it survived Newton, relativity and 5,000+ exoplanet discoveries."
+};
+
+const asAuEstimate = {
+  "prompt": "Cassini and Richer's 1672 parallax landed within about 7% of the truth. Roughly how many million km is the astronomical unit?",
+  "unit": "million km",
+  "answer": 149.6,
+  "factor": 1.3,
+  "why": "149.6 million km — measured first by parallax from Paris and Cayenne, 7,000 km apart, after two millennia of Greek estimates running twenty times too small.",
+  "context": "The transits of Venus (1761, 1769) then shrank the error to about 1% — Cook sailed to Tahiti for the second."
+};
+
+const asTourBuckets = {
+  "prompt": "Rock, nothing, gas, ice, nothing. File each resident:",
+  "buckets": [
+    "rocky worlds",
+    "gas and ice giants",
+    "belts and clouds"
+  ],
+  "items": [
+    {
+      "label": "Mercury, Venus, Earth, Mars — within 1.5 AU",
+      "bucket": 0
+    },
+    {
+      "label": "Jupiter, 318 Earth masses",
+      "bucket": 1
+    },
+    {
+      "label": "Uranus and Neptune at 19 and 30 AU",
+      "bucket": 1
+    },
+    {
+      "label": "the asteroid belt at 2–3 AU — under 4% of our Moon's mass",
+      "bucket": 2
+    },
+    {
+      "label": "the Kuiper Belt, including Pluto and Eris",
+      "bucket": 2
+    },
+    {
+      "label": "the Oort Cloud's trillion comet nuclei, never directly observed",
+      "bucket": 2
+    }
+  ],
+  "why": "The geography is relentlessly repetitive — and a thousand times past Neptune, the Oort Cloud is inferred entirely from the orbits of long-period comets."
+};
+
+const asBallPredict = {
+  "q": "Shrink the Sun to a 22 cm football. How big does Earth become, and where does it orbit?",
+  "choices": [
+    "A 2 mm peppercorn, orbiting 23 metres away",
+    "A marble, orbiting 120 metres away",
+    "A 2 cm ball, orbiting 2 metres away"
+  ],
+  "answer": 0,
+  "why": "Peppercorn Earth at 23 m; Jupiter a marble at 120 m; Neptune 700 m out — and Proxima Centauri is another football 6,300 km away. No version that fits in a room shows the planets as anything but specks."
+};
+
+const asSpeckJudge = {
+  "statements": [
+    {
+      "s": "All eight planets together hold under 0.2% of the solar system's mass.",
+      "truth": true,
+      "why": "The Sun holds the other 99.8%+ — the planets are specks by mass as well as size."
+    },
+    {
+      "s": "The classroom poster with planets shoulder to shoulder shows their order and nothing else.",
+      "truth": true,
+      "why": "At true scale, every planet would be invisible without a microscope."
+    },
+    {
+      "s": "The asteroid belt's combined mass exceeds our Moon's.",
+      "truth": false,
+      "why": "Under 4% of it — a failed planet kept from forming by Jupiter's bullying."
+    },
+    {
+      "s": "The Oort Cloud has been directly observed.",
+      "truth": false,
+      "why": "Inferred entirely from the orbits of long-period comets falling sunward from random directions."
+    }
+  ]
+};
+
+const asReceiptMatch = {
+  "prompt": "Every world is a receipt from the young disk's shopping trip:",
+  "pairs": [
+    {
+      "left": "inside the frost line — hot",
+      "right": "only rock and metal condense: small, dense worlds"
+    },
+    {
+      "left": "past the frost line (~3 AU) — cold",
+      "right": "ices freeze; embryos bulk up and grab hydrogen — gas giants"
+    },
+    {
+      "left": "farther out, a thinner disk",
+      "right": "slower growth — the partially formed ice giants"
+    },
+    {
+      "label-left": "",
+      "left": "never swept up",
+      "right": "asteroids (rocky, inside) and comets (icy, outside)"
+    }
+  ],
+  "why": "The rocky-inner/gassy-outer split is the signature of formation — not an accident of taste."
+};
 ---
 <TopicPage slug="subjects/astronomy/foundational/solar-system-scale">
   <h2>Where you are, and what you will learn</h2>
@@ -33,6 +180,7 @@ const scaleCfg = {
     no maths beyond multiplication, no telescope. We start with a piece of paper and a
     pencil, and the first thing we draw will be wrong on purpose.
   </p>
+  <Widget no="8" caption="true or false — the true-scale system" widget="judge" config={asSpeckJudge} />
   <p>By the end of this lesson you will be able to:</p>
   <ul>
     <li>explain why every normal picture of the solar system is a lie, and what astronomers use instead;</li>
@@ -70,6 +218,7 @@ const scaleCfg = {
     solar system is best imagined as a slow-motion conversation conducted at the speed of
     light.
   </p>
+  <Widget no="3" caption="fill the blanks — the lag grows with distance" widget="cloze" config={asLightCloze} />
   <p>
     Distance and time are not the only regularities. The chart below shows a second one,
     and it has rung true for four centuries.
@@ -90,6 +239,7 @@ const scaleCfg = {
     relativity and 5,000+ exoplanet discoveries. Distance and period are the solar system's
     two honest coordinates — everything else is detail.
   </p>
+  <Widget no="4" caption="place Mercury on the period curve" widget="place" config={asMercuryPlace} />
   <p>
     <strong>So far:</strong> honest pictures fail, so astronomers measure in AU — and even
     light takes minutes to hours to cross the system. Next: how did anyone measure this
@@ -111,6 +261,7 @@ const scaleCfg = {
     which the Sun–Earth distance followed by Kepler's geometry. They landed within about 7%
     of the truth: the first credible number for the scale of the solar system.
   </p>
+  <Widget no="5" caption="call the magnitude — the yardstick itself" widget="estimate" config={asAuEstimate} />
   <p>
     The refinement came from <strong>transits of Venus</strong>, when Venus crosses the
     Sun's face as a black dot. Edmond Halley realised in 1716 that observers stationed
@@ -159,6 +310,7 @@ const scaleCfg = {
     from the orbits of long-period comets that fall sunward from random directions. The map
     still has blank edges.
   </p>
+  <Widget no="6" caption="file the residents — who lives where in the system?" widget="sort-buckets" config={asTourBuckets} />
   <p>
     <strong>So far:</strong> the system runs rock, nothing, gas, ice, nothing — with the
     asteroids and two belts as leftovers. But AU numbers still slide off the brain. Time to
@@ -173,6 +325,7 @@ const scaleCfg = {
     scale the nearest star, Proxima Centauri, is another football roughly 6,300 km away —
     about the distance from London to New York, with almost nothing in between.
   </p>
+  <Widget no="7" caption="bet first — the football-Sun model" widget="predict" config={asBallPredict} />
 
   <Widget no="2" caption="the scale machine — pick a model Sun size and read off the true emptiness" widget="sliderLab" config={scaleCfg} />
   <p>
@@ -208,6 +361,7 @@ const scaleCfg = {
     frost line) and the comets (icy, outside). Every world is a receipt from this shopping
     trip: what could condense where, and what got grabbed by whom.
   </p>
+  <Widget no="9" caption="pair each region with what its receipt says" widget="match" config={asReceiptMatch} />
 
   <h2>Comets, meteoroids and rare alignments</h2>
   <p>
