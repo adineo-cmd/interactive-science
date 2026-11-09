@@ -10,6 +10,126 @@ const darkCfg = {
     { math: '4 · What it is: nobody knows', note: 'Candidates for dark matter: undiscovered particles (WIMPs, axions). Dark energy: vacuum energy? A new field? Modified gravity? Decades of searches have found nothing directly. 95% of the universe is an open problem.' },
   ],
 };
+
+const dmRevealOrder = {
+  "prompt": "From suspicion to photograph — order the reveal:",
+  "items": [
+    "1933: Zwicky — the Coma cluster's galaxies move too fast for their visible mass ('dunkle Materie')",
+    "1970s: Rubin and Ford — galaxy rotation curves refuse to fall",
+    "The CMB's acoustic peaks split matter into baryonic and dark components cleanly",
+    "The Bullet Cluster separates the dark mass from the hot gas — visually"
+  ],
+  "why": "The same logic once pointed from Uranus's misbehaving orbit to Neptune's position before anyone saw it — here the deviation is measured but the 'Neptune' is still missing."
+};
+
+const dmAccelMatch = {
+  "prompt": "The distance–redshift relationship is where dark energy was found:",
+  "pairs": [
+    {
+      "left": "distant Type Ia supernovae fainter than predicted",
+      "right": "the expansion is speeding up — acceleration, discovered 1998, Nobel 2011"
+    },
+    {
+      "left": "a supernova at z = 0.5 about 25% fainter than matter-only predicts",
+      "right": "detectable only because the calibration is that good"
+    },
+    {
+      "left": "the cosmological constant Λ",
+      "right": "Einstein's 'biggest blunder', resurrected — density that does not dilute as space grows"
+    },
+    {
+      "left": "negative effective pressure",
+      "right": "what acceleration requires in the Friedmann equations"
+    }
+  ],
+  "why": "Dark energy is named, not explained: 'dark' because it does not emit or absorb, 'energy' because it behaves like one."
+};
+
+const dmConcordCloze = {
+  "text": "A matter-only universe would be younger than its %%0%% stars. With the measured mix — ~5% baryons, %%1%% per cent dark matter, %%2%% per cent dark energy — the Friedmann equations give 13.8 billion years.",
+  "answers": [
+    [
+      "oldest"
+    ],
+    [
+      "27",
+      "twenty-seven"
+    ],
+    [
+      "68",
+      "sixty-eight"
+    ]
+  ],
+  "hint": "The absurdity a matter-only fit creates, and the two numbers that fix it."
+};
+
+const dmCurvePredict = {
+  "q": "In a Keplerian system (all mass central), orbital speed falls with radius. What did Rubin and Ford find for hydrogen clouds far beyond the visible disk?",
+  "choices": [
+    "Speeds holding flat near 200–300 km/s — far past where the visible mass should let them fall",
+    "Speeds rising steeply, faster than near the centre",
+    "Speeds falling exactly as predicted — the dark matter idea was wrong"
+  ],
+  "answer": 0,
+  "why": "Matching a flat curve at 30 kiloparsecs requires roughly 5–6 times the luminous mass, arranged in a halo extending far beyond the starlight."
+};
+
+const dmExpandJudge = {
+  "statements": [
+    {
+      "s": "Dark energy makes the Solar System and the Milky Way expand too.",
+      "truth": false,
+      "why": "Inside gravitationally bound systems its influence is roughly a million-billionth of gravity."
+    },
+    {
+      "s": "Expansion applies to unbound space: the emptiness between galaxy clusters.",
+      "truth": true,
+      "why": "Bound systems never expand — short of a Big Rip, which needs a strengthening dark component."
+    },
+    {
+      "s": "A Big Rip requires a dark component that strengthens over time.",
+      "truth": true,
+      "why": "Not the constant we measure — w ≈ −1 and holding, with tentative hints that may evolve."
+    },
+    {
+      "s": "The Earth, the Solar System, the Milky Way and the Local Group are not expanding.",
+      "truth": true,
+      "why": "You are not, repeat not, being slowly inflated."
+    }
+  ]
+};
+
+const dmStructureSpot = {
+  "prompt": "One line of this structure-formation answer is wrong — click it:",
+  "lines": [
+    "The CMB shows density fluctuations of one part in 100,000 at 380,000 years.",
+    "In a baryon-only universe, those fluctuations grow easily into today's galaxies.",
+    "Dark matter, interacting only gravitationally, began collapsing before the CMB was released.",
+    "Baryons fell into those gravitational wells and were amplified — the cosmic web reproduced."
+  ],
+  "errorLine": 1,
+  "correction": "Far too small to grow by today in a baryon-only universe — baryons could not even clump before 380,000 years, held up by radiation pressure.",
+  "why": "Without dark matter's head start, the galaxies we observe could not exist — the simulations reproduce the cosmic web only with cold dark matter."
+};
+
+const dmBaryonCloze = {
+  "text": "Nucleosynthesis plus the CMB fix the total baryon density at about %%0%% per cent of the matter density; dark matter is %%1%% to %%2%% times the baryonic total, and demonstrably non-baryonic.",
+  "answers": [
+    [
+      "15",
+      "fifteen"
+    ],
+    [
+      "five",
+      "5"
+    ],
+    [
+      "six",
+      "6"
+    ]
+  ],
+  "hint": "The missing baryons were eventually found — hiding in ionised intergalactic filaments."
+};
 ---
 <TopicPage slug="subjects/astronomy/expert/dark-matter-and-dark-energy">
   <h2>Where you are, and what you will learn</h2>
@@ -21,6 +141,7 @@ const darkCfg = {
     traces hydrogen clouds orbiting our own galaxy. This lesson runs that machinery on the
     95% of the cosmos that emits nothing at all.
   </p>
+  <Widget no="6" caption="true or false — where expansion applies" widget="judge" config={dmExpandJudge} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>run the rotation-curve argument: what Keplerian gravity predicts, what galaxies do, and what the discrepancy requires;</li>
@@ -54,6 +175,7 @@ const darkCfg = {
     misbehaving orbit to Neptune's position before anyone saw it; here the deviation is
     measured but the "Neptune" is still missing.
   </p>
+  <Widget no="2" caption="rebuild history's slow reveal of the dark sector" widget="order" config={dmRevealOrder} />
   <p>
     <strong>So far:</strong> "95% unknown" is a measurement, not a confession — the inventory
     comes from gravitational effects, the one signal darkness cannot hide. The first place
@@ -78,6 +200,7 @@ const darkCfg = {
     named, not explained: "dark" because it does not emit or absorb, "energy" because
     it behaves like one — a property of empty space itself, whatever that means.
   </p>
+  <Widget no="3" caption="pair the 1998 measurement with what it concluded" widget="match" config={dmAccelMatch} />
   <p>
     <strong>So far:</strong> acceleration was not a speculation but a residual — distant
     supernovae fainter than any decelerating or coasting universe allows, detectable only
@@ -104,6 +227,7 @@ const darkCfg = {
     on the inventory to within a few percent, which is why "95% unknown" is a
     measurement, not a confession.
   </p>
+  <Widget no="4" caption="fill the blanks — the concordance arithmetic" widget="cloze" config={dmConcordCloze} />
   <p>
     The rotation-curve arithmetic is the clearest single demonstration. In a
     Keplerian system (all mass central, as in the Solar System), orbital speed
@@ -117,6 +241,7 @@ const darkCfg = {
     dark halo is invisible precisely because it is dark — and it is the galaxy
     we actually live in.
   </p>
+  <Widget no="5" caption="bet first — the Keplerian prediction vs the flat truth" widget="predict" config={dmCurvePredict} />
   <p>
     <em>Common misconception:</em> "dark energy is a pushing force, so space is
     expanding inside the Solar System, inside galaxies, inside us." Dark energy's
@@ -152,6 +277,7 @@ const darkCfg = {
     exactly as a weakly-interacting component should. It is the closest thing the
     field has to a photograph of the dark sector.
   </p>
+  <Widget no="7" caption="find the faulty line — structure formation" widget="spot-error" config={dmStructureSpot} />
   <p>
     <em>Common misconception:</em> "dark matter is just normal matter that's hard to
     see — dim stars, rogue planets, dust." The baryonic inventory is measured: Big
@@ -163,6 +289,7 @@ const darkCfg = {
     nor couples to the photon-baryon plasma before recombination (CMB acoustic peaks).
     MACHOs are out; the search is for a new particle or a new law.
   </p>
+  <Widget no="8" caption="fill the blanks — ruling out the hiding places" widget="cloze" config={dmBaryonCloze} />
 
   <h2>Dark matter, dark energy and the fate question</h2>
   <p>

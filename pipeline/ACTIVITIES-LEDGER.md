@@ -100,6 +100,14 @@
 | astronomy/intermediate/telescopes-and-the-electromagnetic-spectrum | cloze, match, spot-error, estimate, predict, sort-buckets, judge, order | astro-2 |
 | astronomy/intermediate/the-milky-way | predict, cloze, place, estimate, order, judge, match | astro-3 |
 | astronomy/intermediate/the-moon-and-eclipses | match, predict, cloze, place, sort-buckets, estimate, match | astro-3 |
+| astronomy/foundational/orbits-and-keplers-laws | predict, cloze, order, estimate, sort-buckets, predict | astro-4 |
+| astronomy/foundational/planet-earth | estimate, sort-buckets, predict, judge, estimate, match, predict | astro-4 |
+| astronomy/advanced/compact-objects | cloze, match, predict, sort-buckets, estimate, judge | astro-5 |
+| astronomy/advanced/exoplanets-and-detection | order, spot-error, place, sort-buckets, predict, estimate, match | astro-6 |
+| astronomy/advanced/galaxies-and-the-expanding-universe | predict, sort-buckets, cloze, order, estimate, match, cloze | astro-7 |
+| astronomy/expert/cosmology-and-general-relativity | cloze, predict, match, spot-error, sort-buckets, estimate, predict, match | astro-8 |
+| astronomy/expert/dark-matter-and-dark-energy | order, match, cloze, predict, judge, spot-error, cloze | astro-9 |
+| astronomy/expert/astrobiology | match, cloze, predict, sort-buckets, order, estimate, spot-error | astro-10 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -109,8 +117,8 @@
 **Architecture: 10 of 10 COMPLETE (waves 6–11).**
 
 **Art-history: 1 of 7 done (walk-through-western-art; remaining: global-prehistory, 3 intermediate, 2 advanced, 2 expert).**
-**Astronomy: 5 of 9 done — intermediate COMPLETE (4/4). Remaining: foundational orbits-and-keplers-laws [Layout] + planet-earth; advanced compact-objects / exoplanets-and-detection / galaxies-and-the-expanding-universe; expert astrobiology / cosmology-and-general-relativity / dark-matter-and-dark-energy.**
-**Then next subjects (alphabetical): biology, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
+**Astronomy: 9 of 9 COMPLETE (astro-1…10).**
+**Then next subjects (alphabetical): art-history (6 remaining: global-prehistory, 3 intermediate, 2 advanced, 2 expert), biology, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
 

@@ -11,6 +11,144 @@ const cosmoCfg = {
     { math: '5 · Inflation: the fast first moment', note: 'A hypothesized burst of exponential growth (10⁻³⁶ to 10⁻³² s) explains why the universe is so uniform and geometrically flat — theory still under active test.' },
   ],
 };
+
+const czRedshiftCloze = {
+  "text": "A Lyman-α line emitted at 121.6 nm and observed at 486 nm gives z ≈ %%0%% — the universe has stretched by a factor of %%1%% since that light left. Hubble's law reads v = %%2%% × d, with H₀ ≈ 70 km/s per megaparsec.",
+  "answers": [
+    [
+      "3",
+      "three"
+    ],
+    [
+      "4",
+      "four"
+    ],
+    [
+      "H₀",
+      "H0",
+      "the Hubble constant"
+    ]
+  ],
+  "hint": "486 ÷ 121.6 − 1, the scale factor, and the constant the two independent measurements disagree about."
+};
+
+const czDopplerPredict = {
+  "q": "JWST-era galaxies have redshifts above 14 — recession 'speeds' exceeding c. Is that a relativity violation?",
+  "choices": [
+    "No — nothing moves through space faster than light; space itself stretches",
+    "Yes — relativity breaks down at cosmological scales",
+    "Only for galaxies heavier than the Milky Way"
+  ],
+  "answer": 0,
+  "why": "Doppler is motion through space; cosmological redshift is the stretching of wavelength by the expansion of space during transit — for distant galaxies they diverge."
+};
+
+const czSizeMatch = {
+  "prompt": "Three different quantities in an expanding universe — match them:",
+  "pairs": [
+    {
+      "left": "the age",
+      "right": "13.8 billion years — checked against the oldest globular-cluster stars"
+    },
+    {
+      "left": "the observable universe",
+      "right": "about 93 billion light-years across"
+    },
+    {
+      "left": "the geometry",
+      "right": "flat — total density equals critical to within half a per cent"
+    },
+    {
+      "left": "the matter that emitted today's CMB",
+      "right": "now about 46 billion light-years away"
+    }
+  ],
+  "why": "Distance 'then', distance 'now' and light-travel time are three different quantities — conflating them is the classic error."
+};
+
+const czSizeSpot = {
+  "prompt": "One line of this size answer is wrong — click it:",
+  "lines": [
+    "The light from the CMB took 13.8 billion years to arrive.",
+    "The emitting region has been receding and stretching all the while.",
+    "The matter that emitted today's CMB is now about 46 billion light-years away.",
+    "The observable universe is a wall we could eventually reach, 93 billion light-years across."
+  ],
+  "errorLine": 3,
+  "correction": "The edge of visibility, not a wall — nothing can reach beyond the cosmic horizon.",
+  "why": "The edge of visibility is not a destination: it is where the stretching outruns the light, forever."
+};
+
+const czStreamsBuckets = {
+  "prompt": "Three evidence streams on three independent physics — file each:",
+  "buckets": [
+    "galaxy dynamics",
+    "photon gas thermodynamics",
+    "nuclear reaction networks"
+  ],
+  "items": [
+    {
+      "label": "the expansion itself — running it backward demands a hot dense beginning",
+      "bucket": 0
+    },
+    {
+      "label": "the CMB, cooled to 2.7255 K, uniform to one part in 100,000",
+      "bucket": 1
+    },
+    {
+      "label": "nucleosynthesis: ~75% hydrogen, ~25% helium in the first three minutes",
+      "bucket": 2
+    },
+    {
+      "label": "the dipole — our 370 km/s motion against the cosmic rest frame",
+      "bucket": 1
+    }
+  ],
+  "why": "Galaxy dynamics, photon gas thermodynamics, nuclear reaction networks — they fail separately or not at all."
+};
+
+const czDipoleEstimate = {
+  "prompt": "The CMB's dipole — a part-in-a-thousand warm/cool split across the sky — is our motion against the cosmic rest frame. Roughly how many km/s is that motion?",
+  "unit": "km/s",
+  "answer": 370,
+  "factor": 1.3,
+  "why": "370 km/s — the Solar System's speedometer written in light.",
+  "context": "The CMB's spectrum is a near-perfect black body, the most precise such measurement made in nature."
+};
+
+const czFatePredict = {
+  "q": "Measure w — the pressure-to-density ratio of the dark component — and the fate follows. What fate does a constant w ≈ −1 predict?",
+  "choices": [
+    "Expansion accelerates forever, fading toward a cold dilute equilibrium — the heat death",
+    "A Big Rip tearing galaxies, stars and atoms apart",
+    "Recollapse into a Big Crunch"
+  ],
+  "answer": 0,
+  "why": "A strengthening dark component would rip; a decaying one would recollapse — with w ≈ −1 constant, the current best estimate is the heat death."
+};
+
+const czInventoryMatch = {
+  "prompt": "ΛCDM's inventory — every percentage measured, two of them unexplained:",
+  "pairs": [
+    {
+      "left": "ordinary matter",
+      "right": "~5% — everything on the periodic table"
+    },
+    {
+      "left": "dark matter",
+      "right": "~27% — required, not optional, in any model fitting the data"
+    },
+    {
+      "left": "dark energy",
+      "right": "~68% — the component whose constant density makes expansion accelerate"
+    },
+    {
+      "left": "the dark two together",
+      "right": "embarrassing and wonderful — unexplained"
+    }
+  ],
+  "why": "The expert habit: every claim is a fit to data, and the residuals are where the live research lives."
+};
 ---
 <TopicPage slug="subjects/astronomy/expert/cosmology-and-general-relativity">
   <h2>Where you are, and what you will learn</h2>
@@ -22,6 +160,7 @@ const cosmoCfg = {
     and ages we will check the cosmic clock against. Now the same machinery runs on the
     universe whole.
   </p>
+  <Widget no="9" caption="pair each component with its measured share" widget="match" config={czInventoryMatch} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>compute a cosmological redshift from emitted and observed wavelengths and explain why it is space stretching, not Doppler recession;</li>
@@ -79,6 +218,7 @@ const cosmoCfg = {
     corrected by decades of distance-ladder work. The constant is now measured two
     independent ways that disagree — the Hubble tension, treated below.
   </p>
+  <Widget no="2" caption="fill the blanks — redshift to stretch factor" widget="cloze" config={czRedshiftCloze} />
   <p>
     <em>Common misconception:</em> "the cosmological redshift is a Doppler shift from
     galaxies speeding away." Not quite: Doppler is motion <em>through</em> space;
@@ -89,6 +229,7 @@ const cosmoCfg = {
     picture permits and no relativity law forbids, because nothing is moving through
     space faster than light.
   </p>
+  <Widget no="3" caption="bet first — redshift 14 and the speed of light" widget="predict" config={czDopplerPredict} />
   <p>
     <strong>So far:</strong> the expansion is measured, and the redshift is the stretching of
     light by space itself — a quantity that converts directly into stretch factor. Run the
@@ -123,6 +264,8 @@ const cosmoCfg = {
     different quantities in an expanding universe — conflating them is the most common
     size-of-the-universe error in popular writing.
   </p>
+  <Widget no="5" caption="find the faulty line — the size question" widget="spot-error" config={czSizeSpot} />
+  <Widget no="4" caption="pair each quantity with its measured value" widget="match" config={czSizeMatch} />
   <p>
     <strong>So far:</strong> the arithmetic is fixed by measurement, not assumption — age from
     the expansion history, cross-checked against the oldest stars; size from following the
@@ -150,6 +293,7 @@ const cosmoCfg = {
     galaxy dynamics, photon gas thermodynamics, nuclear reaction networks — converge on
     the same story. That is why the Big Bang is consensus and not narrative.
   </p>
+  <Widget no="6" caption="file the three streams — whose physics?" widget="sort-buckets" config={czStreamsBuckets} />
   <p>
     The CMB carries two further quantitative prizes. Its <strong>dipole</strong> —
     a part-in-a-thousand warm/cool split across the sky — is our own motion at 370
@@ -161,6 +305,7 @@ const cosmoCfg = {
     encodes the acoustic physics of that primordial plasma, and reading them is
     where the model's six parameters come from.
   </p>
+  <Widget no="7" caption="call the magnitude — the dipole speedometer" widget="estimate" config={czDipoleEstimate} />
   <p>
     <em>Common misconception:</em> "the Big Bang was an explosion at a point in
     pre-existing space." The model says space itself began (or at least began expanding):
@@ -189,6 +334,7 @@ const cosmoCfg = {
     dark component — and the fate follows. Current data: w ≈ −1, consistent with a
     constant, with tentative DESI hints (2024–25) that it may evolve.
   </p>
+  <Widget no="8" caption="bet first — measure w, and the fate follows" widget="predict" config={czFatePredict} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
