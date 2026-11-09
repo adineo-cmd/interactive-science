@@ -10,6 +10,192 @@ const forgeryCfg = {
     { math: '4 · Conservation\'s ethics: how little is enough', note: 'Cleaning controversies (the Sistine ceiling\'s colours — too bright or finally true?), reversible materials, minimum-intervention doctrine, and the digitisation question (the perfect scan as the object\'s record, the object as itself fragile). The conservator\'s oath: future generations outrank present audiences.' },
   ],
 };
+
+const acfAttributionMatch = {
+  "prompt": "The field's graded wording exists for a reason — pair the object with its honest formula:",
+  "pairs": [
+    {
+      "left": "a marble version of a lost Greek bronze, in a Roman villa",
+      "right": "a Roman copy of a Greek original"
+    },
+    {
+      "left": "temple or tomb production finished by apprentices",
+      "right": "workshop of"
+    },
+    {
+      "left": "Koons's stainless-steel balloon dogs, Hirst's formaldehyde animals",
+      "right": "executed by others, signed by the artist"
+    },
+    {
+      "left": "the certificate accompanying a contemporary edition",
+      "right": "the object's legal double"
+    },
+    {
+      "left": "'is this a Praxiteles?' about a villa marble",
+      "right": "often malformed — date and place the copy instead"
+    }
+  ],
+  "why": "Authorship was structurally distributed — in antiquity by workshop, today by design — so the honest answers are formulas, not verdicts."
+};
+
+const acfPurposeBuckets = {
+  "prompt": "Before judging an object, reconstruct what it was for. File each fact:",
+  "buckets": [
+    "Ritual / devotion",
+    "Display / cultivation",
+    "Market / institution"
+  ],
+  "items": [
+    {
+      "label": "a Greek cult statue's value is ritual efficacy",
+      "bucket": 0
+    },
+    {
+      "label": "painted brightly, meant to be seen at festival scale",
+      "bucket": 0
+    },
+    {
+      "label": "a Roman villa copy as a badge of Greek paideia",
+      "bucket": 1
+    },
+    {
+      "label": "accuracy mattered less than the type",
+      "bucket": 1
+    },
+    {
+      "label": "the certificate of authenticity",
+      "bucket": 2
+    },
+    {
+      "label": "the museum's accession file as the object's biography",
+      "bucket": 2
+    }
+  ],
+  "why": "Forgeries exploit the purpose's expectations (a 'lost Vermeer' for a market hungry for Vermeer); conservators are bound by it — the altarpiece must keep working as an altarpiece."
+};
+
+const acfProvenanceOrder = {
+  "prompt": "Two heavy cases and one century of paperwork — put the dates in order:",
+  "items": [
+    "the Elgin Marbles removed from the Parthenon (1801–12)",
+    "the British government purchases the Marbles (1816)",
+    "the Benin Bronzes looted in the punitive expedition (1897)",
+    "Nazi-era confiscations and forced sales (1933–45)",
+    "the Washington Principles commit institutions to identifying looted works (1998)",
+    "German institutions formally transfer Benin ownership to Nigeria (2022)"
+  ],
+  "why": "Provenance research is source criticism — acquisition registers, export licences, shipping manifests — applied where the stakes are legal restitution and eight-figure prices."
+};
+
+const acfGapJudge = {
+  "statements": [
+    {
+      "s": "A provenance gap means the object is fake or looted.",
+      "truth": false,
+      "why": "Gaps are the norm for old objects — private sales rarely generated paper before the modern era; what matters is the pattern."
+    },
+    {
+      "s": "Documents consistent with known dealers and exhibitions make a good pattern.",
+      "truth": true,
+      "why": "Documents that surface conveniently with new ink make the bad one."
+    },
+    {
+      "s": "Reputable attribution opinions are stamped 'genuine' or 'fake'.",
+      "truth": false,
+      "why": "They are worded — 'attributed to', 'workshop of', 'circle of' — because the tribunal is probabilistic."
+    },
+    {
+      "s": "Attribution and provenance are probabilistic: the tribunal weighs convergent evidence and states its confidence.",
+      "truth": true,
+      "why": "That is exactly why the graded wording exists."
+    }
+  ]
+};
+
+const acfPrussianPlace = {
+  "prompt": "Prussian blue enters painters' palettes — around when?",
+  "labels": [
+    "1600",
+    "1700",
+    "1800",
+    "1900",
+    "2000"
+  ],
+  "scale": {
+    "min": 1600,
+    "max": 2000
+  },
+  "answer": 1704,
+  "tolerance": 10,
+  "why": "1704 — so Prussian blue cannot appear in a genuine pre-1704 painting. Anachronism is proof of forgery; but authenticity of every pigment proves only the materials, not the hand.",
+  "context": "Titanium white enters commerce around 1921; thermoluminescence dates a ceramic's last firing — the clock that exposed forged Etruscan terracottas."
+};
+
+const acfScienceSpot = {
+  "prompt": "This technical report contains one faulty line — click it:",
+  "lines": [
+    "X-radiography reveals density: paintings under paintings, and pentimenti — a changed hand position argues for an original.",
+    "Infrared reflectography maps carbon-based underdrawing beneath the paint.",
+    "Pigment analysis: titanium white (a 20th-century pigment) cannot be in a genuine Rembrandt.",
+    "Every pigment in the painting tests period-correct, so the hand is certified authentic.",
+    "Instruments bound the possible; the human tribunal judges within those bounds."
+  ],
+  "errorLine": 3,
+  "correction": "Correct materials prove only the materials — old canvases and historically accurate pigments are purchasable; no instrument certifies a hand.",
+  "why": "Van Meegeren used period canvases and lapis-based blues and fooled the 1937 eye; his exposure came from chemistry (phenol-formaldehyde resin) and confession, not from any instrument the experts had."
+};
+
+const acfForgeryBranch = {
+  "root": "You chair an attribution committee. A 'lost Vermeer' appears — painted in the religious middle period one leading scholar has hypothesised and longed for.",
+  "nodes": {
+    "start": {
+      "text": "Where does the committee look first?",
+      "choices": [
+        {
+          "label": "Trust the leading scholar's eye — he predicted this period",
+          "next": "hero",
+          "feedback": "The 1937 path."
+        },
+        {
+          "label": "Ask the simplest documentary questions first",
+          "next": "docs",
+          "feedback": "The question nobody asked at Knoedler."
+        },
+        {
+          "label": "Send it to the instrument panel and wait",
+          "next": "panel",
+          "feedback": "Necessary — but it bounds, it does not certify."
+        }
+      ]
+    },
+    "hero": {
+      "text": "The forgery flatters expectation: van Meegeren painted the Vermeer the experts wanted, and Bredius hailed The Supper at Emmaus in print. Expectation is the vulnerability.",
+      "choices": []
+    },
+    "docs": {
+      "text": "Coherence is not evidence: the Knoedler fraud sold roughly $80M of fakes from one undocumented 'estate' because the story was good, the desire strong, and nobody asked the simplest documentary questions.",
+      "choices": []
+    },
+    "panel": {
+      "text": "Instruments bound the possible — period canvas and hand-ground pigments pass every chronological test. Van Meegeren was exposed by chemistry he could not hide (phenol-formaldehyde resin, detectable 1945) and by confession.",
+      "choices": []
+    }
+  },
+  "why": "The defence is institutional — independent committees, published provenance, instrument panels — because the vulnerability is psychological, not optical."
+};
+
+const acfSistineCompare = {
+  "prompt": "The standard seminar on interpretation-as-cleaning — drag between the two states:",
+  "before": {
+    "label": "Before 1980",
+    "text": "Grime and darkening lacquinature glazes — the Michelangelo of candle smoke; the colours everyone thought they knew."
+  },
+  "after": {
+    "label": "After the 1980–94 cleaning",
+    "text": "The astonishing colours return — and the Beck–Vatican controversy erupts: were the a secco glazes original finishing layers or later dirt?"
+  },
+  "why": "Every cleaning decision is a theory of what the object was — minimum intervention, reversibility, distinct retouching, full documentation; future generations outrank present audiences."
+};
 ---
 <TopicPage slug="subjects/art-history/expert/attribution-conservation-and-forgery">
   <h2>Where you are, and what you will learn</h2>
@@ -20,6 +206,7 @@ const forgeryCfg = {
     context for the Benin Bronzes case; "Art market and museums" (advanced) supplies the price
     and institutional machinery that executes every attribution verdict.
   </p>
+  <Widget no="5" caption="true or false — reading the gaps" widget="judge" config={acfGapJudge} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>explain why attribution questions arise structurally — copies, workshops, delegated fabrication — and answer with the honest formulas ("Roman copy of", "workshop of");</li>
@@ -74,6 +261,7 @@ const forgeryCfg = {
     the artist's supervision? — which is why the discipline's answer tools (catalogues
     raisonnés, authentication committees, certificates) grew up in the market era.
   </p>
+  <Widget no="2" caption="pair each object with its honest attribution wording" widget="match" config={acfAttributionMatch} />
   <p>
     <strong>So far:</strong> attribution is hard because authorship was structurally
     distributed — in antiquity by workshop, today by design. Before the instruments can speak,
@@ -101,6 +289,7 @@ const forgeryCfg = {
     Vermeer) and conservators are bound by it (the altarpiece must keep working as an
     altarpiece, not as a chart of its restorations).
   </p>
+  <Widget no="3" caption="file the purposes — what was the object for?" widget="sort-buckets" config={acfPurposeBuckets} />
   <p>
     <strong>So far:</strong> purpose sets the frame in which attribution and conservation
     judgements make sense — and in which forgers aim. The next section follows the objects
@@ -130,6 +319,7 @@ const forgeryCfg = {
     forgery — the historian's oldest skill, applied where the stakes are legal restitution
     and eight-figure prices.
   </p>
+  <Widget no="4" caption="rebuild the provenance chronology" widget="order" config={acfProvenanceOrder} />
   <p>
     <em>Common misconception:</em> "a provenance gap means the object is fake or looted." Gaps
     are the norm for old objects (private sales rarely generated paper before the modern
@@ -183,6 +373,7 @@ const forgeryCfg = {
     the panel teaches: instruments bound the possible (no Vermeer painted after 1900), and
     the human tribunal judges within those bounds.
   </p>
+  <Widget no="6" caption="pin the pigment on the instrument's clock" widget="place" config={acfPrussianPlace} />
   <p>
     <em>Common misconception:</em> "science settles authenticity." It cannot, in principle:
     every instrument dates or characterises <em>materials</em>, and a perfect forgery uses
@@ -193,6 +384,7 @@ const forgeryCfg = {
     hardness, detectable in 1945) and confession, not from any instrument available to the
     experts he beat.
   </p>
+  <Widget no="7" caption="find the faulty line — the instrument panel's limits" widget="spot-error" config={acfScienceSpot} />
   <p>
     <strong>So far:</strong> the tribunal now has its instruments — each bound to a specific
     testimony, all of them dateable and characterisable but none able to certify a hand. That
@@ -222,6 +414,7 @@ const forgeryCfg = {
     institutional (independent committees, published provenance, instrument panels) rather
     than heroic.
   </p>
+  <Widget no="8" caption="chair the committee — three ways to receive a 'lost Vermeer'" widget="branch" config={acfForgeryBranch} />
 
   <h2>Conservation ethics: how little is enough</h2>
   <p>
@@ -245,6 +438,7 @@ const forgeryCfg = {
     <em>instructions</em>, not materials — the object of conservation is now sometimes a
     protocol.
   </p>
+  <Widget no="9" caption="drag the divider — the Sistine ceiling, before and after" widget="compare" config={acfSistineCompare} />
 
   <p>
     <em>Common misconception:</em> "conservation restores the original." It never can and

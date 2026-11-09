@@ -26,6 +26,171 @@ const theoryQuizCfg = {
     { q: 'What does the jade cong imply about the Liangzhu society that made it?', choices: ['Nothing — art and society are separate', 'A society rich enough to feed specialists, since jade takes weeks to grind with stone tools', 'That Liangzhu had iron tools', 'That it was made quickly, like pottery'], answer: 1, why: 'Jade cannot be carved with the technology of the time; it is ground away with abrasive sand and cord over enormous labour. Someone had to farm for the carver — surplus, division of labour and probably stratification are all implied by one object.' },
   ],
 };
+
+const gphEconomyBuckets = {
+  "prompt": "Two economies, two art records — file each fact:",
+  "buckets": [
+    "Ice Age hunters",
+    "Neolithic farmers"
+  ],
+  "items": [
+    {
+      "label": "small, portable or site-bound art",
+      "bucket": 0
+    },
+    {
+      "label": "a carved slab you can carry",
+      "bucket": 0
+    },
+    {
+      "label": "a painted cave you return to",
+      "bucket": 0
+    },
+    {
+      "label": "pottery — the Susa beaker, the Lapita ware",
+      "bucket": 1
+    },
+    {
+      "label": "craft specialists — the jade cong",
+      "bucket": 1
+    },
+    {
+      "label": "monumental communal architecture — Stonehenge",
+      "bucket": 1
+    }
+  ],
+  "why": "Settled life can accumulate things: ceramics, specialists and monuments organised beyond the family. And the climate wrote itself into the art — the Running horned woman's green savanna is now the dead centre of the Sahara."
+};
+
+const gphPrimitiveJudge = {
+  "statements": [
+    {
+      "s": "The Great Hall of the Bulls shows observed anatomy, overlapping perspective and pigments engineered to last millennia.",
+      "truth": true,
+      "why": "Analysis shows prepared surfaces, mixed pigments with binders, blown sprays and scaffolding marks high on the walls."
+    },
+    {
+      "s": "The makers were modern humans with the same brains as you.",
+      "truth": true,
+      "why": "Simplicity is a style choice, not a stage of intelligence."
+    },
+    {
+      "s": "Simple outlines prove a primitive stage of intelligence.",
+      "truth": false,
+      "why": "The camelid sacrum turns a pelvis into a dog by reading the bone's own shape — hard problems, solved with the materials at hand."
+    },
+    {
+      "s": "No 'primitive' hand can grind jade.",
+      "truth": true,
+      "why": "It takes skill, patience and social surplus — the Liangzhu cong converts time and skill into value."
+    }
+  ]
+};
+
+const gphPigmentCloze = {
+  "text": "The pigments are minerals — %%0%% and manganese for black, %%1%% (iron oxide) for red and yellow — ground to powder and mixed with a %%2%% such as animal fat or plant juice; at Lascaux some pigment was blown through %%3%% or directly by mouth.",
+  "answers": [
+    [
+      "charcoal"
+    ],
+    [
+      "ochre"
+    ],
+    [
+      "binder"
+    ],
+    [
+      "tubes"
+    ]
+  ],
+  "hint": "Black pigment, iron oxide, what holds paint together, and what made the spray effects."
+};
+
+const gphCrayonSpot = {
+  "prompt": "This account of prehistoric technique contains one faulty line — click it:",
+  "lines": [
+    "The pigments are ground minerals: charcoal and manganese for black, ochre for red and yellow.",
+    "Pigment was mixed with binders such as animal fat, blood or plant juice.",
+    "Cave painters worked freehand in daylight at the cave mouth, like a child with a crayon.",
+    "At Lascaux some pigment was blown through tubes or directly by mouth, leaving spray effects.",
+    "The Lapita makers stamped wet clay with small toothed combs — dentate stamping."
+  ],
+  "errorLine": 2,
+  "correction": "Deep caves were worked by stone-lamp light, hundreds of metres underground — with prepared surfaces, stencilled hands and scaffolding marks high on the walls.",
+  "why": "This is a trained technology, learned and transmitted, with division of labour between pigment-makers and painters — the opposite of improvised doodling."
+};
+
+const gphSarsenEstimate = {
+  "prompt": "Stonehenge's sarsen stones weigh up to about 25 tonnes each. Roughly how many kilograms is that?",
+  "unit": "kg",
+  "answer": 25000,
+  "factor": 1.5,
+  "why": "1 tonne = 1,000 kg, so 25 tonnes ≈ 25,000 kg — stones dressed with stone hammers, dragged on sledges and rollers, with some bluestones hauled roughly 150 miles from Wales.",
+  "context": "Between the Apollo 11 stones and Stonehenge, twenty-four millennia pass — every dynasty you have ever heard of fits in the final tenth of the timeline."
+};
+
+const gphTheoriesOrder = {
+  "prompt": "The readings arrived in sequence — put them in order:",
+  "items": [
+    "Art for art's sake — the oldest view: people decorate; it is pleasure",
+    "Hunting and sympathetic magic — Breuil: painting an animal is a ritual act that helps capture it",
+    "Structuralism — Leroi-Gourhan maps whole cave systems: images composed by rules, not accident",
+    "Shamanism and neuropsychology — Lewis-Williams: entoptic geometric signs from trance"
+  ],
+  "why": "Each reading explains more evidence than the last — geometry, animals and location together — and the strongest current one still remains a hypothesis, unprovable for any specific cave."
+};
+
+const gphReadingBranch = {
+  "root": "A new deep-cave panel is found: geometric signs — dots, grids, zigzags — beside animal figures. Your interpretation leads the publication.",
+  "nodes": {
+    "start": {
+      "text": "Which reading do you publish?",
+      "choices": [
+        {
+          "label": "Hunting magic — paint the hunt, get the hunt",
+          "next": "hunt",
+          "feedback": "The famous theory. Check its evidence."
+        },
+        {
+          "label": "The shamanic trance model",
+          "next": "trance",
+          "feedback": "The dominant current teaching."
+        },
+        {
+          "label": "Art for art's sake — decoration, pleasure",
+          "next": "pleasure",
+          "feedback": "The oldest view on the shelf."
+        }
+      ]
+    },
+    "hunt": {
+      "text": "Circumstantial only: many painted species were not staple foods, some images sit where no hunter would need them, and the geometric signs fit no hunting logic at all.",
+      "choices": []
+    },
+    "trance": {
+      "text": "The strongest current model: entoptic geometric patterns match what the human visual system produces in trance, and deep caves were stages for ritual specialists — it explains the most evidence and remains unprovable.",
+      "choices": []
+    },
+    "pleasure": {
+      "text": "It fits the beauty of the works but not the setting: who paints masterpieces in freezing, dangerous caves that no one lives in?",
+      "choices": []
+    }
+  },
+  "why": "State the theory, name the evidence for it, and name what would have to be true for it to be wrong — the skill the syllabus actually wants."
+};
+
+const gphLascauxCompare = {
+  "prompt": "One cave, two eras — drag between discovery and closure:",
+  "before": {
+    "label": "1940–1963",
+    "text": "Opened to tourists after its 1940 discovery — more than a thousand visitors a day, whose breath and lighting triggered moulds and calcium deposits: 'la maladie blanche'."
+  },
+  "after": {
+    "label": "1963–today",
+    "text": "Closed for good in 1963; even researchers enter rarely, under strict climate control, and visitors see full-scale replicas."
+  },
+  "why": "Prehistoric art survives by exact accident — the sealed, stable climate of a deep cave. The moment of discovery is also the moment the clock starts running."
+};
 ---
 <TopicPage slug="subjects/art-history/foundational/global-prehistory-art-before-writing">
 
@@ -37,6 +202,7 @@ const theoryQuizCfg = {
     lesson studies. The subject here is Art History's first survey unit: global prehistory,
     roughly 30,000 to 500 BCE, taught through the College Board's AP Art History framework.
   </p>
+  <Widget no="6" caption="call the magnitude — a sarsen in kilograms" widget="estimate" config={gphSarsenEstimate} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>say what makes the study of art before writing different from all later art history, and why interpretation must stay disciplined;</li>
@@ -88,6 +254,7 @@ const theoryQuizCfg = {
     other end: it was painted on a rock shelter in a green savanna with rivers and herds, in
     what is now the dead centre of the Sahara — the desert arrived later, and the art stayed.
   </p>
+  <Widget no="2" caption="file the art forms — hunters or farmers?" widget="sort-buckets" config={gphEconomyBuckets} />
   <p>
     Notice what this topic is really claiming: art does not float free. Where people live, what
     they eat, how they move and how many of them can stop working to make things — those facts
@@ -104,6 +271,7 @@ const theoryQuizCfg = {
   hard problems with the materials at hand; simplicity is a style choice, not a stage of
   intelligence. Contrast the jade cong: no "primitive" hand can grind jade — it takes skill,
   patience and social surplus.</p>
+  <Widget no="3" caption="true or false — 'primitive' under cross-examination" widget="judge" config={gphPrimitiveJudge} />
 
   <p>
     <strong>So far:</strong> the makers are invisible, so the evidence is all — climate and
@@ -133,6 +301,7 @@ const theoryQuizCfg = {
     monument. Every technique on this list answers the same two questions: what did the
     material allow, and what did it cost in human effort?
   </p>
+  <Widget no="4" caption="fill the blanks — the pigment kit" widget="cloze" config={gphPigmentCloze} />
   <p><em>Common misconception:</em> "cave painters just drew with their hands using charcoal
   sticks, like a child with a crayon." It seems reasonable because the images look loose and
   the tools sound simple. But analysis of the paintings shows prepared surfaces, mixed
@@ -142,6 +311,7 @@ const theoryQuizCfg = {
   learned and transmitted, with division of labour between pigment-makers and painters. The
   contrasting example is the Lapita stamping: repeated motifs require a manufactured tool and
   a compositional system — the opposite of improvised doodling.</p>
+  <Widget no="5" caption="find the faulty line — the 'child with a crayon' account" widget="spot-error" config={gphCrayonSpot} />
 
   <h2>The works, in one sweep</h2>
   <p>
@@ -186,6 +356,7 @@ const theoryQuizCfg = {
     identity rather than hunting. The skill the syllabus actually wants is the habit: state the
     theory, name the evidence for it, and name what would have to be true for it to be wrong.
   </p>
+  <Widget no="7" caption="rebuild the argument sequence — why did they make it?" widget="order" config={gphTheoriesOrder} />
   <p><em>Common misconception:</em> "archaeologists have proved the cave paintings were about
   hunting magic." It seems reasonable because the theory is old, famous and intuitive — paint
   the hunt, get the hunt. But the evidence is circumstantial: many painted species were not
@@ -196,6 +367,7 @@ const theoryQuizCfg = {
   a monumental carved complex built around 9600 BCE by people who had not yet farmed — found
   in 1994 and excavated from 1995, it overturned the tidy story that monumentality waited for
   agriculture, and it did so by being dug up, not by anyone's theory winning an argument.</p>
+  <Widget no="8" caption="run the publication — one new panel, three readings" widget="branch" config={gphReadingBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -269,6 +441,7 @@ const theoryQuizCfg = {
     climate-monitored; the archaeology of the twenty-first century is as much about keeping
     what is found as finding it.
   </p>
+  <Widget no="9" caption="drag the divider — Lascaux, discovery to closure" widget="compare" config={gphLascauxCompare} />
 
   <p class="sources"><strong>Sources:</strong> College Board, AP Art History Course and Exam Description (Course Framework V.1), Unit 1: Global Prehistory, 30,000–500 BCE. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

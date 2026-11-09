@@ -24,6 +24,161 @@ const tempCfg = {
   crossings: false,
   height: 320,
 };
+
+const enSiteCloze = {
+  "text": "Every enzyme has an active site — a small pocket formed by the protein's precise 3-D folding, typically involving just %%0%% to %%1%% amino acid side chains. The classic description is %%2%%; the modern refinement is %%3%% fit — the enzyme moulds around the substrate, straining its bonds toward breaking.",
+  "answers": [
+    [
+      "3",
+      "three"
+    ],
+    [
+      "12"
+    ],
+    [
+      "lock and key",
+      "lock-and-key"
+    ],
+    [
+      "induced"
+    ]
+  ],
+  "hint": "Only a substrate whose shape and chemical groups complement the pocket fits — which is why enzymes are specific."
+};
+
+const enKmJudge = {
+  "statements": [
+    {
+      "s": "Km is the substrate concentration at which the rate reaches exactly half of Vmax.",
+      "truth": true,
+      "why": "That is its definition — a genuine physical constant of the enzyme–substrate pair."
+    },
+    {
+      "s": "Km measures an enzyme's speed.",
+      "truth": false,
+      "why": "It is an affinity figure, not a rate figure — the two numbers answer different questions."
+    },
+    {
+      "s": "An enzyme can grip tightly (low Km) yet turn over slowly (modest Vmax).",
+      "truth": true,
+      "why": "Or grip loosely and work furiously — which is why drug design targets them separately."
+    },
+    {
+      "s": "Vmax is reached when every active site is occupied and extra substrate stops mattering.",
+      "truth": true,
+      "why": "The flattening of the curve is saturation."
+    }
+  ]
+};
+
+const enTempCompare = {
+  "prompt": "The temperature dial, two settings — drag the divider:",
+  "before": {
+    "label": "human-typical enzyme",
+    "text": "Peaks near 37–40 °C; the folded shape is held by weak bonds — hydrogen bonds and ionic interactions — that extra heat shakes apart."
+  },
+  "after": {
+    "label": "thermophile (Taq)",
+    "text": "Thermus aquaticus lives at 70 °C and its DNA polymerase survives the 95 °C of a PCR machine — the whole biotech industry runs on it."
+  },
+  "why": "Same chemistry, different optimum — that is what adapting a protein's weak bonds means in practice."
+};
+
+const enPhMatch = {
+  "prompt": "pH matters because catalytic side chains depend on protonation — pair each enzyme with its working pH:",
+  "pairs": [
+    {
+      "left": "pepsin",
+      "right": "stomach — optimum near pH 2"
+    },
+    {
+      "left": "trypsin",
+      "right": "small intestine — near pH 8"
+    },
+    {
+      "left": "cytoplasmic enzymes",
+      "right": "cluster around pH 7"
+    },
+    {
+      "left": "haemoglobin and every enzyme of respiration",
+      "right": "pH-tuned to blood's 7.4, buffered within 0.05 units"
+    }
+  ],
+  "why": "Move one or two pH units from the optimum and activity collapses — the side chains gain or lose protons and can no longer form the right interactions."
+};
+
+const enPracticalOrder = {
+  "prompt": "The staple practical, done properly — put the protocol in order:",
+  "items": [
+    "Pick something you can watch, and hold everything else constant",
+    "Run a boiled-enzyme control to prove the reaction you see is really catalysis",
+    "Time the initial rate — the first few seconds or minutes",
+    "Repeat at each temperature or pH to plot the curves properly"
+  ],
+  "why": "Late measurements mix enzyme performance with substrate shortage — measuring the initial rate is exactly the confusion the Michaelis–Menten framework avoids."
+};
+
+const enCofactorBuckets = {
+  "prompt": "The protein provides shape and specificity; the partner provides chemistry. File each helper:",
+  "buckets": [
+    "metal-ion cofactor",
+    "organic coenzyme",
+    "prosthetic group"
+  ],
+  "items": [
+    {
+      "label": "zinc in carbonic anhydrase",
+      "bucket": 0
+    },
+    {
+      "label": "magnesium stabilising ATP-binding sites",
+      "bucket": 0
+    },
+    {
+      "label": "NAD carrying hydrogen in respiration",
+      "bucket": 1
+    },
+    {
+      "label": "coenzyme A carrying acetyl groups into the Krebs cycle",
+      "bucket": 1
+    },
+    {
+      "label": "vitamin B₁ — no coenzyme, no working decarboxylase",
+      "bucket": 1
+    },
+    {
+      "label": "the iron-containing haem bound permanently in catalase",
+      "bucket": 2
+    }
+  ],
+  "why": "Vitamins are coenzyme precursors — which is why a dietary deficiency can stall one specific metabolic step and, in B₁'s case, fail the nervous system."
+};
+
+const enFeedbackOrder = {
+  "prompt": "End-product inhibition, step by step — put the loop in order:",
+  "items": [
+    "Isoleucine builds up in the cell",
+    "Some binds an allosteric site on threonine deaminase — the pathway's first enzyme",
+    "The enzyme is forced into an inactive shape",
+    "Production halts within seconds",
+    "Isoleucine is consumed, and the inhibition lifts"
+  ],
+  "why": "Control the first enzyme of a pathway and the whole line stops cheaply — allosteric regulation switches pathways without touching the genes."
+};
+
+const enDrugSpot = {
+  "prompt": "This pharmacology answer contains one faulty line — click it:",
+  "lines": [
+    "Statins competitively block HMG-CoA reductase, the rate-limiting enzyme of cholesterol synthesis.",
+    "Aspirin permanently disables COX enzymes, cutting inflammatory prostaglandins.",
+    "Penicillin jamms the transpeptidase that cross-links bacterial cell walls.",
+    "Cyanide poisons cytochrome c oxidase — cells that cannot use oxygen, internal suffocation.",
+    "Most medicines work by supplying the energy a stalled enzyme needs."
+  ],
+  "errorLine": 4,
+  "correction": "Medicines mostly BLOCK or JAM enzymes — enzymes supply no energy; they lower activation energy, and inhibitors stop them.",
+  "why": "Pharmacology is enzyme interference with a spec sheet: block, disable, jamm, poison — never 'energise'."
+};
 ---
 <TopicPage slug="subjects/biology/intermediate/enzymes-and-metabolism">
 
@@ -78,6 +233,7 @@ const tempCfg = {
     charged groups hold the substrate's own charges apart, and the straining itself stretches bonds
     toward their breaking point.
   </p>
+  <Widget no="3" caption="fill the blanks — the pocket that does the work" widget="cloze" config={enSiteCloze} />
   <p>
     A worked example puts numbers on specificity. Sucrase hydrolyses sucrose at thousands of
     reactions per second per enzyme. Without the enzyme, hydrolysing sucrose in a neutral aqueous
@@ -122,6 +278,7 @@ const tempCfg = {
     wrecking a pathogen's Km values.
   </p>
   <p><em>Common misconception:</em> Km measures an enzyme's speed. It is the substrate concentration at which the rate reaches half of Vmax — an affinity figure, not a rate figure. An enzyme can grip tightly (low Km) yet turn over slowly (modest Vmax), or grip loosely and work furiously; the two numbers answer different questions, which is why drug design targets them separately.</p>
+  <Widget no="4" caption="true or false — reading Vmax and Km" widget="judge" config={enKmJudge} />
 
   <h2>Temperature and pH: why enzymes are fragile</h2>
   <p>
@@ -135,6 +292,7 @@ const tempCfg = {
     the 95 °C of a PCR machine, which is why the whole biotech industry runs on Taq. That fever is
     dangerous above about 41 °C is a direct consequence: your own enzymes begin to denature.
   </p>
+  <Widget no="5" caption="same chemistry, different optimum — drag to the hot spring" widget="compare" config={enTempCompare} />
 
   <Widget no="2" caption="activity against temperature — a kinetic climb, then a denaturation cliff; the red curve is a heat-adapted variant" widget="plotter" config={tempCfg} />
   <p>
@@ -155,6 +313,7 @@ const tempCfg = {
     of 7.4 precisely because haemoglobin and every enzyme of respiration are pH-tuned to that
     value.
   </p>
+  <Widget no="6" caption="pair each enzyme with its pH address" widget="match" config={enPhMatch} />
   <p><em>Common misconception:</em> "enzymes are killed" by heat. Enzymes are proteins, not
     organisms — they don't die, they <strong>denature</strong>, a physical change of shape. That's
     why cooling rather than reheating preserves them: a denatured enzyme almost never refolds, but
@@ -179,6 +338,7 @@ const tempCfg = {
     the rate naturally falls, so late measurements mix up enzyme performance with substrate
     shortage — exactly the confusion the Michaelis–Menten framework is designed to avoid.
   </p>
+  <Widget no="7" caption="rebuild the rate-measurement protocol" widget="order" config={enPracticalOrder} />
   <p>
     Many enzymes also refuse to work alone. <strong>Cofactors</strong> are non-protein partners
     they require: metal ions such as zinc in carbonic anhydrase, iron in catalase, magnesium
@@ -191,6 +351,7 @@ const tempCfg = {
     provides shape and specificity, the cofactor provides chemistry the amino acids alone cannot
     perform.
   </p>
+  <Widget no="8" caption="file the helpers by what they are" widget="sort-buckets" config={enCofactorBuckets} />
 
   <h2>How metabolism is organised</h2>
   <p>
@@ -205,6 +366,7 @@ const tempCfg = {
     than the active one — is how cells switch whole pathways on and off without touching their
     genes.
   </p>
+  <Widget no="9" caption="rebuild the feedback loop" widget="order" config={enFeedbackOrder} />
   <p>
     Slower control operates on <strong>enzyme quantity</strong>: genes encoding a given enzyme are
     transcribed more or less avidly depending on need, changing the enzyme supply over minutes to
@@ -223,6 +385,7 @@ const tempCfg = {
     suffocation — cells that cannot use oxygen. Pharmacology is largely enzyme interference with a
     spec sheet.
   </p>
+  <Widget no="10" caption="find the faulty line — the drug spec sheet" widget="spot-error" config={enDrugSpot} />
   <p><em>Common misconception:</em> "enzymes work everywhere in the cell equally." They don't.
     Enzymes are not dissolved uniformly — they are anchored to membranes, packed into organelles,
     and assembled into multi-enzyme complexes, so substrates are handed from one enzyme to the

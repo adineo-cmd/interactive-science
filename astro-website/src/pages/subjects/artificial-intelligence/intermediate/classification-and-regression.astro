@@ -26,6 +26,192 @@ const fitCfg = {
   x: { min: 0, max: 2.6, label: 'floor area (×1000 sq ft)' },
   y: { min: 0, max: 500, label: 'price ($1000s)' },
 };
+
+const carLossMatch = {
+  "prompt": "The contract defines 'wrong' — pair each loss with its temperament:",
+  "pairs": [
+    {
+      "left": "squared error (RMSE)",
+      "right": "squaring punishes large misses disproportionately — an error of 10 costs 100× an error of 1"
+    },
+    {
+      "left": "MAE",
+      "right": "mean absolute error — misses priced linearly"
+    },
+    {
+      "left": "log loss (cross-entropy)",
+      "right": "gentle when right and confident; brutal when confidently wrong"
+    },
+    {
+      "left": "predicting 0.999 on a false claim",
+      "right": "costs about 6.9 log-units — ln(1000)"
+    }
+  ],
+  "why": "Both losses fall out of maximum-likelihood reasoning: squared error assumes Gaussian noise; log loss takes probability claims seriously."
+};
+
+const carBaselineEstimate = {
+  "prompt": "The eight apartments have mean price $232.5k. Predicting that mean every time — roughly what RMSE does this naive baseline score?",
+  "unit": "$k",
+  "answer": 82,
+  "factor": 1.3,
+  "why": "About $82k — exactly the standard deviation of the prices. Any model that cannot beat $82k is literally worse than ignoring the input.",
+  "context": "The least-squares line reaches RMSE ≈ $11k, roughly a seven-fold improvement, with R² ≈ 0.98."
+};
+
+const carLineSpot = {
+  "prompt": "This fitting summary contains one faulty line — click it:",
+  "lines": [
+    "Least squares minimises the squared vertical gaps between line and points.",
+    "The fitted line is price ≈ 132×area + 47 — about $132 per square foot.",
+    "Its RMSE is about $11k, roughly a seven-fold improvement over the baseline.",
+    "R² = 0.98 means the line explains 98% of the price variance.",
+    "The least-squares line is found by chasing whichever single point sits furthest from the line."
+  ],
+  "errorLine": 4,
+  "correction": "It is the bottom of a smooth bowl — the least-squares line balances all the vertical gaps at once, not a chase of any single point.",
+  "why": "Drag the fit sliders in the widget: move slope or intercept off the optimum and watch the gaps balloon uniformly — no single point commands the line."
+};
+
+const carSigmoidCloze = {
+  "text": "For categories, compute a linear score z = w·x + b, then squash it through the %%0%% function, which maps any number into (0, 1) — a %%1%%. A score of 0 becomes %%2%%. Despite 'regression' in its name, logistic regression is a %%3%%.",
+  "answers": [
+    [
+      "sigmoid"
+    ],
+    [
+      "probability"
+    ],
+    [
+      "0.5"
+    ],
+    [
+      "classifier"
+    ]
+  ],
+  "hint": "The squishing function, what its output means, where zero lands, and the naming trap."
+};
+
+const carThresholdPlace = {
+  "prompt": "You want only near-certain spam filtered, accepting more spam in your inbox. Where does the threshold sit?",
+  "labels": [
+    "0",
+    "0.5",
+    "1.0"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1
+  },
+  "answer": 0.9,
+  "tolerance": 0.1,
+  "why": "0.9 — only near-certain spam gets filtered, at the cost of more spam in your inbox. The model supplies the score; the operating point is a choice that belongs to the business, not the data scientist.",
+  "context": "At 0.5, an email claiming 0.51 spam is already delivered to the junk folder."
+};
+
+const carFlexBuckets = {
+  "prompt": "Three ways a flexible model fails — file each symptom:",
+  "buckets": [
+    "Overfitting",
+    "Underfitting",
+    "Data leakage"
+  ],
+  "items": [
+    {
+      "label": "a tree deep enough to hit every training point exactly — memorised noise",
+      "bucket": 0
+    },
+    {
+      "label": "near-zero training error, poor error on new data",
+      "bucket": 0
+    },
+    {
+      "label": "a model too stiff to capture real structure",
+      "bucket": 1
+    },
+    {
+      "label": "a straight line through prices that bend near the city centre",
+      "bucket": 1
+    },
+    {
+      "label": "a 'sales prediction' model that accidentally learned the week the sale was recorded",
+      "bucket": 2
+    }
+  ],
+  "why": "The third failure is the most dangerous in practice — leakage inflates results until the model meets reality."
+};
+
+const carROCTrace = {
+  "prompt": "Three ROC curves, one per model. Which belongs to the strong one?",
+  "curves": [
+    {
+      "expr": "sqrt(x)",
+      "color": "#1d4ed8",
+      "label": "A"
+    },
+    {
+      "expr": "x",
+      "color": "#b42318",
+      "label": "B"
+    },
+    {
+      "expr": "x^3",
+      "color": "#0f766e",
+      "label": "C"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 1
+  },
+  "y": {
+    "min": 0,
+    "max": 1
+  },
+  "xlabel": "false-positive rate",
+  "ylabel": "true-positive rate",
+  "why": "A useless model traces the diagonal; a strong one hugs the top-left corner. AUC is the probability that a random fraud scores above a random legitimate transaction — 0.9 means it orders them right 9 times in 10."
+};
+
+const carExplainBranch = {
+  "root": "You are shipping a model that informs regulated decisions — credit, medicine, parole. Explanation is not optional.",
+  "nodes": {
+    "start": {
+      "text": "How do you ship it?",
+      "choices": [
+        {
+          "label": "A random forest, explanations promised later",
+          "next": "blackbox",
+          "feedback": "The black-box route."
+        },
+        {
+          "label": "Linear regression — reasoning in its coefficients",
+          "next": "linear",
+          "feedback": "Maximum interpretability."
+        },
+        {
+          "label": "Random forest + SHAP attribution per decision",
+          "next": "shap",
+          "feedback": "Post-hoc explanation at individual level."
+        }
+      ]
+    },
+    "blackbox": {
+      "text": "A movie recommender can stay a black box; a parole model cannot — regulators require explanation (adverse action notices under US fair-lending law, explanation rights under GDPR).",
+      "choices": []
+    },
+    "linear": {
+      "text": "Interpretability scales with stakes: linear regression hands you its reasoning in its coefficients — the weakest learner that still explains itself.",
+      "choices": []
+    },
+    "shap": {
+      "text": "SHAP values distribute each prediction's departure from average across its input features — individual-decision explanations for a model that is itself opaque.",
+      "choices": []
+    }
+  },
+  "why": "The data scientist ships a calibrated score; the threshold — and the explanation duty — belong to whoever owns the stakes."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/classification-and-regression">
   <h2>Where you are, and what you will learn</h2>
@@ -36,6 +222,7 @@ const fitCfg = {
     percentages) and patience with a little notation; every formula that appears is
     explained in words first.
   </p>
+  <Widget no="5" caption="find the faulty line — how the line is found" widget="spot-error" config={carLineSpot} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>say what a loss function is, and why squared error and log loss punish different mistakes;</li>
@@ -91,6 +278,7 @@ const fitCfg = {
     punitive when the model is confidently wrong — predicting 0.999 probability on a false
     claim costs about 6.9 log-units, the natural logarithm of 1000.
   </p>
+  <Widget no="3" caption="pair each loss with what it punishes" widget="match" config={carLossMatch} />
   <p>
     These are not arbitrary conventions. Least squares goes back to Legendre (1805) and
     Gauss, who used it to recover the orbit of the asteroid Ceres from a handful of
@@ -111,6 +299,7 @@ const fitCfg = {
     deviation of the prices. Any model that cannot beat $82k is literally worse than
     ignoring the input.
   </p>
+  <Widget no="4" caption="call the magnitude — the naive baseline's RMSE" widget="estimate" config={carBaselineEstimate} />
   <p>
     Least squares minimises the squared vertical gaps between line and points. Doing the
     algebra (slope = Σ(x−x̄)(y−ȳ) ⁄ Σ(x−x̄)²) gives slope ≈ 132 and intercept ≈ 47: price ≈
@@ -150,6 +339,7 @@ const fitCfg = {
     negative approach 0. Training minimises log loss, so the model is rewarded for
     probabilities that are honest, not just for getting the side of 0.5 right.
   </p>
+  <Widget no="6" caption="fill the blanks — from score to chance" widget="cloze" config={carSigmoidCloze} />
   <p>
     Why not just fit a line to 0/1 labels? Because a line happily predicts −0.3 or 1.7,
     which are not probabilities, and it handles the pile-up of examples at the extremes
@@ -165,6 +355,7 @@ const fitCfg = {
     model outputs a number; the operating point is a choice — and as we will see, that
     choice belongs to the business, not the data scientist.
   </p>
+  <Widget no="7" caption="set the operating point on the probability dial" widget="place" config={carThresholdPlace} />
   <p>
     <strong>So far:</strong> a classifier outputs a probability, and a threshold turns the
     probability into a decision — the model supplies the score, the business supplies the
@@ -186,6 +377,7 @@ const fitCfg = {
     happens to correlate with the target in your sample: a data-leakage variety, like a
     "sales prediction" model that has accidentally learned the week the sale was recorded.
   </p>
+  <Widget no="8" caption="file the failure — overfit, underfit or leak?" widget="sort-buckets" config={carFlexBuckets} />
   <p>
     The defence is honest evaluation. Split the data: train on one part, test on data the
     model never saw. Because a single split is noisy and wastes data, standard practice is
@@ -238,6 +430,7 @@ const fitCfg = {
     transaction receives a higher score than a randomly chosen legitimate one. 0.5 is coin
     flipping; 0.9 means the model orders the two correctly 9 times in 10.
   </p>
+  <Widget no="9" caption="which curve is the better model?" widget="trace" config={carROCTrace} />
   <p><em>Common misconception:</em> AUC 0.9 means 90% accurate. It does not — AUC is
   threshold-free and accuracy is threshold-specific; the two can move in opposite
   directions. On heavily imbalanced problems, the precision-recall curve (precision against
@@ -266,6 +459,7 @@ const fitCfg = {
     action notices under fair-lending law in the US, explanation rights under GDPR in
     Europe) require it. A movie recommender can stay a black box; a parole model cannot.
   </p>
+  <Widget no="10" caption="ship the explanation — three compliance routes" widget="branch" config={carExplainBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

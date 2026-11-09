@@ -10,6 +10,186 @@ const sysbioCfg = {
     { math: '4 · Medicine becomes systemic', note: 'Cancer as a network rewiring; sepsis as runaway feedback; personalised models of tumours. "Systems pharmacology" predicts side effects before trials by mapping all a drug\'s targets at once.' },
   ],
 };
+
+const sbMotifMatch = {
+  "prompt": "Evolution's favourite three-node circuits — pair each with the function it performs:",
+  "pairs": [
+    {
+      "left": "negative autoregulation — a protein repressing its own gene",
+      "right": "speeds response and dampens noise"
+    },
+    {
+      "left": "positive feedback",
+      "right": "bistable switches and memory"
+    },
+    {
+      "left": "feed-forward loop (X regulates Y, both regulate Z)",
+      "right": "persistence detector — a transient blip cannot trigger Z"
+    },
+    {
+      "left": "incoherent feed-forward",
+      "right": "pulses and fold-change detection"
+    }
+  ],
+  "why": "Robust control, filtering and switching are the physics of any regulatory system — evolution, with no designer, found the same small set of designs electronic engineers reach for."
+};
+
+const sbClockCloze = {
+  "text": "CLOCK-BMAL1 activates %%0%% and CRY transcription; the PER/CRY proteins accumulate, %%1%% up, re-enter the nucleus and shut their own activation %%2%%. Slow %%3%% lets the loop run with a period of almost exactly %%4%% hours — a self-sustaining oscillator, entrained daily by light.",
+  "answers": [
+    [
+      "PER"
+    ],
+    [
+      "pair"
+    ],
+    [
+      "off"
+    ],
+    [
+      "degradation"
+    ],
+    [
+      "24"
+    ]
+  ],
+  "hint": "The period belongs to the loop — degradation rates and delays — not to any single component."
+};
+
+const sbOneGeneBuckets = {
+  "prompt": "Redundancy cuts both ways. File each fact:",
+  "buckets": [
+    "buffered by redundancy",
+    "lethal when hit"
+  ],
+  "items": [
+    {
+      "label": "knocking out any one component often changes nothing",
+      "bucket": 0
+    },
+    {
+      "label": "synthetic lethality — two individually dispensable genes, jointly lethal",
+      "bucket": 1
+    },
+    {
+      "label": "most phenotypes are distributed properties of networks",
+      "bucket": 0
+    },
+    {
+      "label": "a hub whose removal collapses everything",
+      "bucket": 1
+    },
+    {
+      "label": "height: hundreds of loci each contributing a sliver",
+      "bucket": 0
+    },
+    {
+      "label": "the reason cancer therapy hunts for gene pairs",
+      "bucket": 1
+    }
+  ],
+  "why": "The gene is a part; the behaviour belongs to the wiring — which is why single-gene thinking found so few drug targets in complex disease."
+};
+
+const sbLadderOrder = {
+  "prompt": "From kinetic workhorse to endpoint demonstration — put the rungs in order:",
+  "items": [
+    "ODE kinetics — write each reaction's rate and integrate (Michaelis–Menten/Hill)",
+    "Boolean networks — genes ON/OFF, logic update rules, attractor analysis",
+    "Stochastic simulation — the Gillespie algorithm samples individual reaction events",
+    "Constraint-based flux balance — stoichiometry plus optimisation, no kinetics",
+    "The 2012 whole-cell model — every known gene and reaction of one bacterium"
+  ],
+  "why": "Each rung trades detail for scale differently: coarse Boolean attractors (Kauffman's cell types), Gillespie's noise at low molecule counts, genome-scale flux models for thousands of organisms — then the whole-cell proof of concept."
+};
+
+const sbHumanSpot = {
+  "prompt": "This extrapolation answer contains one faulty line — click it:",
+  "lines": [
+    "Karr and colleagues (2012) simulated every known gene and reaction of Mycoplasma genitalium.",
+    "The modelled cell had 525 genes, no organelles, one cell type — about 1,900 parameters drawn from 900 papers.",
+    "A human cell runs a few thousand times more genes across hundreds of compartmentalised cell types.",
+    "Therefore a digital human cell is now within reach using the same code.",
+    "Parameters for most human reactions have never even been measured."
+  ],
+  "errorLine": 3,
+  "correction": "The leap skips several unsolved fields — parameterisation, multiscale coupling, validation; the distance to human scale is the field's whole roadmap.",
+  "why": "The achievement was real precisely because the organism was chosen to be small — the honest reading stops at 'a minimal bacterium is simulable in principle'."
+};
+
+const sbOmicsCompare = {
+  "prompt": "Omics data, before and after integration — drag the divider:",
+  "before": {
+    "label": "the raw layers",
+    "text": "RNA counts, mass-spec peaks, metabolite states — each relative and biased, batch-confounded, none readable alone."
+  },
+  "after": {
+    "label": "one causal model",
+    "text": "Layers that disagree productively, integrated: RNA abundance predicts protein abundance only weakly — and the disagreement is data."
+  },
+  "why": "Multi-omic integration is the field's hardest technical problem; the perturbation experiment completes the loop — models predict, perturbations judge, and the discrepancy is where the next model comes from."
+};
+
+const sbCancerBranch = {
+  "root": "A tumour is a rewired network: oncogenes and tumour suppressors are hubs whose dysregulation propagates. Choose the therapeutic logic.",
+  "nodes": {
+    "start": {
+      "text": "Which strategy do you pick?",
+      "choices": [
+        {
+          "label": "One targeted drug against the hub",
+          "next": "single",
+          "feedback": "Works when the tumour cannot reroute — but single-drug resistance is the norm."
+        },
+        {
+          "label": "Combination therapy chosen by network analysis",
+          "next": "combo",
+          "feedback": "Hit nodes the tumour cannot reroute around at once."
+        },
+        {
+          "label": "Map every protein the drug touches before trials",
+          "next": "pharm",
+          "feedback": "Systems pharmacology: the off-target map predicts side effects in advance."
+        }
+      ]
+    },
+    "single": {
+      "text": "The network reroutes and resistance arrives — the failure mode that taught the field to combine."
+    },
+    "combo": {
+      "text": "Personalised models — tumour-specific networks simulated to rank drug combinations — are in early clinical use."
+    },
+    "pharm": {
+      "text": "Drugs get repurposed by network position: push the network away from a disease attractor, whatever the label."
+    }
+  },
+  "why": "Disease as network failure: sepsis is runaway feedback, diabetes a signalling failure, ageing interlinked hallmark pathways — the systems era treats the wiring, not a single target."
+};
+
+const sbLoopJudge = {
+  "statements": [
+    {
+      "s": "Every strong systems paper runs a closed loop: model predicts, experiment perturbs, model revises.",
+      "truth": true,
+      "why": "The field's actual product is the iteration."
+    },
+    {
+      "s": "The 2012 whole-cell model was built from 900 primary papers and validated by new experiments.",
+      "truth": true,
+      "why": "Bench and computation, one loop — not two tribes."
+    },
+    {
+      "s": "A model that is never falsified by measurement is considered finished and publishable as-is.",
+      "truth": false,
+      "why": "In this discipline it is considered unfinished rather than published."
+    },
+    {
+      "s": "CRISPR screens are both massive wet-lab work and pure data science.",
+      "truth": true,
+      "why": "Tens of thousands of genes perturbed in parallel, fitness read out by sequencing."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/biology/expert/systems-biology">
   <h2>Where you are, and what you will learn</h2>
@@ -94,6 +274,7 @@ const sysbioCfg = {
     work. Motif analysis turns "the network is complicated" into a parts list of
     tested subcircuits.
   </p>
+  <Widget no="2" caption="pair each motif with its computational job" widget="match" config={sbMotifMatch} />
   <p>
     <strong>So far:</strong> motif analysis turns "the network is complicated" into a tested
     subcircuit catalogue — feedback, filtering, switching, each with a job. The next section
@@ -118,6 +299,7 @@ const sysbioCfg = {
     Synthetic versions — the repressilator — confirmed the design principles by
     building one.
   </p>
+  <Widget no="3" caption="fill the blanks — the interlocked clock loop" widget="cloze" config={sbClockCloze} />
   <p>
     <em>Common misconception:</em> "genes 'cause' traits directly — one gene, one
     behaviour, one drug target." Network thinking inverts this: most phenotypes are
@@ -129,6 +311,7 @@ const sysbioCfg = {
     hundreds of loci each contributing a sliver to height or diabetes risk. The gene
     is a part; the behaviour belongs to the wiring.
   </p>
+  <Widget no="4" caption="file the facts — buffered or lethal" widget="sort-buckets" config={sbOneGeneBuckets} />
 
   <h2>Modelling the cell: from ODEs to whole-cell</h2>
   <p>
@@ -151,6 +334,7 @@ const sysbioCfg = {
     predicted cell-cycle behaviours its builders never designed in. It is the field's
     proof of concept: a cell is simulable, in principle, from the parts up.
   </p>
+  <Widget no="5" caption="climb the modelling ladder in order" widget="order" config={sbLadderOrder} />
   <p>
     <em>Common misconception:</em> "the 2012 whole-cell model means human cells — or a
     whole human — can now be simulated." The modelled organism was Mycoplasma
@@ -162,6 +346,7 @@ const sysbioCfg = {
     The achievement is real precisely because the organism was chosen to be
     small; the distance to human scale is the field's whole roadmap.
   </p>
+  <Widget no="6" caption="find the faulty line — the digital-human leap" widget="spot-error" config={sbHumanSpot} />
   <p>
     <strong>So far:</strong> the modelling ladder runs from ODE kinetics up to the 2012
     whole-cell proof of concept — and the honest boundary is parameterisation, not
@@ -187,6 +372,7 @@ const sysbioCfg = {
     data-generating experiment), drug treatments; models predict, perturbations
     judge, and the discrepancy is where the next model comes from.
   </p>
+  <Widget no="7" caption="raw layers vs integrated model — drag across" widget="compare" config={sbOmicsCompare} />
 
   <h2>Medicine becomes systemic</h2>
   <p>
@@ -205,6 +391,7 @@ const sysbioCfg = {
     simulated to rank drug combinations — are in early clinical use. The reductionist
     era found the parts; the systems era is learning to treat the wiring.
   </p>
+  <Widget no="8" caption="treat the wiring — a therapy run" widget="branch" config={sbCancerBranch} />
   <p>
     <em>Common misconception:</em> "systems biology means 'we made a computer model', so
     it sits apart from bench biology." Every strong systems paper is a closed loop:
@@ -214,6 +401,7 @@ const sysbioCfg = {
     <em>iteration</em>, and models that are never falsified by measurement are, in
     this discipline, considered unfinished rather than published.
   </p>
+  <Widget no="9" caption="true or false — models and the bench" widget="judge" config={sbLoopJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -21,6 +21,222 @@ const hierarchyCfg = {
     { math: '5 · Function', note: 'The fold creates the chemistry: a pocket of exactly the right geometry and chemical groups to bind a substrate and transform it.' },
   ],
 };
+
+const psaSideMatch = {
+  "prompt": "Five side chains, five identities — pair them:",
+  "pairs": [
+    {
+      "left": "a single hydrogen atom — the smallest possible side chain",
+      "right": "glycine"
+    },
+    {
+      "left": "a branched oily tail",
+      "right": "leucine"
+    },
+    {
+      "left": "a tip ending in a negative electric charge",
+      "right": "aspartate"
+    },
+    {
+      "left": "a tip ending in a positive electric charge",
+      "right": "lysine"
+    },
+    {
+      "left": "a sulfur-bearing tip that clamps onto another of its own kind",
+      "right": "cysteine"
+    }
+  ],
+  "why": "The side chain (R group) is each letter's identity: glycine minimal, leucine oily, aspartate and lysine oppositely charged, cysteine the clamp that can later staple the fold shut."
+};
+
+const psaFamilyBuckets = {
+  "prompt": "File each side chain into its family:",
+  "buckets": [
+    "oily — avoids water",
+    "polar uncharged",
+    "charged"
+  ],
+  "items": [
+    {
+      "label": "valine, leucine, phenylalanine",
+      "bucket": 0
+    },
+    {
+      "label": "serine, threonine, asparagine",
+      "bucket": 1
+    },
+    {
+      "label": "lysine, arginine, histidine",
+      "bucket": 2
+    },
+    {
+      "label": "aspartate, glutamate",
+      "bucket": 2
+    },
+    {
+      "label": "alanine — small and oily",
+      "bucket": 0
+    },
+    {
+      "label": "the kind that gets buried in the fold's greasy interior",
+      "bucket": 0
+    }
+  ],
+  "why": "Hydrophobic side chains hide from water and pack inside; polar uncharged ones are water-friendly without a charge; charged ones face out — or pair up in salt bridges. Glycine, proline and cysteine are the specialists outside these families."
+};
+
+const psaBondCloze = {
+  "text": "The %%0%% end of one amino acid links to the acid end of the next; forming this peptide bond squeezes out a molecule of %%1%%, so the reaction is called a %%2%%. Sequences are always written N to C — and the N stands for %%3%%.",
+  "answers": [
+    [
+      "amino"
+    ],
+    [
+      "water"
+    ],
+    [
+      "condensation"
+    ],
+    [
+      "nitrogen"
+    ]
+  ],
+  "hint": "One end carries a free amino group; think of what squirts from the joint when two bricks click together."
+};
+
+const psaInsulinEstimate = {
+  "prompt": "Proteins run from dozens to thousands of blocks. Insulin, the small hormone that has been sequenced and injected for a century — roughly how many amino acids long is it?",
+  "unit": "amino acids",
+  "answer": 51,
+  "factor": 2,
+  "why": "Insulin is 51 amino acids long; titin, among the largest, is some 34,000 — three orders of magnitude of chain in one cell.",
+  "context": "Two joined amino acids are a dipeptide; a short chain an oligopeptide; a protein dozens to thousands."
+};
+
+const psaSecondaryJudge = {
+  "statements": [
+    {
+      "s": "Hair keratin is largely alpha helices — which is why wet hair stretches and re-forms as it dries.",
+      "truth": true,
+      "why": "The backbone hydrogen bonds slip when wet, then grip again on drying."
+    },
+    {
+      "s": "Silk is strong along the strands because it is largely beta sheets.",
+      "truth": true,
+      "why": "Extended stretches lie side by side and grip across, like zipper teeth closing in a line."
+    },
+    {
+      "s": "Perm solution reshapes hair by breaking the peptide bonds of the backbone.",
+      "truth": false,
+      "why": "It breaks the disulfide staples — the permanent chemical staples cysteine pairs add to the fold."
+    },
+    {
+      "s": "Quaternary structure means one long chain folded into four lobes.",
+      "truth": false,
+      "why": "It is separate chains teaming up — haemoglobin is four chains, two of one kind, two of another."
+    }
+  ]
+};
+
+const psaAnfinsenCompare = {
+  "prompt": "Anfinsen's ribonuclease, 1960s — drag the divider from denatured to refolded:",
+  "before": {
+    "label": "denatured",
+    "text": "Ribonuclease stripped of its working shape by the disrupter — an inactive tangle, like the egg white in the pan."
+  },
+  "after": {
+    "label": "refolded",
+    "text": "Disrupter removed, nothing re-added: the chain settles back into its native structure — fully active."
+  },
+  "why": "The sequence alone, in the right environment, carries the instructions for the final shape — the licence for all structure prediction."
+};
+
+const psaSickleSpot = {
+  "prompt": "This exam answer on sickle-cell anaemia contains one faulty line — click it:",
+  "lines": [
+    "Haemoglobin's beta chain is 146 amino acids long.",
+    "At position 6, glutamate — charged and outward-facing — is replaced by valine, an oily residue.",
+    "The swap puts an oily patch on the protein's surface.",
+    "Haemoglobins stick together there, stack into fibres, and deform the red blood cell.",
+    "The changed gene persists in malarial regions because one copy makes malaria MORE likely, balancing harm against benefit.",
+    "One letter out of 146 — the entire disease."
+  ],
+  "errorLine": 4,
+  "correction": "One copy of the changed gene PROTECTS against malaria — selection balances the harm against that benefit.",
+  "why": "The balance runs the other way: the harm (sickle disease) is the price the population pays for the benefit (malaria resistance carried by one copy)."
+};
+
+const psaChaperoneBranch = {
+  "root": "A new chain is emerging from the ribosome into the crowded cytoplasm — 20–40 per cent of the volume is other macromolecules, and the chain's exposed oily patches are danger zones.",
+  "nodes": {
+    "start": {
+      "text": "Those oily patches could stick to the wrong neighbour. What does the cell's support system do?",
+      "choices": [
+        {
+          "label": "Bind chaperones to the oily regions",
+          "next": "shield",
+          "feedback": "Hsp70 and chaperonin family members grip and shield the patches."
+        },
+        {
+          "label": "Leave the chain to fold unaided in the crowd",
+          "next": "risk",
+          "feedback": "A few chains manage; many stick to the wrong surface."
+        },
+        {
+          "label": "Send the fresh chain straight to the proteasome",
+          "next": "earlyshred",
+          "feedback": "Premature — the shredder is for hopeless cases, not new arrivals."
+        }
+      ]
+    },
+    "shield": {
+      "text": "The chain is sheltered. How does it get its fair chance to fold?",
+      "choices": [
+        {
+          "label": "Hold it steady while it folds in place",
+          "next": "held",
+          "feedback": "Shielded from wrong neighbours, it folds in the open."
+        },
+        {
+          "label": "Enclose it in a barrel-shaped room",
+          "next": "barrel",
+          "feedback": "Chaperonins give it a private room to fold undisturbed."
+        }
+      ]
+    },
+    "risk": {
+      "text": "The chain has stuck to a neighbour and folded badly. Now what?",
+      "choices": [
+        {
+          "label": "Spend ATP to pull the trapped chain out",
+          "next": "rescue",
+          "feedback": "Some chaperones burn the cell's energy currency to rescue trapped chains."
+        },
+        {
+          "label": "Escort it to the proteasome",
+          "next": "shred",
+          "feedback": "Hopeless case — the shredder digests it."
+        }
+      ]
+    },
+    "held": {
+      "text": "Folded, shielded, working."
+    },
+    "barrel": {
+      "text": "Inside the barrel it folds undisturbed — the managed version of the funnel."
+    },
+    "rescue": {
+      "text": "Rescued — the chain gets another fair chance at its native fold."
+    },
+    "shred": {
+      "text": "Digested and recycled. Folding is a managed process, not chemistry alone."
+    },
+    "earlyshred": {
+      "text": "A fresh chain destroyed before it ever had a chance — triage has an order."
+    }
+  },
+  "why": "Chaperones shield oily patches, hold or enclose chains, spend ATP on rescues, and escort hopeless cases to the proteasome — which is why they are called heat-shock proteins: their production surges when heat shakes proteins loose."
+};
 ---
 <TopicPage slug="subjects/biochemistry/foundational/protein-structure-and-function">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +293,7 @@ const hierarchyCfg = {
     Aspartate's ends in a negative electric charge, lysine's in a positive one.
     Cysteine's ends in a sulfur-bearing tip that can clamp onto another cysteine.
   </p>
+  <Widget no="3" caption="pair the side chain with its amino acid" widget="match" config={psaSideMatch} />
   <p>
     In the watery conditions of your body, the two core ends are charged — amino end
     positive, acid end negative. A molecule carrying both at once is a
@@ -91,6 +308,7 @@ const hierarchyCfg = {
     <strong>negatively charged</strong> (aspartate, glutamate). A few are specialists:
     glycine, proline, cysteine.
   </p>
+  <Widget no="4" caption="file the twenty letters into families" widget="sort-buckets" config={psaFamilyBuckets} />
   <p><em>Common misconception:</em> the twenty amino acids are not arbitrary and they are not
   used in equal amounts — they are the subset life's chemistry settled on (with glycine and
   alanine found in meteorites, suggesting deep chemical roots), and each organism's proteins
@@ -106,6 +324,7 @@ const hierarchyCfg = {
     the joint. Any reaction releasing water is a
     <em>condensation</em>.
   </p>
+  <Widget no="5" caption="fill the blanks — how blocks become a chain" widget="cloze" config={psaBondCloze} />
   <p>
     The chain has direction. One end carries a free amino group — the
     <strong>N-terminus</strong> (N for nitrogen). The other carries a free acid group —
@@ -125,6 +344,7 @@ const hierarchyCfg = {
     <em>oligopeptide</em>; a protein, dozens to thousands of blocks. Insulin is 51
     amino acids long; titin, among the largest, some 34,000.
   </p>
+  <Widget no="6" caption="call the magnitude — insulin's length" widget="estimate" config={psaInsulinEstimate} />
   <p>
     <strong>So far:</strong> amino acids share one core and differ in their side
     chains; peptide bonds string them into a directed chain with stiff, flat links.
@@ -163,6 +383,7 @@ const hierarchyCfg = {
     fold independently and carry a job are <em>domains</em> — many large proteins are
     beads on a string of domains.
   </p>
+  <Widget no="7" caption="true or false — helices, sheets and staples" widget="judge" config={psaSecondaryJudge} />
   <p><em>Common misconception:</em> alpha helices and beta sheets are stitched together by the side chains. The hydrogen bonds that build both run along the <em>backbone</em> — each C=O pairing with an N–H four residues along in the helix, strand against strand in the sheet — which is why the same two patterns recur whatever the sequence encodes. The side chains supply the tertiary logic (who hides, who faces the water), not the secondary one.</p>
   <p>
     <strong>Tertiary structure</strong> is the fold of the whole chain, and its rule
@@ -232,6 +453,7 @@ const hierarchyCfg = {
     carries the instructions for the final shape. That is the licence for all
     structure prediction: the information is in the chain.
   </p>
+  <Widget no="8" caption="before and after — Anfinsen's refold" widget="compare" config={psaAnfinsenCompare} />
   <p><em>Common misconception:</em> Anfinsen's result means a protein folds unaided in the cell, so chaperones are a laboratory artifact. His experiment ran in dilute solution; the cytoplasm is a crowd in which 20–40 per cent of the volume is other macromolecules, and an emerging chain's exposed hydrophobic patches will happily stick to the wrong neighbour. The sequence still carries the information — the chaperones just buy the chain the time and shelter to use it.</p>
 
   <h2>Structure is not an ornament</h2>
@@ -260,6 +482,7 @@ const hierarchyCfg = {
     mutation also survives in malarial regions — one copy of the changed gene
     protects against malaria, selection balancing harm against benefit.
   </p>
+  <Widget no="9" caption="find the faulty line — the sickle-cell answer" widget="spot-error" config={psaSickleSpot} />
   <p><em>Common misconception:</em> enzymes supply energy that pushes reactions uphill, which is why reactions "run" in the cell. A catalyst lowers the activation barrier — the price of getting over the transition state — without touching the reaction's overall energy balance or its equilibrium: it makes a permitted reaction fast, never a forbidden one possible. That is why enzymes are built as precise pockets for a transition state, and why the fold, not muscle, is the machinery.</p>
 
   <h2>When folding fails: chaperones and misfolding disease</h2>
@@ -281,6 +504,7 @@ const hierarchyCfg = {
     trapped chains out. Others escort hopeless cases to the <em>proteasome</em>, the
     cell's shredder. Folding is a managed process, not chemistry alone.
   </p>
+  <Widget no="10" caption="run the chaperone's triage" widget="branch" config={psaChaperoneBranch} />
   <p>
     When a misfolded protein escapes that safety net and stacks up with others,
     disease follows. Many misfolded states lock into highly ordered fibres called

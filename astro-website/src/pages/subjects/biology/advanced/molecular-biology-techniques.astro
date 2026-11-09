@@ -21,6 +21,178 @@ const pcrCfg = {
     { math: 'DNA profiling: 20 STR loci, ~10 alleles each', note: 'a random profile match runs ≈ 10⁻¹⁹ and smaller — astronomically unlikely, identical twins excepted. That arithmetic is courtroom evidence.' },
   ],
 };
+
+const mbtQuestionMatch = {
+  "prompt": "Five tools, five different questions — pair them:",
+  "pairs": [
+    {
+      "left": "PCR",
+      "right": "is this sequence present?"
+    },
+    {
+      "left": "gel electrophoresis",
+      "right": "how long are the pieces?"
+    },
+    {
+      "left": "sequencing",
+      "right": "what is the exact order?"
+    },
+    {
+      "left": "DNA profiling",
+      "right": "whose is it?"
+    },
+    {
+      "left": "CRISPR",
+      "right": "can we change it?"
+    }
+  ],
+  "why": "The toolkit chains in exactly that order in a real experiment: amplify, check, read — then edit."
+};
+
+const mbtRawCloze = {
+  "text": "DNA's sugar-phosphate backbone carries a %%0%% charge on every phosphate, which makes it movable by electric fields. Its two strands separate when heated near %%1%% °C and re-anneal by base pairing: A–T with %%2%% hydrogen bonds, G–C with %%3%%.",
+  "answers": [
+    [
+      "negative"
+    ],
+    [
+      "95"
+    ],
+    [
+      [
+        "two",
+        "2"
+      ]
+    ],
+    [
+      [
+        "three",
+        "3"
+      ]
+    ]
+  ],
+  "hint": "Charge makes DNA sortable; reversible strand separation makes it copyable — every technique here uses one or both."
+};
+
+const mbtGenesEstimate = {
+  "prompt": "One human cell folds about 3.1 billion base pairs into a 6 μm nucleus. Roughly how many of those letters code for proteins — i.e. how many protein-coding genes are sprinkled through the genome?",
+  "unit": "genes",
+  "answer": 20000,
+  "factor": 2,
+  "why": "~20,000 protein-coding genes; the rest is regulatory sequence, introns, repeats and history — which is why finding one specific 200-letter stretch is a one-in-ten-million search.",
+  "context": "PCR finds the needle by exponentially copying only the needle; profiling reduces three billion letters to twenty informative numbers."
+};
+
+const mbtCloneOrder = {
+  "prompt": "From human gene to bacterial factory, 1972–73 style — put the recipe in order:",
+  "items": [
+    "Cut the plasmid and the human insert with the same restriction enzyme",
+    "The staggered cuts leave matching single-stranded sticky ends",
+    "DNA ligase seals the joins",
+    "Return the construct to a bacterium",
+    "The bacterium copies the construct for free",
+    "Human insulin from bacterial fermentation — the first mass product, 1982"
+  ],
+  "why": "Scissors with addressable targets (EcoRI reads GAATTC, cutting between G and A), sticky ends that anneal, ligase to seal, and a free copying machine — that pair of facts founded recombinant DNA."
+};
+
+const mbtTaqSpot = {
+  "prompt": "This PCR answer contains one faulty line — click it:",
+  "lines": [
+    "Each cycle runs three temperatures: ~95 °C, then ~50–60 °C, then ~72 °C.",
+    "At ~95 °C the double helix denatures into single strands.",
+    "At ~50–60 °C the synthetic primers anneal to the two strands flanking the target.",
+    "At ~72 °C the polymerase extends the primers along the template.",
+    "Taq polymerase is destroyed by the 95 °C step, so a fresh batch must be added by hand after every cycle.",
+    "A thermal cycler automates the temperature dance — 30 cycles in about 90 minutes."
+  ],
+  "errorLine": 4,
+  "correction": "Taq polymerase SURVIVES the denaturation step — that heat stability is what made thermal cycling automatic.",
+  "why": "Taq comes from the hot-spring bacterium Thermus aquaticus; it rides out 95 °C, so the tubes just go into the thermal cycler — no hand-adding between cycles."
+};
+
+const mbtVariantBuckets = {
+  "prompt": "Three PCR variants, three specialities. File each fact:",
+  "buckets": [
+    "reads RNA",
+    "quantifies",
+    "skips the thermal cycler"
+  ],
+  "items": [
+    {
+      "label": "copies RNA via reverse transcriptase",
+      "bucket": 0
+    },
+    {
+      "label": "the RT-PCR tests that ran the COVID-19 pandemic",
+      "bucket": 0
+    },
+    {
+      "label": "reads the starting amount from the cycle number at threshold",
+      "bucket": 1
+    },
+    {
+      "label": "Ct below 30 means a high viral load",
+      "bucket": 1
+    },
+    {
+      "label": "isothermal amplification (LAMP) for point-of-care testing",
+      "bucket": 2
+    },
+    {
+      "label": "one constant temperature, no heating/cooling dance",
+      "bucket": 2
+    }
+  ],
+  "why": "Reverse-transcription PCR makes RNA viruses readable, quantitative PCR reads amounts from Ct values, and isothermal methods trade the thermal cycler for the field."
+};
+
+const mbtGelPredict = {
+  "q": "Two DNA fragments start at the same well: 200 bp and 2,000 bp. Which reaches the far end of the gel first?",
+  "choices": [
+    "The 2,000 bp one — the field pulls on its larger negative charge",
+    "They arrive together — both have the same charge-to-mass ratio",
+    "The 200 bp one — it threads the gel's polymer mesh more easily"
+  ],
+  "answer": 2,
+  "why": "Force and inertia scale together: every fragment has the same charge-to-mass ratio, so the extra pull on the long one is cancelled by its extra mass. Separation comes only from threading the mesh — small runs fast, large lag, roughly logarithmically in length."
+};
+
+const mbtCrisprBranch = {
+  "root": "Your ~20-letter guide RNA has paired with its genomic target, and Cas9 has cut both strands — provided the PAM licence check passed. The break now sits in a living cell's hands.",
+  "nodes": {
+    "start": {
+      "text": "Cas9 has cut. You control the repair conditions — what do you supply?",
+      "choices": [
+        {
+          "label": "A repair template with the sequence you want",
+          "next": "hdr",
+          "feedback": "Precise HDR editing — the template is what gets written in."
+        },
+        {
+          "label": "Nothing — let the cell's sloppy repair handle it",
+          "next": "nhej",
+          "feedback": "NHEJ disrupts the gene: a knockout."
+        },
+        {
+          "label": "Cut again, to be sure",
+          "next": "off",
+          "feedback": "Guides have off-target cuts — every extra cut adds risk."
+        }
+      ]
+    },
+    "hdr": {
+      "text": "Precise HDR editing done — reading has become writing. Applications stack: disease-resistant crops without foreign DNA, base- and prime-editing that cut less."
+    },
+    "nhej": {
+      "text": "A knockout. That lever is exactly what Casgevy (2023, sickle-cell) pulls — knocking out a repressor to reactivate fetal haemoglobin."
+    },
+    "off": {
+      "text": "The craft is designing the controls that expose error bars — one clean cut beats several uncertain ones."
+    }
+  },
+  "why": "Sloppy NHEJ repair knocks genes out; a supplied template channels precise HDR. The ethical line since the 2018 He Jiankui case: somatic therapy yes with oversight, heritable germline editing no — for now."
+};
 ---
 <TopicPage slug="subjects/biology/advanced/molecular-biology-techniques">
   <h2>Where you are, and what you will learn</h2>
@@ -53,6 +225,7 @@ const pcrCfg = {
     works through the toolkit in the order a real experiment would use it, because the
     techniques chain: amplify, check, read, then act.
   </p>
+  <Widget no="3" caption="pair each tool with the question it answers" widget="match" config={mbtQuestionMatch} />
   <p>
     The raw material first. DNA's sugar-phosphate backbone carries a negative charge on
     every phosphate — which makes it movable by electric fields — and its two strands
@@ -61,6 +234,7 @@ const pcrCfg = {
     both of those two facts: charge makes DNA sortable; reversible strand separation
     makes it copyable.
   </p>
+  <Widget no="4" caption="fill the blanks — the two facts under the toolkit" widget="cloze" config={mbtRawCloze} />
 
   <Widget no="1" caption="the four-step toolkit, from copying to editing" widget="equationStep" config={techCfg} />
   <p>
@@ -85,6 +259,7 @@ const pcrCfg = {
     three billion letters to twenty informative numbers. Keep the scale in view and each
     tool's design makes sense as an answer to a specific bottleneck.
   </p>
+  <Widget no="5" caption="call the magnitude — the gene count" widget="estimate" config={mbtGenesEstimate} />
 
   <p>
     <strong>So far:</strong> the whole toolkit is a set of engineering answers to one
@@ -108,6 +283,7 @@ const pcrCfg = {
     with these scissors. Restriction maps (where each enzyme cuts) were also the first
     crude way to compare genomes, before sequencing got cheap.
   </p>
+  <Widget no="6" caption="rebuild the recombinant-DNA recipe" widget="order" config={mbtCloneOrder} />
 
   <h2>PCR: exponential copying by thermal cycling</h2>
   <p>
@@ -122,6 +298,7 @@ const pcrCfg = {
     thermal cycler, program the dance, come back in 90 minutes. The arithmetic is
     compound interest:
   </p>
+  <Widget no="7" caption="find the faulty line — the thermal-cycle answer" widget="spot-error" config={mbtTaqSpot} />
 
   <Widget no="2" caption="the exponential arithmetic of PCR — and the courtroom consequence (DNA profiling)" widget="equationStep" config={pcrCfg} />
   <p>
@@ -146,6 +323,7 @@ const pcrCfg = {
     chosen ones, which is why contamination control (separate rooms, no-template
     controls) is half of PCR craft.
   </p>
+  <Widget no="8" caption="file the PCR variants by what they read" widget="sort-buckets" config={mbtVariantBuckets} />
 
   <p>
     <strong>So far:</strong> PCR manufactures enough of the chosen target for any
@@ -168,6 +346,7 @@ const pcrCfg = {
     PCR products, digested plasmids, sequencing fragments all end their analysis in a
     gel or its modern capillary equivalent.
   </p>
+  <Widget no="9" caption="bet first — which fragment wins the gel race?" widget="predict" config={mbtGelPredict} />
   <p>
     <strong>DNA profiling</strong> turns gels into identity tests. The genome is speckled
     with short tandem repeats (STRs) — runs like CA-CA-CA — whose <em>number of repeats</em>
@@ -242,6 +421,7 @@ const pcrCfg = {
     babies, broadly condemned, banned in most jurisdictions — defined the field's ethical
     line: somatic therapy yes (with oversight), heritable editing no, for now.
   </p>
+  <Widget no="10" caption="run the CRISPR repair decision" widget="branch" config={mbtCrisprBranch} />
   <p>
     <em>Common misconception:</em> the toolkit is infallible — a PCR band or a CRISPR
     edit proves exactly what it seems to. Polymerases make errors (Taq about one per

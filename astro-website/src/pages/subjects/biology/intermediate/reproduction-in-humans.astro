@@ -37,6 +37,191 @@ const fertCfg = {
     { math: 'embryo implants in the uterus lining (about a week after fertilisation)', note: 'The ball of cells sinks into the thickened lining; the placenta begins to form for nine months of exchange.' },
   ],
 };
+
+const rpStrategyJudge = {
+  "statements": [
+    {
+      "s": "An asexual lineage doubles its numbers every generation and never needs a partner.",
+      "truth": true,
+      "why": "Fast, cheap and safe when the environment suits you — which is why bacteria and many plants still run it."
+    },
+    {
+      "s": "Asexual reproduction is a primitive mistake that evolution abandoned.",
+      "truth": false,
+      "why": "Anything but — it is a running strategy, not a relic."
+    },
+    {
+      "s": "Sex persists despite its cost because variation is insurance against fast-evolving parasites.",
+      "truth": true,
+      "why": "A sexual lineage spends half its reproduction making offspring that carry only half of each parent's genes."
+    },
+    {
+      "s": "Sexual reproduction is always the better strategy in every environment.",
+      "truth": false,
+      "why": "It is a trade, not a tournament — the payoff shows only across generations under attack from evolving parasites."
+    }
+  ]
+};
+
+const rpGameteMatch = {
+  "prompt": "Two gametes, built differently — pair each structure with its job:",
+  "pairs": [
+    {
+      "left": "flagellum",
+      "right": "swimming"
+    },
+    {
+      "left": "midpiece mitochondria",
+      "right": "powering the swim"
+    },
+    {
+      "left": "acrosome enzymes",
+      "right": "cutting through the egg's defences"
+    },
+    {
+      "left": "jelly coat",
+      "right": "changes at fertilisation to lock out competitors"
+    },
+    {
+      "left": "energy stores",
+      "right": "the egg's opposite bet — stocked, immobile, defended"
+    }
+  ],
+  "why": "Sperm are cheap and expendable by design; eggs are precious — an asymmetry repeated across nearly all animal species, shaping mating behaviour everywhere."
+};
+
+const rpSpermEstimate = {
+  "prompt": "Sperm are made continuously from puberty onward. Roughly how many does a healthy male produce per second?",
+  "unit": "sperm/s",
+  "answer": 1500,
+  "factor": 1.6,
+  "why": "About 1,500 per second — and yet only a few hundred of a typical ejaculate's 40–300 million survive the journey far enough to reach the egg.",
+  "context": "Eggs are the opposite: all the precursor cells exist before birth, and one follicle matures per month."
+};
+
+const rpPolySpot = {
+  "prompt": "This fertilisation answer contains one faulty line — click it:",
+  "lines": [
+    "Millions of sperm are deposited; only a few hundred survive the journey far enough to reach the egg.",
+    "Acrosome enzymes digest a path through the jelly coat.",
+    "The moment one sperm gets through, the egg membrane changes — no second sperm may enter.",
+    "A polyspermic zygote would develop normally, just smaller.",
+    "Nuclei fuse: 23 + 23 chromosomes restore the diploid 46."
+  ],
+  "errorLine": 3,
+  "correction": "A polyspermic zygote CANNOT develop — the hardening of the coat is exactly what prevents it.",
+  "why": "Fertilisation is a gate, not a finish line: millions of candidates filtered, then the door locked behind the one."
+};
+
+const rpPlacentaBuckets = {
+  "prompt": "The placenta is the only exchange site. File each claim:",
+  "buckets": [
+    "crosses the placenta",
+    "stays separate"
+  ],
+  "items": [
+    {
+      "label": "dissolved nutrients and oxygen — mother to fetus",
+      "bucket": 0
+    },
+    {
+      "label": "urea and carbon dioxide — fetus to mother",
+      "bucket": 0
+    },
+    {
+      "label": "alcohol, nicotine, rubella and HIV — the warning list",
+      "bucket": 0
+    },
+    {
+      "label": "about 25 mL of oxygen per minute at full term",
+      "bucket": 0
+    },
+    {
+      "label": "the mother's blood mixing with the fetus's",
+      "bucket": 1
+    },
+    {
+      "label": "the fetus breathing through the umbilical cord",
+      "bucket": 1
+    }
+  ],
+  "why": "The two bloods stay separate while substances diffuse across — the cord is plumbing between fetus and placenta, and the fetal lungs are collapsed and bypassed by a shunt until the first breaths."
+};
+
+const rpCycleOrder = {
+  "prompt": "From maturing follicle to shed lining — put the cycle in order:",
+  "items": [
+    "FSH from the pituitary matures a follicle",
+    "The follicle's oestrogen rebuilds the uterine lining",
+    "Oestrogen rising high enough triggers the LH surge — the one positive feedback in endocrinology",
+    "Ovulation, about day 14 in a 28-day cycle",
+    "The emptied follicle becomes the corpus luteum, secreting progesterone",
+    "If no embryo signals, progesterone collapses and the lining is shed"
+  ],
+  "why": "One positive and one negative feedback loop in the same cycle: oestrogen's rise triggers LH, while progesterone suppresses further FSH."
+};
+
+const rpBBTPlace = {
+  "prompt": "Progesterone raises basal body temperature by 0.3–0.5 °C after ovulation. If the pre-ovulatory reading sits near 36.4 °C, pin the post-ovulatory plateau (°C):",
+  "labels": [
+    "36.0",
+    "36.4",
+    "36.8",
+    "37.2"
+  ],
+  "scale": {
+    "min": 36,
+    "max": 37.2
+  },
+  "answer": 36.8,
+  "tolerance": 0.25,
+  "why": "About 36.8 °C — a fraction of a degree, held until menstruation; the signal is small, which is why tracking demands a good thermometer and daily patience.",
+  "context": "The step is progesterone's signature — the corpus luteum warming the body after ovulation."
+};
+
+const rpTechBranch = {
+  "root": "The menstrual cycle's feedback loop can be pressed deliberately — in either direction. Choose the goal.",
+  "nodes": {
+    "start": {
+      "text": "What is the goal?",
+      "choices": [
+        {
+          "label": "No follicle matures this month",
+          "next": "pill",
+          "feedback": "The combined pill supplies oestrogen and progesterone at steady levels — the cycle's own negative-feedback switch, held on."
+        },
+        {
+          "label": "Several follicles mature at once",
+          "next": "ivf",
+          "feedback": "IVF runs the loop in reverse: fertility drugs push the follicle-stimulating switch hard."
+        },
+        {
+          "label": "Delay or prevent ovulation after the fact",
+          "next": "morning",
+          "feedback": "The morning-after pill loads progesterone high enough to delay ovulation."
+        },
+        {
+          "label": "A purely mechanical barrier",
+          "next": "condom",
+          "feedback": "Condoms — and, uniquely among contraceptives, they also block STI transmission."
+        }
+      ]
+    },
+    "pill": {
+      "text": "The switch pressed and held: no egg released, nothing to fertilise."
+    },
+    "ivf": {
+      "text": "Eggs collected, fertilised in a dish, and one or two embryos placed back into a progesterone-primed uterus."
+    },
+    "morning": {
+      "text": "A progesterone surge buying time — the corpus luteum's own chemistry, borrowed."
+    },
+    "condom": {
+      "text": "The one technology that needs no hormone at all."
+    }
+  },
+  "why": "Both hormonal technologies press the cycle's own feedback switches in opposite directions — STIs, by contrast, are defined by transmission route, not species."
+};
 ---
 <TopicPage slug="subjects/biology/intermediate/reproduction-in-humans">
   <h2>Where you are, and what you will learn</h2>
@@ -76,6 +261,7 @@ const fertCfg = {
   never needs a partner, which is why bacteria and many plants still run it. Sex persists
   despite its cost because variation is insurance in a world of fast-evolving parasites — a
   trade, not a tournament with a single winner.</p>
+  <Widget no="4" caption="true or false — two strategies, one goal" widget="judge" config={rpStrategyJudge} />
 
   <h2>Two gametes, built differently</h2>
   <p>
@@ -93,6 +279,7 @@ const fertCfg = {
     Sperm are cheap to make and expendable by design; eggs are precious and defended. That
     asymmetry, repeated across nearly all animal species, shapes mating behaviour everywhere.
   </p>
+  <Widget no="5" caption="pair each structure with its engineering job" widget="match" config={rpGameteMatch} />
   <p>
     Both gametes are <strong>haploid</strong> — 23 chromosomes — produced by meiosis, and their
     fusion restores the diploid 46. Sperm are made continuously in the <strong>testes</strong>
@@ -109,6 +296,7 @@ const fertCfg = {
     oviduct, which sweeps them toward the uterus by cilia and muscular peristalsis, the same
     tube in which fertilisation will occur.
   </p>
+  <Widget no="6" caption="call the magnitude — the sperm production line" widget="estimate" config={rpSpermEstimate} />
   <p>
     <strong>So far:</strong> two differently engineered gametes are made — millions of cheap,
     motile sperm, one stocked egg — and the anatomy delivers them to a single meeting place.
@@ -130,6 +318,7 @@ const fertCfg = {
     others, because a polyspermic zygote cannot develop. Fertilisation is a gate, not a
     finish line.
   </p>
+  <Widget no="7" caption="find the faulty line — the fertilisation relay" widget="spot-error" config={rpPolySpot} />
 
   <p>
     Once implanted, the embryo's <strong>placenta</strong> and <strong>umbilical cord</strong>
@@ -146,6 +335,7 @@ const fertCfg = {
     by full term the placenta delivers the fetus about 25 mL of oxygen per minute and clears
     the corresponding CO₂ — a tiny lung, working continuously, discarded at birth.
   </p>
+  <Widget no="8" caption="file the claims — crosses the placenta or not" widget="sort-buckets" config={rpPlacentaBuckets} />
   <p><em>Common misconception:</em> "the baby breathes and eats through the umbilical cord, and
     the mother's blood mixes with the fetus's." The cord is plumbing between fetus and
     placenta, and the placenta is the only exchange site — no direct mixing, no breathing, no
@@ -171,6 +361,7 @@ const fertCfg = {
     LH (positive feedback, the one exception in endocrinology), while progesterone suppresses
     further FSH (negative feedback) — the two feedback types working in the same cycle.
   </p>
+  <Widget no="9" caption="rebuild the 28-day cycle's hormone relay" widget="order" config={rpCycleOrder} />
   <p><em>Common misconception:</em> "ovulation always lands on day 14 of every cycle." Day 14
   belongs to the textbook 28-day cycle; the luteal phase stays near 14 days while the phase
   before ovulation absorbs almost all the variation, so a 26-day cycle ovulates near day 12
@@ -180,6 +371,7 @@ const fertCfg = {
     about <strong>0.3–0.5 °C</strong> after ovulation, and the fall just before menstruation
     is what lets cycle-tracking apps guess your ovulation day:
   </p>
+  <Widget no="10" caption="pin the post-ovulatory plateau on the thermometer" widget="place" config={rpBBTPlace} />
 
   <Widget no="2" caption="basal body temperature across a cycle — the step up is progesterone's signature after ovulation (~day 14)" widget="plotter" config={bbtCfg} />
   <p>
@@ -218,6 +410,7 @@ const fertCfg = {
     deliberately. Condoms, by contrast, work mechanically — and, uniquely among contraceptives,
     also block STI transmission.
   </p>
+  <Widget no="11" caption="press the switches — contraception or IVF" widget="branch" config={rpTechBranch} />
   <p>
     <strong>So far:</strong> the same feedback loop runs the cycle and the technologies — the
     pill suppresses FSH, IVF amplifies it, and tracking reads progesterone's temperature trace.

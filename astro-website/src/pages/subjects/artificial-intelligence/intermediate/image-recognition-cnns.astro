@@ -59,6 +59,175 @@ const cnnQuizCfg = {
     },
   ],
 };
+
+const cnxPixelsEstimate = {
+  "prompt": "A 224 × 224 colour photo carries three channels of brightness values. Roughly how many numbers is that?",
+  "unit": "values",
+  "answer": 150000,
+  "factor": 1.2,
+  "why": "224 × 224 × 3 ≈ 150,000 values — the raw pixel soup the CNN must turn into concepts like 'pedestrian'.",
+  "context": "A convolutional layer of 64 different 3×3 filters over 3 channels needs just 64 × 3 × 3 × 3 = 1,728 weights to start that translation."
+};
+
+const cnxWeightsSpot = {
+  "prompt": "This architecture argument contains one faulty line — click it:",
+  "lines": [
+    "Images are local: pixel neighbourhoods are where structure lives.",
+    "A fully-connected hidden layer of 1,000 units over 224×224×3 needs about 150 million weights.",
+    "64 different 3×3 filters over 3 channels need 64 × 3 × 3 × 3 = 1,728 weights — four orders of magnitude fewer.",
+    "Padding adds a border so the output map stays the same size; stride skips positions to shrink it.",
+    "Weight sharing is a compromise: connecting every pixel to every neuron uses more information, so it recognises more."
+  ],
+  "errorLine": 4,
+  "correction": "Fully-connected uses more parameters, not more information — and throws away locality; weight sharing encodes the prior that the same pattern matters wherever it appears.",
+  "why": "That is how 1,728 weights can beat 150 million on real images — cheaper to train, harder to overfit, and structurally committed to the right prior."
+};
+
+const cnxFieldTrace = {
+  "prompt": "Each layer takes a 3×3 view of the previous layer's larger features, so the effective view compounds. Which curve matches a neuron's effective receptive field (in pixels) as layers (x) stack?",
+  "curves": [
+    {
+      "expr": "x*x/2",
+      "color": "#1d4ed8",
+      "label": "A: compounding view"
+    },
+    {
+      "expr": "3",
+      "color": "#b42318",
+      "label": "B: fixed 3-pixel view"
+    },
+    {
+      "expr": "x",
+      "color": "#0f766e",
+      "label": "C: linear growth"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 1,
+    "max": 6
+  },
+  "y": {
+    "min": 0,
+    "max": 20
+  },
+  "xlabel": "layer depth",
+  "ylabel": "effective receptive field (px)",
+  "why": "The compounding view is depth's whole trick: a neuron at layer 5 can 'see' a quarter of the picture — edges into textures into parts into objects, self-organised."
+};
+
+const cnxLineageOrder = {
+  "prompt": "The biological echo became an architecture — put the lineage in order:",
+  "items": [
+    "Hubel and Wiesel find simple and complex cells in cat visual cortex (1959–62)",
+    "Fukushima's neocognitron translates the circuit idea into a layered network (1980)",
+    "LeCun's LeNet adds backpropagation and reads bank cheque digits (1989–98)",
+    "Zeiler & Fergus visualise trained networks — the hierarchy was there, self-organised (2014)"
+  ],
+  "why": "The architecture only says 'local filters, shared, stacked'; the specific features emerge from training — visualisation confirmed what was learned, not designed."
+};
+
+const cnxHumanPlace = {
+  "prompt": "AlexNet cut top-5 error to 15.3% in 2012; ResNet reached 3.6% by 2015. Where does a careful HUMAN sit on the same task?",
+  "labels": [
+    "0%",
+    "10%",
+    "20%",
+    "30%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 30
+  },
+  "answer": 5,
+  "tolerance": 1,
+  "why": "About 5% — by 2015 residual networks had pushed machine top-5 error below the careful human's roughly 5%, which is why 2012 is called the ImageNet moment: deep learning became the default method.",
+  "context": "The runner-up scored 26.2% the year AlexNet's two gaming GPUs, ReLUs and dropout dropped eleven points in one go."
+};
+
+const cnxSeesJudge = {
+  "statements": [
+    {
+      "s": "CNNs lean heavily on texture and local statistics where humans use shape and context.",
+      "truth": true,
+      "why": "Visualisation experiments suggest the mismatch — the networks solve the task with features that are statistically effective, not human-like."
+    },
+    {
+      "s": "The network 'sees' the way you do.",
+      "truth": false,
+      "why": "It leans on texture and local statistics; models confidently misclassify objects photographed in unusual poses."
+    },
+    {
+      "s": "A lesioned texture can fool human and machine in opposite ways.",
+      "truth": true,
+      "why": "One image, two opposite errors — the clearest demonstration that the feature sets differ."
+    },
+    {
+      "s": "CNN features are designed layer by layer by engineers.",
+      "truth": false,
+      "why": "Nobody specifies the hierarchy — it emerges from training on labelled images; visualisation studies confirmed it afterwards."
+    }
+  ]
+};
+
+const cnxTaskMatch = {
+  "prompt": "From classification down to pixels — pair each task with what it delivers:",
+  "pairs": [
+    {
+      "left": "whole-image classification",
+      "right": "'this photo contains a dog'"
+    },
+    {
+      "left": "object detection (YOLO-family)",
+      "right": "bounding boxes for many objects in one forward pass — fast enough for video"
+    },
+    {
+      "left": "semantic segmentation (U-Net-style)",
+      "right": "a label for every pixel — the boundary of the tumour, not just 'tumour somewhere'"
+    },
+    {
+      "left": "the radiologist's second reader",
+      "right": "superhuman consistency in narrow tasks, superhuman fragility outside them"
+    }
+  ],
+  "why": "Detection makes self-driving perception and photo search possible; segmentation is medical imaging's workhorse."
+};
+
+const cnxFailBuckets = {
+  "prompt": "Three classic failure modes — file each case:",
+  "buckets": [
+    "Adversarial examples",
+    "Shortcut learning",
+    "Distribution shift"
+  ],
+  "items": [
+    {
+      "label": "an invisible perturbation flips the panda to 'gibbon' with high confidence (2017)",
+      "bucket": 0
+    },
+    {
+      "label": "road signs are fair game for adversaries too",
+      "bucket": 0
+    },
+    {
+      "label": "a 'skin lesion classifier' that learned ruler marks from malignant-photo datasets",
+      "bucket": 1
+    },
+    {
+      "label": "a 'sheep detector' that keyed on grass",
+      "bucket": 1
+    },
+    {
+      "label": "one hospital's scanners lose accuracy on another's",
+      "bucket": 2
+    },
+    {
+      "label": "benchmarks are not deployment",
+      "bucket": 2
+    }
+  ],
+  "why": "If the training data contains a shortcut, the optimiser will take it — and a broken model fails silently, so the professional response is one discipline: evaluate on data that looks like the real world, test failure cases on purpose, monitor after launch."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/image-recognition-cnns">
   <h2>Where you are, and what you will learn</h2>
@@ -106,6 +275,7 @@ const cnnQuizCfg = {
     number: the output <strong>feature map</strong>. Wherever the image locally resembles the
     pattern the kernel encodes, the output is large.
   </p>
+  <Widget no="3" caption="call the magnitude — the pixel soup" widget="estimate" config={cnxPixelsEstimate} />
   <p>
     Worked example. Take the patch [[1, 2, 3], [4, 5, 6], [7, 8, 9]] and the classic vertical
     edge detector [[−1, 0, 1], [−1, 0, 1], [−1, 0, 1]]. The dot product is (−1+3) + (−4+6) +
@@ -128,6 +298,7 @@ const cnnQuizCfg = {
     engineering details complete the picture: <em>padding</em> adds a border so the output
     map stays the same size, and <em>stride</em> skips positions to shrink it.)
   </p>
+  <Widget no="4" caption="find the faulty line — the parameter-count argument" widget="spot-error" config={cnxWeightsSpot} />
 
   <p><em>Common misconception:</em> "connecting every pixel to every neuron uses more
   information, so it should recognise more." It uses more parameters, not more information -
@@ -153,6 +324,7 @@ const cnnQuizCfg = {
     layer's features amounts to a much larger <em>effective</em> receptive field on the
     original image — a neuron at layer 5 can "see" a quarter of the picture.
   </p>
+  <Widget no="5" caption="which curve is the receptive field?" widget="trace" config={cnxFieldTrace} />
   <p>
     Crucially, nobody specifies this hierarchy. The architecture only says "local filters,
     shared, stacked"; the specific features emerge from training on labelled images. When
@@ -164,6 +336,7 @@ const cnnQuizCfg = {
     neocognitron (1980) translated that circuit idea into a layered network; LeCun's LeNet
     (1989–98) added backpropagation and put CNNs to work reading bank cheque digits.
   </p>
+  <Widget no="6" caption="rebuild the lineage — cortex to cheque digits" widget="order" config={cnxLineageOrder} />
 
   <p>
     <strong>So far:</strong> stack convolve-pool-convolve-pool and the network composes its
@@ -192,12 +365,14 @@ const cnnQuizCfg = {
     the ImageNet moment because it is when "deep learning" stopped being a curiosity and
     became the default method.
   </p>
+  <Widget no="7" caption="pin the human on the top-5 error scale" widget="place" config={cnxHumanPlace} />
   <p><em>Common misconception:</em> the network "sees" the way you do. Visualisation
   experiments suggest otherwise — CNNs lean heavily on texture and local statistics where
   humans use shape and context. A lesioned texture can fool both human and machine in
   opposite ways, and models confidently misclassify objects photographed in unusual poses.
   The networks solve the task they were trained on with features that are statistically
   effective, not human-like.</p>
+  <Widget no="8" caption="true or false — machine vision's way of seeing" widget="judge" config={cnxSeesJudge} />
 
   <h2>From classification to detection, segmentation and transfer</h2>
   <p>
@@ -211,6 +386,7 @@ const cnnQuizCfg = {
     systems as second readers; the honest framing is a tireless assistant with superhuman
     consistency in narrow tasks and superhuman fragility outside them.
   </p>
+  <Widget no="9" caption="pair each vision task with its output" widget="match" config={cnxTaskMatch} />
   <p>
     And almost nobody trains vision networks from scratch any more.
     <strong>Transfer learning</strong> starts from a network pretrained on millions of
@@ -243,6 +419,7 @@ const cnnQuizCfg = {
     like the real world, test the failure cases on purpose, and monitor after launch —
     because a broken model fails silently.
   </p>
+  <Widget no="10" caption="file the failure — which classic is it?" widget="sort-buckets" config={cnxFailBuckets} />
 
   <p>
     <strong>So far:</strong> the failure modes - adversarial flips, shortcut features,

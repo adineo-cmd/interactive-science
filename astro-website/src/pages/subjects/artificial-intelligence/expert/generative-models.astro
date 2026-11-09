@@ -10,6 +10,170 @@ const genCfg = {
     { math: '4 · Copyright and provenance are open problems', note: 'Models trained on artists\' work without consent; outputs resembling training data; watermarks (C2PA provenance) as countermeasures. Courts and markets are still deciding — a live legal frontier, not settled law.' },
   ],
 };
+
+const gmBackpropOrder = {
+  "prompt": "The universal learning rule, step by step — put the loop in order:",
+  "items": [
+    "make a prediction",
+    "measure the error",
+    "compute the gradient of that error with respect to every weight — the chain rule, applied backwards",
+    "nudge each weight downhill",
+    "repeat over millions of examples"
+  ],
+  "why": "Depth is the point: edges into textures, textures into parts, parts into objects — a hierarchy of representations, inherited by every generative family."
+};
+
+const gmFamilyBuckets = {
+  "prompt": "Two rival answers to image sampling — file each fact:",
+  "buckets": [
+    "GAN (adversarial)",
+    "Diffusion"
+  ],
+  "items": [
+    {
+      "label": "a generator maps noise to images; a discriminator learns to tell generated from real",
+      "bucket": 0
+    },
+    {
+      "label": "mode collapse — a forger with one good trick",
+      "bucket": 0
+    },
+    {
+      "label": "StyleGAN faces, this-person-does-not-exist",
+      "bucket": 0
+    },
+    {
+      "label": "destroy an image by adding Gaussian noise over hundreds of steps, then learn to reverse one step",
+      "bucket": 1
+    },
+    {
+      "label": "start from pure noise and run the learned denoiser, typically 20–50 steps",
+      "bucket": 1
+    },
+    {
+      "label": "no adversary to fool, stable training, text conditioning plugs in cleanly",
+      "bucket": 1
+    }
+  ],
+  "why": "No adversary means no pathology to exploit — stability is why diffusion was the default for essentially every serious image generator by 2022–23."
+};
+
+const gmMemoryJudge = {
+  "statements": [
+    {
+      "s": "The denoiser is trained to predict noise on corrupted inputs.",
+      "truth": true,
+      "why": "Generation then samples new trajectories through image space from random starts — the model learns the gradient of the data distribution, not an album."
+    },
+    {
+      "s": "Diffusion models just denoise images they have seen.",
+      "truth": false,
+      "why": "Typical outputs are novel compositions of learned regularities; the tests (Carlini et al., 2023) found memorisation real but rare."
+    },
+    {
+      "s": "Documented memorisation is concentrated in duplicated training images.",
+      "truth": true,
+      "why": "The measurable truth sits between the hype and the dismissal — testable, and tested."
+    },
+    {
+      "s": "Both the hype and the dismissal miss the measured truth.",
+      "truth": true,
+      "why": "Real but rare memorisation, mostly duplicates; typical generation is composition, not recall."
+    }
+  ]
+};
+
+const gmTempTrace = {
+  "prompt": "Temperature scales randomness. Which curve shows the probability mass on the most likely token as temperature (x) rises?",
+  "curves": [
+    {
+      "expr": "exp(-x/2)",
+      "color": "#1d4ed8",
+      "label": "A: concentrated then flat"
+    },
+    {
+      "expr": "x*x/20",
+      "color": "#b42318",
+      "label": "B: rising"
+    },
+    {
+      "expr": "0.5",
+      "color": "#0f766e",
+      "label": "C: constant"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 5
+  },
+  "y": {
+    "min": 0,
+    "max": 1
+  },
+  "xlabel": "temperature",
+  "ylabel": "peak probability",
+  "why": "Low temperature concentrates probability — cautious and repetitive; high temperature flattens it — adventurous. Top-p truncates the tail of unlikely tokens."
+};
+
+const gmLatentEstimate = {
+  "prompt": "In Stable Diffusion, a 512 × 512 pixel image lives in a 64 × 64 latent. Roughly how many times fewer numbers does the latent hold?",
+  "unit": "×",
+  "answer": 64,
+  "factor": 1.3,
+  "why": "(512 ÷ 64)² = 64 — an 8 × 8 per-side compression, which is why consumer GPUs can run these models at all.",
+  "context": "The geometry is queryable: interpolation passes through plausible intermediate faces, and direction arithmetic yielded 'smiling' as a vector you can add to a neutral face."
+};
+
+const gmSteerSpot = {
+  "prompt": "This conditioning summary contains one faulty line — click it:",
+  "lines": [
+    "CLIP learned a shared embedding space from hundreds of millions of image–caption pairs.",
+    "An image and its description land at nearby points in that space.",
+    "Diffusion conditioned on these embeddings converts a sentence into a target region of image space.",
+    "The prompt is a rigid file format — only engineers can steer generation.",
+    "Steering is also where failure lives: prompts can be injected with hidden text."
+  ],
+  "errorLine": 3,
+  "correction": "The prompt became a programming language: subjects, styles, composition, even camera optics are steerable in natural language.",
+  "why": "Conditioning turned language into a control surface — for images via CLIP and cross-attention, for text via instruction tuning and RLHF."
+};
+
+const gmDeepfakeMatch = {
+  "prompt": "The forgery economy and its defences — pair the pieces:",
+  "pairs": [
+    {
+      "left": "voice cloning",
+      "right": "the 2024 Hong Kong case: roughly $25M conned from a finance employee by deepfaked colleagues on a video call"
+    },
+    {
+      "left": "detection lags generation permanently",
+      "right": "detectors train on yesterday's generators"
+    },
+    {
+      "left": "C2PA content credentials",
+      "right": "cryptographic signed metadata attached at capture or generation"
+    },
+    {
+      "left": "process defences",
+      "right": "verification of the requester, out-of-band confirmation, signed provenance"
+    }
+  ],
+  "why": "The durable defence is provenance rather than detection — the same trust-chain logic the cryptography chapter applied to certificates."
+};
+
+const gmUnderstandingCompare = {
+  "prompt": "What the model has versus what it does:",
+  "before": {
+    "label": "What it stores",
+    "text": "No referent for 'dog' beyond the statistics of pixels labelled with that word; an autoregressive model predicts tokens, not truths."
+  },
+  "after": {
+    "label": "What it produces",
+    "text": "Plausible continuations — the training target — and the plausible can be false: hallucination is a property of the objective, not a bug to patch."
+  },
+  "why": "Whether grounded understanding emerges at scale is the live research question; assuming it has already arrived is how confident systems get trusted with consequential work."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/expert/generative-models">
   <h2>Where you are, and what you will learn</h2>
@@ -20,6 +184,7 @@ const genCfg = {
     <em>Reinforcement learning</em> — the substrate, the attention mechanism and the
     fine-tuning tools this chapter combines into machines that make new things.
   </p>
+  <Widget no="6" caption="call the magnitude — the latent compression" widget="estimate" config={gmLatentEstimate} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>state the difference between discriminative and generative modelling, and why generation is the harder target;</li>
@@ -80,6 +245,7 @@ const genCfg = {
     industry and made "we trained it bigger" a strategy with a published price-performance
     curve.
   </p>
+  <Widget no="2" caption="rebuild the backpropagation loop" widget="order" config={gmBackpropOrder} />
 
   <h2>Two families of image generators: adversarial and diffusion</h2>
   <p>
@@ -99,6 +265,7 @@ const genCfg = {
     architecture where text conditioning plugs in cleanly. That is why diffusion effectively
     won: by 2022–23 it was the default for essentially every serious image generator.
   </p>
+  <Widget no="3" caption="file the mechanisms — adversarial or diffusion?" widget="sort-buckets" config={gmFamilyBuckets} />
   <p>
     <em>Common misconception:</em> "diffusion models just denoise images they have seen." The
     denoiser is trained to predict noise on <em>corrupted</em> inputs, and generation samples
@@ -108,6 +275,7 @@ const genCfg = {
     duplicated training images — while typical outputs are novel compositions of learned
     regularities. Both the hype and the dismissal miss the measured truth.
   </p>
+  <Widget no="4" caption="true or false — memorisation and novelty" widget="judge" config={gmMemoryJudge} />
   <p>
     <strong>So far:</strong> two rival answers to image sampling — the adversarial game, with
     its mode-collapse pathology, and diffusion's learned denoising, which won on stability.
@@ -130,6 +298,7 @@ const genCfg = {
     of data to parameters (roughly 20 tokens per parameter) — which is how labs decide
     training plans worth hundreds of millions of dollars before the first GPU spins.
   </p>
+  <Widget no="5" caption="which curve is the temperature's work?" widget="trace" config={gmTempTrace} />
 
   <h2>Latent space: the geometry of learned meaning</h2>
   <p>
@@ -163,6 +332,7 @@ const genCfg = {
     (hidden text in an image telling a vision model to ignore instructions), and alignment
     problems (the alignment chapter's subject) are steering failures with consequences.
   </p>
+  <Widget no="7" caption="find the faulty line — steering" widget="spot-error" config={gmSteerSpot} />
   <p>
     <strong>So far:</strong> the machinery is complete — three sampling mechanisms, a latent
     geometry that stores what was learned, and conditioning that lets language drive it. What
@@ -186,6 +356,7 @@ const genCfg = {
     attached at capture or generation — let consumers check where an image came from, the
     same trust-chain logic the cryptography chapter applied to certificates.
   </p>
+  <Widget no="8" caption="pair each provenance fact with its role" widget="match" config={gmDeepfakeMatch} />
   <p>
     <em>Common misconception:</em> "detectors will catch deepfakes, so the problem is solved."
     Detection is an arms race the generators keep winning (every published detector is
@@ -202,6 +373,7 @@ const genCfg = {
   emerges at scale is the live research question; assuming it has already arrived is how
   confident systems get trusted with consequential work.
   </p>
+  <Widget no="9" caption="drag the divider — stored versus produced" widget="compare" config={gmUnderstandingCompare} />
   <p>
     <strong>So far:</strong> the full arc is on the table — from backpropagation's substrate
     through three sampling mechanisms to steered generation, applied science, and the

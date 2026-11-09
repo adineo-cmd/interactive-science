@@ -12,6 +12,125 @@ const ecoCfg = {
   crossings: false,
   height: 340,
 };
+
+const ecoTenEstimate = {
+  "prompt": "Only about 10% of the energy at one trophic level reaches the next. A field carrying 1,000 kg of grass supports about 100 kg of herbivore — about how many kg of carnivore?",
+  "unit": "kg of carnivore",
+  "answer": 10,
+  "factor": 1.6,
+  "why": "About 10 kg — the leak at every link (heat from respiration, uneaten parts, unabsorbed waste) is why big fierce animals are rare.",
+  "context": "Measured transfers run roughly 5–20%; food chains rarely exceed four or five links because there is nothing left to eat the lion-eater."
+};
+
+const ecoCycleJudge = {
+  "statements": [
+    {
+      "s": "Only matter cycles through ecosystems; energy is a one-way flow.",
+      "truth": true,
+      "why": "Energy enters once as sunlight and leaves for space as infrared radiation — ecosystems need a continuous power supply."
+    },
+    {
+      "s": "Decomposers add a trophic level of their own.",
+      "truth": false,
+      "why": "Their job is releasing locked-up nutrients for producers to re-use — the return leg, not a rung."
+    },
+    {
+      "s": "Heat lost during respiration can be harvested back into useful work by living things.",
+      "truth": false,
+      "why": "That leak is precisely why only ~10% of energy survives each feeding step."
+    },
+    {
+      "s": "Every ecosystem is two networks in one: energy flowing one way, matter cycling endlessly.",
+      "truth": true,
+      "why": "The sun supplies the first; decomposers run the second."
+    }
+  ]
+};
+
+const ecoWebMatch = {
+  "prompt": "What food webs show that single chains cannot — pair them:",
+  "pairs": [
+    {
+      "left": "redundancy",
+      "right": "one prey collapse rarely starves a specialist"
+    },
+    {
+      "left": "trophic position is a role, not a species",
+      "right": "a fox eats berries and rabbits — two levels at once"
+    },
+    {
+      "left": "pyramid of numbers",
+      "right": "count the organisms at each level"
+    },
+    {
+      "left": "the only honest pyramid",
+      "right": "of energy — it never inverts"
+    }
+  ],
+  "why": "Numbers and biomass pyramids occasionally invert — one oak tree feeding thousands of aphids — but you cannot support more kilojoules of consumer than the producer level makes."
+};
+
+const ecoBudgetOrder = {
+  "prompt": "One hectare, one year, the 10% rule — put the budget in order:",
+  "items": [
+    "Vegetation stores the equivalent of 100 million kilojoules a year",
+    "Herbivores can harvest about 10 million",
+    "Primary carnivores get about a million",
+    "A top predator perhaps a hundred thousand",
+    "A few person-days of food energy from an entire hectare"
+  ],
+  "why": "That is the quantitative meaning of 'big fierce animals are rare' — and why a hectare of grain feeds far more humans than a hectare of grain-fed beef."
+};
+
+const ecoCO2Compare = {
+  "prompt": "Atmospheric carbon dioxide — drag the divider across the industrial era:",
+  "before": {
+    "label": "pre-industrial",
+    "text": "About 280 ppm — the carbon cycle's steady budget, with photosynthesis and respiration balanced."
+  },
+  "after": {
+    "label": "today",
+    "text": "Over 420 ppm — burning fossil carbon buried for hundreds of millions of years has opened an extra faucet."
+  },
+  "why": "Energy is a one-way river; matter is a closed loop — but the loop now runs with an extra faucet open."
+};
+
+const ecoNitrogenCloze = {
+  "text": "Air is 78% nitrogen (N₂), but that triple-bonded molecule is unusable until %%0%% bacteria convert it to ammonium and nitrates plants can absorb. They live free in the soil — or housed in the %%1%% %%2%% of legumes such as beans and clover.",
+  "answers": [
+    [
+      "nitrogen-fixing"
+    ],
+    [
+      "root"
+    ],
+    [
+      "nodules"
+    ]
+  ],
+  "hint": "The same bacteria are why farmers rotate beans and clover through their fields."
+};
+
+const ecoReindeerEstimate = {
+  "prompt": "29 reindeer were released on St Matthew Island in 1944. Roughly how many were there by 1963, before the lichen ran out?",
+  "unit": "reindeer",
+  "answer": 6000,
+  "factor": 1.5,
+  "why": "Over 6,000 by 1963 — then the lichen ran out and only tens of survivors remained by 1966. Overshoot crashes; K also moves: the reindeer crashed their own carrying capacity.",
+  "context": "A population that overshoots the limit is this lesson's cautionary worked example."
+};
+
+const ecoLynxOrder = {
+  "prompt": "A century of Hudson Bay fur records, one loop — put the cycle in order:",
+  "items": [
+    "More hares feed more lynx",
+    "More lynx kill more hares",
+    "Fewer hares starve the lynx",
+    "Fewer lynx free the hares",
+    "Hare numbers rise again — the lynx peak lagging a year or two behind"
+  ],
+  "why": "A predator–prey oscillator built from nothing but birth and death rates — the lagged chase Gause reproduced in laboratory vessels."
+};
 ---
 <TopicPage slug="subjects/biology/foundational/ecology-populations-communities">
 
@@ -85,6 +204,7 @@ const ecoCfg = {
     transfers run roughly 5–20%). So a field carrying 1,000 kg of grass can
     support about 100 kg of herbivore — and about 10 kg of carnivore.
   </p>
+  <Widget no="2" caption="run the 10% rule — what can the carnivores eat?" widget="estimate" config={ecoTenEstimate} />
   <p>
     The consequences are arithmetic, not metaphor. Food chains rarely exceed
     four or five links, because there is simply nothing left to eat the
@@ -108,6 +228,7 @@ const ecoCfg = {
     loop; energy does not, and confusing the two makes decomposers look like a power
     source rather than the recycling crew they are.
   </p>
+  <Widget no="3" caption="true or false — what cycles, what leaks" widget="judge" config={ecoCycleJudge} />
 
   <h2>Food chains and food webs</h2>
   <p>
@@ -118,6 +239,7 @@ const ecoCfg = {
     webs</strong>: every species linked to everything it eats or is eaten
     by. Webs show three things chains cannot.
   </p>
+  <Widget no="4" caption="pair each web insight with its example" widget="match" config={ecoWebMatch} />
   <ul>
     <li><strong>Redundancy:</strong> most predators eat several prey, so one collapse rarely starves a specialist — until you remove something connected enough.</li>
     <li><strong>Trophic position is a role, not a species:</strong> a fox eats berries and rabbits, occupying two levels at once; a human at a banquet spans three.</li>
@@ -140,6 +262,7 @@ const ecoCfg = {
     enormously: a hectare of grain feeds far more humans than a hectare of
     grain-fed beef. The choice is arithmetic, not taste.
   </p>
+  <Widget no="5" caption="stack the hectare's energy budget" widget="order" config={ecoBudgetOrder} />
   <p>
     <em>Common misconception:</em> "plants are just the background; the real action is
     animals." The reverse is true energetically: producers are the <em>only</em> entry
@@ -161,6 +284,7 @@ const ecoCfg = {
     pre-industrial) to over 420 ppm today. The carbon cycle now runs with an
     extra faucet open.
   </p>
+  <Widget no="6" caption="the carbon cycle's faucet — drag from past to present" widget="compare" config={ecoCO2Compare} />
   <p>
     The <strong>water cycle</strong> moves the same water endlessly:
     evaporation from oceans and leaves, then condensation into cloud, then
@@ -177,6 +301,7 @@ const ecoCfg = {
     combined, and the excess runs off as the algal-bloom dead zones
     downstream of fertilised fields.
   </p>
+  <Widget no="7" caption="fill the blanks — unlocking the air's nitrogen" widget="cloze" config={ecoNitrogenCloze} />
   <p>
     The general lesson of all nutrient cycles: <strong>decomposers are not
     an afterthought but the return leg</strong>. An ecosystem that cannot
@@ -220,6 +345,7 @@ const ecoCfg = {
     by 1966. A population that crashes from overshoot is this lesson's
     cautionary worked example.
   </p>
+  <Widget no="8" caption="call the magnitude — St Matthew's boom" widget="estimate" config={ecoReindeerEstimate} />
   <p>
     <em>Common misconception:</em> "carrying capacity is a fixed number for a habitat."
     K is a moving target set by current conditions: overgrazed rangeland supports fewer
@@ -240,6 +366,7 @@ const ecoCfg = {
     ecologist Gause reproduced it in laboratory vessels with Paramecium and
     yeast.)
   </p>
+  <Widget no="9" caption="rebuild the predator–prey oscillator" widget="order" config={ecoLynxOrder} />
   <p>
     Within communities, populations are organised by <strong>niches</strong>
     — a species' role and address: what it eats, when it feeds, where it

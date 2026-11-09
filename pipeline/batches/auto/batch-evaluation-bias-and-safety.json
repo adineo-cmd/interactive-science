@@ -1,0 +1,149 @@
+[
+  {
+    "slug": "subjects/artificial-intelligence/advanced/evaluation-bias-and-safety",
+    "activities": [
+      {
+        "anchor": "Shared benchmarks built modern AI",
+        "type": "sort-buckets",
+        "caption": "file the symptoms — three ways a benchmark lies",
+        "name": "ebsBenchmarkBuckets",
+        "config": {
+          "prompt": "Shared benchmarks are systematically unfaithful to deployment. File each symptom:",
+          "buckets": ["Contamination", "Goodhart's law", "Narrowness"],
+          "items": [
+            { "label": "models ingest the benchmark or near-duplicates — scores partly measure memorisation", "bucket": 0 },
+            { "label": "frontier labs maintain private, rotating test sets", "bucket": 0 },
+            { "label": "models that top MMLU flub trivially rephrased versions of its questions", "bucket": 1 },
+            { "label": "adversarially rephrased benchmarks built to expose the optimisation", "bucket": 1 },
+            { "label": "static, English-centric, clean inputs — while products meet typos and dialects", "bucket": 2 }
+          ],
+          "why": "The professional stance: a benchmark is a finger pointing at capability — useful for comparisons and regressions, unearned as a deployment guarantee."
+        }
+      },
+      {
+        "anchor": "A model is a snapshot of its training distribution",
+        "type": "match",
+        "caption": "pair each scenario with its shift regime",
+        "name": "ebsShiftMatch",
+        "config": {
+          "prompt": "Distribution shift: the silent killer — pair each scenario with its regime:",
+          "pairs": [
+            { "left": "a hospital replaces its scanner; image statistics change", "right": "covariate shift — inputs change, the underlying relationship holds" },
+            { "left": "what counts as fraud evolves as fraudsters adapt", "right": "concept drift — the relationship itself changes" },
+            { "left": "a spam filter's success changes what spam looks like", "right": "concept drift caused by deploying the model" },
+            { "left": "pandemic-era demand forecasts trained on history meet a world with no history", "right": "shift error, not model error" }
+          ],
+          "why": "The monitoring loop: track input and output distributions, alert on anomalies, re-evaluate periodically against freshly labelled data — because accuracy can decay for months with no error message anywhere."
+        }
+      },
+      {
+        "anchor": "evaluation is the launch gate",
+        "type": "spot-error",
+        "caption": "find the faulty line — the monitoring posture",
+        "name": "ebsGateSpot",
+        "config": {
+          "prompt": "This operations summary contains one faulty line — click it:",
+          "lines": [
+            "A model is a snapshot of its training distribution, but the world keeps moving.",
+            "Covariate shift changes the inputs while the underlying relationship holds.",
+            "Concept drift invalidates the model — and deploying it can cause the drift.",
+            "Once the model passes evaluation and ships, the evaluating is finished.",
+            "Accuracy can decay for months with no error message anywhere."
+          ],
+          "errorLine": 3,
+          "correction": "For deployed systems evaluation is a vital sign, not a launch gate — continuous monitoring with scheduled re-evaluation against fresh labels.",
+          "why": "Teams that budget for perpetual evaluation ship models that decay slowly and visibly; teams that test once ship models that decay quickly and silently."
+        }
+      },
+      {
+        "anchor": "evaluated commercial gender-classification systems",
+        "type": "estimate",
+        "caption": "call the magnitude — the failure gap Gender Shades hid",
+        "name": "ebsGapEstimate",
+        "config": {
+          "prompt": "In Gender Shades, error on lighter-skinned men was at most 0.8%; on darker-skinned women it reached 34.7%. Roughly how many times larger is that failure rate?",
+          "unit": "×",
+          "answer": 43,
+          "factor": 1.4,
+          "why": "34.7 ÷ 0.8 ≈ 43 — a failure gap of more than 40× behind a tolerable aggregate, driven by training data skewed toward lighter and male faces.",
+          "context": "The study's method matters as much as its result: disaggregated evaluation on a deliberately balanced probe set, before deployment, with subgroups chosen by the people who could be harmed."
+        }
+      },
+      {
+        "anchor": "Fairness measurement is subtler",
+        "type": "compare",
+        "caption": "drag the divider — one tool, two readings of fair",
+        "name": "ebsFairnessCompare",
+        "config": {
+          "prompt": "The COMPAS controversy, lens by lens:",
+          "before": { "label": "Calibration lens", "text": "The recidivism score was calibrated across races — risk scores meant the same thing for every group." },
+          "after": { "label": "Equal-error lens", "text": "It imposed roughly twice the false-positive burden on Black defendants as on white ones — both facts true simultaneously." },
+          "why": "When base rates differ between groups, demographic parity, equalised odds and calibration cannot all hold at once — choosing among criteria is a policy decision for affected stakeholders and regulators."
+        }
+      },
+      {
+        "anchor": "A worked example shows why base rates rule",
+        "type": "trace",
+        "caption": "which curve is the false-alarm share?",
+        "name": "ebsBaseRateTrace",
+        "config": {
+          "prompt": "A screener is 99% accurate in both directions. Which curve shows the false-alarm share of the flagged pool as the condition's prevalence (x) rises?",
+          "curves": [
+            { "expr": "0.01*(1-x)/(0.99*x+0.01*(1-x))", "color": "#1d4ed8", "label": "A: collapsing share" },
+            { "expr": "0.5", "color": "#b42318", "label": "B: constant half" },
+            { "expr": "x", "color": "#0f766e", "label": "C: rising share" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 1 },
+          "y": { "min": 0, "max": 1 },
+          "xlabel": "prevalence",
+          "ylabel": "false-alarm share",
+          "why": "At 1% prevalence the flagged pool is exactly half wrong — coin-flip odds per flag; at 10% prevalence the share drops to about 8%. Identical error rates mean different things for different subpopulations — which is why the fairness criteria collide."
+        }
+      },
+      {
+        "anchor": "The standing defence is",
+        "type": "cloze",
+        "caption": "fill the blanks — safety as a process",
+        "name": "ebsDefenceCloze",
+        "config": {
+          "text": "The standing defence is %%0%% — paying people and automated suites to break your own system before release, then %%1%% after every patch: a never-converging %%2%% rather than a checklist. Adversarial examples predate LLMs: imperceptible pixel perturbations flip image classifiers.",
+          "answers": [["red-teaming", "red teaming"], ["re-testing", "retesting"], ["arms race"]],
+          "hint": "Test, patch, retest — with humans trying to break it the way real adversaries would."
+        }
+      },
+      {
+        "anchor": "patched the way a buffer overflow can",
+        "type": "branch",
+        "caption": "ship the agent — one week of safety work",
+        "name": "ebsShipBranch",
+        "config": {
+          "root": "An LLM agent with tool access ships next week. You have one week of safety work. Where does it go?",
+          "nodes": {
+            "start": {
+              "text": "Choose the posture:",
+              "choices": [
+                { "label": "Instruct the model to ignore embedded instructions", "next": "instruct", "feedback": "The cheap patch." },
+                { "label": "Red-team: pay people and automated suites to break it before release", "next": "redteam", "feedback": "Attack your own model first." },
+                { "label": "Ship now; patch when users report holes", "next": "later", "feedback": "The expensive schedule." }
+              ]
+            },
+            "instruct": {
+              "text": "Damage limitation at best: data and instructions share one medium — natural language — so filtering and prompt-hardening reduce success rates but never create the hard boundary the database world got from separating query language from data.",
+              "choices": []
+            },
+            "redteam": {
+              "text": "The standing defence: jailbreaks, prompt injection and adversarial images found before release, then re-tested after every patch — a never-converging arms race rather than a checklist.",
+              "choices": []
+            },
+            "later": {
+              "text": "Users and adversaries actively probe for behaviours you never tested; least-privilege tools and human confirmation for irreversible actions exist precisely because 'after users find it' is not a plan.",
+              "choices": []
+            }
+          },
+          "why": "Safety is empirical and iterative — robust, corrigible behaviour under adversarial pressure remains an open research problem, so the engineering response is damage limitation, not the false comfort of a single fix."
+        }
+      }
+    ]
+  }
+]

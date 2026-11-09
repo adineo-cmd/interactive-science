@@ -95,22 +95,23 @@ def process(slug, activities, dry):
             for name, cfg in consts
         )
         assert fm.endswith("---\n")
+        fm_len = len(fm) - 4 + len(fm_block) + 4  # offset of body in expanded file
         src = src[: len(fm) - 4] + fm_block + "---\n" + src[len(fm):]
 
-        # 2) widget lines after each anchor's paragraph (search the FULL src so
-        # anchors are found with the frontmatter already expanded)
+        # 2) widget lines after each anchor's paragraph — positions were computed
+        # in the unexpanded BODY, so an anchor that also appears inside an inserted
+        # config JSON (in the frontmatter) can never mis-seat the widget. Insertions
+        # are applied in DESCENDING body position so earlier inserts never shift
+        # the positions of pending ones.
         new_src = src
         lines = []
-        for a in activities:
+        for a in sorted(activities, key=lambda x: -spans[x["name"]]):
             wline = (
                 f'  <Widget no="{next_no}" caption="{a["caption"]}" '
                 f'widget="{a["type"]}" config={{{a["name"]}}} />'
             )
-            pos = anchor_pattern(a["anchor"]).finditer(new_src)
-            hit = next(pos, None)
-            if hit is None:
-                fail(f"anchor vanished after frontmatter insert: {a['anchor'][:60]!r}")
-            close = new_src.find("</p>", hit.start())
+            insert_at = fm_len + spans[a["name"]]
+            close = new_src.find("</p>", insert_at)
             if close == -1:
                 fail(f"no </p> after anchor: {a['anchor'][:60]!r}")
             insert_at = close + len("</p>")

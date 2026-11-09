@@ -10,6 +10,187 @@ const punnettCfg = {
     { math: 'Humans: carriers and counselling', note: 'Cystic fibrosis, sickle-cell: recessive diseases hide in carriers. Pedigree analysis + genetics (the advanced lesson) turns family trees into probability statements for prospective parents.' },
   ],
 };
+
+const gnVocabMatch = {
+  "prompt": "Examiners and geneticists both lean on these — pair them:",
+  "pairs": [
+    {
+      "left": "locus",
+      "right": "a gene's location on a chromosome"
+    },
+    {
+      "left": "alleles",
+      "right": "alternative versions of the same gene at the same locus"
+    },
+    {
+      "left": "homozygous",
+      "right": "two identical alleles at a locus"
+    },
+    {
+      "left": "heterozygous",
+      "right": "two different alleles — one may mask the other"
+    },
+    {
+      "left": "phenotype",
+      "right": "the observable trait"
+    }
+  ],
+  "why": "Two tall plants — TT and Tt — share a phenotype while carrying different genotypes; only breeding tests can tell them apart."
+};
+
+const gnPMATOrder = {
+  "prompt": "PMAT — put the stages in order:",
+  "items": [
+    "Prophase — chromosomes condense, spindle forms",
+    "Metaphase — chromatids align at the equator",
+    "Anaphase — sister chromatids separate to opposite poles",
+    "Telophase — two nuclei re-form"
+  ],
+  "why": "The choreography is the physical guarantee of the genetic result: equal, exact shares — mistakes in around 1 in 10¹⁰ bases after proofreading and repair."
+};
+
+const gnShuffleJudge = {
+  "statements": [
+    {
+      "s": "In crossing over, homologous chromosomes physically swap segments while paired up.",
+      "truth": true,
+      "why": "One to three crossovers per chromosome on average."
+    },
+    {
+      "s": "Independent assortment happens because each homologous pair lines up at the equator independently of the others.",
+      "truth": true,
+      "why": "That alone gives 2²³ ≈ 8.4 million genetically different gametes."
+    },
+    {
+      "s": "Crossing over happens in meiosis II.",
+      "truth": false,
+      "why": "It happens in meiosis I, while the homologues are paired up; meiosis II separates sister chromatids, mitosis-style."
+    },
+    {
+      "s": "Fertilisation multiplies the 8.4 million by another 8.4 million — which is why no two people (except identical twins) share a genome.",
+      "truth": true,
+      "why": "Two shuffled lots, matched up."
+    }
+  ]
+};
+
+const gnPedigreeBuckets = {
+  "prompt": "Three patterns, six clues — file each:",
+  "buckets": [
+    "recessive",
+    "dominant",
+    "X-linked"
+  ],
+  "items": [
+    {
+      "label": "cystic fibrosis — two carrier parents, 1-in-4 per child",
+      "bucket": 0
+    },
+    {
+      "label": "a trait skipping generations",
+      "bucket": 0
+    },
+    {
+      "label": "polydactyly — extra fingers in every generation",
+      "bucket": 1
+    },
+    {
+      "label": "sickle-cell — carriers malaria-resistant, so the allele persists",
+      "bucket": 0
+    },
+    {
+      "label": "affected fathers passing it to all daughters but no sons",
+      "bucket": 2
+    },
+    {
+      "label": "haemophilia through Queen Victoria's descendants",
+      "bucket": 2
+    }
+  ],
+  "why": "Recessive hides in carriers and skips; dominant shows every generation yet can stay rare; X-linked follows the criss-cross."
+};
+
+const gnCoCloze = {
+  "text": "Red × white snapdragons give %%0%% offspring — the heterozygote is a genuine blend, and the 1:2:1 genotype ratio becomes visible in the phenotype. In codominance both alleles express fully at once: AB blood carries %%1%% antigens, and the Iᴮ allele is codominant with Iᴬ but both dominant over %%2%% — type %%3%%.",
+  "answers": [
+    [
+      "pink"
+    ],
+    [
+      "both"
+    ],
+    [
+      "i"
+    ],
+    [
+      "O"
+    ]
+  ],
+  "hint": "Six genotypes, four phenotypes — and O-negative donors are universal but can receive only from O."
+};
+
+const gnCrissCompare = {
+  "prompt": "A colour-blind father — drag the divider across his children:",
+  "before": {
+    "label": "his sons",
+    "text": "They receive his Y and a fresh X from their mother — they escape unless SHE is a carrier."
+  },
+  "after": {
+    "label": "his daughters",
+    "text": "They must at least carry the allele — the X^c passes down; the criss-cross pattern."
+  },
+  "why": "The X is large and gene-rich, the Y small — so males express whatever their single X carries: about 1 in 12 men is red–green colour blind, versus about 1 in 200 women."
+};
+
+const gnLinkageBranch = {
+  "root": "Two genes, two phenotypes, thousands of counted offspring — where do they sit?",
+  "nodes": {
+    "start": {
+      "text": "Same chromosome, or different?",
+      "choices": [
+        {
+          "label": "Different chromosomes",
+          "next": "indep",
+          "feedback": "They assort independently — the 9:3:3:1 dihybrid ratio."
+        },
+        {
+          "label": "Same chromosome, far apart",
+          "next": "far",
+          "feedback": "Crossing over falls between them often."
+        },
+        {
+          "label": "Same chromosome, very close",
+          "next": "close",
+          "feedback": "Recombination rarely separates them."
+        }
+      ]
+    },
+    "indep": {
+      "text": "Mendel's seed colour and shape sat on different chromosomes — which is why his ratios came out clean."
+    },
+    "far": {
+      "text": "The further apart two genes are, the more often recombination separates them — measurable as recombination frequency."
+    },
+    "close": {
+      "text": "Inherited together: linkage — and Sturtevant's 1913 map was built from exactly these counted frequencies."
+    }
+  },
+  "why": "Linkage analysis became the first method of mapping gene positions, decades before anyone could read DNA — and it convinced the sceptics that chromosomes carry heredity."
+};
+
+const gnPolySpot = {
+  "prompt": "This complex-traits answer contains one faulty line — click it:",
+  "lines": [
+    "Height, skin colour, blood pressure and diabetes risk are shaped by thousands of genes plus environment.",
+    "Each gene contributes a little, so populations form smooth bell curves instead of 3:1 ratios.",
+    "Identical twins reared apart still differ in height by a few centimetres.",
+    "Most human traits follow clean 3:1 ratios once you count enough offspring.",
+    "Simple Mendelian cases are the exceptions that taught the rules."
+  ],
+  "errorLine": 3,
+  "correction": "Clean 3:1 ratios are the EXCEPTION — most human traits are polygenic, with environment setting the final value.",
+  "why": "The ratio arithmetic remains the foundation on which the messy multigene reality is understood — the Punnett square is the atom the complexity is assembled from."
+};
 ---
 <TopicPage slug="subjects/biology/intermediate/genetics-inheritance-patterns">
   <h2>Where you are, and what you will learn</h2>
@@ -78,6 +259,7 @@ const punnettCfg = {
     layer, a phenotype concealing its genotype, is precisely what made inheritance look so
     mysterious before Mendel counted.
   </p>
+  <Widget no="2" caption="pair each term with what it names" widget="match" config={gnVocabMatch} />
   <p><em>Common misconception:</em> "dominant alleles are stronger and gradually take over a
   population." Dominance describes expression in a heterozygote, not competitive strength or
   frequency: polydactyly is dominant yet rare, while recessive cystic fibrosis persists hidden
@@ -105,6 +287,7 @@ const punnettCfg = {
     nuclei re-form) — remembered by the acronym PMAT. The choreography matters because it is the
     physical guarantee of the genetic result: equal, exact shares.
   </p>
+  <Widget no="3" caption="stack the mitosis choreography" widget="order" config={gnPMATOrder} />
 
   <h2>Meiosis: halving the set</h2>
   <p>
@@ -121,6 +304,7 @@ const punnettCfg = {
     before crossing over. Fertilisation then multiplies that by another 8.4 million — which is why
     no two people (except identical twins) share a genome.
   </p>
+  <Widget no="4" caption="true or false — the two shuffles" widget="judge" config={gnShuffleJudge} />
   <p><em>Common misconception:</em> meiosis is just "mitosis twice". The two divisions do
     fundamentally different jobs. Meiosis I halves the chromosome number (the reduction division);
     meiosis II merely separates copies, like mitosis. Skipping the reduction would produce
@@ -164,6 +348,7 @@ const punnettCfg = {
     signals recessive; affected fathers passing it to all daughters but no sons signals a gene on
     the X chromosome.
   </p>
+  <Widget no="5" caption="file the pedigree clues by inheritance pattern" widget="sort-buckets" config={gnPedigreeBuckets} />
 
   <h2>Beyond the simple cases</h2>
   <p>
@@ -175,6 +360,7 @@ const punnettCfg = {
     four phenotypes, and the reason O-negative donors are universal but can receive only from
     other O individuals.
   </p>
+  <Widget no="6" caption="fill the blanks — beyond dominant and recessive" widget="cloze" config={gnCoCloze} />
   <p>
     <strong>Sex linkage.</strong> The X chromosome is large and gene-rich; the Y is small. Genes on
     X have no counterpart on Y, so males (XY) express whatever their single X carries — including
@@ -190,6 +376,7 @@ const punnettCfg = {
   fresh X from their mother, so they escape unless she is a carrier. It is his daughters who
   must at least carry the allele — the criss-cross pattern that makes sex linkage easy to spot
   in a pedigree.</p>
+  <Widget no="7" caption="the criss-cross — drag from sons to daughters" widget="compare" config={gnCrissCompare} />
   <p>
     <strong>Two genes at once.</strong> Mendel's dihybrid crosses (round/wrinkled × yellow/green
     seeds) produced the 9:3:3:1 ratio — but only because pea seed colour and shape genes sit on
@@ -202,6 +389,7 @@ const punnettCfg = {
     genes in order on a chromosome with correct relative spacing, a result so striking that it
     convinced the remaining sceptics that chromosomes really were the carriers of heredity.
   </p>
+  <Widget no="8" caption="map the pair — run the linkage decision" widget="branch" config={gnLinkageBranch} />
   <p>
     <strong>Polygenic reality.</strong> Height, skin colour, blood pressure, diabetes risk: most
     human traits are shaped by thousands of genes plus environment. Each gene contributes a little,
@@ -210,6 +398,7 @@ const punnettCfg = {
     Mendelian cases are the exceptions that taught the rules; the ratio arithmetic remains the
     foundation on which the messy multigene reality is understood.
   </p>
+  <Widget no="9" caption="find the faulty line — the polygenic answer" widget="spot-error" config={gnPolySpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

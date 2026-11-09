@@ -19,6 +19,167 @@ const mlpicQuizCfg = {
     { q: 'Self-supervised pretraining changed the field because it…', choices: ['removed the need for data', 'generated labels from the data itself, so scale was no longer bottlenecked by human labelling', 'made GPUs unnecessary', 'replaced reinforcement learning'], answer: 1, why: 'Masked-word or next-patch prediction needs no human labels — the internet labells itself — which unlocked training at scales no annotation budget could reach, and produced the foundation models.' },
   ],
 };
+
+const mlpLabelBuckets = {
+  "prompt": "Where the labels come from is half the engineering — file each source:",
+  "buckets": [
+    "Human annotation",
+    "Historical records",
+    "Logged behaviour"
+  ],
+  "items": [
+    {
+      "label": "expensive, slow, biased by whoever paid for it",
+      "bucket": 0
+    },
+    {
+      "label": "X-rays with diagnoses",
+      "bucket": 0
+    },
+    {
+      "label": "free, but they encode the past's decisions — the model learns last year's lending policy",
+      "bucket": 1
+    },
+    {
+      "label": "houses with sold prices",
+      "bucket": 1
+    },
+    {
+      "label": "clicks as labels — they measure what users did, not what was right",
+      "bucket": 2
+    }
+  ],
+  "why": "The supervised paradigm's whole character — its power and its pathologies — flows from one fact: the model can only be as good as the signal in the labels."
+};
+
+const mlpGapEstimate = {
+  "prompt": "A loan model scores 95% on its 8,000 training examples and 71% on the 2,000 held out. Roughly how wide is the train-versus-test gap, in percentage points?",
+  "unit": "points",
+  "answer": 24,
+  "factor": 1.2,
+  "why": "95 − 71 = 24 points — the gap between the two numbers is the most important number in applied ML: it says the model learned the training set, not lending.",
+  "context": "Training performance is the easiest score to inflate — a model with enough capacity can memorise its examples without learning anything that transfers."
+};
+
+const mlpKmeansOrder = {
+  "prompt": "Clustering's classic algorithm, step by step — put it in order:",
+  "items": [
+    "pick k centroids",
+    "assign each point to its nearest centroid",
+    "move each centroid to its cluster's mean",
+    "repeat until still",
+    "validate: do the segments predict different behaviour?"
+  ],
+  "why": "k-means measures distance — it will happily cluster by height when you meant spending, and it always returns k clusters whatever you feed it. Structure earns trust only by usefulness."
+};
+
+const mlpSelfJudge = {
+  "statements": [
+    {
+      "s": "LLMs are self-supervised: supervision manufactured from the data itself.",
+      "truth": true,
+      "why": "Mask a word and predict it — the answer is in the sentence; the data is its own teacher."
+    },
+    {
+      "s": "LLMs learn without any supervision, so they are unsupervised learning.",
+      "truth": false,
+      "why": "Supervision is there, just automated — they are supervised learners at heart, overfitting included."
+    },
+    {
+      "s": "Self-supervised models inherit supervised mechanics — loss, generalisation, overfitting.",
+      "truth": true,
+      "why": "The paradigm is supervised learning with an automated label factory."
+    },
+    {
+      "s": "Held-out evaluation stops mattering once pretraining reaches internet scale.",
+      "truth": false,
+      "why": "It never stops mattering — the old intuitions about data volume change, but the discipline does not."
+    }
+  ]
+};
+
+const mlpChoiceMatch = {
+  "prompt": "Choosing a paradigm by problem shape — pair them:",
+  "pairs": [
+    {
+      "left": "labelled history — churn, fraud, pricing, diagnosis",
+      "right": "supervised — start here, it covers most business ML"
+    },
+    {
+      "left": "no labels, want structure",
+      "right": "unsupervised — budget human time for interpreting what comes out"
+    },
+    {
+      "left": "sequential decisions with feedback and a simulator",
+      "right": "reinforcement — budget for fragility"
+    },
+    {
+      "left": "massive raw data, few labels, a downstream task",
+      "right": "self-supervised pretrain, then fine-tune"
+    }
+  ],
+  "why": "Real systems are hybrids — a self-supervised backbone with a supervised head, tuned with reinforcement from human preferences: the LLM stack is all four paradigms in one artefact."
+};
+
+const mlpUTrace = {
+  "prompt": "Two error curves against model complexity: training error falls forever. Which curve is TEST error?",
+  "curves": [
+    {
+      "expr": "6 - x",
+      "color": "#1d4ed8",
+      "label": "A: falls forever"
+    },
+    {
+      "expr": "x*x/2 - 3*x + 5.5",
+      "color": "#b42318",
+      "label": "B: dips, then climbs"
+    },
+    {
+      "expr": "5.5",
+      "color": "#0f766e",
+      "label": "C: flat"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 6
+  },
+  "y": {
+    "min": 0,
+    "max": 7
+  },
+  "xlabel": "model complexity",
+  "ylabel": "error",
+  "why": "The U-shape is the train-versus-test gap drawn whole: poor on both sides is underfitting (left), great train with poor test is overfitting (right) — the gap is the field's most important number."
+};
+
+const mlpFailSpot = {
+  "prompt": "This failure-mode map contains one faulty line — click it:",
+  "lines": [
+    "Supervised fails through its labels: label noise caps accuracy, historical bias replicates history.",
+    "Leakage — the 'cancelled' flag that only exists after churn — produces spectacular test scores that evaporate in production.",
+    "Unsupervised fails through interpretation: clusters may mirror the data collection process rather than the world.",
+    "Reinforcement fails through clustering: k-means will always find k clusters whatever you feed it.",
+    "Self-supervised fails through shortcuts — image models predicting from watermark position rather than content."
+  ],
+  "errorLine": 3,
+  "correction": "Reinforcement fails through specification — reward hacking: the boat-racing agent looped in circles farming waypoints rather than finishing the race.",
+  "why": "The map's lesson is uniform: every paradigm optimises the signal you gave it, not the intention you had — evaluation discipline is the permanent layer above all four boxes."
+};
+
+const mlpDataCompare = {
+  "prompt": "Two spending strategies at fixed compute — drag between them:",
+  "before": {
+    "label": "Model-first",
+    "text": "Upgrade the architecture and hope — while the label noise quietly caps the achievable accuracy."
+  },
+  "after": {
+    "label": "Data-centric",
+    "text": "Clean and rebalance 1,000 labels instead — a model cannot learn signal the labels do not contain."
+  },
+  "why": "No free lunch: every algorithm's power comes from assumptions about the world — its inductive bias — so matching bias to structure beats model choice among reasonable candidates."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/machine-learning-in-one-picture">
 
@@ -29,6 +190,7 @@ const mlpicQuizCfg = {
     dataset and a prediction are, and why learning from data differs from hand-written
     rules. No coding is needed; everything runs on ideas and worked examples.
   </p>
+  <Widget no="10" caption="drag the divider — model-first versus data-first" widget="compare" config={mlpDataCompare} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>name the four learning paradigms and say what signal each one learns from;</li>
@@ -88,11 +250,13 @@ const mlpicQuizCfg = {
     training set, not lending — the gap between the two numbers is the most
     important number in applied ML.
   </p>
+  <Widget no="3" caption="file the label sources — where supervision comes from" widget="sort-buckets" config={mlpLabelBuckets} />
   <p><em>Common misconception:</em> "the model scored 95% on its training data, so it is a
   good model." Training performance is the easiest score to inflate: a model with enough
   capacity can memorise its examples without learning anything that transfers. The only
   number that matters is the one on data the model never saw — which is why the held-out
   set is sacred.</p>
+  <Widget no="4" caption="call the magnitude — the most important number" widget="estimate" config={mlpGapEstimate} />
   <p>
     Where the labels come from is half the engineering: human annotation (expensive,
     slow, biased by whoever paid for it), historical records (free, but they encode
@@ -127,6 +291,7 @@ const mlpicQuizCfg = {
     anomalies, checked by hand, turn out to be real? Unsupervised structure earns
     trust only by usefulness.
   </p>
+  <Widget no="5" caption="rebuild the k-means loop, spin to validation" widget="order" config={mlpKmeansOrder} />
   <p><em>Common misconception:</em> "clustering finds the groups that are really in the
   data." It finds the groups its distance measure defines: k-means will happily partition
   customers by height when you meant spending, and it always returns k clusters whatever
@@ -187,6 +352,7 @@ const mlpicQuizCfg = {
   just manufactured from the data itself — mask a word, predict it, check the answer
   against the text. That makes them supervised learners at heart, overfitting included,
   which is why held-out evaluation never stops mattering.</p>
+  <Widget no="6" caption="true or false — the self-supervised label factory" widget="judge" config={mlpSelfJudge} />
   <p>
     <strong>So far:</strong> four sources of signal, four paradigms — labels, structure,
     reward, and labels made from the data itself. Next, a decision procedure for choosing
@@ -211,6 +377,7 @@ const mlpicQuizCfg = {
     excuse the data-quality discipline of the data-science strand — every paradigm
     eats the dataset it is given.
   </p>
+  <Widget no="7" caption="pair each problem shape with its paradigm" widget="match" config={mlpChoiceMatch} />
 
   <h2>The vocabulary that spans all four</h2>
   <p>
@@ -230,6 +397,7 @@ const mlpicQuizCfg = {
     vocabulary, the neural-networks lesson's backpropagation will read as one
     particular — and spectacularly successful — way of doing the training step.
   </p>
+  <Widget no="8" caption="which curve is the test error?" widget="trace" config={mlpUTrace} />
 
   <h2>How the paradigms fail: the failure mode map</h2>
   <p>
@@ -255,6 +423,7 @@ const mlpicQuizCfg = {
     (held-out data, human checks, production monitoring) is the permanent layer
     above all four boxes.
   </p>
+  <Widget no="9" caption="find the faulty line — the failure-mode map" widget="spot-error" config={mlpFailSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

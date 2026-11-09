@@ -10,6 +10,181 @@ const roboCfg = {
     { math: '4 · Learning from demonstration and foundation models', note: 'Robot learning copies human demonstrations, and vision-language-action models (trained on robot data at internet scale, 2023→) promise general-purpose manipulation — the current frontier, moving fast.' },
   ],
 };
+
+const rbeLoopOrder = {
+  "prompt": "The stack runs bottom-up at different frequencies — order the layers:",
+  "items": [
+    "low-level joint control — the servo loop corrects torque every millisecond",
+    "state estimation — fusing encoders, IMUs and vision into one belief about position",
+    "motion planning — searching configuration space for a collision-free path",
+    "task-level reasoning",
+    "the integrator makes the stack fail gracefully — e-stops, watchdogs, velocity limits"
+  ],
+  "why": "Each layer's failure modes are distinct: hardware fails, sensors lie, planners hit local minima — and a walking robot must adjust roughly every 10 milliseconds, two orders of magnitude faster than a datacentre prompt."
+};
+
+const rbeSlamMatch = {
+  "prompt": "Building the map while walking it — pair each piece with its role:",
+  "pairs": [
+    {
+      "left": "the chicken-and-egg problem",
+      "right": "you cannot map without knowing where you are, and cannot localise without a map"
+    },
+    {
+      "left": "extended Kalman filters",
+      "right": "early implementations over feature maps"
+    },
+    {
+      "left": "graph optimisation",
+      "right": "poses and landmarks as nodes, sensor observations as constraints, least squares finding the best explanation"
+    },
+    {
+      "left": "loop closure",
+      "right": "recognising a previously seen place, snapping accumulated drift shut"
+    },
+    {
+      "left": "Perseverance's AutoNav",
+      "right": "the 4-to-24-minute signal delay makes teleoperation a non-starter — autonomy is the only way the mission moves"
+    }
+  ],
+  "why": "The descendant technology is everywhere: robot vacuums, warehouse AMRs, AR headsets — and Mars rovers, where local estimation is the backbone."
+};
+
+const rbeGpsJudge = {
+  "statements": [
+    {
+      "s": "GPS is unavailable indoors and degraded in urban canyons.",
+      "truth": true,
+      "why": "And centimetre-accurate only with expensive augmentation — which is why it is not the backbone."
+    },
+    {
+      "s": "GPS solves robot navigation.",
+      "truth": false,
+      "why": "Every serious mobile robot treats satellite positioning as one optional input; SLAM-style local estimation is the backbone."
+    },
+    {
+      "s": "GPS signals are spoofable.",
+      "truth": true,
+      "why": "One more reason local estimation from the robot's own sensors carries the load."
+    },
+    {
+      "s": "There is GPS on Mars.",
+      "truth": false,
+      "why": "No GPS at all on Mars — Perseverance navigates with AutoNav instead."
+    }
+  ]
+};
+
+const rbeSkillBuckets = {
+  "prompt": "Three routes to robot skill — file each fact:",
+  "buckets": [
+    "Imitation learning",
+    "Diffusion policies",
+    "Vision-language-action"
+  ],
+  "items": [
+    {
+      "label": "record human teleoperation, train a policy mapping observations to actions, deploy",
+      "bucket": 0
+    },
+    {
+      "label": "covariate shift — the robot drifts into states the demonstrator never visited",
+      "bucket": 0
+    },
+    {
+      "label": "model the distribution of good actions and sample from it — two valid grasps both survive",
+      "bucket": 1
+    },
+    {
+      "label": "handles multimodal tasks that regression averages into failure",
+      "bucket": 1
+    },
+    {
+      "label": "transformers pretrained on internet-scale vision and language, fine-tuned on robot trajectories",
+      "bucket": 2
+    },
+    {
+      "label": "RT-2 generalised to objects and instructions never demonstrated",
+      "bucket": 2
+    }
+  ],
+  "why": "The data bottleneck defines the field: the internet has billions of labelled images but almost no labelled actions — hence teleop fleets and Open X-Embodiment's 22 robot types."
+};
+
+const rbeFleetEstimate = {
+  "prompt": "About how many industrial robots are installed worldwide, per the International Federation of Robotics?",
+  "unit": "robots",
+  "answer": 4000000,
+  "factor": 1.6,
+  "why": "About 4 million industrial arms installed worldwide — alongside Amazon's roughly 750,000 mobile robots: structured environments won first.",
+  "context": "Waymo crossed 100,000 paid rides per week in 2024 — real and impressive, and fifteen years late against the original promise."
+};
+
+const rbeUptimeSpot = {
+  "prompt": "This deployment post-mortem contains one faulty line — click it:",
+  "lines": [
+    "Diagnostics usually rank sensor degradation, actuator wear and cable fatigue highly.",
+    "Hardware reliability dominates uptime statistics.",
+    "Serious robot companies employ more reinforcement-learning researchers than reliability engineers.",
+    "The software must be boring: watchdog processes, safe states, graceful degradation on sensor loss.",
+    "Battery endurance, not intelligence, caps most deployments."
+  ],
+  "errorLine": 2,
+  "correction": "The ratio runs the other way — more reliability engineers than RL researchers, because hardware dominates the uptime statistics.",
+  "why": "Dust, thermal drift, cable fatigue: the boring constraint outranks the clever model — which is why the software must also be boring."
+};
+
+const rbeEmbodiedCompare = {
+  "prompt": "Same algorithms, different physics — drag between the two worlds:",
+  "before": {
+    "label": "Chatbot intelligence",
+    "text": "Thinks in seconds; the core artefacts are context windows and weights; a bad answer costs a regenerate click."
+  },
+  "after": {
+    "label": "Embodied control",
+    "text": "Balance at kilohertz on milliwatt budgets; the core artefacts are control rates, torque limits and state estimators; a dropped object has no undo."
+  },
+  "why": "Language-model intelligence enters as a planner layer above the real-time loop, not instead of it."
+};
+
+const rbeWarehouseBranch = {
+  "root": "You are deploying robots in a fulfilment centre. The economics of embodiment force a division of labour.",
+  "nodes": {
+    "start": {
+      "text": "Who does what?",
+      "choices": [
+        {
+          "label": "Robots do transport in mapped, human-free aisles; humans pick from clutter",
+          "next": "kiva",
+          "feedback": "The Kiva playbook, since 2012."
+        },
+        {
+          "label": "Robots also pick arbitrary objects from clutter",
+          "next": "dexterity",
+          "feedback": "The frontier bet."
+        },
+        {
+          "label": "Redesign the environment around the robots' weaknesses",
+          "next": "redesign",
+          "feedback": "The scaling condition."
+        }
+      ]
+    },
+    "kiva": {
+      "text": "Transport is flat, mapped and repetitive; manipulation is the hard part — exactly the locomotion-versus-dexterity split the research frontier predicts. This is why the successful deployments share it.",
+      "choices": []
+    },
+    "dexterity": {
+      "text": "General-purpose manipulation is unsolved: contact dynamics are discontinuous (a fingertip either slips or grips), and tactile sensing lags vision by decades.",
+      "choices": []
+    },
+    "redesign": {
+      "text": "Embodiment scales where the environment can be redesigned around the robot's weaknesses — and stalls where it cannot, which is why the general-purpose home robot remains a venture-funding category rather than a product category.",
+      "choices": []
+    }
+  },
+  "why": "Value per movement and tolerance for chaos decide where robots work — and the boring constraint underneath is energy: runtime, not intelligence, caps most deployments."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/expert/robotics-and-embodied-ai">
   <h2>Where you are, and what you will learn</h2>
@@ -21,6 +196,7 @@ const roboCfg = {
     the advanced tier. Here that machinery meets friction, gravity and time — the physical
     world, where mistakes have mass.
   </p>
+  <Widget no="4" caption="true or false — the satellite assumption" widget="judge" config={rbeGpsJudge} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>trace the perception–action loop and explain why control frequency, not model size, decides whether a robot stays upright;</li>
@@ -86,6 +262,7 @@ const roboCfg = {
     milliseconds to answer a prompt. Embodiment is two orders of magnitude more urgent, which
     is why "just call the big model" is not, by itself, a robot architecture.
   </p>
+  <Widget no="2" caption="rebuild the control stack, reflex to reasoning" widget="order" config={rbeLoopOrder} />
 
   <h2>SLAM: building the map while walking it</h2>
   <p>
@@ -107,6 +284,7 @@ const roboCfg = {
     non-starter, so autonomous navigation is not a convenience up there; it is the only way
     the mission moves.
   </p>
+  <Widget no="3" caption="pair each SLAM piece with its role" widget="match" config={rbeSlamMatch} />
   <p>
     <em>Common misconception:</em> "GPS solves robot navigation." GPS is unavailable indoors,
     degraded in urban canyons, spoofable, and centimetre-inaccurate only with expensive
@@ -158,6 +336,7 @@ const roboCfg = {
     fleets, shared datasets like Open X-Embodiment spanning 22 robot types) is the race that
     decides the next decade.
   </p>
+  <Widget no="5" caption="file the routes to robot skill" widget="sort-buckets" config={rbeSkillBuckets} />
 
   <h2>Where robots work: the economics of embodiment</h2>
   <p>
@@ -176,6 +355,7 @@ const roboCfg = {
     99% of the engineering time, because rare-event handling is what safety certification and
     public trust are made of.
   </p>
+  <Widget no="6" caption="call the magnitude — the installed fleet" widget="estimate" config={rbeFleetEstimate} />
   <p>
     <em>Common misconception:</em> "robots fail because their AI is bad." Diagnostics usually
     rank differently: sensor degradation, actuator wear, cable fatigue, dust, thermal drift —
@@ -184,6 +364,7 @@ const roboCfg = {
     must also be boring: watchdog processes, safe states, graceful degradation on sensor loss —
     the reliability-engineering chapter's discipline, with motors attached.
   </p>
+  <Widget no="7" caption="find the faulty line — the uptime diagnosis" widget="spot-error" config={rbeUptimeSpot} />
 
   <p><em>Common misconception:</em> "embodied AI is just a language model with arms." The
   control loop is a different physics: a chatbot can think in seconds; a walking robot's
@@ -193,6 +374,7 @@ const roboCfg = {
   rather than context windows — and why language-model intelligence enters as a planner
   layer above the real-time loop, not instead of it.
   </p>
+  <Widget no="8" caption="drag the divider — chatbot physics versus robot physics" widget="compare" config={rbeEmbodiedCompare} />
 
   <p>
     The warehouse is the field's clearest economics case study. Amazon's acquisition
@@ -211,6 +393,7 @@ const roboCfg = {
     does not yet comfortably provide at scale, so runtime, not intelligence, caps
     most deployments.
   </p>
+  <Widget no="9" caption="run the deployment — divide the labour" widget="branch" config={rbeWarehouseBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

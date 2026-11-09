@@ -20,6 +20,171 @@ const nnQuizCfg = {
     { q: 'The field\'s favourite sanity check — overfit one batch — works because…', choices: ['small data is easier', 'a working network must be able to memorise a handful of examples; failure means a bug', 'overfitting is good', 'it trains faster'], answer: 1, why: 'Memorising 100 examples is nearly the easiest possible task. A network that cannot do it has a broken gradient, a bad learning rate, or a wiring bug — find that before any tuning.' },
   ],
 };
+
+const nfxNeuronEstimate = {
+  "prompt": "Inputs x₁ = 2 and x₂ = 3; weights w₁ = 0.5 and w₂ = −0.25; bias b = 1. What is the weighted sum?",
+  "unit": "",
+  "answer": 1.25,
+  "factor": 1.3,
+  "why": "2 × 0.5 + 3 × (−0.25) + 1 = 1.25 — ReLU passes it through as 1.25; a sigmoid would squash it to ≈ 0.78. That is the entire neuron: a linear score, bent by a squish.",
+  "context": "The weights are the knowledge: w₁ = 0.5 says 'input 1 speaks positively'; w₂ = −0.25 says 'input 2 speaks against'; the bias shifts the firing threshold."
+};
+
+const nfxTrainBuckets = {
+  "prompt": "Two misconceptions, one sorter — file each claim:",
+  "buckets": [
+    "What training does",
+    "What it doesn't"
+  ],
+  "items": [
+    {
+      "label": "adjusts numbers to minimise a loss score on the examples seen",
+      "bucket": 0
+    },
+    {
+      "label": "exploits whatever patterns correlate with the labels",
+      "bucket": 0
+    },
+    {
+      "label": "stops in the first good valley of the loss landscape it finds",
+      "bucket": 0
+    },
+    {
+      "label": "endows the network with understanding of the data",
+      "bucket": 1
+    },
+    {
+      "label": "finds the single true answer to compare yours against",
+      "bucket": 1
+    }
+  ],
+  "why": "A different random seed usually lands in a different valley — several good solutions generalise similarly, and there is rarely a single 'true' answer."
+};
+
+const nfxWideCompare = {
+  "prompt": "Two ways to spend parameters — drag between them:",
+  "before": {
+    "label": "Wide (one huge hidden layer)",
+    "text": "Universal approximation: enough neurons can approximate any continuous function to any precision — but parameter-hungry."
+  },
+  "after": {
+    "label": "Deep (many small layers)",
+    "text": "Composition reuses features — complicated functions with far fewer parameters, and learned better: that is why 'deep' learning is deep."
+  },
+  "why": "Depth's advantage is practical rather than absolute — Cybenko (1989) and Hornik (1991) proved one hidden layer suffices in principle."
+};
+
+const nfxMatrixCloze = {
+  "text": "Organised as matrices, the whole layer step is one %%0%% plus one %%1%% — which is why %%2%% (built to multiply matrices for graphics) turned out to be the perfect engine for neural networks.",
+  "answers": [
+    [
+      "matrix multiply",
+      "matrix multiplication"
+    ],
+    [
+      "elementwise activation",
+      "activation"
+    ],
+    [
+      "GPUs",
+      "graphics processing units"
+    ]
+  ],
+  "hint": "The linear-algebra lesson's machinery is the implementation; the gaming industry built the hardware."
+};
+
+const nfxLoopOrder = {
+  "prompt": "Training is just the loop — put it in order:",
+  "items": [
+    "forward pass — push the example through the layers",
+    "loss — score the prediction against the truth",
+    "backward pass — the chain rule assigns every weight its gradient",
+    "nudge every weight a small step opposite its gradient",
+    "repeat over batches of examples for many epochs"
+  ],
+  "why": "Each layer's backward work is reused by all layers before it — one backward pass, output to input, computes every weight's gradient. At billions of weights, 'nudge repeatedly' is exactly how the astonishing capabilities get built."
+};
+
+const nfxDepthJudge = {
+  "statements": [
+    {
+      "s": "Depth adds expressive power but also vanishing gradients, longer training and overfitting risk.",
+      "truth": true,
+      "why": "Capacity must match the data — depth is a dial, not a virtue."
+    },
+    {
+      "s": "More layers is always better.",
+      "truth": false,
+      "why": "Many real problems are solved better by three layers tuned carefully than thirty tuned carelessly."
+    },
+    {
+      "s": "The validation set — not ambition — decides the right capacity.",
+      "truth": true,
+      "why": "Which is why the train-versus-test gap, not layer count, is the diagnosis."
+    },
+    {
+      "s": "A network that scores brilliantly on training data has proved its depth was right.",
+      "truth": false,
+      "why": "Near-perfect training scores are the signature of memorisation — the honest number lives on data the network never saw."
+    }
+  ]
+};
+
+const nfxRateTrace = {
+  "prompt": "Three learning rates, three loss curves over training steps. Which one is healthy?",
+  "curves": [
+    {
+      "expr": "exp(-x/3)",
+      "color": "#1d4ed8",
+      "label": "A: smooth decay"
+    },
+    {
+      "expr": "1.5 + abs(sin(x))*2",
+      "color": "#b42318",
+      "label": "B: never settles"
+    },
+    {
+      "expr": "exp(-x/12)",
+      "color": "#0f766e",
+      "label": "C: barely moves"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 10
+  },
+  "y": {
+    "min": 0,
+    "max": 3.5
+  },
+  "xlabel": "training step",
+  "ylabel": "loss",
+  "why": "Too high and the loss oscillates or explodes (divergence); too low and it crawls — which is why loss curves are plotted live and the learning rate is the first thing to check when training misbehaves."
+};
+
+const nfxRegMatch = {
+  "prompt": "The regularisation kit — pair each tool with how it fights memorisation:",
+  "pairs": [
+    {
+      "left": "dropout",
+      "right": "randomly silence a fraction of neurons each step — no neuron can rely on a particular partner"
+    },
+    {
+      "left": "weight decay",
+      "right": "penalise large weights, biasing toward simpler functions"
+    },
+    {
+      "left": "early stopping",
+      "right": "stop when validation loss rises while training loss keeps falling"
+    },
+    {
+      "left": "data augmentation",
+      "right": "enlarge the training set with label-preserving transformations — often the highest-yield of all"
+    }
+  ],
+  "why": "The train-versus-test gap is the symptom; the gap's direction tells you which disease you have."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/intermediate/neural-networks-from-scratch">
   <h2>Where you are, and what you will learn</h2>
@@ -30,6 +195,8 @@ const nnQuizCfg = {
     and this lesson adds that shape. No matrix algebra is required: every computation here
     is small enough to do with a pencil.
   </p>
+  <Widget no="6" caption="fill the blanks — why the GPU was waiting" widget="cloze" config={nfxMatrixCloze} />
+  <Widget no="5" caption="drag the divider — wide versus deep" widget="compare" config={nfxWideCompare} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>compute one neuron's forward pass by hand — weighted sum, bias, activation — and say what its weights mean;</li>
@@ -89,6 +256,7 @@ const nnQuizCfg = {
     such numbers is the property that makes neural networks powerful, opaque and
     debate-worthy all at once.
   </p>
+  <Widget no="3" caption="compute the neuron — then check it" widget="estimate" config={nfxNeuronEstimate} />
 
   <h2>One neuron's limits: the line it draws</h2>
   <p>
@@ -108,6 +276,7 @@ const nnQuizCfg = {
   </p>
 
 <p><em>Common misconception:</em> "the trained network understands the data." Training only adjusts numbers to minimise a loss score on the examples seen — there is no semantics, only a function that happens to fit. Networks exploit whatever patterns correlate with the labels, which is why a model can score brilliantly and fail on examples collected slightly differently.</p>
+  <Widget no="4" caption="file the claims — what training does and doesn't do" widget="sort-buckets" config={nfxTrainBuckets} />
   <p>
     <strong>So far:</strong> one neuron is a weighted sum bent by a squish, and its decision
     boundary is a straight line — which is exactly why XOR stopped the field in 1969. The
@@ -189,8 +358,10 @@ const nnQuizCfg = {
     the scale of billions of weights and trillions of tokens, "nudge repeatedly" is
     exactly how the astonishing capabilities get built.
   </p>
+  <Widget no="7" caption="rebuild the training loop, forward to nudge" widget="order" config={nfxLoopOrder} />
 
 <p><em>Common misconception:</em> "more layers is always better." Depth adds expressive power but also vanishing gradients, longer training and overfitting risk; many real problems are solved better by three layers tuned carefully than thirty tuned carelessly. Capacity must match the data, and the validation set — not ambition — decides.</p>
+  <Widget no="8" caption="true or false — the depth dial" widget="judge" config={nfxDepthJudge} />
   <p>
     <strong>So far:</strong> backpropagation is the chain rule organised backwards, and
     training is just the loop — forward, loss, backward, nudge — repeated at scale. Now
@@ -214,6 +385,7 @@ const nnQuizCfg = {
     gradient, a frozen activation, a data pipeline feeding garbage). Find that bug
     before touching any hyperparameter; tuning a broken network is fortune-telling.
   </p>
+  <Widget no="9" caption="which loss curve is the healthy learning rate?" widget="trace" config={nfxRateTrace} />
 
   <h2>Regularisation: keeping the network honest</h2>
   <p>
@@ -232,6 +404,7 @@ const nnQuizCfg = {
     diagnosis kit from the paradigm lesson applies verbatim: the train-versus-test
     gap is the symptom; the gap's direction tells you which disease you have.
   </p>
+  <Widget no="10" caption="pair each countermeasure with its mechanism" widget="match" config={nfxRegMatch} />
 
 <p><em>Common misconception:</em> "training finds the best possible weights." The loss landscape of a real network is rugged and non-convex: gradient descent stops in the first good valley it finds, and a different random seed usually lands in a different one. That is acceptable — several good solutions generalise similarly — but it means there is rarely a single "true" answer to compare yours against.</p>
 

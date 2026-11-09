@@ -24,6 +24,175 @@ const generalCfg = {
     { math: '5 · Inspection closes the loop', note: 'Annuals, 100-hour checks and airworthiness directives (ADs) — the recurring verification that keeps the whole fleet honest.' },
   ],
 };
+
+const amtDrawingMatch = {
+  "prompt": "Drawings are the legal instructions — pair each element with its meaning:",
+  "pairs": [
+    {
+      "left": "orthographic projection",
+      "right": "several flat views (front, top, side) of one object, each aligned with the others"
+    },
+    {
+      "left": "tolerances",
+      "right": "the allowed wiggle room around a measurement"
+    },
+    {
+      "left": "the title block",
+      "right": "part number, revision and material"
+    },
+    {
+      "left": "wiring diagrams",
+      "right": "electrical logic — symbols and wire numbers, not physical routing"
+    },
+    {
+      "left": "the revision letter",
+      "right": "using a superseded one is using wrong data — a regulatory event, not just a mistake"
+    }
+  ],
+  "why": "Schematics are the system cousins: the mechanic's diagnostic work usually begins by tracing a schematic to form a hypothesis before touching hardware."
+};
+
+const amtFuelEstimate = {
+  "prompt": "Avgas weighs about 0.72 kg per litre. Roughly what does 120 litres of fuel weigh?",
+  "unit": "kg",
+  "answer": 86,
+  "factor": 1.2,
+  "why": "120 × 0.72 ≈ 86 kg — and converting between the systems (2.54 cm per inch, 2.2 lb per kg) is why units are carried through every step: a 90-kg fuel load becoming 90 litres is only survivable as one of them.",
+  "context": "Precision matters at the tool level too: micrometers and calipers read to thousandths, and tolerances are computed, not guessed."
+};
+
+const amtLeverTrace = {
+  "prompt": "Torque = force × length. Which curve shows the hand force needed for a 35 N·m bolt as wrench length (x) grows?",
+  "curves": [
+    {
+      "expr": "35/x",
+      "color": "#1d4ed8",
+      "label": "A: inverse — longer lever, less force"
+    },
+    {
+      "expr": "35*x",
+      "color": "#b42318",
+      "label": "B: rising with length"
+    },
+    {
+      "expr": "100",
+      "color": "#0f766e",
+      "label": "C: force ignores length"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0.1,
+    "max": 0.6
+  },
+  "y": {
+    "min": 0,
+    "max": 350
+  },
+  "xlabel": "wrench length (m)",
+  "ylabel": "hand force (N)",
+  "why": "F = 35/x — double the length, halve the force. The torque wrench is a calibrated lever, which is exactly why extra length silently destroys its reading."
+};
+
+const amtRegBuckets = {
+  "prompt": "Two parts and one paper trail — file each fact:",
+  "buckets": [
+    "Part 65",
+    "Part 43",
+    "Paperwork artefacts"
+  ],
+  "items": [
+    {
+      "label": "defines the mechanic certificate — Airframe and/or Powerplant ratings",
+      "bucket": 0
+    },
+    {
+      "label": "written, oral and practical examinations",
+      "bucket": 0
+    },
+    {
+      "label": "defines what maintenance legally means — inspection, overhaul, repair, preservation",
+      "bucket": 1
+    },
+    {
+      "label": "the performance rules: methods acceptable to the Administrator, calibrated instruments",
+      "bucket": 1
+    },
+    {
+      "label": "Form 337 documents major repairs and alterations",
+      "bucket": 2
+    },
+    {
+      "label": "an uncomplied airworthiness directive grounds the aircraft",
+      "bucket": 2
+    }
+  ],
+  "why": "The certificate defines privileges and limits; Part 43 defines the work; the logbooks carry every entry with date, description, reference data and signature — the paper trail is the safety system."
+};
+
+const amtPaperOrder = {
+  "prompt": "The document chain that makes work legally exist — put it in order:",
+  "items": [
+    "the FAA finds a safety problem and issues an airworthiness directive",
+    "the AD becomes legally mandatory — an uncomplied one grounds the aircraft",
+    "the technician performs the correction per approved data and tools",
+    "the logbook entry records date, description, reference data and signature",
+    "inspection by someone other than the performer closes the loop"
+  ],
+  "why": "Verification by someone other than the performer, against published standards, recorded permanently — that is the whole system in one sentence, and falsifying it is a federal offence."
+};
+
+const amtToolCompare = {
+  "prompt": "Two tool cultures — drag between them:",
+  "before": {
+    "label": "Ordinary tool box",
+    "text": "Tools live where they land; a forgotten wrench is tomorrow's tidy-up."
+  },
+  "after": {
+    "label": "Shadowed tool control",
+    "text": "Every tool has an outlined home and inventories are checked at shift end — because a forgotten wrench in an engine bay is a foreign-object-damage event waiting for the next flight."
+  },
+  "why": "A tool's accuracy is a document, not an assumption: the calibration chain from wrench to national standard is what makes 'torque to 35 N·m' mean the same thing in every hangar on Earth."
+};
+
+const amtBoltJudge = {
+  "statements": [
+    {
+      "s": "The clamp a bolt produces comes from controlled stretch inside its torque range.",
+      "truth": true,
+      "why": "Stress and strain are the daily physics: the bolt is a calibrated spring, not a screw of infinite strength."
+    },
+    {
+      "s": "A bolt that feels tight is tight enough.",
+      "truth": false,
+      "why": "The trade measures torque instead of trusting the wrist — a few degrees of turn separate clamped-for-life from fatigued-and-waiting-to-fail."
+    },
+    {
+      "s": "Torque wrenches are stored unwound to protect the spring.",
+      "truth": true,
+      "why": "Used smoothly to a stop, stored unwound, and calibrated on schedule with traceable certificates."
+    },
+    {
+      "s": "An untraceable torque value is still a known torque value.",
+      "truth": false,
+      "why": "An untraceable torque value is an unknown torque value — the document chain is what makes the number mean anything."
+    }
+  ]
+};
+
+const amtCgSpot = {
+  "prompt": "This weight-and-balance summary contains one faulty line — click it:",
+  "lines": [
+    "The moments: 650 × 2.0 = 1,300; 80 × 2.4 = 192; 20 × 3.5 = 70; 86.4 × 2.6 ≈ 225 kg·m.",
+    "Total moment ≈ 1,787 kg·m over 836 kg gives a CG near 2.14 m aft of datum.",
+    "The certified window (2.00–2.30 m) is the verdict.",
+    "Burning fuel leaves the CG where it started, so one check at takeoff covers the whole flight.",
+    "A heavy pilot plus full fuel can pass the weight limit while failing the CG limit."
+  ],
+  "errorLine": 3,
+  "correction": "Burning fuel MOVES the CG — the tank's arm no longer carries its moment — so the check is done for takeoff AND landing weights.",
+  "why": "Two separate gates, both mandatory: total moment over total weight gives the CG, and fuel burn reshuffles the moments in flight."
+};
 ---
 <TopicPage slug="subjects/aviation-maintenance/foundational/amt-general">
   <h2>Where you are, and what you will learn</h2>
@@ -95,6 +264,7 @@ const generalCfg = {
     dimensions, tolerances (the allowed wiggle room around a measurement) and title blocks
     that state the part number, revision and material.
   </p>
+  <Widget no="3" caption="pair each drawing element with what it tells you" widget="match" config={amtDrawingMatch} />
   <p>
     A revision letter matters more than it looks: using superseded drawings is using wrong
     data, which in aviation is not merely a mistake but a regulatory event.
@@ -115,6 +285,7 @@ const generalCfg = {
     carry the units through every step, because a unit error in aviation arithmetic is a
     90-kg fuel load becoming 90 litres — and only one of those is survivable arithmetic.
   </p>
+  <Widget no="4" caption="call the magnitude — the fuel load's weight" widget="estimate" config={amtFuelEstimate} />
   <p>
     <strong>Weight and balance</strong> is the signature calculation, done before every
     flight and formally whenever equipment changes. The physics is a lever balance — a
@@ -155,6 +326,7 @@ const generalCfg = {
     tension, and why using a cheater bar on a torque wrench silently destroys its
     calibration), pulleys and gears set cable tensions and magneto timing.
   </p>
+  <Widget no="5" caption="which curve is the torque trade-off?" widget="trace" config={amtLeverTrace} />
   <p>
     <strong>Fluid mechanics</strong> explains both the aircraft and the shop. Pascal's
     principle — pressure applied to a confined fluid transmits equally in all directions —
@@ -193,6 +365,7 @@ const generalCfg = {
     major alterations need additional authorisation; some work is reserved for repair
     stations; inspections require an Inspection Authorisation for annuals).
   </p>
+  <Widget no="6" caption="file the rule — which regulation owns it?" widget="sort-buckets" config={amtRegBuckets} />
   <p>
     <strong>FAA Part 43</strong> defines what "maintenance" legally means — inspection,
     overhaul, repair, preservation, and the replacement of parts — and, crucially, the
@@ -209,6 +382,7 @@ const generalCfg = {
     with date, description, reference data and signature. Falsifying maintenance records is
     a federal offence — the paper trail is the safety system.
   </p>
+  <Widget no="7" caption="rebuild the paper trail, from finding to signing" widget="order" config={amtPaperOrder} />
   <p>
     <em>Common misconception:</em> the regulations are bureaucracy layered on the "real" work.
     In aviation they are the work's authorisation layer: the same bolt torqued with approved
@@ -229,6 +403,7 @@ const generalCfg = {
     with the calibration certificate traceable to national standards, because an
     untraceable torque value is an unknown torque value.
   </p>
+  <Widget no="8" caption="drag the divider — tool box versus tool control" widget="compare" config={amtToolCompare} />
   <p>
     <strong>Tool control</strong> programmes — shadowed tool boxes where every tool has an
     outlined home, inventories checked at shift end — exist because a forgotten wrench in
@@ -245,6 +420,7 @@ const generalCfg = {
   produces comes from controlled stretch inside its torque range — a few degrees of turn can
   separate "clamped for life" from "fatigued and waiting to fail", which is why the trade
   measures torque instead of trusting the wrist.</p>
+  <Widget no="9" caption="true or false — the wrist versus the wrench" widget="judge" config={amtBoltJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. The answers are right below.</p>
@@ -293,6 +469,7 @@ const generalCfg = {
     done for takeoff <em>and</em> landing weights; and a heavy pilot plus full fuel can pass
     the weight limit while failing the CG limit — two separate gates, both mandatory.
   </p>
+  <Widget no="10" caption="find the faulty line — the CG arithmetic" widget="spot-error" config={amtCgSpot} />
   <p>
     <strong>Human factors are part of the General curriculum</strong> because the system's
     honest failure mode is the technician's own state. The FAA teaches the "dirty dozen" —

@@ -45,6 +45,181 @@ const punnettCfg = {
   detailHint: 'Click a square: each cell is one fertilisation outcome.',
   key: 'Letters are alleles: T = tall (dominant), t = short (recessive). Phenotype ratio 3 tall : 1 short.',
 };
+
+const dhVolumesEstimate = {
+  "prompt": "Your whole set of instructions — your genome — is about 3 billion rungs. Printed as a book of single letters, roughly how many volumes would it fill?",
+  "unit": "volumes",
+  "answer": 1000,
+  "factor": 1.6,
+  "why": "About a thousand volumes — spread across 23 pairs of chromosomes, holding roughly 20,000 protein-coding genes.",
+  "context": "And every one of your ~30 trillion cells runs on a copy of the same library."
+};
+
+const dhPackCloze = {
+  "text": "Your DNA in one cell, stretched out straight, would run about %%0%%. So it is packed, wound around spool-like proteins, into %%1%% chromosomes — %%2%% matched pairs, one of each pair from each parent. A full double set like this is called %%3%%.",
+  "answers": [
+    [
+      "2 metres",
+      "two metres",
+      "2 m"
+    ],
+    [
+      "46"
+    ],
+    [
+      "23"
+    ],
+    [
+      "diploid"
+    ]
+  ],
+  "hint": "Think of the packing: two metres of ladder into a nucleus."
+};
+
+const dhTermsMatch = {
+  "prompt": "Three words this lesson needs used correctly — pair them:",
+  "pairs": [
+    {
+      "left": "gene",
+      "right": "a section of DNA coding for one protein, at a fixed address"
+    },
+    {
+      "left": "allele",
+      "right": "an alternative version of the same gene — brown-eye vs blue-eye"
+    },
+    {
+      "left": "chromosome",
+      "right": "one compact spool of wound DNA"
+    },
+    {
+      "left": "diploid",
+      "right": "a full double set — 23 matched pairs"
+    }
+  ],
+  "why": "Both chromosomes of a pair carry the same address, so you hold two copies of most genes — and the two copies may not be the same version."
+};
+
+const dhCodeOrder = {
+  "prompt": "From alphabet to working machinery — put the reading scheme in order:",
+  "items": [
+    "The four bases are an alphabet",
+    "Three letters at a time spell one amino acid",
+    "Chains of amino acids fold into proteins",
+    "The proteins do the cell's work"
+  ],
+  "why": "The same reading scheme runs in bacteria, blue whales and bread wheat — the strongest single clue that everything alive shares one ancestor."
+};
+
+const dhRepJudge = {
+  "statements": [
+    {
+      "s": "Replication is semi-conservative: each new ladder keeps one old strand and builds one new one.",
+      "truth": true,
+      "why": "Confirmed by Meselson and Stahl's famous 1958 experiment."
+    },
+    {
+      "s": "Copying is completely error-free; mutations come only from mutagens.",
+      "truth": false,
+      "why": "Errors slip through spontaneously — about one letter per few hundred million copied — and most are caught and repaired."
+    },
+    {
+      "s": "The rare escapee errors are mutations — the raw material of both disease and evolution.",
+      "truth": true,
+      "why": "Mostly noise, occasionally signal — which is what evolution edits."
+    },
+    {
+      "s": "Mitosis hands each new cell a single half-set of the library.",
+      "truth": false,
+      "why": "Mitosis copies the full, unchanged double set — for growth and repair. Halving is meiosis's job."
+    }
+  ]
+};
+
+const dhMeiosisSpot = {
+  "prompt": "This inheritance answer contains one faulty line — click it:",
+  "lines": [
+    "Each child gets one chromosome of every pair from each parent.",
+    "If parents handed over full double sets, the count would double every generation.",
+    "46 chromosomes would become 92, then 184 — nonsense within a century.",
+    "So gametes are made by ordinary mitosis, carrying a full double set of 46.",
+    "Fertilisation puts two single sets back together into 46."
+  ],
+  "errorLine": 3,
+  "correction": "Gametes are made by MEIOSIS — a special two-stage division carrying a single set of 23.",
+  "why": "Mitosis copies the full library; meiosis is the halving step that keeps the chromosome count constant across generations."
+};
+
+const dhTraitsBuckets = {
+  "prompt": "Not everything is a clean 3:1 — file each case:",
+  "buckets": [
+    "clean Mendelian",
+    "codominant",
+    "polygenic"
+  ],
+  "items": [
+    {
+      "label": "Mendel's tall and short peas",
+      "bucket": 0
+    },
+    {
+      "label": "an O allele — visible only in a double dose",
+      "bucket": 0
+    },
+    {
+      "label": "blood groups A and B in one person — both shown",
+      "bucket": 1
+    },
+    {
+      "label": "human height",
+      "bucket": 2
+    },
+    {
+      "label": "skin tone",
+      "bucket": 2
+    },
+    {
+      "label": "thousands of genes acting together, smooth ranges",
+      "bucket": 2
+    }
+  ],
+  "why": "A and B are codominant (an AB person shows both) while O is recessive; height and skin tone are polygenic — which is why Mendel's peas were, in a sense, lucky clean choices."
+};
+
+const dhMutationBranch = {
+  "root": "A mutation just happened. Only its address decides whether it stops with you or reaches your children.",
+  "nodes": {
+    "start": {
+      "text": "Where did the mutation happen?",
+      "choices": [
+        {
+          "label": "In a sunburnt skin cell",
+          "next": "skin",
+          "feedback": "Mutagen damage — UV light in sunlight."
+        },
+        {
+          "label": "In a gamete",
+          "next": "germ",
+          "feedback": "Sperm and eggs carry a single set — and their mutations travel."
+        },
+        {
+          "label": "In DNA that is repaired before the cell divides",
+          "next": "fixed",
+          "feedback": "Most copying errors are caught and repaired."
+        }
+      ]
+    },
+    "skin": {
+      "text": "The mutation can turn that cell cancerous — but it dies with the skin. Your lineage is untouched."
+    },
+    "germ": {
+      "text": "This one can reach the next generation — the germline is the only road inheritance runs on."
+    },
+    "fixed": {
+      "text": "About one letter per few hundred million escapes — the rare escapees are mutations."
+    }
+  },
+  "why": "Only mutations in the gametes — or the germline cells that make them — pass to children: the distinction radiation safety, cancer medicine and evolution all depend on."
+};
 ---
 <TopicPage slug="subjects/biology/foundational/dna-heredity">
 
@@ -91,6 +266,7 @@ const punnettCfg = {
     150-year detective story — scrub through it below, then we will unpack
     each step.
   </p>
+  <Widget no="3" caption="call the magnitude — your genome in print" widget="estimate" config={dhVolumesEstimate} />
 
   <Widget no="1" caption="from monk's garden to programmable editor — 150 years in ten steps" widget="timeline" config={dnaTimeline} />
   <p>
@@ -111,6 +287,7 @@ const punnettCfg = {
     chromosome of each pair from your mother and one from your father. A
     full double set like this is called <em>diploid</em>.
   </p>
+  <Widget no="4" caption="fill the blanks — packing the library" widget="cloze" config={dhPackCloze} />
   <p>
     A <strong>gene</strong> is a section of DNA that codes for one protein,
     sitting at a fixed address on a chromosome. Both chromosomes of a pair
@@ -118,12 +295,14 @@ const punnettCfg = {
     versions of the same gene — the brown-eye version and the blue-eye
     version, say — are <strong>alleles</strong>.
   </p>
+  <Widget no="5" caption="pair each word with what it names" widget="match" config={dhTermsMatch} />
   <p>
     Reading the library goes like this. The four bases are an alphabet.
     Three letters at a time spell one amino acid. Chains of amino acids fold
     into proteins that do the cell's work. That is the whole reading scheme,
     and it is the same in bacteria, blue whales and bread wheat.
   </p>
+  <Widget no="6" caption="rebuild the reading scheme" widget="order" config={dhCodeOrder} />
   <p>
     Watson and Crick's 1953 paper mattered because the structure explained
     the copying in one glance — pairing rule plus two strands is a copying
@@ -156,6 +335,7 @@ const punnettCfg = {
     mutations, the raw material of both disease and evolution — more on them
     below.
   </p>
+  <Widget no="7" caption="true or false — copying the library" widget="judge" config={dhRepJudge} />
 
   <h2>Halving the deck: meiosis</h2>
   <p>
@@ -168,6 +348,7 @@ const punnettCfg = {
     single set of 23 chromosomes. Fertilisation puts two single sets back
     together into 46.
   </p>
+  <Widget no="8" caption="find the faulty line — the counting problem" widget="spot-error" config={dhMeiosisSpot} />
   <p>
     Here is the beautiful part: your gametes are all different. In the first
     meiotic division, the chromosome pairs line up and are dealt to the two
@@ -227,6 +408,7 @@ const punnettCfg = {
     come in smooth ranges rather than neat 3:1 ratios. Mendel's peas were, in
     a sense, lucky choices of clean traits.
   </p>
+  <Widget no="9" caption="file the traits by their inheritance pattern" widget="sort-buckets" config={dhTraitsBuckets} />
   <p>
     <strong>So far:</strong> two copies of every gene, one from each parent;
     dominant beats recessive; a Tt cross gives 3 tall to 1 short. Next: what
@@ -255,6 +437,7 @@ const punnettCfg = {
     genetics, evolution and medicine in eleven words.
   </p>
   <p><em>Common misconception:</em> a mutation in one of your body's cells changes the DNA your children will inherit. Only mutations in the gametes — or the germline cells that make them — pass to the next generation; the mutations that turn a sunburnt skin cell cancerous die with that skin. This is why mutagens harm you personally, but harm your lineage only when they reach the germline — a distinction that radiation safety, cancer medicine and evolution all depend on.</p>
+  <Widget no="10" caption="trace the mutation — who inherits it?" widget="branch" config={dhMutationBranch} />
 
   <h2>Sex-linked inheritance: a worked cross</h2>
   <p>

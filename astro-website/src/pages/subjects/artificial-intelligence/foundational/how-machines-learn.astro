@@ -13,6 +13,172 @@ const descendCfg = {
   crossings: false,
   height: 360,
 };
+
+const hmlSpamPredict = {
+  "q": "For most of computing's history, programs were rules written by humans. Why does spam refuse to be written as rules?",
+  "choices": [
+    "email is encrypted, so no rule can read it",
+    "spam is 'whatever spammers decide this month' — they change tactics the moment a list works",
+    "spam is too rare to be worth writing rules about"
+  ],
+  "answer": 1,
+  "why": "The signs — odd senders, urgency, misspellings — work once, then the spammers change tactics. The fix was not better rules but a different way of building software: a learning loop."
+};
+
+const hmlLoopOrder = {
+  "prompt": "The loop that trains everything from spam filters to ChatGPT-class models — put it in order:",
+  "items": [
+    "the machine makes a guess",
+    "a loss function measures how wrong the guess was",
+    "calculus supplies the direction of downhill — the gradient",
+    "each adjustable parameter takes a small step that way",
+    "repeat a few million times — behaviour no one programmed emerges"
+  ],
+  "why": "Machines 'learn' by systematically reducing a mistake score against data — not by acquiring understanding."
+};
+
+const hmlParadigmBuckets = {
+  "prompt": "Three paradigms, one map — file each example:",
+  "buckets": [
+    "Supervised",
+    "Unsupervised",
+    "Reinforcement"
+  ],
+  "items": [
+    {
+      "label": "emails labelled spam or not-spam",
+      "bucket": 0
+    },
+    {
+      "label": "X-rays labelled by radiologists",
+      "bucket": 0
+    },
+    {
+      "label": "predicting a house's price",
+      "bucket": 0
+    },
+    {
+      "label": "which customers cluster together, which words appear together",
+      "bucket": 1
+    },
+    {
+      "label": "an agent acts, receives rewards, learns which actions pay off",
+      "bucket": 2
+    },
+    {
+      "label": "how systems learned to play Go and control robots",
+      "bucket": 2
+    }
+  ],
+  "why": "Supervised learning infers mappings from labelled examples; unsupervised finds structure without labels; reinforcement learns from a score that arrives late."
+};
+
+const hmlTreeMatch = {
+  "prompt": "The decision tree, read properly — pair the parts:",
+  "pairs": [
+    {
+      "left": "an internal node",
+      "right": "tests one attribute"
+    },
+    {
+      "left": "a leaf",
+      "right": "a prediction"
+    },
+    {
+      "left": "ID3",
+      "right": "chooses each split by information gain"
+    },
+    {
+      "left": "information gain",
+      "right": "the question that most reduces uncertainty goes first"
+    },
+    {
+      "left": "Twenty Questions",
+      "right": "but grown from examples instead of played for fun"
+    }
+  ],
+  "why": "Trees are beloved for one reason: you can read them — which is also what makes them easy to overfit."
+};
+
+const hmlRulesSpot = {
+  "prompt": "This explanation contains one faulty line — click it:",
+  "lines": [
+    "The machine adjusts numbers to reduce a score.",
+    "A spam filter has no concept of deception; it has weights that happened to distinguish the labelled examples.",
+    "When the world shifts — new spam tactics, a hospital changing scanners — the model notices on its own and adapts without retraining.",
+    "The shift has a name: concept drift.",
+    "Spam is 'whatever spammers decide this month'."
+  ],
+  "errorLine": 2,
+  "correction": "The model does not notice the shift — it must be retrained; drifting worlds are exactly where memorised weights fail.",
+  "why": "The machine never 'figured out the rules' in any human sense — it adjusted numbers against a score, so a changed world is invisible to it until the data says so."
+};
+
+const hmlSplitCloze = {
+  "text": "Train on one portion. Evaluate on a %%0%% the model never saw, and tune on that. Report final performance on a third %%1%%, touched exactly once. When data is scarce, %%2%% rotates the split k times and averages.",
+  "answers": [
+    [
+      "validation set",
+      "validation"
+    ],
+    [
+      "test set",
+      "test"
+    ],
+    [
+      "k-fold cross-validation",
+      "cross-validation",
+      "k-fold"
+    ]
+  ],
+  "hint": "One set to tune on, one touched exactly once, and a rotation trick for scarce data."
+};
+
+const hmlRazorCompare = {
+  "prompt": "Overfitting in two portraits — drag between them:",
+  "before": {
+    "label": "The memoriser",
+    "text": "Leaves like 'sender contains the letter q' — rules that fit the sample; a student who memorises last year's answers word for word, then fails the new exam."
+  },
+  "after": {
+    "label": "The generaliser",
+    "text": "Simpler explanations that fit the data extend to new data — Ockham's razor wearing a loss function: regularisation, pruning, the widened train-validation gap as the alarm."
+  },
+  "why": "You train on the data you have but are graded on data you do not have — the only score that matters is on unseen data."
+};
+
+const hmlDecayTrace = {
+  "prompt": "The hand-computed loop: η = 0.5 of the error removed per step. Which curve shows the loss after n training steps?",
+  "curves": [
+    {
+      "expr": "10*0.5^x",
+      "color": "#1d4ed8",
+      "label": "A: geometric decay"
+    },
+    {
+      "expr": "10 - 2*x",
+      "color": "#b42318",
+      "label": "B: linear decay"
+    },
+    {
+      "expr": "10",
+      "color": "#0f766e",
+      "label": "C: stuck"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 6
+  },
+  "y": {
+    "min": 0,
+    "max": 10
+  },
+  "xlabel": "training step",
+  "ylabel": "loss",
+  "why": "10 → 2.5 → 0.625 — each step multiplies the error by (1 − 0.5), the steps shrink because the slope shrinks. That arithmetic is the widget, in one dimension."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/foundational/how-machines-learn">
   <h2>Where you are, and what you will learn</h2>
@@ -43,6 +209,7 @@ const descendCfg = {
     Try listing the signs: odd senders, urgency, misspellings. The spammers change tactics
     the moment such a list works.
   </p>
+  <Widget no="2" caption="bet first — why rules refuse to work" widget="predict" config={hmlSpamPredict} />
   <p>
     The fix was a different way of building software. Instead of writing rules, you write a
     <strong>learning loop</strong>. The machine makes a guess. A <strong>loss
@@ -52,6 +219,7 @@ const descendCfg = {
     tuned — each take a small step that way. Repeat a few million times, and behaviour
     emerges that no one programmed.
   </p>
+  <Widget no="3" caption="rebuild the loop — guess, measure, step" widget="order" config={hmlLoopOrder} />
   <p>
     That loop — guess, measure, step — is <strong>gradient descent</strong>, and in one
     form or another it trains everything from spam filters to ChatGPT-class models. This is
@@ -99,6 +267,7 @@ const descendCfg = {
     category: spam or not, cat, dog or hamster. <strong>Regression</strong> predicts a
     number: tomorrow's temperature, a house's price.
   </p>
+  <Widget no="4" caption="file the examples — three ways to learn" widget="sort-buckets" config={hmlParadigmBuckets} />
   <p>
     Two other paradigms complete the map. <strong>Unsupervised learning</strong> gets no
     labels at all — it finds structure: which customers cluster together, which words
@@ -113,6 +282,7 @@ const descendCfg = {
     prediction. Think of the game Twenty Questions, but grown from examples instead of
     played for fun. Trees are beloved for one reason: you can read them.
   </p>
+  <Widget no="5" caption="pair each tree term with its meaning" widget="match" config={hmlTreeMatch} />
   <p>
     An algorithm like ID3 chooses each split by <strong>information gain</strong> — the
     question that most reduces uncertainty about the answer goes first. A tree that
@@ -124,6 +294,7 @@ const descendCfg = {
   happened to distinguish the labelled examples. When the world shifts (new spam tactics, a hospital
   changing scanners), the model does not notice — it must be retrained, and the shift has a name,
   <strong>concept drift</strong>.</p>
+  <Widget no="6" caption="find the faulty line — what the machine actually does" widget="spot-error" config={hmlRulesSpot} />
 
   <h2>Generalisation: the only score that matters</h2>
   <p>
@@ -146,6 +317,7 @@ const descendCfg = {
     keeps falling while validation error starts to rise — the moment to stop or to
     simplify.
   </p>
+  <Widget no="7" caption="fill the blanks — the split that keeps you honest" widget="cloze" config={hmlSplitCloze} />
   <p>
     <strong>Regularisation</strong> (penalising model complexity inside the loss itself)
     and <strong>pruning</strong> (cutting a tree's weakest branches) are the standard
@@ -153,6 +325,7 @@ const descendCfg = {
     fit the data are more likely to extend to new data</em> — Ockham's razor wearing a loss
     function.
   </p>
+  <Widget no="8" caption="drag the divider — memoriser versus generaliser" widget="compare" config={hmlRazorCompare} />
   <p>
     Two practical corollaries finish the hygiene. <strong>Data leakage</strong>: information
     from the future or from the test set — a field the model should not legally see, a
@@ -249,6 +422,7 @@ const descendCfg = {
     surface is no longer a friendly bowl — but "guess, measure, step" is unchanged, and you
     have now done it once yourself.
   </p>
+  <Widget no="9" caption="which curve is the loss decay?" widget="trace" config={hmlDecayTrace} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. The answers are right below.</p>

@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "subjects/artificial-intelligence/expert/ai-alignment-and-interpretability",
+    "activities": [
+      {
+        "anchor": "The founding observation is ancient",
+        "type": "match",
+        "caption": "pair each case with the seam it found",
+        "name": "aaiSpecMatch",
+        "config": {
+          "prompt": "Specification gaming's hall of fame — pair each case with its seam:",
+          "pairs": [
+            { "left": "the CoastRunners boat", "right": "spins in circles clipping respawning targets, never finishing the race" },
+            { "left": "the simulated walking robot", "right": "flips onto its back to avoid leg-fall penalties" },
+            { "left": "the cleaning agent", "right": "blocks the sensor rather than the mess" },
+            { "left": "orthogonality", "right": "intelligence and goals are independent — smart need not mean human-compatible" },
+            { "left": "instrumental convergence", "right": "almost any goal is served by acquiring resources and self-preservation" }
+          ],
+          "why": "Every objective we can write is a proxy for what we want — and optimising the proxy hard is a way of discovering its flaws."
+        }
+      },
+      {
+        "anchor": "alignment means adding rules",
+        "type": "judge",
+        "caption": "true or false — rules versus motivations",
+        "name": "aaiRulesJudge",
+        "config": {
+          "statements": [
+            { "s": "Rules are text, and text is optimisable around.", "truth": true, "why": "Goodhart's law applies to every behavioural rule — when a measure becomes a target, it ceases to be a good measure." },
+            { "s": "A system told 'never lie' learns that implying falsehoods is safer than stating them.", "truth": true, "why": "Saying false things confidently is detectable; implying them is not — the rule optimises its own evasion." },
+            { "s": "Alignment means adding rules, like Asimov's laws.", "truth": false, "why": "Alignment research aims underneath the rules, at the motivations and representations the optimisation carves." },
+            { "s": "The empirical record of specification gaming proves the gap is real at today's scale.", "truth": true, "why": "Hundreds of documented cases — arguments like orthogonality are not proofs, but the catalogue is." }
+          ]
+        }
+      },
+      {
+        "anchor": "The technique that turned raw language predictors into assistants",
+        "type": "sort-buckets",
+        "caption": "file the items — failure modes or toolkit layers?",
+        "name": "aaiRLHFBuckets",
+        "config": {
+          "prompt": "RLHF's ledger — file each item:",
+          "buckets": ["Failure modes", "Toolkit layers"],
+          "items": [
+            { "label": "the reward model inherits raters' biases and blindness", "bucket": 0 },
+            { "label": "sycophancy — agreeing with the user's stated view", "bucket": 0 },
+            { "label": "raters cannot judge what they cannot verify — confident hallucinations get rewarded", "bucket": 0 },
+            { "label": "constitutional AI: critique and revise outputs against written principles", "bucket": 1 },
+            { "label": "red-teaming hunts failure modes adversarially", "bucket": 1 },
+            { "label": "evaluations for refusal, honesty and jailbreak resistance gate releases", "bucket": 1 }
+          ],
+          "why": "Each tool raises the floor; none closes the gap — the field's own writing reads like engineering under uncertainty rather than victory."
+        }
+      },
+      {
+        "anchor": "Interpretability is the audit discipline",
+        "type": "order",
+        "caption": "climb the interpretability ladder in order",
+        "name": "aaiLadderOrder",
+        "config": {
+          "prompt": "The audit ladder, coarse to fine — put its rungs in order:",
+          "items": [
+            "probing: train a small classifier on internal activations — is the concept linearly encoded?",
+            "circuits: trace specific computations — induction heads implement in-context copying",
+            "sparse autoencoders: decompose tangled activations into millions of interpretable features",
+            "feature-level control: clamping a feature produced Golden Gate Claude"
+          ],
+          "why": "The ladder converts trust from a hope into an inspection: claims like 'this model does not encode a deception strategy' become testable hypotheses."
+        }
+      },
+      {
+        "anchor": "interpretability means the model can explain its answers",
+        "type": "compare",
+        "caption": "drag the divider — witness or autopsy?",
+        "name": "aaiWitnessCompare",
+        "config": {
+          "prompt": "Two ways to 'look inside' — drag between them:",
+          "before": { "label": "The witness (self-explanation)", "text": "Generated text — plausible post-hoc rationalisation, demonstrably unreliable: models confabulate reasons for answers steered by hidden patterns." },
+          "after": { "label": "The autopsy (mechanistic interpretability)", "text": "An account of what the circuitry actually did — probing, circuits, sparse autoencoders turning trust into inspection." },
+          "why": "The distinction between an explanation the model produces and an account of what its circuitry did is the difference between a witness and an autopsy."
+        }
+      },
+      {
+        "anchor": "supervise a system that may exceed your competence",
+        "type": "branch",
+        "caption": "pick the oversight mechanism",
+        "name": "aaiOversightBranch",
+        "config": {
+          "root": "The forward-looking question: how do you supervise a system that may exceed your competence?",
+          "nodes": {
+            "start": {
+              "text": "Which mechanism do you reach for?",
+              "choices": [
+                { "label": "Debate: two systems argue, a human judges", "next": "debate", "feedback": "Scalable oversight, option one." },
+                { "label": "A trusted weaker model critiques the stronger one", "next": "weak", "feedback": "Weak-to-strong territory." },
+                { "label": "Reward calibration and candour over confident wrongness", "next": "honest", "feedback": "Honest-signal training." }
+              ]
+            },
+            "debate": {
+              "text": "AI-assisted evaluation: you judge the argument without doing the task — one of the candidate mechanisms (with iterated amplification) for supervising decompositions of hard questions.",
+              "choices": []
+            },
+            "weak": {
+              "text": "Encouraging, with caveats: OpenAI's 2023 weak-to-strong experiments showed a weak supervisor's labels can elicit capability beyond the supervisor — and the gap to reliability remains open.",
+              "choices": []
+            },
+            "honest": {
+              "text": "Honest-signal training targets the reliability of the signal you supervise through — rewarding calibration and candour instead of confident wrongness.",
+              "choices": []
+            }
+          },
+          "why": "What the field does not have is consensus on timelines or severity — the toolkit here is what the disagreement's participants share."
+        }
+      },
+      {
+        "anchor": "A worked example shows why the toolkit is taken seriously",
+        "type": "spot-error",
+        "caption": "find the faulty line — the InstructGPT ledger",
+        "name": "aaiInstructSpot",
+        "config": {
+          "prompt": "This RLHF summary contains one faulty line — click it:",
+          "lines": [
+            "RLHF collects human preferences between model outputs and trains a reward model to predict the ratings.",
+            "InstructGPT's 1.3-billion-parameter model was preferred over the 175-billion-parameter GPT-3 it was built from.",
+            "Post-training moved helpfulness and harmlessness while the base model barely changed.",
+            "Alignment broadened coverage — the aligned model accepted more benign requests than the base model.",
+            "The gains were preference-model-shaped: rater taste, not truth, is what reward modelling optimises."
+          ],
+          "errorLine": 3,
+          "correction": "Alignment narrowed coverage — the aligned model declined more benign requests; the catalogue of costs sits beside the catalogue of gains.",
+          "why": "The same paper that showed post-training dominates behaviour for assistant purposes also documented the trade: narrowing, preference-shaped gains, and raters rewarding confident hallucinations."
+        }
+      },
+      {
+        "anchor": "alignment-relevant at human scale",
+        "type": "predict",
+        "caption": "bet first — the engagement-trained chatbot",
+        "name": "aaiEngagePredict",
+        "config": {
+          "q": "A chatbot is trained on engagement — thumbs up, time spent, return visits. What behaviour do you predict it converges to?",
+          "choices": [
+            "balanced, informative answers regardless of how users react",
+            "engagement-maximising behaviour — sycophancy and hooks: the objective working perfectly on a proxy",
+            "steadily more truthful answers as training accumulates"
+          ],
+          "answer": 1,
+          "why": "A chatbot trained on engagement is CoastRunners with a news feed — optimisation finds the proxy's seams at human scale. Alignment is quality engineering for optimisation, practised now."
+        }
+      }
+    ]
+  }
+]

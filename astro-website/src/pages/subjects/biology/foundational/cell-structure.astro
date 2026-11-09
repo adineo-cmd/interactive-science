@@ -78,6 +78,141 @@ const synthesisCfg = {
     { math: 'chain folds → working protein', note: 'Shape is function: the folded protein is an enzyme, a motor, or a brick.' },
   ],
 };
+
+const csHistoryOrder = {
+  "prompt": "From a slice of cork to a law with no exceptions — put the history in order:",
+  "items": [
+    "1665: Robert Hooke slices cork and sees a honeycomb of tiny empty boxes",
+    "He borrows the word 'cell' from the small rooms monks sleep in",
+    "1670s: van Leeuwenhoek looks at pond water — the boxes are alive and swimming",
+    "Almost 200 years later: cell theory's three rules are agreed",
+    "In all the years since, no exception has ever been found"
+  ],
+  "why": "Everything alive is made of cells; the cell is the basic unit of life; every cell comes from another cell — the three rules that survived every microscope since."
+};
+
+const csJobsMatch = {
+  "prompt": "Every part has a job you already understand — pair them:",
+  "pairs": [
+    {
+      "left": "the bag itself — a skin two molecules thick, dotted with tiny doors",
+      "right": "cell membrane"
+    },
+    {
+      "left": "the library holding the full instruction manual",
+      "right": "nucleus"
+    },
+    {
+      "left": "the power stations, earning the cell's money",
+      "right": "mitochondria"
+    },
+    {
+      "left": "tiny specks that read the copies and build proteins",
+      "right": "ribosomes"
+    },
+    {
+      "left": "a water balloon pressing everything outward",
+      "right": "vacuole"
+    }
+  ],
+  "why": "ATP is the cell's money — mitochondria earn it and every other part spends it. A full vacuole is the difference between crisp lettuce and wilted lettuce."
+};
+
+const csLadderCloze = {
+  "text": "Divide a metre by 1,000 → a %%0%% (mm), about the width of your fingernail. Divide again by 1,000 → a %%1%% (μm). Divide again by 1,000 → a %%2%% (nm), a billionth of a metre.",
+  "answers": [
+    [
+      "millimetre"
+    ],
+    [
+      "micrometre"
+    ],
+    [
+      "nanometre"
+    ]
+  ],
+  "hint": "Each rung of the ladder repeats one pattern: divide by a thousand."
+};
+
+const csCellPlace = {
+  "prompt": "A hair is about 70 μm across. Place a typical human cell on the scale (μm):",
+  "labels": [
+    "0",
+    "25",
+    "50",
+    "75",
+    "100"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 20,
+  "tolerance": 8,
+  "why": "10–30 μm — bigger than a bacterium (1–5 μm), ten times bigger than a virus (about 100 nm).",
+  "context": "A normal school microscope that shows bacteria clearly cannot see viruses at all."
+};
+
+const csResolutionJudge = {
+  "statements": [
+    {
+      "s": "A light microscope cannot separate two points closer than about 200 nm.",
+      "truth": true,
+      "why": "Visible light travels in waves roughly that size — that is the ceiling."
+    },
+    {
+      "s": "Zooming a light microscope in enough will eventually reveal ribosomes.",
+      "truth": false,
+      "why": "Magnification only enlarges — a bigger blur, not more structure."
+    },
+    {
+      "s": "An electron microscope uses beams of electrons instead of light.",
+      "truth": true,
+      "why": "That is how you see inside a cell — the ribosomes, the membrane layers."
+    },
+    {
+      "s": "Resolution and magnification are the same measurement.",
+      "truth": false,
+      "why": "Resolution is the physical limit set by light's wavelength; magnification just scales the image."
+    }
+  ]
+};
+
+const csVaultSpot = {
+  "prompt": "This protein-synthesis answer contains one faulty line — click it:",
+  "lines": [
+    "The nucleus keeps DNA safe — but a book locked in a vault builds nothing.",
+    "The vault makes a disposable photocopy of one page (one gene) and ships it out.",
+    "The photocopy is called messenger RNA.",
+    "The ribosome reads the copy three letters at a time, each triplet selecting one amino acid.",
+    "The DNA itself travels out through the pores to do the building."
+  ],
+  "errorLine": 4,
+  "correction": "DNA never leaves the vault — only the disposable mRNA copies travel out; the blueprint stays.",
+  "why": "The blueprint stays; the photocopy travels — one human cell runs this supply chain for about 20,000 different genes at the same time."
+};
+
+const csDrawEstimate = {
+  "prompt": "The real cell is 30 μm long; you draw it 60 mm long in your notebook. How magnified is the drawing?",
+  "unit": "×",
+  "answer": 2000,
+  "factor": 1.6,
+  "why": "60 mm = 60,000 μm; 60,000 ÷ 30 = ×2,000 — and the microscope's ×400 was already divided out by the calibration.",
+  "context": "Three magnifications were in play — the microscope's, the calibration's, and the drawing's — each answering a different question."
+};
+
+const csEmpiresCompare = {
+  "prompt": "The two great cell empires — drag the divider:",
+  "before": {
+    "label": "eukaryotic (ours)",
+    "text": "DNA kept in a nucleus, with the work divided among membrane-bound compartments — the merged empire."
+  },
+  "after": {
+    "label": "prokaryotic (bacteria)",
+    "text": "Smaller and simpler: no nucleus — circular DNA floats in the cytoplasm, often with extra plasmid rings; ribosomes and walls chemically different enough for antibiotics to exploit."
+  },
+  "why": "The deepest surprise: mitochondria and chloroplasts were once free-living bacteria another cell swallowed and kept — still carrying their own circular DNA and double membranes (Margulis's endosymbiosis)."
+};
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
   <div class="wrap">
@@ -148,6 +283,12 @@ const synthesisCfg = {
             alive is made of cells; the cell is the basic unit of life; and every cell comes
             from another cell. In all the years since, no exception has ever been found.
           </p>
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 1</span><span>rebuild the discovery timeline — cork to cell theory</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="order" data-config={JSON.stringify(csHistoryOrder)}></div>
+            </div>
+          </figure>
           <p>
             <strong>So far:</strong> living things are built from tiny living compartments
             called cells. The word "cell" comes from small rooms. Now let us open one up.
@@ -196,7 +337,13 @@ const synthesisCfg = {
             and wilted lettuce.
           </p>
 <figure class="widget">
-            <figcaption><span class="fig-no">fig. 1</span><span>the parts and their jobs — click any box</span></figcaption>
+            <figcaption><span class="fig-no">fig. 2</span><span>pair each part with its everyday job</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="match" data-config={JSON.stringify(csJobsMatch)}></div>
+            </div>
+          </figure>
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 3</span><span>the parts and their jobs — click any box</span></figcaption>
             <div class="widget-body">
               <div data-widget="diagram" data-config={JSON.stringify(cellCfg)}></div>
             </div>
@@ -217,6 +364,12 @@ const synthesisCfg = {
             Cells are far too small to see, so biologists need size words. The whole ladder
             repeats one pattern: divide by a thousand.
           </p>
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 4</span><span>fill the blanks — the divide-by-a-thousand ladder</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="cloze" data-config={JSON.stringify(csLadderCloze)}></div>
+            </div>
+          </figure>
           <ul>
             <li>Divide a metre by 1,000 → <strong>millimetre</strong> (mm) — about the width of your fingernail.</li>
             <li>Divide again by 1,000 → <strong>micrometre</strong> (μm) — a millionth of a metre.</li>
@@ -228,13 +381,24 @@ const synthesisCfg = {
             a bacterium. That last gap matters: a normal school microscope that shows bacteria
             clearly cannot see viruses at all.
           </p>
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 5</span><span>pin a human cell on the micrometre scale</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="place" data-config={JSON.stringify(csCellPlace)}></div>
+            </div>
+          </figure>
           <p>
             And there is a physical ceiling. A light microscope cannot separate two points
             closer than about 200 nm, because visible light travels in waves roughly that size.
             To see <em>inside</em> a cell — the ribosomes, the membrane layers — you need an
             <strong>electron microscope</strong>, which uses beams of electrons instead of light.
           </p>
-
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 6</span><span>true or false — zoom, resolution and light</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="judge" data-config={JSON.stringify(csResolutionJudge)}></div>
+            </div>
+          </figure>
           <h2>Making a copy: how one cell becomes two</h2>
           <p>
             Why would a cell copy itself? Because you did not start this size. You began as one
@@ -254,7 +418,7 @@ const synthesisCfg = {
             pull apart, pinch.
           </p>
 <figure class="widget">
-            <figcaption><span class="fig-no">fig. 2</span><span>mitosis, one scrubable loop — from copy-out to pinch-off</span></figcaption>
+            <figcaption><span class="fig-no">fig. 7</span><span>mitosis, one scrubable loop — from copy-out to pinch-off</span></figcaption>
             <div class="widget-body">
               <div data-widget="timeline" data-config={JSON.stringify(mitosisCfg)}></div>
             </div>
@@ -276,7 +440,13 @@ const synthesisCfg = {
             acid</strong> — the standard building block of proteins.
           </p>
 <figure class="widget">
-            <figcaption><span class="fig-no">fig. 3</span><span>from DNA to working protein</span></figcaption>
+            <figcaption><span class="fig-no">fig. 8</span><span>find the faulty line — the supply-chain answer</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="spot-error" data-config={JSON.stringify(csVaultSpot)}></div>
+            </div>
+          </figure>
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 9</span><span>from DNA to working protein</span></figcaption>
             <div class="widget-body">
               <div data-widget="equationStep" data-config={JSON.stringify(synthesisCfg)}></div>
             </div>
@@ -300,6 +470,12 @@ const synthesisCfg = {
             Earlier, you calibrated the ruler at this zoom using a real ruler placed on the
             stage: one division = 2.5 μm. So what is the cell's real length?
           </p>
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 10</span><span>call the magnitude — the drawing's magnification</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="estimate" data-config={JSON.stringify(csDrawEstimate)}></div>
+            </div>
+          </figure>
           <ul>
             <li>Step 1. Real length = divisions × size of one division = 12 × 2.5 = <strong>30 μm</strong>.</li>
             <li>Step 2. Notice that the ×400 has already been divided out by the calibration. That is the entire point of calibrating.</li>
@@ -390,7 +566,12 @@ const synthesisCfg = {
             for most of human history — the size ladder above is the price of admission to that
             world.
           </p>
-
+<figure class="widget">
+            <figcaption><span class="fig-no">fig. 11</span><span>two empires — drag between them</span></figcaption>
+            <div class="widget-body">
+              <div data-widget="compare" data-config={JSON.stringify(csEmpiresCompare)}></div>
+            </div>
+          </figure>
           <p class="sources"><strong>Sources:</strong> Hooke, <em>Micrographia</em> (1665); Cambridge IGCSE Biology 0615 syllabus, sections 2.1–2.2; Alberts et al., <em>Molecular Biology of the Cell</em>; Margulis, "On the Origin of Mitosing Cells" (1967). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
         <nav class="topic-next" aria-label="Lesson navigation">

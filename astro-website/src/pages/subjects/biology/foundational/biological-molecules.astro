@@ -21,6 +21,196 @@ const testsCfg = {
     { math: 'DCPIP → loses its blue colour', note: 'Tests for vitamin C (ascorbic acid). The blue dye DCPIP is decolourised by it; count the drops needed to estimate how much vitamin C a juice contains.' },
   ],
 };
+
+const bmJobMatch = {
+  "prompt": "The family predicts the job — pair them:",
+  "pairs": [
+    {
+      "left": "fast fuel",
+      "right": "carbohydrate"
+    },
+    {
+      "left": "long-term storage",
+      "right": "fat"
+    },
+    {
+      "left": "working machinery",
+      "right": "protein"
+    },
+    {
+      "left": "the instruction archive",
+      "right": "DNA"
+    }
+  ],
+  "why": "Four families do all the work: the bread was mostly carbohydrate, the butter almost entirely fat, the egg white mostly protein — and your body is built from the same four."
+};
+
+const bmElementBuckets = {
+  "prompt": "The elements tell the families apart. File each molecule:",
+  "buckets": [
+    "carbon, hydrogen, oxygen",
+    "+ nitrogen (protein)",
+    "+ phosphorus (DNA)"
+  ],
+  "items": [
+    {
+      "label": "starch",
+      "bucket": 0
+    },
+    {
+      "label": "olive oil",
+      "bucket": 0
+    },
+    {
+      "label": "an enzyme",
+      "bucket": 1
+    },
+    {
+      "label": "haemoglobin",
+      "bucket": 1
+    },
+    {
+      "label": "the instruction archive itself",
+      "bucket": 2
+    },
+    {
+      "label": "cellulose",
+      "bucket": 0
+    }
+  ],
+  "why": "Carbohydrates and fats hold carbon, hydrogen and oxygen; proteins add nitrogen (and usually a pinch of sulfur); DNA adds phosphorus — 'no nitrogen, not a protein' is a rule that reliable."
+};
+
+const bmBricksCloze = {
+  "text": "Every big molecule in this lesson is assembled from small repeating units: starch, glycogen and cellulose are all chains of one brick, the sugar %%0%%. Proteins are chains of %%1%%. Fats are built from %%2%% and glycerol, and DNA from %%3%%.",
+  "answers": [
+    [
+      "glucose"
+    ],
+    [
+      "amino acids"
+    ],
+    [
+      "fatty acids"
+    ],
+    [
+      "nucleotides"
+    ]
+  ],
+  "hint": "Identical bricks, different walls — enzymes join them and split them apart all day long."
+};
+
+const bmGlycogenEstimate = {
+  "prompt": "Your liver and muscles bank glycogen — roughly how many grams do they hold, all told?",
+  "unit": "g of glycogen",
+  "answer": 450,
+  "factor": 1.5,
+  "why": "About 400–500 g — roughly enough fuel to reach a marathon's halfway mark, which is why the wall hits there.",
+  "context": "Glycogen is the animal version of starch, branched more heavily so glucose can be snapped off quickly from many ends."
+};
+
+const bmLevelsOrder = {
+  "prompt": "From bead order to docking chains — put the levels in order:",
+  "items": [
+    "Primary — the order of the beads (amino acids)",
+    "Secondary — hydrogen bonds coil the chain into helices and sheets",
+    "Tertiary — the side groups pack it into a precise 3-D shape",
+    "Quaternary — separate chains dock together, like haemoglobin's four"
+  ],
+  "why": "The shape is the job: an active site's pocket, keratin's fibre, haemoglobin's gripper — each level adds organisation without adding ingredients."
+};
+
+const bmDenatureJudge = {
+  "statements": [
+    {
+      "s": "A boiled egg never unboils because heat has shaken the proteins' weak bonds loose and the shapes have unravelled.",
+      "truth": true,
+      "why": "Denaturation — heat, or the wrong pH, undoes the fold."
+    },
+    {
+      "s": "Cooling the boiled egg back down restores the original proteins.",
+      "truth": false,
+      "why": "The unravelled tangle does not re-fold — denaturation at the pan's temperature is for keeps."
+    },
+    {
+      "s": "A fever approaching 41 °C is dangerous because your enzymes are nearing the edge of their shapes.",
+      "truth": true,
+      "why": "Their weak bonds begin to slip — the machinery family is temperature-sensitive."
+    },
+    {
+      "s": "Only heat can denature a protein; pH has no effect on shape.",
+      "truth": false,
+      "why": "The wrong pH shakes the same weak bonds loose — pH is the measure of how acid something is."
+    }
+  ]
+};
+
+const bmSatCompare = {
+  "prompt": "Saturated vs unsaturated — drag the divider across the food label:",
+  "before": {
+    "label": "saturated",
+    "text": "No carbon–carbon double bonds: straight chains pack tightly — solid butter and lard, the kind associated with raising blood cholesterol."
+  },
+  "after": {
+    "label": "unsaturated",
+    "text": "Kinks at the double bonds keep chains from packing: olive oil and fish oils stay liquid — the 'healthier' side of the label."
+  },
+  "why": "One bond geometry, two room-temperature fates — and cold-adapted fish make more unsaturated tails to stay flexible in frigid water."
+};
+
+const bmTestHabitBranch = {
+  "root": "Five food tests on the bench, one sample tray. The habits are what keep the results honest — choose your moves.",
+  "nodes": {
+    "start": {
+      "text": "First decision — how do you run Benedict's?",
+      "choices": [
+        {
+          "label": "Water bath at about 80 °C",
+          "next": "bath",
+          "feedback": "Real heat — the only test of the five that needs it."
+        },
+        {
+          "label": "Naked flame directly on the tube",
+          "next": "flame",
+          "feedback": "The habit list says never — heating must be a bath, not a flame."
+        },
+        {
+          "label": "Skip the heating to save time",
+          "next": "cold",
+          "feedback": "Without heat the colour never develops — sucrose stays blue and so does everything else."
+        }
+      ]
+    },
+    "bath": {
+      "text": "Benedict's is heating. Now the biuret reagent — how?",
+      "choices": [
+        {
+          "label": "Drop by drop",
+          "next": "biuret-ok",
+          "feedback": "The honest way — colour develops cleanly."
+        },
+        {
+          "label": "All in at once",
+          "next": "biuret-bad",
+          "feedback": "It can give a false cloudiness that mimics a result."
+        }
+      ]
+    },
+    "flame": {
+      "text": "Back to the water bath — a naked flame on the tube is the habit the list forbids."
+    },
+    "cold": {
+      "text": "No heat, no brick-red — the reducing sugars would never show. Heat it properly and read again."
+    },
+    "biuret-ok": {
+      "text": "One more habit: run distilled water through all five tests as a negative control — it should fail every one."
+    },
+    "biuret-bad": {
+      "text": "False cloudiness — a result you cannot trust. Drop by drop, and repeat."
+    }
+  },
+  "why": "The ethanol emulsion test works only if the sample truly dissolves in the ethanol first — and the sports bar that passes all four has told you more than the wrapper's marketing."
+};
 ---
 <TopicPage slug="subjects/biology/foundational/biological-molecules">
 
@@ -60,6 +250,7 @@ const testsCfg = {
     the job. Fast fuel is carbohydrate. Long-term storage is fat. Working
     machinery is protein. The instruction archive is DNA.
   </p>
+  <Widget no="3" caption="pair each job with the family that does it" widget="match" config={bmJobMatch} />
   <p>
     <strong>So far:</strong> food and bodies are made of molecules, and four
     families do all the work. Next: how to tell them apart.
@@ -77,6 +268,7 @@ const testsCfg = {
     and usually a pinch of sulfur. <strong>DNA</strong> adds phosphorus. No
     nitrogen, not a protein — the rule is that reliable.
   </p>
+  <Widget no="4" caption="file the molecules by their element giveaway" widget="sort-buckets" config={bmElementBuckets} />
   <p>
     The families also share one building habit. Every big molecule in this
     lesson is assembled from small repeating units, like a wall built from
@@ -88,6 +280,7 @@ const testsCfg = {
     — proteins that speed up a chemical change without being used up
     themselves — join the bricks and split them apart again, all day long.
   </p>
+  <Widget no="5" caption="fill the blanks — one brick per family" widget="cloze" config={bmBricksCloze} />
   <p><em>Common misconception:</em> "chemical" means artificial or dangerous. A chemical is simply any substance made of molecules — sugar, water and every part of you included. Nothing in this lesson is artificial.</p>
 
   <h2>Carbohydrates: fuel now, fuel later, and scaffolding</h2>
@@ -128,6 +321,7 @@ const testsCfg = {
     grip each other into cables — the fibre of every plant cell wall. We
     cannot digest it; trees stand on it.
   </p>
+  <Widget no="6" caption="call the magnitude — your glycogen tank" widget="estimate" config={bmGlycogenEstimate} />
   <p>
     One brick, three linkages, three fates: instant fuel, medium-term store,
     structural scaffolding.
@@ -153,6 +347,7 @@ const testsCfg = {
     <strong>quaternary structure</strong> — haemoglobin is four chains in one
     machine.
   </p>
+  <Widget no="7" caption="stack the four structure levels" widget="order" config={bmLevelsOrder} />
   <p>
     The shape <em>is</em> the job. Enzymes fold into an <strong>active
     site</strong> — a pocket whose shape fits exactly one target molecule —
@@ -169,6 +364,7 @@ const testsCfg = {
     why a fever towards 41 °C is dangerous: your enzymes are approaching the
     edge of their shapes.
   </p>
+  <Widget no="8" caption="true or false — shapes under stress" widget="judge" config={bmDenatureJudge} />
   <p>
     Digestion is chain-cutting done by proteins themselves.
     Proteases snip proteins into amino acids. Amylase snips starch into
@@ -202,6 +398,7 @@ const testsCfg = {
     oil, fish oils) have kinks at their double bonds that keep them liquid —
     the "healthier" side of the label.
   </p>
+  <Widget no="9" caption="same family, two shapes — drag from butter to olive oil" widget="compare" config={bmSatCompare} />
   <p>
     The family has one more starring role. Swap one tail for a phosphate head
     and you get a <strong>phospholipid</strong> — a molecule with a
@@ -282,6 +479,7 @@ const testsCfg = {
     dissolves in the ethanol first. And run a negative control: distilled
     water should fail all five.
   </p>
+  <Widget no="10" caption="run the lab — choose the technique" widget="branch" config={bmTestHabitBranch} />
   <p>
     The kit in action: a "sports bar" that turns blue-black with iodine
     (starch), brick-red with Benedict's (reducing sugars), lilac with biuret

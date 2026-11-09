@@ -10,6 +10,163 @@ const bioinfCfg = {
     { math: '4 · AlphaFold: structure solved', note: 'Predicting a protein\'s 3-D shape from its sequence was biology\'s 50-year grand challenge — AlphaFold (2020) effectively solved it (Nobel 2024, Hassabis & Jumper). 200+ million structures predicted, free for all.' },
   ],
 };
+
+const bioGMPipelineOrder = {
+  "prompt": "A genetic-modification project, read as information engineering — put the stations in order:",
+  "items": [
+    "Find the gene's sequence in the databases (GenBank, Ensembl)",
+    "Design the construct: restriction-site planning, codon optimisation in software",
+    "Simulate the cloning in silico — the circular construct assembled before any enzyme moves",
+    "Verify by sequencing the edited genome and aligning it back to the plan",
+    "The wet lab runs — the last mile of a pipeline whose first ninety percent is code"
+  ],
+  "why": "Every modification is a data operation: find, design, simulate, verify — with guide-RNA design itself a fuzzy string-matching problem scored and ranked by software."
+};
+
+const bioGenomeEstimate = {
+  "prompt": "A sequencer's output is text: FASTA files of A, C, G, T. Once processed, roughly how large is one human genome?",
+  "unit": "GB",
+  "answer": 100,
+  "factor": 2,
+  "why": "~100 GB of processed text per genome — terabytes arrive daily, which is why biology became a data science by arithmetic.",
+  "context": "Sanger took 13 years and about 3 billion dollars for one draft genome; Illumina reads millions of fragments in parallel for a few hundred to a thousand dollars."
+};
+
+const bioPhredCloze = {
+  "text": "Each base arrives with a Phred score, Q = −10 log₁₀(p), where p is the probability the base call is %%0%%. Q30 means %%1%%% accuracy, and Q40 means one error in every %%2%% bases. Pipelines filter and trim on these scores before any %%3%% is attempted, because garbage %%4%%: a single bad base can misjoin contigs.",
+  "answers": [
+    [
+      "wrong",
+      "incorrect"
+    ],
+    [
+      "99.9"
+    ],
+    [
+      "10,000",
+      "ten thousand"
+    ],
+    [
+      "biology"
+    ],
+    [
+      "propagates",
+      "spreads"
+    ]
+  ],
+  "hint": "The score is ten times the log of the error probability — every ten points is another decimal place of accuracy."
+};
+
+const bioAlignMatch = {
+  "prompt": "The alignment toolbox — pair each entry with what it does:",
+  "pairs": [
+    {
+      "left": "Needleman–Wunsch (1970)",
+      "right": "global alignment by dynamic programming"
+    },
+    {
+      "left": "Smith–Waterman (1981)",
+      "right": "local alignment — the best matching stretch only"
+    },
+    {
+      "left": "BLAST (1990)",
+      "right": "short exact seeds first, then extend only the promising ones"
+    },
+    {
+      "left": "a region conserved across many species",
+      "right": "clue to an essential function — the slower it changes, the more it matters"
+    }
+  ],
+  "why": "The rigorous grid method would take years against a billion-base database; BLAST's engineering trade made search tractable — and became the most-cited paper in biology's literature."
+};
+
+const bioAssemblySpot = {
+  "prompt": "This genome-assembly answer contains one faulty line — click it:",
+  "lines": [
+    "Sequencers output fragments, not genomes — assembly stitches them back together.",
+    "Short-read assemblers break reads into k-mers and build a de Bruijn graph of overlaps.",
+    "Walking the graph produces contigs; long reads bridge the repeats and close the gaps.",
+    "The first human 'complete' genome in 2003 was finished telomere-to-telomere, with no gaps.",
+    "Annotation then labels genes, regulatory elements and selfish repeats — about half the human genome."
+  ],
+  "errorLine": 3,
+  "correction": "The 2003 genome was a mosaic of hundreds of gaps — the last centromeres and satellite arrays fell only in 2022, to the Telomere-to-Telomere consortium's long reads.",
+  "why": "Repeats where all pieces look identical are what defeat short reads; unreadable for twenty years, the final gaps needed long-molecule sequencing to resolve."
+};
+
+const bioToolBuckets = {
+  "prompt": "Three workhorses, six results — file each by the tool that did the job:",
+  "buckets": [
+    "a tree settled it",
+    "learned from data (ML)",
+    "graph theory"
+  ],
+  "items": [
+    {
+      "label": "whales sit inside the even-toed ungulates",
+      "bucket": 0
+    },
+    {
+      "label": "HIV jumped from chimpanzees early in the twentieth century",
+      "bucket": 0
+    },
+    {
+      "label": "gene-finding was the first large-scale ML problem in biology",
+      "bucket": 1
+    },
+    {
+      "label": "annotators predicting gene structure from sequence with neural networks",
+      "bucket": 1
+    },
+    {
+      "label": "k-mers walked into contigs through a de Bruijn graph",
+      "bucket": 2
+    },
+    {
+      "label": "SARS-CoV-2 samples placed on the evolving tree within days",
+      "bucket": 0
+    }
+  ],
+  "why": "Alignment builds the tree; machine learning labels the assembly; graph theory stitches the reads — the pipeline's three engines."
+};
+
+const bioTreeJudge = {
+  "statements": [
+    {
+      "s": "Every published tree is a computed estimate from aligned sequence data under a model of molecular evolution.",
+      "truth": true,
+      "why": "Different models and gene choices give different trees — inference with quantified confidence."
+    },
+    {
+      "s": "Horizontal gene transfer makes bacterial gene trees agree perfectly with species trees.",
+      "truth": false,
+      "why": "It scrambles the picture — bacteria exchange genes sideways, drawing the deepest ancestor as a web, not a trunk."
+    },
+    {
+      "s": "Mitochondria and chloroplasts carry their own genomes from different ancestors.",
+      "truth": true,
+      "why": "Genes have histories that can differ from species histories."
+    },
+    {
+      "s": "'The' tree of life is a consensus of thousands of gene trees, some of which disagree productively.",
+      "truth": true,
+      "why": "The disagreement is data — productive conflict, not embarrassment."
+    }
+  ]
+};
+
+const bioFoldCompare = {
+  "prompt": "Protein structure prediction — drag the divider across 2020:",
+  "before": {
+    "label": "before CASP14",
+    "text": "Computing the fold from sequence resisted everyone for half a century — the fold follows from physics (Anfinsen), but the calculation defeated biology's grand challenge."
+  },
+  "after": {
+    "label": "after AlphaFold2",
+    "text": "Trained on 170,000 known structures, attention networks reasoning over residue pairs — 200+ million predicted structures, free for all, structure effectively solved for single chains."
+  },
+  "why": "The 2024 chemistry Nobel went to Hassabis and Jumper. The honest boundary survives: interactions, dynamics and disordered regions are harder — a prediction is a hypothesis, not a measurement."
+};
 ---
 <TopicPage slug="subjects/biology/expert/bioinformatics">
   <h2>Where you are, and what you will learn</h2>
@@ -74,6 +231,7 @@ const bioinfCfg = {
     before a pipette moves. The wet lab is the last mile of a pipeline whose first ninety
     percent is code.
   </p>
+  <Widget no="2" caption="rebuild the engineering pipeline — code first, pipette last" widget="order" config={bioGMPipelineOrder} />
 
   <h2>Sequencing: turning DNA into text at scale</h2>
   <p>
@@ -89,6 +247,7 @@ const bioinfCfg = {
     downstream — alignment, assembly, interpretation — is computer science with a biology
     constraint attached.
   </p>
+  <Widget no="3" caption="call the magnitude — one genome's weight in text" widget="estimate" config={bioGenomeEstimate} />
   <p>
     The data carry their own quality metadata, and reading it is a first-day skill.
     Each base arrives with a Phred score — Q = −10 log₁₀(p), where p is the estimated
@@ -100,6 +259,7 @@ const bioinfCfg = {
     batch-design discipline complete the foundation — the field's version of
     laboratory technique, executed in configuration files.
   </p>
+  <Widget no="4" caption="fill the blanks — reading the quality metadata" widget="cloze" config={bioPhredCloze} />
   <p>
     <em>Common misconception:</em> "the genome is a blueprint — read it and you can build
     the organism." A blueprint is a one-to-one plan; a genome is closer to a recipe
@@ -134,6 +294,7 @@ const bioinfCfg = {
     domains, and phylogenetic trees — alignment is where sequence becomes evolutionary
     inference.
   </p>
+  <Widget no="5" caption="pair each alignment tool with its trade" widget="match" config={bioAlignMatch} />
   <p>
     <em>Common misconception:</em> "BLAST finds <em>the</em> answer — the database search
     returns truth." BLAST returns heuristically selected alignments scored against a
@@ -165,6 +326,7 @@ const bioinfCfg = {
     biology, and today's annotators — including tools that predict gene structure and
     function directly from sequence with neural networks — descend from that lineage.
   </p>
+  <Widget no="6" caption="find the faulty line — the assembly answer" widget="spot-error" config={bioAssemblySpot} />
 
   <h2>Phylogenetics and outbreak surveillance: evolution as an algorithm</h2>
   <p>
@@ -182,6 +344,7 @@ const bioinfCfg = {
     experiments, turns out to be running a continuous data stream — and the tree is its
     regression model.
   </p>
+  <Widget no="7" caption="file the results by the tool that produced them" widget="sort-buckets" config={bioToolBuckets} />
   <p>
     <em>Common misconception:</em> "a phylogenetic tree is the family tree of organisms,
     read directly from fossils and guesses." Every published tree is a computed estimate
@@ -193,6 +356,7 @@ const bioinfCfg = {
     "the" tree of life is a consensus of thousands of gene trees — some of which
     disagree productively.
   </p>
+  <Widget no="8" caption="true or false — what a tree actually is" widget="judge" config={bioTreeJudge} />
 
   <h2>Structure prediction: the 50-year problem, met</h2>
   <p>
@@ -210,6 +374,7 @@ const bioinfCfg = {
     out, function proposed" is now the default first pass for every new gene — the field's
     clearest case of computation doing what labs used to.
   </p>
+  <Widget no="9" caption="before and after CASP14 — the 50-year problem" widget="compare" config={bioFoldCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -21,6 +21,175 @@ const hearingCfg = {
     { math: '5 · Beyond the ear', note: 'The auditory nerve and brainstem preserve frequency and timing maps all the way to cortex. Hearing loss is classified by where this chain breaks.' },
   ],
 };
+
+const hsDbEstimate = {
+  "prompt": "A whisper sits at about 30 dB SPL; a jet engine at close range about 140 dB SPL. Roughly how many times greater is the jet's sound pressure?",
+  "unit": "×",
+  "answer": 10000000,
+  "factor": 1.5,
+  "why": "Ten million — the million-fold range between hearing threshold and pain compressed into ~110 decibels by 20·log₁₀(p / 20 µPa). +20 dB is a tenfold pressure increase; +10 dB is roughly a perceived doubling of loudness.",
+  "context": "20 micropascals — roughly the pressure of a mosquito at three metres — defines 0 dB SPL: a reference level, not silence."
+};
+
+const hsChainOrder = {
+  "prompt": "Each part solves a specific problem — order the links:",
+  "items": [
+    "outer ear — the pinna funnels and filters; the canal resonates near 2.7 kHz",
+    "middle ear — three bones match air to fluid with about 22 dB of gain",
+    "cochlea — the basilar membrane's tonotopic map; hair cells transduce",
+    "auditory nerve and brainstem — frequency and timing maps preserved",
+    "cortex — perception: loudness, pitch, picking a voice from a party"
+  ],
+  "why": "A physics problem, a mechanical problem, and an electrochemical problem in sequence — each stage specialised, each a place the system can break."
+};
+
+const hsEarMatch = {
+  "prompt": "Three parts, three engineering fixes — pair them:",
+  "pairs": [
+    {
+      "left": "the pinna",
+      "right": "funnels sound and filters by elevation and direction — cues for 3-D localisation"
+    },
+    {
+      "left": "the ear canal (2.5 cm tube)",
+      "right": "resonates near 2.7 kHz, boosting exactly the consonant band"
+    },
+    {
+      "left": "malleus, incus, stapes",
+      "right": "a lever system bridging the air-to-fluid mismatch with ~22 dB of gain"
+    },
+    {
+      "left": "stapedius and tensor tympani",
+      "right": "stiffen the chain reflexively at loud sounds — too slow against impulsive noise"
+    }
+  ],
+  "why": "Without the middle ear, over 99 per cent of the energy would reflect away at the air–fluid boundary — the same physics that makes a shout barely ripple a swimming pool."
+};
+
+const hsTonotopicPlace = {
+  "prompt": "An 8 kHz tone's travelling wave peaks where along the basilar membrane?",
+  "labels": [
+    "apex — low Hz",
+    "middle",
+    "base — high Hz"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 100,
+  "tolerance": 5,
+  "why": "At the base: stiff and narrow there resonates high frequencies; wide and floppy at the apex for low. This tonotopic map is the single most important fact in the chapter — the audiogram's frequency axis is the cochlea's geography.",
+  "context": "High-frequency losses cost consonant clarity first — noise damage writes its 4 kHz notch in the basal region."
+};
+
+const hsHairBuckets = {
+  "prompt": "One row transduces; three rows amplify. File each fact:",
+  "buckets": [
+    "Inner hair cells",
+    "Outer hair cells"
+  ],
+  "items": [
+    {
+      "label": "one row — transduce motion into nerve spikes",
+      "bucket": 0
+    },
+    {
+      "label": "bending stereocilia open ion channels",
+      "bucket": 0
+    },
+    {
+      "label": "three rows — actively amplify and sharpen the travelling wave",
+      "bucket": 1
+    },
+    {
+      "label": "make the cochlea a powered, not passive, microphone",
+      "bucket": 1
+    },
+    {
+      "label": "their faint emissions (OAEs) screen newborn hearing",
+      "bucket": 1
+    }
+  ],
+  "why": "Damage to the active amplifier distorts, compresses and smears — which is why sensorineural loss is not just 'quieter' and no simple amplification fully restores it."
+};
+
+const hsActiveJudge = {
+  "statements": [
+    {
+      "s": "The cochlea actively edits: outer hair cells boost weak signals and compression handles an enormous dynamic range.",
+      "truth": true,
+      "why": "Frequency-sharp, level-dependent amplification produces ~120 dB of dynamic range despite individually limited hair cells."
+    },
+    {
+      "s": "The ear hears the way a microphone records.",
+      "truth": false,
+      "why": "It is a powered analyser, not a passive one — the brain performs pattern analysis on an already-edited signal."
+    },
+    {
+      "s": "Sensorineural loss is not just 'quieter' — it distorts, compresses and smears.",
+      "truth": true,
+      "why": "Damage to the active amplifier destroys the graceful compression, producing recruitment: loudness growing abnormally fast."
+    },
+    {
+      "s": "Simple amplification fully restores what a damaged cochlea lost.",
+      "truth": false,
+      "why": "No hearing aid rebuilds the cochlea's level-dependent compression — which is why aggressive aid compression must be fitted carefully."
+    }
+  ]
+};
+
+const hsLoudnessCompare = {
+  "prompt": "Equal loudness, unequal physics — drag between the two tones:",
+  "before": {
+    "label": "A 40 Hz tone",
+    "text": "Needs far more pressure to sound equally loud — at low levels the ear is nearly deaf to deep bass."
+  },
+  "after": {
+    "label": "A 2 kHz tone",
+    "text": "Needs far less pressure for the same loudness — the canal's 2.7 kHz resonance lands right in this band."
+  },
+  "why": "Equal-loudness contours capture the ear's frequency-varying sensitivity — which is why equal-dB losses feel unequal across pitches, and why hearing aids are fitted per frequency band."
+};
+
+const hsAidBranch = {
+  "root": "A patient has a high-frequency slope on the audiogram. You are programming the hearing aids.",
+  "nodes": {
+    "start": {
+      "text": "How do you amplify?",
+      "choices": [
+        {
+          "label": "Amplify everything uniformly",
+          "next": "uniform",
+          "feedback": "Simple — and wrong for the frequency map."
+        },
+        {
+          "label": "Amplify only where the loss lives, per frequency band",
+          "next": "perband",
+          "feedback": "The standard fitting."
+        },
+        {
+          "label": "Skip the highs — vowels carry the energy anyway",
+          "next": "lows",
+          "feedback": "The tempting error."
+        }
+      ]
+    },
+    "uniform": {
+      "text": "Vowels (250–1,000 Hz) already arrive loudly; uniform gain overdrives healthy regions and distorts — the audiogram's slope is a per-band prescription.",
+      "choices": []
+    },
+    "perband": {
+      "text": "Amplifying only where the loss lives, leaving healthy regions alone: draw the patient's thresholds over the speech banana and the conversation becomes a picture of which sounds they are missing.",
+      "choices": []
+    },
+    "lows": {
+      "text": "Energy is not information: strip the consonants (4–8 kHz — the /s/ of 'six', the /f/ of 'five') and the vowel frames collapse together — clarity dies while loudness survives.",
+      "choices": []
+    }
+  },
+  "why": "Speech does not spread its information evenly across the frequency axis — consonants are the information-bearing workhorses, and they live where the loss is."
+};
 ---
 <TopicPage slug="subjects/audiology/foundational/hearing-science">
   <h2>Where you are, and what you will learn</h2>
@@ -114,6 +283,7 @@ const hearingCfg = {
     curve below plots pressure against its decibel value — the log scale is what makes that
     range plottable at all.
   </p>
+  <Widget no="3" caption="call the magnitude — whisper to jet" widget="estimate" config={hsDbEstimate} />
 
   <Widget no="2" caption="sound pressure converted to the decibel scale" widget="plotter" config={eqCfg} />
   <p>
@@ -144,6 +314,7 @@ const hearingCfg = {
     exactly the frequency band where speech consonants live — one reason that band matters
     so much for intelligibility.
   </p>
+  <Widget no="4" caption="rebuild the chain, in the order sound experiences it" widget="order" config={hsChainOrder} />
   <p>
     The <strong>middle ear</strong> solves an impedance problem — the technical name for a
     mismatch between two materials trying to pass a vibration across. Sound in air meets
@@ -155,6 +326,7 @@ const hearingCfg = {
     about 22 dB of gain. Two muscles (stapedius and tensor tympani) stiffen the chain
     reflexively at loud sounds — a dampener, though too slow against impulsive noise.
   </p>
+  <Widget no="5" caption="pair each ear part with the problem it solves" widget="match" config={hsEarMatch} />
   <p>
     The <strong>inner ear</strong> is where mechanics become biology. The snail-shaped
     cochlea contains the basilar membrane, whose stiffness varies along its length: stiff
@@ -163,6 +335,7 @@ const hearingCfg = {
     the place matching its frequency — the ear is a biological frequency analyser, and this
     <em>tonotopic</em> map is the single most important fact in the chapter.
   </p>
+  <Widget no="6" caption="pin the peak on the tonotopic map" widget="place" config={hsTonotopicPlace} />
   <p>
     Resting on the membrane sits the organ of Corti with its hair cells. One row of
     <strong>inner hair cells</strong> transduces motion into nerve spikes (each bending of
@@ -171,6 +344,7 @@ const hearingCfg = {
     microphone but a powered one. From there the auditory nerve and brainstem preserve
     frequency and timing maps all the way to the cortex.
   </p>
+  <Widget no="7" caption="file the facts — inner or outer hair cells?" widget="sort-buckets" config={hsHairBuckets} />
   <p>
     <em>Common misconception:</em> the ear "hears" the way a microphone records. The cochlea
     actively edits: outer hair cells boost weak signals, compression handles an enormous
@@ -178,6 +352,7 @@ const hearingCfg = {
     loss is not just "quieter" — damage to the active amplifier distorts, compresses and
     smears, which no simple amplification fully restores.
   </p>
+  <Widget no="8" caption="true or false — the active cochlea" widget="judge" config={hsActiveJudge} />
   <p>
     <strong>So far:</strong> a collector (outer ear), a lever that matches air to water
     (middle ear), and a powered frequency analyser (cochlea) — each link a place the chain
@@ -193,6 +368,7 @@ const hearingCfg = {
     a 2 kHz tone to sound equally loud. This is why hearing losses of equal dB feel unequal
     across pitches, and why hearing aids are fitted per frequency band.
   </p>
+  <Widget no="9" caption="drag the divider — two tones, equal loudness" widget="compare" config={hsLoudnessCompare} />
   <p>
     <strong>Pitch</strong> follows frequency but reads the tonotopic place code and timing
     together. Damage to a cochlear region removes its pitch range, which is why
@@ -231,6 +407,7 @@ const hearingCfg = {
     patient's thresholds over it and the conversation about their hearing becomes a picture
     of which sounds they are missing.
   </p>
+  <Widget no="10" caption="fit the aids — three programming philosophies" widget="branch" config={hsAidBranch} />
   <p><em>Common misconception:</em> vowels must carry intelligibility because they are the loud, energetic part of speech. Energy is not information — strip the consonants and "fit", "sit" and "thick" collapse into the same vowel frame. That is exactly why a high-frequency loss can leave a patient hearing that people are talking while destroying the clarity, and why counselling starts from where speech's information lives on the audiogram rather than from loudness alone.</p>
 
   <h2>Check yourself</h2>

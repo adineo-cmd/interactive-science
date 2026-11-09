@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "subjects/artificial-intelligence/advanced/transformers-and-large-language-models",
+    "activities": [
+      {
+        "anchor": "eight-author paper",
+        "type": "order",
+        "caption": "rebuild the LLM pipeline, stage by stage",
+        "name": "tflPipelineOrder",
+        "config": {
+          "prompt": "Five stages, each operating on the output of the one before — rebuild the pipeline:",
+          "items": [
+            "tokens: text chopped into sub-word units",
+            "embeddings: each token becomes a vector — language as geometry",
+            "attention: every token consults every other",
+            "pretraining: predict the next token, trillions of times",
+            "alignment: instruction tuning and RLHF shape the assistant",
+            "scaling laws: loss falls as a smooth power law"
+          ],
+          "why": "Each stage operates on the output of the one before — which is why a compromise made at tokenisation propagates all the way up."
+        }
+      },
+      {
+        "anchor": "Neural networks eat numbers",
+        "type": "match",
+        "caption": "pair the arithmetic with its meaning",
+        "name": "tflGeometryMatch",
+        "config": {
+          "prompt": "Language as geometry — pair each item with its consequence:",
+          "pairs": [
+            { "left": "\"unbelievable\"", "right": "may become \"un\", \"believ\", \"able\" — rare words split" },
+            { "left": "king − man + woman", "right": "lands closest to queen" },
+            { "left": "\"Paris\" sits near \"France\"", "right": "the way \"Tokyo\" sits near \"Japan\"" },
+            { "left": "words used interchangeably", "right": "end up close together — interchangeable company" },
+            { "left": "roughly 4 characters or ¾ of a word", "right": "about one token in English" }
+          ],
+          "why": "None of this was programmed — it is the shadow that predicting-words-from-context casts onto geometry."
+        }
+      },
+      {
+        "anchor": "the model reads text the way you do",
+        "type": "spot-error",
+        "caption": "find the faulty line — how the model reads",
+        "name": "tflTokensSpot",
+        "config": {
+          "prompt": "This summary contains one faulty line — click it:",
+          "lines": [
+            "Neural networks eat numbers, so text is chopped into sub-word tokens.",
+            "Common words stay whole; rare ones split into pieces.",
+            "The model reads text the way you do — as words, or at least letters.",
+            "Counting the letters in a long word fails because the model sees chunks, not characters.",
+            "Tokenisation is a compromise of vocabulary size against sequence length."
+          ],
+          "errorLine": 2,
+          "correction": "It reads tokens — and the mismatch explains a whole genre of famous failures: letter-counting, arithmetic slips on large numbers, wordplay that lands flat.",
+          "why": "Tokenisation's seams show in behaviour whenever a task gets down to the character level — the input simply does not contain what the task asks about."
+        }
+      },
+      {
+        "anchor": "The arithmetic cost is the quadratic term",
+        "type": "trace",
+        "caption": "which curve is attention's bill?",
+        "name": "tflQuadraticTrace",
+        "config": {
+          "prompt": "Attention compares every token with every other. Which curve shows attention compute as context length (x) grows?",
+          "curves": [
+            { "expr": "x*x", "color": "#1d4ed8", "label": "A: quadratic" },
+            { "expr": "x", "color": "#b42318", "label": "B: linear" },
+            { "expr": "1", "color": "#0f766e", "label": "C: flat" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 10 },
+          "y": { "min": 0, "max": 100 },
+          "xlabel": "context length",
+          "ylabel": "relative compute",
+          "why": "Doubling the context quadruples that part of the compute — the reason long-context models are an engineering frontier, not a free lunch."
+        }
+      },
+      {
+        "anchor": "attention \"understands\" or \"highlights",
+        "type": "judge",
+        "caption": "true or false — reading the attention weights",
+        "name": "tflAttentionJudge",
+        "config": {
+          "statements": [
+            { "s": "Attention is a routing computation — it decides which vectors get mixed into which.", "truth": true, "why": "One part of the stack, alongside the per-position feed-forward network where much of the knowledge is stored." },
+            { "s": "Attention highlights important words the way a highlighter does.", "truth": false, "why": "It routes information between positions; interpreting individual weights as explanations has repeatedly failed." },
+            { "s": "The same output can arise from different attention patterns.", "truth": true, "why": "Which is exactly why model explanation is its own research field rather than a weights-reading exercise." },
+            { "s": "Attention heads all learn the same function.", "truth": false, "why": "Some learn to track syntax, some coreference, some position patterns — many heads in parallel." }
+          ]
+        }
+      },
+      {
+        "anchor": "Training has one objective",
+        "type": "compare",
+        "caption": "drag the divider — completer to assistant",
+        "name": "tflAssistantCompare",
+        "config": {
+          "prompt": "The gap closed in post-training — drag between the two stages:",
+          "before": { "label": "Raw predictor", "text": "Completes text: 'How do I make bread?' might continue '…the question many bakers ask' — fluent, worldly, and not listening." },
+          "after": { "label": "Assistant", "text": "Instruction fine-tuning on curated question–answer pairs, then RLHF: humans rank outputs, a reward model learns the ranking — a small fraction of the compute, most of the difference." },
+          "why": "The labels were free (self-supervision), but following instructions is a separate, deliberate stage — the difference between a document-finisher and something you can delegate to."
+        }
+      },
+      {
+        "anchor": "refined\n    the economics",
+        "type": "estimate",
+        "caption": "call the magnitude — the compute-optimal corpus",
+        "name": "tflChinchillaEstimate",
+        "config": {
+          "prompt": "Under Chinchilla's compute-optimal rule (roughly 20 training tokens per parameter), how many tokens does a 70-billion-parameter model want?",
+          "unit": "billion tokens",
+          "answer": 1400,
+          "factor": 1.3,
+          "why": "70B × 20 ≈ 1.4 trillion tokens — models trained before this rule were undertrained, which is why Chinchilla's 70B beat its 280B sibling trained on 300B.",
+          "context": "Loss falls as a smooth power law in model size, dataset size and compute — predictability that converted research into logistics."
+        }
+      },
+      {
+        "anchor": "Why attention won: parallelism",
+        "type": "branch",
+        "caption": "design the successor — three architectures, three trade-offs",
+        "name": "tflSuccessorBranch",
+        "config": {
+          "root": "You are designing a post-transformer architecture. Every choice is a trade-off.",
+          "nodes": {
+            "start": {
+              "text": "How do tokens exchange information?",
+              "choices": [
+                { "label": "Sequential recurrence (LSTM-style)", "next": "recurrence", "feedback": "The 2010s answer." },
+                { "label": "Full attention — every pair of positions", "next": "attention", "feedback": "The 2017 answer." },
+                { "label": "Sparse or linear-attention approximations", "next": "sparse", "feedback": "The current frontier." }
+              ]
+            },
+            "recurrence": {
+              "text": "Training cannot parallelise across the sequence, and long-range information decays through the steps — the limitation attention was built to remove.",
+              "choices": []
+            },
+            "attention": {
+              "text": "Every pair of positions in one matrix multiplication — a GPU crunches thousands of tokens at once, the architecture the hardware wanted. The quadratic cost is the price.",
+              "choices": []
+            },
+            "sparse": {
+              "text": "Keep the scaling while shedding the n² term — sparse attention, linear attention, state-space models like Mamba. Whether any displaces vanilla attention at frontier scale is genuinely open.",
+              "choices": []
+            }
+          },
+          "why": "The transformer is the architecture the hardware wanted — parallelism won over memory, and the research frontier is what comes after the quadratic bill."
+        }
+      }
+    ]
+  }
+]

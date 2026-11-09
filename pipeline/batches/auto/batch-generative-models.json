@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "subjects/artificial-intelligence/expert/generative-models",
+    "activities": [
+      {
+        "anchor": "make a prediction, measure the error",
+        "type": "order",
+        "caption": "rebuild the backpropagation loop",
+        "name": "gmBackpropOrder",
+        "config": {
+          "prompt": "The universal learning rule, step by step — put the loop in order:",
+          "items": [
+            "make a prediction",
+            "measure the error",
+            "compute the gradient of that error with respect to every weight — the chain rule, applied backwards",
+            "nudge each weight downhill",
+            "repeat over millions of examples"
+          ],
+          "why": "Depth is the point: edges into textures, textures into parts, parts into objects — a hierarchy of representations, inherited by every generative family."
+        }
+      },
+      {
+        "anchor": "answer the sampling problem with a game",
+        "type": "sort-buckets",
+        "caption": "file the mechanisms — adversarial or diffusion?",
+        "name": "gmFamilyBuckets",
+        "config": {
+          "prompt": "Two rival answers to image sampling — file each fact:",
+          "buckets": ["GAN (adversarial)", "Diffusion"],
+          "items": [
+            { "label": "a generator maps noise to images; a discriminator learns to tell generated from real", "bucket": 0 },
+            { "label": "mode collapse — a forger with one good trick", "bucket": 0 },
+            { "label": "StyleGAN faces, this-person-does-not-exist", "bucket": 0 },
+            { "label": "destroy an image by adding Gaussian noise over hundreds of steps, then learn to reverse one step", "bucket": 1 },
+            { "label": "start from pure noise and run the learned denoiser, typically 20–50 steps", "bucket": 1 },
+            { "label": "no adversary to fool, stable training, text conditioning plugs in cleanly", "bucket": 1 }
+          ],
+          "why": "No adversary means no pathology to exploit — stability is why diffusion was the default for essentially every serious image generator by 2022–23."
+        }
+      },
+      {
+        "anchor": "diffusion models just denoise images they have seen",
+        "type": "judge",
+        "caption": "true or false — memorisation and novelty",
+        "name": "gmMemoryJudge",
+        "config": {
+          "statements": [
+            { "s": "The denoiser is trained to predict noise on corrupted inputs.", "truth": true, "why": "Generation then samples new trajectories through image space from random starts — the model learns the gradient of the data distribution, not an album." },
+            { "s": "Diffusion models just denoise images they have seen.", "truth": false, "why": "Typical outputs are novel compositions of learned regularities; the tests (Carlini et al., 2023) found memorisation real but rare." },
+            { "s": "Documented memorisation is concentrated in duplicated training images.", "truth": true, "why": "The measurable truth sits between the hype and the dismissal — testable, and tested." },
+            { "s": "Both the hype and the dismissal miss the measured truth.", "truth": true, "why": "Real but rare memorisation, mostly duplicates; typical generation is composition, not recall." }
+          ]
+        }
+      },
+      {
+        "anchor": "Sampling parameters shape the output",
+        "type": "trace",
+        "caption": "which curve is the temperature's work?",
+        "name": "gmTempTrace",
+        "config": {
+          "prompt": "Temperature scales randomness. Which curve shows the probability mass on the most likely token as temperature (x) rises?",
+          "curves": [
+            { "expr": "exp(-x/2)", "color": "#1d4ed8", "label": "A: concentrated then flat" },
+            { "expr": "x*x/20", "color": "#b42318", "label": "B: rising" },
+            { "expr": "0.5", "color": "#0f766e", "label": "C: constant" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 5 },
+          "y": { "min": 0, "max": 1 },
+          "xlabel": "temperature",
+          "ylabel": "peak probability",
+          "why": "Low temperature concentrates probability — cautious and repetitive; high temperature flattens it — adventurous. Top-p truncates the tail of unlikely tokens."
+        }
+      },
+      {
+        "anchor": "The geometry is queryable",
+        "type": "estimate",
+        "caption": "call the magnitude — the latent compression",
+        "name": "gmLatentEstimate",
+        "config": {
+          "prompt": "In Stable Diffusion, a 512 × 512 pixel image lives in a 64 × 64 latent. Roughly how many times fewer numbers does the latent hold?",
+          "unit": "×",
+          "answer": 64,
+          "factor": 1.3,
+          "why": "(512 ÷ 64)² = 64 — an 8 × 8 per-side compression, which is why consumer GPUs can run these models at all.",
+          "context": "The geometry is queryable: interpolation passes through plausible intermediate faces, and direction arithmetic yielded 'smiling' as a vector you can add to a neutral face."
+        }
+      },
+      {
+        "anchor": "The capability that made generation a product is",
+        "type": "spot-error",
+        "caption": "find the faulty line — steering",
+        "name": "gmSteerSpot",
+        "config": {
+          "prompt": "This conditioning summary contains one faulty line — click it:",
+          "lines": [
+            "CLIP learned a shared embedding space from hundreds of millions of image–caption pairs.",
+            "An image and its description land at nearby points in that space.",
+            "Diffusion conditioned on these embeddings converts a sentence into a target region of image space.",
+            "The prompt is a rigid file format — only engineers can steer generation.",
+            "Steering is also where failure lives: prompts can be injected with hidden text."
+          ],
+          "errorLine": 3,
+          "correction": "The prompt became a programming language: subjects, styles, composition, even camera optics are steerable in natural language.",
+          "why": "Conditioning turned language into a control surface — for images via CLIP and cross-attention, for text via instruction tuning and RLHF."
+        }
+      },
+      {
+        "anchor": "The application map has quietly become the economy's map",
+        "type": "match",
+        "caption": "pair each provenance fact with its role",
+        "name": "gmDeepfakeMatch",
+        "config": {
+          "prompt": "The forgery economy and its defences — pair the pieces:",
+          "pairs": [
+            { "left": "voice cloning", "right": "the 2024 Hong Kong case: roughly $25M conned from a finance employee by deepfaked colleagues on a video call" },
+            { "left": "detection lags generation permanently", "right": "detectors train on yesterday's generators" },
+            { "left": "C2PA content credentials", "right": "cryptographic signed metadata attached at capture or generation" },
+            { "left": "process defences", "right": "verification of the requester, out-of-band confirmation, signed provenance" }
+          ],
+          "why": "The durable defence is provenance rather than detection — the same trust-chain logic the cryptography chapter applied to certificates."
+        }
+      },
+      {
+        "anchor": "the model understands what it generates",
+        "type": "compare",
+        "caption": "drag the divider — stored versus produced",
+        "name": "gmUnderstandingCompare",
+        "config": {
+          "prompt": "What the model has versus what it does:",
+          "before": { "label": "What it stores", "text": "No referent for 'dog' beyond the statistics of pixels labelled with that word; an autoregressive model predicts tokens, not truths." },
+          "after": { "label": "What it produces", "text": "Plausible continuations — the training target — and the plausible can be false: hallucination is a property of the objective, not a bug to patch." },
+          "why": "Whether grounded understanding emerges at scale is the live research question; assuming it has already arrived is how confident systems get trusted with consequential work."
+        }
+      }
+    ]
+  }
+]

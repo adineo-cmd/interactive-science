@@ -11,6 +11,170 @@ const diagCfg = {
     { math: '5 · Verify and document', note: 'Re-test after repair, then write what was found, fixed and verified. Documentation is what turns a repair into a service history.' },
   ],
 };
+
+const sssHazardBuckets = {
+  "prompt": "One room, several hazard classes — file each:",
+  "buckets": [
+    "Chemical / fire",
+    "Mechanical",
+    "Electrical"
+  ],
+  "items": [
+    {
+      "label": "fuel vapour ignites from sparks you cannot see",
+      "bucket": 0
+    },
+    {
+      "label": "brake cleaner never sprayed near a running engine or catalytic converter",
+      "bucket": 0
+    },
+    {
+      "label": "rotating belts and fans take fingers",
+      "bucket": 1
+    },
+    {
+      "label": "hot coolant scalds at opening pressure — cap released slowly, cold engine first",
+      "bucket": 1
+    },
+    {
+      "label": "compressed air above roughly 30 psi can drive debris through skin",
+      "bucket": 1
+    },
+    {
+      "label": "orange cables carry 400–800 volts demanding certified EV training",
+      "bucket": 2
+    },
+    {
+      "label": "the 12-volt system's arc potential",
+      "bucket": 2
+    }
+  ],
+  "why": "Every class of hazard has an engineered defence, and PPE is the last line, not the first."
+};
+
+const sssAirEstimate = {
+  "prompt": "Tyre pressures run around 35 psi, and shop air lines run far higher. Above roughly what pressure can compressed air drive debris through skin?",
+  "unit": "psi",
+  "answer": 30,
+  "factor": 1.3,
+  "why": "About 30 psi — the reason air lines are treated as injection hazards, not splashes: debris-driven air is a medical emergency.",
+  "context": "The same respect applies to hydraulics: a vehicle raised off the ground is a couple of tonnes of stored gravitational energy."
+};
+
+const sssPpeMatch = {
+  "prompt": "PPE is matched to the task — pair the hazard with its defence:",
+  "pairs": [
+    {
+      "left": "grinding, brake dust, battery acid",
+      "right": "safety glasses from the first minute"
+    },
+    {
+      "left": "a falling brake drum",
+      "right": "steel-toe boots — it weighs what a bowling ball weighs"
+    },
+    {
+      "left": "impact wrenches",
+      "right": "hearing protection"
+    },
+    {
+      "left": "oil on concrete",
+      "right": "housekeeping — a shop's floor condition predicts its injury record"
+    }
+  ],
+  "why": "Two habits summarise the whole safety module: protect yourself first, and never let time pressure talk you out of a step."
+};
+
+const sssToolSpot = {
+  "prompt": "This tool-cart briefing contains one faulty line — click it:",
+  "lines": [
+    "Hand tools are organised by drive size and system.",
+    "Torque wrenches are for anything with a specification.",
+    "An uncalibrated torque wrench is a random-number generator pointed at a wheel bearing.",
+    "Any size wrench works if you push hard enough — a rounded-off bolt just needs muscle.",
+    "Specialty tools the manufacturer requires — like for timing chains — get used, not improvised."
+  ],
+  "errorLine": 3,
+  "correction": "Use the right size: a rounded-off bolt is a 20-minute problem created in 2 seconds — and calibrate the torque wrench.",
+  "why": "The two habits that separate professionals: the right size, always, and a calibrated torque wrench for anything with a spec."
+};
+
+const sssLiftOrder = {
+  "prompt": "The liturgy that keeps tonnes off people — put it in order:",
+  "items": [
+    "know the vehicle's weight against the lift's rated capacity",
+    "position the arms at the factory-marked lift points",
+    "raise to just off the floor",
+    "push the vehicle to confirm balance",
+    "raise fully and engage the mechanical safety locks"
+  ],
+  "why": "A lift rated for 4,000 kg does not become 4,500 kg because you hope — and even a correctly placed lift can tip an unbalanced load. The checks cost ninety seconds; the failure mode is measured in tonnes."
+};
+
+const sssSecondPredict = {
+  "q": "A colleague says 'I'm only going under for a second' — car still on the jack. What does the trade's record say happens?",
+  "choices": [
+    "almost nothing — seconds are safe while the seal is new",
+    "the vehicles that fall are overwhelmingly the ones someone believed would be fine for a moment",
+    "falls only happen with old, worn-out jacks"
+  ],
+  "answer": 1,
+  "why": "Every safety rule in the lifting section is a memorial to exactly that sentence — hydraulics hold weight, they do not hold responsibility, and a seal can fail silently."
+};
+
+const sssBatteryBranch = {
+  "root": "You need to disconnect a 12-volt battery to service the charging system. Hydrogen vents during charging; acid is in the cells.",
+  "nodes": {
+    "start": {
+      "text": "What is your sequence?",
+      "choices": [
+        {
+          "label": "Positive first, then negative",
+          "next": "backwards",
+          "feedback": "Backwards — and the reason is in your hand."
+        },
+        {
+          "label": "Negative first; reconnect negative last",
+          "next": "correct",
+          "feedback": "The liturgy."
+        },
+        {
+          "label": "No disconnect — just be careful around the terminals",
+          "next": "careful",
+          "feedback": "Careful is not a procedure."
+        }
+      ]
+    },
+    "backwards": {
+      "text": "Disconnecting positive first leaves your wrench one slip away from shorting across the terminals — the arc happens with your hand on the tool.",
+      "choices": []
+    },
+    "correct": {
+      "text": "Negative first, reconnect last: no sparks near venting hydrogen, gloves and eye protection for the acid, and the wrench can never complete the circuit across the terminals.",
+      "choices": []
+    },
+    "careful": {
+      "text": "Disconnecting order exists precisely because a wrench across the terminals is an arc with your hand on it — gloves and caution do not replace the procedure.",
+      "choices": []
+    }
+  },
+  "why": "Fluids and batteries each carry a handling discipline: used oil is collected, coolant is wiped immediately, brake fluid stays sealed, refrigerants belong to certified technicians."
+};
+
+const sssRecordCloze = {
+  "text": "Outbound, the technician writes the three-part record: the %%0%% (as verified), the %%1%% (the diagnosis, with the tests that proved it), and the %%2%% (the repair performed, the parts replaced, the verification run).",
+  "answers": [
+    [
+      "concern"
+    ],
+    [
+      "cause"
+    ],
+    [
+      "correction"
+    ]
+  ],
+  "hint": "What the customer brought, why it happened, and what you did about it — the diagnostic method's paperwork twin."
+};
 ---
 <TopicPage slug="subjects/automotive-technology/foundational/shop-safety-and-service-basics">
   <h2>Where you are, and what you will learn</h2>
@@ -19,6 +183,9 @@ const diagCfg = {
     no tools, no engine experience, no shop. We start with the picture most people already
     have of the trade, and then correct it.
   </p>
+  <Widget no="7" caption="bet first — 'just a second' under the jack" widget="predict" config={sssSecondPredict} />
+  <Widget no="5" caption="find the faulty line — tool discipline" widget="spot-error" config={sssToolSpot} />
+  <Widget no="3" caption="call the magnitude — the air-injection threshold" widget="estimate" config={sssAirEstimate} />
   <p>By the end of this lesson you will be able to:</p>
   <ul>
     <li>name the main hazard classes of a working shop and the defence for each;</li>
@@ -82,6 +249,7 @@ const diagCfg = {
     are flammable and must never be sprayed near a running engine, a grinder, or a
     catalytic converter's exhaust.
   </p>
+  <Widget no="2" caption="file the hazard — which class owns it?" widget="sort-buckets" config={sssHazardBuckets} />
   <p>
     <strong>Mechanical hazards</strong>: rotating belts and fans take fingers. Hot coolant
     scalds at opening pressure — release the cap slowly, cold engine first. Compressed air
@@ -98,6 +266,7 @@ const diagCfg = {
     a slip waiting, and a shop's floor condition predicts its injury record with
     unsettling accuracy.
   </p>
+  <Widget no="4" caption="pair each hazard with its PPE" widget="match" config={sssPpeMatch} />
   <p>
     <strong>Tool discipline</strong> completes the picture. Hand tools are organised by
     drive size (6.3 mm / 10 mm square drive families) and system: wrenches and sockets for
@@ -135,6 +304,7 @@ const diagCfg = {
     through different hardware — rated capacity, correct spotting, locks engaged before
     anyone underneath.
   </p>
+  <Widget no="6" caption="rebuild the two-post lift procedure, step by step" widget="order" config={sssLiftOrder} />
   <p>
     <em>Common misconception:</em> "I'm only going under for a second." The vehicles that fall
     are overwhelmingly the ones someone believed would be fine for a moment. Every safety rule
@@ -187,6 +357,7 @@ const diagCfg = {
     sparks, acid means gloves and eye protection, and disconnecting order matters (negative
     first, reconnect last) to avoid shorting the wrench across the terminals.
   </p>
+  <Widget no="8" caption="run the disconnect — battery terminal sequence" widget="branch" config={sssBatteryBranch} />
   <p>
     The human machine completes the safety picture. Technicians lift transmissions and
     wheels for a living, so the trade teaches mechanics' hygiene as seriously as torque:
@@ -214,6 +385,7 @@ const diagCfg = {
     paperwork twin, and it is what the next technician, the warranty auditor and the
     customer all read.
   </p>
+  <Widget no="9" caption="fill the blanks — the work order's three parts" widget="cloze" config={sssRecordCloze} />
   <p>
     Time-keeping completes the professional layer: flat-rate labour guides estimate each
     job's hours, so a technician's productivity and the shop's estimates both live on

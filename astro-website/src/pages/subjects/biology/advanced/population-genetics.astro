@@ -21,6 +21,161 @@ const hwCfg = {
     { math: 'carrier count vs affected: 0.039 vs 0.0004', note: 'nearly 100 hidden carriers for every affected child — the reason recessive disease is common while its homozygote form is rare.' },
   ],
 };
+
+const pgHWCloze = {
+  "text": "With two alleles A and a at frequencies p and q (p + q = %%0%%), random mating makes zygotes %%1%% AA : 2pq Aa : %%2%% aa — and the remarkable part is that these frequencies return %%3%% every generation, whatever the starting mix.",
+  "answers": [
+    [
+      "one",
+      "1"
+    ],
+    [
+      "p²",
+      "p^2",
+      "p2"
+    ],
+    [
+      "q²",
+      "q^2",
+      "q2"
+    ],
+    [
+      "unchanged"
+    ]
+  ],
+  "hint": "Two alleles, frequencies sum to one; each homozygote gets the square of its allele's frequency."
+};
+
+const pgShapeMatch = {
+  "prompt": "Four case studies, four shapes of selection — pair them:",
+  "pairs": [
+    {
+      "left": "peppered moths' dark form rising with soot, falling as air cleaned",
+      "right": "directional selection"
+    },
+    {
+      "left": "human birth weight — both extremes raise infant mortality",
+      "right": "stabilising selection"
+    },
+    {
+      "left": "Darwin's finch bill-size bimodality on Santa Cruz island",
+      "right": "disruptive selection"
+    },
+    {
+      "left": "the sickle-cell carrier fitter than either homozygote under malaria",
+      "right": "balancing selection (heterozygote advantage)"
+    }
+  ],
+  "why": "Directional pushes an allele toward fixation; stabilising removes extremes and preserves the mean; disruptive favours both tails and can split a population; balancing holds a harmful allele at a computable equilibrium."
+};
+
+const pgFitnessOrder = {
+  "prompt": "Rank the three sickle-cell genotypes by fitness in a malarial region, fittest first:",
+  "items": [
+    "Aa carrier — resists malaria best (fitness 1)",
+    "AA homozygote — malaria-vulnerable (fitness ≈ 0.9 in endemic regions)",
+    "aa homozygote — severe sickle disease (fitness ≈ 0.25 historically)"
+  ],
+  "why": "The carrier is the fittest genotype, which is why selection cannot purge the allele: equilibrium sits near q ≈ 0.12, matching West African frequencies of 0.1–0.15. Remove malaria and the ranking collapses — selection drains the allele away."
+};
+
+const pgDriftBuckets = {
+  "prompt": "Drift's signatures in the wild — file each fact:",
+  "buckets": [
+    "founder effect",
+    "bottleneck",
+    "drift arithmetic"
+  ],
+  "items": [
+    {
+      "label": "the Amish's elevated Ellis–van Creveld syndrome from a few founders",
+      "bucket": 0
+    },
+    {
+      "label": "Pingelap achromatopsia from a typhoon's ~20 survivors",
+      "bucket": 0
+    },
+    {
+      "label": "northern elephant seals hunted to ~20–30 animals in the 1890s",
+      "bucket": 1
+    },
+    {
+      "label": "cheetahs' immune genes so alike that skin grafts are accepted",
+      "bucket": 1
+    },
+    {
+      "label": "an effective population of 50 losing ~18% heterozygosity in 20 generations",
+      "bucket": 2
+    },
+    {
+      "label": "the probability an allele ultimately fixes equals its current frequency",
+      "bucket": 2
+    }
+  ],
+  "why": "Founders carry a skewed sample; bottlenecks crush diversity through a few breeders; and underneath both, the neutral theory's arithmetic — drift fixes alleles by pure chance (Kimura, 1968)."
+};
+
+const pgSealsCompare = {
+  "prompt": "Northern elephant seals, 100 years after the bottleneck — drag the divider between the two ledgers:",
+  "before": {
+    "label": "the census",
+    "text": "30,000-plus animals. The head count recovered within a century — by the numbers, the population looks fine."
+  },
+  "after": {
+    "label": "the gene pool",
+    "text": "Only ~20–30 breeders passed it on. Heterozygosity does not self-repair — the seals remain almost genetically uniform."
+  },
+  "why": "Drift's losses are restored only by mutation or gene flow, both painfully slow — which is why conservationists monitor Nₑ, not head counts."
+};
+
+const pgFstEstimate = {
+  "prompt": "F_ST is the fraction of total genetic variance held BETWEEN populations (near 0 = well-mixed, near 1 = isolated). For humans at the continental scale, roughly what is it?",
+  "unit": "F_ST",
+  "answer": 0.15,
+  "factor": 2,
+  "why": "≈ 0.15: most human genetic variation is WITHIN any population — a result with direct bearing on how race and genetics intersect.",
+  "context": "One migrant per generation between populations is enough, in theory, to prevent divergence by drift alone."
+};
+
+const pgConserveSpot = {
+  "prompt": "This conservation-genetics answer contains one faulty line — click it:",
+  "lines": [
+    "The inbreeding coefficient F climbs by 1/(2Nₑ) per generation in a closed population.",
+    "Inbreeding exposes recessive lethals and erodes fitness — litter sizes shrink, juvenile mortality climbs.",
+    "Studbooks therefore pair the most closely related lineages, to keep bloodlines pure.",
+    "Genetic rescue can reverse the spiral of inbreeding depression.",
+    "The Florida panther, down to ~25 cats, recovered after eight Texas females were introduced in 1995.",
+    "The targets: Nₑ near 50+ short-term, near 500+ to hold adaptive variation."
+  ],
+  "errorLine": 2,
+  "correction": "Studbooks pair DISTANT lineages — the goal is heterozygosity, not purity of bloodline.",
+  "why": "Pure bloodlines are exactly the problem: F measures excess homozygosity from mating among relatives, so the cure is mixing, as the panther's hybrid descendants showed with restored fitness."
+};
+
+const pgHistoryJudge = {
+  "statements": [
+    {
+      "s": "Tibetan altitude adaptation rests on an EPAS1 haplotype traced to Denisovan introgression.",
+      "truth": true,
+      "why": "Adaptation sourced from another archaic human species — gene flow caught across a species line."
+    },
+    {
+      "s": "East African pastoralists carry the same −13910*T lactase variant as northern Europeans.",
+      "truth": false,
+      "why": "They carry different variants with the same effect — convergent evolution, visible as parallel sweeps."
+    },
+    {
+      "s": "Skin-pigmentation gradients are built from variants at half a dozen loci across continents.",
+      "truth": true,
+      "why": "Polygenic adaptation, the opposite of a single-letter story."
+    },
+    {
+      "s": "The lactase-persistence sweep took hundreds of thousands of years to reach near-fixation.",
+      "truth": false,
+      "why": "A cultural innovation (dairying) rewrote the gene pool within historical time — ~7,500 years in northern European dairying populations."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/biology/advanced/population-genetics">
   <h2>Where you are, and what you will learn</h2>
@@ -89,6 +244,7 @@ const hwCfg = {
     examiners love). Its most-used application is the recessive-disease carrier
     calculation:
   </p>
+  <Widget no="3" caption="fill the blanks — the equilibrium proportions" widget="cloze" config={pgHWCloze} />
 
   <Widget no="2" caption="the everyday forensic use of Hardy–Weinberg — from disease frequency to hidden carriers" widget="equationStep" config={hwCfg} />
   <p>
@@ -136,6 +292,7 @@ const hwCfg = {
     finch bill-size bimodality on Santa Cruz island) and can split a population — the
     bridge to the speciation lesson.
   </p>
+  <Widget no="4" caption="pair each case with its selection geometry" widget="match" config={pgShapeMatch} />
   <p>
     <strong>Heterozygote advantage</strong> is the canonical balancing case. Sickle-cell:
     the homozygote (aa) suffers severe disease (fitness ≈ 0.25 historically), the
@@ -152,6 +309,7 @@ const hwCfg = {
     observed frequency of many recessive disorders. Rare diseases are the standing wave
     between creation and destruction.
   </p>
+  <Widget no="5" caption="rank the genotypes — fitness under malaria" widget="order" config={pgFitnessOrder} />
 
   <p>
     <em>Common misconception:</em> "if a genotype is harmful, selection will
@@ -188,6 +346,7 @@ const hwCfg = {
     is the neutral theory's cornerstone: most molecular evolution is drift, not
     selection (Kimura, 1968).
   </p>
+  <Widget no="6" caption="file the drift case studies" widget="sort-buckets" config={pgDriftBuckets} />
 
   <p>
     <em>Common misconception:</em> "the northern elephant seals are fine now — the
@@ -199,6 +358,7 @@ const hwCfg = {
     breeders passed on the gene pool — which is why the seals remain almost
     genetically uniform and why conservationists monitor Nₑ, not head counts.
   </p>
+  <Widget no="7" caption="same species, two ledgers — the census and the gene pool" widget="compare" config={pgSealsCompare} />
 
   <h2>Gene flow: the force that connects</h2>
   <p>
@@ -218,6 +378,7 @@ const hwCfg = {
     (the speciation lesson's webbed tree) is introgression — flow, caught across a
     species boundary.
   </p>
+  <Widget no="8" caption="call the magnitude — F_ST for our species" widget="estimate" config={pgFstEstimate} />
 
   <h2>Inbreeding, small populations and the conservation arithmetic</h2>
   <p>
@@ -239,6 +400,7 @@ const hwCfg = {
     animals, corridor design — reconnecting populations so gene flow does the mixing —
     is population genetics applied to a map.
   </p>
+  <Widget no="9" caption="find the faulty line — the studbook answer" widget="spot-error" config={pgConserveSpot} />
 
   <p>
     <strong>So far:</strong> drift wobbles frequencies by chance and erodes variation
@@ -271,6 +433,7 @@ const hwCfg = {
     historical time. Genes, geography and culture form one feedback system, and
     population genetics is its measurement science.
   </p>
+  <Widget no="10" caption="true or false — genes, geography and culture" widget="judge" config={pgHistoryJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

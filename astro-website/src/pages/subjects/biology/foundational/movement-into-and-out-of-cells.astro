@@ -41,6 +41,166 @@ const osmosisCfg = {
 };
 
 const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 0, max: 10 }, start: [5, 2] };
+
+const mtTrafficBuckets = {
+  "prompt": "The membrane's traffic splits by one question: is the cell paying for it? File each case:",
+  "buckets": [
+    "free (no ATP)",
+    "paid (billed in ATP)"
+  ],
+  "items": [
+    {
+      "label": "diffusion — the molecules' own random motion does the work",
+      "bucket": 0
+    },
+    {
+      "label": "osmosis — water's free version",
+      "bucket": 0
+    },
+    {
+      "label": "perfume spreading through a room",
+      "bucket": 0
+    },
+    {
+      "label": "active transport — uphill, against the gradient",
+      "bucket": 1
+    },
+    {
+      "label": "protein carriers changing shape using ATP",
+      "bucket": 1
+    },
+    {
+      "label": "glucose hauled uphill in the gut",
+      "bucket": 1
+    }
+  ],
+  "why": "Diffusion and osmosis cost nothing; active transport runs uphill and is billed in ATP — the cell's small coins."
+};
+
+const mtFactorsMatch = {
+  "prompt": "Four factors set the rate — pair each with how anatomy exploits it:",
+  "pairs": [
+    {
+      "left": "concentration gradient",
+      "right": "keep it steep — blood sweeps CO₂ off the lung side the moment it crosses"
+    },
+    {
+      "left": "temperature",
+      "right": "warmer molecules collide more — labs incubate cultures warm"
+    },
+    {
+      "left": "surface area",
+      "right": "fold it — 300 million alveoli pack ~70 m² into your chest"
+    },
+    {
+      "left": "distance",
+      "right": "minimise it — the villain of the piece"
+    }
+  ],
+  "why": "Maximise area and gradient, minimise distance, keep the medium moving — every exchange organ is a variation on the same four-factor theme."
+};
+
+const mtEquilibJudge = {
+  "statements": [
+    {
+      "s": "What stops at equilibrium is the net movement; individual molecules keep crossing both ways in equal numbers.",
+      "truth": true,
+      "why": "Equilibrium is dynamic — a balanced interchange, not a standstill."
+    },
+    {
+      "s": "Real cells rarely reach equilibrium anyway, because they consume what arrives and replace what leaves.",
+      "truth": true,
+      "why": "Holding the gradient alive is the cell's whole trick."
+    },
+    {
+      "s": "Once equilibrium is reached, individual molecules stop moving.",
+      "truth": false,
+      "why": "Only the NET movement stops — the crossings continue exactly as before, in equal numbers."
+    },
+    {
+      "s": "Diffusion is the net movement from lower to higher concentration.",
+      "truth": false,
+      "why": "Down the gradient, always — uphill is active transport's paid job."
+    }
+  ]
+};
+
+const mtOsmosisCloze = {
+  "text": "Osmosis is the net movement of %%0%% molecules from a %%1%% solution to a %%2%% one, through a %%3%% %%4%% membrane — and water always moves from higher water potential to lower.",
+  "answers": [
+    [
+      "water"
+    ],
+    [
+      "dilute"
+    ],
+    [
+      "concentrated"
+    ],
+    [
+      "partially"
+    ],
+    [
+      "permeable"
+    ]
+  ],
+  "hint": "The membrane holds the solute back — that withheld solute is what creates the water-potential difference."
+};
+
+const mtIsotonicPlace = {
+  "prompt": "Potato strips soaked in sucrose solutions: the length-change line crosses zero where the tissue neither gains nor loses water. Pin that concentration (mol/dm³):",
+  "labels": [
+    "0",
+    "0.25",
+    "0.5",
+    "0.75",
+    "1.0"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1
+  },
+  "answer": 0.3,
+  "tolerance": 0.1,
+  "why": "About 0.3 mol/dm³ for potato — the plot is a calibration: any unknown solution can now be matched against the tissue.",
+  "context": "Dialysis tubing works the same way: fill it with strong sugar solution, weigh it, and watch the mass climb as water enters."
+};
+
+const mtStakesCompare = {
+  "prompt": "A dilute solution floods in — drag the divider between the two kingdoms:",
+  "before": {
+    "label": "animal cell (no wall)",
+    "text": "A red blood cell swells until it bursts — haemolysis. Which is why intravenous drips are precisely 0.9% saline."
+  },
+  "after": {
+    "label": "plant cell (wall)",
+    "text": "The vacuole swells and the cytoplasm presses outward on the cellulose wall — turgid. A crisp lettuce is a hydraulic structure."
+  },
+  "why": "In concentrated solution the fates reverse — shrivelled for the wall-less, plasmolysed for the walled — and guard cells open stomata by the same pump-free trick."
+};
+
+const mtSteerSpot = {
+  "prompt": "This cell-traffic answer contains one faulty line — click it:",
+  "lines": [
+    "Diffusion only runs downhill; active transport pumps uphill against the gradient.",
+    "Protein carriers pick up their cargo, change shape using ATP, and release it on the far side.",
+    "Poison the mitochondria and active transport stops within minutes, while diffusion carries on.",
+    "A cell can steer individual diffusing molecules directly to where they are needed.",
+    "Wherever a cell accumulates a substance against the gradient, expect mitochondria crowded around that membrane."
+  ],
+  "errorLine": 3,
+  "correction": "A cell cannot steer individual molecules — it can only shape the conditions: maintaining gradients, installing channels and carriers, moving the membrane itself.",
+  "why": "Diffusion is nobody's employee; the membrane's architecture is the cell's only lever — which is why so much of cell biology is really membrane engineering."
+};
+
+const mtPumpEstimate = {
+  "prompt": "The sodium–potassium pump spends one ATP per cycle, exporting 3 Na⁺ and importing 2 K⁺. Roughly how many cycles does one pump run per second?",
+  "unit": "cycles/s",
+  "answer": 1000,
+  "factor": 1.6,
+  "why": "About 1,000 times per second per pump — tens of millions per neuron, consuming a third to a half of the brain's energy budget.",
+  "context": "Resting potential — the 70 mV every neuron holds — is this pump's accumulated work: active transport as the idling engine of the nervous system."
+};
 ---
 <TopicPage slug="subjects/biology/foundational/movement-into-and-out-of-cells">
 
@@ -82,6 +242,7 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     process a cell uses where, and how every exchange surface in your body
     is built around their rules, is this lesson.
   </p>
+  <Widget no="5" caption="file the traffic — free or paid?" widget="sort-buckets" config={mtTrafficBuckets} />
   <p>
     <strong>So far:</strong> the membrane is a selective door, and its
     traffic splits into free movement (diffusion, osmosis) and paid movement
@@ -133,6 +294,7 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     packing roughly 70 m² of surface into your chest, plus gut villi and
     microvilli, gill lamellae, root hairs.
   </p>
+  <Widget no="6" caption="pair each factor with its design instruction" widget="match" config={mtFactorsMatch} />
   <p>
     <strong>Distance</strong> is the villain of the piece. The graph shows
     rate climbing with gradient but falling as distance grows — at every
@@ -196,6 +358,7 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     standstill — and real cells never reach it anyway, because they consume what arrives and
     replace what leaves, holding the gradient alive.
   </p>
+  <Widget no="7" caption="true or false — life at equilibrium" widget="judge" config={mtEquilibJudge} />
 
   <h2>Osmosis and water potential</h2>
   <p>
@@ -208,6 +371,7 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     molecules from a dilute solution to a concentrated one, through a
     partially permeable membrane.
   </p>
+  <Widget no="8" caption="fill the blanks — osmosis, defined" widget="cloze" config={mtOsmosisCloze} />
   <p>
     Intuition can wobble here — it is odd at first that water flows
     <em>into</em> the sugary side — but the logic is pure statistics. Pure
@@ -250,6 +414,7 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     the point where the tissue neither gains nor loses water — the strip is
     at <strong>isotonic</strong> balance with that solution.
   </p>
+  <Widget no="9" caption="pin the isotonic point on the concentration scale" widget="place" config={mtIsotonicPlace} />
   <p>
     The stakes differ by kingdom. Animal cells have no wall: in pure water
     a red blood cell swells until it bursts (<em>haemolysis</em>); in
@@ -263,6 +428,7 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     same pump-free trick: they accumulate solutes, water follows, and the
     curved cells bow apart.
   </p>
+  <Widget no="10" caption="dilute solution, two fates — drag between kingdoms" widget="compare" config={mtStakesCompare} />
   <p>
     <strong>So far:</strong> diffusion moves everything downhill for free,
     osmosis is the same for water, and the results — turgid lettuce,
@@ -304,6 +470,7 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     cell's only lever, which is why so much of cell biology is really membrane
     engineering.
   </p>
+  <Widget no="11" caption="find the faulty line — the membrane-engineering answer" widget="spot-error" config={mtSteerSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. The answers are right below.</p>
@@ -396,5 +563,6 @@ const vecCfg = { type: 'vector', unit: 'µm', x: { min: 0, max: 10 }, y: { min: 
     <em>is</em> this pump's accumulated work: active transport as the
     idling engine of the nervous system.
   </p>
+  <Widget no="12" caption="call the magnitude — the idling engine's pace" widget="estimate" config={mtPumpEstimate} />
   <p class="sources"><strong>Sources:</strong> Cambridge IGCSE Biology 0610 syllabus (2026–2028), unit 3; OpenStax Biology 2e, ch. 5 (Structure and Function of Plasma Membranes); Campbell Biology (Urry et al.), 12th ed., ch. 7–8. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

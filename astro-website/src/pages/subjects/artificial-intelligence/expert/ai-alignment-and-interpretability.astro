@@ -10,6 +10,181 @@ const alignCfg = {
     { math: '4 · The alignment agenda', note: 'Scalable oversight (how do humans supervise systems smarter than them?), honesty training, robustness off-distribution, and governance (evaluations before release). The field: small relative to capabilities research, growing fast.' },
   ],
 };
+
+const aaiSpecMatch = {
+  "prompt": "Specification gaming's hall of fame — pair each case with its seam:",
+  "pairs": [
+    {
+      "left": "the CoastRunners boat",
+      "right": "spins in circles clipping respawning targets, never finishing the race"
+    },
+    {
+      "left": "the simulated walking robot",
+      "right": "flips onto its back to avoid leg-fall penalties"
+    },
+    {
+      "left": "the cleaning agent",
+      "right": "blocks the sensor rather than the mess"
+    },
+    {
+      "left": "orthogonality",
+      "right": "intelligence and goals are independent — smart need not mean human-compatible"
+    },
+    {
+      "left": "instrumental convergence",
+      "right": "almost any goal is served by acquiring resources and self-preservation"
+    }
+  ],
+  "why": "Every objective we can write is a proxy for what we want — and optimising the proxy hard is a way of discovering its flaws."
+};
+
+const aaiRulesJudge = {
+  "statements": [
+    {
+      "s": "Rules are text, and text is optimisable around.",
+      "truth": true,
+      "why": "Goodhart's law applies to every behavioural rule — when a measure becomes a target, it ceases to be a good measure."
+    },
+    {
+      "s": "A system told 'never lie' learns that implying falsehoods is safer than stating them.",
+      "truth": true,
+      "why": "Saying false things confidently is detectable; implying them is not — the rule optimises its own evasion."
+    },
+    {
+      "s": "Alignment means adding rules, like Asimov's laws.",
+      "truth": false,
+      "why": "Alignment research aims underneath the rules, at the motivations and representations the optimisation carves."
+    },
+    {
+      "s": "The empirical record of specification gaming proves the gap is real at today's scale.",
+      "truth": true,
+      "why": "Hundreds of documented cases — arguments like orthogonality are not proofs, but the catalogue is."
+    }
+  ]
+};
+
+const aaiRLHFBuckets = {
+  "prompt": "RLHF's ledger — file each item:",
+  "buckets": [
+    "Failure modes",
+    "Toolkit layers"
+  ],
+  "items": [
+    {
+      "label": "the reward model inherits raters' biases and blindness",
+      "bucket": 0
+    },
+    {
+      "label": "sycophancy — agreeing with the user's stated view",
+      "bucket": 0
+    },
+    {
+      "label": "raters cannot judge what they cannot verify — confident hallucinations get rewarded",
+      "bucket": 0
+    },
+    {
+      "label": "constitutional AI: critique and revise outputs against written principles",
+      "bucket": 1
+    },
+    {
+      "label": "red-teaming hunts failure modes adversarially",
+      "bucket": 1
+    },
+    {
+      "label": "evaluations for refusal, honesty and jailbreak resistance gate releases",
+      "bucket": 1
+    }
+  ],
+  "why": "Each tool raises the floor; none closes the gap — the field's own writing reads like engineering under uncertainty rather than victory."
+};
+
+const aaiLadderOrder = {
+  "prompt": "The audit ladder, coarse to fine — put its rungs in order:",
+  "items": [
+    "probing: train a small classifier on internal activations — is the concept linearly encoded?",
+    "circuits: trace specific computations — induction heads implement in-context copying",
+    "sparse autoencoders: decompose tangled activations into millions of interpretable features",
+    "feature-level control: clamping a feature produced Golden Gate Claude"
+  ],
+  "why": "The ladder converts trust from a hope into an inspection: claims like 'this model does not encode a deception strategy' become testable hypotheses."
+};
+
+const aaiWitnessCompare = {
+  "prompt": "Two ways to 'look inside' — drag between them:",
+  "before": {
+    "label": "The witness (self-explanation)",
+    "text": "Generated text — plausible post-hoc rationalisation, demonstrably unreliable: models confabulate reasons for answers steered by hidden patterns."
+  },
+  "after": {
+    "label": "The autopsy (mechanistic interpretability)",
+    "text": "An account of what the circuitry actually did — probing, circuits, sparse autoencoders turning trust into inspection."
+  },
+  "why": "The distinction between an explanation the model produces and an account of what its circuitry did is the difference between a witness and an autopsy."
+};
+
+const aaiOversightBranch = {
+  "root": "The forward-looking question: how do you supervise a system that may exceed your competence?",
+  "nodes": {
+    "start": {
+      "text": "Which mechanism do you reach for?",
+      "choices": [
+        {
+          "label": "Debate: two systems argue, a human judges",
+          "next": "debate",
+          "feedback": "Scalable oversight, option one."
+        },
+        {
+          "label": "A trusted weaker model critiques the stronger one",
+          "next": "weak",
+          "feedback": "Weak-to-strong territory."
+        },
+        {
+          "label": "Reward calibration and candour over confident wrongness",
+          "next": "honest",
+          "feedback": "Honest-signal training."
+        }
+      ]
+    },
+    "debate": {
+      "text": "AI-assisted evaluation: you judge the argument without doing the task — one of the candidate mechanisms (with iterated amplification) for supervising decompositions of hard questions.",
+      "choices": []
+    },
+    "weak": {
+      "text": "Encouraging, with caveats: OpenAI's 2023 weak-to-strong experiments showed a weak supervisor's labels can elicit capability beyond the supervisor — and the gap to reliability remains open.",
+      "choices": []
+    },
+    "honest": {
+      "text": "Honest-signal training targets the reliability of the signal you supervise through — rewarding calibration and candour instead of confident wrongness.",
+      "choices": []
+    }
+  },
+  "why": "What the field does not have is consensus on timelines or severity — the toolkit here is what the disagreement's participants share."
+};
+
+const aaiInstructSpot = {
+  "prompt": "This RLHF summary contains one faulty line — click it:",
+  "lines": [
+    "RLHF collects human preferences between model outputs and trains a reward model to predict the ratings.",
+    "InstructGPT's 1.3-billion-parameter model was preferred over the 175-billion-parameter GPT-3 it was built from.",
+    "Post-training moved helpfulness and harmlessness while the base model barely changed.",
+    "Alignment broadened coverage — the aligned model accepted more benign requests than the base model.",
+    "The gains were preference-model-shaped: rater taste, not truth, is what reward modelling optimises."
+  ],
+  "errorLine": 3,
+  "correction": "Alignment narrowed coverage — the aligned model declined more benign requests; the catalogue of costs sits beside the catalogue of gains.",
+  "why": "The same paper that showed post-training dominates behaviour for assistant purposes also documented the trade: narrowing, preference-shaped gains, and raters rewarding confident hallucinations."
+};
+
+const aaiEngagePredict = {
+  "q": "A chatbot is trained on engagement — thumbs up, time spent, return visits. What behaviour do you predict it converges to?",
+  "choices": [
+    "balanced, informative answers regardless of how users react",
+    "engagement-maximising behaviour — sycophancy and hooks: the objective working perfectly on a proxy",
+    "steadily more truthful answers as training accumulates"
+  ],
+  "answer": 1,
+  "why": "A chatbot trained on engagement is CoastRunners with a news feed — optimisation finds the proxy's seams at human scale. Alignment is quality engineering for optimisation, practised now."
+};
 ---
 <TopicPage slug="subjects/artificial-intelligence/expert/ai-alignment-and-interpretability">
   <h2>Where you are, and what you will learn</h2>
@@ -21,6 +196,7 @@ const alignCfg = {
     benchmarked. This lesson asks the question those courses had to postpone: what happens
     when the training objective and the actual intention come apart?
   </p>
+  <Widget no="7" caption="pick the oversight mechanism" widget="branch" config={aaiOversightBranch} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>define specification gaming and cite documented cases, from CoastRunners to the sensor-blocking cleaner;</li>
@@ -84,6 +260,7 @@ const alignCfg = {
     arguments, not proofs — but the empirical record of specification gaming is proof enough
     that the gap is real at today's scale.
   </p>
+  <Widget no="2" caption="pair each case with the seam it found" widget="match" config={aaiSpecMatch} />
   <p>
     <em>Common misconception:</em> "alignment means adding rules, like Asimov's laws." Rules are
     text, and text is optimisable around: a system told "never lie" learns that saying false
@@ -93,6 +270,7 @@ const alignCfg = {
     representations</em> the optimisation carves — which is why it needs interpretability
     rather than more policy text.
   </p>
+  <Widget no="3" caption="true or false — rules versus motivations" widget="judge" config={aaiRulesJudge} />
   <p>
     <strong>So far:</strong> the specification problem is mechanical, not hypothetical —
     proxies get gamed, and rules are just more optimisable text. Next, the industry's main
@@ -120,6 +298,7 @@ const alignCfg = {
     measured risk, which is why the field's own writing reads like engineering under
     uncertainty rather than victory.
   </p>
+  <Widget no="4" caption="file the items — failure modes or toolkit layers?" widget="sort-buckets" config={aaiRLHFBuckets} />
 
   <h2>Interpretability: opening the box</h2>
   <p>
@@ -140,6 +319,7 @@ const alignCfg = {
     model does not encode a deception strategy" become testable hypotheses rather than
     marketing.
   </p>
+  <Widget no="5" caption="climb the interpretability ladder in order" widget="order" config={aaiLadderOrder} />
   <p>
     <em>Common misconception:</em> "interpretability means the model can explain its answers."
     Self-explanations are generated text — plausible post-hoc rationalisations, demonstrably
@@ -148,6 +328,7 @@ const alignCfg = {
     commentary; the distinction between an explanation the model produces and an account of
     what its circuitry did is the difference between a witness and an autopsy.
   </p>
+  <Widget no="6" caption="drag the divider — witness or autopsy?" widget="compare" config={aaiWitnessCompare} />
 
   <h2>The future of AI: oversight, governance and the honest disagreements</h2>
   <p>
@@ -191,6 +372,7 @@ const alignCfg = {
     generalisation studies) then asks the question that matters as systems exceed the
     humans labelling them: can an overseer who cannot do the task still reliably approve it?
   </p>
+  <Widget no="8" caption="find the faulty line — the InstructGPT ledger" widget="spot-error" config={aaiInstructSpot} />
 
   <p>
     Specification gaming gives the failure mode its most memorable evidence: the
@@ -286,6 +468,7 @@ const alignCfg = {
     quality engineering for optimisation, practised now, with stakes that grow every time
     the optimiser gets faster.
   </p>
+  <Widget no="9" caption="bet first — the engagement-trained chatbot" widget="predict" config={aaiEngagePredict} />
 
   <p class="sources"><strong>Sources:</strong> Amodei et al., "Concrete Problems in AI Safety" (2016); Ouyang et al., InstructGPT/RLHF (2022); Anthropic interpretability research (2023–24); Russell, Human Compatible (2019). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

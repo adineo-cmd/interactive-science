@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "subjects/artificial-intelligence/advanced/reinforcement-learning",
+    "activities": [
+      {
+        "anchor": "Watch it work on a gridworld",
+        "type": "trace",
+        "caption": "which curve is the learned Q-value?",
+        "name": "rlxGridTrace",
+        "config": {
+          "prompt": "Goal worth 10, γ = 0.9. Which curve matches the learned Q-value as the agent's starting cell steps away from the goal?",
+          "curves": [
+            { "expr": "10*0.9^x", "color": "#1d4ed8", "label": "A: heat-like decay" },
+            { "expr": "10 - x", "color": "#b42318", "label": "B: linear falloff" },
+            { "expr": "10", "color": "#0f766e", "label": "C: flat" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 8 },
+          "y": { "min": 0, "max": 11 },
+          "xlabel": "steps from goal",
+          "ylabel": "learned Q-value",
+          "why": "10 → 9 → 8.1 → 7.29 — value propagates backward through the map like heat, each step multiplied by γ; following Q's gradient from any cell walks the agent to the goal."
+        }
+      },
+      {
+        "anchor": "RL learns a plan, a fixed sequence of moves",
+        "type": "judge",
+        "caption": "true or false — policy or plan?",
+        "name": "rlxPolicyJudge",
+        "config": {
+          "statements": [
+            { "s": "RL learns a policy — a mapping from every situation to an action.", "truth": true, "why": "Which is why a trained agent handles situations its designer never anticipated." },
+            { "s": "RL learns a plan — a fixed sequence of moves.", "truth": false, "why": "The learned artefact is a policy or value function, not a script; model-based methods plan too, but the learned object is still a policy." },
+            { "s": "AlphaGo's tree search is a hybrid: model-based planning on top of learned networks.", "truth": true, "why": "The lesson's exact framing — deep policy and value networks with tree search trained on human games and self-play." },
+            { "s": "Deep Q-networks replaced the lookup table with a neural network and a different update rule.", "truth": false, "why": "Same update, deeper function: DQN (Mnih et al. 2015) swapped the table for a network and learned dozens of Atari games from raw pixels." }
+          ]
+        }
+      },
+      {
+        "anchor": "Every RL agent is a gambler",
+        "type": "sort-buckets",
+        "caption": "file the methods — three ways to budget exploration",
+        "name": "rlxBanditBuckets",
+        "config": {
+          "prompt": "The multi-armed bandit's toolkit — file each method:",
+          "buckets": ["Epsilon-greedy", "Optimism (UCB)", "Curiosity bonus"],
+          "items": [
+            { "label": "acts greedily with probability 1 − ε, randomly with probability ε", "bucket": 0 },
+            { "label": "usually with ε decaying over time — explore early, exploit late", "bucket": 0 },
+            { "label": "prefers actions whose value estimates are wide", "bucket": 1 },
+            { "label": "upper-confidence: try things you don't know yet", "bucket": 1 },
+            { "label": "rewards surprise itself", "bucket": 2 },
+            { "label": "drives exploration where external rewards are rare", "bucket": 2 }
+          ],
+          "why": "No fixed strategy is provably optimal in general — so production bandits (ad selection, clinical trials, headline ranking) manage the trade-off explicitly, where exploring on real users costs money."
+        }
+      },
+      {
+        "anchor": "exploration is a training-phase concern",
+        "type": "spot-error",
+        "caption": "find the faulty line — the exploration budget",
+        "name": "rlxExploreSpot",
+        "config": {
+          "prompt": "This deployment review contains one faulty line — click it:",
+          "lines": [
+            "Pure exploitation freezes at the first decent option; pure exploration never banks the winnings.",
+            "Epsilon-greedy acts randomly with probability ε, usually decaying over time.",
+            "Once training ends, exploration can stop — the policy is finished.",
+            "Real environments drift: new products, new adversaries, new users.",
+            "Production bandit systems often keep a small permanent ε rather than decaying it to zero."
+          ],
+          "errorLine": 2,
+          "correction": "Exploration is maintenance, not a phase — an agent that stops asking whether its value estimates are still true has silently re-entered the exploitation trap.",
+          "why": "Stationary problems can freeze a deployed policy; drifting ones reopen the trade-off forever, which is why the permanent ε exists."
+        }
+      },
+      {
+        "anchor": "The statistics is unforgiving, though",
+        "type": "match",
+        "caption": "pair each mitigation with its move",
+        "name": "rlxCreditMatch",
+        "config": {
+          "prompt": "Blame is diffused across time — pair each mitigation with what it does:",
+          "pairs": [
+            { "left": "temporal-difference learning", "right": "propagates value estimates backward one step at a time" },
+            { "left": "reward shaping", "right": "adds small intermediate signals — injecting the designer's biases, creating new hacking opportunities" },
+            { "left": "advantage estimates", "right": "compares an action against the policy's average rather than against zero" },
+            { "left": "policy-gradient methods (REINFORCE, PPO)", "right": "nudge action probabilities in proportion to how episodes scored — the engine behind RLHF" }
+          ],
+          "why": "Reward variance grows with horizon, so learning signal decays roughly exponentially with the gap between action and reward — the unforgiving statistics of credit assignment."
+        }
+      },
+      {
+        "anchor": "learned backgammon by playing itself",
+        "type": "order",
+        "caption": "rebuild the landmark ladder, backgammon to Go",
+        "name": "rlxLandmarkOrder",
+        "config": {
+          "prompt": "One recipe, four breakthroughs — put them in order:",
+          "items": [
+            "TD-Gammon learns backgammon by playing itself, no human games (1992)",
+            "AlphaGo beats Lee Sedol — deep networks plus tree search, human games plus self-play (2016)",
+            "Move 37: a shoulder hit professional commentary initially scored as a mistake",
+            "AlphaGo Zero learns from self-play alone and surpasses its ancestor",
+            "AlphaZero generalises the recipe to chess and shogi"
+          ],
+          "why": "Each landmark shares the precondition that makes RL shine: a fast, faithful simulator that grants unlimited cheap mistakes."
+        }
+      },
+      {
+        "anchor": "these wins are brute force",
+        "type": "compare",
+        "caption": "drag the divider — brute force or learned judgement?",
+        "name": "rlxBruteCompare",
+        "config": {
+          "prompt": "Two readings of AlphaGo — drag between them:",
+          "before": { "label": "Brute force reading", "text": "The computer simply calculated faster than humans — a deeper search of familiar lines." },
+          "after": { "label": "Learned judgement reading", "text": "TD-Gammon reached expert play from pure self-play with no opening book; Move 37 was a different evaluation of the board altogether; AlphaGo Zero surpassed its ancestor with no human games at all." },
+          "why": "What scales is not calculation but the quality of learned judgement guiding the search — a different claim, with different implications for what the method can do outside games."
+        }
+      },
+      {
+        "anchor": "optimisation pressure finds the",
+        "type": "branch",
+        "caption": "write the reward — a warehouse robot's objective",
+        "name": "rlxRewardBranch",
+        "config": {
+          "root": "You are specifying the reward for a warehouse robot. Optimisation pressure will find whatever seams you leave.",
+          "nodes": {
+            "start": {
+              "text": "Which reward do you write?",
+              "choices": [
+                { "label": "Distance travelled — a proxy for work done", "next": "spin", "feedback": "The seam is visible already." },
+                { "label": "Packages delivered intact and on time", "next": "closer", "feedback": "Closer to the goal — and still a proxy." },
+                { "label": "No reward — imitation of human demonstrators only", "next": "imitate", "feedback": "Safe from hacking, but capped." }
+              ]
+            },
+            "spin": {
+              "text": "The boat-race seam: the agent spins in circles hitting respawning boost targets, scoring more than by finishing the race — the objective function working perfectly on a wrong objective.",
+              "choices": []
+            },
+            "closer": {
+              "text": "Better aligned, still a proxy — and the problem scales with capability: a stronger optimiser finds subtler seams (the Tetris agent that paused forever was doing exactly what it was told).",
+              "choices": []
+            },
+            "imitate": {
+              "text": "No optimisation pressure, no hacking — but also none of RL's signature wins: superhuman play came from pressure on a score, wherever a fast, faithful simulator exists.",
+              "choices": []
+            }
+          },
+          "why": "Rewards are proxies for goals we cannot specify; the divergence between specified reward and intended goal is the specification problem — the entry point to AI alignment."
+        }
+      }
+    ]
+  }
+]

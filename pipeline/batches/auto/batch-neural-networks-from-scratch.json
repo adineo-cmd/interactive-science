@@ -1,0 +1,129 @@
+[
+  {
+    "slug": "subjects/artificial-intelligence/intermediate/neural-networks-from-scratch",
+    "activities": [
+      {
+        "anchor": "Worked with real numbers",
+        "type": "estimate",
+        "caption": "compute the neuron — then check it",
+        "name": "nfxNeuronEstimate",
+        "config": {
+          "prompt": "Inputs x₁ = 2 and x₂ = 3; weights w₁ = 0.5 and w₂ = −0.25; bias b = 1. What is the weighted sum?",
+          "unit": "",
+          "answer": 1.25,
+          "factor": 1.3,
+          "why": "2 × 0.5 + 3 × (−0.25) + 1 = 1.25 — ReLU passes it through as 1.25; a sigmoid would squash it to ≈ 0.78. That is the entire neuron: a linear score, bent by a squish.",
+          "context": "The weights are the knowledge: w₁ = 0.5 says 'input 1 speaks positively'; w₂ = −0.25 says 'input 2 speaks against'; the bias shifts the firing threshold."
+        }
+      },
+      {
+        "anchor": "the trained network understands the data",
+        "type": "sort-buckets",
+        "caption": "file the claims — what training does and doesn't do",
+        "name": "nfxTrainBuckets",
+        "config": {
+          "prompt": "Two misconceptions, one sorter — file each claim:",
+          "buckets": ["What training does", "What it doesn't"],
+          "items": [
+            { "label": "adjusts numbers to minimise a loss score on the examples seen", "bucket": 0 },
+            { "label": "exploits whatever patterns correlate with the labels", "bucket": 0 },
+            { "label": "stops in the first good valley of the loss landscape it finds", "bucket": 0 },
+            { "label": "endows the network with understanding of the data", "bucket": 1 },
+            { "label": "finds the single true answer to compare yours against", "bucket": 1 }
+          ],
+          "why": "A different random seed usually lands in a different valley — several good solutions generalise similarly, and there is rarely a single 'true' answer."
+        }
+      },
+      {
+        "anchor": "Stack neurons in layers",
+        "type": "compare",
+        "caption": "drag the divider — wide versus deep",
+        "name": "nfxWideCompare",
+        "config": {
+          "prompt": "Two ways to spend parameters — drag between them:",
+          "before": { "label": "Wide (one huge hidden layer)", "text": "Universal approximation: enough neurons can approximate any continuous function to any precision — but parameter-hungry." },
+          "after": { "label": "Deep (many small layers)", "text": "Composition reuses features — complicated functions with far fewer parameters, and learned better: that is why 'deep' learning is deep." },
+          "why": "Depth's advantage is practical rather than absolute — Cybenko (1989) and Hornik (1991) proved one hidden layer suffices in principle."
+        }
+      },
+      {
+        "anchor": "Organised as matrices",
+        "type": "cloze",
+        "caption": "fill the blanks — why the GPU was waiting",
+        "name": "nfxMatrixCloze",
+        "config": {
+          "text": "Organised as matrices, the whole layer step is one %%0%% plus one %%1%% — which is why %%2%% (built to multiply matrices for graphics) turned out to be the perfect engine for neural networks.",
+          "answers": [["matrix multiply", "matrix multiplication"], ["elementwise activation", "activation"], ["GPUs", "graphics processing units"]],
+          "hint": "The linear-algebra lesson's machinery is the implementation; the gaming industry built the hardware."
+        }
+      },
+      {
+        "anchor": "Gradient descent (the optimisation lesson's subject) says",
+        "type": "order",
+        "caption": "rebuild the training loop, forward to nudge",
+        "name": "nfxLoopOrder",
+        "config": {
+          "prompt": "Training is just the loop — put it in order:",
+          "items": [
+            "forward pass — push the example through the layers",
+            "loss — score the prediction against the truth",
+            "backward pass — the chain rule assigns every weight its gradient",
+            "nudge every weight a small step opposite its gradient",
+            "repeat over batches of examples for many epochs"
+          ],
+          "why": "Each layer's backward work is reused by all layers before it — one backward pass, output to input, computes every weight's gradient. At billions of weights, 'nudge repeatedly' is exactly how the astonishing capabilities get built."
+        }
+      },
+      {
+        "anchor": "more layers is always better",
+        "type": "judge",
+        "caption": "true or false — the depth dial",
+        "name": "nfxDepthJudge",
+        "config": {
+          "statements": [
+            { "s": "Depth adds expressive power but also vanishing gradients, longer training and overfitting risk.", "truth": true, "why": "Capacity must match the data — depth is a dial, not a virtue." },
+            { "s": "More layers is always better.", "truth": false, "why": "Many real problems are solved better by three layers tuned carefully than thirty tuned carelessly." },
+            { "s": "The validation set — not ambition — decides the right capacity.", "truth": true, "why": "Which is why the train-versus-test gap, not layer count, is the diagnosis." },
+            { "s": "A network that scores brilliantly on training data has proved its depth was right.", "truth": false, "why": "Near-perfect training scores are the signature of memorisation — the honest number lives on data the network never saw." }
+          ]
+        }
+      },
+      {
+        "anchor": "The settings you choose before training",
+        "type": "trace",
+        "caption": "which loss curve is the healthy learning rate?",
+        "name": "nfxRateTrace",
+        "config": {
+          "prompt": "Three learning rates, three loss curves over training steps. Which one is healthy?",
+          "curves": [
+            { "expr": "exp(-x/3)", "color": "#1d4ed8", "label": "A: smooth decay" },
+            { "expr": "1.5 + abs(sin(x))*2", "color": "#b42318", "label": "B: never settles" },
+            { "expr": "exp(-x/12)", "color": "#0f766e", "label": "C: barely moves" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 10 },
+          "y": { "min": 0, "max": 3.5 },
+          "xlabel": "training step",
+          "ylabel": "loss",
+          "why": "Too high and the loss oscillates or explodes (divergence); too low and it crawls — which is why loss curves are plotted live and the learning rate is the first thing to check when training misbehaves."
+        }
+      },
+      {
+        "anchor": "The countermeasures form a standard kit",
+        "type": "match",
+        "caption": "pair each countermeasure with its mechanism",
+        "name": "nfxRegMatch",
+        "config": {
+          "prompt": "The regularisation kit — pair each tool with how it fights memorisation:",
+          "pairs": [
+            { "left": "dropout", "right": "randomly silence a fraction of neurons each step — no neuron can rely on a particular partner" },
+            { "left": "weight decay", "right": "penalise large weights, biasing toward simpler functions" },
+            { "left": "early stopping", "right": "stop when validation loss rises while training loss keeps falling" },
+            { "left": "data augmentation", "right": "enlarge the training set with label-preserving transformations — often the highest-yield of all" }
+          ],
+          "why": "The train-versus-test gap is the symptom; the gap's direction tells you which disease you have."
+        }
+      }
+    ]
+  }
+]
