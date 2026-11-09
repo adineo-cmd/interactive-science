@@ -18,6 +18,197 @@ const twelveCfg = {
     { math: '12 · Appeal', note: 'The audience must want to watch: charisma in design and in motion, for heroes and villains alike.' },
   ],
 };
+
+const anFpsEstimate = {
+  "prompt": "How many still frames does film show every second?",
+  "unit": "frames per second",
+  "answer": 24,
+  "factor": 1.5,
+  "why": "24 frames per second. Nothing in the notebook ever moved — yet the eye invented the motion across the gaps. That gap is the whole art form.",
+  "context": "24 stills a second, and your eye fills in every interval between them."
+};
+
+const anFamilyBuckets = {
+  "prompt": "The twelve principles have a double parentage — physics and psychology fused. File each:",
+  "buckets": [
+    "Stylises real mechanics",
+    "Directs attention and feeling"
+  ],
+  "items": [
+    {
+      "label": "squash and stretch",
+      "bucket": 0
+    },
+    {
+      "label": "follow-through and overlapping action",
+      "bucket": 0
+    },
+    {
+      "label": "slow in and slow out",
+      "bucket": 0
+    },
+    {
+      "label": "arcs",
+      "bucket": 0
+    },
+    {
+      "label": "staging",
+      "bucket": 1
+    },
+    {
+      "label": "exaggeration",
+      "bucket": 1
+    },
+    {
+      "label": "appeal",
+      "bucket": 1
+    }
+  ],
+  "why": "Half the list stylises inertia, arcs and momentum until they read at speed; the other half controls attention and feeling. That double parentage is why the list survived the jump from pencils to pixels unchanged."
+};
+
+const anProblemMatch = {
+  "prompt": "Each principle answers a specific problem. Match them:",
+  "pairs": [
+    {
+      "left": "squash and stretch",
+      "right": "how does a flat, weightless drawing seem to have mass"
+    },
+    {
+      "left": "anticipation",
+      "right": "how does the eye parse an action that is over in eight frames"
+    },
+    {
+      "left": "timing and spacing",
+      "right": "what decides whether motion reads as heavy, nervous or stately"
+    },
+    {
+      "left": "follow-through",
+      "right": "what happens after the main pose has already ended"
+    }
+  ],
+  "why": "The rule that total volume stays constant is what keeps the deformation physical rather than a rubbery accident: if the ball flattens, it must also widen."
+};
+
+const anSpacingTrace = {
+  "prompt": "A ball bouncing once, drawn as position against time. Which curve is spaced the way gravity demands — bunched at the peak, stretched through the fall, landing hard?",
+  "curves": [
+    {
+      "expr": "6 - 0.06*x",
+      "color": "#94a3b8",
+      "label": "a straight line — evenly spaced drawings"
+    },
+    {
+      "expr": "5 - 0.24*x + 0.011*x*x",
+      "color": "#16a34a",
+      "label": "a curve lingering at the top and accelerating into contact"
+    },
+    {
+      "expr": "3 + 2*sin(x/16)",
+      "color": "#dc2626",
+      "label": "an even wave"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 20
+  },
+  "y": {
+    "min": 0,
+    "max": 7
+  },
+  "xlabel": "time (frames)",
+  "ylabel": "height",
+  "why": "Where the drawings cluster, the motion lingers; where they starve, it races. The straight line is the spreadsheet fall. In computer animation the same idea arrives as the easing curve — literally a spacing chart."
+};
+
+const anSquashJudge = {
+  "statements": [
+    {
+      "s": "Squash and stretch is cartoon exaggeration, optional outside comedy.",
+      "truth": false,
+      "why": "It is load-bearing in realistic work too, at subtler amplitude. Turning it off is one of the fastest ways to make expensive animation look like a puppet show."
+    },
+    {
+      "s": "The eye reads the flexing as the effect of forces — the squash is the impact, the stretch the acceleration.",
+      "truth": true,
+      "why": "That is why constant-volume deformation reads as weight rather than as rubber."
+    },
+    {
+      "s": "If the ball flattens, it must also widen.",
+      "truth": true,
+      "why": "Apparent volume stays constant — that is the rule that keeps the effect physical."
+    },
+    {
+      "s": "A single distorted smear frame reads to an audience as breakage.",
+      "truth": false,
+      "why": "The eye accepts constant-volume deformation as natural, so a smear bridges impossibly fast action and reads as speed and impact."
+    }
+  ]
+};
+
+const anAnticipationSpot = {
+  "prompt": "A student writes up the anticipation rule of thumb. One line is wrong — find it.",
+  "lines": [
+    "Anticipation moves the audience backwards before forwards: the crouch before the jump, the wind-up before the punch.",
+    "It sells the action physically and it tells the eye where to look and when.",
+    "Because anticipation costs frames, fast actions should skip it to keep their speed.",
+    "An action of ten frames or fewer is over in under half a second, so the eye needs a wind-up to parse it.",
+    "The rule of thumb is proportional: bigger action, bigger wind-up."
+  ],
+  "errorLine": 2,
+  "correction": "The working rule is the opposite: the FASTER the action, the more it needs a wind-up.",
+  "why": "Below about ten frames the eye cannot parse an action it did not see coming. Anticipation does not spend the audience's patience — it spends frames to buy legibility."
+};
+
+const anOverlapBranch = {
+  "root": "You are animating a character turning and walking off. Every limb arrives on the same frame, each starting and stopping together.",
+  "nodes": {
+    "start": {
+      "text": "The pose is correct. The timing of the parts is not.",
+      "choices": [
+        {
+          "label": "Keep it — simultaneous arrival looks crisp and controlled",
+          "next": "simultaneous",
+          "feedback": "The same walk with every limb arriving on the same frame reads as marionette."
+        },
+        {
+          "label": "Delay each joint slightly — arm after shoulder, fingers after arm",
+          "next": "cascade",
+          "feedback": "Successive breaking of joints replaces a robot's simultaneity with the cascade real bodies perform."
+        }
+      ]
+    },
+    "simultaneous": {
+      "text": "Everything lands together and the character reads as a puppet — precise, weightless, dead on its feet.",
+      "choices": []
+    },
+    "cascade": {
+      "text": "The parts overrun and trail; the walk with dragging weight feels alive. And on a held pose, keep micro-drifting: a dead stop reads as death.",
+      "choices": []
+    }
+  },
+  "why": "Nothing stops at once. Loosely attached parts overrun (follow-through), and no two parts move on exactly the same clock (overlapping action). The moving hold is the principle's modern descendant."
+};
+
+const anFastActionPlace = {
+  "prompt": "A thrown punch lasts eight frames. Place the marker at the frame count below which the eye cannot parse an action it did not see coming.",
+  "labels": [
+    "1 frame",
+    "5 frames",
+    "10 frames",
+    "16 frames",
+    "24 frames"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 24
+  },
+  "answer": 10,
+  "tolerance": 1.5,
+  "why": "About ten frames. Below that the animator must add a wind-up — a one- or two-frame dip — to tell the eye where and when to look."
+};
 ---
 <TopicPage slug="subjects/animation/foundational/the-twelve-principles-of-animation">
   <h2>Where you are, and what you will learn</h2>
@@ -27,6 +218,7 @@ const twelveCfg = {
     of a notebook, you have already started. Every technical word is defined the moment
     it appears.
   </p>
+  <Widget no="7" caption="find the faulty line in this anticipation rule" widget="spot-error" config={anAnticipationSpot} />
   <p>By the end of this lesson you will be able to:</p>
   <ul>
     <li>say what the twelve principles are, where they came from, and why they survived the jump from pencils to computers;</li>
@@ -49,6 +241,7 @@ const twelveCfg = {
     the whole art form. Each still drawing is called a <strong>frame</strong>, and film
     shows 24 of them every second, written as 24 frames per second (fps).
   </p>
+  <Widget no="2" caption="guess the frame rate before it lands" widget="estimate" config={anFpsEstimate} />
   <p>
     Animation is the art of the interval. Between one frame and the next there is
     nothing — no motion, no light, no event — but the audience's eye crosses the gap and
@@ -69,6 +262,7 @@ const twelveCfg = {
     essentially unchanged. The tools were reinvented; the human eye doing the believing
     was not.
   </p>
+  <Widget no="3" caption="file the twelve into their two parentages" widget="sort-buckets" config={anFamilyBuckets} />
   <p>
     <strong>So far:</strong> animation is stillness crossed by a believing eye — 24
     frames a second — and the twelve principles are the craft's tested rules for
@@ -95,6 +289,7 @@ const twelveCfg = {
     impact, and elongates again as it rebounds. A face turning sharply stretches along
     the turn.
   </p>
+  <Widget no="4" caption="pair each principle with the problem it solves" widget="match" config={anProblemMatch} />
   <p>
     Why does that read as weight? Because the eye interprets the flexing as the
     <em>effect of forces</em> — the squash is the impact, the stretch is the
@@ -105,6 +300,7 @@ const twelveCfg = {
     frame to bridge impossibly fast action — the famous "smear" frame — and the audience
     reads speed and impact rather than breakage.
   </p>
+  <Widget no="6" caption="true or false — what squash and stretch is really for" widget="judge" config={anSquashJudge} />
   <p>
     <em>Common misconception:</em> squash and stretch is cartoon exaggeration, optional
     outside comedy. It is the opposite — the principle is load-bearing in realistic
@@ -160,6 +356,7 @@ const twelveCfg = {
     chart. This is why spacing is the first thing any animator learns twice — once in
     pencils, once in graphs.
   </p>
+  <Widget no="5" caption="which spacing chart falls like a real ball?" widget="trace" config={anSpacingTrace} />
   <p>
     A worked example: a ball bouncing once. The <strong>keys</strong> — the few drawings
     that define the action — are contact, peak, contact. The peak is where the ball is
@@ -192,6 +389,7 @@ const twelveCfg = {
     with the cascade real bodies actually perform. A walk with dragging weight feels
     alive; the same walk with every limb arriving on the same frame reads as marionette.
   </p>
+  <Widget no="8" caption="decide between simultaneity and cascade" widget="branch" config={anOverlapBranch} />
   <p>
     The principle has a modern descendant worth knowing: the <em>moving hold</em>. A
     character holds a pose while breathing, micro-drifting, hair still swaying — because
@@ -214,6 +412,7 @@ const twelveCfg = {
     curves — watch your own hand reach for a cup — and straightening the arc makes
     motion read mechanical, which is precisely why it is used for robots.
   </p>
+  <Widget no="9" caption="locate the frame budget for a punch" widget="place" config={anFastActionPlace} />
   <p>
     <em>Secondary action</em> is supporting motion that enriches without competing — the
     nervous hand, the swinging bag, the raised brow. <em>Exaggeration</em> exists
