@@ -27,6 +27,142 @@ const rayleighCfg = {
   crossings: false,
   height: 320,
 };
+
+const tlApertureCloze = {
+  "text": "Light-gathering grows with the %%0%% of the objective, so doubling the diameter quadruples the photons. The 10-metre Keck telescopes collect on the order of a %%1%% times more light than your dark-adapted eye.",
+  "answers": [
+    [
+      "area"
+    ],
+    [
+      "million"
+    ]
+  ],
+  "hint": "Aperture beats everything — and the leaps accelerate as you go bigger."
+};
+
+const tlDesignMatch = {
+  "prompt": "Lens versus mirror, eyepiece versus aperture:",
+  "pairs": [
+    {
+      "left": "a lens (refractor)",
+      "right": "chromatic aberration, and rim-only support that sags at scale"
+    },
+    {
+      "left": "a mirror (reflector)",
+      "right": "all wavelengths focus identically, supported from behind"
+    },
+    {
+      "left": "the eyepiece",
+      "right": "sets magnification — swappable arithmetic"
+    },
+    {
+      "left": "the aperture",
+      "right": "decided at purchase, unchangeable — the number that matters"
+    }
+  ],
+  "why": "Every large modern telescope — Keck 10 m, Rubin 8.4 m, the 39-metre ELT — is a reflector, for mechanical reasons: the look is 1609's, not the physics'."
+};
+
+const tlMagnifySpot = {
+  "prompt": "One line of this eyepiece answer is wrong — click it:",
+  "lines": [
+    "A 1,000 mm reflector with a 25 mm eyepiece magnifies 1,000 ÷ 25 = 40×.",
+    "Swap to a 10 mm eyepiece: 100× — more detail through the same tube.",
+    "Swap to a 4 mm eyepiece: 250× — now the maximum useful detail, since magnification always adds resolution.",
+    "The practical hierarchy: aperture first, magnification second — only as much as the aperture supports."
+  ],
+  "errorLine": 2,
+  "correction": "250× through a 10 cm aperture exceeds the useful limit (~2× aperture in mm = 200×) — the image grows dimmer and mushier, not more detailed.",
+  "why": "Magnification without aperture is empty magnification: enlarging a blur gives a bigger blur."
+};
+
+const tlHubbleEstimate = {
+  "prompt": "A 10 cm telescope resolves about 1.4 arcseconds; Hubble's 2.4 m mirror resolves about 0.06. Roughly how many times finer is Hubble's resolution?",
+  "unit": "× finer",
+  "answer": 23,
+  "factor": 1.4,
+  "why": "1.4 ÷ 0.06 ≈ 23× finer — enough to separate individual stars in neighbouring galaxies.",
+  "context": "θ ≈ 1.22λ/D: bigger D means sharper images — the second dividend of aperture, after light-gathering."
+};
+
+const tlBoxPredict = {
+  "q": "A shop telescope advertises '600× magnification!' on a 60 mm lens. What does that number actually tell you?",
+  "choices": [
+    "Nothing useful — 600× exceeds the useful limit (~2× aperture in mm) and enlarges a blur",
+    "You will see 600× more detail than the naked eye",
+    "The telescope gathers 600× more light than the eye"
+  ],
+  "answer": 0,
+  "why": "Empty magnification: the diffraction limit caps the detail no matter how far you stretch it. Aperture buys light and resolution; magnification is eyepiece arithmetic."
+};
+
+const tlBandBuckets = {
+  "prompt": "The atmosphere is a filter with two clean windows. File each band:",
+  "buckets": [
+    "observes from the ground",
+    "needs orbit"
+  ],
+  "items": [
+    {
+      "label": "radio — pulsars, quasars, the cosmic microwave background",
+      "bucket": 0
+    },
+    {
+      "label": "optical — with adaptive optics and laser guide stars",
+      "bucket": 0
+    },
+    {
+      "label": "infrared — water vapour swallows it; Webb must even cool its own mirror to −230 °C",
+      "bucket": 1
+    },
+    {
+      "label": "ultraviolet — ozone eats it",
+      "bucket": 1
+    },
+    {
+      "label": "X-ray and gamma — photons stop in matter outright",
+      "bucket": 1
+    }
+  ],
+  "why": "The filter is protective for life and obstructive for astronomy — each orbiting telescope is a mission to a wavelength the ground can never see."
+};
+
+const tlGalileoJudge = {
+  "statements": [
+    {
+      "s": "Venus's full phases proved it circles the Sun — under Ptolemy it could only ever show crescents.",
+      "truth": true,
+      "why": "One modest-looking observation through a poor lens, and half the cosmology falls."
+    },
+    {
+      "s": "Galileo estimated lunar mountain heights from the terminator's shadows — some taller than any then known on Earth.",
+      "truth": true,
+      "why": "The Moon's edge was rough, not the perfect sphere philosophy demanded."
+    },
+    {
+      "s": "Jupiter's four moons proved that everything orbits the Earth.",
+      "truth": false,
+      "why": "They proved the opposite: not everything orbited the Earth."
+    },
+    {
+      "s": "A new instrument is a better view of the same universe.",
+      "truth": false,
+      "why": "It is a different universe — radio found pulsars (Bell, 1967), X-rays found accreting black holes, infrared found the nurseries behind dust."
+    }
+  ]
+};
+
+const photonCountOrder = {
+  "prompt": "An image is not a window but a count — put the sequence in order:",
+  "items": [
+    "The objective intercepts photons over minutes or hours of exposure",
+    "Each pixel counts arrivals",
+    "Faintness, detail and colour are set by how many photons were caught and how faithfully counted",
+    "Telescope time is scheduled in committee-reviewed blocks — exposure is a real cost"
+  ],
+  "why": "Professional observing is closer to running a counting experiment than to looking: the difference between 4 m and 8 m is not what you can see but what you can measure in the same night."
+};
 ---
 <TopicPage slug="subjects/astronomy/intermediate/telescopes-and-the-electromagnetic-spectrum">
   <h2>Where you are, and what you will learn</h2>
@@ -58,6 +194,7 @@ const rayleighCfg = {
     the universe broadcasts across the whole <strong>electromagnetic spectrum</strong>, and each
     band needs its own kind of eye — and some eyes must leave the planet entirely.
   </p>
+  <Widget no="3" caption="fill the blanks — the first rule of telescopes" widget="cloze" config={tlApertureCloze} />
 
   <Widget no="1" caption="why size wins — double the mirror, four times the photons; ten times, a hundred" widget="plotter" config={scopeCfg} />
   <p>
@@ -81,6 +218,7 @@ const rayleighCfg = {
     which is why eyepieces are swappable and aperture — decided at purchase, unchangeable — is
     the number that really matters.
   </p>
+  <Widget no="4" caption="pair each design piece with its consequence" widget="match" config={tlDesignMatch} />
   <p>
     A worked example in a hobbyist's vocabulary. A small reflector with a 1,000 mm focal length
     fitted with a 25 mm eyepiece magnifies 1,000 ÷ 25 = <strong>40×</strong>; swap in a 10 mm
@@ -93,6 +231,7 @@ const rayleighCfg = {
     hierarchy: aperture first, magnification second, and only as much of it as the aperture
     can support.
   </p>
+  <Widget no="5" caption="find the faulty line — the 250× trap" widget="spot-error" config={tlMagnifySpot} />
 
   <p><em>Common misconception:</em> "a refractor - the classic lens telescope - must be the
   serious design, because that is what a telescope looks like." The look is 1609's, not the
@@ -117,6 +256,7 @@ const rayleighCfg = {
     aperture is <strong>empty magnification</strong>: enlarging a blurred image gives a bigger
     blur. Every serious buyer's advice follows from this — choose aperture first.
   </p>
+  <Widget no="6" caption="call the magnitude — Hubble's edge" widget="estimate" config={tlHubbleEstimate} />
 
   <Widget no="2" caption="the diffraction limit — resolution improves as aperture grows (lower arcseconds = sharper)" widget="plotter" config={rayleighCfg} />
   <p>
@@ -129,6 +269,7 @@ const rayleighCfg = {
   its detail." Enlarging a blur gives a bigger blur - the diffraction limit caps the detail
   in the image no matter how far you stretch it. That is why magnification claims are the least
   informative number on the box.</p>
+  <Widget no="7" caption="bet first — the box's 600× claim" widget="predict" config={tlBoxPredict} />
 
   <h2>The electromagnetic spectrum: the universe's many channels</h2>
   <p>
@@ -159,6 +300,7 @@ const rayleighCfg = {
     as the cause). X-ray astronomy started with a Geiger counter on a captured V-2 rocket in
     1949. In every case the channel existed; the detector came first, and the universe followed.
   </p>
+  <Widget no="8" caption="file the bands — ground window or orbital mission?" widget="sort-buckets" config={tlBandBuckets} />
 
   <p><em>Common misconception:</em> "the other bands are just the same universe in different
   colours." Each band carries genuinely different news: radio sees cold gas and pulsars,
@@ -190,6 +332,7 @@ const rayleighCfg = {
     Bell, 1967), X-rays found accreting black holes, infrared found the star-forming nurseries
     hidden behind dust. What the eye cannot see, it cannot even suspect.
   </p>
+  <Widget no="9" caption="true or false — Galileo's eighteen months" widget="judge" config={tlGalileoJudge} />
   <p><em>Common misconception:</em> "telescopes mostly magnify." For today's large telescopes,
     magnification is nearly irrelevant — the deepest imaging surveys run at modest zoom.
     What aperture buys is <em>light</em> (detecting a galaxy whose photons arrive a billion per
@@ -208,6 +351,7 @@ const rayleighCfg = {
     you can measure in the same night. The eye is still the mind's instrument; the telescope
     merely feeds it photons the eye could never catch.
   </p>
+  <Widget no="10" caption="rebuild the counting experiment" widget="order" config={photonCountOrder} />
 
   <p>
     <strong>So far:</strong> an image is not a window but a count: photons accumulated until

@@ -20,6 +20,143 @@ const massLabCfg = {
     { label: 'main-sequence lifetime (million yr)', expr: '10000/pow(m, 2.5)', unit: 'Myr' },
   ],
 };
+
+const slSiriusEstimate = {
+  "prompt": "The M^3.5 rule: Sirius A is about 2 solar masses. Roughly what multiple of the Sun's luminosity does that give it?",
+  "unit": "× solar luminosity",
+  "answer": 11,
+  "factor": 1.4,
+  "why": "2^3.5 ≈ 11× the Sun's light — and its lifetime falls to 10,000/2^2.5 ≈ 1,800 million years, six times shorter. Big stars die young.",
+  "context": "A red dwarf at 0.2 M would live 5,600,000 million years — 400× the age of the universe. No red dwarf has ever died."
+};
+
+const slBirthCloze = {
+  "text": "A star begins as a %%0%% that collapses and fragments into knots; each knot heats until its core reaches about %%1%% million kelvin, where hydrogen fuses into %%2%% — and the star settles onto the main sequence.",
+  "answers": [
+    [
+      "nebula",
+      "cloud of gas and dust",
+      "cold cloud"
+    ],
+    [
+      "10",
+      "ten"
+    ],
+    [
+      "helium"
+    ]
+  ],
+  "hint": "The nursery is visible in Orion, 1,300 light years away."
+};
+
+const slFusionJudge = {
+  "statements": [
+    {
+      "s": "Stars burn fuel the way a fire burns wood.",
+      "truth": false,
+      "why": "No flame is involved — fusion is nuclei merging under enormous temperature and pressure."
+    },
+    {
+      "s": "Fusion releases energy because the products weigh slightly less than the inputs.",
+      "truth": true,
+      "why": "The missing mass is the energy — which is why the tank is measured in billions of years."
+    },
+    {
+      "s": "Chemical burning is trillions of times less efficient than fusion.",
+      "truth": true,
+      "why": "Which is exactly why the fuel tank runs in billions of years."
+    },
+    {
+      "s": "A protostar glows in infrared while still gathering mass from its disc.",
+      "truth": true,
+      "why": "Gravitational energy converting to kinetic — visible in the Orion Nebula's nurseries."
+    }
+  ]
+};
+
+const slSiriusPlace = {
+  "prompt": "Apparent magnitude runs backwards — brighter is smaller. Place Sirius on the scale:",
+  "labels": [
+    "−2",
+    "0",
+    "2",
+    "4",
+    "6"
+  ],
+  "scale": {
+    "min": -2,
+    "max": 6
+  },
+  "answer": -1.5,
+  "tolerance": 0.4,
+  "why": "Sirius: −1.5; the naked-eye limit is +6; the Sun blazes at −26.7. Five steps of magnitude = a factor of 100 in brightness.",
+  "context": "The base of the distance ladder: one arcsecond of parallax defines the parsec, 3.26 light years."
+};
+
+const slBrightPredict = {
+  "q": "Two stars look exactly equally bright in the sky. What do you actually know about them?",
+  "choices": [
+    "They have equal intrinsic luminosity",
+    "Nothing separable yet — brightness mixes luminosity and distance, and you must break the mix apart",
+    "They sit at equal distances"
+  ],
+  "answer": 1,
+  "why": "Brightness as seen mixes two unknowns — which is why astronomers defined absolute magnitude at a standard 10 parsecs."
+};
+
+const slHRMatch = {
+  "prompt": "The most organising picture in astronomy — match region to resident:",
+  "pairs": [
+    {
+      "left": "the main-sequence diagonal — 90% of stars",
+      "right": "hydrogen-burning adulthood; position fixed by mass"
+    },
+    {
+      "left": "giants and supergiants, floating above",
+      "right": "huge, cool, bright"
+    },
+    {
+      "left": "white dwarfs, sunk below-right",
+      "right": "small, hot, dim"
+    },
+    {
+      "left": "O stars",
+      "right": "blue, over 30,000 K, rare — and doomed"
+    }
+  ],
+  "why": "The main sequence is a weighing scale, not a path: where a star sits is fixed by mass, and it leaves only when the fuel runs out."
+};
+
+const slEndingsBuckets = {
+  "prompt": "Two endings, one boundary at 1.4 solar masses. File each fact:",
+  "buckets": [
+    "White dwarf road",
+    "Supernova road"
+  ],
+  "items": [
+    {
+      "label": "the Sun swells past Mercury and Venus",
+      "bucket": 0
+    },
+    {
+      "label": "the envelope blown off gently as a planetary nebula",
+      "bucket": 0
+    },
+    {
+      "label": "electron degeneracy supports the core",
+      "bucket": 0
+    },
+    {
+      "label": "the core passes 1.4 solar masses and degeneracy pressure fails",
+      "bucket": 1
+    },
+    {
+      "label": "Chandrasekhar derived the boundary, aged 19, on a ship to England",
+      "bucket": 1
+    }
+  ],
+  "why": "Derived in 1930, Nobel in 1983 — the limit is why the gentle road ends where it does."
+};
 ---
 <TopicPage slug="subjects/astronomy/intermediate/stellar-life-cycles">
   <h2>Where you are, and what you will learn</h2>
@@ -30,6 +167,7 @@ const massLabCfg = {
     and square roots are the only arithmetic asked of you; the sibling <em>Telescopes
     &amp; the Electromagnetic Spectrum</em> lesson explains how the measurements are taken.
   </p>
+  <Widget no="5" caption="true or false — how stars actually shine" widget="judge" config={slFusionJudge} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>narrate a star's four stages - nebula, main sequence, giant, end state - and say what drives each transition;</li>
@@ -72,6 +210,7 @@ const massLabCfg = {
     lifetime about 5,600,000 million years — longer than the current age of the universe by a
     factor of 400. No red dwarf has ever died; not one, anywhere, in the history of the cosmos.
   </p>
+  <Widget no="3" caption="call the magnitude — Sirius's furious burn rate" widget="estimate" config={slSiriusEstimate} />
 
   <h2>Birth: collapse, ignition, and the main sequence</h2>
   <p>
@@ -86,6 +225,7 @@ const massLabCfg = {
     is faster because gravity is stronger); the Orion Nebula, 1,300 light years away, is the
     nursery on show tonight, with thousands of stars aged under a million years.
   </p>
+  <Widget no="4" caption="fill the blanks — from cloud to main sequence" widget="cloze" config={slBirthCloze} />
 
   <p><em>Common misconception:</em> "stars burn fuel the way a fire burns wood." No flame is
   involved: fusion is nuclei merging under enormous temperature and pressure, releasing
@@ -114,11 +254,13 @@ const massLabCfg = {
     years (Gaia has charted nearly two billion stars); beyond that, the standard candles —
     below — take over.
   </p>
+  <Widget no="6" caption="place Sirius on the magnitude scale" widget="place" config={slSiriusPlace} />
 
   <p><em>Common misconception:</em> "a star that looks bright in the sky must be big or
   close." Brightness as seen mixes two unknowns - intrinsic luminosity and distance - and
   without separating them the eye can conclude nothing. That is why astronomers defined
   absolute magnitude at a standard distance.</p>
+  <Widget no="7" caption="bet first — two stars, equal brightness" widget="predict" config={slBrightPredict} />
 
   <h2>Spectral classes and the H–R diagram</h2>
   <p>
@@ -138,6 +280,7 @@ const massLabCfg = {
     the sequence when their fuel runs out, and <em>where they move next</em> is the plot of
     stellar evolution itself.
   </p>
+  <Widget no="8" caption="pair each H–R region with its residents" widget="match" config={slHRMatch} />
 
   <p><em>Common misconception:</em> "the main sequence is a path: a star drifts along it as
   it ages." Nothing drifts: the sequence is a weighing scale, and position on it is fixed by mass
@@ -167,6 +310,7 @@ const massLabCfg = {
     end state (a "black dwarf") that the universe is not yet old enough to contain a single
     example of.
   </p>
+  <Widget no="9" caption="file the endings — which road does each fact belong to?" widget="sort-buckets" config={slEndingsBuckets} />
   <p>
     The <strong>Chandrasekhar limit</strong> sets the boundary of this road: about
     <strong>1.4 solar masses</strong>. Degenerate electron pressure — the same quantum rigidity

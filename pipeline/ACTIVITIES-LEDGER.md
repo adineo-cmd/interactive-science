@@ -94,6 +94,10 @@
 | architecture/advanced/urban-design-and-public-space | match, predict, order, estimate, judge, sort-buckets, cloze | wave-9 |
 | architecture/expert/computational-and-parametric-design | match, predict, cloze, order, sort-buckets, judge | wave-10 |
 | architecture/expert/sustainable-and-passive-design | sort-buckets, order, predict, cloze, match, estimate, predict | wave-11 |
+| art-history/foundational/walk-through-western-art | match, predict, cloze, sort-buckets, order, spot-error, estimate | art-astro-1 |
+| astronomy/foundational/solar-system-scale | cloze, place, estimate, sort-buckets, predict, judge, match | art-astro-1 |
+| astronomy/intermediate/stellar-life-cycles | estimate, cloze, judge, place, predict, match, sort-buckets | astro-2 |
+| astronomy/intermediate/telescopes-and-the-electromagnetic-spectrum | cloze, match, spot-error, estimate, predict, sort-buckets, judge, order | astro-2 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -102,7 +106,9 @@
 **Anthropology: 9 of 9 COMPLETE** (55 new activities). **Archaeology: 1 of 1 COMPLETE.**
 **Architecture: 10 of 10 COMPLETE (waves 6–11).**
 
-**Then next subjects (alphabetical): art-history, astronomy, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
+**Art-history: 1 of 7 done (walk-through-western-art; remaining: global-prehistory, 3 intermediate, 2 advanced, 2 expert).**
+**Astronomy: 3 of 9 done (solar-system-scale, stellar-life-cycles, telescopes; remaining: foundational orbits-and-keplers-laws [Layout] + planet-earth, intermediate milky-way + moon-eclipses, advanced compact-objects/exoplanets/galaxies, expert astrobiology/cosmology/dark-matter).**
+**Then next subjects (alphabetical): biology, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
 
