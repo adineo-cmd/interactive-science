@@ -86,16 +86,16 @@
 | archaeology/foundational/what-archaeology-is | timeline, sort-buckets, equationStep, order, predict, match, estimate, spot-error | wave-6 |
 | architecture/foundational/form-follows-forces | plotter, compare, sort-buckets, match, order, judge, estimate, spot-error, branch | wave-6 |
 | architecture/foundational/career-paths-and-licensure | equationStep, compare, predict, judge, sort-buckets, match, order, spot-error | wave-6 |
+| architecture/intermediate/a-history-of-architectural-styles | match, cloze, predict, order, sort-buckets, estimate, judge | wave-7 |
+| architecture/intermediate/plans-sections-and-scale | match, predict, cloze, order, spot-error, judge | wave-7 |
+| architecture/intermediate/what-buildings-must-do | sort-buckets, predict, cloze, match, estimate, judge | wave-7 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
 **Done subjects: physics, accounting, actuarial-science, aerospace-engineering, agriculture, animation, anthropology, archaeology — ALL lessons in each covered.**
 
 **Anthropology: 9 of 9 COMPLETE** (55 new activities). **Archaeology: 1 of 1 COMPLETE.**
-**Architecture: 2 of 10 done.** Remaining:
-- intermediate/a-history-of-architectural-styles
-- intermediate/plans-sections-and-scale
-- intermediate/what-buildings-must-do
+**Architecture: 5 of 10 done.** Remaining:
 - advanced/environmental-design-light-heat-air
 - advanced/structural-systems-arches-to-skyscrapers
 - advanced/urban-design-and-public-space
