@@ -10,6 +10,158 @@ const csaCfg = {
     { math: '4 · The carbon-market question', note: 'Soil carbon credits: real mechanism, real measurement problems (additionality, permanence, verification — the offsets critique in the environmental-economics lesson). Buyers now pay for measured outcomes, not practices claimed — the discipline tightening in real time.' },
   ],
 };
+
+const agSoilClockEstimate = {
+  "prompt": "At best, how many years does it take to form a few centimetres of topsoil?",
+  "unit": "years",
+  "answer": 1000,
+  "factor": 2.5,
+  "why": "Up to a thousand years for a few centimetres — centimetres per century at best. That makes soil the least renewable resource agriculture uses: losses are measured in decades, gains in generations.",
+  "context": "A thousand years for a hand's depth — the climate clock and the soil clock run at the same speed."
+};
+
+const agSoilCarbonJudge = {
+  "statements": [
+    {
+      "s": "Soil is a carbon pool of the same order as the atmosphere and vegetation combined.",
+      "truth": true,
+      "why": "The top metres hold more carbon than the atmosphere, so soil management is climate management."
+    },
+    {
+      "s": "The agronomy of building soil and the climate practice of sequestering carbon are the same operations.",
+      "truth": true,
+      "why": "Cover crops, residue return, manure and compost, reduced tillage, diverse rotations — one toolkit, two framings."
+    },
+    {
+      "s": "Soil organic matter is only a carbon account, with no bearing on fertility.",
+      "truth": false,
+      "why": "It is simultaneously the fertility asset — water-holding, nutrient exchange, structure — and the carbon account."
+    },
+    {
+      "s": "Moving soil organic carbon by one percentage point can be done within a season.",
+      "truth": false,
+      "why": "It takes years of inputs, which is the honest caveat on every organic-matter rule of thumb."
+    }
+  ]
+};
+
+const agNitrogenLedgerBuckets = {
+  "prompt": "The fertiliser economy has a climate double edge. File each item:",
+  "buckets": [
+    "Cost side",
+    "Mitigation lever"
+  ],
+  "items": [
+    {
+      "label": "Haber–Bosch costing 1–2% of global energy",
+      "bucket": 0
+    },
+    {
+      "label": "nitrous oxide at about 273× CO₂'s warming per kilogram",
+      "bucket": 0
+    },
+    {
+      "label": "nitrate runoff into waterways",
+      "bucket": 0
+    },
+    {
+      "label": "right rate, time, place and form",
+      "bucket": 1
+    },
+    {
+      "label": "legumes fixing atmospheric nitrogen in a rotation",
+      "bucket": 1
+    }
+  ],
+  "why": "If only a third of applied nitrogen is harvested, two-thirds is the emission-and-pollution budget — every percentage point of efficiency gained is a proportional saving."
+};
+
+const agErosionCloze = {
+  "prompt": "Drag the divider: the same slope, two ways of preparing the ground.",
+  "before": {
+    "label": "bare conventional ground",
+    "text": "Structure broken by tillage, nothing on the surface. Every raindrop lands on aggregates, runoff gathers, and soil loss runs at conventional rates - while a warmer atmosphere holds about 7% more water per degree, so each storm arrives heavier than the last."
+  },
+  "after": {
+    "label": "no-till with residue cover",
+    "text": "Raindrops hit cover instead of aggregates, structure stays intact, infiltration is up and runoff down. Combined with contours, terraces and buffer strips - each a way of shortening the slope - soil loss commonly falls by an order of magnitude."
+  },
+  "why": "Every tonne kept is simultaneously a fertility saving (topsoil is where organic matter and nutrients concentrate) and a climate co-benefit: less carbon oxidised, less sediment and nutrient delivered to waterways."
+};
+
+const agRicePlace = {
+  "prompt": "Alternate wetting and drying lets rice paddies drain mid-season. Place the typical methane reduction reported in field trials.",
+  "labels": [
+    "0%",
+    "10%",
+    "25%",
+    "40%",
+    "90%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 40,
+  "tolerance": 8,
+  "why": "Field trials commonly land in the 30–50% range, sometimes more, while saving water and largely holding yield — one of the few practices that scores on all three climate-smart objectives at once."
+};
+
+const agReboundPredict = {
+  "q": "A region converts all its irrigation to drip, which is 90%+ efficient. What did the water saving do to aquifer depletion?",
+  "choices": [
+    "It reversed the decline, since less water was withdrawn per hectare",
+    "It often accelerated depletion, because the saving funded more irrigated land and thirstier crops",
+    "It had no measurable effect either way",
+    "It eliminated the need for allocation rules entirely"
+  ],
+  "answer": 1,
+  "why": "Efficiency gains often increase consumption — the rebound effect, measured repeatedly in efficient-irrigation programmes that accelerated depletion. Water saved per hectare is real; water saved by the basin depends on what the saving funds."
+};
+
+const agClimateOrganicSpot = {
+  "prompt": "A student weighs organic farming's climate case. One line is wrong — find it.",
+  "lines": [
+    "The accounting is genuinely two-sided, so the label alone settles nothing.",
+    "Organic fields cut on-farm emissions — no synthetic nitrogen, whose manufacture is energy-intensive — and build soil carbon.",
+    "Typical organic yields run a fifth HIGHER, so feeding the same population needs less land.",
+    "Land-use change (forests converted) emits far more than the fertiliser saved.",
+    "Per unit of product some organic crops come out ahead and some behind."
+  ],
+  "errorLine": 2,
+  "correction": "Typical organic yields run roughly a fifth LOWER, so feeding the same population needs MORE land — which is where the land-use change emissions come from.",
+  "why": "The climate-smart synthesis borrows from both toolkits — legumes, rotations, organic inputs where they work — without treating the label as the objective."
+};
+
+const agWatershedBranch = {
+  "root": "Each farm in a watershed irrigates efficiently. The aquifer is still falling under a pump-race — the Ogallala, the North China Plain, northwestern India.",
+  "nodes": {
+    "start": {
+      "text": "Every individual decision looks rational. Where does the fix have to sit?",
+      "choices": [
+        {
+          "label": "At the farm — keep pushing per-hectare efficiency",
+          "next": "farm",
+          "feedback": "That is what every farm is already doing, and the aquifer is still falling."
+        },
+        {
+          "label": "At the watershed — allocation limits plus collective management",
+          "next": "watershed",
+          "feedback": "Groundwater user associations and shared irrigation schedules are the governance analogue of the agronomy."
+        }
+      ]
+    },
+    "farm": {
+      "text": "Efficiency improves again, the pump-race continues, and the rebound effect converts the saving into more irrigated land.",
+      "choices": []
+    },
+    "watershed": {
+      "text": "Efficiency and a cap together: water saved per hectare is real, and water saved by the basin depends on what the saving is allowed to fund.",
+      "choices": []
+    }
+  },
+  "why": "Upstream extraction empties downstream deltas, so the climate-smart unit is the watershed. Pair efficiency with allocation limits — technology plus a cap, not technology alone."
+};
 ---
 <TopicPage slug="subjects/agriculture/expert/climate-smart-agriculture">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +229,8 @@ const csaCfg = {
     everything that follows: losses measured in decades, gains measured in
     generations.
   </p>
+  <Widget no="3" caption="true or false — soil as a climate pool" widget="judge" config={agSoilCarbonJudge} />
+  <Widget no="2" caption="guess the soil clock before the reveal" widget="estimate" config={agSoilClockEstimate} />
 
   <h2>Soil texture, composition and temperature: the physical platform</h2>
   <p>
@@ -132,6 +286,7 @@ const csaCfg = {
     older, circular version of the same economy, and integrated nutrient
     management (both, tuned) is the climate-smart synthesis.
   </p>
+  <Widget no="4" caption="file each nitrogen outcome by its ledger" widget="sort-buckets" config={agNitrogenLedgerBuckets} />
   <p>
     <strong>So far:</strong> fertility is a budget with a climate double edge — synthetic
     nitrogen spends energy and can leave as N₂O or runoff, while legumes and precision
@@ -158,6 +313,7 @@ const csaCfg = {
     which is why conservation practices are the adaptation measures with the
     longest payback horizon and the largest.
   </p>
+  <Widget no="5" caption="drag between bare ground and covered ground" widget="compare" config={agErosionCloze} />
 
   <h2>Drainage and irrigation: the water account</h2>
   <p>
@@ -182,6 +338,7 @@ const csaCfg = {
     yield: one of the few practices that scores on all three CSA objectives at
     once.
   </p>
+  <Widget no="6" caption="put the methane saving on the scale" widget="place" config={agRicePlace} />
 
   <h2>The water cycle and the farm: thinking in watersheds</h2>
   <p>
@@ -202,6 +359,7 @@ const csaCfg = {
     hectares of re-established on-farm trees), proof that the practices scale
     when tenure and incentives align.
   </p>
+  <Widget no="9" caption="scale the unit of management up to the watershed" widget="branch" config={agWatershedBranch} />
   <p>
     <em>Common misconception:</em> "drip irrigation saves water, so converting a
     region to drip saves the aquifer." Efficiency gains often increase
@@ -212,6 +370,7 @@ const csaCfg = {
     funds. The climate-smart design pairs efficiency with allocation limits —
     technology plus a cap, not technology alone.
   </p>
+  <Widget no="7" caption="bet on the efficiency paradox" widget="predict" config={agReboundPredict} />
   <p>
     <em>Common misconception:</em> "organic farming is automatically the
     climate-friendly choice." The accounting is genuinely two-sided: organic
@@ -224,6 +383,7 @@ const csaCfg = {
     organic inputs where they work) without treating the label as the
     objective.
   </p>
+  <Widget no="8" caption="find the faulty line in this organic-vs-conventional ledger" widget="spot-error" config={agClimateOrganicSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

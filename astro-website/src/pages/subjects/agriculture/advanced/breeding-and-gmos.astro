@@ -39,6 +39,134 @@ const breedQuiz = {
     },
   ],
 };
+
+const agMendelCloze = {
+  "text": "Cross two heterozygotes (Aa × Aa) and the F2 genotypes come out 1 AA : 2 Aa : 1 aa. If A is dominant the phenotypes collapse to a visible %%0%% : 1. In the wheat example, selfing the uniform F1 gives three quarters susceptible and %%1%% quarter resistant — and because resistance is recessive, each candidate must be genotyped to find its carriers.",
+  "answers": [
+    [
+      "3",
+      "3 : 1",
+      "3:1"
+    ],
+    [
+      "one",
+      "1",
+      "a quarter"
+    ]
+  ],
+  "hint": "Dominance hides the heterozygotes: add the 1 AA and the 2 Aa together and compare with the 1 aa. For the second blank, the recessive phenotype is the smallest class."
+};
+
+const agDominanceJudge = {
+  "statements": [
+    {
+      "s": "Dominance describes what happens to the phenotype when both alleles are present.",
+      "truth": true,
+      "why": "It says nothing about which allele spreads, and nothing about strength or fitness."
+    },
+    {
+      "s": "A dominant allele is always the more common one in a population.",
+      "truth": false,
+      "why": "Frequency and dominance are unrelated; recessive alleles can be essential — most disease resistances breeders chase are recessive."
+    },
+    {
+      "s": "Dominant lethal alleles can persist at high frequency.",
+      "truth": false,
+      "why": "A dominant lethal cannot persist at all — it kills the individual carrying it."
+    },
+    {
+      "s": "A 1 : 2 : 1 phenotype ratio indicates something non-Mendelian.",
+      "truth": false,
+      "why": "It is simply incomplete dominance unmasking the genotype ratio instead of collapsing it."
+    }
+  ]
+};
+
+const agBreederEstimate = {
+  "prompt": "A herd averages 8,000 L per lactation. You select the top cows averaging 9,000 L, so S = 1,000 L. Milk yield has h² ≈ 0.3. How many litres of gain does the breeder's equation predict in the next generation?",
+  "unit": "litres of gain",
+  "answer": 300,
+  "factor": 1.5,
+  "why": "R = 0.3 × 1,000 = 300 L. Most of the selected cows' superiority was environment, and heritability correctly discounts it — which is exactly what the equation buys you.",
+  "context": "300 litres, against a 1,000-litre head start that was mostly better forage."
+};
+
+const agHeritabilitySpot = {
+  "prompt": "A student explains heritability to a farmer. One line is wrong — find it.",
+  "lines": [
+    "Heritability is a population statistic, not a property of any single animal.",
+    "h² of 0.3 means about 30 per cent of each cow's milk yield is genetic.",
+    "It is the fraction of the trait's variance attributable to additive genes in that herd and that environment.",
+    "It moves: uniform excellent feeding shrinks the environmental share and raises the estimate.",
+    "That is part of why genomic selection performs better in well-managed herds."
+  ],
+  "errorLine": 1,
+  "correction": "h² of 0.3 means 30 per cent of the trait's VARIANCE in that herd is attributable to additive genes — not 30 per cent of each individual cow's yield.",
+  "why": "Heritability is a variance ratio for a population in an environment. Reading it as a per-animal recipe is the classic error, and it is why the estimate shifts when management becomes more uniform."
+};
+
+const agBreedingCompare = {
+  "prompt": "Two opposite effects follow from who mates with whom. Drag the divider.",
+  "before": {
+    "label": "inbreeding depression",
+    "text": "Related matings unmask deleterious recessives and cost fitness. This is why breed books cap inbreeding coefficients — and why cheetahs and dog breeds are textbook casualties of a narrowed gene pool."
+  },
+  "after": {
+    "label": "heterosis (hybrid vigour)",
+    "text": "Cross two inbred lines and the F1 often outperforms both. Hybrid maize yields 15–20% above open-pollinated varieties, which is why virtually all the maize acreage of the Americas is hybrid."
+  },
+  "why": "The molecular basis of heterosis is still genuinely unsettled — dominance complementation, over-dominance and epigenetic explanations all have evidence — making it one of the oldest open questions in applied genetics."
+};
+
+const agBreedingToolsOrder = {
+  "prompt": "From slowest, most blind selection to fastest, most direct — order these tools:",
+  "items": [
+    "Classical selection on phenotype — six to eight generations of backcrossing, blind for traits only visible at harvest",
+    "Marker-assisted selection — a linked marker lets you pick carriers as seedlings",
+    "Genomic selection — tens of thousands of SNPs estimate breeding value at birth, roughly halving the dairy generation interval",
+    "CRISPR editing — cut at a chosen address and let the cell's own repair make the change"
+  ],
+  "why": "Each step removes waiting: phenotype to marker to genome-wide prediction to direct edit. Accuracy around 0.5–0.7 from genomic selection, versus ~0.3 from old pedigree records, is what made bull calves need no daughter progeny-testing."
+};
+
+const agGmEstimate = {
+  "prompt": "Klümper and Qaim's meta-analysis of 147 studies compared GM and conventional crops. By roughly what percentage did insecticide use fall, on average?",
+  "unit": "% reduction in insecticide",
+  "answer": 37,
+  "factor": 1.8,
+  "why": "About 37%, with yields up about 22% on average. Bt cotton in India and China roughly halved spray regimes.",
+  "context": "Better than a third less spray, with a fifth more yield — the average hides wide variation."
+};
+
+const agGovernanceBranch = {
+  "root": "A new trait is ready. Two paths are open: a transgenic construct carrying a gene from another species, or a CRISPR edit that removes a gene already present in the crop's own gene pool.",
+  "nodes": {
+    "start": {
+      "text": "Both reach the same field. The regulatory question is whether they should be assessed the same way.",
+      "choices": [
+        {
+          "label": "Treat both as one category — GMO — with identical assessment",
+          "next": "onecategory",
+          "feedback": "That is a legal category, not a biological one: a virus-resistant papaya and a herbicide-tolerant soybean have nothing in common biologically."
+        },
+        {
+          "label": "Assess event-by-event: what protein, expressed where, digested how, with what allergenicity",
+          "next": "eventbyevent",
+          "feedback": "This is the assessment logic the safety literature actually supports."
+        }
+      ]
+    },
+    "onecategory": {
+      "text": "The single label then carries the risk profile of its most contested member — which is why Golden Rice waited twenty-two years between publication and commercial approval.",
+      "choices": []
+    },
+    "eventbyevent": {
+      "text": "The dossier asks about the product, not the technique. That is what allows a virus-resistant papaya and a herbicide-tolerant soybean to be judged on their actual differences.",
+      "choices": []
+    }
+  },
+  "why": "GMO is not one technology with one risk profile — it is a legal category. Safety assessment is event-by-event, and the claim that GM DNA behaves differently in the gut is equally misleading: like all DNA in food, it is degraded to nucleotides long before it could reach a consumer's genome."
+};
 ---
 <TopicPage slug="subjects/agriculture/advanced/breeding-and-gmos">
   <h2>Where you are, and what you will learn</h2>
@@ -50,6 +178,7 @@ const breedQuiz = {
     technology. You need those plus everyday Mendelian ratios; the quantitative genetics
     this page adds is built from scratch.
   </p>
+  <Widget no="3" caption="fill the ratios — the grammar of selection" widget="cloze" config={agMendelCloze} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>use Punnett-square ratios to plan a backcrossing programme for a recessive resistance gene;</li>
@@ -118,6 +247,7 @@ const breedQuiz = {
     disease resistances breeders chase are recessive) and dominant lethal alleles cannot persist at
     all.
   </p>
+  <Widget no="4" caption="true or false — what dominance actually says" widget="judge" config={agDominanceJudge} />
   <p>
     <strong>So far:</strong> segregation ratios turn breeding into arithmetic you can plan
     against, and the backcrossing example shows the price of doing it blind. Now we add the
@@ -133,6 +263,7 @@ const breedQuiz = {
     far the selected parents sit above the population average and h² is the narrow-sense heritability
     — the fraction of trait variation attributable to additive genes that offspring actually inherit.
   </p>
+  <Widget no="5" caption="run the breeder's equation in your head" widget="estimate" config={agBreederEstimate} />
   <p>
     <strong>Worked example.</strong> A dairy herd averages 8,000 litres per lactation. You select the
     top cows, which average 9,000 L, so S = 1,000 L. Milk yield has h² ≈ 0.3, so the predicted
@@ -144,6 +275,7 @@ const breedQuiz = {
     doubled since the 1970s almost entirely through genetics plus better feeding.
   </p>
   <p><em>Common misconception:</em> heritability of 0.3 means 30 per cent of each cow's milk yield is genetic. It is a population statistic — the fraction of the trait's <em>variance</em> attributable to additive genes in that herd and that environment — not a recipe of the individual animal. It also moves: uniform, excellent feeding shrinks the environmental share and raises the estimate, which is part of why genomic selection performs better in well-managed herds.</p>
+  <Widget no="6" caption="find the faulty line in this heritability reading" widget="spot-error" config={agHeritabilitySpot} />
   <p>
     Two systematic hazards follow. <strong>Inbreeding depression</strong>: related matings unmask
     deleterious recessives, costing fitness — the reason breed books cap inbreeding coefficients and
@@ -154,6 +286,7 @@ const breedQuiz = {
     and epigenetic explanations all have evidence), making it one of the oldest open questions in
     applied genetics.
   </p>
+  <Widget no="7" caption="drag between the two hazards breeders manage" widget="compare" config={agBreedingCompare} />
   <p>
     <strong>So far:</strong> the breeder's equation predicts gain, inbreeding and heterosis
     set its hazards and bonuses — but classical selection still waits for phenotypes you
@@ -175,6 +308,7 @@ const breedQuiz = {
     progeny-testing. Genomic selection is now the quiet engine behind most measurable livestock and
     crop progress.
   </p>
+  <Widget no="8" caption="rank the breeding tools by how much they shortcut time" widget="order" config={agBreedingToolsOrder} />
 
   <h2>Transgenics: moving genes across species</h2>
   <p>
@@ -203,6 +337,8 @@ const breedQuiz = {
     received commercial approval in the Philippines in 2021, twenty-two years after publication,
     which is itself a datum about regulatory timelines.
   </p>
+  <Widget no="10" caption="decide the governance question" widget="branch" config={agGovernanceBranch} />
+  <Widget no="9" caption="guess the insecticide reduction" widget="estimate" config={agGmEstimate} />
   <p>
     <em>Common misconception:</em> "GMO" is not one technology with one risk profile — it is a legal
     category spanning a virus-resistant papaya and a herbicide-tolerant soybean with nothing in common

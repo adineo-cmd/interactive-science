@@ -21,6 +21,149 @@ const vrCfg = {
     { math: 'vs agronomic max N = 250 kg/ha', note: 'the last 30 kg/ha buys only ~0.09 t/ha ($18) and costs $36 — pure loss. Multiply the 30 kg across every hectare and the "waste curve" funds the sensor kit.' },
   ],
 };
+
+const agSentinelEstimate = {
+  "prompt": "Sentinel-2 imagery is free to everyone. What ground resolution does it deliver?",
+  "unit": "metres per pixel",
+  "answer": 10,
+  "factor": 2,
+  "why": "About 10-metre pixels on a roughly 5-day revisit — good enough to monitor the whole season. Drones fly centimetre resolution on demand for spot verification.",
+  "context": "Ten metres: coarse enough to see a field, fine enough to see a zone."
+};
+
+const agInstrumentMatch = {
+  "prompt": "Each layer of the precision stack answers a different question. Match them:",
+  "pairs": [
+    {
+      "left": "yield monitor",
+      "right": "what did this zone actually produce — the ground truth everything else is calibrated against"
+    },
+    {
+      "left": "satellite imagery and NDVI",
+      "right": "where is the canopy reflecting like a stressed one"
+    },
+    {
+      "left": "in-field soil-moisture probes",
+      "right": "when is the stress happening"
+    },
+    {
+      "left": "zone-based soil sampling",
+      "right": "what is the soil chemistry, at a price that still makes sense"
+    }
+  ],
+  "why": "The index only flags where the canopy reflects like a stressed one — nitrogen deficiency, water stress, disease and compaction can paint the same patch. That is why the professional stack fuses imagery with yield maps, soil samples and probes."
+};
+
+const agTrafficPlace = {
+  "prompt": "Controlled traffic farming confines every wheel to permanent tramlines. Roughly what share of the field never gets driven on?",
+  "labels": [
+    "30%",
+    "50%",
+    "70%",
+    "80–90%",
+    "100%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 85,
+  "tolerance": 6,
+  "why": "The ~80–90% of the field that never carries a wheel. Compaction alone costs double-digit yield percentages on trafficked soil, so keeping the damage to 15% of the area is a yield strategy, not just a comfort."
+};
+
+const agPrecisionJudge = {
+  "statements": [
+    {
+      "s": "Auto-steer was an adoption leader because its payoff needs no agronomy.",
+      "truth": true,
+      "why": "Eliminating pass overlap saves about 5–10% of fuel and input directly."
+    },
+    {
+      "s": "See-and-spray cuts herbicide volumes 50–90% per pass in commercial deployments.",
+      "truth": true,
+      "why": "Cameras trigger nozzles individually. The resistance-management dividend may matter more than the savings."
+    },
+    {
+      "s": "The yield-maximising nitrogen rate is the right rate to apply.",
+      "truth": false,
+      "why": "The right rate maximises profit, not yield, and by construction sits below the yield peak."
+    },
+    {
+      "s": "A model validated in Iowa can be carried over to Punjab unchanged.",
+      "truth": false,
+      "why": "Climate, soils and cultivars differ — the generalisation question dominates the research literature."
+    }
+  ]
+};
+
+const agPrescriptionSpot = {
+  "prompt": "A student works a zone's nitrogen prescription. One line is wrong — find it.",
+  "lines": [
+    "Each zone gets its own response curve, from randomised strip trials of seed and N rates.",
+    "The economic optimum is where the value of the marginal yield jump just exceeds the marginal cost of the nutrient.",
+    "In the worked example the economic optimum is 220 kg/ha, about 30 kg/ha above the agronomic maximum.",
+    "The final 30 kg/ha bought about USD 18 of grain for USD 36 of fertiliser — pure loss.",
+    "So the prescription runs at the profit-maximising rate, strictly below the yield peak."
+  ],
+  "errorLine": 2,
+  "correction": "The economic optimum of 220 kg/ha sits about 30 kg/ha BELOW the agronomic maximum, not above it.",
+  "why": "Marginal analysis always lands below the yield peak: past the economic optimum each kilogram costs more than the grain it returns. The final 30 kg bought USD 18 of grain for USD 36 of fertiliser."
+};
+
+const agTimelineOrder = {
+  "prompt": "Put the precision-agriculture decades in order:",
+  "items": [
+    "1980s — the first grain-flow yield sensors and grid soil sampling are prototyped",
+    "1990s — civilian GPS goes fully operational (1995) and the first variable-rate controllers follow",
+    "2000s — RTK networks spread, auto-steer industrialises, yield monitors become standard",
+    "2010s — cloud farm platforms, free Sentinel imagery from 2015, the first ag-tech investment wave",
+    "2020s — commercial see-and-spray and factory autonomous tractors"
+  ],
+  "why": "The pattern across all four decades: a military or space technology, commoditised, becomes agricultural infrastructure within a generation — and each new infrastructure monetises the previous one's data."
+};
+
+const agDataBranch = {
+  "root": "Your farm runs on one vendor's platform: their sensors, their prescriptions, their input shop. They offer a discount if you let them aggregate your yield data with your neighbours'.",
+  "nodes": {
+    "start": {
+      "text": "The data is your farm's ground truth — and taking the discount hands it to the party that already sells you the inputs.",
+      "choices": [
+        {
+          "label": "Take the discount — the savings are real and immediate",
+          "next": "discount",
+          "feedback": "The prescription and the input purchase are now the same vendor, and the aggregation term is not one you negotiate."
+        },
+        {
+          "label": "Ask for data portability before signing anything",
+          "next": "portable",
+          "feedback": "Who owns the yield map, and can the farmer leave the platform with their own data, are the governance terms that matter."
+        }
+      ]
+    },
+    "discount": {
+      "text": "You are now negotiating next year's rates against a counterparty who holds every zone's response curve you ever measured.",
+      "choices": []
+    },
+    "portable": {
+      "text": "You can move platforms with your own history intact — the exit option that keeps the vendor honest over a decade.",
+      "choices": []
+    }
+  },
+  "why": "Precision agriculture's current reality is decision support with mechanical execution: sensors and algorithms find patterns and compute rates, while human agronomic judgement still owns the interpretation. The quiet antitrust question — data ownership — will shape the field as much as any sensor."
+};
+
+const agSmallholderPredict = {
+  "q": "Most of the world's farms are small. How does precision agriculture actually reach them?",
+  "choices": [
+    "Each smallholder buys a yield-monitored combine and an RTK subscription",
+    "Through cooperative machinery, drone spray-as-a-service contractors, and phone advisories on free satellite data",
+    "It does not reach them at all — precision agriculture is structurally a large-farm technology",
+    "Through government-built variable-rate planters distributed free"
+  ],
+  "answer": 1,
+  "why": "The developmental version of precision agriculture is less a tractor and more a subscription: the same NDVI physics, delivered as a weekly text message."
+};
 ---
 <TopicPage slug="subjects/agriculture/advanced/precision-agriculture">
   <h2>Where you are, and what you will learn</h2>
@@ -32,6 +175,7 @@ const vrCfg = {
     arithmetic and adoption S-curves) and <em>Animal husbandry</em> (the livestock half of
     the revolution) are the direct prerequisites.
   </p>
+  <Widget no="7" caption="find the faulty line in this prescription arithmetic" widget="spot-error" config={agPrescriptionSpot} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>explain why a uniform input rate is guaranteed to be wrong somewhere in a real field;</li>
@@ -103,6 +247,7 @@ const vrCfg = {
     (soil-moisture probes, weather stations, sap-flow sensors) completes the
     temporal axis — imagery shows where; probes show when.
   </p>
+  <Widget no="3" caption="guess the free satellite's resolution and rhythm" widget="estimate" config={agSentinelEstimate} />
 
   <p><em>Common misconception:</em> "a satellite image shows the crop's condition directly,
   so imagery alone can drive the prescription." The NDVI maps look like photographs of
@@ -111,6 +256,7 @@ const vrCfg = {
   can paint the same patch — so the professional stack fuses imagery with yield maps, soil
   samples and in-field probes. Imagery shows where; probes show when; ground truth
   calibrates both.</p>
+  <Widget no="4" caption="pair each instrument with the question it answers" widget="match" config={agInstrumentMatch} />
 
   <h2>Action: variable rate, guided steel, see-and-spray</h2>
   <p>
@@ -135,6 +281,8 @@ const vrCfg = {
     mechanical and laser weeding in high-value horticulture, autonomous spreading
     and mowing where labour costs bite.
   </p>
+  <Widget no="6" caption="true or false — the see-and-spray trade" widget="judge" config={agPrecisionJudge} />
+  <Widget no="5" caption="put the compaction damage on the scale" widget="place" config={agTrafficPlace} />
 
   <h2>Decision: from maps to prescriptions</h2>
   <p>
@@ -202,6 +350,8 @@ const vrCfg = {
     data. The developmental version of precision agriculture is less a tractor and
     more a subscription: the same NDVI physics, delivered as a weekly text message.
   </p>
+  <Widget no="10" caption="bet on the smallholder route" widget="predict" config={agSmallholderPredict} />
+  <Widget no="8" caption="rebuild the timeline in instruments" widget="order" config={agTimelineOrder} />
   <p>
     <em>Common misconception:</em> precision agriculture is "farming by robot" —
     autonomous machines replacing farmers. The current reality is better described
@@ -216,6 +366,7 @@ const vrCfg = {
     the same vendor — is the governance fight that will shape the field as much
     as any sensor.
   </p>
+  <Widget no="9" caption="decide inside the data question" widget="branch" config={agDataBranch} />
 
   <p>
     <strong>So far:</strong> adoption follows the S-curve unevenly, and for most of the

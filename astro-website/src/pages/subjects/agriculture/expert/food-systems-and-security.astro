@@ -10,6 +10,164 @@ const foodSysCfg = {
     { math: '4 · The 2050 question', note: '~10 billion people, on a warming plateau: the agronomy lesson\'s yield curves must move up while inputs shrink (sustainable intensification); the diet lever (the LCA lesson\'s beef numbers) is the biggest single demand-side option; and the geopolitics of grain trade (Black Sea shocks) made the interdependence legible.' },
   ],
 };
+
+const agTillageSpot = {
+  "prompt": "A student weighs land preparation methods. One line is wrong — find it.",
+  "lines": [
+    "Conventional tillage clears weeds, incorporates residues and creates a fine seedbed.",
+    "Its cost is exposing organic matter to oxidation and leaving bare ground to rain — erosion's opening bid.",
+    "Erosion rates under conventional practice typically run BELOW soil formation rates, so topsoil slowly deepens.",
+    "No-till saves passes in fuel, labour and hours, which is decisive at scale.",
+    "Land clearing is the other side of the ledger: land-use change is a major emissions source."
+  ],
+  "errorLine": 2,
+  "correction": "Erosion under conventional practice typically EXCEEDS soil formation rates by factors of ten to a hundred — topsoil that takes centuries to form can wash away in a decade.",
+  "why": "That gap is what makes preparation method a genuine intergenerational decision rather than a stylistic one."
+};
+
+const agBlightPredict = {
+  "q": "In 1970, US Southern corn leaf blight exploited a single shared cytoplasm across most hybrid maize. What was the cost?",
+  "choices": [
+    "Under 1% of the crop, absorbed by insurance",
+    "About 15% of the crop — genetic uniformity turning one pathogen into a systemic event",
+    "Nothing, because hybrids are individually resistant",
+    "It only affected subsistence varieties, not commercial hybrids"
+  ],
+  "answer": 1,
+  "why": "About 15% of the crop. Pests and pathogens thrive in genetic uniformity — the structural hazard behind every monoculture risk."
+};
+
+const agSenJudge = {
+  "statements": [
+    {
+      "s": "Famines occur only when regional food production falls short.",
+      "truth": false,
+      "why": "Sen showed, case by case (including the Bengal famine of 1943), that famines occur with food PRESENT — people starve for lack of access."
+    },
+    {
+      "s": "Entitlement analysis asks who can buy, at what price, through what shock.",
+      "truth": true,
+      "why": "Wages, prices, distribution and politics — not regional production totals."
+    },
+    {
+      "s": "Cash crops always undermine food security.",
+      "truth": false,
+      "why": "The evidence is mixed and case-specific: cotton revenues can buy staples, or extraction can undermine them."
+    },
+    {
+      "s": "Food security and nutrition security are distinct design targets.",
+      "truth": true,
+      "why": "Micronutrient deficiency coexists with calorie sufficiency, and obesity now coexists with underweight in the same countries."
+    }
+  ]
+};
+
+const agStorageEstimate = {
+  "prompt": "A smallholder stores a tonne of grain in a traditional woven store and loses roughly a quarter to insects, rodents and moisture. Roughly what percentage loss does a hermetic bag or metal silo cut that to?",
+  "unit": "% loss after hermetic storage",
+  "answer": 3,
+  "factor": 3,
+  "why": "Down to a few percent. At household scale that is the difference between selling a surplus and buying food back at post-harvest prices — the classic poverty trap, closed by a container costing a few dollars.",
+  "context": "Roughly a quarter lost against a few percent — the cheapest calories are the ones already grown."
+};
+
+const agSecurityBranch = {
+  "root": "A drought hits, and the exporting countries respond by restricting wheat and rice exports. World prices spike. Which leg of the food-security triad does this test, and who bears it?",
+  "nodes": {
+    "start": {
+      "text": "Availability, access, stability — the price crises of 2007–08 and 2021–22 broke one leg hardest. Which one, and for whom?",
+      "choices": [
+        {
+          "label": "Availability — there was not enough grain grown",
+          "next": "availability",
+          "feedback": "Production was not the binding constraint; the supply existed and moved."
+        },
+        {
+          "label": "Stability — the shocks, plus access for import-dependent countries",
+          "next": "stability",
+          "feedback": "The import-dependent countries, not the food exporters, bore the hunger."
+        }
+      ]
+    },
+    "availability": {
+      "text": "The grain existed. Export bans and disrupted shipping rearranged who could reach it — which is an access and stability story wearing an availability mask.",
+      "choices": []
+    },
+    "stability": {
+      "text": "Drought plus export bans plus the Black Sea disruption sent prices sharply up, and the import-dependent countries bore it. Dashboards now track stocks, import dependence, dietary diversity and real food prices the way finance tracks risk.",
+      "choices": []
+    }
+  },
+  "why": "Security has three legs: availability, access and stability. The design question is never just how much is grown — it is who can buy, at what price, through what shock."
+};
+
+const agWasteMatch = {
+  "prompt": "Where the loss happens determines what fixes it. Match each to its lever:",
+  "pairs": [
+    {
+      "left": "poorer countries — post-harvest loss",
+      "right": "hermetic storage bags, rural roads, solar cold rooms"
+    },
+    {
+      "left": "richer countries — consumer and retail waste",
+      "right": "labelling reform, dynamic pricing, redistribution, norms"
+    },
+    {
+      "left": "cosmetic standards and date-label confusion",
+      "right": "retail standards and confusion around best-before dates"
+    },
+    {
+      "left": "livestock products' land and water per calorie",
+      "right": "diet composition — the EAT-Lancet shift toward plants"
+    }
+  ],
+  "why": "In poorer regions the highest-return investments are unglamorous infrastructure; in richer ones they are labels, pricing and norms. The demand side holds the single biggest lever."
+};
+
+const agFootprintTrace = {
+  "prompt": "Relative greenhouse-gas footprint per kilogram of food. Which curve shows the shape the lesson describes — where what you eat dwarfs where it came from?",
+  "curves": [
+    {
+      "expr": "0.5 + 0.02*x",
+      "color": "#94a3b8",
+      "label": "a gentle rise — transport and distance dominate"
+    },
+    {
+      "expr": "0.3*exp(1.1*x)",
+      "color": "#dc2626",
+      "label": "steep exponential — a few foods an order of magnitude above the rest"
+    },
+    {
+      "expr": "3 - 0.1*x",
+      "color": "#16a34a",
+      "label": "falling steadily with index"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 3
+  },
+  "y": {
+    "min": 0,
+    "max": 6
+  },
+  "xlabel": "food type (low → high impact per kg)",
+  "ylabel": "relative footprint",
+  "why": "Beef's footprint per kilogram is many times that of beans regardless of where either was grown, and season can beat distance — tomatoes grown locally in heated greenhouses can out-emit shipped field tomatoes. Transport is typically a tie-breaker, not the driver."
+};
+
+const ag2050Cloze = {
+  "prompt": "The honest 2050 arithmetic has a supply side and a demand side. File each lever:",
+  "buckets": ["Supply side", "Demand side"],
+  "items": [
+    { "label": "closing yield gaps on smallholder farms", "bucket": 0 },
+    { "label": "cutting the third of food that is never eaten", "bucket": 1 },
+    { "label": "shifting diet composition toward plants", "bucket": 1 },
+    { "label": "post-harvest storage and cold chains", "bucket": 0 }
+  ],
+  "why": "The FAO projection is demand growth of roughly half — about 50–60% over 2005/07 levels by 2050 — not a doubling, for roughly 10 billion people. Waste and diets are the demand-side levers, and yield-gap closing is the supply-side one."
+};
 ---
 <TopicPage slug="subjects/agriculture/expert/food-systems-and-security">
   <h2>Where you are, and what you will learn</h2>
@@ -81,6 +239,7 @@ const foodSysCfg = {
     driver, so "where should the next hectare come from?" is a system question
     (yield gap closing versus expansion) with global consequences.
   </p>
+  <Widget no="2" caption="find the faulty line in this tillage ledger" widget="spot-error" config={agTillageSpot} />
 
   <h2>Cultivation of cash crops: specialisation, its logic and its hazards</h2>
   <p>
@@ -105,6 +264,7 @@ const foodSysCfg = {
     and diversification — are attempts to keep the income logic while damping
     the exposure.
   </p>
+  <Widget no="3" caption="bet on the hazard of uniformity" widget="predict" config={agBlightPredict} />
   <p>
     <em>Common misconception:</em> "cash crops are the cause of hunger — replace
     them with food crops and famine ends." Famine analysis demolished the simple
@@ -116,6 +276,8 @@ const foodSysCfg = {
     only income. The system view replaces the reflex with the harder
     question: who can buy, at what price, through what shock?
   </p>
+  <Widget no="6" caption="work the security triad" widget="branch" config={agSecurityBranch} />
+  <Widget no="4" caption="true or false — the access economy" widget="judge" config={agSenJudge} />
   <p>
     The Green Revolution deserves its numbers read carefully, because it is the
     chain's biggest single success — and its cautionary tail. India's wheat
@@ -168,6 +330,7 @@ const foodSysCfg = {
     development economists keep insisting that the food system's cheapest
     calories are the ones already grown.
   </p>
+  <Widget no="5" caption="guess what a few dollars of container saves" widget="estimate" config={agStorageEstimate} />
   <p>
     <em>Common misconception:</em> "eating local is the low-carbon choice — food
     miles dominate a meal's footprint." Transport is typically a small slice of
@@ -178,6 +341,7 @@ const foodSysCfg = {
     field tomatoes). The honest rule: what you eat dwarfs where it came from,
     with transport as a tie-breaker between otherwise similar products.
   </p>
+  <Widget no="8" caption="which curve shows what actually dominates a meal?" widget="trace" config={agFootprintTrace} />
   <p>
     <strong>So far:</strong> security has three legs — availability, access, stability — and
     the price crises broke the third one for import-dependent countries, while the storage
@@ -206,6 +370,7 @@ const foodSysCfg = {
     half or less of attainable yields) as the supply-side opportunity and waste
     and diets as the demand-side ones.
   </p>
+  <Widget no="7" caption="pair each region's waste with its remedy" widget="match" config={agWasteMatch} />
   <p>
     <em>Common misconception:</em> "we must double food production by 2050 or
     billions starve." The underlying FAO projection is demand growth of roughly
@@ -216,6 +381,7 @@ const foodSysCfg = {
     smaller than the headline — which is precisely why the levers above
     (waste, diets, yield-gap closing) dominate the honest 2050 arithmetic.
   </p>
+  <Widget no="9" caption="sort the 2050 levers into supply and demand" widget="sort-buckets" config={ag2050Cloze} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
