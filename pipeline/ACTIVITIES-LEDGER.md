@@ -65,19 +65,21 @@
 | agriculture/foundational/soil-water-sun | match, trace, sort-buckets, spot-error, judge, place, estimate, branch | agriculture-1 |
 | agriculture/intermediate/soil-health | estimate, order, judge, place, sort-buckets, branch, match, predict | agriculture-1 |
 | agriculture/intermediate/plant-nutrition-and-fertilisers | sort-buckets, cloze, estimate, trace, match, spot-error, order, branch | agriculture-1 |
+| agriculture/intermediate/pests-weeds-and-ipm | sort-buckets, place, judge, predict, match, estimate, spot-error, branch | agriculture-2 |
+| agriculture/intermediate/animal-husbandry | order, estimate, compare, sort-buckets, spot-error, match, predict, trace | agriculture-2 |
+| agriculture/intermediate/farm-economics | match, cloze, estimate, sort-buckets, branch, trace, judge, spot-error | agriculture-2 |
+| agriculture/advanced/precision-agriculture | estimate, match, place, judge, spot-error, order, branch, predict | agriculture-3 |
+| agriculture/advanced/breeding-and-gmos | cloze, judge, estimate, spot-error, compare, order, branch | agriculture-3 |
+| agriculture/advanced/agroecology | sort-buckets, predict, match, estimate, spot-error, judge, trace | agriculture-3 |
+| agriculture/expert/food-systems-and-security | spot-error, predict, judge, estimate, branch, match, trace, sort-buckets | agriculture-4 |
+| agriculture/expert/climate-smart-agriculture | estimate, judge, sort-buckets, compare, place, branch, predict, spot-error | agriculture-4 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
-**Done subjects: physics, accounting, actuarial-science, aerospace-engineering (all covered), agriculture (3 of 11 lessons — foundational + 2 intermediate).**
+**Done subjects: physics, accounting, actuarial-science, aerospace-engineering, agriculture — ALL lessons in each covered.**
 
-**Agriculture remaining (alphabetically next inside the subject):**
-- intermediate/pests-weeds-and-ipm
-- intermediate/animal-husbandry
-- intermediate/farm-economics
-- plus any further live agriculture lessons listed in `src/data/topics.json`
-
-**Then next subjects (alphabetical): animation, anthropology, archaeology, architecture, art-history, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
-  ~567 remaining live lessons; skip the done rows above). Update this table as each
+**Next subjects (alphabetical): animation, anthropology, archaeology, architecture, art-history, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
+  ~556 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
 
 ## Status snapshot (2026-11-08)
@@ -87,9 +89,13 @@
   sort-buckets, spot-error) + the original 7. Config schemas in each file's header.
 - P2 structural layer: **complete and shipped** (numbered topic positions, position chips,
   stage maps, learning-loop line, spacing) — commit 395dc79. Zero-token, no prose changes.
-- P1 backfill: **16 lessons done, 121 activities** (physics 10/10 complete; accounting,
-  actuarial-science, aerospace-engineering foundational lessons done; agriculture
-  foundational + 2 intermediate done — wave agriculture-1, commit b973639). Each
+- P1 backfill: **24 lessons done, 210 activities** (physics 10/10 complete; accounting,
+  actuarial-science, aerospace-engineering foundational lessons done; **agriculture
+  11/11 COMPLETE** — waves agriculture-1..4, commits b973639, dd0409e, c59ffb3). Each
   single-lesson subject done in one wave; multi-lesson subjects go 2–3 per wave.
-- Remaining queue: **567 live lessons** (counted as pages with fewer than 3 of the new
+- Remaining queue: **556 live lessons** (counted as pages with fewer than 3 of the new
   activity types in `src/pages/<slug>.astro`).
+- Agriculture quality check (reference for future waves): every lesson has ≥7 distinct
+  interaction types, zero adjacent repeats, and ≤2 answer-family widgets
+  (predict/judge/cloze). Three cloned-answer-heavy lessons were rebalanced into
+  sort-buckets/compare to hold that bar — expect to do this on most waves.
