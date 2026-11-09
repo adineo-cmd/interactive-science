@@ -19,6 +19,156 @@ const careerQuizCfg = {
     { q: 'Which route could lead fastest to licensure for a student who has decided on architecture from day one of university?', choices: ['Any bachelor degree, then a M.Arch', 'A five-year NAAB-accredited B.Arch, starting AXP hours during school and taking ARE divisions as eligibility allows', 'Skipping the exam', 'A D.Arch without any work hours'], answer: 1, why: 'The dedicated B.Arch avoids adding a second degree, and AXP hours can be logged during school — stacking the gates. No path skips the exam or the experience requirement; eligibility rules vary by jurisdiction, so candidates plan around their state board.' },
   ],
 };
+
+const archStampPredict = {
+  "q": "What does the licensed architect's stamp and seal legally certify?",
+  "choices": [
+    "That the building will not exceed its budget",
+    "That the design is beautiful enough to build",
+    "That a person the state has checked for education, supervised experience and examined competence stands behind the documents and is personally accountable",
+    "That the contractor has been approved to work from these drawings"
+  ],
+  "answer": 2,
+  "why": "The public cannot audit the safety of a building any more than it can audit a surgeon, so the state licenses the profession. Architecture, like medicine and law, is a licensed profession."
+};
+
+const archTitleJudge = {
+  "statements": [
+    {
+      "s": "Anyone who designs buildings is an architect.",
+      "truth": false,
+      "why": "In the US the title is legally protected: calling yourself an architect or offering architectural services without a license is against the law."
+    },
+    {
+      "s": "Unlicensed designers do real, legitimate work.",
+      "truth": true,
+      "why": "Architectural designers, drafters and building designers often do excellent work — they simply cannot use the protected title or take legal responsibility for construction documents."
+    },
+    {
+      "s": "Nobody calls a nurse a doctor, and the parallel to architecture is exact.",
+      "truth": true,
+      "why": "Both are skilled roles beside a licensed one, which is why the everyday-English looseness about 'architect' matters."
+    },
+    {
+      "s": "Calling yourself an architect without a license is a harmless informality.",
+      "truth": false,
+      "why": "It breaches the legal protection that exists precisely so the public knows a stamped drawing carries an accountable professional behind it."
+    }
+  ]
+};
+
+const archDegreeBuckets = {
+  "prompt": "Three degree types clear gate one. File each by the student it fits:",
+  "buckets": [
+    "B.Arch — the decided student",
+    "M.Arch — the late decider or career-changer",
+    "Professional doctorate"
+  ],
+  "items": [
+    {
+      "label": "about five years, entered straight from secondary school — fastest education gate",
+      "bucket": 0
+    },
+    {
+      "label": "after any first degree; three to three and a half years without a design background",
+      "bucket": 1
+    },
+    {
+      "label": "front-loads commitment in exchange for finishing education soonest",
+      "bucket": 0
+    },
+    {
+      "label": "feeds the profession with people who first studied literature, biology or economics",
+      "bucket": 1
+    },
+    {
+      "label": "currently offered in Hawaii",
+      "bucket": 2
+    }
+  ],
+  "why": "What the accredited degree certifies is not just design talent but the full professional curriculum — structures, building systems, history, professional practice — which is why a non-accredited degree, however beautiful the portfolio, does not open the same doors."
+};
+
+const archGateMatch = {
+  "prompt": "Each requirement belongs to one gate. Match them:",
+  "pairs": [
+    { "left": "a curriculum audited against the profession's standards", "right": "education — NAAB" },
+    { "left": "3,740 supervised hours across six practice areas", "right": "experience — AXP, run by NCARB" },
+    { "left": "six divisions, any order, five-year rolling window", "right": "examination — ARE 5.0" },
+    { "left": "the power to fine, suspend or revoke", "right": "the state board" }
+  ],
+  "why": "The spread of the six experience areas is the design: an intern who only produces renderings has not been let near construction sites, contracts or code research, and the AXP refuses to call that ready."
+};
+
+const archPathSpot = {
+  "prompt": "A student plans the licensure path. One line is wrong — find it.",
+  "lines": [
+    "The degree is gate one of four: accredited education, supervised experience, examination, licensure.",
+    "AXP hours can begin during school, which is one of the two big accelerators in the system.",
+    "ARE divisions may be taken in any order within a five-year rolling window.",
+    "Finishing an accredited architecture degree makes you an architect, since the degree is the endpoint in most careers.",
+    "The final grant always comes last and comes from one place: the state board."
+  ],
+  "errorLine": 3,
+  "correction": "The degree is gate one of FOUR — after graduation come 3,740 AXP hours and six exam divisions before any state board will stamp anything with your name.",
+  "why": "The graduate is an 'architectural designer' or intern architect in professional terms. The contrast with licensed engineering is instructive: the same two-stage logic exists there, but architecture adds the logged-experience gate because its failure modes are building-scale and physical."
+};
+
+const archTwoLevelCompare = {
+  "prompt": "A two-level system. Drag the divider.",
+  "before": {
+    "label": "national uniformity — what competence means",
+    "text": "NAAB accredits the schools, NCARB runs the experience programme, and ARE 5.0's six divisions are the same everywhere. One vetting of competence serves all boards."
+  },
+  "after": {
+    "label": "state authority — who may practise where",
+    "text": "Each jurisdiction licenses for itself, sets its own rules around the national requirements, and holds the disciplinary power to fine, suspend or revoke. Practising in a state without its license breaches that state's law."
+  },
+  "why": "The NCARB Certificate exists precisely to make multi-state practice routine — one vetting, many boards — but each grant is still individual, and firms with national work employ architects licensed in the states they build in."
+};
+
+const archCareerBuckets = {
+  "prompt": "The license gates one specific career. File these roles by their relation to the stamp:",
+  "buckets": [
+    "Licensed practice",
+    "Inside the industry, unlicensed",
+    "Outside the industry entirely"
+  ],
+  "items": [
+    {
+      "label": "healthcare, housing and adaptive-reuse specialists accountable for stamped documents",
+      "bucket": 0
+    },
+    {
+      "label": "BIM and computational design specialists running the profession's software",
+      "bucket": 1
+    },
+    {
+      "label": "construction administrator and cost estimator",
+      "bucket": 1
+    },
+    {
+      "label": "game and film environment art — worlds are architecture with different physics",
+      "bucket": 2
+    },
+    {
+      "label": "real estate development, where reading a building's feasibility is the job",
+      "bucket": 2
+    }
+  ],
+  "why": "The education is a general-purpose instrument for the built world, and plenty of its strongest practitioners never stamp a drawing."
+};
+
+const archGatesOrder = {
+  "prompt": "Put the four gates in the order a candidate meets them — and note what each one checks:",
+  "items": [
+    "An accredited degree (NAAB) — checks the knowledge curriculum",
+    "The AXP's 3,740 logged hours across six practice areas — checks judgement on real projects",
+    "ARE 5.0's six divisions within a five-year rolling window — checks decision-making under practice conditions",
+    "Licensure by a state board — checks identity and fitness, and grants the legal right to practise"
+  ],
+  "why": "No gate substitutes for another. The timing lever is real — AXP hours can be logged during school and ARE divisions taken as eligibility begins — but the final grant always comes last and comes from the state."
+};
 ---
 <TopicPage slug="subjects/architecture/foundational/career-paths-and-licensure">
 
@@ -32,6 +182,7 @@ const careerQuizCfg = {
     architect in the United States, and the range of careers that draw on the discipline's
     skills even where licensure never happens.
   </p>
+  <Widget no="7" caption="drag between national and state" widget="compare" config={archTwoLevelCompare} />
   <p>By the end you will be able to:</p>
   <ul>
     <li>explain why architecture is a licensed profession and what the license legally allows that other roles cannot do;</li>
@@ -56,6 +207,8 @@ const careerQuizCfg = {
     competence, and who is personally accountable for the documents bearing their seal. The
     system that produces that person is deliberately long, and every stage has a reason.
   </p>
+  <Widget no="9" caption="order the gates and what each checks" widget="order" config={archGatesOrder} />
+  <Widget no="2" caption="bet on what the license actually buys" widget="predict" config={archStampPredict} />
   <p><em>Common misconception:</em> "an architect is anyone who designs buildings — the
   person who drew my house extension is an architect." It seems reasonable because everyday
   English uses "architect" loosely for any building designer. But in the United States the
@@ -67,6 +220,7 @@ const careerQuizCfg = {
   themselves with the protected title or take legal responsibility for construction
   documents. Contrast medicine: nobody calls a nurse a doctor, and the parallel is exact —
   both are skilled roles beside a licensed one.</p>
+  <Widget no="3" caption="true or false — the protected title" widget="judge" config={archTitleJudge} />
 
   <h2>Gate one: education — the accredited degree</h2>
   <p>
@@ -88,6 +242,7 @@ const careerQuizCfg = {
     practice — which is why the NAAB audits it and why a non-accredited architecture degree,
     however beautiful the portfolio, does not open the same doors.
   </p>
+  <Widget no="4" caption="file each degree by who it suits" widget="sort-buckets" config={archDegreeBuckets} />
   <p>
     <strong>So far:</strong> the license is the profession's contract with the public, and
     gate one — the accredited degree — builds the knowledge half of competence. The other
@@ -113,6 +268,7 @@ const careerQuizCfg = {
     project situation and ask what a competent licensed architect would do, because the
     licence being tested is for practice, not for drawing.
   </p>
+  <Widget no="5" caption="pair each requirement with its gate" widget="match" config={archGateMatch} />
   <Widget no="1" caption="four gates from student to stamped drawings" widget="equationStep" config={pathCfg} />
   <p>
     <strong>What to notice:</strong> the gates check three different things — knowledge
@@ -122,6 +278,7 @@ const careerQuizCfg = {
     eligibility begins, which is how some candidates compress what looks like a decade into
     less. The final grant, though, always comes last and comes from one place: the state.
   </p>
+  <Widget no="6" caption="find the faulty line in the career path" widget="spot-error" config={archPathSpot} />
   <p><em>Common misconception:</em> "finish architecture school and you are an architect."
   It seems reasonable because in most careers the degree is the endpoint — graduate medicine
   or law school and you are a doctor or lawyer (bar permitting). But the degree is gate one
@@ -191,6 +348,7 @@ const careerQuizCfg = {
     education is a general-purpose instrument for the built world, and plenty of its strongest
     practitioners never stamp a drawing.
   </p>
+  <Widget no="8" caption="file each career by whether it stamps" widget="sort-buckets" config={archCareerBuckets} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

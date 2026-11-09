@@ -15,6 +15,159 @@ const archCfg = {
   crossings: false,
   height: 360,
 };
+
+const archPaperCompare = {
+  "prompt": "The same sheet of paper, twice. Drag the divider.",
+  "before": {
+    "label": "flat sheet across two books",
+    "text": "Bending carries the load. One face stretches in tension, the other squeezes in compression, and the sagging coin slides off. The material is fine; the shape is doing no work."
+  },
+  "after": {
+    "label": "pleated or rolled into a tube",
+    "text": "The coin sits easily. Depth in the direction of bending is what resists bending — the fold moves material away from the neutral axis where it could do nothing."
+  },
+  "why": "Nothing about the material changed; the shape changed, and with it the strength. Strength is not only what something is made of, but how its shape lets forces flow through it."
+};
+
+const archCarryBuckets = {
+  "prompt": "Two structural characters run the entire subject. File each by how it carries load:",
+  "buckets": [
+    "Carries by bending",
+    "Carries by pure compression"
+  ],
+  "items": [
+    {
+      "label": "a beam — one face stretches, the other squeezes",
+      "bucket": 0
+    },
+    {
+      "label": "an arch — every stone pushes on its neighbour",
+      "bucket": 1
+    },
+    {
+      "label": "a pointed Gothic rib",
+      "bucket": 1
+    },
+    {
+      "label": "a steel truss member",
+      "bucket": 0
+    }
+  ],
+  "why": "The distinction matters because materials have preferences. Stone is strong in compression and weak in tension — which is why the Romans, who had no steel, built arches that still stand two thousand years later."
+};
+
+const archCatenarySpot = {
+  "prompt": "A student explains Hooke's inversion. One line is wrong — find it.",
+  "lines": [
+    "A hanging chain droops into a catenary, carrying its own weight in pure tension.",
+    "Robert Hooke described the trick in 1675, hiding the wording as an anagram to keep the credit.",
+    "Flip the curve upside down and the pure pulling becomes pure pushing: an arch with zero bending.",
+    "The parabola is the same curve by a different name, so a catenary and a parabola can be used interchangeably at any span.",
+    "For shallow arches the two shapes nearly coincide, which is why the difference confuses even engineers."
+  ],
+  "errorLine": 3,
+  "correction": "The parabola is a cousin, not the same curve: it is correct when weight is spread evenly ALONG THE SPAN (a bridge deck), while a catenary matches weight carried along the curve itself.",
+  "why": "The catenary climbs slightly steeper toward the ends, where the parabola stays shallower. Nearly identical for shallow arches — which is exactly why the difference is easy to miss and important to know."
+};
+
+const archFormMatch = {
+  "prompt": "Hooke's inversion still earns its keep. Match each to the geometry they used:",
+  "pairs": [
+    {
+      "left": "Gaudí, Colònia Güell church",
+      "right": "weighted chains hung upside down, letting gravity compute compression-only geometry"
+    },
+    {
+      "left": "the Gateway Arch, St Louis (1965)",
+      "right": "a flattened, weighted catenary in stainless steel at monument scale"
+    },
+    {
+      "left": "the Pantheon's dome (~126 CE)",
+      "right": "concrete graded from heavy basalt at the base to featherweight pumice at the top"
+    },
+    {
+      "left": "Candela's hyperbolic paraboloids",
+      "right": "long spans in concrete centimetres thick, limited only by the cost of the moulds"
+    }
+  ],
+  "why": "The Gateway Arch stands because every section pushes on the next. Every one of these is the same idea: find the shape where forces flow without bending."
+};
+
+const archSkyscraperOrder = {
+  "prompt": "The canon answers one question five ways: how does load reach the ground? Order the rise of the framed building:",
+  "items": [
+    "Load-bearing masonry governs for five millennia — openings weaken walls, height is capped by the mortar's crushing strength",
+    "The arch, vault and dome escape the span limit of a plain stone lintel",
+    "Gothic flying buttresses catch the vault's sideways thrust and route it outside, so walls become curtain",
+    "The safety elevator (Otis, 1850s) makes height habitable",
+    "The steel skeleton frame (Chicago, 1885) lets frames stack floor upon floor and walls hang off as skin"
+  ],
+  "why": "Steel is strong in tension, so beams could span far. The skyscraper became possible because the frame took over the load and the wall was released to be glass."
+};
+
+const archCompositeJudge = {
+  "statements": [
+    {
+      "s": "Concrete and steel are partners because they expand at nearly the same rate with heat.",
+      "truth": true,
+      "why": "And because the alkaline concrete protects the steel from rust — two virtues in one composite."
+    },
+    {
+      "s": "The arch holds because mortar glues the stones together.",
+      "truth": false,
+      "why": "It holds by geometry. Cut the mortar away and a well-built arch can still stand, each wedge-shaped voussoir locked by compression."
+    },
+    {
+      "s": "Load-bearing masonry capped building height at the mortar's crushing strength.",
+      "truth": true,
+      "why": "Hence the thick, small-windowed architecture of fortresses and old churches."
+    },
+    {
+      "s": "An arch can survive having its shape altered as long as no stone is removed.",
+      "truth": false,
+      "why": "The shape IS the load path. What an arch cannot survive is having that shape altered."
+    }
+  ]
+};
+
+const archCementEstimate = {
+  "prompt": "Roughly what percentage of global CO₂ emissions comes from cement alone?",
+  "unit": "% of global CO₂",
+  "answer": 7.5,
+  "factor": 1.5,
+  "why": "About 7–8 percent — so embodied carbon has moved from sustainability footnote to design driver, a first-order criterion alongside maintenance, durability and fire.",
+  "context": "One material, one eighth of the planet's emissions — which is why mass timber and retrofit-first design are no longer niche."
+};
+
+const archLoadPathBranch = {
+  "root": "You are renovating a two-storey house and want to remove an interior wall to open up the ground floor.",
+  "nodes": {
+    "start": {
+      "text": "What is the first question?",
+      "choices": [
+        {
+          "label": "Is the wall load-bearing — is it on the path?",
+          "next": "path",
+          "feedback": "Every renovation begins by asking which members are on the path (untouchable) and which are mere infill (removable)."
+        },
+        {
+          "label": "Is the wall attractive enough to keep?",
+          "next": "taste",
+          "feedback": "Aesthetics is the second question. The first one can bring the roof down."
+        }
+      ]
+    },
+    "taste": {
+      "text": "You have answered a structural question with a design preference. If it was carrying the ceiling joists, the answer is now a collapsed floor.",
+      "choices": []
+    },
+    "path": {
+      "text": "The roof's rafters lean on each other — a primitive arch whose spreading thrust is caught by a ceiling tie in tension. The tie's load lands on walls, walls on footing, footing on soil, which is weak in everything but compression and is the ultimate bottom of every path.",
+      "choices": []
+    }
+  },
+  "why": "The honest designer can trace every kilogram from its point of application to the earth. That chain is the load path — the single idea every structural drawing is secretly about."
+};
 ---
 <TopicPage slug="subjects/architecture/foundational/form-follows-forces">
   <h2>Where you are, and what you will learn</h2>
@@ -24,6 +177,8 @@ const archCfg = {
     skills, no construction vocabulary. The first experiment uses a sheet of paper, and
     every term is defined the moment it appears.
   </p>
+  <Widget no="8" caption="guess concrete's share of global emissions" widget="estimate" config={archCementEstimate} />
+  <Widget no="6" caption="order the escape from the wall" widget="order" config={archSkyscraperOrder} />
   <p>By the end of this lesson you will be able to:</p>
   <ul>
     <li>explain the difference between a beam and an arch — bending versus compression — and why stone prefers the arch;</li>
@@ -48,6 +203,7 @@ const archCfg = {
     is made of, but how its shape lets forces flow through it. Architects compress the
     whole lesson into a phrase: <em>form follows forces</em>.
   </p>
+  <Widget no="2" caption="drag between flat and folded" widget="compare" config={archPaperCompare} />
   <p>
     Two structural characters run the entire subject. A <strong>beam</strong> carries
     load by <em>bending</em>: one face of it stretches (that is <strong>tension</strong>,
@@ -59,6 +215,7 @@ const archCfg = {
     Romans, who had no steel, built arches that still stand two thousand years later.
     The Pont du Gard aqueduct carries water across a river on three tiers of them.
   </p>
+  <Widget no="3" caption="file each structural character by how it carries" widget="sort-buckets" config={archCarryBuckets} />
   <p>
     <strong>So far:</strong> the same material, reshaped, carries vastly more — and
     every structural choice is a choice between bending (beams) and pushing (arches).
@@ -88,6 +245,7 @@ const archCfg = {
     deck) rather than along the curve itself. For shallow arches the two shapes nearly
     coincide, which is why the difference confuses even engineers.
   </p>
+  <Widget no="4" caption="find the faulty line in the catenary argument" widget="spot-error" config={archCatenarySpot} />
   <p>
     The trick still earns its keep. Antoni Gaudí hung weighted chains upside down to
     design the Colònia Güell church, letting gravity itself compute the
@@ -96,6 +254,7 @@ const archCfg = {
     monument scale: a flattened, weighted catenary in stainless steel, standing because
     every section pushes on the next.
   </p>
+  <Widget no="5" caption="pair each builder with what they shaped" widget="match" config={archFormMatch} />
 
   <h2>Established systems: the load-bearing canon</h2>
   <p>
@@ -140,6 +299,7 @@ const archCfg = {
     expand at nearly the same rate with heat, and the alkaline concrete protects the
     steel from rust.
   </p>
+  <Widget no="7" caption="true or false — the composites and the canon" widget="judge" config={archCompositeJudge} />
   <p>
     Nearly every building you have ever entered is some assembly of these. Slabs
     transfer to beams, beams to columns or walls, walls to foundations, foundations to
@@ -249,6 +409,7 @@ const archCfg = {
     over enough soil area that the ground beneath does not fail. Soil is weak in
     everything but compression — it is the ultimate bottom of every path.
   </p>
+  <Widget no="9" caption="trace a load path or misread one" widget="branch" config={archLoadPathBranch} />
   <p>
     Now a modern office tower. Glass panels carry only themselves — a
     <em>curtain wall</em>, hung from the frame like a sail. Floor <strong>slabs</strong>
