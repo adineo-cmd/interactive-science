@@ -1,0 +1,201 @@
+[
+  {
+    "slug": "subjects/math/expert/linear-algebra",
+    "activities": [
+      {
+        "anchor": "Linear algebra is the complete theory of",
+        "type": "sort-buckets",
+        "caption": "linear or not?",
+        "name": "laLinearSort",
+        "config": {
+          "prompt": "Which of these transformations are linear? Linear means lines stay lines and the origin stays fixed.",
+          "buckets": ["linear", "not linear"],
+          "items": [
+            { "label": "rotation by 30° about the origin", "bucket": 0 },
+            { "label": "reflection in the x-axis", "bucket": 0 },
+            { "label": "shear that slides the top of the plane sideways", "bucket": 0 },
+            { "label": "translation by (1, 2) — every point shifted", "bucket": 1 },
+            { "label": "squaring both coordinates: (x, y) → (x², y²)", "bucket": 1 },
+            { "label": "projection onto the x-axis", "bucket": 0 }
+          ],
+          "why": "Linear maps fix the origin and preserve combinations; a translation moves the origin, and squaring bends lines into curves."
+        }
+      },
+      {
+        "anchor": "Every school transformation (E7.1)",
+        "type": "match",
+        "caption": "pair each transformation with its matrix",
+        "name": "laMatrixMatch",
+        "config": {
+          "prompt": "Pair each transformation with its matrix:",
+          "pairs": [
+            { "left": "rotation by 90° anticlockwise", "right": "[[0, −1], [1, 0]]" },
+            { "left": "reflection in the x-axis", "right": "[[1, 0], [0, −1]]" },
+            { "left": "enlargement by factor 3", "right": "[[3, 0], [0, 3]]" },
+            { "left": "horizontal shear", "right": "[[1, 1], [0, 1]]" }
+          ],
+          "why": "Columns are the images of (1,0) and (0,1); once both are known, the whole map follows."
+        }
+      },
+      {
+        "anchor": "A vector (E7.2) is a quantity with magnitude",
+        "type": "estimate",
+        "caption": "call the rope tension",
+        "name": "laRopeEst",
+        "config": {
+          "prompt": "A 100 N weight hangs from two ropes at 60° on either side of vertical. What tension does each rope carry?",
+          "unit": "N",
+          "answer": 100,
+          "factor": 1.1,
+          "why": "Equilibrium: 2T cos 60° = 100, so T = 100 N. At 45° it is 70.7 N; at 80°, about 288 N — shallow ropes are dangerous.",
+          "context": "each rope's useful vertical fraction is cos 60° = 0.5"
+        }
+      },
+      {
+        "anchor": "Magnitude (E7.3) is Pythagoras packaged",
+        "type": "cloze",
+        "caption": "fill the blanks — perpendicular by arithmetic",
+        "name": "laDotCloze",
+        "config": {
+          "text": "For a = (3, 4) and b = (4, −3), the dot product is %%0%%, so cos θ = %%1%% and the vectors are %%2%%.",
+          "answers": [
+            ["0"],
+            ["0"],
+            ["perpendicular", "orthogonal", "at right angles"]
+          ],
+          "hint": "Multiply matching components and add: 3×4 + 4×(−3)."
+        }
+      },
+      {
+        "anchor": "Projection is the dot product's geometric act",
+        "type": "order",
+        "caption": "rebuild least squares as a projection",
+        "name": "laProjectionOrder",
+        "config": {
+          "prompt": "Rebuild least-squares regression as a projection:",
+          "items": [
+            "Stack the observed responses into a vector b",
+            "The predictor columns span a subspace of observation space",
+            "Project b onto that subspace — the fitted values p",
+            "The residual b − p is orthogonal to every predictor column",
+            "Solve the normal equations AᵀA x = Aᵀb for the coefficients"
+          ],
+          "why": "Orthogonality of the residual is the defining property of a projection, and it is exactly what the normal equations encode."
+        }
+      },
+      {
+        "anchor": "Vector geometry (E7.4) — position vectors",
+        "type": "spot-error",
+        "caption": "find the smuggled assumption",
+        "name": "laDiagSpot",
+        "config": {
+          "prompt": "Find the line where the parallelogram proof goes wrong:",
+          "lines": [
+            "Let A, B, C, D have position vectors a, b, c, d.",
+            "The midpoint of AC is (a + c)/2; the midpoint of BD is (b + d)/2.",
+            "ABCD is a parallelogram, so AB = DC: b − a = c − d.",
+            "Rearranging gives a + c = b + d, so the two diagonals share a midpoint.",
+            "Therefore the diagonals bisect each other — but only because ABCD is a rectangle."
+          ],
+          "errorLine": 4,
+          "correction": "The rectangle is irrelevant: the proof used only AB = DC, which holds for every parallelogram.",
+          "why": "No right angle was ever used; the argument is valid for any parallelogram, rectangle or not."
+        }
+      },
+      {
+        "anchor": "Solving systems is the applied payoff",
+        "type": "branch",
+        "caption": "pick the solver for 10,000 equations",
+        "name": "laSolveBranch",
+        "config": {
+          "root": "You must solve a sparse system of 10,000 linear equations in 10,000 unknowns. Choose a route.",
+          "nodes": {
+            "start": {
+              "text": "The coefficient matrix is sparse and invertible. What do you reach for?",
+              "choices": [
+                { "label": "Gaussian elimination with a sparse ordering", "next": "elim", "feedback": "Yes — elimination exploits sparsity and scales; this is what structural and weather solvers do." },
+                { "label": "Compute the inverse matrix, then multiply", "next": "inverse", "feedback": "Inverting is far more expensive and fills in zeros; elimination solves directly." },
+                { "label": "Cramer's rule with determinants", "next": "cramer", "feedback": "Cramer's rule is exponential in the number of unknowns — fine for 2×2, hopeless here." }
+              ]
+            },
+            "elim": {
+              "text": "Direct elimination (with a good ordering) is the workhorse; iterative methods take over when the system is enormous."
+            },
+            "inverse": {
+              "text": "Forming A⁻¹ costs more than solving Ax = b once, and it destroys sparsity.",
+              "choices": [
+                { "label": "So what should be done instead?", "next": "elim", "feedback": "Factorise or eliminate directly — never invert explicitly." }
+              ]
+            },
+            "cramer": {
+              "text": "Cramer's rule needs one determinant per unknown: 10,000 determinants of size 10,000.",
+              "choices": [
+                { "label": "What is the practical alternative?", "next": "elim", "feedback": "Elimination, exploiting the zeros." }
+              ]
+            }
+          },
+          "why": "Solution method follows structure: sparsity favours elimination; explicit inverses are almost never the right move."
+        }
+      },
+      {
+        "anchor": "The singular value decomposition says",
+        "type": "compare",
+        "caption": "eigen-decomposition versus SVD — drag the divider",
+        "name": "laSvdCompare",
+        "config": {
+          "prompt": "Two decompositions — drag the divider:",
+          "before": {
+            "label": "eigendecomposition",
+            "text": "A = QΛQ⁻¹ needs a square matrix and a full set of eigenvectors; defective matrices refuse."
+          },
+          "after": {
+            "label": "SVD",
+            "text": "A = UΣVᵀ works for every matrix, square or rectangular; singular values rank the information."
+          },
+          "why": "SVD trades eigenvectors for two orthonormal bases, which is why it always exists — and why truncating small singular values is the provably best low-rank approximation."
+        }
+      },
+      {
+        "anchor": "For a matrix A, an eigenvector satisfies",
+        "type": "judge",
+        "caption": "true or false — reading eigenvalues",
+        "name": "laEigenJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "An eigenvector is a direction the matrix stretches or shrinks but never rotates.",
+              "truth": true,
+              "why": "Av = λv: the output lies on the same line as the input."
+            },
+            {
+              "s": "PageRank's ranking vector is the eigenvector of the link matrix with eigenvalue 1.",
+              "truth": true,
+              "why": "A steady state of the random surfer is exactly a fixed direction of the link matrix."
+            },
+            {
+              "s": "A negative real part of an eigenvalue means disturbances grow without bound.",
+              "truth": false,
+              "why": "Negative real part means decay toward equilibrium; growth needs a positive real part."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "The axioms of a vector space never mention numbers",
+        "type": "match",
+        "caption": "pair each object with why it is a vector space",
+        "name": "laSpanMatch",
+        "config": {
+          "prompt": "Pair each object with why it counts as a vector space:",
+          "pairs": [
+            { "left": "functions", "right": "add pointwise and scale; Fourier series writes a signal in a basis of sines" },
+            { "left": "polynomials", "right": "finite-dimensional, with basis 1, x, x², …" },
+            { "left": "quantum states", "right": "a Hilbert space; measurement is projection onto a basis direction" },
+            { "left": "images", "right": "a million-dimensional vector; PCA finds the important directions" }
+          ],
+          "why": "The axioms never mention arrows or coordinates — anything that adds and scales obeying the rules is a vector space, and the geometry of span, basis and projection carries over."
+        }
+      }
+    ]
+  }
+]

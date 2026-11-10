@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "subjects/math/advanced/differential-equations",
+    "activities": [
+      {
+        "anchor": "Nature writes its laws as",
+        "type": "sort-buckets",
+        "caption": "first derivative or second?",
+        "name": "deLawSort",
+        "config": {
+          "prompt": "File each law by its order — the highest derivative it contains:",
+          "buckets": ["first order", "second order"],
+          "items": [
+            { "label": "dP/dt = kP — population growth", "bucket": 0 },
+            { "label": "dT/dt = −k(T − T_room) — Newton's cooling", "bucket": 0 },
+            { "label": "dq/dt + q/(RC) = V/R — RC charging", "bucket": 0 },
+            { "label": "m·x″ = −k·x — mass on a spring", "bucket": 1 },
+            { "label": "F = ma = m·x″ — Newton's second law", "bucket": 1 }
+          ],
+          "why": "Order is the highest derivative present: one derivative for first order, two for second. Every mechanics problem built on F = ma is second order; every 'rate proportional to…' law is first."
+        }
+      },
+      {
+        "anchor": "Bacteria in a flask, adopters of a technology",
+        "type": "estimate",
+        "caption": "call the growth rate at P = 2",
+        "name": "deRateEst",
+        "config": {
+          "prompt": "A logistic population obeys dP/dt = 0.4·P·(1 − P/10). At P = 2, what is dP/dt?",
+          "unit": "per year",
+          "answer": 0.64,
+          "factor": 1.15,
+          "why": "0.4 × 2 × (1 − 0.2) = 0.64 per year. The same law peaks at half the carrying capacity, where dP/dt = k·pₘₐₓ/4 = 1 per year.",
+          "context": "the S-curve is steepest at P = pₘₐₓ/2, not at the start"
+        }
+      },
+      {
+        "anchor": "The same recipe solves the",
+        "type": "cloze",
+        "caption": "fill the blanks — one formula, growth and decay",
+        "name": "deHalfLifeCloze",
+        "config": {
+          "text": "With P = P₀·e^(kt), the doubling time is T = ln 2 / k ≈ %%0%% / k — the rule of 70 when k is a percentage. Radioactive decay uses the same formula with k negative: at k = −0.01 per year the half-life is about %%1%% years.",
+          "answers": [
+            ["0.69", "0.693"],
+            ["69", "69.3"]
+          ],
+          "hint": "ln 2 ≈ 0.693, and the half-life is the same calculation with |k|."
+        }
+      },
+      {
+        "anchor": "is the next classic",
+        "type": "estimate",
+        "caption": "call the coffee temperature",
+        "name": "deCoolEst",
+        "config": {
+          "prompt": "Coffee at 90 °C cools in a 20 °C room with k = 0.07 per minute. What is its temperature after 20 minutes?",
+          "unit": "°C",
+          "answer": 37.3,
+          "factor": 1.1,
+          "why": "Excess temperature 70·e^(−1.4) ≈ 17.3 °C above room, so T ≈ 37.3 °C. After 30 minutes the excess is only 8.6 °C.",
+          "context": "the excess halves roughly every 10 minutes (ln 2 / 0.07 ≈ 9.9 min)"
+        }
+      },
+      {
+        "anchor": "Standard example, the charging RC circuit",
+        "type": "order",
+        "caption": "rebuild the integrating-factor solution",
+        "name": "deRcOrder",
+        "config": {
+          "prompt": "Rebuild the integrating-factor solution of dq/dt + q/(RC) = V/R:",
+          "items": [
+            "Write the equation in standard form: dq/dt + q/(RC) = V/R",
+            "Identify p(t) = 1/(RC) and build μ = e^(t/RC)",
+            "Multiply through; the left side collapses to d/dt (q·e^(t/RC))",
+            "Integrate both sides: q·e^(t/RC) = CV·e^(t/RC) + K",
+            "Apply q(0) = 0, giving q(t) = CV(1 − e^(−t/RC))"
+          ],
+          "why": "The integrating factor is chosen to reverse the product rule: μq′ + μp·q = (μq)′. The initial condition then fixes the one remaining constant."
+        }
+      },
+      {
+        "anchor": "Newton's F = ma makes every mechanics problem",
+        "type": "match",
+        "caption": "pair each spring with its frequency",
+        "name": "deOmegaMatch",
+        "config": {
+          "prompt": "Pair each mass–spring system with its natural angular frequency ω = √(k/m):",
+          "pairs": [
+            { "left": "1 kg on 100 N/m", "right": "ω = 10 rad/s" },
+            { "left": "4 kg on 100 N/m", "right": "ω = 5 rad/s" },
+            { "left": "1 kg on 400 N/m", "right": "ω = 20 rad/s" },
+            { "left": "25 kg on 100 N/m", "right": "ω = 2 rad/s" }
+          ],
+          "why": "ω = √(k/m). Stiffness raises the frequency as its square root; mass lowers it the same way — which is why a heavy bell rings low."
+        }
+      },
+      {
+        "anchor": "Add friction (a force −c·x′)",
+        "type": "branch",
+        "caption": "which damping regime is it?",
+        "name": "deDampBranch",
+        "config": {
+          "root": "A mass on a spring is set oscillating. You increase the damping c from zero. Trace what happens.",
+          "nodes": {
+            "start": {
+              "text": "At c = 0 the mass oscillates forever. As damping c rises from zero, which change happens first?",
+              "choices": [
+                { "label": "The amplitude decays but the mass still oscillates", "next": "under", "feedback": "This is the underdamped regime: sine waves inside a shrinking exponential envelope." },
+                { "label": "The mass stops oscillating at once", "next": "sudden", "feedback": "Damping removes energy gradually; oscillation persists until the critical value." },
+                { "label": "The oscillation frequency rises", "next": "freq", "feedback": "Damping actually lowers the frequency slightly." }
+              ]
+            },
+            "under": {
+              "text": "Underdamped. Keep raising c. What is special about the boundary case where oscillation just disappears?",
+              "choices": [
+                { "label": "It returns to rest faster than any other non-oscillating case", "next": "critical", "feedback": "Yes: critically damped is the fastest possible return without overshoot." },
+                { "label": "It is the slowest non-oscillating case", "next": "over", "feedback": "No: past the boundary the return gets slower, not faster." }
+              ]
+            },
+            "critical": {
+              "text": "Critical damping — the knife-edge. Shock absorbers are tuned here because it settles in minimum time without bouncing."
+            },
+            "over": {
+              "text": "Overdamped — no oscillation, but a sluggish return. A soft door closer behaves this way."
+            },
+            "sudden": {
+              "text": "It still oscillates at first; only at the critical damping value does overshoot vanish.",
+              "choices": [
+                { "label": "Continue", "next": "under", "feedback": "Follow the decaying oscillation into the boundary case." }
+              ]
+            },
+            "freq": {
+              "text": "The damped frequency is slightly lower than the natural frequency, not higher.",
+              "choices": [
+                { "label": "Continue", "next": "under", "feedback": "Track the amplitude instead." }
+              ]
+            }
+          },
+          "why": "Three regimes: underdamped oscillates with decaying amplitude; critically damped returns fastest without overshoot; overdamped returns slowly without oscillating."
+        }
+      },
+      {
+        "anchor": "is a value where the rate is zero",
+        "type": "place",
+        "caption": "mark the stable equilibrium",
+        "name": "deEquilPlace",
+        "config": {
+          "prompt": "The logistic law dP/dt = 0.4·P·(1 − P/10) has equilibria at P = 0 and P = 10. Place the stable one on the axis.",
+          "labels": ["0", "5", "10", "15", "20"],
+          "scale": { "min": 0, "max": 20 },
+          "answer": 10,
+          "tolerance": 0.5,
+          "why": "P = 10 is stable — below it the rate is positive, above it negative, so arrows on the phase line point toward it. P = 0 is unstable."
+        }
+      },
+      {
+        "anchor": "step forward a small h",
+        "type": "judge",
+        "caption": "true or false — what Euler does and does not promise",
+        "name": "deEulerJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "Euler's method samples the slope at the start of each step, so for y′ = y it systematically undershoots the true curve.",
+              "truth": true,
+              "why": "The true slope keeps rising across the step; every step uses a slightly too-small slope."
+            },
+            {
+              "s": "Halving the step size halves the error, which makes Euler's method second-order accurate.",
+              "truth": false,
+              "why": "Halving h halves the error only for first-order methods — and that is exactly what Euler is; second-order methods reduce error by about a factor of four."
+            },
+            {
+              "s": "If a numerical solution disagrees with experiment, the cause must be integration error.",
+              "truth": false,
+              "why": "The equation itself may omit friction, delays or stochasticity — model error and integration error are different suspects."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "the three-body problem, real weather",
+        "type": "compare",
+        "caption": "exact formula versus numerical solution — drag the divider",
+        "name": "deExactCompare",
+        "config": {
+          "prompt": "Two ways to answer a differential equation — drag the divider:",
+          "before": {
+            "label": "symbolic",
+            "text": "Separation and integrating factors give an exact formula — but only for the small family of equations that cooperate."
+          },
+          "after": {
+            "label": "numerical",
+            "text": "Euler and Runge–Kutta give approximate values — but they apply to the three-body problem, weather and Navier–Stokes."
+          },
+          "why": "Closed forms are the exception, not the rule; numerics is the general method, and its error can be measured and shrunk."
+        }
+      }
+    ]
+  }
+]

@@ -16,6 +16,223 @@ const matrixCfg = {
     { label: 'area preserved when |det| = 1', expr: 'abs(a*d - b*c)' },
   ],
 };
+
+const laLinearSort = {
+  "prompt": "Which of these transformations are linear? Linear means lines stay lines and the origin stays fixed.",
+  "buckets": [
+    "linear",
+    "not linear"
+  ],
+  "items": [
+    {
+      "label": "rotation by 30° about the origin",
+      "bucket": 0
+    },
+    {
+      "label": "reflection in the x-axis",
+      "bucket": 0
+    },
+    {
+      "label": "shear that slides the top of the plane sideways",
+      "bucket": 0
+    },
+    {
+      "label": "translation by (1, 2) — every point shifted",
+      "bucket": 1
+    },
+    {
+      "label": "squaring both coordinates: (x, y) → (x², y²)",
+      "bucket": 1
+    },
+    {
+      "label": "projection onto the x-axis",
+      "bucket": 0
+    }
+  ],
+  "why": "Linear maps fix the origin and preserve combinations; a translation moves the origin, and squaring bends lines into curves."
+};
+
+const laMatrixMatch = {
+  "prompt": "Pair each transformation with its matrix:",
+  "pairs": [
+    {
+      "left": "rotation by 90° anticlockwise",
+      "right": "[[0, −1], [1, 0]]"
+    },
+    {
+      "left": "reflection in the x-axis",
+      "right": "[[1, 0], [0, −1]]"
+    },
+    {
+      "left": "enlargement by factor 3",
+      "right": "[[3, 0], [0, 3]]"
+    },
+    {
+      "left": "horizontal shear",
+      "right": "[[1, 1], [0, 1]]"
+    }
+  ],
+  "why": "Columns are the images of (1,0) and (0,1); once both are known, the whole map follows."
+};
+
+const laRopeEst = {
+  "prompt": "A 100 N weight hangs from two ropes at 60° on either side of vertical. What tension does each rope carry?",
+  "unit": "N",
+  "answer": 100,
+  "factor": 1.1,
+  "why": "Equilibrium: 2T cos 60° = 100, so T = 100 N. At 45° it is 70.7 N; at 80°, about 288 N — shallow ropes are dangerous.",
+  "context": "each rope's useful vertical fraction is cos 60° = 0.5"
+};
+
+const laDotCloze = {
+  "text": "For a = (3, 4) and b = (4, −3), the dot product is %%0%%, so cos θ = %%1%% and the vectors are %%2%%.",
+  "answers": [
+    [
+      "0"
+    ],
+    [
+      "0"
+    ],
+    [
+      "perpendicular",
+      "orthogonal",
+      "at right angles"
+    ]
+  ],
+  "hint": "Multiply matching components and add: 3×4 + 4×(−3)."
+};
+
+const laProjectionOrder = {
+  "prompt": "Rebuild least-squares regression as a projection:",
+  "items": [
+    "Stack the observed responses into a vector b",
+    "The predictor columns span a subspace of observation space",
+    "Project b onto that subspace — the fitted values p",
+    "The residual b − p is orthogonal to every predictor column",
+    "Solve the normal equations AᵀA x = Aᵀb for the coefficients"
+  ],
+  "why": "Orthogonality of the residual is the defining property of a projection, and it is exactly what the normal equations encode."
+};
+
+const laDiagSpot = {
+  "prompt": "Find the line where the parallelogram proof goes wrong:",
+  "lines": [
+    "Let A, B, C, D have position vectors a, b, c, d.",
+    "The midpoint of AC is (a + c)/2; the midpoint of BD is (b + d)/2.",
+    "ABCD is a parallelogram, so AB = DC: b − a = c − d.",
+    "Rearranging gives a + c = b + d, so the two diagonals share a midpoint.",
+    "Therefore the diagonals bisect each other — but only because ABCD is a rectangle."
+  ],
+  "errorLine": 4,
+  "correction": "The rectangle is irrelevant: the proof used only AB = DC, which holds for every parallelogram.",
+  "why": "No right angle was ever used; the argument is valid for any parallelogram, rectangle or not."
+};
+
+const laSolveBranch = {
+  "root": "You must solve a sparse system of 10,000 linear equations in 10,000 unknowns. Choose a route.",
+  "nodes": {
+    "start": {
+      "text": "The coefficient matrix is sparse and invertible. What do you reach for?",
+      "choices": [
+        {
+          "label": "Gaussian elimination with a sparse ordering",
+          "next": "elim",
+          "feedback": "Yes — elimination exploits sparsity and scales; this is what structural and weather solvers do."
+        },
+        {
+          "label": "Compute the inverse matrix, then multiply",
+          "next": "inverse",
+          "feedback": "Inverting is far more expensive and fills in zeros; elimination solves directly."
+        },
+        {
+          "label": "Cramer's rule with determinants",
+          "next": "cramer",
+          "feedback": "Cramer's rule is exponential in the number of unknowns — fine for 2×2, hopeless here."
+        }
+      ]
+    },
+    "elim": {
+      "text": "Direct elimination (with a good ordering) is the workhorse; iterative methods take over when the system is enormous."
+    },
+    "inverse": {
+      "text": "Forming A⁻¹ costs more than solving Ax = b once, and it destroys sparsity.",
+      "choices": [
+        {
+          "label": "So what should be done instead?",
+          "next": "elim",
+          "feedback": "Factorise or eliminate directly — never invert explicitly."
+        }
+      ]
+    },
+    "cramer": {
+      "text": "Cramer's rule needs one determinant per unknown: 10,000 determinants of size 10,000.",
+      "choices": [
+        {
+          "label": "What is the practical alternative?",
+          "next": "elim",
+          "feedback": "Elimination, exploiting the zeros."
+        }
+      ]
+    }
+  },
+  "why": "Solution method follows structure: sparsity favours elimination; explicit inverses are almost never the right move."
+};
+
+const laSvdCompare = {
+  "prompt": "Two decompositions — drag the divider:",
+  "before": {
+    "label": "eigendecomposition",
+    "text": "A = QΛQ⁻¹ needs a square matrix and a full set of eigenvectors; defective matrices refuse."
+  },
+  "after": {
+    "label": "SVD",
+    "text": "A = UΣVᵀ works for every matrix, square or rectangular; singular values rank the information."
+  },
+  "why": "SVD trades eigenvectors for two orthonormal bases, which is why it always exists — and why truncating small singular values is the provably best low-rank approximation."
+};
+
+const laEigenJudge = {
+  "statements": [
+    {
+      "s": "An eigenvector is a direction the matrix stretches or shrinks but never rotates.",
+      "truth": true,
+      "why": "Av = λv: the output lies on the same line as the input."
+    },
+    {
+      "s": "PageRank's ranking vector is the eigenvector of the link matrix with eigenvalue 1.",
+      "truth": true,
+      "why": "A steady state of the random surfer is exactly a fixed direction of the link matrix."
+    },
+    {
+      "s": "A negative real part of an eigenvalue means disturbances grow without bound.",
+      "truth": false,
+      "why": "Negative real part means decay toward equilibrium; growth needs a positive real part."
+    }
+  ]
+};
+
+const laSpanMatch = {
+  "prompt": "Pair each object with why it counts as a vector space:",
+  "pairs": [
+    {
+      "left": "functions",
+      "right": "add pointwise and scale; Fourier series writes a signal in a basis of sines"
+    },
+    {
+      "left": "polynomials",
+      "right": "finite-dimensional, with basis 1, x, x², …"
+    },
+    {
+      "left": "quantum states",
+      "right": "a Hilbert space; measurement is projection onto a basis direction"
+    },
+    {
+      "left": "images",
+      "right": "a million-dimensional vector; PCA finds the important directions"
+    }
+  ],
+  "why": "The axioms never mention arrows or coordinates — anything that adds and scales obeying the rules is a vector space, and the geometry of span, basis and projection carries over."
+};
 ---
 <TopicPage slug="subjects/math/expert/linear-algebra">
   <h2>Where you are, and what you will learn</h2>
@@ -49,6 +266,7 @@ const matrixCfg = {
     transformation <em>is</em> a matrix, a vector <em>is</em> both arrow and column of numbers,
     and geometry becomes algebra you can compute with.
   </p>
+  <Widget no="11" caption="linear or not?" widget="sort-buckets" config={laLinearSort} />
 
   <Widget no="1" caption="a 2×2 matrix is four knobs on the whole plane — watch the determinant track the area change" widget="sliderLab" config={matrixCfg} />
   <p>
@@ -85,6 +303,7 @@ const matrixCfg = {
     line — information destroyed, which is precisely when equations stop having unique
     solutions.
   </p>
+  <Widget no="10" caption="pair each transformation with its matrix" widget="match" config={laMatrixMatch} />
 
   <p>
     <em>Common misconception:</em> "every matrix has an inverse, since every transformation
@@ -123,6 +342,7 @@ const matrixCfg = {
     builds the bridge to physics: velocities of boats crossing rivers, aircraft in crosswinds
     and relative motion are all component-wise bookkeeping with a picture attached.
   </p>
+  <Widget no="9" caption="call the rope tension" widget="estimate" config={laRopeEst} />
 
   <h2>Magnitude: length, distance, and the dot product</h2>
   <p>
@@ -140,6 +360,7 @@ const matrixCfg = {
     between points, closest approach, collision avoidance in games: all dot products in a
     loop.
   </p>
+  <Widget no="8" caption="fill the blanks — perpendicular by arithmetic" widget="cloze" config={laDotCloze} />
   <p>
     Projection is the dot product's geometric act, and it is worth seeing once exactly.
     The component of vector a in the direction of unit vector u is (a·u)u — the shadow a
@@ -152,6 +373,7 @@ const matrixCfg = {
     says a model "explains 80% of the variance", they are quoting the projection's
     share of the squared length.
   </p>
+  <Widget no="7" caption="rebuild least squares as a projection" widget="order" config={laProjectionOrder} />
   <p><strong>So far:</strong> components turned arrows into arithmetic, and the dot product turned lengths and angles into two-second computations — with projection as its geometric act and least-squares regression as its highest-paying application. The final section steps back from individual vectors to the structure they generate: span, basis, and the theorem that bookkeeps what a map keeps and destroys.</p>
 
   <h2>Vector geometry: structure, bases and proof</h2>
@@ -171,6 +393,7 @@ const matrixCfg = {
     of another — and "prove ABCD is a trapezium" becomes "show one side vector is a multiple
     of the other".
   </p>
+  <Widget no="6" caption="find the smuggled assumption" widget="spot-error" config={laDiagSpot} />
   <p>
     Solving systems is the applied payoff of the same structure. A pair of simultaneous
     linear equations is the question "which point lies on both lines?" — two
@@ -185,6 +408,7 @@ const matrixCfg = {
     and machine-learning training all spend their time in exactly this loop, at
     sizes where no picture is possible.
   </p>
+  <Widget no="5" caption="pick the solver for 10,000 equations" widget="branch" config={laSolveBranch} />
   <p>
     <em>Common misconception:</em> "matrices are a notational convenience for coordinates."
     They are the objects: a matrix <em>is</em> the transformation, valid in any basis, and
@@ -257,6 +481,7 @@ const matrixCfg = {
     equation, from predator–prey models to bridge oscillation, is eigenvalue reading: negative
     real parts mean disturbances die out, positive mean they grow.
   </p>
+  <Widget no="4" caption="true or false — reading eigenvalues" widget="judge" config={laEigenJudge} />
   <p>
     <strong>The SVD: every matrix decomposes.</strong> The singular value decomposition says
     any matrix whatsoever — square or not, invertible or not — factors into rotate, then
@@ -267,6 +492,7 @@ const matrixCfg = {
     precise: truncating small singular values is provably the best possible approximation of
     that rank. When a data scientist "reduces dimensions", this is the theorem being invoked.
   </p>
+  <Widget no="3" caption="eigen-decomposition versus SVD — drag the divider" widget="compare" config={laSvdCompare} />
   <p>
     <strong>Beyond the plane.</strong> The axioms of a vector space never mention numbers,
     arrows or 2D: functions can be vectors (Fourier series writes a signal as a combination
@@ -279,5 +505,6 @@ const matrixCfg = {
     miniature: four numbers, one map, one number (the determinant) that tells you whether
     anything was lost.
   </p>
+  <Widget no="2" caption="pair each object with why it is a vector space" widget="match" config={laSpanMatch} />
   <p class="sources"><strong>Sources:</strong> Axler, Linear Algebra Done Right; Strang, Linear Algebra and Its Applications. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
