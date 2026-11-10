@@ -19,6 +19,171 @@ const closeQuizCfg = {
     { q: 'Faulkner\'s very long sentences and Hemingway\'s very short ones both illustrate that…', choices: ['style is separate from meaning', 'syntax performs meaning', 'long sentences are literary', 'short sentences are modern'], answer: 1, why: 'Sentence shape is itself a method: endurance enacted in Faulkner\'s length, restraint enacted in Hemingway\'s staccato. Form argues too.' },
   ],
 };
+
+const crPassesOrder = {
+  "prompt": "An unseen extract lands in front of you — order the method:",
+  "items": [
+    "Gist: read once for what happens and who is speaking — no annotating yet",
+    "Language: read again slowly, marking everything deliberate",
+    "Structure: how the passage moves — where it turns, what is set up and what pays off",
+    "Zoom out: the local patterns become the global claim"
+  ],
+  "why": "You cannot weigh words before you know what the passage is doing — and close reading serves interpretation, never replaces it."
+};
+
+const crDickinsonCloze = {
+  "text": "Second pass on “Because I could not stop for Death”: the diction (“%%0%%”) is the shock — Death as a courteous suitor, not horror — and “%%1%%” repeats, first as her refusal, then as his courtesy.",
+  "answers": [
+    [
+      "kindly"
+    ],
+    [
+      "stopped"
+    ]
+  ],
+  "hint": "One is an ordinary adverb doing the whole poem's work; the other is the word that repeats."
+};
+
+const crNounsMatch = {
+  "prompt": "Four nouns for the same young humans — pair each with the attitude it signals:",
+  "pairs": [
+    {
+      "left": "kids",
+      "right": "casual, familiar, fond"
+    },
+    {
+      "left": "children",
+      "right": "the neutral standard"
+    },
+    {
+      "left": "offspring",
+      "right": "formal, biological, distant"
+    },
+    {
+      "left": "brats",
+      "right": "open contempt"
+    }
+  ],
+  "why": "The writer's actual choice has what the alternatives lack — and that difference is the effect."
+};
+
+const crRegisterBuckets = {
+  "prompt": "English keeps a layered wardrobe — file each word:",
+  "buckets": [
+    "Anglo-Saxon short words — close to the body",
+    "Latinate longer words — formal or abstract"
+  ],
+  "items": [
+    {
+      "label": "grief",
+      "bucket": 0
+    },
+    {
+      "label": "house",
+      "bucket": 0
+    },
+    {
+      "label": "love",
+      "bucket": 0
+    },
+    {
+      "label": "apprehension",
+      "bucket": 1
+    },
+    {
+      "label": "edifice",
+      "bucket": 1
+    },
+    {
+      "label": "affection",
+      "bucket": 1
+    }
+  ],
+  "why": "A writer who switches layers mid-passage is usually doing something — the collision of the sudden plain word with fancy ones is the meaning."
+};
+
+const crSleepEstimate = {
+  "prompt": "In Macbeth, critics have counted the mentions of a single word — 'sleep'. Roughly how many times does it occur across the play?",
+  "unit": "mentions",
+  "answer": 30,
+  "factor": 1.5,
+  "why": "Over thirty — and nearly always as something murdered, lost or poisoned: Macbeth 'murders sleep' the night he kills Duncan.",
+  "context": "The pattern argues what no single line states: regicide as a sickness infecting the whole body of Scotland."
+};
+
+const crImageCompare = {
+  "prompt": "What is an image for? Drag the divider between the dead answer and the live question:",
+  "before": {
+    "label": "The dead answer",
+    "text": "Imagery is decoration whose job is to help the reader picture the scene — true of nearly every image ever written, which is why it scores so little."
+  },
+  "after": {
+    "label": "The live question",
+    "text": "What does the image cluster argue — which properties travel from vehicle to tenor, and how does the pattern develop?"
+  },
+  "why": "The strongest answers treat an image as an argument wearing a picture."
+};
+
+const crSyntaxJudge = {
+  "statements": [
+    {
+      "s": "A short sentence arriving after long ones hits with sudden force.",
+      "truth": true,
+      "why": "Length changes are choices — the shift itself performs the blow."
+    },
+    {
+      "s": "Repeated 'and' suggests piling up; 'although… yet' suggests wrestling.",
+      "truth": true,
+      "why": "Coordination versus subordination — grammar mimes experience."
+    },
+    {
+      "s": "A sentence's opening word carries special emphasis.",
+      "truth": true,
+      "why": "Whatever opens the sentence is stressed — see the urgent command that opens 'Never give all the heart'."
+    },
+    {
+      "s": "Opening a sentence with its object instead of its subject is a grammatical accident.",
+      "truth": false,
+      "why": "In prose it is a small, readable decision worth noting."
+    }
+  ]
+};
+
+const crFigureBranch = {
+  "root": "An examiner's question: what does the personification in 'Death kindly stopped' accomplish? Walk the answering decision:",
+  "nodes": {
+    "start": {
+      "text": "You have named the figure. What does your next sentence do?",
+      "choices": [
+        {
+          "label": "Stop there — the name is the answer",
+          "next": "name-only",
+          "feedback": "Naming earns almost nothing by itself — the question is what the figure accomplishes."
+        },
+        {
+          "label": "State its job: what it achieves that plain statement could not",
+          "next": "job",
+          "feedback": "That is the earnable sentence."
+        }
+      ]
+    },
+    "name-only": {
+      "text": "'The poet uses personification.' True, and worth nothing — go back and spend the sentence on the figure's work.",
+      "choices": [
+        {
+          "label": "State the job instead",
+          "next": "job",
+          "feedback": "Re-running the answer."
+        }
+      ]
+    },
+    "job": {
+      "text": "'Personifying death as a gentleman caller lets the poem dramatise acceptance instead of terror.' The figure's whole theology, stated — not decoration but the poem's argument in one word.",
+      "choices": []
+    }
+  },
+  "why": "Rule of thumb: name the figure, then spend the rest of the sentence on its job."
+};
 ---
 <TopicPage slug="subjects/literature/intermediate/close-reading">
 
@@ -72,6 +237,7 @@ const closeQuizCfg = {
     temperatures. With a set text you already know the whole; with an unseen extract you are
     starting cold. Either way the procedure is the same, and it has steps.
   </p>
+  <Widget no="3" caption="sequence the passes on an unseen extract" widget="order" config={crPassesOrder} />
   <ul>
     <li><strong>First pass — gist.</strong> Read once for what happens and who is speaking. Note the form (sonnet, dramatic monologue, novel opening) and the situation. Do not annotate yet; you cannot weigh words before you know what the passage is doing.</li>
     <li><strong>Second pass — language.</strong> Read again slowly and mark everything deliberate: striking word choices, repetitions, images, a change of sentence length, a turn in the argument. If you notice it, an examiner will reward your explaining it.</li>
@@ -86,6 +252,7 @@ const closeQuizCfg = {
     Pattern pass: the whole poem is structured as a journey with stages, so form and content
     agree. Every claim here comes from words visible on the page — that is the discipline.
   </p>
+  <Widget no="4" caption="fill the blanks in the worked miniature" widget="cloze" config={crDickinsonCloze} />
   <p>
     <strong>So far:</strong> the three passes turn an unseen extract into observations you can
     defend, and the Dickinson miniature ran the whole cycle in eight lines. Now the instruments
@@ -102,6 +269,7 @@ const closeQuizCfg = {
     writer's actual choice has that the alternatives lack. That difference <em>is</em> the
     effect.
   </p>
+  <Widget no="5" caption="pair each noun with the attitude it signals" widget="match" config={crNounsMatch} />
   <p>
     The second tool is <strong>register</strong> — the social level of the vocabulary. English
     keeps a layered wardrobe: Anglo-Saxon short words (fear, grief, house, love) sit close to
@@ -111,6 +279,7 @@ const closeQuizCfg = {
     especially for the sudden plain word after fancy ones, or vice versa — the collision is
     the meaning.
   </p>
+  <Widget no="6" caption="file each word by the layer of the wardrobe it sits in" widget="sort-buckets" config={crRegisterBuckets} />
   <p><em>Common misconception:</em> diction analysis is not a hunt for "difficult" or "fancy"
   words. The most important choices are often tiny — a preposition, an adjective, a pronoun
   — and examiners regularly build mark schemes around them. "Kindly" is an ordinary word;
@@ -133,6 +302,7 @@ const closeQuizCfg = {
     are of a journey past children, fields and a setting sun — a life reviewed at speed.
     Neither poet ever announces the theme; the images announce it.
   </p>
+  <Widget no="7" caption="guess before you count" widget="estimate" config={crSleepEstimate} />
   <p>
     For each image you can ask the classical pair of questions: what is the <strong>tenor</strong>
     (the thing actually meant) and the <strong>vehicle</strong> (the thing it is pictured as)?
@@ -145,6 +315,7 @@ const closeQuizCfg = {
   nearly every image ever written. The analytical question is what the image cluster
   <em>argues</em> — which properties travel from vehicle to tenor, and how the pattern
   develops — and the strongest answers treat an image as a claim dressed as a picture.</p>
+  <Widget no="8" caption="drag the divider — picturing versus arguing" widget="compare" config={crImageCompare} />
   <p>
     <strong>So far:</strong> diction and imagery work at the level of the chosen word and the
     recurring picture — and for both, the analytical unit is the pattern, not the single
@@ -170,6 +341,7 @@ const closeQuizCfg = {
     sentence that opens with the object rather than the subject has made a small, readable
     decision worth noting.
   </p>
+  <Widget no="9" caption="true or false — the sentence is doing something" widget="judge" config={crSyntaxJudge} />
 
   <h2>Figures of speech and their purpose</h2>
   <p>
@@ -183,6 +355,7 @@ const closeQuizCfg = {
     state in a single breath. Rule of thumb: name the figure, then spend the rest of the
     sentence on its job.
   </p>
+  <Widget no="10" caption="you have named the figure — now earn the marks" widget="branch" config={crFigureBranch} />
 
   <h2>From reading to essay: structure and quotation</h2>
   <p>

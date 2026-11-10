@@ -9,6 +9,213 @@ const freytagCfg = {
   crossings: false,
   height: 340,
 };
+
+const hrArcOrder = {
+  "prompt": "The dramatic arc's five parts, in order:",
+  "items": [
+    "Exposition — who, where, what's normal",
+    "Rising action — complications stack, each making the original question harder to answer",
+    "Climax — the question answers itself, the moment everything has been aiming at",
+    "Falling action — the consequences land",
+    "Denouement — French for 'untying', the knot loosened"
+  ],
+  "why": "The curve is a promise of escalation: readers tolerate long quiet passages early only because the climb has begun."
+};
+
+const hrBudgetPredict = {
+  "q": "A story opens with its biggest explosion. Judged from the end, how does it usually feel?",
+  "choices": [
+    "Thinner — the peak was pre-spent",
+    "Stronger — early spectacle compounds"
+  ],
+  "answer": 0,
+  "why": "Tension is a budget: spent early, it leaves nothing for the peak; never spent, the story deflates. Great plotting is mostly budget management — which is why a quiet story that compounds small losses can feel enormous."
+};
+
+const hrCharacterBuckets = {
+  "prompt": "Flat or round — file each:",
+  "buckets": [
+    "flat — built on a single idea, stays fixed",
+    "round — can surprise us convincingly"
+  ],
+  "items": [
+    {
+      "label": "the miser, unchanged from first page to last",
+      "bucket": 0
+    },
+    {
+      "label": "the wise mentor who never wavers",
+      "bucket": 0
+    },
+    {
+      "label": "the rival whose every scene runs the same sneer",
+      "bucket": 0
+    },
+    {
+      "label": "Elizabeth Bennet revising her entire estimate of Darcy",
+      "bucket": 1
+    },
+    {
+      "label": "capable of change, contradiction, growth",
+      "bucket": 1
+    },
+    {
+      "label": "the timid sister who talks back at the peak — and we believe it",
+      "bucket": 1
+    }
+  ],
+  "why": "The deeper rule: character is choice under pressure — watch what a character does when the stakes peak, not what the author's description claims."
+};
+
+const hrVoiceMatch = {
+  "prompt": "Who is telling me this? Pair the option with what it does to what can be known:",
+  "pairs": [
+    {
+      "left": "First-person narration",
+      "right": "locks you inside one head — reliable or (the fun part) not"
+    },
+    {
+      "left": "The unreliable narrator",
+      "right": "reports a world the reader gradually catches distorting"
+    },
+    {
+      "left": "Third-person omniscient",
+      "right": "roams freely — knowing everything"
+    },
+    {
+      "left": "Focalisation (Genette's term)",
+      "right": "names whose eyes a third-person narrator borrows moment to moment"
+    }
+  ],
+  "why": "Ask constantly: who is telling me this, what can they not see, and what are they (deliberately) not telling me? The answers account for most of a novel's irony and much of its suspense."
+};
+
+const hrThemeJudge = {
+  "statements": [
+    {
+      "s": "A moral is an answer; a theme is a question.",
+      "truth": true,
+      "why": "Which is why fiction's questions stay open — on purpose."
+    },
+    {
+      "s": "The theme is the moral, tacked on at the end.",
+      "truth": false,
+      "why": "If a story tells you its theme outright, it is an essay wearing a costume."
+    },
+    {
+      "s": "The novels that last pose their question so well that every generation answers it differently.",
+      "truth": true,
+      "why": "Usually answered ambiguously — that is what keeps the question alive."
+    },
+    {
+      "s": "A story's theme can be settled the way a sum is settled.",
+      "truth": false,
+      "why": "Theme is the question a story keeps asking — ask instead what each character's fate argues about it."
+    }
+  ]
+};
+
+const hrStructureBranch = {
+  "root": "A story's climax feels unearned. You hold the whole text — walk the diagnosis:",
+  "nodes": {
+    "start": {
+      "text": "Where do you look first?",
+      "choices": [
+        {
+          "label": "The climb: did the escalations compound or merely accumulate?",
+          "next": "climb",
+          "feedback": "The right instinct — the peak's authority is built below it."
+        },
+        {
+          "label": "The ending: maybe the denouement can rescue it",
+          "next": "ending",
+          "feedback": "The denouement resolves, soothes or leaves untied — it cannot rescue a peak the climb never built."
+        }
+      ]
+    },
+    "ending": {
+      "text": "Back up to the climb: the peak is only as strong as the escalations that led to it — and the preparation was visible from the first page.",
+      "choices": [
+        {
+          "label": "Now judge the climb",
+          "next": "climb",
+          "feedback": "Re-running the diagnosis."
+        }
+      ]
+    },
+    "climb": {
+      "text": "Compounded — each complication made the original question harder to answer — or merely accumulated, a pile of events with the peak bolted on?",
+      "choices": [
+        {
+          "label": "They compounded",
+          "next": "earned",
+          "feedback": "Then the peak was earned; re-read the ending for its own work."
+        },
+        {
+          "label": "They merely accumulated",
+          "next": "unearned",
+          "feedback": "Diagnosis found: the peak arrived unaided, however big it played."
+        }
+      ]
+    },
+    "earned": {
+      "text": "An earned peak. The last structural question: what work does the denouement do — resolve, soothe, or leave deliberately untied?",
+      "choices": []
+    },
+    "unearned": {
+      "text": "The peak arrived unearned. Now you can say where the story feels wrong — which is what knowing how to read a story means: pointing at the machine while it runs.",
+      "choices": []
+    }
+  },
+  "why": "Structure, not excerpts — how the ending was being prepared from the first page, and how the shape itself carries meaning."
+};
+
+const hrCloseOrder = {
+  "prompt": "One famous sentence, four tools — order the passes:",
+  "items": [
+    "Voice: the solemn aphorism attached to the most worldly proposition imaginable",
+    "Structure: the passive social machinery that quietly names the real agent, the marriage market",
+    "Theme: the thesis Austen will spend 400 pages complicating",
+    "Function: the inciting device planting the central question in twenty-six words"
+  ],
+  "why": "Not one sentence of plot summary — every observation is about how the writing works on the reader."
+};
+
+const hrNovelTimeline = {
+  "unit": "year",
+  "events": [
+    {
+      "year": 1605,
+      "title": "Don Quixote",
+      "text": "The earliest works are loose, episodic, picaresque: a protagonist wanders through incidents.",
+      "tag": "episodic"
+    },
+    {
+      "year": 1719,
+      "title": "Robinson Crusoe",
+      "text": "Still the wandering shape — the instrument being built.",
+      "tag": "episodic"
+    },
+    {
+      "year": 1740,
+      "title": "Pamela",
+      "text": "Epistolary form: a story told entirely in letters, exploiting intimacy and the danger that letter-writers lie.",
+      "tag": "epistolary"
+    },
+    {
+      "year": 1813,
+      "title": "Pride and Prejudice",
+      "text": "Realism perfected: free indirect style — third-person narration that slides inside Elizabeth's head and borrows her sneering voice.",
+      "tag": "realism"
+    },
+    {
+      "year": 2022,
+      "title": "When We Were Birds",
+      "text": "Postcolonial and world literature: the arc survives while voice, world and who is allowed to narrate are rebuilt — Creole and lyrical English braided.",
+      "tag": "postcolonial"
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/literature/foundational/how-to-read-a-story">
 
@@ -57,12 +264,14 @@ const freytagCfg = {
     quiet passages early only because the climb has begun; writers earn the climax only if the
     complications genuinely compounded.
   </p>
+  <Widget no="2" caption="rebuild the arc from flat start to untying" widget="order" config={hrArcOrder} />
   <p>
     That last observation is the practical one: tension is a <em>budget</em>. Spent early, it
     leaves nothing for the peak; never spent, the story deflates. Great plotting is mostly budget
     management — which is why a story that opens with its biggest explosion usually feels
     thinner afterwards, and why a quiet story that compounds small losses can feel enormous.
   </p>
+  <Widget no="3" caption="bet before you read on" widget="predict" config={hrBudgetPredict} />
   <p>
     <strong>So far:</strong> a story is a shape before it is a message — a question opened,
     escalated, answered, settled. Below the plot, though, four quieter machines do most of the
@@ -89,6 +298,7 @@ const freytagCfg = {
     the stakes peak — that, not the author's description, is who they are. A narrator can call
     someone brave; the story proves it (or disproves it) at the climax.
   </p>
+  <Widget no="4" caption="file each character by Forster's test" widget="sort-buckets" config={hrCharacterBuckets} />
   <p>
     <strong>Voice</strong> is a point of view with a style, and it decides what can be known.
     First-person narration locks you inside one head — reliable or (the fun part) not: the
@@ -99,6 +309,7 @@ const freytagCfg = {
     constantly: <em>who is telling me this, what can they not see, and what are they (deliberately)
     not telling me?</em> The answers account for most of a novel's irony and much of its suspense.
   </p>
+  <Widget no="5" caption="pair each narrating option with what it decides" widget="match" config={hrVoiceMatch} />
   <p><em>Common misconception:</em> "the narrator speaks for the author." A narrator is a made
   thing — as crafted as any character — and first person is literature's favourite trap for
   exactly this reason. The narrator of an unreliable narration may be naive, prejudiced or
@@ -119,6 +330,7 @@ const freytagCfg = {
   tells you its theme outright, it is an essay wearing a costume. Ask not "what lesson does this
   teach?" but "what question does this story keep asking, and what does each character's fate
   argue about it?"</p>
+  <Widget no="6" caption="true or false — theme, moral, question" widget="judge" config={hrThemeJudge} />
   <p><em>Common misconception:</em> analysing a text is not hunting for hidden symbols the author
   smuggled in, and it is definitely not retelling the plot. Analysis is showing <em>how the
   writing produces its effects</em> — which choice of voice, structure, image or tension makes
@@ -143,6 +355,7 @@ const freytagCfg = {
     the ending was being prepared from the first page, how characters change across the arc, how
     the shape itself carries meaning.
   </p>
+  <Widget no="7" caption="walk the structural diagnosis, decision by decision" widget="branch" config={hrStructureBranch} />
 
   <h2>Close reading in practice: one sentence, four tools</h2>
   <p>
@@ -164,6 +377,7 @@ const freytagCfg = {
     summary. Every observation is about how the writing works on the reader — which is the skill
     the word "analysis" actually denotes, and the one you can transfer to any text you ever meet.
   </p>
+  <Widget no="8" caption="run the four passes in sequence" widget="order" config={hrCloseOrder} />
 
   <h2>The novel as a developing form</h2>
   <p>
@@ -180,6 +394,7 @@ const freytagCfg = {
     arcs (the misreading that must be earned, the reformation that must be shown) resolved exactly
     at the curve's peak.
   </p>
+  <Widget no="9" caption="scrub four centuries of the novel rebuilding itself" widget="timeline" config={hrNovelTimeline} />
   <p>
     The novel kept developing past realism. <strong>Modernism</strong> (Joyce, Woolf) turned
     inward, plotting consciousness itself rather than events, breaking chronology as attention

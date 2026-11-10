@@ -19,6 +19,183 @@ const fractureQuizCfg = {
     { q: 'Fatigue failures are dangerous because they occur…', choices: ['at stresses above yield, which engineers ignore', 'below the yield strength, after many normal-looking load cycles, often with no visible warning', 'only in aircraft', 'instantly on first loading'], answer: 1, why: 'Cyclic slip accumulates damage at stress concentrators; a crack grows a little each cycle (Paris law) until it reaches critical size — on a component that has "worked fine for years".' },
   ],
 };
+
+const msPointBuckets = {
+  "prompt": "The point-defect census — file each resident:",
+  "buckets": [
+    "vacancy traffic — equilibrium features",
+    "solute atoms — strain and strengthening"
+  ],
+  "items": [
+    {
+      "label": "the missing atom every crystal has, in thermal equilibrium",
+      "bucket": 0
+    },
+    {
+      "label": "an extra atom jammed between lattice sites — rare, hugely strained",
+      "bucket": 1
+    },
+    {
+      "label": "a foreign atom on a lattice site — zinc in copper",
+      "bucket": 1
+    },
+    {
+      "label": "a small atom in a gap — carbon in iron",
+      "bucket": 1
+    },
+    {
+      "label": "for copper near melting, roughly one lattice site in 10⁵ is empty",
+      "bucket": 0
+    }
+  ],
+  "why": "All solid-state diffusion is vacancy traffic; all solid-solution strengthening is solute atoms obstructing dislocations."
+};
+
+const msPerfectSpot = {
+  "prompt": "One line of this design note is wrong — click it:",
+  "lines": [
+    "With no dislocations able to move, a metal cannot yield.",
+    "It stays elastic until it snaps in brittle fashion at enormous stress.",
+    "So the best possible metal would contain zero defects of any kind.",
+    "Defects give metals their forgiving failure mode.",
+    "Strength engineering manages which defects move, where, and when."
+  ],
+  "errorLine": 2,
+  "correction": "A defect-free crystal would be the disaster, not the ideal — plasticity IS dislocation motion, and without it there is no warning before fracture.",
+  "why": "Defects are not blemishes but the working parts of materials."
+};
+
+const msFenceMatch = {
+  "prompt": "Anything that obstructs dislocation motion strengthens the metal — pair recipe with fence:",
+  "pairs": [
+    {
+      "left": "work hardening",
+      "right": "other dislocations — cold-rolled steel"
+    },
+    {
+      "left": "solid-solution strengthening",
+      "right": "solute atoms blocking the glide plane"
+    },
+    {
+      "left": "grain refinement (Hall–Petch)",
+      "right": "grain boundaries — halve the grain size, strength rises with the inverse square root"
+    },
+    {
+      "left": "precipitation hardening",
+      "right": "precipitates — the ageing route"
+    },
+    {
+      "left": "martensite",
+      "right": "interstitial carbon jammed into the lattice"
+    }
+  ],
+  "why": "Metallurgy's strength menu is a list of dislocation fences — the real stress to move a dislocation is typically a thousand times less than the perfect-lattice calculation."
+};
+
+const msWarningBranch = {
+  "root": "The design question is never only \"how strong?\" — it is \"how much warning?\".",
+  "nodes": {
+    "start": {
+      "text": "You are specifying a pressure vessel. What failure philosophy do you demand of the material?",
+      "choices": [
+        {
+          "label": "Fail-soft — yield, neck, absorb energy by plastic flow before separating",
+          "next": "soft",
+          "feedback": "Dislocations doing their job."
+        },
+        {
+          "label": "Fail-sudden — maximum strength regardless of mode",
+          "next": "sudden",
+          "feedback": "Strength as the only number."
+        }
+      ]
+    },
+    "soft": {
+      "text": "Ductile failure announces itself: the plastic zone at a crack tip blunts the tip and consumes energy — which is why pressure vessels, bridges and aircraft are specified ductile.",
+      "choices": [
+        {
+          "label": "Now the window question: why ceramics are not structural",
+          "next": "ceramic",
+          "feedback": "The brittle side of the hinge."
+        }
+      ]
+    },
+    "sudden": {
+      "text": "Brittle failure gives no warning — crack propagation at acoustic speeds, at or below full design load, with almost no energy absorbed. The vessel spec moves to a ductile alloy.",
+      "choices": [
+        {
+          "label": "Continue to the window question",
+          "next": "ceramic",
+          "feedback": "The brittle side of the hinge."
+        }
+      ]
+    },
+    "ceramic": {
+      "text": "A brittle ceramic's immobile dislocations leave the crack tip sharp — nothing but bond-breaking resists the crack, which is why windows are not structural.",
+      "choices": []
+    }
+  },
+  "why": "The difference is structural, not mystical: mobile dislocations blunt; locked-in dislocations leave the tip sharp."
+};
+
+const msGriffithEstimate = {
+  "prompt": "A 1-micron scratch with an atomically sharp tip sits under a nominal 100 MPa. Roughly what local stress does the tip concentrate?",
+  "unit": "MPa",
+  "answer": 14000,
+  "factor": 1.5,
+  "why": "σ_local ≈ 2σ·√(a/ρ) ≈ 14,000 MPa — well above the ~7 GPa needed to break silicate bonds, which is why glass is 100× weaker than its atoms demand.",
+  "context": "Griffith's energy balance gives σ_c = √(2Eγ/πa) ≈ 116 MPa for that scratch — the largest flaw, not the bond strength, sets a brittle solid's strength."
+};
+
+const msToughnessChart = {
+  "kind": "bar",
+  "height": 300,
+  "xLabels": [
+    "steels",
+    "titanium",
+    "aluminium alloys",
+    "polymers",
+    "glass & ceramics"
+  ],
+  "series": [
+    {
+      "label": "K_IC upper end (MPa√m)",
+      "values": [
+        200,
+        100,
+        40,
+        5,
+        2
+      ]
+    }
+  ],
+  "y": {
+    "min": 0,
+    "label": "K_IC (MPa√m)"
+  },
+  "unit": "MPa√m",
+  "digits": 0
+};
+
+const msFatigueOrder = {
+  "prompt": "Rebuild the fatigue sequence, cycle by cycle:",
+  "items": [
+    "Nominally elastic loading still produces local plasticity at stress concentrators — fillets, rivet holes, inclusions",
+    "Reversed slip extrudes and intrudes microscopic persistent slip bands — the crack starters",
+    "The crack grows a little every cycle — Paris law, growth rate scaling with the stress-intensity range (m typically 2–4)",
+    "The critical size from fracture mechanics is reached",
+    "Final fracture: the surface shows beach marks — rings from each duty period — around a sudden fibrous snap zone"
+  ],
+  "why": "Fatigue accounts for the large majority of mechanical service failures — death by repetition, below yield strength."
+};
+
+const msProvenCloze = {
+  "text": "Every cycle spends a share of life (Miner's rule), whether or not anything looks different — so the honest inference from \"worked fine for a decade\" is that %%0%%, not intuition, say what comes next.",
+  "answers": [
+    "inspection intervals"
+  ],
+  "hint": "What converts accumulated damage into a schedule."
+};
 ---
 <TopicPage slug="subjects/materials-science/advanced/failure-fracture-and-fatigue">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +254,7 @@ const fractureQuizCfg = {
     diffusion (the heat-treatment lesson) is vacancy traffic; all solid-solution
     strengthening is solute atoms obstructing dislocations.
   </p>
+  <Widget no="3" caption="file each point defect by its role" widget="sort-buckets" config={msPointBuckets} />
   <p>
     <em>Common misconception:</em> a defect-free crystal would be the ideal material.
     Take the defects out of a metal and you get a different problem: with no
@@ -85,6 +263,7 @@ const fractureQuizCfg = {
     mode; strength engineering is not the elimination of defects but the management of
     which ones move, where, and when.
   </p>
+  <Widget no="4" caption="find the line the mechanism refutes" widget="spot-error" config={msPerfectSpot} />
   <p>
     <strong>Line defects</strong> — <strong>dislocations</strong> — are the reason metals
     bend. An <strong>edge dislocation</strong> is a terminated half-plane of atoms, a
@@ -104,6 +283,7 @@ const fractureQuizCfg = {
     interstitial carbon in martensite. Metallurgy's strength menu is a list of dislocation
     fences.
   </p>
+  <Widget no="5" caption="pair each strengthening recipe with its dislocation fence" widget="match" config={msFenceMatch} />
   <p>
     <strong>So far:</strong> defects are the working parts of a solid — vacancies carry
     diffusion, dislocations carry plasticity, and strength engineering is the management of
@@ -125,6 +305,7 @@ const fractureQuizCfg = {
     specified ductile, and why the design question is never only "how strong?" but "how
     much warning?".
   </p>
+  <Widget no="6" caption="walk the warning question" widget="branch" config={msWarningBranch} />
 
   <h2>Griffith: the flaw sets the strength</h2>
   <p>
@@ -144,6 +325,7 @@ const fractureQuizCfg = {
     absurdly strong — draw the material thin enough and the largest possible flaw shrinks
     below a micron.
   </p>
+  <Widget no="7" caption="call the stress at the tip" widget="estimate" config={msGriffithEstimate} />
 
   <h2>Fracture toughness: designing with the flaw you know you have</h2>
   <p>
@@ -167,6 +349,7 @@ const fractureQuizCfg = {
     BCC steels turn brittle below a transition point; FCC metals like aluminium and copper
     do not).
   </p>
+  <Widget no="8" caption="the toughness league, upper bounds plotted" widget="chart" config={msToughnessChart} />
   <p>
     <strong>So far:</strong> stress concentration turned flaws from blemishes into the
     decisive feature of strength, and fracture toughness turned that insight into a number —
@@ -207,6 +390,7 @@ const fractureQuizCfg = {
     pressurisation cycles fatiguing fuselages from window corners and from hidden lap-joint
     cracking — are the founding and reinforcing case files.
   </p>
+  <Widget no="9" caption="rebuild the fatigue life, stage by stage" widget="order" config={msFatigueOrder} />
   <p>
     A worked example shows what damage-tolerant design means quantitatively. Inspection
     finds a 2 mm crack at a fastener hole in aluminium skin; the Paris-law calculation
@@ -226,6 +410,7 @@ const fractureQuizCfg = {
     them. The honest inference from "worked fine for a decade" is that inspection
     intervals, not intuition, say what comes next.
   </p>
+  <Widget no="10" caption="fill the honest inference" widget="cloze" config={msProvenCloze} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

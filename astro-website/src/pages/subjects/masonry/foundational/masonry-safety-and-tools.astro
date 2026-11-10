@@ -11,6 +11,122 @@ const toolsCfg = {
     { math: '5 · Scaffold discipline', note: 'Masonry is built at height on scaffolds — guardrails, proper planking and load limits are checked daily, because masonry materials are heavy.' },
   ],
 };
+
+const masBlockEstimate = {
+  "prompt": "A working week means thousands of bends, lifts and placements. Roughly how much does one concrete block weigh?",
+  "unit": "kg",
+  "answer": 20,
+  "factor": 1.3,
+  "why": "About 20 kg — a brick is 3–4 kg and a mason places hundreds of those, so the handling system (waist-height staging, legs, rotation) is the profession's predictable difference.",
+  "context": "Pallets of brick and block arrive by the tonne and travel up to scaffolds — which is why the scaffold is the trade's most safety-critical structure."
+};
+
+const masTrowelMatch = {
+  "prompt": "The trowel family — pair each variant with its work:",
+  "pairs": [
+    {
+      "left": "brick trowel (diamond or London pattern)",
+      "right": "picks up, carries and spreads mortar — buttering a brick one-handed is the trade's signature motion"
+    },
+    {
+      "left": "pointing trowel",
+      "right": "works joints in place"
+    },
+    {
+      "left": "margin trowel",
+      "right": "tight corners and mortar boards"
+    },
+    {
+      "left": "gauging trowel",
+      "right": "mixes small batches"
+    }
+  ],
+  "why": "Mortar is alkaline and etches steel — trowels are cleaned and oiled, and a badly maintained one shows in every joint it makes."
+};
+
+const masJointPlace = {
+  "prompt": "Joint profiles are drainage decisions. Place a weather-struck joint on the scale:",
+  "labels": [
+    "holds water on a ledge",
+    "",
+    "sheds water down and out"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 95,
+  "tolerance": 10,
+  "why": "A weather-struck joint sheds water downward and outward; a raked joint, however handsome, leaves a ledge that holds it — in freeze–thaw climates that becomes cracked faces and spalled brick within a few winters."
+};
+
+const masCourseEstimate = {
+  "prompt": "One brick plus one bed joint gives the course height. For a 65 mm brick with a 10 mm joint, how tall is one course?",
+  "unit": "mm",
+  "answer": 75,
+  "factor": 1.15,
+  "why": "75 mm per course — the story pole is marked off in those increments, and an error at course one compounds to the top, where it collides with openings, lintels and ceiling lines that cannot move."
+};
+
+const masMachinesJudge = {
+  "statements": [
+    {
+      "s": "A masonry saw must be guarded with a semicircular enclosure over the blade.",
+      "truth": true,
+      "why": "Designed so blade fragments cannot escape if a wheel shatters."
+    },
+    {
+      "s": "The hazard of working on a mixer or pump is the machine running.",
+      "truth": false,
+      "why": "It is the machine starting — energy sources are locked out and tagged \"Do Not Start\" before anyone works on one."
+    },
+    {
+      "s": "Diamond-blade saws make the clean cuts that openings demand.",
+      "truth": true,
+      "why": "Handheld or table-mounted, they are the shaping end of the kit, with grinders chasing and dressing."
+    },
+    {
+      "s": "Hods, mortar boards and wheelbarrows belong to the mixing-and-moving family.",
+      "truth": true,
+      "why": "The family that mortars the trade together — including the scaffold's material hoists that move tonnes of units."
+    }
+  ]
+};
+
+const masHandlingOrder = {
+  "prompt": "Rebuild the handling discipline that stops the chronic-injury engine:",
+  "items": [
+    "Stage materials at waist height on scaffolds and boards — no stooping to a ground pallet",
+    "Lift with legs and keep the load close to the body",
+    "Use half-blocks and split handling where possible",
+    "Keep the work at the body's centreline",
+    "Rotate tasks so the same joints do not do everything"
+  ],
+  "why": "The efficient mason and the safe mason are the same person: the wall goes up faster when materials are staged at waist height."
+};
+
+const masSilicaCloze = {
+  "text": "For silica the ladder means wet cutting — water at the blade, an engineering control — or vacuum extraction with rated filters; %%0%% where those controls leave exposure above the permissible limit (a time-weighted average of %%1%% micrograms per cubic metre).",
+  "answers": [
+    "respirators",
+    "50"
+  ],
+  "hint": "The last rung protects one person, only if worn and fitted — and the limit is a round number of micrograms."
+};
+
+const masMortarSpot = {
+  "prompt": "One line of this mortar spec is wrong — click it:",
+  "lines": [
+    "Walls move — thermal expansion, settlement, moisture.",
+    "Mortar's job includes absorbing the movement the wall cannot avoid.",
+    "Specify the strongest mortar and the wall will last longest.",
+    "A mortar stronger than the units pushes every crack into the bricks themselves.",
+    "The mortar is the designed weak link — joints rake out and repoint far more cheaply than units replace."
+  ],
+  "errorLine": 2,
+  "correction": "The mortar should be weaker than the units — the soft joint takes the movement and is repaired cheaply; the hard mortar cracks expensive, unrepointable brick.",
+  "why": "The units carry the building, but the mortar carries the wall's life."
+};
 ---
 <TopicPage slug="subjects/masonry/foundational/masonry-safety-and-tools">
 
@@ -48,6 +164,7 @@ const toolsCfg = {
     wrote that "obedience is the mother of success and is wedded to safety"; twenty-five
     centuries later, this trade is one of the places that sentence is most literally true.
   </p>
+  <Widget no="2" caption="call the weight the wall hands you" widget="estimate" config={masBlockEstimate} />
   <p>
     The trio of topics ahead are really one subject in three views. The tools put heavy
     things in high places; the safety system keeps the human intact while doing so; the
@@ -76,6 +193,7 @@ const toolsCfg = {
     and etches steel, so trowels are cleaned and oiled — and a badly maintained trowel
     shows in every joint it makes.
   </p>
+  <Widget no="3" caption="pair each trowel with its job" widget="match" config={masTrowelMatch} />
   <p>
     <strong>Jointers and striking tools</strong> finish the mortar joints after the units
     are laid — and this is weatherproofing disguised as decoration. Tooling a joint with a
@@ -86,6 +204,7 @@ const toolsCfg = {
     tooled when the mortar is thumbprint-hard, and hitting that moment is as much of the
     skill as the stroke.
   </p>
+  <Widget no="4" caption="place the profile on the drainage scale" widget="place" config={masJointPlace} />
   <p><em>Common misconception:</em> "joint profiles are a matter of taste — pick the one
   that looks best." It seems reasonable because tooling <em>is</em> the visible finish of
   a wall. But the profile is a drainage decision. A raked joint holds water on a ledge
@@ -105,6 +224,7 @@ const toolsCfg = {
     that half the "tool kit" is really instruments of measurement — the wall is being
     audited continuously while it is being built.
   </p>
+  <Widget no="5" caption="call the course height the pole is marked at" widget="estimate" config={masCourseEstimate} />
 
   <h2>Saws, chisels, grinders — and everything that moves material</h2>
   <p>
@@ -122,6 +242,7 @@ const toolsCfg = {
     reads "Do Not Start" — because the hazard is not the machine running, it is the
     machine <em>starting</em>.
   </p>
+  <Widget no="6" caption="true or false — the machinery rules" widget="judge" config={masMachinesJudge} />
 
   <h2>Site and material handling safety: heavy things, repeated</h2>
   <p>
@@ -135,6 +256,7 @@ const toolsCfg = {
     joints do not do everything. The efficient mason and the safe mason are the same
     person: the wall goes up faster when materials are staged at waist height.
   </p>
+  <Widget no="7" caption="rebuild the handling system that prevents the toll" widget="order" config={masHandlingOrder} />
   <p><em>Common misconception:</em> "safety rules are for beginners — an experienced mason
   knows how to move fast without them." It seems reasonable because speed is money on a
   site, and because injuries happen to "careless" workers. But the record says the
@@ -158,6 +280,7 @@ const toolsCfg = {
     plan; and medical surveillance for exposed workers. The newest battles in this ancient
     trade are fought in microns — and the wet saw is their emblem.
   </p>
+  <Widget no="8" caption="fill the ladder's rungs for silica" widget="cloze" config={masSilicaCloze} />
   <p><em>Common misconception:</em> "dust is a nuisance — blow your nose and carry on."
   This one feels right because the harm is invisible and deferred: nothing hurts today.
   But the particles that matter are the ones you cannot see and cannot cough out, and
@@ -258,6 +381,7 @@ const toolsCfg = {
   unrepointable damage. The correct picture: the mortar is the designed weak link, the
   part that is <em>supposed</em> to give, chosen deliberately per job. (The next lesson
   in this course, on mortar and materials, takes the ladder apart properly.)</p>
+  <Widget no="9" caption="find the line the movement refutes" widget="spot-error" config={masMortarSpot} />
   <p>
     <strong>So far:</strong> one kit, two faces — tools that build and tools that measure;
     a safety system that manages weight, dust, chemicals and height as design problems

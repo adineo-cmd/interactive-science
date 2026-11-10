@@ -1,0 +1,188 @@
+[
+  {
+    "slug": "subjects/logistics-supply-chain/foundational/supply-chain-concepts-and-metrics",
+    "activities": [
+      {
+        "anchor": "The classic way to see through the complexity",
+        "type": "sort-buckets",
+        "caption": "file each event by the flow it rides",
+        "name": "scFlowsBuckets",
+        "config": {
+          "prompt": "Three flows run through every chain — file each event:",
+          "buckets": ["product flow", "money flow", "information flow"],
+          "items": [
+            { "label": "ore becomes steel becomes parts becomes product becomes delivery", "bucket": 0 },
+            { "label": "the customer's payment split into everyone's revenue on the way back", "bucket": 1 },
+            { "label": "orders and forecasts travelling downstream-to-upstream", "bucket": 2 },
+            { "label": "availability, lead times and shipment status travelling upstream-to-downstream", "bucket": 2 },
+            { "label": "the returns that now define e-commerce", "bucket": 0 },
+            { "label": "the empty toilet-paper shelves of 2020 — every link ordering extra against the same rumour", "bucket": 2 }
+          ],
+          "why": "Nearly every famous supply chain failure is a flow problem, not a box problem — information late, distorted or absent."
+        }
+      },
+      {
+        "anchor": "the semiconductor plant sees orders from assemblers",
+        "type": "trace",
+        "caption": "which curve matches the demand signal upstream?",
+        "name": "scSignalTrace",
+        "config": {
+          "prompt": "The true-demand signal as it moves upstream through the tiers — which profile matches?",
+          "curves": [
+            { "expr": "9 - 1.5*x", "color": "#1f6f54", "label": "fidelity decays with every layer" },
+            { "expr": "5", "color": "#8a8a8a", "label": "signal arrives intact at every tier" },
+            { "expr": "1 + 1.2*x", "color": "#b0492f", "label": "upstream sees final demand more clearly" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 5 },
+          "y": { "min": 0, "max": 10 },
+          "xlabel": "tiers upstream from the shopper",
+          "ylabel": "fidelity of the demand signal",
+          "why": "Each layer in between injects its own noise — most companies cannot see final demand at all, and everything upstream is derived from it."
+        }
+      },
+      {
+        "anchor": "Managed well, the chain is invisible",
+        "type": "branch",
+        "caption": "walk the trade-off triangle",
+        "name": "scTriangleBranch",
+        "config": {
+          "root": "Every decision from network design to purchase-order size lives inside the triangle: service level, inventory, cost.",
+          "nodes": {
+            "start": {
+              "text": "Your chain promises near-perfect availability AND holds minimal inventory. Which corner collects the bill?",
+              "choices": [
+                { "label": "Cost — pay for speed: air freight, duplicate suppliers, buffer capacity", "next": "cost", "feedback": "The triangle balances." },
+                { "label": "None — a well-run chain gets all three", "next": "free-lunch", "feedback": "Testing the triangle." }
+              ]
+            },
+            "cost": {
+              "text": "You can perform brilliantly on any two; the third collects the bill — most supply chain arguments are really arguments about which corner to sacrifice.",
+              "choices": [
+                { "label": "Now the mismatch case: an efficient chain serving fashion", "next": "mismatch", "feedback": "Fisher's match, broken." }
+              ]
+            },
+            "free-lunch": {
+              "text": "The triangle forbids it — near-perfect availability with minimal inventory is only bought by paying for speed somewhere else.",
+              "choices": [
+                { "label": "Continue to the mismatch case", "next": "mismatch", "feedback": "Chain type versus product type." }
+              ]
+            },
+            "mismatch": {
+              "text": "Chronic stockouts of the hits and mountains of the misses — Fisher's 1997 match says innovative products deserve responsive chains that buy speed even at higher cost.",
+              "choices": []
+            }
+          },
+          "why": "The responsive chain serving detergent simply costs more than the competition can match — the mismatch fails in the other direction."
+        }
+      },
+      {
+        "anchor": "Underneath the flows sits a strategic choice",
+        "type": "match",
+        "caption": "pair each product with its chain",
+        "name": "scFisherMatch",
+        "config": {
+          "prompt": "Fisher's 1997 match — pair the product with the chain it deserves:",
+          "pairs": [
+            { "left": "detergent, staple foods, commodity parts", "right": "an efficient chain — squeeze cost, run full trucks, hold lean inventory" },
+            { "left": "fashion, electronics, short-season goods", "right": "a responsive chain — buy speed and flexibility even at higher cost" },
+            { "left": "the expensive failure for innovative products", "right": "the markdown bin full of last season's stock, not the air freight bill" },
+            { "left": "an efficient chain serving fashion", "right": "chronic stockouts of the hits and mountains of the misses" }
+          ],
+          "why": "Mismatched pairs are where supply chains visibly fail — match the chain to the product."
+        }
+      },
+      {
+        "anchor": "Its process vocabulary organises all supply chain work into",
+        "type": "order",
+        "caption": "rebuild the SCOR process chain",
+        "name": "scScorOrder",
+        "config": {
+          "prompt": "Rebuild SCOR's process vocabulary in working order:",
+          "items": [
+            "Plan — balance demand and supply",
+            "Source — procure goods and services",
+            "Make — transform",
+            "Deliver — order management, warehousing, transportation",
+            "Return — reverse logistics"
+          ],
+          "why": "Enable runs underneath them all — the rules, data and systems the other processes depend on (newer SCOR versions add Orchestrate for strategy and workforce)."
+        }
+      },
+      {
+        "anchor": "a grocer turning stock 20 times a year",
+        "type": "estimate",
+        "caption": "call the shelf-days behind the turns",
+        "name": "scTurnsEstimate",
+        "config": {
+          "prompt": "Inventory turns = cost of goods sold ÷ average inventory. A grocer turns stock 20 times a year. Roughly how many days of sales sit on its shelves?",
+          "unit": "days",
+          "answer": 18,
+          "factor": 1.4,
+          "why": "365 ÷ 20 ≈ 18 days — turns compress the whole inventory-versus-availability tension into one comparable figure; a heavy-equipment maker turning 2 times holds six months.",
+          "context": "The other headline ratio, cash-to-cash, adds receivable days and subtracts payable days — it reveals whether growth consumes cash or releases it."
+        }
+      },
+      {
+        "anchor": "which plots each purchased item by",
+        "type": "branch",
+        "caption": "walk the Kraljic quadrants",
+        "name": "scKraljicBranch",
+        "config": {
+          "root": "Four quadrants, four strategies — procurement effort is itself a scarce resource.",
+          "nodes": {
+            "start": {
+              "text": "Item 1: the custom chips in a car maker's bill of materials — high profit impact, high supply risk. Your strategy?",
+              "choices": [
+                { "label": "Partnership — joint development, long-term contracts, executive attention", "next": "strategic-ok", "feedback": "The quadrant treated as it deserves." },
+                { "label": "Efficiency — catalogues, automation, minimal attention", "next": "strategic-wrong", "feedback": "The non-critical treatment." }
+              ]
+            },
+            "strategic-ok": {
+              "text": "Strategic quadrant, partnership — exactly the profile (high impact, high risk) that justifies the executive time.",
+              "choices": [
+                { "label": "Item 2: commodity packaging — high impact, low risk", "next": "packaging", "feedback": "Second quadrant loaded." }
+              ]
+            },
+            "strategic-wrong": {
+              "text": "Catalogues for custom silicon — that is the non-critical treatment. The matrix files these chips as strategic (high impact, high risk): partnership, joint development, long-term contracts.",
+              "choices": [
+                { "label": "Re-file, then item 2: commodity packaging — high impact, low risk", "next": "packaging", "feedback": "Second quadrant loaded." }
+              ]
+            },
+            "packaging": {
+              "text": "High impact, low risk — many suppliers could make it. Your strategy?",
+              "choices": [
+                { "label": "Competition — market testing, aggressive negotiation, multiple bidders", "next": "leverage-ok", "feedback": "The leverage playbook." },
+                { "label": "Buffer stock and qualified alternates", "next": "leverage-wrong", "feedback": "The bottleneck playbook." }
+              ]
+            },
+            "leverage-ok": {
+              "text": "Leverage quadrant, competition — high impact means it is worth negotiating hard; low risk means you can walk away. The corporate world's cautionary tale is teams doing exactly this while strategic suppliers drift toward failure unwatched.",
+              "choices": []
+            },
+            "leverage-wrong": {
+              "text": "Buffer stock is bottleneck treatment — packaging is a leverage item (high impact, low risk): competition, multiple bidders, aggressive negotiation.",
+              "choices": []
+            }
+          },
+          "why": "Price is one column of the matrix, not the whole of it — spend effort where the risk-and-value profile justifies it."
+        }
+      },
+      {
+        "anchor": "every chain must choose where to hold its inventory",
+        "type": "place",
+        "caption": "place the decoupling point for each chain",
+        "name": "scDecouplePlace",
+        "config": {
+          "prompt": "Where does final customer demand \"enter\" the process? Place a laptop chain (hold modules, configure at the last step):",
+          "labels": ["make-to-stock", "assemble-to-order", "make-to-order"],
+          "scale": { "min": 0, "max": 100 },
+          "answer": 50,
+          "tolerance": 12,
+          "why": "Assemble-to-order: groceries push finished goods to a warehouse (make-to-stock), aircraft begin production on the order itself (make-to-order) — and the postponement principle says keep product generic as long as possible, which is why a global apparel brand ships undyed fabric and colours it after early sales data arrives."
+        }
+      }
+    ]
+  }
+]

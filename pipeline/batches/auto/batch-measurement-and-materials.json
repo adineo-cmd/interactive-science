@@ -1,0 +1,169 @@
+[
+  {
+    "slug": "subjects/machining/foundational/measurement-and-materials",
+    "activities": [
+      {
+        "anchor": "learned in an ordered ladder of instruments",
+        "type": "order",
+        "caption": "rebuild the instrument ladder, coarsest first",
+        "name": "machLadderOrder",
+        "config": {
+          "prompt": "Rebuild the metrology ladder in order of resolution:",
+          "items": [
+            "steel rule — readable to roughly 0.5 mm",
+            "vernier caliper — inside, outside, depth and step to about 0.02 mm, the daily workhorse",
+            "micrometer — 0.01 mm with a vernier, 0.001 mm digital or fine",
+            "dial indicator — 0.01 mm per division, turning \"is it straight?\" into a number",
+            "gauge blocks — lapped so flat they wring together, the shop's physical truth",
+            "CMM — probes features in three axes for the highest-accuracy inspection"
+          ],
+          "why": "Choose an instrument whose resolution is finer than a tenth of the tolerance — and never trust a measurement whose instrument you have not verified."
+        }
+      },
+      {
+        "anchor": "until the procedure behind it is sound",
+        "type": "spot-error",
+        "caption": "find the line the ritual refutes",
+        "name": "machRitualSpot",
+        "config": {
+          "prompt": "One line of this metrology report is wrong — click it:",
+          "lines": [
+            "A micrometer's number is evidence about the part, not the part itself.",
+            "A dirty anvil can move a \"precise\" number by more than the tolerance you are judging.",
+            "A part measured ten degrees warm reads exactly the same as at reference temperature.",
+            "The ritual is clean, zero-check, measure with consistent force, repeat, record.",
+            "Professionals are suspicious of any measurement taken too quickly to be doubted."
+          ],
+          "errorLine": 2,
+          "correction": "Steel expands about 11.7 µm per metre per °C — a warm part can pass and fail cold, which is why precision shops soak parts and gauges at 20 °C.",
+          "why": "The micrometer itself grows with your hand — one more reason measurement is a procedure, not a gesture."
+        }
+      },
+      {
+        "anchor": "Above the hand tools sits the reference hierarchy",
+        "type": "match",
+        "caption": "pair each instrument with its job",
+        "name": "machRefMatch",
+        "config": {
+          "prompt": "The reference hierarchy — pair each instrument with what it does:",
+          "pairs": [
+            { "left": "gauge blocks", "right": "the shop's physical truth — hardened blocks lapped so flat they wring together, traceable to national standards" },
+            { "left": "surface plate", "right": "granite flat to microns — the datum plane from which height gauges and scribes work" },
+            { "left": "dial indicator", "right": "runout, alignment and deflection — \"is it straight?\" becomes a number" },
+            { "left": "plug, ring and thread gauges", "right": "go/no-go verdicts faster than any reading" },
+            { "left": "CMM", "right": "probes features in three axes for the highest-accuracy inspection" }
+          ],
+          "why": "Calibrations trace the blocks back to national standards — metrology's formal chain of traceability."
+        }
+      },
+      {
+        "anchor": "tolerance is the economic engine of the trade",
+        "type": "judge",
+        "caption": "true or false — the cost of tight",
+        "name": "machTolJudge",
+        "config": {
+          "statements": [
+            { "s": "Tighter tolerances cost disproportionately more.", "truth": true, "why": "Error sources that vanish at ±0.2 mm dominate at ±0.02 mm." },
+            { "s": "A clearance hole can be ±0.5 mm; a bearing journal needs ±0.01 mm.", "truth": true, "why": "Tolerances are assigned by function." },
+            { "s": "Beyond what the function needs, tightness is pure cost — slower processes, more scrap, more inspection.", "truth": true, "why": "Knowing how tight is tight enough separates a machinist from an operator." },
+            { "s": "A clearance hole made to ±0.01 mm works noticeably better than one at ±0.5 mm.", "truth": false, "why": "It works exactly the same and costs far more — the tolerance chooses the machine, the tooling, the sequence and the price." }
+          ]
+        }
+      },
+      {
+        "anchor": "deliberately offset toward the safe side",
+        "type": "predict",
+        "caption": "bet on where the professional aims",
+        "name": "machAimPredict",
+        "config": {
+          "q": "Tool wear moves dimensions across a production run. Where does a professional aim the first cut?",
+          "choices": [
+            "dead on the exact nominal number",
+            "external dimensions slightly over nominal, holes slightly under — leaving room for wear and finishing",
+            "at the limit that passes most parts",
+            "wherever the first part happens to land"
+          ],
+          "answer": 1,
+          "why": "Targeting the middle of the band is engineering; targeting the nominal is hope — aim so tool wear and finishing have room to work without crossing a limit."
+        }
+      },
+      {
+        "anchor": "The physics underneath all of it is a triangle",
+        "type": "estimate",
+        "caption": "call the surface speed stainless can take",
+        "name": "machSpeedEstimate",
+        "config": {
+          "prompt": "Cutting-data tables give each alloy a workable envelope. Roughly what surface speed does 304 stainless with a carbide cutter tolerate?",
+          "unit": "m/min",
+          "answer": 40,
+          "factor": 1.5,
+          "why": "Around 40 m/min — versus roughly 250 for 6061 aluminium with the same 12 mm carbide end mill: more than a sixfold difference, and stainless wants a heavier per-tooth feed to stay under the work-hardened surface.",
+          "context": "Speed drives heat; feed and depth drive cutting force — the heat that should leave in the chip is what cooks a titanium or stainless edge."
+        }
+      },
+      {
+        "anchor": "Machinability is not one number",
+        "type": "branch",
+        "caption": "walk three cuts that fight back",
+        "name": "machAlloyBranch",
+        "config": {
+          "root": "Each alloy teaches a different lesson at the cut — walk two of them.",
+          "nodes": {
+            "start": {
+              "text": "Material: 304 stainless. Mid-pass, your tool starts dwelling and rubbing instead of cutting. What now?",
+              "choices": [
+                { "label": "Speed up to power through", "next": "worse", "feedback": "More heat into the same surface." },
+                { "label": "Constant feed, sharp tools, adequate depth of cut", "next": "fix1", "feedback": "Staying under fresh metal." }
+              ]
+            },
+            "worse": {
+              "text": "Dwell work-hardens the surface under the tool — the next pass now cuts harder material than the drawing's alloy. Hardness is not the villain; the work-hardening plus heat is.",
+              "choices": [
+                { "label": "Reset with the countermeasures and continue to titanium", "next": "titanium", "feedback": "Technique, not a stronger machine." }
+              ]
+            },
+            "fix1": {
+              "text": "Constant feed and adequate depth keep the cutter always under fresh metal — the countermeasures for work-hardening.",
+              "choices": [
+                { "label": "Continue to titanium", "next": "titanium", "feedback": "Second alloy loaded." }
+              ]
+            },
+            "titanium": {
+              "text": "Material: titanium. The cutting edge is cooking. Why?",
+              "choices": [
+                { "label": "Terrible thermal conductivity — the heat cannot leave in the chip", "next": "ti-ok", "feedback": "The real mechanism." },
+                { "label": "Titanium is simply too hard for carbide", "next": "ti-wrong", "feedback": "Blaming hardness again." }
+              ]
+            },
+            "ti-ok": {
+              "text": "High strength, low elasticity (it springs away and rubs) and heat trapped at the edge — hence low speeds, flood coolant and rigid setups.",
+              "choices": []
+            },
+            "ti-wrong": {
+              "text": "Hardness is not the villain here either — the problem is heat that cannot leave in the chip: low speeds, flood coolant, rigid setups.",
+              "choices": []
+            }
+          },
+          "why": "Brass and bronze machine freely — which is why they are the traditional apprentice metals."
+        }
+      },
+      {
+        "anchor": "12 mm carbide end mill cutting 6061 aluminium",
+        "type": "chart",
+        "caption": "the same cutter, two alloys, two numbers",
+        "name": "machSpeedsChart",
+        "config": {
+          "kind": "bar",
+          "height": 280,
+          "xLabels": ["6061 aluminium (~250 m/min)", "304 stainless (~40 m/min)"],
+          "series": [
+            { "label": "spindle speed (rpm)", "values": [6600, 1000] }
+          ],
+          "y": { "min": 0, "label": "spindle speed (rpm)" },
+          "unit": "rpm",
+          "digits": 0
+        }
+      }
+    ]
+  }
+]

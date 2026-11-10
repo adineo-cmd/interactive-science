@@ -380,6 +380,23 @@
 | literature/advanced/literary-theory | match, sort-buckets, spot-error, match, compare, judge, order, branch | next-12 |
 | literature/advanced/modernism-and-postmodernism | match, spot-error, match, order, sort-buckets, judge, branch, sort-buckets | next-12 |
 | literature/expert/comparative-literature | match, spot-error, sort-buckets, compare, judge, match, estimate, spot-error | next-12 |
+| international-relations/foundational/frameworks-for-understanding-international-relations | match, spot-error, sort-buckets, branch, compare, order, judge, branch | next-13a |
+| landscape-architecture/foundational/landscape-design-process | predict, sort-buckets, order, match, estimate, order, spot-error, timeline | next-13a |
+| literature/expert/textual-criticism-and-editing | match, branch, order, spot-error, cloze, sort-buckets, compare, estimate | next-13a |
+| literature/foundational/how-to-read-a-story | order, predict, sort-buckets, match, judge, branch, order, timeline | next-13a |
+| literature/intermediate/close-reading | order, cloze, match, sort-buckets, estimate, compare, judge, branch | next-13a |
+| literature/intermediate/figures-of-speech | timeline, sort-buckets, match, branch, spot-error, compare, order, cloze (pre-inserted by batch-figures-of-speech.json — verified, not modified) | next-13a |
+| literature/intermediate/poetry-form-and-meter | match, place, predict, plotter, order, compare, sort-buckets, judge | next-14 |
+| literature/intermediate/shakespeares-craft | estimate, judge, compare, spot-error, order, branch, order, trace | next-14 |
+| literature/intermediate/the-novel-a-short-history | timeline, spot-error, order, estimate, match, branch, cloze, compare | next-14 |
+| literature/intermediate/world-epics | order, judge, place, compare, estimate, match, sort-buckets, branch | next-14 |
+| logistics-supply-chain/foundational/supply-chain-concepts-and-metrics | sort-buckets, trace, branch, match, order, estimate, branch, place | next-14 |
+| machining/foundational/measurement-and-materials | order, match, spot-error, judge, predict, branch, estimate, chart | next-14 |
+| marine-science/foundational/earth-oceans-and-tides | place, order, match, sort-buckets, estimate, judge, cloze, match | next-14 |
+| marketing/foundational/introduction-and-company-analysis | match, predict, branch, sort-buckets, compare, spot-error, cloze, order | next-14 |
+| masonry/foundational/masonry-safety-and-tools | estimate, match, place, estimate, judge, order, cloze, spot-error | next-14 |
+| massage-therapy/foundational/body-systems-and-movement | match, spot-error, branch, predict, sort-buckets, order, judge, order | next-14 |
+| materials-science/advanced/failure-fracture-and-fatigue | sort-buckets, spot-error, match, branch, estimate, chart, order, cloze | next-14 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
