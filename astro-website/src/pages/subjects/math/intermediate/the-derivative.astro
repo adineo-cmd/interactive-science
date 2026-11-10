@@ -25,6 +25,176 @@ const limitCfg = {
     { math: 'lim (h→0) 2x + h = 2x', note: 'As h vanishes, what remains is 2x. The power rule generalises it: d/dx xⁿ = n·xⁿ⁻¹.' },
   ],
 };
+
+const derEscapeCloze = {
+  "text": "Calculus escapes the 0/0 trap with one move: compute the average over a small window, then shrink the window and see what value the average is %%0%% toward. That limiting value is the %%1%% — the instantaneous rate of change.",
+  "answers": [
+    [
+      "heading",
+      "converging",
+      "approaching"
+    ],
+    [
+      "derivative"
+    ]
+  ],
+  "hint": "What the average is doing as the window closes, and the name of the value it lands on."
+};
+
+const derSlopeEst = {
+  "prompt": "For the curve x², the tangent's slope at t₀ is 2·t₀. What is it at t₀ = 3?",
+  "unit": "",
+  "answer": 6,
+  "factor": 1.2,
+  "why": "2 × 3 = 6 — the derivative of a function is itself a function: feed it an input and it tells you how fast the original is changing there.",
+  "context": "flat at t₀ = 0, steeply downhill at t₀ = −2"
+};
+
+const derLimitOrder = {
+  "prompt": "Rebuild the limit definition applied to x² — what comes first:",
+  "items": [
+    "Form the secant slope: [f(x+h) − f(x)]/h",
+    "Expand the square: (x+h)² − x² = 2xh + h²",
+    "Divide by h while it is still nonzero: 2x + h",
+    "Let h approach 0: the derivative is 2x"
+  ],
+  "why": "Divide by h while h is still nonzero, and only then let h approach 0 — the limit is not a trick that divides by zero; it is the value the honest process converges to."
+};
+
+const derTangentSpot = {
+  "prompt": "One of these claims about the derivative is wrong — click it:",
+  "lines": [
+    "The derivative is the tangent's slope — a number at each point.",
+    "The tangent line itself needs a point and a slope.",
+    "At x² where t₀ = 1 the slope is 2 and the line is y = 2x − 1.",
+    "The derivative is the formula for the tangent line."
+  ],
+  "errorLine": 3,
+  "correction": "The derivative is the tangent's slope, not the line — the line needs a point and a slope.",
+  "why": "The plot's red curve is that line, rebuilt for every t₀ at once."
+};
+
+const derRuleSort = {
+  "prompt": "File each claim under the rule it describes:",
+  "buckets": [
+    "power rule",
+    "sum & constant-multiple",
+    "chain rule"
+  ],
+  "items": [
+    {
+      "label": "d/dx of xⁿ is n·xⁿ⁻¹ — works for every real n",
+      "bucket": 0
+    },
+    {
+      "label": "d/dx of (f + g) is f′ + g′ — polynomials differentiate term by term",
+      "bucket": 1
+    },
+    {
+      "label": "d/dx f(g(x)) = f′(g(x))·g′(x) — the rate of a composition is the product of the rates",
+      "bucket": 2
+    },
+    {
+      "label": "√x = x^½ → ½x^(−½)",
+      "bucket": 0
+    }
+  ],
+  "why": "Each one is provable from the definition once, then used forever — the rule is the definition, pre-digested."
+};
+
+const derGradEst = {
+  "prompt": "f(x) = 3x² − 5x + 2 differentiates to f′(x) = 6x − 5. What is the gradient at x = 2?",
+  "unit": "",
+  "answer": 7,
+  "factor": 1.2,
+  "why": "f′(2) = 12 − 5 = 7 — the tangent there passes through (2, 4) with slope 7: y = 7x − 10.",
+  "context": "setting f′(x) = 0 gives x = 5/6 — exactly the parabola's vertex"
+};
+
+const derSignBranch = {
+  "root": "f′(a) = 0 at some point a. Does the curve necessarily have a maximum or minimum there?",
+  "nodes": {
+    "start": {
+      "text": "Classify the claim:",
+      "choices": [
+        {
+          "label": "Yes — zero slope means a peak or valley",
+          "next": "no",
+          "feedback": "Not always: f(x) = x³ at x = 0 has zero derivative but passes straight through, climbing on both sides — a stationary inflection."
+        },
+        {
+          "label": "No — a zero derivative only stops the journey; the sign change classifies it",
+          "next": "right",
+          "feedback": "Right: + then − is a maximum, − then + a minimum, no sign change an inflection."
+        },
+        {
+          "label": "Yes, if f″ is also zero there",
+          "next": "f2",
+          "feedback": "f″ = 0 makes it murkier, not clearer — the sign change of f′ is the test."
+        }
+      ]
+    },
+    "no": {
+      "text": "The curve wiggles through the level point without turning."
+    },
+    "right": {
+      "text": "The second derivative compresses it: f″ above 0 cupping upward (minimum), below 0 cupping downward (maximum)."
+    },
+    "f2": {
+      "text": "Classification needs the sign change of f′ through the point."
+    }
+  },
+  "why": "A zero derivative stops the journey; only a sign change tells you which way it resumes."
+};
+
+const derPenPlace = {
+  "prompt": "A 40 m fence makes a rectangular pen: A(x) = x(20 − x), with A′(x) = 20 − 2x. At what width x is the area maximised?",
+  "labels": [
+    "5 m",
+    "7.5 m",
+    "10 m",
+    "15 m"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 20
+  },
+  "answer": 10,
+  "tolerance": 0.5,
+  "why": "A′ = 0 at x = 10, and A″ = −2 confirms a maximum: the best pen is a 10 × 10 square — for a fixed perimeter, the square always wins."
+};
+
+const derBoxSpot = {
+  "prompt": "One of these claims about the folded box is wrong — click it:",
+  "lines": [
+    "The base is (20 − 2x) by (20 − 2x), so V(x) = x(20 − 2x)².",
+    "V′ = 400 − 160x + 12x².",
+    "Solving gives x = 10 or x = 20/6 ≈ 3.33 cm.",
+    "Keep x = 10 — it gives the biggest volume."
+  ],
+  "errorLine": 3,
+  "correction": "Reject x = 10 — it collapses the box to nothing; the physical answer is x ≈ 3.33 cm, volume ≈ 593 cm³.",
+  "why": "Checking candidates against the real situation is part of the method, not a courtesy."
+};
+
+const derMotionMatch = {
+  "prompt": "Pair each quantity with its derivative relationship:",
+  "pairs": [
+    {
+      "left": "position s(t)",
+      "right": "velocity v = s′(t)"
+    },
+    {
+      "left": "velocity",
+      "right": "acceleration a = v′(t) = s″(t)"
+    },
+    {
+      "left": "constant acceleration",
+      "right": "the position graph is a parabola"
+    }
+  ],
+  "why": "A dropped stone has s(t) = 4.9t², so v(t) = 9.8t and a = 9.8 — the familiar 9.8 m/s² gain emerging as the derivative of the distance law."
+};
 ---
 <TopicPage slug="subjects/math/intermediate/the-derivative">
 
@@ -56,6 +226,7 @@ const limitCfg = {
     the instantaneous rate of change. Geometrically it is the slope of the <strong>tangent</strong>:
     the line that touches the curve at one point and matches its direction there.
   </p>
+  <Widget no="12" caption="fill the blanks — the escape from 0/0" widget="cloze" config={derEscapeCloze} />
 
   <Widget no="1" caption="slide the touch point — the tangent's slope exactly tracks the green derivative curve" widget="plotter" config={tangentCfg} />
   <p>
@@ -75,6 +246,7 @@ const limitCfg = {
     differentiation turns a function into its rate-of-change function, and the tangent slide
     shows the two fitting together perfectly.
   </p>
+  <Widget no="11" caption="call the tangent's slope" widget="estimate" config={derSlopeEst} />
 
   <h2>The definition, taken honestly</h2>
   <p>
@@ -83,6 +255,7 @@ const limitCfg = {
     the secant pivots into the tangent. The formal definition of the derivative is that ratio
     with a limit taken:
   </p>
+  <Widget no="10" caption="rebuild the definition, honestly" widget="order" config={derLimitOrder} />
 
   <Widget no="2" caption="the definition, applied honestly to x²" widget="equationStep" config={limitCfg} />
   <p>
@@ -105,6 +278,7 @@ const limitCfg = {
   the tangent's <em>slope</em> — a number at each point. The tangent line itself needs a point and
   a slope: at x² where t₀ = 1 the slope is 2 and the line is y = 2x − 1 (it must pass through
   (1, 1)). The plot's red curve is that line, rebuilt for every t₀ at once.</p>
+  <Widget no="9" caption="find the misidentification" widget="spot-error" config={derTangentSpot} />
   <p><strong>So far:</strong> the derivative is the tangent's slope — a number at each
   point — computed by a limit that divides legally and only then shrinks h to zero. One
   definition works for every function; now we distil it into rules so the algebra need
@@ -115,6 +289,7 @@ const limitCfg = {
     Applying the limit definition by hand every time would be intolerable, so we distil it into
     rules — each one provable from the definition once, then used forever:
   </p>
+  <Widget no="8" caption="file each rule under its job" widget="sort-buckets" config={derRuleSort} />
   <ul>
     <li><strong>Power rule:</strong> d/dx of xⁿ is n·xⁿ⁻¹. It works for every real n — x⁵ → 5x⁴,
     √x = x^½ → ½x^(−½), and even x⁰ = 1 → 0 (constants never change).</li>
@@ -132,6 +307,7 @@ const limitCfg = {
     y = 7x − 10. Set f′(x) = 0 and you get x = 5/6 — the single point where the parabola flattens,
     which is exactly its vertex. Every feature of the curve's shape is encoded in its derivative.
   </p>
+  <Widget no="7" caption="call the gradient at x = 2" widget="estimate" config={derGradEst} />
 
   <p>
     Why does the power rule work at all? Sketch the argument for n = 2 with the limit definition
@@ -163,6 +339,7 @@ const limitCfg = {
   f(x) = x³ at x = 0. The derivative 3x² is zero there, but the curve passes straight through,
   climbing on both sides: a stationary <em>inflection</em> point. A zero derivative stops the
   journey; only a sign change tells you which way it resumes.</p>
+  <Widget no="6" caption="the stationary point that isn't" widget="branch" config={derSignBranch} />
   <p>
     This is why the syllabus pairs "sketching curves" with differentiation. To sketch a curve
     properly you find where f′ = 0, test the sign of f′ between those points, and locate where f″
@@ -190,6 +367,7 @@ const limitCfg = {
     cheapest soup can, the stiffest beam, the fastest descent path, and the trajectory of
     spacecraft.
   </p>
+  <Widget no="5" caption="drop the marker — the winning width" widget="place" config={derPenPlace} />
   <p>
     A second worked example shows the modelling step, which is where students most often stumble.
     Cut four equal squares of side x from the corners of a 20 cm × 20 cm sheet and fold up the
@@ -200,6 +378,7 @@ const limitCfg = {
     one physical answer — checking candidates against the real situation is part of the method,
     not a courtesy.
   </p>
+  <Widget no="4" caption="find the candidate-checking failure" widget="spot-error" config={derBoxSpot} />
   <p>
     <strong>Motion.</strong> If position is s(t), then velocity v = s′(t) and acceleration
     a = v′(t) = s″(t). A dropped stone has s(t) = 4.9t² (metres, t in seconds); differentiate:
@@ -207,6 +386,7 @@ const limitCfg = {
     distance law. Differentiate once more: a = 9.8, a constant — "constant acceleration" is the
     statement that the position graph is a parabola.
   </p>
+  <Widget no="3" caption="pair each quantity with its derivative story" widget="match" config={derMotionMatch} />
   <p><em>Common misconception:</em> a tangent line is one that touches the curve at exactly
   one point and never crosses it. The defining property is matching the <em>slope</em> at the
   touch point, not staying on one side: the tangent to f(x) = x³ at x = 0 is the line y = 0,

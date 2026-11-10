@@ -21,6 +21,147 @@ const gaussCfg = {
     { math: 'S = 100 × 101 / 2 = 5050', note: 'The pairing trick generalises: 1 + 2 + … + n = n(n + 1)/2 — a formula earned in three lines.' },
   ],
 };
+
+const seqFamCompare = {
+  "prompt": "Two families of growth — drag the divider:",
+  "before": {
+    "label": "arithmetic",
+    "text": "adds a fixed amount each step — steady, linear, predictable (savings with a flat bonus)"
+  },
+  "after": {
+    "label": "geometric",
+    "text": "multiplies by a fixed factor — slow at first, then unstoppable (compound interest)"
+  },
+  "why": "Every 'exponential surprise' — in finance, epidemics, technology adoption — is this picture: the compounding curve hides below the line, then pulls away without limit."
+};
+
+const seq100Est = {
+  "prompt": "The sequence 5, 8, 11, 14, … has nth term 3n + 2. Roughly what is the 100th term?",
+  "unit": "",
+  "answer": 302,
+  "factor": 1.1,
+  "why": "3 × 100 + 2 = 302 — the position-to-term rule answers 'what is the 100th term?' in one line, no walking required.",
+  "context": "the first term, plus (n − 1) steps of size d"
+};
+
+const seqMemberBranch = {
+  "root": "Is 100 a term of 5, 8, 11, 14, …? Solving 3n + 2 = 100 gives n = 32⅔. What is the verdict?",
+  "nodes": {
+    "start": {
+      "text": "Pick the honest answer:",
+      "choices": [
+        {
+          "label": "Yes — n exists, so it is a term",
+          "next": "no",
+          "feedback": "No: n must be a whole number — 32⅔ is not a position in the sequence."
+        },
+        {
+          "label": "No — n is not a whole number, so 100 is not a term",
+          "next": "right",
+          "feedback": "Right — the nth term is also a membership test: only whole-number n count."
+        },
+        {
+          "label": "Yes — round n up to 33",
+          "next": "round",
+          "feedback": "Rounding is illegal here: term 33 is 101, not 100."
+        }
+      ]
+    },
+    "no": {
+      "text": "A position number cannot be two-thirds of anything."
+    },
+    "right": {
+      "text": "'Which term equals 50?' — the term-to-term rule cannot say; the nth term answers in one line."
+    },
+    "round": {
+      "text": "The sequence steps 5, 8, 11, … never lands on 100."
+    }
+  },
+  "why": "The nth term answers 'where is any term?' directly — and membership too."
+};
+
+const seqQuadCloze = {
+  "text": "The sequence 2, 3, 6, 11, 18 has differences 1, 3, 5, 7 — a second difference constant at %%0%%. That constant second difference certifies a quadratic nth term with a equal to %%1%% the second difference.",
+  "answers": [
+    [
+      "2",
+      "two"
+    ],
+    [
+      "half",
+      "½",
+      "0.5"
+    ]
+  ],
+  "hint": "The gap between the gaps, and what fraction of it becomes the leading coefficient."
+};
+
+const seqClassicMatch = {
+  "prompt": "Pair each classic sequence with its description:",
+  "pairs": [
+    {
+      "left": "triangular numbers 1, 3, 6, 10",
+      "right": "dots stacked in triangles; nth term n(n+1)/2"
+    },
+    {
+      "left": "Fibonacci 1, 1, 2, 3, 5, 8",
+      "right": "each term the sum of the previous two"
+    },
+    {
+      "left": "the golden ratio φ",
+      "right": "the limit of Fibonacci's consecutive-term ratio, 1.618…"
+    }
+  ],
+  "why": "Fibonacci models genuinely recursive processes — rabbit populations, branching plants, spiral shells."
+};
+
+const seqBacteriaEst = {
+  "prompt": "500 bacteria double every 20 minutes. Roughly how many after 2 hours?",
+  "unit": "",
+  "answer": 32000,
+  "factor": 1.2,
+  "why": "Six doublings: 500 × 2⁶ = 32,000 — the exponent counts the steps taken, not the term number.",
+  "context": "the same rule runs depreciation in reverse: 20,000 × 0.85ⁿ"
+};
+
+const seqChessSpot = {
+  "prompt": "One of these claims about the chessboard rice is wrong — click it:",
+  "lines": [
+    "Total = (2⁶⁴ − 1)/(2 − 1) = 2⁶⁴ − 1 ≈ 1.8 × 10¹⁹ grains.",
+    "About 1.2 trillion tonnes of rice.",
+    "More than two thousand times the modern annual world harvest.",
+    "Each term of a doubling sequence is less than the sum of all its predecessors."
+  ],
+  "errorLine": 3,
+  "correction": "Each term of a geometric sequence with ratio above 1 exceeds the sum of all its predecessors — the 64th square holds more than squares 1 through 63 combined.",
+  "why": "Most of any doubling's total arrives in its final steps — the mathematical shape of the word 'suddenly'."
+};
+
+const seqGaussOrder = {
+  "prompt": "Rebuild Gauss's three moves — what comes first:",
+  "items": [
+    "Write the sum 1 + 2 + … + 100 forwards",
+    "Write it backwards underneath",
+    "Add the columns — every pair sums to 101",
+    "Halve: 100 × 101 ÷ 2 = 5,050"
+  ],
+  "why": "Nothing here is special to 100: the same three lines give the general formula n(n + 1)/2 that the triangular numbers were quietly using all along."
+};
+
+const seqSteadyEst = {
+  "prompt": "A patient takes 200 mg of a drug daily; the body clears 60% each day (r = 0.4). Roughly what steady-state level does the amount on board approach?",
+  "unit": "mg",
+  "answer": 333,
+  "factor": 1.2,
+  "why": "a/(1 − r) = 200/0.6 ≈ 333 mg — infinitely many doses, finite accumulation, which is why dosing schedules are designed the way they are.",
+  "context": "the first dose sometimes starts with a 'loading' amount"
+};
+
+const seqHarmJudge = {
+  "statement": "If a series' terms tend to zero, the series must sum to something finite.",
+  "answer": false,
+  "why": "Terms tending to zero is necessary but not sufficient — the harmonic series 1 + ½ + ⅓ + … diverges, passing 10 only after about 12,000 terms."
+};
 ---
 <TopicPage slug="subjects/math/intermediate/sequences-and-series">
 
@@ -52,6 +193,7 @@ const gaussCfg = {
     difference between savings with a flat bonus and savings with compound interest: the plot
     below is that comparison, drawn to scale.
   </p>
+  <Widget no="12" caption="arithmetic versus geometric — drag the divider" widget="compare" config={seqFamCompare} />
 
   <Widget no="1" caption="linear vs multiplicative growth — the geometric curve is barely visible until suddenly it isn't" widget="plotter" config={seqCfg} />
   <p>
@@ -83,6 +225,8 @@ const gaussCfg = {
     100, 93, 86, … has nth term 107 − 7n, which also answers the practical question "when does
     it go negative?" — at n = 16.)
   </p>
+  <Widget no="11" caption="call the 100th term" widget="estimate" config={seq100Est} />
+  <Widget no="10" caption="the membership test" widget="branch" config={seqMemberBranch} />
   <p>
     <strong>Quadratic sequences</strong> arise when the <em>differences</em> change by a fixed
     amount: 2, 3, 6, 11, 18, … has differences 1, 3, 5, 7 (second difference constant 2). The
@@ -90,6 +234,7 @@ const gaussCfg = {
     a = half the second difference. Here: a = 1, and fitting gives n² − 2n + 2. Check: n = 4
     gives 16 − 8 + 2 = 6. ✓
   </p>
+  <Widget no="9" caption="fill the blanks — the quadratic sequence's certificate" widget="cloze" config={seqQuadCloze} />
   <p><em>Common misconception:</em> the "add 3 each time" rule and the "3n + 2" formula are
   interchangeable. They answer different questions: the term-to-term rule tells you how to walk
   to the next term; the nth term tells you where any term <em>is</em>. Confusing them produces
@@ -106,6 +251,7 @@ const gaussCfg = {
     consecutive-term ratio 1.618… (the golden ratio φ) is the limit the sequence is forever
     approaching.
   </p>
+  <Widget no="8" caption="pair each classic with its story" widget="match" config={seqClassicMatch} />
 
   <p>
     <strong>Geometric sequences</strong> have an nth term too, and indexing is where care is
@@ -117,6 +263,7 @@ const gaussCfg = {
     £10,000 from year 5 onward (solve 0.85ⁿ = 0.5 and n ≈ 4.3, then round <em>up</em> to a whole
     year). Sequences are how "3% a year" becomes a decision.
   </p>
+  <Widget no="7" caption="call the colony after 2 hours" widget="estimate" config={seqBacteriaEst} />
   <p><em>Common misconception:</em> a doubling process spreads its growth evenly, so the last chessboard square holds only a little more rice than the one before. Each term of a geometric sequence with ratio above 1 actually exceeds the sum of all its predecessors: the 64th square holds 2⁶³ grains, more than squares 1 through 63 combined. Most of any doubling's total arrives in its final steps — the mathematical shape of the word "suddenly".</p>
   <p>
     <strong>So far:</strong> nth-term rules for arithmetic, quadratic and geometric sequences
@@ -130,6 +277,7 @@ const gaussCfg = {
     boring; structure works and is beautiful. The archetype is the story of Gauss, asked as a
     schoolboy to add 1 through 100:
   </p>
+  <Widget no="6" caption="rebuild Gauss's pairing trick" widget="order" config={seqGaussOrder} />
 
   <Widget no="2" caption="Gauss's pairing trick — the sum of 1 to 100 in three moves" widget="equationStep" config={gaussCfg} />
   <p>
@@ -165,6 +313,7 @@ const gaussCfg = {
     more than two thousand times the modern annual world harvest. The vizier who "asked for so
     little" was doing exponential arithmetic with the palace's future.
   </p>
+  <Widget no="5" caption="find the doubling error" widget="spot-error" config={seqChessSpot} />
   <p>
     The same formula, run forward, is the mathematics of <strong>compound interest</strong> and
     <strong>debt</strong>. £1,000 at 20% annual interest becomes 1000 × 1.2ⁿ: after 10 years
@@ -197,12 +346,14 @@ const gaussCfg = {
     schedules are designed the way they are, and why the first dose sometimes starts with a
     "loading" amount.
   </p>
+  <Widget no="4" caption="call the steady state" widget="estimate" config={seqSteadyEst} />
   <p><em>Common misconception:</em> "adding infinitely many numbers must give infinity." It
   depends entirely on whether the terms shrink fast enough — which is exactly what |r| under 1
   certifies. The reverse error is subtler and more famous: a <em>harmonic</em> series' terms
   1 + ½ + ⅓ + ¼ + … shrink to zero yet the sum diverges (it passes 10 only after about
   12,000 terms). Terms tending to zero is <strong>necessary but not sufficient</strong> for a
   finite sum — a distinction that shapes all of higher analysis.</p>
+  <Widget no="3" caption="true or false — the harmonic trap" widget="judge" config={seqHarmJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -219,6 +219,8 @@
 | math/intermediate/counting-and-combinatorics | match, estimate, predict, spot-error, estimate, sort-buckets, estimate, place, branch, judge | math-8 |
 | math/intermediate/exponentials-and-logarithms | match, sort-buckets, spot-error, estimate, compare, estimate, cloze, spot-error, branch, place | math-9 |
 | math/intermediate/trigonometry | match, estimate, spot-error, estimate, cloze, predict, branch, sort-buckets, order, spot-error | math-10 |
+| math/intermediate/sequences-and-series | compare, estimate, branch, cloze, match, estimate, spot-error, order, estimate, judge | math-11 |
+| math/intermediate/the-derivative | cloze, estimate, order, spot-error, sort-buckets, estimate, branch, place, spot-error, match | math-12 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
