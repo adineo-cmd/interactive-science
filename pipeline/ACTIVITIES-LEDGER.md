@@ -221,6 +221,8 @@
 | math/intermediate/trigonometry | match, estimate, spot-error, estimate, cloze, predict, branch, sort-buckets, order, spot-error | math-10 |
 | math/intermediate/sequences-and-series | compare, estimate, branch, cloze, match, estimate, spot-error, order, estimate, judge | math-11 |
 | math/intermediate/the-derivative | cloze, estimate, order, spot-error, sort-buckets, estimate, branch, place, spot-error, match | math-12 |
+| math/advanced/logic-and-proof | sort-buckets, judge, match, compare, spot-error, cloze, order, branch, estimate, order | math-13 |
+| math/advanced/number-theory | match, cloze, spot-error, estimate, place, order, branch, match, judge, order | math-14 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

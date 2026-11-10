@@ -1,0 +1,164 @@
+[
+  {
+    "slug": "subjects/math/advanced/number-theory",
+    "activities": [
+      {
+        "anchor": "One tool from the earlier tiers gets promoted",
+        "type": "match",
+        "caption": "pair each object with its question",
+        "name": "ntToolMatch",
+        "config": {
+          "prompt": "Pair each object with the statement that defines it:",
+          "pairs": [
+            { "left": "the division algorithm", "right": "a = q·b + r, with unique q and 0 ≤ r < b" },
+            { "left": "gcd(a, b)", "right": "the largest integer dividing both" },
+            { "left": "coprime", "right": "gcd(a, b) = 1 — the friendly case where inverses exist" }
+          ],
+          "why": "Everything on this page — gcds, clocks, cryptography — is the remainder r taken seriously as a mathematical object in its own right."
+        }
+      },
+      {
+        "anchor": "Because 10 ≡ 1 (mod 9)",
+        "type": "cloze",
+        "caption": "fill the blanks — why digit sums detect 9s",
+        "name": "ntDigitCloze",
+        "config": {
+          "text": "A number is divisible by 9 exactly when its digit sum is, because 10 ≡ %%0%% (mod 9), so 10ᵏ ≡ %%1%% for every power: 4,713 leaves the same remainder as 4 + 7 + 1 + 3 = 15 ≡ %%2%%.",
+          "answers": [
+            ["1", "one"],
+            ["1", "one"],
+            ["6", "six"]
+          ],
+          "hint": "Ten is one more than nine; powers inherit it; and 15 mod 9 is…"
+        }
+      },
+      {
+        "anchor": "gcd(a, b) × lcm(a, b) = a × b",
+        "type": "spot-error",
+        "caption": "find the broken identity",
+        "name": "ntBezoutSpot",
+        "config": {
+          "prompt": "One of these claims is wrong — click it:",
+          "lines": [
+            "gcd(a, b) can always be written as ax + by for integer x and y.",
+            "Run the Euclid steps backwards to find x and y.",
+            "From 6 = 18 − 12 and 12 = 48 − 2·18 comes 6 = (−1)·48 + 3·18.",
+            "gcd(a, b) × lcm(a, b) = a + b."
+          ],
+          "errorLine": 3,
+          "correction": "gcd(a, b) × lcm(a, b) = a × b — for 48 and 18, 6 × 144 = 864 = 48 × 18.",
+          "why": "The identity is behind every 'find the LCM via the GCD' shortcut."
+        }
+      },
+      {
+        "anchor": "25 below 100",
+        "type": "estimate",
+        "caption": "call the small-prime census",
+        "name": "ntPrimesEst",
+        "config": {
+          "prompt": "Roughly how many primes are there below 100?",
+          "unit": "",
+          "answer": 25,
+          "factor": 1.2,
+          "why": "25 below 100, 168 below 1,000, 9,592 below 100,000 — primes thin out lawfully: the count below n is asymptotically n/ln n.",
+          "context": "the prime number theorem was proved in 1896 by Hadamard and de la Vallée Poussin"
+        }
+      },
+      {
+        "anchor": "Around 10¹⁸, about",
+        "type": "place",
+        "caption": "drop the marker — the prime density",
+        "name": "ntDensityPlace",
+        "config": {
+          "prompt": "Around 10¹⁸, about one number in how many is prime?",
+          "labels": ["1 in 4", "1 in 12", "1 in 41.5", "1 in 400"],
+          "scale": { "min": 1, "max": 400 },
+          "answer": 41.5,
+          "tolerance": 3,
+          "why": "About 1 in 41.5 — primes get rarer but never die out, and the average gap near n is ln n."
+        }
+      },
+      {
+        "anchor": "To find all primes below a limit",
+        "type": "order",
+        "caption": "rebuild the sieve",
+        "name": "ntSieveOrder",
+        "config": {
+          "prompt": "Rebuild the sieve of Eratosthenes — what comes first:",
+          "items": [
+            "Write the numbers up to N",
+            "Cross out multiples of 2",
+            "Cross out multiples of 3, then 5",
+            "Any survivor below √N crossing is prime"
+          ],
+          "why": "To test one large number instead, probabilistic tests like Miller–Rabin do it in milliseconds without factoring anything — the asymmetry cryptography exploits."
+        }
+      },
+      {
+        "anchor": "congruences can be divided through like equations",
+        "type": "branch",
+        "caption": "the illegal cancellation",
+        "name": "ntCancelBranch",
+        "config": {
+          "root": "2·3 ≡ 4·3 (mod 6). A student cancels the 3 and concludes 2 ≡ 4 (mod 6). What went wrong?",
+          "nodes": {
+            "start": {
+              "text": "Diagnose the step:",
+              "choices": [
+                { "label": "Nothing — cancelling is always legal", "next": "wrong", "feedback": "Cancellation is legal only when the cancelled factor is coprime to the modulus: 3 shares a factor with 6, and the 'division' discards information about multiples of 6." },
+                { "label": "3 is not coprime to 6 — 'dividing' mod m means multiplying by an inverse", "next": "right", "feedback": "Right — and inverses exist only for coprime factors; mod 5, where 3 is coprime to the modulus, the same cancellation works." },
+                { "label": "The original congruence was false", "next": "false", "feedback": "It is true — both sides are 0 mod 6; the illegal step is the cancellation." }
+              ]
+            },
+            "wrong": { "text": "Both sides being 0 hides the difference between 2 and 4." },
+            "right": { "text": "Mod 7, the inverse of 3 is 5 (3 × 5 = 15 ≡ 1), so 'divide by 3' means 'multiply by 5'." },
+            "false": { "text": "The congruence holds; the inference from it does not." }
+          },
+          "why": "Dividing mod m really means multiplying by an inverse — and inverses exist only for coprime factors."
+        }
+      },
+      {
+        "anchor": "Fermat's little theorem organises this",
+        "type": "match",
+        "caption": "pair each modular fact with its instance",
+        "name": "ntFermatMatch",
+        "config": {
+          "prompt": "Pair each modular fact with its instance:",
+          "pairs": [
+            { "left": "Fermat's little theorem", "right": "a^(p−1) ≡ 1 (mod p) for prime p, a not divisible by p" },
+            { "left": "the inverse of 3 mod 7", "right": "5, since 3 × 5 = 15 ≡ 1" },
+            { "left": "clock arithmetic", "right": "3 hours after 11 o'clock is 2" }
+          ],
+          "why": "Every nonzero residue's power comes home after p − 1 steps — the engine inside RSA."
+        }
+      },
+      {
+        "anchor": "proven by Andrew Wiles in 1995",
+        "type": "judge",
+        "caption": "true or false — the margin note's fate",
+        "name": "ntWilesJudge",
+        "config": {
+          "statement": "Fermat's Last Theorem was proven by Andrew Wiles in 1995 using seven chapters of elliptic-curve theory Fermat could not have dreamed of.",
+          "answer": true,
+          "why": "Conjectured in 1637 in a margin too small for the proof, proven in 1995 — a whole ocean of modern number theory grew from that margin note."
+        }
+      },
+      {
+        "anchor": "Watch it with toy numbers",
+        "type": "order",
+        "caption": "rebuild the toy RSA run",
+        "name": "ntRsaOrder",
+        "config": {
+          "prompt": "Rebuild the toy RSA computation — what comes first:",
+          "items": [
+            "Pick primes p = 3, q = 11: n = 33, φ(n) = 20",
+            "Publish e = 3, keep d = 7 with e·d ≡ 1 (mod 20)",
+            "Encrypt m = 2: c = 2³ mod 33 = 8",
+            "Decrypt: 8⁷ mod 33 ≡ 2 — the message returns"
+          ],
+          "why": "Fermat-and-Euler arithmetic guarantees the answer is m again — every HTTPS padlock is this postscript to Hardy's 'useless' boast."
+        }
+      }
+    ]
+  }
+]

@@ -21,6 +21,166 @@ const modCfg = {
     { math: '∴ 7¹⁰⁰ ends in 1', note: 'no 51-digit number ever computed. Modular arithmetic sees the structure, not the size.' },
   ],
 };
+
+const ntToolMatch = {
+  "prompt": "Pair each object with the statement that defines it:",
+  "pairs": [
+    {
+      "left": "the division algorithm",
+      "right": "a = q·b + r, with unique q and 0 ≤ r < b"
+    },
+    {
+      "left": "gcd(a, b)",
+      "right": "the largest integer dividing both"
+    },
+    {
+      "left": "coprime",
+      "right": "gcd(a, b) = 1 — the friendly case where inverses exist"
+    }
+  ],
+  "why": "Everything on this page — gcds, clocks, cryptography — is the remainder r taken seriously as a mathematical object in its own right."
+};
+
+const ntDigitCloze = {
+  "text": "A number is divisible by 9 exactly when its digit sum is, because 10 ≡ %%0%% (mod 9), so 10ᵏ ≡ %%1%% for every power: 4,713 leaves the same remainder as 4 + 7 + 1 + 3 = 15 ≡ %%2%%.",
+  "answers": [
+    [
+      "1",
+      "one"
+    ],
+    [
+      "1",
+      "one"
+    ],
+    [
+      "6",
+      "six"
+    ]
+  ],
+  "hint": "Ten is one more than nine; powers inherit it; and 15 mod 9 is…"
+};
+
+const ntBezoutSpot = {
+  "prompt": "One of these claims is wrong — click it:",
+  "lines": [
+    "gcd(a, b) can always be written as ax + by for integer x and y.",
+    "Run the Euclid steps backwards to find x and y.",
+    "From 6 = 18 − 12 and 12 = 48 − 2·18 comes 6 = (−1)·48 + 3·18.",
+    "gcd(a, b) × lcm(a, b) = a + b."
+  ],
+  "errorLine": 3,
+  "correction": "gcd(a, b) × lcm(a, b) = a × b — for 48 and 18, 6 × 144 = 864 = 48 × 18.",
+  "why": "The identity is behind every 'find the LCM via the GCD' shortcut."
+};
+
+const ntPrimesEst = {
+  "prompt": "Roughly how many primes are there below 100?",
+  "unit": "",
+  "answer": 25,
+  "factor": 1.2,
+  "why": "25 below 100, 168 below 1,000, 9,592 below 100,000 — primes thin out lawfully: the count below n is asymptotically n/ln n.",
+  "context": "the prime number theorem was proved in 1896 by Hadamard and de la Vallée Poussin"
+};
+
+const ntDensityPlace = {
+  "prompt": "Around 10¹⁸, about one number in how many is prime?",
+  "labels": [
+    "1 in 4",
+    "1 in 12",
+    "1 in 41.5",
+    "1 in 400"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 400
+  },
+  "answer": 41.5,
+  "tolerance": 3,
+  "why": "About 1 in 41.5 — primes get rarer but never die out, and the average gap near n is ln n."
+};
+
+const ntSieveOrder = {
+  "prompt": "Rebuild the sieve of Eratosthenes — what comes first:",
+  "items": [
+    "Write the numbers up to N",
+    "Cross out multiples of 2",
+    "Cross out multiples of 3, then 5",
+    "Any survivor below √N crossing is prime"
+  ],
+  "why": "To test one large number instead, probabilistic tests like Miller–Rabin do it in milliseconds without factoring anything — the asymmetry cryptography exploits."
+};
+
+const ntCancelBranch = {
+  "root": "2·3 ≡ 4·3 (mod 6). A student cancels the 3 and concludes 2 ≡ 4 (mod 6). What went wrong?",
+  "nodes": {
+    "start": {
+      "text": "Diagnose the step:",
+      "choices": [
+        {
+          "label": "Nothing — cancelling is always legal",
+          "next": "wrong",
+          "feedback": "Cancellation is legal only when the cancelled factor is coprime to the modulus: 3 shares a factor with 6, and the 'division' discards information about multiples of 6."
+        },
+        {
+          "label": "3 is not coprime to 6 — 'dividing' mod m means multiplying by an inverse",
+          "next": "right",
+          "feedback": "Right — and inverses exist only for coprime factors; mod 5, where 3 is coprime to the modulus, the same cancellation works."
+        },
+        {
+          "label": "The original congruence was false",
+          "next": "false",
+          "feedback": "It is true — both sides are 0 mod 6; the illegal step is the cancellation."
+        }
+      ]
+    },
+    "wrong": {
+      "text": "Both sides being 0 hides the difference between 2 and 4."
+    },
+    "right": {
+      "text": "Mod 7, the inverse of 3 is 5 (3 × 5 = 15 ≡ 1), so 'divide by 3' means 'multiply by 5'."
+    },
+    "false": {
+      "text": "The congruence holds; the inference from it does not."
+    }
+  },
+  "why": "Dividing mod m really means multiplying by an inverse — and inverses exist only for coprime factors."
+};
+
+const ntFermatMatch = {
+  "prompt": "Pair each modular fact with its instance:",
+  "pairs": [
+    {
+      "left": "Fermat's little theorem",
+      "right": "a^(p−1) ≡ 1 (mod p) for prime p, a not divisible by p"
+    },
+    {
+      "left": "the inverse of 3 mod 7",
+      "right": "5, since 3 × 5 = 15 ≡ 1"
+    },
+    {
+      "left": "clock arithmetic",
+      "right": "3 hours after 11 o'clock is 2"
+    }
+  ],
+  "why": "Every nonzero residue's power comes home after p − 1 steps — the engine inside RSA."
+};
+
+const ntWilesJudge = {
+  "statement": "Fermat's Last Theorem was proven by Andrew Wiles in 1995 using seven chapters of elliptic-curve theory Fermat could not have dreamed of.",
+  "answer": true,
+  "why": "Conjectured in 1637 in a margin too small for the proof, proven in 1995 — a whole ocean of modern number theory grew from that margin note."
+};
+
+const ntRsaOrder = {
+  "prompt": "Rebuild the toy RSA computation — what comes first:",
+  "items": [
+    "Pick primes p = 3, q = 11: n = 33, φ(n) = 20",
+    "Publish e = 3, keep d = 7 with e·d ≡ 1 (mod 20)",
+    "Encrypt m = 2: c = 2³ mod 33 = 8",
+    "Decrypt: 8⁷ mod 33 ≡ 2 — the message returns"
+  ],
+  "why": "Fermat-and-Euler arithmetic guarantees the answer is m again — every HTTPS padlock is this postscript to Hardy's 'useless' boast."
+};
 ---
 <TopicPage slug="subjects/math/advanced/number-theory">
   <h2>Where you are, and what you will learn</h2>
@@ -63,6 +223,7 @@ const modCfg = {
     "what is left". Everything on this page — gcds, clocks, cryptography — is the
     remainder r taken seriously as a mathematical object in its own right.
   </p>
+  <Widget no="12" caption="pair each object with its question" widget="match" config={ntToolMatch} />
 
   <Widget no="1" caption="Euclid's algorithm — the world's oldest surviving algorithm, still in your CPU" widget="equationStep" config={gcdCfg} />
   <p>
@@ -85,6 +246,7 @@ const modCfg = {
     the number, mod 9, wearing different clothes — and casting out nines was used for
     centuries to check hand arithmetic long before anyone wrote "mod".
   </p>
+  <Widget no="11" caption="fill the blanks — why digit sums detect 9s" widget="cloze" config={ntDigitCloze} />
   <p>
     The <strong>greatest common divisor</strong> gcd(a, b) is the largest integer dividing
     both, and Euclid's algorithm (the widget above) computes it by repeated
@@ -102,6 +264,7 @@ const modCfg = {
     When gcd(a, b) = 1 the numbers are <strong>coprime</strong>, the friendly case in
     which fractions cancel to lowest terms and, as we will see, modular inverses exist.
   </p>
+  <Widget no="10" caption="find the broken identity" widget="spot-error" config={ntBezoutSpot} />
 
   <h2>Primes and the fundamental theorem</h2>
   <p>
@@ -132,6 +295,9 @@ const modCfg = {
     tests (Miller–Rabin) do it in milliseconds without factoring anything — the asymmetry
     that cryptography exploits.
   </p>
+  <Widget no="9" caption="call the small-prime census" widget="estimate" config={ntPrimesEst} />
+  <Widget no="8" caption="drop the marker — the prime density" widget="place" config={ntDensityPlace} />
+  <Widget no="7" caption="rebuild the sieve" widget="order" config={ntSieveOrder} />
   <p>
     <em>Common misconception:</em> "prime numbers get rarer and rarer, so eventually they
     must stop." Rarity is real (the density ~1/ln n decays to zero) but Euclid's argument
@@ -160,6 +326,7 @@ const modCfg = {
     organises this: for prime p and a not divisible by p, <strong>a^(p−1) ≡ 1 (mod p)</strong> —
     every nonzero residue's power comes home after p − 1 steps.
   </p>
+  <Widget no="6" caption="pair each modular fact with its instance" widget="match" config={ntFermatMatch} />
 
   <Widget no="2" caption="modular arithmetic answers a 51-digit question in four lines — powers cycle, and cycles have periods" widget="equationStep" config={modCfg} />
   <p>
@@ -176,6 +343,7 @@ const modCfg = {
   6, and the "division" actually discards information about multiples of 6. Mod 5, where 3
   is coprime to the modulus, the same cancellation works — which is why "dividing" mod m
   really means multiplying by an inverse, and inverses exist only for coprime factors.</p>
+  <Widget no="5" caption="the illegal cancellation" widget="branch" config={ntCancelBranch} />
 
   <h2>Diophantine equations: when only integers count</h2>
   <p>
@@ -196,6 +364,7 @@ const modCfg = {
     theory Fermat could not have dreamed of. A whole ocean of modern number theory
     (elliptic curves, modular forms) grew from that margin note.
   </p>
+  <Widget no="4" caption="true or false — the margin note's fate" widget="judge" config={ntWilesJudge} />
   <p>
     <strong>So far:</strong> congruences gave arithmetic a clock, and Diophantine equations
     showed remainders constraining whole-number solutions exactly. Next the same machinery —
@@ -220,6 +389,7 @@ const modCfg = {
     250-digit number, achieved in 2020 with roughly 2,700 core-years of computation. Every
     HTTPS padlock in your browser is this postscript to Hardy's "useless" boast.
   </p>
+  <Widget no="3" caption="rebuild the toy RSA run" widget="order" config={ntRsaOrder} />
   <p>
     <em>Common misconception:</em> RSA's security is a proven theorem. It is not — it rests
     on the <em>belief</em> that factoring is hard, which no one has proved. A fast
