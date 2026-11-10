@@ -227,6 +227,8 @@
 | math/advanced/vectors-and-matrices | sort-buckets, judge, estimate, cloze, spot-error, compare, match, branch, place, order | math-16 |
 | math/advanced/differential-equations | sort-buckets, estimate, cloze, estimate, order, match, branch, place, judge, compare | math-17 |
 | math/expert/linear-algebra | sort-buckets, match, estimate, cloze, order, spot-error, branch, judge, compare, match | math-18 |
+| math/expert/abstract-algebra | sort-buckets, estimate, cloze, estimate, match, place, estimate, spot-error, match, judge | math-19 |
+| math/expert/complex-analysis | sort-buckets, estimate, order, place, match, branch, estimate, spot-error, cloze, compare | math-20 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

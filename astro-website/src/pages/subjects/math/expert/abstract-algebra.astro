@@ -11,6 +11,178 @@ const groupCfg = {
     { math: 'Groups everywhere: rotations, integers, symmetries', note: 'Any system with a reversible, combinable operation is a group — and its theorems apply. That universality is why "abstract" algebra isn\'t abstract at all.' },
   ],
 };
+
+const aaGroupSort = {
+  "prompt": "Which of these systems are groups under the stated operation? Check closure, identity, inverses and associativity.",
+  "buckets": [
+    "group",
+    "not a group"
+  ],
+  "items": [
+    {
+      "label": "hours on a clock, addition mod 12",
+      "bucket": 0
+    },
+    {
+      "label": "integers, addition",
+      "bucket": 0
+    },
+    {
+      "label": "natural numbers 1, 2, 3, …, addition",
+      "bucket": 1
+    },
+    {
+      "label": "non-zero reals, multiplication",
+      "bucket": 0
+    },
+    {
+      "label": "odd integers, addition",
+      "bucket": 1
+    },
+    {
+      "label": "rotations of a square, composition",
+      "bucket": 0
+    }
+  ],
+  "why": "A group needs closure, an identity, inverses and associativity. Natural numbers lack 0 and negatives; odd integers fail closure; the others satisfy all four."
+};
+
+const aaSphereEst = {
+  "prompt": "On a sphere, a triangle runs from the North Pole to the equator, a quarter of the way round, and back. Its three angles are all right angles. What is the angle sum?",
+  "unit": "°",
+  "answer": 270,
+  "factor": 1.05,
+  "why": "90° + 90° + 90° = 270°. The 90° excess over 180° is proportional to the triangle's area — the foundation of spherical trigonometry.",
+  "context": "on a flat plane the sum would be exactly 180°"
+};
+
+const aaEuclidCloze = {
+  "text": "Euclid's Elements organises geometry as %%0%% definitions, %%1%% postulates and %%2%% propositions, each proved only from what came before.",
+  "answers": [
+    [
+      "23"
+    ],
+    [
+      "5"
+    ],
+    [
+      "465"
+    ]
+  ],
+  "hint": "The numbers are 23, 5 and 465 — the count of propositions is the surprising one."
+};
+
+const aaScaleEst = {
+  "prompt": "A 1:20 architectural model is built of a 15 m × 10 m room. What area does the model cover?",
+  "unit": "m²",
+  "answer": 0.375,
+  "factor": 1.15,
+  "why": "The real area is 150 m²; areas scale as k², so the model is 150 / 20² = 150 / 400 = 0.375 m².",
+  "context": "lengths scale by 20, areas by 400, volumes by 8,000"
+};
+
+const aaSymMatch = {
+  "prompt": "Pair each figure with its number of symmetries (identity included):",
+  "pairs": [
+    {
+      "left": "square",
+      "right": "8 (D₄)"
+    },
+    {
+      "left": "equilateral triangle",
+      "right": "6 (D₃)"
+    },
+    {
+      "left": "non-square rectangle",
+      "right": "4"
+    },
+    {
+      "left": "parallelogram that is not a rectangle",
+      "right": "2"
+    }
+  ],
+  "why": "Symmetries compose as a group. The non-square rectangle has two reflections and a 180° rotation plus the identity; the generic parallelogram keeps only the identity and the half-turn."
+};
+
+const aaAnglePlace = {
+  "prompt": "A spherical triangle has angle sum 270°. Place that sum on the angle axis.",
+  "labels": [
+    "0°",
+    "90°",
+    "180°",
+    "270°",
+    "360°"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 360
+  },
+  "answer": 270,
+  "tolerance": 5,
+  "why": "The sum exceeds 180° by 90° — the spherical excess, proportional to the triangle's area. A flat triangle would sit exactly at 180°."
+};
+
+const aaInscribedEst = {
+  "prompt": "A chord subtends 100° at the centre of a circle. What angle does it subtend at a point on the major arc?",
+  "unit": "°",
+  "answer": 50,
+  "factor": 1.05,
+  "why": "The inscribed angle is half the central angle: 100° / 2 = 50°, and it is the same at every point of the major arc.",
+  "context": "a diameter subtends 180° at the centre, so the angle in a semicircle is 90°"
+};
+
+const aaCyclicSpot = {
+  "prompt": "Find the line where the cyclic-quadrilateral arithmetic goes wrong:",
+  "lines": [
+    "A cyclic quadrilateral has three angles 70°, 95° and 110°.",
+    "Opposite angles of a cyclic quadrilateral sum to 180°.",
+    "70° + 110° = 180°, so those two are opposite.",
+    "The remaining angle must pair with 95°: 180° − 95° = 85°.",
+    "So the fourth angle is 95°."
+  ],
+  "errorLine": 4,
+  "correction": "The fourth angle is 85°, not 95° — the angle paired with 95° is forced to 180° − 95°.",
+  "why": "Each opposite pair sums to 180°: 70° + 110° and 95° + 85°."
+};
+
+const aaGeomMatch = {
+  "prompt": "Pair each geometry with what its group of transformations preserves:",
+  "pairs": [
+    {
+      "left": "Euclidean",
+      "right": "distances and angles"
+    },
+    {
+      "left": "affine",
+      "right": "collinearity and ratios along a line"
+    },
+    {
+      "left": "projective",
+      "right": "incidence only — lines meeting lines"
+    }
+  ],
+  "why": "Klein's Erlangen programme: choose the transformation group, and the geometry is the study of its invariants."
+};
+
+const aaGaloisJudge = {
+  "statements": [
+    {
+      "s": "The general quintic is unsolvable by radicals because its symmetry group S₅ contains A₅, a simple group with no suitable chain of subgroups.",
+      "truth": true,
+      "why": "Solvability by radicals corresponds to a chain of nested normal subgroups; A₅ blocks such a chain."
+    },
+    {
+      "s": "Galois theory says a polynomial is solvable by radicals exactly when its symmetry group is abelian.",
+      "truth": false,
+      "why": "The group must be solvable, not necessarily abelian — abelian is sufficient but not necessary."
+    },
+    {
+      "s": "The same theory decides which regular polygons are constructible with ruler and compasses.",
+      "truth": true,
+      "why": "Constructibility reduces to nested square roots, a condition on the Galois group."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/math/expert/abstract-algebra">
   <h2>Where you are, and what you will learn</h2>
@@ -45,6 +217,7 @@ const groupCfg = {
     Klein's Erlangen programme of 1872, and it is how modern geometry, crystallography and
     particle physics all still think.
   </p>
+  <Widget no="11" caption="group or not?" widget="sort-buckets" config={aaGroupSort} />
 
   <Widget no="1" caption="clock arithmetic — a complete group, checked axiom by axiom" widget="equationStep" config={groupCfg} />
   <p>
@@ -69,6 +242,7 @@ const groupCfg = {
     relativity is written in exactly such a non-Euclidean contract, and the fact that Euclid's
     version fits a tabletop is a physical fact, not a logical necessity.
   </p>
+  <Widget no="10" caption="call the spherical angle sum" widget="estimate" config={aaSphereEst} />
   <p>
     Euclid's <em>Elements</em> deserves its own attention as the template the whole
     axiomatic method copied: 23 definitions, 5 postulates, 5 common notions, and 465
@@ -80,6 +254,7 @@ const groupCfg = {
     which is exactly what formal proof assistants verify today, machine-checking
     mathematics with the same clause-by-clause discipline Euclid set.
   </p>
+  <Widget no="9" caption="fill the blanks — the axiomatic contract" widget="cloze" config={aaEuclidCloze} />
   <p>
     <em>Common misconception:</em> "parallel lines never meet — that's just what parallel
     means." On a sphere, any two great circles intersect (there are no parallel "lines" at
@@ -102,6 +277,7 @@ const groupCfg = {
     50² = 2,500. Similarity is also a group in disguise: uniform scalings compose, have an
     identity (k = 1) and inverses (k → 1/k) — the group axioms, wearing a ruler.
   </p>
+  <Widget no="8" caption="call the model's area" widget="estimate" config={aaScaleEst} />
 
   <h2>Symmetry: the algebraic view of shape</h2>
   <p>
@@ -118,6 +294,7 @@ const groupCfg = {
     symmetry conservation of angular momentum. The school's "rotational symmetry order 4" and
     the universe's "energy is conserved" are the same mathematics at different scales.
   </p>
+  <Widget no="7" caption="pair each figure with its symmetry count" widget="match" config={aaSymMatch} />
 
   <h2>Angles: measurements that depend on the geometry</h2>
   <p>
@@ -132,6 +309,7 @@ const groupCfg = {
     the experiment failed only because the answer, within error, was flat. Angle sums are a
     curvature detector: every survey is secretly a test of which geometry we live in.
   </p>
+  <Widget no="6" caption="mark the spherical triangle's angle sum" widget="place" config={aaAnglePlace} />
   <p><strong>So far:</strong> similarity revealed itself as a group in disguise, symmetry became the algebraic view of shape, and angle sums turned into curvature detectors — each section adding a layer of invariance. The next two sections apply that lens to the circle theorems, where one proof quietly generates a whole family of results.</p>
 
   <h2>Circle theorems I: one proof, many theorems</h2>
@@ -149,6 +327,7 @@ const groupCfg = {
     <em>every</em> point of the major arc — move the point anywhere along it and the answer
     never changes. Theorems you can re-derive in ninety seconds are theorems you never carry.
   </p>
+  <Widget no="5" caption="call the inscribed angle" widget="estimate" config={aaInscribedEst} />
 
   <h2>Circle theorems II: tangents, cyclic quadrilaterals, and proof technique</h2>
   <p>
@@ -166,6 +345,7 @@ const groupCfg = {
     change because the symmetries forbid it — which is the deepest lesson geometry has for
     the rest of mathematics.
   </p>
+  <Widget no="4" caption="find the arithmetic slip" widget="spot-error" config={aaCyclicSpot} />
   <p>
     <em>Common misconception:</em> "the angle in a semicircle being 90° is a separate fact to
     memorise." It is the inscribed-angle theorem with the arc chosen to be a diameter — one
@@ -243,6 +423,7 @@ const groupCfg = {
     and the classification of crystallographic groups in 3D (230 space groups) is the
     backbone of X-ray crystallography — the technique that found DNA's double helix.
   </p>
+  <Widget no="3" caption="pair each geometry with its invariants" widget="match" config={aaGeomMatch} />
   <p>
     <strong>Galois: symmetry decides solvability.</strong> The deepest marriage of the two
     halves of this page is Galois theory. Each polynomial equation hides a symmetry group of
@@ -255,6 +436,7 @@ const groupCfg = {
     trisecting an angle, squaring the circle — are impossible. Galois died in a duel in 1832,
     aged 20; his letter written the night before still organises a branch of mathematics.
   </p>
+  <Widget no="2" caption="true or false — symmetry decides solvability" widget="judge" config={aaGaloisJudge} />
   <p>
     <strong>Where it leads now.</strong> Symmetry groups run modern physics at the deepest
     level: the Standard Model of particles is built on the groups U(1) × SU(2) × SU(3), and
