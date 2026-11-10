@@ -1,0 +1,148 @@
+[
+  {
+    "slug": "subjects/linguistics/intermediate/syntax-trees-and-rules",
+    "activities": [
+      {
+        "anchor": "The claims are testable, because constituents behave as units",
+        "type": "match",
+        "caption": "pair each diagnostic with what it shows",
+        "name": "synConstitMatch",
+        "config": {
+          "prompt": "Four diagnostics, one hidden tree — pair each with its demonstration:",
+          "pairs": [
+            { "left": "substitution — [the dog] → 'he'", "right": "the string behaves as one unit" },
+            { "left": "movement — 'The cat, the dog chased'", "right": "the phrase fronts as one piece" },
+            { "left": "coordination — [the dog] and [the cat] joined with 'and'", "right": "units can join as units" },
+            { "left": "questioning — 'What did the dog chase?'", "right": "the whole phrase moves to ask about it" }
+          ],
+          "why": "Run on any sentence, the diagnostics reveal the hidden tree without any theory loaded in advance."
+        }
+      },
+      {
+        "anchor": "Same string, different trees, different meanings",
+        "type": "spot-error",
+        "caption": "find the line the parse refuses",
+        "name": "synAmbigSpot",
+        "config": {
+          "prompt": "One line of this ambiguity report is wrong — click it:",
+          "lines": [
+            "'I saw the man with the telescope' has two parses over one string.",
+            "The prepositional phrase can attach to 'saw' — the instrument reading.",
+            "Or to 'man' — the possessor reading.",
+            "The ear picks one parse and locks it permanently.",
+            "Headlines mine the seam: 'Squad Helps Dog Bite Victim'."
+          ],
+          "errorLine": 3,
+          "correction": "The ear flickers between them — the ambiguity lives in the structure, not in any single word.",
+          "why": "Ambiguity that survives word-by-word paraphrase is the proof that structure is real."
+        }
+      },
+      {
+        "anchor": "that example is already at the edge",
+        "type": "place",
+        "caption": "drop the marker on comprehension's ceiling",
+        "name": "synNestPlace",
+        "config": {
+          "prompt": "'The cat [the dog [the man owned] chased] ran' is already at the edge. After roughly how many nestings does English comprehension give out?",
+          "labels": ["1", "2", "3", "4", "5"],
+          "scale": { "min": 1, "max": 5 },
+          "answer": 2,
+          "tolerance": 1,
+          "why": "Two — but that is memory, not grammar: the rule system itself places no ceiling on depth. Recursion is what makes language productive — indefinitely many sentences nobody has ever said before."
+        }
+      },
+      {
+        "anchor": "The same machinery explains dependencies at distance",
+        "type": "judge",
+        "caption": "true or false — key versus cabinets",
+        "name": "synAgreeJudge",
+        "config": {
+          "statements": [
+            { "s": "In 'The key to the cabinets is on the table', the verb agrees with 'key', not the nearer 'cabinets'.", "truth": true, "why": "Agreement tracks the structural head — exactly what a tree encodes and a string does not." },
+            { "s": "Agreement tracks the linear neighbour.", "truth": false, "why": "If it did, 'is' would be 'are' — the string picture fails." },
+            { "s": "Children make agreement errors with local nouns ('agreement attraction') — evidence that even immature grammars compute structure.", "truth": true, "why": "The errors are structure-shaped, not string-shaped." },
+            { "s": "A list of word-order habits could explain the agreement.", "truth": false, "why": "Some machinery is tracking structure, not linear neighbours — the tree is that machinery made visible." }
+          ]
+        }
+      },
+      {
+        "anchor": "Questions expose the tree even more sharply",
+        "type": "order",
+        "caption": "run the movement derivation in order",
+        "name": "synMoveOrder",
+        "config": {
+          "prompt": "From statement to question — order the derivation:",
+          "items": [
+            "'what' starts as the object of eat — compare 'You ate what'",
+            "the question word moves from its argument position to the front",
+            "the grammar tracks the launch site and the landing site — a gap after the verb"
+          ],
+          "why": "Passives work the same way ('The cat was chased' — the object became the subject); relative clauses and whole-clause questions inherit the machinery."
+        }
+      },
+      {
+        "anchor": "The expert payoff is that movement is",
+        "type": "branch",
+        "caption": "try to build the question — hit the barrier",
+        "name": "synIslandBranch",
+        "config": {
+          "root": "You want to ask about the thing Mary ate — but it sits inside a clause you are already wondering about.",
+          "nodes": {
+            "start": {
+              "text": "Assemble the question. What do you get?",
+              "choices": [
+                { "label": "'What do you wonder whether Mary ate?'", "next": "collapse", "feedback": "It collapses — elements cannot cross certain structural barriers." },
+                { "label": "Question within the main clause instead", "next": "fine", "feedback": "Movement within its own clause is fine — the barriers are structural, not distance-based." }
+              ]
+            },
+            "collapse": {
+              "text": "The 'island' constraints: no teacher shows you them, yet every speaker respects them without knowing they exist.",
+              "choices": []
+            },
+            "fine": {
+              "text": "'What did you eat?'-style movement launches and lands inside one clause — universal, unlearned, exceptionless.",
+              "choices": [ { "label": "Now try crossing into the embedded question anyway", "next": "collapse" } ]
+            }
+          },
+          "why": "Universal and unlearned constraints — the evidence pattern that launched the generative programme, and the reason syntax became linguistics' most theory-driven branch."
+        }
+      },
+      {
+        "anchor": "Verbs determine what can follow them",
+        "type": "sort-buckets",
+        "caption": "file each verb by its appetite",
+        "name": "synAppetiteBuckets",
+        "config": {
+          "prompt": "The trees record the demands — file each verb:",
+          "buckets": ["object required", "object impossible", "flexible — the meaning carries it"],
+          "items": [
+            { "label": "devour — 'The dragon devoured the village', never 'The dragon devoured'", "bucket": 0 },
+            { "label": "arrive", "bucket": 1 },
+            { "label": "put — it demands an object and a location ('put it there')", "bucket": 0 },
+            { "label": "eat — can drop its object when the meal is understood", "bucket": 2 },
+            { "label": "seems — 'We seem it' is nonsense", "bucket": 1 }
+          ],
+          "why": "Every speaker commands thousands of these verb-specific requirements without instruction — and the classic tacit-knowledge pair: 'The cat seems sleeping' is out, 'The cat seems to be sleeping' is fine."
+        }
+      },
+      {
+        "anchor": "Movement is not the only way to build a question",
+        "type": "compare",
+        "caption": "drag the divider — move it or leave it in place",
+        "name": "synInSituCompare",
+        "config": {
+          "prompt": "One computation, two strategies — drag the divider:",
+          "before": {
+            "label": "English — move the question word",
+            "text": "'What did you eat?' — fronted, with a gap after the verb; islands only exist in languages that move at all."
+          },
+          "after": {
+            "label": "Mandarin & Japanese — wh-in-situ",
+            "text": "'Nǐ chī shénme' — literally 'you eat what': the word stays where the missing argument belongs; Japanese adds a sentence-final particle."
+          },
+          "why": "In both, 'what' must be understood as the object of 'eat', and both respect locality the same way — the tree with its argument positions is the deep object; the linear order is a variable surface convention."
+        }
+      }
+    ]
+  }
+]

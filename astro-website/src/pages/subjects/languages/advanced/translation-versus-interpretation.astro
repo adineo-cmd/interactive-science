@@ -10,6 +10,175 @@ const transCfg = {
     { math: '4 · Machine translation changed the trade', note: 'Neural MT (Google 2016→) handles routine translation well — but struggles with nuance, register, literature and accountability. The professional now post-edits, localises, and handles what machines can\'t: cultural judgement and stakes.' },
   ],
 };
+
+const tviSkoposMatch = {
+  "prompt": "The same German line under three briefs — pair each target text with the purpose that shaped it:",
+  "pairs": [
+    {
+      "left": "\"The report must be submitted by Friday\"",
+      "right": "a legal document: obligation preserved exactly, even where it reads stiffly"
+    },
+    {
+      "left": "\"Could you make sure I have the report by Friday?\"",
+      "right": "a business email: get the report, politely"
+    },
+    {
+      "left": "\"Friday. The report. No exceptions.\"",
+      "right": "a novel's general: the command effect"
+    },
+    {
+      "left": "formal equivalence",
+      "right": "stay close to the original's form and structure"
+    },
+    {
+      "left": "dynamic equivalence",
+      "right": "reproduce the effect on the reader"
+    }
+  ],
+  "why": "Three faithful renderings of \"Der Bericht muss bis Freitag vorliegen\" — the translator's first skill is asking what this job is for, because the purpose (Vermeer's skopos, 1978) decides the strategy, not the tokens."
+};
+
+const tviLiteralSpot = {
+  "prompt": "One line of this summary is the literalism-myth speaking — click it:",
+  "lines": [
+    "Fidelity is to meaning and effect, not to tokens.",
+    "The most faithful job is the most literal one — word-for-word, structure preserved.",
+    "Rendered literally, an idiom buries its own sense.",
+    "A legal line split to mirror German word order can end up asserting something the original does not.",
+    "Word-for-word is not the safety default but one more choice."
+  ],
+  "errorLine": 1,
+  "correction": "Literal is not the default; the purpose decides — and literalism usually loses.",
+  "why": "Each of the three renderings of \"Der Bericht muss bis Freitag vorliegen\" is faithful to a purpose; none is faithful to the words alone."
+};
+
+const tviVenutiCompare = {
+  "prompt": "The culture-level choice — drag the divider:",
+  "before": {
+    "label": "Domestication: smooth into the target culture",
+    "text": "Translate the Japanese -san as Mr or Ms, rename foods, normalise word order — the translator rendered invisible. A global thriller probably wants this."
+  },
+  "after": {
+    "label": "Foreignisation: keep the strangeness visible",
+    "text": "Keep sensei, the honorifics, the syntax rhythms — readers feel they are reading something from elsewhere. A scholarly edition of The Tale of Genji may want heavy doses."
+  },
+  "why": "The choice is ideological — smoothing quietly makes the other culture fluent in ours — which is why literary work debates it openly, and why a manga series lives from the tension between the two. Localisation for products adapts formats, currencies and jokes wholesale."
+};
+
+const tviEscapesOrder = {
+  "prompt": "Five ways past the untranslatable — drag them from least to most intervention:",
+  "items": [
+    "borrowing — import the word (schadenfreude, saudade have entered English)",
+    "calque — translate the parts (\"flea market\" from marché aux puces)",
+    "substitution — a target-culture effect in place of the original (a different pun)",
+    "explanation — keep it and add a gloss",
+    "omission or compensation — drop it here, add wordplay elsewhere"
+  ],
+  "why": "Rising order of intervention — every choice loses something, and the craft is choosing deliberately what to lose, then defending the loss."
+};
+
+const tviSpanEstimate = {
+  "prompt": "Live in the booth: how far behind the speaker does a simultaneous interpreter's ear-voice span run?",
+  "unit": "seconds",
+  "answer": 3,
+  "factor": 1.7,
+  "why": "Two to four seconds — and with listening-and-analysis, memory and production sharing one working memory (Gile's effort model), interpreters work 20–30-minute shifts in pairs; numbers and idioms cause the classic failures because they are long, low-redundancy chunks that cannot be paraphrased safely.",
+  "context": "Consecutive is a different performance: Rozan's verticality notes plus trained memory for sense, not words."
+};
+
+const tviMtBuckets = {
+  "prompt": "After neural MT — file each text type by who leads:",
+  "buckets": [
+    "machine-translated, human post-edited (MTPE)",
+    "human-led"
+  ],
+  "items": [
+    {
+      "label": "product listings at volume",
+      "bucket": 0
+    },
+    {
+      "label": "internal documentation",
+      "bucket": 0
+    },
+    {
+      "label": "rough drafts for triage",
+      "bucket": 0
+    },
+    {
+      "label": "contracts and patents",
+      "bucket": 1
+    },
+    {
+      "label": "medical records",
+      "bucket": 1
+    },
+    {
+      "label": "literature and marketing",
+      "bucket": 1
+    }
+  ],
+  "why": "Machines fail exactly where professionals add value: register consistency, culture-bound reference, implicit meaning, accountability — a mistranslated dosage has a liable human name on it. Literary MT stays reliably tone-deaf: fluent sentences, wrong book."
+};
+
+const tviHaikuBranch = {
+  "root": "A publisher hands you furuike ya / kawazu tobikomu / mizu no oto — old pond / frog jumps-in / water's sound — and asks for an English page. You must choose a rendering and defend it.",
+  "nodes": {
+    "start": {
+      "text": "Which rendering do you commit to?",
+      "choices": [
+        {
+          "label": "Literal: \"The old pond — / a frog leaps in, / the sound of water\"",
+          "next": "literal",
+          "feedback": "You keep the thirteen-beat structure, the cutting word ya's pause, and the event as discovered rather than composed."
+        },
+        {
+          "label": "Domesticated: \"stillness — the frog startles the pond awake\"",
+          "next": "dom",
+          "feedback": "You gain immediacy — and lose the objectivity that makes the original feel found, not written."
+        }
+      ]
+    },
+    "literal": {
+      "text": "Your cost: the risk of flatness, traded for fidelity.",
+      "choices": [
+        {
+          "label": "State the priority order in the brief",
+          "next": "end",
+          "feedback": "Image, rhythm, register, form — declared and defended consistently."
+        }
+      ]
+    },
+    "dom": {
+      "text": "Your cost: paraphrase, traded for effect.",
+      "choices": [
+        {
+          "label": "State the priority order in the brief",
+          "next": "end",
+          "feedback": "Image, rhythm, register, form — declared and defended consistently."
+        }
+      ]
+    },
+    "end": {
+      "text": "Both renderings are defensible; each sacrifices differently. The sin is not any single loss, but unexamined, shifting losses.",
+      "choices": []
+    }
+  },
+  "why": "Scale the same choices up and you have literary work's whole economy: rhythm versus sense, strangeness versus fluency, the poem the author wrote versus the poem the reader would have had."
+};
+
+const tviFlowCloze = {
+  "text": "The sequence runs %%brief%% → draft → revision → proof; the draft is for sense, the separate revision pass is for the target language, the proof is mechanical. Score the result against the error taxonomy — accuracy, terminology, register/style — and let back-translation stay a %%diagnostic%%, never the grade.",
+  "answers": [
+    [
+      "brief"
+    ],
+    [
+      "diagnostic"
+    ]
+  ],
+  "hint": "The skopos made operational opens the pipeline; and back-translation flags ambiguities without measuring anything."
+};
 ---
 <TopicPage slug="subjects/languages/advanced/translation-versus-interpretation">
   <h2>Where you are, and what you will learn</h2>
@@ -67,7 +236,9 @@ const transCfg = {
     "Friday. The report. No exceptions." (effect: command). Three faithful translations of one sentence —
     the translator's first skill is asking <em>what this translation is for</em>.
   </p>
+  <Widget no="2" caption="pair each rendering with the skopos that shaped it" widget="match" config={tviSkoposMatch} />
   <p><em>Common misconception:</em> the most faithful translation is the most literal one — word-for-word, structure preserved, additions resisted. Fidelity is to meaning and effect, not to tokens: rendered literally, an idiom buries its own sense, and a legal sentence split to mirror the German word order can end up asserting something the source does not. The three renderings of "Der Bericht muss bis Freitag vorliegen" above are each faithful <em>to a purpose</em>; none is faithful to the words alone. Word-for-word is not the safety default but one more choice — and usually the wrong one.</p>
+  <Widget no="3" caption="find the line the literalism-myth would love" widget="spot-error" config={tviLiteralSpot} />
   <p>
     <strong>So far:</strong> equivalence is always to a purpose, and the purpose is yours to
     declare before you begin. The next choice operates one level up: not the sentence, but the
@@ -88,6 +259,7 @@ const transCfg = {
     date formats, currencies, colour connotations, jokes and imagery are adapted wholesale, which is why
     global software is "localised," not merely translated.
   </p>
+  <Widget no="4" caption="drag the divider — smooth it out, or keep the strangeness" widget="compare" config={tviVenutiCompare} />
 
   <h2>The untranslatable inventory — and the five escapes</h2>
   <p>
@@ -106,6 +278,7 @@ const transCfg = {
     (drop it here, add wordplay elsewhere). Every choice loses something; the craft is choosing
     <em>deliberately</em> what to lose, and being able to defend the choice.
   </p>
+  <Widget no="5" caption="line up the five escapes by intervention" widget="order" config={tviEscapesOrder} />
   <p>
     <strong>So far:</strong> everything above belongs to the written craft, where time is the
     resource that buys quality. Now the clock inverts: the live craft renders in seconds, and
@@ -127,6 +300,7 @@ const transCfg = {
     are the performance's technique. <strong>Sight translation</strong> (reading a document aloud in the
     other language) sits between the crafts and is used more than either beginners expect.
   </p>
+  <Widget no="6" caption="call the booth's lag" widget="estimate" config={tviSpanEstimate} />
   <p><em>Common misconception:</em> interpretation is just fast translation — the same craft with the clock compressed. The cognitive profiles barely overlap: translation revises what it produces, while interpretation commits in seconds with no second pass; consecutive builds a note-taking and memory system of its own; simultaneous demands split attention and deverbalisation that no writing desk ever trains. This is why the professions train separately, why simultaneous interpreters work in timed pairs, and why a superb translator can be a poor interpreter — and the reverse.</p>
 
   <h2>The machine and the modern trade</h2>
@@ -142,6 +316,7 @@ const transCfg = {
     wrong book. The craft implication for the C1 learner: the commodity floor has risen; what commands work
     is domain expertise, judgement, revision quality, and the interpersonal trust machines do not carry.
   </p>
+  <Widget no="7" caption="file each text by who leads after neural MT" widget="sort-buckets" config={tviMtBuckets} />
   <p>
     <strong>So far:</strong> the machine took the commodity floor and left the judgement
     summit. Before the workflow and the brief, one miniature — a single haiku — shows why that
@@ -163,6 +338,7 @@ const transCfg = {
     translator chooses a <em>priority order</em> for each text (image, rhythm, register, form) and
     defends it consistently — the sin is not any single loss, but unexamined, shifting losses.
   </p>
+  <Widget no="8" caption="commit to a rendering, then defend the loss" widget="branch" config={tviHaikuBranch} />
 
   <h2>Quality, workflow, and the interpreter's oath</h2>
   <p>
@@ -182,6 +358,7 @@ const transCfg = {
     decisions depend on the words arriving undistorted. The modern professional, in short, pairs the
     machine's throughput with the oath's judgement.
   </p>
+  <Widget no="9" caption="fill the pipeline's first and last guard-rails" widget="cloze" config={tviFlowCloze} />
   <p><em>Common misconception:</em> you can quality-check a translation by translating it back — if the round trip matches, the job is sound. Back-translation is a diagnostic, not a measure: it rewards word-order mimicry and punishes exactly the legitimate restructuring that a skopos sometimes demands, while staying silent about a mistranslation that happens to be symmetrical. Two texts can round-trip beautifully and still mean different things; the check that works is the error taxonomy, applied against the source by someone who knows both languages.</p>
 
   <h2>The decision tree, formalised: a translation brief in action</h2>

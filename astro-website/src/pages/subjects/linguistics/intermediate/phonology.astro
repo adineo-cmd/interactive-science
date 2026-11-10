@@ -19,6 +19,193 @@ const phonologyQuizCfg = {
     { q: 'Japanese "sutoraiku" for English "strike" is an example of…', choices: ['translation', 'loanword adaptation to phonotactics', 'vowel shift', 'assimilation of meaning'], answer: 1, why: 'Japanese syllables are (mostly) consonant-plus-vowel, so forbidden clusters get repaired with epenthetic vowels — the borrower\'s sound system processes the loan.' },
   ],
 };
+
+const poRelBuckets = {
+  "prompt": "An inventory is a fact about a language — file each case:",
+  "buckets": [
+    "contrastive in English — separate phonemes",
+    "merged in English — one phoneme here, split or used elsewhere"
+  ],
+  "items": [
+    {
+      "label": "sip/zip, cat/bat, light/right — swap the sound, swap the meaning",
+      "bucket": 0
+    },
+    {
+      "label": "Hindi's dental versus retroflex t — two phonemes there; English hears one",
+      "bucket": 1
+    },
+    {
+      "label": "p versus b for Arabic speakers — borrowings with p come out as b, and the difference sounds alien rather than meaningful",
+      "bucket": 1
+    },
+    {
+      "label": "Thai's aspirated p — contrastive there; English treats both p-sounds as one",
+      "bucket": 1
+    }
+  ],
+  "why": "About 24 consonants and around 20 vowels — roughly 44, a middling count: the inventory is about the language's organisation, not the sounds themselves."
+};
+
+const poAlloMatch = {
+  "prompt": "The phoneme is the character; allophones are the costumes — pair them:",
+  "pairs": [
+    {
+      "left": "/p/ at the start of a stressed syllable ('pin', 'attack')",
+      "right": "aspirated [pʰ]"
+    },
+    {
+      "left": "/p/ after s ('spin', 'suspend')",
+      "right": "unaspirated [p]"
+    },
+    {
+      "left": "/l/ before vowels ('leaf')",
+      "right": "clear l — front of tongue raised"
+    },
+    {
+      "left": "/l/ at word ends ('feel')",
+      "right": "dark l — back of tongue raised"
+    }
+  ],
+  "why": "The aspiration rule is exceptionless across the lexicon and applied every second — yet no speaker can state it."
+};
+
+const poDiagnoseBranch = {
+  "root": "Fieldwork: an unwritten language, two sounds on tape. What are they to each other?",
+  "nodes": {
+    "start": {
+      "text": "Swapping one sound for the other sometimes changes a word's meaning — unpredictably. Verdict?",
+      "choices": [
+        {
+          "label": "Contrastive — separate phonemes",
+          "next": "phoneme",
+          "feedback": "Meaning-differences that resist prediction are the phoneme signature."
+        },
+        {
+          "label": "The difference tracks position — one only ever appears before a stressed vowel",
+          "next": "allophone",
+          "feedback": "Predictable from position: allophones."
+        }
+      ]
+    },
+    "phoneme": {
+      "text": "Separate phonemes — the contrast lives in the inventory. But the two sounds are acoustically very similar; does that matter?",
+      "choices": [
+        {
+          "label": "Ask what the ear alone can decide",
+          "next": "ear"
+        }
+      ]
+    },
+    "allophone": {
+      "text": "Allophones — the costume, not the character. A learner's native system will transfer: producing these where the target language has phonemes.",
+      "choices": [
+        {
+          "label": "But no minimal pair exists for them anywhere — now what?",
+          "next": "fieldwork"
+        }
+      ]
+    },
+    "ear": {
+      "text": "Acoustic distance misleads: clear and dark l differ dramatically yet are allophones, while Hindi's dental and retroflex t are acoustically close and are separate phonemes. Contrast, not similarity, decides.",
+      "choices": []
+    },
+    "fieldwork": {
+      "text": "Most contrasts in most languages lack a perfect pair — fall back on patterned distribution: patient word lists, and the wug test run in reverse on an adult system.",
+      "choices": []
+    }
+  },
+  "why": "Contrast versus predictability decides; the ear alone misleads — and accent transfer falls straight out of it: allophones where the target language has phonemes."
+};
+
+const poPluralSpot = {
+  "prompt": "One line of this plural report is wrong — click it:",
+  "lines": [
+    "After voiceless sounds the ending is [s]: cats, books.",
+    "After voiced sounds it is [z]: dogs, pens.",
+    "After sibilants it is [ɪz]: buses, judges.",
+    "You memorise the ending word by word.",
+    "Children overapply the rule ('foots', 'goed') before settling on the exceptions."
+  ],
+  "errorLine": 3,
+  "correction": "Nobody memorised it per word — the rule assigns by the final sound across the whole lexicon, nonsense words included ('the plural of blork is blorks').",
+  "why": "Overapplication is the fingerprint of a rule at work — the same logic the wug test made famous."
+};
+
+const poHawaiiEstimate = {
+  "prompt": "Japanese syllables are almost strictly consonant-plus-vowel; English permits three-consonant onsets ('strength') and a four-consonant coda (/strɛŋkθs/). How many consonants does Hawaiian's entire phonology run?",
+  "unit": "consonants",
+  "answer": 8,
+  "factor": 1.4,
+  "why": "Eight consonants and five vowels, with syllables that never end in a consonant — legality lines each language draws for itself, which is why 'bnick' sounds impossible and 'Klaxon' feels native.",
+  "context": "Phonotactics can be stated precisely enough to program — and loanwords get forced through it ('sutoraiku' for strike)."
+};
+
+const poConnectedMatch = {
+  "prompt": "Rule-governed interactions — pair the process with its example:",
+  "pairs": [
+    {
+      "left": "'input' sounding like 'imput'",
+      "right": "assimilation — the sound copies its neighbour's features"
+    },
+    {
+      "left": "'camera' to 'camra', 'chocolate' to \"choc'late\"",
+      "right": "deletion — sounds vanish in fast speech, predictably"
+    },
+    {
+      "left": "'hamster' heard as 'hampster'",
+      "right": "epenthesis — an insertion repairs an illegal sequence"
+    },
+    {
+      "left": "written transcriptions of real speech always look wrong",
+      "right": "the ear cleans up what the mouth did — perception runs through the phoneme layer"
+    }
+  ],
+  "why": "All three run automatically, below awareness — evidence that perception is organised, not raw."
+};
+
+const poAccentCompare = {
+  "prompt": "Rhoticity — the same grammar, different settings — drag the divider:",
+  "before": {
+    "label": "Rhotic — most American and Irish accents",
+    "text": "'Car' keeps its r-sound before consonants — one rule, switched on."
+  },
+  "after": {
+    "label": "Non-rhotic — most English and Australian accents",
+    "text": "The r is deleted before consonants — the same rule, switched off. Mergers ('cot'/'caught' collapsing into one vowel, spreading right now) and th-fronting ('fink' for 'think') are more settings, not sloppiness."
+  },
+  "why": "Because rules are systematic, accents are mutually intelligible systems with predictable maps of difference — the same machinery that ran the Great Vowel Shift, rule by rule."
+};
+
+const poStressJudge = {
+  "statements": [
+    {
+      "s": "'INsult' the noun versus 'inSULT' the verb — stress alone fixes the meaning.",
+      "truth": true,
+      "why": "Nouns and verbs borrowed as pairs swap stress; no letters change."
+    },
+    {
+      "s": "Vowels reduce to schwa when unstressed — 'photograph' versus 'photography' has the same letters and different vowels.",
+      "truth": true,
+      "why": "The stress moved, so the vowels followed."
+    },
+    {
+      "s": "English is syllable-timed: every syllable gets an even slice of time.",
+      "truth": false,
+      "why": "English is stress-timed — stressed syllables land at roughly even intervals while unstressed ones crowd between."
+    },
+    {
+      "s": "The aspiration of 'pin' appears word-initially before a stressed vowel — stress conditions the allophones.",
+      "truth": true,
+      "why": "The rule's environment is stated in stress terms."
+    },
+    {
+      "s": "Second-language learners rarely need to add English stress consciously.",
+      "truth": false,
+      "why": "It is the feature learners most often have to add consciously — the rhythm they hear as the language's music."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/linguistics/intermediate/phonology">
 
@@ -80,6 +267,7 @@ const phonologyQuizCfg = {
     about 24 consonant phonemes and (by accent) somewhere around 20 vowels and diphthongs —
     roughly 44 in total, a middling number by world standards.
   </p>
+  <Widget no="3" caption="same two sounds, different languages, different fates" widget="sort-buckets" config={poRelBuckets} />
   <p><em>Common misconception:</em> phonemes are not the same as letters. "Sh" is one
   phoneme written with two letters; "x" in "box" is two phonemes (k, s) in one letter;
   and rhotic accents have more vowel contrasts than non-rhotic ones. The phoneme lives in
@@ -104,6 +292,7 @@ const phonologyQuizCfg = {
     some languages use the two l-sounds as separate phonemes. Allophones are the costume;
     the phoneme is the character.
   </p>
+  <Widget no="4" caption="pair each environment with the costume it gets" widget="match" config={poAlloMatch} />
   <p>
     The diagnostic, formalised: sounds are separate phonemes if the difference is
     <strong>contrastive</strong> (creates meaning differences, unpredictably) and
@@ -113,6 +302,7 @@ const phonologyQuizCfg = {
     learner) or missing contrasts the target language requires (the Japanese r/l merger).
     Accents are phonologies colliding, not mouths failing.
   </p>
+  <Widget no="5" caption="diagnose two sounds — walk the decision" widget="branch" config={poDiagnoseBranch} />
   <p><em>Common misconception:</em> sounds are separate phonemes when they sound very different, and allophones when they sound similar. The diagnostic is contrast, not acoustic distance: English's clear and dark l differ dramatically yet are allophones, while Hindi's dental and retroflex t are acoustically close and are separate phonemes. Predictability versus contrast decides; the ear alone misleads.</p>
 
   <h2>Rules are real: the plural and the wug test</h2>
@@ -125,6 +315,7 @@ const phonologyQuizCfg = {
     overapply it ("foots", "goed") before settling on the exceptions — overapplication is
     the fingerprint of a rule at work.
   </p>
+  <Widget no="6" caption="find the line the rule refuses" widget="spot-error" config={poPluralSpot} />
   <p>
     The experimental proof is the <strong>wug test</strong> (Jean Berko Gleason, 1958):
     children shown a drawing of an imaginary creature — "This is a wug" — and shown two of
@@ -157,6 +348,7 @@ const phonologyQuizCfg = {
     brand-names feel native ("Klaxon" yes, "Mxlot" no) and why the constraints can be
     stated precisely enough to program.
   </p>
+  <Widget no="7" caption="call Hawaiian's whole inventory" widget="estimate" config={poHawaiiEstimate} />
 
   <h2>Processes in connected speech</h2>
   <p>
@@ -171,6 +363,7 @@ const phonologyQuizCfg = {
     look wrong: the ear cleans up what the mouth actually did, which is itself evidence
     that perception runs through the phoneme layer, not the raw phonetic one.
   </p>
+  <Widget no="8" caption="pair each process with its giveaway" widget="match" config={poConnectedMatch} />
 
   <h2>Accents as rule systems: the same grammar, different settings</h2>
   <p>
@@ -189,6 +382,7 @@ const phonologyQuizCfg = {
     comparative method in historical linguistics is built directly on phonology's
     regularity.
   </p>
+  <Widget no="9" caption="drag the divider — one rule, two settings" widget="compare" config={poAccentCompare} />
   <p><em>Common misconception:</em> a foreign accent is a mouth problem — the tongue is "too thick" for the new sounds. Accents are phonologies colliding: the speaker transfers their native system, producing allophones where the target language has phonemes and missing the contrasts it requires. The anatomy is fine; the settings are wrong — which is why adult learners can retrain once they learn to hear the missing contrast.</p>
 
   <h2>Stress: the hidden organiser</h2>
@@ -205,6 +399,7 @@ const phonologyQuizCfg = {
     the rhythm native speakers hear as the language's music, and the feature second-
     language learners most often have to add consciously.
   </p>
+  <Widget no="10" caption="true or false — the hidden organiser" widget="judge" config={poStressJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -356,6 +356,30 @@
 | law/advanced/property-law | match, sort-buckets, place, predict, match, estimate, spot-error, order | next-10 |
 | law/advanced/torts-and-liability | sort-buckets, plotter, judge, match, sort-buckets, spot-error, compare, predict | next-10 |
 | law/expert/comparative-legal-systems | match, compare, sort-buckets, branch, spot-error, predict, timeline, match | next-10 |
+| languages/advanced/register-idiom-and-slang | match, sort-buckets, estimate, spot-error, branch, compare, match, predict | next-11 |
+| languages/advanced/translation-versus-interpretation | match, spot-error, compare, order, estimate, sort-buckets, branch, cloze | next-11 |
+| languages/advanced/writing-systems-of-the-world | timeline, match, spot-error, estimate, sort-buckets, estimate, order, match | next-11 |
+| law/expert/international-law | estimate, match, branch, sort-buckets, spot-error, match, predict, compare | next-11 |
+| law/expert/jurisprudence-what-is-law | match, compare, branch, sort-buckets, estimate, spot-error, match, place | next-11 |
+| law/foundational/what-makes-a-law | sort-buckets, order, compare, judge, order, spot-error, match, cloze | next-11 |
+| law/intermediate/criminal-vs-civil-law | match, place, predict, sort-buckets, order, estimate, compare, match | next-11 |
+| law/intermediate/how-a-case-moves-through-court | match, order, branch, sort-buckets, judge, match, compare, order | next-11 |
+| law/intermediate/sources-of-law | estimate, match, estimate, spot-error, match, sort-buckets, predict, compare | next-11 |
+| library-science/foundational/foundations-of-library-science | spot-error, timeline, predict, estimate, order, cloze, match, sort-buckets | next-11 |
+| linguistics/advanced/historical-linguistics | match, spot-error, order, estimate, predict, compare, judge, branch | next-11 |
+| linguistics/advanced/psycholinguistics-and-acquisition | order, match, spot-error, branch, place, judge, cloze, order | next-11 |
+| linguistics/advanced/sociolinguistics | sort-buckets, spot-error, trace, match, branch, compare, order, judge | next-12 |
+| linguistics/expert/computational-linguistics | plotter, estimate, match, sort-buckets, spot-error, order, compare, timeline | next-12 |
+| linguistics/expert/generative-grammar | match, compare, sort-buckets, spot-error, order, judge, cloze, branch | next-12 |
+| linguistics/foundational/how-language-works | estimate, match, sort-buckets, spot-error, judge, cloze, order, branch | next-12 |
+| linguistics/intermediate/morphology | order, match, sort-buckets, estimate, compare, match, spot-error, place | next-12 |
+| linguistics/intermediate/phonetics-and-the-ipa | match, sort-buckets, judge, cloze, order, estimate, spot-error, place | next-12 |
+| linguistics/intermediate/phonology | sort-buckets, match, branch, spot-error, estimate, match, compare, judge | next-12 |
+| linguistics/intermediate/semantics-and-pragmatics | match, sort-buckets, judge, compare, spot-error, order, judge, branch | next-12 |
+| linguistics/intermediate/syntax-trees-and-rules | match, spot-error, place, judge, order, branch, sort-buckets, compare | next-12 |
+| literature/advanced/literary-theory | match, sort-buckets, spot-error, match, compare, judge, order, branch | next-12 |
+| literature/advanced/modernism-and-postmodernism | match, spot-error, match, order, sort-buckets, judge, branch, sort-buckets | next-12 |
+| literature/expert/comparative-literature | match, spot-error, sort-buckets, compare, judge, match, estimate, spot-error | next-12 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

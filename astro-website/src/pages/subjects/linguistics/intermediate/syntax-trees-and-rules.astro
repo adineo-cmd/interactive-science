@@ -19,6 +19,176 @@ const syntaxQuizCfg = {
     { q: 'The generative programme (Chomsky, 1957 onward) claims syntax is…', choices: ['learned by imitation', 'a formal system with universal principles', 'a list of phrases to memorise', 'the same in every species'], answer: 1, why: 'Syntactic knowledge is productive, rule-governed and shared in outline across languages — Chomsky formalised it as a mental system, the most influential (and contested) theory in the field.' },
   ],
 };
+
+const synConstitMatch = {
+  "prompt": "Four diagnostics, one hidden tree — pair each with its demonstration:",
+  "pairs": [
+    {
+      "left": "substitution — [the dog] → 'he'",
+      "right": "the string behaves as one unit"
+    },
+    {
+      "left": "movement — 'The cat, the dog chased'",
+      "right": "the phrase fronts as one piece"
+    },
+    {
+      "left": "coordination — [the dog] and [the cat] joined with 'and'",
+      "right": "units can join as units"
+    },
+    {
+      "left": "questioning — 'What did the dog chase?'",
+      "right": "the whole phrase moves to ask about it"
+    }
+  ],
+  "why": "Run on any sentence, the diagnostics reveal the hidden tree without any theory loaded in advance."
+};
+
+const synAmbigSpot = {
+  "prompt": "One line of this ambiguity report is wrong — click it:",
+  "lines": [
+    "'I saw the man with the telescope' has two parses over one string.",
+    "The prepositional phrase can attach to 'saw' — the instrument reading.",
+    "Or to 'man' — the possessor reading.",
+    "The ear picks one parse and locks it permanently.",
+    "Headlines mine the seam: 'Squad Helps Dog Bite Victim'."
+  ],
+  "errorLine": 3,
+  "correction": "The ear flickers between them — the ambiguity lives in the structure, not in any single word.",
+  "why": "Ambiguity that survives word-by-word paraphrase is the proof that structure is real."
+};
+
+const synNestPlace = {
+  "prompt": "'The cat [the dog [the man owned] chased] ran' is already at the edge. After roughly how many nestings does English comprehension give out?",
+  "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 5
+  },
+  "answer": 2,
+  "tolerance": 1,
+  "why": "Two — but that is memory, not grammar: the rule system itself places no ceiling on depth. Recursion is what makes language productive — indefinitely many sentences nobody has ever said before."
+};
+
+const synAgreeJudge = {
+  "statements": [
+    {
+      "s": "In 'The key to the cabinets is on the table', the verb agrees with 'key', not the nearer 'cabinets'.",
+      "truth": true,
+      "why": "Agreement tracks the structural head — exactly what a tree encodes and a string does not."
+    },
+    {
+      "s": "Agreement tracks the linear neighbour.",
+      "truth": false,
+      "why": "If it did, 'is' would be 'are' — the string picture fails."
+    },
+    {
+      "s": "Children make agreement errors with local nouns ('agreement attraction') — evidence that even immature grammars compute structure.",
+      "truth": true,
+      "why": "The errors are structure-shaped, not string-shaped."
+    },
+    {
+      "s": "A list of word-order habits could explain the agreement.",
+      "truth": false,
+      "why": "Some machinery is tracking structure, not linear neighbours — the tree is that machinery made visible."
+    }
+  ]
+};
+
+const synMoveOrder = {
+  "prompt": "From statement to question — order the derivation:",
+  "items": [
+    "'what' starts as the object of eat — compare 'You ate what'",
+    "the question word moves from its argument position to the front",
+    "the grammar tracks the launch site and the landing site — a gap after the verb"
+  ],
+  "why": "Passives work the same way ('The cat was chased' — the object became the subject); relative clauses and whole-clause questions inherit the machinery."
+};
+
+const synIslandBranch = {
+  "root": "You want to ask about the thing Mary ate — but it sits inside a clause you are already wondering about.",
+  "nodes": {
+    "start": {
+      "text": "Assemble the question. What do you get?",
+      "choices": [
+        {
+          "label": "'What do you wonder whether Mary ate?'",
+          "next": "collapse",
+          "feedback": "It collapses — elements cannot cross certain structural barriers."
+        },
+        {
+          "label": "Question within the main clause instead",
+          "next": "fine",
+          "feedback": "Movement within its own clause is fine — the barriers are structural, not distance-based."
+        }
+      ]
+    },
+    "collapse": {
+      "text": "The 'island' constraints: no teacher shows you them, yet every speaker respects them without knowing they exist.",
+      "choices": []
+    },
+    "fine": {
+      "text": "'What did you eat?'-style movement launches and lands inside one clause — universal, unlearned, exceptionless.",
+      "choices": [
+        {
+          "label": "Now try crossing into the embedded question anyway",
+          "next": "collapse"
+        }
+      ]
+    }
+  },
+  "why": "Universal and unlearned constraints — the evidence pattern that launched the generative programme, and the reason syntax became linguistics' most theory-driven branch."
+};
+
+const synAppetiteBuckets = {
+  "prompt": "The trees record the demands — file each verb:",
+  "buckets": [
+    "object required",
+    "object impossible",
+    "flexible — the meaning carries it"
+  ],
+  "items": [
+    {
+      "label": "devour — 'The dragon devoured the village', never 'The dragon devoured'",
+      "bucket": 0
+    },
+    {
+      "label": "arrive",
+      "bucket": 1
+    },
+    {
+      "label": "put — it demands an object and a location ('put it there')",
+      "bucket": 0
+    },
+    {
+      "label": "eat — can drop its object when the meal is understood",
+      "bucket": 2
+    },
+    {
+      "label": "seems — 'We seem it' is nonsense",
+      "bucket": 1
+    }
+  ],
+  "why": "Every speaker commands thousands of these verb-specific requirements without instruction — and the classic tacit-knowledge pair: 'The cat seems sleeping' is out, 'The cat seems to be sleeping' is fine."
+};
+
+const synInSituCompare = {
+  "prompt": "One computation, two strategies — drag the divider:",
+  "before": {
+    "label": "English — move the question word",
+    "text": "'What did you eat?' — fronted, with a gap after the verb; islands only exist in languages that move at all."
+  },
+  "after": {
+    "label": "Mandarin & Japanese — wh-in-situ",
+    "text": "'Nǐ chī shénme' — literally 'you eat what': the word stays where the missing argument belongs; Japanese adds a sentence-final particle."
+  },
+  "why": "In both, 'what' must be understood as the object of 'eat', and both respect locality the same way — the tree with its argument positions is the deep object; the linear order is a variable surface convention."
+};
 ---
 <TopicPage slug="subjects/linguistics/intermediate/syntax-trees-and-rules">
 
@@ -82,6 +252,7 @@ const syntaxQuizCfg = {
     tests, run on any sentence, reveal the hidden tree without any theory loaded in
     advance.
   </p>
+  <Widget no="3" caption="pair each diagnostic with what it shows" widget="match" config={synConstitMatch} />
   <p>
     Trees then do real explanatory work. <strong>Structural ambiguity</strong>: "I saw the
     man with the telescope" has two parses — the prepositional phrase attaches to "saw"
@@ -92,6 +263,7 @@ const syntaxQuizCfg = {
     meaning. Ambiguity that survives word-by-word paraphrase is the proof that structure
     is real.
   </p>
+  <Widget no="4" caption="find the line the parse refuses" widget="spot-error" config={synAmbigSpot} />
   <p><em>Common misconception:</em> "constituents are just phrases you can name from a
   list — you learn that a noun phrase is determiner-plus-adjectives-plus-noun." The
   tests run in the reverse direction: you do not decide a string is a unit by
@@ -114,6 +286,7 @@ const syntaxQuizCfg = {
     rules yielding sentences nobody has ever said before, indefinitely many of them. Every
     new sentence you produce today is a demonstration.
   </p>
+  <Widget no="5" caption="drop the marker on comprehension's ceiling" widget="place" config={synNestPlace} />
   <p>
     The same machinery explains dependencies at distance. In "The key to the cabinets is
     on the table", the verb agrees with "key", not the nearer "cabinets" — agreement tracks
@@ -122,6 +295,7 @@ const syntaxQuizCfg = {
     nouns (the experimental literature on "agreement attraction") — evidence that even
     immature grammars are computing structure, not strings.
   </p>
+  <Widget no="6" caption="true or false — key versus cabinets" widget="judge" config={synAgreeJudge} />
   <p><em>Common misconception:</em> "a sentence is just its words in order, and grammar
   is a list of word-order habits." Agreement refutes the string picture: in "The key
   to the cabinets is on the table", the verb agrees with "key", the structural head,
@@ -139,6 +313,7 @@ const syntaxQuizCfg = {
     ("the cat [that the dog chased __]") and even whole-clause questions inherit the
     machinery.
   </p>
+  <Widget no="7" caption="run the movement derivation in order" widget="order" config={synMoveOrder} />
   <p>
     The expert payoff is that movement is <strong>constrained</strong>. Try to question out
     of an embedded clause with a question of its own — "What do you wonder whether Mary
@@ -148,6 +323,7 @@ const syntaxQuizCfg = {
     evidence pattern that launched the generative programme, and the reason syntax became
     linguistics' most theory-driven branch.
   </p>
+  <Widget no="8" caption="try to build the question — hit the barrier" widget="branch" config={synIslandBranch} />
 
   <h2>Verbs and their appetites: subcategorisation</h2>
   <p>
@@ -163,6 +339,7 @@ const syntaxQuizCfg = {
     meet — verbs assign roles (who does, who undergoes) to their structural positions, the
     bridge the semantics lesson will cross.
   </p>
+  <Widget no="9" caption="file each verb by its appetite" widget="sort-buckets" config={synAppetiteBuckets} />
   <p><em>Common misconception:</em> "grammar" as taught in school (don't split
   infinitives, no sentence fragments) is prescriptive etiquette. Descriptive syntax is
   something different and deeper: the rules every speaker actually obeys — the islands,
@@ -237,6 +414,7 @@ const syntaxQuizCfg = {
     argument positions) is the deep object and the linear order a variable surface
     convention.
   </p>
+  <Widget no="10" caption="drag the divider — move it or leave it in place" widget="compare" config={synInSituCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

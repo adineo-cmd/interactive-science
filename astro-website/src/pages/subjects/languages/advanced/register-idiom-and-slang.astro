@@ -10,6 +10,205 @@ const regCfg = {
     { math: '4 · Humor is the final exam', note: 'Puns, irony and sarcasm depend on pragmatics (the linguistics lesson) plus cultural knowledge. When you can make a native speaker laugh — deliberately — you\'ve crossed into real sociolinguistic competence.' },
   ],
 };
+
+const risDialsMatch = {
+  "prompt": "The three dials of situation — pair each with the feature it selects:",
+  "pairs": [
+    {
+      "left": "field — what is being talked about",
+      "right": "vocabulary and jargon"
+    },
+    {
+      "left": "tenor — the relationship",
+      "right": "politeness, formality, the T–V pronoun choice"
+    },
+    {
+      "left": "mode — the channel",
+      "right": "density and structure: writing nominalises, speech hesitates"
+    },
+    {
+      "left": "a mis-keyed message",
+      "right": "outsider status, signalled faster than any grammar slip"
+    }
+  ],
+  "why": "One message, four keys: the professor email, the friend text, the workplace channel and the partner note were all grammatical — the dial, not the grammar, is what natives use to place each other."
+};
+
+const risMarkerBuckets = {
+  "prompt": "As formality rises, features climb, fall or track the relationship — file each:",
+  "buckets": [
+    "rises with formality",
+    "falls as formality rises",
+    "tracks tenor, not formality"
+  ],
+  "items": [
+    {
+      "label": "\"the implementation of the policy\" instead of \"when they put the plan in place\"",
+      "bucket": 0
+    },
+    {
+      "label": "nominalisation packing processes into analysable things",
+      "bucket": 0
+    },
+    {
+      "label": "contractions — \"cannot\" becoming \"can't\"",
+      "bucket": 1
+    },
+    {
+      "label": "fillers and casual discourse markers: \"like\", \"you know\"",
+      "bucket": 1
+    },
+    {
+      "label": "hedging: \"might\", \"perhaps\", \"I was wondering\"",
+      "bucket": 2
+    },
+    {
+      "label": "the T–V choice: tu/vous, du/Sie, tú/usted",
+      "bucket": 2
+    },
+    {
+      "label": "office jargon as compression and membership badge: \"let's circle back\"",
+      "bucket": 2
+    }
+  ],
+  "why": "Density and nominalisation climb; contractions and fillers drop; hedging and pronoun choice encode social distance — and the register-switching drill (say it to a judge, a friend and a five-year-old) makes your own dial settings visible."
+};
+
+const risChunkEstimate = {
+  "prompt": "What share of real spoken and written discourse is prefabricated chunks rather than novel combinations?",
+  "unit": "% of text",
+  "answer": 50,
+  "factor": 1.4,
+  "why": "About half: natives sound fast because they assemble from ready-made blocks — which is why memorising high-frequency chunks beats generating word by word, and why idioms must be learned whole, with their social settings attached.",
+  "context": "Deploy \"kick the bucket\" in a condolence message and you have an error no grammar checker would catch."
+};
+
+const risIdiomSpot = {
+  "prompt": "One line of this summary is the vocabulary-myth speaking — click it:",
+  "lines": [
+    "Idioms are frozen forms: \"kick the bucket\", never \"kick the bucket violently, twice by John\".",
+    "A large vocabulary is enough to work any idiom out from its words.",
+    "\"Kick the bucket\" is informal and faintly comic — a condolence-message hazard.",
+    "Word-for-word rendering yields nonsense: Dutch \"it rains old women and pikesticks\".",
+    "Idioms learned from shows and conversations arrive with frequency and social setting pre-installed."
+  ],
+  "errorLine": 1,
+  "correction": "Frozen means the sense cannot be assembled from the parts — quasi-transparent ones are the most dangerous precisely because you think you follow them.",
+  "why": "Chunk inventory, not word count, drives fluency — and idioms from lists arrive without the social settings that decide whether they fit."
+};
+
+const risSlangBranch = {
+  "root": "You are out with people your age in the target-language city. Someone drops a slang item you have heard exactly once, three months ago. You want to belong. What do you do with that item?",
+  "nodes": {
+    "start": {
+      "text": "The item is current, in-group, and you are not sure of its edges. First decision:",
+      "choices": [
+        {
+          "label": "Deploy it immediately — belonging demands production",
+          "next": "bet",
+          "feedback": "Production is a status bet: misfired slang reads as trying too hard, and a misfire is remembered."
+        },
+        {
+          "label": "Bank it for recognition, keep producing neutral choices",
+          "next": "check",
+          "feedback": "Comprehension is risk-free and always useful — the asymmetry rule at work."
+        },
+        {
+          "label": "Steer clear of slang altogether tonight",
+          "next": "distant",
+          "feedback": "Total avoidance has a cost too: it reads as distant or stiff."
+        }
+      ]
+    },
+    "bet": {
+      "text": "You used it. It landed oddly — a pause, a half-smile. What happened?",
+      "choices": [
+        {
+          "label": "You broke a context boundary you could not see",
+          "next": "lesson",
+          "feedback": "Slang is context-bound: office, school and internet varieties barely overlap, and one item does not transfer across them."
+        }
+      ]
+    },
+    "check": {
+      "text": "When would producing it become the right call?",
+      "choices": [
+        {
+          "label": "Once you have heard speakers of your own age-and-context profile use it",
+          "next": "lesson",
+          "feedback": "Exactly — the subscription rule: only current, in-the-wild input keeps an item working."
+        },
+        {
+          "label": "Once a dictionary lists it",
+          "next": "lesson",
+          "feedback": "Too slow: by the time a dictionary prints a term, its young users may have moved on."
+        }
+      ]
+    },
+    "distant": {
+      "text": "You stayed silent and formal all evening.",
+      "choices": [
+        {
+          "label": "Reconsider the middle path",
+          "next": "check",
+          "feedback": "Recognise everything, produce selectively — the symmetric dilemma has a known exit."
+        }
+      ]
+    },
+    "lesson": {
+      "text": "Recognise everything, produce selectively — and only items you have heard from speakers of your own age-and-context profile.",
+      "choices": []
+    }
+  },
+  "why": "The dilemma is symmetrical — wrong slang tries too hard, no slang reads distant — and recognition is risk-free while production is a bet; verlan (meuf from femme) and internet coinages turn over too fast for memorised lists."
+};
+
+const risPoliteCompare = {
+  "prompt": "One face-threat, two softening sites — drag the divider:",
+  "before": {
+    "label": "English: soften with hedges and questions",
+    "text": "\"I was wondering whether...\" is not a question about wondering — indirectness scales with social distance and power."
+  },
+  "after": {
+    "label": "Japanese: build respect into the grammar",
+    "text": "Whole grammatical systems of honorifics carry the face-work; requests wrap themselves in negatives and conditionals to preserve the other's option to refuse."
+  },
+  "why": "German directness reads as rude to a hedging culture and honest to itself — and pragmatic transfer is the C1 learner's most persistent residue: a grammatically perfect request imported from your first language's system can still strike locals as curt or obsequious."
+};
+
+const risCohesionMatch = {
+  "prompt": "The C1 essay's connective tissue — pair each mechanism with its example:",
+  "pairs": [
+    {
+      "left": "reference",
+      "right": "this, such, the latter — pointing back without repeating"
+    },
+    {
+      "left": "substitution and ellipsis",
+      "right": "\"one more than last time\""
+    },
+    {
+      "left": "conjunction",
+      "right": "however, consequently, by contrast"
+    },
+    {
+      "left": "lexical chains",
+      "right": "the policy — the reform — the legislation"
+    }
+  ],
+  "why": "Weak: four standalone sentences about a factory closure, none pointing anywhere. Strong: one sentence — \"The factory — closed suddenly, without consultation — took 400 jobs with it; for a town of 9,000, the closure was less an event than a change of identity\" — carrying every device at once."
+};
+
+const risRefusalPredict = {
+  "q": "A request to a Japanese counterpart draws the answer: \"that would be a bit difficult.\" What has most likely arrived?",
+  "choices": [
+    "A maybe — push gently and it will become a yes",
+    "A clear no, carried by an apology plus \"it's difficult\"",
+    "A scheduling question about next week"
+  ],
+  "answer": 1,
+  "why": "East Asian norms often avoid a direct \"no\" — the apology-plus-difficulty formula carries the refusal, which a literal-minded learner hears as a maybe. The American \"we'll see\", meanwhile, is often a no where a German hears a schedule."
+};
 ---
 <TopicPage slug="subjects/languages/advanced/register-idiom-and-slang">
   <h2>Where you are, and what you will learn</h2>
@@ -62,6 +261,7 @@ const regCfg = {
     register error — the "dear professor, gimme a look" key mismatch — signals outsider status faster than
     any grammar slip, because register choice is exactly what natives use to place each other.
   </p>
+  <Widget no="2" caption="pair each dial with the linguistic reflex it selects" widget="match" config={risDialsMatch} />
   <p>
     The learnable markers are concrete. <strong>Lexical density and nominalisation</strong> rise with
     formality (write "the implementation of the policy" rather than "when they put the plan in place");
@@ -74,6 +274,7 @@ const regCfg = {
     and a five-year-old, then compare what you changed — you are learning your own register dial's settings
     in the new language.
   </p>
+  <Widget no="3" caption="file each feature by its direction of travel" widget="sort-buckets" config={risMarkerBuckets} />
 
   <p><em>Common misconception:</em> "formal language is better language, so learners should
   always sound polite and careful." Textbooks teach the formal register first and exams
@@ -106,6 +307,7 @@ const regCfg = {
     and pikesticks," Dutch regent oude wijven en pikestokken — the same idea, untranslatable form), and
     quasi-transparent idioms are the most dangerous, because you think you understand them.
   </p>
+  <Widget no="4" caption="bet on the chunk share of real discourse" widget="estimate" config={risChunkEstimate} />
 
   <p><em>Common misconception:</em> "idioms can be worked out from their words, so a big
   vocabulary is enough." Quasi-transparent idioms make this seductive — you feel you
@@ -114,6 +316,7 @@ const regCfg = {
   ("kick the bucket" but not "kick the bucket violently, twice by John"). Word-for-word
   translation across languages yields nonsense, and idioms learned from lists arrive without
   the register settings that decide whether they fit.</p>
+  <Widget no="5" caption="find the line the vocabulary-myth would love" widget="spot-error" config={risIdiomSpot} />
 
   <h2>Slang: the moving frontier of belonging</h2>
   <p>
@@ -130,6 +333,7 @@ const regCfg = {
     specific item used by speakers of your own age-and-context profile. Slang is a subscription, not a
     download: only current, in-the-wild input keeps it working.
   </p>
+  <Widget no="6" caption="run the slang decision in real time" widget="branch" config={risSlangBranch} />
 
   <p><em>Common misconception:</em> "using slang makes you sound native, so a C1 learner
   should adopt it early and often." It seems reasonable because slang marks in-group
@@ -159,6 +363,7 @@ const regCfg = {
     what was not said. And the reliable milestone stands: when you can make a native speaker laugh
     <em>deliberately</em> — not with you, at you — you have crossed into genuine sociolinguistic competence.
   </p>
+  <Widget no="7" caption="drag the divider — two softening sites for one face-threat" widget="compare" config={risPoliteCompare} />
 
   <p>
     <strong>So far:</strong> pragmatics explained indirectness, irony and the cross-cultural
@@ -186,6 +391,7 @@ const regCfg = {
     concedes that..." is an argument, not a citation). These are trainable, examinable, and exactly what
     C1 assessment rewards — prose that argues, not just reports.
   </p>
+  <Widget no="8" caption="pair each connective device with its example" widget="match" config={risCohesionMatch} />
 
   <h2>Speech acts across cultures: the pragmatics catalogue, worked</h2>
   <p>
@@ -203,6 +409,7 @@ const regCfg = {
     pragmatics produces grammar-perfect rudeness or obsequiousness that no textbook flags. This is the
     deepest layer of "sounding native": not accent, but correctly calibrated illocutionary force.
   </p>
+  <Widget no="9" caption="bet on what the refusal really said" widget="predict" config={risRefusalPredict} />
 
   <h2>A register audit you can run tonight</h2>
   <p>

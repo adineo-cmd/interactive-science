@@ -15,6 +15,182 @@ const writeTimeline = {
     { year: 1991, title: 'Unicode 1.0', text: 'One standard to encode every script on Earth — and, later, emoji. Writing becomes fully language-independent.', tag: 'the machine' },
   ],
 };
+
+const hlOctopusEstimate = {
+  "prompt": "Roughly how many languages are alive in the world today?",
+  "unit": "languages",
+  "answer": 7000,
+  "factor": 1.4,
+  "why": "Just over 7,000 — and you can build a sentence nobody in history has ever uttered ('the octopus filed a complaint about the lift music') that any adult speaker parses instantly. Speaking is running a system, not consulting a phrasebook.",
+  "context": "About half of them have fewer than ~7,000 speakers — the family section below."
+};
+
+const hlSkillsMatch = {
+  "prompt": "The most complex behaviour on the planet — pair the piece with its role:",
+  "pairs": [
+    {
+      "left": "understanding speech and text",
+      "right": "the receptive skills"
+    },
+    {
+      "left": "producing language in real time, at up to several words per second",
+      "right": "the expressive skills — with almost no conscious effort"
+    },
+    {
+      "left": "hands, face and space",
+      "right": "the sign-language hardware"
+    },
+    {
+      "left": "negotiating who owes whom an apology",
+      "right": "reaching other minds — what the machinery is for"
+    }
+  ],
+  "why": "Language is how we draw conclusions together, set goals and hand down everything a community knows; strip it away and human intelligence as we know it would not survive."
+};
+
+const hlFactsBuckets = {
+  "prompt": "File each observation under the property it shows:",
+  "buckets": [
+    "implicit",
+    "law-governed",
+    "creative"
+  ],
+  "items": [
+    {
+      "label": "a five-year-old commands English word order flawlessly but cannot state the rule",
+      "bucket": 0
+    },
+    {
+      "label": "every language orders its sentence elements by discoverable universals",
+      "bucket": 1
+    },
+    {
+      "label": "the patterns are statistical and systematic, not loose habits",
+      "bucket": 1
+    },
+    {
+      "label": "Humboldt's phrase: making 'infinite use of finite means'",
+      "bucket": 2
+    },
+    {
+      "label": "you 'just know' it without ever being taught",
+      "bucket": 0
+    }
+  ],
+  "why": "Implicit: the knowledge outruns any statement of it. Law-governed: universals, not habits. Creative: a finite toolbox, an infinite range."
+};
+
+const hlPhonSpot = {
+  "prompt": "One line of this summary is false — click it:",
+  "lines": [
+    "The phoneme is the smallest unit of sound that can change meaning.",
+    "English runs on about 44 phonemes squeezed into 26 letters.",
+    "Letters and phonemes map one-to-one in English spelling.",
+    "'Shun' can be written -tion, -sion, -cian or just -shun.",
+    "'Pat', 'bat' and 'cat' differ by single phonemes."
+  ],
+  "errorLine": 2,
+  "correction": "26 letters carry about 44 phonemes — the mismatch is the spelling chaos.",
+  "why": "Individually featureless, decisive in combination: the atoms of speech never lined up cleanly with the alphabet."
+};
+
+const hlPhonJudge = {
+  "statements": [
+    {
+      "s": "Hawaiian manages with 13 sounds in total.",
+      "truth": true,
+      "why": "English runs about 24 consonants and 20 vowels — inventories vary enormously."
+    },
+    {
+      "s": "Some Khoisan languages deploy dozens of click consonants.",
+      "truth": true,
+      "why": "The same universal design, wildly different sound stock."
+    },
+    {
+      "s": "The breathy difference between English 'p' in 'pin' and 'spin' is meaningful in Hindi but invisible to most English-speaking adults.",
+      "truth": true,
+      "why": "Which differences count is language-specific — adults literally struggle to hear it."
+    },
+    {
+      "s": "Your phoneme inventory is just what you can say.",
+      "truth": false,
+      "why": "It is what you have been trained to hear — the listening side runs the inventory."
+    }
+  ]
+};
+
+const hlTurkishCloze = {
+  "text": "English strings words separately ('will not have been going'); Turkish packs the whole clause into one word: %%0%% — 'from your houses'.",
+  "answers": [
+    [
+      "evlerinizden",
+      "Evlerinizden"
+    ]
+  ],
+  "hint": "Build it piece by piece: ev-ler-iniz-den = house-plural-your-from.",
+  "why": "English is fairly analytic — it strings separate words; Latin, Turkish or Swahili are synthetic and pack entire clauses into one unit."
+};
+
+const hlNestOrder = {
+  "prompt": "Recursion in action — order the stack from the outermost sentence down:",
+  "items": [
+    "The cat — the whole sentence is about it",
+    "that chased the rat",
+    "that stole the cheese",
+    "that sat in the house that Jack built"
+  ],
+  "why": "Rules that apply to their own output: nothing in principle stops the loop, which is how a finite rulebook generates infinite sentences — and all three word orders (SVO, SOV, VSO) build the same stack with the same underlying logic."
+};
+
+const hlSaltBranch = {
+  "root": "Pragmatics: meaning in context. Two utterances, two chances to take them literally.",
+  "nodes": {
+    "start": {
+      "text": "Your flatmate, staring at the open window: 'It's cold in here.' What do you do?",
+      "choices": [
+        {
+          "label": "Report the thermostat reading",
+          "next": "literal",
+          "feedback": "Technically responsive — and completely beside the point."
+        },
+        {
+          "label": "Get up and close the window",
+          "next": "done",
+          "feedback": "You just computed a request that never said 'close it'. The situation completed the meaning."
+        }
+      ]
+    },
+    "literal": {
+      "text": "Now the classic: 'Can you pass the salt?' — a question about your physical ability?",
+      "choices": [
+        {
+          "label": "Demonstrate the ability by lifting the shaker",
+          "next": "show",
+          "feedback": "Everyone still expected the salt in their hand."
+        },
+        {
+          "label": "Pass the salt",
+          "next": "done",
+          "feedback": "Indirect speech acts: processed without effort, everywhere."
+        }
+      ]
+    },
+    "show": {
+      "text": "You answered the question literally — the words said one thing, the situation said another.",
+      "choices": [
+        {
+          "label": "Close the window, then",
+          "next": "done"
+        }
+      ]
+    },
+    "done": {
+      "text": "Indirect requests, digs and sarcasm are computed from conventions every language equips its speakers with.",
+      "choices": []
+    }
+  },
+  "why": "The words say one thing; the situation completes the meaning — the layer above semantics runs on shared conventions."
+};
 ---
 <TopicPage slug="subjects/linguistics/foundational/how-language-works">
 
@@ -51,6 +227,7 @@ const writeTimeline = {
     but law-governed mental system. Language lives in the mind as rules and patterns, not as
     a phrasebook.
   </p>
+  <Widget no="2" caption="call the count — languages alive" widget="estimate" config={hlOctopusEstimate} />
   <p>
     The system deserves its reputation: human language is often called the most complex
     behaviour on the planet. It runs on coordinated breath, vocal cords, tongue and lips —
@@ -63,6 +240,7 @@ const writeTimeline = {
     <strong>expressive</strong> ones (producing it in real time, at up to several words per
     second, with almost no conscious effort).
   </p>
+  <Widget no="3" caption="pair each piece of the machinery with its role" widget="match" config={hlSkillsMatch} />
   <p>
     Three facts show how deep the system runs. First, it is <strong>implicit</strong>: a
     five-year-old commands English word order flawlessly but cannot state the rule; you
@@ -73,6 +251,7 @@ const writeTimeline = {
     from a finite toolbox, an infinite range — the property Wilhelm von Humboldt called
     making "infinite use of finite means".
   </p>
+  <Widget no="4" caption="file each observation under the property it shows" widget="sort-buckets" config={hlFactsBuckets} />
   <p>
     <strong>So far:</strong> speaking is running a hidden rule system, fast and below
     awareness. To see how the trick works, we build language up layer by layer — sound,
@@ -89,6 +268,7 @@ const writeTimeline = {
     squeezed into 26 letters — hence the spelling chaos, where "shun" can be written -tion,
     -sion, -cian or just -shun.
   </p>
+  <Widget no="5" caption="find the line the spelling would have to obey" widget="spot-error" config={hlPhonSpot} />
   <p>
     Phoneme inventories vary enormously across languages: English has about 24 consonants
     and 20 vowels; Hawaiian manages with 13 sounds in total; some Khoisan languages deploy
@@ -100,6 +280,7 @@ const writeTimeline = {
     Your phoneme inventory is not just what you can say; it is what you have been trained
     to <em>hear</em>.
   </p>
+  <Widget no="6" caption="true or false — trained to hear" widget="judge" config={hlPhonJudge} />
 
   <h2>Morphemes and words: the smallest pieces of meaning</h2>
   <p>
@@ -112,6 +293,7 @@ const writeTimeline = {
     word: Turkish <em>evlerinizden</em> means "from your houses" in a single
     morpheme-packed unit.
   </p>
+  <Widget no="7" caption="one Turkish word, whole clause" widget="cloze" config={hlTurkishCloze} />
   <p>
     The vocabulary of an average educated adult runs to tens of thousands of words, yet
     almost none of them was memorised from a list — you acquired them from context, hearing
@@ -131,6 +313,7 @@ const writeTimeline = {
     Japanese is subject–object–verb, Welsh verb–subject–object — yet all three build
     questions, negations and relative clauses with the same underlying logic.
   </p>
+  <Widget no="8" caption="unstack the house that Jack built" widget="order" config={hlNestOrder} />
   <p>
     <strong>Semantics</strong> is the layer that attaches meaning, and it is compositional:
     the meaning of a sentence is built from the meanings of its parts plus the way syntax
@@ -146,6 +329,7 @@ const writeTimeline = {
     meaning. Every language equips its speakers with conventions for this too — which is
     why irony, politeness and hinting survive translation only imperfectly.
   </p>
+  <Widget no="9" caption="answer the flatmate — literally or pragmatically" widget="branch" config={hlSaltBranch} />
   <p><em>Common misconception:</em> "grammar" as taught in school — never split an
   infinitive, never end a sentence with a preposition — is largely 18th-century taste
   imported from Latin, not the actual rule system. The scientific position is
