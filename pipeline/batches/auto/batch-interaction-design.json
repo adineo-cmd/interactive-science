@@ -1,0 +1,141 @@
+[
+  {
+    "slug": "subjects/design/advanced/interaction-design",
+    "activities": [
+      {
+        "anchor": "does the order of decisions make sense",
+        "type": "match",
+        "caption": "pair each cycle stage with its interaction flavour",
+        "name": "ixdCycleMatch",
+        "config": {
+          "prompt": "The design cycle, run on behaviour — pair each stage:",
+          "pairs": [
+            { "left": "Identifying", "right": "needfinding — watch tasks and breakdowns, not opinions" },
+            { "left": "Defining", "right": "requirements as tasks with measurable success criteria" },
+            { "left": "Proposing", "right": "paper flows and Wizard-of-Oz tests of the choreography" },
+            { "left": "Developing and planning", "right": "the state matrix and flow map engineering can implement unambiguously" },
+            { "left": "Testing and evaluating", "right": "formative five-user tests; summative metrics" }
+          ],
+          "why": "Every stage has a distinct interaction flavour — and the honest unit of requirement is the task, not the feature."
+        }
+      },
+      {
+        "anchor": "evaluation is how you learn what to design",
+        "type": "predict",
+        "caption": "bet before the reveal — when does testing run?",
+        "name": "ixdTestPredict",
+        "config": {
+          "q": "A team plans a two-month build followed by a one-week usability test at the end. What does interaction design say about that schedule?",
+          "choices": [
+            "Fine — testing validates the finished design",
+            "Evaluation runs at every stage — a Friday paper test can kill a month of wrong development"
+          ],
+          "answer": 1,
+          "why": "Formative tests find comprehension failures early; summative tests compare finished designs on task time, error rate and completion."
+        }
+      },
+      {
+        "anchor": "Empty states deserve special respect",
+        "type": "spot-error",
+        "caption": "find the faulty line — the state matrix",
+        "name": "ixdStateSpot",
+        "config": {
+          "prompt": "One of these state claims is backwards — click it:",
+          "lines": [
+            "Default: the button looks pressable.",
+            "Focus: a visible ring — the only way a keyboard user knows where they are.",
+            "Active: pressed feedback within about 100 ms.",
+            "Disabled: grey it out and say nothing — silence is the cleanest choice.",
+            "Error: say why the save failed and preserve the user's input."
+          ],
+          "errorLine": 3,
+          "correction": "A disabled state with no explanation is a dead end — good practice keeps the button enabled and explains on click what is missing.",
+          "why": "Designing the default alone and shipping it is the single most common quality gap in real products."
+        }
+      },
+      {
+        "anchor": "The distinction matters because digital objects have",
+        "type": "compare",
+        "caption": "flat design vs the correction — drag the divider",
+        "name": "ixdFlatCompare",
+        "config": {
+          "prompt": "The signifier's decade of regret — drag between the eras:",
+          "before": {
+            "label": "Flat design, 2010s",
+            "text": "Borders, shadows and underlines stripped for minimalism — text that looked like a label became clickable, with measured increases in hesitation and missed targets."
+          },
+          "after": {
+            "label": "The correction",
+            "text": "Material's shadows, returned underlines, clearly bordered buttons — not an aesthetic round-trip but a rediscovery that signifiers carry the interaction."
+          },
+          "why": "Every interactive element should answer 'what are you and what happens if I touch you?' before it is touched."
+        }
+      },
+      {
+        "anchor": "Motion as pure decoration violates the visual design lesson's clutter principle",
+        "type": "place",
+        "caption": "place the UI-transition duration",
+        "name": "ixdMotionPlace",
+        "config": {
+          "prompt": "The dosage rule — place a standard UI transition on the milliseconds scale.",
+          "labels": ["0 ms", "150 ms", "300 ms", "450 ms", "600 ms"],
+          "scale": { "min": 0, "max": 600 },
+          "answer": 250,
+          "tolerance": 75,
+          "why": "200–300 ms: fast enough not to feel sluggish, slow enough to be perceived — below roughly 100 ms motion is invisible, above about 500 ms it reads as lag."
+        }
+      },
+      {
+        "anchor": "These numbers make performance a design property",
+        "type": "sort-buckets",
+        "caption": "file each latency band by what governs it",
+        "name": "ixdLatencySort",
+        "config": {
+          "prompt": "The classic response-time thresholds — file each band:",
+          "buckets": ["feels instantaneous", "a thought stays unbroken", "the limit of attention"],
+          "items": [
+            { "label": "under 100 ms", "bucket": 0 },
+            { "label": "about 1 second", "bucket": 1 },
+            { "label": "about 10 seconds", "bucket": 2 },
+            { "label": "beyond it, users switch away", "bucket": 2 }
+          ],
+          "why": "Which is why perceived speed (skeletons, optimistic updates), budgeting and graceful degradation are design responses, not engineering afterthoughts."
+        }
+      },
+      {
+        "anchor": "The law's corollaries explain real conventions",
+        "type": "estimate",
+        "caption": "call Fitts's prediction",
+        "name": "ixdFittsEst",
+        "config": {
+          "prompt": "With a ≈ 150 ms and b ≈ 150 ms per bit: a pointer moves 200 px to a 40 px-wide button — what movement time does Fitts's law predict?",
+          "unit": "ms",
+          "answer": 540,
+          "factor": 1.3,
+          "why": "≈ 540 ms — log2(1 + 200/40) ≈ 2.58 bits. Doubling the width to 80 px cuts it to ≈ 420 ms: a 22% saving for a purely geometric decision.",
+          "context": "Screen corners and edges are infinitely deep targets — which is why corner-anchored menus feel so fast."
+        }
+      },
+      {
+        "anchor": "progressive disclosure is not just visual hygiene",
+        "type": "trace",
+        "caption": "which curve is Hick's law?",
+        "name": "ixdHickTrace",
+        "config": {
+          "prompt": "Decision time against the entropy of the choice set — which curve is Hick's law?",
+          "curves": [
+            { "expr": "x", "color": "#1d4ed8", "label": "A: grows roughly linearly" },
+            { "expr": "x^2", "color": "#b42318", "label": "B: grows with the square" },
+            { "expr": "50", "color": "#0f766e", "label": "C: flat — choice count is free" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 20 },
+          "y": { "min": 0, "max": 400 },
+          "xlabel": "entropy of the choice set (bits)",
+          "ylabel": "decision time (ms, relative)",
+          "why": "Roughly linear in entropy — so progressive disclosure presenting 3 salient options instead of 15 directly buys back decision time."
+        }
+      }
+    ]
+  }
+]

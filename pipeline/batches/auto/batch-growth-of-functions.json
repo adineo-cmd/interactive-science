@@ -1,0 +1,169 @@
+[
+  {
+    "slug": "subjects/computer-science/foundational/growth-of-functions",
+    "activities": [
+      {
+        "anchor": "ignoring constant factors and small-input noise",
+        "type": "predict",
+        "caption": "bet before you read on — what separates the survivor from the forever-runner",
+        "name": "gofnPredict",
+        "config": {
+          "q": "Both algorithms answer correctly and feel instant on a 1,000-item input. What separates them at a million items?",
+          "choices": [
+            "How their cost grows as the input gets larger",
+            "The speed of the processor each runs on",
+            "How recently the code was written",
+            "The programming language each is written in"
+          ],
+          "answer": 0,
+          "why": "Big-O names the growth curve; at scale that growth — not hidden multipliers, hardware or taste — picks the survivor and the forever-runner."
+        }
+      },
+      {
+        "anchor": "Doubling the data adds exactly one step.",
+        "type": "trace",
+        "caption": "which curve pays just one extra unit when the input doubles?",
+        "name": "gofnTrace",
+        "config": {
+          "prompt": "When the input doubles, this curve rises by a single extra unit — which is it?",
+          "curves": [
+            { "expr": "log2(x)", "label": "curve A", "color": "#1f6f54" },
+            { "expr": "x/8", "label": "curve B", "color": "#b45309" },
+            { "expr": "2", "label": "curve C", "color": "#4455aa" }
+          ],
+          "correct": 0,
+          "x": { "min": 1, "max": 64 },
+          "y": { "min": 0, "max": 8 },
+          "xlabel": "input size",
+          "ylabel": "cost",
+          "why": "Logarithmic: each pass discards half of what remains, so a billion sorted items need about 30 — binary search's signature."
+        }
+      },
+      {
+        "anchor": "bubble sort, checking all pairs",
+        "type": "estimate",
+        "caption": "call the bill for one quadratic pass",
+        "name": "gofnQuadEst",
+        "config": {
+          "prompt": "A quadratic routine runs once over 100,000 inputs — roughly how many steps does it cost?",
+          "unit": "steps",
+          "answer": 10000000000,
+          "factor": 2,
+          "why": "n² = 10¹⁰ — ten billion. At 100 ns per comparison, a single pass costs about a quarter of an hour.",
+          "context": "At 1,000 inputs the same routine cost a million steps — the input grew 100×, the bill 10,000×."
+        }
+      },
+      {
+        "anchor": "Zoom into the left edge of the plot above and you can see the curves tangle",
+        "type": "judge",
+        "caption": "true or false — what Big-O does and does not promise",
+        "name": "gofnBigOJudge",
+        "config": {
+          "statements": [
+            { "s": "Big-O predicts a program's running time in seconds.", "truth": false, "why": "It names a growth rate — a shape, never a stopwatch reading." },
+            { "s": "On lists of a dozen items, O(n²) insertion sort can genuinely finish before merge sort.", "truth": true, "why": "Hidden multipliers dominate at small sizes — which is exactly why real libraries hand small sublists to insertion sort." },
+            { "s": "Once two algorithms differ in Big-O, the better one is guaranteed to win on every input size.", "truth": false, "why": "The guarantee is asymptotic only; for tiny inputs the 'worse' algorithm can win." },
+            { "s": "Engineers profile before optimising because measurement and analysis are companions, not rivals.", "truth": true, "why": "Small-size behaviour can mislead — look before you leap." }
+          ]
+        }
+      },
+      {
+        "anchor": "One refinement completes the picture",
+        "type": "compare",
+        "caption": "two sorters, opposite bargains — drag the divider",
+        "name": "gofnSpaceCompare",
+        "config": {
+          "prompt": "Two in-family sorters, opposite bargains — drag the divider:",
+          "before": {
+            "label": "merge sort",
+            "text": "O(n log n) speed, paid for with O(n) extra space — room for a second array during the merge."
+          },
+          "after": {
+            "label": "heapsort",
+            "text": "Sorts in place with O(1) extra memory — the same asymptotics, a different bargain."
+          },
+          "why": "The two budgets trade constantly; 'fewer bytes moved' is often the real reason an algorithm wins."
+        }
+      },
+      {
+        "anchor": "Complexity is not an accident; it is designed in.",
+        "type": "order",
+        "caption": "the standard method, start to finish",
+        "name": "gofnDesignOrder",
+        "config": {
+          "prompt": "Build an algorithm the standard way — put the stages in order:",
+          "items": [
+            "Abstraction: discard details irrelevant to the problem — keep road connections and journey times, forget scenery and tarmac.",
+            "Decomposition: break the problem into sub-problems until each is directly codeable.",
+            "Write the solution in structured English, pseudocode or a flowchart — every decision forced, nothing implementation-bound.",
+            "Only then write the code, carrying those decisions across."
+          ],
+          "why": "Abstraction → decomposition → design → code: skipping ahead is how trouble gets baked in."
+        }
+      },
+      {
+        "anchor": "Second, recognising nested work.",
+        "type": "spot-error",
+        "caption": "find the faulty verdict — count the loops",
+        "name": "gofnLoopsSpot",
+        "config": {
+          "prompt": "One of these loop-counting verdicts is wrong — click it:",
+          "lines": [
+            "One loop over n items: O(n).",
+            "A loop inside a loop over the same n: usually O(n²).",
+            "A loop that halves the problem each pass: O(log n).",
+            "An O(n) pass followed by an O(n log n) sort: O(n² log n)."
+          ],
+          "errorLine": 3,
+          "correction": "Costs in sequence add — O(n) followed by O(n log n) is O(n log n); only nesting multiplies.",
+          "why": "Count the loops: nesting multiplies, sequence adds — that is the whole heuristic."
+        }
+      },
+      {
+        "anchor": "The binary search's sorted-data condition is worth pausing on, because it is the classic exam trap.",
+        "type": "branch",
+        "caption": "a million-record lookup — design the access",
+        "name": "gofnPrecondBranch",
+        "config": {
+          "root": "A million-record lookup list, queried thousands of times a day. Design the access.",
+          "nodes": {
+            "start": {
+              "text": "The list arrives jumbled. First move?",
+              "choices": [
+                { "label": "Sort once (O(n log n)), then halve every lookup", "next": "indexed", "feedback": "The one-time sort buys logarithmic lookups forever after — which is why databases fight so hard to stay indexed." },
+                { "label": "Skip the sort; scan every query end to end", "next": "linear", "feedback": "O(n) each time and works on any order — fine for a few queries, ruinous at thousands a day." }
+              ]
+            },
+            "indexed": {
+              "text": "Sorted and quick. A colleague hands you tomorrow's data — jumbled again.",
+              "choices": [
+                { "label": "Re-sort before searching", "next": "discipline", "feedback": "The guarantee is only as good as its precondition — check what the method assumes, every time." },
+                { "label": "Search directly; it usually works", "next": "broken", "feedback": "Run the logarithmic method on jumbled data and it confidently returns wrong answers." }
+              ]
+            },
+            "linear": {
+              "text": "Simple, correct — and slow at scale.",
+              "choices": [
+                { "label": "Switch to sort-once-then-halve as volume grows", "next": "discipline", "feedback": "Amortise the one-time sort across millions of lookups and the trade is a landslide." },
+                { "label": "Stay linear forever", "next": "slow", "feedback": "The bill grows with the data — about 500,000 comparisons per lookup on a million records." }
+              ]
+            },
+            "broken": {
+              "text": "Confident, quick, and wrong: the algorithm's guarantee is only as good as its precondition.",
+              "choices": []
+            },
+            "discipline": {
+              "text": "In order once, halved forever after — the precondition is part of the method.",
+              "choices": []
+            },
+            "slow": {
+              "text": "O(n) to the end — sometimes the honest choice, but know the bill.",
+              "choices": []
+            }
+          },
+          "why": "Sorting costs n log n once and every lookup after is logarithmic — but only on data in order; before using any standard method, check what it assumes."
+        }
+      }
+    ]
+  }
+]

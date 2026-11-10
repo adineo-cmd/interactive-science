@@ -19,6 +19,127 @@ const abQuizCfg = {
     { q: 'A 50/50 split is configured, but the test reports 49.2% A and 50.8% B over 5 million users. This is…', choices: ['normal randomness, ignore it', 'a sample ratio mismatch — a red flag that the experiment machinery is broken', 'proof that B is better', 'a novelty effect'], answer: 1, why: 'With millions of users, chance deviations of 0.8 points are astronomically unlikely; an SRM this large means assignment is leaking — bot filtering, redirect loss, or logging bugs — and every downstream number is suspect.' },
   ],
 };
+
+const abTheatrePredict = {
+  "q": "Done casually — tiny samples, forty metrics, stopping the moment p dips below 0.05 — an A/B test produces what?",
+  "choices": [
+    "Confident nonsense, manufactured with impressive efficiency",
+    "A slightly noisier estimate",
+    "The same answer, faster",
+    "A conservative underestimate"
+  ],
+  "answer": 0,
+  "why": "Each casual shortcut quietly converts the error budget into noise — the machinery is only as honest as its pre-commitments."
+};
+
+const abCoinJudge = {
+  "statements": [
+    {
+      "s": "The randomisation IS the design — comparing post-hoc groups is observational, self-selected and confounded.",
+      "truth": true,
+      "why": "The causal power lives in the randomisation, nowhere else."
+    },
+    {
+      "s": "An A/B test is just 'compare the groups afterwards'; the design is decoration.",
+      "truth": false,
+      "why": "Self-selected feature-finders versus everyone else is exactly the confounding the coin flips exist to remove."
+    },
+    {
+      "s": "Randomisation balances the confounders you never thought to measure.",
+      "truth": true,
+      "why": "Balance in expectation covers the unknown as reliably as the known."
+    },
+    {
+      "s": "Weekly users buy more than casual ones, so the app causes purchasing.",
+      "truth": false,
+      "why": "Or purchasers use the app more — the observational arrow points both ways."
+    }
+  ]
+};
+
+const abScoreOrder = {
+  "prompt": "A runs 10.0%, B runs 11.0%, 10,000 users each — score the difference, in order:",
+  "items": [
+    "Read the arms: 1,000 of 10,000 converted in A; 1,100 of 10,000 in B",
+    "Each arm's SE: √(0.11 × 0.89/10,000) ≈ 0.0031",
+    "The difference's SE: √(0.0031² + 0.0031²) ≈ 0.0044 — two wobbles combined in quadrature",
+    "z = 0.01 / 0.0044 ≈ 2.27 standard errors",
+    "One-sided p ≈ 0.012 — the mundane world struggles to account for it"
+  ],
+  "why": "At a 0.5-point lift instead: z ≈ 1.14 and p ≈ 0.13 — indistinguishable from noise at this n."
+};
+
+const abCostSort = {
+  "prompt": "Two ways a test can be wrong — file each consequence:",
+  "buckets": [
+    "false positive",
+    "false negative"
+  ],
+  "items": [
+    {
+      "label": "a change ships that does nothing — complexity added forever",
+      "bucket": 0
+    },
+    {
+      "label": "a genuine improvement is abandoned",
+      "bucket": 1
+    },
+    {
+      "label": "the null was true but the test crossed the threshold by luck",
+      "bucket": 0
+    },
+    {
+      "label": "the effect was real but the test missed it",
+      "bucket": 1
+    }
+  ],
+  "why": "The 0.05 threshold is a convention, not a law — match it to the decision's price and report the interval, not just a verdict."
+};
+
+const abWinnerCompare = {
+  "prompt": "Same test, second look — drag the divider:",
+  "before": {
+    "label": "the headline",
+    "text": "'Won by 1.1 points — ship it.'"
+  },
+  "after": {
+    "label": "the replication",
+    "text": "landed lower — selection had picked a lucky draw; winners slide back toward the mean"
+  },
+  "why": "Selection picks the lucky ones: expect the follow-up to land below the original estimate."
+};
+
+const abTwentyEst = {
+  "prompt": "Twenty genuinely null metrics tested at the 0.05 threshold — what is the chance that at least one 'wins'?",
+  "unit": "%",
+  "answer": 64,
+  "factor": 1.3,
+  "why": "1 − 0.95²⁰ ≈ 64% — one pre-registered comparison keeps the 5% promise; twenty opportunistic ones spend the whole budget.",
+  "context": "Bonferroni divides the threshold; false-discovery-rate control limits the share of winners expected to be false — both spend power."
+};
+
+const abDesignSpot = {
+  "prompt": "One line of this postmortem is wrong — click it:",
+  "lines": [
+    "A confounded assignment cannot be rescued by any test.",
+    "A broken funnel invalidates every downstream number.",
+    "A novelty spike, read as a trend, will evaporate at scale.",
+    "A metric chosen after seeing the data still counts — the statistics are the same.",
+    "The majority of surprising 'wins' evaporate under scrutiny of design, not of statistics."
+  ],
+  "errorLine": 3,
+  "correction": "A metric chosen after seeing the data has already spent the error budget — no statistical machinery can give it back.",
+  "why": "Design, not statistics, is where these contests are won or lost."
+};
+
+const abCupedEst = {
+  "prompt": "With CUPED at a pre/post correlation of 0.5, the required sample shrinks by what percentage?",
+  "unit": "%",
+  "answer": 25,
+  "factor": 1.3,
+  "why": "Variance scales with (1 − ρ²): 0.5 cuts the needed n by a quarter; near 0.7 is routine for engagement metrics.",
+  "context": "One idea that let platforms run tests they previously could not afford."
+};
 ---
 <TopicPage slug="subjects/data-science/advanced/ab-testing">
   <h2>Where you are, and what you will learn</h2>
@@ -53,6 +174,7 @@ const abQuizCfg = {
     why experiments earn causal claims, how hypothesis testing scores the result, and how
     two-sample comparison — with its power arithmetic — sizes the whole enterprise.
   </p>
+  <Widget no="10" caption="bet before you read on — the casual shortcut's product" widget="predict" config={abTheatrePredict} />
 
   <Widget no="1" caption="the four disciplines that separate real tests from theatre" widget="equationStep" config={abCfg} />
   <p>
@@ -77,6 +199,7 @@ const abQuizCfg = {
     has only two candidate explanations: the treatment, or bad luck — and the hypothesis
     test quantifies exactly how much difference luck can plausibly produce.
   </p>
+  <Widget no="9" caption="true or false — where the causal power lives" widget="judge" config={abCoinJudge} />
   <p>
     "On average" is doing real work in that sentence. A 50/50 randomisation of 400 users
     will not put exactly 200 night-owls in each arm; balance is statistical, not perfect, and
@@ -111,6 +234,7 @@ const abQuizCfg = {
     experiments; the boring world does not easily explain this data. Had the lift been 0.5
     points, z ≈ 1.14 and p ≈ 0.13 — indistinguishable from noise at this sample size.
   </p>
+  <Widget no="8" caption="score the lift — the arithmetic in order" widget="order" config={abScoreOrder} />
   <p>
     Note what the p-value is <em>not</em>: not the probability B works, not the probability
     the result replicates. It is the surprise level of the data given a world where B does
@@ -120,6 +244,7 @@ const abQuizCfg = {
     decision's cost, and report the confidence interval for the lift so decision-makers see
     the range of plausible effects, not just a verdict.
   </p>
+  <Widget no="7" caption="two ways to be wrong — file the damage" widget="sort-buckets" config={abCostSort} />
   <p>
     <em>Common misconception:</em> the measured lift is the truth about B — B won by
     1.1 points, so B is 1.1 points better. Winners are selected from a distribution of
@@ -130,6 +255,7 @@ const abQuizCfg = {
     below the original estimate — regression toward the mean, wearing a product
     lanyard.
   </p>
+  <Widget no="6" caption="the headline vs the replication — drag the divider" widget="compare" config={abWinnerCompare} />
 
   <p><strong>So far:</strong> the test scores the observed lift against the standard error of a difference, and a "winner" is only an estimate drawn from a noisy distribution — expect replications to land lower than the headline. Before launch, then, comes the honest question: can this test see the effect at all?</p>
 
@@ -200,6 +326,7 @@ const abQuizCfg = {
     false — but all of them spend statistical power, which is the honest price of
     looking everywhere.
   </p>
+  <Widget no="5" caption="call the odds of a phantom winner" widget="estimate" config={abTwentyEst} />
   <p>
     <em>Common misconception:</em> statistical machinery fixes a bad experiment. No test can
     rescue a confounded assignment, a broken funnel, a novelty spike read as a trend, or a
@@ -207,6 +334,7 @@ const abQuizCfg = {
     running experiments at Microsoft and Bing — is that the majority of surprising "wins"
     evaporate under scrutiny of design, not of statistics.
   </p>
+  <Widget no="4" caption="find the faulty line — the launch postmortem" widget="spot-error" config={abDesignSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -261,6 +389,7 @@ const abQuizCfg = {
     they previously could not afford, and it is now standard on mature experimentation
     platforms.
   </p>
+  <Widget no="3" caption="call CUPED's discount" widget="estimate" config={abCupedEst} />
   <p>
     <strong>Interference and two-sided marketplaces.</strong> Randomising users fails when
     the product is a network: in a marketplace, cheaper prices shown to treated buyers shift

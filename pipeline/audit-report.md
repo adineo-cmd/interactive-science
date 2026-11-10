@@ -1,25 +1,65 @@
 # Lesson health audit — foundational tier
 
-187 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 187
+187 lessons: Weak (<40): 0 · Needs work (40–79): 2 · Good (≥80): 185
 
 ## Weak (<40) (0)
 
-## Needs work (40–79) (0)
+## Needs work (40–79) (2)
+- ** 74** subjects/physics/foundational/newtons-laws — 2792w, 3 callouts, 8 widgets — GAPS: what-to-notice 2/8 (11); recaps 0/2 (10)
+- ** 77** subjects/cognitive-science/foundational/what-is-cognitive-science — 3203w, 4 callouts, 8 widgets — GAPS: what-to-notice 1/8 (13); recaps 1/2 (5)
 
-## Good (≥80) (187)
-- ** 80** subjects/astronomy/foundational/orbits-and-keplers-laws — 2764w, 3 callouts, 0 widgets
-- ** 80** subjects/biology/foundational/cell-structure — 2481w, 4 callouts, 0 widgets
-- ** 80** subjects/chemistry/foundational/atomic-structure — 2647w, 3 callouts, 0 widgets
+## Good (≥80) (185)
+- ** 80** subjects/astronomy/foundational/orbits-and-keplers-laws — 2821w, 3 callouts, 0 widgets
+- ** 80** subjects/biology/foundational/cell-structure — 2557w, 4 callouts, 0 widgets
+- ** 80** subjects/chemistry/foundational/atomic-structure — 2722w, 3 callouts, 0 widgets
 - ** 80** subjects/computer-science/foundational/growth-of-functions — 2991w, 3 callouts, 0 widgets
 - ** 80** subjects/economics/foundational/supply-and-demand — 2766w, 3 callouts, 0 widgets
 - ** 80** subjects/geography/foundational/latitude-and-climate — 2876w, 3 callouts, 0 widgets
 - ** 80** subjects/history/foundational/cradles-of-civilisation — 2648w, 3 callouts, 0 widgets
 - ** 80** subjects/math/foundational/linear-functions — 2886w, 3 callouts, 0 widgets
-- ** 80** subjects/physics/foundational/motion-1d — 2929w, 3 callouts, 0 widgets
+- ** 80** subjects/physics/foundational/motion-1d — 2993w, 3 callouts, 0 widgets
+- ** 82** subjects/agriculture/foundational/soil-water-sun — 2780w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/animation/foundational/the-twelve-principles-of-animation — 2766w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/anthropology/foundational/culture-kin-long-view — 2868w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/archaeology/foundational/what-archaeology-is — 2711w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/architecture/foundational/career-paths-and-licensure — 2550w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/architecture/foundational/form-follows-forces — 2819w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/art-history/foundational/global-prehistory-art-before-writing — 2708w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/art-history/foundational/walk-through-western-art — 2885w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/artificial-intelligence/foundational/how-machines-learn — 2672w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/automotive-technology/foundational/shop-safety-and-service-basics — 2518w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/aviation/foundational/aircraft-systems-and-instruments — 2538w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/biology/foundational/classification-tree-of-life — 2539w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/biology/foundational/ecology-populations-communities — 2692w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/biology/foundational/evolution-natural-selection — 2371w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/biology/foundational/human-body-systems — 2683w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/business/foundational/unit-economics — 2672w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/chemistry/foundational/acids-bases-and-ph — 2902w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/chemistry/foundational/mole-and-stoichiometry — 2512w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/chemistry/foundational/states-of-matter — 2640w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/classics/foundational/homer-and-the-world-of-the-hero — 2883w, 3 callouts, 8 widgets — GAPS: what-to-notice 1/8 (13)
+- ** 82** subjects/communication-studies/foundational/communication-theory — 2894w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 83** subjects/accounting/foundational/the-fundamentals-of-accounting — 2635w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 83** subjects/actuarial-science/foundational/probability-for-actuaries — 2895w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 83** subjects/aerospace-engineering/foundational/aerodynamics-i-lift-and-airfoils — 2817w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 83** subjects/art-therapy/foundational/what-art-therapy-is — 2711w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/astronomy/foundational/planet-earth — 2929w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 83** subjects/astronomy/foundational/solar-system-scale — 2939w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 83** subjects/audiology/foundational/hearing-science — 2688w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/aviation-maintenance/foundational/amt-general — 2704w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/biochemistry/foundational/protein-structure-and-function — 2962w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/biology/foundational/biological-molecules — 3082w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/biology/foundational/dna-heredity — 2765w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/biology/foundational/photosynthesis-respiration — 2743w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/biomedical-engineering/foundational/physiology-for-engineers — 2785w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/botany/foundational/the-plant-cell — 2852w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/chemical-engineering/foundational/material-and-energy-balances — 2912w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/civil-engineering/foundational/statics-and-dynamics-for-civil-engineers — 3238w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
 - ** 83** subjects/physics/foundational/energy-conservation — 2598w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 84** subjects/chemistry/foundational/periodic-table — 2836w, 3 callouts, 11 widgets — GAPS: what-to-notice 3/11 (11)
+- ** 85** subjects/biology/foundational/movement-into-and-out-of-cells — 2844w, 3 callouts, 12 widgets — GAPS: what-to-notice 4/12 (10)
 - ** 85** subjects/environmental-engineering/foundational/water-chemistry-and-microbiology — 3541w, 4 callouts, 2 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/game-development/foundational/game-design-foundations — 2963w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
-- ** 85** subjects/physics/foundational/newtons-laws — 2792w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/physiotherapy/foundational/the-movement-sciences — 2639w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/plumbing/foundational/plumbing-tools-and-safety — 2722w, 4 callouts, 2 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/political-science/foundational/forms-of-government — 2684w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
@@ -29,7 +69,6 @@
 - ** 85** subjects/software-engineering/foundational/software-requirements — 2663w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/surgical-technology/foundational/asepsis-and-the-sterile-field — 2831w, 3 callouts, 1 widgets — GAPS: recaps 0/2 (10)
 - ** 85** subjects/urban-planning/foundational/planning-history-and-theory — 2814w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
-- ** 90** subjects/cognitive-science/foundational/what-is-cognitive-science — 3203w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
 - ** 90** subjects/cosmetology/foundational/infection-control-and-salon-safety — 3086w, 5 callouts, 1 widgets — GAPS: recaps 1/2 (5)
 - ** 90** subjects/counseling/foundational/the-counselling-profession — 3044w, 4 callouts, 2 widgets — GAPS: recaps 1/2 (5)
 - ** 90** subjects/creative-writing/foundational/craft-image-detail-and-the-sentence — 2931w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
@@ -76,45 +115,6 @@
 - ** 90** subjects/social-work/foundational/the-social-work-profession — 2930w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
 - ** 90** subjects/surveying/foundational/surveying-mathematics — 2839w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
 - ** 90** subjects/visual-arts/foundational/value-colour-composition — 3002w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
-- ** 95** subjects/accounting/foundational/the-fundamentals-of-accounting — 2635w, 3 callouts, 2 widgets
-- ** 95** subjects/actuarial-science/foundational/probability-for-actuaries — 2895w, 3 callouts, 2 widgets
-- ** 95** subjects/aerospace-engineering/foundational/aerodynamics-i-lift-and-airfoils — 2817w, 3 callouts, 2 widgets
-- ** 95** subjects/agriculture/foundational/soil-water-sun — 2780w, 3 callouts, 1 widgets
-- ** 95** subjects/animation/foundational/the-twelve-principles-of-animation — 2766w, 3 callouts, 1 widgets
-- ** 95** subjects/anthropology/foundational/culture-kin-long-view — 2868w, 3 callouts, 1 widgets
-- ** 95** subjects/archaeology/foundational/what-archaeology-is — 2711w, 3 callouts, 1 widgets
-- ** 95** subjects/architecture/foundational/career-paths-and-licensure — 2550w, 3 callouts, 1 widgets
-- ** 95** subjects/architecture/foundational/form-follows-forces — 2819w, 3 callouts, 1 widgets
-- ** 95** subjects/art-history/foundational/global-prehistory-art-before-writing — 2708w, 3 callouts, 1 widgets
-- ** 95** subjects/art-history/foundational/walk-through-western-art — 2885w, 3 callouts, 1 widgets
-- ** 95** subjects/art-therapy/foundational/what-art-therapy-is — 2711w, 3 callouts, 2 widgets
-- ** 95** subjects/artificial-intelligence/foundational/how-machines-learn — 2672w, 3 callouts, 1 widgets
-- ** 95** subjects/astronomy/foundational/planet-earth — 2929w, 3 callouts, 2 widgets
-- ** 95** subjects/astronomy/foundational/solar-system-scale — 2939w, 3 callouts, 2 widgets
-- ** 95** subjects/audiology/foundational/hearing-science — 2688w, 3 callouts, 2 widgets
-- ** 95** subjects/automotive-technology/foundational/shop-safety-and-service-basics — 2518w, 3 callouts, 1 widgets
-- ** 95** subjects/aviation-maintenance/foundational/amt-general — 2704w, 3 callouts, 2 widgets
-- ** 95** subjects/aviation/foundational/aircraft-systems-and-instruments — 2538w, 3 callouts, 1 widgets
-- ** 95** subjects/biochemistry/foundational/protein-structure-and-function — 2962w, 4 callouts, 2 widgets
-- ** 95** subjects/biology/foundational/biological-molecules — 3082w, 4 callouts, 2 widgets
-- ** 95** subjects/biology/foundational/classification-tree-of-life — 2539w, 3 callouts, 1 widgets
-- ** 95** subjects/biology/foundational/dna-heredity — 2765w, 3 callouts, 2 widgets
-- ** 95** subjects/biology/foundational/ecology-populations-communities — 2692w, 3 callouts, 1 widgets
-- ** 95** subjects/biology/foundational/evolution-natural-selection — 2371w, 4 callouts, 1 widgets
-- ** 95** subjects/biology/foundational/human-body-systems — 2683w, 4 callouts, 1 widgets
-- ** 95** subjects/biology/foundational/movement-into-and-out-of-cells — 2844w, 3 callouts, 4 widgets
-- ** 95** subjects/biology/foundational/photosynthesis-respiration — 2743w, 3 callouts, 2 widgets
-- ** 95** subjects/biomedical-engineering/foundational/physiology-for-engineers — 2785w, 4 callouts, 2 widgets
-- ** 95** subjects/botany/foundational/the-plant-cell — 2852w, 3 callouts, 2 widgets
-- ** 95** subjects/business/foundational/unit-economics — 2672w, 4 callouts, 1 widgets
-- ** 95** subjects/chemical-engineering/foundational/material-and-energy-balances — 2912w, 3 callouts, 2 widgets
-- ** 95** subjects/chemistry/foundational/acids-bases-and-ph — 2902w, 3 callouts, 1 widgets
-- ** 95** subjects/chemistry/foundational/mole-and-stoichiometry — 2512w, 3 callouts, 1 widgets
-- ** 95** subjects/chemistry/foundational/periodic-table — 2836w, 3 callouts, 3 widgets
-- ** 95** subjects/chemistry/foundational/states-of-matter — 2640w, 3 callouts, 1 widgets
-- ** 95** subjects/civil-engineering/foundational/statics-and-dynamics-for-civil-engineers — 3238w, 4 callouts, 2 widgets
-- ** 95** subjects/classics/foundational/homer-and-the-world-of-the-hero — 2883w, 3 callouts, 1 widgets
-- ** 95** subjects/communication-studies/foundational/communication-theory — 2894w, 3 callouts, 1 widgets
 - ** 95** subjects/computer-science/foundational/binary-bits — 3164w, 4 callouts, 2 widgets
 - ** 95** subjects/computer-science/foundational/computer-architecture-and-hardware — 3389w, 5 callouts, 2 widgets
 - ** 95** subjects/cybersecurity/foundational/security-foundations-the-cia-triad — 3293w, 3 callouts, 2 widgets

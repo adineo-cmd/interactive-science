@@ -1,0 +1,170 @@
+[
+  {
+    "slug": "subjects/computer-science/foundational/binary-bits",
+    "activities": [
+      {
+        "anchor": "That is not a limitation philosophy chose; it is what physics offers cheaply",
+        "type": "sort-buckets",
+        "caption": "file each design by how it weathers noise",
+        "name": "binNoiseSort",
+        "config": {
+          "prompt": "Two engineering bets walk into a noisy world — file each design:",
+          "buckets": ["binary: two well-separated levels", "multi-level: many close levels"],
+          "items": [
+            { "label": "a switch asked only 'high or low?' despite drifting voltage", "bucket": 0 },
+            { "label": "ten distinct voltage levels stored per cell", "bucket": 1 },
+            { "label": "a bit that stays readable as temperature and interference drift", "bucket": 0 },
+            { "label": "decimal-style cells that misread a neighbouring value when the circuit warms", "bucket": 1 },
+            { "label": "the lesson's founding bet: reliability beats compactness", "bucket": 0 },
+            { "label": "a narrow ladder of voltages where each rung is a rounding mistake away from its neighbour", "bucket": 1 }
+          ],
+          "why": "Two states survive noise and ten do not — a wide margin beats a dense code, and everything in the lesson follows from that one trade."
+        }
+      },
+      {
+        "anchor": "the master pattern of the whole subject is arithmetic, not magic",
+        "type": "match",
+        "caption": "pair each bit width with what it names",
+        "name": "binBitsMatch",
+        "config": {
+          "prompt": "Pair each width with the box of values it opens:",
+          "pairs": [
+            { "left": "8 bits (one byte)", "right": "256 values, ceiling 255 — room for one typed letter" },
+            { "left": "16 bits", "right": "65,536 values — the 16-bit era of games and sound" },
+            { "left": "24 bits of colour", "right": "16,777,216 shades — 'true colour' on your screen" },
+            { "left": "32 bits of memory address", "right": "about 4 billion locations — the wall 2000s PCs actually hit" },
+            { "left": "3 bits", "right": "eight symbols — enough that 2³ covers a small alphabet" }
+          ],
+          "why": "n bits give 2ⁿ distinct values, and one extra bit doubles the count — which is why memory sizes come in powers of two."
+        }
+      },
+      {
+        "anchor": "A merchant's balance makes the uniqueness visible",
+        "type": "cloze",
+        "caption": "complete the place-value sentence",
+        "name": "binPlaceCloze",
+        "config": {
+          "text": "Binary is a place-value system like decimal, only the base differs: 1101 means 1×%%0%% + 1×4 + 0×%%1%% + 1×1 = %%2%%. To go from denary, repeatedly subtract the %%3%% power of two that fits; to go back, %%4%% the place values under every 1.",
+          "answers": [["8"], ["2"], ["13"], ["largest", "biggest"], ["add", "sum", "total"]],
+          "hint": "One weight of each size — 1, 2, 4, 8 — and each power either fits or it does not, so the spelling comes out exact."
+        }
+      },
+      {
+        "anchor": "with no separate subtraction hardware",
+        "type": "spot-error",
+        "caption": "find the faulty line — two's complement, worked",
+        "name": "binTwosSpot",
+        "config": {
+          "prompt": "One step of this negative-number working is wrong — click it:",
+          "lines": [
+            "To store −13 in 8 bits, start from its positive spelling, 00001101.",
+            "Flip every bit: 00001101 becomes 11110010.",
+            "Add 1: 11110010 + 1 = 11110011 — the 8-bit spelling of −13.",
+            "The same adder does both jobs: a − b runs as a + (−b) — nothing extra to build.",
+            "The 8-bit range runs from −256 to +255, so stepping past the top simply keeps counting."
+          ],
+          "errorLine": 4,
+          "correction": "Eight bits hold −128 to +127: the ceiling is 127, and 127 + 1 wraps around to −128 — the arithmetic version of an odometer rolling over.",
+          "why": "Flip-and-add-1 makes each negation sum to zero by ordinary addition — but the range stays fixed, and stepping past it is the overflow error."
+        }
+      },
+      {
+        "anchor": "over 150,000 of them",
+        "type": "predict",
+        "caption": "bet before you read on — the mojibake mystery",
+        "name": "binTextPredict",
+        "config": {
+          "q": "You open a document and find 'cafÃ©' where 'café' should be. What happened?",
+          "choices": [
+            "The bytes are unchanged — the program decoded them with a different character dictionary",
+            "Some bytes were lost in transmission, truncating the accented letter",
+            "The accent was never stored: plain English text costs one byte per letter",
+            "The author typed it wrong — editors never misinterpret stored bytes"
+          ],
+          "answer": 0,
+          "why": "The bytes are identical; a dictionary between integers and symbols was applied that disagrees with the one used at write time. Once text is integers, any mismatched lookup shows exactly this."
+        }
+      },
+      {
+        "anchor": "you must sample at better than twice the highest frequency",
+        "type": "estimate",
+        "caption": "call the size of one stereo minute",
+        "name": "binSoundEst",
+        "config": {
+          "prompt": "One minute of stereo music, CD quality — 44,100 measurements each second, 16 bits per measurement, two channels — how much storage, before compression?",
+          "unit": "MB",
+          "answer": 10.6,
+          "factor": 1.5,
+          "why": "44,100 × 16 × 2 × 60 ≈ 10.1 million bytes ≈ 10.6 MB — rate × resolution × channels × seconds, straight from the dials.",
+          "context": "Roughly three MP3s of the same minute — which is why lossy compression is structural, not optional."
+        }
+      },
+      {
+        "anchor": "Nothing is missing; two definitions of",
+        "type": "place",
+        "caption": "where does the 'missing' 7% go?",
+        "name": "binDrivePlace",
+        "config": {
+          "prompt": "A drive sold as '1 TB' — one decimal trillion bytes — where does its shown size land on this binary scale?",
+          "labels": ["880 GiB", "905 GiB", "931 GiB", "957 GiB", "1000 GiB"],
+          "scale": { "min": 880, "max": 1000 },
+          "answer": 931,
+          "tolerance": 8,
+          "why": "Divide 1,000,000,000,000 by 1,024, three times over: 931.32. Every byte is present — the label counts powers of ten while the operating system measures powers of 2."
+        }
+      },
+      {
+        "anchor": "The ratios are dramatic (10:1 is normal)",
+        "type": "branch",
+        "caption": "one archive job, three assets, one rule",
+        "name": "binCompBranch",
+        "config": {
+          "root": "One backup drive, several assets, and one question each time: must the meaning survive exactly, or is the appearance the point?",
+          "nodes": {
+            "start": {
+              "text": "First: the program's source code.",
+              "choices": [
+                { "label": "Lossless (ZIP)", "next": "srcOk", "feedback": "Bit-for-bit survives — a single altered character is a bug, so this was never a lossy candidate." },
+                { "label": "Lossy, tuned for pictures", "next": "srcBad", "feedback": "A changed letter in a program is not smaller art; it is a bug. Code has almost no repetition to trade, either." }
+              ]
+            },
+            "srcOk": {
+              "text": "Code archived intact. Next: a photo of a smooth grey sky.",
+              "choices": [
+                { "label": "JPEG (lossy)", "next": "photoOk", "feedback": "Roughly 10× smaller, and what gets thrown away sits where the eye is least sensitive." },
+                { "label": "Run-length or dictionary (lossless)", "next": "photoOk2", "feedback": "Safe but barely smaller — smooth tones have almost no repeated runs or phrases to describe." }
+              ]
+            },
+            "srcBad": {
+              "text": "A 'compressed' program that behaves differently is broken, not compressed — restart the job with lossless.",
+              "choices": []
+            },
+            "photoOk": {
+              "text": "Pictures done. Last: the concert recording.",
+              "choices": [
+                { "label": "MP3 (lossy)", "next": "musicOk", "feedback": "Masked frequencies go, perceived sound stays — psychoacoustics decides what may be dropped." },
+                { "label": "A bit-for-bit audio archive", "next": "musicOk2", "feedback": "Every sample survives, at many times the size — the right call only when the recording itself must be preserved exactly." }
+              ]
+            },
+            "photoOk2": {
+              "text": "Big but exact. Last: the concert recording.",
+              "choices": [
+                { "label": "MP3 (lossy)", "next": "musicOk", "feedback": "Masked frequencies go, perceived sound stays — psychoacoustics decides what may be dropped." },
+                { "label": "A bit-for-bit audio archive", "next": "musicOk2", "feedback": "Every sample survives, at many times the size — the right call only when the recording itself must be preserved exactly." }
+              ]
+            },
+            "musicOk": {
+              "text": "Archive complete: code exact, pictures and audio at a fraction of the size, nothing you would notice gone.",
+              "choices": []
+            },
+            "musicOk2": {
+              "text": "Archive complete: everything exact, at the cost of a much fuller drive.",
+              "choices": []
+            }
+          },
+          "why": "The rule: if meaning must survive exactly — text, records, programs — lossless only; if appearance is the point — pictures, sound — throwing away barely-perceived detail is the honest bargain."
+        }
+      }
+    ]
+  }
+]

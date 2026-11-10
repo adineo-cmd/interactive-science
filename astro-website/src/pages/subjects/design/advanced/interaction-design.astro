@@ -10,6 +10,158 @@ const ixdCfg = {
     { math: '4 · Motion with meaning', note: 'Animation explains change (where did that panel come from?), shows relationships (shared-element transitions), confirms action (buttons that respond) — 200–300 ms, purposeful; motion as decoration is the design lesson\'s clutter principle with a timeline.' },
   ],
 };
+
+const ixdCycleMatch = {
+  "prompt": "The design cycle, run on behaviour — pair each stage:",
+  "pairs": [
+    {
+      "left": "Identifying",
+      "right": "needfinding — watch tasks and breakdowns, not opinions"
+    },
+    {
+      "left": "Defining",
+      "right": "requirements as tasks with measurable success criteria"
+    },
+    {
+      "left": "Proposing",
+      "right": "paper flows and Wizard-of-Oz tests of the choreography"
+    },
+    {
+      "left": "Developing and planning",
+      "right": "the state matrix and flow map engineering can implement unambiguously"
+    },
+    {
+      "left": "Testing and evaluating",
+      "right": "formative five-user tests; summative metrics"
+    }
+  ],
+  "why": "Every stage has a distinct interaction flavour — and the honest unit of requirement is the task, not the feature."
+};
+
+const ixdTestPredict = {
+  "q": "A team plans a two-month build followed by a one-week usability test at the end. What does interaction design say about that schedule?",
+  "choices": [
+    "Fine — testing validates the finished design",
+    "Evaluation runs at every stage — a Friday paper test can kill a month of wrong development"
+  ],
+  "answer": 1,
+  "why": "Formative tests find comprehension failures early; summative tests compare finished designs on task time, error rate and completion."
+};
+
+const ixdStateSpot = {
+  "prompt": "One of these state claims is backwards — click it:",
+  "lines": [
+    "Default: the button looks pressable.",
+    "Focus: a visible ring — the only way a keyboard user knows where they are.",
+    "Active: pressed feedback within about 100 ms.",
+    "Disabled: grey it out and say nothing — silence is the cleanest choice.",
+    "Error: say why the save failed and preserve the user's input."
+  ],
+  "errorLine": 3,
+  "correction": "A disabled state with no explanation is a dead end — good practice keeps the button enabled and explains on click what is missing.",
+  "why": "Designing the default alone and shipping it is the single most common quality gap in real products."
+};
+
+const ixdFlatCompare = {
+  "prompt": "The signifier's decade of regret — drag between the eras:",
+  "before": {
+    "label": "Flat design, 2010s",
+    "text": "Borders, shadows and underlines stripped for minimalism — text that looked like a label became clickable, with measured increases in hesitation and missed targets."
+  },
+  "after": {
+    "label": "The correction",
+    "text": "Material's shadows, returned underlines, clearly bordered buttons — not an aesthetic round-trip but a rediscovery that signifiers carry the interaction."
+  },
+  "why": "Every interactive element should answer 'what are you and what happens if I touch you?' before it is touched."
+};
+
+const ixdMotionPlace = {
+  "prompt": "The dosage rule — place a standard UI transition on the milliseconds scale.",
+  "labels": [
+    "0 ms",
+    "150 ms",
+    "300 ms",
+    "450 ms",
+    "600 ms"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 600
+  },
+  "answer": 250,
+  "tolerance": 75,
+  "why": "200–300 ms: fast enough not to feel sluggish, slow enough to be perceived — below roughly 100 ms motion is invisible, above about 500 ms it reads as lag."
+};
+
+const ixdLatencySort = {
+  "prompt": "The classic response-time thresholds — file each band:",
+  "buckets": [
+    "feels instantaneous",
+    "a thought stays unbroken",
+    "the limit of attention"
+  ],
+  "items": [
+    {
+      "label": "under 100 ms",
+      "bucket": 0
+    },
+    {
+      "label": "about 1 second",
+      "bucket": 1
+    },
+    {
+      "label": "about 10 seconds",
+      "bucket": 2
+    },
+    {
+      "label": "beyond it, users switch away",
+      "bucket": 2
+    }
+  ],
+  "why": "Which is why perceived speed (skeletons, optimistic updates), budgeting and graceful degradation are design responses, not engineering afterthoughts."
+};
+
+const ixdFittsEst = {
+  "prompt": "With a ≈ 150 ms and b ≈ 150 ms per bit: a pointer moves 200 px to a 40 px-wide button — what movement time does Fitts's law predict?",
+  "unit": "ms",
+  "answer": 540,
+  "factor": 1.3,
+  "why": "≈ 540 ms — log2(1 + 200/40) ≈ 2.58 bits. Doubling the width to 80 px cuts it to ≈ 420 ms: a 22% saving for a purely geometric decision.",
+  "context": "Screen corners and edges are infinitely deep targets — which is why corner-anchored menus feel so fast."
+};
+
+const ixdHickTrace = {
+  "prompt": "Decision time against the entropy of the choice set — which curve is Hick's law?",
+  "curves": [
+    {
+      "expr": "x",
+      "color": "#1d4ed8",
+      "label": "A: grows roughly linearly"
+    },
+    {
+      "expr": "x^2",
+      "color": "#b42318",
+      "label": "B: grows with the square"
+    },
+    {
+      "expr": "50",
+      "color": "#0f766e",
+      "label": "C: flat — choice count is free"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 20
+  },
+  "y": {
+    "min": 0,
+    "max": 400
+  },
+  "xlabel": "entropy of the choice set (bits)",
+  "ylabel": "decision time (ms, relative)",
+  "why": "Roughly linear in entropy — so progressive disclosure presenting 3 salient options instead of 15 directly buys back decision time."
+};
 ---
 <TopicPage slug="subjects/design/advanced/interaction-design">
   <h2>Where you are, and what you will learn</h2>
@@ -85,11 +237,13 @@ const ixdCfg = {
     avoid is testing only whether the design <em>can</em> be used by a motivated expert; the
     syllabus question is whether it will be used correctly by a first-time, distracted human.
   </p>
+  <Widget no="9" caption="pair each cycle stage with its interaction flavour" widget="match" config={ixdCycleMatch} />
   <p>
     <em>Common misconception:</em> "testing comes at the end of the cycle." In interaction design,
     evaluation is how you learn what to design, so it runs at every stage — a paper flow tested
     with three colleagues on a Friday morning can kill a month of wrong development.
   </p>
+  <Widget no="8" caption="bet before the reveal — when does testing run?" widget="predict" config={ixdTestPredict} />
 
   <h2>States: the real design surface</h2>
   <p>
@@ -109,6 +263,7 @@ const ixdCfg = {
     empty inbox that says "no items" is a dead end, while one that explains what will appear here
     and offers the first action turns the product's emptiest moment into onboarding.
   </p>
+  <Widget no="7" caption="find the faulty line — the state matrix" widget="spot-error" config={ixdStateSpot} />
   <p><em>Common misconception:</em> the focus ring is an ugly browser default you should delete for a cleaner look. It is the only way a keyboard user can see where they are on the page, so the fix is to restyle it to fit the design, never to remove it.</p>
 
   <h2>Affordances and signifiers</h2>
@@ -126,6 +281,7 @@ const ixdCfg = {
     practical rule: every interactive element should answer "what are you and what happens if I
     touch you?" <em>before</em> it is touched.
   </p>
+  <Widget no="6" caption="flat design vs the correction — drag the divider" widget="compare" config={ixdFlatCompare} />
 
   <p>
     <strong>So far:</strong> the cycle turns behaviour into requirements and the state matrix
@@ -169,6 +325,7 @@ const ixdCfg = {
     decoration violates the visual design lesson's clutter principle with a clock attached: it
     spends the user's time to say nothing.
   </p>
+  <Widget no="5" caption="place the UI-transition duration" widget="place" config={ixdMotionPlace} />
   <p><em>Common misconception:</em> longer, showier transitions feel more polished, so animation is the finishing touch you add last. Duration is a budget, not a flourish: past roughly half a second a transition reads as lag, and the useful motion — explaining where a panel came from — should be designed alongside the states it connects, not sprinkled on afterwards.</p>
 
   <p>
@@ -191,6 +348,7 @@ const ixdCfg = {
     <strong>graceful degradation</strong>: design what the user sees at each latency band, so a
     slow day degrades to "slower" rather than "broken".
   </p>
+  <Widget no="4" caption="file each latency band by what governs it" widget="sort-buckets" config={ixdLatencySort} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -252,6 +410,8 @@ const ixdCfg = {
     in the entropy of the choice set, so progressive disclosure is not just visual hygiene, it
     directly buys back decision time by presenting 3 salient options instead of 15.
   </p>
+  <Widget no="3" caption="call Fitts's prediction" widget="estimate" config={ixdFittsEst} />
+  <Widget no="2" caption="which curve is Hick's law?" widget="trace" config={ixdHickTrace} />
   <p>
     <strong>Undo versus confirmation is a measurable trade-off.</strong> A confirmation dialog
     taxes every occurrence of the action to intercept the rare error: if a delete happens 100

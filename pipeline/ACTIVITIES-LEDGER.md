@@ -156,6 +156,45 @@
 | computer-science/expert/computability-and-complexity | order, estimate, trace, sort-buckets, cloze, judge, branch, match | chunk-08 |
 | computer-science/expert/cryptography | sort-buckets, match, compare, estimate, judge, branch, cloze, place | chunk-08 |
 | computer-science/expert/distributed-systems | order, branch, sort-buckets, estimate, compare, match, judge, cloze | chunk-08 |
+| computer-science/foundational/binary-bits | sort-buckets, match, cloze, spot-error, predict, estimate, place, branch | round-5 |
+| computer-science/foundational/computer-architecture-and-hardware | predict, spot-error, match, order, sort-buckets, cloze, estimate, branch | round-5 |
+| computer-science/foundational/growth-of-functions | predict, trace, estimate, judge, compare, order, spot-error, branch | round-5 |
+| computer-science/intermediate/algorithms-searching-and-sorting | order, match, place, branch, judge, spot-error, predict, estimate | round-5 |
+| computer-science/intermediate/data-files-tables-json | predict, sort-buckets, judge, branch, spot-error, compare, match, order | round-5 |
+| computer-science/intermediate/logic-gates-and-digital-circuits | compare, match, judge, spot-error, predict, order, estimate, sort-buckets | round-5 |
+| computer-science/intermediate/programming-fundamentals | match, spot-error, predict, cloze, estimate, order, branch | round-5 |
+| cosmetology/foundational/infection-control-and-salon-safety | predict, match, judge, branch, order, estimate, spot-error, sort-buckets | round-5 |
+| counseling/foundational/the-counselling-profession | match, sort-buckets, compare, predict, cloze, spot-error, order, branch | round-5 |
+| creative-writing/foundational/craft-image-detail-and-the-sentence | predict, sort-buckets, compare, judge, order, match, spot-error | round-5 |
+| criminology/foundational/changing-awareness-of-crime | predict, match, sort-buckets, order, compare, spot-error, estimate | round-5 |
+| culinary-arts/foundational/kitchen-essentials-safety-knives-mise-en-place | predict, sort-buckets, estimate, place, match, order, judge, branch | round-5 |
+| cybersecurity/foundational/security-foundations-the-cia-triad | predict, compare, match, judge, sort-buckets, branch, estimate, order | round-5 |
+| dance/foundational/performance-technique-and-expression | compare, match, sort-buckets, spot-error, place, judge, order, cloze | round-5 |
+| data-science/advanced/ab-testing | predict, judge, order, sort-buckets, compare, estimate, spot-error | round-5 |
+| data-science/advanced/dashboards-and-data-storytelling | sort-buckets, match, estimate, compare, predict, order, cloze | round-5 |
+| data-science/intermediate/sql-for-analysts | order, spot-error, cloze, match, sort-buckets, judge, compare, branch | round-5 |
+| dental-hygiene/foundational/the-sciences-behind-hygiene | match, sort-buckets, spot-error, order, cloze, judge, branch | round-5 |
+| dentistry/foundational/biomedical-sciences-for-dentistry | sort-buckets, compare, branch, match, estimate, order, spot-error, cloze | round-5 |
+| design/advanced/design-systems | order, judge, sort-buckets, estimate, match, branch, spot-error | round-5 |
+| design/advanced/interaction-design | match, predict, spot-error, compare, place, sort-buckets, estimate, trace | round-5 |
+| design/expert/design-strategy-and-leadership | branch, compare, judge, match, order, spot-error, cloze | round-5 |
+| design/foundational/design-is-deciding | match, sort-buckets, estimate, spot-error, cloze, branch, place | round-5 |
+| design/foundational/structures-loads-and-forces | sort-buckets, compare, estimate, predict, match, spot-error, place, judge | round-5 |
+| design/intermediate/accessibility | sort-buckets, estimate, compare, match, place, order, spot-error, judge | round-5 |
+| design/intermediate/grids-and-layout | match, estimate, place, predict, sort-buckets, branch, cloze, trace | round-5 |
+| design/intermediate/prototyping-and-wireframes | judge, match, estimate, sort-buckets, cloze, branch, compare, order | round-5 |
+| design/intermediate/ux-research | sort-buckets, match, order, estimate, branch, spot-error, compare, cloze | round-5 |
+| development-studies/foundational/what-is-development | compare, match, spot-error, order, place, trace, judge, estimate | round-5 |
+| drama/foundational/elements-of-practical-drama | sort-buckets, order, match, spot-error, compare, cloze, predict, branch | round-5 |
+| earth-science/advanced/geochemical-cycles | match, sort-buckets, estimate, order, spot-error, judge, trace, place | round-5 |
+| earth-science/advanced/paleoclimate-and-ice-ages | sort-buckets, match, spot-error, order, estimate, compare, place, cloze | round-5 |
+| earth-science/expert/geophysics-of-plate-driving-forces | match, spot-error, order, sort-buckets, estimate, judge, branch | round-5 |
+| earth-science/expert/planetary-geology | match, order, estimate, place, sort-buckets, spot-error, cloze, predict | round-5 |
+| earth-science/foundational/earth-interior | sort-buckets, place, order, match, predict, estimate, judge, compare | round-5 |
+| earth-science/foundational/fossils-and-geologic-time | order, sort-buckets, match, estimate, judge, cloze, branch | round-5 |
+| earth-science/foundational/minerals-and-crystals | sort-buckets, compare, match, order, spot-error, branch, cloze, predict | round-5 |
+| earth-science/foundational/rock-cycle | match, branch, sort-buckets, spot-error, judge, estimate, compare, order | round-5 |
+| earth-science/foundational/the-water-cycle | compare, cloze, estimate, sort-buckets, predict, place, match, branch | round-5 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -177,12 +216,12 @@
   sort-buckets, spot-error) + the original 7. Config schemas in each file's header.
 - P2 structural layer: **complete and shipped** (numbered topic positions, position chips,
   stage maps, learning-loop line, spacing) — commit 395dc79. Zero-token, no prose changes.
-- P1 backfill: **40 lessons done, 337 activities** (physics 10/10 complete; accounting,
+- P1 backfill: **193 lessons done, ~1,500 activities** (physics 10/10 complete; accounting,
   actuarial-science, aerospace-engineering foundational lessons done; **agriculture
   11/11 COMPLETE** — waves agriculture-1..4; animation 1/1 COMPLETE; **anthropology
   9/9 COMPLETE**; **archaeology 1/1 COMPLETE** and architecture 2/10 — wave 6). Each single-lesson subject done in one
   wave; multi-lesson subjects go 2–3 per wave.
-- Remaining queue: **~543 live lessons** (counted as pages with fewer than 3 of the new
+- Remaining queue: **~390 live lessons** (counted as pages with fewer than 3 of the new
   activity types in `src/pages/<slug>.astro`).
 - Quality bars, verified every wave by script: ≥6 distinct interaction types, zero
   adjacent repeats, ≤2 answer-family widgets (predict/judge/cloze). Cloned-answer-heavy

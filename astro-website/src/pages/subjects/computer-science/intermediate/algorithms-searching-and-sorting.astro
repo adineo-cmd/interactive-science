@@ -21,6 +21,182 @@ const sortQuizCfg = {
     { q: 'Merge sort\'s n log n comes from…', choices: ['n merge steps each costing log n', 'log₂(n) levels of splitting, with n total work per level', 'sorting n items log n times', 'recursion overhead'], answer: 1, why: 'Halving produces log₂(n) levels; merging all items at each level costs about n; multiply and you get n log n — the divide-and-conquer signature.' },
   ],
 };
+
+
+const algDesignOrder = {
+  "prompt": "From problem statement to typable program — put the pipeline in order:",
+  "items": [
+    "Decompose: split the problem into subproblems you can state precisely",
+    "Specify: write each piece's inputs, output, and the relationship between them",
+    "Write pseudocode: structured English, every move unambiguous, no language syntax chosen yet",
+    "Refine: expand anything still fuzzy until it could be typed straight into a program"
+  ],
+  "why": "Cheap on paper, dear in code — the fuzziness dies before a language is chosen."
+};
+
+const algPatternsMatch = {
+  "prompt": "Pair each standard pattern with its skeleton:",
+  "pairs": [
+    {
+      "left": "Totals",
+      "right": "total ← 0 before the loop; total ← total + value inside"
+    },
+    {
+      "left": "Counting",
+      "right": "same shape, but count ← count + 1 only when a condition holds"
+    },
+    {
+      "left": "Maximum/minimum",
+      "right": "start from the first item; replace the running best when a newcomer beats it"
+    },
+    {
+      "left": "Searching",
+      "right": "walk and compare (linear), or halve (binary)"
+    },
+    {
+      "left": "Sorting",
+      "right": "bubble, insertion, merge, quick"
+    }
+  ],
+  "why": "Five skeletons, five adapted variables — and the running best must start as a real item of the list, never a guess like 0."
+};
+
+const algBinaryPlace = {
+  "prompt": "Binary search on a list of a million items — at most how many comparisons?",
+  "labels": [
+    "0",
+    "10",
+    "20",
+    "30"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 30
+  },
+  "answer": 20,
+  "tolerance": 1,
+  "why": "Each comparison halves the candidates: a million is about 2²⁰, so twenty halvings reach one item — 1,000 needs 10, a billion needs 30."
+};
+
+const algSearchBranch = {
+  "root": "One list, many queries — or just one? Walk the trade.",
+  "nodes": {
+    "start": {
+      "text": "A 100,000-row list needs its first lookup, today, once.",
+      "choices": [
+        {
+          "label": "Put it in order (n log n), then halve every lookup",
+          "next": "once",
+          "feedback": "Sorting costs n log n up front: for a list you will query once, that is a loss — scan and move on."
+        },
+        {
+          "label": "Scan it linearly, top to bottom",
+          "next": "scanOk",
+          "feedback": "Up to n comparisons and it works on any order — for a one-off query, the honest bargain."
+        }
+      ]
+    },
+    "once": {
+      "text": "Found it. Tomorrow: ten thousand more lookups on the same list.",
+      "choices": [
+        {
+          "label": "Order it once now, halve forever after",
+          "next": "many",
+          "feedback": "Query it many times and the prerequisite becomes a massive win — databases, dictionaries and every 'sorted by…' column exist for exactly this."
+        },
+        {
+          "label": "Keep scanning each time",
+          "next": "grind",
+          "feedback": "n comparisons per query, ten thousand times — the unsorted habit stops scaling."
+        }
+      ]
+    },
+    "scanOk": {
+      "text": "Found. But tomorrow: ten thousand more lookups on the same list.",
+      "choices": [
+        {
+          "label": "Order it once now, halve forever after",
+          "next": "many",
+          "feedback": "Query it many times and the prerequisite becomes a massive win — databases, dictionaries and every 'sorted by…' column exist for exactly this."
+        },
+        {
+          "label": "Keep scanning each time",
+          "next": "grind",
+          "feedback": "n comparisons per query, ten thousand times — the unsorted habit stops scaling."
+        }
+      ]
+    },
+    "many": {
+      "text": "Ordered once, logarithmic forever — the prerequisite paid for many times over.",
+      "choices": []
+    },
+    "grind": {
+      "text": "Simple and correct — until the query count grows; then the question becomes how many lookups tomorrow brings.",
+      "choices": []
+    }
+  },
+  "why": "Sorting costs n log n once; the halving method pays only when the list will be queried many times."
+};
+
+const algBigOJudge = {
+  "statements": [
+    {
+      "s": "For n = 20, an O(n²) algorithm does 400 operations and is instantly done.",
+      "truth": true,
+      "why": "Small n hides everything: the quadratic is still cheap at twenty items."
+    },
+    {
+      "s": "An O(n²) label means the algorithm is slow at every input size.",
+      "truth": false,
+      "why": "The curves part company at scale — below about twenty items you can barely separate them."
+    },
+    {
+      "s": "The notation measures wall-clock time in milliseconds.",
+      "truth": false,
+      "why": "It names how cost scales, never a stopwatch reading."
+    },
+    {
+      "s": "Thinking in curves before writing code is what decides which programs survive scale.",
+      "truth": true,
+      "why": "That widening gap, not any single value, is the whole argument of the lesson."
+    }
+  ]
+};
+
+const algSeedSpot = {
+  "prompt": "A winter-temperatures max-finder was traced on paper — one line is wrong. Click it:",
+  "lines": [
+    "max ← 0 (a convenient starting value)",
+    "−8 > 0? no — max stays 0",
+    "−3 > 0? no — max stays 0",
+    "−5 > 0? no — max stays 0",
+    "loop ends: print max → 0"
+  ],
+  "errorLine": 0,
+  "correction": "Seed with an item of the data: max ← −8. Then −8 stays, −3 beats it, −5 does not — the answer is −3, the only honest maximum for all-negative input.",
+  "why": "The table's job is to make the lying line visible: here the opening row poisoned every row after it."
+};
+
+const algShipPredict = {
+  "q": "It runs without crashing and passes every normal example you tried. What still ships?",
+  "choices": [
+    "Boundary bugs — the empty list, the single item, the value one past the limit",
+    "Syntax errors — the compiler just missed them",
+    "Nothing: if normal data passes, the algorithm is correct",
+    "Only performance issues — the happy path settles everything else"
+  ],
+  "answer": 0,
+  "why": "Correct and incorrect programs agree on normal data; the empty list, the single item and the value one past the limit are where they split."
+};
+
+const algBentleyEst = {
+  "prompt": "Bentley's 1986 challenge: what share of professional programmers wrote a buggy binary search?",
+  "unit": "%",
+  "answer": 90,
+  "factor": 1.3,
+  "why": "Around ninety in a hundred — usually off-by-one errors. Two decades on, Java's own standard library carried an overflow bug in (low + high) / 2; the fix became low + (high − low) / 2.",
+  "context": "The idea is easy; the edges are where correctness lives."
+};
 ---
 <TopicPage slug="subjects/computer-science/intermediate/algorithms-searching-and-sorting">
   <h2>Where you are, and what you will learn</h2>
@@ -82,6 +258,7 @@ const sortQuizCfg = {
     and amend it: find the maximum → find the <em>second</em> maximum; search for one
     value → count all matches).
   </p>
+  <Widget no="2" caption="problem to algorithm — put the pipeline in order" widget="order" config={algDesignOrder} />
   <p>
     <strong>So far:</strong> a problem becomes an algorithm through four moves — decompose,
     specify, write pseudocode, refine — and vagueness is cheapest to fix on paper, before
@@ -104,6 +281,7 @@ const sortQuizCfg = {
     loop, print max. Every element is there for a reason, and each reason is a place a
     bug could live.
   </p>
+  <Widget no="3" caption="pair each pattern with its memorised skeleton" widget="match" config={algPatternsMatch} />
 
   <h2>Linear and binary search</h2>
   <p>
@@ -119,11 +297,13 @@ const sortQuizCfg = {
     and every "sorted by…" column in your life exist because someone planned to search
     repeatedly.
   </p>
+  <Widget no="4" caption="how many halvings for a million items?" widget="place" config={algBinaryPlace} />
   <p><em>Common misconception:</em> "binary search is always faster, so I should always sort
   first." It wins on comparisons, but sorting costs n log n up front: searching an unsorted
   list once is cheaper with linear search, and sorting only pays when the list will be
   searched many times. The right question is not "which search is faster?" but "how many
   times will I search?".</p>
+  <Widget no="5" caption="one lookup today, ten thousand tomorrow — walk the trade" widget="branch" config={algSearchBranch} />
   <p>
     <strong>So far:</strong> linear search costs up to n comparisons and works on any list;
     binary search costs log₂(n) but only after the data is sorted. That prerequisite is the
@@ -156,6 +336,7 @@ const sortQuizCfg = {
   operations and is instantly done. The curves only part company at scale — which is
   exactly when it matters, and exactly why you think in growth rates before writing
   code.</p>
+  <Widget no="6" caption="true or false — reading a growth label honestly" widget="judge" config={algBigOJudge} />
   <p>
     <strong>So far:</strong> the sorting classics trade growth rate against memory and
     stability, and merge sort's n log n is the price of guaranteed speed at scale. But an
@@ -179,11 +360,13 @@ const sortQuizCfg = {
     the table forces you to run the code the computer runs, not the code you think
     you wrote.
   </p>
+  <Widget no="7" caption="find the faulty line — a traced max-finder" widget="spot-error" config={algSeedSpot} />
   <p><em>Common misconception:</em> "if the program runs without crashing and passes my
   normal examples, it works." Running is not correctness: the bugs that ship are boundary
   bugs — the empty list, the single item, the value one past the limit — that normal data
   never touches. Boundary and erroneous test data exist precisely because the happy path
   cannot expose them.</p>
+  <Widget no="8" caption="bet before you read on — what ships anyway" widget="predict" config={algShipPredict} />
 
   <h2>Correctness is part of the deal</h2>
   <p>
@@ -199,6 +382,7 @@ const sortQuizCfg = {
     boundaries are where correctness lives, and even decades-tested library code earns
     its audacity.
   </p>
+  <Widget no="9" caption="call the failure rate of the professionals" widget="estimate" config={algBentleyEst} />
 
   <h2>Amending algorithms: the modification drills</h2>
   <p>
@@ -302,7 +486,7 @@ const sortQuizCfg = {
     notice.
   </p>
   <p class="sources"><strong>Sources:</strong> Knuth, The Art of Computer Programming Vol. 3 (Sorting and Searching); Cormen et al., Introduction to Algorithms; Bentley, Programming Pearls (1986); Bloch, "Extra, Extra — Read All About It: Nearly All Binary Searches and Mergesorts are Broken" (2006). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
-  <Widget no="2" caption="check yourself: algorithms and their discipline" widget="quiz" config={sortQuizCfg} />
+  <Widget no="10" caption="check yourself: algorithms and their discipline" widget="quiz" config={sortQuizCfg} />
   <p>
     <strong>What to notice:</strong> commit to an answer before reading the feedback, then
     compare your reasoning with the "why" line — each one names the exact idea being

@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "subjects/computer-science/intermediate/logic-gates-and-digital-circuits",
+    "activities": [
+      {
+        "anchor": "An AND gate is a few transistors wired so that its output wire sits high only when both input wires sit high",
+        "type": "compare",
+        "caption": "the algebra and its machine — drag the divider",
+        "name": "gateAlgebraCompare",
+        "config": {
+          "prompt": "Drag between the mathematics and its machine:",
+          "before": {
+            "label": "1854 — the algebra",
+            "text": "logic on paper: conjunction, disjunction, negation, with laws of their own"
+          },
+          "after": {
+            "label": "1937 — the wiring",
+            "text": "switching circuits embody the same algebra — logic gains a machine, engineering gains a mathematics"
+          },
+          "why": "The 1937 master's thesis showed the wiring IS the algebra: a machine could compute anything expressible in logic — the digital age followed from that observation."
+        }
+      },
+      {
+        "anchor": "The two-input tables are worth knowing cold.",
+        "type": "match",
+        "caption": "pair each gate with its output signature",
+        "name": "gateTablesMatch",
+        "config": {
+          "prompt": "Pair each gate with its output signature:",
+          "pairs": [
+            { "left": "AND", "right": "1 only on row 11 — both must agree" },
+            { "left": "OR", "right": "0 only on row 00 — inclusive: 1 even when both inputs are 1" },
+            { "left": "XOR", "right": "1 on rows 01 and 10 — 'exactly one'" },
+            { "left": "NAND", "right": "0 only on row 11 — AND, then flipped" },
+            { "left": "NOR", "right": "1 only on row 00 — OR, then flipped" }
+          ],
+          "why": "Read each as a sentence: flip it; both must agree; one is enough; they must differ."
+        }
+      },
+      {
+        "anchor": "and the alarm example shows why it matters",
+        "type": "judge",
+        "caption": "true or false — inclusive vs exclusive",
+        "name": "gateOrJudge",
+        "config": {
+          "statements": [
+            { "s": "A OR B is 0 when both inputs are 1.", "truth": false, "why": "Exclusive-or's contract; the inclusive gate outputs 1 on every row except 00, including 11." },
+            { "s": "The inclusive gate outputs 1 on every row except 00 — even the row where both inputs are 1.", "truth": true, "why": "One yes is enough, and two yeses still count." },
+            { "s": "XOR outputs 1 exactly when the inputs differ.", "truth": true, "why": "The inequality detector: 1 on rows 01 and 10." },
+            { "s": "A smoke-and-heat sensor pair must still trigger the bell when both fire at once.", "truth": true, "why": "Inclusive wins here: both sensors firing is still a yes — mixing the two gates up is the most common contract error." }
+          ]
+        }
+      },
+      {
+        "anchor": "they are how NAND and NOR can impersonate every other gate",
+        "type": "spot-error",
+        "caption": "find the faulty law",
+        "name": "gateLawsSpot",
+        "config": {
+          "prompt": "One entry in this laws list is wrong — click it:",
+          "lines": [
+            "A·1 = A and A+0 = A — the laws that mirror ordinary arithmetic.",
+            "A·A = A and A+A = A — no powers or coefficients in logic.",
+            "A·Ā = 0 and A+Ā = 1 — a variable or its negation covers everything.",
+            "A + A·B = B — the bigger term always wins.",
+            "De Morgan: NOT(A AND B) = (NOT A) OR (NOT B)."
+          ],
+          "errorLine": 3,
+          "correction": "A + A·B = A (absorption): if A is true, the second term is irrelevant — verify it on a two-row table.",
+          "why": "The laws diverge from ordinary algebra exactly where logic is stranger and better — absorption among them."
+        }
+      },
+      {
+        "anchor": "A quick row settles it",
+        "type": "predict",
+        "caption": "bet before you read on — the English trap",
+        "name": "gateNotRichPredict",
+        "config": {
+          "q": "In English, 'not rich and happy' means:",
+          "choices": [
+            "At least one of rich, happy is absent — not both present",
+            "Both not rich and not happy",
+            "Rich but never happy, always",
+            "Happy but never rich, always"
+          ],
+          "answer": 0,
+          "why": "A = 1, B = 0 decides it: NOT(A AND B) is true while (NOT A) AND (NOT B) is false — 'not both' and 'both are not' are different claims."
+        }
+      },
+      {
+        "anchor": "Every operator becomes a gate, every input a wire, nesting becomes depth.",
+        "type": "order",
+        "caption": "the design loop, start to finish",
+        "name": "gateLoopOrder",
+        "config": {
+          "prompt": "Real design runs a loop — put it in order:",
+          "items": [
+            "Write the truth table — the complete specification",
+            "Derive the expression from the rows that matter",
+            "Simplify with the laws — each component is money",
+            "Build the smaller version",
+            "Verify the table again — habit, not doubt"
+          ],
+          "why": "Expression to circuit and back: the loop is mechanical once the notation is yours."
+        }
+      },
+      {
+        "anchor": "two half adders plus an OR — the detail is a standard exercise",
+        "type": "estimate",
+        "caption": "call the chain length of a 32-bit adder",
+        "name": "gateRippleEst",
+        "config": {
+          "prompt": "A machine adds 32-bit integers by rippling carries — how many chained single-bit adder units does that take?",
+          "unit": "chained units",
+          "answer": 32,
+          "factor": 1.5,
+          "why": "Chain n units, each carry feeding the next, and you get n-bit arithmetic: 32 for a 32-bit word, with the slowest signal traversing every stage; carry-lookahead logic computes carries in parallel to dodge the wait.",
+          "context": "Deliberately simple, deliberately slow — the honest first draft."
+        }
+      },
+      {
+        "anchor": "\"3.2 GHz\" means 3.2 billion synchronised ticks per second",
+        "type": "sort-buckets",
+        "caption": "does it remember? file each circuit",
+        "name": "gateMemorySort",
+        "config": {
+          "prompt": "Does it remember? Sort each circuit:",
+          "buckets": ["combinational — no memory", "sequential — remembers"],
+          "items": [
+            { "label": "outputs depend only on present inputs", "bucket": 0 },
+            { "label": "a circuit computing a sum digit", "bucket": 0 },
+            { "label": "an output routed back into its own input", "bucket": 1 },
+            { "label": "two gates wired to hold each other's state", "bucket": 1 },
+            { "label": "devices that update only on the clock's edge", "bucket": 1 },
+            { "label": "the XOR-and-AND pair of the half adder", "bucket": 0 }
+          ],
+          "why": "Memory is feedback — a loop that holds its own state until actively changed; the metronome paces when it may change."
+        }
+      }
+    ]
+  }
+]

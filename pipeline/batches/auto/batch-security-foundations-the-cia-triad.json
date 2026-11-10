@@ -1,0 +1,245 @@
+[
+  {
+    "slug": "subjects/cybersecurity/foundational/security-foundations-the-cia-triad",
+    "activities": [
+      {
+        "anchor": "Nothing was \"hacked\" in the movie sense.",
+        "type": "predict",
+        "caption": "bet before you read on — what actually happened",
+        "name": "ciaEvilTwinPredict",
+        "config": {
+          "q": "The student's bank login crossed the stranger's laptop. In security terms, what happened?",
+          "choices": [
+            "One property of one conversation was violated: the conversation was not private",
+            "Her phone was remotely controlled",
+            "The bank's servers were breached",
+            "Her password was cracked by brute force"
+          ],
+          "answer": 0,
+          "why": "No zero-days, no cinematic breach — an evil-twin hotspot removed privacy from one conversation. That is the subject in miniature."
+        }
+      },
+      {
+        "anchor": "A bridge never studies its designer's habits and waits for the unguarded afternoon; an attacker does.",
+        "type": "compare",
+        "caption": "nature vs opponent — drag the divider",
+        "name": "ciaOpponentCompare",
+        "config": {
+          "prompt": "What the discipline fights — drag the divider:",
+          "before": {
+            "label": "most engineering",
+            "text": "fights nature: gravity, friction, weather — the load just sits there"
+          },
+          "after": {
+            "label": "cybersecurity",
+            "text": "fights an opponent — intelligent, adaptive, actively trying to defeat you, and patient about timing"
+          },
+          "why": "Hence the distinctive answers: layered defences that expect to fail, spending justified by incidents prevented, and vocabulary precise enough for board, auditor and engineer."
+        }
+      },
+      {
+        "anchor": "Its failures are the headlines",
+        "type": "match",
+        "caption": "pair each enforcement tool with its job",
+        "name": "ciaConfidentialityMatch",
+        "config": {
+          "prompt": "Pair each enforcement tool with its job:",
+          "pairs": [
+            {
+              "left": "encryption",
+              "right": "only key holders can read it"
+            },
+            {
+              "left": "access control",
+              "right": "keeping the curious out"
+            },
+            {
+              "left": "classification schemes",
+              "right": "everyone agrees what counts as secret"
+            },
+            {
+              "left": "need to know",
+              "right": "grade records restricted to authorised staff"
+            }
+          ],
+          "why": "Enforcement is everyday — scramble, restrict, classify; the breach is the exception that makes news."
+        }
+      },
+      {
+        "anchor": "breaks it just as thoroughly by accident",
+        "type": "judge",
+        "caption": "true or false — what integrity actually means",
+        "name": "ciaIntegrityJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "Integrity means data truly represents what it is meant to represent — no tampering, no silent corruption, no unauthorised edits.",
+              "truth": true,
+              "why": "Saying what you mean, consistently — the word is borrowed from personal integrity."
+            },
+            {
+              "s": "Only deliberate attacks break integrity; accidents don't count.",
+              "truth": false,
+              "why": "A power surge or a slip of the keyboard does it too — property broken is property broken."
+            },
+            {
+              "s": "Cryptographic hashes and digital signatures make any alteration detectable.",
+              "truth": true,
+              "why": "And audit trails attach a name and a time to every change."
+            },
+            {
+              "s": "Input validation exists to speed up databases.",
+              "truth": false,
+              "why": "It stops attackers rewriting what a system accepts."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "which is why integrity failures are often the quieter and more dangerous kind",
+        "type": "sort-buckets",
+        "caption": "leak or tamper? file each failure",
+        "name": "ciaBreachSort",
+        "config": {
+          "prompt": "Leak or tamper? File each incident:",
+          "buckets": [
+            "leak — exposure",
+            "tamper — falsification"
+          ],
+          "items": [
+            {
+              "label": "a leaked customer database",
+              "bucket": 0
+            },
+            {
+              "label": "a manipulated sensor reading",
+              "bucket": 1
+            },
+            {
+              "label": "a laptop of patient records left in a taxi",
+              "bucket": 0
+            },
+            {
+              "label": "an altered payment instruction",
+              "bucket": 1
+            },
+            {
+              "label": "shoulder-surfing a PIN",
+              "bucket": 0
+            },
+            {
+              "label": "a grade changed by a hired hacker",
+              "bucket": 1
+            }
+          ],
+          "why": "Leaks expose; tampering steers reality in plain sight."
+        }
+      },
+      {
+        "anchor": "repays study because it attacks two properties at once",
+        "type": "branch",
+        "caption": "the routine-looking attachment — walk it",
+        "name": "ciaRansomBranch",
+        "config": {
+          "root": "9:14 a.m. An attachment arrives that looks like it comes from the top of the company — routine earnings paperwork.",
+          "nodes": {
+            "start": {
+              "text": "Open it?",
+              "choices": [
+                {
+                  "label": "It's from the top — open",
+                  "next": "open",
+                  "feedback": "The encryption of the company's data begins quietly in the background — the bait worked because it looked routine."
+                },
+                {
+                  "label": "Verify through another channel first",
+                  "next": "verify",
+                  "feedback": "The human is the cheap entry; a thirty-second check closes it."
+                }
+              ]
+            },
+            "open": {
+              "text": "Files are locking themselves. Which properties are under attack?",
+              "choices": [
+                {
+                  "label": "Availability (files held hostage) and integrity (restored data may not be trustworthy if attackers spent weeks inside)",
+                  "next": "both",
+                  "feedback": "That is why recovery means rebuilding trust, not just restoring files."
+                },
+                {
+                  "label": "Only availability — once files are restored, nothing else is wrong",
+                  "next": "only",
+                  "feedback": "Restored, yes — but if the attacker spent weeks inside, what you restored may not be trustworthy."
+                }
+              ]
+            },
+            "only": {
+              "text": "The second property was there all along — files held hostage, and trust shaken in everything restored.",
+              "choices": []
+            },
+            "both": {
+              "text": "Pay-or-restore is the availability decision; proving the network clean is the integrity one.",
+              "choices": []
+            },
+            "verify": {
+              "text": "Reported and quarantined. What made this entry so cheap?",
+              "choices": [
+                {
+                  "label": "The human element — phishing works because it looks routine",
+                  "next": "human",
+                  "feedback": "Breach surveys find the human element in a large majority of incidents."
+                },
+                {
+                  "label": "The firewall must have been off",
+                  "next": "firewall",
+                  "feedback": "The mail filter was on — the message simply looked legitimate; that is the human entry."
+                }
+              ]
+            },
+            "human": {
+              "text": "Layered defences expect the first layer to fail — training, filtering, and the verification habit behind them.",
+              "choices": []
+            },
+            "firewall": {
+              "text": "Doors are people-shaped more often than port-shaped — verify, report, and let the layers behind you work.",
+              "choices": []
+            }
+          },
+          "why": "Availability holds the files hostage; integrity shakes trust in whatever is restored."
+        }
+      },
+      {
+        "anchor": "floods of that size are expected roughly once a decade — a rate of 0.1 per year",
+        "type": "estimate",
+        "caption": "call the annualised bill",
+        "name": "ciaFloodEst",
+        "config": {
+          "prompt": "A flood doing 200,000 dollars of damage arrives about every ten years — the expected annual bill?",
+          "unit": "dollars annually",
+          "answer": 20000,
+          "factor": 1.5,
+          "why": "200,000 ÷ 10 = 20,000 — a safeguard at 5,000 is justified; at 50,000 it is not.",
+          "context": "Probabilities for rare events are famously uncertain — the arithmetic forces the right questions, not precision."
+        }
+      },
+      {
+        "anchor": "which links can we break, and at what cost?",
+        "type": "order",
+        "caption": "the intrusion as a sequence — break the chain",
+        "name": "ciaKillChainOrder",
+        "config": {
+          "prompt": "One intrusion, start to finish — put the chain in order:",
+          "items": [
+            "A phishing email lands",
+            "A user clicks",
+            "Malware executes",
+            "Credentials are stolen",
+            "The attacker moves sideways toward the data",
+            "The copying-out begins"
+          ],
+          "why": "Most successful attacks are patient uses of known weaknesses, unpatched systems and reused passwords — not brilliance."
+        }
+      }
+    ]
+  }
+]

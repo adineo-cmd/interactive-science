@@ -1,0 +1,251 @@
+[
+ {
+  "slug": "subjects/computer-science/intermediate/data-files-tables-json",
+  "activities": [
+   {
+    "anchor": "the future is a design decision",
+    "type": "predict",
+    "caption": "bet before you read on — who is the format for?",
+    "name": "dfilesFuturePredict",
+    "config": {
+     "q": "When you pick the format for a dataset, which reader matters most?",
+     "choices": [
+      "You, or a colleague, ten years from now — with whatever software exists then",
+      "Only the program that wrote it",
+      "The operating system's file manager",
+      "Whoever owns the most expensive spreadsheet"
+     ],
+     "answer": 0,
+     "why": "A dataset outlives the session that made it; the format is a promise about who can still open it — plain, standard formats keep that promise."
+    }
+   },
+   {
+    "anchor": "read a UTF-8 file with the older Latin-1 interpretation and",
+    "type": "sort-buckets",
+    "caption": "file each fact under the encoding it describes",
+    "name": "dfilesEncSort",
+    "config": {
+     "prompt": "Byte-story facts — sort each under the encoding it describes:",
+     "buckets": [
+      "ASCII (1963)",
+      "Unicode & its byte-encoding"
+     ],
+     "items": [
+      {
+       "label": "mapped 128 values — enough for 1963 America",
+       "bucket": 0
+      },
+      {
+       "label": "one catalogue for every character in every language, plus emoji",
+       "bucket": 1
+      },
+      {
+       "label": "English letters, digits and punctuation in single bytes",
+       "bucket": 0
+      },
+      {
+       "label": "rarer characters spill into two, three or four bytes",
+       "bucket": 1
+      },
+      {
+       "label": "useless for the rest of the world's writing systems",
+       "bucket": 0
+      },
+      {
+       "label": "backward-compatible: the old single-byte characters kept their codes",
+       "bucket": 1
+      }
+     ],
+     "why": "The modern default kept the old single-byte range unchanged and gave every rarer character room — that is why it won."
+    }
+   },
+   {
+    "anchor": "there is nothing to decide",
+    "type": "judge",
+    "caption": "true or false — what 'plain text' really is",
+    "name": "dfilesPlainJudge",
+    "config": {
+     "statements": [
+      {
+       "s": "Every text file stores byte numbers; characters appear only when reader and writer agree on a decoding table.",
+       "truth": true,
+       "why": "The mojibake symptom is disagreement, not damage."
+      },
+      {
+       "s": "'Plain text' needs no decisions — letters are simply stored as letters.",
+       "truth": false,
+       "why": "There is always an encoding; the only question is whether it was chosen deliberately."
+      },
+      {
+       "s": "Mojibake means the bytes are damaged and need a repair tool.",
+       "truth": false,
+       "why": "The bytes are intact; agree on the encoding and the text reads fine."
+      },
+      {
+       "s": "One encoding now rules almost everywhere because it keeps English text unchanged and covers every writing system.",
+       "truth": true,
+       "why": "Backward compatible and complete — one decision, made once."
+      }
+     ]
+    }
+   },
+   {
+    "anchor": "In memory, a program holds this as an array of records (or objects)",
+    "type": "branch",
+    "caption": "design the dataset — grain and atomicity as decisions",
+    "name": "dfilesGrainBranch",
+    "config": {
+     "root": "You are designing the weather dataset from the paragraph — one row per what?",
+     "nodes": {
+      "start": {
+       "text": "You have daily readings for 40 weather stations over ten years: temperature, rainfall, wind.",
+       "choices": [
+        {
+         "label": "One row per station — 40 rows, 3,650 columns",
+         "next": "wide",
+         "feedback": "Every new year means rebuilding the schema; comparing two days means leaping across hundreds of columns."
+        },
+        {
+         "label": "One row per station per day",
+         "next": "grain",
+         "feedback": "1,460,000 rows, nine columns — tall, uniform, and every tool from spreadsheets to SQL handles it the same way."
+        },
+        {
+         "label": "One file per station, format chosen per station",
+         "next": "fragile",
+         "feedback": "Forty formats means forty parsers; the analysis now starts with an archaeology dig."
+        }
+       ]
+      },
+      "wide": {
+       "text": "The wide layout works until the first schema change.",
+       "choices": [
+        {
+         "label": "Try adding hourly readings",
+         "next": "wideWorse",
+         "feedback": "24 more columns per day — the table now has a shape nobody wants to query."
+        },
+        {
+         "label": "Restart with one row per station per day",
+         "next": "grain",
+         "feedback": "The tall layout absorbs new dates, new stations and new fields without touching the schema."
+        }
+       ]
+      },
+      "wideWorse": {
+       "text": "The table sprawls: one station's year is a row of 8,760 mostly-empty cells. Analysis tools were built for tall tables — and so were you."
+      },
+      "grain": {
+       "text": "The grain is set. Now the address field: \"12 Collingwood Rd, Bristol\" in one column.",
+       "choices": [
+        {
+         "label": "Keep it as one field — it reads fine",
+         "next": "crammed",
+         "feedback": "Sorting by city or deduplicating by street now needs string surgery on every row."
+        },
+        {
+         "label": "Split house, street, city into separate fields",
+         "next": "atomic",
+         "feedback": "Three boring columns; every future query gets to be a simple comparison."
+        }
+       ]
+      },
+      "crammed": {
+       "text": "The crammed field works until the first \"group by city\" — which becomes a parse-and-pray operation over 1.4 million rows."
+      },
+      "atomic": {
+       "text": "Atomic fields, one clean grain — the dataset now survives new years, new stations and new questions."
+      },
+      "fragile": {
+       "text": "Per-station formats trade one design decision for forty. Consistency is the cheaper contract."
+      }
+     },
+     "why": "Grain first, atomicity second: one row per what decides everything downstream, and one-value-per-field keeps every future query trivial."
+    }
+   },
+   {
+    "anchor": "silently shifting every column after it",
+    "type": "spot-error",
+    "caption": "find the faulty line — the plain table's traps",
+    "name": "dfilesCsvSpot",
+    "config": {
+     "prompt": "One of these claims about the plain-table format is backwards — click it:",
+     "lines": [
+      "CSV is plain text: openable in any editor, spreadsheet or language, with no software dependency.",
+      "CSV has no opinion on types — each reader re-decides what \"34\" is.",
+      "Spreadsheets are careful with guesses: leading zeros on barcodes are always preserved.",
+      "Some countries export semicolon-CSV because the comma is their decimal point.",
+      "Line endings differ between Windows and Unix.",
+      "So a CSV travels with a schema note: which separator, which encoding, what each attribute means and holds."
+     ],
+     "errorLine": 2,
+     "correction": "The guesses mangle: leading zeros vanish from barcodes, long account numbers become floating point, \"3/4\" turns into a date.",
+     "why": "Type-blindness is the price of universality — the schema note is the apology that travels with it."
+    }
+   },
+   {
+    "anchor": "so bank-account or product IDs are exchanged as strings",
+    "type": "compare",
+    "caption": "two formats, two philosophies — drag the divider",
+    "name": "dfilesCsvJsonCompare",
+    "config": {
+     "prompt": "One table, two philosophies — drag the divider:",
+     "before": {
+      "label": "CSV",
+      "text": "positional columns in plain text — universal, type-blind, simplest when the table is wide and flat"
+     },
+     "after": {
+      "label": "JSON",
+      "text": "labels travel with values and objects nest in arrays — the lingua franca of web APIs"
+     },
+     "why": "Wide and flat → positions; nested and labelled → names. Mind the edges: dates are text, huge integers lose precision, trailing commas are illegal."
+    }
+   },
+   {
+    "anchor": "It answers the questions every future reader has",
+    "type": "match",
+    "caption": "pair each promise with the clause that keeps it",
+    "name": "dfilesSchemaMatch",
+    "config": {
+     "prompt": "Pair each promise with the clause that keeps it:",
+     "pairs": [
+      {
+       "left": "what an empty cell means",
+       "right": "unknown, not-applicable or zero — declared, never guessed"
+      },
+      {
+       "left": "what units",
+       "right": "metres or centimetres — the 1999 orbiter was lost mixing pound-seconds with newton-seconds"
+      },
+      {
+       "left": "what range is legal",
+       "right": "score is 0–100 or missing"
+      },
+      {
+       "left": "what type each attribute holds",
+       "right": "student_id a unique integer; name text; submitted true or false"
+      }
+     ],
+     "why": "A promise about meaning and types — the ten-year test judges whether it survives."
+    }
+   },
+   {
+    "anchor": "whole file at once, or line by line for big files",
+    "type": "order",
+    "caption": "processing a table from disk — the canonical pattern",
+    "name": "dfilesReadOrder",
+    "config": {
+     "prompt": "The canonical read-a-table pattern, in order:",
+     "items": [
+      "Open for reading — name the path and the mode",
+      "Use or skip the header row",
+      "Loop over the rows, splitting each into fields",
+      "Convert types and accumulate — totals, counts, bests",
+      "Close the handle — buffered data dies if you never do"
+     ],
+     "why": "Open, read, close — plus the robustness habits: the blank last row, the quoted comma, the value that should be a number but is 'N/A'."
+    }
+   }
+  ]
+ }
+]

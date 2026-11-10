@@ -1,0 +1,160 @@
+[
+  {
+    "slug": "subjects/data-science/intermediate/sql-for-analysts",
+    "activities": [
+      {
+        "anchor": "Knowing that evaluation order explains the classic beginner errors",
+        "type": "order",
+        "caption": "sequence the logical evaluation pipeline",
+        "name": "sqlLogicalOrder",
+        "config": {
+          "prompt": "The engine rewrites your lines into this order — put the pipeline in sequence:",
+          "items": [
+            "FROM — which tables, joined how",
+            "WHERE — which rows survive",
+            "GROUP BY — which rows collapse together",
+            "HAVING — which groups survive",
+            "SELECT — which columns and computed expressions appear",
+            "ORDER BY / LIMIT — presentation"
+          ],
+          "why": "Every analysis, however long, is this pipeline repeated and layered — and each beginner error is a step run where it does not exist yet."
+        }
+      },
+      {
+        "anchor": "The engine reorders your query into its logical pipeline",
+        "type": "spot-error",
+        "caption": "find the faulty line — clauses out of place",
+        "name": "sqlWrittenSpot",
+        "config": {
+          "prompt": "One of these claims about clause placement is backwards — click it:",
+          "lines": [
+            "FROM and JOIN run first.",
+            "WHERE filters rows before groups exist.",
+            "HAVING filters groups after they are formed.",
+            "A row condition placed in HAVING is the clearest way to filter rows.",
+            "ORDER BY and LIMIT run last, at presentation."
+          ],
+          "errorLine": 3,
+          "correction": "Row conditions belong in WHERE — a row condition in HAVING works only by accident, and the placement tells the reader where your condition acts.",
+          "why": "A group condition in WHERE fails outright; a row condition in HAVING quietly misleads whoever reads the query next."
+        }
+      },
+      {
+        "anchor": "no error message appears",
+        "type": "cloze",
+        "caption": "fill the blanks — the mechanical defences",
+        "name": "sqlGrainCloze",
+        "config": {
+          "text": "The mechanical defences against silent grain changes: state the %%0%% in a comment at the top of each CTE; check row counts with %%1%% — the analyst's pulse; and aggregate the many side %%2%% joining, so the fan-out never happens.",
+          "answers": [["grain"], ["COUNT(*)", "COUNT"], ["before"]],
+          "hint": "The habit of habits, the pulse, and the timing that starves the fan-out."
+        }
+      },
+      {
+        "anchor": "which is exactly the population churn analysis needs",
+        "type": "match",
+        "caption": "pair each join with its population",
+        "name": "sqlJoinMatch",
+        "config": {
+          "prompt": "Join type is a population decision — pair each with who survives:",
+          "pairs": [
+            { "left": "INNER JOIN", "right": "only rows matching on both sides — orphans silently excluded" },
+            { "left": "LEFT JOIN", "right": "every left row kept; the right side filled with NULLs" },
+            { "left": "RIGHT JOIN", "right": "LEFT with the tables swapped" },
+            { "left": "FULL OUTER JOIN", "right": "everything from both sides, matched where possible" }
+          ],
+          "why": "The join you choose silently defines who is in the analysis at all — which is why the choice deserves a comment, not a reflex."
+        }
+      },
+      {
+        "anchor": "One refinement that separates careful analysts",
+        "type": "sort-buckets",
+        "caption": "WHERE or HAVING? file each condition",
+        "name": "sqlWhereSort",
+        "config": {
+          "prompt": "Rows before grouping, groups after — file each condition:",
+          "buckets": ["WHERE — filters rows before grouping", "HAVING — filters groups after"],
+          "items": [
+            { "label": "status = 'completed'", "bucket": 0 },
+            { "label": "regions whose total exceeds 10,000", "bucket": 1 },
+            { "label": "orders over 100 in amount", "bucket": 0 },
+            { "label": "months with revenue above the target", "bucket": 1 },
+            { "label": "customers in Germany", "bucket": 0 },
+            { "label": "segments averaging at least two orders", "bucket": 1 }
+          ],
+          "why": "Every column in SELECT must be in the GROUP BY or inside an aggregate — the database refuses anything else, forcing you to declare what one output row means."
+        }
+      },
+      {
+        "anchor": "resurfacing in a WHERE clause",
+        "type": "judge",
+        "caption": "true or false — NULL's house rules",
+        "name": "sqlNullJudge",
+        "config": {
+          "statements": [
+            { "s": "NULL = NULL evaluates to true.", "truth": false, "why": "It evaluates to NULL — unknown — so equality filters silently exclude nulls." },
+            { "s": "NOT IN with a NULL in the list can return nothing at all.", "truth": true, "why": "The famous trap — the unknown comparison poisons every row." },
+            { "s": "COALESCE(a, b) substitutes b whenever a is missing.", "truth": true, "why": "Used thoughtfully: 'no sale' and 'sale of 0' are different facts a blanket COALESCE erases." },
+            { "s": "IS NULL is the correct test for missingness.", "truth": true, "why": "Never = NULL — the equals test cannot see it." }
+          ]
+        }
+      },
+      {
+        "anchor": "The two canonical analysts' questions are now one-liners",
+        "type": "compare",
+        "caption": "GROUP BY vs window functions — drag the divider",
+        "name": "sqlWindowCompare",
+        "config": {
+          "prompt": "The aggregation lens versus the window — drag between them:",
+          "before": {
+            "label": "GROUP BY",
+            "text": "Collapses rows into one row per group: revenue per month arrives, and the individual rows are destroyed on the way."
+          },
+          "after": {
+            "label": "Window functions",
+            "text": "Compute across rows while keeping them: each row carries its partition's rank, running total or average alongside its own value — LAG even puts last month on this month's row."
+          },
+          "why": "A window's PARTITION BY is a shadow GROUP BY — its grain still needs stating, or the plausible-looking table grows again."
+        }
+      },
+      {
+        "anchor": "a cathedral of nested subqueries",
+        "type": "branch",
+        "caption": "audit a teammate's query — walk the review",
+        "name": "sqlCteBranch",
+        "config": {
+          "root": "A teammate hands you a 200-line query of nested subqueries. Walk the review.",
+          "nodes": {
+            "start": {
+              "text": "First move?",
+              "choices": [
+                { "label": "Rewrite as a CTE chain — one named step per stage, grain in a comment", "next": "check", "feedback": "Each CTE can be run, counted and eyeballed independently — debugging becomes isolating one stage." },
+                { "label": "Run it top to bottom and trust the output", "next": "trust", "feedback": "Wrong SQL rarely errors — a bad join returns a big, plausible-looking table; trust is not a review." }
+              ]
+            },
+            "check": {
+              "text": "One CTE returns double the expected rows.",
+              "choices": [
+                { "label": "Compare row counts to the upstream CTE and hunt the step that doubled the rows", "next": "done", "feedback": "Row growth after a join is a question to ask, not a success to enjoy — the pulse never lies twice." },
+                { "label": "Silence it with a LIMIT and move on", "next": "limit", "feedback": "A LIMIT hides the symptom, not the cause — the duplicates still flow into every aggregate downstream." }
+              ]
+            },
+            "done": {
+              "text": "Grain stated, counts checked, one purpose per step: the query now reads as a story a teammate can audit and extend.",
+              "choices": []
+            },
+            "trust": {
+              "text": "The deliverable is an analysis someone can re-run — an unauditable cathedral is an anecdote waiting to be quoted.",
+              "choices": []
+            },
+            "limit": {
+              "text": "The doubles survive every sum and average after that LIMIT — and SELECT * up top will break silently the day the schema moves.",
+              "choices": []
+            }
+          },
+          "why": "Analysis SQL is read by humans and machines — structure it like code, because it is code."
+        }
+      }
+    ]
+  }
+]

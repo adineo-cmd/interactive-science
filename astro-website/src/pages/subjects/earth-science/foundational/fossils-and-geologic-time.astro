@@ -10,6 +10,182 @@ const timeCfg = {
     { math: '4 · The timescale, honestly learned', note: 'Eons (Hadean→Archean→Proterozoic→Phanerozoic), then eras, periods, epochs — boundaries mark real events (the Chicxulub impact ends the Cretaceous). Dates are measured; the names are conventional.' },
   ],
 };
+
+const ftCalendarOrder = {
+  "prompt": "Earth's history compressed to one calendar year — put the milestones in order:",
+  "items": [
+    "Life appears — March",
+    "Complex animals — November",
+    "Dinosaurs — mid-December",
+    "All of recorded human history — the last half-minute before midnight on 31 December"
+  ],
+  "why": "The ratio is the subject's prerequisite: evolution needs billions of generations, plate tectonics centimetres per year across eons — the frame the whole subject hangs on."
+};
+
+const ftPrinciplesSort = {
+  "prompt": "Ordering without numbers — file each observation under its principle:",
+  "buckets": [
+    "superposition / original horizontality",
+    "cross-cutting",
+    "inclusions"
+  ],
+  "items": [
+    {
+      "label": "in an undisturbed stack, the lower layers are older",
+      "bucket": 0
+    },
+    {
+      "label": "flat deposition, so tilted strata were deformed after deposition",
+      "bucket": 0
+    },
+    {
+      "label": "you cannot break what is not there yet",
+      "bucket": 1
+    },
+    {
+      "label": "a fault or intrusion must be younger than the rocks it cuts",
+      "bucket": 1
+    },
+    {
+      "label": "a rock fragment inside another rock is older than its host",
+      "bucket": 2
+    }
+  ],
+  "why": "A handful of principles ordered every rock unit on Earth into one chronological column before anyone could put a number on it."
+};
+
+const ftSmithMatch = {
+  "prompt": "The relative-dating toolkit — pair each piece with its landmark:",
+  "pairs": [
+    {
+      "left": "faunal succession",
+      "right": "fossils appear in a definite, repeatable vertical order — valley after valley"
+    },
+    {
+      "left": "William 'Strata' Smith (1815)",
+      "right": "the first geological map of England and Wales"
+    },
+    {
+      "left": "unconformities",
+      "right": "surfaces where missing time is recorded — erosion or a pause"
+    },
+    {
+      "left": "fossil correlation",
+      "right": "the same species, the same age — across a country and continents"
+    }
+  ],
+  "why": "Fossil content correlates rocks of the same age — the ordering system that named the chapters (Cambrian, Jurassic) a century before isotopes numbered them."
+};
+
+const ftEarthAgeEst = {
+  "prompt": "Patterson's 1956 dating of meteorites settled the planet's age — call it.",
+  "unit": "billion years",
+  "answer": 4.54,
+  "factor": 1.1,
+  "why": "4.54 ± 0.05 billion years — meteorites are leftovers of solar-system formation, untouched, because Earth's own surface rocks recycle and are younger than the planet.",
+  "context": "The oldest known terrestrial material is a U–Pb-dated zircon grain from Western Australia: 4.4 billion years."
+};
+
+const ftC14Judge = {
+  "statements": [
+    {
+      "s": "Carbon-14 can date a dinosaur directly.",
+      "truth": false,
+      "why": "It reads organic material only to about 50,000 years — the dinosaur gets its date from the volcanic ash layers bracketing it (U–Pb)."
+    },
+    {
+      "s": "Carbon-14's half-life is 5,730 years.",
+      "truth": true,
+      "why": "Which is why the method runs out so fast — geology's wristwatch, not its calendar."
+    },
+    {
+      "s": "The carbon-14 method dates volcanic rock.",
+      "truth": false,
+      "why": "It dates organics; K–Ar is the volcanic-rocks clock."
+    },
+    {
+      "s": "Willard Libby won the 1960 Nobel Prize for radiocarbon dating.",
+      "truth": true,
+      "why": "Archaeology's clock, honoured at once."
+    }
+  ]
+};
+
+const ftEonsOrder = {
+  "prompt": "The eons in order, with their landmarks:",
+  "items": [
+    "Hadean — planetary formation; a Mars-sized collision splashes out the Moon",
+    "Archean — the first widely accepted traces of life: stromatolites ~3.5 billion years old",
+    "Proterozoic — the Great Oxidation Event, ~2.4 billion years ago",
+    "Phanerozoic — visible life: the Cambrian explosion opens the last 539 million years"
+  ],
+  "why": "The first 4 billion years are subdivided coarsely because fossils are sparse; the last 539 million are finely divided because fossils are abundant."
+};
+
+const ftPreserveCloze = {
+  "text": "Preservation is rare and biased: it needs %%0%% parts — shell, bone, teeth — plus rapid %%1%% and low %%2%%, which is why soft-bodied creatures are underrepresented and we have more fossils of clams than of caterpillars.",
+  "answers": [
+    [
+      "hard"
+    ],
+    [
+      "burial"
+    ],
+    [
+      "oxygen"
+    ]
+  ],
+  "hint": "Three conditions — one about anatomy, one about speed, one about the water's chemistry."
+};
+
+const ftQuarryBranch = {
+  "root": "Three quarries on opposite sides of a basin expose limestone beds with no visible way to line them up.",
+  "nodes": {
+    "start": {
+      "text": "Quarry A's bed 3 holds Ammonites parkinsoni — a century of records spans it to a narrow Jurassic slice. Quarry B's bed 7 has the same species.",
+      "choices": [
+        {
+          "label": "Correlate the two beds as the same age",
+          "next": "c",
+          "feedback": "The short-tenure species pins the age — correlation comes first, numbers second."
+        },
+        {
+          "label": "Wait for radiometric dates on every bed",
+          "next": "wrongtool",
+          "feedback": "U–Pb needs an ash bed to date — and there is none here yet; the fossil draws the line first."
+        }
+      ]
+    },
+    "c": {
+      "text": "Quarry C's bed 2 has the same ammonite, plus a distinctive foraminiferan.",
+      "choices": [
+        {
+          "label": "Correlate it too — same age as A and B",
+          "next": "done",
+          "feedback": "Right — the shared short-tenure ammonite does the pinning; the extra foraminiferan refines the slice."
+        },
+        {
+          "label": "Call it a different age — it has an extra fossil",
+          "next": "extra",
+          "feedback": "An added species does not move the age — the shared short-tenure one anchors it."
+        }
+      ]
+    },
+    "done": {
+      "text": "And if a thin volcanic ash sits just above the ammonite in quarry B, one U–Pb date on its zircons stamps all three beds at once — index fossil for the line, ash bed for the number.",
+      "choices": []
+    },
+    "wrongtool": {
+      "text": "Without an ash bed there is nothing to date isotopically — faunal succession is what correlates, and it built the old timescale before any isotope existed.",
+      "choices": []
+    },
+    "extra": {
+      "text": "Correlation keys on the species with wide range and short tenure — abundance is what makes it findable everywhere.",
+      "choices": []
+    }
+  },
+  "why": "Faunal succession draws the lines, radiometric dating pins the pins — and each anchors the other's errors."
+};
 ---
 <TopicPage slug="subjects/earth-science/foundational/fossils-and-geologic-time">
 
@@ -47,6 +223,7 @@ const timeCfg = {
     eons; climate cycles run in hundreds of thousands of years. Geologic time is the frame
     on which the entire subject hangs.
   </p>
+  <Widget no="9" caption="sequence life on the calendar year" widget="order" config={ftCalendarOrder} />
   <p>
     And yet for most of human history nobody believed the frame existed. Until the late
     1700s, the West assumed an Earth a few thousand years old. The discovery of
@@ -79,6 +256,7 @@ const timeCfg = {
     through — you cannot break what is not there yet. <strong>Inclusions:</strong> a rock
     fragment inside another rock is older than its host.
   </p>
+  <Widget no="8" caption="which relative-dating principle applies?" widget="sort-buckets" config={ftPrinciplesSort} />
   <p>
     The master stroke was <strong>faunal succession</strong>. William "Strata" Smith, a
     canal surveyor in southwestern England around 1800, noticed that fossils appear in the
@@ -92,6 +270,7 @@ const timeCfg = {
     every rock unit on Earth into one chronological column, naming its chapters (Cambrian,
     Jurassic) a century before anyone could put numbers on them.
   </p>
+  <Widget no="7" caption="pair each concept with its landmark" widget="match" config={ftSmithMatch} />
   <p>
     <strong>So far:</strong> fossils and geometry can order the whole record, but they
     cannot say whether a boundary is a million years old or a hundred million. For numbers,
@@ -132,6 +311,7 @@ const timeCfg = {
     leaded fuel became one of science's great public-health victories hiding inside a
     dating paper.)
   </p>
+  <Widget no="6" caption="call the age of the Earth" widget="estimate" config={ftEarthAgeEst} />
   <p>
     A clean run of the clock, end to end: a volcanic ash layer above a fossil bed is dated
     by the potassium–argon method, and the lab finds the argon-40 daughter equal to seven
@@ -144,6 +324,7 @@ const timeCfg = {
   dinosaurs." Carbon-14 is geology's wristwatch, not its calendar: useful only to about
   50,000 years, and it dates <em>organic</em> material. Dinosaur bones are dated by the
   volcanic ash layers above and below them (U–Pb), never by the bone itself.</p>
+  <Widget no="5" caption="true or false — the carbon-14 wristwatch" widget="judge" config={ftC14Judge} />
 
   <h2>The geologic time scale: measured chapters</h2>
   <p>
@@ -167,6 +348,7 @@ const timeCfg = {
     photosynthetic microbes began filling the sky with oxygen — a pollution catastrophe for
     the old biosphere that made ours possible.
   </p>
+  <Widget no="4" caption="sequence the Precambrian into the Phanerozoic" widget="order" config={ftEonsOrder} />
   <p>
     The <strong>Phanerozoic</strong> ("visible life", the last 539 million years) is finely
     divided because fossils are abundant. The <strong>Paleozoic</strong> ("early life")
@@ -207,6 +389,7 @@ const timeCfg = {
     (footprints, burrows — behaviour without anatomy, as at Laetoli, where hominin
     footprints 3.6 million years old record two individuals walking side by side).
   </p>
+  <Widget no="3" caption="fill the blanks — what preservation demands" widget="cloze" config={ftPreserveCloze} />
   <p>
     <strong>Index fossils</strong> are species chosen for correlation: wide geographic
     range, short tenure, abundance. Trilobites and ammonites built the Paleozoic and
@@ -223,6 +406,7 @@ const timeCfg = {
     exactly how the era-defining boundaries were fixed: faunal succession draws the lines,
     radiometric dating pins the pins, and each anchors the other's errors.
   </p>
+  <Widget no="2" caption="correlate three quarries — walk the two-step" widget="branch" config={ftQuarryBranch} />
   <p><em>Common misconception:</em> "a fossil is the actual animal turned to stone." Usually
   it is neither the animal nor its molecules: permineralisation infills and replaces with
   minerals, and even shells recrystallise. Original organic material survives only in

@@ -1,0 +1,173 @@
+[
+  {
+    "slug": "subjects/computer-science/intermediate/algorithms-searching-and-sorting",
+    "activities": [
+      {
+        "anchor": "Algorithm choice is a hardware decision, and it is free",
+        "type": "estimate",
+        "caption": "call the work gap at a million items",
+        "name": "algChoiceEst",
+        "config": {
+          "prompt": "Both sorting methods finish on a million items — how many times more work does the n² method do?",
+          "unit": "× more work",
+          "answer": 50000,
+          "factor": 2,
+          "why": "n² = 10¹² against n log n ≈ 2×10⁷ — a factor near 50,000. At a billion items the gap is the difference between days and under a minute.",
+          "context": "Same list, same machine — the only variable was the method."
+        }
+      },
+      {
+        "anchor": "The design pipeline has four moves",
+        "type": "order",
+        "caption": "problem to algorithm — put the pipeline in order",
+        "name": "algDesignOrder",
+        "config": {
+          "prompt": "From problem statement to typable program — put the pipeline in order:",
+          "items": [
+            "Decompose: split the problem into subproblems you can state precisely",
+            "Specify: write each piece's inputs, output, and the relationship between them",
+            "Write pseudocode: structured English, every move unambiguous, no language syntax chosen yet",
+            "Refine: expand anything still fuzzy until it could be typed straight into a program"
+          ],
+          "why": "Cheap on paper, dear in code — the fuzziness dies before a language is chosen."
+        }
+      },
+      {
+        "anchor": "Every element is there for a reason, and each reason is a place a bug could live.",
+        "type": "match",
+        "caption": "pair each pattern with its memorised skeleton",
+        "name": "algPatternsMatch",
+        "config": {
+          "prompt": "Pair each standard pattern with its skeleton:",
+          "pairs": [
+            { "left": "Totals", "right": "total ← 0 before the loop; total ← total + value inside" },
+            { "left": "Counting", "right": "same shape, but count ← count + 1 only when a condition holds" },
+            { "left": "Maximum/minimum", "right": "start from the first item; replace the running best when a newcomer beats it" },
+            { "left": "Searching", "right": "walk and compare (linear), or halve (binary)" },
+            { "left": "Sorting", "right": "bubble, insertion, merge, quick" }
+          ],
+          "why": "Five skeletons, five adapted variables — and the running best must start as a real item of the list, never a guess like 0."
+        }
+      },
+      {
+        "anchor": "That is the phone book's trick, formalised.",
+        "type": "place",
+        "caption": "how many halvings for a million items?",
+        "name": "algBinaryPlace",
+        "config": {
+          "prompt": "Binary search on a list of a million items — at most how many comparisons?",
+          "labels": ["0", "10", "20", "30"],
+          "scale": { "min": 0, "max": 30 },
+          "answer": 20,
+          "tolerance": 1,
+          "why": "Each comparison halves the candidates: a million is about 2²⁰, so twenty halvings reach one item — 1,000 needs 10, a billion needs 30."
+        }
+      },
+      {
+        "anchor": "binary search is always faster, so I should always sort first",
+        "type": "branch",
+        "caption": "one lookup today, ten thousand tomorrow — walk the trade",
+        "name": "algSearchBranch",
+        "config": {
+          "root": "One list, many queries — or just one? Walk the trade.",
+          "nodes": {
+            "start": {
+              "text": "A 100,000-row list needs its first lookup, today, once.",
+              "choices": [
+                { "label": "Put it in order (n log n), then halve every lookup", "next": "once", "feedback": "Sorting costs n log n up front: for a list you will query once, that is a loss — scan and move on." },
+                { "label": "Scan it linearly, top to bottom", "next": "scanOk", "feedback": "Up to n comparisons and it works on any order — for a one-off query, the honest bargain." }
+              ]
+            },
+            "once": {
+              "text": "Found it. Tomorrow: ten thousand more lookups on the same list.",
+              "choices": [
+                { "label": "Order it once now, halve forever after", "next": "many", "feedback": "Query it many times and the prerequisite becomes a massive win — databases, dictionaries and every 'sorted by…' column exist for exactly this." },
+                { "label": "Keep scanning each time", "next": "grind", "feedback": "n comparisons per query, ten thousand times — the unsorted habit stops scaling." }
+              ]
+            },
+            "scanOk": {
+              "text": "Found. But tomorrow: ten thousand more lookups on the same list.",
+              "choices": [
+                { "label": "Order it once now, halve forever after", "next": "many", "feedback": "Query it many times and the prerequisite becomes a massive win — databases, dictionaries and every 'sorted by…' column exist for exactly this." },
+                { "label": "Keep scanning each time", "next": "grind", "feedback": "n comparisons per query, ten thousand times — the unsorted habit stops scaling." }
+              ]
+            },
+            "many": {
+              "text": "Ordered once, logarithmic forever — the prerequisite paid for many times over.",
+              "choices": []
+            },
+            "grind": {
+              "text": "Simple and correct — until the query count grows; then the question becomes how many lookups tomorrow brings.",
+              "choices": []
+            }
+          },
+          "why": "Sorting costs n log n once; the halving method pays only when the list will be queried many times."
+        }
+      },
+      {
+        "anchor": "Big-O is growth rate, not milliseconds",
+        "type": "judge",
+        "caption": "true or false — reading a growth label honestly",
+        "name": "algBigOJudge",
+        "config": {
+          "statements": [
+            { "s": "For n = 20, an O(n²) algorithm does 400 operations and is instantly done.", "truth": true, "why": "Small n hides everything: the quadratic is still cheap at twenty items." },
+            { "s": "An O(n²) label means the algorithm is slow at every input size.", "truth": false, "why": "The curves part company at scale — below about twenty items you can barely separate them." },
+            { "s": "The notation measures wall-clock time in milliseconds.", "truth": false, "why": "It names how cost scales, never a stopwatch reading." },
+            { "s": "Thinking in curves before writing code is what decides which programs survive scale.", "truth": true, "why": "That widening gap, not any single value, is the whole argument of the lesson." }
+          ]
+        }
+      },
+      {
+        "anchor": "Professionals debug by hand-trace first, debugger second",
+        "type": "spot-error",
+        "caption": "find the faulty line — a traced max-finder",
+        "name": "algSeedSpot",
+        "config": {
+          "prompt": "A winter-temperatures max-finder was traced on paper — one line is wrong. Click it:",
+          "lines": [
+            "max ← 0 (a convenient starting value)",
+            "−8 > 0? no — max stays 0",
+            "−3 > 0? no — max stays 0",
+            "−5 > 0? no — max stays 0",
+            "loop ends: print max → 0"
+          ],
+          "errorLine": 0,
+          "correction": "Seed with an item of the data: max ← −8. Then −8 stays, −3 beats it, −5 does not — the answer is −3, the only honest maximum for all-negative input.",
+          "why": "The table's job is to make the lying line visible: here the opening row poisoned every row after it."
+        }
+      },
+      {
+        "anchor": "Running is not correctness",
+        "type": "predict",
+        "caption": "bet before you read on — what ships anyway",
+        "name": "algShipPredict",
+        "config": {
+          "q": "It runs without crashing and passes every normal example you tried. What still ships?",
+          "choices": [
+            "Boundary bugs — the empty list, the single item, the value one past the limit",
+            "Syntax errors — the compiler just missed them",
+            "Nothing: if normal data passes, the algorithm is correct",
+            "Only performance issues — the happy path settles everything else"
+          ],
+          "answer": 0,
+          "why": "Correct and incorrect programs agree on normal data; the empty list, the single item and the value one past the limit are where they split."
+        }
+      },
+      {
+        "anchor": "nearly twenty years later",
+        "type": "estimate",
+        "caption": "call the failure rate of the professionals",
+        "name": "algBentleyEst",
+        "config": {
+          "prompt": "Bentley's 1986 challenge: what share of professional programmers wrote a buggy binary search?",
+          "unit": "%",
+          "answer": 90,
+          "factor": 1.3,
+          "why": "Around ninety in a hundred — usually off-by-one errors. Two decades on, Java's own standard library carried an overflow bug in (low + high) / 2; the fix became low + (high − low) / 2.",
+          "context": "The idea is easy; the edges are where correctness lives."
+        }
+      }
+    ]
+  }
+]

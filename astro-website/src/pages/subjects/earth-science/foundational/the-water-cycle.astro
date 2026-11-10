@@ -10,6 +10,180 @@ const waterCfg = {
     { math: '4 · Withdrawal vs scarcity', note: 'Scarcity is local and temporal: 4 billion people face severe water scarcity at least one month per year (Mekonnen & Hoekstra, 2016). Agriculture takes ~70% of withdrawals — every diet and irrigation choice is water policy.' },
   ],
 };
+
+const wcPurifierCompare = {
+  "prompt": "Evaporation sorts the ocean — drag between the two fractions:",
+  "before": {
+    "label": "What leaves — the vapour",
+    "text": "Only the water molecules evaporate: pure H₂O lifts roughly 430,000 km³ into the air each year, an invisible gas."
+  },
+  "after": {
+    "label": "What stays — the salts",
+    "text": "The ocean keeps them: losing pure vapour for billions of years, it has grown steadily saltier — which is why rain is fresh even over the sea."
+  },
+  "why": "Evaporation is a purifier — the sorting that makes rain drinkable everywhere it falls."
+};
+
+const wcStomataCloze = {
+  "text": "Roots pull water from the soil and it escapes as vapour through leaf pores called %%0%% — a process named %%1%%. Add the two land losses together and water managers call the total %%2%%, because it measures exactly how much irrigation a crop region needs.",
+  "answers": [
+    [
+      "stomata"
+    ],
+    [
+      "transpiration"
+    ],
+    [
+      "evapotranspiration"
+    ]
+  ],
+  "hint": "The pores, the process, and the manager's portmanteau — the Amazon exhales its own clouds."
+};
+
+const wcAtmosEst = {
+  "prompt": "Emptying and refilling constantly — how much water is airborne worldwide at any given instant?",
+  "unit": "km³",
+  "answer": 13000,
+  "factor": 1.5,
+  "why": "About 13,000 km³ — yet roughly 110,000 km³ lands on land surfaces every year, because the stock is emptied and refilled many times over.",
+  "context": "A fast reservoir: the same division that makes rain end a crop drought within weeks."
+};
+
+const wcPathSort = {
+  "prompt": "Precipitation lands — file each fate:",
+  "buckets": [
+    "runs off toward the sea",
+    "soaks in — groundwater",
+    "returns to the air"
+  ],
+  "items": [
+    {
+      "label": "sheeting over the surface into streams and rivers",
+      "bucket": 0
+    },
+    {
+      "label": "the spring melt feeding rivers on schedule",
+      "bucket": 0
+    },
+    {
+      "label": "soaking into soil and rock toward the water table",
+      "bucket": 1
+    },
+    {
+      "label": "evaporating straight back up",
+      "bucket": 2
+    },
+    {
+      "label": "transpiring through leaf pores",
+      "bucket": 2
+    },
+    {
+      "label": "turning directly into vapour without melting first — sublimation",
+      "bucket": 2
+    }
+  ],
+  "why": "Every drop faces the same three-way decision — and which way it goes decides everything downstream, from flood timing to well yields."
+};
+
+const wcHurricanePredict = {
+  "q": "A hurricane spins up over a warm ocean, then keeps running for days. What powers it once it is over water?",
+  "choices": [
+    "The Sun's direct heating of the storm cloud tops",
+    "Condensation — the heat released each time vapour turns back into droplets"
+  ],
+  "answer": 1,
+  "why": "Evaporating water absorbs energy from its surroundings; condensing releases it again — a giant heat pump lifting energy from the tropical ocean and dropping it wherever the rain falls."
+};
+
+const wcOceanPlace = {
+  "prompt": "Stock divided by flux — place the ocean's residence time on the years scale.",
+  "labels": [
+    "0",
+    "1000",
+    "2000",
+    "3000",
+    "4000"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 4000
+  },
+  "answer": 3100,
+  "tolerance": 400,
+  "why": "About 3,100 years: 1.35 billion km³ losing roughly 430,000 km³ per year to evaporation — against the atmosphere's ~9 days, a clock on entirely different terms."
+};
+
+const wcBasinMatch = {
+  "prompt": "The return leg's plumbing — pair each term:",
+  "pairs": [
+    {
+      "left": "drainage basin (watershed)",
+      "right": "all precipitation drains toward one outlet"
+    },
+    {
+      "left": "divide",
+      "right": "the ridge separating neighbouring basins"
+    },
+    {
+      "left": "tributary",
+      "right": "a stream funnelling into an ever larger one"
+    },
+    {
+      "left": "discharge",
+      "right": "volume of water passing a point per second — the one number that defines a river"
+    }
+  ],
+  "why": "The whole network behaves as one plumbing system — which is why geologists read stream maps like X-rays of the rocks beneath."
+};
+
+const wcFloodBranch = {
+  "root": "Your city floods, and the budget allows one big fix. Walk it.",
+  "nodes": {
+    "start": {
+      "text": "Which fix do you build?",
+      "choices": [
+        {
+          "label": "Raise the levees and channelise the river",
+          "next": "downstream",
+          "feedback": "The banks rise and the water speeds onward — protected here, a bigger flood scheduled there."
+        },
+        {
+          "label": "Zone the floodplain and restore wetlands — room for the river",
+          "next": "done",
+          "feedback": "Costs land instead of certainty, and scales honestly — the Dutch adopted it after the 1995 floods."
+        }
+      ]
+    },
+    "downstream": {
+      "text": "Downstream towns now flood worse than before. What now?",
+      "choices": [
+        {
+          "label": "Build taller levees there too — keep passing the water on",
+          "next": "passon",
+          "feedback": "The invoice keeps moving down the valley — the mechanism the Great Mississippi Flood of 1993 wrote large."
+        },
+        {
+          "label": "Give the river room upstream — remove the pinch point",
+          "next": "done2",
+          "feedback": "Working with the cycle: the floodplain was the landscape's designated overflow room all along."
+        }
+      ]
+    },
+    "done": {
+      "text": "Zoning, wetlands, room for the river: the fix that works with the basin instead of against it.",
+      "choices": []
+    },
+    "done2": {
+      "text": "Restored sponges and honest zoning — the flood still comes, but the landscape has somewhere to put it.",
+      "choices": []
+    },
+    "passon": {
+      "text": "Every raised bank schedules a larger flood for whoever lives below — and the river always has someone below.",
+      "choices": []
+    }
+  },
+  "why": "A flood is the basin delivering more water than the channel can carry — engineering can move the invoice, not cancel it."
+};
 ---
 <TopicPage slug="subjects/earth-science/foundational/the-water-cycle">
 
@@ -73,6 +247,7 @@ const waterCfg = {
     the sea — and why the ocean, losing pure water vapour for billions of years, has grown
     steadily saltier.
   </p>
+  <Widget no="9" caption="what leaves vs what stays — drag the divider" widget="compare" config={wcPurifierCompare} />
   <p>
     On land, plants run their own evaporation. Roots pull water from the soil, it climbs the
     stem, and it escapes as vapour through tiny leaf pores called <strong>stomata</strong> —
@@ -82,6 +257,7 @@ const waterCfg = {
     clouds form above the Amazon rainforest even in the dry season, on moisture the trees
     themselves exhaled.
   </p>
+  <Widget no="8" caption="fill the blanks — the plant-powered leg" widget="cloze" config={wcStomataCloze} />
   <p>
     Rising vapour cools as it climbs. When it is cold enough it <strong>condenses</strong> —
     turns back into tiny liquid droplets, usually forming around airborne dust particles —
@@ -91,6 +267,7 @@ const waterCfg = {
     refilled. When droplets in clouds collide and grow heavy, they fall as
     <strong>precipitation</strong> — rain, snow, sleet or hail.
   </p>
+  <Widget no="7" caption="call the atmosphere's instant stock" widget="estimate" config={wcAtmosEst} />
   <p>
     Then comes the decision that shapes everything downstream. Some precipitation becomes
     <strong>runoff</strong>, sheeting over the surface into streams and rivers back toward
@@ -100,12 +277,14 @@ const waterCfg = {
     melts in spring and feeds rivers on schedule — or turn directly into vapour without
     melting first, a shortcut called <strong>sublimation</strong>.
   </p>
+  <Widget no="6" caption="where does each drop go? file the outcomes" widget="sort-buckets" config={wcPathSort} />
   <p>
     One more thing the cycle moves: heat. Evaporating water absorbs energy from its
     surroundings, cooling them; condensing releases it again, warming them. The cycle is
     therefore also a giant heat pump, lifting energy from the tropical ocean and releasing
     it wherever the rain falls — hurricanes are powered by exactly this release.
   </p>
+  <Widget no="5" caption="bet before the reveal — the storm's engine" widget="predict" config={wcHurricanePredict} />
 
   <Widget no="1" caption="the inventory, the fluxes, the residence times, the scarcity" widget="equationStep" config={waterCfg} />
   <p>
@@ -129,6 +308,7 @@ const waterCfg = {
     evaporation, so its clock runs about 3,100 years. Rivers flush in weeks, lakes in years
     to decades, groundwater in centuries to millennia.
   </p>
+  <Widget no="4" caption="place the ocean's residence time" widget="place" config={wcOceanPlace} />
   <p>
     Those clocks explain behaviours that otherwise seem mysterious. Rain can end a crop
     drought within weeks — the atmospheric reservoir refills fast. A drawn-down aquifer
@@ -171,6 +351,7 @@ const waterCfg = {
     or days later as a rise in <strong>discharge</strong> — the volume of water passing a
     point per second, the one number that defines a river.
   </p>
+  <Widget no="3" caption="pair each plumbing term with its meaning" widget="match" config={wcBasinMatch} />
   <p>
     A river's channel records its own history. Near the <strong>headwaters</strong>, the
     stream is steep, fast and boulder-choked, cutting a narrow V-shaped valley; farther
@@ -225,6 +406,7 @@ const waterCfg = {
     zoning, restored wetlands, the Dutch "room for the river" programmes adopted after the
     1995 floods — costs land instead of certainty, and scales honestly.
   </p>
+  <Widget no="2" caption="walk the flood-management decision" widget="branch" config={wcFloodBranch} />
 
   <h2>Groundwater and aquifers: the hidden reservoir</h2>
   <p>

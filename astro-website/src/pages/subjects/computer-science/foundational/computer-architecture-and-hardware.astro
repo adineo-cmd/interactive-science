@@ -24,6 +24,185 @@ const storageCfg = {
   ],
   height: 120,
 };
+
+const archStoredPredict = {
+  "q": "It is 1944. The computer has finished one calculation and must start a completely different program. What happens next?",
+  "choices": [
+    "Crews rewire the circuits for days — the program is the wiring",
+    "New instructions are loaded into the same memory that holds the data",
+    "A fresh deck of cards replaces the processor's settings",
+    "The results are printed, and the next user re-solders the arithmetic unit"
+  ],
+  "answer": 0,
+  "why": "Until the stored-program concept (the 1945 report), the program WAS the wiring; after it, instructions live in the same memory as the data, in the same binary language, and changing the task means loading them."
+};
+
+const archBoxSpot = {
+  "prompt": "One of these claims about a desktop setup is wrong — click it:",
+  "lines": [
+    "The whole case under the desk is 'the CPU'.",
+    "A CPU is a single chip a few centimetres across.",
+    "The case also holds memory, storage, power supply, cooling and ports.",
+    "A phone carries several cores on one chip — and has no desktop case at all.",
+    "Memory is the desk surface; storage is the filing cabinet down the hall."
+  ],
+  "errorLine": 0,
+  "correction": "The case is the building; the CPU is one hyperactive office worker inside it — a chip a few centimetres across.",
+  "why": "The case-equals-CPU confusion evaporates the moment you notice a whole computer fits behind a sheet of glass."
+};
+
+const archRegsMatch = {
+  "prompt": "Pair each part of the CPU with its single job:",
+  "pairs": [
+    {
+      "left": "arithmetic and logic unit (ALU)",
+      "right": "the mathematics and the comparisons — addition, AND, OR, shifts, tests for zero"
+    },
+    {
+      "left": "control unit (CU)",
+      "right": "decodes instructions and sends the control signals that tell memory, ALU and devices what to do, and when"
+    },
+    {
+      "left": "program counter (PC)",
+      "right": "holds the address of the next instruction"
+    },
+    {
+      "left": "memory address register (MAR)",
+      "right": "holds the address currently being read from or written to"
+    },
+    {
+      "left": "accumulator",
+      "right": "holds the ALU's running result"
+    }
+  ],
+  "why": "Five named parts, five single jobs — the register list is a cast list, not a vocabulary drill."
+};
+
+const archFdeOrder = {
+  "prompt": "One pass of the cycle, in order:",
+  "items": [
+    "The program counter holds the address of the next instruction; the address travels down the address bus.",
+    "Memory sends the instruction back along the data bus to the memory data register.",
+    "The instruction moves to the current instruction register — and the counter is incremented during fetch, before the work starts.",
+    "The control unit decodes the operation code and works out what must be done.",
+    "Execute: the ALU computes, a value is written, or a device acts — then the loop repeats, billions of times each second."
+  ],
+  "why": "Fetch, decode, execute — and the counter already points onward, which is how the processor knows where to go next without being told."
+};
+
+const archMemSort = {
+  "prompt": "Three tiers of memory, three roles — file each fact:",
+  "buckets": [
+    "RAM",
+    "ROM",
+    "secondary storage"
+  ],
+  "items": [
+    {
+      "label": "volatile — the power cut, the contents gone",
+      "bucket": 0
+    },
+    {
+      "label": "holds the startup firmware the processor runs the instant power arrives",
+      "bucket": 1
+    },
+    {
+      "label": "fast, read-write workspace where running programs and unsaved edits live",
+      "bucket": 0
+    },
+    {
+      "label": "a few megabytes at most, only read in ordinary operation",
+      "bucket": 1
+    },
+    {
+      "label": "large, permanent filing — read-write and non-volatile, but a different device entirely",
+      "bucket": 2
+    },
+    {
+      "label": "pulling the plug destroys it instantly — yet the machine still boots afterwards",
+      "bucket": 0
+    }
+  ],
+  "why": "ROM remembers but is fixed; RAM is fast but forgets; the drive holds everything while the power is off."
+};
+
+const archDevicesCloze = {
+  "text": "A 2D scanner sweeps light across a page and records the %%0%% with an array of light sensors; with %%1%% software the resulting image becomes editable text. Inkjet printers fire microscopic %%2%% of liquid ink directly onto the page; 3D printers build a physical object one %%3%% at a time from melted filament.",
+  "answers": [
+    [
+      "reflection"
+    ],
+    [
+      "OCR",
+      "optical character recognition"
+    ],
+    [
+      "droplets"
+    ],
+    [
+      "layer"
+    ]
+  ],
+  "hint": "One fuses powdered toner with heat; another triangulates surface points; the first just bounces light."
+};
+
+const archBlurayEst = {
+  "prompt": "A single layer of Blu-ray storage — pits read by a blue-violet laser — holds roughly how much?",
+  "unit": "GB",
+  "answer": 25,
+  "factor": 1.5,
+  "why": "25 GB per layer: the finer the laser's wavelength, the smaller the pits — infrared gave CD about 700 MB, red gave DVD 4.7 GB per layer.",
+  "context": "Three decades of finer light: 700 MB → 4.7 GB → 25 GB, one layer at a time."
+};
+
+const archSlowBranch = {
+  "root": "The family desktop has been feeling sluggish. Walk the diagnosis.",
+  "nodes": {
+    "start": {
+      "text": "The complaint: everything takes ages to open.",
+      "choices": [
+        {
+          "label": "Buy the biggest storage on sale — size must be the problem",
+          "next": "capTrap",
+          "feedback": "Capacity and speed are separate axes: a 4 TB HDD is far slower than a 256 GB SSD in practice."
+        },
+        {
+          "label": "Find out what the processor is waiting on",
+          "next": "wait",
+          "feedback": "Often the true bottleneck: the processor sits idle while storage trickles data across."
+        }
+      ]
+    },
+    "wait": {
+      "text": "Storage is an old mechanical disk with millisecond access; RAM is nearly full.",
+      "choices": [
+        {
+          "label": "Fit an SSD for the operating system and programs",
+          "next": "ssdFix",
+          "feedback": "Dozens of times quicker at typical tasks — boots in seconds, programs open instantly."
+        },
+        {
+          "label": "Add RAM, so less data swaps between memory and disk",
+          "next": "ramFix",
+          "feedback": "Extra workspace means fewer swaps — the other honest fix."
+        }
+      ]
+    },
+    "capTrap": {
+      "text": "Two identical laptops, one with a 2 TB HDD and one with a 512 GB SSD — the smaller boots in seconds, the larger takes minutes, because it is mechanical, not because it is small.",
+      "choices": []
+    },
+    "ssdFix": {
+      "text": "Boots in seconds, opens instantly — the speed axis, not the capacity axis, decided the last decade of hardware.",
+      "choices": []
+    },
+    "ramFix": {
+      "text": "Less swapping, less waiting — the desktop feels new again.",
+      "choices": []
+    }
+  },
+  "why": "Slowness usually means the processor is waiting on storage — the honest fix is a quicker device or extra memory, never just room to fill."
+};
 ---
 <TopicPage slug="subjects/computer-science/foundational/computer-architecture-and-hardware">
 
@@ -62,6 +241,7 @@ const storageCfg = {
     repeats — billions of times a second. Hardware is the study of how that skeleton is
     built, and of everything hanging off it.
   </p>
+  <Widget no="10" caption="bet before you read on — it is 1944, new program required" widget="predict" config={archStoredPredict} />
   <p><em>Common misconception:</em> "the CPU is the whole computer — the box under the desk
   is 'the CPU'." It seems reasonable because shop assistants say it and the box is the
   biggest thing in sight. But the CPU is one chip a few centimetres across; the box is the
@@ -71,6 +251,7 @@ const storageCfg = {
   cabinets down the hall. A contrasting example: your phone has a CPU (actually several
   cores on one chip) and no "box" at all — the case-equals-CPU confusion evaporates the
   moment you notice the whole computer fits behind a sheet of glass.</p>
+  <Widget no="9" caption="find the faulty line — what is actually inside the case" widget="spot-error" config={archBoxSpot} />
 
   <h2>Inside the CPU: registers, ALU, control unit, buses</h2>
   <p>
@@ -94,6 +275,7 @@ const storageCfg = {
     locations, which is the n-bits-give-2-to-the-n rule from the binary lesson, wearing
     hardware.
   </p>
+  <Widget no="8" caption="pair each register and unit with its one job" widget="match" config={archRegsMatch} />
 
   <h2>The fetch–decode–execute cycle</h2>
   <p>
@@ -101,6 +283,7 @@ const storageCfg = {
     reduces to one loop, paced by the system clock. The three stages and their traffic are
     worth walking slowly, because they are the machine.
   </p>
+  <Widget no="7" caption="walk the loop — what moves, when" widget="order" config={archFdeOrder} />
   <Widget no="1" caption="fetch, decode, execute — the loop every processor runs forever" widget="equationStep" config={fdeCfg} />
   <p>
     <strong>What to notice:</strong> two registers only ever talk to memory (MAR sends
@@ -134,6 +317,7 @@ const storageCfg = {
     first instructions (ROM) and a large, fast scratchpad (RAM) — the same reason a kitchen
     has both a recipe card nailed to the wall and a clearable worktop.
   </p>
+  <Widget no="6" caption="file each fact by the memory tier it describes" widget="sort-buckets" config={archMemSort} />
   <p><em>Common misconception:</em> "ROM is where your files are kept, because it is
   'read-only memory'." It seems reasonable from the name and the fact that files feel
   permanent. But ROM holds only the machine's startup firmware — a few megabytes at most;
@@ -170,6 +354,7 @@ const storageCfg = {
     object exists — the output device that makes the prototype. Touch screens, incidentally,
     are both device types at once: input where you touch, output where you look.
   </p>
+  <Widget no="5" caption="fill the blanks — from light on a page to matter on a bed" widget="cloze" config={archDevicesCloze} />
   <p><em>Common misconception:</em> "a scanner reads text the way it reads pictures — you
   scan a page and get a document you can edit." It seems reasonable because the scanned
   file looks exactly like the page. But a 2D scanner only ever produces an <em>image</em> —
@@ -207,6 +392,7 @@ const storageCfg = {
     programs (speed), HDDs for bulk archives (cost), the cloud for backup (a copy held off
     site). Watch the axes move in the widget below.
   </p>
+  <Widget no="4" caption="call the size of one Blu-ray layer" widget="estimate" config={archBlurayEst} />
   <Widget no="2" caption="size divided by speed — what a copy actually costs in waiting" widget="sliderLab" config={storageCfg} />
   <p>
     <strong>What to notice:</strong> the first two readouts are one arithmetic sentence —
@@ -226,6 +412,7 @@ const storageCfg = {
   laptops, one with a 2 TB HDD and one with a 512 GB SSD — the smaller machine boots in
   seconds and opens programs instantly; the bigger one takes minutes, because it is
   mechanical, not because it is small.</p>
+  <Widget no="3" caption="the sluggish desktop — walk the diagnosis" widget="branch" config={archSlowBranch} />
 
   <h2>Network hardware</h2>
   <p>

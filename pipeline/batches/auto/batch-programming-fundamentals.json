@@ -1,0 +1,140 @@
+[
+  {
+    "slug": "subjects/computer-science/intermediate/programming-fundamentals",
+    "activities": [
+      {
+        "anchor": "a machine needs the initial value of the total, the order of iteration, and what to do at the last item",
+        "type": "match",
+        "caption": "pair each construct with the capability it adds",
+        "name": "progConstructsMatch",
+        "config": {
+          "prompt": "Pair each construct with the capability it adds:",
+          "pairs": [
+            { "left": "variables", "right": "hold a number under a name for later" },
+            { "left": "conditionals", "right": "choose between paths" },
+            { "left": "loops", "right": "repeat without complaint" },
+            { "left": "functions", "right": "wrap steps under a callable name" }
+          ],
+          "why": "Every other language is a dialect with different punctuation — the constructs are the vocabulary."
+        }
+      },
+      {
+        "anchor": "a beginner's first runtime error, and a permanent professional reflex",
+        "type": "spot-error",
+        "caption": "find the faulty line — a beginner's type notes",
+        "name": "progTypesSpot",
+        "config": {
+          "prompt": "One line of these type notes is wrong — click it:",
+          "lines": [
+            "age = 17 stores 17 under the name age; every later mention fetches the current binding.",
+            "MAX_SPEED written once in capitals documents intent and lets a change happen in exactly one place.",
+            "In Python, \"5\" + 3 is \"53\" — string concatenation, same as JavaScript.",
+            "Every input from a keyboard or file arrives as text, so 'read a number' means 'read text, then cast it'.",
+            "int(\"5\") + 3 is 8; str(5) + \"3\" is \"53\"."
+          ],
+          "errorLine": 2,
+          "correction": "In Python, \"5\" + 3 raises a TypeError — the concatenation answer is JavaScript's behaviour; same symbols, different type logic.",
+          "why": "Which operations make sense is decided by the data's kind — the genre of bug that knowing it prevents."
+        }
+      },
+      {
+        "anchor": "In code it is an action",
+        "type": "predict",
+        "caption": "bet before you read on — the equals sign, twice",
+        "name": "progAssignPredict",
+        "config": {
+          "q": "x = 5 is followed by x = 6. In a program, this is:",
+          "choices": [
+            "Ordinary — the symbol performs an assignment: compute the right side, bind it to the name",
+            "A contradiction — a variable can only be assigned once",
+            "A syntax error in every language",
+            "Legal only in mathematics, never in code"
+          ],
+          "answer": 0,
+          "why": "The mathematical equals and the programming equals share a symbol and nothing else — so count = count + 1 is legal and ordinary."
+        }
+      },
+      {
+        "anchor": "the natural pair with input (\"keep asking until valid\") and with files (\"until end of file\")",
+        "type": "cloze",
+        "caption": "fill the blanks — selection and iteration's classic bugs",
+        "name": "progControlCloze",
+        "config": {
+          "text": "Selection conditions are boolean expressions — comparisons joined by %%0%% — and the classic bugs are %%1%% bugs: greater-than versus greater-or-equal at exactly the pass mark. Count-controlled loops run a known number of times; %%2%%-controlled loops keep going as long as their condition holds, stopping the moment it flips. An infinite loop's usual cause is the missing %%3%% line.",
+          "answers": [["and/or/not", "and, or, not"], ["boundary"], ["while"], ["update"]],
+          "hint": "Exactly-50 belongs in the test data; a never-flipping condition has no line that changes anything."
+        }
+      },
+      {
+        "anchor": "Two-dimensional arrays extend the idea to grids",
+        "type": "estimate",
+        "caption": "call the size of the rainfall grid",
+        "name": "progRainEst",
+        "config": {
+          "prompt": "A rainfall table holds 52 weeks by 7 days — how many individual values?",
+          "unit": "values",
+          "answer": 364,
+          "factor": 1.2,
+          "why": "52 × 7 = 364 cells; summing one week is the inner pass, and the whole year wraps it in the outer weeks pass.",
+          "context": "Outer walking weeks, inner walking days — nesting composed."
+        }
+      },
+      {
+        "anchor": "the difference between a report and a log, and a classic exam question",
+        "type": "order",
+        "caption": "from results.csv to an average — the pipeline",
+        "name": "progFileOrder",
+        "config": {
+          "prompt": "From results.csv to a total — put the pipeline in order:",
+          "items": [
+            "Open in read mode — name the path and the mode",
+            "Loop the lines to end-of-file",
+            "Split each line on its commas into fields",
+            "Cast the third field to a number",
+            "Accumulate the total and the count",
+            "Close — or let a with-block close it for you"
+          ],
+          "why": "Read, split, cast, total — the standard process-a-data-file algorithm the data-science strand will industrialise."
+        }
+      },
+      {
+        "anchor": "The craft is the composition, not the vocabulary.",
+        "type": "branch",
+        "caption": "the finished program meets boundary data",
+        "name": "progBoundaryBranch",
+        "config": {
+          "root": "The temperature report is written. Now attack it with boundary data.",
+          "nodes": {
+            "start": {
+              "text": "Test: n = 0 — the user enters zero values.",
+              "choices": [
+                { "label": "The average divides by the count — count is zero, the program crashes", "next": "guard", "feedback": "Exactly the boundary case: guard the division and report 'no data' instead." },
+                { "label": "Skip the test — zero values is not a real scenario", "next": "skip", "feedback": "Empty input is the case least expected and most shipped; boundary and erroneous data exist precisely for it." }
+              ]
+            },
+            "skip": {
+              "text": "The demo impresses until the first empty file — test what the program should reject, not just what it accepts.",
+              "choices": []
+            },
+            "guard": {
+              "text": "Guarded. Next test: all values equal.",
+              "choices": [
+                { "label": "Max, min and average come out identical — is that a bug?", "next": "equal", "feedback": "Not a bug: for [7, 7, 7] the honest report is 7, 7, 7 — the boundary test proves the seed logic assumes no variety." },
+                { "label": "Refuse repeated values so max ≠ min", "next": "refuse", "feedback": "That invents a rule the spec never had — the spec says report, not deduplicate." }
+              ]
+            },
+            "equal": {
+              "text": "Boundary data's job: prove the logic at the edges — a single value, all equal, zero values, and a letter at the prompt.",
+              "choices": []
+            },
+            "refuse": {
+              "text": "The spec is the contract — amendments change the spec first, then the code.",
+              "choices": []
+            }
+          },
+          "why": "Every test maps to a data class; the assembly — not the constructs — is the skill."
+        }
+      }
+    ]
+  }
+]

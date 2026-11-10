@@ -22,6 +22,166 @@ const beamCfg = {
   ],
   height: 120,
 };
+
+const slFamilySort = {
+  "prompt": "Three families, natural and manufactured — file each:",
+  "buckets": [
+    "shell — thin curved skin",
+    "frame — skeleton of members",
+    "mass — sheer bulk and weight"
+  ],
+  "items": [
+    {
+      "label": "a drinks can",
+      "bucket": 0
+    },
+    {
+      "label": "a bike helmet",
+      "bucket": 0
+    },
+    {
+      "label": "an aircraft fuselage",
+      "bucket": 0
+    },
+    {
+      "label": "an electricity pylon",
+      "bucket": 1
+    },
+    {
+      "label": "a spider's web",
+      "bucket": 1
+    },
+    {
+      "label": "a tent",
+      "bucket": 1
+    },
+    {
+      "label": "a sandbag wall",
+      "bucket": 2
+    },
+    {
+      "label": "an ice shelf",
+      "bucket": 2
+    }
+  ],
+  "why": "Classification is a lens, not a box — the same house is mass at its foundation, frame in its skeleton and shell in its roof."
+};
+
+const slPaperCompare = {
+  "prompt": "The schoolroom classic — drag between the two states:",
+  "before": {
+    "label": "Flat sheet",
+    "text": "Lies limp across a 15 cm gap — the material is fine; the shape is doing no work."
+  },
+  "after": {
+    "label": "Pleated sheet",
+    "text": "The same sheet, folded, carries a stack of coins — the folds act like tiny I-beams, moving material to where bending stress lives."
+  },
+  "why": "Materials supply strength; shape decides how that strength is used — an eggshell outperforms a flat steel plate of the same weight across the same span."
+};
+
+const slStandEst = {
+  "prompt": "A 60 kg person standing still on a platform loads it with about how many newtons?",
+  "unit": "N",
+  "answer": 590,
+  "factor": 1.2,
+  "why": "About 590 N (60 × 9.81) — but the same person jumping onto it can momentarily load it with 2,000 N or more: impact multiplies force.",
+  "context": "Dynamic loads also repeat — a member that survives one gust may fail after a million of them."
+};
+
+const slMillenniumPredict = {
+  "q": "The London Millennium Bridge opened in 2000 and wobbled shut within days. What loaded it?",
+  "choices": [
+    "Overload — more pedestrians than the static design allowed",
+    "Synchronised footsteps — a dynamic load the designers had modelled as static sideways pushes"
+  ],
+  "answer": 1,
+  "why": "Not overload: structure failure depends on time as well as size — arriving fast, moving, and repeated, dynamic loads stress differently than the number on a scale."
+};
+
+const slForceMatch = {
+  "prompt": "Five forces attack every structure — pair each with its case:",
+  "pairs": [
+    {
+      "left": "tension — pulls apart",
+      "right": "the cable of a crane hook, the string of a drawn bow"
+    },
+    {
+      "left": "compression — pushes together",
+      "right": "table legs, the stone columns of a temple"
+    },
+    {
+      "left": "shear — slides across a cut",
+      "right": "scissors through paper, a rivet joining two overlapping plates"
+    },
+    {
+      "left": "bending — stretches one face, squeezes the other",
+      "right": "a loaded shelf with a neutral middle doing little"
+    },
+    {
+      "left": "torsion — twists around the axis",
+      "right": "a screwdriver shaft under load, a wrung-out towel"
+    }
+  ],
+  "why": "In pure tension or compression a material uses its full strength efficiently — which is why good structures try to stay in the gentle pair."
+};
+
+const slWireSpot = {
+  "prompt": "One of these load-path claims is backwards — click it:",
+  "lines": [
+    "A 12 kg sign hangs from a steel wire, so the wire carries about 118 N.",
+    "In pure tension or pure compression, a material uses its full strength efficiently.",
+    "A screwdriver transmitting 20 N at a 15 mm radius carries a twisting moment of 0.3 N·m.",
+    "The wire carries the sign's weight only near the top; the bottom half carries none.",
+    "A narrow blade concentrates the twisting moment."
+  ],
+  "errorLine": 3,
+  "correction": "Tension runs the whole path: every cross-section of the wire carries the same ~118 N, top to bottom.",
+  "why": "A structure is a load path — the force entering one end travels through every member between it and the ground."
+};
+
+const slBracketPlace = {
+  "prompt": "Real shelving calls for a bracket at roughly what spacing, rather than trusting the material?",
+  "labels": [
+    "0 cm",
+    "30 cm",
+    "60 cm",
+    "90 cm",
+    "120 cm"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 120
+  },
+  "answer": 60,
+  "tolerance": 15,
+  "why": "About 60 cm — the bending moment tracks load AND span, which is why long unsupported shelves sag while short ones do not."
+};
+
+const slTriangJudge = {
+  "statements": [
+    {
+      "s": "A rectangle of four members can lean into a parallelogram without any member changing length.",
+      "truth": true,
+      "why": "Which is why gates sag and scaffolding sways — until a diagonal locks the geometry."
+    },
+    {
+      "s": "A triangle cannot deform without one of its members stretching or squashing.",
+      "truth": true,
+      "why": "And members are built to resist exactly that — the whole of structural engineering hides in the observation."
+    },
+    {
+      "s": "Corrugation stiffens a sheet by adding material to it.",
+      "truth": false,
+      "why": "By moving it — the folds act like tiny I-beams, moving material away from the neutral middle to the faces."
+    },
+    {
+      "s": "Corrugated cardboard's fluted middle layer holds the two flat liners apart.",
+      "truth": true,
+      "why": "A sandwich of weak paper converted into a stiff panel that ships the world's goods."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/design/foundational/structures-loads-and-forces">
 
@@ -82,6 +242,7 @@ const beamCfg = {
     used where weight is free (against water, which is heavy too) and avoided where weight
     costs energy (bicycles, aircraft).
   </p>
+  <Widget no="10" caption="shell, frame or mass? file each structure" widget="sort-buckets" config={slFamilySort} />
   <p>
     The same object can mix families: a house is a mass structure at its foundation, a frame
     in its timber skeleton and a shell in its tiled roof. Classification is a lens, not a
@@ -96,6 +257,7 @@ const beamCfg = {
   (calcium carbonate, a brittle chalk-like ceramic) outperforms a flat steel plate of the same
   weight across the same span, because the shell's curve turns pushing into membrane
   tension. Choose material after shape, never instead of it.</p>
+  <Widget no="9" caption="flat vs pleated — drag the divider" widget="compare" config={slPaperCompare} />
 
   <h2>Static and dynamic loads</h2>
   <p>
@@ -119,6 +281,7 @@ const beamCfg = {
     2,000 N or more — a dynamic load four times the static one, arriving in a tenth of a
     second.
   </p>
+  <Widget no="8" caption="call the static load" widget="estimate" config={slStandEst} />
   <p><em>Common misconception:</em> "a static load and a dynamic load of the same size stress
   a structure the same way." It seems reasonable because a force is a force — 500 N is 500 N.
   But structure failure depends on time as well as size: the dynamic 500 N arrives with
@@ -129,6 +292,7 @@ const beamCfg = {
   Bridge opened in 2000 and wobbled shut within days — not from overload, but from
   pedestrians' synchronised footsteps feeding a dynamic load the designers had modelled as
   static sideways pushes.</p>
+  <Widget no="7" caption="bet before the reveal — what wobbled the bridge?" widget="predict" config={slMillenniumPredict} />
 
   <h2>The five forces that attack every structure</h2>
   <p>
@@ -147,6 +311,7 @@ const beamCfg = {
     faces. <strong>Torsion</strong> twists a member around its axis: a screwdriver shaft
     under load, a wrung-out towel, a car's drive shaft, a spindle turning a blind.
   </p>
+  <Widget no="6" caption="pair each force with its everyday case" widget="match" config={slForceMatch} />
   <p>
     Numbers make it real. Tension: a sign of mass 12 kg hangs from a steel wire, so the wire
     carries a force of 12 × 9.81 ≈ 118 N — about 120 N, throughout its whole length. Torsion:
@@ -155,6 +320,7 @@ const beamCfg = {
     Bending: the worked beam below turns a load and a span into the moment the shelf or beam
     must survive.
   </p>
+  <Widget no="5" caption="find the faulty line — forces with numbers" widget="spot-error" config={slWireSpot} />
   <Widget no="1" caption="one load, two lives — an angled force and its horizontal and vertical components" widget="diagramBuilder" config={loadCfg} />
   <p>
     <strong>What to notice:</strong> drag the arrow's head and read the three numbers. The
@@ -201,6 +367,7 @@ const beamCfg = {
     thinking: the formula W·L/4 is small, but it is the same one a bridge engineer uses at
     full scale.
   </p>
+  <Widget no="4" caption="place the bracket spacing" widget="place" config={slBracketPlace} />
 
   <h2>Reinforcement: triangulation and corrugation</h2>
   <p>
@@ -220,6 +387,7 @@ const beamCfg = {
     apart, converting a sandwich of weak paper into a stiff panel that ships the world's
     goods.
   </p>
+  <Widget no="3" caption="true or false — reinforcement by geometry" widget="judge" config={slTriangJudge} />
   <p>
     <strong>So far:</strong> structures are load paths in three families (shell, frame,
     mass), loaded statically or dynamically, attacked by five forces, and defended by

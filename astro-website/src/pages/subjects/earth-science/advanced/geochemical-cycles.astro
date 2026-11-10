@@ -21,6 +21,176 @@ const rtCfg = {
     { math: 'acid rain pH: clean rain pH 5.6; polluted rain pH 4.0', note: 'pH is logarithmic: 10^(5.6−4.0) = 40× the acidity, from dissolved sulfuric and nitric acids — enough to kill fish eggs at pH 5 and below.' },
   ],
 };
+
+const geochemFrameworkMatch = {
+  "prompt": "The box-and-arrow machinery — pair each term with its meaning:",
+  "pairs": [
+    {
+      "left": "reservoir",
+      "right": "a store with a stock — atmosphere, ocean, soils, crust, biomass"
+    },
+    {
+      "left": "flux",
+      "right": "the rate of transfer between two stores"
+    },
+    {
+      "left": "residence time",
+      "right": "stock ÷ removal flux — how long a typical atom stays put"
+    },
+    {
+      "left": "steady state",
+      "right": "inflow equals outflow, so the stocks hold still"
+    }
+  ],
+  "why": "Once a claim is stated as which reservoir, what flux, what τ — it becomes arithmetic you can check."
+};
+
+const geochemSpeedSort = {
+  "prompt": "The timescale stack — file each process into its loop:",
+  "buckets": [
+    "the fast biological loop (years)",
+    "the intermediate loop (centuries–millennia)",
+    "the geological loop (10⁵–10⁶ years)"
+  ],
+  "items": [
+    {
+      "label": "photosynthesis–respiration: ~120 Gt C/yr through ~880 Gt of air",
+      "bucket": 0
+    },
+    {
+      "label": "ocean circulation carrying carbon and heat",
+      "bucket": 1
+    },
+    {
+      "label": "silicate rock weathering drawing down CO₂",
+      "bucket": 2
+    },
+    {
+      "label": "radiocarbon (¹⁴C, half-life 5,730 yr) dating deep-ocean ventilation",
+      "bucket": 1
+    },
+    {
+      "label": "the atmospheric stock a fast loop turns over in years",
+      "bucket": 0
+    },
+    {
+      "label": "tectonic uplift exposing fresh rock to weathering",
+      "bucket": 2
+    }
+  ],
+  "why": "Disturbances propagate differently at each speed — and a perturbation injected at one level leaks upward into all of them."
+};
+
+const geochemBodyEst = {
+  "prompt": "The celebrated claim behind one famous book: what share of the nitrogen in a typical human body was fixed by industry?",
+  "unit": "percent",
+  "answer": 50,
+  "factor": 1.4,
+  "why": "Of order half — industrial fixation (~150 Tg N/yr) now exceeds all natural terrestrial fixation (~110 Tg N/yr).",
+  "context": "Haber–Bosch, 1913, broke the N₂ bottleneck — and a fraction of its surplus escapes as nitrous oxide, ~270× CO₂'s warming power per molecule."
+};
+
+const geochemPFlowOrder = {
+  "prompt": "Phosphorus's loop has no gas phase — put its journey in order:",
+  "items": [
+    "Weathering releases phosphorus from apatite rock",
+    "Rivers carry it — dissolved and on dust-sized particles",
+    "Soils and food chains take it up — ATP, DNA, RNA, membranes",
+    "It sinks to deep-ocean sediment, locked away for millions of years",
+    "Tectonics uplifts new rock, and the flow continues"
+  ],
+  "why": "No stable gas phase makes phosphorus a one-way flow on human timescales — mining extracts ~20 Mt P/yr and crops return only a fraction."
+};
+
+const geochemAcidSpot = {
+  "prompt": "One of these sulfur-cycle claims is backwards — click it:",
+  "lines": [
+    "Coal and oil combustion emit SO₂ at roughly 3× natural fluxes.",
+    "SO₂ oxidises to sulfuric acid and drops rain pH from ~5.6 toward 4 — about 40× the acidity.",
+    "Caps plus scrubbers cut US and European SO₂ by ~80–90% since 1990, and the lakes recovered.",
+    "Cleaning the air cooled the planet further, because sulfate aerosols trap heat.",
+    "Mount Pinatubo's 1991 sulfate veil cooled Earth ~0.5 °C for a year."
+  ],
+  "errorLine": 3,
+  "correction": "Backwards — sulfate aerosols reflect sunlight, so scrubbing them away unmasked some greenhouse warming (the 'termination shock').",
+  "why": "The solved case has epilogues: the same reflective veil, whether from scrubbers or volcanoes, stands between the surface and sunlight."
+};
+
+const geochemOxyJudge = {
+  "statements": [
+    {
+      "s": "Deforestation is putting the atmosphere's oxygen supply in danger.",
+      "truth": false,
+      "why": "The atmosphere holds centuries of buffering — ocean plankton alone do over half the photosynthesis."
+    },
+    {
+      "s": "Ocean plankton carry out over half of the biosphere's photosynthesis.",
+      "truth": true,
+      "why": "And the atmospheric O₂ stock (~21%, ~10¹⁸ kg) turns over only in thousands of years."
+    },
+    {
+      "s": "The real oxygen problem is in the water: warming stratifies the ocean and cuts ventilation.",
+      "truth": true,
+      "why": "Oxygen-minimum zones and coastal dead zones are expanding — that is the budget to watch."
+    },
+    {
+      "s": "Warming increases ocean ventilation, which helps fisheries.",
+      "truth": false,
+      "why": "The opposite: stratification cuts ventilation, and deoxygenation threatens fisheries."
+    }
+  ]
+};
+
+const geochemWeatherTrace = {
+  "prompt": "Silicate weathering consumes CO₂ — and it runs faster on a warmer, wetter Earth. Which curve shows drawdown rate against temperature?",
+  "curves": [
+    {
+      "expr": "2*x",
+      "color": "#1d4ed8",
+      "label": "A: rising with temperature"
+    },
+    {
+      "expr": "100-x",
+      "color": "#b42318",
+      "label": "B: falling as it warms"
+    },
+    {
+      "expr": "50",
+      "color": "#0f766e",
+      "label": "C: indifferent to temperature"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 50
+  },
+  "y": {
+    "min": 0,
+    "max": 120
+  },
+  "xlabel": "mean surface temperature (relative)",
+  "ylabel": "weathering CO₂ drawdown (relative)",
+  "why": "A negative feedback spanning 10⁵–10⁶ years: warming speeds weathering, which draws CO₂ down and cools the planet — the long-term thermostat, far too slow for century-scale emissions."
+};
+
+const geochemVapourPlace = {
+  "prompt": "Water is the flux champion — place its residence time as atmospheric vapour on the days scale.",
+  "labels": [
+    "0",
+    "15",
+    "30",
+    "45",
+    "60"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 60
+  },
+  "answer": 9,
+  "tolerance": 3,
+  "why": "~9 days as vapour; weeks-to-months in rivers, centuries-to-millennia in the deep ocean and ice sheets, millennia in deep groundwater — the whole stack in one cycle, and the conveyor the other cycles ride on."
+};
 ---
 <TopicPage slug="subjects/earth-science/advanced/geochemical-cycles">
   <h2>Where you are, and what you will learn</h2>
@@ -66,6 +236,7 @@ const rtCfg = {
     system responds to a disturbance. Every environmental claim in this subject becomes
     checkable once stated in these units: which reservoir, what flux, what τ.
   </p>
+  <Widget no="10" caption="pair each accounting term with its meaning" widget="match" config={geochemFrameworkMatch} />
 
   <Widget no="1" caption="the loop logic, the timescale stack, nitrogen, phosphorus" widget="equationStep" config={geochemCfg} />
   <p>
@@ -105,6 +276,7 @@ const rtCfg = {
     thermometer; δ¹⁵N rises up food chains and reconstructs ancient diets and ocean
     nutrient histories. Isotopes are the accounting system's barcodes.
   </p>
+  <Widget no="9" caption="file each process by its loop speed" widget="sort-buckets" config={geochemSpeedSort} />
 
   <p>
     <strong>So far:</strong> the box-and-arrow machinery turns every cycle into
@@ -137,6 +309,7 @@ const rtCfg = {
     fixation — is exceeded by more than double, one of the two most-transgressed
     gauges in Rockström's framework.
   </p>
+  <Widget no="8" caption="call the industrial share of your body's nitrogen" widget="estimate" config={geochemBodyEst} />
 
   <h2>Phosphorus: the finite one</h2>
   <p>
@@ -159,6 +332,7 @@ const rtCfg = {
     literally flushed — and efficient application) exist but lag. The phosphorus
     boundary is also assessed as transgressed.
   </p>
+  <Widget no="7" caption="sequence the one-way phosphorus journey" widget="order" config={geochemPFlowOrder} />
 
   <p>
     <em>Common misconception:</em> "when phosphorus runs low, we can pull more from
@@ -196,6 +370,7 @@ const rtCfg = {
     marine scientists estimate warmed the North Atlantic shipping lanes measurably
     when the fuel rules finally changed in 2020.
   </p>
+  <Widget no="6" caption="find the faulty line — the sulfur story" widget="spot-error" config={geochemAcidSpot} />
   <p>
     <em>Common misconception:</em> "the oxygen cycle is in danger from
     deforestation." Atmospheric O₂ (~21%, a stock of ~10¹⁸ kg) turns over through
@@ -206,6 +381,7 @@ const rtCfg = {
     expanding oxygen-minimum zones and coastal dead zones — is a measured, growing
     threat to fisheries. The air is fine; the ocean's oxygen budget is the one to watch.
   </p>
+  <Widget no="5" caption="true or false — the oxygen ledger" widget="judge" config={geochemOxyJudge} />
 
   <h2>The interlocking thermostat: weathering and the long carbon loop</h2>
   <p>
@@ -226,6 +402,7 @@ const rtCfg = {
     the others — which is precisely why the planetary-boundaries framework treats
     them as one dashboard.
   </p>
+  <Widget no="4" caption="which curve is the weathering feedback?" widget="trace" config={geochemWeatherTrace} />
 
   <p>
     <em>Common misconception:</em> "the silicate-weathering thermostat will
@@ -253,6 +430,7 @@ const rtCfg = {
     eutrophication. The water cycle is the conveyor belt the other cycles stand on;
     speeding it up speeds them too.
   </p>
+  <Widget no="3" caption="place vapour's residence time" widget="place" config={geochemVapourPlace} />
 
   <p>
     <strong>So far:</strong> nitrogen, phosphorus and sulfur showed three shapes of

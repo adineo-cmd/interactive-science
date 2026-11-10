@@ -24,6 +24,173 @@ const cTl = {
     { year: 2010, title: 'The 20/20 consensus definition', text: 'Counselling organisations agree on a single, published definition of the profession\'s purpose.', tag: 'today' },
   ],
 };
+
+const counsListenersMatch = {
+  "prompt": "Pair each listener with what they actually give:",
+  "pairs": [
+    {
+      "left": "a friend",
+      "right": "loyalty, not skill — advice bends toward the friendship"
+    },
+    {
+      "left": "a guru",
+      "right": "answers from doctrine — the price is your agreement"
+    },
+    {
+      "left": "a counsellor",
+      "right": "trained listening, accountable to published evidence and ethics codes — the goal is explicitly your judgement, not their compliance"
+    }
+  ],
+  "why": "The listening is trained, the method is accountable, and the aim is your own judgement — that is what separates the profession from goodwill."
+};
+
+const counsDefSort = {
+  "prompt": "Each claim belongs to one word of the definition — file it:",
+  "buckets": [
+    "relationship",
+    "empowers",
+    "professional"
+  ],
+  "items": [
+    {
+      "label": "the most replicated finding of psychotherapy research — alliance quality predicts outcome",
+      "bucket": 0
+    },
+    {
+      "label": "the client, not the counsellor, is the expert on and agent of their own life",
+      "bucket": 1
+    },
+    {
+      "label": "bounded by ethics codes, accredited graduate training, supervised hours, state licensure",
+      "bucket": 2
+    },
+    {
+      "label": "trust, agreement on goals, agreement on how to pursue them",
+      "bucket": 0
+    }
+  ],
+  "why": "Every word is load-bearing: the mechanism, the direction, the guarantee."
+};
+
+const counsWellnessCompare = {
+  "prompt": "Two questions about one person — drag the divider:",
+  "before": {
+    "label": "the medical model",
+    "text": "asks 'what disorder is present and how is it treated?'"
+  },
+  "after": {
+    "label": "the developmental view",
+    "text": "asks 'what does this person need to grow, and what is already working?' — distress as a normal part of life to be worked through with support and skill"
+  },
+  "why": "That centre decides the spectrum: school guidance, career work, couples, grief, addiction, licensed treatment of clinical disorders."
+};
+
+const counsWhoPredict = {
+  "q": "Who walks into a counsellor's office?",
+  "choices": [
+    "People across the whole spectrum — career decisions, grief, couple transitions, life stress, and yes, clinical disorders",
+    "Only people with a diagnosed mental illness",
+    "Only students choosing subjects",
+    "Nobody — counselling is self-help done alone"
+  ],
+  "answer": 0,
+  "why": "The centre is wellness- and development-oriented — the wait-until-unwell reading mistakes the whole point."
+};
+
+const counsOriginsCloze = {
+  "text": "Counselling began as %%0%%, not therapy: Frank Parsons opened the Boston Vocation Bureau in %%1%%, arguing that choosing a life's work deserved %%2%% expert help. The %%3%%, founded in 1913, became the first professional home.",
+  "answers": [
+    [
+      "guidance"
+    ],
+    [
+      "1908"
+    ],
+    [
+      "systematic"
+    ],
+    [
+      "National Vocational Guidance Association",
+      "NVGA"
+    ]
+  ],
+  "hint": "The founder's creed: know yourself; know the world of work; reason between them."
+};
+
+const counsConfidentialSpot = {
+  "prompt": "One of these confidentiality claims is wrong — click it:",
+  "lines": [
+    "Confidentiality is the foundation of the alliance.",
+    "Its limits are stated openly in informed consent, before work begins.",
+    "The legally mandated limits: risk of serious harm to self or others, suspected abuse of children or vulnerable adults, and court orders.",
+    "The duty of confidentiality dissolves the moment any unlawful act is mentioned.",
+    "Tarasoff (1976) converted a philosophical dilemma into every practitioner's legal landscape."
+  ],
+  "errorLine": 3,
+  "correction": "The legally mandated limits are the named ones — serious harm to self or others, suspected abuse, court orders; ordinary disclosures stay protected.",
+  "why": "The stakes are direct — which is why the limits are stated up front, in informed consent."
+};
+
+const counsEthicsOrder = {
+  "prompt": "When a case pushes at the edges of the rules — the process, in order:",
+  "items": [
+    "Identify the question",
+    "Check the code and the law",
+    "Consult — the profession's quiet safety net",
+    "Decide",
+    "Document the reasoning and the outcome"
+  ],
+  "why": "Each rule guards a specific failure mode; the sequence exists because genuine goods collide more often than good meets evil."
+};
+
+const counsTextBranch = {
+  "root": "11 p.m. A client texts — not a crisis, only a small message that isn't really about the message.",
+  "nodes": {
+    "start": {
+      "text": "Reply now?",
+      "choices": [
+        {
+          "label": "Answer warmly and chat — rapport above all",
+          "next": "chat",
+          "feedback": "It erases the line, sets an unworkable precedent and quietly opens an unmonitored side-channel."
+        },
+        {
+          "label": "Hold the agreed boundary and redirect to the scheduled channel",
+          "next": "hold",
+          "feedback": "Warm, brief, by the book — the informed-consent conversation set this policy up front."
+        }
+      ]
+    },
+    "chat": {
+      "text": "The precedent writes itself into every future night — the line is not a wall against care; it is a load-bearing part of it.",
+      "choices": []
+    },
+    "hold": {
+      "text": "Held warmly. Next session?",
+      "choices": [
+        {
+          "label": "Treat what the text was really saying as clinical material",
+          "next": "material",
+          "feedback": "Exactly: the text was data, not noise — what it was really about gets the attention it asked for."
+        },
+        {
+          "label": "Never mention it — off-hours stays off-topic",
+          "next": "ignore",
+          "feedback": "Leaving it unaddressed frays the very relationship the work depends on."
+        }
+      ]
+    },
+    "material": {
+      "text": "Policy up front, boundary held warmly, message heard in session — settled by design, not instinct.",
+      "choices": []
+    },
+    "ignore": {
+      "text": "The small text still happened — unaddressed, it erodes exactly the trust the work is built on.",
+      "choices": []
+    }
+  },
+  "why": "The line is not a wall against care; it is a load-bearing part of it."
+};
 ---
 <TopicPage slug="subjects/counseling/foundational/the-counselling-profession">
 
@@ -54,6 +221,7 @@ const cTl = {
     codes, and the goal is explicitly <em>your</em> judgement, not their compliance. That
     third option is the profession this lesson defines.
   </p>
+  <Widget no="10" caption="three people will listen — pair each with what they give" widget="match" config={counsListenersMatch} />
   <p>
     The definition the profession settled on is worth reading slowly. In 2010, after a
     process called 20/20: A Vision for the Future of Counseling, counselling's major
@@ -68,6 +236,7 @@ const cTl = {
     <em>professional</em>: bounded by ethics codes, accredited graduate training,
     thousands of supervised clinical hours and state licensure.
   </p>
+  <Widget no="9" caption="which word of the definition carries which claim?" widget="sort-buckets" config={counsDefSort} />
   <p>
     Underneath the definition sits a philosophical commitment that makes counselling
     distinctive among the helping professions: <strong>wellness rather than pathology</strong>.
@@ -78,12 +247,14 @@ const cTl = {
     guidance, career work, couples, grief, addiction, and licensed treatment of clinical
     disorders.
   </p>
+  <Widget no="8" caption="two questions about one person — drag the divider" widget="compare" config={counsWellnessCompare} />
   <p><em>Common misconception:</em> counselling is only for mental illness, so needing a
   counsellor means being unwell. The profession's centre is deliberately wellness- and
   development-oriented: school guidance, career decisions, grief, couple transitions and
   life stress are core work, and distress is treated as a normal part of life to be worked
   through with support. Waiting for a diagnosis before seeking help misreads what the
   profession is for.</p>
+  <Widget no="7" caption="bet before you read on — who walks in the door" widget="predict" config={counsWhoPredict} />
   <p>
     The panel below assembles that identity piece by piece — definition, philosophy,
     ethics, licensure, culture — and the rest of the lesson walks the same order.
@@ -108,6 +279,7 @@ const cTl = {
     schools. The National Vocational Guidance Association, founded in 1913, became the
     first professional home.
   </p>
+  <Widget no="6" caption="fill the blanks — how it began" widget="cloze" config={counsOriginsCloze} />
   <p>
     The clinical turn came from an unexpected quarter. <strong>Carl Rogers</strong>, whose
     1942 book <em>Counseling and Psychotherapy</em> argued that a non-directive
@@ -198,6 +370,7 @@ const cTl = {
     a philosophical dilemma (the client's secrets versus a stranger's life) into every
     practitioner's legal landscape.
   </p>
+  <Widget no="5" caption="find the faulty line — confidentiality's fine print" widget="spot-error" config={counsConfidentialSpot} />
   <p><em>Common misconception:</em> what is said in counselling is absolutely confidential,
   full stop. Confidentiality is the alliance's foundation, but it carries legally mandated
   limits that counsellors state up front in informed consent: serious risk of harm to self
@@ -219,6 +392,7 @@ const cTl = {
     document — because real dilemmas pit genuine goods against each other rather than
     good against evil.
   </p>
+  <Widget no="4" caption="when a case pushes at the edges — the process" widget="order" config={counsEthicsOrder} />
   <p>
     A small modern dilemma shows the process working at everyday scale. A client texts a
     counsellor at 11 p.m. — not in crisis, but loneliness dressed as nothing in
@@ -231,6 +405,7 @@ const cTl = {
     loneliness — which was the actual message — as clinical material. Boundaries are not
     barriers to care; in this profession they are load-bearing parts of it.
   </p>
+  <Widget no="3" caption="the 11 p.m. text — walk the response" widget="branch" config={counsTextBranch} />
 
   <h2>Licensure and scope</h2>
   <p>

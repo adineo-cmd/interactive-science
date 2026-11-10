@@ -10,6 +10,183 @@ const dsysCfg = {
     { math: '4 · Governance: the human problem', note: 'Adoption beats completeness: one team actually using 20 components beats 200 nobody uses. Contribution models (central team vs federated), versioning discipline (semver for components), and the political work of making consistency cheaper than divergence (the scaling lesson\'s design counterpart).' },
   ],
 };
+
+const dsysTokenOrder = {
+  "prompt": "From decision to pixel — put the marking-out in order:",
+  "items": [
+    "Choose the base unit — a 4 px spacing step",
+    "Build the ladders — spacing 4, 8, 12, 16, 24, 32, 48, 64; type at a 1.25 ratio from 16 px",
+    "Name the tokens — atomic design decisions held as data",
+    "Reference them everywhere — no pixel value outside the scale needs to exist",
+    "Fix once at the token level — the correction propagates everywhere"
+  ],
+  "why": "Every later decision references the tokens, so an error at that level propagates everywhere — and, mercifully, so does a fix."
+};
+
+const dsysTokenJudge = {
+  "statements": [
+    {
+      "s": "A token's value is the most important part of it.",
+      "truth": false,
+      "why": "The value is the smallest part — the token is a decision, encoded as data."
+    },
+    {
+      "s": "A spacing ladder built on a 4 px base unit contains 48 px as a valid step.",
+      "truth": true,
+      "why": "4, 8, 12, 16, 24, 32, 48, 64 — every value on the ladder exists; none outside it needs to."
+    },
+    {
+      "s": "Hardcoded pixel values are fine as long as the design looks right.",
+      "truth": false,
+      "why": "Untokenised values mute both the error propagation and the fix — the two properties that make tokens worth having."
+    },
+    {
+      "s": "A type scale is usually a ratio applied to the body size.",
+      "truth": true,
+      "why": "16 px at a ratio of 1.25 gives 16, 20, 25, 31, 39, 49 — every heading and caption sits somewhere on that ladder."
+    }
+  ]
+};
+
+const dsysAtomicSort = {
+  "prompt": "The atomic hierarchy — file each part at its level:",
+  "buckets": [
+    "atom",
+    "molecule",
+    "organism"
+  ],
+  "items": [
+    {
+      "label": "a button",
+      "bucket": 0
+    },
+    {
+      "label": "an icon",
+      "bucket": 0
+    },
+    {
+      "label": "a labelled input field",
+      "bucket": 1
+    },
+    {
+      "label": "a search bar with label, input and hint",
+      "bucket": 1
+    },
+    {
+      "label": "a sign-up form",
+      "bucket": 2
+    },
+    {
+      "label": "a navigation header",
+      "bucket": 2
+    }
+  ],
+  "why": "Parts compose into parts, and each level is only responsible for its own correctness — real systems blur the hierarchy, but the point survives."
+};
+
+const dsysGovernBranch = {
+  "root": "A new platform team of nine engineers arrives and asks how to work with the system. Walk the maintainer's response.",
+  "nodes": {
+    "start": {
+      "text": "How do you respond to the new team?",
+      "choices": [
+        {
+          "label": "Show them the economics — what a screen costs composed versus hand-rolled",
+          "next": "hatch",
+          "feedback": "The economics that drive adoption are simple to state and hard to arrange: compliance has to serve the team."
+        },
+        {
+          "label": "Send them the mandate memo",
+          "next": "mandate",
+          "feedback": "Adoption beats completeness — and measured teams report an adoption S-curve, not a memo S-curve."
+        }
+      ]
+    },
+    "hatch": {
+      "text": "The team needs one exotic component the system does not offer.",
+      "choices": [
+        {
+          "label": "Bless a documented, time-boxed escape hatch — contributed back later",
+          "next": "done",
+          "feedback": "Mature systems explicitly bless the hatch rather than pretend it does not exist — chasing the last 20% usually costs more than it saves."
+        },
+        {
+          "label": "Refuse — the system must cover every need",
+          "next": "chase",
+          "feedback": "The fork happens anyway, minus the documentation — and forks are how systems die."
+        }
+      ]
+    },
+    "done": {
+      "text": "Economics, a legitimate hatch, contributions flowing back: the system treated like a product with users.",
+      "choices": []
+    },
+    "mandate": {
+      "text": "Compliance demanded but not convenient is the shadow system's birth certificate: local overrides, forks, divergence.",
+      "choices": []
+    },
+    "chase": {
+      "text": "Below roughly 10 engineers, the honest recommendation is a lightweight kit — matching system weight to production scale is part of the economics too.",
+      "choices": []
+    }
+  },
+  "why": "The hard part of a design system is not design; it is adoption — a federated model trades some coherence for throughput, and the escape hatch is part of the design."
+};
+
+const dsysContrastEst = {
+  "prompt": "Finishing checks performed once and inherited everywhere — what contrast ratio does WCAG AA require for body text?",
+  "unit": ":1",
+  "answer": 4.5,
+  "factor": 1.2,
+  "why": "4.5:1 for body text, 3:1 for large text and UI components — one check in the system instead of forty on forty screens.",
+  "context": "Touch targets get floors too: 44 × 44 px (Apple) or 24 × 24 px (WCAG 2.2 minimum)."
+};
+
+const dsysScaleMatch = {
+  "prompt": "Match system weight to production scale — pair them:",
+  "pairs": [
+    {
+      "left": "one-off — a bespoke marketing page",
+      "right": "hand-rolled decisions; a system would be overhead"
+    },
+    {
+      "left": "batch — a product line with several surfaces",
+      "right": "a lightweight kit: tokens plus a dozen core components"
+    },
+    {
+      "left": "continuous — a platform, many teams shipping daily",
+      "right": "the full apparatus: semantic layers, contribution processes, tests, release trains"
+    },
+    {
+      "left": "mass customisation — white-label, many brands",
+      "right": "one production line; each brand a token override"
+    }
+  ],
+  "why": "The public systems — Material, HIG, Polaris, Carbon — encode this maturity, and each documents not just components but a philosophy."
+};
+
+const dsysLibrarySpot = {
+  "prompt": "One of these claims about design systems is backwards — click it:",
+  "lines": [
+    "The component library is what everyone sees first.",
+    "The system is the library plus tokens, rules, documentation, contribution process and governance.",
+    "Industry surveys find the top challenges are adoption, funding and staffing.",
+    "If the components are well-designed, the system will run itself.",
+    "A library nobody can find or trust is a folder of good intentions."
+  ],
+  "errorLine": 3,
+  "correction": "The hard part is not design — it is adoption: the surveys' top challenges are people-and-process ones, not component design.",
+  "why": "Documentation is the product: usage guidance that says when NOT to use a component, playgrounds, and a clear contribution path."
+};
+
+const dsysBuildEst = {
+  "prompt": "A team of 30 engineers and 6 designers ships 40 screens a quarter. Before a system pays anything back, the first year of token and component work costs roughly how much?",
+  "unit": "person-days",
+  "answer": 100,
+  "factor": 1.4,
+  "why": "About 100 person-days — after which the per-screen cost falls to roughly 1 person-day and the system saves ~50 person-days every quarter.",
+  "context": "Below roughly 10 engineers the build cost usually exceeds year-one savings — the lightweight kit is the honest recommendation."
+};
 ---
 <TopicPage slug="subjects/design/advanced/design-systems">
   <h2>Where you are, and what you will learn</h2>
@@ -66,6 +243,7 @@ const dsysCfg = {
     every later decision references them, so an error at the token level propagates everywhere —
     and, mercifully, so does a fix.
   </p>
+  <Widget no="9" caption="sequence the token workflow" widget="order" config={dsysTokenOrder} />
   <p>
     <em>Common misconception:</em> "tokens are just CSS variables." They are design
     <em>decisions</em> encoded as variables; the value is the smallest part. A token called
@@ -73,6 +251,7 @@ const dsysCfg = {
     padding happens exactly once, in one meeting, with evidence — and never again in every code
     review.
   </p>
+  <Widget no="8" caption="true or false — what a token actually is" widget="judge" config={dsysTokenJudge} />
 
   <h2>Cutting, shaping and forming: components</h2>
   <p>
@@ -88,6 +267,7 @@ const dsysCfg = {
     accessibility fix (contrast, focus ring, target size) is applied 1 time instead of 40, and
     every designer's file starts with a known vocabulary instead of a negotiation.
   </p>
+  <Widget no="7" caption="atom, molecule or organism? file each part" widget="sort-buckets" config={dsysAtomicSort} />
 
   <h2>Joining: composition and layout</h2>
   <p>
@@ -127,6 +307,7 @@ const dsysCfg = {
     components is the safety harness: a patch fixes without behaviour change, a minor adds
     without breaking, a major breaks — loudly, with a changelog.
   </p>
+  <Widget no="6" caption="call the WCAG AA contrast bar" widget="estimate" config={dsysContrastEst} />
   <p>
     <strong>So far:</strong> the physical layers are in place — decisions as data, shaped parts,
     joinery, finishing and safety — and each check made once is inherited everywhere. Next, the
@@ -149,6 +330,7 @@ const dsysCfg = {
     production line yields infinitely varied output — the exact promise industrial
     standardisation always made.
   </p>
+  <Widget no="5" caption="pair each production scale with its system weight" widget="match" config={dsysScaleMatch} />
   <p>
     <strong>So far:</strong> the engineering is done — tokens, components, composition, finishing
     — and it scales from a lightweight kit to a full apparatus as production volume grows. What
@@ -173,6 +355,7 @@ const dsysCfg = {
     comply because it serves them. When compliance is demanded but not convenient, you get the
     shadow system: local overrides, forks, and a slow slide back to five button styles.
   </p>
+  <Widget no="4" caption="walk the governance decision" widget="branch" config={dsysGovernBranch} />
   <p>
     <em>Common misconception:</em> "a design system is a component library." The library is the
     visible artefact; the system is the library plus the tokens, the rules, the documentation,
@@ -180,6 +363,7 @@ const dsysCfg = {
     (Sparkbox's annual design-systems survey being the best-known) consistently find the top
     challenges are people-and-process ones — adoption, funding, staffing — not component design.
   </p>
+  <Widget no="3" caption="find the faulty line — what a system is" widget="spot-error" config={dsysLibrarySpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -252,6 +436,7 @@ const dsysCfg = {
     honest recommendation — which is why the biggest public systems all come from the biggest
     product surfaces.
   </p>
+  <Widget no="2" caption="call the year-one build cost" widget="estimate" config={dsysBuildEst} />
   <p>
     <strong>Measuring a system.</strong> Treat it like any product with metrics: adoption rate
     (share of new screens composed from system components), divergence count (lint violations

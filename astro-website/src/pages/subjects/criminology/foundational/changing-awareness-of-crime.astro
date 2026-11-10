@@ -22,6 +22,150 @@ const measureTimeline = {
     { year: 2012, title: 'ONS takes over the numbers', text: 'Responsibility for crime statistics transfers from the Home Office to the Office for National Statistics, and the survey is renamed the Crime Survey for England and Wales. The two-source system we still use is now official.', tag: 'the survey era' },
   ],
 };
+
+const crimFraudPredict = {
+  "q": "Picture 'crime'. Now: which offence does the national victimisation survey find people experience most often?",
+  "choices": [
+    "Fraud — deceiving people and organisations out of money or property",
+    "Burglary",
+    "Violence against the person",
+    "Vehicle theft"
+  ],
+  "answer": 0,
+  "why": "Millions of incidents a year — yet the public picture is burglary or violence. The picture is manufactured by reporting, recording and media selection."
+};
+
+const crimAxesMatch = {
+  "prompt": "Pair each type with its awareness signature:",
+  "pairs": [
+    {
+      "left": "white-collar",
+      "right": "diffuse victims, a respectable logo — loses the coverage contest, awareness stays low"
+    },
+    {
+      "left": "state",
+      "right": "the offender writes the rules — awareness depends on journalists, whistleblowers, international bodies"
+    },
+    {
+      "left": "technological (e-)",
+      "right": "borderless and fast-moving, often undetected by the person harmed until long after"
+    },
+    {
+      "left": "hate",
+      "right": "survey estimates run to hundreds of thousands while recorded counts sit in the low thousands"
+    }
+  ],
+  "why": "Offence, victims, offenders, awareness — the last one ties everything together."
+};
+
+const crimUnreportedSort = {
+  "prompt": "File each reason for silence:",
+  "buckets": [
+    "personal reasons",
+    "social & cultural reasons"
+  ],
+  "items": [
+    {
+      "label": "fear of the offender, or of not being believed",
+      "bucket": 0
+    },
+    {
+      "label": "shame",
+      "bucket": 0
+    },
+    {
+      "label": "a scam that looks like bad luck — no knowledge a crime occurred",
+      "bucket": 1
+    },
+    {
+      "label": "complexity: 'who do I even tell about a frozen crypto account?'",
+      "bucket": 1
+    },
+    {
+      "label": "lack of media interest",
+      "bucket": 1
+    },
+    {
+      "label": "culture-bound offences where reporting would betray the community itself",
+      "bucket": 1
+    },
+    {
+      "label": "'it was only a phone' — feeling not really affected",
+      "bucket": 0
+    }
+  ],
+  "why": "Fear responds to support and anonymity; ignorance to campaigns; complexity to specialised channels — which is how Action Fraud and True Vision came to exist."
+};
+
+const crimDAOrder = {
+  "prompt": "The domestic-abuse case, step by step — put it in order:",
+  "items": [
+    "The dark figure is exposed by surveys and campaigns in the 1970s–90s",
+    "Awareness rises",
+    "Confidence to report rises",
+    "The recorded numbers go up — with no necessary change on the street"
+  ],
+  "why": "A rising statistic can mean rising crime or rising confidence to report — the subtlety the whole unit turns on."
+};
+
+const crimMediaMatch = {
+  "prompt": "The media machinery — pair each part with its effect:",
+  "pairs": [
+    {
+      "left": "the folk devil",
+      "right": "a group cast as the symbol of society's fears — concern spikes, punishments escalate beyond what the trend justifies"
+    },
+    {
+      "left": "news values",
+      "right": "immediacy, dramatisation, personalisation — distortion independent of any editor's intention"
+    },
+    {
+      "left": "the perception gap",
+      "right": "heavy followers estimate rates higher than the statistics and feel more fearful"
+    },
+    {
+      "left": "social media",
+      "right": "shortens the panic cycle to days; unverified clips stand in for statistics"
+    }
+  ],
+  "why": "Violent and sexual offences over-shown, common offences under-shown — coverage measures what makes a story, not what makes a statistic."
+};
+
+const crimNewsCompare = {
+  "prompt": "The street vs the bulletins — drag the divider:",
+  "before": {
+    "label": "the street",
+    "text": "common offences dominate by volume — most never dramatic, most never shown"
+  },
+  "after": {
+    "label": "the bulletins",
+    "text": "selection favours the dramatic, the visual, the personal: violent and sexual offences over-shown, the most common offences under-shown"
+  },
+  "why": "Coverage measures what makes a story, not what makes a statistic — a moral panic can run with no underlying trend at all."
+};
+
+const crimInstrumentsSpot = {
+  "prompt": "One of these instrument claims is wrong — click it:",
+  "lines": [
+    "Recorded figures are an administrative count of what the system processes.",
+    "Murder is essentially complete in the recorded count — there are no unreported murders for long.",
+    "The survey is immune to recording-rule changes and captures the dark figure.",
+    "The survey's main household sample includes businesses and children under 16.",
+    "Read them together, or not at all."
+  ],
+  "errorLine": 3,
+  "correction": "The household survey misses businesses and children under 16 in the main sample — each instrument has its own blind spots.",
+  "why": "Triangulate: neither is the true rate; each has its own reliability, validity and ethics."
+};
+
+const crimNCVSEst = {
+  "prompt": "The US National Crime Victimization Survey — how many people does it study each year?",
+  "unit": "people",
+  "answer": 160000,
+  "factor": 1.3,
+  "why": "Around 160,000 respondents a year — and, like any questionnaire, it misses some populations and depends on victim recall.",
+  "context": "Paired with the FBI's Uniform Crime Reports from around 17,000 agencies — the same two-instrument logic worldwide."
+};
 ---
 <TopicPage slug="subjects/criminology/foundational/changing-awareness-of-crime">
 
@@ -58,6 +202,7 @@ const measureTimeline = {
     machinery that produces the picture — because policy, policing priorities and
     personal precaution are all set by the picture, not the reality.
   </p>
+  <Widget no="10" caption="bet before you read on — which offence tops lived experience" widget="predict" config={crimFraudPredict} />
   <p>
     The machinery starts with a distinction sociology insists on. <strong>Deviance</strong>
     is a violation of social norms — walking backwards to class, breaking a dress code;
@@ -88,6 +233,7 @@ const measureTimeline = {
     point; the unit's types are cut across it, by <em>who</em> offends and <em>how
     visible</em> the offence is.
   </p>
+  <Widget no="9" caption="pair each type with its awareness signature" widget="match" config={crimAxesMatch} />
   <ul>
     <li><strong>White-collar crime</strong> — committed by the respectable in the course of work: organised, corporate and professional variants. Fraud, tax evasion, price-fixing, insider trading and corporate negligence causing harm. Edwin Sutherland coined the term in 1939 precisely to show that crime is not concentrated among the poor. It routinely loses the coverage contest with street crime — yet a single pension fund fraud can devastate thousands of families' savings at once. Its victims are diffuse — thousands of small losses with no single outraged victim — which is exactly why awareness stays low.</li>
     <li><strong>Moral crimes</strong> — acts against perceived standards of decency: prostitution, vagrancy, illegal gambling, assisted suicide, under-age drinking. "Victimless" is contested — defenders say no identifiable person is harmed; critics point to the exploitation and social damage that shadow the trade — and that contest drives whether anyone calls the police. Whether such acts should be crimes at all is a live debate the unit expects you to argue, not assume.</li>
@@ -121,6 +267,7 @@ const measureTimeline = {
     channels — which is how Action Fraud and the NPCC's True Vision (for hate crime)
     came to exist.
   </p>
+  <Widget no="8" caption="why crime goes unreported — file each reason" widget="sort-buckets" config={crimUnreportedSort} />
   <p>
     The consequences cut both ways. Unreported crime breeds a <em>ripple effect</em>
     (one offender's harm spreads through victims, families, neighbourhoods), lets
@@ -135,6 +282,7 @@ const measureTimeline = {
     crime <em>or rising confidence to report</em>, and confusing the two is the standard
     error this unit exists to prevent.
   </p>
+  <Widget no="7" caption="how awareness of domestic abuse was re-manufactured" widget="order" config={crimDAOrder} />
 
   <h2>The media's version of crime</h2>
   <p>
@@ -160,6 +308,7 @@ const measureTimeline = {
     moved. Social media now shortens the panic cycle to days and lets unverified clips
     stand in for statistics.
   </p>
+  <Widget no="6" caption="the media machinery, part by part" widget="match" config={crimMediaMatch} />
   <p><em>Common misconception:</em> the amount of crime in the news mirrors the amount of
   crime on the street — so if the media are full of stabbings, stabbings must be rising.
   News values select for the dramatic, the visual and the personal: violent and sexual
@@ -167,6 +316,7 @@ const measureTimeline = {
   analyses stretching back to the 1970s. Coverage measures what makes a story, not what
   makes a statistic — which is precisely why the moral-panic mechanism can run without
   any underlying trend at all.</p>
+  <Widget no="5" caption="the street vs the bulletins — drag the divider" widget="compare" config={crimNewsCompare} />
 
   <h2>Measuring the unmeasurable</h2>
   <Widget no="1" caption="the measurement gap, step by step — why no single number can be 'the' crime rate" widget="equationStep" config={gapCfg} />
@@ -187,6 +337,7 @@ const measureTimeline = {
     figure — but it misses "victimless" crimes, businesses and children under 16 (in
     the main sample), and it inherits survey error like any questionnaire.
   </p>
+  <Widget no="4" caption="find the faulty line — the two instruments" widget="spot-error" config={crimInstrumentsSpot} />
   <p><em>Common misconception:</em> police-recorded crime is the real number and the Crime
   Survey is an opinion poll about it. The relationship runs the other way round: the
   administrative count inherits every filter in the system — whether the victim told
@@ -205,6 +356,7 @@ const measureTimeline = {
     police count — the dark figure again — and, like every survey, misses some
     populations and depends on victim recall.
   </p>
+  <Widget no="3" caption="call the reach of the US self-report study" widget="estimate" config={crimNCVSEst} />
   <p>
     Because both instruments are flawed in different directions, criminologists
     triangulate: neither is "the true rate", each has its own reliability, validity and

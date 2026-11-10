@@ -21,6 +21,158 @@ const lgmCfg = {
     { math: 'sensitivity ≈ 6 °C / 8 W/m² × 3.7 W/m² ≈ 2.8 K per CO₂ doubling', note: 'the LGM is an out-of-sample test of climate sensitivity — it lands near the modern model range (2.5–4 K), which is why paleoclimate grades the projections.' },
   ],
 };
+
+const paleoLandformSort = {
+  "prompt": "The glacier's two toolkits — file each landform:",
+  "buckets": [
+    "carved by erosion",
+    "left by deposition"
+  ],
+  "items": [
+    {
+      "label": "U-shaped valley — a river valley over-deepened",
+      "bucket": 0
+    },
+    {
+      "label": "cirque — armchair basin at the accumulation zone",
+      "bucket": 0
+    },
+    {
+      "label": "fjord — valley scoured below sea level, then drowned",
+      "bucket": 0
+    },
+    {
+      "label": "arête — knife-edge between cirques",
+      "bucket": 0
+    },
+    {
+      "label": "terminal moraine — the glacier's tideline",
+      "bucket": 1
+    },
+    {
+      "label": "drumlin — whale-backed hill aligned with flow",
+      "bucket": 1
+    },
+    {
+      "label": "erratic — boulder far from its source",
+      "bucket": 1
+    },
+    {
+      "label": "esker — subglacial-stream gravel ridge",
+      "bucket": 1
+    }
+  ],
+  "why": "Every landform is also a proxy: moraine positions map past ice extent, erratics trace flow direction — and their worldwide consistency established the glacial epochs."
+};
+
+const paleoArchiveMatch = {
+  "prompt": "Each archive is an instrument — pair it with what it reads:",
+  "pairs": [
+    {
+      "left": "ice cores (EPICA Dome C)",
+      "right": "trapped bubbles — direct CO₂ and CH₄ back 800,000 years"
+    },
+    {
+      "left": "ocean sediment cores",
+      "right": "benthic δ¹⁸O mixing temperature with global ice volume, to 100+ million years"
+    },
+    {
+      "left": "tree rings",
+      "right": "annual, absolutely dated width and density for ~12,000 years"
+    },
+    {
+      "left": "speleothems and corals",
+      "right": "regional rainfall and sea level"
+    },
+    {
+      "left": "loess",
+      "right": "windblown dust — the ice ages' dry, windy continents"
+    }
+  ],
+  "why": "No single archive suffices — multi-proxy reconstruction is how the field earns its error bars, and disagreement between proxies forces better understanding of both."
+};
+
+const paleoCoreSpot = {
+  "prompt": "One of these claims about ice cores is backwards — click it:",
+  "lines": [
+    "Annual layers count like tree rings — Greenland ice can be counted to the year.",
+    "The water's δ¹⁸O and deuterium ratio is a calibrated thermometer.",
+    "The trapped bubbles are samples of ancient air — direct CO₂ and CH₄ measurements.",
+    "The bubbles measure temperature directly, with no calibration needed.",
+    "Benthic δ¹⁸O mixes temperature with global ice volume — the two signals must be disentangled."
+  ],
+  "errorLine": 3,
+  "correction": "Nothing in a core measures temperature directly — the proxies are isotope ratios and gas concentrations, each calibrated, corrected and cross-checked before it earns the label.",
+  "why": "Glacial wind patterns shift the calibration and the deep-sea signal mixes ice volume — which is exactly why independent archives that disagree are made to argue."
+};
+
+const paleoMilaOrder = {
+  "prompt": "From orbit to glacial maximum — put the chain in order:",
+  "items": [
+    "Orbital wobbles redistribute where and when sunlight falls",
+    "Cool northern summers at 65°N let winter snow survive",
+    "Ice builds and brightens the planet — the ice–albedo feedback",
+    "Cold oceans and boreal lands absorb CO₂ — ~280 down to ~180 ppm",
+    "The greenhouse feedback deepens the cold, and dust fertilises iron-limited oceans"
+  ],
+  "why": "The orbit turns the key; CO₂, albedo and dust supply the amplitude — an astronomical metronome amplified by feedback."
+};
+
+const paleoC14Est = {
+  "prompt": "Of the dating toolkit, radiocarbon is the youngest-reaching — roughly how far back can it date organic material?",
+  "unit": "years",
+  "answer": 50000,
+  "factor": 1.5,
+  "why": "About 50,000 years — calibrated against tree rings because the production rate wobbles; beyond it, uranium–thorium (to ~500 kyr), volcanic layers, magnetostratigraphy and orbital tuning take over.",
+  "context": "Layer counting stays the gold standard where annual layers exist."
+};
+
+const paleoJumpCompare = {
+  "prompt": "Two regimes of past climate — drag between them:",
+  "before": {
+    "label": "Orbitally paced change",
+    "text": "Milankovitch rhythms of 19–100 kyr, amplified slowly by CO₂, ice–albedo and dust — the astronomical metronome."
+  },
+  "after": {
+    "label": "Abrupt change",
+    "text": "Dansgaard–Oeschger warmings of 8–16 °C within decades, ~25 through the last glacial — Atlantic circulation and sea ice flipping between modes; the Younger Dryas a 1,200-year snap back."
+  },
+  "why": "The Holocene's remarkable stability is not a law of nature but a fortunate regime — the same circulation levers are watched today under Greenland meltwater."
+};
+
+const paleoSeaPlace = {
+  "prompt": "Sea level is the integrator that remembers — place the Last Glacial Maximum's sea level on the metres scale.",
+  "labels": [
+    "−150 m",
+    "−100 m",
+    "−50 m",
+    "0 m",
+    "+50 m"
+  ],
+  "scale": {
+    "min": -150,
+    "max": 50
+  },
+  "answer": -120,
+  "tolerance": 15,
+  "why": "About 120 m lower: Beringia was a walkable plain and Britain joined to Europe — against +10s of metres during past warm periods."
+};
+
+const paleoRateCloze = {
+  "text": "Natural change is paced by orbit and amplified slowly by feedbacks — about %%0%% ppm of CO₂ per thousand years. Today's rise is %%1%% ppm in a single century, carrying an isotopic %%2%%-carbon signature with no counterpart in 800,000 years of direct record.",
+  "answers": [
+    [
+      "80"
+    ],
+    [
+      "120"
+    ],
+    [
+      "fossil"
+    ]
+  ],
+  "hint": "Both rates are in the lesson's comparison — one per millennium, one per century."
+};
 ---
 <TopicPage slug="subjects/earth-science/advanced/paleoclimate-and-ice-ages">
   <h2>Where you are, and what you will learn</h2>
@@ -100,6 +252,7 @@ const lgmCfg = {
     map past ice extent; erratics trace flow direction; and their worldwide consistency
     is what established the glacial epochs.
   </p>
+  <Widget no="10" caption="erosion or deposition — file each landform" widget="sort-buckets" config={paleoLandformSort} />
 
   <p>
     <strong>So far:</strong> glaciers are the machines — mass balance drives advance
@@ -127,6 +280,7 @@ const lgmCfg = {
     <strong>multi-proxy reconstruction</strong>, where archives that disagree force
     better understanding of both.
   </p>
+  <Widget no="9" caption="pair each archive with what it measures" widget="match" config={paleoArchiveMatch} />
 
   <p>
     <em>Common misconception:</em> "an ice core measures temperature directly." It is
@@ -140,6 +294,7 @@ const lgmCfg = {
     <strong>multi-proxy reconstruction</strong>, where independent archives that
     disagree force better understanding of both.
   </p>
+  <Widget no="8" caption="find the faulty line — what a core actually measures" widget="spot-error" config={paleoCoreSpot} />
 
   <h2>The astronomical metronome: Milankovitch cycles (14.3, 15.3)</h2>
   <p>
@@ -162,6 +317,7 @@ const lgmCfg = {
     mechanism explains why (one of the field's standing open problems). The Last Glacial
     Maximum, 20,000 years ago, shows the whole machinery worked out:
   </p>
+  <Widget no="7" caption="sequence the ice-age mechanism" widget="order" config={paleoMilaOrder} />
 
   <Widget no="2" caption="the LGM worked example — from ice extent to radiative forcing to a sensitivity test of the whole climate system" widget="equationStep" config={lgmCfg} />
   <p>
@@ -192,6 +348,7 @@ const lgmCfg = {
     and where they do not (the radiocarbon plateau, ice-flow-thinning corrections at
     depth), the arguments are the published papers.
   </p>
+  <Widget no="6" caption="call radiocarbon's reach" widget="estimate" config={paleoC14Est} />
 
   <p>
     <strong>So far:</strong> the orbital metronome paces the ice ages and feedbacks
@@ -217,6 +374,7 @@ const lgmCfg = {
     models watch today under fresh-water loading from Greenland melt — the AMOC
     question of the climate-modelling and ocean chapters.
   </p>
+  <Widget no="5" caption="paced change vs climate that jumps — drag the divider" widget="compare" config={paleoJumpCompare} />
 
   <p>
     <em>Common misconception:</em> "climate changes far too slowly for anyone to
@@ -253,6 +411,7 @@ const lgmCfg = {
     <em>how sensitive is this system?</em> — and they grade its projections
     out-of-sample.
   </p>
+  <Widget no="4" caption="place the LGM's sea level" widget="place" config={paleoSeaPlace} />
   <p>
     <em>Common misconception:</em> "climate has always changed, so today's change is
     natural." The archives are precisely what falsify that inference: they show
@@ -262,6 +421,7 @@ const lgmCfg = {
     counterpart in 800,000 years of direct record. The past does not excuse the
     present; it is the control experiment that identifies the present's cause.
   </p>
+  <Widget no="3" caption="fill the blanks — natural rate vs today's" widget="cloze" config={paleoRateCloze} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

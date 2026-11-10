@@ -11,6 +11,199 @@ const essentialsCfg = {
     { math: '5 · Mise en place is the mindset', note: '"Everything in its place": read the recipe, prep, measure, stage — before the heat goes on. Professional cooking is 80% organisation.' },
   ],
 };
+
+const kitchStakesPredict = {
+  "q": "No diner ever praises the sanitised cutting board. What does a single lapse cost?",
+  "choices": [
+    "One bout of food poisoning can close the restaurant, wreck its reputation — and in the worst cases kill",
+    "A late dish loses a tip",
+    "Nothing — diners never notice sanitation",
+    "A slightly slower service that evening"
+  ],
+  "answer": 0,
+  "why": "Invisible when done well and catastrophic when skipped — grammar is like that."
+};
+
+const kitchHierarchySort = {
+  "prompt": "Sanitation, safety or speed? File each habit:",
+  "buckets": [
+    "sanitation",
+    "safety",
+    "speed"
+  ],
+  "items": [
+    {
+      "label": "the cutting board sanitised between raw chicken and the salad",
+      "bucket": 0
+    },
+    {
+      "label": "cut away from your body",
+      "bucket": 1
+    },
+    {
+      "label": "shallow pans cool stock fast",
+      "bucket": 0
+    },
+    {
+      "label": "mise en place staging saves minutes at service",
+      "bucket": 2
+    },
+    {
+      "label": "no gestures mid-cut, ever",
+      "bucket": 1
+    },
+    {
+      "label": "handwashing: at least 20 seconds with soap",
+      "bucket": 0
+    },
+    {
+      "label": "sharpen weekly so cuts need less force",
+      "bucket": 1
+    },
+    {
+      "label": "a prep list for 150 covers",
+      "bucket": 2
+    }
+  ],
+  "why": "A fast cook who cross-contaminates is not a good cook; slowness can be trained out — the order cannot change."
+};
+
+const kitchGrowthEst = {
+  "prompt": "Starting from a single cell in ideal conditions, how many after 210 minutes of doubling every 20 minutes?",
+  "unit": "bacteria",
+  "answer": 1000,
+  "factor": 1.5,
+  "why": "The four-hour cumulative budget for TCS foods exists because the count multiplies, not adds.",
+  "context": "Delivery, storage, prep and service all share that budget — the clock never resets."
+};
+
+const kitchCoolPlace = {
+  "prompt": "The first stage of stock cooling: from 60 °C down to what temperature, within two hours?",
+  "labels": [
+    "5 °C",
+    "21 °C",
+    "40 °C",
+    "60 °C"
+  ],
+  "scale": {
+    "min": 5,
+    "max": 60
+  },
+  "answer": 21,
+  "tolerance": 2,
+  "why": "Then down to 5 °C within four more — a full 20-litre pot can sit mid-zone for half a day, its centre still 30 °C at midnight, right where Clostridium perfringens thrives."
+};
+
+const kitchCrossMatch = {
+  "prompt": "Pair each rule with what it stops:",
+  "pairs": [
+    {
+      "left": "raw poultry stores below ready-to-eat items",
+      "right": "drips falling onto food that will not be cooked again"
+    },
+    {
+      "left": "colour-coded cutting boards",
+      "right": "raw-animal pathogens meeting ready-to-eat food"
+    },
+    {
+      "left": "20 seconds of soap after raw proteins, money or rubbish",
+      "right": "hands as the transfer passengers"
+    },
+    {
+      "left": "heat sanitising — 77 °C for 30 seconds — or chlorine at 50–100 ppm",
+      "right": "microorganisms above safe levels, on a wash-first surface"
+    }
+  ],
+  "why": "Cleaning removes visible soil; sanitising makes it food-safe — in that order."
+};
+
+const kitchHaccpOrder = {
+  "prompt": "HACCP's seven principles — put them in order:",
+  "items": [
+    "Hazard analysis",
+    "Determine critical control points (CCPs)",
+    "Establish critical limits for each",
+    "Establish monitoring",
+    "Establish corrective actions when a limit is breached",
+    "Verification",
+    "Records"
+  ],
+  "why": "Born keeping astronauts' food safe — the last reliable point where pathogens are destroyed gets probed, logged and enforced."
+};
+
+const kitchSpoilJudge = {
+  "statements": [
+    {
+      "s": "You can tell food has gone bad by looking at it or smelling it.",
+      "truth": false,
+      "why": "The bacteria that make you sick usually produce no smell, no slime, no colour change — those signals come from spoilage organisms, a different and relatively harmless crowd."
+    },
+    {
+      "s": "Rice left out overnight can look and smell fine while carrying enough Bacillus cereus toxin to cause vomiting.",
+      "truth": true,
+      "why": "And the toxin survives reheating."
+    },
+    {
+      "s": "Spoilage organisms are the same crowd as the bacteria that cause illness.",
+      "truth": false,
+      "why": "The visible, smelly signals come from the relatively harmless spoilage side."
+    },
+    {
+      "s": "Time and temperature monitoring beats sniffing, every time.",
+      "truth": true,
+      "why": "Exponential growth hides in a perfectly presentable pot."
+    }
+  ]
+};
+
+const kitchKnifeBranch = {
+  "root": "Mid-service, the knife starts to fall off the bench.",
+  "nodes": {
+    "start": {
+      "text": "Your hand or your feet?",
+      "choices": [
+        {
+          "label": "Step back and let it land",
+          "next": "step",
+          "feedback": "Feet back, fingers clear — the grab reflex is what costs hands."
+        },
+        {
+          "label": "Catch it mid-air",
+          "next": "catch",
+          "feedback": "That reflex is precisely how the worst hand injuries happen."
+        }
+      ]
+    },
+    "catch": {
+      "text": "Bandages and a lesson: let it fall — and never go fishing for a blade under foam.",
+      "choices": []
+    },
+    "step": {
+      "text": "It lands. The rest of the discipline?",
+      "choices": [
+        {
+          "label": "Carry tip down, edge away; cut on a board, never metal; cut away from the body",
+          "next": "rules",
+          "feedback": "The trade's everyday injury has standing rules — and a sharp blade needs less force, so it slips far less."
+        },
+        {
+          "label": "Soak it in the sink until the rush is over",
+          "next": "sink",
+          "feedback": "A hidden blade under foam is a trap — never leave a knife in soapy water, never reach in to search."
+        }
+      ]
+    },
+    "sink": {
+      "text": "The sink is the trap the rules warn about — retrieve with the handle visible, or do not soak it at all.",
+      "choices": []
+    },
+    "rules": {
+      "text": "Right knife for the job, board always, away from the body, tip down in transit — and no chatting mid-cut.",
+      "choices": []
+    }
+  },
+  "why": "Cuts are the trade's everyday injury — and the rules are specific because they are predictable."
+};
 ---
 <TopicPage slug="subjects/culinary-arts/foundational/kitchen-essentials-safety-knives-mise-en-place">
 
@@ -42,6 +235,7 @@ const essentialsCfg = {
     reputations and, in the worst cases, kills people. The boring rules are the ones
     with the highest stakes.
   </p>
+  <Widget no="9" caption="bet before you read on — what one lapse costs" widget="predict" config={kitchStakesPredict} />
   <p>
     The order of operations matters because the hierarchy is strict: <strong>cleanliness
     outranks safety, and safety outranks speed</strong>. A fast cook who
@@ -51,6 +245,7 @@ const essentialsCfg = {
     habits, performed thousands of times a week without drama. The panel below is the
     whole lesson in five lines.
   </p>
+  <Widget no="8" caption="the strict hierarchy — file each habit" widget="sort-buckets" config={kitchHierarchySort} />
 
   <Widget no="1" caption="the non-negotiables, in working order" widget="equationStep" config={essentialsCfg} />
   <p>
@@ -73,6 +268,7 @@ const essentialsCfg = {
     sprouts. Cumulative matters: the four hours are spent across every trip through the
     zone, from delivery to storage to prep to service, not reset at each step.
   </p>
+  <Widget no="7" caption="call the population after one shift" widget="estimate" config={kitchGrowthEst} />
   <p>
     Once you see the danger zone as a clock, the industry's strange-looking habits all
     become obvious. Cold ingredients arrive on ice and go into refrigeration within
@@ -84,6 +280,7 @@ const essentialsCfg = {
     a day, its centre still at 30 °C at midnight, right where <em>Clostridium
     perfringens</em> thrives.
   </p>
+  <Widget no="6" caption="stage one of the two-stage cool" widget="place" config={kitchCoolPlace} />
   <p>
     The other half of the story is cross-contamination. Raw animal products carry
     pathogens as a matter of course; the danger is transferring them to ready-to-eat
@@ -99,6 +296,7 @@ const essentialsCfg = {
     biohazard; sanitising is the step that makes it food-safe, and it only works on a
     surface that was cleaned first.
   </p>
+  <Widget no="5" caption="pair each rule with the transfer it stops" widget="match" config={kitchCrossMatch} />
   <p>
     <strong>HACCP</strong> — Hazard Analysis and Critical Control Points — is the
     framework that turns these scattered rules into a system. Developed originally to
@@ -112,6 +310,7 @@ const essentialsCfg = {
     — so a cook probes every batch and logs the temperature, and a failed batch is
     cooked longer or discarded, not served and hoped over.
   </p>
+  <Widget no="4" caption="HACCP's seven principles, in order" widget="order" config={kitchHaccpOrder} />
   <p><em>Common misconception:</em> "You can tell food has gone bad by looking at it or
   smelling it." Mostly false, and dangerously so. The bacteria that make you sick
   usually produce no smell, no slime and no colour change — those signals come from
@@ -119,6 +318,7 @@ const essentialsCfg = {
   out overnight can look and smell perfectly fine while carrying enough <em>Bacillus
   cereus</em> toxin to cause vomiting, and the toxin survives reheating. The clock and
   the thermometer, not the nose, are the safety instruments.</p>
+  <Widget no="3" caption="true or false — can you trust your senses?" widget="judge" config={kitchSpoilJudge} />
 
   <h2>Workplace safety: cuts, burns, falls, strains</h2>
   <p>
@@ -150,6 +350,7 @@ const essentialsCfg = {
     can opener. And note the paradox you will meet again in the knife section: a
     sharp knife needs less force and slips far less, so it is the safer knife.
   </p>
+  <Widget no="2" caption="the falling knife — walk the moment" widget="branch" config={kitchKnifeBranch} />
   <p>
     <strong>Burns</strong> come in two tiers. Minor ones usually start with a damp
     towel — wet cloth conducts heat far better than dry, so the towel for a hot pan

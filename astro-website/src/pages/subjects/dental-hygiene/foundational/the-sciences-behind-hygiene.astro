@@ -11,6 +11,191 @@ const fluorideCfg = {
     { math: '5 · The dose is the debate', note: 'Too little fluoride, caries; too much in childhood, fluorosis (cosmetic enamel mottling). The clinical skill is dosing by age and risk.' },
   ],
 };
+
+const dhPillarMatch = {
+  "prompt": "Four sciences, four clinical realities — pair them:",
+  "pairs": [
+    {
+      "left": "head and neck anatomy",
+      "right": "the map of every appointment — nerves, vessels, glands, sinuses"
+    },
+    {
+      "left": "oral embryology and histology",
+      "right": "why tooth tissues behave as they do — which repair, which never do"
+    },
+    {
+      "left": "microbiology",
+      "right": "the biofilm behind both great diseases"
+    },
+    {
+      "left": "immunology",
+      "right": "why the same plaque ruins one mouth and spares another"
+    }
+  ],
+  "why": "Learn the why and the procedures stop being routines to memorise — they become applications of causes."
+};
+
+const dhNerveSort = {
+  "prompt": "Two nerves govern the dental visit — file each fact:",
+  "buckets": [
+    "trigeminal (CN V) — sensation",
+    "facial (CN VII) — expression"
+  ],
+  "items": [
+    {
+      "label": "sensation to the face and teeth, through three divisions",
+      "bucket": 0
+    },
+    {
+      "label": "the thin sheets of muscles of facial expression",
+      "bucket": 1
+    },
+    {
+      "label": "the maxillary branch serving the upper teeth",
+      "bucket": 0
+    },
+    {
+      "label": "the muscles behind a numb-patient's smile warning",
+      "bucket": 1
+    },
+    {
+      "label": "the mandibular branch serving the lower teeth",
+      "bucket": 0
+    },
+    {
+      "label": "the three divisions branching across the face",
+      "bucket": 0
+    }
+  ],
+  "why": "The trigeminal defines the injections; the facial nerve defines the warnings — anatomy is the map of every appointment."
+};
+
+const dhGlandSpot = {
+  "prompt": "One of these salivary-gland claims is backwards — click it:",
+  "lines": [
+    "The parotid duct opens beside the upper second molar.",
+    "The submandibular gland sits under the floor of the mouth.",
+    "Saliva is the mouth's mineral supply line and its pH buffer.",
+    "Dry mouth matters mainly because speech becomes effortful.",
+    "Swollen lymph nodes are often the first sign that something systemic is present."
+  ],
+  "errorLine": 3,
+  "correction": "Dry mouth is a caries accelerator and a Candida incubator — the mineral supply line and the pH buffer both go quiet at once.",
+  "why": "The glands' clinical weight is chemical before it is mechanical: minerals, buffering, antimicrobials."
+};
+
+const dhToothDevOrder = {
+  "prompt": "From epithelium to eruption — put the stages in order:",
+  "items": [
+    "A band of oral epithelium thickens and grows down into the jaw",
+    "Bud, cap and bell stages shape the enamel organ around a papilla",
+    "Ameloblasts secrete enamel outward while odontoblasts secrete dentin inward",
+    "Primary teeth mineralise before birth; permanent teeth follow in overlapping waves"
+  ],
+  "why": "Two cell lines meet and talk to each other — each tissue's formation signalling the other's — and the timeline is why fluoride dosing follows age."
+};
+
+const dhTissueCloze = {
+  "text": "%%0%% — about 96 percent mineral — is the hardest tissue in the body, built of hydroxyapatite prisms. %%1%%, about 70 percent mineral, is living tissue threaded with tubules, and its odontoblasts survive for life. Around the root, %%2%% anchors the periodontal ligament that cushions chewing loads.",
+  "answers": [
+    [
+      "enamel"
+    ],
+    [
+      "dentin"
+    ],
+    [
+      "cementum"
+    ]
+  ],
+  "hint": "The cap, the living middle, and the root's anchor."
+};
+
+const dhImmuneJudge = {
+  "statements": [
+    {
+      "s": "The destruction in periodontitis is carried out mainly by the bacteria themselves.",
+      "truth": false,
+      "why": "Mostly by the host's recruited inflammatory machinery — the reason damage varies enormously between patients with similar plaque."
+    },
+    {
+      "s": "Two patients with similar plaque levels can suffer very different bone loss.",
+      "truth": true,
+      "why": "The inflammatory response is the variable the clinician reads."
+    },
+    {
+      "s": "Smoking and diabetes multiply periodontal risk.",
+      "truth": true,
+      "why": "Both dysregulate inflammation and healing — hence 'risk multipliers'."
+    },
+    {
+      "s": "The goal of therapy is sterilising the mouth.",
+      "truth": false,
+      "why": "It is dysbiosis management: disrupt the biofilm, calm the inflammatory drive, control the multipliers."
+    }
+  ]
+};
+
+const dhEruptionOrder = {
+  "prompt": "From before birth to the early twenties — order the milestones:",
+  "items": [
+    "Primary teeth begin mineralising before birth",
+    "The twenty primary teeth erupt — roughly six months to three years",
+    "First permanent molars arrive behind the primary teeth — the six-year molars",
+    "The mixed dentition: primary and permanent coexisting, about six to twelve",
+    "The full thirty-two, including wisdom teeth, completes by the early twenties"
+  ],
+  "why": "Eruption timing is genuinely clinical knowledge — the mixed-dentition years are where sealants, fluoride dosing and orthodontic hygiene intersect."
+};
+
+const dhBabyBranch = {
+  "root": "A parent asks whether a cavity in a three-year-old's molar can simply wait until the tooth falls out. Walk the answer.",
+  "nodes": {
+    "start": {
+      "text": "What is happening beside and beneath that primary tooth right now?",
+      "choices": [
+        {
+          "label": "A permanent tooth is mineralising there — disease risks the successor",
+          "next": "space",
+          "feedback": "The permanent teeth develop for years beside and beneath the primary ones — uncontrolled disease endangers the replacements."
+        },
+        {
+          "label": "Nothing — the baby tooth is on its way out anyway",
+          "next": "wrongway",
+          "feedback": "Three reasons say otherwise — the next one is architectural."
+        }
+      ]
+    },
+    "space": {
+      "text": "And the primary tooth's other job in the arch?",
+      "choices": [
+        {
+          "label": "It reserves the room and steers the successor into place",
+          "next": "done",
+          "feedback": "Plus the fluoride window falls exactly in childhood — dosing by age is a clinical skill, not a formality."
+        },
+        {
+          "label": "It is a placeholder with no real function",
+          "next": "placeholder",
+          "feedback": "Reserving and steering is the function — early loss reshapes the arch."
+        }
+      ]
+    },
+    "done": {
+      "text": "Successor, space, and the fluoride window: three reasons the smallest teeth carry the largest stakes.",
+      "choices": []
+    },
+    "wrongway": {
+      "text": "The primary dentition is a working scaffold, not a disposable draft.",
+      "choices": []
+    },
+    "placeholder": {
+      "text": "Without the guide, the permanent tooth arrives into an arch that has already drifted.",
+      "choices": []
+    }
+  },
+  "why": "Baby teeth matter three ways at once — and every reason comes from the sciences this lesson built."
+};
 ---
 <TopicPage slug="subjects/dental-hygiene/foundational/the-sciences-behind-hygiene">
 
@@ -68,6 +253,7 @@ const fluorideCfg = {
     therefore manageable but never "cured" once and for all. The panel below walks the
     battle and fluoride's two roles in it.
   </p>
+  <Widget no="9" caption="pair each science with the clinical reality it explains" widget="match" config={dhPillarMatch} />
 
   <Widget no="1" caption="the caries battle and fluoride's two roles" widget="equationStep" config={fluorideCfg} />
   <p>
@@ -107,6 +293,7 @@ const fluorideCfg = {
     veins and glands beside it explain both landmark palpation and why certain injections
     avoid certain spaces.
   </p>
+  <Widget no="8" caption="trigeminal or facial? file each fact" widget="sort-buckets" config={dhNerveSort} />
   <p>
     The <strong>salivary glands</strong> — parotid (its duct opens beside the upper second
     molar), submandibular (under the floor of the mouth) and sublingual — matter because
@@ -117,6 +304,7 @@ const fluorideCfg = {
     something systemic — infection or malignancy — is present. Anatomy in this profession
     is not an exam hurdle; it is the map of every appointment.
   </p>
+  <Widget no="7" caption="find the faulty line — the gland facts" widget="spot-error" config={dhGlandSpot} />
   <p><em>Common misconception:</em> the mouth is separate from the rest of the body. The
   head and neck are packed end-to-end with shared plumbing — airway, foodway, blood,
   nerves, lymphatics — and the hygienist's medical-history review exists precisely because
@@ -138,6 +326,7 @@ const fluorideCfg = {
     begin mineralising before birth, and the permanent teeth follow in overlapping waves
     through childhood — which is exactly why the fluoride window matters.
   </p>
+  <Widget no="6" caption="sequence tooth development" widget="order" config={dhToothDevOrder} />
   <p>
     Histology then explains adult behaviour. <strong>Enamel</strong> — about 96 percent
     mineral, the hardest tissue in the body — is built of hydroxyapatite crystal prisms,
@@ -155,6 +344,7 @@ const fluorideCfg = {
     keratinised barrier whose junction with the tooth — the sulcus — is where the whole
     periodontal story starts.
   </p>
+  <Widget no="5" caption="fill the blanks — the tooth's tissues" widget="cloze" config={dhTissueCloze} />
   <p>
     <strong>So far:</strong> anatomy gives the map, embryology gives the timeline, and
     histology gives the rule every repair strategy obeys — enamel cannot heal, dentin can.
@@ -197,6 +387,7 @@ const fluorideCfg = {
     dysbiosis management: disrupt the biofilm, reduce the inflammatory drive, and control
     the systemic multipliers.
   </p>
+  <Widget no="4" caption="true or false — the immunological reframing" widget="judge" config={dhImmuneJudge} />
   <p><em>Common misconception:</em> bacteria cause periodontitis by eating the tissue, so a
   strong immune system should mean worse destruction. It sounds reasonable — the bacteria
   are right there at the gum margin. But the destruction is carried out mainly by the
@@ -217,6 +408,7 @@ const fluorideCfg = {
     — primary and permanent teeth coexisting — the window where orthodontic habits,
     sealants and fluoride dosing intersect.
   </p>
+  <Widget no="3" caption="sequence the dentition timeline" widget="order" config={dhEruptionOrder} />
   <p>
     Histology explains the risks at each stage. Newly erupted enamel is less mature — more
     porous, more caries-prone — which is why erupting molars need sealants promptly. And
@@ -233,6 +425,7 @@ const fluorideCfg = {
   hold the space and guide the permanent teeth into position; and the fluoride window —
   the years when ingested fluoride is incorporated into forming enamel — falls exactly in
   childhood, which is why dosing by age is a clinical skill rather than a formality.</p>
+  <Widget no="2" caption="walk the parent's question" widget="branch" config={dhBabyBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

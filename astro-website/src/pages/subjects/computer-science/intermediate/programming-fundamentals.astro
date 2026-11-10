@@ -19,6 +19,146 @@ const progQuizCfg = {
     { q: 'Appending to a file (rather than overwriting it) is the right mode when…', choices: ['the file is large', 'you want to keep existing contents and add to the end', 'the data is numeric', 'the file is read-only'], answer: 1, why: 'Write mode typically truncates; append mode preserves history — the log-file behaviour, and the reason "append" is its own mode rather than a style choice.' },
   ],
 };
+
+const progConstructsMatch = {
+  "prompt": "Pair each construct with the capability it adds:",
+  "pairs": [
+    {
+      "left": "variables",
+      "right": "hold a number under a name for later"
+    },
+    {
+      "left": "conditionals",
+      "right": "choose between paths"
+    },
+    {
+      "left": "loops",
+      "right": "repeat without complaint"
+    },
+    {
+      "left": "functions",
+      "right": "wrap steps under a callable name"
+    }
+  ],
+  "why": "Every other language is a dialect with different punctuation — the constructs are the vocabulary."
+};
+
+const progTypesSpot = {
+  "prompt": "One line of these type notes is wrong — click it:",
+  "lines": [
+    "age = 17 stores 17 under the name age; every later mention fetches the current binding.",
+    "MAX_SPEED written once in capitals documents intent and lets a change happen in exactly one place.",
+    "In Python, \"5\" + 3 is \"53\" — string concatenation, same as JavaScript.",
+    "Every input from a keyboard or file arrives as text, so 'read a number' means 'read text, then cast it'.",
+    "int(\"5\") + 3 is 8; str(5) + \"3\" is \"53\"."
+  ],
+  "errorLine": 2,
+  "correction": "In Python, \"5\" + 3 raises a TypeError — the concatenation answer is JavaScript's behaviour; same symbols, different type logic.",
+  "why": "Which operations make sense is decided by the data's kind — the genre of bug that knowing it prevents."
+};
+
+const progAssignPredict = {
+  "q": "x = 5 is followed by x = 6. In a program, this is:",
+  "choices": [
+    "Ordinary — the symbol performs an assignment: compute the right side, bind it to the name",
+    "A contradiction — a variable can only be assigned once",
+    "A syntax error in every language",
+    "Legal only in mathematics, never in code"
+  ],
+  "answer": 0,
+  "why": "The mathematical equals and the programming equals share a symbol and nothing else — so count = count + 1 is legal and ordinary."
+};
+
+const progControlCloze = {
+  "text": "Selection conditions are boolean expressions — comparisons joined by %%0%% — and the classic bugs are %%1%% bugs: greater-than versus greater-or-equal at exactly the pass mark. Count-controlled loops run a known number of times; %%2%%-controlled loops keep going as long as their condition holds, stopping the moment it flips. An infinite loop's usual cause is the missing %%3%% line.",
+  "answers": [
+    [
+      "and/or/not",
+      "and, or, not"
+    ],
+    [
+      "boundary"
+    ],
+    [
+      "while"
+    ],
+    [
+      "update"
+    ]
+  ],
+  "hint": "Exactly-50 belongs in the test data; a never-flipping condition has no line that changes anything."
+};
+
+const progRainEst = {
+  "prompt": "A rainfall table holds 52 weeks by 7 days — how many individual values?",
+  "unit": "values",
+  "answer": 364,
+  "factor": 1.2,
+  "why": "52 × 7 = 364 cells; summing one week is the inner pass, and the whole year wraps it in the outer weeks pass.",
+  "context": "Outer walking weeks, inner walking days — nesting composed."
+};
+
+const progFileOrder = {
+  "prompt": "From results.csv to a total — put the pipeline in order:",
+  "items": [
+    "Open in read mode — name the path and the mode",
+    "Loop the lines to end-of-file",
+    "Split each line on its commas into fields",
+    "Cast the third field to a number",
+    "Accumulate the total and the count",
+    "Close — or let a with-block close it for you"
+  ],
+  "why": "Read, split, cast, total — the standard process-a-data-file algorithm the data-science strand will industrialise."
+};
+
+const progBoundaryBranch = {
+  "root": "The temperature report is written. Now attack it with boundary data.",
+  "nodes": {
+    "start": {
+      "text": "Test: n = 0 — the user enters zero values.",
+      "choices": [
+        {
+          "label": "The average divides by the count — count is zero, the program crashes",
+          "next": "guard",
+          "feedback": "Exactly the boundary case: guard the division and report 'no data' instead."
+        },
+        {
+          "label": "Skip the test — zero values is not a real scenario",
+          "next": "skip",
+          "feedback": "Empty input is the case least expected and most shipped; boundary and erroneous data exist precisely for it."
+        }
+      ]
+    },
+    "skip": {
+      "text": "The demo impresses until the first empty file — test what the program should reject, not just what it accepts.",
+      "choices": []
+    },
+    "guard": {
+      "text": "Guarded. Next test: all values equal.",
+      "choices": [
+        {
+          "label": "Max, min and average come out identical — is that a bug?",
+          "next": "equal",
+          "feedback": "Not a bug: for [7, 7, 7] the honest report is 7, 7, 7 — the boundary test proves the seed logic assumes no variety."
+        },
+        {
+          "label": "Refuse repeated values so max ≠ min",
+          "next": "refuse",
+          "feedback": "That invents a rule the spec never had — the spec says report, not deduplicate."
+        }
+      ]
+    },
+    "equal": {
+      "text": "Boundary data's job: prove the logic at the edges — a single value, all equal, zero values, and a letter at the prompt.",
+      "choices": []
+    },
+    "refuse": {
+      "text": "The spec is the contract — amendments change the spec first, then the code.",
+      "choices": []
+    }
+  },
+  "why": "Every test maps to a data class; the assembly — not the constructs — is the skill."
+};
 ---
 <TopicPage slug="subjects/computer-science/intermediate/programming-fundamentals">
   <h2>Where you are, and what you will learn</h2>
@@ -59,6 +199,7 @@ const progQuizCfg = {
     that level of precision without losing your mind — the constructs are the vocabulary,
     the arrays and files are the nouns, and the habits are the proofreading.
   </p>
+  <Widget no="9" caption="pair each construct with the capability it adds" widget="match" config={progConstructsMatch} />
 
   <Widget no="1" caption="the four constructs — a complete program's skeleton" widget="equationStep" config={progCfg} />
   <p>
@@ -86,7 +227,9 @@ const progQuizCfg = {
     as a string, so "read a number" always means "read text, then cast it" — a
     beginner's first runtime error, and a permanent professional reflex.
   </p>
+  <Widget no="8" caption="find the faulty line — a beginner's type notes" widget="spot-error" config={progTypesSpot} />
   <p><em>Common misconception:</em> <code>=</code> states that two things are equal, like the equals sign in mathematics. In code it is an action: evaluate the right side, bind the result to the name on the left — which is why <code>count = count + 1</code> is legal and ordinary, and why <code>x = 5</code> may be followed by <code>x = 6</code> without contradiction. The mathematical equals and the programming equals share a symbol and nothing else.</p>
+  <Widget no="7" caption="bet before you read on — the equals sign, twice" widget="predict" config={progAssignPredict} />
 
   <p><strong>So far:</strong> a variable is a name bound to a value by an action, and the type of that value decides which operations make sense. Next we make programs choose and repeat — the two control flows that turn stored values into behaviour.</p>
 
@@ -107,6 +250,7 @@ const progQuizCfg = {
     runs once too often. Both surrender to a trace table: write the loop variable's
     value in each row and watch the final iteration with your own eyes.
   </p>
+  <Widget no="6" caption="fill the blanks — selection and iteration's classic bugs" widget="cloze" config={progControlCloze} />
   <p><em>Common misconception:</em> a condition-controlled loop always runs at least once, like a do-while. A Python <code>while</code> tests its condition <em>before</em> the first iteration — if the condition is false on entry (empty file, user types the sentinel straight away), the body never executes. Programs that assume one guaranteed pass break precisely on the empty input they were least expecting.</p>
 
   <h2>Arrays: the container that powers loops</h2>
@@ -127,6 +271,7 @@ const progQuizCfg = {
     one a two-line pattern once indexing is solid, and each one the same in pseudocode,
     Java, Python or VB.
   </p>
+  <Widget no="5" caption="call the size of the rainfall grid" widget="estimate" config={progRainEst} />
 
   <p><strong>So far:</strong> arrays give loops something worth looping over — one name, many indexed values, and the three-line total pattern. Next we package behaviour itself, so the same traversal can be defined once and called from anywhere.</p>
 
@@ -165,6 +310,7 @@ const progQuizCfg = {
     and count — and you have the standard "process a data file" algorithm that the
     data-science strand will spend whole lessons industrialising.
   </p>
+  <Widget no="4" caption="from results.csv to an average — the pipeline" widget="order" config={progFileOrder} />
 
   <p><strong>So far:</strong> the constructs compute and the files remember, so a program can now read, total and report. What remains is the working discipline that keeps all of it correct while it grows.</p>
 
@@ -202,6 +348,7 @@ const progQuizCfg = {
     this lesson's patterns, and every test was one of the algorithm lesson's three
     data classes. The craft is the composition, not the vocabulary.
   </p>
+  <Widget no="3" caption="the finished program meets boundary data" widget="branch" config={progBoundaryBranch} />
 
   <h2>Beyond arrays: records and key-value structures</h2>
   <p>

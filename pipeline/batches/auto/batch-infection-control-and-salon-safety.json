@@ -1,0 +1,161 @@
+[
+  {
+    "slug": "subjects/cosmetology/foundational/infection-control-and-salon-safety",
+    "activities": [
+      {
+        "anchor": "Think about what a salon actually is.",
+        "type": "predict",
+        "caption": "bet before you read on — the spotless implement",
+        "name": "cosmoSpotPredict",
+        "config": {
+          "q": "The implement in your hand looks spotless. What do you know for certain?",
+          "choices": [
+            "Nothing about its microbe load — cleanliness you can see is not cleanliness you can trust",
+            "It is safe, since nothing is visible on it",
+            "It is sterile, because it looks clean",
+            "That it was disinfected within the last hour"
+          ],
+          "answer": 0,
+          "why": "None of it is visible: bacteria in a foot bath, a virus on a reused implement, a fungus on a porous nail file — the regimen, not the look, decides."
+        }
+      },
+      {
+        "anchor": "Their existence is why the control ladder has a top rung at all.",
+        "type": "match",
+        "caption": "pair each salon signature with its microbe",
+        "name": "cosmoMicrobeMatch",
+        "config": {
+          "prompt": "Pair each salon signature with the organism behind it:",
+          "pairs": [
+            { "left": "green discolouration on nails kept damp under enhancements", "right": "Pseudomonas aeruginosa, the water-loving bacterium" },
+            { "left": "the 2000 foot-spa boils outbreak in California", "right": "Mycobacterium fortuitum, slow-growing in whirlpool lines" },
+            { "left": "folliculitis and boils over broken skin", "right": "staph and strep species" },
+            { "left": "dormant forms that shrug off drying and disinfection", "right": "bacterial spores" }
+          ],
+          "why": "Standing water and product residue are the two best nurseries — which is why the regimen starts with cleaning."
+        }
+      },
+      {
+        "anchor": "prevention by barriers and disinfection is the entire defence",
+        "type": "judge",
+        "caption": "true or false — the viral rulebook",
+        "name": "cosmoVirusJudge",
+        "config": {
+          "statements": [
+            { "s": "A virus multiplies happily on a doorknob between clients.", "truth": false, "why": "It can survive on one long enough to transfer, but reproduction needs a living cell." },
+            { "s": "Antibiotics are a valid response to a viral client infection.", "truth": false, "why": "They interrupt bacterial life processes; a virus has none to interrupt." },
+            { "s": "Hepatitis B can survive on implements for days.", "truth": true, "why": "Bloodborne and hardy — which is why the industry recommends the vaccine." },
+            { "s": "Universal precautions treat all blood as infectious, regardless of how healthy the client looks.", "truth": true, "why": "You cannot see who carries what — so every client, every service, gets the same guard." }
+          ]
+        }
+      },
+      {
+        "anchor": "the licensed professional's move",
+        "type": "branch",
+        "caption": "a suspicious patch at the consultation — walk it",
+        "name": "cosmoFungusBranch",
+        "config": {
+          "root": "During the consultation you notice a suspicious patch on the scalp.",
+          "nodes": {
+            "start": {
+              "text": "Fungi travel through damp floors, shared towels, combs and clippers. First call?",
+              "choices": [
+                { "label": "Refuse the service, explain why, refer to a physician", "next": "refer", "feedback": "The regulation's own call: no service over an active infection — and the referral is care, not rejection." },
+                { "label": "Work around it carefully with gloves", "next": "work", "feedback": "Onychomycosis thrives under enhancements applied over it — no amount of care near a colony is safe." }
+              ]
+            },
+            "work": {
+              "text": "Improvised treatment and careful work-arounds both spread it — the board expects refusal plus referral.",
+              "choices": []
+            },
+            "refer": {
+              "text": "Referred. The client asks why you will not just treat it here.",
+              "choices": [
+                { "label": "Diagnosis and treatment exceed the licence — refusal plus referral is the standard", "next": "scope", "feedback": "Scope of practice: exclusion rules and referral are what the regulations standardise." },
+                { "label": "Offer an antifungal product from the shelf", "next": "product", "feedback": "Same trap, product flavour — improvising a treatment is outside the licence." }
+              ]
+            },
+            "product": {
+              "text": "Outside the licence — the refusal plus referral IS the standard of care.",
+              "choices": []
+            },
+            "scope": {
+              "text": "Exclusion until clear, referral for diagnosis — board regulations, not rudeness.",
+              "choices": []
+            }
+          },
+          "why": "Dry floors, no shared porous implements, refusal plus referral — the discipline is environmental."
+        }
+      },
+      {
+        "anchor": "destroys most pathogens on hard, non-porous surfaces — metal, plastic, glass",
+        "type": "order",
+        "caption": "one multi-use tool, one full sequence",
+        "name": "cosmoSeqOrder",
+        "config": {
+          "prompt": "After every client, one multi-use tool's full sequence — put it in order:",
+          "items": [
+            "Clean — soap, water and scrubbing",
+            "Rinse",
+            "Dry",
+            "Disinfect — visibly wet for the label's full contact time",
+            "Store disinfected and covered"
+          ],
+          "why": "The ladder is ordered by what it kills — but the wet duration, not the bottle, earns the claim."
+        }
+      },
+      {
+        "anchor": "a quick spray-and-wipe disinfects",
+        "type": "estimate",
+        "caption": "call the wet time that earns the kill claim",
+        "name": "cosmoContactEst",
+        "config": {
+          "prompt": "The label's contact time — how long must a disinfected surface stay visibly wet, often?",
+          "unit": "minutes",
+          "answer": 10,
+          "factor": 1.5,
+          "why": "Often ten minutes — the wet duration, not the spraying, earns the kill claim; a skipped wash leaves film the chemistry cannot penetrate.",
+          "context": "Five seconds of mist and a dry towel is theatre, not decontamination."
+        }
+      },
+      {
+        "anchor": "Pedicure whirlpool baths carry their own regime",
+        "type": "spot-error",
+        "caption": "find the faulty line — the foot-spa regime",
+        "name": "cosmoWhirlSpot",
+        "config": {
+          "prompt": "One of these foot-spa claims is wrong — click it:",
+          "lines": [
+            "Biofilm — microbes sealed in a slimy layer — clings to pipes and screens and resists casual disinfection.",
+            "Screens and jets are disassembled, cleaned and disinfected between clients and nightly.",
+            "The regime's logs are optional paperwork in every jurisdiction.",
+            "In 2000, more than a hundred customers of one California salon developed leg boils from contaminated foot baths.",
+            "Each documented case became a regulation — the rules are scar tissue."
+          ],
+          "errorLine": 2,
+          "correction": "Recorded logs are legally required in many jurisdictions — the organisms wrote the rules.",
+          "why": "Hepatitis B through reused implements, folliculitis from unsanitised clippers, ringworm from shared tools — every rule descends from a documented case."
+        }
+      },
+      {
+        "anchor": "The components translate directly behind the chair",
+        "type": "sort-buckets",
+        "caption": "two disciplines at the station — file each fact",
+        "name": "cosmoPrecautionSort",
+        "config": {
+          "prompt": "Two disciplines at the station — file each fact:",
+          "buckets": ["hand hygiene", "glove discipline"],
+          "items": [
+            { "label": "the single most important and effective measure in infection control", "bucket": 0 },
+            { "label": "task-specific and single-use — one pair per client", "bucket": 1 },
+            { "label": "protects the wearer, not the next client", "bucket": 1 },
+            { "label": "before, between and after client contacts", "bucket": 0 },
+            { "label": "handwashing again immediately after removal", "bucket": 1 },
+            { "label": "where the great majority of healthcare-associated infections travel", "bucket": 0 }
+          ],
+          "why": "Gloves protect the wearer; hands carry the infections — hygiene after every removal is the whole point."
+        }
+      }
+    ]
+  }
+]
