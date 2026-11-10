@@ -12,6 +12,172 @@ const trigCfg = {
   crossings: false,
   height: 340,
 };
+
+const trigRatioMatch = {
+  "prompt": "Pair each ratio with its definition:",
+  "pairs": [
+    {
+      "left": "sin θ",
+      "right": "opposite / hypotenuse"
+    },
+    {
+      "left": "cos θ",
+      "right": "adjacent / hypotenuse"
+    },
+    {
+      "left": "tan θ",
+      "right": "opposite / adjacent"
+    }
+  ],
+  "why": "The real content is that they are functions of angle alone — scale the triangle and the ratios never move."
+};
+
+const trigTvEst = {
+  "prompt": "A '55-inch' 16:9 TV has width ≈ 47.9 inches. Roughly how wide is it?",
+  "unit": "inches",
+  "answer": 47.9,
+  "factor": 1.15,
+  "why": "√((16k)² + (9k)²) = k·√337 ≈ 18.36k = 55, so k ≈ 3.0 — one theorem converts the diagonal on the price tag into whether the screen fits your shelf.",
+  "context": "width 16k, height 9k, diagonal 55 inches"
+};
+
+const trigPythSpot = {
+  "prompt": "One of these claims about Pythagoras is wrong — click it:",
+  "lines": [
+    "a² + b² = c² is exactly the right-angle condition.",
+    "For non-right triangles it fails.",
+    "The size of the failure is what the cosine rule measures.",
+    "a² + b² = c² applies to any triangle."
+  ],
+  "errorLine": 3,
+  "correction": "a² + b² = c² holds exactly for right angles — for non-right triangles it fails, and the cosine rule supplies the correction term.",
+  "why": "The hypotenuse is always the longest side, opposite the right angle — checking this catches swapped-label errors before they happen."
+};
+
+const trigLadderEst = {
+  "prompt": "A 6 m ladder leans against a wall at 70° to the ground. Roughly how high does it reach?",
+  "unit": "m",
+  "answer": 5.64,
+  "factor": 1.15,
+  "why": "6 × sin 70° ≈ 6 × 0.940 = 5.64 m — and the foot sits 6 × cos 70° ≈ 2.05 m from the wall.",
+  "context": "to reach a window 5 m up, the required angle is sin⁻¹(5/6) ≈ 56.4°"
+};
+
+const trigExactCloze = {
+  "text": "The exact values worth knowing cold: 45° (half a square): sin = cos = %%0%%. 60° (half an equilateral triangle): sin = %%1%%/2. 30° (the same triangle from the other corner): sin = %%2%%.",
+  "answers": [
+    [
+      "√2/2",
+      "1/√2",
+      "0.707"
+    ],
+    [
+      "√3",
+      "1.732"
+    ],
+    [
+      "½",
+      "1/2",
+      "0.5"
+    ]
+  ],
+  "hint": "One surd from the square's diagonal, one from the equilateral triangle, and one plain half."
+};
+
+const trigCompPredict = {
+  "q": "Why is sin θ = cos(90° − θ) always true?",
+  "choices": [
+    "Complementary angles swap the roles of opposite and adjacent",
+    "Sine and cosine are the same function",
+    "The unit circle has radius 1"
+  ],
+  "answer": 0,
+  "why": "In the other acute corner of the same triangle, the opposite and adjacent sides exchange — which is the same fact the graph shows as a quarter-period shift."
+};
+
+const trigIdBranch = {
+  "root": "sin θ = 0.6 for an angle in the first quadrant. What is cos θ?",
+  "nodes": {
+    "start": {
+      "text": "Pick the move:",
+      "choices": [
+        {
+          "label": "0.8 — from sin²θ + cos²θ = 1",
+          "next": "right",
+          "feedback": "Right: cos²θ = 1 − 0.36 = 0.64, so cos θ = 0.8 — the circle's equation x² + y² = 1 in trig clothing."
+        },
+        {
+          "label": "0.4 — they must add to 1",
+          "next": "add",
+          "feedback": "They add to 1 only after squaring: sin²θ + cos²θ = 1, not sin θ + cos θ = 1."
+        },
+        {
+          "label": "Cannot tell without the angle",
+          "next": "tell",
+          "feedback": "You can: the identity pins cos²θ = 1 − sin²θ, and the quadrant fixes the sign."
+        }
+      ]
+    },
+    "right": {
+      "text": "Given sin θ, find cos θ — the source of every such manipulation."
+    },
+    "add": {
+      "text": "The squares add to 1; the functions themselves do not."
+    },
+    "tell": {
+      "text": "The identity plus the quadrant is all the information needed."
+    }
+  },
+  "why": "sin²θ + cos²θ = 1 is the unit circle's equation — the most-used fact in the subject."
+};
+
+const trigWaveSort = {
+  "prompt": "File each effect under the dial that produces it:",
+  "buckets": [
+    "amplitude (A)",
+    "frequency (B)",
+    "phase (C)"
+  ],
+  "items": [
+    {
+      "label": "the volume of a sound, the height of a tide",
+      "bucket": 0
+    },
+    {
+      "label": "a higher note, a faster alternation",
+      "bucket": 1
+    },
+    {
+      "label": "the lag between two waves",
+      "bucket": 2
+    }
+  ],
+  "why": "Reading a formula's A, B and C straight off as 'height, speed, offset' is a skill worth more than memorising any table."
+};
+
+const trigRiverOrder = {
+  "prompt": "Rebuild the survey that measures a river without crossing — what comes first:",
+  "items": [
+    "Mark A and B exactly 100 m apart on the bank",
+    "Sight the tree C and measure angles A = 30°, B = 45°",
+    "Angle C = 105°",
+    "AC = 100·sin 45°/sin 105° ≈ 73 m"
+  ],
+  "why": "No boat required — this is how surveyors, artillery officers and astronomers measured the world for centuries."
+};
+
+const trigSineSpot = {
+  "prompt": "One of these claims about the sine rule is wrong — click it:",
+  "lines": [
+    "The sine rule: a/sin A = b/sin B = c/sin C.",
+    "It relates each side to the angle opposite it.",
+    "The cosine rule is Pythagoras with a correction term for non-right angles.",
+    "The sine rule works with any side paired with any angle."
+  ],
+  "errorLine": 3,
+  "correction": "It only relates a side to the angle opposite it — mismatching the pairs is the most common source of wrong answers in this topic.",
+  "why": "a is the side facing A, and so on — the pairing is the rule."
+};
 ---
 <TopicPage slug="subjects/math/intermediate/trigonometry">
 
@@ -72,11 +238,13 @@ const trigCfg = {
     inches, so k ≈ 3.0 inches — width ≈ 47.9", height ≈ 26.9". One theorem converts the
     diagonal on the price tag into whether the screen fits your shelf.
   </p>
+  <Widget no="11" caption="call the screen's width" widget="estimate" config={trigTvEst} />
   <p><em>Common misconception:</em> a² + b² = c² applies to any triangle. It is exactly the
   <em>right angle</em> condition — for non-right triangles it fails, and the size of the failure
   is precisely what the cosine rule below measures. Also: the hypotenuse is always the
   <em>longest</em> side, opposite the right angle — checking this catches swapped-label errors
   before they happen.</p>
+  <Widget no="10" caption="find the overreach" widget="spot-error" config={trigPythSpot} />
 
   <h2>The three ratios</h2>
   <p>
@@ -97,12 +265,15 @@ const trigCfg = {
     an angle — with the fine print that they return one convenient answer, not every possible
     one (see Going deeper).
   </p>
+  <Widget no="9" caption="pair each ratio with its sides" widget="match" config={trigRatioMatch} />
+  <Widget no="8" caption="call the ladder's reach" widget="estimate" config={trigLadderEst} />
 
   <h2>Exact values: the angles worth memorising</h2>
   <p>
     Three special angles come from half-squares and half-equilateral triangles, and their sines
     and cosines are exact surds worth knowing cold:
   </p>
+  <Widget no="7" caption="fill the blanks — the exact values" widget="cloze" config={trigExactCloze} />
   <ul>
     <li><strong>45°</strong> (half a square): sin = cos = 1/√2 = √2/2, tan = 1.</li>
     <li><strong>60°</strong> (half an equilateral triangle of side 2): sin = √3/2, cos = ½, tan = √3.</li>
@@ -115,6 +286,7 @@ const trigCfg = {
     roles of opposite and adjacent, so sin θ = cos(90° − θ) always. The graph above shows the
     same fact as a horizontal shift of one quarter-period.
   </p>
+  <Widget no="6" caption="bet before you read on — the complementary swap" widget="predict" config={trigCompPredict} />
   <p>
     <strong>So far:</strong> the three ratios solve any right triangle, and the special angles
     give exact values — with sin θ and cos(90° − θ) swapping roles. But the definitions were
@@ -132,6 +304,7 @@ const trigCfg = {
     the <strong>Pythagorean identity</strong> sin²θ + cos²θ = 1 — the most-used fact in the
     subject, and the source of every "given sin θ, find cos θ" manipulation.
   </p>
+  <Widget no="5" caption="the identity at work" widget="branch" config={trigIdBranch} />
   <p>
     Now walk the point around and plot its height against angle: the wave in the plot above.
     Two properties follow immediately. The wave <strong>repeats every 360°</strong> (the point
@@ -156,6 +329,7 @@ const trigCfg = {
     formula's A, B and C straight off as "height, speed, offset" is a skill worth more than
     memorising any table.
   </p>
+  <Widget no="4" caption="file each effect under its dial" widget="sort-buckets" config={trigWaveSort} />
   <p>
     <strong>Radians</strong> are the natural angle unit: one radian is the angle subtending an
     arc equal in length to the radius (arc = r × θ, with θ in radians), and a full turn is 2π
@@ -177,6 +351,7 @@ const trigCfg = {
     100 × 0.7071/0.9659 ≈ <strong>73 m</strong>. No boat required — this is how surveyors,
     artillery officers and astronomers measured the world for centuries.
   </p>
+  <Widget no="3" caption="rebuild the river-width survey" widget="order" config={trigRiverOrder} />
   <p>
     The <strong>cosine rule</strong>, c² = a² + b² − 2ab·cos C, is Pythagoras with a correction
     term for non-right angles: when C = 90°, cos C = 0 and it collapses to Pythagoras exactly.
@@ -189,6 +364,7 @@ const trigCfg = {
   <p><em>Common misconception:</em> the sine rule works with any side paired with any angle. It
   only relates a side to the angle <em>opposite</em> it — a, the side facing A, and so on.
   Mismatching the pairs is the most common source of wrong answers in this topic.</p>
+  <Widget no="2" caption="find the pairing error" widget="spot-error" config={trigSineSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

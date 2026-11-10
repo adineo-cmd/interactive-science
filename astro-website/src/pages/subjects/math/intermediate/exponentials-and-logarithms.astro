@@ -13,6 +13,174 @@ const inverseCfg = {
   crossings: false,
   height: 360,
 };
+
+const expLogMatch = {
+  "prompt": "Pair each statement with what it says:",
+  "pairs": [
+    {
+      "left": "log₂32 = 5",
+      "right": "the power I must raise 2 to, to get 32"
+    },
+    {
+      "left": "log₁₀1,000 = 3",
+      "right": "10³ = 1,000"
+    },
+    {
+      "left": "bʸ = x",
+      "right": "log_b(x) = y"
+    }
+  ],
+  "why": "The log is the exponent — the exponential's undo button, and its mirror image across the line y = x."
+};
+
+const expExtSort = {
+  "prompt": "File each extension under the requirement that forces it:",
+  "buckets": [
+    "a⁰ = 1",
+    "a⁻ⁿ = 1/aⁿ",
+    "a^(1/n) = ⁿ√a"
+  ],
+  "items": [
+    {
+      "label": "because aⁿ ÷ aⁿ must equal aⁿ⁻ⁿ",
+      "bucket": 0
+    },
+    {
+      "label": "because aⁿ × a⁻ⁿ must equal a⁰ = 1",
+      "bucket": 1
+    },
+    {
+      "label": "because (a^(1/2))² must equal a",
+      "bucket": 2
+    }
+  ],
+  "why": "The extensions were chosen to preserve the index laws — not invented as tricks."
+};
+
+const expZeroSpot = {
+  "prompt": "One of these claims about zero exponents is wrong — click it:",
+  "lines": [
+    "2⁴ = 16, 2³ = 8, 2² = 4, 2¹ = 2.",
+    "Divide by 2 each step.",
+    "The next value must be 1.",
+    "a⁰ = 0, because multiplying zero times gives nothing."
+  ],
+  "errorLine": 3,
+  "correction": "a⁰ = 1 — any other definition would break every index law at once.",
+  "why": "The pattern makes the answer obvious: divide by 2 each step and the next value must be 1."
+};
+
+const expHeartEst = {
+  "prompt": "Estimate: 70 beats per minute × 60 × 24 × 365 × 80 years — roughly how many heartbeats in a lifetime?",
+  "unit": "",
+  "answer": 3000000000,
+  "factor": 1.5,
+  "why": "About 3 × 10⁹ — estimation problems are standard-form arithmetic plus nerve, exactly how professional scientists sanity-check claims.",
+  "context": "orders of magnitude: a rat is 10² times a mouse, a human 10² times a rat"
+};
+
+const expLawCompare = {
+  "prompt": "The same law, two directions — drag the divider:",
+  "before": {
+    "label": "growth",
+    "text": "A = A₀(1 + r)ⁿ — constant percentage means ever-larger absolute change, concave-up"
+  },
+  "after": {
+    "label": "decay",
+    "text": "N = N₀(½)^(t/T) — halves whatever remains, never quite reaching zero"
+  },
+  "why": "Decay keeps a schedule for halves, not for the last atom — the horizontal asymptote in action."
+};
+
+const expCarbonEst = {
+  "prompt": "Charcoal holds 25% of the living carbon-14 ratio (half-life 5,730 years). Roughly how old is the sample?",
+  "unit": "years",
+  "answer": 11460,
+  "factor": 1.25,
+  "why": "25% is two halvings, so 2 × 5,730 = 11,460 years — archaeology's clock is exponential decay plus a logarithm.",
+  "context": "at 12.5%, three halvings: 17,190 years"
+};
+
+const expLawCloze = {
+  "text": "The log laws: log(ab) = log a %%0%% log b — multiplying becomes adding; log(a/b) = log a − log b — division becomes subtraction; and log(aⁿ) = %%1%%·log a — powers become coefficients.",
+  "answers": [
+    [
+      "+",
+      "plus"
+    ],
+    [
+      "n",
+      "the exponent"
+    ]
+  ],
+  "hint": "What sign the product law uses, and what factor the power law produces."
+};
+
+const expSumSpot = {
+  "prompt": "One of these log laws is fake — click it:",
+  "lines": [
+    "log(ab) = log a + log b — multiplying becomes adding.",
+    "log(a/b) = log a − log b.",
+    "log(aⁿ) = n·log a.",
+    "log(a + b) = log a + log b."
+  ],
+  "errorLine": 3,
+  "correction": "There is no law for log(a + b) — combine the addition first, then log.",
+  "why": "Check with a = b = 1: log 2 ≈ 0.301 but log 1 + log 1 = 0."
+};
+
+const expSolveBranch = {
+  "root": "Solve 3ˣ = 20. A student writes x = log 20 − log 3 ≈ 0.82. What went wrong?",
+  "nodes": {
+    "start": {
+      "text": "Diagnose the move:",
+      "choices": [
+        {
+          "label": "Nothing — the subtraction is the right move",
+          "next": "wrong",
+          "feedback": "The power law says log(aⁿ) = n·log a — but here the unknown is the exponent: x = log 20 / log 3 ≈ 2.73, division not subtraction."
+        },
+        {
+          "label": "The exponent comes out as a ratio of logs: x = log 20 / log 3 ≈ 2.73",
+          "next": "right",
+          "feedback": "Right — take log of both sides, apply the power law, and divide."
+        },
+        {
+          "label": "Try integer values first",
+          "next": "guess",
+          "feedback": "Guessing works for 3ˣ = 27 but not 20 — the log route is general."
+        }
+      ]
+    },
+    "wrong": {
+      "text": "Subtracting logs belongs to log(a/b), not to an unknown exponent."
+    },
+    "right": {
+      "text": "n = log(goal/start) / log(1 + r) — one formula for every 'how long?' question growth can pose."
+    },
+    "guess": {
+      "text": "The log route answers every case, integer or not."
+    }
+  },
+  "why": "Solving exponential equations is the payoff: log both sides, apply the power law, divide."
+};
+
+const expQuakePlace = {
+  "prompt": "On the earthquake magnitude scale, each whole number is roughly how many times more energy released?",
+  "labels": [
+    "×2",
+    "×10",
+    "×32",
+    "×100"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 100
+  },
+  "answer": 32,
+  "tolerance": 3,
+  "why": "About 32-fold per whole number — a magnitude 7 is not 'a bit worse' than a 6, it is a different category of event."
+};
 ---
 <TopicPage slug="subjects/math/intermediate/exponentials-and-logarithms">
 
@@ -43,6 +211,7 @@ const inverseCfg = {
     decay, earthquake sizes, acidity, decibels, algorithm runtimes. One pair of ideas, an
     enormous range of jobs.
   </p>
+  <Widget no="11" caption="pair each statement with its translation" widget="match" config={expLogMatch} />
   <p>
     This chapter also completes the index laws. Powers were introduced as repeated multiplication;
     the full rules extend them to fractional and negative exponents, and to the number e —
@@ -65,6 +234,7 @@ const inverseCfg = {
     aⁿbⁿ. Each is forced by what "repeated multiplication" means — you can verify aᵐ⁺ⁿ by
     counting the factors. The extensions are chosen to <em>preserve</em> the laws:
   </p>
+  <Widget no="10" caption="file each extension under the law that forces it" widget="sort-buckets" config={expExtSort} />
   <ul>
     <li><strong>a⁰ = 1</strong>, because aⁿ ÷ aⁿ must equal aⁿ⁻ⁿ = a⁰, and anything divided by
     itself is 1.</li>
@@ -82,6 +252,7 @@ const inverseCfg = {
   pattern makes the answer obvious instead: 2⁴ = 16, 2³ = 8, 2² = 4, 2¹ = 2 — divide by 2 each
   step, and the next value <em>must</em> be 1. Any other definition of a⁰ would break every
   index law at once.</p>
+  <Widget no="9" caption="find the pattern-breaker" widget="spot-error" config={expZeroSpot} />
   <p>
     <strong>So far:</strong> the index laws are few, and every extension — zero, negative,
     fractional exponents — was chosen to keep them true. Next, what those exponents buy when
@@ -100,6 +271,7 @@ const inverseCfg = {
     3 × 10⁹) are standard-form arithmetic plus nerve, and they are exactly how professional
     scientists sanity-check claims before computing anything precisely.
   </p>
+  <Widget no="8" caption="call the lifetime heartbeat count" widget="estimate" config={expHeartEst} />
   <p>
     <strong>So far:</strong> standard form makes the enormous writable, and orders of magnitude
     make it comparable. Now the rules run in time rather than in notation: what happens when
@@ -132,6 +304,8 @@ const inverseCfg = {
     two halvings, so the sample is 2 × 5,730 = <strong>11,460 years old</strong>. At 12.5%,
     three halvings: 17,190 years. Archaeology's clock is exponential decay plus a logarithm.
   </p>
+  <Widget no="7" caption="growth versus decay — drag the divider" widget="compare" config={expLawCompare} />
+  <Widget no="6" caption="call the charcoal's age" widget="estimate" config={expCarbonEst} />
   <p><em>Common misconception:</em> after two half-lives, all the atoms have decayed. Each half-life halves whatever remains — 100% becomes 50%, then 25%, then 12.5% — so the sample never quite reaches zero (the decaying curve's horizontal asymptote in action). "How long until it is all gone?" has no answer for a pure exponential: decay keeps a schedule for halves, not for the last atom.</p>
 
   <h2>Logarithms: the exponent, isolated</h2>
@@ -142,6 +316,7 @@ const inverseCfg = {
     other undoes. Three laws follow immediately from the index laws, and they are the subject's
     entire toolkit:
   </p>
+  <Widget no="5" caption="fill the blanks — the log laws" widget="cloze" config={expLawCloze} />
   <ul>
     <li><strong>log(ab) = log a + log b</strong> — multiplying becomes adding. This single fact
     powered slide rules (align two rulers, add lengths, read products) and is why log-scale
@@ -156,6 +331,7 @@ const inverseCfg = {
     is no law for log(a + b); when it appears in a problem, the intended move is almost always
     "combine the addition first, then log".
   </p>
+  <Widget no="4" caption="find the law that does not exist" widget="spot-error" config={expSumSpot} />
   <p>
     <strong>Solving exponential equations</strong> is the payoff. Solve 3ˣ = 20: take log of
     both sides, apply the power law, and x = log 20 / log 3 ≈ 1.301/0.477 ≈ <strong>2.73</strong>.
@@ -163,6 +339,7 @@ const inverseCfg = {
     0.301/0.0212 ≈ <strong>14.2 years</strong>. In general, n = log(goal/start) / log(1 + r) —
     one formula that answers every "how long?" question growth can pose.
   </p>
+  <Widget no="3" caption="the exponent hunt" widget="branch" config={expSolveBranch} />
 
   <p>
     <strong>Changing base, and a medical worked example.</strong> Calculators carry two logs
@@ -194,6 +371,7 @@ const inverseCfg = {
     relationships: Moore's law — transistor counts doubling every two years — is a straight line
     only on a log plot, which is precisely how such "laws" are discovered.
   </p>
+  <Widget no="2" caption="drop the marker — the earthquake ratio" widget="place" config={expQuakePlace} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
