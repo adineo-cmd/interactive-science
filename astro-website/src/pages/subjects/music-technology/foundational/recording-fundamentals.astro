@@ -24,6 +24,174 @@ const signalCfg = {
     { math: '5 · Capture, don\'t rescue', note: 'Digital editing can fix timing and pitch, but a badly recorded source is a permanent tax. The recording IS the production.' },
   ],
 };
+
+const rfChainOrder = {
+  "prompt": "A voice makes pressure waves; a file stores numbers. Order the translators between them:",
+  "items": [
+    "The source — voice or drum, an acoustic event with its own spectrum and dynamics",
+    "Microphone — a diaphragm turns pressure waves into a tiny electrical voltage",
+    "Preamp — raises that voltage to a workable level",
+    "Converter — turns the voltage into numbers a computer can store",
+    "Recorder — writes the numbers to a file"
+  ],
+  "why": "At every link two enemies wait: noise rising from below and distortion dropping from above — the craft is getting the music between them, every time, on every take."
+};
+
+const rfClipBranch = {
+  "root": "Listen-back: the loudest chorus of the vocal take is clipped at the converter — 0 dBFS sliced the waveform's tips.",
+  "nodes": {
+    "start": {
+      "text": "The take is musically the best one. What do you do?",
+      "choices": [
+        {
+          "label": "Open a de-clipper plugin and repair the waveform",
+          "next": "repair",
+          "feedback": "Editing and mixing reshape what was captured — the clipped tips were never recorded, so the repair is guessing."
+        },
+        {
+          "label": "Re-track the vocal with more headroom before the next pass",
+          "next": "retrack",
+          "feedback": "Decisions made before pressing record are worth more than any correction applied after."
+        }
+      ]
+    },
+    "repair": {
+      "text": "A de-clipper can guess at the missing tips, but the cause is baked in: a badly recorded source is a permanent tax. The professional move is re-tracking.",
+      "choices": []
+    },
+    "retrack": {
+      "text": "Lower the preamp gain for the next pass, leave headroom at performance level, and the take survives every future mix — capture, don't rescue.",
+      "choices": []
+    }
+  },
+  "why": "Editing, tuning and mixing only reshape what exists — a vocal clipped at the converter cannot be un-clipped, and a roomy thin guitar sound cannot lose its room."
+};
+
+const rfMicCompare = {
+  "prompt": "Dynamic or condenser? Drag the divider between the two families:",
+  "before": {
+    "label": "Dynamic",
+    "text": "Rugged, cheap-ish, tolerant of brutal sound-pressure levels and awkward rooms — the SM57/SM58 family lives on guitar amplifiers, snare drums and stages."
+  },
+  "after": {
+    "label": "Condenser",
+    "text": "Far finer detail and sensitivity — the default studio vocal mic — but it needs +48 V phantom power down the cable, hears everything (bad rooms, computer fans) and overloads in front of a kick drum."
+  },
+  "why": "Choose for source and room, not price — the choice depends on what you record and where."
+};
+
+const rfLeverBuckets = {
+  "prompt": "Three levers move the mic before EQ does. File each effect:",
+  "buckets": [
+    "Distance — sets the direct-to-room blend",
+    "Axis — sets tone and brightness",
+    "Spacing — keeps multi-miking clean"
+  ],
+  "items": [
+    {
+      "label": "2–5 cm from the lips: almost all direct sound, intimate and dry",
+      "bucket": 0
+    },
+    {
+      "label": "pulled back to 30 cm: the mic breathes with the room",
+      "bucket": 0
+    },
+    {
+      "label": "directional mics boost bass as they get closer (proximity effect)",
+      "bucket": 0
+    },
+    {
+      "label": "singing slightly off-axis tames harshness",
+      "bucket": 1
+    },
+    {
+      "label": "most mics are brightest on-axis",
+      "bucket": 1
+    },
+    {
+      "label": "two mics on one source spaced too close: the delay between them comb-filters the blend",
+      "bucket": 2
+    }
+  ],
+  "why": "Experienced engineers change the mic's position before reaching for EQ — placement is the first EQ."
+};
+
+const rfAmpMatch = {
+  "prompt": "One SM57, one amp, four moves. Pair position with result:",
+  "pairs": [
+    {
+      "left": "centre of the cone",
+      "right": "the tone hardens"
+    },
+    {
+      "left": "where the cone meets the dust cap",
+      "right": "bright and present — the standard move"
+    },
+    {
+      "left": "edge of the cone",
+      "right": "the tone darkens"
+    },
+    {
+      "left": "pulled back a foot",
+      "right": "the room arrives"
+    }
+  ],
+  "why": "Move the mic through those positions while the player repeats a loop, listening for the one where the tone is right at the source — because at the source, correction is free."
+};
+
+const rfPriceJudge = {
+  "statements": [
+    {
+      "s": "A well-placed SM57 in a good position beats a boutique condenser badly placed.",
+      "truth": true,
+      "why": "Placement and the room dominate price in almost every practical test."
+    },
+    {
+      "s": "Price buys nothing at all.",
+      "truth": false,
+      "why": "It buys detail, consistency, lower self-noise — real, but the last few percent."
+    },
+    {
+      "s": "The microphone is the first fifty percent; the position is the last few.",
+      "truth": false,
+      "why": "Inverted — the position is the first fifty; the microphone is the last few percent."
+    },
+    {
+      "s": "A bad room defeats an expensive microphone.",
+      "truth": true,
+      "why": "Condensers hear everything, including bad rooms — and the room is on every recording."
+    }
+  ]
+};
+
+const rfGainCloze = {
+  "text": "%%0%% is the discipline of setting each stage's level so the signal stays far above the %%1%% below and far below the %%2%% above at every link.",
+  "answers": [
+    [
+      "gain staging"
+    ],
+    [
+      "noise floor"
+    ],
+    [
+      "clipping ceiling"
+    ]
+  ],
+  "hint": "One is the discipline; the other two are the enemies waiting at every link."
+};
+
+const rfHotSpot = {
+  "prompt": "A producer's plan for tracking the album contains one faulty line — click it:",
+  "lines": [
+    "Set gain during a confident rehearsal pass at performance level.",
+    "Tape saturated gracefully — pushing levels added a pleasing compression.",
+    "Digital saturates the same way, so hot levels flatter the file too.",
+    "Modern practice records conservatively and adds character in the mix on purpose."
+  ],
+  "errorLine": 2,
+  "correction": "Digital has no sweet spot at the top — 0 dBFS is a cliff, not a colour; the same habit that flattered tape writes irreversible distortion into a file.",
+  "why": "Tape flattered hot levels; the converter slices them — record conservatively, then lift the quiet, healthy file later."
+};
 ---
 <TopicPage slug="subjects/music-technology/foundational/recording-fundamentals">
 
@@ -59,6 +227,7 @@ const signalCfg = {
     from above. Recording fundamentals is the craft of getting the music between them —
     every time, on every take, without panic.
   </p>
+  <Widget no="3" caption="rebuild the chain from voice to file" widget="order" config={rfChainOrder} />
   <p>
     Why does this matter so much? Because a recording is made <em>once</em> and mixed many
     times. Editing, tuning and mixing are powerful, but they only reshape what exists:
@@ -67,6 +236,7 @@ const signalCfg = {
     lose its room. The discipline's oldest maxim is "capture, don't rescue": decisions made
     before pressing record are worth more than any plugin applied after.
   </p>
+  <Widget no="4" caption="you hear the clip — decide what happens next" widget="branch" config={rfClipBranch} />
   <p>
     The fundamentals divide into three connected skills: choosing and placing microphones
     (which translator do you use, and where do you point it?), signal flow and gain staging
@@ -104,6 +274,7 @@ const signalCfg = {
     they hear everything (including bad rooms and computer fans), and they overload if you
     park one in front of a kick drum.
   </p>
+  <Widget no="5" caption="drag the divider — the two great microphone families" widget="compare" config={rfMicCompare} />
   <p>
     Placement is the cheaper and mightier tool, and it works through three levers.
     <strong>Distance</strong> sets the direct-to-room blend: a vocal mic 2–5 cm from the
@@ -116,6 +287,7 @@ const signalCfg = {
     which makes thin voices warm and boomy voices worse — and you can see why experienced
     engineers change the mic's position before reaching for EQ.
   </p>
+  <Widget no="6" caption="file each move under the lever that does the work" widget="sort-buckets" config={rfLeverBuckets} />
   <p>
     A worked case: recording a guitar amplifier. The standard move is a dynamic (SM57) a
     hand-width off the grille, aimed where the cone meets the dust cap — bright and present.
@@ -124,11 +296,13 @@ const signalCfg = {
     mic through those positions while the player repeats a loop, listening for the one where
     the tone is right at the source — because at the source, correction is free.
   </p>
+  <Widget no="7" caption="pair each mic position with the tone it returns" widget="match" config={rfAmpMatch} />
   <p><em>Common misconception:</em> expensive microphones make good recordings. It feels
   true because price must buy <em>something</em> — and it does: detail, consistency, lower
   self-noise. But a well-placed SM57 in a good position beats a boutique condenser badly
   placed every time; placement and the room dominate price in almost every practical
   test. The microphone is the last few percent; the position is the first fifty.</p>
+  <Widget no="8" caption="true or false — price versus position" widget="judge" config={rfPriceJudge} />
 
   <h2>Signal flow and gain staging</h2>
   <p>
@@ -139,6 +313,7 @@ const signalCfg = {
     through a series of pipes: each stage can be turned up, but the whole chain only works
     if the level is right at each joint.
   </p>
+  <Widget no="9" caption="fill the blanks — the discipline and its two bookends" widget="cloze" config={rfGainCloze} />
   <p>
     The two bookend failures are easy to state. <strong>Noise</strong>: if the signal is too
     quiet, the preamp's own hiss and the room's hum sit audibly underneath it, and no amount
@@ -171,6 +346,7 @@ const signalCfg = {
   and the same habit that flattered tape writes irreversible distortion into a file.
   Modern practice records at conservative levels and adds character in the mix on
   purpose.</p>
+  <Widget no="10" caption="find the faulty line — the tape-era habit" widget="spot-error" config={rfHotSpot} />
   <p>
     <strong>So far:</strong> the source is chosen, placed and gained — a clean, healthy
     signal at every link. The remaining skill is the one no meter shows: keeping the human

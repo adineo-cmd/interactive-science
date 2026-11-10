@@ -22,6 +22,178 @@ const namingCfg = {
     { math: '4 · Strain — the working unit', note: 'E. coli K-12 and E. coli O157:H7 are the same species with wildly different behaviour. In the lab, strains are what matter.' },
   ],
 };
+
+const mwCensusJudge = {
+  "statements": [
+    {
+      "s": "Most microorganisms are harmful to humans.",
+      "truth": false,
+      "why": "The overwhelming majority are harmless, and many are indispensable — digestion and much of immunity are run by resident microbes."
+    },
+    {
+      "s": "The nitrogen that feeds every crop is fixed by soil bacteria.",
+      "truth": true,
+      "why": "Alongside fermenting bread, cheese, beer and wine — and driving every nutrient cycle that keeps the visible biosphere running."
+    },
+    {
+      "s": "The word \"germ\" refers to all microorganisms.",
+      "truth": false,
+      "why": "It refers only to the small minority that cause disease; a microbiologist's first question is \"what is it, and what is it doing?\""
+    },
+    {
+      "s": "Microbes in Earth's early oceans remade the planet's first atmosphere.",
+      "truth": true,
+      "why": "The hidden majority runs the visible one — including the atmosphere itself."
+    }
+  ]
+};
+
+const mwSwanCompare = {
+  "prompt": "One flask, two fates — drag between them:",
+  "before": {
+    "label": "neck intact",
+    "text": "Air enters, but dust and its microbial passengers settle in the S-bend and never reach the broth — which stays sterile indefinitely."
+  },
+  "after": {
+    "label": "neck broken",
+    "text": "Dust reaches the broth and it spoils. Microbes come from other microbes — the negative result that made the germ theory of disease thinkable."
+  },
+  "why": "It took a cleverly controlled experiment, not a cleverer person, to falsify spontaneous generation: science replaced plausible inference with controlled comparison."
+};
+
+const mwLimitSpot = {
+  "prompt": "An optics note — one line is wrong. Click it:",
+  "lines": [
+    "Most bacteria are 1–5 micrometres across — a micrometre is a millionth of a metre.",
+    "A light microscope cannot distinguish two points closer than about 0.2 µm, roughly half the wavelength of visible light.",
+    "The limit is physics, not engineering: no grinding of lenses can beat it.",
+    "Oil-immersion objectives replace air with oil that matches the glass, reaching cleanly past the light limit to 0.02 µm.",
+    "Going beyond 0.2 µm required a completely different kind of instrument — the electron microscope."
+  ],
+  "errorLine": 3,
+  "correction": "Oil-immersion objectives are prized merely for reaching the 0.2 µm limit cleanly — they do not beat it. Beating the wavelength of light took the electron microscope, at the price of never imaging a living specimen.",
+  "why": "The floor is diffraction: roughly half the wavelength of visible light, set by physics."
+};
+
+const mwGramBuckets = {
+  "prompt": "The stain's colour is a report on wall architecture — file each genus:",
+  "buckets": [
+    "Gram-positive — thick peptidoglycan, keeps purple",
+    "Gram-negative — thin layer plus outer membrane, takes pink"
+  ],
+  "items": [
+    {
+      "label": "Staphylococcus",
+      "bucket": 0
+    },
+    {
+      "label": "Streptococcus",
+      "bucket": 0
+    },
+    {
+      "label": "Bacillus",
+      "bucket": 0
+    },
+    {
+      "label": "E. coli",
+      "bucket": 1
+    },
+    {
+      "label": "Salmonella",
+      "bucket": 1
+    },
+    {
+      "label": "Pseudomonas",
+      "bucket": 1
+    }
+  ],
+  "why": "The colour predicts antibiotic susceptibility: many antibiotics target peptidoglycan synthesis, so penicillin works better against Gram-positives — the first fork in every identification key."
+};
+
+const mwStainPredict = {
+  "q": "A laboratory reports \"Gram-negative rods\" from a culture. What has the stain told you?",
+  "choices": [
+    "The species' name.",
+    "One architectural fact that sorts the unknown into one of two enormous classes.",
+    "Which antibiotic will treat the infection.",
+    "The bacterium's evolutionary ancestry."
+  ],
+  "answer": 1,
+  "why": "A stain is a chapter heading, not the book: the species itself still needs culture, biochemical tests or sequencing to name."
+};
+
+const mwDomainsMatch = {
+  "prompt": "The three-domain system — pair each entry with its description:",
+  "pairs": [
+    {
+      "left": "Bacteria",
+      "right": "the prokaryotes of everyday laboratory work — E. coli and cousins"
+    },
+    {
+      "left": "Archaea",
+      "right": "prokaryotes with eukaryote-like information machinery, often in extremes — and, so far, no human diseases identified"
+    },
+    {
+      "left": "Eukarya",
+      "right": "everything with a nucleus — protists, fungi, plants, animals"
+    },
+    {
+      "left": "ribosomal RNA",
+      "right": "present in every cell, essential, slowly evolving — so it records deep ancestry"
+    }
+  ],
+  "why": "Woese found a gulf nobody had suspected: the \"bacteria\" split into two groups as different from each other as either is from us — and Bergey's Manual reorganised itself around the phylogenetic principle."
+};
+
+const mwStrainBranch = {
+  "root": "A headline announces an \"E. coli outbreak\". Which unit of the name carries the story?",
+  "nodes": {
+    "start": {
+      "text": "What does the report need to specify to be meaningful?",
+      "choices": [
+        {
+          "label": "The species — Escherichia coli",
+          "next": "species",
+          "feedback": "Far too coarse: the species contains both laboratory citizens and pathogens."
+        },
+        {
+          "label": "The strain — surface antigens and toxins",
+          "next": "strain",
+          "feedback": "The unit where behaviour lives."
+        },
+        {
+          "label": "The genus — Escherichia",
+          "next": "genus",
+          "feedback": "Honours an ancestry — useful for naming, too broad for tracking."
+        }
+      ]
+    },
+    "species": {
+      "text": "E. coli K-12 is a harmless gut laboratory citizen; E. coli O157:H7 is a dangerous pathogen. Same species, a handful of acquired genes apart — the species cannot carry the clinical story.",
+      "choices": []
+    },
+    "strain": {
+      "text": "Strains of one species can behave as differently as a laboratory citizen and a lethal pathogen. Diagnosis and treatment hang on the strain — its surface antigens and its toxins.",
+      "choices": []
+    },
+    "genus": {
+      "text": "The genus groups genuinely related organisms — Theodor Escherich lent it his name — but the epithet (\"of the colon\") and the strain are where the working detail sits.",
+      "choices": []
+    }
+  },
+  "why": "The biological species concept fails for organisms that exchange genes sideways — bacterial species are pragmatic clusters, and the strain is where behaviour lives."
+};
+
+const mwSwabOrder = {
+  "prompt": "One swab, three programmes — drag the workup into order:",
+  "items": [
+    "Seeing, first and fastest: a Gram stain shows Gram-positive cocci in chains, pointing toward Streptococcus",
+    "Growing, overnight: a blood-agar plate shows small colonies with clear haloes of beta-haemolysis",
+    "A catalase test plus a bacitracin disc discriminate Streptococcus pyogenes from look-alikes",
+    "Reading, where needed: a species-specific gene read directly, bypassing culture entirely"
+  ],
+  "why": "Each step was invented by the people on the timeline — and a modern diagnostic laboratory runs the history of microbiology at production speed."
+};
 ---
 <TopicPage slug="subjects/microbiology/foundational/the-microbial-world">
 
@@ -59,6 +231,7 @@ const namingCfg = {
     early oceans remade the planet's first atmosphere, then and now drive every nutrient
     cycle that keeps the visible biosphere running.
   </p>
+  <Widget no="3" caption="true or false — the hidden majority, audited" widget="judge" config={mwCensusJudge} />
   <p>
     <strong>Microbiology</strong> is the study of this life too small to see, and its first
     lesson is a reversal of perspective: the hidden majority runs the visible one. Microbes
@@ -118,6 +291,7 @@ const namingCfg = {
     other microbes. That negative result is arguably the most consequential in biology,
     because it made the germ theory of disease thinkable.
   </p>
+  <Widget no="4" caption="drag between the two halves of Pasteur's flask" widget="compare" config={mwSwanCompare} />
   <p>
     Robert Koch then turned contamination from a nuisance into a method.
     <strong>Solid media</strong> (first potato slices, then gelatin, then agar — a
@@ -155,6 +329,7 @@ const namingCfg = {
     reaching the limit, and why a completely different kind of instrument was needed to go
     past it.
   </p>
+  <Widget no="5" caption="one line of the optics note oversells the oil" widget="spot-error" config={mwLimitSpot} />
   <p>
     Transparency is the humbler problem and staining is its fix. In their natural state
     most cells lack colour and contrast, so they are nearly invisible against a bright
@@ -184,6 +359,7 @@ const namingCfg = {
     survival structures of <em>Bacillus</em> and <em>Clostridium</em>; negative (capsule)
     stains expose the slime layers that hide pathogens from immune cells.
   </p>
+  <Widget no="6" caption="file each genus by its Gram reaction" widget="sort-buckets" config={mwGramBuckets} />
   <p>
     Beyond visible light, the options multiply. Phase-contrast and dark-field optics make
     living, unstained cells visible by turning tiny differences in refractive index into
@@ -198,6 +374,7 @@ const namingCfg = {
   first fork (it narrows thousands of species to a family of suspects in minutes), but the
   species itself still needs culture, biochemical tests or sequencing to name. A stain is
   a chapter heading, not the book.</p>
+  <Widget no="7" caption="bet what the stain actually reports" widget="predict" config={mwStainPredict} />
   <p>
     <strong>So far:</strong> seeing microbes means working around size (physics sets a
     0.2 µm floor) and transparency (stains fix that), and the Gram stain turns wall
@@ -233,6 +410,7 @@ const namingCfg = {
     evolutionary relatedness read from sequences — and Bergey's Manual of Systematic
     Bacteriology, the field's reference, reorganised itself around exactly that principle.
   </p>
+  <Widget no="8" caption="pair each domain — and the molecule that found them" widget="match" config={mwDomainsMatch} />
   <p><em>Common misconception:</em> "species means the same thing for bacteria as for
   animals." It does not. The biological species concept ("organisms that can interbreed")
   is useless for organisms that exchange genes sideways, so bacterial "species" are
@@ -240,6 +418,7 @@ const namingCfg = {
   <strong>strain</strong> — the working unit in the widget — matters more than the
   species: <em>E. coli</em> K-12 is a harmless gut laboratory citizen, <em>E. coli</em>
   O157:H7 is a dangerous pathogen, and they differ by a handful of acquired genes.</p>
+  <Widget no="9" caption="walk the naming unit an outbreak report needs" widget="branch" config={mwStrainBranch} />
 
   <h2>What counts as a microbe?</h2>
   <p>
@@ -286,6 +465,7 @@ const namingCfg = {
     this organism, how is it related, and does it cause this disease? A modern diagnostic
     laboratory, in other words, runs the history of microbiology at production speed.
   </p>
+  <Widget no="10" caption="rebuild the three-programme workup of one swab" widget="order" config={mwSwabOrder} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

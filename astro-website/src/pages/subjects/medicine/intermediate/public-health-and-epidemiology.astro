@@ -10,6 +10,208 @@ const epiCfg = {
     { math: '4 · Public health: prevention at scale', note: 'Clean water, vaccination, seatbelts, tobacco taxes — population-level interventions deliver the biggest mortality wins in history (life expectancy doubled since 1850, mostly from public health, not clinics).' },
   ],
 };
+
+const epSnowOrder = {
+  "prompt": "Soho, 1854 — drag the investigation into order:",
+  "items": [
+    "Cholera epidemics kill thousands; the dominant theory blames miasma — bad air",
+    "Snow, sceptical, maps the deaths: they cluster around the Broad Street pump",
+    "The brewery's workers, who drink beer rather than water, are nearly spared",
+    "The exception that proves the rule: a widow miles away dies of water carted from Broad Street",
+    "The handle comes off the pump; the epidemic ebbs"
+  ],
+  "why": "No germ theory to lean on — Vibrio cholerae was identified in 1883. Population data and a comparison carried the whole argument."
+};
+
+const epSnowJudge = {
+  "statements": [
+    {
+      "s": "Snow's investigation proved the germ theory of disease.",
+      "truth": false,
+      "why": "It could not have: the cholera bacterium was not identified until 1883, almost three decades after the handle came off."
+    },
+    {
+      "s": "The brewery's workers were nearly spared because they drank beer, not water.",
+      "truth": true,
+      "why": "A natural comparison group, differing from their neighbours chiefly in the exposure."
+    },
+    {
+      "s": "The Hampstead widow's death was evidence against the pump hypothesis.",
+      "truth": false,
+      "why": "It confirmed it — she drank water her son had carted from Broad Street, miles from the pump."
+    },
+    {
+      "s": "A contrast between exposed and unexposed groups is still epidemiology's unit of inference.",
+      "truth": true,
+      "why": "The art is ensuring the groups differ only in the exposure you care about."
+    }
+  ]
+};
+
+const epMeasuresMatch = {
+  "prompt": "Four measures carry the field — pair each with its question:",
+  "pairs": [
+    {
+      "left": "incidence — new cases per population per time",
+      "right": "is this happening now, and growing?"
+    },
+    {
+      "left": "prevalence — all existing cases at a moment",
+      "right": "how big is the burden on services?"
+    },
+    {
+      "left": "case fatality rate vs infection fatality rate",
+      "right": "the denominator: deaths among diagnosed cases, or among all infected?"
+    },
+    {
+      "left": "excess mortality",
+      "right": "deaths above the seasonal baseline — needing no tests and no paperwork"
+    }
+  ],
+  "why": "Early-pandemic CFRs near 5% reflected the severely ill who got tested; the true IFR sat closer to 0.5–1% — and the difference shaped every policy argument."
+};
+
+const epPrevBuckets = {
+  "prompt": "Incidence or prevalence? File each scenario:",
+  "buckets": [
+    "incidence rises",
+    "prevalence rises while incidence falls"
+  ],
+  "items": [
+    {
+      "label": "the early-warning jump of a growing outbreak",
+      "bucket": 0
+    },
+    {
+      "label": "new cases per population per time",
+      "bucket": 0
+    },
+    {
+      "label": "a chronic disease's patients surviving longer on better treatment",
+      "bucket": 1
+    },
+    {
+      "label": "all existing cases at a moment",
+      "bucket": 1
+    },
+    {
+      "label": "a sign of success, not failure",
+      "bucket": 1
+    },
+    {
+      "label": "the metric that says an outbreak is growing",
+      "bucket": 0
+    }
+  ],
+  "why": "Only a rising incidence means an outbreak is growing; prevalence also accumulates when patients survive longer. The number's question is 'burden', not 'growth'."
+};
+
+const epFluEstimate = {
+  "prompt": "Seasonal influenza's R₀ sits around 1.5. The herd immunity threshold is 1 − 1/R₀ — roughly what share of the population must be immune for transmission to burn out?",
+  "unit": "% immune",
+  "answer": 33,
+  "factor": 1.5,
+  "why": "1 − 1/1.5 ≈ 33% — far below measles' 92–95% for R₀ of 12–18. Compare early COVID at R₀ = 3: about 67%, unreachable early without the hard way.",
+  "context": "That gap is why interventions aim at pushing the effective reproduction number below 1 rather than at instant herd immunity."
+};
+
+const epSirTrace = {
+  "prompt": "x = time, y = new infections per week — which trace is the self-limiting epidemic wave?",
+  "curves": [
+    {
+      "expr": "1/(1+exp(-(x-5)*2))",
+      "color": "#1d4ed8",
+      "label": "A"
+    },
+    {
+      "expr": "exp(-((x-5)^2)/2)",
+      "color": "#b42318",
+      "label": "B"
+    },
+    {
+      "expr": "x/10",
+      "color": "#0f766e",
+      "label": "C"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 10
+  },
+  "y": {
+    "min": 0,
+    "max": 1.2
+  },
+  "xlabel": "time (weeks)",
+  "ylabel": "new infections",
+  "why": "An epidemic consumes its own fuel: every infection converts a susceptible person into an immune one, dragging the effective reproduction number down until the wave crests — roughly symmetric, and why a prematurely relaxed population simply starts the next wave. Curve A is cumulative infections; C never self-limits."
+};
+
+const epDesignBranch = {
+  "root": "The question decides the design; each rung buys causal strength at a cost.",
+  "nodes": {
+    "start": {
+      "text": "A rare outbreak has just occurred and the exposure must be identified fast. Which design do you field?",
+      "choices": [
+        {
+          "label": "Case-control — start from outcomes, look backwards",
+          "next": "cc",
+          "feedback": "Fast and cheap — ideal for rare diseases and outbreaks."
+        },
+        {
+          "label": "Cross-sectional survey — who has what now",
+          "next": "cs",
+          "feedback": "Burden without sequence."
+        }
+      ]
+    },
+    "cc": {
+      "text": "Compare people who got the disease with matched people who did not, and look backwards for the exposure. The signature hazard is recall bias — sick people search their memories harder.",
+      "choices": [
+        {
+          "label": "Now the long game",
+          "next": "cohort"
+        }
+      ]
+    },
+    "cs": {
+      "text": "A snapshot of prevalence — but with no sequence, it cannot separate cause from consequence. Useful for burden, not for mechanism.",
+      "choices": [
+        {
+          "label": "Now the long game",
+          "next": "cohort"
+        }
+      ]
+    },
+    "cohort": {
+      "text": "The cohort study runs forward: recruit thousands, record exposures, follow for years. Doll and Hill's British Doctors Study tracked 34,000 doctors and established the smoking–cancer link. Its hazard is confounding; its elegant escape is the natural experiment.",
+      "choices": []
+    }
+  },
+  "why": "At the top, the randomised controlled trial manufactures the comparison by lottery — slow, expensive, often unethical — which is why the observational craft remains irreplaceable rather than inferior."
+};
+
+const epRoseCloze = {
+  "text": "Geoffrey Rose's prevention %%0%% states that a large share of disease burden comes from the many at modest risk, so shifting the whole distribution — a little less %%1%% for everyone — prevents more strokes than perfectly treating the few. Screening inherits every %%2%% problem from the diagnosis lesson — with low prevalence, most positives are false — and adds %%3%%: finding indolent conditions that would never have harmed the patient, then treating them anyway.",
+  "answers": [
+    [
+      "paradox"
+    ],
+    [
+      "salt",
+      "risk"
+    ],
+    [
+      "Bayes",
+      "Bayesian"
+    ],
+    [
+      "overdiagnosis"
+    ]
+  ],
+  "hint": "One is Rose's word, one a seasoning, one a mathematician, one the screening harm."
+};
 ---
 <TopicPage slug="subjects/medicine/intermediate/public-health-and-epidemiology">
 
@@ -75,11 +277,13 @@ const epiCfg = {
     unexposed, pump versus brewery) is the unit of inference, and the art is ensuring the groups
     differ only in the exposure you care about.
   </p>
+  <Widget no="2" caption="rebuild the pump-handle investigation" widget="order" config={epSnowOrder} />
   <p><em>Common misconception:</em> "Snow's investigation proved the germ theory of
   disease." It could not have: the cholera bacterium was not identified until 1883, almost
   three decades after the pump handle came off. Snow's conclusion rested purely on
   population data and comparison, which is exactly why the case remains the discipline's
   template.</p>
+  <Widget no="3" caption="true or false — the founding case, read carefully" widget="judge" config={epSnowJudge} />
 
   <h2>The measures that drive decisions</h2>
   <p>
@@ -99,11 +303,13 @@ const epiCfg = {
     paperwork: whatever the certificates say, the extra bodies count themselves. During COVID, excess
     deaths revealed true tolls in countries whose reported case counts were nearly meaningless.
   </p>
+  <Widget no="4" caption="pair each measure with the question it answers" widget="match" config={epMeasuresMatch} />
   <p><em>Common misconception:</em> "a rising prevalence means an outbreak is growing."
   Only a rising <em>incidence</em> means that. Prevalence also accumulates when patients
   survive longer: as the lesson notes, better treatment can raise prevalence while
   incidence falls, which is a sign of success. Always ask which question the number is
   answering before acting on it.</p>
+  <Widget no="5" caption="file each scenario by which measure moves" widget="sort-buckets" config={epPrevBuckets} />
   <p>
     <strong>So far:</strong> each measure answers one management question — incidence for
     growth, prevalence for burden, the two fatality rates for severity, and excess
@@ -133,6 +339,7 @@ const epiCfg = {
     of transmission), generation intervals, and real-time estimates of the now-famous R as policies
     turn.
   </p>
+  <Widget no="6" caption="call the herd threshold for a mild contagion" widget="estimate" config={epFluEstimate} />
   <p>
     The arithmetic comes from compartment models — the field's basic engine, and worth one glance.
     The SIR model sorts the population into Susceptible, Infectious and Recovered compartments and
@@ -146,6 +353,7 @@ const epiCfg = {
     concentrated among the already-infected but still below the herd threshold — simply starts the
     next wave.
   </p>
+  <Widget no="7" caption="which trace is the self-limiting wave?" widget="trace" config={epSirTrace} />
   <p><em>Common misconception:</em> R<sub>0</sub> is not a property of the microbe alone — it is the
   microbe <em>in a particular population and context</em>: same virus, different R<sub>0</sub> in
   dense cities versus dispersed villages, before versus after behaviour changes. That is why
@@ -176,6 +384,7 @@ const epiCfg = {
     comparison by lottery — but is slow, expensive, and often unethical, which is why the
     observational craft remains irreplaceable rather than inferior.
   </p>
+  <Widget no="8" caption="walk the design-selection decision" widget="branch" config={epDesignBranch} />
   <p>
     <strong>So far:</strong> the evidence hierarchy climbs from cross-sectional surveys to
     randomised trials, each design buying stronger causal inference at greater cost, with
@@ -205,6 +414,7 @@ const epiCfg = {
     fluoridation, tobacco-hazard recognition) is a fair syllabus for what the field has already
     delivered.
   </p>
+  <Widget no="9" caption="fill Rose's ledger" widget="cloze" config={epRoseCloze} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

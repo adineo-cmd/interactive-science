@@ -409,6 +409,30 @@
 | medicine/advanced/medical-imaging | match, cloze, judge, spot-error, compare, sort-buckets, branch, chart | next-16 |
 | medicine/expert/genomic-medicine | place, spot-error, sort-buckets, match, branch, order, estimate, timeline | next-16 |
 | medicine/expert/health-systems-and-policy | match, estimate, spot-error, place, cloze, order, branch, trace | next-16 |
+| materials-science/advanced/heat-treatment | order, spot-error, place, estimate, judge, sort-buckets, match, branch | next-17 |
+| materials-science/advanced/phase-diagrams | match, compare, order, estimate, place, sort-buckets, trace, branch | next-17 |
+| materials-science/advanced/semiconductors-and-doping | sort-buckets, compare, match, order, estimate, branch, judge, spot-error | next-17 |
+| materials-science/expert/computational-materials-design | place, match, sort-buckets, order, estimate, predict, branch, judge | next-17 |
+| materials-science/expert/nanomaterials-and-biomaterials | spot-error, compare, place, sort-buckets, estimate, order, match, branch | next-17 |
+| medicine/foundational/heart-circulation | estimate, sort-buckets, order, branch, judge, match, cloze, order | next-17 |
+| medicine/intermediate/how-doctors-think | estimate, branch, match, estimate, sort-buckets, spot-error, judge, cloze | next-17 |
+| medicine/intermediate/infection-and-antibiotics | sort-buckets, cloze, match, spot-error, predict, branch, compare, estimate | next-17 |
+| medicine/intermediate/pharmacology-basics | order, estimate, place, predict, match, spot-error, sort-buckets, estimate | next-17 |
+| medicine/intermediate/public-health-and-epidemiology | order, judge, match, sort-buckets, estimate, trace, branch, cloze | next-17 |
+| meteorology/foundational/the-atmosphere-and-its-energy | compare, estimate, sort-buckets, match, place, spot-error, estimate, cloze | next-17 |
+| microbiology/foundational/the-microbial-world | judge, compare, spot-error, sort-buckets, predict, match, branch, order | next-17 |
+| mining-engineering/foundational/ore-deposits-and-exploration | compare, sort-buckets, match, place, judge, order, spot-error, estimate | next-18 |
+| music-technology/foundational/recording-fundamentals | order, branch, compare, sort-buckets, match, judge, cloze, spot-error | next-18 |
+| music-therapy/foundational/what-music-therapy-is | match, timeline, order, judge, place, spot-error, predict, compare | next-18 |
+| music/expert/music-cognition | match, predict, judge, branch, estimate, trace, place, spot-error | next-18 |
+| music/foundational/sound-and-music | cloze, sort-buckets, match, place, judge, spot-error, estimate, compare | next-18 |
+| music/intermediate/form-and-structure | match, sort-buckets, judge, order, predict, estimate, spot-error, compare | next-18 |
+| music/intermediate/harmony-and-chords | match, sort-buckets, spot-error, compare, match, judge, timeline, branch | next-18 |
+| music/intermediate/instruments-and-timbre | sort-buckets, judge, spot-error, match, estimate, match, compare, order | next-18 |
+| music/intermediate/music-history-eras | match, spot-error, compare, order, predict, judge, timeline | next-18 |
+| music/intermediate/reading-notation | timeline, match, spot-error, cloze, judge, sort-buckets, branch, order | next-18 |
+| music/intermediate/rhythm-and-time-signatures | place, judge, cloze, order, sort-buckets, spot-error, estimate, trace | next-18 |
+| music/intermediate/scales-and-keys | estimate, judge, sort-buckets, match, cloze, branch, place | next-18 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

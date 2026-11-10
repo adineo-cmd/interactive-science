@@ -10,6 +10,175 @@ const nanoCfg = {
     { math: '4 · Biomaterials: the body as an environment', note: 'Implants must survive a warm, salty, oxidising, immune-active medium: titanium (osseointegrates — bone bonds to the oxide), cobalt-chrome (joints), PEEK (spines), hydrogels (contact lenses, drug delivery). The discipline: biocompatibility, controlled degradation (sutures that vanish), and tissue engineering (scaffolds that teach cells to rebuild — the biology lesson\'s synthetic side).' },
   ],
 };
+
+const nbGroupsSpot = {
+  "prompt": "A functional-group cheat-sheet — one line is wrong. Click it:",
+  "lines": [
+    "Hydroxyl (−OH): small, hydrogen-bonding, water-friendly.",
+    "Carboxyl (−COOH): an acid end — pairs with alcohols to form esters.",
+    "Amine (−NH₂): a basic end — pairs with acids to form amides, the protein link.",
+    "Chirality is a cosmetic curiosity: mirror-image forms behave identically in the body.",
+    "Every implant's surface chemistry traces back to which groups are on display."
+  ],
+  "errorLine": 3,
+  "correction": "Mirror-image (chiral) forms are different substances biologically — the body's receptors are chiral. One mirror form of thalidomide was a sedative while the other, interconverting in the body, was a teratogen.",
+  "why": "The same atoms in different arrangements are different substances: isomerism is design information, not a footnote."
+};
+
+const nbChainCompare = {
+  "prompt": "Two great families of chain-building — drag between their growth logic:",
+  "before": {
+    "label": "addition (chain-growth)",
+    "text": "A double bond is opened by an initiator; the radical zips monomers down one chain to completion in microseconds. Needs the C=C — ethylene into polyethylene."
+  },
+  "after": {
+    "label": "condensation (step-growth)",
+    "text": "Bifunctional monomers join pairwise, losing a small molecule (water) each time; every chain end reacts with every other, and useful molecular mass waits for very high conversion — Carothers' rule."
+  },
+  "why": "Chains either way — but the growth logic is opposite, and condensation is the same mechanism biology runs on to build protein."
+};
+
+const nbTgPlace = {
+  "prompt": "Polypropylene's side groups are small, polystyrene's are bulky. Place polypropylene's glass transition temperature:",
+  "labels": [
+    "−40",
+    "0",
+    "40",
+    "80",
+    "120"
+  ],
+  "scale": {
+    "min": -40,
+    "max": 120
+  },
+  "answer": -10,
+  "tolerance": 5,
+  "why": "Near −10 °C: flexible at room temperature (fridge liners). Polystyrene sits near +100 °C — brittle glass at room temperature, the disposable cup. One structural detail, a 110-degree shift."
+};
+
+const nbRecycleBuckets = {
+  "prompt": "\"Plastic is one meltable substance\" — file each case:",
+  "buckets": [
+    "remelts — recyclable if sorted",
+    "chars — never melts again",
+    "phase-separates in the melt"
+  ],
+  "items": [
+    {
+      "label": "HDPE milk bottles",
+      "bucket": 0
+    },
+    {
+      "label": "epoxy",
+      "bucket": 1
+    },
+    {
+      "label": "vulcanised rubber",
+      "bucket": 1
+    },
+    {
+      "label": "Bakelite",
+      "bucket": 1
+    },
+    {
+      "label": "compatible thermoplastics melted down together",
+      "bucket": 2
+    },
+    {
+      "label": "one stray PVC bottle in a PET batch",
+      "bucket": 2
+    }
+  ],
+  "why": "Thermosets and crosslinked elastomers never melt again; mixed thermoplastics separate like oil and water — which is why recycling sorts by resin code. Polymer identity is architecture."
+};
+
+const nbPlasmonEstimate = {
+  "prompt": "Gold nanoparticles 10–20 nm across look ruby-red because their conduction electrons resonate with light. Roughly what wavelength (nm) is the surface plasmon resonance?",
+  "unit": "nm",
+  "answer": 520,
+  "factor": 1.25,
+  "why": "Near 520 nm — green light absorbed, red reflected: the same physics that made medieval ruby glass. Bigger dot, redder emission for quantum dots — colour as a geometric parameter.",
+  "context": "Composition plus architecture: two knobs where bulk materials had one, and the second is free at the nanoscale."
+};
+
+const nbCarbonOrder = {
+  "prompt": "One element, three forms — drag the family chronicle into order:",
+  "items": [
+    "1985 — fullerene: 60 atoms curled into a closed ball, found by mass spectrometry of laser-vaporised graphite",
+    "1991 — Iijima's carbon nanotube: the same honeycomb sheet rolled into a cylinder of ~100 GPa tensile strength",
+    "roll angle tunes the tube — carrying current like a metal or semiconducting",
+    "2004 — graphene: one atomic layer peeled with adhesive tape; the 2010 Nobel for Geim and Novoselov",
+    "the 2-D zoo follows — MoS₂, hBN, phosphorene — out of the tape dispenser"
+  ],
+  "why": "Carbon's sp² bonding built the whole family — and a first-year lab technique opened the continent that precision equipment had been unknowingly producing for 150 years."
+};
+
+const nbBioMatch = {
+  "prompt": "Nature's prior art — pair each architecture with the design principle it teaches:",
+  "pairs": [
+    {
+      "left": "nacre — brick-and-mortar of 95% aragonite, 5% protein",
+      "right": "platelets slide, crack paths zigzag: ~3,000 times tougher than the mineral alone"
+    },
+    {
+      "left": "bone — hydroxyapatite platelets inside collagen fibrils",
+      "right": "self-repairing, load-adapting composite"
+    },
+    {
+      "left": "gecko feet — billions of nanoscale spatulae",
+      "right": "van der Waals forces summed over astronomical contact area"
+    },
+    {
+      "left": "lotus leaf — micron bumps under nanoscale wax crystals",
+      "right": "water balls and self-cleans — the lotus effect, now in paint and fabric"
+    }
+  ],
+  "why": "Biology achieves property X with abundant materials at ambient temperature, by architecture alone — and the 4-billion-year database is open."
+};
+
+const nbImplantBranch = {
+  "root": "The design environment: 37 °C, salty, oxygen-rich, immune-active. Choose the material for the job.",
+  "nodes": {
+    "start": {
+      "text": "The device must bond directly to living bone. Which specification do you write?",
+      "choices": [
+        {
+          "label": "Titanium — and let its oxide surface do the work",
+          "next": "ti",
+          "feedback": "The orthopaedic standard, for a reason the metal alone does not explain."
+        },
+        {
+          "label": "Cobalt-chrome throughout",
+          "next": "cc",
+          "feedback": "A superb load-bearer — but bearing load is not this job's whole spec."
+        }
+      ]
+    },
+    "ti": {
+      "text": "Osseointegration: bone grows into direct structural contact with the oxide surface — Brånemark's discovery in the 1950s–60s, now the basis of millions of dental and hip implants. The right interaction beats mere inertness.",
+      "choices": [
+        {
+          "label": "Next: the temporary scaffold",
+          "next": "degra"
+        }
+      ]
+    },
+    "cc": {
+      "text": "Cobalt-chrome carries joint loads superbly, but nothing in it invites bone into structural contact. For osseointegration, titanium's oxide wins — cobalt-chrome keeps the jobs where load-bearing is the whole story.",
+      "choices": [
+        {
+          "label": "Next: the temporary scaffold",
+          "next": "degra"
+        }
+      ]
+    },
+    "degra": {
+      "text": "A scaffold that must vanish as tissue regrows: poly(lactic-co-glycolic acid) hydrolyses on a tunable schedule — weeks to months, set by the lactide:glycolide ratio. The implant whose success is its own disappearance.",
+      "choices": []
+    }
+  },
+  "why": "Biocompatibility is not inertness but the right interaction — and controlled degradation makes the implant's disappearance its success metric."
+};
 ---
 <TopicPage slug="subjects/materials-science/expert/nanomaterials-and-biomaterials">
   <h2>Where you are, and what you will learn</h2>
@@ -74,6 +243,7 @@ const nanoCfg = {
     polymer's identity, every implant's surface chemistry, every drug-delivery vehicle's
     behaviour in water traces back to which functional groups are on display.
   </p>
+  <Widget no="2" caption="one line of the cheat-sheet hides a tragedy" widget="spot-error" config={nbGroupsSpot} />
   <p>
     <strong>So far:</strong> carbon's four bonds and its functional groups decide how a
     molecule meets water, other molecules and living tissue. Next we join those small working
@@ -100,6 +270,7 @@ const nanoCfg = {
     material of hip-implant bearing surfaces and bulletproof vests; ordinary HDPE (a few
     thousand units) is milk bottles. Same monomer, different chain length, different world.
   </p>
+  <Widget no="3" caption="drag between the two chain-building families" widget="compare" config={nbChainCompare} />
 
   <h2>Polymers II: from chains to materials</h2>
   <p>
@@ -120,6 +291,7 @@ const nanoCfg = {
     lightly crosslinked = elastomer (rubber bands), heavily crosslinked = rigid thermoset
     (circuit boards).
   </p>
+  <Widget no="4" caption="set the glass transition that splits fridge liner from cup" widget="place" config={nbTgPlace} />
   <p>
     <em>Common misconception:</em> "plastic is one meltable substance, so all plastics can be
     melted down and recycled together." Thermosets and crosslinked elastomers never melt
@@ -128,6 +300,7 @@ const nanoCfg = {
     single stray PVC bottle contaminates a PET batch. Polymer identity is architecture, and
     mixing architectures destroys the properties of both.
   </p>
+  <Widget no="5" caption="file each plastic by what the melt allows" widget="sort-buckets" config={nbRecycleBuckets} />
   <p>
     <strong>So far:</strong> polymer properties are architecture all the way down — chain
     length, branching, crystallinity, crosslink density, with T_g setting the temperature
@@ -154,6 +327,7 @@ const nanoCfg = {
     this unlocks: two knobs where bulk materials had one — <em>composition</em> and
     <em>architecture</em> — and the second is free at the nanoscale.
   </p>
+  <Widget no="6" caption="call the wavelength that turns gold ruby-red" widget="estimate" config={nbPlasmonEstimate} />
   <p>
     <em>Common misconception:</em> "nanotechnology means microscopic robots" (the science-fiction
     image). Real nanotechnology is mostly <em>materials science</em>: engineered particles,
@@ -181,6 +355,7 @@ const nanoCfg = {
     the scientific legacy is permanent: an entire zoo of 2-D materials (MoS₂, hBN,
     phosphorene) followed graphene out of the tape dispenser.
   </p>
+  <Widget no="7" caption="rebuild the nanocarbon family chronicle" widget="order" config={nbCarbonOrder} />
 
   <h2>Biomimetics: nature had nanotechnology first</h2>
   <p>
@@ -201,6 +376,7 @@ const nanoCfg = {
     architecture, and biomimetics reverse-engineers the architecture. The design lesson is
     humility with a work ethic — 4 billion years of R&amp;D is a database, and it is open.
   </p>
+  <Widget no="8" caption="pair each biological architecture with its principle" widget="match" config={nbBioMatch} />
   <p>
     <strong>So far:</strong> the nanoscale hands engineers two knobs — composition and
     architecture — and biology has been working the second one for four billion years. The
@@ -227,6 +403,7 @@ const nanoCfg = {
     resorbable scaffolds seeded with cells and signals, designed to be replaced by the
     patient's own tissue — the implant whose success is its own disappearance.
   </p>
+  <Widget no="9" caption="walk the implant-material decision" widget="branch" config={nbImplantBranch} />
   <p>
     <em>Common misconception:</em> "a biomaterial is a biological material." The term means a
     material <em>used in</em> a biological context: titanium, cobalt-chrome and PEEK are

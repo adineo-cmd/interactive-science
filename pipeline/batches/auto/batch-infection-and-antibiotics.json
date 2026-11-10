@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "subjects/medicine/intermediate/infection-and-antibiotics",
+    "activities": [
+      {
+        "anchor": "the stain's colour predicts which drugs",
+        "type": "sort-buckets",
+        "caption": "file each fact with its pathogen family",
+        "name": "iaFamiliesBuckets",
+        "config": {
+          "prompt": "The family name decides the weapon — file each fact:",
+          "buckets": ["bacteria — cells with machinery", "viruses — hijackers", "fungi — eukaryotes like us"],
+          "items": [
+            { "label": "own machinery — wall, ribosomes, DNA — every part a potential drug target", "bucket": 0 },
+            { "label": "sorted by the Gram stain: thick peptidoglycan holds the purple dye", "bucket": 0 },
+            { "label": "genetic payloads in protein coats, with no metabolism of their own", "bucket": 1 },
+            { "label": "antivirals target viral enzymes with minimal human counterparts — acyclovir, oseltamivir", "bucket": 1 },
+            { "label": "drugs must aim at cell walls and ergosterol membranes (amphotericin, azoles)", "bucket": 2 },
+            { "label": "the hardest to treat selectively, because the exploitable differences are few", "bucket": 2 }
+          ],
+          "why": "Which is why the clinician's first question is \"which family\" and the second is \"which machinery does it depend on\" — the first treatment is usually empiric, narrowed once cultures return."
+        }
+      },
+      {
+        "anchor": "the treatment always has two targets",
+        "type": "cloze",
+        "caption": "fill the host-response picture",
+        "name": "iaHostCloze",
+        "config": {
+          "text": "Much of \"feeling ill\" is the host's own response: fever is a regulated %%0%% set-point shift that many pathogens replicate poorly above, and inflammation is %%1%% plumbing that delivers phagocytes to the site. The catastrophic failure mode is %%2%% — the response becoming dysregulated and systemic — which is why antibiotics and fluids within the first %%3%% measurably change survival.",
+          "answers": [["hypothalamic", "hypothalamus"], ["vascular"], ["sepsis"], ["hour"]],
+          "hint": "Two body words, one syndrome, one unit of time."
+        }
+      },
+      {
+        "anchor": "The story's founding scene",
+        "type": "match",
+        "caption": "pair each antibiotic class with its target",
+        "name": "iaTargetsMatch",
+        "config": {
+          "prompt": "Selective toxicity, class by class — pair each drug family with what it attacks:",
+          "pairs": [
+            { "left": "beta-lactams (penicillin) and vancomycin", "right": "block peptidoglycan cross-links — the cell-wall target, the oldest and safest" },
+            { "left": "aminoglycosides, tetracyclines, macrolides", "right": "bind the 30S or 50S ribosomal subunits and freeze translation" },
+            { "left": "fluoroquinolones", "right": "hit bacterial DNA gyrase" },
+            { "left": "sulphonamides and trimethoprim", "right": "block folate synthesis — a pathway humans lack, since we eat folate" }
+          ],
+          "why": "Every target is a piece of bacterial machinery human cells either lack or carry in a different form — and bactericidal drugs kill while bacteriostatic ones halt growth and let immunity finish."
+        }
+      },
+      {
+        "anchor": "leave last-line drugs only",
+        "type": "spot-error",
+        "caption": "one line of the resistance briefing misreads the projection",
+        "name": "iaProjectionSpot",
+        "config": {
+          "prompt": "A resistance briefing — one line is wrong. Click it:",
+          "lines": [
+            "Beta-lactamase enzymes cleave penicillins — hence clavulanic acid added as a decoy inhibitor.",
+            "Efflux pumps eject the drug faster than it enters.",
+            "MRSA carries PBP2a, an altered enzyme beta-lactams can no longer bind — target modification.",
+            "Reduced porin channels and biofilm matrices shield whole communities — impermeability.",
+            "The O'Neill review projected drug-resistant infections would kill about one million people a year by 2050 — below today's road-injury toll."
+          ],
+          "errorLine": 4,
+          "correction": "The O'Neill review (2016) projected 10 million deaths a year by 2050 — more than cancer — at a cumulative cost near 100 trillion dollars.",
+          "why": "The four mechanisms are concrete; the projection is why stewardship is policy rather than etiquette."
+        }
+      },
+      {
+        "anchor": "a drug that once worked for you can fail you later",
+        "type": "predict",
+        "caption": "bet the early-stopping question before the reveal",
+        "name": "iaStopPredict",
+        "config": {
+          "q": "A patient completes half the course, feels better, and saves the rest \"for next time\". What does early stopping actually do?",
+          "choices": [
+            "It protects the body from becoming resistant.",
+            "It leaves the partially-resistant survivors standing in the bacterial population.",
+            "It has no effect on resistance either way.",
+            "It makes the person allergic to the drug."
+          ],
+          "answer": 1,
+          "why": "Bodies do not become resistant — bacteria do. Stopping early kills the most susceptible organisms and trains the rest: the same error, run in reverse from the prescription pad."
+        }
+      },
+      {
+        "anchor": "a hospital's problem in another",
+        "type": "branch",
+        "caption": "walk the stewardship decision",
+        "name": "iaStewardBranch",
+        "config": {
+          "root": "The prescriber's pen is itself an ecological force.",
+          "nodes": {
+            "start": {
+              "text": "Cultures are pending, the patient is stable, the likely organism is uncertain. What does stewardship prescribe?",
+              "choices": [
+                { "label": "The narrowest-spectrum agent that covers the likely organisms", "next": "narrow", "feedback": "Empiric-but-narrow: cover the probable pathogens, spare the commensal reservoirs." },
+                { "label": "The broadest agent available, to be safe", "next": "broad", "feedback": "Broad coverage treats this patient — and selects every other bacterium on the ward." }
+              ]
+            },
+            "narrow": {
+              "text": "Narrow-spectrum coverage plus de-escalation when cultures return is the stewardship pattern: treat the likely organism now, narrow the moment the laboratory answers.",
+              "choices": [
+                { "label": "Now: the dose and the finish", "next": "dose" }
+              ]
+            },
+            "broad": {
+              "text": "Over-broad dosing and under-dosing both select hardest — the first by exposing everything, the second by leaving partially-resistant survivors. Correct dosing kills the population before it can multiply.",
+              "choices": [
+                { "label": "Now: the dose and the finish", "next": "dose" }
+              ]
+            },
+            "dose": {
+              "text": "Dose correctly and stop when the course is done — no survivors left to train. And the discipline extends past the prescription: by weight, most of the world's antibiotic tonnage is used in livestock, so resistance genes travel in food, water and people.",
+              "choices": []
+            }
+          },
+          "why": "Treat only bacterial infections, narrow the spectrum, dose correctly, de-escalate, stop when done — stewardship is genuinely a one-world problem."
+        }
+      },
+      {
+        "anchor": "the only human disease ever eradicated",
+        "type": "compare",
+        "caption": "drag between the two platform families",
+        "name": "iaVaccineCompare",
+        "config": {
+          "prompt": "Vaccine platforms trade memory against safety — drag between them:",
+          "before": {
+            "label": "live attenuated (measles, oral polio, BCG)",
+            "text": "Replicates mildly: the strongest, longest memory — at the price of caution in immunocompromised patients."
+          },
+          "after": {
+            "label": "inactivated / subunit (flu, hepatitis B, acellular pertussis)",
+            "text": "Safer but weaker — needs adjuvants and boosters to finish the immune education."
+          },
+          "why": "Toxoids train antibodies against the toxin rather than the bug; mRNA and viral-vector platforms deliver just the antigen's blueprint — change the sequence, change the target, and development collapses from years to months."
+        }
+      },
+      {
+        "anchor": "waits for its competitors to be cleared",
+        "type": "estimate",
+        "caption": "call the FMT cure rate",
+        "name": "iaFmtEstimate",
+        "config": {
+          "prompt": "Broad-spectrum antibiotics dynamite the resident flora, and C. difficile blooms in the vacancy. Faecal microbiota transplantation cures recurrent C. difficile at rates above roughly what?",
+          "unit": "%",
+          "answer": 80,
+          "factor": 1.2,
+          "why": "Above 80% — one of modern medicine's strangest and most effective therapies: restoring the flora wholesale instead of fighting the spore-former with yet another drug.",
+          "context": "The microbiome is not scenery: it colonises surfaces pathogens would love, trains the immune system and synthesises vitamins."
+        }
+      }
+    ]
+  }
+]

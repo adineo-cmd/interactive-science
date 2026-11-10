@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "subjects/materials-science/advanced/semiconductors-and-doping",
+    "activities": [
+      {
+        "anchor": "closely spaced tuning forks",
+        "type": "sort-buckets",
+        "caption": "file each material by what its bands allow",
+        "name": "sdBandBuckets",
+        "config": {
+          "prompt": "One energy map, three conducting classes — file each material:",
+          "buckets": ["metal — bands overlap", "semiconductor — gap ~1 eV", "insulator — gap 5+ eV"],
+          "items": [
+            { "label": "a half-filled highest band — electrons at the top drift freely", "bucket": 0 },
+            { "label": "silicon, gap 1.12 eV", "bucket": 1 },
+            { "label": "germanium, gap 0.66 eV", "bucket": 1 },
+            { "label": "GaAs, gap 1.42 eV", "bucket": 1 },
+            { "label": "diamond, gap 5.5 eV", "bucket": 2 },
+            { "label": "full valence band, no electron can be promoted — nothing conducts", "bucket": 2 }
+          ],
+          "why": "Same bookkeeping everywhere: overlap → always conducting; about 1 eV → promotable by heat, light or impurity; 5+ eV → locked. The semiconductor is the tunable middle."
+        }
+      },
+      {
+        "anchor": "end of story",
+        "type": "compare",
+        "caption": "drag between the two resistors under the same warmth",
+        "name": "sdThermistorCompare",
+        "config": {
+          "prompt": "Two resistors, one heat source — drag between their responses:",
+          "before": {
+            "label": "the metal resistor",
+            "text": "Conductivity falls as temperature rises: lattice vibrations scatter the electrons it already has. Warm it and resistance climbs."
+          },
+          "after": {
+            "label": "the semiconductor resistor",
+            "text": "Heat promotes carriers across the gap — the carrier population rises exponentially. Warm it and resistance drops."
+          },
+          "why": "The mechanisms are opposites, not merely different sizes — which is exactly what makes a thermistor possible."
+        }
+      },
+      {
+        "anchor": "the effect is the lesson's showpiece",
+        "type": "match",
+        "caption": "pair each dopant fact with its consequence",
+        "name": "sdDopantMatch",
+        "config": {
+          "prompt": "Substitutional doping, atom by atom — pair each move with what it buys:",
+          "pairs": [
+            { "left": "phosphorus (5 valence electrons) in silicon", "right": "four electrons complete the bonds; the fifth sits in a shallow donor level just under the conduction band" },
+            { "left": "boron (3 valence electrons) in silicon", "right": "one bond left unsatisfied — an acceptor that steals an electron and leaves a mobile hole: p-type" },
+            { "left": "mass-action law n·p = nᵢ²", "right": "doping also fixes the minority-carrier population — raising electrons suppresses holes" },
+            { "left": "the Fermi level", "right": "shifts toward whichever band the dopant feeds — the energy-space thermometer every device reads" }
+          ],
+          "why": "One foreign atom in five million, near-perfect yield per atom — the arithmetic behind a factor of ~500,000 in conductivity."
+        }
+      },
+      {
+        "anchor": "a barrier exactly as tall as the Fermi-level difference",
+        "type": "order",
+        "caption": "rebuild how a boundary becomes a diode",
+        "name": "sdJunctionOrder",
+        "config": {
+          "prompt": "Join p to n and a device assembles itself — drag the steps into order:",
+          "items": [
+            "Mobile carriers diffuse down their gradients — electrons into p, holes into n",
+            "Each crossing exposes the fixed dopant ions left behind",
+            "The exposed charge strip — the depletion region — builds an electric field",
+            "The field opposes further diffusion until equilibrium: a built-in barrier near 0.7 V for silicon",
+            "Forward bias lowers the barrier, and majority carriers flood across"
+          ],
+          "why": "Current then grows about tenfold per ~60 mV — the steepest useful switch curve in technology, all from immobile charges steering mobile ones."
+        }
+      },
+      {
+        "anchor": "absorption tolerates the slow path",
+        "type": "estimate",
+        "caption": "call the photon energy behind a colour",
+        "name": "sdLedEstimate",
+        "config": {
+          "prompt": "Photon energy E ≈ 1240/λ(nm) eV. A green LED emits at 530 nm — roughly what photon energy does its gap need?",
+          "unit": "eV",
+          "answer": 2.3,
+          "factor": 1.3,
+          "why": "1240/530 ≈ 2.3 eV (red at 650 nm needs ~1.9 eV; blue at 450 nm ~2.75 eV). Gap engineering is colour engineering — and the direct-gap III–V family supplies the palette.",
+          "context": "Silicon can absorb fine (solar cells work) but cannot emit efficiently: an indirect gap needs a phonon to fix the momentum mismatch."
+        }
+      },
+      {
+        "anchor": "keep the gate's field in charge of the channel",
+        "type": "branch",
+        "caption": "walk the switch-control decision",
+        "name": "sdGateBranch",
+        "config": {
+          "root": "You need a switch that flips billions of times per second at almost no control-energy cost.",
+          "nodes": {
+            "start": {
+              "text": "Where does the control signal attach?",
+              "choices": [
+                { "label": "A third terminal over a thin insulator — a MOSFET gate", "next": "field", "feedback": "Control by field: the architecture that scales to billions." },
+                { "label": "Inject a control current straight into the channel", "next": "current", "feedback": "Control by current pays on every switch." },
+                { "label": "Build the channel from gapless graphene", "next": "graphene", "feedback": "Fast — but a conductor looking for a switch." }
+              ]
+            },
+            "field": {
+              "text": "Gate voltage electrostatically inverts the channel surface and turns conduction on. The insulator blocks DC gate current, so switching costs only charging and discharging a tiny capacitance — which is what lets billions sit on one chip.",
+              "choices": []
+            },
+            "current": {
+              "text": "Every switch spends control energy, and the control wiring melts long before the transistors do. Moore's-law scaling — high-k dielectrics, strained silicon, FinFETs, gate-all-around — exists to keep the gate's field in charge instead.",
+              "choices": []
+            },
+            "graphene": {
+              "text": "Gapless means always conducting: there is no barrier for a gate to lower, no off-state to steer toward. MoS₂ and other 2-D materials with usable gaps wait at the research edge for exactly this reason.",
+              "choices": []
+            }
+          },
+          "why": "The MOSFET is the junction given a steering terminal — the transistor's quiet miracle is control by field, not by current."
+        }
+      },
+      {
+        "anchor": "like a valve handle under force",
+        "type": "judge",
+        "caption": "true or false — neutrality and the gate, audited",
+        "name": "sdNeutralJudge",
+        "config": {
+          "statements": [
+            { "s": "Doping fills the crystal with electrons the way a bucket fills, leaving it negatively charged overall.", "truth": false, "why": "The crystal stays neutral: every fixed donor ion (+) is balanced by a mobile electron (−). What changes is which charges are mobile." },
+            { "s": "A crystal doped to 10¹⁶ donors per cm³ still holds only a few carriers per million atoms.", "truth": true, "why": "10¹⁶ carriers against 5 × 10²² atoms — the effect is astronomical in conductivity and tiny in headcount." },
+            { "s": "A MOSFET gate carries a steady control current while the switch is held open.", "truth": false, "why": "The gate sits on an insulator — in steady state no DC gate current flows at all. It is a small capacitor." },
+            { "s": "Switching a MOSFET costs only the energy to charge and discharge its gate capacitance.", "truth": true, "why": "Control by field, not by current — the reason billions can switch on one chip without melting." }
+          ]
+        }
+      },
+      {
+        "anchor": "why wafer maps read like epidemiology",
+        "type": "spot-error",
+        "caption": "one line of the morning-meeting note inverts the yield math",
+        "name": "sdYieldSpot",
+        "config": {
+          "prompt": "A fab's yield note — one line is wrong. Click it:",
+          "lines": [
+            "A 300 mm wafer hosts hundreds of dies.",
+            "A defect landing anywhere on a die kills that die.",
+            "If defects land at random, the fraction of good dies falls steeply as die area grows.",
+            "So doubling the die area roughly doubles the yield — monster dies are the profitable default.",
+            "Cleanrooms are graded like operating theatres, and \"defects per cm²\" opens the morning meeting."
+          ],
+          "errorLine": 3,
+          "correction": "Double the area and yield collapses — a bigger die gives random defects more chances to land on it. Monster dies are reserved for products with monster prices.",
+          "why": "Yield arithmetic is why fabs cost tens of billions: one defect per billion is the difference between a chip and a paperweight."
+        }
+      }
+    ]
+  }
+]

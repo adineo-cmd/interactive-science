@@ -1,0 +1,148 @@
+[
+  {
+    "slug": "subjects/medicine/intermediate/how-doctors-think",
+    "activities": [
+      {
+        "anchor": "carries more diagnostic bits than any single test",
+        "type": "estimate",
+        "caption": "call the history's share of the diagnosis",
+        "name": "dtHistoryEstimate",
+        "config": {
+          "prompt": "Classic clinical-teaching estimates put one stage alone at most of the diagnosis. Roughly what share belongs to the history?",
+          "unit": "% of diagnosis",
+          "answer": 80,
+          "factor": 1.3,
+          "why": "About 80%, with examination and tests splitting most of the rest. Symptom timing is often the discriminator: thunderclap onset points to haemorrhage, hours of gradual build to inflammation, exertion-then-rest cycling to a flow problem."
+        }
+      },
+      {
+        "anchor": "stated bluntly in the maxim",
+        "type": "branch",
+        "caption": "walk the differential's two-criteria ranking",
+        "name": "dtCantMissBranch",
+        "config": {
+          "root": "Chest-pain triage: the differential ranks candidates by two criteria at once — likelihood and danger.",
+          "nodes": {
+            "start": {
+              "text": "One candidate is reflux (very common). Another is aortic dissection — perhaps 1–2 presentations per thousand, lethal within hours, with a different emergency treatment. How do you rank dissection?",
+              "choices": [
+                { "label": "Promote it up the ranking despite the rarity", "next": "promote", "feedback": "The profession's distinctive twist: danger ranks up rarity." },
+                { "label": "Leave it low — far too rare to consider first", "next": "low", "feedback": "Likelihood alone is only half the ranking rule." }
+              ]
+            },
+            "promote": {
+              "text": "A \"can't-miss\" diagnosis is promoted deliberately: missing dissection costs hours, while the common candidate usually announces itself in the history. That is why the ranking is ordered by likelihood and danger together.",
+              "choices": [
+                { "label": "Now: how to test", "next": "fish" }
+              ]
+            },
+            "low": {
+              "text": "Ranked on likelihood alone, dissection hides — and the trade-off is written in hours. Can't-miss diagnoses rank up even when rare; that is what the second criterion is for.",
+              "choices": [
+                { "label": "Now: how to test", "next": "fish" }
+              ]
+            },
+            "fish": {
+              "text": "Testing follows the same discipline: each test is chosen because it can discriminate between the top candidates. A test that will not change management is not worth its own risks and costs — no scattershot panels.",
+              "choices": []
+            }
+          },
+          "why": "Ranked by likelihood and danger; tested to discriminate, not to fish — that principle is what separates a targeted workup from a scattershot panel."
+        }
+      },
+      {
+        "anchor": "information no one-off scan provides",
+        "type": "match",
+        "caption": "pair each exam pattern with its localisation",
+        "name": "dtLocaliseMatch",
+        "config": {
+          "prompt": "The neurological exam as localisation instrument — pair each pattern with its reading:",
+          "pairs": [
+            { "left": "weakness with brisk reflexes and an upgoing plantar response (Babinski)", "right": "upper motor neuron lesion — brain or spinal cord, upstream of the anterior horn cell" },
+            { "left": "weakness with wasting, flaccidity and lost reflexes", "right": "lower motor neuron lesion — anterior horn, root, plexus or peripheral nerve" },
+            { "left": "right face and right arm weak together, right leg spared", "right": "left cerebral hemisphere's cortex — in the cord, leg and arm tracts run together" },
+            { "left": "orthostatic blood-pressure drop; heart rate fails to rise on standing", "right": "the autonomic exam's own signatures" }
+          ],
+          "why": "Each pathway runs a known route, so a pattern of deficits localises the lesion before any scan — and re-examining an hour later shows whether a stroke is extending."
+        }
+      },
+      {
+        "anchor": "three meanings, depending entirely on who is being tested",
+        "type": "estimate",
+        "caption": "do the mammography arithmetic by hand",
+        "name": "dtBayesEstimate",
+        "config": {
+          "prompt": "Screen 10,000 women: prevalence 1%, sensitivity 85%, specificity 90% (so 990 false positives among the 9,900 disease-free). Of the ~1,075 positive results, roughly how many are true positives?",
+          "unit": "true positives",
+          "answer": 85,
+          "factor": 1.6,
+          "why": "85 of ~1,075 positives — a positive predictive value of about 8%. Nine of ten flagged women do not have cancer. Run the identical test where prevalence is 10% and the PPV lifts to about 43%: the test did not change, the population did.",
+          "context": "Sensitivity and specificity belong to the test; predictive value belongs to the test plus the population."
+        }
+      },
+      {
+        "anchor": "Formal versions of this reasoning use",
+        "type": "sort-buckets",
+        "caption": "file each rule under the right test property",
+        "name": "dtSnOutBuckets",
+        "config": {
+          "prompt": "Two working rules govern test direction — file each fact:",
+          "buckets": ["sensitive — a negative rules OUT", "specific — a positive rules IN"],
+          "items": [
+            { "label": "a highly sensitive test comes back negative — disease effectively excluded", "bucket": 0 },
+            { "label": "SnNout", "bucket": 0 },
+            { "label": "D-dimer: extremely sensitive, poorly specific — the rule-out gate for clots", "bucket": 0 },
+            { "label": "a negative D-dimer in a low-risk patient ends the workup", "bucket": 0 },
+            { "label": "a highly specific test comes back positive — disease effectively confirmed", "bucket": 1 },
+            { "label": "SpPin", "bucket": 1 }
+          ],
+          "why": "A positive D-dimer barely raises the odds and must be followed by specific imaging — likelihood ratios (LR+ = sensitivity / (1 − specificity)) shift the odds multiplicatively and let imperfect tests chain."
+        }
+      },
+      {
+        "anchor": "the conscious counterweights",
+        "type": "spot-error",
+        "caption": "one line of the case reasoning reaches for the wrong rule",
+        "name": "dtOccamSpot",
+        "config": {
+          "prompt": "A case discussion — one line reaches for the wrong rule of thumb. Click it:",
+          "lines": [
+            "Fast pattern recognition is legitimate expertise for routine presentations.",
+            "The referral note's phrase fixed attention, and later evidence was read through it — anchoring.",
+            "The process stopped at the first plausible diagnosis — the most common cognitive error in studies of diagnostic failure.",
+            "The patient is elderly and complex, so Occam's razor demands a single unifying diagnosis.",
+            "With an unstable patient, resuscitation precedes diagnosis — \"sick or not sick\" comes first."
+          ],
+          "errorLine": 3,
+          "correction": "Hickam's dictum governs the elderly and the complex — patients can have as many diseases as they please. Occam's razor (seek one unifying diagnosis) is the counterweight for young patients with one coherent story.",
+          "why": "The rules of thumb are scoped counterweights, each aimed at a known shortcut of the fast system."
+        }
+      },
+      {
+        "anchor": "what would I have missed",
+        "type": "judge",
+        "caption": "true or false — the guardrails, audited",
+        "name": "dtGuardrailJudge",
+        "config": {
+          "statements": [
+            { "s": "Diagnostic error is a rare curiosity, confined to unusual diseases.", "truth": false, "why": "A 2023 Johns Hopkins analysis estimated ~795,000 Americans die or suffer permanent disability from diagnostic error yearly; earlier outpatient work put it near one adult in twenty per year." },
+            { "s": "Vascular events, infections and cancers account for about three-quarters of serious diagnostic harm.", "truth": true, "why": "Stroke, sepsis, pneumonia, venous thromboembolism and lung cancer top the list." },
+            { "s": "Checklists and structured templates work by making clinicians smarter.", "truth": false, "why": "They make the fast system slow down at the known failure points — forcing the can't-miss items into view when the anchor says otherwise." },
+            { "s": "Explicit pre-test probability scoring (Wells score, CHADS₂) makes the Bayesian step visible.", "truth": true, "why": "Alongside decision-support systems that compute the likelihood ratios clinicians skip." }
+          ]
+        }
+      },
+      {
+        "anchor": "a checklist for the mind",
+        "type": "cloze",
+        "caption": "fill the expert layer's four refinements",
+        "name": "dtExpertCloze",
+        "config": {
+          "text": "Experts store diagnosis as organised %%0%% — classic presentation, risk factors, course, complications — so pattern recognition is fast script-matching. Chained tests are not %%1%%: proper analysis works in odds and %%2%% throughout. AI classifiers trained on enriched prevalence over-predict in the wild, so emerging best practice uses them as a %%3%% reader, not a first opinion.",
+          "answers": [["narratives", "scripts"], ["independent"], ["likelihood ratios"], ["second"]],
+          "hint": "The first blank is what novices lack; the third is the multiplicative quantity; the last is a reading role."
+        }
+      }
+    ]
+  }
+]

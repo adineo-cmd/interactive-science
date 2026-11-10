@@ -10,6 +10,137 @@ const pharmaCfg = {
     { math: '4 · Interactions: the polypharmacy web', note: 'One drug changes another\'s metabolism (liver enzymes, grapefruit juice inhibiting CYP3A4). Elderly patients on 10+ medications are chemistry experiments — medication review is a clinical skill.' },
   ],
 };
+
+const pbAdmeOrder = {
+  "prompt": "ADME, stage by stage — drag the journey into order:",
+  "items": [
+    "Absorption: dissolve, survive stomach acid, cross the gut wall",
+    "First-pass metabolism: gut wall and hepatic enzymes take their toll en route",
+    "Distribution: blood flow, fat solubility and plasma protein binding decide where it travels",
+    "Metabolism: cytochrome P450 edits a lipid-soluble drug into a water-soluble one",
+    "Excretion: chiefly renal — failing kidneys raise levels the way failing livers do"
+  ],
+  "why": "Only the free, unbound fraction acts — a drug clipped to albumin is pharmacologically inert cargo, and competitors for the same albumin sites can suddenly unbind each other."
+};
+
+const pbMorphineEstimate = {
+  "prompt": "Oral morphine's bioavailability is around 30%. An intravenous dose is 10 mg. Roughly what oral dose delivers the same systemic amount?",
+  "unit": "mg",
+  "answer": 30,
+  "factor": 1.4,
+  "why": "30% of 30 mg ≈ 10 mg — oral doses run roughly three times IV doses. Glyceryl trinitrate is the extreme case: almost completely destroyed by the liver, so it is given under the tongue into veins that bypass it entirely."
+};
+
+const pbSteadyPlace = {
+  "prompt": "A drug with a six-hour half-life is taken every twelve hours. Place the time to steady state:",
+  "labels": [
+    "0",
+    "12",
+    "24",
+    "36",
+    "48"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 48
+  },
+  "answer": 30,
+  "tolerance": 2,
+  "why": "About five half-lives — roughly thirty hours here — whatever the dose or interval. Halving the dosing interval narrows the peak-to-trough swing when a narrow window demands it; a loading dose fills the tank when waiting is intolerable."
+};
+
+const pbMissedPredict = {
+  "q": "A patient on a wide-window antibiotic misses a dose and doubles the next. A patient on warfarin does the same. What distinguishes the two outcomes?",
+  "choices": [
+    "Nothing — kinetics is kinetics.",
+    "The wide-window drug absorbs the extra peak; the narrow-window drug's peak pushes directly toward toxicity.",
+    "Doubling always restores the level that was lost.",
+    "Doubling halves the time to steady state in both cases."
+  ],
+  "answer": 1,
+  "why": "Kinetics does not work in arrears: the extra dose adds a new peak on top of the current trough rather than restoring the lost level. Window width decides whether that peak is forgivable."
+};
+
+const pbReceptorMatch = {
+  "prompt": "Drugs act by binding — pair each term with its meaning:",
+  "pairs": [
+    {
+      "left": "agonist",
+      "right": "binds and activates — adrenaline at beta-receptors speeds the heart"
+    },
+    {
+      "left": "antagonist",
+      "right": "binds and blocks, denying the site to the body's own signal — beta-blockers quiet the same receptor"
+    },
+    {
+      "left": "potency (EC₅₀)",
+      "right": "where the curve sits on the dose axis — decides the milligram count on the label"
+    },
+    {
+      "left": "efficacy",
+      "right": "the height of the plateau — decides whether the drug can do the job at all"
+    }
+  ],
+  "why": "Selectivity is the third property: most \"side effects\" are the same key fitting other locks — H1 receptors in the brain drowse you, beta-2 receptors lining the airways constrict."
+};
+
+const pbPlateauSpot = {
+  "prompt": "A dosing note — one line confuses the curve's ceiling. Click it:",
+  "lines": [
+    "The dose–response curve is a sigmoid: threshold, steep middle, plateau.",
+    "Potency is where the curve sits on the dose axis; efficacy is the plateau's height.",
+    "Above the plateau, higher doses add toxicity without adding effect.",
+    "So doubling a near-maximal dose roughly doubles the therapeutic effect as well.",
+    "For the patient, efficacy and toxicity are what matter; potency sets the milligram count."
+  ],
+  "errorLine": 3,
+  "correction": "Doubling a near-maximal dose doubles nothing but the side effects — effect has a ceiling, toxicity does not.",
+  "why": "The plateau is the whole point: past it, the only curve still rising is the toxicity curve."
+};
+
+const pbWindowBuckets = {
+  "prompt": "Two kinds of drugs in the pharmacopoeia — file each:",
+  "buckets": [
+    "wide window — forgives dosing errors",
+    "narrow window — titrate and monitor"
+  ],
+  "items": [
+    {
+      "label": "most antibiotics",
+      "bucket": 0
+    },
+    {
+      "label": "most antihistamines",
+      "bucket": 0
+    },
+    {
+      "label": "a missed or doubled dose rarely matters",
+      "bucket": 0
+    },
+    {
+      "label": "warfarin — titrated to the individual, monitored by INR",
+      "bucket": 1
+    },
+    {
+      "label": "lithium — monitored by serum level",
+      "bucket": 1
+    },
+    {
+      "label": "digoxin, phenytoin, insulin — effective and toxic concentrations nearly touching",
+      "bucket": 1
+    }
+  ],
+  "why": "Therapeutic index = TD₅₀ / ED₅₀: above ~10 comfortable, under ~2 dangerous. A new antibiotic, NSAIDs or dehydration can destabilise a patient stable for years on warfarin — the narrow window is where shifts show first."
+};
+
+const pbCypEstimate = {
+  "prompt": "The cytochrome P450 family is where pharmacokinetic interactions fight. CYP3A4 alone handles roughly what share of all prescription drugs?",
+  "unit": "%",
+  "answer": 50,
+  "factor": 1.4,
+  "why": "About half — which is why grapefruit juice's furanocoumarins, irreversibly disabling intestinal CYP3A4 for a day or more, can multiply a statin's blood level several-fold with no change in dose.",
+  "context": "Inducers run the other way: rifampicin and St John's wort rev up CYP enzymes and can drop another drug below its window."
+};
 ---
 <TopicPage slug="subjects/medicine/intermediate/pharmacology-basics">
 
@@ -82,7 +213,9 @@ const pharmaCfg = {
     failing kidneys raise drug levels exactly the way failing livers do — the reason dose adjustments
     are standard practice in kidney disease.
   </p>
+  <Widget no="2" caption="rebuild a swallowed tablet's journey" widget="order" config={pbAdmeOrder} />
   <p><em>Common misconception:</em> 100 milligrams by mouth and 100 milligrams intravenously put the same amount of drug into the circulation. Bioavailability is the whole point of the distinction: the swallowed dose runs the gauntlet of gut wall and first-pass liver metabolism, so oral morphine delivers roughly 30 per cent of its label, and glyceryl trinitrate is given under the tongue precisely because a swallow would deliver almost none of it.</p>
+  <Widget no="3" caption="convert the route before the dose chart does" widget="estimate" config={pbMorphineEstimate} />
 
   <h2>Half-life and the rhythm of dosing</h2>
   <p>
@@ -104,7 +237,9 @@ const pharmaCfg = {
     typically double the maintenance) fills the tank immediately, with maintenance doses then matching
     the outflow.
   </p>
+  <Widget no="4" caption="set the five-half-life clock on the timeline" widget="place" config={pbSteadyPlace} />
   <p><em>Common misconception:</em> a missed dose is corrected by doubling the next one. Kinetics does not work in arrears: the extra dose does not restore the level you lost, it adds a new peak on top of the current trough — for a wide-window drug usually forgivable, for warfarin, lithium or digoxin a direct push toward toxicity. The clinical rule is the opposite: take the next dose on schedule and let the five-half-life clock rebuild steady state.</p>
+  <Widget no="5" caption="bet the doubled-dose outcome before the reveal" widget="predict" config={pbMissedPredict} />
   <p>
     <strong>So far:</strong> kinetics answers "how much drug is in the blood, and when" — half-life
     sets the rhythm, about five half-lives brings steady state, and a loading dose fills the tank
@@ -131,9 +266,11 @@ const pharmaCfg = {
     disproportionately the craft of widening the gap between the target that treats and the targets
     that harm.
   </p>
+  <Widget no="6" caption="pair each pharmacodynamic term with its reading" widget="match" config={pbReceptorMatch} />
   <p><em>Common misconception:</em> "more is better." Because of the plateau, doses above the ceiling
   of the curve add toxicity without adding effect. Doubling a near-maximal dose doubles nothing but
   the side effects.</p>
+  <Widget no="7" caption="one line of the dosing note misreads the ceiling" widget="spot-error" config={pbPlateauSpot} />
   <p>
     <strong>So far:</strong> agonist or antagonist, potency or efficacy — those words describe what
     a drug does at a single target. The next section adds the safety dimension: how far the useful
@@ -158,6 +295,7 @@ const pharmaCfg = {
     destabilise a patient stable for years on warfarin: any shift in the window's arithmetic shows up
     first in the narrow-window drugs.
   </p>
+  <Widget no="8" caption="file each drug by how much dosing slack it allows" widget="sort-buckets" config={pbWindowBuckets} />
 
   <h2>Interactions: the polypharmacy web</h2>
   <p>
@@ -180,6 +318,7 @@ const pharmaCfg = {
     at the right dose, with what interactions?" — is a core clinical skill, and why "deprescribing"
     is a word in modern guidelines.
   </p>
+  <Widget no="9" caption="call the battleground enzyme's caseload" widget="estimate" config={pbCypEstimate} />
   <p><em>Common misconception:</em> herbal and "natural" products are not drugs, so they cannot interact. St John's wort is the standing refutation: it induces CYP enzymes, dropping oral contraceptives, transplant immunosuppressants and anticoagulants below their windows, and grapefruit juice — the most ordinary item in the fruit aisle — disables CYP3A4 for a day or more. To the liver enzymes, a plant molecule and a prescription molecule are equally substrates; the web does not care where the molecule was bottled.</p>
 
   <h2>From molecule to medicine</h2>

@@ -1,0 +1,150 @@
+[
+  {
+    "slug": "subjects/materials-science/expert/computational-materials-design",
+    "activities": [
+      {
+        "anchor": "spread wider and compress bond angles",
+        "type": "place",
+        "caption": "set water's bond angle where the lone pairs leave it",
+        "name": "cmdWaterPlace",
+        "config": {
+          "prompt": "Methane's tetrahedron sits at 109.5°. Water has two bonds plus two lone pairs — place its H–O–H angle on the scale:",
+          "labels": ["90", "100", "110", "120"],
+          "scale": { "min": 90, "max": 120 },
+          "answer": 104.5,
+          "tolerance": 4,
+          "why": "104.5°: lone pairs spread wider than bonding pairs and squeeze the angle — geometry from a two-dimensional count, the translation VSEPR licenses."
+        }
+      },
+      {
+        "anchor": "a one-letter code for its local dimensionality",
+        "type": "match",
+        "caption": "pair each orbital construct with its signature",
+        "name": "cmdHybridMatch",
+        "config": {
+          "prompt": "From sketches to quantum mechanics — pair each construct with what it explains:",
+          "pairs": [
+            { "left": "sp³ mixing", "right": "four equivalent lobes pointing tetrahedrally — carbon in diamond and methane" },
+            { "left": "sp² mixing", "right": "three planar lobes plus a perpendicular p orbital — graphene and benzene's delocalised rings" },
+            { "left": "sp mixing", "right": "the linear triple bond — acetylene" },
+            { "left": "O₂'s two unpaired electrons", "right": "the Lewis structure cannot explain the paramagnetism; filling MOs from the bottom predicts it" }
+          ],
+          "why": "Read the hybrid, know the geometry — and the same formalism, scaled to ~10²³ orbitals smeared into bands, yields the band gap: the most computed number in the field."
+        }
+      },
+      {
+        "anchor": "docking scores live or die on them",
+        "type": "sort-buckets",
+        "caption": "file each soft interaction with its family",
+        "name": "cmdForcesBuckets",
+        "config": {
+          "prompt": "Three weak forces organise matter — file each fact:",
+          "buckets": ["dispersion (London)", "dipole–dipole", "hydrogen bond"],
+          "items": [
+            { "label": "instantaneous dipoles from fluctuating electron clouds — present everywhere", "bucket": 0 },
+            { "label": "iodine solid; Teflon's slippery surface", "bucket": 0 },
+            { "label": "a gecko's climb, multiplied over billions of nanoscale contacts", "bucket": 0 },
+            { "label": "attractions between polar molecules", "bucket": 1 },
+            { "label": "H bonded to N, O or F, attracted to a lone pair", "bucket": 2 },
+            { "label": "worth roughly 10–40 kJ/mol against covalent bonds' 150–1,000", "bucket": 2 }
+          ],
+          "why": "The magnitudes are the design information — water boils 180 degrees above its weight class, DNA unzips one base at a time, and nacre's toughness lives at interfaces."
+        }
+      },
+      {
+        "anchor": "the way a machinist knows the machine",
+        "type": "order",
+        "caption": "rebuild DFT's bargain, step by step",
+        "name": "cmdDftOrder",
+        "config": {
+          "prompt": "From hopeless exactness to engineering prediction — drag the bargain into order:",
+          "items": [
+            "Brute force dies first: 10 interacting electrons already exceed any conceivable memory",
+            "Hohenberg–Kohn (1964): the ground-state electron density determines everything about the system",
+            "Kohn–Sham (1965): swap the interacting problem for non-interacting electrons in an approximate potential",
+            "The payoff: lattice constants within a few percent, formation energies, elastic moduli, band structures",
+            "The craft: know the blind spots — band gaps underestimated, dispersion patched, DFT+U for correlated oxides"
+          ],
+          "why": "Nobel 1998 (Kohn with Pople). The practitioner knows the error bars the way a machinist knows the machine's backlash."
+        }
+      },
+      {
+        "anchor": "the field's data commons",
+        "type": "estimate",
+        "caption": "call the size of GNoME's stability frontier",
+        "name": "cmdGnomeEstimate",
+        "config": {
+          "prompt": "DeepMind's GNoME (2023) proposed 2.2 million new crystal structures. Roughly how many sit on the computed stability frontier?",
+          "unit": "structures",
+          "answer": 380000,
+          "factor": 2,
+          "why": "About 380,000 — multiplying the roughly 48,000 stable inorganic crystals known from a century of experiment several times over, in one publication.",
+          "context": "The caveat that keeps the field honest: surrogates interpolate well and extrapolate poorly — training-set coverage bounds trust."
+        }
+      },
+      {
+        "anchor": "an extraordinary hit rate",
+        "type": "predict",
+        "caption": "bet the A-Lab scoreboard before the reveal",
+        "name": "cmdAlabPredict",
+        "config": {
+          "q": "In its 2023 run, the Berkeley A-Lab autonomously proposed and tried to make 58 crystals over 17 days. How many formed?",
+          "choices": [
+            "58 — computation is exact",
+            "41 — an extraordinary rate for new materials, with a miss rate no serious loop pretends away",
+            "0 — predicted compounds always fail to synthesise",
+            "3 — synthesis is the bottleneck that never yields"
+          ],
+          "answer": 1,
+          "why": "41 of 58: metastability, competing phases and kinetic barriers that a 0-kelvin ground-state calculation never sees. Computation narrows the funnel; the furnace still gets the final word."
+        }
+      },
+      {
+        "anchor": "compressed to days",
+        "type": "branch",
+        "caption": "walk the self-driving laboratory's next move",
+        "name": "cmdLoopBranch",
+        "config": {
+          "root": "Design–make–test once cost a PhD student a year. You are running the compressed loop.",
+          "nodes": {
+            "start": {
+              "text": "The robot line is idle and the algorithm must choose the next sample. Which policy do you run?",
+              "choices": [
+                { "label": "Bayesian optimisation — pick the experiment that maximises information", "next": "info", "feedback": "The steepest knowledge-per-sample curve is the whole point of closing the loop." },
+                { "label": "Forward screening — propose, compute, filter the top candidates", "next": "forward", "feedback": "The classic funnel. Inverse design runs it the other way round." },
+                { "label": "Trust the surrogate even at the extrapolation edge", "next": "blind", "feedback": "Where the training data ends, the model guesses." }
+              ]
+            },
+            "info": {
+              "text": "Active learning chooses the sample that teaches the model most — the design–make–test cycle learns where to look next instead of waiting for luck. High-entropy alloys and solid-state electrolytes came out of loops like this.",
+              "choices": []
+            },
+            "forward": {
+              "text": "Forward screening sweeps a candidate space and filters. Inverse design inverts it: specify the property — a target band gap, a modulus — and search structure space for what delivers it.",
+              "choices": []
+            },
+            "blind": {
+              "text": "Surrogates interpolate within their training manifolds and inherit their biases; several prominent database entries failed independent reproduction. Outside the manifold, only synthesis and measurement decide what is real.",
+              "choices": []
+            }
+          },
+          "why": "The MGI's 2011 premise — halve discovery-to-deployment by making computation first-class — has largely been met; the bottleneck moved to data quality, robotics and judgement."
+        }
+      },
+      {
+        "anchor": "still needed synthesis to exist and measurement to be believed",
+        "type": "judge",
+        "caption": "true or false — the division of labour, audited",
+        "name": "cmdVerifyJudge",
+        "config": {
+          "statements": [
+            { "s": "Machine learning has made experiments optional — the surrogate's word is the result.", "truth": false, "why": "Models interpolate within their training manifolds and inherit their biases; the strongest predictions remain hypotheses until a furnace agrees." },
+            { "s": "Several prominent database entries failed independent reproduction.", "truth": true, "why": "Which is why standard benchmarks and uncertainty-quantified models are the frontier responses." },
+            { "s": "Computation narrows a candidate space by orders of magnitude; experiments decide what is real.", "truth": true, "why": "The accurate division of labour — search is automated, verification is not." },
+            { "s": "Negative results — compounds that failed to synthesise — are archived as carefully as successes.", "truth": false, "why": "They are barely archived anywhere, and DFT's systematic errors become the surrogate's priors." }
+          ]
+        }
+      }
+    ]
+  }
+]

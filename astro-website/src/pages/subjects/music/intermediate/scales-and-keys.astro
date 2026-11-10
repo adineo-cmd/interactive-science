@@ -10,6 +10,170 @@ const keyCfg = {
     { math: '4 · Beyond major/minor', note: 'Pentatonic (5 notes) appears in nearly every culture — folk, blues, Japanese, Chinese. Modes (Dorian, Mixolydian…) predate major/minor and power folk, jazz and film music. Indian ragas and Arabic maqamat use microtones Western 12-note systems don\'t even notate.' },
   ],
 };
+
+const skWtcEstimate = {
+  "prompt": "Bach's Well-Tempered Clavier (1722) tours every major and minor key — a prelude and fugue in each. How many keys does it visit?",
+  "unit": "keys",
+  "answer": 24,
+  "factor": 1.3,
+  "why": "24 — every one of the 12 major and 12 minor keys, the monument to what the equal-temperament compromise bought: a keyboard that can play in any key without retuning.",
+  "context": "Zhu Zaiyu computed the division to nine decimal places in 1584; Europe converged on the same solution over the following century."
+};
+
+const skTemperJudge = {
+  "statements": [
+    {
+      "s": "The pure fifth of a naturally buzzing string is about two cents flat of the tempered one.",
+      "truth": true,
+      "why": "Every interval in equal temperament is microscopically impure of its simple ratio."
+    },
+    {
+      "s": "Singers and string players bend towards pure ratios in sustained chords.",
+      "truth": true,
+      "why": "The ear still wants the simple ratios the compromise flattened."
+    },
+    {
+      "s": "Maqām, rāga and gamelan divide the octave differently on purpose.",
+      "truth": true,
+      "why": "Non-Western systems divide the octave differently on purpose — the twelve-note grid is one dialect, not the law."
+    },
+    {
+      "s": "Equal temperament is the natural tuning.",
+      "truth": false,
+      "why": "It is a designed compromise — temperament is engineering, not nature; it optimises for modulation and pays in purity."
+    }
+  ]
+};
+
+const skMinorBuckets = {
+  "prompt": "One sad colour, three versions — file each trait:",
+  "buckets": [
+    "natural",
+    "harmonic",
+    "melodic"
+  ],
+  "items": [
+    {
+      "label": "for descending lines and modal colour",
+      "bucket": 0
+    },
+    {
+      "label": "raised 7th, creating the leading tone that pulls home",
+      "bucket": 1
+    },
+    {
+      "label": "the exotic augmented-second gap",
+      "bucket": 1
+    },
+    {
+      "label": "raised 6th and 7th ascending, natural descending",
+      "bucket": 2
+    }
+  ],
+  "why": "Composers wanted the sad colour and the gravitational pull of a leading note — so all three versions share the field."
+};
+
+const skModulateMatch = {
+  "prompt": "Changing key mid-piece — pair each move with what the listener feels:",
+  "pairs": [
+    {
+      "left": "modulate to the dominant (up a fifth)",
+      "right": "the music opens outward"
+    },
+    {
+      "left": "modulate to the relative minor",
+      "right": "a door closes"
+    },
+    {
+      "left": "modulate to a remote key",
+      "right": "the floor shifts"
+    },
+    {
+      "left": "a pop chorus moved up a semitone",
+      "right": "the lift"
+    },
+    {
+      "left": "film scoring's new key",
+      "right": "new world"
+    }
+  ],
+  "why": "Most modulation moves between closely related keys via a pivot chord that belongs to both worlds — the listener hears not a rupture but a change of weather."
+};
+
+const skPentaCloze = {
+  "text": "The pentatonic is the major scale minus its two most awkward steps; with no %%0%% neighbours, any ordering of its notes sounds %%1%% — five carefully chosen notes out of twelve that cannot %%2%%.",
+  "answers": [
+    [
+      "half-step",
+      "half step",
+      "semitone"
+    ],
+    [
+      "consonant"
+    ],
+    [
+      "collide"
+    ]
+  ],
+  "hint": "One gap size, one sound quality, one thing the notes can never do to each other."
+};
+
+const skRagaBranch = {
+  "root": "You want colour the twelve-note grid cannot spell. Walk the options:",
+  "nodes": {
+    "start": {
+      "text": "Where do you turn?",
+      "choices": [
+        {
+          "label": "Maqām Rast's 'E half-flat', tuned by ear on the oud",
+          "next": "maqam",
+          "feedback": "A real pitch with a real emotional address — a microtone between the Western semitones."
+        },
+        {
+          "label": "A rāga's rules of movement over the tanpura drone",
+          "next": "raga",
+          "feedback": "Ascent, descent, signature phrases and an assigned time of day carry the meaning."
+        },
+        {
+          "label": "Spell it on the piano",
+          "next": "piano",
+          "feedback": "The Western page can only approximate it."
+        }
+      ]
+    },
+    "maqam": {
+      "text": "Maqām names melodic territories built from small cells (ajnās) using microtones, fixed by levers on the qanun — no Western key signature can spell Rast.",
+      "choices": []
+    },
+    "raga": {
+      "text": "A rāga is a melodic being-with-rules — required ascent and descent, ornaments, an emotional character (rasa), often an assigned time of day — depth without chord change.",
+      "choices": []
+    },
+    "piano": {
+      "text": "A Western page can only approximate what maqām Rast or rāga Bhairavi actually ask for — the sound the notation struggles with is often the most local and most expressive part.",
+      "choices": []
+    }
+  },
+  "why": "Both systems treat pitch as a landscape with customs — a shared lesson of the drone traditions is that the 'home note' idea is deeper than the chords built on top of it."
+};
+
+const skThirdPlace = {
+  "prompt": "The pure major third (5:4) is 386 cents. Equal temperament widens it — place the tempered major third (in cents):",
+  "labels": [
+    "380",
+    "390",
+    "400",
+    "410",
+    "420"
+  ],
+  "scale": {
+    "min": 380,
+    "max": 420
+  },
+  "answer": 400,
+  "tolerance": 3,
+  "why": "400 against a pure 386 — 14 cents flat of perfection, which is why choirs and string quartets that tune by ear drift sharper than pianos on sustained major chords."
+};
 ---
 <TopicPage slug="subjects/music/intermediate/scales-and-keys">
 
@@ -76,6 +240,7 @@ const keyCfg = {
     minor keys — is the monument to what the compromise bought: a keyboard that can play
     in any key without retuning.
   </p>
+  <Widget no="2" caption="call the magnitude — the monument's tour" widget="estimate" config={skWtcEstimate} />
   <p>
     <em>Common misconception:</em> equal temperament is "the natural" tuning. It is a
     designed compromise — the pure fifth of a naturally buzzing string is about two cents
@@ -84,6 +249,7 @@ const keyCfg = {
     differently on purpose. Temperament is engineering, not nature; it optimises for
     modulation, and pays in purity.
   </p>
+  <Widget no="3" caption="true or false — the designed compromise" widget="judge" config={skTemperJudge} />
 
   <h2>Major and minor: the seven-note workhorses</h2>
   <p>
@@ -112,6 +278,7 @@ const keyCfg = {
     minor and every
     fugal subject in D minor is running on these choices.
   </p>
+  <Widget no="4" caption="file each trait under its minor version" widget="sort-buckets" config={skMinorBuckets} />
   <p><em>Common misconception:</em> the key signature by itself names the key. C major and A minor share exactly the same signature (none at all), and E♭ major and C minor both carry three flats — the accidentals specify a field of seven notes, not a tonal centre. Read the signature to narrow the options, then find the evidence of home: the note the melody circles and the chord the music finally rests on.</p>
   <p>
     <strong>So far:</strong> the major pattern builds twelve keys from one interval sequence, and the
@@ -137,6 +304,7 @@ const keyCfg = {
     tonic, opposite weather; the whole symphony is an argument about which mode should
     own the note C. Tonality, in short, is a narrative technology.
   </p>
+  <Widget no="5" caption="pair each modulation with the weather it brings" widget="match" config={skModulateMatch} />
   <p><em>Common misconception:</em> modulating to the relative minor means changing the key signature. Relative keys share one signature — C major and A minor both use zero accidentals — so that modulation is purely a change of tonal centre, audible in the new gravity and the new resting chord, while the notation on the page stays identical. A signature change on the score signals a move to a key that is not the relative.</p>
 
   <h2>Chromatic, modal, pentatonic</h2>
@@ -164,6 +332,7 @@ const keyCfg = {
     scale) plus one "blue note" is the entire vocabulary of a thousand blues solos —
     small palette, vast repertoire.
   </p>
+  <Widget no="6" caption="fill the blanks — why the pentatonic cannot miss" widget="cloze" config={skPentaCloze} />
   <p>
     <strong>So far:</strong> the twelve-step system contains more answers than major and minor — the
     chromatic ladder uses all twelve without favourites, the modes rotate the major pattern, and the
@@ -195,6 +364,7 @@ const keyCfg = {
     organise an entire art around a single sustained reference pitch, which suggests the
     "home note" idea is deeper than the chord progressions built on top of it.
   </p>
+  <Widget no="7" caption="walk the decision — the sound the grid cannot spell" widget="branch" config={skRagaBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -251,6 +421,7 @@ const keyCfg = {
     from — innate psychoacoustics or lifelong exposure — and the honest answer is
     both: the octave looks universal, the rest is culture with very good physics.
   </p>
+  <Widget no="8" caption="put the tempered third on the cents scale" widget="place" config={skThirdPlace} />
   <p>
     Two last refinements. History runs deeper than 1584: the Greeks theorised
     <em>genera</em> and modes two millennia ago, medieval church modes governed European

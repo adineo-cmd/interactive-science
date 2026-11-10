@@ -22,6 +22,187 @@ const circuitCfg = {
     { math: 'lungs → left atrium → left ventricle → aorta', note: 'Through the mitral valve into the heart\'s strongest chamber — its wall is ~3× thicker — and out to the whole body. One full circuit; "lub-dub" is the valves slamming shut.' },
   ],
 };
+
+const hcDailyEstimate = {
+  "prompt": "Resting heart rate ~72 beats per minute, ~70 mL per beat. Roughly how many litres does the heart move in a day?",
+  "unit": "litres/day",
+  "answer": 7300,
+  "factor": 1.3,
+  "why": "72 × 70 mL ≈ 5 L/min, sustained around the clock: about 7,300 litres a day through ~100,000 km of vessels. Harvey's 1628 insight was that no body could supply that hourly — so the blood must circulate.",
+  "context": "One full circuit at rest takes about a minute, repeated roughly three billion times in a lifetime."
+};
+
+const hcCargoBuckets = {
+  "prompt": "Blood is a tissue with three cell jobs — file each component:",
+  "buckets": [
+    "erythrocytes — oxygen cargo",
+    "leucocytes — immune patrol",
+    "platelets — clotting"
+  ],
+  "items": [
+    {
+      "label": "concave discs with no nucleus, ~270 million haemoglobin molecules each",
+      "bucket": 0
+    },
+    {
+      "label": "bind oxygen in the lungs, release it where concentrations fall",
+      "bucket": 0
+    },
+    {
+      "label": "neutrophils as first-response bacteria-killers",
+      "bucket": 1
+    },
+    {
+      "label": "lymphocytes as the targeted intelligence service",
+      "bucket": 1
+    },
+    {
+      "label": "cell fragments that trigger the clotting cascade",
+      "bucket": 2
+    },
+    {
+      "label": "turn a leaking vessel wall into a fibrin plug within minutes",
+      "bucket": 2
+    }
+  ],
+  "why": "About 45% cells suspended in 55% plasma: delivery, defence and repair travelling together."
+};
+
+const hcConductionOrder = {
+  "prompt": "One beat, in electrical order — drag the sequence into place:",
+  "items": [
+    "The SA node — self-exciting cells in the right atrium — fires, roughly every 0.8 s",
+    "The excitation wave spreads through the atria, which contract and empty",
+    "The AV node relays the signal down the ventricle walls with a built-in delay",
+    "The ventricles contract (systole), then refill (diastole)",
+    "The coronary arteries, fed at the aorta's exit, fill during diastole"
+  ],
+  "why": "The delay is the design: atria finish emptying before ventricles contract. Self-excitation is why the beat persists outside the body — an electrical plant, not a metronome."
+};
+
+const hcEmergencyBranch = {
+  "root": "Two cardiac emergencies that are not the same emergency.",
+  "nodes": {
+    "start": {
+      "text": "The pump has stopped outright — no effective pulse, the person unresponsive. What is the failure mode, and what does it call for?",
+      "choices": [
+        {
+          "label": "Electrical failure — cardiac arrest: reset the rhythm",
+          "next": "arrest",
+          "feedback": "Defibrillation addresses the rhythm while CPR maintains circulation."
+        },
+        {
+          "label": "Plumbing failure — a blocked coronary artery: restore flow",
+          "next": "plumbing",
+          "feedback": "Restoring perfusion addresses the muscle's supply — but check what the pump itself is doing."
+        }
+      ]
+    },
+    "arrest": {
+      "text": "Cardiac arrest is an electrical failure: the pump has stopped, and the response is defibrillation with CPR alongside. A person can arrest even with clean arteries — an arrhythmia suffices.",
+      "choices": [
+        {
+          "label": "Now the plumbing event",
+          "next": "attack"
+        }
+      ]
+    },
+    "plumbing": {
+      "text": "A heart attack is a blocked coronary artery starving the muscle; the response is restoring flow. But if the pump has stopped outright, the immediate problem is electrical — defibrillation comes first, the artery next.",
+      "choices": [
+        {
+          "label": "Now the muscle event",
+          "next": "attack"
+        }
+      ]
+    },
+    "attack": {
+      "text": "A heart attack (infarction) and cardiac arrest are distinct events: one often leads to the other, either can occur without the other, and the emergency responses differ accordingly.",
+      "choices": []
+    }
+  },
+  "why": "Plumbing failure and electrical failure are different emergencies with different first responses — and the first-response toolkit covers both."
+};
+
+const hcPulseJudge = {
+  "statements": [
+    {
+      "s": "The pulse you feel at the wrist is the blood itself rushing past your fingers.",
+      "truth": false,
+      "why": "It is a pressure wave — the artery wall ballooning as systolic pressure arrives."
+    },
+    {
+      "s": "The pressure wave travels along the vessel wall far faster than the blood itself moves.",
+      "truth": true,
+      "why": "Wave and flow are different things at different speeds."
+    },
+    {
+      "s": "Blood creeps through capillaries at under a millimetre per second.",
+      "truth": true,
+      "why": "Slowed deliberately, to maximise exchange across the one-cell-thick wall."
+    },
+    {
+      "s": "A pulse can be present at the wrist even when distal flow is failing.",
+      "truth": true,
+      "why": "Which is why the wave and the flow are assessed separately at the bedside."
+    }
+  ]
+};
+
+const hcLymphMatch = {
+  "prompt": "Drainage and defence in one network — pair each structure with its role:",
+  "pairs": [
+    {
+      "left": "blind-ended lymph capillaries",
+      "right": "soak up the ~3 litres of tissue fluid capillaries leak daily"
+    },
+    {
+      "left": "lymphatic vessels",
+      "right": "one-way valves carry lymph back to the bloodstream near the collarbones"
+    },
+    {
+      "left": "lymph nodes",
+      "right": "bean-shaped filters packed with lymphocytes — the immune checkpoint en route"
+    },
+    {
+      "left": "the spleen",
+      "right": "filters blood the way nodes filter lymph, recycling worn red cells"
+    }
+  ],
+  "why": "The swollen glands of a throat infection are nodes enlarging because their immune cells are multiplying to meet the invader they have trapped."
+};
+
+const hcDeliveryCloze = {
+  "text": "Oxygen delivery is the product of cardiac %%0%%, haemoglobin %%1%% and saturation — about 1,000 mL O₂ per minute at rest against a ~250 mL consumption, roughly %%2%%-fold headroom. Exercising muscle, warm and CO₂-rich, shifts haemoglobin's affinity rightward and induces its own delivery: the %%3%% effect.",
+  "answers": [
+    [
+      "output"
+    ],
+    [
+      "concentration"
+    ],
+    [
+      "four",
+      "4"
+    ],
+    [
+      "Bohr"
+    ]
+  ],
+  "hint": "Two blanks are the knobs from the slider lab; one is a number; the last is a physiologist's surname."
+};
+
+const hcFetalOrder = {
+  "prompt": "The third configuration — drag the fetal circuit's switch into order:",
+  "items": [
+    "Before birth the lungs are collapsed; the placenta, not the lungs, is the exchange organ",
+    "The foramen ovale lets blood cross directly from right atrium to left",
+    "The ductus arteriosus shunts blood from the pulmonary artery into the aorta",
+    "The first breath: lung pressure falls",
+    "Both shunts close — the foramen seals into a dimple — and the adult circuit switches on"
+  ],
+  "why": "Two shunts, one switch: the double circulation read in this lesson was, for nine months, deliberately bypassed — and many congenital heart defects are that bypass failing to switch off."
+};
 ---
 <TopicPage slug="subjects/medicine/foundational/heart-circulation">
 
@@ -55,6 +236,7 @@ const circuitCfg = {
     rate pushes more blood in an hour than the whole body contains, so the blood must
     <em>circulate</em>, not ebb like a tide — and founded modern physiology on the way.
   </p>
+  <Widget no="3" caption="call the daily pumping total before the calculator" widget="estimate" config={hcDailyEstimate} />
   <p>
     This lesson follows one red blood cell on its full circuit: out of the heart's left side,
     through arteries, into capillary beds where it surrenders its oxygen, back through veins,
@@ -94,6 +276,7 @@ const circuitCfg = {
     fragments that trigger clotting — a cascade that turns a leaking vessel wall into a
     fibrin plug within minutes.
   </p>
+  <Widget no="4" caption="file each component of the cargo by its job" widget="sort-buckets" config={hcCargoBuckets} />
   <p>
     Red cells are consumables: each lives ~120 days, and your marrow builds about two million
     replacements per second. Haemoglobin's iron is the reason anaemia (too little working
@@ -124,6 +307,7 @@ const circuitCfg = {
     heart attack. The single biggest preventable risks remain smoking, hypertension, lipids
     and inactivity.
   </p>
+  <Widget no="5" caption="rebuild the conduction sequence from SA node to coronaries" widget="order" config={hcConductionOrder} />
   <p>
     <em>Common misconception:</em> "a heart attack and cardiac arrest are the same
     event." A heart attack is a plumbing failure — a blocked coronary artery starving
@@ -133,6 +317,7 @@ const circuitCfg = {
     responses differ accordingly — restoring flow for the attack, defibrillation for
     the arrest — which is why bystanders learn CPR and the AED together.
   </p>
+  <Widget no="6" caption="walk the two-emergencies distinction" widget="branch" config={hcEmergencyBranch} />
   <p><strong>So far:</strong> the heart is two pumps in series with four one-way valves, self-firing through the SA node and fed by its own coronary supply — and a heart attack (blocked plumbing) is not a cardiac arrest (electrical failure). Next: the pipes the blood travels in.</p>
 
   <h2>Blood vessels and the double circulation</h2>
@@ -157,6 +342,7 @@ const circuitCfg = {
     things at different speeds, which is why a pulse can be present at the wrist even
     when distal flow is failing.
   </p>
+  <Widget no="7" caption="true or false — the pulse, read carefully" widget="judge" config={hcPulseJudge} />
   <p>
     <strong>Blood pressure</strong> is written systole-over-diastole — 120/80 mmHg is the
     classic resting reference: artery pressure at the squeeze vs the refill. Total blood
@@ -190,6 +376,7 @@ const circuitCfg = {
     are enlarging because their immune cells are multiplying to meet the invader they have
     trapped.
   </p>
+  <Widget no="8" caption="pair each lymphatic structure with its role" widget="match" config={hcLymphMatch} />
   <p>
     That gives the lymphatics their second role: immunity. <strong>Innate</strong> defences
     (skin, fever, inflammation, neutrophils) respond fast and non-specifically;
@@ -262,6 +449,7 @@ const circuitCfg = {
     (the Bohr effect). Fetal haemoglobin is tuned slightly higher still, to poach oxygen
     across the placenta.
   </p>
+  <Widget no="9" caption="fill the delivery equation and its named effect" widget="cloze" config={hcDeliveryCloze} />
   <p>
     Regulation is a control loop, not a metronome. Medullary chemoreceptors watch CO₂ (via
     cerebrospinal-fluid pH) and stretch receptors watch the lungs; heart rate and breathing
@@ -285,6 +473,7 @@ const circuitCfg = {
     lesson has been reading switches on. Many congenital heart defects are, at bottom,
     shunts that failed to close.
   </p>
+  <Widget no="10" caption="rebuild the fetal-to-neonatal circuit switch" widget="order" config={hcFetalOrder} />
   <p>
     A final layer ties the vessels to the tissues they serve. Capillary exchange is
     governed by a two-force tug (Starling's forces): blood pressure pushes fluid

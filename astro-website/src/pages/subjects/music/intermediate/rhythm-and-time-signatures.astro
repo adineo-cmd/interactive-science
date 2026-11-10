@@ -10,6 +10,161 @@ const rhythmCfg = {
     { math: '4 · Polyrhythm: two arithmetics at once', note: 'West African drumming plays 3 against 4 (and 2-against-3 is in jazz, hip-hop and Beethoven). Two groups running simultaneously — the ear hears both, the pattern meets on the downbeat.' },
   ],
 };
+
+const rtWalkPlace = {
+  "prompt": "Humans find pulses easiest between roughly 70 and 180 per minute — the range the body can walk to. Walking sits near what pulse (BPM)?",
+  "labels": [
+    "40",
+    "70",
+    "110",
+    "150",
+    "180"
+  ],
+  "scale": {
+    "min": 40,
+    "max": 180
+  },
+  "answer": 110,
+  "tolerance": 10,
+  "why": "Walking sits near 110 — which is why that window dominates popular music: the body's own locomotion range."
+};
+
+const rtSigJudge = {
+  "statements": [
+    {
+      "s": "The top number counts the grouping and the bottom names the beat unit.",
+      "truth": true,
+      "why": "4 = quarter note; the signature says how the counts group."
+    },
+    {
+      "s": "The time signature tells you the tempo.",
+      "truth": false,
+      "why": "Tempo is a separate decision measured in beats per minute."
+    },
+    {
+      "s": "The same 4/4 can be a march or a power ballad.",
+      "truth": true,
+      "why": "The signature only says how the counts group — not how fast."
+    },
+    {
+      "s": "6/8 always means three beats per bar.",
+      "truth": false,
+      "why": "6/8 makes two big beats, each splitting into three — the grouping rule, not a headcount of eighths."
+    }
+  ]
+};
+
+const rtSwingCloze = {
+  "text": "Swing adds a wrinkle: jazz plays pairs of written eighths closer to a triplet (long-short, roughly 2:1), so the page says one thing and the style says another — proof that notation records a %%0%%, not the %%1%%.",
+  "answers": [
+    [
+      "skeleton"
+    ],
+    [
+      "muscle"
+    ]
+  ],
+  "hint": "One word is the bony frame; the other is what moves it."
+};
+
+const rtBeatOrder = {
+  "prompt": "Two rhythms, one grid — order the construction of the standard rock beat:",
+  "items": [
+    "Kick drum on beats 1 and 3 — quarters on the strong heart of the bar",
+    "Snare on 2 and 4 — the backbeat, accenting the normally weak beats",
+    "Hi-hat on every eighth — eight eighths running under it all",
+    "Displace the kick to the 'and' of 3 — the same bar goes funky, one instrument late on purpose, every bar"
+  ],
+  "why": "Groove is agreements about the grid plus strategic exceptions to it — that is the whole craft."
+};
+
+const rtDeviceBuckets = {
+  "prompt": "The displacements get their names — file each device:",
+  "buckets": [
+    "syncopation",
+    "hemiola",
+    "polyrhythm"
+  ],
+  "items": [
+    {
+      "label": "reggae's one-drop puts the kick where you least expect it",
+      "bucket": 0
+    },
+    {
+      "label": "clap on 2, the 'and' of 3, and 4 — every clap inside the same bar",
+      "bucket": 0
+    },
+    {
+      "label": "Scott Joplin's rags shift accents between the hands",
+      "bucket": 0
+    },
+    {
+      "label": "in 6/8, grouping the six eighths as 3+3 — a two-beat lilt against the three-beat pattern",
+      "bucket": 1
+    },
+    {
+      "label": "Brahms, its great symphonic advocate — three-against-two inside one metre",
+      "bucket": 1
+    },
+    {
+      "label": "Ewe drumming interlocking parts over a 12-pulse bell pattern",
+      "bucket": 2
+    }
+  ],
+  "why": "Both syncopation and hemiola are the same trick — briefly superimposing one metre on another — which is why the ear hears them as delightful rather than wrong."
+};
+
+const rtLatticeSpot = {
+  "prompt": "A programme note about West African drumming contains one faulty line — click it:",
+  "lines": [
+    "The parts interlock over a 12-pulse timeline — the bell pattern (3+3+4+2) that acts as a compass everyone navigates by.",
+    "Each drummer repeats one simple cycle; the parts meet only on shared downbeats.",
+    "The result is an aural mess that only virtuosos can follow.",
+    "A listener can lock onto any single line and still feel the whole."
+  ],
+  "errorLine": 2,
+  "correction": "The result is a lattice, not a chaos: no single player hears the whole, and the whole is rhythmically richer than any part.",
+  "why": "Each part is simple; the interlock is rich — lock onto any single line and the whole is still there."
+};
+
+const rtTeentalEstimate = {
+  "prompt": "Teental — the most common tāla cycle — runs how many beats (mātrās)?",
+  "unit": "beats",
+  "answer": 16,
+  "factor": 1.3,
+  "why": "16 beats in four groups of four — with accents (tāli), a marked empty beat (khāli), and the return point (sam) where soloist and drummer must land together.",
+  "context": "Other cycles run 7, 10 or 14 — and the Balkans dance in 7/8 grouped 2+2+3."
+};
+
+const rtGrooveTrace = {
+  "prompt": "Groove ratings against amount of syncopation — which curve matches what Witek's 2014 study found?",
+  "curves": [
+    {
+      "expr": "x*(3-x)",
+      "label": "peaks at medium syncopation"
+    },
+    {
+      "expr": "x*0.8",
+      "label": "the more syncopation the better"
+    },
+    {
+      "expr": "3-x",
+      "label": "the less syncopation the better"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 3
+  },
+  "y": {
+    "min": 0,
+    "max": 3
+  },
+  "xlabel": "amount of syncopation",
+  "ylabel": "groove rating",
+  "why": "Groove peaks at medium syncopation — predictable enough to move to, surprising enough to be interesting: pleasure proportional to well-managed error."
+};
 ---
 <TopicPage slug="subjects/music/intermediate/rhythm-and-time-signatures">
 
@@ -66,10 +221,12 @@ const rhythmCfg = {
     <strong>anacrusis</strong> (pickup) — "Happy Birthday" begins on one, which is why you
     instinctively breathe before singing it.
   </p>
+  <Widget no="2" caption="put walking on the pulse scale" widget="place" config={rtWalkPlace} />
   <p><em>Common misconception:</em> "the time signature tells you the tempo." It does
   not: the top number counts the grouping and the bottom names the beat unit, while
   tempo is a separate decision measured in beats per minute. The same 4/4 can be a march
   or a power ballad; the signature only says how the counts group.</p>
+  <Widget no="3" caption="true or false — reading a time signature" widget="judge" config={rtSigJudge} />
   <p>
     <em>Common misconception:</em> 6/8 is "just two bars of 3/4 glued together". Both hold
     six eighth notes, but the grouping differs: 3/4 makes three beats of two, 6/8 makes two
@@ -97,6 +254,7 @@ const rhythmCfg = {
     thing and the style says another — proof that notation records a skeleton, not the
     muscle.
   </p>
+  <Widget no="4" caption="fill the blanks — what swing does to the page" widget="cloze" config={rtSwingCloze} />
   <p>
     A worked transcription shows the arithmetic in action. Take the standard rock beat in
     4/4: kick drum on beats 1 and 3, snare on 2 and 4 (the <strong>backbeat</strong> —
@@ -108,6 +266,7 @@ const rhythmCfg = {
     the beats are; one of them is simply late, on purpose, every bar. That is the whole
     craft of groove — agreements about the grid plus strategic exceptions to it.
   </p>
+  <Widget no="5" caption="build the standard rock beat" widget="order" config={rtBeatOrder} />
   <p>
     <strong>So far:</strong> beats divide into halves or thirds, the rock beat shows two
     rhythms sharing one grid, and groove is agreements about the grid plus strategic
@@ -134,6 +293,7 @@ const rhythmCfg = {
     delightful rather than wrong: the underlying pulse was never abandoned, only argued
     with.
   </p>
+  <Widget no="6" caption="file each device by its name" widget="sort-buckets" config={rtDeviceBuckets} />
 
   <h2>Cross-rhythm and polyrhythm: two grids at once</h2>
   <p>
@@ -157,6 +317,7 @@ const rhythmCfg = {
   repeats one simple cycle, the parts meet on shared downbeats, and the bell pattern
   acts as a compass everyone navigates by. A listener can lock onto any single line and
   still feel the whole.</p>
+  <Widget no="7" caption="find the faulty line — the lattice myth" widget="spot-error" config={rtLatticeSpot} />
 
   <h2>Tāla: the cyclical metre</h2>
   <p>
@@ -173,6 +334,7 @@ const rhythmCfg = {
     and aksak share with the Western bar: an accent structure, a repeating cycle and a
     return point — the groupings differ, the principles are identical.
   </p>
+  <Widget no="8" caption="call the magnitude — teental's cycle" widget="estimate" config={rtTeentalEstimate} />
 
   <h2>Tempo: the engine speed</h2>
   <p>
@@ -211,6 +373,7 @@ const rhythmCfg = {
     musical border: a listener who has never seen a staff can still catch an off-beat,
     which is why rhythm, not notation, is music's true lingua franca.
   </p>
+  <Widget no="9" caption="which curve matches the groove finding?" widget="trace" config={rtGrooveTrace} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

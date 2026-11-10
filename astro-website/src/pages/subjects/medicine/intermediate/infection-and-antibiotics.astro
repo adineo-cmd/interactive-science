@@ -10,6 +10,177 @@ const infectCfg = {
     { math: '4 · Vaccines: training before the fight', note: 'Exposed the immune system to a harmless version or blueprint; memory cells stand ready. Smallpox eradicated (1980); polio nearly; mRNA platforms (2020) collapsed development timelines from years to months.' },
   ],
 };
+
+const iaFamiliesBuckets = {
+  "prompt": "The family name decides the weapon — file each fact:",
+  "buckets": [
+    "bacteria — cells with machinery",
+    "viruses — hijackers",
+    "fungi — eukaryotes like us"
+  ],
+  "items": [
+    {
+      "label": "own machinery — wall, ribosomes, DNA — every part a potential drug target",
+      "bucket": 0
+    },
+    {
+      "label": "sorted by the Gram stain: thick peptidoglycan holds the purple dye",
+      "bucket": 0
+    },
+    {
+      "label": "genetic payloads in protein coats, with no metabolism of their own",
+      "bucket": 1
+    },
+    {
+      "label": "antivirals target viral enzymes with minimal human counterparts — acyclovir, oseltamivir",
+      "bucket": 1
+    },
+    {
+      "label": "drugs must aim at cell walls and ergosterol membranes (amphotericin, azoles)",
+      "bucket": 2
+    },
+    {
+      "label": "the hardest to treat selectively, because the exploitable differences are few",
+      "bucket": 2
+    }
+  ],
+  "why": "Which is why the clinician's first question is \"which family\" and the second is \"which machinery does it depend on\" — the first treatment is usually empiric, narrowed once cultures return."
+};
+
+const iaHostCloze = {
+  "text": "Much of \"feeling ill\" is the host's own response: fever is a regulated %%0%% set-point shift that many pathogens replicate poorly above, and inflammation is %%1%% plumbing that delivers phagocytes to the site. The catastrophic failure mode is %%2%% — the response becoming dysregulated and systemic — which is why antibiotics and fluids within the first %%3%% measurably change survival.",
+  "answers": [
+    [
+      "hypothalamic",
+      "hypothalamus"
+    ],
+    [
+      "vascular"
+    ],
+    [
+      "sepsis"
+    ],
+    [
+      "hour"
+    ]
+  ],
+  "hint": "Two body words, one syndrome, one unit of time."
+};
+
+const iaTargetsMatch = {
+  "prompt": "Selective toxicity, class by class — pair each drug family with what it attacks:",
+  "pairs": [
+    {
+      "left": "beta-lactams (penicillin) and vancomycin",
+      "right": "block peptidoglycan cross-links — the cell-wall target, the oldest and safest"
+    },
+    {
+      "left": "aminoglycosides, tetracyclines, macrolides",
+      "right": "bind the 30S or 50S ribosomal subunits and freeze translation"
+    },
+    {
+      "left": "fluoroquinolones",
+      "right": "hit bacterial DNA gyrase"
+    },
+    {
+      "left": "sulphonamides and trimethoprim",
+      "right": "block folate synthesis — a pathway humans lack, since we eat folate"
+    }
+  ],
+  "why": "Every target is a piece of bacterial machinery human cells either lack or carry in a different form — and bactericidal drugs kill while bacteriostatic ones halt growth and let immunity finish."
+};
+
+const iaProjectionSpot = {
+  "prompt": "A resistance briefing — one line is wrong. Click it:",
+  "lines": [
+    "Beta-lactamase enzymes cleave penicillins — hence clavulanic acid added as a decoy inhibitor.",
+    "Efflux pumps eject the drug faster than it enters.",
+    "MRSA carries PBP2a, an altered enzyme beta-lactams can no longer bind — target modification.",
+    "Reduced porin channels and biofilm matrices shield whole communities — impermeability.",
+    "The O'Neill review projected drug-resistant infections would kill about one million people a year by 2050 — below today's road-injury toll."
+  ],
+  "errorLine": 4,
+  "correction": "The O'Neill review (2016) projected 10 million deaths a year by 2050 — more than cancer — at a cumulative cost near 100 trillion dollars.",
+  "why": "The four mechanisms are concrete; the projection is why stewardship is policy rather than etiquette."
+};
+
+const iaStopPredict = {
+  "q": "A patient completes half the course, feels better, and saves the rest \"for next time\". What does early stopping actually do?",
+  "choices": [
+    "It protects the body from becoming resistant.",
+    "It leaves the partially-resistant survivors standing in the bacterial population.",
+    "It has no effect on resistance either way.",
+    "It makes the person allergic to the drug."
+  ],
+  "answer": 1,
+  "why": "Bodies do not become resistant — bacteria do. Stopping early kills the most susceptible organisms and trains the rest: the same error, run in reverse from the prescription pad."
+};
+
+const iaStewardBranch = {
+  "root": "The prescriber's pen is itself an ecological force.",
+  "nodes": {
+    "start": {
+      "text": "Cultures are pending, the patient is stable, the likely organism is uncertain. What does stewardship prescribe?",
+      "choices": [
+        {
+          "label": "The narrowest-spectrum agent that covers the likely organisms",
+          "next": "narrow",
+          "feedback": "Empiric-but-narrow: cover the probable pathogens, spare the commensal reservoirs."
+        },
+        {
+          "label": "The broadest agent available, to be safe",
+          "next": "broad",
+          "feedback": "Broad coverage treats this patient — and selects every other bacterium on the ward."
+        }
+      ]
+    },
+    "narrow": {
+      "text": "Narrow-spectrum coverage plus de-escalation when cultures return is the stewardship pattern: treat the likely organism now, narrow the moment the laboratory answers.",
+      "choices": [
+        {
+          "label": "Now: the dose and the finish",
+          "next": "dose"
+        }
+      ]
+    },
+    "broad": {
+      "text": "Over-broad dosing and under-dosing both select hardest — the first by exposing everything, the second by leaving partially-resistant survivors. Correct dosing kills the population before it can multiply.",
+      "choices": [
+        {
+          "label": "Now: the dose and the finish",
+          "next": "dose"
+        }
+      ]
+    },
+    "dose": {
+      "text": "Dose correctly and stop when the course is done — no survivors left to train. And the discipline extends past the prescription: by weight, most of the world's antibiotic tonnage is used in livestock, so resistance genes travel in food, water and people.",
+      "choices": []
+    }
+  },
+  "why": "Treat only bacterial infections, narrow the spectrum, dose correctly, de-escalate, stop when done — stewardship is genuinely a one-world problem."
+};
+
+const iaVaccineCompare = {
+  "prompt": "Vaccine platforms trade memory against safety — drag between them:",
+  "before": {
+    "label": "live attenuated (measles, oral polio, BCG)",
+    "text": "Replicates mildly: the strongest, longest memory — at the price of caution in immunocompromised patients."
+  },
+  "after": {
+    "label": "inactivated / subunit (flu, hepatitis B, acellular pertussis)",
+    "text": "Safer but weaker — needs adjuvants and boosters to finish the immune education."
+  },
+  "why": "Toxoids train antibodies against the toxin rather than the bug; mRNA and viral-vector platforms deliver just the antigen's blueprint — change the sequence, change the target, and development collapses from years to months."
+};
+
+const iaFmtEstimate = {
+  "prompt": "Broad-spectrum antibiotics dynamite the resident flora, and C. difficile blooms in the vacancy. Faecal microbiota transplantation cures recurrent C. difficile at rates above roughly what?",
+  "unit": "%",
+  "answer": 80,
+  "factor": 1.2,
+  "why": "Above 80% — one of modern medicine's strangest and most effective therapies: restoring the flora wholesale instead of fighting the spore-former with yet another drug.",
+  "context": "The microbiome is not scenery: it colonises surfaces pathogens would love, trains the immune system and synthesises vitamins."
+};
 ---
 <TopicPage slug="subjects/medicine/intermediate/infection-and-antibiotics">
 
@@ -87,6 +258,7 @@ const infectCfg = {
     against the most likely organisms — then narrowed ("de-escalated") once cultures and sensitivities
     return.
   </p>
+  <Widget no="2" caption="file each fact with its pathogen family" widget="sort-buckets" config={iaFamiliesBuckets} />
 
   <h2>What infection does: the battle and its collateral</h2>
   <p>
@@ -103,6 +275,7 @@ const infectCfg = {
     The clinical lesson generalises: in infection medicine, the treatment always has two targets —
     the pathogen and the host's own response.
   </p>
+  <Widget no="3" caption="fill the host-response picture" widget="cloze" config={iaHostCloze} />
 
   <h2>Antibiotics: selective toxicity</h2>
   <p>
@@ -126,6 +299,7 @@ const infectCfg = {
     halo of killed bacteria around it. Penicillin was mass-produced in 1943–44, and the drop in
     Allied deaths from wound infection transformed medicine's relationship with infection overnight.
   </p>
+  <Widget no="4" caption="pair each antibiotic class with its target" widget="match" config={iaTargetsMatch} />
   <p><em>Common misconception:</em> antibiotics are not "for infections" generically, and they do not
   make you recover faster from colds or flu. Prescribing them for viral illness buys zero benefit and
   pays real costs — side effects, disruption of your protective microbiome, and selection pressure on
@@ -156,6 +330,7 @@ const infectCfg = {
     held, drug-resistant infections would kill <strong>10 million people a year by 2050</strong> —
     more than cancer — at a cumulative cost near 100 trillion dollars.
   </p>
+  <Widget no="5" caption="one line of the resistance briefing misreads the projection" widget="spot-error" config={iaProjectionSpot} />
   <p>
     <em>Common misconception:</em> "my body has become resistant to antibiotics." Bodies do not
     become resistant; <em>bacteria</em> do. After enough exposures, the bacterial population in
@@ -164,6 +339,7 @@ const infectCfg = {
     mirror image: stopping a course early does not protect your body, it just leaves the
     partially-resistant survivors standing.
   </p>
+  <Widget no="6" caption="bet the early-stopping question before the reveal" widget="predict" config={iaStopPredict} />
 
   <h2>Stewardship: protecting the weapons</h2>
   <p>
@@ -179,6 +355,7 @@ const infectCfg = {
     genuinely a one-world problem: resistance genes travel in food, water and people, so a farm's
     practice in one hemisphere is a hospital's problem in another.
   </p>
+  <Widget no="7" caption="walk the stewardship decision" widget="branch" config={iaStewardBranch} />
 
   <h2>Vaccines: training before the fight</h2>
   <p>
@@ -197,6 +374,7 @@ const infectCfg = {
     the historical proof of concept: smallpox, killed by global ring vaccination in 1980, remains the
     only human disease ever eradicated, and it was done without a single antiviral drug.
   </p>
+  <Widget no="8" caption="drag between the two platform families" widget="compare" config={iaVaccineCompare} />
   <p><em>Common misconception:</em> "natural immunity" from catching the disease is not automatically
   superior. It confers memory, all right — but at the price of the disease's full risk: measles before
   vaccination killed about 1–2 per thousand cases and left permanent brain damage in roughly one per
@@ -264,5 +442,6 @@ const infectCfg = {
     advantages are depth (the immune system), breadth (the pharmacopoeia), and discipline (stewardship)
     — and the second two are the ones currently under test.
   </p>
+  <Widget no="9" caption="call the FMT cure rate" widget="estimate" config={iaFmtEstimate} />
   <p class="sources"><strong>Sources:</strong> Fleming's penicillin papers; O'Neill, Review on Antimicrobial Resistance (2016); FDA antibiotic sales reports; WHO eradication records; CDC principles of epidemiology. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

@@ -1,0 +1,154 @@
+[
+  {
+    "slug": "subjects/music/intermediate/reading-notation",
+    "activities": [
+      {
+        "anchor": "The format's history explains its quirks",
+        "type": "timeline",
+        "caption": "scrub a thousand years of design decisions",
+        "name": "rnTimeline",
+        "config": {
+          "unit": "year",
+          "events": [
+            { "year": 1025, "title": "Guido draws lines", "text": "Guido of Arezzo puts the squiggles on lines: height becomes pitch — his claim that learning time fell from ten years to two is the first recorded usability study.", "tag": "design" },
+            { "year": 1501, "title": "Petrucci prints", "text": "The printing press (Venice) makes music mass-reproducible; mensural notation has already fixed rhythm.", "tag": "design" },
+            { "year": 1600, "title": "Barlines arrive", "text": "The staff notates only what a singer can remember — it needed centuries to accept barlines as standard furniture.", "tag": "design" },
+            { "year": 1700, "title": "Tempo marks arrive", "text": "Tempo marks, then dynamics, join the page — the expressive layer completes the modern system.", "tag": "design" }
+          ]
+        }
+      },
+      {
+        "anchor": "so the rest of the ladder is defined",
+        "type": "match",
+        "caption": "pair each clef with the line it pins",
+        "name": "rnClefMatch",
+        "config": {
+          "prompt": "A clef pins one line to one note. Pair each clef with what it pins:",
+          "pairs": [
+            { "left": "the bass clef (F clef)", "right": "dots the fourth line as the F below middle C" },
+            { "left": "the alto C clef", "right": "pins middle C itself — for the viola" },
+            { "left": "the tenor C clef", "right": "pins middle C for cello and the bassoon's high range" },
+            { "left": "middle C", "right": "the hinge — one ledger line between the staves, shared by both clefs" }
+          ],
+          "why": "The staff is optimised for vocal ranges — hence many clefs, so each voice type stays on the staff without a rain of ledger lines."
+        }
+      },
+      {
+        "anchor": "Durations are encoded as shapes that halve",
+        "type": "spot-error",
+        "caption": "find the faulty line — the bar that does not add up",
+        "name": "rnBarSpot",
+        "config": {
+          "prompt": "A student's bar of 4/4 contains one faulty line — click it:",
+          "lines": [
+            "A whole note = 4 beats in 4/4; a half = 2; a quarter = 1; an eighth = ½.",
+            "A dot adds half again: a dotted half = 3 beats.",
+            "A tie joins notes across beats or barlines into one held sound.",
+            "The worked bar: quarter rest (1) + two beamed eighths (½ + ½) + dotted quarter (1½) + an eighth (½) = 3 beats."
+          ],
+          "errorLine": 3,
+          "correction": "The bar sums to exactly 4 beats: 1 + ½ + ½ + 1½ + ½ = 4 — chunky fractions that groove like a backbeat.",
+          "why": "The shapes are fractions, and reading rhythm is doing that fraction arithmetic at sight."
+        }
+      },
+      {
+        "anchor": "applies them wholesale",
+        "type": "cloze",
+        "caption": "fill the blanks — decoding the signature",
+        "name": "rnKeyCloze",
+        "config": {
+          "text": "One sharp (F♯) on the staff means every F is sharp — the key of %%0%% or %%1%% — and for sharp keys the decoding rule is: a semitone above the %%2%% is the major key.",
+          "answers": [["G major", "G"], ["E minor", "E minor"], ["last sharp"]],
+          "hint": "One sharp; two possible homes; the rule reads the last sharp in the F♯ C♯ G♯ order."
+        }
+      },
+      {
+        "anchor": "E♯ and C♭ \"do not exist\"",
+        "type": "judge",
+        "caption": "true or false — spelling is grammar",
+        "name": "rnEnhJudge",
+        "config": {
+          "statements": [
+            { "s": "In F♯ major the leading tone is spelled E♯, not F.", "truth": true, "why": "F would misname the scale degree — and the order of sharps marches through exactly that E♯." },
+            { "s": "E♯ and C♭ do not exist because on the keyboard they look like F and B.", "truth": false, "why": "The keyboard hides the spelling; the key signature is where it lives." },
+            { "s": "The letter names are grammar, not acoustics.", "truth": true, "why": "F♯ rising 'to' G tells the reader a direction; G♭ falling 'to' F another." },
+            { "s": "F♯ and G♭ are two different keys on the keyboard.", "truth": false, "why": "They name the same keys — that is enharmonic spelling." }
+          ]
+        }
+      },
+      {
+        "anchor": "named by counting letter-steps",
+        "type": "sort-buckets",
+        "caption": "file each interval by the flavour it carries",
+        "name": "rnFlavourBuckets",
+        "config": {
+          "prompt": "Hearing the flavours — file each interval:",
+          "buckets": [
+            "sweet",
+            "open",
+            "itchy"
+          ],
+          "items": [
+            { "label": "thirds and sixths", "bucket": 0 },
+            { "label": "C-E, four semitones", "bucket": 0 },
+            { "label": "fourths and fifths", "bucket": 1 },
+            { "label": "C-G, seven semitones", "bucket": 1 },
+            { "label": "seconds and sevenths", "bucket": 2 },
+            { "label": "C-F♯ — the tritone, six semitones", "bucket": 2 }
+          ],
+          "why": "Count letter-steps first, then measure semitones for the quality — the drill that makes intervals practical."
+        }
+      },
+      {
+        "anchor": "sounds a fixed distance from what is written",
+        "type": "branch",
+        "caption": "walk the decision — writing for a transposing player",
+        "name": "rnTransposeBranch",
+        "config": {
+          "root": "Concert C must sound. The player's instrument transposes — what do you write?",
+          "nodes": {
+            "start": {
+              "text": "Which player are you writing for?",
+              "choices": [
+                { "label": "A horn in F", "next": "horn", "feedback": "The horn sounds a perfect fifth below what is written." },
+                { "label": "A flute or violin (C instrument)", "next": "concert", "feedback": "Concert pitch scores are the reference everyone transposes from." },
+                { "label": "Either — just write C and let them transpose at sight", "next": "sight", "feedback": "The page and the room would disagree by accident — composers double-check transpositions." }
+              ]
+            },
+            "horn": {
+              "text": "Write G: the horn in F sounds a perfect fifth below its written note — one fingering map per player is the return; score arithmetic is the price.",
+              "choices": []
+            },
+            "concert": {
+              "text": "Write C as it sounds: C instruments like flute, violin and piano are the reference everyone transposes from.",
+              "choices": []
+            },
+            "sight": {
+              "text": "Ensemble reading is transposition arithmetic done at speed — the convention exists so players learn fingerings once, not so they can transpose on the fly.",
+              "choices": []
+            }
+          },
+          "why": "History and habit: doubling on a differently-sized instrument of the same family (B♭ clarinet to A clarinet) changes only the key signature, not the fingers."
+        }
+      },
+      {
+        "anchor": "Above the grid lives everything the composer refused to leave to chance",
+        "type": "order",
+        "caption": "stack the dynamics soft to loud",
+        "name": "rnDynamicsOrder",
+        "config": {
+          "prompt": "The dynamic markings, from softest to loudest:",
+          "items": [
+            "pp — pianissimo",
+            "p — piano",
+            "mp — mezzo-piano",
+            "mf — mezzo-forte",
+            "f — forte",
+            "ff — fortissimo"
+          ],
+          "why": "Dynamics set loudness as a relative scale, with the hairpins of crescendo and diminuendo between them — the gaps are where interpretation lives."
+        }
+      }
+    ]
+  }
+]

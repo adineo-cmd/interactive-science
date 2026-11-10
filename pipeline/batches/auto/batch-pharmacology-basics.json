@@ -1,0 +1,136 @@
+[
+  {
+    "slug": "subjects/medicine/intermediate/pharmacology-basics",
+    "activities": [
+      {
+        "anchor": "gut wall and liver enzymes attack it on the way through",
+        "type": "order",
+        "caption": "rebuild a swallowed tablet's journey",
+        "name": "pbAdmeOrder",
+        "config": {
+          "prompt": "ADME, stage by stage — drag the journey into order:",
+          "items": [
+            "Absorption: dissolve, survive stomach acid, cross the gut wall",
+            "First-pass metabolism: gut wall and hepatic enzymes take their toll en route",
+            "Distribution: blood flow, fat solubility and plasma protein binding decide where it travels",
+            "Metabolism: cytochrome P450 edits a lipid-soluble drug into a water-soluble one",
+            "Excretion: chiefly renal — failing kidneys raise levels the way failing livers do"
+          ],
+          "why": "Only the free, unbound fraction acts — a drug clipped to albumin is pharmacologically inert cargo, and competitors for the same albumin sites can suddenly unbind each other."
+        }
+      },
+      {
+        "anchor": "Bioavailability is the whole point of the distinction",
+        "type": "estimate",
+        "caption": "convert the route before the dose chart does",
+        "name": "pbMorphineEstimate",
+        "config": {
+          "prompt": "Oral morphine's bioavailability is around 30%. An intravenous dose is 10 mg. Roughly what oral dose delivers the same systemic amount?",
+          "unit": "mg",
+          "answer": 30,
+          "factor": 1.4,
+          "why": "30% of 30 mg ≈ 10 mg — oral doses run roughly three times IV doses. Glyceryl trinitrate is the extreme case: almost completely destroyed by the liver, so it is given under the tongue into veins that bypass it entirely."
+        }
+      },
+      {
+        "anchor": "is being told the truth of pharmacokinetics",
+        "type": "place",
+        "caption": "set the five-half-life clock on the timeline",
+        "name": "pbSteadyPlace",
+        "config": {
+          "prompt": "A drug with a six-hour half-life is taken every twelve hours. Place the time to steady state:",
+          "labels": ["0", "12", "24", "36", "48"],
+          "scale": { "min": 0, "max": 48 },
+          "answer": 30,
+          "tolerance": 2,
+          "why": "About five half-lives — roughly thirty hours here — whatever the dose or interval. Halving the dosing interval narrows the peak-to-trough swing when a narrow window demands it; a loading dose fills the tank when waiting is intolerable."
+        }
+      },
+      {
+        "anchor": "The clinical rule is the opposite",
+        "type": "predict",
+        "caption": "bet the doubled-dose outcome before the reveal",
+        "name": "pbMissedPredict",
+        "config": {
+          "q": "A patient on a wide-window antibiotic misses a dose and doubles the next. A patient on warfarin does the same. What distinguishes the two outcomes?",
+          "choices": [
+            "Nothing — kinetics is kinetics.",
+            "The wide-window drug absorbs the extra peak; the narrow-window drug's peak pushes directly toward toxicity.",
+            "Doubling always restores the level that was lost.",
+            "Doubling halves the time to steady state in both cases."
+          ],
+          "answer": 1,
+          "why": "Kinetics does not work in arrears: the extra dose adds a new peak on top of the current trough rather than restoring the lost level. Window width decides whether that peak is forgivable."
+        }
+      },
+      {
+        "anchor": "Drug design is disproportionately the craft of widening the gap",
+        "type": "match",
+        "caption": "pair each pharmacodynamic term with its reading",
+        "name": "pbReceptorMatch",
+        "config": {
+          "prompt": "Drugs act by binding — pair each term with its meaning:",
+          "pairs": [
+            { "left": "agonist", "right": "binds and activates — adrenaline at beta-receptors speeds the heart" },
+            { "left": "antagonist", "right": "binds and blocks, denying the site to the body's own signal — beta-blockers quiet the same receptor" },
+            { "left": "potency (EC₅₀)", "right": "where the curve sits on the dose axis — decides the milligram count on the label" },
+            { "left": "efficacy", "right": "the height of the plateau — decides whether the drug can do the job at all" }
+          ],
+          "why": "Selectivity is the third property: most \"side effects\" are the same key fitting other locks — H1 receptors in the brain drowse you, beta-2 receptors lining the airways constrict."
+        }
+      },
+      {
+        "anchor": "Because of the plateau, doses above",
+        "type": "spot-error",
+        "caption": "one line of the dosing note misreads the ceiling",
+        "name": "pbPlateauSpot",
+        "config": {
+          "prompt": "A dosing note — one line confuses the curve's ceiling. Click it:",
+          "lines": [
+            "The dose–response curve is a sigmoid: threshold, steep middle, plateau.",
+            "Potency is where the curve sits on the dose axis; efficacy is the plateau's height.",
+            "Above the plateau, higher doses add toxicity without adding effect.",
+            "So doubling a near-maximal dose roughly doubles the therapeutic effect as well.",
+            "For the patient, efficacy and toxicity are what matter; potency sets the milligram count."
+          ],
+          "errorLine": 3,
+          "correction": "Doubling a near-maximal dose doubles nothing but the side effects — effect has a ceiling, toxicity does not.",
+          "why": "The plateau is the whole point: past it, the only curve still rising is the toxicity curve."
+        }
+      },
+      {
+        "anchor": "shows up first in the narrow-window drugs",
+        "type": "sort-buckets",
+        "caption": "file each drug by how much dosing slack it allows",
+        "name": "pbWindowBuckets",
+        "config": {
+          "prompt": "Two kinds of drugs in the pharmacopoeia — file each:",
+          "buckets": ["wide window — forgives dosing errors", "narrow window — titrate and monitor"],
+          "items": [
+            { "label": "most antibiotics", "bucket": 0 },
+            { "label": "most antihistamines", "bucket": 0 },
+            { "label": "a missed or doubled dose rarely matters", "bucket": 0 },
+            { "label": "warfarin — titrated to the individual, monitored by INR", "bucket": 1 },
+            { "label": "lithium — monitored by serum level", "bucket": 1 },
+            { "label": "digoxin, phenytoin, insulin — effective and toxic concentrations nearly touching", "bucket": 1 }
+          ],
+          "why": "Therapeutic index = TD₅₀ / ED₅₀: above ~10 comfortable, under ~2 dangerous. A new antibiotic, NSAIDs or dehydration can destabilise a patient stable for years on warfarin — the narrow window is where shifts show first."
+        }
+      },
+      {
+        "anchor": "transplant rejection on a herbal supplement",
+        "type": "estimate",
+        "caption": "call the battleground enzyme's caseload",
+        "name": "pbCypEstimate",
+        "config": {
+          "prompt": "The cytochrome P450 family is where pharmacokinetic interactions fight. CYP3A4 alone handles roughly what share of all prescription drugs?",
+          "unit": "%",
+          "answer": 50,
+          "factor": 1.4,
+          "why": "About half — which is why grapefruit juice's furanocoumarins, irreversibly disabling intestinal CYP3A4 for a day or more, can multiply a statin's blood level several-fold with no change in dose.",
+          "context": "Inducers run the other way: rifampicin and St John's wort rev up CYP enzymes and can drop another drug below its window."
+        }
+      }
+    ]
+  }
+]

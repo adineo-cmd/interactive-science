@@ -19,6 +19,189 @@ const phaseQuizCfg = {
     { q: 'A LiFePO₄ cathode charges along a very flat voltage plateau (~3.45 V). The phase-diagram reason is…', choices: ['the battery regulates voltage electronically', 'two solid phases coexist during charging, so lithium\'s chemical potential stays constant', 'the voltage is set by the charger', 'flat plateaus only happen in liquids'], answer: 1, why: 'During a two-phase reaction the electrode is a mixture of Li-poor and Li-rich crystals, and coexistence pins the chemical potential — exactly the lever-rule physics, read out as voltage.' },
   ],
 };
+
+const pdFreedomMatch = {
+  "prompt": "The Gibbs phase rule, F = C − P + 1, assigns each region its freedom — pair them:",
+  "pairs": [
+    {
+      "left": "single-phase field, binary alloy (C = 2)",
+      "right": "F = 2 — temperature and composition both vary freely"
+    },
+    {
+      "left": "two-phase field",
+      "right": "F = 1 — pick the temperature and both phase compositions are pinned"
+    },
+    {
+      "left": "three-phase eutectic point (L + α + β)",
+      "right": "F = 0 — a single temperature and composition, no freedom left"
+    },
+    {
+      "left": "tie-line ends vs overall composition",
+      "right": "the ends are fixed by temperature alone; only the proportions follow the overall composition"
+    }
+  ],
+  "why": "That is the geometry behind the whole diagram: pinned endpoints, movable proportions — and the lever rule is just mass balance on the pinned line."
+};
+
+const pdSolubilityCompare = {
+  "prompt": "Two ideal behaviours of a binary system — drag between them:",
+  "before": {
+    "label": "complete solid solubility",
+    "text": "Cu–Ni: two atoms so alike that one crystal takes any mixture. The diagram is a lens between two melting lines — a single phase field, wall to wall."
+  },
+  "after": {
+    "label": "limited solubility",
+    "text": "Most pairs: solid solutions survive only up to a solvus line, beyond which a second phase must appear. Cross that line and precipitates form — the basis of age-hardened aluminium."
+  },
+  "why": "Solubility limits are where strengthening begins: the solvus is the doorway from solid solution to obstacle field."
+};
+
+const pdWilmOrder = {
+  "prompt": "Wilm's 1906 observation to modern aircraft skins — drag the story into order:",
+  "items": [
+    "1906 — a quenched Al–4% Cu alloy keeps strengthening for days at room temperature",
+    "Nothing in the equilibrium maps of the era predicts it",
+    "1938 — X-ray work reveals tiny copper-rich clusters: Guinier–Preston zones",
+    "The quench had trapped a supersaturated solid solution — the solvus crossed in slow motion",
+    "The clusters obstruct dislocations far more effectively than the coarse equilibrium phase could"
+  ],
+  "why": "Age hardening is metallurgy's most valuable piece of non-equilibrium behaviour — the solvus is the only trace it leaves on the equilibrium map."
+};
+
+const pdCementiteEstimate = {
+  "prompt": "A 0.76% C alloy cools through the eutectoid: ferrite holds 0.022% C, cementite holds 6.7% C. Roughly what fraction of the final pearlite is cementite?",
+  "unit": "% cementite",
+  "answer": 11,
+  "factor": 2,
+  "why": "f(cementite) = (0.76 − 0.022)/(6.7 − 0.022) ≈ 0.11 — about 11% hard carbide in a soft iron matrix. That proportion, and its fineness of dispersion, is most of what the words \"steel grade\" mean.",
+  "context": "Mass check from the worked example: 0.6 × 70 + 0.4 × 20 = 50 — the seesaw always balances."
+};
+
+const pdEutecticPlace = {
+  "prompt": "Pure iron melts at 1538 °C and solder's eutectic at 183 °C. Place cast iron's 4.3% C eutectic on the scale:",
+  "labels": [
+    "0",
+    "400",
+    "800",
+    "1200",
+    "1600"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1600
+  },
+  "answer": 1147,
+  "tolerance": 100,
+  "why": "About 1147 °C — some 390 degrees below pure iron. That gap is why iron could be melted and cast for two millennia before steel could be forged at scale."
+};
+
+const pdFeCBuckets = {
+  "prompt": "Three phases carry the iron–carbon story — file each fact:",
+  "buckets": [
+    "ferrite (α)",
+    "austenite (γ)",
+    "cementite (Fe₃C)"
+  ],
+  "items": [
+    {
+      "label": "BCC iron holding almost no carbon — soft, ductile, magnetic",
+      "bucket": 0
+    },
+    {
+      "label": "0.022% C at 727 °C",
+      "bucket": 0
+    },
+    {
+      "label": "FCC iron that dissolves up to ~2.1% carbon",
+      "bucket": 1
+    },
+    {
+      "label": "exists only at high temperature — heat steel and the carbon vanishes into solution",
+      "bucket": 1
+    },
+    {
+      "label": "a brittle iron-carbide compound at 6.7% C",
+      "bucket": 2
+    },
+    {
+      "label": "extremely hard — provides much of steel's strength",
+      "bucket": 2
+    }
+  ],
+  "why": "Steel lives in the narrow corridor between ferrite's refusal of carbon and cementite's 6.7% excess — and the eutectoid sandwich between them is pearlite."
+};
+
+const pdPlateauTrace = {
+  "prompt": "State of charge on x, cell voltage on y — which trace is the two-phase LiFePO₄-style cathode?",
+  "curves": [
+    {
+      "expr": "4.2 - 0.9*x",
+      "color": "#1d4ed8",
+      "label": "A"
+    },
+    {
+      "expr": "3.45",
+      "color": "#b42318",
+      "label": "B"
+    },
+    {
+      "expr": "3.9 - 0.25*x*x",
+      "color": "#0f766e",
+      "label": "C"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 1
+  },
+  "y": {
+    "min": 2.8,
+    "max": 4.6
+  },
+  "xlabel": "state of charge",
+  "ylabel": "cell voltage (V)",
+  "why": "In a two-phase field the phase rule pins lithium's chemical potential — and a pinned potential is a flat plateau (~3.45 V). Curve A is the solid-solution glide of an NMC cathode: no plateau, but composition readable from voltage."
+};
+
+const pdGaugeBranch = {
+  "root": "Your device must report remaining charge, and the only sensor is voltage. Choose the chemistry.",
+  "nodes": {
+    "start": {
+      "text": "Three electrode chemistries are on the table. Which do you build the gauge around?",
+      "choices": [
+        {
+          "label": "LiFePO₄ — the famously flat ~3.45 V plateau",
+          "next": "flat",
+          "feedback": "Superbly stable voltage — and nearly mute as a gauge."
+        },
+        {
+          "label": "Layered NMC — a continuous solid solution",
+          "next": "glide",
+          "feedback": "Voltage glides as lithium leaves: composition readable from voltage."
+        },
+        {
+          "label": "Graphite anode — discrete stage compounds",
+          "next": "stage",
+          "feedback": "A staircase of small plateaus, not a slope."
+        }
+      ]
+    },
+    "flat": {
+      "text": "Two phases coexist, the phase rule pins the chemical potential, and voltage barely moves from empty to full. The gauge must count coulombs instead — the voltmeter is reading the map, not the tank.",
+      "choices": []
+    },
+    "glide": {
+      "text": "A continuous solid solution has a composition-dependent chemical potential, so voltage tracks lithium content directly. The trade: none of the plateau's stability, all of the readability.",
+      "choices": []
+    },
+    "stage": {
+      "text": "Lithium fills every nth gallery between graphene sheets, down to fully stoichiometric LiC₆ near 0.1 V — the gauge sees steps between stages, each a small two-phase field of its own.",
+      "choices": []
+    }
+  },
+  "why": "Voltage is a chemical-potential difference — whether it sits flat, glides or steps is the electrode's phase diagram showing through."
+};
 ---
 <TopicPage slug="subjects/materials-science/advanced/phase-diagrams">
   <h2>Where you are, and what you will learn</h2>
@@ -80,6 +263,7 @@ const phaseQuizCfg = {
     anticipating the battery section, why a three-phase invariant point (eutectic: L + α + β,
     F = 0) occurs at one exact temperature and composition — no freedom left.
   </p>
+  <Widget no="3" caption="pair each region of the map with its freedom" widget="match" config={pdFreedomMatch} />
   <p>
     The two ideal behaviours a binary system can show: <strong>complete solid solubility</strong>
     (Cu–Ni: the two atoms are so similar that one crystal accommodates any mixture — the
@@ -89,6 +273,7 @@ const phaseQuizCfg = {
     when you cross a solvus line are the basis of age-hardening aluminium alloys (the defects
     lesson's dislocations meet their obstacles here).
   </p>
+  <Widget no="4" caption="drag between the lens and the solvus" widget="compare" config={pdSolubilityCompare} />
   <p>
     The classic case study is the one that made the aerospace industry possible. In
     1906 the German metallurgist Alfred Wilm was hardening an aluminium alloy with
@@ -103,6 +288,7 @@ const phaseQuizCfg = {
     valuable piece of <em>non-equilibrium</em> behaviour — invisible on the equilibrium
     diagram except as the solvus that makes it possible.
   </p>
+  <Widget no="5" caption="rebuild the discovery that ran ahead of the map" widget="order" config={pdWilmOrder} />
   <p>
     <strong>So far:</strong> the map, the rule that pins phase compositions at each
     temperature, and the solubility limits where strengthening begins — with Wilm's alloy as
@@ -124,6 +310,7 @@ const phaseQuizCfg = {
     hard carbide in a soft iron matrix: that proportion, and its fineness of dispersion, is
     most of what the words "steel grade" mean.
   </p>
+  <Widget no="6" caption="call the carbide fraction of eutectoid steel" widget="estimate" config={pdCementiteEstimate} />
   <p>
     One more reading, because both exams and plant floors ask for it: the same alloy
     held at 40% B in that same field (α at 20%, β at 70%) gives f(β) = (40 − 20)/50 =
@@ -156,6 +343,7 @@ const phaseQuizCfg = {
     Any element pair with limited solid solubility shows one; the eutectic is geometry of the
     free-energy curves, not chemistry magic.
   </p>
+  <Widget no="7" caption="set cast iron's eutectic on the melting scale" widget="place" config={pdEutecticPlace} />
   <p>
     <strong>So far:</strong> the eutectic — the composition where freezing happens at one
     temperature, which is why solder and cast iron served civilisations for centuries before
@@ -179,6 +367,7 @@ const phaseQuizCfg = {
     lesson follows those routes, including the one that leaves equilibrium entirely
     (martensite exists on no equilibrium diagram: it is what happens when you outrun the map).
   </p>
+  <Widget no="8" caption="file each property with its iron–carbon phase" widget="sort-buckets" config={pdFeCBuckets} />
   <p>
     <em>Common misconception:</em> more carbon means a better steel, so the
     highest-carbon grade is the strongest choice. Past about 0.8–0.9% C the extra
@@ -211,6 +400,7 @@ const phaseQuizCfg = {
     (crack formation during two-phase reactions, plating when charging outruns diffusion) is
     phase-boundary motion gone wrong.
   </p>
+  <Widget no="9" caption="which voltage curve is the two-phase cathode?" widget="trace" config={pdPlateauTrace} />
   <p>
     <em>Common misconception:</em> battery voltage is a fuel gauge — it reads the
     amount of charge left. Voltage is a chemical-<em>potential</em> difference, and
@@ -219,6 +409,7 @@ const phaseQuizCfg = {
     why such cells need coulomb counting rather than voltmeter-reading to report
     state of charge. The voltmeter is reading the phase diagram, not the tank level.
   </p>
+  <Widget no="10" caption="walk the fuel-gauge decision" widget="branch" config={pdGaugeBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

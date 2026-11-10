@@ -16,6 +16,159 @@ const toneCfg = {
   crossings: false,
   height: 340,
 };
+
+const smOctaveCloze = {
+  "text": "A clean %%0%% is the %%1%% — the only interval every musical culture on Earth treats as 'the same note, higher': 440 and %%2%% Hz are both 'A'.",
+  "answers": [
+    [
+      "2:1",
+      "2 : 1"
+    ],
+    [
+      "octave"
+    ],
+    [
+      "880"
+    ]
+  ],
+  "hint": "The grey companion wave completes exactly two cycles for your one — and doubling the frequency names the interval."
+};
+
+const smWaveBuckets = {
+  "prompt": "Pitch and loudness are independent dials — file each change:",
+  "buckets": [
+    "frequency — pitch",
+    "amplitude — loudness"
+  ],
+  "items": [
+    {
+      "label": "the note climbs without getting louder",
+      "bucket": 0
+    },
+    {
+      "label": "cycles per second double",
+      "bucket": 0
+    },
+    {
+      "label": "the eardrum is pushed 440 times a second",
+      "bucket": 0
+    },
+    {
+      "label": "the wave grows taller",
+      "bucket": 1
+    },
+    {
+      "label": "the pressure swings farther",
+      "bucket": 1
+    },
+    {
+      "label": "the sound gets louder at the same pitch",
+      "bucket": 1
+    }
+  ],
+  "why": "The two properties live in different dimensions of the same wave — raise the amplitude and the note does not move; raise the frequency and it climbs without getting louder."
+};
+
+const smRatioMatch = {
+  "prompt": "The strong shared preference — pair each interval with the ratio Pythagoras found:",
+  "pairs": [
+    {
+      "left": "the octave",
+      "right": "2:1"
+    },
+    {
+      "left": "the perfect fifth",
+      "right": "3:2 (in hertz: 220 → 330)"
+    },
+    {
+      "left": "the perfect fourth",
+      "right": "4:3"
+    },
+    {
+      "left": "the major third",
+      "right": "5:4"
+    }
+  ],
+  "why": "Simple frequency ratios sound good to human ears — the foundation Western music is built on, attributed to Pythagoras experimenting with stretched strings around 550 BCE."
+};
+
+const smFifthPlace = {
+  "prompt": "A pure fifth is 702 cents (100 cents = one semitone). Equal temperament flattens every fifth slightly — place the tempered fifth (in cents):",
+  "labels": [
+    "690",
+    "695",
+    "700",
+    "705",
+    "710"
+  ],
+  "scale": {
+    "min": 690,
+    "max": 710
+  },
+  "answer": 700,
+  "tolerance": 1,
+  "why": "700 cents instead of a pure 702 — the error spread evenly, so every key sounds equally, modestly in tune."
+};
+
+const smPitchJudge = {
+  "statements": [
+    {
+      "s": "A = 440 Hz is a convention standardised by the International Organization for Standardization in 1955.",
+      "truth": true,
+      "why": "ISO 16, chosen partly to suit orchestras and instruments — politics with a tuning fork."
+    },
+    {
+      "s": "Baroque ensembles often tune to A ≈ 415 Hz.",
+      "truth": true,
+      "why": "And orchestras have drifted upward for brightness."
+    },
+    {
+      "s": "440 Hz is fixed by the physics of the ear.",
+      "truth": false,
+      "why": "It is a convention — pitch standards are politics with a tuning fork."
+    },
+    {
+      "s": "The octave itself (2:1) is the interval every musical culture treats as 'the same note, higher'.",
+      "truth": true,
+      "why": "The one universal interval — while the standard pitched around it moves with committees."
+    }
+  ]
+};
+
+const smCadenceSpot = {
+  "prompt": "A student's programme-note analysis contains one faulty line — click it:",
+  "lines": [
+    "The primary chords I, IV and V can harmonise almost any folk melody.",
+    "The dominant seventh's added fourth note creates a dissonance that demands resolution to the tonic.",
+    "The plagal cadence IV–I is the full stop of music.",
+    "Modulation usually moves to a related key so the ear follows."
+  ],
+  "errorLine": 2,
+  "correction": "The perfect cadence V–I is the full stop; IV–I (plagal) is the gentle amen.",
+  "why": "Chords become cadences, the punctuation of music — and every punctuation mark has its own weight."
+};
+
+const smTempoEstimate = {
+  "prompt": "Allegro — 'fast' — sits at roughly what speed (BPM)?",
+  "unit": "BPM",
+  "answer": 135,
+  "factor": 1.3,
+  "why": "Allegro runs roughly 120–156 BPM, between andante (walking, ~76–108) and presto (168+).",
+  "context": "The names are Italian because Italian publishers dominated early printed music."
+};
+
+const smTextureCompare = {
+  "prompt": "Texture counts independent melodic lines, not sound sources — drag the divider between the two cases:",
+  "before": {
+    "label": "A crowd in unison",
+    "text": "One unaccompanied line — monophonic, however many people sing it: a lone chanter, a whistled tune, a crowd in unison."
+  },
+  "after": {
+    "label": "The round's second voice",
+    "text": "When the second voice of 'Row, Row, Row Your Boat' enters, you are in polyphony — two or more independent melodies of equal importance."
+  },
+  "why": "Monophonic, homophonic, polyphonic, heterophonic are the fabrics — count the lines, not the headcount."
+};
 ---
 <TopicPage slug="subjects/music/foundational/sound-and-music">
   <h2>Where you are, and what you will learn</h2>
@@ -71,7 +224,9 @@ const toneCfg = {
     "the same note, higher". Slide f to 440 and your own wave and its octave land on the same
     pitch class an octave apart: 440 and 880 Hz are both "A".
   </p>
+  <Widget no="2" caption="fill the blanks — the one universal interval" widget="cloze" config={smOctaveCloze} />
   <p><em>Common misconception:</em> a taller wave is a higher note. Pitch and loudness are independent dials: pitch tracks frequency — cycles per second — while amplitude, the height of the swing, sets loudness. Raise the amplitude slider and the note does not move; raise the frequency slider and it climbs without getting louder. The two properties live in different dimensions of the same wave, which is why a whisper can be high and a shout can be low.</p>
+  <Widget no="3" caption="file each change under the dial that made it" widget="sort-buckets" config={smWaveBuckets} />
   <p>
     <strong>So far:</strong> every sound is a pressure wave, and three properties of that
     wave — frequency, amplitude and overtone shape — become pitch, loudness and timbre.
@@ -92,6 +247,7 @@ const toneCfg = {
     drops the two most clashing steps, which is why nearly every folk tradition — Scottish
     laments, Chinese guzheng, West African kora, blues — rediscovered it independently.
   </p>
+  <Widget no="4" caption="pair each consonant interval with its ratio" widget="match" config={smRatioMatch} />
   <p>
     Beyond major and minor lie the <strong>modal</strong> colours (Dorian, Phrygian, Mixolydian
     — the same seven steps starting from a different tonic, each with a recognisable shade:
@@ -117,6 +273,7 @@ const toneCfg = {
     the trick worked. It is a genuine trade-off: pure harmony for some keys in exchange for
     usable harmony in all of them — the reason a modern pianist can modulate anywhere.
   </p>
+  <Widget no="5" caption="put the tempered fifth on the cents scale" widget="place" config={smFifthPlace} />
   <p>
     <em>Common misconception:</em> "the tuning note A = 440 Hz is a law of nature." It is a
     convention, standardised by the International Organization for Standardization (ISO 16) in
@@ -124,6 +281,7 @@ const toneCfg = {
     A ≈ 415 Hz, and orchestras have drifted upward for brightness. Pitch standards are
     politics with a tuning fork.
   </p>
+  <Widget no="6" caption="true or false — pitch standards" widget="judge" config={smPitchJudge} />
 
   <h2>Tonality and harmony: notes that agree to move</h2>
   <p>
@@ -143,6 +301,7 @@ const toneCfg = {
     around the circle of fifths) so the ear follows. A <strong>pedal</strong> note (usually the
     tonic held underneath) creates the friction of changing harmony against a fixed floor.
   </p>
+  <Widget no="7" caption="find the faulty line — the cadence analysis" widget="spot-error" config={smCadenceSpot} />
 
   <h2>Melody: the line you hum on the way home</h2>
   <p>
@@ -182,6 +341,7 @@ const toneCfg = {
     itself — speeding up, slowing down — and <strong>rubato</strong> ("stolen time") is the
     soloist subtly stretching and squeezing the beat for expression, paying it back later.
   </p>
+  <Widget no="8" caption="call the magnitude — allegro's engine speed" widget="estimate" config={smTempoEstimate} />
 
   <h2>Texture: how many things are happening at once</h2>
   <p>
@@ -198,6 +358,7 @@ const toneCfg = {
     <strong>drone</strong> — a single sustained note under everything, from bagpipes to Indian
     tanpura — is the most ancient texture of all.
   </p>
+  <Widget no="9" caption="drag the divider — one line versus many" widget="compare" config={smTextureCompare} />
   <p><em>Common misconception:</em> polyphonic means many instruments, so a full orchestra accompanying a hymn is polyphony. Texture counts independent melodic lines, not sound sources: an orchestra backing one melody is homophonic however vast, while two flutes weaving separate tunes are polyphonic. Listen for the lines, not the headcount — a Bach fugue is polyphonic; a Bach chorale is homophonic.</p>
 
   <h2>Musical devices, dynamics and articulation</h2>

@@ -10,6 +10,203 @@ const notationCfg = {
     { math: '4 · The expressive layer', note: 'Dynamics (p, f), articulation (staccato, legato), tempo words (allegro, adagio — all Italian, from the 1600s when Italy led music). The notation records what the composer couldn\'t leave to chance.' },
   ],
 };
+
+const rnTimeline = {
+  "unit": "year",
+  "events": [
+    {
+      "year": 1025,
+      "title": "Guido draws lines",
+      "text": "Guido of Arezzo puts the squiggles on lines: height becomes pitch — his claim that learning time fell from ten years to two is the first recorded usability study.",
+      "tag": "design"
+    },
+    {
+      "year": 1501,
+      "title": "Petrucci prints",
+      "text": "The printing press (Venice) makes music mass-reproducible; mensural notation has already fixed rhythm.",
+      "tag": "design"
+    },
+    {
+      "year": 1600,
+      "title": "Barlines arrive",
+      "text": "The staff notates only what a singer can remember — it needed centuries to accept barlines as standard furniture.",
+      "tag": "design"
+    },
+    {
+      "year": 1700,
+      "title": "Tempo marks arrive",
+      "text": "Tempo marks, then dynamics, join the page — the expressive layer completes the modern system.",
+      "tag": "design"
+    }
+  ]
+};
+
+const rnClefMatch = {
+  "prompt": "A clef pins one line to one note. Pair each clef with what it pins:",
+  "pairs": [
+    {
+      "left": "the bass clef (F clef)",
+      "right": "dots the fourth line as the F below middle C"
+    },
+    {
+      "left": "the alto C clef",
+      "right": "pins middle C itself — for the viola"
+    },
+    {
+      "left": "the tenor C clef",
+      "right": "pins middle C for cello and the bassoon's high range"
+    },
+    {
+      "left": "middle C",
+      "right": "the hinge — one ledger line between the staves, shared by both clefs"
+    }
+  ],
+  "why": "The staff is optimised for vocal ranges — hence many clefs, so each voice type stays on the staff without a rain of ledger lines."
+};
+
+const rnBarSpot = {
+  "prompt": "A student's bar of 4/4 contains one faulty line — click it:",
+  "lines": [
+    "A whole note = 4 beats in 4/4; a half = 2; a quarter = 1; an eighth = ½.",
+    "A dot adds half again: a dotted half = 3 beats.",
+    "A tie joins notes across beats or barlines into one held sound.",
+    "The worked bar: quarter rest (1) + two beamed eighths (½ + ½) + dotted quarter (1½) + an eighth (½) = 3 beats."
+  ],
+  "errorLine": 3,
+  "correction": "The bar sums to exactly 4 beats: 1 + ½ + ½ + 1½ + ½ = 4 — chunky fractions that groove like a backbeat.",
+  "why": "The shapes are fractions, and reading rhythm is doing that fraction arithmetic at sight."
+};
+
+const rnKeyCloze = {
+  "text": "One sharp (F♯) on the staff means every F is sharp — the key of %%0%% or %%1%% — and for sharp keys the decoding rule is: a semitone above the %%2%% is the major key.",
+  "answers": [
+    [
+      "G major",
+      "G"
+    ],
+    [
+      "E minor",
+      "E minor"
+    ],
+    [
+      "last sharp"
+    ]
+  ],
+  "hint": "One sharp; two possible homes; the rule reads the last sharp in the F♯ C♯ G♯ order."
+};
+
+const rnEnhJudge = {
+  "statements": [
+    {
+      "s": "In F♯ major the leading tone is spelled E♯, not F.",
+      "truth": true,
+      "why": "F would misname the scale degree — and the order of sharps marches through exactly that E♯."
+    },
+    {
+      "s": "E♯ and C♭ do not exist because on the keyboard they look like F and B.",
+      "truth": false,
+      "why": "The keyboard hides the spelling; the key signature is where it lives."
+    },
+    {
+      "s": "The letter names are grammar, not acoustics.",
+      "truth": true,
+      "why": "F♯ rising 'to' G tells the reader a direction; G♭ falling 'to' F another."
+    },
+    {
+      "s": "F♯ and G♭ are two different keys on the keyboard.",
+      "truth": false,
+      "why": "They name the same keys — that is enharmonic spelling."
+    }
+  ]
+};
+
+const rnFlavourBuckets = {
+  "prompt": "Hearing the flavours — file each interval:",
+  "buckets": [
+    "sweet",
+    "open",
+    "itchy"
+  ],
+  "items": [
+    {
+      "label": "thirds and sixths",
+      "bucket": 0
+    },
+    {
+      "label": "C-E, four semitones",
+      "bucket": 0
+    },
+    {
+      "label": "fourths and fifths",
+      "bucket": 1
+    },
+    {
+      "label": "C-G, seven semitones",
+      "bucket": 1
+    },
+    {
+      "label": "seconds and sevenths",
+      "bucket": 2
+    },
+    {
+      "label": "C-F♯ — the tritone, six semitones",
+      "bucket": 2
+    }
+  ],
+  "why": "Count letter-steps first, then measure semitones for the quality — the drill that makes intervals practical."
+};
+
+const rnTransposeBranch = {
+  "root": "Concert C must sound. The player's instrument transposes — what do you write?",
+  "nodes": {
+    "start": {
+      "text": "Which player are you writing for?",
+      "choices": [
+        {
+          "label": "A horn in F",
+          "next": "horn",
+          "feedback": "The horn sounds a perfect fifth below what is written."
+        },
+        {
+          "label": "A flute or violin (C instrument)",
+          "next": "concert",
+          "feedback": "Concert pitch scores are the reference everyone transposes from."
+        },
+        {
+          "label": "Either — just write C and let them transpose at sight",
+          "next": "sight",
+          "feedback": "The page and the room would disagree by accident — composers double-check transpositions."
+        }
+      ]
+    },
+    "horn": {
+      "text": "Write G: the horn in F sounds a perfect fifth below its written note — one fingering map per player is the return; score arithmetic is the price.",
+      "choices": []
+    },
+    "concert": {
+      "text": "Write C as it sounds: C instruments like flute, violin and piano are the reference everyone transposes from.",
+      "choices": []
+    },
+    "sight": {
+      "text": "Ensemble reading is transposition arithmetic done at speed — the convention exists so players learn fingerings once, not so they can transpose on the fly.",
+      "choices": []
+    }
+  },
+  "why": "History and habit: doubling on a differently-sized instrument of the same family (B♭ clarinet to A clarinet) changes only the key signature, not the fingers."
+};
+
+const rnDynamicsOrder = {
+  "prompt": "The dynamic markings, from softest to loudest:",
+  "items": [
+    "pp — pianissimo",
+    "p — piano",
+    "mp — mezzo-piano",
+    "mf — mezzo-forte",
+    "f — forte",
+    "ff — fortissimo"
+  ],
+  "why": "Dynamics set loudness as a relative scale, with the hairpins of crescendo and diminuendo between them — the gaps are where interpretation lives."
+};
 ---
 <TopicPage slug="subjects/music/intermediate/reading-notation">
 
@@ -77,6 +274,7 @@ const notationCfg = {
     why it needed centuries to accept barlines (c. 1600), tempo marks (c. 1700) and
     dynamics as standard furniture.
   </p>
+  <Widget no="2" caption="scrub a thousand years of design decisions" widget="timeline" config={rnTimeline} />
 
   <h2>The staff and its clefs</h2>
   <p>
@@ -95,6 +293,7 @@ const notationCfg = {
     instrument needs; a piccolo or a contrabassoon simply lives far up or down its
     borrowed staff.
   </p>
+  <Widget no="3" caption="pair each clef with the line it pins" widget="match" config={rnClefMatch} />
 
   <h2>Note values: time as shapes</h2>
   <p>
@@ -115,6 +314,7 @@ const notationCfg = {
     a bar that reads as chunky fractions and grooves like a backbeat. Reading music is
     precisely this: converting shapes into durations faster than the pulse can pass.
   </p>
+  <Widget no="4" caption="find the faulty line — the bar that does not add up" widget="spot-error" config={rnBarSpot} />
   <p><em>Common misconception:</em> a dot doubles the note's length. It adds half of the original: a dotted half is 3 beats (2 + 1), a dotted quarter is 1½ — the dot is the composer writing "and a half" without saying it. The same halving logic explains the double dot: the second dot adds a quarter of the original, because each dot is worth half of the one before it.</p>
   <p>
     <strong>So far:</strong> the staff fixes <em>where</em> a pitch sits and the note shapes fix
@@ -140,7 +340,9 @@ const notationCfg = {
     "to" G tells the reader a direction, G♭ falling "to" F another. The page encodes
     grammar, not just acoustics.
   </p>
+  <Widget no="5" caption="fill the blanks — decoding the signature" widget="cloze" config={rnKeyCloze} />
   <p><em>Common misconception:</em> E♯ and C♭ "do not exist" because on the keyboard they look like F and B. The letter names are grammar, not acoustics: in F♯ major the leading tone is spelled E♯, not F, because F would misname the scale degree — and the order of sharps marches through exactly that E♯. The keyboard hides the spelling; the key signature is where it lives.</p>
+  <Widget no="6" caption="true or false — spelling is grammar" widget="judge" config={rnEnhJudge} />
 
   <h2>Intervals</h2>
   <p>
@@ -160,6 +362,7 @@ const notationCfg = {
     this site: chords are stacked intervals, scales are chains of them, and melody is
     intervals played one at a time.
   </p>
+  <Widget no="7" caption="file each interval by the flavour it carries" widget="sort-buckets" config={rnFlavourBuckets} />
 
   <h2>Transposing instruments</h2>
   <p>
@@ -180,6 +383,7 @@ const notationCfg = {
     reading is partly this arithmetic done at speed, and it is why composers double-check
     transpositions: the page and the room do not say the same thing by accident.
   </p>
+  <Widget no="8" caption="walk the decision — writing for a transposing player" widget="branch" config={rnTransposeBranch} />
   <p><em>Common misconception:</em> a clarinet part whose written C sounds B♭ is a misprint — instruments should "just" write concert pitch. The transposing convention is a usability decision: the player learns one fingering map, and every differently-sized instrument of the family becomes the same page with a different key signature. The score arithmetic (write D to sound C) is the price; one fingering map per player is the return.</p>
   <p>
     <strong>So far:</strong> you can now read the grid, the durations, the accidentals, the
@@ -203,6 +407,7 @@ const notationCfg = {
     standards Europe then copied. Notice the design philosophy: the page fixes what
     must be fixed and gestures at the rest — the gaps are where interpretation lives.
   </p>
+  <Widget no="9" caption="stack the dynamics soft to loud" widget="order" config={rnDynamicsOrder} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

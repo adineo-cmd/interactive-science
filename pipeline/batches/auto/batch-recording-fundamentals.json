@@ -1,0 +1,151 @@
+[
+  {
+    "slug": "subjects/music-technology/foundational/recording-fundamentals",
+    "activities": [
+      {
+        "anchor": "picture the studio as a chain of translators",
+        "type": "order",
+        "caption": "rebuild the chain from voice to file",
+        "name": "rfChainOrder",
+        "config": {
+          "prompt": "A voice makes pressure waves; a file stores numbers. Order the translators between them:",
+          "items": [
+            "The source — voice or drum, an acoustic event with its own spectrum and dynamics",
+            "Microphone — a diaphragm turns pressure waves into a tiny electrical voltage",
+            "Preamp — raises that voltage to a workable level",
+            "Converter — turns the voltage into numbers a computer can store",
+            "Recorder — writes the numbers to a file"
+          ],
+          "why": "At every link two enemies wait: noise rising from below and distortion dropping from above — the craft is getting the music between them, every time, on every take."
+        }
+      },
+      {
+        "anchor": "cannot be un-clipped",
+        "type": "branch",
+        "caption": "you hear the clip — decide what happens next",
+        "name": "rfClipBranch",
+        "config": {
+          "root": "Listen-back: the loudest chorus of the vocal take is clipped at the converter — 0 dBFS sliced the waveform's tips.",
+          "nodes": {
+            "start": {
+              "text": "The take is musically the best one. What do you do?",
+              "choices": [
+                { "label": "Open a de-clipper plugin and repair the waveform", "next": "repair", "feedback": "Editing and mixing reshape what was captured — the clipped tips were never recorded, so the repair is guessing." },
+                { "label": "Re-track the vocal with more headroom before the next pass", "next": "retrack", "feedback": "Decisions made before pressing record are worth more than any correction applied after." }
+              ]
+            },
+            "repair": {
+              "text": "A de-clipper can guess at the missing tips, but the cause is baked in: a badly recorded source is a permanent tax. The professional move is re-tracking.",
+              "choices": []
+            },
+            "retrack": {
+              "text": "Lower the preamp gain for the next pass, leave headroom at performance level, and the take survives every future mix — capture, don't rescue.",
+              "choices": []
+            }
+          },
+          "why": "Editing, tuning and mixing only reshape what exists — a vocal clipped at the converter cannot be un-clipped, and a roomy thin guitar sound cannot lose its room."
+        }
+      },
+      {
+        "anchor": "work like a tiny loudspeaker in reverse",
+        "type": "compare",
+        "caption": "drag the divider — the two great microphone families",
+        "name": "rfMicCompare",
+        "config": {
+          "prompt": "Dynamic or condenser? Drag the divider between the two families:",
+          "before": {
+            "label": "Dynamic",
+            "text": "Rugged, cheap-ish, tolerant of brutal sound-pressure levels and awkward rooms — the SM57/SM58 family lives on guitar amplifiers, snare drums and stages."
+          },
+          "after": {
+            "label": "Condenser",
+            "text": "Far finer detail and sensitivity — the default studio vocal mic — but it needs +48 V phantom power down the cable, hears everything (bad rooms, computer fans) and overloads in front of a kick drum."
+          },
+          "why": "Choose for source and room, not price — the choice depends on what you record and where."
+        }
+      },
+      {
+        "anchor": "Placement is the cheaper and mightier tool",
+        "type": "sort-buckets",
+        "caption": "file each move under the lever that does the work",
+        "name": "rfLeverBuckets",
+        "config": {
+          "prompt": "Three levers move the mic before EQ does. File each effect:",
+          "buckets": [
+            "Distance — sets the direct-to-room blend",
+            "Axis — sets tone and brightness",
+            "Spacing — keeps multi-miking clean"
+          ],
+          "items": [
+            { "label": "2–5 cm from the lips: almost all direct sound, intimate and dry", "bucket": 0 },
+            { "label": "pulled back to 30 cm: the mic breathes with the room", "bucket": 0 },
+            { "label": "directional mics boost bass as they get closer (proximity effect)", "bucket": 0 },
+            { "label": "singing slightly off-axis tames harshness", "bucket": 1 },
+            { "label": "most mics are brightest on-axis", "bucket": 1 },
+            { "label": "two mics on one source spaced too close: the delay between them comb-filters the blend", "bucket": 2 }
+          ],
+          "why": "Experienced engineers change the mic's position before reaching for EQ — placement is the first EQ."
+        }
+      },
+      {
+        "anchor": "A worked case: recording a guitar amplifier",
+        "type": "match",
+        "caption": "pair each mic position with the tone it returns",
+        "name": "rfAmpMatch",
+        "config": {
+          "prompt": "One SM57, one amp, four moves. Pair position with result:",
+          "pairs": [
+            { "left": "centre of the cone", "right": "the tone hardens" },
+            { "left": "where the cone meets the dust cap", "right": "bright and present — the standard move" },
+            { "left": "edge of the cone", "right": "the tone darkens" },
+            { "left": "pulled back a foot", "right": "the room arrives" }
+          ],
+          "why": "Move the mic through those positions while the player repeats a loop, listening for the one where the tone is right at the source — because at the source, correction is free."
+        }
+      },
+      {
+        "anchor": "expensive microphones make good recordings",
+        "type": "judge",
+        "caption": "true or false — price versus position",
+        "name": "rfPriceJudge",
+        "config": {
+          "statements": [
+            { "s": "A well-placed SM57 in a good position beats a boutique condenser badly placed.", "truth": true, "why": "Placement and the room dominate price in almost every practical test." },
+            { "s": "Price buys nothing at all.", "truth": false, "why": "It buys detail, consistency, lower self-noise — real, but the last few percent." },
+            { "s": "The microphone is the first fifty percent; the position is the last few.", "truth": false, "why": "Inverted — the position is the first fifty; the microphone is the last few percent." },
+            { "s": "A bad room defeats an expensive microphone.", "truth": true, "why": "Condensers hear everything, including bad rooms — and the room is on every recording." }
+          ]
+        }
+      },
+      {
+        "anchor": "is the map of a studio",
+        "type": "cloze",
+        "caption": "fill the blanks — the discipline and its two bookends",
+        "name": "rfGainCloze",
+        "config": {
+          "text": "%%0%% is the discipline of setting each stage's level so the signal stays far above the %%1%% below and far below the %%2%% above at every link.",
+          "answers": [["gain staging"], ["noise floor"], ["clipping ceiling"]],
+          "hint": "One is the discipline; the other two are the enemies waiting at every link."
+        }
+      },
+      {
+        "anchor": "record as hot as possible like the tape era taught",
+        "type": "spot-error",
+        "caption": "find the faulty line — the tape-era habit",
+        "name": "rfHotSpot",
+        "config": {
+          "prompt": "A producer's plan for tracking the album contains one faulty line — click it:",
+          "lines": [
+            "Set gain during a confident rehearsal pass at performance level.",
+            "Tape saturated gracefully — pushing levels added a pleasing compression.",
+            "Digital saturates the same way, so hot levels flatter the file too.",
+            "Modern practice records conservatively and adds character in the mix on purpose."
+          ],
+          "errorLine": 2,
+          "correction": "Digital has no sweet spot at the top — 0 dBFS is a cliff, not a colour; the same habit that flattered tape writes irreversible distortion into a file.",
+          "why": "Tape flattered hot levels; the converter slices them — record conservatively, then lift the quiet, healthy file later."
+        }
+      }
+    ]
+  }
+]
