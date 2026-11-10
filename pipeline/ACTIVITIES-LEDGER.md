@@ -132,6 +132,8 @@
 | automotive-technology/foundational/shop-safety-and-service-basics | sort-buckets, estimate, match, spot-error, order, predict, branch, cloze | chunk-02 |
 | aviation-maintenance/foundational/amt-general | match, estimate, trace, sort-buckets, order, compare, judge, spot-error | chunk-02 |
 | aviation/foundational/aircraft-systems-and-instruments | match, spot-error, compare, predict, sort-buckets, place, judge, order | chunk-02 |
+| biology/foundational/cell-structure | order, match, cloze, place, judge, spot-error, estimate, compare | round-3 |
+| chemistry/foundational/atomic-structure | estimate, order, sort-buckets, match, estimate, cloze, judge, compare | round-3 |
 | chemistry/foundational/periodic-table | order, cloze, sort-buckets, place, spot-error, match, compare, trace | chunk-07 |
 | chemistry/foundational/states-of-matter | sort-buckets, match, estimate, place, spot-error, judge, cloze, trace | chunk-07 |
 | chemistry/intermediate/chemical-bonding | sort-buckets, branch, estimate, cloze, match, spot-error, judge, order | chunk-07 |
@@ -256,14 +258,14 @@
 
 **Art-history: 9 of 9 COMPLETE** (ledger rows art-astro-1 and chunk-01).
 **Astronomy: 13 of 13 COMPLETE** (astro-1…10; orbits-and-keplers-laws uses raw figure widgets).
-**Biology: 23 of 24 done** — remaining: `biology/foundational/cell-structure`.
-**Chemistry: 16 of 17 done** — remaining: `chemistry/foundational/atomic-structure`.
+**Biology: 24 of 24 COMPLETE** (cell-structure backfilled in rounds 3–4 with raw-figure widgets).
+**Chemistry: 17 of 17 COMPLETE** (atomic-structure backfilled in rounds 3–4 with raw-figure widgets).
 **Economics: 15 of 15 COMPLETE** (econ-1…15: supply-and-demand, money-inflation, elasticity,
 gdp-national-accounts, fiscal-policy-public-debt, market-failure-externalities,
 monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics,
 development-economics, game-theory, international-trade, econometrics, financial-economics,
 macroeconomic-models-dsge).
-**Then next subjects (alphabetical): biology (1), chemistry (1), engineering (10),
+**Then next subjects (alphabetical): engineering (10),
 environmental-science (12), film (9), finance (11), geography (14), history (20), journalism (7) …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
