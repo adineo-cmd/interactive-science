@@ -202,6 +202,9 @@
 | earth-science/intermediate/earthquakes-and-seismology | match, estimate, judge, cloze, place, order, sort-buckets, compare, spot-error | earthscience-8 |
 | earth-science/intermediate/atmosphere-and-weather-systems | place, match, predict, order, cloze, estimate, compare, spot-error | earthscience-9 |
 | earth-science/intermediate/oceans-and-currents | match, estimate, cloze, order, sort-buckets, branch, predict, spot-error | earthscience-10 |
+| data-science/intermediate/cleaning-messy-data | estimate, match, order, predict, sort-buckets, branch, spot-error, judge | datascience-4 |
+| data-science/intermediate/exploratory-data-analysis | order, match, predict, spot-error, branch, cloze, sort-buckets, estimate, compare | datascience-5 |
+| data-science/intermediate/charts-that-tell-the-truth | sort-buckets, match, cloze, estimate, predict, spot-error, compare, order, branch | datascience-6 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

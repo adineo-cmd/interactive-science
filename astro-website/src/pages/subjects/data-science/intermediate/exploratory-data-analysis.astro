@@ -19,6 +19,180 @@ const edaQuizCfg = {
     { q: 'Why prefer the median to the mean for heavily skewed data?', choices: ['it is easier to compute', 'the mean is dragged by the tail while the median is not', 'medians are always larger', 'medians work only for integers'], answer: 1, why: 'One billionaire moves a mean, not a median — which is why income is reported as a median and why "average" without a histogram is a red flag.' },
   ],
 };
+
+const edaRhythmOrder = {
+  "prompt": "Rebuild the exploratory rhythm in order:",
+  "items": [
+    "Plot everything — distributions, relationships, segments, time",
+    "Notice what deviates from expectation",
+    "Question what you see — is it real, a bug, a segment?",
+    "Re-plot to test the question — and write down what surprised you"
+  ],
+  "why": "Plot, notice, question, re-plot — the loop that Tukey turned into a method, and whose deliverable is hypotheses, not a model."
+};
+
+const edaDistMatch = {
+  "prompt": "Pair each distribution feature with its consequence:",
+  "pairs": [
+    {
+      "left": "a bimodal shape",
+      "right": "two populations in one column — a single-number summary averages them into fiction"
+    },
+    {
+      "left": "a mean–median gap",
+      "right": "the measure of skew"
+    },
+    {
+      "left": "heavy tails",
+      "right": "punish linear models, reward medians and log scales"
+    },
+    {
+      "left": "percentiles",
+      "right": "survive outliers that wreck means and ranges"
+    }
+  ],
+  "why": "Shape, centre, spread, tails — read all four before trusting any summary the distribution feeds."
+};
+
+const edaSkewPredict = {
+  "q": "A retail dataset's orders: median 24, mean 89. What does the histogram most likely look like?",
+  "choices": [
+    "Strongly right-skewed — most orders small, a thin spike of enormous ones",
+    "Roughly symmetric around 50",
+    "Left-skewed — a few very small orders dragging the mean down"
+  ],
+  "answer": 0,
+  "why": "The mean–median gap measures skew: a mean far above the median is the signature of a long right tail — most orders small, a few enormous ones dragging the average up."
+};
+
+const edaCorrSpot = {
+  "prompt": "One of these claims about correlation is backwards — click it:",
+  "lines": [
+    "Correlation matrices give the overview; scatter plots handle anything important.",
+    "Jitter or alpha-blend dense scatters, or thousands of points hide as a solid blob.",
+    "A U-shaped relationship scores near zero on linear correlation.",
+    "A single outlier cannot move a correlation much either way."
+  ],
+  "errorLine": 3,
+  "correction": "A single outlier can manufacture or destroy a strong correlation on its own — remove one point and a strong relationship can vanish; add one and it can appear.",
+  "why": "Correlation is a question, not an answer — it only sees straight lines, and the scatter plot decides about the relationship."
+};
+
+const edaSimpsonBranch = {
+  "root": "Berkeley 1973: men admitted at 44%, women at 35%. Someone declares bias proven.",
+  "nodes": {
+    "start": {
+      "text": "What do you check before concluding?",
+      "choices": [
+        {
+          "label": "Slice by department and compare the slices to the total",
+          "next": "paradox",
+          "feedback": "Department by department, women did as well or better — the reversal came from application patterns."
+        },
+        {
+          "label": "Accept the aggregate — it is the real number",
+          "next": "aggregate",
+          "feedback": "The aggregate was true and misleading simultaneously — the average of several opposite stories."
+        },
+        {
+          "label": "Collect a bigger sample and recompute the total",
+          "next": "bigger",
+          "feedback": "More rows of the same aggregation reproduce the same reversal — the aggregation level is the decision."
+        }
+      ]
+    },
+    "paradox": {
+      "text": "Women applied disproportionately to the most competitive departments; men to engineering's high-rate departments.",
+      "choices": [
+        {
+          "label": "So what is the honest headline?",
+          "next": "whom",
+          "feedback": "'Admission rates differed by department' — the correct response to 'what is the overall number?' is often 'for whom?'"
+        }
+      ]
+    },
+    "aggregate": {
+      "text": "A true number that tells the opposite story — Simpson's paradox is the proof that aggregation is a modelling decision."
+    },
+    "bigger": {
+      "text": "Sample size fixes noise, not reversals — the paradox survives any n."
+    },
+    "whom": {
+      "text": "Slice, compare, and report the structure — that is the finding that matters."
+    }
+  },
+  "why": "The aggregate can be the average of several opposite stories — every important relationship gets sliced by its natural segments."
+};
+
+const edaTimeCloze = {
+  "text": "Time plots get their own reading list: %%0%% (the long slope), %%1%% (the repeating daily, weekly or yearly pattern), %%2%% (level changes at specific dates — usually interventions, sometimes bugs), and %%3%% (outliers to investigate, not smooth away).",
+  "answers": [
+    [
+      "trend"
+    ],
+    [
+      "seasonality",
+      "seasonal pattern"
+    ],
+    [
+      "shifts",
+      "level shifts"
+    ],
+    [
+      "spikes"
+    ]
+  ],
+  "hint": "The slope, the rhythm, the step, and the one-day wonder."
+};
+
+const edaLoopSort = {
+  "prompt": "File each act under the activity it belongs to:",
+  "buckets": [
+    "exploration — generation",
+    "confirmation — prosecution"
+  ],
+  "items": [
+    {
+      "label": "hunt twenty slices for patterns",
+      "bucket": 0
+    },
+    {
+      "label": "find data-quality bugs in a plot that makes no sense",
+      "bucket": 0
+    },
+    {
+      "label": "test the pattern on data the exploration did not use",
+      "bucket": 1
+    },
+    {
+      "label": "state the pattern as a hypothesis a test could refute",
+      "bucket": 0
+    }
+  ],
+  "why": "Exploration is generation, generous with patterns; confirmation is prosecution, hostile to them — the honest workflow keeps the two notebooks separate."
+};
+
+const edaTipEst = {
+  "prompt": "In the rideshare trip table, what share of trips had exactly zero tip?",
+  "unit": "%",
+  "answer": 60,
+  "factor": 1.4,
+  "why": "60% — a bimodal flag, not an error: one regime tips, one does not, and the split turned out to follow pickup zones.",
+  "context": "a single-number average tip would have buried the segmentation"
+};
+
+const edaResidCompare = {
+  "prompt": "Two verdicts a residual plot can deliver — drag the divider:",
+  "before": {
+    "label": "structure left in",
+    "text": "curvature a straight line flattened, seasonality the trend ignored, a segment behaving differently — patterns the model missed"
+  },
+  "after": {
+    "label": "clean scatter",
+    "text": "no structure the eye can find — the model captured what this data offers"
+  },
+  "why": "Each model is a hypothesis about structure, and its residuals are the data's answer to it — which is why the EDA → model → EDA loop advances."
+};
 ---
 <TopicPage slug="subjects/data-science/intermediate/exploratory-data-analysis">
   <h2>Where you are, and what you will learn</h2>
@@ -58,6 +232,7 @@ const edaQuizCfg = {
     interleave constantly, because the fastest way to discover a data-quality bug is
     a plot that makes no sense.
   </p>
+  <Widget no="11" caption="rebuild the EDA rhythm" widget="order" config={edaRhythmOrder} />
 
   <Widget no="1" caption="the four-pass EDA checklist" widget="equationStep" config={edaCfg} />
   <p>
@@ -84,6 +259,8 @@ const edaQuizCfg = {
     spike of enormous ones; reporting "average order 89" everywhere is now a
     documented choice, not an accident.
   </p>
+  <Widget no="10" caption="pair each distribution feature with what it decides" widget="match" config={edaDistMatch} />
+  <Widget no="9" caption="bet before you read on — read the gap" widget="predict" config={edaSkewPredict} />
   <p>
     <strong>So far:</strong> pass one reads each variable alone — shape, centre, spread,
     tails — and the distribution is already making decisions for you (medians over means
@@ -127,6 +304,7 @@ const edaQuizCfg = {
     (causal? confounded? coincidence at this sample?) is exactly what EDA cannot
     decide and therefore must flag honestly.
   </p>
+  <Widget no="8" caption="find the backwards claim — what correlation cannot do" widget="spot-error" config={edaCorrSpot} />
   <p><em>Common misconception:</em> "correlation near zero means no relationship." The
   familiar linear correlation only sees straight-line trends, so a U-shaped relationship
   can score almost exactly zero and sail through a naive check — while a single outlier
@@ -149,6 +327,7 @@ const edaQuizCfg = {
     the slices to the total. When they disagree, you have found the analysis's
     real structure — and usually the finding that matters.
   </p>
+  <Widget no="7" caption="the aggregate is accused — run the check" widget="branch" config={edaSimpsonBranch} />
   <p><em>Common misconception:</em> the aggregate is the "real" number and segments
   are complications. No — the choice of aggregation level is a modeling decision
   with consequences, and paradoxes are the proof. The correct response to
@@ -174,6 +353,7 @@ const edaQuizCfg = {
     migration — the charts lesson's annotation habit, born here), and compute
     rolling aggregates only after seeing the raw series.
   </p>
+  <Widget no="6" caption="fill the blanks — the time-plot reading list" widget="cloze" config={edaTimeCloze} />
 
   <h2>The deliverable: notes, hypotheses and the loop</h2>
   <p>
@@ -191,6 +371,7 @@ const edaQuizCfg = {
     too — plot them, and whatever structure remains is a pattern the model missed,
     sending you back into EDA with sharper eyes.
   </p>
+  <Widget no="5" caption="file each act under generation or prosecution" widget="sort-buckets" config={edaLoopSort} />
   <p><em>Common misconception:</em> "a pattern found during exploration is a finding I can
   report." Exploration is generation, not confirmation: hunt through twenty slices and
   something will look significant by chance alone. The honest workflow states the pattern
@@ -216,6 +397,7 @@ const edaQuizCfg = {
     pricing-structure hypotheses, one tipping segmentation worth modelling, and a
     date to investigate. No model was fitted; the modelling just became easy.
   </p>
+  <Widget no="4" caption="call the no-tip share" widget="estimate" config={edaTipEst} />
 
   <h2>EDA and the model: residuals are data too</h2>
   <p>
@@ -233,6 +415,7 @@ const edaQuizCfg = {
     loop ship models whose failures are invisible; practitioners who run it treat
     every model as one more plot asking to be looked at.
   </p>
+  <Widget no="3" caption="residuals with structure versus clean scatter — drag the divider" widget="compare" config={edaResidCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

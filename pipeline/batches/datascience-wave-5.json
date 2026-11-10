@@ -1,0 +1,226 @@
+[
+ {
+  "slug": "subjects/data-science/intermediate/exploratory-data-analysis",
+  "activities": [
+   {
+    "anchor": "The discipline has a characteristic rhythm",
+    "type": "order",
+    "caption": "rebuild the EDA rhythm",
+    "name": "edaRhythmOrder",
+    "config": {
+     "prompt": "Rebuild the exploratory rhythm in order:",
+     "items": [
+      "Plot everything — distributions, relationships, segments, time",
+      "Notice what deviates from expectation",
+      "Question what you see — is it real, a bug, a segment?",
+      "Re-plot to test the question — and write down what surprised you"
+     ],
+     "why": "Plot, notice, question, re-plot — the loop that Tukey turned into a method, and whose deliverable is hypotheses, not a model."
+    }
+   },
+   {
+    "anchor": "A histogram or density plot per variable",
+    "type": "match",
+    "caption": "pair each distribution feature with what it decides",
+    "name": "edaDistMatch",
+    "config": {
+     "prompt": "Pair each distribution feature with its consequence:",
+     "pairs": [
+      {
+       "left": "a bimodal shape",
+       "right": "two populations in one column — a single-number summary averages them into fiction"
+      },
+      {
+       "left": "a mean–median gap",
+       "right": "the measure of skew"
+      },
+      {
+       "left": "heavy tails",
+       "right": "punish linear models, reward medians and log scales"
+      },
+      {
+       "left": "percentiles",
+       "right": "survive outliers that wreck means and ranges"
+      }
+     ],
+     "why": "Shape, centre, spread, tails — read all four before trusting any summary the distribution feeds."
+    }
+   },
+   {
+    "anchor": "reporting \"average order 89\" everywhere",
+    "type": "predict",
+    "caption": "bet before you read on — read the gap",
+    "name": "edaSkewPredict",
+    "config": {
+     "q": "A retail dataset's orders: median 24, mean 89. What does the histogram most likely look like?",
+     "choices": [
+      "Strongly right-skewed — most orders small, a thin spike of enormous ones",
+      "Roughly symmetric around 50",
+      "Left-skewed — a few very small orders dragging the mean down"
+     ],
+     "answer": 0,
+     "why": "The mean–median gap measures skew: a mean far above the median is the signature of a long right tail — most orders small, a few enormous ones dragging the average up."
+    }
+   },
+   {
+    "anchor": "Correlation matrices give the overview but inherit linear blinders",
+    "type": "spot-error",
+    "caption": "find the backwards claim — what correlation cannot do",
+    "name": "edaCorrSpot",
+    "config": {
+     "prompt": "One of these claims about correlation is backwards — click it:",
+     "lines": [
+      "Correlation matrices give the overview; scatter plots handle anything important.",
+      "Jitter or alpha-blend dense scatters, or thousands of points hide as a solid blob.",
+      "A U-shaped relationship scores near zero on linear correlation.",
+      "A single outlier cannot move a correlation much either way."
+     ],
+     "errorLine": 3,
+     "correction": "A single outlier can manufacture or destroy a strong correlation on its own — remove one point and a strong relationship can vanish; add one and it can appear.",
+     "why": "Correlation is a question, not an answer — it only sees straight lines, and the scatter plot decides about the relationship."
+    }
+   },
+   {
+    "anchor": "slice every important relationship",
+    "type": "branch",
+    "caption": "the aggregate is accused — run the check",
+    "name": "edaSimpsonBranch",
+    "config": {
+     "root": "Berkeley 1973: men admitted at 44%, women at 35%. Someone declares bias proven.",
+     "nodes": {
+      "start": {
+       "text": "What do you check before concluding?",
+       "choices": [
+        {
+         "label": "Slice by department and compare the slices to the total",
+         "next": "paradox",
+         "feedback": "Department by department, women did as well or better — the reversal came from application patterns."
+        },
+        {
+         "label": "Accept the aggregate — it is the real number",
+         "next": "aggregate",
+         "feedback": "The aggregate was true and misleading simultaneously — the average of several opposite stories."
+        },
+        {
+         "label": "Collect a bigger sample and recompute the total",
+         "next": "bigger",
+         "feedback": "More rows of the same aggregation reproduce the same reversal — the aggregation level is the decision."
+        }
+       ]
+      },
+      "paradox": {
+       "text": "Women applied disproportionately to the most competitive departments; men to engineering's high-rate departments.",
+       "choices": [
+        {
+         "label": "So what is the honest headline?",
+         "next": "whom",
+         "feedback": "'Admission rates differed by department' — the correct response to 'what is the overall number?' is often 'for whom?'"
+        }
+       ]
+      },
+      "aggregate": {
+       "text": "A true number that tells the opposite story — Simpson's paradox is the proof that aggregation is a modelling decision."
+      },
+      "bigger": {
+       "text": "Sample size fixes noise, not reversals — the paradox survives any n."
+      },
+      "whom": {
+       "text": "Slice, compare, and report the structure — that is the finding that matters."
+      }
+     },
+     "why": "The aggregate can be the average of several opposite stories — every important relationship gets sliced by its natural segments."
+    }
+   },
+   {
+    "anchor": "Any column with a timestamp earns a line plot",
+    "type": "cloze",
+    "caption": "fill the blanks — the time-plot reading list",
+    "name": "edaTimeCloze",
+    "config": {
+     "text": "Time plots get their own reading list: %%0%% (the long slope), %%1%% (the repeating daily, weekly or yearly pattern), %%2%% (level changes at specific dates — usually interventions, sometimes bugs), and %%3%% (outliers to investigate, not smooth away).",
+     "answers": [
+      [
+       "trend"
+      ],
+      [
+       "seasonality",
+       "seasonal pattern"
+      ],
+      [
+       "shifts",
+       "level shifts"
+      ],
+      [
+       "spikes"
+      ]
+     ],
+     "hint": "The slope, the rhythm, the step, and the one-day wonder."
+    }
+   },
+   {
+    "anchor": "Hunt through twenty slices and something will look significant",
+    "type": "sort-buckets",
+    "caption": "file each act under generation or prosecution",
+    "name": "edaLoopSort",
+    "config": {
+     "prompt": "File each act under the activity it belongs to:",
+     "buckets": [
+      "exploration — generation",
+      "confirmation — prosecution"
+     ],
+     "items": [
+      {
+       "label": "hunt twenty slices for patterns",
+       "bucket": 0
+      },
+      {
+       "label": "find data-quality bugs in a plot that makes no sense",
+       "bucket": 0
+      },
+      {
+       "label": "test the pattern on data the exploration did not use",
+       "bucket": 1
+      },
+      {
+       "label": "state the pattern as a hypothesis a test could refute",
+       "bucket": 0
+      }
+     ],
+     "why": "Exploration is generation, generous with patterns; confirmation is prosecution, hostile to them — the honest workflow keeps the two notebooks separate."
+    }
+   },
+   {
+    "anchor": "tip is zero for 60% of trips",
+    "type": "estimate",
+    "caption": "call the no-tip share",
+    "name": "edaTipEst",
+    "config": {
+     "prompt": "In the rideshare trip table, what share of trips had exactly zero tip?",
+     "unit": "%",
+     "answer": 60,
+     "factor": 1.4,
+     "why": "60% — a bimodal flag, not an error: one regime tips, one does not, and the split turned out to follow pickup zones.",
+     "context": "a single-number average tip would have buried the segmentation"
+    }
+   },
+   {
+    "anchor": "Fit a model — even a simple line — and its",
+    "type": "compare",
+    "caption": "residuals with structure versus clean scatter — drag the divider",
+    "name": "edaResidCompare",
+    "config": {
+     "prompt": "Two verdicts a residual plot can deliver — drag the divider:",
+     "before": {
+      "label": "structure left in",
+      "text": "curvature a straight line flattened, seasonality the trend ignored, a segment behaving differently — patterns the model missed"
+     },
+     "after": {
+      "label": "clean scatter",
+      "text": "no structure the eye can find — the model captured what this data offers"
+     },
+     "why": "Each model is a hypothesis about structure, and its residuals are the data's answer to it — which is why the EDA → model → EDA loop advances."
+    }
+   }
+  ]
+ }
+]

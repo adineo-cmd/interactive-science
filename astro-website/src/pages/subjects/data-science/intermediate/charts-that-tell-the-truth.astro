@@ -19,6 +19,169 @@ const chartsQuizCfg = {
     { q: 'Why annotate charts (launches, policy dates, the outlier\'s name)?', choices: ['decoration', 'the annotation carries the explanation the reader would otherwise invent', 'software requires it', 'it fills white space'], answer: 1, why: 'Readers build stories from spikes whether or not you supply them. Marking the cause on the chart replaces their guess with your documented one — and exposes it to challenge.' },
   ],
 };
+
+const chartsHonestSort = {
+  "prompt": "File each device under the chart it belongs to:",
+  "buckets": [
+    "honest encoding",
+    "misleading without a false word"
+  ],
+  "items": [
+    {
+      "label": "aligning the encoding with the data's importance",
+      "bucket": 0
+    },
+    {
+      "label": "a truncated bar axis",
+      "bucket": 1
+    },
+    {
+      "label": "a cherry-picked starting window",
+      "bucket": 1
+    },
+    {
+      "label": "grey for everything except the story",
+      "bucket": 0
+    },
+    {
+      "label": "dual axes slid into an apparent relationship",
+      "bucket": 1
+    }
+  ],
+  "why": "Dishonest charts mislead without a single false word — which is why chart literacy is an ethics skill as much as a design one."
+};
+
+const chartsPercepMatch = {
+  "prompt": "Pair each encoding with its judging accuracy:",
+  "pairs": [
+    {
+      "left": "position along a common scale",
+      "right": "judged most accurately — your most important variable belongs here"
+    },
+    {
+      "left": "length",
+      "right": "nearly as well — the bar's channel"
+    },
+    {
+      "left": "slopes and angles",
+      "right": "judged poorly — the pie chart's problem"
+    },
+    {
+      "left": "colour saturation and hue",
+      "right": "worst of all — rough, secondary distinctions only"
+    }
+  ],
+  "why": "The hierarchy, not a preference: scatter beats bubble, grouped bar beats pie, and 'which slice is bigger?' is a question pies answer badly."
+};
+
+const chartsTypeCloze = {
+  "text": "Chart type follows question type: comparison across categories → a %%0%% chart, sorted by value; trend over time → a %%1%% chart; the relationship between two quantities → a %%2%% plot; part-to-whole → stacked bars or a 100% bar.",
+  "answers": [
+    [
+      "bar"
+    ],
+    [
+      "line"
+    ],
+    [
+      "scatter"
+    ]
+  ],
+  "hint": "Length for comparing, position over time for trending, two axes for relating."
+};
+
+const chartsLieEst = {
+  "prompt": "Tufte's fuel-economy chart drew its effect nearly how many times larger than the real mpg increase?",
+  "unit": "×",
+  "answer": 9.4,
+  "factor": 1.6,
+  "why": "A lie factor of 9.4 — the measure matters because it removes intent from the question: a misleading chart is misleading whether or not anyone meant it.",
+  "context": "1.0 would be a chart that shows exactly what the data says"
+};
+
+const chartsDualPredict = {
+  "q": "Two lines rise together on a dual-axis chart. What single check tests whether the connection is real?",
+  "choices": [
+    "Rescale one axis — if the 'correlation' changes with your zoom, the chart was the correlation",
+    "Compute the correlation coefficient of the two series",
+    "Extend the window by five more years"
+  ],
+  "answer": 0,
+  "why": "With dual axes you can slide one scale until any two series move in apparent lockstep — a claim that survives only at one zoom was never a claim about the data."
+};
+
+const chartsColourSpot = {
+  "prompt": "One of these colour habits is backwards — click it:",
+  "lines": [
+    "One accent colour for the thing you are talking about, grey for everything else.",
+    "Rainbow scales create fake boundaries in smooth data.",
+    "Red-green defaults fail roughly one reader in twelve.",
+    "Encode meaning in hue alone to keep the chart clean."
+  ],
+  "errorLine": 3,
+  "correction": "Never encode meaning in hue alone — use colourblind-safe sequential palettes (viridis and relatives) and back colour with position or labels.",
+  "why": "Colour is one of the encodings: readers assume the most urgent colour marks the most important data, so spend colour on the story or not at all."
+};
+
+const chartsTitleCompare = {
+  "prompt": "Two titles for the same chart — drag the divider:",
+  "before": {
+    "label": "'Sales by region'",
+    "text": "a caption — the reader arrives unpointed and writes their own story from their priors"
+  },
+  "after": {
+    "label": "'Region C drives the decline'",
+    "text": "a conclusion — the reader arrives pointed at what the chart actually shows"
+  },
+  "why": "The title is a conclusion, not a caption — and if you cannot state a finding, the chart may not have one, which is worth knowing before you present it."
+};
+
+const chartsRedesignOrder = {
+  "prompt": "Rebuild the honest redesign in order:",
+  "items": [
+    "Horizontal bars drawn from zero",
+    "Sorted by value, not alphabetically",
+    "One accent colour on the largest, grey on the rest",
+    "Direct value labels and a title stating the finding"
+  ],
+  "why": "The honest chart read 'Growth is flat across regions' — the opposite of the original's visual story: truncation did not just exaggerate, it manufactured drama that did not exist."
+};
+
+const chartsAuditBranch = {
+  "root": "A news graphic shows a dramatic doubling since 2019. You have one minute.",
+  "nodes": {
+    "start": {
+      "text": "Which audit question first?",
+      "choices": [
+        {
+          "label": "Where does the axis start?",
+          "next": "axis",
+          "feedback": "Truncation renders rounding errors as cliffs — would the story survive a zero baseline?"
+        },
+        {
+          "label": "Where does the window start and end?",
+          "next": "window",
+          "feedback": "Start points are choices — a line from the all-time peak tells a different story than the same line from the trough."
+        },
+        {
+          "label": "What is the denominator?",
+          "next": "denominator",
+          "feedback": "Percent of what — the base of a percentage is where most chart tricks actually live."
+        }
+      ]
+    },
+    "axis": {
+      "text": "From zero the doubling may be a 4% rise — the cliff was the axis, not the world."
+    },
+    "window": {
+      "text": "Ask why those dates: defensible on the data's own terms, or on the argument's?"
+    },
+    "denominator": {
+      "text": "'Doubling' of a share, of a rate, of a count? Each is a different claim — and only one may be true."
+    }
+  },
+  "why": "The encoding is the claim, and the claim deserves to be read — ten minutes of re-plotting is the fact-checking of the visual age."
+};
 ---
 <TopicPage slug="subjects/data-science/intermediate/charts-that-tell-the-truth">
 
@@ -50,6 +213,7 @@ const chartsQuizCfg = {
     mislead without a single false word — which is why chart literacy is an ethics
     skill as much as a design one.
   </p>
+  <Widget no="11" caption="file each device under honest or misleading" widget="sort-buckets" config={chartsHonestSort} />
   <p>
     This lesson pairs the EDA lesson (which charts for <em>yourself</em>, to see) with
     the craft of charting for <em>others</em> — where the audience's perception, not
@@ -83,6 +247,7 @@ const chartsQuizCfg = {
     and even then, a stacked single bar does the same job with length instead of
     angle.
   </p>
+  <Widget no="10" caption="pair each encoding with how well eyes judge it" widget="match" config={chartsPercepMatch} />
   <p><em>Common misconception:</em> "a pie chart is the natural choice for parts of a
   whole." Pies feel natural because they are everywhere, but angles are among the worst
   encoded dimensions in Cleveland and McGill's hierarchy: readers cannot reliably compare
@@ -110,6 +275,7 @@ const chartsQuizCfg = {
     that answers no question is decoration, and decoration with numbers is worse
     than none — it borrows the authority of data for a shape that carries none.
   </p>
+  <Widget no="9" caption="fill the blanks — the question-to-chart map" widget="cloze" config={chartsTypeCloze} />
 
   <h2>The truncated axis: the most common lie</h2>
   <p>
@@ -130,6 +296,7 @@ const chartsQuizCfg = {
     intent from the question: a misleading chart is misleading whether or not
     anyone meant it.
   </p>
+  <Widget no="8" caption="call the lie factor of the famous chart" widget="estimate" config={chartsLieEst} />
   <p><em>Common misconception:</em> "an honest chart always starts its y-axis at zero, so
   any non-zero baseline is a lie." Too strict — the rule is encoding-specific. Bars
   encode value as length and must start at zero; lines encode position and may truncate
@@ -156,6 +323,7 @@ const chartsQuizCfg = {
     you are shown with honest axes and a neutral window before accepting its
     story. Ten minutes of re-plotting is the fact-checking of the visual age.
   </p>
+  <Widget no="7" caption="bet before you read on — testing the twin slopes" widget="predict" config={chartsDualPredict} />
   <p><em>Common misconception:</em> "two lines rising together on one chart prove a
   connection between them." A shared drift is the easiest pattern to manufacture: with
   dual axes you can slide one scale until any two series move in apparent lockstep.
@@ -187,6 +355,7 @@ const chartsQuizCfg = {
     furniture — is the pole star, applied with judgment rather than
     Puritanism.
   </p>
+  <Widget no="6" caption="find the backwards habit — spending colour" widget="spot-error" config={chartsColourSpot} />
   <p><em>Common misconception:</em> "colour is decoration, so a prettier palette cannot
   change what a chart says." Colour is one of the encodings: readers assume the most
   urgent colour marks the most important data, so rainbow palettes invent boundaries in
@@ -211,6 +380,7 @@ const chartsQuizCfg = {
     line without an interval is a claim disguised as a chart, and the audience
     deserves to know how much of the shape is signal.
   </p>
+  <Widget no="5" caption="caption versus conclusion — drag the divider" widget="compare" config={chartsTitleCompare} />
 
   <h2>A worked redesign: from misleading to defensible</h2>
   <p>
@@ -230,6 +400,7 @@ const chartsQuizCfg = {
     chart look so boring?", you have the definition of the job: the drama should be
     in the data, or it should not be in the chart.
   </p>
+  <Widget no="4" caption="rebuild the redesign, step by step" widget="order" config={chartsRedesignOrder} />
 
   <h2>Reading charts critically: the audience's side</h2>
   <p>
@@ -248,6 +419,7 @@ const chartsQuizCfg = {
     statistics ladder's source-skepticism: the encoding is the claim, and the
     claim deserves to be read.
   </p>
+  <Widget no="3" caption="audit the news graphic" widget="branch" config={chartsAuditBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

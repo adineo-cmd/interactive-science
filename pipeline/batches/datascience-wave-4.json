@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "subjects/data-science/intermediate/cleaning-messy-data",
+    "activities": [
+      {
+        "anchor": "80% of the work and 100% of the reputation risk",
+        "type": "estimate",
+        "caption": "call the share of the work that is cleaning",
+        "name": "cleanShareEst",
+        "config": {
+          "prompt": "By practitioner consensus, roughly what share of a data project's work is cleaning?",
+          "unit": "%",
+          "answer": 80,
+          "factor": 1.5,
+          "why": "About 80% — which is why the discipline of profiling, deciding, encoding and validating is the profession's core skill, not a chore before the real work.",
+          "context": "the glamorous 20% assumes the 80% was done honestly"
+        }
+      },
+      {
+        "anchor": "Knowing the sources tells you where to look",
+        "type": "match",
+        "caption": "pair each source with its characteristic failures",
+        "name": "cleanSourceMatch",
+        "config": {
+          "prompt": "Pair each data source with the mess it characteristically produces:",
+          "pairs": [
+            { "left": "manual entry", "right": "transpositions (31 typed as 13) and free-text vocabularies" },
+            { "left": "sensors and logs", "right": "gaps when offline, spikes at interference, slow drift" },
+            { "left": "merging systems", "right": "identity problems — 'J Smith' and 'Smith, John' — and schema disagreements" },
+            { "left": "exports and handoffs", "right": "encoding rot ('café' to 'cafÃ©') and silent truncation" }
+          ],
+          "why": "Messy data is archaeology: each oddity is a fossil of how the data was captured, merged or typed — so the first question is never 'what is wrong?' but 'where did this come from?'"
+        }
+      },
+      {
+        "anchor": "Ten minutes of profiling just produced",
+        "type": "order",
+        "caption": "rebuild the order of operations",
+        "name": "cleanProfileOrder",
+        "config": {
+          "prompt": "Rebuild the cleaning order of operations:",
+          "items": [
+            "Profile — count missing, distinct, min/max, sample the weird rows",
+            "Hypothesise — what mechanism produced each anomaly?",
+            "Fix — apply the treatment the mechanism justifies",
+            "Document — record every decision so the step can rerun"
+          ],
+          "why": "Profile first, hypothesise second, fix third, document always — fixing before profiling means fixing your guesses."
+        }
+      },
+      {
+        "anchor": "Two rows with the same customer ID are not duplicates",
+        "type": "predict",
+        "caption": "bet before you read on — the duplicate verdict",
+        "name": "cleanDupePredict",
+        "config": {
+          "q": "Your table shows two rows with the same customer ID. Are they duplicates?",
+          "choices": [
+            "Not necessarily — if each row is an order, the customer key repeating is correct; the unit of analysis defines the key",
+            "Yes — the same ID appearing twice is always a duplicate",
+            "Only if the email addresses also match"
+          ],
+          "answer": 0,
+          "why": "'Duplicate' is meaningless until you define what makes two rows the same thing — one row per order, per customer, or per customer-month gives three different answers."
+        }
+      },
+      {
+        "anchor": "Missing data is not one problem but three",
+        "type": "sort-buckets",
+        "caption": "file each gap under its missingness mechanism",
+        "name": "cleanMechSort",
+        "config": {
+          "prompt": "File each case of missing data under its mechanism:",
+          "buckets": ["completely at random", "at random, given other variables", "not at random"],
+          "items": [
+            { "label": "a sensor dropped 2% of packets", "bucket": 0 },
+            { "label": "younger users skip the phone field — but you know their age", "bucket": 1 },
+            { "label": "the highest earners skip the income question", "bucket": 2 },
+            { "label": "the sickest patients skip the follow-up visit", "bucket": 2 }
+          ],
+          "why": "Only missing-completely-at-random is safe to drop; when missingness relates to the unobserved value itself, dropping biases every statistic silently."
+        }
+      },
+      {
+        "anchor": "A transaction of 4,999,999 might be",
+        "type": "branch",
+        "caption": "the delete key or the root-cause question",
+        "name": "cleanOutlierBranch",
+        "config": {
+          "root": "Your sales table contains one transaction of 4,999,999 — far beyond every other row.",
+          "nodes": {
+            "start": {
+              "text": "What is the professional move?",
+              "choices": [
+                { "label": "Delete it — no single sale is that big", "next": "whale", "feedback": "It may be the whale customer — the most important row in the dataset, deleted on reflex." },
+                { "label": "Investigate before touching: impossible or implausible?", "next": "rootcause", "feedback": "The distinction that matters: impossible values are errors to fix; implausible values are findings to investigate." },
+                { "label": "Replace it with the average transaction value", "next": "impute", "feedback": "Imputing over a finding manufactures agreement where the world had variation." }
+              ]
+            },
+            "whale": {
+              "text": "Revenue charts now look tidy — and the customer who paid 4,999,999 is gone from every average.",
+              "choices": [
+                { "label": "Restore it and ask why the column contains it", "next": "rootcause", "feedback": "A root-cause question ('why does this column contain this?') instead of a delete key." }
+              ]
+            },
+            "rootcause": {
+              "text": "The diagnosis decides the treatment: a bug gets fixed, a whale gets studied."
+            },
+            "impute": { "text": "The average now includes a value nobody observed — the dataset lies more quietly than before." }
+          },
+          "why": "An age of 250 is a bug; a transaction of 4,999,999 may be the finding you most need to understand — investigate implausible values before touching them."
+        }
+      },
+      {
+        "anchor": "The retraction-grade errors are usually unglamorous",
+        "type": "spot-error",
+        "caption": "find the backwards habit — types, encodings, timezones",
+        "name": "cleanTypesSpot",
+        "config": {
+          "prompt": "One of these data-hygiene habits is backwards — click it:",
+          "lines": [
+            "ZIP codes stored as numbers lose their leading zeros.",
+            "IDs stored as floats are silently rounded past 15 digits.",
+            "UTF-8 read as Latin-1 garbles every accented character.",
+            "Keep timestamps in whatever local timezone each source system used."
+          ],
+          "errorLine": 3,
+          "correction": "Parse dates explicitly with a stated timezone and keep one canonical timezone internally — mixing local times shifts daily aggregates and duplicates or deletes an hour at every daylight-saving boundary.",
+          "why": "The defences are habits, not cleverness: parse explicitly, canonicalise, store types in a schema — not in hope."
+        }
+      },
+      {
+        "anchor": "Clean is not a state, it is a property",
+        "type": "judge",
+        "caption": "true or false — the permanence of clean",
+        "name": "cleanValidJudge",
+        "config": {
+          "statement": "A dataset that was cleaned and validated last month is still clean today.",
+          "options": ["True", "False"],
+          "answer": 1,
+          "why": "False — data rots upstream: schemas drift, partners change exports, a 'temporary' fix ships on a Friday. That is why professional cleaning is assertions that re-run on every load, so something screams instead of a dashboard quietly turning wrong."
+        }
+      },
+      {
+        "anchor": "Input: sales.csv, 50,000 rows",
+        "type": "sort-buckets",
+        "caption": "file each profiled anomaly under its treatment",
+        "name": "cleanWorkedSort",
+        "config": {
+          "prompt": "From the worked session — file each anomaly under the treatment it was given:",
+          "buckets": ["keep and flag", "fix by rule", "null and count"],
+          "items": [
+            { "label": "negative quantities (returns)", "bucket": 0 },
+            { "label": "prices stored as text with thousands separators", "bucket": 1 },
+            { "label": "dates before 2000 or after next year", "bucket": 2 },
+            { "label": "customer_id 3% duplicated", "bucket": 1 }
+          ],
+          "why": "Negatives are real transactions net revenue needs; parseable text gets a rule; junk dates are counted, because counting junk is monitoring."
+        }
+      }
+    ]
+  }
+]
