@@ -60,6 +60,222 @@ const moneyQuizCfg = {
     },
   ],
 };
+
+const mpMandateCloze = {
+  "text": "Most rich-country central banks target inflation at about %%0%%, alongside %%1%% employment. Their main tools are the policy %%2%%, balance-sheet operations, and the credibility of their word.",
+  "answers": [
+    [
+      "2%",
+      "two per cent"
+    ],
+    [
+      "maximum"
+    ],
+    [
+      "rate"
+    ]
+  ],
+  "hint": "The mandate is price stability plus maximum employment; the rate is the main dial."
+};
+
+const mpNeutralPlace = {
+  "prompt": "With inflation at 2%, a 2% target and a zero output gap, what neutral nominal policy rate does the Taylor rule give? Place it.",
+  "labels": [
+    "0%",
+    "2%",
+    "4%",
+    "6%",
+    "8%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 8
+  },
+  "answer": 4,
+  "tolerance": 0.2,
+  "why": "Neutral real rate (2%) + inflation (2%) + 0.5×(0) + 0.5×(0) = 4%. That is the setting when the economy is at target and at capacity."
+};
+
+const mpIndependenceSort = {
+  "prompt": "Who does what? File each responsibility.",
+  "buckets": [
+    "central bank",
+    "government"
+  ],
+  "items": [
+    {
+      "label": "sets the inflation target",
+      "bucket": 1
+    },
+    {
+      "label": "chooses the policy-rate path",
+      "bucket": 0
+    },
+    {
+      "label": "issues the currency",
+      "bucket": 0
+    },
+    {
+      "label": "runs fiscal policy",
+      "bucket": 1
+    },
+    {
+      "label": "lends freely in a panic",
+      "bucket": 0
+    },
+    {
+      "label": "appoints the central bank's leadership",
+      "bucket": 1
+    }
+  ],
+  "why": "Independence separates the target (a political choice) from the path to it (a technocratic one) — the design that insulates rate-setting from the election cycle."
+};
+
+const mpChannelsMatch = {
+  "prompt": "Pair each transmission channel with its example:",
+  "pairs": [
+    {
+      "left": "borrowing costs",
+      "right": "mortgages and investment plans are postponed"
+    },
+    {
+      "left": "wealth effects",
+      "right": "higher discount rates lower house and equity prices, so holders feel poorer"
+    },
+    {
+      "left": "exchange rate",
+      "right": "higher rates strengthen the currency, cheapening imports and squeezing exporters"
+    },
+    {
+      "left": "credit supply",
+      "right": "banks tighten lending standards"
+    }
+  ],
+  "why": "All four channels fire at once; the chain takes roughly 12–18 months to reach inflation."
+};
+
+const mpTransmissionOrder = {
+  "prompt": "Put the transmission chain in order, from decision to inflation:",
+  "items": [
+    "The central bank changes the overnight policy rate",
+    "Interbank rates and banks' funding costs adjust",
+    "Mortgage, business-loan and savings rates follow",
+    "Households and firms postpone or reshape spending",
+    "Demand, hiring and price-setting respond — roughly 12–18 months later"
+  ],
+  "why": "Friedman's long and variable lags: the bank must act on forecasts because the evidence arrives long after the decision."
+};
+
+const mpTaylorEst = {
+  "prompt": "Using the Taylor rule with a 2% neutral real rate, 9% inflation, a 2% target and a +2% output gap, what policy rate does the recipe prescribe?",
+  "unit": "%",
+  "answer": 15.5,
+  "factor": 1.1,
+  "why": "2 + 9 + 0.5×(9−2) + 0.5×2 = 2 + 9 + 3.5 + 1 = 15.5%. Actual peaks were lower, but the direction matched.",
+  "context": "the rule is a benchmark, not a robot"
+};
+
+const mpQeBranch = {
+  "root": "The policy rate is at zero, inflation is below target and the economy is in recession. Trace the central bank's options.",
+  "nodes": {
+    "start": {
+      "text": "Conventional cuts are exhausted. What does the bank reach for?",
+      "choices": [
+        {
+          "label": "Buy long-term bonds with newly created reserves (QE)",
+          "next": "qe",
+          "feedback": "Yes — QE pushes down long-term yields and signals low rates for long."
+        },
+        {
+          "label": "Raise the policy rate to defend credibility",
+          "next": "raise",
+          "feedback": "That tightens an already weak economy."
+        },
+        {
+          "label": "Do nothing and wait for the recovery",
+          "next": "wait",
+          "feedback": "With the zero bound binding, waiting risks a deeper slump."
+        }
+      ]
+    },
+    "qe": {
+      "text": "QE is an asset swap: the bank creates reserves and buys bonds. Sellers rebalance into other assets, long yields fall, and the commitment signals low rates. The money stays inside the banking system."
+    },
+    "raise": {
+      "text": "Raising rates at the zero bound would deepen the recession; credibility is defended by hitting the target, not by tightening into weakness.",
+      "choices": [
+        {
+          "label": "So what is the tool?",
+          "next": "qe",
+          "feedback": "The balance sheet."
+        }
+      ]
+    },
+    "wait": {
+      "text": "At the zero bound, inaction can let expectations drift below target and make the slump self-reinforcing.",
+      "choices": [
+        {
+          "label": "What else can it do?",
+          "next": "qe",
+          "feedback": "Use the balance sheet."
+        }
+      ]
+    }
+  },
+  "why": "When the policy rate hits zero, QE becomes rate policy by other means — an asset swap that lowers long yields and signals future accommodation."
+};
+
+const mpCredibilityJudge = {
+  "statements": [
+    {
+      "s": "If the public believes the 2% target, wage- and price-setters build it into contracts, so disinflation costs less unemployment.",
+      "truth": true,
+      "why": "Anchored expectations do some of the tightening for the central bank."
+    },
+    {
+      "s": "The Volcker disinflation of 1980–82 was cheap in jobs because the Fed's credibility was intact.",
+      "truth": false,
+      "why": "It cost two recessions and unemployment near 11% — credibility had to be rebuilt the hard way."
+    },
+    {
+      "s": "Forward guidance manages expectations without moving the policy rate today.",
+      "truth": true,
+      "why": "'Talk is policy': the cheapest rate decision is the one the market makes on the bank's behalf."
+    },
+    {
+      "s": "Anchored expectations can do some of the work of an actual rate rise.",
+      "truth": true,
+      "why": "The 2021–24 episode suggested expectations did more work than joblessness in bringing inflation down."
+    }
+  ]
+};
+
+const mpRatesSpot = {
+  "prompt": "Find the line where the interest-rate reasoning goes wrong:",
+  "lines": [
+    "The central bank sets its overnight policy rate.",
+    "It also sets mortgage, corporate-bond and credit-card rates directly.",
+    "Those rates are market prices built from the expected path of the policy rate plus risk premia.",
+    "That is why a rate announcement can move long-term yields without any action.",
+    "If investors doubt the bank's credibility, long yields can rise even as the policy rate falls."
+  ],
+  "errorLine": 1,
+  "correction": "It sets one overnight rate; every other rate is a market price built from expectations and risk premia.",
+  "why": "The bond market's daily audit of credibility is why announcements move long-term rates."
+};
+
+const mpTradeoffCompare = {
+  "prompt": "Two directions, two costs — drag the divider:",
+  "before": {
+    "label": "fighting inflation",
+    "text": "raise rates; demand cools and unemployment rises — the Volcker arithmetic"
+  },
+  "after": {
+    "label": "fighting recession",
+    "text": "cut rates; demand recovers, but cheap money inflates asset prices and rewards leverage"
+  },
+  "why": "No setting escapes the trade-off: price stability costs jobs, and stimulus risks finance. The distribution of both is uneven."
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/monetary-policy-central-banks">
   <h2>Where you are, and what you will learn</h2>
@@ -95,8 +311,9 @@ const moneyQuizCfg = {
     framework and the Taylor rule, quantitative easing and its unwinding, expectations
     as half the fight, and the trade-offs that no setting escapes.
   </p>
+  <Widget no="1" caption="fill the blanks — the mandate and the tools" widget="cloze" config={mpMandateCloze} />
 
-  <Widget no="1" caption="the Taylor rule — the famous recipe mapping the economy's temperature into an interest rate" widget="sliderLab" config={moneyCfg} />
+  <Widget no="2" caption="the Taylor rule — the famous recipe mapping the economy's temperature into an interest rate" widget="sliderLab" config={moneyCfg} />
   <p>
     <strong>What to notice:</strong> slide the output gap from recession to boom and watch both
     readouts move together — the deeper the recession, the harder the recipe leans toward cuts,
@@ -105,6 +322,7 @@ const moneyQuizCfg = {
     deviate, and the deviations are where the judgement — and the explanation to markets —
     lives.
   </p>
+  <Widget no="3" caption="mark the neutral setting" widget="place" config={mpNeutralPlace} />
 
   <p>
     The Taylor rule (1993): set the rate near 2% (neutral) plus inflation, tightened by 0.5
@@ -133,6 +351,7 @@ const moneyQuizCfg = {
     target with a letter-writing duty when inflation strays more than a
     point — institutional details that shape every rate decision.
   </p>
+  <Widget no="4" caption="who does what?" widget="sort-buckets" config={mpIndependenceSort} />
   <p><em>Common misconception:</em> the central bank creates all the money in the economy —
   that the notes it issues are the money supply. In modern economies the bulk of money is
   commercial-bank deposits, created when banks make loans (the Bank of England has stated
@@ -166,6 +385,7 @@ const moneyQuizCfg = {
     tightening since the 1980s — with the full effects still landing
     years later.
   </p>
+  <Widget no="5" caption="pair each channel with its example" widget="match" config={mpChannelsMatch} />
   <p><em>Common misconception:</em> a rate rise fights today's inflation, so its effect
   should show up within weeks and the bank should "wait and see" before acting. The chain —
   policy rate to funding costs to borrowing decisions to spending to price-setting — takes
@@ -173,6 +393,7 @@ const moneyQuizCfg = {
   invariably look, to critics, like they are fighting the last war. Waiting for inflation
   to be visible in the data means the medicine arrives after the disease has spread into
   wage- and price-setting.</p>
+  <Widget no="6" caption="from rate decision to inflation" widget="order" config={mpTransmissionOrder} />
 
   <h2>Inflation targeting and the Taylor rule</h2>
   <p>
@@ -198,6 +419,7 @@ const moneyQuizCfg = {
     — the exchange rate of the trade is the steepest political question
     in macroeconomics.
   </p>
+  <Widget no="7" caption="call the Taylor-rule rate" widget="estimate" config={mpTaylorEst} />
 
   <p><strong>So far:</strong> the target is announced, the reaction function is public, and the Taylor rule disciplines the debate — but all of it presumes the policy rate still has room to move. What happens when the rate reaches the floor?</p>
 
@@ -224,6 +446,7 @@ const moneyQuizCfg = {
     pushed the same frontier further: charging banks to hold reserves,
     with murky evidence and clear limits (cash in vaults is the floor).
   </p>
+  <Widget no="8" caption="the zero lower bound — trace the options" widget="branch" config={mpQeBranch} />
 
   <h2>Expectations: half the fight happens in heads</h2>
   <p>
@@ -245,6 +468,7 @@ const moneyQuizCfg = {
     "talk is policy", because the cheapest rate decision is the one
     the market makes on your behalf.
   </p>
+  <Widget no="9" caption="true or false — credibility and expectations" widget="judge" config={mpCredibilityJudge} />
   <p><em>Common misconception:</em> "the central bank sets all interest rates."
   It sets one overnight rate; every other rate — mortgages, corporate
   bonds, credit cards — is a market price built from expectations of the
@@ -253,6 +477,7 @@ const moneyQuizCfg = {
   markets can fight the bank: if investors expect more inflation, they
   demand higher long-term yields whatever the overnight rate is —
   the bond market's daily audit of the central bank's credibility.</p>
+  <Widget no="10" caption="find the interest-rate slip" widget="spot-error" config={mpRatesSpot} />
 
   <p><strong>So far:</strong> expectations decide whether disinflation is cheap or catastrophic, and the modern toolkit manages them as deliberately as it manages rates. Even with expectations anchored, no setting escapes the trade-offs — there are no free moves.</p>
 
@@ -274,6 +499,7 @@ const moneyQuizCfg = {
     the inflation-targeting era made its trade-offs explicit in every
     forecast round.
   </p>
+  <Widget no="11" caption="two directions, two costs — drag the divider" widget="compare" config={mpTradeoffCompare} />
 
   <h2>Lender of last resort: Bagehot's three rules</h2>
   <p>
@@ -353,7 +579,7 @@ const moneyQuizCfg = {
   </p>
   <p class="sources"><strong>Sources:</strong> Taylor (1993); Friedman, "The Role of Monetary Policy" (1968); Bagehot, Lombard Street (1873); Bernanke, The Federal Reserve and the Financial Crisis; the unemployment lesson's Phillips-curve material. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
-  <Widget no="2" caption="check yourself" widget="quiz" config={moneyQuizCfg} />
+  <Widget no="12" caption="check yourself" widget="quiz" config={moneyQuizCfg} />
   <p>
     <strong>What to notice:</strong> commit to an answer before reading the explanations — each
     question turns on a link of the transmission chain: the lag between decision and effect, what

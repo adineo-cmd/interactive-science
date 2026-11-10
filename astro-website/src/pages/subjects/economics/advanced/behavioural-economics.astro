@@ -10,6 +10,232 @@ const behavCfg = {
     { math: '4 · Nudges: the applied payoff', note: 'Thaler & Sunstein\'s "choice architecture": auto-enrolment raised UK pension participation from ~40% to ~85%+ — default settings are policy. The Nobel 2017 crowned the program.' },
   ],
 };
+
+const beBiasSort = {
+  "prompt": "Which bias drives each behaviour?",
+  "buckets": [
+    "anchoring",
+    "loss aversion",
+    "present bias"
+  ],
+  "items": [
+    {
+      "label": "a judge's sentence is harsher after rolling a high number",
+      "bucket": 0
+    },
+    {
+      "label": "'was £60, now £39' makes the deal feel like a win",
+      "bucket": 0
+    },
+    {
+      "label": "a shopper won't sell a mug for £5 but won't buy one for £5",
+      "bucket": 1
+    },
+    {
+      "label": "the same person buys insurance and a lottery ticket",
+      "bucket": 1
+    },
+    {
+      "label": "a saver takes £100 today over £110 tomorrow",
+      "bucket": 2
+    },
+    {
+      "label": "a student vows to save, then spends the money on a night out",
+      "bucket": 2
+    }
+  ],
+  "why": "All three are directional and predictable: first numbers drag estimates, losses loom larger than gains, and the present is discounted steeply."
+};
+
+const bePainEst = {
+  "prompt": "In Prelec and Simester's MIT auction, credit-card users bid up to roughly twice as much as cash payers for the same basketball tickets. By what percentage did their bids run higher?",
+  "unit": "%",
+  "answer": 100,
+  "factor": 1.5,
+  "why": "Twice as much is 100% higher. Plastic decouples purchase from payment, dulling the pain of paying.",
+  "context": "the tickets were identical; only the payment method changed"
+};
+
+const beFourfoldBranch = {
+  "root": "A certain loss of £800, or an 85% chance of losing £1,000. Then the same choice in gains. Trace what prospect theory predicts.",
+  "nodes": {
+    "start": {
+      "text": "Which do most people choose for the loss?",
+      "choices": [
+        {
+          "label": "Gamble on the 85% chance of losing £1,000",
+          "next": "loss",
+          "feedback": "Yes — over likely losses, people become risk-seeking."
+        },
+        {
+          "label": "Take the certain £800 loss",
+          "next": "sure",
+          "feedback": "That is what a risk-averse expected-utility maximiser would do; most people gamble here."
+        }
+      ]
+    },
+    "loss": {
+      "text": "Now flip the sign: a sure £800 gain, or an 85% chance of £1,000?",
+      "choices": [
+        {
+          "label": "Take the sure £800",
+          "next": "gain",
+          "feedback": "Yes — over likely gains, the same person turns cautious."
+        },
+        {
+          "label": "Gamble for £1,000",
+          "next": "gamble",
+          "feedback": "Most take the sure gain; the risk-seeking is reserved for losses."
+        }
+      ]
+    },
+    "gain": {
+      "text": "One curve predicts both: risk-averse over likely gains, risk-seeking over likely losses. That fourfold pattern is why the same person buys insurance and lottery tickets."
+    },
+    "sure": {
+      "text": "Standard risk aversion would take the certain loss, but the evidence says most people gamble to avoid it.",
+      "choices": [
+        {
+          "label": "Follow the loss choice",
+          "next": "loss",
+          "feedback": "Risk-seeking over likely losses."
+        }
+      ]
+    },
+    "gamble": {
+      "text": "Most people take the sure gain in the gain frame; the pattern flips with the sign.",
+      "choices": [
+        {
+          "label": "See the pattern",
+          "next": "gain",
+          "feedback": "One curve, two signs."
+        }
+      ]
+    }
+  },
+  "why": "Loss aversion is defined relative to a reference point; the fourfold pattern flips risk attitude with the sign and likelihood, which plain risk aversion cannot predict."
+};
+
+const bePresentCloze = {
+  "text": "People take £100 today over £110 tomorrow, yet happily wait a year for the extra £10 — a pattern called %%0%% discounting. It makes preferences time-%%1%%, so the morning's planner and tonight's %%2%% disagree. Commitment devices and defaults bind the doer to the planner's intention.",
+  "answers": [
+    [
+      "hyperbolic"
+    ],
+    [
+      "inconsistent"
+    ],
+    [
+      "doer"
+    ]
+  ],
+  "hint": "Patience depends on distance from the present; the planner makes the plan, the doer spends the money."
+};
+
+const beUltimatumSpot = {
+  "prompt": "Find the line where the ultimatum-game reasoning goes wrong:",
+  "lines": [
+    "A proposer splits £10 and offers the responder £2.",
+    "The responder rejects the offer, so both players get nothing.",
+    "Because rejection destroys value, it proves the responder is simply irrational.",
+    "Across experiments, offers below about 30% are routinely rejected.",
+    "That costly punishment is a stable social preference, predictable enough to model."
+  ],
+  "errorLine": 2,
+  "correction": "Rejection is costly but predictable: responders punish unfair splits, and that preference is stable enough to model.",
+  "why": "Behavioural economics widened what maximisation is over; it did not abolish rationality."
+};
+
+const bePlanningPlace = {
+  "prompt": "Flyvbjerg's sample found rail projects overran budgets by around what percentage on average? Place it.",
+  "labels": [
+    "0%",
+    "25%",
+    "50%",
+    "75%",
+    "100%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 45,
+  "tolerance": 3,
+  "why": "Rail averaged about 45% over budget and roads about 20%. Reference-class forecasting uses that outside record instead of the project's special story."
+};
+
+const beSunkOrder = {
+  "prompt": "A near-empty flight is about to leave. Put the marginal argument for selling a standby seat in order:",
+  "items": [
+    "The flight is already going, so its fixed costs are sunk",
+    "The marginal cost of one more passenger is about £20 in fuel, catering and fees",
+    "A standby fare of £40 adds £20 of contribution",
+    "Average cost per seat (£400) is irrelevant to this decision",
+    "Automating the sale down to the marginal margin captures the gain"
+  ],
+  "why": "Only forward-looking costs and benefits matter; anchoring on average cost refuses a sale that adds £20."
+};
+
+const bePriceMatch = {
+  "prompt": "Pair each pricing tactic with its mechanism:",
+  "pairs": [
+    {
+      "left": "charm price",
+      "right": "£39 outsells £34 because the left digit dominates"
+    },
+    {
+      "left": "reference price",
+      "right": "'was £60, now £39' makes the deal feel like a gain"
+    },
+    {
+      "left": "decoy effect",
+      "right": "a dominated print-only option pushes buyers to print-plus-web"
+    },
+    {
+      "left": "fairness constraint",
+      "right": "snowstorm shovel price rises are judged unfair, and customers retaliate"
+    }
+  ],
+  "why": "Each works on the reference point, the comparison set or the norm — which is why regulators police fake 'was' prices."
+};
+
+const beMarketsCompare = {
+  "prompt": "Where competition cures bias, and where it amplifies it — drag the divider:",
+  "before": {
+    "label": "product markets",
+    "text": "fast feedback and personal consequences: a supermarket that systematically misprices bread loses customers, so biases are disciplined"
+  },
+  "after": {
+    "label": "asset markets",
+    "text": "delayed, social feedback: traders told the fundamental value still bubble and crash, so biases are amplified"
+  },
+  "why": "The same brains behave differently by environment; that asymmetry is why policy attention has shifted toward financial stability."
+};
+
+const beReplicationJudge = {
+  "statements": [
+    {
+      "s": "Many early social-priming findings failed to replicate, and the field responded with pre-registration and larger samples.",
+      "truth": true,
+      "why": "The Open Science Collaboration reproduced under half of 100 psychology studies, forcing a methodological reset."
+    },
+    {
+      "s": "The sturdiest behavioural results — loss aversion, present bias, default effects — did not survive replication scrutiny.",
+      "truth": false,
+      "why": "They did survive, which is precisely why they anchor this lesson."
+    },
+    {
+      "s": "Expertise debiases specific, practised decisions rather than the decision-maker in general.",
+      "truth": true,
+      "why": "List's card traders learned their market; the same people still show biases on unfamiliar choices."
+    },
+    {
+      "s": "A striking single experiment should be trusted until someone bothers to replicate it.",
+      "truth": false,
+      "why": "The replication reckoning says the opposite: ask whether it has replicated, at scale, out of the lab."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/economics/advanced/behavioural-economics">
   <h2>Where you are, and what you will learn</h2>
@@ -60,6 +286,7 @@ const behavCfg = {
     deviations from it have structure. Next we follow that structure into the three arenas
     the intermediate lessons tracked with standard models: households, workers and firms.
   </p>
+  <Widget no="2" caption="which bias drives each behaviour?" widget="sort-buckets" config={beBiasSort} />
 
   <h2>Money and banking: mental accounting and the pain of paying</h2>
   <p>
@@ -80,6 +307,7 @@ const behavCfg = {
     the payslip rather than its purchasing power, which is why inflation feels like the
     least-painful way for an economy to cut real wages.
   </p>
+  <Widget no="3" caption="call the price of plastic" widget="estimate" config={bePainEst} />
   <p>
     <em>Common misconception:</em> "loss aversion just means people are risk-averse." It does
     not — and the difference is diagnostic. Loss aversion says losses hurt roughly twice as
@@ -90,6 +318,7 @@ const behavCfg = {
     unlikely losses, risk-seeking over unlikely gains and likely losses) predicts both
     behaviours from one curve; plain risk aversion predicts neither.
   </p>
+  <Widget no="4" caption="one curve, two signs — trace the fourfold pattern" widget="branch" config={beFourfoldBranch} />
 
   <h2>Households: present bias and the planner–doer war</h2>
   <p>
@@ -109,6 +338,7 @@ const behavCfg = {
     lifted private-sector participation from around 40 per cent to about 85 per cent — no
     subsidy, no compulsion, just re-pointing the path of least resistance.
   </p>
+  <Widget no="5" caption="fill the blanks — the planner and the doer" widget="cloze" config={bePresentCloze} />
   <p>
     <strong>So far:</strong> households misfile money into labelled buckets and mis-discount
     time, and commitment devices and defaults can re-point both errors. That raises the
@@ -133,6 +363,7 @@ const behavCfg = {
     implication runs straight through the unit — unemployment is partly a fairness phenomenon,
     not just a supply-demand imbalance.
   </p>
+  <Widget no="6" caption="find the ultimatum-game slip" widget="spot-error" config={beUltimatumSpot} />
   <p>
     <em>Common misconception:</em> "ultimatum-game rejections prove people are irrational." The
     responder who refuses a stingy split is being inefficient in that one game — but social
@@ -157,6 +388,7 @@ const behavCfg = {
     average — the same optimism that powers firm creation misprices its risk, which is why
     lenders and investors, not entrepreneurs, provide much of the market's realism.
   </p>
+  <Widget no="7" caption="mark the average rail overrun" widget="place" config={bePlanningPlace} />
   <p>
     <strong>So far:</strong> overconfidence inflates plans, and the cure is to replace the
     project's special story with the outside record of comparable ones. The same
@@ -180,6 +412,7 @@ const behavCfg = {
     here is not a rebellion against the standard model — it is the standard model's marginal
     logic, defended against the biases that stop managers applying it.
   </p>
+  <Widget no="8" caption="sell the standby seat — marginal logic in order" widget="order" config={beSunkOrder} />
 
   <h2>Costs, revenue and objectives: the psychology of price</h2>
   <p>
@@ -200,6 +433,7 @@ const behavCfg = {
     revenue over decades must price inside the fairness envelope, because customers can
     retaliate in ways that never appear in a static demand estimate.
   </p>
+  <Widget no="9" caption="pair each pricing tactic with its mechanism" widget="match" config={bePriceMatch} />
   <p>
     <strong>So far:</strong> prices are psychological objects — anchored, charmed and policed
     by fairness — rather than naked points on a demand curve. That leaves the systemic
@@ -224,6 +458,7 @@ const behavCfg = {
     <em>asset</em> markets where feedback is delayed and social. That asymmetry is why the
     field's policy attention has shifted from consumer protection to financial stability.
   </p>
+  <Widget no="10" caption="where competition cures bias, and where it amplifies it" widget="compare" config={beMarketsCompare} />
   <p>
     <em>Common misconception:</em> "professionals are immune — biases are for amateurs." List's
     evidence shows experience and feedback debias <em>specific, practiced</em> decisions, not
@@ -295,6 +530,7 @@ const behavCfg = {
     fairness punishments) survived, which is precisely why they anchor this lesson. When
     reading any single striking experiment, ask: has it replicated, at scale, out of lab?
   </p>
+  <Widget no="11" caption="true or false — the replication reckoning" widget="judge" config={beReplicationJudge} />
   <p>
     <strong>The frontier.</strong> Governments now run dedicated behavioural teams — Britain's
     Behavioural Insights Team (2010) was followed by well over a hundred units worldwide — and

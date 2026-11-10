@@ -62,6 +62,259 @@ const unempQuizCfg = {
     },
   ],
 };
+
+const ueDefinitionCloze = {
+  "text": "The unemployment rate is the number of unemployed divided by the %%0%%. To count as unemployed you must be without work, available to start and %%1%% seeking work in the past four weeks. Reading the rate alongside the %%2%% rate reveals whether the labour force itself is shrinking.",
+  "answers": [
+    [
+      "labour force",
+      "labor force"
+    ],
+    [
+      "actively"
+    ],
+    [
+      "participation"
+    ]
+  ],
+  "hint": "The denominator is employed plus unemployed; participation is the labour force as a share of the working-age population."
+};
+
+const ueBoundarySort = {
+  "prompt": "Where does each person sit in the labour-market statistics?",
+  "buckets": [
+    "employed",
+    "unemployed",
+    "outside the labour force"
+  ],
+  "items": [
+    {
+      "label": "a part-time barista who wants full-time hours",
+      "bucket": 0
+    },
+    {
+      "label": "a graduate sending applications this week",
+      "bucket": 1
+    },
+    {
+      "label": "a retiree",
+      "bucket": 2
+    },
+    {
+      "label": "a discouraged worker who stopped looking",
+      "bucket": 2
+    },
+    {
+      "label": "a zero-hours care worker",
+      "bucket": 0
+    },
+    {
+      "label": "someone claiming benefits but not actively seeking",
+      "bucket": 2
+    }
+  ],
+  "why": "Underemployment is counted as employed, discouraged workers leave the labour force, and benefit claimants can be outside it — three ways the headline misleads."
+};
+
+const ueTypesMatch = {
+  "prompt": "Pair each type of unemployment with its example and remedy:",
+  "pairs": [
+    {
+      "left": "frictional",
+      "right": "a graduate searching for a better match — healthy, and helped by better job matching"
+    },
+    {
+      "left": "structural",
+      "right": "a coal region whose skills do not fit the new healthcare jobs — retraining and relocation"
+    },
+    {
+      "left": "cyclical",
+      "right": "layoffs in a recession — fiscal and monetary demand policy"
+    }
+  ],
+  "why": "The type determines the remedy: search, matching or demand."
+};
+
+const ueStickyOrder = {
+  "prompt": "How a demand slump becomes layoffs — put the chain in order:",
+  "items": [
+    "Demand for goods falls and firms need fewer hours",
+    "Contracts, morale and fairness norms stop wages falling enough to clear the market",
+    "Firms adjust by quantity instead of price",
+    "They cut hours, temps and finally headcount",
+    "Unemployment rises even though the market could in theory clear at lower pay"
+  ],
+  "why": "Sticky wages make jobs, not pay, the shock absorber — which is why a demand slump shows up as layoffs."
+};
+
+const ueStickySpot = {
+  "prompt": "Find the line where the sticky-wage reasoning goes wrong:",
+  "lines": [
+    "In a frictionless market, a glut of labour clears by cutting wages.",
+    "Real firms could do the same, so persistent unemployment must reflect greed or regulation alone.",
+    "Yet contracts, morale and fairness norms make pay cuts self-defeating for employers.",
+    "Firms therefore adjust by hiring fewer people rather than cutting pay.",
+    "That is why jobs, not wages, absorb a demand slump."
+  ],
+  "errorLine": 1,
+  "correction": "The obstacle runs deeper than greed or regulation: pay cuts damage morale and retention, so firms cut jobs instead.",
+  "why": "Wages do adjust — slowly — and the puzzle is why they adjust too slowly to stop jobs from absorbing the shock."
+};
+
+const ueOkunEst = {
+  "prompt": "Actual unemployment is 6% and the natural rate is 4%. Using Okun's rule of roughly 2% of GDP per point, what is the estimated output gap?",
+  "unit": "% of GDP",
+  "answer": 4,
+  "factor": 1.1,
+  "why": "Two points above the natural rate × 2% per point = about 4% of GDP below potential. The coefficient varies: nearer 1–1.5 where hours adjust before headcount.",
+  "context": "a sizing rule, not a mechanism"
+};
+
+const ueChinaBranch = {
+  "root": "A coal-mining region stays depressed for a decade after the pits close; the new jobs are in healthcare, in another city, and need different skills. Trace the diagnosis and the policy.",
+  "nodes": {
+    "start": {
+      "text": "Which type of unemployment is this?",
+      "choices": [
+        {
+          "label": "Structural — a skills-and-location mismatch",
+          "next": "right",
+          "feedback": "Yes — the signature is long duration and mismatch, not a lack of demand."
+        },
+        {
+          "label": "Cyclical — the recession share",
+          "next": "cyc",
+          "feedback": "Demand policy cannot move a miner into a healthcare job in another city."
+        },
+        {
+          "label": "Frictional — normal search",
+          "next": "fric",
+          "feedback": "Search takes weeks; this has lasted a decade."
+        }
+      ]
+    },
+    "right": {
+      "text": "Structural. Which policy family fits?",
+      "choices": [
+        {
+          "label": "Retraining, relocation support and housing availability",
+          "next": "supply",
+          "feedback": "Yes — supply-side matching policy."
+        },
+        {
+          "label": "Cut interest rates to boost demand",
+          "next": "demand",
+          "feedback": "Demand is not the binding constraint; the mismatch is."
+        },
+        {
+          "label": "Wait for search to clear the market",
+          "next": "wait",
+          "feedback": "The China-shock evidence shows adjustment taking a decade or more."
+        }
+      ]
+    },
+    "supply": {
+      "text": "Supply-side matching policy. The China-shock evidence shows the cost is concentrated and persistent, so scale and patience matter — aggregate gains from trade are real but not evenly shared."
+    },
+    "demand": {
+      "text": "Demand stimulus cannot relocate a worker or retrain a miner; it may overheat the region that already has jobs.",
+      "choices": [
+        {
+          "label": "So what fits?",
+          "next": "supply",
+          "feedback": "Matching policy."
+        }
+      ]
+    },
+    "cyc": {
+      "text": "Cyclical unemployment is the recession share; here the jobs are not coming back with demand — the mismatch is structural.",
+      "choices": [
+        {
+          "label": "Reconsider the diagnosis",
+          "next": "right",
+          "feedback": "Duration and mismatch point structural."
+        }
+      ]
+    },
+    "fric": {
+      "text": "Frictional unemployment is weeks of search, not a decade of depressed participation.",
+      "choices": [
+        {
+          "label": "Reconsider the diagnosis",
+          "next": "right",
+          "feedback": "Duration and mismatch point structural."
+        }
+      ]
+    },
+    "wait": {
+      "text": "Search frictions do not explain a decade of depressed participation; the mismatch is structural.",
+      "choices": [
+        {
+          "label": "What policy fits?",
+          "next": "supply",
+          "feedback": "Retraining and relocation."
+        }
+      ]
+    }
+  },
+  "why": "Structural unemployment is diagnosed by duration and mismatch and treated with supply-side matching policy; the China shock shows how long the adjustment can take."
+};
+
+const ueRatePlace = {
+  "prompt": "In the worked example, 2.7 million people are unemployed out of a 34 million labour force. Place the unemployment rate.",
+  "labels": [
+    "0%",
+    "2.5%",
+    "5%",
+    "7.5%",
+    "10%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 10
+  },
+  "answer": 7.9,
+  "tolerance": 0.15,
+  "why": "2.7 ÷ 34 = 7.9%. The participation rate (34 ÷ 52 = 65%) is the number that keeps the headline honest."
+};
+
+const ueHiddenCompare = {
+  "prompt": "Two categories the headline blurs — drag the divider:",
+  "before": {
+    "label": "seasonal unemployment",
+    "text": "follows the calendar — ski instructors in July, fruit pickers after harvest — smoothed by seasonally adjusted series and off-season trades"
+  },
+  "after": {
+    "label": "hidden unemployment",
+    "text": "employed in name only — the underemployed part-timer, the overqualified graduate, subsistence farming with near-zero marginal product"
+  },
+  "why": "Both sharpen the measurement lesson: the unemployment rate is a narrow gate, and the honest read pairs it with broader underutilisation measures."
+};
+
+const ueMinimumJudge = {
+  "statements": [
+    {
+      "s": "The simple competitive model predicts that a wage floor above the market wage creates unemployment.",
+      "truth": true,
+      "why": "A price floor above equilibrium leaves more people wanting work than firms want to hire."
+    },
+    {
+      "s": "Card and Krueger's New Jersey study found large employment losses from a moderate minimum-wage rise.",
+      "truth": false,
+      "why": "It found small employment effects — the result that forced the textbook to take monopsony seriously."
+    },
+    {
+      "s": "Monopsony power can let a moderate minimum wage raise pay with little employment loss.",
+      "truth": true,
+      "why": "An employer that already sets wages below competitive levels can absorb a moderate floor."
+    },
+    {
+      "s": "The evidence supports very large minimum-wage rises as confidently as moderate ones.",
+      "truth": false,
+      "why": "The consensus is dose-dependent: small rises, small costs; very large rises, untested."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/unemployment-labour-markets">
 
@@ -97,8 +350,9 @@ const unempQuizCfg = {
     natural rate, why wages do not simply fall to clear the market, what Okun's law links
     jobs to output, and the demand-side versus supply-side policy fork.
   </p>
+  <Widget no="1" caption="fill the blanks — who counts as unemployed" widget="cloze" config={ueDefinitionCloze} />
 
-  <Widget no="1" caption="the rate, its arithmetic, and Okun's rough law linking jobs to output" widget="sliderLab" config={unempCfg} />
+  <Widget no="2" caption="the rate, its arithmetic, and Okun's rough law linking jobs to output" widget="sliderLab" config={unempCfg} />
   <p>
     <strong>What to notice:</strong> slide the unemployed count and watch the rate readout —
     then slide the labour force while holding unemployment fixed and watch the rate fall
@@ -143,6 +397,7 @@ const unempQuizCfg = {
     matches people to jobs (a Beveridge curve moving outward, as after
     the pandemic, means matching is worse at every level).
   </p>
+  <Widget no="3" caption="where does each person sit?" widget="sort-buckets" config={ueBoundarySort} />
   <p><em>Common misconception:</em> "the unemployment rate counts everyone who does not have
   a job." It does not: the definition requires active job-seeking in the past four weeks, so
   retirees, students, carers and the discouraged all sit outside the statistic by design.
@@ -176,6 +431,7 @@ const unempQuizCfg = {
     breaks), which flips the old policy caution: idle workers are not
     just a symptom of weakness but a cause of future weakness.
   </p>
+  <Widget no="4" caption="pair each type with its example and remedy" widget="match" config={ueTypesMatch} />
   <p>
     <strong>So far:</strong> one number, three different problems hiding under it — search,
     mismatch, and recession — each with its own duration and its own remedy. The next
@@ -205,12 +461,14 @@ const unempQuizCfg = {
     arguments about benefits are really arguments about where on that
     trade-off a society chooses to sit.
   </p>
+  <Widget no="5" caption="how a demand slump becomes layoffs" widget="order" config={ueStickyOrder} />
   <p><em>Common misconception:</em> "if wages simply fell far enough, unemployment would
   disappear — so the obstacle is greed or regulation alone." The sticky-wage evidence says
   the obstacle runs deeper: contracts, morale and fairness norms make pay cuts
   self-defeating for employers, so firms adjust by hiring fewer people instead. Wages do
   adjust — slowly — and the puzzle is precisely that they adjust far too slowly to stop
   jobs, not pay, from absorbing the shock.</p>
+  <Widget no="6" caption="find the sticky-wage slip" widget="spot-error" config={ueStickySpot} />
 
   <h2>Okun's law: the jobs–output dial</h2>
   <p>
@@ -230,6 +488,7 @@ const unempQuizCfg = {
     firms exhaust hours, temps and attrition before hiring, and shed
     workers last.
   </p>
+  <Widget no="7" caption="call the Okun output gap" widget="estimate" config={ueOkunEst} />
 
   <h2>Structural change hurts locally: the evidence</h2>
   <p>
@@ -248,6 +507,7 @@ const unempQuizCfg = {
     no jobs" but which regions, which skills, and how long the
     transition takes.
   </p>
+  <Widget no="8" caption="diagnose a coal region — and pick the policy" widget="branch" config={ueChinaBranch} />
   <p><em>Common misconception:</em> "low unemployment means the labour market
   is healthy — so the lowest possible rate is best." The dashboard says
   otherwise: below the natural rate, the economy overheats (wage-price
@@ -275,6 +535,7 @@ const unempQuizCfg = {
     recoveries, because it cannot be improved by people
     giving up.
   </p>
+  <Widget no="9" caption="mark the unemployment rate" widget="place" config={ueRatePlace} />
 
   <h2>Seasonal and hidden: the categories the headline blurs</h2>
   <p>
@@ -301,6 +562,7 @@ const unempQuizCfg = {
     that the statistical agencies now publish
     beside it.
   </p>
+  <Widget no="10" caption="two categories the headline blurs — drag the divider" widget="compare" config={ueHiddenCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -361,6 +623,7 @@ const unempQuizCfg = {
     very large rises, untested. Card's shared 2021 Nobel marks the
     method's victory: natural experiments over blackboard models.
   </p>
+  <Widget no="11" caption="true or false — the minimum-wage evidence" widget="judge" config={ueMinimumJudge} />
   <p>
     <strong>Open questions.</strong> How will AI reshuffle the task composition
     of jobs — displacement at the speed of software, or the slow
@@ -378,7 +641,7 @@ const unempQuizCfg = {
   </p>
   <p class="sources"><strong>Sources:</strong> Okun (1962); Diamond–Mortensen–Pissarides framework (Nobel 2010); Autor, Dorn &amp; Hanson, AER (2013); Card &amp; Krueger (1994). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
-  <Widget no="2" caption="check yourself" widget="quiz" config={unempQuizCfg} />
+  <Widget no="12" caption="check yourself" widget="quiz" config={unempQuizCfg} />
   <p>
     <strong>What to notice:</strong> commit to an answer before reading the explanation —
     the wrong options are the plausible misreads this lesson warned about (a falling rate

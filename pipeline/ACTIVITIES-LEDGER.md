@@ -237,6 +237,9 @@
 | economics/intermediate/gdp-national-accounts | cloze, judge, order, sort-buckets, estimate, compare, place, branch, spot-error, match | econ-4 |
 | economics/intermediate/fiscal-policy-public-debt | sort-buckets, match, estimate, place, judge, branch, order, compare, spot-error, cloze | econ-5 |
 | economics/intermediate/market-failure-externalities | sort-buckets, match, estimate, branch, place, spot-error, cloze, judge, order, compare | econ-6 |
+| economics/intermediate/monetary-policy-central-banks | cloze, place, sort-buckets, match, order, estimate, branch, judge, spot-error, compare | econ-7 |
+| economics/intermediate/unemployment-labour-markets | cloze, sort-buckets, match, order, spot-error, estimate, branch, place, compare, judge | econ-8 |
+| economics/advanced/behavioural-economics | sort-buckets, estimate, branch, cloze, spot-error, place, order, match, compare, judge | econ-9 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -249,12 +252,12 @@
 **Astronomy: 13 of 13 COMPLETE** (astro-1…10; orbits-and-keplers-laws uses raw figure widgets).
 **Biology: 23 of 24 done** — remaining: `biology/foundational/cell-structure`.
 **Chemistry: 16 of 17 done** — remaining: `chemistry/foundational/atomic-structure`.
-**Economics: 6 of 15 done** (econ-1…6: supply-and-demand, money-inflation, elasticity,
-gdp-national-accounts, fiscal-policy-public-debt, market-failure-externalities). Remaining:
-monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics,
+**Economics: 9 of 15 done** (econ-1…9: supply-and-demand, money-inflation, elasticity,
+gdp-national-accounts, fiscal-policy-public-debt, market-failure-externalities,
+monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics). Remaining:
 development-economics, game-theory, international-trade, econometrics, financial-economics,
 macroeconomic-models-dsge.
-**Then next subjects (alphabetical): biology (1), chemistry (1), economics (12), engineering (10),
+**Then next subjects (alphabetical): biology (1), chemistry (1), economics (6), engineering (10),
 environmental-science (12), film (9), finance (11), geography (14), history (20), journalism (7) …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
