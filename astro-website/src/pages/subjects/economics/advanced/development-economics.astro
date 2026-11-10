@@ -10,6 +10,218 @@ const devCfg = {
     { math: '4 · What remains hard', note: 'The last mile: fragile states, conflict zones, and the ~700 million still in extreme poverty. Institutions ("inclusive vs extractive" — Acemoglu & Robinson) may matter more than any policy — and are the hardest thing to build.' },
   ],
 };
+
+const devFieldCloze = {
+  "text": "Development economics asks why some countries are %%0%% and what lifts them. Since 1990 about a %%1%% people have left extreme poverty, while roughly %%2%% million remain, most now in fragile states.",
+  "answers": [
+    [
+      "poor"
+    ],
+    [
+      "billion"
+    ],
+    [
+      "700"
+    ]
+  ],
+  "hint": "The triumph is large; the remainder is concentrated."
+};
+
+const devMeasureSort = {
+  "prompt": "Which measure repairs which defect?",
+  "buckets": [
+    "PPP adjustment",
+    "HDI",
+    "capabilities approach"
+  ],
+  "items": [
+    {
+      "label": "compares incomes by what money actually buys locally",
+      "bucket": 0
+    },
+    {
+      "label": "a haircut costs far less in Nairobi than in New York",
+      "bucket": 0
+    },
+    {
+      "label": "combines life expectancy, schooling and income",
+      "bucket": 1
+    },
+    {
+      "label": "Sri Lanka reaches near-77-year lifespans on a modest income",
+      "bucket": 1
+    },
+    {
+      "label": "development means expanding what people can do and be",
+      "bucket": 2
+    },
+    {
+      "label": "the same income with no clinic, school or vote is not equally developed",
+      "bucket": 2
+    }
+  ],
+  "why": "Each repairs a named defect: PPP corrects prices, the HDI adds health and schooling, and the capabilities approach asks what a person can actually do."
+};
+
+const devGdpSpot = {
+  "prompt": "Find the line where the GDP-as-welfare reasoning goes wrong:",
+  "lines": [
+    "GDP per head at PPP is a useful first pass at living standards.",
+    "Because it is corrected for prices, it also captures distribution, unpaid work and pollution.",
+    "Those omissions are not cosmetic: growth can leave the median household stagnant.",
+    "Unpaid work, mostly women's, is worth tens of per cent of measured output.",
+    "The HDI and multidimensional poverty measures exist to repair named defects of the average."
+  ],
+  "errorLine": 1,
+  "correction": "PPP corrects prices, not coverage: GDP still misses distribution, unpaid work, leisure and pollution.",
+  "why": "Every index since exists to repair a specific, named defect of the income average."
+};
+
+const devPovertyPlace = {
+  "prompt": "Where does the World Bank's extreme-poverty line sit, in PPP dollars per day?",
+  "labels": [
+    "$0",
+    "$1",
+    "$2",
+    "$3",
+    "$4"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 4
+  },
+  "answer": 2.15,
+  "tolerance": 0.1,
+  "why": "The line moved from $1.90 to $2.15 a day (2017 prices) to match the national lines of the poorest countries; about 700 million people live below it."
+};
+
+const devResourceBranch = {
+  "root": "A country discovers a large oil reserve. Trace how the windfall can become a curse.",
+  "nodes": {
+    "start": {
+      "text": "What is the first risk?",
+      "choices": [
+        {
+          "label": "The rents are easy to capture, so factions fight over them",
+          "next": "politics",
+          "feedback": "Yes — commodity windfalls can corrupt institutions and finance conflict."
+        },
+        {
+          "label": "The currency appreciates and squeezes other exports",
+          "next": "dutch",
+          "feedback": "Yes — that is Dutch disease, the exchange-rate channel."
+        },
+        {
+          "label": "Nothing — windfalls always raise long-run growth",
+          "next": "wrong",
+          "feedback": "Resource-rich Nigeria, Venezuela and the DRC underperform their geology."
+        }
+      ]
+    },
+    "politics": {
+      "text": "Resource rents are easy to capture, so politics becomes a fight over the windfall; the fight can weaken institutions and fund conflict.",
+      "choices": [
+        {
+          "label": "And the exchange-rate channel?",
+          "next": "dutch",
+          "feedback": "The windfall also makes other exports uncompetitive."
+        }
+      ]
+    },
+    "dutch": {
+      "text": "The windfall appreciates the currency, making other exports uncompetitive — Dutch disease. The economy becomes more commodity-dependent, not more productive."
+    },
+    "wrong": {
+      "text": "Resource-poor Japan, Switzerland, Singapore and South Korea sit near the top of the income table while resource-rich Nigeria, Venezuela and the DRC underperform their geology.",
+      "choices": [
+        {
+          "label": "So what is the curse?",
+          "next": "politics",
+          "feedback": "Rents, institutions and the exchange rate."
+        }
+      ]
+    }
+  },
+  "why": "What countries lack is usually not resources but the institutions that turn any endowment — soil, oil or people — into broad-based productivity."
+};
+
+const devPovertyCompare = {
+  "prompt": "Two poverty lines, two questions — drag the divider:",
+  "before": {
+    "label": "absolute poverty",
+    "text": "a PPP floor — about $2.15 a day — measuring survival"
+  },
+  "after": {
+    "label": "relative poverty",
+    "text": "below 50–60% of median income — measuring exclusion in rich countries"
+  },
+  "why": "Absolute poverty tracks survival; relative poverty tracks participation. The same household can be above one line and below the other."
+};
+
+const devDemographyOrder = {
+  "prompt": "Put the demographic transition in order:",
+  "items": [
+    "High birth and death rates keep the population roughly flat",
+    "Death rates fall while births stay high, so the population grows fast",
+    "Fertility falls, and the working-age share swells — the dividend window",
+    "Birth and death rates settle low, and the population ages",
+    "The dependency ratio rises again as retirees outnumber new workers"
+  ],
+  "why": "The dividend is a one-time window between falling fertility and ageing; miss it and countries grow old before they grow rich."
+};
+
+const devDependencyEst = {
+  "prompt": "Japan had roughly ten potential workers for each person over 65 around 1970, and about two today. How many people aged 65+ are there per 100 working-age people today?",
+  "unit": "per 100 workers",
+  "answer": 50,
+  "factor": 1.15,
+  "why": "Two workers per retiree is 50 retirees per 100 workers. That arithmetic converts directly into pension, health-care and immigration pressure.",
+  "context": "the dividend is a window, not a permanent engine"
+};
+
+const devCausesMatch = {
+  "prompt": "Pair each explanation for development with its evidence:",
+  "pairs": [
+    {
+      "left": "geography",
+      "right": "disease ecology, landlocked access and climate shape what is possible"
+    },
+    {
+      "left": "culture",
+      "right": "trust, work norms and colonial languages"
+    },
+    {
+      "left": "institutions",
+      "right": "settler mortality built inclusive or extractive rules that outlived empires"
+    }
+  ],
+  "why": "None is sufficient alone: geography shapes which institutions were built, institutions decide whether policy can work, and policy decides the decade."
+};
+
+const devRctJudge = {
+  "statements": [
+    {
+      "s": "RCTs answer micro-interventions cleanly, but a result in one district need not travel to another.",
+      "truth": true,
+      "why": "External validity is the movement's own acknowledged limit."
+    },
+    {
+      "s": "Deaton's objection is that institutions and growth cannot be randomised at all.",
+      "truth": true,
+      "why": "The biggest questions are not amenable to trial design, however clean the micro evidence."
+    },
+    {
+      "s": "A single successful bednet trial proves the programme will work in every district.",
+      "truth": false,
+      "why": "That is exactly the external-validity mistake the mature position warns against."
+    },
+    {
+      "s": "The mature position uses RCTs for micro-interventions and natural experiments for the big questions.",
+      "truth": true,
+      "why": "One instrument in the orchestra, not the whole orchestra."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/economics/advanced/development-economics">
   <h2>Where you are, and what you will learn</h2>
@@ -45,8 +257,9 @@ const devCfg = {
     poverty, how population shapes the whole calculation, and why the gaps between countries
     opened in the first place.
   </p>
+  <Widget no="1" caption="fill the blanks — the field in one paragraph" widget="cloze" config={devFieldCloze} />
 
-  <Widget no="1" caption="the record: what convergence achieved, what was learned, what remains" widget="equationStep" config={devCfg} />
+  <Widget no="2" caption="the record: what convergence achieved, what was learned, what remains" widget="equationStep" config={devCfg} />
   <p>
     <strong>What to notice:</strong> the four steps are the field's whole arc, in order —
     the late start of mass convergence, the poverty line's careful redefinition, the shift
@@ -76,6 +289,7 @@ const devCfg = {
     <em>exported</em> from Bengal in 1943 while three million died — famine is a failure of
     entitlements and access, not necessarily of supply.
   </p>
+  <Widget no="3" caption="which measure repairs which defect?" widget="sort-buckets" config={devMeasureSort} />
   <p>
     <em>Common misconception:</em> "GDP per head, PPP-adjusted, is close enough to living
     standards that the alternatives are decoration." The corrections are not cosmetic; they
@@ -87,6 +301,7 @@ const devCfg = {
     developed. Every index the field has built since, from the HDI to the multidimensional
     poverty measures, exists to repair a specific, named defect of the income average.
   </p>
+  <Widget no="4" caption="find the GDP-as-welfare slip" widget="spot-error" config={devGdpSpot} />
 
   <p><strong>So far:</strong> income averages mislead in poor economies — non-market output, PPP correction, distribution and capabilities each repair a named defect of the single number. The next question is the floor beneath the average: where the line is drawn, and whether people can escape it.</p>
 
@@ -113,6 +328,7 @@ const devCfg = {
     with no meaningful answer — into "does intervention X at cost Y move outcome Z?" — dozens of
     which now have calibrated answers.
   </p>
+  <Widget no="5" caption="mark the extreme-poverty line" widget="place" config={devPovertyPlace} />
   <p>
     <em>Common misconception:</em> "poor countries are poor because they lack natural
     resources." Resource-poor Japan, Switzerland, Singapore and South Korea sit at the top of
@@ -123,8 +339,10 @@ const devCfg = {
     resources but the institutions that turn any endowment — soil, oil or people — into
     broad-based productivity.
   </p>
+  <Widget no="6" caption="the resource curse — trace the channels" widget="branch" config={devResourceBranch} />
 
   <p><strong>So far:</strong> the poverty line is a measured floor, traps are feedback loops that hold people beneath it, and randomised trials converted "does aid work?" — a question with no meaningful answer — into dozens with calibrated ones. Whether a growing population helps or hurts, it turns out, is a question about timing.</p>
+  <Widget no="7" caption="two poverty lines, two questions" widget="compare" config={devPovertyCompare} />
 
   <h2>Population: the dividend and the burden</h2>
   <p>
@@ -150,6 +368,7 @@ const devCfg = {
     health-care and immigration pressure. The dividend, in other words, is a one-time window —
     miss it, and ageing arrives before affluence does.
   </p>
+  <Widget no="8" caption="the demographic transition, in order" widget="order" config={devDemographyOrder} />
   <p>
     <em>Common misconception:</em> "a fast-growing population makes a country poorer." More
     people mean more mouths and more workers; the effect on income <em>per head</em> depends
@@ -159,6 +378,7 @@ const devCfg = {
     education and family-planning access — and its growth accelerated, not despite that, but
     partly because of it.
   </p>
+  <Widget no="9" caption="call the old-age dependency ratio" widget="estimate" config={devDependencyEst} />
 
   <p><strong>So far:</strong> the demographic transition opens a one-time dividend window — fertility falling while earlier cohorts are still of working age — and missing it means ageing before affluence. The deepest question remains: why did the windows open for some countries and not others?</p>
 
@@ -183,6 +403,7 @@ const devCfg = {
     Africa's fastest growth) and Vietnam (Doi Moi reforms from 1986, poverty falling from
     around 60 per cent to below 5) show trajectories bend when the rules change.
   </p>
+  <Widget no="10" caption="pair each explanation with its evidence" widget="match" config={devCausesMatch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -235,6 +456,7 @@ const devCfg = {
     orchestra, best for micro-interventions, and leans on natural experiments (the Korean
     split, colonial history, rainfall shocks) for the big questions.
   </p>
+  <Widget no="11" caption="true or false — the RCT wars" widget="judge" config={devRctJudge} />
   <p>
     <strong>The aid argument, sharpened.</strong> Sachs's <em>End of Poverty</em> argued a big
     push can end the trap; Easterly's <em>White Man's Burden</em> replied that planners fail

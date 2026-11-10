@@ -240,6 +240,9 @@
 | economics/intermediate/monetary-policy-central-banks | cloze, place, sort-buckets, match, order, estimate, branch, judge, spot-error, compare | econ-7 |
 | economics/intermediate/unemployment-labour-markets | cloze, sort-buckets, match, order, spot-error, estimate, branch, place, compare, judge | econ-8 |
 | economics/advanced/behavioural-economics | sort-buckets, estimate, branch, cloze, spot-error, place, order, match, compare, judge | econ-9 |
+| economics/advanced/development-economics | cloze, sort-buckets, spot-error, place, branch, compare, order, estimate, match, judge | econ-10 |
+| economics/advanced/game-theory | cloze, sort-buckets, branch, spot-error, estimate, order, compare, place, judge, match | econ-11 |
+| economics/advanced/international-trade | cloze, estimate, spot-error, sort-buckets, compare, place, order, match, branch, judge | econ-12 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -252,12 +255,12 @@
 **Astronomy: 13 of 13 COMPLETE** (astro-1…10; orbits-and-keplers-laws uses raw figure widgets).
 **Biology: 23 of 24 done** — remaining: `biology/foundational/cell-structure`.
 **Chemistry: 16 of 17 done** — remaining: `chemistry/foundational/atomic-structure`.
-**Economics: 9 of 15 done** (econ-1…9: supply-and-demand, money-inflation, elasticity,
+**Economics: 12 of 15 done** (econ-1…12: supply-and-demand, money-inflation, elasticity,
 gdp-national-accounts, fiscal-policy-public-debt, market-failure-externalities,
-monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics). Remaining:
-development-economics, game-theory, international-trade, econometrics, financial-economics,
-macroeconomic-models-dsge.
-**Then next subjects (alphabetical): biology (1), chemistry (1), economics (6), engineering (10),
+monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics,
+development-economics, game-theory, international-trade). Remaining:
+econometrics, financial-economics, macroeconomic-models-dsge.
+**Then next subjects (alphabetical): biology (1), chemistry (1), economics (3), engineering (10),
 environmental-science (12), film (9), finance (11), geography (14), history (20), journalism (7) …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.

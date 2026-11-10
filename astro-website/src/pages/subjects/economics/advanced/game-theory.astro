@@ -12,6 +12,262 @@ const gameCfg = {
     { label: 'defect better when p <', expr: '(0.1-0)/(0.3-0.1+0)' },
   ],
 };
+
+const gtNashCloze = {
+  "text": "A Nash equilibrium is a set of strategies where no player can do better by changing strategy %%0%%. It promises %%1%%, not fairness — mutual defection is still an %%2%% that ruins everyone.",
+  "answers": [
+    [
+      "alone"
+    ],
+    [
+      "stability"
+    ],
+    [
+      "equilibrium"
+    ]
+  ],
+  "hint": "Nobody wants to move alone; that says nothing about whether the outcome is good."
+};
+
+const gtGameSort = {
+  "prompt": "Which game is each situation?",
+  "buckets": [
+    "prisoner's dilemma",
+    "coordination game",
+    "bargaining game"
+  ],
+  "items": [
+    {
+      "label": "two airlines secretly undercutting each other",
+      "bucket": 0
+    },
+    {
+      "label": "depositors all running on a bank at once",
+      "bucket": 1
+    },
+    {
+      "label": "a union and a firm splitting the surplus",
+      "bucket": 2
+    },
+    {
+      "label": "an arms race between two countries",
+      "bucket": 0
+    },
+    {
+      "label": "choosing which side of the road to drive on",
+      "bucket": 1
+    },
+    {
+      "label": "who controls the household budget",
+      "bucket": 2
+    }
+  ],
+  "why": "Dilemmas tempt defection, coordination games have multiple stable outcomes, and bargaining games divide a surplus."
+};
+
+const gtBankBranch = {
+  "root": "A bank holds 20m in liquid assets and has lent 80m against property worth 90m slowly but only 50m in a fire sale. Depositors begin to run. Trace the game.",
+  "nodes": {
+    "start": {
+      "text": "What is the rational move for each depositor once enough others run?",
+      "choices": [
+        {
+          "label": "Run — the fire sale leaves only 70m for 100m of deposits",
+          "next": "run",
+          "feedback": "Yes — running is rational because the queue is paid first."
+        },
+        {
+          "label": "Stay calm — the bank is solvent if assets are sold slowly",
+          "next": "calm",
+          "feedback": "True in the good equilibrium, but once enough run, staying is not rational."
+        },
+        {
+          "label": "Wait for the government to guarantee deposits first",
+          "next": "wait",
+          "feedback": "Deposit insurance changes the payoffs — but without it, waiting is risky."
+        }
+      ]
+    },
+    "run": {
+      "text": "The run is a self-fulfilling equilibrium: 20m liquid + 50m fire-sale = 70m against 100m deposits. What policy deletes the bad equilibrium?",
+      "choices": [
+        {
+          "label": "Deposit insurance and a lender of last resort",
+          "next": "policy",
+          "feedback": "Yes — guarantee deposits, and panic stops paying."
+        },
+        {
+          "label": "Raise the interest rate on deposits",
+          "next": "rate",
+          "feedback": "Higher rates may attract deposits, but they do not remove the run incentive."
+        },
+        {
+          "label": "Ban withdrawals",
+          "next": "ban",
+          "feedback": "A withdrawal freeze stops the run by force, not by changing the game."
+        }
+      ]
+    },
+    "policy": {
+      "text": "Deposit insurance changes the payoff directly: if my deposit is guaranteed, running no longer pays, and the bad equilibrium disappears. The run is a legitimate solution to a badly designed game."
+    },
+    "calm": {
+      "text": "Staying calm is the good equilibrium, but it is not stable once enough depositors believe others will run.",
+      "choices": [
+        {
+          "label": "What does the panic do?",
+          "next": "run",
+          "feedback": "The fire sale makes running rational."
+        }
+      ]
+    },
+    "wait": {
+      "text": "Without a guarantee, waiting leaves you behind the queue; that is why the policy answer changes the payoffs directly.",
+      "choices": [
+        {
+          "label": "Follow the run",
+          "next": "run",
+          "feedback": "The queue is paid first."
+        }
+      ]
+    },
+    "rate": {
+      "text": "Higher rates do not remove the incentive to be first in the queue once panic starts.",
+      "choices": [
+        {
+          "label": "So what works?",
+          "next": "policy",
+          "feedback": "Change the payoff."
+        }
+      ]
+    },
+    "ban": {
+      "text": "A freeze is a forced pause, not a payoff change; the underlying coordination problem remains.",
+      "choices": [
+        {
+          "label": "What changes the game?",
+          "next": "policy",
+          "feedback": "Insurance and last-resort lending."
+        }
+      ]
+    }
+  },
+  "why": "Bank runs are a coordination game with two equilibria; deposit insurance and lender-of-last-resort lending delete the destructive one by changing the payoffs."
+};
+
+const gtNashSpot = {
+  "prompt": "Find the line where the equilibrium reasoning goes wrong:",
+  "lines": [
+    "A Nash equilibrium is a combination of strategies where no player gains by moving alone.",
+    "Because no one wants to move, the outcome must be the best one for everyone.",
+    "The bank run and mutual defection are stable equilibria that ruin every player.",
+    "Economists therefore care which equilibrium a situation selects.",
+    "Designing rules that delete destructive equilibria is the policy payoff."
+  ],
+  "errorLine": 1,
+  "correction": "Stability is not goodness: an equilibrium only means nobody wants to move alone.",
+  "why": "The gap between stability and collective benefit is where the whole lesson lives."
+};
+
+const gtSurplusEst = {
+  "prompt": "Together the couple earns £135,000 by moving and £115,000 by staying. What surplus does cooperation create to divide?",
+  "unit": "£",
+  "answer": 20000,
+  "factor": 1.1,
+  "why": "135,000 − 115,000 = 20,000. The disagreement point and each side's alternatives decide how it splits.",
+  "context": "bargaining is about the surplus, not the total"
+};
+
+const gtSignalOrder = {
+  "prompt": "Why does the degree signal separate types? Put the logic in order:",
+  "items": [
+    "A degree costs a high-ability worker £20,000 and a low-ability worker £60,000",
+    "Employers pay £75,000 with a degree and £50,000 without, a £25,000 premium",
+    "The high type gains £25,000 for £20,000 cost, so invests",
+    "The low type would gain £25,000 for £60,000 cost, so does not",
+    "Only the high type invests, and the signal is self-enforcing"
+  ],
+  "why": "A signal separates types only when it is differentially costly; make it free and effortless and the equilibrium collapses."
+};
+
+const gtCournotCompare = {
+  "prompt": "Two market outcomes, same demand — drag the divider:",
+  "before": {
+    "label": "monopoly",
+    "text": "40 hundred seats at a price of 60, earning 1,600"
+  },
+  "after": {
+    "label": "Cournot duopoly",
+    "text": "26.7 hundred seats each at 46.7, earning about 713 each"
+  },
+  "why": "Oligopoly sits between monopoly and competition: collusive profit is available if the firms can coordinate, which is the repeated-game problem."
+};
+
+const gtBertrandPlace = {
+  "prompt": "Two identical petrol stations start at £1.40 and undercut each other. Where does the spiral end, per litre?",
+  "labels": [
+    "£0.80",
+    "£1.00",
+    "£1.20",
+    "£1.40",
+    "£1.60"
+  ],
+  "scale": {
+    "min": 0.8,
+    "max": 1.6
+  },
+  "answer": 1,
+  "tolerance": 0.02,
+  "why": "At marginal cost, £1.00, undercutting stops paying. With identical products, two competitors can deliver the competitive outcome — differentiation is the escape."
+};
+
+const gtSelfishJudge = {
+  "statements": [
+    {
+      "s": "Game theory assumes every player is selfish.",
+      "truth": false,
+      "why": "It takes payoffs as given — whatever the player values, including other people's welfare."
+    },
+    {
+      "s": "It takes payoffs as given, including other people's welfare.",
+      "truth": true,
+      "why": "Altruism is just a different payoff table; the theory still predicts strategy."
+    },
+    {
+      "s": "A mother maximising her children's welfare and a firm maximising profit are both game-theoretic.",
+      "truth": true,
+      "why": "The theory studies interdependent choices, not a single motive."
+    },
+    {
+      "s": "The theory can tell you what people should want.",
+      "truth": false,
+      "why": "It predicts strategy given preferences; it does not rank the preferences themselves."
+    }
+  ]
+};
+
+const gtStructureMatch = {
+  "prompt": "Pair each market structure with its strategic character:",
+  "pairs": [
+    {
+      "left": "perfect competition",
+      "right": "price-taking farmers; nothing to out-think"
+    },
+    {
+      "left": "monopoly",
+      "right": "no rival, just optimisation against demand"
+    },
+    {
+      "left": "oligopoly",
+      "right": "genuinely strategic: capacity, price wars and retaliation"
+    },
+    {
+      "left": "repeated oligopoly",
+      "right": "collusion sustained by the shadow of tomorrow's price war"
+    }
+  ],
+  "why": "Strategic richness rises from competition to monopoly to oligopoly; repetition is what makes collusion self-enforcing."
+};
 ---
 <TopicPage slug="subjects/economics/advanced/game-theory">
   <h2>Where you are, and what you will learn</h2>
@@ -47,6 +303,7 @@ const gameCfg = {
     internally, workers and firms set effort and wages, oligopolists set prices, and every one of
     them is playing against another thinking mind.
   </p>
+  <Widget no="1" caption="fill the blanks — what Nash promises" widget="cloze" config={gtNashCloze} />
   <p>
     The canonical example is the <strong>prisoner's dilemma</strong>: cooperate pays 3 to each
     player, mutual defection pays 1 each, but exploiting a cooperator pays 5 while being exploited
@@ -56,8 +313,9 @@ const gameCfg = {
     races, overfishing, price wars, tariff escalations and climate negotiations are all versions
     of it, which is why a tool built for poker became a general theory of social organisation.
   </p>
+  <Widget no="2" caption="which game is each situation?" widget="sort-buckets" config={gtGameSort} />
 
-  <Widget no="1" caption="the prisoner's dilemma, numerically — my best move depends on what I expect from you" widget="sliderLab" config={gameCfg} />
+  <Widget no="3" caption="the prisoner's dilemma, numerically — my best move depends on what I expect from you" widget="sliderLab" config={gameCfg} />
   <p>
     <strong>What to notice:</strong> slide the chance that the other player cooperates from 0
     up to 1 and watch both expected payoffs rise — yet the defect line never crosses below the
@@ -88,6 +346,7 @@ const gameCfg = {
     guaranteed, panic no longer pays, and the bad equilibrium disappears. The run is not a moral
     failure of the crowd; it is a legitimate solution to a badly designed game.
   </p>
+  <Widget no="4" caption="the bank run — trace the game and the fix" widget="branch" config={gtBankBranch} />
   <p>
     <em>Common misconception:</em> "a Nash equilibrium is the best outcome for everyone." An
     equilibrium is merely <em>stable</em> — nobody wants to move alone. The bank run, like mutual
@@ -95,6 +354,7 @@ const gameCfg = {
     therefore care about <em>which</em> equilibrium a situation selects, and about designing rules
     that delete the destructive ones.
   </p>
+  <Widget no="5" caption="find the equilibrium slip" widget="spot-error" config={gtNashSpot} />
 
   <h2>Households: bargaining under one roof</h2>
   <p>
@@ -113,6 +373,7 @@ const gameCfg = {
     this, which is why the bargaining view reshaped development policy toward paying transfers
     to mothers.
   </p>
+  <Widget no="6" caption="call the bargaining surplus" widget="estimate" config={gtSurplusEst} />
   <p>
     <strong>So far:</strong> inside the household, the disagreement point and the placement of
     money — not arithmetic alone — decide how the surplus divides. Employment is the same
@@ -139,6 +400,7 @@ const gameCfg = {
     self-enforcing. The signal works because it is differentially costly; make degrees free and
     effortless and the whole equilibrium collapses.
   </p>
+  <Widget no="7" caption="why the degree signal separates types" widget="order" config={gtSignalOrder} />
 
   <h2>Firms and production: the capacity game</h2>
   <p>
@@ -157,6 +419,7 @@ const gameCfg = {
     converts "I could cut output" into "I have already bought the planes", moving the rival's
     best response before the game even starts.
   </p>
+  <Widget no="8" caption="monopoly versus Cournot duopoly — drag the divider" widget="compare" config={gtCournotCompare} />
 
   <h2>Costs, revenue and objectives: building the payoff matrix</h2>
   <p>
@@ -174,6 +437,7 @@ const gameCfg = {
     employment all play different games on identical costs — and a "rational" rival models that
     objective, not textbook profit-maximisation.
   </p>
+  <Widget no="9" caption="mark where the price spiral ends" widget="place" config={gtBertrandPlace} />
   <p>
     <em>Common misconception:</em> "game theory assumes everyone is selfish, so it cannot explain
     fairness, love or cooperation." The theory takes <em>payoffs</em> as given — whatever the
@@ -182,6 +446,7 @@ const gameCfg = {
     game-theoretic; what the theory predicts is strategy, and what it cannot do is tell you what
     people should want.
   </p>
+  <Widget no="10" caption="true or false — what game theory assumes" widget="judge" config={gtSelfishJudge} />
   <p>
     <strong>So far:</strong> payoffs come from cost and revenue accounting, and objectives —
     profit, revenue, employment — quietly rewrite the matrix. The last section sorts the whole
@@ -205,6 +470,7 @@ const gameCfg = {
     <em>communication</em>: the agreement is usually implicit, sustained by the shadow of
     tomorrow's retaliation rather than by any signed document.
   </p>
+  <Widget no="11" caption="pair each market structure with its strategic character" widget="match" config={gtStructureMatch} />
   <p>
     <em>Common misconception:</em> "economics is zero-sum — one side's gain is the other's loss."
     Poker is zero-sum; markets are not. A voluntary trade happens because both sides gain — that
