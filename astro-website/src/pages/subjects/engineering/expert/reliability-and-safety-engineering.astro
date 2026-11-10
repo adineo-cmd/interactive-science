@@ -10,6 +10,151 @@ const safetyCfg = {
     { math: '4 · Human factors is system design', note: 'Most accidents blame "human error"; the systems view (Reason\'s Swiss cheese) asks why the error was possible and uncaught. Aviation\'s safety culture (no-blame reporting — ASRS) turned flying into the safest transport; medicine is running the same playbook (the clinical lesson\'s checklists).' },
   ],
 };
+
+const rsAgentMatch = {
+  "prompt": "Specialty agents, specialist machinery — pair them:",
+  "pairs": [
+    {
+      "left": "carcinogens",
+      "right": "IARC Group 1 evidence classes; controlled to the lowest achievable — no threshold assumed"
+    },
+    {
+      "left": "radiation",
+      "right": "ALARA; sieverts; alpha stops on skin but is lethal inhaled"
+    },
+    {
+      "left": "biohazards",
+      "right": "biosafety levels BSL-1 to BSL-4, containment matching infectivity"
+    },
+    {
+      "left": "radioactive waste",
+      "right": "~10 half-lives of storage to a 0.1% residue"
+    }
+  ],
+  "why": "Half-life decides decay strategy and biological clearance alike — lead's decades in bone versus alcohol's hours."
+};
+
+const rsHierarchyOrder = {
+  "prompt": "The strict priority order — stack it:",
+  "items": [
+    "Eliminate the hazard",
+    "Substitute it",
+    "Engineer it away",
+    "Administrate",
+    "Personal protective equipment"
+  ],
+  "why": "Audits that begin with \"are the gloves available?\" have already skipped four stronger controls — regulators cite the hierarchy precisely because teams instinctively start at the bottom of it."
+};
+
+const rsCoEstimate = {
+  "prompt": "Carbon monoxide binds haemoglobin how many times more strongly than oxygen?",
+  "unit": "× more strongly",
+  "answer": 200,
+  "factor": 1.6,
+  "why": "About 200× — the binding strength that crowds oxygen out of the blood, from a gas with no odour at all.",
+  "context": "The instruments are electrochemical cells, catalytic pellistors and infrared sensors — because the atmosphere that kills is usually the one that changed since yesterday."
+};
+
+const rsShockPredict = {
+  "q": "A hand-to-hand contact through wet skin at household voltage — roughly what current flows through the chest?",
+  "choices": [
+    "About 2.4 mA",
+    "About 24 mA",
+    "About 240 mA",
+    "About 2.4 A"
+  ],
+  "answer": 2,
+  "why": "About 240 mA — nearly ten times the fibrillation threshold. Wet skin's hundredfold drop in resistance is what turns ordinary mains voltage lethal; current, path and time set severity."
+};
+
+const rsTestOrder = {
+  "prompt": "Test before entry, in the right order — stack it:",
+  "items": [
+    "Oxygen first — combustible-gas meters need oxygen to read correctly",
+    "Then flammables",
+    "Then toxics"
+  ],
+  "why": "Roughly 60% of confined-space fatalities are would-be rescuers, multi-fatality by instinct — the attendant outside does not enter to rescue."
+};
+
+const rsHazcomBuckets = {
+  "prompt": "The Globally Harmonised System's two carriers — file each element:",
+  "buckets": [
+    "on the drum's label",
+    "in the 16-section sheet"
+  ],
+  "items": [
+    {
+      "label": "pictograms — flame, skull-and-crossbones, corrosion",
+      "bucket": 0
+    },
+    {
+      "label": "signal words \"Danger\" / \"Warning\"",
+      "bucket": 0
+    },
+    {
+      "label": "hazard statements",
+      "bucket": 0
+    },
+    {
+      "label": "first aid, firefighting, accidental release",
+      "bucket": 1
+    },
+    {
+      "label": "handling/storage, exposure controls, toxicology",
+      "bucket": 1
+    },
+    {
+      "label": "disposal, transport, regulation",
+      "bucket": 1
+    }
+  ],
+  "why": "Concentration information is how a worker knows a 3% hydrogen-peroxide antiseptic from the 30% laboratory oxidiser with the same name — and the NFPA 704 diamond compresses health, flammability, instability and special hazards to a glance."
+};
+
+const rsRedundSpot = {
+  "prompt": "An engineer sums up system reliability. One line is wrong — click it:",
+  "lines": [
+    "Ten parts in series, each 99.9% reliable",
+    "Series multiplies unreliability: 0.999¹⁰ ≈ 99.0% for the whole",
+    "Two independent 80% units in parallel: 1 − 0.2 × 0.2 = 96%",
+    "So a backup doubles the safety — whatever the numbers say",
+    "Common-cause failure — one shared power feed, one firmware bug, one flooded bay — defeats duplication"
+  ],
+  "errorLine": 3,
+  "correction": "Only independent backups buy the arithmetic — the improvement is multiplicative, not a doubling, and shared modes can collapse the whole stack to single-digit gains.",
+  "why": "Diversity — different suppliers, different physical principles, different failure modes — is priced above copies; the 737 MAX's single-sensor MCAS dependence is the modern case study in hidden common mode."
+};
+
+const rsBackupJudge = {
+  "statements": [
+    {
+      "s": "A shared power feed, shared firmware or shared maintenance procedure can collapse a redundant stack to single-digit gains.",
+      "truth": true,
+      "why": "That is common-cause failure — the reason redundancy engineering is mostly independence analysis."
+    },
+    {
+      "s": "Diversity (different suppliers, different physical principles) is priced above copies.",
+      "truth": true,
+      "why": "Different failure modes are what independence actually requires."
+    },
+    {
+      "s": "Adding a backup always doubles the safety.",
+      "truth": false,
+      "why": "Independence is the whole bargain — without it the gain can vanish."
+    },
+    {
+      "s": "The 737 MAX's dependence on a single sensor for MCAS is a case study in hidden common mode.",
+      "truth": true,
+      "why": "One sensor, one assumption about pilot response — both common causes hiding inside \"redundant\" intent."
+    },
+    {
+      "s": "Fault-tree analysis works bottom-up, from basic events to the top event.",
+      "truth": false,
+      "why": "It works top-down — from the top event down to basic events through AND/OR gates; FMEA is the list-first method."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/engineering/expert/reliability-and-safety-engineering">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +222,7 @@ const safetyCfg = {
     radioactive waste for ~10 half-lives to a 0.1% residue) and biological clearance (lead's
     decades in bone versus alcohol's hours).
   </p>
+  <Widget no="2" caption="pair each agent family with its control machinery" widget="match" config={rsAgentMatch} />
 
   <p><strong>So far:</strong> industrial hygiene measures the hazard — dose, route, duration, and the exposure limits that turn measurement into a decision. Next comes the ranking machinery that decides which control to buy first.</p>
 
@@ -101,6 +247,7 @@ const safetyCfg = {
     neutralised it) were offline — thousands died because the engineered layers had been
     economised away. Hardware is the cheap part; keeping it live is the discipline.
   </p>
+  <Widget no="3" caption="stack the hierarchy of controls in priority order" widget="order" config={rsHierarchyOrder} />
   <p>
     <em>Common misconception:</em> "PPE is the first thing you reach for, so it's the first
     line of defence." It is the last. A respirator that protects one worker is ranked below
@@ -130,6 +277,7 @@ const safetyCfg = {
     four-gas monitors — because the atmosphere that kills is usually the one that changed
     since yesterday.
   </p>
+  <Widget no="4" caption="call the magnitude — CO's grip on haemoglobin" widget="estimate" config={rsCoEstimate} />
 
   <h2>Electrical safety: current, path and time</h2>
   <p>
@@ -150,6 +298,7 @@ const safetyCfg = {
     through wet skin delivers roughly 240 mA — nearly ten times the fibrillation threshold —
     which is why "only 240 volts" is a sentence that appears in accident reports.
   </p>
+  <Widget no="5" caption="bet the current before the arithmetic" widget="predict" config={rsShockPredict} />
 
   <p><strong>So far:</strong> whether the threat is chemical or electrical, the logic is identical — quantify the hazard, then layer defences so that no single failure, sense or device stands between a worker and harm. The next section applies that logic to the spaces where keeping those defences honest is hardest.</p>
 
@@ -173,6 +322,7 @@ const safetyCfg = {
     exposure limits) — and the permit is the administrative control that makes the checks
     non-optional: signature, time, gas readings recorded, rescue plan staged.
   </p>
+  <Widget no="6" caption="sequence the atmosphere tests — order is survival" widget="order" config={rsTestOrder} />
   <p>
     <em>Common misconception:</em> "if the space smelled dangerous, you'd know." The three
     deadliest confined-space atmospheres are precisely the ones smell cannot referee:
@@ -201,6 +351,7 @@ const safetyCfg = {
     section all legible to the person holding the drum — "right to know" as an engineering
     control, not a poster.
   </p>
+  <Widget no="7" caption="label elements or sheet sections? file them" widget="sort-buckets" config={rsHazcomBuckets} />
 
   <p><strong>So far:</strong> the six hazard areas share one architecture — recognise, rank, control, communicate, verify. Now the discipline acquires numbers: reliability is the mathematics of how often the controls themselves fail.</p>
 
@@ -226,6 +377,7 @@ const safetyCfg = {
     out at 2 in 135 — a factor of a thousand between the spreadsheet and the physics, which
     is exactly why PRA results must be audited against the assumptions feeding them.
   </p>
+  <Widget no="8" caption="one line of the reliability arithmetic is wrong — find it" widget="spot-error" config={rsRedundSpot} />
   <p>
     <em>Common misconception:</em> "adding a backup doubles the safety." Only if the backup
     fails independently: two parallel 90%-reliable units reach 99% — a tenfold improvement,
@@ -235,6 +387,7 @@ const safetyCfg = {
     suppliers, different physical principles, different failure modes) is priced above
     copies.
   </p>
+  <Widget no="9" caption="true or false — what redundancy really buys" widget="judge" config={rsBackupJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

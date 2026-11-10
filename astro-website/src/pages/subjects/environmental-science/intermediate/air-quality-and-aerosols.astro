@@ -10,6 +10,166 @@ const airCfg = {
     { math: '4 · The wins are documented', note: 'London smog 1952 (~12,000 deaths) → Clean Air Acts; acid rain → cap-and-trade (the geochemical-cycles lesson\'s sulfur win); Beijing\'s PM2.5 cut ~50%+ (2013–2021) via enforcement. Air quality responds to policy within years — faster than almost any other environmental problem.' },
   ],
 };
+
+const aqaPrimaryBuckets = {
+  "prompt": "Primary vs secondary pollutants — file each one:",
+  "buckets": [
+    "primary — emitted directly",
+    "secondary — manufactured in the atmosphere"
+  ],
+  "items": [
+    {
+      "label": "sulfur dioxide from sulfur in coal and oil",
+      "bucket": 0
+    },
+    {
+      "label": "carbon monoxide from incomplete combustion",
+      "bucket": 0
+    },
+    {
+      "label": "nitrogen oxides from every hot flame",
+      "bucket": 0
+    },
+    {
+      "label": "ground-level ozone, cooked from NO₂ plus volatile organics by sunlight",
+      "bucket": 1
+    },
+    {
+      "label": "most fine particles",
+      "bucket": 1
+    },
+    {
+      "label": "acid rain's acids",
+      "bucket": 1
+    }
+  ],
+  "why": "Controlling smog means controlling its ingredients, not the smog itself — effective regulation targets nodes in the reaction network, not symptoms."
+};
+
+const aqaSixCitiesEstimate = {
+  "prompt": "The Harvard Six Cities study followed thousands of residents for decades. Roughly how much higher was the most-polluted city's death rate than the cleanest's?",
+  "unit": "% higher",
+  "answer": 26,
+  "factor": 1.6,
+  "why": "Roughly 26% higher, driven by fine particles — the result that established PM2.5 as the regulatory target and survived two decades of replication.",
+  "context": "There is no demonstrated safe threshold, which is why the WHO's 2021 guideline (5 µg/m³) sits far below most cities' reality."
+};
+
+const aqaClearPredict = {
+  "q": "A crisp sunny morning: the air looks perfectly clear. Is it clean?",
+  "choices": [
+    "Yes — if you can see clearly, you can breathe safely",
+    "Not necessarily — the deadliest common pollutant is invisible",
+    "Only the smell matters"
+  ],
+  "answer": 1,
+  "why": "PM2.5 is far below the size the eye resolves, and a visible plume may be mostly nuisance dust — indoor solid-fuel smoke kills in homes where the air outside looks clear."
+};
+
+const aqaWeatherBranch = {
+  "root": "You are on the city's air-quality forecast desk. The emissions inventory is unchanged; the weather is not.",
+  "nodes": {
+    "start": {
+      "text": "Which situation are you forecasting for?",
+      "choices": [
+        {
+          "label": "A winter high-pressure system, mountain-ringed city",
+          "next": "inversion",
+          "feedback": "The warm-lid scenario."
+        },
+        {
+          "label": "Strong wind all week",
+          "next": "wind",
+          "feedback": "The dispersal scenario."
+        },
+        {
+          "label": "A hot, still, sunny summer afternoon",
+          "next": "photochem",
+          "feedback": "The ozone scenario."
+        }
+      ]
+    },
+    "inversion": {
+      "text": "A warm layer sits over cooler air: cold, polluted air is trapped beneath the lid like smoke under glass — London 1952 and Donora 1948 were built this way."
+    },
+    "wind": {
+      "text": "Calm concentrates; wind disperses. The same emissions, a different week, a different city."
+    },
+    "photochem": {
+      "text": "Ozone needs sunlight, so its worst days are hot, still and sunny — afternoon peaks built from morning traffic, with the mixing height deepest at midday."
+    }
+  },
+  "why": "The weather comes first and the chemistry second — that is why agencies staff more meteorologists than chemists."
+};
+
+const aqaAcidMatch = {
+  "prompt": "Acid rain's three targets — pair system with damage:",
+  "pairs": [
+    {
+      "left": "lakes",
+      "right": "acidification kills fish below about pH 5; the eggs fail first"
+    },
+    {
+      "left": "soils",
+      "right": "acid strips nutrients and mobilises aluminium, damaging root systems"
+    },
+    {
+      "left": "buildings",
+      "right": "limestone and marble dissolve — the visible pitting on a century of cathedrals"
+    },
+    {
+      "left": "Scandinavian lakes",
+      "right": "died from British smoke — pollution ignores borders"
+    }
+  ],
+  "why": "The fix: cap the total, price the tonne, let engineers find the cheapest tonnes — cutting acid rain emissions about half at a fraction of predicted cost."
+};
+
+const aqaOzoneCloze = {
+  "text": "CFCs are stable enough to reach the stratosphere, where %%0%% cracks them and frees chlorine atoms; one chlorine atom then catalytically destroys %%1%% of ozone molecules. The 1985 Antarctic measurements found springtime ozone down by %%2%% — far worse than models predicted, because polar stratospheric clouds supercharged the chemistry.",
+  "answers": [
+    [
+      "UV",
+      "ultraviolet light",
+      "ultraviolet"
+    ],
+    [
+      "tens of thousands"
+    ],
+    [
+      "40%",
+      "40 per cent"
+    ]
+  ],
+  "hint": "The Montreal Protocol phased out CFCs — the first treaty ratified by every country on Earth."
+};
+
+const aqaCallerSpot = {
+  "prompt": "A radio caller explains the two atmospheric problems — one line is faulty, click it:",
+  "lines": [
+    "The ozone hole is chlorine chemistry from CFCs.",
+    "Climate change is infrared absorption by CO₂, methane and friends.",
+    "So the hole is caused by CO₂ — closing it would cool the planet.",
+    "The genuine coupling runs the other way: HFC substitutes are potent greenhouse gases.",
+    "Your air conditioner does not open the hole."
+  ],
+  "errorLine": 2,
+  "correction": "Two problems, two causes, no arrow between them — the hole is chlorine chemistry, the warming is infrared absorption.",
+  "why": "The one genuine coupling runs the other way — the same treaty family now covers both, with Kigali phasing down HFCs."
+};
+
+const aqaAerosolCompare = {
+  "prompt": "Aerosols pull both ways — drag the divider:",
+  "before": {
+    "label": "sulfate aerosols",
+    "text": "Scatter sunlight back to space and brighten cloud droplets — cooling, and masking part of the greenhouse signal (why 1950–1980 warmed less than physics predicted)."
+  },
+  "after": {
+    "label": "black carbon (soot)",
+    "text": "Absorbs sunlight and warms; darkens snow and ice on landing, accelerating melt — the Himalayan brown cloud is partly a glacier problem, not just a lung problem."
+  },
+  "why": "Net across all aerosols: a substantial cooling. Cleaning the air saves lives now — and the un-masked warming is paid the only way warming can be paid, by cutting CO₂."
+};
 ---
 <TopicPage slug="subjects/environmental-science/intermediate/air-quality-and-aerosols">
 
@@ -84,6 +244,7 @@ const airCfg = {
     stratospheric ozone player higher up). Air pollution is not one substance but a reaction
     network, and effective regulation targets nodes in the network, not symptoms.
   </p>
+  <Widget no="2" caption="file each pollutant: emitted, or manufactured in the air" widget="sort-buckets" config={aqaPrimaryBuckets} />
 
   <h2>PM2.5: the deadliest common pollutant</h2>
   <p>
@@ -109,11 +270,13 @@ const airCfg = {
     cleanest's, driven by fine particles — the result that established PM2.5 as the
     regulatory target and survived two decades of replication.
   </p>
+  <Widget no="3" caption="call the effect — the Six Cities gap" widget="estimate" config={aqaSixCitiesEstimate} />
   <p><em>Common misconception:</em> "if the air looks clear, it is clean." The deadliest
   common pollutant is invisible: PM2.5 is far below the size the eye resolves, which is why
   a crisp sunny morning can carry dangerous concentrations while a visible plume may be
   mostly nuisance dust. Trust the monitors, not the view — and remember that indoor smoke
   from solid-fuel cooking kills in homes where the air outside looks perfectly clear.</p>
+  <Widget no="4" caption="bet before you read on — the crisp morning" widget="predict" config={aqaClearPredict} />
 
   <h2>Meteorology: why the same emissions differ day to day</h2>
   <p>
@@ -133,6 +296,7 @@ const airCfg = {
     chemistry one — which is why air-quality agencies employ more meteorologists than
     chemists.
   </p>
+  <Widget no="5" caption="the forecast desk — what dominates this week?" widget="branch" config={aqaWeatherBranch} />
   <p>
     <strong>So far:</strong> emissions set what is available and weather decides how much of
     it you breathe — the same city can poison itself or disperse its output depending on the
@@ -157,6 +321,7 @@ const airCfg = {
     hundreds of them, though damaged soils recover over decades. The lesson every subsequent treaty cites:
     cap the total, price the tonne, let engineers find the cheapest tonnes.
   </p>
+  <Widget no="6" caption="pair each casualty with its mechanism" widget="match" config={aqaAcidMatch} />
 
   <h2>Ozone depletion: the completely solved one</h2>
   <p>
@@ -178,6 +343,7 @@ const airCfg = {
     potent greenhouse gases — the Kigali Amendment (2016) now phases them down, connecting
     the ozone treaty to the climate one.
   </p>
+  <Widget no="7" caption="fill the blanks — the ozone hole's mechanism" widget="cloze" config={aqaOzoneCloze} />
   <p><em>Common misconception:</em> "the ozone hole causes climate change" (and its twin,
     "the ozone hole is caused by CO₂"). They are separate problems with separate causes:
     the ozone hole is chlorine chemistry from CFCs; climate change is infrared absorption
@@ -185,6 +351,7 @@ const airCfg = {
     treaty family now covers both, and some ozone-recovery chemistry interacts with
     greenhouse warming in the stratosphere. But no, your air conditioner does not open the
     hole, and the hole does not heat the planet.</p>
+  <Widget no="8" caption="find the faulty line — the radio caller" widget="spot-error" config={aqaCallerSpot} />
 
   <h2>The aerosol paradox: pollution that cools</h2>
   <p>
@@ -207,6 +374,7 @@ const airCfg = {
     because CO₂ accumulates for centuries while sulfate pollution lasts days. Choosing
     permanent smog for temporary coolness fails on both timescales.
   </p>
+  <Widget no="9" caption="two particles, opposite climates — drag between them" widget="compare" config={aqaAerosolCompare} />
   <p><em>Common misconception:</em> "cutting air pollution makes climate change worse, so
   the two goals are in conflict." The framing is a sequence, not a dilemma: the health gains
   from cleaning the air are immediate and certain, while the un-masked warming is small and

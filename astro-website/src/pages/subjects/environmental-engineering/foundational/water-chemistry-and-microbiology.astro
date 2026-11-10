@@ -21,6 +21,175 @@ const chemistryCfg = {
     { math: '5 · CT ties it together', note: 'Disinfection strength is concentration × contact time (CT), adjusted for temperature and pH — the design equation of every chlorinated system.' },
   ],
 };
+
+const wcmPhEstimate = {
+  "prompt": "Each whole pH step is a tenfold change. Water at pH 5 versus water at pH 7 — how many times more acidity does the pH 5 water carry?",
+  "unit": "×",
+  "answer": 100,
+  "factor": 1.6,
+  "why": "Two whole steps, two tenfolds: 10 × 10 = 100 — the reason engineers guard pH so jealously.",
+  "context": "Half a unit is a big chemical shift: pH 6.5 is already about three times more acidic than pH 7."
+};
+
+const wcmCarbonOrder = {
+  "prompt": "From gas to guarded pH — put the carbonate chain in order:",
+  "items": [
+    "Atmospheric CO₂ dissolves into the water",
+    "It becomes carbonic acid",
+    "It equilibrates through bicarbonate to carbonate",
+    "Dissolved limestone (rock eaten by that same acid) contributes alkalinity",
+    "Most natural waters end up held between pH 6 and 9"
+  ],
+  "why": "A buffer is a chemical sponge that soaks up added acid or base, holding pH nearly steady while it has capacity left."
+};
+
+const wcmCorrosionBranch = {
+  "root": "A plant serves a city with old lead service lines. Its water tests on the corrosive side of zero.",
+  "nodes": {
+    "start": {
+      "text": "What is the professional move?",
+      "choices": [
+        {
+          "label": "Nudge the carbonate chemistry and dose orthophosphate to grow a protective mineral film",
+          "next": "control",
+          "feedback": "Corrosion control in action."
+        },
+        {
+          "label": "Switch to a cheaper river and skip conditioning — the old source treated fine for decades",
+          "next": "flint",
+          "feedback": "This is Flint's exact sequence."
+        },
+        {
+          "label": "Schedule full lead-line replacement and wait",
+          "next": "slow",
+          "feedback": "Right destination, too slow alone."
+        }
+      ]
+    },
+    "control": {
+      "text": "Index and pipe agree: a protective mineral film lines the old lead, and the glasses stay clean."
+    },
+    "flint": {
+      "text": "The river carried almost no lead — its untreated, more corrosive chemistry dissolved the decades-old mineral scale that had lined the service lines instead."
+    },
+    "slow": {
+      "text": "The water attacks the pipes meanwhile; conditioning and replacement run on separate timelines."
+    }
+  },
+  "why": "Lead is usually a materials-and-chemistry failure, not a contaminated-source failure — the discipline that keeps lead out of glasses is corrosion control."
+};
+
+const wcmSpeciationBuckets = {
+  "prompt": "Same element, different pH, different bite — file each species:",
+  "buckets": [
+    "the active or dangerous form",
+    "the weak, benign or vanished form"
+  ],
+  "items": [
+    {
+      "label": "HOCl — hypochlorous acid, the potent killer",
+      "bucket": 0
+    },
+    {
+      "label": "OCl⁻ — the hypochlorite ion",
+      "bucket": 1
+    },
+    {
+      "label": "NH₃ — unionised ammonia to a fish",
+      "bucket": 0
+    },
+    {
+      "label": "NH₄⁺ — ammonium",
+      "bucket": 1
+    },
+    {
+      "label": "H₂S — hydrogen sulphide, the smell",
+      "bucket": 0
+    },
+    {
+      "label": "HS⁻ — the deprotonated form",
+      "bucket": 1
+    }
+  ],
+  "why": "In water, ask first 'in what form?', then 'how much?' — toxicity, solubility and disinfecting power are all functions of pH."
+};
+
+const wcmHalfLifeMatch = {
+  "prompt": "The half-life is a sorting hat — pair each case:",
+  "pairs": [
+    {
+      "left": "4-day half-life",
+      "right": "a lake management problem"
+    },
+    {
+      "left": "4-hour half-life",
+      "right": "a plant design problem"
+    },
+    {
+      "left": "40-year half-life (PFAS, famously)",
+      "right": "a regulation problem"
+    },
+    {
+      "left": "t½ = 0.693/k",
+      "right": "the time for half of anything to decay"
+    },
+    {
+      "left": "N = N₀e⁻ᵏᵗ",
+      "right": "the first-order law: decay proportional to how much remains"
+    }
+  ],
+  "why": "Pollutant degradation, pathogen die-off, radioactive decay and BOD exertion all follow the first-order shape — speed is the resource tanks buy."
+};
+
+const wcmWinterPredict = {
+  "q": "At a wastewater plant the water drops from 15 °C to 5 °C in a cold snap. What happens to the ammonia-oxidising bacteria?",
+  "choices": [
+    "They speed up — cold water holds more oxygen",
+    "They all but shut down",
+    "Unaffected — temperature only tunes chemistry, not biology"
+  ],
+  "answer": 1,
+  "why": "Rates classically halve per 10 °C fall — and the nitrifiers, the most cold-sensitive of the workforce, essentially stop below about 10 °C."
+};
+
+const wcmBaffleSpot = {
+  "prompt": "An operator's disinfection plan contains one faulty line — click it:",
+  "lines": [
+    "Chick's law: under a fixed concentration, microorganisms die off exponentially.",
+    "Chick–Watson: the kill depends on the product of concentration and time — the CT value.",
+    "Doubling contact time can substitute for doubling concentration — same CT.",
+    "So the theoretical residence time of our unbaffled basin is what counts.",
+    "Regulators publish the CT needed per log of inactivation, per pathogen, pH and temperature."
+  ],
+  "errorLine": 3,
+  "correction": "Effective contact time is the theoretical residence time times a baffling factor — roughly 0.3 unbaffled, approaching 0.7 for a well-baffled serpentine basin.",
+  "why": "Some water short-circuits and leaves early; when a plant needs more kill, the response is geometry — add baffles, buy time."
+};
+
+const wcmIndicatorJudge = {
+  "statements": [
+    {
+      "s": "Utilities routinely test for each specific disease agent.",
+      "truth": false,
+      "why": "Testing each pathogen directly is slow and expensive; they test coliforms and E. coli — faecal bacteria that travel with the pathogens but are cheap and quick to detect."
+    },
+    {
+      "s": "A positive coliform sample signals faecal contamination and raises the odds that pathogens are present too.",
+      "truth": true,
+      "why": "Coliforms colonise in far greater numbers — the signal rides on their abundance."
+    },
+    {
+      "s": "A negative coliform test proves no viruses or protozoa are present.",
+      "truth": false,
+      "why": "Viruses and protozoa survive differently from bacteria — which is why modern rules layer several signals plus CT credit and filtration performance instead of trusting one number."
+    },
+    {
+      "s": "Turbidity is purely an aesthetic standard.",
+      "truth": false,
+      "why": "Particles can shelter microbes from disinfectants — clear water is a safety requirement, not just an aesthetic one."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/environmental-engineering/foundational/water-chemistry-and-microbiology">
 
@@ -108,6 +277,7 @@ const chemistryCfg = {
     times more acidity than water at pH 7. Small numbers on this scale are not small
     changes, which is why engineers guard pH so jealously.
   </p>
+  <Widget no="3" caption="call the magnitude — the logarithmic squeeze" widget="estimate" config={wcmPhEstimate} />
 
   <h2>Equilibrium: where reactions settle</h2>
   <p>
@@ -131,6 +301,7 @@ const chemistryCfg = {
     terms, is a chemical sponge that soaks up added acid or base, holding pH nearly steady
     while the sponge has capacity left.
   </p>
+  <Widget no="4" caption="rebuild the carbonate chain, gas to alkalinity" widget="order" config={wcmCarbonOrder} />
   <p>
     The same system decides whether water deposits <strong>scale</strong> (calcium carbonate
     precipitating onto pipes — protective, mildly annoying) or <strong>corrodes</strong>
@@ -142,6 +313,7 @@ const chemistryCfg = {
     orthophosphate inhibitors that form a protective mineral film) until the index and the
     pipe agree.
   </p>
+  <Widget no="5" caption="corrosive water in a lead-line city — pick the move" widget="branch" config={wcmCorrosionBranch} />
   <p>
     <em>Common misconception:</em> the lead in Flint's water came from the river. The river
     carried almost none; its untreated, more corrosive chemistry dissolved the protective
@@ -163,6 +335,7 @@ const chemistryCfg = {
     H<sub>2</sub>S and vanishes as HS<sup>−</sup>; cyanide is more lethal as the
     undissociated acid. In water, remember: first "in what form?", then "how much?".
   </p>
+  <Widget no="6" caption="first the form, then the amount — file each species" widget="sort-buckets" config={wcmSpeciationBuckets} />
 
   <h2>Kinetics: the clock that chemistry runs on</h2>
   <p>
@@ -177,12 +350,14 @@ const chemistryCfg = {
     half-life is a lake management problem, one with a 4-hour half-life is a plant design
     problem, and one with a 40-year half-life (PFAS, famously) is a regulation problem.
   </p>
+  <Widget no="7" caption="pair each decay speed with the problem it creates" widget="match" config={wcmHalfLifeMatch} />
   <p>
     Rates climb with temperature — classically roughly doubling per 10 °C rise — which is
     why disinfection CT requirements are tabulated by temperature and why biological
     treatment slows painfully in winter (nitrifying bacteria, the most cold-sensitive of
     the workforce, essentially stop below about 10 °C).
   </p>
+  <Widget no="8" caption="bet before you read on — the cold snap" widget="predict" config={wcmWinterPredict} />
   <p>
     Disinfection kinetics is the unit's showcase application. <strong>Chick's law</strong>
     (Harriette Chick, 1908) observed that microorganisms die off exponentially under a fixed
@@ -195,6 +370,7 @@ const chemistryCfg = {
     runs the logic — at fixed CT, raising the pH strips inactivation, because the HOCl
     equilibrium has been pushed against the engineer.
   </p>
+  <Widget no="9" caption="find the faulty line — the disinfection plan" widget="spot-error" config={wcmBaffleSpot} />
 
   <Widget no="2" caption="CT-based inactivation under pH and dose" widget="sliderLab" config={disinfectionCfg} />
   <p>
@@ -246,6 +422,7 @@ const chemistryCfg = {
     water, gets its own standard for the same reason: particles can shelter microbes from
     disinfectants, so clear water is a safety requirement, not just an aesthetic one.
   </p>
+  <Widget no="10" caption="true or false — what the lab actually tests" widget="judge" config={wcmIndicatorJudge} />
   <p>
     <em>Common misconception:</em> chlorinated water is pathogen-free. Standard chlorine
     doses leave the resistant protozoa — Giardia and especially Cryptosporidium — largely

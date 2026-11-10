@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "subjects/engineering/intermediate/fluid-mechanics",
+    "activities": [
+      {
+        "anchor": "stress proportional to shear rate",
+        "type": "sort-buckets",
+        "caption": "Newtonian or non-Newtonian? file the fluids",
+        "name": "fmViscBuckets",
+        "config": {
+          "prompt": "Viscosity that stays constant, or structure that misbehaves — file each fluid:",
+          "buckets": ["Newtonian — constant viscosity", "non-Newtonian — structure in the fluid"],
+          "items": [
+            { "label": "water at 20 °C", "bucket": 0 },
+            { "label": "air", "bucket": 0 },
+            { "label": "blood — shear-thinning, red cells align at speed", "bucket": 1 },
+            { "label": "paint — spreads under a brush, stays on the wall", "bucket": 1 },
+            { "label": "ketchup — refuses to move until pushed hard enough", "bucket": 1 },
+            { "label": "silly putty — bounces fast, flows slowly", "bucket": 1 },
+            { "label": "cold crude oil behaving as a Bingham plastic", "bucket": 1 }
+          ],
+          "why": "A pipeline design for water cannot be reused for sludge or cold crude — the Bingham plastic needs a starting pressure just to unstick."
+        }
+      },
+      {
+        "anchor": "One non-obvious property rule shapes everything else",
+        "type": "predict",
+        "caption": "bet the wall velocity before the boundary layer",
+        "name": "fmNoSlipPredict",
+        "config": {
+          "q": "Water flows past a pipe wall. The water's velocity exactly at the surface is…",
+          "choices": [
+            "Zero — fluids stick to walls",
+            "Half the free-stream value",
+            "Equal to the free-stream value",
+            "Undefined — it depends on roughness"
+          ],
+          "answer": 0,
+          "why": "No-slip: velocity is exactly zero at the surface, rising to free-stream across the boundary layer — the millimetres-to-centimetres zone that carries essentially all the friction drag, most of the heat transfer, and (if it separates) the stall of wings."
+        }
+      },
+      {
+        "anchor": "the historic way small towns ran mains pressure without a pump in sight",
+        "type": "estimate",
+        "caption": "call the magnitude — pressure from height alone",
+        "name": "fmTowerEstimate",
+        "config": {
+          "prompt": "A water tower's free surface stands 30 m above the tap. Roughly what pressure does gravity alone deliver at the tap?",
+          "unit": "kPa",
+          "answer": 294,
+          "factor": 1.4,
+          "why": "p = ρgh = 1000 × 9.81 × 30 ≈ 294 kPa — about 3 bar from height alone.",
+          "context": "A diver at 10 m feels one extra atmosphere (98 kPa) for exactly the same reason."
+        }
+      },
+      {
+        "anchor": "violently turbulent, like virtually every industrial pipe",
+        "type": "place",
+        "caption": "pin the Reynolds number on the scale",
+        "name": "fmRePlace",
+        "config": {
+          "prompt": "Re = ρvL/μ for water at 2 m/s in a 100 mm pipe — where does it land?",
+          "labels": ["0", "50k", "100k", "150k", "200k", "250k"],
+          "scale": { "min": 0, "max": 250000 },
+          "answer": 200000,
+          "tolerance": 10000,
+          "why": "1000 × 2 × 0.1 ÷ 0.001 = 200,000 — far past the ~4,000 where full turbulence is established; transition sits near 2,300. Two flows with the same Re behave the same way scaled, which is why a 1:50 spillway model can certify the full-size structure."
+        }
+      },
+      {
+        "anchor": "Causality runs the other way",
+        "type": "spot-error",
+        "caption": "the famous wrong lift story — find the faulty line",
+        "name": "fmLiftSpot",
+        "config": {
+          "prompt": "A student explains aircraft lift. One line is wrong — click it:",
+          "lines": [
+            "The top surface is curved, so air above has farther to travel",
+            "Equal transit time: both streams must arrive at the trailing edge together",
+            "So the air above must move faster over the top",
+            "Faster flow means lower pressure — and that is lift",
+            "Bernoulli is a bookkeeping identity along a streamline"
+          ],
+          "errorLine": 1,
+          "correction": "Aircraft fly fine with air arriving early on top — lift is a turning of the flow with pressure differences integrated over the surface.",
+          "why": "The pressure drop is the energy that paid for the speed-up — a constriction accelerates the fluid, not the other way round."
+        }
+      },
+      {
+        "anchor": "The pump pushing that water spends",
+        "type": "cloze",
+        "caption": "fill the Darcy–Weisbach bill",
+        "name": "fmPipeCloze",
+        "config": {
+          "text": "Δp = f·(L/D)·(ρv²/2): with f ≈ %%0%%, (ρv²/2) = %%1%% Pa and L/D = %%2%%, the 100 m run loses about %%3%% kPa — and the pump spends roughly %%4%% W pushing the flow, about half a kilowatt of pure friction tax.",
+          "answers": [["0.018"], ["2000"], ["1000"], ["36"], ["565"]],
+          "hint": "One pipe size bigger halves the velocity — and quarters the loss, which is how the extra steel pays for itself in saved electricity."
+        }
+      },
+      {
+        "anchor": "Where fast shallow flow meets slow deep flow",
+        "type": "match",
+        "caption": "pair each instrument and phenomenon with its job",
+        "name": "fmMeterMatch",
+        "config": {
+          "prompt": "Flow measurement and free-surface phenomena — pair them:",
+          "pairs": [
+            { "left": "venturi meter / orifice plate", "right": "pressure drop across a constriction — the orifice pays a permanent penalty" },
+            { "left": "a weir", "right": "depth over a crest, mapped to discharge by a calibrated power law" },
+            { "left": "Manning's equation", "right": "open channels answering to gravity — n from 0.012 concrete to 0.035 weedy" },
+            { "left": "the hydraulic jump", "right": "energy dissipated violently on purpose — stilling basins protect the dam's toe" }
+          ],
+          "why": "Ship designers know the Froude number as the wave-making tax: hull speed scales with √L — the reason long boats are fast boats."
+        }
+      },
+      {
+        "anchor": "and why throttling with valves instead is thermodynamically silly",
+        "type": "trace",
+        "caption": "which curve is the pump's?",
+        "name": "fmCurveTrace",
+        "config": {
+          "prompt": "Head versus flow: one curve is the pump's characteristic, one is the system's. Which is the pump's?",
+          "curves": [
+            { "expr": "55 - 1.8*x", "color": "#1d4ed8", "label": "falls as flow rises" },
+            { "expr": "8 + 0.4*x*x", "color": "#b42318", "label": "rises with flow" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 15 },
+          "y": { "min": 0, "max": 60 },
+          "xlabel": "flow",
+          "ylabel": "head",
+          "why": "Head delivered falls as flow rises; the system curve rises with its friction term — their crossing is where the physics puts the operating point, and series adds heads while parallel adds flows."
+        }
+      }
+    ]
+  }
+]

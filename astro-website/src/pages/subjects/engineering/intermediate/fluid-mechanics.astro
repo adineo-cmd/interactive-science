@@ -59,6 +59,172 @@ const fluidQuizCfg = {
     },
   ],
 };
+
+const fmViscBuckets = {
+  "prompt": "Viscosity that stays constant, or structure that misbehaves — file each fluid:",
+  "buckets": [
+    "Newtonian — constant viscosity",
+    "non-Newtonian — structure in the fluid"
+  ],
+  "items": [
+    {
+      "label": "water at 20 °C",
+      "bucket": 0
+    },
+    {
+      "label": "air",
+      "bucket": 0
+    },
+    {
+      "label": "blood — shear-thinning, red cells align at speed",
+      "bucket": 1
+    },
+    {
+      "label": "paint — spreads under a brush, stays on the wall",
+      "bucket": 1
+    },
+    {
+      "label": "ketchup — refuses to move until pushed hard enough",
+      "bucket": 1
+    },
+    {
+      "label": "silly putty — bounces fast, flows slowly",
+      "bucket": 1
+    },
+    {
+      "label": "cold crude oil behaving as a Bingham plastic",
+      "bucket": 1
+    }
+  ],
+  "why": "A pipeline design for water cannot be reused for sludge or cold crude — the Bingham plastic needs a starting pressure just to unstick."
+};
+
+const fmNoSlipPredict = {
+  "q": "Water flows past a pipe wall. The water's velocity exactly at the surface is…",
+  "choices": [
+    "Zero — fluids stick to walls",
+    "Half the free-stream value",
+    "Equal to the free-stream value",
+    "Undefined — it depends on roughness"
+  ],
+  "answer": 0,
+  "why": "No-slip: velocity is exactly zero at the surface, rising to free-stream across the boundary layer — the millimetres-to-centimetres zone that carries essentially all the friction drag, most of the heat transfer, and (if it separates) the stall of wings."
+};
+
+const fmTowerEstimate = {
+  "prompt": "A water tower's free surface stands 30 m above the tap. Roughly what pressure does gravity alone deliver at the tap?",
+  "unit": "kPa",
+  "answer": 294,
+  "factor": 1.4,
+  "why": "p = ρgh = 1000 × 9.81 × 30 ≈ 294 kPa — about 3 bar from height alone.",
+  "context": "A diver at 10 m feels one extra atmosphere (98 kPa) for exactly the same reason."
+};
+
+const fmRePlace = {
+  "prompt": "Re = ρvL/μ for water at 2 m/s in a 100 mm pipe — where does it land?",
+  "labels": [
+    "0",
+    "50k",
+    "100k",
+    "150k",
+    "200k",
+    "250k"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 250000
+  },
+  "answer": 200000,
+  "tolerance": 10000,
+  "why": "1000 × 2 × 0.1 ÷ 0.001 = 200,000 — far past the ~4,000 where full turbulence is established; transition sits near 2,300. Two flows with the same Re behave the same way scaled, which is why a 1:50 spillway model can certify the full-size structure."
+};
+
+const fmLiftSpot = {
+  "prompt": "A student explains aircraft lift. One line is wrong — click it:",
+  "lines": [
+    "The top surface is curved, so air above has farther to travel",
+    "Equal transit time: both streams must arrive at the trailing edge together",
+    "So the air above must move faster over the top",
+    "Faster flow means lower pressure — and that is lift",
+    "Bernoulli is a bookkeeping identity along a streamline"
+  ],
+  "errorLine": 1,
+  "correction": "Aircraft fly fine with air arriving early on top — lift is a turning of the flow with pressure differences integrated over the surface.",
+  "why": "The pressure drop is the energy that paid for the speed-up — a constriction accelerates the fluid, not the other way round."
+};
+
+const fmPipeCloze = {
+  "text": "Δp = f·(L/D)·(ρv²/2): with f ≈ %%0%%, (ρv²/2) = %%1%% Pa and L/D = %%2%%, the 100 m run loses about %%3%% kPa — and the pump spends roughly %%4%% W pushing the flow, about half a kilowatt of pure friction tax.",
+  "answers": [
+    [
+      "0.018"
+    ],
+    [
+      "2000"
+    ],
+    [
+      "1000"
+    ],
+    [
+      "36"
+    ],
+    [
+      "565"
+    ]
+  ],
+  "hint": "One pipe size bigger halves the velocity — and quarters the loss, which is how the extra steel pays for itself in saved electricity."
+};
+
+const fmMeterMatch = {
+  "prompt": "Flow measurement and free-surface phenomena — pair them:",
+  "pairs": [
+    {
+      "left": "venturi meter / orifice plate",
+      "right": "pressure drop across a constriction — the orifice pays a permanent penalty"
+    },
+    {
+      "left": "a weir",
+      "right": "depth over a crest, mapped to discharge by a calibrated power law"
+    },
+    {
+      "left": "Manning's equation",
+      "right": "open channels answering to gravity — n from 0.012 concrete to 0.035 weedy"
+    },
+    {
+      "left": "the hydraulic jump",
+      "right": "energy dissipated violently on purpose — stilling basins protect the dam's toe"
+    }
+  ],
+  "why": "Ship designers know the Froude number as the wave-making tax: hull speed scales with √L — the reason long boats are fast boats."
+};
+
+const fmCurveTrace = {
+  "prompt": "Head versus flow: one curve is the pump's characteristic, one is the system's. Which is the pump's?",
+  "curves": [
+    {
+      "expr": "55 - 1.8*x",
+      "color": "#1d4ed8",
+      "label": "falls as flow rises"
+    },
+    {
+      "expr": "8 + 0.4*x*x",
+      "color": "#b42318",
+      "label": "rises with flow"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 15
+  },
+  "y": {
+    "min": 0,
+    "max": 60
+  },
+  "xlabel": "flow",
+  "ylabel": "head",
+  "why": "Head delivered falls as flow rises; the system curve rises with its friction term — their crossing is where the physics puts the operating point, and series adds heads while parallel adds flows."
+};
 ---
 <TopicPage slug="subjects/engineering/intermediate/fluid-mechanics">
   <h2>Where you are, and what you will learn</h2>
@@ -113,6 +279,7 @@ const fluidQuizCfg = {
     cannot be reused for sludge or crude oil at low temperature — crude can behave as a
     Bingham plastic that needs a starting pressure just to unstick.
   </p>
+  <Widget no="3" caption="Newtonian or non-Newtonian? file the fluids" widget="sort-buckets" config={fmViscBuckets} />
   <p>
     One non-obvious property rule shapes everything else: fluids stick to walls. Velocity is
     exactly zero <em>at</em> the surface, rising to free-stream across the <strong>boundary
@@ -121,6 +288,7 @@ const fluidQuizCfg = {
     stall of wings and the drag of blunt bodies. Engineering fluid mechanics is very often
     boundary-layer management.
   </p>
+  <Widget no="4" caption="bet the wall velocity before the boundary layer" widget="predict" config={fmNoSlipPredict} />
   <p>
     <strong>So far:</strong> fluids stick to walls, and the boundary layer that follows
     carries the drag, the heat transfer and the stall. Before layers move, though, it pays
@@ -140,6 +308,7 @@ const fluidQuizCfg = {
     displaced fluid) closes the statics chapter, from ships (steel floats because it
     displaces air-cross-sectioned volume) to ballast in submarines.
   </p>
+  <Widget no="5" caption="call the magnitude — pressure from height alone" widget="estimate" config={fmTowerEstimate} />
 
   <h2>Reynolds number: one number, two universes</h2>
   <p>
@@ -159,6 +328,7 @@ const fluidQuizCfg = {
     free-surface models and the Mach number (speed/speed of sound, ~343 m/s at sea level)
     governs compressibility: match the right dimensionless number and the physics transfers.
   </p>
+  <Widget no="6" caption="pin the Reynolds number on the scale" widget="place" config={fmRePlace} />
 
   <h2>Bernoulli: energy conservation with fine print</h2>
   <p>
@@ -181,6 +351,7 @@ const fluidQuizCfg = {
   "equal transit time" story for aircraft lift is simply false (aircraft fly fine with
   air arriving early on top); lift is a turning of the flow with pressure differences
   integrated over the surface.</p>
+  <Widget no="7" caption="the famous wrong lift story — find the faulty line" widget="spot-error" config={fmLiftSpot} />
   <p>
     <strong>So far:</strong> Bernoulli books energy along a streamline and explains the
     venturi and the pitot tube - provided the fine print holds. Real pipes leak energy at
@@ -205,6 +376,7 @@ const fluidQuizCfg = {
     (Δp ≈ ρ·c·Δv, with c ≈ 1,400 m/s in water-filled steel pipe) can burst mains, which
     is why valves close on schedules and surge tanks exist.
   </p>
+  <Widget no="8" caption="fill the Darcy–Weisbach bill" widget="cloze" config={fmPipeCloze} />
   <p><em>Common misconception:</em> doubling pipe diameter doubles capacity. It multiplies
   it by roughly 5–6 in turbulent flow: area grows as D² and velocity for the same
   pressure gradient grows roughly as D<sup>5/2</sup> through the friction law. Diameter
@@ -233,6 +405,7 @@ const fluidQuizCfg = {
     Froude number as the wave-making tax: hull speed scales with √L, the reason long
     boats are fast boats.
   </p>
+  <Widget no="9" caption="pair each instrument and phenomenon with its job" widget="match" config={fmMeterMatch} />
 
   <h2>Pumps, fans, turbines: machines on curves</h2>
   <p>
@@ -255,6 +428,7 @@ const fluidQuizCfg = {
     (same head) — with the caveat that parallel pumps can push each other off their
     best-efficiency point.
   </p>
+  <Widget no="10" caption="which curve is the pump's?" widget="trace" config={fmCurveTrace} />
   <p><em>Common misconception:</em> a cavitating pump is sucking in air through a leaky
   joint, so the fix is to tighten the seals. Nothing from outside is entering: the
   suction-side pressure has fallen near the liquid's vapour pressure, and the liquid itself

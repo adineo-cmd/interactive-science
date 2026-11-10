@@ -17,6 +17,135 @@ const nppCfg = {
   unit: 'g/m²/yr',
   height: 320,
 };
+
+const ecoRulesBuckets = {
+  "prompt": "Matter cycles; energy flows — file each traffic flow:",
+  "buckets": [
+    "matter cycles — it returns",
+    "energy flows — one way, leaking"
+  ],
+  "items": [
+    {
+      "label": "carbon passing from soil to plant to animal and back",
+      "bucket": 0
+    },
+    {
+      "label": "nitrogen recycling between air, soil and bodies",
+      "bucket": 0
+    },
+    {
+      "label": "water through an organism back to the sky",
+      "bucket": 0
+    },
+    {
+      "label": "sunlight captured, then leaked away as heat at every step",
+      "bucket": 1
+    }
+  ],
+  "why": "Two genuinely different behaviours: matter recirculates like water in a sealed pipe network; energy moves like a conveyor that only travels upward and bleeds at every station."
+};
+
+const ecoGatewayEstimate = {
+  "prompt": "Of all the solar energy striking a leaf, roughly what fraction ends up captured in sugars?",
+  "unit": "%",
+  "answer": 1,
+  "factor": 1.6,
+  "why": "About 1% — the rest is reflected, transmitted, or spent warming and cooling the plant.",
+  "context": "Which is why the whole trophic pyramid is built on a trickle worth counting carefully."
+};
+
+const ecoWillowPredict = {
+  "q": "Van Helmont grew a willow for five years in about 90 kg of soil, and the tree gained about 74 kg. Where did the new mass come from?",
+  "choices": [
+    "Mostly from the soil it stood in",
+    "Mostly from carbon dioxide pulled from the air and water drawn from the ground",
+    "From the minerals in the fertiliser"
+  ],
+  "answer": 1,
+  "why": "The soil lost barely 60 grams. Nearly all dry biomass is built from air and water; soil supplies only small quantities of minerals."
+};
+
+const ecoRolesMatch = {
+  "prompt": "The feeding steps, named and placed — pair them:",
+  "pairs": [
+    {
+      "left": "primary consumers",
+      "right": "herbivores — eat producers"
+    },
+    {
+      "left": "secondary consumers",
+      "right": "carnivores — eat herbivores"
+    },
+    {
+      "left": "tertiary consumers",
+      "right": "carnivores — eat other carnivores"
+    },
+    {
+      "left": "decomposers",
+      "right": "bacteria and fungi recycling dead matter"
+    },
+    {
+      "left": "detritivores",
+      "right": "earthworms and woodlice, feeding on dead matter"
+    }
+  ],
+  "why": "The recycling crew runs off to the side of the chain, returning molecules to the soil while energy climbs one way only."
+};
+
+const ecoLossSpot = {
+  "prompt": "A student explains the trophic losses — one line is faulty, click it:",
+  "lines": [
+    "Energy is never created or destroyed, only changed in form — the first law.",
+    "Every conversion degrades some of it to heat that disperses — the second law.",
+    "So the 90% lost at each step loops back to the producers as usable energy.",
+    "Indigestible parts — cellulose, bone, hide — lock energy away from the eater.",
+    "A large share passes sideways to the decomposers."
+  ],
+  "errorLine": 2,
+  "correction": "The dispersed heat can never be gathered to power anything — it does not loop back; an ecosystem needs a continuous input of sunlight or it stops.",
+  "why": "Biology cannot repeal either law; it can only live inside them — open for energy, effectively closed for matter."
+};
+
+const ecoLedgerCloze = {
+  "text": "Gross primary productivity is the total energy producers fix by %%0%%. Net primary productivity is what remains after the producers pay their own %%1%% — the actual surplus every other level lives on. In the classic Silver Springs study, producers captured 20,810 kilocalories per square metre per year, but nearly %%2%% of that was spent running the plants themselves.",
+  "answers": [
+    [
+      "photosynthesis"
+    ],
+    [
+      "respiration"
+    ],
+    [
+      "two-thirds",
+      "2/3"
+    ]
+  ],
+  "hint": "Plants are not charities — the distinction matters because growth happens only while photosynthesis out-earns respiration."
+};
+
+const ecoAuditOrder = {
+  "prompt": "Howard Odum's measured audit — stack the receipts, largest first:",
+  "items": [
+    "Producers fixed 20,810 kcal per m² per year",
+    "Herbivores received 3,368 — about 16%, a generous pipeline",
+    "Small carnivores got 383",
+    "Top carnivores received just 21"
+  ],
+  "why": "Decomposers processed 5,060 — more than the herbivores: the 'invisible' end of the pipeline handles the bulk of the flow."
+};
+
+const ecoForestCompare = {
+  "prompt": "Three designs for the same job — two shown, drag the divider:",
+  "before": {
+    "label": "tropical rainforest",
+    "text": "The skyscraper: layered canopy, over half of all land species, wealth in the living biomass — cleared, it turns to hardpan within seasons, because the fertility was the forest, not the dirt."
+  },
+  "after": {
+    "label": "boreal forest (taiga)",
+    "text": "Cold and slow: evergreen needles for a running start, acidic litter slowing decay, fungi doing the work cold bacteria cannot — the most carbon-hoarding of the three."
+  },
+  "why": "Temperate deciduous splits the difference: dropped leaves build rich brown soils, fewer species but larger standing biomass per species."
+};
 ---
 <TopicPage slug="subjects/environmental-science/foundational/ecosystems-energy">
 
@@ -60,6 +189,7 @@ const nppCfg = {
     animal and back, endlessly. <em>Energy flows</em>: it enters once, as sunlight, and
     leaks away at every step as heat, never to return.
   </p>
+  <Widget no="3" caption="file each process by which rule it obeys" widget="sort-buckets" config={ecoRulesBuckets} />
   <p>
     <strong>So far:</strong> an ecosystem runs on two kinds of traffic. Matter recirculates
     like water in a sealed pipe network; energy moves like a conveyor that only travels
@@ -76,6 +206,7 @@ const nppCfg = {
     captured in sugars. The rest is reflected, transmitted, or spent warming and cooling the
     plant.
   </p>
+  <Widget no="4" caption="call the capture — the sunlight gateway" widget="estimate" config={ecoGatewayEstimate} />
   <p>
     Plants also run the reaction in reverse. <strong>Respiration</strong> burns stored sugar
     with oxygen to power the plant's own life — day and night — releasing carbon dioxide,
@@ -97,6 +228,7 @@ const nppCfg = {
   90 kg of soil and found the soil had lost barely 60 grams while the tree had gained about
   74 kilograms. This is also why productivity is measured as carbon fixed from the air, not
   soil consumed.</p>
+  <Widget no="5" caption="bet before you read on — where a tree's mass comes from" widget="predict" config={ecoWillowPredict} />
 
   <h2>The leaky pipeline: energy climbs the trophic levels</h2>
   <p>
@@ -108,6 +240,7 @@ const nppCfg = {
     and fungi — and <strong>detritivores</strong> such as earthworms and woodlice, which feed
     on dead matter and return its molecules to the soil.
   </p>
+  <Widget no="6" caption="pair each role with its place in the pipeline" widget="match" config={ecoRolesMatch} />
   <p>
     At every handoff up the chain, about 90% of the energy is lost. Where does it go? Burned
     in movement and body heat; voided in excretion; locked in indigestible parts — cellulose,
@@ -118,6 +251,7 @@ const nppCfg = {
     and can no longer be gathered to power anything. Biology cannot repeal either law; it can
     only live inside them.
   </p>
+  <Widget no="7" caption="find the faulty line — where the 90% goes" widget="spot-error" config={ecoLossSpot} />
   <p>
     What survives the losses is captured in a rule of thumb: roughly a tenth of the energy
     at one trophic level reaches the level above. The curve below starts with 100 units of
@@ -161,6 +295,7 @@ const nppCfg = {
     metre per year — but nearly two-thirds of that was spent running the plants themselves,
     leaving about 7,600 for everyone else.
   </p>
+  <Widget no="8" caption="fill the blanks — gross vs net" widget="cloze" config={ecoLedgerCloze} />
   <p>
     NPP is the most consequential number in ecosystem ecology, and it varies by more than
     two orders of magnitude across the planet, set by sunlight, water and nutrients:
@@ -192,6 +327,7 @@ const nppCfg = {
     a tiny reservoir with a huge throughput — energy pyramids still stand; only the
     snapshot biomass topples.)
   </p>
+  <Widget no="9" caption="stack Odum's Silver Springs audit" widget="order" config={ecoAuditOrder} />
 
   <h2>Forest ecosystems: three designs for one job</h2>
   <p>
@@ -204,6 +340,7 @@ const nppCfg = {
     rainforest turns to hardpan within a few seasons — the fertility was the forest, not
     the dirt.
   </p>
+  <Widget no="10" caption="two strategies, one sunlight — drag between them" widget="compare" config={ecoForestCompare} />
   <p>
     <strong>Temperate deciduous forest</strong> trades the endless growing season for winter
     dormancy: leaves are dropped annually, their compost builds rich brown soils, and the

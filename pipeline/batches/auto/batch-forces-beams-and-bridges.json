@@ -1,0 +1,147 @@
+[
+  {
+    "slug": "subjects/engineering/intermediate/forces-beams-and-bridges",
+    "activities": [
+      {
+        "anchor": "By symmetry each reaction takes half",
+        "type": "spot-error",
+        "caption": "one line of the reaction solve is wrong — find it",
+        "name": "fbReactionSpot",
+        "config": {
+          "prompt": "A student solves the off-centre load. One line is wrong — click it:",
+          "lines": [
+            "ΣFx = 0, ΣFy = 0, ΣM = 0 — the whole of planar statics",
+            "A 10 kN point load sits 2 m from the left support of a 6 m simple span",
+            "Take moments about the right support: R_left × 6 = 10 × 4",
+            "By fairness the load splits evenly: 5 kN and 5 kN",
+            "R_left = 6.67 kN and R_right = 3.33 kN — the closer support carries more"
+          ],
+          "errorLine": 3,
+          "correction": "Moments decide, not fairness: the lever arms are unequal, so the reactions are unequal — R_left × 6 = 10 × 4 gives 6.67 kN, leaving 3.33 kN.",
+          "why": "Moments about the far support is the standard trick that isolates one unknown at a time."
+        }
+      },
+      {
+        "anchor": "Design is making every link in that chain exist, continuous, and adequate",
+        "type": "order",
+        "caption": "trace the load path, slab to soil",
+        "name": "fbLoadPathOrder",
+        "config": {
+          "prompt": "Follow the force — stack the load path in order:",
+          "items": [
+            "The slab — the load enters and it bends, delivering edge loads",
+            "The beams — they bend and deliver reactions",
+            "The columns — carry it down in compression",
+            "The foundation — spreads it onto soil at pressures the soil can bear (100–600 kPa)"
+          ],
+          "why": "The collapse modes are almost always broken or never-imagined load paths — a column removed from under a transfer beam; a wall that was load-bearing but not accounted for."
+        }
+      },
+      {
+        "anchor": "Drag the load and span below and watch the moment parabola respond",
+        "type": "place",
+        "caption": "pin the L² tax on the multiplier scale",
+        "name": "fbSpanPlace",
+        "config": {
+          "prompt": "The peak moment carries an L² tax. Double a beam's span — by what multiplier does the peak moment grow?",
+          "labels": ["1×", "2×", "3×", "4×", "5×", "6×", "7×", "8×"],
+          "scale": { "min": 1, "max": 8 },
+          "answer": 4,
+          "tolerance": 0.4,
+          "why": "M_max = wL²/8: doubling L quadruples the peak while doubling w only doubles it — the L² tax that decides so much structural economics."
+        }
+      },
+      {
+        "anchor": "That single exponent is why floor joists",
+        "type": "judge",
+        "caption": "true or false — the geometry of stiffness",
+        "name": "fbDepthJudge",
+        "config": {
+          "statements": [
+            { "s": "Depth enters the second moment of area cubed, width only linearly.", "truth": true, "why": "I = b·h³/12 — read the exponent." },
+            { "s": "Doubling a beam's depth multiplies I by 8; doubling its width merely by 2.", "truth": true, "why": "Same width, same area, same material — geometry alone buys the factor." },
+            { "s": "A wider beam is as good as a deeper one — material is material.", "truth": false, "why": "Material where the stress is — distance from the neutral axis is leverage over bending." },
+            { "s": "Sections are placed on edge because of that one power of depth.", "truth": true, "why": "The I-beam concentrates its material in distant flanges for exactly this reason." },
+            { "s": "\"Just use more of the same section\" is usually the smart fix.", "truth": false, "why": "Rarely — shape beats quantity when the exponent is on your side." }
+          ]
+        }
+      },
+      {
+        "anchor": "Each bar then uses its entire cross-section uniformly",
+        "type": "branch",
+        "caption": "the zero-force member decision",
+        "name": "fbTrussBranch",
+        "config": {
+          "root": "You inherit a triangulated skeleton from an earlier design team. A review flag: one member carries no force under the drawn load case.",
+          "nodes": {
+            "start": {
+              "text": "The member reads zero force. What is the call?",
+              "choices": [
+                { "label": "Remove it — dead weight is dead weight", "next": "risk", "feedback": "A rookie's optimisation — it can trigger collapse under a load case nobody drew." },
+                { "label": "Keep it — its role is stability", "next": "why", "feedback": "Right — geometry often keeps members whose only task is keeping the shape rigid." },
+                { "label": "Thin it down to a token size", "next": "risk", "feedback": "Thinning still removes the brace — the task was never carried by area alone." }
+              ]
+            },
+            "why": {
+              "text": "Why does the triangulated frame beat a bending beam per kilogram?",
+              "choices": [
+                { "label": "Every member works its full area in pure tension or compression", "next": "end", "feedback": "No bending anywhere — the efficiency the I-beam only approaches." },
+                { "label": "Because triangles look stronger", "next": "end", "feedback": "The real reason is geometric: a pin-jointed triangle cannot change shape without changing a bar's length." }
+              ]
+            },
+            "risk": {
+              "text": "The removed brace lets the panel shear into a parallelogram under the un-drawn load case — collapse. Method of joints or sections would have shown the stability role."
+            },
+            "end": {
+              "text": "Rigid by construction, axial by loading — the railway century's bridge vocabulary, solvable by hand."
+            }
+          },
+          "why": "The triangle cannot change shape without changing a bar's length — rigidity by construction, the efficiency the I-beam only approaches."
+        }
+      },
+      {
+        "anchor": "the Akashi Kaikyō Bridge's 1,991 m main span (1998)",
+        "type": "place",
+        "caption": "pin the long-span record on the ladder",
+        "name": "fbRecordPlace",
+        "config": {
+          "prompt": "Pin the long-span record holder's main span on the ladder:",
+          "labels": ["0", "500 m", "1000 m", "1500 m", "2000 m"],
+          "scale": { "min": 0, "max": 2000 },
+          "answer": 1991,
+          "tolerance": 30,
+          "why": "Suspension owns the record because tension members pay no buckling penalty and cable self-weight grows gently with length; cable-stayed dominates the 200–1,000 m range on stiffness and economy."
+        }
+      },
+      {
+        "anchor": "The only casualty was a dog left in the stranded last car",
+        "type": "predict",
+        "caption": "bet the mechanism before the modern finding",
+        "name": "fbFlutterPredict",
+        "config": {
+          "q": "A wind the deck's strength could resist easily tore it apart. What was the mechanism?",
+          "choices": [
+            "Resonance with the wind — the classroom myth",
+            "Aeroelastic flutter — wind coupling with the deck's torsional mode",
+            "Overload beyond the design strength",
+            "Scour of a foundation"
+          ],
+          "answer": 1,
+          "why": "Modern analysis, not the myth: the deck was shallow, stiff in bending, and fatally flexible in twist — the trapezoid box girder you see everywhere is Tacoma's signature, written in cross-section."
+        }
+      },
+      {
+        "anchor": "before a beam ever carries load",
+        "type": "compare",
+        "caption": "reinforced vs prestressed — drag the divider",
+        "name": "fbPrestressCompare",
+        "config": {
+          "prompt": "One material, two strategies — drag the divider across the beam:",
+          "before": { "label": "reinforced concrete", "text": "Strong in compression, weak in tension: when bending pulls the bottom face, cracks open — and spans die near 20 m." },
+          "after": { "label": "prestressed", "text": "Tendons jacked and anchored inside the member squeeze the concrete first; the in-service forces merely relieve that pre-compression — net tension never appears, cracks never open, and spans that died near 20 m run to 40 m and beyond." },
+          "why": "Freeway viaducts, parking structures, floor slabs — the century's infrastructure is largely this trick, working invisibly inside the grey."
+        }
+      }
+    ]
+  }
+]

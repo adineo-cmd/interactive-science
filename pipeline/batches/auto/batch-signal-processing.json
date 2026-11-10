@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "subjects/engineering/advanced/signal-processing",
+    "activities": [
+      {
+        "anchor": "LTI systems are tractable because of one fact",
+        "type": "order",
+        "caption": "build the impulse response argument in order",
+        "name": "spConvOrder",
+        "config": {
+          "prompt": "Why one short kick describes an entire system — stack the argument:",
+          "items": [
+            "Any signal can be built from scaled, shifted kicks — samples",
+            "Scaling the input scales the output; shifting the input shifts the output",
+            "So an LTI system is completely described by its response to one kick — the impulse response",
+            "The output is that recipe applied to the pieces — delayed, scaled, summed impulse responses",
+            "The operation has a name: convolution — the universal grammar of filtering"
+          ],
+          "why": "Every filter, analogue or digital, is some impulse response being convolved with your signal — one specification, the whole behaviour."
+        }
+      },
+      {
+        "anchor": "which is why the field's cleverer tools exist",
+        "type": "predict",
+        "caption": "bet before the toolbox opens",
+        "name": "spBandPredict",
+        "config": {
+          "q": "Noise sits inside the signal's own frequency band. What can a frequency-selective filter do about it?",
+          "choices": [
+            "Remove it cleanly — that is what filters are for",
+            "Remove the signal along with it",
+            "Nothing — averaging, lock-in detection or model-based estimation are the tools for that",
+            "Shift it above Nyquist so it aliases away"
+          ],
+          "answer": 2,
+          "why": "Noise at frequencies different from the signal's is filterable; noise inside the band is untouchable by any frequency-selective filter — \"filter it\" is the beginning of a design conversation, not the answer to one."
+        }
+      },
+      {
+        "anchor": "The construction is easiest to believe on the square wave",
+        "type": "trace",
+        "caption": "which curve is the three-harmonic chord?",
+        "name": "spSquareTrace",
+        "config": {
+          "prompt": "Fourier's claim, tested on the square wave — which curve is the sum of the first three odd harmonics?",
+          "curves": [
+            { "expr": "sin(x)", "color": "#1d4ed8", "label": "a pure sine" },
+            { "expr": "sin(x) + sin(3*x)/3 + sin(5*x)/5", "color": "#b42318", "label": "three odd harmonics" },
+            { "expr": "sin(x) + sin(3*x)/3", "color": "#0f766e", "label": "two odd harmonics" }
+          ],
+          "correct": 1,
+          "x": { "min": 0, "max": 12.6 },
+          "y": { "min": -1.6, "max": 1.6 },
+          "xlabel": "time",
+          "ylabel": "amplitude",
+          "why": "sin(f) + sin(3f)/3 + sin(5f)/5 + … flattens toward the square — and the ripples that stubbornly overshoot the edges are the Gibbs phenomenon: a true square wave needs infinite bandwidth, which real systems never have, so real pulses round off."
+        }
+      },
+      {
+        "anchor": "Rate and resolution are budgets to be spent",
+        "type": "match",
+        "caption": "pair each application with the budget it deserves",
+        "name": "spBudgetMatch",
+        "config": {
+          "prompt": "Bandwidth, not virtue — pair the application with its spend:",
+          "pairs": [
+            { "left": "a vibration sensor", "right": "wide bandwidth at 24-bit depth" },
+            { "left": "a telephone line", "right": "8 kHz and 8 bits — it gets by" },
+            { "left": "CD audio", "right": "44.1 kHz — margin above the 20 kHz ear" },
+            { "left": "doubling a music file's rate", "right": "ultrasound nobody hears, quadrupled data" }
+          ],
+          "why": "\"More\" spent anywhere the application does not need it is storage and cost with no information gained."
+        }
+      },
+      {
+        "anchor": "Digital filters come in two families",
+        "type": "cloze",
+        "caption": "fill the two families and the three-way trade",
+        "name": "spFilterCloze",
+        "config": {
+          "text": "Digital filters come in two families: %%0%% — a weighted moving average, always stable, capable of exactly linear phase — and %%1%% — recursive, mimicking the analogue designs, cheaper per tap. The design conversation is always the same trade: transition width versus %%2%% versus %%3%% — you can cut the noise out sharply, or quickly, or cheaply, but never all three.",
+          "answers": [["FIR", "finite impulse response"], ["IIR", "infinite impulse response"], ["delay"], ["computation"]],
+          "hint": "Two acronyms, then the two things you give up besides sharpness — one of them is instability fuel in a feedback loop."
+        }
+      },
+      {
+        "anchor": "A worked example shows the trade in miniature",
+        "type": "branch",
+        "caption": "design the clinical ECG chain",
+        "name": "spEcgBranch",
+        "config": {
+          "root": "The electrode sees a heartbeat below about 40 Hz, baseline drift near DC, and mains hum at 50–60 Hz. Build the clinical chain.",
+          "nodes": {
+            "start": {
+              "text": "First filter — what goes first, and why?",
+              "choices": [
+                { "label": "A high-pass near 0.5 Hz — kill the baseline drift", "next": "second", "feedback": "Drift is the lowest offender; a gentle high-pass removes it without touching the heart's band." },
+                { "label": "A low-pass at 40 Hz first", "next": "second", "feedback": "Muscle noise is next on the list, not first — the chain works low band upward." },
+                { "label": "A notch at 50 Hz immediately", "next": "second", "feedback": "The notch is the specialty tool — and it comes with a catch worth meeting at the end." }
+              ]
+            },
+            "second": {
+              "text": "Drift gone. The heart lives below about 40 Hz — next?",
+              "choices": [
+                { "label": "A low-pass near 40 Hz — kill the muscle noise", "next": "third", "feedback": "The signal band is now fenced on both sides." },
+                { "label": "A high-pass at 30 Hz — even less drift", "next": "third", "feedback": "That would slice into the signal band itself — drift is already handled at 0.5 Hz." }
+              ]
+            },
+            "third": {
+              "text": "One band left: the mains hum at 50–60 Hz. And the catch?",
+              "choices": [
+                { "label": "A narrow notch at the mains frequency — tuned sharply", "next": "end", "feedback": "Careful: the notch sits close to the signal's upper band — too sharp a notch distorts the very waveform the cardiologist needs to read." },
+                { "label": "A broad notch, to be safe", "next": "end", "feedback": "Broad is worse — it eats signal band; the notch must be narrow yet not so sharp it rings." }
+              ]
+            },
+            "end": {
+              "text": "High-pass 0.5 Hz, low-pass 40 Hz, narrow notch at mains — the clinical chain. Every filter bought cleanliness at the price of some fidelity."
+            }
+          },
+          "why": "The art is spending as little fidelity as possible — each stage in the chain paid for its cleanliness."
+        }
+      },
+      {
+        "anchor": "The extreme instrument is the",
+        "type": "estimate",
+        "caption": "call the magnitude — the lock-in's reach",
+        "name": "spLockinEstimate",
+        "config": {
+          "prompt": "A lock-in amplifier modulates the measurement at a known reference frequency, then demodulates. Signals how many times below the broadband noise become measurable?",
+          "unit": "× below the broadband noise",
+          "answer": 1000000,
+          "factor": 2,
+          "why": "A million times below — only the component that follows the reference survives the demodulation.",
+          "context": "This is how faint optical absorptions and nanovolt thermoelectric signals get read."
+        }
+      },
+      {
+        "anchor": "which is why the suffixes matter",
+        "type": "match",
+        "caption": "pair each decibel figure with its meaning",
+        "name": "spDbMatch",
+        "config": {
+          "prompt": "Decibels are ratios needing a reference — pair each with its meaning:",
+          "pairs": [
+            { "left": "dBm", "right": "against one milliwatt" },
+            { "left": "dBFS", "right": "against a converter's full scale" },
+            { "left": "dBA", "right": "against a human ear's sensitivity curve" },
+            { "left": "+20 dB", "right": "a tenfold amplitude ratio" },
+            { "left": "+10 dB", "right": "roughly threefold" }
+          ],
+          "why": "Adding dB values multiplies signals — the arithmetic that makes the scale useful and, unlabelled, ambiguous."
+        }
+      }
+    ]
+  }
+]

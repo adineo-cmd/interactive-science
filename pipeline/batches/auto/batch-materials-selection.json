@@ -1,0 +1,150 @@
+[
+  {
+    "slug": "subjects/engineering/advanced/materials-selection",
+    "activities": [
+      {
+        "anchor": "Low expansion is the whole trick",
+        "type": "place",
+        "caption": "pin the thermal-shock survival points on the scale",
+        "name": "msShockPlace",
+        "config": {
+          "prompt": "A surface suddenly cooled cracks when the induced stress reaches σ_f — at ΔT_c ≈ σ_f/(E·α). Soda-lime glass manages about 70 K. Where does borosilicate sit?",
+          "labels": ["0", "75 K", "150 K", "225 K", "300 K"],
+          "scale": { "min": 0, "max": 300 },
+          "answer": 240,
+          "tolerance": 20,
+          "why": "Borosilicate (α ≈ 3.3 × 10⁻⁶) survives ΔT ≈ 240 K where soda-lime (α ≈ 9 × 10⁻⁶) manages about 70 K — which is why ovenware is borosilicate and windows are not; fused silica (α ≈ 0.5 × 10⁻⁶) survives the extreme end."
+        }
+      },
+      {
+        "anchor": "The belief is reasonable because",
+        "type": "match",
+        "caption": "pair each selection basis with the wire it picks",
+        "name": "msWireMatch",
+        "config": {
+          "prompt": "Same database, different question — pair the basis with its winner:",
+          "pairs": [
+            { "left": "conductivity per cubic metre", "right": "copper — 59 against aluminium's 38 MS/m" },
+            { "left": "conductivity per kilogram", "right": "aluminium — more than twice the current per unit mass" },
+            { "left": "conductivity per unit cost", "right": "house wiring" },
+            { "left": "strength added to the conductor", "right": "steel-cored aluminium — the overhead line" }
+          ],
+          "why": "A selection compares the property combination the objective asks for — the database answers only the question you write down."
+        }
+      },
+      {
+        "anchor": "Take the canonical case",
+        "type": "order",
+        "caption": "derive the index step by step",
+        "name": "msIndexOrder",
+        "config": {
+          "prompt": "From beam theory to the performance index — put the derivation in order:",
+          "items": [
+            "Beam theory: stiffness S = C·E·I/L³",
+            "Geometrically similar sections: I scales with A²",
+            "Solve for the section: A = √(S·L³/(C·E))",
+            "Mass: m = ρ·A·L",
+            "Minimising mass means maximising M = E^½/ρ"
+          ],
+          "why": "Everything except ρ and E is fixed by the specification — and a tension tie gives M = E/ρ, a panel in bending E^⅓/ρ: the exponent encodes the loading geometry."
+        }
+      },
+      {
+        "anchor": "evolution optimised trees for exactly this index",
+        "type": "sort-buckets",
+        "caption": "file the worked ranking by its numbers",
+        "name": "msRankBuckets",
+        "config": {
+          "prompt": "Worked ranking, (GPa)^½ per (Mg/m³) — file each material by its number:",
+          "buckets": ["M ≈ 6 — the light-stiff elite", "M ≈ 2–3 — the metals"],
+          "items": [
+            { "label": "carbon-fibre composite, 6.5", "bucket": 0 },
+            { "label": "pine along the grain, 6.3", "bucket": 0 },
+            { "label": "aluminium, 3.1", "bucket": 1 },
+            { "label": "titanium, 2.4", "bucket": 1 },
+            { "label": "mild steel, 1.9", "bucket": 1 }
+          ],
+          "why": "The numbers are (GPa)^½ per (Mg/m³); change the objective to cost per unit stiffness and steel surges back — the winner is a property of the question."
+        }
+      },
+      {
+        "anchor": "Plot modulus against density for 100,000 materials",
+        "type": "match",
+        "caption": "pair each class bubble with its address on the chart",
+        "name": "msBubbleMatch",
+        "config": {
+          "prompt": "The point cloud organises into class bubbles — pair class with position:",
+          "pairs": [
+            { "left": "ceramics", "right": "top-right — stiff, dense-ish" },
+            { "left": "foams", "right": "bottom-left — compliant, light" },
+            { "left": "elastomers", "right": "far bottom-left" },
+            { "left": "metals", "right": "a diagonal band across the middle" }
+          ],
+          "why": "Slide the guideline across the chart toward the top-left and the first bubble it touches is the winner — an entire ranking performed as geometry, with property envelopes keeping the scatter honest (ceramics' strength spans two decades)."
+        }
+      },
+      {
+        "anchor": "bounded by local buckling",
+        "type": "estimate",
+        "caption": "call the magnitude — the shape multiplier",
+        "name": "msShapeEstimate",
+        "config": {
+          "prompt": "How many times the bending stiffness of a solid rod of the same mass does a well-shaped I-beam or box section carry?",
+          "unit": "× the stiffness",
+          "answer": 17,
+          "factor": 1.7,
+          "why": "About 10–25 times — so \"steel, shaped well\" can beat \"aluminium, shaped badly\"; local instability of thin walls is what sets the ceiling.",
+          "context": "Shape and process are multipliers: process compatibility (castable, weldable, extrudable, printable) and the audit trail of documentation complete the decision."
+        }
+      },
+      {
+        "anchor": "Run the whole workflow once, quickly, on a real object",
+        "type": "branch",
+        "caption": "one pass of the method — the bicycle frame",
+        "name": "msFrameBranch",
+        "config": {
+          "root": "One pass of the method, on a showroom object — make the calls.",
+          "nodes": {
+            "start": {
+              "text": "A bicycle frame: a set of ties and beams in bending and torsion; objective, minimum mass at acceptable cost. Screening — which candidates die first?",
+              "choices": [
+                { "label": "Thermoplastics (creep), ceramics (toughness), lead (weight)", "next": "rank", "feedback": "The hard limits do the killing before any ranking begins." },
+                { "label": "Steel, aluminium and titanium — too ordinary", "next": "rank", "feedback": "Those are the survivors — the ranking happens to them, not on them." },
+                { "label": "Whatever fails a price cap only", "next": "rank", "feedback": "A price cap is one constraint among several — decades of fatigue, no rust, joinable, serviceable to −20 °C all bite too." }
+              ]
+            },
+            "rank": {
+              "text": "Ranking on E^½/ρ — who tops the list?",
+              "choices": [
+                { "label": "CFRP, titanium and aluminium, steel below", "next": "market", "feedback": "Exactly the ranking the index produces — and the showroom confirms it." },
+                { "label": "Steel first — cheapest per tonne", "next": "market", "feedback": "Cheap is a different objective; on mass-per-stiffness steel sits below the light metals." }
+              ]
+            },
+            "market": {
+              "text": "Carbon-fibre racing frames, aluminium mid-range, titanium boutique, steel touring — a translation the buyers made without ever writing it down. Documentation: the layup schedule, the tube supplier's certificate."
+            }
+          },
+          "why": "One pass of the method, and the showroom becomes a chart you can read."
+        }
+      },
+      {
+        "anchor": "The two indices point in opposite directions",
+        "type": "spot-error",
+        "caption": "one line of the vessel decision is wrong — find it",
+        "name": "msVesselSpot",
+        "config": {
+          "prompt": "An engineer reasons through a pressure vessel. One line is wrong — click it:",
+          "lines": [
+            "Mass minimisation: maximise σ_y/ρ — the wall as thin as the yield strength allows",
+            "Safety: maximise K_IC/σ_y — the vessel must yield before it breaks",
+            "Ultra-high-strength steel wins both indices, so it is the choice",
+            "The professional answer: a middle-strength, high-toughness steel — or titanium when mass is precious (spacecraft tanks)"
+          ],
+          "errorLine": 2,
+          "correction": "Ultra-high-strength steel wins the first index and fails the second — its toughness is poor precisely because its strength is high.",
+          "why": "A design with two failure modes needs two indices, and the candidate set is the region where both are satisfied — failure-mode thinking stops the method ranking confidently into catastrophe."
+        }
+      }
+    ]
+  }
+]

@@ -24,6 +24,154 @@ const fluxCfg = {
     { label: 'years to add 100 ppm', expr: '100 / (e * f / 2.13)', unit: 'yr' },
   ],
 };
+
+const cccReservoirOrder = {
+  "prompt": "Four great reservoirs — put them in order, largest balance first:",
+  "items": [
+    "Oceans — about 38,000 GtC, the giant account",
+    "Soils — about 1,600 GtC",
+    "Atmosphere — about 880 GtC",
+    "Living vegetation — about 550 GtC"
+  ],
+  "why": "The smallest account is the one that matters most this century: a few hundred billion tonnes moved quickly is the whole story of the climate."
+};
+
+const cccBlanketJudge = {
+  "statements": [
+    {
+      "s": "CO₂ is simply pollution with no useful role.",
+      "truth": false,
+      "why": "The argument is strictly about the extra blanket being added, not about the blanket itself."
+    },
+    {
+      "s": "With no heat-trapping gases at all, Earth's average surface would be near −18 °C instead of +15 °C.",
+      "truth": true,
+      "why": "The natural effect is worth 33 °C — it is why the planet is habitable."
+    },
+    {
+      "s": "The dispute is about the added thickness of the blanket, not its existence.",
+      "truth": true,
+      "why": "Ten thousand years of balance at ~280 ppm is the baseline the extra line item bends."
+    },
+    {
+      "s": "Ozone flips its verdict with altitude, like CO₂ flips with amount.",
+      "truth": true,
+      "why": "Good up high, bad nearby — the same summary shape as the blanket argument."
+    }
+  ]
+};
+
+const cccKeelingPlace = {
+  "prompt": "Where does today's atmospheric CO₂ sit on this scale (ppm)?",
+  "labels": [
+    "280",
+    "350",
+    "420",
+    "490",
+    "560"
+  ],
+  "scale": {
+    "min": 280,
+    "max": 560
+  },
+  "answer": 425,
+  "tolerance": 10,
+  "why": "Past 420 ppm — the highest in at least 800,000 years of ice-core record, up from 280 before the industrial era."
+};
+
+const cccLedgerMatch = {
+  "prompt": "Four accounts, four tempi — pair ledger with character:",
+  "pairs": [
+    {
+      "left": "the vegetation ledger",
+      "right": "the fast one — a heartbeat of months"
+    },
+    {
+      "left": "the soil ledger",
+      "right": "the slow one — dead roots hold about three times the carbon of all living plants"
+    },
+    {
+      "left": "the ocean ledger",
+      "right": "the colossus — quietly absorbed roughly a quarter of all human emissions"
+    },
+    {
+      "left": "the geological cycle",
+      "right": "the original thermostat — about 0.1–0.2 GtC/yr, with hands too slow for a century-scale jolt"
+    }
+  ],
+  "why": "The ocean's favour has a price: surface pH has slipped from about 8.2 to 8.1 — a 30 per cent jump in acidity that stresses shell-building life."
+};
+
+const cccPpmEstimate = {
+  "prompt": "At 10 GtC per year emitted and a 45% airborne fraction, the air gains about 2.1 ppm each year. Roughly how many years to add 100 ppm at that pace?",
+  "unit": "years",
+  "answer": 48,
+  "factor": 1.6,
+  "why": "Under half a century — and the panel is linear: halve the emissions (or the airborne fraction) and the years double.",
+  "context": "Underneath the diplomacy of every climate negotiation, this is exactly what the two sides argue about."
+};
+
+const cccIrcloze = {
+  "text": "The Sun's energy arrives mostly as visible light, which nitrogen, oxygen and CO₂ all ignore; it warms the surface, and the surface re-radiates that energy as %%0%% — which nitrogen and oxygen stay passive to, but CO₂, water vapour and methane absorb and re-emit in all directions, including back %%1%%. Eunice Foote (1856) and John Tyndall (1859) demonstrated the heat-trapping; %%2%% calculated in 1896 that doubling CO₂ would warm the planet by several degrees.",
+  "answers": [
+    [
+      "infrared",
+      "IR"
+    ],
+    [
+      "down"
+    ],
+    [
+      "Svante Arrhenius",
+      "Arrhenius"
+    ]
+  ],
+  "hint": "Their molecules flex and vibrate at exactly those wavelengths — 0.042% of the air, doing all the work."
+};
+
+const cccFingerprintSpot = {
+  "prompt": "A student's fingerprint summary contains one faulty line — click it:",
+  "lines": [
+    "Fossil carbon is ancient, so it is depleted of carbon-13 and contains no carbon-14.",
+    "Atmospheric ratios of both isotopes shift exactly as burning old carbon predicts — the Suess effect.",
+    "Atmospheric oxygen is rising in lock-step with the CO₂ rise, since combustion releases it.",
+    "Ice cores show 800,000 years in which CO₂ never left the 180–300 ppm band — until the last two centuries."
+  ],
+  "errorLine": 2,
+  "correction": "Atmospheric oxygen is DECLINING in lock-step — combustion consumes O₂ as it releases CO₂.",
+  "why": "Isotopes, oxygen and ice cores — independent lines, one conclusion: the added CO₂ is ours."
+};
+
+const cccFeedbackBuckets = {
+  "prompt": "Once warming starts, the system answers — file each response:",
+  "buckets": [
+    "amplifies the warming",
+    "the open question"
+  ],
+  "items": [
+    {
+      "label": "warmer air holds more water vapour — itself a heat-trapping gas",
+      "bucket": 0
+    },
+    {
+      "label": "ice–albedo: white reflective surface replaced by dark absorptive ocean",
+      "bucket": 0
+    },
+    {
+      "label": "thawing permafrost releasing methane",
+      "bucket": 0
+    },
+    {
+      "label": "warmer oceans absorbing less CO₂",
+      "bucket": 0
+    },
+    {
+      "label": "how clouds will respond — the hardest to model",
+      "bucket": 1
+    }
+  ],
+  "why": "Feedbacks, not linearity, are why the response of clouds remains the largest single uncertainty in the whole field."
+};
 ---
 <TopicPage slug="subjects/environmental-science/foundational/carbon-cycle-climate">
 
@@ -63,6 +211,7 @@ const fluxCfg = {
     the same amount back. For ten thousand years the books balanced at about 280 parts per
     million (ppm) of atmospheric CO₂.
   </p>
+  <Widget no="3" caption="rank the four accounts by balance" widget="order" config={cccReservoirOrder} />
   <p>
     Since about 1850, humans have been adding a bonus line to the ledger: burning fossil
     carbon — coal, oil, gas — that plants buried over hundreds of millions of years, at a
@@ -79,6 +228,7 @@ const fluxCfg = {
     <em>extra</em> blanket we are adding, not about the blanket itself. The same distinction
     holds for ozone, as we will see: good up high, bad nearby.
   </p>
+  <Widget no="4" caption="true or false — the blanket itself" widget="judge" config={cccBlanketJudge} />
 
   <h2>Reading the curve</h2>
   <p>
@@ -88,6 +238,7 @@ const fluxCfg = {
     environmental science is as famous, or as blunt: it is the single sharpest turn in the
     long record of Earth's carbon.
   </p>
+  <Widget no="5" caption="put today's CO₂ on the ppm scale" widget="place" config={cccKeelingPlace} />
 
   <Widget no="1" caption="the Keeling curve — direct CO₂ measurement at Mauna Loa since 1958; the sharpest turn in the record" widget="plotter" config={keelingCfg} />
   <p>
@@ -112,6 +263,7 @@ const fluxCfg = {
     has slipped from about 8.2 to 8.1 — a 30 per cent jump in acidity that stresses
     shell-building life.
   </p>
+  <Widget no="6" caption="pair each ledger with its character" widget="match" config={cccLedgerMatch} />
   <p>
     And beneath the fast cycle runs the <strong>geological cycle</strong>: volcanism exhales
     carbon from the deep Earth at only about 0.1–0.2 GtC per year, while rock weathering and
@@ -138,6 +290,7 @@ const fluxCfg = {
     half a century at that pace. This little panel is, underneath the diplomacy of every
     international climate negotiation, exactly what the two sides are arguing about.
   </p>
+  <Widget no="7" caption="call the pace — spending 100 ppm" widget="estimate" config={cccPpmEstimate} />
 
   <Widget no="2" caption="the emission ledger — emissions × airborne fraction, in the units that matter" widget="sliderLab" config={fluxCfg} />
   <p>
@@ -164,6 +317,7 @@ const fluxCfg = {
     demonstrated CO₂'s heat-trapping in the laboratory, and Svante Arrhenius calculated in
     1896 that doubling CO₂ would warm the planet by several degrees.
   </p>
+  <Widget no="8" caption="fill the blanks — the mechanism in two moves" widget="cloze" config={cccIrcloze} />
   <p>
     The modern numbers: the CO₂ rise since pre-industrial times (280 to more than 420 ppm —
     not yet a doubling) has already pushed global average surface temperature roughly
@@ -179,6 +333,7 @@ const fluxCfg = {
     combustion consumes it. And ice cores show 800,000 years in which CO₂ never left the
     180–300 ppm band — until the last two centuries.
   </p>
+  <Widget no="9" caption="find the faulty line — the fingerprint argument" widget="spot-error" config={cccFingerprintSpot} />
   <p>
     <em>Common misconception:</em> a cold winter, a blizzard or one cool summer means
     climate change has paused. It feels reasonable — weather is what we personally
@@ -197,6 +352,7 @@ const fluxCfg = {
     problem deserves the whole field of environmental science — and why the response of
     clouds, the hardest feedback to model, remains the largest single uncertainty.
   </p>
+  <Widget no="10" caption="file the feedbacks" widget="sort-buckets" config={cccFeedbackBuckets} />
 
   <h2>Acid rain: the wound we healed</h2>
   <p>

@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "subjects/environmental-science/intermediate/air-quality-and-aerosols",
+    "activities": [
+      {
+        "anchor": "A second classification matters for policy",
+        "type": "sort-buckets",
+        "caption": "file each pollutant: emitted, or manufactured in the air",
+        "name": "aqaPrimaryBuckets",
+        "config": {
+          "prompt": "Primary vs secondary pollutants — file each one:",
+          "buckets": ["primary — emitted directly", "secondary — manufactured in the atmosphere"],
+          "items": [
+            { "label": "sulfur dioxide from sulfur in coal and oil", "bucket": 0 },
+            { "label": "carbon monoxide from incomplete combustion", "bucket": 0 },
+            { "label": "nitrogen oxides from every hot flame", "bucket": 0 },
+            { "label": "ground-level ozone, cooked from NO₂ plus volatile organics by sunlight", "bucket": 1 },
+            { "label": "most fine particles", "bucket": 1 },
+            { "label": "acid rain's acids", "bucket": 1 }
+          ],
+          "why": "Controlling smog means controlling its ingredients, not the smog itself — effective regulation targets nodes in the reaction network, not symptoms."
+        }
+      },
+      {
+        "anchor": "The dose–response evidence has a famous natural experiment",
+        "type": "estimate",
+        "caption": "call the effect — the Six Cities gap",
+        "name": "aqaSixCitiesEstimate",
+        "config": {
+          "prompt": "The Harvard Six Cities study followed thousands of residents for decades. Roughly how much higher was the most-polluted city's death rate than the cleanest's?",
+          "unit": "% higher",
+          "answer": 26,
+          "factor": 1.6,
+          "why": "Roughly 26% higher, driven by fine particles — the result that established PM2.5 as the regulatory target and survived two decades of replication.",
+          "context": "There is no demonstrated safe threshold, which is why the WHO's 2021 guideline (5 µg/m³) sits far below most cities' reality."
+        }
+      },
+      {
+        "anchor": "Trust the monitors, not the view",
+        "type": "predict",
+        "caption": "bet before you read on — the crisp morning",
+        "name": "aqaClearPredict",
+        "config": {
+          "q": "A crisp sunny morning: the air looks perfectly clear. Is it clean?",
+          "choices": [
+            "Yes — if you can see clearly, you can breathe safely",
+            "Not necessarily — the deadliest common pollutant is invisible",
+            "Only the smell matters"
+          ],
+          "answer": 1,
+          "why": "PM2.5 is far below the size the eye resolves, and a visible plume may be mostly nuisance dust — indoor solid-fuel smoke kills in homes where the air outside looks clear."
+        }
+      },
+      {
+        "anchor": "which is why air-quality agencies employ more meteorologists than chemists",
+        "type": "branch",
+        "caption": "the forecast desk — what dominates this week?",
+        "name": "aqaWeatherBranch",
+        "config": {
+          "root": "You are on the city's air-quality forecast desk. The emissions inventory is unchanged; the weather is not.",
+          "nodes": {
+            "start": {
+              "text": "Which situation are you forecasting for?",
+              "choices": [
+                { "label": "A winter high-pressure system, mountain-ringed city", "next": "inversion", "feedback": "The warm-lid scenario." },
+                { "label": "Strong wind all week", "next": "wind", "feedback": "The dispersal scenario." },
+                { "label": "A hot, still, sunny summer afternoon", "next": "photochem", "feedback": "The ozone scenario." }
+              ]
+            },
+            "inversion": { "text": "A warm layer sits over cooler air: cold, polluted air is trapped beneath the lid like smoke under glass — London 1952 and Donora 1948 were built this way." },
+            "wind": { "text": "Calm concentrates; wind disperses. The same emissions, a different week, a different city." },
+            "photochem": { "text": "Ozone needs sunlight, so its worst days are hot, still and sunny — afternoon peaks built from morning traffic, with the mixing height deepest at midday." }
+          },
+          "why": "The weather comes first and the chemistry second — that is why agencies staff more meteorologists than chemists."
+        }
+      },
+      {
+        "anchor": "The chemistry damages three systems",
+        "type": "match",
+        "caption": "pair each casualty with its mechanism",
+        "name": "aqaAcidMatch",
+        "config": {
+          "prompt": "Acid rain's three targets — pair system with damage:",
+          "pairs": [
+            { "left": "lakes", "right": "acidification kills fish below about pH 5; the eggs fail first" },
+            { "left": "soils", "right": "acid strips nutrients and mobilises aluminium, damaging root systems" },
+            { "left": "buildings", "right": "limestone and marble dissolve — the visible pitting on a century of cathedrals" },
+            { "left": "Scandinavian lakes", "right": "died from British smoke — pollution ignores borders" }
+          ],
+          "why": "The fix: cap the total, price the tonne, let engineers find the cheapest tonnes — cutting acid rain emissions about half at a fraction of predicted cost."
+        }
+      },
+      {
+        "anchor": "The proof arrived in 1985",
+        "type": "cloze",
+        "caption": "fill the blanks — the ozone hole's mechanism",
+        "name": "aqaOzoneCloze",
+        "config": {
+          "text": "CFCs are stable enough to reach the stratosphere, where %%0%% cracks them and frees chlorine atoms; one chlorine atom then catalytically destroys %%1%% of ozone molecules. The 1985 Antarctic measurements found springtime ozone down by %%2%% — far worse than models predicted, because polar stratospheric clouds supercharged the chemistry.",
+          "answers": [["UV", "ultraviolet light", "ultraviolet"], ["tens of thousands"], ["40%", "40 per cent"]],
+          "hint": "The Montreal Protocol phased out CFCs — the first treaty ratified by every country on Earth."
+        }
+      },
+      {
+        "anchor": "and the hole does not heat the planet",
+        "type": "spot-error",
+        "caption": "find the faulty line — the radio caller",
+        "name": "aqaCallerSpot",
+        "config": {
+          "prompt": "A radio caller explains the two atmospheric problems — one line is faulty, click it:",
+          "lines": [
+            "The ozone hole is chlorine chemistry from CFCs.",
+            "Climate change is infrared absorption by CO₂, methane and friends.",
+            "So the hole is caused by CO₂ — closing it would cool the planet.",
+            "The genuine coupling runs the other way: HFC substitutes are potent greenhouse gases.",
+            "Your air conditioner does not open the hole."
+          ],
+          "errorLine": 2,
+          "correction": "Two problems, two causes, no arrow between them — the hole is chlorine chemistry, the warming is infrared absorption.",
+          "why": "The one genuine coupling runs the other way — the same treaty family now covers both, with Kigali phasing down HFCs."
+        }
+      },
+      {
+        "anchor": "Here is the subtlety that makes air quality and climate entangled",
+        "type": "compare",
+        "caption": "two particles, opposite climates — drag between them",
+        "name": "aqaAerosolCompare",
+        "config": {
+          "prompt": "Aerosols pull both ways — drag the divider:",
+          "before": { "label": "sulfate aerosols", "text": "Scatter sunlight back to space and brighten cloud droplets — cooling, and masking part of the greenhouse signal (why 1950–1980 warmed less than physics predicted)." },
+          "after": { "label": "black carbon (soot)", "text": "Absorbs sunlight and warms; darkens snow and ice on landing, accelerating melt — the Himalayan brown cloud is partly a glacier problem, not just a lung problem." },
+          "why": "Net across all aerosols: a substantial cooling. Cleaning the air saves lives now — and the un-masked warming is paid the only way warming can be paid, by cutting CO₂."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "subjects/electrical-trades/foundational/electrical-safety-and-theory",
+    "activities": [
+      {
+        "anchor": "The stakes are not theoretical",
+        "type": "estimate",
+        "caption": "call the magnitude — electrocution's share of the toll",
+        "name": "esOshaEstimate",
+        "config": {
+          "prompt": "Per OSHA's own studies, what share of construction worker deaths in an average year does electrocution account for?",
+          "unit": "% of worker deaths",
+          "answer": 3,
+          "factor": 1.6,
+          "why": "Roughly one in thirty — and the great majority trace back to skipped procedure, not unknown physics.",
+          "context": "A hot exhaust pipe hisses, a rotten beam creaks, a gas leak smells — a lethal conductor looks exactly like a dead one."
+        }
+      },
+      {
+        "anchor": "Electricity threatens in three distinct ways",
+        "type": "match",
+        "caption": "pair each killer with the response that defeats it",
+        "name": "esThreatMatch",
+        "config": {
+          "prompt": "Every safety rule maps onto one of the three killers — pair threat with answer:",
+          "pairs": [
+            { "left": "shock", "right": "de-energising and lockout/tagout" },
+            { "left": "arc flash", "right": "distance and protective equipment" },
+            { "left": "fire", "right": "conductors and breakers sized so nothing overheats" }
+          ],
+          "why": "Each card pairs a hazard with the response that defeats it — and the physics card sits in the middle because Ohm's law is the arithmetic underneath every defence, from breaker ratings to voltage-drop limits."
+        }
+      },
+      {
+        "anchor": "Circuits come in two arrangements",
+        "type": "sort-buckets",
+        "caption": "series or parallel? file the behaviour",
+        "name": "esArrangementBuckets",
+        "config": {
+          "prompt": "Two arrangements, one instant recognition — file each behaviour:",
+          "buckets": ["series — one path", "parallel — many paths"],
+          "items": [
+            { "label": "old Christmas lights: one dead bulb darkens the string", "bucket": 0 },
+            { "label": "every branch sees the full voltage", "bucket": 1 },
+            { "label": "the current is identical everywhere", "bucket": 0 },
+            { "label": "one dead branch does not disturb the others", "bucket": 1 },
+            { "label": "resistances add up", "bucket": 0 },
+            { "label": "the branch currents add", "bucket": 1 }
+          ],
+          "why": "Buildings are wired in parallel — every outlet full voltage, the kettle switching off without darkening the kitchen — but every branch added draws more total current, and total current is what heats the supply cables."
+        }
+      },
+      {
+        "anchor": "Wet skin can drop to around 1,000",
+        "type": "predict",
+        "caption": "bet the current before the arithmetic",
+        "name": "esWetPredict",
+        "config": {
+          "q": "A 230 V socket meets damp hands — roughly how much current is driven through the chest?",
+          "choices": [
+            "About 0.23 mA",
+            "About 2.3 mA",
+            "About 230 mA",
+            "About 23 A"
+          ],
+          "answer": 2,
+          "why": "I = V ÷ R gives 0.23 A — far past the 30–50 mA where the heart's rhythm can collapse. It is current you must keep out of your body; voltage together with body resistance decides how much gets in — hence bathrooms, rain-soaked sites and damp grips slow the trade down."
+        }
+      },
+      {
+        "anchor": "whose shock-current table still appears",
+        "type": "order",
+        "caption": "stack Dalziel's stages as the current climbs",
+        "name": "esDalzielOrder",
+        "config": {
+          "prompt": "From tingle to fibrillation — put the stages in order of current:",
+          "items": [
+            "Around 1 mA — barely a tingle",
+            "A few milliamps — a painful jolt, but you can still pull away",
+            "10–30 mA — muscles seize: the \"cannot let go\" range",
+            "Above about 30–50 mA across the chest — ventricular fibrillation"
+          ],
+          "why": "The \"cannot let go\" range is where the hand grips the very conductor it should release — and the whole scale is thousandths of an amp, not amps."
+        }
+      },
+      {
+        "anchor": "drilled until it is reflex",
+        "type": "branch",
+        "caption": "walk the procedure — what does each step defeat?",
+        "name": "esProcedureBranch",
+        "config": {
+          "root": "Hands are about to go into a panel. Walk the drilled procedure and say what each step defeats.",
+          "nodes": {
+            "start": {
+              "text": "First move — why begin by cutting the supply rather than 'being careful'?",
+              "choices": [
+                { "label": "A live conductor looks exactly like a dead one — no hiss, no glow, no smell", "next": "lock", "feedback": "The hazard gives no warning, so perception is replaced with procedure." },
+                { "label": "An experienced hand can see danger coming", "next": "lock", "feedback": "Silent, invisible, instantaneous — electricity does not give second chances at belief." },
+                { "label": "Careful work at 230 V is safe enough", "next": "lock", "feedback": "Household 230 V kills routinely — energised until proven dead is the professional's default." }
+              ]
+            },
+            "lock": {
+              "text": "Supply cut. What do lock and tag defeat?",
+              "choices": [
+                { "label": "Anyone re-energising while your hands are in the panel", "next": "test", "feedback": "Lockout/tagout — it exists because \"just a second\" has killed." },
+                { "label": "Static discharge from the cable", "next": "test", "feedback": "Not the adversary here — the risk is another person restoring power." },
+                { "label": "The arc-flash hazard", "next": "test", "feedback": "That exposure has its own standard (NFPA 70E); lock and tag defeat people, not plasma." }
+              ]
+            },
+            "test": {
+              "text": "Locked and tagged. What does the final 'prove' defeat?",
+              "choices": [
+                { "label": "A lying meter — flat battery, blown fuse, wrong dial, wrong pair of conductors", "next": "end", "feedback": "A dead reading bracketed by two live proofs is the only evidence the trade accepts." },
+                { "label": "A re-energised panel", "next": "end", "feedback": "That was lock and tag's job — proving is about the instrument, not the panel." },
+                { "label": "Nothing — it is ceremony", "next": "end", "feedback": "It is the step skipped in most of the accidents OSHA counts." }
+              ]
+            },
+            "end": { "text": "De-energise, lock, tag, test, prove — a zero energy state: every source of harmful energy secured, not merely switched off." }
+          },
+          "why": "Even good procedure cannot drive risk to zero — never grab a person still in contact with a live conductor; cut the power or break contact with an insulating object first."
+        }
+      },
+      {
+        "anchor": "Every conductor resists, so every run",
+        "type": "cloze",
+        "caption": "fill the voltage-drop arithmetic",
+        "name": "esDropCloze",
+        "config": {
+          "text": "Every metre of cable loses voltage: drop = %%0%% × R, growing as the run gets longer and shrinking as the wire gets %%1%%. A motor starved of voltage draws %%2%% current to do the same work, heats itself further and can burn out — which is why codes cap the drop near 3–%%3%% per cent.",
+          "answers": [["I", "current"], ["thicker"], ["more"], ["5", "five"]],
+          "hint": "Three sliders, one line of arithmetic, and a codebook consequence — the fix is always bigger copper."
+        }
+      },
+      {
+        "anchor": "Every diagnosis in the trade is this loop",
+        "type": "spot-error",
+        "caption": "one line of the fault-find is wrong — find it",
+        "name": "esFaultSpot",
+        "config": {
+          "prompt": "A apprentice reasons through a dark lamp. One line is wrong — click it:",
+          "lines": [
+            "Switch on, lamp dark — measure across the fitting",
+            "Full 230 V at the fitting: the supply is fine, so suspect the lamp itself (open-circuit)",
+            "Zero at the fitting but full voltage at the switch: the break lies between them",
+            "Current flows even through a broken path — that is what keeps a lamp lit",
+            "Scaled up — more switches, bigger cables, three phases — the habit is the same: measure before believing"
+          ],
+          "errorLine": 3,
+          "correction": "Current flows only when the path is whole — voltage appears where the circuit is complete and across the break.",
+          "why": "Ohm's law read backwards: an open circuit carries no current, yet the full supply voltage appears across the open point — voltage tells you where the break is."
+        }
+      }
+    ]
+  }
+]

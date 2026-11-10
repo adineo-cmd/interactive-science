@@ -15,6 +15,150 @@ const hookeCfg = {
   crossings: true,
   height: 350,
 };
+
+const ssHalvesMatch = {
+  "prompt": "Two questions organise the whole lesson — pair each half with its question:",
+  "pairs": [
+    {
+      "left": "statics",
+      "right": "what forces must each part carry? — equilibrium, rigid bodies"
+    },
+    {
+      "left": "strength of materials",
+      "right": "can the part survive carrying them? — stress, strain, bending, buckling, failure"
+    },
+    {
+      "left": "the simplification between them",
+      "right": "statics treats every body as perfectly rigid; strength allows real deformations"
+    }
+  ],
+  "why": "Neither half is optional — a perfect force analysis of an inadequate beam still falls down, and an over-designed beam of unknown forces is guesswork with a budget."
+};
+
+const ssFactorPlace = {
+  "prompt": "Engineers multiply expected loads by a safety factor. About where do the factors for the live loads of bridges sit?",
+  "labels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 6
+  },
+  "answer": 1.75,
+  "tolerance": 0.4,
+  "why": "Roughly 1.5–2 on the live loads of bridges, about 1.5 for aircraft structure — much higher for cranes and anything lifting people; the failure zone sits outside anything the world delivers."
+};
+
+const ssVectorPredict = {
+  "q": "Two 50 N pulls act at right angles to each other. The resultant is about…",
+  "choices": [
+    "100 N",
+    "About 71 N",
+    "50 N",
+    "25 N"
+  ],
+  "answer": 1,
+  "why": "The diagonal of the right-angle pair is what the parallelogram rule gives — same-direction pulls would double it; perpendicular ones give √(50² + 50²) ≈ 71 N."
+};
+
+const ssMomentMatch = {
+  "prompt": "Moments and their kin — pair the quantity with its picture:",
+  "pairs": [
+    {
+      "left": "moment, M = F × d",
+      "right": "force times the perpendicular distance to the pivot"
+    },
+    {
+      "left": "a couple",
+      "right": "two equal, opposite forces on parallel lines — pure rotation, zero net push"
+    },
+    {
+      "left": "a distributed load",
+      "right": "snow on a roof, water on a dam — resultant acting at the centroid"
+    }
+  ],
+  "why": "Which is why the screwdriver turns the screw without shoving it across the table — pure rotation from a couple, no net push."
+};
+
+const ssUnitsSpot = {
+  "prompt": "A student converts a car's mass to weight. One line is wrong — click it:",
+  "lines": [
+    "A car has a mass of 1,500 kg",
+    "Weight = mass × g = 1,500 × 9.81",
+    "≈ 15,000 N — call it 15 kN",
+    "Sanity check: 1,500 N — acceptable",
+    "The habit: estimate first — a tonne-scale mass weighs kilonewtons"
+  ],
+  "errorLine": 3,
+  "correction": "1,500 N is a hundredth of the truth — a 1,500 kg car weighs about 15,000 N; when the magnitude disagrees with your estimate, stop and find the slip.",
+  "why": "Kilograms measure matter, newtons measure force — the multiplication by g is a conversion you must do explicitly, every time."
+};
+
+const ssFbdOrder = {
+  "prompt": "The free-body diagram's drilled steps — put them in order:",
+  "items": [
+    "Confirm the body is not accelerating — static equilibrium",
+    "Isolate one body and cut it free from the world",
+    "Draw every force: applied loads, weight, support reactions",
+    "Demand balance: ΣF = 0 and ΣM = 0"
+  ],
+  "why": "A roller pushes perpendicular to its surface; a pin pushes in two directions; a fixed support also resists turning — and when you need one unknown out of the way, take moments about a pivot where its own moment is zero."
+};
+
+const ssBeamCloze = {
+  "text": "A 6 m simply supported beam carries a 600 N load 2 m from the left support. Moments about the left support: the right reaction times %%0%% m balances 600 N acting at %%1%% m, so it is %%2%% N; vertical balance gives the left reaction %%3%% N — the load did not split evenly.",
+  "answers": [
+    [
+      "6"
+    ],
+    [
+      "2"
+    ],
+    [
+      "200"
+    ],
+    [
+      "400"
+    ]
+  ],
+  "hint": "Take moments where one unknown's own moment is zero, then let ΣF = 0 hand you the rest."
+};
+
+const ssStressBuckets = {
+  "prompt": "σ = F/A comes in two flavours — file each case:",
+  "buckets": [
+    "normal stress — perpendicular to the cut",
+    "shear stress — parallel to the cut"
+  ],
+  "items": [
+    {
+      "label": "tension through a thick rod — harmless",
+      "bucket": 0
+    },
+    {
+      "label": "what scissors apply",
+      "bucket": 1
+    },
+    {
+      "label": "what bolts in a joint resist",
+      "bucket": 1
+    },
+    {
+      "label": "compression in a column",
+      "bucket": 0
+    },
+    {
+      "label": "the same force through a wire — brutal",
+      "bucket": 0
+    }
+  ],
+  "why": "Stress is the load spread over every square millimetre of the cut — and in the elastic region stress and strain are proportional, σ = E·ε: everything is a spring."
+};
 ---
 <TopicPage slug="subjects/engineering/foundational/statics-structures">
 
@@ -64,6 +208,7 @@ const hookeCfg = {
     a perfect force analysis of an inadequate beam still falls down, and an over-designed
     beam of unknown forces is guesswork with a budget.
   </p>
+  <Widget no="2" caption="pair each half of the subject with its question" widget="match" config={ssHalvesMatch} />
   <p>
     Before the machinery, one picture worth keeping for the whole page. Hooke's law (1676)
     says a part stretches in proportion to the load you put on it — the straight grey line
@@ -83,6 +228,7 @@ const hookeCfg = {
     people), so the failure zone sits outside anything the real world delivers. Every
     calculation below exists to place a point safely to the left of that red line.
   </p>
+  <Widget no="3" caption="pin the bridge live-load factor on the scale" widget="place" config={ssFactorPlace} />
 
   <h2>Forces are arrows: the vector toolkit</h2>
   <p>
@@ -98,6 +244,7 @@ const hookeCfg = {
     a roof, water on a dam — handled by its resultant acting at the centroid, the
     geometric centre of the area).
   </p>
+  <Widget no="4" caption="bet the resultant before the geometry" widget="predict" config={ssVectorPredict} />
   <p>
     Rotation needs its own quantity, because a force can turn a body as well as push it.
     The <strong>moment</strong> of a force is <code>M = F × d</code>: force times the
@@ -107,6 +254,7 @@ const hookeCfg = {
     pure rotation with zero net push, which is why the screwdriver turns the screw without
     shoving it across the table.
   </p>
+  <Widget no="5" caption="pair each rotation idea with its picture" widget="match" config={ssMomentMatch} />
   <p>
     <strong>So far:</strong> a structure is a load path to the ground; statics finds the
     forces along that path using arrows that add, and moments that turn. Next comes the
@@ -129,6 +277,7 @@ const hookeCfg = {
     top of the page — estimate first. A car of 1,500 kg should weigh around 15,000 N; if
     your calculation gives 150 N or 15 million, stop and find the slip.
   </p>
+  <Widget no="6" caption="one line of the conversion slipped — find it" widget="spot-error" config={ssUnitsSpot} />
 
   <h2>Free-body diagrams and equilibrium</h2>
   <p>
@@ -143,6 +292,7 @@ const hookeCfg = {
     body, solved for the unknowns — and when you need one unknown force out of the way,
     take moments about a pivot chosen so its own moment is zero.
   </p>
+  <Widget no="7" caption="stack the four-step ritual" widget="order" config={ssFbdOrder} />
   <p>
     A familiar example first, with two hands instead of steel. A pole vaulter carries a
     uniform 5 kg pole horizontally, hands 0.900 m apart, with the pole's centre of gravity
@@ -166,6 +316,7 @@ const hookeCfg = {
     how much each support stretches — which is exactly where statics hands off to strength
     of materials.
   </p>
+  <Widget no="8" caption="fill the two-reaction solve" widget="cloze" config={ssBeamCloze} />
   <p>
     <em>Common misconception:</em> "two people carrying a load share it equally." It feels
     fair, and it is wrong whenever the load sits unevenly between them — the person closer
@@ -205,6 +356,7 @@ const hookeCfg = {
     member: a column that is compressed <em>and</em> bent carries the stresses of each,
     summed — and the worst sum, not the worst single load, picks the failure.
   </p>
+  <Widget no="9" caption="normal or shear? file the loading" widget="sort-buckets" config={ssStressBuckets} />
 
   <h2>Beams, bending and the two diagrams</h2>
   <p>

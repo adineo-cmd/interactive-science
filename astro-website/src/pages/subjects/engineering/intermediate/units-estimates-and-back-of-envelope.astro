@@ -59,6 +59,159 @@ const fermiQuizCfg = {
     },
   ],
 };
+
+const ueOrderTuners = {
+  "prompt": "The classic piano-tuner estimate — put the decomposition chain in order:",
+  "items": [
+    "3 million metro residents, say 1 million households",
+    "1 household in 5 owns a piano: about 200,000 pianos",
+    "Each piano tuned about once a year: 200,000 tunings per year",
+    "One tuner does about 1,000 tunings a year (4 a day, 5 days, 50 weeks)",
+    "200,000 ÷ 1,000 ≈ 200 tuners — within a factor of 2 of the Yellow Pages count"
+  ],
+  "why": "Six guessable factors, each debatable by a factor of 3, and the chain still lands within one order of magnitude — independent errors partially cancel."
+};
+
+const ueMassCloze = {
+  "text": "The SI system separates %%0%% (quantity of matter — identical on the Moon) from weight, the gravitational force on it. In imperial units the %%1%% (lbm) and %%2%% (lbf) coincide on Earth's surface only because the conversion constant gc happens to equal g — write F = ma without dividing by gc and you are off by that factor everywhere gravity is not Earth-standard.",
+  "answers": [
+    [
+      "mass"
+    ],
+    [
+      "pound-mass"
+    ],
+    [
+      "pound-force"
+    ]
+  ],
+  "hint": "The lesson's whole disasters section hangs on this one distinction."
+};
+
+const ueMoonPredict = {
+  "q": "A 70 kg person steps on a bathroom scale on the Moon, where surface gravity is about a sixth of Earth's. What number does the display show?",
+  "choices": [
+    "About 70 kg — matter is matter",
+    "About 12 kg — it is a force meter doing arithmetic in newtons wherever it sits",
+    "About 420 kg",
+    "The display goes blank — there is no gravity in space"
+  ],
+  "answer": 1,
+  "why": "The scale reads the gravitational force (about 114 N up there) and divides by 9.81 to display kilograms — so the same 70 kg of matter shows a sixth of the number, without a gram of matter changing."
+};
+
+const ueDisasterMatch = {
+  "prompt": "Two lost missions, one lost check — pair them:",
+  "pairs": [
+    {
+      "left": "Mars Climate Orbiter, 1999",
+      "right": "thruster impulse read in pound-force-seconds where navigation expected newton-seconds — a factor of 4.45 at every burn"
+    },
+    {
+      "left": "Air Canada Flight 143, 1983",
+      "right": "fuel load computed in pounds where the metric 767 needed kilograms — 17 minutes of glide to a disused airbase"
+    },
+    {
+      "left": "the ten-second check nobody ran",
+      "right": "do these units balance?"
+    },
+    {
+      "left": "gc = 32.174 lbm·ft/(lbf·s²) ≈ g",
+      "right": "why pound-mass and pound-force coincide on Earth's surface only"
+    }
+  ],
+  "why": "Both failures were caught by no one at any stage because nobody performed the check that takes ten seconds — dimensional checking at every line would have saved both missions."
+};
+
+const ueGateBranch = {
+  "root": "Your estimate is within an order of magnitude, and a reviewer objects: 'It could be 10× off.'",
+  "nodes": {
+    "start": {
+      "text": "What does the estimate actually buy the project?",
+      "choices": [
+        {
+          "label": "It sorts feasible from absurd — and gates the design",
+          "next": "gate",
+          "feedback": "The estimate's real job: the decision, made in minutes."
+        },
+        {
+          "label": "It replaces the detailed analysis",
+          "next": "replace",
+          "feedback": "Not so — analysis can and must follow."
+        },
+        {
+          "label": "It pins down the exact number",
+          "next": "exact",
+          "feedback": "Estimates are sorting devices, not measuring devices."
+        }
+      ]
+    },
+    "gate": {
+      "text": "10 kg of battery or 1,000 kg? A 10-metre bridge or a 100-metre bridge? Detailed analysis follows — but only for the option the estimate allowed to pass."
+    },
+    "replace": {
+      "text": "The estimate gates everything, then hands the surviving option to the full analysis — precision applied to the wrong order of magnitude is wasted precision."
+    },
+    "exact": {
+      "text": "A design wrong by 100× will not be rescued by precision — and an estimate never manufactures precision it did not earn."
+    }
+  },
+  "why": "The estimate is the gate, not the substitute: it sorts feasible from absurd for free, and everything past the gate is earned digit by digit."
+};
+
+const uePendulumSpot = {
+  "prompt": "A student's dimensional derivation of the pendulum contains one faulty line — click it:",
+  "lines": [
+    "The period T can depend only on length L, mass m and gravity g.",
+    "The only combination of L and g that yields seconds is √(L/g).",
+    "Mass enters through the weight, so heavier pendulums swing faster.",
+    "Scaling the length up 10× multiplies the period by about √10.",
+    "Experiment or derivation must supply the dimensionless constant, 2π."
+  ],
+  "errorLine": 2,
+  "correction": "Mass cannot enter at all — no combination of metres and m/s² makes kilograms cancel; every mass swings alike.",
+  "why": "Dimensional analysis fixes the form T = 2π√(L/g) and kills m outright; the 2π is a pure number, invisible to unit bookkeeping."
+};
+
+const ueFormBuckets = {
+  "prompt": "Dimensional analysis delivers the form — file each prize:",
+  "buckets": [
+    "dimensions deliver",
+    "must come from experiment or derivation"
+  ],
+  "items": [
+    {
+      "label": "T ∝ √(L/g) — which quantities combine and how they scale",
+      "bucket": 0
+    },
+    {
+      "label": "F ∝ ρv²A — the quadratic drag's form",
+      "bucket": 0
+    },
+    {
+      "label": "strength scales with length², weight with length³",
+      "bucket": 0
+    },
+    {
+      "label": "the 2π in the pendulum period",
+      "bucket": 1
+    },
+    {
+      "label": "the constants inside the drag law",
+      "bucket": 1
+    }
+  ],
+  "why": "It delivers the form, never the number: experiment or derivation has to supply the constant."
+};
+
+const ueErrorEstimate = {
+  "prompt": "A quantity is computed from three measurements, each good to about 1%. Roughly what total uncertainty should you quote?",
+  "unit": "%",
+  "answer": 3,
+  "factor": 1.6,
+  "why": "The three 1% inputs compound: 1% + 1% + 1% ≈ 3% — everything past that is noise in a suit.",
+  "context": "Ask any spreadsheet jockey quoting seven decimals from three input numbers each known to 5%."
+};
 ---
 <TopicPage slug="subjects/engineering/intermediate/units-estimates-and-back-of-envelope">
   <h2>Where you are, and what you will learn</h2>
@@ -117,6 +270,7 @@ const fermiQuizCfg = {
     the miracle and the point: independent errors partially cancel, so a chain of six
     factors each good to ×3 typically lands within one order of magnitude of truth.
   </p>
+  <Widget no="3" caption="rebuild the tuner chain, factor by factor" widget="order" config={ueOrderTuners} />
   <p>
     Why is one order of magnitude enough? Because estimation is a sorting device, not a
     measuring device. "Will a laptop battery power a car?" — battery: ~0.5 kWh; moving a
@@ -147,7 +301,9 @@ const fermiQuizCfg = {
     F = ma/g<sub>c</sub> in imperial units — and you are off by that factor everywhere
     gravity is not exactly Earth-standard.
   </p>
+  <Widget no="4" caption="fill the blanks — mass, weight and the pounds trap" widget="cloze" config={ueMassCloze} />
   <p><em>Common misconception:</em> mass and weight are two names for one thing — a 70 kg person "weighs 70 kg". Mass is kilograms (the quantity of matter, identical on the Moon); weight is newtons (the gravitational force on it, W = mg, about 687 N here). A bathroom scale reads force and quietly divides by 9.81 to display kilograms — which is why the same person "weighs" a sixth as much on the Moon without an atom of mass lost. Keeping the two apart removes the most travelled doorway into the Mars Climate Orbiter class of error.</p>
+  <Widget no="5" caption="bet before you read on — the scale on the Moon" widget="predict" config={ueMoonPredict} />
   <p>
     The price of carelessness is on the record. On 23 September 1999 NASA lost the $327
     million Mars Climate Orbiter because one team's software read thruster impulse data in
@@ -163,11 +319,13 @@ const fermiQuizCfg = {
     (unverifiable) but dimensional checking at every line — mechanical, cheap, and it
     would have saved both missions.
   </p>
+  <Widget no="6" caption="pair each failure with its unit error" widget="match" config={ueDisasterMatch} />
   <p><em>Common misconception:</em> an estimate that is "only" within 10× is a failure.
   Wrong. The purpose of the estimate is the decision it gates: 10 kg of battery or
   1,000 kg? A 10-metre bridge or a 100-metre bridge? Detailed analysis can (and must)
   follow — but only for the option the estimate allowed to pass. Precision applied to the
   wrong order of magnitude is wasted precision.</p>
+  <Widget no="7" caption="someone sneers at your 10× estimate — walk the decision" widget="branch" config={ueGateBranch} />
 
   <h2>Dimensional analysis: results without equations</h2>
   <p>
@@ -186,7 +344,9 @@ const fermiQuizCfg = {
     giant ants are physically impossible and why elephants have pillar legs. One line of
     dimensional reasoning; an entire chapter of biology, for free.
   </p>
+  <Widget no="8" caption="find the faulty line — deriving the pendulum period" widget="spot-error" config={uePendulumSpot} />
   <p><em>Common misconception:</em> dimensional analysis delivers the complete formula. It delivers the <em>form</em>: it fixes which quantities combine and how they scale, but it is blind to dimensionless constants — the 2π in the pendulum period, the constants inside the drag law. No amount of unit bookkeeping can produce a pure number, because a pure number has no units to argue about. That is exactly why the estimate and the detailed analysis are partners: dimensions get you to T ∝ √(L/g) for free, and experiment or derivation has to supply the constant.</p>
+  <Widget no="9" caption="file each result: delivered by dimensions, or earned elsewhere" widget="sort-buckets" config={ueFormBuckets} />
 
   <p><strong>So far:</strong> units are load-bearing, and dimensional analysis derives forms for free — but both stop short of telling you which digits in the final answer are real. That is the last discipline: arithmetic must not manufacture certainty.</p>
 
@@ -204,6 +364,7 @@ const fermiQuizCfg = {
     seven decimals from three input numbers each known to 5%: those trailing digits are
     noise in a suit.
   </p>
+  <Widget no="10" caption="call the magnitude — how far can the error spread?" widget="estimate" config={ueErrorEstimate} />
   <p>
     Beyond rounding, engineering approximation has a formal toolkit. The simplest is
     <strong>bracketing</strong>: prove the answer lies between a deliberately low and high

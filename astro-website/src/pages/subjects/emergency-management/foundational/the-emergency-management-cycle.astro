@@ -11,6 +11,180 @@ const cycleCfg = {
     { math: '5 · The wheel turns', note: 'Every recovery should feed mitigation: build back better, or build back the same vulnerability. The cycle is the discipline\'s core idea.' },
   ],
 };
+
+const emTownsCompare = {
+  "prompt": "One river, two towns — drag the divider between their flood nights:",
+  "before": {
+    "label": "town A — decided years early",
+    "text": "Building codes raised floors above the flood line, a levee guards the business district, and the hospital's emergency plan was last exercised in May — so the evacuation runs by the book and the water does less damage."
+  },
+  "after": {
+    "label": "town B — improvised on the day",
+    "text": "Houses sit on the floodplain just as they always have, the emergency plan lives in a binder nobody has opened, and the response is improvised hour by hour."
+  },
+  "why": "The difference was made in the years before the flood, and in the years that will follow it — which is exactly where emergency management works."
+};
+
+const emMitigationBuckets = {
+  "prompt": "Two families of mitigation — file each measure:",
+  "buckets": [
+    "structural — builds against the hazard",
+    "non-structural — shapes what humans put where"
+  ],
+  "items": [
+    {
+      "label": "levees and seawalls",
+      "bucket": 0
+    },
+    {
+      "label": "building codes that make new structures survive",
+      "bucket": 1
+    },
+    {
+      "label": "earthquake-resistant construction",
+      "bucket": 0
+    },
+    {
+      "label": "land-use rules keeping development off floodplains",
+      "bucket": 1
+    },
+    {
+      "label": "firebreaks and defensible space",
+      "bucket": 0
+    },
+    {
+      "label": "buyouts turning riverside parcels into parks",
+      "bucket": 1
+    },
+    {
+      "label": "homes elevated above the flood line",
+      "bucket": 0
+    },
+    {
+      "label": "insurance pricing that makes risk visible in the market",
+      "bucket": 1
+    }
+  ],
+  "why": "Even sandbags and boarded windows stacked before a hurricane count as structural — the family is defined by what it does, not when it happens."
+};
+
+const emDollarEstimate = {
+  "prompt": "Rigorous benefit–cost analyses of federal mitigation grants found each dollar invested returns roughly how much in avoided future losses?",
+  "unit": "dollars of avoided losses per dollar",
+  "answer": 6,
+  "factor": 1.5,
+  "why": "Roughly six — and code adoption alone returns multiples of its cost over a building's life.",
+  "context": "The Multi-Hazard Mitigation Council's landmark study, updated in 2019, is where the number comes from."
+};
+
+const emLeveeBranch = {
+  "root": "The wall is built and the land behind it feels safe. Development pressure arrives — decide.",
+  "nodes": {
+    "start": {
+      "text": "A levee now guards the business district, and a developer eyes the floodplain behind it. Your call:",
+      "choices": [
+        {
+          "label": "Welcome the development — the levee protects",
+          "next": "dev",
+          "feedback": "This is how the seduction works: safety felt is risk concentrated — development pours in behind the wall."
+        },
+        {
+          "label": "Pair the levee with land-use restraint — stop filling the floodplain",
+          "next": "ok",
+          "feedback": "Doctrine's pairing: structural works plus restraint, so the stakes behind the wall stop rising."
+        },
+        {
+          "label": "Raise the levee higher instead",
+          "next": "higher",
+          "feedback": "Higher walls raise the stakes for the day one is overtopped — the problem is not the wall's height but the filling behind it."
+        }
+      ]
+    },
+    "dev": {
+      "text": "Years pass and houses thicken behind the levee. The day it is overtopped — New Orleans before 2005 is the canonical case — the concentrated stakes make the disaster worse."
+    },
+    "ok": {
+      "text": "The floodplain stays open — parks, not houses. When the water comes, it floods land that can absorb it, and the town keeps what doctrine calls its second chance."
+    },
+    "higher": {
+      "text": "Taller walls, fuller floodplains — the levee effect compounds: walls alone can concentrate the very risk they promise to remove."
+    }
+  },
+  "why": "Modern doctrine always pairs structural works with land-use restraint: build the levee, but also stop filling the floodplain behind it."
+};
+
+const emPlanSpot = {
+  "prompt": "A town audits its readiness. One line is wrong — click it:",
+  "lines": [
+    "The emergency operations plan pre-decides the questions a disaster will ask: who declares, who runs evacuation, where the EOC sits",
+    "Stockpiles and cache networks are positioned before the roads become impossible",
+    "The plan is printed, filed, and complete — the jurisdiction is prepared",
+    "Exercises run from tabletop discussions through drills to full-scale simulations",
+    "Each exercise ends with an after-action review that converts what went wrong into plan revisions"
+  ],
+  "errorLine": 2,
+  "correction": "A written-but-untested plan is paper — preparedness is a loop, not a filing cabinet.",
+  "why": "Exercises carry as much weight as the plan itself: the gaps get named in a tabletop before the day discovers them."
+};
+
+const emTriadOrder = {
+  "prompt": "Response's priorities in order — the order that decides real choices:",
+  "items": [
+    "Life safety",
+    "Incident stabilisation",
+    "Property and environment"
+  ],
+  "why": "The order is drilled because it decides choices under pressure — the crew that risks itself to protect property ahead of people is not doing response correctly."
+};
+
+const emEquityJudge = {
+  "statements": [
+    {
+      "s": "Disasters redistribute harm unevenly, and the households least able to absorb losses recover slowest.",
+      "truth": true,
+      "why": "Who gets aid, how fast and with what conditions is an operational variable — recovery is where equity shows."
+    },
+    {
+      "s": "Aid rules written for document-holding homeowners never leave anyone stranded.",
+      "truth": false,
+      "why": "They strand renters and others — a design flaw, not a footnote."
+    },
+    {
+      "s": "The rebuild window is the one moment when elevation, codes, relocation and infrastructure hardening are politically available.",
+      "truth": true,
+      "why": "Everyone has just seen the flood line with their own eyes — recovery is mitigation's second chance."
+    },
+    {
+      "s": "Recovery begins only after the response phase has fully ended.",
+      "truth": false,
+      "why": "It begins during response, once the immediate threat to life has passed."
+    },
+    {
+      "s": "A community that rebuilds identically has simply scheduled its next disaster.",
+      "truth": true,
+      "why": "Closing the wheel without turning it — restoring function is the goal, restoring fragility is the failure."
+    }
+  ]
+};
+
+const emWarningCloze = {
+  "text": "A warning works only if it is %%0%% (does the siren reach everyone, including the deaf and the asleep?), %%1%% (does it say what will happen, where, when and what to do?), %%2%% (has the source earned credibility?) and %%3%% (people check with family and neighbours before acting).",
+  "answers": [
+    [
+      "received"
+    ],
+    [
+      "understood"
+    ],
+    [
+      "believed"
+    ],
+    [
+      "confirmed"
+    ]
+  ],
+  "hint": "Technology predicts; people act on trust and comprehension — \"Move to high ground now\" beats \"A flood event is anticipated\"."
+};
 ---
 <TopicPage slug="subjects/emergency-management/foundational/the-emergency-management-cycle">
 
@@ -48,6 +222,7 @@ const cycleCfg = {
     hour. Same river, same rainfall, wildly different outcomes — because the difference
     was made in the years before the flood, and in the years that will follow it.
   </p>
+  <Widget no="2" caption="one river, two towns — drag the divider between their outcomes" widget="compare" config={emTownsCompare} />
   <p>
     That difference is what emergency management studies. The discipline is the
     professional organisation of a community's capacities so that hazards — floods,
@@ -92,6 +267,7 @@ const cycleCfg = {
     development off floodplains and landslide zones, buyouts that turn risky riverside
     parcels into parks, insurance pricing that makes risk visible in the market.
   </p>
+  <Widget no="3" caption="structural or non-structural? file the mitigation" widget="sort-buckets" config={emMitigationBuckets} />
   <p>
     Both families start from the same homework: a <strong>hazard and vulnerability
     analysis</strong>, the community assessment that lists what the place is actually
@@ -114,6 +290,7 @@ const cycleCfg = {
     motivated to fight than the many who benefit invisibly. Modern emergency management's
     first advocacy task is exactly this time-preference problem.
   </p>
+  <Widget no="4" caption="call the magnitude — the mitigation multiplier" widget="estimate" config={emDollarEstimate} />
   <p>
     <em>Common misconception:</em> mitigation means bigger walls. Engineering against
     nature has a seduction problem: a levee makes the land behind it feel safe, so
@@ -123,6 +300,7 @@ const cycleCfg = {
     always pairs structural works with land-use restraint: build the levee, but also stop
     filling the floodplain behind it.
   </p>
+  <Widget no="5" caption="the levee is built — now decide like doctrine does" widget="branch" config={emLeveeBranch} />
 
   <h2>Preparedness: building the capability</h2>
   <p>
@@ -147,6 +325,7 @@ const cycleCfg = {
     an after-action review that converts what went wrong into plan revisions. Preparedness
     is a loop, not a filing cabinet.
   </p>
+  <Widget no="6" caption="one line of the preparedness review is wrong — find it" widget="spot-error" config={emPlanSpot} />
   <p>
     Training closes the loop at two levels. Professionals and volunteers train on the
     standard systems and on first aid, damage assessment and shelter operations. And the
@@ -174,6 +353,7 @@ const cycleCfg = {
     decides real choices — the crew that risks itself to protect property ahead of people
     is not doing response correctly.
   </p>
+  <Widget no="7" caption="stack the response priorities in drilled order" widget="order" config={emTriadOrder} />
   <p>
     Response's proudest invention is that it is <strong>governed, not improvised</strong>.
     The <strong>Incident Command System (ICS)</strong>, developed after California's deadly
@@ -241,6 +421,7 @@ const cycleCfg = {
     identically has simply scheduled its next disaster, closing the wheel without turning
     it.
   </p>
+  <Widget no="8" caption="true or false — recovery's two lessons" widget="judge" config={emEquityJudge} />
   <p>
     <em>Common misconception:</em> "recovery means returning to normal — putting things
     back the way they were." It sounds humane, and it is exactly the wrong target if the
@@ -266,6 +447,7 @@ const cycleCfg = {
     in emergency management are not the levees and the radios — they are the humans the
     hardware serves.
   </p>
+  <Widget no="9" caption="fill the four tests a warning must pass" widget="cloze" config={emWarningCloze} />
 
   <h2>Communications and information management</h2>
   <p>

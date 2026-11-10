@@ -1,0 +1,139 @@
+[
+  {
+    "slug": "subjects/engineering/expert/reliability-and-safety-engineering",
+    "activities": [
+      {
+        "anchor": "The specialty agents each carry their own machinery",
+        "type": "match",
+        "caption": "pair each agent family with its control machinery",
+        "name": "rsAgentMatch",
+        "config": {
+          "prompt": "Specialty agents, specialist machinery — pair them:",
+          "pairs": [
+            { "left": "carcinogens", "right": "IARC Group 1 evidence classes; controlled to the lowest achievable — no threshold assumed" },
+            { "left": "radiation", "right": "ALARA; sieverts; alpha stops on skin but is lethal inhaled" },
+            { "left": "biohazards", "right": "biosafety levels BSL-1 to BSL-4, containment matching infectivity" },
+            { "left": "radioactive waste", "right": "~10 half-lives of storage to a 0.1% residue" }
+          ],
+          "why": "Half-life decides decay strategy and biological clearance alike — lead's decades in bone versus alcohol's hours."
+        }
+      },
+      {
+        "anchor": "Safety equipment is designed inside a strict priority order",
+        "type": "order",
+        "caption": "stack the hierarchy of controls in priority order",
+        "name": "rsHierarchyOrder",
+        "config": {
+          "prompt": "The strict priority order — stack it:",
+          "items": [
+            "Eliminate the hazard",
+            "Substitute it",
+            "Engineer it away",
+            "Administrate",
+            "Personal protective equipment"
+          ],
+          "why": "Audits that begin with \"are the gloves available?\" have already skipped four stronger controls — regulators cite the hierarchy precisely because teams instinctively start at the bottom of it."
+        }
+      },
+      {
+        "anchor": "arrive before the victim knows",
+        "type": "estimate",
+        "caption": "call the magnitude — CO's grip on haemoglobin",
+        "name": "rsCoEstimate",
+        "config": {
+          "prompt": "Carbon monoxide binds haemoglobin how many times more strongly than oxygen?",
+          "unit": "× more strongly",
+          "answer": 200,
+          "factor": 1.6,
+          "why": "About 200× — the binding strength that crowds oxygen out of the blood, from a gas with no odour at all.",
+          "context": "The instruments are electrochemical cells, catalytic pellistors and infrared sensors — because the atmosphere that kills is usually the one that changed since yesterday."
+        }
+      },
+      {
+        "anchor": "is a sentence that appears in accident reports",
+        "type": "predict",
+        "caption": "bet the current before the arithmetic",
+        "name": "rsShockPredict",
+        "config": {
+          "q": "A hand-to-hand contact through wet skin at household voltage — roughly what current flows through the chest?",
+          "choices": [
+            "About 2.4 mA",
+            "About 24 mA",
+            "About 240 mA",
+            "About 2.4 A"
+          ],
+          "answer": 2,
+          "why": "About 240 mA — nearly ten times the fibrillation threshold. Wet skin's hundredfold drop in resistance is what turns ordinary mains voltage lethal; current, path and time set severity."
+        }
+      },
+      {
+        "anchor": "The protocol is strict because the failure mode is a cascade",
+        "type": "order",
+        "caption": "sequence the atmosphere tests — order is survival",
+        "name": "rsTestOrder",
+        "config": {
+          "prompt": "Test before entry, in the right order — stack it:",
+          "items": [
+            "Oxygen first — combustible-gas meters need oxygen to read correctly",
+            "Then flammables",
+            "Then toxics"
+          ],
+          "why": "Roughly 60% of confined-space fatalities are would-be rescuers, multi-fatality by instinct — the attendant outside does not enter to rescue."
+        }
+      },
+      {
+        "anchor": "Hazard communication (HazCom) is the system that carries",
+        "type": "sort-buckets",
+        "caption": "label elements or sheet sections? file them",
+        "name": "rsHazcomBuckets",
+        "config": {
+          "prompt": "The Globally Harmonised System's two carriers — file each element:",
+          "buckets": ["on the drum's label", "in the 16-section sheet"],
+          "items": [
+            { "label": "pictograms — flame, skull-and-crossbones, corrosion", "bucket": 0 },
+            { "label": "signal words \"Danger\" / \"Warning\"", "bucket": 0 },
+            { "label": "hazard statements", "bucket": 0 },
+            { "label": "first aid, firefighting, accidental release", "bucket": 1 },
+            { "label": "handling/storage, exposure controls, toxicology", "bucket": 1 },
+            { "label": "disposal, transport, regulation", "bucket": 1 }
+          ],
+          "why": "Concentration information is how a worker knows a 3% hydrogen-peroxide antiseptic from the 30% laboratory oxidiser with the same name — and the NFPA 704 diamond compresses health, flammability, instability and special hazards to a glance."
+        }
+      },
+      {
+        "anchor": "the design question is always whether the redundancy is",
+        "type": "spot-error",
+        "caption": "one line of the reliability arithmetic is wrong — find it",
+        "name": "rsRedundSpot",
+        "config": {
+          "prompt": "An engineer sums up system reliability. One line is wrong — click it:",
+          "lines": [
+            "Ten parts in series, each 99.9% reliable",
+            "Series multiplies unreliability: 0.999¹⁰ ≈ 99.0% for the whole",
+            "Two independent 80% units in parallel: 1 − 0.2 × 0.2 = 96%",
+            "So a backup doubles the safety — whatever the numbers say",
+            "Common-cause failure — one shared power feed, one firmware bug, one flooded bay — defeats duplication"
+          ],
+          "errorLine": 3,
+          "correction": "Only independent backups buy the arithmetic — the improvement is multiplicative, not a doubling, and shared modes can collapse the whole stack to single-digit gains.",
+          "why": "Diversity — different suppliers, different physical principles, different failure modes — is priced above copies; the 737 MAX's single-sensor MCAS dependence is the modern case study in hidden common mode."
+        }
+      },
+      {
+        "anchor": "Only if the backup fails independently",
+        "type": "judge",
+        "caption": "true or false — what redundancy really buys",
+        "name": "rsBackupJudge",
+        "config": {
+          "statements": [
+            { "s": "A shared power feed, shared firmware or shared maintenance procedure can collapse a redundant stack to single-digit gains.", "truth": true, "why": "That is common-cause failure — the reason redundancy engineering is mostly independence analysis." },
+            { "s": "Diversity (different suppliers, different physical principles) is priced above copies.", "truth": true, "why": "Different failure modes are what independence actually requires." },
+            { "s": "Adding a backup always doubles the safety.", "truth": false, "why": "Independence is the whole bargain — without it the gain can vanish." },
+            { "s": "The 737 MAX's dependence on a single sensor for MCAS is a case study in hidden common mode.", "truth": true, "why": "One sensor, one assumption about pilot response — both common causes hiding inside \"redundant\" intent." },
+            { "s": "Fault-tree analysis works bottom-up, from basic events to the top event.", "truth": false, "why": "It works top-down — from the top event down to basic events through AND/OR gates; FMEA is the list-first method." }
+          ]
+        }
+      }
+    ]
+  }
+]

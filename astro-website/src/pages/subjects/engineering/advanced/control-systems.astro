@@ -19,6 +19,183 @@ const controlQuizCfg = {
     { q: 'In ladder logic, a motor "seal-in" contact exists so that…', choices: ['the motor spins faster', 'the motor keeps running after the momentary start button is released', 'the fuse never blows', 'the sensor stays calibrated'], answer: 1, why: 'A relay contact wired in parallel with the start button latches the circuit once started; the stop button breaks it. Logic implemented in contacts — the PLC\'s ancestor still runs most factories.' },
   ],
 };
+
+const csLoopOrder = {
+  "prompt": "The anatomy of one loop, in the order a correction flows:",
+  "items": [
+    "Sensors — measure the physical quantity",
+    "Signal conditioning and conversion — amplify, filter, digitise",
+    "Logic — sequences and protects",
+    "The feedback law — turns error into action"
+  ],
+  "why": "The art is that the loop is only as good as its weakest stage — a sluggish sensor or a wasted span starves everything downstream."
+};
+
+const csSensorMatch = {
+  "prompt": "Five transducers, five working principles — pair them:",
+  "pairs": [
+    {
+      "left": "thermocouple",
+      "right": "two dissimilar metals — a Seebeck voltage, microvolts per degree"
+    },
+    {
+      "left": "RTD",
+      "right": "platinum resistance, near-linear and precise"
+    },
+    {
+      "left": "thermistor",
+      "right": "big sensitivity, very nonlinear"
+    },
+    {
+      "left": "pH electrode",
+      "right": "a glass membrane, about 59 mV per pH unit"
+    },
+    {
+      "left": "MEMS accelerometer",
+      "right": "proof mass on springs, capacitive readout"
+    }
+  ],
+  "why": "What decides loop performance is the specification as an instrument — accuracy versus precision, range and span, resolution, hysteresis, and above all response time."
+};
+
+const csChainCloze = {
+  "text": "Amplification scales the %%0%% signal with a set gain while rejecting common-mode noise — the difference between a 5 mV signal plus 2 V of mains pickup and disaster. %%1%% — time-stamped storage — turns the loop's life into process history: trends reviewed after an excursion often show the disturbance you failed to %%2%%.",
+  "answers": [
+    [
+      "differential"
+    ],
+    [
+      "Logging",
+      "logging"
+    ],
+    [
+      "model"
+    ]
+  ],
+  "hint": "One word per job: how the amplifier reads the pair of wires, what keeps the history, and what the excursion reveals about your plant."
+};
+
+const csLadderBuckets = {
+  "prompt": "Boolean logic lives in contact wiring — file each rung element:",
+  "buckets": [
+    "contacts in series",
+    "contacts in parallel",
+    "normally-closed"
+  ],
+  "items": [
+    {
+      "label": "AND logic",
+      "bucket": 0
+    },
+    {
+      "label": "OR logic",
+      "bucket": 1
+    },
+    {
+      "label": "NOT logic",
+      "bucket": 2
+    },
+    {
+      "label": "the relay contact wired alongside the momentary start button",
+      "bucket": 1
+    },
+    {
+      "label": "the stop button that breaks the rung",
+      "bucket": 2
+    },
+    {
+      "label": "a safety chain where any failure releases",
+      "bucket": 2
+    }
+  ],
+  "why": "Power rails left and right, contacts and coils between them, evaluated top to bottom every few milliseconds — and the hard-won rule: emergency stops are wired, not programmed."
+};
+
+const csFailSafeJudge = {
+  "statements": [
+    {
+      "s": "Fail-safe means the system is safe from failure.",
+      "truth": false,
+      "why": "It means the system fails into a safe state — the distinction is audit-ready."
+    },
+    {
+      "s": "A guard-open wire that releases the brake is fail-safe design.",
+      "truth": true,
+      "why": "A broken wire lands the machine in the safe state — the wire breaking does the stopping."
+    },
+    {
+      "s": "A spring that shuts the valve when air pressure is lost is software logic.",
+      "truth": false,
+      "why": "It is physical — springs, gravity, normally-closed contacts are the honest answers, not software."
+    },
+    {
+      "s": "Every fail-safe design must answer what happens when power, signal and operator all disappear at once.",
+      "truth": true,
+      "why": "That is the audit question — and the honest answers are physical."
+    },
+    {
+      "s": "Emergency stops are acceptable as PLC code if the program is reliable.",
+      "truth": false,
+      "why": "The safety function must not depend on the software working — e-stops are wired, not programmed."
+    }
+  ]
+};
+
+const csSettlePlace = {
+  "prompt": "The oven targets 200 °C but its heater must run at 40% forever. With Kp = 2, where does a P-only loop settle?",
+  "labels": [
+    "180 °C",
+    "185 °C",
+    "190 °C",
+    "195 °C",
+    "200 °C",
+    "205 °C"
+  ],
+  "scale": {
+    "min": 180,
+    "max": 205
+  },
+  "answer": 190,
+  "tolerance": 1,
+  "why": "20/2 = 10 °C below target — the arithmetic behind the oven's standing shortfall."
+};
+
+const csWindupEstimate = {
+  "prompt": "The door stands open a minute at 50 °C of error: the integral banks 3,000 degree-seconds. With Ki = 0.2, what fraction of a heater's capacity is the integral term demanding?",
+  "unit": "% of heater capacity",
+  "answer": 600,
+  "factor": 1.5,
+  "why": "3,000 × 0.2 = 600% — of a heater that can only deliver 100%. It saturates flat-out.",
+  "context": "The humblest loop shows the same trade in miniature: the on-off thermostat buys a quiet relay with a ±0.5 °C hysteresis band."
+};
+
+const csGainTrace = {
+  "prompt": "Two loops answer the same setpoint step (target = 5). Which one is high gain through lag?",
+  "curves": [
+    {
+      "expr": "5 - 5*exp(-1.2*x)",
+      "color": "#1d4ed8",
+      "label": "smooth approach"
+    },
+    {
+      "expr": "5 - 5*exp(-0.6*x)*cos(2.5*x)",
+      "color": "#b42318",
+      "label": "correcting past the target"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 8
+  },
+  "y": {
+    "min": 0,
+    "max": 10
+  },
+  "xlabel": "time",
+  "ylabel": "output",
+  "why": "Gain speeds response and shrinks offset — but gain through lag turns correction into overshoot, overshoot into oscillation, oscillation into runaway. Gain and phase margins exist to compute the limit before commissioning."
+};
 ---
 <TopicPage slug="subjects/engineering/advanced/control-systems">
   <h2>Where you are, and what you will learn</h2>
@@ -53,6 +230,7 @@ const controlQuizCfg = {
     <strong>feedback law</strong> — PID and beyond — that turns error into action. Each part
     has its own failure modes; the art is that the loop is only as good as its weakest stage.
   </p>
+  <Widget no="3" caption="walk the loop outward — four stages in order" widget="order" config={csLoopOrder} />
 
   <Widget no="1" caption="the loop, the three gains, stability, modern extensions" widget="equationStep" config={controlCfg} />
   <p>
@@ -82,6 +260,7 @@ const controlQuizCfg = {
     what feedback turns into oscillation). The loop can never outperform its sensor: garbage
     in, oscillation out.
   </p>
+  <Widget no="4" caption="pair each transducer with its principle" widget="match" config={csSensorMatch} />
   <p>
     <em>Common misconception:</em> the loop's accuracy is set by the sensor's accuracy,
     so buying a better sensor fixes a badly controlled process. Accuracy is the
@@ -113,6 +292,7 @@ const controlQuizCfg = {
     process history: trends reviewed after an excursion are often worth more than the
     control itself, because they show the disturbance you failed to model.
   </p>
+  <Widget no="5" caption="fill the signal chain's jobs" widget="cloze" config={csChainCloze} />
 
   <p><strong>So far:</strong> conditioned signals reach the controller, and the chain's rule is to fix each problem at the stage where it is cheapest — amplify the difference, filter before sampling, use the full span of the converter. Not every control decision is continuous, though; much of automation is on or off.</p>
 
@@ -134,6 +314,7 @@ const controlQuizCfg = {
     logic: the safety function must not depend on the software working — emergency stops are
     wired, not programmed.
   </p>
+  <Widget no="6" caption="contacts in series, parallel, or normally-closed?" widget="sort-buckets" config={csLadderBuckets} />
   <p>
     <em>Common misconception:</em> "fail-safe" means the system is safe from failure.
     It means the system fails <em>into a safe state</em> — the guard-open wire that
@@ -142,6 +323,7 @@ const controlQuizCfg = {
     when the power, the signal and the operator all disappear at once?", and the honest
     answers are physical — springs, gravity, normally-closed contacts — not software.
   </p>
+  <Widget no="7" caption="true or false — failing safely" widget="judge" config={csFailSafeJudge} />
 
   <p><strong>So far:</strong> discrete logic — ladder rungs, interlocks, seal-in contacts, fail-safe wiring — handles the sequencing and the protection. What remains is the continuous heart of the loop: turning error into action, thousands of times a second.</p>
 
@@ -165,6 +347,7 @@ const controlQuizCfg = {
     Tu), then prescribes (0.6·Ku, Ki = 1.2·Ku/Tu, Kd = 0.075·Ku·Tu) for quarter-amplitude
     decay — crude by modern standards, and still the first move on most shop floors.
   </p>
+  <Widget no="8" caption="pin where a P-only oven actually settles" widget="place" config={csSettlePlace} />
   <p>
     Integral windup deserves its own numbers, because it is the classic commissioning
     surprise. Take the 200 °C oven again and open the door: an error of 50 °C persists
@@ -177,6 +360,7 @@ const controlQuizCfg = {
     or back-calculate it from the saturated output), and any PID whose integrator has
     never been clamped is a PID waiting to overshoot.
   </p>
+  <Widget no="9" caption="call the magnitude — what the stored windup demands" widget="estimate" config={csWindupEstimate} />
   <p>
     The humblest loop shows the same arithmetic in miniature: the on-off thermostat. A
     furnace switched on at exactly 20.0 °C and off at exactly 20.0 °C would chatter
@@ -195,6 +379,7 @@ const controlQuizCfg = {
     compute, <em>before</em> commissioning, exactly how much gain a given amount of lag can
     tolerate.
   </p>
+  <Widget no="10" caption="which response is the high-gain-through-lag loop?" widget="trace" config={csGainTrace} />
 
   <h2>Control in the wild</h2>
   <ul>
