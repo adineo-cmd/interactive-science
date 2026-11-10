@@ -1,0 +1,237 @@
+[
+  {
+    "slug": "subjects/data-science/advanced/machine-learning-basics",
+    "activities": [
+      {
+        "anchor": "Supervised learning trains on labelled examples",
+        "type": "match",
+        "caption": "pair each learning family with its fuel",
+        "name": "mlFamiliesMatch",
+        "config": {
+          "prompt": "Pair each learning family with what it learns from:",
+          "pairs": [
+            {
+              "left": "supervised learning",
+              "right": "labelled examples — classification for categories, regression for numbers"
+            },
+            {
+              "left": "unsupervised learning",
+              "right": "unlabelled data, hunting for structure"
+            },
+            {
+              "left": "reinforcement learning",
+              "right": "reward signals over time"
+            }
+          ],
+          "why": "The inversion that defines the field: behaviour learned from examples rather than specified by a programmer."
+        }
+      },
+      {
+        "anchor": "A classifier eats a feature vector x",
+        "type": "cloze",
+        "caption": "fill the blanks — the classifier's anatomy",
+        "name": "mlClassifierCloze",
+        "config": {
+          "text": "A classifier eats a %%0%% vector and outputs a predicted label, usually via %%1%% per class that are turned into probabilities. Logistic regression's decision boundary is a %%2%% surface through feature space; neural networks stack learned transformations until the boundary can take almost any shape.",
+          "answers": [
+            [
+              "feature"
+            ],
+            [
+              "scores"
+            ],
+            [
+              "flat",
+              "linear"
+            ]
+          ],
+          "hint": "What goes in, what comes out before the threshold, and the shape of the line logistic regression draws."
+        }
+      },
+      {
+        "anchor": "it will happily use a feature that is a symptom rather",
+        "type": "branch",
+        "caption": "the leadership question the model cannot answer",
+        "name": "mlCausalBranch",
+        "config": {
+          "root": "Your churn model leans hard on 'past support tickets'. Leadership asks: if we reduce support tickets, will churn fall?",
+          "nodes": {
+            "start": {
+              "text": "What is the honest answer?",
+              "choices": [
+                {
+                  "label": "Probably — the model shows tickets drive churn",
+                  "next": "symptom",
+                  "feedback": "The model is a machine for conditional correlation: tickets may be a symptom of dissatisfaction, not its cause — intervening on a symptom can accomplish nothing."
+                },
+                {
+                  "label": "Not from this model — causal claims need experimental design",
+                  "next": "design",
+                  "feedback": "Randomise an intervention on a subset of customers and measure — the A/B lesson's randomisation is what turns prediction into causal knowledge."
+                },
+                {
+                  "label": "Retrain with more features until the cause appears",
+                  "next": "more",
+                  "feedback": "More features add correlation, not causation — the confounders just get better company."
+                }
+              ]
+            },
+            "symptom": {
+              "text": "Past support tickets predict churn; they do not cause it. The model's accuracy says nothing about what intervention would work."
+            },
+            "design": {
+              "text": "However accurate the predictions, prediction alone never supplies cause — design does."
+            },
+            "more": {
+              "text": "The model now predicts even better and still cannot say what happens if you act."
+            }
+          },
+          "why": "A trained model is a machine for conditional correlation — causal claims need experimental design, however accurate the predictions."
+        }
+      },
+      {
+        "anchor": "The <strong>train/test split</strong> is the field's founding ritual",
+        "type": "order",
+        "caption": "rebuild the working loop in order",
+        "name": "mlLoopOrder",
+        "config": {
+          "prompt": "Rebuild the working loop — what comes first:",
+          "items": [
+            "Split — hold out 20% the model never sees",
+            "Baseline — write down the dumbest reasonable competitor's score",
+            "Fit — the simplest thing that could work",
+            "Diagnose — plot training and validation errors side by side",
+            "Regularise — penalise complexity until the gap closes"
+          ],
+          "why": "An order of operations, not a buffet: the split comes first because every later number is worthless without it, and the baseline second because a model only means something relative to the cheapest alternative."
+        }
+      },
+      {
+        "anchor": "the central dial of applied",
+        "type": "trace",
+        "caption": "which curve is the honest grade?",
+        "name": "mlCurveTrace",
+        "config": {
+          "prompt": "Two error curves as model capacity grows — which one is validation error?",
+          "curves": [
+            {
+              "expr": "4/x",
+              "label": "curve A",
+              "color": "#b42318"
+            },
+            {
+              "expr": "4/x + 0.08*x^2",
+              "label": "curve B",
+              "color": "#155e75"
+            }
+          ],
+          "correct": 1,
+          "x": {
+            "min": 1,
+            "max": 10
+          },
+          "y": {
+            "min": 0,
+            "max": 5
+          },
+          "xlabel": "model capacity",
+          "ylabel": "error",
+          "why": "Curve B is validation error: it falls as capacity captures real structure, then rises as capacity starts fitting noise — the U of the bias–variance dial, and the gap between the curves is the overfitting."
+        }
+      },
+      {
+        "anchor": "The remedies, in the order practitioners reach for them",
+        "type": "sort-buckets",
+        "caption": "file each remedy under the lever it pulls",
+        "name": "mlRemedySort",
+        "config": {
+          "prompt": "File each remedy under the lever it pulls:",
+          "buckets": [
+            "more data",
+            "less capacity",
+            "average models"
+          ],
+          "items": [
+            {
+              "label": "noise averages out while signal persists",
+              "bucket": 0
+            },
+            {
+              "label": "L1 drives uninformative weights to exactly zero",
+              "bucket": 1
+            },
+            {
+              "label": "early stopping halts at the validation minimum",
+              "bucket": 1
+            },
+            {
+              "label": "ensembling averages many imperfect models",
+              "bucket": 2
+            }
+          ],
+          "why": "The same lever with different handles — and more data is the only one that never hurts, because it changes what the model sees rather than how flexible it is."
+        }
+      },
+      {
+        "anchor": "Training accuracy is nearly free",
+        "type": "compare",
+        "caption": "two models on Tuesday — drag the divider",
+        "name": "mlGapCompare",
+        "config": {
+          "prompt": "Two models, same dataset — drag the divider:",
+          "before": {
+            "label": "99% train / 71% test",
+            "text": "a memoriser — brilliant on questions it has seen, worse than the baseline when real customers arrive"
+          },
+          "after": {
+            "label": "85% train / 84% test",
+            "text": "a learner — a modest gap, patterns that transfer"
+          },
+          "why": "Training accuracy is nearly free; the informative number is test performance relative to training performance — the gap is the overfitting."
+        }
+      },
+      {
+        "anchor": "Suppose a missed fraud costs 500 dollars",
+        "type": "estimate",
+        "caption": "call the current threshold's bill",
+        "name": "mlCostEst",
+        "config": {
+          "prompt": "A missed fraud costs $500, each review costs $5. The model misses 20 frauds and triggers 200 reviews. What is the total bill?",
+          "unit": "$",
+          "answer": 11000,
+          "factor": 1.4,
+          "why": "20 × 500 + 200 × 5 = $11,000 — and lowering the threshold to catch 90 (flagging 500) cuts the bill to $7,500 for these costs. There is no best threshold in the abstract, only the best for a stated price list.",
+          "context": "at $50 per review the verdict flips — the metric conversation is a business conversation"
+        }
+      },
+      {
+        "anchor": "the default winners on tabular business data",
+        "type": "match",
+        "caption": "pair each model family with its honest territory",
+        "name": "mlDomainMatch",
+        "config": {
+          "prompt": "Pair each model family with the territory where it wins:",
+          "pairs": [
+            {
+              "left": "linear/logistic regression",
+              "right": "transparent, fast, surprisingly hard to beat on tabular data — always try first"
+            },
+            {
+              "left": "tree ensembles (random forest, XGBoost)",
+              "right": "the default winners on tabular business data, with little tuning"
+            },
+            {
+              "left": "neural networks",
+              "right": "dominant on images, audio and text — data-hungry and opaque"
+            },
+            {
+              "left": "k-means clustering",
+              "right": "the unsupervised default for segmentation — clusters are judgement calls, not outputs"
+            }
+          ],
+          "why": "The differences are in flexibility, assumptions and cost — not in goal: every family estimates the same object, the probability of the class given the features."
+        }
+      }
+    ]
+  }
+]

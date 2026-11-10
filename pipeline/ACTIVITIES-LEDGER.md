@@ -205,6 +205,10 @@
 | data-science/intermediate/cleaning-messy-data | estimate, match, order, predict, sort-buckets, branch, spot-error, judge | datascience-4 |
 | data-science/intermediate/exploratory-data-analysis | order, match, predict, spot-error, branch, cloze, sort-buckets, estimate, compare | datascience-5 |
 | data-science/intermediate/charts-that-tell-the-truth | sort-buckets, match, cloze, estimate, predict, spot-error, compare, order, branch | datascience-6 |
+| data-science/advanced/statistics-for-data-science | match, estimate, place, predict, cloze, estimate, compare, branch, spot-error | datascience-7 |
+| data-science/advanced/machine-learning-basics | match, cloze, branch, order, trace, sort-buckets, compare, estimate, match | datascience-8 |
+| data-science/expert/data-engineering-and-pipelines | estimate, match, sort-buckets, cloze, order, spot-error, judge, compare, estimate, branch | datascience-9 |
+| data-science/expert/ethics-privacy-and-bias | match, judge, estimate, cloze, branch, match, compare, estimate, order, spot-error | datascience-10 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

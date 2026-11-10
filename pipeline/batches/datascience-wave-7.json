@@ -1,0 +1,154 @@
+[
+  {
+    "slug": "subjects/data-science/advanced/statistics-for-data-science",
+    "activities": [
+      {
+        "anchor": "Data science runs on statistics whether or not it admits it",
+        "type": "match",
+        "caption": "pair each daily artefact with its statistical engine",
+        "name": "statEngineMatch",
+        "config": {
+          "prompt": "Pair each artefact of data-science work with the statistics underneath it:",
+          "pairs": [
+            { "left": "a machine-learning model", "right": "regression and classification at scale" },
+            { "left": "an A/B test", "right": "hypothesis testing with a dashboard attached" },
+            { "left": "anomaly detection", "right": "distribution thinking" },
+            { "left": "a '3.2% conversion' on a slide", "right": "a sample statistic wearing confidence it has not earned" }
+          ],
+          "why": "The machinery is already owned — sampling distributions, the central limit theorem, Bayes' rule — organised around the four questions a working data scientist asks."
+        }
+      },
+      {
+        "anchor": "Take session counts 4, 6 and 8",
+        "type": "estimate",
+        "caption": "call the spread of the three sessions",
+        "name": "statSDest",
+        "config": {
+          "prompt": "Session counts 4, 6 and 8 have a mean of 6. Roughly what is their standard deviation?",
+          "unit": "sessions",
+          "answer": 1.63,
+          "factor": 1.4,
+          "why": "√(8/3) ≈ 1.63 — the root-mean-square of the deviations, which is the hinge connecting the mean to least-squares regression and the whole linear-algebra machinery of machine learning.",
+          "context": "the deviations are −2, 0 and +2; squared, they sum to 8"
+        }
+      },
+      {
+        "anchor": "For bell-shaped data the empirical rule is far tighter",
+        "type": "place",
+        "caption": "drop the marker — the two-SD share",
+        "name": "statEmpPlace",
+        "config": {
+          "prompt": "For bell-shaped data, roughly what share of values lies within 2 standard deviations of the mean?",
+          "labels": ["50%", "68%", "80%", "95%", "99.7%"],
+          "scale": { "min": 50, "max": 99.7 },
+          "answer": 95,
+          "tolerance": 3,
+          "why": "About 95% within 2 SDs, 99.7% within 3 — while Chebyshev guarantees only 1 − 1/k² for any shape: at least 89% within 3 SDs, whatever the distribution."
+        }
+      },
+      {
+        "anchor": "to halve the error you must",
+        "type": "predict",
+        "caption": "bet before you read on — the price of precision",
+        "name": "statSqrtNPredict",
+        "config": {
+          "q": "Your confidence interval is twice as wide as the business can act on. What must you do to the sample size?",
+          "choices": [
+            "Quadruple it — the standard error shrinks with the square root of n",
+            "Double it — error scales one-to-one with sample size",
+            "Nothing — intervals shrink on their own as the metric matures"
+          ],
+          "answer": 0,
+          "why": "SE shrinks with √n, so halving the error takes four times the sample — the single most expensive square root in industry."
+        }
+      },
+      {
+        "anchor": "Hypothesis testing is a court procedure for data",
+        "type": "cloze",
+        "caption": "fill the blanks — the court's three roles",
+        "name": "statCourtCloze",
+        "config": {
+          "text": "Hypothesis testing as a court procedure: the %%0%% hypothesis is the boring defendant — nothing changed, the difference is luck; the %%1%% statistic measures how far the data sit from boring; and the %%2%%-value asks how often chance alone would produce data at least this extreme.",
+          "answers": [
+            ["null"],
+            ["test"],
+            ["p", "P"]
+          ],
+          "hint": "The defendant, the measuring stick, and the surprise level."
+        }
+      },
+      {
+        "anchor": "testing twenty metrics and reporting the winner is p-hacking",
+        "type": "estimate",
+        "caption": "call the p-hacker's false-winner odds",
+        "name": "statHackEst",
+        "config": {
+          "prompt": "Testing 20 independent metrics at threshold 0.05 under a true null — what is the chance at least one looks 'significant'?",
+          "unit": "%",
+          "answer": 64,
+          "factor": 1.3,
+          "why": "1 − 0.95²⁰ ≈ 64% — decide the threshold and the analysis before looking, or the winner is mostly luck wearing a p-value.",
+          "context": "one pre-declared test keeps the false-positive rate at its promised 5%"
+        }
+      },
+      {
+        "anchor": "the modern, more general route is the",
+        "type": "compare",
+        "caption": "the classical route versus the permutation test — drag the divider",
+        "name": "statPermCompare",
+        "config": {
+          "prompt": "Two ways to compare two groups — drag the divider:",
+          "before": { "label": "classical", "text": "compare the difference in means against its standard error — formulas and normality assumptions" },
+          "after": { "label": "permutation", "text": "shuffle the group labels at random, recompute the difference, and score your result against what chance alone produces" },
+          "why": "No normality assumption, no formula for the statistic — the permutation test works for means, medians, conversion rates, anything computable."
+        }
+      },
+      {
+        "anchor": "In a 1986 clinical study of kidney-stone treatments",
+        "type": "branch",
+        "caption": "the 78% versus 83% decision",
+        "name": "statKidneyBranch",
+        "config": {
+          "root": "Kidney-stone study, 1986: open surgery (A) succeeded on 78% of patients; the minimally invasive procedure (B) on 83%. Which treatment?",
+          "nodes": {
+            "start": {
+              "text": "Before deciding — what do you check?",
+              "choices": [
+                { "label": "Split by stone size", "next": "flip", "feedback": "Small stones: A 93% vs 87%. Large stones: A 73% vs 69%. A wins both subgroups — B's headline was inflated by its easier patient mix." },
+                { "label": "Trust the aggregate — it has more patients", "next": "confound", "feedback": "The aggregate was confounded: doctors reserved open surgery for the hardest cases, so the pooled comparison compares different patient mixes." },
+                { "label": "Randomise the next cohort of patients", "next": "design", "feedback": "Random assignment breaks the link between treatment and case difficulty — the design-level fix arithmetic cannot supply." }
+              ]
+            },
+            "flip": {
+              "text": "Treatment A wins both subgroups and loses the aggregate — Simpson's paradox in the data.",
+              "choices": [
+                { "label": "So what repairs it?", "next": "design", "feedback": "Only design: randomised assignment, so the groups are comparable before anything is aggregated." }
+              ]
+            },
+            "confound": { "text": "No amount of careful arithmetic on confounded groups repairs the confounding." },
+            "design": { "text": "Aggregation is a modelling choice that can reverse a conclusion — the experimental-design chapter exists because of this table." }
+          },
+          "why": "Simpson's paradox is the statistical argument for randomised design: the aggregate can be the average of several opposite stories."
+        }
+      },
+      {
+        "anchor": "A companion habit: for skewed operational data",
+        "type": "spot-error",
+        "caption": "find the backwards claim — reading the tail",
+        "name": "statTailSpot",
+        "config": {
+          "prompt": "One of these percentile claims is backwards — click it:",
+          "lines": [
+            "p50 latency describes the typical user's experience.",
+            "p95 and p99 describe the experiences a support team will hear about.",
+            "The gap between mean and p99 is a direct read of tail weight.",
+            "Dashboards that show only means reveal the tail best."
+          ],
+          "errorLine": 3,
+          "correction": "Dashboards that show only means systematically hide the tail — and the tail is where the incidents live.",
+          "why": "Report percentiles alongside means for skewed operational data; the mean alone is the tail's accomplice."
+        }
+      }
+    ]
+  }
+]

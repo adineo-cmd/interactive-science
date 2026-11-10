@@ -19,6 +19,162 @@ const statQuizCfg = {
     { q: 'The bootstrap estimates uncertainty by…', choices: ['collecting more samples from the population', 'resampling the observed data with replacement and recomputing the statistic', 'assuming a normal distribution always', 'removing outliers'], answer: 1, why: 'The sample stands in for the population; thousands of resamples trace out the sampling distribution of any statistic — median, percentile, whatever — with no formula required.' },
   ],
 };
+
+const statEngineMatch = {
+  "prompt": "Pair each artefact of data-science work with the statistics underneath it:",
+  "pairs": [
+    {
+      "left": "a machine-learning model",
+      "right": "regression and classification at scale"
+    },
+    {
+      "left": "an A/B test",
+      "right": "hypothesis testing with a dashboard attached"
+    },
+    {
+      "left": "anomaly detection",
+      "right": "distribution thinking"
+    },
+    {
+      "left": "a '3.2% conversion' on a slide",
+      "right": "a sample statistic wearing confidence it has not earned"
+    }
+  ],
+  "why": "The machinery is already owned — sampling distributions, the central limit theorem, Bayes' rule — organised around the four questions a working data scientist asks."
+};
+
+const statSDest = {
+  "prompt": "Session counts 4, 6 and 8 have a mean of 6. Roughly what is their standard deviation?",
+  "unit": "sessions",
+  "answer": 1.63,
+  "factor": 1.4,
+  "why": "√(8/3) ≈ 1.63 — the root-mean-square of the deviations, which is the hinge connecting the mean to least-squares regression and the whole linear-algebra machinery of machine learning.",
+  "context": "the deviations are −2, 0 and +2; squared, they sum to 8"
+};
+
+const statEmpPlace = {
+  "prompt": "For bell-shaped data, roughly what share of values lies within 2 standard deviations of the mean?",
+  "labels": [
+    "50%",
+    "68%",
+    "80%",
+    "95%",
+    "99.7%"
+  ],
+  "scale": {
+    "min": 50,
+    "max": 99.7
+  },
+  "answer": 95,
+  "tolerance": 3,
+  "why": "About 95% within 2 SDs, 99.7% within 3 — while Chebyshev guarantees only 1 − 1/k² for any shape: at least 89% within 3 SDs, whatever the distribution."
+};
+
+const statSqrtNPredict = {
+  "q": "Your confidence interval is twice as wide as the business can act on. What must you do to the sample size?",
+  "choices": [
+    "Quadruple it — the standard error shrinks with the square root of n",
+    "Double it — error scales one-to-one with sample size",
+    "Nothing — intervals shrink on their own as the metric matures"
+  ],
+  "answer": 0,
+  "why": "SE shrinks with √n, so halving the error takes four times the sample — the single most expensive square root in industry."
+};
+
+const statCourtCloze = {
+  "text": "Hypothesis testing as a court procedure: the %%0%% hypothesis is the boring defendant — nothing changed, the difference is luck; the %%1%% statistic measures how far the data sit from boring; and the %%2%%-value asks how often chance alone would produce data at least this extreme.",
+  "answers": [
+    [
+      "null"
+    ],
+    [
+      "test"
+    ],
+    [
+      "p",
+      "P"
+    ]
+  ],
+  "hint": "The defendant, the measuring stick, and the surprise level."
+};
+
+const statHackEst = {
+  "prompt": "Testing 20 independent metrics at threshold 0.05 under a true null — what is the chance at least one looks 'significant'?",
+  "unit": "%",
+  "answer": 64,
+  "factor": 1.3,
+  "why": "1 − 0.95²⁰ ≈ 64% — decide the threshold and the analysis before looking, or the winner is mostly luck wearing a p-value.",
+  "context": "one pre-declared test keeps the false-positive rate at its promised 5%"
+};
+
+const statPermCompare = {
+  "prompt": "Two ways to compare two groups — drag the divider:",
+  "before": {
+    "label": "classical",
+    "text": "compare the difference in means against its standard error — formulas and normality assumptions"
+  },
+  "after": {
+    "label": "permutation",
+    "text": "shuffle the group labels at random, recompute the difference, and score your result against what chance alone produces"
+  },
+  "why": "No normality assumption, no formula for the statistic — the permutation test works for means, medians, conversion rates, anything computable."
+};
+
+const statKidneyBranch = {
+  "root": "Kidney-stone study, 1986: open surgery (A) succeeded on 78% of patients; the minimally invasive procedure (B) on 83%. Which treatment?",
+  "nodes": {
+    "start": {
+      "text": "Before deciding — what do you check?",
+      "choices": [
+        {
+          "label": "Split by stone size",
+          "next": "flip",
+          "feedback": "Small stones: A 93% vs 87%. Large stones: A 73% vs 69%. A wins both subgroups — B's headline was inflated by its easier patient mix."
+        },
+        {
+          "label": "Trust the aggregate — it has more patients",
+          "next": "confound",
+          "feedback": "The aggregate was confounded: doctors reserved open surgery for the hardest cases, so the pooled comparison compares different patient mixes."
+        },
+        {
+          "label": "Randomise the next cohort of patients",
+          "next": "design",
+          "feedback": "Random assignment breaks the link between treatment and case difficulty — the design-level fix arithmetic cannot supply."
+        }
+      ]
+    },
+    "flip": {
+      "text": "Treatment A wins both subgroups and loses the aggregate — Simpson's paradox in the data.",
+      "choices": [
+        {
+          "label": "So what repairs it?",
+          "next": "design",
+          "feedback": "Only design: randomised assignment, so the groups are comparable before anything is aggregated."
+        }
+      ]
+    },
+    "confound": {
+      "text": "No amount of careful arithmetic on confounded groups repairs the confounding."
+    },
+    "design": {
+      "text": "Aggregation is a modelling choice that can reverse a conclusion — the experimental-design chapter exists because of this table."
+    }
+  },
+  "why": "Simpson's paradox is the statistical argument for randomised design: the aggregate can be the average of several opposite stories."
+};
+
+const statTailSpot = {
+  "prompt": "One of these percentile claims is backwards — click it:",
+  "lines": [
+    "p50 latency describes the typical user's experience.",
+    "p95 and p99 describe the experiences a support team will hear about.",
+    "The gap between mean and p99 is a direct read of tail weight.",
+    "Dashboards that show only means reveal the tail best."
+  ],
+  "errorLine": 3,
+  "correction": "Dashboards that show only means systematically hide the tail — and the tail is where the incidents live.",
+  "why": "Report percentiles alongside means for skewed operational data; the mean alone is the tail's accomplice."
+};
 ---
 <TopicPage slug="subjects/data-science/advanced/statistics-for-data-science">
   <h2>Where you are, and what you will learn</h2>
@@ -52,6 +208,7 @@ const statQuizCfg = {
     earns its job), <strong>how uncertain is my estimate</strong>, <strong>is this difference
     real or luck</strong>, and <strong>which of two groups is better</strong>.
   </p>
+  <Widget no="11" caption="pair each daily artefact with its statistical engine" widget="match" config={statEngineMatch} />
 
   <Widget no="1" caption="the four statistical habits of effective data scientists" widget="equationStep" config={statCfg} />
   <p>
@@ -78,6 +235,7 @@ const statQuizCfg = {
     gets reported with medians (one billionaire moves the mean, not the median) and why
     "average" without a qualifier is an incomplete sentence.
   </p>
+  <Widget no="10" caption="call the spread of the three sessions" widget="estimate" config={statSDest} />
   <p>
     Spread is the other half of the story. The standard deviation is comparable across
     datasets in a way the raw range never is, because the range grows with sample size while
@@ -88,6 +246,7 @@ const statQuizCfg = {
     metric suddenly lives 4 SDs from its usual value, either something remarkable happened or
     something broke — both are worth a page of investigation.
   </p>
+  <Widget no="9" caption="drop the marker — the two-SD share" widget="place" config={statEmpPlace} />
   <p>
     <em>Common misconception:</em> the mean is "the normal value" of a dataset. It is only a
     centre of mass, and it can sit where no data point sits. For the waiting times 1, 2, 3,
@@ -109,6 +268,7 @@ const statQuizCfg = {
     the cruel arithmetic: to halve the error you must <em>quadruple</em> the sample, because
     SE shrinks with √n. That square root is the single most expensive square root in industry.
   </p>
+  <Widget no="8" caption="bet before you read on — the price of precision" widget="predict" config={statSqrtNPredict} />
   <p>
     Many statistics have no tidy formula — the median revenue per user, the 90th percentile of
     latency, "the share of sessions that last over 10 minutes". The <strong>bootstrap</strong>
@@ -146,6 +306,7 @@ const statQuizCfg = {
     data this extreme <em>given the null</em>" — stops being a paragraph and becomes a thing
     you have watched happen.
   </p>
+  <Widget no="7" caption="fill the blanks — the court's three roles" widget="cloze" config={statCourtCloze} />
   <p>
     Three usage rules keep testing honest. First, decide the threshold (usually 0.05) and the
     analysis <em>before</em> looking — testing twenty metrics and reporting the winner is
@@ -155,6 +316,7 @@ const statQuizCfg = {
     significance is not evidence of absence — a wide interval containing zero may merely mean
     the experiment was too small to see the effect you care about.
   </p>
+  <Widget no="6" caption="call the p-hacker's false-winner odds" widget="estimate" config={statHackEst} />
 
   <p><strong>So far:</strong> the p-value measures how surprising the data would be if nothing had changed — and it keeps that meaning only when the threshold and the analysis are fixed before looking. Applied to two groups at once, the same logic gets sharper and grows a famous trap.</p>
 
@@ -172,6 +334,7 @@ const statQuizCfg = {
     professional answer: "variant B wins by 1.1 points (95% CI 0.3 to 1.9, permutation
     p = 0.008)".
   </p>
+  <Widget no="5" caption="the classical route versus the permutation test — drag the divider" widget="compare" config={statPermCompare} />
   <p>
     The deepest warning about two-sample comparisons has a name and a canonical
     dataset. In a 1986 clinical study of kidney-stone treatments, open surgery (A)
@@ -185,6 +348,7 @@ const statQuizCfg = {
     aggregation is a modelling choice that can reverse a conclusion, and no amount of
     careful arithmetic on confounded groups repairs the confounding.
   </p>
+  <Widget no="4" caption="the 78% versus 83% decision" widget="branch" config={statKidneyBranch} />
   <p>
     A companion habit: for skewed operational data, report <strong>percentiles
     alongside means</strong>. The p50 latency describes the typical user's experience;
@@ -192,6 +356,7 @@ const statQuizCfg = {
     between mean and p99 is a direct read of tail weight. Dashboards that show only
     means systematically hide the tail, and the tail is where the incidents live.
   </p>
+  <Widget no="3" caption="find the backwards claim — reading the tail" widget="spot-error" config={statTailSpot} />
   <p>
     <em>Common misconception:</em> a significant two-sample difference means the treatment
     <em>caused</em> the improvement. Statistics never assigns cause — design does. Only

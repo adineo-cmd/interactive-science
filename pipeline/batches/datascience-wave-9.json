@@ -1,0 +1,220 @@
+[
+  {
+    "slug": "subjects/data-science/expert/data-engineering-and-pipelines",
+    "activities": [
+      {
+        "anchor": "Industry surveys (Anaconda's State of Data Science",
+        "type": "estimate",
+        "caption": "call the preparation tax",
+        "name": "dePrepEst",
+        "config": {
+          "prompt": "Industry surveys put roughly what share of a data scientist's working time on data preparation — loading and cleaning — before any modelling?",
+          "unit": "%",
+          "answer": 42,
+          "factor": 1.15,
+          "why": "Around 40–45% — industrialising that preparation once, in tested pipelines, buys back nearly half an organisation's analytical capacity.",
+          "context": "one that leaves it to individuals repeats the same cleaning work in every notebook"
+        }
+      },
+      {
+        "anchor": "tables whose semantics (what a row means)",
+        "type": "match",
+        "caption": "pair each deliverable property with its question",
+        "name": "deDeliverMatch",
+        "config": {
+          "prompt": "The engineering layer's deliverable is tables with explicit properties — pair each with the question it answers:",
+          "pairs": [
+            {
+              "left": "semantics",
+              "right": "what a row means"
+            },
+            {
+              "left": "freshness",
+              "right": "how far behind reality they run"
+            },
+            {
+              "left": "correctness",
+              "right": "what has been tested"
+            }
+          ],
+          "why": "So a data scientist asking 'is this number right?' gets an answer from a document and a test suite instead of an afternoon of archaeology."
+        }
+      },
+      {
+        "anchor": "The classic pipeline was",
+        "type": "sort-buckets",
+        "caption": "ETL or ELT — file each claim",
+        "name": "deEltSort",
+        "config": {
+          "prompt": "File each claim under the load order it describes:",
+          "buckets": [
+            "ETL",
+            "ELT"
+          ],
+          "items": [
+            {
+              "label": "transform before storing, because warehouses were expensive",
+              "bucket": 0
+            },
+            {
+              "label": "load raw first, in its original messy form",
+              "bucket": 1
+            },
+            {
+              "label": "transform inside the warehouse with SQL",
+              "bucket": 1
+            },
+            {
+              "label": "the transform destroyed the original — March bugs unrecoverable",
+              "bucket": 0
+            }
+          ],
+          "why": "Cloud warehouses inverted the economics: keeping raw data permanently makes every transform re-runnable from source, so history can be rebuilt correctly."
+        }
+      },
+      {
+        "anchor": "layer exactly as landed",
+        "type": "cloze",
+        "caption": "fill the blanks — the layered architecture",
+        "name": "deLayerCloze",
+        "config": {
+          "text": "The layered architecture: a %%0%% layer exactly as landed, a %%1%% layer that deduplicates and types each source, and %%2%% layer models shaped for specific business questions. Each layer is rebuilt from the one below, and only the bottom layer is allowed to surprise you.",
+          "answers": [
+            [
+              "raw/bronze",
+              "bronze",
+              "raw"
+            ],
+            [
+              "staging/silver",
+              "silver",
+              "staging"
+            ],
+            [
+              "marts/gold",
+              "gold",
+              "marts"
+            ]
+          ],
+          "hint": "Three metals' worth of medallions, bottom to top."
+        }
+      },
+      {
+        "anchor": "A production pipeline is dozens of tasks with dependencies",
+        "type": "order",
+        "caption": "rebuild the nightly dependency chain",
+        "name": "deChainOrder",
+        "config": {
+          "prompt": "Rebuild the nightly chain — what comes first:",
+          "items": [
+            "load payments",
+            "rebuild the daily revenue model",
+            "refresh the dashboard",
+            "run the freshness tests",
+            "notify failures"
+          ],
+          "why": "Pipelines are graphs of dependencies, not scripts — the scheduler walks the DAG, retrying failed nodes with backoff and backfilling missed runs after an outage."
+        }
+      },
+      {
+        "anchor": "data pipelines are just scheduled SQL",
+        "type": "spot-error",
+        "caption": "find the backwards claim — the hard 80%",
+        "name": "deSqlSpot",
+        "config": {
+          "prompt": "One of these pipeline claims is backwards — click it:",
+          "lines": [
+            "The SQL is the easy 20% of the work.",
+            "Idempotent tasks are safe to re-run twice — because they will run twice.",
+            "Late-arriving data and timezone drift are exactly the failure modes an orchestrator manages.",
+            "Teams that budget only for the SQL ship the other 80% as features."
+          ],
+          "errorLine": 3,
+          "correction": "Teams that budget only for the SQL ship the other 80% as incidents.",
+          "why": "The hard 80% is everything around the SQL: idempotency, late data, schema evolution, credential rotation, and who is accountable when a number is wrong."
+        }
+      },
+      {
+        "anchor": "from \"FAILED\" to \"failed_declined\" on a Tuesday",
+        "type": "judge",
+        "caption": "true or false — the celebrated drop",
+        "name": "deStatusJudge",
+        "config": {
+          "statement": "A payment provider's dashboards suddenly report a 40% drop in failures. Without data tests, the right response is to celebrate the improvement.",
+          "answer": false,
+          "why": "The provider changed a status code from \"FAILED\" to \"failed_declined\" — a distribution test on the status column catches it within the hour, and the fix is a mapping table rather than a retraction."
+        }
+      },
+      {
+        "anchor": "Every pipeline has a latency budget",
+        "type": "compare",
+        "caption": "batch versus streaming — drag the divider",
+        "name": "deClockCompare",
+        "config": {
+          "prompt": "Two clocks for the same events — drag the divider:",
+          "before": {
+            "label": "batch",
+            "text": "hourly or daily jobs — simple, cheap, replayable; each run sees a fixed slice of history"
+          },
+          "after": {
+            "label": "streaming",
+            "text": "events processed within seconds — with watermarks for out-of-order arrivals and roughly 5–10× the engineering complexity"
+          },
+          "why": "The expert default is batch until a measured business decision requires faster — streaming's value decays within minutes only for fraud scoring, live dashboards and alerting."
+        }
+      },
+      {
+        "anchor": "on BigQuery's on-demand pricing",
+        "type": "estimate",
+        "caption": "call the unpartitioned bill",
+        "name": "deScanEst",
+        "config": {
+          "prompt": "100 analysts each run 20 unpartitioned full-table scans a day over a 1-terabyte fact table, at roughly $6 per terabyte scanned. Roughly what does the habit burn per day?",
+          "unit": "$",
+          "answer": 12000,
+          "factor": 1.4,
+          "why": "100 × 20 × 1 TB × $6 ≈ $12,000 a day — for answers a partition prune would deliver for about $33. Partitioning and pruning decide the warehouse bill.",
+          "context": "a query filtered to one day scans 1/365th of the table and costs 1/365th of the money"
+        }
+      },
+      {
+        "anchor": "Schema evolution is the quiet test",
+        "type": "branch",
+        "caption": "the 'temporary' rename",
+        "name": "deSchemaBranch",
+        "config": {
+          "root": "An upstream team renames a column 'temporarily'. What does a mature platform do?",
+          "nodes": {
+            "start": {
+              "text": "Which defence fires?",
+              "choices": [
+                {
+                  "label": "Registry-checked contracts reject the breaking producer at deploy time",
+                  "next": "contract",
+                  "feedback": "Producers declare the schema they write; compatibility rules reject breaking changes at deploy, not at 3 a.m. in a dashboard."
+                },
+                {
+                  "label": "Downstream readers adapt whenever they notice",
+                  "next": "trust",
+                  "feedback": "That is the failure: downstream silently mis-reports for weeks — what breaks is not the pipeline but everyone's trust in the numbers."
+                },
+                {
+                  "label": "Nothing — a column name is cosmetic",
+                  "next": "trust",
+                  "feedback": "Tables outlive the applications that write them; the rename breaks every downstream reader that survives on yesterday's shape."
+                }
+              ]
+            },
+            "contract": {
+              "text": "Additive-by-default migrations and versioned tables let a consumer pin itself to last year's shape."
+            },
+            "trust": {
+              "text": "'Move fast and break things' fails quietly here — and the thing broken is trust."
+            }
+          },
+          "why": "Explicit contracts, additive migrations and versioned tables are the mature patterns; the data contract imports software engineering's API discipline into data."
+        }
+      }
+    ]
+  }
+]

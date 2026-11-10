@@ -1,0 +1,161 @@
+[
+  {
+    "slug": "subjects/data-science/expert/ethics-privacy-and-bias",
+    "activities": [
+      {
+        "anchor": "Bias, privacy erosion, opacity and consent gaps",
+        "type": "match",
+        "caption": "pair each failure with its working fix",
+        "name": "ethFixMatch",
+        "config": {
+          "prompt": "Each panel pairs a failure with a fix that carries a visible cost — pair them:",
+          "pairs": [
+            { "left": "historical discrimination in the labels", "right": "measurement per group, not averaged" },
+            { "left": "fairness definitions that conflict", "right": "a documented policy choice, not a technical default" },
+            { "left": "re-identification from 'anonymised' data", "right": "calibrated noise with an explicit budget" },
+            { "left": "consent nobody can negotiate", "right": "design effort for consent that means something" }
+          ],
+          "why": "Each fix carries a visible cost — accuracy traded for protection, design effort traded for meaning — and tracking where the cost lands is the professional habit."
+        }
+      },
+      {
+        "anchor": "running that audit",
+        "type": "judge",
+        "caption": "true or false — the audit's timing",
+        "name": "ethAuditJudge",
+        "config": {
+          "statement": "The ethical audit of a model can safely wait until after deployment, since any harms can be corrected later by retraining.",
+          "answer": false,
+          "why": "The asymmetry runs one way: a thousand users can be harmed in the minute a model is live, and none of them can see the model that did it — the audit runs before deployment."
+        }
+      },
+      {
+        "anchor": "a false-positive rate of about 45% versus 23%",
+        "type": "estimate",
+        "caption": "call the disparity's size",
+        "name": "ethCompasEst",
+        "config": {
+          "prompt": "COMPAS flagged Black defendants who did not reoffend high-risk about 45% of the time, versus about 23% for white non-reoffenders. Roughly how many times higher is the Black rate?",
+          "unit": "×",
+          "answer": 2,
+          "factor": 1.3,
+          "why": "Nearly twice — and the vendor's rebuttal was also true: the score was calibrated, a 7 meaning the same recidivism probability for both groups. Both things held simultaneously.",
+          "context": "ProPublica's 2016 analysis of roughly 7,000 Broward County defendants"
+        }
+      },
+      {
+        "anchor": "Amazon's experimental recruiting engine",
+        "type": "cloze",
+        "caption": "fill the blanks — the engine that taught itself bias",
+        "name": "ethAmazonCloze",
+        "config": {
+          "text": "Amazon's experimental recruiting engine was trained on ten years of predominantly %%0%% hires, learned to downgrade CVs containing the word %%1%%, was never deployed — and its %%2%% of harm was the point: a biased human reviewer tires; a biased model reviews millions.",
+          "answers": [
+            ["male"],
+            ["women's", "women"],
+            ["speed", "scale"]
+          ],
+          "hint": "Who did the hiring, what word got downgraded, and what made the harm fast."
+        }
+      },
+      {
+        "anchor": "just remove race and gender from the inputs",
+        "type": "branch",
+        "caption": "the deletion fallacy",
+        "name": "ethProxyBranch",
+        "config": {
+          "root": "You delete race and gender from the model's inputs. Is it now unable to discriminate?",
+          "nodes": {
+            "start": {
+              "text": "What is the honest answer?",
+              "choices": [
+                { "label": "Yes — the inputs no longer mention them", "next": "proxies", "feedback": "Proxies reconstruct what you delete: postcode predicts race in segregated cities, shopping patterns predict pregnancy (Target's famous case), name predicts gender." },
+                { "label": "No — measure error rates per group and audit the proxy set", "next": "measure", "feedback": "Deletion is not a fix; measurement is — treat the model's decisions, not its inputs, as the object of scrutiny." },
+                { "label": "Depends on how accurate the model is", "next": "acc", "feedback": "Accuracy says nothing about whom it is accurate for — the decisions, not the inputs, are the object of scrutiny." }
+              ]
+            },
+            "proxies": { "text": "The model can discriminate perfectly well through features it never saw named." },
+            "measure": { "text": "Evaluate error rates per group, audit the proxy set, and scrutinise decisions — that is the field's requirement." },
+            "acc": { "text": "A highly accurate model can be precisely and unevenly wrong." }
+          },
+          "why": "Deletion is not a fix; measurement is — the misconception mistakes the inputs for the object of scrutiny."
+        }
+      },
+      {
+        "anchor": "The main candidate criteria are",
+        "type": "match",
+        "caption": "pair each fairness criterion with what it equalises",
+        "name": "ethMetricMatch",
+        "config": {
+          "prompt": "Pair each fairness criterion with the quantity it holds equal:",
+          "pairs": [
+            { "left": "demographic parity", "right": "the same fraction of each group is selected" },
+            { "left": "equalised odds", "right": "the same false-positive and false-negative rates in each group" },
+            { "left": "calibration", "right": "a score of 7 means the same risk for everyone" }
+          ],
+          "why": "Kleinberg–Mullainathan–Raghavan (2016) and Chouldechova (2017) proved calibration and equalised odds are mathematically incompatible when base rates differ — you cannot have both."
+        }
+      },
+      {
+        "anchor": "A bail-setting system might reasonably prefer",
+        "type": "compare",
+        "caption": "two systems, two metrics — drag the divider",
+        "name": "ethPolicyCompare",
+        "config": {
+          "prompt": "Two systems choosing a fairness metric — drag the divider:",
+          "before": { "label": "bail-setting", "text": "prefer equal false-positive rates — liberty wrongly denied is the error that matters" },
+          "after": { "label": "marketing", "text": "might accept parity of selection — the errors are cheaper and the base rates differ" },
+          "why": "Choosing a fairness metric is a policy decision about which errors matter, made with stakeholders and documented — what the field forbids is not any particular choice, it is the unexamined choice."
+        }
+      },
+      {
+        "anchor": "Latanya Sweeney showed",
+        "type": "estimate",
+        "caption": "call the three-field fingerprint",
+        "name": "ethSweeneyEst",
+        "config": {
+          "prompt": "Sweeney showed roughly what share of the US population is unique on just three fields — ZIP code, date of birth, sex?",
+          "unit": "%",
+          "answer": 87,
+          "factor": 1.15,
+          "why": "About 87% — which is how she re-identified the Governor of Massachusetts's medical record from a 'de-identified' state employee dataset.",
+          "context": "combinations of innocuous fields that are jointly unique are quasi-identifiers"
+        }
+      },
+      {
+        "anchor": "instead of trying to scrub identifiers",
+        "type": "order",
+        "caption": "rebuild the privacy-budget loop",
+        "name": "ethBudgetOrder",
+        "config": {
+          "prompt": "Rebuild differential privacy's mechanism — what comes first:",
+          "items": [
+            "Pick the budget — smaller epsilon means more noise and stronger protection",
+            "Add calibrated noise so any one person's inclusion is statistically almost invisible",
+            "Compose many queries, spending the budget down",
+            "Re-derive the accuracy–protection trade for each use case"
+          ],
+          "why": "Privacy becomes an explicit, budgetable resource rather than a hope — with units, budgets and proofs, deployed by Apple, Google and the 2020 US Census."
+        }
+      },
+      {
+        "anchor": "adding noise makes the data useless",
+        "type": "spot-error",
+        "caption": "find the backwards claim — the noise trade",
+        "name": "ethNoiseSpot",
+        "config": {
+          "prompt": "One of these claims about differential privacy is backwards — click it:",
+          "lines": [
+            "Noise makes the data bounded, not useless.",
+            "Aggregate questions retain excellent accuracy under the budget.",
+            "Individual-level questions lose meaning — usually exactly the right trade.",
+            "The census stopped redistricting because the noise made it impossible."
+          ],
+          "errorLine": 3,
+          "correction": "The census still redistricts; hospitals still publish; Apple still ships keyboards.",
+          "why": "What dies is the fantasy of free, perfect, person-level data — the aggregates survive with measurable, budgeted noise."
+        }
+      }
+    ]
+  }
+]

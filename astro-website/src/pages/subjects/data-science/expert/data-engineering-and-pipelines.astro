@@ -10,6 +10,169 @@ const pipeCfg = {
     { math: '4 · Streaming vs batch', note: 'Batch (hourly/daily) covers most analytics. Streaming (Kafka, Flink) handles seconds-matters cases — fraud detection, live dashboards. Streaming costs 5–10× the complexity; earn it first.' },
   ],
 };
+
+const dePrepEst = {
+  "prompt": "Industry surveys put roughly what share of a data scientist's working time on data preparation — loading and cleaning — before any modelling?",
+  "unit": "%",
+  "answer": 42,
+  "factor": 1.15,
+  "why": "Around 40–45% — industrialising that preparation once, in tested pipelines, buys back nearly half an organisation's analytical capacity.",
+  "context": "one that leaves it to individuals repeats the same cleaning work in every notebook"
+};
+
+const deDeliverMatch = {
+  "prompt": "The engineering layer's deliverable is tables with explicit properties — pair each with the question it answers:",
+  "pairs": [
+    {
+      "left": "semantics",
+      "right": "what a row means"
+    },
+    {
+      "left": "freshness",
+      "right": "how far behind reality they run"
+    },
+    {
+      "left": "correctness",
+      "right": "what has been tested"
+    }
+  ],
+  "why": "So a data scientist asking 'is this number right?' gets an answer from a document and a test suite instead of an afternoon of archaeology."
+};
+
+const deEltSort = {
+  "prompt": "File each claim under the load order it describes:",
+  "buckets": [
+    "ETL",
+    "ELT"
+  ],
+  "items": [
+    {
+      "label": "transform before storing, because warehouses were expensive",
+      "bucket": 0
+    },
+    {
+      "label": "load raw first, in its original messy form",
+      "bucket": 1
+    },
+    {
+      "label": "transform inside the warehouse with SQL",
+      "bucket": 1
+    },
+    {
+      "label": "the transform destroyed the original — March bugs unrecoverable",
+      "bucket": 0
+    }
+  ],
+  "why": "Cloud warehouses inverted the economics: keeping raw data permanently makes every transform re-runnable from source, so history can be rebuilt correctly."
+};
+
+const deLayerCloze = {
+  "text": "The layered architecture: a %%0%% layer exactly as landed, a %%1%% layer that deduplicates and types each source, and %%2%% layer models shaped for specific business questions. Each layer is rebuilt from the one below, and only the bottom layer is allowed to surprise you.",
+  "answers": [
+    [
+      "raw/bronze",
+      "bronze",
+      "raw"
+    ],
+    [
+      "staging/silver",
+      "silver",
+      "staging"
+    ],
+    [
+      "marts/gold",
+      "gold",
+      "marts"
+    ]
+  ],
+  "hint": "Three metals' worth of medallions, bottom to top."
+};
+
+const deChainOrder = {
+  "prompt": "Rebuild the nightly chain — what comes first:",
+  "items": [
+    "load payments",
+    "rebuild the daily revenue model",
+    "refresh the dashboard",
+    "run the freshness tests",
+    "notify failures"
+  ],
+  "why": "Pipelines are graphs of dependencies, not scripts — the scheduler walks the DAG, retrying failed nodes with backoff and backfilling missed runs after an outage."
+};
+
+const deSqlSpot = {
+  "prompt": "One of these pipeline claims is backwards — click it:",
+  "lines": [
+    "The SQL is the easy 20% of the work.",
+    "Idempotent tasks are safe to re-run twice — because they will run twice.",
+    "Late-arriving data and timezone drift are exactly the failure modes an orchestrator manages.",
+    "Teams that budget only for the SQL ship the other 80% as features."
+  ],
+  "errorLine": 3,
+  "correction": "Teams that budget only for the SQL ship the other 80% as incidents.",
+  "why": "The hard 80% is everything around the SQL: idempotency, late data, schema evolution, credential rotation, and who is accountable when a number is wrong."
+};
+
+const deStatusJudge = {
+  "statement": "A payment provider's dashboards suddenly report a 40% drop in failures. Without data tests, the right response is to celebrate the improvement.",
+  "answer": false,
+  "why": "The provider changed a status code from \"FAILED\" to \"failed_declined\" — a distribution test on the status column catches it within the hour, and the fix is a mapping table rather than a retraction."
+};
+
+const deClockCompare = {
+  "prompt": "Two clocks for the same events — drag the divider:",
+  "before": {
+    "label": "batch",
+    "text": "hourly or daily jobs — simple, cheap, replayable; each run sees a fixed slice of history"
+  },
+  "after": {
+    "label": "streaming",
+    "text": "events processed within seconds — with watermarks for out-of-order arrivals and roughly 5–10× the engineering complexity"
+  },
+  "why": "The expert default is batch until a measured business decision requires faster — streaming's value decays within minutes only for fraud scoring, live dashboards and alerting."
+};
+
+const deScanEst = {
+  "prompt": "100 analysts each run 20 unpartitioned full-table scans a day over a 1-terabyte fact table, at roughly $6 per terabyte scanned. Roughly what does the habit burn per day?",
+  "unit": "$",
+  "answer": 12000,
+  "factor": 1.4,
+  "why": "100 × 20 × 1 TB × $6 ≈ $12,000 a day — for answers a partition prune would deliver for about $33. Partitioning and pruning decide the warehouse bill.",
+  "context": "a query filtered to one day scans 1/365th of the table and costs 1/365th of the money"
+};
+
+const deSchemaBranch = {
+  "root": "An upstream team renames a column 'temporarily'. What does a mature platform do?",
+  "nodes": {
+    "start": {
+      "text": "Which defence fires?",
+      "choices": [
+        {
+          "label": "Registry-checked contracts reject the breaking producer at deploy time",
+          "next": "contract",
+          "feedback": "Producers declare the schema they write; compatibility rules reject breaking changes at deploy, not at 3 a.m. in a dashboard."
+        },
+        {
+          "label": "Downstream readers adapt whenever they notice",
+          "next": "trust",
+          "feedback": "That is the failure: downstream silently mis-reports for weeks — what breaks is not the pipeline but everyone's trust in the numbers."
+        },
+        {
+          "label": "Nothing — a column name is cosmetic",
+          "next": "trust",
+          "feedback": "Tables outlive the applications that write them; the rename breaks every downstream reader that survives on yesterday's shape."
+        }
+      ]
+    },
+    "contract": {
+      "text": "Additive-by-default migrations and versioned tables let a consumer pin itself to last year's shape."
+    },
+    "trust": {
+      "text": "'Move fast and break things' fails quietly here — and the thing broken is trust."
+    }
+  },
+  "why": "Explicit contracts, additive migrations and versioned tables are the mature patterns; the data contract imports software engineering's API discipline into data."
+};
 ---
 <TopicPage slug="subjects/data-science/expert/data-engineering-and-pipelines">
   <h2>Where you are, and what you will learn</h2>
@@ -51,6 +214,7 @@ const pipeCfg = {
     one that leaves it to individuals repeats the same cleaning work in every notebook, with
     every analyst's version of "clean" quietly different.
   </p>
+  <Widget no="11" caption="call the preparation tax" widget="estimate" config={dePrepEst} />
 
   <Widget no="1" caption="the four pillars of production data plumbing" widget="equationStep" config={pipeCfg} />
   <p>
@@ -78,6 +242,7 @@ const pipeCfg = {
     <em>per hour</em>, forever, with late arrivals and duplicate deliveries, is an engineering
     problem with solutions this chapter unpacks.
   </p>
+  <Widget no="10" caption="pair each deliverable property with its question" widget="match" config={deDeliverMatch} />
   <p>
     <strong>So far:</strong> the engineering layer's deliverable is tables whose semantics,
     freshness and correctness are explicit — so "is this number right?" has a documented answer.
@@ -101,6 +266,8 @@ const pipeCfg = {
     <strong>marts/gold</strong> layer models shaped for specific business questions. Each layer
     is rebuilt from the one below, and only the bottom layer is allowed to surprise you.
   </p>
+  <Widget no="9" caption="ETL or ELT — file each claim" widget="sort-buckets" config={deEltSort} />
+  <Widget no="8" caption="fill the blanks — the layered architecture" widget="cloze" config={deLayerCloze} />
 
   <h2>Orchestration: pipelines are dependency graphs, not scripts</h2>
   <p>
@@ -117,6 +284,7 @@ const pipeCfg = {
     question, dependency lineage, is what turns a 3 a.m. incident ("revenue dashboard is wrong")
     from guesswork into a one-command impact analysis.
   </p>
+  <Widget no="7" caption="rebuild the nightly dependency chain" widget="order" config={deChainOrder} />
   <p>
     <em>Common misconception:</em> "data pipelines are just scheduled SQL." The SQL is the easy
     20%. The hard 80% is everything around it: idempotent tasks (safe to re-run twice — because
@@ -124,6 +292,7 @@ const pipeCfg = {
     evolution, credential rotation, and the organisational question of who is accountable when a
     number is wrong. Teams that budget only for the SQL ship the other 80% as incidents.
   </p>
+  <Widget no="6" caption="find the backwards claim — the hard 80%" widget="spot-error" config={deSqlSpot} />
   <p>
     <strong>So far:</strong> ELT keeps raw data re-processable and the orchestrator walks the
     dependency graph with retries and lineage. What neither supplies is truthfulness — nothing
@@ -149,6 +318,7 @@ const pipeCfg = {
     column, the change is caught within the hour, and the fix is a mapping table rather than a
     retraction.
   </p>
+  <Widget no="5" caption="true or false — the celebrated drop" widget="judge" config={deStatusJudge} />
 
   <h2>Batch and streaming: choosing the clock</h2>
   <p>
@@ -167,6 +337,7 @@ const pipeCfg = {
     common hybrid (lambda or kappa architectures) handles the transition deliberately rather
     than accidentally.
   </p>
+  <Widget no="4" caption="batch versus streaming — drag the divider" widget="compare" config={deClockCompare} />
   <p>
     <em>Common misconception:</em> "real-time is the mature option." Reverse: streaming is the
     <em>expensive</em> option, justified only when a decision's value decays within minutes.
@@ -190,6 +361,7 @@ const pipeCfg = {
     Amundsen, Unity Catalog) records what each table means, who owns it and what feeds it, so
     "can I use this column?" has an owner's name attached instead of a shrug.
   </p>
+  <Widget no="3" caption="call the unpartitioned bill" widget="estimate" config={deScanEst} />
 
   <p><em>Common misconception:</em> "the data lake replaces the warehouse." A lake holds
   cheap raw bytes with schema-on-read; a warehouse holds modelled, governed tables with
@@ -210,6 +382,7 @@ const pipeCfg = {
     things" fails quietly here: what breaks is not the pipeline but everyone's trust
     in the numbers.
   </p>
+  <Widget no="2" caption="the 'temporary' rename" widget="branch" config={deSchemaBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
