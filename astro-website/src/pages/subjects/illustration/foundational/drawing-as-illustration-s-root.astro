@@ -21,6 +21,164 @@ const drawingCfg = {
     { math: '5 · Draw every day, badly, often', note: 'Volume of work is the field\'s honest secret: sketchbooks beat talent arguments, page after page.' },
   ],
 };
+
+const illuJobMatch = {
+  "prompt": "Fine art and illustration train differently — pair each piece with its side:",
+  "pairs": [
+    {
+      "left": "the fine artist's question",
+      "right": "'what does this mean?'"
+    },
+    {
+      "left": "the illustrator's brief",
+      "right": "'make a nine-year-old understand how vaccines train the immune system, in one image, by Thursday'"
+    },
+    {
+      "left": "how illustrators draw",
+      "right": "the way journalists write: fast, legibly, repeatedly, on demand"
+    },
+    {
+      "left": "the root skill underneath",
+      "right": "not photorealism — the trained ability to see form, construct composition, control where the eye travels"
+    }
+  ],
+  "why": "A specific idea, a specific audience, a deadline — that difference shapes the whole training."
+};
+
+const illuSymbolPredict = {
+  "q": "You sit down to draw an eye. What does the trained illustrator draw instead?",
+  "choices": [
+    "The eye symbol, refined until it looks right",
+    "The shapes and values actually in front of them",
+    "A cartoon simplification from memory"
+  ],
+  "answer": 1,
+  "why": "The shift from symbol to sight is the single biggest jump a beginner makes — and every classical training method, from Nicolaides' schedules to atelier bargue plates, is built to force it."
+};
+
+const illuLoopSpot = {
+  "prompt": "One line of this practice-loop summary is wrong — click it:",
+  "lines": [
+    "Five two-minute gestures to warm up.",
+    "One sustained 30-minute study with measured proportions.",
+    "One five-minute negative-space drawing.",
+    "A page of quick object studies — daily if possible.",
+    "Skip the variety: one exercise done every day beats all four."
+  ],
+  "errorLine": 4,
+  "correction": "The content matters less than the variety: gesture for energy, sustained study for accuracy, negative space for seeing, still-life for values.",
+  "why": "Six months of the loop visibly rewires a portfolio — the loop is the training in miniature."
+};
+
+const illuValuePlace = {
+  "prompt": "A skilled thumbnail's value structure is roughly what share of midtone?",
+  "labels": [
+    "0%",
+    "25%",
+    "50%",
+    "75%",
+    "100%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 67,
+  "tolerance": 8,
+  "why": "Roughly two-thirds midtone, one dark accent, one light accent — established before any detail exists, because the eye goes to the sharpest dark-against-light junction first."
+};
+
+const illuMomentCompare = {
+  "prompt": "Which frame tells the story — drag the divider:",
+  "before": {
+    "label": "The peak of the action",
+    "text": "The moment the story resolves — already told, nothing left for the viewer to finish."
+  },
+  "after": {
+    "label": "The instant surrounding it",
+    "text": "The decisive moment — where the viewer's imagination completes the story."
+  },
+  "why": "Staging means checking the silhouette: if the key action reads as a black shape, the picture works at any size — the standard thumbnail test."
+};
+
+const illuStyleBuckets = {
+  "prompt": "Style, honestly filed — each item goes where it belongs:",
+  "buckets": [
+    "signature — what persists",
+    "adaptation — the range",
+    "the early freeze"
+  ],
+  "items": [
+    {
+      "label": "a palette that repeats across your work",
+      "bucket": 0
+    },
+    {
+      "label": "a lineweight, and a kind of face",
+      "bucket": 0
+    },
+    {
+      "label": "an art director hiring a recognisable way of seeing",
+      "bucket": 0
+    },
+    {
+      "label": "the register that shifts between a children's book, an editorial drawing and a game concept",
+      "bucket": 1
+    },
+    {
+      "label": "copying a favourite artist's surface quirks before the observational base can support them",
+      "bucket": 2
+    }
+  ],
+  "why": "The honest sequence: draw from life until you understand why the artist you admire made their choices, then choose your own — craft first, so style becomes an argument rather than an accident."
+};
+
+const illuEdgeBranch = {
+  "root": "You are directing the viewer's eye across a portrait. Each edge is a decision.",
+  "nodes": {
+    "start": {
+      "text": "The craft is the deliberate mixture — where does each edge go?",
+      "choices": [
+        {
+          "label": "Hard edge at the figure against the sky",
+          "next": "hard",
+          "feedback": "It snaps attention — reserve hardest edges for where you want the viewer to look."
+        },
+        {
+          "label": "Soft edge at the jaw dissolving into shadow",
+          "next": "soft",
+          "feedback": "It recedes — the eye travels on without stopping."
+        },
+        {
+          "label": "Lost edge where two values merge",
+          "next": "lost",
+          "feedback": "The eye travels freely — and an all-lost picture turns foggy."
+        }
+      ]
+    },
+    "hard": {
+      "text": "A picture of all hard edges looks cut out; all soft edges look foggy."
+    },
+    "soft": {
+      "text": "Soft edges carry the same information quietly, keeping the viewer where the values want them."
+    },
+    "lost": {
+      "text": "Lost edges let the eye travel — then the reserved hard edges return it to the emphasis."
+    }
+  },
+  "why": "Think in families: group all the darks into one shape, all the midtones into another — the picture reads as three or four big patterns before it reads as objects."
+};
+
+const illuWorkflowOrder = {
+  "prompt": "The workflow, tools aside — order it, earliest first:",
+  "items": [
+    "Thumbnail — fist-sized, no detail, flat values only",
+    "Rough",
+    "Value study",
+    "Final rendering"
+  ],
+  "why": "At thumbnail scale a bad idea costs thirty seconds and at finish scale it costs two days — working illustrators run four to a dozen thumbnails before committing."
+};
 ---
 <TopicPage slug="subjects/illustration/foundational/drawing-as-illustration-s-root">
 
@@ -59,6 +217,7 @@ const drawingCfg = {
     root skill underneath all of it is drawing itself — not photorealism, but the trained
     ability to see form, construct composition, and control where a viewer's eye travels.
   </p>
+  <Widget no="3" caption="pair each side of the divide with its line" widget="match" config={illuJobMatch} />
   <p>
     "Drawing" here means something broader than copying appearances. It is a shared
     language between eye, brain and hand: seeing an edge, judging its angle, measuring one
@@ -69,6 +228,7 @@ const drawingCfg = {
     classical training method — Nicolaides' schedules, atelier bargue plates, today's
     foundation courses — is built to force it.
   </p>
+  <Widget no="4" caption="bet before you read on — the beginner's biggest jump" widget="predict" config={illuSymbolPredict} />
   <p>
     The good news is that this fluency is trainable and remarkably egalitarian. Progress
     tracks hours of structured practice far more than "talent": students who fill
@@ -129,6 +289,7 @@ const drawingCfg = {
     study for accuracy, negative space for seeing, still-life for values. Six months of
     this loop visibly rewires a portfolio.
   </p>
+  <Widget no="5" caption="find the faulty line — the practice loop" widget="spot-error" config={illuLoopSpot} />
   <p>
     <em>Common misconception:</em> observational skill makes your work look "academic" or
     generic. It feels plausible — studios and life-rooms look old-fashioned next to a
@@ -151,6 +312,7 @@ const drawingCfg = {
     chain the reading order — a road, a forearm, a rake of light pulling from focal point
     to focal point.
   </p>
+  <Widget no="6" caption="place the midtone share" widget="place" config={illuValuePlace} />
 
   <Widget no="2" caption="an emphasis field: where does the eye land?" widget="plotter" config={compositionCfg} />
   <p>
@@ -171,6 +333,7 @@ const drawingCfg = {
     shape, the picture works at any size — the standard thumbnail test before a single
     finished mark is made.
   </p>
+  <Widget no="7" caption="drag the divider — peak, or the instant around it" widget="compare" config={illuMomentCompare} />
   <p>
     <em>Common misconception:</em> composition is innate "eye" — either you have it or you
     don't. The myth survives because good composition is invisible; nothing announces the
@@ -191,6 +354,7 @@ const drawingCfg = {
     preferences deliberate: craft first, so style becomes an argument rather than an
     accident.
   </p>
+  <Widget no="8" caption="file each habit under signature, range or trap" widget="sort-buckets" config={illuStyleBuckets} />
   <p>
     Style should also be understood as a <em>range</em>, not a prison. Professionals
     distinguish a <strong>signature</strong> (the qualities that persist — a palette, a
@@ -221,6 +385,7 @@ const drawingCfg = {
     composed of all hard edges looks cut out; all soft edges look foggy. The craft is the
     deliberate mixture, reserved hardest for where you want the viewer to look.
   </p>
+  <Widget no="9" caption="direct the eye — choose your edges" widget="branch" config={illuEdgeBranch} />
   <p>
     The <strong>thumbnail</strong> is where value, edges and composition are rehearsed
     together, and it is the single most professional habit on this page. A thumbnail is a
@@ -233,6 +398,7 @@ const drawingCfg = {
     and board or a tablet, and it is what lets an illustrator take a brief, a deadline and
     a blank surface without panic.
   </p>
+  <Widget no="10" caption="line up the workflow, first mark first" widget="order" config={illuWorkflowOrder} />
   <p>
     <strong>So far:</strong> observation rewires seeing, composition directs the viewer,
     style makes the choices deliberate — and the thumbnail rehearses all three for the

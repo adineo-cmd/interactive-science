@@ -320,6 +320,30 @@
 | history/advanced/economic-history | estimate, compare, estimate, predict, spot-error, cloze, match, order | next-6 |
 | history/advanced/germany-1918-1945 | match, predict, estimate, order, spot-error, sort-buckets, estimate, compare | next-6 |
 | history/advanced/historiography-debates-and-schools | match, judge, compare, order, match, sort-buckets, predict, spot-error | next-6 |
+| history/foundational/cradles-of-civilisation | match, estimate, spot-error, sort-buckets, cloze, judge, order, compare | next-7 |
+| history/foundational/how-historians-work | sort-buckets, order, match, spot-error, branch, predict, cloze, order | next-7 |
+| history/foundational/medieval-world | judge, sort-buckets, match, order, match, spot-error, estimate, cloze | next-7 |
+| history/foundational/the-cold-war | order, sort-buckets, match, estimate, spot-error, match, order, predict | next-7 |
+| history/foundational/the-renaissance-and-reformation | match, spot-error, order, estimate, predict, order, sort-buckets, cloze | next-7 |
+| history/foundational/the-world-wars | sort-buckets, match, order, estimate, spot-error, branch, predict, cloze | next-7 |
+| history/intermediate/age-of-revolutions | match, predict, order, spot-error, estimate, compare, order, cloze | next-7 |
+| history/intermediate/ancient-greece-and-rome | place, sort-buckets, match, order, cloze, estimate, spot-error, compare | next-7 |
+| history/intermediate/colonialism-and-empire | order, sort-buckets, match, estimate, spot-error, cloze, compare, judge | next-7 |
+| history/intermediate/revolutions-of-1848 | match, estimate, sort-buckets, spot-error, judge, sort-buckets, order, branch | next-7 |
+| history/intermediate/the-american-civil-war | estimate, order, match, sort-buckets, estimate, cloze, spot-error, compare | next-7 |
+| history/intermediate/the-history-of-science | sort-buckets, order, predict, match, estimate, order, cloze, compare | next-7 |
+| history/intermediate/the-islamic-golden-age | match, order, spot-error, sort-buckets, timeline, branch, compare, estimate | next-8 |
+| history/intermediate/the-league-of-nations | predict, match, branch, order, sort-buckets, estimate, spot-error, compare | next-8 |
+| history/intermediate/the-treaty-of-versailles | predict, match, spot-error, compare, estimate, place, order, branch | next-8 |
+| history/intermediate/unification-of-italy-and-germany | match, sort-buckets, order, compare, estimate, spot-error, plotter, branch | next-8 |
+| horticulture/foundational/knowing-plants-classification-and-structure | place, match, sort-buckets, spot-error, compare, sort-buckets, branch, predict | next-8 |
+| hospitality-tourism/foundational/global-tourism | judge, match, estimate, cloze, sort-buckets, spot-error, branch, compare | next-8 |
+| human-resources/foundational/hr-s-role-and-legal-foundations | match, plotter, sort-buckets, branch, compare, spot-error, judge, match | next-8 |
+| hvac/foundational/safety-and-the-science-of-air | predict, cloze, order, place, spot-error, match, sort-buckets, branch | next-8 |
+| illustration/foundational/drawing-as-illustration-s-root | match, predict, spot-error, place, compare, sort-buckets, branch, order | next-8 |
+| industrial-engineering/foundational/statistics-quality-and-control-charts | place, match, cloze, predict, sort-buckets, trace, estimate, match | next-8 |
+| information-technology/foundational/types-and-components-of-computer-systems | match, sort-buckets, order, sort-buckets, spot-error, match, branch, estimate | next-8 |
+| interior-design/foundational/interior-design-fundamentals | estimate, sort-buckets, match, predict, compare, place, judge, order | next-8 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

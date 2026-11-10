@@ -23,6 +23,171 @@ const spcCfg = {
     { math: '5 · Improve, then re-baseline', note: 'After eliminating special causes, reduce common-cause variation itself — that is process improvement, and the chart re-baselines tighter.' },
   ],
 };
+
+const spcShewhartPlace = {
+  "prompt": "Walter Shewhart's control chart arrived in which year?",
+  "labels": [
+    "1900",
+    "1925",
+    "1950",
+    "1975",
+    "2000"
+  ],
+  "scale": {
+    "min": 1900,
+    "max": 2000
+  },
+  "answer": 1924,
+  "tolerance": 2,
+  "why": "A simple statistical device separated common-cause variation — the process's natural breathing — from special cause, something that changed and should be hunted down; applied relentlessly, that distinction built the modern quality profession."
+};
+
+const spcDistMatch = {
+  "prompt": "Match the distribution to the kind of variation:",
+  "pairs": [
+    {
+      "left": "normal (the bell curve)",
+      "right": "continuous measurements — fill volumes, dimensions, weights"
+    },
+    {
+      "left": "binomial",
+      "right": "fraction nonconforming — counts of defectives"
+    },
+    {
+      "left": "Poisson",
+      "right": "defects per unit — rare events"
+    },
+    {
+      "left": "'six sigma'",
+      "right": "literally a specification six standard deviations wide"
+    }
+  ],
+  "why": "The area fractions — about 68 per cent within ±1σ, 95 within ±2σ, 99.7 within ±3σ — are the control chart's calibration, and they are also the language of capability."
+};
+
+const spcCLTCloze = {
+  "text": "Even if individual bottles vary according to some lopsided distribution, the averages of small samples pile up nearly normally, with a spread of σ divided by the %%0%% of the sample size — which is why quality work charts the %%1%% mean, not individuals.",
+  "answers": [
+    [
+      "square root",
+      "root"
+    ],
+    [
+      "subgroup",
+      "sample"
+    ]
+  ],
+  "hint": "First blank: what you take of the sample size to narrow the spread. Second blank: the small group drawn close together in time."
+};
+
+const spcExcursionPredict = {
+  "q": "A point crosses the upper control limit. What have you just proven?",
+  "choices": [
+    "That the process has failed",
+    "That the pattern would be very unlikely if nothing changed — now investigate what was special",
+    "That the 1-in-370 allowance has been used up for the year"
+  ],
+  "answer": 1,
+  "why": "Statistics can only say 'this pattern would be very unlikely if nothing changed' — the special cause still has to be found by a human who knows the process."
+};
+
+const spcSignalBuckets = {
+  "prompt": "React only to signals — file each pattern:",
+  "buckets": [
+    "limits-based signal",
+    "run-rule signal",
+    "not a signal — restraint"
+  ],
+  "items": [
+    {
+      "label": "a point beyond a control limit",
+      "bucket": 0
+    },
+    {
+      "label": "two of three points beyond 2σ on one side",
+      "bucket": 1
+    },
+    {
+      "label": "a run of eight on one side of the centre line",
+      "bucket": 1
+    },
+    {
+      "label": "six points steadily trending",
+      "bucket": 1
+    },
+    {
+      "label": "fourteen alternating points",
+      "bucket": 1
+    },
+    {
+      "label": "points scattered randomly within the limits",
+      "bucket": 2
+    }
+  ],
+  "why": "Each signal says the same thing in different words: something changed — go find it. A new operator, a dull tool, a different raw-material lot, a drifting sensor."
+};
+
+const spcCpkTrace = {
+  "prompt": "Spec 500 ± 2 mL, process σ = 0.5 mL (so Cp ≈ 1.33). The process mean drifts from 500 mL — which curve is Cpk?",
+  "curves": [
+    {
+      "expr": "4/3 - abs(x-500)/1.5",
+      "label": "A"
+    },
+    {
+      "expr": "4/3 + 0*x",
+      "label": "B"
+    },
+    {
+      "expr": "abs(x-500)/2",
+      "label": "C"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 498,
+    "max": 502
+  },
+  "y": {
+    "min": 0,
+    "max": 2
+  },
+  "xlabel": "process mean (mL)",
+  "ylabel": "index value",
+  "why": "Cpk = min((USL − μ)/3σ, (μ − LSL)/3σ): 1.33 on centre, about 1.07 at a 500.4 mL drift — the same variation, but less of it usable. Control first, capability second."
+};
+
+const spcSigmaEstimate = {
+  "prompt": "Six sigma's headline '3.4 defects per million' is a convention that trims the six-standard-deviation margin. The effective margin is how many σ?",
+  "unit": "σ of margin",
+  "answer": 4.5,
+  "factor": 1.3,
+  "why": "The convention allows for the assumed shift between short-run and long-run behaviour, trimming 6σ to 4.5σ — quoted sigma levels are shorthand for a model of how processes drift.",
+  "context": "Six standard deviations of margin alone would compute to about two defects per billion — which is why the headline looks like an arithmetic error until you know the convention."
+};
+
+const spcCurrentsMatch = {
+  "prompt": "SPC beyond the chart — pair each current with what it does:",
+  "pairs": [
+    {
+      "left": "measurement system analysis",
+      "right": "a Gage R&R study partitions variation into part-to-part, operator and instrument components"
+    },
+    {
+      "left": "Deming's management system",
+      "right": "variation thinking for whole organisations — blaming individuals for common cause is a category error"
+    },
+    {
+      "left": "Taguchi's loss function",
+      "right": "any deviation from target costs money, proportionally to its square"
+    },
+    {
+      "left": "Industry 4.0",
+      "right": "in-line sensors measuring every unit, and machine-learning models hunting patterns the Western Electric rules never anticipated"
+    }
+  ],
+  "why": "The constants through all of it are Shewhart's: know your noise, listen for the signal, and never mistake one for the other."
+};
 ---
 <TopicPage slug="subjects/industrial-engineering/foundational/statistics-quality-and-control-charts">
   <h2>Where you are, and what you will learn</h2>
@@ -51,6 +216,7 @@ const spcCfg = {
     profession was built. Its consequences reach from the factory floor to Six Sigma, and the
     logic underneath is pure statistics: distributions, sampling and inference.
   </p>
+  <Widget no="3" caption="place the founding device on the century scale" widget="place" config={spcShewhartPlace} />
   <p>
     To see why statistics is the right tool, consider the fill line example this page will keep
     returning to: a machine filling bottles nominally to 500 mL. Every bottle differs slightly —
@@ -82,6 +248,7 @@ const spcCfg = {
     <strong>Poisson</strong> (defects per unit, rare events) distributions, which is why
     attribute control charts use different formulas for their limits.
   </p>
+  <Widget no="4" caption="pair each distribution with the variation it models" widget="match" config={spcDistMatch} />
   <p>
     The bridge from distributions to decisions is <strong>inference</strong>, and its central
     pillar is the central limit theorem: even if individual bottles vary according to some
@@ -98,6 +265,7 @@ const spcCfg = {
     Shewhart's choice of ±3σ limits is precisely a pricing of those two risks; the design of
     every chart is a wager on which error the process can better afford.
   </p>
+  <Widget no="5" caption="fill the theorem that charts averages" widget="cloze" config={spcCLTCloze} />
 
   <Widget no="2" caption="a process in statistical control" widget="plotter" config={chartCfg} />
   <p>
@@ -107,6 +275,7 @@ const spcCfg = {
     the limits there is nothing to fix, and reacting to any wobble would be tampering.
   </p>
   <p><em>Common misconception:</em> that a point outside the control limits "proves" the process failed. The limits are a 99.7 per cent rule, not a law of nature — roughly one point in 370 crosses them by chance alone, which is why a single excursion prompts investigation (was anything special going on?), not automatic verdicts. Statistics can only say "this pattern would be very unlikely if nothing changed" — the special cause still has to be found by a human who knows the process.</p>
+  <Widget no="6" caption="bet before you read on — the excursion" widget="predict" config={spcExcursionPredict} />
 
   <h2>Statistical process control: the chart as conversation</h2>
   <p>
@@ -124,6 +293,7 @@ const spcCfg = {
     same thing in different words: <em>something changed — go find it</em>, a new operator, a
     dull tool, a different raw-material lot, a drifting sensor.
   </p>
+  <Widget no="7" caption="file each pattern under signal or silence" widget="sort-buckets" config={spcSignalBuckets} />
   <p>
     Two disciplines make SPC work, and both are cultural as much as mathematical.
     <strong>Rational subgrouping</strong>: the subgroup must be sampled so that only common
@@ -163,6 +333,7 @@ const spcCfg = {
     <em>first</em> (improving an unstable process is measuring fog), then centre it, then shrink
     σ until capability is comfortable. Control first, capability second.
   </p>
+  <Widget no="8" caption="which curve is Cpk as the mean drifts?" widget="trace" config={spcCpkTrace} />
   <p>
     <strong>Acceptance sampling</strong> is the statistical grandparent of the field and its
     cautionary tale: inspect a sample from each lot, and accept or reject the whole lot on the
@@ -184,6 +355,7 @@ const spcCfg = {
     floor for incoming material, not a quality strategy.
   </p>
   <p><em>Common misconception:</em> "six sigma" quality means six standard deviations of margin, which computes to about two defects per billion — so the industry's headline "3.4 defects per million" looks like an arithmetic error. It is a convention: the 3.4 figure prices in an assumed 1.5σ drift between short-run and long-run behaviour, effectively trimming the margin to 4.5σ. The lesson generalises: quoted sigma levels are shorthand for a model of how processes drift, and knowing which convention sits behind a number is part of reading it.</p>
+  <Widget no="9" caption="call the margin — the six-sigma convention" widget="estimate" config={spcSigmaEstimate} />
   <p>
     <strong>So far:</strong> control limits are the process's voice and specification
     limits the customer's, capability indices compare the two, and sampling plans price
@@ -264,6 +436,7 @@ const spcCfg = {
     Western Electric rules never anticipated. The constants through all of it are Shewhart's:
     know your noise, listen for the signal, and never mistake one for the other.
   </p>
+  <Widget no="10" caption="pair each current with its move" widget="match" config={spcCurrentsMatch} />
 
   <p class="sources"><strong>Sources:</strong> NCEES FE Industrial &amp; Systems specifications; Montgomery, <em>Introduction to Statistical Quality Control</em>; Shewhart, <em>Economic Control of Quality</em> (1931). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

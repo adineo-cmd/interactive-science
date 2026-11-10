@@ -10,6 +10,195 @@ const histCfg = {
     { math: '4 · Interpretation, stated openly', note: 'Evidence underdetermines conclusions: historians choose frames (economic, cultural, political) and say so. "The facts speak for themselves" is the first warning sign of bad history.' },
   ],
 };
+
+const hhwSourcesBuckets = {
+  "prompt": "Three layers of sources — file each witness:",
+  "buckets": [
+    "primary",
+    "secondary",
+    "tertiary"
+  ],
+  "items": [
+    {
+      "label": "a soldier's letter from the Somme, written the week of the battle",
+      "bucket": 0
+    },
+    {
+      "label": "a parliamentary transcript of a wartime debate",
+      "bucket": 0
+    },
+    {
+      "label": "a manor's account roll, kept to collect revenue",
+      "bucket": 0
+    },
+    {
+      "label": "a 1960s memoir about 1916 — read for what it says of 1916",
+      "bucket": 1
+    },
+    {
+      "label": "a modern historian's statistical reconstruction of that economy",
+      "bucket": 1
+    },
+    {
+      "label": "an encyclopedia compilation, fine for orientation",
+      "bucket": 2
+    }
+  ],
+  "why": "The labels are about role, not reliability: the tax roll was written to collect revenue, not to describe the economy, and the memoir is primary for 1960s memory while secondary for 1916. Reliability is judged source by source, never by type."
+};
+
+const hhwHagiaOrder = {
+  "prompt": "The Hagia Sophia's layers — order them, earliest first:",
+  "items": [
+    "A church — gold mosaics and a vast dome declaring Justinian's power and his God's glory to a mostly illiterate world",
+    "A mosque — minarets rise and Arabic calligraphy is set beside the Greek mosaics after 1453",
+    "A museum — the building opened to visitors as a secular monument",
+    "A mosque again — the most recent layer of its reading"
+  ],
+  "why": "The building is a primary source throughout — but what it is evidence of depends entirely on which layer you are reading. Knowing the sequence is the difference between reading the building and merely looking at it."
+};
+
+const hhwCritMatch = {
+  "prompt": "The critic's questions — pair each with what it asks:",
+  "pairs": [
+    {
+      "left": "external criticism",
+      "right": "is it genuine — do paper, ink, language and handwriting fit the claimed date?"
+    },
+    {
+      "left": "author",
+      "right": "who wrote it, and from what background?"
+    },
+    {
+      "left": "audience",
+      "right": "for whom was it meant — public or private?"
+    },
+    {
+      "left": "intent",
+      "right": "record, persuasion, or self-justification?"
+    }
+  ],
+  "why": "The Donation of Constantine was exposed as an eighth-century forgery partly by linguistic analysis — its Latin looked nothing like fourth-century usage. Every source is an artefact of an intention; asking why it exists converts a passive quotation into evidence."
+};
+
+const hhwPurposeSpot = {
+  "prompt": "One line of this source-purpose briefing is wrong — click it:",
+  "lines": [
+    "A royal proclamation tells you what the state wanted its subjects to believe.",
+    "A soldier's letter tells you what one literate man chose to tell his family.",
+    "A merchant's ledger tells you what someone counted carefully because money depended on it.",
+    "A source's purpose is a side detail once its facts are confirmed.",
+    "A plain photograph still involves choices of framing and timing."
+  ],
+  "errorLine": 3,
+  "correction": "Purpose is the master question: every source is an artefact of an intention — asking why the source exists converts a passive quotation into evidence.",
+  "why": "Propaganda posters are honest about being propaganda; the subtle cases matter more — the victory memoir that downplays failures, the court chronicle that flatters its patron."
+};
+
+const hhwConflictBranch = {
+  "root": "Two sources conflict about the same battle: a court chronicle that flatters its patron, and a tax roll that never mentions the fighting at all. You are the historian — decide.",
+  "nodes": {
+    "start": {
+      "text": "The chronicle claims a great victory; the tax rolls for the same years show herds and households thinning fast.",
+      "choices": [
+        {
+          "label": "Trust the chronicle — it is the eye-witness account",
+          "next": "chronicle",
+          "feedback": "The chronicle was written to flatter a patron; its victory may be real and still not be what it says it is."
+        },
+        {
+          "label": "Corroborate — find a third, independent source",
+          "next": "corroborate",
+          "feedback": "One source is a claim; independent sources agreeing move it toward fact."
+        },
+        {
+          "label": "Read the tax roll against its grain",
+          "next": "grain",
+          "feedback": "The rolls never name the peasants, yet in aggregate they reveal households, obligations and famine years."
+        }
+      ]
+    },
+    "chronicle": {
+      "text": "You have one vivid account, written to impress — and nothing to check it against.",
+      "choices": [
+        {
+          "label": "Go back and corroborate",
+          "next": "corroborate",
+          "feedback": "Single pieces of evidence are checked against each other before any conclusion is drawn."
+        }
+      ]
+    },
+    "corroborate": {
+      "text": "A third source — a merchant's letter — agrees the war was costly but calls the battle a draw.",
+      "choices": [
+        {
+          "label": "Weigh the agreement: the cost is near-fact, the verdict still contested",
+          "next": "end",
+          "feedback": "Where sources conflict is often where the interesting history lives — whose account differs, and why?"
+        },
+        {
+          "label": "Side with the chronicle anyway",
+          "next": "end",
+          "feedback": "Disagreement is a lead, not an obstacle — the conflict itself needs explaining."
+        }
+      ]
+    },
+    "grain": {
+      "text": "The roll shows tithes falling for three consecutive years after the 'victory'.",
+      "choices": [
+        {
+          "label": "Treat the silence as evidence",
+          "next": "end",
+          "feedback": "The history of the ordinary must often be reconstructed from the records of the people who owned, governed and wrote about them — which is itself a fact about power."
+        },
+        {
+          "label": "Dismiss the roll — it never mentions the battle",
+          "next": "end",
+          "feedback": "A biased source can be perfect evidence — of the bias, or of things it never intended to give."
+        }
+      ]
+    },
+    "end": {
+      "text": "Your claim is now hedged, sourced and checkable — the reasoning exposed where others can challenge it."
+    }
+  },
+  "why": "The historian's craft is reasoning from fragments under real uncertainty: sources interrogated rather than trusted, single pieces checked against each other, conclusions drawn in the open."
+};
+
+const hhwTriggerPredict = {
+  "q": "Franz Ferdinand was assassinated in June 1914; the war began in July. Is 'earlier than' enough to claim 'because of'?",
+  "choices": [
+    "Yes — the assassination caused the war; the dates prove it",
+    "No — post hoc ergo propter hoc is the field's original sin: a causal claim needs a mechanism, the preconditions that made a spark dangerous, and the contingency of decisions along the way",
+    "Yes, provided the assassination comes first in every textbook"
+  ],
+  "answer": 1,
+  "why": "Historians separate trigger, preconditions and contingency, and test the argument against counterfactuals — if the alliance system had not existed, would the Sarajevo shots still have produced a general European war?"
+};
+
+const hhwAxesCloze = {
+  "text": "Reliability asks whether a source can be %%0%% about what it claims; utility asks how useful it is for %%1%% — which is why 'limited value' is never a complete judgement of a source.",
+  "answers": [
+    "believed",
+    [
+      "your question",
+      "this question",
+      "the question"
+    ]
+  ],
+  "hint": "One axis is about belief; the other is judged per purpose — and it can change from question to question."
+};
+
+const hhwSiftOrder = {
+  "prompt": "SIFT — the fact-checker's renaming of the old loop. Order the moves:",
+  "items": [
+    "Stop",
+    "Investigate the source",
+    "Find better coverage",
+    "Trace the claim to its original context"
+  ],
+  "why": "Source criticism and corroboration renamed for the internet age — including 'reading laterally': judging a website not by reading it harder, but by leaving it to see what other sources say about it."
+};
 ---
 <TopicPage slug="subjects/history/foundational/how-historians-work">
 
@@ -87,6 +276,7 @@ const histCfg = {
     primary. A <strong>secondary source</strong> is produced later, by someone interpreting
     primary material: a textbook, a biography, the very page you are reading.
   </p>
+  <Widget no="2" caption="file each witness — primary, secondary or tertiary" widget="sort-buckets" config={hhwSourcesBuckets} />
   <p>
     The distinction is about proximity and role, not age or authority. A 1960s memoir about
     1916 is a primary source <em>for 1960s memory</em> and a secondary source <em>for
@@ -110,6 +300,7 @@ const histCfg = {
     and knowing the sequence is the difference between reading the building and merely
     looking at it.
   </p>
+  <Widget no="3" caption="one building, four lives — line them up, earliest first" widget="order" config={hhwHagiaOrder} />
   <p><em>Common misconception:</em> "primary" means reliable and "secondary" means second-hand
   and weaker. It seems reasonable because "primary" sounds like "first-hand truth". But a
   diary written the evening of an event is primary and may be self-serving; a modern
@@ -130,6 +321,7 @@ const histCfg = {
     for whom was it meant, public or private; why was it written — record, persuasion, or
     self-justification; and what was happening when it was made?
   </p>
+  <Widget no="4" caption="pair each question with what it asks" widget="match" config={hhwCritMatch} />
   <p>
     The questions matter because different sources tell the truth about different things.
     A royal proclamation tells you what the state wanted its subjects to believe; a
@@ -141,6 +333,7 @@ const histCfg = {
     that still involves choices of framing and timing. Asking "why does this source exist?"
     converts a passive quotation into evidence.
   </p>
+  <Widget no="5" caption="find the faulty line — what each source tells the truth about" widget="spot-error" config={hhwPurposeSpot} />
 
   <h2>Bias, corroboration and reading against the grain</h2>
   <p>
@@ -160,6 +353,7 @@ const histCfg = {
     illiterate majority must often be reconstructed from the records of the people who
     owned, governed and wrote about them — which is itself a fact about power.
   </p>
+  <Widget no="6" caption="a chronicle and a tax roll disagree — your move?" widget="branch" config={hhwConflictBranch} />
   <p><em>Common misconception:</em> a biased source cannot be used. This feels right because
   bias sounds like contamination. But a biased source can be <em>perfect</em> evidence —
   of the bias. Wartime propaganda films tell you little about accurate casualty figures
@@ -182,6 +376,7 @@ const histCfg = {
     tests itself against <em>counterfactuals</em>: if the alliance system had not existed,
     would the Sarajevo shots still have produced a general European war?
   </p>
+  <Widget no="7" caption="bet before you read on — after this, therefore because of this?" widget="predict" config={hhwTriggerPredict} />
   <p>
     Interpretation enters inevitably, because <strong>evidence underdetermines
     conclusions</strong>. The same archive can support an economic explanation of the
@@ -212,6 +407,7 @@ const histCfg = {
     "limited value" is never a complete judgement of a source — limited value <em>for
     what?</em>
   </p>
+  <Widget no="8" caption="fill the blanks — two axes, one habit" widget="cloze" config={hhwAxesCloze} />
   <p>
     Finally, every historical conclusion is <strong>provisional</strong> — not as a humble
     gesture but for a hard reason: new evidence can always appear. The opening of Soviet
@@ -305,6 +501,7 @@ const histCfg = {
     old loop in the widget: source, criticism, corroboration, openly stated interpretation.
     The tools change; the discipline is the loop.
   </p>
+  <Widget no="9" caption="line up SIFT — the old loop, renamed" widget="order" config={hhwSiftOrder} />
   <p>
     One worked demonstration binds the whole lesson together, because it uses every tool at
     once. Consider the claim "medieval people believed the Earth was flat". A student of

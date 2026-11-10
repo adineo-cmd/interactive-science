@@ -22,6 +22,169 @@ const scienceCfg = {
     { math: '5 · Efficiency is the mission metric', note: 'SEER, AFUE, COP: the industry\'s ratings all answer one question — how much comfort per unit of energy.' },
   ],
 };
+
+const hvacExhaustPredict = {
+  "q": "Stand by an air conditioner's outdoor unit on a hot day and hot air pours out. What is the machine doing?",
+  "choices": [
+    "Making cold for the room",
+    "Moving heat from indoors to outdoors",
+    "Exhausting stale indoor air"
+  ],
+  "answer": 1,
+  "why": "The trade's founding insight: heat is energy in transit, always moving from warmer to cooler — never the reverse unless a machine spends work to force it."
+};
+
+const hvacSensibleCloze = {
+  "text": "Sensible heat changes a substance's %%0%% (you can sense it on a thermometer); latent heat changes its %%1%% — and water's latent heat is enormous.",
+  "answers": [
+    "temperature",
+    "state"
+  ],
+  "hint": "One you read on a thermometer; the other is a change of form — ice, water, steam."
+};
+
+const hvacCycleOrder = {
+  "prompt": "Pressure changes boiling points — order the cycle that moves heat against its gradient:",
+  "items": [
+    "Boil the fluid at low pressure indoors — it absorbs heat (the evaporator)",
+    "Compress the vapour to a hotter state — the compressor does work on it",
+    "Reject the heat outdoors as the fluid condenses (the condenser)",
+    "Expand back to low pressure to repeat (the metering device)"
+  ],
+  "why": "Boil a fluid at low pressure indoors to absorb heat, compress it to condense and reject that heat outdoors — and the heat pump is the same cycle reversed, which is why one machine can heat and cool."
+};
+
+const hvacDewPlace = {
+  "prompt": "Dry-bulb 25 °C, RH 50%. Using the trade's quick estimate, where is the dew point (°C)?",
+  "labels": [
+    "0",
+    "5",
+    "10",
+    "15",
+    "20",
+    "25"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 25
+  },
+  "answer": 15,
+  "tolerance": 1,
+  "why": "Subtract (100 − RH)/5 = 10 from the dry-bulb: 15 °C. Cool a pane below the dew point and you get condensation; run a cooling coil below it and you dehumidify."
+};
+
+const hvacHazardSpot = {
+  "prompt": "One line of this electrical-safety summary is wrong — click it:",
+  "lines": [
+    "A thermal hazard is overheating — current flowing where it should not.",
+    "A shock hazard is current passing through a person.",
+    "It is current that harms, not voltage alone.",
+    "Around 5 milliamps through the chest is the accepted maximum harmless shock.",
+    "A higher voltage is always the more dangerous, whatever the current."
+  ],
+  "errorLine": 4,
+  "correction": "It is current through the body that harms — very small currents matter, which is why 5 milliamps is the accepted maximum harmless shock.",
+  "why": "Every electrical safety device addresses one of the two hazards — keep the two hazards in mind and the defences organise themselves."
+};
+
+const hvacWiringMatch = {
+  "prompt": "The layered defences — pair each device with its job:",
+  "pairs": [
+    {
+      "left": "circuit breaker or fuse",
+      "right": "trips when current exceeds its rating — the thermal-overload backstop"
+    },
+    {
+      "left": "grounded neutral",
+      "right": "held at zero volts by earthing — safe to touch even with damaged insulation"
+    },
+    {
+      "left": "earth/ground wire",
+      "right": "bonded to the metal case; a fault drives a large current straight to earth, tripping the breaker"
+    },
+    {
+      "left": "GFI",
+      "right": "compares the live current with the neutral's return; trips within milliseconds when they differ"
+    },
+    {
+      "left": "lockout/tagout",
+      "right": "de-energise, lock the disconnect, tag it, verify dead with a meter — capacitors hold a lethal charge after power-off"
+    }
+  ],
+  "why": "This is why the third prong on a plug must never be cut off — and why two-prong tools are the doubly insulated ones with non-conducting plastic cases."
+};
+
+const hvacSafetyBuckets = {
+  "prompt": "The trade's safety trio — file each discipline:",
+  "buckets": [
+    "electrical",
+    "gas",
+    "refrigerant"
+  ],
+  "items": [
+    {
+      "label": "lockout/tagout: de-energise, lock, tag, verify dead",
+      "bucket": 0
+    },
+    {
+      "label": "capacitors hold a lethal charge after power-off",
+      "bucket": 0
+    },
+    {
+      "label": "mercaptan odourises the fuel so a leak announces itself",
+      "bucket": 1
+    },
+    {
+      "label": "combustion analysis measures CO and oxygen in the flue",
+      "bucket": 1
+    },
+    {
+      "label": "recovery machines and cylinders before opening any circuit",
+      "bucket": 2
+    },
+    {
+      "label": "vapour displaces oxygen — an asphyxiation hazard in a confined space",
+      "bucket": 2
+    }
+  ],
+  "why": "High-side pressures of 1–3 MPa, regulated greenhouse gases, EPA Section 608 certification to handle refrigerant at all — each energy has its own non-negotiable discipline, and all three punish improvisation severely."
+};
+
+const hvacBurnerBranch = {
+  "root": "You are commissioning a gas burner. Perfect combustion of natural gas — mostly methane — unites fuel carbon with oxygen to make carbon dioxide and water vapour, releasing heat. How much air do you supply?",
+  "nodes": {
+    "start": {
+      "text": "The analyser is connected and the flue is ready.",
+      "choices": [
+        {
+          "label": "Exactly enough air",
+          "next": "perfect",
+          "feedback": "The carbon unites with oxygen completely — carbon dioxide, water vapour, heat released."
+        },
+        {
+          "label": "Too little air",
+          "next": "little",
+          "feedback": "The carbon stops halfway — carbon monoxide instead of carbon dioxide."
+        },
+        {
+          "label": "Too much air",
+          "next": "much",
+          "feedback": "Efficiency collapses — heat leaves up the flue in the excess."
+        }
+      ]
+    },
+    "perfect": {
+      "text": "The analyser reports low CO and the right oxygen and stack temperature — the numbers that say the furnace is safe and efficient."
+    },
+    "little": {
+      "text": "Incomplete combustion is a tuning failure, and the analyser's carbon monoxide reading is the number that catches it."
+    },
+    "much": {
+      "text": "The flue gas leaves hotter — the heat you paid for goes up the stack, and the fuel bill pays for it."
+    }
+  },
+  "why": "Around the chemistry sit the draft and venting systems, and the safety devices that police the flame: thermocouples and flame sensors that shut gas off if the flame fails, spill switches, and CO detectors as the household backstop."
+};
 ---
 <TopicPage slug="subjects/hvac/foundational/safety-and-the-science-of-air">
 
@@ -56,6 +219,7 @@ const scienceCfg = {
     is the trade's founding insight: <strong>heat</strong> is energy in transit, and it always
     moves from warmer to cooler — never the reverse, unless a machine spends work to force it.
   </p>
+  <Widget no="3" caption="bet before you read on — the hot exhaust" widget="predict" config={hvacExhaustPredict} />
   <p>
     Once that frame is in place, the whole equipment zoo — furnaces, boilers, chillers,
     condensers, heat pumps — reads as variations on one theme: put heat where the customer does
@@ -101,12 +265,14 @@ const scienceCfg = {
     freezing to boiling took. This is the secret of refrigeration, of sweating as the body's
     cooling system, and of dehumidification being the expensive half of air conditioning.
   </p>
+  <Widget no="4" caption="fill the two kinds of heat" widget="cloze" config={hvacSensibleCloze} />
   <p>
     And <strong>pressure changes boiling points</strong>: water boils at 100 °C at sea level but
     cooler up a mountain, and refrigerants are chosen and charged around exactly that behaviour —
     boil a fluid at low pressure indoors to absorb heat, compress it to condense and reject that
     heat outdoors.
   </p>
+  <Widget no="5" caption="line up the refrigeration cycle" widget="order" config={hvacCycleOrder} />
   <p><em>Common misconception:</em> air conditioning "makes cold". There is no substance called
   cold; there is heat, and an air conditioner pumps it from inside to outside — which is why
   the outdoor unit's exhaust feels hot, and why a heat pump can heat by reversing the same
@@ -130,6 +296,7 @@ const scienceCfg = {
     temperature</strong> — what a thermometer reads with an evaporating wick — encodes both heat
     and humidity at once and is the number evaporative coolers and cooling towers live by.
   </p>
+  <Widget no="6" caption="place the dew point on the scale" widget="place" config={hvacDewPlace} />
   <p>
     The <strong>psychrometric chart</strong> plots all of it: dry-bulb temperature across,
     moisture content up, every state of air as a point, and every process (heating, cooling,
@@ -161,6 +328,7 @@ const scienceCfg = {
     voltage alone, and very small currents matter — around 5 milliamps through the chest is the
     accepted maximum harmless shock, well below the thresholds for losing muscle control.
   </p>
+  <Widget no="7" caption="find the faulty line — the two hazards" widget="spot-error" config={hvacHazardSpot} />
   <p>
     Modern wiring defends against both hazards with layers. A <strong>circuit breaker or
     fuse</strong> sits in series on the live wire and trips when current exceeds the rating —
@@ -174,6 +342,7 @@ const scienceCfg = {
     repair. This is why the third prong on a plug must never be cut off, and why tools sold
     with two-prong plugs are the "doubly insulated" ones with non-conducting plastic cases.
   </p>
+  <Widget no="8" caption="pair each defence with its job" widget="match" config={hvacWiringMatch} />
   <p>
     On top of the wiring sit the <strong>ground fault interrupters</strong> (GFIs) found in
     kitchens, bathrooms and outdoor circuits: they continuously compare the current in the live
@@ -210,6 +379,7 @@ const scienceCfg = {
     opening a circuit, recovery machines and cylinders, leak repair duties. Each of the three
     energies punishes improvisation differently, and all three punish it severely.
   </p>
+  <Widget no="9" caption="file each discipline under its energy" widget="sort-buckets" config={hvacSafetyBuckets} />
 
   <h2>Combustion: the heating side's science</h2>
   <p>
@@ -220,6 +390,7 @@ const scienceCfg = {
     odourless gas that displaces oxygen in the bloodstream. Too much air and efficiency
     collapses, because heat leaves up the flue in the excess.
   </p>
+  <Widget no="10" caption="commission the burner — choose the air" widget="branch" config={hvacBurnerBranch} />
   <p>
     The technician's instrument is the <strong>combustion analyser</strong>, which samples the
     flue gas and reports oxygen, carbon monoxide and stack temperature — the numbers that say

@@ -25,6 +25,143 @@ const timelineCfg = {
     { year: 1924, title: 'The Dawes Plan', text: 'America lends Germany the money to pay reparations to Britain and France, who repay war debts to America. A circular economy resting on US credit — stable, until 1929.', tag: 'Germany under the treaty' },
   ],
 };
+
+const toeLegitPredict = {
+  "q": "The page's opening thesis names one cost bigger than the reparations bill. Which one?",
+  "choices": [
+    "In territory — Germany lost about 13 per cent of its land",
+    "In legitimacy — the Germans who had to live under it were never allowed to agree with it",
+    "In dollars — the settlement rested on American loans"
+  ],
+  "answer": 1,
+  "why": "A peace the defeated hate is a debt the future pays — the legitimacy gap is why every later crisis could be hung around Versailles's neck."
+};
+
+const toeSettingMatch = {
+  "prompt": "Paris, 1919 — pair each detail with what it signalled:",
+  "pairs": [
+    {
+      "left": "18 January",
+      "right": "deliberately the anniversary of the German Empire's proclamation at Versailles, 1871"
+    },
+    {
+      "left": "the Council of Four",
+      "right": "Wilson, Clemenceau, Lloyd George — and Italy's Orlando, who mattered least"
+    },
+    {
+      "left": "defeated Russia",
+      "right": "mid-civil-war, and not invited at all"
+    },
+    {
+      "left": "the delegates' mailbags",
+      "right": "a million names on petitions from every borderland in Europe"
+    }
+  ],
+  "why": "Six months of conference under enormous pressure: empires collapsing across Europe, revolution in the air — and Germany not invited to negotiate."
+};
+
+const toeAimsSpot = {
+  "prompt": "One line of this summary of the Big Three is wrong — click it:",
+  "lines": [
+    "Wilson: the Fourteen Points — open diplomacy, self-determination, a League of Nations.",
+    "Clemenceau: France invaded twice, about 1.3 million dead — Germany disarmed, made to pay, pinned down.",
+    "Lloyd George: 'squeeze the German lemon till the pips squeak' in public; a middle peace in private.",
+    "Each answered to a different public: a Congress, a parliament, a victorious electorate.",
+    "Yet none of the three answered to anyone, so the compromise was free."
+  ],
+  "errorLine": 4,
+  "correction": "Each answered to a public with its own arithmetic — the compromise was constrained before the first session began.",
+  "why": "Wilson to a Congress that would vote his peace down, Clemenceau to a parliament that nearly toppled him for being too soft, Lloyd George to an electorate drunk on victory: judging the treaty means judging 1919's politics."
+};
+
+const toeResidueCompare = {
+  "prompt": "What the victors promised themselves, and what the residue kept — drag the divider:",
+  "before": {
+    "label": "The promises, 1919",
+    "text": "Self-determination as the peace's foundation; an Anglo-American guarantee of French security; a Germany squeezed till the pips squeak."
+  },
+  "after": {
+    "label": "The residue, 1920–22",
+    "text": "Self-determination for the enemies' empires only; the guarantee dead in Washington; a German fleet scuttled at Scapa Flow — and its author privately calling the treaty a mistake."
+  },
+  "why": "When everyone feels robbed, the settlement has no constituency for defending it — Italy's 'mutilated victory', China refusing to sign at all."
+};
+
+const toeTermsEstimate = {
+  "prompt": "Reparations were fixed in 1921 at 132 billion gold marks — roughly how many pounds sterling?",
+  "unit": "£ billion",
+  "answer": 6.6,
+  "factor": 1.5,
+  "why": "About £6.6 billion — billed to a power legally responsible under Article 231, the war guilt clause: less a moral verdict than a legal hinge that made the bill enforceable."
+};
+
+const toeTermsPlace = {
+  "prompt": "In all, Germany lost what share of its population under the new borders?",
+  "labels": [
+    "0%",
+    "2.5%",
+    "5%",
+    "7.5%",
+    "10%",
+    "12.5%",
+    "15%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 15
+  },
+  "answer": 10,
+  "tolerance": 1,
+  "why": "A tenth of its people — with about 13 per cent of the land and nearly half its iron-ore reserves: Alsace-Lorraine to France, the Polish Corridor cutting East Prussia off, Danzig a free city, the Saar run by the League for fifteen years."
+};
+
+const toeCrisisOrder = {
+  "prompt": "Germany under the treaty — order the chain, earliest first:",
+  "items": [
+    "The Kapp Putsch: right-wing veterans seize Berlin, defeated by a general strike — March 1920",
+    "Foreign minister Rathenau machine-gunned in the street — 1921",
+    "Coal deliveries missed; French and Belgian troops occupy the Ruhr — January 1923",
+    "Passive resistance paid for by printing money — 1923",
+    "One US dollar buys 4.2 trillion marks; the Rentenmark stops the freefall — November 1923"
+  ],
+  "why": "The treaty's economics turned physical: each event feeds the next — the chain a consequences question asks you to reconstruct. The Dawes Plan (1924) then stabilised it all on American credit that died with Wall Street in 1929."
+};
+
+const toe1919Branch = {
+  "root": "Paris, mid-1919. You are a newspaper judging the treaty with contemporary eyes only — no hindsight allowed. Which case do you print?",
+  "nodes": {
+    "start": {
+      "text": "The terms are on the table. Your verdict?",
+      "choices": [
+        {
+          "label": "Print the prosecuting case",
+          "next": "prosecute",
+          "feedback": "Brest-Litovsk was far harsher; northern France lies in ruins; Belgium was invaded."
+        },
+        {
+          "label": "Print the defending case",
+          "next": "defend",
+          "feedback": "Keynes warns of a Carthaginian peace; Foch counts twenty years."
+        },
+        {
+          "label": "Split the verdict: terms, not process",
+          "next": "split",
+          "feedback": "The clauses may be defensible — a dictated signature and a war-guilt insult are not."
+        }
+      ]
+    },
+    "prosecute": {
+      "text": "Germany's outrage looks selective: at Brest-Litovsk in March 1918 it imposed on Russia a peace taking about a third of its population and most of its industry. Northern France really lies in ruins — mines flooded, towns razed — and a power that had shot civilians en route has little standing to complain of severity."
+    },
+    "defend": {
+      "text": "Keynes, quitting the British delegation, publishes The Economic Consequences of the Peace within six months, warning of a 'Carthaginian peace'; Marshal Foch calls the treaty 'an armistice for twenty years' — and many French think it too soft, since Germany remains intact."
+    },
+    "split": {
+      "text": "Content versus form: the terms are arguably defensible against a power that started — or at minimum lost — the war, but a dictated signature and a war-guilt clause that reads as an insult ensure they are never accepted as legitimate."
+    }
+  },
+  "why": "Versailles failed less as a bill than as a settlement — the deepest judgement distinguishes content from form."
+};
 ---
 <TopicPage slug="subjects/history/intermediate/the-treaty-of-versailles">
 
@@ -57,6 +194,7 @@ const timelineCfg = {
     live under it were never allowed to agree with it, and a peace the defeated hate is a
     debt the future pays.
   </p>
+  <Widget no="3" caption="bet before you read on — the real bill" widget="predict" config={toeLegitPredict} />
 
   <Widget no="1" caption="the Big Three: three mandates, one compromise" widget="equationStep" config={bigThreeCfg} />
   <p>
@@ -79,6 +217,7 @@ const timelineCfg = {
     revolution was in the air, and the delegates' mailbags carried a million names on
     petitions from every borderland in Europe.
   </p>
+  <Widget no="4" caption="pair each setting detail with its meaning" widget="match" config={toeSettingMatch} />
   <p>
     Woodrow Wilson arrived believing he was writing the constitution of a new world order.
     His Fourteen Points (January 1918) — open diplomacy, freedom of the seas, self-determination,
@@ -96,6 +235,7 @@ const timelineCfg = {
     ultimately vote his peace down, Clemenceau to a parliament that nearly toppled him for
     being too soft, Lloyd George to an electorate drunk on victory.
   </p>
+  <Widget no="5" caption="find the faulty line — the three mandates" widget="spot-error" config={toeAimsSpot} />
   <p>
     <em>Common misconception:</em> the Big Three were free agents over an empty map. Each
     answered to a public with its own arithmetic, so the compromise was
@@ -129,6 +269,7 @@ const timelineCfg = {
     angered China that China refused to sign at all. When everyone feels robbed, the
     settlement has no constituency for defending it.
   </p>
+  <Widget no="6" caption="drag the divider — promised, then delivered" widget="compare" config={toeResidueCompare} />
 
   <h2>What the treaty actually said</h2>
   <p>
@@ -153,6 +294,8 @@ const timelineCfg = {
     and not harsh enough to cripple: Germany remained the largest nation in Europe west of
     Russia, and every German knew it.
   </p>
+  <Widget no="7" caption="call the bill — the London Schedule" widget="estimate" config={toeTermsEstimate} />
+  <Widget no="8" caption="place the share — the map shrinks" widget="place" config={toeTermsPlace} />
 
     Russia, and every German knew it.
   </p>
@@ -197,6 +340,7 @@ const timelineCfg = {
     restored stability, but on a foundation of US credit that would collapse with Wall Street
     in 1929.
   </p>
+  <Widget no="9" caption="line up the crisis chain, earliest first" widget="order" config={toeCrisisOrder} />
   <p>
     <em>Common misconception:</em> hyperinflation was "caused by reparations". The chain was
     longer: reparations were the trigger, but the Ruhr occupation, the deliberate policy of
@@ -233,6 +377,7 @@ const timelineCfg = {
     Points that Paris quietly broke — ensured the terms were never accepted as legitimate
     even where they could be justified. Versailles failed less as a bill than as a settlement.
   </p>
+  <Widget no="10" caption="judge it with 1919's eyes" widget="branch" config={toe1919Branch} />
 
   <p>
     <em>Common misconception:</em> Versailles was uniquely harsh. Germany's own record says
