@@ -1,0 +1,165 @@
+[
+  {
+    "slug": "subjects/data-science/foundational/from-data-to-decisions",
+    "activities": [
+      {
+        "anchor": "their favourite pet and tallies the answers",
+        "type": "order",
+        "caption": "rebuild the smallest analysis in the world",
+        "name": "dsFlowOrder",
+        "config": {
+          "prompt": "Rebuild the tally-chart exercise in its logical order:",
+          "items": [
+            "A question comes first — which pet book to buy?",
+            "Data is collected to answer it — the class is polled",
+            "The tallies are organised into a form a human can read",
+            "The chart is interpreted against the question — dogs beat cats by four"
+          ],
+          "why": "The whole discipline in miniature: question, collect, organise, interpret — the same loop later run on millions of records."
+        }
+      },
+      {
+        "anchor": "the same loop, run on",
+        "type": "match",
+        "caption": "pair each leg with what its absence costs",
+        "name": "dsLegsMatch",
+        "config": {
+          "prompt": "Data science stands on three legs — pair each with what happens without it:",
+          "pairs": [
+            { "left": "without statistics", "right": "dashboard decoration" },
+            { "left": "without computing", "right": "the work cannot scale past a spreadsheet" },
+            { "left": "without domain knowledge", "right": "precise answers to pointless questions" }
+          ],
+          "why": "Take any one leg away and the work stops being science — each leg covers a different failure mode."
+        }
+      },
+      {
+        "anchor": "Every dataset is built from two kinds of entries",
+        "type": "sort-buckets",
+        "caption": "file each summary under the kind of data it serves",
+        "name": "dsKindSort",
+        "config": {
+          "prompt": "File each summary or chart under the kind of data it serves:",
+          "buckets": ["categorical", "numerical"],
+          "items": [
+            { "label": "the most common pet (the mode)", "bucket": 0 },
+            { "label": "average viewing hours", "bucket": 1 },
+            { "label": "a bar chart", "bucket": 0 },
+            { "label": "a histogram", "bucket": 1 },
+            { "label": "plan type", "bucket": 0 },
+            { "label": "a count of books", "bucket": 1 }
+          ],
+          "why": "The kind decides the honest summary: an 'average pet' is nonsense while the most common pet is right — and bar charts for categories, scatters and histograms for quantities."
+        }
+      },
+      {
+        "anchor": "narrow enough that a map of fatalities",
+        "type": "branch",
+        "caption": "sharpen the question — the Snow decision",
+        "name": "dsSnowBranch",
+        "config": {
+          "root": "London, 1854. Your working question: 'What causes cholera?' — too broad for any dataset to answer.",
+          "nodes": {
+            "start": {
+              "text": "The question must become something evidence could decide.",
+              "choices": [
+                { "label": "Narrow it until a map of deaths could answer it", "next": "snow", "feedback": "Snow's actual move: 'do deaths cluster around a particular water source?' — narrow enough that the Broad Street pump map could settle it." },
+                { "label": "Collect every possible dataset first, decide later", "next": "hoard", "feedback": "Data collected before the question is decided collects everything and answers nothing." },
+                { "label": "Ask the data to speak for itself", "next": "vague", "feedback": "It answers whatever you ask — and it answers vague questions vaguely." }
+              ]
+            },
+            "hoard": {
+              "text": "The collection drags on; every hypothesis stays alive because none was sharpened.",
+              "choices": [
+                { "label": "Name the decision, then narrow the question", "next": "snow", "feedback": "A well-formed question names its decision, its deadline and its acceptable error." }
+              ]
+            },
+            "vague": { "text": "Vague questions make data decorative — the dashboard fills, the decision does not." },
+            "snow": { "text": "A sharp question, a decisive map, a pump handle removed — the outbreak ends." }
+          },
+          "why": "Sharp questions make data decisive; vague questions make data decorative — the question comes first."
+        }
+      },
+      {
+        "anchor": "its signature is that the data never mentions",
+        "type": "cloze",
+        "caption": "fill the blanks — the bias that hides by omission",
+        "name": "dsBiasCloze",
+        "config": {
+          "text": "If customer records only include people who finished signup, every conclusion silently describes %%0%%, not potential customers; if a survey only reaches landlines, it describes %%1%%. Selection bias's signature: the data never %%2%% what it is missing.",
+          "answers": [
+            ["finishers", "people who finished signup", "signers-up"],
+            ["1995", "the nineties", "1995's population"],
+            ["mentions", "name", "say"]
+          ],
+          "hint": "The signup file describes the completers; the landline survey is stuck in a pre-mobile year; and the missing are never announced."
+        }
+      },
+      {
+        "anchor": "prefer fixing the pipeline over hand-editing",
+        "type": "spot-error",
+        "caption": "find the cleaning rule that got broken",
+        "name": "dsCleanSpot",
+        "config": {
+          "prompt": "One entry in this cleaning log breaks the rules — click it:",
+          "lines": [
+            "Duplicates from the billing-system migration removed.",
+            "Viewing hours during the two-week outage recoded as missing, not zero.",
+            "Eleven accounts with negative tenure dropped; pipeline bug reported.",
+            "A few awkward rows quietly deleted so the retention chart reads cleaner."
+          ],
+          "errorLine": 3,
+          "correction": "Never clean silently — document every transformation, and never clean toward the answer you expect.",
+          "why": "Each undocumented edit is a small lie that propagates into every downstream number; a model trained on wrongly joined data is confidently wrong forever."
+        }
+      },
+      {
+        "anchor": "do not fit a model and check it against the data",
+        "type": "compare",
+        "caption": "two habits at step four — drag the divider",
+        "name": "dsEdaCompare",
+        "config": {
+          "prompt": "Two ways to meet a new dataset — drag the divider:",
+          "before": { "label": "model first", "text": "fit a model, then check it against the data — the classroom habit" },
+          "after": { "label": "plot first", "text": "look until the data tells you which model would be honest — Tukey's inversion" },
+          "why": "Anscombe's quartet: four datasets with identical averages, spreads and fitted lines — and wildly different pictures. Plotting is inspection, not presentation."
+        }
+      },
+      {
+        "anchor": "scoring beautifully there and embarrassingly on new data",
+        "type": "predict",
+        "caption": "bet before you read on — the diagnosis",
+        "name": "dsOverfitPredict",
+        "config": {
+          "q": "Your model scores 99% on the data it trained on and 60% on data it has never seen. What is the diagnosis?",
+          "choices": [
+            "Overfitting — it memorised the noise in its training data",
+            "Underfitting — the model is too simple",
+            "The test set must be wrong",
+            "Add more parameters to close the gap"
+          ],
+          "answer": 0,
+          "why": "A flexible model can memorise the noise in its training data; the defence is a held-out test set, and complexity must earn its keep there — a parameter that improves training fit but not test fit is a lie the model tells itself."
+        }
+      },
+      {
+        "anchor": "Uncertainty is content, not weakness",
+        "type": "sort-buckets",
+        "caption": "file each deliverable under honest reporting or theatre",
+        "name": "dsCommSort",
+        "config": {
+          "prompt": "File each deliverable under honest reporting or theatre:",
+          "buckets": ["honest reporting", "theatre"],
+          "items": [
+            { "label": "a number with its uncertainty range", "bucket": 0 },
+            { "label": "axes that start from zero", "bucket": 0 },
+            { "label": "a truncated axis that doubles the drama", "bucket": 1 },
+            { "label": "assumptions stated with the recommendation", "bucket": 0 },
+            { "label": "a forecast delivered without a range", "bucket": 1 }
+          ],
+          "why": "Uncertainty is content, not weakness: a forecast without a range invites decisions the evidence cannot support."
+        }
+      }
+    ]
+  }
+]

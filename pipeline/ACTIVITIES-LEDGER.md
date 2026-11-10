@@ -195,6 +195,9 @@
 | earth-science/foundational/minerals-and-crystals | sort-buckets, compare, match, order, spot-error, branch, cloze, predict | round-5 |
 | earth-science/foundational/rock-cycle | match, branch, sort-buckets, spot-error, judge, estimate, compare, order | round-5 |
 | earth-science/foundational/the-water-cycle | compare, cloze, estimate, sort-buckets, predict, place, match, branch | round-5 |
+| design/intermediate/typography-fundamentals | sort-buckets, match, order, estimate, branch, spot-error, compare, cloze | design-12 |
+| earth-science/foundational/weathering-erosion-and-landforms | estimate, sort-buckets, match, place, cloze, spot-error, order, branch, predict | earthscience-6 |
+| data-science/foundational/from-data-to-decisions | order, match, sort-buckets, branch, cloze, spot-error, compare, predict | datascience-3 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

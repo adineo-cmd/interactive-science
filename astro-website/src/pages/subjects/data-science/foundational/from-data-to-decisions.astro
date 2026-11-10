@@ -24,6 +24,205 @@ const flowCfg = {
     { math: '6 · Communicate', note: 'A result that does not change a decision was entertainment. Say what is uncertain as clearly as what is not.' },
   ],
 };
+
+const dsFlowOrder = {
+  "prompt": "Rebuild the tally-chart exercise in its logical order:",
+  "items": [
+    "A question comes first — which pet book to buy?",
+    "Data is collected to answer it — the class is polled",
+    "The tallies are organised into a form a human can read",
+    "The chart is interpreted against the question — dogs beat cats by four"
+  ],
+  "why": "The whole discipline in miniature: question, collect, organise, interpret — the same loop later run on millions of records."
+};
+
+const dsLegsMatch = {
+  "prompt": "Data science stands on three legs — pair each with what happens without it:",
+  "pairs": [
+    {
+      "left": "without statistics",
+      "right": "dashboard decoration"
+    },
+    {
+      "left": "without computing",
+      "right": "the work cannot scale past a spreadsheet"
+    },
+    {
+      "left": "without domain knowledge",
+      "right": "precise answers to pointless questions"
+    }
+  ],
+  "why": "Take any one leg away and the work stops being science — each leg covers a different failure mode."
+};
+
+const dsKindSort = {
+  "prompt": "File each summary or chart under the kind of data it serves:",
+  "buckets": [
+    "categorical",
+    "numerical"
+  ],
+  "items": [
+    {
+      "label": "the most common pet (the mode)",
+      "bucket": 0
+    },
+    {
+      "label": "average viewing hours",
+      "bucket": 1
+    },
+    {
+      "label": "a bar chart",
+      "bucket": 0
+    },
+    {
+      "label": "a histogram",
+      "bucket": 1
+    },
+    {
+      "label": "plan type",
+      "bucket": 0
+    },
+    {
+      "label": "a count of books",
+      "bucket": 1
+    }
+  ],
+  "why": "The kind decides the honest summary: an 'average pet' is nonsense while the most common pet is right — and bar charts for categories, scatters and histograms for quantities."
+};
+
+const dsSnowBranch = {
+  "root": "London, 1854. Your working question: 'What causes cholera?' — too broad for any dataset to answer.",
+  "nodes": {
+    "start": {
+      "text": "The question must become something evidence could decide.",
+      "choices": [
+        {
+          "label": "Narrow it until a map of deaths could answer it",
+          "next": "snow",
+          "feedback": "Snow's actual move: 'do deaths cluster around a particular water source?' — narrow enough that the Broad Street pump map could settle it."
+        },
+        {
+          "label": "Collect every possible dataset first, decide later",
+          "next": "hoard",
+          "feedback": "Data collected before the question is decided collects everything and answers nothing."
+        },
+        {
+          "label": "Ask the data to speak for itself",
+          "next": "vague",
+          "feedback": "It answers whatever you ask — and it answers vague questions vaguely."
+        }
+      ]
+    },
+    "hoard": {
+      "text": "The collection drags on; every hypothesis stays alive because none was sharpened.",
+      "choices": [
+        {
+          "label": "Name the decision, then narrow the question",
+          "next": "snow",
+          "feedback": "A well-formed question names its decision, its deadline and its acceptable error."
+        }
+      ]
+    },
+    "vague": {
+      "text": "Vague questions make data decorative — the dashboard fills, the decision does not."
+    },
+    "snow": {
+      "text": "A sharp question, a decisive map, a pump handle removed — the outbreak ends."
+    }
+  },
+  "why": "Sharp questions make data decisive; vague questions make data decorative — the question comes first."
+};
+
+const dsBiasCloze = {
+  "text": "If customer records only include people who finished signup, every conclusion silently describes %%0%%, not potential customers; if a survey only reaches landlines, it describes %%1%%. Selection bias's signature: the data never %%2%% what it is missing.",
+  "answers": [
+    [
+      "finishers",
+      "people who finished signup",
+      "signers-up"
+    ],
+    [
+      "1995",
+      "the nineties",
+      "1995's population"
+    ],
+    [
+      "mentions",
+      "name",
+      "say"
+    ]
+  ],
+  "hint": "The signup file describes the completers; the landline survey is stuck in a pre-mobile year; and the missing are never announced."
+};
+
+const dsCleanSpot = {
+  "prompt": "One entry in this cleaning log breaks the rules — click it:",
+  "lines": [
+    "Duplicates from the billing-system migration removed.",
+    "Viewing hours during the two-week outage recoded as missing, not zero.",
+    "Eleven accounts with negative tenure dropped; pipeline bug reported.",
+    "A few awkward rows quietly deleted so the retention chart reads cleaner."
+  ],
+  "errorLine": 3,
+  "correction": "Never clean silently — document every transformation, and never clean toward the answer you expect.",
+  "why": "Each undocumented edit is a small lie that propagates into every downstream number; a model trained on wrongly joined data is confidently wrong forever."
+};
+
+const dsEdaCompare = {
+  "prompt": "Two ways to meet a new dataset — drag the divider:",
+  "before": {
+    "label": "model first",
+    "text": "fit a model, then check it against the data — the classroom habit"
+  },
+  "after": {
+    "label": "plot first",
+    "text": "look until the data tells you which model would be honest — Tukey's inversion"
+  },
+  "why": "Anscombe's quartet: four datasets with identical averages, spreads and fitted lines — and wildly different pictures. Plotting is inspection, not presentation."
+};
+
+const dsOverfitPredict = {
+  "q": "Your model scores 99% on the data it trained on and 60% on data it has never seen. What is the diagnosis?",
+  "choices": [
+    "Overfitting — it memorised the noise in its training data",
+    "Underfitting — the model is too simple",
+    "The test set must be wrong",
+    "Add more parameters to close the gap"
+  ],
+  "answer": 0,
+  "why": "A flexible model can memorise the noise in its training data; the defence is a held-out test set, and complexity must earn its keep there — a parameter that improves training fit but not test fit is a lie the model tells itself."
+};
+
+const dsCommSort = {
+  "prompt": "File each deliverable under honest reporting or theatre:",
+  "buckets": [
+    "honest reporting",
+    "theatre"
+  ],
+  "items": [
+    {
+      "label": "a number with its uncertainty range",
+      "bucket": 0
+    },
+    {
+      "label": "axes that start from zero",
+      "bucket": 0
+    },
+    {
+      "label": "a truncated axis that doubles the drama",
+      "bucket": 1
+    },
+    {
+      "label": "assumptions stated with the recommendation",
+      "bucket": 0
+    },
+    {
+      "label": "a forecast delivered without a range",
+      "bucket": 1
+    }
+  ],
+  "why": "Uncertainty is content, not weakness: a forecast without a range invites decisions the evidence cannot support."
+};
 ---
 <TopicPage slug="subjects/data-science/foundational/from-data-to-decisions">
 
@@ -57,6 +256,7 @@ const flowCfg = {
     children answered in all; hamsters came last. The chart was never the point. The point was
     a decision the numbers could inform — which pet book to buy for the classroom shelf, say.
   </p>
+  <Widget no="11" caption="rebuild the smallest analysis in the world" widget="order" config={dsFlowOrder} />
   <p>
     That little exercise already contains the whole discipline in miniature. A question came
     first. Data was collected to answer it. The tallies were organised into a form a human can
@@ -71,6 +271,7 @@ const flowCfg = {
     statistics it is dashboard decoration; without computing it cannot scale; without domain
     knowledge it produces precise answers to pointless questions.
   </p>
+  <Widget no="10" caption="pair each leg with what its absence costs" widget="match" config={dsLegsMatch} />
   <p>
     The unglamorous truth about the profession is that most of the craft is plumbing and
     honesty: asking sharp questions, cleaning messy evidence, plotting before modelling,
@@ -93,6 +294,7 @@ const flowCfg = {
     spent deciding, column by column, which kind each variable is — because the kind decides
     what questions the column can answer.
   </p>
+  <Widget no="9" caption="file each summary under the kind of data it serves" widget="sort-buckets" config={dsKindSort} />
   <p>
     <strong>So far:</strong> data science is the child's tally chart grown up — question,
     collect, organise, interpret — at industrial scale, with three legs under it. Now for the
@@ -148,6 +350,7 @@ const flowCfg = {
     Street pump could <em>answer</em> it. Sharp questions make data decisive; vague
     questions make data decorative.
   </p>
+  <Widget no="8" caption="sharpen the question — the Snow decision" widget="branch" config={dsSnowBranch} />
   <p>
     <strong>2 · Collect.</strong> Data arrives from databases, sensors, surveys, logs — and
     the act of collection is itself a measuring instrument. If customer records only include
@@ -157,6 +360,7 @@ const flowCfg = {
     it is missing. The professional habit is to write down, before analysing, <em>how</em>
     each field was produced and who is absent from the file.
   </p>
+  <Widget no="7" caption="fill the blanks — the bias that hides by omission" widget="cloze" config={dsBiasCloze} />
   <p>
     <strong>3 · Clean.</strong> Names spelled three ways, dates in two formats, impossible
     ages (230), duplicated rows, missing values coded as 0, −1, blank or the string "NULL" —
@@ -165,6 +369,7 @@ const flowCfg = {
     prefer fixing the pipeline over hand-editing the symptom. A model trained on wrongly
     joined data is confidently wrong forever.
   </p>
+  <Widget no="6" caption="find the cleaning rule that got broken" widget="spot-error" config={dsCleanSpot} />
   <p>
     <strong>4 · Explore.</strong> Plot first, model second. Histograms reveal skew;
     scatter plots reveal relationships; box plots reveal outliers; summary tables reveal
@@ -177,6 +382,7 @@ const flowCfg = {
     with <em>identical</em> averages, spreads and fitted lines — and wildly different
     pictures. Plotting is not presentation; it is inspection.
   </p>
+  <Widget no="5" caption="two habits at step four — drag the divider" widget="compare" config={dsEdaCompare} />
   <p>
     <strong>5 · Model &amp; validate.</strong> Fit the simplest thing that could work —
     often a baseline ("predict the average", "predict yesterday's value") — then something
@@ -188,6 +394,7 @@ const flowCfg = {
     Complexity must earn its keep on unseen data; a parameter that improves training fit
     but not test fit is a lie the model tells itself.
   </p>
+  <Widget no="4" caption="bet before you read on — the diagnosis" widget="predict" config={dsOverfitPredict} />
   <p>
     <strong>6 · Communicate.</strong> A result that does not change a decision was
     entertainment. The deliverables are a number with its uncertainty ("renewal likely lifts
@@ -196,6 +403,7 @@ const flowCfg = {
     recommendation with its assumptions stated. Uncertainty is content, not weakness: a
     forecast delivered without a range invites decisions the evidence cannot support.
   </p>
+  <Widget no="3" caption="file each deliverable under honest reporting or theatre" widget="sort-buckets" config={dsCommSort} />
   <p>
     <strong>So far:</strong> six steps — question, collect, clean, explore, model and
     validate, communicate — each with a characteristic trap. Now watch all six carry one

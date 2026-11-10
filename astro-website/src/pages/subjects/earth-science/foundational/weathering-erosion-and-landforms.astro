@@ -10,6 +10,211 @@ const weatherCfg = {
     { math: '4 · Landforms read as process', note: 'V-shaped valley = stream cutting; U-shaped = glacier; alluvial fan = mountain stream braking onto flats; delta = river meeting still water; karst = dissolution. The shape names the process that made it.' },
   ],
 };
+
+const weatherFanEst = {
+  "prompt": "The Himalaya's erosion feeds the Bengal Fan on the Indian Ocean floor — how thick is that sediment cone?",
+  "unit": "km",
+  "answer": 16,
+  "factor": 2,
+  "why": "About 16 km thick — the largest body of sediment on the planet, built entirely from the Himalaya's demolition.",
+  "context": "the Grand Canyon, by comparison, is a kilometre of rock removed"
+};
+
+const weatherProcSort = {
+  "prompt": "File each process under the weathering it belongs to:",
+  "buckets": [
+    "mechanical — chemistry unchanged",
+    "chemical — minerals consumed"
+  ],
+  "items": [
+    {
+      "label": "frost wedging",
+      "bucket": 0
+    },
+    {
+      "label": "feldspar rotting into clay",
+      "bucket": 1
+    },
+    {
+      "label": "exfoliation domes",
+      "bucket": 0
+    },
+    {
+      "label": "calcite dissolving into karst",
+      "bucket": 1
+    },
+    {
+      "label": "root wedging",
+      "bucket": 0
+    },
+    {
+      "label": "oxidation rusting iron minerals",
+      "bucket": 1
+    }
+  ],
+  "why": "Mechanical weathering multiplies surfaces; chemical weathering consumes them — and each accelerates the other."
+};
+
+const weatherChemMatch = {
+  "prompt": "Pair each chemical reaction with its landscape signature:",
+  "pairs": [
+    {
+      "left": "dissolution of calcite",
+      "right": "karst — caves, sinkholes and disappearing streams"
+    },
+    {
+      "left": "hydrolysis of feldspar",
+      "right": "clay, the most abundant weathering product on Earth"
+    },
+    {
+      "left": "oxidation of iron-bearing minerals",
+      "right": "the reds and browns of weathered rock and soil"
+    },
+    {
+      "left": "rain absorbing CO₂ as it falls",
+      "right": "weak carbonic acid, the reagent"
+    }
+  ],
+  "why": "Rainwater is the reagent; each reaction leaves a readable signature on the landscape."
+};
+
+const weatherFrostPlace = {
+  "prompt": "Water expands by about what percentage when it freezes — the pry bar of frost wedging?",
+  "labels": [
+    "0%",
+    "5%",
+    "10%",
+    "15%",
+    "20%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 20
+  },
+  "answer": 9,
+  "tolerance": 1.5,
+  "why": "About 9% — repeated nightly through a mountain winter, prying with forces up to roughly 200 MPa, enough to split granite."
+};
+
+const weatherLoadCloze = {
+  "text": "A stream carries its cargo three ways: %%0%% rolling along the bottom, %%1%% drifting with the current, and %%2%% invisible in the water itself.",
+  "answers": [
+    [
+      "bedload",
+      "bed load"
+    ],
+    [
+      "suspended load",
+      "suspended"
+    ],
+    [
+      "dissolved load",
+      "dissolved"
+    ]
+  ],
+  "hint": "One rolls, one rides, one vanishes into the water chemistry."
+};
+
+const weatherIceSpot = {
+  "prompt": "One of these claims about glacier transport is backwards — click it:",
+  "lines": [
+    "Glacier ice drags frozen debris across bedrock under hundreds of metres of its own weight.",
+    "It plucks blocks loose and polishes what remains with rock-flour.",
+    "Its valleys are U-shaped where streams cut V-shaped ones.",
+    "Moraine and till are well sorted, finest grains first."
+  ],
+  "errorLine": 3,
+  "correction": "Moraine and till are a chaotic mix from clay to house-sized boulders — ice does not sort.",
+  "why": "The size law belongs to water; ice is the one sediment where sorting conspicuously fails."
+};
+
+const weatherCoastOrder = {
+  "prompt": "Rebuild the coast's slow straightening — what happens first:",
+  "items": [
+    "Waves refract and focus their energy on the protruding headland",
+    "A sea cave is eroded from both sides of the headland",
+    "The cave cuts through — an arch stands",
+    "The arch collapses, leaving a resistant stack"
+  ],
+  "why": "Headlands erode faster, and an irregular coast slowly straightens itself into cliffs, wave-cut platforms and stacks."
+};
+
+const weatherFloodBranch = {
+  "root": "A river bursts its banks onto a floodplain. What settles where?",
+  "nodes": {
+    "start": {
+      "text": "The flow leaves the channel and suddenly slows.",
+      "choices": [
+        {
+          "label": "Coarse gravel drops right at the channel; clay travels farthest",
+          "next": "law",
+          "feedback": "The size law at work: fast flows carry big particles, slow flows only fine ones."
+        },
+        {
+          "label": "Fine clay drops first — it is the lightest",
+          "next": "backwards",
+          "feedback": "Backwards: clay stays suspended longest and settles farthest out."
+        },
+        {
+          "label": "Nothing settles — the flood carries everything to the sea",
+          "next": "partial",
+          "feedback": "Some does — but the floodplain keeps its silt, which is why floodplains are farmland."
+        }
+      ]
+    },
+    "backwards": {
+      "text": "Watch a jar of muddy water settle: big grains first, clay last.",
+      "choices": [
+        {
+          "label": "Re-answer: the coarse load drops where the flow brakes",
+          "next": "law",
+          "feedback": "Right — biggest first, at the point the current slows."
+        }
+      ]
+    },
+    "law": {
+      "text": "The fan, the floodplain and the delta all run on this one law."
+    },
+    "partial": {
+      "text": "The floodplain keeps its silt either way — deposition by size, right where the water slowed."
+    }
+  },
+  "why": "Wherever a current brakes, it deposits by size — gravel → sand → silt → clay, with the dissolved load reaching the sea last."
+};
+
+const weatherRockMatch = {
+  "prompt": "Pair each sedimentary rock with its origin:",
+  "pairs": [
+    {
+      "left": "conglomerate",
+      "right": "rounded gravel — a fast, short journey"
+    },
+    {
+      "left": "shale",
+      "right": "mud compacted into fissile sheets — the calm deep-water record, the most abundant"
+    },
+    {
+      "left": "limestone",
+      "right": "calcite from warm shallow seas, much of it shell debris"
+    },
+    {
+      "left": "coal",
+      "right": "compacted swamp forest, carbonised"
+    }
+  ],
+  "why": "Every sedimentary rock is a compressed photograph of a place and moment, stacked in order."
+};
+
+const weatherCliffPredict = {
+  "q": "A cliff runs, bottom to top: conglomerate, cross-bedded sandstone, mud-cracked shale, fossiliferous limestone. What single sentence of history does it tell?",
+  "choices": [
+    "The land sank (or the sea rose), in that order",
+    "The sea dried up and the rocks were later flipped upside down",
+    "A glacier advanced and retreated four times"
+  ],
+  "answer": 0,
+  "why": "Five rock names, one sentence of history — the land sank or the sea rose, in that order, with superposition (younger layers on top) supplying the timeline the whole way up."
+};
 ---
 <TopicPage slug="subjects/earth-science/foundational/weathering-erosion-and-landforms">
 
@@ -52,6 +257,7 @@ const weatherCfg = {
     farmers and erosion-control engineers fight every season. Geomorphology — the study
     of landforms — is the grammar for reading all of it.
   </p>
+  <Widget no="11" caption="call the size of the planet's biggest sediment pile" widget="estimate" config={weatherFanEst} />
 
   <Widget no="1" caption="break, move, sort, read" widget="equationStep" config={weatherCfg} />
   <p>
@@ -76,6 +282,8 @@ const weatherCfg = {
     sandblasting each other), and <strong>root wedging</strong> (a growing root widening
     a crack with slow, patient force).
   </p>
+  <Widget no="10" caption="file each process under the weathering it belongs to" widget="sort-buckets" config={weatherProcSort} />
+  <Widget no="9" caption="drop the marker — the frost wedge's leverage" widget="place" config={weatherFrostPlace} />
   <p>
     Notice what every one of these needs: a <em>crack</em> to work in. Weathering is a
     business of surfaces — the more broken the rock, the faster it breaks. That fact
@@ -97,6 +305,7 @@ const weatherCfg = {
     abundant weathering product on Earth. <strong>Oxidation</strong> rusts iron-bearing
     minerals, supplying the reds and browns of weathered rock and soil.
   </p>
+  <Widget no="8" caption="pair each reaction with its landscape signature" widget="match" config={weatherChemMatch} />
   <p>
     The two kinds of weathering feed each other. Frost cracks give acid water fresh
     surfaces to attack; chemical rot crumbles rock so ice can split it further — a
@@ -129,6 +338,7 @@ const weatherCfg = {
     along the bottom, <em>suspended load</em> drifting with the current, and
     <em>dissolved load</em> invisible in the water itself.
   </p>
+  <Widget no="7" caption="fill the blanks — the three ways a stream hauls" widget="cloze" config={weatherLoadCloze} />
   <p>
     <strong>Ice</strong> is the bulldozer. Glacier ice, under hundreds of metres of its
     own weight, drags frozen debris across bedrock, <em>plucking</em> blocks loose and
@@ -138,6 +348,7 @@ const weatherCfg = {
     house-sized boulders, the one sediment where the size law conspicuously fails,
     because ice does not sort.
   </p>
+  <Widget no="6" caption="find the backwards claim — what ice refuses to do" widget="spot-error" config={weatherIceSpot} />
   <p>
     <strong>Wind</strong> is the specialist of dry, unvegetated places. It can win only
     sand and dust, but it works them hard: it builds <strong>dunes</strong> whose
@@ -157,6 +368,7 @@ const weatherCfg = {
     from both sides becomes an <strong>arch</strong>; when the arch collapses, its
     pillar is left standing as a stack.
   </p>
+  <Widget no="5" caption="rebuild the coast's slow straightening" widget="order" config={weatherCoastOrder} />
   <p><em>Common misconception:</em> "deserts, having no water, barely weather." They
   simply switch agents: thermal cycling stresses rock daily, rare cloudbursts do decades
   of water work in an hour, wind abrades and sorts, and salt crystallising in pores
@@ -176,6 +388,7 @@ const weatherCfg = {
     filing its entire load), and — applied by the sea — every beach, wave-sorted sand
     between mudflat and cliff.
   </p>
+  <Widget no="4" caption="run the flood — decide what settles where" widget="branch" config={weatherFloodBranch} />
   <p>
     Deposited sediment does not stay loose. Burial compacts it, and minerals
     precipitating between the grains — usually calcite, silica or iron oxide — cement it
@@ -206,6 +419,7 @@ const weatherCfg = {
     of the Cretaceous), and reef limestones. Every sedimentary rock, in other words, is
     a compressed photograph of a place and moment, stacked in order.
   </p>
+  <Widget no="3" caption="pair each rock with its origin" widget="match" config={weatherRockMatch} />
   <p>
     Read a cliff as a worked example. Bottom to top: a coarse conglomerate with rounded
     pebbles, fining upward into cross-bedded sandstone, then shale carrying mud cracks
@@ -216,6 +430,7 @@ const weatherCfg = {
     history — the land sank or the sea rose, in that order — with superposition
     (younger layers on top) supplying the timeline the whole way up.
   </p>
+  <Widget no="2" caption="bet before you read on — the cliff's one-sentence history" widget="predict" config={weatherCliffPredict} />
   <p><em>Common misconception:</em> "fossils can be found in any rock if you dig deep
   enough." Fossils are almost exclusively a sedimentary phenomenon. Igneous rock is born
   hot enough to vaporise them, and metamorphism's heat and pressure distort or erase
