@@ -10,6 +10,149 @@ const sysCfg = {
     { math: '4 · Prevention underfunds itself', note: 'Prevention\'s payoffs arrive years later, to different budgets. The institutional mismatch — payers who save are not payers who spend — is health policy\'s structural problem.' },
   ],
 };
+
+const hsBloodMatch = {
+  "prompt": "The most perishable supply chain in medicine — pair each component with its shelf life:",
+  "pairs": [
+    {
+      "left": "red cells",
+      "right": "refrigerated, around five to six weeks"
+    },
+    {
+      "left": "platelets",
+      "right": "about a week"
+    },
+    {
+      "left": "plasma",
+      "right": "frozen, lasting months"
+    }
+  ],
+  "why": "The supply cannot be stockpiled or manufactured — it is continuously replaced, which is why a system is only as strong as its most recent collections."
+};
+
+const hsDoorEstimate = {
+  "prompt": "Angioplasty works best fast, and systems organise themselves around the clock, not the hospital. Roughly what door-to-balloon time (minutes) do guidelines demand?",
+  "unit": "min",
+  "answer": 90,
+  "factor": 1.25,
+  "why": "About 90 minutes — which is why London's 2000s redesign retrained ambulance crews to read the tracing in the field and drive straight to a 24/7 specialist hub."
+};
+
+const hsHubSpot = {
+  "prompt": "A note on emergency-network design — one line is wrong. Click it:",
+  "lines": [
+    "Ambulance crews can be retrained to diagnose in the field and drive past the nearest department.",
+    "A few high-volume specialist centres, reached by bypass protocols, outperform a map dotted with low-volume general ones.",
+    "So the best network is the one that puts a small receiving unit in every town.",
+    "High-volume hospitals consistently lose fewer patients undergoing complex procedures.",
+    "Consolidation — eight receiving centres becoming fewer, busier ones — improved survival."
+  ],
+  "errorLine": 2,
+  "correction": "The evidence supports consolidation: fewer, busier hubs reached by bypass protocols — proximity to a building is not proximity to competence.",
+  "why": "The volume–outcome literature is the design principle: for time-critical care, concentrate the caseload."
+};
+
+const hsStrokePlace = {
+  "prompt": "Clot-dissolving drugs must arrive within a window measured from onset. Place the marker on that window (hours):",
+  "labels": [
+    "0",
+    "6",
+    "12",
+    "18",
+    "24"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 24
+  },
+  "answer": 4.5,
+  "tolerance": 0.6,
+  "why": "About 4.5 hours for clot-dissolving drugs; mechanical thrombectomy extends to 24 hours in selected patients whose imaging shows salvageable tissue — the DAWN trial stopped early."
+};
+
+const hsHerdCloze = {
+  "text": "Immunisation creates individual memory; at scale, immune people block transmission, protecting even the %%0%% — herd immunity. Smallpox was declared eradicated in %%1%% because vaccination plus surveillance closed the gap everywhere.",
+  "answers": [
+    "unvaccinated",
+    "1980"
+  ],
+  "hint": "One blank names who the shield shelters; the other is the year the declaration was made."
+};
+
+const hsCovidOrder = {
+  "prompt": "The fastest pipeline on record — drag the sequence into order:",
+  "items": [
+    "The viral genome is published (11 January 2020)",
+    "Vaccine design begins on the published sequence",
+    "The first dose enters a trial — 63 days after the sequence",
+    "Manufacturing scales at financial risk before approval",
+    "Authorisation waits for full-scale trials with tens of thousands of volunteers"
+  ],
+  "why": "The compression was in paperwork queues and parallel production, not in the evidence — and the stockpiles that matter are bought in peacetime or not at all."
+};
+
+const hsPrimaryBranch = {
+  "root": "Two system designs, one budget. Walk the trade.",
+  "nodes": {
+    "start": {
+      "text": "The ministry can fund a strong first-contact layer or let hospitals absorb everything. Which design?",
+      "choices": [
+        {
+          "label": "Fund strong primary care — gatekeeping, continuity, prevention",
+          "next": "primary",
+          "feedback": "Most illness is minor, chronic or preventable — handled where it is cheapest."
+        },
+        {
+          "label": "Skip it; emergency departments will catch what comes",
+          "next": "ed",
+          "feedback": "The costliest door in medicine becomes the safety net."
+        }
+      ]
+    },
+    "primary": {
+      "text": "The cross-national evidence: better outcomes at lower total cost than specialist-heavy systems — hospitals reserved for what hospitals are for.",
+      "choices": [
+        {
+          "label": "Now the counterfactual",
+          "next": "ed"
+        }
+      ]
+    },
+    "ed": {
+      "text": "The bill lands downstream: unserved first-contact care arrives at the emergency door, and the system pays hospital prices for problems a clinic would have cleared.",
+      "choices": []
+    }
+  },
+  "why": "Primary care is the system's highest-leverage layer — the mechanism is arithmetic as much as medicine."
+};
+
+const hsWorkforceTrace = {
+  "prompt": "A training pipeline is funded today. Which curve shows workforce supply over the following years?",
+  "curves": [
+    {
+      "expr": "2*x",
+      "color": "#b42318",
+      "label": "A"
+    },
+    {
+      "expr": "max(0, 2*(x-5))",
+      "color": "#1d4ed8",
+      "label": "B"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 12
+  },
+  "y": {
+    "min": 0,
+    "max": 25
+  },
+  "xlabel": "years since the funding decision",
+  "ylabel": "workforce supply (arb. units)",
+  "why": "The supply curve answers the funding decision years late — which is why today's shortages were decided long ago, why migration fills the gap, and why the WHO adopted a voluntary code on ethical recruitment (2010)."
+};
 ---
 <TopicPage slug="subjects/medicine/expert/health-systems-and-policy">
   <h2>Where you are, and what you will learn</h2>
@@ -71,6 +214,7 @@ const sysCfg = {
     African and Caribbean heritage. A health system is only as strong as this week's donation
     queue.
   </p>
+  <Widget no="2" caption="pair each blood component with its clock" widget="match" config={hsBloodMatch} />
   <p>
     <em>Common misconception:</em> "blood is just another product the market can supply." It
     cannot be synthesised at scale, it expires faster than most groceries, and the evidence base
@@ -99,12 +243,14 @@ const sysCfg = {
     financing layer follows the same logic — rich systems pay for primary-care statins and blood
     pressure control precisely because one prevented infarction funds a great deal of prevention.
   </p>
+  <Widget no="3" caption="call the door-to-balloon target" widget="estimate" config={hsDoorEstimate} />
   <p>
     <em>Common misconception:</em> "more hospitals nearby must mean better care." For
     time-critical conditions the opposite is often true: a network of a few high-volume
     specialist centres, reached by protocols that bypass smaller units, outperforms a map dotted
     with low-volume general ones. Proximity to a building is not proximity to competence.
   </p>
+  <Widget no="4" caption="one line of the network note rewards proximity" widget="spot-error" config={hsHubSpot} />
 
   <h2>Vessels and circulation: the stroke clock</h2>
   <p>
@@ -122,6 +268,7 @@ const sysCfg = {
     30–79 live with hypertension, and close to half are unaware of it (WHO, 2023) — a mass of
     silent risk that only primary care, screening and cheap generic drugs can reach.
   </p>
+  <Widget no="5" caption="place the marker on the thrombolysis window" widget="place" config={hsStrokePlace} />
   <p>
     <strong>So far:</strong> cardiovascular policy is organised around two clocks — the
     90-minute door-to-balloon clock and the stroke's neurons-per-minute clock — and both
@@ -145,6 +292,7 @@ const sysCfg = {
     trust, logistics and arithmetic interlock — drop the coverage, and the threshold is breached
     in a season.
   </p>
+  <Widget no="6" caption="fill the blanks — the population-level bargain" widget="cloze" config={hsHerdCloze} />
   <p>
     <em>Common misconception:</em> "herd immunity means the disease is finished once the
     threshold is passed." The threshold is a probabilistic shield, not a wall: newborns, the
@@ -169,6 +317,7 @@ const sysCfg = {
     sequencing capacity, ventilator surge plans) is the respiratory system's infrastructure,
     bought in peacetime precisely because it cannot be bought in time.
   </p>
+  <Widget no="7" caption="rebuild the 63-day sequence" widget="order" config={hsCovidOrder} />
   <p>
     <em>Common misconception:</em> "the COVID vaccines were developed too fast to be safe." The
     speed came from decades of prior platform research, unlimited funding and manufacturing
@@ -238,6 +387,7 @@ const sysCfg = {
     skimp primary care pay the difference in emergency departments — the most expensive real
     estate in medicine, working as the safety net for the gatekeeping that never happened.
   </p>
+  <Widget no="8" caption="walk the primary-care budget decision" widget="branch" config={hsPrimaryBranch} />
   <p>
     <strong>The trade-off triangle, formalised.</strong> Every system chooses a position among
     access, quality and cost, and health economists make the choice explicit with the QALY — a
@@ -256,6 +406,7 @@ const sysCfg = {
     employment scheme for skilled people; training pipelines have 10–15 year lags, so today's
     shortages were decided a decade ago.
   </p>
+  <Widget no="9" caption="which curve is the training lag?" widget="trace" config={hsWorkforceTrace} />
   <p>
     <strong>Why the US bill is so large.</strong> The US spends near 17% of GDP on health —
     roughly double, in share terms, most peers — with middling life expectancy. The careful

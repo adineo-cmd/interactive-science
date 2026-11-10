@@ -1,0 +1,144 @@
+[
+  {
+    "slug": "subjects/medicine/expert/health-systems-and-policy",
+    "activities": [
+      {
+        "anchor": "A health system is only as strong as this week",
+        "type": "match",
+        "caption": "pair each blood component with its clock",
+        "name": "hsBloodMatch",
+        "config": {
+          "prompt": "The most perishable supply chain in medicine — pair each component with its shelf life:",
+          "pairs": [
+            { "left": "red cells", "right": "refrigerated, around five to six weeks" },
+            { "left": "platelets", "right": "about a week" },
+            { "left": "plasma", "right": "frozen, lasting months" }
+          ],
+          "why": "The supply cannot be stockpiled or manufactured — it is continuously replaced, which is why a system is only as strong as its most recent collections."
+        }
+      },
+      {
+        "anchor": "Survival improved: the volume–outcome literature",
+        "type": "estimate",
+        "caption": "call the door-to-balloon target",
+        "name": "hsDoorEstimate",
+        "config": {
+          "prompt": "Angioplasty works best fast, and systems organise themselves around the clock, not the hospital. Roughly what door-to-balloon time (minutes) do guidelines demand?",
+          "unit": "min",
+          "answer": 90,
+          "factor": 1.25,
+          "why": "About 90 minutes — which is why London's 2000s redesign retrained ambulance crews to read the tracing in the field and drive straight to a 24/7 specialist hub."
+        }
+      },
+      {
+        "anchor": "For time-critical conditions the opposite is often true",
+        "type": "spot-error",
+        "caption": "one line of the network note rewards proximity",
+        "name": "hsHubSpot",
+        "config": {
+          "prompt": "A note on emergency-network design — one line is wrong. Click it:",
+          "lines": [
+            "Ambulance crews can be retrained to diagnose in the field and drive past the nearest department.",
+            "A few high-volume specialist centres, reached by bypass protocols, outperform a map dotted with low-volume general ones.",
+            "So the best network is the one that puts a small receiving unit in every town.",
+            "High-volume hospitals consistently lose fewer patients undergoing complex procedures.",
+            "Consolidation — eight receiving centres becoming fewer, busier ones — improved survival."
+          ],
+          "errorLine": 2,
+          "correction": "The evidence supports consolidation: fewer, busier hubs reached by bypass protocols — proximity to a building is not proximity to competence.",
+          "why": "The volume–outcome literature is the design principle: for time-critical care, concentrate the caseload."
+        }
+      },
+      {
+        "anchor": "roughly 1.9 million neurons die each minute",
+        "type": "place",
+        "caption": "place the marker on the thrombolysis window",
+        "name": "hsStrokePlace",
+        "config": {
+          "prompt": "Clot-dissolving drugs must arrive within a window measured from onset. Place the marker on that window (hours):",
+          "labels": ["0", "6", "12", "18", "24"],
+          "scale": { "min": 0, "max": 24 },
+          "answer": 4.5,
+          "tolerance": 0.6,
+          "why": "About 4.5 hours for clot-dissolving drugs; mechanical thrombectomy extends to 24 hours in selected patients whose imaging shows salvageable tissue — the DAWN trial stopped early."
+        }
+      },
+      {
+        "anchor": "Immunisation policy is therefore the study of how trust, logistics and arithmetic interlock",
+        "type": "cloze",
+        "caption": "fill the blanks — the population-level bargain",
+        "name": "hsHerdCloze",
+        "config": {
+          "text": "Immunisation creates individual memory; at scale, immune people block transmission, protecting even the %%0%% — herd immunity. Smallpox was declared eradicated in %%1%% because vaccination plus surveillance closed the gap everywhere.",
+          "answers": ["unvaccinated", "1980"],
+          "hint": "One blank names who the shield shelters; the other is the year the declaration was made."
+        }
+      },
+      {
+        "anchor": "a platform built for exactly this, while authorisation still awaited",
+        "type": "order",
+        "caption": "rebuild the 63-day sequence",
+        "name": "hsCovidOrder",
+        "config": {
+          "prompt": "The fastest pipeline on record — drag the sequence into order:",
+          "items": [
+            "The viral genome is published (11 January 2020)",
+            "Vaccine design begins on the published sequence",
+            "The first dose enters a trial — 63 days after the sequence",
+            "Manufacturing scales at financial risk before approval",
+            "Authorisation waits for full-scale trials with tens of thousands of volunteers"
+          ],
+          "why": "The compression was in paperwork queues and parallel production, not in the evidence — and the stockpiles that matter are bought in peacetime or not at all."
+        }
+      },
+      {
+        "anchor": "pay the difference in emergency departments",
+        "type": "branch",
+        "caption": "walk the primary-care budget decision",
+        "name": "hsPrimaryBranch",
+        "config": {
+          "root": "Two system designs, one budget. Walk the trade.",
+          "nodes": {
+            "start": {
+              "text": "The ministry can fund a strong first-contact layer or let hospitals absorb everything. Which design?",
+              "choices": [
+                { "label": "Fund strong primary care — gatekeeping, continuity, prevention", "next": "primary", "feedback": "Most illness is minor, chronic or preventable — handled where it is cheapest." },
+                { "label": "Skip it; emergency departments will catch what comes", "next": "ed", "feedback": "The costliest door in medicine becomes the safety net." }
+              ]
+            },
+            "primary": {
+              "text": "The cross-national evidence: better outcomes at lower total cost than specialist-heavy systems — hospitals reserved for what hospitals are for.",
+              "choices": [
+                { "label": "Now the counterfactual", "next": "ed" }
+              ]
+            },
+            "ed": {
+              "text": "The bill lands downstream: unserved first-contact care arrives at the emergency door, and the system pays hospital prices for problems a clinic would have cleared.",
+              "choices": []
+            }
+          },
+          "why": "Primary care is the system's highest-leverage layer — the mechanism is arithmetic as much as medicine."
+        }
+      },
+      {
+        "anchor": "training pipelines have 10–15 year lags",
+        "type": "trace",
+        "caption": "which curve is the training lag?",
+        "name": "hsWorkforceTrace",
+        "config": {
+          "prompt": "A training pipeline is funded today. Which curve shows workforce supply over the following years?",
+          "curves": [
+            { "expr": "2*x", "color": "#b42318", "label": "A" },
+            { "expr": "max(0, 2*(x-5))", "color": "#1d4ed8", "label": "B" }
+          ],
+          "correct": 1,
+          "x": { "min": 0, "max": 12 },
+          "y": { "min": 0, "max": 25 },
+          "xlabel": "years since the funding decision",
+          "ylabel": "workforce supply (arb. units)",
+          "why": "The supply curve answers the funding decision years late — which is why today's shortages were decided long ago, why migration fills the gap, and why the WHO adopted a voluntary code on ethical recruitment (2010)."
+        }
+      }
+    ]
+  }
+]

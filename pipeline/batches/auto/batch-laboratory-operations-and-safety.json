@@ -1,0 +1,133 @@
+[
+  {
+    "slug": "subjects/medical-laboratory-science/foundational/laboratory-operations-and-safety",
+    "activities": [
+      {
+        "anchor": "The uncomfortable finding that shapes the whole discipline",
+        "type": "sort-buckets",
+        "caption": "file each failure by the phase it lives in",
+        "name": "mlsPhaseBuckets",
+        "config": {
+          "prompt": "Three phases, three sets of enemies — file each failure:",
+          "buckets": ["pre-analytical", "analytical", "post-analytical"],
+          "items": [
+            { "label": "wrong patient — a label applied later, from memory", "bucket": 0 },
+            { "label": "a needle traversing the vein's wall", "bucket": 0 },
+            { "label": "a specimen left on a sunny windowsill", "bucket": 0 },
+            { "label": "an uncalibrated analyser, tightly clustered but offset", "bucket": 1 },
+            { "label": "instrument drift from an aging reagent lot", "bucket": 1 },
+            { "label": "a critical value that reached a screen but never a clinician's ears", "bucket": 2 },
+            { "label": "a transcription slip between analyser and record", "bucket": 2 }
+          ],
+          "why": "Around 60–70 per cent of laboratory errors are pre-analytical, most at collection — the specimen is not the result's raw material; it is the result."
+        }
+      },
+      {
+        "anchor": "an order designed so that each tube",
+        "type": "order",
+        "caption": "rebuild the order of draw",
+        "name": "mlsDrawOrder",
+        "config": {
+          "prompt": "The order of draw — drag the tubes into their sequence:",
+          "items": [
+            "Blood culture bottles — sterility above all",
+            "Light-blue citrate — coagulation",
+            "Serum (red/gold)",
+            "Heparin (green)",
+            "EDTA (lavender)",
+            "Fluoride/oxalate (grey)"
+          ],
+          "why": "Each additive does a job — citrate binds calcium reversibly, EDTA chelates it irreversibly, fluoride stops cells consuming glucose — and the sequence keeps one tube's chemistry out of the next."
+        }
+      },
+      {
+        "anchor": "Before it ever reaches the chart",
+        "type": "branch",
+        "caption": "walk the 3 am critical-value decision",
+        "name": "mlsPotassiumBranch",
+        "config": {
+          "root": "3 am. A potassium of 6.8 mmol/L — well into the critical range — comes off the analyser. Yesterday's potassium: 4.1. The haemolysis index reads gross.",
+          "nodes": {
+            "start": {
+              "text": "Autoverification has blocked release. What happens next?",
+              "choices": [
+                { "label": "Call the ward and request a repeat specimen", "next": "repeat", "feedback": "The delta check and the haemolysis index both fired — the system is shouting for a reason." },
+                { "label": "Release it — the analyser reported a number", "next": "release", "feedback": "A number is not yet an answer." }
+              ]
+            },
+            "repeat": {
+              "text": "The repeat, drawn gently, reports 4.3 mmol/L. The first result was never true — it was an artefact with the power to trigger urgent treatment.",
+              "choices": []
+            },
+            "release": {
+              "text": "Released, the fabricated hyperkalaemia would drive treatment on the strength of ruptured cells. The machinery exists to stop exactly this.",
+              "choices": [
+                { "label": "Now walk the correct path", "next": "repeat", "feedback": "" }
+              ]
+            }
+          },
+          "why": "Delta checks, haemolysis indices and critical-value call-backs are what convert a number into a trustworthy answer."
+        }
+      },
+      {
+        "anchor": "Hence the two-layer defence",
+        "type": "match",
+        "caption": "pair each QC instrument with its job",
+        "name": "mlsQualityMatch",
+        "config": {
+          "prompt": "The quality vocabulary — pair each term with its work:",
+          "pairs": [
+            { "left": "accuracy", "right": "closeness to the true value" },
+            { "left": "precision", "right": "closeness of repeated values to one another" },
+            { "left": "calibration", "right": "anchors the instrument to reference material of known value — defining where \"true\" is" },
+            { "left": "control materials", "right": "known-value specimens run exactly like patient samples, policed run by run" }
+          ],
+          "why": "A machine in control scatters its dots randomly around the mean; drift announces itself as a slow walk upward long before results go wrong."
+        }
+      },
+      {
+        "anchor": "system is the accepted grammar for reading the chart",
+        "type": "sort-buckets",
+        "caption": "file each Westgard pattern by its verdict",
+        "name": "mlsWestgardBuckets",
+        "config": {
+          "prompt": "Warning or rejection? File each pattern:",
+          "buckets": ["warning only", "reject the run"],
+          "items": [
+            { "label": "a single point beyond ±2 SD", "bucket": 0 },
+            { "label": "a point beyond ±3 SD (1-3s)", "bucket": 1 },
+            { "label": "two consecutive points beyond the same 2 SD line (2-2s)", "bucket": 1 },
+            { "label": "four consecutive points beyond the same 1 SD line (4-1s)", "bucket": 1 },
+            { "label": "ten consecutive points on one side of the mean (10x)", "bucket": 1 }
+          ],
+          "why": "The question is never \"does the machine look fine?\" but \"could this pattern of deviations arise by chance alone?\" — only randomness earns a release stamp."
+        }
+      },
+      {
+        "anchor": "ISO 15189 is the international laboratory standard",
+        "type": "cloze",
+        "caption": "fill the blanks — control versus assurance",
+        "name": "mlsQcQaCloze",
+        "config": {
+          "text": "Quality %%0%% is the daily machinery of detection; quality %%1%% is the system that guarantees the machinery is running, staff are competent and processes improve.",
+          "answers": ["control", "assurance"],
+          "hint": "One is what you run every shift; the other is the programme standing around it."
+        }
+      },
+      {
+        "anchor": "a calculation performed daily in reagent preparation",
+        "type": "place",
+        "caption": "drop the marker on the stock volume",
+        "name": "mlsSalinePlace",
+        "config": {
+          "prompt": "You need 500 mL of 0.85% saline from a 9% stock. Place the marker on the volume of stock to measure out, before making up to volume:",
+          "labels": ["0", "125", "250", "375", "500"],
+          "scale": { "min": 0, "max": 500 },
+          "answer": 47,
+          "tolerance": 6,
+          "why": "(0.85 × 500) ⁄ 9 ≈ 47 mL, made up to 500 mL — C₁V₁ = C₂V₂, the bench's daily bread."
+        }
+      }
+    ]
+  }
+]

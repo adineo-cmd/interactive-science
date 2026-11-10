@@ -1,0 +1,154 @@
+[
+  {
+    "slug": "subjects/materials-science/intermediate/atoms-to-crystals",
+    "activities": [
+      {
+        "anchor": "Every solid is held together by some mix",
+        "type": "match",
+        "caption": "pair each bond with the property bundle it buys",
+        "name": "atcBondMatch",
+        "config": {
+          "prompt": "Four interactions, four property bundles — pair them:",
+          "pairs": [
+            { "left": "metallic", "right": "a movable electron sea — conducts, and lets planes slide, so it dents" },
+            { "left": "ionic", "right": "electrons transferred — hard, high-melting, and it shatters rather than dents" },
+            { "left": "covalent", "right": "shared along specific directions — the stiffest materials known, and a poor conductor" },
+            { "left": "van der Waals", "right": "flickering attractions — feeble alone, but the glue between chains and sheets" }
+          ],
+          "why": "Bonding type sets the ceiling: every entry in the property tables traces back to which of these four holds the solid together."
+        }
+      },
+      {
+        "anchor": "They are among the strongest bonds in the table",
+        "type": "estimate",
+        "caption": "call the melting point before you dismiss the bond",
+        "name": "atcSaltEstimate",
+        "config": {
+          "prompt": "If ionic bonds really were weak, rock salt would melt low. Roughly what temperature does it melt at?",
+          "unit": "°C",
+          "answer": 801,
+          "factor": 1.4,
+          "why": "801 °C — the bonds are strong. The brittleness is geometric: shear the planes by one ion spacing and like charges are brought face to face, and the repulsion cracks the crystal.",
+          "context": "Copper dents because its electron sea forgives any slide; a salt's charges do not."
+        }
+      },
+      {
+        "anchor": "Metals mostly pick three",
+        "type": "sort-buckets",
+        "caption": "file each metal by its lattice",
+        "name": "atcLatticeBuckets",
+        "config": {
+          "prompt": "Three lattices take nearly all the metals — file each resident:",
+          "buckets": ["FCC — face-centred cubic", "HCP — hexagonal close-packed", "BCC — body-centred cubic"],
+          "items": [
+            { "label": "copper", "bucket": 0 },
+            { "label": "aluminium", "bucket": 0 },
+            { "label": "gold", "bucket": 0 },
+            { "label": "zinc", "bucket": 1 },
+            { "label": "magnesium", "bucket": 1 },
+            { "label": "titanium", "bucket": 1 },
+            { "label": "iron at room temperature", "bucket": 2 },
+            { "label": "tungsten", "bucket": 2 }
+          ],
+          "why": "FCC and HCP pack at 74%, BCC sits looser at 68% with coordination 8 — and the packing foretells the mechanics."
+        }
+      },
+      {
+        "anchor": "Kepler conjectured, and only in 2017",
+        "type": "order",
+        "caption": "rebuild the packing-fraction derivation",
+        "name": "atcPackingOrder",
+        "config": {
+          "prompt": "The FCC packing fraction, step by step — drag the derivation into order:",
+          "items": [
+            "Atoms touch along the face diagonal: 4r = a√2",
+            "So the cell edge is a = 2√2·r",
+            "Cell volume = a³ = 16√2·r³",
+            "The cell holds 4 whole atoms (8 corners × ⅛ + 6 faces × ½), volume 16πr³/3",
+            "Packing fraction = (16πr³/3) ⁄ (16√2·r³) = π/(3√2) ≈ 0.74"
+          ],
+          "why": "74% is a mathematical limit — no arrangement of equal spheres beats it (proved only in 2017). Grocers stacking oranges had known it for centuries."
+        }
+      },
+      {
+        "anchor": "the famous Liberty ships of WWII",
+        "type": "branch",
+        "caption": "walk the lattice decision",
+        "name": "atcHullBranch",
+        "config": {
+          "root": "It is 1942. You are specifying steel plate for a hull that will serve in the North Atlantic.",
+          "nodes": {
+            "start": {
+              "text": "Two candidate steels match on strength and cost at room temperature. Which do you put in the hull?",
+              "choices": [
+                { "label": "The standard BCC structural steel", "next": "bcc", "feedback": "The drawing-office default — until winter." },
+                { "label": "Steel rated to stay ductile at low temperature", "next": "safe", "feedback": "The choice that keeps ships afloat." }
+              ]
+            },
+            "bcc": {
+              "text": "BCC iron turns brittle below its ductile-to-brittle transition temperature. In cold water the hull stops denting and starts splitting — the ships that cracked in half were BCC steel below their transition.",
+              "choices": [
+                { "label": "Re-specify the plate", "next": "safe", "feedback": "One line of crystallography, read in advance, is a safety briefing." }
+              ]
+            },
+            "safe": {
+              "text": "The right lattice keeps its slip systems working as the temperature drops: planes keep sliding, the hull dents instead of fracturing. FCC metals carry 12 independent slip systems; HCP metals have few, and fail along certain directions.",
+              "choices": []
+            }
+          },
+          "why": "The lattice choice foretells the mechanics — slip systems are the difference between a dent and a crack."
+        }
+      },
+      {
+        "anchor": "cooling fast enough to outrun crystallisation",
+        "type": "cloze",
+        "caption": "fill the blanks — each level of order has a job",
+        "name": "atcOrderCloze",
+        "config": {
+          "text": "Semiconductor wafers must be %%0%%, because a grain boundary across a transistor is a %%1%% — and jet turbine blades are grown as single crystals by %%2%%, because creep happens at grain boundaries.",
+          "answers": [["single crystals", "single crystal"], ["short circuit"], ["directional solidification"]],
+          "hint": "Two blanks name the failure being designed against; the third names the growth route that beats it."
+        }
+      },
+      {
+        "anchor": "Same steel, finer grains, stronger part",
+        "type": "trace",
+        "caption": "which curve is Hall–Petch?",
+        "name": "atcHallPetchTrace",
+        "config": {
+          "prompt": "Yield strength plotted against grain size d — which curve is the Hall–Petch trend?",
+          "curves": [
+            { "expr": "x^-0.5", "color": "#1d4ed8", "label": "A" },
+            { "expr": "x^-2", "color": "#b42318", "label": "B" },
+            { "expr": "x^0.5", "color": "#0f766e", "label": "C" }
+          ],
+          "correct": 0,
+          "x": { "min": 0.5, "max": 10 },
+          "y": { "min": 0, "max": 2 },
+          "xlabel": "grain size (arb. units)",
+          "ylabel": "yield strength (arb. units)",
+          "why": "Strength rises as one over √d — a dislocation meets more boundaries as grains shrink. (Shrink below ~10–15 nm and the trend itself reverses.)"
+        }
+      },
+      {
+        "anchor": "domain of validity stamped into it",
+        "type": "spot-error",
+        "caption": "one line of the strength note overshoots",
+        "name": "atcHallPetchSpot",
+        "config": {
+          "prompt": "A design note on grain refinement — one line is wrong. Click it:",
+          "lines": [
+            "Refine a metal's grains and it gets stronger — the classic trend.",
+            "Below roughly 10–15 nm the trend turns around.",
+            "There, the boundaries themselves begin to slide, and become the weakness.",
+            "So strength rises without limit as grains get ever smaller.",
+            "The strongest grains sit at an intermediate size, not the finest."
+          ],
+          "errorLine": 3,
+          "correction": "Below ~10–15 nm, grain-boundary sliding takes over as the deformation mechanism — the boundaries that were obstacles become the weakness, and strength peaks at an intermediate size.",
+          "why": "Every design rule has a domain of validity: neither coarse nor ultrafine wins outright."
+        }
+      }
+    ]
+  }
+]

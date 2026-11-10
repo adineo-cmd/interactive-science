@@ -397,6 +397,18 @@
 | masonry/foundational/masonry-safety-and-tools | estimate, match, place, estimate, judge, order, cloze, spot-error | next-14 |
 | massage-therapy/foundational/body-systems-and-movement | match, spot-error, branch, predict, sort-buckets, order, judge, order | next-14 |
 | materials-science/advanced/failure-fracture-and-fatigue | sort-buckets, spot-error, match, branch, estimate, chart, order, cloze | next-14 |
+| materials-science/foundational/why-materials-behave | sort-buckets, order, timeline, match, spot-error, judge, compare, estimate | next-16 |
+| materials-science/intermediate/atoms-to-crystals | match, estimate, sort-buckets, order, branch, trace, cloze, spot-error | next-16 |
+| materials-science/intermediate/metals-ceramics-polymers-composites | match, order, branch, spot-error, match, estimate, cloze, sort-buckets | next-16 |
+| mechanical-engineering/foundational/mechanics-foundations | match, order, place, spot-error, judge, cloze, estimate, trace | next-16 |
+| media-studies/foundational/the-theoretical-framework | compare, sort-buckets, order, spot-error, branch, judge, match, cloze | next-16 |
+| medical-laboratory-science/foundational/laboratory-operations-and-safety | sort-buckets, order, branch, match, sort-buckets, cloze, place | next-16 |
+| medicine/advanced/cancer-biology-and-oncology | place, spot-error, match, judge, trace, branch, compare, order | next-16 |
+| medicine/advanced/cardiovascular-pathophysiology | match, trace, estimate, order, sort-buckets, judge, place, branch | next-16 |
+| medicine/advanced/clinical-trials-and-evidence | match, compare, spot-error, estimate, sort-buckets, order, judge, branch | next-16 |
+| medicine/advanced/medical-imaging | match, cloze, judge, spot-error, compare, sort-buckets, branch, chart | next-16 |
+| medicine/expert/genomic-medicine | place, spot-error, sort-buckets, match, branch, order, estimate, timeline | next-16 |
+| medicine/expert/health-systems-and-policy | match, estimate, spot-error, place, cloze, order, branch, trace | next-16 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

@@ -39,6 +39,172 @@ const evidenceQuiz = {
     },
   ],
 };
+
+const ctBiasMatch = {
+  "prompt": "Blinding guards three choke points — pair each bias with its mechanism:",
+  "pairs": [
+    {
+      "left": "expectation effects",
+      "right": "patients report differently when they know what they received"
+    },
+    {
+      "left": "performance bias",
+      "right": "clinicians treat and measure differently"
+    },
+    {
+      "left": "detection bias",
+      "right": "outcome assessors code events differently"
+    }
+  ],
+  "why": "The full architecture adds allocation concealment and intention-to-treat — analyse everyone as randomised, because cleaning up the groups re-imports the confounding randomisation removed."
+};
+
+const ctHrtCompare = {
+  "prompt": "One therapy, two study designs, two answers — drag between them:",
+  "before": {
+    "label": "the observational cohorts",
+    "text": "People who took the treatment were healthier in every measurable way, and the association looked strongly protective — decades of consistent data."
+  },
+  "after": {
+    "label": "the randomised trial",
+    "text": "Randomise the same question (the Women's Health Initiative) and the answer reverses: harm. The pioneers and the healthier takers were selection, not effect."
+  },
+  "why": "Confounding does not shrink with sample size — the observational-versus-randomised reversal is evidence-based medicine's recurring lesson."
+};
+
+const ctConfoundSpot = {
+  "prompt": "A note on reading associations — one line is wrong. Click it:",
+  "lines": [
+    "Consistency across many datasets is genuinely reassuring.",
+    "But confounding does not shrink with sample size.",
+    "So a vast, consistent association can be treated as settled — the bigger the effect, the safer the inference.",
+    "Only randomisation balances the confounders you did not measure.",
+    "An observational effect, however large, remains a hypothesis until a randomised comparison settles it."
+  ],
+  "errorLine": 2,
+  "correction": "Magnitude and consistency are not cures for confounding: a large observational association stays a hypothesis until a randomised comparison settles it — no statistical adjustment reaches the unmeasured.",
+  "why": "The entire value of randomisation is that it balances what you did not think to measure."
+};
+
+const ctPowerEstimate = {
+  "prompt": "Rule of thumb: n per arm ≈ 16 × p(1−p) ÷ δ², at 80% power. Control event rate 20%, hoped reduction to 15% (δ = 0.05). Roughly how many patients per arm?",
+  "unit": "patients per arm",
+  "answer": 1024,
+  "factor": 1.6,
+  "why": "16 × 0.2 × 0.8 ÷ 0.0025 ≈ 1,024 per arm — over 2,000 patients and years of recruitment. Shrink the detectable difference to δ = 0.02 and the demand grows to ~6,400 per arm.",
+  "context": "Which is why \"no significant difference\" in a 40-patient study means almost nothing — absence of evidence is not evidence of absence."
+};
+
+const ctEndpointBuckets = {
+  "prompt": "What you measure is what you know — file each measure:",
+  "buckets": [
+    "clinical endpoint",
+    "surrogate endpoint"
+  ],
+  "items": [
+    {
+      "label": "death",
+      "bucket": 0
+    },
+    {
+      "label": "stroke",
+      "bucket": 0
+    },
+    {
+      "label": "fracture",
+      "bucket": 0
+    },
+    {
+      "label": "a cholesterol value",
+      "bucket": 1
+    },
+    {
+      "label": "tumour shrinkage on imaging",
+      "bucket": 1
+    },
+    {
+      "label": "suppressed ectopic beats — the measure CAST debunked",
+      "bucket": 1
+    }
+  ],
+  "why": "Surrogates are acceptable only when validated — shown repeatedly to track the clinical endpoint in this drug class, this population. CAST is what decoupling costs."
+};
+
+const ctPaperOrder = {
+  "prompt": "Reading a paper critically, in the order the checks usually break — drag them into place:",
+  "items": [
+    "Was it registered, and were the endpoints pre-specified?",
+    "Is the comparison fair — active control, adequately dosed comparator?",
+    "Intention-to-treat analysis, everyone as randomised?",
+    "Are the subgroups pre-specified?",
+    "Are harms reported with the same energy as benefits?"
+  ],
+  "why": "Outcome switching, manufactured superiority, re-imported selection bias, chance subgroups, quiet harms — the CONSORT checklist exists because each failure recurred often enough to need a name."
+};
+
+const ctVaccineJudge = {
+  "statements": [
+    {
+      "s": "The vaccine programme's speed came from lowering the evidentiary bar.",
+      "truth": false,
+      "why": "The logic was skipped nowhere — funding removed the usual serial pauses, and the epidemic's scale supplied endpoints quickly."
+    },
+    {
+      "s": "The pivotal efficacy trials enrolled 30,000–45,000 participants with event-driven analysis.",
+      "truth": true,
+      "why": "Unprecedented Phase III size, read out in under a year."
+    },
+    {
+      "s": "Real-world evidence later showed strong persistent protection against severe disease even as effectiveness against infection waned with variants.",
+      "truth": true,
+      "why": "Endpoints, surrogates, generalisability and pharmacovigilance — the chapter's whole vocabulary, at once."
+    }
+  ]
+};
+
+const ctDesignBranch = {
+  "root": "Choose the architecture. Two scenarios, two designs.",
+  "nodes": {
+    "start": {
+      "text": "An epidemic is moving faster than serial trials can answer. What runs?",
+      "choices": [
+        {
+          "label": "A platform trial — adaptive, multi-arm, evidence-driven",
+          "next": "platform",
+          "feedback": "The infrastructure that answered early."
+        },
+        {
+          "label": "The classic two-arm trial, one question at a time",
+          "next": "classic",
+          "feedback": "Gold standard for a single question — but the epidemic outpaces serial pauses."
+        }
+      ]
+    },
+    "platform": {
+      "text": "One protocol, arms entering and leaving as evidence accumulates, tens of thousands of patients, Bayesian interim analyses — the RECOVERY model.",
+      "choices": [
+        {
+          "label": "Now the biosimilar question",
+          "next": "bio"
+        }
+      ]
+    },
+    "classic": {
+      "text": "Rigorous, readable — and it answers one question in the time an adaptive infrastructure answers five.",
+      "choices": [
+        {
+          "label": "Continue",
+          "next": "bio"
+        }
+      ]
+    },
+    "bio": {
+      "text": "A biosimilar cannot ethically be tested against placebo: the non-inferiority design asks \"is the new drug not-worse?\" — read the margin, not the p-value.",
+      "choices": []
+    }
+  },
+  "why": "Different questions demand different architectures — and each design's limits are written in what it cannot ask."
+};
 ---
 <TopicPage slug="subjects/medicine/advanced/clinical-trials-and-evidence">
   <h2>Where you are, and what you will learn</h2>
@@ -97,6 +263,7 @@ const evidenceQuiz = {
     including dropouts and protocol violators, because the moment you clean up the groups you
     re-import the confounding randomisation removed.
   </p>
+  <Widget no="3" caption="pair each bias with the choke point blinding guards" widget="match" config={ctBiasMatch} />
   <p>
     <strong>Worked example of the failure mode.</strong> Suppose a surgical innovation is adopted by
     enthusiastic pioneers, while control patients receive conventional care during a period when a
@@ -108,6 +275,7 @@ const evidenceQuiz = {
     in the Women's Health Initiative randomised trial. The observational-versus-randomised gap is
     the recurring object lesson of evidence-based medicine.
   </p>
+  <Widget no="4" caption="drag between the cohort and the randomised answer" widget="compare" config={ctHrtCompare} />
   <p>
     <em>Common misconception:</em> "a large, consistent observational association is nearly
     as good as a trial, especially when the effect looks big." It seems reasonable — decades
@@ -118,6 +286,7 @@ const evidenceQuiz = {
     did not measure; an observational effect, however large and however consistent, remains
     a hypothesis until a randomised comparison settles it.
   </p>
+  <Widget no="5" caption="one line of the inference note over-trusts size" widget="spot-error" config={ctConfoundSpot} />
   <p>
     <strong>So far:</strong> randomisation, blinding and intention-to-treat analysis are the
     load-bearing walls of any fair comparison. Now watch the logic scaled into a decade-long
@@ -146,6 +315,7 @@ const evidenceQuiz = {
     absence, and the confidence interval is the honest way to say what the study could and could not
     exclude.
   </p>
+  <Widget no="6" caption="call the sample size before the calculator does" widget="estimate" config={ctPowerEstimate} />
 
   <h2>Endpoints: what you measure is what you know</h2>
   <p>
@@ -159,6 +329,7 @@ const evidenceQuiz = {
     on surrogate response rates, with confirmatory trials (increasingly, with withdrawal teeth)
     required afterwards. Know which endpoint a headline is using before believing it.
   </p>
+  <Widget no="7" caption="file each measure: clinical endpoint or surrogate?" widget="sort-buckets" config={ctEndpointBuckets} />
   <p>
     <em>Common misconception:</em> "statistically significant" means clinically important. A huge
     trial can find a statistically robust effect of trivial size (relative risk reduction 3% on a
@@ -189,6 +360,7 @@ const evidenceQuiz = {
     trials, quantified for antidepressants (turnaround study: FDA registry data nearly halved the
     published effect size).
   </p>
+  <Widget no="8" caption="rebuild the critical-reading sequence" widget="order" config={ctPaperOrder} />
   <p>
     <em>Common misconception:</em> "if it passed peer review in a good journal, the finding
     is settled." Peer review checks a manuscript's coherence, not its data. This section's
@@ -240,6 +412,7 @@ const evidenceQuiz = {
     for this entire chapter: endpoints, surrogates, generalisability and pharmacovigilance,
     all at once.
   </p>
+  <Widget no="9" caption="true or false — the fastest pipeline, read honestly" widget="judge" config={ctVaccineJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -303,6 +476,7 @@ const evidenceQuiz = {
     synthetic control arms (borrowing historical patient data as comparators) will shrink trials
     faster than they import bias. Evidence-based medicine, it turns out, needs evidence about itself.
   </p>
+  <Widget no="10" caption="walk the design decision" widget="branch" config={ctDesignBranch} />
   <p>
     Health economics completes the decision architecture. The randomised trial answers "does
     it work?"; the cost-effectiveness analysis answers "is it worth it?" — quality-adjusted

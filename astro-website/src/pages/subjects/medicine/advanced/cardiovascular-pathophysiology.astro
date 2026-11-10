@@ -39,6 +39,174 @@ const cardioQuiz = {
     },
   ],
 };
+
+const cvHandleMatch = {
+  "prompt": "Every agent acts on one factor of the haemodynamic identity — pair class with handle:",
+  "pairs": [
+    {
+      "left": "beta-blockers",
+      "right": "cut cardiac output at its rate and contractility terms"
+    },
+    {
+      "left": "diuretics",
+      "right": "shrink plasma volume, cutting stroke volume"
+    },
+    {
+      "left": "ACE inhibitors and calcium-channel blockers",
+      "right": "dilate arterioles, cutting systemic vascular resistance"
+    }
+  ],
+  "why": "The baroreflex resists any univariate assault — which is why combination therapy is the norm."
+};
+
+const cvReflexTrace = {
+  "prompt": "Two regimens cut resistance by the same amount; one also blocks the compensatory rise in output. Which curve is the combination therapy?",
+  "curves": [
+    {
+      "expr": "0.55+0.45*exp(-0.9*x)",
+      "color": "#b42318",
+      "label": "A"
+    },
+    {
+      "expr": "0.4+0.6*exp(-0.9*x)",
+      "color": "#1d4ed8",
+      "label": "B"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 6
+  },
+  "y": {
+    "min": 0,
+    "max": 1.1
+  },
+  "xlabel": "time after starting therapy (arb. units)",
+  "ylabel": "mean arterial pressure (normalised)",
+  "why": "Vasodilate alone and the compensatory rise in rate and stroke volume blunts the fall; block the compensation and the pressure reduction is real — low doses of two or three agents beat escalating one."
+};
+
+const cvPoiseuilleEstimate = {
+  "prompt": "Poiseuille's law: flow scales with the fourth power of radius. An arteriole's radius is halved. By what factor does its resistance rise?",
+  "unit": "×",
+  "answer": 16,
+  "factor": 1.3,
+  "why": "Resistance scales inversely with radius to the fourth power: 2⁴ = 16 — why \"minor\" narrowings under high flow demand become limiting."
+};
+
+const cvPlaqueOrder = {
+  "prompt": "From injured endothelium to silent stenosis — drag the sequence into order:",
+  "items": [
+    "Endothelium injured — by pressure, smoking toxins, glucose — becomes permeable",
+    "LDL particles lodge in the intima and are chemically modified",
+    "Monocytes invade, engulf the modified LDL and become foam cells",
+    "Smooth muscle migrates in and lays a fibrous cap over a necrotic lipid core",
+    "For decades the plaque grows outward, the vessel remodelling to preserve the lumen — silent"
+  ],
+  "why": "Twenty years of outward remodelling keep the lumen open — which is why the disease stays silent until the cap's integrity, not the degree of narrowing, decides the day."
+};
+
+const cvLdlBuckets = {
+  "prompt": "LDL's causality rests on three independent lines — file each finding:",
+  "buckets": [
+    "epidemiology",
+    "Mendelian randomisation",
+    "randomised trials"
+  ],
+  "items": [
+    {
+      "label": "a log-linear dose-response between LDL and events, with no floor",
+      "bucket": 0
+    },
+    {
+      "label": "lifelong low LDL via inherited PCSK9 loss-of-function: ~88% lower coronary risk",
+      "bucket": 1
+    },
+    {
+      "label": "statins, ezetimibe and PCSK9 antibodies all reduce events in proportion to absolute LDL reduction",
+      "bucket": 2
+    },
+    {
+      "label": "roughly 22% fewer major events per 1 mmol/L per year of treatment",
+      "bucket": 2
+    }
+  ],
+  "why": "What matters is cumulative exposure — LDL-years — which is why guidelines talk about starting earlier, not just lower."
+};
+
+const cvStentJudge = {
+  "statements": [
+    {
+      "s": "Stents relieve obstructive stenoses and save lives during acute infarction.",
+      "truth": true,
+      "why": "The rescue use is real — the contested case is stable disease."
+    },
+    {
+      "s": "For stable disease, the ISCHEMIA trial found invasive revascularisation reduced death and infarction versus optimal medical therapy.",
+      "truth": false,
+      "why": "It did not: the disease is in the vessel wall and the blood, not the narrowest spot."
+    },
+    {
+      "s": "Statins, blood-pressure control and smoking cessation prevent more deaths than any catheter lab.",
+      "truth": true,
+      "why": "The unglamorous trio wins on population mortality."
+    }
+  ]
+};
+
+const cvThresholdPlace = {
+  "prompt": "Hypertension is defined operationally. Place the marker on the systolic threshold (mmHg) adopted by the 2017 ACC/AHA criteria:",
+  "labels": [
+    "100",
+    "120",
+    "140",
+    "160",
+    "180"
+  ],
+  "scale": {
+    "min": 100,
+    "max": 180
+  },
+  "answer": 130,
+  "tolerance": 2,
+  "why": "130 systolic under the 2017 criteria — 140/90 classically — set where damage curves inflect, not where symptoms begin."
+};
+
+const cvStemiBranch = {
+  "root": "An acute coronary presentation arrives. The clock is part of the therapy.",
+  "nodes": {
+    "start": {
+      "text": "The 12-lead ECG shows ST-segment elevation. Where does the pathway go?",
+      "choices": [
+        {
+          "label": "Straight to the catheter lab for reperfusion",
+          "next": "cath",
+          "feedback": "Transmural injury on the tracing: minutes are muscle."
+        },
+        {
+          "label": "Ward observation, reassess in the morning",
+          "next": "delay",
+          "feedback": "Every 30 minutes of delay measurably raises one-year mortality."
+        }
+      ]
+    },
+    "cath": {
+      "text": "Stenting the culprit artery or thrombolysis salvages jeopardised muscle; troponin assays confirm the injury — proteins released by dying myocytes, rising within hours, near-perfectly specific. Then the rhythm questions: a chaotic ventricular rhythm needs the defibrillator's non-synchronous reset.",
+      "choices": []
+    },
+    "delay": {
+      "text": "The salvage window is measured in hours and closes by the hour — reperfusion is the therapy the clock is keeping.",
+      "choices": [
+        {
+          "label": "Return to the pathway",
+          "next": "cath"
+        }
+      ]
+    }
+  },
+  "why": "The diagnosis stack is fast — ECG, troponin — because the salvage window closes on its own."
+};
 ---
 <TopicPage slug="subjects/medicine/advanced/cardiovascular-pathophysiology">
   <h2>Where you are, and what you will learn</h2>
@@ -95,6 +263,7 @@ const cardioQuiz = {
     body pushes the other one back up (the baroreflex resists any univariate assault, which is why
     combination therapy is the norm).
   </p>
+  <Widget no="3" caption="pair each drug class with its handle on the equation" widget="match" config={cvHandleMatch} />
   <p>
     <strong>Worked example.</strong> A patient has CO = 5 L/min and MAP = 100 mmHg, so SVR = 20
     mmHg·min per L. Give a vasodilator that drops resistance 25% to 15; the baroreflex raises heart
@@ -103,11 +272,13 @@ const cardioQuiz = {
     single-drug therapy often disappoints and why low doses of two or three agents beat escalating
     one.
   </p>
+  <Widget no="4" caption="which regimen lands lower?" widget="trace" config={cvReflexTrace} />
   <p>
     Resistance itself obeys Poiseuille's law: flow scales with the fourth power of radius. Halving an
     arteriole's radius multiplies its resistance sixteenfold — the physical reason a 70% coronary
     stenosis matters so much, and why "minor" narrowings under high flow demand become limiting.
   </p>
+  <Widget no="5" caption="call the fourth-power penalty" widget="estimate" config={cvPoiseuilleEstimate} />
   <p>
     <strong>So far:</strong> every therapy is a handle on one factor of MAP ≈ CO × SVR, and
     the baroreflex is why single handles disappoint. Next we follow the disease those
@@ -128,6 +299,7 @@ const cardioQuiz = {
     are exposed, platelets swarm, and an occlusive thrombus forms within minutes. The chronic plaque
     is the loaded gun; the clot pulls the trigger.
   </p>
+  <Widget no="6" caption="rebuild the plaque's twenty-year sequence" widget="order" config={cvPlaqueOrder} />
   <p>
     Why is LDL the causal agent rather than a passenger? Three independent lines converge: epidemiology
     (log-linear dose-response between LDL and events, with no floor down to genetically low levels);
@@ -140,6 +312,7 @@ const cardioQuiz = {
     hypo-cholesterolaemic at 2 mmol/L for eighty. This is why guidelines now talk about starting
     earlier, not just lower.
   </p>
+  <Widget no="7" caption="file each finding under the line of evidence it belongs to" widget="sort-buckets" config={cvLdlBuckets} />
   <p>
     <em>Common misconception:</em> "hardened arteries" as a plumbing problem solved by roto-rooting.
     Stents relieve obstructive stenoses and save lives during acute infarction, but for stable disease
@@ -148,6 +321,7 @@ const cardioQuiz = {
     the narrowest spot — which is why statins, blood-pressure control and smoking cessation prevent
     more deaths than any catheter lab.
   </p>
+  <Widget no="8" caption="true or false — what the catheter lab buys" widget="judge" config={cvStentJudge} />
 
   <h2>Hypertension: the silent multiplier</h2>
   <p>
@@ -160,6 +334,7 @@ const cardioQuiz = {
     has a named culprit — renal artery stenosis, primary aldosteronism, sleep apnoea — and is worth
     hunting because it is curable.
   </p>
+  <Widget no="9" caption="place the marker on the 2017 systolic threshold" widget="place" config={cvThresholdPlace} />
   <p>
     The damage is mechanical at every level. Chronically elevated pressure accelerates
     atherosclerosis (the risk-factor chain's first link), thickens the left ventricle
@@ -224,6 +399,7 @@ const cardioQuiz = {
     creating the stroke risk that anticoagulation (and CHA<sub>2</sub>DS<sub>2</sub>-VASc scoring)
     manages.
   </p>
+  <Widget no="10" caption="walk the acute-coronary pathway" widget="branch" config={cvStemiBranch} />
   <p><em>Common misconception:</em> a defibrillator jump-starts a heart that has flatlined. Defibrillation is a non-synchronous reset that works by stopping a chaotic rhythm — ventricular fibrillation — so the sinus node can resume control; in asystole (true flatline) there is nothing to reset, which is why the machine's algorithm refuses to shock it and treatment falls to CPR and adrenaline. The distinction between "shockable" and "non-shockable" arrest is one of the first things any resuscitation course teaches.</p>
 
   <h2>Risk arithmetic in practice: the calculator and the NNT</h2>

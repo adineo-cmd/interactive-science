@@ -1,0 +1,157 @@
+[
+  {
+    "slug": "subjects/medicine/advanced/cancer-biology-and-oncology",
+    "activities": [
+      {
+        "anchor": "which is why testing drives surveillance and preventive-surgery decisions",
+        "type": "place",
+        "caption": "place the marker on the carrier risk",
+        "name": "oncBrcaPlace",
+        "config": {
+          "prompt": "The population baseline for lifetime breast-cancer risk is about 12%. Place the marker on the figure quoted for BRCA1 carriers:",
+          "labels": ["0", "25", "50", "75", "100"],
+          "scale": { "min": 0, "max": 100 },
+          "answer": 65,
+          "tolerance": 7,
+          "why": "Roughly 55–72% — five to six times baseline — with ovarian risk around 39–44%, which is why a positive test reshapes surveillance and preventive-surgery decisions. Hereditary cases are still the minority: about 5–10% of cancers run in strong single-gene families."
+        }
+      },
+      {
+        "anchor": "therapeutically different planets",
+        "type": "spot-error",
+        "caption": "one line of the summary note over-unifies",
+        "name": "oncOneDiseaseSpot",
+        "config": {
+          "prompt": "A revision note on cancer classification — one line is wrong. Click it:",
+          "lines": [
+            "Two tumours of the same organ can differ by a single driver and respond to entirely different drugs.",
+            "Hundreds of distinct diseases with distinct driver combinations sit under the one word \"cancer\".",
+            "So a single universal cure is a realistic near-term research goal.",
+            "The unifying abstraction is the evolutionary process, not the pathology.",
+            "Progress arrives disease-by-disease, target-by-target."
+          ],
+          "errorLine": 2,
+          "correction": "\"The cure for cancer\" is a category error: with hundreds of distinct driver combinations, progress arrives cancer-by-cancer, target-by-target — the evolutionary process is what unifies the framing, not the pathology.",
+          "why": "A gain-of-function driver in one tumour and an amplification in another can make them therapeutically unrelated despite the shared organ."
+        }
+      },
+      {
+        "anchor": "strongest single prognostic variable",
+        "type": "match",
+        "caption": "pair each staging letter with what it records",
+        "name": "oncTnmMatch",
+        "config": {
+          "prompt": "The TNM system — pair each letter with what it records:",
+          "pairs": [
+            { "left": "T", "right": "tumour size and depth of local invasion" },
+            { "left": "N", "right": "whether regional nodes are involved" },
+            { "left": "M", "right": "whether distant spread has been documented" }
+          ],
+          "why": "Staging precedes curative resection for a reason: what the disease can do matters more than how large it has grown."
+        }
+      },
+      {
+        "anchor": "Size feels like the obvious measure of threat",
+        "type": "judge",
+        "caption": "true or false — reading a tumour's threat",
+        "name": "oncSizeJudge",
+        "config": {
+          "statements": [
+            { "s": "Millimetre for millimetre, size is the strongest predictor of outcome.", "truth": false, "why": "Size is only the T of TNM; nodal spread (N) and distant metastasis (M) carry the prognostic weight." },
+            { "s": "A small lesion can already carry metastatic competence in a minority clone.", "truth": true, "why": "A tumour can shed vast numbers of cells per gram per day while still small — capability is a property of subclones, not of calipers." },
+            { "s": "What makes a malignancy dangerous is what it can do — invade, travel, colonise — not merely how large it has grown.", "truth": true, "why": "The cascade's capabilities, not the millimetres, set the prognosis." }
+          ]
+        }
+      },
+      {
+        "anchor": "Judah Folkman's hypothesis became a drug class",
+        "type": "trace",
+        "caption": "which clone escapes the diffusion limit?",
+        "name": "oncAngioTrace",
+        "config": {
+          "prompt": "Two clones, same origin. One tips its angiogenic balance (VEGF up, thrombospondin down); one does not. Which curve keeps growing past the diffusion limit?",
+          "curves": [
+            { "expr": "0.06*x^2", "color": "#1d4ed8", "label": "A" },
+            { "expr": "1-exp(-1.2*x)", "color": "#b42318", "label": "B" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 6 },
+          "y": { "min": 0, "max": 3 },
+          "xlabel": "time (arb. units)",
+          "ylabel": "burden (arb. units)",
+          "why": "Beyond about a millimetre, oxygen and nutrients must arrive through new vessels — the clone that induces angiogenesis escapes the plateau. Bevacizumab and VEGF-receptor inhibitors exist to tip the balance back: normalising the supply, slowing growth, improving drug delivery — a capability exploited as a component, not a cure."
+        }
+      },
+      {
+        "anchor": "Caveats to hold alongside the enthusiasm",
+        "type": "branch",
+        "caption": "walk the immune-era planning conversation",
+        "name": "oncImmunoBranch",
+        "config": {
+          "root": "Checkpoint inhibitors and cellular therapy are the immune era's two pillars. Walk a treatment-planning conversation.",
+          "nodes": {
+            "start": {
+              "text": "A tumour tests PD-L1-positive. What does the biomarker actually predict?",
+              "choices": [
+                { "label": "Which patients are more likely to benefit from a checkpoint inhibitor", "next": "biomarker", "feedback": "Biomarkers such as PD-L1 and mutational burden predict who — they do not promise." },
+                { "label": "A guaranteed durable remission", "next": "promise", "feedback": "Only a minority of unselected patients benefit; the biomarker narrows the odds." }
+              ]
+            },
+            "biomarker": {
+              "text": "Released brakes can hold remissions for years — and the physiological cost is autoimmunity: the same checkpoints protect normal tissue.",
+              "choices": [
+                { "label": "Now the refractory case", "next": "cart" }
+              ]
+            },
+            "promise": {
+              "text": "Checkpoint inhibitors help a minority of unselected patients; biomarkers exist precisely because the response rate is not universal.",
+              "choices": [
+                { "label": "Continue", "next": "cart" }
+              ]
+            },
+            "cart": {
+              "text": "For refractory CD19-positive leukaemias and lymphomas, cellular therapy hands the patient's own T cells a synthetic receptor — complete remissions since 2017, with cytokine-release syndrome as the toxicity to manage.",
+              "choices": []
+            }
+          },
+          "why": "Unmasking the immune response buys durable remissions for a subset; biomarker selection and toxicity management travel with it."
+        }
+      },
+      {
+        "anchor": "This is why honest screening claims are made in",
+        "type": "compare",
+        "caption": "drag between the flattering number and the honest one",
+        "name": "oncScreenCompare",
+        "config": {
+          "prompt": "One screening programme, two report cards — drag between them:",
+          "before": {
+            "label": "survival from diagnosis",
+            "text": "Earlier detection stretches the clock from diagnosis to death without moving the death itself — and slow, indolent tumours that would never have harmed count as cured. The statistic rises; nothing is gained."
+          },
+          "after": {
+            "label": "mortality",
+            "text": "Deaths prevented per 1,000 people screened over 10 years — the measure that separates real benefit from bookkeeping, and the basis on which guidelines are risk- and age-stratified."
+          },
+          "why": "Survival-after-diagnosis can rise while mortality does not move; the ERSPC experience — modest benefit bought with substantial overdiagnosis — is why the honest claim lives on the right-hand axis."
+        }
+      },
+      {
+        "anchor": "The timeline also explains therapy",
+        "type": "order",
+        "caption": "rebuild the natural-history sequence",
+        "name": "oncTimelineOrder",
+        "config": {
+          "prompt": "A decade of evolution, condensed — drag the sequence into order:",
+          "items": [
+            "An oncogenic KRAS mutation starts the clone in bronchial epithelium",
+            "A TP53 hit removes the apoptosis brake",
+            "Mutation bursts — chromosomal shattering, APOBEC — diversify the population into subclones",
+            "At roughly a billion cells (about a centimetre), new vessels are recruited and metastatic competence may exist in a minority clone",
+            "Symptoms and diagnosis arrive in the billions-to-hundreds-of-billions range — evolutionarily late"
+          ],
+          "why": "Which is why screening targets the interval, liquid biopsies chase the far smaller DNA-shedding signal, and treatment strikes hardest while the population is small and homogeneous."
+        }
+      }
+    ]
+  }
+]

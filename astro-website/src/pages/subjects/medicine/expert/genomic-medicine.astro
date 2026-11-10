@@ -10,6 +10,180 @@ const genomeCfg = {
     { math: '4 · The hard parts: interpretation and ethics', note: 'Variants of uncertain significance (most rare findings), incidental findings (you checked one gene, found another risk), privacy (genetic data identifies relatives too), and germline editing ethics. The technology outran the policy — again.' },
   ],
 };
+
+const gmMaternalPlace = {
+  "prompt": "Trisomy-21 risk runs about 1 in 1,250 at age 25. Place the marker on the maternal age where it reaches roughly 1 in 100:",
+  "labels": [
+    "25",
+    "30",
+    "35",
+    "40",
+    "45"
+  ],
+  "scale": {
+    "min": 25,
+    "max": 45
+  },
+  "answer": 40,
+  "tolerance": 1,
+  "why": "About 1 in 100 at age 40 — mechanical, because ova rest in meiosis from before birth, so nondisjunction risk accumulates with time."
+};
+
+const gmNiptSpot = {
+  "prompt": "A note on non-invasive prenatal testing — one line is wrong. Click it:",
+  "lines": [
+    "NIPT reads cell-free DNA, much of which comes from the placenta.",
+    "Confined placental mosaicism, vanishing twins and maternal conditions can produce positive results for a chromosomally normal foetus.",
+    "A positive screen is a diagnosis — clinical decisions can follow it directly.",
+    "Sensitivity for the common trisomies is excellent, but predictive value depends on rarity.",
+    "A positive screen requires diagnostic confirmation before any decision."
+  ],
+  "errorLine": 2,
+  "correction": "NIPT is a screening test: a positive screen still requires confirmation by diagnostic testing (amniocentesis or CVS) before any clinical decision.",
+  "why": "The pipeline's logic is a high-sensitivity screen followed by diagnostic confirmation of what matters — collapsing the two steps is where prenatal-genomics errors live."
+};
+
+const gmPhenoBuckets = {
+  "prompt": "Three mechanisms stand between genotype and phenotype — file each finding:",
+  "buckets": [
+    "penetrance and expressivity",
+    "polygenic architecture",
+    "epigenetics"
+  ],
+  "items": [
+    {
+      "label": "the same variant giving very different risks across carriers",
+      "bucket": 0
+    },
+    {
+      "label": "hundreds of variants each adding a sliver, summed into a risk score",
+      "bucket": 1
+    },
+    {
+      "label": "imprinting — the same chromosomal region, opposite outcomes depending on parent of origin",
+      "bucket": 2
+    },
+    {
+      "label": "diet methylating a gene and changing coat colour in the agouti-mouse experiments",
+      "bucket": 2
+    },
+    {
+      "label": "risk scores built on European-ancestry data misperforming elsewhere",
+      "bucket": 1
+    }
+  ],
+  "why": "The clinic's craft is translating variants into quantified, actionable probabilities — including the discipline to say \"we don't know yet\"."
+};
+
+const gmPenetranceMatch = {
+  "prompt": "Three architectures of \"having the gene\" — pair each with its risk shape:",
+  "pairs": [
+    {
+      "left": "Huntington's expanded repeat",
+      "right": "near-fully penetrant — carriers develop it"
+    },
+    {
+      "left": "a BRCA1 variant",
+      "right": "elevated lifetime risk, on the order of 55–70% for breast cancer, modifiable by screening and surgery"
+    },
+    {
+      "left": "APOE4",
+      "right": "shifts odds without determining outcome"
+    }
+  ],
+  "why": "Variant reports are probabilities, not sentences — the architecture of the risk is part of the result."
+};
+
+const gmPharmBranch = {
+  "root": "A prescription meets a metaboliser genotype. Walk the check.",
+  "nodes": {
+    "start": {
+      "text": "The patient is an ultra-rapid CYP2D6 metaboliser and an opioid prodrug activated by that enzyme is on the chart. What follows?",
+      "choices": [
+        {
+          "label": "Alert: activation is excessive — overdose risk; choose a different analgesic",
+          "next": "fast",
+          "feedback": "The genotype is the dose."
+        },
+        {
+          "label": "Standard dosing — the genotype applies only to new drugs",
+          "next": "ignore",
+          "feedback": "Genes controlling metabolism decide whether a medication works, does nothing, or harms."
+        }
+      ]
+    },
+    "fast": {
+      "text": "Fatalities — including in breastfed infants — drove this drug's withdrawal from paediatric use in many countries. The implemented list runs wider: warfarin dosing (CYP2C9 and VKORC1), the HLA-B*57:01 test before abacavir, TPMT testing before mercaptopurine.",
+      "choices": []
+    },
+    "ignore": {
+      "text": "Variants sort patients into poor, intermediate, normal and ultra-rapid metabolisers — some loss-of-function alleles reach a fifth or more of certain populations.",
+      "choices": [
+        {
+          "label": "Continue to the case",
+          "next": "fast"
+        }
+      ]
+    }
+  },
+  "why": "Poor, intermediate, normal, ultra-rapid — the metaboliser classes are sorted before the prescription is written."
+};
+
+const gmCancerOrder = {
+  "prompt": "Treatment as an iterative loop — drag the passes into order:",
+  "items": [
+    "Sequence the tumour's genome and find the driver",
+    "Match the targeted drug: EGFR, BRAF, HER2, or the BCR-ABL inhibitor",
+    "The tumour evolves under drug pressure",
+    "Resistance mutations (EGFR T790M and successors) emerge",
+    "Re-biopsy and switch to a second-generation inhibitor — the loop repeats"
+  ],
+  "why": "Each pass re-reads the genome; circulating tumour DNA is extending the loop to monitoring without needles in tumours."
+};
+
+const gmYieldEstimate = {
+  "prompt": "Sequencing the exome tests thousands of Mendelian candidates at once. In suspected Mendelian disease, roughly what share of expert-centre exome tests return a diagnosis?",
+  "unit": "%",
+  "answer": 33,
+  "factor": 1.4,
+  "why": "Diagnostic yield runs in the 25–40% range at expert centres — and each diagnosis ends an odyssey that often lasted five to ten years of specialist visits."
+};
+
+const gmGeneTimeline = {
+  "unit": "year",
+  "events": [
+    {
+      "year": 1999,
+      "title": "The setback",
+      "text": "A trial death forces the vector engineering that made modern therapy safe.",
+      "tag": "setback"
+    },
+    {
+      "year": 2003,
+      "title": "Insertional mutagenesis",
+      "text": "Leukaemia cases in gene-addition trials reshape vector design.",
+      "tag": "setback"
+    },
+    {
+      "year": 2017,
+      "title": "First approved replacement",
+      "text": "AAV-delivered gene therapy for inherited retinal dystrophy.",
+      "tag": "approval"
+    },
+    {
+      "year": 2019,
+      "title": "A single infusion",
+      "text": "Gene replacement for spinal muscular atrophy, once a leading infant genetic killer.",
+      "tag": "approval"
+    },
+    {
+      "year": 2023,
+      "title": "CRISPR therapeutics",
+      "text": "Stem-cell editing reactivates foetal haemoglobin for sickle cell disease and beta-thalassaemia.",
+      "tag": "approval"
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/medicine/expert/genomic-medicine">
   <h2>Where you are, and what you will learn</h2>
@@ -73,6 +247,7 @@ const genomeCfg = {
     exception, where mitochondria's own DNA passes maternally (mitochondrial
     replacement therapy, "three-parent IVF", exists legally in the UK for this).
   </p>
+  <Widget no="2" caption="place the marker on the age where the risk reaches 1 in 100" widget="place" config={gmMaternalPlace} />
   <p>
     <em>Common misconception:</em> "a positive non-invasive prenatal test means the
     foetus has the condition." NIPT is a <em>screening</em> test: it reads
@@ -85,6 +260,7 @@ const genomeCfg = {
     confirm-what-matters is the pipeline's whole logic, and collapsing it is
     where prenatal-genomics errors live.
   </p>
+  <Widget no="3" caption="one line of the prenatal note skips the confirmation step" widget="spot-error" config={gmNiptSpot} />
   <p>
     <strong>So far:</strong> the reproductive system is the pipeline's transmission stage —
     meiosis shuffles, inheritance patterns quantify risk, and prenatal testing samples the
@@ -114,6 +290,7 @@ const genomeCfg = {
     association studies gave it the variant lists; the clinic is where the two
     must combine into usable, honest risk statements.
   </p>
+  <Widget no="4" caption="file each softening mechanism" widget="sort-buckets" config={gmPhenoBuckets} />
   <p>
     <em>Common misconception:</em> "having 'the gene for' a disease means you will
     get it." Genes confer risks with specific architectures: Huntington's is
@@ -125,6 +302,7 @@ const genomeCfg = {
     of genomic medicine's hard craft is exactly that translation, including the
     discipline to say "we don't know yet".
   </p>
+  <Widget no="5" caption="pair each genotype with its risk architecture" widget="match" config={gmPenetranceMatch} />
 
   <h2>Pharmacogenomics: dose by DNA</h2>
   <p>
@@ -145,6 +323,7 @@ const genomeCfg = {
     mercaptopurine round out the implemented list: pharmacogenomics is genomic
     medicine's quiet daily work, one prescription at a time.
   </p>
+  <Widget no="6" caption="walk the pharmacogenomic prescription check" widget="branch" config={gmPharmBranch} />
   <p>
     <strong>So far:</strong> in the germline, genes set how drugs are metabolised — one
     prescription at a time. In cancer the logic sharpens: the disease itself carries a
@@ -169,6 +348,7 @@ const genomeCfg = {
     sequencing loop. Liquid biopsy (circulating tumour DNA) is extending the loop
     to monitoring without needles in tumours.
   </p>
+  <Widget no="7" caption="rebuild the tumour-genome treatment loop" widget="order" config={gmCancerOrder} />
 
   <h2>Rare disease, diagnosis and the odyssey problem</h2>
   <p>
@@ -190,6 +370,7 @@ const genomeCfg = {
     genome-based screening raises storage, consent and false-positive dilemmas
     for a generation).
   </p>
+  <Widget no="8" caption="call the diagnostic yield" widget="estimate" config={gmYieldEstimate} />
   <p>
     The infrastructure response to the odyssey problem has itself become a
     template. The UK's 100,000 Genomes Project (2013–2018) embedded whole-genome
@@ -274,6 +455,7 @@ const genomeCfg = {
     therapy costing more than most patients' lifetime earnings — genomic
     medicine's distribution problem in one line.
   </p>
+  <Widget no="9" caption="the gene-therapy chronology, scrubbable" widget="timeline" config={gmGeneTimeline} />
   <p>
     <strong>Population genomics and the equity problem.</strong> The reference
     resources skew: of genomes in large research databases, the overwhelming

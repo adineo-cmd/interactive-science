@@ -1,0 +1,154 @@
+[
+  {
+    "slug": "subjects/medicine/advanced/medical-imaging",
+    "activities": [
+      {
+        "anchor": "a scale that lets radiology quantify what older films could only shade",
+        "type": "match",
+        "caption": "pair each tissue with its Hounsfield value",
+        "name": "miHounsfieldMatch",
+        "config": {
+          "prompt": "CT calibrates density into Hounsfield units — pair each tissue with its reading:",
+          "pairs": [
+            { "left": "water", "right": "0 HU — the scale's definition" },
+            { "left": "air", "right": "−1000 HU" },
+            { "left": "dense bone", "right": "≈ +1000 HU" },
+            { "left": "fat", "right": "≈ −100 HU" },
+            { "left": "fresh blood", "right": "≈ +40 to +60 HU" }
+          ],
+          "why": "The scale is what lets radiology quantify what older films could only shade — and it is why a haemorrhage reads bright against brain without any contrast agent."
+        }
+      },
+      {
+        "anchor": "Because relaxation physics is exquisitely sensitive to tissue microstructure",
+        "type": "cloze",
+        "caption": "fill the blanks — the MRI contrast recipe",
+        "name": "miT1t2Cloze",
+        "config": {
+          "text": "Fat is bright on %%0%%-weighted images; water and oedema are bright on %%1%%; and gadolinium shortens %%0%% to light up vascular tumours and disrupted barriers.",
+          "answers": ["T1", "T2"],
+          "hint": "The recovery constant brightens fat; the decay constant brightens water."
+        }
+      },
+      {
+        "anchor": "Its real hazards are magnetic",
+        "type": "judge",
+        "caption": "true or false — what an MRI scan actually is",
+        "name": "miMriJudge",
+        "config": {
+          "statements": [
+            { "s": "MRI exposes the patient to a small dose of ionising radiation.", "truth": false, "why": "None at all — the signals come from hydrogen nuclei relaxing in a magnetic field." },
+            { "s": "MRI's real hazards are magnetic: ferromagnetic objects become projectiles, and some implants heat or torque.", "truth": true, "why": "A physical hazard unique to MRI — which is why the screening questions precede every scan." },
+            { "s": "MRI resolves soft tissue no ionising method can, because relaxation is exquisitely sensitive to tissue microstructure.", "truth": true, "why": "Demyelinating lesions, ligament tears, cord compression — the richest contrast in medicine, bought with minutes, noise and expense." }
+          ]
+        }
+      },
+      {
+        "anchor": "making ultrasound the first-line tool for deep-vein thrombosis",
+        "type": "spot-error",
+        "caption": "one line of the ultrasound note misreads the barriers",
+        "name": "miUsSpot",
+        "config": {
+          "prompt": "A note on ultrasound — one line is wrong. Click it:",
+          "lines": [
+            "Ultrasound sends megahertz sound pulses and times their echoes.",
+            "Impedance mismatches at interfaces reflect the sound back.",
+            "Doppler mode reads flow velocity from the pitch change of echoes off moving blood.",
+            "Ultrasound passes cleanly through gas and calcification, which is why lungs image so well.",
+            "Air and bone are the barriers — the reason some organs were long \"ultrasound-blind\"."
+          ],
+          "errorLine": 3,
+          "correction": "Ultrasound cannot see through gas or calcification — air and bone are the barriers, which is why the brain and lungs were long \"ultrasound-blind\" (point-of-care lung techniques have only partially cracked the lung).",
+          "why": "The trade for safety and real time is operator dependence and acoustic barriers."
+        }
+      },
+      {
+        "anchor": "Hybrid PET-CT fuses function with anatomy",
+        "type": "compare",
+        "caption": "drag between imaging structure and imaging physiology",
+        "name": "miGeometryCompare",
+        "config": {
+          "prompt": "Two geometries of medical imaging — drag between them:",
+          "before": {
+            "label": "the signal comes from outside",
+            "text": "Photons, spins, echoes: the machine interrogates the body and the image maps structure — anatomy, density, relaxation, impedance."
+          },
+          "after": {
+            "label": "the signal is injected",
+            "text": "Gamma and positron tracers localise physiology: metabolism, receptor density, proliferation. Malignant tissue's avid glucose trapping is exactly what the metabolic image maps."
+          },
+          "why": "Hybrid scanners fuse the two: the physics of one modality localises what the other characterises."
+        }
+      },
+      {
+        "anchor": "as much molecular as instrumental",
+        "type": "sort-buckets",
+        "caption": "file each agent by the physics it exploits",
+        "name": "miContrastBuckets",
+        "config": {
+          "prompt": "Contrast agents, engineered by physics — file each:",
+          "buckets": ["absorbs X-rays (CT)", "shortens T1 (MRI)", "the molecule is the signal"],
+          "items": [
+            { "label": "iodine's high atomic number — photoelectric absorption lights up vessels", "bucket": 0 },
+            { "label": "chelated gadolinium brightening nearby water", "bucket": 1 },
+            { "label": "fluorodeoxyglucose trapped by hexokinase in glycolytic cells", "bucket": 2 },
+            { "label": "PSMA ligands homing to prostate-derived cells", "bucket": 2 }
+          ],
+          "why": "Different physics, different excretion routes, different renal-risk profiles — \"the contrast\" is not one thing, and imaging's advances have been as much molecular as instrumental."
+        }
+      },
+      {
+        "anchor": "The modality-choice reasoning is deducible from the physics",
+        "type": "branch",
+        "caption": "walk the scan-choice logic",
+        "name": "miScanBranch",
+        "config": {
+          "root": "Three presentations, three first scans — walk the decision logic.",
+          "nodes": {
+            "start": {
+              "text": "Suspected acute stroke. Which scan first?",
+              "choices": [
+                { "label": "Non-contrast CT", "next": "stroke", "feedback": "Fast, detects blood, excludes haemorrhage before thrombolysis." },
+                { "label": "Diffusion-weighted MRI", "next": "stroke2", "feedback": "Decisive later — but the order is wrong." }
+              ]
+            },
+            "stroke": {
+              "text": "Then CT angiography or diffusion MRI follows — diffusion shows the infarct within minutes and is decisive for endovascular therapy.",
+              "choices": [
+                { "label": "Next: the young adult with suspected appendicitis", "next": "appy" }
+              ]
+            },
+            "stroke2": {
+              "text": "Diffusion weighting is the one sequence fast enough to beat CT — after non-contrast CT has excluded haemorrhage.",
+              "choices": [
+                { "label": "Restart the sequence", "next": "stroke" }
+              ]
+            },
+            "appy": {
+              "text": "Ultrasound first — no radiation in a young adult; CT if inconclusive. And for major trauma: CT (bone detail, speed, tolerant of metal), switching to MRI when cord pathology is suspected.",
+              "choices": []
+            }
+          },
+          "why": "Each choice trades sensitivity, speed, radiation, cost and availability — the guideline flowcharts encode the physics."
+        }
+      },
+      {
+        "anchor": "Effective dose (mSv) permits comparison across modalities",
+        "type": "chart",
+        "caption": "the dose league, plotted to scale",
+        "name": "miDoseChart",
+        "config": {
+          "kind": "bar",
+          "height": 300,
+          "xLabels": ["chest radiograph", "transatlantic flight", "mammogram", "CT head", "CT chest", "CT abdomen-pelvis", "annual background"],
+          "series": [
+            { "label": "effective dose (mSv)", "values": [0.02, 0.05, 0.4, 2, 6, 9, 2.5] }
+          ],
+          "y": { "min": 0, "label": "mSv" },
+          "unit": "mSv",
+          "digits": 2
+        }
+      }
+    ]
+  }
+]

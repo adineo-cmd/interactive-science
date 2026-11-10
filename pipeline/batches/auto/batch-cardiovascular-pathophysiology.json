@@ -1,0 +1,144 @@
+[
+  {
+    "slug": "subjects/medicine/advanced/cardiovascular-pathophysiology",
+    "activities": [
+      {
+        "anchor": "every antihypertensive is a handle on one of those factors",
+        "type": "match",
+        "caption": "pair each drug class with its handle on the equation",
+        "name": "cvHandleMatch",
+        "config": {
+          "prompt": "Every agent acts on one factor of the haemodynamic identity — pair class with handle:",
+          "pairs": [
+            { "left": "beta-blockers", "right": "cut cardiac output at its rate and contractility terms" },
+            { "left": "diuretics", "right": "shrink plasma volume, cutting stroke volume" },
+            { "left": "ACE inhibitors and calcium-channel blockers", "right": "dilate arterioles, cutting systemic vascular resistance" }
+          ],
+          "why": "The baroreflex resists any univariate assault — which is why combination therapy is the norm."
+        }
+      },
+      {
+        "anchor": "This reflex-compensation logic explains why single-drug therapy often disappoints",
+        "type": "trace",
+        "caption": "which regimen lands lower?",
+        "name": "cvReflexTrace",
+        "config": {
+          "prompt": "Two regimens cut resistance by the same amount; one also blocks the compensatory rise in output. Which curve is the combination therapy?",
+          "curves": [
+            { "expr": "0.55+0.45*exp(-0.9*x)", "color": "#b42318", "label": "A" },
+            { "expr": "0.4+0.6*exp(-0.9*x)", "color": "#1d4ed8", "label": "B" }
+          ],
+          "correct": 1,
+          "x": { "min": 0, "max": 6 },
+          "y": { "min": 0, "max": 1.1 },
+          "xlabel": "time after starting therapy (arb. units)",
+          "ylabel": "mean arterial pressure (normalised)",
+          "why": "Vasodilate alone and the compensatory rise in rate and stroke volume blunts the fall; block the compensation and the pressure reduction is real — low doses of two or three agents beat escalating one."
+        }
+      },
+      {
+        "anchor": "the physical reason a 70% coronary stenosis matters so much",
+        "type": "estimate",
+        "caption": "call the fourth-power penalty",
+        "name": "cvPoiseuilleEstimate",
+        "config": {
+          "prompt": "Poiseuille's law: flow scales with the fourth power of radius. An arteriole's radius is halved. By what factor does its resistance rise?",
+          "unit": "×",
+          "answer": 16,
+          "factor": 1.3,
+          "why": "Resistance scales inversely with radius to the fourth power: 2⁴ = 16 — why \"minor\" narrowings under high flow demand become limiting."
+        }
+      },
+      {
+        "anchor": "Glagov's finding",
+        "type": "order",
+        "caption": "rebuild the plaque's twenty-year sequence",
+        "name": "cvPlaqueOrder",
+        "config": {
+          "prompt": "From injured endothelium to silent stenosis — drag the sequence into order:",
+          "items": [
+            "Endothelium injured — by pressure, smoking toxins, glucose — becomes permeable",
+            "LDL particles lodge in the intima and are chemically modified",
+            "Monocytes invade, engulf the modified LDL and become foam cells",
+            "Smooth muscle migrates in and lays a fibrous cap over a necrotic lipid core",
+            "For decades the plaque grows outward, the vessel remodelling to preserve the lumen — silent"
+          ],
+          "why": "Twenty years of outward remodelling keep the lumen open — which is why the disease stays silent until the cap's integrity, not the degree of narrowing, decides the day."
+        }
+      },
+      {
+        "anchor": "Three independent lines converge",
+        "type": "sort-buckets",
+        "caption": "file each finding under the line of evidence it belongs to",
+        "name": "cvLdlBuckets",
+        "config": {
+          "prompt": "LDL's causality rests on three independent lines — file each finding:",
+          "buckets": ["epidemiology", "Mendelian randomisation", "randomised trials"],
+          "items": [
+            { "label": "a log-linear dose-response between LDL and events, with no floor", "bucket": 0 },
+            { "label": "lifelong low LDL via inherited PCSK9 loss-of-function: ~88% lower coronary risk", "bucket": 1 },
+            { "label": "statins, ezetimibe and PCSK9 antibodies all reduce events in proportion to absolute LDL reduction", "bucket": 2 },
+            { "label": "roughly 22% fewer major events per 1 mmol/L per year of treatment", "bucket": 2 }
+          ],
+          "why": "What matters is cumulative exposure — LDL-years — which is why guidelines talk about starting earlier, not just lower."
+        }
+      },
+      {
+        "anchor": "as a plumbing problem solved by roto-rooting",
+        "type": "judge",
+        "caption": "true or false — what the catheter lab buys",
+        "name": "cvStentJudge",
+        "config": {
+          "statements": [
+            { "s": "Stents relieve obstructive stenoses and save lives during acute infarction.", "truth": true, "why": "The rescue use is real — the contested case is stable disease." },
+            { "s": "For stable disease, the ISCHEMIA trial found invasive revascularisation reduced death and infarction versus optimal medical therapy.", "truth": false, "why": "It did not: the disease is in the vessel wall and the blood, not the narrowest spot." },
+            { "s": "Statins, blood-pressure control and smoking cessation prevent more deaths than any catheter lab.", "truth": true, "why": "The unglamorous trio wins on population mortality." }
+          ]
+        }
+      },
+      {
+        "anchor": "because that is where measured end-organ damage curves begin to inflect",
+        "type": "place",
+        "caption": "place the marker on the 2017 systolic threshold",
+        "name": "cvThresholdPlace",
+        "config": {
+          "prompt": "Hypertension is defined operationally. Place the marker on the systolic threshold (mmHg) adopted by the 2017 ACC/AHA criteria:",
+          "labels": ["100", "120", "140", "160", "180"],
+          "scale": { "min": 100, "max": 180 },
+          "answer": 130,
+          "tolerance": 2,
+          "why": "130 systolic under the 2017 criteria — 140/90 classically — set where damage curves inflect, not where symptoms begin."
+        }
+      },
+      {
+        "anchor": "When a coronary thrombus occludes flow",
+        "type": "branch",
+        "caption": "walk the acute-coronary pathway",
+        "name": "cvStemiBranch",
+        "config": {
+          "root": "An acute coronary presentation arrives. The clock is part of the therapy.",
+          "nodes": {
+            "start": {
+              "text": "The 12-lead ECG shows ST-segment elevation. Where does the pathway go?",
+              "choices": [
+                { "label": "Straight to the catheter lab for reperfusion", "next": "cath", "feedback": "Transmural injury on the tracing: minutes are muscle." },
+                { "label": "Ward observation, reassess in the morning", "next": "delay", "feedback": "Every 30 minutes of delay measurably raises one-year mortality." }
+              ]
+            },
+            "cath": {
+              "text": "Stenting the culprit artery or thrombolysis salvages jeopardised muscle; troponin assays confirm the injury — proteins released by dying myocytes, rising within hours, near-perfectly specific. Then the rhythm questions: a chaotic ventricular rhythm needs the defibrillator's non-synchronous reset.",
+              "choices": []
+            },
+            "delay": {
+              "text": "The salvage window is measured in hours and closes by the hour — reperfusion is the therapy the clock is keeping.",
+              "choices": [
+                { "label": "Return to the pathway", "next": "cath" }
+              ]
+            }
+          },
+          "why": "The diagnosis stack is fast — ECG, troponin — because the salvage window closes on its own."
+        }
+      }
+    ]
+  }
+]

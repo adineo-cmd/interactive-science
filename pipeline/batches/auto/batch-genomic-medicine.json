@@ -1,0 +1,148 @@
+[
+  {
+    "slug": "subjects/medicine/expert/genomic-medicine",
+    "activities": [
+      {
+        "anchor": "maternal age effect is mechanical",
+        "type": "place",
+        "caption": "place the marker on the age where the risk reaches 1 in 100",
+        "name": "gmMaternalPlace",
+        "config": {
+          "prompt": "Trisomy-21 risk runs about 1 in 1,250 at age 25. Place the marker on the maternal age where it reaches roughly 1 in 100:",
+          "labels": ["25", "30", "35", "40", "45"],
+          "scale": { "min": 25, "max": 45 },
+          "answer": 40,
+          "tolerance": 1,
+          "why": "About 1 in 100 at age 40 — mechanical, because ova rest in meiosis from before birth, so nondisjunction risk accumulates with time."
+        }
+      },
+      {
+        "anchor": "means the foetus has the condition",
+        "type": "spot-error",
+        "caption": "one line of the prenatal note skips the confirmation step",
+        "name": "gmNiptSpot",
+        "config": {
+          "prompt": "A note on non-invasive prenatal testing — one line is wrong. Click it:",
+          "lines": [
+            "NIPT reads cell-free DNA, much of which comes from the placenta.",
+            "Confined placental mosaicism, vanishing twins and maternal conditions can produce positive results for a chromosomally normal foetus.",
+            "A positive screen is a diagnosis — clinical decisions can follow it directly.",
+            "Sensitivity for the common trisomies is excellent, but predictive value depends on rarity.",
+            "A positive screen requires diagnostic confirmation before any decision."
+          ],
+          "errorLine": 2,
+          "correction": "NIPT is a screening test: a positive screen still requires confirmation by diagnostic testing (amniocentesis or CVS) before any clinical decision.",
+          "why": "The pipeline's logic is a high-sensitivity screen followed by diagnostic confirmation of what matters — collapsing the two steps is where prenatal-genomics errors live."
+        }
+      },
+      {
+        "anchor": "Genotype is not destiny by three mechanisms",
+        "type": "sort-buckets",
+        "caption": "file each softening mechanism",
+        "name": "gmPhenoBuckets",
+        "config": {
+          "prompt": "Three mechanisms stand between genotype and phenotype — file each finding:",
+          "buckets": ["penetrance and expressivity", "polygenic architecture", "epigenetics"],
+          "items": [
+            { "label": "the same variant giving very different risks across carriers", "bucket": 0 },
+            { "label": "hundreds of variants each adding a sliver, summed into a risk score", "bucket": 1 },
+            { "label": "imprinting — the same chromosomal region, opposite outcomes depending on parent of origin", "bucket": 2 },
+            { "label": "diet methylating a gene and changing coat colour in the agouti-mouse experiments", "bucket": 2 },
+            { "label": "risk scores built on European-ancestry data misperforming elsewhere", "bucket": 1 }
+          ],
+          "why": "The clinic's craft is translating variants into quantified, actionable probabilities — including the discipline to say \"we don't know yet\"."
+        }
+      },
+      {
+        "anchor": "The clinical act is translating a variant into a quantified, actionable probability",
+        "type": "match",
+        "caption": "pair each genotype with its risk architecture",
+        "name": "gmPenetranceMatch",
+        "config": {
+          "prompt": "Three architectures of \"having the gene\" — pair each with its risk shape:",
+          "pairs": [
+            { "left": "Huntington's expanded repeat", "right": "near-fully penetrant — carriers develop it" },
+            { "left": "a BRCA1 variant", "right": "elevated lifetime risk, on the order of 55–70% for breast cancer, modifiable by screening and surgery" },
+            { "left": "APOE4", "right": "shifts odds without determining outcome" }
+          ],
+          "why": "Variant reports are probabilities, not sentences — the architecture of the risk is part of the result."
+        }
+      },
+      {
+        "anchor": "Codeine is the mirror case",
+        "type": "branch",
+        "caption": "walk the pharmacogenomic prescription check",
+        "name": "gmPharmBranch",
+        "config": {
+          "root": "A prescription meets a metaboliser genotype. Walk the check.",
+          "nodes": {
+            "start": {
+              "text": "The patient is an ultra-rapid CYP2D6 metaboliser and an opioid prodrug activated by that enzyme is on the chart. What follows?",
+              "choices": [
+                { "label": "Alert: activation is excessive — overdose risk; choose a different analgesic", "next": "fast", "feedback": "The genotype is the dose." },
+                { "label": "Standard dosing — the genotype applies only to new drugs", "next": "ignore", "feedback": "Genes controlling metabolism decide whether a medication works, does nothing, or harms." }
+              ]
+            },
+            "fast": {
+              "text": "Fatalities — including in breastfed infants — drove this drug's withdrawal from paediatric use in many countries. The implemented list runs wider: warfarin dosing (CYP2C9 and VKORC1), the HLA-B*57:01 test before abacavir, TPMT testing before mercaptopurine.",
+              "choices": []
+            },
+            "ignore": {
+              "text": "Variants sort patients into poor, intermediate, normal and ultra-rapid metabolisers — some loss-of-function alleles reach a fifth or more of certain populations.",
+              "choices": [
+                { "label": "Continue to the case", "next": "fast" }
+              ]
+            }
+          },
+          "why": "Poor, intermediate, normal, ultra-rapid — the metaboliser classes are sorted before the prescription is written."
+        }
+      },
+      {
+        "anchor": "Resistance is the genomic lesson's recursive edge",
+        "type": "order",
+        "caption": "rebuild the tumour-genome treatment loop",
+        "name": "gmCancerOrder",
+        "config": {
+          "prompt": "Treatment as an iterative loop — drag the passes into order:",
+          "items": [
+            "Sequence the tumour's genome and find the driver",
+            "Match the targeted drug: EGFR, BRAF, HER2, or the BCR-ABL inhibitor",
+            "The tumour evolves under drug pressure",
+            "Resistance mutations (EGFR T790M and successors) emerge",
+            "Re-biopsy and switch to a second-generation inhibitor — the loop repeats"
+          ],
+          "why": "Each pass re-reads the genome; circulating tumour DNA is extending the loop to monitoring without needles in tumours."
+        }
+      },
+      {
+        "anchor": "an individual rare disease is hopeless to diagnose by pattern recognition",
+        "type": "estimate",
+        "caption": "call the diagnostic yield",
+        "name": "gmYieldEstimate",
+        "config": {
+          "prompt": "Sequencing the exome tests thousands of Mendelian candidates at once. In suspected Mendelian disease, roughly what share of expert-centre exome tests return a diagnosis?",
+          "unit": "%",
+          "answer": 33,
+          "factor": 1.4,
+          "why": "Diagnostic yield runs in the 25–40% range at expert centres — and each diagnosis ends an odyssey that often lasted five to ten years of specialist visits."
+        }
+      },
+      {
+        "anchor": "The promise was three decades in landing",
+        "type": "timeline",
+        "caption": "the gene-therapy chronology, scrubbable",
+        "name": "gmGeneTimeline",
+        "config": {
+          "unit": "year",
+          "events": [
+            { "year": 1999, "title": "The setback", "text": "A trial death forces the vector engineering that made modern therapy safe.", "tag": "setback" },
+            { "year": 2003, "title": "Insertional mutagenesis", "text": "Leukaemia cases in gene-addition trials reshape vector design.", "tag": "setback" },
+            { "year": 2017, "title": "First approved replacement", "text": "AAV-delivered gene therapy for inherited retinal dystrophy.", "tag": "approval" },
+            { "year": 2019, "title": "A single infusion", "text": "Gene replacement for spinal muscular atrophy, once a leading infant genetic killer.", "tag": "approval" },
+            { "year": 2023, "title": "CRISPR therapeutics", "text": "Stem-cell editing reactivates foetal haemoglobin for sickle cell disease and beta-thalassaemia.", "tag": "approval" }
+          ]
+        }
+      }
+    ]
+  }
+]
