@@ -10,6 +10,203 @@ const proofCfg = {
     { math: '4 · ∴ ∠B = ∠C', note: 'Congruent triangles have equal matching angles. Two facts from one construction — the Euclidean method in miniature.' },
   ],
 };
+
+const geoProofSort = {
+  "prompt": "File each guarantee under the method that provides it:",
+  "buckets": [
+    "a measurement gives",
+    "a proof gives"
+  ],
+  "items": [
+    {
+      "label": "the answer for the one triangle you checked",
+      "bucket": 0
+    },
+    {
+      "label": "an accuracy limited by your instruments",
+      "bucket": 0
+    },
+    {
+      "label": "the result for every triangle at once, including ones too skewed to draw",
+      "bucket": 1
+    },
+    {
+      "label": "every step visible and checkable",
+      "bucket": 1
+    }
+  ],
+  "why": "The leap from 'the ones I checked' to 'all of them' is what makes mathematics different from every empirical science."
+};
+
+const geoAngleMatch = {
+  "prompt": "Pair each angle fact with what it sums to (or claims):",
+  "pairs": [
+    {
+      "left": "angles on a straight line",
+      "right": "sum to 180°"
+    },
+    {
+      "left": "angles around a point",
+      "right": "sum to 360°"
+    },
+    {
+      "left": "complementary angles",
+      "right": "sum to 90°"
+    },
+    {
+      "left": "vertically opposite angles",
+      "right": "are equal"
+    }
+  ],
+  "why": "A full turn is 360° — a convention inherited from Babylonian base-60 astronomy."
+};
+
+const geoParallelCloze = {
+  "text": "Parallel lines cut by a transversal: corresponding angles are equal (the %%0%%-shape), alternate angles are equal (the %%1%%-shape), and co-interior angles sum to %%2%% (the C-shape).",
+  "answers": [
+    [
+      "F",
+      "f"
+    ],
+    [
+      "Z",
+      "z"
+    ],
+    [
+      "180°",
+      "180"
+    ]
+  ],
+  "hint": "Two letters that look like the angle patterns, and the straight-line total."
+};
+
+const geoPolyEst = {
+  "prompt": "The interior angles of an n-sided polygon sum to (n − 2) × 180°. Roughly what is the sum for a hexagon?",
+  "unit": "°",
+  "answer": 720,
+  "factor": 1.2,
+  "why": "(6 − 2) × 180° = 720° — 180° for a triangle, 360° for a quadrilateral, 540° for a pentagon, 720° for a hexagon.",
+  "context": "draw a line through one corner parallel to the opposite side and the triangle's angles rearrange into a straight line"
+};
+
+const geoAssBranch = {
+  "root": "Two triangles share two sides and a non-included angle (ASS). Are they congruent?",
+  "nodes": {
+    "start": {
+      "text": "What is the verdict?",
+      "choices": [
+        {
+          "label": "Yes — three facts always pin a triangle down",
+          "next": "trap",
+          "feedback": "Not these three: ASS famously does not work — two different triangles can share two sides and a non-included angle."
+        },
+        {
+          "label": "No — only SSS, SAS and ASA (plus RHS) guarantee congruence",
+          "next": "works",
+          "feedback": "Right: the included angle is what pins the third side down; a non-included angle leaves the shape ambiguous."
+        },
+        {
+          "label": "Yes, if the shared angle is a right angle",
+          "next": "rhs",
+          "feedback": "That is RHS — right angle, hypotenuse, side — the one special case that does work."
+        }
+      ]
+    },
+    "trap": {
+      "text": "Three facts are enough only when they are the right three facts."
+    },
+    "works": {
+      "text": "SSS, SAS and ASA each include the information that fixes the triangle's shape."
+    },
+    "rhs": {
+      "text": "The right angle removes the ambiguity — which is why RHS is a special case worth keeping."
+    }
+  },
+  "why": "Congruence needs the right three facts: SSS, SAS, ASA (plus RHS) — and ASS is the famous near-miss."
+};
+
+const geoScaleEst = {
+  "prompt": "A dog twice the size of a terrier (scale factor k = 2) is how many times as heavy?",
+  "unit": "×",
+  "answer": 8,
+  "factor": 1.3,
+  "why": "Volumes scale by k³ — 2³ = 8 — which is why elephants need thick legs while ants do not: weight grows as the cube, bone strength as the square.",
+  "context": "lengths multiply by k, areas by k², volumes by k³"
+};
+
+const geoSymMatch = {
+  "prompt": "Pair each figure with its symmetry:",
+  "pairs": [
+    {
+      "left": "an isosceles triangle",
+      "right": "one reflection axis"
+    },
+    {
+      "left": "a square",
+      "right": "four axes, rotational order 4"
+    },
+    {
+      "left": "a circle",
+      "right": "infinitely many axes"
+    },
+    {
+      "left": "a regular pentagon",
+      "right": "rotational order 5"
+    }
+  ],
+  "why": "Symmetry is the deep principle that something survives a change — in the isosceles proof it is exactly why the base angles must match."
+};
+
+const geoTangentSpot = {
+  "prompt": "One of these circle theorems is misstated — click it:",
+  "lines": [
+    "The angle at the centre is twice the angle at the circumference on the same arc.",
+    "The angle in a semicircle is 90°.",
+    "Opposite angles of a cyclic quadrilateral sum to 180°.",
+    "A tangent meets the radius at the point of contact at 45°."
+  ],
+  "errorLine": 3,
+  "correction": "A tangent is perpendicular to the radius at the point of contact — 90°, not 45°.",
+  "why": "The radius is the shortest line to the circle, so it must meet the tangent at 90°."
+};
+
+const geoCyclicOrder = {
+  "prompt": "Rebuild the proof that opposite angles of a cyclic quadrilateral sum to 180° — what comes first:",
+  "items": [
+    "Angle ADC subtends arc ABC",
+    "The angle at the centre standing on that arc is twice angle ADC",
+    "The reflex centre angle is twice angle ABC, which stands on the other arc",
+    "ADC + ABC = half of 360° = 180°"
+  ],
+  "why": "Two applications of one theorem and an instant corollary — and the proof never measured anything. That is the payoff of the Euclidean method: many facts from one argument."
+};
+
+const geoNonEuclidSort = {
+  "prompt": "File each claim under the non-Euclidean geometry it describes:",
+  "buckets": [
+    "hyperbolic (Lobachevsky, Bolyai)",
+    "elliptic (Riemann)"
+  ],
+  "items": [
+    {
+      "label": "infinitely many parallels through the point",
+      "bucket": 0
+    },
+    {
+      "label": "no parallels at all",
+      "bucket": 1
+    },
+    {
+      "label": "triangle angles sum to less than 180°",
+      "bucket": 0
+    },
+    {
+      "label": "on a sphere, triangle angles can exceed 180°",
+      "bucket": 1
+    }
+  ],
+  "why": "The parallel postulate is not a truth of logic but a choice — and the universe we live in turns out to have made a non-Euclidean one, which GPS satellites correct for daily."
+};
 ---
 <TopicPage slug="subjects/math/foundational/euclidean-geometry">
 
@@ -58,6 +255,7 @@ const proofCfg = {
     That leap from "the ones I checked" to "all of them" is what makes mathematics
     different from every empirical science.
   </p>
+  <Widget no="11" caption="measurement or proof — file each guarantee" widget="sort-buckets" config={geoProofSort} />
   <Widget no="1" caption="a classic proof, honestly constructed — the isosceles triangle theorem" widget="equationStep" config={proofCfg} />
   <p>
     <strong>What to notice:</strong> step through the four panels and keep a tally of what
@@ -91,6 +289,7 @@ const proofCfg = {
     two halves of a right angle; <strong>supplementary</strong> angles sum to
     180°.
   </p>
+  <Widget no="10" caption="pair each angle fact with its total" widget="match" config={geoAngleMatch} />
   <p>
     With <strong>parallel lines</strong> — lines in the same plane that never
     meet, however far you extend them — crossed by a third line called a
@@ -99,6 +298,7 @@ const proofCfg = {
     <strong>alternate</strong> angles are equal (the Z-shape), and
     <strong>co-interior</strong> angles sum to 180° (the C-shape).
   </p>
+  <Widget no="9" caption="fill the blanks — the transversal's three relationships" widget="cloze" config={geoParallelCloze} />
   <p>
     From these, one theorem falls out immediately: the angles of any triangle sum
     to 180°. Draw a line through one corner parallel to the opposite side, and
@@ -108,6 +308,7 @@ const proofCfg = {
     360° for a quadrilateral, 540° for a pentagon. Every fact here is proven, not
     asserted — which is why they hold everywhere, on every drawing, forever.
   </p>
+  <Widget no="8" caption="call the hexagon's angle sum" widget="estimate" config={geoPolyEst} />
   <p>
     <em>Common misconception:</em> "a triangle's angles always sum to 180°." That is a
     theorem of flat planes, not of every surface: on a sphere, a triangle running from
@@ -141,6 +342,7 @@ const proofCfg = {
     famously does <em>not</em> work: two different triangles can share two sides
     and a non-included angle.)
   </p>
+  <Widget no="7" caption="the ASS trap" widget="branch" config={geoAssBranch} />
   <p>
     Congruence is the engine of proof: to show two pieces of a figure are equal,
     carve the figure into congruent triangles — the move Euclid uses hundreds of
@@ -164,6 +366,7 @@ const proofCfg = {
     cube while bone strength grows as the square — giant versions of small
     animals run out of strength.
   </p>
+  <Widget no="6" caption="call the weight of twice the size" widget="estimate" config={geoScaleEst} />
   <p>
     Similar triangles are also the surveyor's oldest tool. The ratio of shadow to
     height is the same for a stick and for a pyramid — which is how Thales
@@ -185,6 +388,7 @@ const proofCfg = {
     theorem); in chemistry, molecular symmetry predicts spectra. Learning to
     <em>see</em> symmetry here is the first training in using it as a tool.
   </p>
+  <Widget no="5" caption="pair each figure with its symmetry" widget="match" config={geoSymMatch} />
   <p>
     <strong>So far:</strong> congruence pins figures down with three facts and
     powers proofs; similarity scales shapes and their areas and volumes by k, k²,
@@ -221,6 +425,7 @@ const proofCfg = {
     once. That is the payoff of the Euclidean method — many facts from one
     argument.
   </p>
+  <Widget no="4" caption="find the backwards theorem" widget="spot-error" config={geoTangentSpot} />
   <p>
     One more proof shows the theorems combining. Take a quadrilateral inscribed
     in a circle (a <strong>cyclic quadrilateral</strong>) and ask why its opposite
@@ -234,6 +439,7 @@ const proofCfg = {
     two-step chain through these six results, and the skill being trained is
     choosing which theorem links the angles you have to the angle you want.
   </p>
+  <Widget no="3" caption="rebuild the cyclic-quadrilateral proof" widget="order" config={geoCyclicOrder} />
   <p>
     One numerical workout ties the theorems together. Inscribe a triangle in a
     semicircle whose diameter is 10, with one leg 6. Thales' theorem hands over
@@ -298,6 +504,7 @@ const proofCfg = {
     Einstein's general relativity describes gravity as spacetime curvature, geometry in the
     Riemannian family. GPS satellites correct for it daily.
   </p>
+  <Widget no="2" caption="hyperbolic or elliptic — file each claim" widget="sort-buckets" config={geoNonEuclidSort} />
   <p>
     Two deeper footnotes. First, Euclid's axioms had quiet gaps — he assumed, without saying,
     that a line has points between any two of its points — and it took David Hilbert in 1899

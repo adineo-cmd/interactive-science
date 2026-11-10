@@ -10,6 +10,182 @@ const ineqCfg = {
     { math: 'x < −5', note: 'Divide by −2 — and the inequality FLIPS. Multiplying or dividing by a negative reverses the comparison, because −1 turns "greater" into "less".' },
   ],
 };
+
+const eqBalanceSort = {
+  "prompt": "File each move under what it does to the balanced see-saw:",
+  "buckets": [
+    "keeps the balance",
+    "tips the see-saw"
+  ],
+  "items": [
+    {
+      "label": "add 3 to both sides",
+      "bucket": 0
+    },
+    {
+      "label": "divide both sides by 2",
+      "bucket": 0
+    },
+    {
+      "label": "add 3 to the left side only",
+      "bucket": 1
+    },
+    {
+      "label": "divide both sides by x — the unknown",
+      "bucket": 1
+    }
+  ],
+  "why": "Whatever you do to one side, do to the other — and never divide by the unknown, which silently discards solutions."
+};
+
+const eqTidyMatch = {
+  "prompt": "Pair each tidying skill with the move that performs it:",
+  "pairs": [
+    {
+      "left": "collecting like terms",
+      "right": "3x + 2x = 5x"
+    },
+    {
+      "left": "expanding brackets",
+      "right": "3(x − 2) = 3x − 6"
+    },
+    {
+      "left": "factorising",
+      "right": "x² − 9 = (x + 3)(x − 3)"
+    },
+    {
+      "left": "substitution",
+      "right": "evaluate the general rule for a chosen value"
+    }
+  ],
+  "why": "Factorising matters because factors reveal structure: the factored form shows instantly that x² − 9 is zero when x = 3 or x = −3."
+};
+
+const eqMinusSpot = {
+  "prompt": "One of these expansions is wrong — click it:",
+  "lines": [
+    "In 3 − (x + 2), the minus multiplies everything inside the brackets.",
+    "The honest expansion is 3 − x − 2.",
+    "It collects to 1 − x.",
+    "3 − (x + 2) equals 3 − x + 2."
+  ],
+  "errorLine": 3,
+  "correction": "3 − (x + 2) = 3 − x − 2, which collects to 1 − x.",
+  "why": "Distribute the −1 like any other coefficient, then collect like terms — sign slips at exactly this spot are among the most common errors in school algebra."
+};
+
+const eqOnionOrder = {
+  "prompt": "Rebuild the solution of 2(x + 5) = 3x − 4 — what comes first:",
+  "items": [
+    "Expand: 2x + 10 = 3x − 4",
+    "Subtract 2x from both sides: 10 = x − 4",
+    "Add 4 to both sides: 14 = x",
+    "Check by substituting back: both sides give 38"
+  ],
+  "why": "Undo in reverse order, then check by substituting back — the ten-second habit that catches most algebra slips ever made."
+};
+
+const eqDivideBranch = {
+  "root": "x² = x. A student divides both sides by x and reports x = 1. What went wrong?",
+  "nodes": {
+    "start": {
+      "text": "Diagnose the move:",
+      "choices": [
+        {
+          "label": "Nothing — the answer is correct",
+          "next": "lost",
+          "feedback": "It is correct but incomplete: dividing by x silently discarded the second solution, x = 0."
+        },
+        {
+          "label": "Dividing by the unknown keeps only some solutions — factorise instead",
+          "next": "factor",
+          "feedback": "x(x − 1) = 0 keeps both answers: x = 0 and x = 1."
+        },
+        {
+          "label": "The error was squaring something",
+          "next": "no",
+          "feedback": "No squaring happened here — the discarded root came from dividing by the unknown."
+        }
+      ]
+    },
+    "lost": {
+      "text": "One root survives; the other was divided away without a trace."
+    },
+    "factor": {
+      "text": "Factorise — x(x − 1) = 0 — and both answers survive."
+    },
+    "no": {
+      "text": "The culprit is the division by x, not any squaring."
+    }
+  },
+  "why": "Never divide by the unknown: factorise instead, so no solution is silently discarded."
+};
+
+const eqQuadCloze = {
+  "text": "The quadratic formula x = (−b ± √(%%0%%)) / %%1%%a solves ax² + bx + c = 0 for any coefficients, and the discriminant — the part under the root — tells you how many real answers exist: two, %%2%%, or none.",
+  "answers": [
+    [
+      "b² − 4ac",
+      "b^2 - 4ac",
+      "b2-4ac"
+    ],
+    [
+      "2",
+      "two"
+    ],
+    [
+      "one",
+      "1"
+    ]
+  ],
+  "hint": "What sits under the square root, what divides it, and the middle possibility for the root count."
+};
+
+const eqFlipPredict = {
+  "q": "From −2x > 10, dividing both sides by −2 gives…",
+  "choices": [
+    "x < −5 — the comparison flips",
+    "x > −5 — the comparison holds",
+    "x = −5 — the comparison becomes an equation"
+  ],
+  "answer": 0,
+  "why": "Multiplying by −1 turns 'greater' into 'less': 3 > 2 is true, yet −3 < −2. Forgetting the flip is the single most common inequality error in existence."
+};
+
+const eqSimulCompare = {
+  "prompt": "Two ways to solve 2x + y = 11 and x − y = 1 — drag the divider:",
+  "before": {
+    "label": "elimination",
+    "text": "add the two equations so the y terms cancel — 3x = 12, so x = 4, then y = 3"
+  },
+  "after": {
+    "label": "substitution",
+    "text": "the second equation says y = x − 1; insert that into the first and solve"
+  },
+  "why": "Two routes, one destination — and either answer can be checked in both original equations (8 + 3 = 11; 4 − 3 = 1)."
+};
+
+const eqGraphSpot = {
+  "prompt": "One of these graph readings is backwards — click it:",
+  "lines": [
+    "A distance–time graph's gradient is speed.",
+    "Steeper means faster.",
+    "A flat stretch means stopped.",
+    "Where two cost graphs intersect is where the more expensive option always wins."
+  ],
+  "errorLine": 3,
+  "correction": "Where two graphs intersect is where two options become equal — the break-even point.",
+  "why": "The crossing is where one courier's flat fee beats the other's per-km rate — which option wins depends on which side of it you are."
+};
+
+const eqSeqEst = {
+  "prompt": "The geometric sequence 2, 6, 18, 54 multiplies by 3 each step. Roughly what is its 7th term?",
+  "unit": "",
+  "answer": 1458,
+  "factor": 1.3,
+  "why": "2 × 3⁶ = 1,458 — the shape of compound interest and population growth, exploding upward whenever r > 1.",
+  "context": "the general term is aₙ = a₁ × rⁿ⁻¹"
+};
 ---
 <TopicPage slug="subjects/math/foundational/equations-and-inequalities">
 
@@ -45,6 +221,7 @@ const ineqCfg = {
     the see-saw tips: the statement is no longer the same statement. That single
     principle, applied over and over, is all of "solving".
   </p>
+  <Widget no="11" caption="keeps the balance or tips the see-saw?" widget="sort-buckets" config={eqBalanceSort} />
   <p>
     Why bother? Because equations are how the world is written down. A phone
     bill, a braking distance, a population forecast — each is a relationship
@@ -73,6 +250,7 @@ const ineqCfg = {
     evaluates an expression for a chosen value — the bridge between the general
     rule and the specific case.
   </p>
+  <Widget no="10" caption="pair each tidying skill with its example" widget="match" config={eqTidyMatch} />
   <p>
     The order of operations (brackets, powers, then × and ÷, then + and −) is not
     a school ritual. It is a convention that makes the written form unambiguous,
@@ -80,6 +258,7 @@ const ineqCfg = {
     the same number.
   </p>
   <p><em>Common misconception:</em> a minus sign in front of brackets affects only the first term — as if 3 − (x + 2) equalled 3 − x + 2. The minus multiplies everything inside: the honest expansion is 3 − x − 2, which collects to 1 − x. Sign slips at exactly this spot are among the most common errors in school algebra, and the fix is mechanical: distribute the −1 like any other coefficient, then collect like terms.</p>
+  <Widget no="9" caption="find the sign slip" widget="spot-error" config={eqMinusSpot} />
   <p>
     <strong>So far:</strong> an equation is a balanced see-saw with a hidden
     weight, and expressions are the sentences you tidy before hunting for it.
@@ -94,6 +273,7 @@ const ineqCfg = {
     3(14) − 4 = 38 — balanced, so x = 14 is correct. That ten-second check catches
     most algebra slips ever made.
   </p>
+  <Widget no="8" caption="peel the onion in order" widget="order" config={eqOnionOrder} />
   <p>
     Two refinements matter. First, <strong>never divide by the unknown</strong>:
     from x² = x, dividing by x keeps only x = 1 and silently discards x = 0.
@@ -104,6 +284,8 @@ const ineqCfg = {
     usually have <em>two</em> answers, and the discriminant b² − 4ac — the part
     under the root — tells you how many real ones exist: two, one, or none.
   </p>
+  <Widget no="7" caption="the vanishing root" widget="branch" config={eqDivideBranch} />
+  <Widget no="6" caption="fill the blanks — the formula that solves every quadratic" widget="cloze" config={eqQuadCloze} />
   <Widget no="1" caption="the one rule that surprises everyone — dividing by a negative flips the inequality" widget="equationStep" config={ineqCfg} />
   <p>
     <strong>What to notice:</strong> step through the four panels one at a time and keep a
@@ -132,6 +314,7 @@ const ineqCfg = {
     −1 ≤ x &lt; 4 sandwich a value between bounds — the everyday mathematics of
     tolerances, speed limits and medication doses.
   </p>
+  <Widget no="5" caption="bet before you read on — the famous flip" widget="predict" config={eqFlipPredict} />
   <p>
     <em>Common misconception:</em> "x is a number hiding behind a letter, and there is exactly
     one right answer." Equations can have none (x + 1 = x), one, two, or infinitely many
@@ -174,6 +357,7 @@ const ineqCfg = {
     again. Two routes, one destination, and either answer can be checked in both
     original equations (8 + 3 = 11; 4 − 3 = 1).
   </p>
+  <Widget no="4" caption="two routes, one destination — drag the divider" widget="compare" config={eqSimulCompare} />
   <p>
     Graphically, each equation is a line and the answer is where the lines cross.
     That picture is also how word problems become solvable: translate the
@@ -205,6 +389,7 @@ const ineqCfg = {
     axes, note the turning point of a parabola, and read the overall shape before
     fussing with points.
   </p>
+  <Widget no="3" caption="find the backwards reading" widget="spot-error" config={eqGraphSpot} />
 
   <h2>Sequences: patterns with a rule</h2>
   <p>
@@ -218,6 +403,7 @@ const ineqCfg = {
     staring at values, inferring the underlying rule, then trusting the rule
     beyond the values you can see.
   </p>
+  <Widget no="2" caption="call the seventh term" widget="estimate" config={eqSeqEst} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. The answers are right below.</p>

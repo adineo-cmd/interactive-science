@@ -14,6 +14,183 @@ const pctCfg = {
     { label: 'reverse: old × (1 + pct)', expr: 'old*(1 + (new - old)/old)' },
   ],
 };
+
+const rppFormMatch = {
+  "prompt": "Pair each form of comparison with what it is:",
+  "pairs": [
+    {
+      "left": "ratio",
+      "right": "a comparison frozen into a number — 3:2 flour to water"
+    },
+    {
+      "left": "percentage",
+      "right": "a ratio out of 100 — a common yardstick"
+    },
+    {
+      "left": "proportion",
+      "right": "the assumption that a ratio stays fixed as quantities change"
+    }
+  ],
+  "why": "Nearly every headline statistic, shop discount, recipe, map scale and exchange rate is one of these three."
+};
+
+const rppZooSort = {
+  "prompt": "File each number under its species:",
+  "buckets": [
+    "rational",
+    "irrational"
+  ],
+  "items": [
+    {
+      "label": "½",
+      "bucket": 0
+    },
+    {
+      "label": "−3",
+      "bucket": 0
+    },
+    {
+      "label": "0.75",
+      "bucket": 0
+    },
+    {
+      "label": "√2",
+      "bucket": 1
+    },
+    {
+      "label": "π",
+      "bucket": 1
+    }
+  ],
+  "why": "Irrationals are more numerous in a precise sense (Cantor, 1874): throw a dart at the number line and it hits an irrational with probability 1 — the fractions, infinite as they are, are a dust."
+};
+
+const rppIndexCloze = {
+  "text": "The three index laws: multiplying powers %%0%% indices (2³ × 2² = 2⁵), dividing %%1%% them (2⁵ ÷ 2² = 2³), and a power of a power %%2%% them ((2²)³ = 2⁶) — each law is just counting the multiplications.",
+  "answers": [
+    [
+      "adds",
+      "add"
+    ],
+    [
+      "subtracts",
+      "subtract"
+    ],
+    [
+      "multiplies",
+      "multiply"
+    ]
+  ],
+  "hint": "Count the multiplications each move performs."
+};
+
+const rppNegSpot = {
+  "prompt": "One of these index claims is wrong — click it:",
+  "lines": [
+    "a⁰ = 1, so that dividing a³ by a³ gives a⁰ = 1.",
+    "Negative indices are reciprocals: 2⁻¹ = ½.",
+    "Fractional indices are roots: 2^(1/2) = √2.",
+    "2⁻³ = −8, a negative number."
+  ],
+  "errorLine": 3,
+  "correction": "2⁻³ = 1/8, a small positive number — the minus sign sends you below 1, never below 0.",
+  "why": "A negative index makes a reciprocal, not a negative."
+};
+
+const rppVirusEst = {
+  "prompt": "A virus is 1.2 × 10⁻⁷ m long; a red blood cell is 7.5 × 10⁻⁶ m. Roughly how many viruses would span the cell?",
+  "unit": "",
+  "answer": 62.5,
+  "factor": 1.3,
+  "why": "(7.5 ÷ 1.2) × 10⁻⁶⁻⁽⁻⁷⁾ = 6.25 × 10¹ = 62.5 — without the notation, that comparison is an error factory.",
+  "context": "standard form multiplies the As and adds the indices"
+};
+
+const rppPropCompare = {
+  "prompt": "Two kinds of proportion — drag the divider:",
+  "before": {
+    "label": "direct",
+    "text": "double the flour, double the water — the ratio stays fixed (y ∝ x)"
+  },
+  "after": {
+    "label": "inverse",
+    "text": "more workers, fewer days — the product stays fixed (6 builders × 12 days = 9 builders × 8 days)"
+  },
+  "why": "The honest test is always: what quantity is actually constant? Mixing the two up is the classic trap."
+};
+
+const rppPrizeEst = {
+  "prompt": "Prize money of £600 is split 2 : 3 : 5. Roughly how much does the middle share get?",
+  "unit": "£",
+  "answer": 180,
+  "factor": 1.2,
+  "why": "10 parts, so one part is £60 — £120, £180 and £300, whose sum checks back to £600.",
+  "context": "the unitary method: find one part, scale to any total"
+};
+
+const rppSuccPredict = {
+  "q": "A price rises 10%, then falls 10%. Where does it end?",
+  "choices": [
+    "Exactly where it started — the changes cancel",
+    "1% down — the second 10% is taken of a bigger base",
+    "1% up — rises always outweigh falls"
+  ],
+  "answer": 1,
+  "why": "×1.1 × 0.9 = ×0.99 — a net 1% loss. Percentages compound, they do not add."
+};
+
+const rppRulePlace = {
+  "prompt": "Money at 7.2% a year doubles in roughly how many years (rule of 72)?",
+  "labels": [
+    "2 yrs",
+    "5 yrs",
+    "10 yrs",
+    "20 yrs"
+  ],
+  "scale": {
+    "min": 2,
+    "max": 20
+  },
+  "answer": 10,
+  "tolerance": 2,
+  "why": "72 ÷ 7.2 = 10 years — the rule of 72 turns any growth rate into a doubling time in one division."
+};
+
+const rppLilyBranch = {
+  "root": "A lily pond fills completely on day 30. On day 29, how full is it?",
+  "nodes": {
+    "start": {
+      "text": "Pick the honest answer:",
+      "choices": [
+        {
+          "label": "Mostly full — it grew steadily",
+          "next": "slow",
+          "feedback": "It was half empty: exponential growth is constant-ratio, starting slow — thirty doublings later the number is a billion."
+        },
+        {
+          "label": "Half empty",
+          "next": "correct",
+          "feedback": "Right — the scary part of 'exponential' is not speed but constant ratio: the doubling from 1 to 2 looks trivial."
+        },
+        {
+          "label": "Empty — all the growth happens on the last day",
+          "next": "last",
+          "feedback": "The growth happened every day, equally in ratio — each day doubled the coverage."
+        }
+      ]
+    },
+    "slow": {
+      "text": "Constant ratio means each day doubles, so the second half of the pond fills in the final day alone."
+    },
+    "correct": {
+      "text": "'Exponential' means constant-ratio, not 'very fast'."
+    },
+    "last": {
+      "text": "Every day did the same multiplicative work — that is why the end looks sudden."
+    }
+  },
+  "why": "Equal ratios in equal times: the graph curves upward ever more steeply, and the lily-pond that fills on day 30 was half empty on day 29."
+};
 ---
 <TopicPage slug="subjects/math/foundational/ratios-percentages-proportion">
 
@@ -49,6 +226,7 @@ const pctCfg = {
     twice the fuel. Nearly every headline statistic, shop discount, recipe, map
     scale and exchange rate is one of these three.
   </p>
+  <Widget no="11" caption="pair each form of comparison with its meaning" widget="match" config={rppFormMatch} />
   <p>
     To handle comparisons well you also need to know what kind of number you are
     comparing with. So this lesson first surveys the number zoo itself, then
@@ -70,6 +248,7 @@ const pctCfg = {
     rationals plus irrationals together form the <strong>real numbers</strong> —
     the complete number line.
   </p>
+  <Widget no="10" caption="rational or irrational — file each number" widget="sort-buckets" config={rppZooSort} />
   <p>
     <em>Common misconception:</em> the number line is "full" of decimals because
     there are infinitely many fractions between any two of them. True, yet the
@@ -103,6 +282,7 @@ const pctCfg = {
     a power of a power <strong>multiplies</strong> them ((2²)³ = 2⁶) — each law
     is just counting the multiplications.
   </p>
+  <Widget no="9" caption="fill the blanks — the three index laws" widget="cloze" config={rppIndexCloze} />
   <p>
     The definitions that fall out are beautiful. The zero index: a⁰ = 1, so that
     dividing a³ by a³ gives a⁰ = 1. Negative indices are reciprocals: 2⁻¹ = ½.
@@ -115,6 +295,7 @@ const pctCfg = {
     does not: 2⁻³ = 1/8, a small positive number — the minus sign sends you below
     1, never below 0.
   </p>
+  <Widget no="8" caption="find the index error" widget="spot-error" config={rppNegSpot} />
 
   <h2>Standard form: taming the astronomical</h2>
   <p>
@@ -131,6 +312,7 @@ const pctCfg = {
     about 63 viruses would span a blood cell. Without the notation, that
     comparison is an error factory.
   </p>
+  <Widget no="7" caption="call the virus count across a cell" widget="estimate" config={rppVirusEst} />
   <p>
     <strong>So far:</strong> index laws turn repeated multiplication into
     arithmetic, and standard form stretches them across thirty powers of ten —
@@ -157,6 +339,7 @@ const pctCfg = {
     recipe halves the cooking time — is the classic trap. The honest test is
     always: <em>what quantity is actually constant?</em>
   </p>
+  <Widget no="6" caption="direct versus inverse — drag the divider" widget="compare" config={rppPropCompare} />
   <p>
     Ratios, fractions, decimals and percentages are one language in four
     alphabets, and fluency means translating instantly: 3 : 5 as a share of a
@@ -167,6 +350,7 @@ const pctCfg = {
     comparing ratios needs a common second term (3 : 4 versus 5 : 7 becomes
     21 : 28 versus 20 : 28, so 3 : 4 is the steeper ratio).
   </p>
+  <Widget no="5" caption="call the middle share" widget="estimate" config={rppPrizeEst} />
   <p>
     One warning from the kitchen: a ratio comparison only makes sense between
     quantities of the same kind. 3 eggs to 2 cups of flour is a recipe, not a
@@ -192,6 +376,7 @@ const pctCfg = {
     up 10% then down 10% is ×1.1 × 0.9 = ×0.99, a net 1% <em>loss</em>, because
     the second 10% is taken of a bigger base.
   </p>
+  <Widget no="4" caption="bet before you read on — the up-then-down trap" widget="predict" config={rppSuccPredict} />
   <p>
     As the widget shows, <strong>percentage change always divides by the old
     value</strong>, so the answer depends on which direction you travel: a rise
@@ -234,12 +419,14 @@ const pctCfg = {
     carbon-14 decaying by half every ~5,730 years — radiocarbon dating is reverse
     percentage change with a very old baseline.
   </p>
+  <Widget no="3" caption="drop the marker — the doubling time" widget="place" config={rppRulePlace} />
   <p>
     <em>Common misconception:</em> "exponential" means "very fast". It means
     <em>constant-ratio</em>: it starts slow — a doubling from 1 to 2 looks trivial — and the
     scary part is that thirty doublings later the number is a billion. The lily-pond that
     fills on day 30 was half empty on day 29.
   </p>
+  <Widget no="2" caption="the pond on day 29" widget="branch" config={rppLilyBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. The answers are right below.</p>

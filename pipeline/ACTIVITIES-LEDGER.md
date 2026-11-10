@@ -209,6 +209,10 @@
 | data-science/advanced/machine-learning-basics | match, cloze, branch, order, trace, sort-buckets, compare, estimate, match | datascience-8 |
 | data-science/expert/data-engineering-and-pipelines | estimate, match, sort-buckets, cloze, order, spot-error, judge, compare, estimate, branch | datascience-9 |
 | data-science/expert/ethics-privacy-and-bias | match, judge, estimate, cloze, branch, match, compare, estimate, order, spot-error | datascience-10 |
+| math/foundational/equations-and-inequalities | sort-buckets, match, spot-error, order, branch, cloze, predict, compare, spot-error, estimate | math-1 |
+| math/foundational/euclidean-geometry | sort-buckets, match, cloze, estimate, branch, estimate, match, spot-error, order, sort-buckets | math-2 |
+| math/foundational/perimeter-area-volume | match, estimate, cloze, spot-error, estimate, compare, match, sort-buckets, spot-error, branch | math-3 |
+| math/foundational/ratios-percentages-proportion | match, sort-buckets, cloze, spot-error, estimate, compare, estimate, predict, place, branch | math-4 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
