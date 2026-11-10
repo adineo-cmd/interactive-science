@@ -10,6 +10,186 @@ const volcCfg = {
     { math: '4 · Forecasting saves lives', note: 'Monitoring: seismic swarms, ground deformation (InSAR satellites measure millimetres of bulge), gas emissions, temperature. Pinatubo 1991: 60,000 evacuated after forecasts — volcanology\'s greatest save; the science-based evacuation is the model.' },
   ],
 };
+
+const volcMeltMatch = {
+  "prompt": "Pair each melting trick with where it operates and what it makes:",
+  "pairs": [
+    {
+      "left": "decompression melting",
+      "right": "plates diverge or a plume rises — most of the world's basalt"
+    },
+    {
+      "left": "flux melting",
+      "right": "subducting plates release water — the sticky arc magmas of the Ring of Fire"
+    },
+    {
+      "left": "heat-transfer melting",
+      "right": "hot magma melts cooler crust — the route to rhyolite and granite"
+    }
+  ],
+  "why": "One physical system, three triggers — and the whole diversity of volcanic behaviour follows from which trigger fired."
+};
+
+const volcMaficSort = {
+  "prompt": "File each property under the magma family it describes:",
+  "buckets": [
+    "mafic (basaltic)",
+    "felsic (rhyolitic)"
+  ],
+  "items": [
+    {
+      "label": "silica-poor, 45–52% SiO₂",
+      "bucket": 0
+    },
+    {
+      "label": "over ~68% silica",
+      "bucket": 1
+    },
+    {
+      "label": "the viscosity of warm honey",
+      "bucket": 0
+    },
+    {
+      "label": "viscous as cold asphalt",
+      "bucket": 1
+    },
+    {
+      "label": "cools fast into the rock of every ocean floor",
+      "bucket": 0
+    },
+    {
+      "label": "usually never erupts, cooling slowly into granite",
+      "bucket": 1
+    }
+  ],
+  "why": "Composition and cooling rate are written in the texture: slow cooling means large crystals, fast cooling means microscopic ones."
+};
+
+const volcYellowEst = {
+  "prompt": "Yellowstone's last caldera-forming eruption, 640,000 years ago, ejected about how much rock?",
+  "unit": "km³",
+  "answer": 1000,
+  "factor": 2,
+  "why": "About 1,000 km³ — twice the volume of Lake Erie, in one event.",
+  "context": "a stratovolcano's big eruption moves single cubic kilometres"
+};
+
+const volcRidgeJudge = {
+  "statement": "Most of Earth's volcanic output happens at the deadly Ring of Fire arcs, where people can watch it.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "answer": 1,
+  "why": "False — the majority of Earth's volcanic output is at the mid-ocean ridge system, entirely underwater and almost unwatched, building new oceanic crust along 65,000 km of ridge."
+};
+
+const volcHazardSpot = {
+  "prompt": "One of these hazard claims is backwards — click it:",
+  "lines": [
+    "Pyroclastic flows run at 100–700 km/h and 300–700 °C, incinerating everything in their path.",
+    "Lahars need no eruption — loose ash plus rain or a melted glacier, at highway speed down river valleys.",
+    "Lava flows are the deadliest hazard, killing thousands in most eruptions.",
+    "Ashfall collapses roofs, ruins engines and crops, and grounds aviation."
+  ],
+  "errorLine": 2,
+  "correction": "Lava is the hazard almost nobody dies of — it moves slowly enough to outrun; the killers are pyroclastic flows, lahars, ashfall and gas.",
+  "why": "The hazard that kills is rarely the one in the picture — which is why hazard maps, not heroics, are modern volcanology's main product."
+};
+
+const volcSignalsCloze = {
+  "text": "A restless volcano announces itself four ways: %%0%% — swarms of small earthquakes rising toward the surface; %%1%% — the volcano inflates as magma fills it, resolved to millimetres by InSAR satellites; %%2%% chemistry — SO₂ output rising as fresh magma nears; and %%3%% or remote sensing of the warming ground.",
+  "answers": [
+    [
+      "seismicity",
+      "seismic activity",
+      "earthquakes"
+    ],
+    [
+      "deformation",
+      "inflation"
+    ],
+    [
+      "gas"
+    ],
+    [
+      "thermal",
+      "temperature",
+      "heat"
+    ]
+  ],
+  "hint": "Cracking rock, a swelling flank, a changing sniff, and a warmer-than-usual surface."
+};
+
+const volcForecastBranch = {
+  "root": "Restless volcano: seismic swarms rising, gas climbing, millimetres of bulge — but most intrusions stall at depth and cool.",
+  "nodes": {
+    "start": {
+      "text": "Three hundred thousand people live in the valleys. What do you recommend?",
+      "choices": [
+        {
+          "label": "Order the evacuation now",
+          "next": "pinatubo",
+          "feedback": "Pinatubo's standard: the 1991 evacuation saved an estimated 5,000–20,000 lives — but alarm too often and the public stops listening."
+        },
+        {
+          "label": "Wait for certainty before alarming anyone",
+          "next": "armero",
+          "feedback": "Armero's failure mode: warnings issued and unheeded, about 23,000 dead when the lahar arrived."
+        },
+        {
+          "label": "Evacuate only the nearest villages",
+          "next": "partial",
+          "feedback": "Partial evacuation buys time — but the pyroclastic flow's geography, not the map's rings, decides who is in range."
+        }
+      ]
+    },
+    "pinatubo": {
+      "text": "The evacuation holds for weeks; the eruption comes Plinian-scale. Trust survives because the forecast was right — this time.",
+      "choices": [
+        {
+          "label": "What if the intrusion had stalled?",
+          "next": "wolf",
+          "feedback": "Then the next alarm is trusted a little less — the boy-who-cried-wolf budget is real."
+        }
+      ]
+    },
+    "armero": {
+      "text": "Certainty arrived with the mudflow. Forecasting too late is the same as not forecasting."
+    },
+    "partial": {
+      "text": "The hazard map, not the radius, sets the zone — lahars run river valleys kilometres from the vent."
+    },
+    "wolf": {
+      "text": "Every false alarm spends trust; every delayed one spends lives. That is the line forecasters walk."
+    }
+  },
+  "why": "Forecasting is a social technology built on geophysical instruments — the geophysics is the easy half."
+};
+
+const volcPompeiiCompare = {
+  "prompt": "What killed Pompeii — the picture and the reality:",
+  "before": {
+    "label": "the picture",
+    "text": "a river of lava swallowing the city — the image almost everyone carries"
+  },
+  "after": {
+    "label": "the reality",
+    "text": "ashfall collapsing roofs, then pyroclastic surges sweeping the region on the eruption's second day"
+  },
+  "why": "The confusion is instructive precisely because it hides the real lesson: the hazard that kills is rarely the one in the picture."
+};
+
+const volcPinatuboOrder = {
+  "prompt": "Rebuild the Pinatubo sequence — what came first:",
+  "items": [
+    "April–June 1991: seismic swarms, inflation, rising SO₂ and thermal anomalies all appear",
+    "Forecasts predict a major eruption within days",
+    "Tens of thousands of people and the local US air base are evacuated",
+    "15 June: a Plinian eruption — the second-largest of the 20th century"
+  ],
+  "why": "The evacuation is estimated to have saved 5,000–20,000 lives — volcanology cannot stop an eruption, but it can move the people out of the way."
+};
 ---
 <TopicPage slug="subjects/earth-science/intermediate/volcanoes-and-igneous-processes">
   <h2>Where you are, and what you will learn</h2>
@@ -68,6 +248,7 @@ const volcCfg = {
     three triggers, and the whole diversity of volcanic behaviour follows from which trigger
     fired.
   </p>
+  <Widget no="10" caption="pair each melting trick with where it operates" widget="match" config={volcMeltMatch} />
 
   <h2>Classifying igneous rocks: the record of cooling</h2>
   <p>
@@ -86,6 +267,7 @@ const volcCfg = {
     melting, fractionation and recycling have distilled the lightest, stickiest magma upward
     for four billion years.
   </p>
+  <Widget no="9" caption="file each property under mafic or felsic" widget="sort-buckets" config={volcMaficSort} />
 
   <p><strong>So far:</strong> magma exists only where one of three melting tricks fires, and the cooling record — crystal size — tells you which magmas froze where. Next we follow the melt upward: what controls whether it oozes or obliterates.</p>
 
@@ -107,6 +289,7 @@ const volcCfg = {
     volcano's roof collapses into its own emptied chamber. Yellowstone's last caldera-forming
     eruption, 640,000 years ago, ejected about 1,000 km³ of rock — twice the volume of Lake Erie.
   </p>
+  <Widget no="8" caption="call the size of the last super-eruption" widget="estimate" config={volcYellowEst} />
   <p><em>Common misconception:</em> "magma is liquid rock, like lava." Magma is mostly
     <em>molten crystal mush</em> — typically 30–60% suspended crystals, some dissolved gas,
     and melt — closer to a slush than a liquid, and its behaviour (including viscosity and
@@ -146,6 +329,7 @@ const volcCfg = {
     cousins — million-year pulses of lava volumes in the millions of cubic kilometres,
     implicated in mass extinctions.
   </p>
+  <Widget no="7" caption="true or false — where the planet's lava actually flows" widget="judge" config={volcRidgeJudge} />
   <p><em>Common misconception:</em> Yellowstone is "overdue" for a super-eruption — its three great caldera events (about 2.1 million, 1.3 million and 640,000 years ago) read like a bus timetable. Three events make no schedule, the intervals are irregular, and most Yellowstone unrest is hydrothermal rather than new magma. Volcanologists treat a super-eruption as vanishingly unlikely in any given year; the hazards actually monitored and planned for are hydrothermal explosions and large earthquakes, not the movie scenario.</p>
 
   <p><strong>So far:</strong> the volcano map and the plate map are the same picture — ridges gush quietly underwater, subduction zones build the deadly arcs, hotspots punch holes in the middle of plates. Next comes what those eruptions actually do to anything near them.</p>
@@ -167,7 +351,9 @@ const volcCfg = {
     geography and its specific forecast, which is why hazard maps, not heroics, are modern
     volcanology's main product.
   </p>
+  <Widget no="6" caption="find the backwards claim — what actually kills" widget="spot-error" config={volcHazardSpot} />
   <p><em>Common misconception:</em> Pompeii's residents were killed by lava. No lava ever entered the city — Vesuvius in 79 CE produced almost none there; the killers were ashfall collapsing roofs and, above all, the pyroclastic surges that swept the region on the eruption's second day. The confusion is instructive precisely because it hides the real lesson: the hazard that kills is rarely the one in the picture.</p>
+  <Widget no="5" caption="the picture versus the reality — drag the divider" widget="compare" config={volcPompeiiCompare} />
 
   <p><strong>So far:</strong> the killers are specific — pyroclastic flows, lahars, ashfall, gases — and each has its own geography and its own forecast. That specificity is exactly what makes forecasting worthwhile.</p>
 
@@ -186,6 +372,8 @@ const volcCfg = {
     lives. It remains the discipline's model: volcanology cannot stop an eruption, but it can
     move the people out of the way.
   </p>
+  <Widget no="4" caption="fill the blanks — the four signals a restless volcano sends" widget="cloze" config={volcSignalsCloze} />
+  <Widget no="3" caption="rebuild the Pinatubo save, spring 1991" widget="order" config={volcPinatuboOrder} />
   <p>
     The craft is in the uncertainty. Volcanic unrest does not always end in eruption — most
     intrusions stall at depth and cool — so forecasters walk a narrow line: alarm too often
@@ -196,6 +384,7 @@ const volcCfg = {
     weeks — enough for a planned evacuation, only if the roads and the decisions are ready
     first. Forecasting, at its heart, is a social technology built on geophysical instruments.
   </p>
+  <Widget no="2" caption="walk the forecaster's line" widget="branch" config={volcForecastBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

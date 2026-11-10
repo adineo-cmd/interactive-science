@@ -198,6 +198,10 @@
 | design/intermediate/typography-fundamentals | sort-buckets, match, order, estimate, branch, spot-error, compare, cloze | design-12 |
 | earth-science/foundational/weathering-erosion-and-landforms | estimate, sort-buckets, match, place, cloze, spot-error, order, branch, predict | earthscience-6 |
 | data-science/foundational/from-data-to-decisions | order, match, sort-buckets, branch, cloze, spot-error, compare, predict | datascience-3 |
+| earth-science/intermediate/volcanoes-and-igneous-processes | match, sort-buckets, estimate, judge, spot-error, cloze, branch, compare, order | earthscience-7 |
+| earth-science/intermediate/earthquakes-and-seismology | match, estimate, judge, cloze, place, order, sort-buckets, compare, spot-error | earthscience-8 |
+| earth-science/intermediate/atmosphere-and-weather-systems | place, match, predict, order, cloze, estimate, compare, spot-error | earthscience-9 |
+| earth-science/intermediate/oceans-and-currents | match, estimate, cloze, order, sort-buckets, branch, predict, spot-error | earthscience-10 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

@@ -10,6 +10,152 @@ const seisCfg = {
     { math: '4 · The destructive sequence', note: 'Shaking → building collapse (most deaths), fires, landslides, liquefaction (soil turns liquid), tsunamis (subsea quakes — 2004 Indian Ocean ~228,000 dead; early-warning systems since saved thousands).' },
   ],
 };
+
+const seisFaultMatch = {
+  "prompt": "Pair each fault family with its stress direction and its landscape:",
+  "pairs": [
+    {
+      "left": "normal faults",
+      "right": "extension — the Basin and Range's stretched landscape"
+    },
+    {
+      "left": "reverse (thrust) faults",
+      "right": "compression — the Himalaya and every subduction megathrust"
+    },
+    {
+      "left": "strike-slip faults",
+      "right": "shear — the San Andreas, sides grinding past each other"
+    }
+  ],
+  "why": "The fault family is the stress direction's signature — read the fault, read the force."
+};
+
+const seisSumatraEst = {
+  "prompt": "The 2004 Sumatra–Andaman quake unzipped a stretch of megathrust roughly how long?",
+  "unit": "km",
+  "answer": 1300,
+  "factor": 2,
+  "why": "Roughly 1,300 km — about the distance from Paris to Rome, ruptured in minutes.",
+  "context": "a typical urban quake ruptures a patch tens of kilometres long"
+};
+
+const seisSeismoJudge = {
+  "statement": "A seismometer works by a suspended mass being dragged along with the moving ground, and the mass's motion is the record.",
+  "options": [
+    "True",
+    "False"
+  ],
+  "answer": 1,
+  "why": "False — the mass stays still (inertia) while the ground moves under it; the relative motion between mass and frame is the ground's motion, and that is what gets recorded."
+};
+
+const seisWaveCloze = {
+  "text": "%%0%%-waves are fastest (6–8 km/s in crust) and pass through solids and liquids; %%1%%-waves run about half as fast and travel only through solids; %%2%% waves travel slowest along the surface but carry the largest amplitudes. The %%3%%-minus-S time lag grows with distance, so three stations triangulate the epicentre.",
+  "answers": [
+    [
+      "P",
+      "p",
+      "primary"
+    ],
+    [
+      "S",
+      "s",
+      "secondary"
+    ],
+    [
+      "surface"
+    ],
+    [
+      "P",
+      "p"
+    ]
+  ],
+  "hint": "First, second, last — and the lag that does the locating."
+};
+
+const seisMagPlace = {
+  "prompt": "Where did the 2004 Sumatra quake sit on the magnitude scale?",
+  "labels": [
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "scale": {
+    "min": 5,
+    "max": 10
+  },
+  "answer": 9.1,
+  "tolerance": 0.3,
+  "why": "M9.1 — each whole step is about 32 times more energy, so it sits tens of thousands of times above a moderate M6."
+};
+
+const seisTsunamiOrder = {
+  "prompt": "Rebuild the tsunami sequence — what happens first:",
+  "items": [
+    "A subsea megathrust heaves the seafloor",
+    "The water column above follows, raised wholesale",
+    "The wave crosses the ocean at jet speed — hundreds of kilometres long, under a metre high",
+    "The floor shoals: the wave slows, compresses and rears up"
+  ],
+  "why": "That is why ships at sea pass through tsunamis unharmed, and coast dwellers must not."
+};
+
+const seisForecastSort = {
+  "prompt": "File each practice under what it actually offers:",
+  "buckets": [
+    "date-and-place prediction",
+    "probability forecasting",
+    "induced seismicity"
+  ],
+  "items": [
+    {
+      "label": "\"a quake will strike here on this date\"",
+      "bucket": 0
+    },
+    {
+      "label": "\"a 30% chance of M ≥ 6.7 in the Bay Area by 2043\"",
+      "bucket": 1
+    },
+    {
+      "label": "Oklahoma's quake rate rising 300-fold with wastewater injection",
+      "bucket": 2
+    },
+    {
+      "label": "trenching faults to read prehistoric ruptures",
+      "bucket": 1
+    }
+  ],
+  "why": "Prediction remains unsolved; forecasting drives the land-use rules and building codes that are the true life-savers; induced seismicity is human-caused, therefore human-manageable."
+};
+
+const seisWarnCompare = {
+  "prompt": "Early warning in one card — drag the divider:",
+  "before": {
+    "label": "the rock's warning",
+    "text": "P-waves arrive first — harmless, but fast; the damaging S- and surface waves trail seconds behind"
+  },
+  "after": {
+    "label": "the electronic alert",
+    "text": "radio outruns both: trains stopped, factory lines cut, phones buzzing before the sway"
+  },
+  "why": "Seconds stop trains, surgeries and elevators — and multiplied over millions of people, they are worth as many lives as any building code."
+};
+
+const seisGRSpot = {
+  "prompt": "One of these claims about quake scaling is backwards — click it:",
+  "lines": [
+    "Moment magnitude reports rigidity × rupture area × slip.",
+    "Rupture area grows with fault length, so great quakes are disproportionate.",
+    "For every whole-number step down in magnitude, quakes are about ten times more frequent.",
+    "A quake twice as long releases exactly twice the energy."
+  ],
+  "errorLine": 3,
+  "correction": "Rupture area grows quadratically with length — a quake twice as long releases far more than twice the energy.",
+  "why": "That disproportion is why magnitude-9 events are generational while magnitude-3 events are nuisance news."
+};
 ---
 <TopicPage slug="subjects/earth-science/intermediate/earthquakes-and-seismology">
   <h2>Where you are, and what you will learn</h2>
@@ -65,6 +211,7 @@ const seisCfg = {
     other). Folds are the same story in rock that deforms without breaking — bent strata are
     frozen strain.
   </p>
+  <Widget no="10" caption="pair each fault family with the stress it records" widget="match" config={seisFaultMatch} />
   <p>
     The earthquake mechanism is <strong>elastic rebound</strong> (H. F. Reid, after the 1906
     San Francisco quake): plates keep moving, but the fault surface is locked by friction, so
@@ -76,6 +223,7 @@ const seisCfg = {
     (focus) is the point where rupture began; the <em>epicentre</em> is its surface projection
     — the label you see on maps.
   </p>
+  <Widget no="9" caption="call the length of the rupture" widget="estimate" config={seisSumatraEst} />
   <p><em>Common misconception:</em> "earthquakes happen because of a build-up of pressure below
     the crust." The energy is not pressure in a chamber — it is <em>elastic strain</em> in cold
     rock that is being bent by moving plates and held back by friction. Every major quake
@@ -105,6 +253,7 @@ const seisCfg = {
     treaty-verification tool of the nuclear age — plate tectonics' hazard doubled as
     geopolitics' referee.
   </p>
+  <Widget no="8" caption="true or false — how a seismometer works" widget="judge" config={seisSeismoJudge} />
 
   <h2>Seismic waves: the message and the map</h2>
   <p>
@@ -124,6 +273,7 @@ const seisCfg = {
     magnitude is measurable from the wave amplitude once the distance is known, which is why
     any network can size a quake before any human has felt it.
   </p>
+  <Widget no="7" caption="fill the blanks — the wave ranking" widget="cloze" config={seisWaveCloze} />
   <p>
     <strong>So far:</strong> a seismometer records the ground's motion, and the wave
     arrival order — P first, S second, surface last — acts as a clock whose P-minus-S lag
@@ -148,6 +298,7 @@ const seisCfg = {
     magnitude and a whole map of intensities — the basis of ShakeMaps, which emergency
     responders use before any survey team arrives.
   </p>
+  <Widget no="6" caption="drop the marker — the 2004 quake's magnitude" widget="place" config={seisMagPlace} />
   <p><em>Common misconception:</em> "the magnitude scale runs from 1 to 10, and a 7 is a
   bit worse than a 6." There is no upper limit, and the scale is logarithmic: each whole
   step releases about 32 times more energy, so an M9 is not one point worse than an M6
@@ -177,6 +328,7 @@ const seisCfg = {
     compress and rear up. That is why ships at sea pass through tsunamis unharmed, and coast
     dwellers must not.
   </p>
+  <Widget no="5" caption="rebuild a tsunami — from seafloor to shore" widget="order" config={seisTsunamiOrder} />
   <p><em>Common misconception:</em> "the danger of an earthquake is set by its magnitude."
   The death toll is a property of the built environment as much as the geology: ground
   shaking kills few people directly — buildings falling kill most. Haiti 2010 (M7.0, no
@@ -205,6 +357,7 @@ const seisCfg = {
     the stable interior of North America and rang church bells in Boston — meaning hazard
     maps must rest on geology, not just borders.
   </p>
+  <Widget no="4" caption="file each practice under the honesty of its claim" widget="sort-buckets" config={seisForecastSort} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -257,6 +410,7 @@ const seisCfg = {
     sensors (distributed acoustic sensing) can turn the internet's own infrastructure into a
     planetary seismometer.
   </p>
+  <Widget no="3" caption="the rock's head start versus the alert — drag the divider" widget="compare" config={seisWarnCompare} />
   <p>
     Quantitatively, the field's centre of gravity is the <strong>seismic moment</strong>:
     rigidity × rupture area × slip — the physical quantity moment magnitude reports, and the
@@ -271,5 +425,6 @@ const seisCfg = {
     M9.5 — rang the whole planet like a bell, with free oscillations measurable for days. The
     Earth rings; we have only recently learned to listen.
   </p>
+  <Widget no="2" caption="find the backwards claim — the scaling law" widget="spot-error" config={seisGRSpot} />
   <p class="sources"><strong>Sources:</strong> Reid, elastic rebound (1910); USGS Earthquake Hazards Program; the 2004 and 2011 tsunami reports; ShakeAlert documentation; OpenGeology, An Introduction to Geology, ch. 9. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

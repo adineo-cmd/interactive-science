@@ -22,6 +22,127 @@ const lapseCfg = {
   crossings: false,
   height: 330,
 };
+
+const wxMassPlace = {
+  "prompt": "Half the atmosphere's mass lies below what altitude?",
+  "labels": [
+    "0",
+    "2.5",
+    "5.5",
+    "11",
+    "16",
+    "22"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 22
+  },
+  "answer": 5.5,
+  "tolerance": 1,
+  "why": "About 5.5 km — Everest's summit pokes above half the air, and pressure keeps halving roughly every 5.5 km above that."
+};
+
+const wxLiftMatch = {
+  "prompt": "Pair each lifting mechanism with the weather it makes:",
+  "pairs": [
+    {
+      "left": "convection",
+      "right": "sun-heated ground bubbles air upward — afternoon thunderstorms"
+    },
+    {
+      "left": "orographic lift",
+      "right": "windward side wet, rain-shadow side bone dry"
+    },
+    {
+      "left": "frontal lift",
+      "right": "warm air riding over a cold wedge — the mid-latitude rain machine"
+    },
+    {
+      "left": "sinking air",
+      "right": "compresses, warms, dries — the physics inside every desert"
+    }
+  ],
+  "why": "Rain's mechanism is rising air; every desert is the signature of its absence."
+};
+
+const wxStabPredict = {
+  "q": "A radiosonde shows the surroundings cooling at 7 °C/km while a saturated parcel cools at 5 °C/km. What happens to the parcel?",
+  "choices": [
+    "It stays warmer than its surroundings and keeps rising on its own buoyancy",
+    "It turns colder and denser than its environment and sinks back",
+    "It hovers at whatever altitude it reaches"
+  ],
+  "answer": 0,
+  "why": "The surroundings cool faster than the parcel, so the parcel stays warmer than its environment — instability, and the atmosphere dumps its energy in towering cumulonimbus."
+};
+
+const wxHadleyOrder = {
+  "prompt": "Rebuild the Hadley cell — follow the air:",
+  "items": [
+    "Intense equatorial heating drives deep convection — air rises (low pressure, daily downpours)",
+    "The air flows poleward aloft, cooling as it goes",
+    "It sinks near 30° latitude — high pressure, the world's great deserts",
+    "Surface flow returns equatorward as the trade winds, closing the cell"
+  ],
+  "why": "The Sahara, the Outback and the Atacama all sit under the subsiding branch — one cell, both the rain belt and the desert belt."
+};
+
+const wxMapCloze = {
+  "text": "The map rules: low pressure means %%0%% air, cloud and rain; high pressure means %%1%% air and clear skies; and tight isobars mean a strong pressure %%2%% — and therefore %%3%%.",
+  "answers": [
+    [
+      "rising"
+    ],
+    [
+      "sinking",
+      "descending"
+    ],
+    [
+      "gradient"
+    ],
+    [
+      "wind",
+      "strong wind",
+      "strong winds"
+    ]
+  ],
+  "hint": "One rises into cloud, one sinks into clear skies, and the crowd of isobars decides what you feel on your face."
+};
+
+const wxRichardEst = {
+  "prompt": "Richardson's 1922 hand calculation produced one six-hour forecast. How long did the calculation take him?",
+  "unit": "weeks",
+  "answer": 6,
+  "factor": 1.5,
+  "why": "Six weeks for one six-hour forecast (and it was wrong) — operational forecasting waited for the first computers in the 1950s.",
+  "context": "today's supercomputers run the same equations for the whole globe in minutes"
+};
+
+const wxGreenCompare = {
+  "prompt": "The greenhouse effect's service — drag the divider:",
+  "before": {
+    "label": "without it",
+    "text": "the surface averages −18 °C and the oceans freeze"
+  },
+  "after": {
+    "label": "with it",
+    "text": "+15 °C — a 33 °C blanket from water vapour, CO₂ and methane re-emitting infrared back down"
+  },
+  "why": "Not a hypothesis but measured spectroscopy — the question is only how much of the blanket we are adding."
+};
+
+const wxFingerSpot = {
+  "prompt": "One of these climate-fingerprint claims is backwards — click it:",
+  "lines": [
+    "Ice cores preserve ancient air in bubbles and ancient temperatures in isotopes.",
+    "A hotter sun would warm the stratosphere along with the surface.",
+    "Nights warming faster than days is a greenhouse fingerprint.",
+    "Attribution science quantifies how much more likely climate change made a specific heatwave."
+  ],
+  "errorLine": 1,
+  "correction": "A hotter sun would warm both layers; the observed fingerprint is a warming surface with a cooling stratosphere — the greenhouse signature.",
+  "why": "The fingerprint separates the drivers: what warms the surface while cooling the stratosphere above it is the greenhouse effect, not the sun."
+};
 ---
 <TopicPage slug="subjects/earth-science/intermediate/atmosphere-and-weather-systems">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +198,7 @@ const lapseCfg = {
     1,000 °C+ — thin enough that the ISS needs no shielding from its "heat". Weather is a
     tropospheric phenomenon; climate change is a property of the whole column.
   </p>
+  <Widget no="10" caption="drop the marker — where half the air runs out" widget="place" config={wxMassPlace} />
   <p>
     <strong>So far:</strong> the atmosphere is thin, layered, and pressure-graded — and
     everything you call weather lives in its lowest layer, where temperature falls with
@@ -99,6 +221,7 @@ const lapseCfg = {
     mid-latitude rain machine). Sinking air does the reverse: compresses, warms, dries — the
     physics inside every desert.
   </p>
+  <Widget no="9" caption="pair each lift mechanism with its weather" widget="match" config={wxLiftMatch} />
   <p><em>Common misconception:</em> "clouds work like sponges — they fill with water and
   get squeezed until it rains." Nothing squeezes a cloud: rain is the endpoint of the
   adiabatic engine, in which rising air cools to its dew point and condenses, and only
@@ -125,6 +248,7 @@ const lapseCfg = {
     the atmosphere dumps its energy in towering cumulonimbus. Meteorologists compute this
     comparison from every radiosonde balloon launch, twice a day worldwide.
   </p>
+  <Widget no="8" caption="bet before you read on — the stability verdict" widget="predict" config={wxStabPredict} />
   <p>
     <strong>So far:</strong> rising air cools at a fixed rate, saturation switches the
     cooling to the slower moist rate, and the atmosphere's stability is decided by which
@@ -149,6 +273,7 @@ const lapseCfg = {
     winds — follows the sun north and south with the seasons, which is the physical meaning of
     the <strong>monsoon</strong> and of wet/dry tropical seasons.
   </p>
+  <Widget no="7" caption="rebuild the Hadley cell's journey" widget="order" config={wxHadleyOrder} />
   <p><em>Common misconception:</em> "hot air rises, so the equator's rising air must simply
     flow all the way to the poles." A single-cell planet would work that way — but rotation
     breaks the journey into three stacked cells per hemisphere (Hadley, Ferrel, Polar), and
@@ -178,6 +303,7 @@ const lapseCfg = {
     <strong>storm surge</strong> — the ocean piled ashore ahead of the eye — and inland
     flooding from their rain (Hurricane Harvey 2017 dropped a metre of water on Houston).
   </p>
+  <Widget no="6" caption="fill the blanks — reading the weather map" widget="cloze" config={wxMapCloze} />
   <p><em>Common misconception:</em> "hurricanes are just mid-latitude lows grown large —
   the same engine, more of it." They are different engines: an extratropical cyclone runs
   on fronts between colliding air masses, while a tropical cyclone has no fronts at all —
@@ -206,6 +332,7 @@ const lapseCfg = {
     error in public climate discussion ("it snowed today, so no warming" confuses one chaotic
     sample with a 30-year average).
   </p>
+  <Widget no="5" caption="call the cost of the first hand-made forecast" widget="estimate" config={wxRichardEst} />
 
   <h2>The greenhouse effect and the carbon cycle</h2>
   <p>
@@ -223,6 +350,7 @@ const lapseCfg = {
     over 420 ppm — the highest in at least 800,000 years of ice-core record, and the physics
     of absorption says the surface must warm. It has: about 1.2 °C since the late 1800s.
   </p>
+  <Widget no="4" caption="with and without the blanket — drag the divider" widget="compare" config={wxGreenCompare} />
 
   <h2>Climate change: evidence, drivers, projections</h2>
   <p>
@@ -241,6 +369,7 @@ const lapseCfg = {
     quantifies how much more likely climate change made a specific heatwave or flood — moving
     the debate from models to measured weather.
   </p>
+  <Widget no="3" caption="find the backwards claim — the fingerprint test" widget="spot-error" config={wxFingerSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
