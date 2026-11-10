@@ -12,6 +12,188 @@ const vocabCfg = {
   crossings: false,
   height: 340,
 };
+
+const htlalEnginesJudge = {
+  "statements": [
+    {
+      "s": "Nobody drilled you on the rules of your first language; you absorbed it from tens of thousands of hours of real use.",
+      "truth": true,
+      "why": "You already know how languages are learned — the system assembled itself from meaningful contact."
+    },
+    {
+      "s": "Comprehensible input means material just past your level — Krashen's i+1.",
+      "truth": true,
+      "why": "Listening and reading slightly above what you already have, so the unknown sits inside known grammar."
+    },
+    {
+      "s": "Talent decides more than how the hours are arranged.",
+      "truth": false,
+      "why": "Talent is mostly hours, arranged well — input, spaced repetition, early speaking."
+    },
+    {
+      "s": "Early speaking forces retrieval and exposes exactly the gaps worth learning next.",
+      "truth": true,
+      "why": "Reaching for a word you have seen but never used fixes it more than ten more sightings."
+    }
+  ]
+};
+
+const htlalPlateauEstimate = {
+  "prompt": "Word families for knowing 98% of the words on a page — comfortable reading in a language like English?",
+  "unit": "word families",
+  "answer": 8500,
+  "factor": 1.3,
+  "why": "Roughly 8,000–9,000 — the plateau between tourist talk and chapter books. The early words were frequent enough to meet thirty times a day; the late ones need deliberate hunting.",
+  "context": "The top 1,000 words already cover the large majority of ordinary speech; the top 2,000–3,000 push past 90% of everyday text and talk."
+};
+
+const htlalInputBranch = {
+  "root": "It is evening and you have thirty minutes of input. Three options are open.",
+  "nodes": {
+    "start": {
+      "text": "Which one do you press play on?",
+      "choices": [
+        {
+          "label": "The prestige drama you follow at about a third",
+          "next": "toohard",
+          "feedback": "Noise, not learning: too much unknown, nothing to hang context on."
+        },
+        {
+          "label": "The episode you understand 80–90% of",
+          "next": "sweet",
+          "feedback": "The story holds attention while the unknown 10–20% sits surrounded by known grammar."
+        },
+        {
+          "label": "The children's cartoon you understand completely",
+          "next": "tooeasy",
+          "feedback": "Comfort and no growth — nothing new to extract."
+        }
+      ]
+    },
+    "toohard": {
+      "text": "Step down to graded content — real stories rewritten with a limited vocabulary — until comprehension climbs.",
+      "choices": [
+        {
+          "label": "Pick again",
+          "next": "start",
+          "feedback": "Slightly too hard, never hopelessly hard."
+        }
+      ]
+    },
+    "sweet": {
+      "text": "This is i+1: slightly past your level, every day.",
+      "choices": [
+        {
+          "label": "Make it a routine",
+          "next": "massive",
+          "feedback": "Daily, massive, slightly too hard — the best move there is."
+        }
+      ]
+    },
+    "tooeasy": {
+      "text": "Trade up a level — comfort teaches nothing new.",
+      "choices": [
+        {
+          "label": "Pick again",
+          "next": "start",
+          "feedback": "Aim for 80–90% understanding."
+        }
+      ]
+    },
+    "massive": {
+      "text": "Hours per week, not minutes: exposure volume is what drives the curve.",
+      "choices": []
+    }
+  },
+  "why": "Slightly too hard, never hopelessly hard: the unknown word doing an inferable job inside known grammar is what gets absorbed."
+};
+
+const htlalGrammarSpot = {
+  "prompt": "One line of this summary misstates the research — click it:",
+  "lines": [
+    "Grammar knowledge helps you notice patterns in input.",
+    "The patterns themselves are absorbed from contact, not memorised as rules.",
+    "Drill the grammar tables to automaticity — that is what acquisition is made of.",
+    "Perfect recitation of a verb form, then failure to use it mid-conversation.",
+    "The conversational system runs on absorbed chunks, not conscious grammar."
+  ],
+  "errorLine": 2,
+  "correction": "Study grammar to understand what you hear; acquire grammar by hearing it.",
+  "why": "Contact builds the conversational system; conscious rules only help you notice what contact delivers."
+};
+
+const htlalCurveTrace = {
+  "prompt": "Two memories start today — which curve belongs to the card that gets pulled just as it begins to fade?",
+  "curves": [
+    {
+      "expr": "exp(-0.6*x)",
+      "color": "#b42318",
+      "label": "reviewed once, then never"
+    },
+    {
+      "expr": "exp(-0.1*x)",
+      "color": "#1d4ed8",
+      "label": "each success stretches the interval"
+    }
+  ],
+  "correct": 1,
+  "x": {
+    "min": 0,
+    "max": 16
+  },
+  "y": {
+    "min": 0,
+    "max": 1
+  },
+  "xlabel": "days",
+  "ylabel": "retention",
+  "why": "SRS schedules returns at 1 day, then 3, then 7, then 16 — each interval stretched by success, so 15–20 daily minutes maintain thousands of words."
+};
+
+const htlalContrastMatch = {
+  "prompt": "Which new sounds will be easy? Pair each case with the measured outcome:",
+  "pairs": [
+    {
+      "left": "contrasts that map onto one you already make",
+      "right": "two Zulu lateral fricatives differing in voicing — about 95% correct"
+    },
+    {
+      "left": "contrasts that are entirely new",
+      "right": "Zulu clicks — about 80%, no old category in the way"
+    },
+    {
+      "left": "two foreign sounds landing in a single native category",
+      "right": "plosive versus implosive bilabial stops — about 65%, both resembling \"b\""
+    },
+    {
+      "left": "one lifelong category that must become two",
+      "right": "Japanese speakers and English l versus r"
+    }
+  ],
+  "why": "Minimal-pair listening drills teach the ears the difference your native categories blur; shadowing then trains the mouth to produce it."
+};
+
+const htlalSystemOrder = {
+  "prompt": "The daily system that survives real life — order the rules:",
+  "items": [
+    "Anchor each habit to an existing one — cards with the morning coffee, input on the commute",
+    "Track the inputs you control — hours listened, cards matured, sessions spoken",
+    "Once a week, name what was hard to say or understand",
+    "Turn each answer into next week's cards — failed conversations become the curriculum"
+  ],
+  "why": "The fragile part is the habit, not the willpower — and the scoreboard you control keeps you steady while progress lags weeks behind."
+};
+
+const htlalStreakPredict = {
+  "q": "A friend celebrates a 100-day streak in a gamified app. What has it actually guaranteed?",
+  "choices": [
+    "Comfortable comprehension of real shows",
+    "Well-spaced review of the cards inside the app — nothing more",
+    "Conversations held with strangers"
+  ],
+  "answer": 1,
+  "why": "Apps are good at exactly one thing — spaced review of your cards. The bulk of hours must come from real shows, books and conversations, where the language lives."
+};
 ---
 <TopicPage slug="subjects/languages/foundational/how-to-learn-any-language">
 
@@ -51,6 +233,7 @@ const vocabCfg = {
     the framework your syllabus actually uses: the CEFR levels, starting with A1, the
     "Breakthrough" level you can reach in weeks rather than years.
   </p>
+  <Widget no="2" caption="true or false — how acquisition actually runs" widget="judge" config={htlalEnginesJudge} />
 
   <h2>The curve every learner rides</h2>
   <p>
@@ -81,6 +264,7 @@ const vocabCfg = {
     going: the early words were frequent enough to meet thirty times a day; the late ones need
     deliberate hunting.
   </p>
+  <Widget no="3" caption="call the plateau's size" widget="estimate" config={htlalPlateauEstimate} />
 
   <h2>Comprehensible input: the engine</h2>
   <p>
@@ -103,12 +287,14 @@ const vocabCfg = {
     highest-yield habit in the field. And input must be <em>massive</em>: hours per week, not
     minutes, because the curve above is driven by exposure volume.
   </p>
+  <Widget no="4" caption="pick tonight's input" widget="branch" config={htlalInputBranch} />
   <p><em>Common misconception:</em> studying grammar tables is acquisition. It is not — grammar
   knowledge helps you notice patterns in input, but the patterns themselves are absorbed from
   contact, not memorised as rules. The test is classic: a learner can recite a tense rule
   perfectly and still fail to use it in conversation, because the conversational system runs on
   absorbed chunks, not conscious grammar. Study grammar to understand what you hear; acquire
   grammar by hearing it.</p>
+  <Widget no="5" caption="find the line the grammar-table myth would love" widget="spot-error" config={htlalGrammarSpot} />
 
   <h2>Spaced repetition: making words permanent</h2>
   <p>
@@ -120,6 +306,7 @@ const vocabCfg = {
     remarkable efficiency: 15–20 minutes of daily cards can maintain thousands of words,
     because the system spends its time only on words about to be lost.
   </p>
+  <Widget no="6" caption="which line is the SRS card?" widget="trace" config={htlalCurveTrace} />
   <p>
     Two refinements make SRS powerful rather than merely tidy. Learn <strong>frequency
     first</strong>: build or import decks of the most common 1,000–2,000 words before anything
@@ -176,6 +363,7 @@ const vocabCfg = {
     is the famous case of Japanese speakers and English "l" versus "r": Japanese has one sound
     category where English has two, so the learner must carve one lifelong category into two.
   </p>
+  <Widget no="7" caption="pair each contrast case with the measured result" widget="match" config={htlalContrastMatch} />
   <p>
     The practical consequence is encouraging. If the difficulty is categorical, it can be
     trained: minimal-pair listening drills ("rock" or "lock?") teach your ears to attend to the
@@ -242,11 +430,13 @@ const vocabCfg = {
     turns each answer into next week's SRS cards, which is the loop that makes the system
     self-updating: your own failed conversations become your curriculum.
   </p>
+  <Widget no="8" caption="line up the survival rules" widget="order" config={htlalSystemOrder} />
   <p><em>Common misconception:</em> "the app streak is the learning." Gamified apps are
   excellent schedulers and terrible engines: the volume of comprehensible input they deliver
   is a fraction of what the curve above demands. Use the app for what it is good at — spaced
   review of your cards — and get the bulk of your hours from real shows, books and
   conversations, where the language lives.</p>
+  <Widget no="9" caption="bet on what the streak bought" widget="predict" config={htlalStreakPredict} />
   <p>
     <strong>So far:</strong> three engines — massive comprehensible input, spaced retrieval,
     brave early output — plus a trained ear for the sounds your first language blurred. What

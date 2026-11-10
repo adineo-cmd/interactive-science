@@ -344,6 +344,18 @@
 | industrial-engineering/foundational/statistics-quality-and-control-charts | place, match, cloze, predict, sort-buckets, trace, estimate, match | next-8 |
 | information-technology/foundational/types-and-components-of-computer-systems | match, sort-buckets, order, sort-buckets, spot-error, match, branch, estimate | next-8 |
 | interior-design/foundational/interior-design-fundamentals | estimate, sort-buckets, match, predict, compare, place, judge, order | next-8 |
+| languages/expert/multilingual-cognition | estimate, sort-buckets, place, spot-error, match, branch, order, compare | next-10 |
+| languages/expert/near-native-fluency | spot-error, estimate, place, order, compare, sort-buckets, match, branch | next-10 |
+| languages/foundational/how-to-learn-any-language | judge, estimate, branch, spot-error, trace, match, order, predict | next-10 |
+| languages/intermediate/grammar-without-tears | sort-buckets, spot-error, predict, order, match, judge, estimate, compare | next-10 |
+| languages/intermediate/listening-comprehensible-input | estimate, match, place, branch, sort-buckets, order, spot-error, match | next-10 |
+| languages/intermediate/pronunciation-and-the-ipa | match, predict, cloze, spot-error, compare, order, match, compare | next-10 |
+| languages/intermediate/speaking-and-shadowing | match, order, compare, estimate, branch, sort-buckets, predict, spot-error | next-10 |
+| languages/intermediate/your-first-1000-words | plotter, sort-buckets, match, predict, cloze, estimate, spot-error, order | next-10 |
+| law/advanced/contracts | match, branch, sort-buckets, spot-error, cloze, compare, predict, estimate | next-10 |
+| law/advanced/property-law | match, sort-buckets, place, predict, match, estimate, spot-error, order | next-10 |
+| law/advanced/torts-and-liability | sort-buckets, plotter, judge, match, sort-buckets, spot-error, compare, predict | next-10 |
+| law/expert/comparative-legal-systems | match, compare, sort-buckets, branch, spot-error, predict, timeline, match | next-10 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

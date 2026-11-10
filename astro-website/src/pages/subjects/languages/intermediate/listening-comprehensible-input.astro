@@ -19,6 +19,200 @@ const listenQuizCfg = {
     { q: 'Extensive listening (hours of easier content) mainly builds…', choices: ['precise word boundaries', 'fluency, speed and intuition', 'spelling', 'grammar rules'], answer: 1, why: 'Volume at comfortable difficulty automates decoding and builds the intuitions; precision work is what the short intensive loop is for. The two modes do different jobs.' },
   ],
 };
+
+const lciSpeedEstimate = {
+  "prompt": "Native speech arrives at roughly how many words per minute?",
+  "unit": "words per minute",
+  "answer": 150,
+  "factor": 1.3,
+  "why": "About 150-plus — no pause for the gap-filling a reader's eyes do, which is why listening is the highest-volume channel and the one learners most undertrain.",
+  "context": "The method that closes the gap is comprehensible input: massive exposure to messages understood mostly."
+};
+
+const lciBrainMatch = {
+  "prompt": "The statistical machinery of comprehension — pair the process with its engine:",
+  "pairs": [
+    {
+      "left": "word segmentation out of the stream",
+      "right": "infant statistics on transition probabilities"
+    },
+    {
+      "left": "forms mapped to meanings",
+      "right": "thousands of contextual collisions"
+    },
+    {
+      "left": "patterns the grammar books later name",
+      "right": "extracted without any rule being stated"
+    },
+    {
+      "left": "incomprehensible streams",
+      "right": "noise — nothing to map onto, the statistics never fire"
+    }
+  ],
+  "why": "None of it needs the rules stated; it needs volume of understood messages — which is why noise is wasted hours."
+};
+
+const lciBandPlace = {
+  "prompt": "Known words per hundred, sampled from a transcript — where does the context-inference sweet spot sit?",
+  "labels": [
+    "0",
+    "25",
+    "50",
+    "75",
+    "100"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 90,
+  "tolerance": 5,
+  "why": "About 90% known (ten unknowns per hundred): enough stretch to acquire, few enough gaps to bridge. Below 80% known, guessing collapses; near 100%, you are maintaining, not growing.",
+  "context": "Staying in band beats staying loyal to a series that has outgrown you."
+};
+
+const lciDeepEndBranch = {
+  "root": "A friend announces a plan: all winter, nothing but native news, from day one.",
+  "nodes": {
+    "start": {
+      "text": "What do you tell them?",
+      "choices": [
+        {
+          "label": "Go ahead — total immersion trains fastest",
+          "next": "deep",
+          "feedback": "Below the band, hours pass without a single message understood."
+        },
+        {
+          "label": "Start in band and climb notch by notch",
+          "next": "band",
+          "feedback": "Immersion works through comprehension, not proximity."
+        },
+        {
+          "label": "Stay on children's cartoons forever",
+          "next": "shallow",
+          "feedback": "Safe — and stagnant."
+        }
+      ]
+    },
+    "deep": {
+      "text": "Without enough known words there is nothing to infer from — the input is noise, however loud.",
+      "choices": [
+        {
+          "label": "Rewrite the plan",
+          "next": "band",
+          "feedback": "The country works because messages become necessary, not because they are loud."
+        }
+      ]
+    },
+    "shallow": {
+      "text": "Near 100% known, you are maintaining, not growing — the band has an upper edge too.",
+      "choices": [
+        {
+          "label": "Rewrite the plan",
+          "next": "band",
+          "feedback": "Climb when the count drops under five unknowns per hundred."
+        }
+      ]
+    },
+    "band": {
+      "text": "Stay in the band and let it carry you upward — recalibrated as it moves.",
+      "choices": []
+    }
+  },
+  "why": "Immersion works through comprehension, not proximity — the deep end is a place, not a method."
+};
+
+const lciLadderBuckets = {
+  "prompt": "The ladder of sources — file each rung by level:",
+  "buckets": [
+    "beginner",
+    "intermediate",
+    "advanced"
+  ],
+  "items": [
+    {
+      "label": "graded readers with audio",
+      "bucket": 0
+    },
+    {
+      "label": "children's cartoons — deliberately simple, deliberately short",
+      "bucket": 0
+    },
+    {
+      "label": "native podcasts on familiar topics",
+      "bucket": 1
+    },
+    {
+      "label": "TV with target-language subtitles",
+      "bucket": 1
+    },
+    {
+      "label": "YouTube in your existing hobbies — lifting, cooking, code",
+      "bucket": 1
+    },
+    {
+      "label": "films without subtitles",
+      "bucket": 2
+    },
+    {
+      "label": "news",
+      "bucket": 2
+    },
+    {
+      "label": "stand-up comedy — timing, register, implication",
+      "bucket": 2
+    }
+  ],
+  "why": "Knowing the subject is a legitimate substitute for vocabulary; humour and cultural reference are the final milestones because they run on inference and shared knowledge."
+};
+
+const lciSubsOrder = {
+  "prompt": "One series, four passes — order the progression, first mode first:",
+  "items": [
+    "native-language subtitles — plot access",
+    "target-language subtitles — form mapping",
+    "none — the ear does all the work",
+    "rewatch the episodes you loved bare — confidence"
+  ],
+  "why": "Mitterer and McQueen (2009): same-language subtitles improve speech perception itself, while reversed-language subtitles actively interfere — choose the mode for the job you are training."
+};
+
+const lciDecodeSpot = {
+  "prompt": "One line of this diagnosis is wrong — click it:",
+  "lines": [
+    "Native speech is not words spoken faster; it is words physically changed.",
+    "Sounds delete (\"camra\"), merge (\"wanna\", \"d'you\"), assimilate (\"ten bikes\" → \"tem bikes\").",
+    "Syllables vanish under stress-timing.",
+    "Vocabulary tests predict listening well — know the word on paper and you will hear it.",
+    "The fix is intensive listening with transcript comparison — meeting the reduced forms' fingerprints."
+  ],
+  "errorLine": 3,
+  "correction": "Vocabulary tests fail to predict listening: you do not lack the word, you lack the reduced form's fingerprint.",
+  "why": "After enough collisions the reductions become automatic — you stop hearing \"gonna\" as missing words and start hearing it as one word."
+};
+
+const lciStallMatch = {
+  "prompt": "Listening stalls — pair the symptom with the right lever:",
+  "pairs": [
+    {
+      "left": "slow audio fine, native speed impossible",
+      "right": "decoding — intensive work on reduced forms, plus shadowing"
+    },
+    {
+      "left": "missing words you know",
+      "right": "form-mapping — read-then-listen cycles on known content"
+    },
+    {
+      "left": "everything audible, nothing hanging together",
+      "right": "knowledge, not ear — change the content, not the method"
+    },
+    {
+      "left": "attention drifting mid-episode",
+      "right": "out of band or out of interest — shorten sessions, raise interest"
+    }
+  ],
+  "why": "Diagnose before you push — applying the usual lever (just more volume) is what makes the stalls feel unfixable."
+};
 ---
 <TopicPage slug="subjects/languages/intermediate/listening-comprehensible-input">
 
@@ -51,6 +245,7 @@ const listenQuizCfg = {
     of hours of understandable input acquire, and people who get rules without input
     plateau.
   </p>
+  <Widget no="3" caption="call the speed the ear must run at" widget="estimate" config={lciSpeedEstimate} />
   <p>
     The A2 stage of the CEFR ladder describes the destination in one line: "can
     understand sentences and frequently used expressions related to areas of most
@@ -81,6 +276,7 @@ const listenQuizCfg = {
     ("gonna", "wanna", whole syllables vanishing), which no amount of word lists prepares
     you for; only hours of real audio teach the ear how the words actually surface.
   </p>
+  <Widget no="4" caption="pair each process with what drives it" widget="match" config={lciBrainMatch} />
   <p>
     <strong>So far:</strong> acquisition is statistical — the brain segments, maps and
     extracts patterns from volume of understood messages, and noise never fires the
@@ -101,7 +297,9 @@ const listenQuizCfg = {
     recalibrate monthly, because content that was i+1 in March is i+0 by September.
     Staying in band beats staying loyal to a series that has outgrown you.
   </p>
+  <Widget no="5" caption="place the sweet spot" widget="place" config={lciBandPlace} />
   <p><em>Common misconception:</em> the deep end trains fastest — "just watch native news; you will get used to it". Below the band, input is noise: without enough known words there is nothing to infer from, and hours pass without a single message understood. Immersion works through comprehension, not proximity — the country works because messages become necessary, not because they are loud. Stay in the band and let the band carry you upward.</p>
+  <Widget no="6" caption="advise the deep-end diver" widget="branch" config={lciDeepEndBranch} />
 
   <h2>Intensive and extensive: two modes, two jobs</h2>
   <p>
@@ -144,6 +342,7 @@ const listenQuizCfg = {
     in particular tests the whole stack: timing, register, implication — the pragmatics
     lesson's layer, arriving as entertainment.
   </p>
+  <Widget no="7" caption="file each source on the ladder" widget="sort-buckets" config={lciLadderBuckets} />
 
   <h2>The subtitle question, answered</h2>
   <p>
@@ -160,6 +359,7 @@ const listenQuizCfg = {
     actively interfere. Choose the mode for the job you are training, and change it
     deliberately.
   </p>
+  <Widget no="8" caption="line up the subtitle progression" widget="order" config={lciSubsOrder} />
 
   <h2>Why native speed is a wall: the decoding problem</h2>
   <p>
@@ -177,6 +377,7 @@ const listenQuizCfg = {
     automatic (you stop hearing "gonna" as missing words and start hearing it as one
     word), and listening speed stops being the constraint.
   </p>
+  <Widget no="9" caption="find the line the word-list myth would love" widget="spot-error" config={lciDecodeSpot} />
 
   <h2>A worked week of listening</h2>
   <p>
@@ -243,6 +444,7 @@ const listenQuizCfg = {
     wrong one (usually: just more volume) is why plateaus feel mysterious. They are
     not mysterious — they are specific, and they are all reachable from here.
   </p>
+  <Widget no="10" caption="pair each stall with its fix" widget="match" config={lciStallMatch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
