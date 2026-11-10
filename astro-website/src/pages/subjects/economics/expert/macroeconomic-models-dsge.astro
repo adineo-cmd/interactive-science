@@ -10,6 +10,223 @@ const dsgeCfg = {
     { math: '4 · Estimation and use', note: 'Parameters fitted to data by Bayesian methods; central banks run DSGE/VAR ensembles for forecasts and counterfactuals ("what if rates rose 2 points?"). Every major central bank maintains one.' },
   ],
 };
+
+const dsgeAcronymCloze = {
+  "text": "DSGE stands for %%0%% (agents choose over time with expectations), %%1%% (random shocks push them around) and general equilibrium (all markets clear at once). Built from optimising agents, it is the language modern macro uses for %%2%% analysis.",
+  "answers": [
+    [
+      "dynamic"
+    ],
+    [
+      "stochastic"
+    ],
+    [
+      "counterfactual",
+      "policy"
+    ]
+  ],
+  "hint": "Time, randomness and simultaneous markets — each word buys something."
+};
+
+const dsgeBuildOrder = {
+  "prompt": "Put the DSGE construction sequence in order:",
+  "items": [
+    "Build optimising households and firms",
+    "Throw random shocks at them",
+    "Add sticky prices so money has short-run power",
+    "Fit the whole machine to data",
+    "Hand it to central banks for policy counterfactuals"
+  ],
+  "why": "Each section of the lesson lives inside one of these four steps; the sequence is construction, not a menu."
+};
+
+const dsgeLucasMatch = {
+  "prompt": "Pair each Lucas-critique idea with its claim:",
+  "pairs": [
+    {
+      "left": "Lucas critique",
+      "right": "estimated relationships break when policy changes the decision rules"
+    },
+    {
+      "left": "microfoundations",
+      "right": "model the agents, not the aggregates, so policy enters as a rule"
+    },
+    {
+      "left": "time inconsistency",
+      "right": "a government optimising afresh each period promises one thing and does another"
+    },
+    {
+      "left": "rules versus discretion",
+      "right": "a credible rule can beat fresh optimisation, even for a well-intentioned policymaker"
+    }
+  ],
+  "why": "The critique forced macro to build from optimising agents; time inconsistency is its policy corollary."
+};
+
+const dsgeLucasSpot = {
+  "prompt": "Find the line where the Lucas-critique reasoning goes too far:",
+  "lines": [
+    "The Lucas critique says estimated relationships reflect behaviour under the old policy regime.",
+    "Therefore every estimated relationship is useless for any purpose.",
+    "It bites specifically when a policy change alters the decision rules generating the data.",
+    "For short-horizon forecasting within an unchanged regime, estimated relationships remain useful.",
+    "The critique disciplines structural claims, not all empirics."
+  ],
+  "errorLine": 1,
+  "correction": "The critique bites when policy changes the decision rules, not on every estimate.",
+  "why": "It disciplines structural claims; short-horizon forecasting within a regime still works."
+};
+
+const dsgeMultiplierCompare = {
+  "prompt": "One stimulus, two monetary states — drag the divider:",
+  "before": {
+    "label": "normal monetary response",
+    "text": "a 1% of GDP spending boost raises output by roughly 0.9–1.5%"
+  },
+  "after": {
+    "label": "zero lower bound",
+    "text": "with rates pinned and no offsetting tightening, the same stimulus does several times more work"
+  },
+  "why": "The multiplier is a property of the whole system — monetary reaction, borrowing constraints, tax distortions — not a number a government can assume."
+};
+
+const dsgeTaylorPlace = {
+  "prompt": "Using the Taylor rule, with inflation at 4%, a 2% target and output 1% above trend, what policy rate is prescribed? Place it.",
+  "labels": [
+    "0%",
+    "2.5%",
+    "5%",
+    "7.5%",
+    "10%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 10
+  },
+  "answer": 7.5,
+  "tolerance": 0.2,
+  "why": "2 + 4 + 0.5×(4−2) + 0.5×1 = 7.5%. The rule is the benchmark; deviations are explainable judgement."
+};
+
+const dsgeObjectSort = {
+  "prompt": "Which object is each item in the model?",
+  "buckets": [
+    "shock",
+    "parameter",
+    "endogenous state"
+  ],
+  "items": [
+    {
+      "label": "a total factor productivity disturbance",
+      "bucket": 0
+    },
+    {
+      "label": "the Calvo reset probability θ",
+      "bucket": 1
+    },
+    {
+      "label": "the unemployment rate",
+      "bucket": 2
+    },
+    {
+      "label": "the labour supply elasticity",
+      "bucket": 1
+    },
+    {
+      "label": "a risk-premium shock",
+      "bucket": 0
+    },
+    {
+      "label": "the output gap",
+      "bucket": 2
+    }
+  ],
+  "why": "Shocks drive the cycle, parameters govern steady-state behaviour, and states are what the model solves for."
+};
+
+const dsgeDurationEst = {
+  "prompt": "Micro-evidence finds many prices changing only every 6–12 months. What is the midpoint of that range, in months?",
+  "unit": "months",
+  "answer": 9,
+  "factor": 1.2,
+  "why": "9 months is the midpoint. Calvo pricing with θ = 0.75 implies an average duration of 1/(1−0.75) = 4 quarters, squarely in the empirical range.",
+  "context": "sticky prices are why a nominal rate move moves the real rate"
+};
+
+const dsgeShimerBranch = {
+  "root": "The standard search-and-matching model generates only about a tenth of the observed volatility in unemployment. Trace the repair.",
+  "nodes": {
+    "start": {
+      "text": "What is the model missing?",
+      "choices": [
+        {
+          "label": "Wage rigidity and outside options that make hiring respond more strongly",
+          "next": "wage",
+          "feedback": "Yes — the standard wage bargain absorbs too much of the shock."
+        },
+        {
+          "label": "Nothing — the data must be wrong",
+          "next": "data",
+          "feedback": "The volatility is measured robustly; the model is the problem."
+        },
+        {
+          "label": "More shocks, of any kind",
+          "next": "shocks",
+          "feedback": "Adding shocks without changing the labour-market structure does not fix the puzzle."
+        }
+      ]
+    },
+    "wage": {
+      "text": "Wage rigidity and outside options are the standard repairs; HANK goes further, giving households different wealth and liquid-asset positions."
+    },
+    "data": {
+      "text": "The puzzle is a robust feature of the data, not a measurement error.",
+      "choices": [
+        {
+          "label": "So fix what?",
+          "next": "wage",
+          "feedback": "The wage bargain."
+        }
+      ]
+    },
+    "shocks": {
+      "text": "The issue is the transmission mechanism, not the number of shocks.",
+      "choices": [
+        {
+          "label": "What fixes it?",
+          "next": "wage",
+          "feedback": "Wage rigidity and outside options."
+        }
+      ]
+    }
+  },
+  "why": "The labour market is far more cyclical than the benchmark allows; fixing the wage bargain — or modelling heterogeneity — remains live work."
+};
+
+const dsgeCrisisJudge = {
+  "statements": [
+    {
+      "s": "The standard DSGE models before 2008 had no meaningful banking sector, household debt or house prices.",
+      "truth": true,
+      "why": "The crisis hit precisely where the models were blind."
+    },
+    {
+      "s": "The 2008 crisis hit precisely where the models were blind.",
+      "truth": true,
+      "why": "Queen Elizabeth's question at the LSE made the point publicly."
+    },
+    {
+      "s": "Post-2008 work has produced one consensus model that all central banks now use.",
+      "truth": false,
+      "why": "Financial-friction DSGE, HANK and hybrid systems coexist; there is no single consensus model."
+    },
+    {
+      "s": "Central banks run DSGE/VAR ensembles because no single model earns full trust.",
+      "truth": true,
+      "why": "The ensemble is the field's mature answer to model uncertainty."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/economics/expert/macroeconomic-models-dsge">
   <h2>Where you are, and what you will learn</h2>
@@ -48,8 +265,9 @@ const dsgeCfg = {
     runs inside every major central bank, and — after 2008 exposed real blindnesses —
     has learned an appropriate humility about what a simulated economy can promise.
   </p>
+  <Widget no="1" caption="fill the blanks — expand the acronym" widget="cloze" config={dsgeAcronymCloze} />
 
-  <Widget no="1" caption="the DSGE skeleton, from microfoundations to central-bank use" widget="equationStep" config={dsgeCfg} />
+  <Widget no="2" caption="the DSGE skeleton, from microfoundations to central-bank use" widget="equationStep" config={dsgeCfg} />
   <p>
     <strong>What to notice:</strong> the four steps are the model's construction sequence, not a
     menu. Step 1 builds optimising households and firms; step 2 throws random shocks at them;
@@ -57,6 +275,7 @@ const dsgeCfg = {
     to data and hands it to central banks. Reveal the steps in order and check the logic against
     each section below — every section that follows lives inside one of these four steps.
   </p>
+  <Widget no="3" caption="build the DSGE machine, in order" widget="order" config={dsgeBuildOrder} />
 
   <p><strong>So far:</strong> DSGE is the formal language modern macroeconomics thinks in —
   optimising agents, random shocks, all markets clearing at once. The first stop is the
@@ -79,6 +298,7 @@ const dsgeCfg = {
     inflation decline that arrives roughly two years out: the model's rendition of
     Friedman's long and variable lags.
   </p>
+  <Widget no="4" caption="pair each Lucas-critique idea with its claim" widget="match" config={dsgeLucasMatch} />
   <p>
     <em>Common misconception:</em> "the Lucas critique means every estimated
     relationship is useless." It bites specifically when a policy change alters the
@@ -86,6 +306,7 @@ const dsgeCfg = {
     unchanged regime, estimated relationships remain the best tools available. The
     critique disciplines structural claims, not all empirics.
   </p>
+  <Widget no="5" caption="find the overreach" widget="spot-error" config={dsgeLucasSpot} />
   <p><strong>So far:</strong> estimated relationships break when a policy change alters the
   decision rules behind them, so the model must represent the agents, not the aggregates. The
   first policy to test in the laboratory is the fiscal one — where the agents' reaction is the
@@ -109,6 +330,7 @@ const dsgeCfg = {
     property of the whole system — monetary reaction, borrowing constraints, the tax
     distortions that finance the spending — not a number a government can assume.
   </p>
+  <Widget no="6" caption="one stimulus, two monetary states" widget="compare" config={dsgeMultiplierCompare} />
 
   <h2>Monetary policy: the Euler equation and the Calvo curve</h2>
   <p>
@@ -127,6 +349,7 @@ const dsgeCfg = {
     conventionally the Taylor form: with inflation at 4% and output 1% above trend, the
     benchmark prescribes 2 + 4 + 0.5 × (4 − 2) + 0.5 × 1 = 7.5%.
   </p>
+  <Widget no="7" caption="mark the prescribed policy rate" widget="place" config={dsgeTaylorPlace} />
   <p>
     <em>Common misconception:</em> "the central bank controls the money supply
     directly." In the models that mirror modern practice, the policy instrument is an
@@ -150,6 +373,7 @@ const dsgeCfg = {
     supply-side debates so much as force them to state their assumptions — a parameter
     you can argue with instead of a curve you must trust.
   </p>
+  <Widget no="8" caption="shock, parameter or state?" widget="sort-buckets" config={dsgeObjectSort} />
 
   <h2>Economic growth: cycles around a trend</h2>
   <p>
@@ -190,6 +414,7 @@ const dsgeCfg = {
     afterthought to first-order object in macro, and with it the models' answers to
     fiscal and monetary questions changed quantitatively, not just rhetorically.
   </p>
+  <Widget no="9" caption="repair the labour-market model" widget="branch" config={dsgeShimerBranch} />
   <p>
     <em>Common misconception:</em> "rational expectations means agents know the model,
     the future and everything else." It means agents use available information without
@@ -215,6 +440,7 @@ const dsgeCfg = {
     as roughly the whole story of financial calm, and the crisis arrived through
     balance sheets the equations did not contain.
   </p>
+  <Widget no="10" caption="call the average price duration" widget="estimate" config={dsgeDurationEst} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -279,6 +505,7 @@ const dsgeCfg = {
     heterogeneous agents, and hybrid empirical systems at central banks where
     structural models set counterfactuals and data-driven models set forecasts.
   </p>
+  <Widget no="11" caption="true or false — what the models missed" widget="judge" config={dsgeCrisisJudge} />
   <p>
     <strong>Open debates.</strong> Is the representative agent a fatal simplification
     or a useful first order? Can agent-based simulations — no equilibrium imposed,

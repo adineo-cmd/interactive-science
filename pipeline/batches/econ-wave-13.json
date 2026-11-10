@@ -1,0 +1,204 @@
+[
+  {
+    "slug": "subjects/economics/expert/econometrics",
+    "activities": [
+      {
+        "anchor": "statistics under the constraints economics actually imposes",
+        "type": "cloze",
+        "caption": "fill the blanks — the econometrician's baseline",
+        "name": "ecBaselineCloze",
+        "config": {
+          "text": "Econometrics is statistics under economics' constraints: observational data, no chosen treatment, causal questions. Its baseline is %%0%%, whose key assumption is %%1%%. The credibility revolution's slogan is that %%2%% beats statistics.",
+          "answers": [
+            ["OLS", "ordinary least squares"],
+            ["exogeneity"],
+            ["design"]
+          ],
+          "hint": "The baseline regression assumes the regressor is uncorrelated with the error; a clean natural experiment beats a clever model."
+        }
+      },
+      {
+        "anchor": "The workhorses of repair are",
+        "type": "match",
+        "caption": "pair each design with its assumption",
+        "name": "ecDesignMatch",
+        "config": {
+          "prompt": "Pair each identification strategy with what it assumes:",
+          "pairs": [
+            { "left": "panel fixed effects", "right": "time-invariant differences between units are absorbed" },
+            { "left": "difference-in-differences", "right": "treated and control groups would have moved in parallel" },
+            { "left": "high-frequency event window", "right": "nothing else plausibly moved in the half-hour around the announcement" },
+            { "left": "instrumental variable", "right": "the instrument shifts treatment but affects the outcome only through it" }
+          ],
+          "why": "Each repair buys identification by assuming something specific — the craft is making those assumptions visible and checkable."
+        }
+      },
+      {
+        "anchor": "Difference-in-differences in miniature",
+        "type": "order",
+        "caption": "compute the difference-in-differences estimate",
+        "name": "ecDidOrder",
+        "config": {
+          "prompt": "Compute the difference-in-differences estimate — put the steps in order:",
+          "items": [
+            "The treated region's employment rises from 100 to 104, a change of +4",
+            "The control region falls from 100 to 99, a change of −1",
+            "The control's decline is the counterfactual the treated region would have followed",
+            "DiD = (+4) − (−1) = +5",
+            "The estimate stands only if the two groups were on parallel trends before the policy"
+          ],
+          "why": "Two numbers in, one counterfactual out; every refinement is an argument that this comparison is the right one."
+        }
+      },
+      {
+        "anchor": "statistical significance means the effect is big",
+        "type": "compare",
+        "caption": "statistical versus economic significance",
+        "name": "ecSignificanceCompare",
+        "config": {
+          "prompt": "Two things an estimate can be — drag the divider:",
+          "before": {
+            "label": "statistical significance",
+            "text": "the coefficient is far from zero relative to its standard error"
+          },
+          "after": {
+            "label": "economic significance",
+            "text": "the coefficient is large in the units that matter for policy"
+          },
+          "why": "With millions of observations, a trivially small coefficient can be significant weekly; read the units first, the asterisk second."
+        }
+      },
+      {
+        "anchor": "the field's flagship estimation problem",
+        "type": "branch",
+        "caption": "design a multiplier estimate",
+        "name": "ecMultiplierBranch",
+        "config": {
+          "root": "You must estimate the fiscal multiplier. Governments do not randomise budgets. Trace the design choice.",
+          "nodes": {
+            "start": {
+              "text": "Which identification strategy do you reach for?",
+              "choices": [
+                { "label": "Narrative identification — isolate tax changes made for philosophical reasons", "next": "narrative", "feedback": "Yes — Romer and Romer read speeches and legislative records to find changes not driven by the cycle." },
+                { "label": "A naive before-and-after comparison of GDP around the stimulus", "next": "naive", "feedback": "Everything else was moving too — recessions end, oil prices move." },
+                { "label": "Regress GDP on spending with as many controls as possible", "next": "controls", "feedback": "Controls cannot block confounding paths they do not measure; design comes first." }
+              ]
+            },
+            "narrative": {
+              "text": "Narrative identification isolates changes motivated by long-run philosophy rather than the current economy. It finds output falls roughly 2–3% per 1% of GDP in tax increases."
+            },
+            "naive": {
+              "text": "Before-and-after mixes the policy with the business cycle; the counterfactual is missing.",
+              "choices": [
+                { "label": "What is better?", "next": "narrative", "feedback": "A comparison that isolates the policy." }
+              ]
+            },
+            "controls": {
+              "text": "No quantity of regressors substitutes for a comparison that holds the counterfactual fixed.",
+              "choices": [
+                { "label": "So what does?", "next": "narrative", "feedback": "Design, not controls." }
+              ]
+            }
+          },
+          "why": "Multiplier estimates vary with the monetary response, openness and slack; that variation is the finding, not noise."
+        }
+      },
+      {
+        "anchor": "inflation 3%, output on trend",
+        "type": "place",
+        "caption": "mark the Taylor-rule rate",
+        "name": "ecTaylorPlace",
+        "config": {
+          "prompt": "Using the Taylor rule, with inflation at 3%, a 2% target and output on trend, what policy rate is prescribed? Place it.",
+          "labels": ["0%", "2%", "4%", "6%", "8%"],
+          "scale": { "min": 0, "max": 8 },
+          "answer": 5.5,
+          "tolerance": 0.2,
+          "why": "2 + 3 + 0.5×(3−2) + 0.5×0 = 5.5%. The rule is a benchmark, and deviations from it are what markets trade on."
+        }
+      },
+      {
+        "anchor": "two trending series that regress well are related",
+        "type": "spot-error",
+        "caption": "find the spurious-regression slip",
+        "name": "ecSpuriousSpot",
+        "config": {
+          "prompt": "Find the line where the time-series reasoning goes wrong:",
+          "lines": [
+            "Two random walks can regress on each other with a high R² and large t-statistics.",
+            "That proves the two series are genuinely related.",
+            "Granger and Newbold called this spurious regression: the correlation is coincidence.",
+            "With unit roots, difference the series or test for cointegration.",
+            "Short and long interest rates are the textbook cointegrated pair."
+          ],
+          "errorLine": 1,
+          "correction": "High R² between trending series is often coincidence; difference or test for cointegration before trusting it.",
+          "why": "Trending series need differencing or cointegration, not trust."
+        }
+      },
+      {
+        "anchor": "The most honest decomposition in macroeconomics is arithmetic",
+        "type": "estimate",
+        "caption": "call the Solow residual",
+        "name": "ecSolowEst",
+        "config": {
+          "prompt": "Output grows 3.2%, labour hours 1.4% and capital 3.0%, with capital's share α = 0.3. What is the Solow residual, in percentage points?",
+          "unit": "pp",
+          "answer": 1.3,
+          "factor": 1.1,
+          "why": "3.2 − (0.7×1.4) − (0.3×3.0) = 3.2 − 1.0 − 0.9 = 1.3 points of productivity. The residual bundles technology, efficiency, institutions and measurement error.",
+          "context": "a measure of our ignorance"
+        }
+      },
+      {
+        "anchor": "Two estimable regularities anchor the topic",
+        "type": "sort-buckets",
+        "caption": "which design matches each study?",
+        "name": "ecStudySort",
+        "config": {
+          "prompt": "Which identification strategy matches each study?",
+          "buckets": ["difference-in-differences", "instrumental variable", "regression discontinuity"],
+          "items": [
+            { "label": "New Jersey versus Pennsylvania fast-food employment after a minimum-wage rise", "bucket": 0 },
+            { "label": "a jobs programme compared with an untreated neighbouring region", "bucket": 0 },
+            { "label": "the Vietnam draft lottery as a source of random service", "bucket": 1 },
+            { "label": "lottery number as an instrument for military service", "bucket": 1 },
+            { "label": "a scholarship awarded only above a test-score cutoff", "bucket": 2 },
+            { "label": "a class-size cap that bites just below a cutoff", "bucket": 2 }
+          ],
+          "why": "Each design exploits a different source of plausibly exogenous variation: a comparison group, an instrument, or a threshold."
+        }
+      },
+      {
+        "anchor": "because expectations adjust",
+        "type": "judge",
+        "caption": "true or false — the Phillips curve",
+        "name": "ecPhillipsJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "The Phillips curve is a stable menu: lower unemployment can be bought permanently with higher inflation.",
+              "truth": false,
+              "why": "The 1970s produced high inflation and high unemployment together, exactly as Friedman and Phelps predicted."
+            },
+            {
+              "s": "Friedman and Phelps argued that expectations adjust, so the trade-off cannot be permanent.",
+              "truth": true,
+              "why": "Squeeze unemployment below its natural rate and inflation ratchets rather than employment settling higher."
+            },
+            {
+              "s": "The sacrifice ratio measures output lost per point of disinflation.",
+              "truth": true,
+              "why": "It is the estimated cost of bringing inflation down."
+            },
+            {
+              "s": "The Volcker disinflation cut inflation from about 13.5% to 3% at the cost of peak unemployment near 10.8%.",
+              "truth": true,
+              "why": "The 1982 recession is the reference case for credibility's price."
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

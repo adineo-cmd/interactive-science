@@ -10,6 +10,223 @@ const finecCfg = {
     { math: '4 · The anomalies and the response', note: 'Momentum, value premium, small-cap effect — documented patterns the original models miss. The field responded with multi-factor models (Fama–French, 1993) and behavioural finance (the economics lesson next door).' },
   ],
 };
+
+const feRiskSort = {
+  "prompt": "Which risk can diversification shed?",
+  "buckets": [
+    "diversifiable (idiosyncratic)",
+    "systematic (market)"
+  ],
+  "items": [
+    {
+      "label": "a single factory fire",
+      "bucket": 0
+    },
+    {
+      "label": "a recession",
+      "bucket": 1
+    },
+    {
+      "label": "a rival's product launch",
+      "bucket": 0
+    },
+    {
+      "label": "inflation",
+      "bucket": 1
+    },
+    {
+      "label": "a CEO scandal",
+      "bucket": 0
+    },
+    {
+      "label": "interest-rate changes",
+      "bucket": 1
+    }
+  ],
+  "why": "Diversification removes only idiosyncratic risk; the systematic component survives any number of holdings — which is why CAPM pays a premium for market risk alone."
+};
+
+const feMoneyCloze = {
+  "text": "Commercial banks create money when they %%0%% — the loan and the deposit arrive together. Maturity transformation makes bank runs a %%1%% equilibrium, and deposit insurance %%2%% the bad equilibrium by changing the payoffs.",
+  "answers": [
+    [
+      "lend"
+    ],
+    [
+      "rational"
+    ],
+    [
+      "deletes",
+      "eliminates",
+      "removes"
+    ]
+  ],
+  "hint": "Loans create deposits; if everyone expects a run, running first is optimal."
+};
+
+const feReservesCompare = {
+  "prompt": "Reserves and deposits — drag the divider:",
+  "before": {
+    "label": "reserves",
+    "text": "settlement balances between banks, held at the central bank"
+  },
+  "after": {
+    "label": "deposits",
+    "text": "claims created when a bank lends; the loan and the deposit arrive together"
+  },
+  "why": "Lending creates deposits first; the textbook money-multiplier chain of fixed re-lending is not how balance sheets work."
+};
+
+const fePortfolioPlace = {
+  "prompt": "Two assets each have 20% volatility, correlation 0.3, held 50/50. Place the portfolio volatility.",
+  "labels": [
+    "10%",
+    "15%",
+    "20%",
+    "25%",
+    "30%"
+  ],
+  "scale": {
+    "min": 10,
+    "max": 30
+  },
+  "answer": 16.1,
+  "tolerance": 0.5,
+  "why": "Variance = 0.25×0.04 + 0.25×0.04 + 2×0.25×0.3×0.04 = 0.026, so volatility ≈ 16.1% — four points below either asset alone, with no expected-return sacrifice."
+};
+
+const feHumanMatch = {
+  "prompt": "Pair each human-capital idea with its meaning:",
+  "pairs": [
+    {
+      "left": "Mincer return",
+      "right": "each extra year of schooling is associated with roughly 10% higher earnings"
+    },
+    {
+      "left": "compensating differential",
+      "right": "hazardous or disagreeable work pays more, ceteris paribus"
+    },
+    {
+      "left": "human-capital beta",
+      "right": "your earnings move with your employer, industry and city"
+    },
+    {
+      "left": "DB to DC shift",
+      "right": "market and longevity risk moved from firms to households"
+    }
+  ],
+  "why": "Human capital is an asset: it earns a return, carries risk, and is already maximally long your employer."
+};
+
+const feWaccEst = {
+  "prompt": "A firm is 60% equity at 9% and 40% debt at 5% pre-tax, with a 25% tax rate. What is its WACC?",
+  "unit": "%",
+  "answer": 6.9,
+  "factor": 1.05,
+  "why": "0.6×9 + 0.4×5×(1−0.25) = 5.4 + 1.5 = 6.9%. That is the hurdle rate every investment must beat.",
+  "context": "the tax shield is why the debt term is after-tax"
+};
+
+const feInvestBranch = {
+  "root": "A machine costs £100,000 and generates £8,000 a year in perpetuity — an 8% gross return. The firm's WACC is 6.9%. Trace the investment decision.",
+  "nodes": {
+    "start": {
+      "text": "Should the firm buy the machine?",
+      "choices": [
+        {
+          "label": "Yes — the 8% return clears the 6.9% hurdle",
+          "next": "buy",
+          "feedback": "Yes — it adds 1.1 points of value over the cost of capital."
+        },
+        {
+          "label": "No — the payback is over twelve years",
+          "next": "payback",
+          "feedback": "Payback ignores the cost of capital and the cash flows after the payback date."
+        },
+        {
+          "label": "Only if the firm has spare cash",
+          "next": "cash",
+          "feedback": "Financing frictions matter in practice, but the project itself clears the hurdle."
+        }
+      ]
+    },
+    "buy": {
+      "text": "Buy it: 8% > 6.9%. A 6% machine would fail the same test, even if its payback looked similar."
+    },
+    "payback": {
+      "text": "Payback is an accounting rule, not a value test; the project clears the risk-adjusted cost of capital.",
+      "choices": [
+        {
+          "label": "So buy it?",
+          "next": "buy",
+          "feedback": "Yes — the hurdle is the test."
+        }
+      ]
+    },
+    "cash": {
+      "text": "Cash-poor firms may invest less even at identical opportunities — a financing friction, not a verdict on the project.",
+      "choices": [
+        {
+          "label": "What does the project say?",
+          "next": "buy",
+          "feedback": "It clears the hurdle."
+        }
+      ]
+    }
+  },
+  "why": "Investment stops where the marginal product of capital falls to its cost; irreversibility and financing frictions are the real-world refinements."
+};
+
+const feProfitOrder = {
+  "prompt": "Put the economic-profit calculation in order:",
+  "items": [
+    "Start with accounting profit — say £12 million on £100 million of capital",
+    "Subtract the opportunity cost of the capital employed: 8% × £100m = £8 million",
+    "Economic profit is £12m − £8m = £4 million",
+    "A sister division earning £12m on £200m of capital destroys £4 million",
+    "Growth can therefore be value-destroying even at full accounting profitability"
+  ],
+  "why": "Economic profit charges for the capital employed; that is why the WACC, not the quoted loan rate, is the relevant marginal cost."
+};
+
+const feLiquiditySpot = {
+  "prompt": "Find the line where the market-microstructure reasoning goes wrong:",
+  "lines": [
+    "Exchanges run limit order books where market makers quote bids and asks.",
+    "The bid-ask spread is the price of immediacy, and depth is the price of size.",
+    "Because liquidity is supplied by competitive firms, it is always available when needed.",
+    "On 6 May 2010 the US equity market fell about 9% in minutes as liquidity withdrew.",
+    "Market design — circuit breakers, tick sizes, latency rules — is a live research agenda."
+  ],
+  "errorLine": 2,
+  "correction": "Liquidity can vanish exactly when it is needed — that is the flash crash's lesson.",
+  "why": "The market is an engineered institution whose rules decide whether it aggregates information or amplifies panic."
+};
+
+const feFactorJudge = {
+  "statements": [
+    {
+      "s": "CAPM predicted that only market beta earns a premium, but small and value stocks earned too much.",
+      "truth": true,
+      "why": "The anomaly forced the Fama–French size and value factors into the model."
+    },
+    {
+      "s": "Most of the hundreds of factors in the factor zoo survived out-of-sample replication.",
+      "truth": false,
+      "why": "Many failed out of sample — asset pricing had its own replication crisis."
+    },
+    {
+      "s": "The efficient-markets hypothesis can be tested only jointly with a model of expected returns.",
+      "truth": true,
+      "why": "That joint hypothesis problem is why Fama and Shiller could share a Nobel while disagreeing."
+    },
+    {
+      "s": "Efficient markets means prices are always right.",
+      "truth": false,
+      "why": "Informational efficiency is about speed and competition, not correctness; prices can sit far from fundamentals for years."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/economics/expert/financial-economics">
   <h2>Where you are, and what you will learn</h2>
@@ -45,8 +262,9 @@ const finecCfg = {
     most mathematical branch of economics and the one where theory meets trillions of
     dollars daily, with measurable consequences for every pension on Earth.
   </p>
+  <Widget no="1" caption="which risk can diversification shed?" widget="sort-buckets" config={feRiskSort} />
 
-  <Widget no="1" caption="the pricing framework — from diversification to factors" widget="equationStep" config={finecCfg} />
+  <Widget no="2" caption="the pricing framework — from diversification to factors" widget="equationStep" config={finecCfg} />
   <p>
     <strong>What to notice:</strong> the four steps restate the chapter's spine. Step 1 gives
     the first equation of finance — higher expected return must be bought with higher variance,
@@ -77,6 +295,7 @@ const finecCfg = {
     day. The failure was not solvency arithmetic but speed: the run equilibrium now
     moves at the pace of a smartphone.
   </p>
+  <Widget no="3" caption="fill the blanks — where money comes from" widget="cloze" config={feMoneyCloze} />
   <p>
     <em>Common misconception:</em> "banks lend out the reserves depositors place with
     them." Reserves are settlement balances between banks; lending creates deposits
@@ -84,6 +303,7 @@ const finecCfg = {
     textbook money-multiplier chain of fixed re-lending is not how balance sheets
     actually work.
   </p>
+  <Widget no="4" caption="reserves versus deposits — drag the divider" widget="compare" config={feReservesCompare} />
   <p><strong>So far:</strong> banks create the money the system prices in, and their maturity
   transformation makes them both indispensable and run-prone — with deposit insurance and a
   penalty-rate lender of last resort as the repairs. Next: the households whose savings must
@@ -108,6 +328,7 @@ const finecCfg = {
     incentive, proving default friction matters as much as theory — and that
     portfolios are chosen, but mostly not chosen.
   </p>
+  <Widget no="5" caption="mark the portfolio volatility" widget="place" config={fePortfolioPlace} />
 
   <h2>Workers: human capital and compensating differentials</h2>
   <p>
@@ -129,6 +350,7 @@ const finecCfg = {
     that pays you; buying its shares doubles down on the same risk rather than
     diversifying it.
   </p>
+  <Widget no="6" caption="pair each human-capital idea with its meaning" widget="match" config={feHumanMatch} />
   <p><strong>So far:</strong> households allocate their savings and workers carry a human
   capital whose beta is their employer's fortune — already maximally long one firm. Now meet
   the other side of every one of those claims: the firms that raise capital and must earn its
@@ -149,6 +371,7 @@ const finecCfg = {
     rate: WACC = 0.6 × 9 + 0.4 × 5 × (1 − 0.25) = 5.4 + 1.5 = 6.9%. That number is
     the firm's hurdle rate — the discount factor every investment must beat.
   </p>
+  <Widget no="7" caption="call the WACC" widget="estimate" config={feWaccEst} />
 
   <h2>Firms and production: capital, output and the investment decision</h2>
   <p>
@@ -166,6 +389,7 @@ const finecCfg = {
     at identical opportunities, which is why the financing chapter and this one are
     the same story from two sides.
   </p>
+  <Widget no="8" caption="buy the machine? trace the hurdle" widget="branch" config={feInvestBranch} />
 
   <h2>Costs, revenue and objectives: profit maximisation meets the agency problem</h2>
   <p>
@@ -184,6 +408,7 @@ const finecCfg = {
     executive compensation, boards and takeover markets are all attempts to align
     the firm's objective with its owners'.
   </p>
+  <Widget no="9" caption="economic profit, in order" widget="order" config={feProfitOrder} />
 
   <h2>Types of markets: from market structures to microstructure</h2>
   <p>
@@ -203,6 +428,7 @@ const finecCfg = {
     recovery cost — were old questions in new clothes; the market's rules had simply
     never been stress-tested at machine speed.
   </p>
+  <Widget no="10" caption="find the liquidity slip" widget="spot-error" config={feLiquiditySpot} />
   <p>
     <em>Common misconception:</em> "diversification removes risk, so a wide portfolio
     is safe." Diversification removes only <em>idiosyncratic</em> risk. The
@@ -260,6 +486,7 @@ const finecCfg = {
     replicate out of sample — asset pricing's own replication crisis, with honest
     multiple-testing corrections now standard.
   </p>
+  <Widget no="11" caption="true or false — factors and efficiency" widget="judge" config={feFactorJudge} />
   <p>
     <strong>Efficiency and its joint hypothesis.</strong> The efficient-markets
     hypothesis is testable only jointly with a model of expected returns — a subtlety

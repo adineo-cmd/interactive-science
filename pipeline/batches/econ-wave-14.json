@@ -1,0 +1,204 @@
+[
+  {
+    "slug": "subjects/economics/expert/financial-economics",
+    "activities": [
+      {
+        "anchor": "prices <strong>claims on uncertain future money</strong>",
+        "type": "sort-buckets",
+        "caption": "which risk can diversification shed?",
+        "name": "feRiskSort",
+        "config": {
+          "prompt": "Which risk can diversification shed?",
+          "buckets": ["diversifiable (idiosyncratic)", "systematic (market)"],
+          "items": [
+            { "label": "a single factory fire", "bucket": 0 },
+            { "label": "a recession", "bucket": 1 },
+            { "label": "a rival's product launch", "bucket": 0 },
+            { "label": "inflation", "bucket": 1 },
+            { "label": "a CEO scandal", "bucket": 0 },
+            { "label": "interest-rate changes", "bucket": 1 }
+          ],
+          "why": "Diversification removes only idiosyncratic risk; the systematic component survives any number of holdings — which is why CAPM pays a premium for market risk alone."
+        }
+      },
+      {
+        "anchor": "stated plainly by the Bank of England (2014)",
+        "type": "cloze",
+        "caption": "fill the blanks — where money comes from",
+        "name": "feMoneyCloze",
+        "config": {
+          "text": "Commercial banks create money when they %%0%% — the loan and the deposit arrive together. Maturity transformation makes bank runs a %%1%% equilibrium, and deposit insurance %%2%% the bad equilibrium by changing the payoffs.",
+          "answers": [
+            ["lend"],
+            ["rational"],
+            ["deletes", "eliminates", "removes"]
+          ],
+          "hint": "Loans create deposits; if everyone expects a run, running first is optimal."
+        }
+      },
+      {
+        "anchor": "banks lend out the reserves depositors place with",
+        "type": "compare",
+        "caption": "reserves versus deposits — drag the divider",
+        "name": "feReservesCompare",
+        "config": {
+          "prompt": "Reserves and deposits — drag the divider:",
+          "before": {
+            "label": "reserves",
+            "text": "settlement balances between banks, held at the central bank"
+          },
+          "after": {
+            "label": "deposits",
+            "text": "claims created when a bank lends; the loan and the deposit arrive together"
+          },
+          "why": "Lending creates deposits first; the textbook money-multiplier chain of fixed re-lending is not how balance sheets work."
+        }
+      },
+      {
+        "anchor": "Worked example: two assets each with volatility 20%",
+        "type": "place",
+        "caption": "mark the portfolio volatility",
+        "name": "fePortfolioPlace",
+        "config": {
+          "prompt": "Two assets each have 20% volatility, correlation 0.3, held 50/50. Place the portfolio volatility.",
+          "labels": ["10%", "15%", "20%", "25%", "30%"],
+          "scale": { "min": 10, "max": 30 },
+          "answer": 16.1,
+          "tolerance": 0.5,
+          "why": "Variance = 0.25×0.04 + 0.25×0.04 + 2×0.25×0.3×0.04 = 0.026, so volatility ≈ 16.1% — four points below either asset alone, with no expected-return sacrifice."
+        }
+      },
+      {
+        "anchor": "A worker's largest asset never appears on a balance sheet",
+        "type": "match",
+        "caption": "pair each human-capital idea with its meaning",
+        "name": "feHumanMatch",
+        "config": {
+          "prompt": "Pair each human-capital idea with its meaning:",
+          "pairs": [
+            { "left": "Mincer return", "right": "each extra year of schooling is associated with roughly 10% higher earnings" },
+            { "left": "compensating differential", "right": "hazardous or disagreeable work pays more, ceteris paribus" },
+            { "left": "human-capital beta", "right": "your earnings move with your employer, industry and city" },
+            { "left": "DB to DC shift", "right": "market and longevity risk moved from firms to households" }
+          ],
+          "why": "Human capital is an asset: it earns a return, carries risk, and is already maximally long your employer."
+        }
+      },
+      {
+        "anchor": "Worked example: a firm financed",
+        "type": "estimate",
+        "caption": "call the WACC",
+        "name": "feWaccEst",
+        "config": {
+          "prompt": "A firm is 60% equity at 9% and 40% debt at 5% pre-tax, with a 25% tax rate. What is its WACC?",
+          "unit": "%",
+          "answer": 6.9,
+          "factor": 1.05,
+          "why": "0.6×9 + 0.4×5×(1−0.25) = 5.4 + 1.5 = 6.9%. That is the hurdle rate every investment must beat.",
+          "context": "the tax shield is why the debt term is after-tax"
+        }
+      },
+      {
+        "anchor": "Production theory supplies the demand side for capital",
+        "type": "branch",
+        "caption": "buy the machine? trace the hurdle",
+        "name": "feInvestBranch",
+        "config": {
+          "root": "A machine costs £100,000 and generates £8,000 a year in perpetuity — an 8% gross return. The firm's WACC is 6.9%. Trace the investment decision.",
+          "nodes": {
+            "start": {
+              "text": "Should the firm buy the machine?",
+              "choices": [
+                { "label": "Yes — the 8% return clears the 6.9% hurdle", "next": "buy", "feedback": "Yes — it adds 1.1 points of value over the cost of capital." },
+                { "label": "No — the payback is over twelve years", "next": "payback", "feedback": "Payback ignores the cost of capital and the cash flows after the payback date." },
+                { "label": "Only if the firm has spare cash", "next": "cash", "feedback": "Financing frictions matter in practice, but the project itself clears the hurdle." }
+              ]
+            },
+            "buy": {
+              "text": "Buy it: 8% > 6.9%. A 6% machine would fail the same test, even if its payback looked similar."
+            },
+            "payback": {
+              "text": "Payback is an accounting rule, not a value test; the project clears the risk-adjusted cost of capital.",
+              "choices": [
+                { "label": "So buy it?", "next": "buy", "feedback": "Yes — the hurdle is the test." }
+              ]
+            },
+            "cash": {
+              "text": "Cash-poor firms may invest less even at identical opportunities — a financing friction, not a verdict on the project.",
+              "choices": [
+                { "label": "What does the project say?", "next": "buy", "feedback": "It clears the hurdle." }
+              ]
+            }
+          },
+          "why": "Investment stops where the marginal product of capital falls to its cost; irreversibility and financing frictions are the real-world refinements."
+        }
+      },
+      {
+        "anchor": "The unit's MR = MC rule survives intact in finance",
+        "type": "order",
+        "caption": "economic profit, in order",
+        "name": "feProfitOrder",
+        "config": {
+          "prompt": "Put the economic-profit calculation in order:",
+          "items": [
+            "Start with accounting profit — say £12 million on £100 million of capital",
+            "Subtract the opportunity cost of the capital employed: 8% × £100m = £8 million",
+            "Economic profit is £12m − £8m = £4 million",
+            "A sister division earning £12m on £200m of capital destroys £4 million",
+            "Growth can therefore be value-destroying even at full accounting profitability"
+          ],
+          "why": "Economic profit charges for the capital employed; that is why the WACC, not the quoted loan rate, is the relevant marginal cost."
+        }
+      },
+      {
+        "anchor": "is the price of size",
+        "type": "spot-error",
+        "caption": "find the liquidity slip",
+        "name": "feLiquiditySpot",
+        "config": {
+          "prompt": "Find the line where the market-microstructure reasoning goes wrong:",
+          "lines": [
+            "Exchanges run limit order books where market makers quote bids and asks.",
+            "The bid-ask spread is the price of immediacy, and depth is the price of size.",
+            "Because liquidity is supplied by competitive firms, it is always available when needed.",
+            "On 6 May 2010 the US equity market fell about 9% in minutes as liquidity withdrew.",
+            "Market design — circuit breakers, tick sizes, latency rules — is a live research agenda."
+          ],
+          "errorLine": 2,
+          "correction": "Liquidity can vanish exactly when it is needed — that is the flash crash's lesson.",
+          "why": "The market is an engineered institution whose rules decide whether it aggregates information or amplifies panic."
+        }
+      },
+      {
+        "anchor": "CAPM's prediction — only market",
+        "type": "judge",
+        "caption": "true or false — factors and efficiency",
+        "name": "feFactorJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "CAPM predicted that only market beta earns a premium, but small and value stocks earned too much.",
+              "truth": true,
+              "why": "The anomaly forced the Fama–French size and value factors into the model."
+            },
+            {
+              "s": "Most of the hundreds of factors in the factor zoo survived out-of-sample replication.",
+              "truth": false,
+              "why": "Many failed out of sample — asset pricing had its own replication crisis."
+            },
+            {
+              "s": "The efficient-markets hypothesis can be tested only jointly with a model of expected returns.",
+              "truth": true,
+              "why": "That joint hypothesis problem is why Fama and Shiller could share a Nobel while disagreeing."
+            },
+            {
+              "s": "Efficient markets means prices are always right.",
+              "truth": false,
+              "why": "Informational efficiency is about speed and competition, not correctness; prices can sit far from fundamentals for years."
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

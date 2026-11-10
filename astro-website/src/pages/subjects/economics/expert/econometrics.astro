@@ -10,6 +10,223 @@ const ecomCfg = {
     { math: '4 · Robustness as culture', note: 'Check every assumption, try every control set, publish what survives. The credibility revolution (Angrist & Imbens, Nobel 2021) is econometrics\' answer to its own replication crisis.' },
   ],
 };
+
+const ecBaselineCloze = {
+  "text": "Econometrics is statistics under economics' constraints: observational data, no chosen treatment, causal questions. Its baseline is %%0%%, whose key assumption is %%1%%. The credibility revolution's slogan is that %%2%% beats statistics.",
+  "answers": [
+    [
+      "OLS",
+      "ordinary least squares"
+    ],
+    [
+      "exogeneity"
+    ],
+    [
+      "design"
+    ]
+  ],
+  "hint": "The baseline regression assumes the regressor is uncorrelated with the error; a clean natural experiment beats a clever model."
+};
+
+const ecDesignMatch = {
+  "prompt": "Pair each identification strategy with what it assumes:",
+  "pairs": [
+    {
+      "left": "panel fixed effects",
+      "right": "time-invariant differences between units are absorbed"
+    },
+    {
+      "left": "difference-in-differences",
+      "right": "treated and control groups would have moved in parallel"
+    },
+    {
+      "left": "high-frequency event window",
+      "right": "nothing else plausibly moved in the half-hour around the announcement"
+    },
+    {
+      "left": "instrumental variable",
+      "right": "the instrument shifts treatment but affects the outcome only through it"
+    }
+  ],
+  "why": "Each repair buys identification by assuming something specific — the craft is making those assumptions visible and checkable."
+};
+
+const ecDidOrder = {
+  "prompt": "Compute the difference-in-differences estimate — put the steps in order:",
+  "items": [
+    "The treated region's employment rises from 100 to 104, a change of +4",
+    "The control region falls from 100 to 99, a change of −1",
+    "The control's decline is the counterfactual the treated region would have followed",
+    "DiD = (+4) − (−1) = +5",
+    "The estimate stands only if the two groups were on parallel trends before the policy"
+  ],
+  "why": "Two numbers in, one counterfactual out; every refinement is an argument that this comparison is the right one."
+};
+
+const ecSignificanceCompare = {
+  "prompt": "Two things an estimate can be — drag the divider:",
+  "before": {
+    "label": "statistical significance",
+    "text": "the coefficient is far from zero relative to its standard error"
+  },
+  "after": {
+    "label": "economic significance",
+    "text": "the coefficient is large in the units that matter for policy"
+  },
+  "why": "With millions of observations, a trivially small coefficient can be significant weekly; read the units first, the asterisk second."
+};
+
+const ecMultiplierBranch = {
+  "root": "You must estimate the fiscal multiplier. Governments do not randomise budgets. Trace the design choice.",
+  "nodes": {
+    "start": {
+      "text": "Which identification strategy do you reach for?",
+      "choices": [
+        {
+          "label": "Narrative identification — isolate tax changes made for philosophical reasons",
+          "next": "narrative",
+          "feedback": "Yes — Romer and Romer read speeches and legislative records to find changes not driven by the cycle."
+        },
+        {
+          "label": "A naive before-and-after comparison of GDP around the stimulus",
+          "next": "naive",
+          "feedback": "Everything else was moving too — recessions end, oil prices move."
+        },
+        {
+          "label": "Regress GDP on spending with as many controls as possible",
+          "next": "controls",
+          "feedback": "Controls cannot block confounding paths they do not measure; design comes first."
+        }
+      ]
+    },
+    "narrative": {
+      "text": "Narrative identification isolates changes motivated by long-run philosophy rather than the current economy. It finds output falls roughly 2–3% per 1% of GDP in tax increases."
+    },
+    "naive": {
+      "text": "Before-and-after mixes the policy with the business cycle; the counterfactual is missing.",
+      "choices": [
+        {
+          "label": "What is better?",
+          "next": "narrative",
+          "feedback": "A comparison that isolates the policy."
+        }
+      ]
+    },
+    "controls": {
+      "text": "No quantity of regressors substitutes for a comparison that holds the counterfactual fixed.",
+      "choices": [
+        {
+          "label": "So what does?",
+          "next": "narrative",
+          "feedback": "Design, not controls."
+        }
+      ]
+    }
+  },
+  "why": "Multiplier estimates vary with the monetary response, openness and slack; that variation is the finding, not noise."
+};
+
+const ecTaylorPlace = {
+  "prompt": "Using the Taylor rule, with inflation at 3%, a 2% target and output on trend, what policy rate is prescribed? Place it.",
+  "labels": [
+    "0%",
+    "2%",
+    "4%",
+    "6%",
+    "8%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 8
+  },
+  "answer": 5.5,
+  "tolerance": 0.2,
+  "why": "2 + 3 + 0.5×(3−2) + 0.5×0 = 5.5%. The rule is a benchmark, and deviations from it are what markets trade on."
+};
+
+const ecSpuriousSpot = {
+  "prompt": "Find the line where the time-series reasoning goes wrong:",
+  "lines": [
+    "Two random walks can regress on each other with a high R² and large t-statistics.",
+    "That proves the two series are genuinely related.",
+    "Granger and Newbold called this spurious regression: the correlation is coincidence.",
+    "With unit roots, difference the series or test for cointegration.",
+    "Short and long interest rates are the textbook cointegrated pair."
+  ],
+  "errorLine": 1,
+  "correction": "High R² between trending series is often coincidence; difference or test for cointegration before trusting it.",
+  "why": "Trending series need differencing or cointegration, not trust."
+};
+
+const ecSolowEst = {
+  "prompt": "Output grows 3.2%, labour hours 1.4% and capital 3.0%, with capital's share α = 0.3. What is the Solow residual, in percentage points?",
+  "unit": "pp",
+  "answer": 1.3,
+  "factor": 1.1,
+  "why": "3.2 − (0.7×1.4) − (0.3×3.0) = 3.2 − 1.0 − 0.9 = 1.3 points of productivity. The residual bundles technology, efficiency, institutions and measurement error.",
+  "context": "a measure of our ignorance"
+};
+
+const ecStudySort = {
+  "prompt": "Which identification strategy matches each study?",
+  "buckets": [
+    "difference-in-differences",
+    "instrumental variable",
+    "regression discontinuity"
+  ],
+  "items": [
+    {
+      "label": "New Jersey versus Pennsylvania fast-food employment after a minimum-wage rise",
+      "bucket": 0
+    },
+    {
+      "label": "a jobs programme compared with an untreated neighbouring region",
+      "bucket": 0
+    },
+    {
+      "label": "the Vietnam draft lottery as a source of random service",
+      "bucket": 1
+    },
+    {
+      "label": "lottery number as an instrument for military service",
+      "bucket": 1
+    },
+    {
+      "label": "a scholarship awarded only above a test-score cutoff",
+      "bucket": 2
+    },
+    {
+      "label": "a class-size cap that bites just below a cutoff",
+      "bucket": 2
+    }
+  ],
+  "why": "Each design exploits a different source of plausibly exogenous variation: a comparison group, an instrument, or a threshold."
+};
+
+const ecPhillipsJudge = {
+  "statements": [
+    {
+      "s": "The Phillips curve is a stable menu: lower unemployment can be bought permanently with higher inflation.",
+      "truth": false,
+      "why": "The 1970s produced high inflation and high unemployment together, exactly as Friedman and Phelps predicted."
+    },
+    {
+      "s": "Friedman and Phelps argued that expectations adjust, so the trade-off cannot be permanent.",
+      "truth": true,
+      "why": "Squeeze unemployment below its natural rate and inflation ratchets rather than employment settling higher."
+    },
+    {
+      "s": "The sacrifice ratio measures output lost per point of disinflation.",
+      "truth": true,
+      "why": "It is the estimated cost of bringing inflation down."
+    },
+    {
+      "s": "The Volcker disinflation cut inflation from about 13.5% to 3% at the cost of peak unemployment near 10.8%.",
+      "truth": true,
+      "why": "The 1982 recession is the reference case for credibility's price."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/economics/expert/econometrics">
   <h2>Where you are, and what you will learn</h2>
@@ -46,8 +263,9 @@ const ecomCfg = {
     won the 2021 Nobel: design beats statistics, and a clean natural experiment with
     simple methods beats a clever model on messy data.
   </p>
+  <Widget no="1" caption="fill the blanks — the econometrician's baseline" widget="cloze" config={ecBaselineCloze} />
 
-  <Widget no="1" caption="the identification problem and the toolkit that tames it" widget="equationStep" config={ecomCfg} />
+  <Widget no="2" caption="the identification problem and the toolkit that tames it" widget="equationStep" config={ecomCfg} />
   <p>
     <strong>What to notice:</strong> the panel walks the field's core argument in four steps.
     Step 1 states the identification problem — every estimate is a mix of the cause you want and
@@ -80,6 +298,7 @@ const ecomCfg = {
     prices in a half-hour window around a central-bank announcement, where nothing else
     plausibly moved — a strategy that trades scope for cleanliness.
   </p>
+  <Widget no="3" caption="pair each design with its assumption" widget="match" config={ecDesignMatch} />
   <p>
     Difference-in-differences in miniature: a jobs-programme region's employment moves
     from 100 to 104, while an untreated comparison region moves from 100 to 99. The
@@ -90,12 +309,14 @@ const ecomCfg = {
     method on a napkin, and every refinement (matching, synthetic controls, event-study
     plots) is an argument that this comparison is the right one.
   </p>
+  <Widget no="4" caption="compute the difference-in-differences estimate" widget="order" config={ecDidOrder} />
   <p>
     <em>Common misconception:</em> "statistical significance means the effect is big."
     Significance combines size with sample variance; with administrative data covering
     millions, a trivially small coefficient is "significant" weekly. Applied
     econometrics reads the coefficient and its units first, the asterisk second.
   </p>
+  <Widget no="5" caption="statistical versus economic significance" widget="compare" config={ecSignificanceCompare} />
   <p><strong>So far:</strong> the evaluation problem has a toolkit — panel data with fixed
   effects, difference-in-differences, high-frequency event windows — and every tool buys
   identification only by assuming something checkable. Now apply the toolkit to the field's
@@ -117,6 +338,7 @@ const ecomCfg = {
     slack-economy model predicts. Multiplier estimates vary with the monetary response,
     openness and slack; that variation is the finding, not noise.
   </p>
+  <Widget no="6" caption="design a multiplier estimate" widget="branch" config={ecMultiplierBranch} />
 
   <h2>Monetary policy: rules, VARs and long lags</h2>
   <p>
@@ -134,6 +356,7 @@ const ecomCfg = {
     itself an estimated object, and the reason policy evaluation needs a model rather
     than a glance.
   </p>
+  <Widget no="7" caption="mark the Taylor-rule rate" widget="place" config={ecTaylorPlace} />
   <p>
     <em>Common misconception:</em> "two trending series that regress well are related."
     Regress one random walk on another and you routinely get high R² and large
@@ -142,6 +365,7 @@ const ecomCfg = {
     (Engle–Granger, 1987) where two trending series genuinely move together, like short
     and long interest rates.
   </p>
+  <Widget no="8" caption="find the spurious-regression slip" widget="spot-error" config={ecSpuriousSpot} />
 
   <h2>Supply-side policy: slow effects, harder identification</h2>
   <p>
@@ -177,6 +401,7 @@ const ecomCfg = {
     different statistical offices, so residual comparisons between rich and poor
     countries compare measurement regimes as much as economies.
   </p>
+  <Widget no="9" caption="call the Solow residual" widget="estimate" config={ecSolowEst} />
   <p><strong>So far:</strong> growth accounting decomposes output growth and leaves the Solow
   residual — a measure of our ignorance — as an honest remainder. The same honesty is needed for
   the labour-market regularities, where a rule of thumb and a famous natural experiment carry
@@ -202,6 +427,7 @@ const ecomCfg = {
     shocks to hit all observations in a state at once) — because mis-measured standard
     errors are the most common technical failure in applied work.
   </p>
+  <Widget no="10" caption="which design matches each study?" widget="sort-buckets" config={ecStudySort} />
 
   <h2>Inflation: the Phillips curve as cautionary tale</h2>
   <p>
@@ -221,6 +447,7 @@ const ecomCfg = {
     condition on expectations — anchored or de-anchored — before saying anything
     quantitative about the curve's slope.
   </p>
+  <Widget no="11" caption="true or false — the Phillips curve" widget="judge" config={ecPhillipsJudge} />
   <p>
     <em>Common misconception:</em> "adding more control variables fixes causality."
     Controls help only if they block genuine confounding paths; controlling for a
