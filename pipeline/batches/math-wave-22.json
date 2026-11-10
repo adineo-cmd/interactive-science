@@ -1,0 +1,193 @@
+[
+  {
+    "slug": "subjects/math/expert/topology",
+    "activities": [
+      {
+        "anchor": "Topology studies properties that survive",
+        "type": "sort-buckets",
+        "caption": "what survives the stretching?",
+        "name": "toInvSort",
+        "config": {
+          "prompt": "Which quantities survive every stretching and bending (no tearing)?",
+          "buckets": ["topological invariant", "not an invariant"],
+          "items": [
+            { "label": "number of holes", "bucket": 0 },
+            { "label": "distance between two points", "bucket": 1 },
+            { "label": "connectedness", "bucket": 0 },
+            { "label": "angle between two curves", "bucket": 1 },
+            { "label": "compactness", "bucket": 0 },
+            { "label": "area", "bucket": 1 }
+          ],
+          "why": "Topology keeps what deformation cannot change; distance, angle and area are all destroyed by stretching."
+        }
+      },
+      {
+        "anchor": "School algebra (E2.1) teaches operations",
+        "type": "branch",
+        "caption": "what does a topology need?",
+        "name": "toSpaceBranch",
+        "config": {
+          "root": "You want to define a topological space. What is the minimal specification?",
+          "nodes": {
+            "start": {
+              "text": "Which data must be declared?",
+              "choices": [
+                { "label": "A set plus a family of open sets satisfying the axioms", "next": "right", "feedback": "Yes — nearness is specified by open sets, with no distance required." },
+                { "label": "A set plus a distance function", "next": "metric", "feedback": "That defines a metric space, a special case; topology is more general." },
+                { "label": "A set plus a list of its points", "next": "points", "feedback": "A bare set has no nearness structure at all." }
+              ]
+            },
+            "right": {
+              "text": "A set with a declared family of open sets — the economy is the point, because surfaces, function spaces and solution spaces all become instances of one structure."
+            },
+            "metric": {
+              "text": "Metric spaces are examples, but topology deliberately drops the distance.",
+              "choices": [
+                { "label": "What replaces distance?", "next": "right", "feedback": "The open sets themselves encode nearness." }
+              ]
+            },
+            "points": {
+              "text": "Without open sets there is no notion of nearness or continuity.",
+              "choices": [
+                { "label": "So what must be added?", "next": "right", "feedback": "A declared family of open sets." }
+              ]
+            }
+          },
+          "why": "A topological space is a set plus open sets; metric spaces are the special case where open balls come from a distance."
+        }
+      },
+      {
+        "anchor": "Algebraic manipulation (E2.2) rearranges expressions",
+        "type": "match",
+        "caption": "pair each object with its homotopy type",
+        "name": "toHomoMatch",
+        "config": {
+          "prompt": "Pair each object with its homotopy description:",
+          "pairs": [
+            { "left": "letter C", "right": "contracts to a line segment" },
+            { "left": "letter O", "right": "a hole that cannot be torn away" },
+            { "left": "mug", "right": "same homotopy type as a doughnut" },
+            { "left": "filled disk", "right": "contracts to a point" }
+          ],
+          "why": "Homotopy equates spaces that deform into one another; the hole in O is the invariant that blocks it."
+        }
+      },
+      {
+        "anchor": "Which equations can you solve (E2.5)?",
+        "type": "spot-error",
+        "caption": "find the broken contradiction",
+        "name": "toBrouwerSpot",
+        "config": {
+          "prompt": "Find the line where the Brouwer contradiction is misstated:",
+          "lines": [
+            "Suppose a continuous map of the disk to itself has no fixed point.",
+            "Then every point x moves, so draw the ray from f(x) through x to the boundary.",
+            "This defines a continuous retraction of the disk onto its boundary circle.",
+            "But the boundary circle admits no such retraction, by a winding-number argument.",
+            "Therefore some point must move — the fixed point exists."
+          ],
+          "errorLine": 4,
+          "correction": "The contradiction forces the assumption to fail: some point does not move — that is the fixed point.",
+          "why": "Existence is forced by the impossibility of a disk retraction; no coordinates are constructed."
+        }
+      },
+      {
+        "anchor": "The ε-inequalities of analysis (E2.6)",
+        "type": "cloze",
+        "caption": "fill the blanks — nearness without numbers",
+        "name": "toOpenCloze",
+        "config": {
+          "text": "An open set gives every point %%0%% around it, and a function is continuous when the preimage of every open set is %%1%%.",
+          "answers": [
+            ["breathing room", "room"],
+            ["open"]
+          ],
+          "hint": "The open-set definition drops ε and δ entirely."
+        }
+      },
+      {
+        "anchor": "Sequences (E2.7) survive the loss of distance",
+        "type": "compare",
+        "caption": "sequences versus nets — drag the divider",
+        "name": "toSeqCompare",
+        "config": {
+          "prompt": "Two ways convergence survives without a ruler — drag the divider:",
+          "before": {
+            "label": "sequences",
+            "text": "in a metric space, distances shrink to zero — enough to detect the topology"
+          },
+          "after": {
+            "label": "nets and filters",
+            "text": "in a general topological space, sequences can be too poor; convergence is indexed by open sets"
+          },
+          "why": "Compactness restores power: compact metric spaces are sequentially compact, and open covers turn local control into global truth."
+        }
+      },
+      {
+        "anchor": "Practical graphs (E2.9)",
+        "type": "estimate",
+        "caption": "count the odd landmasses",
+        "name": "toKonigsbergEst",
+        "config": {
+          "prompt": "In the Königsberg bridge problem, how many landmasses had an odd number of bridge-ends?",
+          "unit": "landmasses",
+          "answer": 4,
+          "factor": 1.05,
+          "why": "All four had odd degree, so an Euler walk crossing every bridge once is impossible — an even degree at every vertex is required for a closed walk.",
+          "context": "Euler solved it in 1736 without distances, angles or a map"
+        }
+      },
+      {
+        "anchor": "The graph of a function (E2.10)",
+        "type": "compare",
+        "caption": "continuous bijection versus homeomorphism — drag the divider",
+        "name": "toHomeoCompare",
+        "config": {
+          "prompt": "Same shape or not? — drag the divider:",
+          "before": {
+            "label": "continuous bijection",
+            "text": "the half-open interval wraps once round the circle: continuous forwards, but the inverse tears at the join"
+          },
+          "after": {
+            "label": "homeomorphism",
+            "text": "a bijection whose inverse is also continuous — the extra clause rules out the tear"
+          },
+          "why": "The wrapped-interval map is the standard counterexample; homeomorphism's extra clause is doing real work."
+        }
+      },
+      {
+        "anchor": "Curve sketching (E2.11) assumes something so obvious",
+        "type": "order",
+        "caption": "compute a winding number",
+        "name": "toWindingOrder",
+        "config": {
+          "prompt": "Compute a winding number — put the steps in order:",
+          "items": [
+            "Walk once around a closed loop",
+            "Total the turning angle along the way",
+            "The total comes to 360° times an integer",
+            "For a simple loop that integer is 1",
+            "The integer cannot change under deformation"
+          ],
+          "why": "The winding number is the computable invariant behind fixed-point theorems, residues and ray-casting inside-a-polygon tests."
+        }
+      },
+      {
+        "anchor": "Differentiation (E2.12) is extra structure",
+        "type": "match",
+        "caption": "pair each layer with what it adds",
+        "name": "toLayerMatch",
+        "config": {
+          "prompt": "Pair each layer with what it adds:",
+          "pairs": [
+            { "left": "topology", "right": "open sets: which points are near which" },
+            { "left": "differentiable structure", "right": "local coordinate charts where derivatives make sense" },
+            { "left": "metric geometry", "right": "distances and curvature painted on the manifold" },
+            { "left": "exotic sphere", "right": "same topology, incompatible smooth structure in 7 dimensions" }
+          ],
+          "why": "The layers are independent: exotic spheres show that topology does not determine smooth structure."
+        }
+      }
+    ]
+  }
+]

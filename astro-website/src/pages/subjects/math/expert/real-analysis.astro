@@ -13,6 +13,171 @@ const eSeqCfg = {
   crossings: false,
   height: 340,
 };
+
+const raFieldSort = {
+  "prompt": "Which statements hold only in the reals, not in the rationals?",
+  "buckets": [
+    "reals only",
+    "both"
+  ],
+  "items": [
+    {
+      "label": "every Cauchy sequence converges",
+      "bucket": 0
+    },
+    {
+      "label": "x² = 2 has a solution",
+      "bucket": 0
+    },
+    {
+      "label": "addition is associative",
+      "bucket": 1
+    },
+    {
+      "label": "every non-empty set bounded above has a least upper bound",
+      "bucket": 0
+    },
+    {
+      "label": "a sum of two fractions is a fraction",
+      "bucket": 1
+    }
+  ],
+  "why": "Completeness is the one axiom that separates the reals from the rationals; the field and order axioms hold in both."
+};
+
+const raEpsCloze = {
+  "text": "For aₙ = (1 + 1/n)ⁿ converging to e, tolerance ε = 0.001 needs about N = %%0%%, while ε = 0.000001 needs about N = %%1%% — a finite certificate for every demand.",
+  "answers": [
+    [
+      "1400",
+      "1,400"
+    ],
+    [
+      "1400000",
+      "1,400,000"
+    ]
+  ],
+  "hint": "The lesson quotes N ≈ 1,400 and N ≈ 1,400,000."
+};
+
+const raSeriesSpot = {
+  "prompt": "Find the line where infinite algebra outruns its licence:",
+  "lines": [
+    "The geometric series ½ + ¼ + ⅛ + … has partial sums ½, ¾, ⅞, …",
+    "These partial sums converge to 1, so the series sums to 1.",
+    "The alternating harmonic series 1 − ½ + ⅓ − ¼ + … converges to ln 2.",
+    "Rearranging its terms cannot change the sum because addition is commutative.",
+    "Riemann's rearrangement theorem says a conditionally convergent series can hit any target."
+  ],
+  "errorLine": 3,
+  "correction": "Commutativity licenses finite sums only; conditional convergence does not survive rearrangement.",
+  "why": "Absolute convergence is the licence, and the alternating harmonic series is only conditional."
+};
+
+const raRootPlace = {
+  "prompt": "The Intermediate Value Theorem guarantees a root of x³ − x − 1 between 1 and 2. Place it on the axis.",
+  "labels": [
+    "1.0",
+    "1.25",
+    "1.5",
+    "1.75",
+    "2.0"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 2
+  },
+  "answer": 1.3247,
+  "tolerance": 0.02,
+  "why": "f(1) = −1 and f(2) = 5, so a root lies between; it is the plastic number ≈ 1.3247, no formula required."
+};
+
+const raIneqJudge = {
+  "statements": [
+    {
+      "s": "AM–GM says (a + b)/2 ≥ √(ab) for non-negative a and b.",
+      "truth": true,
+      "why": "The arithmetic mean dominates the geometric mean, with equality exactly when a = b."
+    },
+    {
+      "s": "For a = 2 and b = 8, the arithmetic mean is 5 and the geometric mean is 4.",
+      "truth": true,
+      "why": "(2 + 8)/2 = 5 and √16 = 4."
+    },
+    {
+      "s": "The triangle inequality says |a + b| = |a| + |b| for all real a and b.",
+      "truth": false,
+      "why": "Equality holds only when a and b have the same sign; otherwise the sum is strictly smaller."
+    }
+  ]
+};
+
+const raCauchyCompare = {
+  "prompt": "Two ways to say 'the terms settle down' — drag the divider:",
+  "before": {
+    "label": "convergent",
+    "text": "names the destination: every tail lies within ε of a specific limit L"
+  },
+  "after": {
+    "label": "Cauchy",
+    "text": "names only the huddling: every pair of late terms lies within ε of each other"
+  },
+  "why": "On the reals the two are equivalent because completeness supplies the missing limit; on the rationals a Cauchy sequence can chase √2 forever."
+};
+
+const raFreeFallEst = {
+  "prompt": "Free fall is modelled by s = 4.9t² metres. How far does a body fall in 3 seconds?",
+  "unit": "m",
+  "answer": 44.1,
+  "factor": 1.1,
+  "why": "s = 4.9 × 9 = 44.1 m. The derivative 9.8t gives the velocity; at t = 3 it is 29.4 m/s.",
+  "context": "the model ignores air resistance — the licence expires as speeds rise"
+};
+
+const raTheoremMatch = {
+  "prompt": "Pair each theorem with its promise:",
+  "pairs": [
+    {
+      "left": "Intermediate Value Theorem",
+      "right": "a sign change forces a root"
+    },
+    {
+      "left": "Extreme Value Theorem",
+      "right": "a continuous function on a closed interval attains its max and min"
+    },
+    {
+      "left": "Mean Value Theorem",
+      "right": "instantaneous rate equals average rate somewhere"
+    }
+  ],
+  "why": "Each is an existence theorem: the hypotheses buy a guaranteed point, without constructing it."
+};
+
+const raCurveSpot = {
+  "prompt": "Find the line where the curve-sketching claim goes too far:",
+  "lines": [
+    "For y = x³ − 3x, the derivative is 3x² − 3.",
+    "Setting it to zero gives x = ±1.",
+    "The second derivative is 6x, negative at x = −1, so (−1, 2) is a local maximum.",
+    "Positive at x = 1, so (1, −2) is a local minimum.",
+    "Therefore every stationary point is either a maximum or a minimum."
+  ],
+  "errorLine": 4,
+  "correction": "y = x³ at the origin has zero slope but is neither a maximum nor a minimum — the second-derivative test can also return zero.",
+  "why": "A stationary point is a candidate, not a verdict; the second derivative must be non-zero, or a sign chart used."
+};
+
+const raDerivativeOrder = {
+  "prompt": "Derive the derivative of x² from first principles — put the steps in order:",
+  "items": [
+    "Start with the difference quotient ((x + h)² − x²)/h",
+    "Expand: (x² + 2xh + h² − x²)/h",
+    "Cancel: (2xh + h²)/h = 2x + h, legal while h ≠ 0",
+    "Take the limit as h → 0",
+    "The derivative is 2x"
+  ],
+  "why": "The limit is the device that lets the algebra finish before division by h becomes forbidden."
+};
 ---
 <TopicPage slug="subjects/math/expert/real-analysis">
   <h2>Where you are, and what you will learn</h2>
@@ -45,6 +210,7 @@ const eSeqCfg = {
     becomes a theorem with a proof, and the places where the rules <em>fail</em> become visible
     in advance instead of being discovered in an exam.
   </p>
+  <Widget no="11" caption="reals only, or both?" widget="sort-buckets" config={raFieldSort} />
 
   <Widget no="1" caption="a sequence converging to e — in analysis, the limit is defined so that 'getting arbitrarily close' means exactly something" widget="plotter" config={eSeqCfg} />
   <p>
@@ -63,6 +229,7 @@ const eSeqCfg = {
     ε = 0.000001 and N ≈ 1,400,000 does. No hand-waving, no "approaches" — an infinite promise
     with a finite certificate for each step.
   </p>
+  <Widget no="10" caption="fill the blanks — the ε–N certificate" widget="cloze" config={raEpsCloze} />
 
   <h2>From algebra to structure: what the symbols promise</h2>
   <p>
@@ -96,6 +263,7 @@ const eSeqCfg = {
     shocking results of the nineteenth century. The licence has conditions — absolute
     convergence — and analysis is where you learn to check them before trusting the algebra.
   </p>
+  <Widget no="9" caption="find the unlicensed rearrangement" widget="spot-error" config={raSeriesSpot} />
   <p>
     <em>Common misconception:</em> "a limit is a number the sequence reaches eventually." No
     sequence converging to e ever reaches e, and 0.999… does not "get" to 1 — it <em>is</em> 1,
@@ -117,6 +285,7 @@ const eSeqCfg = {
     with group theory). Three different questions, three different tools, and mistaking one for
     another is where amateur analysis goes wrong.
   </p>
+  <Widget no="8" caption="place the guaranteed root" widget="place" config={raRootPlace} />
   <p>
     <strong>So far:</strong> equations come with three separate guarantees — existence (the
     Intermediate Value Theorem), uniqueness (strict monotonicity) and solvability (which
@@ -137,6 +306,7 @@ const eSeqCfg = {
     The arithmetic–geometric mean inequality — (a + b)/2 is at least √(ab), so for 2 and 8 the
     mean 5 exceeds √16 = 4 — is a two-line proof that powers hard theorems far beyond school.
   </p>
+  <Widget no="7" caption="true or false — the daily bread of analysis" widget="judge" config={raIneqJudge} />
 
   <h2>Sequences: the gateway object</h2>
   <p>
@@ -153,6 +323,7 @@ const eSeqCfg = {
     of correct digits each step — 1, 1.5, 1.41667, 1.41422 — a sequence converging so fast it
     powers every pocket calculator.
   </p>
+  <Widget no="6" caption="convergent versus Cauchy — drag the divider" widget="compare" config={raCauchyCompare} />
 
   <h2>Graphs in practice: models and their error bars</h2>
   <p>
@@ -167,6 +338,7 @@ const eSeqCfg = {
     professional reflex: every practical graph is an approximation with error bars, and the
     question "how wrong can this be?" has an ε-shaped answer.
   </p>
+  <Widget no="5" caption="call the fall distance" widget="estimate" config={raFreeFallEst} />
 
   <h2>Graphs of functions: continuity made visible</h2>
   <p>
@@ -181,6 +353,7 @@ const eSeqCfg = {
     theorem is why "closed and bounded" matters, why prices have limits, and why every
     optimisation you will ever run begins by checking the hypotheses.
   </p>
+  <Widget no="4" caption="pair each theorem with its promise" widget="match" config={raTheoremMatch} />
 
   <h2>Sketching curves: local shape, global behaviour</h2>
   <p>
@@ -195,6 +368,7 @@ const eSeqCfg = {
     an unbounded slope nearby — x²sin(1/x²) near 0. The graph you draw is a summary, and the
     ε-language is the fine print.
   </p>
+  <Widget no="3" caption="find the overclaimed stationary point" widget="spot-error" config={raCurveSpot} />
   <p>
     <em>Common misconception:</em> "a continuous function must be smooth, and a function with a
     derivative everywhere must be nearly straight somewhere." The Weierstrass function — a
@@ -215,6 +389,7 @@ const eSeqCfg = {
     average speed over a 100 km stretch was 110 km/h, you were doing exactly 110 km/h at some
     instant, however erratically you drove — no tracking camera needed, just a theorem.
   </p>
+  <Widget no="2" caption="rebuild the first-principles proof" widget="order" config={raDerivativeOrder} />
   <p>
     <strong>So far:</strong> the derivative is a limit that finishes the algebra legally, and
     the Mean Value Theorem converts local slopes into global promises. Now the function

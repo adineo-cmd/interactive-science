@@ -229,6 +229,8 @@
 | math/expert/linear-algebra | sort-buckets, match, estimate, cloze, order, spot-error, branch, judge, compare, match | math-18 |
 | math/expert/abstract-algebra | sort-buckets, estimate, cloze, estimate, match, place, estimate, spot-error, match, judge | math-19 |
 | math/expert/complex-analysis | sort-buckets, estimate, order, place, match, branch, estimate, spot-error, cloze, compare | math-20 |
+| math/expert/real-analysis | sort-buckets, cloze, spot-error, place, judge, compare, estimate, match, spot-error, order | math-21 |
+| math/expert/topology | sort-buckets, branch, match, spot-error, cloze, compare, estimate, compare, order, match | math-22 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

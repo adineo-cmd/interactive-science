@@ -11,6 +11,212 @@ const eulerCfg = {
     { math: 'Torus: V − E + F = 0', note: 'A doughnut network cannot be flattened the same way — its Euler characteristic is 0. One number classifies surfaces; that is topology.' },
   ],
 };
+
+const toInvSort = {
+  "prompt": "Which quantities survive every stretching and bending (no tearing)?",
+  "buckets": [
+    "topological invariant",
+    "not an invariant"
+  ],
+  "items": [
+    {
+      "label": "number of holes",
+      "bucket": 0
+    },
+    {
+      "label": "distance between two points",
+      "bucket": 1
+    },
+    {
+      "label": "connectedness",
+      "bucket": 0
+    },
+    {
+      "label": "angle between two curves",
+      "bucket": 1
+    },
+    {
+      "label": "compactness",
+      "bucket": 0
+    },
+    {
+      "label": "area",
+      "bucket": 1
+    }
+  ],
+  "why": "Topology keeps what deformation cannot change; distance, angle and area are all destroyed by stretching."
+};
+
+const toSpaceBranch = {
+  "root": "You want to define a topological space. What is the minimal specification?",
+  "nodes": {
+    "start": {
+      "text": "Which data must be declared?",
+      "choices": [
+        {
+          "label": "A set plus a family of open sets satisfying the axioms",
+          "next": "right",
+          "feedback": "Yes — nearness is specified by open sets, with no distance required."
+        },
+        {
+          "label": "A set plus a distance function",
+          "next": "metric",
+          "feedback": "That defines a metric space, a special case; topology is more general."
+        },
+        {
+          "label": "A set plus a list of its points",
+          "next": "points",
+          "feedback": "A bare set has no nearness structure at all."
+        }
+      ]
+    },
+    "right": {
+      "text": "A set with a declared family of open sets — the economy is the point, because surfaces, function spaces and solution spaces all become instances of one structure."
+    },
+    "metric": {
+      "text": "Metric spaces are examples, but topology deliberately drops the distance.",
+      "choices": [
+        {
+          "label": "What replaces distance?",
+          "next": "right",
+          "feedback": "The open sets themselves encode nearness."
+        }
+      ]
+    },
+    "points": {
+      "text": "Without open sets there is no notion of nearness or continuity.",
+      "choices": [
+        {
+          "label": "So what must be added?",
+          "next": "right",
+          "feedback": "A declared family of open sets."
+        }
+      ]
+    }
+  },
+  "why": "A topological space is a set plus open sets; metric spaces are the special case where open balls come from a distance."
+};
+
+const toHomoMatch = {
+  "prompt": "Pair each object with its homotopy description:",
+  "pairs": [
+    {
+      "left": "letter C",
+      "right": "contracts to a line segment"
+    },
+    {
+      "left": "letter O",
+      "right": "a hole that cannot be torn away"
+    },
+    {
+      "left": "mug",
+      "right": "same homotopy type as a doughnut"
+    },
+    {
+      "left": "filled disk",
+      "right": "contracts to a point"
+    }
+  ],
+  "why": "Homotopy equates spaces that deform into one another; the hole in O is the invariant that blocks it."
+};
+
+const toBrouwerSpot = {
+  "prompt": "Find the line where the Brouwer contradiction is misstated:",
+  "lines": [
+    "Suppose a continuous map of the disk to itself has no fixed point.",
+    "Then every point x moves, so draw the ray from f(x) through x to the boundary.",
+    "This defines a continuous retraction of the disk onto its boundary circle.",
+    "But the boundary circle admits no such retraction, by a winding-number argument.",
+    "Therefore some point must move — the fixed point exists."
+  ],
+  "errorLine": 4,
+  "correction": "The contradiction forces the assumption to fail: some point does not move — that is the fixed point.",
+  "why": "Existence is forced by the impossibility of a disk retraction; no coordinates are constructed."
+};
+
+const toOpenCloze = {
+  "text": "An open set gives every point %%0%% around it, and a function is continuous when the preimage of every open set is %%1%%.",
+  "answers": [
+    [
+      "breathing room",
+      "room"
+    ],
+    [
+      "open"
+    ]
+  ],
+  "hint": "The open-set definition drops ε and δ entirely."
+};
+
+const toSeqCompare = {
+  "prompt": "Two ways convergence survives without a ruler — drag the divider:",
+  "before": {
+    "label": "sequences",
+    "text": "in a metric space, distances shrink to zero — enough to detect the topology"
+  },
+  "after": {
+    "label": "nets and filters",
+    "text": "in a general topological space, sequences can be too poor; convergence is indexed by open sets"
+  },
+  "why": "Compactness restores power: compact metric spaces are sequentially compact, and open covers turn local control into global truth."
+};
+
+const toKonigsbergEst = {
+  "prompt": "In the Königsberg bridge problem, how many landmasses had an odd number of bridge-ends?",
+  "unit": "landmasses",
+  "answer": 4,
+  "factor": 1.05,
+  "why": "All four had odd degree, so an Euler walk crossing every bridge once is impossible — an even degree at every vertex is required for a closed walk.",
+  "context": "Euler solved it in 1736 without distances, angles or a map"
+};
+
+const toHomeoCompare = {
+  "prompt": "Same shape or not? — drag the divider:",
+  "before": {
+    "label": "continuous bijection",
+    "text": "the half-open interval wraps once round the circle: continuous forwards, but the inverse tears at the join"
+  },
+  "after": {
+    "label": "homeomorphism",
+    "text": "a bijection whose inverse is also continuous — the extra clause rules out the tear"
+  },
+  "why": "The wrapped-interval map is the standard counterexample; homeomorphism's extra clause is doing real work."
+};
+
+const toWindingOrder = {
+  "prompt": "Compute a winding number — put the steps in order:",
+  "items": [
+    "Walk once around a closed loop",
+    "Total the turning angle along the way",
+    "The total comes to 360° times an integer",
+    "For a simple loop that integer is 1",
+    "The integer cannot change under deformation"
+  ],
+  "why": "The winding number is the computable invariant behind fixed-point theorems, residues and ray-casting inside-a-polygon tests."
+};
+
+const toLayerMatch = {
+  "prompt": "Pair each layer with what it adds:",
+  "pairs": [
+    {
+      "left": "topology",
+      "right": "open sets: which points are near which"
+    },
+    {
+      "left": "differentiable structure",
+      "right": "local coordinate charts where derivatives make sense"
+    },
+    {
+      "left": "metric geometry",
+      "right": "distances and curvature painted on the manifold"
+    },
+    {
+      "left": "exotic sphere",
+      "right": "same topology, incompatible smooth structure in 7 dimensions"
+    }
+  ],
+  "why": "The layers are independent: exotic spheres show that topology does not determine smooth structure."
+};
 ---
 <TopicPage slug="subjects/math/expert/topology">
   <h2>Where you are, and what you will learn</h2>
@@ -42,6 +248,7 @@ const eulerCfg = {
     The surprise of the subject is how much of mathematics — algebra, the graphs of the school
     syllabus, the shape of data — survives the demolition.
   </p>
+  <Widget no="11" caption="what survives the stretching?" widget="sort-buckets" config={toInvSort} />
 
   <Widget no="1" caption="Euler's formula — an invariant hunt across any polyhedron, ending at the sphere's signature" widget="equationStep" config={eulerCfg} />
   <p>
@@ -67,6 +274,7 @@ const eulerCfg = {
     of one structure, so one set of theorems — about compactness, connectedness, continuity —
     applies to all of them. Algebra gave us "prove once, use everywhere"; topology industrialised it.
   </p>
+  <Widget no="10" caption="what does a topology need?" widget="branch" config={toSpaceBranch} />
   <p>
     <strong>So far:</strong> a topological space is just a set with declared open sets — a
     specification of nearness without a ruler — and the move makes algebra's prove-once
@@ -89,6 +297,7 @@ const eulerCfg = {
     count, a winding number) is the thing that makes the simplified answer <em>equivalent</em>
     rather than merely similar.
   </p>
+  <Widget no="9" caption="pair each object with its homotopy type" widget="match" config={toHomoMatch} />
 
   <h2>Equations on spaces: fixed points</h2>
   <p>
@@ -104,6 +313,7 @@ const eulerCfg = {
     shape alone. This is the topological inversion of the school equation: from "find the
     root" to "prove a root must exist no matter what".
   </p>
+  <Widget no="8" caption="find the broken contradiction" widget="spot-error" config={toBrouwerSpot} />
   <p>
     <strong>So far:</strong> fixed point theorems force solutions from shape alone, with no
     construction attached — the topological inversion of the school equation. But the
@@ -124,6 +334,7 @@ const eulerCfg = {
     exists a δ" into "there exists a single δ that works everywhere". Uniform convergence,
     that analysis deep end, is topology deciding when local control can be made global.
   </p>
+  <Widget no="7" caption="fill the blanks — nearness without numbers" widget="cloze" config={toOpenCloze} />
 
   <h2>Sequences and limits on strange spaces</h2>
   <p>
@@ -140,6 +351,7 @@ const eulerCfg = {
     theorems about existence — in analysis, economics (equilibria), geometry — are
     compactness wearing different clothes.
   </p>
+  <Widget no="6" caption="sequences versus nets — drag the divider" widget="compare" config={toSeqCompare} />
 
   <h2>Graphs in practice: networks are topology</h2>
   <p>
@@ -155,6 +367,7 @@ const eulerCfg = {
     "six degrees of separation" structure of social networks: connectivity is invariant under
     stretching, and topology is the mathematics of connectivity.
   </p>
+  <Widget no="5" caption="count the odd landmasses" widget="estimate" config={toKonigsbergEst} />
 
   <h2>Graphs of functions: continuity, then homeomorphism</h2>
   <p>
@@ -171,6 +384,7 @@ const eulerCfg = {
     deformation. When an analyst says a solution space "is a sphere", they have computed an
     invariant, not drawn a picture.
   </p>
+  <Widget no="4" caption="continuous bijection versus homeomorphism — drag the divider" widget="compare" config={toHomeoCompare} />
   <p>
     <em>Common misconception:</em> "continuous means the pen never leaves the paper, so
     topology is just doodling rules." The pen-picture fails in higher dimensions and on
@@ -204,6 +418,7 @@ const eulerCfg = {
     crossings; odd means inside). Sketching taught you what curves look like; topology
     taught you what curves <em>do</em> to the plane.
   </p>
+  <Widget no="3" caption="compute a winding number" widget="order" config={toWindingOrder} />
 
   <h2>Differentiation and topology: what each layer adds</h2>
   <p>
@@ -219,6 +434,7 @@ const eulerCfg = {
     of spacetime, and topology constrains what geometry is even possible — a spacetime with
     a different global shape is a different universe regardless of its local curvature.
   </p>
+  <Widget no="2" caption="pair each layer with what it adds" widget="match" config={toLayerMatch} />
   <p>
     <strong>So far:</strong> topology layers cleanly — open sets first, calculus painted on
     top — and exotic spheres show the layers are genuinely independent. One move remains:
