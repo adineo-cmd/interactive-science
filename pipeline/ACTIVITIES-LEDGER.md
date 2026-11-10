@@ -272,6 +272,30 @@
 | environmental-science/foundational/carbon-cycle-climate | order, judge, place, match, estimate, cloze, spot-error, sort-buckets | next-2 |
 | environmental-science/foundational/ecosystems-energy | sort-buckets, estimate, predict, match, spot-error, cloze, order, compare | next-2 |
 | environmental-science/intermediate/air-quality-and-aerosols | sort-buckets, estimate, predict, branch, match, cloze, spot-error, compare | next-2 |
+| environmental-science/intermediate/biodiversity-and-conservation | match, order, spot-error, judge, trace, branch, compare, estimate | next-3 |
+| environmental-science/intermediate/energy-systems-and-the-grid | place, order, spot-error, branch, predict, estimate, match, judge | next-3 |
+| environmental-science/intermediate/waste-and-the-circular-economy | order, match, sort-buckets, predict, place, branch, estimate, judge | next-3 |
+| environmental-science/intermediate/water-resources-and-pollution | order, predict, sort-buckets, match, branch, spot-error, judge, compare | next-3 |
+| fashion-design/foundational/fashion-design-research | predict, sort-buckets, compare, judge, place, order, match, order | next-3 |
+| film/advanced/documentary-form | spot-error, match, order, judge, match, cloze, estimate, branch | next-3 |
+| film/advanced/mise-en-scene-analysis | match, spot-error, predict, sort-buckets, compare, cloze, compare, order | next-3 |
+| film/advanced/screenwriting-craft | spot-error, order, cloze, predict, estimate, match, compare, branch | next-3 |
+| film/expert/film-theory-and-criticism | sort-buckets, match, judge, compare, order, branch, cloze, sort-buckets | next-3 |
+| film/foundational/grammar-of-cinema | match, cloze, match, sort-buckets, order, sort-buckets, compare, judge | next-3 |
+| film/intermediate/cinematography-and-lighting | sort-buckets, cloze, place, match, sort-buckets, match, predict, branch | next-3 |
+| film/intermediate/editing-the-cut | order, spot-error, match, cloze, compare, predict, estimate, sort-buckets | next-3 |
+| film/intermediate/shot-sizes-and-camera-grammar | order, predict, match, compare, spot-error, branch, sort-buckets, estimate | next-4 |
+| film/intermediate/sound-design-and-score | match, cloze, spot-error, compare, sort-buckets, order, branch, judge | next-4 |
+| finance/advanced/corporate-finance | sort-buckets, plotter, branch, spot-error, match, estimate, cloze, compare | next-4 |
+| finance/advanced/options-and-derivatives | estimate, match, spot-error, cloze, place, branch, match, predict | next-4 |
+| finance/advanced/portfolio-theory-markowitz | trace, match, spot-error, cloze, branch, sort-buckets, predict, estimate | next-4 |
+| finance/expert/asset-pricing-models | predict, spot-error, match, estimate, sort-buckets, compare, place, timeline | next-4 |
+| finance/expert/behavioural-finance | match, judge, estimate, spot-error, branch, compare, predict, timeline | next-4 |
+| finance/foundational/compound-interest | predict, compare, estimate, order, spot-error, sort-buckets, place, match | next-4 |
+| finance/intermediate/budgeting-and-personal-finance | sort-buckets, order, match, branch, estimate, cloze, spot-error, compare | next-4 |
+| finance/intermediate/diversification-and-portfolios | cloze, spot-error, sort-buckets, compare, estimate, place, branch, timeline | next-4 |
+| finance/intermediate/financial-statements | match, order, predict, cloze, sort-buckets, spot-error, order, timeline | next-4 |
+| finance/intermediate/stocks-and-bonds | compare, match, place, estimate, predict, spot-error, branch, judge | next-4 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

@@ -14,6 +14,166 @@ const capmCfg = {
     { label: 'zero-beta asset return', expr: 'rf' },
   ],
 };
+
+const apmGeometricPredict = {
+  "q": "An account loses 50% one year, gains 60% the next. The arithmetic average of the two returns reads +5%. Where is the account?",
+  "choices": [
+    "+5% — averages don't lie",
+    "−20% — 0.5 × 1.6 = 0.8",
+    "0% — the gains and losses cancel"
+  ],
+  "answer": 1,
+  "why": "The geometric reality is −20%: compounding punishes volatility, which is why realised growth always sits below the arithmetic average — the wider the swings, the wider the shortfall."
+};
+
+const apmSharpeSpot = {
+  "prompt": "One line of this performance memo is wrong — click it:",
+  "lines": [
+    "The Sharpe ratio is excess return per unit of total risk.",
+    "A fund returning 10% with 15% volatility in a 3% rate world scores about 0.47.",
+    "Upside volatility is left out of the denominator — only losses count.",
+    "That is why practitioners add drawdown and skew measures alongside it.",
+    "As a common currency for return per unit of risk, it organises everything that follows."
+  ],
+  "errorLine": 2,
+  "correction": "It punishes upside volatility symmetrically with downside — the σ in the denominator is total, not downside-only; the Sortino ratio is the repair that swaps in downside deviation.",
+  "why": "The measure's known weaknesses are symmetry and its collapse when returns are not bell-shaped — which is exactly why the practitioner's toolkit adds drawdown and skew."
+};
+
+const apmLossMatch = {
+  "prompt": "The measures variance hides — pair each with what it captures:",
+  "pairs": [
+    {
+      "left": "Downside deviation",
+      "right": "only returns below target enter the denominator"
+    },
+    {
+      "left": "Sortino ratio",
+      "right": "Sharpe's formula with the downside swap made"
+    },
+    {
+      "left": "Maximum drawdown",
+      "right": "worst peak-to-trough loss — whether a strategy survives its investors' nerves"
+    },
+    {
+      "left": "Value-at-Risk",
+      "right": "the loss threshold not exceeded 95% of the time — blind to the 5% tail it excludes"
+    }
+  ],
+  "why": "Risk is multidimensional, and any single-number summary embeds a claim about which losses matter — portfolio policy written on variance alone fails in the ways (leverage, illiquidity, skew) that produce the famous blow-ups."
+};
+
+const apmSixtyFortyEstimate = {
+  "prompt": "The worked mix: 60/40 stocks-and-bonds, σ(stocks) = 16%, σ(bonds) = 6%, ρ = 0.2. The weighted-average risk is 12%. What is the true portfolio risk?",
+  "unit": "% volatility",
+  "answer": 10.4,
+  "factor": 1.15,
+  "why": "√0.01071 ≈ 10.4% — the correlation engine bought 1.6 points of risk reduction before any skill, and sweeping the weights like this traces the efficient frontier."
+};
+
+const apmLimitsBuckets = {
+  "prompt": "The limits, honestly stated — file each item by whether Markowitz measures it:",
+  "buckets": [
+    "measured by the model",
+    "invisible to it"
+  ],
+  "items": [
+    {
+      "label": "diversifiable variance",
+      "bucket": 0
+    },
+    {
+      "label": "beta's co-movement slice of risk",
+      "bucket": 0
+    },
+    {
+      "label": "illiquidity",
+      "bucket": 1
+    },
+    {
+      "label": "leverage",
+      "bucket": 1
+    },
+    {
+      "label": "ruin",
+      "bucket": 1
+    }
+  ],
+  "why": "Professional construction wraps Markowitz in constraints, shrinkage estimation and scenario overlays — the arithmetic survives as the skeleton, not the whole body."
+};
+
+const apmRebalCompare = {
+  "prompt": "The same design, two maintenance regimes — drag the divider:",
+  "before": {
+    "label": "Left alone",
+    "text": "Winners grow past their weights and the risk budget rides with them; with any spread between asset returns that later mean-reverts, the buy-and-hold compounds less than the constant-mix."
+  },
+  "after": {
+    "label": "Rebalanced to targets",
+    "text": "The design is restored — and systematically selling relatively expensive assets to buy relatively cheap ones earns a small diversification return in choppy markets, at the cost of taxes, trading and tracking-error regret."
+  },
+  "why": "The professional compromise is bands rather than calendars — and the pension version is the glide path: target-date funds that start equity-heavy and de-risk toward retirement, automation applied to Markowitz."
+};
+
+const apmNegBetaPlace = {
+  "prompt": "A market-hedging asset with β below zero: where does its expected return sit, relative to the risk-free rate?",
+  "labels": [
+    "far below R_f",
+    "just below R_f",
+    "at R_f",
+    "just above R_f",
+    "well above R_f"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 25,
+  "tolerance": 12,
+  "why": "Below it: a zero-beta asset earns exactly the risk-free rate, and a hedging asset earns less — it pays for the insurance value it provides the market."
+};
+
+const apmZooTimeline = {
+  "unit": "year",
+  "events": [
+    {
+      "year": 1964,
+      "title": "CAPM arrives",
+      "text": "Sharpe (with Lintner and Mossin) prices market risk alone; Nobel 1990.",
+      "tag": "theory"
+    },
+    {
+      "year": 1972,
+      "title": "The line comes out flat",
+      "text": "Black, Jensen and Scholes: low beta earns more than predicted, high beta less.",
+      "tag": "evidence"
+    },
+    {
+      "year": 1993,
+      "title": "Size and value join",
+      "text": "Fama–French add the small-cap and cheap-by-fundamentals factors; Nobel 2013.",
+      "tag": "evidence"
+    },
+    {
+      "year": 1993,
+      "title": "Momentum",
+      "text": "Jegadeesh and Titman: past winners persist for months.",
+      "tag": "evidence"
+    },
+    {
+      "year": 2014,
+      "title": "Betting against beta",
+      "text": "Frazzini and Pedersen monetise the flat security market line.",
+      "tag": "evidence"
+    },
+    {
+      "year": 2016,
+      "title": "The zoo gets a bouncer",
+      "text": "Harvey, Liu and Zhu: a t-statistic bar of 3.0+ to clear multiple-testing noise.",
+      "tag": "discipline"
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/finance/expert/asset-pricing-models">
   <h2>Where you are, and what you will learn</h2>
@@ -73,6 +233,7 @@ const capmCfg = {
     equities returned roughly 10% nominal per year over the last century (geometric, about
     6–7% above inflation); Treasury bills near 3%.
   </p>
+  <Widget no="2" caption="bet before you read on — the compounder's surprise" widget="predict" config={apmGeometricPredict} />
   <p>
     <strong>Risk.</strong> The standard measure is variance (σ²) — the average squared
     deviation from the mean — or its square root, the standard deviation. US equities run
@@ -90,6 +251,7 @@ const capmCfg = {
     why practitioners add drawdown and skew measures. But as a common currency for "return per
     unit of risk", it organises everything that follows.
   </p>
+  <Widget no="3" caption="find the faulty line — the performance memo" widget="spot-error" config={apmSharpeSpot} />
   <p>
     <strong>Counting losses: the measures variance hides.</strong> Standard deviation treats
     +20% and −20% identically, but investors do not. The practitioner's additions: downside
@@ -102,6 +264,7 @@ const capmCfg = {
     on variance alone fails in exactly the ways (leverage, illiquidity, skew) that produce
     the famous blow-ups.
   </p>
+  <Widget no="4" caption="pair each hidden-loss measure with its job" widget="match" config={apmLossMatch} />
   <p>
     <em>Common misconception:</em> "higher risk investments pay higher returns, so risk
     generates reward." Wrong direction: risk does not <em>produce</em> returns; expected return
@@ -130,6 +293,7 @@ const capmCfg = {
     <em>efficient frontier</em>: the best return available at each risk level, which is what
     "asset allocation" means operationally.
   </p>
+  <Widget no="5" caption="call the free lunch — 60/40 with ρ = 0.2" widget="estimate" config={apmSixtyFortyEstimate} />
   <p>
     <strong>The limits, honestly stated.</strong> Correlations are not constants: they rise in
     crises (2022's simultaneous stock-bond slide being the fresh counterexample to the classic
@@ -140,6 +304,7 @@ const capmCfg = {
     therefore wraps Markowitz in constraints, shrinkage estimation and scenario overlays — the
     arithmetic survives as the skeleton, not the whole body.
   </p>
+  <Widget no="6" caption="file what the model sees vs what it misses" widget="sort-buckets" config={apmLimitsBuckets} />
   <p>
     <strong>Implementation: rebalancing as the quiet return source.</strong> A portfolio left
     alone drifts: the winners grow past their weights, and the risk budget rides with them.
@@ -153,6 +318,7 @@ const capmCfg = {
     pension version is the glide path: target-date funds that start equity-heavy and de-risk
     toward retirement, automation applied to Markowitz.
   </p>
+  <Widget no="7" caption="drag the divider — drifting vs rebalanced" widget="compare" config={apmRebalCompare} />
   <p><strong>So far:</strong> Markowitz turned diversification into arithmetic — imperfect
   correlations buy less-than-weighted-average risk — and rebalancing keeps the design from
   drifting. With the frontier built, the pricing question finally has a foothold: what should
@@ -169,6 +335,7 @@ const capmCfg = {
     earns the risk-free rate; negative-beta assets (portfolio insurance) earn <em>less</em>,
     because they hedge the market.
   </p>
+  <Widget no="8" caption="pin the hedging asset on the schedule" widget="place" config={apmNegBetaPlace} />
   <p>
     <strong>What it is used for.</strong> Despite its empirical troubles, CAPM survives because
     practice needs a number: cost of equity in valuation (the discount rate in every DCF),
@@ -188,6 +355,7 @@ const capmCfg = {
     probability that most published anomalies are noise. The honest summary: expected returns
     are multidimensional; beta is the first dimension, not the only one.
   </p>
+  <Widget no="9" caption="scrub the record — how pricing learned humility" widget="timeline" config={apmZooTimeline} />
   <p>
     <em>Common misconception:</em> "beta is a stock's volatility." Beta is covariance with the
     market divided by market variance — the co-movement component only. A utility stock with

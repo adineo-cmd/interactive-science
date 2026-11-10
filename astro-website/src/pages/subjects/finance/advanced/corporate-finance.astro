@@ -43,6 +43,181 @@ const corpfinQuiz = {
     },
   ],
 };
+
+const cfThreeBuckets = {
+  "prompt": "Every corporate-finance decision lands in one of three drawers — file them:",
+  "buckets": [
+    "which projects to invest in",
+    "how to fund them",
+    "what to return to owners"
+  ],
+  "items": [
+    {
+      "label": "take the factory with NPV +16.2 or reject it",
+      "bucket": 0
+    },
+    {
+      "label": "issue bonds or shares for the expansion",
+      "bucket": 1
+    },
+    {
+      "label": "declare a dividend or repurchase shares",
+      "bucket": 2
+    },
+    {
+      "label": "rank projects by profitability index under rationing",
+      "bucket": 0
+    },
+    {
+      "label": "choose 7% rather than 10% as the hurdle",
+      "bucket": 0
+    },
+    {
+      "label": "initiate a dividend to signal durable cash",
+      "bucket": 2
+    }
+  ],
+  "why": "The third drawer looks trivial and turns out to be a signalling game; the second carries the most famous 'it doesn't matter' result in all of social science."
+};
+
+const cfNpvPlotter = {
+  "curves": [
+    {
+      "expr": "300*((1/(1+x)) + (1/(1+x)^2) + (1/(1+x)^3) + (1/(1+x)^4)) - 1000",
+      "color": "#1d4ed8",
+      "label": "NPV of the project at hurdle rate x",
+      "width": 2
+    }
+  ],
+  "x": {
+    "min": 0,
+    "max": 0.15,
+    "label": "hurdle rate"
+  },
+  "y": {
+    "min": -120,
+    "max": 260,
+    "label": "NPV"
+  },
+  "height": 300,
+  "crossings": true
+};
+
+const cfRationBranch = {
+  "root": "The budget is 1,000. A needs 300 to return 450 (NPV 150, PI 1.5); B needs 500 to return 700 (NPV 200, PI 1.4); C needs 400 to return 560 (NPV 160, PI 1.4).",
+  "nodes": {
+    "start": {
+      "text": "PI-ranking greedily takes A (300 spent), then B (800 spent). C costs 400 — over budget. What now?",
+      "choices": [
+        {
+          "label": "Settle for A + B",
+          "next": "combo",
+          "feedback": "Total NPV 350 — respectable, but one combination beats it."
+        },
+        {
+          "label": "Swap B out for C: run A + C",
+          "next": "combo",
+          "feedback": "310 — the swap costs more than it gains."
+        },
+        {
+          "label": "Re-search the combinations from scratch",
+          "next": "combo",
+          "feedback": "With lumpy, indivisible projects, PI is a heuristic, not an optimizer — combinations must be searched."
+        }
+      ]
+    },
+    "combo": {
+      "text": "The search finds B + C: 900 spent, NPV 360 — beating A + B's 350 with 100 of budget left idle by choice, not by the ranking."
+    }
+  },
+  "why": "PI ranks efficiently but a lower-ranked pair can be worth more together — which is why the NPV rule, not payback, remains the referee."
+};
+
+const cfIrrSpot = {
+  "prompt": "One line of this project-briefing is wrong — click it:",
+  "lines": [
+    "When projects compete, take the highest NPV, not the highest IRR.",
+    "A small kiosk can show a spectacular IRR and still add less value than a duller, larger factory.",
+    "IRR assumes each year's cash flows are reinvested at the honest, attainable discount rate.",
+    "When cash flows change sign more than once, IRR can produce two or more answers.",
+    "That is why mining projects — build, harvest, clean up — are the textbook IRR trap."
+  ],
+  "errorLine": 2,
+  "correction": "IRR assumes reinvestment at the IRR itself — a spectacular IRR presumes spectacular reinvestment; only NPV assumes the honest, attainable discount rate.",
+  "why": "NPV's reinvestment assumption is the attainable one, and a single sign change too many can mint multiple IRRs with no way to rank them."
+};
+
+const cfCostMatch = {
+  "prompt": "Pricing the hurdle — pair each input with what it costs or claims:",
+  "pairs": [
+    {
+      "left": "Debt",
+      "right": "contractually cheap — priority in bankruptcy, and interest is tax-deductible"
+    },
+    {
+      "left": "Equity",
+      "right": "the residual claim, paid last, demanding the most — priced with CAPM"
+    },
+    {
+      "left": "The tax shield",
+      "right": "(1 − t) applied to interest only; dividends are not deductible"
+    },
+    {
+      "left": "Market values",
+      "right": "weights from today's prices — a firm whose shares tripled still re-weights"
+    },
+    {
+      "left": "WACC",
+      "right": "the blend that turns the funding mix into the hurdle rate"
+    }
+  ],
+  "why": "The two classic slips — book-value weights and a tax shield on the wrong flow — are exactly what the worked example warns against."
+};
+
+const cfPropIIEstimate = {
+  "prompt": "Proposition II: with r_A = 10% and r_D = 6%, what return must equity holders demand at D/E = 2?",
+  "unit": "% required on equity",
+  "answer": 18,
+  "factor": 1.15,
+  "why": "r_E = r_A + (D/E) × (r_A − r_D) = 10% + 2 × 4% = 18% — and the blend (1/3 × 18% + 2/3 × 6%) still averages 10%. Debt is cheaper per unit, but it makes every remaining unit of equity riskier and more expensive.",
+  "context": "Check the blend: one-third at 18% plus two-thirds at 6% still averages exactly 10%."
+};
+
+const cfCccCloze = {
+  "text": "The worked firm holds inventory %%0%% days (DIO), collects %%1%% days after sale (DSO) and pays suppliers after %%2%% days (DPO): cash is locked up for %%3%% days — on revenue of 7.3 million, roughly 1.3 million of permanent funding.",
+  "answers": [
+    [
+      "60",
+      "sixty"
+    ],
+    [
+      "45",
+      "forty-five"
+    ],
+    [
+      "40",
+      "forty"
+    ],
+    [
+      "65",
+      "sixty-five"
+    ]
+  ],
+  "hint": "DIO + DSO − DPO. Squeeze DSO to 30 and you release about 0.3 million — the CFO's cheapest financing."
+};
+
+const cfPayoutCompare = {
+  "prompt": "The same 10 million returned, two instruments — drag the divider:",
+  "before": {
+    "label": "Dividend",
+    "text": "The share drops to 90 on the ex-date and the holder keeps 90 plus 10 of cash — and a commitment: cutting one is read as distress, while initiating one says 'this cash stream is durable'."
+  },
+  "after": {
+    "label": "Buyback",
+    "text": "100,000 shares retired at 100: 900,000 shares now own a 90 million firm — still worth 100 each. Flexible, often taxed as capital gains, and a signal that shares are cheap — or that positive-NPV projects have run out."
+  },
+  "why": "At fair prices the arithmetic is identical; the differences are institutional — commitment versus flexibility, income versus gains — which is why payout choices signal."
+};
 ---
 <TopicPage slug="subjects/finance/advanced/corporate-finance">
   <h2>Where you are, and what you will learn</h2>
@@ -73,6 +248,7 @@ const corpfinQuiz = {
     (governance, investing and financing decisions, leverage, working capital) is exactly this territory, and
     we will take each piece in turn.
   </p>
+  <Widget no="3" caption="file the decisions: invest, fund, or return" widget="sort-buckets" config={cfThreeBuckets} />
 
   <Widget no="1" caption="capital structure, WACC, and the irrelevance theorem that organises everything" widget="equationStep" config={corpfinCfg} />
   <p>
@@ -95,6 +271,7 @@ const corpfinQuiz = {
     good or bad is not a fact about the project alone; it is a fact about the project <em>relative to its cost
     of capital</em>, which is why the next two sections matter more than the arithmetic.
   </p>
+  <Widget no="4" caption="steer the hurdle — watch the NPV profile flip" widget="plotter" config={cfNpvPlotter} />
   <p>
     Three refinements cover almost all practical cases. <strong>Mutually exclusive projects</strong>: when you
     can do only one, pick the highest NPV, not the highest IRR — a small kiosk can have a spectacular IRR and
@@ -106,11 +283,13 @@ const corpfinQuiz = {
     indivisible projects you sometimes have to search combinations. <strong>Timing</strong>: the NPV rule
     already handles it, which is precisely why we use NPV and not payback period.
   </p>
+  <Widget no="5" caption="spend the 1,000 — find the best combination" widget="branch" config={cfRationBranch} />
   <p><em>Common misconception:</em> IRR is not "the return you earn on the project." Implicitly it assumes
   intermediate cash flows are reinvested <em>at the IRR itself</em> — at 40% IRR that assumption is fantasy.
   NPV assumes reinvestment at the discount rate, which is the honest, attainable rate. IRR also breaks down
   entirely when cash flows change sign more than once (mining projects: build, harvest, clean up), producing
   two or more IRRs and no way to choose between them.</p>
+  <Widget no="6" caption="find the faulty line — the IRR briefing" widget="spot-error" config={cfIrrSpot} />
 
   <h2>The cost of capital: pricing debt and equity</h2>
   <p>
@@ -120,6 +299,7 @@ const corpfinQuiz = {
     last, so they demand the most, estimated with the CAPM (risk-free rate plus beta times the equity risk
     premium). The blend is the <strong>Weighted Average Cost of Capital</strong>:
   </p>
+  <Widget no="7" caption="pair each input with its price" widget="match" config={cfCostMatch} />
   <p>
     WACC = (E/V) × r<sub>E</sub> + (D/V) × r<sub>D</sub> × (1 − t), with weights taken at <em>market</em> values.
     Worked example: market equity E = 800 at r<sub>E</sub> = 12%, debt D = 200 at r<sub>D</sub> = 6%, tax rate
@@ -152,6 +332,7 @@ const corpfinQuiz = {
     cheaper per unit, but it makes every remaining unit of equity riskier and more expensive, in precisely
     offsetting proportion.
   </p>
+  <Widget no="8" caption="call the ratchet — what equity demands at D/E = 2" widget="estimate" config={cfPropIIEstimate} />
   <p>
     Everything real enters when you add back the frictions MM assumed away. With corporate taxes the levered
     firm is worth more: V<sub>L</sub> = V<sub>U</sub> + t<sub>C</sub> × D, because the government effectively
@@ -197,6 +378,7 @@ const corpfinQuiz = {
     7.3 × 15 / 365 ≈ 0.3 million — free capital, no new investors required, which is why receivables discipline
     is the CFO's cheapest financing source.
   </p>
+  <Widget no="9" caption="fill the cycle — where the cash sits" widget="cloze" config={cfCccCloze} />
   <p>
     Trade credit has a price too, and it is often astonishing. Terms of "2/10 net 30" mean: pay in 10 days for a
     2% discount, otherwise pay in full at day 30. Skipping the discount means paying 2 to borrow 98 for 20 extra
@@ -234,6 +416,7 @@ const corpfinQuiz = {
     less happily, that managers have run out of positive-NPV projects. Modern buyback programs have grown to
     hundreds of billions of dollars a year among large US firms, which keeps the signalling debate live.
   </p>
+  <Widget no="10" caption="drag the divider — dividend vs buyback" widget="compare" config={cfPayoutCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

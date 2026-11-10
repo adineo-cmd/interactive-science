@@ -10,6 +10,167 @@ const bioCfg = {
     { math: '4 · What actually works', note: 'Protected areas (the 30×30 target — 30% of Earth by 2030, agreed 2022) work when enforced; indigenous-managed lands outperform many formal parks (evidence is strong); hotspots strategy (most endemic species in smallest areas) targets scarce conservation money.' },
   ],
 };
+
+const bdcLevelsMatch = {
+  "prompt": "Three levels plus two measures — pair each term with its meaning:",
+  "pairs": [
+    {
+      "left": "genetic diversity",
+      "right": "variation within a species — the raw material for adaptation"
+    },
+    {
+      "left": "species richness",
+      "right": "how many species are present"
+    },
+    {
+      "left": "species evenness",
+      "right": "how evenly individuals are spread among the species"
+    },
+    {
+      "left": "ecosystem diversity",
+      "right": "the variety of habitats and their processes"
+    }
+  ],
+  "why": "The levels erode together: lose habitat and you lose species; lose species and surviving populations shrink and inbreed. A genetically uniform crop meeting a disease it cannot evade is the classic failure case."
+};
+
+const bdcCanopyOrder = {
+  "prompt": "A tropical rainforest stacks life vertically — put the layers in order, highest first:",
+  "items": [
+    "Emergent crowns breaking through the top",
+    "Canopy — the continuous main ceiling of leaves",
+    "Understorey — shade-tolerant growth below",
+    "Floor — thin litter over paradoxically poor soil"
+  ],
+  "why": "Each layer adds niches, which is why the stacking multiplies species. And the fertility lives in the biomass, not the ground: clear-cut and the nutrient capital leaves with the timber and the first rains."
+};
+
+const bdcExtinctSpot = {
+  "prompt": "This summary of the extinction arithmetic contains one faulty line — click it:",
+  "lines": [
+    "The background rate, read from the fossil record, runs at roughly 0.1–1 extinctions per million species per year.",
+    "Mammals today are disappearing at least tens of times that background rate.",
+    "A tenfold gain in area roughly doubles the species count.",
+    "So shrinking a forest to 10% of its area leaves about 10% of its species standing.",
+    "Many species already doomed by past clearing have not yet vanished — the extinction debt."
+  ],
+  "errorLine": 3,
+  "correction": "With the species–area exponent near 0.25, 10% of the area retains 0.1^0.25 ≈ 56% of species — and eventually loses roughly half.",
+  "why": "The loss follows a power law, not a straight ratio: that gap between 10% and 56% is exactly why the word 'eventually' carries the argument."
+};
+
+const bdcDriverJudge = {
+  "statements": [
+    {
+      "s": "A species found in the Tropical Andes and nowhere else on Earth is endemic there.",
+      "truth": true,
+      "why": "Endemic means found nowhere else — which is why hotspot hectares carry outsized stakes."
+    },
+    {
+      "s": "The five drivers act independently: halving one leaves the other four untouched.",
+      "truth": false,
+      "why": "They compound — a fragmented, warming, over-harvested population loses the genetic diversity that might have let it adapt."
+    },
+    {
+      "s": "Rats and cats arriving on islands are a historic cause of island extinctions.",
+      "truth": true,
+      "why": "Invasive species rank as the second-greatest historic cause of island extinctions."
+    },
+    {
+      "s": "The hotspots strategy spreads scarce conservation money evenly across all regions.",
+      "truth": false,
+      "why": "It is triage by arithmetic: most endemic species in the smallest areas get targeted first."
+    }
+  ]
+};
+
+const bdcAreaTrace = {
+  "prompt": "A forest island is cut to a fraction x of its area. Which curve tracks the fraction of species remaining when the island exponent z ≈ 0.25?",
+  "curves": [
+    {
+      "expr": "x^0.25",
+      "label": "z = 0.25"
+    },
+    {
+      "expr": "x^0.5",
+      "label": "z = 0.5"
+    },
+    {
+      "expr": "x",
+      "label": "1:1 loss"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 1
+  },
+  "y": {
+    "min": 0,
+    "max": 1
+  },
+  "xlabel": "habitat fraction remaining",
+  "ylabel": "species fraction remaining",
+  "why": "S ∝ A^0.25: cut to 10% and 0.1^0.25 ≈ 0.56 of species remain — about half — while the 1:1 rule would have predicted a ruinous 10%."
+};
+
+const bdcReefBranch = {
+  "root": "You manage a marine protected area. The forecast says a marine heatwave is bearing down on your reef.",
+  "nodes": {
+    "start": {
+      "text": "The heatwave hits: the corals expel their algae and turn white, alive but starving. Your move?",
+      "choices": [
+        {
+          "label": "Cut local stress now — protect herbivorous fish, halt nutrient runoff",
+          "next": "local",
+          "feedback": "Buys recovery time: grazers keep algae off the skeleton while the partnership re-forms."
+        },
+        {
+          "label": "Declare the reef dead and move the budget elsewhere",
+          "next": "dead",
+          "feedback": "A breakdown is not a burial — white coral is starving, not gone."
+        },
+        {
+          "label": "Hold local funds and wait for global emissions policy to arrive",
+          "next": "global",
+          "feedback": "Warming sets the ceiling — but nothing is left to save if the reef is fished bare meanwhile."
+        }
+      ]
+    },
+    "local": {
+      "text": "If the heat passes, colour can return within weeks. But the real enemy is frequency: consecutive heat years kill — which is why you watch bleaching frequency, not any single event."
+    },
+    "dead": {
+      "text": "The 2016 event bleached about half the Great Barrier Reef's corals, and many recovered. Reefs are built by animals in partnership with algae — and the partnership can resume."
+    },
+    "global": {
+      "text": "Reefs carry every driver at once — warming, acidification, runoff, overfished grazers. Local action cannot lower the ceiling, but it decides whether anything survives beneath it."
+    }
+  },
+  "why": "The local interventions that work buy time without solving the warming that sets the ceiling — reef conservation is the field's hardest systems problem."
+};
+
+const bdcFenceCompare = {
+  "prompt": "Who guards the park? Drag the divider:",
+  "before": {
+    "label": "fortress park",
+    "text": "Fences first, people excluded. Strictly fenced 'fortress' parks repeatedly underperform — because poaching is an economics problem, and fences do not change economics."
+  },
+  "after": {
+    "label": "community-led landscape",
+    "text": "Local communities hold rights and earn from wildlife — tourism, hunting quotas, forest products. Enforcement with local buy-in is the strongest predictor of a protected area's success."
+  },
+  "why": "Governance matters as much as gazetting: aligning local incentives with enforcement is what makes boundaries hold."
+};
+
+const bdcCondorEstimate = {
+  "prompt": "The California condor fell to 27 birds in 1987, every one taken into captivity. Roughly how many fly free again today?",
+  "unit": "condors",
+  "answer": 500,
+  "factor": 1.6,
+  "why": "Over 500 — species-level rescue has a perfect and a dramatic record when habitat and threats are handled alongside the captive programme.",
+  "context": "The Mauritius kestrel made the same climb: four known individuals in 1974, hundreds now."
+};
 ---
 <TopicPage slug="subjects/environmental-science/intermediate/biodiversity-and-conservation">
 
@@ -75,6 +236,7 @@ const bioCfg = {
     shrink and inbreed; the genetic library, once burned, does not re-grow on any policy
     timescale.
   </p>
+  <Widget no="2" caption="pair each level of biodiversity with what it counts" widget="match" config={bdcLevelsMatch} />
 
   <h2>Forest ecosystems: the biggest bank</h2>
   <p>
@@ -93,6 +255,7 @@ const bioCfg = {
     10% of emissions, and standing forests are the only carbon removal technology that already
     works at gigatonne scale.
   </p>
+  <Widget no="3" caption="rebuild the rainforest's vertical stack, top down" widget="order" config={bdcCanopyOrder} />
 
   <h2>The extinction arithmetic</h2>
   <p>
@@ -113,6 +276,7 @@ const bioCfg = {
     census the shy and the rare, and long-term plots (like the ones tracking Amazonian trees
     since the 1980s) turn snapshots into trends.
   </p>
+  <Widget no="4" caption="find the faulty line — the extinction arithmetic" widget="spot-error" config={bdcExtinctSpot} />
   <p><em>Common misconception:</em> "a species is saved once a few individuals are kept
   alive in zoos or seed banks." Living specimens are a last resort, not a rescue: genetic
   diversity is the raw material that lets a population adapt, and small captive populations
@@ -137,6 +301,7 @@ const bioCfg = {
     — found nowhere else — so a hectare there matters more than a hectare almost anywhere
     else; the hotspots strategy is conservation triage by arithmetic.
   </p>
+  <Widget no="5" caption="true or false — the drivers and the map" widget="judge" config={bdcDriverJudge} />
   <p>
     <strong>So far:</strong> the drivers are ranked, they compound, and the stakes are
     concentrated unevenly across the map. Next we make the loss itself predictable — what
@@ -156,6 +321,7 @@ const bioCfg = {
     species than an isolated one of the same size, because immigration replenishes local
     losses — the same island-biogeography insight, applied as design.
   </p>
+  <Widget no="6" caption="which curve prices the habitat cut?" widget="trace" config={bdcAreaTrace} />
 
   <h2>The marine case: reefs as the canary</h2>
   <p>
@@ -174,6 +340,7 @@ const bioCfg = {
     do work (protecting herbivorous fish, cutting runoff) buy time without solving the
     warming that sets the ceiling.
   </p>
+  <Widget no="7" caption="the reef manager's heatwave — trace your choices" widget="branch" config={bdcReefBranch} />
   <p><em>Common misconception:</em> "a bleached reef is a dead reef." Bleaching is a
   breakdown, not a burial: the corals have expelled their algae and are alive but starving,
   and they can recover within weeks if the heat passes. What kills is consecutive heat
@@ -204,12 +371,14 @@ const bioCfg = {
     It is the proof that global action can work when the science is clear, the substitutes
     exist and the agreement is universal.
   </p>
+  <Widget no="8" caption="call the recovery — from 27 birds" widget="estimate" config={bdcCondorEstimate} />
   <p><em>Common misconception:</em> "conservation means locking nature away from people."
     The evidence runs the other way: strictly fenced "fortress" parks repeatedly underperform
     landscapes where local communities hold rights and earn from wildlife (tourism, hunting
     quotas, forest products). The strongest predictor of a protected area's success is
     enforcement <em>with</em> local buy-in — because poaching is an economics problem and
     fences do not change economics.</p>
+  <Widget no="9" caption="two parks, one budget — drag between the models" widget="compare" config={bdcFenceCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

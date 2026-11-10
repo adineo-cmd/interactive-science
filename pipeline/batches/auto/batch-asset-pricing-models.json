@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "subjects/finance/expert/asset-pricing-models",
+    "activities": [
+      {
+        "anchor": "the gap grows with volatility",
+        "type": "predict",
+        "caption": "bet before you read on — the compounder's surprise",
+        "name": "apmGeometricPredict",
+        "config": {
+          "q": "An account loses 50% one year, gains 60% the next. The arithmetic average of the two returns reads +5%. Where is the account?",
+          "choices": [
+            "+5% — averages don't lie",
+            "−20% — 0.5 × 1.6 = 0.8",
+            "0% — the gains and losses cancel"
+          ],
+          "answer": 1,
+          "why": "The geometric reality is −20%: compounding punishes volatility, which is why realised growth always sits below the arithmetic average — the wider the swings, the wider the shortfall."
+        }
+      },
+      {
+        "anchor": "the single most used comparison metric",
+        "type": "spot-error",
+        "caption": "find the faulty line — the performance memo",
+        "name": "apmSharpeSpot",
+        "config": {
+          "prompt": "One line of this performance memo is wrong — click it:",
+          "lines": [
+            "The Sharpe ratio is excess return per unit of total risk.",
+            "A fund returning 10% with 15% volatility in a 3% rate world scores about 0.47.",
+            "Upside volatility is left out of the denominator — only losses count.",
+            "That is why practitioners add drawdown and skew measures alongside it.",
+            "As a common currency for return per unit of risk, it organises everything that follows."
+          ],
+          "errorLine": 2,
+          "correction": "It punishes upside volatility symmetrically with downside — the σ in the denominator is total, not downside-only; the Sortino ratio is the repair that swaps in downside deviation.",
+          "why": "The measure's known weaknesses are symmetry and its collapse when returns are not bell-shaped — which is exactly why the practitioner's toolkit adds drawdown and skew."
+        }
+      },
+      {
+        "anchor": "treats +20% and −20% identically",
+        "type": "match",
+        "caption": "pair each hidden-loss measure with its job",
+        "name": "apmLossMatch",
+        "config": {
+          "prompt": "The measures variance hides — pair each with what it captures:",
+          "pairs": [
+            { "left": "Downside deviation", "right": "only returns below target enter the denominator" },
+            { "left": "Sortino ratio", "right": "Sharpe's formula with the downside swap made" },
+            { "left": "Maximum drawdown", "right": "worst peak-to-trough loss — whether a strategy survives its investors' nerves" },
+            { "left": "Value-at-Risk", "right": "the loss threshold not exceeded 95% of the time — blind to the 5% tail it excludes" }
+          ],
+          "why": "Risk is multidimensional, and any single-number summary embeds a claim about which losses matter — portfolio policy written on variance alone fails in the ways (leverage, illiquidity, skew) that produce the famous blow-ups."
+        }
+      },
+      {
+        "anchor": "Diversification delivered 1.6 points",
+        "type": "estimate",
+        "caption": "call the free lunch — 60/40 with ρ = 0.2",
+        "name": "apmSixtyFortyEstimate",
+        "config": {
+          "prompt": "The worked mix: 60/40 stocks-and-bonds, σ(stocks) = 16%, σ(bonds) = 6%, ρ = 0.2. The weighted-average risk is 12%. What is the true portfolio risk?",
+          "unit": "% volatility",
+          "answer": 10.4,
+          "factor": 1.15,
+          "why": "√0.01071 ≈ 10.4% — the correlation engine bought 1.6 points of risk reduction before any skill, and sweeping the weights like this traces the efficient frontier."
+        }
+      },
+      {
+        "anchor": "Correlations are not constants",
+        "type": "sort-buckets",
+        "caption": "file what the model sees vs what it misses",
+        "name": "apmLimitsBuckets",
+        "config": {
+          "prompt": "The limits, honestly stated — file each item by whether Markowitz measures it:",
+          "buckets": ["measured by the model", "invisible to it"],
+          "items": [
+            { "label": "diversifiable variance", "bucket": 0 },
+            { "label": "beta's co-movement slice of risk", "bucket": 0 },
+            { "label": "illiquidity", "bucket": 1 },
+            { "label": "leverage", "bucket": 1 },
+            { "label": "ruin", "bucket": 1 }
+          ],
+          "why": "Professional construction wraps Markowitz in constraints, shrinkage estimation and scenario overlays — the arithmetic survives as the skeleton, not the whole body."
+        }
+      },
+      {
+        "anchor": "rebalance only when weights drift past thresholds",
+        "type": "compare",
+        "caption": "drag the divider — drifting vs rebalanced",
+        "name": "apmRebalCompare",
+        "config": {
+          "prompt": "The same design, two maintenance regimes — drag the divider:",
+          "before": {
+            "label": "Left alone",
+            "text": "Winners grow past their weights and the risk budget rides with them; with any spread between asset returns that later mean-reverts, the buy-and-hold compounds less than the constant-mix."
+          },
+          "after": {
+            "label": "Rebalanced to targets",
+            "text": "The design is restored — and systematically selling relatively expensive assets to buy relatively cheap ones earns a small diversification return in choppy markets, at the cost of taxes, trading and tracking-error regret."
+          },
+          "why": "The professional compromise is bands rather than calendars — and the pension version is the glide path: target-date funds that start equity-heavy and de-risk toward retirement, automation applied to Markowitz."
+        }
+      },
+      {
+        "anchor": "negative-beta assets (portfolio insurance)",
+        "type": "place",
+        "caption": "pin the hedging asset on the schedule",
+        "name": "apmNegBetaPlace",
+        "config": {
+          "prompt": "A market-hedging asset with β below zero: where does its expected return sit, relative to the risk-free rate?",
+          "labels": ["far below R_f", "just below R_f", "at R_f", "just above R_f", "well above R_f"],
+          "scale": { "min": 0, "max": 100 },
+          "answer": 25,
+          "tolerance": 12,
+          "why": "Below it: a zero-beta asset earns exactly the risk-free rate, and a hedging asset earns less — it pays for the insurance value it provides the market."
+        }
+      },
+      {
+        "anchor": "hundreds of claimed factors",
+        "type": "timeline",
+        "caption": "scrub the record — how pricing learned humility",
+        "name": "apmZooTimeline",
+        "config": {
+          "unit": "year",
+          "events": [
+            { "year": 1964, "title": "CAPM arrives", "text": "Sharpe (with Lintner and Mossin) prices market risk alone; Nobel 1990.", "tag": "theory" },
+            { "year": 1972, "title": "The line comes out flat", "text": "Black, Jensen and Scholes: low beta earns more than predicted, high beta less.", "tag": "evidence" },
+            { "year": 1993, "title": "Size and value join", "text": "Fama–French add the small-cap and cheap-by-fundamentals factors; Nobel 2013.", "tag": "evidence" },
+            { "year": 1993, "title": "Momentum", "text": "Jegadeesh and Titman: past winners persist for months.", "tag": "evidence" },
+            { "year": 2014, "title": "Betting against beta", "text": "Frazzini and Pedersen monetise the flat security market line.", "tag": "evidence" },
+            { "year": 2016, "title": "The zoo gets a bouncer", "text": "Harvey, Liu and Zhu: a t-statistic bar of 3.0+ to clear multiple-testing noise.", "tag": "discipline" }
+          ]
+        }
+      }
+    ]
+  }
+]

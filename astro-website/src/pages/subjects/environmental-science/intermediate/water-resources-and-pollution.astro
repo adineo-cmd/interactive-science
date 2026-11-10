@@ -10,6 +10,173 @@ const waterPollCfg = {
     { math: '4 · Drinking water treatment as engineering triumph', note: 'Coagulation, filtration, disinfection (chlorination since 1908) — "waterborne disease" largely vanished in rich countries. The ongoing challenges: lead pipes (Flint 2014 — corrosion chemistry mismanaged), PFAS "forever chemicals", and the 2 billion people still without safely managed drinking water.' },
   ],
 };
+
+const wrpLadderOrder = {
+  "prompt": "The supply ladder, in the order its economics demand (roughly 1 : 3 : 10):",
+  "items": [
+    "Reduce demand — pricing, efficient irrigation",
+    "Reuse — wastewater recycled to drinking standards",
+    "Desalinate — the energy-expensive margin"
+  ],
+  "why": "Agriculture takes about 70% of global withdrawals, which is why irrigation efficiency is the biggest lever; Singapore's NEWater recycles to drinking standards and Israel draws a large share of its municipal water from the sea — but both sit above the cheaper rungs in cost."
+};
+
+const wrpFixedPredict = {
+  "q": "Headlines say humanity is running out of water. Is Earth running out of water?",
+  "choices": [
+    "Yes — aquifers are draining and the planet is drying",
+    "No — the total is essentially fixed; what varies is where and when the usable slice arrives",
+    "Yes in rich countries, no in poor ones"
+  ],
+  "answer": 1,
+  "why": "Scarcity is local and temporal: about 4 billion people run short at least one month a year while their region floods in another season — a management and infrastructure problem, not a planetary shortfall."
+};
+
+const wrpSourceBuckets = {
+  "prompt": "Point source or nonpoint — file each polluter:",
+  "buckets": [
+    "point source — a pipe",
+    "nonpoint — arrives with every rain"
+  ],
+  "items": [
+    {
+      "label": "a factory outfall",
+      "bucket": 0
+    },
+    {
+      "label": "a sewage outflow",
+      "bucket": 0
+    },
+    {
+      "label": "fertiliser runoff from fields",
+      "bucket": 1
+    },
+    {
+      "label": "oil and metals washed off roads",
+      "bucket": 1
+    },
+    {
+      "label": "pet waste carried by stormwater",
+      "bucket": 1
+    }
+  ],
+  "why": "A pipe is discrete, measurable and regulable — the Clean Water Act's permits transformed rich-world rivers; you cannot pipe a whole watershed to a treatment plant, which is why nonpoint now leads in developed countries."
+};
+
+const wrpIndicatorMatch = {
+  "prompt": "Five water-quality indicators, five failures — pair them:",
+  "pairs": [
+    {
+      "left": "dissolved oxygen (DO)",
+      "right": "the master variable for aquatic life — below about 5 mg/L fish species thin out"
+    },
+    {
+      "left": "BOD",
+      "right": "how much oxygen microbes will consume decomposing the organic load"
+    },
+    {
+      "left": "pH and alkalinity",
+      "right": "catch acid inputs — mining drainage runs at pH 2–4"
+    },
+    {
+      "left": "nitrates and phosphates",
+      "right": "the eutrophication gauges"
+    },
+    {
+      "left": "conductivity",
+      "right": "the cheap total-salts tripwire that flags almost any industrial leak"
+    }
+  ],
+  "why": "Pollution is a difference, and you measure the difference: DO and BOD above and below an outfall is not a school ritual but the actual logic of pollution forensics."
+};
+
+const wrpLakeBranch = {
+  "root": "You manage a drinking-water reservoir. Spring sampling shows nutrient levels climbing and last summer the water tasted of algae.",
+  "nodes": {
+    "start": {
+      "text": "The first warm week arrives. What is your programme for the season?",
+      "choices": [
+        {
+          "label": "Close the nutrient tap — fertiliser timing upstream, buffer strips, sewage upgrades",
+          "next": "tap",
+          "feedback": "Attack the input, and the cascade can run backwards."
+        },
+        {
+          "label": "Treat the symptoms — harvest blooms, aerate the water column",
+          "next": "symptom",
+          "feedback": "Buys a clearer August, but the fertilised water returns next spring."
+        },
+        {
+          "label": "Wait it out — algal blooms are natural events",
+          "next": "wait",
+          "feedback": "Cultural eutrophication is not natural ageing — it is an artificial acceleration."
+        }
+      ]
+    },
+    "tap": {
+      "text": "Lake Washington recovered dramatically after sewage diversion in the 1960s — the textbook demonstration that the cascade runs backwards as readily as forwards."
+    },
+    "symptom": {
+      "text": "Clear water turns algal again as the nutrients keep arriving; tolerant species shift in, and cyanobacteria blooms can produce liver and nerve toxins in the drinking supply."
+    },
+    "wait": {
+      "text": "Ages a lake artificially: species shift toward tolerant forms, drinking water acquires taste and toxin problems — and the fix you declined keeps getting more expensive."
+    }
+  },
+  "why": "The remedy is input control — the cascade from fertiliser to dead zone is the best-worked chain in water science, and it is reversible."
+};
+
+const wrpAquiferSpot = {
+  "prompt": "A briefing on groundwater contamination contains one faulty line — click it:",
+  "lines": [
+    "Groundwater moves metres per year, not kilometres per day.",
+    "An aquifer may take decades to centuries to flush.",
+    "Dense industrial solvents like TCE float on top of the water table, where they evaporate within months.",
+    "Nitrate plumes from fertiliser and septic systems persist long after their sources stop.",
+    "Over-pumping coastal aquifers lets the sea seep in — effectively irreversible on human timescales."
+  ],
+  "errorLine": 2,
+  "correction": "TCE and its cousins are dense liquids that sink through the water table and sit on the aquifer floor, dissolving for decades.",
+  "why": "Slow pollution is expensive pollution: remediation costs more than prevention by orders of magnitude, which is why source control is written into law."
+};
+
+const wrpDiseaseJudge = {
+  "statements": [
+    {
+      "s": "Water-washed diseases such as trachoma are solved by water quantity, not quality.",
+      "truth": true,
+      "why": "They spread where water is too scarce for washing — the remedy is more clean water, not cleaner water."
+    },
+    {
+      "s": "John Snow's 1854 Broad Street pump investigation founded both epidemiology and the practice of treating supply.",
+      "truth": true,
+      "why": "Cholera travelled in the water people drank — the pump handle came out, and a science began."
+    },
+    {
+      "s": "Schistosomiasis is caught by drinking contaminated water.",
+      "truth": false,
+      "why": "It is a water-based parasite spending part of its life in snails in slow water — a contact hazard, not a drinking hazard."
+    },
+    {
+      "s": "Chlorination of city drinking water at scale began in the 19th century.",
+      "truth": false,
+      "why": "First at scale: Jersey City, 1908 — coagulation, sand filtration and chlorination became one of history's great life-extension technologies."
+    }
+  ]
+};
+
+const wrpOilCompare = {
+  "prompt": "Which oil input dominates? Drag the divider:",
+  "before": {
+    "label": "chronic input — most of it",
+    "text": "Urban runoff and shipping operational discharge, arriving every day, everywhere — diffuse, unphotographed, and collectively the larger load."
+  },
+  "after": {
+    "label": "episodic spills — the news",
+    "text": "Tanker accidents: spectacular, concentrated, and the trigger for response tech — skimming, in-situ burning, dispersants, bioremediation. Exxon Valdez's shoreline still held pockets of oil a quarter-century on."
+  },
+  "why": "The chronic, diffuse input dwarfs the spectacular one — the same policy shape plastic pollution shows, and the same conclusion: the durable fix is upstream design rather than downstream heroics."
+};
 ---
 <TopicPage slug="subjects/environmental-science/intermediate/water-resources-and-pollution">
 
@@ -77,11 +244,13 @@ const waterPollCfg = {
     supply, Israel drawing a large share of its municipal water from the sea) — in that
     order, because the ladder's economics run roughly 1 : 3 : 10.
   </p>
+  <Widget no="2" caption="rebuild the supply ladder, cheapest rung first" widget="order" config={wrpLadderOrder} />
   <p><em>Common misconception:</em> "we are running out of water on Earth." Earth's water is
   essentially fixed; what varies is where and when the usable slice arrives. Roughly 4
   billion people experience severe scarcity at least one month a year while their region
   floods in another season — scarcity is local and temporal, a management and infrastructure
   problem, not a planetary one.</p>
+  <Widget no="3" caption="bet before you read on — the running-out claim" widget="predict" config={wrpFixedPredict} />
 
   <h2>The pollution taxonomy: what goes in, and how it behaves</h2>
   <p>
@@ -107,6 +276,7 @@ const waterPollCfg = {
     is a pollutant even when chemically pure). Each behaviour dictates its own remedy, which
     is why "water pollution" is really a portfolio of separate problems.
   </p>
+  <Widget no="4" caption="file each polluter: pipe or field" widget="sort-buckets" config={wrpSourceBuckets} />
 
   <h2>Measuring quality: the indicators that matter</h2>
   <p>
@@ -124,6 +294,7 @@ const waterPollCfg = {
     above and below an outfall — is not a school ritual but the actual logic of pollution
     forensics: pollution is a difference, and you measure the difference.
   </p>
+  <Widget no="5" caption="pair each indicator with the failure it catches" widget="match" config={wrpIndicatorMatch} />
   <p>
     <strong>So far:</strong> sources are sorted into pipes and fields, behaviours into
     pathogens, nutrients, metals, chemicals, plastics and heat — and a handful of indicators
@@ -150,6 +321,7 @@ const waterPollCfg = {
     the textbook demonstration that the cascade runs backwards as readily as forwards when
     the nutrient tap is closed.
   </p>
+  <Widget no="6" caption="the reservoir manager's summer — trace each path" widget="branch" config={wrpLakeBranch} />
 
   <h2>Groundwater: the slow, sticky problem</h2>
   <p>
@@ -166,6 +338,7 @@ const waterPollCfg = {
     lets the sea seep in (Bangladesh's delta wells, island aquifers worldwide), a
     contamination that is effectively irreversible on human timescales.
   </p>
+  <Widget no="7" caption="find the faulty line — the aquifer briefing" widget="spot-error" config={wrpAquiferSpot} />
 
   <h2>Water-related diseases: the plumbing dividend</h2>
   <p>
@@ -184,6 +357,7 @@ const waterPollCfg = {
     roughly half a million a year — a treatment-and-pipes problem we solved a century ago and
     have not yet delivered everywhere.
   </p>
+  <Widget no="8" caption="true or false — the four water-disease routes" widget="judge" config={wrpDiseaseJudge} />
   <p><em>Common misconception:</em> "sewage treatment means filtering out the dirt." The
     dirt is the easy stage. Primary treatment settles solids; <strong>secondary
     treatment</strong> — aeration basins where bacteria digest dissolved organic waste — is
@@ -215,6 +389,7 @@ const waterPollCfg = {
     input dwarfs the spectacular one, and the durable fix is upstream design rather than
     downstream heroics.
   </p>
+  <Widget no="9" caption="two oil loads, one ocean — drag between them" widget="compare" config={wrpOilCompare} />
   <p><em>Common misconception:</em> "the ocean garbage patches are where most ocean plastic
   is, so cleaning them would solve it." The patches are the visible tip: most of the mass is
   microplastic — from tyre wear, synthetic textiles and fragmentation — scattered from Arctic

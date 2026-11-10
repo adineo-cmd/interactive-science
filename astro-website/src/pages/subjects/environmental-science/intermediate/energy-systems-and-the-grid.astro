@@ -10,6 +10,158 @@ const energyCfg = {
     { math: '4 · The hard parts: storage, grids, firm clean power', note: 'Storage (batteries for hours; pumped hydro dominates installed capacity; hydrogen and geothermal for longer), transmission (interconnectors carry wind from where it blows to where it\'s needed), and firm clean power (nuclear, geothermal, hydro) for windless weeks. Each is an engineering frontier with real progress (the physics and materials ladders supply the science).' },
   ],
 };
+
+const esgCoalPlace = {
+  "prompt": "Lifecycle emissions, grams of CO₂ per kilowatt-hour — where does coal sit?",
+  "labels": [
+    "0",
+    "200",
+    "400",
+    "600",
+    "800",
+    "1000"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1000
+  },
+  "answer": 820,
+  "tolerance": 15,
+  "why": "Coal ~820 gCO₂/kWh; gas ~490; solar ~40; wind and nuclear ~12. The transition is, in essence, moving the grid down this column while holding energy density and capacity factor steady."
+};
+
+const esgCoalRankOrder = {
+  "prompt": "Heat and pressure upgrade buried peat — put the ranks in order, rawest first:",
+  "items": [
+    "Peat — swamp-forest muck",
+    "Lignite",
+    "Bituminous coal",
+    "Anthracite — nearly pure carbon"
+  ],
+  "why": "Each step drives off water and volatiles, raising carbon content and energy density — from the swampy Carboniferous forests of about 300 million years ago, the era that named the fuel."
+};
+
+const esgFrackSpot = {
+  "prompt": "A briefing on fracking's risk record contains one faulty line — click it:",
+  "lines": [
+    "Fracking pumps water, sand and chemicals at pressures that crack the shale and hold the cracks open.",
+    "Methane leakage matters: methane is ~30× CO₂'s warming power over a century, so leaks can erase gas's climate advantage.",
+    "The induced earthquakes in Oklahoma were driven mostly by fracking of the production wells themselves.",
+    "Local water stress is one of the documented problems.",
+    "The renewables-and-batteries pathway is also extractive — copper, lithium, cobalt, nickel and rare earths."
+  ],
+  "errorLine": 2,
+  "correction": "The Oklahoma earthquakes were driven mostly by wastewater injection — pumping the spent fluid back down — a narrower risk record than fracking's reputation.",
+  "why": "The documented problems are methane leakage, induced seismicity tied to wastewater disposal, and local water stress — real, but specific."
+};
+
+const esgGridBranch = {
+  "root": "You are on the control desk of a national grid. It is a cold, still evening and demand is climbing fast.",
+  "nodes": {
+    "start": {
+      "text": "Demand has outrun your forecast: generation now trails draw and system frequency begins to sag. First move?",
+      "choices": [
+        {
+          "label": "Call on balancing services — reserve that responds in seconds",
+          "next": "reserve",
+          "feedback": "That is what the auction buys: seconds-fast response holds the line while slower plant spins up."
+        },
+        {
+          "label": "Do nothing — frequency will recover on its own",
+          "next": "drift",
+          "feedback": "It will not self-correct: the sag deepens until protection steps in."
+        },
+        {
+          "label": "Order the wind fleet to produce more",
+          "next": "wind",
+          "feedback": "The evening is still — the fuel arrives when the weather sends it, and tonight it is not sending any."
+        }
+      ]
+    },
+    "reserve": {
+      "text": "Frequency stabilises. Tomorrow's auction prices the lesson in: demand forecasting (weather-driven, literally), plant scheduling, and reserve paid to respond in seconds."
+    },
+    "drift": {
+      "text": "Draw keeps exceeding generation; drift too far and protection systems disconnect generators to save the hardware — the cascade that blacked out 50 million people in 2003."
+    },
+    "wind": {
+      "text": "The redesign manages timing instead of assuming always-on supply: storage, demand response, interconnection over wide areas — wind is always blowing somewhere, just not here."
+    }
+  },
+  "why": "A grid has almost no storage: supply must equal demand every second, and frequency is the tell."
+};
+
+const esgLullPredict = {
+  "q": "A high-pressure system calms the wind over an entire region for a week. What does that do to the claim that renewables cannot run a modern grid?",
+  "choices": [
+    "Settles it — a week without wind ends the experiment",
+    "It sharpens the real question: correlated lulls are the genuine challenge, and they are solvable at a price of firmness that keeps falling",
+    "It only matters for small islands"
+  ],
+  "answer": 1,
+  "why": "Individual windless nights are trivial; the real test is correlated lulls and seasonal balance — met with storage, interconnection, demand flexibility and forecasting, as the price of firmness keeps dropping."
+};
+
+const esgSolarEstimate = {
+  "prompt": "Solar module prices fell about 90% from 2010 to 2020. In 2020, a module cost roughly what fraction of its 2010 price?",
+  "unit": "% of the 2010 price",
+  "answer": 10,
+  "factor": 1.6,
+  "why": "About a tenth of the 2010 price — a learning rate near 20% per doubling of capacity, the steepest cost curve of any energy technology ever measured.",
+  "context": "Onshore wind fell by about two-thirds over the same decade; batteries dropped about 90% from 2010 to 2023."
+};
+
+const esgEfficiencyMatch = {
+  "prompt": "Five levers for bending the demand curve — pair each with how it works:",
+  "pairs": [
+    {
+      "left": "building standards",
+      "right": "insulation is permanent savings on the largest building loads — heating and cooling"
+    },
+    {
+      "left": "appliance standards",
+      "right": "LED lighting cut lighting's electricity demand roughly in half in a decade"
+    },
+    {
+      "left": "industrial efficiency",
+      "right": "waste-heat recovery and motor upgrades"
+    },
+    {
+      "left": "demand management",
+      "right": "time-of-use pricing shifts load into sunny hours — the grid's free storage"
+    },
+    {
+      "left": "electrification with heat pumps",
+      "right": "delivers three to four units of heat per unit of electricity by moving heat rather than making it"
+    }
+  ],
+  "why": "Every avoided kilowatt-hour avoids the generation, transmission and emissions attached to it — conservation buys the time that storage and transmission need to mature."
+};
+
+const esgHeatPumpJudge = {
+  "statements": [
+    {
+      "s": "A heat pump delivering three to four units of heat per unit of electricity violates thermodynamics.",
+      "truth": false,
+      "why": "It moves existing heat rather than making it — the honest figure of merit is the coefficient of performance."
+    },
+    {
+      "s": "A furnace loses part of its energy up the flue.",
+      "truth": true,
+      "why": "Burning fuel makes heat and part of it escapes as exhaust — a heat pump instead pumps heat up a modest temperature gradient."
+    },
+    {
+      "s": "A heat pump can deliver more heat energy than the electricity it consumes.",
+      "truth": true,
+      "why": "A 300–400% figure of merit that is honest accounting, not a perpetual-motion claim."
+    },
+    {
+      "s": "Heat-pump performance should be read as a conversion efficiency, like a power plant's.",
+      "truth": false,
+      "why": "Coefficient of performance, not conversion efficiency — the two numbers answer different questions."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/environmental-science/intermediate/energy-systems-and-the-grid">
 
@@ -79,6 +231,7 @@ const energyCfg = {
     ~12). The transition is, in essence, moving the grid down that last column while holding
     the other two steady.
   </p>
+  <Widget no="2" caption="put coal's carbon bill on the scale" widget="place" config={esgCoalPlace} />
 
   <h2>How the fuels formed: buried sunlight</h2>
   <p>
@@ -96,6 +249,7 @@ const energyCfg = {
     <em>flows</em> (sun, wind, moving water) that cannot be depleted — the distinction that
     makes "renewable" a physical property, not a marketing one.
   </p>
+  <Widget no="3" caption="rebuild the coal ladder, rawest first" widget="order" config={esgCoalRankOrder} />
   <p>
     <strong>So far:</strong> fossil fuels are buried sunlight — stocks assembled over
     geologic time — while sun, wind and moving water are flows that no amount of use can
@@ -132,6 +286,7 @@ const energyCfg = {
     negative emissions later in the century — not an excuse to keep burning, which its
     critics correctly police.
   </p>
+  <Widget no="4" caption="find the faulty line — the fracking briefing" widget="spot-error" config={esgFrackSpot} />
 
   <h2>How the grid actually works</h2>
   <p>
@@ -154,6 +309,7 @@ const energyCfg = {
     somewhere), and accurate forecasting — the grid lesson's core shift from "always-on
     supply" to "managed timing".
   </p>
+  <Widget no="5" caption="the control desk — frequency is sagging" widget="branch" config={esgGridBranch} />
   <p><em>Common misconception:</em> "renewables can't power a modern grid because the sun
     sets." Individual windless nights are trivial; the real challenge is <em>correlated</em>
     lulls — weather systems that calm the wind over a whole region for a week — and
@@ -161,6 +317,7 @@ const energyCfg = {
     with the toolkit above, at a cost that rises with ambition; the engineering question is
     never "possible?" but "at what price of firmness?" — and the answer keeps falling as
     storage, interconnection and forecasting improve.</p>
+  <Widget no="6" caption="bet before you read on — the windless week" widget="predict" config={esgLullPredict} />
   <p>
     <strong>So far:</strong> the grid balances supply and demand every second, and its
     redesign swaps always-on supply for managed flexibility. What makes that redesign
@@ -192,6 +349,7 @@ const energyCfg = {
     from 35%-capacity-factor wind means building about three gigawatts of turbines and the
     backup to match — the arithmetic behind every grid model's sprawl of rows.
   </p>
+  <Widget no="7" caption="call the price collapse — the solar curve" widget="estimate" config={esgSolarEstimate} />
   <p><em>Common misconception:</em> the batteries that became cheap in the 2010s can carry a grid through a windless week. Lithium-ion plants are built for hours of discharge — brilliant for evening peaks and minute-to-minute balancing, wrong scale for seasonal storage, which still belongs to pumped hydro, hydrogen or synthetic fuels. The battery boom and the storage problem are both real; they are answers to different timescales.</p>
 
   <h2>Conservation and management: the cheapest watt</h2>
@@ -211,7 +369,9 @@ const energyCfg = {
     which is why every credible net-zero pathway starts with the demand curve bending down
     before the supply stack turns green.
   </p>
+  <Widget no="8" caption="pair each demand-side lever with its mechanism" widget="match" config={esgEfficiencyMatch} />
   <p><em>Common misconception:</em> a heat pump delivering three to four units of heat per unit of electricity breaks the laws of thermodynamics. It does not, because it moves existing heat rather than making it — the right figure of merit is the coefficient of performance, not a conversion efficiency. A furnace burns fuel and loses part of its energy up the flue; a heat pump pays a small electrical toll to pump heat up a modest temperature gradient, which is why its "over 100%" figure is honest accounting, not a perpetual-motion claim.</p>
+  <Widget no="9" caption="true or false — the heat-pump accounting" widget="judge" config={esgHeatPumpJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

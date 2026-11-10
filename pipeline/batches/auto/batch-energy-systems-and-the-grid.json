@@ -1,0 +1,140 @@
+[
+  {
+    "slug": "subjects/environmental-science/intermediate/energy-systems-and-the-grid",
+    "activities": [
+      {
+        "anchor": "its emissions per unit energy",
+        "type": "place",
+        "caption": "put coal's carbon bill on the scale",
+        "name": "esgCoalPlace",
+        "config": {
+          "prompt": "Lifecycle emissions, grams of CO₂ per kilowatt-hour — where does coal sit?",
+          "labels": ["0", "200", "400", "600", "800", "1000"],
+          "scale": { "min": 0, "max": 1000 },
+          "answer": 820,
+          "tolerance": 15,
+          "why": "Coal ~820 gCO₂/kWh; gas ~490; solar ~40; wind and nuclear ~12. The transition is, in essence, moving the grid down this column while holding energy density and capacity factor steady."
+        }
+      },
+      {
+        "anchor": "buried faster than it could decay",
+        "type": "order",
+        "caption": "rebuild the coal ladder, rawest first",
+        "name": "esgCoalRankOrder",
+        "config": {
+          "prompt": "Heat and pressure upgrade buried peat — put the ranks in order, rawest first:",
+          "items": [
+            "Peat — swamp-forest muck",
+            "Lignite",
+            "Bituminous coal",
+            "Anthracite — nearly pure carbon"
+          ],
+          "why": "Each step drives off water and volatiles, raising carbon content and energy density — from the swampy Carboniferous forests of about 300 million years ago, the era that named the fuel."
+        }
+      },
+      {
+        "anchor": "The mitigation end of the extraction story",
+        "type": "spot-error",
+        "caption": "find the faulty line — the fracking briefing",
+        "name": "esgFrackSpot",
+        "config": {
+          "prompt": "A briefing on fracking's risk record contains one faulty line — click it:",
+          "lines": [
+            "Fracking pumps water, sand and chemicals at pressures that crack the shale and hold the cracks open.",
+            "Methane leakage matters: methane is ~30× CO₂'s warming power over a century, so leaks can erase gas's climate advantage.",
+            "The induced earthquakes in Oklahoma were driven mostly by fracking of the production wells themselves.",
+            "Local water stress is one of the documented problems.",
+            "The renewables-and-batteries pathway is also extractive — copper, lithium, cobalt, nickel and rare earths."
+          ],
+          "errorLine": 2,
+          "correction": "The Oklahoma earthquakes were driven mostly by wastewater injection — pumping the spent fluid back down — a narrower risk record than fracking's reputation.",
+          "why": "The documented problems are methane leakage, induced seismicity tied to wastewater disposal, and local water stress — real, but specific."
+        }
+      },
+      {
+        "anchor": "run a continuous auction",
+        "type": "branch",
+        "caption": "the control desk — frequency is sagging",
+        "name": "esgGridBranch",
+        "config": {
+          "root": "You are on the control desk of a national grid. It is a cold, still evening and demand is climbing fast.",
+          "nodes": {
+            "start": {
+              "text": "Demand has outrun your forecast: generation now trails draw and system frequency begins to sag. First move?",
+              "choices": [
+                { "label": "Call on balancing services — reserve that responds in seconds", "next": "reserve", "feedback": "That is what the auction buys: seconds-fast response holds the line while slower plant spins up." },
+                { "label": "Do nothing — frequency will recover on its own", "next": "drift", "feedback": "It will not self-correct: the sag deepens until protection steps in." },
+                { "label": "Order the wind fleet to produce more", "next": "wind", "feedback": "The evening is still — the fuel arrives when the weather sends it, and tonight it is not sending any." }
+              ]
+            },
+            "reserve": { "text": "Frequency stabilises. Tomorrow's auction prices the lesson in: demand forecasting (weather-driven, literally), plant scheduling, and reserve paid to respond in seconds." },
+            "drift": { "text": "Draw keeps exceeding generation; drift too far and protection systems disconnect generators to save the hardware — the cascade that blacked out 50 million people in 2003." },
+            "wind": { "text": "The redesign manages timing instead of assuming always-on supply: storage, demand response, interconnection over wide areas — wind is always blowing somewhere, just not here." }
+          },
+          "why": "A grid has almost no storage: supply must equal demand every second, and frequency is the tell."
+        }
+      },
+      {
+        "anchor": "Individual windless nights are trivial",
+        "type": "predict",
+        "caption": "bet before you read on — the windless week",
+        "name": "esgLullPredict",
+        "config": {
+          "q": "A high-pressure system calms the wind over an entire region for a week. What does that do to the claim that renewables cannot run a modern grid?",
+          "choices": [
+            "Settles it — a week without wind ends the experiment",
+            "It sharpens the real question: correlated lulls are the genuine challenge, and they are solvable at a price of firmness that keeps falling",
+            "It only matters for small islands"
+          ],
+          "answer": 1,
+          "why": "Individual windless nights are trivial; the real test is correlated lulls and seasonal balance — met with storage, interconnection, demand flexibility and forecasting, as the price of firmness keeps dropping."
+        }
+      },
+      {
+        "anchor": "The transition's economics flipped within one decade",
+        "type": "estimate",
+        "caption": "call the price collapse — the solar curve",
+        "name": "esgSolarEstimate",
+        "config": {
+          "prompt": "Solar module prices fell about 90% from 2010 to 2020. In 2020, a module cost roughly what fraction of its 2010 price?",
+          "unit": "% of the 2010 price",
+          "answer": 10,
+          "factor": 1.6,
+          "why": "About a tenth of the 2010 price — a learning rate near 20% per doubling of capacity, the steepest cost curve of any energy technology ever measured.",
+          "context": "Onshore wind fell by about two-thirds over the same decade; batteries dropped about 90% from 2010 to 2023."
+        }
+      },
+      {
+        "anchor": "Efficiency is the resource nobody builds and everybody saves",
+        "type": "match",
+        "caption": "pair each demand-side lever with its mechanism",
+        "name": "esgEfficiencyMatch",
+        "config": {
+          "prompt": "Five levers for bending the demand curve — pair each with how it works:",
+          "pairs": [
+            { "left": "building standards", "right": "insulation is permanent savings on the largest building loads — heating and cooling" },
+            { "left": "appliance standards", "right": "LED lighting cut lighting's electricity demand roughly in half in a decade" },
+            { "left": "industrial efficiency", "right": "waste-heat recovery and motor upgrades" },
+            { "left": "demand management", "right": "time-of-use pricing shifts load into sunny hours — the grid's free storage" },
+            { "left": "electrification with heat pumps", "right": "delivers three to four units of heat per unit of electricity by moving heat rather than making it" }
+          ],
+          "why": "Every avoided kilowatt-hour avoids the generation, transmission and emissions attached to it — conservation buys the time that storage and transmission need to mature."
+        }
+      },
+      {
+        "anchor": "pays a small electrical toll",
+        "type": "judge",
+        "caption": "true or false — the heat-pump accounting",
+        "name": "esgHeatPumpJudge",
+        "config": {
+          "statements": [
+            { "s": "A heat pump delivering three to four units of heat per unit of electricity violates thermodynamics.", "truth": false, "why": "It moves existing heat rather than making it — the honest figure of merit is the coefficient of performance." },
+            { "s": "A furnace loses part of its energy up the flue.", "truth": true, "why": "Burning fuel makes heat and part of it escapes as exhaust — a heat pump instead pumps heat up a modest temperature gradient." },
+            { "s": "A heat pump can deliver more heat energy than the electricity it consumes.", "truth": true, "why": "A 300–400% figure of merit that is honest accounting, not a perpetual-motion claim." },
+            { "s": "Heat-pump performance should be read as a conversion efficiency, like a power plant's.", "truth": false, "why": "Coefficient of performance, not conversion efficiency — the two numbers answer different questions." }
+          ]
+        }
+      }
+    ]
+  }
+]

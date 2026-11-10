@@ -21,6 +21,186 @@ const payoffPlot = {
   y: { min: -25, max: 25, label: 'profit / loss' },
   height: 320,
 };
+
+const odForwardEstimate = {
+  "prompt": "Cash-and-carry: a stock trades at £100 and interest rates are 5% for one year. What is the fair one-year forward price, F = S·e^rT?",
+  "unit": "£",
+  "answer": 105.13,
+  "factor": 1.15,
+  "why": "F = 100·e^0.05 ≈ 105.13 — exactly the cost of buying the stock now and carrying it, financed at 5%, to delivery. Any deviation is free money, which is why forward prices are arithmetic rather than forecasts.",
+  "context": "If F is higher: sell the forward, buy the stock with borrowed funds. If lower, do the reverse."
+};
+
+const odStrategyMatch = {
+  "prompt": "Lego for payoff shapes — pair each position with the view it expresses:",
+  "pairs": [
+    {
+      "left": "Long call",
+      "right": "a leveraged bull position with capped downside"
+    },
+    {
+      "left": "Long put",
+      "right": "portfolio insurance — a floor under held shares"
+    },
+    {
+      "left": "Straddle",
+      "right": "a bet on volatility, not direction"
+    },
+    {
+      "left": "Collar",
+      "right": "insurance paid for by selling upside"
+    },
+    {
+      "left": "Spread",
+      "right": "limits both sides of the payoff"
+    }
+  ],
+  "why": "\"What is your payoff diagram?\" is the first professional question in any options conversation — and portfolio insurance's own 1987 crash story is the cautionary footnote."
+};
+
+const odBreakevenSpot = {
+  "prompt": "One line of this options-desk note is wrong — click it:",
+  "lines": [
+    "Exercising a call above the strike is rational.",
+    "The premium was paid up front, before expiry.",
+    "Breakeven sits exactly at the strike.",
+    "A fund holding shares plus index puts has bought a floor.",
+    "Straddles bet on volatility rather than direction."
+  ],
+  "errorLine": 2,
+  "correction": "Breakeven is strike plus premium — with the stock at 102, a call struck at 100 is exercised anyway and still nets a loss of 3.",
+  "why": "In-the-money and profitable are different claims: the premium must be earned back first, and it is the market's no-arbitrage price of the payoff's time value."
+};
+
+const odParityCloze = {
+  "text": "Put-call parity: C − P = S − K·e^(−rT) — a long call plus a short %%0%% replicates a forward. With S = 100, K = 100 and r = 5% over one year, the right side is 100 − 95.12 = %%1%%.",
+  "answers": [
+    [
+      "put"
+    ],
+    [
+      "4.88",
+      "£4.88"
+    ]
+  ],
+  "hint": "Long call + short put = long forward; 100·e^−0.05 ≈ 95.12."
+};
+
+const odSmilePlace = {
+  "prompt": "The volatility smile: where is deep out-of-the-money crash insurance priced, relative to the lognormal model's prediction?",
+  "labels": [
+    "far below",
+    "below",
+    "in line",
+    "above",
+    "far above"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 75,
+  "tolerance": 12,
+  "why": "Systematically above — the smile/skew, a permanent scar from 1987 — so traders price volatility surfaces, not scalars, and implied volatility becomes a market of its own (the VIX, computed from index-option prices)."
+};
+
+const odSwapBranch = {
+  "root": "You are treasurer. The company pays floating rates on £100m of debt and fears rises.",
+  "nodes": {
+    "start": {
+      "text": "The bank quotes an interest-rate swap. Which leg do you pay?",
+      "choices": [
+        {
+          "label": "Pay 3.5% fixed, receive the floating index",
+          "next": "test",
+          "feedback": "Fixed-for-floating: the classic hedge for a floating-rate borrower."
+        },
+        {
+          "label": "Receive 3.5% fixed, pay floating",
+          "next": "test",
+          "feedback": "That is the other side's trade — it would double your exposure to rising rates."
+        },
+        {
+          "label": "No swap — keep the floating exposure",
+          "next": "test",
+          "feedback": "A choice, but not a hedge: every rise in rates lands directly on the interest bill."
+        }
+      ]
+    },
+    "test": {
+      "text": "Over the swap's life, floating averages 4.5%. What is your effective borrowing cost?",
+      "choices": [
+        {
+          "label": "3.5% — the floating leg pays you 1% back",
+          "next": "flip",
+          "feedback": "Exactly: receiving 4.5% while paying 3.5% fixed nets +1%, offsetting the rise."
+        },
+        {
+          "label": "4.5% — the swap cannot help",
+          "next": "flip",
+          "feedback": "It can: the swap nets +1% against the 3.5% fixed leg."
+        }
+      ]
+    },
+    "flip": {
+      "text": "Now floating averages 2.5%. Effective cost?",
+      "choices": [
+        {
+          "label": "Still 3.5% — you pay the 1% difference away",
+          "next": "end",
+          "feedback": "The hedge holds in both directions: rates fell, the swap cost you 1%, the budget never moved."
+        },
+        {
+          "label": "2.5% — you pocket the cheap rates",
+          "next": "end",
+          "feedback": "No — paying 3.5% fixed against 2.5% floating nets −1% this time. Effective cost unchanged."
+        }
+      ]
+    },
+    "end": {
+      "text": "Either way the cost is 3.5%: banks intermediate by quoting the fixed leg, and this swap market is the largest in the world by notional."
+    }
+  },
+  "why": "A swap exchanges payment streams — fixed-for-floating on a notional principal — turning uncertain financing costs into a budgeted one."
+};
+
+const odGreekMatch = {
+  "prompt": "The risk dashboard has five dials — pair each Greek with what it measures:",
+  "pairs": [
+    {
+      "left": "Delta",
+      "right": "price change per unit of underlying — runs 0 to 1, about 0.5 at-the-money"
+    },
+    {
+      "left": "Gamma",
+      "right": "how fast delta itself changes — a short-gamma hedger buys high and sells low"
+    },
+    {
+      "left": "Theta",
+      "right": "time decay — accelerating in the final weeks for near-the-money strikes"
+    },
+    {
+      "left": "Vega",
+      "right": "sensitivity to implied volatility — a spike pays the holder regardless of direction"
+    },
+    {
+      "left": "Rho",
+      "right": "interest-rate sensitivity — minor for equity options, central for long-dated rates products"
+    }
+  ],
+  "why": "Risk limits are set per Greek because each dimension kills differently — direction, acceleration, decay, volatility — and desks keep smile-adjusted Greeks, stress-testing beyond the model."
+};
+
+const odRetailPredict = {
+  "q": "You buy one call, strike £100, premium £5. At expiry the stock is £102 and you exercise. Your net result?",
+  "choices": [
+    "+£2 — the option finished in the money",
+    "−£3 — the premium eats the gain",
+    "£0 — exercising cancels the premium"
+  ],
+  "answer": 1,
+  "why": "Exercising is rational above the strike, but the £5 premium was paid up front: breakeven is strike plus premium, so £102 nets −£3. In-the-money is not the same as profitable — and most retail options expire worthless besides."
+};
 ---
 <TopicPage slug="subjects/finance/advanced/options-and-derivatives">
   <h2>Where you are, and what you will learn</h2>
@@ -82,6 +262,7 @@ const payoffPlot = {
     risk — the local-vs-futures gap that hedgers still wear) and transfers it to whoever chose to
     hold it, paid to do so.
   </p>
+  <Widget no="3" caption="call the carry — price the forward" widget="estimate" config={odForwardEstimate} />
   <p>
     <strong>So far:</strong> forwards and futures relocate price risk by contract, and
     arbitrage — not opinion — fixes their prices. Next come contracts that relocate risk
@@ -124,6 +305,7 @@ const payoffPlot = {
     (limit both sides). Options are Lego for payoff functions; "what is your payoff diagram?" is
     the first professional question in any options conversation.
   </p>
+  <Widget no="4" caption="pair each position with its view" widget="match" config={odStrategyMatch} />
   <p>
     <em>Common misconception:</em> "if the option finishes in the money, I made money."
     Exercising above the strike is rational — but the premium was paid up front, so
@@ -131,6 +313,7 @@ const payoffPlot = {
     a call struck at 100 is exercised anyway and still nets a loss. A cheap premium is not
     a bargain either: it is the market's no-arbitrage price of the payoff's time value.
   </p>
+  <Widget no="5" caption="find the faulty line — the breakeven brief" widget="spot-error" config={odBreakevenSpot} />
 
   <h2>Put-call parity and the no-arbitrage discipline</h2>
   <p>
@@ -145,6 +328,7 @@ const payoffPlot = {
     small precisely because thousands of desks run this arithmetic continuously — arbitrage is
     the market's immune system, and option theory is its antibody design.
   </p>
+  <Widget no="6" caption="fill the parity identity" widget="cloze" config={odParityCloze} />
   <p>
     <strong>So far:</strong> no-arbitrage prices a forward outright and shackles a call to its
     matching put through parity. One gap remains — pricing an option on its own — and the same
@@ -170,6 +354,7 @@ const payoffPlot = {
     lognormal model's prediction, a permanent scar from 1987), so traders price surfaces, not
     scalars. Nobel 1997 (Scholes and Merton); Black died before eligibility.
   </p>
+  <Widget no="7" caption="pin the smile — where crash insurance sits" widget="place" config={odSmilePlace} />
 
   <h2>Swaps, credit derivatives, and the systemic lesson</h2>
   <p>
@@ -188,6 +373,7 @@ const payoffPlot = {
     reforms (central clearing, margin, trade repositories) are engineering responses to exactly
     that: the same notional plumbing, drained of the parts that fail silently.
   </p>
+  <Widget no="8" caption="run the swap through both rate worlds" widget="branch" config={odSwapBranch} />
   <p>
     <em>Common misconception:</em> "derivatives are gambling, full stop." The same instrument is
     insurance in one portfolio and speculation in another — the economic function lives in the
@@ -217,6 +403,7 @@ const payoffPlot = {
     stress-test beyond the model: the dashboard reads the model, the book lives in the
     market.
   </p>
+  <Widget no="9" caption="pair each Greek with its dial" widget="match" config={odGreekMatch} />
   <p>
     <em>Common misconception:</em> "a delta-hedged position is a safe position." Neutralising
     delta removes only the first-order, directional risk — the dashboard has more dials. As
@@ -298,6 +485,7 @@ const payoffPlot = {
     what capital, under what model — and whether the person on the other side of the screen
     knows which of those roles they have taken.
   </p>
+  <Widget no="10" caption="bet before the reveal — in the money ≠ profitable" widget="predict" config={odRetailPredict} />
 
   <p class="sources"><strong>Sources:</strong> Black &amp; Scholes (1973) and Merton (1973); Cox, Ross &amp; Rubinstein (1979); Hull, Options, Futures and Other Derivatives; McDonald, Derivatives Markets; BIS derivatives statistics; Financial Crisis Inquiry Report (2011). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

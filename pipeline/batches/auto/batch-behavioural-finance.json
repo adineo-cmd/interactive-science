@@ -1,0 +1,148 @@
+[
+  {
+    "slug": "subjects/finance/expert/behavioural-finance",
+    "activities": [
+      {
+        "anchor": "Explained facts the standard model could not",
+        "type": "match",
+        "caption": "pair each feature with its consequence",
+        "name": "bfProspectMatch",
+        "config": {
+          "prompt": "The measured value function — pair each feature with what it produces:",
+          "pairs": [
+            { "left": "Reference point", "right": "outcomes weighed against the purchase price, not wealth" },
+            { "left": "Loss aversion", "right": "losses loom about twice as large as equivalent gains" },
+            { "left": "The flattened curve", "right": "risk-seeking for losses, risk-averse for gains" },
+            { "left": "Holding underwater stocks", "right": "selling crystallises a loss" }
+          ],
+          "why": "Kahneman and Tversky (1979) replaced the rational value function with a measured one — and explained why investors hold losers, why insurers sell deductibles, why gamblers chase."
+        }
+      },
+      {
+        "anchor": "The arithmetic explains portfolio behaviour the rational model calls error",
+        "type": "judge",
+        "caption": "true or false — the meter with double weight",
+        "name": "bfValueJudge",
+        "config": {
+          "statements": [
+            { "s": "Winning 100 feels like about +1 unit of value; losing 100 feels like about −2.2.", "truth": true, "why": "The measured value function prices a loss at roughly twice a gain." },
+            { "s": "A 50/50 coin flip of plus-or-minus 100 has positive subjective value.", "truth": false, "why": "About −0.6 — refused; yet the same coin flipped over an existing loss is eagerly accepted." },
+            { "s": "The shorter the evaluation horizon, the smaller the premium needed to hold stocks.", "truth": false, "why": "The other way round: frequent checks deliver regular loss experiences at double weight, so a bigger premium is needed." },
+            { "s": "Insurers selling deductibles and gamblers chasing losses trace to the same flattened value function.", "truth": true, "why": "Risk-seeking in the loss domain, risk-aversion in the gain domain — facts the standard model could not explain." }
+          ]
+        }
+      },
+      {
+        "anchor": "Calibrating the model to plausible check frequencies",
+        "type": "estimate",
+        "caption": "call the magnitude — the oldest premium puzzle",
+        "name": "bfPremiumEstimate",
+        "config": {
+          "prompt": "Historically, by roughly how much a year have stocks outperformed Treasury bills (geometric)?",
+          "unit": "% a year",
+          "answer": 5.5,
+          "factor": 1.4,
+          "why": "About 5–6% — more than any plausible risk aversion justifies (Mehra and Prescott's 1985 puzzle). Benartzi and Thaler's myopic loss aversion reproduces the observed premium from realistic checking behaviour: the rare behavioural result that solves a puzzle with numbers."
+        }
+      },
+      {
+        "anchor": "calibrated against these distortions",
+        "type": "spot-error",
+        "caption": "find the faulty line — the suitability spec",
+        "name": "bfSuitSpot",
+        "config": {
+          "prompt": "One line of this suitability questionnaire's spec is wrong — click it:",
+          "lines": [
+            "People file money in non-fungible buckets: dividends feel like spending money.",
+            "The same dollar is treated differently depending on its mental ledger.",
+            "The same accounting files nominal house prices as 'wealth'.",
+            "Good suitability practice asks about stated preferences on a scale of 1 to 10.",
+            "The honest probe is behaviour in past drawdowns."
+          ],
+          "errorLine": 3,
+          "correction": "Good suitability practice asks about behaviour in past drawdowns — stated preferences are exactly what the mental ledgers corrupt.",
+          "why": "Cash filed as 'safe' and house prices filed as 'wealth' show how households maximise the feeling of safety while minimising its substance — measure the behaviour, not the self-image."
+        }
+      },
+      {
+        "anchor": "offered two logically identical programmes",
+        "type": "branch",
+        "caption": "run the two frames yourself",
+        "name": "bfFrameBranch",
+        "config": {
+          "root": "You are a subject in the 1981 experiment. An outbreak is expected to kill 600 people. Choose a programme.",
+          "nodes": {
+            "start": {
+              "text": "Frame one. Programme A: 200 people will be saved for certain. Programme B: a 1/3 chance that 600 will be saved, a 2/3 chance that nobody is. Choose.",
+              "choices": [
+                { "label": "Programme A — the certain save", "next": "frame2", "feedback": "You are with 72% of subjects — risk-averse when the frame is lives saved." },
+                { "label": "Programme B — the gamble", "next": "frame2", "feedback": "You are with 28% — the minority under this frame." }
+              ]
+            },
+            "frame2": {
+              "text": "Frame two — same outbreak, re-described. Programme C: 400 people will die for certain. Programme D: a 1/3 chance that nobody dies, a 2/3 chance that all 600 die. Choose.",
+              "choices": [
+                { "label": "Programme C — the certain outcome", "next": "end", "feedback": "Only 28% chose this — though it is Programme A, unchanged in substance." },
+                { "label": "Programme D — gamble on the deaths", "next": "end", "feedback": "78% took the gamble — the loss frame flipped the risk appetite without moving one number." }
+              ]
+            },
+            "end": {
+              "text": "The invariance axiom — descriptions should not matter — fails measurably."
+            }
+          },
+          "why": "In finance the same trade reads as 'locking in a gain' or 'missing further upside' — a screen showing unrealised losses produces different behaviour than the identical numbers shown as returns since purchase."
+        }
+      },
+      {
+        "anchor": "A pricing anomaly became a preference measurement",
+        "type": "compare",
+        "caption": "drag the divider — the line the model draws vs the line the data draw",
+        "name": "bfBetaCompare",
+        "config": {
+          "prompt": "The security market line, twice — drag the divider:",
+          "before": {
+            "label": "CAPM says",
+            "text": "High-beta assets earn more — the line slopes upward with beta, paying for the market risk each asset contributes."
+          },
+          "after": {
+            "label": "The data say",
+            "text": "The line comes out flat: low-beta portfolios match or beat high-beta ones after risk-adjustment. Investors pay a premium for lottery-like glamour, and leverage constraints push risk-seekers into high-beta stocks instead of borrowing."
+          },
+          "why": "Frazzini and Pedersen's betting-against-beta mechanism monetises the gap — a taste story, reinforced by constraints, that turned an anomaly into a preference measurement."
+        }
+      },
+      {
+        "anchor": "a pattern no risk-based model wants",
+        "type": "predict",
+        "caption": "bet on the winners",
+        "name": "bfMomentumPredict",
+        "config": {
+          "q": "You screen for stocks that won over the past year and buy them. What did Jegadeesh and Titman (1993) find happens over the following months?",
+          "choices": [
+            "Losers catch up — the reversal takes over",
+            "Winners keep beating losers by roughly 12% a year",
+            "Nothing — the ranking is noise"
+          ],
+          "answer": 1,
+          "why": "About 12% a year, roughly 1% a month, replicated across international markets — and its persistence after publication, punctuated by the momentum crash of 2009, makes it the field's central test case for risk versus psychology."
+        }
+      },
+      {
+        "anchor": "establish that bubbles predate modern markets",
+        "type": "timeline",
+        "caption": "scrub the canon — manias, across the centuries",
+        "name": "bfBubbleTimeline",
+        "config": {
+          "unit": "year",
+          "events": [
+            { "year": 1637, "title": "Tulip mania", "text": "Bubbles predate modern markets.", "tag": "the classics" },
+            { "year": 1720, "title": "South Sea Bubble", "text": "The pattern reassembles in period costume.", "tag": "the classics" },
+            { "year": 2000, "title": "Dot-com peak", "text": "NASDAQ −78% from March 2000 to October 2002 when the constraints relaxed.", "tag": "modern" },
+            { "year": 2008, "title": "The full anatomy", "text": "A narrative ('national house prices never fall'), the Gaussian copula, and a cascade of AAA purchases.", "tag": "modern" },
+            { "year": 2021, "title": "GameStop", "text": "From around 20 dollars to an intraday 483 — coordination without organisation.", "tag": "modern" }
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,150 @@
+[
+  {
+    "slug": "subjects/finance/advanced/portfolio-theory-markowitz",
+    "activities": [
+      {
+        "anchor": "Read the dial carefully",
+        "type": "trace",
+        "caption": "which curve is the truth, which the ceiling?",
+        "name": "mptVolTrace",
+        "config": {
+          "prompt": "Two assets, 20% volatility each, mixed 50/50. Which curve is the mix's true volatility as correlation runs from −1 to 1?",
+          "curves": [
+            { "expr": "sqrt(800 + 800*x)/2", "color": "#1d4ed8", "label": "A" },
+            { "expr": "20", "color": "#b42318", "label": "B" },
+            { "expr": "sqrt(800 - 800*x)/2", "color": "#0f766e", "label": "C" }
+          ],
+          "correct": 0,
+          "x": { "min": -1, "max": 1, "label": "correlation between the assets" },
+          "y": { "min": 0, "max": 25, "label": "50/50 portfolio volatility %" },
+          "why": "Curve A: σ = sqrt(800 + 800ρ)/2 — about 16.1% at ρ = 0.3, 14.1% at ρ = 0, and exactly 20% at ρ = 1, where it meets curve B, the naive weighted-average ceiling. Below zero, the risk cut accelerates."
+        }
+      },
+      {
+        "anchor": "Two structural results follow",
+        "type": "match",
+        "caption": "pair each object with its place on the map",
+        "name": "mptFrontierMatch",
+        "config": {
+          "prompt": "The optimisation's furniture — pair each object with its place:",
+          "pairs": [
+            { "left": "Efficient frontier", "right": "the upper edge — maximum expected return at each level of risk" },
+            { "left": "Global minimum-variance portfolio", "right": "the curve's left tip" },
+            { "left": "Tangency portfolio", "right": "where the line from the risk-free rate touches the frontier" },
+            { "left": "Dominated portfolio", "right": "below the frontier — beaten on return, risk, or both" },
+            { "left": "Two-fund separation", "right": "every appetite served by one risky portfolio plus a slider to cash" }
+          ],
+          "why": "Separation is the theoretical foundation of index-fund investing: hold the market, adjust the cash/bond mix to taste — advice that is arithmetic, not conservatism."
+        }
+      },
+      {
+        "anchor": "cheap or expensive on their own risk",
+        "type": "spot-error",
+        "caption": "find the faulty line — the allocator's memo",
+        "name": "mptMemoSpot",
+        "config": {
+          "prompt": "One line of this allocator's memo is wrong — click it:",
+          "lines": [
+            "Diversification eliminates the avoidable risk — firm-specific noise averages away.",
+            "What remains is the risk common to everything you hold.",
+            "The risk–return relationship runs through the pricing of systematic risk.",
+            "Defensive low-volatility stocks have historically earned less, exactly as their lower risk demands."
+          ],
+          "errorLine": 3,
+          "correction": "Defensive stocks historically earned competitive returns with less risk — the low-volatility anomaly, the standing embarrassment to both misconceptions.",
+          "why": "There is no law that low risk must earn less: assets can be mispriced on their own risk, which is why the anomaly embarrasses both 'diversification eliminates risk' and its converse."
+        }
+      },
+      {
+        "anchor": "CAPM is Markowitz plus equilibrium",
+        "type": "cloze",
+        "caption": "fill the pricing identity",
+        "name": "mptCapmCloze",
+        "config": {
+          "text": "E(R) = R_f + β × ERP: only %%0%% with the market is priced; an asset's own %%1%% earns nothing extra because it diversifies away; alpha is the return %%2%% the line.",
+          "answers": [["covariance", "beta"], ["volatility"], ["above"]],
+          "hint": "Systematic risk only — performance attribution starts at the drawn line."
+        }
+      },
+      {
+        "anchor": "routinely underperform simple allocations out of sample",
+        "type": "branch",
+        "caption": "concentrated optimiser, noisy inputs — pick the repair",
+        "name": "mptOptimBranch",
+        "config": {
+          "root": "Your optimiser returns a portfolio concentrated in three assets. The inputs were noisy.",
+          "nodes": {
+            "start": {
+              "text": "Michaud has your attention. What is the move?",
+              "choices": [
+                { "label": "Run it as-is — the optimiser found the utility maximum", "next": "repair", "feedback": "That is exactly the trap: the errors concentrate precisely where the weights go." },
+                { "label": "Add weight and turnover constraints; shrink estimates toward structure", "next": "repair", "feedback": "Institutional practice: Ledoit-Wolf covariances, Black–Litterman views blended with market equilibrium." },
+                { "label": "Abandon the frame and hold cash", "next": "repair", "feedback": "Over-correcting — the frame is solvable; the inputs are merely forecasts." }
+              ]
+            },
+            "repair": {
+              "text": "One repair is famously hard to beat out of sample. Which?",
+              "choices": [
+                { "label": "The naive 1/n portfolio", "next": "end", "feedback": "DeMiguel, Garlappi and Uppal: the naive allocation rivals optimised ones — humility, institutionalised." },
+                { "label": "Lever the optimised portfolio until the errors wash out", "next": "end", "feedback": "Leverage amplifies measured error rather than washing it out." }
+              ]
+            },
+            "end": {
+              "text": "Risk parity, volatility targeting and factor investing all manage the same truth: the frontier is itself a forecast."
+            }
+          },
+          "why": "Expected returns are unobservable, variances cluster in time, and correlations converge toward one in crises — regime-dependence is the deepest caveat."
+        }
+      },
+      {
+        "anchor": "banking regulation's native measure",
+        "type": "sort-buckets",
+        "caption": "file VaR's pathologies against its repairs",
+        "name": "mptVarBuckets",
+        "config": {
+          "prompt": "Variance's replacements — file each property:",
+          "buckets": ["VaR's pathologies", "the repairs: CVaR and drawdown"],
+          "items": [
+            { "label": "says nothing about losses beyond the threshold — the tail is where ruin lives", "bucket": 0 },
+            { "label": "not subadditive: merged portfolios can show more VaR than their parts", "bucket": 0 },
+            { "label": "invites tail-blindness in the reports it produces", "bucket": 0 },
+            { "label": "the average loss in the tail beyond VaR", "bucket": 1 },
+            { "label": "coherent and subadditive — the post-crisis Basel standard for market risk", "bucket": 1 },
+            { "label": "largest peak-to-trough decline — the lived experience investors abandon portfolios over", "bucket": 1 }
+          ],
+          "why": "Two strategies with identical volatility and mean can be separated cleanly by drawdown and CVaR — and the investor who flees at the bottom converts paper loss into permanent loss."
+        }
+      },
+      {
+        "anchor": "persistent across markets, and contested in interpretation",
+        "type": "predict",
+        "caption": "bet on the published factor",
+        "name": "mptFactorPredict",
+        "config": {
+          "q": "A factor anomaly is published in a top journal. What typically happens to its premium in the years after?",
+          "choices": [
+            "It grows as more capital piles in",
+            "It attenuates — the publication-decay effect",
+            "Nothing changes; premia are structural constants"
+          ],
+          "answer": 1,
+          "why": "Factor premia attenuate after publication, and timing them is hard — the honest institutional answer is broad, cheap, rebalanced exposure: the frontier's logic applied to itself."
+        }
+      },
+      {
+        "anchor": "with n assets you must",
+        "type": "estimate",
+        "caption": "call the size of Σ — 500 stocks, every pair",
+        "name": "mptCovEstimate",
+        "config": {
+          "prompt": "A 500-stock portfolio: roughly how many pairwise covariance entries must be estimated?",
+          "unit": "covariance entries",
+          "answer": 125000,
+          "factor": 1.6,
+          "why": "n(n−1)/2 = 500 × 499 / 2 = 124,750 ≈ 125,000 — which is why shrinkage, factor structure and regularisation are the standard fixes.",
+          "context": "The minimum-variance weights are w ∝ Σ⁻¹μ — everything reduces to Σ and its inverse."
+        }
+      }
+    ]
+  }
+]

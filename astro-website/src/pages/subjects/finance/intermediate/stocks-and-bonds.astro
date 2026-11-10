@@ -39,6 +39,178 @@ const sbQuizCfg = {
     },
   ],
 };
+
+const sbClaimsCompare = {
+  "prompt": "The two claims everything is built from — drag the divider:",
+  "before": {
+    "label": "Stock — ownership",
+    "text": "A residual claim: profits arrive as dividends or retained growth, a vote elects the board, and liquidation pays you last. Upside unbounded; in bad outcomes shareholders absorb losses until wiped out."
+  },
+  "after": {
+    "label": "Bond — a loan",
+    "text": "Fixed coupons plus principal at maturity. Upside capped at the schedule; priority in trouble sits near the front of the queue."
+  },
+  "why": "Understanding what you actually hold — a share of profits or a loan contract — explains both the returns and the risks of everything built on top."
+};
+
+const sbRightsMatch = {
+  "prompt": "What a share of common stock attaches — pair each right with its meaning:",
+  "pairs": [
+    {
+      "left": "Claim on profits",
+      "right": "paid as dividends or retained for growth"
+    },
+    {
+      "left": "Vote on governance",
+      "right": "electing the board"
+    },
+    {
+      "left": "Residual claim",
+      "right": "paid after employees, suppliers, lenders and bondholders"
+    },
+    {
+      "left": "Limited liability",
+      "right": "the worst case capped at your investment — failure cannot follow you home"
+    },
+    {
+      "left": "Initial public offering",
+      "right": "the company sells shares to the public and gets the money"
+    }
+  ],
+  "why": "Afterwards the shares trade on secondary markets — NYSE, Nasdaq, LSE — where the company receives nothing and prices are the market's running vote on the discounted value of all future profits."
+};
+
+const sbLadderPlace = {
+  "prompt": "The ratings ladder: where does the investment-grade floor sit?",
+  "labels": [
+    "AAA",
+    "AA",
+    "A",
+    "BBB",
+    "BB",
+    "B"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 5
+  },
+  "answer": 3,
+  "tolerance": 0.5,
+  "why": "AAA to BBB− is investment grade — most regulated funds may hold it; below that is high yield, junk, where the credit analysis of leverage, coverage and collateral has found real doubt."
+};
+
+const sbDurationEstimate = {
+  "prompt": "Rates rise 1 percentage point. Roughly how much price does a 30-year bond lose?",
+  "unit": "% of price",
+  "answer": 18,
+  "factor": 1.15,
+  "why": "About 17–19 per cent (a 10-year bond loses roughly 7–8) — exactly what 2022 demonstrated: aggressive rate rises produced the worst global bond year on record, with major aggregate indices down around 13–16 per cent."
+};
+
+const sbExDivPredict = {
+  "q": "A company pays a 4 dividend. On the ex-dividend date, what does the share price do?",
+  "choices": [
+    "Rises by 4 — income received",
+    "Falls by roughly 4 — cash moved from the company's account to yours",
+    "Unchanged — dividends are free money"
+  ],
+  "answer": 1,
+  "why": "The company has moved cash from its account to yours: what compounds is the whole return — the payout is an income choice, not an arbitrage."
+};
+
+const sbMaturitySpot = {
+  "prompt": "One line of this bond-holder's note is wrong — click it:",
+  "lines": [
+    "The coupons and principal of a held bond are fixed.",
+    "The price of the bond is not.",
+    "The 1,000 bond fell to about 926 when rates rose one point.",
+    "A 30-year bond falls roughly five times harder than the 10-year.",
+    "Sell early and you keep the price you bought at."
+  ],
+  "errorLine": 4,
+  "correction": "Sell early and the market re-prices you first — the fixed payments protect the cash flows, never the price.",
+  "why": "The payments are fixed; the price is not — duration decides how hard the re-pricing bites, and whoever sells wears it."
+};
+
+const sbGradeBranch = {
+  "root": "A corporate issuer is on your desk. The rating letter depends on your answers.",
+  "nodes": {
+    "start": {
+      "text": "Debt stands at how many times annual operating profit?",
+      "choices": [
+        {
+          "label": "Three times",
+          "next": "coverage",
+          "feedback": "Rideable — a company owing three times operating profit can usually absorb a bad year."
+        },
+        {
+          "label": "Eight times",
+          "next": "coverage",
+          "feedback": "Danger territory — one owing eight times may not."
+        }
+      ]
+    },
+    "coverage": {
+      "text": "Interest coverage: operating profit divided by the interest bill?",
+      "choices": [
+        {
+          "label": "About 10 times",
+          "next": "grade",
+          "feedback": "Comfortable cover."
+        },
+        {
+          "label": "Below 2 times",
+          "next": "grade",
+          "feedback": "The dividend of error is near zero."
+        }
+      ]
+    },
+    "grade": {
+      "text": "The letters compress your answers. Below BBB−, what changes mechanically?",
+      "choices": [
+        {
+          "label": "Index-tracking holders are forced to sell — the fallen-angel dynamic",
+          "next": "end",
+          "feedback": "The downgrade itself pushes prices down further — the grade matters mechanically, not just descriptively."
+        },
+        {
+          "label": "Nothing — the letters are descriptive only",
+          "next": "end",
+          "feedback": "Regulated funds and index trackers are constrained by the grade — the selling is mechanical."
+        }
+      ]
+    },
+    "end": {
+      "text": "The reward for bearing the risk is the spread — in normal times 3–4 points over Treasuries; in panics it can blow out past 10, precisely when default risk (and opportunity) peaks."
+    }
+  },
+  "why": "Leverage, coverage and liquidity compress into letters — and reading spreads is reading the market's live estimate of how much trouble the economy is in."
+};
+
+const sbBookJudge = {
+  "statements": [
+    {
+      "s": "The best bid and best ask bracket the spread.",
+      "truth": true,
+      "why": "Market makers earn it for standing ready to trade — that is what liquidity means."
+    },
+    {
+      "s": "In crises, spreads widen exactly when you most need to exit.",
+      "truth": true,
+      "why": "The same share can be effortless to trade one week and gappy the next — liquidity is the invisible variable."
+    },
+    {
+      "s": "Adding a stock to a major index changes its liquidity and often its price.",
+      "truth": true,
+      "why": "Inclusion forces passive funds to buy it — index construction moves markets."
+    },
+    {
+      "s": "Market orders are the right choice when size is large.",
+      "truth": false,
+      "why": "Prefer limit orders when size is large — the spread is small, but it is being paid by someone."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/finance/intermediate/stocks-and-bonds">
 
@@ -69,6 +241,7 @@ const sbQuizCfg = {
     bondholder gets a fixed stream first, which is why their upside is capped and their priority
     in trouble is near the front of the queue.
   </p>
+  <Widget no="2" caption="drag the divider — ownership vs loan" widget="compare" config={sbClaimsCompare} />
 
   <Widget no="1" caption="the two claims, their prices, and the index that holds them" widget="equationStep" config={sbCfg} />
   <p>
@@ -97,6 +270,7 @@ const sbQuizCfg = {
     between themselves at prices set continuously by order books. Those prices are the
     market's running vote on the discounted value of all future profits.
   </p>
+  <Widget no="3" caption="pair each right with what it buys you" widget="match" config={sbRightsMatch} />
 
   <h2>The bond: a loan with a schedule</h2>
   <p>
@@ -115,6 +289,7 @@ const sbQuizCfg = {
     built from subprime mortgages proved far riskier than their ratings, and the mechanism
     transmitted a housing problem into a global banking crisis.
   </p>
+  <Widget no="4" caption="pin the investment-grade floor" widget="place" config={sbLadderPlace} />
 
   <p>
     <strong>So far:</strong> a stock is ownership with the last claim in line; a bond is a
@@ -138,6 +313,7 @@ const sbQuizCfg = {
     record (major aggregate indices fell around 13–16 per cent, and UK gilts endured their
     worst year in decades).
   </p>
+  <Widget no="5" caption="call the swing — duration at 30 years" widget="estimate" config={sbDurationEstimate} />
   <p>
     For a stock, the discounting runs over the company's entire future profit stream. The
     cleanest expression is the <strong>Gordon growth model</strong>: price = D<sub>1</sub>/(r − g),
@@ -158,6 +334,7 @@ const sbQuizCfg = {
     account to yours. Total return is what compounds; a dividend strategy is a preference
     for cash income, not an arbitrage.
   </p>
+  <Widget no="6" caption="bet before the ex-date" widget="predict" config={sbExDivPredict} />
 
   <p>
     <em>Common misconception:</em> a bond held to maturity is risk-free, because the coupons
@@ -165,6 +342,7 @@ const sbQuizCfg = {
     fell to about 926 when rates rose one point, and a 30-year bond falls roughly five times
     harder. Sell early and the market re-prices you first.
   </p>
+  <Widget no="7" caption="find the faulty line — the fixed-payments promise" widget="spot-error" config={sbMaturitySpot} />
 
   <h2>Indices: the market in one number</h2>
   <p>
@@ -204,6 +382,7 @@ const sbQuizCfg = {
     default risk (and opportunity) peaks. Reading spreads is reading the market's live
     estimate of how much trouble the economy is in.
   </p>
+  <Widget no="8" caption="grade the bond yourself" widget="branch" config={sbGradeBranch} />
 
   <p>
     <em>Common misconception:</em> a high yield is a bargain — why take 4 per cent from a
@@ -227,6 +406,7 @@ const sbQuizCfg = {
     world are liquid by construction), and prefer limit orders to market orders when size
     is large — the spread is small, but it is being paid by someone.
   </p>
+  <Widget no="9" caption="true or false — the plumbing of a trade" widget="judge" config={sbBookJudge} />
 
   <p>
     <strong>So far:</strong> you know what each claim is, how it is priced, how its risk is

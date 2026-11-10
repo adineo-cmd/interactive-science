@@ -1,0 +1,143 @@
+[
+  {
+    "slug": "subjects/finance/advanced/corporate-finance",
+    "activities": [
+      {
+        "anchor": "tools meet a live balance sheet",
+        "type": "sort-buckets",
+        "caption": "file the decisions: invest, fund, or return",
+        "name": "cfThreeBuckets",
+        "config": {
+          "prompt": "Every corporate-finance decision lands in one of three drawers — file them:",
+          "buckets": ["which projects to invest in", "how to fund them", "what to return to owners"],
+          "items": [
+            { "label": "take the factory with NPV +16.2 or reject it", "bucket": 0 },
+            { "label": "issue bonds or shares for the expansion", "bucket": 1 },
+            { "label": "declare a dividend or repurchase shares", "bucket": 2 },
+            { "label": "rank projects by profitability index under rationing", "bucket": 0 },
+            { "label": "choose 7% rather than 10% as the hurdle", "bucket": 0 },
+            { "label": "initiate a dividend to signal durable cash", "bucket": 2 }
+          ],
+          "why": "The third drawer looks trivial and turns out to be a signalling game; the second carries the most famous 'it doesn't matter' result in all of social science."
+        }
+      },
+      {
+        "anchor": "Watch how sensitive the answer is",
+        "type": "plotter",
+        "caption": "steer the hurdle — watch the NPV profile flip",
+        "name": "cfNpvPlotter",
+        "config": {
+          "curves": [
+            { "expr": "300*((1/(1+x)) + (1/(1+x)^2) + (1/(1+x)^3) + (1/(1+x)^4)) - 1000", "color": "#1d4ed8", "label": "NPV of the project at hurdle rate x", "width": 2 }
+          ],
+          "x": { "min": 0, "max": 0.15, "label": "hurdle rate" },
+          "y": { "min": -120, "max": 260, "label": "NPV" },
+          "height": 300,
+          "crossings": true
+        }
+      },
+      {
+        "anchor": "Three refinements cover almost all practical cases",
+        "type": "branch",
+        "caption": "spend the 1,000 — find the best combination",
+        "name": "cfRationBranch",
+        "config": {
+          "root": "The budget is 1,000. A needs 300 to return 450 (NPV 150, PI 1.5); B needs 500 to return 700 (NPV 200, PI 1.4); C needs 400 to return 560 (NPV 160, PI 1.4).",
+          "nodes": {
+            "start": {
+              "text": "PI-ranking greedily takes A (300 spent), then B (800 spent). C costs 400 — over budget. What now?",
+              "choices": [
+                { "label": "Settle for A + B", "next": "combo", "feedback": "Total NPV 350 — respectable, but one combination beats it." },
+                { "label": "Swap B out for C: run A + C", "next": "combo", "feedback": "310 — the swap costs more than it gains." },
+                { "label": "Re-search the combinations from scratch", "next": "combo", "feedback": "With lumpy, indivisible projects, PI is a heuristic, not an optimizer — combinations must be searched." }
+              ]
+            },
+            "combo": {
+              "text": "The search finds B + C: 900 spent, NPV 360 — beating A + B's 350 with 100 of budget left idle by choice, not by the ranking."
+            }
+          },
+          "why": "PI ranks efficiently but a lower-ranked pair can be worth more together — which is why the NPV rule, not payback, remains the referee."
+        }
+      },
+      {
+        "anchor": "no way to choose between them",
+        "type": "spot-error",
+        "caption": "find the faulty line — the IRR briefing",
+        "name": "cfIrrSpot",
+        "config": {
+          "prompt": "One line of this project-briefing is wrong — click it:",
+          "lines": [
+            "When projects compete, take the highest NPV, not the highest IRR.",
+            "A small kiosk can show a spectacular IRR and still add less value than a duller, larger factory.",
+            "IRR assumes each year's cash flows are reinvested at the honest, attainable discount rate.",
+            "When cash flows change sign more than once, IRR can produce two or more answers.",
+            "That is why mining projects — build, harvest, clean up — are the textbook IRR trap."
+          ],
+          "errorLine": 2,
+          "correction": "IRR assumes reinvestment at the IRR itself — a spectacular IRR presumes spectacular reinvestment; only NPV assumes the honest, attainable discount rate.",
+          "why": "NPV's reinvestment assumption is the attainable one, and a single sign change too many can mint multiple IRRs with no way to rank them."
+        }
+      },
+      {
+        "anchor": "The hurdle rate comes from the funding mix",
+        "type": "match",
+        "caption": "pair each input with its price",
+        "name": "cfCostMatch",
+        "config": {
+          "prompt": "Pricing the hurdle — pair each input with what it costs or claims:",
+          "pairs": [
+            { "left": "Debt", "right": "contractually cheap — priority in bankruptcy, and interest is tax-deductible" },
+            { "left": "Equity", "right": "the residual claim, paid last, demanding the most — priced with CAPM" },
+            { "left": "The tax shield", "right": "(1 − t) applied to interest only; dividends are not deductible" },
+            { "left": "Market values", "right": "weights from today's prices — a firm whose shares tripled still re-weights" },
+            { "left": "WACC", "right": "the blend that turns the funding mix into the hurdle rate" }
+          ],
+          "why": "The two classic slips — book-value weights and a tax shield on the wrong flow — are exactly what the worked example warns against."
+        }
+      },
+      {
+        "anchor": "not a free lunch",
+        "type": "estimate",
+        "caption": "call the ratchet — what equity demands at D/E = 2",
+        "name": "cfPropIIEstimate",
+        "config": {
+          "prompt": "Proposition II: with r_A = 10% and r_D = 6%, what return must equity holders demand at D/E = 2?",
+          "unit": "% required on equity",
+          "answer": 18,
+          "factor": 1.15,
+          "why": "r_E = r_A + (D/E) × (r_A − r_D) = 10% + 2 × 4% = 18% — and the blend (1/3 × 18% + 2/3 × 6%) still averages 10%. Debt is cheaper per unit, but it makes every remaining unit of equity riskier and more expensive.",
+          "context": "Check the blend: one-third at 18% plus two-thirds at 6% still averages exactly 10%."
+        }
+      },
+      {
+        "anchor": "cash arrives later than it must leave",
+        "type": "cloze",
+        "caption": "fill the cycle — where the cash sits",
+        "name": "cfCccCloze",
+        "config": {
+          "text": "The worked firm holds inventory %%0%% days (DIO), collects %%1%% days after sale (DSO) and pays suppliers after %%2%% days (DPO): cash is locked up for %%3%% days — on revenue of 7.3 million, roughly 1.3 million of permanent funding.",
+          "answers": [["60", "sixty"], ["45", "forty-five"], ["40", "forty"], ["65", "sixty-five"]],
+          "hint": "DIO + DSO − DPO. Squeeze DSO to 30 and you release about 0.3 million — the CFO's cheapest financing."
+        }
+      },
+      {
+        "anchor": "are, at fair prices, economically identical",
+        "type": "compare",
+        "caption": "drag the divider — dividend vs buyback",
+        "name": "cfPayoutCompare",
+        "config": {
+          "prompt": "The same 10 million returned, two instruments — drag the divider:",
+          "before": {
+            "label": "Dividend",
+            "text": "The share drops to 90 on the ex-date and the holder keeps 90 plus 10 of cash — and a commitment: cutting one is read as distress, while initiating one says 'this cash stream is durable'."
+          },
+          "after": {
+            "label": "Buyback",
+            "text": "100,000 shares retired at 100: 900,000 shares now own a 90 million firm — still worth 100 each. Flexible, often taxed as capital gains, and a signal that shares are cheap — or that positive-NPV projects have run out."
+          },
+          "why": "At fair prices the arithmetic is identical; the differences are institutional — commitment versus flexibility, income versus gains — which is why payout choices signal."
+        }
+      }
+    ]
+  }
+]
