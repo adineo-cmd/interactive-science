@@ -64,6 +64,218 @@ const gdpQuizCfg = {
     },
   ],
 };
+
+const gdpDefCloze = {
+  "text": "GDP is the market value of all %%0%% goods and services produced in a country in a year. It is built from four spending streams: %%1%% + I + G + NX, where NX means %%2%%.",
+  "answers": [
+    [
+      "final"
+    ],
+    [
+      "C",
+      "consumption"
+    ],
+    [
+      "net exports",
+      "exports minus imports"
+    ]
+  ],
+  "hint": "Only final goods count, and the four buckets are consumption, investment, government and net exports."
+};
+
+const gdpLoafOrder = {
+  "prompt": "A farmer, a miller and a baker make one loaf economy — put the value-added accounting in order:",
+  "items": [
+    "The farmer produces grain and sells it for £100 (value added £100)",
+    "The miller buys the grain for £100 and sells flour for £150 (value added £50)",
+    "The baker buys the flour for £150 and sells bread for £260 (value added £110)",
+    "Total value added: £100 + £50 + £110 = £260",
+    "The same £260 appears as household expenditure on the final bread"
+  ],
+  "why": "Each stage's value added is its output minus its intermediate inputs. Summing those gaps and summing final expenditure are the same arithmetic run in opposite directions."
+};
+
+const gdpCountSort = {
+  "prompt": "Which of these enter this year's GDP?",
+  "buckets": [
+    "counts in GDP",
+    "does not count"
+  ],
+  "items": [
+    {
+      "label": "a new factory built this year",
+      "bucket": 0
+    },
+    {
+      "label": "buying shares of an existing company",
+      "bucket": 1
+    },
+    {
+      "label": "a pension payment from the state",
+      "bucket": 1
+    },
+    {
+      "label": "a haircut bought at a salon",
+      "bucket": 0
+    },
+    {
+      "label": "a parent's unpaid childcare",
+      "bucket": 1
+    },
+    {
+      "label": "the full resale price of a 2018 car",
+      "bucket": 1
+    }
+  ],
+  "why": "Only new final production counts. Share purchases transfer existing assets, pensions are transfers, unpaid work is invisible, and a resale adds only the dealer's margin."
+};
+
+const gdpBucketJudge = {
+  "statements": [
+    {
+      "s": "Consumption is typically 60–70% of GDP in rich economies.",
+      "truth": true,
+      "why": "Household spending is the giant bucket, which is why consumer confidence is macroeconomic news."
+    },
+    {
+      "s": "Buying shares counts as investment in the national accounts.",
+      "truth": false,
+      "why": "Investment means new productive capacity — machines, factories, software, housing, inventories — not the transfer of existing assets."
+    },
+    {
+      "s": "Transfer payments such as pensions are part of government spending G.",
+      "truth": false,
+      "why": "They are excluded from G because they buy no output; their spending enters C when recipients spend them."
+    }
+  ]
+};
+
+const gdpRealEst = {
+  "prompt": "Nominal GDP rose 6% while the price level rose 4%. What was real growth?",
+  "unit": "%",
+  "answer": 2,
+  "factor": 1.1,
+  "why": "Real growth strips out inflation: about 6% − 4% = 2%. The GDP deflator is the conversion factor (nominal ÷ real × 100).",
+  "context": "every growth claim worth quoting is a real figure"
+};
+
+const gdpWelfareCompare = {
+  "prompt": "One number, two questions — drag the divider:",
+  "before": {
+    "label": "GDP",
+    "text": "the market value of final output — built to track production through recessions, not to score a society"
+  },
+  "after": {
+    "label": "welfare dashboard",
+    "text": "health, education, distribution, unpaid work and environmental depletion — what GDP leaves out"
+  },
+  "why": "Kuznets warned in 1934 that national income cannot measure a nation's welfare; the dashboard tries to count what the production total omits."
+};
+
+const gdpDoublePlace = {
+  "prompt": "At 2% annual real growth, roughly how many years until output doubles? Place it on the axis.",
+  "labels": [
+    "0",
+    "17.5",
+    "35",
+    "52.5",
+    "70"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 70
+  },
+  "answer": 35,
+  "tolerance": 1,
+  "why": "The rule of 70 gives 70 ÷ 2 = 35 years. Compounding turns a small growth rate into a large change in living standards."
+};
+
+const gdpRecessionBranch = {
+  "root": "Real GDP falls for two consecutive quarters, then grows in the third. Trace the diagnosis.",
+  "nodes": {
+    "start": {
+      "text": "Using the conventional rule, what is this?",
+      "choices": [
+        {
+          "label": "A recession — two consecutive quarterly falls",
+          "next": "rule",
+          "feedback": "Yes — the two falls meet the conventional threshold."
+        },
+        {
+          "label": "Not a recession, because the third quarter grew",
+          "next": "grew",
+          "feedback": "The rule looks at the two consecutive falls; the later recovery does not erase them."
+        },
+        {
+          "label": "A depression",
+          "next": "depression",
+          "feedback": "Depression is an informal, deeper and longer event; two quarters is the recession threshold."
+        }
+      ]
+    },
+    "rule": {
+      "text": "The conventional rule is two consecutive quarters of falling real GDP. The US also uses the NBER's broader judgment — income, employment, sales and production, not GDP alone."
+    },
+    "grew": {
+      "text": "The third quarter's growth marks the recovery, not the absence of the recession.",
+      "choices": [
+        {
+          "label": "So what is the rule?",
+          "next": "rule",
+          "feedback": "Two consecutive quarterly falls."
+        }
+      ]
+    },
+    "depression": {
+      "text": "A depression is an informal label for a deeper, longer downturn; the conventional recession threshold is two quarters.",
+      "choices": [
+        {
+          "label": "Review the threshold",
+          "next": "rule",
+          "feedback": "Two consecutive quarterly falls."
+        }
+      ]
+    }
+  },
+  "why": "The two-quarter rule is a convention; the NBER's broader dating uses income, employment, sales and production because GDP alone can mislead."
+};
+
+const gdpLoafSpot = {
+  "prompt": "Find the line where the value-added arithmetic goes wrong:",
+  "lines": [
+    "The farmer sells £100 of grain to the miller.",
+    "The miller sells £150 of flour to the baker.",
+    "The baker sells £260 of bread to households.",
+    "GDP by value added is £100 + £150 + £260 = £510.",
+    "The correct total is £260: £100 + £50 + £110."
+  ],
+  "errorLine": 3,
+  "correction": "Value added at each stage is £100, £50 and £110 — the £150 flour price and £260 bread price are not themselves value added.",
+  "why": "Adding each stage's full selling price double-counts the intermediate goods already embodied in the final bread."
+};
+
+const gdpAlternativesMatch = {
+  "prompt": "Pair each alternative measure with what it adds to GDP:",
+  "pairs": [
+    {
+      "left": "Human Development Index",
+      "right": "averages income, life expectancy and schooling"
+    },
+    {
+      "left": "Better Life Index",
+      "right": "lets countries weight wellbeing dimensions"
+    },
+    {
+      "left": "Gross National Happiness",
+      "right": "Bhutan's dashboard of life satisfaction and environment"
+    },
+    {
+      "left": "Green accounting",
+      "right": "subtracts natural-capital depletion from saving"
+    }
+  ],
+  "why": "Each alternative encodes a philosophy of what matters — and each is also an index-number choice with weighting politics."
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/gdp-national-accounts">
   <h2>Where you are, and what you will learn</h2>
@@ -99,8 +311,9 @@ const gdpQuizCfg = {
     counts and deliberately excludes, the criticisms that survive scrutiny, and the
     alternatives that try to measure what GDP does not.
   </p>
+  <Widget no="1" caption="fill the blanks — the GDP definition" widget="cloze" config={gdpDefCloze} />
 
-  <Widget no="1" caption="build an economy from its four spending streams — watch shares shift as you drag" widget="sliderLab" config={gdpCfg} />
+  <Widget no="2" caption="build an economy from its four spending streams — watch shares shift as you drag" widget="sliderLab" config={gdpCfg} />
   <p>
     <strong>What to notice:</strong> drag each of the four sliders and watch the GDP
     readout change by exactly the amount you moved — that one-for-one response is the
@@ -114,6 +327,7 @@ const gdpQuizCfg = {
     government ~15–25%, trade hovering near zero (exports minus imports). Drag net exports very
     negative and you have a trade-deficit economy; drag government up and you have 1945 Britain.
   </p>
+  <Widget no="3" caption="true or false — reading the four buckets" widget="judge" config={gdpBucketJudge} />
 
   <h2>One number, three routes</h2>
   <p>
@@ -133,6 +347,7 @@ const gdpQuizCfg = {
     sold to a household to bake at home is final and counts directly. The dividing line
     is the buyer's use, not the good's nature.
   </p>
+  <Widget no="4" caption="value added down the bread chain" widget="order" config={gdpLoafOrder} />
   <p>
     <strong>So far:</strong> one number can be reached three ways — spending, income and
     value added — and the final-goods rule is what stops the same production being
@@ -162,6 +377,7 @@ const gdpQuizCfg = {
     in Germany and China and deeply negative in the US and UK — and a negative
     number is not a "loss", just a subtraction from one accounting identity.
   </p>
+  <Widget no="5" caption="counts in GDP, or not?" widget="sort-buckets" config={gdpCountSort} />
   <p><em>Common misconception:</em> "buying shares is investment — I invested in the
   stock market." In the national accounts, investment means only new productive capacity:
   machines, factories, software, housing, inventories. Buying shares transfers ownership
@@ -188,6 +404,7 @@ const gdpQuizCfg = {
     quoting the wrong one for the question is the most common abuse of the
     statistic.
   </p>
+  <Widget no="6" caption="call the real growth rate" widget="estimate" config={gdpRealEst} />
   <p><em>Common misconception:</em> "nominal GDP rose 6% last year, so the economy grew
   6%." Nominal figures mix quantity with price: if prices rose 4% over the same year,
   real output grew only about 2%, and the rest of the headline was inflation. Every
@@ -213,6 +430,7 @@ const gdpQuizCfg = {
     can scarcely be inferred from a measurement of national income"</em> — a warning
     his successors' economies ignored for eighty years.
   </p>
+  <Widget no="7" caption="production versus welfare — drag the divider" widget="compare" config={gdpWelfareCompare} />
 
   <h2>Growth, recessions and the business cycle</h2>
   <p>
@@ -230,6 +448,8 @@ const gdpQuizCfg = {
     (each quarter's figure is revised for years as better data arrives) make
     headlines that later quietly reverse.
   </p>
+  <Widget no="8" caption="mark the doubling time at 2% growth" widget="place" config={gdpDoublePlace} />
+  <Widget no="9" caption="is it a recession?" widget="branch" config={gdpRecessionBranch} />
   <p><em>Common misconception:</em> "GDP measures how well a country is doing."
   It measures the volume of marketed production — a powerful, necessary
   instrument, and a poor welfare measure. Use it for what it was built for
@@ -261,6 +481,7 @@ const gdpQuizCfg = {
     the arithmetic is exact, the <em>measurement</em> of each leg
     is not.
   </p>
+  <Widget no="10" caption="find the double-counted loaf" widget="spot-error" config={gdpLoafSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -316,6 +537,7 @@ const gdpQuizCfg = {
     messaging — massive consumer value, near-zero GDP) are the new frontier
     the accounts cannot price.
   </p>
+  <Widget no="11" caption="pair each alternative with what it adds" widget="match" config={gdpAlternativesMatch} />
   <p>
     <strong>Open questions.</strong> How should national accounts value data and
     intangibles (software investment is now larger than machinery in several
@@ -344,7 +566,7 @@ const gdpQuizCfg = {
   </p>
   <p class="sources"><strong>Sources:</strong> Kuznets report to US Congress (1934); OpenStax, Principles of Economics; OECD Better Life Initiative; Stiglitz-Sen-Fitoussi Commission (2009). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
-  <Widget no="2" caption="check yourself" widget="quiz" config={gdpQuizCfg} />
+  <Widget no="12" caption="check yourself" widget="quiz" config={gdpQuizCfg} />
   <p>
     <strong>What to notice:</strong> answer before reading, then read the "why" lines —
     they carry the lesson's sharpest distinctions: final goods versus double counting,

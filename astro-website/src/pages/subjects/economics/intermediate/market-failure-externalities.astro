@@ -59,6 +59,221 @@ const failQuizCfg = {
     },
   ],
 };
+
+const mfFailureSort = {
+  "prompt": "Which failure does each example illustrate?",
+  "buckets": [
+    "externality",
+    "public good",
+    "information asymmetry"
+  ],
+  "items": [
+    {
+      "label": "a factory's smoke harms a nearby fishery",
+      "bucket": 0
+    },
+    {
+      "label": "street lighting benefits every house on the street",
+      "bucket": 1
+    },
+    {
+      "label": "a used-car seller knows the engine is failing",
+      "bucket": 2
+    },
+    {
+      "label": "vaccination protects people who are not vaccinated",
+      "bucket": 0
+    },
+    {
+      "label": "national defence protects everyone once provided",
+      "bucket": 1
+    },
+    {
+      "label": "insurance attracts the sickest applicants",
+      "bucket": 2
+    }
+  ],
+  "why": "The fourth failure, monopoly, is a single seller setting price; these examples are a missing price, a missing charge and missing information."
+};
+
+const mfConditionMatch = {
+  "prompt": "Pair each condition for well-working markets with the failure when it breaks:",
+  "pairs": [
+    {
+      "left": "prices capture all costs and benefits",
+      "right": "externalities"
+    },
+    {
+      "left": "many buyers and sellers",
+      "right": "monopoly power"
+    },
+    {
+      "left": "goods are excludable",
+      "right": "public goods and free-riding"
+    },
+    {
+      "left": "information is adequate on both sides",
+      "right": "adverse selection and lemons"
+    },
+    {
+      "left": "property rights exist",
+      "right": "tragedy of the commons"
+    }
+  ],
+  "why": "Each condition is a niche for a named failure — the machine is not broken in general, one price or contract is missing."
+};
+
+const mfSocialEst = {
+  "prompt": "A chemical costs £300 per tonne to produce and does £100 of downstream damage per tonne. What is the social cost per tonne?",
+  "unit": "£",
+  "answer": 400,
+  "factor": 1.05,
+  "why": "Social cost = private cost + external cost = £300 + £100 = £400. A £100 Pigouvian tax makes the private price tell that truth.",
+  "context": "the efficient quantity stops where value falls to £400, not £300"
+};
+
+const mfRepairBranch = {
+  "root": "A power plant emits sulphur dioxide that damages distant forests. You must choose a repair. Trace the decision.",
+  "nodes": {
+    "start": {
+      "text": "The damage is measurable and the plants differ in abatement cost. Which instrument fits best?",
+      "choices": [
+        {
+          "label": "Cap total emissions and let plants trade permits",
+          "next": "permits",
+          "feedback": "Yes — the cap fixes quantity and trading finds the cheapest reductions."
+        },
+        {
+          "label": "Ban all sulphur emissions immediately",
+          "next": "ban",
+          "feedback": "A ban may be enforceable but ignores differences in abatement cost."
+        },
+        {
+          "label": "Rely on the plants to negotiate with every forest owner",
+          "next": "coase",
+          "feedback": "With millions of downstream victims, bargaining costs are prohibitive."
+        }
+      ]
+    },
+    "permits": {
+      "text": "Cap-and-trade fixes the total and lets the market find the cheapest cuts. The US Acid Rain Program cut SO₂ faster and cheaper than predicted."
+    },
+    "ban": {
+      "text": "A ban trades efficiency for enforceability; permits or a tax find the cheap cuts first.",
+      "choices": [
+        {
+          "label": "Compare the instruments",
+          "next": "permits",
+          "feedback": "Quantity-certain permits versus price-certain taxes."
+        }
+      ]
+    },
+    "coase": {
+      "text": "Coase's theorem needs low transaction costs; with millions of victims, private bargaining collapses.",
+      "choices": [
+        {
+          "label": "So what does government do?",
+          "next": "permits",
+          "feedback": "Price or cap the externality."
+        }
+      ]
+    }
+  },
+  "why": "Instrument choice follows the case: cap-and-trade when quantity matters and abatement costs differ; taxes when price certainty matters; regulation when measurement is hopeless."
+};
+
+const mfLightingPlace = {
+  "prompt": "Street lighting costs £10,000 and delivers £120 of benefit to each of 100 houses. What is each house's break-even share of the cost?",
+  "labels": [
+    "£0",
+    "£50",
+    "£100",
+    "£150",
+    "£200"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 200
+  },
+  "answer": 100,
+  "tolerance": 1,
+  "why": "£10,000 ÷ 100 = £100 per house, below the £120 benefit. Yet each house reasons its own £100 will not save the project, so voluntary funding fails — the free-rider problem."
+};
+
+const mfLemonsSpot = {
+  "prompt": "Find the line where the lemons logic runs backwards:",
+  "lines": [
+    "Sellers know whether a used car is a peach or a lemon; buyers cannot tell.",
+    "Buyers therefore offer a price based on the average quality in the market.",
+    "Peach owners accept that average price, while lemon owners withdraw.",
+    "The pool's average quality then falls, and the offered price falls with it.",
+    "The market unravels until only lemons trade."
+  ],
+  "errorLine": 2,
+  "correction": "Peach owners withdraw and lemon owners accept — the average price is too low for a good car and attractive for a bad one.",
+  "why": "Adverse selection drives good quality out first, which lowers the average and the price further."
+};
+
+const mfMonopolyCloze = {
+  "text": "With many small firms, price is discovered by competition. A %%0%% chooses price above marginal cost, creating %%1%% loss. Where one network is cheapest, a %%2%% monopoly is regulated rather than duplicated.",
+  "answers": [
+    [
+      "monopoly"
+    ],
+    [
+      "deadweight"
+    ],
+    [
+      "natural"
+    ]
+  ],
+  "hint": "The deadweight loss is the transactions that never happen because the monopolist protects its margin."
+};
+
+const mfGovJudge = {
+  "statements": [
+    {
+      "s": "Regulatory capture means the regulated industry can shape the rules meant to constrain it.",
+      "truth": true,
+      "why": "Lobbying, expertise and revolving doors give the industry influence over its own regulator."
+    },
+    {
+      "s": "Government failure means markets always allocate better than governments.",
+      "truth": false,
+      "why": "Both fail in specific ways; the question is comparative, not a blanket verdict for either."
+    },
+    {
+      "s": "The mature question is which institution fails least badly for this problem.",
+      "truth": true,
+      "why": "Carbon pricing, community fisheries and air-safety regulation each won in different cases."
+    }
+  ]
+};
+
+const mfPigouOrder = {
+  "prompt": "Design a Pigouvian tax — put the steps in order:",
+  "items": [
+    "Measure the marginal external damage",
+    "Set the tax equal to that damage per unit",
+    "Firms compare the tax with their cost of abating",
+    "The cheapest abatement happens first; output falls toward the efficient level",
+    "Recycle the revenue or use it to compensate those harmed"
+  ],
+  "why": "The tax works by correcting the price, not by punishing: once the damage sits inside the private cost, cheap abatement happens first."
+};
+
+const mfNudgeCompare = {
+  "prompt": "Two ways to change behaviour — drag the divider:",
+  "before": {
+    "label": "price instrument",
+    "text": "a tax or charge changes the payoff directly; consumers respond to the cost"
+  },
+  "after": {
+    "label": "nudge",
+    "text": "salience, defaults and framing change the choice architecture without changing the price"
+  },
+  "why": "Both can work; sugar taxes and pension auto-enrolment are the canonical examples, and the nudge adds a fifth instrument to the fix menu."
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/market-failure-externalities">
 
@@ -96,8 +311,9 @@ const failQuizCfg = {
     permits, provision, regulation, property rights), and government failure as the
     honest other side of the ledger.
   </p>
+  <Widget no="1" caption="which failure is this?" widget="sort-buckets" config={mfFailureSort} />
 
-  <Widget no="1" caption="the four classic failures — each a crack in the price signal" widget="equationStep" config={failCfg} />
+  <Widget no="2" caption="the four classic failures — each a crack in the price signal" widget="equationStep" config={failCfg} />
   <p>
     <strong>What to notice:</strong> each card names one crack in the price signal and
     the behaviour it produces: unpriced costs (externalities), unchargeable benefits
@@ -120,6 +336,7 @@ const failQuizCfg = {
     broken in general — one <em>price</em> or one <em>contract</em> is missing, and
     the policy question is who can supply it at least cost.
   </p>
+  <Widget no="3" caption="pair each condition with its failure" widget="match" config={mfConditionMatch} />
   <p><em>Common misconception:</em> "if a market fails at something, government should
   take the activity over." A failure identifies a missing price or contract, not a
   verdict on who supplies the good: sometimes taxation, regulation or property
@@ -161,6 +378,7 @@ const failQuizCfg = {
     The whole logic of carbon pricing, vaccine subsidies and education
     funding is this one diagram with different numbers.
   </p>
+  <Widget no="4" caption="call the social cost" widget="estimate" config={mfSocialEst} />
   <p><em>Common misconception:</em> "a pollution tax is a punishment, or just a way for
   government to raise money." The tax's job is informational: it corrects a price that
   was lying by omission. Once the £100-per-tonne damage sits inside the price, firms
@@ -194,6 +412,7 @@ const failQuizCfg = {
     winning fieldwork — the community governing it with its own rules,
     which works more often than the tragedy's name implies.
   </p>
+  <Widget no="5" caption="pick the repair for sulphur emissions" widget="branch" config={mfRepairBranch} />
 
   <h2>Public goods: the free-rider problem</h2>
   <p>
@@ -223,6 +442,7 @@ const failQuizCfg = {
     (<strong>club goods</strong>) — the 2×2 of excludability and rivalry is the
     real map, and policy differs by quadrant.
   </p>
+  <Widget no="6" caption="mark each house's break-even share" widget="place" config={mfLightingPlace} />
   <p><em>Common misconception:</em> "a public good is anything the government provides,
   and anything private is not one." The term is technical, not a funding label: a public
   good is non-excludable and non-rival, whoever supplies it. Lighthouses were often
@@ -257,6 +477,7 @@ const failQuizCfg = {
     asymmetry of <em>action</em> rather than <em>information</em>, managed
     with deductibles, co-pays and skin in the game.
   </p>
+  <Widget no="7" caption="find the lemons logic running backwards" widget="spot-error" config={mfLemonsSpot} />
   <p><em>Common misconception:</em> "if a used-car market is full of lemons, buyers must
   be foolish or sellers unusually dishonest." Both sides behave rationally given what
   they know: buyers cannot observe quality, so they offer an average price, and owners
@@ -286,6 +507,7 @@ const failQuizCfg = {
     markets where the product is free and the price signal hides
     in attention and data.
   </p>
+  <Widget no="8" caption="fill the blanks — monopoly and deadweight loss" widget="cloze" config={mfMonopolyCloze} />
   <p>
     <strong>So far:</strong> externalities misprice, public goods under-supply, lemons
     unravel, monopolists overprice — four cracks, four repair menus. Before choosing
@@ -311,6 +533,7 @@ const failQuizCfg = {
     for air safety. The failures and the fixes are the same ledger,
     read from two sides.
   </p>
+  <Widget no="9" caption="true or false — government failure" widget="judge" config={mfGovJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -360,6 +583,7 @@ const failQuizCfg = {
     differ by an order of magnitude, which is an honest map of the
     uncertainty, not a scandal.
   </p>
+  <Widget no="10" caption="design a Pigouvian tax" widget="order" config={mfPigouOrder} />
   <p>
     <strong>Behavioural wrinkle.</strong> Real consumers do not always respond to
     prices as the model assumes: sugar taxes work partly through
@@ -369,6 +593,7 @@ const failQuizCfg = {
     adds a fifth instrument — choice architecture — to the fix menu,
     potent but paternalism-contested.
   </p>
+  <Widget no="11" caption="price instrument versus nudge — drag the divider" widget="compare" config={mfNudgeCompare} />
   <p>
     <strong>Open questions.</strong> How do you price a global externality across
     borders with no world government (the Paris Agreement's architecture
@@ -380,7 +605,7 @@ const failQuizCfg = {
   </p>
   <p class="sources"><strong>Sources:</strong> Pigou, The Economics of Welfare (1920); Coase, "The Problem of Social Cost" (1960) and "The Lighthouse in Economics" (1974); Akerlof, "The Market for Lemons" (1970); Ostrom, Governing the Commons (1990); OpenStax, Principles of Economics. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
-  <Widget no="2" caption="check yourself" widget="quiz" config={failQuizCfg} />
+  <Widget no="12" caption="check yourself" widget="quiz" config={failQuizCfg} />
   <p>
     <strong>What to notice:</strong> answer before revealing, then read each explanation
     even when you were right. The fourth question matters most: which institution fails

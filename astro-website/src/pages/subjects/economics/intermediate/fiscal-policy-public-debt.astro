@@ -63,6 +63,218 @@ const fiscalQuizCfg = {
     },
   ],
 };
+
+const fpStabiliserSort = {
+  "prompt": "Automatic stabiliser, or discretionary policy?",
+  "buckets": [
+    "automatic stabiliser",
+    "discretionary policy"
+  ],
+  "items": [
+    {
+      "label": "unemployment benefits rise as jobs disappear",
+      "bucket": 0
+    },
+    {
+      "label": "parliament passes a new infrastructure programme",
+      "bucket": 1
+    },
+    {
+      "label": "tax receipts fall when incomes fall",
+      "bucket": 0
+    },
+    {
+      "label": "the government cuts VAT for one year",
+      "bucket": 1
+    },
+    {
+      "label": "pension payments rise with the rules",
+      "bucket": 0
+    },
+    {
+      "label": "a one-off stimulus cheque is legislated",
+      "bucket": 1
+    }
+  ],
+  "why": "Automatic stabilisers widen the deficit without a vote; discretionary policy is the part politicians argue about."
+};
+
+const fpLeversMatch = {
+  "prompt": "Pair each fiscal lever with what it does:",
+  "pairs": [
+    {
+      "left": "government purchases",
+      "right": "build a bridge — buys output directly"
+    },
+    {
+      "left": "transfer payments",
+      "right": "a pension or benefit — redistributes without buying output"
+    },
+    {
+      "left": "taxes",
+      "right": "withdraw purchasing power; cutting them is a stimulus"
+    }
+  ],
+  "why": "Purchases enter G directly; transfers stimulate only when recipients spend them; taxes change the purchasing power left in private hands."
+};
+
+const fpMultiplierEst = {
+  "prompt": "A £10bn programme is spent by households with MPC = 0.8. In the frictionless multiplier, what is the total rise in GDP?",
+  "unit": "£bn",
+  "answer": 50,
+  "factor": 1.1,
+  "why": "Multiplier = 1/(1 − 0.8) = 5, so £10bn × 5 = £50bn. Leakages into taxes, imports and saving make the real figure smaller.",
+  "context": "with MPC 0.6 the multiplier would be 2.5"
+};
+
+const fpDebtPlace = {
+  "prompt": "Debt is 100% of GDP, the interest rate is 5% and nominal growth is 3%. What primary surplus, as a share of GDP, stabilises the ratio? Place it.",
+  "labels": [
+    "0%",
+    "1%",
+    "2%",
+    "3%",
+    "4%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 4
+  },
+  "answer": 2,
+  "tolerance": 0.1,
+  "why": "(i − y) × D = (5% − 3%) × 100% = 2% of GDP. Without that surplus the ratio drifts up."
+};
+
+const fpBurdenJudge = {
+  "statements": [
+    {
+      "s": "If debt is held domestically, servicing it is largely a transfer from future taxpayers to future bondholders.",
+      "truth": true,
+      "why": "The payment circulates within the country; the question becomes distributional rather than an international loss."
+    },
+    {
+      "s": "If the debt is owed to ourselves, it has no economic costs at all.",
+      "truth": false,
+      "why": "Incentive costs from the taxes that service it, the foreign-held share, and lost crisis room all survive the accounting."
+    },
+    {
+      "s": "A heavily indebted country has less room to respond to the next crisis.",
+      "truth": true,
+      "why": "Pre-existing debt constrains the fiscal response, as the 2010 eurozone members discovered."
+    },
+    {
+      "s": "Bond interest flows disproportionately to wealthier savers.",
+      "truth": true,
+      "why": "The servicing is financed by broader taxpayers and paid to bondholders, a quietly regressive transfer."
+    }
+  ]
+};
+
+const fpCurrencyBranch = {
+  "root": "Two governments have debt at 150% of GDP. One borrows in its own currency; the other borrows in dollars. Trace the crisis menu.",
+  "nodes": {
+    "start": {
+      "text": "Markets begin to doubt repayment. Which government faces genuine default risk?",
+      "choices": [
+        {
+          "label": "The dollar borrower — it cannot print dollars",
+          "next": "right",
+          "feedback": "Yes — it must find dollars or restructure."
+        },
+        {
+          "label": "The own-currency borrower — it must default",
+          "next": "own",
+          "feedback": "It can always create the currency; the risk shifts to inflation."
+        },
+        {
+          "label": "Both face identical risk",
+          "next": "same",
+          "feedback": "The currency changes the menu completely."
+        }
+      ]
+    },
+    "right": {
+      "text": "The foreign-currency borrower can be forced into default: yields spike, refinancing closes, and the IMF arrives with conditions. The own-currency government's crisis mode is inflation, not bankruptcy."
+    },
+    "own": {
+      "text": "An own-currency government cannot be forced into involuntary default — it can print. The cost is inflation, which taxes savers.",
+      "choices": [
+        {
+          "label": "Compare the two cases",
+          "next": "right",
+          "feedback": "Foreign-currency debt risks default; own-currency debt risks inflation."
+        }
+      ]
+    },
+    "same": {
+      "text": "The currency is the biggest risk factor: own-currency debt risks inflation, foreign-currency debt risks default.",
+      "choices": [
+        {
+          "label": "Which is which?",
+          "next": "right",
+          "feedback": "The dollar borrower faces the default wall."
+        }
+      ]
+    }
+  },
+  "why": "Own-currency debt cannot force involuntary default — the escape valve is inflation; foreign-currency and shared-currency debt can force a restructuring."
+};
+
+const fpCrisisOrder = {
+  "prompt": "A rollover crisis unfolds — put the sequence in order:",
+  "items": [
+    "Markets begin to doubt the government's ability to repay",
+    "New bond issues demand punitive yields",
+    "The interest bill eats a growing share of the budget",
+    "Refinancing becomes harder and the spiral turns self-fulfilling",
+    "A bailout or restructuring follows"
+  ],
+  "why": "The rollover squeeze is self-reinforcing: doubt raises yields, higher yields worsen the budget, and worse budgets confirm the doubt."
+};
+
+const fpDeficitCompare = {
+  "prompt": "Two ways to read a deficit — drag the divider:",
+  "before": {
+    "label": "headline deficit",
+    "text": "the actual budget balance this year — widened automatically by recession"
+  },
+  "after": {
+    "label": "structural deficit",
+    "text": "the balance after stripping out the cycle — the underlying policy stance"
+  },
+  "why": "The cyclical part is the stabilisers doing their job; the structural part is the choice. Comparing budgets across years without that distinction misreads the stance."
+};
+
+const fpAusteritySpot = {
+  "prompt": "Find the line where the austerity arithmetic goes wrong:",
+  "lines": [
+    "After 2010, eurozone governments cut spending to reassure bond markets.",
+    "The IMF assumed multipliers around 0.5, so the cuts would shrink GDP only modestly.",
+    "In the event, multipliers were much larger, so GDP fell further than predicted.",
+    "A smaller GDP mechanically lowers the debt ratio, so austerity worked as intended.",
+    "The lesson is that consolidation in a slump can be self-defeating."
+  ],
+  "errorLine": 3,
+  "correction": "A smaller GDP raises the debt ratio, not lowers it — that is why the consolidation was self-defeating.",
+  "why": "The denominator shrank, so the ratio the policy meant to cut rose."
+};
+
+const fpRicardoCloze = {
+  "text": "Ricardian equivalence says today's deficit is tomorrow's %%0%%, so forward-looking households %%1%% the stimulus rather than spend it; empirically the effect is %%2%% because many households are liquidity-constrained.",
+  "answers": [
+    [
+      "tax",
+      "taxes"
+    ],
+    [
+      "save"
+    ],
+    [
+      "partial"
+    ]
+  ],
+  "hint": "If the deficit is just deferred taxation, a perfectly forward-looking household saves the windfall."
+};
 ---
 <TopicPage slug="subjects/economics/intermediate/fiscal-policy-public-debt">
   <h2>Where you are, and what you will learn</h2>
@@ -98,8 +310,9 @@ const fiscalQuizCfg = {
     out, Ricardian equivalence and the currency question — that decide when deficits are
     medicine and when they are the disease.
   </p>
+  <Widget no="1" caption="automatic or discretionary?" widget="sort-buckets" config={fpStabiliserSort} />
 
-  <Widget no="1" caption="the debt dynamics equation — drag growth, interest and debt and watch which side of the spiral you're on" widget="sliderLab" config={fiscalCfg} />
+  <Widget no="2" caption="the debt dynamics equation — drag growth, interest and debt and watch which side of the spiral you're on" widget="sliderLab" config={fiscalCfg} />
   <p>
     <strong>What to notice:</strong> drag the growth rate above the interest rate and watch the
     trajectory readout flip sign — with growth doing the stabilising, the debt ratio shrinks even
@@ -136,6 +349,7 @@ const fiscalQuizCfg = {
     <em>structural</em> deficit (the underlying policy stance) — a
     distinction the fiscal lessons of every finance ministry depend on.
   </p>
+  <Widget no="3" caption="pair each lever with its example" widget="match" config={fpLeversMatch} />
   <p><em>Common misconception:</em> a budget deficit is always evidence of overspending. The cyclical-versus-structural distinction exists precisely because it is not: in any recession, tax receipts fall and benefit payments rise with no new legislation, so the deficit widens under any government and any doctrine. Reading a slump-year deficit as a chosen policy stance is reading the stabilisers' automatic work as if someone had decided it.</p>
 
   <h2>The Keynesian multiplier: why £1 of spending can move more than £1</h2>
@@ -160,6 +374,7 @@ const fiscalQuizCfg = {
     overheating economy. Timing, not just size, is the policy variable:
     the same programme is medicine in a slump and congestion in a boom.
   </p>
+  <Widget no="4" caption="call the multiplier" widget="estimate" config={fpMultiplierEst} />
   <p><em>Common misconception:</em> government spending merely moves money around, so stimulus cannot raise total output. The multiplier is the refutation: one person's spending is another person's income, and in a slump with idle workers and factories that chain turns underused resources into production — the money moves, and the moving is the mechanism by which real output rises. At full capacity the same argument collapses into crowding out.</p>
 
   <p><strong>So far:</strong> the fiscal levers spend, transfer and tax, with the stabilisers running underneath, and the multiplier decides how hard a given injection lands. Next comes the arithmetic that decides whether the resulting debt is a gentle slope or a spiral.</p>
@@ -190,6 +405,7 @@ const fiscalQuizCfg = {
     benchmarks, the UK's fiscal mandates) is an argument about
     where on the slope to stand.
   </p>
+  <Widget no="5" caption="mark the stabilising primary surplus" widget="place" config={fpDebtPlace} />
 
   <h2>Who bears the debt?</h2>
   <p>
@@ -208,6 +424,7 @@ const fiscalQuizCfg = {
     savers (wealthier, on average), financed by taxpayers (broader) —
     a regressive pump running quietly through the years.
   </p>
+  <Widget no="6" caption="true or false — who bears the debt" widget="judge" config={fpBurdenJudge} />
   <p><em>Common misconception:</em> if the debt is owed "to ourselves", it costs nothing. Domestic ownership makes the servicing a distributional transfer rather than an international loss, but the incentive costs of the taxes that service it, the foreign-held share of Treasuries and gilts, and the crisis-response room a heavily indebted country has already spent all survive the accounting. "We owe it to ourselves" is where the analysis starts, not where it ends.</p>
 
   <p><strong>So far:</strong> domestic ownership makes debt servicing a distributional transfer, but incentive costs, the foreign-held share and lost crisis room all survive the accounting. One variable changes the risk picture more than any other — the currency the debt is denominated in.</p>
@@ -233,6 +450,7 @@ const fiscalQuizCfg = {
     inflation as the escape valve that prints the bill onto savers
     rather than taxpayers.
   </p>
+  <Widget no="7" caption="own currency or foreign currency?" widget="branch" config={fpCurrencyBranch} />
   <p><em>Common misconception:</em> "a national debt is like a household
   mortgage — someday it must all be paid off." Governments do not retire;
   the debt is perpetually refinanced, and the meaningful quantity is its
@@ -264,6 +482,7 @@ const fiscalQuizCfg = {
     is why so much modern debt now <em>is</em> indexed: creditors
     legislated themselves out of the escape valve.
   </p>
+  <Widget no="8" caption="how a rollover crisis unfolds" widget="order" config={fpCrisisOrder} />
 
   <p><strong>So far:</strong> crises announce themselves with recognisable patterns — the rollover squeeze, the currency run, the inflation escape. Governments that can see the slope coming have repeatedly tried to legislate discipline onto their future selves.</p>
 
@@ -290,6 +509,7 @@ const fiscalQuizCfg = {
     rule that does not bind is decoration — and every
     generation rediscovers the trade-off.
   </p>
+  <Widget no="9" caption="headline versus structural deficit — drag the divider" widget="compare" config={fpDeficitCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -334,6 +554,7 @@ const fiscalQuizCfg = {
     with a negative differential is self-defeating (smaller GDP raises
     the debt ratio it was meant to cut).
   </p>
+  <Widget no="10" caption="find the self-defeating arithmetic" widget="spot-error" config={fpAusteritySpot} />
   <p>
     <strong>Ricardian equivalence and its limits.</strong> Robert Barro's argument:
     if households are perfectly forward-looking, today's deficit is
@@ -342,6 +563,7 @@ const fiscalQuizCfg = {
     liquidity-constrained, myopic and uncertain, so they do spend —
     but the argument disciplines claims about painless deficits.
   </p>
+  <Widget no="11" caption="fill the blanks — Ricardian equivalence" widget="cloze" config={fpRicardoCloze} />
   <p>
     <strong>Open questions.</strong> How high can the r − g differential rise
     before debt dynamics truly bind (the 2020s rate regime is the live
@@ -354,7 +576,7 @@ const fiscalQuizCfg = {
   </p>
   <p class="sources"><strong>Sources:</strong> Keynes, General Theory (1936); Blanchard, "Public Debt and Low Interest Rates" (2019); Alesina &amp; Ardagna (austerity counterpoint); IMF Fiscal Monitor. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 
-  <Widget no="2" caption="check yourself" widget="quiz" config={fiscalQuizCfg} />
+  <Widget no="12" caption="check yourself" widget="quiz" config={fiscalQuizCfg} />
   <p>
     <strong>What to notice:</strong> commit to an answer before reading the explanations — each
     question turns on one piece of this lesson's arithmetic: the multiplier chain and its

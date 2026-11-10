@@ -234,6 +234,9 @@
 | economics/foundational/supply-and-demand | place, sort-buckets, match, order, branch, cloze, estimate, judge, spot-error, compare | econ-1 |
 | economics/foundational/money-inflation | estimate, match, sort-buckets, order, cloze, spot-error, place, branch, judge, compare | econ-2 |
 | economics/intermediate/elasticity | sort-buckets, estimate, cloze, match, branch, order, place, judge, spot-error, compare | econ-3 |
+| economics/intermediate/gdp-national-accounts | cloze, judge, order, sort-buckets, estimate, compare, place, branch, spot-error, match | econ-4 |
+| economics/intermediate/fiscal-policy-public-debt | sort-buckets, match, estimate, place, judge, branch, order, compare, spot-error, cloze | econ-5 |
+| economics/intermediate/market-failure-externalities | sort-buckets, match, estimate, branch, place, spot-error, cloze, judge, order, compare | econ-6 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -246,8 +249,8 @@
 **Astronomy: 13 of 13 COMPLETE** (astro-1…10; orbits-and-keplers-laws uses raw figure widgets).
 **Biology: 23 of 24 done** — remaining: `biology/foundational/cell-structure`.
 **Chemistry: 16 of 17 done** — remaining: `chemistry/foundational/atomic-structure`.
-**Economics: 3 of 15 done** (econ-1…3: supply-and-demand, money-inflation, elasticity). Remaining:
-fiscal-policy-public-debt, gdp-national-accounts, market-failure-externalities,
+**Economics: 6 of 15 done** (econ-1…6: supply-and-demand, money-inflation, elasticity,
+gdp-national-accounts, fiscal-policy-public-debt, market-failure-externalities). Remaining:
 monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics,
 development-economics, game-theory, international-trade, econometrics, financial-economics,
 macroeconomic-models-dsge.

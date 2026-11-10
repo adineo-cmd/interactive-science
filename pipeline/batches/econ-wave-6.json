@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "subjects/economics/intermediate/market-failure-externalities",
+    "activities": [
+      {
+        "anchor": "Markets are extraordinary allocation machines",
+        "type": "sort-buckets",
+        "caption": "which failure is this?",
+        "name": "mfFailureSort",
+        "config": {
+          "prompt": "Which failure does each example illustrate?",
+          "buckets": ["externality", "public good", "information asymmetry"],
+          "items": [
+            { "label": "a factory's smoke harms a nearby fishery", "bucket": 0 },
+            { "label": "street lighting benefits every house on the street", "bucket": 1 },
+            { "label": "a used-car seller knows the engine is failing", "bucket": 2 },
+            { "label": "vaccination protects people who are not vaccinated", "bucket": 0 },
+            { "label": "national defence protects everyone once provided", "bucket": 1 },
+            { "label": "insurance attracts the sickest applicants", "bucket": 2 }
+          ],
+          "why": "The fourth failure, monopoly, is a single seller setting price; these examples are a missing price, a missing charge and missing information."
+        }
+      },
+      {
+        "anchor": "The invisible hand has fine print",
+        "type": "match",
+        "caption": "pair each condition with its failure",
+        "name": "mfConditionMatch",
+        "config": {
+          "prompt": "Pair each condition for well-working markets with the failure when it breaks:",
+          "pairs": [
+            { "left": "prices capture all costs and benefits", "right": "externalities" },
+            { "left": "many buyers and sellers", "right": "monopoly power" },
+            { "left": "goods are excludable", "right": "public goods and free-riding" },
+            { "left": "information is adequate on both sides", "right": "adverse selection and lemons" },
+            { "left": "property rights exist", "right": "tragedy of the commons" }
+          ],
+          "why": "Each condition is a niche for a named failure — the machine is not broken in general, one price or contract is missing."
+        }
+      },
+      {
+        "anchor": "exists when a transaction affects third parties",
+        "type": "estimate",
+        "caption": "call the social cost",
+        "name": "mfSocialEst",
+        "config": {
+          "prompt": "A chemical costs £300 per tonne to produce and does £100 of downstream damage per tonne. What is the social cost per tonne?",
+          "unit": "£",
+          "answer": 400,
+          "factor": 1.05,
+          "why": "Social cost = private cost + external cost = £300 + £100 = £400. A £100 Pigouvian tax makes the private price tell that truth.",
+          "context": "the efficient quantity stops where value falls to £400, not £300"
+        }
+      },
+      {
+        "anchor": "Economics offers four repairs, each with a personality",
+        "type": "branch",
+        "caption": "pick the repair for sulphur emissions",
+        "name": "mfRepairBranch",
+        "config": {
+          "root": "A power plant emits sulphur dioxide that damages distant forests. You must choose a repair. Trace the decision.",
+          "nodes": {
+            "start": {
+              "text": "The damage is measurable and the plants differ in abatement cost. Which instrument fits best?",
+              "choices": [
+                { "label": "Cap total emissions and let plants trade permits", "next": "permits", "feedback": "Yes — the cap fixes quantity and trading finds the cheapest reductions." },
+                { "label": "Ban all sulphur emissions immediately", "next": "ban", "feedback": "A ban may be enforceable but ignores differences in abatement cost." },
+                { "label": "Rely on the plants to negotiate with every forest owner", "next": "coase", "feedback": "With millions of downstream victims, bargaining costs are prohibitive." }
+              ]
+            },
+            "permits": {
+              "text": "Cap-and-trade fixes the total and lets the market find the cheapest cuts. The US Acid Rain Program cut SO₂ faster and cheaper than predicted."
+            },
+            "ban": {
+              "text": "A ban trades efficiency for enforceability; permits or a tax find the cheap cuts first.",
+              "choices": [
+                { "label": "Compare the instruments", "next": "permits", "feedback": "Quantity-certain permits versus price-certain taxes." }
+              ]
+            },
+            "coase": {
+              "text": "Coase's theorem needs low transaction costs; with millions of victims, private bargaining collapses.",
+              "choices": [
+                { "label": "So what does government do?", "next": "permits", "feedback": "Price or cap the externality." }
+              ]
+            }
+          },
+          "why": "Instrument choice follows the case: cap-and-trade when quantity matters and abatement costs differ; taxes when price certainty matters; regulation when measurement is hopeless."
+        }
+      },
+      {
+        "anchor": "you cannot stop non-payers benefiting",
+        "type": "place",
+        "caption": "mark each house's break-even share",
+        "name": "mfLightingPlace",
+        "config": {
+          "prompt": "Street lighting costs £10,000 and delivers £120 of benefit to each of 100 houses. What is each house's break-even share of the cost?",
+          "labels": ["£0", "£50", "£100", "£150", "£200"],
+          "scale": { "min": 0, "max": 200 },
+          "answer": 100,
+          "tolerance": 1,
+          "why": "£10,000 ÷ 100 = £100 per house, below the £120 benefit. Yet each house reasons its own £100 will not save the project, so voluntary funding fails — the free-rider problem."
+        }
+      },
+      {
+        "anchor": "Markets presume both sides know what is being traded",
+        "type": "spot-error",
+        "caption": "find the lemons logic running backwards",
+        "name": "mfLemonsSpot",
+        "config": {
+          "prompt": "Find the line where the lemons logic runs backwards:",
+          "lines": [
+            "Sellers know whether a used car is a peach or a lemon; buyers cannot tell.",
+            "Buyers therefore offer a price based on the average quality in the market.",
+            "Peach owners accept that average price, while lemon owners withdraw.",
+            "The pool's average quality then falls, and the offered price falls with it.",
+            "The market unravels until only lemons trade."
+          ],
+          "errorLine": 2,
+          "correction": "Peach owners withdraw and lemon owners accept — the average price is too low for a good car and attractive for a bad one.",
+          "why": "Adverse selection drives good quality out first, which lowers the average and the price further."
+        }
+      },
+      {
+        "anchor": "With many small firms, price is discovered by competition",
+        "type": "cloze",
+        "caption": "fill the blanks — monopoly and deadweight loss",
+        "name": "mfMonopolyCloze",
+        "config": {
+          "text": "With many small firms, price is discovered by competition. A %%0%% chooses price above marginal cost, creating %%1%% loss. Where one network is cheapest, a %%2%% monopoly is regulated rather than duplicated.",
+          "answers": [
+            ["monopoly"],
+            ["deadweight"],
+            ["natural"]
+          ],
+          "hint": "The deadweight loss is the transactions that never happen because the monopolist protects its margin."
+        }
+      },
+      {
+        "anchor": "Every fix above hands power to an institution",
+        "type": "judge",
+        "caption": "true or false — government failure",
+        "name": "mfGovJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "Regulatory capture means the regulated industry can shape the rules meant to constrain it.",
+              "truth": true,
+              "why": "Lobbying, expertise and revolving doors give the industry influence over its own regulator."
+            },
+            {
+              "s": "Government failure means markets always allocate better than governments.",
+              "truth": false,
+              "why": "Both fail in specific ways; the question is comparative, not a blanket verdict for either."
+            },
+            {
+              "s": "The mature question is which institution fails least badly for this problem.",
+              "truth": true,
+              "why": "Carbon pricing, community fisheries and air-safety regulation each won in different cases."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "The entire Pigouvian programme lives or dies on measurement",
+        "type": "order",
+        "caption": "design a Pigouvian tax",
+        "name": "mfPigouOrder",
+        "config": {
+          "prompt": "Design a Pigouvian tax — put the steps in order:",
+          "items": [
+            "Measure the marginal external damage",
+            "Set the tax equal to that damage per unit",
+            "Firms compare the tax with their cost of abating",
+            "The cheapest abatement happens first; output falls toward the efficient level",
+            "Recycle the revenue or use it to compensate those harmed"
+          ],
+          "why": "The tax works by correcting the price, not by punishing: once the damage sits inside the private cost, cheap abatement happens first."
+        }
+      },
+      {
+        "anchor": "Real consumers do not always respond to prices",
+        "type": "compare",
+        "caption": "price instrument versus nudge — drag the divider",
+        "name": "mfNudgeCompare",
+        "config": {
+          "prompt": "Two ways to change behaviour — drag the divider:",
+          "before": {
+            "label": "price instrument",
+            "text": "a tax or charge changes the payoff directly; consumers respond to the cost"
+          },
+          "after": {
+            "label": "nudge",
+            "text": "salience, defaults and framing change the choice architecture without changing the price"
+          },
+          "why": "Both can work; sugar taxes and pension auto-enrolment are the canonical examples, and the nudge adds a fifth instrument to the fix menu."
+        }
+      }
+    ]
+  }
+]
