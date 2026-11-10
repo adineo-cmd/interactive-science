@@ -43,6 +43,179 @@ const tangCfg = {
   crossings: false,
   height: 340,
 };
+
+const quadDialMatch = {
+  "prompt": "The parabola y = a·x² + b·x + c has three dials — pair each with its role:",
+  "pairs": [
+    {
+      "left": "a",
+      "right": "how fast the bowl opens — its sign decides up or down"
+    },
+    {
+      "left": "b",
+      "right": "tilts the axis of symmetry off centre"
+    },
+    {
+      "left": "c",
+      "right": "where the curve starts on the y-axis"
+    }
+  ],
+  "why": "Slide a to exactly 0 and the parabola degenerates into a straight line — a quadratic is a linear function with one extra term, and the extra term is where all the new behaviour lives."
+};
+
+const quadToolSort = {
+  "prompt": "File each claim under the solving tool it describes:",
+  "buckets": [
+    "factorising",
+    "completing the square",
+    "the formula"
+  ],
+  "items": [
+    {
+      "label": "fastest when it works — the roots leap out in one line",
+      "bucket": 0
+    },
+    {
+      "label": "always works, and yields the vertex form as a free gift",
+      "bucket": 1
+    },
+    {
+      "label": "completing the square done once, for every quadratic at once",
+      "bucket": 2
+    },
+    {
+      "label": "the right tool when the question also asks for the vertex",
+      "bucket": 1
+    }
+  ],
+  "why": "Each tool has its moment: try factorising first, check the discriminant before computing, and complete the square when the vertex is wanted."
+};
+
+const quadFactorCloze = {
+  "text": "The search rule for x² + 6x − 7: look for two numbers that multiply to %%0%% and add to %%1%% — here +7 and −1 — and the roots leap out as x = 1 or x = −7.",
+  "answers": [
+    [
+      "−7",
+      "-7"
+    ],
+    [
+      "6",
+      "b"
+    ]
+  ],
+  "hint": "The constant term, and the middle coefficient."
+};
+
+const quadSignSpot = {
+  "prompt": "One of these claims about square-rooting is wrong — click it:",
+  "lines": [
+    "From (x + 3)² = 16, the answers are x + 3 = +4 and x + 3 = −4.",
+    "Both 4 and −4 square to 16.",
+    "The squaring step genuinely destroyed information.",
+    "Dropping the minus sign loses no roots — the negative root is extraneous."
+  ],
+  "errorLine": 3,
+  "correction": "Dropping the minus loses half the roots — the single most common quadratic error.",
+  "why": "Both signs fed the same square, so both must be kept; the ± means two answers unless the discriminant says otherwise."
+};
+
+const quadDiscBranch = {
+  "root": "For y = x² + 2x + 5, the discriminant is 4 − 20 = −16. How many real roots?",
+  "nodes": {
+    "start": {
+      "text": "Count the crossings:",
+      "choices": [
+        {
+          "label": "Two — every quadratic has two roots",
+          "next": "two",
+          "feedback": "No: a negative number has no real square root — the parabola floats entirely above the axis, with no crossings."
+        },
+        {
+          "label": "None — the curve never touches the axis",
+          "next": "none",
+          "feedback": "Right — and it is information, not error: a bridge deck's load curve that never crosses zero is the discriminant keeping the bridge up."
+        },
+        {
+          "label": "One — the vertex touches zero",
+          "next": "one",
+          "feedback": "One root needs the discriminant exactly 0 — the repeated root sitting at the vertex."
+        }
+      ]
+    },
+    "two": {
+      "text": "Two roots need a positive discriminant — two real crossings."
+    },
+    "none": {
+      "text": "Verify the arithmetic, then let the sign tell you the geometry."
+    },
+    "one": {
+      "text": "y = x² − 4x + 4 = (x − 2)² is the zero-discriminant case: it kisses the axis at x = 2."
+    }
+  },
+  "why": "The discriminant b² − 4ac counts the crossings before you compute — the arithmetic shadow of the geometry."
+};
+
+const quadVertexEst = {
+  "prompt": "For y = x² − 4x + 3, the roots are 1 and 3 and the vertex lies midway between them. At what x does the vertex sit?",
+  "unit": "",
+  "answer": 2,
+  "factor": 1.2,
+  "why": "x = −b/2a = 2, where y = 4 − 8 + 3 = −1 — four facts, one smooth symmetric bowl.",
+  "context": "it crosses the y-axis at c = 3 and opens up (a = 1)"
+};
+
+const quadProfitPredict = {
+  "q": "Profit is P = −2x² + 120x − 1,000, with vertex at x = 30. Because a is negative, that vertex is…",
+  "choices": [
+    "a maximum — 800 in profit at 30 units",
+    "a minimum — the worst point to sell",
+    "meaningless — a cannot be negative"
+  ],
+  "answer": 0,
+  "why": "A negative a makes a hill: the bowl opens down, so the vertex is a maximum. Calling x = 30 the 'minimum profit' would invert the entire business decision."
+};
+
+const quadTangentPlace = {
+  "prompt": "For y = x², at what x is the tangent exactly horizontal?",
+  "labels": [
+    "−4",
+    "−2",
+    "0",
+    "2",
+    "4"
+  ],
+  "scale": {
+    "min": -4,
+    "max": 4
+  },
+  "answer": 0,
+  "tolerance": 0.2,
+  "why": "The gradient 2a·x + b is zero at the vertex — the flattest point of a parabola is a single instant, not a flat section."
+};
+
+const quadBallOrder = {
+  "prompt": "Rebuild the analysis of h = 20t − 4.9t² — what comes first:",
+  "items": [
+    "Set h = 0: t(20 − 4.9t) = 0",
+    "Read the roots: t = 0 (the throw) and t ≈ 4.08 s (the landing)",
+    "Vertex at t = −b/2a ≈ 2.04 s — exactly half the flight",
+    "Velocity at the top is zero — the tangent is horizontal"
+  ],
+  "why": "Roots are launch and landing, the vertex is the apex, the symmetry axis is mid-flight: quadratics model anything with constant acceleration."
+};
+
+const quadDivideSpot = {
+  "prompt": "One of these claims about the x² = 3x trap is wrong — click it:",
+  "lines": [
+    "Dividing both sides by x lands on a correct half-answer: x = 3.",
+    "The division silently assumes x is not zero.",
+    "x = 0 is a genuine solution — the other half of the truth.",
+    "Dividing by x is fine here because the equation is quadratic."
+  ],
+  "errorLine": 3,
+  "correction": "Never divide by the thing you are solving for — factor out instead: x(x − 3) = 0 gives both answers, 0 and 3.",
+  "why": "Quadratics punish shortcuts; they reward the checklist."
+};
 ---
 <TopicPage slug="subjects/math/foundational/quadratics">
 
@@ -88,6 +261,7 @@ const tangCfg = {
     line. A quadratic is not a different species from a linear function — it is a linear function
     with one extra term, and the extra term is where all the new behaviour lives.
   </p>
+  <Widget no="13" caption="pair each dial with what it sets" widget="match" config={quadDialMatch} />
 
   <Widget no="1" caption="the circled points are the roots — set a = 0 and the parabola degenerates into a line" widget="plotter" config={parabCfg} />
 
@@ -114,6 +288,8 @@ const tangCfg = {
     +7 and −1 — and you are done in one line. Not every quadratic factorises over whole numbers,
     which is why the other two tools exist.
   </p>
+  <Widget no="12" caption="file each claim under its tool" widget="sort-buckets" config={quadToolSort} />
+  <Widget no="11" caption="fill the blanks — the factorising search rule" widget="cloze" config={quadFactorCloze} />
   <p>
     <strong>Completing the square</strong> is the honest, always-works method — turning any
     quadratic into a perfect square plus a remainder, which simultaneously solves it and reveals
@@ -144,6 +320,7 @@ const tangCfg = {
   error. It feels wrong to keep two answers, but the squaring step genuinely destroyed
   information: both signs fed the same square. A related slip is quoting "the answer" (singular)
   from the formula; the ± means two answers unless the discriminant says otherwise.</p>
+  <Widget no="10" caption="find the root-dropping error" widget="spot-error" config={quadSignSpot} />
 
   <h2>The discriminant: counting the crossings before you compute</h2>
   <p>
@@ -158,6 +335,7 @@ const tangCfg = {
     roots, and the two hollow markers confirm it. The discriminant is the arithmetic shadow of
     the geometry.
   </p>
+  <Widget no="9" caption="the floating parabola" widget="branch" config={quadDiscBranch} />
   <p><em>Common misconception:</em> "a negative discriminant means I made a mistake." It feels
   like failure because solving is supposed to produce answers. But it is information, not error:
   no real number squares to a negative, so no real x makes the expression zero — the curve
@@ -175,12 +353,14 @@ const tangCfg = {
     x = 2, where y = 4 − 8 + 3 = −1. Four points, one smooth symmetric bowl — a sketch any
     examiner will recognise.
   </p>
+  <Widget no="8" caption="call the vertex's x" widget="estimate" config={quadVertexEst} />
   <p>
     The vertex is also where quadratics earn money. If a company's profit is P = −2x² + 120x −
     1,000 (x = units sold), the vertex sits at x = 30 — and because a is negative, the bowl opens
     <em>down</em>, so the vertex is a maximum: 800 in profit at 30 units. Every "find the best
     price" problem in a textbook is a vertex hunt in disguise.
   </p>
+  <Widget no="7" caption="bet before you read on — the profit vertex" widget="predict" config={quadProfitPredict} />
   <p><em>Common misconception:</em> "the vertex is always the minimum." The bowl picture is so
   strong that the downward case gets forgotten. But the sign of a decides everything: a positive
   a makes a valley (minimum at the vertex), a negative a makes a hill (maximum). Check it every
@@ -197,6 +377,7 @@ const tangCfg = {
     straight-line function of x. Slide the touch-point below and watch the tangent pivot through
     horizontal exactly at the vertex, then tilt ever more steeply:
   </p>
+  <Widget no="6" caption="drop the marker — where the tangent flattens" widget="place" config={quadTangentPlace} />
 
   <Widget no="3" caption="the tangent line — drag t along the curve and watch the gradient grow linearly" widget="plotter" config={tangCfg} />
 
@@ -238,6 +419,7 @@ const tangCfg = {
     of "mixed motion" — uniform horizontal glide plus steady fall — and it took the quadratic to
     prove the mix produces exactly this shape, never a peak and never an arc of any other kind.
   </p>
+  <Widget no="5" caption="rebuild the thrown-ball analysis" widget="order" config={quadBallOrder} />
   <p>
     The same recipe solves the revenue problems: profit = revenue − cost is a quadratic when
     price falls with volume (<code>P = x(100 − x) − fixed</code>), and "maximise" is always the
@@ -260,6 +442,7 @@ const tangCfg = {
   silently assumes x is not zero, and x = 0 is a genuine solution — the other half of the truth.
   Never divide by the thing you are solving for. Factor out instead: x(x − 3) = 0 gives both
   answers, 0 and 3. Quadratics punish shortcuts; they reward the checklist.</p>
+  <Widget no="4" caption="find the shortcut that deletes a root" widget="spot-error" config={quadDivideSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

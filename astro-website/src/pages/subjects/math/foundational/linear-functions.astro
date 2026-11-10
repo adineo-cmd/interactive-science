@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import CourseStrip from '../../../../components/CourseStrip.astro';
+import Widget from '../../../../components/Widget.astro';
 import data from '../../../../data/topics.json';
 import kidData from '../../../../data/kid-summaries.json';
 
@@ -47,6 +48,156 @@ const perpCfg = {
   y: { min: -10, max: 10, label: 'y' },
   crossings: false,
   height: 340,
+};
+
+const linRolesCloze = {
+  "text": "A linear function is a promise: equal steps in x buy equal steps in y, always. Two numbers seal the promise: %%0%%, how steep, and %%1%%, where it starts.",
+  "answers": [
+    [
+      "m",
+      "the slope",
+      "slope"
+    ],
+    [
+      "c",
+      "the intercept",
+      "intercept"
+    ]
+  ],
+  "hint": "One letter for steepness, one for the starting point."
+};
+
+const linConvCompare = {
+  "prompt": "Two temperature scales, one line — drag the divider:",
+  "before": { "label": "Celsius", "text": "0 at freezing, 100 at boiling — water's own scale" },
+  "after": { "label": "Fahrenheit", "text": "32 at freezing, 212 at boiling — reached by F = 1.8·C + 32" },
+  "why": "The 1.8 is the slope (nine Fahrenheit degrees per five Celsius degrees) and the 32 is the intercept — where Fahrenheit's scale happens to put zero."
+};
+
+const linRoleSort = {
+  "prompt": "File each reading under the number it describes:",
+  "buckets": [
+    "the gradient",
+    "the intercept"
+  ],
+  "items": [
+    {
+      "label": "the rate — how much y changes per one step of x",
+      "bucket": 0
+    },
+    {
+      "label": "the taxi's base fare, paid before moving",
+      "bucket": 1
+    },
+    {
+      "label": "carries the axes' units",
+      "bucket": 0
+    },
+    {
+      "label": "the 'flag falls' value of the story",
+      "bucket": 1
+    }
+  ],
+  "why": "Two lines can share an intercept and mean completely different things — only the gradient tells you which ordering scales worse."
+};
+
+const linGradEst = {
+  "prompt": "From (1, 3) to (4, 12): the rise is 9 and the run is 3. What is the gradient?",
+  "unit": "",
+  "answer": 3,
+  "factor": 1.2,
+  "why": "m = 9 ÷ 3 = 3 — and any other pair of points on the line gives the same 3. That sameness is what makes it a line.",
+  "context": "on a curve this ratio changes as you move along"
+};
+
+const linBuildOrder = {
+  "prompt": "Rebuild the line through (2, 1) and (6, 9) — what comes first:",
+  "items": [
+    "Slope from the pair: m = (9 − 1) ÷ (6 − 2) = 2",
+    "Anchor at (2, 1): y − 1 = 2·(x − 2)",
+    "Rearrange: y = 2x − 3",
+    "Check with the second point: 2 × 6 − 3 = 9 ✓"
+  ],
+  "why": "The slope fixes the direction, the anchor fixes the position — two points determine a line completely because a line owns nothing more."
+};
+
+const linGraphMatch = {
+  "prompt": "Pair each practical graph with what its gradient measures:",
+  "pairs": [
+    {
+      "left": "a journey graph",
+      "right": "speed"
+    },
+    {
+      "left": "a filling-tank graph",
+      "right": "flow rate"
+    },
+    {
+      "left": "a mobile-bill graph",
+      "right": "the price per gigabyte"
+    }
+  ],
+  "why": "The habit is always the same: gradient = rate, intercept = starting value."
+};
+
+const linPerpPredict = {
+  "q": "The perpendicular partner of m = 3 has gradient…",
+  "choices": [
+    "−⅓ — the gradients multiply to −1",
+    "3 — perpendicular lines share a gradient",
+    "⅓ — the reciprocal keeps the sign"
+  ],
+  "answer": 0,
+  "why": "A perpendicular turns the direction through 90°, which swaps the rise and run and flips a sign: rise 3 for run 1 becomes rise −1 for run 3."
+};
+
+const linDistSpot = {
+  "prompt": "One of these coordinate claims is backwards — click it:",
+  "lines": [
+    "The distance between (1, 2) and (4, 6) comes from Pythagoras: gaps 3 and 4, so d = 5.",
+    "The midpoint averages the coordinates: (2.5, 4).",
+    "Proving a right angle on the grid means checking that the gradients multiply to −1.",
+    "A steeper line is always the bigger quantity."
+  ],
+  "errorLine": 3,
+  "correction": "A steeper gradient means a faster rate of change, not a larger value — which line wins depends on the x-range you care about.",
+  "why": "Graphs are read with their axes, not admired in the abstract."
+};
+
+const linBreakEvenBranch = {
+  "root": "Tote bags: a £500 rig plus £9 of materials per bag, selling at £15 — break-even at x ≈ 83.3. You raise the price to £18. What happens to break-even?",
+  "nodes": {
+    "start": {
+      "text": "Which way does the crossing move?",
+      "choices": [
+        {
+          "label": "Slides left — the steeper revenue line meets cost sooner",
+          "next": "left",
+          "feedback": "Correct: 500 + 9x = 18x crosses at x ≈ 55.6 instead of 83.3 — each bag now contributes £9 instead of £6 toward the fixed £500."
+        },
+        {
+          "label": "Slides right — a higher price needs more sales",
+          "next": "right",
+          "feedback": "The crossing moves left, not right: the per-bag contribution grew, so the fixed cost is cleared faster."
+        },
+        {
+          "label": "Unchanged — the fixed cost dominates",
+          "next": "fixed",
+          "feedback": "The fixed cost sets the height of the hurdle, but the per-bag contribution sets how fast you clear it."
+        }
+      ]
+    },
+    "left": {
+      "text": "Same two-line diagram, every decision in the model."
+    },
+    "right": {
+      "text": "Read the geometry honestly: steeper revenue meets the same cost line sooner."
+    },
+    "fixed": {
+      "text": "Negotiate materials to £8 and the cost line flattens — also moving break-even down."
+    }
+  },
+  "why": "Two crossing linear models make the break-even point, and their difference is itself linear — which is why 'linear model' is the first phrase in every business analytics course."
 };
 ---
 <Layout title={`${topic.title} — ${subject.name} — Interactive Atlas`} description={topic.summary}>
@@ -103,6 +254,7 @@ const perpCfg = {
             past. Two numbers seal the promise: <code>m</code>, how steep, and <code>c</code>,
             where it starts. Drag them below and watch the line keep the deal.
           </p>
+  <Widget no="9" caption="fill the blanks — the two numbers that seal the promise" widget="cloze" config={linRolesCloze} />
 
           <figure class="widget">
             <figcaption><span class="fig-no">fig. 1</span><span>slope is steepness, intercept is starting point — drag both</span></figcaption>
@@ -129,6 +281,7 @@ const perpCfg = {
             real relationship, the first instinct of a mathematician is: <em>is it linear? and if
             not, over how small a stretch can I treat it as linear?</em>
           </p>
+  <Widget no="8" caption="two temperature scales, one line — drag the divider" widget="compare" config={linConvCompare} />
 
           <h2>Gradient: measuring the rate</h2>
           <p>
@@ -144,6 +297,7 @@ const perpCfg = {
             m = −2. A horizontal line has m = 0 (nothing rises); a vertical line has undefined
             gradient (run = 0, and dividing by zero is not allowed — which is itself a lesson).
           </p>
+  <Widget no="7" caption="call the gradient" widget="estimate" config={linGradEst} />
 
           <p>
             <strong>So far:</strong> a line is a promise — equal steps in x buy equal steps
@@ -183,6 +337,7 @@ const perpCfg = {
             y-value where the line crosses the y-axis — the taxi's base fare, the starting
             temperature, the "flag falls" value of whatever story the graph tells.
           </p>
+  <Widget no="6" caption="rebuild the two-move construction" widget="order" config={linBuildOrder} />
 
           <h2>Drawing lines and reading practical graphs</h2>
           <p>
@@ -204,6 +359,8 @@ const perpCfg = {
             <em>piecewise</em>-linear (a cheaper rate beyond 10 km bends the line), and the bend
             points are where the interesting questions live.
           </p>
+  <Widget no="5" caption="gradient or intercept — file each reading" widget="sort-buckets" config={linRoleSort} />
+  <Widget no="4" caption="pair each practical graph with its gradient's meaning" widget="match" config={linGraphMatch} />
 
 <p><em>Common misconception:</em> "gradient is just where the line starts." The gradient is the <em>rate</em> — how much y changes per one step of x — while the intercept is the <em>starting value</em>. Two lines can share an intercept and mean completely different things: a flat delivery fee stings less per pizza than a per-pizza charge, and only the gradient tells you which ordering scales worse.</p>
           
@@ -219,6 +376,7 @@ const perpCfg = {
             becomes rise −1 for run 2. Drag the slider below and watch the pair pivot together,
             always crossing at right angles:
           </p>
+  <Widget no="3" caption="bet before you read on — the perpendicular partner" widget="predict" config={linPerpPredict} />
 
           <figure class="widget">
             <figcaption><span class="fig-no">fig. 3</span><span>perpendicular partners — slope m and −1/m always cross at 90°</span></figcaption>
@@ -256,6 +414,7 @@ const perpCfg = {
             or a right angle (perpendicular gradients) — coordinate geometry is Euclid rebuilt
             on arithmetic.
           </p>
+  <Widget no="2" caption="find the backwards claim — reading the grid" widget="spot-error" config={linDistSpot} />
 
 <p><em>Common misconception:</em> "a steeper line is always the bigger quantity." A steeper gradient means a faster <em>rate of change</em>, not a larger value: a steep line starting low can sit below a gentle line starting high for a long stretch. Which line wins depends on the x-range you actually care about — graphs are read with their axes, not admired in the abstract.</p>
           
@@ -282,6 +441,7 @@ const perpCfg = {
     down. Same two-line diagram, every decision in the model — which is why "linear model" is
     the first phrase in every business analytics course.
   </p>
+  <Widget no="1" caption="the price-rise decision" widget="branch" config={linBreakEvenBranch} />
   <p>
     The general lesson generalises: whenever two linear processes compete — cost vs revenue,
     distance covered vs distance remaining, money in savings vs money owed — their
