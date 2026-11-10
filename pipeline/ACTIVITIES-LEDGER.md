@@ -223,6 +223,8 @@
 | math/intermediate/the-derivative | cloze, estimate, order, spot-error, sort-buckets, estimate, branch, place, spot-error, match | math-12 |
 | math/advanced/logic-and-proof | sort-buckets, judge, match, compare, spot-error, cloze, order, branch, estimate, order | math-13 |
 | math/advanced/number-theory | match, cloze, spot-error, estimate, place, order, branch, match, judge, order | math-14 |
+| math/advanced/integration | cloze, estimate, judge, sort-buckets, spot-error, compare, match, estimate, order, place | math-15 |
+| math/advanced/vectors-and-matrices | sort-buckets, judge, estimate, cloze, spot-error, compare, match, branch, place, order | math-16 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

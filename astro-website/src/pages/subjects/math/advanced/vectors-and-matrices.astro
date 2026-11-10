@@ -15,6 +15,173 @@ const rotCfg = {
     { math: 'R⁴ = I, so R is invertible: R⁻¹ = R³', note: 'four quarter-turns return every point home. Invertibility is geometric reversibility.' },
   ],
 };
+
+const vmOpSort = {
+  "prompt": "File each operation under its physical meaning:",
+  "buckets": [
+    "addition — walking",
+    "scalar multiplication — stretching",
+    "subtraction — the connector"
+  ],
+  "items": [
+    {
+      "label": "(3, 4) + (1, −2) = (4, 2) — the triangle law",
+      "bucket": 0
+    },
+    {
+      "label": "2v = (6, 8) — same direction, twice the size",
+      "bucket": 1
+    },
+    {
+      "label": "B − A is the vector that takes you from A to B",
+      "bucket": 2
+    },
+    {
+      "label": "−v flips the arrow through the origin",
+      "bucket": 1
+    }
+  ],
+  "why": "Each operation has a physical meaning worth keeping in view — combining winds, stretching forces, finding displacements."
+};
+
+const vmPointJudge = {
+  "statement": "Adding a point to a point is meaningless while subtracting two points is perfectly fine — the difference of two locations is a genuine displacement.",
+  "answer": true,
+  "why": "A vector is a displacement with no fixed home; drawing it from the origin is a convention, not a property."
+};
+
+const vmMagEst = {
+  "prompt": "|v| = √(x² + y²). For v = (3, 4) it is √25 = 5. What is |u| for u = (1, −2)?",
+  "unit": "",
+  "answer": 2.24,
+  "factor": 1.1,
+  "why": "√(1 + 4) = √5 ≈ 2.24 — and dividing by it gives the unit vector, the way to express 'direction only'.",
+  "context": "a force of 50 N along (3, 4) decomposes as 50 × (3/5, 4/5) = (30, 40) N"
+};
+
+const vmDotCloze = {
+  "text": "The dot product converts two vectors into one number that measures alignment: positive means an %%0%% angle between them, negative an obtuse angle, and exactly zero means %%1%% — test (1, 2) against (−2, 1): −2 + 2 = 0.",
+  "answers": [
+    [
+      "acute"
+    ],
+    [
+      "perpendicular",
+      "right angles",
+      "at right angles"
+    ]
+  ],
+  "hint": "One sign means 'less than 90°'; zero means the other measuring instrument's favourite answer."
+};
+
+const vmCollinearSpot = {
+  "prompt": "One of these claims about the collinearity proof is wrong — click it:",
+  "lines": [
+    "Two vectors are parallel exactly when one is a scalar multiple of the other.",
+    "P = (1, 1), Q = (3, 2), R = (7, 4).",
+    "PQ = (2, 1); QR = (4, 2) = 2(2, 1).",
+    "Since QR = 2·PQ, all three lie on one line — no need to check they share a point."
+  ],
+  "errorLine": 3,
+  "correction": "You must also check they share the point Q — parallel displacements alone do not force collinearity.",
+  "why": "Since QR = 2·PQ and they share the point Q, all three lie on one line."
+};
+
+const vmDiagCompare = {
+  "prompt": "Proving the diagonals of a parallelogram bisect each other — drag the divider:",
+  "before": {
+    "label": "diagram",
+    "text": "draw the parallelogram and eyeball the diagonals — works only in the plane"
+  },
+  "after": {
+    "label": "components",
+    "text": "both midpoints compute to ½(A + B) — four symbols, no diagram required"
+  },
+  "why": "The component proof works for parallelograms in 3D or 10D just as well — dimension-independence is the quiet superpower."
+};
+
+const vmMatrixMatch = {
+  "prompt": "Pair each linear transformation with its 2×2 matrix:",
+  "pairs": [
+    {
+      "left": "rotation by 90° anticlockwise",
+      "right": "[ 0 −1 ; 1 0 ]"
+    },
+    {
+      "left": "reflection in the x-axis",
+      "right": "[ 1 0 ; 0 −1 ]"
+    },
+    {
+      "left": "enlargement by scale factor k",
+      "right": "[ k 0 ; 0 k ]"
+    }
+  ],
+  "why": "The columns are the images of the basis vectors — once known, the image of any vector follows by one multiplication, because M(3, 2) = 3·M(e₁) + 2·M(e₂)."
+};
+
+const vmOrderBranch = {
+  "root": "Rotate the plane 90° then reflect in the x-axis, versus reflect then rotate — applied to (1, 0). Do they agree?",
+  "nodes": {
+    "start": {
+      "text": "Trace both orders:",
+      "choices": [
+        {
+          "label": "Yes — both end at (0, −1)",
+          "next": "no",
+          "feedback": "No: rotation then reflection gives (0, −1); reflection then rotation gives (0, 1) — the matrices genuinely differ."
+        },
+        {
+          "label": "No — order is sacred because multiplication is composition of motions",
+          "next": "right",
+          "feedback": "Right — and geometry told us so before the algebra did."
+        },
+        {
+          "label": "Yes, because matrix multiplication is associative",
+          "next": "assoc",
+          "feedback": "Associativity lets you regroup brackets: (AB)C = A(BC); it says nothing about swapping order."
+        }
+      ]
+    },
+    "no": {
+      "text": "Almost no matrices commute — MN ≠ NM in general."
+    },
+    "right": {
+      "text": "The exception worth remembering: a matrix commutes with its own powers, and R⁴ = I for the quarter-turn."
+    },
+    "assoc": {
+      "text": "Associative ≠ commutative — a classic conflation."
+    }
+  },
+  "why": "Multiplication is composition of motions and motions do not commute."
+};
+
+const vmDetPlace = {
+  "prompt": "For M = [ a b ; c d ], det M = ad − bc. A reflection has det = −1. What is det M for M = [ 3 1 ; 1 2 ]?",
+  "labels": [
+    "5",
+    "6",
+    "−1",
+    "9"
+  ],
+  "scale": {
+    "min": -2,
+    "max": 10
+  },
+  "answer": 5,
+  "tolerance": 0.4,
+  "why": "6 − 1 = 5 — any shape's area is multiplied by 5, and det = 0 would mean the plane crushed onto a single line, with no inverse."
+};
+
+const vmSolveOrder = {
+  "prompt": "Rebuild the inverse-matrix solution — what comes first:",
+  "items": [
+    "Write M = [ 3 1 ; 1 2 ] and compute det M = 5",
+    "Form M⁻¹ = (1/5)[ 2 −1 ; −1 3 ]",
+    "Compute x = M⁻¹b = (1/5)[ 10 ; 5 ] = (2, 1)",
+    "Check: 3(2) + 1 = 7 ✓ and 2 + 2(1) = 4 ✓"
+  ],
+  "why": "The matrix view finds the crossing point by un-transforming the output — and det = 5 promised the lines were not parallel."
+};
 ---
 <TopicPage slug="subjects/math/advanced/vectors-and-matrices">
   <h2>Where you are, and what you will learn</h2>
@@ -70,6 +237,7 @@ const rotCfg = {
     arithmetic is component-wise, and each operation has a physical meaning worth keeping in
     view:
   </p>
+  <Widget no="12" caption="file each operation under its physical meaning" widget="sort-buckets" config={vmOpSort} />
   <ul>
     <li><strong>Addition is walking.</strong> (3, 4) + (1, −2) = (4, 2): go right 3 and up 4, then right 1 and down 2; net right 4, up 2. This is the triangle law — the sum is the third side of the triangle formed by the two arrows laid end to end. Physically it is how you combine a plane's air velocity with the wind velocity to get ground velocity.</li>
     <li><strong>Scalar multiplication is stretching.</strong> 2v = (6, 8) doubles every component: same direction, twice the size. −v flips the arrow through the origin. Any vector can be written as a combination of the basis vectors e₁ = (1, 0) and e₂ = (0, 1): (3, 4) = 3e₁ + 4e₂. That innocent identity is the seed of the whole subject — coordinates are just "how much of each basis direction".</li>
@@ -83,6 +251,7 @@ const rotCfg = {
     is meaningless while subtracting two points is perfectly fine: the difference of two
     locations is a genuine displacement.
   </p>
+  <Widget no="11" caption="true or false — points and displacements" widget="judge" config={vmPointJudge} />
 
   <h2>Magnitude and direction (E7.3)</h2>
   <p>
@@ -96,6 +265,7 @@ const rotCfg = {
     physics: a force of 50 N along the direction (3, 4) is 50 × (3/5, 4/5) = (30, 40) N
     componentwise.
   </p>
+  <Widget no="10" caption="call the magnitude" widget="estimate" config={vmMagEst} />
   <p>
     The <strong>dot product</strong> u · v = x₁x₂ + y₁y₂ converts two vectors into one number
     that measures alignment. For u = (1, −2) and v = (3, 4): u · v = 3 − 8 = −5. The sign
@@ -106,6 +276,7 @@ const rotCfg = {
     mechanics, work = force · displacement is this same product; in machine learning,
     similarity between two documents is usually a (normalised) dot product.
   </p>
+  <Widget no="9" caption="fill the blanks — reading the dot product's sign" widget="cloze" config={vmDotCloze} />
   <p><em>Common misconception:</em> "multiplying two vectors should give another vector — the
   dot product is just an odd kind of multiplication." Every multiplication you have met so far
   outputs more of the same kind of thing, so a single-number output looks like a
@@ -134,6 +305,8 @@ const rotCfg = {
     diagram required, and the proof works for parallelograms in 3D or 10D just as well.
     That dimension-independence is the quiet superpower of the method.
   </p>
+  <Widget no="8" caption="find the skipped check" widget="spot-error" config={vmCollinearSpot} />
+  <Widget no="7" caption="two ways to bisect a parallelogram — drag the divider" widget="compare" config={vmDiagCompare} />
   <p>
     <strong>So far:</strong> vectors as objects — arithmetic with meanings, magnitude by
     Pythagoras, alignment by the dot product — and geometry turned into component
@@ -162,6 +335,7 @@ const rotCfg = {
     Once the columns are known, the image of <em>any</em> vector follows by one
     multiplication, because linearity lets you distribute: M(3, 2) = 3·M(e₁) + 2·M(e₂).
   </p>
+  <Widget no="6" caption="pair each transformation with its matrix" widget="match" config={vmMatrixMatch} />
 
   <Widget no="2" caption="composing rotations with matrix multiplication — watch a quarter-turn matrix act, then compose with itself" widget="equationStep" config={rotCfg} />
   <p>
@@ -183,6 +357,7 @@ const rotCfg = {
     (0, 1). The matrices [ 0 1 ; −1 0 ] and [ 0 −1 ; −1 0 ] genuinely differ, and geometry
     told us so before the algebra did.
   </p>
+  <Widget no="5" caption="does order matter?" widget="branch" config={vmOrderBranch} />
   <p>
     <strong>The determinant is the area scale factor.</strong> For M = [ a b ; c d ],
     det M = ad − bc. An enlargement by 3 has det = 9 — areas grow by the square of the
@@ -194,6 +369,7 @@ const rotCfg = {
     det = 0 is the precise algebraic signal that a system of equations has either no
     solution or infinitely many.
   </p>
+  <Widget no="4" caption="drop the marker — the area scale factor" widget="place" config={vmDetPlace} />
   <p>
     <em>Common misconception:</em> matrix multiplication "should" work like number
     multiplication, so MN = NM. Almost no matrices commute. Multiplication is associative
@@ -210,6 +386,7 @@ const rotCfg = {
     3x + y = 7 and x + 2y = 4: here M = [ 3 1 ; 1 2 ], det M = 5, so
     M⁻¹ = (1/5)[ 2 −1 ; −1 3 ]. Then
   </p>
+  <Widget no="3" caption="rebuild the inverse-matrix solve" widget="order" config={vmSolveOrder} />
   <p>
     x = M⁻¹b = (1/5) [ 2·7 − 1·4 ; −1·7 + 3·4 ] = (1/5)[ 10 ; 5 ] = (2, 1).
   </p>

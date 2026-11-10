@@ -1,0 +1,161 @@
+[
+  {
+    "slug": "subjects/math/advanced/vectors-and-matrices",
+    "activities": [
+      {
+        "anchor": "The arithmetic is component-wise",
+        "type": "sort-buckets",
+        "caption": "file each operation under its physical meaning",
+        "name": "vmOpSort",
+        "config": {
+          "prompt": "File each operation under its physical meaning:",
+          "buckets": ["addition — walking", "scalar multiplication — stretching", "subtraction — the connector"],
+          "items": [
+            { "label": "(3, 4) + (1, −2) = (4, 2) — the triangle law", "bucket": 0 },
+            { "label": "2v = (6, 8) — same direction, twice the size", "bucket": 1 },
+            { "label": "B − A is the vector that takes you from A to B", "bucket": 2 },
+            { "label": "−v flips the arrow through the origin", "bucket": 1 }
+          ],
+          "why": "Each operation has a physical meaning worth keeping in view — combining winds, stretching forces, finding displacements."
+        }
+      },
+      {
+        "anchor": "a vector and a point are the same thing",
+        "type": "judge",
+        "caption": "true or false — points and displacements",
+        "name": "vmPointJudge",
+        "config": {
+          "statement": "Adding a point to a point is meaningless while subtracting two points is perfectly fine — the difference of two locations is a genuine displacement.",
+          "answer": true,
+          "why": "A vector is a displacement with no fixed home; drawing it from the origin is a convention, not a property."
+        }
+      },
+      {
+        "anchor": "Pythagoras applied to the components",
+        "type": "estimate",
+        "caption": "call the magnitude",
+        "name": "vmMagEst",
+        "config": {
+          "prompt": "|v| = √(x² + y²). For v = (3, 4) it is √25 = 5. What is |u| for u = (1, −2)?",
+          "unit": "",
+          "answer": 2.24,
+          "factor": 1.1,
+          "why": "√(1 + 4) = √5 ≈ 2.24 — and dividing by it gives the unit vector, the way to express 'direction only'.",
+          "context": "a force of 50 N along (3, 4) decomposes as 50 × (3/5, 4/5) = (30, 40) N"
+        }
+      },
+      {
+        "anchor": "u · v = x₁x₂ + y₁y₂ converts two vectors into one number",
+        "type": "cloze",
+        "caption": "fill the blanks — reading the dot product's sign",
+        "name": "vmDotCloze",
+        "config": {
+          "text": "The dot product converts two vectors into one number that measures alignment: positive means an %%0%% angle between them, negative an obtuse angle, and exactly zero means %%1%% — test (1, 2) against (−2, 1): −2 + 2 = 0.",
+          "answers": [
+            ["acute"],
+            ["perpendicular", "right angles", "at right angles"]
+          ],
+          "hint": "One sign means 'less than 90°'; zero means the other measuring instrument's favourite answer."
+        }
+      },
+      {
+        "anchor": "QR = (4, 2) = 2(2, 1)",
+        "type": "spot-error",
+        "caption": "find the skipped check",
+        "name": "vmCollinearSpot",
+        "config": {
+          "prompt": "One of these claims about the collinearity proof is wrong — click it:",
+          "lines": [
+            "Two vectors are parallel exactly when one is a scalar multiple of the other.",
+            "P = (1, 1), Q = (3, 2), R = (7, 4).",
+            "PQ = (2, 1); QR = (4, 2) = 2(2, 1).",
+            "Since QR = 2·PQ, all three lie on one line — no need to check they share a point."
+          ],
+          "errorLine": 3,
+          "correction": "You must also check they share the point Q — parallel displacements alone do not force collinearity.",
+          "why": "Since QR = 2·PQ and they share the point Q, all three lie on one line."
+        }
+      },
+      {
+        "anchor": "The first diagonal's midpoint is ½(A + B)",
+        "type": "compare",
+        "caption": "two ways to bisect a parallelogram — drag the divider",
+        "name": "vmDiagCompare",
+        "config": {
+          "prompt": "Proving the diagonals of a parallelogram bisect each other — drag the divider:",
+          "before": { "label": "diagram", "text": "draw the parallelogram and eyeball the diagonals — works only in the plane" },
+          "after": { "label": "components", "text": "both midpoints compute to ½(A + B) — four symbols, no diagram required" },
+          "why": "The component proof works for parallelograms in 3D or 10D just as well — dimension-independence is the quiet superpower."
+        }
+      },
+      {
+        "anchor": "the matrix's <strong>columns are the images of the basis",
+        "type": "match",
+        "caption": "pair each transformation with its matrix",
+        "name": "vmMatrixMatch",
+        "config": {
+          "prompt": "Pair each linear transformation with its 2×2 matrix:",
+          "pairs": [
+            { "left": "rotation by 90° anticlockwise", "right": "[ 0 −1 ; 1 0 ]" },
+            { "left": "reflection in the x-axis", "right": "[ 1 0 ; 0 −1 ]" },
+            { "left": "enlargement by scale factor k", "right": "[ k 0 ; 0 k ]" }
+          ],
+          "why": "The columns are the images of the basis vectors — once known, the image of any vector follows by one multiplication, because M(3, 2) = 3·M(e₁) + 2·M(e₂)."
+        }
+      },
+      {
+        "anchor": "rotate the plane 90° then reflect in",
+        "type": "branch",
+        "caption": "does order matter?",
+        "name": "vmOrderBranch",
+        "config": {
+          "root": "Rotate the plane 90° then reflect in the x-axis, versus reflect then rotate — applied to (1, 0). Do they agree?",
+          "nodes": {
+            "start": {
+              "text": "Trace both orders:",
+              "choices": [
+                { "label": "Yes — both end at (0, −1)", "next": "no", "feedback": "No: rotation then reflection gives (0, −1); reflection then rotation gives (0, 1) — the matrices genuinely differ." },
+                { "label": "No — order is sacred because multiplication is composition of motions", "next": "right", "feedback": "Right — and geometry told us so before the algebra did." },
+                { "label": "Yes, because matrix multiplication is associative", "next": "assoc", "feedback": "Associativity lets you regroup brackets: (AB)C = A(BC); it says nothing about swapping order." }
+              ]
+            },
+            "no": { "text": "Almost no matrices commute — MN ≠ NM in general." },
+            "right": { "text": "The exception worth remembering: a matrix commutes with its own powers, and R⁴ = I for the quarter-turn." },
+            "assoc": { "text": "Associative ≠ commutative — a classic conflation." }
+          },
+          "why": "Multiplication is composition of motions and motions do not commute."
+        }
+      },
+      {
+        "anchor": "An enlargement by 3 has det = 9",
+        "type": "place",
+        "caption": "drop the marker — the area scale factor",
+        "name": "vmDetPlace",
+        "config": {
+          "prompt": "For M = [ a b ; c d ], det M = ad − bc. A reflection has det = −1. What is det M for M = [ 3 1 ; 1 2 ]?",
+          "labels": ["5", "6", "−1", "9"],
+          "scale": { "min": -2, "max": 10 },
+          "answer": 5,
+          "tolerance": 0.4,
+          "why": "6 − 1 = 5 — any shape's area is multiplied by 5, and det = 0 would mean the plane crushed onto a single line, with no inverse."
+        }
+      },
+      {
+        "anchor": "Solve 3x + y = 7 and x + 2y = 4",
+        "type": "order",
+        "caption": "rebuild the inverse-matrix solve",
+        "name": "vmSolveOrder",
+        "config": {
+          "prompt": "Rebuild the inverse-matrix solution — what comes first:",
+          "items": [
+            "Write M = [ 3 1 ; 1 2 ] and compute det M = 5",
+            "Form M⁻¹ = (1/5)[ 2 −1 ; −1 3 ]",
+            "Compute x = M⁻¹b = (1/5)[ 10 ; 5 ] = (2, 1)",
+            "Check: 3(2) + 1 = 7 ✓ and 2 + 2(1) = 4 ✓"
+          ],
+          "why": "The matrix view finds the crossing point by un-transforming the output — and det = 5 promised the lines were not parallel."
+        }
+      }
+    ]
+  }
+]

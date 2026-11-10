@@ -23,6 +23,145 @@ const kinCfg = {
     { math: 'total distance = |area| up to stopping = ½ × 20 × 5 = 50 m', note: 'when the velocity changes sign, distance is the sum of absolute areas, not the net signed area. 48 vs 50 m — the difference matters in crash reconstruction.' },
   ],
 };
+
+const intIdeaCloze = {
+  "text": "Multiplying rate × time only works when the rate is constant; the instant it varies, you must add up the contributions of infinitely many %%0%% constant moments. That 'add up the infinitely many thin slices' operation is the %%1%%.",
+  "answers": [
+    [
+      "briefly"
+    ],
+    [
+      "integral",
+      "integral ∫ f(x) dx",
+      "the integral"
+    ]
+  ],
+  "hint": "Each slice holds the rate still for a moment; the elongated S names the whole operation."
+};
+
+const intSliceEst = {
+  "prompt": "Four right-edge strips under x² from 0 to 1 give ≈ 0.469; left edges give 0.219. In the limit of infinitely thin strips, both meet at what value?",
+  "unit": "",
+  "answer": 0.333,
+  "factor": 1.15,
+  "why": "Exactly ⅓ — that limiting value is the definite integral ∫₀¹ x² dx, and the two-sided squeeze is the proof that it exists for any continuous function.",
+  "context": "right sum overcounts on a rising function, left sum undercounts"
+};
+
+const intSignedJudge = {
+  "statement": "A business losing money for a quarter contributes a positive amount to the annual total when its profit-flow is integrated over the year.",
+  "answer": false,
+  "why": "A negative rate subtracts from the total — to get genuine geometric area you must integrate |f|, splitting the interval at every crossing of the axis."
+};
+
+const intPowerSort = {
+  "prompt": "File each integral under the rule that solves it:",
+  "buckets": [
+    "power rule",
+    "outside the power rule"
+  ],
+  "items": [
+    {
+      "label": "∫ 6x² dx = 2x³ + C",
+      "bucket": 0
+    },
+    {
+      "label": "∫ cos x dx = sin x + C",
+      "bucket": 1
+    },
+    {
+      "label": "∫ eˣ dx = eˣ + C — its own anti-derivative",
+      "bucket": 1
+    },
+    {
+      "label": "∫ (6x² + 4x − 5) dx = 2x³ + 2x² − 5x + C",
+      "bucket": 0
+    }
+  ],
+  "why": "Raise the power by one, divide by the new power — the two exceptions are worth memorising as counterparts of the derivative table."
+};
+
+const intConstSpot = {
+  "prompt": "One of these claims about the +C is wrong — click it:",
+  "lines": [
+    "Derivatives destroy constants: x² + 3 and x² − 7 both differentiate to 2x.",
+    "Reversing recovers only the shape, not the height.",
+    "The family x³/3 + C shares one slope.",
+    "In a definite integral the +C must be found from a boundary condition first."
+  ],
+  "errorLine": 3,
+  "correction": "In a definite integral the constants cancel between the top and bottom limits — no +C is needed.",
+  "why": "A boundary condition picks the one member of the family that fits reality, but the definite integral never needs it."
+};
+
+const intFtcCompare = {
+  "prompt": "Evaluating ∫₁³ (2x + 3) dx — drag the divider:",
+  "before": {
+    "label": "slicing",
+    "text": "sum f(x)·dx over infinitely many strips — a limit of slice sums"
+  },
+  "after": {
+    "label": "Fundamental Theorem",
+    "text": "find any anti-derivative F and compute F(b) − F(a) — the constant cancels"
+  },
+  "why": "The theorem converts a problem about infinite sums into a problem about reversing the rules you already know — and here both give 14."
+};
+
+const intPropMatch = {
+  "prompt": "Pair each integral property with its statement:",
+  "pairs": [
+    {
+      "left": "linearity",
+      "right": "∫ (af + bg) = a∫f + b∫g"
+    },
+    {
+      "left": "additivity",
+      "right": "∫ₐᶜ = ∫ₐᵇ + ∫ᵦᶜ — accumulate in stages"
+    },
+    {
+      "left": "reversal",
+      "right": "swapping the limits flips the sign — walking backwards negates every slice"
+    }
+  ],
+  "why": "All three come free from the slice picture — and ∫ₐᵃ = 0: no interval, no accumulation."
+};
+
+const intAreaEst = {
+  "prompt": "Between y = x and y = x², meeting at x = 0 and x = 1, the area is ∫₀¹ (x − x²) dx. What is it?",
+  "unit": "",
+  "answer": 0.167,
+  "factor": 1.15,
+  "why": "½ − ⅓ = 1/6 — the same subtraction is how economists compute consumer surplus and pharmacokinetics compares drug concentrations.",
+  "context": "always integrate upper-minus-lower"
+};
+
+const intSubstOrder = {
+  "prompt": "Rebuild the substitution for ∫ 2x·(x² + 1)³ dx — what comes first:",
+  "items": [
+    "Spot an inner function whose derivative also appears outside",
+    "Set u = x² + 1 with du = 2x·dx sitting right there",
+    "Substitute: ∫ u³ du = u⁴/4 + C",
+    "Differentiate back to check — the chain rule restores the 2x"
+  ],
+  "why": "Roughly: 'match the inside, grab its derivative' — substitution is the chain rule run in reverse."
+};
+
+const intSimpsonPlace = {
+  "prompt": "Simpson's rule error shrinks with the fourth power of the strip width. Halve the strips and the error improves by what factor?",
+  "labels": [
+    "2×",
+    "4×",
+    "16×",
+    "64×"
+  ],
+  "scale": {
+    "min": 1,
+    "max": 64
+  },
+  "answer": 16,
+  "tolerance": 0.6,
+  "why": "16× — for ∫₀¹ e^(−x²) dx, four parabola-width strips already give five-decimal accuracy against the true value 0.7468."
+};
 ---
 <TopicPage slug="subjects/math/advanced/integration">
   <h2>Where you are, and what you will learn</h2>
@@ -56,6 +195,7 @@ const kinCfg = {
     infinitely many thin slices" operation is the <strong>integral</strong>, written
     ∫ f(x) dx — an elongated S for "sum", with dx naming the slice width.
   </p>
+  <Widget no="12" caption="fill the blanks — the accumulation operation" widget="cloze" config={intIdeaCloze} />
   <p>
     The miracle that makes calculus a single subject rather than two: slicing-and-adding, and
     anti-differentiating, are the <em>same operation</em>. The function A(x) that measures
@@ -97,6 +237,7 @@ const kinCfg = {
     function. It also explains the "dx": each rectangle contributes height × width, and the
     sum of f(x)·dx over all slices is the notation's literal meaning.
   </p>
+  <Widget no="11" caption="call the squeeze target" widget="estimate" config={intSliceEst} />
   <p>
     <strong>So far:</strong> the integral is a limit of slice sums — a definition, not a
     trick — and it counts <em>signed</em> area, so negative rates subtract from the total.
@@ -112,6 +253,7 @@ const kinCfg = {
     interval at every crossing of the axis — which is exactly the distinction the kinematics
     example below makes vivid.
   </p>
+  <Widget no="10" caption="true or false — signed area in the ledger" widget="judge" config={intSignedJudge} />
 
   <h2>The anti-derivative family and the +C</h2>
   <p>
@@ -124,6 +266,7 @@ const kinCfg = {
     and ∫ eˣ dx = eˣ + C — the exponential is its own anti-derivative, the defining quirk of
     e.
   </p>
+  <Widget no="9" caption="file each integral under its route" widget="sort-buckets" config={intPowerSort} />
   <p>
     The <strong>+C</strong> is not decoration. Derivatives destroy constants (both x² + 3
     and x² − 7 differentiate to 2x), so reversing the process recovers only the shape, not
@@ -133,6 +276,7 @@ const kinCfg = {
     this selection step gets a name (initial conditions) and becomes the heart of the
     subject.
   </p>
+  <Widget no="8" caption="find the +C confusion" widget="spot-error" config={intConstSpot} />
 
 <p><em>Common misconception:</em> "the +C in an antiderivative means the answer is not really known." The constant appears because derivatives erase constants: x², x² + 7 and x² − 3 all have derivative 2x, so the antiderivative is a family of parallel curves differing by a constant. Nothing is missing — and in a definite integral the constants cancel between the top and bottom limits, which is why the area is exact anyway.</p>
 
@@ -148,6 +292,7 @@ const kinCfg = {
     trapezium agree — for straight-line graphs the slice arithmetic is elementary, and
     calculus earns its keep only when the graph curves.
   </p>
+  <Widget no="7" caption="two ways to evaluate one integral — drag the divider" widget="compare" config={intFtcCompare} />
   <p>
     Three properties follow directly from "slices add up" and are used constantly:
     <strong>linearity</strong> — ∫ (af + bg) = a∫f + b∫g; <strong>additivity</strong> —
@@ -155,6 +300,7 @@ const kinCfg = {
     limits flips the sign, ∫ᵇᵃ = −∫ₐᵇ, because walking the interval backwards negates every
     slice. Also note ∫ₐᵃ = 0: no interval, no accumulation.
   </p>
+  <Widget no="6" caption="pair each property with its statement" widget="match" config={intPropMatch} />
 
 <p><em>Common misconception:</em> "differentiation and integration are two unrelated skills that happen to share notation." The Fundamental Theorem of Calculus says they are inverse operations: integrating a rate recovers the total, differentiating the total recovers the rate. That symmetry is the theorem — the single most useful bridge in applied mathematics, and the reason one symbol (the integral) can mean both an accumulation and an antiderivative.</p>
   <p>
@@ -176,6 +322,7 @@ const kinCfg = {
     model curve and data. If the curves cross inside the interval, split the integral at
     each crossing and integrate the difference piecewise, always upper-minus-lower.
   </p>
+  <Widget no="5" caption="call the gap between the curves" widget="estimate" config={intAreaEst} />
 
   <h2>Integration in motion: kinematics</h2>
   <p>
@@ -213,6 +360,7 @@ const kinCfg = {
     restores the 2x, confirming the answer. Roughly: "match the inside, grab its
     derivative."
   </p>
+  <Widget no="4" caption="rebuild the substitution" widget="order" config={intSubstOrder} />
   <p>
     <strong>Integration by parts</strong> reverses the product rule: from (uv)′ = u′v + uv′
     comes ∫ u·v′ dx = u·v − ∫ v·u′ dx. It trades one integral for another — the art is
@@ -238,6 +386,7 @@ const kinCfg = {
     accumulating radiative flux, is running a numerical integrator, because the functions
     involved simply cannot be anti-differentiated in closed form.
   </p>
+  <Widget no="3" caption="drop the marker — Simpson's error gain" widget="place" config={intSimpsonPlace} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
