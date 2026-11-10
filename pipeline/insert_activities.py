@@ -75,10 +75,18 @@ def process(slug, activities, dry):
             if f.start() <= pos < f.end():
                 fail(f"anchor inside an existing widget figure: {a['anchor'][:60]!r}")
 
-    # existing names + fig numbers
+    # existing names + fig numbers. Count both component widgets and the raw
+    # <span class="fig-no">fig. N</span> form used by Layout-based lessons, so
+    # numbering continues correctly on either page shape.
     names = set(re.findall(r"const\s+([A-Za-z]\w*)\s*=", fm))
     fig_nos = [int(n) for n in re.findall(r'<Widget[^>]*\bno="(\d+)"', body)]
+    fig_nos += [int(n) for n in re.findall(r'<span class="fig-no">fig\.\s*(\d+)</span>', body)]
     next_no = (max(fig_nos) if fig_nos else 0) + 1
+
+    # Number in DOCUMENT order even though insertion happens in descending
+    # position order (so earlier inserts cannot shift later anchors).
+    ascending = sorted(activities, key=lambda x: spans[x["name"]])
+    fig_for = {a["name"]: next_no + i for i, a in enumerate(ascending)}
 
     # build frontmatter additions
     consts = []
@@ -107,7 +115,7 @@ def process(slug, activities, dry):
         lines = []
         for a in sorted(activities, key=lambda x: -spans[x["name"]]):
             wline = (
-                f'  <Widget no="{next_no}" caption="{a["caption"]}" '
+                f'  <Widget no="{fig_for[a["name"]]}" caption="{a["caption"]}" '
                 f'widget="{a["type"]}" config={{{a["name"]}}} />'
             )
             insert_at = fm_len + spans[a["name"]]
@@ -116,9 +124,9 @@ def process(slug, activities, dry):
                 fail(f"no </p> after anchor: {a['anchor'][:60]!r}")
             insert_at = close + len("</p>")
             new_src = new_src[:insert_at] + "\n" + wline + new_src[insert_at:]
-            lines.append((a["anchor"][:50], next_no))
-            next_no += 1
+            lines.append((a["anchor"][:50], fig_for[a["name"]]))
         src = new_src
+        lines.sort(key=lambda x: x[1])
 
         path.write_text(src)
 
