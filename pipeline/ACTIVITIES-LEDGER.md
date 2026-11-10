@@ -231,6 +231,9 @@
 | math/expert/complex-analysis | sort-buckets, estimate, order, place, match, branch, estimate, spot-error, cloze, compare | math-20 |
 | math/expert/real-analysis | sort-buckets, cloze, spot-error, place, judge, compare, estimate, match, spot-error, order | math-21 |
 | math/expert/topology | sort-buckets, branch, match, spot-error, cloze, compare, estimate, compare, order, match | math-22 |
+| economics/foundational/supply-and-demand | place, sort-buckets, match, order, branch, cloze, estimate, judge, spot-error, compare | econ-1 |
+| economics/foundational/money-inflation | estimate, match, sort-buckets, order, cloze, spot-error, place, branch, judge, compare | econ-2 |
+| economics/intermediate/elasticity | sort-buckets, estimate, cloze, match, branch, order, place, judge, spot-error, compare | econ-3 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -239,9 +242,17 @@
 **Anthropology: 9 of 9 COMPLETE** (55 new activities). **Archaeology: 1 of 1 COMPLETE.**
 **Architecture: 10 of 10 COMPLETE (waves 6–11).**
 
-**Art-history: 1 of 7 done (walk-through-western-art; remaining: global-prehistory, 3 intermediate, 2 advanced, 2 expert).**
-**Astronomy: 9 of 9 COMPLETE (astro-1…10).**
-**Then next subjects (alphabetical): art-history (6 remaining: global-prehistory, 3 intermediate, 2 advanced, 2 expert), biology, …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
+**Art-history: 9 of 9 COMPLETE** (ledger rows art-astro-1 and chunk-01).
+**Astronomy: 13 of 13 COMPLETE** (astro-1…10; orbits-and-keplers-laws uses raw figure widgets).
+**Biology: 23 of 24 done** — remaining: `biology/foundational/cell-structure`.
+**Chemistry: 16 of 17 done** — remaining: `chemistry/foundational/atomic-structure`.
+**Economics: 3 of 15 done** (econ-1…3: supply-and-demand, money-inflation, elasticity). Remaining:
+fiscal-policy-public-debt, gdp-national-accounts, market-failure-externalities,
+monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics,
+development-economics, game-theory, international-trade, econometrics, financial-economics,
+macroeconomic-models-dsge.
+**Then next subjects (alphabetical): biology (1), chemistry (1), economics (12), engineering (10),
+environmental-science (12), film (9), finance (11), geography (14), history (20), journalism (7) …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each
   wave lands, and delete the lesson from the queue.
 

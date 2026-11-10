@@ -21,6 +21,240 @@ const cpiCfg = {
   digits: 1,
   height: 300,
 };
+
+const miBarterEst = {
+  "prompt": "With 1,000 different goods, barter needs a separate price for every pair. Roughly how many pairwise prices is that?",
+  "unit": "prices",
+  "answer": 499500,
+  "factor": 1.1,
+  "why": "n(n−1)/2 = 1000 × 999 / 2 ≈ 500,000. Money replaces that whole matrix with one unit of account — the scale at which barter fails.",
+  "context": "with 3 goods it is only 3 pairs; the count grows with the square"
+};
+
+const miJobsMatch = {
+  "prompt": "Pair each job of money with what it makes possible:",
+  "pairs": [
+    {
+      "left": "medium of exchange",
+      "right": "the shoemaker accepts your money without wanting your chicken"
+    },
+    {
+      "left": "unit of account",
+      "right": "every price is quoted in one yardstick, so thousands can be compared"
+    },
+    {
+      "left": "store of value",
+      "right": "savings keep their meaning between this month and next year"
+    }
+  ],
+  "why": "The three jobs are separate: exchange dissolves the double coincidence, the unit of account compresses the price list, and the store of value carries purchasing power through time."
+};
+
+const miPropertySort = {
+  "prompt": "Which property of good money does each candidate fail?",
+  "buckets": [
+    "not scarce",
+    "not durable",
+    "not portable"
+  ],
+  "items": [
+    {
+      "label": "pebbles on a beach — anyone can gather more",
+      "bucket": 0
+    },
+    {
+      "label": "unlimited sand — supply is effectively infinite",
+      "bucket": 0
+    },
+    {
+      "label": "fresh fish — spoils by the next day",
+      "bucket": 1
+    },
+    {
+      "label": "ice sculptures — melt in the market",
+      "bucket": 1
+    },
+    {
+      "label": "boulders — too heavy to carry",
+      "bucket": 2
+    },
+    {
+      "label": "a grand piano — not exactly pocket-sized",
+      "bucket": 2
+    }
+  ],
+  "why": "Money must be scarce, durable, portable and divisible; each candidate fails one test. A painting can be scarce and durable yet still fail divisibility."
+};
+
+const miLoanOrder = {
+  "prompt": "How a bank loan creates money — put the steps in order:",
+  "items": [
+    "A bank approves your mortgage and credits your account",
+    "The deposit is new money — no saver's pounds were moved",
+    "You spend it, and the seller's bank receives the deposit",
+    "You repay the loan over the years",
+    "As the loan is repaid, that money is destroyed"
+  ],
+  "why": "Most money is bank-created credit: loans create deposits, and repayment extinguishes them."
+};
+
+const miMoneyCloze = {
+  "text": "M1 is currency plus %%0%% deposits — money you can spend immediately. M2 adds %%1%% accounts and certificates of deposit. Most money is created by bank %%2%%, not by printing notes.",
+  "answers": [
+    [
+      "demand",
+      "checking"
+    ],
+    [
+      "savings"
+    ],
+    [
+      "lending",
+      "loans"
+    ]
+  ],
+  "hint": "M1 is the spend-now measure; M2 widens it to less liquid savings."
+};
+
+const miRealSpot = {
+  "prompt": "Find the line where the real-versus-nominal reasoning goes wrong:",
+  "lines": [
+    "Your pay rises 5% while prices rise 7%.",
+    "Nominal pay is up, so your real pay has risen too.",
+    "Real rate ≈ nominal rate − inflation = 5% − 7% = −2%.",
+    "Your real pay has fallen by about 2%.",
+    "Borrowers with fixed-rate loans gain in this situation."
+  ],
+  "errorLine": 1,
+  "correction": "Nominal pay rose, but real pay fell: 5% − 7% ≈ −2%.",
+  "why": "Inflation redistributes from savers to borrowers: borrowers repay in cheaper money, while fixed-income savers lose."
+};
+
+const miRulePlace = {
+  "prompt": "At 5% inflation, roughly how many years until prices double? Place it on the axis.",
+  "labels": [
+    "0",
+    "7",
+    "14",
+    "21",
+    "28"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 28
+  },
+  "answer": 14,
+  "tolerance": 1,
+  "why": "70 ÷ 5 = 14 years. At 3% it is about 23 years; at 10%, 7 years."
+};
+
+const miOilBranch = {
+  "root": "Crude oil roughly quadruples in a few months. Trace the diagnosis.",
+  "nodes": {
+    "start": {
+      "text": "Energy feeds into almost everything. Which inflation does this shock start?",
+      "choices": [
+        {
+          "label": "Cost-push — input prices rise and firms pass them on",
+          "next": "cost",
+          "feedback": "Yes — an input shock raises costs across the economy."
+        },
+        {
+          "label": "Demand-pull — too much spending chasing too few goods",
+          "next": "demand",
+          "feedback": "Spending did not surge; the cost of an essential input did."
+        },
+        {
+          "label": "Deflation — prices are falling",
+          "next": "defl",
+          "feedback": "This shock pushes prices up, not down."
+        }
+      ]
+    },
+    "cost": {
+      "text": "Cost-push. The central bank now faces a dilemma: higher rates cool demand but cannot produce more oil. What is the main risk?",
+      "choices": [
+        {
+          "label": "A wage–price spiral if expectations unanchor",
+          "next": "spiral",
+          "feedback": "Yes — expected inflation can make the shock persistent."
+        },
+        {
+          "label": "Inflation vanishes immediately",
+          "next": "instant",
+          "feedback": "Cost shocks fade slowly, and expectations can keep them alive."
+        }
+      ]
+    },
+    "spiral": {
+      "text": "If workers and firms expect 10% and set wages and prices at 10%, a temporary shock becomes persistent. Credibility is the shield."
+    },
+    "demand": {
+      "text": "That is the wrong diagnosis: spending did not surge; the cost of an essential input did. Raising demand further would worsen it.",
+      "choices": [
+        {
+          "label": "Reconsider the diagnosis",
+          "next": "cost",
+          "feedback": "Start from the input price."
+        }
+      ]
+    },
+    "defl": {
+      "text": "Deflation is falling prices — the opposite of an oil shock.",
+      "choices": [
+        {
+          "label": "Reconsider the diagnosis",
+          "next": "cost",
+          "feedback": "Which way does a cost shock push prices?"
+        }
+      ]
+    },
+    "instant": {
+      "text": "Cost shocks fade slowly, and expectations can keep them alive.",
+      "choices": [
+        {
+          "label": "Follow the risk",
+          "next": "spiral",
+          "feedback": "Track what happens if expectations unanchor."
+        }
+      ]
+    }
+  },
+  "why": "An oil shock is cost-push; the policy danger is that a one-off price jump becomes a wage–price spiral once expectations unanchor."
+};
+
+const miPolicyJudge = {
+  "statements": [
+    {
+      "s": "A central bank raises its interest rate; mortgage and investment spending cool, and inflation pressure eases after a lag.",
+      "truth": true,
+      "why": "Higher rates raise borrowing costs, which cools demand — but the transmission runs through decisions that take months to renegotiate."
+    },
+    {
+      "s": "The main effect on inflation appears within days of a rate change.",
+      "truth": false,
+      "why": "The standard lag is a year or more, which is why central banks must forecast rather than react to the latest headline."
+    },
+    {
+      "s": "Central bank independence helps because governments may be tempted to stimulate before elections.",
+      "truth": true,
+      "why": "The political business cycle is the temptation; independence protects credibility."
+    }
+  ]
+};
+
+const miDiseaseCompare = {
+  "prompt": "Two failures of price stability — drag the divider:",
+  "before": {
+    "label": "hyperinflation",
+    "text": "prices double every few days; money stops being a store of value, and people flee to barter or foreign currency"
+  },
+  "after": {
+    "label": "deflation",
+    "text": "prices fall, so buyers wait; debts grow heavier in real terms and spending stalls"
+  },
+  "why": "Both are failures of price stability in opposite directions; the 2% target is a buffer against deflation, which is harder to escape."
+};
 ---
 <TopicPage slug="subjects/economics/foundational/money-inflation">
 
@@ -54,6 +288,7 @@ const cpiCfg = {
     nearly half a million pairwise prices. Barter does not just fail at the margin — it
     fails at scale.
   </p>
+  <Widget no="1" caption="call the size of the barter problem" widget="estimate" config={miBarterEst} />
   <p>
     Money is the technology that dissolves the problem, and it does three jobs at once. A
     <strong>medium of exchange</strong>: everyone accepts it, so any seller trades with any
@@ -65,6 +300,7 @@ const cpiCfg = {
     less. This lesson is about how money does its jobs, who manufactures it, and what
     happens when its value starts to slip.
   </p>
+  <Widget no="2" caption="pair each job of money with its example" widget="match" config={miJobsMatch} />
   <p>
     History supplies the job interview. Whatever carried trust served as money: salt and
     cowrie shells, then coins whose metal <em>was</em> the value, then paper notes
@@ -77,6 +313,7 @@ const cpiCfg = {
     of the list: money is whatever a community trusts, and the practical properties are
     what keep that trust cheap to maintain.
   </p>
+  <Widget no="3" caption="which property does each candidate fail?" widget="sort-buckets" config={miPropertySort} />
 
   <h2>Who makes money, and how much of it there is</h2>
   <p>
@@ -91,6 +328,7 @@ const cpiCfg = {
     to each other at, and acts as <strong>lender of last resort</strong> in panics — the
     institutional response to the lesson that bank runs are self-fulfilling prophecies.
   </p>
+  <Widget no="4" caption="how a bank loan creates money" widget="order" config={miLoanOrder} />
   <p>
     Economists measure the result in two headlines. <strong>M1</strong> is the money you
     can spend immediately: currency plus demand deposits (checking accounts). <strong>M2</strong>
@@ -99,6 +337,7 @@ const cpiCfg = {
     in 2017 and far larger now), and almost all of it is bank-created digits rather than
     printed notes.
   </p>
+  <Widget no="5" caption="fill the blanks — M1 and M2" widget="cloze" config={miMoneyCloze} />
   <p><em>Common misconception:</em> "my credit card is money." It is not — a credit card
   is a form of borrowing. When you tap it, the card company pays the seller with real money
   and you owe the company; the card defers payment, it does not replace it. The same test
@@ -136,8 +375,9 @@ const cpiCfg = {
     lose; wage earners lose whenever wages lag prices — which is why union contracts, tax
     brackets and even bus fares get "indexed" to the index itself.
   </p>
+  <Widget no="6" caption="find the real-versus-nominal slip" widget="spot-error" config={miRealSpot} />
 
-  <Widget no="1" caption="the slow tax — 3% inflation halves money's worth in about 23 years; drag i upward and watch it collapse" widget="plotter" config={powCfg} />
+  <Widget no="7" caption="the slow tax — 3% inflation halves money's worth in about 23 years; drag i upward and watch it collapse" widget="plotter" config={powCfg} />
   <p>
     <strong>What to notice:</strong> at the default 3%, the curve looks gentle — and
     reaches half its height around year 23. Now drag the inflation rate to 10%: the
@@ -153,6 +393,7 @@ const cpiCfg = {
     grows, and how fast an investment doubles at 7% interest (70 ÷ 7 = 10 years). One
     tool, any compounder.
   </p>
+  <Widget no="8" caption="mark the doubling time at 5%" widget="place" config={miRulePlace} />
   <p><em>Common misconception:</em> "inflation is falling, so prices are falling." Falling
   inflation (<em>disinflation</em>) means prices rise more slowly; falling prices
   (<strong>deflation</strong>) is a different and more dangerous disease — the very trap
@@ -179,8 +420,9 @@ const cpiCfg = {
     central banks guard their credibility so jealously — an anchor on expectations does
     half the disinflation work in advance.
   </p>
+  <Widget no="9" caption="diagnose the oil shock" widget="branch" config={miOilBranch} />
 
-  <Widget no="2" caption="US inflation by year — the Great Inflation, the Volcker cure, the Great Moderation, and the 2022 spike" widget="chart" config={cpiCfg} />
+  <Widget no="10" caption="US inflation by year — the Great Inflation, the Volcker cure, the Great Moderation, and the 2022 spike" widget="chart" config={cpiCfg} />
   <p>
     <strong>What to notice:</strong> three episodes and one quiet stretch. The
     <strong>Great Inflation</strong> of the 1970s climbs to 13.5% (1980) after oil shocks
@@ -210,6 +452,7 @@ const cpiCfg = {
     down longer-term rates), and a cost-push shock cannot be cured by demand squeezes
     without extra pain.
   </p>
+  <Widget no="11" caption="true or false — the monetary lever" widget="judge" config={miPolicyJudge} />
   <p><em>Common misconception:</em> a rate rise works immediately — the central bank hikes
   and inflation drops by Friday. Transmission runs through mortgage, investment and
   hiring decisions that take months to renegotiate, which is why the standard lag runs a
@@ -239,6 +482,7 @@ const cpiCfg = {
     by indexing wages, contracts and interest rates to inflation — costly and clumsy, but
     survivable, as long as nobody lets expectations unanchor.
   </p>
+  <Widget no="12" caption="hyperinflation versus deflation — drag the divider" widget="compare" config={miDiseaseCompare} />
   <p>
     The opposite trap, <strong>deflation</strong>, looks virtuous and is not: falling
     prices reward waiting (why buy today?), spending stalls, and debts grow

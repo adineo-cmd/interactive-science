@@ -1,0 +1,211 @@
+[
+  {
+    "slug": "subjects/economics/foundational/money-inflation",
+    "activities": [
+      {
+        "anchor": "Imagine a market where money has not been invented",
+        "type": "estimate",
+        "caption": "call the size of the barter problem",
+        "name": "miBarterEst",
+        "config": {
+          "prompt": "With 1,000 different goods, barter needs a separate price for every pair. Roughly how many pairwise prices is that?",
+          "unit": "prices",
+          "answer": 499500,
+          "factor": 1.1,
+          "why": "n(n−1)/2 = 1000 × 999 / 2 ≈ 500,000. Money replaces that whole matrix with one unit of account — the scale at which barter fails.",
+          "context": "with 3 goods it is only 3 pairs; the count grows with the square"
+        }
+      },
+      {
+        "anchor": "Money is the technology that dissolves the problem",
+        "type": "match",
+        "caption": "pair each job of money with its example",
+        "name": "miJobsMatch",
+        "config": {
+          "prompt": "Pair each job of money with what it makes possible:",
+          "pairs": [
+            { "left": "medium of exchange", "right": "the shoemaker accepts your money without wanting your chicken" },
+            { "left": "unit of account", "right": "every price is quoted in one yardstick, so thousands can be compared" },
+            { "left": "store of value", "right": "savings keep their meaning between this month and next year" }
+          ],
+          "why": "The three jobs are separate: exchange dissolves the double coincidence, the unit of account compresses the price list, and the store of value carries purchasing power through time."
+        }
+      },
+      {
+        "anchor": "History supplies the job interview",
+        "type": "sort-buckets",
+        "caption": "which property does each candidate fail?",
+        "name": "miPropertySort",
+        "config": {
+          "prompt": "Which property of good money does each candidate fail?",
+          "buckets": ["not scarce", "not durable", "not portable"],
+          "items": [
+            { "label": "pebbles on a beach — anyone can gather more", "bucket": 0 },
+            { "label": "unlimited sand — supply is effectively infinite", "bucket": 0 },
+            { "label": "fresh fish — spoils by the next day", "bucket": 1 },
+            { "label": "ice sculptures — melt in the market", "bucket": 1 },
+            { "label": "boulders — too heavy to carry", "bucket": 2 },
+            { "label": "a grand piano — not exactly pocket-sized", "bucket": 2 }
+          ],
+          "why": "Money must be scarce, durable, portable and divisible; each candidate fails one test. A painting can be scarce and durable yet still fail divisibility."
+        }
+      },
+      {
+        "anchor": "is stranger than it sounds",
+        "type": "order",
+        "caption": "how a bank loan creates money",
+        "name": "miLoanOrder",
+        "config": {
+          "prompt": "How a bank loan creates money — put the steps in order:",
+          "items": [
+            "A bank approves your mortgage and credits your account",
+            "The deposit is new money — no saver's pounds were moved",
+            "You spend it, and the seller's bank receives the deposit",
+            "You repay the loan over the years",
+            "As the loan is repaid, that money is destroyed"
+          ],
+          "why": "Most money is bank-created credit: loans create deposits, and repayment extinguishes them."
+        }
+      },
+      {
+        "anchor": "Economists measure the result in two headlines",
+        "type": "cloze",
+        "caption": "fill the blanks — M1 and M2",
+        "name": "miMoneyCloze",
+        "config": {
+          "text": "M1 is currency plus %%0%% deposits — money you can spend immediately. M2 adds %%1%% accounts and certificates of deposit. Most money is created by bank %%2%%, not by printing notes.",
+          "answers": [
+            ["demand", "checking"],
+            ["savings"],
+            ["lending", "loans"]
+          ],
+          "hint": "M1 is the spend-now measure; M2 widens it to less liquid savings."
+        }
+      },
+      {
+        "anchor": "The distinction that organises everything else",
+        "type": "spot-error",
+        "caption": "find the real-versus-nominal slip",
+        "name": "miRealSpot",
+        "config": {
+          "prompt": "Find the line where the real-versus-nominal reasoning goes wrong:",
+          "lines": [
+            "Your pay rises 5% while prices rise 7%.",
+            "Nominal pay is up, so your real pay has risen too.",
+            "Real rate ≈ nominal rate − inflation = 5% − 7% = −2%.",
+            "Your real pay has fallen by about 2%.",
+            "Borrowers with fixed-rate loans gain in this situation."
+          ],
+          "errorLine": 1,
+          "correction": "Nominal pay rose, but real pay fell: 5% − 7% ≈ −2%.",
+          "why": "Inflation redistributes from savers to borrowers: borrowers repay in cheaper money, while fixed-income savers lose."
+        }
+      },
+      {
+        "anchor": "converts any growth rate into a halving",
+        "type": "place",
+        "caption": "mark the doubling time at 5%",
+        "name": "miRulePlace",
+        "config": {
+          "prompt": "At 5% inflation, roughly how many years until prices double? Place it on the axis.",
+          "labels": ["0", "7", "14", "21", "28"],
+          "scale": { "min": 0, "max": 28 },
+          "answer": 14,
+          "tolerance": 1,
+          "why": "70 ÷ 5 = 14 years. At 3% it is about 23 years; at 10%, 7 years."
+        }
+      },
+      {
+        "anchor": "is too much spending chasing too few goods",
+        "type": "branch",
+        "caption": "diagnose the oil shock",
+        "name": "miOilBranch",
+        "config": {
+          "root": "Crude oil roughly quadruples in a few months. Trace the diagnosis.",
+          "nodes": {
+            "start": {
+              "text": "Energy feeds into almost everything. Which inflation does this shock start?",
+              "choices": [
+                { "label": "Cost-push — input prices rise and firms pass them on", "next": "cost", "feedback": "Yes — an input shock raises costs across the economy." },
+                { "label": "Demand-pull — too much spending chasing too few goods", "next": "demand", "feedback": "Spending did not surge; the cost of an essential input did." },
+                { "label": "Deflation — prices are falling", "next": "defl", "feedback": "This shock pushes prices up, not down." }
+              ]
+            },
+            "cost": {
+              "text": "Cost-push. The central bank now faces a dilemma: higher rates cool demand but cannot produce more oil. What is the main risk?",
+              "choices": [
+                { "label": "A wage–price spiral if expectations unanchor", "next": "spiral", "feedback": "Yes — expected inflation can make the shock persistent." },
+                { "label": "Inflation vanishes immediately", "next": "instant", "feedback": "Cost shocks fade slowly, and expectations can keep them alive." }
+              ]
+            },
+            "spiral": {
+              "text": "If workers and firms expect 10% and set wages and prices at 10%, a temporary shock becomes persistent. Credibility is the shield."
+            },
+            "demand": {
+              "text": "That is the wrong diagnosis: spending did not surge; the cost of an essential input did. Raising demand further would worsen it.",
+              "choices": [
+                { "label": "Reconsider the diagnosis", "next": "cost", "feedback": "Start from the input price." }
+              ]
+            },
+            "defl": {
+              "text": "Deflation is falling prices — the opposite of an oil shock.",
+              "choices": [
+                { "label": "Reconsider the diagnosis", "next": "cost", "feedback": "Which way does a cost shock push prices?" }
+              ]
+            },
+            "instant": {
+              "text": "Cost shocks fade slowly, and expectations can keep them alive.",
+              "choices": [
+                { "label": "Follow the risk", "next": "spiral", "feedback": "Track what happens if expectations unanchor." }
+              ]
+            }
+          },
+          "why": "An oil shock is cost-push; the policy danger is that a one-off price jump becomes a wage–price spiral once expectations unanchor."
+        }
+      },
+      {
+        "anchor": "is the central bank steering demand",
+        "type": "judge",
+        "caption": "true or false — the monetary lever",
+        "name": "miPolicyJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "A central bank raises its interest rate; mortgage and investment spending cool, and inflation pressure eases after a lag.",
+              "truth": true,
+              "why": "Higher rates raise borrowing costs, which cools demand — but the transmission runs through decisions that take months to renegotiate."
+            },
+            {
+              "s": "The main effect on inflation appears within days of a rate change.",
+              "truth": false,
+              "why": "The standard lag is a year or more, which is why central banks must forecast rather than react to the latest headline."
+            },
+            {
+              "s": "Central bank independence helps because governments may be tempted to stimulate before elections.",
+              "truth": true,
+              "why": "The political business cycle is the temptation; independence protects credibility."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "conventionally, prices rising over",
+        "type": "compare",
+        "caption": "hyperinflation versus deflation — drag the divider",
+        "name": "miDiseaseCompare",
+        "config": {
+          "prompt": "Two failures of price stability — drag the divider:",
+          "before": {
+            "label": "hyperinflation",
+            "text": "prices double every few days; money stops being a store of value, and people flee to barter or foreign currency"
+          },
+          "after": {
+            "label": "deflation",
+            "text": "prices fall, so buyers wait; debts grow heavier in real terms and spending stalls"
+          },
+          "why": "Both are failures of price stability in opposite directions; the 2% target is a buffer against deflation, which is harder to escape."
+        }
+      }
+    ]
+  }
+]
