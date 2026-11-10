@@ -14,6 +14,172 @@ const npvCfg = {
     { label: 'rough payback (years)', expr: 'p/cf' },
   ],
 };
+
+const tvMirrorCompare = {
+  "prompt": "Same 8 per cent, same five years, opposite directions — drag the divider:",
+  "before": {
+    "label": "Compounding — forward",
+    "text": "1,000 left invested at 8 per cent grows to 1,469 in five years: multiply by (1 + r) once per period of waiting."
+  },
+  "after": {
+    "label": "Discounting — reverse",
+    "text": "1,469 arriving in five years is worth exactly 1,000 today at 8 per cent: divide by (1 + r) once per period of waiting."
+  },
+  "why": "Once any future cash flow can be converted into today's money, a bond, a factory, a mortgage and a startup all speak the same currency — which is what makes Net Present Value possible."
+};
+
+const tvDecayTrace = {
+  "prompt": "10,000 is promised. Waiting shrinks what it is worth today — but how? Pick the curve discounting actually traces:",
+  "curves": [
+    {
+      "expr": "10000",
+      "color": "#b42318",
+      "label": "flat — the promise never fades"
+    },
+    {
+      "expr": "10000 - 600*x",
+      "color": "#b45309",
+      "label": "straight-line fade"
+    },
+    {
+      "expr": "10000/(1.08^x)",
+      "color": "#1d4ed8",
+      "label": "exponential fade"
+    }
+  ],
+  "correct": 2,
+  "x": {
+    "min": 0,
+    "max": 40
+  },
+  "y": {
+    "min": 0,
+    "max": 10000
+  },
+  "xlabel": "years of waiting",
+  "ylabel": "present value",
+  "why": "Discounting divides by (1 + r) per period: 10,000 in 5 years ≈ 6,806, in 10 ≈ 4,632 — and a million promised in forty years is only about 66,600 today at 7 per cent."
+};
+
+const tvRule72Place = {
+  "prompt": "Rule of 72: money doubles in roughly 72 ÷ r years. At 12 per cent, where does doubling land?",
+  "labels": [
+    "0",
+    "6",
+    "12",
+    "18",
+    "24"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 24
+  },
+  "answer": 6,
+  "tolerance": 0.5,
+  "why": "72 ÷ 12 = 6 — at 6 per cent it is about 12 years, at 9 per cent about 8. The rule trades the exact logarithm for arithmetic you can do in your head."
+};
+
+const tvMortgageEstimate = {
+  "prompt": "You borrow 200,000 at 6 per cent over 25 years, paying the equal annual amount. Roughly what do you repay in total?",
+  "unit": "total repaid",
+  "answer": 391000,
+  "factor": 1.15,
+  "why": "The equal payment works out near 15,600 a year (about 1,300 a month), so 25 years costs roughly 391,000 on a 200,000 loan — nothing hidden, that is simply what time costs at 6 per cent."
+};
+
+const tvVerdictSort = {
+  "prompt": "You are the capital budget. File each candidate:",
+  "buckets": [
+    "accept — wealth created",
+    "reject"
+  ],
+  "items": [
+    {
+      "label": "machine priced 6,000, paying 800 a year for 5 years at 8 per cent — PV of inflows ≈ 3,194",
+      "bucket": 1
+    },
+    {
+      "label": "the same machine at a cut price — NPV turns +194",
+      "bucket": 0
+    },
+    {
+      "label": "simple payback of 7.5 years against a 5-year life",
+      "bucket": 1
+    },
+    {
+      "label": "a project measured as +1,000 of purchasing power right now",
+      "bucket": 0
+    }
+  ],
+  "why": "Accept if NPV is greater than zero: the test already accounts for the time value of money, the risk of the flows, and every alternative use of the capital — negative means wealth destroyed slowly enough that only bad accounting hides it."
+};
+
+const tvHurdleBranch = {
+  "root": "You are setting the corporate hurdle — the blended cost the company pays its lenders and shareholders.",
+  "nodes": {
+    "start": {
+      "text": "Which way do you set it?",
+      "choices": [
+        {
+          "label": "Too high",
+          "next": "high",
+          "feedback": "The firm starves itself of good investments — excessively high hurdles were a documented behaviour of cash-rich firms in the 2010s."
+        },
+        {
+          "label": "Too low",
+          "next": "low",
+          "feedback": "It invests in everything, including the projects that quietly destroy value."
+        }
+      ]
+    },
+    "high": {
+      "text": "Every bid is now measured against a bar almost nothing clears.",
+      "choices": []
+    },
+    "low": {
+      "text": "The queue of approved projects now includes the ones that quietly destroy value.",
+      "choices": []
+    }
+  },
+  "why": "The rate carries the whole judgement: pure time value plus a risk premium — a promised dollar with a 50 per cent chance of never arriving must be valued as half a dollar, and scenario-weighted flows (25/60/15 across 1,200/800/300) enter as 765, not the cheerful 800."
+};
+
+const tvToolsMatch = {
+  "prompt": "Three tools compete with NPV — pair each with what trips it:",
+  "pairs": [
+    {
+      "left": "IRR",
+      "right": "flows change sign more than once (a mine's cleanup bill) — two answers or none, and the number stops meaning anything"
+    },
+    {
+      "left": "Payback period",
+      "right": "ignores everything after the recovery point and all of the time value before it"
+    },
+    {
+      "left": "IRR between two projects of different sizes",
+      "right": "can crown the small high-percentage project that creates less actual wealth"
+    },
+    {
+      "left": "NPV",
+      "right": "counts wealth created, in today's money — always the tiebreaker"
+    }
+  ],
+  "why": "Real organisations typically screen with payback, rank with IRR, and decide with NPV — managers love \"this project returns 14 per cent\", and it usually agrees."
+};
+
+const tvDecompSpot = {
+  "prompt": "One line of this rate-decomposition note is wrong — click it:",
+  "lines": [
+    "A 6 per cent lending rate decomposes into roughly 2 per cent expected inflation, 2 per cent real return, 2 per cent risk and liquidity premium.",
+    "A riskless real project in a zero-inflation world still demands a positive rate — capital has opportunity cost.",
+    "The discount rate is simply inflation, so a zero-inflation world would need a zero rate.",
+    "Discounting at inflation while ignoring risk overvalues every uncertain project on the desk.",
+    "Discounting asks: what else could this money do, and how sure am I of getting paid?"
+  ],
+  "errorLine": 2,
+  "correction": "The rate is never just inflation — it bundles pure time value, real return and a premium for uncertainty.",
+  "why": "Discounting asks the broader comparison against what the money could earn elsewhere; a zero-inflation world still prices the waiting and the risk."
+};
 ---
 <TopicPage slug="subjects/finance/intermediate/time-value-of-money-npv">
 
@@ -48,6 +214,7 @@ const npvCfg = {
     the same money could earn elsewhere; negative means it destroys wealth slowly enough
     that only bad accounting hides it.
   </p>
+  <Widget no="2" caption="drag the divider — the machine and its mirror image" widget="compare" config={tvMirrorCompare} />
 
   <Widget no="1" caption="the NPV machine — a project that pays for itself or doesn't, depending on the discount rate" widget="sliderLab" config={npvCfg} />
   <p>
@@ -76,6 +243,7 @@ const npvCfg = {
     66,600 today) and why lottery jackpots quoted as headline sums are roughly half
     advertised once discounted.
   </p>
+  <Widget no="3" caption="which curve is discounting?" widget="trace" config={tvDecayTrace} />
   <p>
     Two shortcuts do most of the world's work. A level <strong>annuity</strong> — the same
     cash flow C every year for n years — has PV = C × (1 − (1 + r)<sup>−n</sup>) ÷ r, the
@@ -87,6 +255,7 @@ const npvCfg = {
     arithmetic, the <strong>Rule of 72</strong>: money doubles in roughly 72 ÷ r years —
     at 6 per cent, about 12; at 9 per cent, about 8.
   </p>
+  <Widget no="4" caption="pin the doubling time on the Rule of 72" widget="place" config={tvRule72Place} />
   <p>
     Run the annuity formula in the opposite direction and it prices debt. Borrow 200,000 at
     6 per cent for 25 years: the equal annual payment is C = PV × r ÷ (1 − (1 + r)<sup>−n</sup>)
@@ -97,6 +266,7 @@ const npvCfg = {
     today, not 40,000 times the number of years — and why "how much do I need to retire?"
     is a discounting problem before it is a saving problem.
   </p>
+  <Widget no="5" caption="call the total before the schedule does" widget="estimate" config={tvMortgageEstimate} />
   <p>
     <em>Common misconception:</em> "paying nearly double the principal means the mortgage is a
     rip-off." It feels like theft because the raw totals sit side by side. But the two sums live
@@ -120,6 +290,7 @@ const npvCfg = {
     and every alternative use of the capital. NPV is measured in today's money: a project
     with NPV +1,000 has made the owners 1,000 richer in purchasing power right now.
   </p>
+  <Widget no="6" caption="file each project: buy or walk away" widget="sort-buckets" config={tvVerdictSort} />
   <p>
     <em>Common misconception:</em> a project that "pays back" is automatically good. Payback
     ignores what the money could have earned elsewhere. Returning your own 6,000 over five
@@ -150,6 +321,7 @@ const npvCfg = {
     rates were a documented behaviour of cash-rich firms in the 2010s); understate it and it
     invests in everything, including the projects that quietly destroy value.
   </p>
+  <Widget no="7" caption="set the hurdle — then live with it" widget="branch" config={tvHurdleBranch} />
   <p>
     <strong>So far:</strong> the discount rate is the whole judgement — riskless time value plus
     a premium for uncertainty — and expected cash flows are probability-weighted before they are
@@ -172,6 +344,7 @@ const npvCfg = {
     all of the time value before it. Real organisations typically screen with payback,
     rank with IRR, and decide with NPV.
   </p>
+  <Widget no="8" caption="pair each tool with its blind spot" widget="match" config={tvToolsMatch} />
   <p>
     <em>Common misconception:</em> the discount rate is just inflation. Inflation is one
     ingredient — a 6 per cent lending rate might decompose into roughly 2 per cent expected
@@ -182,6 +355,7 @@ const npvCfg = {
     classic error of "discounting at inflation and ignoring risk", which overvalues every
     uncertain project on the desk.
   </p>
+  <Widget no="9" caption="find the faulty line — decomposing a 6 per cent rate" widget="spot-error" config={tvDecompSpot} />
 
   <h2>Investing and financing — the two halves of corporate finance</h2>
   <p>

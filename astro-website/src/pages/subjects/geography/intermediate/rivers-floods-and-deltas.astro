@@ -10,6 +10,155 @@ const riverCfg = {
     { math: '4 · Delta: deposition', note: 'Where rivers meet the sea, sediment settles into deltas — among the most fertile and most densely populated lands on Earth (Nile, Ganges-Brahmaputra, Mekong), and the most threatened by sea-level rise and upstream dams.' },
   ],
 };
+
+const rivAmazonEstimate = {
+  "prompt": "The Amazon's drainage basin is the largest on Earth. Roughly how many million km² does it cover?",
+  "unit": "million km²",
+  "answer": 7,
+  "factor": 1.4,
+  "why": "About 7 million km² — the Thames' is 13,000 km² — delivering roughly a fifth of all river water entering the ocean.",
+  "context": "Every drop of rain lands in exactly one catchment; the basin is bounded by a watershed ridge you cannot see on the ground."
+};
+
+const rivLagBuckets = {
+  "prompt": "Each of these changes a basin's storm hydrograph. File them:",
+  "buckets": [
+    "shortens the lag, raises the peak",
+    "lengthens the lag, lowers the peak"
+  ],
+  "items": [
+    {
+      "label": "roofs, tarmac and storm drains going in",
+      "bucket": 0
+    },
+    {
+      "label": "building on the floodplain",
+      "bucket": 0
+    },
+    {
+      "label": "deforestation up the catchment",
+      "bucket": 0
+    },
+    {
+      "label": "afforestation of the upper basin",
+      "bucket": 1
+    },
+    {
+      "label": "floodplain restoration that slows the basin's response",
+      "bucket": 1
+    },
+    {
+      "label": "a dam regulating the flow downstream",
+      "bucket": 1
+    }
+  ],
+  "why": "A forested, permeable basin intercepts rain and releases it slowly; an urbanised basin sheds it almost instantly — and the city retimes and amplifies everyone else's flood downstream, not just its own."
+};
+
+const rivDischargeEstimate = {
+  "prompt": "A gauging station measures a channel 12 m wide and 1.5 m deep, flowing at 0.8 m/s. What is the discharge?",
+  "unit": "cumecs",
+  "answer": 14.4,
+  "factor": 1.3,
+  "why": "Q = cross-sectional area × velocity: 18 m² × 0.8 m/s = 14.4 cubic metres per second — the arithmetic every river gauging station runs.",
+  "context": "Downstream, width and depth grow and roughness falls, so velocity and discharge rise — the Bradshaw model's surprise."
+};
+
+const rivBradshawSpot = {
+  "prompt": "One line of these course-notes is wrong — click it:",
+  "lines": [
+    "Downstream, gradient falls while channel width and depth grow.",
+    "Velocity and discharge tend to rise downstream.",
+    "Roughness falls, so less energy is wasted on friction with bed and banks.",
+    "The mountain torrent is therefore the fastest water on the course.",
+    "The long profile is a graded curve that always aims at base level — sea level."
+  ],
+  "errorLine": 3,
+  "correction": "A broad, smooth lowland river moves faster than a boulder-chocked steep one — the mountain torrent wastes its energy on friction.",
+  "why": "Which is exactly why the larger, faster lowland flow can carry sediment all the way to the delta — and why raising base level with a weir or reservoir makes a river dump its load upstream."
+};
+
+const rivTransportMatch = {
+  "prompt": "Erosion and transport in a working river — pair each process with its signature:",
+  "pairs": [
+    {
+      "left": "hydraulic action",
+      "right": "water and air pockets rammed into cracks"
+    },
+    {
+      "left": "suspension",
+      "right": "fine silt held in the water — why big rivers run brown"
+    },
+    {
+      "left": "saltation",
+      "right": "sand-sized grains hopping along the bed"
+    },
+    {
+      "left": "traction",
+      "right": "boulders rolling along the bed"
+    }
+  ],
+  "why": "It takes more energy to pick up a large particle than to carry it, and still more to pick up sticky clay than clean sand — the Hjulström curve's key insight."
+};
+
+const rivOxbowOrder = {
+  "prompt": "How a meander becomes an oxbow lake — in order from first to last:",
+  "items": [
+    "The river erodes the outer bend and deposits on the inner slip-off slope",
+    "Meanders migrate downstream and sideways over time",
+    "Adjacent loops pinch through during a flood",
+    "The abandoned loop becomes an oxbow lake"
+  ],
+  "why": "Erosion where velocity and turbulence are highest, deposition where they fall — energy arithmetic, not scenery, which is why the same sequence plays out on every continent."
+};
+
+const rivHardSoftBranch = {
+  "root": "You manage a reach of a large river that has just flooded. The budget covers one direction of travel this decade.",
+  "nodes": {
+    "start": {
+      "text": "Which philosophy do you fund?",
+      "choices": [
+        {
+          "label": "Fight the water — build harder",
+          "next": "hard",
+          "feedback": "Concrete has a résumé — and a bill that arrives elsewhere."
+        },
+        {
+          "label": "Work with the system — build softer",
+          "next": "soft",
+          "feedback": "Slower, greener, and it hands some land back to the river."
+        }
+      ]
+    },
+    "hard": {
+      "text": "Dams give flood control and power — but trap the sediment that builds deltas downstream. Embankments and levees protect one bank but constrict the channel, raising flood levels next door and downstream: the Mississippi's levees made its floods higher. Channel straightening moves water faster — to someone else's reach.",
+      "choices": [
+        {
+          "label": "Add a downstream reach to the scheme",
+          "next": "soft",
+          "feedback": "The residual risk has to live somewhere."
+        }
+      ]
+    },
+    "soft": {
+      "text": "Afforestation and floodplain restoration slow the basin's response; 'room for the river' schemes — the Netherlands now deliberately lowers embankments and relocates dykes — give floods somewhere to go; warning systems and floodplain zoning refuse to put hospitals on land rivers own. But zoning is political: who is allowed, or forced, to live on the floodplain?"
+    }
+  },
+  "why": "Rivers cannot be beaten into submission; they can only be bargained with — hard engineering moves risk, soft engineering works with the system, and the best answers weigh them together."
+};
+
+const rivBanglaCompare = {
+  "prompt": "Bangladesh's storm deaths, before and after community-based adaptation — drag the divider:",
+  "before": {
+    "label": "1991",
+    "text": "About 138,000 dead in a comparable cyclone — deltaic, low-lying, monsoon-fed, one of the densest countries on Earth, with shelters and warnings still to come."
+  },
+  "after": {
+    "label": "the 2010s",
+    "text": "Comparable storms now kill hundreds to a few thousand: cyclone shelters and early-warning systems, floating farms and raised homesteads, and a national strategy that treats seasonal floods as an asset — the silt that renews the land."
+  },
+  "why": "Storm deaths cut more than tenfold — the worked case study of a negotiation with the conveyor belt rather than a victory over it."
+};
 ---
 <TopicPage slug="subjects/geography/intermediate/rivers-floods-and-deltas">
 
@@ -72,6 +221,7 @@ const riverCfg = {
     covers the ground: a forested basin intercepts rain, soaks it into soil and releases it
     slowly, while a paved urban basin sheds it almost instantly.
   </p>
+  <Widget no="2" caption="call the magnitude — the giant's catchment" widget="estimate" config={rivAmazonEstimate} />
   <p>
     The clearest window into basin behaviour is the <strong>storm hydrograph</strong> — a
     plot of discharge against time for one rainstorm. Two numbers matter: the <em>lag time</em>
@@ -84,6 +234,7 @@ const riverCfg = {
     example of humans changing basin hydrology, alongside deforestation, afforestation,
     dams and irrigation.
   </p>
+  <Widget no="3" caption="file each change: floods sooner and higher, or later and lower" widget="sort-buckets" config={rivLagBuckets} />
   <p>
     Discharge itself is computed the way every river gauging station does it:
     <strong>Q = cross-sectional area × velocity</strong>. Measure a channel 12 m wide and
@@ -96,6 +247,7 @@ const riverCfg = {
     damming a river or dropping sea level causes a river to erode anew, and raising base
     level (a weir, a reservoir) causes it to dump sediment upstream of the barrier.
   </p>
+  <Widget no="4" caption="run the gauging station — discharge in cumecs" widget="estimate" config={rivDischargeEstimate} />
   <p>
     <em>Common misconception:</em> rivers flow fastest where the gradient is steepest, so the
     mountain torrent must be the fastest water on the course. The measured picture is close to
@@ -105,6 +257,7 @@ const riverCfg = {
     boulder-chocked steep one — which is exactly why its larger, faster flow can carry sediment
     all the way to the delta.
   </p>
+  <Widget no="5" caption="find the faulty line — the course-notes" widget="spot-error" config={rivBradshawSpot} />
   <p>
     <strong>So far:</strong> the basin collects the water, the hydrograph records how the
     channel receives it, and velocity decides what the river does to its bed and banks. Now
@@ -127,6 +280,7 @@ const riverCfg = {
     main channel, or where a river meets the sea — the load drops out, largest first. That
     single sentence is the origin of every depositional landform in this page.
   </p>
+  <Widget no="6" caption="pair each process with what it looks like" widget="match" config={rivTransportMatch} />
 
   <h2>Landforms along the course</h2>
   <p>
@@ -149,6 +303,7 @@ const riverCfg = {
     the Ganges-Brahmaputra's vast tide-dominated swamp (the Sundarbans), the largest delta
     on Earth and home to tens of millions of people.
   </p>
+  <Widget no="7" caption="rebuild the sequence — meander to oxbow" widget="order" config={rivOxbowOrder} />
   <p>
     <em>Common misconception:</em> deltas form at every river mouth. They need sediment
     supply to beat removal — strong tides (as in the Severn's estuary) or powerful waves can
@@ -185,6 +340,7 @@ const riverCfg = {
     potential in hydro, and roughly half the world's population drinks, cooks and farms from
     river catchments — which is why the hazardous land is also the contested land.
   </p>
+  <Widget no="8" caption="the river desk — fight the water, or work with it" widget="branch" config={rivHardSoftBranch} />
   <p>
     The worked case study is Bangladesh — deltaic, low-lying, monsoon-fed, one of the
     densest countries on Earth, draining the Himalaya through the Ganges-Brahmaputra. It
@@ -196,6 +352,7 @@ const riverCfg = {
     renews the land — while defending against the abnormal ones. The lesson generalises:
     rivers cannot be beaten into submission; they can only be bargained with.
   </p>
+  <Widget no="9" caption="drag the divider — one coastline, fifty years apart" widget="compare" config={rivBanglaCompare} />
   <p>
     Pakistan's 2022 monsoon flood shows the multi-cause reality at national scale: record
     monsoon rain (some provinces received five to eight times their August average) met a

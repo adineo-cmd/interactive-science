@@ -296,6 +296,30 @@
 | finance/intermediate/diversification-and-portfolios | cloze, spot-error, sort-buckets, compare, estimate, place, branch, timeline | next-4 |
 | finance/intermediate/financial-statements | match, order, predict, cloze, sort-buckets, spot-error, order, timeline | next-4 |
 | finance/intermediate/stocks-and-bonds | compare, match, place, estimate, predict, spot-error, branch, judge | next-4 |
+| finance/intermediate/time-value-of-money-npv | compare, trace, place, estimate, sort-buckets, branch, match, spot-error | next-5 |
+| food-science/foundational/food-chemistry-fundamentals | compare, spot-error, place, match, sort-buckets, cloze, estimate, branch | next-5 |
+| forensic-science/foundational/foundations-of-forensic-science | compare, match, order, sort-buckets, branch, spot-error, estimate, predict | next-5 |
+| forestry/foundational/forests-and-forestry | sort-buckets, match, estimate, branch, order, judge, compare, spot-error | next-5 |
+| game-development/foundational/game-design-foundations | compare, match, place, sort-buckets, branch, cloze, order, spot-error | next-5 |
+| gender-studies/foundational/sex-gender-and-sexuality-the-vocabulary | estimate, sort-buckets, compare, judge, match, spot-error, estimate, branch | next-5 |
+| geography/advanced/economic-globalisation | estimate, sort-buckets, estimate, match, order, judge, compare, branch | next-5 |
+| geography/advanced/population-and-migration-geography | compare, estimate, judge, spot-error, place, sort-buckets, estimate, predict | next-5 |
+| geography/advanced/remote-sensing-and-earth-observation | place, sort-buckets, compare, match, estimate, place, order, branch | next-5 |
+| geography/advanced/resource-provision-food-energy | estimate, sort-buckets, spot-error, match, estimate, order, judge, compare | next-5 |
+| geography/foundational/ecosystems-and-biomes | compare, sort-buckets, order, judge, place, estimate, match, judge | next-5 |
+| geography/foundational/latitude-and-climate | sort-buckets, estimate, place, branch, judge, compare, match, branch | next-5 |
+| geography/foundational/plate-tectonics | cloze, predict, sort-buckets, match, place, spot-error, compare, estimate | next-6 |
+| geography/intermediate/climate-change-causes-and-impacts | compare, sort-buckets, match, estimate, order, cloze, place, branch | next-6 |
+| geography/intermediate/coasts-and-oceans | compare, match, predict, order, spot-error, sort-buckets, branch, place | next-6 |
+| geography/intermediate/development-and-inequality | compare, sort-buckets, predict, order, place, match, estimate, spot-error | next-6 |
+| geography/intermediate/maps-projections-and-gis | predict, estimate, spot-error, cloze, match, sort-buckets, estimate, place | next-6 |
+| geography/intermediate/monsoons-and-tropical-climates | compare, match, cloze, sort-buckets, predict, compare, estimate, spot-error | next-6 |
+| geography/intermediate/rivers-floods-and-deltas | estimate, sort-buckets, estimate, spot-error, match, order, branch, compare | next-6 |
+| geography/intermediate/urban-geography-and-cities | place, match, order, sort-buckets, estimate, judge, branch, spot-error | next-6 |
+| history/advanced/decolonisation-postcolonial-world | order, predict, match, judge, estimate, compare, order, spot-error | next-6 |
+| history/advanced/economic-history | estimate, compare, estimate, predict, spot-error, cloze, match, order | next-6 |
+| history/advanced/germany-1918-1945 | match, predict, estimate, order, spot-error, sort-buckets, estimate, compare | next-6 |
+| history/advanced/historiography-debates-and-schools | match, judge, compare, order, match, sort-buckets, predict, spot-error | next-6 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

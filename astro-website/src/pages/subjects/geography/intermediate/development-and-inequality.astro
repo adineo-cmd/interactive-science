@@ -40,6 +40,149 @@ const tradeCfg = {
   start: [6, 9],
   height: 320,
 };
+
+const devLivingCompare = {
+  "prompt": "The two ideas that usually travel together — drag the divider:",
+  "before": {
+    "label": "standard of living",
+    "text": "What money buys: income, goods, housing. Easy to measure, easy to average — and easy to fake with a single large number."
+  },
+  "after": {
+    "label": "quality of life",
+    "text": "How good living actually is: health, education, security, a clean environment. Harder to count — and the 'not always' between this and income is where the whole discipline lives."
+  },
+  "why": "The gaps run between countries and inside them — and the inside-country gaps are often the larger political fact."
+};
+
+const devIndicatorBuckets = {
+  "prompt": "Economic or social? File each development indicator:",
+  "buckets": [
+    "economic — measures the money",
+    "social — measures the life"
+  ],
+  "items": [
+    {
+      "label": "GDP per capita",
+      "bucket": 0
+    },
+    {
+      "label": "GNI per capita (with remittances earned abroad)",
+      "bucket": 0
+    },
+    {
+      "label": "the LIC/MIC/HIC thresholds (~$1,100 and ~$4,500)",
+      "bucket": 0
+    },
+    {
+      "label": "literacy rate",
+      "bucket": 1
+    },
+    {
+      "label": "infant mortality",
+      "bucket": 1
+    },
+    {
+      "label": "doctors per thousand people",
+      "bucket": 1
+    },
+    {
+      "label": "access to safe water",
+      "bucket": 1
+    },
+    {
+      "label": "calorie intake",
+      "bucket": 1
+    }
+  ],
+  "why": "The Human Development Index blends one from each family into a geometric mean — and the money-only LIC/MIC/HIC sorting is what the social indicators constantly correct."
+};
+
+const devScatterPredict = {
+  "q": "The USA earns far more per person than Japan, yet lives about four years shorter. What does that scatter around the Preston curve tell you?",
+  "choices": [
+    "The Preston curve is unreliable — the points should line up",
+    "Income is a means; converting it into health and schooling is the development story",
+    "Japan's numbers must be a statistical error"
+  ],
+  "answer": 1,
+  "why": "The curve flattens — the first few thousand dollars buy enormous gains (clean water, vaccines, clinics), the next fifty thousand buy very few — and how a country converts income is the real story."
+};
+
+const devHdiOrder = {
+  "prompt": "Rank these by HDI score, lowest first:",
+  "items": [
+    "South Sudan — 0.381",
+    "Niger — about 0.40",
+    "the world average — 0.739",
+    "Brazil — 0.760",
+    "Switzerland — 0.967"
+  ],
+  "why": "Computed by hand from Niger's figures (life expectancy about 62, roughly 2 years of schooling, $1,700 GNI) you get ≈ 0.40 against the published 0.394 — the formula is short enough to run on paper."
+};
+
+const devGiniPlace = {
+  "prompt": "The Gini coefficient runs from 0 (perfect equality) to 1 (one person owning everything). South Africa — the world's highest — sits where?",
+  "labels": [
+    "0",
+    "0.25",
+    "0.5",
+    "0.75",
+    "1"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1
+  },
+  "answer": 0.63,
+  "tolerance": 0.05,
+  "why": "About 0.63, the world's highest — one of the alternatives to averages, alongside the MPI, which found about 1.1 billion people poor across health, schooling and living standards at once."
+};
+
+const devUnevenMatch = {
+  "prompt": "Why development is uneven — pair each piece of evidence with its family of reasons:",
+  "pairs": [
+    {
+      "left": "ports for exports and railways from mine to coast",
+      "right": "historical-economic — colonial economies built to extract"
+    },
+    {
+      "left": "a dozen African countries landlocked, much of the Sahel",
+      "right": "physical — every export crosses a neighbour's politics"
+    },
+    {
+      "left": "South Sudan fell from the mid-0.5s HDI to 0.381 after 2011",
+      "right": "social-political — conflict destroys in a year what decades built"
+    },
+    {
+      "left": "the schooling of girls, throttling everything downstream",
+      "right": "social-political — the single most-supported intervention in development economics"
+    }
+  ],
+  "why": "Geography is not destiny — Japan proved that on resource-poor islands — but it sets the bill; strong answers use the three flavours together."
+};
+
+const devChinaEstimate = {
+  "prompt": "China's growth since 1978 lifted roughly how many people out of extreme poverty?",
+  "unit": "people",
+  "answer": 800000000,
+  "factor": 1.5,
+  "why": "About 800 million — the largest poverty reduction in history, and proof that the old map's weakness was implying the poor stay poor: South Korea was poorer than Ghana in 1960 and is now high-income.",
+  "context": "The sharpest gaps are now internal: Kerala achieves 75+ life expectancy on modest income, while China's coastal provinces would rank HIC and its western provinces MIC."
+};
+
+const devVietnamSpot = {
+  "prompt": "One line of this Vietnam case note is wrong — click it:",
+  "lines": [
+    "Vietnam was desperately poor in 1986 when the Doi Moi reforms began.",
+    "It opened to markets, stabilised inflation, and invested ferociously in schooling and ports.",
+    "Poverty fell from nearly 60 per cent in the early 1990s to under 5 per cent today.",
+    "The convergence was driven mainly by aid transfers from donor countries.",
+    "Its HDI has climbed to 0.726, with growth of roughly 6–7 per cent a year."
+  ],
+  "errorLine": 3,
+  "correction": "The recipe was trade plus education plus stable government — not aid; dependency on transferred money can hollow out local accountability.",
+  "why": "Vietnam is the counterexample to every 'poor countries stay poor' reflex: the gap closed by policy, consistently applied — with trade-offs (environmental pressure, one-party politics) a full answer should name."
+};
 ---
 <TopicPage slug="subjects/geography/intermediate/development-and-inequality">
 
@@ -73,6 +216,7 @@ const tradeCfg = {
     <strong>the gaps run between countries <em>and</em> inside them</strong>, and the
     inside-country gaps are often the larger political fact.
   </p>
+  <Widget no="4" caption="drag the divider — the money and the life" widget="compare" config={devLivingCompare} />
 
   <h2>Measuring development: the indicators</h2>
   <p>
@@ -95,6 +239,7 @@ const tradeCfg = {
     the thresholds move, the statistics lag, and meanwhile the schools and clinics tell
     the truth.
   </p>
+  <Widget no="5" caption="file each indicator: money, or life" widget="sort-buckets" config={devIndicatorBuckets} />
 
   <Widget no="1" caption="the Preston-curve shape: richer means longer-lived — but with diminishing returns (UNDP HDR 2023/24 data, 2022, rounded). Niger 1.7/62; Nigeria 6/53.5; India 9/68; Brazil 16.5/73.5; China 21.5/78.5; Japan 43/84.5" widget="plotter" config={prestonCfg} />
   <p>
@@ -113,6 +258,7 @@ const tradeCfg = {
     income per person; Costa Rica outlives several countries twice as rich. Income is a
     means; how a country converts it into health and schooling is the development story.
   </p>
+  <Widget no="6" caption="bet before you read on — the scatter's secret" widget="predict" config={devScatterPredict} />
 
   <p>
     <strong>So far:</strong> income alone is a means — the Preston curve flattens and the
@@ -132,6 +278,7 @@ const tradeCfg = {
     schooling, $1,700 GNI per capita — and you get ≈ 0.40 against the published 0.394.
     Range check for 2022: Switzerland tops the table at 0.967; South Sudan sits at 0.381.
   </p>
+  <Widget no="7" caption="line up the HDIs, lowest first" widget="order" config={devHdiOrder} />
 
   <Widget no="2" caption="compute a real HDI: the UNDP's own formula — watch how a log-scaled income term stops rich countries maxing out the index" widget="sliderLab" config={hdiCfg} />
   <p>
@@ -156,6 +303,7 @@ const tradeCfg = {
     across health, schooling and living standards at once, many in countries their GNI
     would call "middle income".
   </p>
+  <Widget no="8" caption="pin the Gini — the world's most uneven spread" widget="place" config={devGiniPlace} />
   <p>
     <em>Common misconception:</em> development means becoming like the West. The
     indicators are deliberately universal (health, education, income — things everyone
@@ -193,6 +341,7 @@ const tradeCfg = {
     education gap — especially the schooling of girls — throttles everything downstream,
     which is why it is the single most-supported intervention in development economics.
   </p>
+  <Widget no="9" caption="pair each cause with its flavour" widget="match" config={devUnevenMatch} />
   <p>
     The pattern (8.2.2) is no longer the neat "north-south divide" of 1980s textbooks.
     HICs cluster in North America, western Europe, the Gulf and East Asia (Japan, South
@@ -209,6 +358,7 @@ const tradeCfg = {
     only the first cut, and why the "average citizen" of any country is a statistical
     fiction worth distrust.
   </p>
+  <Widget no="10" caption="call the magnitude — history's largest lift" widget="estimate" config={devChinaEstimate} />
 
   <p>
     <em>Common misconception:</em> poor countries stay poor, so the map is permanent. The
@@ -274,6 +424,7 @@ const tradeCfg = {
     also the syllabus's counterexample to every "poor countries stay poor" reflex: the
     gap that closed closed by policy, consistently applied.
   </p>
+  <Widget no="11" caption="find the faulty line — the Vietnam case note" widget="spot-error" config={devVietnamSpot} />
 
   <p>
     <em>Common misconception:</em> aid is what develops countries. Aid saves lives and
