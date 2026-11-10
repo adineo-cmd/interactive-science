@@ -15,6 +15,177 @@ const circleCfg = {
   crossings: false,
   height: 360,
 };
+
+const ccgRelationSort = {
+  "prompt": "File each claim under the concept it describes:",
+  "buckets": [
+    "a function",
+    "a relation that refuses"
+  ],
+  "items": [
+    {
+      "label": "returns one y per x",
+      "bucket": 0
+    },
+    {
+      "label": "a circle",
+      "bucket": 1
+    },
+    {
+      "label": "a sideways parabola",
+      "bucket": 1
+    },
+    {
+      "label": "a discipline imposed on relations",
+      "bucket": 0
+    }
+  ],
+  "why": "Functions are a discipline imposed on relations, and some shapes — circles, sideways parabolas — refuse it; each x spawns two y-values."
+};
+
+const ccgDistEst = {
+  "prompt": "Triangle A(0,0), B(4,0), C(2,3). Roughly how long is AC (= √13)?",
+  "unit": "units",
+  "answer": 3.6,
+  "factor": 1.25,
+  "why": "√13 ≈ 3.6, and BC is also √13 — two equal sides, so the triangle is isosceles, decided without drawing a thing.",
+  "context": "the distance formula is Pythagoras with coordinates"
+};
+
+const ccgParenSpot = {
+  "prompt": "One of these claims about the distance formula is wrong — click it:",
+  "lines": [
+    "The square applies to each whole difference.",
+    "The formula keeps its parentheses for a reason.",
+    "d = √((x₂−x₁)² + (y₂−y₁)²).",
+    "(x₂ − x₁)² + (y₂ − y₁)² expands to x₂² − x₁² + y₂² − y₁²."
+  ],
+  "errorLine": 3,
+  "correction": "Squaring each whole difference keeps the cross terms — dropping the parentheses is the most common algebra slip inside an otherwise correct method.",
+  "why": "The square applies to each whole difference, which is why the formula keeps its parentheses."
+};
+
+const ccgRoadPlace = {
+  "prompt": "A 10% gradient climbs 1 m per 10 m. Roughly how many degrees is that?",
+  "labels": [
+    "0°",
+    "10°",
+    "20°",
+    "30°",
+    "45°"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 45
+  },
+  "answer": 5.7,
+  "tolerance": 1.5,
+  "why": "arctan(0.1) ≈ 5.7° — the gradient's interpretation is a rate: metres climbed per metre walked."
+};
+
+const ccgCaseMatch = {
+  "prompt": "Pair each special case with its gradient:",
+  "pairs": [
+    {
+      "left": "horizontal (flat)",
+      "right": "gradient 0"
+    },
+    {
+      "left": "vertical (sheer)",
+      "right": "gradient undefined — the run is zero"
+    },
+    {
+      "left": "a negative gradient",
+      "right": "descends as x increases"
+    }
+  ],
+  "why": "They are not the same and not interchangeable — a vertical line is also the unique line that is not a function, the circle-plot's problem in miniature."
+};
+
+const ccgTariffEst = {
+  "prompt": "A mobile tariff costs 5 + 0.10x. At what usage does the cost reach £15?",
+  "unit": "units",
+  "answer": 100,
+  "factor": 1.2,
+  "why": "15 = 5 + 0.10x gives x = 100 — the intercept 5 is the standing charge, the gradient 0.10 the per-unit rate.",
+  "context": "two tariffs plotted together cross exactly where one becomes cheaper"
+};
+
+const ccgPerpPredict = {
+  "q": "The gradient perpendicular to m = 2 is…",
+  "choices": [
+    "−½ — the negative reciprocal",
+    "−2 — just flip the sign",
+    "½ — just flip the fraction"
+  ],
+  "answer": 0,
+  "why": "Flip the fraction as well as the sign: a quarter-turn swaps horizontal and vertical and flips direction, giving −a/b from b/a. The fast self-check is the product, which must equal −1 exactly."
+};
+
+const ccgCircleCloze = {
+  "text": "A circle is the set of points a fixed distance r from a centre (a, b) — and the distance formula, squared, is its equation: (x − %%0%%)² + (y − %%1%%)² = %%2%%.",
+  "answers": [
+    [
+      "a"
+    ],
+    [
+      "b"
+    ],
+    [
+      "r²",
+      "r^2",
+      "r2"
+    ]
+  ],
+  "hint": "The centre's two coordinates, and the radius's fate after squaring."
+};
+
+const ccgSquareOrder = {
+  "prompt": "Rebuild how x² + y² − 6x + 4y − 12 = 0 gives up its centre and radius — what comes first:",
+  "items": [
+    "Group: (x² − 6x) + (y² + 4y) = 12",
+    "Complete: (x − 3)² − 9 + (y + 2)² − 4 = 12",
+    "Result: (x − 3)² + (y + 2)² = 25",
+    "Read off: centre (3, −2), radius 5"
+  ],
+  "why": "The general form camouflages the centre — completing the square uncovers it, and every circle question in disguise becomes algebra."
+};
+
+const ccgSecantBranch = {
+  "root": "Substituting y = x + 1 into x² + y² = 25 gives x² + x − 12 = 0, factoring as (x + 4)(x − 3). What is the geometry?",
+  "nodes": {
+    "start": {
+      "text": "Classify the meeting:",
+      "choices": [
+        {
+          "label": "Two crossings — a secant",
+          "next": "secant",
+          "feedback": "Right: the line crosses at (3, 4) and (−4, −3), both checkable on the circle (9 + 16 = 25 ✓)."
+        },
+        {
+          "label": "One crossing — a tangent",
+          "next": "tangent",
+          "feedback": "A tangent needs a repeated root — discriminant zero, the algebraic fingerprint of tangency."
+        },
+        {
+          "label": "None — a clean miss",
+          "next": "miss",
+          "feedback": "Zero solutions means the line never reaches the circle."
+        }
+      ]
+    },
+    "secant": {
+      "text": "Two solutions, secant; one, tangent; zero, a clean miss."
+    },
+    "tangent": {
+      "text": "The discriminant's value literally classifies the geometry."
+    },
+    "miss": {
+      "text": "Algebra reading geometry, in both directions."
+    }
+  },
+  "why": "Intersecting a line with a circle means substituting and solving a quadratic — and the root count classifies the meeting."
+};
 ---
 <TopicPage slug="subjects/math/intermediate/circles-and-coordinate-geometry">
 
@@ -62,6 +233,7 @@ const circleCfg = {
     parabolas) refuse it. Keep the distinction in your pocket; it becomes central when
     transformations of graphs arrive.
   </p>
+  <Widget no="11" caption="function or relation that refuses — file each shape" widget="sort-buckets" config={ccgRelationSort} />
   <p>
     <strong>So far:</strong> coordinates turn points into number pairs and curves into
     equations, and the circle is a relation that refuses the one-y-per-x rule. The first
@@ -82,10 +254,12 @@ const circleCfg = {
     distant from both) — the same locus idea, iterated over many villages, builds a Voronoi
     diagram, the shape of every coverage map, and of the boundaries between cell masts.
   </p>
+  <Widget no="10" caption="call the side length" widget="estimate" config={ccgDistEst} />
   <p><em>Common misconception:</em> "squaring the legs means squaring each coordinate on
   its own, so (x₂ − x₁)² + (y₂ − y₁)² becomes x₂² − x₁² + y₂² − y₁²." The square applies
   to each whole difference, which is why the formula keeps its parentheses; dropping them
   is the most common algebra slip inside an otherwise correct method.</p>
+  <Widget no="9" caption="find the algebra slip" widget="spot-error" config={ccgParenSpot} />
 
   <h2>Gradient: slope as a number</h2>
   <p>
@@ -100,10 +274,12 @@ const circleCfg = {
     zero, and dividing by zero is the crime) — which is why its equation is x = k, having no
     slope to speak of.
   </p>
+  <Widget no="8" caption="drop the marker — the road sign's angle" widget="place" config={ccgRoadPlace} />
   <p><em>Common misconception:</em> mixing up the two special cases. Horizontal (flat) means
   gradient <strong>0</strong>; vertical (sheer) means gradient <strong>undefined</strong>. They
   are not the same and not interchangeable — a vertical line is also the unique line that is
   not a function, the circle-plot's problem in miniature.</p>
+  <Widget no="7" caption="pair each special line with its gradient" widget="match" config={ccgCaseMatch} />
 
   <h2>Lines: from two points to one equation</h2>
   <p>
@@ -119,6 +295,7 @@ const circleCfg = {
     "graphs in practical situations" in its purest form: read the gradient, read the intercept,
     and the story is told.
   </p>
+  <Widget no="6" caption="call the usage that reaches £15" widget="estimate" config={ccgTariffEst} />
   <p>
     <strong>So far:</strong> two points fix a line, and one line's equation already tells a
     tariff story, a road sign or a physics graph depending on the labels. Now two lines get
@@ -145,6 +322,7 @@ const circleCfg = {
   The rule is the negative reciprocal: flip the fraction as well as the sign, so a
   gradient of 2 needs −½ rather than −2. The fast self-check is the product, which must
   equal −1 exactly.</p>
+  <Widget no="5" caption="bet before you read on — the perpendicular partner" widget="predict" config={ccgPerpPredict} />
 
   <h2>The circle, algebraically</h2>
   <p>
@@ -162,6 +340,8 @@ const circleCfg = {
     (secant), one (tangent — discriminant zero, the algebraic fingerprint of tangency), or
     none.
   </p>
+  <Widget no="4" caption="fill the blanks — the circle's equation" widget="cloze" config={ccgCircleCloze} />
+  <Widget no="3" caption="rebuild the completing-the-square uncovering" widget="order" config={ccgSquareOrder} />
   <p>
     One full intersection, with numbers. Where does y = x + 1 meet x² + y² = 25? Substitute:
     x² + (x + 1)² = 25, so 2x² + 2x − 24 = 0, i.e. x² + x − 12 = 0, factoring as (x + 4)(x − 3)
@@ -170,6 +350,7 @@ const circleCfg = {
     the discriminant's value literally classifying the geometry: two solutions, secant; one,
     tangent; zero, a clean miss. Algebra reading geometry, in both directions.
   </p>
+  <Widget no="2" caption="the line meets the circle" widget="branch" config={ccgSecantBranch} />
   <p><em>Common misconception:</em> "in the expanded form x² + y² + Dx + Ey + F = 0, the
   centre is (D, E)." The general form camouflages the centre: completing the square shows
   it sits at (−D/2, −E/2), with the radius coming from whatever is left over. In the

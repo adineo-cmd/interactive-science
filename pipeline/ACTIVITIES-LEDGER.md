@@ -215,6 +215,8 @@
 | math/foundational/ratios-percentages-proportion | match, sort-buckets, cloze, spot-error, estimate, compare, estimate, predict, place, branch | math-4 |
 | math/foundational/linear-functions | cloze, compare, estimate, order, sort-buckets, match, predict, spot-error, branch | math-5 |
 | math/foundational/quadratics | match, sort-buckets, cloze, spot-error, branch, estimate, predict, place, order, spot-error | math-6 |
+| math/intermediate/circles-and-coordinate-geometry | sort-buckets, estimate, spot-error, place, match, estimate, predict, cloze, order, branch | math-7 |
+| math/intermediate/counting-and-combinatorics | match, estimate, predict, spot-error, estimate, sort-buckets, estimate, place, branch, judge | math-8 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

@@ -12,6 +12,162 @@ const shakeCfg = {
     { label: 'if one leader shakes everyone', expr: 'n-1' },
   ],
 };
+
+const combRuleMatch = {
+  "prompt": "Pair each counting principle with the move it makes:",
+  "pairs": [
+    {
+      "left": "the multiplication rule",
+      "right": "independent choices multiply — 3 shirts × 4 trousers = 12 outfits"
+    },
+    {
+      "left": "the addition rule",
+      "right": "disjoint alternatives add — the outfits plus the 2 dresses = 14"
+    },
+    {
+      "left": "the double-counting correction",
+      "right": "divide the ordered count by the orderings — C(n,r) = P(n,r)/r!"
+    }
+  ],
+  "why": "Everything else, including the famous formulas, is these two principles plus one insight about double-counting."
+};
+
+const combShakeEst = {
+  "prompt": "Ten people are in a room and each pair shakes hands exactly once. Roughly how many handshakes?",
+  "unit": "",
+  "answer": 45,
+  "factor": 1.2,
+  "why": "n(n−1)/2 = 10 × 9 ÷ 2 = 45 — the ordered count n × (n − 1) counts each pair twice (AB and BA), so divide by 2.",
+  "context": "twenty people would mean 190 — the count grows like the square of the room"
+};
+
+const combPinPredict = {
+  "q": "A four-digit PIN forbids repeated digits. How many PINs are possible?",
+  "choices": [
+    "10 × 9 × 8 × 7 = 5,040 — each used-up digit is removed from the next choice",
+    "10⁴ = 10,000 — the digits stay independent",
+    "4! = 24 — arrange four digits"
+  ],
+  "answer": 0,
+  "why": "Forbidding repeats removes the used-up option from the next choice: 10 × 9 × 8 × 7 = 5,040 — the only skill is noticing whether an option is spent."
+};
+
+const combAndOrSpot = {
+  "prompt": "One of these counting moves is wrong — click it:",
+  "lines": [
+    "Starter AND main AND dessert: the counts multiply — 3 × 4 × 2 = 24.",
+    "Starter OR main: disjoint alternatives add — 3 + 4 = 7.",
+    "'And' multiplies, 'or' adds.",
+    "Starter AND main AND dessert: 3 + 4 + 2 = 9."
+  ],
+  "errorLine": 3,
+  "correction": "Starter AND main AND dessert multiplies: 3 × 4 × 2 = 24 — 'and' multiplies, 'or' adds.",
+  "why": "Nearly every counting error at this level is one of those two words being read wrongly."
+};
+
+const combPodiumEst = {
+  "prompt": "A podium of gold–silver–bronze is chosen from 8 runners. Roughly how many ordered outcomes?",
+  "unit": "",
+  "answer": 336,
+  "factor": 1.2,
+  "why": "8 × 7 × 6 = 336 — the first place is 8 ways, second 7, third 6: P(8,3) with order significant.",
+  "context": "arranging all 8 on a shelf would give 8! = 40,320"
+};
+
+const combPermSort = {
+  "prompt": "File each problem under its count:",
+  "buckets": [
+    "permutation (order matters)",
+    "combination (order doesn't)"
+  ],
+  "items": [
+    {
+      "label": "a podium of gold–silver–bronze",
+      "bucket": 0
+    },
+    {
+      "label": "a committee of three",
+      "bucket": 1
+    },
+    {
+      "label": "passwords and race results",
+      "bucket": 0
+    },
+    {
+      "label": "hands of cards and lottery lines",
+      "bucket": 1
+    }
+  ],
+  "why": "The test question: would swapping two chosen items create a different outcome? Yes — permutation; no — combination."
+};
+
+const combLottoEst = {
+  "prompt": "A lottery draws 6 balls from 59 — C(59,6) outcomes. Roughly how many?",
+  "unit": "",
+  "answer": 45057474,
+  "factor": 1.3,
+  "why": "C(59,6) = 45,057,474 — which is where the '1 in 45 million' jackpot odds come from.",
+  "context": "the balls arrive together, so swapping two creates the same outcome — order does not matter"
+};
+
+const combCoinPlace = {
+  "prompt": "The probability of exactly 2 heads in 4 flips is C(4,2)/2⁴. Where does it sit on the scale?",
+  "labels": [
+    "1/8",
+    "1/4",
+    "3/8",
+    "1/2"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 0.5
+  },
+  "answer": 0.375,
+  "tolerance": 0.02,
+  "why": "6/16 = 3/8, read straight off the row 1 4 6 4 1 — Pascal's triangle is three subjects in one object."
+};
+
+const combDiceBranch = {
+  "root": "Roll two dice. A friend says the sums 2 through 12 are equally likely, so P(sum = 7) = 1/11. What is wrong?",
+  "nodes": {
+    "start": {
+      "text": "Diagnose the claim:",
+      "choices": [
+        {
+          "label": "Nothing — 11 sums, equal chances",
+          "next": "wrong",
+          "feedback": "The 36 ordered pairs are equally likely, not the sums: only one pair makes 2 while six make 7 — P(sum = 7) = 6/36 = 1/6."
+        },
+        {
+          "label": "The sums are not equally likely — count the ordered pairs",
+          "next": "right",
+          "feedback": "Right: six pairs make 7, so P(sum = 7) = 1/6 and P(sum = 2) = 1/36 — dice-based betting before this insight is why 7 is 'the killer number' in craps."
+        },
+        {
+          "label": "Dice have no probabilities",
+          "next": "no",
+          "feedback": "They do — the question is which outcomes are equally likely."
+        }
+      ]
+    },
+    "wrong": {
+      "text": "Eleven sums with wildly different weights behind them."
+    },
+    "right": {
+      "text": "Probability = favourable outcomes ÷ total outcomes — but only when outcomes are genuinely equally likely."
+    },
+    "no": {
+      "text": "The counting rules become probability rules directly."
+    }
+  },
+  "why": "The classic trap is assuming outcomes are equally likely when they are not."
+};
+
+const combPigeonJudge = {
+  "statement": "The pigeonhole argument that two of 13 people share a birth month requires identifying which two people share the month.",
+  "answer": false,
+  "why": "Its power is that it proves existence — some collision must happen — without ever finding it: twelve months are the holes, thirteen people the pigeons."
+};
 ---
 <TopicPage slug="subjects/math/intermediate/counting-and-combinatorics">
 
@@ -43,6 +199,7 @@ const shakeCfg = {
     the 2 dresses = 14. Everything else, including the famous formulas, is these two principles
     plus one insight about double-counting.
   </p>
+  <Widget no="11" caption="pair each principle with its example" widget="match" config={combRuleMatch} />
 
   <Widget no="1" caption="the handshake problem — order doesn't matter, so divide the ordered count by 2" widget="sliderLab" config={shakeCfg} />
   <p>
@@ -53,6 +210,7 @@ const shakeCfg = {
     grows like the square of the room. The bottom readout, n − 1, answers a different question
     — one leader shakes everyone — same room, different rule, different count.
   </p>
+  <Widget no="10" caption="call the handshake count" widget="estimate" config={combShakeEst} />
 
   <p>
     The widget is the insight in miniature. Every pair of people shakes hands once, but
@@ -85,6 +243,7 @@ const shakeCfg = {
     5,040 = 4,960, one subtraction. The probability lesson leans on exactly this move: P(at
     least one) = 1 − P(none).
   </p>
+  <Widget no="9" caption="bet before you read on — the PIN with no repeats" widget="predict" config={combPinPredict} />
   <p>
     <em>Common misconception:</em> when stages come one after another, learners often add the
     counts at each stage instead of multiplying. The test is the little word between the
@@ -94,6 +253,7 @@ const shakeCfg = {
     "And" multiplies, "or" adds — and nearly every counting error at this level is one of those
     two words being read wrongly.
   </p>
+  <Widget no="8" caption="find the and/or error" widget="spot-error" config={combAndOrSpot} />
 
   <h2>Permutations: when order matters</h2>
   <p>
@@ -108,11 +268,13 @@ const shakeCfg = {
     times by the naive 7!, once per interchangeable pair. This "account for the
     over-counting" habit is the beating heart of combinatorics.
   </p>
+  <Widget no="7" caption="call the podium count" widget="estimate" config={combPodiumEst} />
   <p><em>Common misconception:</em> permutations and combinations are interchangeable, or that
   the formulas are arbitrary. Ask the test question: <em>would swapping two chosen items create
   a different outcome?</em> A podium (gold then silver) — yes: permutation. A committee of
   three — no: combination. Passwords, race results, seating charts: permutations. Hands of
   cards, lottery lines, pizza toppings, committees: combinations.</p>
+  <Widget no="6" caption="permutation or combination — file each problem" widget="sort-buckets" config={combPermSort} />
 
   <h2>Combinations: choosing without order</h2>
   <p>
@@ -126,6 +288,7 @@ const shakeCfg = {
     The multiplication rule re-enters <em>inside</em> the combination machinery — the tools
     compose.
   </p>
+  <Widget no="5" caption="call the jackpot's denominator" widget="estimate" config={combLottoEst} />
   <p>
     <strong>So far:</strong> order matters, use P(n,r); order does not, use C(n,r) — and
     constrained choices multiply the two tools together. The counts now do something
@@ -146,6 +309,7 @@ const shakeCfg = {
     triangle is thus three subjects in one object: combinations, algebra, and the binomial
     distribution that the probability and statistics tiers build on.
   </p>
+  <Widget no="4" caption="drop the marker — the coin-flip probability" widget="place" config={combCoinPlace} />
 
   <h2>The bridge to probability</h2>
   <p>
@@ -163,6 +327,7 @@ const shakeCfg = {
     combination counts over equally likely fertilisation outcomes, which is why dihybrid
     crosses were one of the first great applications of Pascal's triangle outside mathematics.
   </p>
+  <Widget no="3" caption="the dice-sum trap" widget="branch" config={combDiceBranch} />
   <p><em>Common misconception:</em> listing outcomes in a way that hides their different
   weights. "The family has three children — outcomes are 0, 1, 2 or 3 boys, so each is ¼." The
   equally likely outcomes are the 8 birth orders, giving probabilities 1/8, 3/8, 3/8, 1/8 — the
@@ -183,6 +348,7 @@ const shakeCfg = {
     strengthened form: 2n − 1 pigeons in n holes force a hole with at least 2; generalized
     forms force holes with 3, 4, k — all used across computer science and number theory.)
   </p>
+  <Widget no="2" caption="true or false — the pigeonhole's power" widget="judge" config={combPigeonJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
