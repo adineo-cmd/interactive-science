@@ -10,6 +10,128 @@ const probCfg = {
     { math: 'two dice, sum = 7: 6 of 36 → 1/6', note: 'Six combinations make 7 — (1,6) (2,5) (3,4) (4,3) (5,2) (6,1) — out of 36 equally likely pairs. The most likely total on two dice.' },
   ],
 };
+
+const pbSymMatch = {
+  "prompt": "Match each symbol to what it asserts:",
+  "pairs": [
+    {
+      "left": "A′ (“not A”)",
+      "right": "the event that A doesn't happen"
+    },
+    {
+      "left": "P(A ∪ B)",
+      "right": "A happens, or B, or both"
+    },
+    {
+      "left": "P(A ∩ B)",
+      "right": "both happen"
+    },
+    {
+      "left": "P(A | B)",
+      "right": "the chance of A once you know B happened — where most real reasoning lives"
+    }
+  ],
+  "why": "The vertical bar is the whole subject in one symbol: it reshapes the sample space before any rule is applied."
+};
+
+const pbBagSpot = {
+  "prompt": "One line of this bag method is wrong — click it:",
+  "lines": [
+    "With replacement: P(red then red) = 4/10 × 4/10 = 0.16 — the two draws are identical situations.",
+    "Without replacement: P(red then red) = 4/10 × 3/9 = 2/15 — fewer reds (3) in a smaller bag (9).",
+    "P(exactly one red in two draws) = 4/10 × 6/9 = 24/90 — one path, one product.",
+    "Adjust the second factor for whatever the first draw removed — that single idea generates every without-replacement answer."
+  ],
+  "errorLine": 2,
+  "correction": "Both orderings must be counted: P(red then blue) + P(blue then red) = 24/90 + 24/90 = 48/90 = 8/15.",
+  "why": "Exactly one red can arrive in two costumes — forgetting the second path is the classic slip in two-stage products."
+};
+
+const pbCondEst = {
+  "prompt": "Two dice. You are told the first shows 4. What is P(sum ≥ 9), in percent?",
+  "unit": "%",
+  "answer": 33,
+  "factor": 1.2,
+  "why": "The space shrinks from 36 pairs to just 6 — only (4,5) and (4,6) qualify, so 2/6 = 1/3.",
+  "context": "That is the entire meaning of the vertical bar: restrict, then recount."
+};
+
+const pbTreeOrder = {
+  "prompt": "Build the 4-red/6-blue tree — order the steps:",
+  "items": [
+    "First layer: branch into the first event's outcomes — red 4/10, blue 6/10",
+    "Second layer uses probabilities conditional on the path — from 'red': red 3/9, blue 6/9; from 'blue': red 4/9, blue 5/9",
+    "Multiply along a path: P(two reds) = 4/10 × 3/9 = 2/15",
+    "Sum across paths: P(same colour) = 2/15 + 1/3 = 7/15, so P(different colours) = 8/15",
+    "Self-check: the three answers sum to 1 — a built-in guard against slips"
+  ],
+  "why": "At every node the tree forces the question conditional probability exists to ask: has anything changed?"
+};
+
+const pbCountSort = {
+  "prompt": "Order matters or it doesn't — file each counting problem:",
+  "buckets": [
+    "order matters — permutations",
+    "order irrelevant — combinations"
+  ],
+  "items": [
+    {
+      "label": "gold, silver and bronze from eight runners — 8 × 7 × 6 = 336",
+      "bucket": 0
+    },
+    {
+      "label": "five books arranged on a shelf — 5! = 120",
+      "bucket": 0
+    },
+    {
+      "label": "a 4-digit passcode",
+      "bucket": 0
+    },
+    {
+      "label": "the UK lottery jackpot — C(49, 6), 1-in-13,983,816",
+      "bucket": 1
+    },
+    {
+      "label": "committees and hands of cards",
+      "bucket": 1
+    }
+  ],
+  "why": "Permutations count orderings; combinations divide out the r! internal orderings that no longer matter."
+};
+
+const pbEvEst = {
+  "prompt": "A £1 British lottery ticket: roughly what is the expected return, in pence?",
+  "unit": "pence",
+  "answer": 50,
+  "factor": 1.4,
+  "why": "About a 1-in-14-million jackpot chance plus a roof of smaller prizes — near 50p per £1. Play forever and you lose half a pound per play, on average.",
+  "context": "Roulette's single number pays 35-to-1 but carries a 2.7% house edge — invisible in an evening, certain over years."
+};
+
+const pbStreakPredict = {
+  "q": "You have watched a fair-looking coin land heads ten times in a row. Which statement is now the right one?",
+  "choices": [
+    "The next toss is more likely tails — the run must even out",
+    "The next toss is exactly 50/50, and 'this coin is rigged' has become more likely than it was",
+    "The next toss is exactly 50/50, and nothing about the coin's fairness has changed",
+    "The count of heads must snap back toward half the tosses soon"
+  ],
+  "answer": 1,
+  "why": "Coins have no memory — but ten heads is genuine evidence about the mechanism. Distinguishing 'is the coin fair?' from 'what comes next, given this coin?' is the whole trick, and the law of large numbers shrinks the ratio while the gap typically grows."
+};
+
+const pbLensCompare = {
+  "prompt": "The same rules, two meanings for 'probability' — drag the divider:",
+  "before": {
+    "label": "frequentist",
+    "text": "probability is long-run frequency in repeated trials — the number the law of large numbers locks in"
+  },
+  "after": {
+    "label": "Bayesian",
+    "text": "probability is degree of belief, updated by evidence — Laplace formalised much of it in 1812 while calculating the mass of Saturn from noisy data"
+  },
+  "why": "Same rules either way; different answers to 'what does a probability mean' — and every serious statistician uses both lenses."
+};
 ---
 <TopicPage slug="subjects/statistics/foundational/probability">
 
@@ -70,6 +192,7 @@ const probCfg = {
     means both happen; and P(A | B) — "A <em>given</em> B" — is the probability of A once you
     <em>know</em> B happened. That last symbol, the conditional, is where most real reasoning lives.
   </p>
+  <Widget no="2" caption="the shorthand — pair each symbol with its meaning" widget="match" config={pbSymMatch} />
 
   <h2>Counting carefully: with and without replacement</h2>
   <p>
@@ -88,6 +211,7 @@ const probCfg = {
     = 24/90 + 24/90 = 48/90 = 8/15. Note that both orderings must be counted — a mistake so common it
     deserves its own flag.
   </p>
+  <Widget no="3" caption="one line of the bag-drawing method is wrong — click it" widget="spot-error" config={pbBagSpot} />
   <p><em>Common misconception:</em> "or" problems are usually safer solved as "not". Want P(at least
   one red in two draws)? Compute P(no red) = 6/10 × 5/9 = 1/3 and subtract from 1: 2/3. The
   complement rule — P(not A) = 1 − P(A) — is often the fastest route because "at least one"
@@ -131,6 +255,7 @@ const probCfg = {
     outcomes to 6 — (4,1) through (4,6) — of which (4,5) and (4,6) qualify: 2/6 = 1/3. The condition
     reshaped the problem; that is the entire meaning of the vertical bar.
   </p>
+  <Widget no="4" caption="call the conditional before the recount does" widget="estimate" config={pbCondEst} />
   <p>
     <strong>Tree diagrams</strong> are conditional probability drawn as a picture, and for combined
     events they are close to foolproof. The rules: first branch into the first event's outcomes; each
@@ -143,6 +268,7 @@ const probCfg = {
     virtue is that it <em>forces</em> you to ask, at every node, "has anything changed?" — which is
     precisely the question conditional probability exists to ask.
   </p>
+  <Widget no="5" caption="the tree method, from first branch to self-check" widget="order" config={pbTreeOrder} />
 
   <p>
     <strong>So far:</strong> mutually exclusive events cannot co-occur while independent
@@ -166,6 +292,7 @@ const probCfg = {
     choosing the right counting object: does the problem care about order (race results, passcodes —
     permutations), or not (committees, hands of cards — combinations)?
   </p>
+  <Widget no="6" caption="does the order matter? file each selection" widget="sort-buckets" config={pbCountSort} />
 
   <h2>Expected value: the casino's compass</h2>
   <p>
@@ -179,6 +306,7 @@ const probCfg = {
     play millions of trials where the law of large numbers (Jacob Bernoulli, 1713) locks in the
     average; you play a handful, where luck still feels like strategy.
   </p>
+  <Widget no="7" caption="price the long run before the casino does" widget="estimate" config={pbEvEst} />
 
   <p>
     <strong>So far:</strong> counting shortcuts keep the "favourable ÷ total" recipe workable
@@ -197,6 +325,7 @@ const probCfg = {
     short runs must "even out"; in fact the gap between heads-count and half-the-tosses typically
     <em>grows</em> while the ratio shrinks.
   </p>
+  <Widget no="8" caption="ten heads behind you — bet on the honest statement" widget="predict" config={pbStreakPredict} />
   <p>
     <strong>Conjunction errors.</strong> "Linda is a bank teller" is more probable than "Linda is a
     bank teller <em>and</em> a feminist" — adding detail can only shrink a probability (an "and" event
@@ -264,5 +393,6 @@ const probCfg = {
     of Saturn from noisy data. Same rules either way; different answers to "what does a probability
     mean". Every serious statistician uses both lenses.
   </p>
+  <Widget no="9" caption="two readings of one number — drag the divider" widget="compare" config={pbLensCompare} />
   <p class="sources"><strong>Sources:</strong> Pascal–Fermat correspondence (1654); Bernoulli, Ars Conjectandi (1713); Laplace, Théorie analytique des probabilités (1812); Tversky & Kahneman, Psychological Review (1983). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

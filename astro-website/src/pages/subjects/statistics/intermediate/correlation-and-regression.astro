@@ -64,6 +64,164 @@ const regQuizCfg = {
     },
   ],
 };
+
+const crRecCompare = {
+  "prompt": "One cloud, two statements — drag the divider:",
+  "before": {
+    "label": "what the scatter records",
+    "text": "r ≈ 0.95 — points hug the line; 0.8 more study hours predicted per extra exam point, inside the measured range"
+  },
+  "after": {
+    "label": "what it cannot show",
+    "text": "the direction of causation — maybe strong students simply study more; the diagram stays silent about which variable drives which"
+  },
+  "why": "Association is what the cloud sells; the arrow has to be bought somewhere else."
+};
+
+const crShapeMatch = {
+  "prompt": "Match each scatter shape to its reading:",
+  "pairs": [
+    {
+      "left": "upward drift",
+      "right": "positive association"
+    },
+    {
+      "left": "downward drift",
+      "right": "negative association"
+    },
+    {
+      "left": "a curved cloud",
+      "right": "the linear tools are the wrong tool"
+    },
+    {
+      "left": "banded and diffuse",
+      "right": "weak association"
+    },
+    {
+      "left": "a point-cloud with no pattern",
+      "right": "no association at all"
+    }
+  ],
+  "why": "Every horror story on this page begins with someone skipping the diagram."
+};
+
+const crAxisJudge = {
+  "statements": [
+    {
+      "s": "The explanatory variable belongs on the x-axis and the response on the y-axis.",
+      "truth": true,
+      "why": "The convention follows the question: given x, predict y."
+    },
+    {
+      "s": "Swapping the axes just rotates the same line.",
+      "truth": false,
+      "why": "Least squares draws a genuinely different line — a different question gets a different answer."
+    },
+    {
+      "s": "Either variable can be predicted from the other, and the two resulting lines differ.",
+      "truth": true,
+      "why": "Which assignment you make should be picked by the question you intend to ask."
+    }
+  ]
+};
+
+const crRSpot = {
+  "prompt": "One line of this r-reading guide is wrong — click it:",
+  "lines": [
+    "r runs from −1 to +1: direction from the sign, straight-line strength from the magnitude.",
+    "Calibration: |r| above 0.8 strong, 0.5–0.8 moderate, 0.2–0.5 weak, below 0.2 negligible — and 'strong' is contextual.",
+    "r is dimensionless: heights in metres or inches give the same r.",
+    "r measures agreement: x and x + 10 correlate perfectly, so they agree perfectly.",
+    "A perfect U-shaped curve also scores r ≈ 0 — the coefficient only measures straight-line co-movement."
+  ],
+  "errorLine": 3,
+  "correction": "r measures association, not agreement — x and x + 10 correlate perfectly while differing by 10 everywhere.",
+  "why": "Anscombe's quartet shares r = 0.816 across a clean trend, a perfect curve, an outlier-distorted cloud and a vertical line — plot, always plot."
+};
+
+const crSemiOrder = {
+  "prompt": "Eight students' (hours, score) pairs — order the method:",
+  "items": [
+    "Order the data by x and split into a lower half and an upper half",
+    "Lower-half means: x̄₁ = 2.5, ȳ₁ = 52; upper-half means: x̄₂ = 6.5, ȳ₂ = 72",
+    "Line through the two mean points: gradient = (72 − 52) ÷ (6.5 − 2.5) = 5 marks per hour",
+    "Intercept: 52 = a + 5 × 2.5 gives a = 39.5, so y ≈ 39.5 + 5x",
+    "Least squares then refines it using every point — and always passes through (x̄, ȳ), the cloud's centre of gravity"
+  ],
+  "why": "Each half's mean is that half's balance point, so the line joining them summarises the trend with the noise averaged out."
+};
+
+const crPredCloze = {
+  "text": "The gradient is the %%0%%: about %%1%% extra marks per extra revision hour, on average, within the measured range. Predicting inside the observed x-range is %%2%% — supported by the data; predicting outside it is %%3%% — the pattern's continuation is unverified.",
+  "answers": [
+    [
+      "exchange rate"
+    ],
+    [
+      "5",
+      "five"
+    ],
+    [
+      "interpolation"
+    ],
+    [
+      "extrapolation"
+    ]
+  ],
+  "hint": "One of the last two starts with 'inter-', the other with 'extra-'."
+};
+
+const crCausBranch = {
+  "root": "A strong correlation lands on your desk. Decide what you may claim.",
+  "nodes": {
+    "start": {
+      "text": "Ice-cream sales correlate with drownings. The causal reading is:",
+      "choices": [
+        {
+          "label": "Ice-cream causes drowning",
+          "next": "silly",
+          "feedback": "Causal in neither direction — the same third variable drives both."
+        },
+        {
+          "label": "A lurking third variable drives both",
+          "next": "lurk",
+          "feedback": "Summer: hot days sell ice-cream and fill the water. r is blind to it."
+        }
+      ]
+    },
+    "lurk": {
+      "text": "Children's shoe size correlates with reading age. What is doing the work?",
+      "choices": [
+        {
+          "label": "Age — the lurking variable",
+          "next": "licensed",
+          "feedback": "Older children have bigger feet and read better; age causes both."
+        },
+        {
+          "label": "Big feet make reading easier",
+          "next": "silly",
+          "feedback": "No — the correlation rides on age, not feet."
+        }
+      ]
+    },
+    "licensed": {
+      "text": "Licensed 'because' claims need experiments, controlled variables or the causal-inference machinery of the expert tier."
+    },
+    "silly": {
+      "text": "Dead end — the regression line reports how variables move together; the explanation belongs to experiments and controlled variables, and reverse causation is invisible to r."
+    }
+  },
+  "why": "Correlation is evidence of association — no more."
+};
+
+const crRsqEst = {
+  "prompt": "Revision hours and scores correlate at r = 0.9. What percentage of the score variation does the fitted line explain?",
+  "unit": "%",
+  "answer": 81,
+  "factor": 1.15,
+  "why": "r² = 0.81 — while r = 0.5, which intuition calls moderate, is only r² = 0.25. 'X explains 30% of the variation in Y' is an r² in its practical clothes.",
+  "context": "The page's own scatter: r ≈ 0.95, so r² ≈ 0.9 — that is what 'points hug the line' means numerically."
+};
 ---
 <TopicPage slug="subjects/statistics/intermediate/correlation-and-regression">
   <h2>Where you are, and what you will learn</h2>
@@ -120,6 +278,7 @@ const regQuizCfg = {
     an <em>association</em> (maybe strong students just study more), and the pattern holds only
     within the measured range.
   </p>
+  <Widget no="3" caption="what the scatter records vs what it cannot show — drag the divider" widget="compare" config={crRecCompare} />
   <p>
     <strong>So far:</strong> correlation and regression are the paired tools for bivariate
     data — r compresses the co-movement into one number, the line exploits it for
@@ -146,12 +305,14 @@ const regQuizCfg = {
     habit the syllabus is quietly teaching: <strong>plot first, compute second</strong> —
     every horror story in this page begins with someone skipping the plot.
   </p>
+  <Widget no="4" caption="the scatter speaks in shapes — pair each with its verdict" widget="match" config={crShapeMatch} />
   <p><em>Common misconception:</em> which variable goes on which axis is a
   free choice with no consequences. The convention follows the question:
   the explanatory variable sits on the x-axis and the response on the
   y-axis so the line reads as "given x, predict y" — swap them and you
   are answering a different question, and least squares will draw you a
   genuinely different line, not the same one tipped on its side.</p>
+  <Widget no="5" caption="true or false — who owns which axis" widget="judge" config={crAxisJudge} />
 
   <h2>Correlation: strength and direction on the r scale</h2>
   <p>
@@ -177,6 +338,7 @@ const regQuizCfg = {
     to share the same r (0.816) and the same fitted line while being
     completely different data. Plot, always plot.
   </p>
+  <Widget no="6" caption="one reading rule for r is wrong — click it" widget="spot-error" config={crRSpot} />
 
   <h2>Lines by eye and by semi-averages</h2>
   <p>
@@ -206,6 +368,7 @@ const regQuizCfg = {
     the method of Legendre (1805) and Gauss, and the reason the line
     always passes through the point (x̄, ȳ), the cloud's centre of gravity.
   </p>
+  <Widget no="7" caption="semi-averages, by hand — rebuild the worked line" widget="order" config={crSemiOrder} />
   <p><em>Common misconception:</em> a good line of best fit must thread
   through as many of the plotted points as possible, or even pass
   through the origin. Neither is true: the line is a summary of the
@@ -247,6 +410,7 @@ const regQuizCfg = {
     as r², the fraction of y's variation the line explains) tells you
     how wide the honest error bar on any single prediction is.
   </p>
+  <Widget no="8" caption="fill the predictor's vocabulary" widget="cloze" config={crPredCloze} />
   <p><em>Common misconception:</em> a strong correlation establishes cause and
   effect. Correlation is evidence of association — no more. The
   ice-cream–drowning correlation is real and causal in neither direction
@@ -257,6 +421,7 @@ const regQuizCfg = {
   causal-inference machinery of the expert tier — the regression line
   reports how variables move together, and the <em>story</em> of why is
   foreign territory to it.</p>
+  <Widget no="9" caption="you hold a strong correlation — walk the claim" widget="branch" config={crCausBranch} />
 
   <h2>r² and the language of explained variation</h2>
   <p>
@@ -278,6 +443,7 @@ const regQuizCfg = {
     variation in Y", you are reading an r² wearing its practical
     clothes.
   </p>
+  <Widget no="10" caption="call the explained fraction" widget="estimate" config={crRsqEst} />
 
   <p>
     <strong>So far:</strong> r² converts the correlation into the fraction of the story the

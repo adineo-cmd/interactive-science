@@ -61,6 +61,206 @@ const sampleQuizCfg = {
     },
   ],
 };
+
+const ssCostCompare = {
+  "prompt": "Two things a poll's budget can buy — drag the divider:",
+  "before": {
+    "label": "what the count buys",
+    "text": "a bigger n buys less and less: halving the margin of error takes four times the interviews"
+  },
+  "after": {
+    "label": "what the draw decides",
+    "text": "whether the sample speaks for its population at all — a big non-random count is noise with a big number attached"
+  },
+  "why": "Representativeness is a property of the method, never of the count."
+};
+
+const ssSizeJudge = {
+  "statements": [
+    {
+      "s": "Bias is a systematic tilt, not noise.",
+      "truth": true,
+      "why": "A tilt points the same way in every observation; noise points randomly and cancels on average."
+    },
+    {
+      "s": "Averaging more biased data averages the tilt more precisely.",
+      "truth": true,
+      "why": "More data narrows the estimate around the wrong target."
+    },
+    {
+      "s": "A big enough sample eventually fixes a biased draw.",
+      "truth": false,
+      "why": "The bias lives in the selection mechanism; growth just repeats it with tighter error bars."
+    }
+  ]
+};
+
+const ssVocabMatch = {
+  "prompt": "Match each term to what it names:",
+  "pairs": [
+    {
+      "left": "population",
+      "right": "everyone the question is about — all voters, all oak trees, every bolt in a production run"
+    },
+    {
+      "left": "sample",
+      "right": "the part you actually measure"
+    },
+    {
+      "left": "census",
+      "right": "slow, ruinously expensive, strains to reach everyone — and more enumerators means more chances to err"
+    },
+    {
+      "left": "sampling frame",
+      "right": "the actual list you draw from — a school register, a phone directory, an electoral roll"
+    }
+  ],
+  "why": "The frame and the population are rarely the same thing — and that gap is where the first bias enters."
+};
+
+const ssNPredict = {
+  "q": "The same well-drawn poll of a thousand people runs on a country of 3 million and one of 300 million. Which carries the smaller margin of error?",
+  "choices": [
+    "The small country — the sample is a bigger fraction of it",
+    "The large country — more diversity needs more sample",
+    "Essentially the same — the margin depends on n, not N",
+    "Impossible to say without the exact population figures"
+  ],
+  "answer": 2,
+  "why": "Essentially the same, roughly ±3 points in both — the absolute count sets the margin, not the size of the population it stands for."
+};
+
+const ssTableOrder = {
+  "prompt": "A school of 864, a sample of 30 — order the procedure:",
+  "items": [
+    "Number the students 001 to 864 — all three-digit numbers",
+    "Enter the table of random digits anywhere — the starting point must itself be arbitrary",
+    "Read digits in groups of three: 402, 781, 937, 056, 223, 990, 114 …",
+    "Keep 402, 781, 056, 223, 114; skip 937 and 990 — no student carries those numbers; skip any repeat",
+    "Continue until 30 numbers are collected"
+  ],
+  "why": "The requirement is not the tool but the equal, known chance for every member — decided by chance machinery, not by anyone's convenience."
+};
+
+const ssMethodSpot = {
+  "prompt": "One line of this methods guide is wrong — click it:",
+  "lines": [
+    "Systematic: for 864 students and a sample of 30, choose every 29th after a random start among the first 29.",
+    "It is cheap and spreads evenly across the frame.",
+    "It stays effectively random even when the list has a repeating pattern aligned with the interval.",
+    "Stratified: split the frame into strata that matter, sample each in proportion, draw randomly within.",
+    "Quota: interviewers fill instructed quotas, choosing whom to ask — fast, cheap, and needing no frame."
+  ],
+  "errorLine": 2,
+  "correction": "A repeating pattern aligned with the interval is exactly where systematic breaks: every 29th house on a street whose blocks repeat every 30 is a self-inflicted wound.",
+  "why": "Quota re-imports the bias randomness exists to remove — approachable people get asked — making it stratification without the random step."
+};
+
+const ssWeightCompare = {
+  "prompt": "The poll came in light on one group. Drag the divider:",
+  "before": {
+    "label": "what weighting repairs",
+    "text": "composition: adjust age, sex, region and education until they match known population figures, boosting the groups the draw missed — the fix that pulled election polling back on track in 2016"
+  },
+  "after": {
+    "label": "what weighting cannot repair",
+    "text": "the frame itself — no weighting rescues a draw whose list never contained part of the population"
+  },
+  "why": "A repair, not a substitute for a good draw."
+};
+
+const ssFrameSort = {
+  "prompt": "Two families of sample — file each draw:",
+  "buckets": [
+    "probability sample",
+    "non-probability sample"
+  ],
+  "items": [
+    {
+      "label": "simple random — equal, known chances",
+      "bucket": 0
+    },
+    {
+      "label": "systematic with a random start",
+      "bucket": 0
+    },
+    {
+      "label": "stratified, random within each stratum",
+      "bucket": 0
+    },
+    {
+      "label": "quota — interviewers fill instructed categories",
+      "bucket": 1
+    },
+    {
+      "label": "convenience and volunteer samples",
+      "bucket": 1
+    },
+    {
+      "label": "multi-stage national designs: regions, neighbourhoods, addresses, one respondent",
+      "bucket": 0
+    }
+  ],
+  "why": "The margin of error printed under a poll is a promise about probability sampling from a named list; precision no formula can certify belongs in the other bucket."
+};
+
+const ssQBranch = {
+  "root": "A questionnaire lands on your desk for the pilot. Walk the traps.",
+  "nodes": {
+    "start": {
+      "text": "“Don't you agree the canteen food is terrible?”",
+      "choices": [
+        {
+          "label": "Flag it — a leading question",
+          "next": "lead",
+          "feedback": "It embeds the conclusion; rewrite it balanced, both directions equally phrased."
+        },
+        {
+          "label": "Keep it — it is short",
+          "next": "kept",
+          "feedback": "Short, and it manufactures agreement rather than measuring it."
+        }
+      ]
+    },
+    "lead": {
+      "text": "Next: “Are you satisfied with the price and quality of the food?”",
+      "choices": [
+        {
+          "label": "Flag it — double-barrelled",
+          "next": "double",
+          "feedback": "Which one? Split it into two questions, each measuring a single thing."
+        },
+        {
+          "label": "Keep it — two answers for one",
+          "next": "kept",
+          "feedback": "The respondent cannot tell you which half they meant."
+        }
+      ]
+    },
+    "double": {
+      "text": "Next: age bands 0–20, 20–40, 40–60.",
+      "choices": [
+        {
+          "label": "Flag it — overlapping options",
+          "next": "fixed",
+          "feedback": "A 20-year-old fits two bands: the overlap double-counts and manufactures phantom respondents."
+        },
+        {
+          "label": "Keep it — everyone fits somewhere",
+          "next": "kept",
+          "feedback": "Everyone fits twice — that is the defect."
+        }
+      ]
+    },
+    "fixed": {
+      "text": "Cleared for the field: exhaustive and balanced options, one question per topic, non-overlapping bands — then randomise question order where priming is a risk."
+    },
+    "kept": {
+      "text": "The questionnaire now manufactures answers — leading wording, double barrels and overlaps all push in whatever direction the writing leaned."
+    }
+  },
+  "why": "Closed questions must be exhaustive and balanced; the pilot remains the cheapest defect detector ever invented."
+};
 ---
 <TopicPage slug="subjects/statistics/intermediate/sampling-and-survey-design">
   <h2>Where you are, and what you will learn</h2>
@@ -118,7 +318,9 @@ const sampleQuizCfg = {
     interviews. It also explains why "we surveyed 10,000 people!" often means little — if the
     10,000 weren't random, no sample size saves you.
   </p>
+  <Widget no="3" caption="the count vs the draw — drag the divider" widget="compare" config={ssCostCompare} />
   <p><em>Common misconception:</em> a big enough sample fixes a biased one. Bias is a systematic tilt, not noise, and averaging more biased data just averages the tilt more precisely — the Literary Digest's 2.4 million respondents produced one of history's worst polling errors because its frame excluded poorer voters. Sample size multiplies whatever the method already is.</p>
+  <Widget no="4" caption="true or false — can size rescue a draw?" widget="judge" config={ssSizeJudge} />
   <p>
     <strong>So far:</strong> samples speak for populations at a square-root price, and the
     "randomly drawn" clause is where every famous polling disaster lives. Next: the
@@ -148,7 +350,9 @@ const sampleQuizCfg = {
     voters — and confidently predicted the wrong US president. George Gallup,
     with a far smaller but better-drawn sample, got it right.
   </p>
+  <Widget no="5" caption="the vocabulary — pair each term with its job" widget="match" config={ssVocabMatch} />
   <p><em>Common misconception:</em> to describe a large population reliably you must sample a large fraction of it. Precision depends on the absolute sample size, not the population — a well-drawn 1,000-person sample carries roughly a 3-point margin of error whether the country holds 3 million people or 300 million, which is why national polls cluster around 1,000 to 2,000 respondents.</p>
+  <Widget no="6" caption="bet on the margin of error" widget="predict" config={ssNPredict} />
 
   <h2>Sampling methods I: simple random and the random number table</h2>
   <p>
@@ -171,6 +375,7 @@ const sampleQuizCfg = {
     removes human choice precisely because human choice correlates with the
     answer.
   </p>
+  <Widget no="7" caption="the random-number-table procedure, in order" widget="order" config={ssTableOrder} />
   <p><em>Common misconception:</em> a random sample is a haphazard one — asking whoever turns up. Haphazard is exactly what randomness exists to prevent: the first 30 students in a corridor share a timetable, and human choice always correlates with the answer. Random means every member of the frame has a known, calculable chance of selection, decided by chance machinery rather than convenience.</p>
 
   <p>
@@ -205,6 +410,7 @@ const sampleQuizCfg = {
     remove (interviewers approach people who look approachable). Quota is
     best understood as stratification without the random step.
   </p>
+  <Widget no="8" caption="one line of the method guide is wrong — click it" widget="spot-error" config={ssMethodSpot} />
 
   <h2>Bias: how samples lie</h2>
   <p>
@@ -227,6 +433,7 @@ const sampleQuizCfg = {
     voters) — but it is a repair, not a substitute for a good draw: no
     weighting can fix a frame that never contained part of the population.
   </p>
+  <Widget no="9" caption="what weighting repairs vs what it cannot — drag the divider" widget="compare" config={ssWeightCompare} />
 
   <p>
     <strong>So far:</strong> bias is a tilt, not noise — weighting repairs composition, but
@@ -258,6 +465,7 @@ const sampleQuizCfg = {
     randomise question order where priming is a risk, and pre-register
     the wording before results exist.
   </p>
+  <Widget no="10" caption="you are pilot-testing the questionnaire — walk the desk" widget="branch" config={ssQBranch} />
 
   <h2>Classifying data: the vocabulary everything downstream uses</h2>
   <p>
@@ -299,6 +507,7 @@ const sampleQuizCfg = {
     "10,000 readers voted" number in your feed is a volunteer
     sample wearing a poll's clothes.
   </p>
+  <Widget no="11" caption="probability or non-probability? file the draw" widget="sort-buckets" config={ssFrameSort} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

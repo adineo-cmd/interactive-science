@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "subjects/statistics/intermediate/hypothesis-testing",
+    "activities": [
+      {
+        "anchor": "are easiest backwards",
+        "type": "estimate",
+        "caption": "call the complement before enumerating",
+        "name": "htComplEst",
+        "config": {
+          "prompt": "A fair die, rolled three times. What is the chance of at least one six, in percent?",
+          "unit": "%",
+          "answer": 42,
+          "factor": 1.2,
+          "why": "1 − (5/6)³ ≈ 0.42 — the complement rule turns 'at least one' into a single clean path instead of a pile of cases.",
+          "context": "Complements always sum to 1: P(A′) = 1 − P(A)."
+        }
+      },
+      {
+        "anchor": "the step where honesty lives",
+        "type": "sort-buckets",
+        "caption": "file each claim with its hypothesis",
+        "name": "htHypSort",
+        "config": {
+          "prompt": "Which claims are defaults to be overturned, and which are what a result would establish?",
+          "buckets": ["a job for H₀ — the 'nothing' default", "a job for H₁ — what a result would establish"],
+          "items": [
+            { "label": "the coin is fair", "bucket": 0 },
+            { "label": "the drug matches the placebo", "bucket": 0 },
+            { "label": "the new timetable makes no difference", "bucket": 0 },
+            { "label": "the coin is biased", "bucket": 1 },
+            { "label": "the drug works", "bucket": 1 }
+          ],
+          "why": "'Nothing is going on' is usually precise and computable, while 'something is going on' is vague — surprise is computed against the precise claim, and the null is never proved, only survived."
+        }
+      },
+      {
+        "anchor": "the friend's coin earns serious suspicion",
+        "type": "spot-error",
+        "caption": "one line of the coin test is wrong — click it",
+        "name": "htCoinSpot",
+        "config": {
+          "prompt": "One line of this worked test is wrong — click it:",
+          "lines": [
+            "H₀: the coin is fair (p = 0.5); H₁: the coin is biased (p ≠ 0.5 — two-sided, since suspicion was flagged before knowing the direction).",
+            "α = 0.05 — the false-alarm rate tolerated, chosen before the flips.",
+            "P(exactly 9 heads in 10 fair flips) = C(10,9) × 0.5¹⁰ = 10/1024; P(10 heads) = 1/1024.",
+            "The p-value = (10 + 1)/1024 ≈ 0.0107 — one direction only.",
+            "Verdict: 0.0215 < 0.05, so reject H₀ and report the effect honestly."
+          ],
+          "errorLine": 3,
+          "correction": "The suspicion was two-sided, so the p-value is 2 × (10 + 1)/1024 = 22/1024 ≈ 0.0215 — both directions counted, which is exactly what line 5 compares against α.",
+          "why": "The test never computes the probability that the coin is unfair — that would need a prior. It quantifies how embarrassing the data is for fairness."
+        }
+      },
+      {
+        "anchor": "both flip that conditional or inflate it",
+        "type": "match",
+        "caption": "the four misreadings — pair each with its defusal",
+        "name": "pvalMatch",
+        "config": {
+          "prompt": "Match each misreading to the honest reply:",
+          "pairs": [
+            { "left": "\u201cp is the probability H₀ is true\u201d", "right": "No — it is computed assuming H₀; P(evidence | cause) and P(cause | evidence) came out 99% versus 16.7% on the disease tree" },
+            { "left": "\u201cp = 0.03 means 97% chance of replication\u201d", "right": "No — replication depends on the true effect size and the repeat study's power" },
+            { "left": "\u201cp > 0.05 proves no effect\u201d", "right": "No — the data did not clear the bar; the study may simply have been too small" },
+            { "left": "\u201cp = 0.049 is real, p = 0.051 is not\u201d", "right": "No — the gap is noise-level trivial; α is a convention and p is a continuous measure of surprise" }
+          ],
+          "why": "The ASA's 2016 statement catalogued exactly these errors: a p-value indicates how incompatible the data are with a specified model — it measures nothing else."
+        }
+      },
+      {
+        "anchor": "the arithmetic of base rates",
+        "type": "estimate",
+        "caption": "size the false-discovery harvest",
+        "name": "htDiscEst",
+        "config": {
+          "prompt": "Testing 1,000 drug candidates of which 50 truly work, at α = 0.05 with 80% power: roughly how many false 'discoveries' do you expect?",
+          "unit": "discoveries",
+          "answer": 48,
+          "factor": 1.3,
+          "why": "950 true nulls × 0.05 ≈ 48 false discoveries beside 50 × 0.8 = 40 true ones — over half the significant results are wrong, purely from base rates.",
+          "context": "This is why multiple-comparisons discipline, Bonferroni's α/n, pre-registration and replication exist."
+        }
+      },
+      {
+        "anchor": "turns that slogan into arithmetic",
+        "type": "judge",
+        "caption": "true or false — reading a p above the bar",
+        "name": "htSigJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "'Not significant' proves the effect does not exist.",
+              "truth": false,
+              "why": "A large, careful trial can return p = 0.2 for a small-but-real effect — the study may simply lack power."
+            },
+            {
+              "s": "The confidence interval on the effect shows precisely what the study could and could not rule out.",
+              "truth": true,
+              "why": "'Somewhere between −0.1 and +0.9 points' converts the verdict into a quantitative statement."
+            },
+            {
+              "s": "Absence of evidence is evidence of absence.",
+              "truth": false,
+              "why": "The p-value only says the data did not clear the bar — the interval is what says what was actually excluded."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "deserve different headlines",
+        "type": "compare",
+        "caption": "two kinds of significant — drag the divider",
+        "name": "htEffCompare",
+        "config": {
+          "prompt": "Both p-values cleared 0.05 — drag the divider:",
+          "before": {
+            "label": "significant but clinically trivial",
+            "text": "a drug that lowers blood pressure by 0.1 mmHg — p = 0.01, n = 50,000 — is a 'so what?' once the effect size is in units that matter"
+          },
+          "after": {
+            "label": "significant and huge",
+            "text": "pair every p with an effect size and a confidence interval — the previous lesson's error bar on it — and the two stories separate"
+          },
+          "why": "A lone p-value under-reports its own story: one number about one comparison under one model."
+        }
+      },
+      {
+        "anchor": "the exchange rate between the two errors",
+        "type": "branch",
+        "caption": "you set α before the data — walk three decisions",
+        "name": "htAlphaBranch",
+        "config": {
+          "root": "α is a priced decision, not a statistical constant. Walk the desk.",
+          "nodes": {
+            "start": {
+              "text": "Screening a blood donation for a dangerous virus. What bar do you set?",
+              "choices": [
+                { "label": "α very low, plus confirmatory testing", "next": "screen", "feedback": "A false negative contaminates the supply — the costs are asymmetric and catastrophic in one direction." },
+                { "label": "0.05 — the universal convention", "next": "trap", "feedback": "The convention is not a constant here; the price of each error decides." }
+              ]
+            },
+            "screen": {
+              "text": "Next file: an A/B test of a button colour. What bar?",
+              "choices": [
+                { "label": "0.05 is generous — speed wins", "next": "ab", "feedback": "Both errors cost pennies; waiting costs more than either error does." },
+                { "label": "α = 0.001 — buttons are safety-critical", "next": "trap", "feedback": "Overkill — the economics do not justify the width." }
+              ]
+            },
+            "ab": {
+              "text": "Filed. And a comet-sampling spacecraft gets evidence standards so extreme that a false positive can never waste a billion-euro mission."
+            },
+            "trap": {
+              "text": "Mispriced — reporting a single p-value without saying what each error would have cost reports the arithmetic while hiding the economics."
+            }
+          },
+          "why": "The significance level belongs to the decision, not the mathematics — blood, buttons and spacecraft set it differently."
+        }
+      }
+    ]
+  }
+]

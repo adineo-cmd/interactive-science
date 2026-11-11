@@ -12,6 +12,195 @@ const outlierCfg = {
     { label: 'mean − median gap', expr: 'abs((2 + 4 + 6 + 8 + outlier)/5 - 6)' },
   ],
 };
+
+const ddNoticePlace = {
+  "prompt": "The set {2, 4, 6, 8, x} with x dragged up to 1,000: place the marker where the mean now sits.",
+  "labels": [
+    "0",
+    "250",
+    "500",
+    "750",
+    "1000"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 1000
+  },
+  "answer": 204,
+  "tolerance": 20,
+  "why": "The mean is dragged a fifth of the way toward the extreme: (2 + 4 + 6 + 8 + 1000) ÷ 5 = 204 — while the median never leaves 6. That asymmetry is the argument for median income."
+};
+
+const ddMiniSpot = {
+  "prompt": "One line of this outlier anatomy is wrong — click it:",
+  "lines": [
+    "The set {2, 4, 6, 8, 10} has mean 6 and median 6 — perfect agreement.",
+    "Drag the fifth value to 1,000: the mean becomes (2 + 4 + 6 + 8 + 1,000) ÷ 5 = 204.",
+    "The median rises with it, to about 204 as well.",
+    "An extreme value moves the mean by its excess over the others, divided by the count.",
+    "The median only moves if the extreme value crosses the middle."
+  ],
+  "errorLine": 2,
+  "correction": "The median stays frozen at 6 — nothing crossed the middle; only the mean chases the outlier, dragging four calm values up with it.",
+  "why": "Rank is the median's whole diet: no crossing, no movement — which is why news reports that quietly swap mean for median are editing the story."
+};
+
+const ddGroupEst = {
+  "prompt": "Waiting times arrive pre-bucketed: 0–10 min (14 customers), 10–20 (22), 20–30 (12), 30–40 (2). Call the estimated mean, in minutes.",
+  "unit": "min",
+  "answer": 15.4,
+  "factor": 1.3,
+  "why": "Midpoints: (5×14 + 15×22 + 25×12 + 35×2) ÷ 50 = 770 ÷ 50 = 15.4 minutes.",
+  "context": "The modal class 10–20 already hints the mean sits in the teens — the estimate is honest only if values really cluster near midpoints."
+};
+
+const ddFreqOrder = {
+  "prompt": "Ungrouped frequency table: sizes 6, 7, 8, 9 with frequencies 3, 9, 7, 1 — order the computations:",
+  "items": [
+    "Mode: the value with the highest frequency — 7, appearing 9 times",
+    "Weighted mean: (6×3 + 7×9 + 8×7 + 9×1) ÷ 20 = 140 ÷ 20 = 7.0",
+    "Median position: (n + 1) ÷ 2 = 20 + 1 over 2 = the 10.5th ordered item",
+    "Median: between the 9th item (a 7) and the 10th (an 8), so median = 7"
+  ],
+  "why": "Mode by counting, mean by weighting, median by position — one table, three different questions."
+};
+
+const ddInterpCloze = {
+  "text": "Grouped median by interpolation: median = L + ((n/2 − %%0%%) ÷ %%1%%) × %%2%% — here 10 + ((25 − 14) ÷ 22) × 10 ≈ 15.0 minutes.",
+  "answers": [
+    [
+      "CF",
+      "cumulative frequency before it",
+      "cumulative frequency"
+    ],
+    [
+      "f",
+      "its frequency",
+      "frequency"
+    ],
+    [
+      "c",
+      "its width",
+      "class width",
+      "width"
+    ]
+  ],
+  "hint": "L is the class's lower boundary; the other three symbols are defined in the sentence just before the formula."
+};
+
+const ddMidJudge = {
+  "statements": [
+    {
+      "s": "Grouped-data formulas produce estimates, and an exam answer should say so.",
+      "truth": true,
+      "why": "Bucketed data has lost the raw values; midpoint and interpolation are the best recovery of it, not a recovery of all of it."
+    },
+    {
+      "s": "A bucket whose members bunch near its lower boundary makes the midpoint mean estimate too high.",
+      "truth": true,
+      "why": "The estimate is honest only if values really cluster near midpoints — bunching at an edge biases it."
+    },
+    {
+      "s": "Grouping recovers all of the information the raw data contained.",
+      "truth": false,
+      "why": "It always costs information; the formulas are the best recovery, not a complete one."
+    }
+  ]
+};
+
+const ddPairSort = {
+  "prompt": "Which centre-and-spread pairing does each dataset deserve?",
+  "buckets": [
+    "mean + SD",
+    "median + IQR",
+    "the mode"
+  ],
+  "items": [
+    {
+      "label": "clean, roughly symmetric data with no extreme values",
+      "bucket": 0
+    },
+    {
+      "label": "incomes — a few enormous fortunes stretch the tail",
+      "bucket": 1
+    },
+    {
+      "label": "the shirt size the shop must stock",
+      "bucket": 2
+    },
+    {
+      "label": "commute times with two peaks, from two different towns",
+      "bucket": 2
+    },
+    {
+      "label": "house prices — a few mansions among many flats",
+      "bucket": 1
+    },
+    {
+      "label": "bell-shaped exam marks feeding the 68–95–99.7 rule",
+      "bucket": 0
+    }
+  ],
+  "why": "Two diagnostics settle it: compare the mean to the median (a big gap signals skew or outliers) and look at the tail's direction."
+};
+
+const ddMisleadBranch = {
+  "root": "Two summaries of the same institution land on your desk. Walk the defence.",
+  "nodes": {
+    "start": {
+      "text": "A bar chart makes a 1% difference look like a landslide. First move?",
+      "choices": [
+        {
+          "label": "Check where the y-axis starts",
+          "next": "axis",
+          "feedback": "A bar chart starting at 90 instead of 0 is the classic landslide-maker."
+        },
+        {
+          "label": "Check how the groups were aggregated",
+          "next": "agg",
+          "feedback": "Aggregation is the other place summaries go quiet."
+        }
+      ]
+    },
+    "axis": {
+      "text": "The bars start at 90, not 0.",
+      "choices": [
+        {
+          "label": "Redraw from 0 before believing anything",
+          "next": "fixed",
+          "feedback": "The 1% difference collapses back to 1%."
+        },
+        {
+          "label": "Bars are decorative — read the numbers",
+          "next": "duped",
+          "feedback": "The picture is the claim here: the truncation manufactures the gap."
+        }
+      ]
+    },
+    "agg": {
+      "text": "The overall number reverses inside every subgroup.",
+      "choices": [
+        {
+          "label": "Trust the disaggregated story — this is Simpson's paradox",
+          "next": "fixed",
+          "feedback": "Berkeley 1973: women applied disproportionately to the most competitive programmes, and the disaggregated answer was the truth."
+        },
+        {
+          "label": "Average the subgroups back together",
+          "next": "duped",
+          "feedback": "That reproduces the reversal — the aggregate is the artifact."
+        }
+      ]
+    },
+    "fixed": {
+      "text": "Defused. One question covers both traps: what did the summary discard to look that way?"
+    },
+    "duped": {
+      "text": "Duped — a truncated axis manufactures a landslide, and a bad aggregation manufactures a reversal. Ask what was discarded."
+    }
+  },
+  "why": "The aggregate answer and the disaggregated answer can be opposite — and only one of them is the truth."
+};
 ---
 <TopicPage slug="subjects/statistics/foundational/describing-data">
 
@@ -53,6 +242,7 @@ const outlierCfg = {
     while the median has not moved. That asymmetry is the whole argument for reporting median
     income rather than mean income.
   </p>
+  <Widget no="2" caption="one loud stranger — land the dragged mean on the track" widget="place" config={ddNoticePlace} />
 
   <p>
     The widget above contains the lesson in miniature. The set &#123;2, 4, 6, 8, 10&#125; has mean 6 and median 6 —
@@ -64,6 +254,7 @@ const outlierCfg = {
     different stories about the same country — and why news reports that swap them quietly are editing
     the story.
   </p>
+  <Widget no="3" caption="one claim about the chase is wrong — click it" widget="spot-error" config={ddMiniSpot} />
 
   <p>
     <strong>So far:</strong> a centre, a spread and a shape compress a million numbers into a
@@ -100,6 +291,7 @@ const outlierCfg = {
     mixed populations, like two peaks in a histogram of commute times from two different towns), or none
     where ties occur.
   </p>
+  <Widget no="4" caption="a table of shoe sizes — rebuild the three answers in order" widget="order" config={ddFreqOrder} />
 
   <h2>Grouped data: estimating from buckets</h2>
   <p>
@@ -111,6 +303,7 @@ const outlierCfg = {
     = 15.4 minutes. The estimate is honest only if values really cluster near midpoints; heavy
     concentration at a class edge biases it.
   </p>
+  <Widget no="5" caption="call the grouped mean before the midpoints do" widget="estimate" config={ddGroupEst} />
   <p>
     The median (and quartiles and percentiles) of grouped data are found by <strong>interpolation</strong>
     within the class that contains the position you need. The formula: take the position n/2 = 25, run
@@ -122,10 +315,12 @@ const outlierCfg = {
     any quartile or percentile. These are estimates — the price of bucketed data — and every exam answer
     should say "estimated".
   </p>
+  <Widget no="6" caption="fill the interpolation formula" widget="cloze" config={ddInterpCloze} />
   <p><em>Common misconception:</em> the midpoint estimate assumes values are spread evenly within each
   class. If the 10–20 bucket is really everyone sitting at 11 minutes plus a few at 19, the true mean is
   below the estimate. Grouping always costs information; the formulas are the best recovery of it, not a
   recovery of all of it.</p>
+  <Widget no="7" caption="true or false — the price of buckets" widget="judge" config={ddMidJudge} />
 
   <p>
     <strong>So far:</strong> the three centres each answer a different question — the mean
@@ -194,6 +389,7 @@ const outlierCfg = {
     the histogram's tail. If the mean exceeds the median, the data are right-skewed and the median is
     the honest centre.
   </p>
+  <Widget no="8" caption="pair the dataset with its honest summary" widget="sort-buckets" config={ddPairSort} />
   <p>
     Misleading summaries are also a communication problem. <strong>Simpson's paradox</strong>: aggregated
     numbers can reverse the story in every subgroup — the University of California, Berkeley (1973)
@@ -204,6 +400,7 @@ const outlierCfg = {
     look like a landslide. The defence in both cases is the same: ask what the summary is quietly
     throwing away.
   </p>
+  <Widget no="9" caption="you are the reader — walk the two traps" widget="branch" config={ddMisleadBranch} />
   <p><em>Common misconception:</em> if the mean is bigger than the median, the data are
   left-skewed. The direction runs the other way: a big mean is the long tail of <em>high</em>
   values dragging the average upward — a right skew. House prices and incomes (a few

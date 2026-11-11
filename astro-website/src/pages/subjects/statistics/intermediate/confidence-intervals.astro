@@ -62,6 +62,127 @@ const ciQuizCfg = {
     },
   ],
 };
+
+const ciMechCloze = {
+  "text": "The mechanics: standard error = %%0%% (how much sample means wobble), stretched by %%1%% for 95% confidence — the 68–95–99.7 rule inverted. Halving the width takes four times the data.",
+  "answers": [
+    [
+      "s/√n",
+      "s/sqrt(n)",
+      "s over root n",
+      "s/√ n"
+    ],
+    [
+      "1.96"
+    ]
+  ],
+  "hint": "One is a ratio with a square root in the denominator; the other is the two-sided 2.5% point of the normal curve."
+};
+
+const ciVarSpot = {
+  "prompt": "One line of this SD recipe is wrong — click it:",
+  "lines": [
+    "Deliveries of 4, 6, 8, 10, 12 minutes: the mean is 8, deviations are −4, −2, 0, 2, 4.",
+    "Squares: 16, 4, 0, 4, 16 — sum 40.",
+    "Sample variance = 40 ÷ 5 = 8, since averaging five numbers divides by five.",
+    "Standard deviation s = √10 ≈ 3.16 minutes.",
+    "For roughly bell-shaped data, about 95% of values sit within two SDs of the mean."
+  ],
+  "errorLine": 2,
+  "correction": "For a sample, divide by n − 1 = 4: variance = 40 ÷ 4 = 10, which is what line 4's square root assumes — the degrees-of-freedom correction.",
+  "why": "Squaring punishes large misses, which is why one wild delivery inflates the SD while the median and IQR barely move."
+};
+
+const ciSpreadCompare = {
+  "prompt": "The hinge between spread of data and spread of estimates — drag the divider:",
+  "before": {
+    "label": "spread of the data",
+    "text": "the individuals' standard deviation — whatever n you collect, people still vary this much; no sample size changes it"
+  },
+  "after": {
+    "label": "spread of the estimate",
+    "text": "the mean's standard error, s/√n — the wobble of averages, which the square-root law does shrink"
+  },
+  "why": "More data steadies the estimate, not the population — that distinction is what separates description from inference."
+};
+
+const ciChooseSort = {
+  "prompt": "Nine houses at £200,000, one at £2,000,000 — and four other jobs. Which measure fits?",
+  "buckets": [
+    "range — quick and bounded",
+    "IQR — the resistant middle",
+    "SD — the full distribution"
+  ],
+  "items": [
+    {
+      "label": "dosing windows and tolerance limits",
+      "bucket": 0
+    },
+    {
+      "label": "incomes, house prices, hospital stays — skewed",
+      "bucket": 1
+    },
+    {
+      "label": "roughly symmetric data feeding inference",
+      "bucket": 2
+    },
+    {
+      "label": "'total taxable wealth' — every house counts, extremes included",
+      "bucket": 2
+    },
+    {
+      "label": "'what does a house cost here' — the typical house",
+      "bucket": 1
+    },
+    {
+      "label": "instantly computable, destroyed by a single outlier",
+      "bucket": 0
+    }
+  ],
+  "why": "The mean (£380,000) and its SD answer the wealth question; the median (£200,000) and IQR answer the village question — neither is wrong, and justifying the choice is the skill."
+};
+
+const ciWobbleEst = {
+  "prompt": "Double the sample size. The standard error falls to what percentage of its old value?",
+  "unit": "%",
+  "answer": 71,
+  "factor": 1.15,
+  "why": "1/√2 ≈ 0.71 — quadruple n and the wobble halves. Averaging adds independent errors, variances add, so the mean's SD is σ/√n.",
+  "context": "That single line of algebra is why polls of 1,000 work at all."
+};
+
+const ciLevelPredict = {
+  "q": "Same data, but you report a 99% interval instead of 95%. What happens?",
+  "choices": [
+    "It narrows — extra confidence sharpens the estimate",
+    "It widens — 2.576 SEs instead of 1.96 — and can become too fuzzy to act on",
+    "Same width, just labelled more confidently",
+    "Unknowable without collecting more data"
+  ],
+  "answer": 1,
+  "why": "Confidence is bought with width, so the same data delivers a vaguer statement. The level is a design choice matched to the stakes, not a virtue to maximise."
+};
+
+const ciPlanEst = {
+  "prompt": "Sample SD s = 8 minutes. What total n does the recipe demand for a half-width of ±2 minutes?",
+  "unit": "commuters",
+  "answer": 62,
+  "factor": 1.4,
+  "why": "(1.96 × 8 ÷ 2)² ≈ 62 — and roughly 250 to quarter it. Decide the width you can live with, then solve for n and budget accordingly.",
+  "context": "Precision is sold at a square-root price: 100 commuters bought ±1.57."
+};
+
+const ciWalkOrder = {
+  "prompt": "Sixty delivery times in four classes — order the quartile walk:",
+  "items": [
+    "Cumulative counts across the classes: 8, then 30, then 48",
+    "Q1 = the 15th value (60 ÷ 4) sits in the 20–30 class — 8 values lie below it, so walk to the 7th of the class's 22",
+    "Q1 ≈ 20 + (7 ÷ 22) × 10 ≈ 23.2 minutes",
+    "Q3: the 45th value lies in the 30–40 class, 15 of its 18 values in — Q3 ≈ 30 + (15 ÷ 18) × 10 ≈ 38.3 minutes",
+    "IQR ≈ 15.1 minutes — carrying the uniform-spread assumption that individual data would not need"
+  ],
+  "why": "The estimate assumes values spread evenly inside each class — one reason statistical agencies publish grouped summaries and, where privacy allows, microdata."
+};
 ---
 <TopicPage slug="subjects/statistics/intermediate/confidence-intervals">
   <h2>Where you are, and what you will learn</h2>
@@ -117,6 +238,7 @@ const ciQuizCfg = {
     95% confidence (the 68–95–99.7 rule from the describing-data lesson). Note the cruel geometry
     again — halving the interval takes four times the data.
   </p>
+  <Widget no="3" caption="fill the recipe's two ingredients" widget="cloze" config={ciMechCloze} />
   <p>
     <strong>So far:</strong> an estimate without an interval is a promise nobody can keep, and
     the interval is assembled from measures of spread. Next: those spread measures themselves,
@@ -172,7 +294,9 @@ const ciQuizCfg = {
     a ruler for the whole distribution. It is also, crucially, the
     ingredient the confidence interval consumes.
   </p>
+  <Widget no="4" caption="one line of the variance recipe is wrong — click it" widget="spot-error" config={ciVarSpot} />
   <p><em>Common misconception:</em> collecting more data reduces the standard deviation. Sample size shrinks the standard error (s/√n) — the wobble of the mean — but the spread of the individuals themselves stays what it is: a larger poll does not make commutes more alike, it makes the estimate of their average steadier. That distinction is the hinge between spread of data and spread of estimates.</p>
+  <Widget no="5" caption="two spreads, one square root — drag the divider" widget="compare" config={ciSpreadCompare} />
 
   <p>
     <strong>So far:</strong> range, IQR and standard deviation each answer a different
@@ -200,6 +324,7 @@ const ciQuizCfg = {
     wrong; each answers a question ("total taxable wealth" versus "what does
     a house cost here") — and justifying the choice is the skill.
   </p>
+  <Widget no="6" caption="file each question with its measure" widget="sort-buckets" config={ciChooseSort} />
 
   <h2>From spread of data to spread of estimates</h2>
   <p>
@@ -217,7 +342,9 @@ const ciQuizCfg = {
     algebra is why polls of 1,000 work and why the widget above responds
     the way it does.
   </p>
+  <Widget no="7" caption="call the wobble's shrinkage" widget="estimate" config={ciWobbleEst} />
   <p><em>Common misconception:</em> a 99% confidence interval is simply the better product. Confidence is bought with width — 2.576 standard errors instead of 1.96 — so the same data delivers a vaguer statement, and a 99% interval can be too fuzzy to inform any decision while a 95% one is precise enough to act on. The level is a design choice matched to the stakes, not a virtue to maximise.</p>
+  <Widget no="8" caption="bet on the wider interval" widget="predict" config={ciLevelPredict} />
 
   <h2>The confidence-interval recipe, worked</h2>
   <p>
@@ -239,6 +366,7 @@ const ciQuizCfg = {
     advance is the professional move: decide the width you can live with,
     solve for n, budget accordingly.
   </p>
+  <Widget no="9" caption="price the half-width in commuters" widget="estimate" config={ciPlanEst} />
   <p><em>Common misconception:</em> overlapping 95% intervals prove there is no difference between two groups. Two intervals can overlap considerably while the difference between the means is itself significant — the honest comparison is a proper test of the difference, not an eyeballed gap between bars.</p>
   <p><em>Common misconception:</em> "95% of commuters have commutes between 40.4
   and 43.6 minutes." That is a statement about individuals — and it is a
@@ -279,6 +407,7 @@ const ciQuizCfg = {
     not need — one reason statistical agencies publish both grouped
     summaries and, where privacy allows, microdata.
   </p>
+  <Widget no="10" caption="the grouped walk, end to end" widget="order" config={ciWalkOrder} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -1,0 +1,172 @@
+[
+  {
+    "slug": "subjects/statistics/expert/statistical-computing",
+    "activities": [
+      {
+        "anchor": "the humblest act in statistics",
+        "type": "match",
+        "caption": "the descendants — pair each classical tool with its computational heir",
+        "name": "scDescMatch",
+        "config": {
+          "prompt": "Every classical mechanism gained a computational descendant — pair them:",
+          "pairs": [
+            { "left": "the random number table", "right": "the pseudorandom generator that replaced it" },
+            { "left": "the worry about sampling bias", "right": "the simulation study — data with known truth, bias measured directly" },
+            { "left": "the survey question, open or closed", "right": "a typed column in a dataframe, with all the precision and fragility that implies" },
+            { "left": "a claim resting on a sampling or measurement choice", "right": "simulate the choice first, and only then trust it" }
+          ],
+          "why": "Read the classical data-collection unit through the lens of code: the mechanics stayed, the machinery changed."
+        }
+      },
+      {
+        "anchor": "what makes the whole thing checkable",
+        "type": "spot-error",
+        "caption": "one card summary is wrong — click it",
+        "name": "scCardsSpot",
+        "config": {
+          "prompt": "One summary of the four cards is wrong — click it:",
+          "lines": [
+            "Fisher imagined shuffling labels in 1935; a laptop runs the same idea a million times over lunch.",
+            "The bootstrap is that brute force aimed at your own sample — resample it, and the spread of the results is the uncertainty.",
+            "A simulation study feeds a method fake data with known truth and checks whether it recovers that truth.",
+            "Fixed seeds make an analysis harder to reproduce, so serious scripts avoid them."
+          ],
+          "errorLine": 3,
+          "correction": "A fixed seed does the opposite: same seed → same sample → same result, turning the analysis into a re-runnable object.",
+          "why": "Scripts, environments and seeds are the infrastructure that lets anyone re-run your analysis — card four is a feature, not an obstacle."
+        }
+      },
+      {
+        "anchor": "however odd the population",
+        "type": "estimate",
+        "caption": "call the standard error before the formula does",
+        "name": "scSeEst",
+        "config": {
+          "prompt": "A pollster samples n = 100 voters and reports a percentage near 50. Roughly what is the standard error, in percentage points?",
+          "unit": "points",
+          "answer": 5,
+          "factor": 1.5,
+          "why": "√(0.5 × 0.5 ÷ 100) = 0.05 — five points either way, which is why a poll at 55% versus another at 63% is routine fluctuation, not news.",
+          "context": "The width is fixed by n before anyone is sampled — and the cloud of a thousand sample means comes out approximately normal."
+        }
+      },
+      {
+        "anchor": "converge precisely on the biased view",
+        "type": "judge",
+        "caption": "true or false — what sample size can and cannot buy",
+        "name": "scSizeJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "A bigger sample shrinks random error.",
+              "truth": true,
+              "why": "Averages of many draws wobble less — that is the part of the error that n buys down."
+            },
+            {
+              "s": "A bigger sample shrinks systematic error the same way.",
+              "truth": false,
+              "why": "Bias rides on the selection mechanism, which n never touches."
+            },
+            {
+              "s": "A census is automatically better than any sample.",
+              "truth": false,
+              "why": "Nonresponse and hard-to-reach groups leave most real censuses behaving like enormous, expensive, slightly broken samples."
+            },
+            {
+              "s": "Given a large poll with a skewed selection and a small poll with a representative selection, trust the large one.",
+              "truth": false,
+              "why": "Representativeness, not size, is what a sample owes you."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "fills pre-set categories",
+        "type": "sort-buckets",
+        "caption": "four schemes on trial — file each by its selection",
+        "name": "scSampSort",
+        "config": {
+          "prompt": "Four selection schemes — which ones keep the randomness honest?",
+          "buckets": ["a genuine probability sample", "selection compromised or non-random"],
+          "items": [
+            { "label": "every member gets an equal chance — the default all theory assumes", "bucket": 0 },
+            { "label": "every kth unit after a random start (850 pupils, k ≈ 8 or 9)", "bucket": 0 },
+            { "label": "randomly within strata — inpatients around 6.2, outpatients 7.9, proportional allocation", "bucket": 0 },
+            { "label": "20 men over 60, whatever the interviewer's convenience provides", "bucket": 1 },
+            { "label": "every 7th house on a street whose list carries a weekly rhythm", "bucket": 1 }
+          ],
+          "why": "The random start is what keeps systematic sampling a probability method; quota looks representative, but the choosing hand belongs to the interviewer."
+        }
+      },
+      {
+        "anchor": "worth memorising",
+        "type": "branch",
+        "caption": "you are the detector — walk the audit",
+        "name": "scDetBranch",
+        "config": {
+          "root": "You are the computational bias detector. Walk the audit of a poll.",
+          "nodes": {
+            "start": {
+              "text": "The sample's age and regional mix disagrees with the census benchmark. What now?",
+              "choices": [
+                { "label": "Compare against the known totals, then reweight", "next": "audited", "feedback": "Comparison against known totals plus reweighting — both trivial in code." },
+                { "label": "Trust it — the poll is enormous", "next": "sizeTrap", "feedback": "Size reduces random error, not systematic error; a million respondents from a skewed frame stay skewed." }
+              ]
+            },
+            "audited": {
+              "text": "The weights balance the mix. What question remains before you report?",
+              "choices": [
+                { "label": "Was the sampling frame itself right?", "next": "frame", "feedback": "Both detectors are useless if the frame was wrong — no weight restores a household the frame never listed." },
+                { "label": "Publish, with the audit trail", "next": "publish", "feedback": "Log every exclusion and report how many records each cleaning rule removed." }
+              ]
+            },
+            "frame": {
+              "text": "Dead end — a wrong frame cannot be reweighted into truth. Write the cleaning rules before seeing outcomes, and the audit trail separates data curation from data corruption."
+            },
+            "sizeTrap": {
+              "text": "Dead end — systematic error survives any n. The selection mechanism owns this bias, not the sample size."
+            },
+            "publish": {
+              "text": "Reported: benchmark comparison, reweighting, logged exclusions. The analysis is a re-runnable object, not a memory."
+            }
+          },
+          "why": "The computational detectors are cheap; the sampling frame they run on is the bottleneck."
+        }
+      },
+      {
+        "anchor": "The crucial fact",
+        "type": "order",
+        "caption": "from table to Twister — rebuild the lineage",
+        "name": "scGenOrder",
+        "config": {
+          "prompt": "Random sampling, mechanised — order the lineage:",
+          "items": [
+            "Number every member (pupils 001–850), read three-digit groups off a random number table, accept 001–850, skip 000 and 851–999 and repeats",
+            "Von Neumann's middle-square (1946): square the seed, keep the middle digits — fast, but it collapses to zero",
+            "Linear congruential generators do better",
+            "The Mersenne Twister — today's default in R and Python, period 2^19937 − 1",
+            "Run the same script with the same seed: same sample, same bootstrap — the analysis becomes a re-runnable object"
+          ],
+          "why": "The recipe never changed — only the table became an algorithm, and its determinism became reproducibility."
+        }
+      },
+      {
+        "anchor": "pass randomness tests",
+        "type": "predict",
+        "caption": "bet on the second run",
+        "name": "scSeedPredict",
+        "config": {
+          "q": "You run the same sampling script twice with the same seed. What comes out the second time?",
+          "choices": [
+            "Two different samples — that is what random means",
+            "The identical sample, draw for draw",
+            "The same summary statistics, but different individual draws",
+            "An error — seeds cannot be reused"
+          ],
+          "answer": 1,
+          "why": "Pseudorandom generators produce deterministic streams seeded with a number: same seed, same sample, every time. For sampling from a finite population that is fine — and it is exactly why a fixed seed belongs in every serious script."
+        }
+      }
+    ]
+  }
+]

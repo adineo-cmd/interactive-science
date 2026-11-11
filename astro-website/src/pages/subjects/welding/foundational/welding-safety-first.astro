@@ -11,6 +11,175 @@ const hazardsCfg = {
     { math: '5 · Hot work permits close the loop', note: 'Formal hot-work authorisation — checks, watch, extinguisher, sign-off — is what turns safety from good intentions into an auditable system.' },
   ],
 };
+
+const wldArcEst = {
+  "prompt": "A welding arc burns at roughly what temperature?",
+  "unit": "°C",
+  "answer": 6000,
+  "factor": 1.5,
+  "why": "About 6,000 °C — as hot as the sun's surface — and the damage arrives as ultraviolet radiation the body cannot sense in real time: an unprotected glance of a second or two inflames the eye's surface hours later.",
+  "context": "roughly 6,000 °C — sun-on-earth, with no heat warning attached"
+};
+
+const wldDelayMatch = {
+  "prompt": "The gap between cause and consequence — match hazard to delay:",
+  "pairs": [
+    {
+      "left": "the arc",
+      "right": "burns the eye hours after the glance"
+    },
+    {
+      "left": "the fume",
+      "right": "builds its damage over years"
+    },
+    {
+      "left": "the fire",
+      "right": "starts an hour after the last spark"
+    },
+    {
+      "left": "the shock",
+      "right": "arrives with no warning at all"
+    }
+  ],
+  "why": "Welding safety is largely the craft of defending against injuries that arrive on their own schedule — which is why the trade answers them with systems, not reflexes."
+};
+
+const wldHierOrder = {
+  "prompt": "Defences ranked by how little they depend on someone remembering to comply:",
+  "items": [
+    "Eliminate or engineer the hazard away — remove combustibles, fit local exhaust ventilation, put up welding screens",
+    "Administrative controls — permits, fire watches, daily equipment inspections",
+    "Personal protective equipment — helmet, gloves, leathers, respirator: the last line, not the first"
+  ],
+  "why": "A helmet protects one wearer during one arc; a ventilation system protects everyone in the building, every day, for years — including the day someone forgets their gear."
+};
+
+const wldShadePlace = {
+  "prompt": "Everyday-amperage stick and MIG call for a filter plate in a band — place the middle of that band:",
+  "labels": [
+    "2",
+    "4",
+    "6",
+    "8",
+    "10",
+    "12",
+    "14",
+    "16"
+  ],
+  "scale": {
+    "min": 2,
+    "max": 16
+  },
+  "answer": 11.5,
+  "tolerance": 1.5,
+  "why": "Stick and MIG at everyday amperages call for shades around 10–13; oxyacetylene's gentler radiation uses around 4–6 — and bystanders matter as much as welders, which is why screens go up around the work."
+};
+
+const wldFumeMatch = {
+  "prompt": "Fume chemistry follows the work — match metal to hazard:",
+  "pairs": [
+    {
+      "left": "mild steel",
+      "right": "iron and manganese — a neurotoxin under chronic exposure"
+    },
+    {
+      "left": "galvanised steel",
+      "right": "zinc oxide — metal fume fever, a flu-like illness arriving hours after the shift"
+    },
+    {
+      "left": "stainless steel",
+      "right": "hexavalent chromium — a recognised carcinogen"
+    },
+    {
+      "left": "painted or coated surfaces",
+      "right": "whatever was on the surface, vaporised with the metal"
+    }
+  ],
+  "why": "Welding fume is not smoke — it is a fine aerosol of metal oxides and silicates, condensed into particles small enough to reach deep into the lungs, accumulating dose across thousands of arcs."
+};
+
+const wldFumeSpot = {
+  "prompt": "One line of this shop's fume plan is wrong — click it:",
+  "lines": [
+    "Local exhaust ventilation: extraction nozzle within about 30 cm of the arc, capturing the plume at source.",
+    "Capture works by proximity — an arm parked half a metre away can run noisily and still capture almost nothing.",
+    "General dilution with fans and open doors is the first choice — moving air everywhere beats capture at one point.",
+    "Respirators with fume-rated filters back up what capture cannot reach.",
+    "Exposure limits are set in milligrams per cubic metre over an eight-hour shift."
+  ],
+  "errorLine": 2,
+  "correction": "General dilution is the weaker second choice — it only dilutes the hazard; capture at the source takes it out of the air entirely, which is why the extraction arm sits within 30 cm of the arc.",
+  "why": "The International Agency for Research on Cancer classifies welding fume overall as a carcinogen — the reason even mild-steel fume is treated seriously."
+};
+
+const wldShockBranch = {
+  "root": "Morning rain left your gloves damp, and a lead's insulation looks scuffed. The job is due. Decide:",
+  "nodes": {
+    "start": {
+      "text": "What do you do before striking an arc?",
+      "choices": [
+        {
+          "label": "Weld anyway — 60 volts is low voltage",
+          "next": "risk",
+          "feedback": "Open-circuit voltages of 60–100 volts are enough to drive dangerous current through damp skin — and shock happens when the body bridges the electrode side to the work."
+        },
+        {
+          "label": "Swap to dry insulated gauntlets, inspect and replace the lead, check dry footing — then strike",
+          "next": "fix",
+          "feedback": "The whole defence list, and every item is cheap: dry gloves, daily lead inspection, a well-clamped work lead, dry footing, never standing in water."
+        },
+        {
+          "label": "Just keep bare skin off the workpiece when changing rods",
+          "next": "partial",
+          "feedback": "That closes one bridging path — but the damp gloves and the scuffed insulation remain open ones."
+        }
+      ]
+    },
+    "risk": {
+      "text": "The circuit does not care about deadlines — tens to hundreds of amps at 60–100 volts open-circuit take the body as a conductor.",
+      "choices": []
+    },
+    "fix": {
+      "text": "Inspection and dry insulation — the system that makes shock a non-event.",
+      "choices": []
+    },
+    "partial": {
+      "text": "Procedural habits only work as a set — one remaining path is one too many.",
+      "choices": []
+    }
+  },
+  "why": "A welding circuit runs tens to hundreds of amps; the body only has to bridge electrode side to work — wet gloves, damaged insulation, coiled cables and damp footing are all bridges."
+};
+
+const wldGasJudge = {
+  "statements": [
+    {
+      "s": "Oxygen is flammable, which is why it is stored apart from fuel gas.",
+      "truth": false,
+      "why": "Oxygen is not flammable — it is the ingredient every fire needs; in concentrated form it makes ordinary materials burn violently."
+    },
+    {
+      "s": "Oil or grease on an oxygen fitting can ignite spontaneously under pressure and flow.",
+      "truth": true,
+      "why": "Oxygen equipment never touches hydrocarbons — and fuel-gas cylinders are stored apart from oxygen."
+    },
+    {
+      "s": "Acetylene becomes unstable above roughly 15 psi, so its regulators are set low.",
+      "truth": true,
+      "why": "And its cylinders are used upright — the gas is dissolved in acetone within a porous filler; tipped over, the solvent can leak out with the gas."
+    },
+    {
+      "s": "A cylinder may be rolled on its side across the shop floor to save time.",
+      "truth": false,
+      "why": "Cylinders ride proper carts, stand upright and chained — a falling cylinder can shear its own valve and turn 50 kilograms of steel into a projectile."
+    },
+    {
+      "s": "Flashback arrestors stop a flame travelling back into the hose.",
+      "truth": true,
+      "why": "Valves on the fuel-gas lines — plus regulators inspected for creeping gauges and hoses for cracks."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/welding/foundational/welding-safety-first">
 
@@ -49,6 +218,7 @@ const hazardsCfg = {
     intensities no beach produces. An unprotected glance of a second or two can leave the
     surface of the eye inflamed hours later.
   </p>
+  <Widget no="2" caption="bet the arc's temperature" widget="estimate" config={wldArcEst} />
   <p>
     That gap between <em>cause</em> and <em>consequence</em> is the pattern behind every
     hazard on this page. The arc burns the eye hours after the glance; the fume builds its
@@ -56,6 +226,7 @@ const hazardsCfg = {
     arrives with no warning at all. Welding safety is largely the craft of defending against
     injuries that announce themselves too late.
   </p>
+  <Widget no="3" caption="match each hazard to its delay" widget="match" config={wldDelayMatch} />
   <p>
     <strong>So far:</strong> welding's hazards are real, present from the first arc, and
     delayed in their effects — which is why the trade answers them with systems, not
@@ -73,6 +244,7 @@ const hazardsCfg = {
     <strong>personal protective equipment</strong> (PPE): helmet, gloves, leathers,
     respirator.
   </p>
+  <Widget no="4" caption="the hierarchy of controls, top to bottom" widget="order" config={wldHierOrder} />
   <p>
     Beginners find this ordering backwards — they want to start with the helmet and the
     gloves, the gear they can see and touch. But the ordering is what makes welding safe as
@@ -122,6 +294,7 @@ const hazardsCfg = {
     an arc can still burn retinas and skin, which is why bystanders matter as much as
     welders.
   </p>
+  <Widget no="5" caption="place the everyday filter plate" widget="place" config={wldShadePlace} />
 
   <h2>Fume: the slow hazard</h2>
   <p>
@@ -133,6 +306,7 @@ const hazardsCfg = {
     stainless steel adds hexavalent chromium, a recognised carcinogen; paints and coatings
     add whatever was on the surface.
   </p>
+  <Widget no="6" caption="match the metal to what its fume carries" widget="match" config={wldFumeMatch} />
   <p>
     Because the particles accumulate dose over years, the defences are engineered rather
     than heroic. Local exhaust ventilation — an extraction arm positioned close to the arc —
@@ -174,6 +348,7 @@ const hazardsCfg = {
     gauntlet gloves, a daily inspection of leads and connections, a well-clamped work lead,
     dry footing, and never standing in water while welding.
   </p>
+  <Widget no="7" caption="damp gloves and a scuffed lead — decide" widget="branch" config={wldShockBranch} />
   <p>
     <strong>So far:</strong> four mechanisms — radiation that burns unseen, particles that
     accumulate, sparks that smoulder, current that takes your body as a conductor — and
@@ -212,6 +387,7 @@ const hazardsCfg = {
     second choice, because it thins fume rather than removing it. Respirators come last,
     as the layer for what extraction cannot catch.
   </p>
+  <Widget no="8" caption="one line of this fume plan is wrong" widget="spot-error" config={wldFumeSpot} />
   <p>
     Two situations override every ordinary rule. <strong>Confined spaces</strong> — tanks,
     pipes, ship compartments — trap fume and can also lose oxygen to shielding gases like
@@ -245,6 +421,7 @@ const hazardsCfg = {
     fuel-gas lines. The module compresses to one sentence: treat every cylinder as a rocket
     with a valve.
   </p>
+  <Widget no="9" caption="true or false — cylinders and their chemistry" widget="judge" config={wldGasJudge} />
 
   <h2>Shop and site practice: the systems that hold</h2>
   <p>

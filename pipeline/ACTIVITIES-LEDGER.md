@@ -553,6 +553,29 @@
 | statistics/advanced/time-series-analysis | sort-buckets, order, judge, match, estimate, spot-error, compare | next-28 |
 | statistics/expert/causal-inference | match, compare, trace, order, spot-error, judge, estimate, sort-buckets | next-28 |
 | statistics/expert/multivariate-statistics | match, order, estimate, sort-buckets, estimate, cloze, branch, estimate | next-28 |
+| statistics/expert/statistical-computing | match, spot-error, estimate, judge, sort-buckets, branch, order, predict | next-29 |
+| statistics/foundational/describing-data | place, spot-error, estimate, order, cloze, judge, sort-buckets, branch | next-29 |
+| statistics/foundational/probability | match, spot-error, estimate, order, sort-buckets, estimate, predict, compare | next-29 |
+| statistics/intermediate/confidence-intervals | cloze, spot-error, compare, sort-buckets, estimate, predict, estimate, order | next-29 |
+| statistics/intermediate/correlation-and-regression | compare, match, judge, spot-error, order, cloze, branch, estimate | next-29 |
+| statistics/intermediate/hypothesis-testing | estimate, sort-buckets, spot-error, match, estimate, judge, compare, branch | next-29 |
+| statistics/intermediate/sampling-and-survey-design | compare, judge, match, predict, order, spot-error, compare, branch, sort-buckets | next-29 |
+| surgical-technology/foundational/asepsis-and-the-sterile-field | judge, branch, match, sort-buckets, spot-error, estimate, order, sort-buckets | next-29 |
+| surveying/foundational/surveying-mathematics | estimate, match, cloze, estimate, trace, judge, compare, spot-error | next-29 |
+| translation-studies/foundational/what-translation-is | compare, match, sort-buckets, branch, judge, cloze, compare, order | next-29 |
+| urban-planning/foundational/planning-history-and-theory | match, sort-buckets, judge, compare, place, match, branch, estimate | next-29 |
+| veterinary-medicine/foundational/veterinary-biomedical-sciences | estimate, match, judge, sort-buckets, cloze, branch, match, spot-error | next-29 |
+| visual-arts/advanced/figure-drawing-and-anatomy | sort-buckets, order, spot-error, place, match, compare, branch, cloze | next-30 |
+| visual-arts/advanced/painting-mediums | match, estimate, order, compare, sort-buckets, judge, match, cloze | next-30 |
+| visual-arts/expert/critique-and-art-discourse | branch, match, cloze, judge, sort-buckets, spot-error, compare | next-30 |
+| visual-arts/expert/developing-a-personal-style | match, order, branch, estimate, cloze, spot-error, place, compare | next-30 |
+| visual-arts/foundational/value-colour-composition | sort-buckets, order, match, compare, cloze, spot-error, place, branch | next-30 |
+| visual-arts/intermediate/colour-theory | order, cloze, sort-buckets, spot-error, compare, match, estimate, order | next-30 |
+| visual-arts/intermediate/drawing-from-observation | sort-buckets, estimate, match, order, compare, branch, cloze, spot-error | next-30 |
+| visual-arts/intermediate/line-shape-and-value | match, sort-buckets, order, cloze, spot-error, compare, branch, judge | next-30 |
+| visual-arts/intermediate/perspective-and-depth | match, order, sort-buckets, spot-error, compare, branch, judge, cloze | next-30 |
+| welding/foundational/welding-safety-first | estimate, match, order, place, match, spot-error, branch, judge | next-30 |
+| zoology/foundational/the-animal-condition | match, sort-buckets, order, spot-error, compare, cloze, judge, estimate | next-30 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -582,7 +605,7 @@ environmental-science (12), film (9), finance (11), geography (14), history (20)
   sort-buckets, spot-error) + the original 7. Config schemas in each file's header.
 - P2 structural layer: **complete and shipped** (numbered topic positions, position chips,
   stage maps, learning-loop line, spacing) — commit 395dc79. Zero-token, no prose changes.
-- P1 backfill: **193 lessons done, ~1,500 activities** (physics 10/10 complete; accounting,
+- P1 backfill: **467 lessons done, ~3,603 activities** (physics 10/10 complete; accounting,
   actuarial-science, aerospace-engineering foundational lessons done; **agriculture
   11/11 COMPLETE** — waves agriculture-1..4; animation 1/1 COMPLETE; **anthropology
   9/9 COMPLETE**; **archaeology 1/1 COMPLETE** and architecture 2/10 — wave 6). Each single-lesson subject done in one
