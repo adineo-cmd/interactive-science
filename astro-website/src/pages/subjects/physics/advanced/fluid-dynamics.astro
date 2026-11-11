@@ -20,6 +20,177 @@ const bernCfg = {
     { math: 'use it: carburettors, atomisers, Venturi meters, filter pumps', note: 'fast air or water through a throat literally sucks — a pressure gauge at the neck reads the flow rate. Same physics, four machines.' },
   ],
 };
+
+const fldLawsSort = {
+  "prompt": "Two one-line laws and one open problem — file each claim:",
+  "buckets": [
+    "continuity (mass bookkeeping)",
+    "Bernoulli (energy bookkeeping)",
+    "turbulence — the frontier"
+  ],
+  "items": [
+    {
+      "label": "what flows into a pipe must flow out — where the pipe narrows, the fluid speeds up",
+      "bucket": 0
+    },
+    {
+      "label": "garden-hose thumb-over-the-end physics",
+      "bucket": 0
+    },
+    {
+      "label": "along a smooth, steady flow, faster movement is paid for by lower pressure",
+      "bucket": 1
+    },
+    {
+      "label": "carburettors, atomisers and Venturi meters — a throat literally sucks",
+      "bucket": 1
+    },
+    {
+      "label": "why the shower curtain attacks you",
+      "bucket": 1
+    },
+    {
+      "label": "chaotic eddies at every scale, mixing ferociously",
+      "bucket": 2
+    },
+    {
+      "label": "the wild regime every real high-speed flow eventually enters",
+      "bucket": 2
+    },
+    {
+      "label": "one of mathematics' famous open problems",
+      "bucket": 2
+    }
+  ],
+  "why": "Two conservation laws, one line each, explain flight and plumbing — what they cannot explain is the subject's live frontier."
+};
+
+const fldNeckEst = {
+  "prompt": "10 litres per second flows through a 20 cm-radius pipe. You neck it down to a 2 cm radius. How fast is the water in the neck?",
+  "unit": "m/s",
+  "answer": 8,
+  "factor": 2,
+  "why": "Area falls as r², so a tenfold squeeze in radius is a hundredfold squeeze in area — and continuity demands a hundredfold speed-up: 0.01/(π × 0.02²) ≈ 8 m/s.",
+  "context": "The wide pipe ambled at 0.08 m/s — a lazy stroll; the neck runs a hundred times faster, with no forces anywhere."
+};
+
+const fldTorricelliTrace = {
+  "prompt": "Water jets from a hole h metres below a tank's surface. Which curve is the jet speed?",
+  "curves": [
+    {
+      "expr": "sqrt(19.6*x)",
+      "label": "v = √(2·9.8·h)",
+      "color": "#1d4ed8"
+    },
+    {
+      "expr": "4.43*x",
+      "label": "v = 4.4·h (linear in depth)",
+      "color": "#b42318"
+    },
+    {
+      "expr": "9.8*x",
+      "label": "v = 9.8·h (steeper linear)",
+      "color": "#0f766e"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 5
+  },
+  "y": {
+    "min": 0,
+    "max": 12
+  },
+  "xlabel": "depth h (m)",
+  "ylabel": "jet speed (m/s)",
+  "why": "Bernoulli between surface and jet gives v = √(2gh) — identical to free fall from height h. At h = 5 m the jet runs at ≈ 9.9 m/s: pressure head converted entirely into directed motion."
+};
+
+const fldLiftJudge = {
+  "statements": [
+    {
+      "s": "Air is obliged to travel a longer path over the curved top, so the flows reunite at the trailing edge — equal transit time.",
+      "truth": false,
+      "why": "Nothing obliges the flows to reunite — upper-surface air arrives early, and flat plates and upside-down aerofoils fly fine."
+    },
+    {
+      "s": "Newton's view: the wing deflects a large mass of air downward each second, and the air pushes back up.",
+      "truth": true,
+      "why": "Lift as F = ma on air — one of the two honest, equivalent accounts."
+    },
+    {
+      "s": "The deflection and circulation set up a pressure difference between the surfaces, whose integral is the same lift.",
+      "truth": true,
+      "why": "Bernoulli's view — the second account; both are correct and measurable."
+    },
+    {
+      "s": "'Fast air sucks' is the complete explanation of lift.",
+      "truth": false,
+      "why": "It is only a slogan for the pressure-difference view — the equal-transit-time story bolted onto it is false."
+    }
+  ]
+};
+
+const fldViscMatch = {
+  "prompt": "One number to rule the flow — pair the pieces:",
+  "pairs": [
+    {
+      "left": "viscosity μ",
+      "right": "internal friction — honey runs 10⁴× water; air, surprisingly, only 1/50th of water"
+    },
+    {
+      "left": "the no-slip condition",
+      "right": "fluid in contact with a surface moves with it"
+    },
+    {
+      "left": "the boundary layer",
+      "right": "the thin region where speed ramps from zero to the free-stream value — where all drag lives"
+    },
+    {
+      "left": "Re = ρvL/μ",
+      "right": "inertia divided by viscosity — a ratio of the flow's two timescales"
+    },
+    {
+      "left": "Re below about 10³ (pipe flow)",
+      "right": "laminar — orderly layers, momentum exchanged by friction"
+    }
+  ],
+  "why": "Above a few thousand the flow turns turbulent — chaotic eddies at every scale, mixing ferociously."
+};
+
+const fldReOrder = {
+  "prompt": "Order these from lowest to highest Reynolds number:",
+  "items": [
+    "A swimming bacterium — Re ≈ 10⁻⁴: inertia irrelevant, water feels like tar, no coasting",
+    "Blood in a capillary — Re ≈ 0.001: laminar, cells in single file",
+    "A car at highway speed — Re ≈ 4 × 10⁶: turbulent boundary layer (an advantage, as it happens)",
+    "A whale — Re ≈ 10⁸: pure inertia, turbulence the default, streamlining everything"
+  ],
+  "why": "Human engineering spans the same range as life itself — the same water is honey to a micrometre swimmer and nearly ideal to a whale."
+};
+
+const fldDropEst = {
+  "prompt": "A cloud droplet of 10 μm radius sinks through still air. Its terminal speed is roughly…?",
+  "unit": "m/s",
+  "answer": 0.01,
+  "factor": 3,
+  "why": "Stokes drag is linear in speed: v ≈ 1 cm/s. Clouds stay aloft because their drops are Stokes-slow — updrafts and turbulence easily hold them.",
+  "context": "By drizzle size (1 mm diameter) Re ≈ 250 and quadratic drag takes over: about 4 m/s; the largest raindrops reach roughly 9 m/s before surface tension shatters them."
+};
+
+const fldDimpleCompare = {
+  "prompt": "Same drive, two golf balls — drag to compare their boundary layers:",
+  "before": {
+    "label": "smooth — laminar layer",
+    "text": "The boundary layer separates early: a wide, low-pressure wake behind the ball, and pressure drag that costs tens of metres of carry."
+  },
+  "after": {
+    "label": "dimpled — tripped turbulent",
+    "text": "The dimples trip the layer turbulent: it costs a little skin friction but pumps fast fluid down to the wall, delaying separation, shrinking the wake — and the ball carries about 30% further."
+  },
+  "why": "At high Reynolds numbers the larger cost is pressure drag, not friction — which is why vortex generators, rough skinsuits and sharks' denticles all exist."
+};
 ---
 <TopicPage slug="subjects/physics/advanced/fluid-dynamics">
 
@@ -55,6 +226,7 @@ const bernCfg = {
     the wild regime every real high-speed flow eventually enters — is the subject's live
     frontier and one of mathematics' famous open problems.
   </p>
+  <Widget no="3" caption="file each claim under its conservation law — or the frontier" widget="sort-buckets" config={fldLawsSort} />
   <p>
     One more piece of vocabulary does heavy lifting: <strong>pressure</strong> is force
     per area, and in a static fluid it increases with depth as
@@ -80,6 +252,7 @@ const bernCfg = {
     and nozzle physics — and it is pure bookkeeping: no forces needed, only the fact that
     water does not pile up or vanish.
   </p>
+  <Widget no="4" caption="guess the magnitude — the garden hose, quantified" widget="estimate" config={fldNeckEst} />
 
   <h2>Bernoulli's principle: speed buys pressure</h2>
   <p>
@@ -106,6 +279,7 @@ const bernCfg = {
     no memory of the tank's width — another conservation law giving an answer without
     forces.
   </p>
+  <Widget no="5" caption="which curve is Torricelli's law?" widget="trace" config={fldTorricelliTrace} />
   <p>
     <em>Common misconception:</em> "lift is because air must travel further over the curved
     top and therefore faster, by equal transit time." The equal-transit-time claim is
@@ -117,6 +291,7 @@ const bernCfg = {
     between surfaces, whose integral <em>is</em> the same lift. Both are correct and
     measurable; "fast air sucks" is only a slogan for the second.
   </p>
+  <Widget no="6" caption="true or false — how lift is really made" widget="judge" config={fldLiftJudge} />
   <p>
     <strong>So far:</strong> speed is bought with pressure along a streamline, and Torricelli's jet shows the
     accounting closing exactly. Real fluids, though, stick — and sticking changes everything.
@@ -137,6 +312,7 @@ const bernCfg = {
     layers, momentum exchanged by friction. Above a few thousand it becomes
     <strong>turbulent</strong>: chaotic eddies at every scale, mixing ferociously.
   </p>
+  <Widget no="7" caption="pair each viscosity concept with its work" widget="match" config={fldViscMatch} />
   <p>
     The striking fact is how vast the range is. A swimming bacterium (1 μm-scale, ~30
     μm/s) lives at Re ≈ 10⁻⁴, where inertia is irrelevant and water feels like tar —
@@ -147,6 +323,7 @@ const bernCfg = {
     single file), while a car at highway speed sits at Re ≈ 4 × 10⁶ (turbulent boundary
     layer — which is actually an advantage, see the dimples below).
   </p>
+  <Widget no="8" caption="line the swimmers up by Reynolds number" widget="order" config={fldReOrder} />
   <p>
     In the gentle laminar regime the drag law is Stokes': F = 6πηrv, linear in speed —
     which sets the crawl of very small particles through fluid. A cloud droplet of 10 μm
@@ -161,6 +338,7 @@ const bernCfg = {
     compensates with pressure (hypertension), which is the cardiovascular system paying
     interest on geometry.
   </p>
+  <Widget no="9" caption="guess the magnitude — how fast a cloud falls" widget="estimate" config={fldDropEst} />
   <p><em>Common misconception:</em> "viscosity is a minor correction — honey is sticky, water is not, so real
   flows are basically frictionless." It seems reasonable — water's viscosity is tiny in everyday units. But the
   section's scale pairs show the opposite: at Re ≈ 10⁻⁴ water feels like tar to a swimming bacterium, and blood
@@ -182,6 +360,7 @@ const bernCfg = {
     passively — all tripping devices on the same principle. The design art of aerodynamics
     is largely the placement of deliberate roughness.
   </p>
+  <Widget no="10" caption="drag the divider — smooth ball vs dimpled ball" widget="compare" config={fldDimpleCompare} />
   <p><em>Common misconception:</em> "smooth surfaces always have less drag — polish everything." It seems
   reasonable because roughness obviously adds skin friction. But at high Reynolds numbers the larger cost is
   pressure drag from the low-pressure wake: a dimpled golf ball carries about 30% further than a smooth one at

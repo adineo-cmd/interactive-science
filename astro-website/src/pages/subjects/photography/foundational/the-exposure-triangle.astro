@@ -23,6 +23,170 @@ const exposureCfg = {
     { math: '5 · Stops are the currency', note: 'One stop = a doubling or halving of light. The triangle is bookkeeping in stops: give up one dial, pay on another.' },
   ],
 };
+
+const expDuoPredict = {
+  "q": "One photographer shoots f/1.8, the other f/16 — yet both portraits come out exactly the same brightness. What explains it?",
+  "choices": [
+    "The camera's meter quietly corrected the second shot",
+    "A 'correct' exposure can be made a thousand different ways — each dial trades light for a side effect",
+    "f/16 actually gathers the same light as f/1.8 at the same shutter speed",
+    "One of the two photographs is secretly misexposed"
+  ],
+  "answer": 1,
+  "why": "Each dial controls the light AND something else — aperture depth of field, shutter motion, ISO noise. Same bucket level, entirely different photographs; neither is 'more correct'."
+};
+
+const expDialSort = {
+  "prompt": "Three dials, each doing double duty — file each job:",
+  "buckets": [
+    "aperture",
+    "shutter speed",
+    "ISO"
+  ],
+  "items": [
+    {
+      "label": "depth of field — how much of the scene melts",
+      "bucket": 0
+    },
+    {
+      "label": "the tap's width in the bucket analogy",
+      "bucket": 0
+    },
+    {
+      "label": "motion — freeze the wingbeat or streak it",
+      "bucket": 1
+    },
+    {
+      "label": "how long the tap runs",
+      "bucket": 1
+    },
+    {
+      "label": "noise — grain in the shadows",
+      "bucket": 2
+    },
+    {
+      "label": "the taste test's sensitivity",
+      "bucket": 2
+    },
+    {
+      "label": "reduced highlight headroom when pushed",
+      "bucket": 2
+    }
+  ],
+  "why": "The side effects are the photograph's central creative decision — the bookkeeping only tells you what each choice costs."
+};
+
+const expStopPlace = {
+  "prompt": "Two stops wider than f/8 — place the marker on the standard f-number scale:",
+  "labels": [
+    "1.4",
+    "2",
+    "2.8",
+    "4",
+    "5.6",
+    "8",
+    "11",
+    "16",
+    "22"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 8
+  },
+  "answer": 3,
+  "tolerance": 0.4,
+  "why": "Each full stop up the scale halves the light: f/8 → f/5.6 is one stop, f/5.6 → f/4 is two — and remember the scale runs backwards, so wider opening = smaller number."
+};
+
+const expSunnyOrder = {
+  "prompt": "Assemble the exchange that melts a Sunny 16 landscape into a portrait:",
+  "items": [
+    "Sunny 16 baseline: bright daylight gives f/16 at 1/125 s with ISO 100 — no meter needed",
+    "A portrait wants the background melted, so open to f/2.8 — four stops wider (f/16 → f/11 → f/8 → f/5.6 → f/4 → f/2.8)",
+    "Pay it back on the shutter — four stops faster",
+    "1/125 → 1/250 → 1/500 → 1/1000 → 1/2000 s: same bucket level, razor-thin focus and a dissolved background"
+  ],
+  "why": "The stop is the universal currency: give one dial four stops, pay it back on another — the exchange cashed the same light for different side effects."
+};
+
+const expDofMatch = {
+  "prompt": "Depth of field answers to four levers — pair each with what it does:",
+  "pairs": [
+    {
+      "left": "wider aperture (smaller f-number)",
+      "right": "shallower focus — light cones from out-of-focus points are wider and blur faster"
+    },
+    {
+      "left": "longer focal length",
+      "right": "shallows the focus at the same aperture and framing"
+    },
+    {
+      "left": "closer subject distance",
+      "right": "the plane of sharpness falls thinner"
+    },
+    {
+      "left": "larger sensor",
+      "right": "invites longer focal lengths for the same framing — full-frame portraits melt backgrounds more readily"
+    },
+    {
+      "left": "focusing at the hyperfocal distance",
+      "right": "maximises the sharp range from foreground to infinity — the landscape trick"
+    }
+  ],
+  "why": "Portraits at f/1.8 isolate a face, landscapes at f/11 hold everything crisp, street shooters pick f/8 to forgive imperfect timing."
+};
+
+const expBlurCompare = {
+  "prompt": "One shutter dial, two opposite intents — drag to compare:",
+  "before": {
+    "label": "frozen",
+    "text": "1/250 s handles walking people; 1/500–1/1000 s handles running and most sport; 1/2000 s and beyond freezes birds, water splashes and ball strikes. Handheld, keep the shutter no slower than 1/focal-length seconds unless stabilisation helps."
+  },
+  "after": {
+    "label": "deliberately blurred",
+    "text": "Panning a cyclist at 1/30 s keeps the subject sharp while the world streaks — speed made visible. Long exposures turn waterfalls to silk and traffic into light rivers (tripod mandatory; in daylight a neutral-density filter buys the missing stops). Stars run 10–25 seconds before Earth's rotation smears them."
+  },
+  "why": "Blur is a vocabulary, not a mistake — the skill is knowing the freezing speeds well enough that what you keep is what you meant to keep."
+};
+
+const expMeterSpot = {
+  "prompt": "One line of this student's metering notes is wrong — click it:",
+  "lines": [
+    "The built-in meter is a reflected-light meter: it reads the light bouncing off the scene.",
+    "Its fixed assumption: the scene, on average, reflects middle grey.",
+    "Snow photographs come back grey because the meter underexposes the white toward grey — add about +2 stops of compensation.",
+    "Evaluative/matrix metering meters a tiny circle — the tool for deliberately placing one tone.",
+    "The histogram graphs brightness from left (black) to right (white)."
+  ],
+  "errorLine": 3,
+  "correction": "That describes spot metering; evaluative/matrix reads the whole frame against a database of scenes, and centre-weighted privileges the middle.",
+  "why": "Metering modes are different opinions operationalised — and the histogram is the feedback loop that reports who was right."
+};
+
+const expGreyJudge = {
+  "statements": [
+    {
+      "s": "The camera's automatic exposure is an objective measurement of the scene.",
+      "truth": false,
+      "why": "It is an opinion with a fixed assumption — hardware is not what fails on extreme scenes; the assumption is."
+    },
+    {
+      "s": "The meter's instruction is: make what I measure average out to middle grey.",
+      "truth": true,
+      "why": "Brilliant for average scenes, systematically wrong at the extremes — hence grey snow."
+    },
+    {
+      "s": "A washed-out night shot means the camera is faulty and needs repair.",
+      "truth": false,
+      "why": "The fix is override, not repair — exposure compensation exists precisely because you know whether this scene should be grey."
+    },
+    {
+      "s": "Pushing ISO to 6400 at a concert is compensating for ignorance.",
+      "truth": false,
+      "why": "Grain that preserves a moment beats noise-free blur of nothing — ISO is the escape dial, honoured rather than shamed."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/photography/foundational/the-exposure-triangle">
 
@@ -56,6 +220,7 @@ const exposureCfg = {
     the puzzle: <em>both photographs come out exactly the same brightness.</em> Same light,
     same subject, same moment — different pictures. Neither is "more correct".
   </p>
+  <Widget no="3" caption="bet before you read on — why are both pictures equally bright?" widget="predict" config={expDuoPredict} />
   <p>
     The explanation is the technical core of photography: a "correct" exposure — the same
     amount of light recorded — can be made a thousand different ways, because a camera gives
@@ -65,6 +230,7 @@ const exposureCfg = {
     decision. This page teaches the bookkeeping first — then the side effects that make it
     art.
   </p>
+  <Widget no="4" caption="file each job under the dial that does it" widget="sort-buckets" config={expDialSort} />
 
   <h2>The idea: three dials, one bucket</h2>
   <p>
@@ -106,6 +272,7 @@ const exposureCfg = {
     brightness, bought at the price of amplified noise (grain in the shadows) and reduced
     highlight headroom.
   </p>
+  <Widget no="5" caption="place the marker two stops wider than f/8" widget="place" config={expStopPlace} />
   <p>
     The universal currency across all three dials is the <strong>stop</strong>: one stop is a
     doubling or halving of light. The triangle's whole arithmetic is exchange in stops: open
@@ -135,6 +302,7 @@ const exposureCfg = {
     horizon sharp. Neither is "more correct"; the exchange just cashed the same light for
     different side effects.
   </p>
+  <Widget no="6" caption="rebuild the Sunny 16 portrait exchange, step by step" widget="order" config={expSunnyOrder} />
   <p><em>Common misconception:</em> that a smaller f-number means a smaller opening — it
   looks plausible, because smaller numbers usually mean smaller things. But the f-number is
   a <em>ratio</em>: focal length divided by opening diameter. f/2 means the opening is one
@@ -167,6 +335,7 @@ const exposureCfg = {
     has become a lens-design obsession, because "how it melts" is part of the image's
     character.
   </p>
+  <Widget no="7" caption="pair each depth-of-field lever with its pull" widget="match" config={expDofMatch} />
   <p>
     <strong>Motion</strong> is the shutter's side effect, and it cuts both ways: blur as
     failure and blur as meaning. The freezing scale is roughly: 1/250 s handles walking
@@ -184,6 +353,7 @@ const exposureCfg = {
     tripod). Master photographers are not better at "correct" exposure — they are
     deliberate about which side effect to keep, and they know which dial to sacrifice first.
   </p>
+  <Widget no="8" caption="drag the divider — blur as failure vs blur as meaning" widget="compare" config={expBlurCompare} />
   <p><em>Common misconception:</em> that blur is always a mistake and sharpness always a
   virtue. Blur is a vocabulary: the streaked background of a panned racing cyclist says
   "speed" in a way no frozen frame can; silky water says "endless flow". The mistake is not
@@ -218,6 +388,7 @@ const exposureCfg = {
     because highlights are harder to recover than shadows — and bracketing (shooting at −1,
     0, +1) hedges high-contrast scenes, feeding the HDR merge.
   </p>
+  <Widget no="9" caption="find the faulty line in this student's metering notes" widget="spot-error" config={expMeterSpot} />
   <p>
     The scene's <strong>dynamic range</strong> — the span between its brightest meaningful
     highlight and deepest meaningful shadow — is the quiet variable that makes metering
@@ -237,6 +408,7 @@ const exposureCfg = {
   scenes dominated by very bright or very dark subjects. The fix is not repair but
   override: exposure compensation exists precisely because you, not the meter, know whether
   this scene <em>should</em> be grey.</p>
+  <Widget no="10" caption="true or false — trusting the meter" widget="judge" config={expGreyJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

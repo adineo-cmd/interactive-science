@@ -457,6 +457,30 @@
 | petroleum-engineering/foundational/petroleum-geology-and-reservoir-rock | compare, order, spot-error, match, sort-buckets, cloze, order, estimate | next-20 |
 | pharmacy/foundational/pharmaceutical-sciences-foundations | compare, order, estimate, cloze, predict, sort-buckets, match, spot-error | next-20 |
 | philosophy/advanced/language-and-meaning | match, spot-error, sort-buckets, cloze, judge, branch, match | next-20 |
+| philosophy/advanced/modal-logic | sort-buckets, spot-error, match, compare, branch, order, sort-buckets, judge | next-21 |
+| philosophy/advanced/phenomenology-and-existentialism | match, spot-error, branch, compare, sort-buckets, predict, order, judge | next-21 |
+| philosophy/expert/ethics-of-technology-and-ai | branch, cloze, predict, spot-error, compare, estimate, timeline | next-21 |
+| philosophy/foundational/epistemology | sort-buckets, judge, cloze, order, match, compare, sort-buckets, timeline | next-21 |
+| philosophy/foundational/ethics-three-theories | match, spot-error, cloze, predict, compare, branch, sort-buckets, order | next-21 |
+| philosophy/foundational/free-will-and-determinism | judge, compare, predict, match, branch, order, estimate, spot-error | next-21 |
+| philosophy/foundational/logic-arguments | match, sort-buckets, cloze, predict, compare, spot-error, equationStep, branch | next-21 |
+| philosophy/foundational/metaphysics | cloze, predict, sort-buckets, match, branch, compare, equationStep, timeline | next-21 |
+| philosophy/foundational/what-is-philosophy | judge, sort-buckets, spot-error, order, match, compare, predict, equationStep | next-21 |
+| philosophy/intermediate/aesthetics | cloze, match, judge, order, branch, compare, sort-buckets | next-21 |
+| philosophy/intermediate/eastern-philosophy | order, match, spot-error, compare, predict, sort-buckets, match | next-21 |
+| philosophy/intermediate/philosophy-of-science | spot-error, cloze, predict, sort-buckets, order, compare, match, branch | next-21 |
+| philosophy/intermediate/political-philosophy | order, spot-error, match, judge, sort-buckets, branch, cloze, compare | next-22 |
+| phlebotomy/foundational/veins-and-blood-the-phlebotomist-s-map | sort-buckets, order, match, estimate, branch, judge, spot-error, compare | next-22 |
+| photography/foundational/the-exposure-triangle | predict, sort-buckets, place, order, match, compare, spot-error, judge | next-22 |
+| physics/advanced/fluid-dynamics | sort-buckets, estimate, trace, judge, match, order, estimate, compare | next-22 |
+| physics/advanced/quantum-foundations | order, predict, estimate, match, spot-error, judge, branch, trace | next-22 |
+| physics/advanced/special-relativity | order, judge, sort-buckets, estimate, cloze, spot-error, trace, match | next-22 |
+| physics/advanced/statistical-mechanics | match, order, spot-error, branch, compare, place, cloze, trace | next-22 |
+| physics/expert/electrodynamics-maxwell | estimate, spot-error, cloze, sort-buckets, branch, match, order, predict | next-22 |
+| physics/expert/general-relativity | predict, sort-buckets, order, estimate, match, cloze, spot-error, compare | next-22 |
+| physics/expert/quantum-field-theory | estimate, judge, sort-buckets, place, spot-error, match, cloze, compare | next-22 |
+| physics/expert/solid-state-physics | sort-buckets, spot-error, estimate, judge, branch, compare, predict, match | next-22 |
+| physiotherapy/foundational/the-movement-sciences | sort-buckets, judge, place, branch, spot-error, order, match, predict | next-22 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

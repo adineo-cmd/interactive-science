@@ -11,6 +11,156 @@ const maxwellCfg = {
     { math: '5 · The wave falls out', note: 'Self-regenerating E and B waves travel at 1/√(μ₀ε₀) = 3 × 10⁸ m/s — the measured speed of light. "Light is an electromagnetic disturbance." Maxwell, 1865.' },
   ],
 };
+
+const emSolenoidEst = {
+  "prompt": "A solenoid of 500 turns over 10 cm (n = 5,000 per metre) carries 2 A. What is the field B inside (B = μ₀nI, μ₀ = 4π × 10⁻⁷)?",
+  "unit": "tesla",
+  "answer": 0.0126,
+  "factor": 2,
+  "why": "B = μ₀nI ≈ 0.0126 T — some 250 times Earth's ~50 μT, from a coil you could hold.",
+  "context": "Earth's surface field is about 50 μT; the solenoid multiplies it 250-fold with a car battery's worth of current."
+};
+
+const emPoleSpot = {
+  "prompt": "One line of this student's magnet notes is wrong — click it:",
+  "lines": [
+    "A compass needle's north tip is attracted toward the Arctic.",
+    "Unlike poles attract, so the pole up there must be a magnetic south pole.",
+    "Cutting a bar magnet in two isolates a monopole — a single free north pole.",
+    "Physicists often call the Arctic one the 'north magnetic pole' purely by location, which keeps the confusion alive.",
+    "Outside the Earth the field lines run south, closing the loop through the planet's core, where the dynamo lives."
+  ],
+  "errorLine": 2,
+  "correction": "You get two weaker dipoles: magnetic field lines always close on themselves, with no free ends — that everyday observation is half of Maxwell's magnetic Gauss law.",
+  "why": "There are no isolated poles — the net flux through any closed surface is zero."
+};
+
+const emKwhCloze = {
+  "text": "One kilowatt-hour is %%0%% joules — so a 2 kW heater run for 3 hours consumes %%1%% kWh. A 10 W LED left on all year burns 87.6 kWh where a 60 W incandescent burned 526 kWh — a factor-of-six saving hiding in P = VI.",
+  "answers": [
+    [
+      "3.6 million",
+      "3,600,000",
+      "3600000",
+      "3.6e6"
+    ],
+    [
+      "6"
+    ]
+  ],
+  "hint": "A thousand watts for an hour, in joules; then the heater's arithmetic."
+};
+
+const emCurrentSort = {
+  "prompt": "Around a series loop — file each quantity:",
+  "buckets": [
+    "the same everywhere in the loop",
+    "falls across the components"
+  ],
+  "items": [
+    {
+      "label": "the current leaving the battery",
+      "bucket": 0
+    },
+    {
+      "label": "the current returning to the battery",
+      "bucket": 0
+    },
+    {
+      "label": "the flow rate of charge",
+      "bucket": 0
+    },
+    {
+      "label": "the energy per charge (the voltage)",
+      "bucket": 1
+    },
+    {
+      "label": "the voltage across each component",
+      "bucket": 1
+    }
+  ],
+  "why": "Charge is conserved: the current leaving equals the current returning, always. Every 'parallel resistors share current equally' error starts here."
+};
+
+const emBatteryBranch = {
+  "root": "A 12 V battery with 0.05 Ω internal resistance drives a 1.95 Ω load. Walk the calculation.",
+  "nodes": {
+    "start": {
+      "text": "First: what total resistance does the loop current see?",
+      "choices": [
+        {
+          "label": "1.95 Ω — the internal resistance is negligible",
+          "next": "ideal"
+        },
+        {
+          "label": "2.0 Ω — internal resistance in series with the load",
+          "next": "real"
+        }
+      ]
+    },
+    "ideal": {
+      "text": "Kirchhoff's voltage law still holds — but this prediction ignores where 0.3 V of the loop's drop actually lands: inside the battery itself.",
+      "choices": [
+        {
+          "label": "Do it properly",
+          "next": "real"
+        }
+      ]
+    },
+    "real": {
+      "text": "I = 12/2.0 = 6 A, and the terminal voltage sags to 12 − 6 × 0.05 = 11.7 V — the missing 0.3 V heats the battery itself. That single calculation is why car batteries are specified by cold-cranking current and why jump leads are thick copper.",
+      "choices": []
+    }
+  },
+  "why": "'Ideal' is the first word of every circuit theory exam question — real batteries add the productive wrinkle of internal resistance."
+};
+
+const emSafetyMatch = {
+  "prompt": "Every rule is physics, not bureaucracy — pair each device with its theorem:",
+  "pairs": [
+    {
+      "left": "the RCD (trips at 30 mA in ~30 ms)",
+      "right": "compares live and neutral currents — which Kirchhoff's law says must be equal — and breaks the instant they differ"
+    },
+    {
+      "left": "the fuse / circuit breaker",
+      "right": "encodes I²R heating: twice the rated current makes four times the heat, and the fuse melts first by design"
+    },
+    {
+      "left": "the earth wire",
+      "right": "a low-resistance alternative path that keeps a fault's chassis near earth potential — the fault trips the breaker instead of waiting for a hand"
+    },
+    {
+      "left": "30 mA of AC across the chest",
+      "right": "roughly the threshold for ventricular fibrillation — the number the whole design revolves around"
+    }
+  ],
+  "why": "Each device is a conservation law pointed at danger — a theorem applied before breakfast."
+};
+
+const emMachineOrder = {
+  "prompt": "From discovery to grid — put the chain in order:",
+  "items": [
+    "Faraday, 1831: a changing magnetic field induces a voltage — no change, no voltage, however strong the magnet",
+    "The generator: a coil rotated in a field sees continuously changing flux — alternating voltage, spun by steam, water or wind",
+    "The motor: the mirror image — a current-carrying wire in a field feels F = BIL, which turns the axle",
+    "The transformer: AC in the primary makes a changing flux in the iron core; Vs/Vp = Ns/Np",
+    "The grid: transmit at high voltage and low current — losses are I²R, so raising voltage 100-fold cuts losses 10,000-fold"
+  ],
+  "why": "The world's electricity is one loop, spun by steam, water or wind — and the grid's whole trick is the transformer's inversion: voltage up, current down."
+};
+
+const emDcPredict = {
+  "q": "You feed steady DC to a transformer's primary (after the switch-on blip). What does the secondary deliver?",
+  "choices": [
+    "A steady DC voltage, scaled by the turns ratio",
+    "Nothing — no changing flux, no induced voltage beyond the switch-on blip",
+    "An inverted DC voltage of the same size",
+    "The correct ratio, but at half the power"
+  ],
+  "answer": 1,
+  "why": "A transformer needs a changing flux — and with no load on the secondary, almost no current flows in the primary: 'transformers are lazy until loaded' is Faraday's law, not a defect."
+};
 ---
 <TopicPage slug="subjects/physics/expert/electrodynamics-maxwell">
   <h2>Where you are, and what you will learn</h2>
@@ -68,6 +218,7 @@ const maxwellCfg = {
     solid-state lesson's territory), but the field description needs none of that: it is the
     first statement that influences live in the space between objects, not in the objects.
   </p>
+  <Widget no="2" caption="guess the magnitude — field inside a solenoid" widget="estimate" config={emSolenoidEst} />
   <p>
     <em>Common misconception:</em> "Earth's geographic North Pole is a magnetic north pole."
     It is the opposite: a compass needle's north tip is attracted toward the Arctic, and
@@ -77,6 +228,7 @@ const maxwellCfg = {
     the geographic north: outside the Earth they run south, closing the loop through the
     planet's core, where the dynamo that generates them lives.
   </p>
+  <Widget no="3" caption="find the faulty line in this student's magnet notes" widget="spot-error" config={emPoleSpot} />
   <p>
     <strong>So far:</strong> the field picture — influences living in the space between
     objects, lines that never end — is the conceptual breakthrough everything else builds on.
@@ -108,6 +260,7 @@ const maxwellCfg = {
     and connectors are sized for the load's current, and why the LED revolution was,
     electrically, a current-reduction revolution.
   </p>
+  <Widget no="4" caption="fill the blanks — the household energy ledger" widget="cloze" config={emKwhCloze} />
   <p>
     <em>Common misconception:</em> "current is used up as it goes round a circuit, so less
     comes back to the battery." Charge is conserved: the current leaving the battery equals
@@ -116,6 +269,7 @@ const maxwellCfg = {
     itself is the same everywhere in a series circuit. Every mis-wired "parallel resistors
     share current equally" error starts here.
   </p>
+  <Widget no="5" caption="file each quantity — same everywhere, or drops en route" widget="sort-buckets" config={emCurrentSort} />
 
   <h2>Circuits: Kirchhoff's two laws do everything</h2>
   <p>
@@ -133,6 +287,7 @@ const maxwellCfg = {
     current, why jump leads are thick copper, and why "ideal" is the first word of every
     circuit theory exam question.
   </p>
+  <Widget no="6" caption="walk the real-battery sag" widget="branch" config={emBatteryBranch} />
   <p>
     <strong>So far:</strong> Kirchhoff's two laws reduce every circuit network to conservation
     of charge and conservation of energy — and real batteries add the productive wrinkle of
@@ -156,6 +311,7 @@ const maxwellCfg = {
     earth potential, so the fault becomes a huge current that trips the breaker instead of a
     live casing that waits for a hand. Each device is a theorem applied before breakfast.
   </p>
+  <Widget no="7" caption="pair each safety device with its physics" widget="match" config={emSafetyMatch} />
 
   <h2>Electromagnetic effects: induction and the machines it built</h2>
   <p>
@@ -174,6 +330,7 @@ const maxwellCfg = {
     Laminated cores defeat eddy currents (circulating induction currents that would cook the
     iron), which is why transformer cores look like sliced bread.
   </p>
+  <Widget no="8" caption="assemble the machines induction built" widget="order" config={emMachineOrder} />
   <p>
     <em>Common misconception:</em> "a transformer changes DC too, or works without a load."
     A transformer needs a <em>changing</em> flux — steady DC in the primary induces nothing
@@ -182,6 +339,7 @@ const maxwellCfg = {
     flux, and only when the secondary delivers current does the primary draw matching power.
     "Transformers are lazy until loaded" is Faraday's law, not a defect.
   </p>
+  <Widget no="9" caption="bet before you read on — DC into the primary" widget="predict" config={emDcPredict} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -10,6 +10,151 @@ const whatCfg = {
     { math: '4 · Philosophy is where questions go to become sciences', note: 'Physics ("natural philosophy"), psychology, economics, linguistics, logic-as-computing — each was philosophy until it acquired methods precise enough to leave. Philosophy keeps the questions not yet ready to graduate.' },
   ],
 };
+
+const philReclaimJudge = {
+  "statements": [
+    {
+      "s": "In philosophy, an argument is a quarrel.",
+      "truth": false,
+      "why": "It is a structure: claims offered as support for another claim."
+    },
+    {
+      "s": "Learn to identify, test and dismantle arguments and you have learned the skill every field borrows from philosophy.",
+      "truth": true,
+      "why": "The language of argumentation is the discipline's core toolkit — the most directly transferable content in the subject."
+    },
+    {
+      "s": "Philosophy asks the questions every other field must assume answers to.",
+      "truth": true,
+      "why": "What counts as an explanation, fairness, knowledge — the physicist, the judge and you all assume answers to these."
+    }
+  ]
+};
+
+const philMarkersSort = {
+  "prompt": "Sort the signposts:",
+  "buckets": [
+    "conclusion markers",
+    "premise markers",
+    "not arguing — report, command or description"
+  ],
+  "items": [
+    {
+      "label": "\"therefore, so, thus, hence, it follows that\"",
+      "bucket": 0
+    },
+    {
+      "label": "\"you should get vaccinated\" — the claim the passage wants accepted",
+      "bucket": 0
+    },
+    {
+      "label": "\"because, since, given that, for the reason that\"",
+      "bucket": 1
+    },
+    {
+      "label": "\"the vaccine trial showed 95% efficacy\" — the reason offered",
+      "bucket": 1
+    },
+    {
+      "label": "reports, descriptions and commands — they state or order, but do not infer",
+      "bucket": 2
+    }
+  ],
+  "why": "Spotting that a reason was given, and what it was, is half of critical thinking."
+};
+
+const philReconSpot = {
+  "prompt": "One line of this gloss on argument structure is wrong — click it:",
+  "lines": [
+    "Standardised: premise 1, premise 2, therefore conclusion — the inference is the only strictly logical part.",
+    "Check the inference (logic) and check the premises — philosophical training is double.",
+    "Hidden premises should stay hidden: writing them in adds clutter and distorts the argument.",
+    "\"She was in Paris at noon and in Rome at two — so she flew\" quietly assumes travel time.",
+    "Making hidden premises explicit is where most analysis happens."
+  ],
+  "errorLine": 2,
+  "correction": "Hidden premises should be written in explicitly — they are where unsound arguments hide their work, which is why reconstruction is the first move of serious criticism.",
+  "why": "The soundness fight usually lives in the smuggled premise, not the flashy ones."
+};
+
+const philPhonesOrder = {
+  "prompt": "Rebuild the classroom-phones reconstruction, then audit it:",
+  "items": [
+    "Premise 1: phones present in classrooms undermine focus",
+    "Premise 2: focus is essential for learning",
+    "Hidden premise: anything that undermines what is essential for learning should be banned",
+    "Conclusion: phones should be banned in classrooms",
+    "The audit: the inference is valid — the soundness fight lives in the hidden premise"
+  ],
+  "why": "Does anything that undermines focus warrant a ban — uncomfortable chairs? a dull lecture? The smuggled premise is where the argument actually lives."
+};
+
+const philFormsMatch = {
+  "prompt": "Three canonical shapes — pair each form with its claim:",
+  "pairs": [
+    {
+      "left": "deduction",
+      "right": "claims necessity — the conclusion cannot exceed the premises"
+    },
+    {
+      "left": "induction",
+      "right": "claims probability from observed cases to unobserved ones — never guaranteed"
+    },
+    {
+      "left": "abduction",
+      "right": "reasons from an observation to the hypothesis that would best account for it"
+    },
+    {
+      "left": "demanding deductive certainty from an induction",
+      "right": "a category error — each form has its own failure modes"
+    }
+  ],
+  "why": "Diagnosis, detective work and theory choice live in abduction — and offering an induction where a deduction was promised is a cheat."
+};
+
+const philValidCompare = {
+  "prompt": "Drag the divider — the two verdicts:",
+  "before": {
+    "label": "Valid and unsound",
+    "text": "\"All fish can fly; Nemo is a fish; therefore Nemo can fly\" — the logic is flawless; the premises are fiction."
+  },
+  "after": {
+    "label": "Invalid though every statement true",
+    "text": "\"All cats are animals; some animals are black; therefore some cats are black\" — the form licenses the move no more than a broken bridge licenses crossing."
+  },
+  "why": "When a real argument fails you want to know where — bad logic (fix the form) or bad premises (fix the facts)."
+};
+
+const philClockPredict = {
+  "q": "The conclusion turns out true. Was the argument any good?",
+  "choices": [
+    "Yes — it landed on the truth, which is what arguments are for",
+    "No — the argument is the route, not the destination; a true conclusion can rest on invalid logic or false premises"
+  ],
+  "answer": 1,
+  "why": "The broken clock reads right twice a day — grade the route."
+};
+
+const philRazorSteps = {
+  "steps": [
+    {
+      "math": "If P then Q; P; therefore Q",
+      "note": "Affirming the antecedent — valid."
+    },
+    {
+      "math": "If P then Q; ¬Q; therefore ¬P",
+      "note": "Modus tollens — valid, the form behind every experimental falsification."
+    },
+    {
+      "math": "If P then Q; Q; therefore P",
+      "note": "Affirming the consequent — invalid; the formal name for the detective's classic error."
+    },
+    {
+      "math": "Ockham's Razor",
+      "note": "Between two explanations accounting equally well for the data, prefer the one with fewer assumptions — a methodological preference, not a truth-guarantee; sometimes the extra entity is real."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/philosophy/foundational/what-is-philosophy">
 
@@ -57,6 +202,7 @@ const whatCfg = {
     directly transferable content in the subject: learn to identify, test and dismantle
     arguments and you have learned the skill every field borrows from philosophy.
   </p>
+  <Widget no="2" caption="true or false — reclaiming the word" widget="judge" config={philReclaimJudge} />
 
   <h2>Identifying argument in text</h2>
   <p>
@@ -73,6 +219,7 @@ const whatCfg = {
     treating assertion as argument. Spotting <em>that</em> a reason was given, and what it
     was, is half of critical thinking.
   </p>
+  <Widget no="3" caption="sort the signposts" widget="sort-buckets" config={philMarkersSort} />
 
   <h2>The structure of argument: premises, conclusions, inference</h2>
   <p>
@@ -86,6 +233,7 @@ const whatCfg = {
     assumes travel time). Making hidden premises explicit is where most analysis happens,
     because hidden premises are where unsound arguments hide their work.
   </p>
+  <Widget no="4" caption="find the faulty line — argument structure" widget="spot-error" config={philReconSpot} />
   <p>
     A full reconstruction, worked slowly: "We should ban phones in classrooms, because
     students cannot focus with them present, and focus is essential for learning."
@@ -99,6 +247,7 @@ const whatCfg = {
     the smuggled premise, not the flashy ones, which is exactly why reconstruction is
     the first move of serious criticism.
   </p>
+  <Widget no="5" caption="rebuild the classroom-phones reconstruction" widget="order" config={philPhonesOrder} />
   <p>
     <strong>So far:</strong> an argument is premises offered in support of a conclusion, and
     the language markers ("therefore", "because") locate both; the inference is the only
@@ -125,6 +274,7 @@ const whatCfg = {
     practically: demanding deductive certainty from an induction is a category error, and
     offering an induction where a deduction was promised is a cheat.
   </p>
+  <Widget no="6" caption="pair each form with its claim" widget="match" config={philFormsMatch} />
 
   <h2>Validity and soundness</h2>
   <p>
@@ -141,12 +291,14 @@ const whatCfg = {
     the form) or bad premises (fix the facts) — and validity/soundness is precisely that
     diagnostic.
   </p>
+  <Widget no="7" caption="drag the divider — the two verdicts" widget="compare" config={philValidCompare} />
   <p>
     <em>Common misconception:</em> "if the conclusion is true, the argument was good." A
     true conclusion can rest on invalid logic or false premises — the stop broken clock
     that reads right twice a day. The argument is the <em>route</em>, not the destination;
     philosophy grades the route.
   </p>
+  <Widget no="8" caption="bet on the true-conclusion trap" widget="predict" config={philClockPredict} />
 
   <h2>Analogy, hypothetical reasoning and Ockham's Razor</h2>
   <p>
@@ -167,6 +319,7 @@ const whatCfg = {
     methodological preference, not a truth-guarantee (sometimes the extra entity is
     real), and its honest use is what separates theory choice from prejudice.
   </p>
+  <Widget no="9" caption="walk the conditional moves and the razor" widget="equationStep" config={philRazorSteps} />
 
   <h2>Flaws in argument: the fallacies</h2>
   <p>

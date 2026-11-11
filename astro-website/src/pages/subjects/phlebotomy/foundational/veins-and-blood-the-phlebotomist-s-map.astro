@@ -11,6 +11,201 @@ const orderCfg = {
     { math: '5 · Label at the bedside', note: 'Labels applied in the patient\'s presence, never pre-printed or later at the desk. "Unlabelled specimen" means "start again".' },
   ],
 };
+
+const phlVesselSort = {
+  "prompt": "Three vessel types, divided labour — file each property:",
+  "buckets": [
+    "arteries",
+    "capillaries",
+    "veins"
+  ],
+  "items": [
+    {
+      "label": "carry blood away from the heart under high pressure",
+      "bucket": 0
+    },
+    {
+      "label": "deep, thick-walled, muscular and pulsatile",
+      "bucket": 0
+    },
+    {
+      "label": "microscopic exchange vessels, one cell thick",
+      "bucket": 1
+    },
+    {
+      "label": "deliver oxygen and nutrients to tissue, collect waste",
+      "bucket": 1
+    },
+    {
+      "label": "the draw of last resort — routine in newborns and point-of-care testing",
+      "bucket": 1
+    },
+    {
+      "label": "return blood to the heart under low pressure through distensible walls",
+      "bucket": 2
+    },
+    {
+      "label": "lie superficially, tolerate puncture and pressure, refill after the needle leaves",
+      "bucket": 2
+    }
+  ],
+  "why": "Arteries are avoided (they bleed vigorously and are hard to compress), capillaries are the fallback, and veins are the venipuncture target — which is why the whole map is venous."
+};
+
+const phlVeinOrder = {
+  "prompt": "Assemble the site preference order, best first:",
+  "items": [
+    "Median cubital — usually largest and best-anchored, and it sits away from the median nerve and brachial artery",
+    "Cephalic — runs along the thumb side of the forearm; often tender and prone to rolling",
+    "Basilic — little-finger side, closest to the median nerve and brachial artery; highest nerve-injury risk, extra care",
+    "Back of hand and wrist — smaller, more mobile veins, drawn with a smaller needle",
+    "Ankle and leg — generally avoided: clot and dependency problems, a physician-decision territory"
+  ],
+  "why": "Preference runs from safest anatomy down: the deeper the vein sits to nerve and artery, the later it comes — and some sites are refused outright."
+};
+
+const phlPalpateMatch = {
+  "prompt": "Sight misleads, touch decides — pair each finding with its verdict:",
+  "pairs": [
+    {
+      "left": "a firm, springy tube that rebounds",
+      "right": "the vein — your draw site"
+    },
+    {
+      "left": "hard, and moves with finger motion",
+      "right": "tendon — not a vessel at all"
+    },
+    {
+      "left": "pulsates under the finger",
+      "right": "artery — avoided in phlebotomy"
+    },
+    {
+      "left": "something that merely looks blue under the skin",
+      "right": "sight misleads — veins palpate, they do not just look"
+    }
+  ],
+  "why": "Distinguishing vein from tendon and artery by feel is the skill — anatomy here is the difference between a routine draw and an injury claim."
+};
+
+const phlWbcEstimate = {
+  "prompt": "One microlitre of healthy blood holds roughly how many white blood cells (leukocytes)?",
+  "unit": "cells per microlitre",
+  "answer": 7500,
+  "factor": 2,
+  "why": "The healthy range runs about 4,000–11,000 per microlitre — the immune defenders. Red blood cells outnumber them spectacularly: several million per microlitre.",
+  "context": "4,000–11,000 leukocytes per microlitre vs several million erythrocytes — a factor of several hundred."
+};
+
+const phlProcJudge = {
+  "statements": [
+    {
+      "s": "Tourniquet time should stay under a minute — prolonged tightening hemoconcentrates the blood and skews the results.",
+      "truth": true,
+      "why": "Cells concentrate and fluid filters out, so a long tourniquet changes the very sample being drawn."
+    },
+    {
+      "s": "Additive tubes are filled and then gently inverted to mix their additives.",
+      "truth": true,
+      "why": "Gentle mixing spreads the additive; rough handling is a different failure mode (haemolysis) entirely."
+    },
+    {
+      "s": "The tourniquet is released after the needle is withdrawn, to keep the vein full.",
+      "truth": false,
+      "why": "It is released before needle withdrawal; pressure and gauze come after."
+    },
+    {
+      "s": "An unlabelled specimen can be labelled back at the desk, as long as you remember the patient.",
+      "truth": false,
+      "why": "'Unlabelled specimen' means 'start again' — labels go on at the bedside, in the patient's presence, never pre-printed."
+    }
+  ]
+};
+
+const phlSitesBranch = {
+  "root": "The requisition asks for a venous draw. The patient's right arm is the mastectomy side; the left forearm has an IV infusion running. Walk the call.",
+  "nodes": {
+    "start": {
+      "text": "Which move do you make?",
+      "choices": [
+        {
+          "label": "Draw from the right (mastectomy-side) arm",
+          "next": "rightArm"
+        },
+        {
+          "label": "Draw below the IV on the left arm",
+          "next": "below"
+        },
+        {
+          "label": "Draw above the IV on the left arm",
+          "next": "above"
+        },
+        {
+          "label": "Stop and consult rather than improvise",
+          "next": "stop"
+        }
+      ]
+    },
+    "rightArm": {
+      "text": "A lifelong exclusion: lymph-node removal can leave that arm prone to lymphoedema and infection, and a puncture invites both.",
+      "choices": [
+        {
+          "label": "Reconsider",
+          "next": "start"
+        }
+      ]
+    },
+    "below": {
+      "text": "Drawing below an infusion dilutes the sample with whatever is infusing — the specimen answers the drip, not the patient.",
+      "choices": [
+        {
+          "label": "Reconsider",
+          "next": "start"
+        }
+      ]
+    },
+    "above": {
+      "text": "Drawing above it risks withdrawing the medication itself into your tube.",
+      "choices": [
+        {
+          "label": "Reconsider",
+          "next": "start"
+        }
+      ]
+    },
+    "stop": {
+      "text": "The classic scenario: a mastectomy exclusion on one arm plus an IV on the other is exactly when the phlebotomist stops and consults rather than improvises.",
+      "choices": []
+    }
+  },
+  "why": "Every exclusion site has a harm written into it — and when the exclusions cover both arms, the map itself says stop."
+};
+
+const phlDrawSpot = {
+  "prompt": "One step in this colleague's tube sequence is wrong — click it:",
+  "lines": [
+    "Two spoken identifiers matched to the requisition; tourniquet on; median cubital selected.",
+    "First tube: light-blue citrate, filled to its exact nine-to-one ratio for the clotting tests.",
+    "Next: the red-top serum tube, drawn straight after the lavender EDTA tube.",
+    "Then the lavender EDTA tube for the complete blood count, gently inverted to mix.",
+    "Finally the grey fluoride tube for glucose — everything labelled at the bedside, in the patient's presence."
+  ],
+  "errorLine": 2,
+  "correction": "The red-top tube must come before green and lavender: EDTA carryover from the lavender tube binds the chemistry sample's calcium invisibly and wrecks its potassium and calcium results.",
+  "why": "The needle carries traces of each tube's additive into the next — the sequence (blood cultures, light blue, red/gold, green, lavender, grey) is chemistry law, not convention."
+};
+
+const phlCapCompare = {
+  "prompt": "One patient, two collection grammars — drag to compare:",
+  "before": {
+    "label": "venous draw",
+    "text": "The default: antecubital veins, tubes filled to ratio, additives mixed by gentle inversion — and the reference ranges most laboratory tests assume."
+  },
+  "after": {
+    "label": "capillary draw",
+    "text": "Fingerstick (fleshy pad of the middle or ring finger) or warmed heelstick in newborns: wipe the first drop, no hard squeezing, microtainers filled in the same sequence. Results run slightly higher in haemoglobin and glucose — the laboratory's ranges must match the collection type."
+  },
+  "why": "Capillary sampling dominates where veins fail or volume is tiny: newborns (a venous draw would be a meaningful fraction of their total blood volume), inaccessible veins, and bedside point-of-care testing."
+};
 ---
 <TopicPage slug="subjects/phlebotomy/foundational/veins-and-blood-the-phlebotomist-s-map">
 
@@ -76,6 +271,7 @@ const orderCfg = {
     arterial blood — lower oxygen, different pH — which is why the draw type must match
     the test.
   </p>
+  <Widget no="2" caption="file each property under its vessel type" widget="sort-buckets" config={phlVesselSort} />
   <p>
     The phlebotomist's map is drawn on the antecubital fossa — the bend of the elbow —
     where three superficial veins form an "H" or "M" pattern. The <strong>median cubital
@@ -92,12 +288,14 @@ const orderCfg = {
     problems) and are a physician-decision territory. Anatomy here is not academic: it is
     the difference between a routine draw and an injury claim.
   </p>
+  <Widget no="3" caption="build the vein preference order, first choice to refused" widget="order" config={phlVeinOrder} />
   <p>
     <em>Common misconception:</em> a vein is wherever you see something blue. Veins
     <em>palpate</em>, they do not just look — a good draw site feels like a firm, springy
     tube that rebounds, and the skill is distinguishing vein from tendon (hard, and moves
     with finger motion) and from artery (pulsates). Sight misleads; touch decides.
   </p>
+  <Widget no="4" caption="pair what each finding under the finger means" widget="match" config={phlPalpateMatch} />
   <p>
     <strong>So far:</strong> arteries carry blood away under high pressure and are avoided;
     capillaries are the one-cell exchange vessels, the draw of last resort except in newborns;
@@ -118,6 +316,7 @@ const orderCfg = {
     around 45 per cent in men, 40 per cent in women — and it is why blood is viscous and
     why a "blood" test is really several different tests on several different fractions.
   </p>
+  <Widget no="5" caption="guess the magnitude — cells in a microlitre" widget="estimate" config={phlWbcEstimate} />
   <p>
     Those fractions are what the tube colours select. <strong>Serum versus plasma</strong>
     is the central distinction: let a tube clot and centrifuge it, and the fluid above the
@@ -164,6 +363,7 @@ const orderCfg = {
     other is the classic scenario where the phlebotomist must stop and consult rather
     than improvise.
   </p>
+  <Widget no="6" caption="walk the two-arms problem" widget="branch" config={phlSitesBranch} />
   <p>
     Around the site selection runs the procedure the widget maps, and each step has its
     safety logic. Patient identification with two identifiers spoken by the patient — the
@@ -177,6 +377,7 @@ const orderCfg = {
     because specimen labelling errors are exactly how one patient's results end up in
     another patient's chart — with transfusions, in the worst case.
   </p>
+  <Widget no="7" caption="true or false — the procedure's safety logic" widget="judge" config={phlProcJudge} />
   <p>
     <em>Common misconception:</em> the order of draw is bureaucratic convention. It is
     chemistry law: the needle carries traces of each tube's additive into the next tube,
@@ -187,6 +388,7 @@ const orderCfg = {
     errors no one could see, in a field where no one can see anything until the result
     comes back.
   </p>
+  <Widget no="8" caption="find the faulty step in this colleague's tube sequence" widget="spot-error" config={phlDrawSpot} />
 
   <h2>Capillary draws and special populations</h2>
   <p>
@@ -207,6 +409,7 @@ const orderCfg = {
     needles, and oncology patients whose veins have been consumed by treatment — each a
     reminder that the map is drawn for the person in the chair, not the average patient.
   </p>
+  <Widget no="9" caption="drag the divider — venous draw vs capillary draw" widget="compare" config={phlCapCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
