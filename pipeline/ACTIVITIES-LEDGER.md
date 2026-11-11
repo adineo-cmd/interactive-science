@@ -433,6 +433,30 @@
 | music/intermediate/reading-notation | timeline, match, spot-error, cloze, judge, sort-buckets, branch, order | next-18 |
 | music/intermediate/rhythm-and-time-signatures | place, judge, cloze, order, sort-buckets, spot-error, estimate, trace | next-18 |
 | music/intermediate/scales-and-keys | estimate, judge, sort-buckets, match, cloze, branch, place | next-18 |
+| naval-architecture/foundational/floating-things-steadily-hydrostatics | compare, estimate, match, order, spot-error, sort-buckets, judge, branch | next-19 |
+| neuroscience/advanced/brain-imaging-methods | order, spot-error, match, branch, sort-buckets, judge, order, place | next-19 |
+| neuroscience/advanced/memory-circuits | sort-buckets, order, spot-error, place, branch, compare, match, trace | next-19 |
+| neuroscience/expert/computational-neuroscience | trace, match, spot-error, place, estimate, order, branch, sort-buckets | next-19 |
+| neuroscience/expert/consciousness-hard-problem | branch, judge, match, compare, spot-error, cloze, sort-buckets, order | next-19 |
+| neuroscience/foundational/the-neuron | order, match, spot-error, estimate, place, judge, match, cloze | next-19 |
+| neuroscience/intermediate/brain-anatomy-tour | estimate, match, sort-buckets, judge, cloze, place, timeline, spot-error | next-19 |
+| neuroscience/intermediate/movement-and-the-motor-system | estimate, match, judge, order, spot-error, sort-buckets, place, cloze | next-19 |
+| neuroscience/intermediate/neurons-and-synapses | sort-buckets, order, estimate, match, judge, spot-error, compare, cloze | next-19 |
+| neuroscience/intermediate/neurotransmitters-and-drugs | match, spot-error, sort-buckets, compare, trace, judge, place, order | next-19 |
+| neuroscience/intermediate/senses-photons-to-perception | match, sort-buckets, order, cloze, spot-error, estimate, place, timeline | next-19 |
+| neuroscience/intermediate/the-action-potential | sort-buckets, spot-error, judge, trace, compare, order, estimate, match | next-19 |
+| nuclear-engineering/foundational/radiation-physics-and-detection | predict, sort-buckets, match, judge, branch, order, compare, estimate | next-20 |
+| nuclear-medicine-technology/foundational/radiopharmaceuticals | sort-buckets, judge, order, spot-error, compare, predict, match, branch | next-20 |
+| nursing/foundational/the-sciences-behind-nursing | match, judge, sort-buckets, cloze, spot-error, compare, estimate, branch | next-20 |
+| nutrition-dietetics/foundational/nutrients-and-how-they-work | estimate, cloze, compare, sort-buckets, match, judge, place, branch | next-20 |
+| occupational-therapy/foundational/occupation-the-core-construct | sort-buckets, compare, spot-error, compare, order, judge, branch, predict | next-20 |
+| operations-research/foundational/linear-programming | cloze, sort-buckets, estimate, order, predict, match, spot-error | next-20 |
+| optometry/foundational/optics-for-optometry | compare, order, cloze, estimate, judge, sort-buckets, match, branch | next-20 |
+| paramedicine/foundational/ems-systems-and-the-paramedic | predict, estimate, match, spot-error, sort-buckets, order, judge, branch | next-20 |
+| peace-conflict-studies/foundational/what-are-peace-and-violence | predict, sort-buckets, judge, match, order, match, branch, compare | next-20 |
+| petroleum-engineering/foundational/petroleum-geology-and-reservoir-rock | compare, order, spot-error, match, sort-buckets, cloze, order, estimate | next-20 |
+| pharmacy/foundational/pharmaceutical-sciences-foundations | compare, order, estimate, cloze, predict, sort-buckets, match, spot-error | next-20 |
+| philosophy/advanced/language-and-meaning | match, spot-error, sort-buckets, cloze, judge, branch, match | next-20 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

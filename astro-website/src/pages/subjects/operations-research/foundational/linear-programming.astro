@@ -23,6 +23,130 @@ const lpCfg = {
     { math: '5 · Duality prices the constraints', note: 'Each binding constraint has a shadow price: the profit gained per extra unit of that resource. Duality turns a solution into a negotiation tool.' },
   ],
 };
+
+const lpPartsCloze = {
+  "text": "Every LP is assembled from four parts: %%0%% variables (the quantities you may choose), an %%1%% function (a linear expression to maximise or minimise), %%2%% (linear inequalities capturing limited resources), and non-negativity.",
+  "answers": [
+    [
+      "decision"
+    ],
+    [
+      "objective"
+    ],
+    [
+      "constraints"
+    ]
+  ],
+  "hint": "What you choose, what you score, what limits you."
+};
+
+const lpAssumeSort = {
+  "prompt": "The linearity contract — file each clause:",
+  "buckets": [
+    "the assumption holds",
+    "violated — needs a different model"
+  ],
+  "items": [
+    {
+      "label": "contributions scale with the variable — no setup costs or quantity discounts",
+      "bucket": 0
+    },
+    {
+      "label": "effects of variables simply sum, with no interaction terms",
+      "bucket": 0
+    },
+    {
+      "label": "fractional answers make sense — blending tonnes of ore",
+      "bucket": 0
+    },
+    {
+      "label": "\"build one more aircraft\" — fractional output is nonsense",
+      "bucket": 1
+    },
+    {
+      "label": "coefficients are known numbers, not gambles",
+      "bucket": 0
+    },
+    {
+      "label": "a demand that arrives as a distribution — stochastic-programming territory",
+      "bucket": 1
+    }
+  ],
+  "why": "Proportionality, additivity, divisibility, certainty — knowing which world your variables live in is part of formulation, decided before any solver runs."
+};
+
+const lpVertexEstimate = {
+  "prompt": "The furniture workshop: 30 per table, 20 per chair, optimum at x1 = 10 tables, x2 = 20 chairs. What is the weekly profit there?",
+  "unit": "per week",
+  "answer": 700,
+  "factor": 1.4,
+  "why": "30(10) + 20(20) = 700 — and every vertex scores: the origin 0, the single-binding corners 600 each, the intersection 700. Both resources fully used.",
+  "context": "the four corners score 0, 600, 600, 700 — the corner wins"
+};
+
+const lpSimplexOrder = {
+  "prompt": "The simplex method, step by step:",
+  "items": [
+    "Start at any vertex of the feasible polygon",
+    "Look along the edges leaving it; pick the one that improves the objective fastest",
+    "Move along that edge to the next vertex — the profit rises",
+    "Stop when no leaving edge improves — the corner-point theorem guarantees that stopping rule is correct"
+  ],
+  "why": "Slack variables turn the inequalities into equations, and each pivot swaps one variable into the basis — a guided walk, not a search."
+};
+
+const lpWalkPredict = {
+  "q": "The corner-point theorem is proven. How many vertices must the simplex method actually visit in a two-thousand-variable LP?",
+  "choices": [
+    "All of them — that is what guarantees optimality",
+    "A handful — each step's profit is strictly better, and it stops when no edge improves",
+    "Exactly one — the theorem names the optimal vertex directly",
+    "It depends on the solver brand"
+  ],
+  "answer": 1,
+  "why": "The theorem deletes the interior; the improving-walk rule deletes almost all the vertices. (Worst cases like the Klee–Minty cube exist, but practice is spectacular — and interior-point methods now share the load.)"
+};
+
+const lpDualMatch = {
+  "prompt": "Every plan has a price list — pair the terms:",
+  "pairs": [
+    {
+      "left": "the primal",
+      "right": "the maximisation problem: choose the best plan"
+    },
+    {
+      "left": "the dual",
+      "right": "the minimisation problem built from the same data: price the resources"
+    },
+    {
+      "left": "shadow price",
+      "right": "the profit added by one more unit of a binding resource"
+    },
+    {
+      "left": "strong duality",
+      "right": "the best plan and the best price list meet exactly"
+    },
+    {
+      "left": "complementary slackness",
+      "right": "a resource with slack prices at zero; a positive price must be produced"
+    }
+  ],
+  "why": "Discovered by von Neumann in 1947 (and embedded in Kantorovich's planning work, Nobel 1975) — duality is taught in economics departments as often as engineering ones."
+};
+
+const lpSenseSpot = {
+  "prompt": "One line of this sensitivity brief is wrong — click it:",
+  "lines": [
+    "The shadow price says what a resource is worth at the margin: overtime below 10 per hour raises profit.",
+    "Airlines run the same logic on gates and landing slots; refineries on crude qualities.",
+    "Reduced costs price the products already in the plan — confirming what you already make.",
+    "Ranging asks how far a coefficient can move before the current basis stops being optimal.",
+    "Complementary slackness ties it together: slack means zero price."
+  ],
+  "errorLine": 2,
+  "correction": "Reduced costs price the variables left OUT of the plan — what a missing product must earn before it enters the mix.",
+  "why": "Sensitivity analysis separates the priced-in from the priced-out, and ranging defines how far every price stays valid."
+};
 ---
 <TopicPage slug="subjects/operations-research/foundational/linear-programming">
 
@@ -93,6 +217,7 @@ const lpCfg = {
     <em>per week</em>), constraints must capture genuinely binding limits, and everything the
     objective or constraints touch must behave <em>proportionally</em>.
   </p>
+  <Widget no="3" caption="fill the blanks — the four parts of every LP" widget="cloze" config={lpPartsCloze} />
   <p>
     That last requirement — proportionality — is what makes a model linear, and LP courses spend
     real time on its boundary. The standard assumptions: <strong>proportionality</strong>
@@ -105,6 +230,7 @@ const lpCfg = {
     well-posed LP is often worth as much as its solution because it makes the trade-offs
     <em>explicit</em> — the meetings it disciplines are part of its value.
   </p>
+  <Widget no="4" caption="file each assumption as held or violated" widget="sort-buckets" config={lpAssumeSort} />
   <p><em>Common misconception:</em> "the solver returned 10.5 tables — it must be broken."
   Fractional output feels like an error, but it is the divisibility assumption doing exactly what
   it was told: LP solutions are only required to make sense as <em>continuous</em> quantities.
@@ -154,6 +280,7 @@ const lpCfg = {
     Evaluating profit at each: 0; 600; 600; and 30(10) + 20(20) = <strong>700 at (10, 20)</strong>
     — ten tables and twenty chairs, both resources fully used.
   </p>
+  <Widget no="5" caption="guess the magnitude — profit at the best corner" widget="estimate" config={lpVertexEstimate} />
   <p>
     With two variables, evaluating four corners is trivial; with two thousand variables and as
     many constraints, the vertex count is combinatorial, and evaluating them all is hopeless. The
@@ -171,6 +298,7 @@ const lpCfg = {
     Neither caveat changes the geometry; both explain why the 1980s doubled the size of solvable
     problems overnight.
   </p>
+  <Widget no="6" caption="sequence the simplex walk" widget="order" config={lpSimplexOrder} />
   <p><em>Common misconception:</em> "the simplex method must check every point in the feasible
   region — that is what solving means." Optimisation does sound like exhaustive search. But the
   corner-point theorem deletes the interior entirely (an optimum is always at a vertex), and the
@@ -178,6 +306,7 @@ const lpCfg = {
   profit strictly better than the last, and stops the moment no edge improves. What looks like a
   brute-force problem is a guided walk — the difference between checking a million corners and
   visiting a few dozen.</p>
+  <Widget no="7" caption="bet before you read on — how many corners must simplex visit?" widget="predict" config={lpWalkPredict} />
   <p><em>Common misconception:</em> that LP is "linear algebra with inequalities" — a mechanical
   exercise. Formulation is modelling judgement (choosing variables, spotting binding resources,
   refusing linearity where it does not hold), and duality is economic interpretation, not algebra
@@ -199,6 +328,7 @@ const lpCfg = {
     non-binding ones get zero (unused capacity is worth nothing — the free lunch the model
     refuses to serve).
   </p>
+  <Widget no="8" caption="pair each duality term with its meaning" widget="match" config={lpDualMatch} />
   <p><em>Common misconception:</em> "more of any resource must add value — buy everything
   cheap and expand." The shadow-price logic says otherwise: value flows only through constraints
   that actually bind. If the workshop's demand caps chairs at 15 and the plan already leaves
@@ -221,6 +351,7 @@ const lpCfg = {
     planning work, recognised by the 1975 Nobel prize), is taught in economics departments as
     often as in engineering ones.
   </p>
+  <Widget no="9" caption="find the faulty line — the sensitivity brief" widget="spot-error" config={lpSenseSpot} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

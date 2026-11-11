@@ -25,6 +25,184 @@ const vitalsCfg = {
     { label: 'shock index (HR/SBP)', expr: 'hr/sys', unit: '' },
   ],
 };
+
+const nurLoopMatch = {
+  "prompt": "The glucose loop and its failure modes — pair them:",
+  "pairs": [
+    {
+      "left": "insulin",
+      "right": "moves glucose into cells and storage when it rises"
+    },
+    {
+      "left": "glucagon",
+      "right": "releases stored glucose back when it falls"
+    },
+    {
+      "left": "type 1 diabetes",
+      "right": "loses the insulin actuator"
+    },
+    {
+      "left": "type 2 diabetes",
+      "right": "loses the tissue's response to insulin"
+    },
+    {
+      "left": "a hypoglycaemic drug overdose",
+      "right": "overshoots the other way"
+    }
+  ],
+  "why": "Each disease of the loop reads as a failure mode — which is why vital signs are controllers' outputs, not random biological noise."
+};
+
+const nurNormalJudge = {
+  "statements": [
+    {
+      "s": "Normal raw numbers always mean a stable patient.",
+      "truth": false,
+      "why": "Compensation can hold the gauges at normal while the patient worsens — a young adult can defend blood pressure while quietly draining reserves."
+    },
+    {
+      "s": "Trends and ratios reveal what isolated digits hide.",
+      "truth": true,
+      "why": "The professional habit — and exactly what the derived indices are for."
+    },
+    {
+      "s": "A racing pulse can be a controller working hard, not a malfunction.",
+      "truth": true,
+      "why": "Once vital signs are seen as controllers' outputs, patterns acquire explanations."
+    },
+    {
+      "s": "Derived indices exist to decorate the chart.",
+      "truth": false,
+      "why": "They move first — that is their entire clinical value."
+    }
+  ]
+};
+
+const nurSignsSort = {
+  "prompt": "Three conditions, one dashboard — file each finding:",
+  "buckets": [
+    "heart failure",
+    "sepsis",
+    "diabetes"
+  ],
+  "items": [
+    {
+      "label": "a pump failing to match demand — breathlessness, oedema, crackles",
+      "bucket": 0
+    },
+    {
+      "label": "fluid backed into lungs and legs",
+      "bucket": 0
+    },
+    {
+      "label": "infection escalating to body-wide inflammation and circulatory failure",
+      "bucket": 1
+    },
+    {
+      "label": "rising heart and respiratory rates with falling pressure and confusion",
+      "bucket": 1
+    },
+    {
+      "label": "a broken glucose loop",
+      "bucket": 2
+    }
+  ],
+  "why": "The science converts 'the patient looks unwell' into a specific, testable, escalating hypothesis — that is the licence's judgement at work."
+};
+
+const nurChainCloze = {
+  "text": "Every infection needs the chain: a %%0%%, a reservoir, a portal of exit, a mode of %%1%%, a portal of entry, and a %%2%% host. Break any link and transmission stops.",
+  "answers": [
+    [
+      "pathogen"
+    ],
+    [
+      "transmission"
+    ],
+    [
+      "susceptible"
+    ]
+  ],
+  "hint": "The six links — the playbook aims at the one humans control."
+};
+
+const nurRouteSpot = {
+  "prompt": "One line of this precautions note is wrong — click it:",
+  "lines": [
+    "Contact spread (C. difficile, MRSA) is broken by gloves, gowns and meticulous hand hygiene.",
+    "Droplet spread travels in wet projectiles about a metre — blocked by a surgical mask and spacing.",
+    "Airborne spread rides drying nuclei that hang in the air for hours.",
+    "Airborne precautions call for a surgical mask and an open window; the N95 is optional extra credit.",
+    "Same hands, three different sciences, three different protections."
+  ],
+  "errorLine": 3,
+  "correction": "Airborne spread (tuberculosis, measles) demands the respirator-grade N95 and a negative-pressure room — wet-projectile defences do nothing against nuclei that hang in air for hours.",
+  "why": "The armour comes from the route — the ritual is wrong until you know the microbe."
+};
+
+const nurAdmeCompare = {
+  "prompt": "Drag across the two symmetrical sciences of every drug:",
+  "before": {
+    "label": "what the body does to the drug",
+    "text": "Pharmacokinetics: absorption, distribution, metabolism, excretion — the dose's journey and how much of it survives the trip."
+  },
+  "after": {
+    "label": "what the drug does to the body",
+    "text": "Pharmacodynamics: which receptors are touched, whether they are turned up or down, and how that maps to effect."
+  },
+  "why": "The order says what to give; the bedside check is that, for this body, at this moment, by this route, the dose lands inside the therapeutic window — not below it (useless) or above it (harm)."
+};
+
+const nurHalfLifeEstimate = {
+  "prompt": "A drug with a 4-hour half-life: 500 mg taken now. Roughly how much remains after 24 hours?",
+  "unit": "mg",
+  "answer": 8,
+  "factor": 2,
+  "why": "Halve every 4 hours: 250, 125, 62, 31, 16, 8 — and read forward, four to five half-lives is the steady-state clock for regular dosing.",
+  "context": "the same curve, read forward, is why dosing discipline follows the half-life"
+};
+
+const nurStopBranch = {
+  "root": "Day four of an antibiotic course, the patient calls: 'I feel completely better — why finish it?' Walk the answer.",
+  "nodes": {
+    "start": {
+      "text": "What have the symptoms actually reported?",
+      "choices": [
+        {
+          "label": "That the infection is fully cleared",
+          "next": "wrong"
+        },
+        {
+          "label": "That the drug has knocked the population down — the hardiest cells survive",
+          "next": "survivors"
+        }
+      ]
+    },
+    "wrong": {
+      "text": "Not quite: symptoms are what the patient notices, and they resolve before the underlying process does.",
+      "choices": [
+        {
+          "label": "Continue",
+          "next": "survivors"
+        }
+      ]
+    },
+    "survivors": {
+      "text": "Stopping now selectively breeds resistance — the survivors are the hardiest. And for blood-pressure or antidepressant medication, the drug controls a chronic condition rather than curing it, so symptoms return when the level falls.",
+      "choices": [
+        {
+          "label": "So who sets the stop date?",
+          "next": "done"
+        }
+      ]
+    },
+    "done": {
+      "text": "Honest stop dates are a stewardship skill: the science sets the end, not the symptom.",
+      "choices": []
+    }
+  },
+  "why": "Microbiology and pharmacology conspire here — the mechanism, not the feeling, decides the stop date."
+};
 ---
 <TopicPage slug="subjects/nursing/foundational/the-sciences-behind-nursing">
 
@@ -100,6 +278,7 @@ const vitalsCfg = {
     deliberately raised; the racing pulse is a controller working hard; the flat-looking blood
     pressure may be a controller winning — until it doesn't.
   </p>
+  <Widget no="3" caption="pair each player with its move in the loop" widget="match" config={nurLoopMatch} />
   <p><em>Common misconception:</em> "normal vital signs mean a stable patient." It is a
   reasonable default — normal numbers are reassuring — but compensation can hold the gauges at
   normal while the patient worsens. A young adult bleeding internally can clamp down blood
@@ -107,6 +286,7 @@ const vitalsCfg = {
   reads 130, and the raw numbers lie while the body spends its reserves. The professional habit
   is to read <em>trends and ratios</em>, not isolated digits — which is exactly what the derived
   indices below are for.</p>
+  <Widget no="4" caption="true or false — reading the dashboard" widget="judge" config={nurNormalJudge} />
   <p>
     Two derived indices earn their place. <em>Mean arterial pressure</em> (MAP) estimates the
     average perfusion pressure the organs actually see: MAP = diastolic + one third of the pulse
@@ -142,6 +322,7 @@ const vitalsCfg = {
     loop. In each case the science converts "the patient looks unwell" into a specific, testable,
     escalating hypothesis — which is the difference between watching a patient and assessing one.
   </p>
+  <Widget no="5" caption="file each signature under its condition" widget="sort-buckets" config={nurSignsSort} />
 
   <h2>Microbiology and infection control</h2>
   <p>
@@ -152,6 +333,7 @@ const vitalsCfg = {
     stops; the entire playbook is a route-based strategy aimed at the transmission link, because
     that is the link humans control.
   </p>
+  <Widget no="6" caption="fill the blanks — the chain of infection" widget="cloze" config={nurChainCloze} />
   <p>
     The three transmission routes dictate three distinct armours. <em>Contact</em> spread (touch,
     surfaces, hands — Clostridioides difficile, MRSA) is broken by gloves, gowns and meticulous
@@ -164,6 +346,7 @@ const vitalsCfg = {
     respirator-grade N95 and, in hospital, a negative-pressure room so the corridor does not
     become the next reservoir. Same hands, three different sciences, three different protections.
   </p>
+  <Widget no="7" caption="find the faulty line — the three armours" widget="spot-error" config={nurRouteSpot} />
   <p><em>Common misconception:</em> infection control is about protecting yourself, and it is
   "extra hygiene." It is primarily about protecting the <em>next</em> patient — the hands,
   equipment and environment are the transit system by which one patient's organisms reach
@@ -192,6 +375,7 @@ const vitalsCfg = {
     <em>this</em> body, at <em>this</em> moment, by <em>this</em> route, the dose will land in
     the therapeutic window rather than below it (useless) or above it (harm).
   </p>
+  <Widget no="8" caption="drag across the drug's two sciences" widget="compare" config={nurAdmeCompare} />
   <p>
     Half-life is the workhorse concept, and its arithmetic is worth doing once. A drug with a
     4-hour half-life falls by half every 4 hours: 500 mg becomes 250 after 4 h, 125 after 8 h,
@@ -204,6 +388,7 @@ const vitalsCfg = {
     and harmful is small, levels are monitored with blood tests, and the nurse's questions ("any
     new antibiotics? what's the potassium?") are the safety system.
   </p>
+  <Widget no="9" caption="guess the magnitude — the 24-hour leftover" widget="estimate" config={nurHalfLifeEstimate} />
   <p>
     Route changes the arithmetic too, which is why the route is part of the order rather than a
     delivery detail. A tablet must survive stomach acid, absorb through the gut wall, and survive
@@ -237,6 +422,7 @@ const vitalsCfg = {
   pharmacology conspiring. For blood-pressure or antidepressant medication, the drug is
   controlling a chronic condition, not curing it, so the symptoms return when the level falls.
   The lesson's theme, once more: the mechanism, not the feeling, decides the stop date.</p>
+  <Widget no="10" caption="walk the day-four phone call" widget="branch" config={nurStopBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

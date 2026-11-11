@@ -11,6 +11,166 @@ const ap2Cfg = {
     { math: '5 · Propagation: the wave self-renews', note: 'Each segment\'s spike triggers the next — and myelin insulation forces the signal to jump (saltatory conduction), reaching 120 m/s. Loss of myelin = multiple sclerosis.' },
   ],
 };
+
+const apIonsBuckets = {
+  "prompt": "The membrane divides two seawater-and-salt fluids. File each player:",
+  "buckets": [
+    "Loaded inside",
+    "Loaded outside"
+  ],
+  "items": [
+    {
+      "label": "potassium (K⁺)",
+      "bucket": 0
+    },
+    {
+      "label": "negatively charged proteins",
+      "bucket": 0
+    },
+    {
+      "label": "sodium (Na⁺)",
+      "bucket": 1
+    },
+    {
+      "label": "chloride",
+      "bucket": 1
+    }
+  ],
+  "why": "The sodium–potassium pump maintains the imbalance — 3 Na⁺ out for every 2 K⁺ in, an ATP-burning exchange that is why the brain devours a fifth of your resting energy."
+};
+
+const apPhaseSpot = {
+  "prompt": "A student's phase-by-phase narration of the spike contains one faulty line — click it:",
+  "lines": [
+    "Inputs sum at the axon initial segment; past −55 mV the spike ignites.",
+    "Voltage-gated sodium channels open; the incoming positive charge depolarises the membrane further, opening more channels.",
+    "Sodium channels inactivate through a plug that swings shut independently of voltage; slower potassium channels let K⁺ rush out.",
+    "Potassium channels slam shut instantly at +40 mV, ending the spike before any overshoot.",
+    "The membrane overshoots rest into afterhyperpolarisation, then the pump and leak currents restore −70 mV."
+  ],
+  "errorLine": 3,
+  "correction": "Potassium channels close gradually — the lingering efflux is what overshoots rest into afterhyperpolarisation, not an instant shutdown.",
+  "why": "Each voltage opens the channel whose current creates the next voltage — a chain of feedbacks Hodgkin and Huxley captured in four coupled equations that predict, not describe."
+};
+
+const apGradientJudge = {
+  "statements": [
+    {
+      "s": "The ions crossing per spike are minuscule compared with the pool.",
+      "truth": true,
+      "why": "A neuron can fire for a while on its stored gradients even with the pump poisoned."
+    },
+    {
+      "s": "Each spike dramatically consumes or reverses the cell's ion gradients.",
+      "truth": false,
+      "why": "The crossing per spike is minuscule — the drama is in the voltage change, not the chemistry spent."
+    },
+    {
+      "s": "A neuron could fire spikes indefinitely with its pump poisoned.",
+      "truth": false,
+      "why": "For a while, yes — but not indefinitely; the gradients run down."
+    },
+    {
+      "s": "The ongoing metabolic bill is paid in restoring the gradients, not in firing them.",
+      "truth": true,
+      "why": "The spike itself is passive channel chemistry; the pump does the slow bookkeeping."
+    }
+  ]
+};
+
+const apFreqTrace = {
+  "prompt": "A brighter light, a heavier weight, a louder tone. Which curve matches afferent firing rate against stimulus intensity?",
+  "curves": [
+    {
+      "expr": "20*log(x)",
+      "label": "rate rises roughly logarithmically",
+      "color": "#1f6f54"
+    },
+    {
+      "expr": "6*x",
+      "label": "rate proportional to intensity",
+      "color": "#b42318"
+    },
+    {
+      "expr": "20",
+      "label": "rate ignores intensity",
+      "color": "#b45309"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 1,
+    "max": 10
+  },
+  "y": {
+    "min": 0,
+    "max": 60
+  },
+  "xlabel": "stimulus intensity",
+  "ylabel": "firing rate",
+  "why": "Weber–Fechner territory: the spike never gets taller — the afferent fires faster, not harder, and precise spike timing carries extra information where circuits use it."
+};
+
+const apShoutCompare = {
+  "prompt": "The stimulus barely clears threshold, or doubles it. Drag the divider between the two cases:",
+  "before": {
+    "label": "Barely suprathreshold",
+    "text": "The full, stereotyped spike — same amplitude, same shape. Subthreshold inputs, by contrast, produce nothing at all."
+  },
+  "after": {
+    "label": "Stimulus doubled",
+    "text": "The same spike again — intensity is encoded in how often spikes arrive, not how tall they are. There are no half-spikes and no shape variation to read meaning from."
+  },
+  "why": "The code is digital (uniform spikes) with its analogue content in the statistics: rate, rhythm, synchrony."
+};
+
+const apWaveOrder = {
+  "prompt": "A spike does not travel like a thrown ball — it re-erupts. Rebuild the sequence:",
+  "items": [
+    "The depolarisation at the active patch spreads passively to the adjacent patch of membrane",
+    "That patch crosses threshold and its own sodium channels ignite",
+    "The spike regenerates at full amplitude — the signal never attenuates",
+    "In myelinated axons the regeneration happens only at the bare gaps — the nodes of Ranvier",
+    "Saltatory conduction: leaping node to node at up to 120 m/s"
+  ],
+  "why": "It arrives at the terminal exactly as tall as it left the trigger zone, whether the axon is a millimetre or a metre long — and myelin cuts the metabolic cost roughly tenfold for a given speed."
+};
+
+const apWhaleEstimate = {
+  "prompt": "At the extreme of body size, how many metres long can a blue whale's motor axons to its hindquarters run?",
+  "unit": "metres",
+  "answer": 15,
+  "factor": 1.4,
+  "why": "Fifteen metres — without myelinated, 100-m/s-class conduction, an animal that size would be coordinating its hindquarters on multi-second delays.",
+  "context": "A stretch reflex completes its metre-long round trip in tens of milliseconds; unmyelinated pain fibres ride the same distance a hundredfold slower."
+};
+
+const apToxinMatch = {
+  "prompt": "Evolution found the channels first; chemistry followed. Pair each agent with its attack:",
+  "pairs": [
+    {
+      "left": "tetrodotoxin (pufferfish)",
+      "right": "binds the sodium channel's outer pore and blocks it — a few milligrams silence every spike"
+    },
+    {
+      "left": "batrachotoxin (poison frogs)",
+      "right": "jams channels permanently open"
+    },
+    {
+      "left": "scorpion toxins",
+      "right": "hold channels open or lock them shut"
+    },
+    {
+      "left": "local anaesthetics (lidocaine)",
+      "right": "block the pore from inside, preferentially in open or inactivated states — use-dependent"
+    },
+    {
+      "left": "anticonvulsants (carbamazepine)",
+      "right": "exploit the same state-dependence to quiet runaway seizure firing"
+    }
+  ],
+  "why": "Each toxin's exquisite specificity made it a research tool — the dissection that produced the modern channel atlas, and 'channelopathy' as a disease category."
+};
 ---
 <TopicPage slug="subjects/neuroscience/intermediate/the-action-potential">
 
@@ -78,6 +238,7 @@ const ap2Cfg = {
     The resting potential is not dormancy — it is the cocked spring from which all signalling is
     released.
   </p>
+  <Widget no="2" caption="file each ion — inside or outside" widget="sort-buckets" config={apIonsBuckets} />
 
   <h2>The spike, phase by phase</h2>
   <p>
@@ -101,10 +262,12 @@ const ap2Cfg = {
     built — so, strictly, <em>the pump fires every spike</em>, in slow motion, and the channels
     merely release it fast.
   </p>
+  <Widget no="3" caption="find the faulty line — the spike narrated" widget="spot-error" config={apPhaseSpot} />
   <p><em>Common misconception:</em> the spike does not consume or reverse the cell's ion gradients
   in any dramatic way. The number of ions crossing per spike is minuscule compared with the pool —
   a neuron could fire spikes for a while on its gradients even with the pump poisoned — but not
   indefinitely, and restoring the gradients is where the ongoing metabolic bill is paid.</p>
+  <Widget no="4" caption="true or false — the spike's energy bill" widget="judge" config={apGradientJudge} />
 
   <h2>All-or-none and frequency coding</h2>
   <p>
@@ -126,7 +289,9 @@ const ap2Cfg = {
     nervous system, then, rides on a digital code (uniform spikes) whose analogue content is in the
     statistics: rate, rhythm, synchrony.
   </p>
+  <Widget no="5" caption="which curve matches frequency coding?" widget="trace" config={apFreqTrace} />
   <p><em>Common misconception:</em> a stronger stimulus produces a bigger action potential. The spike is stereotyped — same amplitude and shape whether the stimulus barely cleared threshold or doubled it; intensity is encoded in how often spikes arrive, not how tall they are. The only way for a neuron to shout is faster, not louder.</p>
+  <Widget no="6" caption="drag the divider — two stimuli, one spike" widget="compare" config={apShoutCompare} />
   <p>
     <strong>So far:</strong> the spike is all-or-none, so a single neuron encodes intensity in rate
     and timing, with the refractory machinery capping the rate and forcing one-way travel. The next
@@ -157,6 +322,7 @@ const ap2Cfg = {
     evolved the wrapper, so they bought speed with brute diameter — and gave neurophysiology its
     best preparation in the process.)
   </p>
+  <Widget no="7" caption="rebuild the self-renewing wave" widget="order" config={apWaveOrder} />
   <p>
     The speed numbers deserve a concrete feel, because they explain how bodies are built. A stretch
     reflex — tap the kneecap, and the leg extends — runs a two-neuron loop from thigh to spinal
@@ -171,6 +337,7 @@ const ap2Cfg = {
     of the decisive inventions of vertebrate evolution — and its loss, in multiple sclerosis, a
     uniquely disabling failure mode.
   </p>
+  <Widget no="8" caption="call the span — the longest axons afloat" widget="estimate" config={apWhaleEstimate} />
   <p><em>Common misconception:</em> myelin sheathes the nodes of Ranvier. It is the reverse: myelin wraps the stretches between nodes, and the nodes are the bare, sodium-channel-rich gaps where the spike regenerates. The two parts fail differently — stripped internodes leak charge, blocked nodes have nowhere to re-ignite — which is one reason demyelinating disease produces such patchy deficits.</p>
   <p>
     <strong>So far:</strong> the wave re-erupts segment by segment, and myelin buys a hundredfold
@@ -200,6 +367,7 @@ const ap2Cfg = {
     epilepsy, migraine, cardiac arrhythmia and pain syndromes traced to single amino-acid changes
     in these gates.
   </p>
+  <Widget no="9" caption="pair each agent with its channel attack" widget="match" config={apToxinMatch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

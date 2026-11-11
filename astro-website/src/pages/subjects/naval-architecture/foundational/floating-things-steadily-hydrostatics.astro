@@ -72,6 +72,175 @@ const quizCfg = {
     },
   ],
 };
+
+const naEnvelopeCompare = {
+  "prompt": "A solid ball sinks; a quarter-million tonnes of the same metal floats. Drag the divider between the two ways of arranging steel:",
+  "before": {
+    "label": "Solid ball bearing",
+    "text": "Density nearly eight times that of water, all the way through. Buoyancy is an average-density game, and a solid body's average is the metal itself — it sinks."
+  },
+  "after": {
+    "label": "Steel envelope full of air",
+    "text": "Steel, cargo, fuel, crew and all that air, divided over the whole volume. The average is deliberately kept below the density of seawater — the hull sinks only until it displaces exactly its own weight of water."
+  },
+  "why": "A ship is a submarine that has decided to spend its life on the surface: same material, lower average density."
+};
+
+const naTpcEstimate = {
+  "prompt": "A bulk carrier with a 6,000 m² waterplane (TPC ≈ 60) is loaded 15 cm deeper. Roughly how many tonnes came aboard?",
+  "unit": "tonnes",
+  "answer": 900,
+  "factor": 1.4,
+  "why": "15 centimetres at about 60 tonnes per centimetre ≈ 900 tonnes — each centimetre of added draft swallows A × 0.01 × 1.025 tonnes of seawater weight.",
+  "context": "A 6,000 m² waterplane runs about 60 tonnes per centimetre of immersion."
+};
+
+const naCbMatch = {
+  "prompt": "Hull fullness in one number. Pair each item with its partner:",
+  "pairs": [
+    {
+      "left": "a slow, full tanker",
+      "right": "C_B around 0.8 — underwater body nearly fills its bounding box"
+    },
+    {
+      "left": "a fast warship",
+      "right": "C_B near 0.45 — long, slim, pointed"
+    },
+    {
+      "left": "actual underwater volume ÷ (L × B × T)",
+      "right": "the block coefficient"
+    },
+    {
+      "left": "the bounding box L × B × T",
+      "right": "length, beam and draft multiplied together"
+    }
+  ],
+  "why": "No propeller pushes a brick efficiently, and no tanker is wasted on racing — the number says what the hull is for."
+};
+
+const naHeelOrder = {
+  "prompt": "A wave heels a stable ship a few degrees. Rebuild the chain of consequences:",
+  "items": [
+    "Upright and undisturbed: G sits directly above B, and the two forces cancel in a straight line",
+    "A wave heels the ship a few degrees",
+    "The underwater wedge on the high side emerges; a new wedge submerges on the low side",
+    "B slides sideways toward the submerged side, while gravity still pulls straight down through G",
+    "Two equal, opposite forces now act along lines that no longer align — a couple is born"
+  ],
+  "why": "Which way the couple turns decides the ship's fate: heel moves B outward from under G, and the offset between the force lines is the righting arm."
+};
+
+const naInclineSpot = {
+  "prompt": "A cadet's worked inclining experiment contains one faulty line — click it:",
+  "lines": [
+    "Move a known weight a known distance across the deck: w·d = 10 t × 10 m = 100 tonne-metres.",
+    "Read the resulting heel angle from plumb lines: 0.25° on a 10,000-tonne ship.",
+    "Compute GM = w·d ⁄ (Δ·tan θ) = 100 ⁄ (10,000 × 0.00436) ≈ 2.3 metres.",
+    "A larger heel for the same weight shift would mean a larger GM — the ship resisted harder."
+  ],
+  "errorLine": 3,
+  "correction": "Inverted: GM = w·d ⁄ (Δ·tan θ), so a larger tan θ for the same shift means a smaller GM — the ship gave way more easily.",
+  "why": "The heel angle sits in the denominator: a bigger observed tilt for the same shift is the signature of less initial stability, not more."
+};
+
+const naSurfaceBuckets = {
+  "prompt": "The free-surface correction scales with tank area, not liquid volume. File each move:",
+  "buckets": [
+    "Hurts — feeds the free-surface effect",
+    "Helps — cuts the free surface or the rise of G"
+  ],
+  "items": [
+    {
+      "label": "a tank left half-full of fuel",
+      "bucket": 0
+    },
+    {
+      "label": "the tank's width divided by baffles into three compartments",
+      "bucket": 1
+    },
+    {
+      "label": "a shallow pool of water spread across a wide compartment",
+      "bucket": 0
+    },
+    {
+      "label": "emptying the tank completely",
+      "bucket": 1
+    },
+    {
+      "label": "the same tonnage of water frozen solid in the same space",
+      "bucket": 1
+    },
+    {
+      "label": "loose liquid that runs to the low side on every roll",
+      "bucket": 0
+    }
+  ],
+  "why": "Divide a tank's width into three and the free-surface moment falls by a factor of nine — which is why ballast sequences and sounding logs are stability documents."
+};
+
+const naBilgeJudge = {
+  "statements": [
+    {
+      "s": "A little water sloshing in the bilge is harmless because it sits at the bottom, below the waterline.",
+      "truth": false,
+      "why": "It is the water's movement: every roll slides a wide pool toward the low side, dragging G with it."
+    },
+    {
+      "s": "The same tonnage of water frozen solid in the same space would barely matter.",
+      "truth": true,
+      "why": "A solid cannot run to the low side — no free surface, no moving G."
+    },
+    {
+      "s": "A shallow pool across a wide compartment has a small free surface.",
+      "truth": false,
+      "why": "It has a huge free surface — the correction scales with area, not volume."
+    },
+    {
+      "s": "Ships with acceptable paper stability have capsized from bilge water alone.",
+      "truth": true,
+      "why": "A virtual rise of G can wipe out the paper margin without a single gram of cargo leaving the ship."
+    }
+  ]
+};
+
+const naGmBranch = {
+  "root": "A new coastal ferry is on your drawing board. What GM do you target, and how do you verify it?",
+  "nodes": {
+    "start": {
+      "text": "Stability strategy:",
+      "choices": [
+        {
+          "label": "Maximise GM — the biggest righting lever the hull can carry",
+          "next": "stiff",
+          "feedback": "A stiff ship snaps back upright hard and fast: short roll period, punishing lashings and stomachs."
+        },
+        {
+          "label": "Keep GM tiny for the gentlest possible rolls",
+          "next": "tender",
+          "feedback": "A tender ship rolls gently but holds little reserve against listing forces."
+        },
+        {
+          "label": "Aim in between, then check the whole righting-arm curve",
+          "next": "verify",
+          "feedback": "Large passenger ships commonly run GM around a metre for comfort — and the curve, not one number, decides capsize resistance."
+        }
+      ]
+    },
+    "stiff": {
+      "text": "Violent, quick rolling: cargo breaks loose, structures are stressed, crews collapse with seasickness. Comfort, not the maximum, sets the target.",
+      "choices": []
+    },
+    "tender": {
+      "text": "Gentle, slow rolls — but little reserve: a modest listing force can produce a list the ship cannot correct.",
+      "choices": []
+    },
+    "verify": {
+      "text": "Wind, waves and shifted cargo must not push the ship past her curve's maximum: a healthy GM is the first chapter of stability, not the whole book.",
+      "choices": []
+    }
+  },
+  "why": "Designers aim between stiff and tender, and real capsize resistance is described by the whole righting-arm curve — GM alone never guarantees survival."
+};
 ---
 <TopicPage slug="subjects/naval-architecture/foundational/floating-things-steadily-hydrostatics">
 
@@ -110,6 +279,7 @@ const quizCfg = {
     and all that air, divided over its whole volume — is deliberately kept below the density
     of seawater. A ship is a submarine that has decided to spend its life on the surface.
   </p>
+  <Widget no="4" caption="drag the divider — the ball bearing and the envelope" widget="compare" config={naEnvelopeCompare} />
   <p>
     Getting a hull to float is the easy half of the problem. The genuinely
     naval-architectural half is keeping it <em>upright</em>: a floating body is a body in
@@ -163,6 +333,7 @@ const quizCfg = {
     waterplane runs about 60 tonnes per centimetre, which is why loading crews think in
     centimetres of draft the way accountants think in millions of dollars.
   </p>
+  <Widget no="5" caption="call the load — TPC at work" widget="estimate" config={naTpcEstimate} />
   <p>
     Hull fullness is captured by the <strong>block coefficient</strong> C<sub>B</sub> —
     actual underwater volume divided by the box L × B × T (length, beam, draft). A slow,
@@ -171,6 +342,7 @@ const quizCfg = {
     links displacement to dimensions in one step and quietly encodes the ship's speed
     intent — no propeller pushes a brick efficiently, and no tanker is wasted on racing.
   </p>
+  <Widget no="6" caption="pair each hull with its coefficient" widget="match" config={naCbMatch} />
   <p>
     Water density matters more than most passengers realise. The same ship floats
     <em>deeper</em> in fresh water (1.000 t/m³) than in salt (1.025 t/m³), because fresh
@@ -200,6 +372,7 @@ const quizCfg = {
     act along lines that no longer align: they form a <strong>couple</strong>. Which way
     the couple turns decides the ship's fate.
   </p>
+  <Widget no="7" caption="rebuild the heel — from wave to couple" widget="order" config={naHeelOrder} />
   <p>
     The <strong>metacentre M</strong> is the point where the tilted line of buoyancy
     crosses the ship's original vertical centreline, and the <strong>metacentric height
@@ -215,6 +388,7 @@ const quizCfg = {
     ship, observe 0.25° of heel, and the ship's GM is 100 ⁄ (10,000 × 0.00436) ≈ 2.3
     metres. No computer model required — the ocean itself signs off.
   </p>
+  <Widget no="8" caption="find the faulty line — the inclining experiment" widget="spot-error" config={naInclineSpot} />
   <p>
     GM compresses a hull's personality into one number. Large GM — wide beam, weights kept
     low — makes a <strong>stiff</strong> ship: it snaps back upright hard and fast, with a
@@ -248,6 +422,7 @@ const quizCfg = {
     and the free-surface moment falls by a factor of nine. This is why tank-cleaning
     schedules, ballast sequences and sounding logs are stability documents.
   </p>
+  <Widget no="9" caption="file each move — margin lost or kept" widget="sort-buckets" config={naSurfaceBuckets} />
   <p><em>Common misconception:</em> a little water sloshing in the bilge is harmless because
   it sits at the bottom, below the waterline. That sounds right — the water weighs the
   same wherever it is, and low weight usually helps stability. But the danger is not the
@@ -256,6 +431,7 @@ const quizCfg = {
   dragging G with it — which is exactly how ships with "acceptable" paper stability have
   capsized. Contrast: the same tonnage of water frozen solid in the same space would
   barely matter, because a solid cannot run to the low side.</p>
+  <Widget no="10" caption="true or false — water in the bilge" widget="judge" config={naBilgeJudge} />
   <p><em>Common misconception:</em> bigger GM is automatically safer. Beyond comfort and
   cargo security, real capsize resistance is described by the whole <strong>righting-arm
   curve</strong> — GZ across heel angles from upright to the <strong>range of positive
@@ -263,6 +439,7 @@ const quizCfg = {
   still capsize if wind, waves and shifted cargo push it past its curve's maximum.
   Conversely, ships with modest GM but generous reserve buoyancy above deck have survived
   extraordinary abuse. GM is the first chapter of stability, not the whole book.</p>
+  <Widget no="11" caption="you are the designer — choose the GM target" widget="branch" config={naGmBranch} />
 
   <h2>Load lines and freeboard</h2>
   <p>

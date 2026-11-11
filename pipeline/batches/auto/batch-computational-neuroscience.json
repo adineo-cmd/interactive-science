@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "subjects/neuroscience/expert/computational-neuroscience",
+    "activities": [
+      {
+        "anchor": "robust to noise in a way a single-cell code",
+        "type": "trace",
+        "caption": "which curve matches the population code?",
+        "name": "cnPopTrace",
+        "config": {
+          "prompt": "A quantity is read out across many broadly tuned, noisy neurons instead of one precise one. Which curve matches the read-out error as more neurons are pooled?",
+          "curves": [
+            { "expr": "6/sqrt(x)", "label": "error falls as the pool grows", "color": "#1f6f54" },
+            { "expr": "x/3", "label": "error grows with the pool", "color": "#b42318" },
+            { "expr": "6", "label": "pooling changes nothing", "color": "#b45309" }
+          ],
+          "correct": 0,
+          "x": { "min": 1, "max": 20 },
+          "y": { "min": 0, "max": 8 },
+          "xlabel": "neurons pooled",
+          "ylabel": "read-out error",
+          "why": "Georgopoulos's motor-cortex work read a monkey's reaching direction as a weighted vector across hundreds of neurons — averaging broadly tuned, noisy votes is robust in a way a single-cell code could never be."
+        }
+      },
+      {
+        "anchor": "fitted four coupled differential equations",
+        "type": "match",
+        "caption": "pair each HH constant with its value",
+        "name": "cnHhMatch",
+        "config": {
+          "prompt": "The founding model's numbers, from squid giant axon data. Pair each quantity with its value:",
+          "pairs": [
+            { "left": "sodium conductance", "right": "about 120 mS/cm²" },
+            { "left": "potassium conductance", "right": "36 mS/cm²" },
+            { "left": "leak conductance", "right": "0.3 mS/cm²" },
+            { "left": "resting potential", "right": "about −70 mV" },
+            { "left": "the model's reproduction", "right": "the spike, its threshold, refractory period and propagation speed" }
+          ],
+          "why": "A model precise enough to be wrong in specific, informative ways — the computational epistemology in miniature, and the template every later model still simplifies or extends."
+        }
+      },
+      {
+        "anchor": "not passive wiring but spatially distributed filters",
+        "type": "spot-error",
+        "caption": "find the faulty line — a modeller's dendrite notes",
+        "name": "cnDendriteSpot",
+        "config": {
+          "prompt": "A modeller's notes on the ionic substrate contain one faulty line — click it:",
+          "lines": [
+            "Concentration gradients are metabolic batteries, charged by the Na⁺/K⁺-ATPase that consumes most of the brain's ~20 watts.",
+            "The membrane time constant — a few tens of milliseconds — is the cell's integration window.",
+            "The length constant — a fraction of a millimetre — is how far a signal rides before decaying.",
+            "Dendritic trees deliver every input to the soma unchanged, like well-soldered cable."
+          ],
+          "errorLine": 3,
+          "correction": "Dendritic trees are spatially distributed filters: channel densities, extracellular potassium and neuromodulation tune how far a given input sits from threshold, so the same synapse has different gain on different days.",
+          "why": "Excitability is state-dependent — a variable the artificial world lacks, and a design the engineering ladder rediscovers in analogue computing."
+        }
+      },
+      {
+        "anchor": "and saves it where it does not",
+        "type": "place",
+        "caption": "place the marker — the slow end of the latency budget",
+        "name": "cnSpeedPlace",
+        "config": {
+          "prompt": "Unmyelinated axons conduct at about 0.5–2 m/s; myelinated fibres saltate at up to ~120 m/s. Place the marker at the bottom of the unmyelinated range:",
+          "labels": ["0", "30", "60", "90", "120"],
+          "scale": { "min": 0, "max": 120 },
+          "answer": 1,
+          "tolerance": 2,
+          "why": "Myelin buys speed at the cost of space and metabolic maintenance, so evolution spends it where latency matters — motor commands, proprioception — and saves it where it does not."
+        }
+      },
+      {
+        "anchor": "one of neuroscience's great pieces of inference from noise",
+        "type": "estimate",
+        "caption": "call the magnitude — the quantal unit",
+        "name": "cnMiniEstimate",
+        "config": {
+          "prompt": "Katz recorded tiny spontaneous depolarisations at the neuromuscular junction — the miniature end-plate potentials whose size revealed the quantum of release. Roughly how large is one miniature?",
+          "unit": "mV",
+          "answer": 0.5,
+          "factor": 1.6,
+          "why": "About 0.5 mV — the evoked response comes in integer multiples of this unit, so transmitter is released in quanta, one vesicle at a time.",
+          "context": "A nerve impulse releases a hundred or more quanta at once, a built-in safety factor that fails in myasthenia gravis."
+        }
+      },
+      {
+        "anchor": "before the postsynaptic cell computes anything at all",
+        "type": "order",
+        "caption": "rebuild the release millisecond",
+        "name": "cnReleaseOrder",
+        "config": {
+          "prompt": "Release is a molecular machine with a timing budget. Rebuild it:",
+          "items": [
+            "Calcium enters through voltage-gated channels clustered at the active zone",
+            "Sensors like synaptotagmin bind the calcium",
+            "SNARE proteins zip the vesicle into the membrane",
+            "Fusion takes about a millisecond",
+            "The vesicle is retrieved and refilled within seconds"
+          ],
+          "why": "The 2013 Nobel mapped this machinery — and release probability turns each synapse into a dynamic filter that emphasises bursts, adapts to rates and detects coincidences."
+        }
+      },
+      {
+        "anchor": "A cortex without precise inhibition could not represent anything reliably",
+        "type": "branch",
+        "caption": "your circuit model keeps running away — decide",
+        "name": "cnInhibitBranch",
+        "config": {
+          "root": "Your cortical circuit model runs away into epileptiform activity at the slightest input. Decide:",
+          "nodes": {
+            "start": {
+              "text": "How do you stabilise it?",
+              "choices": [
+                { "label": "Remove the inhibition — fewer parameters, simpler model", "next": "runaway", "feedback": "Lose inhibition and circuits run away: cortical neurons receive far more excitatory than inhibitory contacts, so balance is everything." },
+                { "label": "Make inhibition powerful, fast and precisely timed — tracking excitation moment to moment", "next": "balance", "feedback": "Van Vreeswijk & Sompolinsky's balanced networks: irregular yet stable firing falls out of the E/I balance." }
+              ]
+            },
+            "runaway": {
+              "text": "Without the counterweight, synchrony and stability are impossible — the model confirms why epilepsy is the failure mode of lost inhibition.",
+              "choices": []
+            },
+            "balance": {
+              "text": "Fast inhibition sharpens timing windows, sculpts receptive fields and implements gain control — a computational resource, not a brake. Irregular, stable firing falls out.",
+              "choices": []
+            }
+          },
+          "why": "Inhibition tracks excitation moment to moment — that balance, not quiet, is what lets cortex represent anything reliably."
+        }
+      },
+      {
+        "anchor": "volume transmission that sets behavioural states",
+        "type": "sort-buckets",
+        "caption": "file each signal — wired or wireless",
+        "name": "cnWirelessBuckets",
+        "config": {
+          "prompt": "Some brain computation breaks the wiring diagram. File each channel of signalling:",
+          "buckets": [
+            "Point-to-point — wired",
+            "Broadcast — wireless"
+          ],
+          "items": [
+            { "label": "glutamate released at a cortical synapse", "bucket": 0 },
+            { "label": "GABA acting on a chloride channel next door", "bucket": 0 },
+            { "label": "neuropeptides from dense-core vesicles diffusing beyond the synapse, acting for seconds to minutes", "bucket": 1 },
+            { "label": "nitric oxide, a gas synthesised on demand that ignores membranes and signals retrograde", "bucket": 1 },
+            { "label": "oxytocin setting bonding state across a network", "bucket": 1 },
+            { "label": "AMPA receptors mediating millisecond excitation", "bucket": 0 }
+          ],
+          "why": "Volume transmission and retrograde gases are broadcast and wireless — models capture them with global modulatory fields rather than point-to-point connections."
+        }
+      }
+    ]
+  }
+]

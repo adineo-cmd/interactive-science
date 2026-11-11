@@ -23,6 +23,171 @@ const radiationCfg = {
     { math: '5 · Dose, not just presence', note: 'Hazard depends on activity, energy, and where the source sits (inside vs outside). Protection = time, distance, shielding — always in that order.' },
   ],
 };
+
+const repBecqPredict = {
+  "q": "Something crossed the drawer and altered chemistry through the wrapper. What kind of thing was it?",
+  "choices": [
+    "A faint glow the eye had just missed",
+    "An invisible emission that ionises matter — undetectable by any sense",
+    "A chemical vapour rising from the jar",
+    "Warmth seeping from the drawer's wood"
+  ],
+  "answer": 1,
+  "why": "Nothing seeable, hearable, smellable or touchable — and exposure triggers no nerve impulses, so in this discipline the instrument is the only witness."
+};
+
+const repStableSort = {
+  "prompt": "The tug-of-war verdicts — file each nucleus:",
+  "buckets": [
+    "roughly balanced — holds together",
+    "wrong ratio or too much mass — must shed energy"
+  ],
+  "items": [
+    {
+      "label": "carbon-12 — six protons, six neutrons",
+      "bucket": 0
+    },
+    {
+      "label": "helium-4 — two and two, a very tightly bound package",
+      "bucket": 0
+    },
+    {
+      "label": "carbon-14 — a neutron excess waiting to convert",
+      "bucket": 1
+    },
+    {
+      "label": "uranium-238 — far too much mass to hold",
+      "bucket": 1
+    },
+    {
+      "label": "any nucleus too heavy for balance — every arrangement emits",
+      "bucket": 1
+    }
+  ],
+  "why": "Light elements favour equal numbers; heavy ones need extra neutrons as glue; past the last balanced nuclide, every configuration sheds its excess by emitting."
+};
+
+const repDecayMatch = {
+  "prompt": "Four repair routes — pair each decay mode with what it does:",
+  "pairs": [
+    {
+      "left": "alpha decay",
+      "right": "ejects a helium-4 nucleus — mass and proton count drop together"
+    },
+    {
+      "left": "beta-minus decay",
+      "right": "a neutron converts to a proton; an electron and an antineutrino fly out"
+    },
+    {
+      "left": "beta-plus / electron capture",
+      "right": "a proton converts to a neutron — the fix for the opposite imbalance"
+    },
+    {
+      "left": "gamma emission",
+      "right": "no particle, no identity change — the excited daughter sheds pure energy"
+    }
+  ],
+  "why": "Each mode repairs a specific defect — and the daughter's excited state is why gamma usually follows the others."
+};
+
+const repActivityJudge = {
+  "statements": [
+    {
+      "s": "Radioactivity is a substance property: the more radioactive, the more dangerous.",
+      "truth": false,
+      "why": "It is an event rate — hazard depends on what is emitted, at what energy, and where the source sits."
+    },
+    {
+      "s": "A weak beta emitter and a strong gamma emitter at the same event rate are equally hazardous.",
+      "truth": false,
+      "why": "Identical counts, very different dangers — the number on the counter begins the safety analysis, it does not end it."
+    },
+    {
+      "s": "Hazard analysis starts with three questions: how many events, over what time, measured with what.",
+      "truth": true,
+      "why": "The discipline's own habit — activity, energy and location all modify the verdict."
+    },
+    {
+      "s": "Radioactivity is an event rate, not a danger dial.",
+      "truth": true,
+      "why": "The reason hazard needs the whole physics, never one number."
+    }
+  ]
+};
+
+const repWasteBranch = {
+  "root": "A proposal reaches the waste desk: dissolve spent fuel in acid and chemically bind the hazard away. Walk the analysis.",
+  "nodes": {
+    "start": {
+      "text": "The proposal rests on one assumption. Which?",
+      "choices": [
+        {
+          "label": "Radioactivity is a chemical property, removable by chemistry",
+          "next": "chem"
+        },
+        {
+          "label": "Given enough heat, the decay rate rises",
+          "next": "heat"
+        }
+      ]
+    },
+    "chem": {
+      "text": "Chemistry rearranges electrons; decay happens in the nucleus, a hundred thousand times deeper. The proposal attacks the wrong storey of the building.",
+      "choices": [
+        {
+          "label": "So what can change the rate?",
+          "next": "nothing"
+        }
+      ]
+    },
+    "heat": {
+      "text": "λ is fixed by nuclear structure — independent of temperature, pressure and bonds. That is why decay heat cannot be switched off.",
+      "choices": [
+        {
+          "label": "So the engineering answer is…",
+          "next": "nothing"
+        }
+      ]
+    },
+    "nothing": {
+      "text": "Storage, not treatment — the timetable is nuclear and unbudgeable.",
+      "choices": []
+    }
+  },
+  "why": "The decay constant ignores temperature, pressure and chemistry alike — so the engineering answer is containment on the exponential's own schedule."
+};
+
+const repShieldOrder = {
+  "prompt": "Build the neutron shield, from the source outward:",
+  "items": [
+    "A hydrogenous layer — water, plastic, concrete — slows the fast neutrons (best off nuclei of similar mass)",
+    "A boron layer captures the slowed neutrons — the legendary absorber (cadmium too)",
+    "Lead or concrete behind, to catch the capture gammas"
+  ],
+  "why": "Uncharged neutrons ignore electron clouds and interact only with nuclei — slow them, absorb them, then catch the secondary photons, in that order."
+};
+
+const repAlphaCompare = {
+  "prompt": "Drag across one alpha source — same isotope, two addresses:",
+  "before": {
+    "label": "outside the body",
+    "text": "A sheet of paper — or the dead outer layer of skin — stops it. A few centimetres in air, nothing through the surface: at arm's length, the harmless one."
+  },
+  "after": {
+    "label": "inside the body",
+    "text": "Inhaled or ingested, it deposits all its energy within a few microns of living tissue, no dead layer in the way — the worst-case internal hazard."
+  },
+  "why": "Same physics, opposite verdicts — which is why protection rules care so much about preventing intake."
+};
+
+const repCountEstimate = {
+  "prompt": "Your counter has recorded N events. How many counts does the statistical uncertainty need to reach ±1 per cent?",
+  "unit": "counts",
+  "answer": 10000,
+  "factor": 2,
+  "why": "The uncertainty of a count N is about √N, so the fractional error is 1/√N: one per cent needs the square root to be a hundred.",
+  "context": "100 counts → ±10 per cent; 10,000 counts → ±1 per cent."
+};
 ---
 <TopicPage slug="subjects/nuclear-engineering/foundational/radiation-physics-and-detection">
 
@@ -58,6 +223,7 @@ const radiationCfg = {
     no nerve impulses. Victims of severe radiation exposure feel nothing at the moment of
     exposure; burns and blood-count changes arrive days later.
   </p>
+  <Widget no="3" caption="bet before you read on — what crossed the drawer?" widget="predict" config={repBecqPredict} />
   <p>
     This is why detection by instruments is more than a research tool here. Because no sense
     reaches the hazard, everything — safety, medicine, safeguards, reactor operation — runs
@@ -76,6 +242,7 @@ const radiationCfg = {
     neutron-to-proton ratio — or simply too much mass — it carries excess energy, and nature
     sheds that energy by emitting particles and radiation.
   </p>
+  <Widget no="4" caption="the tug-of-war verdicts — file each nucleus" widget="sort-buckets" config={repStableSort} />
   <p>
     Individual decays are utterly random: no physics can tell you when one particular atom
     will decay. Yet the <em>statistics</em> of trillions of atoms are the most precise laws
@@ -110,6 +277,7 @@ const radiationCfg = {
     is extremely neutron-rich it can even emit a neutron outright, which is why fission
     products chain into the delayed-neutron physics you will meet later in reactor theory.
   </p>
+  <Widget no="5" caption="pair each decay mode with its repair job" widget="match" config={repDecayMatch} />
 
   <h2>The law that never blinks: half-life and activity</h2>
   <p>
@@ -153,12 +321,14 @@ const radiationCfg = {
   source sits relative to the body. A curie of tritium (a weak beta emitter) is a lab
   curiosity; a curie of caesium-137 (a strong gamma emitter) is a severe incident. The number
   on the Geiger counter is the beginning of the safety analysis, not its conclusion.</p>
+  <Widget no="6" caption="true or false — activity is not a danger dial" widget="judge" config={repActivityJudge} />
   <p><em>Common misconception:</em> that we could make waste harmless by heating it, freezing
   it or dissolving it. The decay constant λ is fixed by nuclear structure — the same physics
   that makes it independent of temperature, pressure and chemical bonds. Chemistry rearranges
   electrons; radioactivity happens in the nucleus, a hundred thousand times deeper in. That
   is exactly why decay heat cannot be switched off and why storage, not treatment, is the
   engineering answer: you cannot hurry an exponential.</p>
+  <Widget no="7" caption="walk the waste-desk proposal" widget="branch" config={repWasteBranch} />
 
   <h2>How radiation meets matter</h2>
   <p>
@@ -195,12 +365,14 @@ const radiationCfg = {
     slow the neutrons, boron to absorb them, and lead or concrete behind to catch the capture
     gammas.
   </p>
+  <Widget no="8" caption="assemble the neutron shield, source outward" widget="order" config={repShieldOrder} />
   <p><em>Common misconception:</em> "alpha is the harmless one — paper stops it." Paper stops
   it from <em>outside</em>. Inside the body — inhaled radon daughters, ingested polonium-210
   — an alpha source deposits all its energy within a few microns of living tissue, no dead
   skin layer in the way: the most locally damaging radiation there is. The same physics that
   makes alpha safe at arm's length makes it the worst-case internal hazard, which is why
   protection rules care so much about preventing intake.</p>
+  <Widget no="9" caption="drag across one alpha source, two addresses" widget="compare" config={repAlphaCompare} />
   <p><em>Common misconception:</em> "with enough lead, gamma radiation is stopped
   completely." Exponential attenuation never reaches zero — each half-value layer halves what
   is left, and a half of a half of a half is never nothing. That is why shielding is
@@ -267,6 +439,7 @@ const radiationCfg = {
     operators, health physicists and safeguards inspectors all live by the same discipline:
     radiation detection is statistics with instrumentation, never certainty with a needle.
   </p>
+  <Widget no="10" caption="guess the magnitude — counts to ±1 per cent" widget="estimate" config={repCountEstimate} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

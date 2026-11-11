@@ -55,6 +55,199 @@ const quizCfg = {
     },
   ],
 };
+
+const rphRouteSort = {
+  "prompt": "Three routes make an atom glow — file each isotope:",
+  "buckets": [
+    "nuclear reactor (fission)",
+    "cyclotron (protons)",
+    "generator (parent → daughter)"
+  ],
+  "items": [
+    {
+      "label": "molybdenum-99 — a fission fragment of split uranium",
+      "bucket": 0
+    },
+    {
+      "label": "iodine-131 — a neutron-rich beta emitter for therapy",
+      "bucket": 0
+    },
+    {
+      "label": "fluorine-18 — knocked proton-rich out of oxygen-18 water",
+      "bucket": 1
+    },
+    {
+      "label": "technetium-99m — the daughter milked overnight from a column",
+      "bucket": 2
+    },
+    {
+      "label": "gallium-68 — grown from germanium-68 for neuroendocrine imaging",
+      "bucket": 2
+    },
+    {
+      "label": "lutetium-177 — reactor-made for tumour therapy",
+      "bucket": 0
+    }
+  ],
+  "why": "The route fixes the decay behaviour: reactors make neutron-rich beta emitters, accelerators make proton-rich positron emitters, generators convert a weekly shipment into a daily supply."
+};
+
+const rphHalfLifeJudge = {
+  "statements": [
+    {
+      "s": "An isotope's half-life measures how dangerous it is.",
+      "truth": false,
+      "why": "Half-life is a clock, not a hazard dial — short means the dose ends quickly but leaves little time to work."
+    },
+    {
+      "s": "There is a single best isotope for all of nuclear medicine.",
+      "truth": false,
+      "why": "Each half-life is a trade: short suits imaging, long suits therapy — the job picks the isotope."
+    },
+    {
+      "s": "A long half-life always images better.",
+      "truth": false,
+      "why": "Long suits therapy but complicates imaging — the patient's dose lingers."
+    },
+    {
+      "s": "Technetium-99m's six hours are valued as a compromise.",
+      "truth": true,
+      "why": "A deliberate sweet spot — and why it runs in roughly four out of five diagnostic studies worldwide."
+    }
+  ]
+};
+
+const rphHotLabOrder = {
+  "prompt": "The daily rhythm, in working order:",
+  "items": [
+    "Elute the generator — wash saline through the column and collect the overnight daughter",
+    "Compound the kit — add the eluate to the freeze-dried vial and heat where required",
+    "Draw the dose and measure it in the calibrator, logged against the prescription",
+    "Release only when radiochemical purity passes — unbound activity would fog the scan"
+  ],
+  "why": "Every aliquot and elution then lands in decay-corrected logbooks regulators can audit — the rhythm is production line, not improvisation."
+};
+
+const rphPuritySpot = {
+  "prompt": "One line of this hot-lab note is wrong — click it:",
+  "lines": [
+    "Kit compounding runs under the same aseptic discipline as any intravenous preparation.",
+    "The dose calibrator is a precision ionisation chamber; its reading is logged against the prescription.",
+    "Thin-layer chromatography checks radiochemical purity before release.",
+    "Free pertechnetate in a vial is harmless — it images the same target as the bound courier.",
+    "Every elution and assay is written into decay-corrected logbooks regulators can audit."
+  ],
+  "errorLine": 3,
+  "correction": "Unbound activity localises to organs the courier never chose and degrades the study — a vial below the release threshold is discarded.",
+  "why": "Purity gates both image quality and the patient's dose — that is why 97 percent bound passes and less does not."
+};
+
+const rphAlaraCompare = {
+  "prompt": "Drag across the protection problem — same ALARA, two source types:",
+  "before": {
+    "label": "the classic trio",
+    "text": "Minimise time near the source, maximise distance, use shielding — the whole discipline for a source that stays where you put it."
+  },
+  "after": {
+    "label": "the unsealed twist",
+    "text": "The material can spill, spread and stick: absorbent bench covers, dedicated pipettes, wipe tests on surfaces, disciplined monitoring of hands and clothing — plus tungsten or lead around everything from generator to syringe."
+  },
+  "why": "Hot-lab protection is the classic trio plus a fourth discipline — because an unsealed source travels on dust, gloves and benches."
+};
+
+const rphPatientPredict = {
+  "q": "A patient leaves the department an hour after a diagnostic tracer dose. The dose to the person seated next to them on the bus is best described as…",
+  "choices": [
+    "Like standing beside an X-ray machine all day",
+    "Dangerous until the tracer is fully excreted",
+    "Tiny — diagnostic doses run at or below a few months of natural background",
+    "Zero, because the tracer is gone at injection"
+  ],
+  "answer": 2,
+  "why": "The activity is tiny and the half-life short; historic 'no hugging' advice has largely relaxed — sensible hygiene simply speeds the exit of a tracer the body is already clearing."
+};
+
+const rphLocaliseMatch = {
+  "prompt": "Six localisation mechanisms, five shown — pair each with its example:",
+  "pairs": [
+    {
+      "left": "active transport",
+      "right": "iodide pumped into thyroid cells at tens of times its blood concentration"
+    },
+    {
+      "left": "compartmental localisation",
+      "right": "MAA particles too wide for lung capillaries lodge in the pulmonary bed"
+    },
+    {
+      "left": "phagocytosis",
+      "right": "Kupffer cells swallow sulphur colloid — liver, spleen and marrow light up"
+    },
+    {
+      "left": "metabolic trapping",
+      "right": "FDG-6-phosphate is a dead end the cell cannot process or export"
+    },
+    {
+      "left": "perfusion and exchange",
+      "right": "sestamibi seeps into heart muscle and sticks to mitochondria"
+    }
+  ],
+  "why": "A tracer cannot be forced anywhere — the designer exploits a mechanism the body already runs, which is what any given scan can and cannot see."
+};
+
+const rphReadingBranch = {
+  "root": "A PET scan shows one bright spot. Walk the reading a radiologist actually runs.",
+  "nodes": {
+    "start": {
+      "text": "What does brightness mean, first of all?",
+      "choices": [
+        {
+          "label": "It is cancer until proven otherwise",
+          "next": "backwards"
+        },
+        {
+          "label": "Activity — the tracer concentrated where metabolism runs",
+          "next": "function"
+        }
+      ]
+    },
+    "backwards": {
+      "text": "That is exactly backwards: uptake means activity — healing, filtering, metabolising — and both bright and dark are findings.",
+      "choices": [
+        {
+          "label": "Continue",
+          "next": "function"
+        }
+      ]
+    },
+    "function": {
+      "text": "But FDG does not know cancer from inflammation — both burn glucose. What completes the read?",
+      "choices": [
+        {
+          "label": "Correlate against anatomy from a fused CT and the patient's history",
+          "next": "done"
+        },
+        {
+          "label": "Report the bright spot as malignancy",
+          "next": "solo"
+        }
+      ]
+    },
+    "solo": {
+      "text": "Uptake is not specific to disease — the tracer pattern is read against anatomy and history, never alone.",
+      "choices": [
+        {
+          "label": "Continue",
+          "next": "done"
+        }
+      ]
+    },
+    "done": {
+      "text": "Hot means activity, cold means the tracer never arrived, and neither is specific to disease without anatomy and history alongside.",
+      "choices": []
+    }
+  },
+  "why": "The diagnostic skill is separating the physiology that lights up from the pathology that also lights up — the black holes matter just as much."
+};
 ---
 <TopicPage slug="subjects/nuclear-medicine-technology/foundational/radiopharmaceuticals">
   <h2>Where you are, and what you will learn</h2>
@@ -143,6 +336,7 @@ const quizCfg = {
     neuroendocrine tumours, and strontium-82 feeds rubidium-82, whose 76-second half-life suits
     heart perfusion PET. Generators convert a weekly reactor shipment into a daily supply.
   </p>
+  <Widget no="3" caption="file each isotope by its production route" widget="sort-buckets" config={rphRouteSort} />
   <p>
     <em>Common misconception:</em> an isotope's half-life is not a measure of how dangerous it
     is, and there is no single "best" isotope. Short half-life means the patient's dose ends
@@ -151,6 +345,7 @@ const quizCfg = {
     prepare, inject and image over several hours, short enough that most of the radiation is
     gone within a day.
   </p>
+  <Widget no="4" caption="true or false — reading half-lives" widget="judge" config={rphHalfLifeJudge} />
 
   <h2>Radiopharmacy practice: the hot lab</h2>
   <p>
@@ -161,6 +356,7 @@ const quizCfg = {
     freeze-dried, sterile form. Adding Tc-99m as pertechnetate and heating as required snaps the
     isotope onto the courier, and minutes later the dose is ready to assay.
   </p>
+  <Widget no="5" caption="sequence the hot lab's morning" widget="order" config={rphHotLabOrder} />
   <p>
     Because these are sterile injections, the work happens under the same aseptic discipline as
     any intravenous compounding — laminar airflow hoods or shielded isolators, sterile technique,
@@ -174,6 +370,7 @@ const quizCfg = {
     image. Every aliquot, every elution, every assay is written into decay-corrected logbooks
     that regulators can audit.
   </p>
+  <Widget no="6" caption="find the faulty line — the purity note" widget="spot-error" config={rphPuritySpot} />
   <p>
     The arithmetic of the hot lab is decay arithmetic, and it is worth doing one example
     properly. Activity falls as A = A<sub>0</sub> × ½<sup>t/T</sup>, where T is the half-life.
@@ -193,6 +390,7 @@ const quizCfg = {
     hands and clothing. The technologist's own dose budget is tracked with personal dosimeters,
     and tungsten or lead shielding surrounds everything from the generator to the syringe.
   </p>
+  <Widget no="7" caption="drag between sealed-source and unsealed-source discipline" widget="compare" config={rphAlaraCompare} />
   <p>
     <em>Common misconception:</em> patients given a diagnostic tracer are not hazardous to the
     people around them in any ordinary sense. The activity is tiny, the half-life short, and most
@@ -201,6 +399,7 @@ const quizCfg = {
     sensible hygiene — flushing the toilet twice, good hand-washing — speeds the exit of the
     tracer the body is already clearing.
   </p>
+  <Widget no="8" caption="bet before you read on — the seatmate question" widget="predict" config={rphPatientPredict} />
   <p>
     <strong>So far:</strong> the hot lab turns generator, reactor and cyclotron output into
     sterile, assayed, decay-corrected doses — compounding kits under aseptic discipline,
@@ -242,6 +441,7 @@ const quizCfg = {
     muscle cells and stick to mitochondria in proportion to blood flow and membrane potential,
     turning myocardial perfusion into a picture.
   </p>
+  <Widget no="9" caption="pair each mechanism with its tracer" widget="match" config={rphLocaliseMatch} />
   <p>
     Two reading rules follow. First, uptake is proportional to <em>function</em>, so both bright
     ("hot") spots and absent ("cold") spots are findings: a hot vertebra means bone is remodelling
@@ -250,6 +450,7 @@ const quizCfg = {
     from inflammation, since both burn glucose, which is why radiologists interpret tracer
     patterns against anatomy from a fused CT and a patient's history.
   </p>
+  <Widget no="10" caption="walk the bright-spot reading" widget="branch" config={rphReadingBranch} />
   <p>
     <em>Common misconception:</em> "it lit up, so it is cancer" is exactly backwards from how
     the image must be read. Uptake means <em>activity</em> — healing, filtering, metabolising —

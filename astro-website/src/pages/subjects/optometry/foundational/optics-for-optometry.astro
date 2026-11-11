@@ -21,6 +21,195 @@ const snellCfg = {
   crossings: false,
   height: 340,
 };
+
+const optLensCompare = {
+  "prompt": "Drag across the eye's focusing problem:",
+  "before": {
+    "label": "the eye alone",
+    "text": "A living optical instrument that must land focus on the retina across a lifetime — miss by a fraction of a millimetre, roughly a quarter of a dioptre, and the patient notices blur."
+  },
+  "after": {
+    "label": "with the spectacle lens",
+    "text": "A carefully ground piece of material pre-bends the light so the eye's own optics finish the job — applied optics with a prescription pad."
+  },
+  "why": "Once the vocabulary — Snell's law, vergence, power, Prentice's rule — is in place, every clinical question becomes one-line arithmetic."
+};
+
+const optMediaOrder = {
+  "prompt": "Order the ocular media by refractive index, lowest first:",
+  "items": [
+    "air — 1.000",
+    "tear film and aqueous humour — about 1.336",
+    "corneal stroma — about 1.376",
+    "crystalline lens — about 1.386–1.406 as it accommodates"
+  ],
+  "why": "The staircase's biggest step is the first one — which is why refractive surgery reshapes the cornea, where the power lives."
+};
+
+const optVergenceCloze = {
+  "text": "Light from a point %%0%% metre away carries −1.00 D; from 25 cm, %%1%% D. Parallel light — practically anything beyond about %%2%% metres — carries zero vergence. And lenses simply %%3%% their power to the incident vergence.",
+  "answers": [
+    [
+      "one",
+      "1"
+    ],
+    [
+      "4",
+      "four"
+    ],
+    [
+      "6",
+      "six"
+    ],
+    [
+      "add"
+    ]
+  ],
+  "hint": "Vergence is 1 over the distance in metres — and the lens adds to it."
+};
+
+const optAccomEstimate = {
+  "prompt": "An emmetrope reads at 40 cm. How much accommodation must the eye add, in dioptres?",
+  "unit": "D",
+  "answer": 2.5,
+  "factor": 1.3,
+  "why": "One over the distance in metres: 1/0.40 = +2.50 D. Childhood amplitude runs about 15 D and falls to roughly 2 D by 40 — the reading add arrives when demand meets amplitude.",
+  "context": "amplitude: about 15 D in childhood, roughly 2 D at 40, under 1 D in the fifties"
+};
+
+const optCameraJudge = {
+  "statements": [
+    {
+      "s": "The eye focuses the way a camera does, by moving its lens back and forth.",
+      "truth": false,
+      "why": "Focus changes entirely by reshaping the crystalline lens — the ciliary muscle slackens the zonules and the elastic lens bulges."
+    },
+    {
+      "s": "A camera changes where its lens sits; the eye changes what its lens is.",
+      "truth": true,
+      "why": "The one-line summary of the difference."
+    },
+    {
+      "s": "A lens that can no longer bulge is the whole story of presbyopia.",
+      "truth": true,
+      "why": "When the crystalline lens stiffens, near work blurs — the reading add takes over."
+    },
+    {
+      "s": "The cornea's focusing power is adjustable on demand.",
+      "truth": false,
+      "why": "The cornea supplies the large, fixed part; the modest, adjustable part is the crystalline lens."
+    }
+  ]
+};
+
+const optPrismSort = {
+  "prompt": "Deliberate or inadvertent — file each prism:",
+  "buckets": [
+    "prescribed prism",
+    "prism by decentration"
+  ],
+  "items": [
+    {
+      "label": "base-in, base-out, base-up or base-down to rescue binocular alignment",
+      "bucket": 0
+    },
+    {
+      "label": "giving a strabismic patient two images they can fuse without effort",
+      "bucket": 0
+    },
+    {
+      "label": "created by Prentice's rule: Δ = c · F",
+      "bucket": 1
+    },
+    {
+      "label": "a strong lens read 4 mm off its optical centre",
+      "bucket": 1
+    },
+    {
+      "label": "the reason measuring pupillary distance is clinical work, not cosmetics",
+      "bucket": 1
+    }
+  ],
+  "why": "The unit is the prism dioptre — 1Δ shifts an image 1 cm sideways at 1 m — and decentration injects it uninvited."
+};
+
+const optAberMatch = {
+  "prompt": "The aberrations no eye escapes — pair each with its signature:",
+  "pairs": [
+    {
+      "left": "spherical aberration",
+      "right": "peripheral rays of a wide pupil focus in front of central rays — part of night myopia"
+    },
+    {
+      "left": "coma",
+      "right": "off-axis point images smear into a comet shape"
+    },
+    {
+      "left": "oblique astigmatism and field curvature",
+      "right": "power errors away from the axis — why spectacle designers choose base curves"
+    },
+    {
+      "left": "distortion",
+      "right": "pincushion warp for strong plus, barrel warp for strong minus — the goldfish-bowl effect"
+    }
+  ],
+  "why": "Modern wavefront aberrometry measures the whole pattern as higher-order Zernike terms — keratoconic corneas produce spectacular ones."
+};
+
+const optAcuityBranch = {
+  "root": "A patient reads 20/20 and demands proof that their optics are perfect. Walk the consult.",
+  "nodes": {
+    "start": {
+      "text": "20/20 measures what, exactly?",
+      "choices": [
+        {
+          "label": "Resolution of the whole system — aberrations can still ride along",
+          "next": "resolution"
+        },
+        {
+          "label": "The absence of aberration",
+          "next": "perfect"
+        }
+      ]
+    },
+    "perfect": {
+      "text": "No — acuity is a resolution measurement, and a 20/20 eye can carry substantial higher-order and chromatic error.",
+      "choices": [
+        {
+          "label": "Continue",
+          "next": "resolution"
+        }
+      ]
+    },
+    "resolution": {
+      "text": "And beneath every eye sits a floor. What is it?",
+      "choices": [
+        {
+          "label": "Diffraction through a 2–3 mm pupil — about one arcminute, the 20/20 letter",
+          "next": "done"
+        },
+        {
+          "label": "None — a perfect eye has no floor",
+          "next": "nofloor"
+        }
+      ]
+    },
+    "nofloor": {
+      "text": "There is a floor: below three millimetres diffraction blurs, above it aberration does — the optimum sits in between.",
+      "choices": [
+        {
+          "label": "Continue",
+          "next": "done"
+        }
+      ]
+    },
+    "done": {
+      "text": "Acuity is a resolution measurement, not an optics certificate — and some sharp young eyes owe part of their edge to small pupils masking aberration.",
+      "choices": []
+    }
+  },
+  "why": "Which is also why pinhole apertures can briefly sharpen nearly any refractive error in the examination lane."
+};
 ---
 <TopicPage slug="subjects/optometry/foundational/optics-for-optometry">
 
@@ -53,6 +242,7 @@ const snellCfg = {
     optics with a prescription pad: a carefully ground piece of material that pre-bends light so
     the eye's own optics finish the job.
   </p>
+  <Widget no="3" caption="drag between bare optics and added optics" widget="compare" config={optLensCompare} />
   <p>
     The field's working habit is to treat light as a traveller whose vergence — how much it is
     spreading or converging — changes as it crosses surfaces and lenses, and to do the
@@ -101,6 +291,7 @@ const snellCfg = {
     irregular cornea because a smooth lens with tears filling the gap effectively builds a new
     first refracting surface.
   </p>
+  <Widget no="4" caption="rank the ocular media by refractive index" widget="order" config={optMediaOrder} />
   <p>
     A lens summarises all this surface bending into one number: the power F = 1/f, with focal
     length in metres, quoted in dioptres (D). A +2.00 D converging lens brings parallel light to
@@ -136,6 +327,7 @@ const snellCfg = {
     is this bookkeeping: find the lens that makes the retinal image's conjugate land exactly on
     the retina, and the trial frame's dials are a vergence calculator.
   </p>
+  <Widget no="5" caption="fill the blanks — the vergence ledger" widget="cloze" config={optVergenceCloze} />
   <p>
     The same arithmetic governs <strong>accommodation</strong>. To read at 40 cm, an emmetrope
     must add +2.50 D of power (1/0.40 m) — the ciliary muscle contracts, the lens zonules slacken,
@@ -149,7 +341,9 @@ const snellCfg = {
     contact lenses pays the full 2.50 D and becomes presbyopic a little sooner. The prescription's
     position changes the accommodation bill — a genuinely clinical, not academic, difference.
   </p>
+  <Widget no="6" caption="guess the magnitude — the 40 cm bill" widget="estimate" config={optAccomEstimate} />
   <p><em>Common misconception:</em> the eye focuses the way a camera does, by moving its lens back and forth. The retina is fixed and nothing translates; focus changes entirely by reshaping the crystalline lens — the ciliary muscle slackening the zonules lets the elastic lens bulge and add power. A camera changes where its lens sits; the eye changes what its lens is — and a lens that can no longer bulge is the whole story of presbyopia.</p>
+  <Widget no="7" caption="true or false — how the eye focuses" widget="judge" config={optCameraJudge} />
   <p>
     <strong>Prism</strong> is the other half of the story. A prism has no focus; it deviates every
     ray toward its base by a constant angle, so the image appears displaced toward its apex. The
@@ -166,6 +360,7 @@ const snellCfg = {
     case for contact lenses, which move with the eye and eliminate decentration. This is why
     measuring pupillary distance and fitting optical centres is clinical work, not cosmetics.
   </p>
+  <Widget no="8" caption="file each prism as prescribed or smuggled" widget="sort-buckets" config={optPrismSort} />
   <p>
     <strong>So far:</strong> vergence is the currency — negative for diverging light, positive
     for converging — and lenses simply add their power to it, which turns every refraction into
@@ -213,7 +408,9 @@ const snellCfg = {
     higher-order patterns that explain their ghosting, and intraocular lens designers fight
     spherical aberration by building negative-SA optics into the implant itself.
   </p>
+  <Widget no="9" caption="pair each monochromatic aberration with its signature" widget="match" config={optAberMatch} />
   <p><em>Common misconception:</em> that "20/20 vision" means perfect optics. Acuity is a resolution measurement of the whole system, and a 20/20 eye can still carry substantial higher-order aberrations, modest chromatic error and the unavoidable diffraction limit of its own pupil. Conversely, some of the sharpest-sighted young eyes owe part of their edge to small pupils, which mask aberration — one reason acuity falls when the pupil dilates even in an otherwise healthy eye.</p>
+  <Widget no="10" caption="walk the 20/20 consult" widget="branch" config={optAcuityBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

@@ -12,6 +12,158 @@ const apCfg = {
   crossings: false,
   height: 360,
 };
+
+const nePhaseOrder = {
+  "prompt": "One action potential, left to right across the curve. Rebuild the phases:",
+  "items": [
+    "Resting — about −70 mV, maintained by the sodium–potassium pump",
+    "Threshold crossed",
+    "Depolarisation — sodium floods in",
+    "Repolarisation — potassium flows out",
+    "Hyperpolarisation — a brief dip below rest",
+    "Recovery — the original ion distribution restored"
+  ],
+  "why": "The spike is all-or-nothing: stronger stimuli do not produce bigger spikes, only more frequent ones — information rides in firing frequency."
+};
+
+const nePartsMatch = {
+  "prompt": "One design, local specialisations. Pair each component with its job:",
+  "pairs": [
+    {
+      "left": "dendrites",
+      "right": "branching antennae collecting signals from hundreds to thousands of neurons"
+    },
+    {
+      "left": "soma",
+      "right": "sums excitation against inhibition every millisecond"
+    },
+    {
+      "left": "axon",
+      "right": "output cable — in humans sometimes a metre long, only micrometres across"
+    },
+    {
+      "left": "synapses",
+      "right": "where the spike is converted into a chemical message"
+    },
+    {
+      "left": "microglia",
+      "right": "the immune cells of the supporting cast"
+    }
+  ],
+  "why": "Glia outnumber neurons roughly one to one, and interneurons are the overwhelming majority — the brain is mostly processing, not wiring to the periphery."
+};
+
+const neChemSpot = {
+  "prompt": "A popular-science script about brain chemistry contains one faulty line — click it:",
+  "lines": [
+    "'Serotonin is the brain's chemical for happiness — released, it bathes the brain in good mood.'",
+    "A transmitter acts on the few receptors within nanometres of its release site.",
+    "It is then pumped back or destroyed within milliseconds.",
+    "Chemicals act locally at specific synapses, like transistors with chemistry."
+  ],
+  "errorLine": 0,
+  "correction": "There are no chemicals for emotions: the brain is a circuit of spiking cells, and a transmitter released at one connection acts only locally — it never bathes the brain.",
+  "why": "The neuron is an electrical device made of salt water, protein and a membrane; its chemistry is point-to-point, at specific synapses."
+};
+
+const neGradientEstimate = {
+  "prompt": "The sodium–potassium pump burns ATP to hold the gradients. Roughly how many times more potassium does the cell keep inside than outside?",
+  "unit": "×",
+  "answer": 30,
+  "factor": 1.5,
+  "why": "Roughly 20–40× more K⁺ inside than outside — a battery built from salt, charged by exporting 3 Na⁺ for every 2 K⁺ imported.",
+  "context": "At equilibrium the potassium Nernst potential is about −90 mV; rest sits near −70 mV because a little sodium also leaks in."
+};
+
+const neThresholdPlace = {
+  "prompt": "Voltage-gated sodium channels snap open past a trigger voltage. Place the marker at threshold:",
+  "labels": [
+    "−90 mV",
+    "−70 mV",
+    "−50 mV",
+    "−30 mV",
+    "−10 mV",
+    "+10 mV",
+    "+30 mV",
+    "+50 mV"
+  ],
+  "scale": {
+    "min": -90,
+    "max": 50
+  },
+  "answer": -55,
+  "tolerance": 4,
+  "why": "Threshold sits near −55 mV: subthreshold inputs die out, and past it the full spike fires — binary, noise-resistant signalling like computer logic."
+};
+
+const nePumpJudge = {
+  "statements": [
+    {
+      "s": "The sodium–potassium pump fires the spike, spending ATP on each action potential as it happens.",
+      "truth": false,
+      "why": "The spike is passive chemistry: channels open and ions run down gradients the pump built earlier."
+    },
+    {
+      "s": "The pump restores concentrations over thousands of spikes.",
+      "truth": true,
+      "why": "Slow bookkeeping — which is why a poison blocking the pump silences a neuron only after a delay."
+    },
+    {
+      "s": "Tetrodotoxin, of pufferfish fame, silences a neuron instantly.",
+      "truth": true,
+      "why": "It blocks the channels themselves, so no spike can regenerate at all."
+    },
+    {
+      "s": "Blocking the pump and blocking the channels silence a neuron on the same timescale.",
+      "truth": false,
+      "why": "Channel block is instant; pump block waits for the stored gradients to run down."
+    }
+  ]
+};
+
+const neToxinMatch = {
+  "prompt": "The peripheral junction as a pharmacology bench. Pair each agent with what it does:",
+  "pairs": [
+    {
+      "left": "curare",
+      "right": "blocks the receptors — paralysis"
+    },
+    {
+      "left": "botulinum",
+      "right": "blocks release by disabling the SNARE fusion machinery"
+    },
+    {
+      "left": "nicotine",
+      "right": "mimics acetylcholine"
+    },
+    {
+      "left": "organophosphate nerve agents",
+      "right": "block the enzyme that clears the transmitter"
+    }
+  ],
+  "why": "One motor-neuron spike releases a flood of acetylcholine — a safety factor so large the muscle contracts every single time, and each agent attacks a different link of that chain."
+};
+
+const neLtpCloze = {
+  "text": "A synapse repeatedly active exactly when the postsynaptic cell is strongly %%0%% strengthens: the %%1%% glutamate receptor is the %%2%% detector, open only when both %%3%% and voltage are present.",
+  "answers": [
+    [
+      "depolarised",
+      "depolarization",
+      "depolarisation"
+    ],
+    [
+      "NMDA"
+    ],
+    [
+      "coincidence"
+    ],
+    [
+      "glutamate"
+    ]
+  ],
+  "hint": "Two of the blanks are the receptor's name and the property that made it famous."
+};
 ---
 <TopicPage slug="subjects/neuroscience/foundational/the-neuron">
   <h2>Where you are, and what you will learn</h2>
@@ -57,6 +209,7 @@ const apCfg = {
     dip below rest, then recovery. The spike is all-or-nothing: stronger stimuli do not produce "bigger
     spikes" but <em>more frequent ones</em>.
   </p>
+  <Widget no="2" caption="rebuild the spike — phase by phase" widget="order" config={nePhaseOrder} />
 
   <h2>The parts and their jobs</h2>
   <p>
@@ -78,10 +231,12 @@ const apCfg = {
     both the spiking <em>and</em> the wiring are adjustable, so the network is simultaneously computing
     and being recomputed.
   </p>
+  <Widget no="3" caption="pair each part with its job" widget="match" config={nePartsMatch} />
   <p><em>Common misconception:</em> the brain is not a fluid of "chemicals for emotions" — it is a
   circuit of spiking cells whose chemicals act locally, at specific synapses, like transistors with
   chemistry. A neurotransmitter released at one connection does not wash through the brain; it acts on
   the few receptors within nanometres, then is pumped back or destroyed within milliseconds.</p>
+  <Widget no="4" caption="find the faulty line — a pop-science script" widget="spot-error" config={neChemSpot} />
 
   <h2>The resting potential: a battery built from salt</h2>
   <p>
@@ -98,6 +253,7 @@ const apCfg = {
     The result is a charged capacitor waiting to discharge: a cell at rest is not idle, it is
     <em>armed</em> — a battery the spike will spend.
   </p>
+  <Widget no="5" caption="call the gradient — the pump's work" widget="estimate" config={neGradientEstimate} />
 
   <h2>The action potential, ion by ion</h2>
   <p>
@@ -120,7 +276,9 @@ const apCfg = {
     which sets the maximum firing rate and guarantees the spike travels one way, because the region
     behind it cannot refire.
   </p>
+  <Widget no="6" caption="place the marker — the trigger point" widget="place" config={neThresholdPlace} />
   <p><em>Common misconception:</em> the sodium–potassium pump fires the spike — that ATP is spent on each action potential as it happens. The spike itself is passive chemistry: voltage-gated channels open and ions run down the gradients the pump built earlier. The pump does slow bookkeeping — restoring concentrations over thousands of spikes — which is why a poison blocking the pump silences a neuron only after a delay, while one blocking the channels (tetrodotoxin, of pufferfish fame) silences it instantly.</p>
+  <Widget no="7" caption="true or false — the pump and the spike" widget="judge" config={nePumpJudge} />
   <p>
     <strong>So far:</strong> the spike is passive chemistry run on the battery the pump built
     — sodium channels self-amplify past threshold and self-cancel within a millisecond,
@@ -171,6 +329,7 @@ const apCfg = {
     them) for slower, longer-lasting modulation; and even a <em>gas</em>, nitric oxide, which diffuses
     backwards through the membrane with no receptor at all.
   </p>
+  <Widget no="8" caption="pair each agent with its target" widget="match" config={neToxinMatch} />
   <p>
     <strong>So far:</strong> at the synapse the spike converts from electricity to chemistry
     and back — calcium-triggered vesicle fusion, transmitter across the 20-nanometre cleft,
@@ -197,6 +356,7 @@ const apCfg = {
     channel genes, and myasthenia gravis is autoimmune antibodies against the muscle's own ACh
     receptors — each a lesson in which part of the signal chain was load-bearing.
   </p>
+  <Widget no="9" caption="fill the blanks — the molecular rule of learning" widget="cloze" config={neLtpCloze} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

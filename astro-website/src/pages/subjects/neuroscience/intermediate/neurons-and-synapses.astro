@@ -11,6 +11,159 @@ const synapseCfg = {
     { math: '5 · Summation decides', note: 'One neuron receives thousands of inputs; excitatory minus inhibitory decides whether it spikes. The brain\'s computation is this vote, happening ~100 trillion times.' },
   ],
 };
+
+const nsCastBuckets = {
+  "prompt": "The supporting cast turned out to be genuine characters. File each description:",
+  "buckets": [
+    "Neurons — the signalling cells",
+    "Glia — support, and more"
+  ],
+  "items": [
+    {
+      "label": "the cortex's principal output neurons, with long apical dendrites",
+      "bucket": 0
+    },
+    {
+      "label": "receives on the order of 100,000 synaptic inputs — the most spectacular dendritic tree in biology",
+      "bucket": 0
+    },
+    {
+      "label": "form the connections between; the overwhelming majority of the brain",
+      "bucket": 0
+    },
+    {
+      "label": "wrap axons in myelin, the insulation that makes fast conduction possible",
+      "bucket": 1
+    },
+    {
+      "label": "the brain's resident immune cells, constantly surveying, pruning and scavenging",
+      "bucket": 1
+    },
+    {
+      "label": "feed neurons, help form the blood–brain barrier, and release gliotransmitters",
+      "bucket": 1
+    }
+  ],
+  "why": "The 19th-century protagonists mostly dismissed glia as packing material; the last three decades of neuroscience have been partly a correction — the tripartite synapse has three members, not two."
+};
+
+const nsReleaseOrder = {
+  "prompt": "From arriving spike to fusion. Rebuild the release machinery:",
+  "items": [
+    "The arriving action potential opens voltage-gated Ca²⁺ channels clustered in the terminal",
+    "Local Ca²⁺ rises sharply",
+    "Synaptotagmin releases the SNARE complex that was holding vesicle and membrane apart",
+    "Fusion — thousands of transmitter molecules dump into the 20-nanometre cleft"
+  ],
+  "why": "Südhof's mapped machinery earned the 2013 Nobel: a vesicle some 40 nm across, loaded with roughly 5,000 glutamate molecules, primed and waiting for calcium."
+};
+
+const nsReleaseEstimate = {
+  "prompt": "A synapse is not a reliable wire. Many central synapses release on only what percentage of arriving spikes (call the middle of the range)?",
+  "unit": "%",
+  "answer": 30,
+  "factor": 1.7,
+  "why": "Only 10–50% at most central synapses — and a single vesicle's effect is a whisper well under a millivolt. Reliability is not the design goal; thousands of unreliable votes summed together are.",
+  "context": "The neuromuscular junction is the exception: hundreds of vesicles per spike, because the muscle must absolutely twitch."
+};
+
+const nsReceptorMatch = {
+  "prompt": "Two receptor families, two summations. Pair each with what it does:",
+  "pairs": [
+    {
+      "left": "ionotropic receptors",
+      "right": "ion channels opening within about a millisecond — the fast lane"
+    },
+    {
+      "left": "metabotropic receptors",
+      "right": "G-proteins and intracellular cascades over tens of milliseconds to minutes — the slow lane"
+    },
+    {
+      "left": "AMPA receptors admitting sodium",
+      "right": "an EPSP — depolarisation"
+    },
+    {
+      "left": "GABA_A receptors admitting chloride",
+      "right": "an IPSP — clamped toward hyperpolarisation"
+    },
+    {
+      "left": "spatial summation",
+      "right": "many inputs firing together, weighted by position on the dendritic tree"
+    }
+  ],
+  "why": "Temporal summation stacks spikes from the same input before each decays; if the vote at the axon initial segment crosses threshold, the cell fires its own spike."
+};
+
+const nsShorthandJudge = {
+  "statements": [
+    {
+      "s": "Synapses are little wires carrying 'one thought per connection'.",
+      "truth": false,
+      "why": "The postsynaptic cell computes by summation — the vote, not any single connection, is where the computation happens."
+    },
+    {
+      "s": "Neurotransmitters map one-to-one onto feelings — there is a 'dopamine = pleasure' molecule.",
+      "truth": false,
+      "why": "No such mapping: a transmitter's role is defined by its receptor system and circuit context."
+    },
+    {
+      "s": "Dopamine in one circuit drives movement, in another motivation, in another learning.",
+      "truth": true,
+      "why": "Same molecule, different circuits, different jobs — the shorthand hides this."
+    },
+    {
+      "s": "A cortical pyramidal cell carries around 10,000 such inputs.",
+      "truth": true,
+      "why": "A weighted voting booth of about 10,000 whispers — repeated across roughly 100 trillion synapses."
+    }
+  ]
+};
+
+const nsCleanupSpot = {
+  "prompt": "A flashcard deck on synaptic termination contains one faulty card — click it:",
+  "lines": [
+    "Acetylcholinesterase hydrolyses ACh in about a millisecond — the reason a twitch ends when it ends.",
+    "Nerve agents inhibit that enzyme, so ACh lingers — up to fatal paralysis of the breathing muscles.",
+    "Donepezil, the memory drug, works by blocking reuptake of acetylcholine.",
+    "The faster the cleanup, the sharper the message; the slower, the longer the tail."
+  ],
+  "errorLine": 2,
+  "correction": "Donepezil inhibits the breakdown enzyme — the same target class as nerve agents, listed right beside them — not a reuptake transporter.",
+  "why": "Termination is drug target number one: enzymes, reuptake transporters, and diffusion with glial scavenging set how long every message lasts."
+};
+
+const nsDrugCompare = {
+  "prompt": "What does a drug that acts on the synapse actually do? Drag the divider between the two pictures:",
+  "before": {
+    "label": "The tank view",
+    "text": "Whatever the symptom, add the missing chemical — the brain as a reservoir to be topped up."
+  },
+  "after": {
+    "label": "The machine view",
+    "text": "Each drug grabs one step of the event — blocking reuptake (SSRIs, cocaine), inhibiting the breakdown enzyme (nerve agents, donepezil), or blocking receptors — and each interference has different consequences depending on step, transmitter and circuit."
+  },
+  "why": "The synapse is a machine with steps, not a reservoir — the step a drug grabs decides the consequence."
+};
+
+const nsHebbCloze = {
+  "text": "In %%0%%, Hebb proposed that when one neuron repeatedly helps fire another, the connection between them should strengthen. In 1973, Bliss and Lømo found %%1%% in the hippocampus; the %%2%% receptor — its channel blocked by a %%3%% ion at resting voltage — is the coincidence detector that turns both-sides-active into a stronger synapse.",
+  "answers": [
+    [
+      "1949"
+    ],
+    [
+      "long-term potentiation",
+      "LTP"
+    ],
+    [
+      "NMDA"
+    ],
+    [
+      "magnesium"
+    ]
+  ],
+  "hint": "A year, a phenomenon, a receptor, and the ion doing the blocking."
+};
 ---
 <TopicPage slug="subjects/neuroscience/intermediate/neurons-and-synapses">
   <h2>Where you are, and what you will learn</h2>
@@ -76,6 +229,7 @@ const synapseCfg = {
     19th-century protagonists mostly dismissed glia as packing material; the last three decades of
     neuroscience have been partly a correction.
   </p>
+  <Widget no="2" caption="file each player — neuron or glia" widget="sort-buckets" config={nsCastBuckets} />
   <p>
     <strong>So far:</strong> the cast is assembled — dendrites collect, the soma integrates,
     the axon transmits, and glia wrap, feed and modulate. Now the connection problem itself:
@@ -105,6 +259,8 @@ const synapseCfg = {
     zone — hundreds of vesicles per spike, guaranteeing the muscle fibre fires — an engineering
     difference between "must absolutely twitch" and "should contribute a vote."
   </p>
+  <Widget no="3" caption="rebuild the release millisecond" widget="order" config={nsReleaseOrder} />
+  <Widget no="4" caption="call the odds — the unreliable synapse" widget="estimate" config={nsReleaseEstimate} />
   <p><em>Common misconception:</em> a synapse is a reliable wire — spike in, spike out,
   every time. Most central synapses release on only 10–50% of arriving spikes, and a single
   vesicle's effect is a whisper well under a millivolt. Reliability is not the design goal:
@@ -133,11 +289,13 @@ const synapseCfg = {
     which is why the next lesson's spike is both the fastest and the least nuanced event in the
     nervous system: all the nuance happened before it.
   </p>
+  <Widget no="5" caption="pair each receiving mechanism with its action" widget="match" config={nsReceptorMatch} />
   <p><em>Common misconception:</em> synapses are not little wires carrying "one thought per
   connection," and neurotransmitters do not map one-to-one onto feelings (no "dopamine = pleasure"
   molecule, despite the shorthand). A transmitter's role is defined by its receptor system and
   circuit context — dopamine in one circuit drives movement, in another motivation, in another
   learning.</p>
+  <Widget no="6" caption="true or false — wiring and feelings" widget="judge" config={nsShorthandJudge} />
 
   <h2>Termination: the message must end</h2>
   <p>
@@ -157,6 +315,7 @@ const synapseCfg = {
     tail — and the tail is where mood and state (the domain of the slow, modulatory systems) are
     tuned.
   </p>
+  <Widget no="7" caption="find the faulty line — a pharmacology flashcard" widget="spot-error" config={nsCleanupSpot} />
   <p>
     <strong>So far:</strong> release is quantal and probabilistic; the receiving side is a
     weighted vote between fast ionotropic channels and slow metabotropic cascades. What
@@ -191,6 +350,7 @@ const synapseCfg = {
   enzyme (nerve agents, donepezil), or blocking the receptors themselves — and each
   interference has different consequences depending on the step, the transmitter and the
   circuit. The synapse is a machine with levers, not a tank to be filled.</p>
+  <Widget no="8" caption="drag the divider — two pictures of a drug" widget="compare" config={nsDrugCompare} />
 
   <h2>The adjustable synapse: plasticity</h2>
   <p>
@@ -213,6 +373,7 @@ const synapseCfg = {
     had. Learning, in the end, is not the adding of new hardware but the re-weighting of existing
     connections — and the synapse is where the weights are kept.
   </p>
+  <Widget no="9" caption="fill the blanks — the rule that re-weights the brain" widget="cloze" config={nsHebbCloze} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

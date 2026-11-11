@@ -11,6 +11,186 @@ const chainCfg = {
     { math: '5 · Handover', note: 'A structured handover to hospital staff closes the chain. The out-of-hospital phase ends, and its information must survive the door.' },
   ],
 };
+
+const emsMinutePredict = {
+  "q": "In the ten minutes after a witnessed collapse, where is the biggest share of the survival outcome decided?",
+  "choices": [
+    "In the ambulance's speed once the crew arrives",
+    "In what happens before any paramedic arrives — recognition, the call, bystander CPR, an early shock",
+    "In the receiving hospital's resuscitation room",
+    "In which drugs the crew carries"
+  ],
+  "answer": 1,
+  "why": "Outcomes are created by the whole chain connecting the collapse to definitive care — the crew, however excellent, arrives in the middle of the story, not at its start."
+};
+
+const emsSeattleEstimate = {
+  "prompt": "In systems engineered around the early links (Seattle and King County are the standard citation), survival from witnessed, shockable arrests has reached roughly…",
+  "unit": "%",
+  "answer": 50,
+  "factor": 1.6,
+  "why": "Half or more — against a background where survival falls roughly 7–10 per cent for every minute without CPR and defibrillation, and bystander CPR can double or triple survival.",
+  "context": "the difference is system design, not paramedic skill"
+};
+
+const emsPartsMatch = {
+  "prompt": "Inside the machine — pair each named part with its job:",
+  "pairs": [
+    {
+      "left": "access",
+      "right": "universal emergency numbers and call-takers running scripted priority protocols"
+    },
+    {
+      "left": "tiered response",
+      "right": "first responders beneath BLS ambulances beneath ALS paramedic units"
+    },
+    {
+      "left": "medical direction",
+      "right": "a physician owns the clinical system — standing orders plus real-time consultation"
+    },
+    {
+      "left": "destination decision",
+      "right": "route to the stroke centre or PCI-capable cath lab, not the nearest door"
+    }
+  ],
+  "why": "And the system runs on data: quality-assurance review of every arrest and protocol deviation — the loop that has repeatedly rewritten practice."
+};
+
+const emsScoopSpot = {
+  "prompt": "One line of this doctrine brief is wrong — click it:",
+  "lines": [
+    "Definitive care for time-critical conditions begins in the field — defibrillation, haemorrhage control, airway management.",
+    "The modern ideal: bring the emergency department to the patient.",
+    "Transport then goes to the nearest door — all emergency doors are interchangeable.",
+    "Even the siren is rationed: its time saving is small against the crash risk it multiplies.",
+    "The siren is treated as a clinical decision, like a drug with benefits and side effects."
+  ],
+  "errorLine": 2,
+  "correction": "Transport goes to the right facility — trauma systems and cardiac and stroke networks route to capability, not proximity.",
+  "why": "Continuity of care means capability-matched destination — 'scoop and run' is the misconception the evidence rejected."
+};
+
+const emsHazardSort = {
+  "prompt": "Protecting the protectors — file each hazard:",
+  "buckets": [
+    "leading causes of line-of-duty death",
+    "the quieter leading injury"
+  ],
+  "items": [
+    {
+      "label": "ambulance crashes",
+      "bucket": 0
+    },
+    {
+      "label": "struck-by incidents — crews hit by traffic at highway scenes",
+      "bucket": 0
+    },
+    {
+      "label": "violence",
+      "bucket": 0
+    },
+    {
+      "label": "musculoskeletal damage from lifting patients in stairwells and bathrooms",
+      "bucket": 1
+    },
+    {
+      "label": "the reason stair chairs and powered stretchers exist at all",
+      "bucket": 1
+    }
+  ],
+  "why": "The statistics shape the training: the deadliest risks arrive at speed, the most common injury accumulates one lift at a time."
+};
+
+const emsSceneOrder = {
+  "prompt": "Scene size-up, in drilled order:",
+  "items": [
+    "Survey for hazards before any patient contact — traffic, downed lines, fire, structural instability, hazmat placards",
+    "Park the ambulance angled across the roadway to block a lane; wear high-visibility apparel",
+    "Stage outside until police secure a violent scene — weapons are assumed present until cleared",
+    "Only then, patient contact — a dead or injured paramedic saves no one"
+  ],
+  "why": "Two patients help nobody — the discipline exists so that helping does not multiply the harm."
+};
+
+const emsCrmJudge = {
+  "statements": [
+    {
+      "s": "Closed-loop instruction means repeating an order back so error is caught before it executes.",
+      "truth": true,
+      "why": "One of the explicit-communication habits CRM installs."
+    },
+    {
+      "s": "Most ambulance crashes and clinical errors trace to hurry, tunnel vision and unchallenged assumptions.",
+      "truth": true,
+      "why": "Which is why shared situational awareness and the authority of any crew member to halt a deteriorating plan matter."
+    },
+    {
+      "s": "Only the senior crew member may halt a deteriorating plan.",
+      "truth": false,
+      "why": "Any crew member holds that authority — hierarchy does not outrank safety."
+    },
+    {
+      "s": "Wellness teaching — stress first aid, peer support, fatigue management — is soft skill bolted onto a clinical course.",
+      "truth": false,
+      "why": "It is what makes a twenty-year career of cardiac arrests and violence sustainable."
+    }
+  ]
+};
+
+const emsConsentBranch = {
+  "root": "Three consent edge cases, one discipline. Walk the law's answers.",
+  "nodes": {
+    "start": {
+      "text": "An unconscious crash patient, no family present. On what basis does the crew treat?",
+      "choices": [
+        {
+          "label": "Implied consent — the law assumes a reasonable person would want resuscitation",
+          "next": "implied"
+        },
+        {
+          "label": "The crew must wait for a guardian",
+          "next": "wait"
+        }
+      ]
+    },
+    "wait": {
+      "text": "Capacity is absent and delay threatens life — implied consent exists for exactly this case.",
+      "choices": [
+        {
+          "label": "Next case",
+          "next": "masquerade"
+        }
+      ]
+    },
+    "implied": {
+      "text": "Next: a patient 'refuses' — slurring, barely oriented. Is that a refusal?",
+      "choices": [
+        {
+          "label": "No — a counterfeit of choice; incapacity, so implied consent applies",
+          "next": "masquerade"
+        },
+        {
+          "label": "Yes — adults are presumed to have capacity",
+          "next": "presumed"
+        }
+      ]
+    },
+    "presumed": {
+      "text": "Capacity is presumed in adults but must be assessed — hypoxia, head injury and intoxication can all fake a choice.",
+      "choices": [
+        {
+          "label": "Next case",
+          "next": "masquerade"
+        }
+      ]
+    },
+    "masquerade": {
+      "text": "Last: a DNR order. It must be honoured — verified, never assumed from hearsay.",
+      "choices": []
+    }
+  },
+  "why": "An informed refusal is as much a clinical act as an intubation — consent structures every contact, and capacity is the hinge."
+};
 ---
 <TopicPage slug="subjects/paramedicine/foundational/ems-systems-and-the-paramedic">
 
@@ -43,6 +223,7 @@ const chainCfg = {
     walks a frightened stranger through chest compressions, whether a defibrillator arrives
     while the heart's rhythm can still be shocked.
   </p>
+  <Widget no="2" caption="bet before you read on — where survival is decided" widget="predict" config={emsMinutePredict} />
   <p>
     The ambulance crew — excellent or mediocre — arrives in the middle of that story, not at
     its start. This is the first fact of paramedicine and the reason the field teaches itself
@@ -66,6 +247,7 @@ const chainCfg = {
     for those early minutes — Seattle and King County are the standard citation — survival from
     witnessed, shockable arrests has reached half or more.
   </p>
+  <Widget no="3" caption="guess the magnitude — the engineered-system result" widget="estimate" config={emsSeattleEstimate} />
   <p>
     The American Heart Association draws those early minutes as the <strong>chain of
     survival</strong>, and each link is a discipline of its own: recognition of the emergency
@@ -117,6 +299,7 @@ const chainCfg = {
     follow-up visits, falls assessments and alternatives to emergency-department transport: the
     system expanding beyond the emergency itself.
   </p>
+  <Widget no="4" caption="pair each system part with its job" widget="match" config={emsPartsMatch} />
   <p><em>Common misconception:</em> that EMS response means "scoop and run" — that the
   ambulance's job is fast transport. The evidence runs the other way for most time-critical
   conditions: definitive care begins in the field (defibrillation, haemorrhage control, airway
@@ -125,6 +308,7 @@ const chainCfg = {
   nearest one. Even the siren is rationed: lights-and-sirens transport saves only tens of
   seconds to a couple of minutes in most cases while multiplying crash risk, so the siren is
   treated as a clinical decision, like a drug with benefits and side effects.</p>
+  <Widget no="5" caption="find the faulty line — the transport doctrine" widget="spot-error" config={emsScoopSpot} />
 
   <h2>Wellness, safety and scene management: protecting the protectors</h2>
   <p>
@@ -136,6 +320,7 @@ const chainCfg = {
     (stair chairs, powered stretchers) are taught as career-length survival skills, not
     conveniences.
   </p>
+  <Widget no="6" caption="file each hazard by its toll" widget="sort-buckets" config={emsHazardSort} />
   <p>
     Before any patient contact comes <strong>scene size-up</strong>: the crew surveys for
     hazards — traffic (hence high-visibility apparel and the ambulance parked angled across the
@@ -146,6 +331,7 @@ const chainCfg = {
     injured paramedic saves no one</em>. Two patients help nobody, so waiting outside an unsafe
     scene is an act of patient care delivered indirectly.
   </p>
+  <Widget no="7" caption="sequence the scene discipline" widget="order" config={emsSceneOrder} />
   <p><em>Common misconception:</em> that staging away from a dangerous scene is cowardice that
   costs the patient's life. It feels that way from outside — minutes look precious, and they
   are. But an injured crew adds patients to the incident and removes responders from it, and
@@ -163,6 +349,7 @@ const chainCfg = {
     The wellness syllabus is not soft skills bolted onto a clinical course; it is what makes a
     twenty-year career of cardiac arrests, paediatric cases and violence sustainable.
   </p>
+  <Widget no="8" caption="true or false — crew resource management" widget="judge" config={emsCrmJudge} />
   <p>
     <strong>So far:</strong> the system's purpose is continuity of care, and its first
     responsibility is keeping its responders alive and effective. The last layer of the frame
@@ -191,6 +378,7 @@ const chainCfg = {
     never assumed from hearsay; and the patient whose "refusal" is really hypoxia, head injury
     or intoxication — incapacity masquerading as choice.
   </p>
+  <Widget no="9" caption="walk the consent edge cases" widget="branch" config={emsConsentBranch} />
   <p><em>Common misconception:</em> that a paramedic must always treat and transport anyone who
   calls — that care is compulsory once the ambulance arrives. In fact a capacitous adult's
   informed refusal is legally binding, and honouring it — after assessing capacity, explaining
