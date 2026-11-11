@@ -481,6 +481,30 @@
 | physics/expert/quantum-field-theory | estimate, judge, sort-buckets, place, spot-error, match, cloze, compare | next-22 |
 | physics/expert/solid-state-physics | sort-buckets, spot-error, estimate, judge, branch, compare, predict, match | next-22 |
 | physiotherapy/foundational/the-movement-sciences | sort-buckets, judge, place, branch, spot-error, order, match, predict | next-22 |
+| plumbing/foundational/plumbing-tools-and-safety | sort-buckets, order, estimate, branch, spot-error, match, cloze, place | next-23 |
+| political-science/advanced/comparative-politics-methods | sort-buckets, spot-error, order, match, predict, compare, sort-buckets, branch | next-23 |
+| political-science/advanced/conflict-and-peace-studies | match, cloze, judge, sort-buckets, branch, order, estimate, spot-error | next-23 |
+| political-science/advanced/political-economy | match, estimate, cloze, sort-buckets, predict, order, spot-error, compare | next-23 |
+| political-science/expert/formal-political-theory | branch, judge, place, order, match, compare, spot-error, sort-buckets | next-23 |
+| political-science/expert/global-governance | sort-buckets, match, judge, estimate, timeline, compare, spot-error, order | next-23 |
+| political-science/foundational/forms-of-government | match, estimate, sort-buckets, cloze, spot-error, compare, sort-buckets, order | next-23 |
+| political-science/intermediate/constitutions-rights | match, sort-buckets, compare, judge, order, cloze, estimate, spot-error | next-23 |
+| political-science/intermediate/international-relations-theories | match, sort-buckets, spot-error, timeline, predict, match, judge, estimate | next-23 |
+| political-science/intermediate/political-ideologies | sort-buckets, match, judge, order, predict, compare, spot-error | next-23 |
+| political-science/intermediate/the-public-policy-cycle | match, timeline, predict, sort-buckets, spot-error, judge, compare, sort-buckets | next-23 |
+| political-science/intermediate/voting-systems-and-electoral-design | place, predict, sort-buckets, compare, branch, spot-error, estimate, order | next-23 |
+| psychology/advanced/cognitive-psychology-and-models | match, judge, sort-buckets, trace, estimate, order, spot-error, compare | next-24 |
+| psychology/advanced/neuropsychology | timeline, spot-error, match, branch, estimate, order, compare, sort-buckets | next-24 |
+| psychology/advanced/psychometrics-and-testing | sort-buckets, place, spot-error, match, trace, judge, order, branch | next-24 |
+| psychology/expert/behavioural-neuroscience | sort-buckets, spot-error, judge, order, timeline, compare, predict, match | next-24 |
+| psychology/expert/clinical-practice-and-ethics | match, spot-error, place, order, predict, sort-buckets, estimate, timeline | next-24 |
+| psychology/foundational/memory | predict, sort-buckets, order, spot-error, match, order, judge, compare | next-24 |
+| psychology/intermediate/abnormal-psychology-therapies | sort-buckets, match, judge, order, spot-error, cloze, order, estimate | next-24 |
+| psychology/intermediate/development-piaget-to-today | match, spot-error, timeline, predict, order, compare, judge, estimate | next-24 |
+| psychology/intermediate/perception | match, spot-error, sort-buckets, judge, compare, timeline, estimate, predict | next-24 |
+| psychology/intermediate/personality-theories | sort-buckets, place, judge, compare, match, spot-error, predict, timeline | next-24 |
+| psychology/intermediate/research-methods | match, sort-buckets, spot-error, judge, match, cloze, branch, timeline | next-24 |
+| psychology/intermediate/social-psychology | order, judge, match, spot-error, sort-buckets, estimate, compare, predict | next-24 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

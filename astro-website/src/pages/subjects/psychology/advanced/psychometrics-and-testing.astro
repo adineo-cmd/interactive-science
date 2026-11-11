@@ -39,6 +39,211 @@ const psyQuiz = {
     },
   ],
 };
+
+const psyReliabilityBuckets = {
+  "prompt": "Reliability or validity? File each claim under the standard it belongs to:",
+  "buckets": [
+    "reliability — does it agree with itself?",
+    "validity — does it support the interpretation?"
+  ],
+  "items": [
+    {
+      "label": "same people, same test, weeks apart — temporal stability",
+      "bucket": 0
+    },
+    {
+      "label": "Cronbach's alpha: effectively the average inter-item correlation",
+      "bucket": 0
+    },
+    {
+      "label": "ten reworded versions of one bad question reach alpha near 0.95",
+      "bucket": 0
+    },
+    {
+      "label": "do the items sample the domain they claim to?",
+      "bucket": 1
+    },
+    {
+      "label": "do scores predict a real outcome — concurrently or predictively?",
+      "bucket": 1
+    },
+    {
+      "label": "convergent correlations with related measures, discriminant non-correlations with unrelated ones",
+      "bucket": 1
+    }
+  ],
+  "why": "An unreliable measure cannot be valid — validity is bounded by the square root of reliability — but high reliability is cheap and says nothing about validity."
+};
+
+const psySemPlace = {
+  "prompt": "A reported IQ of 124 on this test (reliability 0.90, SD 15) carries a 95% band of 124 ± 9. Place the marker at the band's lower edge:",
+  "labels": [
+    "100",
+    "110",
+    "120",
+    "130",
+    "140"
+  ],
+  "scale": {
+    "min": 100,
+    "max": 140
+  },
+  "answer": 115,
+  "tolerance": 1,
+  "why": "SEM = 15 × √0.10 ≈ 4.7 points, so two SEMs ≈ 9 and the honest band runs from about 115 to 133 — which is why a four-point difference between two children's scores on a good test is noise."
+};
+
+const psyExactSpot = {
+  "prompt": "One line of this score report's interpretation is wrong — click it:",
+  "lines": [
+    "A reported IQ of 124 means the person's intelligence is exactly 124, like a height in centimetres.",
+    "The score is an estimate with a band: on a good test, 124 is honestly about 115 to 133 at 95% confidence.",
+    "The same child retested next month may land several points either way.",
+    "Professional practice reports confidence intervals because the band, not the point estimate, carries decision weight."
+  ],
+  "errorLine": 0,
+  "correction": "A reported score is an estimate with an error band — treating point scores as exact attributes is how four-point differences between applicants get mistaken for real differences in ability.",
+  "why": "The SEM, not the point estimate, carries the decision weight."
+};
+
+const psyValidityMatch = {
+  "prompt": "Pair each validity facet — and each named trap — with its description:",
+  "pairs": [
+    {
+      "left": "content validity",
+      "right": "do the items sample the domain? an exam that is all arithmetic lacks it for maths"
+    },
+    {
+      "left": "criterion validity",
+      "right": "do scores predict a real outcome — concurrently or predictively?"
+    },
+    {
+      "left": "construct validity",
+      "right": "convergent with related measures, discriminant against unrelated ones"
+    },
+    {
+      "left": "criterion contamination",
+      "right": "validating a job test against supervisor ratings when supervisors know the scores"
+    },
+    {
+      "left": "construct proliferation",
+      "right": "rebranding reliable instruments as new constructs — the 'emotional intelligence' cautionary tale"
+    }
+  ],
+  "why": "Validity is not a property a test has; it is the strength of evidence that scores support a particular interpretation — the multitrait-multimethod matrix is the classic design."
+};
+
+const psyManifoldTrace = {
+  "prompt": "Meta-analysis finds g predicts job performance at r ≈ 0.5 overall. Which curve matches how that validity behaves as job complexity rises?",
+  "curves": [
+    {
+      "expr": "0.35 + 0.03*x",
+      "color": "#1d4ed8",
+      "label": "validity rises as job complexity increases"
+    },
+    {
+      "expr": "0.55 - 0.03*x",
+      "color": "#b42318",
+      "label": "validity falls as job complexity increases"
+    },
+    {
+      "expr": "0.5",
+      "color": "#0f766e",
+      "label": "validity is flat across job complexity"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 1,
+    "max": 10
+  },
+  "y": {
+    "min": 0.2,
+    "max": 0.8
+  },
+  "xlabel": "job complexity",
+  "ylabel": "predictive validity (r)",
+  "why": "Meta-analytic r ≈ 0.5, rising with job complexity — and g-loading rises with subtests' abstractness. The interpretive claims (one biological efficiency? van der Maas's mutualism? sampling of learned skills?) remain the field's live frontier."
+};
+
+const psyHeritJudge = {
+  "statements": [
+    {
+      "s": "'Heritability of 0.8' means 80% of a person's intelligence came from their genes and 20% from their environment.",
+      "truth": false,
+      "why": "Heritability is a population statistic — the share of variation between people in a particular environment attributable to genetic differences; no such split exists for one person."
+    },
+    {
+      "s": "Make the environment more equal and heritability rises; make it wildly unequal and it falls.",
+      "truth": true,
+      "why": "Which is how a trait can be strongly heritable and still shift thirty points in three generations, as the Flynn effect showed."
+    },
+    {
+      "s": "Heritability within a population constrains how much the trait can change between environments.",
+      "truth": false,
+      "why": "It constrains nothing of the sort — the standard misreading this course exists to kill."
+    },
+    {
+      "s": "High heritability and the Flynn effect can both be true at once.",
+      "truth": true,
+      "why": "Twin estimates around 0.5 in childhood and 0.7–0.8 in adulthood in WEIRD samples sit alongside massive environmental malleability across cohorts, plus family-environment effects in adoption studies."
+    }
+  ]
+};
+
+const psyTestLifeOrder = {
+  "prompt": "From blueprint to score report — order the pipeline:",
+  "items": [
+    "A test blueprint specifies content domains and cognitive levels; items are sampled to match",
+    "Items are written, bias-reviewed and pretested on representative samples — misbehaving items are discarded invisibly",
+    "Scaling and equating place raw scores on the reported scale, IRT anchoring new forms to old ones",
+    "Reliability is estimated from the operational data — alpha, or IRT information functions that quantify precision at each ability level",
+    "Expert panels set the cut scores by documented methods — Angoff, Bookmark",
+    "The score report carries standard-error bands and interpretation guidance"
+  ],
+  "why": "The statistics standardise, the standard is human: the judgement content of the cut-score step is the dirty secret of every certification exam, and communicating precision honestly is the professionals' first duty."
+};
+
+
+const psyAdaptiveBranch = {
+  "root": "You are sitting a computerised adaptive test (the GRE's adaptive sections). Your ability estimate sits at theta, mid-scale.",
+  "nodes": {
+    "start": {
+      "text": "The next item appears. You answer it correctly. What does the algorithm do?",
+      "choices": [
+        {
+          "label": "Selects a harder item at your raised estimate",
+          "next": "mid",
+          "feedback": "The estimate rises and the next item targets it — precision is quantified at each ability level, the refinement classical reliability misses."
+        },
+        {
+          "label": "Stops the test — you have passed",
+          "next": "end",
+          "feedback": "Not yet: the test runs until your estimate is precise enough, which is how it halves test length at equal precision."
+        }
+      ]
+    },
+    "mid": {
+      "text": "A harder item follows, and this one you miss. What happens to the estimate — and to the next item?",
+      "choices": [
+        {
+          "label": "The estimate eases down; an easier item follows",
+          "next": "end",
+          "feedback": "Each item's own response function — a logistic curve of ability with difficulty, discrimination and guessing parameters — updates the estimate item by item."
+        },
+        {
+          "label": "The estimate crashes; the test restarts from zero",
+          "next": "end",
+          "feedback": "No restarts: where classical theory treats every item equally, IRT tracks the estimate continuously."
+        }
+      ]
+    },
+    "end": {
+      "text": "The test ends when your estimate is precise enough — half the length, equal precision; equating across forms and years becomes principled, and item banks can be audited for differential item functioning at scale."
+    }
+  },
+  "why": "Item response theory replaced the classical toolkit: the item bank, the estimate and the next-item choice are all running off each item's own response function."
+};
 ---
 <TopicPage slug="subjects/psychology/advanced/psychometrics-and-testing">
 
@@ -95,6 +300,7 @@ const psyQuiz = {
     question will give alpha ≈ 0.95 while measuring a tautology. The standard in applied testing is
     reliability of 0.80 or better; high-stakes decisions want 0.90+.
   </p>
+  <Widget no="3" caption="file the claims: reliability or validity" widget="sort-buckets" config={psyReliabilityBuckets} />
   <p>
     <strong>Worked example.</strong> An IQ test has reliability 0.90 and SD 15. The standard error
     of measurement is SEM = SD × √(1 − r<sub>xx</sub>) = 15 × √0.10 ≈ 4.7 points. So a reported
@@ -103,12 +309,14 @@ const psyQuiz = {
     between two children's scores on a good test is noise: the SEM, not the point estimate, carries
     the decision weight.
   </p>
+  <Widget no="4" caption="place the band's lower edge" widget="place" config={psySemPlace} />
   <p><em>Common misconception:</em> a reported IQ of 124 means the person's intelligence
   "is" 124 — an exact quantity like a height in centimetres. The score is an estimate with
   a band: on a good test, 124 is honestly 115-133 at 95% confidence, and the same child
   retested next month may land several points either way. Treating point scores as exact
   attributes is how four-point differences between applicants get mistaken for real
   differences in ability.</p>
+  <Widget no="5" caption="find the faulty line — a score report" widget="spot-error" config={psyExactSpot} />
   <p>
     <strong>So far:</strong> every score is an estimate with an error band, and consistency is
     the price of admission — a test that cannot agree with itself cannot measure anything. The
@@ -131,6 +339,7 @@ const psyQuiz = {
     the history of "emotional intelligence" measures is the cautionary tale — reliability was never
     the problem, incremental validity over existing traits was.
   </p>
+  <Widget no="6" caption="pair the facets and the traps" widget="match" config={psyValidityMatch} />
   <p>
     <em>Common misconception:</em> "a reliable test is a good test." Reliability is the floor, not
     the building. The most consequential failures in testing history — and in everyday self-report
@@ -182,6 +391,7 @@ const psyQuiz = {
     effects. Both are true; heritability within a population constrains nothing about change between
     environments, the standard heritability misreading this course exists to kill.
   </p>
+  <Widget no="7" caption="which curve matches g at work?" widget="trace" config={psyManifoldTrace} />
   <p><em>Common misconception:</em> "heritability of 0.8" means 80% of a person's
   intelligence came from their genes and 20% from their environment — a partition that
   could be computed per individual. Heritability is a population statistic: the share of
@@ -189,6 +399,7 @@ const psyQuiz = {
   differences. Make the environment more equal and heritability rises; make it wildly
   unequal and it falls — which is how a trait can be strongly heritable and still shift
   thirty points in three generations, as the Flynn effect showed.</p>
+  <Widget no="8" caption="true or false — the heritability misreading" widget="judge" config={psyHeritJudge} />
 
   <h2>Fairness, misuse, and the honest history</h2>
   <p>
@@ -233,6 +444,7 @@ const psyQuiz = {
     and interpretation guidance, because the professionals' first duty is communicating
     precision honestly.
   </p>
+  <Widget no="9" caption="order the life of a test" widget="order" config={psyTestLifeOrder} />
 
   <h2>Self-report and its discontents</h2>
   <p>
@@ -315,6 +527,7 @@ const psyQuiz = {
     can ever escape its WEIRD norming base — most published norms still describe the populations
     least representative of humanity.
   </p>
+  <Widget no="10" caption="walk an adaptive test, item by item" widget="branch" config={psyAdaptiveBranch} />
   <p>
     The ethics of measurement decisions deserve their own paragraph, because the statistics
     are never the whole decision. Every cut score, every risk band, every actuarial tool

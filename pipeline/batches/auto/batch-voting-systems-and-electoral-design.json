@@ -1,0 +1,155 @@
+[
+  {
+    "slug": "subjects/political-science/intermediate/voting-systems-and-electoral-design",
+    "activities": [
+      {
+        "anchor": "awards each district to whoever gets the most votes",
+        "type": "place",
+        "caption": "mark the UK's typical disproportionality score",
+        "name": "vsGallagherPlace",
+        "config": {
+          "prompt": "The UK's typical Gallagher disproportionality index runs near which value?",
+          "labels": ["0", "5", "10", "15", "20", "25", "30"],
+          "scale": { "min": 0, "max": 30 },
+          "answer": 20,
+          "tolerance": 3,
+          "why": "Above 20 — against low single digits for the most proportional systems: the measurable gap between vote shares and seat shares."
+        }
+      },
+      {
+        "anchor": "the constituency's votes simply split",
+        "type": "predict",
+        "caption": "bet on what 'most votes' actually means",
+        "name": "vsPluralityPredict",
+        "config": {
+          "q": "Under plurality with three or more candidates, does 'won the most votes' mean most voters wanted that winner?",
+          "choices": [
+            "yes — most votes and majority support are the same claim",
+            "no — the winner can be the active second choice of most of the electorate"
+          ],
+          "answer": 1,
+          "why": "Plurality requires no majority — which is why majoritarian systems manufacture the majority that plurality merely presumes."
+        }
+      },
+      {
+        "anchor": "the design dial is",
+        "type": "sort-buckets",
+        "caption": "file each system feature under its family",
+        "name": "vsPRSort",
+        "config": {
+          "prompt": "Proportional versus majoritarian — file each feature:",
+          "buckets": ["Proportional family", "Majoritarian family"],
+          "items": [
+            { "label": "party-list PR: seats match vote shares", "bucket": 0 },
+            { "label": "STV: surplus votes transfer at a fractional value, per the Droop quota", "bucket": 0 },
+            { "label": "MMP: constituency members topped up by list members to proportionality", "bucket": 0 },
+            { "label": "Germany's 5% threshold keeps extremists and splinters out", "bucket": 0 },
+            { "label": "IRV and two-round runoffs manufacture majority legitimacy in single-member seats", "bucket": 1 }
+          ],
+          "why": "Coalitions are normal on the proportional side — governance by negotiation; the majoritarian fixes kill simple spoilers while paradoxes move rather than die."
+        }
+      },
+      {
+        "anchor": "The comparative record is messier",
+        "type": "compare",
+        "caption": "drag the divider — two kinds of stability",
+        "name": "vsStabilityCompare",
+        "config": {
+          "prompt": "Drag the divider — what each system's stability actually is:",
+          "before": {
+            "label": "FPTP's kind",
+            "text": "Decisive single-party government purchased with disproportional translation — landslides on a minority of votes, parties governing alone on a third of the electorate."
+          },
+          "after": {
+            "label": "PR's kind",
+            "text": "Germany, New Zealand and the Nordics are among the world's most stable and best-governed — coalition governance by negotiation."
+          },
+          "why": "What the system buys is not stability per se but a particular kind of stability — decisive single-party government."
+        }
+      },
+      {
+        "anchor": "A referendum asks voters to decide an issue directly",
+        "type": "branch",
+        "caption": "walk the referendum-design decisions in order",
+        "name": "vsReferendumBranch",
+        "config": {
+          "root": "You are designing a referendum on a constitutional question. Walk the design calls.",
+          "nodes": {
+            "start": {
+              "text": "First call: what goes to the voters directly, and what stays with representatives?",
+              "choices": [
+                { "label": "Everything — one binary lever on the whole question", "next": "binary" },
+                { "label": "Constitutional identity and cross-cutting moral questions; amendable policy stays with representatives", "next": "scope" }
+              ]
+            },
+            "binary": {
+              "text": "Binary framing compresses multi-dimensional questions into one lever — sovereignty, migration, economics and identity in one X: the Brexit problem. Campaigns reward emotional framing over deliberation.",
+              "choices": [{ "label": "Now set the thresholds", "next": "thresholds" }]
+            },
+            "scope": {
+              "text": "The constructive split: constitutional identity questions and moral cross-cutting issues suit voters; what needs deliberation and amendment suits representatives.",
+              "choices": [{ "label": "Now set the thresholds", "next": "thresholds" }]
+            },
+            "thresholds": {
+              "text": "Constitutional change on a 51-49 split of 40% turnout is a fragile mandate — and minority rights need safeguards, since courts may void referendums that violate rights.",
+              "choices": [{ "label": "Last call: the question paper itself", "next": "wording" }]
+            },
+            "wording": {
+              "text": "Wording effects are measurable and, on close votes, decisive — double negatives and framing shift support. The interface between voter and question is the last centimetre of design.",
+              "choices": []
+            }
+          },
+          "why": "Referendums suit constitutional and cross-cutting moral questions — but binary framing, thresholds and wording are engineered risks, not accidents."
+        }
+      },
+      {
+        "anchor": "Analysis means scoring systems against explicit criteria",
+        "type": "spot-error",
+        "caption": "one line of this gerrymandering briefing is wrong",
+        "name": "vsGerrySpot",
+        "config": {
+          "prompt": "One line of this student's briefing on detecting gerrymandering is wrong — click it:",
+          "lines": [
+            "The efficiency gap measures wasted-vote asymmetry — votes piled up in lost districts and safe wins.",
+            "Ensemble methods simulate thousands of neutral districting plans and ask whether the actual map is an outlier.",
+            "A district's weird salamander shape is the reliable detector of gerrymandering.",
+            "Pennsylvania 2012: roughly half the statewide vote, five of eighteen seats — no neutral ensemble would plausibly produce that.",
+            "The offence is in the outcomes, not the outline."
+          ],
+          "errorLine": 2,
+          "correction": "Shape is the folk detector and a poor one — natural geography contorts districts too, and a compact map can still be rigged; the modern detection is statistical.",
+          "why": "Drawing district lines to predetermine outcomes is as old as the word — Elbridge Gerry's 1812 salamander — but the modern detection is wasted-vote asymmetry and ensembles."
+        }
+      },
+      {
+        "anchor": "The wider design layer",
+        "type": "estimate",
+        "caption": "bet the magnitude — compulsory turnout",
+        "name": "vsTurnoutEstimate",
+        "config": {
+          "prompt": "What does turnout run at in compulsory-voting Australia?",
+          "unit": "%",
+          "answer": 90,
+          "factor": 1.3,
+          "why": "Near 90% since 1924, versus voluntary systems' 50–65% — and the composition effects are the point: who turns out decides elections, so every turnout rule is a distributional choice about whose preferences count."
+        }
+      },
+      {
+        "anchor": "The systems logic extends all the way to the paper",
+        "type": "order",
+        "caption": "rebuild the butterfly-ballot failure chain",
+        "name": "vsButterflyOrder",
+        "config": {
+          "prompt": "Florida 2000, hole by hole — assemble the chain:",
+          "items": [
+            "Palm Beach County's two-column butterfly ballot puts holes for adjacent entries",
+            "Tens of thousands of voters mispunch",
+            "Patrick Buchanan's tally runs roughly 3,000 votes above his plausible ceiling in a heavily Democratic county",
+            "The election is decided nationally by 537 votes"
+          ],
+          "why": "Ballot design is not decoration; on close margins it is the outcome — every interface between voter and count is a parameter, and each parameter is a potential kingmaker."
+        }
+      }
+    ]
+  }
+]
