@@ -1,0 +1,135 @@
+[
+  {
+    "slug": "subjects/statistics/expert/multivariate-statistics",
+    "activities": [
+      {
+        "anchor": "the discipline is visual first",
+        "type": "match",
+        "caption": "read the coefficient — pair each r with its verdict",
+        "name": "mvRMatch",
+        "config": {
+          "prompt": "Match each correlation value to what it says:",
+          "pairs": [
+            { "left": "r = 0.9", "right": "a strong positive linear association" },
+            { "left": "r = −0.2", "right": "weak and negative" },
+            { "left": "r close to 0", "right": "no linear association — curvature may still be everywhere" },
+            { "left": "r = 0.8 → r² = 0.64", "right": "about 64% of the outcome's variation travels with the predictor, 36% does not" }
+          ],
+          "why": "The correlation matrix — every pairwise r in an n-by-n table — is the first honest look at any high-dimensional dataset, and the early-warning system for multicollinearity."
+        }
+      },
+      {
+        "anchor": "a staircase toward the real method",
+        "type": "order",
+        "caption": "the fitting staircase, in order",
+        "name": "mvFitOrder",
+        "config": {
+          "prompt": "From ruler to hyperplane — order the fitting sequence:",
+          "items": [
+            "By eye — a ruler through the cloud balancing points above and below; quick, subjective",
+            "By semi-averages — split by ordered x, average each half, join the mean-points: (2.5 h, 55) to (7.5 h, 77)",
+            "Read the model: slope 4.4 marks per hour from a baseline of 44",
+            "By least squares — minimise the sum of squared vertical errors; in multiple regression each coefficient holds the others fixed"
+          ],
+          "why": "The fitted equation keeps the same grammar as the variables multiply: y = a + b₁x₁ + b₂x₂ + … + bₖxₖ."
+        }
+      },
+      {
+        "anchor": "says nothing defensible about",
+        "type": "estimate",
+        "caption": "export the fit to 20 hours — how many marks?",
+        "name": "mvExtrapEst",
+        "config": {
+          "prompt": "The semi-average model was fitted on 2–8 study hours. Extrapolated to 20 hours, how many marks does it confidently predict?",
+          "unit": "marks",
+          "answer": 132,
+          "factor": 1.2,
+          "why": "132 — past every exam's maximum. The relationship may curve, saturate or reverse outside the observed range; state the range and treat predictions beyond it as hypotheses.",
+          "context": "In multivariate work the failure compounds — prediction surfaces extrapolate in directions you cannot even plot."
+        }
+      },
+      {
+        "anchor": "generalises along three axes",
+        "type": "sort-buckets",
+        "caption": "supervised or unsupervised — file the method",
+        "name": "mvMethodSort",
+        "config": {
+          "prompt": "Group structure, two regimes — file each method:",
+          "buckets": ["supervised (labels known)", "unsupervised (find the structure)"],
+          "items": [
+            { "label": "discriminant analysis on known sprinter vs endurance profiles", "bucket": 0 },
+            { "label": "k-means on unlabelled customers", "bucket": 1 },
+            { "label": "logistic regression on churn-or-stay", "bucket": 0 },
+            { "label": "hierarchical clustering that finds the groups itself", "bucket": 1 }
+          ],
+          "why": "The distinction machine learning renamed but did not invent — and clusters are patterns in your variables: change the variables, change the clusters."
+        }
+      },
+      {
+        "anchor": "PCA's behaviour is easiest to trust",
+        "type": "estimate",
+        "caption": "thirteen measurements, two axes — what share?",
+        "name": "mvPcaEst",
+        "config": {
+          "prompt": "Component 1 (a general size axis) carries about 60% of the variance; component 2 (composition) adds another 20%. What share of the thirteen variables' story do the two axes carry?",
+          "unit": "%",
+          "answer": 80,
+          "factor": 1.15,
+          "why": "About 80% — two axes constructed from the data rather than assumed, summarising each athlete as how big, and what made of.",
+          "context": "The components are patterns of variance, not guaranteed to be the variables that matter for performance."
+        }
+      },
+      {
+        "anchor": "makes the rule",
+        "type": "cloze",
+        "caption": "read the coefficient — fill the odds",
+        "name": "mvLogitCloze",
+        "config": {
+          "text": "Logistic regression models the log-odds of membership as a weighted sum: a predictor with coefficient 0.7 multiplies the odds by roughly %%0%% per unit increase, other variables held fixed. For k-means, the honest difficulty is choosing %%1%% — elbow and silhouette diagnostics, not revelation.",
+          "answers": [
+            ["2", "two"],
+            ["k", "the number of clusters"]
+          ],
+          "hint": "The exponential of 0.7; and k-means partitions the data into how many clusters?"
+        }
+      },
+      {
+        "anchor": "separates the professional from the enthusiastic",
+        "type": "branch",
+        "caption": "50 predictors, 200 observations — run the protocol",
+        "name": "mvValidBranch",
+        "config": {
+          "root": "A regression with 50 predictors on 200 observations scores brilliantly in-sample. You are asked to ship it.",
+          "nodes": {
+            "start": {
+              "text": "The in-sample fit is splendid. What is the professional move?",
+              "choices": [
+                { "label": "Ship it — the fit speaks for itself", "next": "in-sample", "feedback": "With enough variables a linear model memorises noise the way a student memorises past papers — the in-sample fit can look splendid." },
+                { "label": "Hold out a test set and score data the model never saw", "next": "holdout", "feedback": "The gap between in-sample and out-of-sample performance is the overfitting tax — and it grows with every variable added." },
+                { "label": "Reduce dimensions and regularise, then re-validate", "next": "regularise", "feedback": "Dimension reduction and regularisation are how the tax is paid down; held-out validation tells you whether it has been." }
+              ]
+            },
+            "in-sample": { "text": "Memorised noise will not repeat out of sample — the tax arrives precisely when the model is used.", "choices": [] },
+            "holdout": { "text": "Rotate folds (k-fold cross-validation) if the data is scarce — but score only what the fit never touched.", "choices": [] },
+            "regularise": { "text": "Fit the smallest model the evidence supports, and make any addition justify itself on held-out data.", "choices": [] }
+          },
+          "why": "Every variable earns its place, every coefficient gets an interval, and every claim is checked on data the fit never touched."
+        }
+      },
+      {
+        "anchor": "test 10,000 genes for association",
+        "type": "estimate",
+        "caption": "call the chance hits",
+        "name": "mvGenesEst",
+        "config": {
+          "prompt": "Test 10,000 genes for association at the 5% level. About how many 'significant' hits appear by pure chance?",
+          "unit": "hits",
+          "answer": 500,
+          "factor": 1.3,
+          "why": "About 500 — the false discovery rate procedure (Benjamini–Hochberg, 1995) controls the expected share of false positives among declared discoveries.",
+          "context": "High dimensions are where intuition fails first and discipline matters most."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,157 @@
+[
+  {
+    "slug": "subjects/statistics/advanced/non-parametric-methods",
+    "activities": [
+      {
+        "anchor": "the sorted positions are the",
+        "type": "order",
+        "caption": "the quartiles, computed in order",
+        "name": "npQuartileOrder",
+        "config": {
+          "prompt": "Nine values — 2, 4, 4, 5, 6, 7, 8, 9, 15. Build the five-figure summary in order:",
+          "items": [
+            "Sort the values — the sorted positions are the order statistics",
+            "Median (Q2): the 5th value — 6",
+            "Q1: median of the four below — (4+4)/2 = 4; Q3: median of the four above — (8+9)/2 = 8.5",
+            "IQR = 8.5 − 4 = 4.5 — the spread of the middle half"
+          ],
+          "why": "For grouped frequency tables the same quantities become interpolation estimates inside the containing class — the honest cost of grouped data."
+        }
+      },
+      {
+        "anchor": "The three dispersion measures answer the same question",
+        "type": "sort-buckets",
+        "caption": "which summary earns which data?",
+        "name": "npDispSort",
+        "config": {
+          "prompt": "Outlier sensitivity decides the summary — file each case:",
+          "buckets": ["median and IQR", "mean and SD", "range"],
+          "items": [
+            { "label": "skewed incomes, and a billionaire joins the sample", "bucket": 0 },
+            { "label": "clean, symmetric data where every point carries real information", "bucket": 1 },
+            { "label": "1–5-star customer ratings — ordinal", "bucket": 0 },
+            { "label": "instant, uses only two points, grows with sample size for pure sampling reasons", "bucket": 2 },
+            { "label": "reaction times from a well-run laboratory experiment", "bucket": 1 }
+          ],
+          "why": "A rank is a position — no value, however extreme, can be more extreme than 'largest'; the order statistics cap every observation's influence."
+        }
+      },
+      {
+        "anchor": "is the simplest non-parametric test",
+        "type": "spot-error",
+        "caption": "one line of this sign test is wrong — click it",
+        "name": "npSignSpot",
+        "config": {
+          "prompt": "One line of this sign-test write-up is wrong — click it:",
+          "lines": [
+            "Paired data: keep only the direction of each change, + or −.",
+            "Eight patients, seven improved and one did not.",
+            "Under a fair-coin null: P(at least 7 of 8) = (C(8,7) + C(8,8))/2⁸ = 9/256.",
+            "Doubled for a two-tailed test: p ≈ 0.070 — conventionally significant at the 5% level.",
+            "The sign test throws away magnitudes entirely — its virtue is surviving ordinal scales."
+          ],
+          "errorLine": 3,
+          "correction": "p ≈ 0.070 is suggestive but not conventionally significant — 0.070 is greater than 0.05.",
+          "why": "The sign test's price is throwing magnitudes away; its payout is working where magnitudes are meaningless — 'better/worse' judgments, ratings."
+        }
+      },
+      {
+        "anchor": "The small print is",
+        "type": "cloze",
+        "caption": "fill in the tie's shared rank",
+        "name": "npTieCloze",
+        "config": {
+          "text": "When two values are equal they share the average of the ranks they span: two observations tied for 5th and 6th each take rank %%0%%. Heavy clusters of ties shrink the variance of U — and a 1-to-5 rating with thirty responses produces only %%1%% distinct values.",
+          "answers": [
+            "5.5",
+            ["five", "5"]
+          ],
+          "hint": "Average the ranks they span; and count the possible ratings."
+        }
+      },
+      {
+        "anchor": "upgrades the sign test for paired data",
+        "type": "match",
+        "caption": "the family — pair each test with its brief",
+        "name": "npFamilyMatch",
+        "config": {
+          "prompt": "Match each rank method to the job it does:",
+          "pairs": [
+            { "left": "Wilcoxon signed-rank", "right": "paired data — ranks the absolute differences; assumes they are roughly symmetric" },
+            { "left": "Kruskal–Wallis", "right": "three or more independent groups — rank everything together, compare average ranks" },
+            { "left": "Spearman's ρ", "right": "correlates the ranks: ρ = 1 − 6Σd²/(n(n²−1)) for small samples without ties" },
+            { "left": "two judges, d² sum 3, n = 5", "right": "ρ = 1 − 18/120 = 0.85 — the same 0.85 whether scores were 90 vs 91 or 90 vs 990" }
+          ],
+          "why": "Only order enters the calculation — which is why rescaling the judges' scores leaves ρ untouched."
+        }
+      },
+      {
+        "anchor": "asymptotic relative efficiency",
+        "type": "estimate",
+        "caption": "price the insurance policy",
+        "name": "npEffEst",
+        "config": {
+          "prompt": "Under exact normality, Mann–Whitney's asymptotic relative efficiency against the t-test is about what value?",
+          "unit": "efficiency",
+          "answer": 0.955,
+          "factor": 1.1,
+          "why": "About 0.955 — a 4.5% sample-size penalty. Under heavy-tailed or contaminated data its efficiency exceeds the t-test's, unboundedly so for extreme tails.",
+          "context": "The price of insurance is small and the payout is large exactly when you need it."
+        }
+      },
+      {
+        "anchor": "The decision procedure is about the data",
+        "type": "branch",
+        "caption": "choose the analysis before the p-values exist",
+        "name": "npChoiceBranch",
+        "config": {
+          "root": "A pilot returns 18 ratings on a 1–5 scale, with a couple of extreme values. Choose the analysis.",
+          "nodes": {
+            "start": {
+              "text": "Ordinal scale, small n, visible outliers. Which instrument?",
+              "choices": [
+                { "label": "The t-test — the central limit theorem will save us", "next": "clt", "feedback": "The CLT drags the sampling distribution of the mean toward normality — but rescues tests of means slowly for heavy tails, and never rescues a single skew quantile." },
+                { "label": "Mann–Whitney U on the ranks", "next": "ranks", "feedback": "Rank methods cap every observation's influence — the right instrument for ordinal, outlier-prone data." },
+                { "label": "A permutation test — shuffle the labels thousands of times", "next": "perm", "feedback": "No distributional assumption, exact in principle — Fisher imagined it in the 1930s; cheap computing delivered it." }
+              ]
+            },
+            "clt": { "text": "Forgiving with large samples, wobbling here — and the choice should have been made before the data.", "choices": [] },
+            "ranks": { "text": "A little power traded for a lot of robustness — an excellent trade with small, skewed data.", "choices": [] },
+            "perm": { "text": "Recompute the difference each shuffle and see where the real difference lands in the shuffle distribution.", "choices": [] }
+          },
+          "why": "Report both when in doubt: agreement is reassuring; disagreement is diagnostic — the conclusion hinges on a handful of extreme observations, and the write-up should say so."
+        }
+      },
+      {
+        "anchor": "completes the repeated-measures corner",
+        "type": "judge",
+        "caption": "true or false — the family's corners",
+        "name": "npCornerJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "Friedman handles several treatments measured on the same subjects — the taster as their own control.",
+              "truth": true,
+              "why": "Rank the treatments within each subject, then ask whether the average ranks differ — the partner for taste panels and usability studies."
+            },
+            {
+              "s": "Kruskal–Wallis is the tool for repeated measures on the same subjects.",
+              "truth": false,
+              "why": "Kruskal–Wallis handles several independent groups; Friedman is the repeated-measures corner."
+            },
+            {
+              "s": "The runs test asks whether a sequence is random — too few runs means clustering.",
+              "truth": true,
+              "why": "Too few runs = streaks; too many = alternation — the tool for the 'hot hand' argument and for checking residuals."
+            },
+            {
+              "s": "Too many runs in a binary series is the signature of streaks.",
+              "truth": false,
+              "why": "Too many runs means alternation; streaks produce too few."
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

@@ -10,6 +10,194 @@ const testingCfg = {
     { math: '4 · Analytics changed team sport', note: 'Moneyball (2003) proved market inefficiencies in baseball; expected goals (xG) now explains football beyond the scoreboard; GPS-derived running profiles shape substitution and recruitment — the data-science lesson\'s predictive modelling, wearing boots.' },
   ],
 };
+
+const tasHealthCompare = {
+  "prompt": "One athlete, two curves — drag the divider:",
+  "before": {
+    "label": "the fitness curve",
+    "text": "periodised upward in blocks — a Tour de France podium finisher in peak fitness can be immunosuppressed and energy-deficient"
+  },
+  "after": {
+    "label": "the health curve",
+    "text": "protected continuously (sleep, nutrition, monitoring) so the fitness curve can keep climbing — the classic 'overtraining' endgame is where they split"
+  },
+  "why": "The monitoring stack exists mostly to detect where the two curves decouple: performance first plateaus, then falls as illness and staleness arrive."
+};
+
+const tasURiskTrace = {
+  "prompt": "Illness risk plotted against training load — which curve is the lesson's?",
+  "curves": [
+    {
+      "expr": "(x-5)^2/6+1",
+      "color": "#1d4ed8",
+      "label": "low at moderate load, high at both extremes"
+    },
+    {
+      "expr": "0.6*x",
+      "color": "#b42318",
+      "label": "rises steadily with load"
+    },
+    {
+      "expr": "6-0.6*x",
+      "color": "#0f766e",
+      "label": "falls steadily with load"
+    },
+    {
+      "expr": "4",
+      "color": "#7c3aed",
+      "label": "flat across all loads"
+    }
+  ],
+  "correct": 0,
+  "x": {
+    "min": 0,
+    "max": 10
+  },
+  "y": {
+    "min": 0,
+    "max": 12
+  },
+  "xlabel": "training load",
+  "ylabel": "illness risk",
+  "why": "Sedentary living and extreme training loads both raise illness risk — elite cohorts show elevated upper-respiratory-infection rates during heavy blocks. Managing the trade-off, not ignoring it, is the job."
+};
+
+const tasFuelMatch = {
+  "prompt": "Match each fuel to its storage-and-delivery profile:",
+  "pairs": [
+    {
+      "left": "muscle glycogen",
+      "right": "400–500 g — the limiting fuel; depletion in 60–90 minutes of high-intensity effort is the bonk"
+    },
+    {
+      "left": "liver glycogen",
+      "right": "80–100 g of carbohydrate reserve"
+    },
+    {
+      "left": "fat",
+      "right": "tens of thousands of kilocalories even in lean athletes, delivered slowly"
+    },
+    {
+      "left": "protein",
+      "right": "1.6–2.2 g per kg of body mass per day — a building-materials budget, not a fuel"
+    }
+  ],
+  "why": "Fuelling decisions are evaluated against measured workloads — kilojoules from power meters, GPS distance — with carbohydrate periodised around sessions and protein distributed across the day."
+};
+
+const tasCompSort = {
+  "prompt": "The classical components — file each one:",
+  "buckets": [
+    "health-related",
+    "skill-related"
+  ],
+  "items": [
+    {
+      "label": "cardio-respiratory endurance",
+      "bucket": 0
+    },
+    {
+      "label": "speed",
+      "bucket": 1
+    },
+    {
+      "label": "muscular strength",
+      "bucket": 0
+    },
+    {
+      "label": "balance",
+      "bucket": 1
+    },
+    {
+      "label": "flexibility",
+      "bucket": 0
+    },
+    {
+      "label": "reaction time",
+      "bucket": 1
+    },
+    {
+      "label": "body composition",
+      "bucket": 0
+    },
+    {
+      "label": "coordination",
+      "bucket": 1
+    }
+  ],
+  "why": "The expert discipline is matching protocol to question — a screening battery, a return-to-play ladder and a research study need different precision, and each extra decimal point costs equipment, time and athlete goodwill."
+};
+
+const tasSwcPlace = {
+  "prompt": "On this scale of observed improvement, place the smallest change an elite test must resolve:",
+  "labels": [
+    "0%",
+    "2%",
+    "4%",
+    "6%",
+    "8%",
+    "10%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 10
+  },
+  "answer": 1,
+  "tolerance": 0.5,
+  "why": "A test must resolve smaller differences than it would in a physical-education class — most field tests cannot, which is why elite environments repeat tests, average trials and read trends across sessions rather than verdicts from single numbers."
+};
+
+const tasWhyBranch = {
+  "root": "You are drafting the season's testing calendar. A colleague proposes a new protocol 'because more data never hurts.'",
+  "nodes": {
+    "start": {
+      "text": "The proposal sits in the calendar draft. Where do you push back?",
+      "choices": [
+        {
+          "label": "Ask which decision depends on its result",
+          "next": "decision",
+          "feedback": "That question is the whole audit — testing earns its place by the decisions it serves."
+        },
+        {
+          "label": "Accept it — the squad can never be too measured",
+          "next": "theatre",
+          "feedback": "Every test costs training time and attention, and a squad measured weekly on ten protocols learns to perform the test, not the sport."
+        }
+      ]
+    },
+    "decision": {
+      "text": "The result routes somewhere: a strength block for the weak jumper, a fuelling plan for the low ferritin, a monitored ramp for the returning player. The test keeps its slot.",
+      "choices": []
+    },
+    "theatre": {
+      "text": "No decision depends on the number — it changes nothing in the programme. The slot is freed for training.",
+      "choices": []
+    }
+  },
+  "why": "Defensible testing: baseline and profiling, feedback and motivation, return-to-play milestones, talent identification and load prescription. If no decision depends on the result, the test is theatre."
+};
+
+const tasGpsEst = {
+  "prompt": "GPS units sample at 10 Hz. Roughly how many position fixes does one player log in a 90-minute match?",
+  "unit": "fixes",
+  "answer": 54000,
+  "factor": 1.3,
+  "why": "Ten fixes every second for 5,400 seconds ≈ 54,000 — the stream behind total distance, high-speed running, sprint counts and accelerometer-derived 'load'.",
+  "context": "Acute-to-chronic workload ratios and similar heuristics read this stream as risk flags for conversation, not injury oracles."
+};
+
+const tasBatteryOrder = {
+  "prompt": "The pre-season battery, assembled in order:",
+  "items": [
+    "State the question: who is ready to train at what intensity, and what does each player need?",
+    "Aerobic capacity: the Yo-Yo intermittent recovery test (level 1) — total distance covered",
+    "Lower-limb power: countermovement jump on a force platform, with left–right asymmetry from the force trace",
+    "Speed: 10-metre (acceleration) and 30-metre (maximal) sprints on timing gates",
+    "Repeat-sprint ability: a purpose-built protocol — single sprints miss the fatigue that decides matches",
+    "Every result lands with its measurement error attached and routes to a decision"
+  ],
+  "why": "The battery repeats on a fixed calendar so trends, not snapshots, drive the programme — and few tests, chosen for the decisions they serve, beat many."
+};
 ---
 <TopicPage slug="subjects/sports-science/expert/testing-and-analytics-in-elite-sport">
   <h2>Where you are, and what you will learn</h2>
@@ -73,11 +261,13 @@ const testingCfg = {
     can keep climbing. The monitoring stack exists mostly to detect where the two curves
     decouple.
   </p>
+  <Widget no="2" caption="the two curves — drag the divider to the decoupling" widget="compare" config={tasHealthCompare} />
   <p><em>Common misconception:</em> that more fitness always means better health, so
   the fittest athlete is the healthiest. The dose–response curve for training stress is
   U-shaped in health outcomes: sedentary living and extreme training loads both raise
   illness risk, and elite cohorts show elevated upper-respiratory-infection rates during
   heavy blocks. Managing that trade-off — not ignoring it — is the job.</p>
+  <Widget no="3" caption="which curve survives the data?" widget="trace" config={tasURiskTrace} />
   <p>
     <strong>So far:</strong> health and fitness diverge exactly where elite sport lives, and
     the monitoring stack exists mostly to catch the decoupling. Next: the fuels the measured
@@ -101,6 +291,7 @@ const testingCfg = {
     the honest use of tests (iron studies for fatigue that will not resolve, vitamin D
     in winter squads) rather than blanket supplementation.
   </p>
+  <Widget no="4" caption="pair each fuel with its storage-and-delivery profile" widget="match" config={tasFuelMatch} />
 
   <h2>Components of fitness and the protocols that measure them</h2>
   <p>
@@ -117,6 +308,7 @@ const testingCfg = {
     research study need different precision, and each extra decimal point of precision
     costs equipment, time and athlete goodwill.
   </p>
+  <Widget no="5" caption="file the components of fitness" widget="sort-buckets" config={tasCompSort} />
 
   <h2>Validity, reliability and the meaning of a change</h2>
   <p>
@@ -133,6 +325,7 @@ const testingCfg = {
     most field tests cannot, which is why elite environments repeat tests, average
     trials, and read trends across sessions rather than verdicts from single numbers.
   </p>
+  <Widget no="6" caption="mark the smallest change worth detecting" widget="place" config={tasSwcPlace} />
   <p><em>Common misconception:</em> that a significant correlation with performance makes
   a test useful. Correlation without reliability is a mirage — a test can rank athletes
   correctly once and still be unable to track any individual's change over time. Fitness
@@ -160,6 +353,7 @@ const testingCfg = {
     indefensible reason is testing as ritual — calendars of tests whose numbers change
     no decision. If no decision depends on the result, the test is theatre.
   </p>
+  <Widget no="7" caption="run the audit every test must pass" widget="branch" config={tasWhyBranch} />
 
   <h2>Training principles, overload and methods — seen through the data</h2>
   <p>
@@ -198,6 +392,7 @@ const testingCfg = {
     mature club treats analytics as one expert voice at the table with medicine,
     coaching and scouting — each with known failure modes.
   </p>
+  <Widget no="8" caption="size the data stream one player generates" widget="estimate" config={tasGpsEst} />
   <p><em>Common misconception:</em> that analytics replaces the eye of the scout. What
   analytics replaces is unexamined intuition — the scout's eye remains, now calibrated:
   the modern recruitment meeting pits a model's valuation against a documented rationale
@@ -223,6 +418,7 @@ const testingCfg = {
     ramp for the returning player. The battery is then repeated on a fixed calendar
     so trends, not snapshots, drive the programme.
   </p>
+  <Widget no="9" caption="rebuild the battery in order" widget="order" config={tasBatteryOrder} />
 
   <p>
     The measurement culture has its own failure modes, and they are avoidable.

@@ -12,6 +12,128 @@ const tsCfg = {
   crossings: false,
   height: 350,
 };
+
+const tsGraphSort = {
+  "prompt": "Three things to name on any plot, plus the traps — file each claim:",
+  "buckets": [
+    "seasonality",
+    "irregulars",
+    "reading hazard"
+  ],
+  "items": [
+    {
+      "label": "ice-cream sales peak every July",
+      "bucket": 0
+    },
+    {
+      "label": "a strike, a heatwave, a change in how the data is recorded",
+      "bucket": 1
+    },
+    {
+      "label": "an axis not starting at zero exaggerates slopes",
+      "bucket": 2
+    },
+    {
+      "label": "electricity peaks every evening and every winter — two cycles coexist",
+      "bucket": 0
+    },
+    {
+      "label": "a level shift mid-series often marks a change in measurement, not in the world",
+      "bucket": 2
+    }
+  ],
+  "why": "Is the seasonal swing roughly the same size every year (additive) or does it grow with the level (multiplicative)? The answer decides the model."
+};
+
+const tsCafeOrder = {
+  "prompt": "The café read, decomposed — order the components:",
+  "items": [
+    "Takings rise slowly across three years — the trend",
+    "Spike every July, collapse every January — the seasonal, fixed period",
+    "A three-month crater in 2020 — the irregular",
+    "Compare this quarter with this quarter last year, not with last quarter"
+  ],
+  "why": "Naming the three parts first prevents the double error: crediting the July surge to 'our summer strategy' and blaming the January slump on 'this year's management' — both are the calendar doing what the calendar always does."
+};
+
+const tsSmoothJudge = {
+  "statements": [
+    {
+      "s": "The latest moving average is the forecast for the next period.",
+      "truth": false,
+      "why": "It is centred in the past, undefined for the newest points, and lags every turning point — smoothing the past and predicting the future are different problems."
+    },
+    {
+      "s": "A moving average of a rising series sits below the series.",
+      "truth": true,
+      "why": "By construction — of a falling series, above it; the smoother trails the data."
+    },
+    {
+      "s": "The forecast comes from the extended trend line plus a seasonal component.",
+      "truth": true,
+      "why": "Never from the raw smoother — extend the trend, add the seasonal component."
+    }
+  ]
+};
+
+const tsModelMatch = {
+  "prompt": "Additive or multiplicative — match each model to its clause:",
+  "pairs": [
+    {
+      "left": "additive model",
+      "right": "value = trend + seasonal + irregular — deviations in units, summing to zero"
+    },
+    {
+      "left": "multiplicative model",
+      "right": "value = trend × seasonal × irregular — components are ratios"
+    },
+    {
+      "left": "Q3 component of 1.09",
+      "right": "'10% above the trend' — the right choice when seasonal swings scale with the level"
+    },
+    {
+      "left": "deseasonalised series",
+      "right": "actual minus seasonal component — the calendar's fiction removed so consecutive quarters compare honestly"
+    }
+  ],
+  "why": "Holiday retail doubling, not just rising, is the tell for the multiplicative model; same-size swings every year say additive."
+};
+
+const tsForecastEst = {
+  "prompt": "Trend base 83.75, growth 1.5 per quarter. Seven quarters on, the trend is ≈ 94.3. Q3's seasonal component adds +10.25 — the Q3 forecast is about what?",
+  "unit": "units",
+  "answer": 104.5,
+  "factor": 1.15,
+  "why": "94.3 + 10.25 ≈ 104.5 — arithmetic, yes, but a single number masquerades as a certain one where honest practice reports an interval.",
+  "context": "Extrapolation assumes the trend continues; structural breaks invalidate the whole decomposition."
+};
+
+const tsHeadlineSpot = {
+  "prompt": "One line of the statistical office's method is wrong — click it:",
+  "lines": [
+    "Retail sales, unemployment and GDP are published seasonally adjusted.",
+    "A December-to-January retail crash reads as 'down 0.3% adjusted' rather than 'down 20%, because Christmas ended'.",
+    "The seasonal component is fixed once and never revised.",
+    "Money series are deflated into a base year — CPI rebased to 100 — so the trend is in constant purchasing power.",
+    "Comparing nominal sales across a decade of inflation measures the currency, not the business."
+  ],
+  "errorLine": 2,
+  "correction": "The seasonal component itself drifts — holiday timing shifts, behaviour changes — so it is re-estimated continually; why a figure was revised is often the seasonal factors, not the economy.",
+  "why": "A time series is never raw: by the time it reaches a chart it has been seasonalised, deflated, revised and re-based — ask which operations happened."
+};
+
+const tsDeseasonCompare = {
+  "prompt": "Same quarter, two readings — drag the divider:",
+  "before": {
+    "label": "the raw quarter",
+    "text": "'down 10% from summer, disaster' — the calendar's fiction read as management failure"
+  },
+  "after": {
+    "label": "the deseasonalised quarter",
+    "text": "flat reads as flat — the calendar stripped out so quarters compare honestly; the summer surge is still real revenue and real staffing need"
+  },
+  "why": "Deseasonalising is for comparison, not dismissal — the point is to stop attributing the calendar to the strategy."
+};
 ---
 <TopicPage slug="subjects/statistics/advanced/time-series-analysis">
   <h2>Where you are, and what you will learn</h2>
@@ -78,6 +200,7 @@ const tsCfg = {
     is the seasonal swing roughly the <em>same size</em> every year (suggesting an additive
     model) or does it grow with the level (suggesting multiplicative)?
   </p>
+  <Widget no="2" caption="read the graph — file each feature" widget="sort-buckets" config={tsGraphSort} />
   <p>
     Worked read: a café's monthly takings rise slowly across three years, spike every July
     and collapse every January — except the three-month crater in 2020. The July peaks and
@@ -87,6 +210,7 @@ const tsCfg = {
     surge to "our summer strategy" and blaming the January slump on "this year's
     management" — when both are the calendar doing what the calendar always does.
   </p>
+  <Widget no="3" caption="the café's three years — decompose in order" widget="order" config={tsCafeOrder} />
   <p>
     <strong>So far:</strong> naming trend, seasonality and irregulars on the plot — before
     any modelling — prevents the classic double error of crediting the calendar to strategy.
@@ -126,6 +250,7 @@ const tsCfg = {
     and predicting the future are different problems; the forecast comes from the extended
     trend line plus a seasonal component, never from the raw smoother.
   </p>
+  <Widget no="4" caption="true or false — the smoother is not a forecast" widget="judge" config={tsSmoothJudge} />
   <p>
     <strong>So far:</strong> a window of one full seasonal cycle cancels the wave exactly,
     and pairing consecutive averages re-centres an even window on real data points — the
@@ -175,6 +300,7 @@ const tsCfg = {
     trend"), which is the right choice when seasonal swings scale with the level — holiday
     retail doubling, not just rising.
   </p>
+  <Widget no="5" caption="two models, one choice — pair each with its clause" widget="match" config={tsModelMatch} />
 
   <h2>Predictions from trend lines — and their limitations</h2>
   <p>
@@ -192,6 +318,7 @@ const tsCfg = {
     noise. The professional habit: forecast with intervals, backtest against held-out data,
     and state what would falsify the trend assumption.
   </p>
+  <Widget no="6" caption="price the Q3 forecast" widget="estimate" config={tsForecastEst} />
   <p>
     <strong>So far:</strong> the forecast is arithmetic — extend the trend, add the seasonal
     component — but the honest part is the limitations: extrapolation assumes continuation,
@@ -217,6 +344,7 @@ const tsCfg = {
     sophisticated reader asks which of those operations happened before trusting the trend
     the chart appears to show.
   </p>
+  <Widget no="7" caption="one line of this office's method is wrong — click it" widget="spot-error" config={tsHeadlineSpot} />
   <p>
     <em>Common misconception:</em> "removing seasonality means the seasonal pattern doesn't
     matter." Deseasonalising is for comparison, not for dismissal — the summer surge is real
@@ -224,6 +352,7 @@ const tsCfg = {
     strategy: after deseasonalising, a flat quarter reads as flat, not as "down 10% from
     summer, disaster".
   </p>
+  <Widget no="8" caption="the raw quarter vs the deseasonalised one — drag the divider" widget="compare" config={tsDeseasonCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

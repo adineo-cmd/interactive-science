@@ -59,6 +59,154 @@ const cardiopulQuizCfg = {
     },
   ],
 };
+
+const hlVentEst = {
+  "prompt": "Resting ventilation is about 0.5 L per breath × 12 breaths/min ≈ 6 L/min. Elite endurance athletes at maximal effort exceed roughly what ventilation?",
+  "unit": "L/min",
+  "answer": 175,
+  "factor": 1.3,
+  "why": "150–200 L/min and more — enormous headroom, which is why in most healthy people the lungs are not the limiting factor in maximal performance.",
+  "context": "Arterial blood leaves the lungs about 95–98% saturated with oxygen even at maximal effort."
+};
+
+const hlBreathJudge = {
+  "statements": [
+    {
+      "s": "Ventilation can be pushed far past what the circulation can use.",
+      "truth": true,
+      "why": "The respiratory system has enormous headroom — the bottleneck sits further along the chain."
+    },
+    {
+      "s": "Breathlessness in hard exercise means the lungs are maxed out.",
+      "truth": false,
+      "why": "Breathlessness is driven largely by rising CO₂ — a chemical signal, not a full tank."
+    },
+    {
+      "s": "Arterial blood leaves the lungs about 95–98% saturated even at maximal effort.",
+      "truth": true,
+      "why": "Only elite athletes in extreme cases show small desaturation — their pumps outrunning their lungs."
+    },
+    {
+      "s": "Sustaining ventilation near 150 L/min is free — breathing costs no blood flow.",
+      "truth": false,
+      "why": "Heavily working breathing muscles steal blood flow from the limbs — the body pays for breathing from the same cardiac output."
+    }
+  ]
+};
+
+const hlCircSort = {
+  "prompt": "One circulation, two states — file each claim:",
+  "buckets": [
+    "at rest",
+    "at maximal exercise"
+  ],
+  "items": [
+    {
+      "label": "about 70 bpm × 70 mL ≈ 5 L/min",
+      "bucket": 0
+    },
+    {
+      "label": "working muscle receives about 15–20% of cardiac output",
+      "bucket": 0
+    },
+    {
+      "label": "stroke volume near 200 mL in the elite endurance athlete",
+      "bucket": 1
+    },
+    {
+      "label": "working muscle receives 80–85% of cardiac output",
+      "bucket": 1
+    },
+    {
+      "label": "gut and kidneys accept less as regulated shunting ramps up",
+      "bucket": 1
+    },
+    {
+      "label": "haemoglobin holds about a litre of oxygen in transit",
+      "bucket": 0
+    }
+  ],
+  "why": "The elite's 35–40 L/min against the untrained 20–22 is the single largest physiological gap between the fit and the elite — built by a bigger left ventricle and expanded blood volume."
+};
+
+const hlVomaxPlace = {
+  "prompt": "Place the VO₂max (ml/kg/min) where elite male distance runners and cross-country skiers sit:",
+  "labels": [
+    "0",
+    "25",
+    "50",
+    "75",
+    "100"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 100
+  },
+  "answer": 80,
+  "tolerance": 8,
+  "why": "70–90+, against 35–45 in untrained young adults and 50–60 in regular recreational runners — the highest credibly measured values near 96–97."
+};
+
+const hlStackOrder = {
+  "prompt": "The threshold-raising stack, laid out in order:",
+  "items": [
+    "Easy-volume work builds the aerobic base and mitochondria",
+    "Tempo runs at threshold intensity teach the system to clear lactate at higher rates",
+    "Interval work pushes the ceiling itself",
+    "Re-test the field marker every six to eight weeks"
+  ],
+  "why": "The untrained reach threshold around 55–65% of VO₂max; trained distance athletes sustain 80–90% — and elite marathoners race 42.2 km close to it."
+};
+
+const hlAcuteCompare = {
+  "prompt": "The same body, two timescales — drag the divider:",
+  "before": {
+    "label": "the acute response — one session",
+    "text": "heart rate rises before the muscles even start; stroke volume maxes around 40–50% of VO₂max; systolic pressure spikes; plasma volume shrinks toward sweat"
+  },
+  "after": {
+    "label": "the chronic adaptation — weeks to months",
+    "text": "plasma volume up first, then mitochondria and capillaries; stroke volume and cardiac output up; resting heart rate down — 40–50 bpm in serious endurance athletes is unremarkable"
+  },
+  "why": "Resting measures are the honest cheap tests: a rising resting heart rate across days signals fatigue, illness or under-fuelling."
+};
+
+const hlZoneSpot = {
+  "prompt": "One line of this zone-setting routine is wrong — click it:",
+  "lines": [
+    "Estimate maximum heart rate with 220 − age — it predicts the population average, not you.",
+    "The formula's individual error is about ±2 bpm, so treat its zones as a ruler.",
+    "Better: field-test your own maximum, or anchor zones to threshold pace or power.",
+    "Use heart rate as a drift gauge — cardiac drift tells you about the day, not the zones.",
+    "A polarised week runs roughly 80% easy, 20% hard."
+  ],
+  "errorLine": 1,
+  "correction": "The individual error is about ±10–12 bpm — a 10-bpm miss shifts every zone, which is why zones get field-tested or anchored to threshold.",
+  "why": "The five-zone model organises intensity fine; the arithmetic underneath is a population average wearing a personal disguise."
+};
+
+const hlAltMatch = {
+  "prompt": "Live high, train low — match each piece of the protocol:",
+  "pairs": [
+    {
+      "left": "live high",
+      "right": "roughly 2,000–2,500 m — enough hypoxia to trigger erythropoiesis"
+    },
+    {
+      "left": "train low",
+      "right": "below about 1,250 m, so interval quality survives"
+    },
+    {
+      "left": "the duration",
+      "right": "about four weeks, per Levine and Stray-Gundersen's controlled 1997 study"
+    },
+    {
+      "left": "the payoff",
+      "right": "roughly 1–3% at sea level — small, but decisive in championship fields"
+    }
+  ],
+  "why": "Responders vary substantially, and the dose must be managed — excessive erythropoiesis thickens blood and raises clot risk, one reason haemoglobin levels are capped in competition."
+};
 ---
 <TopicPage slug="subjects/sports-science/intermediate/the-heart-and-lungs-in-exercise">
   <h2>Where you are, and what you will learn</h2>
@@ -127,11 +275,13 @@ const cardiopulQuizCfg = {
     signal can be blunted by pre-hyperventilating, and blackout follows with
     little notice.
   </p>
+  <Widget no="3" caption="size the lungs' headroom" widget="estimate" config={hlVentEst} />
   <p><em>Common misconception:</em> "deep breathing is the limit in hard exercise, so
   breathlessness means your lungs are maxed out." Ventilation can be pushed far past what
   the circulation can use, and arterial blood leaves the lungs about 95–98% saturated even
   at maximal effort. Breathlessness is driven largely by rising CO2 — a chemical signal,
   not a full tank.</p>
+  <Widget no="4" caption="true or false — the breathless runner" widget="judge" config={hlBreathJudge} />
   <p>
     <strong>So far:</strong> the lungs have enormous headroom and are rarely the limiter;
     the two realities that matter are breathing-muscle fatigue and the chemical drive to
@@ -161,6 +311,7 @@ const cardiopulQuizCfg = {
     any instant — a quantity the trained system turns over many times each
     minute.
   </p>
+  <Widget no="5" caption="rest vs maximal exercise — file the circulation's numbers" widget="sort-buckets" config={hlCircSort} />
   <p><em>Common misconception:</em> "a low resting heart rate after training means the
   heart can also beat much faster at maximum." Maximum heart rate is largely set by age
   and barely moves; what changes is stroke volume — the same resting output delivered in
@@ -186,6 +337,7 @@ const cardiopulQuizCfg = {
     on the <strong>fraction of the ceiling you can sustain</strong> — the threshold —
     than on the ceiling itself.
   </p>
+  <Widget no="6" caption="place the elite ceiling on the scale" widget="place" config={hlVomaxPlace} />
   <p>
     <strong>So far:</strong> maximal cardiac output anchors the delivery ceiling, and the
     peripheral machinery decides how much of what arrives gets spent. What that means for a
@@ -211,6 +363,7 @@ const cardiopulQuizCfg = {
     could hold for about an hour (the classic 20-minute test), or the point
     where conversation becomes impossible.
   </p>
+  <Widget no="7" caption="the training stack that raises the sustainable fraction" widget="order" config={hlStackOrder} />
 
   <h2>Acute responses and chronic adaptations: exercise's effects on the body</h2>
   <p>
@@ -235,6 +388,7 @@ const cardiopulQuizCfg = {
     up. Resting measures are also the honest cheap tests: a rising resting
     heart rate across days signals fatigue, illness or under-fuelling.
   </p>
+  <Widget no="8" caption="one session vs the training age — drag the divider" widget="compare" config={hlAcuteCompare} />
 
   <h2>Heart-rate zones, used honestly</h2>
   <p>
@@ -252,6 +406,7 @@ const cardiopulQuizCfg = {
     a drift gauge (cardiac drift — the slow upward creep at constant pace
     in heat and dehydration — tells you about the day, not the zones).
   </p>
+  <Widget no="9" caption="one line of this zone-setting is wrong — click it" widget="spot-error" config={hlZoneSpot} />
   <p><em>Common misconception:</em> "220 minus your age gives your personal maximum heart
   rate." It predicts an average with an individual error of about 10–12 bpm — enough to
   shift every zone. Anchor zones to a field test or to threshold pace, and let heart rate
@@ -278,6 +433,7 @@ const cardiopulQuizCfg = {
     one reason governing bodies cap permitted haemoglobin levels in
     competition.
   </p>
+  <Widget no="10" caption="the altitude protocol — pair each piece with its dose" widget="match" config={hlAltMatch} />
 
   <h2>Measuring the ceiling: the lab and the field</h2>
   <p>

@@ -10,6 +10,195 @@ const periodCfg = {
     { math: '4 · Monitoring: the programme\'s dashboard', note: 'Load (session-RPE × minutes — Foster\'s method), wellness questionnaires, HRV, jump testing (a 5% drop flags fatigue) — the data-science lesson\'s dashboard thinking, physiological edition: adjust the plan when the athlete\'s data says so.' },
   ],
 };
+
+const perHealthCompare = {
+  "prompt": "Drag between the two properties:",
+  "before": {
+    "label": "Health",
+    "text": "a state of complete physical, mental and social well-being, not merely the absence of disease (the WHO definition) — a property of the person."
+  },
+  "after": {
+    "label": "Fitness",
+    "text": "the ability to meet the demands of the environment — a property of a person for a task: the marathon runner fit for 42 km and unfit for a 1-rep maximum."
+  },
+  "why": "The relationship is positive but loose — fit-but-unhealthy (overtrained, RED-S) and healthy-but-unfit (sedentary, no disease, three flights of stairs) both exist; a good programme serves both."
+};
+
+const perComponentsSort = {
+  "prompt": "File each component under its family:",
+  "buckets": [
+    "health-related",
+    "skill-related"
+  ],
+  "items": [
+    {
+      "label": "cardiorespiratory endurance",
+      "bucket": 0
+    },
+    {
+      "label": "muscular strength",
+      "bucket": 0
+    },
+    {
+      "label": "flexibility",
+      "bucket": 0
+    },
+    {
+      "label": "body composition",
+      "bucket": 0
+    },
+    {
+      "label": "speed",
+      "bucket": 1
+    },
+    {
+      "label": "power (force × velocity)",
+      "bucket": 1
+    },
+    {
+      "label": "agility",
+      "bucket": 1
+    },
+    {
+      "label": "reaction time",
+      "bucket": 1
+    }
+  ],
+  "why": "Every sport demands a different weighting — and no block can maximise all of them at once, because the adaptations partially conflict (the interference effect)."
+};
+
+const perProtocolsMatch = {
+  "prompt": "Pair each protocol with the component it reads:",
+  "pairs": [
+    {
+      "left": "beep test or lab VO2max",
+      "right": "cardiorespiratory endurance"
+    },
+    {
+      "left": "1RM or its estimated cousin",
+      "right": "muscular strength — maximum force"
+    },
+    {
+      "left": "vertical jump (Sargent test)",
+      "right": "leg power"
+    },
+    {
+      "left": "sit-and-reach",
+      "right": "flexibility"
+    },
+    {
+      "left": "T-test or Illinois run",
+      "right": "agility"
+    }
+  ],
+  "why": "Validity asks whether the protocol captures the component in this sport's context; reliability asks for the same answer twice."
+};
+
+const perGlycogenEstimate = {
+  "prompt": "How big is the carbohydrate tank a hard session draws down, in grams?",
+  "unit": "g",
+  "answer": 450,
+  "factor": 1.3,
+  "why": "400–500 g — about 1,600–2,000 kcal, which a hard 90-minute session can meaningfully deplete; hence carbohydrate intake scaled to training load."
+};
+
+const perOverloadSpot = {
+  "prompt": "One line of this summary is wrong — click it:",
+  "lines": [
+    "Progressive overload: the stimulus must exceed what the body is used to — and keep growing.",
+    "Load is volume load (sets × reps × kg) or duration × intensity.",
+    "Progression is applied one variable at a time — add reps before load.",
+    "When adaptation stalls, raise every variable at once.",
+    "The 2-for-2 rule: exceeding the rep target by two, in two consecutive sessions, raises the load."
+  ],
+  "errorLine": 3,
+  "correction": "One variable at a time — add reps before load; stall, add a back-off set, then reset load 10% and rebuild.",
+  "why": "The programme is the progression rules, not the numbers on this week's page."
+};
+
+const perMesoOrder = {
+  "prompt": "Order one year's mesocycle sequence:",
+  "items": [
+    "Hypertrophy — high volume, moderate load",
+    "Maximal strength — lower volume, high load",
+    "Power — load converted to velocity",
+    "Competition/peak"
+  ],
+  "why": "Each block banks its residual effect for the next — which is why a strength block's gains are carried into a speed block rather than trained simultaneously."
+};
+
+const perTaperPlace = {
+  "prompt": "Meta-analyses of the final-week volume cut find performance gains of about what? Place it on the scale:",
+  "labels": [
+    "0%",
+    "2.5%",
+    "5%",
+    "7.5%",
+    "10%"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 10
+  },
+  "answer": 2.5,
+  "tolerance": 0.5,
+  "why": "Around 2–3% on average — in a final, the difference between medalling and watching; volume falls 40–60% while intensity stays."
+};
+
+const perPlateauBranch = {
+  "root": "An athlete stalls mid-programme. Diagnose:",
+  "nodes": {
+    "start": {
+      "text": "First suspect?",
+      "choices": [
+        {
+          "label": "Under-recovery — adaptation happens during recovery, not the session",
+          "next": "rec"
+        },
+        {
+          "label": "Not enough work — add sessions",
+          "next": "mis1"
+        }
+      ]
+    },
+    "mis1": {
+      "text": "That is the folk trap — the staller is usually under-recovering relative to a plan copied from someone else's schedule, genetics and food budget.",
+      "choices": [
+        {
+          "label": "Take the recovery diagnosis",
+          "next": "rec"
+        }
+      ]
+    },
+    "rec": {
+      "text": "The programme's job is to schedule stress the body can absorb. What next?",
+      "choices": [
+        {
+          "label": "Check sleep, food budget and the copied plan's assumptions",
+          "next": "end"
+        },
+        {
+          "label": "Push through — plateaus break with grit",
+          "next": "mis2"
+        }
+      ]
+    },
+    "mis2": {
+      "text": "Grit without absorption is just accumulated fatigue — the adaptation never arrives.",
+      "choices": [
+        {
+          "label": "Take the absorption route",
+          "next": "end"
+        }
+      ]
+    },
+    "end": {
+      "text": "Schedule stress the body can absorb; recovery is where adaptation happens.",
+      "choices": []
+    }
+  },
+  "why": "The programme's job is scheduling absorbable stress — plateaus are usually under-recovery, not insufficient work."
+};
 ---
 <TopicPage slug="subjects/sports-science/advanced/periodisation-and-programming">
 
@@ -69,6 +258,7 @@ const periodCfg = {
     must therefore serve both: a good plan builds the target fitness <em>while</em> managing
     sleep, nutrition, stress and load so the athlete's health underwrites the adaptation.
   </p>
+  <Widget no="2" caption="drag between the two properties" widget="compare" config={perHealthCompare} />
 
   <h2>Components of fitness</h2>
   <p>
@@ -85,6 +275,7 @@ const periodCfg = {
     the adaptations partially conflict (large endurance volumes blunt strength gains — the
     interference effect).
   </p>
+  <Widget no="3" caption="file each component under its family" widget="sort-buckets" config={perComponentsSort} />
   <p>
     <strong>So far:</strong> fitness is a property of a person <em>for a task</em>, and the
     components partially conflict — which is precisely why plans sequence targets instead of
@@ -112,6 +303,7 @@ const periodCfg = {
     sets — and the test is repeated at the block's end to confirm the percentage actually
     progressed.
   </p>
+  <Widget no="4" caption="pair each protocol with the component it reads" widget="match" config={perProtocolsMatch} />
 
   <h2>Diet and energy sources: fuelling the plan</h2>
   <p>
@@ -130,6 +322,7 @@ const periodCfg = {
     days and lower on recovery days, and timing carbohydrate around sessions to support the
     quality of the next one.
   </p>
+  <Widget no="5" caption="estimate the carbohydrate tank" widget="estimate" config={perGlycogenEstimate} />
   <p><em>Common misconception:</em> lactate is a waste toxin that causes next-day soreness and must be "flushed out" by massage. Blood lactate returns to resting levels within roughly an hour of hard exercise; the burn comes with metabolic stress, and delayed-onset muscle soreness is inflammatory micro-damage, not leftover acid. Lactate is also a fuel — the heart and slow-twitch fibres consume it — which is one reason endurance training works partly by improving lactate clearance.</p>
   <p>
     <strong>So far:</strong> the plan's sessions burn fuel through three energy systems, and the
@@ -157,6 +350,7 @@ const periodCfg = {
     back-off set, then reset load 10% and rebuild — the plan <em>is</em> the progression rules,
     not the numbers on this week's page.
   </p>
+  <Widget no="6" caption="find the faulty line — the progression rules" widget="spot-error" config={perOverloadSpot} />
 
   <h2>Methods of training, sequenced</h2>
   <p>
@@ -197,6 +391,7 @@ const periodCfg = {
     perform similarly; what matters is that overload, specificity and recovery are all
     programmed, and that the athlete adheres.
   </p>
+  <Widget no="7" caption="order the year's block sequence" widget="order" config={perMesoOrder} />
   <p>
     <strong>Tapering</strong> is the plan's finale and its most counter-intuitive move: to
     arrive fresh, cut <em>volume</em> by roughly 40–60% over the final 1–3 weeks while
@@ -206,6 +401,7 @@ const periodCfg = {
     fitness decays over weeks. Meta-analyses of tapering find performance improvements of
     around 2–3% on average — in a final, the difference between medalling and watching.
   </p>
+  <Widget no="8" caption="place the taper's average gain" widget="place" config={perTaperPlace} />
   <p><em>Common misconception:</em> tapering means resting completely, or cutting intensity along with volume. Strip out the sharp exposures and the neuromuscular machinery detunes exactly when you need it — fitness decays slowly, but the speed end decays fastest if never touched. The research-consistent taper cuts volume 40–60% while keeping intensity and frequency: you arrive rested and primed, not merely rested.</p>
 
   <h2>Monitoring: the programme's dashboard</h2>
@@ -231,6 +427,7 @@ const periodCfg = {
     under-recovering relative to a plan copied from someone with a different schedule, genetics
     and food budget.
   </p>
+  <Widget no="9" caption="diagnose the plateau" widget="branch" config={perPlateauBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

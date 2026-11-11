@@ -1,0 +1,162 @@
+[
+  {
+    "slug": "subjects/statistics/advanced/experimental-design",
+    "activities": [
+      {
+        "anchor": "mailed 10 million ballots",
+        "type": "order",
+        "caption": "the 1936 poll, autopsied in order",
+        "name": "doeDigestOrder",
+        "config": {
+          "prompt": "How 10 million ballots got it wrong — order the chain:",
+          "items": [
+            "Draw the sample from telephone directories and car registrations during the Depression",
+            "Mail 10 million ballots and collect 2.4 million responses — self-selection in who replied",
+            "Predict Landon by a landslide",
+            "Roosevelt wins by one — coverage bias had selected the affluent"
+          ],
+          "why": "George Gallup called the election within a few points using a few thousand properly chosen respondents — a small, honest random beats a vast, biased one."
+        }
+      },
+      {
+        "anchor": "Bias is a systematic error",
+        "type": "judge",
+        "caption": "true or false — the big sample's promise",
+        "name": "doeBiasJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "A bigger sample fixes a biased one.",
+              "truth": false,
+              "why": "Bias is systematic; size only shrinks random error. Ten million biased ballots said Landon."
+            },
+            {
+              "s": "More data from the wrong mechanism makes you more precisely wrong — and more confident about it.",
+              "truth": true,
+              "why": "Precision about the wrong thing is worse than honest noise."
+            },
+            {
+              "s": "The Literary Digest sample failed because it was too small.",
+              "truth": false,
+              "why": "2.4 million responses — enormous and wrong: coverage bias compounded by self-selection."
+            },
+            {
+              "s": "A representative sample is defined by its selection mechanism, not by looking typical.",
+              "truth": true,
+              "why": "Hand-picking a 'typical-looking' group reintroduces judgment and its biases; the mechanism must give everyone a known chance of inclusion."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "The classic failure modes have names",
+        "type": "sort-buckets",
+        "caption": "file each survey defect",
+        "name": "doeSurveySort",
+        "config": {
+          "prompt": "Bad instruments read zero — file each failure mode:",
+          "buckets": ["wording defects", "ordering effects", "respondent effects"],
+          "items": [
+            { "label": "'Do you support the popular measure…?'", "bucket": 0 },
+            { "label": "'improve safety and reduce waste' — which half?", "bucket": 0 },
+            { "label": "general trust in journalism asked before a specific outlet changes the answer", "bucket": 1 },
+            { "label": "everyone reports more reading and less drinking than is true", "bucket": 2 },
+            { "label": "about a quarter of respondents offer opinions on fictitious policies", "bucket": 2 }
+          ],
+          "why": "Design discipline: pilot the instrument, keep items single-barrelled and neutral, randomise option order, and record refusals — 'don't know' is data, not noise."
+        }
+      },
+      {
+        "anchor": "The classification is a property of the measurement",
+        "type": "match",
+        "caption": "pair each variable with its data type",
+        "name": "doeDataMatch",
+        "config": {
+          "prompt": "Match each variable to the data it yields:",
+          "pairs": [
+            { "left": "blood group", "right": "nominal — labels with no order" },
+            { "left": "Agree / Neutral / Disagree", "right": "ordinal — order but unequal spacing" },
+            { "left": "goals scored", "right": "discrete — countable, gaps between values" },
+            { "left": "reaction time", "right": "continuous — any value in an interval" },
+            { "left": "postcode", "right": "nominal — despite looking numeric, it is a property of the measurement, not the storage format" }
+          ],
+          "why": "A mean of ordinal ratings is a category error — medians and modes are the honest summaries, and bar charts (never histograms) belong to categorical data."
+        }
+      },
+      {
+        "anchor": "the power calculation. Worked example",
+        "type": "estimate",
+        "caption": "run the power calculation's bottom line",
+        "name": "doePowerEst",
+        "config": {
+          "prompt": "Detect a 5-point improvement, SD 15, 80% power at 0.05 two-sided. Roughly how many per group does the calculation demand?",
+          "unit": "per arm",
+          "answer": 141,
+          "factor": 1.3,
+          "why": "n = 2(z₀.₉₇₅ + z₀.₈₀)²·σ²/Δ² = 2 × 7.84 × 9 ≈ 141 — about 142 per arm. Run 20 and the most likely outcome is a noisy non-result that wastes the study.",
+          "context": "Replication is the pillar that turns a comparison into an error estimate."
+        }
+      },
+      {
+        "anchor": "Randomisation is a protocol",
+        "type": "branch",
+        "caption": "who gets group B? — run the allocation",
+        "name": "doeAllocBranch",
+        "config": {
+          "root": "Twenty pupils, two arms, one new teaching method. Someone has to decide who gets it.",
+          "nodes": {
+            "start": {
+              "text": "Choose the allocation mechanism:",
+              "choices": [
+                { "label": "The teacher assigns by judgment, whoever seems fair", "next": "haphazard", "feedback": "Haphazard is human choice in disguise — predictable, and therefore biased by the chooser." },
+                { "label": "A concealed computer allocation, performed after enrolment", "next": "concealed", "feedback": "Nobody can steer who gets what — unknown confounders distribute between the arms in expectation." },
+                { "label": "Alternate B, A, B, A down the register", "next": "alternating", "feedback": "Deterministic — anyone who knows the register can predict the next arm. Allocation concealment is the point." }
+              ]
+            },
+            "haphazard": { "text": "The chooser's biases ride into the arms — matching and adjusting control only the confounders you thought of.", "choices": [] },
+            "concealed": { "text": "The only mechanism that controls unknown confounders — the comparison is fair in expectation.", "choices": [] },
+            "alternating": { "text": "Predictable assignment is steerable assignment — the leak the protocol exists to close.", "choices": [] }
+          },
+          "why": "The distance between 'put that one in group B' and 'the computer assigned that one to B' is the entire discipline."
+        }
+      },
+      {
+        "anchor": "Assemble the whole apparatus on a real-scale question",
+        "type": "spot-error",
+        "caption": "one decision in this trial is wrong — click it",
+        "name": "doeTrialSpot",
+        "config": {
+          "prompt": "One decision in this app trial is wrong — click it:",
+          "lines": [
+            "Sampling frame: schools that volunteer — a frame bias, acknowledged in the write-up rather than hidden.",
+            "Stratify the frame by catchment type and draw 34 schools.",
+            "Randomise individual pupils within each school, to avoid cluster effects.",
+            "Pre-register the primary endpoint: a standardised machine-marked test, same date for every pupil.",
+            "Apply blinding where it can be — marking and analysis."
+          ],
+          "errorLine": 2,
+          "correction": "Cluster-randomise the schools, 17 per arm — the app deploys class by class, and individual randomisation would leak across desks.",
+          "why": "Every decision was made before the first data point existed — which is the chapter's whole argument compressed into one page."
+        }
+      },
+      {
+        "anchor": "Power is an ethical variable",
+        "type": "compare",
+        "caption": "well-powered vs underpowered — drag the divider",
+        "name": "doePowerCompare",
+        "config": {
+          "prompt": "Two literatures, same nominal 5% — drag the divider:",
+          "before": {
+            "label": "the well-powered trial",
+            "text": "estimates land close to the truth; the significant results do not have to be lucky"
+          },
+          "after": {
+            "label": "the underpowered trial",
+            "text": "among significant results, only lucky overestimates clear the bar — effect sizes inflate (the winner's curse) and the false discovery rate climbs"
+          },
+          "why": "Across a literature, low prior odds plus underpowering guarantee a false discovery rate far above the nominal 5% — Ioannidis 2005's argument, answered by pre-registration, replication and pre-set stopping rules."
+        }
+      }
+    ]
+  }
+]

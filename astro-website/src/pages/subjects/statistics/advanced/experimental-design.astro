@@ -10,6 +10,176 @@ const doeCfg = {
     { math: '4 · Factorial thinking', note: 'Vary several factors at once (2×2 design) and you learn interactions too — "fertiliser helps only with irrigation" is invisible to one-factor-at-a-time testing.' },
   ],
 };
+
+const doeDigestOrder = {
+  "prompt": "How 10 million ballots got it wrong — order the chain:",
+  "items": [
+    "Draw the sample from telephone directories and car registrations during the Depression",
+    "Mail 10 million ballots and collect 2.4 million responses — self-selection in who replied",
+    "Predict Landon by a landslide",
+    "Roosevelt wins by one — coverage bias had selected the affluent"
+  ],
+  "why": "George Gallup called the election within a few points using a few thousand properly chosen respondents — a small, honest random beats a vast, biased one."
+};
+
+const doeBiasJudge = {
+  "statements": [
+    {
+      "s": "A bigger sample fixes a biased one.",
+      "truth": false,
+      "why": "Bias is systematic; size only shrinks random error. Ten million biased ballots said Landon."
+    },
+    {
+      "s": "More data from the wrong mechanism makes you more precisely wrong — and more confident about it.",
+      "truth": true,
+      "why": "Precision about the wrong thing is worse than honest noise."
+    },
+    {
+      "s": "The Literary Digest sample failed because it was too small.",
+      "truth": false,
+      "why": "2.4 million responses — enormous and wrong: coverage bias compounded by self-selection."
+    },
+    {
+      "s": "A representative sample is defined by its selection mechanism, not by looking typical.",
+      "truth": true,
+      "why": "Hand-picking a 'typical-looking' group reintroduces judgment and its biases; the mechanism must give everyone a known chance of inclusion."
+    }
+  ]
+};
+
+const doeSurveySort = {
+  "prompt": "Bad instruments read zero — file each failure mode:",
+  "buckets": [
+    "wording defects",
+    "ordering effects",
+    "respondent effects"
+  ],
+  "items": [
+    {
+      "label": "'Do you support the popular measure…?'",
+      "bucket": 0
+    },
+    {
+      "label": "'improve safety and reduce waste' — which half?",
+      "bucket": 0
+    },
+    {
+      "label": "general trust in journalism asked before a specific outlet changes the answer",
+      "bucket": 1
+    },
+    {
+      "label": "everyone reports more reading and less drinking than is true",
+      "bucket": 2
+    },
+    {
+      "label": "about a quarter of respondents offer opinions on fictitious policies",
+      "bucket": 2
+    }
+  ],
+  "why": "Design discipline: pilot the instrument, keep items single-barrelled and neutral, randomise option order, and record refusals — 'don't know' is data, not noise."
+};
+
+const doeDataMatch = {
+  "prompt": "Match each variable to the data it yields:",
+  "pairs": [
+    {
+      "left": "blood group",
+      "right": "nominal — labels with no order"
+    },
+    {
+      "left": "Agree / Neutral / Disagree",
+      "right": "ordinal — order but unequal spacing"
+    },
+    {
+      "left": "goals scored",
+      "right": "discrete — countable, gaps between values"
+    },
+    {
+      "left": "reaction time",
+      "right": "continuous — any value in an interval"
+    },
+    {
+      "left": "postcode",
+      "right": "nominal — despite looking numeric, it is a property of the measurement, not the storage format"
+    }
+  ],
+  "why": "A mean of ordinal ratings is a category error — medians and modes are the honest summaries, and bar charts (never histograms) belong to categorical data."
+};
+
+const doePowerEst = {
+  "prompt": "Detect a 5-point improvement, SD 15, 80% power at 0.05 two-sided. Roughly how many per group does the calculation demand?",
+  "unit": "per arm",
+  "answer": 141,
+  "factor": 1.3,
+  "why": "n = 2(z₀.₉₇₅ + z₀.₈₀)²·σ²/Δ² = 2 × 7.84 × 9 ≈ 141 — about 142 per arm. Run 20 and the most likely outcome is a noisy non-result that wastes the study.",
+  "context": "Replication is the pillar that turns a comparison into an error estimate."
+};
+
+const doeAllocBranch = {
+  "root": "Twenty pupils, two arms, one new teaching method. Someone has to decide who gets it.",
+  "nodes": {
+    "start": {
+      "text": "Choose the allocation mechanism:",
+      "choices": [
+        {
+          "label": "The teacher assigns by judgment, whoever seems fair",
+          "next": "haphazard",
+          "feedback": "Haphazard is human choice in disguise — predictable, and therefore biased by the chooser."
+        },
+        {
+          "label": "A concealed computer allocation, performed after enrolment",
+          "next": "concealed",
+          "feedback": "Nobody can steer who gets what — unknown confounders distribute between the arms in expectation."
+        },
+        {
+          "label": "Alternate B, A, B, A down the register",
+          "next": "alternating",
+          "feedback": "Deterministic — anyone who knows the register can predict the next arm. Allocation concealment is the point."
+        }
+      ]
+    },
+    "haphazard": {
+      "text": "The chooser's biases ride into the arms — matching and adjusting control only the confounders you thought of.",
+      "choices": []
+    },
+    "concealed": {
+      "text": "The only mechanism that controls unknown confounders — the comparison is fair in expectation.",
+      "choices": []
+    },
+    "alternating": {
+      "text": "Predictable assignment is steerable assignment — the leak the protocol exists to close.",
+      "choices": []
+    }
+  },
+  "why": "The distance between 'put that one in group B' and 'the computer assigned that one to B' is the entire discipline."
+};
+
+const doeTrialSpot = {
+  "prompt": "One decision in this app trial is wrong — click it:",
+  "lines": [
+    "Sampling frame: schools that volunteer — a frame bias, acknowledged in the write-up rather than hidden.",
+    "Stratify the frame by catchment type and draw 34 schools.",
+    "Randomise individual pupils within each school, to avoid cluster effects.",
+    "Pre-register the primary endpoint: a standardised machine-marked test, same date for every pupil.",
+    "Apply blinding where it can be — marking and analysis."
+  ],
+  "errorLine": 2,
+  "correction": "Cluster-randomise the schools, 17 per arm — the app deploys class by class, and individual randomisation would leak across desks.",
+  "why": "Every decision was made before the first data point existed — which is the chapter's whole argument compressed into one page."
+};
+
+const doePowerCompare = {
+  "prompt": "Two literatures, same nominal 5% — drag the divider:",
+  "before": {
+    "label": "the well-powered trial",
+    "text": "estimates land close to the truth; the significant results do not have to be lucky"
+  },
+  "after": {
+    "label": "the underpowered trial",
+    "text": "among significant results, only lucky overestimates clear the bar — effect sizes inflate (the winner's curse) and the false discovery rate climbs"
+  },
+  "why": "Across a literature, low prior odds plus underpowering guarantee a false discovery rate far above the nominal 5% — Ioannidis 2005's argument, answered by pre-registration, replication and pre-set stopping rules."
+};
 ---
 <TopicPage slug="subjects/statistics/advanced/experimental-design">
   <h2>Where you are, and what you will learn</h2>
@@ -70,6 +240,7 @@ const doeCfg = {
     researcher — that reintroduces judgment and its biases — but one whose selection mechanism
     gives every member of the population a known chance of inclusion.
   </p>
+  <Widget no="2" caption="the 1936 poll, autopsied in order" widget="order" config={doeDigestOrder} />
   <p>
     <strong>So far:</strong> a conclusion inherits the defects of the mechanism that produced
     its sample — coverage bias and self-selection sank ten million ballots while a few
@@ -104,6 +275,7 @@ const doeCfg = {
     from the wrong mechanism makes you more precisely wrong — and more confident about it,
     which is worse.
   </p>
+  <Widget no="3" caption="true or false — the big sample's promise" widget="judge" config={doeBiasJudge} />
 
   <h2>Asking questions: open versus closed</h2>
   <p>
@@ -125,6 +297,7 @@ const doeCfg = {
     discipline: pilot the instrument, keep items single-barrelled and neutral, randomise option
     order where feasible, and record refusals — "don't know" is data, not noise.
   </p>
+  <Widget no="4" caption="file each survey defect" widget="sort-buckets" config={doeSurveySort} />
 
   <h2>Classifying data</h2>
   <p>
@@ -143,6 +316,7 @@ const doeCfg = {
     "how satisfied are you, 1–5?" and "tell us how satisfied you are" are different instruments
     producing different, non-interconvertible data.
   </p>
+  <Widget no="5" caption="pair each variable with its data type" widget="match" config={doeDataMatch} />
   <p>
     <em>Common misconception:</em> "decimals mean continuous, whole numbers mean discrete."
     Shoe sizes come in halves and are discrete (size 7½ exists; 7.3 does not); reaction times
@@ -188,6 +362,7 @@ const doeCfg = {
     <strong>pre-registration</strong> of endpoints and analysis so the plan cannot be
     rewritten after seeing the data.
   </p>
+  <Widget no="6" caption="run the power calculation's bottom line" widget="estimate" config={doePowerEst} />
   <p>
     <em>Common misconception:</em> "randomising means assigning treatments haphazardly,
     whatever seems fair at the time." Haphazard is human choice in disguise — predictable,
@@ -196,6 +371,7 @@ const doeCfg = {
     who gets what. The distance between "put that one in group B" and "the computer assigned
     that one to B" is the entire discipline.
   </p>
+  <Widget no="7" caption="who gets group B? — run the allocation" widget="branch" config={doeAllocBranch} />
 
   <h2>The chain in one worked design</h2>
   <p>
@@ -216,6 +392,7 @@ const doeCfg = {
     <em>before</em> the first data point existed — which is the chapter's whole argument
     compressed into one page.
   </p>
+  <Widget no="8" caption="one decision in this trial is wrong — click it" widget="spot-error" config={doeTrialSpot} />
   <p>
     <strong>So far:</strong> the full skeleton — frame, stratification, cluster
     randomisation, a design-effect-inflated n, pre-registered endpoints — assembled on one
@@ -305,6 +482,7 @@ const doeCfg = {
     for n = 1 policy changes, and whether preregistration's rigidity costs adaptive
     exploration — the field's current honest tension.
   </p>
+  <Widget no="9" caption="well-powered vs underpowered — drag the divider" widget="compare" config={doePowerCompare} />
 
   <p class="sources"><strong>Sources:</strong> Fisher, The Design of Experiments (1935); Box, Hunter and Hunter, Statistics for Experimenters; Squire, "Why the Literary Digest poll failed"; Ioannidis (2005). Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>

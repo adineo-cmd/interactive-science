@@ -11,6 +11,171 @@ const npCfg = {
     { math: 'Spearman\'s ρ: rank correlation', note: 'Correlate the RANKS instead of the values. Captures "monotone but not straight-line" relationships and shrugs at outliers.' },
   ],
 };
+
+const npQuartileOrder = {
+  "prompt": "Nine values — 2, 4, 4, 5, 6, 7, 8, 9, 15. Build the five-figure summary in order:",
+  "items": [
+    "Sort the values — the sorted positions are the order statistics",
+    "Median (Q2): the 5th value — 6",
+    "Q1: median of the four below — (4+4)/2 = 4; Q3: median of the four above — (8+9)/2 = 8.5",
+    "IQR = 8.5 − 4 = 4.5 — the spread of the middle half"
+  ],
+  "why": "For grouped frequency tables the same quantities become interpolation estimates inside the containing class — the honest cost of grouped data."
+};
+
+const npDispSort = {
+  "prompt": "Outlier sensitivity decides the summary — file each case:",
+  "buckets": [
+    "median and IQR",
+    "mean and SD",
+    "range"
+  ],
+  "items": [
+    {
+      "label": "skewed incomes, and a billionaire joins the sample",
+      "bucket": 0
+    },
+    {
+      "label": "clean, symmetric data where every point carries real information",
+      "bucket": 1
+    },
+    {
+      "label": "1–5-star customer ratings — ordinal",
+      "bucket": 0
+    },
+    {
+      "label": "instant, uses only two points, grows with sample size for pure sampling reasons",
+      "bucket": 2
+    },
+    {
+      "label": "reaction times from a well-run laboratory experiment",
+      "bucket": 1
+    }
+  ],
+  "why": "A rank is a position — no value, however extreme, can be more extreme than 'largest'; the order statistics cap every observation's influence."
+};
+
+const npSignSpot = {
+  "prompt": "One line of this sign-test write-up is wrong — click it:",
+  "lines": [
+    "Paired data: keep only the direction of each change, + or −.",
+    "Eight patients, seven improved and one did not.",
+    "Under a fair-coin null: P(at least 7 of 8) = (C(8,7) + C(8,8))/2⁸ = 9/256.",
+    "Doubled for a two-tailed test: p ≈ 0.070 — conventionally significant at the 5% level.",
+    "The sign test throws away magnitudes entirely — its virtue is surviving ordinal scales."
+  ],
+  "errorLine": 3,
+  "correction": "p ≈ 0.070 is suggestive but not conventionally significant — 0.070 is greater than 0.05.",
+  "why": "The sign test's price is throwing magnitudes away; its payout is working where magnitudes are meaningless — 'better/worse' judgments, ratings."
+};
+
+const npTieCloze = {
+  "text": "When two values are equal they share the average of the ranks they span: two observations tied for 5th and 6th each take rank %%0%%. Heavy clusters of ties shrink the variance of U — and a 1-to-5 rating with thirty responses produces only %%1%% distinct values.",
+  "answers": [
+    "5.5",
+    [
+      "five",
+      "5"
+    ]
+  ],
+  "hint": "Average the ranks they span; and count the possible ratings."
+};
+
+const npFamilyMatch = {
+  "prompt": "Match each rank method to the job it does:",
+  "pairs": [
+    {
+      "left": "Wilcoxon signed-rank",
+      "right": "paired data — ranks the absolute differences; assumes they are roughly symmetric"
+    },
+    {
+      "left": "Kruskal–Wallis",
+      "right": "three or more independent groups — rank everything together, compare average ranks"
+    },
+    {
+      "left": "Spearman's ρ",
+      "right": "correlates the ranks: ρ = 1 − 6Σd²/(n(n²−1)) for small samples without ties"
+    },
+    {
+      "left": "two judges, d² sum 3, n = 5",
+      "right": "ρ = 1 − 18/120 = 0.85 — the same 0.85 whether scores were 90 vs 91 or 90 vs 990"
+    }
+  ],
+  "why": "Only order enters the calculation — which is why rescaling the judges' scores leaves ρ untouched."
+};
+
+const npEffEst = {
+  "prompt": "Under exact normality, Mann–Whitney's asymptotic relative efficiency against the t-test is about what value?",
+  "unit": "efficiency",
+  "answer": 0.955,
+  "factor": 1.1,
+  "why": "About 0.955 — a 4.5% sample-size penalty. Under heavy-tailed or contaminated data its efficiency exceeds the t-test's, unboundedly so for extreme tails.",
+  "context": "The price of insurance is small and the payout is large exactly when you need it."
+};
+
+const npChoiceBranch = {
+  "root": "A pilot returns 18 ratings on a 1–5 scale, with a couple of extreme values. Choose the analysis.",
+  "nodes": {
+    "start": {
+      "text": "Ordinal scale, small n, visible outliers. Which instrument?",
+      "choices": [
+        {
+          "label": "The t-test — the central limit theorem will save us",
+          "next": "clt",
+          "feedback": "The CLT drags the sampling distribution of the mean toward normality — but rescues tests of means slowly for heavy tails, and never rescues a single skew quantile."
+        },
+        {
+          "label": "Mann–Whitney U on the ranks",
+          "next": "ranks",
+          "feedback": "Rank methods cap every observation's influence — the right instrument for ordinal, outlier-prone data."
+        },
+        {
+          "label": "A permutation test — shuffle the labels thousands of times",
+          "next": "perm",
+          "feedback": "No distributional assumption, exact in principle — Fisher imagined it in the 1930s; cheap computing delivered it."
+        }
+      ]
+    },
+    "clt": {
+      "text": "Forgiving with large samples, wobbling here — and the choice should have been made before the data.",
+      "choices": []
+    },
+    "ranks": {
+      "text": "A little power traded for a lot of robustness — an excellent trade with small, skewed data.",
+      "choices": []
+    },
+    "perm": {
+      "text": "Recompute the difference each shuffle and see where the real difference lands in the shuffle distribution.",
+      "choices": []
+    }
+  },
+  "why": "Report both when in doubt: agreement is reassuring; disagreement is diagnostic — the conclusion hinges on a handful of extreme observations, and the write-up should say so."
+};
+
+const npCornerJudge = {
+  "statements": [
+    {
+      "s": "Friedman handles several treatments measured on the same subjects — the taster as their own control.",
+      "truth": true,
+      "why": "Rank the treatments within each subject, then ask whether the average ranks differ — the partner for taste panels and usability studies."
+    },
+    {
+      "s": "Kruskal–Wallis is the tool for repeated measures on the same subjects.",
+      "truth": false,
+      "why": "Kruskal–Wallis handles several independent groups; Friedman is the repeated-measures corner."
+    },
+    {
+      "s": "The runs test asks whether a sequence is random — too few runs means clustering.",
+      "truth": true,
+      "why": "Too few runs = streaks; too many = alternation — the tool for the 'hot hand' argument and for checking residuals."
+    },
+    {
+      "s": "Too many runs in a binary series is the signature of streaks.",
+      "truth": false,
+      "why": "Too many runs means alternation; streaks produce too few."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/statistics/advanced/non-parametric-methods">
   <h2>Where you are, and what you will learn</h2>
@@ -73,6 +238,7 @@ const npCfg = {
     ≈ 36.9. These are estimates — the true values inside each class are unknowable from the
     table — which is the honest cost of grouped data.
   </p>
+  <Widget no="2" caption="the quartiles, computed in order" widget="order" config={npQuartileOrder} />
   <p>
     <strong>So far:</strong> the sorted positions of a data set already carry the median, the
     quartiles and any percentile you ask for — grouped tables just force you to interpolate
@@ -100,6 +266,7 @@ const npCfg = {
     outliers → median and IQR; symmetric, well-behaved data where every point carries real
     information → mean and SD; and always say which you chose and why.
   </p>
+  <Widget no="3" caption="which summary earns which data?" widget="sort-buckets" config={npDispSort} />
   <p>
     <strong>So far:</strong> ranks cap every observation's influence at "largest" — one
     corrupted value thirteen-times inflated the standard deviation while the median and IQR
@@ -117,6 +284,7 @@ const npCfg = {
     entirely; its virtue is surviving situations where magnitudes are meaningless (ordinal
     ratings, "better/worse" judgments).
   </p>
+  <Widget no="4" caption="one line of this sign test is wrong — click it" widget="spot-error" config={npSignSpot} />
   <p>
     <strong>Mann–Whitney U</strong> compares two independent groups by pooling and ranking all
     values together, then comparing rank sums. Worked example — treatment group A: 10, 11, 12,
@@ -142,6 +310,7 @@ const npCfg = {
     sign test, which needs nothing but direction, is still a respectable instrument on exactly
     those scales.
   </p>
+  <Widget no="5" caption="fill in the tie's shared rank" widget="cloze" config={npTieCloze} />
   <p>
     <strong>Wilcoxon signed-rank</strong> upgrades the sign test for paired data by ranking the
     <em>absolute</em> differences and summing the ranks of the positive and negative changes —
@@ -156,6 +325,7 @@ const npCfg = {
     — strong agreement, and the same 0.85 whether the scores were 90 vs 91 or 90 vs 990,
     because only order entered the calculation.
   </p>
+  <Widget no="6" caption="the family — pair each test with its brief" widget="match" config={npFamilyMatch} />
   <p>
     <em>Common misconception:</em> "non-parametric tests are weaker, so always prefer the
     t-test." Under exact normality the Mann–Whitney's asymptotic relative efficiency against
@@ -163,6 +333,7 @@ const npCfg = {
     data its efficiency <em>exceeds</em> the t-test's, unboundedly so for extreme tails. The
     price of insurance is small and the payout is large exactly when you need it.
   </p>
+  <Widget no="7" caption="price the insurance policy" widget="estimate" config={npEffEst} />
 
   <h2>Choosing honestly</h2>
   <p>
@@ -181,6 +352,7 @@ const npCfg = {
     disagreement is diagnostic — it means the conclusion hinges on a handful of extreme
     observations, and the write-up should say so.
   </p>
+  <Widget no="8" caption="choose the analysis before the p-values exist" widget="branch" config={npChoiceBranch} />
   <p>
     <em>Common misconception:</em> "non-parametric tests are assumption-free." They drop the
     <em>distributional</em> assumption, not the discipline: they still require independent
@@ -213,6 +385,7 @@ const npCfg = {
     (streaks), too many means alternation — which is the tool for the "hot hand" argument and
     for checking whether residuals from a model look like white noise.
   </p>
+  <Widget no="9" caption="true or false — the family's corners" widget="judge" config={npCornerJudge} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

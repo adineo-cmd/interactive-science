@@ -23,6 +23,233 @@ const speechCfg = {
     { math: '5 · Reception: the ear', note: 'The outer ear collects, the middle ear amplifies, the cochlea converts frequency to nerve code — the audiogram maps that chain.' },
   ],
 };
+
+const spPressurePlace = {
+  "prompt": "For conversational loudness, exhalation is metered against the closed-ish larynx at what level, in centimetres of water?",
+  "labels": [
+    "0",
+    "5",
+    "10",
+    "15",
+    "20"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 20
+  },
+  "answer": 7.5,
+  "tolerance": 2.5,
+  "why": "Roughly 5–10 cm of water — which is why breath support is the first thing assessed in voice disorders, and why Parkinson's typically presents as a fading, whispered voice."
+};
+
+const spLarynxMatch = {
+  "prompt": "Five facts of the sound source — pair them:",
+  "pairs": [
+    {
+      "left": "cricothyroid",
+      "right": "rocks the cricoid cartilage to stretch the folds — raising pitch"
+    },
+    {
+      "left": "thyroarytenoids",
+      "right": "slacken and bulge the folds — lowering pitch"
+    },
+    {
+      "left": "fundamental frequency (F0)",
+      "right": "the repetition rate of the buzz — near 100 Hz for a typical adult male, 200 Hz for an adult female, 300 Hz and above for a child"
+    },
+    {
+      "left": "voiceless consonants",
+      "right": "/s/, /f/ and /t/ skip the buzz entirely — pure turbulence"
+    },
+    {
+      "left": "myoelastic–aerodynamic theory",
+      "right": "elastic recoil plus Bernoulli suction — a self-sustaining oscillation"
+    }
+  ],
+  "why": "Pitch is controlled by tension, not airflow — a whisper carries the airflow and no pitch at all, which is the cleanest proof the two are different controls."
+};
+
+const spConsonantSort = {
+  "prompt": "File each feature under the axis it classifies:",
+  "buckets": [
+    "place — where the narrowing is",
+    "manner — how",
+    "voicing — whether the larynx buzzes"
+  ],
+  "items": [
+    {
+      "label": "bilabial /p/",
+      "bucket": 0
+    },
+    {
+      "label": "alveolar /t/",
+      "bucket": 0
+    },
+    {
+      "label": "velar /k/",
+      "bucket": 0
+    },
+    {
+      "label": "complete stop",
+      "bucket": 1
+    },
+    {
+      "label": "turbulent fricative",
+      "bucket": 1
+    },
+    {
+      "label": "nasal",
+      "bucket": 1
+    },
+    {
+      "label": "/p/ versus /b/",
+      "bucket": 2
+    }
+  ],
+  "why": "The articulators sculpt constrictions that classify every consonant on three axes at once — the tongue, star of the ensemble, does the fine shaping."
+};
+
+const spFormantCloze = {
+  "text": "The glottal buzz is rich in %%0%% — energy at the fundamental and at every whole-number multiple of it. What the ear uses for vowel identity is mostly the first two formants: %%1%% falls as the tongue lowers and the jaw opens; %%2%% falls as the tongue retracts. /i/ in \"see\" has low F1 around %%3%% Hz, while /a/ in \"father\" has high F1 around %%4%% Hz.",
+  "answers": [
+    [
+      "harmonics"
+    ],
+    [
+      "F1"
+    ],
+    [
+      "F2"
+    ],
+    [
+      "300"
+    ],
+    [
+      "700–800",
+      "700-800",
+      "750",
+      "700",
+      "800"
+    ]
+  ],
+  "hint": "A plural, two labels, two frequencies."
+};
+
+const spFilterSpot = {
+  "prompt": "One line of this summary is wrong — click it:",
+  "lines": [
+    "The larynx's output is one buzzing source.",
+    "Everything that differentiates sounds happens in the tract above.",
+    "After a laryngectomy, an electrolarynx can supply the missing source.",
+    "A gorgeous singing voice can repair distorted vowels, since the information rides in the source.",
+    "The differentiating information lives in the filter, not the source."
+  ],
+  "errorLine": 3,
+  "correction": "Distorted vowels stay distorted regardless of voice quality — the differentiating information is the tract's shape, the filter.",
+  "why": "The larynx makes essentially one thing; the shape of the tract above it does the differentiating."
+};
+
+const spVowelCompare = {
+  "prompt": "Drag between the two halves of the speech signal:",
+  "before": {
+    "label": "Vowels",
+    "text": "low and loud, comparatively robust — in age-related loss they arrive while the rest goes."
+  },
+  "after": {
+    "label": "Consonants",
+    "text": "the intelligibility workhorses — /s/, /f/, /th/ and /k/ live high, where presbycusis slopes down first; 'everyone mumbles' means vowels arrive, consonants do not."
+  },
+  "why": "The audiogram is the map of what the ear can deliver — and intelligibility leans hard on the high end."
+};
+
+const spAidPredict = {
+  "q": "In sensorineural damage, why do patients say 'I can hear you but not understand you'?",
+  "choices": [
+    "The aid's amplification is too weak",
+    "The cochlea is not merely turned down but distorted — tuning blurred, loudness tolerance reduced",
+    "The patient misunderstands their own audiogram",
+    "Aids only work for the conductive kind"
+  ],
+  "answer": 1,
+  "why": "The aid is a prosthetic of a damaged organ, not a volume knob on a working one — amplification helps most in quiet rooms and least in noise."
+};
+
+const spChainBranch = {
+  "root": "Three referrals, three walks down the chain:",
+  "nodes": {
+    "start": {
+      "text": "A patient's voice fades to a whisper across all sounds. Which stage?",
+      "choices": [
+        {
+          "label": "Respiration and phonation — rebuild the pressure and loudness (the Lee Silverman approach for Parkinson's)",
+          "next": "ok1"
+        },
+        {
+          "label": "Articulation — drill the tongue",
+          "next": "mis1"
+        }
+      ]
+    },
+    "mis1": {
+      "text": "All the articulators downstream are intact — the fading loudness points upstream to the power supply.",
+      "choices": [
+        {
+          "label": "Follow it upstream",
+          "next": "ok1"
+        }
+      ]
+    },
+    "ok1": {
+      "text": "Next: distorted vowels and wildly inconsistent errors. Which stage?",
+      "choices": [
+        {
+          "label": "Motor planning — apraxia, not weakness",
+          "next": "ok2"
+        },
+        {
+          "label": "The audiogram — route to audiology first",
+          "next": "mis2"
+        }
+      ]
+    },
+    "mis2": {
+      "text": "The audiogram matters when hearing fails; wildly inconsistent errors with intact hearing point to motor planning.",
+      "choices": [
+        {
+          "label": "Take the motor-planning route",
+          "next": "ok2"
+        }
+      ]
+    },
+    "ok2": {
+      "text": "Last: a child cannot produce /s/ but hears the difference. Articulation or phonological?",
+      "choices": [
+        {
+          "label": "Articulation — the target is heard, just not yet made",
+          "next": "ok3"
+        },
+        {
+          "label": "Phonological — the difference itself is not heard",
+          "next": "mis3"
+        }
+      ]
+    },
+    "mis3": {
+      "text": "Not this child — hearing the difference is exactly what they can do; the two want entirely different therapies.",
+      "choices": [
+        {
+          "label": "Take the articulation reading",
+          "next": "ok3"
+        }
+      ]
+    },
+    "ok3": {
+      "text": "One who cannot hear the difference has a phonological problem — different intervention entirely. And a flat, severe audiogram routes the case to audiology first: nothing runs on a signal the ear never delivers.",
+      "choices": []
+    }
+  },
+  "why": "The sciences are the diagnostic instrument; treatment is what you do once the instrument has spoken."
+};
 ---
 <TopicPage slug="subjects/speech-therapy/foundational/speech-and-hearing-sciences">
 
@@ -89,6 +316,7 @@ const speechCfg = {
     first thing assessed in voice disorders and why Parkinson's disease, which stiffens and
     weakens the respiratory musculature, typically presents as a fading, whispered voice.
   </p>
+  <Widget no="3" caption="place the conversational pressure on the scale" widget="place" config={spPressurePlace} />
   <p>
     <strong>Phonation is the sound source.</strong> In the larynx, two small folds of muscle and
     mucous membrane (in adults, roughly 1.7–2.5 cm long) sit across the airway. Set them under
@@ -105,6 +333,7 @@ const speechCfg = {
     listener hears "bad speech" either way. Not every sound uses the source: <em>voiceless</em>
     consonants like /s/, /f/ and /t/ skip the buzz entirely and are made of pure turbulence.
   </p>
+  <Widget no="4" caption="pair the facts of the sound source" widget="match" config={spLarynxMatch} />
   <p>
     <strong>Resonation and articulation are the shaping.</strong> The velum (soft palate) is a
     valve: raised, it seals the nose off and directs all sound through the mouth; lowered, it
@@ -118,6 +347,7 @@ const speechCfg = {
     muscles, capable of extraordinary speed (speech articulators move many times per second) and
     the fine shape control that gives each vowel its acoustic signature.
   </p>
+  <Widget no="5" caption="file each feature under its axis" widget="sort-buckets" config={spConsonantSort} />
   <p><em>Common misconception:</em> pitch is controlled by how much air you push through the
   larynx — sing "higher" by blowing harder. Airflow supplies the power, but the pitch is set
   by how far the folds are stretched: the cricothyroid muscle lengthens and thins them to raise
@@ -152,6 +382,7 @@ const speechCfg = {
     tongue travelling backward. A vowel is, to first approximation, two numbers; the whole vowel
     system of a language is a map whose axes are F1 and F2.
   </p>
+  <Widget no="6" caption="fill the source–filter facts" widget="cloze" config={spFormantCloze} />
   <p>
     Consonants ride the same physics with different sources. Stops (/p/, /t/, /k/) are built
     from silence, a pressure burst, and the formant <em>transitions</em> before and after —
@@ -168,6 +399,7 @@ const speechCfg = {
     exposure above about 85 dB begins to injure the ear.
   </p>
   <p><em>Common misconception:</em> that different speech sounds happen because the vocal folds "make" each sound. The folds make essentially one thing — a buzzing source; the <em>shape</em> of the tract above them does the differentiating. This is why people can talk intelligibly after a laryngectomy (with an electrolarynx as source) and why a beautiful voice cannot rescue distorted vowels: the information lives in the filter, not the source.</p>
+  <Widget no="7" caption="find the faulty line — source versus filter" widget="spot-error" config={spFilterSpot} />
 
   <p>
     <strong>So far:</strong> a single buzz from the larynx is filtered by the vocal tract into
@@ -189,6 +421,7 @@ const speechCfg = {
     — "everyone mumbles" — because the vowels arrive and the consonants do not. The audiogram is
     the therapist's map of what the ear can and cannot deliver to the brain.
   </p>
+  <Widget no="8" caption="drag between the two halves of speech" widget="compare" config={spVowelCompare} />
   <p>
     The audiogram also separates the two great families of hearing loss. In
     <strong>conductive</strong> loss, the problem is mechanical — wax, fluid behind the eardrum
@@ -215,6 +448,7 @@ const speechCfg = {
   tolerance reduced — which is why patients say "I can hear you but not understand you", and
   why amplification helps most in quiet rooms and least in noise. The aid is a prosthetic of
   a damaged organ, not a volume knob on a working one.</p>
+  <Widget no="9" caption="bet before you read on — the hearing-aid paradox" widget="predict" config={spAidPredict} />
 
   <p>
     <strong>So far:</strong> production gave us the four subsystems, acoustics gave us the
@@ -238,6 +472,7 @@ const speechCfg = {
     speech therapy can run on a signal the ear never delivers. The sciences are the diagnostic
     instrument; treatment is what you do once the instrument has spoken.
   </p>
+  <Widget no="10" caption="walk three referrals down the chain" widget="branch" config={spChainBranch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

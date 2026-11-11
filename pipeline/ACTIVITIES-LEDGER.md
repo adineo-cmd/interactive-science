@@ -529,6 +529,30 @@
 | sociology/advanced/globalisation-and-society | timeline, judge, sort-buckets, match, estimate, spot-error, judge, compare | next-26 |
 | sociology/advanced/social-networks | match, cloze, order, sort-buckets, judge, compare, spot-error, compare | next-26 |
 | sociology/expert/demography | judge, branch, match, place, cloze, estimate, compare, sort-buckets | next-26 |
+| sociology/expert/social-theory-marx-to-bourdieu | order, match, branch, judge, spot-error, compare, predict, match | next-27 |
+| sociology/foundational/society-socialisation | match, spot-error, order, compare, branch, predict, judge, sort-buckets | next-27 |
+| sociology/intermediate/class-and-stratification | sort-buckets, branch, cloze, place, match, spot-error, estimate, plotter | next-27 |
+| sociology/intermediate/deviance-and-crime | match, place, cloze, spot-error, match, judge, sort-buckets, branch | next-27 |
+| sociology/intermediate/gender-and-society | sort-buckets, match, spot-error, sort-buckets, compare, cloze, place, spot-error | next-27 |
+| sociology/intermediate/race-ethnicity-and-identity | match, judge, estimate, compare, spot-error, cloze, place, sort-buckets | next-27 |
+| software-engineering/foundational/software-requirements | sort-buckets, match, spot-error, branch, cloze, judge, compare, estimate | next-27 |
+| special-education/foundational/special-education-law-and-the-iep | timeline, compare, spot-error, judge, sort-buckets, order, cloze, estimate | next-27 |
+| speech-therapy/foundational/speech-and-hearing-sciences | place, match, sort-buckets, cloze, spot-error, compare, predict, branch | next-27 |
+| sports-science/advanced/biomechanics | estimate, place, judge, order, trace, plotter, judge, estimate | next-27 |
+| sports-science/advanced/periodisation-and-programming | compare, sort-buckets, match, estimate, spot-error, order, place, branch | next-27 |
+| sports-science/expert/long-term-athlete-development | compare, judge, sort-buckets, spot-error, timeline, cloze, branch, match | next-27 |
+| sports-science/expert/testing-and-analytics-in-elite-sport | compare, trace, match, sort-buckets, place, branch, estimate, order | next-28 |
+| sports-science/foundational/training-load-adaptation | order, branch, compare, timeline, estimate, spot-error, sort-buckets, match | next-28 |
+| sports-science/intermediate/muscles-and-energy-systems | order, sort-buckets, estimate, place, trace, match, compare, spot-error | next-28 |
+| sports-science/intermediate/nutrition-for-performance | sort-buckets, order, estimate, place, match, estimate, spot-error, judge | next-28 |
+| sports-science/intermediate/strength-and-hypertrophy | match, branch, cloze, sort-buckets, order, spot-error, judge, compare | next-28 |
+| sports-science/intermediate/the-heart-and-lungs-in-exercise | estimate, judge, sort-buckets, place, order, compare, spot-error, match | next-28 |
+| statistics/advanced/bayesian-statistics | match, compare, spot-error, estimate, order, trace, estimate, sort-buckets | next-28 |
+| statistics/advanced/experimental-design | order, judge, sort-buckets, match, estimate, branch, spot-error, compare | next-28 |
+| statistics/advanced/non-parametric-methods | order, sort-buckets, spot-error, cloze, match, estimate, branch, judge | next-28 |
+| statistics/advanced/time-series-analysis | sort-buckets, order, judge, match, estimate, spot-error, compare | next-28 |
+| statistics/expert/causal-inference | match, compare, trace, order, spot-error, judge, estimate, sort-buckets | next-28 |
+| statistics/expert/multivariate-statistics | match, order, estimate, sort-buckets, estimate, cloze, branch, estimate | next-28 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

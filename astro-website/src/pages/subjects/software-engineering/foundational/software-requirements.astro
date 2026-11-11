@@ -21,6 +21,225 @@ const costCfg = {
   crossings: false,
   height: 330,
 };
+
+const reqWishSort = {
+  "prompt": "Wish or requirement? File each claim:",
+  "buckets": [
+    "wish",
+    "requirement"
+  ],
+  "items": [
+    {
+      "label": "The app should be fast",
+      "bucket": 0
+    },
+    {
+      "label": "Search results return within 300 milliseconds at the 95th percentile with 10,000 concurrent users",
+      "bucket": 1
+    },
+    {
+      "label": "The service survives the loss of one data centre with under 60 seconds of interruption",
+      "bucket": 1
+    },
+    {
+      "label": "The system should be reliable",
+      "bucket": 0
+    },
+    {
+      "label": "User-friendly",
+      "bucket": 0
+    },
+    {
+      "label": "REQ-104: The system shall reject a duplicate invoice number within the same fiscal period",
+      "bucket": 1
+    }
+  ],
+  "why": "If you cannot write the test that fails, you have not written a requirement — and the disagreement surfaces at acceptance testing, the most expensive possible moment."
+};
+
+const reqElicitMatch = {
+  "prompt": "Pair each method with what it gets you:",
+  "pairs": [
+    {
+      "left": "interviews",
+      "right": "stated needs"
+    },
+    {
+      "left": "observation",
+      "right": "actual ones — workarounds, sticky notes, shadow spreadsheets"
+    },
+    {
+      "left": "workshops",
+      "right": "conflicting stakeholders in one room, conflicts visible early"
+    },
+    {
+      "left": "prototypes",
+      "right": "reactions to something concrete — more reliable than speculation about the abstract"
+    },
+    {
+      "left": "'users want more features'",
+      "right": "usually the loudest stakeholder wanting more features"
+    }
+  ],
+  "why": "Real users often want less software that fits the work — and each workaround observed is an unmet requirement wearing a disguise."
+};
+
+const reqTranscribeSpot = {
+  "prompt": "One line of this summary is wrong — click it:",
+  "lines": [
+    "Users routinely cannot articulate what they need.",
+    "They forget the obvious and mis-predict their own behaviour.",
+    "The stated wish and the actual need diverge reliably.",
+    "So the elicitor's job is dictation: write down the list and build it.",
+    "That is why watching nurses chart beats asking nurses to describe charting."
+  ],
+  "errorLine": 3,
+  "correction": "The job is closer to diagnosis than dictation — which is why observation and prototyping are first-class techniques.",
+  "why": "Users mis-predict their own behaviour; the divergence is what observation and prototypes exist to catch."
+};
+
+const reqConflictBranch = {
+  "root": "One screen, three legitimate demands. Walk the negotiation:",
+  "nodes": {
+    "start": {
+      "text": "Clinicians want full details visible in one click. Administrators object — why?",
+      "choices": [
+        {
+          "label": "Access must be gated by role for privacy compliance",
+          "next": "n2"
+        },
+        {
+          "label": "Clinicians type too slowly",
+          "next": "mis1"
+        }
+      ]
+    },
+    "mis1": {
+      "text": "Not the lesson's conflict — the objection is compliance, not keyboard speed.",
+      "choices": [
+        {
+          "label": "Take the compliance reading",
+          "next": "n2"
+        }
+      ]
+    },
+    "n2": {
+      "text": "Patients then demand their own data be visible. Which demand is that?",
+      "choices": [
+        {
+          "label": "Transparency",
+          "next": "n3"
+        },
+        {
+          "label": "Throughput",
+          "next": "mis2"
+        }
+      ]
+    },
+    "mis2": {
+      "text": "The demand is transparency — seeing your own data — not throughput.",
+      "choices": [
+        {
+          "label": "Take the transparency reading",
+          "next": "n3"
+        }
+      ]
+    },
+    "n3": {
+      "text": "All three are legitimate; some cannot be fully satisfied simultaneously. What resolves them?",
+      "choices": [
+        {
+          "label": "Read-only summary views, audit logs, granular consent — a negotiated specification",
+          "next": "end"
+        },
+        {
+          "label": "The project manager picks a winner and moves on",
+          "next": "mis3"
+        }
+      ]
+    },
+    "mis3": {
+      "text": "A specification that hides the conflict simply schedules the same argument for a later, more expensive date.",
+      "choices": [
+        {
+          "label": "Take the negotiated resolution",
+          "next": "end"
+        }
+      ]
+    },
+    "end": {
+      "text": "The negotiation is requirements engineering, not politics.",
+      "choices": []
+    }
+  },
+  "why": "Surfacing conflicts early is the point — a hidden conflict is an expensive appointment."
+};
+
+const reqMoscowCloze = {
+  "text": "The workhorse scheme runs: %%0%% — the release fails without it; %%1%% — important but deferrable; %%2%% — nice if cheap; %%3%% — not this time, and we are saying so on the record.",
+  "answers": [
+    [
+      "Must"
+    ],
+    [
+      "Should"
+    ],
+    [
+      "Could"
+    ],
+    [
+      "Won't",
+      "Won’t"
+    ]
+  ],
+  "hint": "Four words, four levels of commitment — the last is the cheapest conflict-prevention device in the field."
+};
+
+const reqQualityJudge = {
+  "statements": [
+    {
+      "s": "'Non-functional' means optional.",
+      "truth": false,
+      "why": "These requirements are frequently the binding constraints on the entire design."
+    },
+    {
+      "s": "They constrain every function at once rather than attaching to any single one.",
+      "truth": true,
+      "why": "Which is why they are adverbs and adjectives, not verbs."
+    },
+    {
+      "s": "A payments system with a perfect feature set that leaks card numbers has failed completely.",
+      "truth": true,
+      "why": "The quality attribute was the binding one."
+    },
+    {
+      "s": "Some methodologists prefer the label 'quality attribute requirements'.",
+      "truth": true,
+      "why": "Because the standard label undersells them."
+    }
+  ]
+};
+
+const reqFormatsCompare = {
+  "prompt": "Drag between the two ends:",
+  "before": {
+    "label": "SRS",
+    "text": "numbered, unique, traceable statements (each clause maps to a test) — beloved of regulated industries because every clause can be audited."
+  },
+  "after": {
+    "label": "User story",
+    "text": "'As a customer, I want a refund button so that I can return damaged goods without calling support' — made rigorous by acceptance criteria; trades completeness for adaptability."
+  },
+  "why": "The story format works when the team can talk to users continuously, and fails silently when it cannot."
+};
+
+const reqBoehmEstimate = {
+  "prompt": "By roughly what multiple does the cost of fixing a requirements defect grow per phase?",
+  "unit": "×",
+  "answer": 10,
+  "factor": 1.5,
+  "why": "Roughly an order of magnitude per phase — a workshop conversation; weeks in integration; releases, data migrations, emergency patches and trust in production."
+};
 ---
 <TopicPage slug="subjects/software-engineering/foundational/software-requirements">
 
@@ -61,6 +280,7 @@ const costCfg = {
     agreed to something different, discovering the disagreement at acceptance testing — the
     most expensive possible moment.
   </p>
+  <Widget no="3" caption="wish or requirement? file each claim" widget="sort-buckets" config={reqWishSort} />
   <p>
     The discipline has an uncomfortable secret: it is not really about writing documents.
     It is about discovering what people need — which they often cannot articulate, sometimes
@@ -102,12 +322,14 @@ const costCfg = {
     "the loudest stakeholder wants more features" — real users often want less software that
     fits the work.
   </p>
+  <Widget no="4" caption="pair each technique with what it gets you" widget="match" config={reqElicitMatch} />
   <p><em>Common misconception:</em> requirements engineering is transcription — ask the
   users what they want, write down the list, build it. Users routinely cannot articulate
   what they need, forget the obvious, and mis-predict their own behaviour; the stated wish
   and the actual need diverge so reliably that observation and prototyping exist as
   first-class techniques. The elicitor's job is closer to diagnosis than dictation —
   which is why watching the nurses chart beats asking the nurses to describe charting.</p>
+  <Widget no="5" caption="find the faulty line — the elicitor's job" widget="spot-error" config={reqTranscribeSpot} />
   <p>
     Elicitation is also where requirements conflicts surface, and surfacing them early is
     the point. A hospital booking system gives a compact example: clinicians want full
@@ -118,6 +340,7 @@ const costCfg = {
     engineering, not politics. A specification that hides the conflict simply schedules the
     same argument for a later, more expensive date.
   </p>
+  <Widget no="6" caption="walk the conflict to its resolution" widget="branch" config={reqConflictBranch} />
   <p>
     Because not every elicited wish can be built, elicitation flows directly into
     <em>prioritisation</em>. The MoSCoW scheme is the workhorse: Must (the release fails
@@ -129,6 +352,7 @@ const costCfg = {
     of rewriting themselves at integration time — and that negotiation is cheaper in a
     workshop than in a change request.
   </p>
+  <Widget no="7" caption="fill the four-word scheme" widget="cloze" config={reqMoscowCloze} />
 
   <h2>Functional versus non-functional requirements</h2>
   <p>
@@ -158,6 +382,7 @@ const costCfg = {
     has failed completely. Some methodologists prefer "quality attribute requirements"
     precisely because the standard name undersells them.
   </p>
+  <Widget no="8" caption="true or false — the undersold kind" widget="judge" config={reqQualityJudge} />
 
   <h2>Specification and validation</h2>
   <p>
@@ -172,6 +397,7 @@ const costCfg = {
     The story format trades completeness for adaptability; that trade works when the team
     can talk to users continuously, and fails silently when it cannot.
   </p>
+  <Widget no="9" caption="drag between the two formats" widget="compare" config={reqFormatsCompare} />
   <p>
     Whatever the format, the writing rules are the same, and they exist to defeat specific
     failure modes. Requirements should be <em>atomic</em> — one requirement, one test:
@@ -217,6 +443,7 @@ const costCfg = {
     the single most quoted figure in software economics and the entire business case for
     requirements engineering: cheap conversations, held early and on purpose.
   </p>
+  <Widget no="10" caption="estimate the per-phase cost growth" widget="estimate" config={reqBoehmEstimate} />
   <p><em>Common misconception:</em> a specification is finished when it is signed off — that
   requirements are written once, frozen, and any later change is a failure of discipline.
   Change is the guaranteed outcome, because stakeholders learn what they want by seeing

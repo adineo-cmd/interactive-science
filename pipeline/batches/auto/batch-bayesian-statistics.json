@@ -1,0 +1,141 @@
+[
+  {
+    "slug": "subjects/statistics/advanced/bayesian-statistics",
+    "activities": [
+      {
+        "anchor": "you subtract the overlap because counting both",
+        "type": "match",
+        "caption": "the grammar — pair each rule with its clause",
+        "name": "bayRuleMatch",
+        "config": {
+          "prompt": "Match each rule or event pair to its clause:",
+          "pairs": [
+            { "left": "P(A ∪ B) = P(A) + P(B) − P(A ∩ B)", "right": "the overlap is subtracted because counting both events counts their intersection twice" },
+            { "left": "mutually exclusive events", "right": "the overlap is empty — a card cannot be a heart and a spade" },
+            { "left": "independent events", "right": "one tells you nothing about the other: P(A ∩ B) = P(A) × P(B)" },
+            { "left": "two aces without replacement", "right": "the second draw is conditional on the first: (4/52) × (3/51) ≈ 0.0045" }
+          ],
+          "why": "Every real gambler's fallacy is a violation of one of these rules — usually treating dependent events as independent."
+        }
+      },
+      {
+        "anchor": "after a run of heads, tails is due",
+        "type": "compare",
+        "caption": "coins vs cards — drag the divider to the memory",
+        "name": "bayMemoryCompare",
+        "config": {
+          "prompt": "Two randomisers, one difference — drag the divider:",
+          "before": {
+            "label": "coins",
+            "text": "no memory — the sixth flip is still ½; the long-run 50/50 emerges from many flips, not from any self-correction"
+          },
+          "after": {
+            "label": "cards",
+            "text": "remember — draw without replacement and the deck's composition genuinely changes, making the second ace less likely"
+          },
+          "why": "'Due' reasoning works in exactly one place here: dependent events. Cards remember; coins do not."
+        }
+      },
+      {
+        "anchor": "Tree diagrams make",
+        "type": "spot-error",
+        "caption": "one line of this tree method is wrong — click it",
+        "name": "bayTreeSpot",
+        "config": {
+          "prompt": "One line of this tree-diagram method is wrong — click it:",
+          "lines": [
+            "Conditional probability: P(A|B) = P(A ∩ B) / P(B) — of the world where B happened, the fraction where A also happens.",
+            "It is asymmetric by nature — the conditioning direction matters.",
+            "P(rain|clouds) is high; P(clouds|rain) is 1, because every rainy day has clouds.",
+            "Each path's probability is the sum of its branch probabilities.",
+            "To find the probability of reaching any leaf of type X, you sum the paths."
+          ],
+          "errorLine": 3,
+          "correction": "Each path's probability is the product along it (the multiplication rule) — the summing happens across paths, not within one.",
+          "why": "Draw the medical-test scenario as a tree and the famous trap solves itself — provided the conditioning direction is right."
+        }
+      },
+      {
+        "anchor": "Intuition shouts",
+        "type": "estimate",
+        "caption": "call the posterior before the tree does",
+        "name": "bayPostEst",
+        "config": {
+          "prompt": "A 99%-accurate test for a disease affecting 1 in 10,000 returns positive. What is the probability you are ill (%)?",
+          "unit": "%",
+          "answer": 1,
+          "factor": 1.5,
+          "why": "99 / 10,098 ≈ 0.98% — about 1 time in 100. The 999,900 healthy produce ~9,999 false positives, drowning the 99 true positives.",
+          "context": "Posterior odds = prior odds × 99, and prior odds were 1 : 9,999."
+        }
+      },
+      {
+        "anchor": "posterior today's prior",
+        "type": "order",
+        "caption": "the sequential update — rebuild the little table",
+        "name": "baySeqOrder",
+        "config": {
+          "prompt": "Repeat positives, in sequence — order the update table:",
+          "items": [
+            "Prior: odds 1 : 9,999 — the base rate itself",
+            "First positive: odds × 99 → 1 : 101, a probability of about 0.98%",
+            "Second independent positive: × 99 again → odds ≈ 1 : 1.02, about 49.5%",
+            "Third positive: roughly 99% — the evidence has converged"
+          ],
+          "why": "Each round's posterior feeding the next prior is the qualitative behaviour of all scientific inference."
+        }
+      },
+      {
+        "anchor": "A coin-flip example with real numbers",
+        "type": "trace",
+        "caption": "which posterior wore the uniform prior?",
+        "name": "bayBetaTrace",
+        "config": {
+          "prompt": "10 flips, 7 heads — which curve is the posterior under the uniform prior?",
+          "curves": [
+            { "expr": "x^7*(1-x)^3", "color": "#1d4ed8", "label": "uniform prior — Beta(8,4), mean 0.67" },
+            { "expr": "x^8*(1-x)^3", "color": "#0f766e", "label": "mint inspector's prior — Beta(9,4), mean 0.69" },
+            { "expr": "0.003*exp(-300*(x-0.7)^2)", "color": "#b42318", "label": "no prior — a spike at the raw 0.7" }
+          ],
+          "correct": 0,
+          "x": { "min": 0, "max": 1 },
+          "y": { "min": 0, "max": 0.003 },
+          "xlabel": "θ (head probability)",
+          "ylabel": "posterior density (shape)",
+          "why": "The informative prior is a gentle nudge — mean 0.69 against 0.67 — already fading; feed in 7,000 heads in 10,000 flips and no reasonable prior matters at all."
+        }
+      },
+      {
+        "anchor": "expected to share that profile",
+        "type": "estimate",
+        "caption": "size the pool of matching innocents",
+        "name": "bayDnaEst",
+        "config": {
+          "prompt": "A 1-in-a-million DNA profile, a country of 60 million. How many people are expected to share it?",
+          "unit": "people",
+          "answer": 60,
+          "factor": 1.5,
+          "why": "1 in a million × 60 million ≈ 60 — so with no other evidence the probability of guilt given the match is roughly 1/60 ≈ 1.7%, not 99.9999%.",
+          "context": "Posterior odds = prior odds × the likelihood ratio; the jury's job is the prior."
+        }
+      },
+      {
+        "anchor": "attach a loss function",
+        "type": "sort-buckets",
+        "caption": "two ways to be wrong — file the stakes",
+        "name": "bayLossSort",
+        "config": {
+          "prompt": "Every threshold sets a trade — which error costs more here?",
+          "buckets": ["the false alarm costs more", "the miss costs more"],
+          "items": [
+            { "label": "spam filter — losing a job-offer email to the junk folder", "bucket": 0 },
+            { "label": "fire alarm — sleeping through a real fire", "bucket": 1 },
+            { "label": "screening — missing a treatable disease", "bucket": 1 },
+            { "label": "fraud engine — blocking a legitimate customer's payment", "bucket": 0 }
+          ],
+          "why": "An airport security officer and an oncologist can rationally act differently on identical evidence — their loss tables differ, and the mathematics cannot value outcomes for you."
+        }
+      }
+    ]
+  }
+]

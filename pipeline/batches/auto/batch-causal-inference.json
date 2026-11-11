@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "subjects/statistics/expert/causal-inference",
+    "activities": [
+      {
+        "anchor": "Nothing in the data forces the choice",
+        "type": "match",
+        "caption": "naming the direction — pair each role with its clause",
+        "name": "ciVarMatch",
+        "config": {
+          "prompt": "Match each role or regression to what it asserts:",
+          "pairs": [
+            { "left": "independent variable", "right": "the suspected driver — plotted on the horizontal axis" },
+            { "left": "dependent variable", "right": "the response — plotted on the vertical axis" },
+            { "left": "regressing revision hours on exam score", "right": "'given five hours of practice, what score should we expect?'" },
+            { "left": "the reverse regression", "right": "'given a score of 70, how much practice is typical?' — a genuinely different quantity, not a rounding of the first" }
+          ],
+          "why": "The least-squares line of y on x is not the algebraic inverse of the line of x on y — each answers a different conditional question."
+        }
+      },
+      {
+        "anchor": "the direction of causation can be read off the scatter",
+        "type": "compare",
+        "caption": "what the plot records vs what supplies the arrow — drag the divider",
+        "name": "ciDirCompare",
+        "config": {
+          "prompt": "The same 200 points, two claims — drag the divider:",
+          "before": {
+            "label": "what the scatter records",
+            "text": "correlation of 0.9 in either direction — association, identical whichever arrow you draw"
+          },
+          "after": {
+            "label": "what supplies the direction",
+            "text": "time ordering, experiment design or a defensible causal argument — x causing y, y causing x, or a third variable causing both"
+          },
+          "why": "Strength of association is not a direction-finder; the diagram only records the association."
+        }
+      },
+      {
+        "anchor": "collected symmetrically around zero",
+        "type": "trace",
+        "caption": "r ≈ 0, yet perfectly deterministic — which curve?",
+        "name": "ciCurveTrace",
+        "config": {
+          "prompt": "The relationship is deterministic but r is essentially 0 — which curve is it?",
+          "curves": [
+            { "expr": "x^2", "color": "#1d4ed8", "label": "a symmetric curve — no linear pattern at all" },
+            { "expr": "0.8*x", "color": "#0f766e", "label": "a strong positive line" },
+            { "expr": "-0.8*x", "color": "#b42318", "label": "a strong negative line" }
+          ],
+          "correct": 0,
+          "x": { "min": -3, "max": 3 },
+          "y": { "min": -3, "max": 9 },
+          "xlabel": "x",
+          "ylabel": "y",
+          "why": "r = 0 does not certify independence — it certifies only the absence of a linear pattern; curvature, clusters, gaps and outliers are invisible to a single number."
+        }
+      },
+      {
+        "anchor": "a lower half and an upper half",
+        "type": "order",
+        "caption": "the semi-averages method, in order",
+        "name": "ciSemiOrder",
+        "config": {
+          "prompt": "Fit the line by semi-averages — order the steps:",
+          "items": [
+            "Order the points by x, then split into lower and upper halves",
+            "Compute the mean of x and the mean of y in each half — (2.5, 20) and (6.5, 45) in the worked set",
+            "Draw the unique straight line through those two mean points",
+            "Read the slope: (45 − 20) ÷ (6.5 − 2.5) = 6.25 wpm per hour"
+          ],
+          "why": "A one-pass prototype of least squares — and robust to a single wild point in a way naive eyeballing is not."
+        }
+      },
+      {
+        "anchor": "minimises the sum of squared vertical distances",
+        "type": "spot-error",
+        "caption": "one line of this fitted-line anatomy is wrong — click it",
+        "name": "ciLineSpot",
+        "config": {
+          "prompt": "One line of this fitted-line anatomy is wrong — click it:",
+          "lines": [
+            "Slope b = r × (sy ÷ sx): 0.80 × (10 ÷ 5) = 1.6 points per hour.",
+            "Intercept a = mean of y − b × mean of x: 70 − 1.6 × 12 = 50.8.",
+            "Predicted score at 15 hours: 50.8 + 1.6 × 15 = 74.8.",
+            "The slope is a claim about each individual student — 1.6 points for this student.",
+            "R² = 0.64: hours account for 64% of the variance, leaving 36% — precisely where confounding enters."
+          ],
+          "errorLine": 3,
+          "correction": "The slope is a claim about average effect within the observed range — 1.6 points per hour on average, never 1.6 for this student.",
+          "why": "The line explains variation, not persons — the slope is an anatomy of averages."
+        }
+      },
+      {
+        "anchor": "which may be outside the data",
+        "type": "judge",
+        "caption": "true or false — the intercept's meaning",
+        "name": "ciIntJudge",
+        "config": {
+          "statements": [
+            {
+              "s": "The intercept always means something.",
+              "truth": false,
+              "why": "It is the prediction at x = 0 — which may be outside the data (nobody revised for 0 hours here and sat the exam) or meaningless (zero height)."
+            },
+            {
+              "s": "Here the intercept 50.8 is the predicted score with zero revision.",
+              "truth": true,
+              "why": "That is what it computes — but zero revision hours is an x value the data never contains."
+            },
+            {
+              "s": "Interpret the intercept only where the data actually lives.",
+              "truth": true,
+              "why": "Report it, but read it only inside the observed range."
+            }
+          ]
+        }
+      },
+      {
+        "anchor": "Shoe size against age fits beautifully",
+        "type": "estimate",
+        "caption": "export the fit past its range — what shoe size?",
+        "name": "ciShoeEst",
+        "config": {
+          "prompt": "Shoe size against age fits ages 3 to 10 beautifully. Extrapolated to age 25, it predicts what size?",
+          "unit": "size",
+          "answer": 17,
+          "factor": 1.2,
+          "why": "Size 17 — the true relationship levels off where the data ends. Extrapolation fails categorically, not gradually.",
+          "context": "An extrapolation of 10% past the range is an estimate; 50% past it is a hope; past a known turning point it is wrong by construction."
+        }
+      },
+      {
+        "anchor": "directed acyclic graphs encode assumed",
+        "type": "sort-buckets",
+        "caption": "the diagrams' verdict — control, or never control?",
+        "name": "ciDagSort",
+        "config": {
+          "prompt": "Pearl's rules are unforgiving — file each variable:",
+          "buckets": ["control for it", "never control for it"],
+          "items": [
+            { "label": "a confounder — a common cause of treatment and outcome", "bucket": 0 },
+            { "label": "a mediator — part of the effect you would erase", "bucket": 1 },
+            { "label": "a collider — a variable caused by two others", "bucket": 1 },
+            { "label": "the smoking-versus-birth-weight style error", "bucket": 1 },
+            { "label": "'adjust for everything in the database'", "bucket": 1 }
+          ],
+          "why": "Conditioning on a collider manufactures association from nothing — among movie stars, beauty and talent appear negatively correlated because stardom requires at least one of the two."
+        }
+      }
+    ]
+  }
+]
