@@ -21,6 +21,170 @@ const linacCfg = {
     { math: '5 · Fractionate', note: 'Daily small doses (typically ~2 Gy × 30–35) exploit normal tissue repair between fractions while tumours accumulate damage.' },
   ],
 };
+
+const rtParadoxBranch = {
+  "root": "Ionising radiation damages every cell alike — tumour or healthy. The cure is a distribution problem, not a different substance.",
+  "nodes": {
+    "start": {
+      "text": "Where does the dose go?",
+      "choices": [
+        {
+          "label": "Stack it where the tumour is; spread it thin everywhere else",
+          "next": "timing",
+          "feedback": "The field's founding insight: dose distribution, plus biology, is what separates therapy from damage."
+        },
+        {
+          "label": "Deliver the smallest useful dose, as a diagnostic X-ray does",
+          "next": "timing",
+          "feedback": "Diagnosis minimises dose; therapy deliberately delivers thousands of times more — and gets away with it only through geometry, timing and verification."
+        }
+      ]
+    },
+    "timing": {
+      "text": "One decision left: all at once, or divided in time?",
+      "choices": [
+        {
+          "label": "Divide it into recoverable daily pieces",
+          "next": "end",
+          "feedback": "The schedule becomes part of the physics: time is the one step that is biology rather than engineering."
+        },
+        {
+          "label": "Deliver everything in a single session",
+          "next": "end",
+          "feedback": "The supporting biology is squandered — the schedule is a designed part of the dose, not an administrative detail."
+        }
+      ]
+    },
+    "end": {
+      "text": "Geometry, timing, verification — the three supports under the whole trick."
+    }
+  },
+  "why": "The beam cannot be seen, felt or taken back; every number on the console is an output of the physics, verified before the beam is turned on."
+};
+
+const rtBeamOrder = {
+  "prompt": "The linac is a chain of specialists — put the stages in beam order:",
+  "items": [
+    "the electron gun injects electrons into the guide",
+    "standing-wave microwave fields surf them to near light speed",
+    "a bending magnet sweeps the beam around a corner, filtering by energy",
+    "the tungsten target converts their kinetic energy into X-ray photons",
+    "a flattening filter evens the forward-peaked beam",
+    "jaws set the rectangular field; the multileaf collimator sculpts it, moving live"
+  ],
+  "why": "Each stage hands a more refined beam to the next. For electron therapy the target is retracted so the electron beam itself exits — useful for shallow targets."
+};
+
+const rtCobaltSort = {
+  "prompt": "Two machines, two habits — file each fact:",
+  "buckets": [
+    "A linac",
+    "A cobalt-60 unit"
+  ],
+  "items": [
+    {
+      "label": "off when it is off",
+      "bucket": 0
+    },
+    {
+      "label": "gamma-emitting source that never switches off",
+      "bucket": 1
+    },
+    {
+      "label": "manufactures photons only while powered",
+      "bucket": 0
+    },
+    {
+      "label": "must be shielded around the clock",
+      "bucket": 1
+    },
+    {
+      "label": "holds no radioactive material",
+      "bucket": 0
+    }
+  ],
+  "why": "That property shapes everything from machine servicing to decommissioning — the beam is manufactured on demand."
+};
+
+const rtRulesCloze = {
+  "text": "Dose %%0%% exponentially with depth as photons are absorbed and scattered; it falls with the %%1%% square of distance from the source — double the distance, quarter the dose rate — and it builds up below the surface before it decays.",
+  "answers": [
+    "attenuates",
+    "inverse"
+  ],
+  "hint": "First word: what the beam does with depth. Second: the geometric law that makes every 5 cm of patient geometry matter."
+};
+
+const rtDmaxPlace = {
+  "prompt": "Depth in water, centimetres: a 6 MV beam peaks at about 1.5 cm. Where does a 10 MV beam peak?",
+  "labels": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "scale": {
+    "min": 0,
+    "max": 6
+  },
+  "answer": 2.5,
+  "tolerance": 0.3,
+  "why": "About 2.5 cm at 10 MV, deeper still at higher energies — higher energies push the peak deeper and attenuate less, better for deep targets and worse for shallow ones."
+};
+
+const rtEnergySpot = {
+  "prompt": "One line of this machine-room briefing is wrong — click it:",
+  "lines": [
+    "Higher energies push d_max deeper and attenuate less — better for deep targets.",
+    "Lower energies keep dose more contained near the entrance — kinder en route to a shallow target.",
+    "Higher energy is always the better machine.",
+    "6 MV machines treat the great majority of cases."
+  ],
+  "errorLine": 2,
+  "correction": "Energy is a matching decision, not a ranking — pushed deeper, the peak can worsen the dose to healthy tissue on the way to a shallow target.",
+  "why": "The best beam is the one whose depth–dose curve fits the patient's geometry."
+};
+
+const rtShapingCompare = {
+  "prompt": "Field shaping, then and now — drag the divider.",
+  "before": {
+    "label": "Custom blocks",
+    "text": "Dense alloy cast to the tumour's projected shape, wedged into the beam for each treatment — hours per patient, one static shape per field, daily handling."
+  },
+  "after": {
+    "label": "Multileaf collimator",
+    "text": "Motorised tungsten leaves moving during treatment — dozens of changing field shapes paint an intensity pattern no static block could, in minutes of automated delivery."
+  },
+  "why": "The clinical payoff: tumour concavities dosed while a nearby organ is protected. Every mechanical refinement of the beam buys normal tissue a smaller dose."
+};
+
+const rtModernJudge = {
+  "statements": [
+    {
+      "s": "IMRT/VMAT uses the moving leaves to vary dose rate across the field hundreds of times per beam.",
+      "truth": true,
+      "why": "Carving high dose around organs-at-risk with concavities no single field could produce."
+    },
+    {
+      "s": "IGRT adds daily on-board imaging because targets move with breathing and patients change day to day.",
+      "truth": true,
+      "why": "Sub-millimetre positioning is now routine."
+    },
+    {
+      "s": "Flattening-filter-free beams trade very high dose rates for beam uniformity.",
+      "truth": false,
+      "why": "The other way round: they trade beam uniformity FOR very high dose rates — which is what makes stereotactic sessions short enough to hold still."
+    },
+    {
+      "s": "Each modern layer is the same linac with a sharper question asked of it.",
+      "truth": true,
+      "why": "IMRT, IGRT and flattening-filter-free delivery are refinements of one machine, not separate technologies."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/radiation-therapy/foundational/therapy-physics-and-the-linac">
 
@@ -57,6 +221,7 @@ const linacCfg = {
     deliberately delivers thousands of times more — and gets away with it only through
     geometry, timing and verification.
   </p>
+  <Widget no="3" caption="walk the distribution decision" widget="branch" config={rtParadoxBranch} />
   <p>
     The machine at the centre of that trick is the <strong>linear accelerator</strong> —
     the linac — a device the size of a small room that manufactures a precisely shaped
@@ -115,11 +280,13 @@ const linacCfg = {
     intensity pattern. The whole treatment head rides a <strong>gantry</strong> rotating a
     full circle around the couch, so beams converge on the tumour from any angle.
   </p>
+  <Widget no="4" caption="rebuild the beam's journey, stage by stage" widget="order" config={rtBeamOrder} />
   <p><em>Common misconception:</em> "a linac stores radiation, like a radioactive source
   in a cabinet." Unlike a cobalt-60 unit — whose gamma-emitting source never switches off
   and must be shielded around the clock — a linac is off when it is off. It manufactures
   photons only while powered and holds no radioactive material. That property shapes
   everything from machine servicing to decommissioning.</p>
+  <Widget no="5" caption="file each fact under the right machine" widget="sort-buckets" config={rtCobaltSort} />
   <p><em>Common misconception:</em> "after an external-beam treatment the patient is
   radioactive." They are not. The photons pass through and are gone; no radioactive
   material is left in the body, and a patient who has just received photon therapy poses
@@ -166,6 +333,7 @@ const linacCfg = {
     surface before it decays — which is not a nuisance but the design feature the next
     section exploits.
   </p>
+  <Widget no="6" caption="fill the blanks — the three behaviours" widget="cloze" config={rtRulesCloze} />
 
   <h2>Beam characteristics: the depth–dose curve</h2>
   <p>
@@ -208,12 +376,14 @@ const linacCfg = {
     collimator design and by placing the patient far from the source, and minimising it
     is what lets planners protect a spinal cord sitting millimetres from a target.
   </p>
+  <Widget no="7" caption="place d_max on the depth scale" widget="place" config={rtDmaxPlace} />
   <p><em>Common misconception:</em> "a more powerful machine — higher energy — is always
   the better one." Energy is a matching decision, not a ranking. Higher energies penetrate
   deep tumours more efficiently but push the peak dose deeper, which can <em>worsen</em>
   the dose to healthy tissue en route to a shallow target; 6 MV machines treat the great
   majority of cases. The best beam is the one whose depth–dose curve fits the patient's
   geometry.</p>
+  <Widget no="8" caption="find the faulty line — an energy briefing" widget="spot-error" config={rtEnergySpot} />
   <p><em>Common misconception:</em> radiation "burns through" the skin to reach the
   tumour, so skin damage is inevitable. The build-up region exists precisely to avoid
   this — surface dose problems in modern therapy are usually a sign of a deliberate
@@ -255,6 +425,7 @@ const linacCfg = {
     fraction of a gray matters, because the doses that cure tumours are the same doses
     that hurt healthy tissue when misdelivered.
   </p>
+  <Widget no="9" caption="drag the divider — blocks versus leaves" widget="compare" config={rtShapingCompare} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -319,6 +490,7 @@ const linacCfg = {
     what makes stereotactic treatments short enough for patients to hold still. Each
     layer is the same linac with a sharper question asked of it.
   </p>
+  <Widget no="10" caption="true or false — the modern layers" widget="judge" config={rtModernJudge} />
   <p>
     <strong>The team and the safety net are part of the physics.</strong> Radiation
     oncology is a triangle: the radiation oncologist prescribes, the medical physicist

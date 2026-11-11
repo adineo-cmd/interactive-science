@@ -505,6 +505,30 @@
 | psychology/intermediate/personality-theories | sort-buckets, place, judge, compare, match, spot-error, predict, timeline | next-24 |
 | psychology/intermediate/research-methods | match, sort-buckets, spot-error, judge, match, cloze, branch, timeline | next-24 |
 | psychology/intermediate/social-psychology | order, judge, match, spot-error, sort-buckets, estimate, compare, predict | next-24 |
+| public-administration/foundational/the-administrative-state | spot-error, timeline, branch, sort-buckets, cloze, estimate, match, compare | next-25 |
+| public-health/foundational/profession-and-science-of-public-health | order, spot-error, sort-buckets, estimate, cloze, branch, judge, match | next-25 |
+| public-relations/foundational/what-public-relations-is | timeline, spot-error, sort-buckets, cloze, estimate, judge, match, branch | next-25 |
+| radiation-therapy/foundational/therapy-physics-and-the-linac | branch, order, sort-buckets, cloze, place, spot-error, compare, judge | next-25 |
+| radiography/foundational/x-ray-physics-and-safety | order, match, sort-buckets, spot-error, estimate, cloze, compare, judge | next-25 |
+| real-estate/foundational/property-and-ownership | sort-buckets, judge, sort-buckets, match, spot-error, cloze, estimate, compare | next-25 |
+| religious-studies/advanced/myth-ritual-symbol | sort-buckets, cloze, match, compare, judge, sort-buckets, spot-error, order | next-25 |
+| religious-studies/advanced/scripture-and-interpretation | timeline, spot-error, sort-buckets, match, judge, cloze, branch, estimate | next-25 |
+| religious-studies/expert/philosophy-of-religion | estimate, spot-error, match, cloze, order, match, timeline, branch | next-25 |
+| religious-studies/expert/religion-in-the-modern-world | match, spot-error, order, estimate, judge, cloze, compare, sort-buckets | next-25 |
+| religious-studies/foundational/worlds-traditions | spot-error, match, sort-buckets, judge, order, cloze, match, estimate | next-25 |
+| religious-studies/foundational/worship-sacred-places-and-leaders | sort-buckets, spot-error, match, judge, cloze, order, compare, match | next-25 |
+| religious-studies/intermediate/buddhism | order, match, spot-error, cloze, sort-buckets, estimate, branch, compare | next-26 |
+| religious-studies/intermediate/christianity | match, sort-buckets, order, place, timeline, branch, compare, spot-error | next-26 |
+| religious-studies/intermediate/hinduism | match, judge, sort-buckets, order, spot-error, compare, timeline, estimate, order | next-26 |
+| religious-studies/intermediate/islam | order, match, judge, estimate, branch, spot-error, order, compare, match | next-26 |
+| religious-studies/intermediate/judaism | cloze, sort-buckets, branch, judge, timeline, compare, match | next-26 |
+| religious-studies/intermediate/studying-religion-academically | sort-buckets, judge, match, spot-error, cloze, timeline, spot-error, compare, match | next-26 |
+| respiratory-therapy/foundational/cardiopulmonary-assessment | branch, order, sort-buckets, place, judge, cloze, spot-error, match | next-26 |
+| robotics/foundational/configuration-space | match, cloze, spot-error, sort-buckets, compare, place, order, estimate | next-26 |
+| social-work/foundational/the-social-work-profession | sort-buckets, match, cloze, order, spot-error, judge, compare, branch | next-26 |
+| sociology/advanced/globalisation-and-society | timeline, judge, sort-buckets, match, estimate, spot-error, judge, compare | next-26 |
+| sociology/advanced/social-networks | match, cloze, order, sort-buckets, judge, compare, spot-error, compare | next-26 |
+| sociology/expert/demography | judge, branch, match, place, cloze, estimate, compare, sort-buckets | next-26 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 

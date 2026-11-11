@@ -1,0 +1,135 @@
+[
+  {
+    "slug": "subjects/robotics/foundational/configuration-space",
+    "activities": [
+      {
+        "anchor": "Nothing about the robot has changed",
+        "type": "match",
+        "caption": "pair each question with its C-space rewrite",
+        "name": "cfgMoveMatch",
+        "config": {
+          "prompt": "The abstraction's translations — pair each question with its rewrite:",
+          "pairs": [
+            { "left": "'Where is the robot?'", "right": "'Where is the point?'" },
+            { "left": "a six-jointed arm", "right": "one point drifting through a six-dimensional space" },
+            { "left": "each dimension of that space", "right": "one joint's angle" },
+            { "left": "'Can the arm reach around the pillar without hitting it?'", "right": "Can a path between two points avoid certain forbidden regions?" }
+          ],
+          "why": "Nothing physical has changed — everything about the problems has. And because every robot has a configuration, one set of tools serves grippers, wheels, snake spines and humanoids alike."
+        }
+      },
+      {
+        "anchor": "the number of independent numbers needed to pin down",
+        "type": "cloze",
+        "caption": "fill the counting rules",
+        "name": "cfgCountCloze",
+        "config": {
+          "text": "A free rigid body in the plane needs %%0%% numbers — two positions, one rotation; in space it needs %%1%%. A revolute joint contributes %%2%% freedom; a ball-and-socket joint contributes %%3%%.",
+          "answers": [["3", "three"], ["6", "six"], ["1", "one"], ["3", "three"]],
+          "hint": "Plane, space, hinge, ball-and-socket."
+        }
+      },
+      {
+        "anchor": "no quality of motor rescues you",
+        "type": "spot-error",
+        "caption": "find the faulty line — the actuator audit",
+        "name": "cfgGrublerSpot",
+        "config": {
+          "prompt": "One line of this design audit is wrong — click it:",
+          "lines": [
+            "Grübler's formula is honest bookkeeping for linkages whose joints form loops that constrain each other.",
+            "The four-bar sits inside your windshield wiper and a thousand engines.",
+            "With fewer degrees of freedom than actuators, a mechanism flops uncontrolled; with more, it binds and fights itself.",
+            "A correct count is the design's certificate: the linkage moves predictably, never flops and never jams.",
+            "One input — spin the crank — determines the whole four-bar's motion."
+          ],
+          "errorLine": 2,
+          "correction": "It's the reverse: fewer degrees of freedom than actuators binds and fights itself; more, and it flops uncontrolled.",
+          "why": "Get the count wrong in either direction and no quality of motor rescues you — which is why the formula delivers its verdict from a parts list, before anything is built."
+        }
+      },
+      {
+        "anchor": "a puzzling industry fact",
+        "type": "sort-buckets",
+        "caption": "six joints or seven? file the reasons",
+        "name": "cfgJointsSort",
+        "config": {
+          "prompt": "Why 6 and why 7 — file each reason:",
+          "buckets": ["6 joints — the minimum", "7 joints — the redundancy"],
+          "items": [
+            { "label": "a free body in space needs 6 DOF — place the gripper anywhere, any orientation", "bucket": 0 },
+            { "label": "the standard industrial arm", "bucket": 0 },
+            { "label": "slack to reach around obstacles while holding the gripper pose fixed", "bucket": 1 },
+            { "label": "elephant trunks and human arms — redundancy of the same kind", "bucket": 1 },
+            { "label": "a 6-dimensional task surface carved inside a 7-dimensional space", "bucket": 1 },
+            { "label": "self-motion: infinitely many points projecting onto each point of the surface", "bucket": 1 }
+          ],
+          "why": "That infinity of configurations per pose is redundancy, and it is a feature — not a joint wasted."
+        }
+      },
+      {
+        "anchor": "Three spaces matter",
+        "type": "compare",
+        "caption": "drag between workspace and task space",
+        "name": "cfgSpacesCompare",
+        "config": {
+          "prompt": "Two of the three spaces, side by side — drag the divider:",
+          "before": {
+            "label": "Workspace",
+            "text": "The set of points the end-effector can physically reach — a property of the arm's geometry, at most six dimensions, usually fewer."
+          },
+          "after": {
+            "label": "Task space",
+            "text": "Whatever the job actually lives in — two dimensions for drawing on paper, six for spray-painting a car body, five or fewer for most assembly once fixtures handle alignment."
+          },
+          "why": "The third is configuration space — the joint values themselves. Planning happens in the biggest one: a humble tabletop wipe may demand navigating a 6-dimensional C-space while the hand traces a flat 2-dimensional path. The task never sees the difficulty; the configuration space carries it."
+        }
+      },
+      {
+        "anchor": "With links of one metre each",
+        "type": "place",
+        "caption": "place the annulus's outer edge",
+        "name": "cfgAnnulusPlace",
+        "config": {
+          "prompt": "A two-link planar arm, links of one metre each. Where does the reachable set's outer radius sit?",
+          "labels": ["0 m", "0.75 m", "1.5 m", "2.25 m", "3 m"],
+          "scale": { "min": 0, "max": 3 },
+          "answer": 2,
+          "tolerance": 0.2,
+          "why": "Fully extended: 1 + 1 = 2 m. And the inner radius is 0 — the arm can fold the gripper all the way back to the shoulder — so the reachable set is not a disk but an annulus from 0 to 2 m. Most reachable points correspond to two configurations (elbow up, elbow down), which is why inverse kinematics is not one-to-one."
+        }
+      },
+      {
+        "anchor": "The C-space's cleverest trick",
+        "type": "order",
+        "caption": "order the collision trick",
+        "name": "cfgObstacleOrder",
+        "config": {
+          "prompt": "From geometry nightmare to GPS-style map — order the move:",
+          "items": [
+            "The naive check: does a shaped, articulated robot intersect a shaped world, joint by joint — redone for every instant of every candidate path",
+            "Compute, once, the set of configurations in which the robot would collide with anything",
+            "Mark that whole set as forbidden terrain — the sofa becomes a curved region in joint-angle space",
+            "The question 'can the arm reach the shelf?' becomes 'can a path dodge that region?'",
+            "Exact computation is hard in high dimensions — so planners sample and test points instead of mapping the terrain in full"
+          ],
+          "why": "The same question a GPS answers, in stranger coordinates — and sampling is one more reason, not a compromise anyone celebrates."
+        }
+      },
+      {
+        "anchor": "remains the enemy, quantifiably",
+        "type": "estimate",
+        "caption": "call the grid's death",
+        "name": "cfgGridEst",
+        "config": {
+          "prompt": "Discretise every joint at a modest 63 values (0.1-radian steps). How many cells does the grid of a 2-DOF space have?",
+          "unit": "cells",
+          "answer": 3969,
+          "factor": 1.3,
+          "why": "63 × 63 = 3,969 — trivial. Six DOF is about 6.25 × 10¹⁰, dead on arrival; a humanoid's 30-plus DOF is physically absurd to store. Hence the sampling-based planners — RRT and probabilistic roadmaps — which never enumerate, trading guaranteed optimality for probabilistic completeness.",
+          "context": "Grids die of dimensionality; samplers probe instead."
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "subjects/respiratory-therapy/foundational/cardiopulmonary-assessment",
+    "activities": [
+      {
+        "anchor": "with a low blood pressure and a silent left chest",
+        "type": "branch",
+        "caption": "triage the panel — work the silent chest",
+        "name": "cpaSilentBranch",
+        "config": {
+          "root": "Triage by panel: respiratory rate high, blood pressure falling, and one side of the chest transmits no breath sound at all. The patient is not 'sick in general' — the panel is naming something specific. Work it:",
+          "nodes": {
+            "start": {
+              "text": "The examination narrows it first: what occupies the space where sounds should be?",
+              "choices": [
+                { "label": "Air — the lung has been pushed aside", "next": "air", "feedback": "Pneumothorax: air in the pleural space separates lung from chest wall — percussion tympanic, breath sounds and fremitus absent." },
+                { "label": "Fluid — the space is filled", "next": "fluid", "feedback": "Large effusion (or haemothorax): dull to percussion, sounds absent, and the mediastinum can shift." },
+                { "label": "The patient is anxious — nothing structural", "next": "anxious", "feedback": "Anxiety does not silence a chest. Falling pressure with absent sounds is an emergency pattern — assess, image, act." }
+              ]
+            },
+            "air": { "text": "Tympanic percussion, absent sounds, falling pressure: tension physiology is on the table — decompression outranks everything else.", "choices": [] },
+            "fluid": { "text": "Dullness, absent sounds, decreased fremitus: the film will size it, and drainage follows the physiology, not the number alone.", "choices": [] },
+            "anxious": { "text": "The panel never supports ignoring a quiet chest — triangulate: examination, gas, imaging. Assessment is the therapy's aiming system.", "choices": [] }
+          },
+          "why": "The gas-exchange machinery reports status continuously, in numbers and signs; the foundational skill is reading the panel and knowing the physiology behind every needle — and no single value ever diagnoses."
+        }
+      },
+      {
+        "anchor": "Follow a breath",
+        "type": "order",
+        "caption": "order the breath, step by step",
+        "name": "cpaBreathOrder",
+        "config": {
+          "prompt": "From nose to elastic recoil — rebuild the path:",
+          "items": [
+            "Air enters the conducting airways — trachea, bronchi, bronchioles — warmed, humidified, filtered, exchanging no gas",
+            "About 150 mL of anatomic dead space re-fills before anything fresh arrives",
+            "Fresh air reaches the roughly 300 million thin-walled alveoli wrapped in capillaries",
+            "Oxygen diffuses in and CO₂ diffuses out across a membrane under a micrometre thick",
+            "The whole exchange completes in about a quarter of a second",
+            "The diaphragm relaxes; elastic recoil pushes air back out"
+          ],
+          "why": "Contracting the diaphragm drops thoracic pressure so air flows in — which is why a patient whose lungs have lost elasticity (emphysema) must work to exhale."
+        }
+      },
+      {
+        "anchor": "is the heart of respiratory pathophysiology",
+        "type": "sort-buckets",
+        "caption": "file the V/Q failures",
+        "name": "cpaVQSort",
+        "config": {
+          "prompt": "Perfusion without ventilation, or ventilation without perfusion — file each:",
+          "buckets": ["shunt — perfusion without ventilation", "dead space — ventilation without perfusion"],
+          "items": [
+            { "label": "blood flowing past unventilated alveoli", "bucket": 0 },
+            { "label": "pneumonia, atelectasis", "bucket": 0 },
+            { "label": "hypoxaemia that resists oxygen", "bucket": 0 },
+            { "label": "air reaching unperfused alveoli", "bucket": 1 },
+            { "label": "pulmonary embolism", "bucket": 1 },
+            { "label": "the body's partial fix: blood steered away from poorly ventilated regions", "bucket": 0 }
+          ],
+          "why": "That partial fix is hypoxic vasoconstriction. The gas exposes which side failed — ventilation or perfusion — which is why V/Q matching sits at the centre of the specialty."
+        }
+      },
+      {
+        "anchor": "saturation barely falls until PaO",
+        "type": "place",
+        "caption": "place where the plateau breaks",
+        "name": "cpaCurvePlace",
+        "config": {
+          "prompt": "On the flat top of the S-shaped oxyhaemoglobin curve, saturation stays high until arterial O₂ tension falls below roughly what?",
+          "labels": ["0", "25", "50", "75", "100"],
+          "scale": { "min": 0, "max": 100 },
+          "answer": 60,
+          "tolerance": 6,
+          "why": "Below about 60 mmHg the curve turns steep — tissue-unloading territory. Acid, heat and CO₂ all shift the curve right (easier unloading), linking the two gases' transport."
+        }
+      },
+      {
+        "anchor": "a patient hyperventilating on 100 mL of blood",
+        "type": "judge",
+        "caption": "true or false — the hyperventilation trap",
+        "name": "cpaHardJudge",
+        "config": {
+          "statements": [
+            { "s": "Breathing harder always raises PaO₂ meaningfully.", "truth": false, "why": "Oxygen uptake is perfusion-limited and haemoglobin-limited; blood bypassing the alveoli is not fixed by moving more air." },
+            { "s": "Ventilation moves CO₂ fast, while oxygen uptake is limited by perfusion and haemoglobin.", "truth": true, "why": "That asymmetry is the physiology behind the trap — CO₂ responds to ventilation, oxygen does not, in shunt." },
+            { "s": "A shunt patient breathing harder will raise PaO₂ only a little, at best.", "truth": true, "why": "The bypassed blood never meets fresh air — that is what makes shunt oxygen-resistant." },
+            { "s": "The asymmetry is why the ABG can separately implicate the lungs (CO₂) and the metabolism (HCO₃⁻).", "truth": true, "why": "A diagnostic elegance the therapist works with every shift." }
+          ]
+        }
+      },
+      {
+        "anchor": "drilled until automatic",
+        "type": "cloze",
+        "caption": "fill the normal ranges",
+        "name": "cpaRangesCloze",
+        "config": {
+          "text": "The gas reports four principal values — pH normal %%0%%, PaCO₂ %%1%% mmHg, HCO₃⁻ %%2%% mEq/L, plus PaO₂.",
+          "answers": [["7.35–7.45", "7.35-7.45", "7.35 to 7.45", "7.35 - 7.45"], ["35–45", "35-45", "35 to 45"], ["22–26", "22-26", "22 to 26"]],
+          "hint": "Three ranges, in the order the gas reports them."
+        }
+      },
+      {
+        "anchor": "The examination narrows the hypothesis before the imaging",
+        "type": "spot-error",
+        "caption": "find the faulty line — the four moves audited",
+        "name": "cpaExamSpot",
+        "config": {
+          "prompt": "One line of this exam summary is wrong — click it:",
+          "lines": [
+            "Inspection: neck-muscle use and nostril flaring are distress signs; a barrel chest suggests hyperinflation.",
+            "Palpation: tactile fremitus increases over consolidated lung, decreases over fluid.",
+            "Percussion: hollow over normal lung, dull over consolidation or fluid, tympanic over pneumothorax.",
+            "Crackles are the sound of narrowed airways — a harsh cousin of the wheeze.",
+            "Auscultation: vesicular is normal; bronchial sounds are harsh and sit over consolidation."
+          ],
+          "errorLine": 3,
+          "correction": "Crackles are fluid in the airways — oedema, pneumonia, fibrosis; wheezes are the narrowed-airway sound (asthma, COPD).",
+          "why": "The added sounds also include the pleural friction rub — inflamed pleura grating. Dull percussion plus bronchial breath sounds plus crackles is pneumonia's signature long before the film."
+        }
+      },
+      {
+        "anchor": "Labs complete the picture and cross-check the gas",
+        "type": "match",
+        "caption": "pair each lab with what it flags",
+        "name": "cpaLabsMatch",
+        "config": {
+          "prompt": "The lab panel — pair each value with its question:",
+          "pairs": [
+            { "left": "haemoglobin", "right": "sets oxygen content — anaemia can leave breathlessness with normal saturations" },
+            { "left": "BNP", "right": "points at cardiac causes of breathlessness" },
+            { "left": "troponin", "right": "flags myocardial injury" },
+            { "left": "D-dimer", "right": "helps exclude embolism in low-risk patients" },
+            { "left": "procalcitonin", "right": "shapes infection stories, with WBC and CRP" }
+          ],
+          "why": "Electrolytes travel with acid–base disorders too — chloride gaps, potassium shifts. The habit repeats: no single value diagnoses; the argument is triangulated."
+        }
+      }
+    ]
+  }
+]

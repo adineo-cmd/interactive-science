@@ -23,6 +23,146 @@ const safetyCfg = {
     { math: '5 · ALARA', note: 'As Low As Reasonably Achievable — the operating principle of the whole profession: same diagnostic answer, minimum dose.' },
   ],
 };
+
+const radTubeOrder = {
+  "prompt": "Inside the tube — put the production sequence in order:",
+  "items": [
+    "the filament is heated until electrons boil off it — thermionic emission",
+    "the kilovoltage peak (kVp) accelerates them across the gap",
+    "they slam into the spinning tungsten anode at around half the speed of light",
+    "the sudden deceleration releases the energy as X-ray photons"
+  ],
+  "why": "A vacuum tube with two ends: cathode to anode, and every photon the patient receives begins as this conversion of electrical energy."
+};
+
+const radSpectrumMatch = {
+  "prompt": "The tube's two photon factories — pair each term:",
+  "pairs": [
+    {
+      "left": "bremsstrahlung",
+      "right": "an electron skims past a tungsten nucleus and radiates whatever it lost — a continuous spectrum up to the kVp"
+    },
+    {
+      "left": "characteristic radiation",
+      "right": "an outer-shell electron falls into a knocked-out vacancy, emitting a photon of precise energy"
+    },
+    {
+      "left": "tungsten target",
+      "right": "high atomic number, high melting point"
+    },
+    {
+      "left": "molybdenum target (mammography)",
+      "right": "softer energies that contrast soft tissue better"
+    }
+  ],
+  "why": "The continuous spectrum is the honest signature of random braking; the characteristic lines depend on the target material."
+};
+
+const radInteractSort = {
+  "prompt": "Two mechanisms make the image — file each fact:",
+  "buckets": [
+    "Photoelectric effect",
+    "Compton scattering"
+  ],
+  "items": [
+    {
+      "label": "a photon fully absorbed, an electron ejected",
+      "bucket": 0
+    },
+    {
+      "label": "scales steeply with atomic number — approximately as the cube",
+      "bucket": 0
+    },
+    {
+      "label": "produces the crisp bone-versus-soft-tissue contrast",
+      "bucket": 0
+    },
+    {
+      "label": "a photon deflected, sharing its energy",
+      "bucket": 1
+    },
+    {
+      "label": "depends mostly on electron density; dominates at higher energies",
+      "bucket": 1
+    },
+    {
+      "label": "photons flying in all directions that fog the image",
+      "bucket": 1
+    }
+  ],
+  "why": "Contrast comes from photoelectric absorption; fog comes from Compton scatter — which is why grids and collimation exist."
+};
+
+const radCameraSpot = {
+  "prompt": "One line of this briefing on how the image forms is wrong — click it:",
+  "lines": [
+    "Nothing returns to the machine: the detector sits behind the patient.",
+    "The image is made by what gets through, which is why the discipline is called projection imaging.",
+    "The patient is positioned between tube and detector.",
+    "The machine photographs the inside by detecting rays bounced back from the tissue."
+  ],
+  "errorLine": 3,
+  "correction": "Nothing bounces back — the shadow is cast by what gets through, and the detector records it from behind the patient.",
+  "why": "The shadow can only be as good as the beam that casts it — which is why thickness, positioning and penetration matter so much."
+};
+
+const radCtEst = {
+  "prompt": "A chest radiograph is about 0.02 mSv; a CT abdomen is roughly 8 mSv. Roughly how many chest radiographs equal one CT abdomen?",
+  "unit": "chest X-rays",
+  "answer": 400,
+  "factor": 1.5,
+  "why": "About 400 — and for context, average natural background is around 2.4 mSv per year. The comparisons do not make dose trivial; they make justification and optimisation meaningful."
+};
+
+const radCumulCloze = {
+  "text": "The photons pass through or are absorbed and are gone in fractions of a second. What is genuinely cumulative is the %%0%%: each exposure adds a small increment of lifetime %%1%% risk, which is why dose history is recorded.",
+  "answers": [
+    [
+      "risk statistics",
+      "risk statistics"
+    ],
+    "stochastic"
+  ],
+  "hint": "First blank: what kind of bookkeeping adds up. Second: the no-threshold category of harm."
+};
+
+const radTradeCompare = {
+  "prompt": "Technique charts store resolved trades — drag the divider.",
+  "before": {
+    "label": "Large patient, cannot hold still",
+    "text": "Raise kVp by 15 per cent (60 to 69) — receptor exposure roughly doubles, so mAs drops to 2.5: higher penetration, half the dose quantity, half the exposure time, and half the motion-blur risk."
+  },
+  "after": {
+    "label": "Thin, still patient, fine-detail view",
+    "text": "Lower kVp for maximal subject contrast, more mAs accepted — sharp grey-scale separation beats dose economy on a milligray examination."
+  },
+  "why": "Every element of the trade is visible: kVp buys penetration and speed, mAs pays the dose bill, and the constraint of the case chooses where the saving lands."
+};
+
+const radRefineJudge = {
+  "statements": [
+    {
+      "s": "Stack identical absorbers and each one halves what is left — four halvings leave one sixteenth of the beam.",
+      "truth": true,
+      "why": "The half-value layer's arithmetic; it is why a few tenths of a millimetre of lead apron cuts scattered radiation to a small fraction."
+    },
+    {
+      "s": "The anode heel effect is exploited by placing the cathode end over thicker anatomy.",
+      "truth": true,
+      "why": "The target's own slant absorbs part of the exit beam, so intensity varies along the anode–cathode axis."
+    },
+    {
+      "s": "Iodine and barium contrast media work through the Compton effect.",
+      "truth": false,
+      "why": "They weaponise the photoelectric effect — absorption edges tuned almost exactly to the diagnostic spectrum."
+    },
+    {
+      "s": "The linear no-threshold model is an extrapolation from atomic-bomb-survivor data down to radiography's doses.",
+      "truth": true,
+      "why": "Where epidemiology cannot resolve the risk, the profession's answer is justification frameworks and detectors that keep dropping the dose per image."
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/radiography/foundational/x-ray-physics-and-safety">
 
@@ -77,6 +217,7 @@ const safetyCfg = {
     target at around half the speed of light, their sudden deceleration releases energy as
     X-ray photons — and it happens two ways.
   </p>
+  <Widget no="3" caption="rebuild the production sequence" widget="order" config={radTubeOrder} />
   <p>
     Most photons are <strong>bremsstrahlung</strong> ("braking radiation"): an electron skims
     past a tungsten nucleus, is deflected, and radiates away whatever energy it lost — which
@@ -89,6 +230,7 @@ const safetyCfg = {
     target of choice — and why mammography machines use molybdenum targets instead, shifting
     the spectrum to softer energies that contrast soft tissue better.
   </p>
+  <Widget no="4" caption="pair each spectral term with its mechanism" widget="match" config={radSpectrumMatch} />
   <p>
     The beam that leaves the port is already a designed product: an aluminium filter absorbs
     the useless low-energy photons that would dose the patient's skin without reaching the
@@ -126,6 +268,7 @@ const safetyCfg = {
     density, dominates at higher energies, and produces <em>scatter</em>: photons flying in all
     directions that fog the image from every angle.
   </p>
+  <Widget no="5" caption="file each fact under its interaction" widget="sort-buckets" config={radInteractSort} />
   <p>
     This is the physics behind the exposure-factor logic radiographers use daily. Raising kVp
     increases penetration and Compton scatter, reducing subject contrast and skin dose; lowering
@@ -153,6 +296,7 @@ const safetyCfg = {
   <em>through</em>. This is why the discipline is called projection imaging, why the patient is
   positioned between tube and detector, and why thickness, positioning and penetration matter
   so much — the shadow can only be as good as the beam that casts it.</p>
+  <Widget no="6" caption="find the faulty line — an imaging briefing" widget="spot-error" config={radCameraSpot} />
 
   <h2>Dose: how harm is counted</h2>
   <p>
@@ -173,12 +317,14 @@ const safetyCfg = {
     background itself, around 2.4 mSv per year. The comparisons do not make dose trivial —
     they make justification and optimisation meaningful.
   </p>
+  <Widget no="7" caption="call the comparison count" widget="estimate" config={radCtEst} />
   <p><em>Common misconception:</em> that radiation "stays in your body" after an X-ray — that
   the patient becomes radioactive, or that doses accumulate physically like a poison. The
   photons pass through or are absorbed and are gone in fractions of a second; nothing
   radioactive is implanted. What is genuinely cumulative is the <em>risk statistics</em>: each
   exposure adds a small increment of lifetime stochastic risk, which is why dose history is
   recorded — but "how long until it wears off?" has no physical meaning.</p>
+  <Widget no="8" caption="fill the blanks — what actually accumulates" widget="cloze" config={radCumulCloze} />
 
   <h2>ALARA in practice: time, distance, shielding</h2>
   <p>
@@ -276,6 +422,7 @@ const safetyCfg = {
     because sharp grey-scale separation matters more than dose economy on a milligray
     examination. Technique charts simply store hundreds of such resolved trades.
   </p>
+  <Widget no="9" caption="drag the divider — two resolved trades" widget="compare" config={radTradeCompare} />
   <p>
     Three refinements take you from technique charts to understanding. First,
     <strong>beam vocabulary</strong>: the half-value layer (HVL) — the absorber thickness that
@@ -296,6 +443,7 @@ const safetyCfg = {
     debate moot — justification frameworks, collective dose discipline, and detectors that
     keep dropping the dose per image.
   </p>
+  <Widget no="10" caption="true or false — the refinements" widget="judge" config={radRefineJudge} />
   <p>
     History closes the loop. For a period in the mid-twentieth century, shoe shops used
     unshielded fluoroscopes to show customers their toes inside new shoes — machines that ran
