@@ -1,58 +1,12 @@
 # Lesson health audit — foundational tier
 
-187 lessons: Weak (<40): 0 · Needs work (40–79): 46 · Good (≥80): 141
+187 lessons: Weak (<40): 0 · Needs work (40–79): 0 · Good (≥80): 187
 
 ## Weak (<40) (0)
 
-## Needs work (40–79) (46)
-- ** 73** subjects/environmental-engineering/foundational/water-chemistry-and-microbiology — 3541w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 0/2 (10)
-- ** 73** subjects/game-development/foundational/game-design-foundations — 2963w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 0/2 (10)
-- ** 73** subjects/physiotherapy/foundational/the-movement-sciences — 2639w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 0/2 (10)
-- ** 73** subjects/plumbing/foundational/plumbing-tools-and-safety — 2722w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 0/2 (10)
-- ** 73** subjects/political-science/foundational/forms-of-government — 2684w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 0/2 (10)
-- ** 74** subjects/physics/foundational/newtons-laws — 2792w, 3 callouts, 8 widgets — GAPS: what-to-notice 2/8 (11); recaps 0/2 (10)
-- ** 76** subjects/earth-science/foundational/weathering-erosion-and-landforms — 3207w, 4 callouts, 11 widgets — GAPS: what-to-notice 1/11 (14); recaps 1/2 (5)
-- ** 77** subjects/cognitive-science/foundational/what-is-cognitive-science — 3203w, 4 callouts, 8 widgets — GAPS: what-to-notice 1/8 (13); recaps 1/2 (5)
-- ** 77** subjects/cosmetology/foundational/infection-control-and-salon-safety — 3086w, 5 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/creative-writing/foundational/craft-image-detail-and-the-sentence — 2931w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/culinary-arts/foundational/kitchen-essentials-safety-knives-mise-en-place — 3578w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/dental-hygiene/foundational/the-sciences-behind-hygiene — 3171w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/earth-science/foundational/the-water-cycle — 3266w, 5 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/economics/foundational/money-inflation — 3247w, 4 callouts, 12 widgets — GAPS: what-to-notice 2/12 (13); recaps 1/2 (5)
-- ** 77** subjects/emergency-management/foundational/the-emergency-management-cycle — 3309w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/engineering/foundational/statics-structures — 3719w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/landscape-architecture/foundational/landscape-design-process — 2906w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/languages/foundational/how-to-learn-any-language — 3163w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/law/foundational/what-makes-a-law — 3043w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/literature/foundational/how-to-read-a-story — 2908w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/masonry/foundational/masonry-safety-and-tools — 3538w, 5 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/philosophy/foundational/ethics-three-theories — 3424w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/philosophy/foundational/free-will-and-determinism — 3490w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 77** subjects/philosophy/foundational/logic-arguments — 3106w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13); recaps 1/2 (5)
-- ** 78** subjects/counseling/foundational/the-counselling-profession — 3044w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/criminology/foundational/changing-awareness-of-crime — 3300w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/dentistry/foundational/biomedical-sciences-for-dentistry — 3139w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/education/foundational/the-learning-process — 3300w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/electrical-engineering/foundational/dc-circuit-analysis — 3374w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/electrical-trades/foundational/electrical-safety-and-theory — 3869w, 5 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/environmental-science/foundational/carbon-cycle-climate — 3689w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/food-science/foundational/food-chemistry-fundamentals — 2785w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/forestry/foundational/forests-and-forestry — 2985w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/hvac/foundational/safety-and-the-science-of-air — 3065w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/illustration/foundational/drawing-as-illustration-s-root — 2868w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/information-technology/foundational/types-and-components-of-computer-systems — 2918w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/interior-design/foundational/interior-design-fundamentals — 2900w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/logistics-supply-chain/foundational/supply-chain-concepts-and-metrics — 3299w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/machining/foundational/measurement-and-materials — 2970w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/marine-science/foundational/earth-oceans-and-tides — 3134w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/nuclear-engineering/foundational/radiation-physics-and-detection — 3195w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/nursing/foundational/the-sciences-behind-nursing — 3025w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/nutrition-dietetics/foundational/nutrients-and-how-they-work — 2929w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/operations-research/foundational/linear-programming — 2938w, 4 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12); recaps 1/2 (5)
-- ** 78** subjects/petroleum-engineering/foundational/petroleum-geology-and-reservoir-rock — 2912w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
-- ** 78** subjects/photography/foundational/the-exposure-triangle — 3212w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12); recaps 1/2 (5)
+## Needs work (40–79) (0)
 
-## Good (≥80) (141)
+## Good (≥80) (187)
 - ** 80** subjects/astronomy/foundational/orbits-and-keplers-laws — 2821w, 3 callouts, 0 widgets
 - ** 80** subjects/biology/foundational/cell-structure — 2557w, 4 callouts, 0 widgets
 - ** 80** subjects/chemistry/foundational/atomic-structure — 2722w, 3 callouts, 0 widgets
@@ -100,6 +54,7 @@
 - ** 82** subjects/history/foundational/the-world-wars — 3081w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 82** subjects/horticulture/foundational/knowing-plants-classification-and-structure — 2958w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 82** subjects/human-resources/foundational/hr-s-role-and-legal-foundations — 2611w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/journalism/foundational/verification-before-publication — 3100w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 82** subjects/library-science/foundational/foundations-of-library-science — 2739w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 82** subjects/linguistics/foundational/how-language-works — 2966w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 82** subjects/materials-science/foundational/why-materials-behave — 3313w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
@@ -112,7 +67,15 @@
 - ** 82** subjects/philosophy/foundational/metaphysics — 3824w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 82** subjects/philosophy/foundational/what-is-philosophy — 2736w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 82** subjects/phlebotomy/foundational/veins-and-blood-the-phlebotomist-s-map — 2723w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/physics/foundational/energy-conservation — 2598w, 3 callouts, 12 widgets — GAPS: what-to-notice 2/12 (13)
 - ** 82** subjects/psychology/foundational/memory — 3311w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/religious-studies/foundational/worship-sacred-places-and-leaders — 3717w, 5 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/special-education/foundational/special-education-law-and-the-iep — 2825w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/sports-science/foundational/training-load-adaptation — 2775w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/statistics/foundational/describing-data — 2768w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/statistics/foundational/probability — 2753w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/translation-studies/foundational/what-translation-is — 2866w, 3 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
+- ** 82** subjects/welding/foundational/welding-safety-first — 3211w, 4 callouts, 9 widgets — GAPS: what-to-notice 1/9 (13)
 - ** 83** subjects/accounting/foundational/the-fundamentals-of-accounting — 2635w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
 - ** 83** subjects/actuarial-science/foundational/probability-for-actuaries — 2895w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
 - ** 83** subjects/aerospace-engineering/foundational/aerodynamics-i-lift-and-airfoils — 2817w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
@@ -160,37 +123,74 @@
 - ** 83** subjects/occupational-therapy/foundational/occupation-the-core-construct — 2944w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
 - ** 83** subjects/optometry/foundational/optics-for-optometry — 3037w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
 - ** 83** subjects/pharmacy/foundational/pharmaceutical-sciences-foundations — 2836w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
-- ** 83** subjects/physics/foundational/energy-conservation — 2598w, 3 callouts, 9 widgets — GAPS: what-to-notice 2/9 (12)
+- ** 83** subjects/radiation-therapy/foundational/therapy-physics-and-the-linac — 3095w, 4 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/respiratory-therapy/foundational/cardiopulmonary-assessment — 3167w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/sociology/foundational/society-socialisation — 3508w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/speech-therapy/foundational/speech-and-hearing-sciences — 3017w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/veterinary-medicine/foundational/veterinary-biomedical-sciences — 2845w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
+- ** 83** subjects/zoology/foundational/the-animal-condition — 2860w, 3 callouts, 10 widgets — GAPS: what-to-notice 2/10 (12)
 - ** 84** subjects/chemistry/foundational/periodic-table — 2836w, 3 callouts, 11 widgets — GAPS: what-to-notice 3/11 (11)
 - ** 84** subjects/geography/foundational/ecosystems-and-biomes — 4449w, 5 callouts, 11 widgets — GAPS: what-to-notice 3/11 (11)
 - ** 84** subjects/mining-engineering/foundational/ore-deposits-and-exploration — 2833w, 3 callouts, 11 widgets — GAPS: what-to-notice 3/11 (11)
 - ** 84** subjects/naval-architecture/foundational/floating-things-steadily-hydrostatics — 3205w, 3 callouts, 11 widgets — GAPS: what-to-notice 3/11 (11)
 - ** 85** subjects/biology/foundational/movement-into-and-out-of-cells — 2844w, 3 callouts, 12 widgets — GAPS: what-to-notice 4/12 (10)
 - ** 85** subjects/math/foundational/linear-functions — 2886w, 3 callouts, 9 widgets — GAPS: what-to-notice 3/9 (10)
-- ** 85** subjects/public-health/foundational/profession-and-science-of-public-health — 2775w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
-- ** 85** subjects/religious-studies/foundational/worlds-traditions — 2647w, 3 callouts, 1 widgets — GAPS: recaps 0/2 (10)
-- ** 85** subjects/robotics/foundational/configuration-space — 2656w, 3 callouts, 1 widgets — GAPS: recaps 0/2 (10)
-- ** 85** subjects/software-engineering/foundational/software-requirements — 2663w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
-- ** 85** subjects/surgical-technology/foundational/asepsis-and-the-sterile-field — 2831w, 3 callouts, 1 widgets — GAPS: recaps 0/2 (10)
-- ** 85** subjects/urban-planning/foundational/planning-history-and-theory — 2814w, 3 callouts, 2 widgets — GAPS: recaps 0/2 (10)
-- ** 90** subjects/public-administration/foundational/the-administrative-state — 3497w, 4 callouts, 1 widgets — GAPS: recaps 1/2 (5)
-- ** 90** subjects/public-relations/foundational/what-public-relations-is — 2977w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
-- ** 90** subjects/radiography/foundational/x-ray-physics-and-safety — 2817w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
-- ** 90** subjects/real-estate/foundational/property-and-ownership — 2891w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
-- ** 90** subjects/social-work/foundational/the-social-work-profession — 2930w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
-- ** 90** subjects/surveying/foundational/surveying-mathematics — 2839w, 3 callouts, 2 widgets — GAPS: recaps 1/2 (5)
-- ** 90** subjects/visual-arts/foundational/value-colour-composition — 3002w, 3 callouts, 1 widgets — GAPS: recaps 1/2 (5)
-- ** 95** subjects/journalism/foundational/verification-before-publication — 3100w, 4 callouts, 1 widgets
-- ** 95** subjects/radiation-therapy/foundational/therapy-physics-and-the-linac — 3095w, 4 callouts, 2 widgets
-- ** 95** subjects/religious-studies/foundational/worship-sacred-places-and-leaders — 3717w, 5 callouts, 1 widgets
-- ** 95** subjects/respiratory-therapy/foundational/cardiopulmonary-assessment — 3167w, 3 callouts, 2 widgets
-- ** 95** subjects/sociology/foundational/society-socialisation — 3508w, 3 callouts, 2 widgets
-- ** 95** subjects/special-education/foundational/special-education-law-and-the-iep — 2825w, 3 callouts, 1 widgets
-- ** 95** subjects/speech-therapy/foundational/speech-and-hearing-sciences — 3017w, 3 callouts, 2 widgets
-- ** 95** subjects/sports-science/foundational/training-load-adaptation — 2775w, 3 callouts, 1 widgets
-- ** 95** subjects/statistics/foundational/describing-data — 2768w, 3 callouts, 1 widgets
-- ** 95** subjects/statistics/foundational/probability — 2753w, 3 callouts, 1 widgets
-- ** 95** subjects/translation-studies/foundational/what-translation-is — 2866w, 3 callouts, 1 widgets
-- ** 95** subjects/veterinary-medicine/foundational/veterinary-biomedical-sciences — 2845w, 3 callouts, 2 widgets
-- ** 95** subjects/welding/foundational/welding-safety-first — 3211w, 4 callouts, 1 widgets
-- ** 95** subjects/zoology/foundational/the-animal-condition — 2860w, 3 callouts, 2 widgets
+- ** 95** subjects/cognitive-science/foundational/what-is-cognitive-science — 3668w, 4 callouts, 8 widgets
+- ** 95** subjects/cosmetology/foundational/infection-control-and-salon-safety — 3648w, 5 callouts, 9 widgets
+- ** 95** subjects/counseling/foundational/the-counselling-profession — 3587w, 4 callouts, 10 widgets
+- ** 95** subjects/creative-writing/foundational/craft-image-detail-and-the-sentence — 3459w, 4 callouts, 9 widgets
+- ** 95** subjects/criminology/foundational/changing-awareness-of-crime — 3833w, 3 callouts, 10 widgets
+- ** 95** subjects/culinary-arts/foundational/kitchen-essentials-safety-knives-mise-en-place — 4136w, 3 callouts, 9 widgets
+- ** 95** subjects/dental-hygiene/foundational/the-sciences-behind-hygiene — 3714w, 3 callouts, 9 widgets
+- ** 95** subjects/dentistry/foundational/biomedical-sciences-for-dentistry — 3690w, 3 callouts, 10 widgets
+- ** 95** subjects/earth-science/foundational/the-water-cycle — 3816w, 5 callouts, 9 widgets
+- ** 95** subjects/earth-science/foundational/weathering-erosion-and-landforms — 3835w, 4 callouts, 11 widgets
+- ** 95** subjects/economics/foundational/money-inflation — 3901w, 4 callouts, 12 widgets
+- ** 95** subjects/education/foundational/the-learning-process — 3816w, 4 callouts, 10 widgets
+- ** 95** subjects/electrical-engineering/foundational/dc-circuit-analysis — 3915w, 4 callouts, 10 widgets
+- ** 95** subjects/electrical-trades/foundational/electrical-safety-and-theory — 4437w, 5 callouts, 10 widgets
+- ** 95** subjects/emergency-management/foundational/the-emergency-management-cycle — 3835w, 3 callouts, 9 widgets
+- ** 95** subjects/engineering/foundational/statics-structures — 4266w, 3 callouts, 9 widgets
+- ** 95** subjects/environmental-engineering/foundational/water-chemistry-and-microbiology — 4126w, 4 callouts, 10 widgets
+- ** 95** subjects/environmental-science/foundational/carbon-cycle-climate — 4206w, 3 callouts, 10 widgets
+- ** 95** subjects/food-science/foundational/food-chemistry-fundamentals — 3305w, 3 callouts, 10 widgets
+- ** 95** subjects/forestry/foundational/forests-and-forestry — 3555w, 3 callouts, 10 widgets
+- ** 95** subjects/game-development/foundational/game-design-foundations — 3619w, 3 callouts, 10 widgets
+- ** 95** subjects/hvac/foundational/safety-and-the-science-of-air — 3619w, 3 callouts, 10 widgets
+- ** 95** subjects/illustration/foundational/drawing-as-illustration-s-root — 3427w, 3 callouts, 10 widgets
+- ** 95** subjects/information-technology/foundational/types-and-components-of-computer-systems — 3453w, 3 callouts, 10 widgets
+- ** 95** subjects/interior-design/foundational/interior-design-fundamentals — 3460w, 3 callouts, 10 widgets
+- ** 95** subjects/landscape-architecture/foundational/landscape-design-process — 3462w, 3 callouts, 9 widgets
+- ** 95** subjects/languages/foundational/how-to-learn-any-language — 3675w, 4 callouts, 9 widgets
+- ** 95** subjects/law/foundational/what-makes-a-law — 3597w, 4 callouts, 9 widgets
+- ** 95** subjects/literature/foundational/how-to-read-a-story — 3457w, 4 callouts, 9 widgets
+- ** 95** subjects/logistics-supply-chain/foundational/supply-chain-concepts-and-metrics — 3856w, 3 callouts, 10 widgets
+- ** 95** subjects/machining/foundational/measurement-and-materials — 3485w, 4 callouts, 10 widgets
+- ** 95** subjects/marine-science/foundational/earth-oceans-and-tides — 3686w, 3 callouts, 10 widgets
+- ** 95** subjects/masonry/foundational/masonry-safety-and-tools — 4044w, 5 callouts, 9 widgets
+- ** 95** subjects/nuclear-engineering/foundational/radiation-physics-and-detection — 3743w, 4 callouts, 10 widgets
+- ** 95** subjects/nursing/foundational/the-sciences-behind-nursing — 3561w, 4 callouts, 10 widgets
+- ** 95** subjects/nutrition-dietetics/foundational/nutrients-and-how-they-work — 3482w, 3 callouts, 10 widgets
+- ** 95** subjects/operations-research/foundational/linear-programming — 3408w, 4 callouts, 9 widgets
+- ** 95** subjects/petroleum-engineering/foundational/petroleum-geology-and-reservoir-rock — 3456w, 3 callouts, 10 widgets
+- ** 95** subjects/philosophy/foundational/ethics-three-theories — 3929w, 3 callouts, 9 widgets
+- ** 95** subjects/philosophy/foundational/free-will-and-determinism — 4002w, 4 callouts, 9 widgets
+- ** 95** subjects/philosophy/foundational/logic-arguments — 3601w, 4 callouts, 9 widgets
+- ** 95** subjects/photography/foundational/the-exposure-triangle — 3745w, 4 callouts, 10 widgets
+- ** 95** subjects/physics/foundational/newtons-laws — 3239w, 3 callouts, 8 widgets
+- ** 95** subjects/physiotherapy/foundational/the-movement-sciences — 3176w, 3 callouts, 10 widgets
+- ** 95** subjects/plumbing/foundational/plumbing-tools-and-safety — 3276w, 4 callouts, 10 widgets
+- ** 95** subjects/political-science/foundational/forms-of-government — 3205w, 3 callouts, 10 widgets
+- ** 95** subjects/public-administration/foundational/the-administrative-state — 3991w, 4 callouts, 9 widgets
+- ** 95** subjects/public-health/foundational/profession-and-science-of-public-health — 3297w, 3 callouts, 10 widgets
+- ** 95** subjects/public-relations/foundational/what-public-relations-is — 3457w, 3 callouts, 9 widgets
+- ** 95** subjects/radiography/foundational/x-ray-physics-and-safety — 3342w, 3 callouts, 10 widgets
+- ** 95** subjects/real-estate/foundational/property-and-ownership — 3395w, 3 callouts, 9 widgets
+- ** 95** subjects/religious-studies/foundational/worlds-traditions — 3199w, 3 callouts, 9 widgets
+- ** 95** subjects/robotics/foundational/configuration-space — 3240w, 3 callouts, 9 widgets
+- ** 95** subjects/social-work/foundational/the-social-work-profession — 3453w, 3 callouts, 10 widgets
+- ** 95** subjects/software-engineering/foundational/software-requirements — 3191w, 3 callouts, 10 widgets
+- ** 95** subjects/surgical-technology/foundational/asepsis-and-the-sterile-field — 3385w, 3 callouts, 9 widgets
+- ** 95** subjects/surveying/foundational/surveying-mathematics — 3360w, 3 callouts, 10 widgets
+- ** 95** subjects/urban-planning/foundational/planning-history-and-theory — 3385w, 3 callouts, 10 widgets
+- ** 95** subjects/visual-arts/foundational/value-colour-composition — 3512w, 3 callouts, 9 widgets

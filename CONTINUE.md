@@ -1,4 +1,4 @@
-# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026) · register campaign COMPLETE (Nov 8, 2026) · P1 interactivity backfill COMPLETE (Nov 12, 2026)
+# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026) · register campaign COMPLETE (Nov 8, 2026) · P1 interactivity backfill COMPLETE (Nov 12, 2026) · register gap-fix COMPLETE (Nov 12, 2026)
 
 ## P1 per-paragraph interactivity — COMPLETE (Nov 12, 2026)
 All **583 live lessons** now carry per-paragraph interactive activities (5,607 widgets,
@@ -7,6 +7,15 @@ repeats and ≤2 answer-family widgets. The hand-built pilot lessons `energy-con
 and `philosophy-of-mind` were topped up in `next-32` so no live page sits below the bar.
 The queue in `pipeline/ACTIVITIES-LEDGER.md` is empty — do not re-insert into finished
 lessons. `npm run build` green at 742 pages, content validator green.
+
+## Register gap-fix COMPLETE (Nov 12, 2026)
+The P1 backfill had added 7–10 widgets per lesson without the register devices, so the
+re-run audit (`pipeline/audit_lessons.py --tier foundational`) flagged 59 foundational
+lessons (what-to-notice + recaps gaps). Fixed insert-only with 2 subagents in parallel:
+**472 What-to-notice paragraphs** (one under every widget that lacked one) and **72
+So-far recaps**. All four tiers now audit 100% Good (≥80): foundational 187/187,
+intermediate 194/194, advanced 119/119, expert 83/83. Validator green, build green at
+742 pages.
 
 
 ## What this project is
@@ -28,9 +37,9 @@ passing lessons; any future content work should re-run the audit and gap-fix onl
 
 Note: the 1,800 floor above is the strict visible-text count. An earlier convention counted
 raw file words (incl. markup), which left 37 lessons marginally short; they were topped up
-in commits 610e526 and 06a7a3e. Remaining known gap (optional future pass): 420 lessons have
-fewer than 3 "Common misconception" callouts (the playbook requires callouts but never
-quantified them; a quantified ≥3 audit was applied only to the Nov 2026 batches).
+in commits 610e526 and 06a7a3e. The ≥3 "Common misconception" callout gap noted here is
+CLOSED: the Nov-8 register campaign added the missing callouts, and the Nov-12 re-audit
+confirms 583/583 lessons now carry ≥3 callouts.
 
 ## If resuming any content work
 - Batch files: astro-website/scripts/expand-batches/*.json (spec + lesson lists per batch).

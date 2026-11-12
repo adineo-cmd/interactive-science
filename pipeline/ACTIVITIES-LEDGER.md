@@ -626,8 +626,15 @@ there are no remaining live lessons to backfill.
   content validator green, `npm run build` green at 742 pages. The last two pilot lessons
   (`energy-conservation`, `philosophy-of-mind`) gained 3 + 2 non-answer activities in
   `next-32` to clear the bar.
-- Remaining queue: **none**. Optional future passes: the ≥3 "Common misconception"
-  callout audit noted in `CONTINUE.md`, and P3 career-role pages (deferred in `ROADMAP.md`).
+- Register gap-fix (2026-11-12, 2 subagents in parallel): the re-run audit flagged 59
+  foundational lessons — P1 widgets had shipped without What-to-notice lines and some
+  lessons lacked recaps. Fixed insert-only: **472 "What to notice" paragraphs** (one under
+  every widget) + **72 "So far:" recaps**. Audit now 100% Good (≥80) at every tier:
+  foundational 187/187, intermediate 194/194, advanced 119/119, expert 83/83. The ≥3
+  "Common misconception" callout audit also re-verified: 583/583 pass. Validator green,
+  build green at 742 pages.
+- Remaining queue: **none**. Optional future passes: P3 career-role pages (deferred in
+  `ROADMAP.md`).
 - Quality bars, verified every wave by script: ≥6 distinct interaction types, zero
   adjacent repeats, ≤2 answer-family widgets (predict/judge/cloze). Cloned-answer-heavy
   lessons get rebalanced into sort-buckets/compare/branch — expect this on most waves.

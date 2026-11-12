@@ -191,6 +191,13 @@ const cfgGridEst = {
   </p>
   <Widget no="2" caption="pair each question with its C-space rewrite" widget="match" config={cfgMoveMatch} />
   <p>
+    <strong>What to notice:</strong> Pair each question with its rewrite and watch the abstraction work: where is the robot
+    becomes where is the point, a six-jointed arm becomes one point drifting through a six-
+    dimensional space, and reaching around the pillar becomes path-finding between two
+    points. Notice the why: nothing physical has changed — everything about the problems
+    has.
+  </p>
+  <p>
     The value of the move is uniformity. Robots come in absurd variety — grippers, wheels,
     snake spines, humanoids — but every one of them has a configuration, and every
     configuration is a point in some space. Once the whole field agrees to phrase its
@@ -205,6 +212,11 @@ const cfgGridEst = {
     to the space of configurations, and how constraints — especially the sneaky
     nonholonomic kind that make cars unable to slide sideways — shape what paths through
     that space are even possible.
+  </p>
+  <p>
+    <strong>So far:</strong> the C-space move replaces the whole robot with one point — where is the robot becomes where
+    is the point — and one set of tools then serves grippers, wheels, snake spines and
+    humanoids alike.
   </p>
 
   <Widget no="1" caption="from robot to point: the C-space move" widget="equationStep" config={dofCfg} />
@@ -228,6 +240,12 @@ const cfgGridEst = {
   </p>
   <Widget no="3" caption="fill the counting rules" widget="cloze" config={cfgCountCloze} />
   <p>
+    <strong>What to notice:</strong> Fill the counting rules from the hint: three numbers pin a free body in the plane, six in
+    space, a revolute joint contributes one freedom and a ball-and-socket three. Notice what
+    the arithmetic buys: a planar arm with three hinged joints has DOF = 3 — three numbers
+    describe it completely.
+  </p>
+  <p>
     <em>Grübler's formula</em> turns this into honest bookkeeping for linkages, where joints
     form loops that constrain each other: in the plane, DOF = 3 × (links − 1) − 2 × (one-
     freedom joints). Take the four-bar linkage — the mechanism inside your windshield wiper
@@ -239,6 +257,12 @@ const cfgGridEst = {
     than actuators binds and fights itself; one with more flops uncontrolled.
   </p>
   <Widget no="4" caption="find the faulty line — the actuator audit" widget="spot-error" config={cfgGrublerSpot} />
+  <p>
+    <strong>What to notice:</strong> Click the faulty line of the actuator audit and read the correction: it is the reverse —
+    fewer degrees of freedom than actuators binds and fights itself, more and it flops
+    uncontrolled. Notice the four-bar line that stays true: one input, spin the crank,
+    determines the whole mechanism's motion.
+  </p>
   <p>
     One more example cements the method, because it shows joints of different kinds sharing
     a formula. The slider–crank — the linkage that turns every car engine's piston into
@@ -260,6 +284,13 @@ const cfgGridEst = {
     surface. That infinity is redundancy, and it is a feature.
   </p>
   <Widget no="5" caption="six joints or seven? file the reasons" widget="sort-buckets" config={cfgJointsSort} />
+  <p>
+    <strong>What to notice:</strong> File the reasons under six or seven: six is the minimum to place the gripper anywhere in
+    space with any orientation — the standard industrial arm — while seven buys slack to
+    reach around obstacles with the gripper pose held fixed, a 6-dimensional task surface
+    carved inside a 7-dimensional space. Watch the why: the infinity of configurations per
+    pose is redundancy, a feature rather than a joint wasted.
+  </p>
   <p><em>Common misconception:</em> a 7-DOF arm is a 6-DOF arm with one joint wasted. The redundancy is the point: the extra dimension gives the controller a one-parameter family of configurations for every gripper pose — self-motion it can spend dodging obstacles, avoiding singularities or easing joint limits while the hand stays fixed. Human arms work the same way, which is why you can reach your cup with your elbow tucked or flared: the task does not determine the arm.</p>
 
   <h2>Task and workspace</h2>
@@ -273,6 +304,13 @@ const cfgGridEst = {
   </p>
   <Widget no="6" caption="drag between workspace and task space" widget="compare" config={cfgSpacesCompare} />
   <p>
+    <strong>What to notice:</strong> Drag between the two spaces and keep the third in view: the workspace is the points the end-
+    effector can physically reach, at most six dimensions, while the task space is whatever
+    the job lives in — two dimensions for drawing on paper, six for spray-painting a car
+    body. Notice the why's punchline: planning happens in configuration space, the biggest
+    one — the task never sees the difficulty.
+  </p>
+  <p>
     The two-link planar arm makes the workspace concrete. With links of one metre each, the
     gripper can reach any point within two metres of the shoulder — but only if the arm can
     fully extend, and it can also fold the gripper all the way back to the shoulder itself.
@@ -284,6 +322,12 @@ const cfgGridEst = {
     the mathematics gets interesting, and it is the inverse a robot actually needs.
   </p>
   <Widget no="7" caption="place the annulus's outer edge" widget="place" config={cfgAnnulusPlace} />
+  <p>
+    <strong>What to notice:</strong> Place the outer edge of the reachable set: two one-metre links fully extended reach 1 + 1 =
+    2 m, so the marker lands on the 2 m label. Notice the why's wrinkle: the inner radius is
+    0 — the arm folds the gripper back to the shoulder — so the reachable set is an annulus,
+    and most points correspond to two configurations, elbow up or elbow down.
+  </p>
   <p>
     The spaces also differ in the direction of difficulty. Workspaces are small — at most
     six dimensions, usually fewer — while configuration spaces grow with every joint, and
@@ -345,7 +389,19 @@ const cfgGridEst = {
     and testing points rather than mapping the terrain in full.
   </p>
   <Widget no="8" caption="order the collision trick" widget="order" config={cfgObstacleOrder} />
+  <p>
+    <strong>What to notice:</strong> Sequence the collision trick and watch the nightmare become a map: compute once the set of
+    configurations where the robot would collide, mark the whole set as forbidden terrain —
+    the sofa becomes a curved region in joint-angle space — and the reach question becomes
+    path-dodging. Notice the final step: exact computation is hard in high dimensions, so
+    planners sample and test points instead.
+  </p>
   <p><em>Common misconception:</em> it is enough to plan the gripper's path around the obstacle and let the rest of the arm follow. The arm is not a point: every link sweeps its own volume, so the same sofa that occupies one modest shape in the room becomes a large curved region in joint space — and a path that looks safely around the obstacle in the workspace can pass straight through its C-space shadow with an elbow. That growth of obstacles under the mapping is why "steer the wrist, ignore the elbow" is the classic first-planner bug.</p>
+  <p>
+    <strong>So far:</strong> the room's sofa becomes a curved forbidden region in joint-angle space, and it grows under
+    the mapping — which is why a path that clears the obstacle in the workspace can still
+    clip it with an elbow.
+  </p>
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>
@@ -417,6 +473,12 @@ const cfgGridEst = {
     dynamics, balance and nonholonomic foot-placement constraints all bind at once.
   </p>
   <Widget no="9" caption="call the grid's death" widget="estimate" config={cfgGridEst} />
+  <p>
+    <strong>What to notice:</strong> Estimate the grid's size before revealing: 63 values per joint on a 2-DOF space gives 63 ×
+    63 = 3,969 cells — trivial. Notice the cliff in the why: six DOF is about 6.25 × 10¹⁰
+    cells, dead on arrival, and a humanoid's 30-plus is physically absurd to store — hence
+    the sampling-based planners, RRT and probabilistic roadmaps, which never enumerate.
+  </p>
 
   <p class="sources"><strong>Sources:</strong> Lynch &amp; Park, <em>Modern Robotics</em>, Ch. 2 (official companion site); LaValle, <em>Planning Algorithms</em>. Source text: OpenStax (https://openstax.org), CC BY 4.0 — adapted for Interactive Atlas.</p>
 </TopicPage>
