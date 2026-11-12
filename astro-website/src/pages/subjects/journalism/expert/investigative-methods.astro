@@ -10,6 +10,166 @@ const invCfg = {
     { math: '4 · Impact and aftermath', note: 'The best investigations end careers, laws or presidencies (Spotlight, 2002 — the Boston Globe\'s church investigation, 2015\'s film; Snowden, 2013 — the ethics debate the law lesson never resolved). Impact carries duty: follow-up reporting, protecting sources afterward, and honest accounting when the story misses.' },
   ],
 };
+
+const invStructureCompare = {
+  "prompt": "Same facts, different structure — slide between the daily news story and the investigation.",
+  "before": {
+    "label": "Daily news story",
+    "text": "A claim arrives; it is verified to a deadline and published. The unit of work is the story, and speed is part of the value."
+  },
+  "after": {
+    "label": "Investigation",
+    "text": "A hypothesis is tested against records, witnesses and numbers for months. The unit of work is a case, and the counter-case is written before publication."
+  },
+  "why": "The lesson's distinction: intensity is not the difference — structure is. The daily story verifies a claim; the investigation assembles a case."
+};
+
+const invSpinePredict = {
+  "q": "What is the spine of nearly every landmark investigation?",
+  "choices": [
+    "Secret sources and hidden cameras",
+    "Public documents any citizen could request",
+    "Anonymous tips arriving unsolicited",
+    "Whistleblower testimony on its own"
+  ],
+  "answer": 1,
+  "why": "Sources add explanation and direction; the documents carry the case. If it dies without the records, it is not ready."
+};
+
+const invSourceCloze = {
+  "text": "The two-source rule is the %%0%%, not the ceiling: material allegations get %%1%% corroboration where documents exist, and the notebook records the exact question behind each quote.",
+  "answers": [
+    [
+      "floor"
+    ],
+    [
+      "document",
+      "documentary"
+    ]
+  ],
+  "hint": "One word names the minimum standard; the other names the kind of corroboration the lesson prefers."
+};
+
+const invInterviewMatch = {
+  "prompt": "The interview is an evidentiary instrument. Pair each mode with its governing logic.",
+  "pairs": [
+    {
+      "left": "Accountability interview",
+      "right": "Confront the subject with documented findings — staged last, precision and silence"
+    },
+    {
+      "left": "Insider interview",
+      "right": "Trades on specificity: people talk about their documents, not their morals"
+    },
+    {
+      "left": "Cooperating-source interview",
+      "right": "Adds protection logistics: secure channels, metadata and publication agreements"
+    }
+  ],
+  "why": "All three are planned before a room is booked, because a subject warned early can destroy records, coordinate alibis or pre-empt with legal action."
+};
+
+const invEditorialOrder = {
+  "prompt": "Rebuild the four questions the editorial decision weighs, in order.",
+  "items": [
+    "Is it true to the evidence?",
+    "Is it in the public interest — corruption or danger, not private embarrassment?",
+    "Is it fair — the full response sought and printed, the strongest counter-case represented?",
+    "Can we prove it in court — the libel burden and source-protection limits?"
+  ],
+  "why": "Lawyers then read the draft sentence by sentence; 'reports suggest' is never allowed to carry a factual allegation."
+};
+
+const invPanamaEstimate = {
+  "prompt": "The Panama Papers (2016) were one law-firm leak processed collaboratively. Roughly how many documents did the ICIJ partners handle?",
+  "unit": "documents",
+  "answer": 11500000,
+  "factor": 2,
+  "why": "11.5 million documents from one law firm, processed by roughly 370 journalists across some 80 countries and published simultaneously.",
+  "context": "Roughly 370 journalists in some 80 countries — safety in numbers."
+};
+
+const invBulletproofSpot = {
+  "prompt": "This bulletproofing pass has one faulty line. Find it.",
+  "lines": [
+    "Assign a fact-checker who did not report the story to attack the draft.",
+    "Trace every factual sentence to a document, on-record interview or dataset.",
+    "Re-verify every name, title, date and figure against the master file.",
+    "Trust any document that looks official: metadata and cross-referencing are optional.",
+    "Recompute rates from raw data, and log the subject's answers in a written response file."
+  ],
+  "errorLine": 3,
+  "correction": "Run document forensics — check metadata, cross-reference independent registries and test consistency across the leak.",
+  "why": "Official-looking documents are exactly what forgery and disinformation exploit; forensics is part of the pass, not an optional extra."
+};
+
+const invLeakBranch = {
+  "root": "A source offers a cache of documents they say was taken from a company server. Decide what the desk does next.",
+  "nodes": {
+    "start": {
+      "text": "The cache is large, unverified and arrived through an anonymous channel.",
+      "choices": [
+        {
+          "label": "Verify a sample against independent records before trusting the rest",
+          "next": "verify",
+          "feedback": "This is the lesson's first operational test."
+        },
+        {
+          "label": "Publish the most dramatic documents immediately",
+          "next": "fast",
+          "feedback": "Speed here trades verification for exposure."
+        }
+      ]
+    },
+    "verify": {
+      "text": "The sample checks out against the companies register, and the metadata is consistent.",
+      "choices": [
+        {
+          "label": "Weigh public-interest gain against harms to private individuals",
+          "next": "weigh",
+          "feedback": "Publication ethics are applied, not assumed."
+        },
+        {
+          "label": "Treat verification as consent to publish everything",
+          "next": "everything",
+          "feedback": "Verification is necessary, not sufficient."
+        }
+      ]
+    },
+    "weigh": {
+      "text": "The story is corruption in a public contract; some documents name low-level private individuals.",
+      "choices": [
+        {
+          "label": "Publish the accountability story; minimise and protect the private individuals",
+          "next": "careful",
+          "feedback": "Public interest carries the story, not every name in the data."
+        },
+        {
+          "label": "Publish the whole dataset as a download",
+          "next": "dump",
+          "feedback": "The source's identity and bystanders are now exposed."
+        }
+      ]
+    },
+    "fast": {
+      "text": "One document turns out to be fabricated; the subject's lawyers demand a retraction and the source's channel is exposed.",
+      "choices": []
+    },
+    "everything": {
+      "text": "Private details trigger a privacy claim and bury the accountability core of the story.",
+      "choices": []
+    },
+    "careful": {
+      "text": "The story publishes with documents, harms minimised and the source protected — the defensible version.",
+      "choices": []
+    },
+    "dump": {
+      "text": "The raw dump exposes the leaker through metadata and sweeps bystanders into public view.",
+      "choices": []
+    }
+  },
+  "why": "Leaked-data work is data engineering under secrecy: verify, weigh harms, publish the story — never the source's identity."
+};
 ---
 <TopicPage slug="subjects/journalism/expert/investigative-methods">
   <h2>Where you are, and what you will learn</h2>
@@ -66,6 +226,7 @@ const invCfg = {
   structure — a hypothesis about wrongdoing, tested against records, witnesses and numbers,
   with the counter-case printed before publication. The first craft stage is finding a story
   worth months of that structure.</p>
+  <Widget no="2" caption="slide between the daily story and the assembled case" widget="compare" config={invStructureCompare} />
 
   <h2>Finding the story: what makes news worth the months</h2>
   <p>
@@ -87,6 +248,7 @@ const invCfg = {
   <em>public documents</em> — filings any citizen could request — with sources adding
   explanation and direction. If your story lives only in what a whistleblower says and
   dies without the records, it is not ready.</p>
+  <Widget no="3" caption="bet first — the spine of a landmark investigation" widget="predict" config={invSpinePredict} />
   <p><strong>So far:</strong> a story worth months must pass the ruthless test — someone with
   power or money gains, the claim can be evidenced to publication standard, and the libel
   exposure is priced. With a paper gap in hand, the reporting rhythm inverts: build the case
@@ -107,6 +269,7 @@ const invCfg = {
     question that produced each quote — misquoted subjects are the cheapest way to lose a
     lawsuit and a story.
   </p>
+  <Widget no="4" caption="fill the blanks — the sourcing floor" widget="cloze" config={invSourceCloze} />
 
   <h2>The interview as evidence session</h2>
   <p>
@@ -124,6 +287,7 @@ const invCfg = {
     interviewers plan all three before booking a room, because a subject warned early
     can destroy records, coordinate alibis or pre-empt with legal action.
   </p>
+  <Widget no="5" caption="pair each evidence-interview mode with its logic" widget="match" config={invInterviewMatch} />
   <p><strong>So far:</strong> the case is assembled in a master file and the interview has
   become an evidence session in three modes, with the confrontation deliberately staged last.
   What remains is institutional: the editors, the lawyers and the decision to publish.</p>
@@ -142,6 +306,7 @@ const invCfg = {
     investigations retract so rarely: the process is designed so that a failed story
     dies in the editing room rather than on the record.
   </p>
+  <Widget no="6" caption="rebuild the four editorial questions, in order" widget="order" config={invEditorialOrder} />
   <p><em>Common misconception:</em> that the subject's denial is an obstacle the
   investigation must survive. The right-of-reply is part of the evidence — a subject
   who misstates a fact the documents contradict has just confirmed the documents, and a
@@ -160,6 +325,7 @@ const invCfg = {
     protected for years after publication — the reporter's relationship with the person
     who risked a career does not end at the printer.
   </p>
+  <Widget no="7" caption="call the magnitude — the Panama Papers cache" widget="estimate" config={invPanamaEstimate} />
 
   <h2>Verification: the bulletproofing pass</h2>
   <p>
@@ -179,6 +345,7 @@ const invCfg = {
     answers logged against each allegation, so the published piece can say precisely
     what was asked, answered and denied.
   </p>
+  <Widget no="8" caption="find the faulty line — the bulletproofing pass" widget="spot-error" config={invBulletproofSpot} />
 
   <h2>Working with leaked and stolen data</h2>
   <p>
@@ -200,6 +367,7 @@ const invCfg = {
     story was bigger than any single outlet could have made it, and no one outlet
     could be silenced into killing it.
   </p>
+  <Widget no="9" caption="walk the leaked-data publication decision" widget="branch" config={invLeakBranch} />
 
   <p><em>Common misconception:</em> that investigation is about catching bad individuals.
   The landmark investigations indict <em>systems</em>: Spotlight's finding was not one

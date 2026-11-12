@@ -11,6 +11,176 @@ const verifyCfg = {
     { math: '5 · Publish with uncertainty', note: 'Say what is known, what is claimed, and by whom. Then correct visibly when wrong: the correction page is a newsroom\'s character.' },
   ],
 };
+
+const vpCorrectionPredict = {
+  "q": "A false story is published, then corrected prominently an hour later. Where does that leave the audience?",
+  "choices": [
+    "The correction reaches everyone the original reached",
+    "The correction rarely reaches everyone the original claim reached — which is why checking comes first",
+    "Corrections legally erase the original claim"
+  ],
+  "answer": 1,
+  "why": "A correction afterwards, however prominent, rarely reaches everyone the original reached — verification is the cooking, not the garnish."
+};
+
+const vpValuesBuckets = {
+  "prompt": "The news values pull both ways. File each story:",
+  "buckets": [
+    "Public importance",
+    "Attention-grabbing"
+  ],
+  "items": [
+    {
+      "label": "a curriculum change affecting 40,000 pupils",
+      "bucket": 0
+    },
+    {
+      "label": "a celebrity haircut",
+      "bucket": 1
+    },
+    {
+      "label": "the classic 'man bites dog'",
+      "bucket": 1
+    },
+    {
+      "label": "a pattern of council contract awards to one firm",
+      "bucket": 0
+    }
+  ],
+  "why": "Impact usually outranks clicks — but the tension between 'important' and 'attention-grabbing' is a daily editorial negotiation, not a solved problem."
+};
+
+const vpLifecycleOrder = {
+  "prompt": "Each stage has different time to check — order them by when they become possible:",
+  "items": [
+    "A social media post appears within seconds",
+    "A daily newspaper piece within hours",
+    "A magazine piece within weeks",
+    "A carefully researched book takes years"
+  ],
+  "why": "Each stage has a different error rate — and the book-length reporting on the 1999 Columbine coverage found the early story's central claim was simply wrong."
+};
+
+const vpStageCloze = {
+  "text": "The professional response is to label the lifecycle stage: '%%0%% say', '%%1%%', 'early reports suggest' — and the reader's matching habit is to ask how long after the %%2%% the story was made.",
+  "answers": [
+    [
+      "police"
+    ],
+    [
+      "unconfirmed"
+    ],
+    [
+      "event"
+    ]
+  ],
+  "hint": "One institution, one honesty marker, one noun."
+};
+
+const vpLeadSpot = {
+  "prompt": "One line of this editing exchange is wrong — click it:",
+  "lines": [
+    "Lead: 'Police said a fire killed three people overnight.'",
+    "The attribution shows the claim's provenance: police are the source.",
+    "Death tolls in the first hours are provisional, so the attribution stays.",
+    "Rewrite: 'Three people died in a fire' — flatter, so it reads as more reliable."
+  ],
+  "errorLine": 3,
+  "correction": "Keep the attribution — 'three people died' flatly borrows more certainty than the reporter owns.",
+  "why": "The pyramid is a verification instrument: ranking claims by confidence and consequence exposes weakness before publication."
+};
+
+const vpGenreMatch = {
+  "prompt": "The genre boundary matters for verification too:",
+  "pairs": [
+    {
+      "left": "News",
+      "right": "reports what happened — and is verifiable"
+    },
+    {
+      "left": "Opinion",
+      "right": "argues from values, and is labelled"
+    },
+    {
+      "left": "Analysis",
+      "right": "explains why, using disclosed interpretation"
+    },
+    {
+      "left": "Quoting opinion in a news story",
+      "right": "quote it as an opinion — never launder it into a fact"
+    }
+  ],
+  "why": "Confusing the three is how trust dies."
+};
+
+const vpFeatureBuckets = {
+  "prompt": "Features carry the burden with different loads. File each requirement:",
+  "buckets": [
+    "Profile",
+    "Explainer",
+    "Investigation"
+  ],
+  "items": [
+    {
+      "label": "multiple interviews plus the subject's paper trail",
+      "bucket": 0
+    },
+    {
+      "label": "expert review — the understanding must survive a specialist",
+      "bucket": 1
+    },
+    {
+      "label": "documents, data, interviews and legal review before a word publishes",
+      "bucket": 2
+    },
+    {
+      "label": "libel judgment is the risk that concentrates here",
+      "bucket": 2
+    },
+    {
+      "label": "stakes narrative authority rather than speed authority",
+      "bucket": 0
+    }
+  ],
+  "why": "Every scene must be sourced — reconstructed dialogue nobody attests to is fiction wearing journalism's clothes."
+};
+
+const vpGateBranch = {
+  "prompt": "A dramatic claim arrives minutes before deadline. Walk the last gate:",
+  "start": "Where does the claim trace to?",
+  "nodes": [
+    {
+      "id": "a",
+      "text": "It traces to the original source",
+      "next": "p"
+    },
+    {
+      "id": "p",
+      "text": "Publish — with attribution to that source",
+      "end": true
+    },
+    {
+      "id": "b",
+      "text": "Only second-hand accounts exist",
+      "next": "h"
+    },
+    {
+      "id": "h",
+      "text": "Hold, or publish heavily labelled as unconfirmed",
+      "end": true
+    },
+    {
+      "id": "c",
+      "text": "It contradicts your own sourcing",
+      "next": "x"
+    },
+    {
+      "id": "x",
+      "text": "Hold — and check which source is wrong",
+      "end": true
+    }
+  ]
+};
 ---
 <TopicPage slug="subjects/journalism/foundational/verification-before-publication">
 
@@ -54,6 +224,7 @@ const verifyCfg = {
     rarely reaches everyone the original claim reached. Think of verification as the
     cooking, not the garnish: once a false story is served, you cannot un-serve it.
   </p>
+  <Widget no="2" caption="bet first — the correction that came too late" widget="predict" config={vpCorrectionPredict} />
   <p>
     The five checks below run through this whole lesson like a spine. Each section that
     follows takes one part of the method apart.
@@ -85,6 +256,7 @@ const verifyCfg = {
     tension between "important" and "attention-grabbing" is a daily editorial negotiation,
     not a solved problem.
   </p>
+  <Widget no="3" caption="file the stories — public importance or attention?" widget="sort-buckets" config={vpValuesBuckets} />
   <p>
     Stories come from three broad currents. <strong>Enterprise</strong> stories come from
     the reporter's own ideas: reading a council agenda, noticing a pattern, following up a
@@ -121,6 +293,7 @@ const verifyCfg = {
     shunned (one had attended prom activities days before), and mental illness was central.
     The early story was not a lie; it was an unverified story that arrived first and spread.
   </p>
+  <Widget no="4" caption="rebuild the information lifecycle" widget="order" config={vpLifecycleOrder} />
   <p>
     The professional response is not to refuse to publish until the books are written —
     daily journalism would be impossible. It is to label the lifecycle stage: "police say",
@@ -128,6 +301,7 @@ const verifyCfg = {
     story: how long after the event was this made, and what could <em>not</em> yet have
     been known when it was written?
   </p>
+  <Widget no="5" caption="fill the blanks — labelling the lifecycle stage" widget="cloze" config={vpStageCloze} />
   <p>
     <strong>So far:</strong> stories are selected by news values and coloured by source
     motives, and every story carries a timestamp in the information lifecycle that tells
@@ -153,6 +327,7 @@ const verifyCfg = {
     knowledge — "according to a person briefed on the matter" tells you exactly how strong
     the ground is, and that the journalist is telling the truth about their footing.
   </p>
+  <Widget no="6" caption="find the faulty line — the lead rewrite" widget="spot-error" config={vpLeadSpot} />
   <p>
     The related genre boundary matters for verification too. <strong>News</strong> reports
     what happened and is verifiable. <strong>Opinion</strong> argues from values and is
@@ -161,6 +336,7 @@ const verifyCfg = {
     <em>as an opinion</em> but never laundered into a fact. Confusing the three is how
     trust dies.
   </p>
+  <Widget no="7" caption="pair each genre with its rule" widget="match" config={vpGenreMatch} />
   <p><em>Common misconception:</em> readers sometimes think the pyramid exists "for people
   who skim". That is a side benefit, not the point. It exists because writing the ending
   first is a truth test: you cannot lead with a claim you have not verified, and the
@@ -222,6 +398,7 @@ const verifyCfg = {
     every scene must be sourced. "Reconstructed dialogue" that nobody attests to is
     fiction wearing journalism's clothes.
   </p>
+  <Widget no="8" caption="file the sub-genres — whose verification load?" widget="sort-buckets" config={vpFeatureBuckets} />
 
   <h2>Sub-editing and editorial decision-making: the last gate</h2>
   <p>
@@ -233,6 +410,7 @@ const verifyCfg = {
     headline saying "minister stole funds". Clickbait mismatches are not just taste
     failures; they are verification failures.
   </p>
+  <Widget no="9" caption="walk the publish-or-hold decision" widget="branch" config={vpGateBranch} />
   <p>
     Above the subs sit editors making the publish-or-hold decision. The classic calculus
     weighs confidence, consequence and speed. Publishing a wrong report of a death is a

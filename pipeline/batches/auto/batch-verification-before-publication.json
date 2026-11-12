@@ -1,0 +1,217 @@
+[
+ {
+  "slug": "subjects/journalism/foundational/verification-before-publication",
+  "activities": [
+   {
+    "anchor": "the cooking, not the garnish",
+    "type": "predict",
+    "caption": "bet first — the correction that came too late",
+    "name": "vpCorrectionPredict",
+    "config": {
+     "q": "A false story is published, then corrected prominently an hour later. Where does that leave the audience?",
+     "choices": [
+      "The correction reaches everyone the original reached",
+      "The correction rarely reaches everyone the original claim reached — which is why checking comes first",
+      "Corrections legally erase the original claim"
+     ],
+     "answer": 1,
+     "why": "A correction afterwards, however prominent, rarely reaches everyone the original reached — verification is the cooking, not the garnish."
+    }
+   },
+   {
+    "anchor": "a daily editorial negotiation, not a solved problem",
+    "type": "sort-buckets",
+    "caption": "file the stories — public importance or attention?",
+    "name": "vpValuesBuckets",
+    "config": {
+     "prompt": "The news values pull both ways. File each story:",
+     "buckets": [
+      "Public importance",
+      "Attention-grabbing"
+     ],
+     "items": [
+      {
+       "label": "a curriculum change affecting 40,000 pupils",
+       "bucket": 0
+      },
+      {
+       "label": "a celebrity haircut",
+       "bucket": 1
+      },
+      {
+       "label": "the classic 'man bites dog'",
+       "bucket": 1
+      },
+      {
+       "label": "a pattern of council contract awards to one firm",
+       "bucket": 0
+      }
+     ],
+     "why": "Impact usually outranks clicks — but the tension between 'important' and 'attention-grabbing' is a daily editorial negotiation, not a solved problem."
+    }
+   },
+   {
+    "anchor": "arrived first and spread",
+    "type": "order",
+    "caption": "rebuild the information lifecycle",
+    "name": "vpLifecycleOrder",
+    "config": {
+     "prompt": "Each stage has different time to check — order them by when they become possible:",
+     "items": [
+      "A social media post appears within seconds",
+      "A daily newspaper piece within hours",
+      "A magazine piece within weeks",
+      "A carefully researched book takes years"
+     ],
+     "why": "Each stage has a different error rate — and the book-length reporting on the 1999 Columbine coverage found the early story's central claim was simply wrong."
+    }
+   },
+   {
+    "anchor": "It is to label the lifecycle stage",
+    "type": "cloze",
+    "caption": "fill the blanks — labelling the lifecycle stage",
+    "name": "vpStageCloze",
+    "config": {
+     "text": "The professional response is to label the lifecycle stage: '%%0%% say', '%%1%%', 'early reports suggest' — and the reader's matching habit is to ask how long after the %%2%% the story was made.",
+     "answers": [
+      [
+       "police"
+      ],
+      [
+       "unconfirmed"
+      ],
+      [
+       "event"
+      ]
+     ],
+     "hint": "One institution, one honesty marker, one noun."
+    }
+   },
+   {
+    "anchor": "telling the truth about their footing",
+    "type": "spot-error",
+    "caption": "find the faulty line — the lead rewrite",
+    "name": "vpLeadSpot",
+    "config": {
+     "prompt": "One line of this editing exchange is wrong — click it:",
+     "lines": [
+      "Lead: 'Police said a fire killed three people overnight.'",
+      "The attribution shows the claim's provenance: police are the source.",
+      "Death tolls in the first hours are provisional, so the attribution stays.",
+      "Rewrite: 'Three people died in a fire' — flatter, so it reads as more reliable."
+     ],
+     "errorLine": 3,
+     "correction": "Keep the attribution — 'three people died' flatly borrows more certainty than the reporter owns.",
+     "why": "The pyramid is a verification instrument: ranking claims by confidence and consequence exposes weakness before publication."
+    }
+   },
+   {
+    "anchor": "Confusing the three is how trust dies",
+    "type": "match",
+    "caption": "pair each genre with its rule",
+    "name": "vpGenreMatch",
+    "config": {
+     "prompt": "The genre boundary matters for verification too:",
+     "pairs": [
+      {
+       "left": "News",
+       "right": "reports what happened — and is verifiable"
+      },
+      {
+       "left": "Opinion",
+       "right": "argues from values, and is labelled"
+      },
+      {
+       "left": "Analysis",
+       "right": "explains why, using disclosed interpretation"
+      },
+      {
+       "left": "Quoting opinion in a news story",
+       "right": "quote it as an opinion — never launder it into a fact"
+      }
+     ],
+     "why": "Confusing the three is how trust dies."
+    }
+   },
+   {
+    "anchor": "fiction wearing journalism's clothes",
+    "type": "sort-buckets",
+    "caption": "file the sub-genres — whose verification load?",
+    "name": "vpFeatureBuckets",
+    "config": {
+     "prompt": "Features carry the burden with different loads. File each requirement:",
+     "buckets": [
+      "Profile",
+      "Explainer",
+      "Investigation"
+     ],
+     "items": [
+      {
+       "label": "multiple interviews plus the subject's paper trail",
+       "bucket": 0
+      },
+      {
+       "label": "expert review — the understanding must survive a specialist",
+       "bucket": 1
+      },
+      {
+       "label": "documents, data, interviews and legal review before a word publishes",
+       "bucket": 2
+      },
+      {
+       "label": "libel judgment is the risk that concentrates here",
+       "bucket": 2
+      },
+      {
+       "label": "stakes narrative authority rather than speed authority",
+       "bucket": 0
+      }
+     ],
+     "why": "Every scene must be sourced — reconstructed dialogue nobody attests to is fiction wearing journalism's clothes."
+    }
+   },
+   {
+    "anchor": "they are verification failures",
+    "type": "branch",
+    "caption": "walk the publish-or-hold decision",
+    "name": "vpGateBranch",
+    "config": {
+     "prompt": "A dramatic claim arrives minutes before deadline. Walk the last gate:",
+     "start": "Where does the claim trace to?",
+     "nodes": [
+      {
+       "id": "a",
+       "text": "It traces to the original source",
+       "next": "p"
+      },
+      {
+       "id": "p",
+       "text": "Publish — with attribution to that source",
+       "end": true
+      },
+      {
+       "id": "b",
+       "text": "Only second-hand accounts exist",
+       "next": "h"
+      },
+      {
+       "id": "h",
+       "text": "Hold, or publish heavily labelled as unconfirmed",
+       "end": true
+      },
+      {
+       "id": "c",
+       "text": "It contradicts your own sourcing",
+       "next": "x"
+      },
+      {
+       "id": "x",
+       "text": "Hold — and check which source is wrong",
+       "end": true
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

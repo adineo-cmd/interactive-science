@@ -576,6 +576,13 @@
 | visual-arts/intermediate/perspective-and-depth | match, order, sort-buckets, spot-error, compare, branch, judge, cloze | next-30 |
 | welding/foundational/welding-safety-first | estimate, match, order, place, match, spot-error, branch, judge | next-30 |
 | zoology/foundational/the-animal-condition | match, sort-buckets, order, spot-error, compare, cloze, judge, estimate | next-30 |
+| journalism/foundational/verification-before-publication | predict, sort-buckets, order, cloze, spot-error, match, sort-buckets, branch | next-31 |
+| journalism/intermediate/news-vs-opinion-vs-analysis | match, sort-buckets, sort-buckets, spot-error, predict, cloze, compare | next-31 |
+| journalism/intermediate/the-inverted-pyramid | predict, cloze, match, sort-buckets, estimate, spot-error, sort-buckets | next-31 |
+| journalism/intermediate/interviewing | sort-buckets, match, predict, sort-buckets, order, judge, spot-error | next-31 |
+| journalism/advanced/media-law-and-ethics | sort-buckets, predict, sort-buckets, spot-error, estimate, match, branch | next-31 |
+| journalism/advanced/data-journalism | sort-buckets, order, match, predict, spot-error, estimate | next-31 |
+| journalism/expert/investigative-methods | compare, predict, cloze, match, order, estimate, spot-error, branch | next-31 |
 
 **Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
 
@@ -593,6 +600,9 @@ gdp-national-accounts, fiscal-policy-public-debt, market-failure-externalities,
 monetary-policy-central-banks, unemployment-labour-markets, behavioural-economics,
 development-economics, game-theory, international-trade, econometrics, financial-economics,
 macroeconomic-models-dsge).
+**Journalism: 7 of 7 COMPLETE** (next-31: verification-before-publication,
+news-vs-opinion-vs-analysis, the-inverted-pyramid, interviewing, media-law-and-ethics,
+data-journalism, investigative-methods — 50 activities).
 **Then next subjects (alphabetical): engineering (10),
 environmental-science (12), film (9), finance (11), geography (14), history (20), journalism (7) …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
   ~550 remaining live lessons; skip the done rows above). Update this table as each

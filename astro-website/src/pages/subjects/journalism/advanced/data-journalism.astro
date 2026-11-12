@@ -10,6 +10,104 @@ const dataJCfg = {
     { math: '4 · Visualisation as evidence', note: 'The chart lesson\'s full apparatus: the graphic must make the true claim visible (normalise axes, label uncertainty, state the finding in the headline); the Guardian/NYT graphics desks are the reference craft — data visualisation as literature (the design lesson\'s clarity, evidentiary).' },
   ],
 };
+
+const djDoorsBuckets = {
+  "prompt": "Data has four great doors. File each acquisition:",
+  "buckets": [
+    "Official portals",
+    "FOIA",
+    "Scraping",
+    "Leaks"
+  ],
+  "items": [
+    {
+      "label": "national statistics offices and spending dashboards",
+      "bucket": 0
+    },
+    {
+      "label": "a CSV compelled from a public body, with internal-review appeals",
+      "bucket": 1
+    },
+    {
+      "label": "code extracting data from public-access web pages",
+      "bucket": 2
+    },
+    {
+      "label": "the Panama Papers: 11.6 million documents across 76 countries",
+      "bucket": 3
+    }
+  ],
+  "why": "A well-drafted FOIA request is often itself the scoop — and most big FOIA stories were refused at least once before the appeal ladder produced them."
+};
+
+const djCleanOrder = {
+  "prompt": "A council-spending file, 12,000 rows. Order the cleaning steps:",
+  "items": [
+    "Standardise supplier names and collapse the variants — 12,000 rows become 11,847 unique payments",
+    "Replace '-999' amounts with nulls and exclude them from sums",
+    "Parse all dates to ISO, drop the embedded totals rows",
+    "Recompute the grand total and reconcile against the published annual figure",
+    "If your £41.2m disagrees with their £43.0m, the gap is the next FOIA request"
+  ],
+  "why": "Cleaning is where the hours actually go — and every anomaly fixed is a question about the institution that produced the file."
+};
+
+const djInterviewMatch = {
+  "prompt": "The dataset gets the interview a human source would get:",
+  "pairs": [
+    {
+      "left": "Who made you, and why?",
+      "right": "an underfunded inspectorate logs fewer violations"
+    },
+    {
+      "left": "What are you missing?",
+      "right": "records look complete the year new software arrived — an IT project, not medicine"
+    },
+    {
+      "left": "How do you define things?",
+      "right": "waiting time from referral differs from from-diagnosis; redefinitions manufacture trends"
+    },
+    {
+      "label-left": "",
+      "left": "Can you be reconciled?",
+      "right": "cross-check totals against an independent published figure"
+    }
+  ],
+  "why": "The answers become the caveats paragraph of the story — the reader's defence is the analysis's honesty about itself."
+};
+
+const djMissingPredict = {
+  "q": "A headline: 'Hospital deaths up 20%.' What must you check before the number becomes a story?",
+  "choices": [
+    "Deaths genuinely rose — the official figure is checked already",
+    "Whether case numbers rose 20% too — always convert counts to rates before comparing",
+    "Nothing: a 20% rise is large enough to speak for itself"
+  ],
+  "answer": 1,
+  "why": "Denominators: 'hospital deaths up 20%' may mean case numbers rose 20% — always convert counts to rates (per capita, per patient, per vehicle-mile) before comparing."
+};
+
+const djFoiaSpot = {
+  "prompt": "One line of this FOIA request draft is wrong — click it:",
+  "lines": [
+    "Request: all food-hygiene inspection records for the past three years.",
+    "Specify the date range: January 2022 to December 2024.",
+    "Specify the fields and disaggregation: by month, by postcode district.",
+    "Specify the format: a PDF scan of the printed register is acceptable."
+  ],
+  "errorLine": 3,
+  "correction": "Ask for a CSV, not a PDF scan — a well-drafted request specifies date range, fields, format and disaggregation.",
+  "why": "A vague request earns a vague answer; the format clause is what makes the release analysable instead of re-typable only by hand."
+};
+
+const djRowEstimate = {
+  "prompt": "The claim: 'burglary doubled in the city centre last year.' The sceptic's pass finds a doubling from 6 to 12 incidents. How many extra burglaries is that?",
+  "unit": "extra incidents",
+  "answer": 6,
+  "factor": 1.5,
+  "why": "Six extra burglaries — well inside ordinary year-to-year noise. Small numbers carry wide confidence, and often the honest story is 'the counting changed'.",
+  "context": "Before the number: check the denominator and the geography, the counting unit, and the series for a structural break at the date of a policy or software change."
+};
 ---
 <TopicPage slug="subjects/journalism/advanced/data-journalism">
   <h2>Where you are, and what you will learn</h2>
@@ -77,6 +175,7 @@ const dataJCfg = {
     document platform, and strict compartmentalisation so one careless query could not burn the
     whole story.
   </p>
+  <Widget no="2" caption="find the faulty line — the FOIA request" widget="spot-error" config={djFoiaSpot} />
   <p><em>Common misconception:</em> official statistics are neutral facts — numbers collected
   by government, unlike quotes from interested parties, can be used without checking. In
   practice a government dataset is a source like any other, with an institutional author, a
@@ -84,6 +183,7 @@ const dataJCfg = {
   reporting and police recording practice as much as offending, and a missing category is
   often a policy choice. Treat the statistics office as a witness to be interviewed, not an
   oracle.</p>
+  <Widget no="3" caption="file the four doors — how does this data arrive?" widget="sort-buckets" config={djDoorsBuckets} />
   <p>
     <strong>So far:</strong> four doors into data, and the discipline of treating every
     dataset as a source with an institutional author and an agenda. Whatever comes through
@@ -114,6 +214,7 @@ const dataJCfg = {
     annual figure — if your £41.2 million disagrees with their £43.0 million, the gap
     <em>is</em> the next FOIA request. Only then does analysis begin.
   </p>
+  <Widget no="4" caption="rebuild the cleaning checklist, step by step" widget="order" config={djCleanOrder} />
   <h2>Interviewing the dataset</h2>
   <p>
     Before any test or chart, the data gets the interview a human source would get — a fixed
@@ -132,6 +233,7 @@ const dataJCfg = {
     answers become the caveats paragraph of the story, which is exactly where they belong:
     the reader's defence is the analysis's honesty about itself.
   </p>
+  <Widget no="5" caption="pair the dataset question with what it exposes" widget="match" config={djInterviewMatch} />
   <p>
     <em>Common misconception:</em> "cleaning is technical chores before the real work." Cleaning
     is reporting. Every anomaly you fix is a question about the institution that produced the
@@ -170,6 +272,7 @@ const dataJCfg = {
     ask <em>compared to what, per what, counted by whom, and what would the opposite finding
     look like?</em>
   </p>
+  <Widget no="6" caption="bet first — the disguised missing value" widget="predict" config={djMissingPredict} />
   <p>
     <strong>So far:</strong> the sceptic's pass — every number asked what it is compared to,
     per what, counted by whom. Analysis that survives hostile review still has to reach an
@@ -271,6 +374,7 @@ const dataJCfg = {
     6 extra burglaries, well inside ordinary year-to-year noise). Often the honest story is
     "the counting changed" — which is itself a story, and a better one.
   </p>
+  <Widget no="7" caption="call the magnitude — the row-count illusion" widget="estimate" config={djRowEstimate} />
   <p>
     <strong>When data journalism breaks the wrong way.</strong> Crime-density maps can
     stigmatise neighbourhoods whose "crime" is patrol intensity, not criminality; algorithmic

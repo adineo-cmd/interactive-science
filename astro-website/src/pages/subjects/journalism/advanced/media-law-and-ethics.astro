@@ -10,6 +10,185 @@ const lawCfg = {
     { math: '4 · Source protection and national security', note: 'Promising confidentiality is a promise with legal weight (contempt if a court orders naming); national-security law (official secrets) collides with watchdog reporting — the Pentagon Papers case (1971): prior restraint on publication ruled unconstitutional. The ethics lesson\'s promise-keeping, at constitutional stakes.' },
   ],
 };
+
+const mlDefenceBuckets = {
+  "prompt": "'Councillor Bell took £50,000 from the youth fund.' File each escape route:",
+  "buckets": [
+    "Truth",
+    "Honest opinion",
+    "Privilege"
+  ],
+  "items": [
+    {
+      "label": "prove the taking and its criminality",
+      "bucket": 0
+    },
+    {
+      "label": "documented opinion on an audited discrepancy, facts stated",
+      "bucket": 1
+    },
+    {
+      "label": "report the audit committee's finding verbatim the day it is published",
+      "bucket": 2
+    },
+    {
+      "label": "the ultimate defence — and why attribution habits are legal survival",
+      "bucket": 0
+    }
+  ],
+  "why": "Publishing on a rumour with none of the three is the classic uninsured position — and in England the defendant proves the defence."
+};
+
+const mlAllegedPredict = {
+  "q": "A reporter writes 'Councillor Bell allegedly took £50,000 from the youth fund', with no proof. How safe is the word 'allegedly'?",
+  "choices": [
+    "Fully safe — the word signals the claim is unproven",
+    "Not safe: it signals you know you lack proof, and a defamatory meaning stays defamatory",
+    "Safe, provided the word is italicised"
+  ],
+  "answer": 1,
+  "why": "'Allegedly' adds nothing except evidence you suspected the problem. What protects you is substance: evidence, privilege, or honest opinion on stated true facts."
+};
+
+const mlPrivacyBuckets = {
+  "prompt": "The two-stage test: reasonable expectation of privacy, then public interest. File each story:",
+  "buckets": [
+    "Public interest",
+    "The public is merely interested"
+  ],
+  "items": [
+    {
+      "label": "a minister's misuse of office",
+      "bucket": 0
+    },
+    {
+      "label": "a celebrity's entirely private health matter",
+      "bucket": 1
+    },
+    {
+      "label": "a company's safety record behind a public procurement bid",
+      "bucket": 0
+    },
+    {
+      "label": "a hospital stakeout for a private patient's routine visit",
+      "bucket": 1
+    }
+  ],
+  "why": "Interest is what the audience wants; the public interest is what the public needs to know to judge its institutions — conflating them is how the stakeout era ended in injunctions."
+};
+
+const mlContemptSpot = {
+  "prompt": "One line of this reporting decision is wrong — click it:",
+  "lines": [
+    "A man is charged with robbery; proceedings are active from the moment of charge.",
+    "The strict liability rule applies — no intent required, up to two years' imprisonment.",
+    "The paper reports his three prior robbery convictions and 'police are certain he is the man'.",
+    "The same facts, reported after conviction, are privileged court reporting."
+  ],
+  "errorLine": 2,
+  "correction": "Publishing previous convictions and a certainty narrative before trial creates a substantial risk of serious prejudice — contempt, with the defence nil.",
+  "why": "The verdict should be reached in the courtroom, not the newspaper — and the same facts become privileged the day after conviction."
+};
+
+const mlGdprEstimate = {
+  "prompt": "UK GDPR and the Data Protection Act 2018 carry fines up to £17.5 million — or what per cent of global turnover, whichever is higher?",
+  "unit": "% of global turnover",
+  "answer": 4,
+  "factor": 1.2,
+  "why": "4% of global turnover — and journalism's 'special purposes' exemption is a balancing exemption a court can weigh, not automatic immunity.",
+  "context": "Practical newsroom rules: hold source data securely, never publish contact details that enable harassment, minimise personal data in crowdsourced verification."
+};
+
+const mlCourtMatch = {
+  "prompt": "Court reporting is precision work — pair each move with what it owes:",
+  "pairs": [
+    {
+      "left": "'the prosecution alleges the defendant struck first'",
+      "right": "evidence as evidence — an allegation, not a finding"
+    },
+    {
+      "left": "'guilty on count two; sentenced to four years'",
+      "right": "the verdict and sentence named accurately"
+    },
+    {
+      "left": "the complainant's name withheld",
+      "right": "sexual-offence complainants are anonymous for life"
+    },
+    {
+      "left": "no under-18 identified in youth proceedings",
+      "right": "the automatic protection for children"
+    }
+  ],
+  "why": "Every name, charge, figure and plea is checked against the court record — a wrong verdict or charge is inaccuracy, contempt risk and a defamation action at once."
+};
+
+const mlSlappBranch = {
+  "root": "A councillor is accused of taking a bribe. You have documents and a source. Walk the publication decision.",
+  "nodes": {
+    "start": {
+      "text": "The allegation is serious and the documents look real.",
+      "choices": [
+        {
+          "label": "Verify the documents and seek the councillor's response first",
+          "next": "verify",
+          "feedback": "The legal floor: evidence and right-of-reply come before publication."
+        },
+        {
+          "label": "Publish now — the allegation is too important to wait",
+          "next": "rush",
+          "feedback": "Speed is how libel, contempt and privacy actions begin."
+        }
+      ]
+    },
+    "verify": {
+      "text": "The documents check out; the councillor denies it and calls the story politically motivated.",
+      "choices": [
+        {
+          "label": "Weigh public interest against privacy and defamation risk",
+          "next": "weigh",
+          "feedback": "Both stages of the privacy test, and the libel defences, are now in play."
+        },
+        {
+          "label": "Drop the story because the subject denies it",
+          "next": "drop",
+          "feedback": "A denial is evidence to report, not a veto."
+        }
+      ]
+    },
+    "weigh": {
+      "text": "The bribe touches a public contract; the councillor's family details do not.",
+      "choices": [
+        {
+          "label": "Publish the contract story and omit the private family details",
+          "next": "publish",
+          "feedback": "Public interest covers the institution, not the family."
+        },
+        {
+          "label": "Publish everything — the public is interested in the whole file",
+          "next": "everything",
+          "feedback": "Interest is what the audience wants; public interest is what it needs."
+        }
+      ]
+    },
+    "rush": {
+      "text": "The story runs unverified. The councillor sues for libel, and the source's identity leaks through the metadata.",
+      "choices": []
+    },
+    "drop": {
+      "text": "The denial kills a story the documents support; the public never learns about the contract.",
+      "choices": []
+    },
+    "publish": {
+      "text": "The story publishes with documents, the denial and the response file — the defensible version.",
+      "choices": []
+    },
+    "everything": {
+      "text": "Private family details trigger a privacy claim and distract from the public-interest core.",
+      "choices": []
+    }
+  },
+  "why": "Public interest, minimised harm and the response file are the legal and ethical balance — not the audience's curiosity."
+};
 ---
 <TopicPage slug="subjects/journalism/advanced/media-law-and-ethics">
   <h2>Where you are, and what you will learn</h2>
@@ -89,6 +268,7 @@ const lawCfg = {
     published (privilege). Publishing on a rumour with none of the three is the classic
     uninsured position.
   </p>
+  <Widget no="2" caption="file the moves — which defence covers each?" widget="sort-buckets" config={mlDefenceBuckets} />
   <p>
     <em>Common misconception:</em> "adding 'allegedly' makes a defamatory claim safe." It does
     not. "Allegedly" signals that you know you lack proof, and a meaning that defames is still
@@ -96,6 +276,7 @@ const lawCfg = {
     you is the substance: evidence, attribution to a privileged proceeding, or an honest opinion
     built on stated true facts.
   </p>
+  <Widget no="3" caption="bet first — the 'allegedly' safety net" widget="predict" config={mlAllegedPredict} />
   <p>
     <strong>So far:</strong> defamation is a hazard every story carries, and the defences —
     truth, honest opinion, privilege, public interest — are the verification lesson's habits
@@ -130,6 +311,7 @@ const lawCfg = {
     details or location data that enable harassment (a rising duty in the doxxing era), and
     minimise the personal data collected in crowdsourced verification.
   </p>
+  <Widget no="4" caption="call the magnitude — the GDPR ceiling" widget="estimate" config={mlGdprEstimate} />
   <p><em>Common misconception:</em> "if the public is interested, publication is in the public
   interest." It seems reasonable because audience demand is easy to measure and feels like
   justification. But the lesson's test says otherwise: first ask whether the person had a
@@ -139,6 +321,7 @@ const lawCfg = {
   correct picture: interest is what the audience wants; the public interest is what the public
   needs to know to judge its institutions — and conflating them is how the hospital-stakeout
   era ended in injunctions.</p>
+  <Widget no="5" caption="file the stories — public interest, or public interestED?" widget="sort-buckets" config={mlPrivacyBuckets} />
 
   <h2>Contempt of court and reporting restrictions</h2>
   <p>
@@ -160,6 +343,7 @@ const lawCfg = {
     automatic protections for children in youth proceedings, and open-justice exceptions that
     cut the other way (courts can sit in private only on statutory grounds).
   </p>
+  <Widget no="6" caption="find the faulty line — the contempt audit" widget="spot-error" config={mlContemptSpot} />
   <p><em>Common misconception:</em> "once someone is arrested, everything known about them is
   fair game — the police arrested them, so it is public record." It seems reasonable because an
   arrest is official action, and public-safety framing makes publishing priors feel like
@@ -204,6 +388,7 @@ const lawCfg = {
     because a wrong verdict or a wrong charge is simultaneously an inaccuracy, a contempt risk
     and a defamation action waiting for its claimant.
   </p>
+  <Widget no="7" caption="pair the courtroom move with what it owes the record" widget="match" config={mlCourtMatch} />
 
   <p>
     <strong>So far:</strong> the legal floor is now mapped — defamation and its defences,
@@ -211,6 +396,7 @@ const lawCfg = {
     Next, the layer above it: what the professional codes demand exactly where the law leaves
     the choice to the journalist.
   </p>
+  <Widget no="8" caption="walk the publication decision through law and ethics" widget="branch" config={mlSlappBranch} />
 
   <h2>Ethics: the layer above the law</h2>
   <p>

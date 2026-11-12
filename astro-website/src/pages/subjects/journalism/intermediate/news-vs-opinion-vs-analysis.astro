@@ -59,6 +59,143 @@ const genresQuizCfg = {
     },
   ],
 };
+
+const nvPromiseMatch = {
+  "prompt": "The genre-literacy audit — pair each question with what it exposes:",
+  "pairs": [
+    {
+      "left": "could I check this sentence?",
+      "right": "a news claim"
+    },
+    {
+      "left": "is there a thesis argued from evidence?",
+      "right": "analysis"
+    },
+    {
+      "left": "is a position being advocated?",
+      "right": "opinion"
+    },
+    {
+      "left": "is something being sold?",
+      "right": "sponsored content"
+    },
+    {
+      "left": "is this invented on purpose?",
+      "right": "satire"
+    }
+  ],
+  "why": "Check the label first, then audit the verbs and adjectives — and when a piece mixes genres, the test is whether the shifts are signposted."
+};
+
+const nvCheckBuckets = {
+  "prompt": "The classic test: every sentence of a news report should be checkable. File these:",
+  "buckets": [
+    "checkable news",
+    "needs to move or be labelled"
+  ],
+  "items": [
+    {
+      "label": "a quote preserved in a recording",
+      "bucket": 0
+    },
+    {
+      "label": "a number in a document",
+      "bucket": 0
+    },
+    {
+      "label": "an event with named witnesses",
+      "bucket": 0
+    },
+    {
+      "label": "a sentence no one could check",
+      "bucket": 1
+    }
+  ],
+  "why": "A sentence no one could check is either analysis or opinion — it needs to move or be labelled."
+};
+
+const vnMayBuckets = {
+  "prompt": "The label law: the more a format resembles news, the more explicit its label must be. File each:",
+  "buckets": [
+    "unmarked news",
+    "marked genre",
+    "unmistakable disclosure"
+  ],
+  "items": [
+    {
+      "label": "a council-voting wire report",
+      "bucket": 0
+    },
+    {
+      "label": "'Analysis' in the strapline",
+      "bucket": 1
+    },
+    {
+      "label": "sponsored content wearing the newsroom's typography",
+      "bucket": 2
+    },
+    {
+      "label": "satire operating under a convention both sides know",
+      "bucket": 1
+    },
+    {
+      "label": "a 60-second explainer on a reporter's own account",
+      "bucket": 2
+    }
+  ],
+  "why": "News is unmarked, analysis and opinion marked, sponsorship announced — on blurred formats the discipline travels with the journalist: say what you are doing inside the format itself."
+};
+
+const nvVoiceSpot = {
+  "prompt": "One line of this news-report audit is wrong — click it:",
+  "lines": [
+    "Verbs of happening, not of judging: 'the council voted'.",
+    "Adjectives that describe: 'a 72-metre, four-storey building'.",
+    "Numbers instead of intensifiers: 'a 40% fall', not 'a dramatic slump'.",
+    "Where judgement is genuinely in play, the reporter states it plainly: 'the deal was humiliating'."
+  ],
+  "errorLine": 3,
+  "correction": "Judgement is attributed, not stated: 'opponents called the deal humiliating' reports the criticism without endorsing it.",
+  "why": "The reporter's voice stays out of the sentence — evaluations belong to named sources, in their mouths."
+};
+
+const nvMethodPredict = {
+  "q": "'Unbiased news' cannot mean a reporter with no perspective — so what is the honest discipline?",
+  "choices": [
+    "Method: verify before publishing, attribute what you were told, seek the other party's response, label evaluations visibly",
+    "Hiding every trace of selection decisions from the reader",
+    "Reporting only stories nobody could have an opinion about"
+  ],
+  "answer": 0,
+  "why": "Readers can audit a method; nobody can audit an invisible mind — choosing stories, sources and leads are editorial decisions, and the discipline is making the checking visible."
+};
+
+const vnBoeCloze = {
+  "text": "The news: the Bank raised interest rates from 4.0% to %%0%% per cent. The analysis argues from evidence — the pass-through lag to mortgage rates runs in %%1%%, not days — and reaches a defensible conclusion about what the committee's attention has shifted to.",
+  "answers": [
+    [
+      "4.25",
+      "4.25%"
+    ],
+    [
+      "months"
+    ]
+  ],
+  "hint": "The new rate, and the unit of the lag the analysis cites."
+};
+
+const nvWallCompare = {
+  "prompt": "Slide between the two business models of attention — and what each does to trust.",
+  "before": {
+    "label": "Blurred for reach",
+    "text": "Opinion travels: engagement metrics reward provocation and certainty, so commercial pressure pushes every format toward confident advocacy — whatever label it wears."
+  },
+  "after": {
+    "label": "Labelled contract",
+    "text": "Trust is the durable asset: audiences selectively avoid news they perceive as biased, and clearly separated, transparently labelled journalism ranks higher year on year."
+  },
+  "why": "The wall between news and opinion is not prudishness; it is the balance sheet — slow to build, quick to spend, impossible to buy back at the same price."
+};
 ---
 <TopicPage slug="subjects/journalism/intermediate/news-vs-opinion-vs-analysis">
 
@@ -130,6 +267,7 @@ const genresQuizCfg = {
     independently? That habit — verification before publication — is what the news
     genre is built from.
   </p>
+  <Widget no="3" caption="bet first — the record and the other party" widget="predict" config={nvMethodPredict} />
   <p>
     <strong>So far:</strong> a story is chosen against news values and its evidence is
     assessed before publication. Next we see how those habits harden into the grammar
@@ -153,6 +291,7 @@ const genresQuizCfg = {
     recording, a number in a document, an event with named witnesses. A sentence no
     one could check is either analysis or opinion, and it needs to move or be labelled.
   </p>
+  <Widget no="4" caption="find the faulty line — the neutral-voice audit" widget="spot-error" config={nvVoiceSpot} />
   <p><em>Common misconception:</em> "unbiased news" means the reporter has no perspective.
     Perspective is unavoidable — choosing which story to cover, which sources to call
     first and which fact leads the sentence are all editorial decisions. The honest
@@ -160,6 +299,7 @@ const genresQuizCfg = {
     before publishing, attribute what you were told, seek the other party's response,
     and keep your evaluations visibly labelled. Readers can audit a method; nobody can
     audit an invisible mind.</p>
+  <Widget no="5" caption="file the sentence — checkable or needs a label?" widget="sort-buckets" config={nvCheckBuckets} />
 
   <h2>Analysis: the explained why</h2>
   <p>
@@ -182,6 +322,7 @@ const genresQuizCfg = {
     explicitly ("Analysis" in the strapline) precisely because the interpretive voice
     is stronger than a news report's.
   </p>
+  <Widget no="6" caption="fill the blanks — the Bank of England worked example" widget="cloze" config={vnBoeCloze} />
   <p><em>Common misconception:</em> "analysis is just opinion in smarter clothes." The
   genres are distinguished by their obligation to evidence, not by how confident they
   sound: an analysis writer holds a thesis but may not distort, omit or misstate the
@@ -234,6 +375,7 @@ const genresQuizCfg = {
     journalist: say what you are doing — "here's my view", "here's what's confirmed" —
     inside the format itself.
   </p>
+  <Widget no="7" caption="file the moves — may, or may not?" widget="sort-buckets" config={vnMayBuckets} />
   <p><em>Common misconception:</em> "if it appears on a news site with the newsroom's
   fonts and a byline, it is news." Design borrows credibility; only the label and the
   verbs tell you the genre. Sponsored content deliberately wears the newsroom's
@@ -259,6 +401,7 @@ const genresQuizCfg = {
     price. The wall between news and opinion is not prudishness; it is the balance
     sheet.
   </p>
+  <Widget no="9" caption="slide between the blurred format and the labelled contract" widget="compare" config={nvWallCompare} />
 
   <h2>Reading like an editor: the tells</h2>
   <p>
@@ -274,6 +417,7 @@ const genresQuizCfg = {
     signposted</em> — the dishonest hybrid is the one that hides its argument inside
     its news.
   </p>
+  <Widget no="8" caption="pair each genre with the promise it makes" widget="match" config={nvPromiseMatch} />
 
   <h2>Check yourself</h2>
   <p>Try these before moving on. Feedback follows each answer.</p>

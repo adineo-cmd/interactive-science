@@ -1,0 +1,135 @@
+[
+ {
+  "slug": "subjects/journalism/advanced/data-journalism",
+  "activities": [
+   {
+    "anchor": "Treat the statistics office as a witness to be interviewed, not an oracle",
+    "type": "sort-buckets",
+    "caption": "file the four doors — how does this data arrive?",
+    "name": "djDoorsBuckets",
+    "config": {
+     "prompt": "Data has four great doors. File each acquisition:",
+     "buckets": [
+      "Official portals",
+      "FOIA",
+      "Scraping",
+      "Leaks"
+     ],
+     "items": [
+      {
+       "label": "national statistics offices and spending dashboards",
+       "bucket": 0
+      },
+      {
+       "label": "a CSV compelled from a public body, with internal-review appeals",
+       "bucket": 1
+      },
+      {
+       "label": "code extracting data from public-access web pages",
+       "bucket": 2
+      },
+      {
+       "label": "the Panama Papers: 11.6 million documents across 76 countries",
+       "bucket": 3
+      }
+     ],
+     "why": "A well-drafted FOIA request is often itself the scoop — and most big FOIA stories were refused at least once before the appeal ladder produced them."
+    }
+   },
+   {
+    "anchor": "if your £41.2 million disagrees with their £43.0 million",
+    "type": "order",
+    "caption": "rebuild the cleaning checklist, step by step",
+    "name": "djCleanOrder",
+    "config": {
+     "prompt": "A council-spending file, 12,000 rows. Order the cleaning steps:",
+     "items": [
+      "Standardise supplier names and collapse the variants — 12,000 rows become 11,847 unique payments",
+      "Replace '-999' amounts with nulls and exclude them from sums",
+      "Parse all dates to ISO, drop the embedded totals rows",
+      "Recompute the grand total and reconcile against the published annual figure",
+      "If your £41.2m disagrees with their £43.0m, the gap is the next FOIA request"
+     ],
+     "why": "Cleaning is where the hours actually go — and every anomaly fixed is a question about the institution that produced the file."
+    }
+   },
+   {
+    "anchor": "wearing a government lanyard",
+    "type": "match",
+    "caption": "pair the dataset question with what it exposes",
+    "name": "djInterviewMatch",
+    "config": {
+     "prompt": "The dataset gets the interview a human source would get:",
+     "pairs": [
+      {
+       "left": "Who made you, and why?",
+       "right": "an underfunded inspectorate logs fewer violations"
+      },
+      {
+       "left": "What are you missing?",
+       "right": "records look complete the year new software arrived — an IT project, not medicine"
+      },
+      {
+       "left": "How do you define things?",
+       "right": "waiting time from referral differs from from-diagnosis; redefinitions manufacture trends"
+      },
+      {
+       "label-left": "",
+       "left": "Can you be reconciled?",
+       "right": "cross-check totals against an independent published figure"
+      }
+     ],
+     "why": "The answers become the caveats paragraph of the story — the reader's defence is the analysis's honesty about itself."
+    }
+   },
+   {
+    "anchor": "hospital deaths up 20%",
+    "type": "predict",
+    "caption": "bet first — the disguised missing value",
+    "name": "djMissingPredict",
+    "config": {
+     "q": "A headline: 'Hospital deaths up 20%.' What must you check before the number becomes a story?",
+     "choices": [
+      "Deaths genuinely rose — the official figure is checked already",
+      "Whether case numbers rose 20% too — always convert counts to rates before comparing",
+      "Nothing: a 20% rise is large enough to speak for itself"
+     ],
+     "answer": 1,
+     "why": "Denominators: 'hospital deaths up 20%' may mean case numbers rose 20% — always convert counts to rates (per capita, per patient, per vehicle-mile) before comparing."
+    }
+   },
+   {
+    "anchor": "asking precisely — specify the date range",
+    "type": "spot-error",
+    "caption": "find the faulty line — the FOIA request",
+    "name": "djFoiaSpot",
+    "config": {
+     "prompt": "One line of this FOIA request draft is wrong — click it:",
+     "lines": [
+      "Request: all food-hygiene inspection records for the past three years.",
+      "Specify the date range: January 2022 to December 2024.",
+      "Specify the fields and disaggregation: by month, by postcode district.",
+      "Specify the format: a PDF scan of the printed register is acceptable."
+     ],
+     "errorLine": 3,
+     "correction": "Ask for a CSV, not a PDF scan — a well-drafted request specifies date range, fields, format and disaggregation.",
+     "why": "A vague request earns a vague answer; the format clause is what makes the release analysable instead of re-typable only by hand."
+    }
+   },
+   {
+    "anchor": "a doubling from 6 to 12 incidents",
+    "type": "estimate",
+    "caption": "call the magnitude — the row-count illusion",
+    "name": "djRowEstimate",
+    "config": {
+     "prompt": "The claim: 'burglary doubled in the city centre last year.' The sceptic's pass finds a doubling from 6 to 12 incidents. How many extra burglaries is that?",
+     "unit": "extra incidents",
+     "answer": 6,
+     "factor": 1.5,
+     "why": "Six extra burglaries — well inside ordinary year-to-year noise. Small numbers carry wide confidence, and often the honest story is 'the counting changed'.",
+     "context": "Before the number: check the denominator and the geography, the counting unit, and the series for a structural break at the date of a policy or software change."
+    }
+   }
+  ]
+ }
+]
