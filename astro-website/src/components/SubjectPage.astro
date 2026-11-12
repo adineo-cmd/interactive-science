@@ -4,6 +4,7 @@ import SubjectIcon from './SubjectIcon.astro';
 import data from '../data/topics.json';
 
 const syllabusFiles = import.meta.glob('../data/syllabus/*.json', { eager: true });
+const careerFiles = import.meta.glob('../data/careers/*.json', { eager: true });
 
 const { subject: id, intro } = Astro.props;
 const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
@@ -55,6 +56,9 @@ const tierCounts = Object.fromEntries(
         <h1>{s.name}</h1>
       </div>
       <p class="lede">{intro ?? s.tagline}</p>
+      {careerFiles[`../data/careers/${id}.json`] && (
+        <p class="careers-link"><a href={`${B}/subjects/${id}/careers/`}>Career paths this subject opens →</a></p>
+      )}
     </header>
 
     {program && (

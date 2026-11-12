@@ -44,3 +44,14 @@ This registry tracks verified sources for domains the acquired datasets
 - Pressbooks and Open Textbook Library titles usually have direct PDF/EPUB downloads.
 - After acquiring: run extraction → add to the matcher → rebuild packs for the
   affected subjects (pipeline/build_source_packs.py) → transform pass.
+
+## Career-role data (P3 career pages)
+- **O*NET 31.0 Database** — O*NET Resource Center (onetcenter.org), CC BY 4.0 —
+  downloaded to `pipeline/packs/onet-31-occupation-data.txt` (title / O*NET-SOC code /
+  description table, extracted from Occupation Data.txt). Role titles and codes on
+  career pages are validated against this pack by `pipeline/validate_careers.py`.
+- **U.S. Bureau of Labor Statistics, Occupational Outlook Handbook** (bls.gov/ooh) —
+  public-domain US government work. Median pay, projected growth and entry education
+  per role; each career page cites the exact OOH URL for every role.
+- **EURES portal** (employer.eures.ec.europa.eu) — linked only; no data claims
+  (portal unreachable from the build machine).

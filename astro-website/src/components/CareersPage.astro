@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SubjectIcon from './SubjectIcon.astro';
+import data from '../data/topics.json';
+
+const careerFiles = import.meta.glob('../data/careers/*.json', { eager: true });
+
+const { subject: id } = Astro.props;
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects, topics } = data;
+const s = subjects.find((x) => x.id === id);
+if (!s) throw new Error(`Unknown subject: ${id}`);
+
+const career = careerFiles[`../data/careers/${id}.json`]?.default ?? null;
+const liveLessons = topics.filter((t) => t.subject === id && t.status !== 'planned');
+const byLevel: Record<string, number> = {};
+for (const t of liveLessons) byLevel[t.level] = (byLevel[t.level] ?? 0) + 1;
+const ladder = ['foundational', 'intermediate', 'advanced', 'expert']
+  .filter((lv) => byLevel[lv])
+  .map((lv) => `${byLevel[lv]} ${lv}`);
+---
+
+<Layout title={`${s.name} — career paths`} description={`Where ${s.name} leads as paid work: roles, pay, outlook and entry routes.`}>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="crumb">
+        <a href={B + '/'}>atlas</a><span class="sep">/</span>
+        <a href={`${B}/subjects/${id}/`}>{s.name}</a><span class="sep">/</span>careers
+      </p>
+      <div style="display:flex; align-items:center; gap:1rem">
+        <span style={`color:${s.ink}`}><SubjectIcon name={s.icon} size={38} /></span>
+        <h1>Career paths in {s.name}</h1>
+      </div>
+      <p class="lede">{career?.intro ?? s.tagline}</p>
+    </header>
+
+    {career && (
+      <section class="roles" aria-label="Career roles">
+        {career.roles.map((r) => (
+          <article class="role" style={`--row-ink:${s.ink}`}>
+            <header class="role-head">
+              <h2 class="role-title">{r.title}</h2>
+              <a class="role-code" href={`https://www.onetonline.org/link/summary/${r.code}`} target="_blank" rel="noopener">{r.code}</a>
+            </header>
+            <p class="role-what">{r.what}</p>
+            <dl class="role-facts">
+              <div><dt>US median pay</dt><dd>{r.pay}</dd></div>
+              <div><dt>Outlook</dt><dd>{r.growth}</dd></div>
+              <div><dt>Typical entry</dt><dd>{r.entry}</dd></div>
+            </dl>
+            <p class="role-where"><strong>Where the subject shows up:</strong> {r.where}</p>
+            <a class="role-ooh" href={r.ooh} target="_blank" rel="noopener">BLS Occupational Outlook Handbook →</a>
+          </article>
+        ))}
+      </section>
+    )}
+
+    <section class="career-ladder" aria-label="Build the background">
+      <h2>Build the background first</h2>
+      <p>
+        These roles hire for exactly the skills this course teaches — start at the tier that
+        matches where you are{career ? `, ${career.roles.length} roles above, ${ladder.join(', ')} below` : ''}. The full
+        <a href={`${B}/subjects/${id}/`}>course contents for {s.name}</a> lays out every live lesson
+        in teaching order.
+      </p>
+      <p class="career-eures">
+        Working in Europe? The <a href="https://employer.eures.ec.europa.eu/" target="_blank" rel="noopener">EURES portal</a>
+        lists live vacancies and comparable national conditions across the EU's public employment services.
+      </p>
+    </section>
+
+    <footer class="career-sources">
+      <p>
+        <strong>Sources:</strong> pay and outlook figures — U.S. Bureau of Labor Statistics,
+        Occupational Outlook Handbook (bls.gov/ooh); role titles and O*NET-SOC codes —
+        O*NET 31.0 Database, O*NET Resource Center (onetcenter.org), CC BY 4.0.
+      </p>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .roles { display: grid; gap: 1.1rem; margin: 2.2rem 0 0; }
+  .role { border: 1px solid var(--ink-3); border-radius: 14px; padding: 1.3rem 1.5rem; background: var(--paper-raised); }
+  .role-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .role-title { font-size: 1.25rem; margin: 0; }
+  .role-code { font-family: var(--f-mono); font-size: 12px; color: var(--row-ink, var(--ink-2)); border: 1px solid currentColor; border-radius: 999px; padding: 0.1rem 0.6rem; white-space: nowrap; }
+  .role-what { margin: 0.7rem 0 0.9rem; }
+  .role-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin: 0 0 0.9rem; padding: 0.9rem 1rem; border-radius: 10px; background: color-mix(in srgb, var(--row-ink, #888) 7%, transparent); }
+  .role-facts div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .role-facts dt { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+  .role-facts dd { margin: 0; font-weight: 600; }
+  .role-where { margin: 0 0 0.6rem; color: var(--ink-2); }
+  .role-ooh { font-size: 0.92rem; }
+  .career-ladder { margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px solid var(--ink-3); }
+  .career-eures { color: var(--ink-2); font-size: 0.95rem; }
+  .career-sources { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--ink-3); color: var(--ink-3); font-size: 0.85rem; }
+</style>

@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SubjectIcon from '../components/SubjectIcon.astro';
+import data from '../data/topics.json';
+import domains from '../data/domains.json';
+
+const careerFiles = import.meta.glob('../data/careers/*.json', { eager: true });
+const B = import.meta.env.BASE_URL.replace(/\/+$/, '') || '';
+const { subjects } = data;
+
+const withCareers = subjects.filter((s) => careerFiles[`../data/careers/${s.id}.json`]);
+const groups = Object.entries(domains)
+  .map(([did, label]) => ({
+    label,
+    items: withCareers.filter((s) => (s.domain ?? '') === did).sort((a, b) => a.name.localeCompare(b.name)),
+  }))
+  .filter((g) => g.items.length > 0);
+---
+
+<Layout title="Career paths" description="Where each Interactive Atlas subject leads as paid work — roles, pay, outlook and entry routes, grounded in BLS and O*NET data.">
+  <div class="wrap">
+    <header class="page-head">
+      <p class="crumb"><a href={B + '/'}>atlas</a><span class="sep">/</span>careers</p>
+      <h1>Career paths</h1>
+      <p class="lede">
+        Every subject page carries a careers page built on the U.S. Bureau of Labor
+        Statistics' Occupational Outlook Handbook and the O*NET 31.0 database: the real
+        role titles, codes, median pay, outlook and entry routes the subject feeds.
+      </p>
+    </header>
+
+    {groups.map((g) => (
+      <section class="career-domain" aria-label={g.label}>
+        <h2>{g.label}</h2>
+        <div class="career-grid">
+          {g.items.map((s) => (
+            <a class="career-card" href={`${B}/subjects/${s.id}/careers/`} style={`--row-ink:${s.ink}`}>
+              <span style={`color:${s.ink}`}><SubjectIcon name={s.icon} size={22} /></span>
+              <span class="career-name">{s.name}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    {withCareers.length === 0 && <p class="lede">Career pages are being rolled out subject by subject.</p>}
+  </div>
+</Layout>
+
+<style>
+  .career-domain { margin-top: 2.2rem; }
+  .career-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.8rem; margin-top: 1rem; }
+  .career-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.8rem 1rem; border: 1px solid var(--ink-3); border-radius: 12px; background: var(--paper-raised); }
+  .career-card:hover { border-color: var(--row-ink, var(--ink-2)); }
+  .career-name { font-weight: 600; }
+</style>
