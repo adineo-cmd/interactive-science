@@ -1,4 +1,13 @@
-# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026) · register campaign COMPLETE (Nov 8, 2026)
+# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026) · register campaign COMPLETE (Nov 8, 2026) · P1 interactivity backfill COMPLETE (Nov 12, 2026)
+
+## P1 per-paragraph interactivity — COMPLETE (Nov 12, 2026)
+All **583 live lessons** now carry per-paragraph interactive activities (5,607 widgets,
+≈9.6 per lesson), with ≥6 distinct interaction types per lesson, no adjacent same-type
+repeats and ≤2 answer-family widgets. The hand-built pilot lessons `energy-conservation`
+and `philosophy-of-mind` were topped up in `next-32` so no live page sits below the bar.
+The queue in `pipeline/ACTIVITIES-LEDGER.md` is empty — do not re-insert into finished
+lessons. `npm run build` green at 742 pages, content validator green.
+
 
 ## What this project is
 Interactive Atlas (adineo-cmd/interactive-science): 142 subjects / 12 domains, every subject

@@ -46,8 +46,8 @@
 **Done (activities live):**
 | Lesson | Types | Wave |
 |---|---|---|
-| physics/foundational/energy-conservation | 9 acts (PC pilot) | pilot |
-| philosophy/intermediate/philosophy-of-mind | 7 acts (PC pilot) | pilot |
+| physics/foundational/energy-conservation | 9 acts (PC pilot) + 3 gap-fix (sort-buckets, estimate, spot-error) | pilot |
+| philosophy/intermediate/philosophy-of-mind | 7 acts (PC pilot) + 2 gap-fix (compare, branch) | pilot |
 | physics/foundational/newtons-laws | sort-buckets, place, predict, match, judge, spot-error | physics-1 |
 | physics/intermediate/circuits-and-ohms-law | order, cloze, spot-error, judge, estimate, predict | physics-1 |
 | physics/intermediate/circular-motion-and-gravitation | cloze, predict, estimate, match, place, sort-buckets, compare | physics-2 |
@@ -584,8 +584,14 @@
 | journalism/advanced/data-journalism | sort-buckets, order, match, predict, spot-error, estimate | next-31 |
 | journalism/expert/investigative-methods | compare, predict, cloze, match, order, estimate, spot-error, branch | next-31 |
 
-**Queue — PHYSICS IS COMPLETE (all 10 live lessons, 76 activities, waves physics-1…6).**
+**Queue — P1 BACKFILL IS COMPLETE (2026-11-12): all 583 live lessons carry per-paragraph
+activities.** 583/583 lessons have batch files or pilot activities; 5,607 widgets live
+(≈9.6 per lesson); every lesson has ≥6 distinct interaction types, zero adjacent same-type
+repeats, and the two hand-built pilot lessons were topped up in `next-32` so no live page
+sits below the distinct-type bar. The queue is empty — future work is P3 career pages or
+an optional ≥3-misconception-callout audit (see `CONTINUE.md`), not more backfill.
 
+**Do not re-insert into any lesson below:** the done table above is the full live catalogue.
 **Done subjects: physics, accounting, actuarial-science, aerospace-engineering, agriculture, animation, anthropology, archaeology, architecture — ALL lessons in each covered.**
 
 **Anthropology: 9 of 9 COMPLETE** (55 new activities). **Archaeology: 1 of 1 COMPLETE.**
@@ -603,25 +609,25 @@ macroeconomic-models-dsge).
 **Journalism: 7 of 7 COMPLETE** (next-31: verification-before-publication,
 news-vs-opinion-vs-analysis, the-inverted-pyramid, interviewing, media-law-and-ethics,
 data-journalism, investigative-methods — 50 activities).
-**Then next subjects (alphabetical): engineering (10),
-environmental-science (12), film (9), finance (11), geography (14), history (20), journalism (7) …** — check `src/data/topics.json` for each subject's lesson list; 2–3 lessons per wave. (use `src/data/topics.json` for the master list of the
-  ~550 remaining live lessons; skip the done rows above). Update this table as each
-  wave lands, and delete the lesson from the queue.
+**All other live subjects: COMPLETE** — 583 of 583 live lessons are recorded in the done
+table above; the queue is empty. `src/data/topics.json` remains the master catalogue, but
+there are no remaining live lessons to backfill.
 
-## Status snapshot (2026-11-08)
+## Status snapshot (2026-11-12)
 
 - P1 interaction library: **complete** — 12 new widget types in `public/widgets/*.js`
   (predict, cloze, judge, order, match, place, estimate, compare, hotspot, trace, branch,
   sort-buckets, spot-error) + the original 7. Config schemas in each file's header.
 - P2 structural layer: **complete and shipped** (numbered topic positions, position chips,
   stage maps, learning-loop line, spacing) — commit 395dc79. Zero-token, no prose changes.
-- P1 backfill: **467 lessons done, ~3,603 activities** (physics 10/10 complete; accounting,
-  actuarial-science, aerospace-engineering foundational lessons done; **agriculture
-  11/11 COMPLETE** — waves agriculture-1..4; animation 1/1 COMPLETE; **anthropology
-  9/9 COMPLETE**; **archaeology 1/1 COMPLETE** and architecture 2/10 — wave 6). Each single-lesson subject done in one
-  wave; multi-lesson subjects go 2–3 per wave.
-- Remaining queue: **~390 live lessons** (counted as pages with fewer than 3 of the new
-  activity types in `src/pages/<slug>.astro`).
+- P1 backfill: **COMPLETE — 583/583 live lessons, 5,607 widgets, ≈9.6 per lesson.**
+  Final QA (2026-11-12): every live page has ≥6 distinct interaction types (counting the
+  original chart/plotter/timeline widgets), zero adjacent same-type repeats, BBC
+  content validator green, `npm run build` green at 742 pages. The last two pilot lessons
+  (`energy-conservation`, `philosophy-of-mind`) gained 3 + 2 non-answer activities in
+  `next-32` to clear the bar.
+- Remaining queue: **none**. Optional future passes: the ≥3 "Common misconception"
+  callout audit noted in `CONTINUE.md`, and P3 career-role pages (deferred in `ROADMAP.md`).
 - Quality bars, verified every wave by script: ≥6 distinct interaction types, zero
   adjacent repeats, ≤2 answer-family widgets (predict/judge/cloze). Cloned-answer-heavy
   lessons get rebalanced into sort-buckets/compare/branch — expect this on most waves.
