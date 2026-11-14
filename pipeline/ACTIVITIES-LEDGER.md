@@ -633,8 +633,14 @@ there are no remaining live lessons to backfill.
   foundational 187/187, intermediate 194/194, advanced 119/119, expert 83/83. The ≥3
   "Common misconception" callout audit also re-verified: 583/583 pass. Validator green,
   build green at 742 pages.
-- Remaining queue: **none**. Optional future passes: P3 career-role pages (deferred in
-  `ROADMAP.md`).
+- P3 career pages (2026-11-12 → 2026-11-14, 7 waves of 2 subagents): **COMPLETE — 142/142
+  subjects** at `subjects/<id>/careers/` (+ `/careers` index, links from subject pages).
+  ~620 roles with exact O*NET 31.0 title+code pairs (validator `pipeline/validate_careers.py`
+  hard-fails mismatches against `pipeline/packs/onet-31-occupation-data.txt`), BLS median
+  pay (May 2025) + projected growth (2025–2035) verified per role via bls.gov-restricted
+  search with the OOH URL cited per role. Build green at 885 pages. Report:
+  `pipeline/batches/auto/report-careers.md`.
+- Remaining queue: **none**. `ROADMAP.md` has no open items.
 - Quality bars, verified every wave by script: ≥6 distinct interaction types, zero
   adjacent repeats, ≤2 answer-family widgets (predict/judge/cloze). Cloned-answer-heavy
   lessons get rebalanced into sort-buckets/compare/branch — expect this on most waves.

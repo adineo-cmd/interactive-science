@@ -1,4 +1,15 @@
-# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026) · register campaign COMPLETE (Nov 8, 2026) · P1 interactivity backfill COMPLETE (Nov 12, 2026) · register gap-fix COMPLETE (Nov 12, 2026)
+# CONTINUE.md — book-depth expansion COMPLETE (Nov 1, 2026) · register campaign COMPLETE (Nov 8, 2026) · P1 interactivity backfill COMPLETE (Nov 12, 2026) · register gap-fix COMPLETE (Nov 12, 2026) · P3 career pages COMPLETE (Nov 14, 2026)
+
+## P3 career-role pages — COMPLETE (Nov 14, 2026)
+All **142 subjects** now have a careers page (`subjects/<id>/careers/`, linked from the
+subject page; `/careers` index) with 3–6 real roles each (~620 total): exact O*NET
+title + SOC code, BLS median pay (May 2025) and projected growth (2025–2035), entry
+education, and syllabus-grounded "where the subject shows up" prose. Anti-hallucination
+toolchain: roles validated EXACT against the O*NET 31.0 pack
+(`pipeline/packs/onet-31-occupation-data.txt`, CC BY 4.0) by `pipeline/validate_careers.py`
+(142/142 PASS); pay/growth verified via bls.gov-restricted search with the OOH URL cited
+per role. Routes via `pipeline/gen_career_routes.py`. Build green at 885 pages. Full
+report: `pipeline/batches/auto/report-careers.md`. ROADMAP.md has no open items left.
 
 ## P1 per-paragraph interactivity — COMPLETE (Nov 12, 2026)
 All **583 live lessons** now carry per-paragraph interactive activities (5,607 widgets,
